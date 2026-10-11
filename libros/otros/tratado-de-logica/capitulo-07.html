@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 7 — Estructuras, asignaciones e interpretación – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#objetivo-estratos-y-límites-del-primer-microtramo" id="toc-objetivo-estratos-y-límites-del-primer-microtramo" class="nav-link active" data-scroll-target="#objetivo-estratos-y-límites-del-primer-microtramo">7.0. Objetivo, estratos y límites del primer microtramo</a>
+  <ul class="collapse">
+  <li><a href="#fuentes-efectivamente-cotejadas" id="toc-fuentes-efectivamente-cotejadas" class="nav-link" data-scroll-target="#fuentes-efectivamente-cotejadas">Fuentes efectivamente cotejadas</a></li>
+  </ul></li>
+  <li><a href="#la-frontera-de-interpretación" id="toc-la-frontera-de-interpretación" class="nav-link" data-scroll-target="#la-frontera-de-interpretación">7.1. La frontera de interpretación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00009" id="toc-tlog-cnv-00009" class="nav-link" data-scroll-target="#tlog-cnv-00009">Convención 7.1.1 — Símbolo, interpretación y verdad</a></li>
+  </ul></li>
+  <li><a href="#estructuras-sobre-una-signatura" id="toc-estructuras-sobre-una-signatura" class="nav-link" data-scroll-target="#estructuras-sobre-una-signatura">7.2. Estructuras sobre una signatura</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00039" id="toc-tlog-def-00039" class="nav-link" data-scroll-target="#tlog-def-00039">Definición 7.2.1 — Estructura unisortada de signatura <span class="math inline">\(\tau\)</span></a></li>
+  <li><a href="#nota-pedagógica-por-qué-se-exige-anevarnothing" id="toc-nota-pedagógica-por-qué-se-exige-anevarnothing" class="nav-link" data-scroll-target="#nota-pedagógica-por-qué-se-exige-anevarnothing">Nota pedagógica — Por qué se exige <span class="math inline">\(A\ne\varnothing\)</span></a></li>
+  </ul></li>
+  <li><a href="#existencia-de-estructuras-sin-elección" id="toc-existencia-de-estructuras-sin-elección" class="nav-link" data-scroll-target="#existencia-de-estructuras-sin-elección">7.3. Existencia de estructuras sin elección</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00008" id="toc-tlog-pro-00008" class="nav-link" data-scroll-target="#tlog-pro-00008">Proposición 7.3.1 — Una estructura sobre todo universo no vacío</a></li>
+  </ul></li>
+  <li><a href="#asignaciones-de-variables" id="toc-asignaciones-de-variables" class="nav-link" data-scroll-target="#asignaciones-de-variables">7.4. Asignaciones de variables</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00040" id="toc-tlog-def-00040" class="nav-link" data-scroll-target="#tlog-def-00040">Definición 7.4.1 — Asignación total y modificación puntual</a></li>
+  </ul></li>
+  <li><a href="#cálculo-elemental-de-modificaciones" id="toc-cálculo-elemental-de-modificaciones" class="nav-link" data-scroll-target="#cálculo-elemental-de-modificaciones">7.5. Cálculo elemental de modificaciones</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00016" id="toc-tlog-lem-00016" class="nav-link" data-scroll-target="#tlog-lem-00016">Lema 7.5.1 — Leyes de actualización de asignaciones</a></li>
+  </ul></li>
+  <li><a href="#interpretación-recursiva-de-términos" id="toc-interpretación-recursiva-de-términos" class="nav-link" data-scroll-target="#interpretación-recursiva-de-términos">7.6. Interpretación recursiva de términos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00023" id="toc-tlog-mth-00023" class="nav-link" data-scroll-target="#tlog-mth-00023">Metateorema 7.6.1 — Existencia y unicidad de la evaluación de términos</a></li>
+  </ul></li>
+  <li><a href="#localidad-de-la-interpretación" id="toc-localidad-de-la-interpretación" class="nav-link" data-scroll-target="#localidad-de-la-interpretación">7.7. Localidad de la interpretación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00017" id="toc-tlog-lem-00017" class="nav-link" data-scroll-target="#tlog-lem-00017">Lema 7.7.1 — Dependencia exclusivamente de las variables presentes</a></li>
+  </ul></li>
+  <li><a href="#sustitución-sintáctica-y-actualización-semántica" id="toc-sustitución-sintáctica-y-actualización-semántica" class="nav-link" data-scroll-target="#sustitución-sintáctica-y-actualización-semántica">7.8. Sustitución sintáctica y actualización semántica</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00024" id="toc-tlog-mth-00024" class="nav-link" data-scroll-target="#tlog-mth-00024">Metateorema 7.8.1 — Lema de sustitución para términos</a></li>
+  </ul></li>
+  <li><a href="#ejemplos-de-funcionamiento" id="toc-ejemplos-de-funcionamiento" class="nav-link" data-scroll-target="#ejemplos-de-funcionamiento">7.9. Ejemplos de funcionamiento</a></li>
+  <li><a href="#cambio-de-signatura-qué-significa-conservar-un-lenguaje" id="toc-cambio-de-signatura-qué-significa-conservar-un-lenguaje" class="nav-link" data-scroll-target="#cambio-de-signatura-qué-significa-conservar-un-lenguaje">7.11. Cambio de signatura: qué significa conservar un lenguaje</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00041" id="toc-tlog-def-00041" class="nav-link" data-scroll-target="#tlog-def-00041">Definición 7.11.1 — Inclusión de signaturas, reducto y expansión</a></li>
+  <li><a href="#nota-pedagógica-dos-modificaciones-diferentes" id="toc-nota-pedagógica-dos-modificaciones-diferentes" class="nav-link" data-scroll-target="#nota-pedagógica-dos-modificaciones-diferentes">Nota pedagógica — Dos modificaciones diferentes</a></li>
+  </ul></li>
+  <li><a href="#existencia-de-expansiones-en-zf" id="toc-existencia-de-expansiones-en-zf" class="nav-link" data-scroll-target="#existencia-de-expansiones-en-zf">7.12. Existencia de expansiones en ZF</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00009" id="toc-tlog-pro-00009" class="nav-link" data-scroll-target="#tlog-pro-00009">Proposición 7.12.1 — Reducción iterada y expansión uniforme</a></li>
+  </ul></li>
+  <li><a href="#conservatividad-sintáctica-de-las-inclusiones-de-signaturas" id="toc-conservatividad-sintáctica-de-las-inclusiones-de-signaturas" class="nav-link" data-scroll-target="#conservatividad-sintáctica-de-las-inclusiones-de-signaturas">7.13. Conservatividad sintáctica de las inclusiones de signaturas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00018" id="toc-tlog-lem-00018" class="nav-link" data-scroll-target="#tlog-lem-00018">Lema 7.13.1 — Persistencia de términos, fórmulas y vinculación</a></li>
+  </ul></li>
+  <li><a href="#la-evaluación-no-ve-los-símbolos-olvidados" id="toc-la-evaluación-no-ve-los-símbolos-olvidados" class="nav-link" data-scroll-target="#la-evaluación-no-ve-los-símbolos-olvidados">7.14. La evaluación no ve los símbolos olvidados</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00025" id="toc-tlog-mth-00025" class="nav-link" data-scroll-target="#tlog-mth-00025">Metateorema 7.14.1 — Invariancia por reducto y localidad extralógica</a></li>
+  </ul></li>
+  <li><a href="#aplicaciones-entre-estructuras-homomorfismos-y-embeddings" id="toc-aplicaciones-entre-estructuras-homomorfismos-y-embeddings" class="nav-link" data-scroll-target="#aplicaciones-entre-estructuras-homomorfismos-y-embeddings">7.15. Aplicaciones entre estructuras: homomorfismos y embeddings</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00042" id="toc-tlog-def-00042" class="nav-link" data-scroll-target="#tlog-def-00042">Definición 7.15.1 — Homomorfismo, embedding e isomorfismo</a></li>
+  <li><a href="#nota-pedagógica-una-implicación-no-es-una-equivalencia" id="toc-nota-pedagógica-una-implicación-no-es-una-equivalencia" class="nav-link" data-scroll-target="#nota-pedagógica-una-implicación-no-es-una-equivalencia">Nota pedagógica — Una implicación no es una equivalencia</a></li>
+  </ul></li>
+  <li><a href="#naturalidad-de-la-evaluación" id="toc-naturalidad-de-la-evaluación" class="nav-link" data-scroll-target="#naturalidad-de-la-evaluación">7.16. Naturalidad de la evaluación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00026" id="toc-tlog-mth-00026" class="nav-link" data-scroll-target="#tlog-mth-00026">Metateorema 7.16.1 — El valor de un término conmuta con homomorfismos</a></li>
+  </ul></li>
+  <li><a href="#composición-de-aplicaciones-estructurales" id="toc-composición-de-aplicaciones-estructurales" class="nav-link" data-scroll-target="#composición-de-aplicaciones-estructurales">7.17. Composición de aplicaciones estructurales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00010" id="toc-tlog-pro-00010" class="nav-link" data-scroll-target="#tlog-pro-00010">Proposición 7.17.1 — Identidades, composición e inversas</a></li>
+  </ul></li>
+  <li><a href="#subestructuras-ahora-sí-cambia-el-universo" id="toc-subestructuras-ahora-sí-cambia-el-universo" class="nav-link" data-scroll-target="#subestructuras-ahora-sí-cambia-el-universo">7.18. Subestructuras: ahora sí cambia el universo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00043" id="toc-tlog-def-00043" class="nav-link" data-scroll-target="#tlog-def-00043">Definición 7.18.1 — Subestructura e inclusión inducida</a></li>
+  </ul></li>
+  <li><a href="#cierre-funcional-y-estructura-generada" id="toc-cierre-funcional-y-estructura-generada" class="nav-link" data-scroll-target="#cierre-funcional-y-estructura-generada">7.19. Cierre funcional y estructura generada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00011" id="toc-tlog-pro-00011" class="nav-link" data-scroll-target="#tlog-pro-00011">Proposición 7.19.1 — Existencia y unicidad de la subestructura inducida</a></li>
+  </ul></li>
+  <li><a href="#ejemplos-contrastivos-y-frontera-semántica" id="toc-ejemplos-contrastivos-y-frontera-semántica" class="nav-link" data-scroll-target="#ejemplos-contrastivos-y-frontera-semántica">7.20. Ejemplos contrastivos y frontera semántica</a></li>
+  <li><a href="#cierre-matemático-del-capítulo-7" id="toc-cierre-matemático-del-capítulo-7" class="nav-link" data-scroll-target="#cierre-matemático-del-capítulo-7">7.21. Cierre matemático del Capítulo 7</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 7 — Estructuras, asignaciones e interpretación</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-06.html">← Capítulo 6</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-08.html">Capítulo 8 →</a></p>
+<section id="objetivo-estratos-y-límites-del-primer-microtramo" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo-estratos-y-límites-del-primer-microtramo">7.0. Objetivo, estratos y límites del primer microtramo</h2>
+<p>Los Capítulos 5 y 6 construyeron la <strong>sintaxis</strong> de los lenguajes unisortados de primer orden con igualdad: símbolos de una signatura arbitraria <span class="math inline">\(\tau\)</span>, términos <span class="math inline">\(\operatorname{Tm}_\tau\)</span>, fórmulas <span class="math inline">\(\operatorname{Fm}_\tau\)</span>, variables libres y ligadas, recursión estructural, sustituciones de términos y sustitución de fórmulas con prevención de captura. El presente bloque <strong><code>TLOG-CH07-M01</code></strong> inicia la transición hacia la semántica, sin confundir todavía la <em>interpretación de un término</em> con la <em>satisfacción de una fórmula</em>.</p>
+<p>Permanecemos en la metateoría externa <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathrm{ZF}\)</span> con lógica clásica, sin incorporar el axioma de elección. Una signatura <span class="math inline">\(\tau=((F_n)_{n\in\omega},(R_n)_{n\in\omega})\)</span> es un dato <strong>conjuntista</strong>, potencialmente no numerable. Por definición, los símbolos funcionales y relacionales están tipados por una <strong>aridad natural finita</strong>, las constantes son miembros de <span class="math inline">\(F_0\)</span> y se permiten símbolos relacionales nularios <span class="math inline">\(R_0\)</span>. El signo de igualdad lógica <span class="math inline">\(\doteq\)</span> no pertenece a ninguna de estas familias: su condición de símbolo lógico ya está fijada por <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-def-00025">TLOG-DEF-00025</a>.</p>
+<p>La construcción que sigue distinguirá, en orden, el <strong>dominio no vacío</strong> de una estructura, la interpretación de los símbolos extralógicos, una <strong>asignación</strong> de valores a las variables y la <strong>evaluación única de términos</strong>. Sólo el Capítulo 8 definirá <span class="math inline">\(\mathfrak A,s\models\varphi\)</span> y las reglas de los conectivos y cuantificadores. Aquí no se usa <span class="math inline">\(\models\)</span> como relación disponible del sistema <code>FOL=</code>.</p>
+<section id="fuentes-efectivamente-cotejadas" class="level3">
+<h3 class="anchored" data-anchor-id="fuentes-efectivamente-cotejadas">Fuentes efectivamente cotejadas</h3>
+<ul>
+<li><code>TLOG-SRC-0002</code> — Herbert B. Enderton, <em>A Mathematical Introduction to Logic</em>, segunda edición (2001), cap. 2 §2.2, pp.&nbsp;<strong>80–85</strong>. Rol <code>proof-model / countercheck</code>: estructuras con universo no vacío, operaciones totales, constantes, asignaciones y extensión recursiva única de la evaluación de términos.</li>
+<li><code>TLOG-SRC-0003</code> — Wolfgang Rautenberg, <em>A Concise Introduction to Mathematical Logic</em>, tercera edición (2010), cap. 2 §2.3, pp.&nbsp;<strong>62–63</strong>. Rol <code>countercheck</code>: distinción estructura/asignación, evaluación de términos, interpretación funcional, dominio y actualización de variables.</li>
+</ul>
+<p>Las convenciones de TLOG se reconstruyen de manera independiente: ambas fuentes admiten la representación ordinaria de firmas, pero <strong>TLOG incluye expresamente</strong> símbolos relacionales nularios y codifica las constantes como funciones nularias. El lema de sustitución de <strong>términos</strong> se prueba aquí dentro del sistema ya cerrado, y su enunciado no importa la futura teoría de satisfacción de fórmulas.</p>
+</section>
+</section>
+<section id="la-frontera-de-interpretación" class="level2">
+<h2 class="anchored" data-anchor-id="la-frontera-de-interpretación">7.1. La frontera de interpretación</h2>
+<section id="tlog-cnv-00009" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00009">Convención 7.1.1 — Símbolo, interpretación y verdad</h3>
+<p>Para distinguir claramente el símbolo extralógico <span class="math inline">\(f\in F_n\)</span> de la operación conjuntista con que se lo interpreta, escribiremos <span class="math inline">\(f^{\mathfrak A}\)</span>. Para <span class="math inline">\(R\in R_n\)</span> escribiremos <span class="math inline">\(R^{\mathfrak A}\)</span>. Esta notación pertenece a la <strong>metateoría</strong>: la operación <span class="math inline">\(f^{\mathfrak A}\)</span> no es otro símbolo del lenguaje objeto, ni un nuevo término. Por su parte, la interpretación de una variable <span class="math inline">\(x\in X\)</span> dependerá de una asignación <span class="math inline">\(s\)</span>, no de la signatura y no de una operación extralógica.</p>
+<p>Reservamos <span class="math inline">\(\llbracket t\rrbracket_{\mathfrak A,s}\)</span> para el <strong>valor de un término</strong>. En esta etapa no se asigna a una fórmula arbitraria un valor de verdad, ni se define una relación de satisfacción. La igualdad lógica de fórmulas atómicas se mantiene como constructor <span class="math inline">\(\operatorname{Eq}(t,u)\)</span>; su tratamiento semántico como <strong>identidad de valores</strong> se definirá sólo al abrir la evaluación de fórmulas, junto con la interpretación de predicados.</p>
+<p>Una <span class="math inline">\(\tau\)</span>-estructura y una asignación constituyen datos semánticos distintos. Aun si las denotaciones de los símbolos extralógicos están fijadas, una fórmula abierta o un término con variables puede depender de <span class="math inline">\(s\)</span>. La palabra «modelo» se reservará preferentemente para la relación de satisfacción de una teoría, aún no construida.</p>
+</section>
+</section>
+<section id="estructuras-sobre-una-signatura" class="level2">
+<h2 class="anchored" data-anchor-id="estructuras-sobre-una-signatura">7.2. Estructuras sobre una signatura</h2>
+<section id="tlog-def-00039" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00039">Definición 7.2.1 — Estructura unisortada de signatura <span class="math inline">\(\tau\)</span></h3>
+<p>Una <strong>estructura de signatura</strong> <span class="math inline">\(\tau\)</span>, o <strong><span class="math inline">\(\tau\)</span>-estructura</strong>, es una colección de datos</p>
+<p><span class="math display">\[
+\mathfrak A=\bigl(A,(f^{\mathfrak A})_{n\in\omega,\,f\in F_n},(R^{\mathfrak A})_{n\in\omega,\,R\in R_n}\bigr)
+\]</span></p>
+<p>que satisface las siguientes condiciones:</p>
+<ol type="1">
+<li><span class="math inline">\(A\)</span> es un <strong>conjunto no vacío</strong> (universo o dominio de <span class="math inline">\(\mathfrak A\)</span>);</li>
+<li>para cada <span class="math inline">\(f\in F_n\)</span>, su interpretación es una <strong>función total</strong> <span class="math inline">\(f^{\mathfrak A}:A^n\longrightarrow A\)</span>;</li>
+<li>para cada <span class="math inline">\(R\in R_n\)</span>, su interpretación es una <strong>relación n-aria</strong>, es decir, <span class="math inline">\(R^{\mathfrak A}\subseteq A^n\)</span>.</li>
+</ol>
+<p>Se define <span class="math inline">\(A^0:=\{()\}\)</span>, el conjunto cuyo único elemento es la tupla vacía. Por ello, una función nularia <span class="math inline">\(f^{\mathfrak A}:A^0\to A\)</span> determina exactamente un elemento <span class="math inline">\(f^{\mathfrak A}(())\in A\)</span>, que es la <strong>denotación de la constante</strong> <span class="math inline">\(f\)</span>. Por el contrario, una relación nularia sólo puede ser <span class="math inline">\(R^{\mathfrak A}=\varnothing\)</span> o <span class="math inline">\(R^{\mathfrak A}=\{()\}\)</span>. Estos dos casos podrán interpretarse como los dos valores de verdad al definir satisfacción en el siguiente capítulo, pero <strong>todavía no</strong> son una aplicación de <span class="math inline">\(\models\)</span>.</p>
+<p>La interpretación de una operación de aridad positiva es total en el producto completo <span class="math inline">\(A^n\)</span>; no se admiten funciones parciales en la presente noción. Las interpretaciones de dos símbolos <strong>distintos</strong> pueden coincidir extensionalmente. La estructura fija el universo y los valores de los símbolos extralógicos, pero <strong>no</strong> asigna interpretación arbitraria a la igualdad lógica, a los conectivos ni a los cuantificadores. Los símbolos de variables permanecen distintos de los elementos de <span class="math inline">\(A\)</span>.</p>
+<p>Para la teoría de tipos de las definiciones, una <span class="math inline">\(\tau\)</span>-estructura individual es un <strong>conjunto</strong> representable mediante pares y funciones indexadas. No se utiliza la expresión «conjunto de todas las <span class="math inline">\(\tau\)</span>-estructuras» sobre todos los universos: al variar libremente <span class="math inline">\(A\)</span>, se habla de una <strong>clase</strong> definible en la metateoría, no de un conjunto obtenido automáticamente.</p>
+</section>
+<section id="nota-pedagógica-por-qué-se-exige-anevarnothing" class="level3">
+<h3 class="anchored" data-anchor-id="nota-pedagógica-por-qué-se-exige-anevarnothing">Nota pedagógica — Por qué se exige <span class="math inline">\(A\ne\varnothing\)</span></h3>
+<p>El requisito de universo no vacío no es una propiedad deducida de las fórmulas; constituye una <strong>convención semántica explícita</strong> del sistema clásico de primer orden que TLOG está construyendo. Garantiza, entre otras cosas, la existencia de asignaciones totales <span class="math inline">\(X\to A\)</span> sin necesidad de introducir reglas especiales para cuantificadores sobre dominios vacíos. También es coherente con las funciones nularias: una signatura que contiene una constante no podría recibir su interpretación funcional en un universo vacío. No se está afirmando que todos los otros formalismos lógicos deban excluir universos vacíos.</p>
+</section>
+</section>
+<section id="existencia-de-estructuras-sin-elección" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-de-estructuras-sin-elección">7.3. Existencia de estructuras sin elección</h2>
+<section id="tlog-pro-00008" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00008">Proposición 7.3.1 — Una estructura sobre todo universo no vacío</h3>
+<p><strong>Enunciado.</strong> Sea <span class="math inline">\(\tau\)</span> una signatura arbitraria y <span class="math inline">\(A\ne\varnothing\)</span> un conjunto. Existe al menos una <span class="math inline">\(\tau\)</span>-estructura de universo <strong>exactamente</strong> <span class="math inline">\(A\)</span>. En particular, toda signatura admite una estructura con universo unitario. La existencia se demuestra en <span class="math inline">\(\mathrm{ZF}\)</span>, sin axioma de elección, incluso cuando <span class="math inline">\(\tau\)</span> tenga un conjunto no numerable de símbolos.</p>
+<p><strong>Demostración.</strong> Fijemos <strong>un solo</strong> elemento <span class="math inline">\(a_0\in A\)</span>, cuya existencia proviene de <span class="math inline">\(A\ne\varnothing\)</span>. Para cada <span class="math inline">\(n\in\omega\)</span> y cada <span class="math inline">\(f\in F_n\)</span> definimos</p>
+<p><span class="math display">\[
+f^{\mathfrak A}(\mathbf a):=a_0\qquad(\mathbf a\in A^n).
+\]</span></p>
+<p>Se trata de una aplicación total, también para <span class="math inline">\(n=0\)</span> cuando <span class="math inline">\(\mathbf a=()\)</span>. Para cada <span class="math inline">\(n\in\omega\)</span> y <span class="math inline">\(R\in R_n\)</span> ponemos <span class="math inline">\(R^{\mathfrak A}:=\varnothing\subseteq A^n\)</span>. La asignación <strong>uniforme</strong> <span class="math inline">\(f\mapsto(A^n\times\{a_0\})\)</span>, con el gráfico funcional pertinente, y la asignación <span class="math inline">\(R\mapsto\varnothing\)</span> definen familias indexadas mediante separación y reemplazo en ZF. En particular no hemos elegido independientemente valores para cada símbolo: hemos utilizado el <strong>mismo</strong> <span class="math inline">\(a_0\)</span> para todas las funciones. Son exactamente los datos exigidos en §7.2. Para obtener un universo unitario podemos tomar <span class="math inline">\(A=\{\varnothing\}\)</span> y <span class="math inline">\(a_0=\varnothing\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>No se infiere que cualquier familia <strong>preasignada</strong> de valores en conjuntos distintos admita una selección simultánea sin elección; la prueba sólo establece que la estructura que acabamos de definir existe <strong>por una regla uniforme</strong>. Ésta es la distinción fundacional relevante.</p>
+</section>
+</section>
+<section id="asignaciones-de-variables" class="level2">
+<h2 class="anchored" data-anchor-id="asignaciones-de-variables">7.4. Asignaciones de variables</h2>
+<section id="tlog-def-00040" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00040">Definición 7.4.1 — Asignación total y modificación puntual</h3>
+<p>Sea <span class="math inline">\(\mathfrak A\)</span> una estructura con universo <span class="math inline">\(A\)</span>. Una <strong>asignación de variables individuales</strong> es una aplicación total</p>
+<p><span class="math display">\[
+s:X\longrightarrow A.
+\]</span></p>
+<p>El conjunto de todas las asignaciones a ese universo fijo es <span class="math inline">\(A^X\)</span>, bien definido en ZF. Puesto que <span class="math inline">\(A\ne\varnothing\)</span>, existe al menos una asignación: para <span class="math inline">\(a_0\in A\)</span>, basta <span class="math inline">\(s(x)=a_0\)</span> para todo <span class="math inline">\(x\in X\)</span>. No se presupone una correspondencia biunívoca entre <span class="math inline">\(X\)</span> y <span class="math inline">\(A\)</span>, ni que toda variable denote un elemento distinto.</p>
+<p>Para <span class="math inline">\(x\in X\)</span> y <span class="math inline">\(a\in A\)</span> definimos la <strong>actualización puntual</strong> <span class="math inline">\(s[x\mapsto a]:X\to A\)</span> por</p>
+<p><span class="math display">\[
+\boxed{\bigl(s[x\mapsto a]\bigr)(y)=
+\begin{cases}
+a,&amp;y=x,\\
+s(y),&amp;y\ne x.
+\end{cases}}
+\]</span></p>
+<p>La asignación modificada conserva todos los valores anteriores salvo, eventualmente, el de <span class="math inline">\(x\)</span>. Es una operación <strong>metateórica sobre funciones</strong> y no una sustitución sintáctica de variables por términos. En particular, <span class="math inline">\(s[x\mapsto a]\)</span> no es una expresión de <span class="math inline">\(\operatorname{Tm}_\tau\)</span>. La notación fijada en el registro de TLOG para modificaciones de asignaciones adquiere así un dominio y un codominio precisos.</p>
+</section>
+</section>
+<section id="cálculo-elemental-de-modificaciones" class="level2">
+<h2 class="anchored" data-anchor-id="cálculo-elemental-de-modificaciones">7.5. Cálculo elemental de modificaciones</h2>
+<section id="tlog-lem-00016" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00016">Lema 7.5.1 — Leyes de actualización de asignaciones</h3>
+<p>Para cualquier asignación <span class="math inline">\(s:X\to A\)</span>, variables <span class="math inline">\(x,y\in X\)</span> y valores <span class="math inline">\(a,b\in A\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+s[x\mapsto s(x)]&amp;=s,\\
+\bigl(s[x\mapsto a]\bigr)[x\mapsto b]&amp;=s[x\mapsto b],\\
+x\ne y\quad&amp;\Longrightarrow\quad
+\bigl(s[x\mapsto a]\bigr)[y\mapsto b]
+=\bigl(s[y\mapsto b]\bigr)[x\mapsto a].
+\end{aligned}
+\]</span></p>
+<p>Además, <span class="math inline">\(s[x\mapsto a]\)</span> y <span class="math inline">\(s\)</span> coinciden en <span class="math inline">\(X\setminus\{x\}\)</span>; por tanto, si <span class="math inline">\(S\subseteq X\)</span> y <span class="math inline">\(x\notin S\)</span>, se cumple</p>
+<p><span class="math display">\[
+\bigl(s[x\mapsto a]\bigr)\!\upharpoonright_S=s\!\upharpoonright_S.
+\]</span></p>
+<p><strong>Demostración.</strong> Para la primera igualdad fijemos cualquier <span class="math inline">\(z\in X\)</span>. Si <span class="math inline">\(z=x\)</span>, ambos lados valen <span class="math inline">\(s(x)\)</span>; de lo contrario ambos valen <span class="math inline">\(s(z)\)</span>. Para la segunda, cuando <span class="math inline">\(z=x\)</span> prevalece el último valor <span class="math inline">\(b\)</span>; cuando <span class="math inline">\(z\ne x\)</span> ninguna de las actualizaciones altera <span class="math inline">\(s(z)\)</span>. En la tercera, los casos <span class="math inline">\(z=x\)</span>, <span class="math inline">\(z=y\)</span> y <span class="math inline">\(z\notin\{x,y\}\)</span> son exhaustivos por <span class="math inline">\(x\ne y\)</span>. En ellos ambas aplicaciones tienen, respectivamente, los valores <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> y <span class="math inline">\(s(z)\)</span>. La extensionalidad de funciones prueba las igualdades. La afirmación sobre restricciones se sigue directamente de la cláusula para <span class="math inline">\(z\ne x\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La <strong>última actualización de una misma variable</strong> prevalece. Las actualizaciones en variables <strong>distintas</strong> conmutan, sin pretender que todas las sustituciones sintácticas sucesivas conmuten: la comparación sería entre operaciones de distinta naturaleza.</p>
+</section>
+</section>
+<section id="interpretación-recursiva-de-términos" class="level2">
+<h2 class="anchored" data-anchor-id="interpretación-recursiva-de-términos">7.6. Interpretación recursiva de términos</h2>
+<section id="tlog-mth-00023" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00023">Metateorema 7.6.1 — Existencia y unicidad de la evaluación de términos</h3>
+<p><strong>Enunciado.</strong> Para toda <span class="math inline">\(\tau\)</span>-estructura <span class="math inline">\(\mathfrak A\)</span> de universo <span class="math inline">\(A\)</span> y toda asignación <span class="math inline">\(s:X\to A\)</span>, existe una única aplicación</p>
+<p><span class="math display">\[
+\operatorname{val}_{\mathfrak A,s}:\operatorname{Tm}_\tau\longrightarrow A
+\]</span></p>
+<p>que satisface las ecuaciones</p>
+<p><span class="math display">\[
+\boxed{
+\begin{aligned}
+\operatorname{val}_{\mathfrak A,s}(x)&amp;=s(x)&amp;&amp; (x\in X),\\
+\operatorname{val}_{\mathfrak A,s}(f(t_1,\ldots,t_n))
+&amp;=f^{\mathfrak A}\bigl(\operatorname{val}_{\mathfrak A,s}(t_1),\ldots,\operatorname{val}_{\mathfrak A,s}(t_n)\bigr)
+&amp;&amp; (f\in F_n).
+\end{aligned}}
+\]</span></p>
+<p>Su valor en <span class="math inline">\(t\)</span> se escribirá también <span class="math inline">\(\llbracket t\rrbracket_{\mathfrak A,s}\)</span>. Si <span class="math inline">\(f\in F_0\)</span>, la ecuación especializada es</p>
+<p><span class="math display">\[
+\llbracket f()\rrbracket_{\mathfrak A,s}=f^{\mathfrak A}(()).
+\]</span></p>
+<p>En particular, el valor de una constante no depende de <span class="math inline">\(s\)</span>.</p>
+<p><strong>Demostración.</strong> Aplicamos <a href="../../../libros/otros/tratado-de-logica/capitulo-06.html#tlog-mth-00017">TLOG-MTH-00017</a>, el teorema general de recursión de términos, con codominio <span class="math inline">\(A\)</span>, datos iniciales <span class="math inline">\(a(x):=s(x)\)</span> y operaciones <span class="math inline">\(G_f:=f^{\mathfrak A}:A^n\to A\)</span>. Por §7.2 las operaciones <span class="math inline">\(G_f\)</span> están bien tipadas y son totales, inclusive para <span class="math inline">\(n=0\)</span>. Se cumplen, por tanto, todas las hipótesis del metateorema de recursión. Éste entrega una función <span class="math inline">\(\operatorname{val}_{\mathfrak A,s}\)</span> y su unicidad, con exactamente las ecuaciones deseadas. No se ha definido una evaluación mediante intuiciones sobre «el significado» de una expresión: existe una <strong>función conjuntista</strong> única con los valores especificados. <span class="math inline">\(\square\)</span></p>
+<p>La distinción de §7.1 sigue siendo esencial: <span class="math inline">\(\llbracket t\rrbracket_{\mathfrak A,s}\in A\)</span>, no un valor de verdad. Aun cuando <span class="math inline">\(t\)</span> sea una variable individual, <span class="math inline">\(\llbracket x\rrbracket_{\mathfrak A,s}=s(x)\)</span>; una asignación no se identifica con un elemento del lenguaje objeto.</p>
+</section>
+</section>
+<section id="localidad-de-la-interpretación" class="level2">
+<h2 class="anchored" data-anchor-id="localidad-de-la-interpretación">7.7. Localidad de la interpretación</h2>
+<section id="tlog-lem-00017" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00017">Lema 7.7.1 — Dependencia exclusivamente de las variables presentes</h3>
+<p><strong>Enunciado.</strong> Sean <span class="math inline">\(s,r:X\to A\)</span> asignaciones en una misma estructura <span class="math inline">\(\mathfrak A\)</span>. Para todo término <span class="math inline">\(t\in\operatorname{Tm}_\tau\)</span>:</p>
+<p><span class="math display">\[
+\boxed{
+s\!\upharpoonright_{\operatorname{Var}_\tau(t)}
+=r\!\upharpoonright_{\operatorname{Var}_\tau(t)}
+\quad\Longrightarrow\quad
+\llbracket t\rrbracket_{\mathfrak A,s}
+=\llbracket t\rrbracket_{\mathfrak A,r}.}
+\]</span></p>
+<p>Como caso particular, si <span class="math inline">\(\operatorname{Var}_\tau(t)=\varnothing\)</span>, entonces el valor de <span class="math inline">\(t\)</span> es <strong>independiente de toda asignación</strong> a <span class="math inline">\(A\)</span>. Si <span class="math inline">\(x\notin\operatorname{Var}_\tau(t)\)</span>, cualquier actualización <span class="math inline">\(s[x\mapsto a]\)</span> conserva el valor de <span class="math inline">\(t\)</span>.</p>
+<p><strong>Demostración.</strong> Inducimos sobre los términos con <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-mth-00014">TLOG-MTH-00014</a>. Para <span class="math inline">\(t=x\)</span>, la hipótesis dice <span class="math inline">\(s(x)=r(x)\)</span>, y la ecuación variable de §7.6 concluye la igualdad. Para <span class="math inline">\(t=f(t_1,\ldots,t_n)\)</span>, <a href="../../../libros/otros/tratado-de-logica/capitulo-06.html#tlog-mth-00016">TLOG-MTH-00016</a> garantiza</p>
+<p><span class="math display">\[
+\operatorname{Var}_\tau(t)=\bigcup_{i=1}^{n}\operatorname{Var}_\tau(t_i).
+\]</span></p>
+<p>Por consiguiente, el acuerdo en <span class="math inline">\(\operatorname{Var}_\tau(t)\)</span> implica el acuerdo en cada soporte <span class="math inline">\(\operatorname{Var}_\tau(t_i)\)</span>. Aplicamos a cada argumento la hipótesis inductiva y obtenemos</p>
+<p><span class="math display">\[
+\llbracket t_i\rrbracket_{\mathfrak A,s}
+=\llbracket t_i\rrbracket_{\mathfrak A,r}
+\qquad(1\le i\le n).
+\]</span></p>
+<p>La función extensional <span class="math inline">\(f^{\mathfrak A}\)</span> toma valores iguales en tuplas iguales. La ecuación recursiva de §7.6 entrega entonces el mismo valor para <span class="math inline">\(t\)</span> bajo las dos asignaciones. Cuando <span class="math inline">\(n=0\)</span>, las tuplas de argumentos son vacías y la igualdad es inmediata: ninguna variable aparece en una constante. El primer corolario aplica la tesis porque toda restricción a <span class="math inline">\(\varnothing\)</span> coincide con otra; el segundo, porque <a href="#tlog-lem-00016">TLOG-LEM-00016</a> garantiza acuerdo fuera de <span class="math inline">\(\{x\}\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La localidad se refiere a una <strong>estructura fijada</strong>. Si se modifica el valor de la función <span class="math inline">\(f^{\mathfrak A}\)</span> o de una constante que aparece en el término, la conclusión anterior no autoriza conservar su evaluación. La invariancia bajo extensiones o reductos de signaturas se estudiará separadamente.</p>
+</section>
+</section>
+<section id="sustitución-sintáctica-y-actualización-semántica" class="level2">
+<h2 class="anchored" data-anchor-id="sustitución-sintáctica-y-actualización-semántica">7.8. Sustitución sintáctica y actualización semántica</h2>
+<section id="tlog-mth-00024" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00024">Metateorema 7.8.1 — Lema de sustitución para términos</h3>
+<p><strong>Enunciado.</strong> Sea <span class="math inline">\(\sigma:X\to\operatorname{Tm}_\tau\)</span> una sustitución sintáctica <strong>arbitraria</strong>, sin exigencia de soporte finito, y sea <span class="math inline">\(s:X\to A\)</span> una asignación en una estructura <span class="math inline">\(\mathfrak A\)</span>. Definimos la asignación inducida por <span class="math inline">\(\sigma\)</span> y <span class="math inline">\(s\)</span> mediante</p>
+<p><span class="math display">\[
+\boxed{s^{\sigma}(x):=\llbracket\sigma(x)\rrbracket_{\mathfrak A,s}}
+\qquad(x\in X).
+\]</span></p>
+<p>Entonces para todo término <span class="math inline">\(t\in\operatorname{Tm}_\tau\)</span>:</p>
+<p><span class="math display">\[
+\boxed{\llbracket t^{\sigma}\rrbracket_{\mathfrak A,s}
+=\llbracket t\rrbracket_{\mathfrak A,s^\sigma}.}
+\]</span></p>
+<p>Para una sustitución simple <span class="math inline">\(\sigma_{x,u}\)</span>, con <span class="math inline">\(\sigma_{x,u}(x)=u\)</span> e identidad fuera de <span class="math inline">\(x\)</span>, se obtiene la identidad particular</p>
+<p><span class="math display">\[
+\boxed{
+\llbracket t[u/x]\rrbracket_{\mathfrak A,s}
+=\llbracket t\rrbracket_{\mathfrak A,
+s[x\mapsto\llbracket u\rrbracket_{\mathfrak A,s}]}.}
+\]</span></p>
+<p><strong>Demostración.</strong> Cada <span class="math inline">\(\sigma(x)\)</span> es un término, de modo que <span class="math inline">\(\llbracket\sigma(x)\rrbracket_{\mathfrak A,s}\in A\)</span> por §7.6. La aplicación <span class="math inline">\(s^\sigma:X\to A\)</span> está, por tanto, bien definida aun si el soporte de <span class="math inline">\(\sigma\)</span> es infinito. Usamos inducción estructural sobre <span class="math inline">\(t\)</span>.</p>
+<p>Si <span class="math inline">\(t=x\)</span> es una variable, las cláusulas de sustitución y de evaluación dan</p>
+<p><span class="math display">\[
+\llbracket x^\sigma\rrbracket_{\mathfrak A,s}
+=\llbracket\sigma(x)\rrbracket_{\mathfrak A,s}
+=s^\sigma(x)
+=\llbracket x\rrbracket_{\mathfrak A,s^\sigma}.
+\]</span></p>
+<p>Supongamos la tesis demostrada para <span class="math inline">\(t_1,\ldots,t_n\)</span> y tomemos <span class="math inline">\(t=f(t_1,\ldots,t_n)\)</span>. Por la extensión homomórfica de la sustitución a términos y la cláusula funcional de evaluación,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\llbracket f(t_1,\ldots,t_n)^\sigma\rrbracket_{\mathfrak A,s}
+&amp;=\llbracket f(t_1^\sigma,\ldots,t_n^\sigma)\rrbracket_{\mathfrak A,s}\\
+&amp;=f^{\mathfrak A}\bigl(\llbracket t_1^\sigma\rrbracket_{\mathfrak A,s},\ldots,
+\llbracket t_n^\sigma\rrbracket_{\mathfrak A,s}\bigr)\\
+&amp;=f^{\mathfrak A}\bigl(\llbracket t_1\rrbracket_{\mathfrak A,s^\sigma},\ldots,
+\llbracket t_n\rrbracket_{\mathfrak A,s^\sigma}\bigr)\\
+&amp;=\llbracket f(t_1,\ldots,t_n)\rrbracket_{\mathfrak A,s^\sigma}.
+\end{aligned}
+\]</span></p>
+<p>Para <span class="math inline">\(n=0\)</span>, ambos lados son <span class="math inline">\(f^{\mathfrak A}(())\)</span>, y el argumento sigue siendo correcto. Esto termina la inducción. En el caso <span class="math inline">\(\sigma=\sigma_{x,u}\)</span>, la definición de <span class="math inline">\(s^\sigma\)</span> da para todo <span class="math inline">\(y\in X\)</span></p>
+<p><span class="math display">\[
+s^{\sigma_{x,u}}(y)=
+\begin{cases}
+\llbracket u\rrbracket_{\mathfrak A,s},&amp;y=x,\\
+s(y),&amp;y\ne x,
+\end{cases}
+\]</span></p>
+<p>por lo que <span class="math inline">\(s^{\sigma_{x,u}}=s[x\mapsto\llbracket u\rrbracket_{\mathfrak A,s}]\)</span> como funciones. Sustituir esta identidad en la ecuación general prueba el caso particular. <span class="math inline">\(\square\)</span></p>
+<p><strong>Nota de alcance.</strong> Este lema no depende de interpretación de predicados, satisfacción ni equivalencia alfa: compara dos rutas para calcular el <strong>mismo elemento de</strong> <span class="math inline">\(A\)</span> a partir de un término. No permite todavía escribir una relación de verdad para <span class="math inline">\(\varphi^\sigma\)</span>. La sustitución total de fórmulas de §6.30 —que evita captura— se incorporará al teorema semántico de sustitución sólo después de definir rigurosamente <span class="math inline">\(\mathfrak A,s\models\varphi\)</span> en el Capítulo 8.</p>
+</section>
+</section>
+<section id="ejemplos-de-funcionamiento" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-de-funcionamiento">7.9. Ejemplos de funcionamiento</h2>
+<p><strong>Una signatura elemental.</strong> Considérese <span class="math inline">\(F_0=\{c\}\)</span>, <span class="math inline">\(F_1=\{u\}\)</span>, <span class="math inline">\(R_2=\{E\}\)</span>, <span class="math inline">\(R_0=\{B\}\)</span> y los demás conjuntos de símbolos vacíos. Tomemos <span class="math inline">\(A=\omega\)</span>, <span class="math inline">\(c^{\mathfrak A}(())=0\)</span>, <span class="math inline">\(u^{\mathfrak A}(m)=m+1\)</span>, <span class="math inline">\(E^{\mathfrak A}=\{(m,n)\in\omega^2:m&lt;n\}\)</span> y <span class="math inline">\(B^{\mathfrak A}=\{()\}\)</span>. Si <span class="math inline">\(s(x_0)=2\)</span>, obtenemos</p>
+<p><span class="math display">\[
+\llbracket u(u(x_0))\rrbracket_{\mathfrak A,s}=4,
+\qquad
+\llbracket c()\rrbracket_{\mathfrak A,s}=0.
+\]</span></p>
+<p>Alterar sólo <span class="math inline">\(s(x_1)\)</span> no afecta el primer valor, puesto que <span class="math inline">\(\operatorname{Var}_\tau(u(u(x_0)))=\{x_0\}\)</span>. En cambio, cambiar <span class="math inline">\(s(x_0)\)</span> sí puede afectarlo. Todavía no se afirma formalmente la <strong>verdad</strong> del átomo <span class="math inline">\(E(c(),u(x_0))\)</span> ni del símbolo nulario <span class="math inline">\(B()\)</span>: esa evaluación de fórmulas es competencia del próximo capítulo.</p>
+<p><strong>Una signatura vacía.</strong> Si <span class="math inline">\(F_n=R_n=\varnothing\)</span> para todo <span class="math inline">\(n\)</span>, los términos son exactamente las variables <span class="math inline">\(X\)</span>. Sobre cualquier <span class="math inline">\(A\ne\varnothing\)</span>, una estructura no requiere interpretaciones extralógicas y la evaluación se reduce a <span class="math inline">\(\llbracket x\rrbracket_{\mathfrak A,s}=s(x)\)</span>. Aun en este lenguaje subsisten fórmulas de igualdad lógica <span class="math inline">\(x\doteq y\)</span>, pero su satisfacción <strong>no</strong> se define a través de un predicado extralógico oculto.</p>
+<p><strong>Sustituciones simultáneas.</strong> Para un término <span class="math inline">\(t=u(x_0)\)</span> y sustitución <span class="math inline">\(\sigma(x_0)=u(x_1)\)</span>, el cálculo sintáctico entrega <span class="math inline">\(t^\sigma=u(u(x_1))\)</span>. El teorema 7.8.1 asegura que su valor en <span class="math inline">\(s\)</span> coincide con evaluar <span class="math inline">\(u(x_0)\)</span> bajo la nueva asignación <span class="math inline">\(s^\sigma\)</span>, donde <span class="math inline">\(s^\sigma(x_0)=s(x_1)+1\)</span>. La igualdad entre las dos evaluaciones no depende de cómo se hayan llamado las variables, sino de que los términos y operaciones estén tipados por la misma signatura.</p>
+</section>
+<section id="cambio-de-signatura-qué-significa-conservar-un-lenguaje" class="level2">
+<h2 class="anchored" data-anchor-id="cambio-de-signatura-qué-significa-conservar-un-lenguaje">7.11. Cambio de signatura: qué significa conservar un lenguaje</h2>
+<section id="tlog-def-00041" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00041">Definición 7.11.1 — Inclusión de signaturas, reducto y expansión</h3>
+<p>Sean <span class="math inline">\(\tau=((F_n)_{n\in\omega},(R_n)_{n\in\omega})\)</span> y <span class="math inline">\(\tau'=((F'_n)_{n\in\omega},(R'_n)_{n\in\omega})\)</span> signaturas del §5.2. Escribiremos <span class="math inline">\(\tau\subseteq\tau'\)</span> si, para <strong>cada</strong> <span class="math inline">\(n\in\omega\)</span>,</p>
+<p><span class="math display">\[
+F_n\subseteq F'_n,\qquad R_n\subseteq R'_n.
+\]</span></p>
+<p>La inclusión es <strong>literal y conserva el tipo y la aridad</strong>: un símbolo funcional de aridad dos no puede pasar a ser, en la signatura ampliada, un símbolo relacional o una función de otra aridad. Los alfabetos y los constructores lógicos comunes siguen siendo los de los capítulos 5–6; en particular, <span class="math inline">\(\doteq\)</span> no se agrega a <span class="math inline">\(R_2\)</span>.</p>
+<p>Si <span class="math inline">\(\mathfrak B\)</span> es una <span class="math inline">\(\tau'\)</span>-estructura de universo <span class="math inline">\(B\)</span>, su <strong>reducto a</strong> <span class="math inline">\(\tau\)</span>, denotado <span class="math inline">\(\mathfrak B\!\upharpoonright_\tau\)</span>, es la <span class="math inline">\(\tau\)</span>-estructura que conserva el universo <span class="math inline">\(B\)</span> y, para cada símbolo de <span class="math inline">\(\tau\)</span>, exactamente la misma interpretación: <span class="math inline">\(f^{\mathfrak B\upharpoonright_\tau}=f^{\mathfrak B}\)</span> y <span class="math inline">\(R^{\mathfrak B\upharpoonright_\tau}=R^{\mathfrak B}\)</span>. Si <span class="math inline">\(\mathfrak A=\mathfrak B\!\upharpoonright_\tau\)</span>, se llama a <span class="math inline">\(\mathfrak B\)</span> una <strong>expansión</strong> de <span class="math inline">\(\mathfrak A\)</span> a <span class="math inline">\(\tau'\)</span>.</p>
+<p>La operación «reducto» <strong>olvida símbolos, no elementos del universo</strong>. No debe confundirse con la operación «subestructura», definida en §7.18, que puede reducir el universo. En ambos casos permanecen separados datos sintácticos (la signatura) y datos semánticos (las funciones y relaciones que la estructura asigna a sus símbolos).</p>
+</section>
+<section id="nota-pedagógica-dos-modificaciones-diferentes" class="level3">
+<h3 class="anchored" data-anchor-id="nota-pedagógica-dos-modificaciones-diferentes">Nota pedagógica — Dos modificaciones diferentes</h3>
+<p>Si una estructura tiene universo <span class="math inline">\(\omega\)</span>, función de sucesor, constante cero y la relación de orden, olvidar el orden produce un reducto <strong>sobre el mismo</strong> <span class="math inline">\(\omega\)</span>. Restringir el universo de otra estructura a un subconjunto cerrado bajo sus operaciones —si existe tal subconjunto— plantea, en cambio, una cuestión de <strong>subestructura</strong>. La primera operación no requiere cierre algebraico; la segunda sí. Ninguna implica por sí sola la otra.</p>
+</section>
+</section>
+<section id="existencia-de-expansiones-en-zf" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-de-expansiones-en-zf">7.12. Existencia de expansiones en ZF</h2>
+<section id="tlog-pro-00009" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00009">Proposición 7.12.1 — Reducción iterada y expansión uniforme</h3>
+<p><strong>Enunciado.</strong> Se cumplen las siguientes afirmaciones para signaturas arbitrarias:</p>
+<ol type="1">
+<li>Si <span class="math inline">\(\tau\subseteq\tau'\subseteq\tau''\)</span> y <span class="math inline">\(\mathfrak C\)</span> es una <span class="math inline">\(\tau''\)</span>-estructura, entonces <span class="math display">\[
+(\mathfrak C\!\upharpoonright_{\tau'})\!\upharpoonright_\tau
+=\mathfrak C\!\upharpoonright_\tau.
+\]</span> Además, <span class="math inline">\(\mathfrak C\!\upharpoonright_{\tau''}=\mathfrak C\)</span>.</li>
+<li>Si <span class="math inline">\(\tau\subseteq\tau'\)</span> y <span class="math inline">\(\mathfrak A\)</span> es una <span class="math inline">\(\tau\)</span>-estructura de universo no vacío <span class="math inline">\(A\)</span>, entonces existe una <span class="math inline">\(\tau'\)</span>-expansión <span class="math inline">\(\mathfrak B\)</span> de <span class="math inline">\(\mathfrak A\)</span>, con universo <strong>exactamente</strong> <span class="math inline">\(A\)</span>, demostrable en ZF sin el axioma de elección. La expansión no tiene por qué ser única.</li>
+</ol>
+<p><strong>Demostración.</strong> En el primer punto, las dos sucesivas restricciones de las familias de funciones y relaciones dejan, para cada símbolo de <span class="math inline">\(\tau\)</span>, el dato original de <span class="math inline">\(\mathfrak C\)</span>. Como el universo tampoco cambia, los datos estructurales de ambos lados son idénticos. La restricción de una familia a sus índices originales prueba la identidad.</p>
+<p>Para el segundo punto, fijemos un elemento <span class="math inline">\(a_0\in A\)</span>, posible por <span class="math inline">\(A\ne\varnothing\)</span>. En los símbolos de <span class="math inline">\(\tau\)</span> preservamos exactamente las interpretaciones de <span class="math inline">\(\mathfrak A\)</span>. Si <span class="math inline">\(f\in F'_n\setminus F_n\)</span>, definimos <span class="math inline">\(f^{\mathfrak B}:A^n\to A\)</span> por <span class="math inline">\(f^{\mathfrak B}(\bar a)=a_0\)</span> para toda <span class="math inline">\(\bar a\in A^n\)</span>, <strong>incluido</strong> <span class="math inline">\(n=0\)</span>, donde el argumento es la tupla vacía. Si <span class="math inline">\(R\in R'_n\setminus R_n\)</span>, ponemos <span class="math inline">\(R^{\mathfrak B}:=\varnothing\subseteq A^n\)</span>. Estas prescripciones no entran en conflicto, pues los símbolos, tipos y aridades se mantienen disjuntos. Sus familias son funciones conjuntistas obtenidas por separación y reemplazo en los conjuntos de índices de la signatura ampliada. Una única elección existencial <span class="math inline">\(a_0\in A\)</span>, utilizada <strong>uniformemente</strong> en todas las funciones nuevas, no equivale a escoger separadamente elementos para una familia arbitraria de conjuntos. La estructura <span class="math inline">\(\mathfrak B\)</span> satisface las cláusulas de §7.2 y su reducto a <span class="math inline">\(\tau\)</span> es <span class="math inline">\(\mathfrak A\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Contracontrol.</strong> La construcción no garantiza que se pueda ampliar una estructura respetando propiedades adicionales <em>no impuestas por la definición de signatura</em>, como exigir que un nuevo símbolo relacional represente un orden total o que una nueva operación tenga un inverso. La existencia probada sólo exige el tipado de la nueva firma.</p>
+</section>
+</section>
+<section id="conservatividad-sintáctica-de-las-inclusiones-de-signaturas" class="level2">
+<h2 class="anchored" data-anchor-id="conservatividad-sintáctica-de-las-inclusiones-de-signaturas">7.13. Conservatividad sintáctica de las inclusiones de signaturas</h2>
+<section id="tlog-lem-00018" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00018">Lema 7.13.1 — Persistencia de términos, fórmulas y vinculación</h3>
+<p><strong>Enunciado.</strong> Si <span class="math inline">\(\tau\subseteq\tau'\)</span>, todo término de <span class="math inline">\(\tau\)</span> es un término de <span class="math inline">\(\tau'\)</span>, y toda fórmula de <span class="math inline">\(\tau\)</span> es una fórmula de <span class="math inline">\(\tau'\)</span>. Al considerarlos en la signatura mayor, se conservan <strong>literalmente</strong> el árbol de análisis, las direcciones de ocurrencia, el soporte de variables de términos, el conjunto de variables libres de fórmulas, su condición de sentencia y las relaciones de ligadura. Para <span class="math inline">\(\varphi,\psi\in\operatorname{Fm}_\tau\)</span>, también se conserva <span class="math inline">\(\varphi\equiv_\alpha\psi\)</span> en ambas direcciones.</p>
+<p><strong>Demostración.</strong> Por inducción en la construcción de términos, las hojas variables permanecen en el conjunto común <span class="math inline">\(X\)</span>, y cada constructor <span class="math inline">\(f\in F_n\)</span> continúa siendo un constructor de la <strong>misma aridad</strong> en <span class="math inline">\(F'_n\)</span>. Los términos tienen, por tanto, la misma lista de hijos y el mismo árbol. Para fórmulas atómicas, cada <span class="math inline">\(R\in R_n\)</span> sigue perteneciendo a <span class="math inline">\(R'_n\)</span>, y el constructor de igualdad lógica no depende de la signatura. La inducción sobre fórmulas conserva negación, los cuatro conectivos binarios y ambos cuantificadores con su nombre declarado y su matriz. Ninguno añade un nuevo nodo ni altera uno antiguo. De ello se siguen las igualdades de soportes y de las direcciones de vinculantes mediante las definiciones de §§6.1–6.4. Como un cuantificador tiene el mismo alcance en el mismo árbol, <span class="math inline">\(\operatorname{FV}_\tau(\varphi)=\operatorname{FV}_{\tau'}(\varphi)\)</span>. En particular, <span class="math inline">\(\operatorname{FV}=\varnothing\)</span> es independiente de la ampliación.</p>
+<p>Para la equivalencia alfa, cada paso elemental o contextual de §6.23 cambia únicamente el <strong>nombre declarado</strong> y las correspondientes hojas variables, nunca un símbolo extralógico. La condición de frescura <span class="math inline">\(y\notin\operatorname{Names}(\cdot)\)</span> se calcula sobre el mismo árbol y da el mismo resultado en ambas signaturas. Una cadena finita de pasos alfa en <span class="math inline">\(\tau\)</span> sigue siendo tal en <span class="math inline">\(\tau'\)</span>; recíprocamente, una cadena que parte de una <span class="math inline">\(\tau\)</span>-fórmula no puede introducir símbolos ausentes de <span class="math inline">\(\tau\)</span>, por lo que todos sus términos intermedios y fórmulas siguen perteneciendo a <span class="math inline">\(\tau\)</span>. Así las dos relaciones coinciden sobre <span class="math inline">\(\operatorname{Fm}_\tau\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>El lema es <strong>puramente sintáctico</strong>: no afirma que dos estructuras distintas interpreten igual sus símbolos comunes. Esa conclusión requiere el dato adicional del reducto y la evaluación de términos.</p>
+</section>
+</section>
+<section id="la-evaluación-no-ve-los-símbolos-olvidados" class="level2">
+<h2 class="anchored" data-anchor-id="la-evaluación-no-ve-los-símbolos-olvidados">7.14. La evaluación no ve los símbolos olvidados</h2>
+<section id="tlog-mth-00025" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00025">Metateorema 7.14.1 — Invariancia por reducto y localidad extralógica</h3>
+<p><strong>Enunciado.</strong> Sean <span class="math inline">\(\tau\subseteq\tau'\)</span>, una <span class="math inline">\(\tau'\)</span>-estructura <span class="math inline">\(\mathfrak B\)</span> de universo <span class="math inline">\(B\)</span>, su reducto <span class="math inline">\(\mathfrak A:=\mathfrak B\!\upharpoonright_\tau\)</span> y una asignación <span class="math inline">\(s:X\to B\)</span>. Para todo <span class="math inline">\(t\in\operatorname{Tm}_\tau\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\llbracket t\rrbracket_{\mathfrak A,s}
+=\llbracket t\rrbracket_{\mathfrak B,s}.}
+\]</span></p>
+<p>Más generalmente, sean <span class="math inline">\(\mathfrak A_1,\mathfrak A_2\)</span> dos <span class="math inline">\(\tau\)</span>-estructuras <strong>sobre el mismo conjunto</strong> <span class="math inline">\(A\)</span>. Denotemos por <span class="math inline">\(\operatorname{FSym}(t)\)</span> el conjunto finito de símbolos funcionales que aparecen como nodos en <span class="math inline">\(t\)</span>. Si <span class="math inline">\(f^{\mathfrak A_1}=f^{\mathfrak A_2}\)</span> para cada <span class="math inline">\(f\in\operatorname{FSym}(t)\)</span> y las asignaciones <span class="math inline">\(s,r:X\to A\)</span> coinciden sobre <span class="math inline">\(\operatorname{Var}_\tau(t)\)</span>, entonces</p>
+<p><span class="math display">\[
+\llbracket t\rrbracket_{\mathfrak A_1,s}
+=\llbracket t\rrbracket_{\mathfrak A_2,r}.
+\]</span></p>
+<p><strong>Demostración.</strong> La primera afirmación se obtiene de la segunda: por la definición de reducto, las interpretaciones de todos los símbolos funcionales de <span class="math inline">\(\tau\)</span> son idénticas en <span class="math inline">\(\mathfrak A\)</span> y <span class="math inline">\(\mathfrak B\)</span>, y la asignación es la misma. Para la forma general, la existencia del conjunto finito <span class="math inline">\(\operatorname{FSym}(t)\)</span> procede de la finitud del árbol de término; no es necesario exigir finitud de la signatura completa. Aplicamos inducción estructural. En una hoja variable <span class="math inline">\(x\)</span>, las dos evaluaciones son <span class="math inline">\(s(x)\)</span> y <span class="math inline">\(r(x)\)</span>, iguales por acuerdo sobre el soporte. Si <span class="math inline">\(t=f(t_1,\ldots,t_n)\)</span>, cada <span class="math inline">\(\operatorname{FSym}(t_i)\)</span> está contenido en <span class="math inline">\(\operatorname{FSym}(t)\)</span> y cada <span class="math inline">\(\operatorname{Var}(t_i)\)</span> en <span class="math inline">\(\operatorname{Var}(t)\)</span>. Las hipótesis inductivas igualan los valores de los argumentos. La operación <span class="math inline">\(f^{\mathfrak A_1}=f^{\mathfrak A_2}\)</span> actúa sobre la misma tupla en ambos casos, de modo que iguala los valores del término compuesto. Para <span class="math inline">\(n=0\)</span>, se comparan las mismas operaciones nularias sobre <span class="math inline">\(()\)</span>; tampoco interviene asignación. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Frontera conceptual
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esta invariancia sólo se refiere a <strong>denotaciones de términos</strong>. Una fórmula relacional puede distinguir dos estructuras que asignen relaciones diferentes al mismo símbolo, aun cuando todos los términos tengan la misma interpretación. La satisfacción de tales fórmulas no está definida todavía.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="aplicaciones-entre-estructuras-homomorfismos-y-embeddings" class="level2">
+<h2 class="anchored" data-anchor-id="aplicaciones-entre-estructuras-homomorfismos-y-embeddings">7.15. Aplicaciones entre estructuras: homomorfismos y embeddings</h2>
+<section id="tlog-def-00042" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00042">Definición 7.15.1 — Homomorfismo, embedding e isomorfismo</h3>
+<p>Sean <span class="math inline">\(\mathfrak A\)</span> y <span class="math inline">\(\mathfrak B\)</span> estructuras de la <strong>misma</strong> signatura <span class="math inline">\(\tau\)</span>, con universos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>. Un <strong>homomorfismo</strong> <span class="math inline">\(h:\mathfrak A\to\mathfrak B\)</span> es una función <span class="math inline">\(h:A\to B\)</span> que satisface, para todo <span class="math inline">\(n\in\omega\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+h\bigl(f^{\mathfrak A}(a_1,\ldots,a_n)\bigr)
+&amp;=f^{\mathfrak B}(h(a_1),\ldots,h(a_n))&amp;&amp; (f\in F_n),\\
+(a_1,\ldots,a_n)\in R^{\mathfrak A}
+&amp;\Longrightarrow (h(a_1),\ldots,h(a_n))\in R^{\mathfrak B}&amp;&amp;(R\in R_n).
+\end{aligned}
+\]</span></p>
+<p>Para <span class="math inline">\(n=0\)</span>, la primera identidad significa <span class="math inline">\(h(f^{\mathfrak A}(()))=f^{\mathfrak B}(())\)</span>; la segunda dice que la pertenencia de <span class="math inline">\(()\)</span> a una relación nularia de <span class="math inline">\(\mathfrak A\)</span> <strong>obliga</strong> a su pertenencia a la correspondiente relación de <span class="math inline">\(\mathfrak B\)</span>, pero no a la inversa.</p>
+<p>Un <strong>embedding</strong> (o <em>inmersión estructural</em>) es un homomorfismo <strong>inyectivo</strong> que, además, <strong>refleja</strong> todas las relaciones: para cada <span class="math inline">\(R\)</span> y <span class="math inline">\(\bar a\in A^n\)</span>,</p>
+<p><span class="math display">\[
+\bar a\in R^{\mathfrak A}
+\quad\Longleftrightarrow\quad
+h^n(\bar a)\in R^{\mathfrak B},
+\qquad h^n(a_1,\ldots,a_n):=(h(a_1),\ldots,h(a_n)).
+\]</span></p>
+<p>Un <strong>isomorfismo</strong> es un embedding biyectivo; un <strong>automorfismo</strong> es un isomorfismo de una estructura consigo misma. La notación <span class="math inline">\(\mathfrak A\cong_\tau\mathfrak B\)</span> significa que existe un isomorfismo, no que ambos objetos conjuntistas sean iguales.</p>
+<p><strong>Precisión terminológica.</strong> Enderton llama <em>homomorfismo</em> a una aplicación que <strong>preserva y refleja</strong> relaciones; Rautenberg utiliza el término para la condición de preservación, y distingue los homomorfismos fuertes. TLOG adopta esta segunda convención para que un homomorfismo no inyectivo <strong>no</strong> adquiera implícitamente propiedades que sólo tienen los embeddings. Un homomorfismo cualquiera preserva la igualdad de elementos, pero no está obligado a reflejarla: de <span class="math inline">\(h(a)=h(b)\)</span> no se sigue <span class="math inline">\(a=b\)</span> sin inyectividad.</p>
+</section>
+<section id="nota-pedagógica-una-implicación-no-es-una-equivalencia" class="level3">
+<h3 class="anchored" data-anchor-id="nota-pedagógica-una-implicación-no-es-una-equivalencia">Nota pedagógica — Una implicación no es una equivalencia</h3>
+<p>Si <span class="math inline">\(R\in R_1\)</span>, tomamos <span class="math inline">\(A=B=\{0\}\)</span>, la identidad <span class="math inline">\(h(0)=0\)</span>, <span class="math inline">\(R^{\mathfrak A}=\varnothing\)</span> y <span class="math inline">\(R^{\mathfrak B}=\{0\}\)</span>. Para la signatura que sólo contiene <span class="math inline">\(R\)</span>, <span class="math inline">\(h\)</span> es un homomorfismo <strong>inyectivo</strong>: la implicación de preservación es vacuamente verdadera. Sin embargo, no es un embedding, porque <span class="math inline">\(0\in R^{\mathfrak B}\)</span> y <span class="math inline">\(0\notin R^{\mathfrak A}\)</span>. La <strong>inyectividad sola no refleja relaciones</strong>.</p>
+</section>
+</section>
+<section id="naturalidad-de-la-evaluación" class="level2">
+<h2 class="anchored" data-anchor-id="naturalidad-de-la-evaluación">7.16. Naturalidad de la evaluación</h2>
+<section id="tlog-mth-00026" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00026">Metateorema 7.16.1 — El valor de un término conmuta con homomorfismos</h3>
+<p><strong>Enunciado.</strong> Sea <span class="math inline">\(h:\mathfrak A\to\mathfrak B\)</span> un homomorfismo entre <span class="math inline">\(\tau\)</span>-estructuras, sea <span class="math inline">\(s:X\to A\)</span> una asignación y sea <span class="math inline">\(t\in\operatorname{Tm}_\tau\)</span>. Entonces</p>
+<p><span class="math display">\[
+\boxed{
+h\bigl(\llbracket t\rrbracket_{\mathfrak A,s}\bigr)
+=\llbracket t\rrbracket_{\mathfrak B,h\circ s}.}
+\]</span></p>
+<p>Para cada <span class="math inline">\(x\in X\)</span> y <span class="math inline">\(a\in A\)</span> se cumple también la compatibilidad de actualizaciones</p>
+<p><span class="math display">\[
+\boxed{h\circ(s[x\mapsto a])=(h\circ s)[x\mapsto h(a)].}
+\]</span></p>
+<p><strong>Demostración.</strong> Como <span class="math inline">\(h:A\to B\)</span>, la composición <span class="math inline">\(h\circ s:X\to B\)</span> es una asignación total. La primera igualdad se prueba por inducción estructural en <span class="math inline">\(t\)</span>. Si <span class="math inline">\(t=x\)</span>, el lado izquierdo es <span class="math inline">\(h(s(x))\)</span>, que coincide con <span class="math inline">\((h\circ s)(x)\)</span> y, por la cláusula variable de §7.6, con el lado derecho. Si <span class="math inline">\(t=f(t_1,\ldots,t_n)\)</span>, la ecuación funcional del homomorfismo y las hipótesis inductivas dan</p>
+<p><span class="math display">\[
+\begin{aligned}
+h\bigl(\llbracket f(t_1,\ldots,t_n)\rrbracket_{\mathfrak A,s}\bigr)
+&amp;=h\bigl(f^{\mathfrak A}(\llbracket t_1\rrbracket_{\mathfrak A,s},\ldots,\llbracket t_n\rrbracket_{\mathfrak A,s})\bigr)\\
+&amp;=f^{\mathfrak B}(h(\llbracket t_1\rrbracket_{\mathfrak A,s}),\ldots,h(\llbracket t_n\rrbracket_{\mathfrak A,s}))\\
+&amp;=f^{\mathfrak B}(\llbracket t_1\rrbracket_{\mathfrak B,h\circ s},\ldots,\llbracket t_n\rrbracket_{\mathfrak B,h\circ s})\\
+&amp;=\llbracket f(t_1,\ldots,t_n)\rrbracket_{\mathfrak B,h\circ s}.
+\end{aligned}
+\]</span></p>
+<p>La demostración cubre <span class="math inline">\(n=0\)</span>: la identidad es precisamente <span class="math inline">\(h(f^{\mathfrak A}(()))=f^{\mathfrak B}(())\)</span>. Ninguna condición sobre las relaciones ha sido usada para <strong>evaluar términos</strong>; su preservación es necesaria para hablar de homomorfismos de estructuras completas, no para este cálculo funcional.</p>
+<p>Para la actualización, evaluamos ambas funciones en una variable arbitraria <span class="math inline">\(y\)</span>. Si <span class="math inline">\(y=x\)</span>, el primer miembro vale <span class="math inline">\(h(a)\)</span> y el segundo también. Si <span class="math inline">\(y\ne x\)</span>, ambos valen <span class="math inline">\(h(s(y))\)</span>. Por extensionalidad de funciones son iguales. <span class="math inline">\(\square\)</span></p>
+<p>La igualdad de actualizaciones será una condición técnica directa para interpretar cuantificadores en el Capítulo 8. En el presente capítulo <strong>no</strong> se utiliza todavía para afirmar que alguna fórmula es verdadera.</p>
+</section>
+</section>
+<section id="composición-de-aplicaciones-estructurales" class="level2">
+<h2 class="anchored" data-anchor-id="composición-de-aplicaciones-estructurales">7.17. Composición de aplicaciones estructurales</h2>
+<section id="tlog-pro-00010" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00010">Proposición 7.17.1 — Identidades, composición e inversas</h3>
+<p><strong>Enunciado.</strong> Para una signatura fija <span class="math inline">\(\tau\)</span>: (i) la identidad de cada universo determina un isomorfismo de su estructura consigo misma; (ii) la composición de homomorfismos es un homomorfismo y la de embeddings es un embedding; (iii) el inverso conjuntista de un isomorfismo es también un isomorfismo. En consecuencia, <span class="math inline">\(\cong_\tau\)</span> es una relación de equivalencia sobre la <strong>clase</strong> de <span class="math inline">\(\tau\)</span>-estructuras.</p>
+<p><strong>Demostración.</strong> La identidad respeta todas las operaciones y las relaciones por reflexividad de la igualdad; es inyectiva y sobreyectiva. Sean <span class="math inline">\(h:\mathfrak A\to\mathfrak B\)</span> y <span class="math inline">\(k:\mathfrak B\to\mathfrak C\)</span> homomorfismos. Para cada símbolo funcional <span class="math inline">\(f\)</span> y <span class="math inline">\(\bar a\in A^n\)</span>,</p>
+<p><span class="math display">\[
+(k\circ h)(f^{\mathfrak A}(\bar a))
+=k(f^{\mathfrak B}(h^n(\bar a)))
+=f^{\mathfrak C}((k\circ h)^n(\bar a)).
+\]</span></p>
+<p>Si <span class="math inline">\(\bar a\in R^{\mathfrak A}\)</span>, la preservación por <span class="math inline">\(h\)</span> y después por <span class="math inline">\(k\)</span> entrega <span class="math inline">\((k\circ h)^n(\bar a)\in R^{\mathfrak C}\)</span>. Ambas cláusulas valen también para <span class="math inline">\(n=0\)</span>, ya que las tuplas vacías se transportan a sí mismas. Si <span class="math inline">\(h,k\)</span> son embeddings, la composición es inyectiva; la implicación relacional inversa resulta aplicando primero la reflexión de <span class="math inline">\(k\)</span> y luego la de <span class="math inline">\(h\)</span>. Es, por tanto, un embedding.</p>
+<p>Sea ahora <span class="math inline">\(h\)</span> un isomorfismo biyectivo. Para <span class="math inline">\(\bar b\in B^n\)</span>, escribimos <span class="math inline">\(\bar a=(h^{-1})^n(\bar b)\)</span>. La identidad funcional de <span class="math inline">\(h\)</span> se transforma, aplicando <span class="math inline">\(h^{-1}\)</span>, en</p>
+<p><span class="math display">\[
+h^{-1}(f^{\mathfrak B}(\bar b))=f^{\mathfrak A}((h^{-1})^n(\bar b)).
+\]</span></p>
+<p>La bicondicional de relaciones se invierte del mismo modo. Por tanto <span class="math inline">\(h^{-1}\)</span> es un homomorfismo que refleja relaciones y es biyectivo: un isomorfismo. Las tres propiedades de <span class="math inline">\(\cong_\tau\)</span> se deducen de identidad, inversa y composición. Aunque se hable de relación sobre una clase, no se postula un conjunto de <strong>todas</strong> las estructuras sin restringir universos. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="subestructuras-ahora-sí-cambia-el-universo" class="level2">
+<h2 class="anchored" data-anchor-id="subestructuras-ahora-sí-cambia-el-universo">7.18. Subestructuras: ahora sí cambia el universo</h2>
+<section id="tlog-def-00043" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00043">Definición 7.18.1 — Subestructura e inclusión inducida</h3>
+<p>Sean <span class="math inline">\(\mathfrak A\)</span> y <span class="math inline">\(\mathfrak B\)</span> <span class="math inline">\(\tau\)</span>-estructuras con universos <span class="math inline">\(A\subseteq B\)</span>. Decimos que <span class="math inline">\(\mathfrak A\)</span> es una <strong>subestructura</strong> de <span class="math inline">\(\mathfrak B\)</span>, y escribimos <span class="math inline">\(\mathfrak A\preccurlyeq_{\mathrm{sub}}\mathfrak B\)</span>, cuando:</p>
+<p><span class="math display">\[
+\begin{aligned}
+f^{\mathfrak A}&amp;=f^{\mathfrak B}\!\upharpoonright_{A^n} &amp;&amp;(f\in F_n),\\
+R^{\mathfrak A}&amp;=R^{\mathfrak B}\cap A^n &amp;&amp;(R\in R_n).
+\end{aligned}
+\]</span></p>
+<p>Se exige asimismo que cada <span class="math inline">\(f^{\mathfrak B}(A^n)\subseteq A\)</span>, para que la restricción funcional tenga realmente tipo <span class="math inline">\(A^n\to A\)</span>. Esta cláusula está implícita en la existencia de <span class="math inline">\(f^{\mathfrak A}\)</span>, pero se enuncia separadamente por claridad. Para <span class="math inline">\(n=0\)</span> exige que la denotación de <strong>cada constante</strong> de <span class="math inline">\(\mathfrak B\)</span> pertenezca a <span class="math inline">\(A\)</span>; una relación nularia, en cambio, conserva exactamente su valor porque <span class="math inline">\(A^0=B^0=\{()\}\)</span>.</p>
+<p>La inclusión conjuntista <span class="math inline">\(\iota_A^B:A\hookrightarrow B\)</span> de una subestructura es un <strong>embedding</strong> por §7.15: conmuta con las operaciones y preserva <em>y refleja</em> las relaciones. No se identifica la subestructura con un reducto: en un reducto el universo es idéntico y <strong>disminuye la signatura</strong>, mientras que en una subestructura la signatura es idéntica y puede <strong>disminuir el universo</strong>.</p>
+</section>
+</section>
+<section id="cierre-funcional-y-estructura-generada" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-funcional-y-estructura-generada">7.19. Cierre funcional y estructura generada</h2>
+<section id="tlog-pro-00011" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00011">Proposición 7.19.1 — Existencia y unicidad de la subestructura inducida</h3>
+<p><strong>Enunciado.</strong> Sea <span class="math inline">\(\mathfrak B\)</span> una <span class="math inline">\(\tau\)</span>-estructura de universo <span class="math inline">\(B\)</span>, y sea <span class="math inline">\(A\subseteq B\)</span> <strong>no vacío</strong>. Las siguientes condiciones son equivalentes:</p>
+<ol type="1">
+<li>existe una subestructura <span class="math inline">\(\mathfrak A\preccurlyeq_{\mathrm{sub}}\mathfrak B\)</span> cuyo universo es exactamente <span class="math inline">\(A\)</span>;</li>
+<li><span class="math inline">\(A\)</span> está cerrado bajo todas las operaciones interpretadas: <span class="math inline">\(f^{\mathfrak B}(A^n)\subseteq A\)</span> para cada <span class="math inline">\(f\in F_n\)</span>, incluidos los símbolos de aridad cero.</li>
+</ol>
+<p>Cuando existe, tal subestructura es <strong>única</strong>. Además, para cualquier <span class="math inline">\(E\subseteq B\)</span> no vacío, existe una única subestructura mínima de <span class="math inline">\(\mathfrak B\)</span> cuyo universo contiene <span class="math inline">\(E\)</span>: la <strong>subestructura generada</strong> por <span class="math inline">\(E\)</span>. Si <span class="math inline">\(\mathfrak A\preccurlyeq_{\mathrm{sub}}\mathfrak B\)</span> y <span class="math inline">\(s:X\to A\)</span>, entonces para todo término <span class="math inline">\(t\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\llbracket t\rrbracket_{\mathfrak A,s}
+=\llbracket t\rrbracket_{\mathfrak B,\iota_A^B\circ s}},
+\]</span></p>
+<p>entendiendo la igualdad en <span class="math inline">\(B\)</span> mediante la inclusión <span class="math inline">\(A\subseteq B\)</span>.</p>
+<p><strong>Demostración.</strong> Si existe <span class="math inline">\(\mathfrak A\)</span>, su función interpretativa <span class="math inline">\(f^{\mathfrak A}\)</span> tiene codominio <span class="math inline">\(A\)</span> y coincide con la restricción de <span class="math inline">\(f^{\mathfrak B}\)</span> a <span class="math inline">\(A^n\)</span>; luego la condición de cierre es necesaria. Recíprocamente, supongamos el cierre funcional. Para cada <span class="math inline">\(f\in F_n\)</span>, definimos <span class="math inline">\(f^{\mathfrak A}\)</span> restringiendo <span class="math inline">\(f^{\mathfrak B}\)</span> a <span class="math inline">\(A^n\)</span>; el cierre garantiza su codominio. Para cada <span class="math inline">\(R\in R_n\)</span>, definimos <span class="math inline">\(R^{\mathfrak A}=R^{\mathfrak B}\cap A^n\)</span>. Son datos conjuntistas indexados por la signatura, satisfacen §7.2 y verifican §7.18. La definición los determina sin libertad adicional: toda subestructura sobre <span class="math inline">\(A\)</span> tiene esas mismas interpretaciones. De ahí la unicidad.</p>
+<p>Para la estructura generada por <span class="math inline">\(E\ne\varnothing\)</span>, consideremos la <strong>familia conjuntista</strong></p>
+<p><span class="math display">\[
+\mathcal C_E:=\{C\in\mathcal P(B):E\subseteq C\ \land\ C\text{ cerrado bajo cada }f^{\mathfrak B}\}.
+\]</span></p>
+<p>Es no vacía porque <span class="math inline">\(B\in\mathcal C_E\)</span>. Su intersección <span class="math inline">\(G=\bigcap\mathcal C_E\)</span> contiene <span class="math inline">\(E\)</span>, de modo que <span class="math inline">\(G\ne\varnothing\)</span>. Para cada <span class="math inline">\(n\)</span> y <span class="math inline">\(\bar g\in G^n\)</span>, el valor <span class="math inline">\(f^{\mathfrak B}(\bar g)\)</span> pertenece a todo <span class="math inline">\(C\in\mathcal C_E\)</span>, pues <span class="math inline">\(\bar g\in C^n\)</span> (para <span class="math inline">\(n=0\)</span>, <span class="math inline">\(()\in C^0\)</span> y el cierre incluye las constantes). Por tanto pertenece a <span class="math inline">\(G\)</span>. La primera parte entrega la única subestructura con universo <span class="math inline">\(G\)</span>; la denotamos <span class="math inline">\(\langle E\rangle_{\mathfrak B}\)</span>. Por construcción está contenida en cualquier otra subestructura cuyo universo contiene <span class="math inline">\(E\)</span>. Toda la operación —potencia, separación e intersección— se realiza en ZF sin elección.</p>
+<p>Finalmente, la inclusión <span class="math inline">\(\iota_A^B\)</span> es un homomorfismo, por la definición de subestructura. Aplicando <a href="#tlog-mth-00026">TLOG-MTH-00026</a> a <span class="math inline">\(h=\iota_A^B\)</span>, obtenemos <span class="math inline">\(\iota_A^B(\llbracket t\rrbracket_{\mathfrak A,s})=\llbracket t\rrbracket_{\mathfrak B,\iota_A^B\circ s}\)</span>; la inclusión no cambia el elemento de <span class="math inline">\(A\)</span> considerado como elemento de <span class="math inline">\(B\)</span>, y queda probada la identidad final. <span class="math inline">\(\square\)</span></p>
+<p><strong>Dos controles.</strong> Si la signatura no tiene símbolos funcionales, cualquier <span class="math inline">\(E\ne\varnothing\)</span> ya es un universo cerrado: la estructura generada por <span class="math inline">\(E\)</span> tiene dominio <span class="math inline">\(E\)</span> y relaciones inducidas. Si existe una constante <span class="math inline">\(c\in F_0\)</span> cuya denotación no pertenece a <span class="math inline">\(A\)</span>, ninguna subestructura con universo <span class="math inline">\(A\)</span> puede existir, <strong>aunque todas las funciones de aridad positiva preserven</strong> <span class="math inline">\(A\)</span>.</p>
+</section>
+</section>
+<section id="ejemplos-contrastivos-y-frontera-semántica" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-contrastivos-y-frontera-semántica">7.20. Ejemplos contrastivos y frontera semántica</h2>
+<p><strong>Reducto frente a subestructura.</strong> Considérese <span class="math inline">\(\tau'\)</span> con dos símbolos funcionales nularios <span class="math inline">\(0,1\)</span>, una función binaria <span class="math inline">\(+\)</span> y una relación binaria <span class="math inline">\(&lt;\)</span>, interpretados de manera usual sobre <span class="math inline">\(\mathbb Z\)</span>. El reducto a <span class="math inline">\(\{0,+\}\)</span> sigue teniendo universo <span class="math inline">\(\mathbb Z\)</span>; simplemente olvida el símbolo <span class="math inline">\(1\)</span> y la relación <span class="math inline">\(&lt;\)</span>. En cambio, el universo <span class="math inline">\(2\mathbb Z\)</span> es cerrado bajo <span class="math inline">\(+\)</span> y contiene <span class="math inline">\(0\)</span>, de modo que determina una subestructura para la signatura <span class="math inline">\(\{0,+\}\)</span>, pero <strong>no</strong> para la signatura que exige interpretar la constante <span class="math inline">\(1\)</span> usual: <span class="math inline">\(1\notin2\mathbb Z\)</span>.</p>
+<p><strong>El homomorfismo no refleja automáticamente átomos.</strong> Con universo singleton y una relación unaria vacía en la estructura de origen y total en la de destino, la identidad es un homomorfismo y no un embedding (§7.15). Así, la sola ecuación de naturalidad para términos no justifica sustituir, sin hipótesis adicional, el juicio relacional de una estructura por el juicio de la otra. Para igualdad, <span class="math inline">\(h(a)=h(b)\)</span> tampoco implica <span class="math inline">\(a=b\)</span> si <span class="math inline">\(h\)</span> no es inyectiva. Estas diferencias son justamente las que se deberán controlar cuando se defina satisfacción.</p>
+<p><strong>Datos disponibles para el Capítulo 8.</strong> Para interpretar un átomo relacional <span class="math inline">\(R(t_1,\ldots,t_n)\)</span> disponemos ya, sin ninguna operación adicional, de la tupla <span class="math inline">\((\llbracket t_1\rrbracket_{\mathfrak A,s},\ldots,\llbracket t_n\rrbracket_{\mathfrak A,s})\in A^n\)</span> y del subconjunto <span class="math inline">\(R^{\mathfrak A}\subseteq A^n\)</span>. Para una ecuación <span class="math inline">\(t\doteq u\)</span>, disponemos de ambos elementos de <span class="math inline">\(A\)</span>. En el <strong>Capítulo 8</strong>, y no aquí, se convertirán estas comparaciones en cláusulas de satisfacción y se extenderán por recursión a los cinco conectivos y los dos cuantificadores.</p>
+<p>La posible conservación de verdad bajo embeddings o isomorfismos, así como el teorema de sustitución <strong>de fórmulas</strong> y la invariancia bajo equivalencia alfa, no se inferirán sólo de las ecuaciones de términos: requerirán la semántica completa de fórmulas.</p>
+</section>
+<section id="cierre-matemático-del-capítulo-7" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-matemático-del-capítulo-7">7.21. Cierre matemático del Capítulo 7</h2>
+<p>Los bloques <code>M01</code> y <code>M02</code> construyen conjuntamente: estructuras y asignaciones, operaciones de actualización, evaluación única y localidad de términos, sustitución/evaluación, cambio de signaturas, reductos y expansiones, persistencia sintáctica, homomorfismos/embeddings/isomorfismos, naturalidad de la evaluación, subestructuras y generación por cierre funcional. Se han tratado expresamente las constantes y relaciones <strong>nularias</strong>, la no numerabilidad eventual de la signatura y las demostraciones de existencia en <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathrm{ZF}\)</span> sin AC.</p>
+<p>Esta salida satisface la función arquitectónica de <code>TLOG-CH07-0001</code>. La satisfacción y verdad de fórmulas de primer orden, las nociones de modelo, validez y consecuencia, así como los teoremas de invariancia semántica de fórmulas, <strong>permanecen reservados para <code>TLOG-CH08-0001</code></strong>. Tampoco se introduce una relación de derivabilidad de primer orden, que corresponde al Capítulo 9.</p>
+<pre class="text"><code>TLOG-CH07-M01 = CLOSED / PASS
+TLOG-CH07-M02 = CLOSED / PASS
+TLOG-CH07-0001 = CLOSED / PASS
+new mathematical nodes = 9
+chapter 7 nodes = 17/17 closed
+TLOG total registered/closed nodes = 114/114
+DAG = 114 nodes / 276 direct edges / acyclic PASS
+cross-treaty interfaces = 0
+formalization candidates = 34
+compiled/verified Lean = 0
+chapters closed = 8/24 (33.3% architectural)
+PART I = CLOSED / PASS
+PART II = OPEN</code></pre>
+<p><strong>Próximo capítulo:</strong> <code>TLOG-CH08-M01 — Satisfacción de fórmulas, cláusulas semánticas y existencia/unicidad de la extensión desde los átomos</code>.</p>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-06.html">← Capítulo 6</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-08.html">Capítulo 8 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 13 — Construcciones elementales de conjuntos – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-los-axiomas-a-las-operaciones-definibles" id="toc-de-los-axiomas-a-las-operaciones-definibles" class="nav-link active" data-scroll-target="#de-los-axiomas-a-las-operaciones-definibles">13.0. De los axiomas a las operaciones definibles</a></li>
+  <li><a href="#política-de-operaciones-definidas" id="toc-política-de-operaciones-definidas" class="nav-link" data-scroll-target="#política-de-operaciones-definidas">13.1. Política de operaciones definidas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00016" id="toc-tlog-cnv-00016" class="nav-link" data-scroll-target="#tlog-cnv-00016">Convención 13.1.1 — Fórmulas caracterizadoras y nombres eliminables</a></li>
+  </ul></li>
+  <li><a href="#criterio-de-unicidad-extensional" id="toc-criterio-de-unicidad-extensional" class="nav-link" data-scroll-target="#criterio-de-unicidad-extensional">13.2. Criterio de unicidad extensional</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00039" id="toc-tlog-lem-00039" class="nav-link" data-scroll-target="#tlog-lem-00039">Lema 13.2.1 — Unicidad de una descripción extensional</a></li>
+  </ul></li>
+  <li><a href="#construcción-del-par-no-ordenado" id="toc-construcción-del-par-no-ordenado" class="nav-link" data-scroll-target="#construcción-del-par-no-ordenado">13.3. Construcción del par no ordenado</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00036" id="toc-tlog-pro-00036" class="nav-link" data-scroll-target="#tlog-pro-00036">Proposición 13.3.1 — Existencia y unicidad del par</a></li>
+  </ul></li>
+  <li><a href="#notación-del-par-y-del-singleton" id="toc-notación-del-par-y-del-singleton" class="nav-link" data-scroll-target="#notación-del-par-y-del-singleton">13.4. Notación del par y del singleton</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00066" id="toc-tlog-def-00066" class="nav-link" data-scroll-target="#tlog-def-00066">Definición 13.4.1 — Par no ordenado y singleton como extensiones definicionales</a></li>
+  </ul></li>
+  <li><a href="#leyes-de-los-pares-y-singletons" id="toc-leyes-de-los-pares-y-singletons" class="nav-link" data-scroll-target="#leyes-de-los-pares-y-singletons">13.5. Leyes de los pares y singletons</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00037" id="toc-tlog-pro-00037" class="nav-link" data-scroll-target="#tlog-pro-00037">Proposición 13.5.1 — Membresía y leyes extensionales de pares</a></li>
+  </ul></li>
+  <li><a href="#existencia-y-unicidad-de-la-unión-de-una-familia" id="toc-existencia-y-unicidad-de-la-unión-de-una-familia" class="nav-link" data-scroll-target="#existencia-y-unicidad-de-la-unión-de-una-familia">13.6. Existencia y unicidad de la unión de una familia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00038" id="toc-tlog-pro-00038" class="nav-link" data-scroll-target="#tlog-pro-00038">Proposición 13.6.1 — Unión de un conjunto de conjuntos</a></li>
+  </ul></li>
+  <li><a href="#abreviación-de-unión" id="toc-abreviación-de-unión" class="nav-link" data-scroll-target="#abreviación-de-unión">13.7. Abreviación de unión</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00067" id="toc-tlog-def-00067" class="nav-link" data-scroll-target="#tlog-def-00067">Definición 13.7.1 — Macro <span class="math inline">\(\bigcup a\)</span> y su regla de expansión</a></li>
+  </ul></li>
+  <li><a href="#unión-binaria-y-leyes-básicas" id="toc-unión-binaria-y-leyes-básicas" class="nav-link" data-scroll-target="#unión-binaria-y-leyes-básicas">13.8. Unión binaria y leyes básicas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00039" id="toc-tlog-pro-00039" class="nav-link" data-scroll-target="#tlog-pro-00039">Proposición 13.8.1 — Unión binaria por par más unión</a></li>
+  </ul></li>
+  <li><a href="#existencia-y-unicidad-del-conjunto-potencia" id="toc-existencia-y-unicidad-del-conjunto-potencia" class="nav-link" data-scroll-target="#existencia-y-unicidad-del-conjunto-potencia">13.9. Existencia y unicidad del conjunto potencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00040" id="toc-tlog-pro-00040" class="nav-link" data-scroll-target="#tlog-pro-00040">Proposición 13.9.1 — Potencia de un conjunto</a></li>
+  </ul></li>
+  <li><a href="#abreviación-del-conjunto-potencia" id="toc-abreviación-del-conjunto-potencia" class="nav-link" data-scroll-target="#abreviación-del-conjunto-potencia">13.10. Abreviación del conjunto potencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00068" id="toc-tlog-def-00068" class="nav-link" data-scroll-target="#tlog-def-00068">Definición 13.10.1 — Macro <span class="math inline">\(\mathcal P(a)\)</span></a></li>
+  </ul></li>
+  <li><a href="#primeras-leyes-del-conjunto-potencia" id="toc-primeras-leyes-del-conjunto-potencia" class="nav-link" data-scroll-target="#primeras-leyes-del-conjunto-potencia">13.11. Primeras leyes del conjunto potencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00041" id="toc-tlog-pro-00041" class="nav-link" data-scroll-target="#tlog-pro-00041">Proposición 13.11.1 — Membresía, monotonía y reflexión de la inclusión</a></li>
+  </ul></li>
+  <li><a href="#separación-como-construcción-por-parámetros" id="toc-separación-como-construcción-por-parámetros" class="nav-link" data-scroll-target="#separación-como-construcción-por-parámetros">13.12. Separación como construcción por parámetros</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00069" id="toc-tlog-def-00069" class="nav-link" data-scroll-target="#tlog-def-00069">Definición 13.12.1 — Subconjunto separado por fórmula</a></li>
+  </ul></li>
+  <li><a href="#intersecciones-y-diferencias" id="toc-intersecciones-y-diferencias" class="nav-link" data-scroll-target="#intersecciones-y-diferencias">13.13. Intersecciones y diferencias</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00042" id="toc-tlog-pro-00042" class="nav-link" data-scroll-target="#tlog-pro-00042">Proposición 13.13.1 — Construcción de intersección y diferencia relativas</a></li>
+  </ul></li>
+  <li><a href="#conservatividad-para-familias-finitas-de-operaciones-definidas" id="toc-conservatividad-para-familias-finitas-de-operaciones-definidas" class="nav-link" data-scroll-target="#conservatividad-para-familias-finitas-de-operaciones-definidas">13.14. Conservatividad para familias finitas de operaciones definidas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00054" id="toc-tlog-mth-00054" class="nav-link" data-scroll-target="#tlog-mth-00054">Metateorema 13.14.1 — Eliminación finita de símbolos funcionales definibles</a></li>
+  </ul></li>
+  <li><a href="#conjuntos-finitos-generados-sin-selección" id="toc-conjuntos-finitos-generados-sin-selección" class="nav-link" data-scroll-target="#conjuntos-finitos-generados-sin-selección">13.15. Conjuntos finitos generados sin selección</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00014" id="toc-tlog-cor-00014" class="nav-link" data-scroll-target="#tlog-cor-00014">Corolario 13.15.1 — Construcción uniforme de familias finitas</a></li>
+  </ul></li>
+  <li><a href="#control-local-fuentes-y-obligaciones-pendientes" id="toc-control-local-fuentes-y-obligaciones-pendientes" class="nav-link" data-scroll-target="#control-local-fuentes-y-obligaciones-pendientes">13.16. Control local, fuentes y obligaciones pendientes</a></li>
+  <li><a href="#relaciones-definibles-y-condiciones-de-funcionalidad" id="toc-relaciones-definibles-y-condiciones-de-funcionalidad" class="nav-link" data-scroll-target="#relaciones-definibles-y-condiciones-de-funcionalidad">13.17. Relaciones definibles y condiciones de funcionalidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00017" id="toc-tlog-cnv-00017" class="nav-link" data-scroll-target="#tlog-cnv-00017">Convención 13.17.1 — Fórmulas que definen valores sobre un conjunto</a></li>
+  </ul></li>
+  <li><a href="#imagen-exacta-por-reemplazo" id="toc-imagen-exacta-por-reemplazo" class="nav-link" data-scroll-target="#imagen-exacta-por-reemplazo">13.18. Imagen exacta por reemplazo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00043" id="toc-tlog-pro-00043" class="nav-link" data-scroll-target="#tlog-pro-00043">Proposición 13.18.1 — Existencia y unicidad de la imagen funcional</a></li>
+  </ul></li>
+  <li><a href="#notación-de-imagen-y-dominio-vacío" id="toc-notación-de-imagen-y-dominio-vacío" class="nav-link" data-scroll-target="#notación-de-imagen-y-dominio-vacío">13.19. Notación de imagen y dominio vacío</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00070" id="toc-tlog-def-00070" class="nav-link" data-scroll-target="#tlog-def-00070">Definición 13.19.1 — Macro de imagen de una fórmula funcional</a></li>
+  </ul></li>
+  <li><a href="#leyes-elementales-de-la-imagen" id="toc-leyes-elementales-de-la-imagen" class="nav-link" data-scroll-target="#leyes-elementales-de-la-imagen">13.20. Leyes elementales de la imagen</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00044" id="toc-tlog-pro-00044" class="nav-link" data-scroll-target="#tlog-pro-00044">Proposición 13.20.1 — Identidad, constante y monotonía de imágenes</a></li>
+  </ul></li>
+  <li><a href="#composición-de-imágenes-funcionales" id="toc-composición-de-imágenes-funcionales" class="nav-link" data-scroll-target="#composición-de-imágenes-funcionales">13.21. Composición de imágenes funcionales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00045" id="toc-tlog-pro-00045" class="nav-link" data-scroll-target="#tlog-pro-00045">Proposición 13.21.1 — Imagen de una composición definible</a></li>
+  </ul></li>
+  <li><a href="#imágenes-de-relaciones-con-cota-preexistente" id="toc-imágenes-de-relaciones-con-cota-preexistente" class="nav-link" data-scroll-target="#imágenes-de-relaciones-con-cota-preexistente">13.22. Imágenes de relaciones con cota preexistente</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00046" id="toc-tlog-pro-00046" class="nav-link" data-scroll-target="#tlog-pro-00046">Proposición 13.22.1 — Imagen relativa de una relación no funcional</a></li>
+  </ul></li>
+  <li><a href="#dos-lecturas-de-una-intersección-de-familia" id="toc-dos-lecturas-de-una-intersección-de-familia" class="nav-link" data-scroll-target="#dos-lecturas-de-una-intersección-de-familia">13.23. Dos lecturas de una intersección de familia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00018" id="toc-tlog-cnv-00018" class="nav-link" data-scroll-target="#tlog-cnv-00018">Convención 13.23.1 — Intersección absoluta y relativa</a></li>
+  </ul></li>
+  <li><a href="#intersección-de-una-familia-no-vacía" id="toc-intersección-de-una-familia-no-vacía" class="nav-link" data-scroll-target="#intersección-de-una-familia-no-vacía">13.24. Intersección de una familia no vacía</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00047" id="toc-tlog-pro-00047" class="nav-link" data-scroll-target="#tlog-pro-00047">Proposición 13.24.1 — Existencia y unicidad de intersección no vacía</a></li>
+  </ul></li>
+  <li><a href="#notación-contextual-de-la-intersección" id="toc-notación-contextual-de-la-intersección" class="nav-link" data-scroll-target="#notación-contextual-de-la-intersección">13.25. Notación contextual de la intersección</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00071" id="toc-tlog-def-00071" class="nav-link" data-scroll-target="#tlog-def-00071">Definición 13.25.1 — Macro parcial <span class="math inline">\(\bigcap A\)</span></a></li>
+  </ul></li>
+  <li><a href="#leyes-de-intersecciones-de-familias" id="toc-leyes-de-intersecciones-de-familias" class="nav-link" data-scroll-target="#leyes-de-intersecciones-de-familias">13.26. Leyes de intersecciones de familias</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00048" id="toc-tlog-pro-00048" class="nav-link" data-scroll-target="#tlog-pro-00048">Proposición 13.26.1 — Singletons, pares y antitonicidad</a></li>
+  </ul></li>
+  <li><a href="#intersección-relativa-total" id="toc-intersección-relativa-total" class="nav-link" data-scroll-target="#intersección-relativa-total">13.27. Intersección relativa total</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00072" id="toc-tlog-def-00072" class="nav-link" data-scroll-target="#tlog-def-00072">Definición 13.27.1 — Intersección dentro de un conjunto ambiente</a></li>
+  </ul></li>
+  <li><a href="#intersección-como-separación-sobre-una-unión" id="toc-intersección-como-separación-sobre-una-unión" class="nav-link" data-scroll-target="#intersección-como-separación-sobre-una-unión">13.28. Intersección como separación sobre una unión</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00049" id="toc-tlog-pro-00049" class="nav-link" data-scroll-target="#tlog-pro-00049">Proposición 13.28.1 — Descripción sin selección sobre <span class="math inline">\(\bigcup A\)</span></a></li>
+  </ul></li>
+  <li><a href="#unión-de-una-familia-funcionalmente-indexada" id="toc-unión-de-una-familia-funcionalmente-indexada" class="nav-link" data-scroll-target="#unión-de-una-familia-funcionalmente-indexada">13.29. Unión de una familia funcionalmente indexada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00050" id="toc-tlog-pro-00050" class="nav-link" data-scroll-target="#tlog-pro-00050">Proposición 13.29.1 — Unión de imágenes por reemplazo</a></li>
+  </ul></li>
+  <li><a href="#por-qué-no-existe-la-intersección-absoluta-vacía" id="toc-por-qué-no-existe-la-intersección-absoluta-vacía" class="nav-link" data-scroll-target="#por-qué-no-existe-la-intersección-absoluta-vacía">13.30. Por qué no existe la intersección absoluta vacía</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00040" id="toc-tlog-lem-00040" class="nav-link" data-scroll-target="#tlog-lem-00040">Lema 13.30.1 — Necesidad de la condición de no vacuidad</a></li>
+  </ul></li>
+  <li><a href="#totalizaciones-definicionales-sin-pérdida-de-control" id="toc-totalizaciones-definicionales-sin-pérdida-de-control" class="nav-link" data-scroll-target="#totalizaciones-definicionales-sin-pérdida-de-control">13.31. Totalizaciones definicionales sin pérdida de control</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00055" id="toc-tlog-mth-00055" class="nav-link" data-scroll-target="#tlog-mth-00055">Metateorema 13.31.1 — Eliminación de macros funcionales condicionadas</a></li>
+  </ul></li>
+  <li><a href="#cierre-de-las-construcciones-y-frontera-arquitectónica" id="toc-cierre-de-las-construcciones-y-frontera-arquitectónica" class="nav-link" data-scroll-target="#cierre-de-las-construcciones-y-frontera-arquitectónica">13.32. Cierre de las construcciones y frontera arquitectónica</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00015" id="toc-tlog-cor-00015" class="nav-link" data-scroll-target="#tlog-cor-00015">Corolario 13.32.1 — Infraestructura conjuntista elemental obtenida en ZF objeto</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 13 — Construcciones elementales de conjuntos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-12.html">← Capítulo 12</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-14.html">Capítulo 14 →</a></p>
+<section id="de-los-axiomas-a-las-operaciones-definibles" class="level2">
+<h2 class="anchored" data-anchor-id="de-los-axiomas-a-las-operaciones-definibles">13.0. De los axiomas a las operaciones definibles</h2>
+<p>El Capítulo 12 fijó la teoría objeto <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span> sobre la firma pura <span class="math inline">\(\tau_\in\)</span>, donde sólo <span class="math inline">\(\dot\in\)</span> es símbolo extralógico primitivo. Este capítulo <strong>no amplía de manera tácita la signatura</strong>. Primero demuestra dentro de la teoría objeto la existencia y unicidad de cada conjunto, y sólo después autoriza las impresiones familiares <span class="math inline">\(\{a,b\}\)</span>, <span class="math inline">\(\bigcup a\)</span>, <span class="math inline">\(\mathcal P(a)\)</span>, <span class="math inline">\(a\cup b\)</span>, <span class="math inline">\(a\cap b\)</span> y <span class="math inline">\(a\setminus b\)</span> como abreviaciones eliminables.</p>
+<p>La metateoría <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span> continúa siendo ZF clásica sin axioma de elección. El símbolo <span class="math inline">\(\vdash\)</span> indica derivabilidad <strong>desde los axiomas objeto</strong> con el cálculo <span class="math inline">\(\mathsf H_{\tau_\in}^{=}\)</span>. Las variables y las expresiones entre llaves usadas para mostrar una relación definitoria pertenecen al metalenguaje, salvo que se explicite una extensión definicional. No se presupone ninguna interpretación estándar de un supuesto universo conjunto de todos los conjuntos.</p>
+<p><strong>Fuentes y alcance:</strong> se conservan las referencias ya registradas <code>TLOG-SRC-0002</code> (Enderton), <code>TLOG-SRC-0003</code> (Rautenberg) y <code>TLOG-SRC-00011</code> (control en línea de familias de axiomas de ZF). No se declara nuevo cotejo monográfico; todas las demostraciones del microtramo son reconstrucciones internas a partir de los nodos cerrados de los capítulos 9–12.</p>
+</section>
+<section id="política-de-operaciones-definidas" class="level2">
+<h2 class="anchored" data-anchor-id="política-de-operaciones-definidas">13.1. Política de operaciones definidas</h2>
+<section id="tlog-cnv-00016" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00016">Convención 13.1.1 — Fórmulas caracterizadoras y nombres eliminables</h3>
+<p>Para un símbolo matemático <span class="math inline">\(\mathscr O\)</span> que aún <strong>no</strong> pertenezca a <span class="math inline">\(\tau_\in\)</span>, una expresión como <span class="math inline">\(c=\mathscr O(\bar a)\)</span> significa inicialmente la fórmula objeto <span class="math inline">\(\Delta_{\mathscr O}(c,\bar a)\)</span> en el lenguaje de pura pertenencia. Sólo después de verificar</p>
+<p><span class="math display">\[
+\mathsf{ZF}_{\mathrm{obj}}\vdash
+\forall\bar a\,\exists!c\,\Delta_{\mathscr O}(c,\bar a)
+\]</span></p>
+<p>se autoriza <span class="math inline">\(\mathscr O(\bar a)\)</span> como <strong>macro de término</strong> en una extensión definicional cuyo símbolo funcional nuevo queda caracterizado por <span class="math inline">\(\Delta_{\mathscr O}\)</span>. Una igualdad que contenga esa macro es la traducción abreviada de una fórmula con testigos únicos y cuantificadores frescos, no una nueva fórmula primitiva de <span class="math inline">\(\tau_\in\)</span>. Se eligen los nombres auxiliares por frescura respecto de todos los parámetros, conforme a §§6.19–6.32 y §12.21; los casos con variables libres en <span class="math inline">\(\bar a\)</span> no autorizan captura por cuantificadores nuevos. La eliminación simultánea y la conservatividad finita se demostrarán en §13.14.</p>
+<p>En esta sección <span class="math inline">\(c=\mathscr O(\bar a)\)</span> utiliza el igual de lectura matemática; las fórmulas objeto desplegadas escriben <span class="math inline">\(c\doteq d\)</span>. Las definiciones no requieren un conjunto universal de objetos ni una función global externa cuyo dominio sea una clase propia.</p>
+</section>
+</section>
+<section id="criterio-de-unicidad-extensional" class="level2">
+<h2 class="anchored" data-anchor-id="criterio-de-unicidad-extensional">13.2. Criterio de unicidad extensional</h2>
+<section id="tlog-lem-00039" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00039">Lema 13.2.1 — Unicidad de una descripción extensional</h3>
+<p>Sea <span class="math inline">\(\theta(u,\bar a)\)</span> una fórmula de <span class="math inline">\(\tau_\in\)</span>, con variables libres entre <span class="math inline">\(u,\bar a\)</span>, y sea <span class="math inline">\(c\)</span> un nombre nuevo respecto de <span class="math inline">\(\theta\)</span>. Si de los axiomas objeto se deduce</p>
+<p><span class="math display">\[
+\forall\bar a\,\exists c\,\forall u\,[u\in c\leftrightarrow\theta(u,\bar a)],
+\]</span></p>
+<p>entonces también se deduce</p>
+<p><span class="math display">\[
+\boxed{\forall\bar a\,\exists!c\,\forall u\,[u\in c\leftrightarrow\theta(u,\bar a)].}
+\]</span></p>
+<p><strong>Demostración objeto, para cada <span class="math inline">\(\theta\)</span> fija.</strong> Supóngase que <span class="math inline">\(c,d\)</span> cumplen sus respectivas caracterizaciones con los mismos parámetros. Por eliminación de <span class="math inline">\(\leftrightarrow\)</span> y transitividad proposicional, para todo <span class="math inline">\(u\)</span> se obtiene <span class="math inline">\(u\in c\leftrightarrow u\in d\)</span>. El parámetro <span class="math inline">\(u\)</span> no permanece libre en ninguna premisa extra que impida generalizar el enunciado <strong>dentro del condicional</strong> <span class="math inline">\([\Delta(c)\land\Delta(d)]\to\forall u(u\in c\leftrightarrow u\in d)\)</span>. Extensionalidad implica <span class="math inline">\(c\doteq d\)</span>. El resultado se internaliza con la implicación <span class="math inline">\(\Delta(c)\to\forall d(\Delta(d)\to d\doteq c)\)</span> y se combina con el testigo existencial supuesto. El uso del criterio no proporciona existencia por sí solo. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="construcción-del-par-no-ordenado" class="level2">
+<h2 class="anchored" data-anchor-id="construcción-del-par-no-ordenado">13.3. Construcción del par no ordenado</h2>
+<section id="tlog-pro-00036" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00036">Proposición 13.3.1 — Existencia y unicidad del par</h3>
+<p><span class="math display">\[
+\boxed{\mathsf{ZF}_{\mathrm{obj}}\vdash\forall a\forall b\exists!c\forall u\,[u\in c\leftrightarrow(u\doteq a\lor u\doteq b)].}
+\]</span></p>
+<p><strong>Demostración.</strong> Particularizamos el axioma de pares (§12.5) a <span class="math inline">\(a,b\)</span>, obteniendo existencia de un <span class="math inline">\(c\)</span> cuya pertenencia coincide con la disyunción indicada. §13.2 aplica con <span class="math inline">\(\theta(u,a,b)\equiv(u\doteq a\lor u\doteq b)\)</span>, sin apariciones libres del testigo. Extensionalidad proporciona la unicidad. Todos los cuantificadores se introducen o particularizan con las condiciones de §12.30; no interviene elección. <span class="math inline">\(\square\)</span></p>
+<p>El axioma de pares no declara un constructor <span class="math inline">\(\{\cdot,\cdot\}\)</span> como primitivo: sólo afirma existencia de su valor para cada pareja de parámetros objeto.</p>
+</section>
+</section>
+<section id="notación-del-par-y-del-singleton" class="level2">
+<h2 class="anchored" data-anchor-id="notación-del-par-y-del-singleton">13.4. Notación del par y del singleton</h2>
+<section id="tlog-def-00066" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00066">Definición 13.4.1 — Par no ordenado y singleton como extensiones definicionales</h3>
+<p>Autorizamos la impresión <span class="math inline">\(\{a,b\}\)</span> para el único objeto <span class="math inline">\(c\)</span> que satisface</p>
+<p><span class="math display">\[
+\Delta_{\mathrm{par}}(c,a,b):\equiv\forall u\,[u\in c\leftrightarrow(u\doteq a\lor u\doteq b)].
+\]</span></p>
+<p>El <strong>singleton</strong> es la abreviación <span class="math inline">\(\{a\}:=\{a,a\}\)</span>, cuyo gráfico se reduce por lógica clásica a <span class="math inline">\(\forall u\,[u\in c\leftrightarrow u\doteq a]\)</span>. El símbolo <span class="math inline">\(\{a,b\}\)</span> no se incorpora a <span class="math inline">\(F_2\)</span> de la firma primitiva; si se quiere un cálculo con términos extendidos, la admisibilidad de la incorporación de una función binaria nueva se fundamenta en la unicidad de §13.3 y en la conservatividad del §13.14. No se requieren simultáneamente dos elecciones de objetos para definir el singleton.</p>
+</section>
+</section>
+<section id="leyes-de-los-pares-y-singletons" class="level2">
+<h2 class="anchored" data-anchor-id="leyes-de-los-pares-y-singletons">13.5. Leyes de los pares y singletons</h2>
+<section id="tlog-pro-00037" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00037">Proposición 13.5.1 — Membresía y leyes extensionales de pares</h3>
+<p>Las siguientes son abreviaciones eliminables de teoremas de <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+u\in\{a,b\}&amp;\leftrightarrow(u\doteq a\lor u\doteq b),\\
+u\in\{a\}&amp;\leftrightarrow u\doteq a,\\
+\{a,b\}&amp;=\{b,a\},\\
+\{a\}=\{b\}&amp;\leftrightarrow a\doteq b,\\
+\{a,b\}=\{a\}&amp;\leftrightarrow b\doteq a.
+\end{aligned}
+\]</span></p>
+<p><strong>Demostración.</strong> Las dos primeras líneas son la propiedad caracterizadora de §13.4. Para la conmutatividad, la disyunción es simétrica: <span class="math inline">\((u\doteq a\lor u\doteq b)\leftrightarrow(u\doteq b\lor u\doteq a)\)</span>. Extensionalidad equipara los testigos únicos. Si <span class="math inline">\(\{a\}=\{b\}\)</span>, entonces <span class="math inline">\(a\in\{a\}\)</span>; por sustitución de iguales, <span class="math inline">\(a\in\{b\}\)</span>, y la segunda línea entrega <span class="math inline">\(a\doteq b\)</span>. La implicación opuesta es congruencia lógica de igualdad. Si <span class="math inline">\(\{a,b\}=\{a\}\)</span>, entonces <span class="math inline">\(b\in\{a,b\}\)</span> y, al reemplazar por el igual, <span class="math inline">\(b\in\{a\}\)</span>, de donde <span class="math inline">\(b\doteq a\)</span>; la recíproca se sigue al comparar membresía de ambas descripciones. Las pruebas con macros se expanden a fórmulas puras con testigos únicos antes de contarse como derivaciones objeto. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="existencia-y-unicidad-de-la-unión-de-una-familia" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-y-unicidad-de-la-unión-de-una-familia">13.6. Existencia y unicidad de la unión de una familia</h2>
+<section id="tlog-pro-00038" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00038">Proposición 13.6.1 — Unión de un conjunto de conjuntos</h3>
+<p><span class="math display">\[
+\boxed{\mathsf{ZF}_{\mathrm{obj}}\vdash\forall a\exists!b\forall u\,[u\in b\leftrightarrow\exists v(v\in a\land u\in v)].}
+\]</span></p>
+<p><strong>Demostración.</strong> El axioma de unión de §12.6 suministra <span class="math inline">\(b\)</span> para cada <span class="math inline">\(a\)</span>. Para dos testigos <span class="math inline">\(b_1,b_2\)</span>, el mismo bicondicional implica <span class="math inline">\(\forall u(u\in b_1\leftrightarrow u\in b_2)\)</span> y extensionalidad deduce <span class="math inline">\(b_1\doteq b_2\)</span>. La fórmula definitoria no contiene el nombre del testigo libre en la matriz de pertenencia; las variables ligadas <span class="math inline">\(u,v\)</span> se eligen distintas de los parámetros. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="abreviación-de-unión" class="level2">
+<h2 class="anchored" data-anchor-id="abreviación-de-unión">13.7. Abreviación de unión</h2>
+<section id="tlog-def-00067" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00067">Definición 13.7.1 — Macro <span class="math inline">\(\bigcup a\)</span> y su regla de expansión</h3>
+<p>Autorizamos la expresión <span class="math inline">\(\bigcup a\)</span> por la propiedad definitoria</p>
+<p><span class="math display">\[
+\Delta_{\bigcup}(b,a):\equiv\forall u\,[u\in b\leftrightarrow\exists v\,(v\in a\land u\in v)].
+\]</span></p>
+<p>En toda fórmula que contenga <span class="math inline">\(\bigcup a\)</span> se lee un símbolo funcional <strong>de una extensión definicional</strong>, no un constructor primitivo de términos de <span class="math inline">\(\tau_\in\)</span>. Su unicidad proviene de §13.6; la notación no añade una elección de representante, pues la propiedad caracteriza exactamente un objeto para cada <span class="math inline">\(a\)</span>.</p>
+</section>
+</section>
+<section id="unión-binaria-y-leyes-básicas" class="level2">
+<h2 class="anchored" data-anchor-id="unión-binaria-y-leyes-básicas">13.8. Unión binaria y leyes básicas</h2>
+<section id="tlog-pro-00039" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00039">Proposición 13.8.1 — Unión binaria por par más unión</h3>
+<p>La impresión binaria <span class="math inline">\(a\cup b:=\bigcup\{a,b\}\)</span> es una abreviación compuesta. Cumple</p>
+<p><span class="math display">\[
+\boxed{u\in(a\cup b)\leftrightarrow(u\in a\lor u\in b).}
+\]</span></p>
+<p>Además:</p>
+<p><span class="math display">\[
+\begin{aligned}
+a\cup\varnothing&amp;=a,&amp;a\cup b&amp;=b\cup a,\\
+(a\cup b)\cup c&amp;=a\cup(b\cup c),&amp;
+\bigcup\varnothing&amp;=\varnothing,&amp;\bigcup\{a\}&amp;=a.
+\end{aligned}
+\]</span></p>
+<p><strong>Demostración.</strong> Se despliega primero la macro de unión:</p>
+<p><span class="math display">\[
+u\in\bigcup\{a,b\}\iff\exists v\,[(v\doteq a\lor v\doteq b)\land u\in v].
+\]</span></p>
+<p>La eliminación del existencial, el principio de sustitución de iguales y la introducción existencial prueban que equivale a <span class="math inline">\(u\in a\lor u\in b\)</span>. Para <span class="math inline">\(a\cup\varnothing=a\)</span>, la equivalencia se reduce a <span class="math inline">\(u\in a\lor\bot\iff u\in a\)</span>; extensionalidad concluye. Conmutatividad y asociatividad se obtienen comparando respectivamente <span class="math inline">\(A\lor B\)</span> con <span class="math inline">\(B\lor A\)</span> y <span class="math inline">\((A\lor B)\lor C\)</span> con <span class="math inline">\(A\lor(B\lor C)\)</span>. Si <span class="math inline">\(u\in\bigcup\varnothing\)</span>, habría <span class="math inline">\(v\in\varnothing\)</span>, contradicción; por tanto la unión carece de elementos y coincide con el vacío único. Finalmente, <span class="math inline">\(u\in\bigcup\{a\}\iff\exists v(v\doteq a\land u\in v)\iff u\in a\)</span>. En todos los casos el principio final es extensionalidad, no la sustitución de una igualdad metateórica en lugar de una fórmula objeto. <span class="math inline">\(\square\)</span></p>
+<p><strong>Advertencia:</strong> la unión binaria no es un axioma adicional ni requiere reemplazo. Las propiedades se derivan sólo de pares, unión, extensionalidad y la existencia del vacío.</p>
+</section>
+</section>
+<section id="existencia-y-unicidad-del-conjunto-potencia" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-y-unicidad-del-conjunto-potencia">13.9. Existencia y unicidad del conjunto potencia</h2>
+<section id="tlog-pro-00040" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00040">Proposición 13.9.1 — Potencia de un conjunto</h3>
+<p>Para la macro de inclusión de §12.3,</p>
+<p><span class="math display">\[
+\boxed{\mathsf{ZF}_{\mathrm{obj}}\vdash\forall a\exists!b\forall u\,[u\in b\leftrightarrow u\subseteq a].}
+\]</span></p>
+<p><strong>Demostración.</strong> §12.7 da para cada <span class="math inline">\(a\)</span> un conjunto <span class="math inline">\(b\)</span> con <span class="math inline">\(u\in b\leftrightarrow\forall v(v\in u\to v\in a)\)</span>. Dicha fórmula es precisamente la expansión de <span class="math inline">\(u\subseteq a\)</span>; la unicidad del testigo sigue de §13.2. En la escritura primitiva se sustituye <span class="math inline">\(u\subseteq a\)</span> por su fórmula con <span class="math inline">\(v\)</span> fresca; la inclusión no se agrega a <span class="math inline">\(R_2\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="abreviación-del-conjunto-potencia" class="level2">
+<h2 class="anchored" data-anchor-id="abreviación-del-conjunto-potencia">13.10. Abreviación del conjunto potencia</h2>
+<section id="tlog-def-00068" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00068">Definición 13.10.1 — Macro <span class="math inline">\(\mathcal P(a)\)</span></h3>
+<p>Se admite <span class="math inline">\(\mathcal P(a)\)</span> como el único <span class="math inline">\(b\)</span> que satisface</p>
+<p><span class="math display">\[
+\Delta_{\mathcal P}(b,a):\equiv\forall u\,[u\in b\leftrightarrow\forall v(v\in u\to v\in a)].
+\]</span></p>
+<p>Cada ocurrencia de <span class="math inline">\(\mathcal P(a)\)</span> en una igualdad o fórmula de pertenencia expresa una <strong>extensión definicional</strong> eliminable. La notación <span class="math inline">\(\mathcal P\)</span> no denota una función objeto primitiva ni una función metateórica con dominio igual a una supuesta clase universal tratada como conjunto.</p>
+</section>
+</section>
+<section id="primeras-leyes-del-conjunto-potencia" class="level2">
+<h2 class="anchored" data-anchor-id="primeras-leyes-del-conjunto-potencia">13.11. Primeras leyes del conjunto potencia</h2>
+<section id="tlog-pro-00041" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00041">Proposición 13.11.1 — Membresía, monotonía y reflexión de la inclusión</h3>
+<p>Las expresiones siguientes se leen después de expansión de sus macros:</p>
+<p><span class="math display">\[
+\begin{aligned}
+u\in\mathcal P(a)&amp;\leftrightarrow u\subseteq a,\\
+\varnothing\in\mathcal P(a),&amp;\qquad a\in\mathcal P(a),\\
+a\subseteq b&amp;\Longrightarrow\mathcal P(a)\subseteq\mathcal P(b),\\
+\mathcal P(a)\subseteq\mathcal P(b)&amp;\Longrightarrow a\subseteq b,\\
+\mathcal P(a)=\mathcal P(b)&amp;\Longleftrightarrow a\doteq b,\\
+\mathcal P(\varnothing)&amp;=\{\varnothing\}.
+\end{aligned}
+\]</span></p>
+<p><strong>Demostración.</strong> La primera línea es definitoria. La fórmula <span class="math inline">\(\varnothing\subseteq a\)</span> es válida porque <span class="math inline">\(\varnothing\)</span> no tiene miembros, y <span class="math inline">\(a\subseteq a\)</span> por reflexividad lógica; de ahí la segunda. Si <span class="math inline">\(a\subseteq b\)</span>, todo miembro de cualquier <span class="math inline">\(u\subseteq a\)</span> pertenece a <span class="math inline">\(b\)</span>, por lo que <span class="math inline">\(u\subseteq b\)</span> y, por cuantificación universal, <span class="math inline">\(\mathcal P(a)\subseteq\mathcal P(b)\)</span>. Para la reflexión, <span class="math inline">\(a\in\mathcal P(a)\)</span>; si <span class="math inline">\(\mathcal P(a)\subseteq\mathcal P(b)\)</span>, entonces <span class="math inline">\(a\in\mathcal P(b)\)</span>, lo que significa <span class="math inline">\(a\subseteq b\)</span>. La igualdad de potencias implica ambas inclusiones de sus argumentos y extensionalidad produce <span class="math inline">\(a\doteq b\)</span>; la recíproca es sustitución de iguales. Finalmente, si <span class="math inline">\(u\in\mathcal P(\varnothing)\)</span>, entonces <span class="math inline">\(u\subseteq\varnothing\)</span>, de donde <span class="math inline">\(u\)</span> carece de miembros y <span class="math inline">\(u=\varnothing\)</span> por extensionalidad; la dirección inversa se sigue de la vacuidad de la inclusión. La descripción resultante coincide con el singleton de <span class="math inline">\(\varnothing\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>No se infiere que la aplicación potencia sea sobreyectiva, ni se introduce cardinalidad o el teorema de Cantor en este microtramo.</p>
+</section>
+</section>
+<section id="separación-como-construcción-por-parámetros" class="level2">
+<h2 class="anchored" data-anchor-id="separación-como-construcción-por-parámetros">13.12. Separación como construcción por parámetros</h2>
+<section id="tlog-def-00069" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00069">Definición 13.12.1 — Subconjunto separado por fórmula</h3>
+<p>Para cada fórmula fija <span class="math inline">\(\theta(u,a,\bar p)\in\operatorname{Fm}_{\tau_\in}\)</span>, se autoriza la notación esquemática</p>
+<p><span class="math display">\[
+\{u\in a:\theta(u,a,\bar p)\}
+\]</span></p>
+<p>como nombre eliminable del único <span class="math inline">\(b\)</span> que satisface</p>
+<p><span class="math display">\[
+\Delta_{\mathrm{sep},\theta}(b,a,\bar p):\equiv\forall u\,[u\in b\leftrightarrow(u\in a\land\theta(u,a,\bar p))].
+\]</span></p>
+<p>La <strong>existencia</strong> de este <span class="math inline">\(b\)</span> para cada valor de <span class="math inline">\(a,\bar p\)</span> es una instancia cerrada del esquema de separación (§12.9), particularizada con condiciones de frescura (§12.30); su <strong>unicidad</strong> se prueba por §12.31. Al imprimir un cuantificador cuyo nombre colisione con un vinculante de <span class="math inline">\(\theta\)</span>, se aplica la equivalencia alfa de §12.21 antes de insertarlo. No hay una operación objeto que tome «todas las fórmulas» como argumentos: <span class="math inline">\(\theta\)</span> es un índice <strong>metateórico</strong> del esquema, no una variable objeto.</p>
+<p>No se permite escribir <span class="math inline">\(\{u:\theta(u)\}\)</span> sin un conjunto ambiente demostrado. En particular, esta notación no revive la comprensión irrestricta refutada en §12.16.</p>
+</section>
+</section>
+<section id="intersecciones-y-diferencias" class="level2">
+<h2 class="anchored" data-anchor-id="intersecciones-y-diferencias">13.13. Intersecciones y diferencias</h2>
+<section id="tlog-pro-00042" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00042">Proposición 13.13.1 — Construcción de intersección y diferencia relativas</h3>
+<p>Tomando <span class="math inline">\(\theta(u,a,b):\equiv u\in b\)</span> y <span class="math inline">\(\chi(u,a,b):\equiv\neg(u\in b)\)</span> en §13.12, obtenemos, para cualesquiera <span class="math inline">\(a,b\)</span>, los conjuntos <span class="math inline">\(a\cap b\)</span> y <span class="math inline">\(a\setminus b\)</span>, caracterizados por</p>
+<p><span class="math display">\[
+\boxed{\begin{aligned}
+u\in(a\cap b)&amp;\leftrightarrow(u\in a\land u\in b),\\
+u\in(a\setminus b)&amp;\leftrightarrow(u\in a\land\neg(u\in b)).
+\end{aligned}}
+\]</span></p>
+<p>Derivamos asimismo</p>
+<p><span class="math display">\[
+\begin{aligned}
+a\cap b &amp;= b\cap a,\\
+a\cap\varnothing &amp;=\varnothing,\\
+a\setminus a&amp;=\varnothing,\\
+a\cap(b\cup c)&amp;=(a\cap b)\cup(a\cap c).
+\end{aligned}
+\]</span></p>
+<p><strong>Demostración.</strong> Separación garantiza existencia de cada testigo con el parámetro <span class="math inline">\(b\)</span> libre en la matriz inicial y universalmente cerrado después. §12.31 garantiza unicidad; en consecuencia se autorizan las macros <span class="math inline">\(a\cap b\)</span>, <span class="math inline">\(a\setminus b\)</span>. Sus cláusulas de pertenencia son exactamente las instancias empleadas. En la primera ley, <span class="math inline">\(A\land B\)</span> es conmutativo. Para las dos leyes del vacío, <span class="math inline">\(u\in\varnothing\)</span> es siempre falso, y <span class="math inline">\(u\in a\land\neg(u\in a)\)</span> es contradictorio; extensionalidad iguala ambos resultados con <span class="math inline">\(\varnothing\)</span>. Para la distributividad, desplegamos unión por §13.8 y separación por las dos cláusulas precedentes: ambos lados tienen como condición de pertenencia <span class="math inline">\(u\in a\land(u\in b\lor u\in c)\)</span>, que es proposicionalmente equivalente a <span class="math inline">\((u\in a\land u\in b)\lor(u\in a\land u\in c)\)</span>. Extensionalidad concluye. Las aparentes igualdades entre expresiones construidas se traducen por sus gráficos funcionales antes de invocar las reglas de primer orden. <span class="math inline">\(\square\)</span></p>
+<p><strong>Frontera:</strong> la intersección <span class="math inline">\(\bigcap A\)</span> de una familia arbitraria y el complemento absoluto no se introducen sin precisar el conjunto ambiente y la hipótesis de no vacuidad cuando sea necesaria.</p>
+</section>
+</section>
+<section id="conservatividad-para-familias-finitas-de-operaciones-definidas" class="level2">
+<h2 class="anchored" data-anchor-id="conservatividad-para-familias-finitas-de-operaciones-definidas">13.14. Conservatividad para familias finitas de operaciones definidas</h2>
+<section id="tlog-mth-00054" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00054">Metateorema 13.14.1 — Eliminación finita de símbolos funcionales definibles</h3>
+<p>Sea <span class="math inline">\(L_0=\tau_\in\)</span>, <span class="math inline">\(T_0=\operatorname{Ax}_{\mathsf{ZF}}\)</span>, y una <strong>sucesión finita</strong> de expansiones <span class="math inline">\(L_0\subset L_1\subset\cdots\subset L_m\)</span>, en la cual el paso <span class="math inline">\(i+1\)</span> añade un símbolo funcional nuevo <span class="math inline">\(f_i\)</span> de aridad finita <span class="math inline">\(k_i\)</span>, junto a la única sentencia de definición</p>
+<p><span class="math display">\[
+\forall\bar x\,\Delta_i(f_i(\bar x),\bar x),
+\]</span></p>
+<p>con <span class="math inline">\(\Delta_i(y,\bar x)\)</span> fórmula de <span class="math inline">\(L_i\)</span> y prueba previa <span class="math inline">\(T_i\vdash\forall\bar x\exists!y\,\Delta_i(y,\bar x)\)</span>. Aquí <span class="math inline">\(k_i=0\)</span> está permitido y la secuencia de definiciones sólo utiliza símbolos antiguos o de <strong>pasos anteriores</strong>. Entonces:</p>
+<ol type="1">
+<li>todo modelo de <span class="math inline">\(T_0\)</span> admite una <strong>única expansión sucesiva</strong> a modelo de <span class="math inline">\(T_m\)</span>;</li>
+<li>si <span class="math inline">\(\varphi\in\operatorname{Fm}_{L_0}\)</span>, entonces <span class="math display">\[
+\boxed{T_m\vdash_{\mathsf H_{L_m}^{=}}\varphi\iff T_0\vdash_{\mathsf H_{L_0}^{=}}\varphi;}
+\]</span></li>
+<li>toda fórmula con los nuevos símbolos tiene una <strong>traducción definicional</strong> a una fórmula del lenguaje original, equivalente en las expansiones que satisfacen sus axiomas de definición.</li>
+</ol>
+<p><strong>Demostración metateórica.</strong> Fijada una estructura <span class="math inline">\(\mathfrak A_i\models T_i\)</span>, la corrección de §10.7 convierte <span class="math inline">\(T_i\vdash\forall\bar x\exists!y\Delta_i(y,\bar x)\)</span> en la existencia, para cada <span class="math inline">\(\bar a\in A^{k_i}\)</span>, de un único <span class="math inline">\(b\in A\)</span> que verifica <span class="math inline">\(\Delta_i(b,\bar a)\)</span>. Por separación y reemplazo <strong>en la metateoría externa</strong> sobre el conjunto <span class="math inline">\(A^{k_i}\)</span>, la gráfica <span class="math inline">\(\{(\bar a,b):\mathfrak A_i\models\Delta_i(b,\bar a)\}\)</span> constituye una función total y única; no se requiere elección. Se interpreta <span class="math inline">\(f_i\)</span> por esa función. Si <span class="math inline">\(k_i=0\)</span>, la gráfica tiene dominio <span class="math inline">\(A^0=\{()\}\)</span> y selecciona el único valor obligado. La recursión <strong>finita</strong> de <span class="math inline">\(i=0\)</span> a <span class="math inline">\(m\)</span> genera la expansión única.</p>
+<p>Para las consecuencias antiguas, si <span class="math inline">\(T_0\nvdash\varphi\)</span> y <span class="math inline">\(\varphi\)</span> es una sentencia, entonces <span class="math inline">\(T_0\cup\{\neg\varphi\}\)</span> es consistente por las propiedades clásicas del cálculo. Puesto que <span class="math inline">\(L_0=\tau_\in\)</span> es finito (y por tanto numerable), §11.10 entrega un modelo <span class="math inline">\(\mathfrak A_0\)</span> de esas premisas en la metateoría ZF. La expansión sucesiva anterior produce <span class="math inline">\(\mathfrak A_m\models T_m\cup\{\neg\varphi\}\)</span>. Corrección impide <span class="math inline">\(T_m\vdash\varphi\)</span>. La otra implicación se obtiene transportando las pruebas originales a la signatura ampliada. Si <span class="math inline">\(\varphi\)</span> es <strong>abierta</strong>, se pasa primero a su clausura universal desde las premisas sentenciales de <span class="math inline">\(T_m\)</span>, aplica el caso sentencial y luego se particulariza; esto controla las variables libres. La demostración vale asimismo si <span class="math inline">\(T_0\)</span> es inconsistente: en ese caso la dirección nueva-a-antigua resulta trivial, aunque no existe modelo inicial.</p>
+<p>Finalmente se elimina cada término ampliado por <strong>traducción de su gráfica</strong>: para una variable <span class="math inline">\(x\)</span>, el gráfico es <span class="math inline">\(y\doteq x\)</span>; para <span class="math inline">\(f_i(t_1,\ldots,t_k)\)</span>, se introducen nombres testigo frescos <span class="math inline">\(y_1,\ldots,y_k\)</span> para las traducciones de los sub-términos y se agrega <span class="math inline">\(\Delta_i(y,\bar y)\)</span>; para una fórmula atómica se reemplazan todos sus términos por estos gráficos y se cuantifican sus valores, recursivamente para las conectivas y los cuantificadores de la fórmula. La unicidad de cada gráfico demuestra por inducción que la traducción preserva satisfacción en toda expansión correspondiente, y que los vinculantes originales no capturan los nombres auxiliares. Se eliminan después los símbolos añadidos <strong>en orden inverso</strong> de introducción, porque la fórmula definitoria de cada uno sólo usa el lenguaje disponible previamente. <span class="math inline">\(\square\)</span></p>
+<p><strong>Aplicación.</strong> Las operaciones <span class="math inline">\(\{a,b\}\)</span>, <span class="math inline">\(\bigcup a\)</span>, <span class="math inline">\(\mathcal P(a)\)</span>, el vacío nombrado y las dos operaciones <span class="math inline">\(a\cap b,a\setminus b\)</span> se pueden introducir en cualquier <strong>orden finito de dependencias</strong> respetado por sus definiciones. La separación <span class="math inline">\(\{u\in a:\theta(u,a,\bar p)\}\)</span> es un <em>esquema de macros indexadas por fórmulas</em>; no se interpreta como una única función objeto cuyo argumento fuera el código de una fórmula, a menos que dicha codificación y su semántica se desarrollen expresamente. No se introduce AC, BPI ni una pretensión de verdad absoluta de <span class="math inline">\(T_0\)</span>.</p>
+</section>
+</section>
+<section id="conjuntos-finitos-generados-sin-selección" class="level2">
+<h2 class="anchored" data-anchor-id="conjuntos-finitos-generados-sin-selección">13.15. Conjuntos finitos generados sin selección</h2>
+<section id="tlog-cor-00014" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00014">Corolario 13.15.1 — Construcción uniforme de familias finitas</h3>
+<p>Para cada natural <strong>metateórico fijo</strong> <span class="math inline">\(n\)</span> existe una expresión definicional eliminable <span class="math inline">\(\{a_0,\ldots,a_{n-1}\}\)</span> con la propiedad de pertenencia</p>
+<p><span class="math display">\[
+\boxed{u\in\{a_0,\ldots,a_{n-1}\}\ \leftrightarrow\ \bigvee_{i&lt;n}(u\doteq a_i).}
+\]</span></p>
+<p>Para <span class="math inline">\(n=0\)</span> la disyunción vacía se interpreta como falsedad y la expresión como el conjunto vacío; para <span class="math inline">\(n+1\)</span>, se define recursivamente <span class="math inline">\(F_{n+1}=F_n\cup\{a_n\}\)</span>. La existencia del vacío procede de §12.26; el paso sucesor utiliza §13.4 y §13.8. La inducción <strong>externa sobre un entero fijo</strong> verifica que la cláusula de pertenencia resultante es la disyunción finita escrita; la unicidad se debe a extensionalidad. No se elige simultáneamente un testigo entre múltiples opciones: cada conjunto está determinado de modo único. Si se desea una expresión de <span class="math inline">\(\tau_\in\)</span> sin llaves, se eliminan sus macros en el orden finito de construcción mediante §13.14. <span class="math inline">\(\square\)</span></p>
+<p>No se afirma aquí un <strong>teorema objeto uniforme</strong> que cuantifique sobre un natural <span class="math inline">\(n\)</span>: la codificación interna de naturales, secuencias y recursión objeto pertenece al Capítulo 16. El corolario es una <strong>familia metateórica de resultados objeto</strong>, una para cada <span class="math inline">\(n\)</span> fijado.</p>
+</section>
+</section>
+<section id="control-local-fuentes-y-obligaciones-pendientes" class="level2">
+<h2 class="anchored" data-anchor-id="control-local-fuentes-y-obligaciones-pendientes">13.16. Control local, fuentes y obligaciones pendientes</h2>
+<p>El microtramo <code>TLOG-CH13-M01</code> cierra 15 nodos matemáticos. Se han construido pares y singletons, unión general y binaria, conjunto potencia y subconjuntos por separación, con pruebas objeto de existencia/unicidad y justificación metateórica de las macros. La equivalencia entre grafos y notaciones extendidas es finita y no convierte una función definible sobre conjuntos en un símbolo primitivo del lenguaje de pertenencia.</p>
+<p>La teoría objeto <strong>no</strong> ha demostrado su propia consistencia. Los principios de existencia usados son únicamente las instancias axiomáticas correspondientes; las funciones y clases metateóricas se construyen sobre <strong>conjuntos dados</strong>. Se mantiene la reserva BPI para compacidad en signaturas irrestrictas, aunque aquí se utiliza únicamente el lenguaje numerable <span class="math inline">\(\tau_\in\)</span>.</p>
+<p>Quedan abiertas para <code>CH13-M02</code> las imágenes por reemplazo, la intersección de familias no vacías, el control de separación con condiciones definibles de dos o más parámetros, diferencias y otras leyes pertinentes, y la auditoría de cierre del capítulo. No se activan interfaces intertratados, no se declara Lean compilado, y la publicación web permanece pendiente.</p>
+<pre class="text"><code>TLOG-CH13-M01 = CLOSED / MATHEMATICAL-QA-PASS / DRIVE-READBACK-PASS
+TLOG-CH13-0001 = PARTIAL-CLOSURE / NOT CLOSED
+PART III = OPEN
+CHAPTERS CLOSED = 13/24
+PARTS CLOSED = 2/5
+LEAN VERIFIED = 0
+PUBLICATION = NOT PUBLISHED</code></pre>
+</section>
+<section id="relaciones-definibles-y-condiciones-de-funcionalidad" class="level2">
+<h2 class="anchored" data-anchor-id="relaciones-definibles-y-condiciones-de-funcionalidad">13.17. Relaciones definibles y condiciones de funcionalidad</h2>
+<section id="tlog-cnv-00017" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00017">Convención 13.17.1 — Fórmulas que definen valores sobre un conjunto</h3>
+<p>Sea <span class="math inline">\(\Theta(x,y,\bar p)\in\operatorname{Fm}_{\tau_\in}\)</span> una fórmula <strong>fija</strong>, con variables libres sólo entre <span class="math inline">\(x,y,\bar p\)</span>. Las listas de parámetros son finitas; los nombres de todos los testigos y de sus vinculantes se normalizan por equivalencia alfa antes de instanciar axiomas. Para el conjunto objeto <span class="math inline">\(a\)</span>, llamamos <strong>condición funcional restringida</strong> a la fórmula</p>
+<p><span class="math display">\[
+F_\Theta(a,\bar p):\equiv \forall x\,[x\in a\to\exists!y\,\Theta(x,y,\bar p)].
+\]</span></p>
+<p>Esta fórmula no cuantifica sobre <span class="math inline">\(\Theta\)</span>: para <strong>cada</strong> matriz sintáctica fija se obtiene una instancia del metalenguaje. No es requisito que la relación sea funcional fuera de <span class="math inline">\(a\)</span>, ni se supone que <span class="math inline">\(\Theta\)</span> sea el gráfico de una función formal previamente construida. El símbolo <span class="math inline">\(\exists!\)</span> se expande como en §12.3. Conviene distinguir <span class="math inline">\(F_\Theta\)</span> de la mera cota <span class="math inline">\(\forall x\in a\forall y(\Theta(x,y)\to y\in b)\)</span>: la segunda <strong>no implica</strong> funcionalidad ni existencia de valores.</p>
+</section>
+</section>
+<section id="imagen-exacta-por-reemplazo" class="level2">
+<h2 class="anchored" data-anchor-id="imagen-exacta-por-reemplazo">13.18. Imagen exacta por reemplazo</h2>
+<section id="tlog-pro-00043" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00043">Proposición 13.18.1 — Existencia y unicidad de la imagen funcional</h3>
+<p>Para toda fórmula fija <span class="math inline">\(\Theta(x,y,\bar p)\)</span> con los nombres frescos de §13.17, la teoría objeto demuestra la sentencia</p>
+<p><span class="math display">\[
+\boxed{\forall\bar p\forall a\,\bigl[F_\Theta(a,\bar p)\to
+\exists!b\forall y\,(y\in b\leftrightarrow
+\exists x\,[x\in a\land\Theta(x,y,\bar p)])\bigr].}
+\]</span></p>
+<p><strong>Demostración objeto.</strong> Instanciamos reemplazo restringido (§12.10) con la matriz <span class="math inline">\(\rho(x,y,a,\bar p):=\Theta(x,y,\bar p)\)</span>, que simplemente ignora el parámetro adicional <span class="math inline">\(a\)</span>. La premisa de la instancia coincide, después de expandir <span class="math inline">\(\exists!\)</span> y de renombrar las variables ligadas, con <span class="math inline">\(F_\Theta(a,\bar p)\)</span>. Reemplazo produce <span class="math inline">\(b\)</span> cuya membresía está caracterizada por <span class="math inline">\(\exists x(x\in a\land\Theta(x,y,\bar p))\)</span>. Si <span class="math inline">\(b'\)</span> también satisface esa caracterización, entonces <span class="math inline">\(\forall y(y\in b\leftrightarrow y\in b')\)</span>, y extensionalidad da <span class="math inline">\(b\doteq b'\)</span>. La fórmula final se cierra universalmente sobre <span class="math inline">\(a,\bar p\)</span>, que no figuran libres en premisas extralógicas añadidas. No se usa selección simultánea de testigos: la hipótesis <span class="math inline">\(\exists!\)</span> asegura su determinación. <span class="math inline">\(\square\)</span></p>
+<p><strong>Precisión:</strong> esta conclusión no está afirmada para una relación arbitraria sin funcionalidad, pues el esquema de reemplazo adoptado no concede imágenes no acotadas de relaciones multivaluadas.</p>
+</section>
+</section>
+<section id="notación-de-imagen-y-dominio-vacío" class="level2">
+<h2 class="anchored" data-anchor-id="notación-de-imagen-y-dominio-vacío">13.19. Notación de imagen y dominio vacío</h2>
+<section id="tlog-def-00070" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00070">Definición 13.19.1 — Macro de imagen de una fórmula funcional</h3>
+<p><strong>Bajo la hipótesis</strong> <span class="math inline">\(F_\Theta(a,\bar p)\)</span>, escribimos <span class="math inline">\(\operatorname{Im}_\Theta(a;\bar p)\)</span> para el único <span class="math inline">\(b\)</span> que satisface</p>
+<p><span class="math display">\[
+\Delta_{\operatorname{Im},\Theta}(b,a,\bar p):\equiv
+\forall y\,[y\in b\leftrightarrow\exists x(x\in a\land\Theta(x,y,\bar p))].
+\]</span></p>
+<p>Se trata de una <strong>macro parcial con condición lateral demostrada</strong>, no de un nuevo símbolo funcional total de la signatura pura <span class="math inline">\(\tau_\in\)</span>. Su expansión en una fórmula objeto exige conservar la hipótesis <span class="math inline">\(F_\Theta\)</span> y cuantificar los testigos con nombres frescos. La posible totalización por valor vacío fuera de <span class="math inline">\(F_\Theta\)</span> se construirá en §13.31, sin llamar a esa totalización «imagen» sin cualificación.</p>
+<p>La fórmula <span class="math inline">\(F_\Theta(\varnothing,\bar p)\)</span> es demostrable, pues no existe <span class="math inline">\(x\in\varnothing\)</span>. La caracterización resultante tiene membresía siempre falsa; por extensionalidad,</p>
+<p><span class="math display">\[
+\mathsf{ZF}_{\mathrm{obj}}\vdash
+\operatorname{Im}_\Theta(\varnothing;\bar p)=\varnothing
+\]</span></p>
+<p>para cada <span class="math inline">\(\Theta\)</span> fija, con ambas macros leídas mediante sus grafos. No se confunde esta afirmación con el dominio no vacío exigido para la intersección absoluta de familias.</p>
+</section>
+</section>
+<section id="leyes-elementales-de-la-imagen" class="level2">
+<h2 class="anchored" data-anchor-id="leyes-elementales-de-la-imagen">13.20. Leyes elementales de la imagen</h2>
+<section id="tlog-pro-00044" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00044">Proposición 13.20.1 — Identidad, constante y monotonía de imágenes</h3>
+<p>Para una relación definible <span class="math inline">\(\Theta(x,y,\bar p)\)</span> <strong>independiente del nombre de su dominio</strong> y conjuntos <span class="math inline">\(a\subseteq b\)</span> donde <span class="math inline">\(F_\Theta(b,\bar p)\)</span>, se deriva</p>
+<p><span class="math display">\[
+\operatorname{Im}_\Theta(a;\bar p)\subseteq\operatorname{Im}_\Theta(b;\bar p).
+\]</span></p>
+<p>La relación identidad <span class="math inline">\(\mathsf{Id}(x,y):\equiv y\doteq x\)</span> es funcional sobre cualquier conjunto, y su imagen satisface <span class="math inline">\(\operatorname{Im}_{\mathsf{Id}}(a)=a\)</span>. La relación constante <span class="math inline">\(\mathsf K_p(x,y):\equiv y\doteq p\)</span>, para parámetro <span class="math inline">\(p\)</span>, es funcional sobre todo <span class="math inline">\(a\)</span> y cumple</p>
+<p><span class="math display">\[
+\operatorname{Im}_{\mathsf K_p}(a)=
+\begin{cases}\varnothing,&amp;a=\varnothing,\\\{p\},&amp;\exists x\,x\in a.\end{cases}
+\]</span></p>
+<p><strong>Demostración objeto.</strong> De <span class="math inline">\(F_\Theta(b,\bar p)\)</span> y <span class="math inline">\(a\subseteq b\)</span> se obtiene <span class="math inline">\(F_\Theta(a,\bar p)\)</span> por particularización. Si <span class="math inline">\(y\)</span> pertenece a la primera imagen, algún <span class="math inline">\(x\in a\)</span> satisface <span class="math inline">\(\Theta(x,y,\bar p)\)</span>; como <span class="math inline">\(a\subseteq b\)</span>, ese mismo <span class="math inline">\(x\)</span> atestigua la pertenencia a la segunda. Para la identidad, <span class="math inline">\(\exists x(x\in a\land y\doteq x)\leftrightarrow y\in a\)</span>, así que extensionalidad iguala los conjuntos. Para la relación constante, <span class="math inline">\(\exists x(x\in a\land y\doteq p)\)</span> equivale a <span class="math inline">\((\exists x\,x\in a)\land y\doteq p\)</span>; en el caso vacío no tiene testigos y en el no vacío caracteriza el singleton. Todas las afirmaciones son <strong>esquemas de derivaciones objeto</strong> para las fórmulas indicadas. <span class="math inline">\(\square\)</span></p>
+<p>La independencia de <span class="math inline">\(\Theta\)</span> respecto del <em>nombre de dominio</em> es necesaria para la monotonía tal como se ha formulado; no se intercambian fórmulas distintas <span class="math inline">\(\Theta(x,y,a)\)</span> y <span class="math inline">\(\Theta(x,y,b)\)</span>.</p>
+</section>
+</section>
+<section id="composición-de-imágenes-funcionales" class="level2">
+<h2 class="anchored" data-anchor-id="composición-de-imágenes-funcionales">13.21. Composición de imágenes funcionales</h2>
+<section id="tlog-pro-00045" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00045">Proposición 13.21.1 — Imagen de una composición definible</h3>
+<p>Sean <span class="math inline">\(\Theta(x,y,\bar p)\)</span> y <span class="math inline">\(\Psi(y,z,\bar q)\)</span> dos fórmulas fijas, con nombres ligados disjuntos de los parámetros. Si <span class="math inline">\(F_\Theta(a,\bar p)\)</span>, <span class="math inline">\(b=\operatorname{Im}_\Theta(a;\bar p)\)</span> y <span class="math inline">\(F_\Psi(b,\bar q)\)</span>, entonces</p>
+<p><span class="math display">\[
+\Xi(x,z,\bar p,\bar q):\equiv
+\exists y\,[\Theta(x,y,\bar p)\land\Psi(y,z,\bar q)]
+\]</span></p>
+<p>es funcional sobre <span class="math inline">\(a\)</span> y la teoría objeto prueba</p>
+<p><span class="math display">\[
+\boxed{\operatorname{Im}_\Xi(a;\bar p,\bar q)
+=\operatorname{Im}_\Psi(\operatorname{Im}_\Theta(a;\bar p);\bar q).}
+\]</span></p>
+<p><strong>Demostración objeto.</strong> Para cada <span class="math inline">\(x\in a\)</span>, la funcionalidad de <span class="math inline">\(\Theta\)</span> determina un único <span class="math inline">\(y\)</span>. Por definición de <span class="math inline">\(b\)</span>, ese <span class="math inline">\(y\in b\)</span>, y la funcionalidad de <span class="math inline">\(\Psi\)</span> determina un único <span class="math inline">\(z\)</span>. Si <span class="math inline">\(z,z'\)</span> verifican <span class="math inline">\(\Xi(x,\cdot)\)</span>, la unicidad del intermediario <span class="math inline">\(y\)</span> obliga a escoger el mismo valor y después la unicidad de <span class="math inline">\(\Psi\)</span> da <span class="math inline">\(z\doteq z'\)</span>. Así <span class="math inline">\(F_\Xi(a)\)</span>. Un objeto <span class="math inline">\(z\)</span> pertenece a la imagen izquierda si y sólo si <span class="math inline">\(\exists x\in a\exists y\,[\Theta(x,y)\land\Psi(y,z)]\)</span>. Reasociando los cuantificadores acotados, esta condición equivale a <span class="math inline">\(\exists y\in b\,\Psi(y,z)\)</span>, que caracteriza la imagen derecha. Extensionalidad prueba la igualdad de los testigos únicos. <span class="math inline">\(\square\)</span></p>
+<p>La composición es de <strong>relaciones definibles funcionales</strong>; no se anticipa aquí la teoría de funciones como conjuntos de pares ordenados del Capítulo 14.</p>
+</section>
+</section>
+<section id="imágenes-de-relaciones-con-cota-preexistente" class="level2">
+<h2 class="anchored" data-anchor-id="imágenes-de-relaciones-con-cota-preexistente">13.22. Imágenes de relaciones con cota preexistente</h2>
+<section id="tlog-pro-00046" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00046">Proposición 13.22.1 — Imagen relativa de una relación no funcional</h3>
+<p>Sea <span class="math inline">\(\rho(x,y,\bar p)\)</span> una fórmula <strong>arbitraria</strong>, sin hipótesis de unicidad. Para todos los conjuntos <span class="math inline">\(a,b\)</span> existe un único conjunto <span class="math inline">\(c\)</span> caracterizado por</p>
+<p><span class="math display">\[
+\boxed{\forall y\,[y\in c\leftrightarrow
+(y\in b\land\exists x(x\in a\land\rho(x,y,\bar p)))].}
+\]</span></p>
+<p><strong>Demostración objeto.</strong> Instanciamos separación con conjunto ambiente <span class="math inline">\(b\)</span>, matriz <span class="math inline">\(\theta(y,a,b,\bar p):=\exists x(x\in a\land\rho(x,y,\bar p))\)</span> y parámetros <span class="math inline">\(a,\bar p\)</span>. El nuevo testigo <span class="math inline">\(c\)</span> y los nombres ligados se toman frescos. Separación produce el conjunto especificado; extensionalidad da unicidad. No se emplea reemplazo. <span class="math inline">\(\square\)</span></p>
+<p>Si además se demuestra <span class="math inline">\(\forall x\in a\forall y(\rho(x,y,\bar p)\to y\in b)\)</span>, la conjunción <span class="math inline">\(y\in b\)</span> es redundante y <span class="math inline">\(c\)</span> es la <strong>imagen exacta</strong>, incluso cuando <span class="math inline">\(\rho\)</span> tiene muchos valores para un mismo <span class="math inline">\(x\)</span>. Sin tal cota no se concluye que la colección de todos sus valores sea un conjunto. La notación <span class="math inline">\(\{y\in b:\exists x\in a\,\rho(x,y,\bar p)\}\)</span> es eliminable y nunca constituye comprensión sin conjunto ambiente.</p>
+</section>
+</section>
+<section id="dos-lecturas-de-una-intersección-de-familia" class="level2">
+<h2 class="anchored" data-anchor-id="dos-lecturas-de-una-intersección-de-familia">13.23. Dos lecturas de una intersección de familia</h2>
+<section id="tlog-cnv-00018" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00018">Convención 13.23.1 — Intersección absoluta y relativa</h3>
+<p>Para una familia objeto <span class="math inline">\(A\)</span>, la expresión informal <span class="math inline">\(\bigcap A\)</span> pretende designar el conjunto de <strong>todos</strong> los objetos que pertenecen a cada miembro de <span class="math inline">\(A\)</span>. Cuando <span class="math inline">\(A=\varnothing\)</span>, esa descripción sería la totalidad del universo objeto, la cual §12.16 demuestra que <strong>no constituye un conjunto</strong>. En cambio, dado un conjunto ambiente <span class="math inline">\(U\)</span>, la intersección relativa <span class="math inline">\(\bigcap_U A\)</span> se restringirá a <span class="math inline">\(U\)</span> y estará definida incluso cuando <span class="math inline">\(A\)</span> sea vacía. La pertenencia externa de las estructuras utilizadas en la metateoría no altera esta distinción.</p>
+</section>
+</section>
+<section id="intersección-de-una-familia-no-vacía" class="level2">
+<h2 class="anchored" data-anchor-id="intersección-de-una-familia-no-vacía">13.24. Intersección de una familia no vacía</h2>
+<section id="tlog-pro-00047" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00047">Proposición 13.24.1 — Existencia y unicidad de intersección no vacía</h3>
+<p>La teoría objeto demuestra</p>
+<p><span class="math display">\[
+\boxed{\forall A\,\Bigl[(\exists a\,a\in A)\to
+\exists!c\forall u\,\bigl(u\in c\leftrightarrow
+\forall b(b\in A\to u\in b)\bigr)\Bigr].}
+\]</span></p>
+<p><strong>Demostración objeto.</strong> Supóngase <span class="math inline">\(\exists a(a\in A)\)</span>. Mediante eliminación existencial en el cálculo de primer orden, tomamos un <strong>único</strong> testigo auxiliar <span class="math inline">\(a_0\in A\)</span> dentro de una subdemostración, sin instaurar función de elección alguna. Aplicamos separación al conjunto ambiente <span class="math inline">\(a_0\)</span> con la matriz <span class="math inline">\(\forall b(b\in A\to u\in b)\)</span>. Obtenemos <span class="math inline">\(c\)</span> tal que</p>
+<p><span class="math display">\[
+\forall u\,[u\in c\leftrightarrow(u\in a_0\land\forall b(b\in A\to u\in b))].
+\]</span></p>
+<p>Como <span class="math inline">\(a_0\in A\)</span>, la condición <span class="math inline">\(\forall b\in A(u\in b)\)</span> implica <span class="math inline">\(u\in a_0\)</span>, y la equivalencia anterior se simplifica a la caracterización requerida. Si <span class="math inline">\(c,d\)</span> satisfacen esa misma fórmula, extensionalidad da <span class="math inline">\(c\doteq d\)</span>. Cerramos la subdemostración descargando <span class="math inline">\(a_0\)</span>, que no aparece en el enunciado final, y generalizamos sobre <span class="math inline">\(A\)</span>. Ninguna selección sobre los miembros de <span class="math inline">\(A\)</span> se ha efectuado. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="notación-contextual-de-la-intersección" class="level2">
+<h2 class="anchored" data-anchor-id="notación-contextual-de-la-intersección">13.25. Notación contextual de la intersección</h2>
+<section id="tlog-def-00071" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00071">Definición 13.25.1 — Macro parcial <span class="math inline">\(\bigcap A\)</span></h3>
+<p>La escritura <span class="math inline">\(\bigcap A\)</span> queda autorizada <strong>sólo</strong> en un contexto objeto que permita demostrar <span class="math inline">\(\exists a(a\in A)\)</span>, y significa el único objeto <span class="math inline">\(c\)</span> del §13.24. Fuera de ese contexto no denota un término del lenguaje puro ni un símbolo funcional total de una expansión. Las ocurrencias de <span class="math inline">\(\bigcap A\)</span> en fórmulas se eliminan agregando su descripción única y conservando la condición de no vacuidad. Esta es una abreviación contextual, no una aplicación automática del metateorema de introducción de <strong>funciones totales</strong> §13.14.</p>
+</section>
+</section>
+<section id="leyes-de-intersecciones-de-familias" class="level2">
+<h2 class="anchored" data-anchor-id="leyes-de-intersecciones-de-familias">13.26. Leyes de intersecciones de familias</h2>
+<section id="tlog-pro-00048" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00048">Proposición 13.26.1 — Singletons, pares y antitonicidad</h3>
+<p>Con las hipótesis de existencia de las macros implicadas, los siguientes son teoremas objeto:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\bigcap\{a\}&amp;=a,\\
+\bigcap\{a,b\}&amp;=a\cap b,\\
+A\subseteq B\ \land\ A\ne\varnothing&amp;\Longrightarrow\bigcap B\subseteq\bigcap A,\\
+A\ne\varnothing&amp;\Longrightarrow\bigcap A\subseteq\bigcup A.
+\end{aligned}
+\]</span></p>
+<p><strong>Demostración.</strong> La familia <span class="math inline">\(\{a\}\)</span> contiene <span class="math inline">\(a\)</span> y es no vacía; <span class="math inline">\(\forall b\in\{a\}\,u\in b\)</span> equivale a <span class="math inline">\(u\in a\)</span>. Para <span class="math inline">\(\{a,b\}\)</span>, la condición equivale a <span class="math inline">\((u\in a\land u\in b)\)</span>; el conjunto caracterizado coincide con la intersección binaria de §13.13. Si <span class="math inline">\(A\subseteq B\)</span> y <span class="math inline">\(A\)</span> no es vacía, entonces <span class="math inline">\(B\)</span> tampoco lo es; quien pertenece a todos los miembros de <span class="math inline">\(B\)</span> pertenece a todos los miembros de <span class="math inline">\(A\)</span>. Para la última inclusión, de <span class="math inline">\(A\ne\varnothing\)</span> obtenemos un testigo <span class="math inline">\(a_0\in A\)</span>; si <span class="math inline">\(u\in\bigcap A\)</span>, entonces <span class="math inline">\(u\in a_0\)</span>, por lo que <span class="math inline">\(u\in\bigcup A\)</span>. Las cuatro igualdades o inclusiones se concluyen mediante sus cláusulas de pertenencia y extensionalidad donde corresponde. <span class="math inline">\(\square\)</span></p>
+<p>Aquí <span class="math inline">\(A\ne\varnothing\)</span> significa la fórmula <span class="math inline">\(\exists a(a\in A)\)</span>, no una primitiva nueva.</p>
+</section>
+</section>
+<section id="intersección-relativa-total" class="level2">
+<h2 class="anchored" data-anchor-id="intersección-relativa-total">13.27. Intersección relativa total</h2>
+<section id="tlog-def-00072" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00072">Definición 13.27.1 — Intersección dentro de un conjunto ambiente</h3>
+<p>Para <strong>cualesquiera</strong> conjuntos <span class="math inline">\(U,A\)</span>, separación y extensionalidad prueban la existencia y unicidad de <span class="math inline">\(c\)</span> tal que</p>
+<p><span class="math display">\[
+\boxed{\forall u\,[u\in c\leftrightarrow
+(u\in U\land\forall b(b\in A\to u\in b))].}
+\]</span></p>
+<p>Autorizamos <span class="math inline">\(\bigcap_U A\)</span> como notación del <span class="math inline">\(c\)</span> así determinado. Como la caracterización es total para <span class="math inline">\(U,A\)</span>, a diferencia de <span class="math inline">\(\bigcap A\)</span>, cabe incorporarla como función binaria definida en una extensión conservativa finita (§13.14). Para la familia vacía se tiene <span class="math inline">\(\bigcap_U\varnothing=U\)</span>, pues la condición universal en <span class="math inline">\(b\in\varnothing\)</span> es vacuamente verdadera; para una familia no vacía, <span class="math inline">\(\bigcap_U A=U\cap\bigcap A\)</span>, con la intersección de la derecha autorizada por §13.25. Todas estas identidades se demuestran expandiendo las cláusulas de membresía.</p>
+</section>
+</section>
+<section id="intersección-como-separación-sobre-una-unión" class="level2">
+<h2 class="anchored" data-anchor-id="intersección-como-separación-sobre-una-unión">13.28. Intersección como separación sobre una unión</h2>
+<section id="tlog-pro-00049" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00049">Proposición 13.28.1 — Descripción sin selección sobre <span class="math inline">\(\bigcup A\)</span></h3>
+<p>Para toda familia <strong>no vacía</strong> <span class="math inline">\(A\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\bigcap A=
+\{u\in\bigcup A:\forall b(b\in A\to u\in b)\}
+=\bigcap_{\bigcup A} A.}
+\]</span></p>
+<p><strong>Demostración objeto.</strong> Existe <span class="math inline">\(\bigcup A\)</span> sin ninguna hipótesis, por §13.6. Si <span class="math inline">\(u\in\bigcap A\)</span>, eligiendo dentro de una sola subdemostración un <span class="math inline">\(b\in A\)</span>, se infiere <span class="math inline">\(u\in b\)</span> y por ello <span class="math inline">\(u\in\bigcup A\)</span>; además <span class="math inline">\(u\)</span> satisface la condición universal. La inclusión recíproca es inmediata de la cláusula de separación: todo miembro del conjunto derecho pertenece a cada miembro de <span class="math inline">\(A\)</span>. Extensionalidad iguala ambos conjuntos. La última igualdad resulta de la definición de intersección relativa con ambiente <span class="math inline">\(\bigcup A\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La fórmula relativa permanece válida para <span class="math inline">\(A=\varnothing\)</span>, pero entonces su valor es <span class="math inline">\(\bigcup\varnothing=\varnothing\)</span>; no es la intersección absoluta de la familia vacía.</p>
+</section>
+</section>
+<section id="unión-de-una-familia-funcionalmente-indexada" class="level2">
+<h2 class="anchored" data-anchor-id="unión-de-una-familia-funcionalmente-indexada">13.29. Unión de una familia funcionalmente indexada</h2>
+<section id="tlog-pro-00050" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00050">Proposición 13.29.1 — Unión de imágenes por reemplazo</h3>
+<p>Si <span class="math inline">\(F_\Theta(a,\bar p)\)</span>, la <strong>imagen</strong> <span class="math inline">\(B=\operatorname{Im}_\Theta(a;\bar p)\)</span> existe por reemplazo, y la <strong>unión</strong> <span class="math inline">\(U=\bigcup B\)</span> existe por el axioma de unión. El conjunto <span class="math inline">\(U\)</span> queda caracterizado exactamente por</p>
+<p><span class="math display">\[
+\boxed{u\in U\iff\exists x\,[x\in a\land
+\exists y(\Theta(x,y,\bar p)\land u\in y)].}
+\]</span></p>
+<p><strong>Demostración objeto.</strong> Por la cláusula de unión, <span class="math inline">\(u\in U\)</span> equivale a <span class="math inline">\(\exists y(y\in B\land u\in y)\)</span>. Por la cláusula de imagen, <span class="math inline">\(y\in B\)</span> equivale a <span class="math inline">\(\exists x(x\in a\land\Theta(x,y,\bar p))\)</span>. Sustituyendo y reordenando dos cuantificadores existenciales no capturadores se obtiene el enunciado. La unicidad de <span class="math inline">\(U\)</span> procede de extensionalidad; su existencia ya se obtuvo en dos aplicaciones sucesivas a <strong>conjuntos</strong> dados, no en una comprensión de clase. <span class="math inline">\(\square\)</span></p>
+<p>Esto prepara uniones indexadas sin introducir todavía una función objeto representada por un conjunto de pares ordenados.</p>
+</section>
+</section>
+<section id="por-qué-no-existe-la-intersección-absoluta-vacía" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-no-existe-la-intersección-absoluta-vacía">13.30. Por qué no existe la intersección absoluta vacía</h2>
+<section id="tlog-lem-00040" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00040">Lema 13.30.1 — Necesidad de la condición de no vacuidad</h3>
+<p>La teoría objeto demuestra</p>
+<p><span class="math display">\[
+\boxed{\neg\exists c\forall u\,[u\in c\leftrightarrow
+\forall b(b\in\varnothing\to u\in b)].}
+\]</span></p>
+<p><strong>Demostración objeto.</strong> Suponiendo tal <span class="math inline">\(c\)</span>, la condición <span class="math inline">\(b\in\varnothing\)</span> es falsa para todo <span class="math inline">\(b\)</span>. Por lógica clásica de primer orden, <span class="math inline">\(\forall b(b\in\varnothing\to u\in b)\)</span> resulta verdadera para cada <span class="math inline">\(u\)</span>; el bicondicional supuesto implica <span class="math inline">\(\forall u(u\in c)\)</span>. Esto contradice §12.16 (inexistencia de conjunto universal). Descargando el supuesto queda la negación existencial. <span class="math inline">\(\square\)</span></p>
+<p>Así la elección de <span class="math inline">\(\bigcap\varnothing=\varnothing\)</span> como <em>totalización convencional</em> no es el valor de la intersección absoluta; para obtener una operación total hay que distinguir expresamente el caso vacío, como se hará enseguida.</p>
+</section>
+</section>
+<section id="totalizaciones-definicionales-sin-pérdida-de-control" class="level2">
+<h2 class="anchored" data-anchor-id="totalizaciones-definicionales-sin-pérdida-de-control">13.31. Totalizaciones definicionales sin pérdida de control</h2>
+<section id="tlog-mth-00055" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00055">Metateorema 13.31.1 — Eliminación de macros funcionales condicionadas</h3>
+<p>Sea <span class="math inline">\(\Delta(y,\bar a)\)</span> una fórmula fija de <span class="math inline">\(\tau_\in\)</span>, y <span class="math inline">\(F(\bar a)\)</span> una condición demostrable cuando pretendemos usar su valor, tales que</p>
+<p><span class="math display">\[
+\mathsf{ZF}_{\mathrm{obj}}\vdash
+\forall\bar a\,[F(\bar a)\to\exists!y\,\Delta(y,\bar a)].
+\]</span></p>
+<p>Definamos, usando el conjunto vacío ya demostrado, la fórmula <strong>totalizada</strong></p>
+<p><span class="math display">\[
+\widehat\Delta(y,\bar a):\equiv
+\bigl(F(\bar a)\land\Delta(y,\bar a)\bigr)\lor
+\bigl(\neg F(\bar a)\land\forall u\neg(u\in y)\bigr).
+\]</span></p>
+<p>Entonces <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\vdash\forall\bar a\exists!y\,\widehat\Delta(y,\bar a)\)</span>. Además, <strong>bajo la hipótesis <span class="math inline">\(F(\bar a)\)</span></strong> el valor así introducido coincide con el único valor de <span class="math inline">\(\Delta\)</span>, mientras que fuera de ella vale <span class="math inline">\(\varnothing\)</span>. En cualquier <strong>familia finita y bien ordenada de introducciones</strong> de estas funciones totalizadas, el metateorema de §13.14 asegura conservatividad sobre el lenguaje puro y eliminación de sus símbolos en las fórmulas ampliadas.</p>
+<p><strong>Demostración metateórica.</strong> El cálculo clásico de la teoría objeto decide <span class="math inline">\(F(\bar a)\lor\neg F(\bar a)\)</span> para parámetros arbitrarios. Bajo <span class="math inline">\(F\)</span>, la hipótesis aporta un único <span class="math inline">\(y\)</span> con <span class="math inline">\(\Delta\)</span>, que satisface <span class="math inline">\(\widehat\Delta\)</span>; la otra disyunción es falsa. Bajo <span class="math inline">\(\neg F\)</span>, el testigo único del conjunto vacío satisface la segunda disyunción y la primera es falsa. Mediante eliminación de casos y generalización interna se obtiene <span class="math inline">\(\forall\bar a\exists!y\widehat\Delta\)</span>. Aplicamos §13.14 a una expansión por el símbolo funcional cuya ecuación definitoria es <span class="math inline">\(\widehat\Delta\)</span>, respetando el orden de anteriores símbolos si aparecen en la expresión. La traducción inversa reemplaza cada término nuevo por su gráfico puro con nombres auxiliares frescos; el caso <span class="math inline">\(\neg F\)</span> nunca se confunde con la descripción original. <span class="math inline">\(\square\)</span></p>
+<p><strong>Aplicaciones con fronteras explícitas.</strong> Para <span class="math inline">\(\Delta_{\operatorname{Im},\Theta}\)</span>, se toma <span class="math inline">\(F=F_\Theta\)</span>; se obtiene una función totalizada para <strong>cada <span class="math inline">\(\Theta\)</span> fija</strong>, no una operación sobre todas las fórmulas. Para la intersección absoluta se toma <span class="math inline">\(F(A):\equiv\exists a\,a\in A\)</span>. El valor totalizado en la familia vacía es, <strong>por estipulación</strong>, <span class="math inline">\(\varnothing\)</span>, y no el imposible conjunto universal. La intersección relativa <span class="math inline">\(\bigcap_U A\)</span> ya es total y no necesita esa estipulación. Ninguna de estas operaciones se añade al alfabeto primitivo <span class="math inline">\(\tau_\in\)</span>, ni se presupone que la teoría objeto tenga un modelo.</p>
+</section>
+</section>
+<section id="cierre-de-las-construcciones-y-frontera-arquitectónica" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-de-las-construcciones-y-frontera-arquitectónica">13.32. Cierre de las construcciones y frontera arquitectónica</h2>
+<section id="tlog-cor-00015" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00015">Corolario 13.32.1 — Infraestructura conjuntista elemental obtenida en ZF objeto</h3>
+<p>Las operaciones construidas en §§13.1–13.31 se organizan en tres familias, cada una con condición formal de uso:</p>
+<ol type="1">
+<li><strong>Operaciones total y unívocamente definibles:</strong> vacío, par no ordenado, singleton, unión, unión binaria, potencia, separación fijada por una matriz y conjunto ambiente, intersección binaria, diferencia e intersección relativa a <span class="math inline">\(U\)</span>. Tienen traducciones puras por grafos únicos; cualquier colección <strong>finita</strong> de sus símbolos puede introducirse conservativamente.</li>
+<li><strong>Operaciones funcionales sometidas a hipótesis locales:</strong> <span class="math inline">\(\operatorname{Im}_\Theta(a;\bar p)\)</span> exige funcionalidad de <span class="math inline">\(\Theta\)</span> en el dominio y <span class="math inline">\(\bigcap A\)</span> exige <span class="math inline">\(A\ne\varnothing\)</span>. La eliminación contextual de las macros conserva las hipótesis y la eventual totalización requiere distinguir su valor convencional cuando falla la guarda.</li>
+<li><strong>Construcciones derivadas por operaciones sucesivas sobre conjuntos:</strong> composición de imágenes, imagen acotada de relación arbitraria y unión de imágenes funcionales. No incorporan comprensión irrestricta ni principios de elección.</li>
+</ol>
+<p><strong>Demostración.</strong> La primera familia procede de las pruebas de existencia/unicidad de M01 y de §13.27; sus expansiones finitas están autorizadas por §13.14. La segunda procede de §§13.18, 13.24 y 13.31, y no convierte una operación parcial en un símbolo funcional primitivo. La tercera sigue de §§13.21–13.22 y §13.29; las transformaciones de membresía son pruebas objeto específicas y la existencia se obtiene siempre de un axioma aplicable sobre un conjunto previamente dado. <span class="math inline">\(\square\)</span></p>
+<p>Quedan deliberadamente <strong>para los Capítulos 14–16</strong> las definiciones de par ordenado, productos cartesianos, relaciones y funciones como conjuntos de pares, cocientes, órdenes, naturales y recursión interna. Tampoco se deriva <span class="math inline">\(\operatorname{Con}(\mathsf{ZF}_{\mathrm{obj}})\)</span>, no se requiere AC/BPI, no se activa ninguna interfaz intertratados ni se afirma Lean compilado.</p>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-12.html">← Capítulo 12</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-14.html">Capítulo 14 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

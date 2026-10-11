@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 16 — Naturales, inducción, recursión y secuencias finitas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#del-axioma-del-infinito-al-objeto-omega" id="toc-del-axioma-del-infinito-al-objeto-omega" class="nav-link active" data-scroll-target="#del-axioma-del-infinito-al-objeto-omega">16.0. Del axioma del infinito al objeto <span class="math inline">\(\omega\)</span></a></li>
+  <li><a href="#convenio-fundacional-para-naturales" id="toc-convenio-fundacional-para-naturales" class="nav-link" data-scroll-target="#convenio-fundacional-para-naturales">16.1. Convenio fundacional para naturales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00023" id="toc-tlog-cnv-00023" class="nav-link" data-scroll-target="#tlog-cnv-00023">Convención 16.1.1 — Construcción de von Neumann y tipado de las abreviaciones</a></li>
+  </ul></li>
+  <li><a href="#gráfica-de-la-operación-sucesor" id="toc-gráfica-de-la-operación-sucesor" class="nav-link" data-scroll-target="#gráfica-de-la-operación-sucesor">16.2. Gráfica de la operación sucesor</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00096" id="toc-tlog-def-00096" class="nav-link" data-scroll-target="#tlog-def-00096">Definición 16.2.1 — Fórmula pura de sucesor</a></li>
+  </ul></li>
+  <li><a href="#existencia-y-unicidad-del-sucesor" id="toc-existencia-y-unicidad-del-sucesor" class="nav-link" data-scroll-target="#existencia-y-unicidad-del-sucesor">16.3. Existencia y unicidad del sucesor</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00081" id="toc-tlog-pro-00081" class="nav-link" data-scroll-target="#tlog-pro-00081">Proposición 16.3.1 — El sucesor existe para todo conjunto</a></li>
+  </ul></li>
+  <li><a href="#definición-de-conjunto-inductivo" id="toc-definición-de-conjunto-inductivo" class="nav-link" data-scroll-target="#definición-de-conjunto-inductivo">16.4. Definición de conjunto inductivo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00097" id="toc-tlog-def-00097" class="nav-link" data-scroll-target="#tlog-def-00097">Definición 16.4.1 — Guarda inductiva sin cuantificación sobre fórmulas</a></li>
+  </ul></li>
+  <li><a href="#el-axioma-del-infinito-y-la-existencia-de-inductivos" id="toc-el-axioma-del-infinito-y-la-existencia-de-inductivos" class="nav-link" data-scroll-target="#el-axioma-del-infinito-y-la-existencia-de-inductivos">16.5. El axioma del infinito y la existencia de inductivos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00082" id="toc-tlog-pro-00082" class="nav-link" data-scroll-target="#tlog-pro-00082">Proposición 16.5.1 — Recuperación exacta del axioma de infinito</a></li>
+  </ul></li>
+  <li><a href="#candidato-mínimo-dentro-de-un-testigo-inductivo" id="toc-candidato-mínimo-dentro-de-un-testigo-inductivo" class="nav-link" data-scroll-target="#candidato-mínimo-dentro-de-un-testigo-inductivo">16.6. Candidato mínimo dentro de un testigo inductivo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00098" id="toc-tlog-def-00098" class="nav-link" data-scroll-target="#tlog-def-00098">Definición 16.6.1 — Intersección definible de inductivos acotados</a></li>
+  </ul></li>
+  <li><a href="#el-candidato-es-inductivo" id="toc-el-candidato-es-inductivo" class="nav-link" data-scroll-target="#el-candidato-es-inductivo">16.7. El candidato es inductivo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00083" id="toc-tlog-pro-00083" class="nav-link" data-scroll-target="#tlog-pro-00083">Proposición 16.7.1 — Existencia de <span class="math inline">\(W_I\)</span> y clausura por sucesor</a></li>
+  </ul></li>
+  <li><a href="#minimalidad-sin-formar-una-clase-de-inductivos" id="toc-minimalidad-sin-formar-una-clase-de-inductivos" class="nav-link" data-scroll-target="#minimalidad-sin-formar-una-clase-de-inductivos">16.8. Minimalidad sin formar una clase de inductivos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00043" id="toc-tlog-lem-00043" class="nav-link" data-scroll-target="#tlog-lem-00043">Lema 16.8.1 — <span class="math inline">\(W_I\)</span> está contenido en todo conjunto inductivo</a></li>
+  </ul></li>
+  <li><a href="#independencia-del-testigo-de-infinito" id="toc-independencia-del-testigo-de-infinito" class="nav-link" data-scroll-target="#independencia-del-testigo-de-infinito">16.9. Independencia del testigo de infinito</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00067" id="toc-tlog-mth-00067" class="nav-link" data-scroll-target="#tlog-mth-00067">Metateorema 16.9.1 — Existencia y unicidad del menor inductivo</a></li>
+  </ul></li>
+  <li><a href="#el-nombre-omega-como-abreviación-conservativa" id="toc-el-nombre-omega-como-abreviación-conservativa" class="nav-link" data-scroll-target="#el-nombre-omega-como-abreviación-conservativa">16.10. El nombre <span class="math inline">\(\omega\)</span> como abreviación conservativa</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00099" id="toc-tlog-def-00099" class="nav-link" data-scroll-target="#tlog-def-00099">Definición 16.10.1 — Gráfica única de los naturales de von Neumann</a></li>
+  </ul></li>
+  <li><a href="#ecuaciones-de-clausura-y-minimalidad-de-omega" id="toc-ecuaciones-de-clausura-y-minimalidad-de-omega" class="nav-link" data-scroll-target="#ecuaciones-de-clausura-y-minimalidad-de-omega">16.11. Ecuaciones de clausura y minimalidad de <span class="math inline">\(\omega\)</span></a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00084" id="toc-tlog-pro-00084" class="nav-link" data-scroll-target="#tlog-pro-00084">Proposición 16.11.1 — El menor inductivo contiene cero y todos sus sucesores</a></li>
+  </ul></li>
+  <li><a href="#esquema-de-inducción-interna" id="toc-esquema-de-inducción-interna" class="nav-link" data-scroll-target="#esquema-de-inducción-interna">16.12. Esquema de inducción interna</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00068" id="toc-tlog-mth-00068" class="nav-link" data-scroll-target="#tlog-mth-00068">Metateorema 16.12.1 — Inducción para cada fórmula del lenguaje de pertenencia</a></li>
+  </ul></li>
+  <li><a href="#cero-no-es-sucesor-e-inyectividad-de-s" id="toc-cero-no-es-sucesor-e-inyectividad-de-s" class="nav-link" data-scroll-target="#cero-no-es-sucesor-e-inyectividad-de-s">16.13. Cero no es sucesor e inyectividad de <span class="math inline">\(S\)</span></a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00085" id="toc-tlog-pro-00085" class="nav-link" data-scroll-target="#tlog-pro-00085">Proposición 16.13.1 — Separación entre cero y sucesores, y cancelación</a></li>
+  </ul></li>
+  <li><a href="#predecesor-de-todo-natural-no-nulo" id="toc-predecesor-de-todo-natural-no-nulo" class="nav-link" data-scroll-target="#predecesor-de-todo-natural-no-nulo">16.14. Predecesor de todo natural no nulo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00086" id="toc-tlog-pro-00086" class="nav-link" data-scroll-target="#tlog-pro-00086">Proposición 16.14.1 — Cero o sucesor de un único natural</a></li>
+  </ul></li>
+  <li><a href="#cero-pertenece-a-todo-natural-no-nulo" id="toc-cero-pertenece-a-todo-natural-no-nulo" class="nav-link" data-scroll-target="#cero-pertenece-a-todo-natural-no-nulo">16.15. Cero pertenece a todo natural no nulo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00087" id="toc-tlog-pro-00087" class="nav-link" data-scroll-target="#tlog-pro-00087">Proposición 16.15.1 — El primer elemento aparece en cada sucesor</a></li>
+  </ul></li>
+  <li><a href="#los-naturales-como-conjuntos-transitivos" id="toc-los-naturales-como-conjuntos-transitivos" class="nav-link" data-scroll-target="#los-naturales-como-conjuntos-transitivos">16.16. Los naturales como conjuntos transitivos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00088" id="toc-tlog-pro-00088" class="nav-link" data-scroll-target="#tlog-pro-00088">Proposición 16.16.1 — Cada natural es transitivo</a></li>
+  </ul></li>
+  <li><a href="#transitividad-del-propio-omega" id="toc-transitividad-del-propio-omega" class="nav-link" data-scroll-target="#transitividad-del-propio-omega">16.17. Transitividad del propio <span class="math inline">\(\omega\)</span></a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00089" id="toc-tlog-pro-00089" class="nav-link" data-scroll-target="#tlog-pro-00089">Proposición 16.17.1 — Todo miembro de un natural es natural</a></li>
+  </ul></li>
+  <li><a href="#estructura-de-peano-y-límites-del-bloque" id="toc-estructura-de-peano-y-límites-del-bloque" class="nav-link" data-scroll-target="#estructura-de-peano-y-límites-del-bloque">16.18. Estructura de Peano y límites del bloque</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00069" id="toc-tlog-mth-00069" class="nav-link" data-scroll-target="#tlog-mth-00069">Metateorema 16.18.1 — Estructura interna con cero, sucesor e inducción</a></li>
+  </ul></li>
+  <li><a href="#balance-del-microtramo-y-obligaciones-posteriores" id="toc-balance-del-microtramo-y-obligaciones-posteriores" class="nav-link" data-scroll-target="#balance-del-microtramo-y-obligaciones-posteriores">16.19. Balance del microtramo y obligaciones posteriores</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00020" id="toc-tlog-cor-00020" class="nav-link" data-scroll-target="#tlog-cor-00020">Corolario 16.19.1 — Núcleo natural construido sin elección</a></li>
+  </ul></li>
+  <li><a href="#recursión-interna-nivel-objeto-y-requisitos-de-tipado" id="toc-recursión-interna-nivel-objeto-y-requisitos-de-tipado" class="nav-link" data-scroll-target="#recursión-interna-nivel-objeto-y-requisitos-de-tipado">16.20. Recursión interna: nivel objeto y requisitos de tipado</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00024" id="toc-tlog-cnv-00024" class="nav-link" data-scroll-target="#tlog-cnv-00024">Convención 16.20.1 — Recursión con valores en un conjunto fijado</a></li>
+  </ul></li>
+  <li><a href="#aproximaciones-de-recursión-con-dominio-sn" id="toc-aproximaciones-de-recursión-con-dominio-sn" class="nav-link" data-scroll-target="#aproximaciones-de-recursión-con-dominio-sn">16.21. Aproximaciones de recursión con dominio <span class="math inline">\(S(n)\)</span></a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00100" id="toc-tlog-def-00100" class="nav-link" data-scroll-target="#tlog-def-00100">Definición 16.21.1 — Gráfica de aproximación admisible</a></li>
+  </ul></li>
+  <li><a href="#propiedades-de-los-dominios-recursivos" id="toc-propiedades-de-los-dominios-recursivos" class="nav-link" data-scroll-target="#propiedades-de-los-dominios-recursivos">16.22. Propiedades de los dominios recursivos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00044" id="toc-tlog-lem-00044" class="nav-link" data-scroll-target="#tlog-lem-00044">Lema 16.22.1 — Segmentos sucesores, cero y antecesores</a></li>
+  </ul></li>
+  <li><a href="#extensión-por-un-paso" id="toc-extensión-por-un-paso" class="nav-link" data-scroll-target="#extensión-por-un-paso">16.23. Extensión por un paso</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00045" id="toc-tlog-lem-00045" class="nav-link" data-scroll-target="#tlog-lem-00045">Lema 16.23.1 — Prolongación canónica de una aproximación</a></li>
+  </ul></li>
+  <li><a href="#aproximaciones-de-toda-longitud-natural" id="toc-aproximaciones-de-toda-longitud-natural" class="nav-link" data-scroll-target="#aproximaciones-de-toda-longitud-natural">16.24. Aproximaciones de toda longitud natural</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00090" id="toc-tlog-pro-00090" class="nav-link" data-scroll-target="#tlog-pro-00090">Proposición 16.24.1 — Existencia mediante inducción sin recursión previa</a></li>
+  </ul></li>
+  <li><a href="#compatibilidad-de-aproximaciones-de-longitudes-distintas" id="toc-compatibilidad-de-aproximaciones-de-longitudes-distintas" class="nav-link" data-scroll-target="#compatibilidad-de-aproximaciones-de-longitudes-distintas">16.25. Compatibilidad de aproximaciones de longitudes distintas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00046" id="toc-tlog-lem-00046" class="nav-link" data-scroll-target="#tlog-lem-00046">Lema 16.25.1 — Unicidad de valores en dominios solapados</a></li>
+  </ul></li>
+  <li><a href="#teorema-de-recursión-sobre-omega" id="toc-teorema-de-recursión-sobre-omega" class="nav-link" data-scroll-target="#teorema-de-recursión-sobre-omega">16.26. Teorema de recursión sobre <span class="math inline">\(\omega\)</span></a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00070" id="toc-tlog-mth-00070" class="nav-link" data-scroll-target="#tlog-mth-00070">Metateorema 16.26.1 — Existencia y unicidad de la función recursiva</a></li>
+  </ul></li>
+  <li><a href="#recursión-uniforme-con-parámetros" id="toc-recursión-uniforme-con-parámetros" class="nav-link" data-scroll-target="#recursión-uniforme-con-parámetros">16.27. Recursión uniforme con parámetros</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00091" id="toc-tlog-pro-00091" class="nav-link" data-scroll-target="#tlog-pro-00091">Proposición 16.27.1 — Gráfico simultáneo de una familia recursiva</a></li>
+  </ul></li>
+  <li><a href="#construcción-de-la-suma" id="toc-construcción-de-la-suma" class="nav-link" data-scroll-target="#construcción-de-la-suma">16.28. Construcción de la suma</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00101" id="toc-tlog-def-00101" class="nav-link" data-scroll-target="#tlog-def-00101">Definición 16.28.1 — Función de suma mediante recursión con parámetro</a></li>
+  </ul></li>
+  <li><a href="#totalidad-de-la-suma-e-identidades-inmediatas" id="toc-totalidad-de-la-suma-e-identidades-inmediatas" class="nav-link" data-scroll-target="#totalidad-de-la-suma-e-identidades-inmediatas">16.29. Totalidad de la suma e identidades inmediatas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00092" id="toc-tlog-pro-00092" class="nav-link" data-scroll-target="#tlog-pro-00092">Proposición 16.29.1 — Suma total y ecuaciones de recursión</a></li>
+  </ul></li>
+  <li><a href="#reglas-en-la-primera-variable" id="toc-reglas-en-la-primera-variable" class="nav-link" data-scroll-target="#reglas-en-la-primera-variable">16.30. Reglas en la primera variable</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00047" id="toc-tlog-lem-00047" class="nav-link" data-scroll-target="#tlog-lem-00047">Lema 16.30.1 — Identidad izquierda y sucesor izquierdo</a></li>
+  </ul></li>
+  <li><a href="#asociatividad-y-conmutatividad-de-la-suma" id="toc-asociatividad-y-conmutatividad-de-la-suma" class="nav-link" data-scroll-target="#asociatividad-y-conmutatividad-de-la-suma">16.31. Asociatividad y conmutatividad de la suma</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00071" id="toc-tlog-mth-00071" class="nav-link" data-scroll-target="#tlog-mth-00071">Metateorema 16.31.1 — El monoide conmutativo aditivo de <span class="math inline">\(\omega\)</span></a></li>
+  </ul></li>
+  <li><a href="#cancelación-aditiva" id="toc-cancelación-aditiva" class="nav-link" data-scroll-target="#cancelación-aditiva">16.32. Cancelación aditiva</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00093" id="toc-tlog-pro-00093" class="nav-link" data-scroll-target="#tlog-pro-00093">Proposición 16.32.1 — Cancelación en ambos argumentos</a></li>
+  </ul></li>
+  <li><a href="#construcción-de-la-multiplicación" id="toc-construcción-de-la-multiplicación" class="nav-link" data-scroll-target="#construcción-de-la-multiplicación">16.33. Construcción de la multiplicación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00102" id="toc-tlog-def-00102" class="nav-link" data-scroll-target="#tlog-def-00102">Definición 16.33.1 — Producto por suma iterada</a></li>
+  </ul></li>
+  <li><a href="#identidades-elementales-del-producto" id="toc-identidades-elementales-del-producto" class="nav-link" data-scroll-target="#identidades-elementales-del-producto">16.34. Identidades elementales del producto</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00094" id="toc-tlog-pro-00094" class="nav-link" data-scroll-target="#tlog-pro-00094">Proposición 16.34.1 — Ceros y unidades multiplicativas</a></li>
+  </ul></li>
+  <li><a href="#distributividad-en-el-primer-factor" id="toc-distributividad-en-el-primer-factor" class="nav-link" data-scroll-target="#distributividad-en-el-primer-factor">16.35. Distributividad en el primer factor</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00048" id="toc-tlog-lem-00048" class="nav-link" data-scroll-target="#tlog-lem-00048">Lema 16.35.1 — <span class="math inline">\((a+b)\cdot c=a\cdot c+b\cdot c\)</span></a></li>
+  </ul></li>
+  <li><a href="#distributividad-en-el-segundo-factor" id="toc-distributividad-en-el-segundo-factor" class="nav-link" data-scroll-target="#distributividad-en-el-segundo-factor">16.36. Distributividad en el segundo factor</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00095" id="toc-tlog-pro-00095" class="nav-link" data-scroll-target="#tlog-pro-00095">Proposición 16.36.1 — <span class="math inline">\(a\cdot(b+c)=a\cdot b+a\cdot c\)</span></a></li>
+  </ul></li>
+  <li><a href="#conmutatividad-y-asociatividad-multiplicativas" id="toc-conmutatividad-y-asociatividad-multiplicativas" class="nav-link" data-scroll-target="#conmutatividad-y-asociatividad-multiplicativas">16.37. Conmutatividad y asociatividad multiplicativas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00072" id="toc-tlog-mth-00072" class="nav-link" data-scroll-target="#tlog-mth-00072">Metateorema 16.37.1 — Leyes fundamentales de la multiplicación de naturales</a></li>
+  </ul></li>
+  <li><a href="#síntesis-semianillo-natural-y-límite-del-microtramo" id="toc-síntesis-semianillo-natural-y-límite-del-microtramo" class="nav-link" data-scroll-target="#síntesis-semianillo-natural-y-límite-del-microtramo">16.38. Síntesis: semianillo natural y límite del microtramo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00021" id="toc-tlog-cor-00021" class="nav-link" data-scroll-target="#tlog-cor-00021">Corolario 16.38.1 — Estructura aritmética interna sin elección</a></li>
+  </ul></li>
+  <li><a href="#lema-de-sucesión-interna-de-los-naturales" id="toc-lema-de-sucesión-interna-de-los-naturales" class="nav-link" data-scroll-target="#lema-de-sucesión-interna-de-los-naturales">16.39. Lema de sucesión interna de los naturales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00049" id="toc-tlog-lem-00049" class="nav-link" data-scroll-target="#tlog-lem-00049">Lema 16.39.1 — Todo elemento de un natural tiene sucesor interno o terminal</a></li>
+  </ul></li>
+  <li><a href="#tricotomía-de-los-ordinales-finitos" id="toc-tricotomía-de-los-ordinales-finitos" class="nav-link" data-scroll-target="#tricotomía-de-los-ordinales-finitos">16.40. Tricotomía de los ordinales finitos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00073" id="toc-tlog-mth-00073" class="nav-link" data-scroll-target="#tlog-mth-00073">Metateorema 16.40.1 — Comparabilidad estricta de naturales</a></li>
+  </ul></li>
+  <li><a href="#la-pertenencia-como-orden-estricto" id="toc-la-pertenencia-como-orden-estricto" class="nav-link" data-scroll-target="#la-pertenencia-como-orden-estricto">16.41. La pertenencia como orden estricto</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00096" id="toc-tlog-pro-00096" class="nav-link" data-scroll-target="#tlog-pro-00096">Proposición 16.41.1 — Irreflexividad, transitividad y totalidad</a></li>
+  </ul></li>
+  <li><a href="#buen-orden-de-omega" id="toc-buen-orden-de-omega" class="nav-link" data-scroll-target="#buen-orden-de-omega">16.42. Buen orden de <span class="math inline">\(\omega\)</span></a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00074" id="toc-tlog-mth-00074" class="nav-link" data-scroll-target="#tlog-mth-00074">Metateorema 16.42.1 — Mínimo de todo subconjunto no vacío</a></li>
+  </ul></li>
+  <li><a href="#forma-del-mínimo-contraejemplo" id="toc-forma-del-mínimo-contraejemplo" class="nav-link" data-scroll-target="#forma-del-mínimo-contraejemplo">16.43. Forma del mínimo contraejemplo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00022" id="toc-tlog-cor-00022" class="nav-link" data-scroll-target="#tlog-cor-00022">Corolario 16.43.1 — Inducción y principio del mínimo contraejemplo</a></li>
+  </ul></li>
+  <li><a href="#orden-no-estricto-en-naturales" id="toc-orden-no-estricto-en-naturales" class="nav-link" data-scroll-target="#orden-no-estricto-en-naturales">16.44. Orden no estricto en naturales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00103" id="toc-tlog-def-00103" class="nav-link" data-scroll-target="#tlog-def-00103">Definición 16.44.1 — Relación <span class="math inline">\(\leq\)</span> y su expansión conjuntista</a></li>
+  </ul></li>
+  <li><a href="#orden-y-contención-entre-ordinales-finitos" id="toc-orden-y-contención-entre-ordinales-finitos" class="nav-link" data-scroll-target="#orden-y-contención-entre-ordinales-finitos">16.45. Orden y contención entre ordinales finitos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00097" id="toc-tlog-pro-00097" class="nav-link" data-scroll-target="#tlog-pro-00097">Proposición 16.45.1 — Equivalencia entre <span class="math inline">\(m\leq n\)</span> y <span class="math inline">\(m\subseteq n\)</span></a></li>
+  </ul></li>
+  <li><a href="#traslaciones-aditivas-y-partición-de-segmentos" id="toc-traslaciones-aditivas-y-partición-de-segmentos" class="nav-link" data-scroll-target="#traslaciones-aditivas-y-partición-de-segmentos">16.46. Traslaciones aditivas y partición de segmentos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00050" id="toc-tlog-lem-00050" class="nav-link" data-scroll-target="#tlog-lem-00050">Lema 16.46.1 — Desplazamiento de un segmento finito</a></li>
+  </ul></li>
+  <li><a href="#secuencias-de-longitud-natural" id="toc-secuencias-de-longitud-natural" class="nav-link" data-scroll-target="#secuencias-de-longitud-natural">16.47. Secuencias de longitud natural</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00104" id="toc-tlog-def-00104" class="nav-link" data-scroll-target="#tlog-def-00104">Definición 16.47.1 — Secuencia finita y longitud</a></li>
+  </ul></li>
+  <li><a href="#existencia-y-tipado-de-aomega" id="toc-existencia-y-tipado-de-aomega" class="nav-link" data-scroll-target="#existencia-y-tipado-de-aomega">16.48. Existencia y tipado de <span class="math inline">\(A^{&lt;\omega}\)</span></a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00098" id="toc-tlog-pro-00098" class="nav-link" data-scroll-target="#tlog-pro-00098">Proposición 16.48.1 — Conjunto de todas las secuencias finitas</a></li>
+  </ul></li>
+  <li><a href="#restricciones-iniciales-y-longitud-única" id="toc-restricciones-iniciales-y-longitud-única" class="nav-link" data-scroll-target="#restricciones-iniciales-y-longitud-única">16.49. Restricciones iniciales y longitud única</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00051" id="toc-tlog-lem-00051" class="nav-link" data-scroll-target="#tlog-lem-00051">Lema 16.49.1 — Existencia y composición de restricciones</a></li>
+  </ul></li>
+  <li><a href="#secuencia-vacía-y-adjunción-de-una-entrada" id="toc-secuencia-vacía-y-adjunción-de-una-entrada" class="nav-link" data-scroll-target="#secuencia-vacía-y-adjunción-de-una-entrada">16.50. Secuencia vacía y adjunción de una entrada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00105" id="toc-tlog-def-00105" class="nav-link" data-scroll-target="#tlog-def-00105">Definición 16.50.1 — Extensión por un valor final</a></li>
+  </ul></li>
+  <li><a href="#adjunción-y-descomposición-de-secuencias" id="toc-adjunción-y-descomposición-de-secuencias" class="nav-link" data-scroll-target="#adjunción-y-descomposición-de-secuencias">16.51. Adjunción y descomposición de secuencias</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00099" id="toc-tlog-pro-00099" class="nav-link" data-scroll-target="#tlog-pro-00099">Proposición 16.51.1 — Toda secuencia no vacía tiene último término único</a></li>
+  </ul></li>
+  <li><a href="#inducción-estructural-sobre-secuencias-finitas" id="toc-inducción-estructural-sobre-secuencias-finitas" class="nav-link" data-scroll-target="#inducción-estructural-sobre-secuencias-finitas">16.52. Inducción estructural sobre secuencias finitas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00075" id="toc-tlog-mth-00075" class="nav-link" data-scroll-target="#tlog-mth-00075">Metateorema 16.52.1 — Principio de inducción por adjunción</a></li>
+  </ul></li>
+  <li><a href="#construcción-conjuntista-de-concatenación" id="toc-construcción-conjuntista-de-concatenación" class="nav-link" data-scroll-target="#construcción-conjuntista-de-concatenación">16.53. Construcción conjuntista de concatenación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00106" id="toc-tlog-def-00106" class="nav-link" data-scroll-target="#tlog-def-00106">Definición 16.53.1 — Unión del prefijo y la cola desplazada</a></li>
+  </ul></li>
+  <li><a href="#tipo-y-longitud-de-concatenación" id="toc-tipo-y-longitud-de-concatenación" class="nav-link" data-scroll-target="#tipo-y-longitud-de-concatenación">16.54. Tipo y longitud de concatenación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00100" id="toc-tlog-pro-00100" class="nav-link" data-scroll-target="#tlog-pro-00100">Proposición 16.54.1 — Concatenación de secuencias finitas</a></li>
+  </ul></li>
+  <li><a href="#ecuaciones-características-de-concatenación" id="toc-ecuaciones-características-de-concatenación" class="nav-link" data-scroll-target="#ecuaciones-características-de-concatenación">16.55. Ecuaciones características de concatenación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00052" id="toc-tlog-lem-00052" class="nav-link" data-scroll-target="#tlog-lem-00052">Lema 16.55.1 — Vacío derecho y compatibilidad con adjunción</a></li>
+  </ul></li>
+  <li><a href="#leyes-de-unidad-y-asociatividad" id="toc-leyes-de-unidad-y-asociatividad" class="nav-link" data-scroll-target="#leyes-de-unidad-y-asociatividad">16.56. Leyes de unidad y asociatividad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00076" id="toc-tlog-mth-00076" class="nav-link" data-scroll-target="#tlog-mth-00076">Metateorema 16.56.1 — El monoide de secuencias finitas</a></li>
+  </ul></li>
+  <li><a href="#orden-por-prefijos" id="toc-orden-por-prefijos" class="nav-link" data-scroll-target="#orden-por-prefijos">16.57. Orden por prefijos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00101" id="toc-tlog-pro-00101" class="nav-link" data-scroll-target="#tlog-pro-00101">Proposición 16.57.1 — Restricción inicial como orden parcial</a></li>
+  </ul></li>
+  <li><a href="#cancelación-por-prefijo-fijado" id="toc-cancelación-por-prefijo-fijado" class="nav-link" data-scroll-target="#cancelación-por-prefijo-fijado">16.58. Cancelación por prefijo fijado</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00053" id="toc-tlog-lem-00053" class="nav-link" data-scroll-target="#tlog-lem-00053">Lema 16.58.1 — Inyectividad de la concatenación derecha con prefijo fijo</a></li>
+  </ul></li>
+  <li><a href="#aplicación-coordenada-a-coordenada" id="toc-aplicación-coordenada-a-coordenada" class="nav-link" data-scroll-target="#aplicación-coordenada-a-coordenada">16.59. Aplicación coordenada a coordenada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00054" id="toc-tlog-lem-00054" class="nav-link" data-scroll-target="#tlog-lem-00054">Lema 16.59.1 — Transformación de secuencias mediante una función</a></li>
+  </ul></li>
+  <li><a href="#recursión-y-plegado-de-secuencias-finitas" id="toc-recursión-y-plegado-de-secuencias-finitas" class="nav-link" data-scroll-target="#recursión-y-plegado-de-secuencias-finitas">16.60. Recursión y plegado de secuencias finitas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00077" id="toc-tlog-mth-00077" class="nav-link" data-scroll-target="#tlog-mth-00077">Metateorema 16.60.1 — Plegado izquierdo único en cualquier alfabeto conjunto</a></li>
+  </ul></li>
+  <li><a href="#descomposición-como-unión-de-potencias-finitas" id="toc-descomposición-como-unión-de-potencias-finitas" class="nav-link" data-scroll-target="#descomposición-como-unión-de-potencias-finitas">16.61. Descomposición como unión de potencias finitas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00102" id="toc-tlog-pro-00102" class="nav-link" data-scroll-target="#tlog-pro-00102">Proposición 16.61.1 — Familia indexada de espacios de palabras</a></li>
+  </ul></li>
+  <li><a href="#salida-matemática-de-la-infraestructura-conjuntista" id="toc-salida-matemática-de-la-infraestructura-conjuntista" class="nav-link" data-scroll-target="#salida-matemática-de-la-infraestructura-conjuntista">16.62. Salida matemática de la infraestructura conjuntista</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00023" id="toc-tlog-cor-00023" class="nav-link" data-scroll-target="#tlog-cor-00023">Corolario 16.62.1 — Interfaz finitaria cerrada dentro de ZF objeto</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 16 — Naturales, inducción, recursión y secuencias finitas</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-15.html">← Capítulo 15</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-17.html">Capítulo 17 →</a></p>
+<section id="del-axioma-del-infinito-al-objeto-omega" class="level2">
+<h2 class="anchored" data-anchor-id="del-axioma-del-infinito-al-objeto-omega">16.0. Del axioma del infinito al objeto <span class="math inline">\(\omega\)</span></h2>
+<p>El Capítulo 12 estableció el axioma objeto del infinito (<a href="../../../libros/otros/tratado-de-logica/capitulo-12.html#tlog-axm-00009">TLOG-AXM-00009</a>) <strong>sin</strong> introducir como primitivos el vacío ni el sucesor. Los capítulos 12–13 demostraron las operaciones de vacío, singleton y unión; el Capítulo 14 construyó funciones como grafos, y el Capítulo 15 controló órdenes y cocientes. Los §§16.1–16.62 construyen <span class="math inline">\(\omega\)</span> como <strong>conjunto mínimo inductivo</strong>, prueban inducción, recursión y leyes aritméticas, y completan el buen orden de <span class="math inline">\((\omega,\in)\)</span>, las secuencias finitas y sus operaciones. Cada paso conserva sus propias obligaciones de prueba; ninguno se infiere de la mera existencia de <span class="math inline">\(\omega\)</span>.</p>
+<p><strong>Estratos y pruebas.</strong> Toda declaración de la forma «<span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span> demuestra» corresponde a una derivación finita, reconstruida con las reglas de primer orden de los capítulos 9–10, desde instancias expresas de los axiomas objeto del Capítulo 12. <span class="math inline">\(\varnothing\)</span>, <span class="math inline">\(S(a)\)</span>, <span class="math inline">\(\operatorname{Ind}(I)\)</span> y <span class="math inline">\(\omega\)</span> son abreviaciones eliminables de fórmulas de la <strong>signatura pura</strong> <span class="math inline">\(\tau_\in\)</span>. La metateoría <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathsf{ZF}\)</span> no incorpora AC. La prueba de inducción se formula como un <strong>esquema para cada fórmula fija</strong> <span class="math inline">\(\theta\)</span>; no se cuantifica en el lenguaje objeto sobre fórmulas como si fueran objetos de una nueva sort.</p>
+<p><strong>Procedencia:</strong> reconstrucción interna desde los resultados <a href="../../../libros/otros/tratado-de-logica/capitulo-12.html#tlog-pro-00035">TLOG-PRO-00035</a>, <a href="../../../libros/otros/tratado-de-logica/capitulo-12.html#tlog-axm-00009">TLOG-AXM-00009</a>, <a href="../../../libros/otros/tratado-de-logica/capitulo-12.html#tlog-axm-00010">TLOG-AXM-00010</a>, <a href="../../../libros/otros/tratado-de-logica/capitulo-13.html#tlog-pro-00039">TLOG-PRO-00039</a>, <a href="../../../libros/otros/tratado-de-logica/capitulo-13.html#tlog-mth-00054">TLOG-MTH-00054</a> y sus dependencias. Se conservan las identidades <code>TLOG-SRC-0002</code>, <code>TLOG-SRC-0003</code> y <code>TLOG-SRC-00011</code> en sus alcances registrados; no se declara nuevo cotejo de páginas ni importación de demostraciones.</p>
+</section>
+<section id="convenio-fundacional-para-naturales" class="level2">
+<h2 class="anchored" data-anchor-id="convenio-fundacional-para-naturales">16.1. Convenio fundacional para naturales</h2>
+<section id="tlog-cnv-00023" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00023">Convención 16.1.1 — Construcción de von Neumann y tipado de las abreviaciones</h3>
+<p>La letra <span class="math inline">\(I\)</span> denotará un <strong>conjunto inductivo particular</strong> y <span class="math inline">\(J\)</span> uno cualquiera. La grafía <span class="math inline">\(0:=\varnothing\)</span> emplea el único vacío demostrado en §12.26. La expresión <span class="math inline">\(S(a)\)</span> será una abreviación guardada por una <strong>gráfica funcional total</strong>, cuya existencia y unicidad se probarán antes de usarla. Los futuros nombres <span class="math inline">\(\omega\)</span>, <span class="math inline">\(n+1\)</span> y <span class="math inline">\(\mathbb N\)</span> no amplían la firma objeto <span class="math inline">\(\tau_\in\)</span> de modo primitivo. Aquí <span class="math inline">\(\mathbb N\)</span> no se introduce como conjunto distinto de <span class="math inline">\(\omega\)</span>.</p>
+<p>La afirmación <span class="math inline">\(X\subseteq Y\)</span> se expande como <span class="math inline">\(\forall u(u\in X\to u\in Y)\)</span>. Cada vez que se aplique separación o se aniden las gráficas del vacío y del sucesor, los vinculantes auxiliares serán renombrados por conversión alfa. Ningún conjunto de «todos los conjuntos inductivos» se presupone.</p>
+</section>
+</section>
+<section id="gráfica-de-la-operación-sucesor" class="level2">
+<h2 class="anchored" data-anchor-id="gráfica-de-la-operación-sucesor">16.2. Gráfica de la operación sucesor</h2>
+<section id="tlog-def-00096" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00096">Definición 16.2.1 — Fórmula pura de sucesor</h3>
+<p>Para variables distintas <span class="math inline">\(a,b\)</span> definimos la <strong>fórmula pura</strong> <span class="math display">\[
+\boxed{\operatorname{Succ}(b,a):\Longleftrightarrow
+\forall u\,[u\in b\leftrightarrow(u\in a\lor u\doteq a)].}
+\]</span> El término aparente <span class="math inline">\(a\cup\{a\}\)</span> no figura en la definición: es su representación editorial después de verificar que <span class="math inline">\(b\)</span> existe y es único. La variable <span class="math inline">\(u\)</span> se toma fresca en cada expansión; <span class="math inline">\(\operatorname{Succ}\)</span> no es un nuevo símbolo relacional objeto.</p>
+</section>
+</section>
+<section id="existencia-y-unicidad-del-sucesor" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-y-unicidad-del-sucesor">16.3. Existencia y unicidad del sucesor</h2>
+<section id="tlog-pro-00081" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00081">Proposición 16.3.1 — El sucesor existe para todo conjunto</h3>
+<p>En ZF objeto se demuestra el cierre universal de <span class="math display">\[
+\boxed{\forall a\,\exists!b\,\operatorname{Succ}(b,a).}
+\]</span> Al introducir la abreviación <span class="math inline">\(S(a)=a\cup\{a\}\)</span> quedan probadas <span class="math inline">\(a\in S(a)\)</span>, <span class="math inline">\(a\subseteq S(a)\)</span> y <span class="math inline">\(S(a)\ne\varnothing\)</span>.</p>
+<p><strong>Demostración.</strong> El axioma de pares produce el singleton <span class="math inline">\(s=\{a\}\)</span> como <span class="math inline">\(\{a,a\}\)</span>. Otro par produce <span class="math inline">\(p=\{a,s\}\)</span>; la unión del par da <span class="math inline">\(b=\bigcup p\)</span>, y su cláusula de pertenencia es <span class="math inline">\(u\in b\leftrightarrow(u\in a\lor u\in s)\)</span>. La caracterización de singleton convierte la segunda disyunción en <span class="math inline">\(u\doteq a\)</span>. Si dos objetos <span class="math inline">\(b,b'\)</span> satisfacen la fórmula, tienen exactamente los mismos elementos, luego son iguales por extensionalidad. La instanciación <span class="math inline">\(u=a\)</span> proporciona <span class="math inline">\(a\in S(a)\)</span>; la disyunción izquierda prueba <span class="math inline">\(a\subseteq S(a)\)</span>. Como contiene <span class="math inline">\(a\)</span>, <span class="math inline">\(S(a)\)</span> no es vacío. Todo el argumento usa un número <strong>finito</strong> de testigos, y no una función de elección. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="definición-de-conjunto-inductivo" class="level2">
+<h2 class="anchored" data-anchor-id="definición-de-conjunto-inductivo">16.4. Definición de conjunto inductivo</h2>
+<section id="tlog-def-00097" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00097">Definición 16.4.1 — Guarda inductiva sin cuantificación sobre fórmulas</h3>
+<p>Una fórmula <span class="math inline">\(\operatorname{Ind}(I)\)</span> afirma que <span class="math inline">\(I\)</span> contiene el vacío y es cerrado bajo sucesor. Su <strong>expansión pura</strong>, sin términos funcionales nuevos, es <span class="math display">\[
+\boxed{\begin{aligned}
+\operatorname{Ind}(I):\Longleftrightarrow{}&amp;\exists e\,[(\forall u\,\neg(u\in e))\land e\in I]\\
+&amp;\land\forall a\,[a\in I\to\exists b\,(b\in I\land\operatorname{Succ}(b,a))].
+\end{aligned}}
+\]</span> Por la unicidad del vacío (§12.26) y de sucesor (§16.3), equivale a <span class="math inline">\(0\in I\land\forall a\in I\;S(a)\in I\)</span>. La grafía acotada es sólo una lectura editorial de la fórmula original.</p>
+</section>
+</section>
+<section id="el-axioma-del-infinito-y-la-existencia-de-inductivos" class="level2">
+<h2 class="anchored" data-anchor-id="el-axioma-del-infinito-y-la-existencia-de-inductivos">16.5. El axioma del infinito y la existencia de inductivos</h2>
+<section id="tlog-pro-00082" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00082">Proposición 16.5.1 — Recuperación exacta del axioma de infinito</h3>
+<p>Se demuestra <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\vdash\exists I\,\operatorname{Ind}(I)\)</span>. Más precisamente, la <strong>sentencia objeto</strong> de infinito de §12.8 coincide, después de desarrollar <span class="math inline">\(\operatorname{Succ}\)</span> y la cláusula del vacío, con <span class="math inline">\(\exists I\,\operatorname{Ind}(I)\)</span>.</p>
+<p><strong>Demostración.</strong> La matriz literal de §12.8 exige un <span class="math inline">\(I\)</span> con un elemento <span class="math inline">\(e\)</span> sin miembros y, para cada <span class="math inline">\(a\in I\)</span>, un miembro <span class="math inline">\(b\in I\)</span> con <span class="math inline">\(\forall u(u\in b\leftrightarrow(u\in a\lor u\doteq a))\)</span>. Esta segunda matriz es exactamente <span class="math inline">\(\operatorname{Succ}(b,a)\)</span> de §16.2. La primera es la cláusula del vacío de §16.4. No se añade una hipótesis nueva ni se modifica la interpretación del infinito. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="candidato-mínimo-dentro-de-un-testigo-inductivo" class="level2">
+<h2 class="anchored" data-anchor-id="candidato-mínimo-dentro-de-un-testigo-inductivo">16.6. Candidato mínimo dentro de un testigo inductivo</h2>
+<section id="tlog-def-00098" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00098">Definición 16.6.1 — Intersección definible de inductivos acotados</h3>
+<p>Fijado un conjunto <span class="math inline">\(I\)</span> que satisface <span class="math inline">\(\operatorname{Ind}(I)\)</span>, consideramos la fórmula <span class="math display">\[
+\boxed{\Omega(W,I):\Longleftrightarrow
+\forall x\,[x\in W\leftrightarrow
+(x\in I\land\forall J\,((J\subseteq I\land\operatorname{Ind}(J))\to x\in J))].}
+\]</span> Se cuantifica <span class="math inline">\(J\)</span> <strong>entre objetos del universo de ZF</strong>, no sobre una clase postulada como conjunto. La instancia de separación usa únicamente <span class="math inline">\(I\)</span> como ambiente y la matriz de la derecha como condición. Denotaremos el único conjunto producido por <span class="math inline">\(W_I\)</span> después de probar su existencia.</p>
+</section>
+</section>
+<section id="el-candidato-es-inductivo" class="level2">
+<h2 class="anchored" data-anchor-id="el-candidato-es-inductivo">16.7. El candidato es inductivo</h2>
+<section id="tlog-pro-00083" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00083">Proposición 16.7.1 — Existencia de <span class="math inline">\(W_I\)</span> y clausura por sucesor</h3>
+<p>Si <span class="math inline">\(\operatorname{Ind}(I)\)</span>, existe un único <span class="math inline">\(W_I\subseteq I\)</span> que satisface <span class="math inline">\(\Omega(W_I,I)\)</span>, y además <span class="math inline">\(\operatorname{Ind}(W_I)\)</span>.</p>
+<p><strong>Demostración.</strong> Aplicamos separación a <span class="math inline">\(I\)</span> con la matriz <span class="math inline">\(\forall J\,((J\subseteq I\land\operatorname{Ind}(J))\to x\in J)\)</span>, cuya sustitución literal es segura tras renombrar auxiliares. Se obtiene <span class="math inline">\(W_I\)</span> con la equivalencia de §16.6, y su unicidad es extensional. Como todo inductivo <span class="math inline">\(J\)</span> contiene <span class="math inline">\(0\)</span>, y <span class="math inline">\(I\)</span> también lo contiene, <span class="math inline">\(0\)</span> satisface la condición, luego <span class="math inline">\(0\in W_I\)</span>. Si <span class="math inline">\(a\in W_I\)</span>, entonces <span class="math inline">\(a\in I\)</span> y, por <span class="math inline">\(\operatorname{Ind}(I)\)</span>, <span class="math inline">\(S(a)\in I\)</span>. Para cada <span class="math inline">\(J\subseteq I\)</span> inductivo, la definición de <span class="math inline">\(W_I\)</span> da <span class="math inline">\(a\in J\)</span>; su clausura da <span class="math inline">\(S(a)\in J\)</span>. Por tanto <span class="math inline">\(S(a)\)</span> satisface la misma matriz y pertenece a <span class="math inline">\(W_I\)</span>. Se ha demostrado <span class="math inline">\(\operatorname{Ind}(W_I)\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="minimalidad-sin-formar-una-clase-de-inductivos" class="level2">
+<h2 class="anchored" data-anchor-id="minimalidad-sin-formar-una-clase-de-inductivos">16.8. Minimalidad sin formar una clase de inductivos</h2>
+<section id="tlog-lem-00043" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00043">Lema 16.8.1 — <span class="math inline">\(W_I\)</span> está contenido en todo conjunto inductivo</h3>
+<p>Para <span class="math inline">\(\operatorname{Ind}(I)\)</span> y cualquier <span class="math inline">\(J\)</span>, <span class="math display">\[
+\boxed{\operatorname{Ind}(J)\ \Longrightarrow\ W_I\subseteq J.}
+\]</span></p>
+<p><strong>Demostración.</strong> Dado un conjunto inductivo <span class="math inline">\(J\)</span>, la intersección <span class="math inline">\(K=I\cap J\)</span> existe por separación (§13.13). Tanto <span class="math inline">\(I\)</span> como <span class="math inline">\(J\)</span> contienen el vacío, así que <span class="math inline">\(0\in K\)</span>. Si <span class="math inline">\(a\in K\)</span>, la clausura de ambos inductivos asegura <span class="math inline">\(S(a)\in K\)</span>. De aquí <span class="math inline">\(\operatorname{Ind}(K)\)</span> y <span class="math inline">\(K\subseteq I\)</span>. Por definición de <span class="math inline">\(W_I\)</span>, todos sus miembros están en todo inductivo contenido en <span class="math inline">\(I\)</span>, en particular en <span class="math inline">\(K\)</span>; luego <span class="math inline">\(W_I\subseteq K\subseteq J\)</span>. El argumento <strong>no</strong> supone que exista un conjunto de <em>todos</em> los inductivos. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="independencia-del-testigo-de-infinito" class="level2">
+<h2 class="anchored" data-anchor-id="independencia-del-testigo-de-infinito">16.9. Independencia del testigo de infinito</h2>
+<section id="tlog-mth-00067" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00067">Metateorema 16.9.1 — Existencia y unicidad del menor inductivo</h3>
+<p>ZF objeto demuestra, al expandir todas las macros, <span class="math display">\[
+\boxed{\exists!W\,[\operatorname{Ind}(W)\land
+\forall J(\operatorname{Ind}(J)\to W\subseteq J)].}
+\]</span></p>
+<p><strong>Demostración.</strong> Por §16.5 existe un testigo inductivo <span class="math inline">\(I\)</span>. Las §§16.7–16.8 producen un <span class="math inline">\(W_I\)</span> inductivo que está contenido en todo inductivo. Si <span class="math inline">\(I'\)</span> es otro testigo, también <span class="math inline">\(W_{I'}\)</span> es inductivo y mínimo. La minimalidad de ambos produce <span class="math inline">\(W_I\subseteq W_{I'}\)</span> y <span class="math inline">\(W_{I'}\subseteq W_I\)</span>, de donde <span class="math inline">\(W_I=W_{I'}\)</span> por extensionalidad. Igualmente, cualesquiera conjuntos <span class="math inline">\(W,W'\)</span> que satisfagan la propiedad enmarcada se contienen mutuamente. La prueba <strong>descarga</strong> el testigo original <span class="math inline">\(I\)</span>: el objeto final no depende de una elección de un inductivo privilegiado. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="el-nombre-omega-como-abreviación-conservativa" class="level2">
+<h2 class="anchored" data-anchor-id="el-nombre-omega-como-abreviación-conservativa">16.10. El nombre <span class="math inline">\(\omega\)</span> como abreviación conservativa</h2>
+<section id="tlog-def-00099" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00099">Definición 16.10.1 — Gráfica única de los naturales de von Neumann</h3>
+<p>Por el teorema anterior autorizamos <span class="math inline">\(\omega\)</span> como el único conjunto <span class="math inline">\(W\)</span> que satisface <span class="math display">\[
+\boxed{\operatorname{Ind}(W)\land
+\forall J(\operatorname{Ind}(J)\to W\subseteq J).}
+\]</span> No se agrega una constante primitiva <span class="math inline">\(\omega\)</span> a <span class="math inline">\(\tau_\in\)</span>. Toda aparición se elimina mediante sustitución de su <strong>gráfica única</strong>, con renombrados alfa, del mismo modo que las extensiones conservativas del Capítulo 13. Los símbolos <span class="math inline">\(0\)</span> y <span class="math inline">\(S\)</span> conservan sus definiciones previas; el conjunto <span class="math inline">\(\omega\)</span> así construido es el conjunto de naturales de von Neumann <strong>dentro de ZF objeto</strong>. Esto no es una identificación de <span class="math inline">\(\omega\)</span> objeto con la colección <span class="math inline">\(\omega\)</span> de la metateoría externa.</p>
+</section>
+</section>
+<section id="ecuaciones-de-clausura-y-minimalidad-de-omega" class="level2">
+<h2 class="anchored" data-anchor-id="ecuaciones-de-clausura-y-minimalidad-de-omega">16.11. Ecuaciones de clausura y minimalidad de <span class="math inline">\(\omega\)</span></h2>
+<section id="tlog-pro-00084" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00084">Proposición 16.11.1 — El menor inductivo contiene cero y todos sus sucesores</h3>
+<p>Se deducen las cláusulas <span class="math display">\[
+\boxed{0\in\omega,\qquad
+\forall n\in\omega\;S(n)\in\omega,\qquad
+\forall I\,(\operatorname{Ind}(I)\to\omega\subseteq I).}
+\]</span> Además <span class="math inline">\(\omega\ne\varnothing\)</span> y ningún inductivo es vacío.</p>
+<p><strong>Demostración.</strong> Las dos primeras cláusulas son las de <span class="math inline">\(\operatorname{Ind}(\omega)\)</span> obtenidas en §§16.7–16.10; la tercera es la minimalidad §16.8, ya independizada del testigo. Si <span class="math inline">\(0\in\omega\)</span>, este conjunto tiene al menos un elemento. Y si <span class="math inline">\(I\)</span> es inductivo, <span class="math inline">\(0\in I\)</span> excluye que sea vacío. No hay inducción circular: todas estas cláusulas se demostraron desde <strong>infinito más separación</strong> antes de formular el principio de inducción. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="esquema-de-inducción-interna" class="level2">
+<h2 class="anchored" data-anchor-id="esquema-de-inducción-interna">16.12. Esquema de inducción interna</h2>
+<section id="tlog-mth-00068" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00068">Metateorema 16.12.1 — Inducción para cada fórmula del lenguaje de pertenencia</h3>
+<p>Sea <span class="math inline">\(\theta(n,\bar p)\)</span> <strong>una fórmula fija</strong> de la firma pura, con las variables auxiliares elegidas frescas. ZF objeto demuestra su instancia de inducción, con clausura universal de los parámetros: <span class="math display">\[
+\boxed{\begin{aligned}
+\forall\bar p\;\bigl[&amp;\theta(0,\bar p)\land
+\forall n\in\omega(\theta(n,\bar p)\to\theta(S(n),\bar p))\\
+&amp;\longrightarrow\forall n\in\omega\;\theta(n,\bar p)\bigr].
+\end{aligned}}
+\]</span> De forma equivalente: todo <span class="math inline">\(P\subseteq\omega\)</span> que contiene <span class="math inline">\(0\)</span> y satisface <span class="math inline">\(n\in P\Rightarrow S(n)\in P\)</span> para <span class="math inline">\(n\in\omega\)</span> es <span class="math inline">\(P=\omega\)</span>.</p>
+<p><strong>Demostración.</strong> Fijemos <span class="math inline">\(\bar p\)</span> y supongamos las dos hipótesis del antecedente. Por una <strong>instancia específica</strong> del esquema de separación construimos <span class="math inline">\(P=\{n\in\omega:\theta(n,\bar p)\}\)</span>. La hipótesis inicial da <span class="math inline">\(0\in P\)</span>. Si <span class="math inline">\(n\in P\)</span>, entonces <span class="math inline">\(n\in\omega\)</span> y <span class="math inline">\(\theta(n,\bar p)\)</span>; por la segunda hipótesis <span class="math inline">\(\theta(S(n),\bar p)\)</span>, y por clausura de <span class="math inline">\(\omega\)</span>, <span class="math inline">\(S(n)\in\omega\)</span>; luego <span class="math inline">\(S(n)\in P\)</span>. Así <span class="math inline">\(P\)</span> es inductivo. La minimalidad de <span class="math inline">\(\omega\)</span> (§16.11) da <span class="math inline">\(\omega\subseteq P\)</span>; como <span class="math inline">\(P\subseteq\omega\)</span> por construcción, ambos coinciden. Por ello todo <span class="math inline">\(n\in\omega\)</span> satisface <span class="math inline">\(\theta(n,\bar p)\)</span>. Se descargan las hipótesis y luego se universalizan los parámetros. La prueba es <strong>esquemática</strong>: para cada <span class="math inline">\(\theta\)</span> se registra una derivación finita; no se introduce un cuantificador objeto sobre códigos de fórmulas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cero-no-es-sucesor-e-inyectividad-de-s" class="level2">
+<h2 class="anchored" data-anchor-id="cero-no-es-sucesor-e-inyectividad-de-s">16.13. Cero no es sucesor e inyectividad de <span class="math inline">\(S\)</span></h2>
+<section id="tlog-pro-00085" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00085">Proposición 16.13.1 — Separación entre cero y sucesores, y cancelación</h3>
+<p>Para <strong>todos</strong> los conjuntos <span class="math inline">\(a,b\)</span>, no sólo los naturales, ZF objeto demuestra <span class="math display">\[
+\boxed{S(a)\ne0,\qquad S(a)=S(b)\ \longrightarrow\ a=b.}
+\]</span></p>
+<p><strong>Demostración.</strong> <span class="math inline">\(a\in S(a)\)</span> por §16.3, mientras que <span class="math inline">\(0\)</span> carece de miembros; así <span class="math inline">\(S(a)\ne0\)</span>. Supongamos <span class="math inline">\(S(a)=S(b)\)</span> y <span class="math inline">\(a\ne b\)</span>. Dado que <span class="math inline">\(a\in S(a)=S(b)=b\cup\{b\}\)</span>, la fórmula de sucesor y <span class="math inline">\(a\ne b\)</span> implican <span class="math inline">\(a\in b\)</span>. Simétricamente, <span class="math inline">\(b\in a\)</span>. El conjunto <span class="math inline">\(\{a,b\}\)</span> es no vacío por el axioma de pares; la regularidad aplicada a él aporta un miembro <span class="math inline">\(z\in\{a,b\}\)</span> sin elementos comunes con <span class="math inline">\(\{a,b\}\)</span>. Pero si <span class="math inline">\(z=a\)</span>, entonces <span class="math inline">\(b\in a\cap\{a,b\}\)</span>; si <span class="math inline">\(z=b\)</span>, <span class="math inline">\(a\in b\cap\{a,b\}\)</span>. Ambos casos contradicen la regularidad. Así <span class="math inline">\(a=b\)</span>. La inyectividad <strong>sí utiliza fundamentación</strong>; la existencia del sucesor no la utiliza. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="predecesor-de-todo-natural-no-nulo" class="level2">
+<h2 class="anchored" data-anchor-id="predecesor-de-todo-natural-no-nulo">16.14. Predecesor de todo natural no nulo</h2>
+<section id="tlog-pro-00086" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00086">Proposición 16.14.1 — Cero o sucesor de un único natural</h3>
+<p>Para cada <span class="math inline">\(n\in\omega\)</span> se demuestra <span class="math display">\[
+\boxed{n=0\quad\lor\quad\exists!m\in\omega\;(n=S(m)).}
+\]</span> La disyunción es exclusiva y <span class="math inline">\(n\ne0\)</span> implica el segundo miembro.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(\theta(n)\)</span> la fórmula <span class="math inline">\(n=0\lor\exists m\,(m\in\omega\land n=S(m))\)</span>, entendida con expansión de las descripciones únicas. La base <span class="math inline">\(\theta(0)\)</span> es inmediata. Supongamos <span class="math inline">\(n\in\omega\)</span> y <span class="math inline">\(\theta(n)\)</span>. Independientemente de cuál de sus disyuntos sea verdadero, <span class="math inline">\(S(n)\)</span> tiene el testigo <span class="math inline">\(m=n\in\omega\)</span> para el segundo disyunto; por tanto vale <span class="math inline">\(\theta(S(n))\)</span>. Por inducción (§16.12), todo natural satisface <span class="math inline">\(\theta\)</span>. Si <span class="math inline">\(n=S(m)=S(m')\)</span>, la inyectividad de §16.13 da <span class="math inline">\(m=m'\)</span>. Asimismo, <span class="math inline">\(0\)</span> no es sucesor de ningún conjunto, por §16.13, y los disyuntos no pueden darse simultáneamente. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cero-pertenece-a-todo-natural-no-nulo" class="level2">
+<h2 class="anchored" data-anchor-id="cero-pertenece-a-todo-natural-no-nulo">16.15. Cero pertenece a todo natural no nulo</h2>
+<section id="tlog-pro-00087" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00087">Proposición 16.15.1 — El primer elemento aparece en cada sucesor</h3>
+<p>Para <span class="math inline">\(n\in\omega\)</span>: <span class="math display">\[
+\boxed{n\ne0\quad\Longrightarrow\quad 0\in n.}
+\]</span></p>
+<p><strong>Demostración.</strong> Inducimos sobre <span class="math inline">\(n\)</span> la fórmula <span class="math inline">\(n=0\lor0\in n\)</span>. En <span class="math inline">\(n=0\)</span> vale el primer disyunto. Si <span class="math inline">\(n=0\)</span>, entonces <span class="math inline">\(0\in S(n)\)</span> porque <span class="math inline">\(n\in S(n)\)</span>. Si <span class="math inline">\(0\in n\)</span>, entonces <span class="math inline">\(0\in S(n)\)</span> por <span class="math inline">\(n\subseteq S(n)\)</span>. En ambos casos vale la fórmula para el sucesor, y §16.12 concluye que todo natural satisface la disyunción. Si <span class="math inline">\(n\ne0\)</span>, sólo queda <span class="math inline">\(0\in n\)</span>. La prueba no requiere que se haya demostrado todavía que <span class="math inline">\(\in\)</span> es lineal sobre <span class="math inline">\(\omega\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="los-naturales-como-conjuntos-transitivos" class="level2">
+<h2 class="anchored" data-anchor-id="los-naturales-como-conjuntos-transitivos">16.16. Los naturales como conjuntos transitivos</h2>
+<section id="tlog-pro-00088" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00088">Proposición 16.16.1 — Cada natural es transitivo</h3>
+<p>Un conjunto <span class="math inline">\(n\)</span> es <strong>transitivo</strong> si <span class="math inline">\(\forall x\in n\,(x\subseteq n)\)</span>. En ZF objeto, <span class="math display">\[
+\boxed{\forall n\in\omega\;\forall x\in n\;(x\subseteq n).}
+\]</span></p>
+<p><strong>Demostración.</strong> La propiedad es vacuamente cierta para <span class="math inline">\(n=0\)</span>. Supongamos que <span class="math inline">\(n\)</span> es transitivo y sea <span class="math inline">\(x\in S(n)=n\cup\{n\}\)</span>. Si <span class="math inline">\(x=n\)</span>, entonces <span class="math inline">\(x\subseteq S(n)\)</span> por §16.3. Si <span class="math inline">\(x\in n\)</span>, la hipótesis inductiva da <span class="math inline">\(x\subseteq n\subseteq S(n)\)</span>. Por tanto <span class="math inline">\(S(n)\)</span> es transitivo. La instancia de inducción de §16.12 prueba la propiedad para todo <span class="math inline">\(n\in\omega\)</span>. En ningún paso se supone que <strong>todo conjunto inductivo</strong> sea transitivo, afirmación que sería falsa. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="transitividad-del-propio-omega" class="level2">
+<h2 class="anchored" data-anchor-id="transitividad-del-propio-omega">16.17. Transitividad del propio <span class="math inline">\(\omega\)</span></h2>
+<section id="tlog-pro-00089" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00089">Proposición 16.17.1 — Todo miembro de un natural es natural</h3>
+<p>Se demuestra la transitividad de <span class="math inline">\(\omega\)</span>: <span class="math display">\[
+\boxed{\forall n\in\omega\; n\subseteq\omega.}
+\]</span> En particular, <span class="math inline">\(m\in n\in\omega\Rightarrow m\in\omega\)</span>.</p>
+<p><strong>Demostración.</strong> Separación forma el conjunto <span class="math inline">\(P=\{n\in\omega:n\subseteq\omega\}\)</span>. Cero pertenece a <span class="math inline">\(P\)</span>, porque el vacío es subconjunto de todo conjunto. Supongamos <span class="math inline">\(n\in P\)</span>; entonces <span class="math inline">\(n\subseteq\omega\)</span> y <span class="math inline">\(n\in\omega\)</span>. Por clausura inductiva, <span class="math inline">\(S(n)\in\omega\)</span>; además <span class="math inline">\(S(n)=n\cup\{n\}\subseteq\omega\)</span> ya que los elementos de <span class="math inline">\(n\)</span> están en <span class="math inline">\(\omega\)</span> y también <span class="math inline">\(n\in\omega\)</span>. De aquí <span class="math inline">\(S(n)\in P\)</span>. Aplicando inducción (§16.12), <span class="math inline">\(P=\omega\)</span>, y por definición de <span class="math inline">\(P\)</span>, todos los <span class="math inline">\(n\in\omega\)</span> son subconjuntos de <span class="math inline">\(\omega\)</span>. Esta demostración usa la clausura de <span class="math inline">\(\omega\)</span> y no presupone orden total de pertenencia. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="estructura-de-peano-y-límites-del-bloque" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-de-peano-y-límites-del-bloque">16.18. Estructura de Peano y límites del bloque</h2>
+<section id="tlog-mth-00069" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00069">Metateorema 16.18.1 — Estructura interna con cero, sucesor e inducción</h3>
+<p>Las siguientes afirmaciones tienen demostraciones en ZF objeto, con las abreviaciones traducidas a <span class="math inline">\(\tau_\in\)</span>: <span class="math display">\[
+\boxed{\begin{gathered}
+0\in\omega,\qquad S:\omega\to\omega,\qquad
+\forall n\in\omega\;S(n)\ne0,\\
+\forall n,m\in\omega\ (S(n)=S(m)\to n=m),\\
+\text{Inducción para cada fórmula }\theta(n,\bar p)
+\text{ en el lenguaje puro de pertenencia.}
+\end{gathered}}
+\]</span></p>
+<p><strong>Demostración.</strong> Existencia y cierre de <span class="math inline">\(\omega\)</span> son §16.11. La fórmula total <span class="math inline">\(\operatorname{Succ}\)</span> de §16.3 determina un <strong>único</strong> valor <span class="math inline">\(S(n)\in\omega\)</span> para cada <span class="math inline">\(n\in\omega\)</span>, y por reemplazo, o separando dentro de <span class="math inline">\(\omega\times\omega\)</span>, existe su grafo restringido al dominio <span class="math inline">\(\omega\)</span>. Distinguimos la operación sucesor, que es una macro con una gráfica única, de este conjunto-grafo <span class="math inline">\(S\upharpoonright\omega\)</span>, cuya existencia se justifica ahora. La separación de cero y la inyectividad son §16.13; el esquema de inducción, §16.12. Esto produce el fragmento estructural de Peano necesario para la futura aritmetización, <strong>sin</strong> haber construido todavía las operaciones aritméticas <span class="math inline">\(+\)</span> y <span class="math inline">\(\cdot\)</span>, la recursión primitiva ni las secuencias finitas. No afirmamos todavía los axiomas de Peano como una teoría formal de firma aritmética cuyo sistema deductivo haya sido definido aquí; sólo sus traducciones demostrables en ZF objeto. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="balance-del-microtramo-y-obligaciones-posteriores" class="level2">
+<h2 class="anchored" data-anchor-id="balance-del-microtramo-y-obligaciones-posteriores">16.19. Balance del microtramo y obligaciones posteriores</h2>
+<section id="tlog-cor-00020" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00020">Corolario 16.19.1 — Núcleo natural construido sin elección</h3>
+<p><strong>Demostración (síntesis).</strong> Los §§16.1–16.18 prueban dentro de ZF objeto la existencia y unicidad del menor conjunto inductivo, la disponibilidad conservativa de <span class="math inline">\(0,S,\omega\)</span>, la inducción para fórmulas con parámetros y las ecuaciones fundamentales del sucesor. La regularidad se usa <strong>explícitamente</strong> en la inyectividad general del sucesor. No se emplean elección ni BPI; la construcción no introduce cuantificadores objeto sobre predicados, ni un conjunto de todos los inductivos, ni intercambia ZF objeto con la metateoría externa. La prueba es humana, pendiente de cualquier formalización Lean. <span class="math inline">\(\square\)</span></p>
+<p><strong>Estado:</strong> <code>TLOG-CH16-M01 = CLOSED / MATHEMATICAL QA</code>; <code>TLOG-CH16-0001 = PARTIAL-CLOSURE / NOT CLOSED</code>. La Parte III permanece abierta. Para cerrar el Capítulo 16 faltan el teorema de recursión sobre <span class="math inline">\(\omega\)</span>, operaciones aritméticas derivadas, carácter de buen orden de <span class="math inline">\(\in\)</span> en los naturales y secuencias finitas con sus codificaciones y operaciones básicas.</p>
+<p><strong>Próximo microtramo:</strong> <code>TLOG-CH16-M02 — Recursión sobre ω y construcción de operaciones aritméticas</code>.</p>
+</section>
+</section>
+<section id="recursión-interna-nivel-objeto-y-requisitos-de-tipado" class="level2">
+<h2 class="anchored" data-anchor-id="recursión-interna-nivel-objeto-y-requisitos-de-tipado">16.20. Recursión interna: nivel objeto y requisitos de tipado</h2>
+<section id="tlog-cnv-00024" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00024">Convención 16.20.1 — Recursión con valores en un conjunto fijado</h3>
+<p>Fijaremos un <strong>conjunto</strong> de valores <span class="math inline">\(B\)</span>, un dato inicial <span class="math inline">\(b\in B\)</span> y un <strong>grafo conjuntista</strong> <span class="math inline">\(H:\omega\times B\to B\)</span>. Las flechas son las aplicaciones del Capítulo 14, no operaciones primitivas del lenguaje <span class="math inline">\(\tau_\in\)</span>. Se busca una única aplicación <span class="math inline">\(f:\omega\to B\)</span> que satisfaga <span class="math display">\[
+f(0)=b,\qquad f(S(n))=H(\langle n,f(n)\rangle)\quad(n\in\omega).
+\]</span> La segunda ecuación puede imprimirse <span class="math inline">\(H(n,f(n))\)</span> una vez declarada su interpretación por pares ordenados. El ámbito de <span class="math inline">\(f\)</span> no se asume existente antes de la prueba. Toda instancia con matrices paramétricas se expande a fórmulas puras de pertenencia y se universaliza después de descargar las hipótesis. Esta es <strong>recursión con codominio conjunto</strong>, no recursión sobre una clase propia ni recursión por elección de testigos arbitrarios.</p>
+</section>
+</section>
+<section id="aproximaciones-de-recursión-con-dominio-sn" class="level2">
+<h2 class="anchored" data-anchor-id="aproximaciones-de-recursión-con-dominio-sn">16.21. Aproximaciones de recursión con dominio <span class="math inline">\(S(n)\)</span></h2>
+<section id="tlog-def-00100" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00100">Definición 16.21.1 — Gráfica de aproximación admisible</h3>
+<p>Con <span class="math inline">\(b\in B\)</span> y <span class="math inline">\(H:\omega\times B\to B\)</span> fijados, para <span class="math inline">\(n\in\omega\)</span> llamaremos <strong>buena aproximación hasta <span class="math inline">\(n\)</span></strong> a un conjunto <span class="math inline">\(g\)</span> que cumpla <span class="math display">\[
+\boxed{\begin{aligned}
+\operatorname{Good}(g,n;b,H,B):\Longleftrightarrow{}&amp;g:S(n)\to B,\quad g(0)=b,\\
+&amp;\forall j\in\omega\;[S(j)\in S(n)\to g(S(j))=H(j,g(j))].
+\end{aligned}}
+\]</span> La última ecuación es legítima: si <span class="math inline">\(S(j)\in S(n)\)</span>, la transitividad de <span class="math inline">\(S(n)\)</span> y <span class="math inline">\(j\in S(j)\)</span> implican <span class="math inline">\(j\in S(n)\)</span>, de modo que <span class="math inline">\(g(j)\)</span> está definido. La tipificación de los grafos permite expresar todo con cuantificadores y pertenencia; por ejemplo, el propio <span class="math inline">\(g\)</span> está acotado por <span class="math inline">\(\omega\times B\)</span>. No se postula aquí que exista alguna aproximación: ello se probará por inducción.</p>
+</section>
+</section>
+<section id="propiedades-de-los-dominios-recursivos" class="level2">
+<h2 class="anchored" data-anchor-id="propiedades-de-los-dominios-recursivos">16.22. Propiedades de los dominios recursivos</h2>
+<section id="tlog-lem-00044" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00044">Lema 16.22.1 — Segmentos sucesores, cero y antecesores</h3>
+<p>Para todo <span class="math inline">\(n\in\omega\)</span> se tiene <span class="math display">\[
+\boxed{0\in S(n)\subseteq\omega,\qquad S(n)\notin S(n),\qquad
+(S(j)\in S(n)\Rightarrow j\in S(n)).}
+\]</span></p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(n=0\)</span>, entonces <span class="math inline">\(S(n)=\{0\}\)</span> y contiene cero. Si <span class="math inline">\(n\ne0\)</span>, §16.15 proporciona <span class="math inline">\(0\in n\subseteq S(n)\)</span>. Por §16.11 <span class="math inline">\(S(n)\in\omega\)</span> y, al ser <span class="math inline">\(\omega\)</span> transitivo (§16.17), <span class="math inline">\(S(n)\subseteq\omega\)</span>. §16.16 establece que todo natural, incluido <span class="math inline">\(S(n)\)</span>, es transitivo; como <span class="math inline">\(j\in S(j)\)</span>, de <span class="math inline">\(S(j)\in S(n)\)</span> se obtiene <span class="math inline">\(j\in S(n)\)</span>. Finalmente, la regularidad de ZF implica <span class="math inline">\(x\notin x\)</span> para todo conjunto <span class="math inline">\(x\)</span> (aplíquese fundamentación al singleton <span class="math inline">\(\{x\}\)</span>); en particular <span class="math inline">\(S(n)\notin S(n)\)</span>. No se emplea linealidad ni buen orden de la pertenencia. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="extensión-por-un-paso" class="level2">
+<h2 class="anchored" data-anchor-id="extensión-por-un-paso">16.23. Extensión por un paso</h2>
+<section id="tlog-lem-00045" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00045">Lema 16.23.1 — Prolongación canónica de una aproximación</h3>
+<p>Si <span class="math inline">\(\operatorname{Good}(g,n;b,H,B)\)</span>, existe una buena aproximación <span class="math inline">\(g^+\)</span> de dominio <span class="math inline">\(S(S(n))\)</span> tal que <span class="math inline">\(g\subseteq g^+\)</span>; está dada por <span class="math display">\[
+\boxed{g^+=g\cup\{\langle S(n),H(n,g(n))\rangle\}.}
+\]</span></p>
+<p><strong>Demostración.</strong> <span class="math inline">\(n\in S(n)=\operatorname{dom}(g)\)</span>, luego <span class="math inline">\(g(n)\)</span> está definido y pertenece a <span class="math inline">\(B\)</span>. Dado que <span class="math inline">\(n\in\omega\)</span>, el valor <span class="math inline">\(H(n,g(n))\)</span> existe y está en <span class="math inline">\(B\)</span>. Por §16.22, <span class="math inline">\(S(n)\notin S(n)\)</span>, de modo que la unión de grafos añade exactamente una entrada nueva, sin colisión funcional. Su dominio es <span class="math inline">\(S(n)\cup\{S(n)\}=S(S(n))\)</span>. Conserva <span class="math inline">\(g(0)=b\)</span>, pues la nueva entrada no es cero. Para una ecuación sucesora con <span class="math inline">\(S(j)\in S(S(n))\)</span>, hay dos casos. Si <span class="math inline">\(S(j)\in S(n)\)</span>, la ecuación ya vale en <span class="math inline">\(g\)</span> y las evaluaciones de <span class="math inline">\(g^+\)</span> coinciden en el dominio antiguo. En caso contrario, <span class="math inline">\(S(j)=S(n)\)</span>; por inyectividad del sucesor (§16.13), <span class="math inline">\(j=n\)</span>, y la nueva entrada fue elegida como <span class="math inline">\(H(n,g(n))\)</span>. Se verifican todas las cláusulas de <code>Good</code>. Se utilizan únicamente conjuntos de pares y su unión, no un principio de elección. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="aproximaciones-de-toda-longitud-natural" class="level2">
+<h2 class="anchored" data-anchor-id="aproximaciones-de-toda-longitud-natural">16.24. Aproximaciones de toda longitud natural</h2>
+<section id="tlog-pro-00090" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00090">Proposición 16.24.1 — Existencia mediante inducción sin recursión previa</h3>
+<p>Bajo <span class="math inline">\(b\in B\)</span> y <span class="math inline">\(H:\omega\times B\to B\)</span>, <span class="math display">\[
+\boxed{\forall n\in\omega\;\exists g\;\operatorname{Good}(g,n;b,H,B).}
+\]</span></p>
+<p><strong>Demostración.</strong> Para <span class="math inline">\(n=0\)</span>, el grafo singleton <span class="math inline">\(g_0=\{\langle0,b\rangle\}\)</span> tiene dominio <span class="math inline">\(S(0)=\{0\}\)</span>; es una función a <span class="math inline">\(B\)</span>, satisface <span class="math inline">\(g_0(0)=b\)</span>, y la ecuación sucesora es vacua porque ningún sucesor es cero (§16.13). Si existe una buena aproximación hasta <span class="math inline">\(n\)</span>, §16.23 construye una buena aproximación hasta <span class="math inline">\(S(n)\)</span>. La fórmula <span class="math inline">\(\exists g\,\operatorname{Good}(g,n;b,H,B)\)</span> admite las instancias de separación del esquema de inducción §16.12; la inducción concluye para todo <span class="math inline">\(n\in\omega\)</span>. Sólo se elige <strong>un testigo local</strong> al ejecutar el paso inductivo, sin selección simultánea de una familia de aproximaciones. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="compatibilidad-de-aproximaciones-de-longitudes-distintas" class="level2">
+<h2 class="anchored" data-anchor-id="compatibilidad-de-aproximaciones-de-longitudes-distintas">16.25. Compatibilidad de aproximaciones de longitudes distintas</h2>
+<section id="tlog-lem-00046" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00046">Lema 16.25.1 — Unicidad de valores en dominios solapados</h3>
+<p>Si <span class="math inline">\(g,h\)</span> son buenas aproximaciones (hasta sendos <span class="math inline">\(n,m\in\omega\)</span>), entonces <span class="math display">\[
+\boxed{\forall k\in\operatorname{dom}(g)\cap\operatorname{dom}(h)\quad g(k)=h(k).}
+\]</span> En particular, <span class="math inline">\(g\cup h\)</span> es un conjunto funcional, aunque los dominios no se hayan comparado por un supuesto orden lineal de <span class="math inline">\(\in\)</span>.</p>
+<p><strong>Demostración.</strong> Apliquemos inducción §16.12 a la fórmula en <span class="math inline">\(k\in\omega\)</span> que afirma «si <span class="math inline">\(k\)</span> pertenece a ambos dominios, los dos valores coinciden», manteniendo como parámetros los grafos <span class="math inline">\(g,h\)</span>. Para <span class="math inline">\(k=0\)</span>, ambos lo contienen por §16.22 y ambos valores son <span class="math inline">\(b\)</span>. Supuesta la afirmación para <span class="math inline">\(k\)</span>, si <span class="math inline">\(S(k)\)</span> no está en ambos dominios, la implicación del paso inductivo es trivial. Si está en los dos, la transitividad de sendos segmentos (§16.22) y <span class="math inline">\(k\in S(k)\)</span> muestran que también <span class="math inline">\(k\)</span> está en ambos dominios; la hipótesis da <span class="math inline">\(g(k)=h(k)\)</span>. Las dos cláusulas <code>Good</code> producen entonces <span class="math display">\[
+g(S(k))=H(k,g(k))=H(k,h(k))=h(S(k)).
+\]</span> La inducción cubre todos los <span class="math inline">\(k\in\omega\)</span>. Como los dominios son subconjuntos de <span class="math inline">\(\omega\)</span>, queda probada la compatibilidad. La unión de dos grafos funcionales compatibles es funcional por la definición de función del Capítulo 14. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="teorema-de-recursión-sobre-omega" class="level2">
+<h2 class="anchored" data-anchor-id="teorema-de-recursión-sobre-omega">16.26. Teorema de recursión sobre <span class="math inline">\(\omega\)</span></h2>
+<section id="tlog-mth-00070" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00070">Metateorema 16.26.1 — Existencia y unicidad de la función recursiva</h3>
+<p>Para cualesquiera conjuntos <span class="math inline">\(B,b,H\)</span> que satisfagan <span class="math inline">\(b\in B\)</span> y <span class="math inline">\(H:\omega\times B\to B\)</span>, ZF objeto demuestra <span class="math display">\[
+\boxed{\exists! f:\omega\to B\;\left[f(0)=b\ \land\ \forall n\in\omega\;f(S(n))=H(n,f(n))\right].}
+\]</span> Aquí <span class="math inline">\(\exists!f:\omega\to B\)</span> abrevia «existe un único conjunto <span class="math inline">\(f\)</span> que es grafo de una función <span class="math inline">\(\omega\to B\)</span> y cumple…»; no es un cuantificador funcional primitivo.</p>
+<p><strong>Demostración — existencia.</strong> El producto <span class="math inline">\(\omega\times B\)</span> existe por §14.7 y su potencia <span class="math inline">\(P=\mathcal P(\omega\times B)\)</span> por §13.10. Mediante separación formamos el conjunto <span class="math display">\[
+\mathscr G=\{g\in P:\exists n\in\omega\;\operatorname{Good}(g,n;b,H,B)\}.
+\]</span> La fórmula definitoria es pura después de desarrollar las macros, y la cuantificación sobre <span class="math inline">\(g\)</span> está acotada por <span class="math inline">\(P\)</span>; no hay clase propia de «todas las funciones parciales». Definimos <span class="math inline">\(f=\bigcup\mathscr G\)</span>, unión conjuntista de los miembros de <span class="math inline">\(\mathscr G\)</span>. Por §16.25 sus elementos son grafos compatibles dos a dos, luego <span class="math inline">\(f\)</span> es un grafo funcional de recorrido incluido en <span class="math inline">\(B\)</span>. Todo elemento de <span class="math inline">\(f\)</span> es un par con primer componente en <span class="math inline">\(\omega\)</span>; por consiguiente <span class="math inline">\(\operatorname{dom}(f)\subseteq\omega\)</span>. Recíprocamente, para cualquier <span class="math inline">\(k\in\omega\)</span>, §16.24 suministra una buena aproximación <span class="math inline">\(g\)</span> en <span class="math inline">\(S(k)\)</span>; como <span class="math inline">\(k\in S(k)\)</span>, el par de valor <span class="math inline">\(\langle k,g(k)\rangle\)</span> pertenece a <span class="math inline">\(f\)</span>. Así <span class="math inline">\(\operatorname{dom}(f)=\omega\)</span>. Toda buena aproximación contiene <span class="math inline">\(0\)</span> y le asigna <span class="math inline">\(b\)</span>, por lo que <span class="math inline">\(f(0)=b\)</span>. Para fijar <span class="math inline">\(n\in\omega\)</span>, tomamos una buena aproximación sobre <span class="math inline">\(S(S(n))\)</span>, que existe por §16.24 puesto que <span class="math inline">\(S(n)\in\omega\)</span>; ambos <span class="math inline">\(n,S(n)\)</span> están en su dominio. Su cláusula sucesora y la compatibilidad con <span class="math inline">\(f\)</span> implican <span class="math inline">\(f(S(n))=H(n,f(n))\)</span>.</p>
+<p><strong>Demostración — unicidad.</strong> Si <span class="math inline">\(u,v:\omega\to B\)</span> satisfacen ambas ecuaciones, inducimos en <span class="math inline">\(n\)</span> la fórmula <span class="math inline">\(u(n)=v(n)\)</span>. La base usa el dato común <span class="math inline">\(b\)</span>; el paso usa la funcionalidad de <span class="math inline">\(H\)</span>. La inducción vale para todos los naturales; igualdad extensional de grafos implica <span class="math inline">\(u=v\)</span>. No se ha usado buen orden de <span class="math inline">\(\omega\)</span>, recursión previa ni elección. La construcción se mantiene en <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span>; el discurso metateórico sólo parametriza la familia de instancias definicionales. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="recursión-uniforme-con-parámetros" class="level2">
+<h2 class="anchored" data-anchor-id="recursión-uniforme-con-parámetros">16.27. Recursión uniforme con parámetros</h2>
+<section id="tlog-pro-00091" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00091">Proposición 16.27.1 — Gráfico simultáneo de una familia recursiva</h3>
+<p>Sean <span class="math inline">\(P,B\)</span> conjuntos, <span class="math inline">\(a:P\to B\)</span> y <span class="math inline">\(H:(P\times\omega)\times B\to B\)</span> (lectura abreviada <span class="math inline">\(H(p,n,z)\)</span>). Existe una única función <span class="math inline">\(F:P\times\omega\to B\)</span> con <span class="math display">\[
+\boxed{F(p,0)=a(p),\quad F(p,S(n))=H(p,n,F(p,n))\qquad(p\in P,n\in\omega).}
+\]</span> La afirmación incluye <span class="math inline">\(P=\varnothing\)</span> (donde <span class="math inline">\(F=\varnothing\)</span> aun si <span class="math inline">\(B=\varnothing\)</span>).</p>
+<p><strong>Demostración.</strong> Para cada <span class="math inline">\(p\in P\)</span>, formamos por separación dentro de <span class="math inline">\((\omega\times B)\times B\)</span> el grafo <span class="math display">\[
+H_p=\{\langle\langle n,z\rangle,w\rangle:\langle\langle\langle p,n\rangle,z\rangle,w\rangle\in H\}.
+\]</span> La codificación se interpreta como la del producto <span class="math inline">\(((P\times\omega)\times B)\times B\)</span>; por la hipótesis, <span class="math inline">\(H_p:\omega\times B\to B\)</span>. Además <span class="math inline">\(a(p)\in B\)</span>. El metateorema §16.26 entrega para cada <span class="math inline">\(p\)</span> un <strong>único</strong> <span class="math inline">\(f_p:\omega\to B\)</span> con las cláusulas requeridas. No se selecciona una familia arbitraria <span class="math inline">\((f_p)\)</span>: definimos directamente <span class="math inline">\(F\)</span> por separación dentro de <span class="math inline">\((P\times\omega)\times B\)</span>, admitiendo <span class="math inline">\(\langle\langle p,n\rangle,z\rangle\)</span> exactamente si existe algún grafo <span class="math inline">\(f\subseteq\omega\times B\)</span> que satisface la recursión para <span class="math inline">\(p\)</span> y contiene <span class="math inline">\(\langle n,z\rangle\)</span>. La existencia y unicidad de tal <span class="math inline">\(f_p\)</span> aseguran que este predicado determina exactamente un <span class="math inline">\(z\)</span> para cada <span class="math inline">\((p,n)\)</span>. Sus dos ecuaciones se leen en la correspondiente fibra <span class="math inline">\(p\)</span>. Si <span class="math inline">\(P\)</span> es vacío, el producto ambiente y el grafo son vacíos; no se necesita escoger ningún <span class="math inline">\(p\)</span>. La unicidad de <span class="math inline">\(F\)</span> se deduce de la unicidad de cada fibra, o de inducción con <span class="math inline">\(p\)</span> fijado. Las operaciones de conjuntos y las instancias de separación contienen sólo un número finito de parámetros declarados. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="construcción-de-la-suma" class="level2">
+<h2 class="anchored" data-anchor-id="construcción-de-la-suma">16.28. Construcción de la suma</h2>
+<section id="tlog-def-00101" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00101">Definición 16.28.1 — Función de suma mediante recursión con parámetro</h3>
+<p>Aplicamos §16.27 con <span class="math inline">\(P=B=\omega\)</span>, dato inicial <span class="math inline">\(a(p)=p\)</span> (grafo identidad ya construido) y paso <span class="math inline">\(H(p,n,z)=S(z)\)</span> (función con codominio <span class="math inline">\(\omega\)</span>, §16.18). La única <span class="math inline">\(F:\omega\times\omega\to\omega\)</span> se denota <span class="math inline">\(+\)</span> y su valor <span class="math inline">\(F(a,b)\)</span> se escribe <span class="math inline">\(a+b\)</span>. Conservo las ecuaciones definitorias <span class="math display">\[
+\boxed{a+0=a,\qquad a+S(b)=S(a+b).}
+\]</span> La notación es una macro respaldada por existencia y unicidad del grafo; no se ha añadido el símbolo <span class="math inline">\(+\)</span> a la signatura primitiva <span class="math inline">\(\tau_\in\)</span>.</p>
+</section>
+</section>
+<section id="totalidad-de-la-suma-e-identidades-inmediatas" class="level2">
+<h2 class="anchored" data-anchor-id="totalidad-de-la-suma-e-identidades-inmediatas">16.29. Totalidad de la suma e identidades inmediatas</h2>
+<section id="tlog-pro-00092" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00092">Proposición 16.29.1 — Suma total y ecuaciones de recursión</h3>
+<p>Existe una única aplicación <span class="math inline">\(+:\omega\times\omega\to\omega\)</span> que verifica, para <span class="math inline">\(a,b\in\omega\)</span>, <span class="math display">\[
+\boxed{a+0=a,\qquad a+S(b)=S(a+b),\qquad a+1=S(a),\quad 1:=S(0).}
+\]</span></p>
+<p><strong>Demostración.</strong> Existencia y unicidad de <span class="math inline">\(+\)</span> son §16.28 y la unicidad de §16.27. La cláusula <span class="math inline">\(a+0=a\)</span> y la sucesora son la propia especificación recursiva. Con <span class="math inline">\(b=0\)</span>, <span class="math inline">\(a+1=a+S(0)=S(a+0)=S(a)\)</span>. La imagen pertenece a <span class="math inline">\(\omega\)</span> porque todas las fibras fueron construidas con codominio <span class="math inline">\(\omega\)</span>. La igualdad de aplicaciones se lee como igualdad de grafos en el producto existente <span class="math inline">\(\omega\times\omega\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="reglas-en-la-primera-variable" class="level2">
+<h2 class="anchored" data-anchor-id="reglas-en-la-primera-variable">16.30. Reglas en la primera variable</h2>
+<section id="tlog-lem-00047" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00047">Lema 16.30.1 — Identidad izquierda y sucesor izquierdo</h3>
+<p>Para todos <span class="math inline">\(a,b\in\omega\)</span>, <span class="math display">\[
+\boxed{0+b=b,\qquad S(a)+b=S(a+b).}
+\]</span></p>
+<p><strong>Demostración.</strong> Por inducción en <span class="math inline">\(b\)</span>, <span class="math inline">\(0+0=0\)</span>; si <span class="math inline">\(0+b=b\)</span>, entonces <span class="math inline">\(0+S(b)=S(0+b)=S(b)\)</span>. Para la segunda igualdad, fijemos <span class="math inline">\(a\)</span>. En <span class="math inline">\(b=0\)</span>, <span class="math inline">\(S(a)+0=S(a)=S(a+0)\)</span>. Si vale para <span class="math inline">\(b\)</span>, aplicamos la ecuación sucesora y la hipótesis: <span class="math display">\[
+S(a)+S(b)=S(S(a)+b)=S(S(a+b))=S(a+S(b)).
+\]</span> La inducción establece la fórmula universal. Las sustituciones de <span class="math inline">\(a,b\)</span> son seguras porque se trabaja con las expansiones puras de las gráficas de <span class="math inline">\(S\)</span> y <span class="math inline">\(+\)</span>; las variables auxiliares son frescas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="asociatividad-y-conmutatividad-de-la-suma" class="level2">
+<h2 class="anchored" data-anchor-id="asociatividad-y-conmutatividad-de-la-suma">16.31. Asociatividad y conmutatividad de la suma</h2>
+<section id="tlog-mth-00071" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00071">Metateorema 16.31.1 — El monoide conmutativo aditivo de <span class="math inline">\(\omega\)</span></h3>
+<p>La teoría objeto demuestra, para <span class="math inline">\(a,b,c\in\omega\)</span>, <span class="math display">\[
+\boxed{(a+b)+c=a+(b+c),\qquad a+b=b+a,\qquad a+0=0+a=a.}
+\]</span></p>
+<p><strong>Demostración.</strong> La identidad bilateral de <span class="math inline">\(0\)</span> se obtiene por §16.29 y §16.30. Para asociatividad fijemos <span class="math inline">\(a,b\)</span> e induzcamos en <span class="math inline">\(c\)</span>. En cero ambos miembros valen <span class="math inline">\(a+b\)</span>. En el paso: <span class="math display">\[
+\begin{aligned}
+(a+b)+S(c)&amp;=S((a+b)+c)\\
+&amp;=S(a+(b+c))=a+S(b+c)=a+(b+S(c)).
+\end{aligned}
+\]</span> Para conmutatividad, fijemos <span class="math inline">\(a\)</span> e induzcamos en <span class="math inline">\(b\)</span>. En <span class="math inline">\(b=0\)</span>, <span class="math inline">\(a+0=a=0+a\)</span>. Bajo <span class="math inline">\(a+b=b+a\)</span>, <span class="math display">\[
+a+S(b)=S(a+b)=S(b+a)=S(b)+a,
+\]</span> usando la regla de sucesor izquierdo de §16.30. Los dos principios inductivos son instancias del §16.12 para fórmulas con parámetros; no requieren una aritmética supuesta de antemano. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cancelación-aditiva" class="level2">
+<h2 class="anchored" data-anchor-id="cancelación-aditiva">16.32. Cancelación aditiva</h2>
+<section id="tlog-pro-00093" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00093">Proposición 16.32.1 — Cancelación en ambos argumentos</h3>
+<p>Para <span class="math inline">\(a,b,c\in\omega\)</span>, <span class="math display">\[
+\boxed{a+c=b+c\Longrightarrow a=b,\qquad c+a=c+b\Longrightarrow a=b.}
+\]</span></p>
+<p><strong>Demostración.</strong> Fijados <span class="math inline">\(a,b\)</span>, una inducción en <span class="math inline">\(c\)</span> prueba la primera implicación. Para <span class="math inline">\(c=0\)</span> las ecuaciones de cero dan la conclusión. Si <span class="math inline">\(a+S(c)=b+S(c)\)</span>, las ecuaciones sucesoras dan <span class="math inline">\(S(a+c)=S(b+c)\)</span>; la inyectividad del sucesor de §16.13 da <span class="math inline">\(a+c=b+c\)</span> y se aplica la hipótesis inductiva. La segunda implicación resulta al permutar argumentos mediante conmutatividad de §16.31. No se deduce aún ninguna desigualdad ordenada de esta cancelación. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="construcción-de-la-multiplicación" class="level2">
+<h2 class="anchored" data-anchor-id="construcción-de-la-multiplicación">16.33. Construcción de la multiplicación</h2>
+<section id="tlog-def-00102" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00102">Definición 16.33.1 — Producto por suma iterada</h3>
+<p>Aplicando recursión con parámetro §16.27 a <span class="math inline">\(P=B=\omega\)</span>, al dato inicial constante <span class="math inline">\(a(p)=0\)</span> y al paso <span class="math inline">\(H(p,n,z)=z+p\)</span> (grafo existente por la suma), se obtiene una función <span class="math inline">\(\cdot:\omega\times\omega\to\omega\)</span> caracterizada unívocamente por <span class="math display">\[
+\boxed{a\cdot0=0,\qquad a\cdot S(b)=a\cdot b+a.}
+\]</span> El grafo constante <span class="math inline">\(p\mapsto0\)</span> existe por separación dentro de <span class="math inline">\(\omega\times\omega\)</span>. El paso se forma como subconjunto funcional del producto cartesiano apropiado mediante sustitución en el grafo <span class="math inline">\(+\)</span>, sin postular una nueva operación. La multiplicación así definida pertenece a la teoría objeto como abreviación conservativa.</p>
+</section>
+</section>
+<section id="identidades-elementales-del-producto" class="level2">
+<h2 class="anchored" data-anchor-id="identidades-elementales-del-producto">16.34. Identidades elementales del producto</h2>
+<section id="tlog-pro-00094" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00094">Proposición 16.34.1 — Ceros y unidades multiplicativas</h3>
+<p>Sean <span class="math inline">\(a,b\in\omega\)</span> y <span class="math inline">\(1=S(0)\)</span>. Entonces <span class="math display">\[
+\boxed{a\cdot0=0,\quad a\cdot S(b)=a\cdot b+a,\quad
+a\cdot1=a,\quad0\cdot a=0,\quad1\cdot a=a.}
+\]</span></p>
+<p><strong>Demostración.</strong> Las dos primeras igualdades son las ecuaciones de la recursión §16.33. En particular, <span class="math inline">\(a\cdot1=a\cdot S(0)=a\cdot0+a=0+a=a\)</span>, usando el cero izquierdo de la suma. Para <span class="math inline">\(0\cdot a=0\)</span>, inducimos en <span class="math inline">\(a\)</span>: en cero es inmediato y <span class="math inline">\(0\cdot S(a)=0\cdot a+0=0\)</span>. Para <span class="math inline">\(1\cdot a=a\)</span>, en cero vale <span class="math inline">\(1\cdot0=0\)</span>; si <span class="math inline">\(1\cdot a=a\)</span>, entonces <span class="math inline">\(1\cdot S(a)=1\cdot a+1=a+1=S(a)\)</span> (§16.29). Así ambas identidades son universales. No hemos supuesto conmutatividad del producto ni ninguna de sus distribuciones. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="distributividad-en-el-primer-factor" class="level2">
+<h2 class="anchored" data-anchor-id="distributividad-en-el-primer-factor">16.35. Distributividad en el primer factor</h2>
+<section id="tlog-lem-00048" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00048">Lema 16.35.1 — <span class="math inline">\((a+b)\cdot c=a\cdot c+b\cdot c\)</span></h3>
+<p>Para <span class="math inline">\(a,b,c\in\omega\)</span> se verifica <span class="math display">\[
+\boxed{(a+b)\cdot c=(a\cdot c)+(b\cdot c).}
+\]</span></p>
+<p><strong>Demostración.</strong> Fijemos <span class="math inline">\(a,b\)</span> e induzcamos en <span class="math inline">\(c\)</span>. Si <span class="math inline">\(c=0\)</span>, ambos miembros son cero por §16.34 y <span class="math inline">\(0+0=0\)</span>. Para el paso: <span class="math display">\[
+\begin{aligned}
+(a+b)\cdot S(c)&amp;=(a+b)\cdot c+(a+b)\\
+&amp;=(a\cdot c+b\cdot c)+(a+b)\\
+&amp;=(a\cdot c+a)+(b\cdot c+b)\\
+&amp;=a\cdot S(c)+b\cdot S(c).
+\end{aligned}
+\]</span> La tercera igualdad es un reagrupamiento autorizado por asociatividad y conmutatividad <strong>ya demostradas</strong> de la suma (§16.31). Así se cierra el paso por inducción §16.12. Esta fórmula se denomina distributividad del producto respecto de una suma en el <em>primer</em> factor, sin intercambiar los factores multiplicativos. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="distributividad-en-el-segundo-factor" class="level2">
+<h2 class="anchored" data-anchor-id="distributividad-en-el-segundo-factor">16.36. Distributividad en el segundo factor</h2>
+<section id="tlog-pro-00095" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00095">Proposición 16.36.1 — <span class="math inline">\(a\cdot(b+c)=a\cdot b+a\cdot c\)</span></h3>
+<p>Para <span class="math inline">\(a,b,c\in\omega\)</span> se verifica <span class="math display">\[
+\boxed{a\cdot(b+c)=a\cdot b+a\cdot c.}
+\]</span></p>
+<p><strong>Demostración.</strong> Fijemos <span class="math inline">\(a,b\)</span> e induzcamos en <span class="math inline">\(c\)</span>. En <span class="math inline">\(c=0\)</span>, <span class="math inline">\(b+0=b\)</span> y ambos miembros se reducen a <span class="math inline">\(a\cdot b\)</span>. Si la identidad vale para <span class="math inline">\(c\)</span>, entonces <span class="math display">\[
+\begin{aligned}
+a\cdot(b+S(c))&amp;=a\cdot S(b+c)\\
+&amp;=a\cdot(b+c)+a\\
+&amp;=(a\cdot b+a\cdot c)+a\\
+&amp;=a\cdot b+(a\cdot c+a)\\
+&amp;=a\cdot b+a\cdot S(c).
+\end{aligned}
+\]</span> Se han usado exclusivamente la ecuación recursiva de la multiplicación y la asociatividad de la suma. No hay dependencia de la conmutatividad de la multiplicación ni de la distributividad del apartado anterior, evitando un ciclo entre pruebas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="conmutatividad-y-asociatividad-multiplicativas" class="level2">
+<h2 class="anchored" data-anchor-id="conmutatividad-y-asociatividad-multiplicativas">16.37. Conmutatividad y asociatividad multiplicativas</h2>
+<section id="tlog-mth-00072" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00072">Metateorema 16.37.1 — Leyes fundamentales de la multiplicación de naturales</h3>
+<p>Para cualesquiera <span class="math inline">\(a,b,c\in\omega\)</span>, <span class="math display">\[
+\boxed{a\cdot b=b\cdot a,\qquad(a\cdot b)\cdot c=a\cdot(b\cdot c).}
+\]</span></p>
+<p><strong>Demostración — conmutatividad.</strong> Por §16.35 y §16.34 tenemos <span class="math display">\[
+S(b)\cdot a=(b+1)\cdot a=b\cdot a+1\cdot a=b\cdot a+a.
+\]</span> Fijemos <span class="math inline">\(a\)</span> e induzcamos en <span class="math inline">\(b\)</span> la igualdad <span class="math inline">\(a\cdot b=b\cdot a\)</span>. La base es <span class="math inline">\(a\cdot0=0=0\cdot a\)</span>. En el paso, <span class="math display">\[
+a\cdot S(b)=a\cdot b+a=b\cdot a+a=S(b)\cdot a,
+\]</span> que completa la inducción.</p>
+<p><strong>Demostración — asociatividad.</strong> Fijemos <span class="math inline">\(a,b\)</span> e induzcamos en <span class="math inline">\(c\)</span>. En <span class="math inline">\(c=0\)</span>, ambos lados son cero. Si la igualdad vale para <span class="math inline">\(c\)</span>, aplicamos las ecuaciones recursivas y la distributividad §16.36: <span class="math display">\[
+\begin{aligned}
+(a\cdot b)\cdot S(c)&amp;=(a\cdot b)\cdot c+a\cdot b\\
+&amp;=a\cdot(b\cdot c)+a\cdot b\\
+&amp;=a\cdot((b\cdot c)+b)\\
+&amp;=a\cdot(b\cdot S(c)).
+\end{aligned}
+\]</span> Cada paso depende de resultados previos; el producto es asociativo y conmutativo sin asumir dichas leyes como definiciones. La inducción es una instancia del §16.12 y no presupone el buen orden de <span class="math inline">\(\omega\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="síntesis-semianillo-natural-y-límite-del-microtramo" class="level2">
+<h2 class="anchored" data-anchor-id="síntesis-semianillo-natural-y-límite-del-microtramo">16.38. Síntesis: semianillo natural y límite del microtramo</h2>
+<section id="tlog-cor-00021" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00021">Corolario 16.38.1 — Estructura aritmética interna sin elección</h3>
+<p>Las construcciones de §§16.20–16.37 acreditan <strong>en la teoría objeto</strong> la existencia como conjuntos de <span class="math inline">\(+\)</span> y <span class="math inline">\(\cdot\)</span>, su carácter funcional total en <span class="math inline">\(\omega\times\omega\)</span>, las identidades de cero y uno, las leyes conmutativas y asociativas, ambas distributividades y la cancelación aditiva. Junto con §16.13 y §16.12, se dispone del núcleo de las leyes usuales de un semianillo conmutativo <span class="math inline">\((\omega,+,\cdot,0,1)\)</span> y de la inducción para fórmulas de pertenencia traducidas conservativamente.</p>
+<p><strong>Demostración (síntesis).</strong> La existencia/unicidad de la recursión procede de aproximaciones acotadas por <span class="math inline">\(\mathcal P(\omega\times B)\)</span> y de su unión compatible, no de un recurso a elegir una aproximación por cada índice. Las leyes de <span class="math inline">\(+\)</span> y <span class="math inline">\(\cdot\)</span> se derivan mediante inducción interna y sus recursiones respectivas. El término <em>semianillo</em> sintetiza las ecuaciones probadas, no se incorpora como nueva teoría objeto ni añade símbolos a <span class="math inline">\(\tau_\in\)</span>. No se prueba aún que <span class="math inline">\(\in\)</span> bien ordene <span class="math inline">\(\omega\)</span>, ni se construyen secuencias finitas generales ni codificación efectiva de expresiones. La teoría formal de Peano y las funciones computables quedan también fuera del presente microtramo. Cero resultados Lean compilados/verificados; ninguna interfaz intertratados activada. <span class="math inline">\(\square\)</span></p>
+<p><strong>Estado de <code>CH16-M02</code>:</strong> cierre matemático local para recursión sobre <span class="math inline">\(\omega\)</span>, suma y multiplicación. Capítulo 16 y Parte III continúan abiertos, con obligaciones de buen orden y secuencias finitas reservadas a <code>CH16-M03</code>. Las demostraciones humanas no se equiparan a certificados Lean ni a publicaciones web.</p>
+</section>
+</section>
+<section id="lema-de-sucesión-interna-de-los-naturales" class="level2">
+<h2 class="anchored" data-anchor-id="lema-de-sucesión-interna-de-los-naturales">16.39. Lema de sucesión interna de los naturales</h2>
+<section id="tlog-lem-00049" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00049">Lema 16.39.1 — Todo elemento de un natural tiene sucesor interno o terminal</h3>
+<p>Para <span class="math inline">\(m,n\in\omega\)</span> se demuestra <span class="math display">\[
+\boxed{m\in n\ \Longrightarrow\ S(m)\in n\ \lor\ S(m)=n.}
+\]</span> No se presupone la comparación lineal de cualesquiera dos naturales.</p>
+<p><strong>Demostración.</strong> Por inducción §16.12 sobre <span class="math inline">\(n\)</span>. Si <span class="math inline">\(n=0\)</span>, el antecedente es falso. Supongamos la afirmación para <span class="math inline">\(n\)</span> y consideremos <span class="math inline">\(m\in S(n)=n\cup\{n\}\)</span>. Si <span class="math inline">\(m=n\)</span>, entonces <span class="math inline">\(S(m)=S(n)\)</span>. Si <span class="math inline">\(m\in n\)</span>, la hipótesis inductiva ofrece <span class="math inline">\(S(m)\in n\)</span> o <span class="math inline">\(S(m)=n\)</span>; en ambos casos <span class="math inline">\(S(m)\in S(n)\)</span>, pues <span class="math inline">\(n\subseteq S(n)\)</span> y <span class="math inline">\(n\in S(n)\)</span>. Esto cierra el paso; las instancias de inducción son fórmulas de pertenencia con los símbolos definidos expandidos. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="tricotomía-de-los-ordinales-finitos" class="level2">
+<h2 class="anchored" data-anchor-id="tricotomía-de-los-ordinales-finitos">16.40. Tricotomía de los ordinales finitos</h2>
+<section id="tlog-mth-00073" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00073">Metateorema 16.40.1 — Comparabilidad estricta de naturales</h3>
+<p>Para <span class="math inline">\(m,n\in\omega\)</span>, exactamente una de las afirmaciones <span class="math display">\[
+\boxed{m\in n,\qquad m=n,\qquad n\in m}
+\]</span> es verdadera.</p>
+<p><strong>Demostración.</strong> Primero probamos por inducción en <span class="math inline">\(n\)</span> que <em>al menos una</em> se cumple para todo <span class="math inline">\(m\in\omega\)</span>. Para <span class="math inline">\(n=0\)</span>, si <span class="math inline">\(m=0\)</span> vale la igualdad y, si <span class="math inline">\(m\ne0\)</span>, §16.15 proporciona <span class="math inline">\(0\in m\)</span>. Supongamos la tricotomía débil para <span class="math inline">\(n\)</span> y sea <span class="math inline">\(m\)</span> arbitrario. Si <span class="math inline">\(m\in n\)</span> o <span class="math inline">\(m=n\)</span>, entonces <span class="math inline">\(m\in S(n)\)</span>. En el caso restante, <span class="math inline">\(n\in m\)</span>; por §16.39, <span class="math inline">\(S(n)=m\)</span> o <span class="math inline">\(S(n)\in m\)</span>. Así la comparación existe para <span class="math inline">\(S(n)\)</span>. Para la <strong>exclusividad</strong>, fundamentación excluye <span class="math inline">\(x\in x\)</span> y <span class="math inline">\(x\in y\land y\in x\)</span>: en el último caso el par no vacío <span class="math inline">\(\{x,y\}\)</span> no tendría elemento mínimo. Por transitividad de cada natural (§16.16), <span class="math inline">\(m\in n\land n\in m\)</span> implicaría además <span class="math inline">\(m\in m\)</span>. Las tres alternativas son disjuntas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="la-pertenencia-como-orden-estricto" class="level2">
+<h2 class="anchored" data-anchor-id="la-pertenencia-como-orden-estricto">16.41. La pertenencia como orden estricto</h2>
+<section id="tlog-pro-00096" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00096">Proposición 16.41.1 — Irreflexividad, transitividad y totalidad</h3>
+<p>La relación <span class="math inline">\(&lt;_{\omega}:=\{\langle m,n\rangle\in\omega\times\omega:m\in n\}\)</span> es un conjunto y constituye un <strong>orden estricto lineal</strong> en <span class="math inline">\(\omega\)</span>: es irreflexiva, transitiva y compara todos los elementos distintos.</p>
+<p><strong>Demostración.</strong> Su existencia se obtiene por separación sobre <span class="math inline">\(\omega\times\omega\)</span>. La irreflexividad es consecuencia de fundamentación. Si <span class="math inline">\(a\in b\in c\)</span> con <span class="math inline">\(c\in\omega\)</span>, la transitividad del conjunto <span class="math inline">\(c\)</span> (§16.16) proporciona <span class="math inline">\(a\in c\)</span>. La comparación entre dos naturales distintos es §16.40. Estas propiedades son precisamente las condiciones de orden estricto lineal fijadas en el Capítulo 15; la definición no añade relaciones primitivas a <span class="math inline">\(\tau_\in\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="buen-orden-de-omega" class="level2">
+<h2 class="anchored" data-anchor-id="buen-orden-de-omega">16.42. Buen orden de <span class="math inline">\(\omega\)</span></h2>
+<section id="tlog-mth-00074" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00074">Metateorema 16.42.1 — Mínimo de todo subconjunto no vacío</h3>
+<p>Para cada conjunto <span class="math inline">\(X\subseteq\omega\)</span> no vacío existe un único <span class="math inline">\(m\in X\)</span> tal que <span class="math display">\[
+\boxed{\forall n\in X\ (m=n\lor m\in n).}
+\]</span> En consecuencia <span class="math inline">\((\omega,&lt;_{\omega})\)</span> es un buen orden; no se afirma que <em>todos</em> los conjuntos puedan bien ordenarse.</p>
+<p><strong>Demostración.</strong> Por fundamentación aplicada al <strong>conjunto</strong> <span class="math inline">\(X\ne\varnothing\)</span> existe <span class="math inline">\(m\in X\)</span> con <span class="math inline">\(m\cap X=\varnothing\)</span>. Para cualquier <span class="math inline">\(n\in X\)</span> distinto de <span class="math inline">\(m\)</span>, la tricotomía da <span class="math inline">\(n\in m\)</span> o <span class="math inline">\(m\in n\)</span>. La primera alternativa contradice <span class="math inline">\(m\cap X=\varnothing\)</span>, así que <span class="math inline">\(m\in n\)</span>. Si también <span class="math inline">\(m'\in X\)</span> fuese mínimo, la comparación estricta entre <span class="math inline">\(m,m'\)</span> descartaría que fuesen distintos. Se ha usado el axioma de fundamentación sólo para <span class="math inline">\(X\)</span>, nunca un principio de elección de mínimos para una familia arbitraria. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="forma-del-mínimo-contraejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="forma-del-mínimo-contraejemplo">16.43. Forma del mínimo contraejemplo</h2>
+<section id="tlog-cor-00022" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00022">Corolario 16.43.1 — Inducción y principio del mínimo contraejemplo</h3>
+<p>Para cualquier fórmula fija <span class="math inline">\(\varphi(n,\bar p)\)</span>, si el conjunto de contraejemplos <span class="math inline">\(\{n\in\omega:\neg\varphi(n,\bar p)\}\)</span> es no vacío, tiene un mínimo; en particular, no puede existir un contraejemplo si <span class="math inline">\(\varphi(0,\bar p)\)</span> y <span class="math inline">\(\forall n\in\omega[\varphi(n,\bar p)\to\varphi(S(n),\bar p)]\)</span>.</p>
+<p><strong>Demostración.</strong> Separación produce el conjunto de contraejemplos, con variables ligadas frescas. Si no es vacío, §16.42 da un menor elemento <span class="math inline">\(m\)</span>. La base excluye <span class="math inline">\(m=0\)</span>, por lo que §16.14 da <span class="math inline">\(m=S(k)\)</span> con <span class="math inline">\(k\in\omega\)</span>. Como <span class="math inline">\(k\in m\)</span>, la minimalidad obliga a <span class="math inline">\(\varphi(k,\bar p)\)</span>; el paso inductivo implica <span class="math inline">\(\varphi(m,\bar p)\)</span>, contradicción. La equivalencia es esquema por fórmula, no cuantificación objeto sobre predicados. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="orden-no-estricto-en-naturales" class="level2">
+<h2 class="anchored" data-anchor-id="orden-no-estricto-en-naturales">16.44. Orden no estricto en naturales</h2>
+<section id="tlog-def-00103" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00103">Definición 16.44.1 — Relación <span class="math inline">\(\leq\)</span> y su expansión conjuntista</h3>
+<p>Definimos para <span class="math inline">\(m,n\in\omega\)</span> <span class="math display">\[
+\boxed{m\leq n:\Longleftrightarrow\ (m\in n\lor m=n).}
+\]</span> La relación <span class="math inline">\(\leq\)</span> se construye por separación dentro de <span class="math inline">\(\omega\times\omega\)</span> y no se incorpora como predicado primitivo de la firma de pertenencia.</p>
+</section>
+</section>
+<section id="orden-y-contención-entre-ordinales-finitos" class="level2">
+<h2 class="anchored" data-anchor-id="orden-y-contención-entre-ordinales-finitos">16.45. Orden y contención entre ordinales finitos</h2>
+<section id="tlog-pro-00097" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00097">Proposición 16.45.1 — Equivalencia entre <span class="math inline">\(m\leq n\)</span> y <span class="math inline">\(m\subseteq n\)</span></h3>
+<p>Para <span class="math inline">\(m,n\in\omega\)</span>, <span class="math display">\[
+\boxed{m\leq n\iff m\subseteq n.}
+\]</span> Además <span class="math inline">\(n&lt;S(n)\)</span>, <span class="math inline">\(m&lt;n\Rightarrow S(m)\leq n\)</span> y <span class="math inline">\(0\leq n\)</span> para todo <span class="math inline">\(n\in\omega\)</span>.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(m=n\)</span> hay contención trivial, y si <span class="math inline">\(m\in n\)</span>, la transitividad de <span class="math inline">\(n\)</span> da <span class="math inline">\(m\subseteq n\)</span>. Recíprocamente, supongamos <span class="math inline">\(m\subseteq n\)</span> y que <span class="math inline">\(m\not\leq n\)</span>. Tricotomía §16.40 fuerza <span class="math inline">\(n\in m\)</span>; por contención se seguiría <span class="math inline">\(n\in n\)</span>, contradiciendo irreflexividad. Por §16.3 <span class="math inline">\(n\in S(n)\)</span>. Si <span class="math inline">\(m\in n\)</span>, el lema §16.39 da <span class="math inline">\(S(m)\in n\)</span> o <span class="math inline">\(S(m)=n\)</span>. Finalmente <span class="math inline">\(0=\varnothing\subseteq n\)</span> y se aplica la equivalencia. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="traslaciones-aditivas-y-partición-de-segmentos" class="level2">
+<h2 class="anchored" data-anchor-id="traslaciones-aditivas-y-partición-de-segmentos">16.46. Traslaciones aditivas y partición de segmentos</h2>
+<section id="tlog-lem-00050" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00050">Lema 16.46.1 — Desplazamiento de un segmento finito</h3>
+<p>Fijado <span class="math inline">\(n\in\omega\)</span>, la aplicación <span class="math inline">\(k\mapsto n+k\)</span> es inyectiva, <span class="math inline">\(n\leq n+k\)</span> y, para todo <span class="math inline">\(m\in\omega\)</span>, <span class="math display">\[
+\boxed{n+m=n\ \dot\cup\ \{n+k:k\in m\}.}
+\]</span> El símbolo <span class="math inline">\(\dot\cup\)</span> significa unión de conjuntos disjuntos; la imagen de <span class="math inline">\(m\)</span> existe por reemplazo.</p>
+<p><strong>Demostración.</strong> La inyectividad es cancelación en el primer sumando (§16.32). Por inducción en <span class="math inline">\(k\)</span>, <span class="math inline">\(n\leq n+0=n\)</span>; y <span class="math inline">\(n\leq n+k&lt;S(n+k)=n+S(k)\)</span> implica <span class="math inline">\(n\leq n+S(k)\)</span> por transitividad del orden de §16.41. Por ello ningún <span class="math inline">\(n+k\)</span> pertenece al conjunto <span class="math inline">\(n\)</span>, pues <span class="math inline">\(n\leq n+k\)</span> es incompatible con <span class="math inline">\(n+k&lt;n\)</span>. Para la identidad de conjuntos, inducimos en <span class="math inline">\(m\)</span>. En cero la imagen es vacía y <span class="math inline">\(n+0=n\)</span>. Si vale para <span class="math inline">\(m\)</span>, las ecuaciones recursivas dan <span class="math inline">\(n+S(m)=S(n+m)=(n+m)\cup\{n+m\}\)</span>. Como <span class="math inline">\(S(m)=m\cup\{m\}\)</span>, la nueva imagen es la anterior unida a <span class="math inline">\(\{n+m\}\)</span>, lo que demuestra el paso y conserva la disjunción. No se utiliza el principio de elección para formar ninguna de estas imágenes funcionales. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="secuencias-de-longitud-natural" class="level2">
+<h2 class="anchored" data-anchor-id="secuencias-de-longitud-natural">16.47. Secuencias de longitud natural</h2>
+<section id="tlog-def-00104" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00104">Definición 16.47.1 — Secuencia finita y longitud</h3>
+<p>Sea <span class="math inline">\(A\)</span> un conjunto cualquiera, incluso <span class="math inline">\(A=\varnothing\)</span>. Una <strong>secuencia finita sobre <span class="math inline">\(A\)</span></strong> es una función-grafo <span class="math inline">\(s:n\to A\)</span> con <span class="math inline">\(n\in\omega\)</span>; el natural <span class="math inline">\(n=\operatorname{dom}(s)\)</span> es su longitud <span class="math inline">\(|s|\)</span>. Aquí <span class="math inline">\(n\)</span> es el ordinal de von Neumann <span class="math inline">\(\{0,\dots,n-1\}\)</span>, y <span class="math inline">\(s\)</span> es literalmente un conjunto de pares de Kuratowski. Reservamos <span class="math display">\[
+A^{&lt;\omega}:=\{s:\exists n\in\omega\ (s:n\to A)\}.
+\]</span> Esta escritura denota un conjunto sólo tras la demostración del apartado siguiente; no se confunde con el uso metateórico previo <span class="math inline">\(\Sigma^{&lt;\omega}\)</span> para palabras formales.</p>
+</section>
+</section>
+<section id="existencia-y-tipado-de-aomega" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-y-tipado-de-aomega">16.48. Existencia y tipado de <span class="math inline">\(A^{&lt;\omega}\)</span></h2>
+<section id="tlog-pro-00098" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00098">Proposición 16.48.1 — Conjunto de todas las secuencias finitas</h3>
+<p>Para todo conjunto <span class="math inline">\(A\)</span> existe el conjunto <span class="math display">\[
+\boxed{A^{&lt;\omega}=\{s\in\mathcal P(\omega\times A):\operatorname{Fun}(s)\land\operatorname{dom}(s)\in\omega\}.}
+\]</span> Siempre <span class="math inline">\(\varnothing\in A^{&lt;\omega}\)</span>, y si <span class="math inline">\(A=\varnothing\)</span> entonces <span class="math inline">\(A^{&lt;\omega}=\{\varnothing\}\)</span>.</p>
+<p><strong>Demostración.</strong> Los capítulos 13–14 construyen <span class="math inline">\(\omega\times A\)</span> y su conjunto potencia. La condición de separación es una fórmula fija con parámetros <span class="math inline">\(\omega,A\)</span> que afirma que el grafo es funcional, que cada par tiene segunda coordenada en <span class="math inline">\(A\)</span> y que el dominio es un elemento de <span class="math inline">\(\omega\)</span>. Como <span class="math inline">\(s\subseteq\omega\times A\)</span>, se cumple esta condición de codominio automáticamente; la unicidad de longitud es la unicidad de <span class="math inline">\(\operatorname{dom}(s)\)</span>. El grafo vacío es la única función <span class="math inline">\(0\to A\)</span>, y pertenece al conjunto incluso si <span class="math inline">\(A\)</span> es vacío. Para <span class="math inline">\(A=\varnothing\)</span>, <span class="math inline">\(\omega\times A=\varnothing\)</span>, cuya potencia contiene sólo el grafo vacío. No se requiere elegir valores de <span class="math inline">\(A\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="restricciones-iniciales-y-longitud-única" class="level2">
+<h2 class="anchored" data-anchor-id="restricciones-iniciales-y-longitud-única">16.49. Restricciones iniciales y longitud única</h2>
+<section id="tlog-lem-00051" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00051">Lema 16.49.1 — Existencia y composición de restricciones</h3>
+<p>Si <span class="math inline">\(s:n\to A\)</span> y <span class="math inline">\(k\leq n\)</span>, el grafo <span class="math display">\[
+\boxed{s\upharpoonright k=s\cap(k\times A)}
+\]</span> es una secuencia de longitud <span class="math inline">\(k\)</span>. Si <span class="math inline">\(j\leq k\leq n\)</span>, entonces <span class="math inline">\((s\upharpoonright k)\upharpoonright j=s\upharpoonright j\)</span>; asimismo <span class="math inline">\(s\upharpoonright n=s\)</span> y <span class="math inline">\(s\upharpoonright0=\varnothing\)</span>. Si <span class="math inline">\(s:n\to A\)</span> y <span class="math inline">\(s:m\to A\)</span>, necesariamente <span class="math inline">\(n=m\)</span>.</p>
+<p><strong>Demostración.</strong> <span class="math inline">\(k\leq n\)</span> equivale a <span class="math inline">\(k\subseteq n\)</span> (§16.45). Para cada <span class="math inline">\(i\in k\)</span> la función <span class="math inline">\(s:n\to A\)</span> tiene exactamente un valor <span class="math inline">\(s(i)\in A\)</span>, cuyo par está en la intersección; no hay otros argumentos. Por tanto la restricción es función de dominio <span class="math inline">\(k\)</span>. La identidad de restricciones sucesivas procede de <span class="math inline">\((s\cap(k\times A))\cap(j\times A)=s\cap(j\times A)\)</span> cuando <span class="math inline">\(j\subseteq k\)</span>. Los casos <span class="math inline">\(0,n\)</span> son inmediatos; la longitud se determina por el dominio intrínseco de un grafo. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="secuencia-vacía-y-adjunción-de-una-entrada" class="level2">
+<h2 class="anchored" data-anchor-id="secuencia-vacía-y-adjunción-de-una-entrada">16.50. Secuencia vacía y adjunción de una entrada</h2>
+<section id="tlog-def-00105" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00105">Definición 16.50.1 — Extensión por un valor final</h3>
+<p>Escribimos <span class="math inline">\(\epsilon_A:=\varnothing\)</span> para la secuencia vacía sobre <span class="math inline">\(A\)</span>. Si <span class="math inline">\(s:n\to A\)</span> y <span class="math inline">\(a\in A\)</span>, la adjunción al final es el grafo <span class="math display">\[
+\boxed{s\mathbin{\frown}\langle a\rangle:=s\cup\{\langle n,a\rangle\}.}
+\]</span> La notación <span class="math inline">\(\langle a\rangle\)</span> aquí es una secuencia de longitud uno; no se identifica con el par de Kuratowski <span class="math inline">\(\langle n,a\rangle\)</span> empleado en su grafo. Toda la construcción tiene dominio de definición expresamente guardado por <span class="math inline">\(a\in A\)</span>.</p>
+</section>
+</section>
+<section id="adjunción-y-descomposición-de-secuencias" class="level2">
+<h2 class="anchored" data-anchor-id="adjunción-y-descomposición-de-secuencias">16.51. Adjunción y descomposición de secuencias</h2>
+<section id="tlog-pro-00099" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00099">Proposición 16.51.1 — Toda secuencia no vacía tiene último término único</h3>
+<p>Si <span class="math inline">\(s:n\to A\)</span> y <span class="math inline">\(a\in A\)</span>, entonces <span class="math inline">\(s\frown\langle a\rangle:S(n)\to A\)</span>. Recíprocamente, si <span class="math inline">\(t\in A^{&lt;\omega}\)</span> y <span class="math inline">\(|t|\ne0\)</span>, existen únicos <span class="math inline">\(s\in A^{&lt;\omega}\)</span> y <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(t=s\frown\langle a\rangle\)</span>.</p>
+<p><strong>Demostración.</strong> Los argumentos originales son los elementos de <span class="math inline">\(n\)</span>; el nuevo argumento es <span class="math inline">\(n\)</span>. Por regularidad, <span class="math inline">\(n\notin n\)</span>, y por ello el grafo añadido no colisiona con el previo; el dominio resulta <span class="math inline">\(n\cup\{n\}=S(n)\)</span>. Para el converso, §16.14 da <span class="math inline">\(|t|=S(n)\)</span> para un único <span class="math inline">\(n\)</span>. La restricción <span class="math inline">\(s=t\upharpoonright n\)</span> existe por §16.49; como <span class="math inline">\(n\in S(n)\)</span>, <span class="math inline">\(t(n)\)</span> existe y es único, y pertenece a <span class="math inline">\(A\)</span>. La funcionalidad de <span class="math inline">\(t\)</span> da <span class="math inline">\(t=s\cup\{\langle n,t(n)\rangle\}\)</span>. Todo posible factor final tiene dominio <span class="math inline">\(n\)</span> por inyectividad de sucesor y por §16.49; por ello <span class="math inline">\(s\)</span> y <span class="math inline">\(a\)</span> quedan determinados. Incluso cuando <span class="math inline">\(A=\varnothing\)</span>, el enunciado universal se cumple vacuamente para secuencias no vacías. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="inducción-estructural-sobre-secuencias-finitas" class="level2">
+<h2 class="anchored" data-anchor-id="inducción-estructural-sobre-secuencias-finitas">16.52. Inducción estructural sobre secuencias finitas</h2>
+<section id="tlog-mth-00075" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00075">Metateorema 16.52.1 — Principio de inducción por adjunción</h3>
+<p>Para cualquier fórmula fija <span class="math inline">\(\Phi(s,\bar p)\)</span>, si <span class="math inline">\(\Phi(\epsilon_A,\bar p)\)</span> y, para todo <span class="math inline">\(s\in A^{&lt;\omega}\)</span> y <span class="math inline">\(a\in A\)</span>, se cumple <span class="math inline">\(\Phi(s,\bar p)\Rightarrow\Phi(s\frown\langle a\rangle,\bar p)\)</span>, entonces <span class="math inline">\(\forall s\in A^{&lt;\omega}\,\Phi(s,\bar p)\)</span>.</p>
+<p><strong>Demostración.</strong> Por separación definimos <span class="math inline">\(P=\{n\in\omega:\forall s\in A^{&lt;\omega}(|s|=n\to\Phi(s,\bar p))\}\)</span>. La única secuencia de dominio <span class="math inline">\(0\)</span> es <span class="math inline">\(\epsilon_A\)</span>, luego <span class="math inline">\(0\in P\)</span>. Si <span class="math inline">\(n\in P\)</span> y <span class="math inline">\(t\)</span> tiene longitud <span class="math inline">\(S(n)\)</span>, §16.51 proporciona <span class="math inline">\(t=s\frown\langle a\rangle\)</span> con <span class="math inline">\(|s|=n\)</span> y <span class="math inline">\(a\in A\)</span>. Por <span class="math inline">\(n\in P\)</span> y la hipótesis de adjunción se obtiene <span class="math inline">\(\Phi(t,\bar p)\)</span>; por tanto <span class="math inline">\(S(n)\in P\)</span>. Inducción en <span class="math inline">\(\omega\)</span> (§16.12) concluye <span class="math inline">\(P=\omega\)</span>. Así toda secuencia finita satisface <span class="math inline">\(\Phi\)</span>, también si el alfabeto es vacío. El resultado es un <strong>esquema</strong> de inducción para fórmulas, no una cuantificación objeto sobre propiedades arbitrarias. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="construcción-conjuntista-de-concatenación" class="level2">
+<h2 class="anchored" data-anchor-id="construcción-conjuntista-de-concatenación">16.53. Construcción conjuntista de concatenación</h2>
+<section id="tlog-def-00106" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00106">Definición 16.53.1 — Unión del prefijo y la cola desplazada</h3>
+<p>Para secuencias <span class="math inline">\(s:n\to A\)</span> y <span class="math inline">\(t:m\to A\)</span>, definimos <span class="math display">\[
+\boxed{s\mathbin{\frown}t:=s\cup\{\langle n+k,t(k)\rangle:k\in m\}.}
+\]</span> La cola desplazada existe por reemplazo aplicado a la función de <span class="math inline">\(k\in m\)</span> que devuelve el par <span class="math inline">\(\langle n+k,t(k)\rangle\)</span>; cada suma es una descripción funcional ya justificada. Se usa el mismo símbolo <span class="math inline">\(\frown\)</span> de §16.50, cuya compatibilidad con la adjunción queda demostrada más adelante.</p>
+</section>
+</section>
+<section id="tipo-y-longitud-de-concatenación" class="level2">
+<h2 class="anchored" data-anchor-id="tipo-y-longitud-de-concatenación">16.54. Tipo y longitud de concatenación</h2>
+<section id="tlog-pro-00100" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00100">Proposición 16.54.1 — Concatenación de secuencias finitas</h3>
+<p>Si <span class="math inline">\(s:n\to A\)</span> y <span class="math inline">\(t:m\to A\)</span>, entonces <span class="math inline">\(s\frown t:(n+m)\to A\)</span> y <span class="math display">\[
+\boxed{|s\frown t|=|s|+|t|.}
+\]</span></p>
+<p><strong>Demostración.</strong> El dominio del primer grafo es <span class="math inline">\(n\)</span>; el de la cola desplazada es <span class="math inline">\(\{n+k:k\in m\}\)</span> por tipado de pares. §16.46 muestra que ambos son disjuntos y que su unión es exactamente <span class="math inline">\(n+m\)</span>. La inyectividad de <span class="math inline">\(k\mapsto n+k\)</span> asegura que la cola desplazada es funcional. No puede haber colisiones entre ambas partes por la disjunción de dominios. Todos los valores proceden de <span class="math inline">\(s\)</span> o <span class="math inline">\(t\)</span>, luego pertenecen a <span class="math inline">\(A\)</span>. El grafo unido es función de dominio <span class="math inline">\(n+m\)</span>, y la longitud coincide por definición §16.47. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="ecuaciones-características-de-concatenación" class="level2">
+<h2 class="anchored" data-anchor-id="ecuaciones-características-de-concatenación">16.55. Ecuaciones características de concatenación</h2>
+<section id="tlog-lem-00052" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00052">Lema 16.55.1 — Vacío derecho y compatibilidad con adjunción</h3>
+<p>Para <span class="math inline">\(s,t\in A^{&lt;\omega}\)</span> y <span class="math inline">\(a\in A\)</span>, <span class="math display">\[
+\boxed{s\frown\epsilon_A=s,\qquad s\frown(t\frown\langle a\rangle)=(s\frown t)\frown\langle a\rangle.}
+\]</span></p>
+<p><strong>Demostración.</strong> La primera fórmula se obtiene de §16.53 porque la cola vacía tiene dominio <span class="math inline">\(0\)</span> y su imagen es vacía. Para la segunda, pongamos <span class="math inline">\(|s|=n\)</span>, <span class="math inline">\(|t|=m\)</span>. La expresión <span class="math inline">\(t\frown\langle a\rangle\)</span> coincide, por §16.50, con <span class="math inline">\(t\cup\{\langle m,a\rangle\}\)</span>. Al desplazar sus argumentos por <span class="math inline">\(n\)</span>, se obtiene la cola de <span class="math inline">\(t\)</span> desplazada y el único par nuevo <span class="math inline">\(\langle n+m,a\rangle\)</span>. La definición de concatenación y <span class="math inline">\(n+S(m)=S(n+m)\)</span> prueban que ambos miembros son el mismo conjunto de pares. La adjunción a la derecha tiene por dominio <span class="math inline">\(S(n+m)\)</span>, tal como exige §16.51. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="leyes-de-unidad-y-asociatividad" class="level2">
+<h2 class="anchored" data-anchor-id="leyes-de-unidad-y-asociatividad">16.56. Leyes de unidad y asociatividad</h2>
+<section id="tlog-mth-00076" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00076">Metateorema 16.56.1 — El monoide de secuencias finitas</h3>
+<p>Para cada conjunto <span class="math inline">\(A\)</span>, la concatenación define una función total <span class="math inline">\(A^{&lt;\omega}\times A^{&lt;\omega}\to A^{&lt;\omega}\)</span> y <span class="math display">\[
+\boxed{\epsilon_A\frown s=s=s\frown\epsilon_A,\qquad(s\frown t)\frown u=s\frown(t\frown u).}
+\]</span> Por tanto <span class="math inline">\((A^{&lt;\omega},\frown,\epsilon_A)\)</span> es un monoide, incluso para <span class="math inline">\(A=\varnothing\)</span>.</p>
+<p><strong>Demostración.</strong> §16.54 asegura que cada par de secuencias determina una única secuencia. Por separación en el producto de conjuntos, el grafo de esta operación es un conjunto funcional total. La identidad derecha es §16.55. Para la izquierda, inducción estructural §16.52 sobre <span class="math inline">\(s\)</span>: en la secuencia vacía ambos lados son el grafo vacío; si vale <span class="math inline">\(\epsilon_A\frown s=s\)</span>, entonces <span class="math inline">\(\epsilon_A\frown(s\frown\langle a\rangle)=(\epsilon_A\frown s)\frown\langle a\rangle=s\frown\langle a\rangle\)</span> por §16.55. Para la asociatividad, fijemos <span class="math inline">\(s,t\)</span> e induzcamos estructuralmente sobre <span class="math inline">\(u\)</span>. En <span class="math inline">\(u=\epsilon_A\)</span> ambos lados son <span class="math inline">\(s\frown t\)</span>. Para <span class="math inline">\(u'=u\frown\langle a\rangle\)</span>, el lema §16.55 y la hipótesis inductiva dan <span class="math display">\[
+(s\frown t)\frown u'=((s\frown t)\frown u)\frown\langle a\rangle=(s\frown(t\frown u))\frown\langle a\rangle=s\frown(t\frown u').
+\]</span> No se ha usado ni elección ni un teorema de codificación de palabras. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="orden-por-prefijos" class="level2">
+<h2 class="anchored" data-anchor-id="orden-por-prefijos">16.57. Orden por prefijos</h2>
+<section id="tlog-pro-00101" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00101">Proposición 16.57.1 — Restricción inicial como orden parcial</h3>
+<p>Definimos <span class="math inline">\(s\preccurlyeq_{\mathrm{pref}}t\)</span> si <span class="math inline">\(|s|\leq|t|\)</span> y <span class="math inline">\(s=t\upharpoonright |s|\)</span>. Es una relación conjuntista de orden parcial sobre <span class="math inline">\(A^{&lt;\omega}\)</span>: reflexiva, antisimétrica y transitiva. La secuencia vacía es su mínimo.</p>
+<p><strong>Demostración.</strong> La relación se forma mediante separación dentro de <span class="math inline">\(A^{&lt;\omega}\times A^{&lt;\omega}\)</span>. La reflexividad resulta de <span class="math inline">\(s=s\upharpoonright|s|\)</span>. Si <span class="math inline">\(s\)</span> es prefijo de <span class="math inline">\(t\)</span> y viceversa, sus longitudes son iguales por antisimetría de <span class="math inline">\(\leq\)</span> en <span class="math inline">\(\omega\)</span>; las restricciones completas dan <span class="math inline">\(s=t\)</span>. Si <span class="math inline">\(r\preccurlyeq_{\mathrm{pref}}s\preccurlyeq_{\mathrm{pref}}t\)</span>, la transitividad de <span class="math inline">\(\leq\)</span> y la ley de restricciones anidadas (§16.49) dan <span class="math inline">\(r=t\upharpoonright|r|\)</span>. Finalmente, todo grafo restringido al dominio <span class="math inline">\(0\)</span> es vacío. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cancelación-por-prefijo-fijado" class="level2">
+<h2 class="anchored" data-anchor-id="cancelación-por-prefijo-fijado">16.58. Cancelación por prefijo fijado</h2>
+<section id="tlog-lem-00053" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00053">Lema 16.58.1 — Inyectividad de la concatenación derecha con prefijo fijo</h3>
+<p>Para <span class="math inline">\(s,t,u\in A^{&lt;\omega}\)</span>, <span class="math display">\[
+\boxed{s\frown t=s\frown u\ \Longrightarrow\ t=u.}
+\]</span></p>
+<p><strong>Demostración.</strong> Escribamos <span class="math inline">\(|s|=n\)</span>, <span class="math inline">\(|t|=m\)</span>, <span class="math inline">\(|u|=p\)</span>. De la igualdad de grafos y §16.54 se deduce <span class="math inline">\(n+m=n+p\)</span>; la cancelación aditiva §16.32 da <span class="math inline">\(m=p\)</span>. Para cada <span class="math inline">\(k\in m\)</span>, el argumento <span class="math inline">\(n+k\)</span> no pertenece a <span class="math inline">\(n\)</span> (§16.46), de modo que su valor en ambos grafos concatenados sólo puede venir de la cola desplazada. La inyectividad de <span class="math inline">\(k\mapsto n+k\)</span> impone <span class="math inline">\(t(k)=u(k)\)</span>. Como tienen el mismo dominio, la extensionalidad de las funciones implica <span class="math inline">\(t=u\)</span>. También aquí se admiten las secuencias vacías. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="aplicación-coordenada-a-coordenada" class="level2">
+<h2 class="anchored" data-anchor-id="aplicación-coordenada-a-coordenada">16.59. Aplicación coordenada a coordenada</h2>
+<section id="tlog-lem-00054" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00054">Lema 16.59.1 — Transformación de secuencias mediante una función</h3>
+<p>Si <span class="math inline">\(f:A\to B\)</span> es una función declarada, existe una única función <span class="math inline">\(f^{&lt;\omega}:A^{&lt;\omega}\to B^{&lt;\omega}\)</span> tal que <span class="math inline">\(f^{&lt;\omega}(s)=f\circ s\)</span> para cada <span class="math inline">\(s:n\to A\)</span>. Preserva longitudes, vacío y concatenación: <span class="math display">\[
+\boxed{|f^{&lt;\omega}(s)|=|s|,\quad f^{&lt;\omega}(\epsilon_A)=\epsilon_B,\quad f^{&lt;\omega}(s\frown t)=f^{&lt;\omega}(s)\frown f^{&lt;\omega}(t).}
+\]</span></p>
+<p><strong>Demostración.</strong> La composición de §14.34 construye, para cada <span class="math inline">\(s:n\to A\)</span>, el grafo funcional <span class="math inline">\(f\circ s:n\to B\)</span>, único. El conjunto de tales grafos se obtiene por reemplazo sobre <span class="math inline">\(A^{&lt;\omega}\)</span> o, equivalentemente, por separación en <span class="math inline">\(A^{&lt;\omega}\times B^{&lt;\omega}\)</span> con una fórmula de composición. La igualdad de dominios prueba la longitud. El grafo vacío se transforma en vacío. En <span class="math inline">\(s\frown t\)</span>, el valor en un argumento <span class="math inline">\(i\in n\)</span> es <span class="math inline">\(f(s(i))\)</span>, y en un argumento <span class="math inline">\(n+k\)</span> de la cola es <span class="math inline">\(f(t(k))\)</span>. Esta caracterización coincide exactamente con la concatenación de los dos grafos transformados; por extensionalidad ambas funciones son iguales. No se exige inversibilidad de <span class="math inline">\(f\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="recursión-y-plegado-de-secuencias-finitas" class="level2">
+<h2 class="anchored" data-anchor-id="recursión-y-plegado-de-secuencias-finitas">16.60. Recursión y plegado de secuencias finitas</h2>
+<section id="tlog-mth-00077" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00077">Metateorema 16.60.1 — Plegado izquierdo único en cualquier alfabeto conjunto</h3>
+<p>Sean conjuntos <span class="math inline">\(A,B\)</span>, un elemento <span class="math inline">\(b\in B\)</span> y una función <span class="math inline">\(H:B\times A\to B\)</span>. Existe una única función <span class="math inline">\(F:A^{&lt;\omega}\to B\)</span> para la cual <span class="math display">\[
+\boxed{F(\epsilon_A)=b,\qquad F(s\frown\langle a\rangle)=H(F(s),a)\quad(s\in A^{&lt;\omega},\ a\in A).}
+\]</span> El enunciado vale si <span class="math inline">\(A=\varnothing\)</span>; <span class="math inline">\(B\)</span> no puede ser vacío porque contiene el dato inicial <span class="math inline">\(b\)</span>.</p>
+<p><strong>Demostración.</strong> Dada <span class="math inline">\(s:n\to A\)</span>, construimos una operación total <span class="math inline">\(K_s:\omega\times B\to B\)</span> poniendo <span class="math inline">\(K_s(k,z)=H(z,s(k))\)</span> si <span class="math inline">\(k\in n\)</span>, y <span class="math inline">\(K_s(k,z)=z\)</span> en otro caso. Como <span class="math inline">\(s\)</span> es funcional, las dos ramas son fórmulas definibles disjuntas; su grafo se obtiene por separación en <span class="math inline">\((\omega\times B)\times B\)</span>. Por el teorema §16.26 existe una única recursión <span class="math inline">\(r_s:\omega\to B\)</span> con <span class="math inline">\(r_s(0)=b\)</span> y <span class="math inline">\(r_s(S(k))=K_s(k,r_s(k))\)</span>. Definimos <span class="math inline">\(F(s):=r_s(n)\)</span>. La unicidad de <span class="math inline">\(r_s\)</span> y de <span class="math inline">\(n=|s|\)</span> garantiza que <span class="math inline">\(F\)</span> es una función definible; su grafo existe por reemplazo aplicado al conjunto <span class="math inline">\(A^{&lt;\omega}\)</span>, sin elegir testigos. Para la secuencia vacía <span class="math inline">\(n=0\)</span>, luego <span class="math inline">\(F(\epsilon_A)=b\)</span>. Si <span class="math inline">\(s'=s\frown\langle a\rangle\)</span> tiene longitud <span class="math inline">\(S(n)\)</span>, entonces <span class="math inline">\(K_{s'}\)</span> y <span class="math inline">\(K_s\)</span> coinciden en todos los argumentos <span class="math inline">\(k\in n\)</span>. Una inducción en <span class="math inline">\(k\leq n\)</span> demuestra <span class="math inline">\(r_{s'}(k)=r_s(k)\)</span>, y en particular en <span class="math inline">\(k=n\)</span>. En ese último punto <span class="math inline">\(s'(n)=a\)</span>, por lo que <span class="math display">\[
+F(s')=r_{s'}(S(n))=H(r_{s'}(n),a)=H(F(s),a).
+\]</span> Finalmente, si <span class="math inline">\(G\)</span> satisface las mismas dos ecuaciones, el principio de inducción estructural §16.52 demuestra <span class="math inline">\(G(s)=F(s)\)</span> para toda secuencia <span class="math inline">\(s\)</span>. No se ha dado por supuesto el teorema de plegado: se ha construido a partir de la recursión sobre <span class="math inline">\(\omega\)</span> ya cerrada. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="descomposición-como-unión-de-potencias-finitas" class="level2">
+<h2 class="anchored" data-anchor-id="descomposición-como-unión-de-potencias-finitas">16.61. Descomposición como unión de potencias finitas</h2>
+<section id="tlog-pro-00102" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00102">Proposición 16.61.1 — Familia indexada de espacios de palabras</h3>
+<p>Para cada <span class="math inline">\(n\in\omega\)</span> el conjunto <span class="math inline">\(A^n:=\{s\in\mathcal P(\omega\times A):s:n\to A\}\)</span> existe y es único. La familia <span class="math inline">\(\langle A^n:n\in\omega\rangle\)</span> existe como grafo funcional y <span class="math display">\[
+\boxed{A^{&lt;\omega}=\bigcup_{n\in\omega}A^n.}
+\]</span></p>
+<p><strong>Demostración.</strong> Fijados <span class="math inline">\(A,n\)</span>, se aplica separación a <span class="math inline">\(\mathcal P(\omega\times A)\)</span> con la fórmula que expresa <span class="math inline">\(\operatorname{Fun}(s)\)</span> y <span class="math inline">\(\operatorname{dom}(s)=n\)</span>, comprobando que la imagen cae en <span class="math inline">\(A\)</span> por la cota. Extensionalidad asegura unicidad de <span class="math inline">\(A^n\)</span>. El reemplazo sobre <span class="math inline">\(\omega\)</span> para esta relación funcional forma su grafo y su rango; el axioma de unión produce <span class="math inline">\(\bigcup_{n\in\omega}A^n\)</span>. Si <span class="math inline">\(s\)</span> pertenece a esa unión, su dominio es algún <span class="math inline">\(n\in\omega\)</span>, luego <span class="math inline">\(s\in A^{&lt;\omega}\)</span>. Recíprocamente, toda <span class="math inline">\(s\in A^{&lt;\omega}\)</span> tiene un natural <span class="math inline">\(n=|s|\)</span> y pertenece a <span class="math inline">\(A^n\)</span>. La igualdad es extensional. No se escoge ninguna secuencia dentro de cada <span class="math inline">\(A^n\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="salida-matemática-de-la-infraestructura-conjuntista" class="level2">
+<h2 class="anchored" data-anchor-id="salida-matemática-de-la-infraestructura-conjuntista">16.62. Salida matemática de la infraestructura conjuntista</h2>
+<section id="tlog-cor-00023" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00023">Corolario 16.62.1 — Interfaz finitaria cerrada dentro de ZF objeto</h3>
+<p><strong>Demostración (síntesis de cierre).</strong> Los §§16.39–16.61 completan en <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span> el buen orden de <span class="math inline">\(\omega\)</span>, la definición del orden <span class="math inline">\(\leq\)</span>, la formación de todas las secuencias finitas sobre un conjunto arbitrario, la longitud y restricción inicial, el último término, la concatenación y su carácter de monoide, la aplicación de funciones coordenada a coordenada y el plegado recursivo con valor inicial. Los §§16.1–16.38 ya habían construido <span class="math inline">\(0,S,\omega\)</span>, inducción, recursión numérica, suma y producto. Cada operación se representa por un conjunto o una fórmula con descripción única y es eliminable en la signatura <span class="math inline">\(\tau_\in\)</span>. Se mantiene la metateoría externa <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathsf{ZF}\)</span> clásica sin elección, y no se activa ninguna interfaz externa. La <strong>codificación efectiva</strong>, la numeración de Gödel y las afirmaciones de computabilidad no se deducen de este capítulo y se reservan para la Parte IV. No existe aún compilación Lean de estas pruebas. <span class="math inline">\(\square\)</span></p>
+<p><strong>Cierre certificado tras QA y readback:</strong> <code>TLOG-CH16-M03 = CLOSED / MATHEMATICAL-QA-PASS / DRIVE-READBACK-PASS</code>; <code>TLOG-CH16-0001 = CLOSED</code>; <code>PART III = CLOSED</code>. Las auditorías de capítulo y parte están archivadas y los 12 Markdown canónicos han superado SHA-256. <strong>Siguiente capítulo:</strong> <code>TLOG-CH17-0001 — Computabilidad mínima para la metamatemática</code> (Parte IV).</p>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-15.html">← Capítulo 15</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-17.html">Capítulo 17 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

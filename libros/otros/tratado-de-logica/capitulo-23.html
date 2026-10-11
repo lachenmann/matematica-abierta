@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 23 — Indecidibilidad, límites y frontera con GAS – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#qué-significa-que-no-exista-un-método-uniforme" id="toc-qué-significa-que-no-exista-un-método-uniforme" class="nav-link active" data-scroll-target="#qué-significa-que-no-exista-un-método-uniforme">23.0. Qué significa que no exista un método uniforme</a></li>
+  <li><a href="#el-cierre-lógico-y-sus-tres-niveles" id="toc-el-cierre-lógico-y-sus-tres-niveles" class="nav-link" data-scroll-target="#el-cierre-lógico-y-sus-tres-niveles">23.1. El cierre lógico y sus tres niveles</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00034" id="toc-tlog-cnv-00034" class="nav-link" data-scroll-target="#tlog-cnv-00034">Convención 23.1.1 — El cierre lógico y sus tres niveles</a></li>
+  </ul></li>
+  <li><a href="#reducción-computable-entre-problemas-codificados" id="toc-reducción-computable-entre-problemas-codificados" class="nav-link" data-scroll-target="#reducción-computable-entre-problemas-codificados">23.2. Reducción computable entre problemas codificados</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00160" id="toc-tlog-def-00160" class="nav-link" data-scroll-target="#tlog-def-00160">Definición 23.2.1 — Reducción computable entre problemas codificados</a></li>
+  </ul></li>
+  <li><a href="#transferencia-por-reducciones-y-clausuras" id="toc-transferencia-por-reducciones-y-clausuras" class="nav-link" data-scroll-target="#transferencia-por-reducciones-y-clausuras">23.3. Transferencia por reducciones y clausuras</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00104" id="toc-tlog-lem-00104" class="nav-link" data-scroll-target="#tlog-lem-00104">Lema 23.3.1 — Transferencia por reducciones y clausuras</a></li>
+  </ul></li>
+  <li><a href="#parada-universal-y-diagonal-rm" id="toc-parada-universal-y-diagonal-rm" class="nav-link" data-scroll-target="#parada-universal-y-diagonal-rm">23.4. Parada universal y diagonal RM</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00161" id="toc-tlog-def-00161" class="nav-link" data-scroll-target="#tlog-def-00161">Definición 23.4.1 — Parada universal y diagonal RM</a></li>
+  </ul></li>
+  <li><a href="#semidecisión-uniforme-de-h-y-k" id="toc-semidecisión-uniforme-de-h-y-k" class="nav-link" data-scroll-target="#semidecisión-uniforme-de-h-y-k">23.5. Semidecisión uniforme de H y K</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00105" id="toc-tlog-lem-00105" class="nav-link" data-scroll-target="#tlog-lem-00105">Lema 23.5.1 — Semidecisión uniforme de H y K</a></li>
+  </ul></li>
+  <li><a href="#indecidibilidad-diagonal-de-la-parada" id="toc-indecidibilidad-diagonal-de-la-parada" class="nav-link" data-scroll-target="#indecidibilidad-diagonal-de-la-parada">23.6. Indecidibilidad diagonal de la parada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00135" id="toc-tlog-mth-00135" class="nav-link" data-scroll-target="#tlog-mth-00135">Metateorema 23.6.1 — Indecidibilidad diagonal de la parada</a></li>
+  </ul></li>
+  <li><a href="#parada-universal-y-no-semidecidibilidad-de-sus-complementos" id="toc-parada-universal-y-no-semidecidibilidad-de-sus-complementos" class="nav-link" data-scroll-target="#parada-universal-y-no-semidecidibilidad-de-sus-complementos">23.7. Parada universal y no semidecidibilidad de sus complementos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00041" id="toc-tlog-cor-00041" class="nav-link" data-scroll-target="#tlog-cor-00041">Corolario 23.7.1 — Parada universal y no semidecidibilidad de sus complementos</a></li>
+  </ul></li>
+  <li><a href="#k-es-completo-para-semidecidibilidad-rm" id="toc-k-es-completo-para-semidecidibilidad-rm" class="nav-link" data-scroll-target="#k-es-completo-para-semidecidibilidad-rm">23.8. K es completo para semidecidibilidad RM</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00136" id="toc-tlog-mth-00136" class="nav-link" data-scroll-target="#tlog-mth-00136">Metateorema 23.8.1 — K es completo para semidecidibilidad RM</a></li>
+  </ul></li>
+  <li><a href="#parada-acotada-y-ausencia-de-una-cota-total-uniforme" id="toc-parada-acotada-y-ausencia-de-una-cota-total-uniforme" class="nav-link" data-scroll-target="#parada-acotada-y-ausencia-de-una-cota-total-uniforme">23.9. Parada acotada y ausencia de una cota total uniforme</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00146" id="toc-tlog-pro-00146" class="nav-link" data-scroll-target="#tlog-pro-00146">Proposición 23.9.1 — Parada acotada y ausencia de una cota total uniforme</a></li>
+  </ul></li>
+  <li><a href="#teoremas-refutaciones-y-extensiones-aritméticas" id="toc-teoremas-refutaciones-y-extensiones-aritméticas" class="nav-link" data-scroll-target="#teoremas-refutaciones-y-extensiones-aritméticas">23.10. Teoremas, refutaciones y extensiones aritméticas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00162" id="toc-tlog-def-00162" class="nav-link" data-scroll-target="#tlog-def-00162">Definición 23.10.1 — Teoremas, refutaciones y extensiones aritméticas</a></li>
+  </ul></li>
+  <li><a href="#indecidibilidad-esencial-de-pa-por-diagonalización" id="toc-indecidibilidad-esencial-de-pa-por-diagonalización" class="nav-link" data-scroll-target="#indecidibilidad-esencial-de-pa-por-diagonalización">23.11. Indecidibilidad esencial de PA por diagonalización</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00137" id="toc-tlog-mth-00137" class="nav-link" data-scroll-target="#tlog-mth-00137">Metateorema 23.11.1 — Indecidibilidad esencial de PA por diagonalización</a></li>
+  </ul></li>
+  <li><a href="#teoremas-efectivos-y-complementos-no-semidecidibles" id="toc-teoremas-efectivos-y-complementos-no-semidecidibles" class="nav-link" data-scroll-target="#teoremas-efectivos-y-complementos-no-semidecidibles">23.12. Teoremas efectivos y complementos no semidecidibles</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00042" id="toc-tlog-cor-00042" class="nav-link" data-scroll-target="#tlog-cor-00042">Corolario 23.12.1 — Teoremas efectivos y complementos no semidecidibles</a></li>
+  </ul></li>
+  <li><a href="#completitud-deductiva-y-decisión-mediante-dos-búsquedas" id="toc-completitud-deductiva-y-decisión-mediante-dos-búsquedas" class="nav-link" data-scroll-target="#completitud-deductiva-y-decisión-mediante-dos-búsquedas">23.13. Completitud deductiva y decisión mediante dos búsquedas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00147" id="toc-tlog-pro-00147" class="nav-link" data-scroll-target="#tlog-pro-00147">Proposición 23.13.1 — Completitud deductiva y decisión mediante dos búsquedas</a></li>
+  </ul></li>
+  <li><a href="#consistencia-de-extensiones-finitas-y-deducción" id="toc-consistencia-de-extensiones-finitas-y-deducción" class="nav-link" data-scroll-target="#consistencia-de-extensiones-finitas-y-deducción">23.14. Consistencia de extensiones finitas y deducción</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00106" id="toc-tlog-lem-00106" class="nav-link" data-scroll-target="#tlog-lem-00106">Lema 23.14.1 — Consistencia de extensiones finitas y deducción</a></li>
+  </ul></li>
+  <li><a href="#indecidibilidad-de-consistencia-en-extensiones-finitas" id="toc-indecidibilidad-de-consistencia-en-extensiones-finitas" class="nav-link" data-scroll-target="#indecidibilidad-de-consistencia-en-extensiones-finitas">23.15. Indecidibilidad de consistencia en extensiones finitas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00138" id="toc-tlog-mth-00138" class="nav-link" data-scroll-target="#tlog-mth-00138">Metateorema 23.15.1 — Indecidibilidad de consistencia en extensiones finitas</a></li>
+  </ul></li>
+  <li><a href="#existencia-de-modelos-para-extensiones-finitas" id="toc-existencia-de-modelos-para-extensiones-finitas" class="nav-link" data-scroll-target="#existencia-de-modelos-para-extensiones-finitas">23.16. Existencia de modelos para extensiones finitas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00043" id="toc-tlog-cor-00043" class="nav-link" data-scroll-target="#tlog-cor-00043">Corolario 23.16.1 — Existencia de modelos para extensiones finitas</a></li>
+  </ul></li>
+  <li><a href="#verdad-aritmética-y-fragmento-σ1" id="toc-verdad-aritmética-y-fragmento-σ1" class="nav-link" data-scroll-target="#verdad-aritmética-y-fragmento-σ1">23.17. Verdad aritmética y fragmento Σ1</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00163" id="toc-tlog-def-00163" class="nav-link" data-scroll-target="#tlog-def-00163">Definición 23.17.1 — Verdad aritmética y fragmento Σ1</a></li>
+  </ul></li>
+  <li><a href="#verdad-σ1-semidecidible-y-completa" id="toc-verdad-σ1-semidecidible-y-completa" class="nav-link" data-scroll-target="#verdad-σ1-semidecidible-y-completa">23.18. Verdad Σ1 semidecidible y completa</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00139" id="toc-tlog-mth-00139" class="nav-link" data-scroll-target="#tlog-mth-00139">Metateorema 23.18.1 — Verdad Σ1 semidecidible y completa</a></li>
+  </ul></li>
+  <li><a href="#completitud-computacional-de-los-teoremas-pa" id="toc-completitud-computacional-de-los-teoremas-pa" class="nav-link" data-scroll-target="#completitud-computacional-de-los-teoremas-pa">23.19. Completitud computacional de los teoremas PA</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00140" id="toc-tlog-mth-00140" class="nav-link" data-scroll-target="#tlog-mth-00140">Metateorema 23.19.1 — Completitud computacional de los teoremas PA</a></li>
+  </ul></li>
+  <li><a href="#fragmento-finito-de-bases-aritméticas" id="toc-fragmento-finito-de-bases-aritméticas" class="nav-link" data-scroll-target="#fragmento-finito-de-bases-aritméticas">23.20. Fragmento finito de bases aritméticas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00164" id="toc-tlog-def-00164" class="nav-link" data-scroll-target="#tlog-def-00164">Definición 23.20.1 — Fragmento finito de bases aritméticas</a></li>
+  </ul></li>
+  <li><a href="#pruebas-numerales-δ0-desde-las-ocho-bases" id="toc-pruebas-numerales-δ0-desde-las-ocho-bases" class="nav-link" data-scroll-target="#pruebas-numerales-δ0-desde-las-ocho-bases">23.21. Pruebas numerales Δ0 desde las ocho bases</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00107" id="toc-tlog-lem-00107" class="nav-link" data-scroll-target="#tlog-lem-00107">Lema 23.21.1 — Pruebas numerales Δ0 desde las ocho bases</a></li>
+  </ul></li>
+  <li><a href="#indecidibilidad-de-validez-y-demostrabilidad-lógica" id="toc-indecidibilidad-de-validez-y-demostrabilidad-lógica" class="nav-link" data-scroll-target="#indecidibilidad-de-validez-y-demostrabilidad-lógica">23.22. Indecidibilidad de validez y demostrabilidad lógica</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00141" id="toc-tlog-mth-00141" class="nav-link" data-scroll-target="#tlog-mth-00141">Metateorema 23.22.1 — Indecidibilidad de validez y demostrabilidad lógica</a></li>
+  </ul></li>
+  <li><a href="#satisfacibilidad-y-no-satisfacibilidad-de-primer-orden" id="toc-satisfacibilidad-y-no-satisfacibilidad-de-primer-orden" class="nav-link" data-scroll-target="#satisfacibilidad-y-no-satisfacibilidad-de-primer-orden">23.23. Satisfacibilidad y no satisfacibilidad de primer orden</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00044" id="toc-tlog-cor-00044" class="nav-link" data-scroll-target="#tlog-cor-00044">Corolario 23.23.1 — Satisfacibilidad y no satisfacibilidad de primer orden</a></li>
+  </ul></li>
+  <li><a href="#no-definibilidad-aritmética-de-la-verdad-completa" id="toc-no-definibilidad-aritmética-de-la-verdad-completa" class="nav-link" data-scroll-target="#no-definibilidad-aritmética-de-la-verdad-completa">23.24. No definibilidad aritmética de la verdad completa</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00142" id="toc-tlog-mth-00142" class="nav-link" data-scroll-target="#tlog-mth-00142">Metateorema 23.24.1 — No definibilidad aritmética de la verdad completa</a></li>
+  </ul></li>
+  <li><a href="#verdad-completa-sin-semidecisión-de-ninguna-polaridad" id="toc-verdad-completa-sin-semidecisión-de-ninguna-polaridad" class="nav-link" data-scroll-target="#verdad-completa-sin-semidecisión-de-ninguna-polaridad">23.25. Verdad completa sin semidecisión de ninguna polaridad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00045" id="toc-tlog-cor-00045" class="nav-link" data-scroll-target="#tlog-cor-00045">Corolario 23.25.1 — Verdad completa sin semidecisión de ninguna polaridad</a></li>
+  </ul></li>
+  <li><a href="#límite-uniforme-y-afirmaciones-sobre-una-sola-instancia" id="toc-límite-uniforme-y-afirmaciones-sobre-una-sola-instancia" class="nav-link" data-scroll-target="#límite-uniforme-y-afirmaciones-sobre-una-sola-instancia">23.26. Límite uniforme y afirmaciones sobre una sola instancia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00148" id="toc-tlog-pro-00148" class="nav-link" data-scroll-target="#tlog-pro-00148">Proposición 23.26.1 — Límite uniforme y afirmaciones sobre una sola instancia</a></li>
+  </ul></li>
+  <li><a href="#presentación-efectiva-de-polinomios-sobre-naturales" id="toc-presentación-efectiva-de-polinomios-sobre-naturales" class="nav-link" data-scroll-target="#presentación-efectiva-de-polinomios-sobre-naturales">23.27. Presentación efectiva de polinomios sobre naturales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00165" id="toc-tlog-def-00165" class="nav-link" data-scroll-target="#tlog-def-00165">Definición 23.27.1 — Presentación efectiva de polinomios sobre naturales</a></li>
+  </ul></li>
+  <li><a href="#validación-y-evaluación-polinómica-total" id="toc-validación-y-evaluación-polinómica-total" class="nav-link" data-scroll-target="#validación-y-evaluación-polinómica-total">23.28. Validación y evaluación polinómica total</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00108" id="toc-tlog-lem-00108" class="nav-link" data-scroll-target="#tlog-lem-00108">Lema 23.28.1 — Validación y evaluación polinómica total</a></li>
+  </ul></li>
+  <li><a href="#semidecidibilidad-uniforme-de-soluciones-diofánticas" id="toc-semidecidibilidad-uniforme-de-soluciones-diofánticas" class="nav-link" data-scroll-target="#semidecidibilidad-uniforme-de-soluciones-diofánticas">23.29. Semidecidibilidad uniforme de soluciones diofánticas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00143" id="toc-tlog-mth-00143" class="nav-link" data-scroll-target="#tlog-mth-00143">Metateorema 23.29.1 — Semidecidibilidad uniforme de soluciones diofánticas</a></li>
+  </ul></li>
+  <li><a href="#traducción-polinómica-a-sentencias-existenciales" id="toc-traducción-polinómica-a-sentencias-existenciales" class="nav-link" data-scroll-target="#traducción-polinómica-a-sentencias-existenciales">23.30. Traducción polinómica a sentencias existenciales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00149" id="toc-tlog-pro-00149" class="nav-link" data-scroll-target="#tlog-pro-00149">Proposición 23.30.1 — Traducción polinómica a sentencias existenciales</a></li>
+  </ul></li>
+  <li><a href="#cotas-computables-de-testigos-y-decisión-diofántica" id="toc-cotas-computables-de-testigos-y-decisión-diofántica" class="nav-link" data-scroll-target="#cotas-computables-de-testigos-y-decisión-diofántica">23.31. Cotas computables de testigos y decisión diofántica</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00144" id="toc-tlog-mth-00144" class="nav-link" data-scroll-target="#tlog-mth-00144">Metateorema 23.31.1 — Cotas computables de testigos y decisión diofántica</a></li>
+  </ul></li>
+  <li><a href="#contrato-condicional-para-transferir-indecidibilidad-a-dio" id="toc-contrato-condicional-para-transferir-indecidibilidad-a-dio" class="nav-link" data-scroll-target="#contrato-condicional-para-transferir-indecidibilidad-a-dio">23.32. Contrato condicional para transferir indecidibilidad a Dio</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00150" id="toc-tlog-pro-00150" class="nav-link" data-scroll-target="#tlog-pro-00150">Proposición 23.32.1 — Contrato condicional para transferir indecidibilidad a Dio</a></li>
+  </ul></li>
+  <li><a href="#dominios-diofánticos-y-cambios-de-problema" id="toc-dominios-diofánticos-y-cambios-de-problema" class="nav-link" data-scroll-target="#dominios-diofánticos-y-cambios-de-problema">23.33. Dominios diofánticos y cambios de problema</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00151" id="toc-tlog-pro-00151" class="nav-link" data-scroll-target="#tlog-pro-00151">Proposición 23.33.1 — Dominios diofánticos y cambios de problema</a></li>
+  </ul></li>
+  <li><a href="#contrato-de-salida-hacia-gas" id="toc-contrato-de-salida-hacia-gas" class="nav-link" data-scroll-target="#contrato-de-salida-hacia-gas">23.34. Contrato de salida hacia GAS</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00166" id="toc-tlog-def-00166" class="nav-link" data-scroll-target="#tlog-def-00166">Definición 23.34.1 — Contrato de salida hacia GAS</a></li>
+  </ul></li>
+  <li><a href="#lo-que-no-se-exporta-por-cerrar-el-tratado" id="toc-lo-que-no-se-exporta-por-cerrar-el-tratado" class="nav-link" data-scroll-target="#lo-que-no-se-exporta-por-cerrar-el-tratado">23.35. Lo que no se exporta por cerrar el tratado</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00152" id="toc-tlog-pro-00152" class="nav-link" data-scroll-target="#tlog-pro-00152">Proposición 23.35.1 — Lo que no se exporta por cerrar el tratado</a></li>
+  </ul></li>
+  <li><a href="#mapa-final-de-hipótesis-y-tipos-de-límite" id="toc-mapa-final-de-hipótesis-y-tipos-de-límite" class="nav-link" data-scroll-target="#mapa-final-de-hipótesis-y-tipos-de-límite">23.36. Mapa final de hipótesis y tipos de límite</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00153" id="toc-tlog-pro-00153" class="nav-link" data-scroll-target="#tlog-pro-00153">Proposición 23.36.1 — Mapa final de hipótesis y tipos de límite</a></li>
+  </ul></li>
+  <li><a href="#cierre-de-la-parte-v" id="toc-cierre-de-la-parte-v" class="nav-link" data-scroll-target="#cierre-de-la-parte-v">23.37. Cierre de la Parte V</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00046" id="toc-tlog-cor-00046" class="nav-link" data-scroll-target="#tlog-cor-00046">Corolario 23.37.1 — Cierre de la Parte V</a></li>
+  </ul></li>
+  <li><a href="#cierre-matemático-del-alcance-aprobado-de-tlog" id="toc-cierre-matemático-del-alcance-aprobado-de-tlog" class="nav-link" data-scroll-target="#cierre-matemático-del-alcance-aprobado-de-tlog">23.38. Cierre matemático del alcance aprobado de TLOG</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00047" id="toc-tlog-cor-00047" class="nav-link" data-scroll-target="#tlog-cor-00047">Corolario 23.38.1 — Cierre matemático del alcance aprobado de TLOG</a></li>
+  </ul></li>
+  <li><a href="#ejemplos-y-balance-final" id="toc-ejemplos-y-balance-final" class="nav-link" data-scroll-target="#ejemplos-y-balance-final">23.39. Ejemplos y balance final</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 23 — Indecidibilidad, límites y frontera con GAS</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-22.html">← Capítulo 22</a> ·</p>
+<section id="qué-significa-que-no-exista-un-método-uniforme" class="level2">
+<h2 class="anchored" data-anchor-id="qué-significa-que-no-exista-un-método-uniforme">23.0. Qué significa que no exista un método uniforme</h2>
+<p>Ya tenemos pruebas formales codificables, máquinas universales RM, aritmetización, diagonalización e incompletitud. El último capítulo conecta esas construcciones con preguntas algorítmicas precisas: parar, demostrar, tener un modelo y ser verdadero. Cada límite se prueba para una familia y conserva su nivel y sus hipótesis.</p>
+<p>Comenzaremos con parada y reducciones. Después mostraremos que la consistencia basta para excluir un decidor de teoremas de cualquier extensión PA, incluso sin presentación efectiva; la presentación se requiere para la semidecisión. Una base aritmética finita permitirá transferir parada a validez lógica sin importarQ ni finita axiomatización PA. Finalmente separaremos verdad Σ1 y verdad completa, demostraremosTarski y prepararemos la salida diofántica elemental haciaGAS.</p>
+<p>La redacción y las pruebas son autorales humanas. Como contraste primario limitado se consultó <a href="https://www.andrew.cmu.edu/user/avigad/Teaching/candi_notes.pdf">Avigad, §§4.9 y apertura del capítulo5</a>, versión9enero2007; y <a href="https://logic.pdmi.ras.ru/~yumat/H10Pbook/par_1_1.htm">Matiyasevich, §1.1 del texto del autor</a>, para la declaración de dominios y dirección de reducciones. Ninguna fuente sustituye nuestros proveedoresS/G/RM; no se importa una prueba MRDP o equivalencia operacional externa.</p>
+</section>
+<section id="el-cierre-lógico-y-sus-tres-niveles" class="level2">
+<h2 class="anchored" data-anchor-id="el-cierre-lógico-y-sus-tres-niveles">23.1. El cierre lógico y sus tres niveles</h2>
+<section id="tlog-cnv-00034" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00034">Convención 23.1.1 — El cierre lógico y sus tres niveles</h3>
+<p>Seguimos en ZF clásica externa sin AC/BPI. PA y sus extensiones son teorías objeto; RM es el sistema operacional externo aprobado; ZF objeto conserva su identidad. No se presume consistencia ni modelo de ZF objeto. El capítulo completa las consecuencias lógico-formales necesarias del tratado, sin absorber la monografía GAS.</p>
+<p>Separamos tres límites: no existencia de un decidor RM para una familia de entradas; ausencia de una prueba de una sentencia en una teoría fijada; y no definibilidad aritmética de un conjunto de códigos en la estructura estándar. Ninguno es una descripción de dificultad psicológica o de tiempo de cálculo. Las hipótesis de consistencia y corrección Σ1 se indicarán por separado.</p>
+<p>La construcción universal de CH18 permite ahora diagonalizar programas <strong>codificados</strong>: ese recurso no se retropropaga a CH17. MRDP/Jones, la equivalencia RM–Turing y las interpretaciones intertratados no se incorporan por el cierre del índice. La formulación diofántica elemental al final sólo prepara un contrato de entrada para GAS.</p>
+</section>
+</section>
+<section id="reducción-computable-entre-problemas-codificados" class="level2">
+<h2 class="anchored" data-anchor-id="reducción-computable-entre-problemas-codificados">23.2. Reducción computable entre problemas codificados</h2>
+<section id="tlog-def-00160" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00160">Definición 23.2.1 — Reducción computable entre problemas codificados</h3>
+<p>Para A,B⊆ω escribimos <span class="math inline">\(A\le_m^{RM}B\)</span> si existe una función <strong>total</strong> computable-RM f:ω→ω tal que n∈A⇔f(n)∈B. f es una reducción de muchos a uno. La función se fija una vez para todas las entradas; no puede consultar el problema que pretende reducir.</p>
+<p>Un problema de tuplas se convierte en conjunto numérico mediante S, con reconocimiento de longitud/aridades. Fuera de los códigos válidos la respuesta de pertenencia será falsa, salvo declaración explícita diferente. Los complementos sin subíndice son relativos a ω; cuando sólo se discuten entradas válidas se declara esa restricción y se usa la guarda decidible para pasar al problema total.</p>
+<p>Dec-RM significa existencia de un programa total que entrega1 en miembros y0 en no miembros. Semi-RM significa parada exactamente en miembros, con salida irrelevante. Un algoritmo que a veces devuelve «desconocido» o diverge no es un decidor de esta definición.</p>
+</section>
+</section>
+<section id="transferencia-por-reducciones-y-clausuras" class="level2">
+<h2 class="anchored" data-anchor-id="transferencia-por-reducciones-y-clausuras">23.3. Transferencia por reducciones y clausuras</h2>
+<section id="tlog-lem-00104" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00104">Lema 23.3.1 — Transferencia por reducciones y clausuras</h3>
+<p><strong>Lema.</strong> Si A≤_m B y B es decidible, A es decidible. Si B es semidecidible, A es semidecidible. Si el complemento de B es semidecidible, también el complemento de A lo es. Las reducciones son reflexivas y transitivas.</p>
+<p><strong>Prueba.</strong> Se calcula f(n) y se ejecuta el procedimiento correspondiente de B. Totalidad de f asegura que no se pierden entradas antes de la prueba de pertenencia. La misma f satisface n∉A⇔f(n)∉B. Identidad y composición de programas totales dan reflexividad y transitividad. Así, para probar indecidibilidad de B desde la de A, la dirección necesaria es **A≤_m B**. Obtener B≤_m A no daría esa conclusión. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="parada-universal-y-diagonal-rm" class="level2">
+<h2 class="anchored" data-anchor-id="parada-universal-y-diagonal-rm">23.4. Parada universal y diagonal RM</h2>
+<section id="tlog-def-00161" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00161">Definición 23.4.1 — Parada universal y diagonal RM</h3>
+<p>Sea Prog el conjunto decidible de códigos Pr(P) de programas RM aprobados, con r≥1. Cada uno puede recibir una sola entrada. Definimos <span class="math display">\[
+H=\{S([c,x]):c\in\mathrm{Prog}\text{ y }P_c(x)\text{ para}\},\qquad
+K=\{c:c\in\mathrm{Prog}\text{ y }P_c(c)\text{ para}\}.
+\]</span> El programa universal U de CH18 recibe dos naturales (c,z), donde <strong>z es el código S de la lista de argumentos</strong>, y diverge en entradas inválidas. Por tanto para una entrada x lo ejecutamos como U(c,S([x])). No confundimos x con el código de su lista ni con el par externo S([c,x]). Si la ejecución para con registro0 igual a0, sigue perteneciendo a H/K.</p>
+<p>El código del programa no especifica una aridad adicional: fijamos aquí su interpretación con una entrada y registros restantes inicializados en0. Todo c∈Prog tiene al menos un registro, por lo que esta interpretación es válida.</p>
+</section>
+</section>
+<section id="semidecisión-uniforme-de-h-y-k" class="level2">
+<h2 class="anchored" data-anchor-id="semidecisión-uniforme-de-h-y-k">23.5. Semidecisión uniforme de H y K</h2>
+<section id="tlog-lem-00105" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00105">Lema 23.5.1 — Semidecisión uniforme de H y K</h3>
+<p><strong>Lema.</strong> H y K son semidecidibles-RM, con rechazo divergente de códigos inválidos.</p>
+<p><strong>Prueba.</strong> Para H se decodifica la lista de longitud2 y se valida c.&nbsp;Si alguna guarda falla se entra en un lazo. En caso válido se ejecuta U(c,S([x])) y se alcanza HALT exactamente si el programa simulado para. Para K se valida c y se ejecuta U(c,S([c])). Las operaciones de empaquetado son totales, y la universalidad ya demostrada da ambos bicondicionales. La prueba no exige salida positiva del programa simulado. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="indecidibilidad-diagonal-de-la-parada" class="level2">
+<h2 class="anchored" data-anchor-id="indecidibilidad-diagonal-de-la-parada">23.6. Indecidibilidad diagonal de la parada</h2>
+<section id="tlog-mth-00135" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00135">Metateorema 23.6.1 — Indecidibilidad diagonal de la parada</h3>
+<p><strong>Metateorema.</strong> K no es decidible-RM.</p>
+<p><strong>Prueba.</strong> Supongamos un programa total χ que decide K con valores0/1. Construimos un programa D de una entrada: ejecuta χ sobre esa entrada, entra en un lazo divergente si obtiene1 y alcanza HALT si obtiene0. Composición, relocalización de macros y lazo de CH17 producen un programa RM finito válido. Sea d=Pr(D), un natural estándar y miembro de Prog. Entonces <span class="math display">\[
+d\in K\iff D(d)\text{ para}\iff χ(d)=0\iff d\notin K,
+\]</span> contradicción clásica. D no necesita contener su propio código ni conocerlo durante su ejecución: d se toma externamente después de construir el programa y se le entrega como entrada. No se usa un teorema de recursión de programas ni equivalencia con máquinas de Turing. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="parada-universal-y-no-semidecidibilidad-de-sus-complementos" class="level2">
+<h2 class="anchored" data-anchor-id="parada-universal-y-no-semidecidibilidad-de-sus-complementos">23.7. Parada universal y no semidecidibilidad de sus complementos</h2>
+<section id="tlog-cor-00041" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00041">Corolario 23.7.1 — Parada universal y no semidecidibilidad de sus complementos</h3>
+<p><strong>Corolario.</strong> H es semidecidible e indecidible; ni ωni ωon semidecidibles.</p>
+<p><strong>Prueba.</strong> La función total c↦S([c,c]) reduce K a H, incluyendo c inválido, que queda fuera de ambos lados. Un decidor H daría decidor K. Si el complemento de K o de H fuese semidecidible, sus dos semidecidores producirían por intercalación un decidor, contradiciendo la indecidibilidad. En los complementos hay también códigos inválidos; su reconocimiento decidible no afecta el argumento. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="k-es-completo-para-semidecidibilidad-rm" class="level2">
+<h2 class="anchored" data-anchor-id="k-es-completo-para-semidecidibilidad-rm">23.8. K es completo para semidecidibilidad RM</h2>
+<section id="tlog-mth-00136" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00136">Metateorema 23.8.1 — K es completo para semidecidibilidad RM</h3>
+<p><strong>Metateorema.</strong> Para cada A⊆ω semidecidible-RM existe una reducción total computable A≤_m K. Junto con su semidecidibilidad, esto caracteriza a K como completo para esa clase de problemas.</p>
+<p><strong>Prueba constructiva.</strong> Fijamos un semidecidor E de A. Dado n, generamos el programa P_n de una entrada que ignora esa entrada, inicializa un registro protegido con n y ejecuta E(n). El borrado de la entrada, carga de n por n incrementos, copia de registros, instrucciones de E y relocalización de saltos son una construcción finita efectiva uniforme; se pueden generar por bucles acotados en n y el programa fijo E. P_n tiene al menos un registro y una instrucción, y toda salida de una parada se admite. Sea f(n)=Pr(P_n). f es total computable, aunque el tamaño de su código pueda ser enorme. Como la entrada es ignorada, <span class="math display">\[
+f(n)\in K\iff P_n(f(n))\text{ para}\iff E(n)\text{ para}\iff n\in A.
+\]</span> No se calcula si E(n) para al generar P_n, ni se utiliza un oráculo. «Completo» aquí describe reducciones entre conjuntos semidecidibles, no completitud del cálculo de primer orden. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="parada-acotada-y-ausencia-de-una-cota-total-uniforme" class="level2">
+<h2 class="anchored" data-anchor-id="parada-acotada-y-ausencia-de-una-cota-total-uniforme">23.9. Parada acotada y ausencia de una cota total uniforme</h2>
+<section id="tlog-pro-00146" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00146">Proposición 23.9.1 — Parada acotada y ausencia de una cota total uniforme</h3>
+<p><strong>Proposición.</strong> Se decide si un programa válido para en alguno de los tiempos0,…,t dados. En cambio no existe una función total computable b(c,x) que, para todo programa válido, acote un tiempo de parada siempre que éste pare en x.</p>
+<p><strong>Prueba.</strong> Se inicializa la configuración, se consulta HALT en tiempo0 y se efectúan a lo sumo t transiciones, consultando cada estado. La parada es absorbente; se consideran ambas ramas DECJZ correctamente. El procedimiento es un bucle acotado con actualización efectiva; la versión sobre códigos es PR por las operaciones sintácticas y recursión acotada de CH22.</p>
+<p>Si b fuese total y tuviera la propiedad indicada, para decidir H calcularíamos b(c,x), ejecutaríamos el test acotado y responderíamos no si ningún estado es HALT. Una parada posterior al bound contradice su propiedad, de modo que el procedimiento sería correcto y total, contra §23.7. La inexistencia de esa cota uniforme es compatible con que cada ejecución que para tenga su tiempo finito concreto. La cota t tampoco promete que t pasos simulados se ejecuten en t pasos del intérprete. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="teoremas-refutaciones-y-extensiones-aritméticas" class="level2">
+<h2 class="anchored" data-anchor-id="teoremas-refutaciones-y-extensiones-aritméticas">23.10. Teoremas, refutaciones y extensiones aritméticas</h2>
+<section id="tlog-def-00162" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00162">Definición 23.10.1 — Teoremas, refutaciones y extensiones aritméticas</h3>
+<p>Para una teoría aritmética T con el cálculo fijado definimos <span class="math display">\[
+\operatorname{Th}_{sent}(T)=\{G(A):A\text{ sentencia de }L_A,\ T\vdash A\},
+\quad\operatorname{Ref}_{sent}(T)=\{G(A):A\text{ sentencia},\ T\vdash\neg A\}.
+\]</span> En ambas se rechazan códigos inválidos o de fórmulas abiertas. Una T consistente hace disjuntos los dos conjuntos; no hace de Ref el complemento de Th: las sentencias independientes quedan fuera de ambos.</p>
+<p>Para el resultado de §23.11 permitimos PA+Γ con Γ un conjunto cualquiera de sentencias de L_A, con prefijos universales como en CH21, sin exigir presentación semidecidible de Γ. «PA es esencialmente indecidible» significará aquí que ninguna extensión consistente de esa clase tiene conjunto de teoremas-sentencias decidible-RM. No se confundirá con la afirmación más débil «PA es incompleta».</p>
+</section>
+</section>
+<section id="indecidibilidad-esencial-de-pa-por-diagonalización" class="level2">
+<h2 class="anchored" data-anchor-id="indecidibilidad-esencial-de-pa-por-diagonalización">23.11. Indecidibilidad esencial de PA por diagonalización</h2>
+<section id="tlog-mth-00137" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00137">Metateorema 23.11.1 — Indecidibilidad esencial de PA por diagonalización</h3>
+<p><strong>Metateorema.</strong> Toda extensión consistente T=PA+Γ de §23.10 tiene Th_sent(T) indecidible-RM. No se necesita efectividad de Γ ni corrección estándar de T.</p>
+<p><strong>Prueba.</strong> Supongamos que la pertenencia a Th_sent(T) se decide por una función total RM. CH19 proporciona una fórmula ρ(z), con representación <strong>bilateral</strong> PA: si un numeral pertenece, PA prueba ρ; si no pertenece, PA prueba ¬ρ. Higienizamos sus variables y diagonalizamos para obtener una sentencia D con PA⊢D↔︎¬ρ(⌜D⌝). Sea d=G(D).</p>
+<p>Si T⊢D, entonces d∈Th_sent(T), luego PA⊢ρ(d̄); pero la prueba de D y el bicondicional dan T⊢¬ρ(d̄), contradiciendo consistencia. Queda T⊬D. Entonces d∉Th_sent(T), y la representación bilateral da PA⊢¬ρ(d̄). El bicondicional implica PA⊢D, por tanto T⊢D, contradicción. Las dos ramas usan sólo pruebas PA de instancias de un decidor supuesto; nunca infieren verdad de un teorema arbitrario T.</p>
+<p>La representación bilateral es indispensable para la segunda rama; la mera semidecidibilidad o representación débil no bastaría. No se necesita D2/D3 de demostrabilidad, ni la no refutación de la sentencia de Gödel. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="teoremas-efectivos-y-complementos-no-semidecidibles" class="level2">
+<h2 class="anchored" data-anchor-id="teoremas-efectivos-y-complementos-no-semidecidibles">23.12. Teoremas efectivos y complementos no semidecidibles</h2>
+<section id="tlog-cor-00042" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00042">Corolario 23.12.1 — Teoremas efectivos y complementos no semidecidibles</h3>
+<p><strong>Corolario.</strong> Para toda T presentada y consistente, Th_sent(T) es semidecidible e indecidible, y su complemento en ω no es semidecidible. Lo mismo vale para PA.</p>
+<p><strong>Prueba.</strong> Se guardan códigos de sentencias y se enumeran todos los certificados d, usando el comprobador total de CH21; una aceptación produce parada. Su exactitud proporciona la semidecisión, sin corrección de T. El teorema anterior da indecidibilidad y la doble semidecisión excluye semidecisión del complemento. PA tiene presentación decidible y consistencia externa ya demostrada en CH19. Ref_sent(T) sí es semidecidible por preimagen del constructor de negación; no se lo ha identificado con ese complemento. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="completitud-deductiva-y-decisión-mediante-dos-búsquedas" class="level2">
+<h2 class="anchored" data-anchor-id="completitud-deductiva-y-decisión-mediante-dos-búsquedas">23.13. Completitud deductiva y decisión mediante dos búsquedas</h2>
+<section id="tlog-pro-00147" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00147">Proposición 23.13.1 — Completitud deductiva y decisión mediante dos búsquedas</h3>
+<p><strong>Proposición.</strong> Si una teoría de sentencias es consistente, tiene pruebas semidecidibles y es completa, se decide su conjunto de teoremas mediante dos búsquedas. Por ello una T efectiva consistente que extiende PA no puede ser completa.</p>
+<p><strong>Prueba.</strong> Para una sentencia A se intercalan las búsquedas de una prueba A y de una prueba ¬A. Completitud garantiza alguna parada, consistencia impide ambas, y se responde1/0 respectivamente. Códigos no válidos se rechazan antes. Si T extendiese PA sería un decidor prohibido por §23.11. Esta es una ruta del límite algorítmico al primer teorema, compatible con la demostración constructiva Gödel–Rosser de CH21; no reemplaza su sentencia independiente explícita. Una teoría completa e inconsistente no cumple la hipótesis de exclusión; en PA inconsistente su conjunto de sentencias sería decidible por explosión. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="consistencia-de-extensiones-finitas-y-deducción" class="level2">
+<h2 class="anchored" data-anchor-id="consistencia-de-extensiones-finitas-y-deducción">23.14. Consistencia de extensiones finitas y deducción</h2>
+<section id="tlog-lem-00106" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00106">Lema 23.14.1 — Consistencia de extensiones finitas y deducción</h3>
+<p><strong>Lema.</strong> Para una lista finita Δ=[A_0,…,A_{k−1}] de sentencias, sea F_Δ su conjunción con un orden/asociación fijados; para Δ vacía tomamos F_∅=(0=0). Entonces <span class="math display">\[
+T+Δ\text{ inconsistente}\iff T\vdash F_Δ\to\bot_A.
+\]</span> En particular, T+¬A es inconsistente si y sólo si T⊢A.</p>
+<p><strong>Prueba.</strong> Una prueba de <em>A desde Δ usa sólo esas sentencias; deducción aplicada sucesivamente y lógica proposicional empaquetan su antecedente en F_Δ. La vuelta aplica MP desde los axiomas Δ. Los prefijos universales de cada sentencia añadida se derivan de ella por Q4 y MP, así que no cambian las consecuencias. Para Δ vacía F</em>∅ es un teorema PA y las dos direcciones siguen por MP/deducción. En Δ=[¬A], (¬A→_A) implica A por PA⊢¬_A y lógica clásica; recíprocamente una prueba A contradice la premisa ¬A. El bicondicional no necesita consistencia de T, aunque sus aplicaciones negativas sí la indiquen. Los constructores de F_Δ y de estas consultas son efectivos. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="indecidibilidad-de-consistencia-en-extensiones-finitas" class="level2">
+<h2 class="anchored" data-anchor-id="indecidibilidad-de-consistencia-en-extensiones-finitas">23.15. Indecidibilidad de consistencia en extensiones finitas</h2>
+<section id="tlog-mth-00138" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00138">Metateorema 23.15.1 — Indecidibilidad de consistencia en extensiones finitas</h3>
+<p><strong>Metateorema.</strong> Para una T presentada consistente, el conjunto de códigos de listas Δ válidas tales que T+Δ es inconsistente es semidecidible e indecidible; el de las extensiones finitas consistentes no es semidecidible, y tampoco es decidible.</p>
+<p><strong>Prueba.</strong> Por el lema se reduce la consulta de inconsistencia a buscar un certificado T de F_Δ→_A; validación de Δ y compilación de la consulta terminan. Definimos f(c)=S([G(¬A)]) cuando c=G(A) es sentencia, y f(c)=S([])=0 en otro caso. Para entradas válidas el lema da c∈Th_sent(T) si y sólo si T+[¬A] es inconsistente. Para c inválido no hay pertenencia a Th_sent(T), y la lista vacía conserva la consistencia de T. Por tanto f reduce exactamente Th_sent(T) al conjunto de extensiones finitas inconsistentes en todas las entradas; esto prueba indecidibilidad.</p>
+<p>Si el conjunto de listas válidas consistentes fuese semidecidible, se intercalaría con el de inconsistentes después de la guarda de validez y se decidiría inconsistencia; los códigos de listas inválidas tienen respuesta negativa antes de intercalar. Contradicción. Obsérvese la diferencia con Con*(T): aquí el objeto de entrada variable es una <strong>lista externa de axiomas</strong>, no un predicado interno de consistencia ni una condición de derivabilidad. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="existencia-de-modelos-para-extensiones-finitas" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-de-modelos-para-extensiones-finitas">23.16. Existencia de modelos para extensiones finitas</h2>
+<section id="tlog-cor-00043" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00043">Corolario 23.16.1 — Existencia de modelos para extensiones finitas</h3>
+<p><strong>Corolario.</strong> Para T efectiva consistente, la existencia de algún modelo de T+Δ, con Δ una lista válida de sentencias, es indecidible-RM y no semidecidible-RM; la no existencia es semidecidible. No se pregunta por un modelo estándar.</p>
+<p><strong>Prueba.</strong> El lenguaje L_A es explícitamente numerable. Sus fórmulas/axiomas se bien ordenan por G y el conjunto de premisas puede enumerarse en ese orden, agregando las clausuras universales PA equivalentes. El resultado local de Henkin de CH11 aplica a un conjunto consistente de sentencias en este lenguaje, sin AC/BPI: tiene modelo. Corrección da la vuelta modelo⇒consistencia. Por tanto la existencia coincide exactamente con la consulta de consistencia del teorema anterior. Los modelos pueden ser no estándar; consistencia no se ha convertido en corrección respecto de N_A. Esta aplicación no usa compacidad irrestricta sobre una firma arbitraria ni construye modelos de ZF objeto. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="verdad-aritmética-y-fragmento-σ1" class="level2">
+<h2 class="anchored" data-anchor-id="verdad-aritmética-y-fragmento-σ1">23.17. Verdad aritmética y fragmento Σ1</h2>
+<section id="tlog-def-00163" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00163">Definición 23.17.1 — Verdad aritmética y fragmento Σ1</h3>
+<p>Definimos conjuntos externos de códigos: <span class="math display">\[
+\mathrm{True}_A=\{G(A): A\text{ sentencia de }L_A,\ \mathbb N_A\models A\},
+\quad\mathrm{True}_{Σ1}=\{G(σ):σ\text{ sentencia literalmente }Σ1,\ \mathbb N_A\models σ\}.
+\]</span> Se rechazan otros códigos. La satisfacción es la recursión externa del tratado, no un predicado objeto de verdad. True_A es la versión codificada de Th(N_A).</p>
+<p>Para reconocer Σ1 se examinan los finitísimos prefijos existenciales iniciales y sus matrices; Δ0 se reconoce recursivamente por átomos, cinco conectivos y cuantificadores acotados con término que no contiene libre la variable ligada. Al expandir ∀x&lt;t y ∃x&lt;t se reconocen las plantillas respectivas. Se admite prefijo existencial vacío. La decisión de pertenencia sintáctica a esa clase es distinta de la decisión de verdad de sus miembros.</p>
+</section>
+</section>
+<section id="verdad-σ1-semidecidible-y-completa" class="level2">
+<h2 class="anchored" data-anchor-id="verdad-σ1-semidecidible-y-completa">23.18. Verdad Σ1 semidecidible y completa</h2>
+<section id="tlog-mth-00139" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00139">Metateorema 23.18.1 — Verdad Σ1 semidecidible y completa</h3>
+<p><strong>Metateorema.</strong> True_Σ1 es semidecidible-RM y K≤_m True_Σ1. Por tanto es completa para semidecidibilidad-RM, indecidible y su complemento no es semidecidible.</p>
+<p><strong>Prueba de semidecisión.</strong> Después de la guarda, se elige un prefijo ∃w con matriz Δ0 y se enumeran tuplas de testigos por altura. Se evalúa su matriz mediante operaciones aritméticas y bucles finitos sobre los bounds; si es verdadera se para. En caso de nombres repetidos se higienizan los ligadores antes de buscar, preservando satisfacción, y se conserva el código original como entrada. Para prefijo vacío hay una sola evaluación; si es falsa se diverge. Esto es uniforme sobre fórmulas finitas, con evaluación recursiva de su árbol; una aceptación equivale a existencia de testigos estándar.</p>
+<p><strong>Reducción.</strong> Sea Φ_U(c,z,y) la fórmula Σ1 de la gráfica del programa universal fijo de dos entradas de CH18/19. Para c∈Prog se genera <span class="math display">\[
+σ_c:=\exists y\,Φ_U(\bar c,\overline{S([c])},y),
+\]</span> con ligadores frescos y prefijo existencial aplanado <strong>antes de codificar</strong>. Su verdad equivale a parada de P_c(c), sin condición sobre la salida. Si c es inválido se devuelve G(_A), una sentencia Σ1 de prefijo vacío falsa. La guarda y los constructores de numerales/formulas terminan, por lo que la función c↦G(σ_c) con ese fallback es total computable y reduce K. Completitud se obtiene por transitar las reducciones de §23.8; indecidibilidad y no semidecisión del complemento siguen por transferencia y doble semidecisión. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="completitud-computacional-de-los-teoremas-pa" class="level2">
+<h2 class="anchored" data-anchor-id="completitud-computacional-de-los-teoremas-pa">23.19. Completitud computacional de los teoremas PA</h2>
+<section id="tlog-mth-00140" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00140">Metateorema 23.19.1 — Completitud computacional de los teoremas PA</h3>
+<p><strong>Metateorema.</strong> Th_sent(PA) es completo para semidecidibilidad-RM. También Th_sent(T) lo es si T es presentada, contiene PA y es correcto para sentencias Σ1.</p>
+<p><strong>Prueba.</strong> Para una σ cerrada Σ1 verdadera elegimos sus finitísimos testigos estándar; la matriz Δ0 verdadera tiene prueba PA por CH19 y la introducción existencial da PA⊢σ. A la inversa PA⊢σ implica verdad por corrección estándar PA. Así, la compilación c↦G(σ_c) del teorema anterior reduce K a Th_sent(PA), incluyendo el fallback falso. Su semidecidibilidad y la completitud de K dan la conclusión. En una T correcta Σ1, una prueba T de σ implica su verdad y PA proporciona todas las pruebas positivas verdaderas; vale el mismo bicondicional.</p>
+<p>La mera consistencia de T no justifica la vuelta «T⊢σ⇒N_A⊨σ». CH22 construyó una extensión consistente incorrecta Σ1. Su indecidibilidad ya está demostrada por §23.11, pero esta <strong>reducción particular</strong> no se le atribuye por ese solo antecedente. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="fragmento-finito-de-bases-aritméticas" class="level2">
+<h2 class="anchored" data-anchor-id="fragmento-finito-de-bases-aritméticas">23.20. Fragmento finito de bases aritméticas</h2>
+<section id="tlog-def-00164" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00164">Definición 23.20.1 — Fragmento finito de bases aritméticas</h3>
+<p>Sea B_A la lista finita de las ocho bases aritméticas de CH19, cada una universalmente cerrada sobre las variables x,y,z que aparecen: <span class="math display">\[
+Sx\ne0;\quad Sx=Sy\to x=y;\quad x\ne0\to\exists z\,x=Sz;
+\]</span> <span class="math display">\[
+x+0=x;\quad x+Sy=S(x+y);\quad x\cdot0=0;\quad
+x\cdot Sy=x\cdot y+x;\quad x&lt;y\leftrightarrow\exists z\,y=x+Sz.
+\]</span> No se incluye el esquema de inducción. Ordenamos las clausuras como aparecen, con índices de variables fijados0,1,2 y asociación de conjunción a la derecha; su conjunción cerrada es A_B. B_A es aquí un <strong>contexto finito de sentencias</strong> del cálculo lógico; no se lo identifica sin cotejo con una presentación externa de Q. N_A satisface todas ellas por CH19.</p>
+</section>
+</section>
+<section id="pruebas-numerales-δ0-desde-las-ocho-bases" class="level2">
+<h2 class="anchored" data-anchor-id="pruebas-numerales-δ0-desde-las-ocho-bases">23.21. Pruebas numerales Δ0 desde las ocho bases</h2>
+<section id="tlog-lem-00107" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00107">Lema 23.21.1 — Pruebas numerales Δ0 desde las ocho bases</h3>
+<p><strong>Lema.</strong> Para cada sentencia Δ0 cerrada, B_A demuestra su polaridad estándar correcta. Por tanto cada sentencia Σ1 cerrada verdadera tiene prueba desde B_A. Se construyen las pruebas externamente por procedimientos finitos; no afirmamos totalización interna en B_A de sus generadores.</p>
+<p><strong>Prueba.</strong> Todo término cerrado se reduce a un numeral por las ecuaciones de suma/producto y congruencia: se recorre el número <strong>concreto</strong> de sucesores del segundo argumento, sin inducción objeto. Numerales distintos se separan cancelando sucesores y usando Sx≠0; &lt; se trata con el segmento numeral siguiente.</p>
+<p>B_A demuestra para cada n estándar la fórmula ∀z(z&lt;n↔︎∨_{i&lt;n}z=i). En n=0, z&lt;0 implica0=z+Sw=S(z+w), contradicción. Supongamos ya construida una prueba del segmento n.&nbsp;De z&lt;Sn se obtiene Sn=z+Sw=S(z+w), luego n=z+w. La tercera base separa w=0 de w=Su: en el primer caso z=n; en el segundo n=z+Su, esto es z&lt;n, y se aplica la prueba ya construida. La vuelta del nuevo caso z=n usa el testigo0, y los casos previos usan el sucesor del testigo y las ecuaciones. Se universaliza z porque B_A son premisas cerradas. Ésta es una <strong>inducción externa que ensambla una prueba finita para cada numeral n</strong>, sin introducir Ind en B_A.</p>
+<p>Inducción externa sobre la fórmula δ trata sus cinco conectivos mediante las filas clásicas. Para un cuantificador acotado cerrado se evalúa el bound numeral y se reemplaza su rango por la disyunción/conjunción finita de instancias, usando el segmento, igualdad y cuantificación. Cada instancia tiene menor complejidad de cuantificadores. Rangos vacíos se resuelven por vacuidad. Esto da prueba de δ o de ¬δ según su evaluación, incluidas fórmulas con cuantificadores acotados anidados. Para σ=∃w δ verdadera, insertamos testigos numerales estándar y agregamos las introducciones existenciales. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="indecidibilidad-de-validez-y-demostrabilidad-lógica" class="level2">
+<h2 class="anchored" data-anchor-id="indecidibilidad-de-validez-y-demostrabilidad-lógica">23.22. Indecidibilidad de validez y demostrabilidad lógica</h2>
+<section id="tlog-mth-00141" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00141">Metateorema 23.22.1 — Indecidibilidad de validez y demostrabilidad lógica</h3>
+<p><strong>Metateorema.</strong> En la signatura fija L_A, interpretando sus símbolos de forma arbitraria en estructuras no vacías, el conjunto de sentencias lógicamente válidas es indecidible-RM. Lo mismo vale para los teoremas del cálculo HFOL= desde contexto vacío; ambos conjuntos coinciden.</p>
+<p><strong>Prueba por reducción explícita.</strong> Para c válido generamos la sentencia σ_c de §23.18 y la implicación A_B→σ_c.&nbsp;Si c∈K, σ_c es verdadera Σ1; §23.21 da una prueba desde B_A y deducción da HFOL=⊢A_B→σ_c.&nbsp;Corrección asegura validez en <strong>todas</strong> las estructuras de la signatura, no sólo aritméticas. Si c∉K, N_A satisface A_B pero no σ_c, de modo que es un contramodelo de la implicación. Para c inválido usamos A_B→_A, que tampoco es válido por ese contramodelo. La función es total y reduce K a validez.</p>
+<p>Corrección y completitud local de CH11 para el lenguaje explícitamente numerable identifican validez con demostrabilidad lógica. La semidecisión enumera pruebas HFOL= y verifica sus certificados lógicos. No se incluye PA entre los axiomas lógicos: su fragmento finito figura exclusivamente en el antecedente A_B. No se ha usado finita axiomatización de PA, importado Q o supuesto compacidad irrestricta/BPI. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="satisfacibilidad-y-no-satisfacibilidad-de-primer-orden" class="level2">
+<h2 class="anchored" data-anchor-id="satisfacibilidad-y-no-satisfacibilidad-de-primer-orden">23.23. Satisfacibilidad y no satisfacibilidad de primer orden</h2>
+<section id="tlog-cor-00044" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00044">Corolario 23.23.1 — Satisfacibilidad y no satisfacibilidad de primer orden</h3>
+<p><strong>Corolario.</strong> En L_A, validez y no satisfacibilidad de sentencias son semidecidibles e indecidibles y sus complementos no son semidecidibles. Satisfacibilidad es indecidible y no semidecidible; su complemento en ω es semidecidible tras incluir códigos inválidos.</p>
+<p><strong>Prueba.</strong> A es válida si y sólo si ¬A no tiene modelo; no se necesita computar un modelo para esta equivalencia semántica clásica. Una sentencia B no tiene modelo si y sólo si HFOL= prueba ¬B, por corrección y la existencia local de modelo para contextos numerables consistentes. Enumerar esas pruebas semidecide no satisfacibilidad. Negación literal reduce validez a no satisfacibilidad; por tanto ambas son indecidibles. Si la clase de sentencias satisfacibles fuese semidecidible, al intercalarla con no satisfacibilidad después de la guarda se decidirían ambas. El complemento total de satisfacibilidad es «código inválido o sentencia sin modelo», una unión semidecidible. No confundimos construir un modelo con comprobar una estructura finita ya dada, ni la clase lógica de todas las estructuras con N_A. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="no-definibilidad-aritmética-de-la-verdad-completa" class="level2">
+<h2 class="anchored" data-anchor-id="no-definibilidad-aritmética-de-la-verdad-completa">23.24. No definibilidad aritmética de la verdad completa</h2>
+<section id="tlog-mth-00142" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00142">Metateorema 23.24.1 — No definibilidad aritmética de la verdad completa</h3>
+<p><strong>Metateorema — Tarski en el marco aprobado.</strong> No existe fórmula aritmética θ(z) cuya extensión estándar sea True_A, ni siquiera si se exige su corrección sólo sobre los códigos de sentencias válidas.</p>
+<p><strong>Prueba.</strong> Si existiese, diagonalizamos ¬θ(z) y obtenemos una sentencia L con PA⊢L↔︎¬θ(⌜L⌝). Por corrección estándar PA, N_A satisface ese bicondicional. La definición supuesta de θ en el código <strong>válido y cerrado</strong> de L daría a la vez N_A⊨L⇔N_A⊨θ(⌜L⌝) y N_A⊨L⇔N_A⊨¬θ(⌜L⌝), contradicción clásica. El comportamiento de θ en códigos inválidos no interviene.</p>
+<p>Tampoco ayudan finitísimos parámetros naturales estándar fijados: se sustituyen por sus numerales y queda una fórmula de una coordenada. El teorema no impide la satisfacción externa, predicados de verdad para clases restringidas ni lenguajes más amplios. No usa consistencia de ZF objeto ni una verdad global de la metateoría codificada en sí misma. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="verdad-completa-sin-semidecisión-de-ninguna-polaridad" class="level2">
+<h2 class="anchored" data-anchor-id="verdad-completa-sin-semidecisión-de-ninguna-polaridad">23.25. Verdad completa sin semidecisión de ninguna polaridad</h2>
+<section id="tlog-cor-00045" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00045">Corolario 23.25.1 — Verdad completa sin semidecisión de ninguna polaridad</h3>
+<p><strong>Corolario.</strong> Ni True_A ni ω_A son semidecidibles-RM. En particular True_A es indecidible.</p>
+<p><strong>Prueba.</strong> Una semidecisión de True_A daría por CH19 una fórmula Σ1 que define exactamente su extensión estándar, contradiciendo Tarski. Si el complemento fuese semidecidible, tendría una definición Σ1 ρ y ¬ρ definiría True_A, con la misma contradicción. La restricción sintáctica de entrada es decidible, así que una semidecisión de ambas polaridades sólo sobre sentencias también permitiría esos conjuntos totales agregando o rechazando inválidos. En contraste True_Σ1 sí es semidecidible: existe búsqueda de testigos finitos, pero no un predicado aritmético correcto para todas las sentencias. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="límite-uniforme-y-afirmaciones-sobre-una-sola-instancia" class="level2">
+<h2 class="anchored" data-anchor-id="límite-uniforme-y-afirmaciones-sobre-una-sola-instancia">23.26. Límite uniforme y afirmaciones sobre una sola instancia</h2>
+<section id="tlog-pro-00148" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00148">Proposición 23.26.1 — Límite uniforme y afirmaciones sobre una sola instancia</h3>
+<p><strong>Proposición.</strong> Los límites demostrados no dicen que ninguna instancia pueda resolverse, que toda sentencia sea independiente ni que cualquier algoritmo práctico deba fallar en cada entrada.</p>
+<p><strong>Prueba.</strong> Indecidibilidad excluye un único decidor total correcto para <strong>todas</strong> las entradas de una familia; una entrada fija tiene externamente una respuesta clásica y puede admitir una prueba particular. Incompletitud afirma existencia de sentencias independientes bajo hipótesis determinadas; axiomas y consecuencias probadas siguen teniendo pruebas. No definibilidad de True_A excluye una fórmula aritmética que satisfaga todos los bicondicionales, no una definición de un fragmento. El segundo teorema concierne a Con*(T) con el representante fijado, bajo consistencia de T, y no excluye una prueba externa o la de un fragmento propio. Cada conclusión conserva su cuantificación y nivel; no se la traduce a una afirmación general de incertidumbre sobre números grandes. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="presentación-efectiva-de-polinomios-sobre-naturales" class="level2">
+<h2 class="anchored" data-anchor-id="presentación-efectiva-de-polinomios-sobre-naturales">23.27. Presentación efectiva de polinomios sobre naturales</h2>
+<section id="tlog-def-00165" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00165">Definición 23.27.1 — Presentación efectiva de polinomios sobre naturales</h3>
+<p>Un dato polinómico válido es e=S([r,p,q]), con r≥0 y p,q códigos S de listas de monomios. Cada monomio es S([a,S([k_0,…,k_{r−1}])]), coeficiente a natural y exponentes naturales. La lista vacía representa0; coeficientes0 y monomios repetidos son admisibles. p representa P(x)=Σ a∏x_i^{k_i}, y q representa Q. Definimos <span class="math display">\[
+\operatorname{Dio}_{\mathbb N}=\{e\text{ válido}:\exists\vec x\in\omega^r\ P(\vec x)=Q(\vec x)\}.
+\]</span> Para r=0 hay exactamente la tupla vacía y los productos vacíos valen1; la consulta es igualdad de dos constantes. La numeración no se declara inyectiva sobre polinomios como funciones: dos listas diferentes pueden representar el mismo polinomio.</p>
+<p>Usar dos lados con coeficientes no negativos permite expresar un polinomio de coeficientes enteros como P−Q sin introducir enteros como dominio de las incógnitas. El dominio aquí es ω, incluidos0, y no Z/Q u otro anillo. Los códigos inválidos no pertenecen a Dio_N.</p>
+</section>
+</section>
+<section id="validación-y-evaluación-polinómica-total" class="level2">
+<h2 class="anchored" data-anchor-id="validación-y-evaluación-polinómica-total">23.28. Validación y evaluación polinómica total</h2>
+<section id="tlog-lem-00108" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00108">Lema 23.28.1 — Validación y evaluación polinómica total</h3>
+<p><strong>Lema.</strong> Se decide validez de e y de una tupla de longitud r; se calcula totalmente la evaluación de cada polinomio. Para e válido y B dado se decide si existe solución con todas las coordenadas≤B.</p>
+<p><strong>Prueba.</strong> Decodificar S y verificar longitudes exactas es total. Potencias se calculan con k multiplicaciones, incluido x^0=1 y0^0=1 como valor del monomio; productos y sumas recorren listas finitas. Para la caja se generan las tuplas de {0,…,B}^r por productos finitos de listas y se comparan las evaluaciones. Para r=0 se genera una sola tupla vacía; no una lista de opciones vacía. Los bucles tienen medidas finitas explícitas y están en la clase PR; ningún paso decide una existencia sobre todas las alturas. Monomios repetidos se suman, no se descartan. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="semidecidibilidad-uniforme-de-soluciones-diofánticas" class="level2">
+<h2 class="anchored" data-anchor-id="semidecidibilidad-uniforme-de-soluciones-diofánticas">23.29. Semidecidibilidad uniforme de soluciones diofánticas</h2>
+<section id="tlog-mth-00143" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00143">Metateorema 23.29.1 — Semidecidibilidad uniforme de soluciones diofánticas</h3>
+<p><strong>Metateorema.</strong> Dio_N es semidecidible-RM. Si se proporciona un testigo de solución, su verificación es decidible; si no hay solución, el procedimiento uniforme puede divergir.</p>
+<p><strong>Prueba.</strong> Tras validar e, recorremos B=0,1,2,… y decidimos si su caja de altura B tiene una solución; al encontrarla alcanzamos HALT. Cualquier solución tiene una altura finita igual al máximo de sus coordenadas (0 para la tupla vacía), luego aparecerá. Una aceptación implica una solución real por exactitud de la evaluación. En r=0 la primera caja decide la igualdad constante; si es falsa, el semidecidor entra explícitamente en un lazo. Códigos inválidos divergen. No se presume una cota computable de los testigos ni que una búsqueda sin éxito hasta B certifique inexistencia. Este resultado es elemental y no usa MRDP. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="traducción-polinómica-a-sentencias-existenciales" class="level2">
+<h2 class="anchored" data-anchor-id="traducción-polinómica-a-sentencias-existenciales">23.30. Traducción polinómica a sentencias existenciales</h2>
+<section id="tlog-pro-00149" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00149">Proposición 23.30.1 — Traducción polinómica a sentencias existenciales</h3>
+<p><strong>Proposición.</strong> Existe una función total computable que reduce Dio_N a True_Σ1. En entradas válidas construye el árbol literal ∃x_0…∃x_{r−1}(t_P=t_Q), donde t_P,t_Q son los términos de los polinomios.</p>
+<p><strong>Prueba.</strong> Cada coeficiente se convierte en su numeral; una potencia se expande como k productos con valor inicial1; monomios y suma se asocian en un orden fijo, y la lista vacía produce el término0. En r=0 el bloque de cuantificadores es vacío y queda igualdad cerrada. N_A interpreta ese término como la evaluación calculada por §23.28, por inducción sobre los constructores. Por ello la sentencia es verdadera exactamente cuando e∈Dio_N. Las variables del prefijo son distintas y el prenexo queda construido antes de calcular G. Para un e inválido se devuelve G(_A). La compilación termina incluso si no hay solución.</p>
+<p>La dirección es **Dio_N≤_m True_Σ1**. Aunque True_Σ1 sea indecidible, esta reducción no demuestra indecidibilidad de Dio_N; reducir a un problema difícil no prueba que el problema de origen tenga esa dificultad. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cotas-computables-de-testigos-y-decisión-diofántica" class="level2">
+<h2 class="anchored" data-anchor-id="cotas-computables-de-testigos-y-decisión-diofántica">23.31. Cotas computables de testigos y decisión diofántica</h2>
+<section id="tlog-mth-00144" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00144">Metateorema 23.31.1 — Cotas computables de testigos y decisión diofántica</h3>
+<p><strong>Metateorema.</strong> Dio_N es decidible-RM si y sólo si existe una función total computable b(e) tal que, para cada e válido soluble, alguna solución tenga todas sus coordenadas≤b(e). No se afirma en este capítulo que tal función exista o no exista.</p>
+<p><strong>Prueba.</strong> Dada b se valida e, se calcula b(e) y se explora la caja finita; si no hay solución allí, la propiedad del bound excluye cualquier solución. Para inválidos se responde0. Recíprocamente, dado un decidor, para inválidos o insolubles fijamos b(e)=0; para solubles buscamos alturas B hasta encontrar un testigo y devolvemos la primera altura. El decidor asegura que esa rama positiva termina. r=0 está cubierto por la altura0. El programa completo es total, aunque no se haya fijado una cota de sus tiempos. El bound acota <strong>algún</strong> testigo cuando existe, no todos los testigos, ni la cantidad de soluciones. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="contrato-condicional-para-transferir-indecidibilidad-a-dio" class="level2">
+<h2 class="anchored" data-anchor-id="contrato-condicional-para-transferir-indecidibilidad-a-dio">23.32. Contrato condicional para transferir indecidibilidad a Dio</h2>
+<section id="tlog-pro-00150" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00150">Proposición 23.32.1 — Contrato condicional para transferir indecidibilidad a Dio</h3>
+<p><strong>Proposición condicional.</strong> Si un desarrollo posterior aporta una función total computable f con c∈K⇔f(c)∈Dio_N, entonces Dio_N es indecidible, su complemento no es semidecidible y no existe el bound de §23.31. La hipótesis de esa reducción no está demostrada en TLOG.</p>
+<p><strong>Prueba de la implicación.</strong> Transferencia de un supuesto decidor Dio_N daría decidor K. Como Dio_N ya es semidecidible, semidecisión de su complemento daría decidor y la contradicción anterior. El bound sería equivalente a decisión por el teorema citado. Cada conclusión depende de la <strong>reducción en la dirección K→Dio_N</strong>. La traducción de §23.30 tiene la dirección contraria a la requerida para el origen K y no la sustituye.</p>
+<p>Éste es el lugar lógico donde una representación diofántica suficientemente uniforme podría entrar. No importamos MRDP/Jones ni la tesis de que todo conjunto RM semidecidible sea diofántico. Si un texto usa otro sistema operacional, necesita además un puente efectivo demostrado; la equivalencia RM–Turing no aparece por cambiar el vocabulario. El resultado cerrado aquí es la implicación, no su antecedente. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="dominios-diofánticos-y-cambios-de-problema" class="level2">
+<h2 class="anchored" data-anchor-id="dominios-diofánticos-y-cambios-de-problema">23.33. Dominios diofánticos y cambios de problema</h2>
+<section id="tlog-pro-00151" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00151">Proposición 23.33.1 — Dominios diofánticos y cambios de problema</h3>
+<p><strong>Proposición.</strong> La solubilidad sobre N, Z y Q son consultas diferentes. La transformación de una incógnita entera en diferencia de dos naturales permite reducir solubilidad entera a solubilidad natural, pero no da por sí sola una reducción de vuelta.</p>
+<p><strong>Prueba.</strong> Fijamos para los datos enteros el código S([r,p]), donde p es una lista de monomios S([S([a,b]),S([k_0,…,k_{r−1}])]) y el coeficiente entero significa a−b. Las guardas y longitudes son decidibles; datos inválidos se envían a la ecuación nularia natural0=1, que no tiene solución. Toda z∈Z puede escribirse u−v, u,v∈N; al sustituir x_i=u_i−v_i en un polinomio entero se expande un nuevo polinomio entero sobre2r variables. Separar coeficientes positivos/negativos produce dos polinomios naturales P,Q como §23.27. Una solución entera produce una natural por elección explícita (max(z,0),max(−z,0)); una solución natural del transformado produce la entera por diferencias. La expansión y separación son procedimientos finitos efectivos, con codificación explícita de signos por pares. Esto describe una reducción desde datos enteros válidos al dominio natural, no una identificación de los dominios.</p>
+<p>No se ha probado aquí que exigir variables naturales pueda expresarse mediante ecuaciones sobre enteros sin nuevas hipótesis; no invocamos el teorema de cuatro cuadrados ni transferimos automáticamente a Q. Cambiar número de variables, grado, positividad estricta, finitud de soluciones o un polinomio universal también cambia la obligación. Esas cotas y traducciones deben figurar en el contrato posterior y no se heredan del mero nombre «ecuación diofántica». <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="contrato-de-salida-hacia-gas" class="level2">
+<h2 class="anchored" data-anchor-id="contrato-de-salida-hacia-gas">23.34. Contrato de salida hacia GAS</h2>
+<section id="tlog-def-00166" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00166">Definición 23.34.1 — Contrato de salida hacia GAS</h3>
+<p>La frontera de TLOG ofrece a GAS, para una futura interfaz expresamente aprobada: numeración S/G y guardas; RM/H/K con pruebas de semidecidibilidad e indecidibilidad; reducciones totales y su dirección; representación Σ1 y demostrabilidad con sus hipótesis; Dio_N con evaluación, semidecisión y equivalencia entre decisión y bound computable.</p>
+<p>Una ficha de interfaz deberá declarar: fuente canónica y versión de cada proveedor; dominio de incógnitas; formato de polinomio; función de traducción total con fallback inválido; bicondicional de pertenencia probado; sistema operacional de origen y puente si difiere; hipótesis aritméticas; y evidencia humana/computacional/Lean separada. Ninguna ficha activa se crea por esta definición: interfaces intertratados activas siguen0.</p>
+<p>Se conservan las clases de reutilización de procedencia: PATTERN-REUSE para un método editorial; CONTENT-SEED para material que debe reconstruirse; REFERENCE-ONLY para contraste; NO-CARRYOVER para conclusiones o evidencias no transferibles. Un ID GAS no se convierte en ID TLOG y una prueba Lean externa no verifica una unidad propia sin correspondencia y revisión explícitas.</p>
+</section>
+</section>
+<section id="lo-que-no-se-exporta-por-cerrar-el-tratado" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-no-se-exporta-por-cerrar-el-tratado">23.35. Lo que no se exporta por cerrar el tratado</h2>
+<section id="tlog-pro-00152" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00152">Proposición 23.35.1 — Lo que no se exporta por cerrar el tratado</h3>
+<p><strong>Proposición.</strong> El cierre del tratado no aporta automáticamente un teorema MRDP, una ecuación universal Jones/S126, una interpretación aritmética en ZF objeto, ni verificaciones Lean de sus resultados.</p>
+<p><strong>Prueba por inspección del contrato.</strong> Ninguna reducción K→Dio_N se ha producido; el proveedor §23.32 es condicional. No hay ecuación universal o cotas de grado/variables en las definiciones polinómicas. Las aplicaciones a teorías T requieren presentación y base PA; para ZF objeto se necesitaría además interpretación, preservación de derivaciones y el representante correspondiente. Los archivos Python sólo ensayan referencias finitas y el DAG; no son archivos Lean ni un verificador de derivaciones PA. La comprobación SHA-256 prueba identidad de bytes sincronizados, no estas afirmaciones matemáticas. Toda incorporación futura debe reabrir la arquitectura/contrato pertinente sin modificar retroactivamente el estado de evidencia ya acreditado. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="mapa-final-de-hipótesis-y-tipos-de-límite" class="level2">
+<h2 class="anchored" data-anchor-id="mapa-final-de-hipótesis-y-tipos-de-límite">23.36. Mapa final de hipótesis y tipos de límite</h2>
+<section id="tlog-pro-00153" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00153">Proposición 23.36.1 — Mapa final de hipótesis y tipos de límite</h3>
+<p><strong>Proposición.</strong> Las conclusiones finales tienen las siguientes hipótesis y sentidos diferentes.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Objeto</th>
+<th>Hipótesis</th>
+<th>Conclusión aprobada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>K/H</td>
+<td>RM y codificación/universalidad aprobadas</td>
+<td>semi, indecidibles; complementos no semi</td>
+</tr>
+<tr class="even">
+<td>Th_sent(T), T⊇PA</td>
+<td>consistencia simple, sin efectividad necesaria para no decisión</td>
+<td>indecidible</td>
+</tr>
+<tr class="odd">
+<td>Th_sent(T) presentada</td>
+<td>consistencia simple</td>
+<td>semi y complemento no semi</td>
+</tr>
+<tr class="even">
+<td>Th_sent(T) presentada y correcta Σ1</td>
+<td>además de contener PA</td>
+<td>completa para semi-RM por la reducción concretaΣ1</td>
+</tr>
+<tr class="odd">
+<td>True_Σ1</td>
+<td>estructura estándar externa</td>
+<td>semi y completa para semi-RM</td>
+</tr>
+<tr class="even">
+<td>validez/no satisfacibilidad enL_A</td>
+<td>todas las estructuras, lenguaje numerable</td>
+<td>semi e indecidibles</td>
+</tr>
+<tr class="odd">
+<td>True_A</td>
+<td>PA estándarmente correcta y diagonalización</td>
+<td>no definible aritméticamente, ninguna polaridad semi</td>
+</tr>
+<tr class="even">
+<td>Con*(T)</td>
+<td>presentación fijada, Prov* conD1–D3, consistencia</td>
+<td>Tno la prueba</td>
+</tr>
+<tr class="odd">
+<td>reflexiónlocal □A→A</td>
+<td>Prov* conD1–D3, no consistencia necesaria</td>
+<td>Tla prueba si y sólo si TpruebaA</td>
+</tr>
+<tr class="even">
+<td>Dio_N</td>
+<td>presentación polinómica natural</td>
+<td>semi; indecidibilidad sólo bajo la reducción adicional indicada</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prueba.</strong> Cada fila es una aplicación literal del resultado citado; el cambio de hipótesis se controla en las demostraciones correspondientes. Semidecidibilidad de una verdad restringida no implica definibilidad de toda verdad; correcciónΣ1 no se deduce de consistencia; completitud del cálculo no se confunde con completitud de una teoría o de un grado de reducción. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cierre-de-la-parte-v" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-de-la-parte-v">23.37. Cierre de la Parte V</h2>
+<section id="tlog-cor-00046" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00046">Corolario 23.37.1 — Cierre de la Parte V</h3>
+<p><strong>Corolario.</strong> La Parte V cierra el primer teorema, el segundo para el representante realizado, Löb, indecidibilidad de la parada/teorías/validez y no definibilidad de la verdad, y fija su frontera diofántica. Las tres salidas corresponden a CH21,CH22,CH23 respectivamente.</p>
+<p><strong>Prueba.</strong> CH21 entrega Gödel–Rosser bajo consistencia simple y separa las hipótesis de Gödel; CH22 entregaProv* conD1–D3 yCon*/Löb; los resultados de este capítulo dan las reducciones y límites restantes. La semidecisión diofántica elemental y el contrato condicional no anticipan una prueba MRDP. Ninguna dependencia exige un futuro capítulo24: la arquitectura aprobó CH00–CH23, veinticuatro capítulos en total. La Parte V pasa aCLOSED por cierre matemático humano; formalización y publicación siguen separadas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cierre-matemático-del-alcance-aprobado-de-tlog" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-matemático-del-alcance-aprobado-de-tlog">23.38. Cierre matemático del alcance aprobado de TLOG</h2>
+<section id="tlog-cor-00047" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00047">Corolario 23.38.1 — Cierre matemático del alcance aprobado de TLOG</h3>
+<p><strong>Corolario.</strong> Queda completado el alcance matemático humano de los 24 capítulos aprobados delTratado de lógica, en5 partes. El cierre conserva los ID/resultados/DAG, las distinciones fundacionales y la frontera conFND/GAS.</p>
+<p><strong>Prueba de alcance.</strong> La arquitectura canónica enumera CH00–CH23; el checkpoint anterior tenía cerrados CH00–CH22 y lasPartesI–IV. Este capítulo cierra la salida de laParte V mediante el corolario precedente. Los capítulos iniciales, resultados locales de corrección/completitud y su dependencia de hipótesis conjuntistas no se reescriben ni se fortalecen: en especial, cierre del tratado no añadeBPI oAC aM_ext. La integración comprueba IDsconsecutivos, igualdad exacta registro/grafo y ausencia de ciclos, duplicados o dependencias huérfanas.</p>
+<p>«CLOSED» acredita las pruebas autorales humanas y el alcance declarado, no un libro publicado, una verificaciónLean completa o una revisión editorial integral nueva de todos los capítulos. Esa auditoría general de cierre/publicación será una operación posterior concreta sobre la obra completa. Se mantienen0 resultadosLean verificados,0 interfaces activas y0 capítulos publicados. No se abre un capítulo adicional por este contrato. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="ejemplos-y-balance-final" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-y-balance-final">23.39. Ejemplos y balance final</h2>
+<p>Una máquina HALT pertenece aH en cualquier entrada, incluso cuando devuelve0. Un lazo INC no pertenece, aunque su simulación acotada termine y pueda comprobarse hasta cualquier tiempo dado. La diferencia está entre evaluar una ventana finita y decidir la existencia de algún tiempo de parada.</p>
+<p>En Dio_N, x²+1=x² carece de solución y puede refutarse con una prueba elemental particular; x²=4 tiene testigo2 y su verificación finita termina. Para r=0,2=2 tiene la tupla vacía como solución, mientras2=3 no la tiene. Estos ejemplos no constituyen un decidor general ni prueban por sí mismos la indecidibilidad diofántica pendiente de una reducción adicional.</p>
+<p>El capítulo cierra <strong>38/38 resultados</strong> y <strong>184 aristasdirectas nuevas</strong>. Acumulado <strong>667 resultados /2573 aristas</strong>, sin ciclos, duplicados ni huérfanos. <strong>24/24 capítulos y5/5 partes cerrados matemáticamente por pruebas humanas</strong>. Lean <strong>297 candidatos /0compilados /0verificados</strong>; interfaces activas0; capítulos publicados0. Fuentes15identidades,2TEXT-COLLATEDprevias y nuevos controles online limitados, sin colación integral. QAhumana, regresiones de referencias y cotejo debytes se documentan por separado.</p>
+<pre class="text"><code>LOCAL  CH23 ████████████████████ 38/38 resultados (100 %)
+GLOBAL TLOG ████████████████████████ 24/24 capítulos (100 %)</code></pre>
+<p>La continuación natural es una <strong>auditoría general de cierre y preparación editorial</strong> de los 24 capítulos, con alcance y evidencias separados de formalización/publicación. No se anuncia una auditoría integral de toda la obra por el mero cierre de este capítulo.</p>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-22.html">← Capítulo 22</a> ·</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,2366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 2 — Semántica proposicional – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#función-del-capítulo" id="toc-función-del-capítulo" class="nav-link active" data-scroll-target="#función-del-capítulo">2.0. Función del capítulo</a>
+  <ul class="collapse">
+  <li><a href="#fuentes-efectivamente-cotejadas-para-este-bloque" id="toc-fuentes-efectivamente-cotejadas-para-este-bloque" class="nav-link" data-scroll-target="#fuentes-efectivamente-cotejadas-para-este-bloque">Fuentes efectivamente cotejadas para este bloque</a></li>
+  </ul></li>
+  <li><a href="#valores-de-verdad-y-funciones-semánticas" id="toc-valores-de-verdad-y-funciones-semánticas" class="nav-link" data-scroll-target="#valores-de-verdad-y-funciones-semánticas">2.1. Valores de verdad y funciones semánticas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00005" id="toc-tlog-cnv-00005" class="nav-link" data-scroll-target="#tlog-cnv-00005">Convención 2.1.1 — Semántica bivalente de los conectivos de <code>CPL</code></a></li>
+  </ul></li>
+  <li><a href="#valuaciones-proposicionales" id="toc-valuaciones-proposicionales" class="nav-link" data-scroll-target="#valuaciones-proposicionales">2.2. Valuaciones proposicionales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00010" id="toc-tlog-def-00010" class="nav-link" data-scroll-target="#tlog-def-00010">Definición 2.2.1 — Valuación de <code>CPL</code></a></li>
+  </ul></li>
+  <li><a href="#extensión-semántica-de-una-valuación" id="toc-extensión-semántica-de-una-valuación" class="nav-link" data-scroll-target="#extensión-semántica-de-una-valuación">2.3. Extensión semántica de una valuación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00004" id="toc-tlog-mth-00004" class="nav-link" data-scroll-target="#tlog-mth-00004">Metateorema 2.3.1 — Extensión única de una valuación a todas las fórmulas</a></li>
+  </ul></li>
+  <li><a href="#satisfacción-bajo-una-valuación" id="toc-satisfacción-bajo-una-valuación" class="nav-link" data-scroll-target="#satisfacción-bajo-una-valuación">2.4. Satisfacción bajo una valuación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00011" id="toc-tlog-def-00011" class="nav-link" data-scroll-target="#tlog-def-00011">Definición 2.4.1 — Satisfacción proposicional local</a></li>
+  </ul></li>
+  <li><a href="#localidad-de-la-evaluación" id="toc-localidad-de-la-evaluación" class="nav-link" data-scroll-target="#localidad-de-la-evaluación">2.5. Localidad de la evaluación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00002" id="toc-tlog-lem-00002" class="nav-link" data-scroll-target="#tlog-lem-00002">Lema 2.5.1 — La evaluación depende sólo de las variables que aparecen</a></li>
+  </ul></li>
+  <li><a href="#ejemplo-desarrollado-evaluar-no-es-demostrar" id="toc-ejemplo-desarrollado-evaluar-no-es-demostrar" class="nav-link" data-scroll-target="#ejemplo-desarrollado-evaluar-no-es-demostrar">2.6. Ejemplo desarrollado — evaluar no es demostrar</a></li>
+  <li><a href="#estado-y-próximo-frente" id="toc-estado-y-próximo-frente" class="nav-link" data-scroll-target="#estado-y-próximo-frente">2.9. Estado y próximo frente</a></li>
+  <li><a href="#modelos-de-conjuntos-de-fórmulas" id="toc-modelos-de-conjuntos-de-fórmulas" class="nav-link" data-scroll-target="#modelos-de-conjuntos-de-fórmulas">2.10. Modelos de conjuntos de fórmulas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00012" id="toc-tlog-def-00012" class="nav-link" data-scroll-target="#tlog-def-00012">Definición 2.10.1 — Satisfacción de un conjunto y conjunto de modelos</a></li>
+  </ul></li>
+  <li><a href="#satisfacibilidad" id="toc-satisfacibilidad" class="nav-link" data-scroll-target="#satisfacibilidad">2.11. Satisfacibilidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00013" id="toc-tlog-def-00013" class="nav-link" data-scroll-target="#tlog-def-00013">Definición 2.11.1 — Satisfacibilidad e insatisfacibilidad</a></li>
+  </ul></li>
+  <li><a href="#validez-proposicional" id="toc-validez-proposicional" class="nav-link" data-scroll-target="#validez-proposicional">2.12. Validez proposicional</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00014" id="toc-tlog-def-00014" class="nav-link" data-scroll-target="#tlog-def-00014">Definición 2.12.1 — Validez</a></li>
+  </ul></li>
+  <li><a href="#consecuencia-semántica" id="toc-consecuencia-semántica" class="nav-link" data-scroll-target="#consecuencia-semántica">2.13. Consecuencia semántica</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00015" id="toc-tlog-def-00015" class="nav-link" data-scroll-target="#tlog-def-00015">Definición 2.13.1 — Consecuencia semántica proposicional</a></li>
+  </ul></li>
+  <li><a href="#equivalencia-semántica" id="toc-equivalencia-semántica" class="nav-link" data-scroll-target="#equivalencia-semántica">2.14. Equivalencia semántica</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00016" id="toc-tlog-def-00016" class="nav-link" data-scroll-target="#tlog-def-00016">Definición 2.14.1 — Equivalencia semántica proposicional</a></li>
+  </ul></li>
+  <li><a href="#relaciones-fundamentales-entre-las-nociones-semánticas" id="toc-relaciones-fundamentales-entre-las-nociones-semánticas" class="nav-link" data-scroll-target="#relaciones-fundamentales-entre-las-nociones-semánticas">2.15. Relaciones fundamentales entre las nociones semánticas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00001" id="toc-tlog-pro-00001" class="nav-link" data-scroll-target="#tlog-pro-00001">Proposición 2.15.1 — Caracterizaciones básicas</a></li>
+  </ul></li>
+  <li><a href="#propiedades-estructurales-de-la-consecuencia-semántica" id="toc-propiedades-estructurales-de-la-consecuencia-semántica" class="nav-link" data-scroll-target="#propiedades-estructurales-de-la-consecuencia-semántica">2.16. Propiedades estructurales de la consecuencia semántica</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00002" id="toc-tlog-pro-00002" class="nav-link" data-scroll-target="#tlog-pro-00002">Proposición 2.16.1 — Reflexividad, monotonía y corte semántico</a></li>
+  </ul></li>
+  <li><a href="#ejemplo-desarrollado-premisas-sin-modelo-y-consecuencia-vacua" id="toc-ejemplo-desarrollado-premisas-sin-modelo-y-consecuencia-vacua" class="nav-link" data-scroll-target="#ejemplo-desarrollado-premisas-sin-modelo-y-consecuencia-vacua">2.17. Ejemplo desarrollado — premisas sin modelo y consecuencia vacua</a></li>
+  <li><a href="#estado-y-próximo-frente-1" id="toc-estado-y-próximo-frente-1" class="nav-link" data-scroll-target="#estado-y-próximo-frente-1">2.20. Estado y próximo frente</a></li>
+  <li><a href="#soporte-proposicional-de-una-fórmula-y-de-una-familia-finita" id="toc-soporte-proposicional-de-una-fórmula-y-de-una-familia-finita" class="nav-link" data-scroll-target="#soporte-proposicional-de-una-fórmula-y-de-una-familia-finita">2.21. Soporte proposicional de una fórmula y de una familia finita</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00017" id="toc-tlog-def-00017" class="nav-link" data-scroll-target="#tlog-def-00017">Definición 2.21.1 — Soporte proposicional</a></li>
+  </ul></li>
+  <li><a href="#finitud-del-soporte" id="toc-finitud-del-soporte" class="nav-link" data-scroll-target="#finitud-del-soporte">2.22. Finitud del soporte</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00003" id="toc-tlog-lem-00003" class="nav-link" data-scroll-target="#tlog-lem-00003">Lema 2.22.1 — Toda fórmula tiene soporte finito</a></li>
+  </ul></li>
+  <li><a href="#tabla-de-verdad-de-una-familia-finita" id="toc-tabla-de-verdad-de-una-familia-finita" class="nav-link" data-scroll-target="#tabla-de-verdad-de-una-familia-finita">2.23. Tabla de verdad de una familia finita</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00018" id="toc-tlog-def-00018" class="nav-link" data-scroll-target="#tlog-def-00018">Definición 2.23.1 — Tabla de verdad</a></li>
+  </ul></li>
+  <li><a href="#exhaustividad-de-las-tablas-de-verdad" id="toc-exhaustividad-de-las-tablas-de-verdad" class="nav-link" data-scroll-target="#exhaustividad-de-las-tablas-de-verdad">2.24. Exhaustividad de las tablas de verdad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00005" id="toc-tlog-mth-00005" class="nav-link" data-scroll-target="#tlog-mth-00005">Metateorema 2.24.1 — Reducción finita de la evaluación</a></li>
+  </ul></li>
+  <li><a href="#decidibilidad-semántica-finitaria" id="toc-decidibilidad-semántica-finitaria" class="nav-link" data-scroll-target="#decidibilidad-semántica-finitaria">2.25. Decidibilidad semántica finitaria</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00006" id="toc-tlog-mth-00006" class="nav-link" data-scroll-target="#tlog-mth-00006">Metateorema 2.25.1 — Procedimientos finitos de decisión en <code>CPL</code></a></li>
+  </ul></li>
+  <li><a href="#ejemplo-desarrollado-una-tabla-dos-controles-semánticos" id="toc-ejemplo-desarrollado-una-tabla-dos-controles-semánticos" class="nav-link" data-scroll-target="#ejemplo-desarrollado-una-tabla-dos-controles-semánticos">2.26. Ejemplo desarrollado — una tabla, dos controles semánticos</a></li>
+  <li><a href="#cierre-del-capítulo" id="toc-cierre-del-capítulo" class="nav-link" data-scroll-target="#cierre-del-capítulo">2.29. Cierre del capítulo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 2 — Semántica proposicional</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-01.html">← Capítulo 1</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html">Capítulo 3 →</a></p>
+<section id="función-del-capítulo" class="level2">
+<h2 class="anchored" data-anchor-id="función-del-capítulo">2.0. Función del capítulo</h2>
+<p>El Capítulo 1 construyó las fórmulas de <code>CPL</code> como objetos sintácticos y cerró los principios de inducción, legibilidad única y recursión estructural necesarios para operar sobre ellas. El presente capítulo inicia una capa distinta: <strong>interpretar</strong> esas fórmulas mediante valores de verdad.</p>
+<p>La separación es estricta:</p>
+<p><span class="math display">\[
+\text{sintaxis de }CPL
+\neq
+\text{semántica de }CPL.
+\]</span></p>
+<p>Una fórmula no es verdadera o falsa por su mera pertenencia a <span class="math inline">\(\mathrm{Fm}_{\mathrm{CPL}}\)</span>. Su valor dependerá de una valuación y de las funciones de verdad asignadas a los conectivos primitivos.</p>
+<p>Este primer microtramo se limita a:</p>
+<p><span class="math display">\[
+\text{valores de verdad}
+\longrightarrow
+\text{valuaciones atómicas}
+\longrightarrow
+\text{evaluación recursiva}
+\longrightarrow
+\text{satisfacción bajo una valuación}.
+\]</span></p>
+<p>Todavía <strong>no</strong> se definen satisfacibilidad de conjuntos, validez, consecuencia semántica global ni equivalencia semántica.</p>
+<section id="fuentes-efectivamente-cotejadas-para-este-bloque" class="level3">
+<h3 class="anchored" data-anchor-id="fuentes-efectivamente-cotejadas-para-este-bloque">Fuentes efectivamente cotejadas para este bloque</h3>
+<ul>
+<li><code>TLOG-SRC-0002</code> — Herbert B. Enderton, <em>A Mathematical Introduction to Logic</em>, 2.ª ed.&nbsp;(2001), §1.2, pp.&nbsp;20–23.</li>
+<li><code>TLOG-SRC-0003</code> — Wolfgang Rautenberg, <em>A Concise Introduction to Mathematical Logic</em>, 3.ª ed.&nbsp;(2010), cap. 1, §1.1, pp.&nbsp;8–9.</li>
+</ul>
+<p>Enderton controla directamente las cinco tablas de verdad, la extensión de una asignación y la noción de satisfacción. Rautenberg sirve de contracontrol para la presentación de una valuación como función <span class="math inline">\(\mathrm{PV}\to\{0,1\}\)</span> y para la extensión recursiva a fórmulas.</p>
+<p>TLOG adopta una decisión propia: las valuaciones serán <strong>totales</strong> sobre <span class="math inline">\(\mathrm{PV}\)</span>. La localidad de la evaluación se demostrará en §2.5, de modo que esta elección no obliga a inspeccionar variables que no aparecen en la fórmula evaluada.</p>
+</section>
+</section>
+<section id="valores-de-verdad-y-funciones-semánticas" class="level2">
+<h2 class="anchored" data-anchor-id="valores-de-verdad-y-funciones-semánticas">2.1. Valores de verdad y funciones semánticas</h2>
+<section id="tlog-cnv-00005" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00005">Convención 2.1.1 — Semántica bivalente de los conectivos de <code>CPL</code></h3>
+<p>Fijamos el conjunto de valores de verdad</p>
+<p><span class="math display">\[
+\mathbf 2:=\{0,1\},
+\]</span></p>
+<p>con la convención</p>
+<p><span class="math display">\[
+1=\text{verdadero},
+\qquad
+0=\text{falso}.
+\]</span></p>
+<p>Los cinco conectivos primitivos del lenguaje objeto reciben las siguientes funciones metateóricas:</p>
+<p><span class="math display">\[
+f_{\neg}:\mathbf 2\to\mathbf 2,
+\]</span></p>
+<p><span class="math display">\[
+f_{\land},f_{\lor},f_{\to},f_{\leftrightarrow}:
+\mathbf 2^2\to\mathbf 2.
+\]</span></p>
+<p>Quedan fijadas por la tabla:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(a\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(b\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(f_{\neg}(a)\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(f_{\land}(a,b)\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(f_{\lor}(a,b)\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(f_{\to}(a,b)\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(f_{\leftrightarrow}(a,b)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>La columna de <span class="math inline">\(f_{\neg}\)</span> depende sólo de <span class="math inline">\(a\)</span>; la repetición de filas sirve únicamente para presentar todas las funciones en una tabla común.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Distinción de nivel
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los símbolos <span class="math inline">\(\neg,\land,\lor,\to,\leftrightarrow\)</span> son signos del <strong>lenguaje objeto</strong> cuando forman parte de una fórmula. Las funciones <span class="math inline">\(f_{\neg},f_{\land},f_{\lor},f_{\to},f_{\leftrightarrow}\)</span> viven en la <strong>metateoría</strong> y asignan valores en <span class="math inline">\(\mathbf 2\)</span>. No son el mismo objeto.</p>
+</div>
+</div>
+<p>En particular,</p>
+<p><span class="math display">\[
+f_{\to}(1,0)=0,
+\]</span></p>
+<p>y en los otros tres pares de argumentos <span class="math inline">\(f_{\to}\)</span> vale <span class="math inline">\(1\)</span>. Ésta es la condición material clásica que regirá <code>CPL</code>.</p>
+</section>
+</section>
+<section id="valuaciones-proposicionales" class="level2">
+<h2 class="anchored" data-anchor-id="valuaciones-proposicionales">2.2. Valuaciones proposicionales</h2>
+<section id="tlog-def-00010" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00010">Definición 2.2.1 — Valuación de <code>CPL</code></h3>
+<p>Una <strong>valuación proposicional</strong> de <code>CPL</code> es una función total</p>
+<p><span class="math display">\[
+v:\mathrm{PV}\to\mathbf 2.
+\]</span></p>
+<p>Denotamos por</p>
+<p><span class="math display">\[
+\mathrm{Val}_{\mathrm{CPL}}
+:=
+\mathbf 2^{\mathrm{PV}}
+\]</span></p>
+<p>al conjunto de todas las valuaciones de <code>CPL</code>.</p>
+<p>Una valuación asigna valores únicamente a las variables proposicionales. Aún no hemos definido <span class="math inline">\(v(\varphi)\)</span> para una fórmula compuesta <span class="math inline">\(\varphi\)</span>; hacerlo sin justificación confundiría el dato inicial con su extensión recursiva.</p>
+</section>
+</section>
+<section id="extensión-semántica-de-una-valuación" class="level2">
+<h2 class="anchored" data-anchor-id="extensión-semántica-de-una-valuación">2.3. Extensión semántica de una valuación</h2>
+<section id="tlog-mth-00004" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00004">Metateorema 2.3.1 — Extensión única de una valuación a todas las fórmulas</h3>
+<p>Para toda valuación</p>
+<p><span class="math display">\[
+v:\mathrm{PV}\to\mathbf 2
+\]</span></p>
+<p>existe una única función</p>
+<p><span class="math display">\[
+\widehat v:
+\mathrm{Fm}_{\mathrm{CPL}}
+\to
+\mathbf 2
+\]</span></p>
+<p>que satisface, para todo <span class="math inline">\(n\ge 1\)</span>, toda <span class="math inline">\(\alpha,\beta\in\mathrm{Fm}_{\mathrm{CPL}}\)</span> y todo</p>
+<p><span class="math display">\[
+\circ\in\{\land,\lor,\to,\leftrightarrow\},
+\]</span></p>
+<p>las ecuaciones</p>
+<p><span class="math display">\[
+\widehat v(p_n)=v(p_n),
+\]</span></p>
+<p><span class="math display">\[
+\widehat v(E_{\neg}(\alpha))
+=
+f_{\neg}(\widehat v(\alpha)),
+\]</span></p>
+<p><span class="math display">\[
+\widehat v(E_{\circ}(\alpha,\beta))
+=
+f_{\circ}(\widehat v(\alpha),\widehat v(\beta)).
+\]</span></p>
+<p>Llamaremos <span class="math inline">\(\widehat v(\varphi)\)</span> al <strong>valor de verdad de <span class="math inline">\(\varphi\)</span> bajo <span class="math inline">\(v\)</span></strong>.</p>
+<section id="demostración" class="level4">
+<h4 class="anchored" data-anchor-id="demostración">Demostración</h4>
+<p>Aplicamos <a href="../../../libros/otros/tratado-de-logica/capitulo-01.html#tlog-mth-00003">TLOG-MTH-00003</a> con</p>
+<p><span class="math display">\[
+A=\mathbf 2,
+\qquad
+g=v,
+\]</span></p>
+<p><span class="math display">\[
+F_{\neg}=f_{\neg},
+\qquad
+F_{\circ}=f_{\circ}
+\quad
+(\circ\in\{\land,\lor,\to,\leftrightarrow\}).
+\]</span></p>
+<p>Todas las funciones requeridas por el teorema de recursión están definidas por <a href="#tlog-cnv-00005">TLOG-CNV-00005</a>, y el dato atómico <span class="math inline">\(g=v\)</span> está tipado por <a href="#tlog-def-00010">TLOG-DEF-00010</a>. Por tanto existe una única función <span class="math inline">\(\widehat v\)</span> que satisface las cinco cláusulas recursivas. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Por qué usamos <span class="math inline">\(\widehat v\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Algunos textos reutilizan el símbolo <span class="math inline">\(v\)</span> para la valuación atómica y para su extensión. TLOG mantiene inicialmente <span class="math inline">\(v\)</span> y <span class="math inline">\(\widehat v\)</span> separados para que dominio y construcción sean recuperables. Más adelante podrá omitirse el sombrero cuando no exista riesgo de ambigüedad.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="satisfacción-bajo-una-valuación" class="level2">
+<h2 class="anchored" data-anchor-id="satisfacción-bajo-una-valuación">2.4. Satisfacción bajo una valuación</h2>
+<section id="tlog-def-00011" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00011">Definición 2.4.1 — Satisfacción proposicional local</h3>
+<p>Sean</p>
+<p><span class="math display">\[
+v\in\mathrm{Val}_{\mathrm{CPL}},
+\qquad
+\varphi\in\mathrm{Fm}_{\mathrm{CPL}}.
+\]</span></p>
+<p>Decimos que <strong><span class="math inline">\(v\)</span> satisface <span class="math inline">\(\varphi\)</span></strong> y escribimos</p>
+<p><span class="math display">\[
+v\models_{\mathrm{CPL}}\varphi
+\]</span></p>
+<p>si y sólo si</p>
+<p><span class="math display">\[
+\widehat v(\varphi)=1.
+\]</span></p>
+<p>Cuando el sistema sea inequívocamente <code>CPL</code>, escribiremos simplemente</p>
+<p><span class="math display">\[
+v\models\varphi.
+\]</span></p>
+<p>Su negación,</p>
+<p><span class="math display">\[
+v\not\models\varphi,
+\]</span></p>
+<p>equivale a <span class="math inline">\(\widehat v(\varphi)=0\)</span>.</p>
+<p>Esta definición introduce <strong>satisfacción por una valuación concreta</strong>. Todavía no se introduce la notación</p>
+<p><span class="math display">\[
+\Gamma\models\varphi,
+\]</span></p>
+<p>que corresponderá a consecuencia semántica y requerirá cuantificar sobre valuaciones.</p>
+</section>
+</section>
+<section id="localidad-de-la-evaluación" class="level2">
+<h2 class="anchored" data-anchor-id="localidad-de-la-evaluación">2.5. Localidad de la evaluación</h2>
+<section id="tlog-lem-00002" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00002">Lema 2.5.1 — La evaluación depende sólo de las variables que aparecen</h3>
+<p>Sean <span class="math inline">\(v,w\in\mathrm{Val}_{\mathrm{CPL}}\)</span> y <span class="math inline">\(\varphi\in\mathrm{Fm}_{\mathrm{CPL}}\)</span>. Supongamos que</p>
+<p><span class="math display">\[
+v(p_n)=w(p_n)
+\]</span></p>
+<p>para toda variable proposicional <span class="math inline">\(p_n\)</span> que sea subfórmula de <span class="math inline">\(\varphi\)</span>, es decir, para todo</p>
+<p><span class="math display">\[
+p_n\in
+\mathrm{PV}
+\cap
+\operatorname{Sub}_{\mathrm{CPL}}(\varphi).
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\widehat v(\varphi)
+=
+\widehat w(\varphi).
+\]</span></p>
+<p>En particular,</p>
+<p><span class="math display">\[
+v\models\varphi
+\iff
+w\models\varphi.
+\]</span></p>
+<section id="demostración-1" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-1">Demostración</h4>
+<p>Aplicamos <a href="../../../libros/otros/tratado-de-logica/capitulo-01.html#tlog-mth-00001">TLOG-MTH-00001</a> a la construcción de <span class="math inline">\(\varphi\)</span>.</p>
+<p><strong>Caso atómico.</strong> Si <span class="math inline">\(\varphi=p_n\)</span>, entonces <span class="math inline">\(p_n\in\operatorname{Sub}_{\mathrm{CPL}}(\varphi)\)</span>. Por hipótesis,</p>
+<p><span class="math display">\[
+v(p_n)=w(p_n),
+\]</span></p>
+<p>y por <a href="#tlog-mth-00004">TLOG-MTH-00004</a>,</p>
+<p><span class="math display">\[
+\widehat v(p_n)=\widehat w(p_n).
+\]</span></p>
+<p><strong>Caso de negación.</strong> Sea <span class="math inline">\(\varphi=E_{\neg}(\alpha)\)</span>. Por <a href="../../../libros/otros/tratado-de-logica/capitulo-01.html#tlog-def-00008">TLOG-DEF-00008</a>, toda variable proposicional que aparece como subfórmula de <span class="math inline">\(\alpha\)</span> es también subfórmula de <span class="math inline">\(\varphi\)</span>. La hipótesis inductiva da</p>
+<p><span class="math display">\[
+\widehat v(\alpha)=\widehat w(\alpha).
+\]</span></p>
+<p>Aplicando la misma función <span class="math inline">\(f_{\neg}\)</span> a ambos valores,</p>
+<p><span class="math display">\[
+\widehat v(E_{\neg}(\alpha))
+=
+\widehat w(E_{\neg}(\alpha)).
+\]</span></p>
+<p><strong>Caso binario.</strong> Sea</p>
+<p><span class="math display">\[
+\varphi=E_{\circ}(\alpha,\beta).
+\]</span></p>
+<p>Toda variable proposicional que sea subfórmula de <span class="math inline">\(\alpha\)</span> o de <span class="math inline">\(\beta\)</span> es subfórmula de <span class="math inline">\(\varphi\)</span>. Las dos hipótesis inductivas producen</p>
+<p><span class="math display">\[
+\widehat v(\alpha)=\widehat w(\alpha),
+\qquad
+\widehat v(\beta)=\widehat w(\beta).
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+f_{\circ}(\widehat v(\alpha),\widehat v(\beta))
+=
+f_{\circ}(\widehat w(\alpha),\widehat w(\beta)),
+\]</span></p>
+<p>y <a href="#tlog-mth-00004">TLOG-MTH-00004</a> concluye</p>
+<p><span class="math display">\[
+\widehat v(\varphi)=\widehat w(\varphi).
+\]</span></p>
+<p>Por inducción estructural, el resultado vale para toda fórmula. La equivalencia de satisfacción es inmediata por <a href="#tlog-def-00011">TLOG-DEF-00011</a>. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Consecuencia metodológica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aunque TLOG define las valuaciones sobre todo <span class="math inline">\(\mathrm{PV}\)</span>, el valor de una fórmula sólo depende de las variables que efectivamente aparecen en ella. Esta propiedad permitirá trabajar con tablas finitas sin cambiar la definición global de valuación.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="ejemplo-desarrollado-evaluar-no-es-demostrar" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-desarrollado-evaluar-no-es-demostrar">2.6. Ejemplo desarrollado — evaluar no es demostrar</h2>
+<p>Retomemos la fórmula sintáctica del capítulo anterior:</p>
+<p><span class="math display">\[
+\varphi
+=
+((p_1\land(\neg p_2))\to p_3).
+\]</span></p>
+<p>Sea <span class="math inline">\(v\in\mathrm{Val}_{\mathrm{CPL}}\)</span> tal que</p>
+<p><span class="math display">\[
+v(p_1)=1,
+\qquad
+v(p_2)=0,
+\qquad
+v(p_3)=0.
+\]</span></p>
+<p>Los valores de <span class="math inline">\(v\)</span> sobre las demás variables son irrelevantes para <span class="math inline">\(\varphi\)</span> por <a href="#tlog-lem-00002">TLOG-LEM-00002</a>.</p>
+<p>Aplicando las cláusulas de <a href="#tlog-mth-00004">TLOG-MTH-00004</a>:</p>
+<p><span class="math display">\[
+\widehat v((\neg p_2))
+=
+f_{\neg}(0)
+=1,
+\]</span></p>
+<p><span class="math display">\[
+\widehat v((p_1\land(\neg p_2)))
+=
+f_{\land}(1,1)
+=1,
+\]</span></p>
+<p>por lo que</p>
+<p><span class="math display">\[
+\widehat v(\varphi)
+=
+f_{\to}(1,0)
+=0.
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+v\not\models\varphi.
+\]</span></p>
+<p>Esto no afirma que <span class="math inline">\(\varphi\)</span> sea inválida, indemostrable ni contradictoria. Sólo afirma que <strong>esta valuación concreta no la satisface</strong>. Las nociones globales se introducirán después.</p>
+</section>
+<section id="estado-y-próximo-frente" class="level2">
+<h2 class="anchored" data-anchor-id="estado-y-próximo-frente">2.9. Estado y próximo frente</h2>
+<p>Este microtramo <strong>no cierra el Capítulo 2</strong>. Quedan pendientes, como mínimo:</p>
+<ol type="1">
+<li>satisfacibilidad de fórmulas y conjuntos de fórmulas;</li>
+<li>validez proposicional;</li>
+<li>consecuencia semántica <span class="math inline">\(\Gamma\models\varphi\)</span>;</li>
+<li>equivalencia semántica;</li>
+<li>procedimientos finitos de tabla de verdad y las propiedades básicas que se decida cerrar en este capítulo.</li>
+</ol>
+<p>Próximo microtramo:</p>
+<pre class="text"><code>TLOG-CH02-M02
+Satisfacibilidad, validez, consecuencia y equivalencia semántica</code></pre>
+</section>
+<section id="modelos-de-conjuntos-de-fórmulas" class="level2">
+<h2 class="anchored" data-anchor-id="modelos-de-conjuntos-de-fórmulas">2.10. Modelos de conjuntos de fórmulas</h2>
+<p>La satisfacción definida en <a href="#tlog-def-00011">TLOG-DEF-00011</a> es local: relaciona una valuación con una sola fórmula. Para formular satisfacibilidad y consecuencia necesitamos elevarla a conjuntos de fórmulas sin cambiar de nivel semántico.</p>
+<section id="tlog-def-00012" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00012">Definición 2.10.1 — Satisfacción de un conjunto y conjunto de modelos</h3>
+<p>Sean</p>
+<p><span class="math display">\[
+\Gamma\subseteq\mathrm{Fm}_{\mathrm{CPL}},
+\qquad
+v\in\mathrm{Val}_{\mathrm{CPL}}.
+\]</span></p>
+<p>Decimos que <strong><span class="math inline">\(v\)</span> satisface <span class="math inline">\(\Gamma\)</span></strong>, y escribimos</p>
+<p><span class="math display">\[
+v\models_{\mathrm{CPL}}\Gamma,
+\]</span></p>
+<p>si y sólo si</p>
+<p><span class="math display">\[
+\forall\gamma\in\Gamma,
+\quad
+v\models_{\mathrm{CPL}}\gamma.
+\]</span></p>
+<p>El <strong>conjunto de modelos proposicionales</strong> de <span class="math inline">\(\Gamma\)</span> es</p>
+<p><span class="math display">\[
+\operatorname{Mod}_{\mathrm{CPL}}(\Gamma)
+:=
+\{v\in\mathrm{Val}_{\mathrm{CPL}}\mid v\models_{\mathrm{CPL}}\Gamma\}.
+\]</span></p>
+<p>Para una fórmula <span class="math inline">\(\varphi\)</span> usaremos la abreviación</p>
+<p><span class="math display">\[
+\operatorname{Mod}_{\mathrm{CPL}}(\varphi)
+:=
+\operatorname{Mod}_{\mathrm{CPL}}(\{\varphi\}).
+\]</span></p>
+<p>La definición cuantifica metateóricamente sobre fórmulas ya construidas. No convierte <span class="math inline">\(\Gamma\)</span> en una fórmula del lenguaje objeto.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>El conjunto vacío de premisas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Toda valuación satisface <span class="math inline">\(\varnothing\)</span>, pues la condición universal sobre sus miembros es vacua. Por tanto <span class="math display">\[
+\operatorname{Mod}_{\mathrm{CPL}}(\varnothing)
+=
+\mathrm{Val}_{\mathrm{CPL}}.
+\]</span></p>
+</div>
+</div>
+</section>
+</section>
+<section id="satisfacibilidad" class="level2">
+<h2 class="anchored" data-anchor-id="satisfacibilidad">2.11. Satisfacibilidad</h2>
+<section id="tlog-def-00013" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00013">Definición 2.11.1 — Satisfacibilidad e insatisfacibilidad</h3>
+<p>Un conjunto</p>
+<p><span class="math display">\[
+\Gamma\subseteq\mathrm{Fm}_{\mathrm{CPL}}
+\]</span></p>
+<p>es <strong>satisfacible</strong> si posee al menos un modelo:</p>
+<p><span class="math display">\[
+\operatorname{Mod}_{\mathrm{CPL}}(\Gamma)\neq\varnothing.
+\]</span></p>
+<p>Es <strong>insatisfacible</strong> si</p>
+<p><span class="math display">\[
+\operatorname{Mod}_{\mathrm{CPL}}(\Gamma)=\varnothing.
+\]</span></p>
+<p>Una fórmula <span class="math inline">\(\varphi\)</span> es satisfacible si <span class="math inline">\(\{\varphi\}\)</span> es satisfacible, es decir, si existe alguna valuación <span class="math inline">\(v\)</span> tal que</p>
+<p><span class="math display">\[
+v\models\varphi.
+\]</span></p>
+<p>Una fórmula insatisfacible se llamará también una <strong>contradicción semántica</strong>. Este uso de “contradicción” no afirma todavía nada acerca de derivabilidad ni de inconsistencia de un cálculo deductivo.</p>
+</section>
+</section>
+<section id="validez-proposicional" class="level2">
+<h2 class="anchored" data-anchor-id="validez-proposicional">2.12. Validez proposicional</h2>
+<section id="tlog-def-00014" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00014">Definición 2.12.1 — Validez</h3>
+<p>Una fórmula</p>
+<p><span class="math display">\[
+\varphi\in\mathrm{Fm}_{\mathrm{CPL}}
+\]</span></p>
+<p>es <strong>válida en <code>CPL</code></strong> si toda valuación la satisface:</p>
+<p><span class="math display">\[
+\forall v\in\mathrm{Val}_{\mathrm{CPL}},
+\quad
+v\models\varphi.
+\]</span></p>
+<p>Escribiremos</p>
+<p><span class="math display">\[
+\models_{\mathrm{CPL}}\varphi,
+\]</span></p>
+<p>y, cuando <code>CPL</code> sea inequívoco,</p>
+<p><span class="math display">\[
+\models\varphi.
+\]</span></p>
+<p>En lógica proposicional clásica también llamaremos <strong>tautología</strong> a una fórmula válida. La validez es una propiedad semántica global: no debe confundirse con ser teorema de un cálculo, noción que se introducirá en el capítulo siguiente.</p>
+</section>
+</section>
+<section id="consecuencia-semántica" class="level2">
+<h2 class="anchored" data-anchor-id="consecuencia-semántica">2.13. Consecuencia semántica</h2>
+<section id="tlog-def-00015" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00015">Definición 2.13.1 — Consecuencia semántica proposicional</h3>
+<p>Sean</p>
+<p><span class="math display">\[
+\Gamma\subseteq\mathrm{Fm}_{\mathrm{CPL}},
+\qquad
+\varphi\in\mathrm{Fm}_{\mathrm{CPL}}.
+\]</span></p>
+<p>Decimos que <span class="math inline">\(\varphi\)</span> es <strong>consecuencia semántica</strong> de <span class="math inline">\(\Gamma\)</span>, y escribimos</p>
+<p><span class="math display">\[
+\Gamma\models_{\mathrm{CPL}}\varphi,
+\]</span></p>
+<p>si y sólo si toda valuación que satisface <span class="math inline">\(\Gamma\)</span> satisface también <span class="math inline">\(\varphi\)</span>:</p>
+<p><span class="math display">\[
+\forall v\in\mathrm{Val}_{\mathrm{CPL}},
+\quad
+\bigl(v\models\Gamma\Longrightarrow v\models\varphi\bigr).
+\]</span></p>
+<p>Equivalentemente,</p>
+<p><span class="math display">\[
+\Gamma\models\varphi
+\iff
+\operatorname{Mod}_{\mathrm{CPL}}(\Gamma)
+\subseteq
+\operatorname{Mod}_{\mathrm{CPL}}(\varphi).
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Separación obligatoria
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\Gamma\models\varphi
+\neq
+\Gamma\vdash\varphi.
+\]</span> La primera expresión acaba de recibir una definición semántica. La segunda quedará reservada para derivabilidad en un cálculo proposicional. Cualquier relación posterior entre ambas requerirá teoremas de corrección y completitud.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="equivalencia-semántica" class="level2">
+<h2 class="anchored" data-anchor-id="equivalencia-semántica">2.14. Equivalencia semántica</h2>
+<section id="tlog-def-00016" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00016">Definición 2.14.1 — Equivalencia semántica proposicional</h3>
+<p>Sean <span class="math inline">\(\varphi,\psi\in\mathrm{Fm}_{\mathrm{CPL}}\)</span>. Decimos que son <strong>semánticamente equivalentes</strong> y escribimos</p>
+<p><span class="math display">\[
+\varphi\equiv_{\mathrm{CPL}}\psi
+\]</span></p>
+<p>si para toda valuación <span class="math inline">\(v\)</span>,</p>
+<p><span class="math display">\[
+v\models\varphi
+\iff
+v\models\psi.
+\]</span></p>
+<p>Por bivalencia, esto equivale a</p>
+<p><span class="math display">\[
+\widehat v(\varphi)=\widehat v(\psi)
+\]</span></p>
+<p>para toda <span class="math inline">\(v\in\mathrm{Val}_{\mathrm{CPL}}\)</span>, y también a</p>
+<p><span class="math display">\[
+\operatorname{Mod}_{\mathrm{CPL}}(\varphi)
+=
+\operatorname{Mod}_{\mathrm{CPL}}(\psi).
+\]</span></p>
+<p>El signo <span class="math inline">\(=\)</span> continúa reservado para identidad sintáctica o igualdad metalingüística de objetos. Por tanto</p>
+<p><span class="math display">\[
+\varphi=\psi
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\varphi\equiv_{\mathrm{CPL}}\psi
+\]</span></p>
+<p>son afirmaciones de tipos distintos.</p>
+</section>
+</section>
+<section id="relaciones-fundamentales-entre-las-nociones-semánticas" class="level2">
+<h2 class="anchored" data-anchor-id="relaciones-fundamentales-entre-las-nociones-semánticas">2.15. Relaciones fundamentales entre las nociones semánticas</h2>
+<section id="tlog-pro-00001" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00001">Proposición 2.15.1 — Caracterizaciones básicas</h3>
+<p>Para todo <span class="math inline">\(\Gamma\subseteq\mathrm{Fm}_{\mathrm{CPL}}\)</span> y todas <span class="math inline">\(\varphi,\psi\in\mathrm{Fm}_{\mathrm{CPL}}\)</span>:</p>
+<ol type="1">
+<li><span class="math inline">\(\varphi\)</span> es válida si y sólo si <span class="math display">\[
+\varnothing\models\varphi.
+\]</span></li>
+<li><span class="math inline">\(\Gamma\models\varphi\)</span> si y sólo si <span class="math display">\[
+\Gamma\cup\{\neg\varphi\}
+\]</span> es insatisfacible.</li>
+<li><span class="math inline">\(\varphi\equiv_{\mathrm{CPL}}\psi\)</span> si y sólo si <span class="math display">\[
+\varphi\models\psi
+\quad\text{y}\quad
+\psi\models\varphi.
+\]</span></li>
+<li><span class="math inline">\(\varphi\equiv_{\mathrm{CPL}}\psi\)</span> si y sólo si <span class="math display">\[
+\models(\varphi\leftrightarrow\psi).
+\]</span></li>
+<li><span class="math inline">\(\Gamma\)</span> es insatisfacible si y sólo si, para toda fórmula <span class="math inline">\(\chi\)</span>, <span class="math display">\[
+\Gamma\models\chi.
+\]</span></li>
+</ol>
+<section id="demostración-2" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-2">Demostración</h4>
+<ol type="1">
+<li><p>Por <a href="#tlog-def-00012">TLOG-DEF-00012</a>, toda valuación satisface <span class="math inline">\(\varnothing\)</span>. Así, la definición de <span class="math inline">\(\varnothing\models\varphi\)</span> se reduce exactamente a que toda valuación satisfaga <span class="math inline">\(\varphi\)</span>, que es <a href="#tlog-def-00014">TLOG-DEF-00014</a>.</p></li>
+<li><p>Si <span class="math inline">\(\Gamma\models\varphi\)</span>, no puede existir una valuación que satisfaga simultáneamente <span class="math inline">\(\Gamma\)</span> y <span class="math inline">\(\neg\varphi\)</span>: por <a href="#tlog-mth-00004">TLOG-MTH-00004</a> y la tabla de <a href="#tlog-cnv-00005">TLOG-CNV-00005</a>, satisfacer <span class="math inline">\(\neg\varphi\)</span> equivale a no satisfacer <span class="math inline">\(\varphi\)</span>. El argumento inverso es la misma implicación leída contrapositivamente en la metateoría clásica.</p></li>
+<li><p>Por <a href="#tlog-def-00015">TLOG-DEF-00015</a>, <span class="math inline">\(\varphi\models\psi\)</span> significa <span class="math display">\[
+\operatorname{Mod}_{\mathrm{CPL}}(\varphi)\subseteq\operatorname{Mod}_{\mathrm{CPL}}(\psi),
+\]</span> y la consecuencia inversa da la inclusión opuesta. Ambas equivalen a la igualdad de conjuntos de modelos, que es <a href="#tlog-def-00016">TLOG-DEF-00016</a>.</p></li>
+<li><p>Por la tabla de <span class="math inline">\(f_{\leftrightarrow}\)</span>, <span class="math display">\[
+v\models(\varphi\leftrightarrow\psi)
+\]</span> si y sólo si <span class="math inline">\(\widehat v(\varphi)=\widehat v(\psi)\)</span>. Cuantificando sobre todas las valuaciones obtenemos exactamente <a href="#tlog-def-00016">TLOG-DEF-00016</a>.</p></li>
+<li><p>Si <span class="math inline">\(\Gamma\)</span> no tiene modelos, la implicación <span class="math display">\[
+v\models\Gamma\Longrightarrow v\models\chi
+\]</span> es verdadera para toda valuación y toda <span class="math inline">\(\chi\)</span>. Recíprocamente, si <span class="math inline">\(\Gamma\)</span> fuese satisfacible, elija <span class="math inline">\(v\models\Gamma\)</span> y una variable <span class="math inline">\(p_n\)</span>; una de <span class="math inline">\(p_n\)</span> o <span class="math inline">\(\neg p_n\)</span> falla bajo <span class="math inline">\(v\)</span>, de modo que no todas las fórmulas pueden ser consecuencia de <span class="math inline">\(\Gamma\)</span>. <span class="math inline">\(\square\)</span></p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="propiedades-estructurales-de-la-consecuencia-semántica" class="level2">
+<h2 class="anchored" data-anchor-id="propiedades-estructurales-de-la-consecuencia-semántica">2.16. Propiedades estructurales de la consecuencia semántica</h2>
+<section id="tlog-pro-00002" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00002">Proposición 2.16.1 — Reflexividad, monotonía y corte semántico</h3>
+<p>Sean <span class="math inline">\(\Gamma,\Delta\subseteq\mathrm{Fm}_{\mathrm{CPL}}\)</span> y <span class="math inline">\(\varphi\in\mathrm{Fm}_{\mathrm{CPL}}\)</span>.</p>
+<ol type="1">
+<li><strong>Reflexividad.</strong> Si <span class="math inline">\(\varphi\in\Gamma\)</span>, entonces <span class="math display">\[
+\Gamma\models\varphi.
+\]</span></li>
+<li><strong>Monotonía.</strong> Si <span class="math display">\[
+\Gamma\subseteq\Delta
+\quad\text{y}\quad
+\Gamma\models\varphi,
+\]</span> entonces <span class="math display">\[
+\Delta\models\varphi.
+\]</span></li>
+<li><strong>Corte semántico.</strong> Si <span class="math display">\[
+\Gamma\models\delta
+\quad\text{para todo }\delta\in\Delta,
+\]</span> y <span class="math display">\[
+\Delta\models\varphi,
+\]</span> entonces <span class="math display">\[
+\Gamma\models\varphi.
+\]</span></li>
+</ol>
+<section id="demostración-3" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-3">Demostración</h4>
+<p>Sea <span class="math inline">\(v\)</span> una valuación arbitraria.</p>
+<ol type="1">
+<li>Si <span class="math inline">\(v\models\Gamma\)</span> y <span class="math inline">\(\varphi\in\Gamma\)</span>, entonces por definición de satisfacción de conjuntos <span class="math inline">\(v\models\varphi\)</span>.</li>
+<li>Si <span class="math inline">\(v\models\Delta\)</span> y <span class="math inline">\(\Gamma\subseteq\Delta\)</span>, entonces <span class="math inline">\(v\models\Gamma\)</span>; de <span class="math inline">\(\Gamma\models\varphi\)</span> se sigue <span class="math inline">\(v\models\varphi\)</span>.</li>
+<li>Si <span class="math inline">\(v\models\Gamma\)</span>, la primera hipótesis implica <span class="math inline">\(v\models\delta\)</span> para cada <span class="math inline">\(\delta\in\Delta\)</span>; por tanto <span class="math inline">\(v\models\Delta\)</span>. La segunda hipótesis da entonces <span class="math inline">\(v\models\varphi\)</span>. <span class="math inline">\(\square\)</span></li>
+</ol>
+<p>Estas propiedades pertenecen a la relación semántica recién definida. No son todavía reglas de inferencia de un cálculo objeto.</p>
+</section>
+</section>
+</section>
+<section id="ejemplo-desarrollado-premisas-sin-modelo-y-consecuencia-vacua" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-desarrollado-premisas-sin-modelo-y-consecuencia-vacua">2.17. Ejemplo desarrollado — premisas sin modelo y consecuencia vacua</h2>
+<p>Consideremos</p>
+<p><span class="math display">\[
+\Gamma=\{p_1,\neg p_1\}.
+\]</span></p>
+<p>No existe <span class="math inline">\(v\in\mathrm{Val}_{\mathrm{CPL}}\)</span> con</p>
+<p><span class="math display">\[
+v\models p_1
+\quad\text{y}\quad
+v\models\neg p_1,
+\]</span></p>
+<p>porque la segunda condición exige exactamente el valor opuesto a la primera. Por tanto <span class="math inline">\(\Gamma\)</span> es insatisfacible.</p>
+<p>En consecuencia, para cualquier fórmula <span class="math inline">\(\chi\)</span>,</p>
+<p><span class="math display">\[
+\Gamma\models\chi.
+\]</span></p>
+<p>Este hecho no expresa que desde una contradicción ya hayamos <strong>derivado</strong> <span class="math inline">\(\chi\)</span>. Expresa únicamente que no existe una valuación que satisfaga todas las premisas y falle en la conclusión. La comparación con explosión deductiva pertenece al estudio del cálculo y de su corrección/completitud.</p>
+</section>
+<section id="estado-y-próximo-frente-1" class="level2">
+<h2 class="anchored" data-anchor-id="estado-y-próximo-frente-1">2.20. Estado y próximo frente</h2>
+<p>El Capítulo 2 queda en <code>PARTIAL-CLOSURE / NOT CLOSED</code> con doce nodos cerrados. El próximo bloque deberá convertir la localidad demostrada en <a href="#tlog-lem-00002">TLOG-LEM-00002</a> en un procedimiento finito explícito.</p>
+<pre class="text"><code>TLOG-CH02-M03
+Tablas de verdad, decidibilidad semántica y cierre del capítulo</code></pre>
+</section>
+<section id="soporte-proposicional-de-una-fórmula-y-de-una-familia-finita" class="level2">
+<h2 class="anchored" data-anchor-id="soporte-proposicional-de-una-fórmula-y-de-una-familia-finita">2.21. Soporte proposicional de una fórmula y de una familia finita</h2>
+<p>La localidad demostrada en <a href="#tlog-lem-00002">TLOG-LEM-00002</a> indica que una fórmula no depende de toda valuación global, sino sólo de las variables que efectivamente aparecen en ella. Para convertir esa observación en un procedimiento finito, aislamos primero ese conjunto de variables.</p>
+<section id="tlog-def-00017" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00017">Definición 2.21.1 — Soporte proposicional</h3>
+<p>Para toda fórmula <span class="math inline">\(\varphi\in\mathrm{Fm}_{\mathrm{CPL}}\)</span>, definimos</p>
+<p><span class="math display">\[
+\operatorname{Var}_{\mathrm{CPL}}(\varphi)
+:=
+\mathrm{PV}\cap\operatorname{Sub}_{\mathrm{CPL}}(\varphi).
+\]</span></p>
+<p>Si <span class="math inline">\(\Phi\subseteq\mathrm{Fm}_{\mathrm{CPL}}\)</span> es una familia <strong>finita</strong> de fórmulas, definimos</p>
+<p><span class="math display">\[
+\operatorname{Var}_{\mathrm{CPL}}(\Phi)
+:=
+\bigcup_{\varphi\in\Phi}\operatorname{Var}_{\mathrm{CPL}}(\varphi).
+\]</span></p>
+<p>Cuando <code>CPL</code> sea inequívoco, omitiremos el subíndice.</p>
+</section>
+</section>
+<section id="finitud-del-soporte" class="level2">
+<h2 class="anchored" data-anchor-id="finitud-del-soporte">2.22. Finitud del soporte</h2>
+<section id="tlog-lem-00003" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00003">Lema 2.22.1 — Toda fórmula tiene soporte finito</h3>
+<p>Para toda <span class="math inline">\(\varphi\in\mathrm{Fm}_{\mathrm{CPL}}\)</span>, <span class="math inline">\(\operatorname{Var}(\varphi)\)</span> es finito. Más generalmente, si <span class="math inline">\(\Phi\subseteq\mathrm{Fm}_{\mathrm{CPL}}\)</span> es finito, entonces <span class="math inline">\(\operatorname{Var}(\Phi)\)</span> es finito.</p>
+<section id="demostración-4" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-4">Demostración</h4>
+<p>Aplicamos inducción estructural (<a href="../../../libros/otros/tratado-de-logica/capitulo-01.html#tlog-mth-00001">TLOG-MTH-00001</a>). Si <span class="math inline">\(\varphi=p_n\)</span>, entonces <span class="math display">\[
+\operatorname{Var}(p_n)=\{p_n\}.
+\]</span> Si <span class="math inline">\(\varphi=(\neg\alpha)\)</span>, entonces <span class="math display">\[
+\operatorname{Var}(\varphi)=\operatorname{Var}(\alpha),
+\]</span> finito por hipótesis inductiva. Si <span class="math display">\[
+\varphi=(\alpha\circ\beta),
+\qquad
+\circ\in\{\land,\lor,\to,\leftrightarrow\},
+\]</span> entonces <span class="math display">\[
+\operatorname{Var}(\varphi)=\operatorname{Var}(\alpha)\cup\operatorname{Var}(\beta),
+\]</span> unión de dos conjuntos finitos. La afirmación para una familia finita sigue porque una unión finita de conjuntos finitos es finita. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="tabla-de-verdad-de-una-familia-finita" class="level2">
+<h2 class="anchored" data-anchor-id="tabla-de-verdad-de-una-familia-finita">2.23. Tabla de verdad de una familia finita</h2>
+<section id="tlog-def-00018" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00018">Definición 2.23.1 — Tabla de verdad</h3>
+<p>Sea <span class="math display">\[
+\Phi=\{\varphi_1,\ldots,\varphi_m\}
+\subseteq\mathrm{Fm}_{\mathrm{CPL}}
+\]</span> una familia finita, y pongamos <span class="math inline">\(W:=\operatorname{Var}(\Phi)\)</span>.</p>
+<p>Una <strong>fila</strong> sobre <span class="math inline">\(W\)</span> es una función <span class="math display">\[
+a:W\to\mathbf 2.
+\]</span></p>
+<p>A cada fila asociamos la valuación total canónica <span class="math display">\[
+\overline a:\mathrm{PV}\to\mathbf 2
+\]</span> definida por <span class="math display">\[
+\overline a(p)=
+\begin{cases}
+a(p),&amp; p\in W,\\
+0,&amp; p\notin W.
+\end{cases}
+\]</span></p>
+<p>La <strong>tabla de verdad de <span class="math inline">\(\Phi\)</span></strong> es la tabla finita cuyas filas recorren todas las funciones <span class="math inline">\(a:W\to\mathbf 2\)</span> y cuyas columnas de fórmulas contienen <span class="math display">\[
+\widehat{\overline a}(\varphi_1),\ldots,\widehat{\overline a}(\varphi_m).
+\]</span></p>
+<p>Si <span class="math inline">\(|W|=n\)</span>, la tabla tiene exactamente <span class="math inline">\(2^n\)</span> filas.</p>
+<p>La elección del valor <span class="math inline">\(0\)</span> fuera de <span class="math inline">\(W\)</span> es sólo una forma canónica de producir una valuación total. El teorema siguiente mostrará que ningún valor fuera de <span class="math inline">\(W\)</span> puede alterar las columnas de <span class="math inline">\(\Phi\)</span>.</p>
+</section>
+</section>
+<section id="exhaustividad-de-las-tablas-de-verdad" class="level2">
+<h2 class="anchored" data-anchor-id="exhaustividad-de-las-tablas-de-verdad">2.24. Exhaustividad de las tablas de verdad</h2>
+<section id="tlog-mth-00005" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00005">Metateorema 2.24.1 — Reducción finita de la evaluación</h3>
+<p>Sea <span class="math inline">\(\Phi\subseteq\mathrm{Fm}_{\mathrm{CPL}}\)</span> finito y <span class="math inline">\(W=\operatorname{Var}(\Phi)\)</span>. Entonces la tabla de verdad de <span class="math inline">\(\Phi\)</span> contiene <strong>todos y sólo</strong> los patrones de valores que las fórmulas de <span class="math inline">\(\Phi\)</span> pueden adoptar bajo valuaciones totales.</p>
+<p>Más precisamente, para toda valuación <span class="math inline">\(v\in\mathrm{Val}_{\mathrm{CPL}}\)</span>, si <span class="math display">\[
+a:=v\!\upharpoonright W,
+\]</span> entonces, para cada <span class="math inline">\(\varphi\in\Phi\)</span>, <span class="math display">\[
+\widehat v(\varphi)=\widehat{\overline a}(\varphi).
+\]</span> Recíprocamente, cada fila <span class="math inline">\(a:W\to\mathbf 2\)</span> es la restricción a <span class="math inline">\(W\)</span> de la valuación total <span class="math inline">\(\overline a\)</span>.</p>
+<section id="demostración-5" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-5">Demostración</h4>
+<p>Sea <span class="math inline">\(v\)</span> una valuación total y <span class="math inline">\(a=v\!\upharpoonright W\)</span>. Por construcción, <span class="math display">\[
+v(p)=\overline a(p)
+\]</span> para todo <span class="math inline">\(p\in W\)</span>. Como <span class="math inline">\(\operatorname{Var}(\varphi)\subseteq W\)</span> para toda <span class="math inline">\(\varphi\in\Phi\)</span>, <a href="#tlog-lem-00002">TLOG-LEM-00002</a> implica <span class="math display">\[
+\widehat v(\varphi)=\widehat{\overline a}(\varphi).
+\]</span> La recíproca es inmediata, pues <span class="math inline">\(\overline a\)</span> extiende a <span class="math inline">\(a\)</span>. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Consecuencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La infinitud de <span class="math inline">\(\mathrm{PV}\)</span> no obliga a inspeccionar infinitas valuaciones distintas al evaluar una entrada finita. Toda la información semántica pertinente queda comprimida en las <span class="math inline">\(2^{|W|}\)</span> filas sobre su soporte finito.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="decidibilidad-semántica-finitaria" class="level2">
+<h2 class="anchored" data-anchor-id="decidibilidad-semántica-finitaria">2.25. Decidibilidad semántica finitaria</h2>
+<section id="tlog-mth-00006" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00006">Metateorema 2.25.1 — Procedimientos finitos de decisión en <code>CPL</code></h3>
+<p>Existen procedimientos finitos que, para entradas sintácticas finitas de <code>CPL</code>, deciden:</p>
+<ol type="1">
+<li>si una fórmula <span class="math inline">\(\varphi\)</span> es satisfacible;</li>
+<li>si una fórmula <span class="math inline">\(\varphi\)</span> es válida;</li>
+<li>si dos fórmulas <span class="math inline">\(\varphi,\psi\)</span> son semánticamente equivalentes;</li>
+<li>si un conjunto <strong>finito</strong> <span class="math inline">\(\Gamma\)</span> es satisfacible;</li>
+<li>si, para un conjunto <strong>finito</strong> <span class="math inline">\(\Gamma\)</span>, <span class="math inline">\(\Gamma\models\varphi\)</span>.</li>
+</ol>
+<section id="demostración-6" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-6">Demostración</h4>
+<p>En cada caso se toma la familia finita de fórmulas que aparece en la entrada y se calcula su soporte <span class="math display">\[
+W=\operatorname{Var}(\Phi).
+\]</span> Por <a href="#tlog-lem-00003">TLOG-LEM-00003</a>, <span class="math inline">\(W\)</span> es finito. Se enumeran las <span class="math inline">\(2^{|W|}\)</span> funciones <span class="math display">\[
+a:W\to\mathbf 2
+\]</span> y se evalúan recursivamente las fórmulas en la valuación canónica <span class="math inline">\(\overline a\)</span>.</p>
+<p>La evaluación de cada fórmula termina porque recorre una estructura sintáctica finita y en cada paso pasa a constituyentes propios. La enumeración de filas termina porque <span class="math inline">\(W\)</span> es finito.</p>
+<p>Por <a href="#tlog-mth-00005">TLOG-MTH-00005</a>, esas filas agotan todos los comportamientos semánticos posibles de la entrada. Por tanto:</p>
+<ul>
+<li><span class="math inline">\(\varphi\)</span> es satisfacible si y sólo si alguna fila da valor <span class="math inline">\(1\)</span>;</li>
+<li><span class="math inline">\(\varphi\)</span> es válida si y sólo si todas las filas dan valor <span class="math inline">\(1\)</span>;</li>
+<li><span class="math inline">\(\varphi\equiv\psi\)</span> si y sólo si sus columnas coinciden en todas las filas;</li>
+<li><span class="math inline">\(\Gamma\)</span> es satisfacible si y sólo si existe una fila que da valor <span class="math inline">\(1\)</span> a cada miembro de <span class="math inline">\(\Gamma\)</span>;</li>
+<li><span class="math inline">\(\Gamma\models\varphi\)</span> si y sólo si toda fila que satisface cada miembro de <span class="math inline">\(\Gamma\)</span> da también valor <span class="math inline">\(1\)</span> a <span class="math inline">\(\varphi\)</span>.</li>
+</ul>
+<p>Cada prueba es, por tanto, una inspección finita exhaustiva. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Alcance exacto de “decidible”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este resultado no afirma que la consecuencia desde un conjunto arbitrario e infinito de premisas pueda decidirse mediante una sola tabla finita. Tampoco introduce todavía la teoría general de computabilidad del tratado ni hace una claim de complejidad óptima. Establece únicamente un procedimiento explícito y terminante para los problemas semánticos finitos enumerados arriba.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="ejemplo-desarrollado-una-tabla-dos-controles-semánticos" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-desarrollado-una-tabla-dos-controles-semánticos">2.26. Ejemplo desarrollado — una tabla, dos controles semánticos</h2>
+<p>Consideremos <span class="math display">\[
+\varphi=p_1\to p_2,
+\qquad
+\psi=(\neg p_1)\lor p_2.
+\]</span> Su soporte común es <span class="math inline">\(W=\{p_1,p_2\}\)</span>, por lo que hay <span class="math inline">\(2^2=4\)</span> filas:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(p_1\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(p_2\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(p_1\to p_2\)</span></th>
+<th style="text-align: right;"><span class="math inline">\((\neg p_1)\lor p_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<p>Las dos últimas columnas coinciden, de modo que <span class="math display">\[
+p_1\to p_2\equiv_{\mathrm{CPL}}(\neg p_1)\lor p_2.
+\]</span></p>
+<p>La misma tabla permite controlar <span class="math display">\[
+\{p_1,\ p_1\to p_2\}\models p_2.
+\]</span> En efecto, la única fila que satisface simultáneamente las dos premisas tiene <span class="math inline">\(p_2=1\)</span>.</p>
+<p>Este ejemplo ilustra la función exacta de una tabla de verdad: no reemplaza la definición de consecuencia, sino que proporciona un procedimiento finito completo para verificarla cuando la entrada es finita.</p>
+</section>
+<section id="cierre-del-capítulo" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-del-capítulo">2.29. Cierre del capítulo</h2>
+<p>Con <code>TLOG-CH02-M03</code> quedan satisfechas las obligaciones arquitectónicas del Capítulo 2:</p>
+<p><span class="math display">\[
+\text{valuaciones}
+\longrightarrow
+\text{evaluación}
+\longrightarrow
+\text{satisfacción}
+\longrightarrow
+\text{satisfacibilidad/validez}
+\longrightarrow
+\text{consecuencia/equivalencia}
+\longrightarrow
+\text{reducción finita y decisión}.
+\]</span></p>
+<p>No queda pendiente ninguna definición semántica requerida por la salida arquitectónica del capítulo. El estudio de derivaciones, reglas y teoremas pertenece al Capítulo 3; la comparación entre <span class="math inline">\(\vdash\)</span> y <span class="math inline">\(\models\)</span> pertenece al Capítulo 4.</p>
+<p><span class="math display">\[
+\boxed{\texttt{TLOG-CH02-0001 — CLOSED}}
+\]</span></p>
+<p>Próximo frente:</p>
+<pre class="text"><code>TLOG-CH03-0001 — Cálculo proposicional</code></pre>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-01.html">← Capítulo 1</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html">Capítulo 3 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

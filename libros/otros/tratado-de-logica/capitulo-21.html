@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 21 — Primer teorema de incompletitud – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-un-bicondicional-a-un-límite-de-las-pruebas" id="toc-de-un-bicondicional-a-un-límite-de-las-pruebas" class="nav-link active" data-scroll-target="#de-un-bicondicional-a-un-límite-de-las-pruebas">21.0. De un bicondicional a un límite de las pruebas</a></li>
+  <li><a href="#apertura-de-la-parte-v-y-alcance-del-teorema" id="toc-apertura-de-la-parte-v-y-alcance-del-teorema" class="nav-link" data-scroll-target="#apertura-de-la-parte-v-y-alcance-del-teorema">21.1. Apertura de la Parte V y alcance del teorema</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00032" id="toc-tlog-cnv-00032" class="nav-link" data-scroll-target="#tlog-cnv-00032">Convención 21.1.1 — Apertura de la Parte V y alcance del teorema</a></li>
+  </ul></li>
+  <li><a href="#presentación-efectiva-de-una-extensión-aritmética" id="toc-presentación-efectiva-de-una-extensión-aritmética" class="nav-link" data-scroll-target="#presentación-efectiva-de-una-extensión-aritmética">21.2. Presentación efectiva de una extensión aritmética</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00149" id="toc-tlog-def-00149" class="nav-link" data-scroll-target="#tlog-def-00149">Definición 21.2.1 — Presentación efectiva de una extensión aritmética</a></li>
+  </ul></li>
+  <li><a href="#verificador-total-de-pruebas-certificadas-de-t" id="toc-verificador-total-de-pruebas-certificadas-de-t" class="nav-link" data-scroll-target="#verificador-total-de-pruebas-certificadas-de-t">21.3. Verificador total de pruebas certificadas de T</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00086" id="toc-tlog-lem-00086" class="nav-link" data-scroll-target="#tlog-lem-00086">Lema 21.3.1 — Verificador total de pruebas certificadas de T</a></li>
+  </ul></li>
+  <li><a href="#predicados-de-prueba-positiva-negativa-y-demostrabilidad" id="toc-predicados-de-prueba-positiva-negativa-y-demostrabilidad" class="nav-link" data-scroll-target="#predicados-de-prueba-positiva-negativa-y-demostrabilidad">21.4. Predicados de prueba positiva, negativa y demostrabilidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00150" id="toc-tlog-def-00150" class="nav-link" data-scroll-target="#tlog-def-00150">Definición 21.4.1 — Predicados de prueba positiva, negativa y demostrabilidad</a></li>
+  </ul></li>
+  <li><a href="#exactitud-numeral-y-estándar-de-los-predicados-de-prueba" id="toc-exactitud-numeral-y-estándar-de-los-predicados-de-prueba" class="nav-link" data-scroll-target="#exactitud-numeral-y-estándar-de-los-predicados-de-prueba">21.5. Exactitud numeral y estándar de los predicados de prueba</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00117" id="toc-tlog-mth-00117" class="nav-link" data-scroll-target="#tlog-mth-00117">Metateorema 21.5.1 — Exactitud numeral y estándar de los predicados de prueba</a></li>
+  </ul></li>
+  <li><a href="#de-un-número-finito-de-instancias-a-una-cota-numeral" id="toc-de-un-número-finito-de-instancias-a-una-cota-numeral" class="nav-link" data-scroll-target="#de-un-número-finito-de-instancias-a-una-cota-numeral">21.6. De un número finito de instancias a una cota numeral</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00087" id="toc-tlog-lem-00087" class="nav-link" data-scroll-target="#tlog-lem-00087">Lema 21.6.1 — De un número finito de instancias a una cota numeral</a></li>
+  </ul></li>
+  <li><a href="#completitud-de-una-teoría-e-independencia-de-una-sentencia" id="toc-completitud-de-una-teoría-e-independencia-de-una-sentencia" class="nav-link" data-scroll-target="#completitud-de-una-teoría-e-independencia-de-una-sentencia">21.7. Completitud de una teoría e independencia de una sentencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00151" id="toc-tlog-def-00151" class="nav-link" data-scroll-target="#tlog-def-00151">Definición 21.7.1 — Completitud de una teoría e independencia de una sentencia</a></li>
+  </ul></li>
+  <li><a href="#implicaciones-entre-las-hipótesis-de-corrección" id="toc-implicaciones-entre-las-hipótesis-de-corrección" class="nav-link" data-scroll-target="#implicaciones-entre-las-hipótesis-de-corrección">21.8. Implicaciones entre las hipótesis de corrección</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00134" id="toc-tlog-pro-00134" class="nav-link" data-scroll-target="#tlog-pro-00134">Proposición 21.8.1 — Implicaciones entre las hipótesis de corrección</a></li>
+  </ul></li>
+  <li><a href="#una-sentencia-de-gödel-para-cada-presentación" id="toc-una-sentencia-de-gödel-para-cada-presentación" class="nav-link" data-scroll-target="#una-sentencia-de-gödel-para-cada-presentación">21.9. Una sentencia de Gödel para cada presentación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00152" id="toc-tlog-def-00152" class="nav-link" data-scroll-target="#tlog-def-00152">Definición 21.9.1 — Una sentencia de Gödel para cada presentación</a></li>
+  </ul></li>
+  <li><a href="#no-demostrabilidad-y-verdad-de-la-sentencia-de-gödel" id="toc-no-demostrabilidad-y-verdad-de-la-sentencia-de-gödel" class="nav-link" data-scroll-target="#no-demostrabilidad-y-verdad-de-la-sentencia-de-gödel">21.10. No demostrabilidad y verdad de la sentencia de Gödel</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00118" id="toc-tlog-mth-00118" class="nav-link" data-scroll-target="#tlog-mth-00118">Metateorema 21.10.1 — No demostrabilidad y verdad de la sentencia de Gödel</a></li>
+  </ul></li>
+  <li><a href="#forma-de-gödel-bajo-ω-consistencia" id="toc-forma-de-gödel-bajo-ω-consistencia" class="nav-link" data-scroll-target="#forma-de-gödel-bajo-ω-consistencia">21.11. Forma de Gödel bajo ω-consistencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00119" id="toc-tlog-mth-00119" class="nav-link" data-scroll-target="#tlog-mth-00119">Metateorema 21.11.1 — Forma de Gödel bajo ω-consistencia</a></li>
+  </ul></li>
+  <li><a href="#forma-de-gödel-bajo-corrección-σ1" id="toc-forma-de-gödel-bajo-corrección-σ1" class="nav-link" data-scroll-target="#forma-de-gödel-bajo-corrección-σ1">21.12. Forma de Gödel bajo corrección Σ1</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00120" id="toc-tlog-mth-00120" class="nav-link" data-scroll-target="#tlog-mth-00120">Metateorema 21.12.1 — Forma de Gödel bajo corrección Σ1</a></li>
+  </ul></li>
+  <li><a href="#independencia-de-la-sentencia-pa-ya-construida" id="toc-independencia-de-la-sentencia-pa-ya-construida" class="nav-link" data-scroll-target="#independencia-de-la-sentencia-pa-ya-construida">21.13. Independencia de la sentencia PA ya construida</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00034" id="toc-tlog-cor-00034" class="nav-link" data-scroll-target="#tlog-cor-00034">Corolario 21.13.1 — Independencia de la sentencia PA ya construida</a></li>
+  </ul></li>
+  <li><a href="#clase-π1-y-normalización-del-auxiliar-universal" id="toc-clase-π1-y-normalización-del-auxiliar-universal" class="nav-link" data-scroll-target="#clase-π1-y-normalización-del-auxiliar-universal">21.14. Clase Π1 y normalización del auxiliar universal</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00088" id="toc-tlog-lem-00088" class="nav-link" data-scroll-target="#tlog-lem-00088">Lema 21.14.1 — Clase Π1 y normalización del auxiliar universal</a></li>
+  </ul></li>
+  <li><a href="#elección-de-una-sentencia-de-gödel-literalmente-π1" id="toc-elección-de-una-sentencia-de-gödel-literalmente-π1" class="nav-link" data-scroll-target="#elección-de-una-sentencia-de-gödel-literalmente-π1">21.15. Elección de una sentencia de Gödel literalmente Π1</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00121" id="toc-tlog-mth-00121" class="nav-link" data-scroll-target="#tlog-mth-00121">Metateorema 21.15.1 — Elección de una sentencia de Gödel literalmente Π1</a></li>
+  </ul></li>
+  <li><a href="#una-extensión-consistente-que-demuestra-una-falsedad-σ1" id="toc-una-extensión-consistente-que-demuestra-una-falsedad-σ1" class="nav-link" data-scroll-target="#una-extensión-consistente-que-demuestra-una-falsedad-σ1">21.16. Una extensión consistente que demuestra una falsedad Σ1</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00135" id="toc-tlog-pro-00135" class="nav-link" data-scroll-target="#tlog-pro-00135">Proposición 21.16.1 — Una extensión consistente que demuestra una falsedad Σ1</a></li>
+  </ul></li>
+  <li><a href="#la-sentencia-de-rosser-y-el-orden-de-certificados" id="toc-la-sentencia-de-rosser-y-el-orden-de-certificados" class="nav-link" data-scroll-target="#la-sentencia-de-rosser-y-el-orden-de-certificados">21.17. La sentencia de Rosser y el orden de certificados</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00153" id="toc-tlog-def-00153" class="nav-link" data-scroll-target="#tlog-def-00153">Definición 21.17.1 — La sentencia de Rosser y el orden de certificados</a></li>
+  </ul></li>
+  <li><a href="#primera-mitad-de-rosser-no-hay-prueba-positiva" id="toc-primera-mitad-de-rosser-no-hay-prueba-positiva" class="nav-link" data-scroll-target="#primera-mitad-de-rosser-no-hay-prueba-positiva">21.18. Primera mitad de Rosser: no hay prueba positiva</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00089" id="toc-tlog-lem-00089" class="nav-link" data-scroll-target="#tlog-lem-00089">Lema 21.18.1 — Primera mitad de Rosser: no hay prueba positiva</a></li>
+  </ul></li>
+  <li><a href="#segunda-mitad-de-rosser-una-prueba-negativa-fuerza-una-positiva" id="toc-segunda-mitad-de-rosser-una-prueba-negativa-fuerza-una-positiva" class="nav-link" data-scroll-target="#segunda-mitad-de-rosser-una-prueba-negativa-fuerza-una-positiva">21.19. Segunda mitad de Rosser: una prueba negativa fuerza una positiva</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00090" id="toc-tlog-lem-00090" class="nav-link" data-scroll-target="#tlog-lem-00090">Lema 21.19.1 — Segunda mitad de Rosser: una prueba negativa fuerza una positiva</a></li>
+  </ul></li>
+  <li><a href="#primer-teorema-de-incompletitud-en-forma-de-gödelrosser" id="toc-primer-teorema-de-incompletitud-en-forma-de-gödelrosser" class="nav-link" data-scroll-target="#primer-teorema-de-incompletitud-en-forma-de-gödelrosser">21.20. Primer teorema de incompletitud en forma de Gödel–Rosser</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00122" id="toc-tlog-mth-00122" class="nav-link" data-scroll-target="#tlog-mth-00122">Metateorema 21.20.1 — Primer teorema de incompletitud en forma de Gödel–Rosser</a></li>
+  </ul></li>
+  <li><a href="#aplicación-a-pa-y-a-sus-extensiones-efectivas-consistentes" id="toc-aplicación-a-pa-y-a-sus-extensiones-efectivas-consistentes" class="nav-link" data-scroll-target="#aplicación-a-pa-y-a-sus-extensiones-efectivas-consistentes">21.21. Aplicación a PA y a sus extensiones efectivas consistentes</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00035" id="toc-tlog-cor-00035" class="nav-link" data-scroll-target="#tlog-cor-00035">Corolario 21.21.1 — Aplicación a PA y a sus extensiones efectivas consistentes</a></li>
+  </ul></li>
+  <li><a href="#construcción-uniforme-externa-de-una-sentencia-independiente" id="toc-construcción-uniforme-externa-de-una-sentencia-independiente" class="nav-link" data-scroll-target="#construcción-uniforme-externa-de-una-sentencia-independiente">21.22. Construcción uniforme externa de una sentencia independiente</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00123" id="toc-tlog-mth-00123" class="nav-link" data-scroll-target="#tlog-mth-00123">Metateorema 21.22.1 — Construcción uniforme externa de una sentencia independiente</a></li>
+  </ul></li>
+  <li><a href="#añadir-uno-de-los-lados-de-una-sentencia-independiente" id="toc-añadir-uno-de-los-lados-de-una-sentencia-independiente" class="nav-link" data-scroll-target="#añadir-uno-de-los-lados-de-una-sentencia-independiente">21.23. Añadir uno de los lados de una sentencia independiente</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00091" id="toc-tlog-lem-00091" class="nav-link" data-scroll-target="#tlog-lem-00091">Lema 21.23.1 — Añadir uno de los lados de una sentencia independiente</a></li>
+  </ul></li>
+  <li><a href="#una-reparación-finita-no-elimina-la-incompletitud" id="toc-una-reparación-finita-no-elimina-la-incompletitud" class="nav-link" data-scroll-target="#una-reparación-finita-no-elimina-la-incompletitud">21.24. Una reparación finita no elimina la incompletitud</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00136" id="toc-tlog-pro-00136" class="nav-link" data-scroll-target="#tlog-pro-00136">Proposición 21.24.1 — Una reparación finita no elimina la incompletitud</a></li>
+  </ul></li>
+  <li><a href="#árbol-binario-de-extensiones-y-uniones-de-ramas" id="toc-árbol-binario-de-extensiones-y-uniones-de-ramas" class="nav-link" data-scroll-target="#árbol-binario-de-extensiones-y-uniones-de-ramas">21.25. Árbol binario de extensiones y uniones de ramas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00124" id="toc-tlog-mth-00124" class="nav-link" data-scroll-target="#tlog-mth-00124">Metateorema 21.25.1 — Árbol binario de extensiones y uniones de ramas</a></li>
+  </ul></li>
+  <li><a href="#la-teoría-externa-de-todas-las-verdades-aritméticas" id="toc-la-teoría-externa-de-todas-las-verdades-aritméticas" class="nav-link" data-scroll-target="#la-teoría-externa-de-todas-las-verdades-aritméticas">21.26. La teoría externa de todas las verdades aritméticas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00154" id="toc-tlog-def-00154" class="nav-link" data-scroll-target="#tlog-def-00154">Definición 21.26.1 — La teoría externa de todas las verdades aritméticas</a></li>
+  </ul></li>
+  <li><a href="#la-verdad-completa-no-tiene-una-axiomatización-semidecidible" id="toc-la-verdad-completa-no-tiene-una-axiomatización-semidecidible" class="nav-link" data-scroll-target="#la-verdad-completa-no-tiene-una-axiomatización-semidecidible">21.27. La verdad completa no tiene una axiomatización semidecidible</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00036" id="toc-tlog-cor-00036" class="nav-link" data-scroll-target="#tlog-cor-00036">Corolario 21.27.1 — La verdad completa no tiene una axiomatización semidecidible</a></li>
+  </ul></li>
+  <li><a href="#cuadro-de-hipótesis-y-alcance-de-las-conclusiones" id="toc-cuadro-de-hipótesis-y-alcance-de-las-conclusiones" class="nav-link" data-scroll-target="#cuadro-de-hipótesis-y-alcance-de-las-conclusiones">21.28. Cuadro de hipótesis y alcance de las conclusiones</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00137" id="toc-tlog-pro-00137" class="nav-link" data-scroll-target="#tlog-pro-00137">Proposición 21.28.1 — Cuadro de hipótesis y alcance de las conclusiones</a></li>
+  </ul></li>
+  <li><a href="#tres-obligaciones-de-derivabilidad-para-el-capítulo-siguiente" id="toc-tres-obligaciones-de-derivabilidad-para-el-capítulo-siguiente" class="nav-link" data-scroll-target="#tres-obligaciones-de-derivabilidad-para-el-capítulo-siguiente">21.29. Tres obligaciones de derivabilidad para el capítulo siguiente</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00155" id="toc-tlog-def-00155" class="nav-link" data-scroll-target="#tlog-def-00155">Definición 21.29.1 — Tres obligaciones de derivabilidad para el capítulo siguiente</a></li>
+  </ul></li>
+  <li><a href="#lo-que-el-primer-teorema-no-demuestra-sobre-consistencia-interna" id="toc-lo-que-el-primer-teorema-no-demuestra-sobre-consistencia-interna" class="nav-link" data-scroll-target="#lo-que-el-primer-teorema-no-demuestra-sobre-consistencia-interna">21.30. Lo que el primer teorema no demuestra sobre consistencia interna</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00138" id="toc-tlog-pro-00138" class="nav-link" data-scroll-target="#tlog-pro-00138">Proposición 21.30.1 — Lo que el primer teorema no demuestra sobre consistencia interna</a></li>
+  </ul></li>
+  <li><a href="#cierre-del-primer-teorema-y-contrato-de-salida" id="toc-cierre-del-primer-teorema-y-contrato-de-salida" class="nav-link" data-scroll-target="#cierre-del-primer-teorema-y-contrato-de-salida">21.31. Cierre del primer teorema y contrato de salida</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00037" id="toc-tlog-cor-00037" class="nav-link" data-scroll-target="#tlog-cor-00037">Corolario 21.31.1 — Cierre del primer teorema y contrato de salida</a></li>
+  </ul></li>
+  <li><a href="#ejemplos-de-uso-y-cierre" id="toc-ejemplos-de-uso-y-cierre" class="nav-link" data-scroll-target="#ejemplos-de-uso-y-cierre">21.32. Ejemplos de uso y cierre</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 21 — Primer teorema de incompletitud</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-20.html">← Capítulo 20</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-22.html">Capítulo 22 →</a></p>
+<section id="de-un-bicondicional-a-un-límite-de-las-pruebas" class="level2">
+<h2 class="anchored" data-anchor-id="de-un-bicondicional-a-un-límite-de-las-pruebas">21.0. De un bicondicional a un límite de las pruebas</h2>
+<p>El lema diagonal construyó sentencias que PA relaciona con predicados aplicados a sus propios códigos. Ahora necesitamos analizar qué pruebas podrían tener esas sentencias en una teoría T determinada. La efectividad de los axiomas proporciona certificados comprobables; la representación aritmética traduce cada comprobación concreta en una prueba PA; la consistencia permite excluir pares contradictorios de derivaciones.</p>
+<p>Primero estudiaremos la sentencia de Gödel, verdadera y no demostrable bajo consistencia, y su independencia bajo ω-consistencia o corrección Σ1. Después construiremos la sentencia de Rosser y probaremos sus dos lados de independencia con consistencia simple. El paso decisivo será distinguir entre infinitas instancias numerales y una prueba para un segmento numeral finito. Finalmente examinaremos qué ocurre al añadir axiomas independientes, y por qué la teoría externa de todas las verdades no puede tener la presentación efectiva considerada.</p>
+<p>El capítulo mantiene PA como base aprobada y RM como sistema operacional externo. Las pruebas son autorales y humanas, apoyadas en las interfaces canónicas de CH17–20. Como control primario limitado se consultaron la sección4.6 de las notas de Jeremy Avigad, <em>Computability and Incompleteness</em> (versión9enero2007), y el extracto/metadata del artículo de Rosser (1936). El primero trabaja sobre Q y otro formato de prueba; no se importa esa base ni se transfiere su numeración. Nuestros dos argumentos Rosser se desarrollan completos con certificados S/G, guardas y la convención e≤d.</p>
+</section>
+<section id="apertura-de-la-parte-v-y-alcance-del-teorema" class="level2">
+<h2 class="anchored" data-anchor-id="apertura-de-la-parte-v-y-alcance-del-teorema">21.1. Apertura de la Parte V y alcance del teorema</h2>
+<section id="tlog-cnv-00032" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00032">Convención 21.1.1 — Apertura de la Parte V y alcance del teorema</h3>
+<p>Seguimos en <span class="math inline">\(M_{ext}=\mathrm{ZF}\)</span> clásica sin AC/BPI. La estructura estándar <span class="math inline">\(\mathbb N_A\)</span> y RM son externos; PA es la teoría aritmética objeto de CH19, distinta de <span class="math inline">\(\mathrm{ZF}_{obj}\)</span>. La Parte V comienza con un límite preciso: una extensión <strong>consistente</strong> de PA que tenga una presentación semidecidible de sus axiomas no puede decidir por prueba todas las sentencias aritméticas.</p>
+<p>Las hipótesis de consistencia de teorías T serán externas y explícitas. La corrección estándar de PA fue demostrada en CH19; no se presume corrección de toda extensión T. Ningún resultado de este capítulo se aplica a ZF objeto sin una interpretación aritmética y una presentación efectiva acreditadas. Tampoco se usa equivalencia RM–Turing.</p>
+<p>Por «sentencia indecidida en T» entenderemos que T no demuestra ni la sentencia ni su negación. Esta propiedad de una sentencia concreta se distingue de la indecidibilidad algorítmica del conjunto de teoremas; las reducciones correspondientes se reservan a CH23. El segundo teorema de incompletitud, la fórmula interna de consistencia y las condiciones internas de derivabilidad pertenecen a CH22.</p>
+</section>
+</section>
+<section id="presentación-efectiva-de-una-extensión-aritmética" class="level2">
+<h2 class="anchored" data-anchor-id="presentación-efectiva-de-una-extensión-aritmética">21.2. Presentación efectiva de una extensión aritmética</h2>
+<section id="tlog-def-00149" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00149">Definición 21.2.1 — Presentación efectiva de una extensión aritmética</h3>
+<p>Una presentación admisible consta de un programa RM fijo E de un argumento y una clase Γ de <strong>sentencias</strong> de <span class="math inline">\(L_A\)</span> tal que E para en el código c exactamente cuando c codifica un miembro de Γ. La salida de una parada es irrelevante. Se puede envolver cualquier semidecidor con la guarda decidible «c es código de sentencia aritmética». La teoría presentada es <span class="math display">\[
+T=\mathsf H_{L_A}^{=}+A_{PA}+\operatorname{Pref}_{\forall}(\Gamma),
+\]</span> desde ninguna premisa adicional, donde Pref incluye todos los prefijos universales finitos, incluso el vacío. La única regla primitiva es MP. Como Γ contiene sentencias, cada prefijo de C∈Γ se deriva de C por Q4 y MP: las variables del prefijo no son libres. Por tanto esta clausura no cambia la teoría deductiva PA+Γ.</p>
+<p>El conjunto adicional <span class="math inline">\(A_T=A_{PA}\cup\operatorname{Pref}_{\forall}(\Gamma)\)</span> es semidecidible: tras validar la fórmula se acepta si es axioma PA; además se ejecutan intercaladamente E sobre las finitísimas matrices obtenidas retirando prefijos universales, reteniendo sólo las que son sentencias. Alguna parada acredita un miembro de Γ y el prefijo correspondiente. Si ninguna para, el procedimiento continúa. Su programa fijo se puede generar efectivamente a partir de E. La decidibilidad de Γ es un caso especial, no una exigencia adicional.</p>
+<p>No se admite como sustituto una mera numeración abstracta de los axiomas. La consistencia no forma parte de la guarda que valida códigos de programas: se declarará como hipótesis matemática separada.</p>
+</section>
+</section>
+<section id="verificador-total-de-pruebas-certificadas-de-t" class="level2">
+<h2 class="anchored" data-anchor-id="verificador-total-de-pruebas-certificadas-de-t">21.3. Verificador total de pruebas certificadas de T</h2>
+<section id="tlog-lem-00086" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00086">Lema 21.3.1 — Verificador total de pruebas certificadas de T</h3>
+<p><strong>Lema.</strong> Para toda presentación admisible hay una relación externa decidible-RM <span class="math inline">\(C_T(d,c)\)</span> que reconoce exactamente las pruebas certificadas no vacías de T con conclusión de código c.&nbsp;Se cumple <span class="math display">\[
+T\vdash A\iff\exists d\ C_T(d,G(A)).\tag{C}
+\]</span> No se requiere consistencia de T para construir el verificador ni para (C).</p>
+<p><strong>Prueba.</strong> Aplicamos §18.61 al semidecidor fijo de <span class="math inline">\(A_T\)</span> construido en §21.2. d es el código S de una lista de líneas de los cuatro tipos0/1/2/3. No hay contexto: el tipo0 de premisa no puede justificar ninguna línea. El tipo1 lleva certificado de axioma lógico; el tipo2 lleva dos índices precedentes para MP; el tipo3 acredita un axioma adicional con una traza finita de parada del semidecidor. Se verifican todos los tipos, longitudes y referencias antes de usarlos, y la última fórmula debe tener código c.&nbsp;Una traza que termina con salida0 también es un certificado de parada válido.</p>
+<p>El recorrido es finito, y cada test, incluido el de traza, es total. Una aceptación se borra en una derivación T original. Recíprocamente una derivación original tiene finitísimas apariciones de axiomas adicionales; para cada una el semidecidor para, y su primera traza de parada suministra el certificado. Se recorren esas apariciones en orden y se elige su mínimo tiempo de parada, sin elección infinita. Así se obtiene una lista certificada y su código d.&nbsp;Este proceso de certificación termina sobre una derivación T válida, aunque no se prometa terminación sobre una derivación arbitraria con una pretendida línea adicional inválida.</p>
+<p>La decisión de pruebas certificadas no implica decisión de secuencias originales desnudas bajo la mera semidecidibilidad de axiomas. Se conserva la numeración S/G; no se mide longitud textual al comparar números d.&nbsp;<span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="predicados-de-prueba-positiva-negativa-y-demostrabilidad" class="level2">
+<h2 class="anchored" data-anchor-id="predicados-de-prueba-positiva-negativa-y-demostrabilidad">21.4. Predicados de prueba positiva, negativa y demostrabilidad</h2>
+<section id="tlog-def-00150" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00150">Definición 21.4.1 — Predicados de prueba positiva, negativa y demostrabilidad</h3>
+<p>Además de <span class="math inline">\(C_T(d,c)\)</span> fijamos <span class="math inline">\(C_T^-(d,c)\)</span>: se rechaza si c no codifica una fórmula aritmética A; en otro caso se calcula G(¬A) y se prueba <span class="math inline">\(C_T(d,G(¬A))\)</span>. Es un decidor total compuesto; no se agrega un símbolo objeto de negación de códigos.</p>
+<p>Representamos los decidores característicos0/1 de ambas relaciones mediante sus programas concretos y las fórmulas de CH19. Ponemos <span class="math display">\[
+P_T(d,c)=\Phi_{\chi_C}(d,c,\bar1),\qquad
+N_T(d,c)=\Phi_{\chi_{C^-}}(d,c,\bar1),\qquad
+V_T(c)=\exists d\ P_T(d,c).
+\]</span> P y N son fórmulas Σ1 con sólo sus dos argumentos libres; V se dispone en forma Σ1 reuniendo los existenciales de P. Los auxiliares se higienizan por §20.3. Los tres nombres son abreviaturas de fórmulas, no predicados primitivos. P representa una prueba de la fórmula nombrada; N representa una prueba de su <strong>negación literal</strong>.</p>
+<p>Para T=PA se puede usar también el verificador de pruebas originales y el <span class="math inline">\(Prov_{PA}\)</span> ya fijado en CH19. La presentación certificada actual puede producir otro representante. No se identifica uniformemente con el anterior dentro de PA sin una prueba adicional.</p>
+</section>
+</section>
+<section id="exactitud-numeral-y-estándar-de-los-predicados-de-prueba" class="level2">
+<h2 class="anchored" data-anchor-id="exactitud-numeral-y-estándar-de-los-predicados-de-prueba">21.5. Exactitud numeral y estándar de los predicados de prueba</h2>
+<section id="tlog-mth-00117" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00117">Metateorema 21.5.1 — Exactitud numeral y estándar de los predicados de prueba</h3>
+<p><strong>Metateorema.</strong> P y N representan bilateralmente sus relaciones externas en PA y son exactos en <span class="math inline">\(\mathbb N_A\)</span>. V define allí exactamente los códigos de teoremas T. Si <span class="math inline">\(T\vdash A\)</span>, entonces <span class="math inline">\(\mathrm{PA}\vdash V_T(\ulcorner A\urcorner)\)</span>; para cada prueba concreta se puede obtener una prueba PA de esa instancia. Estas afirmaciones no suponen corrección ni consistencia de T.</p>
+<p><strong>Prueba.</strong> Los dos decidores son totales, por lo que §19.24 prueba, para cada par estándar(d,c), la instancia correspondiente o su negación según el resultado del verificador. Corrección PA da la exactitud estándar. Por (C), una prueba T de A tiene un certificado concreto d, y PA prueba <span class="math inline">\(P_T(\bar d,\ulcorner A\urcorner)\)</span>; introducción existencial da V de su código. Recíprocamente, la satisfacción estándar de V da un natural d con certificado real, luego una prueba T por borrado.</p>
+<p>El conjunto de teoremas T es semidecidible por enumeración de certificados, así §19.25 proporciona también representación débil de ese conjunto <strong>en PA</strong>. No se afirma representación débil en T: una extensión incorrecta puede demostrar V de un código sin tener una prueba real de esa fórmula.</p>
+<p>La obtención efectiva de la prueba PA positiva usa el programa de representación: su ejecución finita concreta, la tabla β externa y pruebas de la matriz Δ0, seguidas de introducción existencial y funcionalidad. También puede buscarse esa prueba con el verificador PA, pues su existencia quedó probada. El enunciado metateórico «T demuestra A ⇒ PA demuestra V del código de A» es numeral por numeral; no se ha demostrado una condición interna uniforme sobre todas las pruebas/códigos de T. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="de-un-número-finito-de-instancias-a-una-cota-numeral" class="level2">
+<h2 class="anchored" data-anchor-id="de-un-número-finito-de-instancias-a-una-cota-numeral">21.6. De un número finito de instancias a una cota numeral</h2>
+<section id="tlog-lem-00087" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00087">Lema 21.6.1 — De un número finito de instancias a una cota numeral</h3>
+<p><strong>Lema.</strong> Para una fórmula F(v) con sólo v libre y un natural externo n, si PA prueba F(k) para cada k&lt;n, entonces PA prueba <span class="math inline">\(\forall v(v&lt;\bar n\to F(v))\)</span>. Para k≤n se obtiene <span class="math inline">\(\forall v(v\le\bar n\to F(v))\)</span>. Si PA prueba las negaciones de esas instancias, se obtiene el mismo resultado con ¬F. No se exige que F sea Δ0.</p>
+<p><strong>Prueba.</strong> El lema de segmentos de CH19 prueba <span class="math inline">\(v&lt;\bar n\leftrightarrow(v=\bar0\lor\cdots\lor v=\overline{n-1})\)</span>. Para cada k, igualdad y F(k) dan <span class="math inline">\(v=\bar k\to F(v)\)</span>. La eliminación proposicional de la disyunción finita da la implicación requerida, y se generaliza v. Con n=0 el antecedente es refutable y la implicación se obtiene por lógica. La versión ≤ usa v&lt;Sn, y la versión negativa usa ¬F como fórmula. Los términos numerales son cerrados y los nombres de los esquemas se eligen frescos.</p>
+<p>El procedimiento usa <strong>una lista finita</strong> de pruebas ya disponibles y un segmento numeral fijo. No convierte una familia infinita de pruebas F(n) en una prueba <span class="math inline">\(\forall vF(v)\)</span>, ni exige totalidad interna del programa que decide las instancias de F. Esta distinción será central en Rosser. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="completitud-de-una-teoría-e-independencia-de-una-sentencia" class="level2">
+<h2 class="anchored" data-anchor-id="completitud-de-una-teoría-e-independencia-de-una-sentencia">21.7. Completitud de una teoría e independencia de una sentencia</h2>
+<section id="tlog-def-00151" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00151">Definición 21.7.1 — Completitud de una teoría e independencia de una sentencia</h3>
+<p>Una teoría T es <strong>completa para sentencias</strong> si para toda sentencia aritmética A se cumple <span class="math inline">\(T\vdash A\)</span> o <span class="math inline">\(T\vdash\neg A\)</span>. Una sentencia A es <strong>independiente (o indecidida) en T</strong> si no se cumple ninguna de las dos pruebas. Esta completitud se distingue de la completitud del cálculo de primer orden respecto de consecuencia semántica: un cálculo completo puede formalizar una teoría incompleta.</p>
+<p>Se mantienen las definiciones externas de consistencia, corrección estándar, corrección Σ1 y ω-consistencia de §20.26. Para <span class="math inline">\(0=S0\)</span> se escribe ⊥ sólo como abreviatura de una contradicción objeto fija. «No existe una prueba» es una afirmación externa; no se identifica con «la negación es un teorema».</p>
+<p>El enunciado de incompletitud tendrá la forma de una implicación externa: si la presentación de T es admisible y T es consistente, existe una sentencia independiente. El algoritmo constructor no recibe una prueba interna de consistencia ni decide si la hipótesis se cumple.</p>
+</section>
+</section>
+<section id="implicaciones-entre-las-hipótesis-de-corrección" class="level2">
+<h2 class="anchored" data-anchor-id="implicaciones-entre-las-hipótesis-de-corrección">21.8. Implicaciones entre las hipótesis de corrección</h2>
+<section id="tlog-pro-00134" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00134">Proposición 21.8.1 — Implicaciones entre las hipótesis de corrección</h3>
+<p><strong>Proposición.</strong> La corrección estándar implica corrección Σ1 y ω-consistencia; ambas implican consistencia en una extensión de PA. La ω-consistencia y la corrección Σ1 se usarán como dos hipótesis suficientes separadas; aquí no se establece una equivalencia entre ellas.</p>
+<p><strong>Prueba.</strong> La restricción a sentencias Σ1 es inmediata. Si una teoría estándar correcta prueba <span class="math inline">\(\exists xF(x)\)</span>, hay un natural externo n que satisface F; no puede probar también ¬F(n), por corrección. Esto excluye el patrón de ω-inconsistencia. Si una teoría es Σ1-correcta no puede probar la sentencia Δ0 falsa <span class="math inline">\(0=S0\)</span>; Δ0 es Σ1 con prefijo vacío. Si fuera inconsistente, por explosión probaría <span class="math inline">\(\exists x(x=x)\)</span> y cada ¬(n=n), contra ω-consistencia. La corrección estándar también excluye directamente toda contradicción falsa.</p>
+<p>No se asigna ninguna de las hipótesis fuertes a una extensión T por el solo hecho de ser consistente. §21.16 dará una extensión efectiva consistente que es incorrecta y ω-inconsistente. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="una-sentencia-de-gödel-para-cada-presentación" class="level2">
+<h2 class="anchored" data-anchor-id="una-sentencia-de-gödel-para-cada-presentación">21.9. Una sentencia de Gödel para cada presentación</h2>
+<section id="tlog-def-00152" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00152">Definición 21.9.1 — Una sentencia de Gödel para cada presentación</h3>
+<p>Aplicamos el compilador diagonal al objetivo <span class="math inline">\(A(z)=\neg V_T(z)\)</span>. Fijamos su salida <span class="math inline">\(G_T\)</span> y una prueba PA de <span class="math display">\[
+\mathrm{PA}\vdash G_T\leftrightarrow\neg V_T(\ulcorner G_T\urcorner).\tag{G}
+\]</span> G_T es una sentencia finita de <span class="math inline">\(L_A\)</span>; g=G(G_T) es su código literal y <span class="math inline">\(\ulcorner G_T\urcorner=\bar g\)</span> es un término numeral. La prueba de (G) persiste en T. Esta elección depende de la presentación, del representante P y de la construcción diagonal fijada.</p>
+<p>Se admiten otras sentencias con una prueba PA del mismo tipo de bicondicional respecto del representante correspondiente. En particular la <span class="math inline">\(\mathcal G_{PA}\)</span> canónica de CH20 usa el <span class="math inline">\(Prov_{PA}\)</span> original y se conservará sin cambiar su árbol o su ID. No se afirma aquí que la salida existencial genérica del compilador sea literalmente una fórmula Π1.</p>
+</section>
+</section>
+<section id="no-demostrabilidad-y-verdad-de-la-sentencia-de-gödel" class="level2">
+<h2 class="anchored" data-anchor-id="no-demostrabilidad-y-verdad-de-la-sentencia-de-gödel">21.10. No demostrabilidad y verdad de la sentencia de Gödel</h2>
+<section id="tlog-mth-00118" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00118">Metateorema 21.10.1 — No demostrabilidad y verdad de la sentencia de Gödel</h3>
+<p><strong>Metateorema.</strong> Si T tiene presentación admisible y es consistente, <span class="math inline">\(T\nvdash G_T\)</span> y <span class="math inline">\(\mathbb N_A\models G_T\)</span>. Esto no exige corrección estándar de T ni ω-consistencia.</p>
+<p><strong>No demostrabilidad.</strong> Supongamos una prueba T de G_T. Su certificado concreto y §21.5 dan <span class="math inline">\(\mathrm{PA}\vdash V_T(\bar g)\)</span>, luego <span class="math inline">\(T\vdash V_T(\bar g)\)</span>. Por (G), la prueba supuesta de G_T da también <span class="math inline">\(T\vdash\neg V_T(\bar g)\)</span>. El par contradictorio viola consistencia. Por tanto no existe tal prueba.</p>
+<p><strong>Verdad externa.</strong> La exactitud estándar de V identifica <span class="math inline">\(\mathbb N_A\models V_T(\bar g)\)</span> con una prueba real T de G_T. Acabamos de excluirla, así V(g) es falsa en el modelo estándar. La prueba PA de (G) es verdadera por corrección PA, y por tanto G_T es verdadera. El paso no aplica corrección a T: usa corrección de una derivación <strong>PA</strong>, junto con la ausencia externa de pruebas T.</p>
+<p>El argumento prueba sólo el primer lado de independencia. La consistencia sola no proporciona aquí una refutación de una supuesta prueba T de ¬G_T. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="forma-de-gödel-bajo-ω-consistencia" class="level2">
+<h2 class="anchored" data-anchor-id="forma-de-gödel-bajo-ω-consistencia">21.11. Forma de Gödel bajo ω-consistencia</h2>
+<section id="tlog-mth-00119" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00119">Metateorema 21.11.1 — Forma de Gödel bajo ω-consistencia</h3>
+<p><strong>Metateorema.</strong> Si T es ω-consistente y tiene presentación admisible, G_T es independiente en T.</p>
+<p><strong>Prueba.</strong> ω-consistencia implica consistencia por §21.8; el sentido positivo queda excluido por §21.10. Como no hay prueba T de G_T, para cada natural d la relación externa <span class="math inline">\(C_T(d,g)\)</span> es falsa. La representación bilateral da <span class="math inline">\(\mathrm{PA}\vdash\neg P_T(\bar d,\bar g)\)</span>, luego T prueba esas negaciones para <strong>todos los numerales externos</strong>, una por una.</p>
+<p>Si T probara ¬G_T, (G) y lógica clásica darían <span class="math inline">\(T\vdash V_T(\bar g)=\exists dP_T(d,\bar g)\)</span>. La fórmula F(d)=P_T(d,g) tiene sólo d libre; su parámetro g ha sido sustituido por un término cerrado. T probaría su existencia y negaría cada instancia numeral, precisamente el patrón prohibido por ω-consistencia. Se excluye la prueba negativa y queda independencia. No se requiere F acotada ni se afirma que exista una prueba T de su negación universal. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="forma-de-gödel-bajo-corrección-σ1" class="level2">
+<h2 class="anchored" data-anchor-id="forma-de-gödel-bajo-corrección-σ1">21.12. Forma de Gödel bajo corrección Σ1</h2>
+<section id="tlog-mth-00120" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00120">Metateorema 21.12.1 — Forma de Gödel bajo corrección Σ1</h3>
+<p><strong>Metateorema.</strong> Si T es Σ1-correcta y tiene presentación admisible, G_T es independiente en T.</p>
+<p><strong>Prueba.</strong> Σ1-corrección implica consistencia. Por §21.10, G_T no es teorema y V_T(g) es falsa en el modelo estándar. Si T probara ¬G_T, (G) produciría una prueba T de V_T(g), que es una sentencia Σ1 falsa, contra la hipótesis. Se excluyen ambos lados.</p>
+<p>Es suficiente la corrección Σ1, porque la sentencia falsa utilizada es V, aunque la fórmula literal G_T obtenida por el compilador no haya sido clasificada como Π1. La corrección de todas las sentencias de T es una hipótesis más fuerte que la necesaria para este paso. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="independencia-de-la-sentencia-pa-ya-construida" class="level2">
+<h2 class="anchored" data-anchor-id="independencia-de-la-sentencia-pa-ya-construida">21.13. Independencia de la sentencia PA ya construida</h2>
+<section id="tlog-cor-00034" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00034">Corolario 21.13.1 — Independencia de la sentencia PA ya construida</h3>
+<p><strong>Corolario.</strong> La sentencia <span class="math inline">\(\mathcal G_{PA}\)</span> de CH20 es verdadera en <span class="math inline">\(\mathbb N_A\)</span> y PA no demuestra ni <span class="math inline">\(\mathcal G_{PA}\)</span> ni su negación. PA es, por tanto, incompleta para sentencias.</p>
+<p><strong>Prueba.</strong> Para su representante <strong>original</strong> <span class="math inline">\(Prov_{PA}\)</span>, §19.31 proporciona exactamente la definición estándar y la prueba de demostrabilidad de cada teorema concreto que usa §21.10. Corrección PA de §19.6 proporciona consistencia y corrección Σ1. El bicondicional original de §20.23 permanece intacto, así se aplican los dos argumentos anteriores a esa misma sentencia. No se cambia por el representante certificado actual ni se identifica su código con el de una nueva salida del compilador.</p>
+<p>La verdad y consistencia de PA aquí se derivan externamente en ZF, donde se construyó el modelo estándar. No se está dando una prueba PA de su propia consistencia ni afirmando consistencia de ZF objeto. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="clase-π1-y-normalización-del-auxiliar-universal" class="level2">
+<h2 class="anchored" data-anchor-id="clase-π1-y-normalización-del-auxiliar-universal">21.14. Clase Π1 y normalización del auxiliar universal</h2>
+<section id="tlog-lem-00088" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00088">Lema 21.14.1 — Clase Π1 y normalización del auxiliar universal</h3>
+<p><strong>Definición y lema.</strong> Llamamos Π1 a una fórmula de la forma <span class="math inline">\(\forall u_0\cdots\forall u_{k-1}\delta\)</span> con δ∈Δ0 y k finito, incluyendo0. Si <span class="math inline">\(\Theta(x,y)=\exists\bar a\,\theta(x,y,\bar a)\)</span> y <span class="math inline">\(V(y)=\exists\bar b\,\pi(y,\bar b)\)</span> son Σ1 con matrices Δ0, con todos los auxiliares ligados higienizados y distintos, entonces PA prueba <span class="math display">\[
+\forall y(\Theta(x,y)\to\neg V(y))\leftrightarrow
+\forall y\forall\bar a\forall\bar b\ \neg(\theta(x,y,\bar a)\land\pi(y,\bar b)).\tag{U}
+\]</span> El lado derecho es literalmente Π1 antes de expandir las abreviaturas acotadas de sus matrices.</p>
+<p><strong>Prueba.</strong> <span class="math inline">\(E\to\neg F\)</span> equivale proposicionalmente a ¬(E∧F). Cuando las variables de los prefijos existenciales no aparecen libres en la otra matriz, <span class="math inline">\((\exists\bar a\theta)\land(\exists\bar b\pi)\)</span> equivale a <span class="math inline">\(\exists\bar a\exists\bar b(\theta\land\pi)\)</span>, mediante introducción/eliminación existencial con testigos frescos. La negación de ese prefijo existencial es el prefijo universal de la matriz negada, por Q5 y lógica clásica. Se conserva el universal y externo, que está fuera de ambos prefijos, y se generaliza x. Estas equivalencias son expansiones finitas HFOL=, no una normalización semántica sin prueba. Δ0 es cerrada bajo conjunción y negación; cotas y sus variables propias se preservan por la higiene.</p>
+<p>La sustitución posterior de un numeral cerrado por x conserva esta gramática Π1 y la condición de las cotas: x estaba fuera del conjunto de variables ligadas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="elección-de-una-sentencia-de-gödel-literalmente-π1" class="level2">
+<h2 class="anchored" data-anchor-id="elección-de-una-sentencia-de-gödel-literalmente-π1">21.15. Elección de una sentencia de Gödel literalmente Π1</h2>
+<section id="tlog-mth-00121" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00121">Metateorema 21.15.1 — Elección de una sentencia de Gödel literalmente Π1</h3>
+<p><strong>Metateorema.</strong> Para cada presentación admisible puede construirse una sentencia <span class="math inline">\(G_T^{\Pi}\)</span> literalmente Π1 con una prueba PA de <span class="math inline">\(G_T^{\Pi}\leftrightarrow\neg V_T(\ulcorner G_T^{\Pi}\urcorner)\)</span>. Bajo consistencia es verdadera y no demostrable en T; bajo ω-consistencia o corrección Σ1 es independiente.</p>
+<p><strong>Construcción y prueba.</strong> Elegimos x=xi e y frescos. Tomamos el representante Σ1 <span class="math inline">\(\Theta_i(x,y)\)</span> de <span class="math inline">\(D_i\)</span> y V_T(y), higienizados como en §21.14. Construimos como árbol auxiliar B(x) <strong>el lado derecho</strong> de (U), y sólo entonces calculamos p=G(B) y <span class="math inline">\(G_T^{\Pi}=B[\bar p/x]\)</span>. El árbol final es Π1 por el lema anterior. Por definición literal, <span class="math inline">\(D_i(p)=G(G_T^{\Pi})=d\)</span>.</p>
+<p>La equivalencia (U), particularizada en p, identifica la sentencia final con <span class="math inline">\(\forall y(\Theta_i(\bar p,y)\to\neg V_T(y))\)</span>. La representación numeral <span class="math inline">\(R_i(p)\)</span> y la forma universal del lema de testigo dan equivalencia PA con ¬V_T(d). Se obtiene el bicondicional de Gödel, y los argumentos de §§21.10–12 se aplican sin cambio. Todas las normalizaciones se hicieron <strong>antes</strong> de fijar el código auxiliar; no se reemplaza después G_T por una fórmula equivalente conservando indebidamente su código.</p>
+<p>La elección <span class="math inline">\(G_T^{\Pi}\)</span> puede diferir de G_T y de la sentencia PA de CH20. No se reclama que la sentencia de Rosser de §21.17 tenga esta misma clase literal: su predicado de prueba certificado es Σ1, y se conservará la complejidad que resulta de su construcción. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="una-extensión-consistente-que-demuestra-una-falsedad-σ1" class="level2">
+<h2 class="anchored" data-anchor-id="una-extensión-consistente-que-demuestra-una-falsedad-σ1">21.16. Una extensión consistente que demuestra una falsedad Σ1</h2>
+<section id="tlog-pro-00135" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00135">Proposición 21.16.1 — Una extensión consistente que demuestra una falsedad Σ1</h3>
+<p><strong>Proposición.</strong> La teoría <span class="math inline">\(S=\mathrm{PA}+\neg\mathcal G_{PA}\)</span> es una extensión efectiva consistente de PA, pero es incorrecta en la estructura estándar, no es Σ1-correcta y es ω-inconsistente. No se afirma que su sentencia de Gödel propia sea <span class="math inline">\(\mathcal G_{PA}\)</span>.</p>
+<p><strong>Consistencia.</strong> Si una derivación S de ⊥ existiera, las finitísimas apariciones de prefijos universales del axioma cerrado ¬G se reemplazarían por sus derivaciones desde ¬G usando Q4. El teorema de deducción sobre PA daría <span class="math inline">\(\mathrm{PA}\vdash\neg\mathcal G_{PA}\to\bot\)</span>. PA refuta ⊥, por lo que lógica clásica daría <span class="math inline">\(\mathrm{PA}\vdash\mathcal G_{PA}\)</span>, contra §21.13. Por tanto S es consistente.</p>
+<p><strong>Falsedad Σ1.</strong> S prueba ¬G por su axioma, y el bicondicional PA da <span class="math inline">\(S\vdash Prov_{PA}(\ulcorner G\urcorner)\)</span>. Esta sentencia Σ1 es falsa estándar, porque PA no prueba G. Para cada d estándar, el verificador original PA rechaza una pretendida prueba de G, de modo que PA y S prueban <span class="math inline">\(\neg Prf_{PA}(\bar d,\ulcorner G\urcorner)\)</span>. S prueba la existencia de d y niega todas las instancias numerales: es ω-inconsistente. Además su axioma ¬G es falso estándar. La presentación de S añade una sentencia concreta y sus prefijos a PA; es decidible por comparación y retirada finita de prefijos.</p>
+<p>El ejemplo muestra por qué se declaran hipótesis diferentes. No es un contraejemplo a Rosser: Rosser construirá otra sentencia para <strong>S</strong>, independiente bajo su consistencia simple. Tampoco una prueba en S de «PA demuestra G» es una prueba real PA de G. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="la-sentencia-de-rosser-y-el-orden-de-certificados" class="level2">
+<h2 class="anchored" data-anchor-id="la-sentencia-de-rosser-y-el-orden-de-certificados">21.17. La sentencia de Rosser y el orden de certificados</h2>
+<section id="tlog-def-00153" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00153">Definición 21.17.1 — La sentencia de Rosser y el orden de certificados</h3>
+<p>Para la misma presentación y los predicados P,N fijamos el objetivo <span class="math display">\[
+A_T(z)=\forall d\bigl(P_T(d,z)\to\exists e(e\le d\land N_T(e,z))\bigr).
+\]</span> Construimos su sentencia fija R_T, con r=G(R_T), y una prueba PA de <span class="math display">\[
+R_T\leftrightarrow\forall d\bigl(P_T(d,\bar r)\to\exists e(e\le d\land N_T(e,\bar r))\bigr).\tag{R}
+\]</span> Los ligadores de los representantes se higienizan antes de insertar las variables d,e,z. El símbolo ≤ es la abreviatura aritmética de CH19. El orden compara <strong>naturales que codifican pruebas certificadas</strong>, no longitudes de las derivaciones, complejidad de algoritmos o tiempos de ejecución.</p>
+<p>Usamos e≤d de manera fija. En la dirección positiva habrá que excluir pruebas negativas hasta p <strong>inclusive</strong>; en la dirección negativa se excluirán pruebas positivas estrictamente menores que n, y el certificado negativo n servirá para todo d≥n.&nbsp;No se cambia ≤ por &lt; a mitad de la prueba.</p>
+<p>La fórmula objetivo tiene sólo z libre. El lema diagonal entrega una sentencia aritmética y su bicondicional; no se afirma que R_T sea literalmente Π1 ni que P/N sean Δ0. La representación bilateral en numerales y los cortes finitos serán suficientes.</p>
+</section>
+</section>
+<section id="primera-mitad-de-rosser-no-hay-prueba-positiva" class="level2">
+<h2 class="anchored" data-anchor-id="primera-mitad-de-rosser-no-hay-prueba-positiva">21.18. Primera mitad de Rosser: no hay prueba positiva</h2>
+<section id="tlog-lem-00089" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00089">Lema 21.18.1 — Primera mitad de Rosser: no hay prueba positiva</h3>
+<p><strong>Lema.</strong> Si T es consistente y tiene presentación admisible, <span class="math inline">\(T\nvdash R_T\)</span>.</p>
+<p><strong>Prueba.</strong> Supongamos una prueba T de R_T y tomemos un certificado externo p.&nbsp;Consistencia excluye toda prueba T de ¬R_T, por tanto cada <span class="math inline">\(C_T^-(e,r)\)</span> es falso. Para los finitísimos e≤p, representación bilateral da pruebas PA de <span class="math inline">\(\neg N_T(\bar e,\bar r)\)</span>; el lema de corte da <span class="math display">\[
+\mathrm{PA}\vdash\forall e(e\le\bar p\to\neg N_T(e,\bar r)).\tag{1}
+\]</span> El certificado p da <span class="math inline">\(\mathrm{PA}\vdash P_T(\bar p,\bar r)\)</span>. En T, la prueba supuesta de R_T y (R), particularizada en d=p, producen <span class="math inline">\(T\vdash\exists e(e\le\bar p\land N_T(e,\bar r))\)</span>. Pero (1), que también es teorema T, niega esa existencia por lógica de cuantificadores. T tiene una contradicción.</p>
+<p>No se exige el menor certificado p, sólo uno concreto. No se ha generalizado sobre todos los e a partir de sus instancias: se ha construido una prueba para el segmento numeral <strong>finito</strong> e≤p.&nbsp;La prueba vale para P,N de complejidad Σ1 arbitraria con las propiedades numerales indicadas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="segunda-mitad-de-rosser-una-prueba-negativa-fuerza-una-positiva" class="level2">
+<h2 class="anchored" data-anchor-id="segunda-mitad-de-rosser-una-prueba-negativa-fuerza-una-positiva">21.19. Segunda mitad de Rosser: una prueba negativa fuerza una positiva</h2>
+<section id="tlog-lem-00090" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00090">Lema 21.19.1 — Segunda mitad de Rosser: una prueba negativa fuerza una positiva</h3>
+<p><strong>Lema.</strong> Bajo las mismas hipótesis, una supuesta prueba T de ¬R_T permitiría construir una prueba <strong>PA</strong> de R_T; por tanto tal prueba negativa no existe.</p>
+<p><strong>Prueba.</strong> Tomemos su certificado externo n.&nbsp;El lema anterior excluye todas las pruebas T de R_T, así para cada d&lt;n PA prueba <span class="math inline">\(\neg P_T(\bar d,\bar r)\)</span>. El corte finito y el certificado negativo n dan <span class="math display">\[
+\mathrm{PA}\vdash\forall d(d&lt;\bar n\to\neg P_T(d,\bar r)),\qquad
+\mathrm{PA}\vdash N_T(\bar n,\bar r).\tag{2}
+\]</span> Ahora trabajamos <strong>dentro de PA</strong> con d arbitrario. PA prueba <span class="math inline">\(d&lt;\bar n\lor\bar n\le d\)</span> por orden lineal. En la primera rama, (2) refuta P_T(d,r), así la implicación de (R) es verdadera por lógica. En la segunda, <span class="math inline">\(N_T(\bar n,\bar r)\)</span> y n≤d proporcionan el testigo e=n de <span class="math inline">\(\exists e(e\le d\land N_T(e,\bar r))\)</span>, independientemente de P. En ambas ramas se prueba <span class="math display">\[
+P_T(d,\bar r)\to\exists e(e\le d\land N_T(e,\bar r)).
+\]</span> Se generaliza d y se usa la dirección hacia R_T del bicondicional PA. Resulta <span class="math inline">\(\mathrm{PA}\vdash R_T\)</span>, luego T prueba R_T además de la negación supuesta, contra consistencia. Con n=0 el segmento d&lt;n es vacío y basta la segunda rama, pues PA prueba0≤d.&nbsp;No hay un test sobre todos los certificados posibles ni una apelación a corrección T. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="primer-teorema-de-incompletitud-en-forma-de-gödelrosser" class="level2">
+<h2 class="anchored" data-anchor-id="primer-teorema-de-incompletitud-en-forma-de-gödelrosser">21.20. Primer teorema de incompletitud en forma de Gödel–Rosser</h2>
+<section id="tlog-mth-00122" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00122">Metateorema 21.20.1 — Primer teorema de incompletitud en forma de Gödel–Rosser</h3>
+<p><strong>Metateorema.</strong> Toda extensión T de PA en <span class="math inline">\(L_A\)</span> con una presentación semidecidible de axiomas como §21.2, si es consistente, tiene una sentencia R_T tal que <span class="math display">\[
+T\nvdash R_T,\qquad T\nvdash\neg R_T,
+\qquad\mathbb N_A\models R_T.
+\]</span> En particular T no es completa para sentencias. No se requieren ω-consistencia, corrección Σ1 o corrección estándar de T.</p>
+<p><strong>Prueba.</strong> Los dos lemas anteriores excluyen ambas pruebas usando sólo consistencia y la representación bilateral PA de los verificadores. Como no existe prueba T de R_T, P_T(d,r) es falso en la estructura estándar para todo d.&nbsp;El lado derecho de (R) es entonces verdadero allí. Su bicondicional tiene prueba PA, de modo que corrección PA da la verdad de R_T. Finalmente una sentencia sin ninguna de las dos pruebas contradice la definición de completitud.</p>
+<p>Esta verdad se demuestra externamente. T puede ser incorrecta en otras sentencias sin afectar el argumento. El predicado certificado permite la misma conclusión cuando los axiomas originales sólo son semidecidibles; no se ha fingido un decidor de esas pertenencias negativas. No se generaliza el teorema a teorías arbitrarias sin presentación efectiva ni a ZF objeto sin interpretación declarada. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="aplicación-a-pa-y-a-sus-extensiones-efectivas-consistentes" class="level2">
+<h2 class="anchored" data-anchor-id="aplicación-a-pa-y-a-sus-extensiones-efectivas-consistentes">21.21. Aplicación a PA y a sus extensiones efectivas consistentes</h2>
+<section id="tlog-cor-00035" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00035">Corolario 21.21.1 — Aplicación a PA y a sus extensiones efectivas consistentes</h3>
+<p><strong>Corolario.</strong> PA tiene una sentencia de Rosser verdadera e independiente, y ninguna extensión consistente de PA obtenida por un conjunto decidible o semidecidible de axiomas cerrados puede ser completa para sentencias.</p>
+<p><strong>Prueba.</strong> PA es efectiva y consistente por CH19; se usa Γ vacío o su presentación decidible propia. En una extensión con Γ decidible, su decidor se transforma en un semidecidor que para sólo en los éxitos, por CH17, y se aplica el teorema. Para Γ semidecidible la hipótesis ya tiene la forma requerida. También aplica al S consistente de §21.16, aunque S demuestre una falsedad Σ1.</p>
+<p>La base aprobada en el tratado es PA. La extensión de este enunciado a Robinson Q requeriría verificar que las instancias de representación y cortes finitos usados se derivan en Q; no se reclama a partir de fuentes externas que trabajan con otra base. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="construcción-uniforme-externa-de-una-sentencia-independiente" class="level2">
+<h2 class="anchored" data-anchor-id="construcción-uniforme-externa-de-una-sentencia-independiente">21.22. Construcción uniforme externa de una sentencia independiente</h2>
+<section id="tlog-mth-00123" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00123">Metateorema 21.22.1 — Construcción uniforme externa de una sentencia independiente</h3>
+<p><strong>Metateorema.</strong> A partir del código de un programa RM de un argumento se puede construir efectivamente la presentación de §21.2, los representantes P,N,V, una sentencia R_T y una prueba PA de su bicondicional. Sobre códigos de programas válidos, estas construcciones terminan sin comprobar consistencia. Si la teoría presentada es consistente, la sentencia obtenida es independiente y verdadera.</p>
+<p><strong>Prueba.</strong> La guarda de sentencia restringe el dominio de parada del programa dado a Γ⊆Sent(L_A). Se genera el semidecidor de prefijos/axiomas PA y el verificador certificado de CH18. Este último es un programa <strong>total</strong>, aunque el semidecidor inicial diverja en algunas entradas. Se compone el verificador negativo con el constructor de ¬A. El compilador de representación de CH19 produce las fórmulas P,N; las operaciones de árbol construyen V y el objetivo Rosser, con nombres frescos. El compilador de CH20 produce R_T y la búsqueda de pruebas de su bicondicional termina porque esa equivalencia es siempre un teorema PA.</p>
+<p>Todos los compiladores recorren objetos finitos y los programas de origen sólo se <strong>codifican</strong> en esta construcción, no se ejecutan hasta resolver sus entradas negativas. La única ejecución de búsqueda de pruebas busca una equivalencia cuya existencia se demostró sin consistencia de T. Para un código malformado de programa se devuelve0 antes de construir, con una etiqueta externa de rechazo cuando se entregan varios campos.</p>
+<p>La garantía de independencia es condicional. El procedimiento no es un decidor de consistencia y no suministra una prueba T de la afirmación «mi salida es independiente». La finitud de los numerales no constituye una cota práctica de tiempo o tamaño. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="añadir-uno-de-los-lados-de-una-sentencia-independiente" class="level2">
+<h2 class="anchored" data-anchor-id="añadir-uno-de-los-lados-de-una-sentencia-independiente">21.23. Añadir uno de los lados de una sentencia independiente</h2>
+<section id="tlog-lem-00091" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00091">Lema 21.23.1 — Añadir uno de los lados de una sentencia independiente</h3>
+<p><strong>Lema.</strong> Si T es consistente y A es independiente en T, tanto T+A como T+¬A son consistentes. Si A es una sentencia y la presentación de T es admisible, ambas extensiones tienen presentaciones admisibles efectivamente construibles.</p>
+<p><strong>Prueba de consistencia.</strong> Si T+A probara ⊥, reemplazamos los prefijos del axioma cerrado A por las derivaciones desde A mediante Q4 y aplicamos deducción al cálculo T: <span class="math inline">\(T\vdash A\to\bot\)</span>, luego <span class="math inline">\(T\vdash\neg A\)</span> porque T refuta ⊥. Contradice independencia. Si T+¬A probara ⊥, deducción y lógica clásica darían <span class="math inline">\(T\vdash A\)</span>, otra contradicción.</p>
+<p><strong>Efectividad.</strong> Al semidecidor inicial se agrega una rama que compara el código con G(A), o con G(¬A), y para al coincidir; las otras entradas siguen el semidecidor previo. La clausura de prefijos se genera como §21.2. Las comparaciones y el árbol de negación son totales. No se ha decidido efectivamente si A es independiente: el lema recibe esa propiedad como hipótesis matemática. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="una-reparación-finita-no-elimina-la-incompletitud" class="level2">
+<h2 class="anchored" data-anchor-id="una-reparación-finita-no-elimina-la-incompletitud">21.24. Una reparación finita no elimina la incompletitud</h2>
+<section id="tlog-pro-00136" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00136">Proposición 21.24.1 — Una reparación finita no elimina la incompletitud</h3>
+<p><strong>Proposición.</strong> Añadir una sentencia de Rosser a una teoría admisible consistente conserva consistencia y efectividad, pero la teoría nueva tiene otra sentencia independiente. Lo mismo ocurre si se añade su negación o cualquier lista finita de sentencias que deje consistente la extensión.</p>
+<p><strong>Prueba.</strong> Para R_T y ¬R_T se aplica §21.23. La teoría resultante vuelve a cumplir las hipótesis de Gödel–Rosser, así tiene su propio punto fijo R_{T’}, relativo a <strong>su propio verificador</strong>. En T’ se demuestra el lado añadido, por lo que ese árbol no puede ser independiente allí. No se identifica R_{T’} con R_T ni se reutiliza sin cambio el predicado V_T como si verificara todos los nuevos teoremas.</p>
+<p>Para cualquier lista finita consistente, el semidecidor admite una disyunción finita de comparaciones y el teorema vuelve a aplicar. El argumento no afirma que añadir arbitrariamente un axioma preserve consistencia: ésta se recibe como hipótesis o se prueba mediante independencia. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="árbol-binario-de-extensiones-y-uniones-de-ramas" class="level2">
+<h2 class="anchored" data-anchor-id="árbol-binario-de-extensiones-y-uniones-de-ramas">21.25. Árbol binario de extensiones y uniones de ramas</h2>
+<section id="tlog-mth-00124" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00124">Metateorema 21.25.1 — Árbol binario de extensiones y uniones de ramas</h3>
+<p><strong>Metateorema.</strong> Desde una teoría admisible consistente T puede construirse externamente un árbol binario de teorías consistentes <span class="math inline">\(T_s\)</span>, indexado por cadenas binarias finitas: <span class="math inline">\(T_{\varnothing}=T\)</span>, y los dos sucesores de s añaden respectivamente R_{T_s} y ¬R_{T_s}. Para cada rama externa <span class="math inline">\(b:\omega\to\{0,1\}\)</span>, la unión de sus axiomas es consistente. Si b es computable-RM, esa unión admite una presentación semidecidible y sigue siendo incompleta.</p>
+<p><strong>Prueba finita.</strong> Por inducción externa sobre |s|, el constructor uniforme entrega la sentencia de Rosser de T_s. Los dos lados son independientes y el lema de extensión da consistencia de ambos sucesores. Sus programas se generan efectivamente a partir del programa padre y el lado elegido. El árbol de cada nivel finito se construye por recursión finita; no se usa AC/BPI.</p>
+<p><strong>Unión de una rama dada.</strong> Una prueba de contradicción en la unión usa finitísimos axiomas de la rama. Cada axioma añadido tiene un índice de etapa concreto; se toma el máximo de esos finitísimos índices y se sitúa toda la prueba en esa etapa, que es consistente. Los axiomas iniciales permanecen en todas las etapas. Por finitariedad no hay contradicción en la unión. b se da como función externa: no se elige una rama por un principio de compactación o elección.</p>
+<p><strong>Rama computable.</strong> Para entrada c, intercalamos el semidecidor inicial Γ(c) con la generación de etapas de la rama. Se calculan sucesivamente b(n), la presentación de T_n y su siguiente sentencia elegida, comparando c con su código. Cada etapa termina; si c pertenece a la unión aparecerá en Γ o en una etapa y se acepta. Si no, se continúa. Esto da un semidecidor RM y la unión, ya consistente, vuelve a ser incompleta por §21.20. Para b arbitraria no se afirma semidecidibilidad de la unión. Tampoco esta construcción demuestra que cada rama, incluso una no efectiva, sea completa. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="la-teoría-externa-de-todas-las-verdades-aritméticas" class="level2">
+<h2 class="anchored" data-anchor-id="la-teoría-externa-de-todas-las-verdades-aritméticas">21.26. La teoría externa de todas las verdades aritméticas</h2>
+<section id="tlog-def-00154" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00154">Definición 21.26.1 — La teoría externa de todas las verdades aritméticas</h3>
+<p>Definimos externamente <span class="math display">\[
+\operatorname{Th}(\mathbb N_A)=\{A:\ A\text{ sentencia de }L_A\ \land\ \mathbb N_A\models A\}.
+\]</span> Es un conjunto de árboles finitos en ZF externa: las fórmulas forman un conjunto, la satisfacción para la estructura fijada se define por recursión sobre árboles y separación selecciona las sentencias verdaderas. El conjunto de sus códigos se obtiene mediante G. No se define un predicado uniforme de verdad <strong>dentro de PA</strong>.</p>
+<p>Como teoría que toma todas estas sentencias por axiomas, contiene deductivamente a PA: para cada axioma PA abierto, su clausura universal es una sentencia verdadera y las particularizaciones seguras recuperan el axioma. Es consistente por corrección externa y completa para sentencias por bivalencia clásica de satisfacción. Una sentencia falsa no se deriva de sus axiomas verdaderos, y toda sentencia verdadera se deriva en una línea axiomática. Esta construcción es externa y no suministra una enumeración computable de su conjunto de axiomas.</p>
+</section>
+</section>
+<section id="la-verdad-completa-no-tiene-una-axiomatización-semidecidible" class="level2">
+<h2 class="anchored" data-anchor-id="la-verdad-completa-no-tiene-una-axiomatización-semidecidible">21.27. La verdad completa no tiene una axiomatización semidecidible</h2>
+<section id="tlog-cor-00036" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00036">Corolario 21.27.1 — La verdad completa no tiene una axiomatización semidecidible</h3>
+<p><strong>Corolario.</strong> No hay conjunto semidecidible-RM Γ de sentencias tal que los teoremas de PA+Γ sean exactamente <span class="math inline">\(\operatorname{Th}(\mathbb N_A)\)</span>.</p>
+<p><strong>Prueba.</strong> Si existiera Γ, PA+Γ tendría una presentación admisible, sería consistente porque todos sus teoremas serían verdaderos y sería completa para sentencias. Gödel–Rosser produciría una sentencia sin ninguna de sus dos pruebas, contradiciendo esa completitud. Por tanto una teoría completa y consistente de todas las verdades existe externamente, pero no tiene esa clase de presentación efectiva.</p>
+<p>El resultado concierne a axiomatización semidecidible. No es todavía una prueba de indefinibilidad de verdad en el lenguaje aritmético, ni una reducción algorítmica a un problema de parada. Esas afirmaciones requieren sus propios argumentos. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cuadro-de-hipótesis-y-alcance-de-las-conclusiones" class="level2">
+<h2 class="anchored" data-anchor-id="cuadro-de-hipótesis-y-alcance-de-las-conclusiones">21.28. Cuadro de hipótesis y alcance de las conclusiones</h2>
+<section id="tlog-pro-00137" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00137">Proposición 21.28.1 — Cuadro de hipótesis y alcance de las conclusiones</h3>
+<p><strong>Proposición de síntesis.</strong> Bajo presentación admisible, el cuadro siguiente conserva exactamente las hipótesis demostradas:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Hipótesis sobre T</th>
+<th>Sentencia</th>
+<th>No demostrable</th>
+<th>No refutable</th>
+<th>Verdad estándar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Consistencia</td>
+<td>G_T o <span class="math inline">\(G_T^{\Pi}\)</span></td>
+<td>sí</td>
+<td>no deducido de esa hipótesis en el argumento de Gödel</td>
+<td>sí</td>
+</tr>
+<tr class="even">
+<td>ω-consistencia</td>
+<td>G_T o <span class="math inline">\(G_T^{\Pi}\)</span></td>
+<td>sí</td>
+<td>sí</td>
+<td>sí</td>
+</tr>
+<tr class="odd">
+<td>Corrección Σ1</td>
+<td>G_T o <span class="math inline">\(G_T^{\Pi}\)</span></td>
+<td>sí</td>
+<td>sí</td>
+<td>sí</td>
+</tr>
+<tr class="even">
+<td>Consistencia</td>
+<td>R_T</td>
+<td>sí</td>
+<td>sí</td>
+<td>sí</td>
+</tr>
+<tr class="odd">
+<td>PA, con su corrección externa probada</td>
+<td><span class="math inline">\(\mathcal G_{PA}\)</span> de CH20</td>
+<td>sí</td>
+<td>sí</td>
+<td>sí</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prueba.</strong> Las filas son los resultados de §§21.10–15 y21.20. El ejemplo S de §21.16 prueba que una extensión consistente puede ser Σ1-incorrecta y ω-inconsistente; no se emplea para afirmar que refuta su propia G_S. La distinción entre G_PA y G_S depende de qué teoría verifica el predicado. Las afirmaciones de verdad son externas; ninguna fila autoriza reflexión T uniforme ni una prueba T de la ausencia de sus propias derivaciones. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="tres-obligaciones-de-derivabilidad-para-el-capítulo-siguiente" class="level2">
+<h2 class="anchored" data-anchor-id="tres-obligaciones-de-derivabilidad-para-el-capítulo-siguiente">21.29. Tres obligaciones de derivabilidad para el capítulo siguiente</h2>
+<section id="tlog-def-00155" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00155">Definición 21.29.1 — Tres obligaciones de derivabilidad para el capítulo siguiente</h3>
+<p>Para un representante concreto <span class="math inline">\(V_T\)</span> se distinguen estas obligaciones, que <strong>no</strong> se añaden como axiomas:</p>
+<ol type="1">
+<li>D1 externa: si T⊢A, entonces T⊢V_T(A). En este capítulo se demostró incluso una prueba PA de la instancia, por certificación y representación.</li>
+<li>D2 interna, para sentencias A,B concretas: T debe demostrar <span class="math inline">\(V_T(\ulcorner A\to B\urcorner)\to(V_T(\ulcorner A\urcorner)\to V_T(\ulcorner B\urcorner))\)</span>.</li>
+<li>D3 interna, para A concreta: T debe demostrar <span class="math inline">\(V_T(\ulcorner A\urcorner)\to V_T(\ulcorner V_T(\ulcorner A\urcorner)\urcorner)\)</span>.</li>
+</ol>
+<p>En D3 las comillas exteriores nombran el árbol de la <strong>instancia</strong> de V_T en el numeral del código de A. No nombran el árbol abierto V_T ni vuelven a nombrar A. Todas las expansiones y variables frescas deben fijarse antes de calcular esos códigos.</p>
+<p>D1 es una implicación metateórica entre pruebas concretas. D2 y D3 son fórmulas objeto demostrables que necesitan argumentos adicionales de composición y aritmetización de pruebas. La exactitud estándar de V y su representación débil en PA no las sustituyen. El contrato CH22 debe fijar qué representante satisface cada obligación; el <span class="math inline">\(Prov_{PA}\)</span> original y la variante certificada no se intercambian silenciosamente.</p>
+</section>
+</section>
+<section id="lo-que-el-primer-teorema-no-demuestra-sobre-consistencia-interna" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-el-primer-teorema-no-demuestra-sobre-consistencia-interna">21.30. Lo que el primer teorema no demuestra sobre consistencia interna</h2>
+<section id="tlog-pro-00138" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00138">Proposición 21.30.1 — Lo que el primer teorema no demuestra sobre consistencia interna</h3>
+<p><strong>Proposición.</strong> Los argumentos de este capítulo no proporcionan por sí solos el segundo teorema de incompletitud, una fórmula objeto correcta de consistencia o condiciones D2/D3. Sus usos de consistencia son externos y se aplican a certificados estándar concretos.</p>
+<p><strong>Prueba por inspección de dependencias.</strong> En Gödel se toma una prueba concreta de G y se produce una prueba de V(g); en Rosser se toman certificados p o n y se ensamblan cortes numerales finitísimos. La hipótesis «T es consistente» permite excluir pares de pruebas externas. No se ha representado dentro de PA toda esa argumentación con códigos variables, ni probado que T reconozca uniformemente la transformación de todas sus pruebas. En particular, una familia externa de pruebas negativas P(d,g) no da una prueba universal sobre d.</p>
+<p>CH22 debe seleccionar un predicado, construir sus condiciones internas y definir la fórmula de consistencia antes de demostrar una nueva conclusión de no demostrabilidad. CH23 conserva las reducciones de indecidibilidad y la frontera con GAS; MRDP/Jones y las interpretaciones en ZF objeto no se incorporan aquí. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cierre-del-primer-teorema-y-contrato-de-salida" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-del-primer-teorema-y-contrato-de-salida">21.31. Cierre del primer teorema y contrato de salida</h2>
+<section id="tlog-cor-00037" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00037">Corolario 21.31.1 — Cierre del primer teorema y contrato de salida</h3>
+<p><strong>Corolario.</strong> CH21 cierra el primer teorema de incompletitud para extensiones efectivas consistentes de PA, incluida la forma Gödel–Rosser bajo consistencia simple, con verificadores certificados, representación numeral, cortes finitos y construcción efectiva de una sentencia independiente. Entrega también la forma original bajo hipótesis más fuertes, una elección Π1 de Gödel, el contraste de una extensión incorrecta consistente y el control de extensiones finitas y ramas computables.</p>
+<p><strong>Prueba.</strong> Los resultados citados reconstruyen cada interfaz de la Parte IV y justifican las hipótesis de las conclusiones. Las codificaciones S/G y los nombres de los representantes permanecen fijados. Ninguna dependencia se dirige a un resultado futuro D2/D3 o al segundo teorema. Las sentencias independientes y la no axiomatizabilidad efectiva de la verdad completa son conclusiones externas bajo las hipótesis indicadas. La Parte V permanece abierta hasta sus capítulos22–23; el cierre humano no declara formalización Lean ni publicación web. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="ejemplos-de-uso-y-cierre" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-de-uso-y-cierre">21.32. Ejemplos de uso y cierre</h2>
+<p>Si una pretendida prueba positiva de R tiene certificado p=2, el argumento Rosser sólo ensambla las tres refutaciones N(0,r), N(1,r), N(2,r). Si una pretendida prueba negativa tiene certificado n=2, se refutan P(0,r), P(1,r), y N(2,r) sirve como testigo para todo d≥2. Éstos son ejemplos de cortes lógicos, no se presentan los números0,1,2 como certificados reales de una sentencia diagonal concreta.</p>
+<p>En PA, la sentencia de Gödel ya fijada en CH20 es verdadera e independiente por corrección estándar. En PA+¬G_PA se conserva consistencia, pero se demuestra una falsedad Σ1 acerca de pruebas PA. La sentencia de Rosser de esa nueva teoría vuelve a ser independiente, pues utiliza el verificador de la teoría nueva. Añadir una sentencia verdadera independiente tampoco vuelve completa una extensión efectiva consistente.</p>
+<p>El capítulo cierra <strong>31/31 resultados</strong> y <strong>153 aristas directas nuevas</strong>. Acumulado: <strong>592 resultados / 2222 aristas</strong>, sin ciclos/duplicados/huérfanos; <strong>251 candidatos Lean /0 compilados /0 verificados</strong>. ParteIV sigue CLOSED; ParteV OPEN, conCH21 cerrado yCH22–23 pendientes. Partes cerradas4/5; interfaces activas0; capítulos publicados0. Auditoría humana, regresiones de referencia y cotejo de bytes se documentan por separado.</p>
+<pre class="text"><code>LOCAL  CH21 ████████████████████ 31/31 resultados (100 %)
+GLOBAL TLOG ██████████████████████░░ 22/24 capítulos (91,67 %)</code></pre>
+<p>Próximo capítulo: <strong>CH22 — Segundo teorema de incompletitud</strong>.</p>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-20.html">← Capítulo 20</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-22.html">Capítulo 22 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

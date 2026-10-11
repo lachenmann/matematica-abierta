@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 11 — Completitud y compacidad – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-la-consistencia-sintáctica-a-la-existencia-de-modelos" id="toc-de-la-consistencia-sintáctica-a-la-existencia-de-modelos" class="nav-link active" data-scroll-target="#de-la-consistencia-sintáctica-a-la-existencia-de-modelos">11.0. De la consistencia sintáctica a la existencia de modelos</a>
+  <ul class="collapse">
+  <li><a href="#alcance-y-procedencia" id="toc-alcance-y-procedencia" class="nav-link" data-scroll-target="#alcance-y-procedencia">Alcance y procedencia</a></li>
+  </ul></li>
+  <li><a href="#alcance-conjuntista-del-procedimiento" id="toc-alcance-conjuntista-del-procedimiento" class="nav-link" data-scroll-target="#alcance-conjuntista-del-procedimiento">11.1. Alcance conjuntista del procedimiento</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00012" id="toc-tlog-cnv-00012" class="nav-link" data-scroll-target="#tlog-cnv-00012">Convención 11.1.1 — Lenguaje numerable y frontera de elección</a></li>
+  </ul></li>
+  <li><a href="#conservatividad-por-introducción-de-constantes" id="toc-conservatividad-por-introducción-de-constantes" class="nav-link" data-scroll-target="#conservatividad-por-introducción-de-constantes">11.2. Conservatividad por introducción de constantes</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00028" id="toc-tlog-lem-00028" class="nav-link" data-scroll-target="#tlog-lem-00028">Lema 11.2.1 — Eliminación finita de constantes auxiliares</a></li>
+  </ul></li>
+  <li><a href="#introducción-segura-de-testigos" id="toc-introducción-segura-de-testigos" class="nav-link" data-scroll-target="#introducción-segura-de-testigos">11.3. Introducción segura de testigos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00029" id="toc-tlog-lem-00029" class="nav-link" data-scroll-target="#tlog-lem-00029">Lema 11.3.1 — Axioma de Henkin con constante fresca</a></li>
+  </ul></li>
+  <li><a href="#la-torre-determinista-de-testigos" id="toc-la-torre-determinista-de-testigos" class="nav-link" data-scroll-target="#la-torre-determinista-de-testigos">11.4. La torre determinista de testigos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00057" id="toc-tlog-def-00057" class="nav-link" data-scroll-target="#tlog-def-00057">Definición 11.4.1 — Ampliaciones de lenguaje y axiomas testigo por niveles</a></li>
+  </ul></li>
+  <li><a href="#consistencia-y-propiedad-de-testigos" id="toc-consistencia-y-propiedad-de-testigos" class="nav-link" data-scroll-target="#consistencia-y-propiedad-de-testigos">11.5. Consistencia y propiedad de testigos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00030" id="toc-tlog-lem-00030" class="nav-link" data-scroll-target="#tlog-lem-00030">Lema 11.5.1 — La unión numerable es consistente y testimoniada</a></li>
+  </ul></li>
+  <li><a href="#decisión-de-todas-las-sentencias-sin-zorn" id="toc-decisión-de-todas-las-sentencias-sin-zorn" class="nav-link" data-scroll-target="#decisión-de-todas-las-sentencias-sin-zorn">11.6. Decisión de todas las sentencias sin Zorn</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00041" id="toc-tlog-mth-00041" class="nav-link" data-scroll-target="#tlog-mth-00041">Metateorema 11.6.1 — Extensión completa, consistente y de Henkin</a></li>
+  </ul></li>
+  <li><a href="#preparación-del-modelo-de-términos" id="toc-preparación-del-modelo-de-términos" class="nav-link" data-scroll-target="#preparación-del-modelo-de-términos">11.7. Preparación del modelo de términos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00058" id="toc-tlog-def-00058" class="nav-link" data-scroll-target="#tlog-def-00058">Definición 11.7.1 — Universo cociente e interpretaciones por términos cerrados</a></li>
+  </ul></li>
+  <li><a href="#el-cociente-es-una-estructura-legítima-en-zf" id="toc-el-cociente-es-una-estructura-legítima-en-zf" class="nav-link" data-scroll-target="#el-cociente-es-una-estructura-legítima-en-zf">11.8. El cociente es una estructura legítima en ZF</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00031" id="toc-tlog-lem-00031" class="nav-link" data-scroll-target="#tlog-lem-00031">Lema 11.8.1 — Equivalencia, congruencia y sección canónica</a></li>
+  </ul></li>
+  <li><a href="#lema-de-verdad-para-fórmulas-abiertas-y-cerradas" id="toc-lema-de-verdad-para-fórmulas-abiertas-y-cerradas" class="nav-link" data-scroll-target="#lema-de-verdad-para-fórmulas-abiertas-y-cerradas">11.9. Lema de verdad para fórmulas abiertas y cerradas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00042" id="toc-tlog-mth-00042" class="nav-link" data-scroll-target="#tlog-mth-00042">Metateorema 11.9.1 — Lema de verdad del modelo canónico</a></li>
+  </ul></li>
+  <li><a href="#existencia-de-modelos-para-teorías-consistentes" id="toc-existencia-de-modelos-para-teorías-consistentes" class="nav-link" data-scroll-target="#existencia-de-modelos-para-teorías-consistentes">11.10. Existencia de modelos para teorías consistentes</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00043" id="toc-tlog-mth-00043" class="nav-link" data-scroll-target="#tlog-mth-00043">Metateorema 11.10.1 — Existencia de modelo en lenguaje numerable</a></li>
+  </ul></li>
+  <li><a href="#primeras-consecuencias-y-compacidad-del-fragmento-tratado" id="toc-primeras-consecuencias-y-compacidad-del-fragmento-tratado" class="nav-link" data-scroll-target="#primeras-consecuencias-y-compacidad-del-fragmento-tratado">11.11. Primeras consecuencias y compacidad del fragmento tratado</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00027" id="toc-tlog-pro-00027" class="nav-link" data-scroll-target="#tlog-pro-00027">Proposición 11.11.1 — Consistencia, satisfacibilidad y compacidad sentencial numerable</a></li>
+  </ul></li>
+  <li><a href="#teorías-numerables-dentro-de-signaturas-arbitrarias" id="toc-teorías-numerables-dentro-de-signaturas-arbitrarias" class="nav-link" data-scroll-target="#teorías-numerables-dentro-de-signaturas-arbitrarias">11.12. Teorías numerables dentro de signaturas arbitrarias</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00028" id="toc-tlog-pro-00028" class="nav-link" data-scroll-target="#tlog-pro-00028">Proposición 11.12.1 — Reducción a soporte numerable y expansión uniforme</a></li>
+  </ul></li>
+  <li><a href="#controles-de-exactitud-y-tareas-restantes" id="toc-controles-de-exactitud-y-tareas-restantes" class="nav-link" data-scroll-target="#controles-de-exactitud-y-tareas-restantes">11.13. Controles de exactitud y tareas restantes</a></li>
+  <li><a href="#estado-del-bloque-y-vector-gráfico" id="toc-estado-del-bloque-y-vector-gráfico" class="nav-link" data-scroll-target="#estado-del-bloque-y-vector-gráfico">11.14. Estado del bloque y vector gráfico</a></li>
+  <li><a href="#traducción-de-variables-libres-a-parámetros" id="toc-traducción-de-variables-libres-a-parámetros" class="nav-link" data-scroll-target="#traducción-de-variables-libres-a-parámetros">11.15. Traducción de variables libres a parámetros</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00059" id="toc-tlog-def-00059" class="nav-link" data-scroll-target="#tlog-def-00059">Definición 11.15.1 — Parámetros constantes y traducción sentencial</a></li>
+  </ul></li>
+  <li><a href="#correspondencia-semántica-entre-parámetros-y-asignaciones" id="toc-correspondencia-semántica-entre-parámetros-y-asignaciones" class="nav-link" data-scroll-target="#correspondencia-semántica-entre-parámetros-y-asignaciones">11.16. Correspondencia semántica entre parámetros y asignaciones</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00032" id="toc-tlog-lem-00032" class="nav-link" data-scroll-target="#tlog-lem-00032">Lema 11.16.1 — Correspondencia semántica entre parámetros y asignaciones</a></li>
+  </ul></li>
+  <li><a href="#clausura-existencial-de-una-familia-finita-consistente" id="toc-clausura-existencial-de-una-familia-finita-consistente" class="nav-link" data-scroll-target="#clausura-existencial-de-una-familia-finita-consistente">11.17. Clausura existencial de una familia finita consistente</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00033" id="toc-tlog-lem-00033" class="nav-link" data-scroll-target="#tlog-lem-00033">Lema 11.17.1 — Clausura existencial de una familia finita consistente</a></li>
+  </ul></li>
+  <li><a href="#satisfacibilidad-finita-de-las-sentencias-parametrizadas" id="toc-satisfacibilidad-finita-de-las-sentencias-parametrizadas" class="nav-link" data-scroll-target="#satisfacibilidad-finita-de-las-sentencias-parametrizadas">11.18. Satisfacibilidad finita de las sentencias parametrizadas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00029" id="toc-tlog-pro-00029" class="nav-link" data-scroll-target="#tlog-pro-00029">Proposición 11.18.1 — Satisfacibilidad finita de las sentencias parametrizadas</a></li>
+  </ul></li>
+  <li><a href="#completitud-fuerte-local-para-premisas-numerables" id="toc-completitud-fuerte-local-para-premisas-numerables" class="nav-link" data-scroll-target="#completitud-fuerte-local-para-premisas-numerables">11.19. Completitud fuerte local para premisas numerables</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00044" id="toc-tlog-mth-00044" class="nav-link" data-scroll-target="#tlog-mth-00044">Metateorema 11.19.1 — Completitud fuerte local para premisas numerables</a></li>
+  </ul></li>
+  <li><a href="#adecuación-finitariedad-semántica-y-compacidad-local-numerable" id="toc-adecuación-finitariedad-semántica-y-compacidad-local-numerable" class="nav-link" data-scroll-target="#adecuación-finitariedad-semántica-y-compacidad-local-numerable">11.20. Adecuación, finitariedad semántica y compacidad local numerable</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00010" id="toc-tlog-cor-00010" class="nav-link" data-scroll-target="#tlog-cor-00010">Corolario 11.20.1 — Adecuación, finitariedad semántica y compacidad local numerable</a></li>
+  </ul></li>
+  <li><a href="#régimen-de-buen-orden-y-principio-booleano-de-ideal-primo" id="toc-régimen-de-buen-orden-y-principio-booleano-de-ideal-primo" class="nav-link" data-scroll-target="#régimen-de-buen-orden-y-principio-booleano-de-ideal-primo">11.21. Régimen de buen orden y principio booleano de ideal primo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00013" id="toc-tlog-cnv-00013" class="nav-link" data-scroll-target="#tlog-cnv-00013">Convención 11.21.1 — Régimen de buen orden y principio booleano de ideal primo</a></li>
+  </ul></li>
+  <li><a href="#torre-de-henkin-sobre-una-signatura-arbitraria-sin-elección" id="toc-torre-de-henkin-sobre-una-signatura-arbitraria-sin-elección" class="nav-link" data-scroll-target="#torre-de-henkin-sobre-una-signatura-arbitraria-sin-elección">11.22. Torre de Henkin sobre una signatura arbitraria, sin elección</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00034" id="toc-tlog-lem-00034" class="nav-link" data-scroll-target="#tlog-lem-00034">Lema 11.22.1 — Torre de Henkin sobre una signatura arbitraria, sin elección</a></li>
+  </ul></li>
+  <li><a href="#modelo-de-henkin-en-toda-signatura-bien-ordenable-sin-selector-global" id="toc-modelo-de-henkin-en-toda-signatura-bien-ordenable-sin-selector-global" class="nav-link" data-scroll-target="#modelo-de-henkin-en-toda-signatura-bien-ordenable-sin-selector-global">11.23. Modelo de Henkin en toda signatura bien ordenable, sin selector global</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00045" id="toc-tlog-mth-00045" class="nav-link" data-scroll-target="#tlog-mth-00045">Metateorema 11.23.1 — Modelo de Henkin en toda signatura bien ordenable, sin selector global</a></li>
+  </ul></li>
+  <li><a href="#completitud-fuerte-local-y-compacidad-sobre-firmas-bien-ordenables" id="toc-completitud-fuerte-local-y-compacidad-sobre-firmas-bien-ordenables" class="nav-link" data-scroll-target="#completitud-fuerte-local-y-compacidad-sobre-firmas-bien-ordenables">11.24. Completitud fuerte local y compacidad sobre firmas bien ordenables</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00046" id="toc-tlog-mth-00046" class="nav-link" data-scroll-target="#tlog-mth-00046">Metateorema 11.24.1 — Completitud fuerte local y compacidad sobre firmas bien ordenables</a></li>
+  </ul></li>
+  <li><a href="#bpi-proporciona-modelos-a-toda-teoría-consistente-de-sentencias" id="toc-bpi-proporciona-modelos-a-toda-teoría-consistente-de-sentencias" class="nav-link" data-scroll-target="#bpi-proporciona-modelos-a-toda-teoría-consistente-de-sentencias">11.25. BPI proporciona modelos a toda teoría consistente de sentencias</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00047" id="toc-tlog-mth-00047" class="nav-link" data-scroll-target="#tlog-mth-00047">Metateorema 11.25.1 — BPI proporciona modelos a toda teoría consistente de sentencias</a></li>
+  </ul></li>
+  <li><a href="#bpi-implica-completitud-fuerte-y-compacidad-irrestrictas" id="toc-bpi-implica-completitud-fuerte-y-compacidad-irrestrictas" class="nav-link" data-scroll-target="#bpi-implica-completitud-fuerte-y-compacidad-irrestrictas">11.26. BPI implica completitud fuerte y compacidad irrestrictas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00048" id="toc-tlog-mth-00048" class="nav-link" data-scroll-target="#tlog-mth-00048">Metateorema 11.26.1 — BPI implica completitud fuerte y compacidad irrestrictas</a></li>
+  </ul></li>
+  <li><a href="#la-compacidad-irrestricta-de-primer-orden-implica-bpi" id="toc-la-compacidad-irrestricta-de-primer-orden-implica-bpi" class="nav-link" data-scroll-target="#la-compacidad-irrestricta-de-primer-orden-implica-bpi">11.27. La compacidad irrestricta de primer orden implica BPI</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00049" id="toc-tlog-mth-00049" class="nav-link" data-scroll-target="#tlog-mth-00049">Metateorema 11.27.1 — La compacidad irrestricta de primer orden implica BPI</a></li>
+  </ul></li>
+  <li><a href="#fuerza-exacta-de-compacidad-y-completitud-en-zf" id="toc-fuerza-exacta-de-compacidad-y-completitud-en-zf" class="nav-link" data-scroll-target="#fuerza-exacta-de-compacidad-y-completitud-en-zf">11.28. Fuerza exacta de compacidad y completitud en ZF</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00011" id="toc-tlog-cor-00011" class="nav-link" data-scroll-target="#tlog-cor-00011">Corolario 11.28.1 — Fuerza exacta de compacidad y completitud en ZF</a></li>
+  </ul></li>
+  <li><a href="#vector-de-adecuación-por-hipótesis-y-cierre-tipado" id="toc-vector-de-adecuación-por-hipótesis-y-cierre-tipado" class="nav-link" data-scroll-target="#vector-de-adecuación-por-hipótesis-y-cierre-tipado">11.29. Vector de adecuación por hipótesis y cierre tipado</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00012" id="toc-tlog-cor-00012" class="nav-link" data-scroll-target="#tlog-cor-00012">Corolario 11.29.1 — Vector de adecuación por hipótesis y cierre tipado</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 11 — Completitud y compacidad</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-10.html">← Capítulo 10</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-12.html">Capítulo 12 →</a></p>
+<section id="de-la-consistencia-sintáctica-a-la-existencia-de-modelos" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-consistencia-sintáctica-a-la-existencia-de-modelos">11.0. De la consistencia sintáctica a la existencia de modelos</h2>
+<p>Los capítulos 8–10 proporcionaron, sin circularidad, satisfacción de primer orden, derivaciones finitas en <span class="math inline">\(\mathsf H_\tau^{=}\)</span> y corrección <span class="math inline">\(\Gamma\vdash\varphi\Rightarrow\Gamma\models_\tau\varphi\)</span>. La dirección inversa requiere un <strong>modelo</strong> para cada teoría sintácticamente consistente. Aquí se construye directamente, a partir de términos cerrados, para conjuntos de <strong>sentencias en un lenguaje numerable</strong>. Las fórmulas abiertas y la generalidad de signaturas no bien ordenables son obligaciones distintas; no se sustituyen sus pruebas por la de este bloque.</p>
+<p>El objeto <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span> sigue siendo <strong>ZF clásica sin AC</strong>. Esta restricción importa: el principio general de completitud/compacidad para lenguajes arbitrarios, formulado para todas las signaturas sin hipótesis de buen orden, equivale sobre ZF al teorema del ideal primo booleano (<code>BPI</code>, principio del ultrafiltro), que no es un teorema de ZF. La distinción queda documentada en la bibliografía de frontera; no se importa <code>BPI</code> como axioma.</p>
+<section id="alcance-y-procedencia" class="level3">
+<h3 class="anchored" data-anchor-id="alcance-y-procedencia">Alcance y procedencia</h3>
+<ul>
+<li><code>TLOG-SRC-0002</code> (Enderton) y <code>TLOG-SRC-0003</code> (Rautenberg): patrones históricos y estructurales previamente registrados. <strong>No se declara</strong> un nuevo cotejo línea a línea de sus demostraciones de completitud en este microtramo.</li>
+<li><code>TLOG-SRC-0009</code> (Jech, <em>The Axiom of Choice</em>, 1973, cap. 2 §2.3) y <code>TLOG-SRC-00010</code> (Espíndola, 2016, abstract y datos editoriales): control de la frontera ZF/BPI. Son <code>BIB-VERIFIED / NOT TEXT-COLLATED</code>; su enunciado no sustituye las pruebas positivas que siguen.</li>
+</ul>
+</section>
+</section>
+<section id="alcance-conjuntista-del-procedimiento" class="level2">
+<h2 class="anchored" data-anchor-id="alcance-conjuntista-del-procedimiento">11.1. Alcance conjuntista del procedimiento</h2>
+<section id="tlog-cnv-00012" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00012">Convención 11.1.1 — Lenguaje numerable y frontera de elección</h3>
+<p>Una signatura <span class="math inline">\(\tau\)</span> es <strong>numerable</strong> si el conjunto de sus símbolos extralógicos posee una inyección en <span class="math inline">\(\omega\)</span>. Fijada <strong>una</strong> de tales inyecciones, se asignan códigos naturales a todos los símbolos lógicos, variables, conectivos y delimitadores, y de allí, inyectivamente, a los árboles finitos de términos y fórmulas. Las fórmulas y sentencias quedan así bien ordenadas por sus códigos. No se elige una enumeración para cada uno de infinitos conjuntos independientes: una única codificación inicial determina todas las posteriores.</p>
+<p>En lo sucesivo el símbolo <span class="math inline">\(\vdash\)</span> está tipado por <span class="math inline">\(\mathsf H_\tau^{=}\)</span>; <span class="math inline">\(\models\)</span>, por la semántica local de §8.26. El presente bloque trata <strong>teorías de sentencias</strong>; su ampliación a conjuntos de fórmulas abiertas no es definicional. Para signaturas arbitrarias no se adopta <code>BPI</code>, <code>AC</code> ni el lema de Zorn: se estudiará por separado la frontera de hipótesis.</p>
+</section>
+</section>
+<section id="conservatividad-por-introducción-de-constantes" class="level2">
+<h2 class="anchored" data-anchor-id="conservatividad-por-introducción-de-constantes">11.2. Conservatividad por introducción de constantes</h2>
+<section id="tlog-lem-00028" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00028">Lema 11.2.1 — Eliminación finita de constantes auxiliares</h3>
+<p>Sea <span class="math inline">\(L\subseteq L^+\)</span> una ampliación de signatura que incorpora <strong>sólo constantes funcionales nularias</strong>. Si <span class="math inline">\(\Gamma\cup\{\theta\}\subseteq\operatorname{Fm}_L\)</span> y existe una derivación <span class="math inline">\(\Gamma\vdash_{\mathsf H_{L^+}^{=}}\theta\)</span>, entonces</p>
+<p><span class="math display">\[
+\boxed{\Gamma\vdash_{\mathsf H_L^{=}}\theta.}
+\]</span></p>
+<p>En particular, si <span class="math inline">\(S\subseteq\operatorname{Sent}_L\)</span> es consistente en <span class="math inline">\(\mathsf H_L^{=}\)</span>, lo sigue siendo al cambiar sólo el lenguaje ambiente a <span class="math inline">\(L^+\)</span>.</p>
+<p><strong>Demostración.</strong> Fijemos una derivación <span class="math inline">\(\Pi\)</span> en el lenguaje ampliado. Por finitud de <span class="math inline">\(\Pi\)</span>, sólo aparecen en ella finitas constantes nuevas <span class="math inline">\(d_1,\ldots,d_m\)</span>. El árbol conjunto de las líneas posee finitos nombres de variable, incluidos los de vinculantes. Elegimos los primeros <span class="math inline">\(m\)</span> nombres distintos <span class="math inline">\(y_1,\ldots,y_m\)</span> que no aparecen en <strong>ninguna</strong> línea de <span class="math inline">\(\Pi\)</span>, usando el orden fijo de <span class="math inline">\(X\)</span>. Reemplazamos simultáneamente los tokens extralógicos <span class="math inline">\(d_i\)</span> por los términos variables <span class="math inline">\(y_i\)</span>, sin cambiar ningún símbolo preexistente. Ningún <span class="math inline">\(y_i\)</span> aparece como variable vinculada en la derivación original, de modo que ninguna ocurrencia insertada es capturada.</p>
+<p>Examinamos una línea axiomática. Las formas proposicionales <code>H1–H12</code> son estables bajo la sustitución; <code>E1</code> conserva reflexividad y <code>E2</code> conserva las dos condiciones <code>FreeFor</code>, pues los <span class="math inline">\(y_i\)</span> no son nombres de cuantificador de ninguna matriz usada. En <code>Q1</code>, <code>Q2</code> la ausencia de captura se mantiene; en <code>Q3</code>, <code>Q5</code> la forma se conserva, y en <code>Q4</code> la variable cuantificada no es ninguna de las <span class="math inline">\(y_i\)</span>, preservando <span class="math inline">\(x\notin FV(\varphi)\)</span>. Una clausura universal finita de una instancia se transforma en la clausura universal de la instancia transformada. Las líneas por <code>MP</code> siguen siendo inferencias por <code>MP</code>; las líneas-premisa y la conclusión pertenecen a <span class="math inline">\(L\)</span> y permanecen inalteradas. Así la secuencia traducida es una derivación en <span class="math inline">\(\mathsf H_L^{=}\)</span> de la misma <span class="math inline">\(\theta\)</span> desde <span class="math inline">\(\Gamma\)</span>. Para la consistencia tomamos <span class="math inline">\(\theta=\bot_L\)</span>, que no contiene constantes nuevas. <span class="math inline">\(\square\)</span></p>
+<p><strong>Control:</strong> la traducción se practica sobre una <strong>prueba finita</strong>, no sobre el conjunto total <span class="math inline">\(\Gamma\)</span>; no exige encontrar un nombre fresco para todas las variables ligadas de un conjunto infinito de sentencias.</p>
+</section>
+</section>
+<section id="introducción-segura-de-testigos" class="level2">
+<h2 class="anchored" data-anchor-id="introducción-segura-de-testigos">11.3. Introducción segura de testigos</h2>
+<section id="tlog-lem-00029" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00029">Lema 11.3.1 — Axioma de Henkin con constante fresca</h3>
+<p>Sea <span class="math inline">\(T\subseteq\operatorname{Sent}_L\)</span> consistente, <span class="math inline">\(\delta=\exists x\,\rho(x)\in\operatorname{Sent}_L\)</span>, con <span class="math inline">\(\operatorname{FV}(\rho)\subseteq\{x\}\)</span>, y sea <span class="math inline">\(c\)</span> una constante nularia nueva que no aparece en <span class="math inline">\(L\)</span>. La instancia <span class="math inline">\(\rho(c):=\rho[c/x]_{\mathrm{lit}}\)</span> está definida porque <span class="math inline">\(c\)</span> es un término <strong>cerrado</strong>. Entonces</p>
+<p><span class="math display">\[
+\boxed{T\cup\{\,\delta\to\rho(c)\,\}
+\text{ es consistente en }L\cup\{c\}.}
+\]</span></p>
+<p><strong>Demostración.</strong> Por §11.2, <span class="math inline">\(T\)</span> sigue siendo consistente en el lenguaje ampliado. Si la adjunción fuese inconsistente, el teorema de deducción y las reducciones clásicas de §9.23 darían tanto <span class="math inline">\(T\vdash\delta\)</span> como <span class="math inline">\(T\vdash\neg\rho(c)\)</span>. Una demostración fija de <span class="math inline">\(\neg\rho(c)\)</span> desde <span class="math inline">\(T\)</span> contiene finitas variables. Sustituyendo el token constante <span class="math inline">\(c\)</span> por una variable <span class="math inline">\(y\)</span> ausente de todas sus líneas y de <span class="math inline">\(\rho\)</span>, mediante la misma transformación de §11.2, obtenemos una demostración de <span class="math inline">\(\neg\rho(y)\)</span> desde las mismas <strong>premisas sentenciales</strong> <span class="math inline">\(T\)</span>. La condición <span class="math inline">\(FV(T)=\varnothing\)</span> permite generalizar: <span class="math inline">\(T\vdash\forall y\neg\rho(y)\)</span>. Por equivalencia alfa deductiva (§9.19), <span class="math inline">\(T\vdash\forall x\neg\rho(x)\)</span>, y por la dualidad <code>Q5</code> y el cálculo clásico, <span class="math inline">\(T\vdash\neg\exists x\rho(x)=\neg\delta\)</span>. Junto con <span class="math inline">\(T\vdash\delta\)</span>, esto contradice la consistencia de <span class="math inline">\(T\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Frontera:</strong> no se afirma este lema con la misma prueba para matrices con variables libres adicionales; una constante <span class="math inline">\(c\)</span> que dependiera de parámetros libres requeriría una función-testigo o un tratamiento de parámetros diferente.</p>
+</section>
+</section>
+<section id="la-torre-determinista-de-testigos" class="level2">
+<h2 class="anchored" data-anchor-id="la-torre-determinista-de-testigos">11.4. La torre determinista de testigos</h2>
+<section id="tlog-def-00057" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00057">Definición 11.4.1 — Ampliaciones de lenguaje y axiomas testigo por niveles</h3>
+<p>Fijemos una signatura numerable <span class="math inline">\(L_0=\tau\)</span> y un conjunto consistente <span class="math inline">\(T_0=S\subseteq\operatorname{Sent}_{L_0}\)</span>. Por recursión en <span class="math inline">\(n\in\omega\)</span>, definimos <span class="math inline">\(L_n,T_n\)</span>. Sea <span class="math inline">\(E_n\)</span> el conjunto de <strong>sentencias existenciales</strong> <span class="math inline">\(\exists x\rho\in\operatorname{Sent}_{L_n}\)</span>, bien ordenado por el código finito determinado por §11.1. Para cada <span class="math inline">\(\delta=\exists x\rho\in E_n\)</span>, introducimos una nueva constante distinguible <span class="math inline">\(c_{n,\langle\delta\rangle}\)</span>, con etiquetas disjuntas de todos los símbolos de <span class="math inline">\(L_n\)</span> y de las otras constantes. Definimos</p>
+<p><span class="math display">\[
+\begin{aligned}
+L_{n+1}&amp;=L_n\sqcup\{c_{n,\langle\delta\rangle}:\delta\in E_n\},\\
+W_n&amp;=\{\,\delta\to\rho[c_{n,\langle\delta\rangle}/x]_{\mathrm{lit}}:\delta=\exists x\rho\in E_n\},\\
+T_{n+1}&amp;=T_n\cup W_n.
+\end{aligned}
+\]</span></p>
+<p>La codificación asigna a cada <span class="math inline">\(\delta\)</span> exactamente una constante y hace que todos los datos sean <strong>conjuntos</strong>. La unión <span class="math inline">\(L_\omega=\bigcup_{n&lt;\omega}L_n\)</span>, <span class="math inline">\(T_H=\bigcup_{n&lt;\omega}T_n\)</span> es la expansión de Henkin inicial. Cada <span class="math inline">\(T_n\)</span> contiene <strong>sentencias</strong>, no premisas abiertas. En los niveles posteriores podrán aparecer fórmulas que usen constantes añadidas en niveles anteriores.</p>
+</section>
+</section>
+<section id="consistencia-y-propiedad-de-testigos" class="level2">
+<h2 class="anchored" data-anchor-id="consistencia-y-propiedad-de-testigos">11.5. Consistencia y propiedad de testigos</h2>
+<section id="tlog-lem-00030" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00030">Lema 11.5.1 — La unión numerable es consistente y testimoniada</h3>
+<p>Todos los <span class="math inline">\(T_n\)</span> son consistentes en <span class="math inline">\(L_n\)</span>; <span class="math inline">\(T_H\subseteq\operatorname{Sent}_{L_\omega}\)</span> es consistente en <span class="math inline">\(L_\omega\)</span>, y toda sentencia <span class="math inline">\(\delta=\exists x\rho\in\operatorname{Sent}_{L_\omega}\)</span> posee un término constante cerrado <span class="math inline">\(c\)</span> tal que</p>
+<p><span class="math display">\[
+\boxed{\delta\to\rho[c/x]_{\mathrm{lit}}\in T_H.}
+\]</span></p>
+<p><strong>Demostración.</strong> Inducimos sobre <span class="math inline">\(n\)</span>. Por §11.2, <span class="math inline">\(T_n\)</span> permanece consistente al ampliar el lenguaje. Supongamos que una subfamilia finita de <span class="math inline">\(W_n\)</span> provocara inconsistencia. Sus constantes <span class="math inline">\(c_{n,i_1},\ldots,c_{n,i_m}\)</span> son mutuamente distintas; ninguna aparece en <span class="math inline">\(T_n\)</span> ni en las matrices de <span class="math inline">\(E_n\)</span>. Aplicamos §11.3 sucesivamente, introduciendo una nueva constante por paso: la teoría provisional sigue siendo una teoría de <strong>sentencias</strong> y la constante del paso siguiente no figura en sus premisas. Se obtiene consistencia de cualquier subfamilia finita. Una derivación de contradicción desde <span class="math inline">\(T_{n+1}\)</span> sólo usa finitas líneas-premisa (§9.10), contradiciendo lo anterior. Por tanto <span class="math inline">\(T_{n+1}\)</span> es consistente.</p>
+<p>Si <span class="math inline">\(T_H\)</span> fuera inconsistente en <span class="math inline">\(L_\omega\)</span>, una demostración de <span class="math inline">\(\bot\)</span> emplearía finitas premisas de <span class="math inline">\(T_H\)</span> y finitos símbolos de <span class="math inline">\(L_\omega\)</span>; todos pertenecen a un cierto <span class="math inline">\(L_N\)</span>, y las premisas a un cierto <span class="math inline">\(T_M\)</span>. Tomando el máximo de esos índices, existiría una demostración de contradicción desde algún <span class="math inline">\(T_K\)</span> en <span class="math inline">\(L_K\)</span>, imposible. Finalmente, una sentencia existencial de <span class="math inline">\(L_\omega\)</span> tiene árbol finito y sólo finitos símbolos nuevos: aparece en algún <span class="math inline">\(L_n\)</span>, y su axioma-testigo pertenece a <span class="math inline">\(W_n\)</span>. Esta última propiedad es <strong>sintáctica</strong> y no supone todavía que el existencial sea verdadero en una estructura. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="decisión-de-todas-las-sentencias-sin-zorn" class="level2">
+<h2 class="anchored" data-anchor-id="decisión-de-todas-las-sentencias-sin-zorn">11.6. Decisión de todas las sentencias sin Zorn</h2>
+<section id="tlog-mth-00041" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00041">Metateorema 11.6.1 — Extensión completa, consistente y de Henkin</h3>
+<p>Existe <span class="math inline">\(T^*\subseteq\operatorname{Sent}_{L_\omega}\)</span> que contiene <span class="math inline">\(T_H\)</span> y satisface:</p>
+<ol type="1">
+<li><strong>consistencia:</strong> <span class="math inline">\(T^*\nvdash\bot\)</span>;</li>
+<li><strong>decisión:</strong> para cada sentencia <span class="math inline">\(\theta\)</span>, exactamente una de <span class="math inline">\(\theta,\neg\theta\)</span> pertenece a <span class="math inline">\(T^*\)</span>;</li>
+<li><strong>cierre deductivo sentencial:</strong> si <span class="math inline">\(T^*\vdash\theta\)</span> y <span class="math inline">\(\theta\)</span> es sentencia, entonces <span class="math inline">\(\theta\in T^*\)</span>;</li>
+<li><strong>testigos:</strong> si <span class="math inline">\(\exists x\rho\in T^*\)</span> es sentencia existencial, existe una constante <span class="math inline">\(c\)</span> tal que <span class="math inline">\(\rho[c/x]_{\mathrm{lit}}\in T^*\)</span>.</li>
+</ol>
+<p><strong>Demostración.</strong> Enumeramos canónicamente todas las sentencias de <span class="math inline">\(L_\omega\)</span> como <span class="math inline">\((\theta_k)_{k&lt;\omega}\)</span>, admitiendo repeticiones si fuera necesario para cubrir los códigos. Definimos <span class="math inline">\(S_0=T_H\)</span>. Dado el conjunto consistente <span class="math inline">\(S_k\)</span>, ponemos <span class="math inline">\(S_{k+1}=S_k\cup\{\theta_k\}\)</span> cuando esa unión es consistente; de lo contrario <span class="math inline">\(S_{k+1}=S_k\cup\{\neg\theta_k\}\)</span>. En el segundo caso §9.23 afirma <span class="math inline">\(S_k\vdash\neg\theta_k\)</span>; adjuntar una fórmula ya deducible conserva consistencia por corte (§9.10). La regla de selección «si es consistente, sí; si no, no» define unívocamente la sucesión en ZF clásica: <strong>no se invoca un selector</strong> de extensiones maximales.</p>
+<p>Sea <span class="math inline">\(T^*=\bigcup_{k&lt;\omega}S_k\)</span>. Es consistente por finitud de las pruebas, y contiene una de <span class="math inline">\(\theta,\neg\theta\)</span> para toda sentencia <span class="math inline">\(\theta\)</span>; contener ambas violaría consistencia. Si <span class="math inline">\(T^*\vdash\theta\)</span> con <span class="math inline">\(\theta\)</span> sentencia y <span class="math inline">\(\theta\notin T^*\)</span>, completitud de decisión daría <span class="math inline">\(\neg\theta\in T^*\)</span>, contradicción. Luego es deductivamente cerrado en sentencias. Si <span class="math inline">\(\delta=\exists x\rho\in T^*\)</span>, el axioma <span class="math inline">\(\delta\to\rho(c)\in T_H\subseteq T^*\)</span> (11.5.1), y <code>MP</code> junto con el cierre sentencial proporciona <span class="math inline">\(\rho(c)\in T^*\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="preparación-del-modelo-de-términos" class="level2">
+<h2 class="anchored" data-anchor-id="preparación-del-modelo-de-términos">11.7. Preparación del modelo de términos</h2>
+<section id="tlog-def-00058" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00058">Definición 11.7.1 — Universo cociente e interpretaciones por términos cerrados</h3>
+<p>Sea <span class="math inline">\(\operatorname{CTm}_{L_\omega}\)</span> el conjunto de términos <strong>cerrados</strong> del lenguaje ampliado y definamos <span class="math inline">\(t\sim u\)</span> si y sólo si <span class="math inline">\((t\doteq u)\in T^*\)</span>. Definimos el candidato de universo <span class="math inline">\(M=\operatorname{CTm}_{L_\omega}/\!\sim\)</span>, cuyas clases denotamos <span class="math inline">\([t]\)</span>. Para cada símbolo funcional <span class="math inline">\(f\in F_n\)</span> y cada símbolo relacional <span class="math inline">\(R\in R_n\)</span>, proponemos</p>
+<p><span class="math display">\[
+\begin{aligned}
+f^{\mathfrak M}([t_1],\ldots,[t_n])&amp;=[f(t_1,\ldots,t_n)],\\
+([t_1],\ldots,[t_n])\in R^{\mathfrak M}&amp;\iff R(t_1,\ldots,t_n)\in T^*.
+\end{aligned}
+\]</span></p>
+<p>Estas son <strong>definiciones candidatas</strong> hasta demostrar que no dependen de los representantes. Se admiten expresamente <span class="math inline">\(n=0\)</span>, constantes y predicados nularios. La igualdad objeto no recibe una interpretación extralógica añadida: se evalúa como la igualdad real de clases del universo.</p>
+</section>
+</section>
+<section id="el-cociente-es-una-estructura-legítima-en-zf" class="level2">
+<h2 class="anchored" data-anchor-id="el-cociente-es-una-estructura-legítima-en-zf">11.8. El cociente es una estructura legítima en ZF</h2>
+<section id="tlog-lem-00031" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00031">Lema 11.8.1 — Equivalencia, congruencia y sección canónica</h3>
+<p>La relación <span class="math inline">\(\sim\)</span> es equivalencia en <span class="math inline">\(\operatorname{CTm}_{L_\omega}\)</span>, las interpretaciones de §11.7 están bien definidas, el universo <span class="math inline">\(M\)</span> es no vacío y existe una sección <strong>canónica</strong> <span class="math inline">\(r:M\to\operatorname{CTm}_{L_\omega}\)</span> tal que <span class="math inline">\([r(a)]=a\)</span> para todo <span class="math inline">\(a\in M\)</span>.</p>
+<p><strong>Demostración.</strong> Para cualquier término cerrado <span class="math inline">\(t\)</span>, <code>E1</code> es teorema; al ser la igualdad sentencial, pertenece a <span class="math inline">\(T^*\)</span>. La simetría y transitividad provienen de §9.17, aplicadas por <code>MP</code> al cierre sentencial de <span class="math inline">\(T^*\)</span>. La misma proposición de congruencia muestra que, si <span class="math inline">\([t_i]=[u_i]\)</span> para todos los argumentos, entonces <span class="math inline">\(f(\bar t)\sim f(\bar u)\)</span>, y que <span class="math inline">\(R(\bar t)\in T^*\)</span> equivale a <span class="math inline">\(R(\bar u)\in T^*\)</span>; para la dirección inversa se emplea simetría de las igualdades. En aridad cero no existe ninguna sustitución: los términos constantes y átomos nularios se interpretan directamente.</p>
+<p>Hay al menos una constante en <span class="math inline">\(L_\omega\)</span>: la sentencia <span class="math inline">\(\exists x(x\doteq x)\)</span> ya pertenece a <span class="math inline">\(L_0\)</span> y recibe una constante de testigo en <span class="math inline">\(L_1\)</span>, con independencia de que el lenguaje original disponga de constantes. Su clase proporciona un elemento de <span class="math inline">\(M\)</span>. Como el conjunto de términos cerrados posee una inyección fija en <span class="math inline">\(\omega\)</span>, para cada clase no vacía <span class="math inline">\(a\subseteq\operatorname{CTm}_{L_\omega}\)</span> existe el único elemento <span class="math inline">\(r(a)\)</span> de código menor. Por separación y reemplazo, <span class="math inline">\(r\)</span> es una función sobre <span class="math inline">\(M\)</span> y satisface <span class="math inline">\([r(a)]=a\)</span>. No se ha usado ni elección numerable ni elección de representantes arbitraria. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="lema-de-verdad-para-fórmulas-abiertas-y-cerradas" class="level2">
+<h2 class="anchored" data-anchor-id="lema-de-verdad-para-fórmulas-abiertas-y-cerradas">11.9. Lema de verdad para fórmulas abiertas y cerradas</h2>
+<section id="tlog-mth-00042" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00042">Metateorema 11.9.1 — Lema de verdad del modelo canónico</h3>
+<p>Sea <span class="math inline">\(\mathfrak M\)</span> la estructura de §§11.7–11.8, y sea <span class="math inline">\(s:X\to M\)</span> una <strong>asignación arbitraria</strong>. Mediante la sección canónica <span class="math inline">\(r\)</span>, definimos <span class="math inline">\(\widehat s(x):=r(s(x))\)</span>, un término cerrado de <span class="math inline">\(L_\omega\)</span>. Para <span class="math inline">\(\varphi\in\operatorname{Fm}_{L_\omega}\)</span> sea <span class="math inline">\(\varphi[\widehat s]\)</span> la <strong>sentencia</strong> obtenida reemplazando simultáneamente <strong>sus variables libres</strong> por los respectivos términos cerrados, sin tocar variables ligadas. Como los sustituyentes no tienen variables, no se produce captura; para cada fórmula se usan únicamente finitos términos y la sustitución puede implementarse literalmente sin cambiar vinculantes. Entonces</p>
+<p><span class="math display">\[
+\boxed{\mathfrak M,s\models_{L_\omega}\varphi
+\quad\Longleftrightarrow\quad
+\varphi[\widehat s]\in T^*.}
+\]</span></p>
+<p><strong>Demostración.</strong> Inducción estructural sobre <span class="math inline">\(\varphi\)</span>. Para cualquier término <span class="math inline">\(t\)</span>, una inducción preliminar demuestra <span class="math inline">\(\llbracket t\rrbracket_{\mathfrak M,s}=[t[\widehat s]]\)</span>, donde <span class="math inline">\(t[\widehat s]\)</span> es un término cerrado: para variable <span class="math inline">\(x\)</span>, <span class="math inline">\([\widehat s(x)]=s(x)\)</span>; para <span class="math inline">\(f\)</span> resulta de la propia definición de <span class="math inline">\(f^{\mathfrak M}\)</span>. Así la cláusula atómica de igualdad coincide con la pertenencia de la igualdad de los términos sustituidos a <span class="math inline">\(T^*\)</span>, y la de <span class="math inline">\(R\)</span> coincide con la definición de la relación del modelo. El caso nulario evalúa el mismo átomo cerrado.</p>
+<p>Para las conectivas, las leyes derivadas del cálculo clásico y la completitud por decisiones de <span class="math inline">\(T^*\)</span> proporcionan las identidades sentenciales <span class="math inline">\(\neg\theta\in T^*\iff\theta\notin T^*\)</span>, <span class="math inline">\((\theta\land\eta)\in T^*\iff\theta,\eta\in T^*\)</span> y las correspondientes cláusulas de <span class="math inline">\(\lor,\to,\leftrightarrow\)</span>. Se corresponden exactamente con las cinco funciones de verdad de §8.3, y la hipótesis inductiva concluye cada caso.</p>
+<p>Supongamos <span class="math inline">\(\varphi=\exists x\psi\)</span>. Al cerrar las variables libres exteriores según <span class="math inline">\(s\)</span>, obtenemos una sentencia <span class="math inline">\(\delta=\exists x\theta(x)\)</span>, con <span class="math inline">\(\theta=\psi[\widehat s\upharpoonright(X\setminus\{x\})]\)</span>. Si <span class="math inline">\(\delta\in T^*\)</span>, la propiedad de Henkin produce un <strong>término constante</strong> <span class="math inline">\(c\)</span> con <span class="math inline">\(\theta(c)\in T^*\)</span>. Tomamos el elemento <span class="math inline">\(a=[c]\in M\)</span>. La hipótesis inductiva, evaluada en <span class="math inline">\(s[x\mapsto a]\)</span>, muestra <span class="math inline">\(\mathfrak M,s[x\mapsto a]\models\psi\)</span>, pues el representante canónico <span class="math inline">\(r([c])\)</span> es equivalente a <span class="math inline">\(c\)</span> por <span class="math inline">\(\sim\)</span>, y la congruencia de igualdad y relaciones garantiza que sustituir uno por otro no modifica pertenencia a <span class="math inline">\(T^*\)</span>. Recíprocamente, si existe <span class="math inline">\(a\in M\)</span> con <span class="math inline">\(\mathfrak M,s[x\mapsto a]\models\psi\)</span>, la hipótesis inductiva da <span class="math inline">\(\theta(r(a))\in T^*\)</span>; <code>Q2</code> y <code>MP</code> implican <span class="math inline">\(\exists x\theta\in T^*\)</span>.</p>
+<p>Para <span class="math inline">\(\varphi=\forall x\psi\)</span>, si <span class="math inline">\(\forall x\theta\in T^*\)</span>, <code>Q1</code> permite demostrar <span class="math inline">\(\theta(t)\in T^*\)</span> para <strong>todo</strong> término cerrado <span class="math inline">\(t\)</span>; así la hipótesis inductiva vale bajo cada actualización <span class="math inline">\(s[x\mapsto a]\)</span>. Inversamente, si <span class="math inline">\(\forall x\theta\notin T^*\)</span>, la decisión completa da <span class="math inline">\(\neg\forall x\theta\in T^*\)</span>. La dualidad <code>Q5</code> y el razonamiento clásico deducen <span class="math inline">\(\exists x\neg\theta\in T^*\)</span>. Su testigo <span class="math inline">\(c\)</span> satisface <span class="math inline">\(\neg\theta(c)\in T^*\)</span>, con lo que la hipótesis inductiva produce una actualización <span class="math inline">\(s[x\mapsto[c]]\)</span> que <strong>no</strong> satisface <span class="math inline">\(\psi\)</span>, contra la universalidad supuesta. Ambos cuantificadores, aunque primitivos, quedan controlados. <span class="math inline">\(\square\)</span></p>
+<p><strong>Advertencia de tipado:</strong> <span class="math inline">\(r\)</span> no es un selector de una familia arbitraria de conjuntos; es la elección <strong>por menor código</strong> dentro de las clases de términos cerrados, que son subconjuntos de un conjunto explícitamente numerado. Asimismo, la fórmula <span class="math inline">\(\varphi[\widehat s]\)</span> usa sólo los representantes de las finitas variables libres de <span class="math inline">\(\varphi\)</span>, incluso cuando la asignación <span class="math inline">\(s\)</span> sea infinita.</p>
+</section>
+</section>
+<section id="existencia-de-modelos-para-teorías-consistentes" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-de-modelos-para-teorías-consistentes">11.10. Existencia de modelos para teorías consistentes</h2>
+<section id="tlog-mth-00043" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00043">Metateorema 11.10.1 — Existencia de modelo en lenguaje numerable</h3>
+<p>Sea <span class="math inline">\(\tau\)</span> una signatura numerable, y <span class="math inline">\(S\subseteq\operatorname{Sent}_\tau\)</span> <strong>cualquier conjunto de sentencias</strong>, finito o infinito. Si <span class="math inline">\(S\)</span> es sintácticamente consistente en <span class="math inline">\(\mathsf H_\tau^{=}\)</span>, entonces existe una estructura <span class="math inline">\(\mathfrak A\)</span> de signatura <span class="math inline">\(\tau\)</span> con universo no vacío tal que</p>
+<p><span class="math display">\[
+\boxed{S\text{ consistente}\quad\Longrightarrow\quad
+\exists\mathfrak A\ (\mathfrak A\models_\tau S).}
+\]</span></p>
+<p><strong>Demostración.</strong> La torre de §11.4 y la extensión de §11.6 producen <span class="math inline">\(T^*\supseteq S\)</span> en <span class="math inline">\(L_\omega\)</span>, consistente, completa y testimoniada. El modelo cociente de términos cerrados <span class="math inline">\(\mathfrak M\)</span> está bien definido por §11.8. Para cada sentencia <span class="math inline">\(\sigma\in S\subseteq T^*\)</span> y para <strong>cualquier</strong> asignación <span class="math inline">\(s:X\to M\)</span>, la sustitución de variables libres no altera <span class="math inline">\(\sigma\)</span> porque <span class="math inline">\(FV(\sigma)=\varnothing\)</span>; por el lema de verdad <span class="math inline">\(\mathfrak M,s\models\sigma\)</span>. Su reducto <span class="math inline">\(\mathfrak A=\mathfrak M\upharpoonright_\tau\)</span> comparte universo y satisface <span class="math inline">\(\sigma\)</span> por la invariancia de reductos de §8.16. Por tanto <span class="math inline">\(\mathfrak A\models S\)</span>. La construcción se efectuó mediante códigos, recursión sobre <span class="math inline">\(\omega\)</span> y cocientes, sin Zorn, AC ni BPI. <span class="math inline">\(\square\)</span></p>
+<p>La hipótesis «<span class="math inline">\(\tau\)</span> numerable» es una restricción efectiva del enunciado metateórico; <strong>no</strong> es condición lateral de ninguna fórmula del lenguaje objeto.</p>
+</section>
+</section>
+<section id="primeras-consecuencias-y-compacidad-del-fragmento-tratado" class="level2">
+<h2 class="anchored" data-anchor-id="primeras-consecuencias-y-compacidad-del-fragmento-tratado">11.11. Primeras consecuencias y compacidad del fragmento tratado</h2>
+<section id="tlog-pro-00027" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00027">Proposición 11.11.1 — Consistencia, satisfacibilidad y compacidad sentencial numerable</h3>
+<p>Para un lenguaje numerable <span class="math inline">\(\tau\)</span> y un conjunto arbitrario de sentencias <span class="math inline">\(S\subseteq\operatorname{Sent}_\tau\)</span>:</p>
+<p><span class="math display">\[
+\boxed{S\text{ consistente}\iff S\text{ satisfacible}.}
+\]</span></p>
+<p>Asimismo, <span class="math display">\[
+\boxed{(\forall S_0\subseteq S\ \text{finito})\;
+S_0\text{ satisfacible}\quad\Longrightarrow\quad S\text{ satisfacible}.}
+\]</span></p>
+<p><strong>Demostración.</strong> La primera dirección es §11.10; la recíproca es el corolario de corrección §10.11, que prohíbe una prueba de <span class="math inline">\(\bot\)</span> en cualquier modelo de las premisas. Para la segunda, si <span class="math inline">\(S\vdash\bot\)</span>, la finitariedad de §9.10 proporciona un subconjunto finito <span class="math inline">\(S_0\subseteq S\)</span> con <span class="math inline">\(S_0\vdash\bot\)</span>, en contradicción con su satisfacibilidad y la corrección. Así <span class="math inline">\(S\)</span> es consistente y se aplica §11.10. No se ha afirmado aún la <strong>completitud fuerte para fórmulas abiertas</strong> ni la compactación para un conjunto arbitrario no numerable de símbolos que aparezcan simultáneamente. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="teorías-numerables-dentro-de-signaturas-arbitrarias" class="level2">
+<h2 class="anchored" data-anchor-id="teorías-numerables-dentro-de-signaturas-arbitrarias">11.12. Teorías numerables dentro de signaturas arbitrarias</h2>
+<section id="tlog-pro-00028" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00028">Proposición 11.12.1 — Reducción a soporte numerable y expansión uniforme</h3>
+<p>Sea <span class="math inline">\(\tau\)</span> una signatura <strong>arbitraria</strong>, quizá no bien ordenable, y <span class="math inline">\(S\subseteq\operatorname{Sent}_\tau\)</span> un conjunto <strong>numerable de sentencias</strong>, con una inyección <span class="math inline">\(S\hookrightarrow\omega\)</span> dada o existente. Si <span class="math inline">\(S\)</span> es consistente en <span class="math inline">\(\mathsf H_\tau^{=}\)</span>, entonces existe una <span class="math inline">\(\tau\)</span>-estructura <span class="math inline">\(\mathfrak A\)</span> con <span class="math inline">\(\mathfrak A\models S\)</span>.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(\sigma\subseteq\tau\)</span> la subsignatura integrada por los símbolos extralógicos que aparecen en alguna sentencia de <span class="math inline">\(S\)</span>. Puesto que <span class="math inline">\(S\)</span> es numerable y cada fórmula es una <strong>secuencia finita ordenada</strong>, podemos codificar toda aparición de símbolo mediante un par <span class="math inline">\((i,j)\in\omega^2\)</span>: índice de sentencia y posición de aparición. Cada símbolo de <span class="math inline">\(\sigma\)</span> recibe el menor código de una de sus apariciones; así <span class="math inline">\(\sigma\)</span> es numerable <strong>sin usar la afirmación general «unión numerable de conjuntos finitos numerables»</strong>, que puede fallar en ZF. Toda fórmula de <span class="math inline">\(S\)</span> pertenece literalmente a <span class="math inline">\(\operatorname{Sent}_\sigma\)</span>.</p>
+<p>Si <span class="math inline">\(S\)</span> fuera inconsistente en el cálculo de la firma menor <span class="math inline">\(\sigma\)</span>, esa misma prueba sería válida en <span class="math inline">\(\mathsf H_\tau^{=}\)</span> por persistencia de sintaxis y de instancias axiomáticas al ampliar signatura (§7.13), contradicción. Por §11.10 existe una <span class="math inline">\(\sigma\)</span>-estructura <span class="math inline">\(\mathfrak B\models S\)</span>. El resultado de expansión uniforme de §7.12 amplía <span class="math inline">\(\mathfrak B\)</span> a una <span class="math inline">\(\tau\)</span>-estructura con <strong>igual universo</strong>, sin AC: basta fijar una sola vez un elemento <span class="math inline">\(b_0\)</span> del universo no vacío; todos los nuevos símbolos funcionales se interpretan como funciones constantes de valor <span class="math inline">\(b_0\)</span>, y todas las relaciones nuevas como vacías. La invariancia de satisfacción por reductos (§8.16) asegura que la estructura ampliada satisface <span class="math inline">\(S\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Frontera real:</strong> «<span class="math inline">\(S\)</span> es numerable» no equivale a «<span class="math inline">\(\tau\)</span> es numerable». Esta proposición no demuestra el teorema de compacidad para <strong>toda</strong> teoría sobre una signatura arbitraria y no bien ordenable.</p>
+</section>
+</section>
+<section id="controles-de-exactitud-y-tareas-restantes" class="level2">
+<h2 class="anchored" data-anchor-id="controles-de-exactitud-y-tareas-restantes">11.13. Controles de exactitud y tareas restantes</h2>
+<p><strong>Premisas abiertas.</strong> La satisfacción de una fórmula abierta requiere asignaciones. El resultado de §11.10 es para <strong>sentencias</strong>, y no se transforma en completitud fuerte local simplemente cerrando universalmente todas las premisas: <span class="math inline">\(\{P(x)\}\)</span> puede satisfacerse bajo una asignación sin que <span class="math inline">\(\forall xP(x)\)</span> sea verdadera. El paso correcto deberá codificar asignaciones mediante <strong>parámetros constantes</strong> y demostrar conservatividad respecto de la derivabilidad original.</p>
+<p><strong>Signaturas no bien ordenables.</strong> El principio general «todo conjunto consistente de sentencias tiene un modelo» no es un teorema irrestricto de ZF; en toda su generalidad sobre signaturas arbitrarias coincide en fuerza con <code>BPI</code> (véanse <code>TLOG-SRC-0009</code>–<code>00010</code>). La ruta pendiente deberá distinguir el caso numerable (demostrado), otros casos con estructura de orden fijada (por construir) y una versión condicionada explícitamente a <code>BPI</code>.</p>
+<p><strong>Sin circularidad.</strong> El modelo de Henkin se construye mediante teoría completa y testigos sin usar la implicación inversa <span class="math inline">\(\models\Rightarrow\vdash\)</span>. El corolario de consistencia desde satisfacibilidad sólo usa la corrección ya cerrada en CH10. El primer resultado de compacidad del fragmento numerable usa finitariedad de CH09 y existencia de modelo aquí, no compacidad previa.</p>
+</section>
+<section id="estado-del-bloque-y-vector-gráfico" class="level2">
+<h2 class="anchored" data-anchor-id="estado-del-bloque-y-vector-gráfico">11.14. Estado del bloque y vector gráfico</h2>
+<pre class="text"><code>TLOG-CH11-M01 = CLOSED / PASS / LOCAL QA PASS
+TLOG-CH11-0001 = PARTIAL-CLOSURE / NOT CLOSED
+new mathematical nodes = 12
+closed nodes through CH11-M01 = 187
+DAG direct edges = 535
+formalization candidates = 54
+Lean compiled/verified = 0
+external interfaces = 0
+closed chapters = 11/24 (45.8%)
+PART I = CLOSED; PART II = OPEN
+Drive readback = PASS (10/10 canonical raw Markdown SHA-256)</code></pre>
+<p>LOCAL CH11-M01 ████████████ 12/12 (100 %, auditoría matemática) GLOBAL TLOG ███████████░░░░░░░░░░░░░ 11/24 capítulos (45,8 %)</p>
+<p><strong>Nota histórica tras M01:</strong> el siguiente frente proyectado era CH11-M02; queda desarrollado y auditado en los apartados siguientes.</p>
+</section>
+<section id="traducción-de-variables-libres-a-parámetros" class="level2">
+<h2 class="anchored" data-anchor-id="traducción-de-variables-libres-a-parámetros">11.15. Traducción de variables libres a parámetros</h2>
+<section id="tlog-def-00059" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00059">Definición 11.15.1 — Parámetros constantes y traducción sentencial</h3>
+<p>Fijada una signatura <span class="math inline">\(\tau\)</span>, tomamos un conjunto de símbolos funcionales <strong>nularios</strong> nuevos <span class="math inline">\(C_X=\{c_x:x\in X\}\)</span>, con etiqueta disjunta de <span class="math inline">\(\tau\)</span>; escribimos <span class="math inline">\(\tau^p=\tau\sqcup C_X\)</span>. No se interpreta el signo <span class="math inline">\(c_x\)</span> como la variable objeto <span class="math inline">\(x\)</span>: es un símbolo extralógico distinto.</p>
+<p>Para <span class="math inline">\(\varphi\in\operatorname{Fm}_\tau\)</span>, sea <span class="math inline">\(\varphi^p\in\operatorname{Sent}_{\tau^p}\)</span> la fórmula obtenida reemplazando <strong>simultáneamente sólo las ocurrencias libres</strong> de cada <span class="math inline">\(x\)</span> por el término cerrado <span class="math inline">\(c_x\)</span>. Los cuantificadores originales quedan intactos. En cada fórmula sólo se sustituyen los nombres de su conjunto finito <span class="math inline">\(\operatorname{FV}(\varphi)\)</span>, por lo que la construcción es una recursión finita sin elección, captura ni exigencia de soporte finito para un conjunto de premisas. Para <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span>, definimos <span class="math inline">\(\Gamma^p=\{\gamma^p:\gamma\in\Gamma\}\)</span>. Entonces <span class="math inline">\(\Gamma^p\subseteq\operatorname{Sent}_{\tau^p}\)</span> es un conjunto por reemplazo.</p>
+<p>Las operaciones <span class="math inline">\(\varphi\mapsto\varphi^p\)</span>, <span class="math inline">\(\Gamma\mapsto\Gamma^p\)</span> son <em>traducciones metateóricas</em> y no nuevas reglas del sistema objeto. En particular <span class="math inline">\(\gamma^p\)</span> NO se identifica sintácticamente con una clausura universal de <span class="math inline">\(\gamma\)</span>.</p>
+</section>
+</section>
+<section id="correspondencia-semántica-entre-parámetros-y-asignaciones" class="level2">
+<h2 class="anchored" data-anchor-id="correspondencia-semántica-entre-parámetros-y-asignaciones">11.16. Correspondencia semántica entre parámetros y asignaciones</h2>
+<section id="tlog-lem-00032" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00032">Lema 11.16.1 — Correspondencia semántica entre parámetros y asignaciones</h3>
+<p><strong>Enunciado.</strong> Sea <span class="math inline">\(\mathfrak B\)</span> una <span class="math inline">\(\tau^p\)</span>-estructura, <span class="math inline">\(\mathfrak A=\mathfrak B\upharpoonright_\tau\)</span>, y definamos la asignación <span class="math inline">\(s_{\mathfrak B}:X\to A\)</span> por <span class="math inline">\(s_{\mathfrak B}(x)=c_x^{\mathfrak B}\)</span>. Para cada <span class="math inline">\(\varphi\in\operatorname{Fm}_\tau\)</span>, <span class="math display">\[
+\boxed{\mathfrak B\models_{\tau^p}\varphi^p\iff
+\mathfrak A,s_{\mathfrak B}\models_\tau\varphi.}
+\]</span> Por tanto <span class="math inline">\(\mathfrak B\models\Gamma^p\iff\mathfrak A,s_{\mathfrak B}\models\Gamma\)</span>.</p>
+<p><strong>Demostración.</strong> Enumeramos <span class="math inline">\(\operatorname{FV}(\varphi)=\{x_1,\ldots,x_m\}\)</span> en el orden fijo de <span class="math inline">\(X\)</span>. Cada <span class="math inline">\(c_{x_i}\)</span> es término cerrado, libre para sustituir por <span class="math inline">\(x_i\)</span> en cualquier matriz; aplicamos sucesivamente el lema de sustitución semántica §8.11 (o su formulación simultánea §8.13). El valor de <span class="math inline">\(c_{x_i}\)</span> en <span class="math inline">\(\mathfrak B\)</span> es <span class="math inline">\(c_{x_i}^{\mathfrak B}\)</span>, independiente de toda asignación. Las actualizaciones de las variables distintas conmutan (§7.5); así, dada cualquier asignación auxiliar <span class="math inline">\(u\)</span>, <span class="math display">\[
+\mathfrak B,u\models\varphi^p
+\iff\mathfrak B,s_{\mathfrak B}\models\varphi.
+\]</span> La equivalencia derecha equivale a <span class="math inline">\(\mathfrak A,s_{\mathfrak B}\models\varphi\)</span> por invariancia de satisfacción al tomar reductos (§8.16). El miembro izquierdo es independiente de <span class="math inline">\(u\)</span>, porque <span class="math inline">\(\varphi^p\)</span> es sentencia (§8.6). Se aplica la equivalencia a cada miembro de <span class="math inline">\(\Gamma\)</span> utilizando <strong>la misma asignación</strong> <span class="math inline">\(s_{\mathfrak B}\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Advertencia.</strong> Esta equivalencia requiere que las constantes <span class="math inline">\(c_x\)</span> compartan una interpretación dentro de <strong>una</strong> estructura. No equivale a asignar distintos valores a la misma variable para premisas diferentes.</p>
+</section>
+</section>
+<section id="clausura-existencial-de-una-familia-finita-consistente" class="level2">
+<h2 class="anchored" data-anchor-id="clausura-existencial-de-una-familia-finita-consistente">11.17. Clausura existencial de una familia finita consistente</h2>
+<section id="tlog-lem-00033" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00033">Lema 11.17.1 — Clausura existencial de una familia finita consistente</h3>
+<p><strong>Enunciado.</strong> Sea <span class="math inline">\(\Sigma=\{\psi_1,\ldots,\psi_k\}\subseteq\operatorname{Fm}_\tau\)</span> un conjunto <strong>finito</strong> consistente en <span class="math inline">\(\mathsf H_\tau^=\)</span>; el caso <span class="math inline">\(k=0\)</span> se atiende separadamente mediante la sentencia válida <span class="math inline">\(\kappa\)</span>. Sea <span class="math inline">\(\Theta=\psi_1\land\cdots\land\psi_k\)</span> una conjunción de orden finito fijado y sean <span class="math inline">\(x_1,\ldots,x_m\)</span> todas las variables libres de <span class="math inline">\(\Theta\)</span>. La clausura existencial <span class="math display">\[
+\delta_\Sigma:=\exists x_1\cdots\exists x_m\,\Theta
+\]</span> es una <strong>sentencia sintácticamente consistente</strong>. Lo sigue siendo en la subsignatura finita formada por los símbolos extralógicos presentes en <span class="math inline">\(\Sigma\)</span>.</p>
+<p><strong>Demostración.</strong> Por iteración del esquema <code>Q2</code>, aplicado al término variable que coincide con el nombre cuantificado, y composición proposicional, se obtiene el <strong>teorema lógico</strong> <span class="math inline">\(\vdash\Theta\to\delta_\Sigma\)</span>. La sustitución de una variable por sí misma es siempre <code>FreeFor</code>; cada cuantificación existencial de la sucesión elimina una variable libre. Supongamos <span class="math inline">\(\{\delta_\Sigma\}\vdash\bot\)</span>. El test de consistencia de §9.23 proporciona <span class="math inline">\(\vdash\neg\delta_\Sigma\)</span>. Por contraposición clásica de <span class="math inline">\(\vdash\Theta\to\delta_\Sigma\)</span> deducimos <span class="math inline">\(\vdash\neg\Theta\)</span>. Pero de <span class="math inline">\(\Sigma\)</span> se deduce <span class="math inline">\(\Theta\)</span> por las reglas de conjunción de §9.16; de ahí <span class="math inline">\(\Sigma\vdash\bot\)</span>, contradicción. Si una prueba de inconsistencia existiera en la subsignatura finita <span class="math inline">\(\sigma\)</span> de <span class="math inline">\(\delta_\Sigma\)</span>, seguiría siendo una prueba en <span class="math inline">\(\tau\)</span> por persistencia de instancias axiomáticas (§7.13), imposible. Para <span class="math inline">\(\Sigma=\varnothing\)</span>, tomamos <span class="math inline">\(\delta_\Sigma=\kappa\)</span>, consistente por corrección y la validez de la igualdad reflexiva. <span class="math inline">\(\square\)</span></p>
+<p><strong>Observación.</strong> Se han introducido cuantificadores <strong>existenciales</strong>, no universales; la clausura universal de premisas abiertas modificaría la condición local que pretendemos modelar.</p>
+</section>
+</section>
+<section id="satisfacibilidad-finita-de-las-sentencias-parametrizadas" class="level2">
+<h2 class="anchored" data-anchor-id="satisfacibilidad-finita-de-las-sentencias-parametrizadas">11.18. Satisfacibilidad finita de las sentencias parametrizadas</h2>
+<section id="tlog-pro-00029" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00029">Proposición 11.18.1 — Satisfacibilidad finita de las sentencias parametrizadas</h3>
+<p><strong>Enunciado.</strong> Para <span class="math inline">\(\Lambda\subseteq\operatorname{Fm}_\tau\)</span> sintácticamente consistente, <strong>cada subconjunto finito</strong> de <span class="math inline">\(\Lambda^p\subseteq\operatorname{Sent}_{\tau^p}\)</span> es satisfacible en alguna <span class="math inline">\(\tau^p\)</span>-estructura. No se requiere que <span class="math inline">\(\Lambda\)</span> ni <span class="math inline">\(\tau\)</span> sean numerables.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(F\subseteq\Lambda^p\)</span> finito. Como cada elemento de <span class="math inline">\(F\)</span> es imagen de alguna fórmula de <span class="math inline">\(\Lambda\)</span>, una selección <strong>finita</strong> en ZF proporciona un <span class="math inline">\(\Sigma\subseteq\Lambda\)</span> finito con <span class="math inline">\(F\subseteq\Sigma^p\)</span>. Por monotonía y consistencia de <span class="math inline">\(\Lambda\)</span>, también <span class="math inline">\(\Sigma\)</span> es consistente. El lema anterior suministra una sentencia consistente <span class="math inline">\(\delta_\Sigma\)</span> sobre una firma finita <span class="math inline">\(\sigma\)</span>. Por existencia de modelos para sentencias de firma numerable (§11.10), existe una <span class="math inline">\(\sigma\)</span>-estructura <span class="math inline">\(\mathfrak C\models\delta_\Sigma\)</span>. La semántica de los finitos existenciales da testigos <span class="math inline">\(a_1,\ldots,a_m\in C\)</span> que, asignados a <span class="math inline">\(x_1,\ldots,x_m\)</span>, satisfacen <span class="math inline">\(\Theta\)</span>, y por tanto simultáneamente <span class="math inline">\(\Sigma\)</span>. Extendemos esa asignación a todo <span class="math inline">\(X\)</span> por un único valor predeterminado <span class="math inline">\(a_0\in C\)</span>, posible por <span class="math inline">\(C\ne\varnothing\)</span>; si <span class="math inline">\(m=0\)</span>, se usa directamente la independencia de asignación de las sentencias.</p>
+<p>Expandimos <span class="math inline">\(\mathfrak C\)</span> uniformemente a una <span class="math inline">\(\tau\)</span>-estructura <span class="math inline">\(\mathfrak A\)</span> interpretando las funciones no presentes por la función constante de valor <span class="math inline">\(a_0\)</span> y las relaciones nuevas como vacías (§7.12). Conservamos la satisfacción de <span class="math inline">\(\Sigma\)</span> por reductos (§8.16). Finalmente ampliamos a <span class="math inline">\(\tau^p\)</span> mediante <span class="math inline">\(c_x^{\mathfrak B}=s(x)\)</span>; la correspondencia §11.16 asegura <span class="math inline">\(\mathfrak B\models\Sigma^p\)</span>, de donde <span class="math inline">\(\mathfrak B\models F\)</span>. Ninguna expansión requiere una elección simultánea de valores independientes para los símbolos nuevos: todos reciben interpretaciones uniformes. <span class="math inline">\(\square\)</span></p>
+<p><strong>Límite exacto:</strong> éste es un teorema de <strong>satisfacibilidad finita</strong> de <span class="math inline">\(\Lambda^p\)</span>, no de existencia de un único modelo para toda <span class="math inline">\(\Lambda\)</span>. La última conclusión necesitará una forma de compacidad sentencial apropiada al conjunto de símbolos empleados.</p>
+</section>
+</section>
+<section id="completitud-fuerte-local-para-premisas-numerables" class="level2">
+<h2 class="anchored" data-anchor-id="completitud-fuerte-local-para-premisas-numerables">11.19. Completitud fuerte local para premisas numerables</h2>
+<section id="tlog-mth-00044" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00044">Metateorema 11.19.1 — Completitud fuerte local para premisas numerables</h3>
+<p><strong>Enunciado.</strong> Sea <span class="math inline">\(\tau\)</span> una signatura cualquiera, incluso no bien ordenable, y <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span> un conjunto <strong>numerable</strong> (finito o con inyección en <span class="math inline">\(\omega\)</span>). Para toda <span class="math inline">\(\varphi\in\operatorname{Fm}_\tau\)</span>, <span class="math display">\[
+\boxed{\Gamma\models_\tau\varphi\iff
+\Gamma\vdash_{\mathsf H_\tau^=}\varphi.}
+\]</span> Es la consecuencia <strong>local</strong>: una única asignación satisface todas las premisas.</p>
+<p><strong>Demostración.</strong> La dirección <span class="math inline">\(\vdash\Rightarrow\models\)</span> es §10.9. Para la inversa razonamos por contraposición. Si <span class="math inline">\(\Gamma\nvdash\varphi\)</span>, el test de consistencia y el teorema de deducción (§9.23) muestran que <span class="math inline">\(\Lambda=\Gamma\cup\{\neg\varphi\}\)</span> es consistente; de lo contrario <span class="math inline">\(\Gamma\vdash\neg\neg\varphi\)</span> y, por eliminación clásica de doble negación, <span class="math inline">\(\Gamma\vdash\varphi\)</span>.</p>
+<p>Por §11.18, toda parte finita de <span class="math inline">\(\Lambda^p\)</span> es satisfacible. La teoría <span class="math inline">\(\Lambda^p\)</span> es <strong>numerable</strong>, por ser imagen de un conjunto numerable más un elemento; no es necesario que la signatura ambiente <span class="math inline">\(\tau^p\)</span> sea numerable. Si <span class="math inline">\(\Lambda^p\vdash\bot\)</span>, la finitariedad (§9.10) produciría un subconjunto finito <span class="math inline">\(F\subseteq\Lambda^p\)</span> que demuestra <span class="math inline">\(\bot\)</span>; la corrección de §10 lo impediría porque <span class="math inline">\(F\)</span> posee un modelo. Por tanto <span class="math inline">\(\Lambda^p\)</span> es consistente.</p>
+<p>Aplicamos §11.12, existencia de modelo para teorías <strong>numerables</strong> de sentencias en <strong>cualquier</strong> signatura: existe <span class="math inline">\(\mathfrak B\models_{\tau^p}\Lambda^p\)</span>. Al tomar el reducto <span class="math inline">\(\mathfrak A\)</span> y la asignación <span class="math inline">\(s(x)=c_x^{\mathfrak B}\)</span>, el lema §11.16 da <span class="math inline">\(\mathfrak A,s\models\Gamma\)</span> y <span class="math inline">\(\mathfrak A,s\models\neg\varphi\)</span>. Éste es un contramodelo <strong>local</strong> de <span class="math inline">\(\Gamma\models\varphi\)</span>. Se ha obtenido la contraposición deseada. <span class="math inline">\(\square\)</span></p>
+<p><strong>Fundamento.</strong> No se requirió AC, DC, elección numerable ni BPI. La numerabilidad afecta al <strong>conjunto de premisas</strong>, no necesariamente a todos los símbolos de <span class="math inline">\(\tau\)</span>.</p>
+</section>
+</section>
+<section id="adecuación-finitariedad-semántica-y-compacidad-local-numerable" class="level2">
+<h2 class="anchored" data-anchor-id="adecuación-finitariedad-semántica-y-compacidad-local-numerable">11.20. Adecuación, finitariedad semántica y compacidad local numerable</h2>
+<section id="tlog-cor-00010" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00010">Corolario 11.20.1 — Adecuación, finitariedad semántica y compacidad local numerable</h3>
+<p>Para cualquier <span class="math inline">\(\tau\)</span> y <span class="math inline">\(\Gamma\)</span> numerable, la corrección y completitud fuerte de §11.19 producen <span class="math inline">\(\Gamma\vdash\varphi\iff\Gamma\models\varphi\)</span>; en consecuencia, <span class="math display">\[
+\Gamma\models\varphi\iff
+(\exists\Gamma_0\subseteq\Gamma\text{ finito})\;
+\Gamma_0\models\varphi.
+\]</span> La dirección no trivial usa completitud, finitariedad deductiva (§9.10) y corrección sobre el subconjunto finito. Además, si todo subconjunto finito de <span class="math inline">\(\Gamma\)</span> es <strong>localmente satisfacible</strong>, entonces existe una <span class="math inline">\(\tau\)</span>-estructura <span class="math inline">\(\mathfrak A\)</span> y <strong>una asignación</strong> <span class="math inline">\(s\)</span> tales que <span class="math inline">\(\mathfrak A,s\models\Gamma\)</span>. Si no, <span class="math inline">\(\Gamma\models\bot_\tau\)</span>; la completitud produciría <span class="math inline">\(\Gamma\vdash\bot_\tau\)</span>, y una prueba finita refutaría la satisfacibilidad de una parte finita. El caso de premisas sentenciales coincide con la compacidad del §11.11. <span class="math inline">\(\square\)</span></p>
+<p>No se afirma aquí que la compacidad de <strong>todos</strong> los conjuntos de fórmulas de una firma arbitraria sea un teorema de ZF.</p>
+</section>
+</section>
+<section id="régimen-de-buen-orden-y-principio-booleano-de-ideal-primo" class="level2">
+<h2 class="anchored" data-anchor-id="régimen-de-buen-orden-y-principio-booleano-de-ideal-primo">11.21. Régimen de buen orden y principio booleano de ideal primo</h2>
+<section id="tlog-cnv-00013" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00013">Convención 11.21.1 — Régimen de buen orden y principio booleano de ideal primo</h3>
+<p>Una signatura se llama <strong>bien ordenable</strong> si existe un buen orden sobre el conjunto de todos sus símbolos extralógicos (conservando sus aridades). Se puede fijar uno como <strong>dato local</strong> cuando existe; no se afirma que todas las signaturas admitan tal orden. Las palabras finitas sobre una firma bien ordenada forman un conjunto bien ordenable por longitud y orden lexicográfico; su orden puede escogerse constructivamente a partir del dato inicial, sin AC.</p>
+<p>Se designa por <strong>BPI</strong> (<em>Boolean Prime Ideal Theorem</em>, equivalente al lema del ultrafiltro) el enunciado: «todo álgebra de Boole no trivial posee un ideal primo», equivalentemente «todo filtro propio en un álgebra de Boole admite extensión a ultrafiltro». Se distinguirán sistemáticamente tres niveles de fundamento:</p>
+<ul>
+<li><strong>ZF</strong>: todas las construcciones sin BPI, incluso para firmas bien ordenables y conjuntos numerables de fórmulas;</li>
+<li><strong>ZF + BPI</strong>: resultados generales para conjuntos de fórmulas sobre toda firma, sin bien ordenabilidad supuesta;</li>
+<li><strong>equivalencia sobre ZF</strong>: afirmación de que la generalidad irrestricta de compacidad/completitud de primer orden tiene exactamente la fuerza de BPI.</li>
+</ul>
+<p>BPI <strong>no</strong> se incorpora al contrato <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathrm{ZF}\)</span> del tratado: sus usos posteriores serán siempre hipótesis condicionales visibles. Tampoco se confundirá «firma bien ordenable» con «firma numerable».</p>
+</section>
+</section>
+<section id="torre-de-henkin-sobre-una-signatura-arbitraria-sin-elección" class="level2">
+<h2 class="anchored" data-anchor-id="torre-de-henkin-sobre-una-signatura-arbitraria-sin-elección">11.22. Torre de Henkin sobre una signatura arbitraria, sin elección</h2>
+<section id="tlog-lem-00034" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00034">Lema 11.22.1 — Torre de Henkin sobre una signatura arbitraria, sin elección</h3>
+<p><strong>Enunciado.</strong> Fijados cualquier signatura <span class="math inline">\(L\)</span> y conjunto consistente de <strong>sentencias</strong> <span class="math inline">\(S\subseteq\operatorname{Sent}_L\)</span>, existe en ZF una expansión <span class="math inline">\(L_\omega\supseteq L\)</span> por constantes nularias y una teoría <span class="math inline">\(T_H\subseteq\operatorname{Sent}_{L_\omega}\)</span> consistente con <span class="math inline">\(S\subseteq T_H\)</span>, de modo que para cada sentencia existencial <span class="math inline">\(\delta=\exists x\rho\)</span> del lenguaje final aparece en <span class="math inline">\(T_H\)</span> una instancia testigo <span class="math inline">\(\delta\to\rho(c_\delta)\)</span>.</p>
+<p><strong>Demostración.</strong> Replicamos la construcción por niveles de §11.4, pero sin enumerar las sentencias. En el nivel <span class="math inline">\(n\)</span> formamos por separación el <strong>conjunto</strong> <span class="math inline">\(E_n\)</span> de todas las sentencias existenciales de <span class="math inline">\(L_n\)</span>. Para cada <span class="math inline">\(\delta\in E_n\)</span> agregamos exactamente una constante nueva con etiqueta <span class="math inline">\((n,\delta)\)</span>, disjunta de las anteriores, y su axioma de Henkin. Todos los conjuntos están determinados por estas etiquetas, que <strong>no se eligen</strong>. Si un subconjunto finito de axiomas-testigo produjera contradicción, podríamos adjuntar los finitísimos axiomas uno por uno conservando consistencia mediante §11.3, ya que los nombres de constantes asignados son nuevos y mutuamente distintos. Contradicción. La finitariedad deductiva de §9.10 permite concluir consistencia de todos los axiomas-testigo del nivel a la vez. Inducimos sobre <span class="math inline">\(n\)</span> y tomamos las uniones de firmas y teorías: si la unión fuera inconsistente, una prueba finita estaría contenida en un nivel, imposible. Cada sentencia existencial de <span class="math inline">\(L_\omega\)</span> utiliza finitos símbolos nuevos y pertenece a algún <span class="math inline">\(L_n\)</span>; allí recibe su testigo en el nivel siguiente. <span class="math inline">\(\square\)</span></p>
+<p><strong>Precisión importante.</strong> Esta torre —incluso para firmas no bien ordenables— <strong>no</strong> exige BPI. El punto en que una elección adicional podría ser indispensable es obtener una <strong>teoría completa/maximal</strong> de sentencias sobre un conjunto de símbolos sin buen orden, no añadir los testigos.</p>
+</section>
+</section>
+<section id="modelo-de-henkin-en-toda-signatura-bien-ordenable-sin-selector-global" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-de-henkin-en-toda-signatura-bien-ordenable-sin-selector-global">11.23. Modelo de Henkin en toda signatura bien ordenable, sin selector global</h2>
+<section id="tlog-mth-00045" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00045">Metateorema 11.23.1 — Modelo de Henkin en toda signatura bien ordenable, sin selector global</h3>
+<p><strong>Enunciado.</strong> En ZF, si <span class="math inline">\(L\)</span> es <strong>bien ordenable</strong>, todo <span class="math inline">\(S\subseteq\operatorname{Sent}_L\)</span> consistente posee un modelo con universo no vacío. No hay restricción de cardinalidad ni de número de sentencias.</p>
+<p><strong>Demostración, I: completar sin AC.</strong> Fijamos un buen orden del alfabeto inicial. La torre de §11.22 adjunta etiquetas <span class="math inline">\((n,\delta)\)</span> a fórmulas finitas; por recursión podemos bien ordenar los nuevos símbolos de cada nivel, el conjunto unión de símbolos de <span class="math inline">\(L_\omega\)</span> y las sentencias <span class="math inline">\(\operatorname{Sent}_{L_\omega}\)</span>, sin elegir una sucesión arbitraria de órdenes. Indexamos dichas sentencias <span class="math inline">\((\theta_\xi)_{\xi&lt;\alpha}\)</span> por un ordinal <span class="math inline">\(\alpha\)</span>. Partiendo de <span class="math inline">\(T_H\)</span>, la recursión <strong>transfinita determinista</strong> agrega <span class="math inline">\(\theta_\xi\)</span> si mantiene consistencia, y en caso contrario agrega <span class="math inline">\(\neg\theta_\xi\)</span>. En los ordinales límite toma uniones; cualquier contradicción en un límite dependería de una prueba y por tanto de finitas etapas anteriores. Los tests de consistencia y doble negación de §9.23 garantizan que la decisión negativa conserva consistencia. La unión final <span class="math inline">\(T^*\)</span> es consistente, decide todas las sentencias, es deductivamente cerrada <strong>en sentencias</strong> y hereda los axiomas-testigo de <span class="math inline">\(T_H\)</span>.</p>
+<p><strong>II: modelo cociente.</strong> Sea <span class="math inline">\(M=\operatorname{CTm}_{L_\omega}/\sim\)</span>, donde <span class="math inline">\(t\sim u\iff (t\doteq u)\in T^*\)</span>. Interpretamos funciones y relaciones mediante términos cerrados como en §11.7. Las demostraciones de reflexividad, simetría, transitividad y congruencia de §9.17 aseguran que las interpretaciones son independientes del representante; <span class="math inline">\(M\)</span> es no vacío porque la expansión Henkin provee alguna constante nularia.</p>
+<p><strong>III: verdad sin elección de representantes.</strong> En un lenguaje <strong>no necesariamente numerable</strong> no damos por existente una sección global <span class="math inline">\(r:M\to\operatorname{CTm}\)</span>. En cambio demostramos por inducción, para cada fórmula <span class="math inline">\(\chi\)</span> y <strong>cada asignación finita</strong> <span class="math inline">\(a:V\to M\)</span>, <span class="math inline">\(V\supseteq FV(\chi)\)</span> finito, lo siguiente: elegidos representantes cerrados <span class="math inline">\(t_x\in a(x)\)</span> <strong>solamente para los finitos <span class="math inline">\(x\in V\)</span></strong>, la satisfacción de <span class="math inline">\(\chi\)</span> bajo cualquier asignación que extienda <span class="math inline">\(a\)</span> equivale a <span class="math inline">\(\chi[t_x/x]_{x\in FV(\chi)}\in T^*\)</span>. La propiedad no depende de los representantes porque dos elecciones finitas dan tuplas de términos cerrados demostrablemente iguales y <code>E2</code>, congruencia y cierre sentencial transportan la pertenencia. Los átomos y cinco conectivos siguen §11.9. Para <span class="math inline">\(\exists x\)</span> se usa un testigo <span class="math inline">\(c\)</span> provisto por Henkin; para <span class="math inline">\(\forall x\)</span>, una instancia cerrada por cada elemento <span class="math inline">\(b\in M\)</span> (escogiendo <em>un</em> representante de <em>ese</em> <span class="math inline">\(b\)</span>, no de todos a la vez) y, en el sentido inverso, el testigo para <span class="math inline">\(\exists x\neg\chi\)</span>. Las actualizaciones de asignaciones concuerdan por el lema de sustitución §8.11. La inducción implica que cada sentencia de <span class="math inline">\(T^*\)</span>, y particularmente de <span class="math inline">\(S\)</span>, es verdadera en la estructura. Tomamos el reducto a <span class="math inline">\(L\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Control ZF.</strong> Una elección finita es demostrable en ZF; una sección global del cociente de términos para una firma no numerable <strong>no se ha supuesto</strong>. Este detalle impide introducir inadvertidamente un principio de elección en el lema de verdad.</p>
+</section>
+</section>
+<section id="completitud-fuerte-local-y-compacidad-sobre-firmas-bien-ordenables" class="level2">
+<h2 class="anchored" data-anchor-id="completitud-fuerte-local-y-compacidad-sobre-firmas-bien-ordenables">11.24. Completitud fuerte local y compacidad sobre firmas bien ordenables</h2>
+<section id="tlog-mth-00046" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00046">Metateorema 11.24.1 — Completitud fuerte local y compacidad sobre firmas bien ordenables</h3>
+<p><strong>Enunciado.</strong> En ZF, dada una signatura <strong>bien ordenable</strong> <span class="math inline">\(\tau\)</span>, para <strong>todos</strong> <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span> y <span class="math inline">\(\varphi\in\operatorname{Fm}_\tau\)</span>, <span class="math display">\[
+\boxed{\Gamma\models_\tau\varphi\iff\Gamma\vdash_{\mathsf H_\tau^=}\varphi.}
+\]</span> Además, un conjunto cualquiera <span class="math inline">\(\Gamma\)</span> de fórmulas es localmente satisfacible si y sólo si todas sus partes finitas lo son.</p>
+<p><strong>Demostración.</strong> El lenguaje <span class="math inline">\(\tau^p\)</span> es bien ordenable: es la unión disjunta de los símbolos de <span class="math inline">\(\tau\)</span> con <span class="math inline">\(\{c_x:x\in X\}\)</span>, explícitamente numerables. Si <span class="math inline">\(\Gamma\nvdash\varphi\)</span>, <span class="math inline">\(\Lambda=\Gamma\cup\{\neg\varphi\}\)</span> es consistente (§9.23), y por §11.18 cada parte finita de <span class="math inline">\(\Lambda^p\)</span> tiene modelo. Por corrección y finitariedad, <span class="math inline">\(\Lambda^p\)</span> es sintácticamente consistente. Aplicamos existencia de modelo de §11.23 en el lenguaje <strong>bien ordenable</strong> <span class="math inline">\(\tau^p\)</span>, sin requerir que <span class="math inline">\(\Lambda^p\)</span> sea numerable. Su modelo produce el contramodelo local por §11.16. La otra implicación sigue de §10.9. Para compacidad local repetimos el argumento con <span class="math inline">\(\Lambda=\Gamma\)</span> y prescindimos de <span class="math inline">\(\neg\varphi\)</span>; la teoría parametrizada es finitamente satisfacible y obtiene modelo. <span class="math inline">\(\square\)</span></p>
+<p><strong>Alcance:</strong> no se ha elegido un buen orden para una firma <strong>no bien ordenable</strong>. El teorema es enteramente de ZF, pero su hipótesis de bien ordenabilidad <strong>no</strong> puede suprimirse por decreto.</p>
+</section>
+</section>
+<section id="bpi-proporciona-modelos-a-toda-teoría-consistente-de-sentencias" class="level2">
+<h2 class="anchored" data-anchor-id="bpi-proporciona-modelos-a-toda-teoría-consistente-de-sentencias">11.25. BPI proporciona modelos a toda teoría consistente de sentencias</h2>
+<section id="tlog-mth-00047" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00047">Metateorema 11.25.1 — BPI proporciona modelos a toda teoría consistente de sentencias</h3>
+<p><strong>Enunciado condicional.</strong> En <strong>ZF+BPI</strong>, para una signatura arbitraria <span class="math inline">\(L\)</span> y un conjunto consistente <span class="math inline">\(S\subseteq\operatorname{Sent}_L\)</span>, existe <span class="math inline">\(\mathfrak A\models_L S\)</span>.</p>
+<p><strong>Demostración.</strong> Construimos en ZF la teoría Henkin <span class="math inline">\(T_H\)</span> en <span class="math inline">\(L_\omega\)</span> mediante §11.22. Definimos sobre <span class="math inline">\(\operatorname{Sent}_{L_\omega}\)</span> la equivalencia <span class="math inline">\(\theta\approx\eta\iff T_H\vdash\theta\leftrightarrow\eta\)</span>. Las reglas proposicionales, la deducción y el cierre lógico prueban que el cociente <span class="math inline">\(\mathbb B=\operatorname{Sent}_{L_\omega}/\!\approx\)</span>, con operaciones inducidas por <span class="math inline">\(\neg,\land,\lor\)</span>, es un álgebra de Boole. Su <span class="math inline">\(0\)</span> es la clase de <span class="math inline">\(\bot\)</span>, su <span class="math inline">\(1\)</span> la de una sentencia teorema <span class="math inline">\(\kappa\)</span>; por consistencia, <span class="math inline">\(0\ne1\)</span>. <strong>Aquí y solamente aquí invocamos BPI:</strong> existe un ultrafiltro <span class="math inline">\(U\)</span> en <span class="math inline">\(\mathbb B\)</span>.</p>
+<p>Definimos <span class="math inline">\(T^*=\{\theta\in\operatorname{Sent}_{L_\omega}:[\theta]\in U\}\)</span>. El ultrafiltro contiene los teoremas de <span class="math inline">\(T_H\)</span>, evita <span class="math inline">\(\bot\)</span>, y decide exactamente una de <span class="math inline">\(\theta,\neg\theta\)</span> para cada sentencia. Si <span class="math inline">\(T^*\vdash\sigma\)</span> para una <strong>sentencia</strong> <span class="math inline">\(\sigma\)</span>, una prueba usa finitas premisas sentenciales <span class="math inline">\(\gamma_1,\ldots,\gamma_n\in T^*\)</span>; el teorema de deducción del §9.15 permite internalizarlas y obtener <span class="math inline">\(\vdash\gamma_1\to(\cdots(\gamma_n\to\sigma)\cdots)\)</span>. Por las leyes booleanas de <span class="math inline">\(U\)</span>, <span class="math inline">\([\sigma]\in U\)</span>, de modo que <span class="math inline">\(\sigma\in T^*\)</span>. En particular, los axiomas <span class="math inline">\(\delta\to\rho(c_\delta)\in T_H\)</span> y <code>MP</code> aseguran testigos cerrados para todos los existenciales <span class="math inline">\(\delta\in T^*\)</span>.</p>
+<p>Construimos el modelo cociente de términos cerrados como en §11.23, utilizando congruencia de igualdad y el lema de verdad para <strong>asignaciones finitas</strong>. Aquí el lenguaje podría no admitir buen orden ni sección global del cociente, pero cada paso de evaluación requiere sólo finitos representantes, obtenibles en ZF. Todas las sentencias de <span class="math inline">\(T_H\supseteq S\)</span> son verdaderas en el modelo; reducimos al lenguaje inicial. <span class="math inline">\(\square\)</span></p>
+<p>No se ha utilizado Zorn ni el axioma completo de elección. Si se retira BPI, esta demostración <strong>no</strong> produce en general un ultrafiltro sobre <span class="math inline">\(\mathbb B\)</span>.</p>
+</section>
+</section>
+<section id="bpi-implica-completitud-fuerte-y-compacidad-irrestrictas" class="level2">
+<h2 class="anchored" data-anchor-id="bpi-implica-completitud-fuerte-y-compacidad-irrestrictas">11.26. BPI implica completitud fuerte y compacidad irrestrictas</h2>
+<section id="tlog-mth-00048" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00048">Metateorema 11.26.1 — BPI implica completitud fuerte y compacidad irrestrictas</h3>
+<p><strong>Enunciado condicional.</strong> Bajo <strong>ZF+BPI</strong>, para toda signatura <span class="math inline">\(\tau\)</span>, sin hipótesis de numerabilidad ni buen orden, y para cualquier conjunto <span class="math inline">\(\Gamma\)</span> de fórmulas abiertas o cerradas, <span class="math display">\[
+\boxed{\Gamma\vdash\varphi\iff\Gamma\models_\tau\varphi,}
+\]</span> y toda familia de fórmulas localmente satisfacible sobre cada parte finita posee una <strong>misma estructura y una misma asignación</strong> que satisfacen el conjunto completo.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(\Gamma\nvdash\varphi\)</span>, <span class="math inline">\(\Lambda=\Gamma\cup\{\neg\varphi\}\)</span> es consistente (§9.23). La teoría de parámetros <span class="math inline">\(\Lambda^p\)</span> es finitamente satisfacible en <span class="math inline">\(\tau^p\)</span> por §11.18. La corrección y la finitariedad implican consistencia de <span class="math inline">\(\Lambda^p\)</span>. El teorema anterior, <strong>que usa BPI</strong>, le da un modelo. El lema de parámetros produce un contramodelo local a <span class="math inline">\(\Gamma\models\varphi\)</span>. La otra dirección es el teorema de corrección §10.9, que no requiere BPI.</p>
+<p>Para compacidad de conjuntos de fórmulas, suponemos cada parte finita localmente satisfacible. Toda parte finita de <span class="math inline">\(\Gamma^p\)</span> es satisfacible (se amplía una estructura y se interpretan las constantes según los valores de la asignación testigo); por finitariedad y corrección, <span class="math inline">\(\Gamma^p\)</span> es consistente. La existencia de modelo para sentencias con BPI y el lema de parámetros entregan una estructura y <strong>una única asignación</strong> que satisfacen <span class="math inline">\(\Gamma\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Distinción:</strong> el condicional <span class="math inline">\(\mathrm{BPI}\Rightarrow\mathrm{completitud/compacidad}\)</span> es un teorema de ZF. No se afirma <span class="math inline">\(\mathrm{ZF}\vdash\mathrm{BPI}\)</span>.</p>
+</section>
+</section>
+<section id="la-compacidad-irrestricta-de-primer-orden-implica-bpi" class="level2">
+<h2 class="anchored" data-anchor-id="la-compacidad-irrestricta-de-primer-orden-implica-bpi">11.27. La compacidad irrestricta de primer orden implica BPI</h2>
+<section id="tlog-mth-00049" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00049">Metateorema 11.27.1 — La compacidad irrestricta de primer orden implica BPI</h3>
+<p><strong>Enunciado.</strong> Trabajando en ZF, si para <strong>toda</strong> signatura y <strong>todo</strong> conjunto de sentencias cada subteoría finita con modelo implica existencia de modelo global, entonces vale BPI.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(B\)</span> un álgebra de Boole <strong>no trivial</strong>. Formamos la signatura <span class="math inline">\(\tau_B\)</span> con una constante distinta <span class="math inline">\(c_b\)</span> por cada <span class="math inline">\(b\in B\)</span> y un predicado unario <span class="math inline">\(U\)</span>. Formamos la teoría <span class="math inline">\(\mathcal T_B\)</span> con las siguientes <strong>sentencias</strong>: <span class="math display">\[
+\begin{aligned}
+&amp;U(c_{1_B}),\qquad\neg U(c_{0_B}),\\
+&amp;U(c_{b\wedge d})\leftrightarrow(U(c_b)\land U(c_d)),\qquad (b,d\in B),\\
+&amp;U(c_{\neg b})\leftrightarrow\neg U(c_b),\qquad (b\in B).
+\end{aligned}
+\]</span> Por reemplazo y separación, <span class="math inline">\(\mathcal T_B\)</span> es un conjunto, sin necesidad de bien ordenar <span class="math inline">\(B\)</span>.</p>
+<p><strong>Satisfacibilidad finita.</strong> Dada una parte finita <span class="math inline">\(F\subseteq\mathcal T_B\)</span>, sea <span class="math inline">\(E\subseteq B\)</span> el conjunto finito de los índices de todas las constantes que efectivamente figuran en <span class="math inline">\(F\)</span>, junto a <span class="math inline">\(0_B,1_B\)</span>. La subálgebra de Boole <span class="math inline">\(B_E\)</span> generada por <span class="math inline">\(E\)</span> es <strong>finita</strong>: cada elemento es una combinación booleana de un número fijo finito de generadores. Como <span class="math inline">\(B\)</span> es no trivial, también <span class="math inline">\(B_E\)</span> lo es, y posee un átomo <span class="math inline">\(a\)</span>. La función <span class="math inline">\(h:B_E\to\{0,1\}\)</span>, <span class="math inline">\(h(b)=1\iff a\le b\)</span>, es un homomorfismo booleano. Construimos una estructura de universo <strong><span class="math inline">\(B\)</span></strong>, interpretando cada <span class="math inline">\(c_b\)</span> como <span class="math inline">\(b\)</span> y <span class="math inline">\(U\)</span> mediante el subconjunto <span class="math inline">\(\{b\in B_E:h(b)=1\}\subseteq B\)</span> (fuera de <span class="math inline">\(B_E\)</span> interpretamos <span class="math inline">\(U\)</span> como falso). Cada sentencia de <span class="math inline">\(F\)</span> sólo menciona constantes indexadas por elementos de <span class="math inline">\(E\)</span>, donde <span class="math inline">\(h\)</span> satisface las identidades; así <span class="math inline">\(F\)</span> tiene modelo. Esta elección de un átomo de <strong>un álgebra finita</strong> está disponible en ZF y no produce una familia de elecciones arbitrarias.</p>
+<p>Por la <strong>hipótesis de compacidad irrestricta</strong> existe una <span class="math inline">\(\tau_B\)</span>-estructura <span class="math inline">\(\mathfrak M\models\mathcal T_B\)</span>. Definimos <span class="math inline">\(v:B\to\{0,1\}\)</span> por <span class="math inline">\(v(b)=1\iff\mathfrak M\models U(c_b)\)</span>. Las sentencias de <span class="math inline">\(\mathcal T_B\)</span> prueban <span class="math inline">\(v(1)=1\)</span>, <span class="math inline">\(v(0)=0\)</span>, <span class="math inline">\(v(b\wedge d)=v(b)\land v(d)\)</span> y <span class="math inline">\(v(\neg b)=1-v(b)\)</span>. Por dualidad booleana, <span class="math inline">\(v\)</span> preserva todas las operaciones; <span class="math inline">\(I=v^{-1}(\{0\})\)</span> es un ideal primo de <span class="math inline">\(B\)</span>. Como <span class="math inline">\(B\)</span> era arbitraria, vale BPI. <span class="math inline">\(\square\)</span></p>
+<p><strong>Alcance:</strong> el argumento presupone la <strong>versión sobre todas las signaturas</strong> de compacidad; no permite inferir BPI a partir del fragmento numerable de los apartados anteriores.</p>
+</section>
+</section>
+<section id="fuerza-exacta-de-compacidad-y-completitud-en-zf" class="level2">
+<h2 class="anchored" data-anchor-id="fuerza-exacta-de-compacidad-y-completitud-en-zf">11.28. Fuerza exacta de compacidad y completitud en ZF</h2>
+<section id="tlog-cor-00011" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00011">Corolario 11.28.1 — Fuerza exacta de compacidad y completitud en ZF</h3>
+<p><strong>Enunciado.</strong> En la metateoría ZF son equivalentes las afirmaciones siguientes:</p>
+<ol type="1">
+<li>BPI, o lema del ultrafiltro sobre todo álgebra de Boole no trivial.</li>
+<li>Compacidad de conjuntos de <strong>sentencias</strong> para toda signatura.</li>
+<li>Compacidad <strong>local</strong> de conjuntos de fórmulas, abiertas o cerradas, para toda signatura.</li>
+<li>Completitud fuerte <span class="math inline">\(\Gamma\models_\tau\varphi\Rightarrow\Gamma\vdash_{\mathsf H_\tau^=}\varphi\)</span> para toda signatura y cualesquiera premisas abiertas.</li>
+</ol>
+<p><strong>Demostración.</strong> (1) implica (2) por §11.25 (existencia de modelo para teorías consistentes) y finitariedad/corrección; también implica (3) y (4) por §11.26. (3) implica (2) restringiendo a sentencias. (2) implica (1) por la codificación de álgebras de Boole del §11.27. Por último, (4) implica (2): si cada parte finita de una teoría sentencial <span class="math inline">\(S\)</span> es satisfacible, la corrección y finitariedad implican <span class="math inline">\(S\nvdash\bot\)</span>. Si <span class="math inline">\(S\)</span> no tuviera modelo, semánticamente <span class="math inline">\(S\models\bot\)</span>, y por (4) existiría una derivación de <span class="math inline">\(\bot\)</span>, contradicción. <span class="math inline">\(\square\)</span></p>
+<p>No hay contradicción con los resultados de ZF de §§11.19 y 11.24: allí las teorías o las signaturas poseen estructuras de enumeración/buen orden explícitas; aquí se cuantifica sobre <strong>todas</strong> las signaturas sin tal dato. El capítulo no confunde «equivalencia demostrada en ZF» con «BPI demostrado en ZF».</p>
+</section>
+</section>
+<section id="vector-de-adecuación-por-hipótesis-y-cierre-tipado" class="level2">
+<h2 class="anchored" data-anchor-id="vector-de-adecuación-por-hipótesis-y-cierre-tipado">11.29. Vector de adecuación por hipótesis y cierre tipado</h2>
+<section id="tlog-cor-00012" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00012">Corolario 11.29.1 — Vector de adecuación por hipótesis y cierre tipado</h3>
+<p>Quedan demostrados los siguientes niveles, sin interpolar hipótesis:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Metateoría</th>
+<th>Lenguaje y premisas</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ZF</td>
+<td>Premisas numerables; signatura arbitraria</td>
+<td>corrección + completitud local y compacidad local</td>
+</tr>
+<tr class="even">
+<td>ZF</td>
+<td>Signatura bien ordenable; premisas arbitrarias</td>
+<td>corrección + completitud local y compacidad local</td>
+</tr>
+<tr class="odd">
+<td>ZF+BPI</td>
+<td>Signatura y premisas arbitrarias</td>
+<td>corrección + completitud local y compacidad local</td>
+</tr>
+<tr class="even">
+<td>ZF</td>
+<td>Cuantificación irrestricta sobre toda signatura</td>
+<td><strong>equivalente a BPI</strong>, no se declara incondicional</td>
+</tr>
+</tbody>
+</table>
+<p>La finitariedad semántica <span class="math inline">\(\Gamma\models\varphi\iff\exists\Gamma_0\subseteq\Gamma\text{ finito}\ (\Gamma_0\models\varphi)\)</span> está demostrada dentro de cada uno de los tres regímenes positivos de la tabla: se combina completitud fuerte, finitariedad de pruebas y corrección. La conclusión no transforma una relación local en consecuencia global, ni define <span class="math inline">\(\vdash\)</span> mediante <span class="math inline">\(\models\)</span>. Tampoco se afirma una prueba mecánica Lean. <span class="math inline">\(\square\)</span></p>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-10.html">← Capítulo 10</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-12.html">Capítulo 12 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

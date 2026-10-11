@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 20 — Diagonalización y lema diagonal – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#una-fórmula-que-nombra-su-propio-código" id="toc-una-fórmula-que-nombra-su-propio-código" class="nav-link active" data-scroll-target="#una-fórmula-que-nombra-su-propio-código">20.0. Una fórmula que nombra su propio código</a></li>
+  <li><a href="#fundamento-y-alcance-de-la-autorreferencia" id="toc-fundamento-y-alcance-de-la-autorreferencia" class="nav-link" data-scroll-target="#fundamento-y-alcance-de-la-autorreferencia">20.1. Fundamento y alcance de la autorreferencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00031" id="toc-tlog-cnv-00031" class="nav-link" data-scroll-target="#tlog-cnv-00031">Convención 20.1.1 — Fundamento y alcance de la autorreferencia</a></li>
+  </ul></li>
+  <li><a href="#comillas-de-gödel-instanciación-y-tres-igualdades" id="toc-comillas-de-gödel-instanciación-y-tres-igualdades" class="nav-link" data-scroll-target="#comillas-de-gödel-instanciación-y-tres-igualdades">20.2. Comillas de Gödel, instanciación y tres igualdades</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00143" id="toc-tlog-def-00143" class="nav-link" data-scroll-target="#tlog-def-00143">Definición 20.2.1 — Comillas de Gödel, instanciación y tres igualdades</a></li>
+  </ul></li>
+  <li><a href="#higiene-efectiva-de-variables-en-representantes" id="toc-higiene-efectiva-de-variables-en-representantes" class="nav-link" data-scroll-target="#higiene-efectiva-de-variables-en-representantes">20.3. Higiene efectiva de variables en representantes</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00081" id="toc-tlog-lem-00081" class="nav-link" data-scroll-target="#tlog-lem-00081">Lema 20.3.1 — Higiene efectiva de variables en representantes</a></li>
+  </ul></li>
+  <li><a href="#autoinstanciación-en-una-coordenada-designada" id="toc-autoinstanciación-en-una-coordenada-designada" class="nav-link" data-scroll-target="#autoinstanciación-en-una-coordenada-designada">20.4. Autoinstanciación en una coordenada designada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00144" id="toc-tlog-def-00144" class="nav-link" data-scroll-target="#tlog-def-00144">Definición 20.4.1 — Autoinstanciación en una coordenada designada</a></li>
+  </ul></li>
+  <li><a href="#representación-numeral-de-la-autoinstanciación" id="toc-representación-numeral-de-la-autoinstanciación" class="nav-link" data-scroll-target="#representación-numeral-de-la-autoinstanciación">20.5. Representación numeral de la autoinstanciación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00082" id="toc-tlog-lem-00082" class="nav-link" data-scroll-target="#tlog-lem-00082">Lema 20.5.1 — Representación numeral de la autoinstanciación</a></li>
+  </ul></li>
+  <li><a href="#eliminación-de-un-testigo-fijado-por-un-numeral" id="toc-eliminación-de-un-testigo-fijado-por-un-numeral" class="nav-link" data-scroll-target="#eliminación-de-un-testigo-fijado-por-un-numeral">20.6. Eliminación de un testigo fijado por un numeral</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00083" id="toc-tlog-lem-00083" class="nav-link" data-scroll-target="#tlog-lem-00083">Lema 20.6.1 — Eliminación de un testigo fijado por un numeral</a></li>
+  </ul></li>
+  <li><a href="#punto-fijo-demostrable-y-parámetro-de-código" id="toc-punto-fijo-demostrable-y-parámetro-de-código" class="nav-link" data-scroll-target="#punto-fijo-demostrable-y-parámetro-de-código">20.7. Punto fijo demostrable y parámetro de código</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00145" id="toc-tlog-def-00145" class="nav-link" data-scroll-target="#tlog-def-00145">Definición 20.7.1 — Punto fijo demostrable y parámetro de código</a></li>
+  </ul></li>
+  <li><a href="#lema-diagonal-para-sentencias-aritméticas" id="toc-lema-diagonal-para-sentencias-aritméticas" class="nav-link" data-scroll-target="#lema-diagonal-para-sentencias-aritméticas">20.8. Lema diagonal para sentencias aritméticas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00112" id="toc-tlog-mth-00112" class="nav-link" data-scroll-target="#tlog-mth-00112">Metateorema 20.8.1 — Lema diagonal para sentencias aritméticas</a></li>
+  </ul></li>
+  <li><a href="#hipótesis-exactas-y-lectura-de-la-prueba-diagonal" id="toc-hipótesis-exactas-y-lectura-de-la-prueba-diagonal" class="nav-link" data-scroll-target="#hipótesis-exactas-y-lectura-de-la-prueba-diagonal">20.9. Hipótesis exactas y lectura de la prueba diagonal</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00127" id="toc-tlog-pro-00127" class="nav-link" data-scroll-target="#tlog-pro-00127">Proposición 20.9.1 — Hipótesis exactas y lectura de la prueba diagonal</a></li>
+  </ul></li>
+  <li><a href="#lema-diagonal-con-parámetros-preservados" id="toc-lema-diagonal-con-parámetros-preservados" class="nav-link" data-scroll-target="#lema-diagonal-con-parámetros-preservados">20.10. Lema diagonal con parámetros preservados</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00113" id="toc-tlog-mth-00113" class="nav-link" data-scroll-target="#tlog-mth-00113">Metateorema 20.10.1 — Lema diagonal con parámetros preservados</a></li>
+  </ul></li>
+  <li><a href="#instancias-de-un-punto-fijo-con-parámetros" id="toc-instancias-de-un-punto-fijo-con-parámetros" class="nav-link" data-scroll-target="#instancias-de-un-punto-fijo-con-parámetros">20.11. Instancias de un punto fijo con parámetros</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00031" id="toc-tlog-cor-00031" class="nav-link" data-scroll-target="#tlog-cor-00031">Corolario 20.11.1 — Instancias de un punto fijo con parámetros</a></li>
+  </ul></li>
+  <li><a href="#compilador-externo-total-de-fórmulas-fijas" id="toc-compilador-externo-total-de-fórmulas-fijas" class="nav-link" data-scroll-target="#compilador-externo-total-de-fórmulas-fijas">20.12. Compilador externo total de fórmulas fijas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00114" id="toc-tlog-mth-00114" class="nav-link" data-scroll-target="#tlog-mth-00114">Metateorema 20.12.1 — Compilador externo total de fórmulas fijas</a></li>
+  </ul></li>
+  <li><a href="#obtención-efectiva-de-una-derivación-del-bicondicional" id="toc-obtención-efectiva-de-una-derivación-del-bicondicional" class="nav-link" data-scroll-target="#obtención-efectiva-de-una-derivación-del-bicondicional">20.13. Obtención efectiva de una derivación del bicondicional</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00115" id="toc-tlog-mth-00115" class="nav-link" data-scroll-target="#tlog-mth-00115">Metateorema 20.13.1 — Obtención efectiva de una derivación del bicondicional</a></li>
+  </ul></li>
+  <li><a href="#transferencia-a-extensiones-de-pa" id="toc-transferencia-a-extensiones-de-pa" class="nav-link" data-scroll-target="#transferencia-a-extensiones-de-pa">20.14. Transferencia a extensiones de PA</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00128" id="toc-tlog-pro-00128" class="nav-link" data-scroll-target="#tlog-pro-00128">Proposición 20.14.1 — Transferencia a extensiones de PA</a></li>
+  </ul></li>
+  <li><a href="#satisfacción-de-los-puntos-fijos-en-modelos-de-pa" id="toc-satisfacción-de-los-puntos-fijos-en-modelos-de-pa" class="nav-link" data-scroll-target="#satisfacción-de-los-puntos-fijos-en-modelos-de-pa">20.15. Satisfacción de los puntos fijos en modelos de PA</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00129" id="toc-tlog-pro-00129" class="nav-link" data-scroll-target="#tlog-pro-00129">Proposición 20.15.1 — Satisfacción de los puntos fijos en modelos de PA</a></li>
+  </ul></li>
+  <li><a href="#la-presentación-universal-del-lema-diagonal" id="toc-la-presentación-universal-del-lema-diagonal" class="nav-link" data-scroll-target="#la-presentación-universal-del-lema-diagonal">20.16. La presentación universal del lema diagonal</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00084" id="toc-tlog-lem-00084" class="nav-link" data-scroll-target="#tlog-lem-00084">Lema 20.16.1 — La presentación universal del lema diagonal</a></li>
+  </ul></li>
+  <li><a href="#cambio-demostrablemente-equivalente-del-predicado-objetivo" id="toc-cambio-demostrablemente-equivalente-del-predicado-objetivo" class="nav-link" data-scroll-target="#cambio-demostrablemente-equivalente-del-predicado-objetivo">20.17. Cambio demostrablemente equivalente del predicado objetivo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00130" id="toc-tlog-pro-00130" class="nav-link" data-scroll-target="#tlog-pro-00130">Proposición 20.17.1 — Cambio demostrablemente equivalente del predicado objetivo</a></li>
+  </ul></li>
+  <li><a href="#autoinstanciación-de-una-familia-finita-codificada" id="toc-autoinstanciación-de-una-familia-finita-codificada" class="nav-link" data-scroll-target="#autoinstanciación-de-una-familia-finita-codificada">20.18. Autoinstanciación de una familia finita codificada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00146" id="toc-tlog-def-00146" class="nav-link" data-scroll-target="#tlog-def-00146">Definición 20.18.1 — Autoinstanciación de una familia finita codificada</a></li>
+  </ul></li>
+  <li><a href="#representación-efectiva-de-los-lectores-diagonales-finitos" id="toc-representación-efectiva-de-los-lectores-diagonales-finitos" class="nav-link" data-scroll-target="#representación-efectiva-de-los-lectores-diagonales-finitos">20.19. Representación efectiva de los lectores diagonales finitos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00085" id="toc-tlog-lem-00085" class="nav-link" data-scroll-target="#tlog-lem-00085">Lema 20.19.1 — Representación efectiva de los lectores diagonales finitos</a></li>
+  </ul></li>
+  <li><a href="#lema-diagonal-simultáneo-con-parámetros" id="toc-lema-diagonal-simultáneo-con-parámetros" class="nav-link" data-scroll-target="#lema-diagonal-simultáneo-con-parámetros">20.20. Lema diagonal simultáneo con parámetros</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00116" id="toc-tlog-mth-00116" class="nav-link" data-scroll-target="#tlog-mth-00116">Metateorema 20.20.1 — Lema diagonal simultáneo con parámetros</a></li>
+  </ul></li>
+  <li><a href="#referencias-mutuas-y-ausencia-de-una-elección-infinita" id="toc-referencias-mutuas-y-ausencia-de-una-elección-infinita" class="nav-link" data-scroll-target="#referencias-mutuas-y-ausencia-de-una-elección-infinita">20.21. Referencias mutuas y ausencia de una elección infinita</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00032" id="toc-tlog-cor-00032" class="nav-link" data-scroll-target="#tlog-cor-00032">Corolario 20.21.1 — Referencias mutuas y ausencia de una elección infinita</a></li>
+  </ul></li>
+  <li><a href="#objetivos-constantes-y-falta-de-unicidad-literal" id="toc-objetivos-constantes-y-falta-de-unicidad-literal" class="nav-link" data-scroll-target="#objetivos-constantes-y-falta-de-unicidad-literal">20.22. Objetivos constantes y falta de unicidad literal</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00131" id="toc-tlog-pro-00131" class="nav-link" data-scroll-target="#tlog-pro-00131">Proposición 20.22.1 — Objetivos constantes y falta de unicidad literal</a></li>
+  </ul></li>
+  <li><a href="#sentencias-diagonales-para-el-predicado-de-demostrabilidad" id="toc-sentencias-diagonales-para-el-predicado-de-demostrabilidad" class="nav-link" data-scroll-target="#sentencias-diagonales-para-el-predicado-de-demostrabilidad">20.23. Sentencias diagonales para el predicado de demostrabilidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00147" id="toc-tlog-def-00147" class="nav-link" data-scroll-target="#tlog-def-00147">Definición 20.23.1 — Sentencias diagonales para el predicado de demostrabilidad</a></li>
+  </ul></li>
+  <li><a href="#qué-entregan-las-instancias-de-demostrabilidad" id="toc-qué-entregan-las-instancias-de-demostrabilidad" class="nav-link" data-scroll-target="#qué-entregan-las-instancias-de-demostrabilidad">20.24. Qué entregan las instancias de demostrabilidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00132" id="toc-tlog-pro-00132" class="nav-link" data-scroll-target="#tlog-pro-00132">Proposición 20.24.1 — Qué entregan las instancias de demostrabilidad</a></li>
+  </ul></li>
+  <li><a href="#dependencia-de-la-numeración-y-del-representante" id="toc-dependencia-de-la-numeración-y-del-representante" class="nav-link" data-scroll-target="#dependencia-de-la-numeración-y-del-representante">20.25. Dependencia de la numeración y del representante</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00133" id="toc-tlog-pro-00133" class="nav-link" data-scroll-target="#tlog-pro-00133">Proposición 20.25.1 — Dependencia de la numeración y del representante</a></li>
+  </ul></li>
+  <li><a href="#hipótesis-de-teorías-y-obligaciones-de-la-parte-v" id="toc-hipótesis-de-teorías-y-obligaciones-de-la-parte-v" class="nav-link" data-scroll-target="#hipótesis-de-teorías-y-obligaciones-de-la-parte-v">20.26. Hipótesis de teorías y obligaciones de la Parte V</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00148" id="toc-tlog-def-00148" class="nav-link" data-scroll-target="#tlog-def-00148">Definición 20.26.1 — Hipótesis de teorías y obligaciones de la Parte V</a></li>
+  </ul></li>
+  <li><a href="#cierre-de-diagonalización-y-de-la-parte-iv" id="toc-cierre-de-diagonalización-y-de-la-parte-iv" class="nav-link" data-scroll-target="#cierre-de-diagonalización-y-de-la-parte-iv">20.27. Cierre de diagonalización y de la Parte IV</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00033" id="toc-tlog-cor-00033" class="nav-link" data-scroll-target="#tlog-cor-00033">Corolario 20.27.1 — Cierre de diagonalización y de la Parte IV</a></li>
+  </ul></li>
+  <li><a href="#ejemplos-y-lectura-del-cierre" id="toc-ejemplos-y-lectura-del-cierre" class="nav-link" data-scroll-target="#ejemplos-y-lectura-del-cierre">20.28. Ejemplos y lectura del cierre</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 20 — Diagonalización y lema diagonal</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-19.html">← Capítulo 19</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-21.html">Capítulo 21 →</a></p>
+<section id="una-fórmula-que-nombra-su-propio-código" class="level2">
+<h2 class="anchored" data-anchor-id="una-fórmula-que-nombra-su-propio-código">20.0. Una fórmula que nombra su propio código</h2>
+<p>Una expresión aritmética no contiene, como parte de su gramática, una operación que diga «esta misma expresión». El capítulo anterior hizo calculable la sustitución de numerales y proporcionó fórmulas que representan ese cálculo en cada entrada concreta. Con ese puente podemos construir una sentencia δ para la cual PA prueba que δ equivale a aplicar un predicado dado al numeral del código de δ.</p>
+<p>La construcción tendrá tres momentos: preparar una fórmula auxiliar B, calcular su código p y sustituir el numeral de p en B. El código de la fórmula resultante se obtiene entonces mediante autoinstanciación. La representación aritmética de esa función permite demostrar el bicondicional. Así la autorreferencia aparece como consecuencia de operaciones sintácticas finitas y pruebas de igualdad.</p>
+<p>Desarrollaremos primero el lema para sentencias, después conservaremos parámetros y construiremos familias finitas de referencias mutuas. También obtendremos procedimientos externos de construcción y búsqueda de pruebas. Las aplicaciones a demostrabilidad se presentan con el predicado concreto de CH19; su análisis de incompletitud queda en los capítulos21–22. Éste es el capítulo final de la Parte IV.</p>
+</section>
+<section id="fundamento-y-alcance-de-la-autorreferencia" class="level2">
+<h2 class="anchored" data-anchor-id="fundamento-y-alcance-de-la-autorreferencia">20.1. Fundamento y alcance de la autorreferencia</h2>
+<section id="tlog-cnv-00031" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00031">Convención 20.1.1 — Fundamento y alcance de la autorreferencia</h3>
+<p>El universo de trabajo externo sigue siendo <span class="math inline">\(M_{ext}=\mathrm{ZF}\)</span> clásica, sin AC ni BPI. RM es el sistema operacional metateórico, y PA es la teoría objeto aritmética fijada en CH19. <span class="math inline">\(\mathrm{ZF}_{obj}\)</span> conserva su lenguaje y sus axiomas propios: no se le atribuye una interpretación aritmética, consistencia o modelo por analogía con PA.</p>
+<p>Todos los puntos fijos de este capítulo son <strong>fórmulas finitas de <span class="math inline">\(L_A\)</span></strong> y todas sus equivalencias son teoremas de PA. Su construcción y el cálculo de sus códigos ocurren externamente. Una afirmación de existencia de una derivación PA se demuestra mediante las reglas admisibles ya expandidas desde axiomas y MP; no constituye por sí sola verificación Lean. No añadiremos una regla primitiva de autorreferencia ni un símbolo objeto que convierta una fórmula en su código.</p>
+<p>La Parte IV termina al disponer de estos puntos fijos y de sus procedimientos efectivos. El análisis de independencia y del comportamiento interno de los predicados de demostrabilidad corresponde a la Parte V. Construir una equivalencia diagonal no basta, por sí solo, para declarar independencia, reflexión o consistencia interna.</p>
+</section>
+</section>
+<section id="comillas-de-gödel-instanciación-y-tres-igualdades" class="level2">
+<h2 class="anchored" data-anchor-id="comillas-de-gödel-instanciación-y-tres-igualdades">20.2. Comillas de Gödel, instanciación y tres igualdades</h2>
+<section id="tlog-def-00143" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00143">Definición 20.2.1 — Comillas de Gödel, instanciación y tres igualdades</h3>
+<p>Para una fórmula aritmética concreta A, <span class="math inline">\(\ulcorner A\urcorner\)</span> abrevia <strong>el término numeral</strong> <span class="math inline">\(\overline{G(A)}\)</span>. La operación G sigue siendo la codificación inyectiva de árboles del capítulo18; no se convierte en un símbolo de <span class="math inline">\(L_A\)</span>. El natural <span class="math inline">\(G(A)\)</span>, el término <span class="math inline">\(\ulcorner A\urcorner\)</span> y el código de ese término <span class="math inline">\(\operatorname{Num}(G(A))\)</span> son objetos distintos.</p>
+<p>Si x es una variable designada, <span class="math inline">\(A(t)\)</span> abrevia la sustitución literal segura <span class="math inline">\(A[t/x]_{lit}\)</span>, especificando x cuando pueda haber ambigüedad. En particular <span class="math inline">\(A(\ulcorner B\urcorner)\)</span> sustituye el <strong>numeral del código de B</strong> en los lugares libres designados de A; no inserta el árbol B. No se reemplazan apariciones ligadas ni se visita el término recién insertado. La notación de comillas vale también para fórmulas abiertas: G registra su árbol, incluidos los nombres de sus variables.</p>
+<p>Distinguimos <span class="math inline">\(A=B\)</span> como igualdad literal de árboles, <span class="math inline">\(G(A)=G(B)\)</span> como igualdad externa de naturales y <span class="math inline">\(\mathrm{PA}\vdash A\leftrightarrow B\)</span> como equivalencia demostrable. Las primeras dos son equivalentes por inyectividad de G. La tercera no identifica códigos ni árboles. Las equivalencias alfa están igualmente separadas de la igualdad literal.</p>
+</section>
+</section>
+<section id="higiene-efectiva-de-variables-en-representantes" class="level2">
+<h2 class="anchored" data-anchor-id="higiene-efectiva-de-variables-en-representantes">20.3. Higiene efectiva de variables en representantes</h2>
+<section id="tlog-lem-00081" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00081">Lema 20.3.1 — Higiene efectiva de variables en representantes</h3>
+<p><strong>Lema.</strong> Una fórmula finita con una lista de variables libres designadas distintas puede transformarse efectivamente en una copia con nombres ligados fuera de un conjunto finito F y con esos argumentos en cualesquiera posiciones distintas prescritas. Se pueden dejar intactos otros parámetros libres. El renombrado ligado produce equivalencia alfa y equivalencia PA; el cambio de argumentos libres es una sustitución simultánea segura, no una identificación de fórmulas con distinto soporte libre.</p>
+<p><strong>Prueba.</strong> Recorremos las ocurrencias de cuantificadores con una pila de ligadores. A cada ocurrencia asignamos el menor índice fuera de F, de todos los nombres originales y de los ya asignados. En las hojas de variable, si hay un ligador activo homónimo, cambiamos por el nuevo nombre del ligador más cercano; de lo contrario conservamos la hoja libre. Así no se cambia una variable libre ni se confunden dos ligadores anidados homónimos. El recorrido termina por el número finito de constructores. La decisión alfa de §18.62 comprueba que el resultado conserva el árbol de índices de ligadores; CH9 da la equivalencia PA de las copias alfa.</p>
+<p>Para cambiar los argumentos libres, incluimos en F todos los nombres destino y todos los parámetros que permanecerán. Escogemos además nombres intermedios frescos, uno por argumento. Primero cambiamos cada argumento original por su intermedio, después cada intermedio por su destino. Las sustituciones son seguras porque todos estos nombres están ausentes de los ligadores; los intermedios evitan un intercambio secuencial erróneo, como cambiar x por y y luego y por x. Si un destino coincide con un parámetro que debe conservarse, la petición se rechaza: los destinos deben ser distintos de tales parámetros. La condición es decidible.</p>
+<p>Para transportar una prueba, primero se generalizan sus argumentos libres, después se particularizan con los nuevos nombres (seguros tras la higiene). La equivalencia alfa de la copia ligada permite cambiar esa copia dentro de la conclusión. También se puede renombrar uniformemente toda la derivación, expandiendo las reglas admisibles. Ninguna sustitución por variable se realiza suponiendo seguridad sin comprobarla. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="autoinstanciación-en-una-coordenada-designada" class="level2">
+<h2 class="anchored" data-anchor-id="autoinstanciación-en-una-coordenada-designada">20.4. Autoinstanciación en una coordenada designada</h2>
+<section id="tlog-def-00144" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00144">Definición 20.4.1 — Autoinstanciación en una coordenada designada</h3>
+<p>Para cada índice externo i fijamos la función total <span class="math display">\[
+D_i(c)=\begin{cases}
+G(A[\bar c/x_i]_{lit}),&amp;c=G(A),\ A\text{ fórmula de }L_A,\\
+0,&amp;c\text{ no es código de fórmula de }L_A.
+\end{cases}
+\]</span> Es la composición <span class="math inline">\(\operatorname{Sub}(c,i,c)\)</span> de CH19. Para i=0 es exactamente D, con la misma totalización por0. Las fórmulas válidas tienen códigos positivos y la salida inválida0 no es el código de una fórmula. Si <span class="math inline">\(x_i\notin FV(A)\)</span>, entonces <span class="math inline">\(D_i(G(A))=G(A)\)</span>; no se requiere que la coordenada ocurra.</p>
+<p>El numeral insertado es cerrado, por tanto seguro aunque aparezcan ligadores llamados <span class="math inline">\(x_i\)</span>. La función no decide verdad, demostrabilidad o pertenencia a una clase semántica. Un código de término, una secuencia de fórmulas y el número de una prueba no pasan la guarda de fórmula sólo por ser números naturales.</p>
+</section>
+</section>
+<section id="representación-numeral-de-la-autoinstanciación" class="level2">
+<h2 class="anchored" data-anchor-id="representación-numeral-de-la-autoinstanciación">20.5. Representación numeral de la autoinstanciación</h2>
+<section id="tlog-lem-00082" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00082">Lema 20.5.1 — Representación numeral de la autoinstanciación</h3>
+<p><strong>Lema.</strong> Para cada i se obtiene efectivamente un representante aritmético <span class="math inline">\(\Theta_i(u,v)\)</span> de <span class="math inline">\(D_i\)</span>, con sólo u,v libres. Para todo c externo y <span class="math inline">\(d=D_i(c)\)</span>, <span class="math display">\[
+\mathrm{PA}\vdash\forall v(\Theta_i(\bar c,v)\leftrightarrow v=\bar d).\tag{R_i(c)}
+\]</span> Se pueden elegir u,v en posiciones distintas prescritas y todos los ligadores frescos respecto de cualquier conjunto finito de nombres. <span class="math inline">\(\Theta_i\)</span> puede obtenerse de la fórmula Σ1 de su programa RM; después de cambios alfa se entiende como una copia demostrablemente equivalente a ella.</p>
+<p><strong>Prueba.</strong> El programa total Sub y composición RM, con proyecciones y la constante i, calculan <span class="math inline">\(D_i\)</span>. La representación general de CH19 produce su gráfica y, como cada entrada estándar termina, la equivalencia funcional en esa entrada. El lema de higiene cambia los dos argumentos y sus ligadores conservando esa equivalencia por generalización/particularización y equivalencia alfa. Cada elección es finita y efectiva. La construcción depende de i, pero la selección del programa con la constante i y su compilación en fórmula también son uniformes externamente.</p>
+<p>No se usa ni se reclama aquí <span class="math inline">\(\mathrm{PA}\vdash\forall u\exists v\Theta_i(u,v)\)</span>. La prueba diagonal necesitará una sola instancia <span class="math inline">\(R_i(c)\)</span>, con c un número concreto que se construirá después de fijar la fórmula auxiliar. No hay una circularidad: el programa de <span class="math inline">\(D_i\)</span> y su representante se fijan antes de conocer ese c.&nbsp;<span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="eliminación-de-un-testigo-fijado-por-un-numeral" class="level2">
+<h2 class="anchored" data-anchor-id="eliminación-de-un-testigo-fijado-por-un-numeral">20.6. Eliminación de un testigo fijado por un numeral</h2>
+<section id="tlog-lem-00083" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00083">Lema 20.6.1 — Eliminación de un testigo fijado por un numeral</h3>
+<p><strong>Lema lógico.</strong> Sea t un término cerrado, C(v,z) una fórmula en la que v no liga ninguna de las apariciones libres que se sustituirán, y E(v) una fórmula con v libre. Si <span class="math display">\[
+\mathrm{PA}\vdash\forall v(E(v)\leftrightarrow v=t),
+\]</span> entonces, con los parámetros <span class="math inline">\(\bar z\)</span> intactos, <span class="math display">\[
+\mathrm{PA}\vdash\exists v(E(v)\land C(v,\bar z))\leftrightarrow C(t,\bar z).\tag{E}
+\]</span> También se prueba <span class="math inline">\(\forall v(E(v)\to C(v,\bar z))\leftrightarrow C(t,\bar z)\)</span>.</p>
+<p><strong>Prueba.</strong> Para la dirección existencial hacia la derecha, bajo E(v) y C(v), la particularización de la hipótesis da v=t; el esquema de sustitución de iguales para la fórmula C da C(t). Se descarga el testigo mediante la eliminación existencial admisible, tomando un nombre auxiliar ausente de la conclusión y las hipótesis restantes. Para la recíproca, reflexividad y la equivalencia en v=t dan E(t); de C(t) se obtiene E(t)∧C(t), y la introducción existencial concluye. Deducción y cálculo proposicional combinan ambas implicaciones en el bicondicional.</p>
+<p>Para la forma universal, C(t) y E(v) implican v=t y C(v), por simetría y sustitución de iguales; se descarga y generaliza v, que no es libre en C(t). Recíprocamente se particulariza en t y se usa E(t). Los nombres de testigo se escogen frescos y t es cerrado, de modo que todas las particularizaciones son seguras. Estas son expansiones finitas de las reglas de CH9, desde axiomas y MP, sin axioma nuevo. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="punto-fijo-demostrable-y-parámetro-de-código" class="level2">
+<h2 class="anchored" data-anchor-id="punto-fijo-demostrable-y-parámetro-de-código">20.7. Punto fijo demostrable y parámetro de código</h2>
+<section id="tlog-def-00145" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00145">Definición 20.7.1 — Punto fijo demostrable y parámetro de código</h3>
+<p>Si A(z) tiene a lo sumo z libre, una <strong>sentencia fija para A en PA</strong> es una sentencia δ tal que <span class="math display">\[
+\mathrm{PA}\vdash\delta\leftrightarrow A(\ulcorner\delta\urcorner).
+\]</span> Si <span class="math inline">\(A(z,\bar w)\)</span> tiene parámetros libres distintos de z, una <strong>fórmula fija con parámetros</strong> es δ(w), con <span class="math inline">\(FV(\delta)\subseteq\{\bar w\}\)</span>, tal que <span class="math display">\[
+\mathrm{PA}\vdash\delta(\bar w)\leftrightarrow A(\ulcorner\delta\urcorner,\bar w).
+\]</span> Las comillas en esta última ecuación contienen el código del árbol abierto δ, <strong>no</strong> el código de cada una de sus instancias numerales. No se exige igualdad literal de los dos lados, unicidad de δ ni que A describa demostrabilidad. Un parámetro z vacuo también es admisible.</p>
+</section>
+</section>
+<section id="lema-diagonal-para-sentencias-aritméticas" class="level2">
+<h2 class="anchored" data-anchor-id="lema-diagonal-para-sentencias-aritméticas">20.8. Lema diagonal para sentencias aritméticas</h2>
+<section id="tlog-mth-00112" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00112">Metateorema 20.8.1 — Lema diagonal para sentencias aritméticas</h3>
+<p><strong>Metateorema (lema diagonal).</strong> Para toda fórmula aritmética A(z) con <span class="math inline">\(FV(A)\subseteq\{z\}\)</span> existe una sentencia δ, construida efectivamente a partir de A, tal que <span class="math inline">\(\mathrm{PA}\vdash\delta\leftrightarrow A(\ulcorner\delta\urcorner)\)</span>.</p>
+<p><strong>Construcción.</strong> Escogemos i fuera de Names(A) y una variable y distinta, también fuera de esos nombres. Ponemos x=<span class="math inline">\(x_i\)</span>. Normalizamos el representante <span class="math inline">\(\Theta_i(x,y)\)</span> con todos sus ligadores fuera de Names(A)∪{x,y}. En A reemplazamos <strong>sólo</strong> z libre por y; como y no aparece entre sus nombres, es seguro. Llamamos C(y)=A[y/z] y construimos <span class="math display">\[
+B(x):=\exists y(\Theta_i(x,y)\land C(y)),\quad p:=G(B),\quad
+\delta:=B[\bar p/x]_{lit}.\tag{1}
+\]</span> Todos los pasos son finitos. B sólo puede tener x libre; δ es cerrada. La sustitución del numeral es siempre segura. Por la definición de <span class="math inline">\(D_i\)</span> y la igualdad literal de (1), <span class="math display">\[
+D_i(p)=G(B[\bar p/x]_{lit})=G(\delta)=:d.\tag{2}
+\]</span></p>
+<p><strong>Derivación.</strong> La única instancia de representación necesaria es <span class="math display">\[
+\mathrm{PA}\vdash\forall y(\Theta_i(\bar p,y)\leftrightarrow y=\bar d).
+\]</span> Literalmente δ es <span class="math inline">\(\exists y(\Theta_i(\bar p,y)\land C(y))\)</span>. Aplicando el lema de eliminación del testigo obtenemos <span class="math inline">\(\mathrm{PA}\vdash\delta\leftrightarrow C(\bar d)\)</span>. La sustitución compuesta C[d/y] es literalmente A[d/z]: y era fresco, x no aparecía en A y el término final es cerrado. Por (2), <span class="math inline">\(\bar d=\ulcorner\delta\urcorner\)</span>, como igualdad de términos. Concluye la equivalencia anunciada. <span class="math inline">\(\square\)</span></p>
+<p>En el caso especial de una entrada ya higienizada para x0 puede usarse D=D0 directamente. Escoger una coordenada fresca permite tratar también A con ligadores llamados x0 sin identificar códigos alfa. En ningún paso se resuelve una ecuación numérica <span class="math inline">\(d=G(A(\bar d))\)</span>: se calcula p, luego δ, luego d, en ese orden.</p>
+</section>
+</section>
+<section id="hipótesis-exactas-y-lectura-de-la-prueba-diagonal" class="level2">
+<h2 class="anchored" data-anchor-id="hipótesis-exactas-y-lectura-de-la-prueba-diagonal">20.9. Hipótesis exactas y lectura de la prueba diagonal</h2>
+<section id="tlog-pro-00127" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00127">Proposición 20.9.1 — Hipótesis exactas y lectura de la prueba diagonal</h3>
+<p><strong>Proposición.</strong> La prueba del lema diagonal usa sintaxis efectiva, igualdad y reglas lógicas, y la representación funcional <strong>en la entrada numeral p</strong> de una función sintáctica total externa. No usa consistencia de PA, un modelo de PA, totalidad uniforme de <span class="math inline">\(D_i\)</span> dentro de PA, un predicado de verdad o condiciones internas de derivabilidad. La ecuación producida sigue siendo un teorema en una teoría inconsistente que contenga esas mismas derivaciones.</p>
+<p><strong>Prueba.</strong> Se inspecciona la derivación de §20.8: (1) y (2) son cálculos externos de árboles; <span class="math inline">\(R_i(p)\)</span> es una prueba PA obtenida por representación; el resto sólo instancia el lema lógico (E). Ninguno de esos pasos elimina una prueba por inconsistencia ni usa satisfacción. La consistencia externa de PA ya demostrada en CH19 servirá para algunas consecuencias semánticas, pero no se introduce en la construcción. En particular, los números p y d son estándares externos porque proceden de árboles finitos construidos en <span class="math inline">\(M_{ext}\)</span>; no se requiere afirmar dentro de PA que todas las entradas no estándar tengan salida para <span class="math inline">\(D_i\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="lema-diagonal-con-parámetros-preservados" class="level2">
+<h2 class="anchored" data-anchor-id="lema-diagonal-con-parámetros-preservados">20.10. Lema diagonal con parámetros preservados</h2>
+<section id="tlog-mth-00113" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00113">Metateorema 20.10.1 — Lema diagonal con parámetros preservados</h3>
+<p><strong>Metateorema.</strong> Para toda <span class="math inline">\(A(z,w_1,\ldots,w_q)\)</span>, con variables designadas distintas y sin otras variables libres, existe δ(w) con <span class="math inline">\(FV(\delta)\subseteq\{w_1,\ldots,w_q\}\)</span> y <span class="math display">\[
+\mathrm{PA}\vdash\forall w_1\cdots\forall w_q
+\bigl(\delta(\bar w)\leftrightarrow A(\ulcorner\delta\urcorner,\bar w)\bigr).
+\tag{P}
+\]</span> Se admiten q=0 y parámetros vacuos. Si wj aparece libre en A, aparece libre en la δ construida.</p>
+<p><strong>Prueba.</strong> Elegimos x=<span class="math inline">\(x_i\)</span> e y fuera de <strong>todos</strong> los nombres de A, incluidos sus parámetros. Higienizamos <span class="math inline">\(\Theta_i(x,y)\)</span> fuera de estos nombres. Ponemos C(y,w)=A[y/z], <span class="math inline">\(B(x,\bar w)=\exists y(\Theta_i(x,y)\land C(y,\bar w))\)</span>, p=G(B) y δ=B[p/x]. Exactamente como antes, <span class="math inline">\(D_i(p)=G(\delta)=d\)</span>. Ahora <span class="math inline">\(R_i(p)\)</span> tiene sólo y libre bajo su universal, mientras C mantiene <span class="math inline">\(\bar w\)</span> libres. (E) da el bicondicional abierto δ(w)↔︎C(d,w), y la sustitución segura identifica el segundo miembro con A(d,w). La generalización de teoremas de PA, en el orden indicado, produce (P).</p>
+<p>Ningún wj se sustituye, se renombra o queda bajo un nuevo ligador: los nombres y,x y los ligados del representante están fuera de los nombres de A. El soporte libre final es precisamente <span class="math inline">\(FV(A)\setminus\{z\}\)</span>; que una conjunción sea lógicamente equivalente a algo con menos variables no modifica su soporte sintáctico. p codifica B abierta, d codifica δ abierta, y ambos son números fijos independientes de una asignación a los parámetros. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="instancias-de-un-punto-fijo-con-parámetros" class="level2">
+<h2 class="anchored" data-anchor-id="instancias-de-un-punto-fijo-con-parámetros">20.11. Instancias de un punto fijo con parámetros</h2>
+<section id="tlog-cor-00031" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00031">Corolario 20.11.1 — Instancias de un punto fijo con parámetros</h3>
+<p><strong>Corolario.</strong> Para cada tupla estándar <span class="math inline">\(\bar n\)</span> de longitud q, <span class="math display">\[
+\mathrm{PA}\vdash\delta(\overline{\bar n})\leftrightarrow
+A(\ulcorner\delta\urcorner,\overline{\bar n}).
+\]</span> Esta ecuación conserva el código de δ abierta. No se puede cambiarlo, sin otro argumento, por <span class="math inline">\(\ulcorner\delta(\overline{\bar n})\urcorner\)</span>.</p>
+<p><strong>Prueba.</strong> Particularizamos (P) con los numerales cerrados, luego expandimos las sustituciones simultáneas mediante nombres frescos. El término cerrado <span class="math inline">\(\ulcorner\delta\urcorner\)</span> no contiene ningún parámetro, así permanece intacto. La codificación de la instancia se obtiene por otras sustituciones sobre el árbol y puede ser un natural diferente.</p>
+<p>Si se desea un punto fijo de la fórmula <strong>ya especializada</strong> <span class="math inline">\(A(z,\overline{\bar n})\)</span>, se aplica otra vez el lema diagonal a esa fórmula cerrada en los parámetros. Así se obtiene una sentencia εn con su propio código en el bicondicional. No se identifica εn con la instancia de la familia anterior. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="compilador-externo-total-de-fórmulas-fijas" class="level2">
+<h2 class="anchored" data-anchor-id="compilador-externo-total-de-fórmulas-fijas">20.12. Compilador externo total de fórmulas fijas</h2>
+<section id="tlog-mth-00114" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00114">Metateorema 20.12.1 — Compilador externo total de fórmulas fijas</h3>
+<p><strong>Metateorema.</strong> Hay un procedimiento RM total que, dados el código de A, el índice de su argumento de código y una lista S de parámetros distintos, decide la validez de la entrada y devuelve el código de una δ de §20.10; devuelve0 si la entrada no cumple la guarda. En particular se obtiene un compilador total de sentencias fijas para fórmulas con una variable libre designada.</p>
+<p><strong>Procedimiento y prueba.</strong> Se decodifica A en <span class="math inline">\(L_A\)</span>, se decodifica la lista de índices, se comprueba distinción de argumentos y <span class="math inline">\(FV(A)\)</span> contenido en ellos. No se exige que aparezcan todos. El conjunto finito Names(A) da los menores nombres frescos x,y. Se genera el programa fijo de <span class="math inline">\(D_i\)</span> usando la constante i, se aplica el compilador de fórmulas de CH19, y se normaliza su representante a x,y con la higiene de §20.3. Se construyen C, B, se calcula p=G(B), se genera el numeral <span class="math inline">\(\bar p\)</span> y se realiza la sustitución cerrada. El resultado se codifica con G.</p>
+<p>Las guardas y recorridos son totales por CH18. Construir <span class="math inline">\(\bar p\)</span> usa un bucle de exactamente p pasos externos, aunque p pueda ser enorme; codificar cada árbol usa sus constructores finitos. No se necesita probar una cota de complejidad útil. La composición y compilación de macros de CH17 dan un programa RM para cada fase y para su composición; el compilador de fórmulas de CH19 recorre una lista finita de instrucciones que ya ha sido generada. Cada fase termina, así el programa compuesto es total externamente. Su corrección es la construcción de §20.10, y la guarda inválida devuelve0, que no puede confundirse con un resultado válido.</p>
+<p>Es un procedimiento externo sobre códigos. No se añade a PA una función primitiva Fix ni se afirma que PA demuestre la totalidad uniforme de ese programa. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="obtención-efectiva-de-una-derivación-del-bicondicional" class="level2">
+<h2 class="anchored" data-anchor-id="obtención-efectiva-de-una-derivación-del-bicondicional">20.13. Obtención efectiva de una derivación del bicondicional</h2>
+<section id="tlog-mth-00115" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00115">Metateorema 20.13.1 — Obtención efectiva de una derivación del bicondicional</h3>
+<p><strong>Metateorema.</strong> Además del código de δ, se puede obtener efectivamente el código de una prueba PA del bicondicional abierto de §20.10 y, si se pide, de su clausura universal en los parámetros. El procedimiento es total sobre entradas válidas y puede totalizarse con0 en las inválidas.</p>
+<p><strong>Prueba por búsqueda certificada.</strong> Construida δ, se construye literalmente E=δ↔︎A(,w), o bien su clausura universal prescrita. Enumeramos d=0,1,2,… y aplicamos el decidor total externo <span class="math inline">\(Prf^{ext}_{PA}(d,G(E))\)</span> de CH19. Cuando acepta, devolvemos d.&nbsp;Cada comprobación termina, y §20.10 demuestra que existe una derivación PA finita de E. Su código S es algún natural d0, por lo que la búsqueda llegará a él y terminará. Ninguna corrección semántica de PA se usa para esta terminación: se usa la existencia sintáctica de la derivación construida en la prueba del lema.</p>
+<p>La enumeración incluye secuencias originales con axiomas y MP, no un tag nuevo «lema diagonal». Las expansiones de las reglas admisibles de la prueba garantizan que E tiene una prueba en ese formato. Para entradas inválidas se rechaza antes de buscar. Esta búsqueda no decide cuáles fórmulas arbitrarias son teoremas: sólo es total sobre la familia cuya demostrabilidad acabamos de probar.</p>
+<p>Se podría construir directamente la derivación expandiendo las instancias de representación y los esquemas lógicos. El algoritmo de búsqueda basta para la afirmación efectiva y evita atribuir a nuestras regresiones una implementación completa de ese constructor. No se entrega aquí una gigantesca secuencia numeral ni se afirma que una de esas secuencias haya sido validada por Lean. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="transferencia-a-extensiones-de-pa" class="level2">
+<h2 class="anchored" data-anchor-id="transferencia-a-extensiones-de-pa">20.14. Transferencia a extensiones de PA</h2>
+<section id="tlog-pro-00128" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00128">Proposición 20.14.1 — Transferencia a extensiones de PA</h3>
+<p><strong>Proposición.</strong> Si T contiene deductivamente a PA en el mismo lenguaje aritmético y con el mismo cálculo, todos los bicondicionales de este capítulo y sus pruebas PA persisten como teoremas T. Para esta transferencia no hacen falta consistencia, efectividad de los axiomas T ni corrección estándar de T.</p>
+<p><strong>Prueba.</strong> Cada línea axiomática PA y cada aplicación de MP conserva una derivación T; si la inclusión es sólo deductiva, se sustituyen los axiomas PA utilizados por sus pruebas T finitas. La existencia del teorema T sigue. No se promete un algoritmo uniforme para efectuar esta segunda sustitución sin una presentación efectiva de esas pruebas de inclusión; la prueba PA producida por §20.13 siempre existe independientemente de ello.</p>
+<p>La transferencia se refiere al lenguaje <span class="math inline">\(L_A\)</span>. No se aplica automáticamente a <span class="math inline">\(\mathrm{ZF}_{obj}\)</span>: faltaría una interpretación explícita, conservación de igualdad/sustitución y pruebas de la imagen de los axiomas PA. Tampoco se transportan afirmaciones estándar de verdad de T a partir de la mera inclusión PA⊆T. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="satisfacción-de-los-puntos-fijos-en-modelos-de-pa" class="level2">
+<h2 class="anchored" data-anchor-id="satisfacción-de-los-puntos-fijos-en-modelos-de-pa">20.15. Satisfacción de los puntos fijos en modelos de PA</h2>
+<section id="tlog-pro-00129" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00129">Proposición 20.15.1 — Satisfacción de los puntos fijos en modelos de PA</h3>
+<p><strong>Proposición.</strong> La estructura estándar externa satisface el bicondicional diagonal, para toda asignación de sus parámetros. Más generalmente, si se da externamente una estructura <span class="math inline">\(\mathcal M\)</span> que satisface los axiomas PA, satisface también ese bicondicional bajo toda asignación. La segunda afirmación es condicional y no postula la existencia de un modelo no estándar.</p>
+<p><strong>Prueba.</strong> La corrección externa de CH19 aplica a la prueba PA de la equivalencia. Para <span class="math inline">\(\mathcal M\)</span>, la misma inducción sobre la derivación, con sus axiomas PA verdaderos y MP, da satisfacción. En esa estructura <span class="math inline">\(\ulcorner\delta\urcorner\)</span> se interpreta como <span class="math inline">\(S^{G(δ)}(0^{\mathcal M})\)</span>, el numeral de un código calculado <strong>externamente</strong>. No se identifica con una operación interna de codificación de todos los elementos de <span class="math inline">\(\mathcal M\)</span>. La universalización de parámetros garantiza la afirmación para cualquier asignación. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="la-presentación-universal-del-lema-diagonal" class="level2">
+<h2 class="anchored" data-anchor-id="la-presentación-universal-del-lema-diagonal">20.16. La presentación universal del lema diagonal</h2>
+<section id="tlog-lem-00084" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00084">Lema 20.16.1 — La presentación universal del lema diagonal</h3>
+<p><strong>Lema.</strong> La construcción alternativa <span class="math display">\[
+B^\forall(x,\bar w)=\forall y(\Theta_i(x,y)\to A[y/z](y,\bar w)),\quad
+p=G(B^\forall),\quad δ=B^\forall[\bar p/x]
+\]</span> también produce un punto fijo con parámetros, cuando los nombres cumplen la misma higiene. Esta notación <span class="math inline">\(A[y/z](y,\bar w)\)</span> designa una sola sustitución libre, no dos sustituciones consecutivas.</p>
+<p><strong>Prueba.</strong> Se calcula <span class="math inline">\(D_i(p)=G(δ)=d\)</span> y se usa <span class="math inline">\(R_i(p)\)</span>. La segunda parte de (E) da δ↔︎A[d/z], con parámetros intactos. Después se generalizan. La existencia del testigo y la equivalencia de su valor están incluidas en <span class="math inline">\(R_i(p)\)</span>: si se dispusiera solamente de una implicación <span class="math inline">\(\Theta_i(\bar p,y)\to y=\bar d\)</span>, la universal podría ser vacuamente verdadera y el argumento fallaría.</p>
+<p>El árbol <span class="math inline">\(B^\forall\)</span> no es literalmente el árbol existencial de §20.10; generalmente sus códigos y los de sus instancias son distintos. No se concluye que ambos puntos fijos sean equivalentes entre sí para un A arbitrario. Cada uno satisface su propio bicondicional con su propio numeral. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cambio-demostrablemente-equivalente-del-predicado-objetivo" class="level2">
+<h2 class="anchored" data-anchor-id="cambio-demostrablemente-equivalente-del-predicado-objetivo">20.17. Cambio demostrablemente equivalente del predicado objetivo</h2>
+<section id="tlog-pro-00130" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00130">Proposición 20.17.1 — Cambio demostrablemente equivalente del predicado objetivo</h3>
+<p><strong>Proposición.</strong> Si PA prueba <span class="math inline">\(\forall z\forall\bar w(A(z,\bar w)\leftrightarrow C(z,\bar w))\)</span>, cualquier punto fijo δ de A es punto fijo de C, con <strong>el mismo código de δ</strong>. La verdad estándar de esa equivalencia sin prueba PA sólo da la conclusión semántica en la estructura estándar, no una nueva prueba del bicondicional.</p>
+<p><strong>Prueba.</strong> Particularizamos el teorema uniforme en <span class="math inline">\(z=\ulcornerδ\urcorner\)</span> y mantenemos <span class="math inline">\(\bar w\)</span> arbitrarios. Transitividad proposicional del bicondicional con δ↔︎A(,w) da δ↔︎C(,w). Se generalizan parámetros. La versión semántica sigue por sustitución segura y transitividad de satisfacción.</p>
+<p>Esta proposición transporta un punto fijo ya existente. Si se construye otro mediante el compilador aplicado a C, su código puede cambiar y no hay razón para identificar las dos salidas. Tampoco una equivalencia alfa entre dos <strong>sentencias fijas</strong> justifica reemplazar, dentro de un predicado arbitrario, el numeral de una por el de la otra. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="autoinstanciación-de-una-familia-finita-codificada" class="level2">
+<h2 class="anchored" data-anchor-id="autoinstanciación-de-una-familia-finita-codificada">20.18. Autoinstanciación de una familia finita codificada</h2>
+<section id="tlog-def-00146" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00146">Definición 20.18.1 — Autoinstanciación de una familia finita codificada</h3>
+<p>Fijados externamente r≥1 e i, para 0≤j&lt;r definimos <span class="math inline">\(F_{r,i,j}(e)\)</span>: si e decodifica como una lista S de longitud exactamente r de códigos de fórmulas aritméticas <span class="math inline">\([c_0,\ldots,c_{r-1}]\)</span>, devolvemos <span class="math inline">\(D_i(c_j)\)</span> con <strong>el numeral de e</strong> en lugar del numeral de cj, es decir <span class="math display">\[
+F_{r,i,j}(e)=\operatorname{Sub}(c_j,i,e).
+\]</span> En cualquier otro caso devolvemos0. Se comprueba validez de todas las componentes. Los índices de componentes comienzan en0.</p>
+<p>Por tanto F no es simplemente <span class="math inline">\(D_i(c_j)\)</span>: todas las componentes reciben el mismo código e de la familia auxiliar. La distinción permite referencias mutuas sin que la j-ésima fórmula deba calcular su código antes de existir. Para r=0 se entrega una familia vacía sin ecuaciones, separadamente; F sólo se usa para r≥1.</p>
+</section>
+</section>
+<section id="representación-efectiva-de-los-lectores-diagonales-finitos" class="level2">
+<h2 class="anchored" data-anchor-id="representación-efectiva-de-los-lectores-diagonales-finitos">20.19. Representación efectiva de los lectores diagonales finitos</h2>
+<section id="tlog-lem-00085" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00085">Lema 20.19.1 — Representación efectiva de los lectores diagonales finitos</h3>
+<p><strong>Lema.</strong> Cada <span class="math inline">\(F_{r,i,j}\)</span> es total computable-RM y admite un representante <span class="math inline">\(\Psi_j(x,y_j)\)</span> funcional numeral por numeral. Sus fórmulas y las instancias de representación se obtienen con los argumentos prescritos y con ligadores fuera de una familia finita de nombres. La construcción es uniforme externamente en r,i,j bajo las guardas r≥1, j&lt;r.</p>
+<p><strong>Prueba.</strong> Se decodifica e, se cuenta su longitud y se reconocen las r fórmulas mediante recorridos finitos. Se extrae cj y se aplica Sub(cj,i,e), que termina con numeral cerrado. Cualquier fallo produce0. CH17 compone los decidores y operaciones de lista, y CH19 compila el programa en un representante de su gráfica. La higiene de §20.3 dispone los nombres y conserva las instancias de equivalencia. Los parámetros r,i,j se incorporan como constantes en el programa generado, así el compilador termina también cuando ellos varían externamente.</p>
+<p>Para e válido y <span class="math inline">\(d_j=F_{r,i,j}(e)\)</span> se dispone en particular de <span class="math inline">\(\mathrm{PA}\vdash\forall y_j(\Psi_j(\bar e,y_j)\leftrightarrow y_j=\bar d_j)\)</span>. No se requiere una afirmación uniforme interna de existencia de todos esos valores ni se usa elección: la familia de r programas/fórmulas se construye mediante un bucle finito. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="lema-diagonal-simultáneo-con-parámetros" class="level2">
+<h2 class="anchored" data-anchor-id="lema-diagonal-simultáneo-con-parámetros">20.20. Lema diagonal simultáneo con parámetros</h2>
+<section id="tlog-mth-00116" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00116">Metateorema 20.20.1 — Lema diagonal simultáneo con parámetros</h3>
+<p><strong>Metateorema.</strong> Dados r≥1 y fórmulas <span class="math inline">\(A_j(z_0,\ldots,z_{r-1},\bar w)\)</span>, j&lt;r, con argumentos designados distintos y sin otras variables libres, hay fórmulas <span class="math inline">\(δ_j(\bar w)\)</span> tales que para cada j <span class="math display">\[
+\mathrm{PA}\vdash\forall\bar w\left(δ_j(\bar w)\leftrightarrow
+A_j(\ulcornerδ_0\urcorner,\ldots,\ulcornerδ_{r-1}\urcorner,\bar w)\right).\tag{S}
+\]</span> La familia y pruebas de sus ecuaciones se pueden obtener efectivamente.</p>
+<p><strong>Construcción sin circularidad.</strong> Elegimos x=xi y variables <span class="math inline">\(y_0,\ldots,y_{r-1}\)</span> distintas fuera de todos los nombres de los Aj. Para cada k&lt;r fijamos el representante <span class="math inline">\(\Psi_k(x,y_k)\)</span> de <span class="math inline">\(F_{r,i,k}\)</span>, con sus ligadores fuera de todos esos nombres y de los parámetros. Sustituimos simultáneamente los zk libres de cada Aj por yk; la frescura asegura seguridad y evita interferencias. Llamamos Cj a esa copia. Con asociación de conjunciones fijada a la derecha, ponemos <span class="math display">\[
+B_j(x,\bar w)=\exists y_0\cdots\exists y_{r-1}
+\bigl((\Psi_0(x,y_0)\land\cdots\land\Psi_{r-1}(x,y_{r-1}))\land C_j(\bar y,\bar w)\bigr).
+\]</span> Primero construimos <strong>todos</strong> estos árboles, que no contienen aún el numeral de e. Después calculamos <span class="math display">\[
+e=S([G(B_0),\ldots,G(B_{r-1})]),\qquad δ_j=B_j[\bar e/x].
+\]</span> De la definición del lector finito resulta <span class="math inline">\(F_{r,i,k}(e)=G(δ_k)=d_k\)</span> para cada k. No se presupone una solución de r ecuaciones de números ni se elige una familia infinita.</p>
+<p><strong>Derivación.</strong> Las r instancias funcionales en e prueban que cada <span class="math inline">\(\Psi_k(\bar e,y_k)\)</span> equivale a <span class="math inline">\(y_k=\bar d_k\)</span>. Eliminamos primero el existencial más interno y seguimos hacia afuera mediante (E), reordenando conjunciones por teoremas proposicionales. En cada eliminación, los otros lectores no contienen yk libre, sus ligadores se han higienizado y los términos <span class="math inline">\(\bar d_k\)</span> son cerrados. Al terminar queda Cj(d,w), literalmente Aj con los numerales de los códigos de las δk en las coordenadas libres. Se generalizan parámetros y se obtiene (S).</p>
+<p>Todos los recorridos y compiladores son finitos, así la familia es computable externamente. Para las pruebas, se aplica a cada ecuación la enumeración de pruebas de §20.13; cada búsqueda termina porque acabamos de demostrar su existencia. Para r=0 no hay ninguna obligación y se devuelve la lista vacía. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="referencias-mutuas-y-ausencia-de-una-elección-infinita" class="level2">
+<h2 class="anchored" data-anchor-id="referencias-mutuas-y-ausencia-de-una-elección-infinita">20.21. Referencias mutuas y ausencia de una elección infinita</h2>
+<section id="tlog-cor-00032" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00032">Corolario 20.21.1 — Referencias mutuas y ausencia de una elección infinita</h3>
+<p><strong>Corolario.</strong> Para fórmulas P(z) y Q(z) se pueden construir sentencias ε,η tales que PA prueba <span class="math inline">\(ε\leftrightarrow P(\ulcornerη\urcorner)\)</span> y <span class="math inline">\(η\leftrightarrow Q(\ulcornerε\urcorner)\)</span>. Con parámetros la misma construcción conserva esos parámetros libres. No se ha demostrado una versión para familias infinitas.</p>
+<p><strong>Prueba.</strong> Tomamos r=2, <span class="math inline">\(A_0(z_0,z_1)=P(z_1)\)</span> y <span class="math inline">\(A_1(z_0,z_1)=Q(z_0)\)</span>, permitiendo argumentos vacuos, y aplicamos (S). La familia auxiliar tiene exactamente dos componentes. La construcción no usa AC/BPI: todas las elecciones son mínimos de complementos de conjuntos finitos de índices, y todas las listas se generan por recursión finita. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="objetivos-constantes-y-falta-de-unicidad-literal" class="level2">
+<h2 class="anchored" data-anchor-id="objetivos-constantes-y-falta-de-unicidad-literal">20.22. Objetivos constantes y falta de unicidad literal</h2>
+<section id="tlog-pro-00131" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00131">Proposición 20.22.1 — Objetivos constantes y falta de unicidad literal</h3>
+<p><strong>Proposición.</strong> Si C es una sentencia y el argumento z es vacuo en A(z)=C, un punto fijo para A es exactamente una sentencia demostrablemente equivalente a C. El lema diagonal no da unicidad literal, ni siquiera para un objetivo constante.</p>
+<p><strong>Prueba.</strong> La sustitución de un numeral por una variable libre ausente conserva literalmente C, por tanto la ecuación de punto fijo es δ↔︎C. Las sentencias δ1=C y δ2=C∧(0=0) satisfacen esa ecuación: la primera por identidad del bicondicional, la segunda por reflexividad de igualdad y cálculo proposicional. Sus árboles son distintos, pues δ2 tiene un nodo de conjunción y más constructores que C; por inyectividad G sus códigos son distintos. No se ha afirmado que haya dos clases de equivalencia PA distintas: estas dos sentencias son equivalentes PA.</p>
+<p>Para objetivos no constantes, dos equivalencias <span class="math inline">\(δ↔A(\ulcornerδ\urcorner)\)</span> y <span class="math inline">\(ε↔A(\ulcornerε\urcorner)\)</span> tampoco proporcionan por sí solas una prueba δ↔︎ε. Falta relacionar las dos instancias de A en numerales diferentes. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="sentencias-diagonales-para-el-predicado-de-demostrabilidad" class="level2">
+<h2 class="anchored" data-anchor-id="sentencias-diagonales-para-el-predicado-de-demostrabilidad">20.23. Sentencias diagonales para el predicado de demostrabilidad</h2>
+<section id="tlog-def-00147" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00147">Definición 20.23.1 — Sentencias diagonales para el predicado de demostrabilidad</h3>
+<p>Fijamos las fórmulas <span class="math inline">\(Prf_{PA}\)</span> y <span class="math inline">\(Prov_{PA}\)</span> de CH19, con sus representantes concretos, y fijamos las elecciones efectivas de nombres del compilador. Llamamos <span class="math inline">\(\mathcal G_{PA}\)</span> a su sentencia fija para <span class="math inline">\(\neg Prov_{PA}(z)\)</span> y <span class="math inline">\(\mathcal H_{PA}\)</span> a su sentencia fija para <span class="math inline">\(Prov_{PA}(z)\)</span>. Se disponen de las pruebas <span class="math display">\[
+\mathrm{PA}\vdash\mathcal G_{PA}\leftrightarrow\neg Prov_{PA}(\ulcorner\mathcal G_{PA}\urcorner),
+\qquad
+\mathrm{PA}\vdash\mathcal H_{PA}\leftrightarrow Prov_{PA}(\ulcorner\mathcal H_{PA}\urcorner).
+\]</span> Los símbolos <span class="math inline">\(\mathcal G,\mathcal H\)</span> nombran sentencias construidas; no son nuevos símbolos objeto. Sus árboles contienen numerales de códigos obtenidos por la construcción, aunque no se impriman esos numerales completos. La fórmula <span class="math inline">\(Prov_{PA}\)</span> no se sustituye por otro representante durante la construcción.</p>
+</section>
+</section>
+<section id="qué-entregan-las-instancias-de-demostrabilidad" class="level2">
+<h2 class="anchored" data-anchor-id="qué-entregan-las-instancias-de-demostrabilidad">20.24. Qué entregan las instancias de demostrabilidad</h2>
+<section id="tlog-pro-00132" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00132">Proposición 20.24.1 — Qué entregan las instancias de demostrabilidad</h3>
+<p><strong>Proposición.</strong> En <span class="math inline">\(\mathbb N_A\)</span>, las dos sentencias recién definidas satisfacen las equivalencias de §20.23 con la relación externa de existencia de una prueba PA. La construcción entrega pruebas de los bicondicionales y no incluye una regla de reflexión ni una demostración de las condiciones internas de derivabilidad.</p>
+<p><strong>Prueba.</strong> Corrección estándar aplica a los dos bicondicionales PA. La exactitud estándar de <span class="math inline">\(Prov_{PA}\)</span> en CH19 identifica la satisfacción de su instancia numeral con la existencia externa de una prueba de la sentencia nombrada. Este paso es metateórico, limitado a <span class="math inline">\(\mathbb N_A\)</span> y al representante fijado. No se transforma en una implicación PA uniforme <span class="math inline">\(Prov_{PA}(\ulcorner A\urcorner)\to A\)</span>.</p>
+<p>El cálculo de independencia de <span class="math inline">\(\mathcal G_{PA}\)</span> y el comportamiento de <span class="math inline">\(\mathcal H_{PA}\)</span> exigen argumentos adicionales sobre demostrabilidad. Se dejan expresamente para la Parte V, donde se registrarán las hipótesis de cada resultado. Este capítulo no asigna a ambas sentencias una clasificación de independencia o decidibilidad por el mero signo de negación que aparece en el objetivo. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="dependencia-de-la-numeración-y-del-representante" class="level2">
+<h2 class="anchored" data-anchor-id="dependencia-de-la-numeración-y-del-representante">20.25. Dependencia de la numeración y del representante</h2>
+<section id="tlog-pro-00133" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00133">Proposición 20.25.1 — Dependencia de la numeración y del representante</h3>
+<p><strong>Proposición.</strong> Un punto fijo se construye respecto de una numeración G y de una fórmula objetivo A determinadas. La igualdad de extensiones estándar de dos predicados, o la equivalencia alfa de dos sentencias, no autoriza por sí sola a conservar todos los códigos y bicondicionales al cambiar esa elección.</p>
+<p><strong>Prueba.</strong> El numeral en la ecuación es el código literal del árbol finalmente construido. Cambiar nombres ligados cambia el árbol y, por inyectividad, puede cambiar su código; la equivalencia alfa preserva satisfacción y equivalencia demostrable de la sentencia, pero no la igualdad de los dos naturales. Una traducción de códigos requeriría un procedimiento y una representación propios, y después una prueba de la ecuación transportada.</p>
+<p>Si PA prueba equivalencia uniforme de los predicados, §20.17 sí permite conservar un <strong>punto fijo concreto y su código</strong>. Si sólo se sabe que los predicados coinciden en el modelo estándar, se obtiene como máximo el transporte semántico allí. Por tanto la selección de <span class="math inline">\(Prov_{PA}\)</span>, la codificación de secuencias y la totalización de funciones sintácticas se mantienen explícitas al entrar en CH21. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="hipótesis-de-teorías-y-obligaciones-de-la-parte-v" class="level2">
+<h2 class="anchored" data-anchor-id="hipótesis-de-teorías-y-obligaciones-de-la-parte-v">20.26. Hipótesis de teorías y obligaciones de la Parte V</h2>
+<section id="tlog-def-00148" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00148">Definición 20.26.1 — Hipótesis de teorías y obligaciones de la Parte V</h3>
+<p>Para las aplicaciones posteriores, una teoría aritmética T será una extensión deductiva de PA en <span class="math inline">\(L_A\)</span>, con una presentación de sus axiomas adicionales indicada expresamente cuando se exija efectividad. Distinguimos las siguientes propiedades <strong>externas</strong>, sin atribuirlas automáticamente a T:</p>
+<ul>
+<li><strong>Consistencia:</strong> T no demuestra la contradicción fija <span class="math inline">\(0=S0\)</span>. En una extensión clásica de PA equivale a no demostrar una fórmula y su negación: PA refuta esa igualdad, y las reglas proposicionales permiten explosión desde cualquier par contradictorio.</li>
+<li><strong>Corrección estándar:</strong> toda sentencia demostrable en T es satisfecha por <span class="math inline">\(\mathbb N_A\)</span>.</li>
+<li><strong>Corrección Σ1:</strong> toda sentencia Σ1 demostrable en T es satisfecha por <span class="math inline">\(\mathbb N_A\)</span>; no se incluyen aquí todas las sentencias por definición.</li>
+<li><strong>ω-consistencia:</strong> no hay fórmula C(x), con sólo x libre, tal que T demuestre <span class="math inline">\(\exists x C(x)\)</span> y demuestre <span class="math inline">\(\neg C(\bar n)\)</span> para cada natural externo n.&nbsp;Los posibles parámetros ya están sustituidos por términos cerrados antes de aplicar esta definición.</li>
+<li><strong>Presentación efectiva:</strong> la relación externa de axioma adicional es decidible-RM o semidecidible-RM, según se declare; son requisitos distintos. Se usará la certificación de pruebas apropiada al segundo caso.</li>
+</ul>
+<p>La consistencia así definida es una propiedad metateórica; no se fija todavía una fórmula objeto de consistencia. Las relaciones entre estas hipótesis y las conclusiones de incompletitud se demostrarán en CH21, y la fórmula interna y condiciones de derivabilidad en CH22. El contrato de salida no introduce resultados pendientes como axiomas. Registra estas obligaciones:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Frente</th>
+<th>Disponible</th>
+<th>Obligación pendiente</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CH21, primer teorema</td>
+<td>puntos fijos; verificador efectivo; representación de pruebas</td>
+<td>declarar la clase de teorías y las hipótesis de consistencia/corrección; probar por separado cada conclusión de no demostrabilidad e independencia</td>
+</tr>
+<tr class="even">
+<td>Variante Rosser</td>
+<td>lector de pruebas y aritmética de orden</td>
+<td>construir la comparación de pruebas y probar sus dos direcciones bajo las hipótesis apropiadas</td>
+</tr>
+<tr class="odd">
+<td>CH22, segundo teorema</td>
+<td><span class="math inline">\(Prov_{PA}\)</span> fijo y punto fijo</td>
+<td>demostrar las condiciones internas de derivabilidad del representante elegido; fijar la fórmula de consistencia y probar el argumento interno</td>
+</tr>
+<tr class="even">
+<td>Verdad aritmética</td>
+<td>satisfacción externa de fórmulas concretas</td>
+<td>ningún predicado aritmético uniforme de verdad aprobado; cualquier resultado de indefinibilidad necesita su propia hipótesis y prueba</td>
+</tr>
+<tr class="odd">
+<td>CH23, indecidibilidad</td>
+<td>computabilidad RM y teoremas semidecidibles</td>
+<td>demostrar las reducciones y sus hipótesis; no confundir semidecisión con decisión</td>
+</tr>
+<tr class="even">
+<td>ZF objeto / GAS</td>
+<td>lenguajes y estados separados</td>
+<td>interpretación y transferencias expresas, sin consistencia o modelos de ZF objeto presumidos; interfaces intertratados siguen0</td>
+</tr>
+<tr class="odd">
+<td>Formalización</td>
+<td>pruebas humanas y candidatos seleccionados</td>
+<td>ningún resultado TLOG compilado/verificado en Lean; elaborar certificados formales antes de cambiar ese estado</td>
+</tr>
+</tbody>
+</table>
+<p>Una afirmación metateórica de corrección PA no es una prueba PA de reflexión. Una instancia numeral de representación no es una prueba uniforme de totalidad interna. No se ha demostrado equivalencia RM–Turing ni se necesita para cerrar esta parte.</p>
+</section>
+</section>
+<section id="cierre-de-diagonalización-y-de-la-parte-iv" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-de-diagonalización-y-de-la-parte-iv">20.27. Cierre de diagonalización y de la Parte IV</h2>
+<section id="tlog-cor-00033" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00033">Corolario 20.27.1 — Cierre de diagonalización y de la Parte IV</h3>
+<p><strong>Corolario de cierre.</strong> CH17–CH20 suministran el sistema operacional RM, codificaciones efectivas de expresiones/programas/derivaciones, una teoría aritmética PA con representación de cálculos y verificadores, y los lemas diagonales simple, con parámetros y simultáneo finito. La Parte IV puede cerrarse respecto de la arquitectura aprobada sin resolver las obligaciones matemáticas de la Parte V.</p>
+<p><strong>Prueba.</strong> CH17 demuestra las operaciones y la composición operacional; CH18 fija S/G, decodificadores, sustitución y pruebas originales/certificadas, y el ejecutor universal parcial; CH19 construye los representantes aritméticos; §§20.8–20 producen los puntos fijos y sus procedimientos externos. En cada interfaz se conserva la codificación fijada y se explicitan las guardas y niveles. Las obligaciones de §20.26 no son utilizadas como proveedores deductivos: son tareas posteriores. Ninguna dependencia hacia un nodo futuro se añade al DAG. La clausura de la parte no afirma completitud de la teoría objeto ni verificación formal de las pruebas humanas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="ejemplos-y-lectura-del-cierre" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-y-lectura-del-cierre">20.28. Ejemplos y lectura del cierre</h2>
+<p>Para A(z)=(0=0), la coordenada z es vacua. El compilador todavía construye una sentencia diagonal, pero una sentencia fija sencilla es0=0. También lo es (0=0)∧(0=0): ambas satisfacen el bicondicional y sus códigos son distintos. Para A(z,w)=(w=w), el punto fijo paramétrico conserva w libre, y el numeral de su código abierto permanece fijo al particularizar w.</p>
+<p>Para A(z)=¬Prov_PA(z), obtenemos la equivalencia de §20.23. Esa equivalencia es el insumo sintáctico que utilizará CH21. Para dos objetivos mutuamente referidos se usa el <strong>código de la lista auxiliar entera</strong>: sustituir el código individual de cada componente rompería las ecuaciones demostradas en §20.20.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Salida</th>
+<th>Qué queda probado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sentencia fija</td>
+<td>bicondicional PA con el numeral de su código literal</td>
+</tr>
+<tr class="even">
+<td>Familia con parámetros</td>
+<td>mismos parámetros libres y código del árbol abierto</td>
+</tr>
+<tr class="odd">
+<td>Familia simultánea finita</td>
+<td>r ecuaciones con los r códigos de sus resultados</td>
+</tr>
+<tr class="even">
+<td>Compilador externo</td>
+<td>terminación sobre códigos válidos;0 en entradas inválidas</td>
+</tr>
+<tr class="odd">
+<td>Obtención de prueba</td>
+<td>búsqueda total en esta familia de teoremas ya demostrados</td>
+</tr>
+<tr class="even">
+<td>Interpretación estándar</td>
+<td>satisfacción del bicondicional por corrección externa</td>
+</tr>
+<tr class="odd">
+<td>Parte V</td>
+<td>hipótesis y pruebas de incompletitud, derivabilidad interna e indecidibilidad pendientes</td>
+</tr>
+</tbody>
+</table>
+<p>El capítulo cierra <strong>27/27 resultados</strong> y añade <strong>110 aristas directas</strong>. La Parte IV cierra sus cuatro capítulos aprobados. Acumulado: <strong>561 resultados / 2069 aristas</strong>, sin ciclos, duplicados ni huérfanos; <strong>232 candidatos Lean /0 verificados</strong>. Partes cerradas4/5; capítulos publicados0; interfaces activas0. Las pruebas humanas, regresiones de referencia y certificado de bytes se auditan por separado.</p>
+<pre class="text"><code>LOCAL  CH20 ████████████████████ 27/27 resultados (100 %)
+GLOBAL TLOG █████████████████████░░░ 21/24 capítulos (87,50 %)</code></pre>
+<p>Próximo capítulo: <strong>CH21 — Primer teorema de incompletitud</strong>, dentro de la Parte V — Incompletitud y cierre lógico-formal.</p>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-19.html">← Capítulo 19</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-21.html">Capítulo 21 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 17 — Computabilidad mínima para la metamatemática – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-la-finitud-conjuntista-a-la-efectividad-operacional" id="toc-de-la-finitud-conjuntista-a-la-efectividad-operacional" class="nav-link active" data-scroll-target="#de-la-finitud-conjuntista-a-la-efectividad-operacional">17.0. De la finitud conjuntista a la efectividad operacional</a></li>
+  <li><a href="#convenio-de-efectividad-y-niveles" id="toc-convenio-de-efectividad-y-niveles" class="nav-link" data-scroll-target="#convenio-de-efectividad-y-niveles">17.1. Convenio de efectividad y niveles</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00025" id="toc-tlog-cnv-00025" class="nav-link" data-scroll-target="#tlog-cnv-00025">Convención 17.1.1 — Alcance de la palabra computable</a></li>
+  </ul></li>
+  <li><a href="#alfabeto-conjunto-de-instrucciones" id="toc-alfabeto-conjunto-de-instrucciones" class="nav-link" data-scroll-target="#alfabeto-conjunto-de-instrucciones">17.2. Alfabeto conjunto de instrucciones</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00107" id="toc-tlog-def-00107" class="nav-link" data-scroll-target="#tlog-def-00107">Definición 17.2.1 — Cuatro coordenadas y tres constructores disjuntos</a></li>
+  </ul></li>
+  <li><a href="#formación-de-programas-aridad-y-saltos" id="toc-formación-de-programas-aridad-y-saltos" class="nav-link" data-scroll-target="#formación-de-programas-aridad-y-saltos">17.3. Formación de programas, aridad y saltos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00108" id="toc-tlog-def-00108" class="nav-link" data-scroll-target="#tlog-def-00108">Definición 17.3.1 — Programa de <span class="math inline">\(r\)</span> registros con <span class="math inline">\(n\)</span> etiquetas</a></li>
+  </ul></li>
+  <li><a href="#existencia-conjuntista-y-programas-testigo" id="toc-existencia-conjuntista-y-programas-testigo" class="nav-link" data-scroll-target="#existencia-conjuntista-y-programas-testigo">17.4. Existencia conjuntista y programas testigo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00103" id="toc-tlog-pro-00103" class="nav-link" data-scroll-target="#tlog-pro-00103">Proposición 17.4.1 — <span class="math inline">\(\operatorname{Prog}_q\)</span> es un conjunto no vacío</a></li>
+  </ul></li>
+  <li><a href="#configuraciones-y-carga-de-la-entrada" id="toc-configuraciones-y-carga-de-la-entrada" class="nav-link" data-scroll-target="#configuraciones-y-carga-de-la-entrada">17.5. Configuraciones y carga de la entrada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00109" id="toc-tlog-def-00109" class="nav-link" data-scroll-target="#tlog-def-00109">Definición 17.5.1 — Estado con contador de instrucciones y registros</a></li>
+  </ul></li>
+  <li><a href="#guardas-de-decremento-y-salto" id="toc-guardas-de-decremento-y-salto" class="nav-link" data-scroll-target="#guardas-de-decremento-y-salto">17.6. Guardas de decremento y salto</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00055" id="toc-tlog-lem-00055" class="nav-link" data-scroll-target="#tlog-lem-00055">Lema 17.6.1 — Cada rama no nula tiene predecesor único</a></li>
+  </ul></li>
+  <li><a href="#semántica-de-un-paso" id="toc-semántica-de-un-paso" class="nav-link" data-scroll-target="#semántica-de-un-paso">17.7. Semántica de un paso</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00110" id="toc-tlog-def-00110" class="nav-link" data-scroll-target="#tlog-def-00110">Definición 17.7.1 — Transición totalizada con parada absorbente</a></li>
+  </ul></li>
+  <li><a href="#existencia-y-determinismo-del-grafo-de-paso" id="toc-existencia-y-determinismo-del-grafo-de-paso" class="nav-link" data-scroll-target="#existencia-y-determinismo-del-grafo-de-paso">17.8. Existencia y determinismo del grafo de paso</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00104" id="toc-tlog-pro-00104" class="nav-link" data-scroll-target="#tlog-pro-00104">Proposición 17.8.1 — <span class="math inline">\(E_P\)</span> es función total <span class="math inline">\(C_P\to C_P\)</span></a></li>
+  </ul></li>
+  <li><a href="#ejecución-determinista-por-recursión-numérica" id="toc-ejecución-determinista-por-recursión-numérica" class="nav-link" data-scroll-target="#ejecución-determinista-por-recursión-numérica">17.9. Ejecución determinista por recursión numérica</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00078" id="toc-tlog-mth-00078" class="nav-link" data-scroll-target="#tlog-mth-00078">Metateorema 17.9.1 — Existe una única órbita de estados</a></li>
+  </ul></li>
+  <li><a href="#certificados-de-ejecución-acotada" id="toc-certificados-de-ejecución-acotada" class="nav-link" data-scroll-target="#certificados-de-ejecución-acotada">17.10. Certificados de ejecución acotada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00105" id="toc-tlog-pro-00105" class="nav-link" data-scroll-target="#tlog-pro-00105">Proposición 17.10.1 — Trazas finitas existentes y verificables</a></li>
+  </ul></li>
+  <li><a href="#parada-y-salida-observada" id="toc-parada-y-salida-observada" class="nav-link" data-scroll-target="#parada-y-salida-observada">17.11. Parada y salida observada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00111" id="toc-tlog-def-00111" class="nav-link" data-scroll-target="#tlog-def-00111">Definición 17.11.1 — Predicado de parada en tiempo <span class="math inline">\(t\)</span></a></li>
+  </ul></li>
+  <li><a href="#permanencia-de-la-parada-y-estabilidad-del-resultado" id="toc-permanencia-de-la-parada-y-estabilidad-del-resultado" class="nav-link" data-scroll-target="#permanencia-de-la-parada-y-estabilidad-del-resultado">17.12. Permanencia de la parada y estabilidad del resultado</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00056" id="toc-tlog-lem-00056" class="nav-link" data-scroll-target="#tlog-lem-00056">Lema 17.12.1 — Parada absorbente y tiempo mínimo</a></li>
+  </ul></li>
+  <li><a href="#significado-extensional-de-un-programa" id="toc-significado-extensional-de-un-programa" class="nav-link" data-scroll-target="#significado-extensional-de-un-programa">17.13. Significado extensional de un programa</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00112" id="toc-tlog-def-00112" class="nav-link" data-scroll-target="#tlog-def-00112">Definición 17.13.1 — Gráfica calculada, posiblemente parcial</a></li>
+  </ul></li>
+  <li><a href="#la-semántica-calculada-es-una-función-parcial" id="toc-la-semántica-calculada-es-una-función-parcial" class="nav-link" data-scroll-target="#la-semántica-calculada-es-una-función-parcial">17.14. La semántica calculada es una función parcial</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00106" id="toc-tlog-pro-00106" class="nav-link" data-scroll-target="#tlog-pro-00106">Proposición 17.14.1 — Conjunto de pares y univocidad del resultado</a></li>
+  </ul></li>
+  <li><a href="#computabilidad-parcial-y-total-relativas-al-modelo" id="toc-computabilidad-parcial-y-total-relativas-al-modelo" class="nav-link" data-scroll-target="#computabilidad-parcial-y-total-relativas-al-modelo">17.15. Computabilidad parcial y total relativas al modelo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00113" id="toc-tlog-def-00113" class="nav-link" data-scroll-target="#tlog-def-00113">Definición 17.15.1 — Función parcial computable-RM</a></li>
+  </ul></li>
+  <li><a href="#decisión-semidecisión-y-conjuntos-c.e." id="toc-decisión-semidecisión-y-conjuntos-c.e." class="nav-link" data-scroll-target="#decisión-semidecisión-y-conjuntos-c.e.">17.16. Decisión, semidecisión y conjuntos c.e.</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00114" id="toc-tlog-def-00114" class="nav-link" data-scroll-target="#tlog-def-00114">Definición 17.16.1 — Dos nociones operacionales diferentes</a></li>
+  </ul></li>
+  <li><a href="#aproximaciones-temporales-a-un-dominio-c.e." id="toc-aproximaciones-temporales-a-un-dominio-c.e." class="nav-link" data-scroll-target="#aproximaciones-temporales-a-un-dominio-c.e.">17.17. Aproximaciones temporales a un dominio c.e.</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00107" id="toc-tlog-pro-00107" class="nav-link" data-scroll-target="#tlog-pro-00107">Proposición 17.17.1 — Reunión creciente de secciones decidibles acotadas</a></li>
+  </ul></li>
+  <li><a href="#programas-básicos-y-programas-divergentes" id="toc-programas-básicos-y-programas-divergentes" class="nav-link" data-scroll-target="#programas-básicos-y-programas-divergentes">17.18. Programas básicos y programas divergentes</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00108" id="toc-tlog-pro-00108" class="nav-link" data-scroll-target="#tlog-pro-00108">Proposición 17.18.1 — Identidad, cero constante y divergencia universal</a></li>
+  </ul></li>
+  <li><a href="#lo-decidible-da-dos-semidecisiones" id="toc-lo-decidible-da-dos-semidecisiones" class="nav-link" data-scroll-target="#lo-decidible-da-dos-semidecisiones">17.19. Lo decidible da dos semidecisiones</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00109" id="toc-tlog-pro-00109" class="nav-link" data-scroll-target="#tlog-pro-00109">Proposición 17.19.1 — Complementos de relaciones decidibles son semidecidibles</a></li>
+  </ul></li>
+  <li><a href="#frontera-entre-semántica-de-máquinas-y-aritmetización" id="toc-frontera-entre-semántica-de-máquinas-y-aritmetización" class="nav-link" data-scroll-target="#frontera-entre-semántica-de-máquinas-y-aritmetización">17.20. Frontera entre semántica de máquinas y aritmetización</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00024" id="toc-tlog-cor-00024" class="nav-link" data-scroll-target="#tlog-cor-00024">Corolario 17.20.1 — Infraestructura operacional mínima disponible</a></li>
+  </ul></li>
+  <li><a href="#obligaciones-heredadas-del-primer-microtramo" id="toc-obligaciones-heredadas-del-primer-microtramo" class="nav-link" data-scroll-target="#obligaciones-heredadas-del-primer-microtramo">17.21. Obligaciones heredadas del primer microtramo</a></li>
+  <li><a href="#compilación-finita-y-separación-de-niveles" id="toc-compilación-finita-y-separación-de-niveles" class="nav-link" data-scroll-target="#compilación-finita-y-separación-de-niveles">17.22. Compilación finita y separación de niveles</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00026" id="toc-tlog-cnv-00026" class="nav-link" data-scroll-target="#tlog-cnv-00026">Convención 17.22.1 — Compilación finita y separación de niveles</a></li>
+  </ul></li>
+  <li><a href="#macrobloques-de-registros-con-guardas-de-frescura" id="toc-macrobloques-de-registros-con-guardas-de-frescura" class="nav-link" data-scroll-target="#macrobloques-de-registros-con-guardas-de-frescura">17.23. Macrobloques de registros con guardas de frescura</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00115" id="toc-tlog-def-00115" class="nav-link" data-scroll-target="#tlog-def-00115">Definición 17.23.1 — Macrobloques de registros con guardas de frescura</a></li>
+  </ul></li>
+  <li><a href="#saltos-incondicionales-borrado-y-transferencia-finitos" id="toc-saltos-incondicionales-borrado-y-transferencia-finitos" class="nav-link" data-scroll-target="#saltos-incondicionales-borrado-y-transferencia-finitos">17.24. Saltos incondicionales, borrado y transferencia finitos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00057" id="toc-tlog-lem-00057" class="nav-link" data-scroll-target="#tlog-lem-00057">Lema 17.24.1 — Saltos incondicionales, borrado y transferencia finitos</a></li>
+  </ul></li>
+  <li><a href="#copia-conservativa-con-auxiliar-restaurado" id="toc-copia-conservativa-con-auxiliar-restaurado" class="nav-link" data-scroll-target="#copia-conservativa-con-auxiliar-restaurado">17.25. Copia conservativa con auxiliar restaurado</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00058" id="toc-tlog-lem-00058" class="nav-link" data-scroll-target="#tlog-lem-00058">Lema 17.25.1 — Copia conservativa con auxiliar restaurado</a></li>
+  </ul></li>
+  <li><a href="#relocalización-de-registros-y-de-etiquetas-sin-colisiones" id="toc-relocalización-de-registros-y-de-etiquetas-sin-colisiones" class="nav-link" data-scroll-target="#relocalización-de-registros-y-de-etiquetas-sin-colisiones">17.26. Relocalización de registros y de etiquetas sin colisiones</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00110" id="toc-tlog-pro-00110" class="nav-link" data-scroll-target="#tlog-pro-00110">Proposición 17.26.1 — Relocalización de registros y de etiquetas sin colisiones</a></li>
+  </ul></li>
+  <li><a href="#compilación-de-diagramas-de-control-finito-a-programas-rm" id="toc-compilación-de-diagramas-de-control-finito-a-programas-rm" class="nav-link" data-scroll-target="#compilación-de-diagramas-de-control-finito-a-programas-rm">17.27. Compilación de diagramas de control finito a programas RM</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00079" id="toc-tlog-mth-00079" class="nav-link" data-scroll-target="#tlog-mth-00079">Metateorema 17.27.1 — Compilación de diagramas de control finito a programas RM</a></li>
+  </ul></li>
+  <li><a href="#bloque-de-un-paso-de-programa-fijo-con-retorno" id="toc-bloque-de-un-paso-de-programa-fijo-con-retorno" class="nav-link" data-scroll-target="#bloque-de-un-paso-de-programa-fijo-con-retorno">17.28. Bloque de un paso de programa fijo con retorno</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00116" id="toc-tlog-def-00116" class="nav-link" data-scroll-target="#tlog-def-00116">Definición 17.28.1 — Bloque de un paso de programa fijo con retorno</a></li>
+  </ul></li>
+  <li><a href="#exactitud-de-la-simulación-de-un-paso-y-detección-de-halt" id="toc-exactitud-de-la-simulación-de-un-paso-y-detección-de-halt" class="nav-link" data-scroll-target="#exactitud-de-la-simulación-de-un-paso-y-detección-de-halt">17.29. Exactitud de la simulación de un paso y detección de HALT</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00059" id="toc-tlog-lem-00059" class="nav-link" data-scroll-target="#tlog-lem-00059">Lema 17.29.1 — Exactitud de la simulación de un paso y detección de HALT</a></li>
+  </ul></li>
+  <li><a href="#simuladores-finitos-de-un-programa-individual" id="toc-simuladores-finitos-de-un-programa-individual" class="nav-link" data-scroll-target="#simuladores-finitos-de-un-programa-individual">17.30. Simuladores finitos de un programa individual</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00111" id="toc-tlog-pro-00111" class="nav-link" data-scroll-target="#tlog-pro-00111">Proposición 17.30.1 — Simuladores finitos de un programa individual</a></li>
+  </ul></li>
+  <li><a href="#clausura-bajo-sustitución-general-de-funciones-parciales-computables" id="toc-clausura-bajo-sustitución-general-de-funciones-parciales-computables" class="nav-link" data-scroll-target="#clausura-bajo-sustitución-general-de-funciones-parciales-computables">17.31. Clausura bajo sustitución general de funciones parciales computables</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00080" id="toc-tlog-mth-00080" class="nav-link" data-scroll-target="#tlog-mth-00080">Metateorema 17.31.1 — Clausura bajo sustitución general de funciones parciales computables</a></li>
+  </ul></li>
+  <li><a href="#proyecciones-sucesor-y-constantes-son-computables-rm" id="toc-proyecciones-sucesor-y-constantes-son-computables-rm" class="nav-link" data-scroll-target="#proyecciones-sucesor-y-constantes-son-computables-rm">17.32. Proyecciones, sucesor y constantes son computables-RM</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00112" id="toc-tlog-pro-00112" class="nav-link" data-scroll-target="#tlog-pro-00112">Proposición 17.32.1 — Proyecciones, sucesor y constantes son computables-RM</a></li>
+  </ul></li>
+  <li><a href="#suma-y-multiplicación-son-computables-rm" id="toc-suma-y-multiplicación-son-computables-rm" class="nav-link" data-scroll-target="#suma-y-multiplicación-son-computables-rm">17.33. Suma y multiplicación son computables-RM</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00113" id="toc-tlog-pro-00113" class="nav-link" data-scroll-target="#tlog-pro-00113">Proposición 17.33.1 — Suma y multiplicación son computables-RM</a></li>
+  </ul></li>
+  <li><a href="#producto-de-controles-finitos-y-planificación-alternada" id="toc-producto-de-controles-finitos-y-planificación-alternada" class="nav-link" data-scroll-target="#producto-de-controles-finitos-y-planificación-alternada">17.34. Producto de controles finitos y planificación alternada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00117" id="toc-tlog-def-00117" class="nav-link" data-scroll-target="#tlog-def-00117">Definición 17.34.1 — Producto de controles finitos y planificación alternada</a></li>
+  </ul></li>
+  <li><a href="#justicia-de-la-planificación-e-identidad-de-las-dos-órbitas" id="toc-justicia-de-la-planificación-e-identidad-de-las-dos-órbitas" class="nav-link" data-scroll-target="#justicia-de-la-planificación-e-identidad-de-las-dos-órbitas">17.35. Justicia de la planificación e identidad de las dos órbitas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00060" id="toc-tlog-lem-00060" class="nav-link" data-scroll-target="#tlog-lem-00060">Lema 17.35.1 — Justicia de la planificación e identidad de las dos órbitas</a></li>
+  </ul></li>
+  <li><a href="#doble-semidecisión-implica-decidibilidad" id="toc-doble-semidecisión-implica-decidibilidad" class="nav-link" data-scroll-target="#doble-semidecisión-implica-decidibilidad">17.36. Doble semidecisión implica decidibilidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00081" id="toc-tlog-mth-00081" class="nav-link" data-scroll-target="#tlog-mth-00081">Metateorema 17.36.1 — Doble semidecisión implica decidibilidad</a></li>
+  </ul></li>
+  <li><a href="#caracterización-de-decisión-por-doble-semidecisión" id="toc-caracterización-de-decisión-por-doble-semidecisión" class="nav-link" data-scroll-target="#caracterización-de-decisión-por-doble-semidecisión">17.37. Caracterización de decisión por doble semidecisión</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00025" id="toc-tlog-cor-00025" class="nav-link" data-scroll-target="#tlog-cor-00025">Corolario 17.37.1 — Caracterización de decisión por doble semidecisión</a></li>
+  </ul></li>
+  <li><a href="#unión-e-intersección-de-relaciones-semidecidibles" id="toc-unión-e-intersección-de-relaciones-semidecidibles" class="nav-link" data-scroll-target="#unión-e-intersección-de-relaciones-semidecidibles">17.38. Unión e intersección de relaciones semidecidibles</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00114" id="toc-tlog-pro-00114" class="nav-link" data-scroll-target="#tlog-pro-00114">Proposición 17.38.1 — Unión e intersección de relaciones semidecidibles</a></li>
+  </ul></li>
+  <li><a href="#clausura-booleana-de-las-relaciones-decidibles" id="toc-clausura-booleana-de-las-relaciones-decidibles" class="nav-link" data-scroll-target="#clausura-booleana-de-las-relaciones-decidibles">17.39. Clausura booleana de las relaciones decidibles</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00115" id="toc-tlog-pro-00115" class="nav-link" data-scroll-target="#tlog-pro-00115">Proposición 17.39.1 — Clausura booleana de las relaciones decidibles</a></li>
+  </ul></li>
+  <li><a href="#preimágenes-semidecidibles-y-decidibles-por-mapas-computables" id="toc-preimágenes-semidecidibles-y-decidibles-por-mapas-computables" class="nav-link" data-scroll-target="#preimágenes-semidecidibles-y-decidibles-por-mapas-computables">17.40. Preimágenes semidecidibles y decidibles por mapas computables</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00082" id="toc-tlog-mth-00082" class="nav-link" data-scroll-target="#tlog-mth-00082">Metateorema 17.40.1 — Preimágenes semidecidibles y decidibles por mapas computables</a></li>
+  </ul></li>
+  <li><a href="#cierre-operativo-del-capítulo-y-frontera-de-aritmetización" id="toc-cierre-operativo-del-capítulo-y-frontera-de-aritmetización" class="nav-link" data-scroll-target="#cierre-operativo-del-capítulo-y-frontera-de-aritmetización">17.41. Cierre operativo del capítulo y frontera de aritmetización</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00026" id="toc-tlog-cor-00026" class="nav-link" data-scroll-target="#tlog-cor-00026">Corolario 17.41.1 — Cierre operativo del capítulo y frontera de aritmetización</a></li>
+  </ul></li>
+  <li><a href="#cierre-matemático-editorial-y-fronteras-de-transferencia" id="toc-cierre-matemático-editorial-y-fronteras-de-transferencia" class="nav-link" data-scroll-target="#cierre-matemático-editorial-y-fronteras-de-transferencia">17.42. Cierre matemático, editorial y fronteras de transferencia</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 17 — Computabilidad mínima para la metamatemática</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-16.html">← Capítulo 16</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-18.html">Capítulo 18 →</a></p>
+<section id="de-la-finitud-conjuntista-a-la-efectividad-operacional" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-finitud-conjuntista-a-la-efectividad-operacional">17.0. De la finitud conjuntista a la efectividad operacional</h2>
+<p>La Parte III cerró la construcción de los naturales, de la recursión sobre ellos y de los conjuntos de secuencias finitas, pero <strong>una definición conjuntista de una función no es, por sí sola, un algoritmo</strong>. El objetivo de este capítulo es construir una semántica operacional concreta en la que la palabra «computable» posea un significado verificable. Sólo después se justificarán, en los capítulos 18–20, las codificaciones numéricas y las relaciones entre computabilidad, representabilidad y diagonalización.</p>
+<p><strong>Contrato de niveles.</strong> Toda construcción de este capítulo se desarrolla inicialmente en la metateoría externa clásica <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathsf{ZF}\)</span>, sin AC ni BPI, y estudia el sistema operacional de máquinas de registros <span class="math inline">\(\mathrm{RM}\)</span>. Los resultados conjuntistas de los capítulos 14–16 suministran <strong>patrones de demostración reconstruibles en ZF</strong>, no axiomas que se importen retroactivamente desde <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span>. No se presupone un modelo de <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span>, ni se amplía su signatura primitiva <span class="math inline">\(\tau_\in\)</span>. Los programas serán, por ahora, secuencias de instrucciones estructuradas; el <strong>número de Gödel de un programa no está definido</strong>.</p>
+<p><strong>Procedencia.</strong> Reconstrucción interna bajo las convenciones y recursos ya aprobados del tratado; se conservan los estados bibliográficos anteriores. Ninguna demostración se declara importada de GAS/FND ni cotejada en páginas nuevas de una fuente. La equivalencia con otras máquinas o modelos abstractos de computación es una obligación ulterior, no una consecuencia automática del nombre «máquina de registros».</p>
+</section>
+<section id="convenio-de-efectividad-y-niveles" class="level2">
+<h2 class="anchored" data-anchor-id="convenio-de-efectividad-y-niveles">17.1. Convenio de efectividad y niveles</h2>
+<section id="tlog-cnv-00025" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00025">Convención 17.1.1 — Alcance de la palabra computable</h3>
+<p>Fijamos <span class="math inline">\(\omega\)</span> y todas las operaciones conjuntistas en <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span>. La palabra <strong>computable-RM</strong> significará «realizada por un programa bien formado del modelo <span class="math inline">\(\mathrm{RM}\)</span> que se define a continuación»; la palabra <strong>total</strong> impondrá terminación sobre <strong>todas</strong> las entradas del dominio tipado. Un procedimiento capaz de terminar únicamente ante respuestas positivas se llamará <strong>semidecisión-RM</strong>. No se identifican «conjunto definible», «conjunto enumerable mediante alguna función conjuntista», «decidible-RM» y «semidecidible-RM». Esta convención se interpreta operativamente en las definiciones de §§17.13–17.16, sin adelantar sus cláusulas formales.</p>
+</section>
+</section>
+<section id="alfabeto-conjunto-de-instrucciones" class="level2">
+<h2 class="anchored" data-anchor-id="alfabeto-conjunto-de-instrucciones">17.2. Alfabeto conjunto de instrucciones</h2>
+<section id="tlog-def-00107" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00107">Definición 17.2.1 — Cuatro coordenadas y tres constructores disjuntos</h3>
+<p>Definimos el <strong>conjunto de instrucciones crudas</strong> <span class="math inline">\(\mathcal I\subseteq\omega^4\)</span> por <span class="math display">\[
+\begin{aligned}
+\mathtt{HALT}&amp;:=(0,0,0,0),\\
+\mathtt{INC}(i,j)&amp;:=(1,i,j,0),\\
+\mathtt{DECJZ}(i,j,k)&amp;:=(2,i,j,k),\\
+\mathcal I&amp;:=\{\mathtt{HALT}\}\cup\{\mathtt{INC}(i,j):i,j\in\omega\}
+  \cup\{\mathtt{DECJZ}(i,j,k):i,j,k\in\omega\}.
+\end{aligned}
+\]</span> Los números de la primera coordenada son etiquetas sintácticas, no códigos de Gödel. La existencia de <span class="math inline">\(\mathcal I\)</span> se obtiene por separación sobre <span class="math inline">\(\omega^4\)</span> y las tres condiciones explícitas. Las familias son disjuntas por su primera coordenada; la lectura del constructor y de sus parámetros es única. Una instrucción puede contener números de registros o destinos fuera de rango: eso se prohibirá en la <strong>formación del programa</strong>, no mediante una noción circular de ejecución.</p>
+</section>
+</section>
+<section id="formación-de-programas-aridad-y-saltos" class="level2">
+<h2 class="anchored" data-anchor-id="formación-de-programas-aridad-y-saltos">17.3. Formación de programas, aridad y saltos</h2>
+<section id="tlog-def-00108" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00108">Definición 17.3.1 — Programa de <span class="math inline">\(r\)</span> registros con <span class="math inline">\(n\)</span> etiquetas</h3>
+<p>Un programa estructurado es el par <span class="math inline">\(P=(r,p)\)</span>, donde <span class="math inline">\(r\in\omega\)</span> y <span class="math inline">\(1\leq r\)</span>, <span class="math inline">\(p:n\to\mathcal I\)</span> es una secuencia de longitud <span class="math inline">\(n\in\omega\)</span> con <span class="math inline">\(1\leq n\)</span>, y <strong>para cada</strong> <span class="math inline">\(\ell\in n\)</span>:</p>
+<ul>
+<li>Si <span class="math inline">\(p(\ell)=\mathtt{HALT}\)</span>, no impone condiciones adicionales.</li>
+<li>Si <span class="math inline">\(p(\ell)=\mathtt{INC}(i,j)\)</span>, exige <span class="math inline">\(i\in r\)</span> y <span class="math inline">\(j\in n\)</span>.</li>
+<li>Si <span class="math inline">\(p(\ell)=\mathtt{DECJZ}(i,j,k)\)</span>, exige <span class="math inline">\(i\in r\)</span> y <span class="math inline">\(j,k\in n\)</span>.</li>
+</ul>
+<p>El contador de instrucciones comenzará en <span class="math inline">\(0\in n\)</span>. Para cada aridad <span class="math inline">\(q\in\omega\)</span>, ponemos <span class="math inline">\(\operatorname{Prog}_q:=\{P:\operatorname{Well}(P)\land q\leq r\}\)</span>; como <span class="math inline">\(r\ge1\)</span>, existe siempre el registro de salida <span class="math inline">\(0\in r\)</span>. Los <span class="math inline">\(q\)</span> valores de entrada ocuparán los registros <span class="math inline">\(0,\ldots,q-1\)</span>. Los restantes se inicializarán en cero. El espacio de programas es la <strong>familia de datos finitos con guardas</strong>, no una sucesión de números naturales aún codificada.</p>
+</section>
+</section>
+<section id="existencia-conjuntista-y-programas-testigo" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-conjuntista-y-programas-testigo">17.4. Existencia conjuntista y programas testigo</h2>
+<section id="tlog-pro-00103" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00103">Proposición 17.4.1 — <span class="math inline">\(\operatorname{Prog}_q\)</span> es un conjunto no vacío</h3>
+<p>Para cada <span class="math inline">\(q\in\omega\)</span>, la colección <span class="math inline">\(\operatorname{Prog}_q\)</span> existe como conjunto y contiene tanto programas con instrucción de parada como programas sin instrucción de parada.</p>
+<p><strong>Demostración.</strong> Como <span class="math inline">\(\mathcal I\)</span> es conjunto, <span class="math inline">\(\mathcal I^{&lt;\omega}\)</span> existe mediante la construcción de secuencias finitas. Los posibles pares <span class="math inline">\((r,p)\)</span> están acotados por <span class="math inline">\(\omega\times\mathcal I^{&lt;\omega}\)</span>. La condición <span class="math inline">\(\operatorname{Well}(r,p)\)</span> es una fórmula de conjuntos que sólo cuantifica sobre el dominio finito <span class="math inline">\(n\)</span> de <span class="math inline">\(p\)</span>, sus coordenadas y <span class="math inline">\(r\)</span>; por separación produce <span class="math inline">\(\operatorname{Prog}_q\)</span>. Tomando <span class="math inline">\(r\ge\max(1,q)\)</span> y <span class="math inline">\(p:1\to\mathcal I\)</span> con <span class="math inline">\(p(0)=\mathtt{HALT}\)</span> obtenemos un miembro. Tomando en cambio <span class="math inline">\(p(0)=\mathtt{INC}(0,0)\)</span> obtenemos otro programa bien formado que carece de parada; el salto <span class="math inline">\(0\)</span> está dentro del segmento <span class="math inline">\(1\)</span>. No se escogen simultáneamente elementos de una familia de conjuntos: ambos testimonios son explícitos. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="configuraciones-y-carga-de-la-entrada" class="level2">
+<h2 class="anchored" data-anchor-id="configuraciones-y-carga-de-la-entrada">17.5. Configuraciones y carga de la entrada</h2>
+<section id="tlog-def-00109" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00109">Definición 17.5.1 — Estado con contador de instrucciones y registros</h3>
+<p>Para <span class="math inline">\(P=(r,p)\)</span> de longitud <span class="math inline">\(n\)</span>, una configuración es <span class="math display">\[
+C_P:=n\times\omega^r,\qquad c=(\ell,\rho),
+\]</span> donde <span class="math inline">\(\ell\in n\)</span> es la posición de instrucción y <span class="math inline">\(\rho:r\to\omega\)</span> es el vector de registros. Para <span class="math inline">\(P\in\operatorname{Prog}_q\)</span> y <span class="math inline">\(x:q\to\omega\)</span>, la configuración inicial <span class="math inline">\(\operatorname{init}_P(x)=(0,\rho_x)\)</span> satisface <span class="math display">\[
+\rho_x(i)=\begin{cases}x(i)&amp;i\in q,\\0&amp;i\in r\setminus q.\end{cases}
+\]</span> La gráfica de <span class="math inline">\(\rho_x\)</span> se obtiene por separación sobre <span class="math inline">\(r\times\omega\)</span> y la condición por casos; es única y existe incluso si <span class="math inline">\(q=0\)</span>, caso en el que <span class="math inline">\(x=\varnothing\)</span> y todos los registros comienzan en cero. El resultado del cómputo, cuando termine, será <strong>siempre</strong> el contenido del registro <span class="math inline">\(0\)</span>. <span class="math inline">\(C_P\)</span> es un conjunto no vacío porque <span class="math inline">\(n\ge1\)</span> y hay un vector de registros nulos.</p>
+</section>
+</section>
+<section id="guardas-de-decremento-y-salto" class="level2">
+<h2 class="anchored" data-anchor-id="guardas-de-decremento-y-salto">17.6. Guardas de decremento y salto</h2>
+<section id="tlog-lem-00055" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00055">Lema 17.6.1 — Cada rama no nula tiene predecesor único</h3>
+<p>Si <span class="math inline">\(\rho(i)\in\omega\)</span> es distinto de <span class="math inline">\(0\)</span>, existe un único <span class="math inline">\(m\in\omega\)</span> tal que <span class="math inline">\(\rho(i)=S(m)\)</span>. Toda instrucción bien formada <span class="math inline">\(\mathtt{INC}(i,j)\)</span> o <span class="math inline">\(\mathtt{DECJZ}(i,j,k)\)</span> designa un registro existente y un destino válido.</p>
+<p><strong>Demostración.</strong> Repetimos en <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span> la inducción conjuntista que prueba que todo natural no nulo es un sucesor, y la demostración de inyectividad de <span class="math inline">\(S\)</span> desde fundamentación; esta es la prueba finita reconstruida en §16.14, no una transferencia de un modelo de <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span>. La pertenencia de los índices <span class="math inline">\(i\in r\)</span> y <span class="math inline">\(j,k\in n\)</span> es literalmente parte de <span class="math inline">\(\operatorname{Well}(P)\)</span>. Se obtiene existencia de cada valor asignado al siguiente estado, y la unicidad procede de la del predecesor y de la lectura única de la instrucción. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="semántica-de-un-paso" class="level2">
+<h2 class="anchored" data-anchor-id="semántica-de-un-paso">17.7. Semántica de un paso</h2>
+<section id="tlog-def-00110" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00110">Definición 17.7.1 — Transición totalizada con parada absorbente</h3>
+<p>Sea <span class="math inline">\(c=(\ell,\rho)\in C_P\)</span>. Definimos <span class="math inline">\(E_P(c)\)</span> por cláusulas disjuntas: <span class="math display">\[
+\begin{array}{ll}
+\text{HALT:}&amp;p(\ell)=\mathtt{HALT}\Rightarrow E_P(c)=c;\\
+\text{INC:}&amp;p(\ell)=\mathtt{INC}(i,j)\Rightarrow
+E_P(c)=(j,\rho[i\mapsto S(\rho(i))]);\\
+\text{DECJZ-0:}&amp;p(\ell)=\mathtt{DECJZ}(i,j,k),\;\rho(i)=0
+\Rightarrow E_P(c)=(j,\rho);\\
+\text{DECJZ-$&gt;$0:}&amp;p(\ell)=\mathtt{DECJZ}(i,j,k),\;\rho(i)=S(m)
+\Rightarrow E_P(c)=(k,\rho[i\mapsto m]).
+\end{array}
+\]</span> Los corchetes denotan la actualización de una función en una coordenada (Capítulo 14). La <strong>parada es absorbente</strong>: se representa por un estado que permanece fijo en cada paso posterior, sin declarar que la máquina haya ejecutado nuevas instrucciones reales después de detenerse. Las instrucciones no son fórmulas del lenguaje objeto <span class="math inline">\(\tau_\in\)</span>; son elementos de un conjunto de sintaxis operacional metateórica.</p>
+</section>
+</section>
+<section id="existencia-y-determinismo-del-grafo-de-paso" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-y-determinismo-del-grafo-de-paso">17.8. Existencia y determinismo del grafo de paso</h2>
+<section id="tlog-pro-00104" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00104">Proposición 17.8.1 — <span class="math inline">\(E_P\)</span> es función total <span class="math inline">\(C_P\to C_P\)</span></h3>
+<p>Para cada programa bien formado <span class="math inline">\(P\)</span> existe una única gráfica <span class="math inline">\(E_P\subseteq C_P\times C_P\)</span> que satisface las cuatro cláusulas de §17.7. La aplicación tiene dominio exacto <span class="math inline">\(C_P\)</span> y codominio <span class="math inline">\(C_P\)</span>.</p>
+<p><strong>Demostración.</strong> <span class="math inline">\(C_P\times C_P\)</span> existe por producto cartesiano. Separamos los pares <span class="math inline">\((c,d)\)</span> para los cuales una de las cuatro fórmulas definitorias establece <span class="math inline">\(d=E_P(c)\)</span>, con sus testigos <span class="math inline">\(i,j,k,m\)</span> acotados por las guardas de formación. Las etiquetas 0,1,2 de instrucción son distintas, y las ramas <span class="math inline">\(\rho(i)=0\)</span> y <span class="math inline">\(\rho(i)\ne0\)</span> son excluyentes. En el segundo caso el predecesor existe y es único por §17.6. Las actualizaciones tienen dominio <span class="math inline">\(r\)</span> y valores naturales; los destinos pertenecen a <span class="math inline">\(n\)</span>. Por ello para todo <span class="math inline">\(c\in C_P\)</span> hay <strong>exactamente un</strong> <span class="math inline">\(d\in C_P\)</span> y la relación separada es una función total. Extensionalidad concede unicidad de su grafo. La argumentación construye directamente el conjunto de transiciones, sin escoger sucesores mediante AC. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="ejecución-determinista-por-recursión-numérica" class="level2">
+<h2 class="anchored" data-anchor-id="ejecución-determinista-por-recursión-numérica">17.9. Ejecución determinista por recursión numérica</h2>
+<section id="tlog-mth-00078" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00078">Metateorema 17.9.1 — Existe una única órbita de estados</h3>
+<p>Fijados <span class="math inline">\(P\in\operatorname{Prog}_q\)</span> y <span class="math inline">\(x\in\omega^q\)</span>, existe una función única <span class="math display">\[
+\operatorname{Run}_P(x,\cdot):\omega\longrightarrow C_P
+\]</span> que verifica <span class="math display">\[
+\operatorname{Run}_P(x,0)=\operatorname{init}_P(x),\qquad
+\operatorname{Run}_P(x,S(t))=E_P(\operatorname{Run}_P(x,t)).
+\]</span> Más aún, existe el grafo uniforme sobre <span class="math inline">\(\omega^q\times\omega\)</span> para <span class="math inline">\(P\)</span> fijo.</p>
+<p><strong>Demostración.</strong> Reproducimos en <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span> la construcción conjuntista de recursión sobre <span class="math inline">\(\omega\)</span>: el codominio <span class="math inline">\(C_P\)</span> es un conjunto no vacío, <span class="math inline">\(E_P:C_P\to C_P\)</span> es total y el estado inicial pertenece a <span class="math inline">\(C_P\)</span>. La existencia se obtiene uniendo aproximaciones funcionales compatibles, acotadas por <span class="math inline">\(\mathcal P(\omega\times C_P)\)</span>; la unicidad, por inducción en <span class="math inline">\(t\)</span>. Las aproximaciones y su construcción siguen el argumento explícito del Capítulo 16, aplicado ahora en la metateoría ZF. La versión uniforme utiliza el parámetro <span class="math inline">\(x\in\omega^q\)</span> y separación en <span class="math inline">\((\omega^q\times\omega)\times C_P\)</span> más reemplazo para obtener una única gráfica de evaluación. <strong>No</strong> postulamos la verdad de <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span> en <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span> ni empleamos una familia de elecciones. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="certificados-de-ejecución-acotada" class="level2">
+<h2 class="anchored" data-anchor-id="certificados-de-ejecución-acotada">17.10. Certificados de ejecución acotada</h2>
+<section id="tlog-pro-00105" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00105">Proposición 17.10.1 — Trazas finitas existentes y verificables</h3>
+<p>Para <span class="math inline">\(P,x,t\)</span> tipados existe una única secuencia <span class="math inline">\(s:S(t)\to C_P\)</span> con <span class="math display">\[
+s(0)=\operatorname{init}_P(x),\qquad
+\forall u\in t\;s(S(u))=E_P(s(u)).
+\]</span> Se obtiene restringiendo <span class="math inline">\(\operatorname{Run}_P(x,\cdot)\)</span> a <span class="math inline">\(S(t)\)</span>. Una sucesión candidata de esa longitud puede <strong>verificarse en un número finito de operaciones elementales</strong>: comprobar índices, cuatro coordenadas de instrucción, igualdad de naturales, incremento y predecesor de registros, y transiciones consecutivas.</p>
+<p><strong>Demostración.</strong> La restricción del grafo uniforme existe por separación y satisface las ecuaciones. Si <span class="math inline">\(s'\)</span> es otra traza con dominio <span class="math inline">\(S(t)\)</span>, se induce sobre <span class="math inline">\(u\le t\)</span> la igualdad <span class="math inline">\(s(u)=s'(u)\)</span>; el paso aplica la unicidad de <span class="math inline">\(E_P\)</span>. Para verificar un candidato se lee una lista finita de <span class="math inline">\(t+1\)</span> estados y se recorren sus <span class="math inline">\(t\)</span> transiciones, donde cada comprobación es una operación explícita sobre números naturales y registros finitos. Se trata de <strong>verificación de una traza y una cota dadas</strong>, no de un algoritmo que determine si una ejecución arbitraria terminará alguna vez. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="parada-y-salida-observada" class="level2">
+<h2 class="anchored" data-anchor-id="parada-y-salida-observada">17.11. Parada y salida observada</h2>
+<section id="tlog-def-00111" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00111">Definición 17.11.1 — Predicado de parada en tiempo <span class="math inline">\(t\)</span></h3>
+<p>Para <span class="math inline">\(P=(r,p)\)</span>, <span class="math inline">\(x\in\omega^q\)</span> y <span class="math inline">\(t\in\omega\)</span>, escribimos <span class="math display">\[
+\operatorname{Halt}(P,x,t)\iff
+p\bigl(\pi_0(\operatorname{Run}_P(x,t))\bigr)=\mathtt{HALT}.
+\]</span> Si esto ocurre, <span class="math inline">\(\operatorname{Out}(P,x,t)\)</span> es el valor <span class="math inline">\(\rho(0)\)</span> del vector de registros en <span class="math inline">\(\operatorname{Run}_P(x,t)=(\ell,\rho)\)</span>. Definimos «<span class="math inline">\(P\)</span> termina en <span class="math inline">\(x\)</span>» por <span class="math inline">\(\exists t\in\omega\,\operatorname{Halt}(P,x,t)\)</span>. No definimos aún un tiempo de parada como término total; cuando exista al menos un testigo, su <strong>menor</strong> valor se legitimará por el buen orden de <span class="math inline">\(\omega\)</span>.</p>
+</section>
+</section>
+<section id="permanencia-de-la-parada-y-estabilidad-del-resultado" class="level2">
+<h2 class="anchored" data-anchor-id="permanencia-de-la-parada-y-estabilidad-del-resultado">17.12. Permanencia de la parada y estabilidad del resultado</h2>
+<section id="tlog-lem-00056" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00056">Lema 17.12.1 — Parada absorbente y tiempo mínimo</h3>
+<p>Si <span class="math inline">\(\operatorname{Halt}(P,x,t)\)</span>, entonces para todo <span class="math inline">\(u\ge t\)</span> se cumplen <span class="math inline">\(\operatorname{Halt}(P,x,u)\)</span> y <span class="math inline">\(\operatorname{Out}(P,x,u)=\operatorname{Out}(P,x,t)\)</span>. Cuando la ejecución termina, existe un <strong>único menor instante</strong> <span class="math inline">\(\mu t\,\operatorname{Halt}(P,x,t)\)</span>.</p>
+<p><strong>Demostración.</strong> La instrucción de parada fija toda la configuración por la primera cláusula de <span class="math inline">\(E_P\)</span>. Por inducción en el número natural de pasos posteriores, su órbita permanece constante. La totalidad del orden usual <span class="math inline">\(\le\)</span> permite escribir cada <span class="math inline">\(u\ge t\)</span> como <span class="math inline">\(t+v\)</span> (se prueba por inducción en <span class="math inline">\(u\)</span> o mediante las leyes aritméticas previamente reconstruidas), y se concluyen las dos estabilidades. El conjunto <span class="math inline">\(T=\{t\in\omega:\operatorname{Halt}(P,x,t)\}\)</span> existe por separación. Si no es vacío, el buen orden de <span class="math inline">\(\omega\)</span> proporciona un mínimo único. Ninguna operación de minimización se declara <strong>calculable</strong> por esta sola argumentación conjuntista. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="significado-extensional-de-un-programa" class="level2">
+<h2 class="anchored" data-anchor-id="significado-extensional-de-un-programa">17.13. Significado extensional de un programa</h2>
+<section id="tlog-def-00112" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00112">Definición 17.13.1 — Gráfica calculada, posiblemente parcial</h3>
+<p>Para <span class="math inline">\(P\in\operatorname{Prog}_q\)</span> definimos la relación <span class="math display">\[
+\boxed{\ F_P^{(q)}:=\{(x,y)\in\omega^q\times\omega:\exists t\in\omega\;
+[\operatorname{Halt}(P,x,t)\land\operatorname{Out}(P,x,t)=y]\}.\ }
+\]</span> Esta es la <strong>semántica extensional parcial</strong> del programa. La salida <span class="math inline">\(y\)</span> aparece sólo si <span class="math inline">\(P\)</span> efectivamente alcanza una instrucción <span class="math inline">\(\mathtt{HALT}\)</span>. El par <span class="math inline">\((q,P)\)</span> forma parte del tipo: un mismo programa puede admitir varias aridades de entrada, con cargas iniciales distintas. El símbolo <span class="math inline">\(F_P^{(q)}(x)\)</span> <strong>no</strong> es un término definido si <span class="math inline">\(P\)</span> no termina en <span class="math inline">\(x\)</span>.</p>
+</section>
+</section>
+<section id="la-semántica-calculada-es-una-función-parcial" class="level2">
+<h2 class="anchored" data-anchor-id="la-semántica-calculada-es-una-función-parcial">17.14. La semántica calculada es una función parcial</h2>
+<section id="tlog-pro-00106" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00106">Proposición 17.14.1 — Conjunto de pares y univocidad del resultado</h3>
+<p>La relación <span class="math inline">\(F_P^{(q)}\)</span> existe como conjunto y es una función parcial con dominio incluido en <span class="math inline">\(\omega^q\)</span> e imagen incluida en <span class="math inline">\(\omega\)</span>. Si <span class="math inline">\(P\)</span> alcanza la parada en <span class="math inline">\(x\)</span>, produce un único <span class="math inline">\(y\)</span>, independiente del testigo temporal.</p>
+<p><strong>Demostración.</strong> La clase <span class="math inline">\(\omega^q\times\omega\)</span> es un conjunto. El predicado enmarcado en §17.13 tiene parámetros conjuntistas fijos y por separación determina un subconjunto suyo; todos los cuantificadores sobre tiempos son cuantificadores ordinarios en la metateoría. Si <span class="math inline">\((x,y),(x,z)\in F_P^{(q)}\)</span>, hay instantes <span class="math inline">\(t,u\)</span> en los cuales la máquina está detenida y sus registros de salida son <span class="math inline">\(y,z\)</span>. La linealidad del orden sobre naturales permite suponer <span class="math inline">\(t\le u\)</span>. Por la permanencia de la parada (§17.12), el estado en <span class="math inline">\(u\)</span> coincide con el de <span class="math inline">\(t\)</span>; en particular <span class="math inline">\(y=z\)</span>. No se ha probado que para <strong>todo</strong> <span class="math inline">\(x\)</span> exista un par: la función es, en general, parcial. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="computabilidad-parcial-y-total-relativas-al-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="computabilidad-parcial-y-total-relativas-al-modelo">17.15. Computabilidad parcial y total relativas al modelo</h2>
+<section id="tlog-def-00113" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00113">Definición 17.15.1 — Función parcial computable-RM</h3>
+<p>Sea <span class="math inline">\(f\subseteq\omega^q\times\omega\)</span> una función parcial. Diremos que <span class="math inline">\(f\)</span> es <strong>parcial computable-RM</strong> si existe <span class="math inline">\(P\in\operatorname{Prog}_q\)</span> con <span class="math inline">\(f=F_P^{(q)}\)</span> como grafos. Diremos que <span class="math inline">\(f\)</span> es <strong>total computable-RM</strong> si además <span class="math inline">\(\operatorname{dom}(f)=\omega^q\)</span>. Igualdad de funciones parciales significa coincidencia de <em>dominio y valor</em>, no sólo acuerdo donde ambas están definidas. Esta es una definición exacta en <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span> relativa a <span class="math inline">\(\mathrm{RM}\)</span>; <strong>no</strong> se ha probado todavía la equivalencia extensional con máquinas de Turing, funciones recursivas u otros modelos.</p>
+</section>
+</section>
+<section id="decisión-semidecisión-y-conjuntos-c.e." class="level2">
+<h2 class="anchored" data-anchor-id="decisión-semidecisión-y-conjuntos-c.e.">17.16. Decisión, semidecisión y conjuntos c.e.</h2>
+<section id="tlog-def-00114" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00114">Definición 17.16.1 — Dos nociones operacionales diferentes</h3>
+<p>Para <span class="math inline">\(R\subseteq\omega^q\)</span> definimos:</p>
+<ul>
+<li><span class="math inline">\(R\)</span> es <strong>semidecidible-RM</strong> (o <strong>c.e.-RM por dominio de parada</strong>) cuando existe <span class="math inline">\(P\in\operatorname{Prog}_q\)</span> tal que <span class="math display">\[
+x\in R\iff\exists t\in\omega\,\operatorname{Halt}(P,x,t).
+\]</span> Si <span class="math inline">\(x\notin R\)</span>, el programa puede ejecutar infinitamente; no se exige una respuesta negativa.</li>
+<li><span class="math inline">\(R\)</span> es <strong>decidible-RM</strong> cuando existe <span class="math inline">\(P\in\operatorname{Prog}_q\)</span> que termina para cada <span class="math inline">\(x\in\omega^q\)</span>, deja el registro de salida en <span class="math inline">\(\{0,1\}\)</span>, y satisface <span class="math display">\[
+x\in R\iff F_P^{(q)}(x)=1,\qquad x\notin R\iff F_P^{(q)}(x)=0.
+\]</span></li>
+</ul>
+<p>El adjetivo <strong>computablemente enumerable</strong> se fija por ahora en su caracterización operacional de <strong>dominio de un cómputo parcial</strong>. La equivalencia con la imagen de un <em>enumerador total que emite todos los elementos</em> aún no está demostrada; requiere controlar uniformemente la codificación de entradas de aridad <span class="math inline">\(q\)</span> y el entrelazado de ejecuciones. Esa obligación queda registrada para los siguientes microtramos y el capítulo 18. Tampoco se afirma que la mera definibilidad conjuntista implique una de estas dos propiedades.</p>
+</section>
+</section>
+<section id="aproximaciones-temporales-a-un-dominio-c.e." class="level2">
+<h2 class="anchored" data-anchor-id="aproximaciones-temporales-a-un-dominio-c.e.">17.17. Aproximaciones temporales a un dominio c.e.</h2>
+<section id="tlog-pro-00107" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00107">Proposición 17.17.1 — Reunión creciente de secciones decidibles acotadas</h3>
+<p>Fijado <span class="math inline">\(P\in\operatorname{Prog}_q\)</span>, definimos para <span class="math inline">\(t\in\omega\)</span> <span class="math display">\[
+D_{P,t}:=\{x\in\omega^q:\operatorname{Halt}(P,x,t)\}.
+\]</span> Entonces <span class="math display">\[
+\boxed{D_{P,t}\subseteq D_{P,S(t)},\qquad
+\operatorname{dom}(F_P^{(q)})=\bigcup_{t\in\omega}D_{P,t}.}
+\]</span> Dado un triple concreto <span class="math inline">\((P,x,t)\)</span> bien tipado, la pertenencia <span class="math inline">\(x\in D_{P,t}\)</span> puede decidirse por el cálculo finito de la traza de longitud <span class="math inline">\(S(t)\)</span>. No se afirma que <strong><span class="math inline">\(D_{P,t}\)</span> sea finito</strong>: un programa que se detenga inmediatamente posee <span class="math inline">\(D_{P,0}=\omega^q\)</span>, posiblemente infinito.</p>
+<p><strong>Demostración.</strong> Separación forma cada <span class="math inline">\(D_{P,t}\)</span> dentro de <span class="math inline">\(\omega^q\)</span>. La permanencia de la parada da la inclusión. Por definición de <span class="math inline">\(F_P^{(q)}\)</span>, la pertenencia de <span class="math inline">\(x\)</span> a su dominio equivale a que exista un <span class="math inline">\(t\)</span> con <span class="math inline">\(\operatorname{Halt}(P,x,t)\)</span>, esto es, a <span class="math inline">\(x\in\bigcup_t D_{P,t}\)</span>. La familia <span class="math inline">\(t\mapsto D_{P,t}\)</span> es funcional y existe por reemplazo, de modo que la unión es un conjunto. El algoritmo de pertenencia acotada simula exactamente <span class="math inline">\(t\)</span> pasos con la transición de §17.7 y comprueba el constructor de la instrucción actual; <strong>termina porque <span class="math inline">\(t\)</span> es un natural dado</strong>. Así se justifica la semidecisión por búsqueda sucesiva de cotas, sin resolver la parada ilimitada. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="programas-básicos-y-programas-divergentes" class="level2">
+<h2 class="anchored" data-anchor-id="programas-básicos-y-programas-divergentes">17.18. Programas básicos y programas divergentes</h2>
+<section id="tlog-pro-00108" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00108">Proposición 17.18.1 — Identidad, cero constante y divergencia universal</h3>
+<p>En el modelo definido existen, por construcción explícita:</p>
+<ol type="1">
+<li>Una máquina de aridad <span class="math inline">\(1\)</span> que calcula la identidad <span class="math inline">\(n\mapsto n\)</span>: con un registro y programa de longitud <span class="math inline">\(1\)</span>, <span class="math inline">\(p(0)=\mathtt{HALT}\)</span>; el registro <span class="math inline">\(0\)</span> conserva la entrada.</li>
+<li>Para cada aridad <span class="math inline">\(q\in\omega\)</span>, una máquina que calcula la constante cero <span class="math inline">\(z_q(x)=0\)</span> en <strong>todas</strong> las entradas, incluso <span class="math inline">\(q=0\)</span>. Tomamos <span class="math inline">\(r\ge\max(q,2)\)</span> y programa de longitud <span class="math inline">\(3\)</span>: <span class="math display">\[
+p(0)=\mathtt{DECJZ}(0,2,1),\qquad
+p(1)=\mathtt{INC}(1,0),\qquad
+p(2)=\mathtt{HALT}.
+\]</span></li>
+<li>Para cada aridad <span class="math inline">\(q\)</span>, una máquina que nunca termina: con <span class="math inline">\(r\ge\max(q,1)\)</span>, el programa de longitud <span class="math inline">\(1\)</span> <span class="math inline">\(p(0)=\mathtt{INC}(0,0)\)</span> incrementa perpetuamente el registro <span class="math inline">\(0\)</span> y salta siempre a <span class="math inline">\(0\)</span>.</li>
+</ol>
+<p><strong>Demostración.</strong> En (1) la instrucción inicial ya es <span class="math inline">\(\mathtt{HALT}\)</span>, luego el valor de salida es la primera entrada. En (2), si el registro <span class="math inline">\(0\)</span> es cero, la primera transición salta a <span class="math inline">\(2\)</span> y detiene la máquina; si su valor es <span class="math inline">\(S(m)\)</span>, decrementa a <span class="math inline">\(m\)</span> y salta a <span class="math inline">\(1\)</span>, que incrementa <strong>el registro auxiliar 1</strong> y vuelve a <span class="math inline">\(0\)</span>. Por inducción sobre el valor inicial del registro <span class="math inline">\(0\)</span>, tras un número finito de vueltas se alcanza <span class="math inline">\(0\)</span> y la parada en <span class="math inline">\(2\)</span>. El incremento del registro <span class="math inline">\(1\)</span> nunca altera la salida ni la condición de finitud; es válido incluso si ese registro contenía un valor de entrada. En (3) la instrucción <span class="math inline">\(\mathtt{HALT}\)</span> no aparece en el programa, de modo que toda configuración alcanzada ejecuta <span class="math inline">\(\mathtt{INC}\)</span> y ninguna satisface el predicado de parada. Los tres programas satisfacen expresamente las condiciones sobre registros y destinos. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="lo-decidible-da-dos-semidecisiones" class="level2">
+<h2 class="anchored" data-anchor-id="lo-decidible-da-dos-semidecisiones">17.19. Lo decidible da dos semidecisiones</h2>
+<section id="tlog-pro-00109" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00109">Proposición 17.19.1 — Complementos de relaciones decidibles son semidecidibles</h3>
+<p>Si <span class="math inline">\(R\subseteq\omega^q\)</span> es decidible-RM, entonces <strong>tanto <span class="math inline">\(R\)</span> como su complemento relativo</strong> <span class="math inline">\(\omega^q\setminus R\)</span> son semidecidibles-RM: <span class="math display">\[
+\boxed{\operatorname{Dec}_{\rm RM}(R)\ \Longrightarrow\
+\operatorname{Semi}_{\rm RM}(R)\ \land\
+\operatorname{Semi}_{\rm RM}(\omega^q\setminus R).}
+\]</span></p>
+<p><strong>Demostración constructiva.</strong> Sea <span class="math inline">\(P=(r,p)\)</span> el programa decidor de <span class="math inline">\(R\)</span>, de longitud <span class="math inline">\(n\ge1\)</span>, que siempre termina con contenido <span class="math inline">\(0\)</span> o <span class="math inline">\(1\)</span> en el registro <span class="math inline">\(0\)</span>. Para el reconocedor de <span class="math inline">\(R\)</span> fabricamos un programa <span class="math inline">\(P^+\)</span> de igual número <span class="math inline">\(r\)</span> de registros y longitud <span class="math inline">\(n+2\)</span>. Conservamos todas las instrucciones no terminales de <span class="math inline">\(p\)</span>, cuyos saltos originales siguen siendo válidos. Sustituimos <strong>cada</strong> instrucción <span class="math inline">\(\mathtt{HALT}\)</span> en una etiqueta antigua por <span class="math inline">\(\mathtt{DECJZ}(0,n+1,n)\)</span>. Añadimos <span class="math inline">\(p^+(n)=\mathtt{HALT}\)</span> y <span class="math inline">\(p^+(n+1)=\mathtt{INC}(0,n+1)\)</span>. Si el decidor original llega con salida <span class="math inline">\(1\)</span>, <span class="math inline">\(\mathtt{DECJZ}\)</span> decrementa el registro <span class="math inline">\(0\)</span> y salta a <span class="math inline">\(n\)</span>, que es terminal; si llega con salida <span class="math inline">\(0\)</span>, salta a <span class="math inline">\(n+1\)</span>, que forma un bucle sin parada. La semántica hasta la <strong>primera</strong> visita a una instrucción originalmente terminal es idéntica a la de <span class="math inline">\(P\)</span>, pues ninguna instrucción anterior fue alterada. Por ello <span class="math inline">\(P^+\)</span> se detiene exactamente cuando <span class="math inline">\(x\in R\)</span>.</p>
+<p>Para reconocer el complemento fabricamos <span class="math inline">\(P^-\)</span> conservando el mismo esquema de dos nuevas etiquetas, pero sustituyendo cada instrucción terminal antigua por <span class="math inline">\(\mathtt{DECJZ}(0,n,n+1)\)</span>: acepta y se detiene en la salida cero; entra en el bucle cuando la salida es uno. Ambos programas son bien formados (todos los destinos son menores que <span class="math inline">\(n+2\)</span>) y poseen semántica de parada exactamente especificada. No usamos la afirmación recíproca, que exige una construcción controlada de simulación intercalada aún no efectuada. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="frontera-entre-semántica-de-máquinas-y-aritmetización" class="level2">
+<h2 class="anchored" data-anchor-id="frontera-entre-semántica-de-máquinas-y-aritmetización">17.20. Frontera entre semántica de máquinas y aritmetización</h2>
+<section id="tlog-cor-00024" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00024">Corolario 17.20.1 — Infraestructura operacional mínima disponible</h3>
+<p>El sistema <span class="math inline">\(\mathrm{RM}\)</span> proporciona: (i) un <strong>conjunto</strong> de programas finitos por aridad; (ii) transiciones y ejecuciones deterministas como funciones entre conjuntos; (iii) una semántica extensional de funciones parciales <span class="math inline">\(\omega^q\rightharpoonup\omega\)</span>; (iv) la distinción operativa entre total computable, decidible y semidecidible; (v) certificados finitos de ejecución acotada, y (vi) reconocedores explícitos para ambos lados de una relación decidible.</p>
+<p><strong>Demostración.</strong> Los apartados (i)–(v) son, respectivamente, §§17.4, 17.8–17.17. El apartado (vi) es la traducción explícita de instrucciones de §17.19. La conjunción no introduce una máquina universal, ni enumera aún los programas mediante números naturales, ni demuestra equivalencia con modelos externos, ni establece la indecidibilidad general de la parada. Tales resultados exigen pruebas adicionales; declarar aquí alguno de ellos sería una circularidad respecto de los capítulos 18–20. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="obligaciones-heredadas-del-primer-microtramo" class="level2">
+<h2 class="anchored" data-anchor-id="obligaciones-heredadas-del-primer-microtramo">17.21. Obligaciones heredadas del primer microtramo</h2>
+<p>Quedan para <code>CH17-M02</code>: codificación explícita o simulación uniforme de instrucciones compuestas y ejecución intercalada; clausura de las funciones computables por composición y operadores básicos; demostración de la equivalencia operativa entre semidecisión y procedimientos de enumeración una vez dispuesta una codificación efectiva de tuplas; y análisis de las condiciones bajo las que ambos semidecidibles implican decidibilidad. <strong>No</strong> se reclama en este microtramo una numeración efectiva de las fórmulas del lenguaje lógico ni una máquina universal. La parte IV queda <code>OPEN</code> y el Capítulo 17 permanece <code>PARTIAL-CLOSURE</code>.</p>
+</section>
+<section id="compilación-finita-y-separación-de-niveles" class="level2">
+<h2 class="anchored" data-anchor-id="compilación-finita-y-separación-de-niveles">17.22. Compilación finita y separación de niveles</h2>
+<section id="tlog-cnv-00026" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00026">Convención 17.22.1 — Compilación finita y separación de niveles</h3>
+<p>Fijados <strong>programas concretos</strong> <span class="math inline">\(P,Q\)</span> de la sintaxis de §§17.2–17.3, una <em>compilación finita</em> transforma sus listas y etiquetas en una nueva lista finita de instrucciones <span class="math inline">\(\mathrm{RM}\)</span>. Los índices internos de una transformación pueden ser pares <span class="math inline">\((\ell_P,\ell_Q)\)</span> o etiquetas simbólicas provisionales, pero sólo aparecen <strong>durante</strong> la construcción: el programa resultado vuelve a ser un par <span class="math inline">\((r,p)\)</span> con <span class="math inline">\(p:n\to\mathcal I\)</span>, <span class="math inline">\(r,n\ge1\)</span> y saltos dentro de <span class="math inline">\(n\)</span>. Cada número de etiqueta se obtiene mediante una <strong>enumeración finita concreta</strong>, distinta de una numeración de Gödel de programas arbitrarios.</p>
+<p>Las pruebas de este bloque tienen lugar en <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathsf{ZF}\)</span>, sin axioma de elección ni principio del ultrafiltro. Se distinguen: (i) ejecución simulada de un programa fijo, (ii) transformación externa <strong>efectiva</strong> de una lista finita, y (iii) máquina universal que interpreta una descripción numérica variable. Sólo (i)–(ii) se construirán aquí. Todas las operaciones sobre segmentos finitos se controlarán mediante los lemas siguientes.</p>
+</section>
+</section>
+<section id="macrobloques-de-registros-con-guardas-de-frescura" class="level2">
+<h2 class="anchored" data-anchor-id="macrobloques-de-registros-con-guardas-de-frescura">17.23. Macrobloques de registros con guardas de frescura</h2>
+<section id="tlog-def-00115" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00115">Definición 17.23.1 — Macrobloques de registros con guardas de frescura</h3>
+<p>Un <strong>macrobloque</strong> consta de una cantidad finita de ubicaciones de control, entradas y salidas etiquetadas, instrucciones elementales <span class="math inline">\(\mathtt{INC}\)</span>/<span class="math inline">\(\mathtt{DECJZ}\)</span> y un conjunto finito de registros utilizados. Los macros <span class="math inline">\(\operatorname{Go}(j)\)</span>, <span class="math inline">\(\operatorname{Clr}(a)\)</span>, <span class="math inline">\(\operatorname{Move}(a,b)\)</span>, <span class="math inline">\(\operatorname{Copy}(a,b;t)\)</span> y <span class="math inline">\(\operatorname{Test0}(a;j_0,j_+)\)</span> exigen registros <strong>distintos</strong> cuando así se indica. <span class="math inline">\(\operatorname{Move}\)</span> incrementará <span class="math inline">\(b\)</span> tantas veces como unidades retire de <span class="math inline">\(a\)</span>, sin suponer <span class="math inline">\(b=0\)</span>; <span class="math inline">\(\operatorname{Copy}\)</span> exige <span class="math inline">\(t=0\)</span> y lo devolverá a cero. Las etiquetas internas y los registros auxiliares son <strong>frescos</strong> respecto de los bloques que se incorporen.</p>
+<p>La lectura editorial de un macro no es una nueva instrucción primitiva de RM. Su corrección exige exhibir una lista finita de instrucciones primitivas con el mismo efecto observable y la misma condición de parada. Queda prohibida cualquier instrucción encubierta de asignación general <span class="math inline">\(a:=b\)</span>, de salto indirecto o de consulta externa de un programa.</p>
+</section>
+</section>
+<section id="saltos-incondicionales-borrado-y-transferencia-finitos" class="level2">
+<h2 class="anchored" data-anchor-id="saltos-incondicionales-borrado-y-transferencia-finitos">17.24. Saltos incondicionales, borrado y transferencia finitos</h2>
+<section id="tlog-lem-00057" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00057">Lema 17.24.1 — Saltos incondicionales, borrado y transferencia finitos</h3>
+<p><strong>Lema.</strong> Con un registro de descarte <span class="math inline">\(d\)</span> que no será leído ni presentado como salida, y con etiquetas válidas, las siguientes plantillas implementan las operaciones indicadas:</p>
+<ul>
+<li><span class="math inline">\(\operatorname{Go}(j)\)</span>: <span class="math inline">\(\mathtt{INC}(d,j)\)</span>. Cambia sólo <span class="math inline">\(d\)</span> e ingresa en <span class="math inline">\(j\)</span>.</li>
+<li><span class="math inline">\(\operatorname{Clr}(a)\)</span>: en la etiqueta <span class="math inline">\(L\)</span> se dispone <span class="math inline">\(\mathtt{DECJZ}(a,E,L)\)</span>. Si <span class="math inline">\(a=0\)</span> termina; si <span class="math inline">\(a&gt;0\)</span> decrementa y vuelve a <span class="math inline">\(L\)</span>.</li>
+<li><span class="math inline">\(\operatorname{Move}(a,b)\)</span>, con <span class="math inline">\(a\ne b\)</span>: en <span class="math inline">\(L\)</span> se dispone <span class="math inline">\(\mathtt{DECJZ}(a,E,J)\)</span> y en <span class="math inline">\(J\)</span> se dispone <span class="math inline">\(\mathtt{INC}(b,L)\)</span>; <span class="math inline">\(b\)</span> termina aumentado por el valor inicial de <span class="math inline">\(a\)</span> y <span class="math inline">\(a\)</span> termina en cero.</li>
+<li><span class="math inline">\(\operatorname{Test0}(a;j_0,j_+)\)</span>: en <span class="math inline">\(L\)</span> se dispone <span class="math inline">\(\mathtt{DECJZ}(a,j_0,J)\)</span>; en <span class="math inline">\(J\)</span> se dispone <span class="math inline">\(\mathtt{INC}(a,j_+)\)</span>. El valor final de <span class="math inline">\(a\)</span> coincide exactamente con el inicial.</li>
+</ul>
+<p><strong>Demostración.</strong> En <span class="math inline">\(\operatorname{Clr}\)</span> la cantidad de iteraciones decrementales es el valor inicial natural del registro. En <span class="math inline">\(\operatorname{Move}\)</span> se mantiene el invariante <span class="math inline">\(a+b=a_0+b_0\)</span> y cada paso no terminal disminuye <span class="math inline">\(a\)</span> en una unidad, por lo que se alcanzará la salida <span class="math inline">\(E\)</span>. En <span class="math inline">\(\operatorname{Test0}\)</span> la rama positiva resta y a continuación restituye una unidad, sin ejecutar la rama cero. En todos los casos el contador sólo visita etiquetas explicitadas. No hay instrucciones nuevas ni búsqueda no acotada cuyo éxito se dé por supuesto. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="copia-conservativa-con-auxiliar-restaurado" class="level2">
+<h2 class="anchored" data-anchor-id="copia-conservativa-con-auxiliar-restaurado">17.25. Copia conservativa con auxiliar restaurado</h2>
+<section id="tlog-lem-00058" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00058">Lema 17.25.1 — Copia conservativa con auxiliar restaurado</h3>
+<p><strong>Lema.</strong> Para registros distintos <span class="math inline">\(a,b,t\)</span>, con <span class="math inline">\(t=0\)</span>, existe un macrobloque finito <span class="math inline">\(\operatorname{Copy}(a,b;t)\)</span> que termina con <span class="math display">\[
+(a,b,t)_{\mathrm{final}}=(a_0,a_0,0),
+\]</span> sin alterar los restantes registros observables. <strong>No</strong> exige que <span class="math inline">\(b\)</span> esté inicialmente vacío.</p>
+<p><strong>Demostración.</strong> Se ejecuta primero <span class="math inline">\(\operatorname{Clr}(b)\)</span>. Después, mientras <span class="math inline">\(a&gt;0\)</span>, una instrucción <span class="math inline">\(\mathtt{DECJZ}(a,E,J)\)</span> disminuye <span class="math inline">\(a\)</span> y la ruta positiva ejecuta <span class="math inline">\(\mathtt{INC}(b,J')\)</span>, <span class="math inline">\(\mathtt{INC}(t,L)\)</span>, con retorno a la prueba en <span class="math inline">\(L\)</span>. Se ha establecido, después de <span class="math inline">\(k\)</span> iteraciones, <span class="math inline">\(a=a_0-k\)</span>, <span class="math inline">\(b=k\)</span>, <span class="math inline">\(t=k\)</span>. Tras <span class="math inline">\(a_0\)</span> iteraciones se llega a <span class="math inline">\((0,a_0,a_0)\)</span>. Finalmente <span class="math inline">\(\operatorname{Move}(t,a)\)</span> proporciona <span class="math inline">\((a_0,a_0,0)\)</span>. La inducción sobre <span class="math inline">\(a_0\in\omega\)</span> prueba terminación y exactitud. Todas las etiquetas y los registros satisfacen las guardas de §17.3. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="relocalización-de-registros-y-de-etiquetas-sin-colisiones" class="level2">
+<h2 class="anchored" data-anchor-id="relocalización-de-registros-y-de-etiquetas-sin-colisiones">17.26. Relocalización de registros y de etiquetas sin colisiones</h2>
+<section id="tlog-pro-00110" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00110">Proposición 17.26.1 — Relocalización de registros y de etiquetas sin colisiones</h3>
+<p><strong>Proposición.</strong> Para cualesquiera listas finitas de instrucciones bien formadas y cualesquiera conjuntos finitos de registros y etiquetas prohibidos, existen asignaciones explícitas de nuevos registros/etiquetas disjuntas de los prohibidos. Se puede trasladar cada programa a un banco propio, y traducir cada destino a la nueva etiqueta que le corresponde, preservando el valor de los registros simulados.</p>
+<p><strong>Demostración.</strong> Dado un conjunto finito <span class="math inline">\(F\subseteq\omega\)</span>, el menor natural mayor que todos sus elementos existe (<span class="math inline">\(0\)</span> si <span class="math inline">\(F=\varnothing\)</span>); desde allí se asignan sucesivamente <span class="math inline">\(r\)</span> nombres. El control finito se ordena por el orden natural de los pares de números originales y, cuando haya más de dos coordenadas, por orden lexicográfico; se numera <span class="math inline">\(0,\dots,N-1\)</span>. Cada <span class="math inline">\(\mathtt{INC}(i,j)\)</span> se transforma en <span class="math inline">\(\mathtt{INC}(\widehat i,\widehat j)\)</span> y cada <span class="math inline">\(\mathtt{DECJZ}(i,j,k)\)</span> en su versión con tres coordenadas relocalizadas. La inversa sobre cada imagen finita existe y permite recuperar exactamente las direcciones antiguas. Si las etiquetas finales se ampliarán con bloques auxiliares, se fija primero la lista de <strong>todas</strong> las etiquetas simbólicas del montaje y se resuelven conjuntamente los destinos. No se necesita escoger elementos de una familia infinita; las asignaciones se calculan a partir de conjuntos finitos explícitos. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="compilación-de-diagramas-de-control-finito-a-programas-rm" class="level2">
+<h2 class="anchored" data-anchor-id="compilación-de-diagramas-de-control-finito-a-programas-rm">17.27. Compilación de diagramas de control finito a programas RM</h2>
+<section id="tlog-mth-00079" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00079">Metateorema 17.27.1 — Compilación de diagramas de control finito a programas RM</h3>
+<p><strong>Metateorema (compilación).</strong> Sea <span class="math inline">\(G\)</span> un diagrama <strong>finito y no vacío</strong> con entrada distinguida, vértices etiquetados por instrucciones <span class="math inline">\(\mathtt{INC}\)</span>, <span class="math inline">\(\mathtt{DECJZ}\)</span> o las plantillas de §§17.24–17.25, y arcos hacia vértices del mismo diagrama; permite vértices terminales <span class="math inline">\(\mathtt{HALT}\)</span> y vértices de retorno o aviso al bloque llamador. Si cada macro cumple sus guardas de frescura, existe un programa bien formado <span class="math inline">\(\operatorname{Compile}(G)\)</span> cuya ejecución coincide con las transiciones abstractas entre entradas y salidas de bloques sobre todos los registros observables. Si el diagrama no llega nunca al vértice terminal, tampoco llega a una instrucción <span class="math inline">\(\mathtt{HALT}\)</span> del programa compilado.</p>
+<p><strong>Demostración.</strong> Se reemplaza cada llamada macro por una <strong>copia textual finita</strong> de su plantilla, con etiquetas internas y auxiliares disjuntos; los ciclos de ejecución permanecen como arcos, no como recursión de expansión de macros. Al ser finito <span class="math inline">\(G\)</span> y finitas las plantillas, el conjunto expandido de vértices es finito. Se ordena y numera canónicamente con su entrada original como etiqueta <span class="math inline">\(0\)</span>, obteniendo un segmento <span class="math inline">\(n\)</span>; se traduce cada arco a su índice en <span class="math inline">\(n\)</span>. Se elige <span class="math inline">\(r\)</span> mayor que cada índice de registro utilizado y mayor o igual que la aridad de entrada. Las guardas <span class="math inline">\(i&lt;r\)</span> y <span class="math inline">\(j,k&lt;n\)</span> se satisfacen <strong>por construcción</strong>. Los casos de cuatro cláusulas de transición de §17.7 dan, por inspección de instrucciones, una simulación de cada arco primitivo; los lemas 17.24–17.25 justifican el paso por un macro completo. Concatenando los tramos finitos de ejecución se obtiene una simulación de todo recorrido. La instrucción terminal sólo se coloca en vértices terminales declarados: ninguna rama no terminal genera una parada espuria. El argumento entrega un <strong>compilador de dos datos finitos fijos</strong>, no un intérprete universal sobre códigos numéricos de programas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="bloque-de-un-paso-de-programa-fijo-con-retorno" class="level2">
+<h2 class="anchored" data-anchor-id="bloque-de-un-paso-de-programa-fijo-con-retorno">17.28. Bloque de un paso de programa fijo con retorno</h2>
+<section id="tlog-def-00116" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00116">Definición 17.28.1 — Bloque de un paso de programa fijo con retorno</h3>
+<p>Fijado <span class="math inline">\(P=(r,p)\)</span> de longitud <span class="math inline">\(n\)</span>, construimos una familia de bloques <span class="math inline">\(\operatorname{Step}_P(\ell)\)</span>, uno por cada <span class="math inline">\(\ell\in n\)</span>, actuando sobre un banco propio de <span class="math inline">\(r\)</span> registros. Si <span class="math inline">\(p(\ell)\)</span> es <span class="math inline">\(\mathtt{INC}(i,j)\)</span>, incrementa el registro simulado <span class="math inline">\(i\)</span> y retorna señalando el índice <span class="math inline">\(j\)</span>; si es <span class="math inline">\(\mathtt{DECJZ}(i,j,k)\)</span>, ejecuta la prueba con decremento indicada y retorna <span class="math inline">\(j\)</span> o <span class="math inline">\(k\)</span> según el valor; si es <span class="math inline">\(\mathtt{HALT}\)</span>, devuelve la <strong>señal terminal</strong>, sin ejecutar una parada nativa del programa anfitrión.</p>
+<p>Los índices de retorno son <strong>etiquetas de control finito</strong> externas al banco de registros. En una composición de bloques, cada salida se conecta directamente con la entrada correspondiente al control siguiente. En particular, <span class="math inline">\(\operatorname{Step}_P\)</span> no recibe <span class="math inline">\(P\)</span> codificado como un natural ni lee una cinta de instrucciones variable: <span class="math inline">\(P\)</span> ya está fijado cuando se construye la familia finita.</p>
+</section>
+</section>
+<section id="exactitud-de-la-simulación-de-un-paso-y-detección-de-halt" class="level2">
+<h2 class="anchored" data-anchor-id="exactitud-de-la-simulación-de-un-paso-y-detección-de-halt">17.29. Exactitud de la simulación de un paso y detección de HALT</h2>
+<section id="tlog-lem-00059" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00059">Lema 17.29.1 — Exactitud de la simulación de un paso y detección de HALT</h3>
+<p><strong>Lema.</strong> Supongamos que el banco reservado a <span class="math inline">\(P\)</span> codifica el vector <span class="math inline">\(\rho\)</span> y el vértice de control externo es <span class="math inline">\(\ell\)</span>. Entonces completar <span class="math inline">\(\operatorname{Step}_P(\ell)\)</span> produce exactamente la nueva configuración <span class="math inline">\(E_P(\ell,\rho)\)</span> si la instrucción no es terminal; en el caso terminal produce una señal de parada y conserva <span class="math inline">\(\rho\)</span>. Nunca produce una señal terminal en un vértice que no contiene <span class="math inline">\(\mathtt{HALT}\)</span>.</p>
+<p><strong>Demostración.</strong> Por lectura única de la primera coordenada de cada instrucción existen sólo tres casos. <span class="math inline">\(\mathtt{INC}\)</span> modifica una única coordenada y selecciona su destino explícito. <span class="math inline">\(\mathtt{DECJZ}\)</span> separa exhaustivamente el caso cero y el caso sucesor; la rama positiva decrementa una unidad y salta al segundo destino, de acuerdo con <span class="math inline">\(E_P\)</span>. Para <span class="math inline">\(\mathtt{HALT}\)</span>, la semántica absorbente de §17.7 deja los registros invariantes y el bloque señala la finalización del cálculo simulado. Los destinos pertenecen a <span class="math inline">\(n\)</span> por la buena formación. Todos los otros registros pertenecen a bancos disjuntos y son invariantes, salvo los registros de descarte ignorados. De aquí el resultado y la ausencia de falsos positivos. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="simuladores-finitos-de-un-programa-individual" class="level2">
+<h2 class="anchored" data-anchor-id="simuladores-finitos-de-un-programa-individual">17.30. Simuladores finitos de un programa individual</h2>
+<section id="tlog-pro-00111" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00111">Proposición 17.30.1 — Simuladores finitos de un programa individual</h3>
+<p><strong>Proposición.</strong> Fijado <span class="math inline">\(P\in\operatorname{Prog}_q\)</span>, existe una familia finita de bloques de control que simula tantos pasos de <span class="math inline">\(P\)</span> como sean necesarios, copia y conserva los <span class="math inline">\(q\)</span> registros iniciales en un banco disjunto, y alcanza una señal terminal <strong>si y sólo si</strong> <span class="math inline">\(P\)</span> termina en esa entrada. Si alcanza la señal, el registro designado como salida simulada coincide con <span class="math inline">\(F_P^{(q)}(x)\)</span>.</p>
+<p><strong>Demostración.</strong> Se copian las entradas mediante §17.25 a los primeros <span class="math inline">\(q\)</span> registros del banco inicialmente vacío. Se enlazan los <span class="math inline">\(n\)</span> bloques <span class="math inline">\(\operatorname{Step}_P(\ell)\)</span> con sus destinos por §17.28. Por inducción en el número de pasos simulados, el control y los valores del banco representan <span class="math inline">\(\operatorname{Run}_P(x,t)\)</span>; en una visita a <span class="math inline">\(\mathtt{HALT}\)</span> la señal aparece por §17.29. Si el original nunca alcanza un terminal, la simulación sólo visita bloques de instrucciones no terminales y por el teorema de compilación nunca llega a <span class="math inline">\(\mathtt{HALT}\)</span> de aceptación. Si se detiene, la lectura estable de §17.12 identifica su valor de salida. Los pasos auxiliares de cada bloque son finitos, pero no se supone una cota <strong>uniforme en <span class="math inline">\(x\)</span></strong> para el tiempo total. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="clausura-bajo-sustitución-general-de-funciones-parciales-computables" class="level2">
+<h2 class="anchored" data-anchor-id="clausura-bajo-sustitución-general-de-funciones-parciales-computables">17.31. Clausura bajo sustitución general de funciones parciales computables</h2>
+<section id="tlog-mth-00080" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00080">Metateorema 17.31.1 — Clausura bajo sustitución general de funciones parciales computables</h3>
+<p><strong>Metateorema (composición parcial, con todas las aridades).</strong> Sean <span class="math inline">\(q,m\in\omega\)</span>, <span class="math inline">\(g:\omega^m\rightharpoonup\omega\)</span> y <span class="math inline">\(f_i:\omega^q\rightharpoonup\omega\)</span> (<span class="math inline">\(i&lt;m\)</span>), todas parciales computables-RM. Entonces la función parcial <span class="math display">\[
+h(x)=g\bigl(f_0(x),\ldots,f_{m-1}(x)\bigr)
+\]</span> es computable-RM, con dominio <strong>exactamente</strong> <span class="math display">\[
+\boxed{\operatorname{dom}(h)=\{x\in\omega^q:\forall i&lt;m\ x\in\operatorname{dom}(f_i),\ (f_i(x))_{i&lt;m}\in\operatorname{dom}(g)\}.}
+\]</span> Se admite <span class="math inline">\(m=0\)</span> (ejecución de una función nularia) y <span class="math inline">\(q=0\)</span> (una única entrada vacía).</p>
+<p><strong>Demostración.</strong> Fijamos los programas testigo <span class="math inline">\(P_i\)</span> y <span class="math inline">\(Q\)</span>; no hay familia arbitraria de decisiones, pues <span class="math inline">\(m\)</span> es finito. Se conserva <span class="math inline">\(x\)</span> en los registros iniciales del programa anfitrión, y se destinan bancos disjuntos a cada <span class="math inline">\(P_i\)</span> y a <span class="math inline">\(Q\)</span>; la copia de cada coordenada se realiza mediante §17.25. Se simulan, <strong>secuencialmente</strong>, <span class="math inline">\(P_0,\dots,P_{m-1}\)</span>. Si alguno no llega a su primera instrucción de parada, la simulación permanece en sus bloques y el anfitrión no termina. Al acabar <span class="math inline">\(P_i\)</span>, su salida se copia a un registro fresco de resultados sin destruir el banco; concluida la lista, los <span class="math inline">\(m\)</span> valores se copian a los registros de entrada <span class="math inline">\(0,\dots,m-1\)</span> del banco <span class="math inline">\(Q\)</span>, con los auxiliares de <span class="math inline">\(Q\)</span> a cero. Se simula <span class="math inline">\(Q\)</span>; si termina, se borra el registro <span class="math inline">\(0\)</span> anfitrión y se copia allí la salida del banco <span class="math inline">\(Q\)</span>, seguida de una única instrucción <span class="math inline">\(\mathtt{HALT}\)</span> real. La compilación finita de §17.27 garantiza que todos los saltos y bancos son válidos. Por inducción en los segmentos de ejecución, el anfitrión se detiene exactamente cuando las <span class="math inline">\(m\)</span> aplicaciones internas y la aplicación externa están definidas; su valor es <span class="math inline">\(g((f_i(x))_{i&lt;m})\)</span>. Para <span class="math inline">\(m=0\)</span> se omite la fase de <span class="math inline">\(P_i\)</span> y se carga la entrada nularia de <span class="math inline">\(Q\)</span>; para <span class="math inline">\(q=0\)</span> se omite la copia de entradas originales. No se aplica en ningún punto una «regla de composición computable» sin construir el programa. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="proyecciones-sucesor-y-constantes-son-computables-rm" class="level2">
+<h2 class="anchored" data-anchor-id="proyecciones-sucesor-y-constantes-son-computables-rm">17.32. Proyecciones, sucesor y constantes son computables-RM</h2>
+<section id="tlog-pro-00112" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00112">Proposición 17.32.1 — Proyecciones, sucesor y constantes son computables-RM</h3>
+<p><strong>Proposición.</strong> Para <span class="math inline">\(q\ge1\)</span> e <span class="math inline">\(i&lt;q\)</span>, la proyección <span class="math inline">\(\pi_i^q(x)=x(i)\)</span> es total computable-RM; también lo son la función sucesor <span class="math inline">\(S:\omega\to\omega\)</span> y cada constante <span class="math inline">\(c_q:\omega^q\to\omega\)</span>, <span class="math inline">\(c_q(x)=c\)</span> para <span class="math inline">\(c\in\omega\)</span>, incluso <span class="math inline">\(q=0\)</span>.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(i=0\)</span>, el programa <span class="math inline">\(\mathtt{HALT}\)</span> inmediato deja la primera entrada como salida. Para <span class="math inline">\(i&gt;0\)</span> se mantiene el registro <span class="math inline">\(i\)</span>, se borra el registro <span class="math inline">\(0\)</span> y se copia <span class="math inline">\(i\to0\)</span> con un auxiliar fresco, devolviéndolo a cero. El sucesor usa <span class="math inline">\(\mathtt{INC}(0,1)\)</span> seguido de <span class="math inline">\(\mathtt{HALT}\)</span>. Para una constante se borra el registro <span class="math inline">\(0\)</span> y se encadenan exactamente <span class="math inline">\(c\)</span> incrementos de su contenido antes de detenerse (con <span class="math inline">\(c=0\)</span>, ninguno). Las macros se expanden por §17.27 y terminan sobre todos los naturales porque sus ciclos disminuyen un registro fuente. Las entradas nularias tienen un único vector vacío; la instrucción de salida siempre se refiere al registro <span class="math inline">\(0\)</span>, disponible porque <span class="math inline">\(r\ge1\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="suma-y-multiplicación-son-computables-rm" class="level2">
+<h2 class="anchored" data-anchor-id="suma-y-multiplicación-son-computables-rm">17.33. Suma y multiplicación son computables-RM</h2>
+<section id="tlog-pro-00113" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00113">Proposición 17.33.1 — Suma y multiplicación son computables-RM</h3>
+<p><strong>Proposición.</strong> Las funciones <span class="math inline">\(+:\omega^2\to\omega\)</span> y <span class="math inline">\(\cdot:\omega^2\to\omega\)</span> son totales computables-RM.</p>
+<p><strong>Demostración de la suma.</strong> El anfitrión recibe <span class="math inline">\(a\)</span> en el registro <span class="math inline">\(0\)</span> y <span class="math inline">\(b\)</span> en <span class="math inline">\(1\)</span>. El macro <span class="math inline">\(\operatorname{Move}(1,0)\)</span> decrementa <span class="math inline">\(b\)</span> veces el registro <span class="math inline">\(1\)</span> e incrementa simultáneamente el <span class="math inline">\(0\)</span>; la salida es <span class="math inline">\(a+b\)</span> y el programa termina por inducción sobre <span class="math inline">\(b\)</span>.</p>
+<p><strong>Demostración del producto.</strong> Se copian inicialmente <span class="math inline">\(a\)</span> a un registro <span class="math inline">\(A\)</span> y <span class="math inline">\(b\)</span> a un contador <span class="math inline">\(B\)</span>, mientras un acumulador <span class="math inline">\(T\)</span> se inicializa en cero. Por cada unidad retirada de <span class="math inline">\(B\)</span>, se copia <span class="math inline">\(A\)</span> a un registro temporal <span class="math inline">\(U\)</span> y se ejecuta <span class="math inline">\(\operatorname{Move}(U,T)\)</span>, que suma <span class="math inline">\(a\)</span> al acumulador y deja <span class="math inline">\(U\)</span> vacío. El invariante después de <span class="math inline">\(k\le b\)</span> vueltas es <span class="math inline">\(T=k\cdot a\)</span> y <span class="math inline">\(B=b-k\)</span>; tras <span class="math inline">\(b\)</span> vueltas <span class="math inline">\(T=a\cdot b\)</span>. Se borra el registro anfitrión <span class="math inline">\(0\)</span> y se mueve <span class="math inline">\(T\)</span> a él. Cada bucle interno termina tras <span class="math inline">\(a\)</span> pasos y el externo tras <span class="math inline">\(b\)</span>; sus auxiliares se inicializan en cero y los saltos quedan guardados por §17.27. Este razonamiento prueba <strong>terminación efectiva</strong> y no solamente existencia conjuntista de <span class="math inline">\(a+b\)</span> y <span class="math inline">\(a\cdot b\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="producto-de-controles-finitos-y-planificación-alternada" class="level2">
+<h2 class="anchored" data-anchor-id="producto-de-controles-finitos-y-planificación-alternada">17.34. Producto de controles finitos y planificación alternada</h2>
+<section id="tlog-def-00117" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00117">Definición 17.34.1 — Producto de controles finitos y planificación alternada</h3>
+<p>Sean <span class="math inline">\(P=(r_P,p)\)</span> y <span class="math inline">\(Q=(r_Q,q')\)</span> <strong>programas fijos de la misma aridad de entrada</strong> <span class="math inline">\(a\)</span>, con longitudes <span class="math inline">\(n_P,n_Q\ge1\)</span>. Reservamos bancos de registros disjuntos, inicialmente copiados desde la misma entrada <span class="math inline">\(x\in\omega^a\)</span>. El conjunto de vértices de planificación es finito: <span class="math display">\[
+\mathcal D_{P,Q}=n_P\times n_Q\times\{0,1\}.
+\]</span> En <span class="math inline">\(v=(i,j,0)\)</span> se ejecuta un solo paso simulado de <span class="math inline">\(P\)</span> y se pasa a <span class="math inline">\((i',j,1)\)</span>; en <span class="math inline">\((i,j,1)\)</span> se ejecuta un paso de <span class="math inline">\(Q\)</span> y se pasa a <span class="math inline">\((i,j',0)\)</span>. Si la instrucción examinada es <span class="math inline">\(\mathtt{HALT}\)</span>, el bloque no altera su banco y emite la señal <span class="math inline">\(H_P\)</span> o <span class="math inline">\(H_Q\)</span>. Para verificar intersecciones se pueden añadir <strong>dos indicadores finitos</strong> <span class="math inline">\(\sigma_P,\sigma_Q\in\{0,1\}\)</span> al control, suprimiendo toda simulación de un programa ya detenido. Estas señales son arcos del programa <strong>compilado</strong>, no salidas de un oráculo.</p>
+<p>Con las plantillas del §17.27 todo este diagrama se convierte en un programa RM bien formado. El nombre <span class="math inline">\(\operatorname{Dovetail}(P,Q)\)</span> designa sólo el <strong>esquema finito de construcción de un programa desde dos programas ya fijados</strong>, nunca una máquina universal que reciba las instrucciones de <span class="math inline">\(P,Q\)</span> como datos numéricos.</p>
+</section>
+</section>
+<section id="justicia-de-la-planificación-e-identidad-de-las-dos-órbitas" class="level2">
+<h2 class="anchored" data-anchor-id="justicia-de-la-planificación-e-identidad-de-las-dos-órbitas">17.35. Justicia de la planificación e identidad de las dos órbitas</h2>
+<section id="tlog-lem-00060" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00060">Lema 17.35.1 — Justicia de la planificación e identidad de las dos órbitas</h3>
+<p><strong>Lema.</strong> Antes de una señal terminal, después de <span class="math inline">\(k\)</span> ciclos completos de la planificación alternada, los dos bancos simulan las configuraciones <span class="math inline">\(\operatorname{Run}_P(x,k)\)</span> y <span class="math inline">\(\operatorname{Run}_Q(x,k)\)</span>, respectivamente (salvo un desplazamiento finito de las instrucciones auxiliares del anfitrión). Por consiguiente, si uno de los dos programas alcanza <span class="math inline">\(\mathtt{HALT}\)</span> tras <span class="math inline">\(t\)</span> pasos, su señal aparece durante los primeros <span class="math inline">\(t+1\)</span> turnos propios; el otro programa no puede impedirla mediante divergencia.</p>
+<p><strong>Demostración.</strong> La base <span class="math inline">\(k=0\)</span> es la carga común de las entradas y los controles <span class="math inline">\((0,0,0)\)</span>. El paso alterna una ejecución exacta de <span class="math inline">\(\operatorname{Step}_P(i)\)</span> con una de <span class="math inline">\(\operatorname{Step}_Q(j)\)</span>; por §17.29 sólo cambia el banco correspondiente y su control, de modo que las dos proyecciones reproducen las órbitas originales. Si cualquiera llega a instrucción terminal, la construcción emite su señal antes del paso siguiente. En la variante con indicadores, un banco que ya ha terminado se deja fijo y los turnos del otro prosiguen; esto conserva la justicia para toda rama no terminada. La propiedad no presupone un límite computable para <span class="math inline">\(t\)</span>; sólo afirma que cualquier <span class="math inline">\(t\)</span> finito acaba siendo inspeccionado. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="doble-semidecisión-implica-decidibilidad" class="level2">
+<h2 class="anchored" data-anchor-id="doble-semidecisión-implica-decidibilidad">17.36. Doble semidecisión implica decidibilidad</h2>
+<section id="tlog-mth-00081" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00081">Metateorema 17.36.1 — Doble semidecisión implica decidibilidad</h3>
+<p><strong>Metateorema.</strong> Para todo <span class="math inline">\(a\in\omega\)</span> y <span class="math inline">\(R\subseteq\omega^a\)</span>, <span class="math display">\[
+\boxed{\operatorname{Semi}_{\mathrm{RM}}(R)\land\operatorname{Semi}_{\mathrm{RM}}(\omega^a\setminus R)\Longrightarrow\operatorname{Dec}_{\mathrm{RM}}(R).}
+\]</span></p>
+<p><strong>Demostración constructiva.</strong> Se fijan un reconocedor <span class="math inline">\(P\)</span> de <span class="math inline">\(R\)</span> y otro <span class="math inline">\(Q\)</span> de su complemento, ambos de aridad <span class="math inline">\(a\)</span>. Compilamos el producto finito de §17.34 sobre bancos privados y copiamos allí la entrada. En una señal <span class="math inline">\(H_P\)</span> se ejecuta <span class="math inline">\(\operatorname{Clr}(0)\)</span>, un único incremento del registro anfitrión de salida <span class="math inline">\(0\)</span> y <span class="math inline">\(\mathtt{HALT}\)</span>; en una señal <span class="math inline">\(H_Q\)</span> se borra el registro <span class="math inline">\(0\)</span> y se ejecuta <span class="math inline">\(\mathtt{HALT}\)</span>. En ambas ramas la salida final pertenece a <span class="math inline">\(\{0,1\}\)</span>. Para cada <span class="math inline">\(x\in\omega^a\)</span>, la ley del tercero excluido da <span class="math inline">\(x\in R\)</span> o <span class="math inline">\(x\in\omega^a\setminus R\)</span>. En el primer caso <span class="math inline">\(P\)</span> se detiene en algún tiempo finito, por la propiedad de justicia aparece <span class="math inline">\(H_P\)</span>; <span class="math inline">\(Q\)</span> no llega a <span class="math inline">\(H_Q\)</span> por exactitud de su dominio de parada. En el segundo caso las funciones se intercambian. Así el programa <strong>siempre</strong> termina, con salida característica correcta. No se infiere terminación de una consulta omnisciente a ambos programas: se obtiene mediante una planificación RM finita que permite progresar a los dos. El caso <span class="math inline">\(a=0\)</span> funciona porque la entrada es la secuencia vacía única y se copian cero coordenadas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="caracterización-de-decisión-por-doble-semidecisión" class="level2">
+<h2 class="anchored" data-anchor-id="caracterización-de-decisión-por-doble-semidecisión">17.37. Caracterización de decisión por doble semidecisión</h2>
+<section id="tlog-cor-00025" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00025">Corolario 17.37.1 — Caracterización de decisión por doble semidecisión</h3>
+<p><strong>Corolario.</strong> Para toda aridad <span class="math inline">\(a\)</span> y conjunto <span class="math inline">\(R\subseteq\omega^a\)</span>, <span class="math display">\[
+\boxed{\operatorname{Dec}_{\mathrm{RM}}(R)\iff\operatorname{Semi}_{\mathrm{RM}}(R)\land\operatorname{Semi}_{\mathrm{RM}}(\omega^a\setminus R).}
+\]</span> <strong>Demostración.</strong> La implicación directa es la construcción explícita de dos reconocedores desde un decidor de §17.19 (<a href="#tlog-pro-00109">TLOG-PRO-00109</a>). La inversa es el programa entrelazado de §17.36. Ambas direcciones son relativas al modelo RM concretamente construido y no dependen de una tesis de equivalencia de modelos. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="unión-e-intersección-de-relaciones-semidecidibles" class="level2">
+<h2 class="anchored" data-anchor-id="unión-e-intersección-de-relaciones-semidecidibles">17.38. Unión e intersección de relaciones semidecidibles</h2>
+<section id="tlog-pro-00114" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00114">Proposición 17.38.1 — Unión e intersección de relaciones semidecidibles</h3>
+<p><strong>Proposición.</strong> Si <span class="math inline">\(R,S\subseteq\omega^a\)</span> son semidecidibles-RM, también lo son <span class="math inline">\(R\cup S\)</span> y <span class="math inline">\(R\cap S\)</span>; el vacío y <span class="math inline">\(\omega^a\)</span> son semidecidibles-RM para toda aridad <span class="math inline">\(a\)</span>.</p>
+<p><strong>Demostración.</strong> Para <span class="math inline">\(R\cup S\)</span> se compilan los reconocedores mediante §17.34, conectando <strong>cualquiera</strong> de las señales <span class="math inline">\(H_P,H_Q\)</span> a una instrucción terminal real. Por §17.35, termina exactamente si al menos uno de los programas termina. Para <span class="math inline">\(R\cap S\)</span> se amplía el control finito con dos indicadores de parada: al llegar <span class="math inline">\(H_P\)</span> se fija <span class="math inline">\(\sigma_P=1\)</span> y se deja de avanzar su banco; análogamente para <span class="math inline">\(Q\)</span>. La instrucción terminal real se ejecuta solamente al tener <span class="math inline">\(\sigma_P=\sigma_Q=1\)</span>. Si ambos programas paran, la planificación eventualmente ve ambos eventos; si uno no para, su indicador queda <span class="math inline">\(0\)</span> para siempre. Los estados de indicadores son cuatro vértices adicionales de tipo finito (replicados por las etiquetas de control), no una memoria infinita. <span class="math inline">\(\varnothing\)</span> es dominio de parada del programa divergente de §17.18; <span class="math inline">\(\omega^a\)</span> lo es del programa de parada inmediata. Se respetan aridad común y salida no relevante de los reconocedores. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="clausura-booleana-de-las-relaciones-decidibles" class="level2">
+<h2 class="anchored" data-anchor-id="clausura-booleana-de-las-relaciones-decidibles">17.39. Clausura booleana de las relaciones decidibles</h2>
+<section id="tlog-pro-00115" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00115">Proposición 17.39.1 — Clausura booleana de las relaciones decidibles</h3>
+<p><strong>Proposición.</strong> Para <span class="math inline">\(R,S\subseteq\omega^a\)</span> decidibles-RM son decidibles-RM <span class="math inline">\(R\cup S\)</span>, <span class="math inline">\(R\cap S\)</span>, <span class="math inline">\(\omega^a\setminus R\)</span>, <span class="math inline">\(R\setminus S\)</span> y <span class="math inline">\(R\triangle S\)</span>.</p>
+<p><strong>Demostración.</strong> Por §17.37, los dos lados de cada relación decidible son semidecidibles. §17.38 prueba la clausura de semidecidibles por unión/intersección; además, <span class="math inline">\(\omega^a\setminus(R\cup S)=R^c\cap S^c\)</span> y <span class="math inline">\(\omega^a\setminus(R\cap S)=R^c\cup S^c\)</span>. Los dos lados de las uniones e intersecciones son por tanto semidecidibles; la equivalencia de §17.37 devuelve decidibilidad. El complemento intercambia los dos reconocedores y es decidible; diferencia y diferencia simétrica se expresan mediante un número <strong>finito</strong> de uniones, intersecciones y complementos. Las igualdades de conjuntos son puramente conjuntistas y no introducen decisiones externas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="preimágenes-semidecidibles-y-decidibles-por-mapas-computables" class="level2">
+<h2 class="anchored" data-anchor-id="preimágenes-semidecidibles-y-decidibles-por-mapas-computables">17.40. Preimágenes semidecidibles y decidibles por mapas computables</h2>
+<section id="tlog-mth-00082" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00082">Metateorema 17.40.1 — Preimágenes semidecidibles y decidibles por mapas computables</h3>
+<p><strong>Metateorema.</strong> Si <span class="math inline">\(f:\omega^a\rightharpoonup\omega\)</span> es parcial computable-RM y <span class="math inline">\(R\subseteq\omega\)</span> semidecidible-RM, entonces <span class="math display">\[
+S_f(R):=\{x\in\operatorname{dom}(f):f(x)\in R\}
+\]</span> es semidecidible-RM. Si <span class="math inline">\(f\)</span> es <strong>total</strong> y <span class="math inline">\(R\)</span> decidible-RM, entonces <span class="math inline">\(f^{-1}[R]\)</span> es decidible-RM.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(P\)</span> un programa para <span class="math inline">\(f\)</span> y <span class="math inline">\(Q\)</span> un reconocedor cuyo dominio de parada es <span class="math inline">\(R\)</span>. Se ejecuta la composición secuencial <span class="math inline">\(Q\circ P\)</span> de §17.31, permitiendo que <span class="math inline">\(Q\)</span> reciba como única entrada el resultado de <span class="math inline">\(P\)</span>. Su parada ocurre exactamente cuando <span class="math inline">\(P\)</span> termina y <span class="math inline">\(Q\)</span> se detiene en <span class="math inline">\(f(x)\)</span>, lo que equivale a la pertenencia a <span class="math inline">\(S_f(R)\)</span>. Para la segunda afirmación se sustituye <span class="math inline">\(Q\)</span> por un <strong>decidor total</strong> de <span class="math inline">\(R\)</span>, conservando su resultado característico <span class="math inline">\(0\)</span> o <span class="math inline">\(1\)</span>. Puesto que <span class="math inline">\(f\)</span> es total, la composición es total y reproduce la función característica de <span class="math inline">\(f^{-1}[R]\)</span>. Si <span class="math inline">\(f\)</span> fuese parcial, la misma construcción sería parcial y <strong>no</strong> justificaría la decidibilidad de una preimagen sobre todo <span class="math inline">\(\omega^a\)</span> sin una condición adicional de dominio. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cierre-operativo-del-capítulo-y-frontera-de-aritmetización" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-operativo-del-capítulo-y-frontera-de-aritmetización">17.41. Cierre operativo del capítulo y frontera de aritmetización</h2>
+<section id="tlog-cor-00026" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00026">Corolario 17.41.1 — Cierre operativo del capítulo y frontera de aritmetización</h3>
+<p><strong>Corolario de salida arquitectónica.</strong> El sistema RM está construido sobre conjuntos y configuraciones finitos dentro de <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span>; posee compilación finita de programas fijos, clausura bajo composición general de funciones parciales, programas totales de proyección, constantes, sucesor, suma y producto, simulación intercalada de dos programas fijos, equivalencia exacta de decidibilidad con doble semidecisión y clausuras booleanas elementales. La distinción «definible en ZF» <span class="math inline">\(\not\Rightarrow\)</span> «computable-RM» queda intacta.</p>
+<p><strong>Demostración.</strong> Cada componente se apoya en resultados anteriores del propio capítulo, sin importar pruebas de otros tratados. El programa compilado obtenido en cada punto usa exclusivamente <span class="math inline">\(\mathtt{HALT}\)</span>, <span class="math inline">\(\mathtt{INC}\)</span> y <span class="math inline">\(\mathtt{DECJZ}\)</span> con registros y destinos guardados. No se ha establecido todavía: (a) numeración efectiva <span class="math inline">\(P\mapsto\ulcorner P\urcorner\)</span>; (b) máquina universal que procese una descripción variable; (c) equivalencia entre c.e.-RM por dominio y enumeración de imágenes de una función <strong>total</strong> en una codificación de tuplas; (d) equivalencia con máquinas de Turing; (e) indecidibilidad de la parada; (f) representabilidad de relaciones computables dentro de una teoría aritmética. La construcción de códigos numéricos y predicados sintácticos pertenece al Capítulo 18, la representabilidad al 19 y la diagonalización al 20. <strong>Ninguna</strong> de estas obligaciones queda disfrazada de teorema cerrado. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cierre-matemático-editorial-y-fronteras-de-transferencia" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-matemático-editorial-y-fronteras-de-transferencia">17.42. Cierre matemático, editorial y fronteras de transferencia</h2>
+<p>El capítulo contiene <strong>40 resultados cerrados</strong> (20 de M01 y 20 de M02). Queda demostrada la salida aprobada de computabilidad <strong>mínima</strong> para la metamatemática. No se ha producido codificación numérica de programas ni de expresiones, ni un simulador universal, ni equivalencia con modelos alternativos. Estos puntos se distinguen como obligaciones independientes de los siguientes capítulos; no son hipótesis ocultas de las pruebas de M02. El argumento de simulación finita utiliza etiquetas de control <strong>incrustadas en un programa ya compilado</strong>, no análisis por un programa de una descripción variable recibida como dato.</p>
+<p>La auditoría del DAG y la persistencia de la versión definitiva se registran separadamente en <code>TLOG_CH17_M02_AUDIT_v01.md</code>, <code>TLOG_CH17_CLOSURE_AUDIT_v01.md</code> y el certificado de readback. No se activan interfaces con GAS/FND ni se declara formalización Lean o publicación web.</p>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-16.html">← Capítulo 16</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-18.html">Capítulo 18 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

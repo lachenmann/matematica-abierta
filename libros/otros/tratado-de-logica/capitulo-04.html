@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 4 — Corrección y completitud proposicional – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#función-del-capítulo" id="toc-función-del-capítulo" class="nav-link active" data-scroll-target="#función-del-capítulo">4.0. Función del capítulo</a>
+  <ul class="collapse">
+  <li><a href="#fuentes-efectivamente-cotejadas" id="toc-fuentes-efectivamente-cotejadas" class="nav-link" data-scroll-target="#fuentes-efectivamente-cotejadas">Fuentes efectivamente cotejadas</a></li>
+  </ul></li>
+  <li><a href="#validez-de-la-base-axiomática" id="toc-validez-de-la-base-axiomática" class="nav-link" data-scroll-target="#validez-de-la-base-axiomática">4.1. Validez de la base axiomática</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00005" id="toc-tlog-lem-00005" class="nav-link" data-scroll-target="#tlog-lem-00005">Lema 4.1.1 — Toda instancia axiomática de <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span> es válida</a></li>
+  </ul></li>
+  <li><a href="#preservación-semántica-de-modus-ponens" id="toc-preservación-semántica-de-modus-ponens" class="nav-link" data-scroll-target="#preservación-semántica-de-modus-ponens">4.2. Preservación semántica de modus ponens</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00006" id="toc-tlog-lem-00006" class="nav-link" data-scroll-target="#tlog-lem-00006">Lema 4.2.1 — <code>MP</code> preserva satisfacción</a></li>
+  </ul></li>
+  <li><a href="#teorema-de-corrección-proposicional" id="toc-teorema-de-corrección-proposicional" class="nav-link" data-scroll-target="#teorema-de-corrección-proposicional">4.3. Teorema de corrección proposicional</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00009" id="toc-tlog-mth-00009" class="nav-link" data-scroll-target="#tlog-mth-00009">Metateorema 4.3.1 — Corrección de <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span></a></li>
+  </ul></li>
+  <li><a href="#consecuencia-para-teoremas-sin-premisas" id="toc-consecuencia-para-teoremas-sin-premisas" class="nav-link" data-scroll-target="#consecuencia-para-teoremas-sin-premisas">4.4. Consecuencia para teoremas sin premisas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00002" id="toc-tlog-cor-00002" class="nav-link" data-scroll-target="#tlog-cor-00002">Corolario 4.4.1 — Todo teorema de <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span> es válido</a></li>
+  </ul></li>
+  <li><a href="#ejemplo-desarrollado-un-contramodelo-impide-teoremicidad" id="toc-ejemplo-desarrollado-un-contramodelo-impide-teoremicidad" class="nav-link" data-scroll-target="#ejemplo-desarrollado-un-contramodelo-impide-teoremicidad">4.5. Ejemplo desarrollado — un contramodelo impide teoremicidad</a></li>
+  <li><a href="#estado-y-próximo-frente" id="toc-estado-y-próximo-frente" class="nav-link" data-scroll-target="#estado-y-próximo-frente">4.8. Estado y próximo frente</a></li>
+  <li><a href="#consistencia-deductiva" id="toc-consistencia-deductiva" class="nav-link" data-scroll-target="#consistencia-deductiva">4.9. Consistencia deductiva</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00021" id="toc-tlog-def-00021" class="nav-link" data-scroll-target="#tlog-def-00021">Definición 4.9.1 — Consistencia y consistencia maximal en <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span></a></li>
+  </ul></li>
+  <li><a href="#núcleo-clásico-derivado-de-mathsf-h_mathrmcpl" id="toc-núcleo-clásico-derivado-de-mathsf-h_mathrmcpl" class="nav-link" data-scroll-target="#núcleo-clásico-derivado-de-mathsf-h_mathrmcpl">4.10. Núcleo clásico derivado de <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span></a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00007" id="toc-tlog-lem-00007" class="nav-link" data-scroll-target="#tlog-lem-00007">Lema 4.10.1 — Explosión, doble negación y reductio interno</a></li>
+  <li><a href="#a-explosión" id="toc-a-explosión" class="nav-link" data-scroll-target="#a-explosión">(a) Explosión</a></li>
+  <li><a href="#b-lema-de-evaluación-implicativa" id="toc-b-lema-de-evaluación-implicativa" class="nav-link" data-scroll-target="#b-lema-de-evaluación-implicativa">(b) Lema de evaluación implicativa</a></li>
+  <li><a href="#c-doble-negación" id="toc-c-doble-negación" class="nav-link" data-scroll-target="#c-doble-negación">(c) Doble negación</a></li>
+  <li><a href="#d-consequentia-mirabilis" id="toc-d-consequentia-mirabilis" class="nav-link" data-scroll-target="#d-consequentia-mirabilis">(d) Consequentia mirabilis</a></li>
+  <li><a href="#e-auto-refutación" id="toc-e-auto-refutación" class="nav-link" data-scroll-target="#e-auto-refutación">(e) Auto-refutación</a></li>
+  </ul></li>
+  <li><a href="#pruebas-de-consistencia" id="toc-pruebas-de-consistencia" class="nav-link" data-scroll-target="#pruebas-de-consistencia">4.11. Pruebas de consistencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00008" id="toc-tlog-lem-00008" class="nav-link" data-scroll-target="#tlog-lem-00008">Lema 4.11.1 — Tests <span class="math inline">\(C^+\)</span>, <span class="math inline">\(C^-\)</span> y trivialidad</a></li>
+  </ul></li>
+  <li><a href="#extensión-maximal-sin-elección" id="toc-extensión-maximal-sin-elección" class="nav-link" data-scroll-target="#extensión-maximal-sin-elección">4.12. Extensión maximal sin elección</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00010" id="toc-tlog-mth-00010" class="nav-link" data-scroll-target="#tlog-mth-00010">Metateorema 4.12.1 — Lema de Lindenbaum enumerable para <code>CPL</code></a></li>
+  </ul></li>
+  <li><a href="#valuación-canónica" id="toc-valuación-canónica" class="nav-link" data-scroll-target="#valuación-canónica">4.13. Valuación canónica</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00011" id="toc-tlog-mth-00011" class="nav-link" data-scroll-target="#tlog-mth-00011">Metateorema 4.13.1 — Lema de verdad para un conjunto maximalmente consistente</a></li>
+  </ul></li>
+  <li><a href="#existencia-de-modelo" id="toc-existencia-de-modelo" class="nav-link" data-scroll-target="#existencia-de-modelo">4.14. Existencia de modelo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00012" id="toc-tlog-mth-00012" class="nav-link" data-scroll-target="#tlog-mth-00012">Metateorema 4.14.1 — Todo conjunto consistente de fórmulas proposicionales es satisfacible</a></li>
+  </ul></li>
+  <li><a href="#completitud-fuerte" id="toc-completitud-fuerte" class="nav-link" data-scroll-target="#completitud-fuerte">4.15. Completitud fuerte</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00013" id="toc-tlog-mth-00013" class="nav-link" data-scroll-target="#tlog-mth-00013">Metateorema 4.15.1 — Completitud de <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span> respecto de <code>CPL</code></a></li>
+  </ul></li>
+  <li><a href="#adecuación-finitariedad-semántica-y-compacidad" id="toc-adecuación-finitariedad-semántica-y-compacidad" class="nav-link" data-scroll-target="#adecuación-finitariedad-semántica-y-compacidad">4.16. Adecuación, finitariedad semántica y compacidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00003" id="toc-tlog-cor-00003" class="nav-link" data-scroll-target="#tlog-cor-00003">Corolario 4.16.1 — Coincidencia extensional de consecuencia y compacidad proposicional</a></li>
+  </ul></li>
+  <li><a href="#ejemplo-desarrollado-del-valor-semántico-a-la-prueba" id="toc-ejemplo-desarrollado-del-valor-semántico-a-la-prueba" class="nav-link" data-scroll-target="#ejemplo-desarrollado-del-valor-semántico-a-la-prueba">4.17. Ejemplo desarrollado — del valor semántico a la prueba</a></li>
+  <li><a href="#cierre-del-capítulo-y-de-la-parte-i" id="toc-cierre-del-capítulo-y-de-la-parte-i" class="nav-link" data-scroll-target="#cierre-del-capítulo-y-de-la-parte-i">4.20. Cierre del capítulo y de la Parte I</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 4 — Corrección y completitud proposicional</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-03.html">← Capítulo 3</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html">Capítulo 5 →</a></p>
+<section id="función-del-capítulo" class="level2">
+<h2 class="anchored" data-anchor-id="función-del-capítulo">4.0. Función del capítulo</h2>
+<p>Los capítulos 2 y 3 construyeron, por separado, las dos relaciones que ahora deben compararse:</p>
+<p><span class="math display">\[
+\Gamma\models_{\mathrm{CPL}}\varphi
+\qquad\text{y}\qquad
+\Gamma\vdash_{\mathsf H}\varphi.
+\]</span></p>
+<p>Hasta este punto no existe ninguna identificación entre ellas. El presente capítulo debe establecer dos metateoremas distintos:</p>
+<p><span class="math display">\[
+\text{corrección:}\quad
+\Gamma\vdash_{\mathsf H}\varphi
+\Longrightarrow
+\Gamma\models_{\mathrm{CPL}}\varphi,
+\]</span></p>
+<p><span class="math display">\[
+\text{completitud:}\quad
+\Gamma\models_{\mathrm{CPL}}\varphi
+\Longrightarrow
+\Gamma\vdash_{\mathsf H}\varphi.
+\]</span></p>
+<p>Este primer microtramo cierra exclusivamente la <strong>corrección</strong>. La completitud permanece abierta.</p>
+<section id="fuentes-efectivamente-cotejadas" class="level3">
+<h3 class="anchored" data-anchor-id="fuentes-efectivamente-cotejadas">Fuentes efectivamente cotejadas</h3>
+<ul>
+<li><code>TLOG-SRC-0003</code> — Wolfgang Rautenberg, <em>A Concise Introduction to Mathematical Logic</em>, 3.ª ed.&nbsp;(2010), cap. 1 §1.6, pp.&nbsp;36–37: modelo proposicional directo de la prueba de corrección por inducción sobre pruebas.</li>
+<li><code>TLOG-SRC-0002</code> — Herbert B. Enderton, <em>A Mathematical Introduction to Logic</em>, 2.ª ed.&nbsp;(2001), cap. 2 §2.5, pp.&nbsp;131–135: modelo estructural de la estrategia «axiomas válidos + preservación por modus ponens + inducción sobre deducciones».</li>
+</ul>
+<p>El sistema de Enderton en ese localizador es de primer orden y <strong>no</strong> se importa como cálculo de este capítulo. Sólo controla la arquitectura metateórica de la prueba. La verificación de <code>H1</code>–<code>H12</code> se reconstruye íntegramente para <code>HCPL</code>.</p>
+</section>
+</section>
+<section id="validez-de-la-base-axiomática" class="level2">
+<h2 class="anchored" data-anchor-id="validez-de-la-base-axiomática">4.1. Validez de la base axiomática</h2>
+<section id="tlog-lem-00005" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00005">Lema 4.1.1 — Toda instancia axiomática de <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span> es válida</h3>
+<p>Para toda fórmula</p>
+<p><span class="math display">\[
+A\in\operatorname{Ax}_{\mathsf H},
+\]</span></p>
+<p>se cumple</p>
+<p><span class="math display">\[
+\models_{\mathrm{CPL}}A.
+\]</span></p>
+<section id="demostración" class="level4">
+<h4 class="anchored" data-anchor-id="demostración">Demostración</h4>
+<p>Sea <span class="math inline">\(v\in\mathrm{Val}_{\mathrm{CPL}}\)</span> arbitraria. Para fórmulas <span class="math inline">\(\alpha,\beta,\gamma\)</span> escribamos</p>
+<p><span class="math display">\[
+a:=\widehat v(\alpha),\qquad
+b:=\widehat v(\beta),\qquad
+c:=\widehat v(\gamma).
+\]</span></p>
+<p>Por <a href="../../../libros/otros/tratado-de-logica/capitulo-02.html#tlog-mth-00004">TLOG-MTH-00004</a>, el valor de cada instancia de <code>H1</code>–<code>H12</code> se obtiene aplicando las funciones de verdad de <a href="../../../libros/otros/tratado-de-logica/capitulo-02.html#tlog-cnv-00005">TLOG-CNV-00005</a>. Mostramos que ninguna instancia puede tomar valor <span class="math inline">\(0\)</span>.</p>
+<ol type="1">
+<li><strong><code>H1</code></strong> <span class="math inline">\(\alpha\to(\beta\to\alpha)\)</span>. Para que fuese falsa necesitaríamos <span class="math inline">\(a=1\)</span> y <span class="math inline">\(b\to a=0\)</span>; lo segundo exige <span class="math inline">\(a=0\)</span>. Contradicción.</li>
+<li><strong><code>H2</code></strong> <span class="math display">\[
+(\alpha\to(\beta\to\gamma))
+\to
+((\alpha\to\beta)\to(\alpha\to\gamma)).
+\]</span> Si fuese falsa, el consecuente exterior sería falso. Entonces <span class="math inline">\(\alpha\to\beta=1\)</span> y <span class="math inline">\(\alpha\to\gamma=0\)</span>, de donde <span class="math inline">\(a=1,c=0\)</span> y necesariamente <span class="math inline">\(b=1\)</span>. Pero así <span class="math inline">\(\beta\to\gamma=0\)</span>, por lo que <span class="math inline">\(\alpha\to(\beta\to\gamma)=0\)</span>, contradiciendo que el antecedente exterior deba valer <span class="math inline">\(1\)</span>.</li>
+<li><strong><code>H3</code></strong> <span class="math inline">\((\neg\beta\to\neg\alpha)\to(\alpha\to\beta)\)</span>. Si fuese falsa, <span class="math inline">\(a=1,b=0\)</span>; entonces <span class="math inline">\(\neg b=1\)</span> y <span class="math inline">\(\neg a=0\)</span>, de modo que <span class="math inline">\(\neg\beta\to\neg\alpha=0\)</span>. Contradicción.</li>
+<li><strong><code>H4</code></strong> y <strong><code>H5</code></strong>: si <span class="math inline">\(a\land b=1\)</span>, entonces <span class="math inline">\(a=b=1\)</span>, así que ambas proyecciones son verdaderas.</li>
+<li><strong><code>H6</code></strong> <span class="math inline">\(\alpha\to(\beta\to(\alpha\land\beta))\)</span>. Si fuese falsa, tendríamos <span class="math inline">\(a=1\)</span>, <span class="math inline">\(b=1\)</span> y <span class="math inline">\(a\land b=0\)</span>, imposible.</li>
+<li><strong><code>H7</code></strong> y <strong><code>H8</code></strong>: si el antecedente correspondiente vale <span class="math inline">\(1\)</span>, entonces <span class="math inline">\(a\lor b=1\)</span>.</li>
+<li><strong><code>H9</code></strong> <span class="math display">\[
+(\alpha\to\gamma)
+\to
+((\beta\to\gamma)\to((\alpha\lor\beta)\to\gamma)).
+\]</span> Si fuese falsa, <span class="math inline">\(\alpha\to\gamma=1\)</span>, <span class="math inline">\(\beta\to\gamma=1\)</span> y <span class="math inline">\((\alpha\lor\beta)\to\gamma=0\)</span>. La última igualdad exige <span class="math inline">\(c=0\)</span> y <span class="math inline">\(a\lor b=1\)</span>; con <span class="math inline">\(c=0\)</span>, las dos primeras implicaciones fuerzan <span class="math inline">\(a=b=0\)</span>, contradicción.</li>
+<li><strong><code>H10</code></strong> y <strong><code>H11</code></strong>: si <span class="math inline">\(a\leftrightarrow b=1\)</span>, entonces <span class="math inline">\(a=b\)</span>, y por tanto valen tanto <span class="math inline">\(a\to b\)</span> como <span class="math inline">\(b\to a\)</span>.</li>
+<li><strong><code>H12</code></strong>: si <span class="math inline">\(a\to b=1\)</span> y <span class="math inline">\(b\to a=1\)</span>, entonces en semántica bivalente <span class="math inline">\(a=b\)</span>; por tanto <span class="math inline">\(a\leftrightarrow b=1\)</span>.</li>
+</ol>
+<p>En todos los casos el valor es <span class="math inline">\(1\)</span>. Como <span class="math inline">\(v\)</span> era arbitraria, toda instancia axiomática es válida por <a href="../../../libros/otros/tratado-de-logica/capitulo-02.html#tlog-def-00014">TLOG-DEF-00014</a>. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Alcance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esta prueba verifica la <strong>validez semántica</strong> de los axiomas ya elegidos. No demuestra que toda fórmula válida sea axioma ni que toda fórmula válida sea derivable.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="preservación-semántica-de-modus-ponens" class="level2">
+<h2 class="anchored" data-anchor-id="preservación-semántica-de-modus-ponens">4.2. Preservación semántica de modus ponens</h2>
+<section id="tlog-lem-00006" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00006">Lema 4.2.1 — <code>MP</code> preserva satisfacción</h3>
+<p>Sean <span class="math inline">\(v\in\mathrm{Val}_{\mathrm{CPL}}\)</span> y <span class="math inline">\(\alpha,\beta\in\mathrm{Fm}_{\mathrm{CPL}}\)</span>. Si</p>
+<p><span class="math display">\[
+v\models\alpha
+\qquad\text{y}\qquad
+v\models\alpha\to\beta,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+v\models\beta.
+\]</span></p>
+<section id="demostración-1" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-1">Demostración</h4>
+<p>Por <a href="../../../libros/otros/tratado-de-logica/capitulo-02.html#tlog-def-00011">TLOG-DEF-00011</a>, la primera hipótesis da</p>
+<p><span class="math display">\[
+\widehat v(\alpha)=1.
+\]</span></p>
+<p>Por <a href="../../../libros/otros/tratado-de-logica/capitulo-02.html#tlog-mth-00004">TLOG-MTH-00004</a> y la tabla de <a href="../../../libros/otros/tratado-de-logica/capitulo-02.html#tlog-cnv-00005">TLOG-CNV-00005</a>,</p>
+<p><span class="math display">\[
+\widehat v(\alpha\to\beta)
+=
+f_{\to}(\widehat v(\alpha),\widehat v(\beta))
+=1.
+\]</span></p>
+<p>Como <span class="math inline">\(f_{\to}(1,0)=0\)</span>, necesariamente</p>
+<p><span class="math display">\[
+\widehat v(\beta)=1.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(v\models\beta\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La forma semántica del lema coincide exactamente con el patrón de la única regla primitiva <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-rul-00001">TLOG-RUL-00001</a>.</p>
+</section>
+</section>
+</section>
+<section id="teorema-de-corrección-proposicional" class="level2">
+<h2 class="anchored" data-anchor-id="teorema-de-corrección-proposicional">4.3. Teorema de corrección proposicional</h2>
+<section id="tlog-mth-00009" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00009">Metateorema 4.3.1 — Corrección de <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span></h3>
+<p>Para todo conjunto de premisas</p>
+<p><span class="math display">\[
+\Gamma\subseteq\mathrm{Fm}_{\mathrm{CPL}}
+\]</span></p>
+<p>y toda fórmula <span class="math inline">\(\varphi\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\Gamma\vdash_{\mathsf H}\varphi
+\Longrightarrow
+\Gamma\models_{\mathrm{CPL}}\varphi
+}.
+\]</span></p>
+<section id="demostración-2" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-2">Demostración</h4>
+<p>Supongamos</p>
+<p><span class="math display">\[
+\Gamma\vdash_{\mathsf H}\varphi.
+\]</span></p>
+<p>Para probar <span class="math inline">\(\Gamma\models\varphi\)</span>, sea</p>
+<p><span class="math display">\[
+v\in\mathrm{Val}_{\mathrm{CPL}}
+\]</span></p>
+<p>una valuación arbitraria tal que</p>
+<p><span class="math display">\[
+v\models\Gamma.
+\]</span></p>
+<p>Aplicamos el principio de inducción sobre derivaciones <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-mth-00007">TLOG-MTH-00007</a> con la propiedad</p>
+<p><span class="math display">\[
+P(\delta)
+\quad:\!\!\iff\quad
+v\models\delta.
+\]</span></p>
+<p>Debemos verificar sus tres casos.</p>
+<ol type="1">
+<li><strong>Premisa.</strong> Si <span class="math inline">\(\delta\in\Gamma\)</span>, entonces <span class="math inline">\(v\models\delta\)</span> por <a href="../../../libros/otros/tratado-de-logica/capitulo-02.html#tlog-def-00012">TLOG-DEF-00012</a> y la hipótesis <span class="math inline">\(v\models\Gamma\)</span>.</li>
+<li><strong>Instancia axiomática.</strong> Si <span class="math inline">\(\delta\in\operatorname{Ax}_{\mathsf H}\)</span>, entonces <a href="#tlog-lem-00005">TLOG-LEM-00005</a> da <span class="math inline">\(\models\delta\)</span>; en particular <span class="math inline">\(v\models\delta\)</span>.</li>
+<li><strong>Paso de <code>MP</code>.</strong> Si <span class="math inline">\(\delta\)</span> se obtiene a partir de <span class="math inline">\(\rho\)</span> y <span class="math inline">\(\rho\to\delta\)</span>, las hipótesis inductivas dan <span class="math display">\[
+v\models\rho,
+\qquad
+v\models\rho\to\delta.
+\]</span> <a href="#tlog-lem-00006">TLOG-LEM-00006</a> concluye <span class="math inline">\(v\models\delta\)</span>.</li>
+</ol>
+<p>Por inducción, la última línea de toda derivación desde <span class="math inline">\(\Gamma\)</span> es satisfecha por <span class="math inline">\(v\)</span>; en particular,</p>
+<p><span class="math display">\[
+v\models\varphi.
+\]</span></p>
+<p>Como <span class="math inline">\(v\)</span> era un modelo arbitrario de <span class="math inline">\(\Gamma\)</span>, <a href="../../../libros/otros/tratado-de-logica/capitulo-02.html#tlog-def-00015">TLOG-DEF-00015</a> concluye</p>
+<p><span class="math display">\[
+\Gamma\models_{\mathrm{CPL}}\varphi.
+\]</span></p>
+<p><span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Dirección demostrada
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El resultado establece solamente <span class="math display">\[
+\vdash_{\mathsf H}\ \Longrightarrow\ \models_{\mathrm{CPL}}.
+\]</span> La flecha inversa es el teorema de completitud y todavía no está disponible.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="consecuencia-para-teoremas-sin-premisas" class="level2">
+<h2 class="anchored" data-anchor-id="consecuencia-para-teoremas-sin-premisas">4.4. Consecuencia para teoremas sin premisas</h2>
+<section id="tlog-cor-00002" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00002">Corolario 4.4.1 — Todo teorema de <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span> es válido</h3>
+<p>Para toda fórmula <span class="math inline">\(\varphi\)</span>,</p>
+<p><span class="math display">\[
+\vdash_{\mathsf H}\varphi
+\Longrightarrow
+\models_{\mathrm{CPL}}\varphi.
+\]</span></p>
+<p>Equivalentemente, por contraposición metateórica clásica,</p>
+<p><span class="math display">\[
+\not\models_{\mathrm{CPL}}\varphi
+\Longrightarrow
+\nvdash_{\mathsf H}\varphi.
+\]</span></p>
+<section id="demostración-3" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-3">Demostración</h4>
+<p>Si <span class="math inline">\(\vdash_{\mathsf H}\varphi\)</span>, entonces</p>
+<p><span class="math display">\[
+\varnothing\vdash_{\mathsf H}\varphi.
+\]</span></p>
+<p><a href="#tlog-mth-00009">TLOG-MTH-00009</a> da</p>
+<p><span class="math display">\[
+\varnothing\models_{\mathrm{CPL}}\varphi.
+\]</span></p>
+<p>Por <a href="../../../libros/otros/tratado-de-logica/capitulo-02.html#tlog-pro-00001">TLOG-PRO-00001</a>, esto equivale a <span class="math inline">\(\models_{\mathrm{CPL}}\varphi\)</span>. La forma contrapositiva se obtiene en la metateoría clásica. <span class="math inline">\(\square\)</span></p>
+<p>Este corolario permite refutar teoremicidad mediante un solo contraejemplo semántico, pero todavía no permite demostrar teoremicidad a partir de validez.</p>
+</section>
+</section>
+</section>
+<section id="ejemplo-desarrollado-un-contramodelo-impide-teoremicidad" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-desarrollado-un-contramodelo-impide-teoremicidad">4.5. Ejemplo desarrollado — un contramodelo impide teoremicidad</h2>
+<p>La variable proposicional <span class="math inline">\(p_1\)</span> no es válida. En efecto, existe una valuación <span class="math inline">\(v\)</span> con</p>
+<p><span class="math display">\[
+v(p_1)=0.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+v\not\models p_1,
+\]</span></p>
+<p>y por tanto</p>
+<p><span class="math display">\[
+\not\models p_1.
+\]</span></p>
+<p>Aplicando <a href="#tlog-cor-00002">TLOG-COR-00002</a>, concluimos</p>
+<p><span class="math display">\[
+\nvdash_{\mathsf H}p_1.
+\]</span></p>
+<p>La inferencia es legítima precisamente porque la corrección ya está demostrada. El argumento inverso —de validez a teoremicidad— seguirá prohibido hasta cerrar la completitud.</p>
+</section>
+<section id="estado-y-próximo-frente" class="level2">
+<h2 class="anchored" data-anchor-id="estado-y-próximo-frente">4.8. Estado y próximo frente</h2>
+<p>El Capítulo 4 queda en</p>
+<pre class="text"><code>PARTIAL-CLOSURE / NOT CLOSED</code></pre>
+<p>con cuatro nodos cerrados. La dirección</p>
+<p><span class="math display">\[
+\Gamma\vdash_{\mathsf H}\varphi
+\Longrightarrow
+\Gamma\models_{\mathrm{CPL}}\varphi
+\]</span></p>
+<p>está cerrada; falta la dirección inversa.</p>
+<p>Próximo microtramo:</p>
+<pre class="text"><code>TLOG-CH04-M02
+Completitud proposicional y cierre de la Parte I</code></pre>
+</section>
+<section id="consistencia-deductiva" class="level2">
+<h2 class="anchored" data-anchor-id="consistencia-deductiva">4.9. Consistencia deductiva</h2>
+<section id="tlog-def-00021" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00021">Definición 4.9.1 — Consistencia y consistencia maximal en <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span></h3>
+<p>Fijamos la fórmula de contradicción</p>
+<p><span class="math display">\[
+\bot_{\mathrm{CPL}}
+:=
+p_1\land\neg p_1.
+\]</span></p>
+<p>Para <span class="math inline">\(\Gamma\subseteq\mathrm{Fm}_{\mathrm{CPL}}\)</span>:</p>
+<ol type="1">
+<li><span class="math inline">\(\Gamma\)</span> es <strong><span class="math inline">\(\mathsf H\)</span>-inconsistente</strong> si <span class="math display">\[
+\Gamma\vdash_{\mathsf H}\bot_{\mathrm{CPL}};
+\]</span></li>
+<li><span class="math inline">\(\Gamma\)</span> es <strong><span class="math inline">\(\mathsf H\)</span>-consistente</strong> si <span class="math display">\[
+\Gamma\nvdash_{\mathsf H}\bot_{\mathrm{CPL}};
+\]</span></li>
+<li><span class="math inline">\(\Gamma\)</span> es <strong>maximalmente <span class="math inline">\(\mathsf H\)</span>-consistente</strong> si es consistente y todo <span class="math display">\[
+\Delta\supsetneq\Gamma
+\]</span> es inconsistente.</li>
+</ol>
+<p>La fórmula <span class="math inline">\(\bot_{\mathrm{CPL}}\)</span> no añade un símbolo nuevo al lenguaje objeto. Es una abreviación metateórica de una fórmula concreta de <code>CPL</code>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Frontera
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consistencia deductiva y satisfacibilidad no se identifican por definición. Su equivalencia será una consecuencia de corrección + existencia de modelos.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="núcleo-clásico-derivado-de-mathsf-h_mathrmcpl" class="level2">
+<h2 class="anchored" data-anchor-id="núcleo-clásico-derivado-de-mathsf-h_mathrmcpl">4.10. Núcleo clásico derivado de <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span></h2>
+<section id="tlog-lem-00007" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00007">Lema 4.10.1 — Explosión, doble negación y reductio interno</h3>
+<p>Para fórmulas <span class="math inline">\(\alpha,\beta\)</span> quedan disponibles las siguientes consecuencias sintácticas.</p>
+</section>
+<section id="a-explosión" class="level3">
+<h3 class="anchored" data-anchor-id="a-explosión">(a) Explosión</h3>
+<p>Si</p>
+<p><span class="math display">\[
+\Gamma\vdash_{\mathsf H}\alpha,
+\qquad
+\Gamma\vdash_{\mathsf H}\neg\alpha,
+\]</span></p>
+<p>entonces, para toda <span class="math inline">\(\beta\)</span>,</p>
+<p><span class="math display">\[
+\Gamma\vdash_{\mathsf H}\beta.
+\]</span></p>
+<p>En efecto, de <code>H1</code> obtenemos</p>
+<p><span class="math display">\[
+\neg\alpha\to(\neg\beta\to\neg\alpha),
+\]</span></p>
+<p>y por <code>MP</code>, a partir de <span class="math inline">\(\neg\alpha\)</span>,</p>
+<p><span class="math display">\[
+\neg\beta\to\neg\alpha.
+\]</span></p>
+<p>La instancia de <code>H3</code></p>
+<p><span class="math display">\[
+(\neg\beta\to\neg\alpha)\to(\alpha\to\beta)
+\]</span></p>
+<p>da <span class="math inline">\(\alpha\to\beta\)</span>, y una última aplicación de <code>MP</code> con <span class="math inline">\(\alpha\)</span> produce <span class="math inline">\(\beta\)</span>.</p>
+<p>Por el teorema de deducción también queda demostrado</p>
+<p><span class="math display">\[
+\vdash_{\mathsf H}
+\neg\alpha\to(\alpha\to\beta).
+\tag{E}
+\]</span></p>
+</section>
+<section id="b-lema-de-evaluación-implicativa" class="level3">
+<h3 class="anchored" data-anchor-id="b-lema-de-evaluación-implicativa">(b) Lema de evaluación implicativa</h3>
+<p>A partir de las premisas <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\alpha\to\beta\)</span>, <code>MP</code> da <span class="math inline">\(\beta\)</span>. Descargando sucesivamente por <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-mth-00008">TLOG-MTH-00008</a>,</p>
+<p><span class="math display">\[
+\vdash_{\mathsf H}
+\alpha\to((\alpha\to\beta)\to\beta).
+\tag{L}
+\]</span></p>
+</section>
+<section id="c-doble-negación" class="level3">
+<h3 class="anchored" data-anchor-id="c-doble-negación">(c) Doble negación</h3>
+<p>Se tiene</p>
+<p><span class="math display">\[
+\vdash_{\mathsf H}\neg\neg\alpha\to\alpha
+\tag{DN-}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\vdash_{\mathsf H}\alpha\to\neg\neg\alpha.
+\tag{DN+}
+\]</span></p>
+<p>Para <code>DN-</code>, elija una instancia cualquiera</p>
+<p><span class="math display">\[
+\theta:=\rho\to(\sigma\to\rho)
+\]</span></p>
+<p>de <code>H1</code>; así <span class="math inline">\(\vdash\theta\)</span>. Dos instancias de <code>H3</code> dan</p>
+<p><span class="math display">\[
+(\neg\neg\theta\to\neg\neg\alpha)
+\to
+(\neg\alpha\to\neg\theta),
+\]</span></p>
+<p><span class="math display">\[
+(\neg\alpha\to\neg\theta)
+\to
+(\theta\to\alpha).
+\]</span></p>
+<p>Por silogismo hipotético derivado,</p>
+<p><span class="math display">\[
+(\neg\neg\theta\to\neg\neg\alpha)
+\to
+(\theta\to\alpha).
+\]</span></p>
+<p><code>H1</code> da</p>
+<p><span class="math display">\[
+\neg\neg\alpha\to
+(\neg\neg\theta\to\neg\neg\alpha),
+\]</span></p>
+<p>por lo que</p>
+<p><span class="math display">\[
+\neg\neg\alpha\to(\theta\to\alpha).
+\]</span></p>
+<p>La instancia de (L)</p>
+<p><span class="math display">\[
+\theta\to((\theta\to\alpha)\to\alpha)
+\]</span></p>
+<p>y <span class="math inline">\(\vdash\theta\)</span> producen</p>
+<p><span class="math display">\[
+(\theta\to\alpha)\to\alpha.
+\]</span></p>
+<p>Componiendo obtenemos <code>DN-</code>. Para <code>DN+</code>, aplicamos <code>DN-</code> a <span class="math inline">\(\neg\alpha\)</span>:</p>
+<p><span class="math display">\[
+\vdash\neg\neg\neg\alpha\to\neg\alpha,
+\]</span></p>
+<p>y después la instancia de <code>H3</code></p>
+<p><span class="math display">\[
+(\neg\neg\neg\alpha\to\neg\alpha)
+\to
+(\alpha\to\neg\neg\alpha).
+\]</span></p>
+</section>
+<section id="d-consequentia-mirabilis" class="level3">
+<h3 class="anchored" data-anchor-id="d-consequentia-mirabilis">(d) Consequentia mirabilis</h3>
+<p>Se tiene</p>
+<p><span class="math display">\[
+\vdash_{\mathsf H}
+(\neg\alpha\to\alpha)\to\alpha.
+\tag{CM}
+\]</span></p>
+<p>Sea</p>
+<p><span class="math display">\[
+q:=(\neg\alpha\to\alpha).
+\]</span></p>
+<p>Bajo las hipótesis <span class="math inline">\(q\)</span> y <span class="math inline">\(\neg\alpha\)</span>, la primera da <span class="math inline">\(\alpha\)</span> por <code>MP</code>. La fórmula de explosión (E), con <span class="math inline">\(\beta:=\neg q\)</span>, da</p>
+<p><span class="math display">\[
+\neg\alpha\to(\alpha\to\neg q),
+\]</span></p>
+<p>de modo que las mismas hipótesis permiten derivar <span class="math inline">\(\neg q\)</span>. Descargando primero <span class="math inline">\(\neg\alpha\)</span> y después <span class="math inline">\(q\)</span> mediante <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-mth-00008">TLOG-MTH-00008</a>, obtenemos</p>
+<p><span class="math display">\[
+\vdash_{\mathsf H}
+q\to(\neg\alpha\to\neg q).
+\tag{1}
+\]</span></p>
+<p>Por otra parte, <code>H3</code> con <span class="math inline">\(q\)</span> en el lugar de <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\alpha\)</span> en el lugar de <span class="math inline">\(\beta\)</span> es</p>
+<p><span class="math display">\[
+(\neg\alpha\to\neg q)
+\to
+(q\to\alpha).
+\tag{2}
+\]</span></p>
+<p>Ahora trabajemos bajo la única hipótesis <span class="math inline">\(q\)</span>. De (1) obtenemos <span class="math inline">\(\neg\alpha\to\neg q\)</span>; de (2), <span class="math inline">\(q\to\alpha\)</span>; y de nuevo con la propia hipótesis <span class="math inline">\(q\)</span>, <code>MP</code> produce <span class="math inline">\(\alpha\)</span>. Una última aplicación del teorema de deducción descarga <span class="math inline">\(q\)</span>:</p>
+<p><span class="math display">\[
+\vdash_{\mathsf H}q\to\alpha,
+\]</span></p>
+<p>que, por la definición de <span class="math inline">\(q\)</span>, es exactamente (CM).</p>
+</section>
+<section id="e-auto-refutación" class="level3">
+<h3 class="anchored" data-anchor-id="e-auto-refutación">(e) Auto-refutación</h3>
+<p>Finalmente,</p>
+<p><span class="math display">\[
+\vdash_{\mathsf H}
+(\alpha\to\neg\alpha)\to\neg\alpha.
+\tag{AR}
+\]</span></p>
+<p>Bajo la hipótesis <span class="math inline">\(\alpha\to\neg\alpha\)</span>, <code>DN-</code> y silogismo hipotético dan</p>
+<p><span class="math display">\[
+\neg\neg\alpha\to\neg\alpha.
+\]</span></p>
+<p>Aplicamos (CM) a la fórmula <span class="math inline">\(\neg\alpha\)</span>:</p>
+<p><span class="math display">\[
+(\neg\neg\alpha\to\neg\alpha)\to\neg\alpha,
+\]</span></p>
+<p>y descargamos la hipótesis.</p>
+<p>Todos estos resultados son teoremas o reglas derivadas de <code>HCPL</code>; no se ha usado completitud semántica.</p>
+</section>
+</section>
+<section id="pruebas-de-consistencia" class="level2">
+<h2 class="anchored" data-anchor-id="pruebas-de-consistencia">4.11. Pruebas de consistencia</h2>
+<section id="tlog-lem-00008" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00008">Lema 4.11.1 — Tests <span class="math inline">\(C^+\)</span>, <span class="math inline">\(C^-\)</span> y trivialidad</h3>
+<p>Para todo <span class="math inline">\(\Gamma\)</span> y toda fórmula <span class="math inline">\(\alpha\)</span>:</p>
+<p><span class="math display">\[
+\boxed{
+\Gamma\vdash_{\mathsf H}\alpha
+\iff
+\Gamma,\neg\alpha
+\vdash_{\mathsf H}\bot_{\mathrm{CPL}}
+}
+\tag{C+}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\boxed{
+\Gamma\vdash_{\mathsf H}\neg\alpha
+\iff
+\Gamma,\alpha
+\vdash_{\mathsf H}\bot_{\mathrm{CPL}}
+}.
+\tag{C-}
+\]</span></p>
+<p>Además,</p>
+<p><span class="math display">\[
+\Gamma\vdash_{\mathsf H}\bot_{\mathrm{CPL}}
+\iff
+(\forall\psi\in\mathrm{Fm}_{\mathrm{CPL}})
+\;\Gamma\vdash_{\mathsf H}\psi.
+\tag{T}
+\]</span></p>
+<section id="demostración-4" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-4">Demostración</h4>
+<p>Para (T), si <span class="math inline">\(\Gamma\vdash\bot_{\mathrm{CPL}}\)</span>, las eliminaciones derivadas de <span class="math inline">\(\land\)</span> dan</p>
+<p><span class="math display">\[
+\Gamma\vdash p_1,
+\qquad
+\Gamma\vdash\neg p_1,
+\]</span></p>
+<p>y la explosión de <a href="#tlog-lem-00007">TLOG-LEM-00007</a> da cualquier <span class="math inline">\(\psi\)</span>. La recíproca es inmediata tomando <span class="math inline">\(\psi=\bot_{\mathrm{CPL}}\)</span>.</p>
+<p>Para <code>C+</code>, la dirección <span class="math inline">\((\Rightarrow)\)</span> combina <span class="math inline">\(\alpha\)</span>, la premisa <span class="math inline">\(\neg\alpha\)</span> y explosión. Para <span class="math inline">\((\Leftarrow)\)</span>, (T) da</p>
+<p><span class="math display">\[
+\Gamma,\neg\alpha\vdash\alpha.
+\]</span></p>
+<p>El teorema de deducción produce</p>
+<p><span class="math display">\[
+\Gamma\vdash\neg\alpha\to\alpha,
+\]</span></p>
+<p>y (CM) concluye <span class="math inline">\(\Gamma\vdash\alpha\)</span>.</p>
+<p>Para <code>C-</code>, la dirección <span class="math inline">\((\Rightarrow)\)</span> es análoga. Para la recíproca, de</p>
+<p><span class="math display">\[
+\Gamma,\alpha\vdash\bot_{\mathrm{CPL}}
+\]</span></p>
+<p>obtenemos por (T)</p>
+<p><span class="math display">\[
+\Gamma,\alpha\vdash\neg\alpha,
+\]</span></p>
+<p>luego</p>
+<p><span class="math display">\[
+\Gamma\vdash\alpha\to\neg\alpha.
+\]</span></p>
+<p>La fórmula (AR) de <a href="#tlog-lem-00007">TLOG-LEM-00007</a> da <span class="math inline">\(\Gamma\vdash\neg\alpha\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Por tanto:</p>
+<p><span class="math display">\[
+\Gamma\nvdash\alpha
+\iff
+\Gamma\cup\{\neg\alpha\}
+\text{ es consistente}.
+\tag{C+ contraposición}
+\]</span></p>
+<p>Esta equivalencia será el puente exacto hacia el contra-modelo de la prueba de completitud.</p>
+</section>
+</section>
+</section>
+<section id="extensión-maximal-sin-elección" class="level2">
+<h2 class="anchored" data-anchor-id="extensión-maximal-sin-elección">4.12. Extensión maximal sin elección</h2>
+<section id="tlog-mth-00010" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00010">Metateorema 4.12.1 — Lema de Lindenbaum enumerable para <code>CPL</code></h3>
+<p>Todo conjunto <span class="math inline">\(\mathsf H\)</span>-consistente</p>
+<p><span class="math display">\[
+\Gamma\subseteq\mathrm{Fm}_{\mathrm{CPL}}
+\]</span></p>
+<p>está contenido en un conjunto maximalmente <span class="math inline">\(\mathsf H\)</span>-consistente.</p>
+<section id="demostración-5" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-5">Demostración</h4>
+<p>El alfabeto de <code>CPL</code> es explícitamente numerable: las variables son <span class="math inline">\(p_1,p_2,\ldots\)</span> y los restantes símbolos forman un conjunto finito. Por tanto las expresiones finitas admiten una enumeración explícita mediante longitud y una función de emparejamiento iterada sobre los índices de sus símbolos; en particular existe una enumeración</p>
+<p><span class="math display">\[
+\varphi_0,\varphi_1,\ldots
+\]</span></p>
+<p>de <span class="math inline">\(\mathrm{Fm}_{\mathrm{CPL}}\)</span>. No se introduce aquí una codificación objeto ni un número de Gödel: sólo se usa numerabilidad metateórica.</p>
+<p>Definimos recursivamente</p>
+<p><span class="math display">\[
+\Gamma_0:=\Gamma,
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\Gamma_{n+1}:=
+\begin{cases}
+\Gamma_n\cup\{\varphi_n\},
+&amp;\text{si }\Gamma_n\cup\{\varphi_n\}\text{ es consistente},\\[2mm]
+\Gamma_n,
+&amp;\text{en otro caso}.
+\end{cases}
+\]</span></p>
+<p>Cada <span class="math inline">\(\Gamma_n\)</span> es consistente. Sea</p>
+<p><span class="math display">\[
+T:=\bigcup_{n&lt;\omega}\Gamma_n.
+\]</span></p>
+<p>Si <span class="math inline">\(T\)</span> fuese inconsistente, entonces</p>
+<p><span class="math display">\[
+T\vdash\bot_{\mathrm{CPL}}.
+\]</span></p>
+<p>Por la finitariedad de <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-pro-00003">TLOG-PRO-00003</a>, existiría un conjunto finito</p>
+<p><span class="math display">\[
+T_0\subseteq T
+\]</span></p>
+<p>con</p>
+<p><span class="math display">\[
+T_0\vdash\bot_{\mathrm{CPL}}.
+\]</span></p>
+<p>Como la cadena <span class="math inline">\((\Gamma_n)\)</span> es creciente, todo subconjunto finito de su unión está contenido en alguna <span class="math inline">\(\Gamma_N\)</span>. Por monotonía,</p>
+<p><span class="math display">\[
+\Gamma_N\vdash\bot_{\mathrm{CPL}},
+\]</span></p>
+<p>contradicción. Luego <span class="math inline">\(T\)</span> es consistente.</p>
+<p>Para la maximalidad, sea <span class="math inline">\(\psi\notin T\)</span>. Tome <span class="math inline">\(n\)</span> con <span class="math inline">\(\varphi_n=\psi\)</span>. Como <span class="math inline">\(\psi\)</span> no fue incorporada, <span class="math inline">\(\Gamma_n\cup\{\psi\}\)</span> era inconsistente. Por monotonía también</p>
+<p><span class="math display">\[
+T\cup\{\psi\}
+\]</span></p>
+<p>es inconsistente. Si <span class="math inline">\(\Delta\supsetneq T\)</span>, elija <span class="math inline">\(\psi\in\Delta\setminus T\)</span>; entonces <span class="math inline">\(T\cup\{\psi\}\subseteq\Delta\)</span>, y la monotonía vuelve inconsistente a <span class="math inline">\(\Delta\)</span>. Por tanto <span class="math inline">\(T\)</span> es maximalmente consistente. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Fundamento
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La prueba usa recursión sobre <span class="math inline">\(\omega\)</span> y finitariedad de las derivaciones. No usa el lema de Zorn ni introduce una hipótesis global de elección en <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span>.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="valuación-canónica" class="level2">
+<h2 class="anchored" data-anchor-id="valuación-canónica">4.13. Valuación canónica</h2>
+<section id="tlog-mth-00011" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00011">Metateorema 4.13.1 — Lema de verdad para un conjunto maximalmente consistente</h3>
+<p>Sea <span class="math inline">\(T\subseteq\mathrm{Fm}_{\mathrm{CPL}}\)</span> maximalmente <span class="math inline">\(\mathsf H\)</span>-consistente. Entonces <span class="math inline">\(T\)</span> es deductivamente cerrado:</p>
+<p><span class="math display">\[
+T\vdash_{\mathsf H}\alpha
+\Longrightarrow
+\alpha\in T.
+\tag{DC}
+\]</span></p>
+<p>En efecto, si <span class="math inline">\(\alpha\notin T\)</span>, por maximalidad <span class="math inline">\(T,\alpha\)</span> es inconsistente. Pero una derivación de <span class="math inline">\(\bot_{\mathrm{CPL}}\)</span> desde <span class="math inline">\(T,\alpha\)</span>, junto con <span class="math inline">\(T\vdash\alpha\)</span>, se recompone mediante <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-pro-00003">TLOG-PRO-00003</a> en una derivación de <span class="math inline">\(\bot_{\mathrm{CPL}}\)</span> desde <span class="math inline">\(T\)</span>, contradicción.</p>
+<p>De <code>C-</code>, maximalidad y (DC) se obtiene</p>
+<p><span class="math display">\[
+\neg\alpha\in T
+\iff
+\alpha\notin T.
+\tag{N}
+\]</span></p>
+<p>Las reglas derivadas y los esquemas de <code>HCPL</code> dan además:</p>
+<p><span class="math display">\[
+\alpha\land\beta\in T
+\iff
+\alpha\in T\text{ y }\beta\in T,
+\tag{A}
+\]</span></p>
+<p><span class="math display">\[
+\alpha\lor\beta\in T
+\iff
+\alpha\in T\text{ o }\beta\in T,
+\tag{O}
+\]</span></p>
+<p><span class="math display">\[
+\alpha\to\beta\in T
+\iff
+\alpha\notin T\text{ o }\beta\in T,
+\tag{I}
+\]</span></p>
+<p><span class="math display">\[
+\alpha\leftrightarrow\beta\in T
+\iff
+(\alpha\in T\iff\beta\in T).
+\tag{B}
+\]</span></p>
+<p>Para (A) se usan las reglas derivadas de introducción/eliminación de conjunción. Para (O), una dirección viene de las introducciones derivadas de disyunción de <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-pro-00004">TLOG-PRO-00004</a>. Si <span class="math inline">\(\alpha\lor\beta\in T\)</span> pero ninguna disyunta pertenece a <span class="math inline">\(T\)</span>, (N) da <span class="math inline">\(\neg\alpha,\neg\beta\in T\)</span>. Por <code>C-</code>, <span class="math inline">\(T,\alpha\)</span> y <span class="math inline">\(T,\beta\)</span> son inconsistentes; por la trivialidad de <a href="#tlog-lem-00008">TLOG-LEM-00008</a>, ambos contextos derivan <span class="math inline">\(\bot_{\mathrm{CPL}}\)</span>. El análisis por casos de <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-pro-00004">TLOG-PRO-00004</a> produce <span class="math inline">\(T,\alpha\lor\beta\vdash\bot_{\mathrm{CPL}}\)</span>, es decir <span class="math inline">\(T\vdash\bot_{\mathrm{CPL}}\)</span>, contradicción.</p>
+<p>Para (I), si <span class="math inline">\(\alpha\to\beta\in T\)</span> y <span class="math inline">\(\alpha\in T\)</span>, <code>MP</code> y (DC) dan <span class="math inline">\(\beta\in T\)</span>. Recíprocamente, si <span class="math inline">\(\beta\in T\)</span>, entonces <span class="math inline">\(T,\alpha\vdash\beta\)</span> por premisa y monotonía, y <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-mth-00008">TLOG-MTH-00008</a> da <span class="math inline">\(T\vdash\alpha\to\beta\)</span>. Si <span class="math inline">\(\alpha\notin T\)</span>, (N) da <span class="math inline">\(\neg\alpha\in T\)</span>; <code>C-</code> hace inconsistente a <span class="math inline">\(T,\alpha\)</span>, de modo que por trivialidad <span class="math inline">\(T,\alpha\vdash\beta\)</span>; el teorema de deducción vuelve a dar <span class="math inline">\(T\vdash\alpha\to\beta\)</span>. En ambos casos (DC) concluye <span class="math inline">\(\alpha\to\beta\in T\)</span>.</p>
+<p>Para (B), las reglas derivadas de eliminación de bicondicional de <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-pro-00004">TLOG-PRO-00004</a> dan la dirección necesaria. Si <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span> tienen el mismo estado de pertenencia, (I) da ambas implicaciones y la introducción derivada de bicondicional de <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-pro-00004">TLOG-PRO-00004</a> produce <span class="math inline">\(\alpha\leftrightarrow\beta\)</span>.</p>
+<p>Definimos ahora la <strong>valuación canónica</strong></p>
+<p><span class="math display">\[
+v_T:\mathrm{PV}\to\mathbf 2
+\]</span></p>
+<p>por</p>
+<p><span class="math display">\[
+v_T(p_n)=1
+\iff
+p_n\in T.
+\]</span></p>
+<p>Entonces, para toda fórmula <span class="math inline">\(\varphi\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+v_T\models_{\mathrm{CPL}}\varphi
+\iff
+\varphi\in T
+}.
+\tag{Truth}
+\]</span></p>
+<section id="demostración-6" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-6">Demostración</h4>
+<p>Por inducción estructural <a href="../../../libros/otros/tratado-de-logica/capitulo-01.html#tlog-mth-00001">TLOG-MTH-00001</a>. El caso atómico es la definición de <span class="math inline">\(v_T\)</span>. Los cinco pasos inductivos son exactamente (N), (A), (O), (I) y (B), cotejados con las cinco funciones de verdad que gobiernan la extensión <span class="math inline">\(\widehat v_T\)</span> por <a href="../../../libros/otros/tratado-de-logica/capitulo-02.html#tlog-mth-00004">TLOG-MTH-00004</a>. <span class="math inline">\(\square\)</span></p>
+<p>En particular,</p>
+<p><span class="math display">\[
+v_T\models T.
+\]</span></p>
+</section>
+</section>
+</section>
+<section id="existencia-de-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-de-modelo">4.14. Existencia de modelo</h2>
+<section id="tlog-mth-00012" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00012">Metateorema 4.14.1 — Todo conjunto consistente de fórmulas proposicionales es satisfacible</h3>
+<p>Si</p>
+<p><span class="math display">\[
+\Gamma\nvdash_{\mathsf H}\bot_{\mathrm{CPL}},
+\]</span></p>
+<p>entonces existe</p>
+<p><span class="math display">\[
+v\in\mathrm{Val}_{\mathrm{CPL}}
+\]</span></p>
+<p>tal que</p>
+<p><span class="math display">\[
+v\models_{\mathrm{CPL}}\Gamma.
+\]</span></p>
+<section id="demostración-7" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-7">Demostración</h4>
+<p>Por <a href="#tlog-mth-00010">TLOG-MTH-00010</a>, extendemos <span class="math inline">\(\Gamma\)</span> a un conjunto maximalmente consistente <span class="math inline">\(T\supseteq\Gamma\)</span>. Por <a href="#tlog-mth-00011">TLOG-MTH-00011</a>, su valuación canónica satisface <span class="math inline">\(T\)</span>. Luego también satisface <span class="math inline">\(\Gamma\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="completitud-fuerte" class="level2">
+<h2 class="anchored" data-anchor-id="completitud-fuerte">4.15. Completitud fuerte</h2>
+<section id="tlog-mth-00013" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00013">Metateorema 4.15.1 — Completitud de <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span> respecto de <code>CPL</code></h3>
+<p>Para todo conjunto —finito o infinito— de premisas</p>
+<p><span class="math display">\[
+\Gamma\subseteq\mathrm{Fm}_{\mathrm{CPL}}
+\]</span></p>
+<p>y toda fórmula <span class="math inline">\(\varphi\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\Gamma\models_{\mathrm{CPL}}\varphi
+\Longrightarrow
+\Gamma\vdash_{\mathsf H}\varphi
+}.
+\]</span></p>
+<section id="demostración-8" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-8">Demostración</h4>
+<p>Argumentamos por contraposición. Supongamos</p>
+<p><span class="math display">\[
+\Gamma\nvdash_{\mathsf H}\varphi.
+\]</span></p>
+<p>Por <code>C+</code> de <a href="#tlog-lem-00008">TLOG-LEM-00008</a>,</p>
+<p><span class="math display">\[
+\Gamma\cup\{\neg\varphi\}
+\]</span></p>
+<p>es consistente. <a href="#tlog-mth-00012">TLOG-MTH-00012</a> proporciona una valuación <span class="math inline">\(v\)</span> que satisface ese conjunto. Por tanto</p>
+<p><span class="math display">\[
+v\models\Gamma
+\qquad\text{y}\qquad
+v\models\neg\varphi,
+\]</span></p>
+<p>de modo que</p>
+<p><span class="math display">\[
+v\not\models\varphi.
+\]</span></p>
+<p>Luego</p>
+<p><span class="math display">\[
+\Gamma\not\models\varphi.
+\]</span></p>
+<p>La contraposición metateórica concluye la tesis. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Fuerza del resultado
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No se ha supuesto que <span class="math inline">\(\Gamma\)</span> sea finito. La finitud entra únicamente en la naturaleza de cada derivación concreta y en la construcción enumerable de Lindenbaum.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="adecuación-finitariedad-semántica-y-compacidad" class="level2">
+<h2 class="anchored" data-anchor-id="adecuación-finitariedad-semántica-y-compacidad">4.16. Adecuación, finitariedad semántica y compacidad</h2>
+<section id="tlog-cor-00003" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00003">Corolario 4.16.1 — Coincidencia extensional de consecuencia y compacidad proposicional</h3>
+<p>Para todo <span class="math inline">\(\Gamma\subseteq\mathrm{Fm}_{\mathrm{CPL}}\)</span> y toda <span class="math inline">\(\varphi\)</span>:</p>
+<ol type="1">
+<li><p><strong>Adecuación.</strong> <span class="math display">\[
+\boxed{
+\Gamma\vdash_{\mathsf H}\varphi
+\iff
+\Gamma\models_{\mathrm{CPL}}\varphi
+}.
+\]</span></p></li>
+<li><p><strong>Consistencia = satisfacibilidad.</strong> <span class="math display">\[
+\Gamma\text{ es }\mathsf H\text{-consistente}
+\iff
+\Gamma\text{ es satisfacible}.
+\]</span></p></li>
+<li><p><strong>Finitariedad semántica.</strong> Si <span class="math display">\[
+\Gamma\models\varphi,
+\]</span> existe un subconjunto finito <span class="math inline">\(\Gamma_0\subseteq\Gamma\)</span> con <span class="math display">\[
+\Gamma_0\models\varphi.
+\]</span></p></li>
+<li><p><strong>Compacidad proposicional.</strong> <span class="math display">\[
+\Gamma\text{ es satisfacible}
+\iff
+\text{todo subconjunto finito de }\Gamma\text{ es satisfacible}.
+\]</span></p></li>
+</ol>
+<section id="demostración-9" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-9">Demostración</h4>
+<ol type="1">
+<li>combina corrección <a href="#tlog-mth-00009">TLOG-MTH-00009</a> y completitud <a href="#tlog-mth-00013">TLOG-MTH-00013</a>.</li>
+</ol>
+<p>Para (2), la dirección consistencia <span class="math inline">\(\Rightarrow\)</span> satisfacibilidad es <a href="#tlog-mth-00012">TLOG-MTH-00012</a>. Si <span class="math inline">\(\Gamma\)</span> fuese satisfacible e inconsistente, entonces <span class="math inline">\(\Gamma\vdash\bot_{\mathrm{CPL}}\)</span>; por corrección, todo modelo de <span class="math inline">\(\Gamma\)</span> satisfaría <span class="math inline">\(p_1\land\neg p_1\)</span>, imposible bajo la semántica bivalente.</p>
+<p>Para (3), completitud da <span class="math inline">\(\Gamma\vdash\varphi\)</span>. La finitariedad sintáctica de <a href="../../../libros/otros/tratado-de-logica/capitulo-03.html#tlog-pro-00003">TLOG-PRO-00003</a> produce un <span class="math inline">\(\Gamma_0\subseteq\Gamma\)</span> finito con <span class="math inline">\(\Gamma_0\vdash\varphi\)</span>; corrección da <span class="math inline">\(\Gamma_0\models\varphi\)</span>.</p>
+<p>Para (4), una dirección es inmediata. Para la otra, supongamos que todo subconjunto finito de <span class="math inline">\(\Gamma\)</span> es satisfacible pero <span class="math inline">\(\Gamma\)</span> no lo es. Entonces, vacuamente,</p>
+<p><span class="math display">\[
+\Gamma\models\bot_{\mathrm{CPL}}.
+\]</span></p>
+<p>Por (3), algún <span class="math inline">\(\Gamma_0\subseteq\Gamma\)</span> finito satisface</p>
+<p><span class="math display">\[
+\Gamma_0\models\bot_{\mathrm{CPL}},
+\]</span></p>
+<p>por lo que <span class="math inline">\(\Gamma_0\)</span> no puede ser satisfacible, contradicción. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Distinción de significado
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La equivalencia <span class="math display">\[
+\Gamma\vdash\varphi\iff\Gamma\models\varphi
+\]</span> es <strong>extensional</strong>: las dos relaciones tienen los mismos pares <span class="math inline">\((\Gamma,\varphi)\)</span> en este sistema. Sus definiciones y niveles siguen siendo distintos: una cuantifica sobre derivaciones finitas y la otra sobre valuaciones.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="ejemplo-desarrollado-del-valor-semántico-a-la-prueba" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-desarrollado-del-valor-semántico-a-la-prueba">4.17. Ejemplo desarrollado — del valor semántico a la prueba</h2>
+<p>Por semántica bivalente,</p>
+<p><span class="math display">\[
+\models_{\mathrm{CPL}}
+(p_1\lor\neg p_1).
+\]</span></p>
+<p>Antes de <a href="#tlog-mth-00013">TLOG-MTH-00013</a>, esta afirmación semántica no autorizaba una conclusión sintáctica. Ahora la completitud permite inferir</p>
+<p><span class="math display">\[
+\boxed{
+\vdash_{\mathsf H}
+(p_1\lor\neg p_1)
+}.
+\]</span></p>
+<p>La conclusión no redefine validez como demostrabilidad: usa un metateorema que conecta dos relaciones previamente construidas de manera independiente.</p>
+</section>
+<section id="cierre-del-capítulo-y-de-la-parte-i" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-del-capítulo-y-de-la-parte-i">4.20. Cierre del capítulo y de la Parte I</h2>
+<p>Con <code>TLOG-CH04-M02</code> quedan demostradas las dos direcciones:</p>
+<p><span class="math display">\[
+\Gamma\vdash_{\mathsf H}\varphi
+\Longrightarrow
+\Gamma\models_{\mathrm{CPL}}\varphi,
+\]</span></p>
+<p><span class="math display">\[
+\Gamma\models_{\mathrm{CPL}}\varphi
+\Longrightarrow
+\Gamma\vdash_{\mathsf H}\varphi.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\texttt{TLOG-CH04-0001 — CLOSED}}
+\]</span></p>
+<p>y los cinco capítulos de la Parte I cumplen su función arquitectónica:</p>
+<p><span class="math display">\[
+\boxed{\texttt{PARTE I — CLOSED / PASS}}.
+\]</span></p>
+<p>La Parte I entrega un sistema proposicional completo con sintaxis, semántica y deducción construidas por separado y comparadas mediante corrección y completitud. También quedan disponibles finitariedad semántica y compacidad proposicional.</p>
+<p>Próximo frente arquitectónico:</p>
+<pre class="text"><code>TLOG-CH05-0001 — Signaturas, términos y fórmulas</code></pre>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-03.html">← Capítulo 3</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html">Capítulo 5 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

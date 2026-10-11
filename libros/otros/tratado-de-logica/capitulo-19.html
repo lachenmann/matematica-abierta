@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 19 — Representabilidad en aritmética – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-un-algoritmo-externo-a-una-fórmula-con-pruebas" id="toc-de-un-algoritmo-externo-a-una-fórmula-con-pruebas" class="nav-link active" data-scroll-target="#de-un-algoritmo-externo-a-una-fórmula-con-pruebas">19.0. De un algoritmo externo a una fórmula con pruebas</a></li>
+  <li><a href="#tres-niveles-y-la-nueva-teoría-aritmética-objeto" id="toc-tres-niveles-y-la-nueva-teoría-aritmética-objeto" class="nav-link" data-scroll-target="#tres-niveles-y-la-nueva-teoría-aritmética-objeto">19.1. Tres niveles y la nueva teoría aritmética objeto</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00030" id="toc-tlog-cnv-00030" class="nav-link" data-scroll-target="#tlog-cnv-00030">Convención 19.1.1 — Tres niveles y la nueva teoría aritmética objeto</a></li>
+  </ul></li>
+  <li><a href="#signatura-aritmética-numerales-y-abreviaturas" id="toc-signatura-aritmética-numerales-y-abreviaturas" class="nav-link" data-scroll-target="#signatura-aritmética-numerales-y-abreviaturas">19.2. Signatura aritmética, numerales y abreviaturas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00134" id="toc-tlog-def-00134" class="nav-link" data-scroll-target="#tlog-def-00134">Definición 19.2.1 — Signatura aritmética, numerales y abreviaturas</a></li>
+  </ul></li>
+  <li><a href="#axiomas-de-pa-e-inducción-con-parámetros" id="toc-axiomas-de-pa-e-inducción-con-parámetros" class="nav-link" data-scroll-target="#axiomas-de-pa-e-inducción-con-parámetros">19.3. Axiomas de PA e inducción con parámetros</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00013" id="toc-tlog-axm-00013" class="nav-link" data-scroll-target="#tlog-axm-00013">Esquema axiomático 19.3.1 — Axiomas de PA e inducción con parámetros</a></li>
+  </ul></li>
+  <li><a href="#efectividad-de-los-axiomas-y-reglas-admisibles-de-pa" id="toc-efectividad-de-los-axiomas-y-reglas-admisibles-de-pa" class="nav-link" data-scroll-target="#efectividad-de-los-axiomas-y-reglas-admisibles-de-pa">19.4. Efectividad de los axiomas y reglas admisibles de PA</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00072" id="toc-tlog-lem-00072" class="nav-link" data-scroll-target="#tlog-lem-00072">Lema 19.4.1 — Efectividad de los axiomas y reglas admisibles de PA</a></li>
+  </ul></li>
+  <li><a href="#la-estructura-estándar-externa-de-aritmética" id="toc-la-estructura-estándar-externa-de-aritmética" class="nav-link" data-scroll-target="#la-estructura-estándar-externa-de-aritmética">19.5. La estructura estándar externa de aritmética</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00135" id="toc-tlog-def-00135" class="nav-link" data-scroll-target="#tlog-def-00135">Definición 19.5.1 — La estructura estándar externa de aritmética</a></li>
+  </ul></li>
+  <li><a href="#modelo-estándar-y-corrección-externa-de-pa" id="toc-modelo-estándar-y-corrección-externa-de-pa" class="nav-link" data-scroll-target="#modelo-estándar-y-corrección-externa-de-pa">19.6. Modelo estándar y corrección externa de PA</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00102" id="toc-tlog-mth-00102" class="nav-link" data-scroll-target="#tlog-mth-00102">Metateorema 19.6.1 — Modelo estándar y corrección externa de PA</a></li>
+  </ul></li>
+  <li><a href="#definibilidad-y-representaciones-débil-y-bilateral" id="toc-definibilidad-y-representaciones-débil-y-bilateral" class="nav-link" data-scroll-target="#definibilidad-y-representaciones-débil-y-bilateral">19.7. Definibilidad y representaciones débil y bilateral</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00136" id="toc-tlog-def-00136" class="nav-link" data-scroll-target="#tlog-def-00136">Definición 19.7.1 — Definibilidad y representaciones débil y bilateral</a></li>
+  </ul></li>
+  <li><a href="#consecuencias-lógicas-y-límites-de-las-representaciones" id="toc-consecuencias-lógicas-y-límites-de-las-representaciones" class="nav-link" data-scroll-target="#consecuencias-lógicas-y-límites-de-las-representaciones">19.8. Consecuencias lógicas y límites de las representaciones</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00125" id="toc-tlog-pro-00125" class="nav-link" data-scroll-target="#tlog-pro-00125">Proposición 19.8.1 — Consecuencias lógicas y límites de las representaciones</a></li>
+  </ul></li>
+  <li><a href="#aritmética-elemental-demostrable-y-segmentos-numerales" id="toc-aritmética-elemental-demostrable-y-segmentos-numerales" class="nav-link" data-scroll-target="#aritmética-elemental-demostrable-y-segmentos-numerales">19.9. Aritmética elemental demostrable y segmentos numerales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00073" id="toc-tlog-lem-00073" class="nav-link" data-scroll-target="#tlog-lem-00073">Lema 19.9.1 — Aritmética elemental demostrable y segmentos numerales</a></li>
+  </ul></li>
+  <li><a href="#división-con-resto-demostrable-en-pa" id="toc-división-con-resto-demostrable-en-pa" class="nav-link" data-scroll-target="#división-con-resto-demostrable-en-pa">19.10. División con resto demostrable en PA</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00074" id="toc-tlog-lem-00074" class="nav-link" data-scroll-target="#tlog-lem-00074">Lema 19.10.1 — División con resto demostrable en PA</a></li>
+  </ul></li>
+  <li><a href="#fórmulas-acotadas-y-clase-existencial-σ1" id="toc-fórmulas-acotadas-y-clase-existencial-σ1" class="nav-link" data-scroll-target="#fórmulas-acotadas-y-clase-existencial-σ1">19.11. Fórmulas acotadas y clase existencial Σ1</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00137" id="toc-tlog-def-00137" class="nav-link" data-scroll-target="#tlog-def-00137">Definición 19.11.1 — Fórmulas acotadas y clase existencial Σ1</a></li>
+  </ul></li>
+  <li><a href="#decisión-externa-y-completitud-numeral-de-δ0" id="toc-decisión-externa-y-completitud-numeral-de-δ0" class="nav-link" data-scroll-target="#decisión-externa-y-completitud-numeral-de-δ0">19.12. Decisión externa y completitud numeral de Δ0</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00103" id="toc-tlog-mth-00103" class="nav-link" data-scroll-target="#tlog-mth-00103">Metateorema 19.12.1 — Decisión externa y completitud numeral de Δ0</a></li>
+  </ul></li>
+  <li><a href="#la-relación-aritmética-auxiliar-β" id="toc-la-relación-aritmética-auxiliar-β" class="nav-link" data-scroll-target="#la-relación-aritmética-auxiliar-β">19.13. La relación aritmética auxiliar β</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00138" id="toc-tlog-def-00138" class="nav-link" data-scroll-target="#tlog-def-00138">Definición 19.13.1 — La relación aritmética auxiliar β</a></li>
+  </ul></li>
+  <li><a href="#existencia-y-unicidad-interna-de-la-lectura-β" id="toc-existencia-y-unicidad-interna-de-la-lectura-β" class="nav-link" data-scroll-target="#existencia-y-unicidad-interna-de-la-lectura-β">19.14. Existencia y unicidad interna de la lectura β</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00075" id="toc-tlog-lem-00075" class="nav-link" data-scroll-target="#tlog-lem-00075">Lema 19.14.1 — Existencia y unicidad interna de la lectura β</a></li>
+  </ul></li>
+  <li><a href="#bézout-e-inversos-residuales-en-la-metateoría-externa" id="toc-bézout-e-inversos-residuales-en-la-metateoría-externa" class="nav-link" data-scroll-target="#bézout-e-inversos-residuales-en-la-metateoría-externa">19.15. Bézout e inversos residuales en la metateoría externa</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00076" id="toc-tlog-lem-00076" class="nav-link" data-scroll-target="#tlog-lem-00076">Lema 19.15.1 — Bézout e inversos residuales en la metateoría externa</a></li>
+  </ul></li>
+  <li><a href="#módulos-coprimos-y-construcción-explícita-del-crt-finito" id="toc-módulos-coprimos-y-construcción-explícita-del-crt-finito" class="nav-link" data-scroll-target="#módulos-coprimos-y-construcción-explícita-del-crt-finito">19.16. Módulos coprimos y construcción explícita del CRT finito</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00077" id="toc-tlog-lem-00077" class="nav-link" data-scroll-target="#tlog-lem-00077">Lema 19.16.1 — Módulos coprimos y construcción explícita del CRT finito</a></li>
+  </ul></li>
+  <li><a href="#codificación-β-de-toda-secuencia-finita-externa" id="toc-codificación-β-de-toda-secuencia-finita-externa" class="nav-link" data-scroll-target="#codificación-β-de-toda-secuencia-finita-externa">19.17. Codificación β de toda secuencia finita externa</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00104" id="toc-tlog-mth-00104" class="nav-link" data-scroll-target="#tlog-mth-00104">Metateorema 19.17.1 — Codificación β de toda secuencia finita externa</a></li>
+  </ul></li>
+  <li><a href="#fórmula-aritmética-de-transición-de-un-programa-fijo" id="toc-fórmula-aritmética-de-transición-de-un-programa-fijo" class="nav-link" data-scroll-target="#fórmula-aritmética-de-transición-de-un-programa-fijo">19.18. Fórmula aritmética de transición de un programa fijo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00139" id="toc-tlog-def-00139" class="nav-link" data-scroll-target="#tlog-def-00139">Definición 19.18.1 — Fórmula aritmética de transición de un programa fijo</a></li>
+  </ul></li>
+  <li><a href="#exactitud-y-determinismo-demostrable-del-paso-aritmético" id="toc-exactitud-y-determinismo-demostrable-del-paso-aritmético" class="nav-link" data-scroll-target="#exactitud-y-determinismo-demostrable-del-paso-aritmético">19.19. Exactitud y determinismo demostrable del paso aritmético</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00078" id="toc-tlog-lem-00078" class="nav-link" data-scroll-target="#tlog-lem-00078">Lema 19.19.1 — Exactitud y determinismo demostrable del paso aritmético</a></li>
+  </ul></li>
+  <li><a href="#tablas-β-de-ejecución-y-fórmula-de-gráfica-σ1" id="toc-tablas-β-de-ejecución-y-fórmula-de-gráfica-σ1" class="nav-link" data-scroll-target="#tablas-β-de-ejecución-y-fórmula-de-gráfica-σ1">19.20. Tablas β de ejecución y fórmula de gráfica Σ1</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00140" id="toc-tlog-def-00140" class="nav-link" data-scroll-target="#tlog-def-00140">Definición 19.20.1 — Tablas β de ejecución y fórmula de gráfica Σ1</a></li>
+  </ul></li>
+  <li><a href="#exactitud-estándar-de-las-tablas-de-ejecución" id="toc-exactitud-estándar-de-las-tablas-de-ejecución" class="nav-link" data-scroll-target="#exactitud-estándar-de-las-tablas-de-ejecución">19.21. Exactitud estándar de las tablas de ejecución</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00079" id="toc-tlog-lem-00079" class="nav-link" data-scroll-target="#tlog-lem-00079">Lema 19.21.1 — Exactitud estándar de las tablas de ejecución</a></li>
+  </ul></li>
+  <li><a href="#funcionalidad-de-las-gráficas-de-ejecución-dentro-de-pa" id="toc-funcionalidad-de-las-gráficas-de-ejecución-dentro-de-pa" class="nav-link" data-scroll-target="#funcionalidad-de-las-gráficas-de-ejecución-dentro-de-pa">19.22. Funcionalidad de las gráficas de ejecución dentro de PA</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00080" id="toc-tlog-lem-00080" class="nav-link" data-scroll-target="#tlog-lem-00080">Lema 19.22.1 — Funcionalidad de las gráficas de ejecución dentro de PA</a></li>
+  </ul></li>
+  <li><a href="#representación-σ1-de-funciones-parcialmente-computables-rm" id="toc-representación-σ1-de-funciones-parcialmente-computables-rm" class="nav-link" data-scroll-target="#representación-σ1-de-funciones-parcialmente-computables-rm">19.23. Representación Σ1 de funciones parcialmente computables RM</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00105" id="toc-tlog-mth-00105" class="nav-link" data-scroll-target="#tlog-mth-00105">Metateorema 19.23.1 — Representación Σ1 de funciones parcialmente computables RM</a></li>
+  </ul></li>
+  <li><a href="#representación-bilateral-de-relaciones-decidibles-rm" id="toc-representación-bilateral-de-relaciones-decidibles-rm" class="nav-link" data-scroll-target="#representación-bilateral-de-relaciones-decidibles-rm">19.24. Representación bilateral de relaciones decidibles RM</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00106" id="toc-tlog-mth-00106" class="nav-link" data-scroll-target="#tlog-mth-00106">Metateorema 19.24.1 — Representación bilateral de relaciones decidibles RM</a></li>
+  </ul></li>
+  <li><a href="#representación-débil-de-relaciones-semidecidibles-rm" id="toc-representación-débil-de-relaciones-semidecidibles-rm" class="nav-link" data-scroll-target="#representación-débil-de-relaciones-semidecidibles-rm">19.25. Representación débil de relaciones semidecidibles RM</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00107" id="toc-tlog-mth-00107" class="nav-link" data-scroll-target="#tlog-mth-00107">Metateorema 19.25.1 — Representación débil de relaciones semidecidibles RM</a></li>
+  </ul></li>
+  <li><a href="#caracterizaciones-de-la-semidecidibilidad-por-σ1-y-pruebas" id="toc-caracterizaciones-de-la-semidecidibilidad-por-σ1-y-pruebas" class="nav-link" data-scroll-target="#caracterizaciones-de-la-semidecidibilidad-por-σ1-y-pruebas">19.26. Caracterizaciones de la semidecidibilidad por Σ1 y pruebas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00108" id="toc-tlog-mth-00108" class="nav-link" data-scroll-target="#tlog-mth-00108">Metateorema 19.26.1 — Caracterizaciones de la semidecidibilidad por Σ1 y pruebas</a></li>
+  </ul></li>
+  <li><a href="#caracterización-bilateral-y-computabilidad-recuperada" id="toc-caracterización-bilateral-y-computabilidad-recuperada" class="nav-link" data-scroll-target="#caracterización-bilateral-y-computabilidad-recuperada">19.27. Caracterización bilateral y computabilidad recuperada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00109" id="toc-tlog-mth-00109" class="nav-link" data-scroll-target="#tlog-mth-00109">Metateorema 19.27.1 — Caracterización bilateral y computabilidad recuperada</a></li>
+  </ul></li>
+  <li><a href="#funciones-de-numeral-sustitución-numeral-y-autoinstanciación" id="toc-funciones-de-numeral-sustitución-numeral-y-autoinstanciación" class="nav-link" data-scroll-target="#funciones-de-numeral-sustitución-numeral-y-autoinstanciación">19.28. Funciones de numeral, sustitución numeral y autoinstanciación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00141" id="toc-tlog-def-00141" class="nav-link" data-scroll-target="#tlog-def-00141">Definición 19.28.1 — Funciones de numeral, sustitución numeral y autoinstanciación</a></li>
+  </ul></li>
+  <li><a href="#representación-de-la-infraestructura-sintáctica-aprobada" id="toc-representación-de-la-infraestructura-sintáctica-aprobada" class="nav-link" data-scroll-target="#representación-de-la-infraestructura-sintáctica-aprobada">19.29. Representación de la infraestructura sintáctica aprobada</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00110" id="toc-tlog-mth-00110" class="nav-link" data-scroll-target="#tlog-mth-00110">Metateorema 19.29.1 — Representación de la infraestructura sintáctica aprobada</a></li>
+  </ul></li>
+  <li><a href="#predicados-externos-de-prueba-y-sus-fórmulas-aritméticas" id="toc-predicados-externos-de-prueba-y-sus-fórmulas-aritméticas" class="nav-link" data-scroll-target="#predicados-externos-de-prueba-y-sus-fórmulas-aritméticas">19.30. Predicados externos de prueba y sus fórmulas aritméticas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00142" id="toc-tlog-def-00142" class="nav-link" data-scroll-target="#tlog-def-00142">Definición 19.30.1 — Predicados externos de prueba y sus fórmulas aritméticas</a></li>
+  </ul></li>
+  <li><a href="#exactitud-y-representación-del-predicado-de-demostrabilidad" id="toc-exactitud-y-representación-del-predicado-de-demostrabilidad" class="nav-link" data-scroll-target="#exactitud-y-representación-del-predicado-de-demostrabilidad">19.31. Exactitud y representación del predicado de demostrabilidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00111" id="toc-tlog-mth-00111" class="nav-link" data-scroll-target="#tlog-mth-00111">Metateorema 19.31.1 — Exactitud y representación del predicado de demostrabilidad</a></li>
+  </ul></li>
+  <li><a href="#extensiones-aritméticas-y-teorías-con-axiomas-efectivos" id="toc-extensiones-aritméticas-y-teorías-con-axiomas-efectivos" class="nav-link" data-scroll-target="#extensiones-aritméticas-y-teorías-con-axiomas-efectivos">19.32. Extensiones aritméticas y teorías con axiomas efectivos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00126" id="toc-tlog-pro-00126" class="nav-link" data-scroll-target="#tlog-pro-00126">Proposición 19.32.1 — Extensiones aritméticas y teorías con axiomas efectivos</a></li>
+  </ul></li>
+  <li><a href="#cierre-de-representabilidad-y-contrato-para-el-lema-diagonal" id="toc-cierre-de-representabilidad-y-contrato-para-el-lema-diagonal" class="nav-link" data-scroll-target="#cierre-de-representabilidad-y-contrato-para-el-lema-diagonal">19.33. Cierre de representabilidad y contrato para el lema diagonal</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00030" id="toc-tlog-cor-00030" class="nav-link" data-scroll-target="#tlog-cor-00030">Corolario 19.33.1 — Cierre de representabilidad y contrato para el lema diagonal</a></li>
+  </ul></li>
+  <li><a href="#ejemplos-y-estado-de-cierre" id="toc-ejemplos-y-estado-de-cierre" class="nav-link" data-scroll-target="#ejemplos-y-estado-de-cierre">19.34. Ejemplos y estado de cierre</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 19 — Representabilidad en aritmética</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-18.html">← Capítulo 18</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-20.html">Capítulo 20 →</a></p>
+<section id="de-un-algoritmo-externo-a-una-fórmula-con-pruebas" class="level2">
+<h2 class="anchored" data-anchor-id="de-un-algoritmo-externo-a-una-fórmula-con-pruebas">19.0. De un algoritmo externo a una fórmula con pruebas</h2>
+<p>Los códigos del capítulo anterior hicieron posible que un programa fijo reconociera fórmulas y derivaciones. Una fórmula aritmética que habla de esos números es otro objeto: hace falta construirla y justificar qué pruebas permite. El puente se desarrollará sobre PA, presentada expresamente, con un modelo estándar externo; no se toma PA como abreviatura de los naturales internos de ZF objeto.</p>
+<p>Primero fijaremos el lenguaje, la inducción y las nociones de representación. Después leeremos una tabla finita mediante restos β, construiremos una fórmula de ejecución de cada programa RM y probaremos su exactitud y funcionalidad. Finalmente aplicaremos ese teorema a las operaciones sintácticas y a los verificadores de prueba. El lema diagonal queda para CH20.</p>
+<p>La ruta β se usa como auxiliar aritmético, conservando S/G como numeraciones canónicas. El CRT finito y Bézout se prueban aquí en ZF externa; no se presupone un teorema uniforme de codificación de tablas dentro de PA. Las pruebas de funcionalidad dentro de PA sí tienen sus inducciones declaradas. Las regresiones Python, la selección de candidatos Lean y el cotejo SHA-256 tienen informes separados.</p>
+</section>
+<section id="tres-niveles-y-la-nueva-teoría-aritmética-objeto" class="level2">
+<h2 class="anchored" data-anchor-id="tres-niveles-y-la-nueva-teoría-aritmética-objeto">19.1. Tres niveles y la nueva teoría aritmética objeto</h2>
+<section id="tlog-cnv-00030" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00030">Convención 19.1.1 — Tres niveles y la nueva teoría aritmética objeto</h3>
+<p>Trabajamos externamente en <span class="math inline">\(M_{ext}=\mathrm{ZF}\)</span> clásica, sin AC/BPI. RM sigue siendo el sistema operacional externo de §§17–18. <span class="math inline">\(\mathrm{PA}\)</span> será una teoría objeto de una signatura <strong>aritmética nueva</strong>, distinta de <span class="math inline">\(\mathrm{ZF}_{obj}\)</span>. No se sustituyen los teoremas objeto de CH16 por axiomas de PA ni se usa un modelo supuesto de ZF objeto. La estructura estándar <span class="math inline">\(\mathbb N\)</span> se construye en la metateoría externa.</p>
+<p>Para fórmulas aritméticas distinguiremos <span class="math inline">\(\mathbb N\models A[\bar n]\)</span>, la afirmación externa <span class="math inline">\(f(\bar n)=m\)</span> y <span class="math inline">\(\mathrm{PA}\vdash A(\overline{\bar n})\)</span>. Una prueba humana de la tercera afirmación describe una derivación finita del cálculo con MP y axiomas declarados; no equivale a un archivo verificado en Lean. Los razonamientos PA de este capítulo especifican inducciones, ecuaciones y reglas admisibles, pero no se anuncian como trazas mecánicas de todas sus instancias.</p>
+</section>
+</section>
+<section id="signatura-aritmética-numerales-y-abreviaturas" class="level2">
+<h2 class="anchored" data-anchor-id="signatura-aritmética-numerales-y-abreviaturas">19.2. Signatura aritmética, numerales y abreviaturas</h2>
+<section id="tlog-def-00134" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00134">Definición 19.2.1 — Signatura aritmética, numerales y abreviaturas</h3>
+<p>Fijamos <span class="math inline">\(L_A\)</span> con igualdad lógica, constante <span class="math inline">\(0\)</span>, función unaria <span class="math inline">\(S\)</span>, funciones binarias <span class="math inline">\(+\)</span> y <span class="math inline">\(\cdot\)</span>, y relación binaria <span class="math inline">\(&lt;\)</span>. Su presentación numérica usa índices funcionales <span class="math inline">\(0,1,2,3\)</span> respectivamente, con aridades <span class="math inline">\(0,1,2,2\)</span>; el único índice relacional es <span class="math inline">\(0\)</span> con aridad 2. Ambos dominios son finitos decidibles y las aridades se totalizan por 0 fuera del dominio. Conservamos variables <span class="math inline">\(x_i\)</span>, cinco conectivos primitivos y ambos cuantificadores. No se agrega exponenciación, función de lista o símbolo β.</p>
+<p>El numeral <span class="math inline">\(\bar n\)</span> es el término <span class="math inline">\(S^n(0)\)</span>, con <span class="math inline">\(\bar0=0\)</span>. Es un término finito, distinto del natural <span class="math inline">\(n\)</span> y de su código <span class="math inline">\(G(\bar n)\)</span>. <span class="math inline">\(a\le b\)</span> abrevia <span class="math inline">\((a&lt;b)\lor(a=b)\)</span>; <span class="math inline">\(a\ne b\)</span> abrevia <span class="math inline">\(\neg(a=b)\)</span>; <span class="math inline">\(\exists z&lt;t A\)</span> abrevia <span class="math inline">\(\exists z(z&lt;t\land A)\)</span> y <span class="math inline">\(\forall z&lt;t A\)</span> abrevia <span class="math inline">\(\forall z(z&lt;t\to A)\)</span>, con <span class="math inline">\(z\)</span> ausente del término cota. Las cotas <span class="math inline">\(\le\)</span> se expanden mediante <span class="math inline">\(S(t)\)</span>. Los nombres auxiliares siempre se escogen frescos por §18.23 antes de expandir. No se redefine <span class="math inline">\(&lt;\)</span> conjuntista de CH16: el símbolo actual pertenece a <span class="math inline">\(L_A\)</span>.</p>
+</section>
+</section>
+<section id="axiomas-de-pa-e-inducción-con-parámetros" class="level2">
+<h2 class="anchored" data-anchor-id="axiomas-de-pa-e-inducción-con-parámetros">19.3. Axiomas de PA e inducción con parámetros</h2>
+<section id="tlog-axm-00013" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00013">Esquema axiomático 19.3.1 — Axiomas de PA e inducción con parámetros</h3>
+<p>Las ocho fórmulas base son las clausuras universales, en el orden escrito, de <span class="math display">\[
+Sx\ne0;\quad Sx=Sy\to x=y;\quad x\ne0\to\exists z(x=Sz);
+\]</span> <span class="math display">\[
+x+0=x;\quad x+Sy=S(x+y);\quad x\cdot0=0;\quad x\cdot Sy=x\cdot y+x;
+\]</span> <span class="math display">\[
+x&lt;y\leftrightarrow\exists z(y=x+Sz).
+\]</span> Aquí <span class="math inline">\(x=x_0,y=x_1,z=x_2\)</span>; cada fórmula base es cerrada cuantificando sus variables libres en orden creciente. Las ecuaciones sólo incluyen los variables que aparecen libres; <span class="math inline">\(z\)</span> en los dos existenciales no se cierra otra vez.</p>
+<p>Para toda fórmula <span class="math inline">\(A\)</span> de <span class="math inline">\(L_A\)</span> y todo índice <span class="math inline">\(i\)</span>, se añade la instancia abierta <span class="math display">\[
+\mathsf{Ind}_i(A):=
+\bigl(A[0/x_i]_{lit}\land\forall x_i(A\to A[Sx_i/x_i]_{lit})\bigr)\to\forall x_i A.
+\]</span> Ambas sustituciones son seguras: 0 es cerrado y las únicas variables de <span class="math inline">\(Sx_i\)</span> son <span class="math inline">\(x_i\)</span>, que un cuantificador homónimo bloquea. Las demás variables libres de A son parámetros. Se admiten <span class="math inline">\(i\notin FV(A)\)</span> y nombres ligados repetidos.</p>
+<p><span class="math inline">\(A_{PA}\)</span> consta de las ocho bases y de todas las instancias Ind, y de <strong>todos sus prefijos universales finitos</strong>, incluidos los vacíos. PA es el cálculo <span class="math inline">\(\mathsf H_{L_A}^=+A_{PA}\)</span>, desde ninguna premisa adicional; su única regla primitiva sigue siendo MP. Esta presentación explicita también las instancias abiertas, válidas bajo toda asignación; sus clausuras universales están incluidas. La presentación es deductivamente equivalente a usar las bases cerradas y las clausuras universales de Ind con las reglas usuales derivadas: una instancia abierta se obtiene de su clausura por particularización, y sus prefijos se obtienen por la generalización que se justifica a continuación.</p>
+</section>
+</section>
+<section id="efectividad-de-los-axiomas-y-reglas-admisibles-de-pa" class="level2">
+<h2 class="anchored" data-anchor-id="efectividad-de-los-axiomas-y-reglas-admisibles-de-pa">19.4. Efectividad de los axiomas y reglas admisibles de PA</h2>
+<section id="tlog-lem-00072" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00072">Lema 19.4.1 — Efectividad de los axiomas y reglas admisibles de PA</h3>
+<p><strong>Lema.</strong> <span class="math inline">\(A_{PA}\)</span> es decidible-RM y se deciden las derivaciones concretas de PA. La generalización de teoremas de PA es admisible por expansión finita, sin añadir un tag Gen.</p>
+<p><strong>Prueba efectiva.</strong> Las ocho bases tienen códigos fijos. Para probar si una fórmula es Ind, se exige raíz de implicación y consecuente <span class="math inline">\(\forall x_i A\)</span>. Se extraen <span class="math inline">\(i,A\)</span>, se calculan las dos sustituciones de §19.3 y se reconstruye toda la plantilla, comparando literalmente. Se aceptan los tipos y se rechaza cualquier longitud/constructor incorrecto. Para prefijos se examinan la fórmula y sus sucesivas matrices de raíz universal, guardando el prefijo, como en §18.56; se prueba en cada etapa base o Ind. La cantidad de matrices es finita y las sustituciones son totales. Cada axioma de la definición será encontrado y cada éxito pertenece a ella. §18.60, con esta presentación decidible, da el verificador de secuencias originales PA.</p>
+<p><strong>Generalización.</strong> Se transforma línea a línea una prueba de A en prueba de <span class="math inline">\(\forall x_i A\)</span>. Si la línea es axioma lógico o adicional, su prefijo universal es axioma por las dos definiciones. Si resulta por MP de B y <span class="math inline">\(B\to C\)</span>, la hipótesis inductiva proporciona <span class="math inline">\(\forall x_iB\)</span> y <span class="math inline">\(\forall x_i(B\to C)\)</span>; Q3 y dos MP dan <span class="math inline">\(\forall x_iC\)</span>. No hay premisas externas en esta prueba. Esta es la construcción de §9.11 con la nueva clase de axiomas, y permite universalizar también fórmulas con parámetros. Deducción proposicional, igualdad y particularización conservan sus expansiones de CH9, pues se usan axiomas fijos y MP. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="la-estructura-estándar-externa-de-aritmética" class="level2">
+<h2 class="anchored" data-anchor-id="la-estructura-estándar-externa-de-aritmética">19.5. La estructura estándar externa de aritmética</h2>
+<section id="tlog-def-00135" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00135">Definición 19.5.1 — La estructura estándar externa de aritmética</h3>
+<p><span class="math inline">\(\mathbb N_A\)</span> tiene dominio <span class="math inline">\(\omega\)</span> de la <strong>ZF externa</strong>, cero <span class="math inline">\(\varnothing\)</span>, sucesor <span class="math inline">\(n\mapsto n\cup\{n\}\)</span>, suma y producto definidos por recursión externa sobre <span class="math inline">\(\omega\)</span> y <span class="math inline">\(&lt;\)</span> como orden de naturales externos. Las cláusulas recursivas de suma y producto son las ocho ecuaciones correspondientes de §19.3. Esta construcción es un conjunto en <span class="math inline">\(M_{ext}\)</span>: infinitud y separación construyen <span class="math inline">\(\omega\)</span>; recursión externa e inducción construyen las operaciones. No es una interpretación elegida de los naturales de un modelo de ZF objeto. El dominio es no vacío y las funciones tienen las aridades de <span class="math inline">\(L_A\)</span>.</p>
+</section>
+</section>
+<section id="modelo-estándar-y-corrección-externa-de-pa" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-estándar-y-corrección-externa-de-pa">19.6. Modelo estándar y corrección externa de PA</h2>
+<section id="tlog-mth-00102" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00102">Metateorema 19.6.1 — Modelo estándar y corrección externa de PA</h3>
+<p><strong>Metateorema.</strong> En la metateoría externa, <span class="math inline">\(\mathbb N_A\models A_{PA}\)</span> bajo toda asignación; por tanto todo teorema PA es verdadero en ella. En particular, PA no prueba dos numerales distintos iguales y es consistente externamente respecto de una contradicción fija. No se afirma que PA pruebe su propia corrección o consistencia.</p>
+<p><strong>Prueba.</strong> Cero no es sucesor, el sucesor es inyectivo y cada natural positivo tiene antecesor; se prueban por inducción externa a partir de los naturales de von Neumann. Las cuatro ecuaciones de suma/producto son sus cláusulas recursivas. La equivalencia de orden con <span class="math inline">\(y=x+S(z)\)</span> se demuestra por inducción en y: en 0 ambos lados son falsos; en <span class="math inline">\(Sy\)</span>, un <span class="math inline">\(x&lt;Sy\)</span> es x=y o x&lt;y, que dan respectivamente z=0 o el sucesor del desplazamiento anterior; la recíproca sigue de que sumar un sucesor aumenta estrictamente. Para Ind, fijados los valores de parámetros, la separación externa forma <span class="math inline">\(X=\{n\in\omega:\mathbb N_A\models A[n]\}\)</span>. Si0 pertenece a X y X es cerrado bajo sucesor, la inducción externa da <span class="math inline">\(X=\omega\)</span>. La sustitución segura respeta satisfacción por CH8, así ésta es la verdad de la instancia. Prefijos universales preservan validez bajo toda asignación.</p>
+<p>Finalmente, inducción sobre una derivación PA: cada axioma lógico es válido por CH10, cada adicional por lo recién probado y MP conserva satisfacción. Esto es la misma prueba del teorema de corrección, con los axiomas adicionales explícitos. Numerales distintos denotan naturales distintos. Una contradicción falsa en esta estructura no tiene prueba. Es una conclusión en ZF externa, obtenida por construcción, no una hipótesis de consistencia ni un modelo de <span class="math inline">\(\mathrm{ZF}_{obj}\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="definibilidad-y-representaciones-débil-y-bilateral" class="level2">
+<h2 class="anchored" data-anchor-id="definibilidad-y-representaciones-débil-y-bilateral">19.7. Definibilidad y representaciones débil y bilateral</h2>
+<section id="tlog-def-00136" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00136">Definición 19.7.1 — Definibilidad y representaciones débil y bilateral</h3>
+<p>Para <span class="math inline">\(R\subseteq\omega^q\)</span>, una fórmula <span class="math inline">\(\rho\)</span> con variables libres sólo entre los q argumentos <strong>define</strong> R si <span class="math inline">\(\mathbb N_A\models\rho[\bar n]\)</span> equivale a <span class="math inline">\(\bar n\in R\)</span>. La <strong>representación débil en PA</strong> significa <span class="math display">\[
+\bar n\in R\iff\mathrm{PA}\vdash\rho(\overline{\bar n}).
+\]</span> La <strong>representación bilateral (o numeral por numeral)</strong> exige: si <span class="math inline">\(\bar n\in R\)</span>, PA prueba la instancia; si <span class="math inline">\(\bar n\notin R\)</span>, PA prueba su negación. Bajo la corrección de §19.6, estas dos pruebas implican la definición y excluyen las pruebas equivocadas. No se reemplaza «no tiene prueba» por «su negación tiene prueba».</p>
+<p>Para una función parcial f, una fórmula <span class="math inline">\(\Phi_f(\bar x,y)\)</span> es representante de su gráfica estándar si define exactamente los pares calculados. Se dirá <strong>funcionalmente representada en cada entrada definida</strong> si, siempre que <span class="math inline">\(f(\bar n)=m\)</span>, <span class="math display">\[
+\mathrm{PA}\vdash\forall y(\Phi_f(\overline{\bar n},y)\leftrightarrow y=\bar m).
+\]</span> Se declararán por separado la funcionalidad interna <span class="math inline">\(\mathrm{PA}\vdash\forall\bar x\forall y\forall z((\Phi_f(\bar x,y)\land\Phi_f(\bar x,z))\to y=z)\)</span> y la totalidad interna <span class="math inline">\(\mathrm{PA}\vdash\forall\bar x\exists y\Phi_f(\bar x,y)\)</span>. En entradas donde f no está definida, el primer requisito no pide una prueba negativa ni una prueba de divergencia. Un f total externo no incluye automáticamente el segundo requisito interno.</p>
+</section>
+</section>
+<section id="consecuencias-lógicas-y-límites-de-las-representaciones" class="level2">
+<h2 class="anchored" data-anchor-id="consecuencias-lógicas-y-límites-de-las-representaciones">19.8. Consecuencias lógicas y límites de las representaciones</h2>
+<section id="tlog-pro-00125" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00125">Proposición 19.8.1 — Consecuencias lógicas y límites de las representaciones</h3>
+<p><strong>Proposición.</strong> La representación bilateral en PA implica definición estándar y representación débil. Para funciones, la representación funcional en una entrada definida implica prueba de su valor, prueba de existencia en esa entrada y refutación de todo otro valor numeral. Ninguna de esas conclusiones cambia una instancia numeral por una cuantificación universal sobre todas las entradas.</p>
+<p><strong>Prueba.</strong> Si R es verdadero, hay prueba de <span class="math inline">\(\rho\)</span> y corrección da su verdad. Si es falso, hay prueba de <span class="math inline">\(\neg\rho\)</span>; corrección impide una prueba de <span class="math inline">\(\rho\)</span> y da su falsedad. Éstas son ambas equivalencias. Para f, particularizamos la equivalencia en <span class="math inline">\(y=\bar m\)</span> y usamos reflexividad para obtener <span class="math inline">\(\Phi_f(\bar n,\bar m)\)</span> e introducción existencial para obtener <span class="math inline">\(\exists y\Phi_f(\bar n,y)\)</span>. Para <span class="math inline">\(k\ne m\)</span>, PA prueba que los dos numerales son distintos (también demostrado en §19.9), y la equivalencia implica <span class="math inline">\(\neg\Phi_f(\bar n,\bar k)\)</span>. La generalización de una prueba con un <strong>numeral fijo</strong> no reemplaza ese término por una variable: sólo cuantifica variables libres. Por tanto una familia externa de pruebas de <span class="math inline">\(\exists y\Phi_f(\bar n,y)\)</span> no es por ese hecho una prueba única de <span class="math inline">\(\forall x\exists y\Phi_f(x,y)\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="aritmética-elemental-demostrable-y-segmentos-numerales" class="level2">
+<h2 class="anchored" data-anchor-id="aritmética-elemental-demostrable-y-segmentos-numerales">19.9. Aritmética elemental demostrable y segmentos numerales</h2>
+<section id="tlog-lem-00073" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00073">Lema 19.9.1 — Aritmética elemental demostrable y segmentos numerales</h3>
+<p><strong>Lema interno.</strong> PA prueba las leyes de semianillo conmutativo de suma/producto, cancelación aditiva, orden lineal discreto, monotonía de suma/producto (estricta para factor positivo), y para cada n externo <span class="math display">\[
+\forall z(z&lt;\bar n\leftrightarrow(z=\bar0\lor\cdots\lor z=\overline{n-1})).
+\]</span> Para n=0 el lado derecho es la fórmula falsa <span class="math inline">\(0\ne0\)</span>. PA calcula términos cerrados y decide igualdades/orden de numerales.</p>
+<p><strong>Prueba y rutas de inducción PA.</strong> La identidad <span class="math inline">\(0+x=x\)</span> y la ecuación <span class="math inline">\(Sx+y=S(x+y)\)</span> se prueban por inducción en y usando <span class="math inline">\(x+0=x\)</span> y <span class="math inline">\(x+Sy=S(x+y)\)</span>; asociatividad se prueba por inducción en el último sumando, y conmutatividad por inducción en el segundo argumento usando las dos identidades anteriores. La cancelación <span class="math inline">\(a+c=b+c\to a=b\)</span> usa inducción en c e inyectividad de S. Para producto, <span class="math inline">\(0\cdot x=0\)</span>, <span class="math inline">\(Sx\cdot y=x\cdot y+y\)</span>, y distributividad izquierda se prueban por inducción en y; con esas identidades se prueban conmutatividad, la otra distributividad y asociatividad, nuevamente en el argumento recursivo. Todos los parámetros permanecen libres durante cada Ind y se universalizan después mediante §19.4.</p>
+<p>Escribamos <span class="math inline">\(a\preceq b\)</span> como <span class="math inline">\(\exists d(b=a+d)\)</span>. PA prueba <span class="math inline">\(a\preceq b\leftrightarrow(a&lt;b\lor a=b)\)</span>: todo d es cero o sucesor por el tercer axioma, y se usa el axioma de &lt;. Inducción en b prueba <span class="math inline">\(a\preceq b\lor b&lt;a\)</span>: caso0 usa cero/sucesor y <span class="math inline">\(0+x=x\)</span>; en <span class="math inline">\(Sb\)</span>, el caso <span class="math inline">\(b&lt;a\)</span> escribe <span class="math inline">\(a=b+Sd\)</span>, que se divide en d=0 (a=Sb) y d sucesor (Sb&lt;a). La cancelación y que ningún sucesor es cero excluyen simultáneamente <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(b\le a\)</span>. Transitividad sigue sumando desplazamientos. Esto da tricotomía, y los mismos desplazamientos dan monotonía aditiva. Distributividad da monotonía multiplicativa; para factor positivo, el producto de dos sucesores es sucesor por las ecuaciones, así conserva estrictamente el aumento.</p>
+<p>La discreción <span class="math inline">\(z&lt;Sb\leftrightarrow(z&lt;b\lor z=b)\)</span> se obtiene cancelando el sucesor en los desplazamientos. Aplicándola finitísimas veces a b numeral se obtiene la fórmula de segmento con base <span class="math inline">\(z\not&lt;0\)</span>. Evaluar términos cerrados usa las ecuaciones recursivas hasta sus numerales; desigualdad de numerales usa inyectividad reiterada y <span class="math inline">\(Sx\ne0\)</span>, y orden usa el segmento numeral. Cada afirmación es una derivación por estos axiomas/Ind, sin tomar prestada una prueba dentro de ZF objeto. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="división-con-resto-demostrable-en-pa" class="level2">
+<h2 class="anchored" data-anchor-id="división-con-resto-demostrable-en-pa">19.10. División con resto demostrable en PA</h2>
+<section id="tlog-lem-00074" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00074">Lema 19.10.1 — División con resto demostrable en PA</h3>
+<p><strong>Lema interno.</strong> PA prueba que si <span class="math inline">\(m&gt;0\)</span>, todo a tiene exactamente un par <span class="math inline">\(q,r\)</span> con <span class="math inline">\(a=q\cdot m+r\)</span>, <span class="math inline">\(r&lt;m\)</span>; además <span class="math inline">\(q\le a\)</span>.</p>
+<p><strong>Prueba.</strong> Inducción PA en a para la existencia: en 0 elegimos q=r=0. Dado un par para a, si <span class="math inline">\(Sr&lt;m\)</span>, elegimos el mismo q y <span class="math inline">\(Sr\)</span> para <span class="math inline">\(Sa\)</span>; de otro modo discreción y <span class="math inline">\(r&lt;m\)</span> dan <span class="math inline">\(Sr=m\)</span>, y elegimos <span class="math inline">\(Sq,0\)</span>. Las ecuaciones de suma/producto comprueban <span class="math inline">\(Sa=(Sq)m+0\)</span> en el segundo caso. Para unicidad, si <span class="math inline">\(q&lt;q'\)</span>, entonces <span class="math inline">\(qm+r&lt;qm+m\le q'm\le q'm+r'\)</span>, contradiciendo igualdad de ambos con a; la rama <span class="math inline">\(q'&lt;q\)</span> es simétrica. Luego q=q’ y cancelación da r=r’. Puesto que <span class="math inline">\(m\ge1\)</span>, monotonía da <span class="math inline">\(q\le qm\le a\)</span>. La inducción usa el parámetro m bajo la guarda positiva, y se descarga/universaliza mediante §19.4. No se usa un símbolo de división ni se divide por 0. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="fórmulas-acotadas-y-clase-existencial-σ1" class="level2">
+<h2 class="anchored" data-anchor-id="fórmulas-acotadas-y-clase-existencial-σ1">19.11. Fórmulas acotadas y clase existencial Σ1</h2>
+<section id="tlog-def-00137" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00137">Definición 19.11.1 — Fórmulas acotadas y clase existencial Σ1</h3>
+<p>En <span class="math inline">\(L_A\)</span>, <span class="math inline">\(\Delta_0\)</span> es la clase generada por igualdades y &lt; entre términos, los cinco conectivos, y cuantificadores acotados con cota que no contiene la variable cuantificada. Una fórmula <span class="math inline">\(\Sigma_1\)</span> aquí es una fórmula <span class="math inline">\(\exists u_0\cdots\exists u_{k-1}\delta\)</span> con <span class="math inline">\(\delta\in\Delta_0\)</span>, k finito (se permite k=0). Hablamos de estas fórmulas efectivamente construidas y de equivalencias demostradas, no de una clasificación de toda fórmula por su semántica.</p>
+<p>Las abreviaturas acotadas se expanden a la gramática primitiva; los conteos de cuantificadores acotados no afirman que desaparezcan del texto expandido. Mantener &lt; como símbolo con su axioma definitorio evita llamar «acotada» a la fórmula expandida de ese axioma. Sólo las variables de argumento permanecen libres en los representantes finales.</p>
+</section>
+</section>
+<section id="decisión-externa-y-completitud-numeral-de-δ0" class="level2">
+<h2 class="anchored" data-anchor-id="decisión-externa-y-completitud-numeral-de-δ0">19.12. Decisión externa y completitud numeral de Δ0</h2>
+<section id="tlog-mth-00103" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00103">Metateorema 19.12.1 — Decisión externa y completitud numeral de Δ0</h3>
+<p><strong>Metateorema.</strong> Para una fórmula <span class="math inline">\(\Delta_0\)</span> fija, su verdad en <span class="math inline">\(\mathbb N_A\)</span> bajo entradas naturales es decidible-RM. Cada instancia cerrada con numerales verdadera tiene prueba PA y cada falsa tiene prueba PA de su negación.</p>
+<p><strong>Prueba.</strong> Los términos se evalúan con operaciones totales RM de CH17; igualdad/&lt; se deciden comparando naturales. Conectivos usan sus tablas finitas. En un cuantificador acotado se calcula el valor natural de la cota con la asignación actual y se recorre el segmento <span class="math inline">\(0,\ldots,b-1\)</span>, consultando el procedimiento ya construido para la matriz con el valor del índice agregado al contexto. Una fórmula fija da finitísimas plantillas anidadas: el contador de cada bucle es finito y cada llamada a una subfórmula termina por inducción estructural. Una cota puede depender de variables de cuantificadores exteriores, pero no de su propia variable ligada.</p>
+<p>Para la prueba PA se hace inducción externa sobre la fórmula y, en cada instancia, se calculan las cotas cerradas. §19.9 expande <span class="math inline">\(z&lt;\bar b\)</span> en una disyunción finita de igualdades; sustitución de iguales y lógica de CH9 convierten <span class="math inline">\(\exists z&lt;\bar b A\)</span> en la disyunción de sus b instancias y <span class="math inline">\(\forall z&lt;\bar b A\)</span> en su conjunción. En b=0 se usan respectivamente falso y verdadero <span class="math inline">\(0=0\)</span>. La hipótesis inductiva decide cada instancia y las tautologías H justifican la operación booleana, incluidos implicación y bicondicional. Todos los valores son numerales fijos en esta construcción, de modo que no se está afirmando completitud de todas las fórmulas PA. El mismo procedimiento genera una prueba finita del lado verdadero o de la negación del falso. Corrección asegura que no se generan pruebas equivocadas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="la-relación-aritmética-auxiliar-β" class="level2">
+<h2 class="anchored" data-anchor-id="la-relación-aritmética-auxiliar-β">19.13. La relación aritmética auxiliar β</h2>
+<section id="tlog-def-00138" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00138">Definición 19.13.1 — La relación aritmética auxiliar β</h3>
+<p>Sea <span class="math inline">\(m(i,b)=\bar1+(S i)\cdot b\)</span>. Definimos la fórmula, con variable q fresca, <span class="math display">\[
+B(a,b,i,v):\equiv v&lt;m(i,b)\land\exists q\le a\ (a=q\cdot m(i,b)+v).
+\]</span> Es <span class="math inline">\(\Delta_0\)</span>. Externamente <span class="math inline">\(\beta(a,b,i)\)</span> es el resto de dividir a por <span class="math inline">\(1+(i+1)b\)</span>. Este módulo es positivo incluso si b=0. El par auxiliar <span class="math inline">\((a,b)\)</span> no tiene una longitud implícita ni es una codificación inyectiva de secuencias; la longitud se dará aparte. No sustituimos la numeración S ni G de CH18 por β. β sólo permitirá expresar en una fórmula aritmética finita la lectura de una tabla de longitud variable.</p>
+</section>
+</section>
+<section id="existencia-y-unicidad-interna-de-la-lectura-β" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-y-unicidad-interna-de-la-lectura-β">19.14. Existencia y unicidad interna de la lectura β</h2>
+<section id="tlog-lem-00075" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00075">Lema 19.14.1 — Existencia y unicidad interna de la lectura β</h3>
+<p><strong>Lema.</strong> PA prueba <span class="math inline">\(\forall a\forall b\forall i\exists!v\ B(a,b,i,v)\)</span>. En los naturales externos B define precisamente el resto β, y para toda cuádrupla numeral se prueba B o su negación según corresponda.</p>
+<p><strong>Prueba.</strong> <span class="math inline">\(1+(i+1)b&gt;0\)</span> por §19.9. §19.10 da el único resto y un cociente <span class="math inline">\(q\le a\)</span>, así la cota añadida no elimina el testigo. La unicidad del resto da unicidad de v en B. La misma división en <span class="math inline">\(\omega\)</span> externo interpreta exactamente B. Las instancias numerales se deciden por §19.12, pues B es acotada. No se infiere que cualquier familia interna de valores tenga ya un código β; la prueba siguiente de codificación será <strong>externa y finita</strong>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="bézout-e-inversos-residuales-en-la-metateoría-externa" class="level2">
+<h2 class="anchored" data-anchor-id="bézout-e-inversos-residuales-en-la-metateoría-externa">19.15. Bézout e inversos residuales en la metateoría externa</h2>
+<section id="tlog-lem-00076" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00076">Lema 19.15.1 — Bézout e inversos residuales en la metateoría externa</h3>
+<p><strong>Lema externo.</strong> Para m,n positivos existe su máximo común divisor d y enteros u,v con <span class="math inline">\(um+vn=d\)</span>. Si m,n son coprimos, hay <span class="math inline">\(0\le h&lt;n\)</span> con <span class="math inline">\(hm\equiv1\pmod n\)</span> (para n=1 la congruencia es vacua y h=0). Los cálculos tienen algoritmos finitos por división repetida.</p>
+<p><strong>Prueba.</strong> Los enteros se representan externamente por diferencias de pares de naturales, con las reglas de anillo comprobadas en esos pares; no se agregan como dominio PA. Entre las combinaciones enteras positivas de m,n existe un mínimo d: m es una de ellas y <span class="math inline">\(\omega\)</span> está bien ordenado en ZF externa. Al dividir m por d, el resto r es también una combinación entera; si fuera positivo y menor que d contradice minimalidad. Luego d divide m; igual para n.&nbsp;Todo divisor común divide cada combinación y por tanto d, que es el máximo divisor común. Si d=1, la combinación es el certificado de Bézout. Reducimos u módulo n a h para obtener el inverso. El algoritmo de Euclides construye el mismo certificado: cada paso divide el par vigente y reemplaza el divisor por el resto menor; las identidades de resto actualizan las dos parejas de coeficientes, y la sucesión estrictamente decreciente de restos termina. El último resto positivo divide los dos argumentos y es combinación de ellos, por el invariante. La construcción sólo usa finitud, no elección ni un CRT supuesto. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="módulos-coprimos-y-construcción-explícita-del-crt-finito" class="level2">
+<h2 class="anchored" data-anchor-id="módulos-coprimos-y-construcción-explícita-del-crt-finito">19.16. Módulos coprimos y construcción explícita del CRT finito</h2>
+<section id="tlog-lem-00077" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00077">Lema 19.16.1 — Módulos coprimos y construcción explícita del CRT finito</h3>
+<p><strong>Lema externo.</strong> Si una lista <span class="math inline">\(a_0,\ldots,a_{L-1}\)</span> se fija y <span class="math inline">\(b=L!\,(1+\max(\{0\}\cup\{a_i:i&lt;L\}))\)</span>, los módulos <span class="math inline">\(m_i=1+(i+1)b\)</span> son coprimos dos a dos y superan todos los valores a_i. Para módulos positivos coprimos y residuos menores que ellos se construye un a con todos esos residuos, por un procedimiento finito.</p>
+<p><strong>Coprimalidad.</strong> b es positivo y mayor que cada a_i. Para i&lt;j&lt;L, un divisor común d de <span class="math inline">\(m_i,m_j\)</span> divide <span class="math inline">\((j-i)b\)</span>. Como d divide <span class="math inline">\(1+(i+1)b\)</span>, ningún divisor común de d,b puede superar1. Bézout para d,b permite cancelar b en la divisibilidad y da <span class="math inline">\(d\mid(j-i)\)</span>. El número <span class="math inline">\(j-i\)</span> divide L!, por su definición como producto <span class="math inline">\(1\cdots L\)</span>; luego d divide b. Pero d coprimo con b implica d=1. Los módulos exceden b.</p>
+<p><strong>Construcción.</strong> Inicializamos A=0,M=1. Suponiendo <span class="math inline">\(0\le A&lt;M\)</span> y los residuos anteriores correctos, el producto M de los módulos anteriores es coprimo con el siguiente m. Esto se prueba multiplicando los certificados Bézout de cada factor con m: <span class="math inline">\((uM+vm)(u'n+v'm)=uu'Mn+m(\text{coeficiente entero})\)</span>. §19.15 da un inverso <span class="math inline">\(h\)</span> de M módulo m. Si el nuevo residuo es r, ponemos <span class="math display">\[
+d=(r+m-(A\bmod m))\bmod m,\quad q=(hd)\bmod m,\quad A'=A+Mq,\quad M'=Mm.
+\]</span> La diferencia natural es definida porque <span class="math inline">\(A\bmod m&lt;m\)</span>. A’ mantiene los residuos anteriores ya que M es múltiplo de cada módulo anterior; en m su nuevo residuo es r por la identidad <span class="math inline">\(hM\equiv1\)</span>. Puesto que q&lt;m, se tiene <span class="math inline">\(A'&lt;Mm\)</span>. Tras L pasos se obtiene el testigo. La lista vacía entrega A=0,M=1. Euclides, división y el recorrido de la lista terminan; no se invoca simultáneamente una selección infinita de residuos. Este CRT se prueba en ZF externa, no como totalidad uniforme interna de PA. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="codificación-β-de-toda-secuencia-finita-externa" class="level2">
+<h2 class="anchored" data-anchor-id="codificación-β-de-toda-secuencia-finita-externa">19.17. Codificación β de toda secuencia finita externa</h2>
+<section id="tlog-mth-00104" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00104">Metateorema 19.17.1 — Codificación β de toda secuencia finita externa</h3>
+<p><strong>Metateorema.</strong> Para toda secuencia externa finita <span class="math inline">\(\bar a\)</span> de longitud L, existen a,b naturales tales que <span class="math inline">\(\beta(a,b,i)=a_i\)</span> para i&lt;L. Se construyen a,b efectivamente, y PA prueba cada una de las L igualdades B correspondientes con numerales.</p>
+<p><strong>Prueba.</strong> Elegimos b como en §19.16 y construimos a por el CRT allí demostrado, con residuos a_i menores que sus módulos. La unicidad de restos identifica β. Para L=0, a=0,b=1 es un testigo sin condiciones. Los algoritmos de factorial, máximo de lista, módulos, inversos y productos usan operaciones numéricas y bucles finitos RM fijados de CH17/18, así proporcionan un codificador efectivo externo. Cada lectura correcta es una fórmula B cerrada verdadera; §19.14/12 produce su prueba PA. Los pares no son únicos, no sustituyen S, y no se declara aquí <span class="math inline">\(\mathrm{PA}\vdash\)</span> que toda tabla de longitud arbitraria tenga codificación β. Las trazas concretas necesitarán sólo estos testigos externos y sus numerales. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="fórmula-aritmética-de-transición-de-un-programa-fijo" class="level2">
+<h2 class="anchored" data-anchor-id="fórmula-aritmética-de-transición-de-un-programa-fijo">19.18. Fórmula aritmética de transición de un programa fijo</h2>
+<section id="tlog-def-00139" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00139">Definición 19.18.1 — Fórmula aritmética de transición de un programa fijo</h3>
+<p>Fijado un programa válido <span class="math inline">\(P=(r,p)\)</span>, <span class="math inline">\(n=|p|\)</span>, la configuración se describe por <span class="math inline">\(\ell,v_0,\ldots,v_{r-1}\)</span>, no por un nuevo código S. Sea <span class="math inline">\(\mathsf{St}_P(\ell,\bar v,\ell',\bar w)\)</span> la siguiente <strong>disyunción finita</strong>, con una rama por etiqueta h&lt;n y con los numerales r,n,h,i,j,k insertados en el texto:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Instrucción p(h)</th>
+<th>Rama, además de <span class="math inline">\(\ell=\bar h\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HALT</td>
+<td><span class="math inline">\(\ell'=\bar h\)</span> y <span class="math inline">\(w_s=v_s\)</span> para todo s&lt;r</td>
+</tr>
+<tr class="even">
+<td>INC(i,j)</td>
+<td><span class="math inline">\(\ell'=\bar j\)</span>, <span class="math inline">\(w_i=S v_i\)</span>, demás <span class="math inline">\(w_s=v_s\)</span></td>
+</tr>
+<tr class="odd">
+<td>DECJZ(i,j,k),cero</td>
+<td><span class="math inline">\(v_i=0\)</span>, <span class="math inline">\(\ell'=\bar j\)</span>, todos <span class="math inline">\(w_s=v_s\)</span></td>
+</tr>
+<tr class="even">
+<td>DECJZ(i,j,k),positivo</td>
+<td><span class="math inline">\(v_i=S w_i\)</span>, <span class="math inline">\(\ell'=\bar k\)</span>, demás <span class="math inline">\(w_s=v_s\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Las conjunciones sobre s&lt;r son <strong>finitas en el texto</strong>, no un cuantificador sobre registros variables. La fórmula es cuantificacionalmente libre y coincide con las cuatro ramas de §17.7. Si no hay HALT, su disyunción de etiquetas de parada será <span class="math inline">\(0\ne0\)</span>. <span class="math inline">\(\mathsf H_P(\ell)\)</span> abrevia la disyunción finita <span class="math inline">\(\ell=\bar h\)</span> para las etiquetas HALT. El tamaño del texto depende de P; no se afirma que un número variable de registros se inserte como una lista de variables durante la evaluación de una misma fórmula.</p>
+</section>
+</section>
+<section id="exactitud-y-determinismo-demostrable-del-paso-aritmético" class="level2">
+<h2 class="anchored" data-anchor-id="exactitud-y-determinismo-demostrable-del-paso-aritmético">19.19. Exactitud y determinismo demostrable del paso aritmético</h2>
+<section id="tlog-lem-00078" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00078">Lema 19.19.1 — Exactitud y determinismo demostrable del paso aritmético</h3>
+<p><strong>Lema.</strong> St_P define el paso externo de P. PA prueba que, si <span class="math inline">\(\ell&lt;\bar n\)</span>, existe una única configuración sucesora con etiqueta <span class="math inline">\(&lt;\bar n\)</span>. También prueba que una configuración HALT sólo sucede a sí misma.</p>
+<p><strong>Prueba.</strong> §19.9 permite dividir la etiqueta acotada en los n casos numerales. En cada caso HALT e INC designan exactamente los valores escritos. Para DECJZ, cero/sucesor es exhaustivo y excluyente: todo positivo tiene antecesor por el tercer axioma, éste es único por inyectividad, y cero no es sucesor. Cada otra coordenada se conserva. Los destinos son numerales menores que n por la validez de P; para HALT es la misma etiqueta. La disyunción se combina mediante las reglas proposicionales de CH9. El mismo examen en la estructura estándar identifica St con <span class="math inline">\(E_P\)</span>. Los registros tienen valores naturales sin cota prefijada; el determinismo no necesita una cota de tiempo ni codificar el programa en el lenguaje objeto. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="tablas-β-de-ejecución-y-fórmula-de-gráfica-σ1" class="level2">
+<h2 class="anchored" data-anchor-id="tablas-β-de-ejecución-y-fórmula-de-gráfica-σ1">19.20. Tablas β de ejecución y fórmula de gráfica Σ1</h2>
+<section id="tlog-def-00140" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00140">Definición 19.20.1 — Tablas β de ejecución y fórmula de gráfica Σ1</h3>
+<p>Fijamos además aridad q&lt;=r y argumentos <span class="math inline">\(\bar x\)</span>. Sea <span class="math inline">\(w=r+1\)</span>, <span class="math inline">\(L=(t+1)w\)</span> y <span class="math inline">\(M=1+Lb\)</span>. La fila k codifica la etiqueta en índice kw y el registro s en kw+s+1. Para abreviar, <span class="math inline">\(\mathsf{Row}(a,b,k,\ell,\bar v)\)</span> es la conjunción de <span class="math inline">\(B(a,b,kw,\ell)\)</span> y <span class="math inline">\(B(a,b,kw+s+1,v_s)\)</span> para los r valores. Cada Row es Δ0, con las constantes w,s escritas como numerales.</p>
+<p>La matriz <span class="math inline">\(\mathsf{Tr}_{P,q}(\bar x,y,t,a,b)\)</span> dice: 1. existe una fila inicial con todas sus coordenadas <span class="math inline">\(&lt;M\)</span>, etiqueta0, registros <span class="math inline">\(x_0,\ldots,x_{q-1}\)</span> y r-q ceros; 2. para cada k&lt;=t existe una fila k con coordenadas <span class="math inline">\(&lt;M\)</span> y etiqueta <span class="math inline">\(&lt;\bar n\)</span>; 3. para cada k&lt;t existen las dos filas k,k+1 con todas sus coordenadas <span class="math inline">\(&lt;M\)</span> y St_P entre ellas; 4. existe la fila final t con coordenadas <span class="math inline">\(&lt;M\)</span>, <span class="math inline">\(\mathsf H_P(\ell)\)</span> y <span class="math inline">\(v_0=y\)</span>.</p>
+<p>Todas las existencias de coordenadas aquí están <strong>acotadas por M</strong>; cada registro se escribe mediante su propio cuantificador y la conjunción Row. Los cuantificadores k se acotan por t o <span class="math inline">\(S t\)</span>. No se introduce un cuantificador sobre secuencias como primitivo. Para q=0 la fila inicial tiene r ceros. <span class="math inline">\(M\)</span> supera todos los módulos de lectura usados en índices <span class="math inline">\(&lt;L\)</span> o los iguala cuando b=0; por ello todo resto válido está <span class="math inline">\(&lt;M\)</span>.</p>
+<p>Definimos <span class="math display">\[
+\Phi_{P,q}(\bar x,y):=\exists t\exists a\exists b\ \mathsf{Tr}_{P,q}(\bar x,y,t,a,b).
+\]</span> Es una fórmula Σ1. El uso de β es auxiliar: los números x,y pueden ser los códigos S/G aprobados de CH18, pero la tabla de estados se lee mediante B. Nombres auxiliares y parámetros se escogen frescos antes de expandir cada abreviatura.</p>
+</section>
+</section>
+<section id="exactitud-estándar-de-las-tablas-de-ejecución" class="level2">
+<h2 class="anchored" data-anchor-id="exactitud-estándar-de-las-tablas-de-ejecución">19.21. Exactitud estándar de las tablas de ejecución</h2>
+<section id="tlog-lem-00079" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00079">Lema 19.21.1 — Exactitud estándar de las tablas de ejecución</h3>
+<p><strong>Lema.</strong> <span class="math inline">\(\mathbb N_A\models\Phi_{P,q}[\bar n,m]\)</span> si y sólo si el programa P en entrada <span class="math inline">\(\bar n\)</span> para con salida m.</p>
+<p><strong>Prueba hacia parada.</strong> Unos testigos t,a,b proporcionan por unicidad β una única fila por k&lt;=t. La inicialización da el estado inicial, y St da el paso exacto. Inducción externa en k identifica las filas con la órbita de CH17. La fila final está en HALT y su registro 0 es m.</p>
+<p><strong>Prueba desde parada.</strong> Fijamos el tiempo t y la lista concreta de estados de la órbita hasta t. Aplanamos cada configuración en etiqueta seguida de r registros, conservando el orden de filas: es una lista de longitud <span class="math inline">\((t+1)(r+1)\)</span>. §19.17 proporciona a,b para la lista. Sus restos están bajo M por la cota de §19.20; cada fila, transición y condición inicial/final se cumple. Esto da los testigos de la fórmula. El tiempo 0, el programa sin etiquetas HALT y la parada absorbente están incluidos: el primero tiene una fila, el segundo no satisface el último requisito y el tercero admite más de un tiempo con igual salida. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="funcionalidad-de-las-gráficas-de-ejecución-dentro-de-pa" class="level2">
+<h2 class="anchored" data-anchor-id="funcionalidad-de-las-gráficas-de-ejecución-dentro-de-pa">19.22. Funcionalidad de las gráficas de ejecución dentro de PA</h2>
+<section id="tlog-lem-00080" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00080">Lema 19.22.1 — Funcionalidad de las gráficas de ejecución dentro de PA</h3>
+<p><strong>Lema interno.</strong> PA prueba que <span class="math inline">\(\Phi_{P,q}\)</span> es funcional en y, aunque no se afirme totalidad interna.</p>
+<p><strong>Prueba.</strong> Supongamos dos matrices Tr con la misma entrada y testigos <span class="math inline">\((t,a,b)\)</span> y <span class="math inline">\((u,c,d)\)</span>. La expresión «fila k de la primera tabla = fila h de la segunda» abrevia una fórmula concreta: para cada columna s=0,…,r se exige <span class="math inline">\(\exists z&lt;M_t+M_u\,(B(a,b,kw+\bar s,z)\land B(c,d,hw+\bar s,z))\)</span>, y se conjugan esas r+1 cláusulas finitas. Aquí <span class="math inline">\(M_t=1+(t+1)wb\)</span> y <span class="math inline">\(M_u=1+(u+1)wd\)</span>. Bajo las hipótesis de filas válidas, esta fórmula equivale a igualdad de todas sus coordenadas por unicidad de B; la cota suma admite cualquier valor común. Para comparar dos filas de la misma tabla se usan sus mismos parámetros en ambas posiciones y la cota doble correspondiente. Todas estas abreviaturas se expanden antes de tomar una instancia Ind.</p>
+<p>Por orden lineal se divide en t&lt;=u o u&lt;=t; tratemos t&lt;=u. Inducción PA en k, con los seis testigos y la entrada como parámetros, prueba: para k&lt;=t las dos filas k son iguales. El caso0 usa la inicialización y la unicidad de B. En el paso, si <span class="math inline">\(k+1&lt;=t\)</span>, las matrices suministran filas k,k+1 en ambas tablas; la hipótesis y el determinismo de St dan igualdad de sucesores. Si la guarda <span class="math inline">\(k+1&lt;=t\)</span> falla, la implicación inductiva es vacua. Para cada lectura, existencia/identidad de coordenadas se obtiene de la matriz y §19.14; los existenciales locales se eliminan mediante testigos frescos, sin una función de elección.</p>
+<p>La fila t en la primera tabla es HALT, por tanto también la fila t en la segunda. Una segunda inducción PA en k demuestra, bajo <span class="math inline">\(t&lt;=k&lt;=u\)</span>, que la fila k de la segunda tabla coincide con su fila t: base k&lt;t vacua y k=t por identidad; en el paso k&gt;=t, la transición desde una fila HALT es absorbente por §19.19, y si <span class="math inline">\(k+1&gt;u\)</span> la guarda es vacua. Formalmente se usa la fórmula <span class="math inline">\(\forall j(t&lt;=j&lt;=k\land j&lt;=u\to\text{fila j=fila t})\)</span>, cuya base incluye t=0 y cuyo paso agrega sólo j=k+1 por discreción. Si la nueva posición coincide con t se usa identidad, y si supera t se tiene t&lt;=k y se aplica absorción al paso desde k. Así el registro 0 en las filas finales t,u es igual. En u&lt;=t se intercambian las tablas. Se descargan hipótesis y se generalizan parámetros para obtener <span class="math display">\[
+\mathrm{PA}\vdash\forall\bar x\forall y\forall z((\Phi_{P,q}(\bar x,y)\land\Phi_{P,q}(\bar x,z))\to y=z).
+\]</span> Las dos inducciones son instancias PA sobre fórmulas con parámetros de códigos, no inducciones externas sobre un tiempo estándar supuesto. La existencia interna de una tabla arbitraria no se utilizó: se comparan las tablas <strong>bajo sus hipótesis Tr</strong>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="representación-σ1-de-funciones-parcialmente-computables-rm" class="level2">
+<h2 class="anchored" data-anchor-id="representación-σ1-de-funciones-parcialmente-computables-rm">19.23. Representación Σ1 de funciones parcialmente computables RM</h2>
+<section id="tlog-mth-00105" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00105">Metateorema 19.23.1 — Representación Σ1 de funciones parcialmente computables RM</h3>
+<p><strong>Metateorema.</strong> Toda función parcial computable-RM de aridad finita tiene una fórmula Σ1 que define su gráfica estándar, es internamente funcional en PA y la representa funcionalmente en cada entrada definida. La fórmula se construye efectivamente a partir del programa fijo y la aridad.</p>
+<p><strong>Prueba.</strong> Fijamos un programa P que calcula f y tomamos <span class="math inline">\(\Phi_{P,q}\)</span>. §19.21 da la equivalencia estándar y §19.22 da la funcionalidad PA. Si f(<span class="math inline">\(\bar n\)</span>)=m, la traza concreta y §19.17 dan testigos naturales t,a,b de Tr; la matriz con todos los argumentos numerales es Δ0 verdadera. §19.12 da su prueba PA, y tres introducciones existenciales dan <span class="math inline">\(\Phi_{P,q}(\overline{\bar n},\bar m)\)</span>. Por funcionalidad se deduce <span class="math inline">\(\forall y(\Phi_{P,q}(\overline{\bar n},y)\to y=\bar m)\)</span>; igualdad y esa instancia dan la implicación inversa. Se obtiene la equivalencia requerida. Si f diverge, la fórmula no tiene un valor en la estructura estándar, pero no se ofrece una prueba PA de esa divergencia.</p>
+<p>El compilador de fórmulas recorre la lista finita de instrucciones de P y construye las ramas de St, las r coordenadas de Row y el texto fijo de Tr. Las guardas de programa y aridad se deciden por CH18. La selección de nombres frescos y construcción de árboles G son efectivas; los metanombres no cuentan como nuevos símbolos objeto. La finitud de la fórmula está asegurada antes de usarla. Para f total, hay una prueba de valor/existencia para cada entrada numeral, pero este teorema no proporciona necesariamente <span class="math inline">\(\mathrm{PA}\vdash\forall\bar x\exists y\Phi_f(\bar x,y)\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="representación-bilateral-de-relaciones-decidibles-rm" class="level2">
+<h2 class="anchored" data-anchor-id="representación-bilateral-de-relaciones-decidibles-rm">19.24. Representación bilateral de relaciones decidibles RM</h2>
+<section id="tlog-mth-00106" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00106">Metateorema 19.24.1 — Representación bilateral de relaciones decidibles RM</h3>
+<p><strong>Metateorema.</strong> Toda relación decidible-RM <span class="math inline">\(R\subseteq\omega^q\)</span> tiene una representación bilateral PA mediante una fórmula Σ1 que la define en <span class="math inline">\(\mathbb N_A\)</span>.</p>
+<p><strong>Prueba.</strong> Su decidor total calcula la característica <span class="math inline">\(\chi_R\in\{0,1\}\)</span>. Sea <span class="math inline">\(\Phi_\chi\)</span> el representante funcional de §19.23 y <span class="math inline">\(\rho_R(\bar x)=\Phi_\chi(\bar x,\bar1)\)</span>. En una entrada de R se prueba la salida 1 y por tanto <span class="math inline">\(\rho_R\)</span>. En una entrada fuera de R se prueba <span class="math inline">\(\forall y(\Phi_\chi(\bar n,y)\leftrightarrow y=\bar0)\)</span>; particularizar en 1 y <span class="math inline">\(1\ne0\)</span> da <span class="math inline">\(\neg\rho_R\)</span>. Su semántica es exactamente la gráfica del decidor. No es necesario mostrar que PA prueba la totalidad uniforme del decidor. El representante positivo es Σ1; no se reclama que la negación textual también esté en esa forma. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="representación-débil-de-relaciones-semidecidibles-rm" class="level2">
+<h2 class="anchored" data-anchor-id="representación-débil-de-relaciones-semidecidibles-rm">19.25. Representación débil de relaciones semidecidibles RM</h2>
+<section id="tlog-mth-00107" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00107">Metateorema 19.25.1 — Representación débil de relaciones semidecidibles RM</h3>
+<p><strong>Metateorema.</strong> Toda relación semidecidible-RM R tiene una fórmula Σ1 que la define en los naturales y la representa débilmente en PA.</p>
+<p><strong>Prueba.</strong> Para un semidecidor P por dominio de parada, ponemos <span class="math inline">\(\rho_R(\bar x)=\exists y\Phi_{P,q}(\bar x,y)\)</span>. Los existenciales se agrupan antes de la matriz Δ0, conservando nombres frescos. La exactitud de ejecución da definición estándar. Si <span class="math inline">\(\bar n\in R\)</span>, hay una salida natural y la prueba numeral de §19.23 da <span class="math inline">\(\rho_R(\bar n)\)</span>. Si PA la prueba, corrección de §19.6 da una parada estándar, luego <span class="math inline">\(\bar n\in R\)</span>. La inexistencia de parada no proporciona una prueba de negación: por eso este resultado es débil y no bilateral. Que el semidecidor devuelva0 al parar sigue siendo aceptación por su dominio, no rechazo. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="caracterizaciones-de-la-semidecidibilidad-por-σ1-y-pruebas" class="level2">
+<h2 class="anchored" data-anchor-id="caracterizaciones-de-la-semidecidibilidad-por-σ1-y-pruebas">19.26. Caracterizaciones de la semidecidibilidad por Σ1 y pruebas</h2>
+<section id="tlog-mth-00108" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00108">Metateorema 19.26.1 — Caracterizaciones de la semidecidibilidad por Σ1 y pruebas</h3>
+<p><strong>Metateorema.</strong> Para relaciones de aridad finita, son equivalentes: semidecidibilidad RM; definición estándar por alguna Σ1; representación débil en PA por alguna fórmula aritmética.</p>
+<p><strong>Prueba.</strong> La primera implica las otras por §19.25. Si <span class="math inline">\(\rho=\exists\bar u\delta\)</span> define R, recorremos naturales d, decodificamos d como lista S de exactamente <span class="math inline">\(|\bar u|\)</span> testigos y, para listas válidas, decidimos <span class="math inline">\(\delta(\bar n,\bar u)\)</span> por §19.12. Toda tupla finita tiene un código y cada test termina; se para sólo en verdad. Para prefijo vacío se ejecuta directamente el decidor δ, parando en verdadero y divergiendo en falso. No se requiere una biyección entre códigos válidos y todos los naturales.</p>
+<p>Si una fórmula fija <span class="math inline">\(\rho\)</span> representa débilmente R, calculamos el código de su instancia numeral usando las sustituciones efectivas de CH18. Se recorren los posibles códigos de derivación PA y el decidor de §19.4 busca una prueba de esa instancia. Por la definición débil, se para exactamente en R. La fórmula puede tener complejidad arbitraria; no se afirma que toda fórmula de PA sea Σ1, sino que R admite algún representante Σ1 mediante el primer sentido. Estos algoritmos no usan corrección adicional en la última implicación: la equivalencia de pruebas está incluida en la hipótesis débil. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="caracterización-bilateral-y-computabilidad-recuperada" class="level2">
+<h2 class="anchored" data-anchor-id="caracterización-bilateral-y-computabilidad-recuperada">19.27. Caracterización bilateral y computabilidad recuperada</h2>
+<section id="tlog-mth-00109" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00109">Metateorema 19.27.1 — Caracterización bilateral y computabilidad recuperada</h3>
+<p><strong>Metateorema.</strong> R es decidible-RM si y sólo si es representable bilateralmente en PA. Una función externa total es computable-RM si y sólo si admite un representante funcional numeral por numeral en PA; para la inversa basta la cláusula de equivalencia probada en cada valor correcto, con variables libres sólo de entrada/salida.</p>
+<p><strong>Prueba para R.</strong> El sentido directo es §19.24. En el inverso, para entrada <span class="math inline">\(\bar n\)</span>, buscamos intercaladamente pruebas PA de la instancia <span class="math inline">\(\rho(\bar n)\)</span> y de su negación, recorriendo d=0,1,… con el decidor de pruebas en ambas. Alguna existe por bilateralidad, y corrección PA excluye el lado equivocado. Devolvemos1 o0 según el primer éxito, con terminación total. Es también una aplicación de la doble semidecisión de CH17.</p>
+<p><strong>Prueba para f.</strong> El sentido directo es §19.23. Para la inversa recorremos códigos S de pares <span class="math inline">\((m,d)\)</span> y verificamos si d prueba <span class="math inline">\(\forall y(\Phi(\bar n,y)\leftrightarrow y=\bar m)\)</span>, construyendo el código de esa sentencia mediante sustitución efectiva. Existe un par correcto porque f es total y representada; todo candidato se examina totalmente. Si un m distinto del valor real fuera aceptado, las equivalencias probadas para ambos valores darían igualdad de los dos numerales en PA, contra §19.6/9. Por ello la búsqueda devuelve el valor correcto. No se decide de un código arbitrario si una fórmula representa una función total: se trabaja bajo la hipótesis explícita. Tampoco se deduce totalidad <strong>interna</strong> desde el algoritmo externo recuperado. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="funciones-de-numeral-sustitución-numeral-y-autoinstanciación" class="level2">
+<h2 class="anchored" data-anchor-id="funciones-de-numeral-sustitución-numeral-y-autoinstanciación">19.28. Funciones de numeral, sustitución numeral y autoinstanciación</h2>
+<section id="tlog-def-00141" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00141">Definición 19.28.1 — Funciones de numeral, sustitución numeral y autoinstanciación</h3>
+<p><span class="math inline">\(\mathsf{Num}(n)=G(\bar n)\)</span> para la presentación aritmética fijada. <span class="math inline">\(\mathsf{Sub}(c,i,n)\)</span> devuelve el código de <span class="math inline">\(A[\bar n/x_i]_{lit}\)</span> si c codifica una fórmula aritmética A, y0 si no; no se requiere que <span class="math inline">\(x_i\)</span> ocurra libre. Finalmente <span class="math inline">\(\mathsf{D}(c)=\mathsf{Sub}(c,0,c)\)</span>. Es una función de naturales: introduce el <strong>numeral del código</strong> c en la variable distinguida, no el texto de una fórmula como un término. D(0)=0 porque0 no es código de fórmula. Estos espacios conservan los tags G de CH18.</p>
+</section>
+</section>
+<section id="representación-de-la-infraestructura-sintáctica-aprobada" class="level2">
+<h2 class="anchored" data-anchor-id="representación-de-la-infraestructura-sintáctica-aprobada">19.29. Representación de la infraestructura sintáctica aprobada</h2>
+<section id="tlog-mth-00110" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00110">Metateorema 19.29.1 — Representación de la infraestructura sintáctica aprobada</h3>
+<p><strong>Metateorema.</strong> Num, Sub y D son funciones totales computables-RM y tienen representantes Σ1 funcionales en PA. Lo mismo vale para las funciones totalizadas de secuencia, soporte, frescura, sustitución y ejecución acotada ya aprobadas; sus predicados decidibles tienen representantes bilaterales PA. Esto incluye validez de códigos, Ax lógico, RawProof, Step y Trace, en los dominios/presentaciones especificados.</p>
+<p><strong>Prueba.</strong> Num inicia el código del término nulario0 y envuelve n veces con el constructor de S mediante un contador decreciente. Sub valida c, calcula Num y aplica la sustitución literal segura: el numeral es cerrado, así no hay captura. El caso inválido devuelve0 y el válido, incluso vacuo, conserva su código correcto. D es composición total. Cada otra operación dispone de programa fijo total o decidor de CH17/18, con fallos/guardas ya declarados. Se aplica §§19.23/24 a <strong>cada uno de esos programas</strong>, no a una recursión conjuntista sin testigo operacional. Para signaturas distintas de <span class="math inline">\(L_A\)</span>, el programa de dominio/aridad ha de estar fijado como dato y las entradas/output son números externos; sus representantes siguen siendo fórmulas de <span class="math inline">\(L_A\)</span>.</p>
+<p>La conclusión para Sub es, para cada triple numeral correcto, una equivalencia PA de su salida con el numeral de su valor. No es aún el lema diagonal, ni una identidad que PA haya demostrado uniformemente entre todos los códigos de sintaxis. Estas distinciones son el contrato de entrada de CH20. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="predicados-externos-de-prueba-y-sus-fórmulas-aritméticas" class="level2">
+<h2 class="anchored" data-anchor-id="predicados-externos-de-prueba-y-sus-fórmulas-aritméticas">19.30. Predicados externos de prueba y sus fórmulas aritméticas</h2>
+<section id="tlog-def-00142" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00142">Definición 19.30.1 — Predicados externos de prueba y sus fórmulas aritméticas</h3>
+<p><span class="math inline">\(\operatorname{Prf}^{ext}_{PA}(d,c)\)</span> dice que d es código S de una secuencia original no vacía de fórmulas, desde ninguna premisa adicional, con conclusión de código c, usando axiomas lógicos o <span class="math inline">\(A_{PA}\)</span> y MP. Es la relación decidible de §19.4. Sean <span class="math inline">\(\chi_{Prf}\)</span> su decidor total y <span class="math inline">\(\Phi_{\chi_{Prf}}\)</span> el representante construido de su programa. Fijamos <span class="math display">\[
+\mathsf{Prf}_{PA}(d,c):=\Phi_{\chi_{Prf}}(d,c,\bar1),\qquad
+\mathsf{Prov}_{PA}(c):=\exists d\ \mathsf{Prf}_{PA}(d,c).
+\]</span> La primera es una <strong>fórmula</strong> de <span class="math inline">\(L_A\)</span> distinta de la relación externa; la segunda es una fórmula de existencia, no un decidor. No hay un símbolo primitivo «PA demuestra» en el lenguaje. Los nombres auxiliares se eligen frescos y ambos representantes tienen sólo los argumentos indicados libres. La elección depende del programa de verificación concreto: diferentes representantes no se identifican automáticamente por una equivalencia PA uniforme.</p>
+</section>
+</section>
+<section id="exactitud-y-representación-del-predicado-de-demostrabilidad" class="level2">
+<h2 class="anchored" data-anchor-id="exactitud-y-representación-del-predicado-de-demostrabilidad">19.31. Exactitud y representación del predicado de demostrabilidad</h2>
+<section id="tlog-mth-00111" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00111">Metateorema 19.31.1 — Exactitud y representación del predicado de demostrabilidad</h3>
+<p><strong>Metateorema.</strong> Prf_PA representa bilateralmente la relación externa de prueba y la define en la estructura estándar. Prov_PA es Σ1, define exactamente los códigos de teoremas PA y representa débilmente ese conjunto. Para cada teorema concreto A, <span class="math inline">\(\mathrm{PA}\vdash\mathsf{Prov}_{PA}(\overline{G(A)})\)</span>.</p>
+<p><strong>Prueba.</strong> §19.24 aplicado al verificador prueba ambas afirmaciones de Prf. La gráfica estándar de su programa acepta exactamente las pruebas originales, incluida la condición de última fórmula y sólo referencias precedentes. Agrupando los existenciales de Prf tras d se obtiene una matriz Δ0, así Prov es Σ1. Si A es teorema tiene un código de prueba concreto d; la representación positiva de Prf para <span class="math inline">\((d,G(A))\)</span> y la introducción existencial dan Prov de su código. Recíprocamente si la estructura estándar satisface Prov existe un d estándar que acredita la derivación, y si PA prueba esa instancia, corrección estándar da el mismo testigo externo. Por tanto se obtienen definición y representación débil. Un natural que no sea código de fórmula o no sea teorema no satisface Prov en <span class="math inline">\(\mathbb N_A\)</span>, pero no se afirma que PA pruebe su negación.</p>
+<p>La implicación metateórica «si PA prueba A, PA prueba Prov de su código» se ha acreditado <strong>caso por caso</strong>. No se han demostrado condiciones internas de derivabilidad para el representante elegido, reflexión <span class="math inline">\(\mathsf{Prov}(\ulcorner A\urcorner)\to A\)</span>, completitud/decidibilidad de PA, ni un predicado de verdad. No deben usarse esas propiedades en CH20 sin pruebas adicionales. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="extensiones-aritméticas-y-teorías-con-axiomas-efectivos" class="level2">
+<h2 class="anchored" data-anchor-id="extensiones-aritméticas-y-teorías-con-axiomas-efectivos">19.32. Extensiones aritméticas y teorías con axiomas efectivos</h2>
+<section id="tlog-pro-00126" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00126">Proposición 19.32.1 — Extensiones aritméticas y teorías con axiomas efectivos</h3>
+<p><strong>Proposición.</strong> Las pruebas positivas y equivalencias funcionales PA de este capítulo persisten en toda extensión deductiva T de PA. Si T es consistente y sus axiomas adicionales son semidecidibles bajo una presentación fija, se pueden verificar pruebas con certificados y semidecidir teoremas T; un representante aritmético de sus certificados de prueba se obtiene en PA. La exactitud estándar del conjunto de teoremas y una prueba de corrección de T son cuestiones distintas.</p>
+<p><strong>Prueba.</strong> Inclusión deductiva conserva cada prueba PA, incluidas las negativas de representación bilateral y la funcionalidad. El verificador certificado T se construye por §18.61, usando trazas de parada del semidecidor de axiomas; es total aunque no lo sea el reconocimiento de secuencias desnudas. Su decidor se representa bilateralmente en PA por §19.24 y la fórmula existencial de certificados define en <span class="math inline">\(\mathbb N_A\)</span> los teoremas T por el borrado/certificación demostrado. Así PA representa débilmente ese conjunto semidecidible por §19.25; no se afirma que T sea correcto en <span class="math inline">\(\mathbb N_A\)</span> ni que una prueba T de su fórmula de demostrabilidad sea necesariamente verdadera. La consistencia de T impide colapsar representaciones contrarias, pero no sustituye una prueba de corrección estándar. Para <span class="math inline">\(\mathrm{ZF}_{obj}\)</span> no se ha fijado aquí una interpretación de <span class="math inline">\(L_A\)</span> ni su presentación efectiva de axiomas, por lo que ninguna transferencia se aplica automáticamente. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="cierre-de-representabilidad-y-contrato-para-el-lema-diagonal" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-de-representabilidad-y-contrato-para-el-lema-diagonal">19.33. Cierre de representabilidad y contrato para el lema diagonal</h2>
+<section id="tlog-cor-00030" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00030">Corolario 19.33.1 — Cierre de representabilidad y contrato para el lema diagonal</h3>
+<p><strong>Corolario.</strong> CH19 entrega una teoría aritmética objeto efectiva con modelo estándar externo construido, lectura β aritmética, fórmulas Σ1 de ejecuciones RM, representación funcional de funciones parciales en entradas definidas, representación bilateral de relaciones decidibles y caracterizaciones de la semidecidibilidad. Quedan representadas las funciones sintácticas Num/Sub/D y los predicados externos de prueba, con demostrabilidad como proyección existencial.</p>
+<p><strong>Prueba.</strong> Cada interfaz está demostrada en §§19.4–32 con sus hipótesis: la codificación finita β externa suministra los testigos numerales; las inducciones PA comparan trazas bajo sus hipótesis; la verdad de fórmulas Δ0 concretas suministra pruebas y la corrección estándar sólo se usa donde está declarada. No se sustituye S por β ni se introduce una máquina de Turing para demostrar representación. <span class="math inline">\(\square\)</span></p>
+<p><strong>Contrato CH20.</strong> Se puede utilizar la función total D y su representación funcional numeral por numeral para construir una sentencia fija para una fórmula dada, con renombrado/frescura explícitos. Todavía no se ha construido tal sentencia ni probado un lema diagonal. Tampoco se han probado incompletitud, indefinibilidad de verdad, condiciones internas de derivabilidad, segunda incompletitud o totalidad uniforme en PA de todos los programas totales externos. La teoría de base para las próximas conclusiones será PA o una extensión con hipótesis expresas; usar Q como base más débil o trasladar todo a ZF objeto requiere resultados adicionales. Son fronteras externas al alcance aprobado de CH19, no pruebas omitidas de representación.</p>
+<p><strong>CH19 CLOSED.</strong> La Parte IV sigue OPEN porque falta CH20. No se presume consistencia o existencia de modelos de ZF objeto. La consistencia externa de PA fue una conclusión de §19.6 dentro de la metateoría declarada, no un nuevo axioma de la obra.</p>
+</section>
+</section>
+<section id="ejemplos-y-estado-de-cierre" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-y-estado-de-cierre">19.34. Ejemplos y estado de cierre</h2>
+<p>El programa de un registro INC(0,1),HALT calcula x+1. Su fórmula St tiene las ramas <span class="math inline">\(\ell=0,\ell'=1,w_0=Sv_0\)</span> y <span class="math inline">\(\ell=1,\ell'=1,w_0=v_0\)</span>. En entrada 2 y tiempo 1, la tabla aplanada es [0,2,1,3]. Un par β construido con sus cuatro residuos acredita esa tabla; la matriz cerrada verdadera tiene prueba PA y la funcionalidad da <span class="math inline">\(\forall y(\Phi_P(\bar2,y)\leftrightarrow y=\bar3)\)</span>. La traza prolongada a tiempo 2 termina con la misma salida. No se calcula aquí un tiempo de ejecución de una prueba PA ni una cota de eficiencia de β.</p>
+<p>Un decidor que devuelve0 en una entrada proporciona una <strong>prueba de negación</strong> para su representante con salida 1; un semidecidor que devuelve0 al parar proporciona una <strong>prueba positiva</strong> de pertenencia por su dominio de parada. La diferencia procede de la definición operacional, no del símbolo0 aislado.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Afirmación</th>
+<th>Alcance aprobado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Función RM parcial</td>
+<td>gráfica Σ1 exacta, funcionalidad PA y prueba de valor en entradas definidas</td>
+</tr>
+<tr class="even">
+<td>Relación decidible</td>
+<td>representación bilateral numeral por numeral</td>
+</tr>
+<tr class="odd">
+<td>Relación semidecidible</td>
+<td>definición Σ1 y representación débil</td>
+</tr>
+<tr class="even">
+<td>Programa externo total</td>
+<td>representación para cada entrada; no totalidad uniforme PA automática</td>
+</tr>
+<tr class="odd">
+<td>Prueba PA concreta</td>
+<td>verificación decidible y representación bilateral del verificador</td>
+</tr>
+<tr class="even">
+<td>Existencia de alguna prueba</td>
+<td>fórmula Σ1/semidecisión; no decidor de demostrabilidad</td>
+</tr>
+<tr class="odd">
+<td>Autoinstanciación D</td>
+<td>función total representada; lema diagonal todavía pendiente</td>
+</tr>
+</tbody>
+</table>
+<p>El capítulo cierra <strong>33/33 resultados propios</strong> con <strong>136 dependencias directas nuevas</strong>. La Parte IV permanece abierta. Próximo capítulo: <strong>CH20 — Diagonalización y lema diagonal</strong>.</p>
+<pre class="text"><code>LOCAL  CH19 ████████████████████ 33/33 resultados (100 %)
+GLOBAL TLOG ████████████████████░░░░ 20/24 capítulos (83,33 %)</code></pre>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-18.html">← Capítulo 18</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-20.html">Capítulo 20 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

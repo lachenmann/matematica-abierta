@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 9 — Sistemas deductivos y teorías – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-la-consecuencia-semántica-a-la-derivación-formal" id="toc-de-la-consecuencia-semántica-a-la-derivación-formal" class="nav-link active" data-scroll-target="#de-la-consecuencia-semántica-a-la-derivación-formal">9.0. De la consecuencia semántica a la derivación formal</a>
+  <ul class="collapse">
+  <li><a href="#cotejo-bibliográfico-y-decisión-de-cálculo" id="toc-cotejo-bibliográfico-y-decisión-de-cálculo" class="nav-link" data-scroll-target="#cotejo-bibliográfico-y-decisión-de-cálculo">Cotejo bibliográfico y decisión de cálculo</a></li>
+  </ul></li>
+  <li><a href="#identidad-del-sistema-deductivo" id="toc-identidad-del-sistema-deductivo" class="nav-link" data-scroll-target="#identidad-del-sistema-deductivo">9.1. Identidad del sistema deductivo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00011" id="toc-tlog-cnv-00011" class="nav-link" data-scroll-target="#tlog-cnv-00011">Convención 9.1.1 — Cálculo <span class="math inline">\(\mathsf H_\tau^{=}\)</span></a></li>
+  </ul></li>
+  <li><a href="#núcleo-axiomático-proposicional-sobre-fórmulas-de-primer-orden" id="toc-núcleo-axiomático-proposicional-sobre-fórmulas-de-primer-orden" class="nav-link" data-scroll-target="#núcleo-axiomático-proposicional-sobre-fórmulas-de-primer-orden">9.2. Núcleo axiomático proposicional sobre fórmulas de primer orden</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00002" id="toc-tlog-axm-00002" class="nav-link" data-scroll-target="#tlog-axm-00002">Esquema axiomático 9.2.1 — Levantamiento de <code>H1</code>–<code>H12</code></a></li>
+  </ul></li>
+  <li><a href="#esquemas-cuantificacionales" id="toc-esquemas-cuantificacionales" class="nav-link" data-scroll-target="#esquemas-cuantificacionales">9.3. Esquemas cuantificacionales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00003" id="toc-tlog-axm-00003" class="nav-link" data-scroll-target="#tlog-axm-00003">Esquema axiomático 9.3.1 — Cuantificadores primitivos y sustitución segura</a></li>
+  </ul></li>
+  <li><a href="#esquemas-de-igualdad-lógica" id="toc-esquemas-de-igualdad-lógica" class="nav-link" data-scroll-target="#esquemas-de-igualdad-lógica">9.4. Esquemas de igualdad lógica</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00004" id="toc-tlog-axm-00004" class="nav-link" data-scroll-target="#tlog-axm-00004">Esquema axiomático 9.4.1 — Reflexividad y sustitución de iguales</a></li>
+  </ul></li>
+  <li><a href="#el-conjunto-de-axiomas-y-las-clausuras-universales" id="toc-el-conjunto-de-axiomas-y-las-clausuras-universales" class="nav-link" data-scroll-target="#el-conjunto-de-axiomas-y-las-clausuras-universales">9.5. El conjunto de axiomas y las clausuras universales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00052" id="toc-tlog-def-00052" class="nav-link" data-scroll-target="#tlog-def-00052">Definición 9.5.1 — Axiomas básicos y generalizaciones finitas</a></li>
+  </ul></li>
+  <li><a href="#regla-primitiva-de-inferencia" id="toc-regla-primitiva-de-inferencia" class="nav-link" data-scroll-target="#regla-primitiva-de-inferencia">9.6. Regla primitiva de inferencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-rul-00002" id="toc-tlog-rul-00002" class="nav-link" data-scroll-target="#tlog-rul-00002">Regla 9.6.1 — Modus ponens de primer orden</a></li>
+  </ul></li>
+  <li><a href="#derivaciones-finitas" id="toc-derivaciones-finitas" class="nav-link" data-scroll-target="#derivaciones-finitas">9.7. Derivaciones finitas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00053" id="toc-tlog-def-00053" class="nav-link" data-scroll-target="#tlog-def-00053">Definición 9.7.1 — Derivación desde un conjunto de fórmulas</a></li>
+  </ul></li>
+  <li><a href="#derivabilidad-teoremas-y-notación" id="toc-derivabilidad-teoremas-y-notación" class="nav-link" data-scroll-target="#derivabilidad-teoremas-y-notación">9.8. Derivabilidad, teoremas y notación</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00054" id="toc-tlog-def-00054" class="nav-link" data-scroll-target="#tlog-def-00054">Definición 9.8.1 — Derivabilidad en <span class="math inline">\(\mathsf H_\tau^{=}\)</span></a></li>
+  </ul></li>
+  <li><a href="#inducción-sobre-derivaciones" id="toc-inducción-sobre-derivaciones" class="nav-link" data-scroll-target="#inducción-sobre-derivaciones">9.9. Inducción sobre derivaciones</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00034" id="toc-tlog-mth-00034" class="nav-link" data-scroll-target="#tlog-mth-00034">Metateorema 9.9.1 — Principio de inducción deductiva</a></li>
+  </ul></li>
+  <li><a href="#propiedades-estructurales-de-la-derivabilidad" id="toc-propiedades-estructurales-de-la-derivabilidad" class="nav-link" data-scroll-target="#propiedades-estructurales-de-la-derivabilidad">9.10. Propiedades estructurales de la derivabilidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00020" id="toc-tlog-pro-00020" class="nav-link" data-scroll-target="#tlog-pro-00020">Proposición 9.10.1 — Premisa, axioma, MP, monotonía, finitariedad y corte</a></li>
+  </ul></li>
+  <li><a href="#generalización-controlada-como-regla-admisible" id="toc-generalización-controlada-como-regla-admisible" class="nav-link" data-scroll-target="#generalización-controlada-como-regla-admisible">9.11. Generalización controlada como regla admisible</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00035" id="toc-tlog-mth-00035" class="nav-link" data-scroll-target="#tlog-mth-00035">Metateorema 9.11.1 — Generalización bajo premisas independientes</a></li>
+  </ul></li>
+  <li><a href="#tres-controles-de-lectura" id="toc-tres-controles-de-lectura" class="nav-link" data-scroll-target="#tres-controles-de-lectura">9.12. Tres controles de lectura</a></li>
+  <li><a href="#cierre-local-del-microtramo" id="toc-cierre-local-del-microtramo" class="nav-link" data-scroll-target="#cierre-local-del-microtramo">9.13. Cierre local del microtramo</a>
+  <ul class="collapse">
+  <li><a href="#vector-gráfico-de-progreso" id="toc-vector-gráfico-de-progreso" class="nav-link" data-scroll-target="#vector-gráfico-de-progreso">Vector gráfico de progreso</a></li>
+  </ul></li>
+  <li><a href="#el-puente-estrictamente-sintáctico-con-el-cálculo-proposicional" id="toc-el-puente-estrictamente-sintáctico-con-el-cálculo-proposicional" class="nav-link" data-scroll-target="#el-puente-estrictamente-sintáctico-con-el-cálculo-proposicional">9.14. El puente estrictamente sintáctico con el cálculo proposicional</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00023" id="toc-tlog-lem-00023" class="nav-link" data-scroll-target="#tlog-lem-00023">Lema 9.14.1 — Levantamiento de demostraciones proposicionales</a></li>
+  </ul></li>
+  <li><a href="#el-teorema-de-deducción-de-primer-orden" id="toc-el-teorema-de-deducción-de-primer-orden" class="nav-link" data-scroll-target="#el-teorema-de-deducción-de-primer-orden">9.15. El teorema de deducción de primer orden</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00036" id="toc-tlog-mth-00036" class="nav-link" data-scroll-target="#tlog-mth-00036">Metateorema 9.15.1 — Descarga de una premisa para un cálculo con <code>MP</code></a></li>
+  </ul></li>
+  <li><a href="#reglas-derivadas-proposicionales" id="toc-reglas-derivadas-proposicionales" class="nav-link" data-scroll-target="#reglas-derivadas-proposicionales">9.16. Reglas derivadas proposicionales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00021" id="toc-tlog-pro-00021" class="nav-link" data-scroll-target="#tlog-pro-00021">Proposición 9.16.1 — Conjunción, disyunción, bicondicional y reducción clásica</a></li>
+  </ul></li>
+  <li><a href="#la-igualdad-funciona-deductivamente-como-identidad" id="toc-la-igualdad-funciona-deductivamente-como-identidad" class="nav-link" data-scroll-target="#la-igualdad-funciona-deductivamente-como-identidad">9.17. La igualdad funciona deductivamente como identidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00022" id="toc-tlog-pro-00022" class="nav-link" data-scroll-target="#tlog-pro-00022">Proposición 9.17.1 — Simetría, transitividad y congruencia</a></li>
+  </ul></li>
+  <li><a href="#reglas-cuantificacionales-derivadas" id="toc-reglas-cuantificacionales-derivadas" class="nav-link" data-scroll-target="#reglas-cuantificacionales-derivadas">9.18. Reglas cuantificacionales derivadas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00023" id="toc-tlog-pro-00023" class="nav-link" data-scroll-target="#tlog-pro-00023">Proposición 9.18.1 — Particularización, introducción existencial y dualidad</a></li>
+  </ul></li>
+  <li><a href="#los-cambios-alfa-son-deductivamente-invisibles" id="toc-los-cambios-alfa-son-deductivamente-invisibles" class="nav-link" data-scroll-target="#los-cambios-alfa-son-deductivamente-invisibles">9.19. Los cambios alfa son deductivamente invisibles</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00037" id="toc-tlog-mth-00037" class="nav-link" data-scroll-target="#tlog-mth-00037">Metateorema 9.19.1 — Equivalencia alfa implica equivalencia demostrable</a></li>
+  </ul></li>
+  <li><a href="#conjuntos-deductivamente-cerrados-y-teorías-de-sentencias" id="toc-conjuntos-deductivamente-cerrados-y-teorías-de-sentencias" class="nav-link" data-scroll-target="#conjuntos-deductivamente-cerrados-y-teorías-de-sentencias">9.20. Conjuntos deductivamente cerrados y teorías de sentencias</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00055" id="toc-tlog-def-00055" class="nav-link" data-scroll-target="#tlog-def-00055">Definición 9.20.1 — Clausura deductiva y teoría sintáctica</a></li>
+  </ul></li>
+  <li><a href="#la-clausura-deductiva-es-un-operador-finitario" id="toc-la-clausura-deductiva-es-un-operador-finitario" class="nav-link" data-scroll-target="#la-clausura-deductiva-es-un-operador-finitario">9.21. La clausura deductiva es un operador finitario</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00024" id="toc-tlog-pro-00024" class="nav-link" data-scroll-target="#tlog-pro-00024">Proposición 9.21.1 — Extensividad, monotonía, idempotencia y cierre de teorías</a></li>
+  </ul></li>
+  <li><a href="#consistencia-como-ausencia-de-contradicción-demostrable" id="toc-consistencia-como-ausencia-de-contradicción-demostrable" class="nav-link" data-scroll-target="#consistencia-como-ausencia-de-contradicción-demostrable">9.22. Consistencia como ausencia de contradicción demostrable</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00056" id="toc-tlog-def-00056" class="nav-link" data-scroll-target="#tlog-def-00056">Definición 9.22.1 — Contradicción fija y consistencia sintáctica</a></li>
+  </ul></li>
+  <li><a href="#caracterizaciones-puramente-deductivas-de-consistencia" id="toc-caracterizaciones-puramente-deductivas-de-consistencia" class="nav-link" data-scroll-target="#caracterizaciones-puramente-deductivas-de-consistencia">9.23. Caracterizaciones puramente deductivas de consistencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00025" id="toc-tlog-pro-00025" class="nav-link" data-scroll-target="#tlog-pro-00025">Proposición 9.23.1 — Explosión, pares contradictorios y adjunción</a></li>
+  </ul></li>
+  <li><a href="#teorías-de-sentencias-y-clausura-universal" id="toc-teorías-de-sentencias-y-clausura-universal" class="nav-link" data-scroll-target="#teorías-de-sentencias-y-clausura-universal">9.24. Teorías de sentencias y clausura universal</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00038" id="toc-tlog-mth-00038" class="nav-link" data-scroll-target="#tlog-mth-00038">Metateorema 9.24.1 — Las sentencias como premisas autorizan generalización</a></li>
+  </ul></li>
+  <li><a href="#ejemplos-y-fronteras-de-lo-demostrado" id="toc-ejemplos-y-fronteras-de-lo-demostrado" class="nav-link" data-scroll-target="#ejemplos-y-fronteras-de-lo-demostrado">9.25. Ejemplos y fronteras de lo demostrado</a></li>
+  <li><a href="#cierre-matemático-de-ch09-m02-y-del-capítulo-9" id="toc-cierre-matemático-de-ch09-m02-y-del-capítulo-9" class="nav-link" data-scroll-target="#cierre-matemático-de-ch09-m02-y-del-capítulo-9">9.26. Cierre matemático de <code>CH09-M02</code> y del Capítulo 9</a>
+  <ul class="collapse">
+  <li><a href="#vector-de-progreso-del-microtramo" id="toc-vector-de-progreso-del-microtramo" class="nav-link" data-scroll-target="#vector-de-progreso-del-microtramo">Vector de progreso del microtramo</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 9 — Sistemas deductivos y teorías</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-08.html">← Capítulo 8</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-10.html">Capítulo 10 →</a></p>
+<section id="de-la-consecuencia-semántica-a-la-derivación-formal" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-consecuencia-semántica-a-la-derivación-formal">9.0. De la consecuencia semántica a la derivación formal</h2>
+<p>El Capítulo 8 definió, para conjuntos arbitrarios de fórmulas, la relación metateórica de consecuencia <strong>local</strong> <span class="math inline">\(\Gamma\models_\tau\varphi\)</span>: toda estructura y toda asignación que satisfacen simultáneamente las premisas satisfacen también la conclusión. Esa noción no constituye por sí misma un procedimiento de prueba. El presente capítulo construye una relación distinta, <span class="math inline">\(\Gamma\vdash_{\mathsf H_\tau^{=}}\varphi\)</span>, cuya definición únicamente exige la existencia de una secuencia <strong>finita</strong> de fórmulas, autorizadas por axiomas o por reglas formales.</p>
+<p>Trabajamos sobre las signaturas unisortadas <span class="math inline">\(\tau\)</span> de §5.2, con funciones y relaciones de aridad finita, incluidas las aridades nulas, igualdad lógica <span class="math inline">\(\doteq\)</span>, los cinco conectivos primitivos <span class="math inline">\(\neg,\land,\lor,\to,\leftrightarrow\)</span> y <strong>ambos cuantificadores primitivos</strong> <span class="math inline">\(\forall,\exists\)</span>. En la metateoría rige <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathrm{ZF}\)</span> clásica, sin axioma de elección tácito. No se ha elegido una estructura ni una interpretación para decidir qué secuencias cuentan como demostraciones.</p>
+<section id="cotejo-bibliográfico-y-decisión-de-cálculo" class="level3">
+<h3 class="anchored" data-anchor-id="cotejo-bibliográfico-y-decisión-de-cálculo">Cotejo bibliográfico y decisión de cálculo</h3>
+<ul>
+<li><code>TLOG-SRC-0002</code> — Herbert B. Enderton, <em>A Mathematical Introduction to Logic</em>, 2.ª edición (2001), cap. 2, §2.4, pp.&nbsp;<strong>109–117</strong>: derivaciones finitas, modus ponens, axiomas universalmente generalizados y separación entre deducción y verdad; <code>proof-model / countercheck</code>.</li>
+<li><code>TLOG-SRC-0003</code> — Wolfgang Rautenberg, <em>A Concise Introduction to Mathematical Logic</em>, 3.ª edición (2010), cap. 3, §3.6, pp.&nbsp;<strong>121–124</strong>: cálculo hilbertiano completo con clausuras universales de los esquemas, modus ponens único, y generalización demostrada por inducción sobre derivaciones; <code>proof-model / countercheck</code>.</li>
+</ul>
+<p>Ambas fuentes permiten adoptar <strong>MP como única regla primitiva</strong>, al incluir desde el comienzo las clausuras universales de todos los axiomas. Enderton trabaja con un conjunto de tautologías y una selección de esquemas para <span class="math inline">\(\neg,\to,\forall,=\)</span>; Rautenberg parte de <span class="math inline">\(\neg,\land,\forall,=\)</span>. TLOG reconstruye una <strong>base propia</strong> ajustada a su gramática de cinco conectivos y dos cuantificadores. El resultado de esta sección no importa como axioma la consecuencia semántica, ni presupone corrección, completitud o decidibilidad para signaturas arbitrarias.</p>
+</section>
+</section>
+<section id="identidad-del-sistema-deductivo" class="level2">
+<h2 class="anchored" data-anchor-id="identidad-del-sistema-deductivo">9.1. Identidad del sistema deductivo</h2>
+<section id="tlog-cnv-00011" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00011">Convención 9.1.1 — Cálculo <span class="math inline">\(\mathsf H_\tau^{=}\)</span></h3>
+<p>Fijada <span class="math inline">\(\tau\)</span>, llamamos <span class="math inline">\(\mathsf H_\tau^{=}\)</span> al sistema deductivo clásico de primer orden <strong>con igualdad</strong> sobre el conjunto de fórmulas <span class="math inline">\(\operatorname{Fm}_\tau\)</span>. Sus datos son: (a) instancias de esquemas axiomáticos proposicionales, cuantificacionales y de igualdad; (b) todas sus clausuras universales finitas; (c) la única regla primitiva <span class="math inline">\(\mathrm{MP}\)</span>; y (d) derivaciones de longitud finita desde un conjunto arbitrario de premisas.</p>
+<p>El superíndice <span class="math inline">\(=\)</span> identifica la igualdad <em>lógica</em>; no denota un predicado binario añadido a <span class="math inline">\(R_2\)</span>. Este cálculo no es <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span> del Capítulo 3: ambos comparten ciertos <strong>patrones</strong> proposicionales, pero sus universos de fórmulas y sus teoremas son distintos. Una regla admisible se distinguirá de una regla primitiva y un esquema de axiomas de cada una de sus instancias.</p>
+</section>
+</section>
+<section id="núcleo-axiomático-proposicional-sobre-fórmulas-de-primer-orden" class="level2">
+<h2 class="anchored" data-anchor-id="núcleo-axiomático-proposicional-sobre-fórmulas-de-primer-orden">9.2. Núcleo axiomático proposicional sobre fórmulas de primer orden</h2>
+<section id="tlog-axm-00002" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00002">Esquema axiomático 9.2.1 — Levantamiento de <code>H1</code>–<code>H12</code></h3>
+<p>Sea <span class="math inline">\(\operatorname{Ax}^{\mathrm{prop}}_\tau\)</span> el conjunto de <strong>todas</strong> las instancias de los doce esquemas <code>H1</code>–<code>H12</code> de §3.2, esta vez con metavariables <span class="math inline">\(\alpha,\beta,\gamma\)</span> que recorren <strong><span class="math inline">\(\operatorname{Fm}_\tau\)</span></strong>, y no sólo <span class="math inline">\(\operatorname{Fm}_{\mathrm{CPL}}\)</span>. Se conservan exactamente sus formas y las cinco conectivas primitivas. En particular, <code>H1</code> y <code>H2</code> se leen</p>
+<p><span class="math display">\[
+\alpha\to(\beta\to\alpha),\qquad
+(\alpha\to(\beta\to\gamma))\to
+((\alpha\to\beta)\to(\alpha\to\gamma)),
+\]</span></p>
+<p>y <code>H3</code> mantiene <span class="math inline">\((\neg\beta\to\neg\alpha)\to(\alpha\to\beta)\)</span>. Los esquemas <code>H4</code>–<code>H12</code> rigen <span class="math inline">\(\land,\lor,\leftrightarrow\)</span> exactamente como en §3.2. El pasaje de <span class="math inline">\(\mathrm{CPL}\)</span> a <span class="math inline">\(\operatorname{Fm}_\tau\)</span> es un <strong>cambio del dominio de las metavariables</strong>, no una identificación de sistemas objetos ni la afirmación de que el cálculo proposicional demuestra automáticamente teoremas de primer orden.</p>
+<p>Como las doce formas utilizan sólo un número finito de metavariables, el conjunto de sus instancias existe en ZF por sustitución finita de fórmulas dentro de <span class="math inline">\(\operatorname{Fm}_\tau\)</span>. No se necesita elegir simultáneamente valores de metavariables en una familia arbitraria de lenguajes.</p>
+</section>
+</section>
+<section id="esquemas-cuantificacionales" class="level2">
+<h2 class="anchored" data-anchor-id="esquemas-cuantificacionales">9.3. Esquemas cuantificacionales</h2>
+<section id="tlog-axm-00003" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00003">Esquema axiomático 9.3.1 — Cuantificadores primitivos y sustitución segura</h3>
+<p>Para <span class="math inline">\(\varphi,\psi\in\operatorname{Fm}_\tau\)</span>, <span class="math inline">\(x\in X\)</span> y <span class="math inline">\(t\in\operatorname{Tm}_\tau\)</span>, fijamos las siguientes <strong>familias de instancias</strong>. Toda sustitución indicada por <span class="math inline">\([t/x]_{\mathrm{lit}}\)</span> exige expresamente <span class="math inline">\(\operatorname{FreeFor}_\tau(t,x,\varphi)\)</span> y, cuando aparece, afecta sólo a las ocurrencias libres originales:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tag{Q1} &amp;\forall x\,\varphi\to\varphi[t/x]_{\mathrm{lit}},\\
+\tag{Q2} &amp;\varphi[t/x]_{\mathrm{lit}}\to\exists x\,\varphi,\\
+\tag{Q3} &amp;\forall x(\varphi\to\psi)\to
+  (\forall x\,\varphi\to\forall x\,\psi),\\
+\tag{Q4} &amp;\varphi\to\forall x\,\varphi
+  \qquad (x\notin\operatorname{FV}_\tau(\varphi)),\\
+\tag{Q5} &amp;\exists x\,\varphi\leftrightarrow\neg\forall x\,\neg\varphi.
+\end{aligned}
+\]</span></p>
+<p>Para <code>Q1</code> y <code>Q2</code>, si la condición <code>FreeFor</code> no se cumple, la cadena informal correspondiente <strong>no es una instancia</strong> del esquema. <code>Q3</code> no impone una condición sobre variables libres: expresa cómo distribuye <span class="math inline">\(\forall\)</span> respecto de una implicación. <code>Q4</code> requiere <span class="math inline">\(x\notin\operatorname{FV}(\varphi)\)</span>, no sólo que <span class="math inline">\(x\)</span> sea distinto de una variable escrita en la fórmula. <code>Q5</code> relaciona dos <strong>fórmulas objeto distintas</strong>, pues <span class="math inline">\(\exists\)</span> continúa siendo primitivo.</p>
+<p>La unión de estas familias, <span class="math inline">\(\operatorname{Ax}^{\mathrm q}_\tau\)</span>, es un <strong>conjunto</strong> de fórmulas de la signatura fija. No se postula todavía la regla de inferencia <span class="math inline">\(\varphi/\forall x\varphi\)</span> desde hipótesis arbitrarias; dicha generalización sería incompatible con la consecuencia <strong>local</strong> establecida en §8.26.</p>
+</section>
+</section>
+<section id="esquemas-de-igualdad-lógica" class="level2">
+<h2 class="anchored" data-anchor-id="esquemas-de-igualdad-lógica">9.4. Esquemas de igualdad lógica</h2>
+<section id="tlog-axm-00004" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00004">Esquema axiomático 9.4.1 — Reflexividad y sustitución de iguales</h3>
+<p>Para términos <span class="math inline">\(t,u\in\operatorname{Tm}_\tau\)</span>, variables <span class="math inline">\(x\in X\)</span> y fórmulas <span class="math inline">\(\varphi\in\operatorname{Fm}_\tau\)</span>, sean instancias axiomáticas de igualdad:</p>
+<p><span class="math display">\[
+\tag{E1} t\doteq t,
+\]</span></p>
+<p><span class="math display">\[
+\tag{E2}
+(t\doteq u)\to
+\bigl(\varphi[t/x]_{\mathrm{lit}}\to
+\varphi[u/x]_{\mathrm{lit}}\bigr),
+\]</span></p>
+<p>bajo las condiciones conjuntas <span class="math inline">\(\operatorname{FreeFor}_\tau(t,x,\varphi)\)</span> y <span class="math inline">\(\operatorname{FreeFor}_\tau(u,x,\varphi)\)</span>. El conjunto de instancias se denota <span class="math inline">\(\operatorname{Ax}^{=}_\tau\)</span>. El esquema <code>E2</code> expresa <strong>sustitución uniforme y libre de captura</strong> en fórmulas arbitrarias, y no se identifica con la regla metateórica de reemplazar una cadena cualquiera por otra. Se permite <span class="math inline">\(t=u\)</span> o que <span class="math inline">\(x\notin\operatorname{FV}(\varphi)\)</span>; en esos casos pueden producirse instancias redundantes, sin defecto lógico.</p>
+<p>La reflexividad de <code>E1</code> y el carácter congruencial de <code>E2</code> son <strong>datos sintácticos</strong> del cálculo. La demostración metateórica de su validez bajo toda estructura pertenece al Capítulo 10, con las cláusulas de satisfacción y sustitución del Capítulo 8. La simetría, transitividad y demás reglas derivadas de igualdad no se elevan a primitivas por conveniencia editorial; se reconstruirán como resultados deductivos.</p>
+</section>
+</section>
+<section id="el-conjunto-de-axiomas-y-las-clausuras-universales" class="level2">
+<h2 class="anchored" data-anchor-id="el-conjunto-de-axiomas-y-las-clausuras-universales">9.5. El conjunto de axiomas y las clausuras universales</h2>
+<section id="tlog-def-00052" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00052">Definición 9.5.1 — Axiomas básicos y generalizaciones finitas</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+\operatorname{Ax}^0_\tau :=
+\operatorname{Ax}^{\mathrm{prop}}_\tau
+\cup\operatorname{Ax}^{\mathrm q}_\tau
+\cup\operatorname{Ax}^{=}_\tau.
+\]</span></p>
+<p>Para una lista finita <span class="math inline">\(\bar x=(x_1,\ldots,x_n)\in X^{&lt;\omega}\)</span>, definimos la <strong>clausura prefija</strong> <span class="math inline">\(\forall\bar x\,\theta\)</span> como <span class="math inline">\(\forall x_1\cdots\forall x_n\theta\)</span>. Cuando <span class="math inline">\(n=0\)</span>, se toma <span class="math inline">\(\forall()\,\theta=\theta\)</span>. El conjunto completo de axiomas del cálculo es</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{Ax}_{\mathsf H_\tau^{=}}=
+\{\forall\bar x\,\theta:
+\bar x\in X^{&lt;\omega},\ \theta\in\operatorname{Ax}^0_\tau\}.}
+\]</span></p>
+<p>En particular, si <span class="math inline">\(\theta\in\operatorname{Ax}_{\mathsf H_\tau^{=}}\)</span>, entonces <span class="math inline">\(\forall x\theta\in\operatorname{Ax}_{\mathsf H_\tau^{=}}\)</span> <strong>para todo</strong> <span class="math inline">\(x\in X\)</span>, porque basta anteponer <span class="math inline">\(x\)</span> a su prefijo finito. No se necesita que <span class="math inline">\(x\)</span> sea libre ni que no lo sea. <strong>Esta propiedad de cierre pertenece a la definición de axioma</strong>, no constituye todavía una regla que permita generalizar premisas.</p>
+<p><strong>Existencia conjuntista.</strong> <span class="math inline">\(X^{&lt;\omega}\)</span> y <span class="math inline">\(\operatorname{Fm}_\tau\)</span> son conjuntos. La operación que antepone una lista finita de cuantificadores a una fórmula se define por recursión finita; su imagen sobre <span class="math inline">\(X^{&lt;\omega}\times\operatorname{Ax}^0_\tau\)</span> es un conjunto por reemplazo. Alternativamente, se separa de <span class="math inline">\(\operatorname{Fm}_\tau\)</span> el subconjunto que admite tal prefijo. Ninguno de estos procedimientos requiere AC. Para signaturas arbitrarias no se afirma una prueba general de <strong>decidibilidad efectiva</strong> de pertenencia al conjunto de axiomas.</p>
+</section>
+</section>
+<section id="regla-primitiva-de-inferencia" class="level2">
+<h2 class="anchored" data-anchor-id="regla-primitiva-de-inferencia">9.6. Regla primitiva de inferencia</h2>
+<section id="tlog-rul-00002" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-rul-00002">Regla 9.6.1 — Modus ponens de primer orden</h3>
+<p>La <strong>única regla primitiva</strong> del cálculo <span class="math inline">\(\mathsf H_\tau^{=}\)</span> es</p>
+<p><span class="math display">\[
+\frac{\alpha\qquad\alpha\to\beta}{\beta}\qquad(\mathrm{MP}),
+\quad\alpha,\beta\in\operatorname{Fm}_\tau.
+\]</span></p>
+<p>Es una regla sobre <strong>fórmulas objeto</strong>, no una implicación entre juicios de satisfacción. No descarga premisas, no cuantifica variables y no exige una condición lateral de frescura. En particular, el esquema proposicional <span class="math inline">\(\alpha\to(\beta\to\alpha)\)</span> y las instancias universalmente cerradas son <strong>axiomas</strong>, no aplicaciones de <span class="math inline">\(\mathrm{MP}\)</span>.</p>
+</section>
+</section>
+<section id="derivaciones-finitas" class="level2">
+<h2 class="anchored" data-anchor-id="derivaciones-finitas">9.7. Derivaciones finitas</h2>
+<section id="tlog-def-00053" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00053">Definición 9.7.1 — Derivación desde un conjunto de fórmulas</h3>
+<p>Sea <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span>. Una <strong>derivación desde <span class="math inline">\(\Gamma\)</span></strong> es una secuencia finita <strong>no vacía</strong></p>
+<p><span class="math display">\[
+\Pi=(\varphi_0,\ldots,\varphi_n),\qquad n\in\omega,
+\]</span></p>
+<p>de fórmulas de <span class="math inline">\(\operatorname{Fm}_\tau\)</span>, tal que para todo índice <span class="math inline">\(k\le n\)</span> se verifica por lo menos una de las tres cláusulas siguientes:</p>
+<ol type="1">
+<li><strong>Premisa:</strong> <span class="math inline">\(\varphi_k\in\Gamma\)</span>.</li>
+<li><strong>Axioma lógico:</strong> <span class="math inline">\(\varphi_k\in\operatorname{Ax}_{\mathsf H_\tau^{=}}\)</span>.</li>
+<li><strong>Inferencia:</strong> existen <span class="math inline">\(i,j&lt;k\)</span> tales que <span class="math inline">\(\varphi_j=(\varphi_i\to\varphi_k)\)</span>, y la línea <span class="math inline">\(k\)</span> resulta por <span class="math inline">\(\mathrm{MP}\)</span>.</li>
+</ol>
+<p>La conclusión es <span class="math inline">\(\varphi_n\)</span>, la longitud de <span class="math inline">\(\Pi\)</span> es <span class="math inline">\(n+1\)</span>, y los índices de las dos premisas de una aplicación de <span class="math inline">\(\mathrm{MP}\)</span> deben ser <strong>estrictamente anteriores</strong> al de la conclusión. La cláusula de axioma permite fórmulas que contienen cuantificadores, incluida una clausura universal de un axioma básico; no autoriza insertar generalizaciones arbitrarias de una premisa.</p>
+<p>El conjunto de todas las secuencias finitas sobre <span class="math inline">\(\operatorname{Fm}_\tau\)</span> existe en ZF, y el predicado «<span class="math inline">\(\Pi\)</span> es derivación desde <span class="math inline">\(\Gamma\)</span>» es una condición definida sobre él. Por separación, también el conjunto de derivaciones desde <span class="math inline">\(\Gamma\)</span> existe. Este enunciado de <strong>existencia conjuntista</strong> no entraña que la validez de la condición sea decidible bajo toda codificación imaginable de una signatura.</p>
+</section>
+</section>
+<section id="derivabilidad-teoremas-y-notación" class="level2">
+<h2 class="anchored" data-anchor-id="derivabilidad-teoremas-y-notación">9.8. Derivabilidad, teoremas y notación</h2>
+<section id="tlog-def-00054" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00054">Definición 9.8.1 — Derivabilidad en <span class="math inline">\(\mathsf H_\tau^{=}\)</span></h3>
+<p>Para <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span> y <span class="math inline">\(\varphi\in\operatorname{Fm}_\tau\)</span>, escribimos</p>
+<p><span class="math display">\[
+\boxed{\Gamma\vdash_{\mathsf H_\tau^{=}}\varphi}
+\]</span></p>
+<p>si existe una derivación finita desde <span class="math inline">\(\Gamma\)</span> cuya última línea sea <span class="math inline">\(\varphi\)</span>. Si <span class="math inline">\(\Gamma=\varnothing\)</span>, escribimos <span class="math inline">\(\vdash_{\mathsf H_\tau^{=}}\varphi\)</span> y llamamos a <span class="math inline">\(\varphi\)</span> <strong>teorema lógico del cálculo</strong>. La relación <span class="math inline">\(\nvdash\)</span> significa negación metateórica de la existencia de tal secuencia. No se presupone aquí ninguna conexión entre <span class="math inline">\(\vdash_{\mathsf H_\tau^{=}}\)</span> y <span class="math inline">\(\models_\tau\)</span>.</p>
+<p>La cuantificación de la definición es sobre un <strong>conjunto</strong> de secuencias finitas y no sobre una clase de todas las estructuras. Por ello, para una <span class="math inline">\(\tau\)</span> fija, la relación de derivabilidad constituye una relación conjuntista sobre <span class="math inline">\(\mathcal P(\operatorname{Fm}_\tau)\times\operatorname{Fm}_\tau\)</span>.</p>
+</section>
+</section>
+<section id="inducción-sobre-derivaciones" class="level2">
+<h2 class="anchored" data-anchor-id="inducción-sobre-derivaciones">9.9. Inducción sobre derivaciones</h2>
+<section id="tlog-mth-00034" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00034">Metateorema 9.9.1 — Principio de inducción deductiva</h3>
+<p><strong>Enunciado.</strong> Fijados <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span> y un predicado metateórico <span class="math inline">\(P\)</span> sobre fórmulas, supongamos:</p>
+<ol type="1">
+<li><span class="math inline">\(P(\gamma)\)</span> para toda <span class="math inline">\(\gamma\in\Gamma\)</span>;</li>
+<li><span class="math inline">\(P(\theta)\)</span> para toda <span class="math inline">\(\theta\in\operatorname{Ax}_{\mathsf H_\tau^{=}}\)</span>;</li>
+<li><span class="math inline">\(P(\alpha)\land P(\alpha\to\beta)\Rightarrow P(\beta)\)</span> para todas <span class="math inline">\(\alpha,\beta\in\operatorname{Fm}_\tau\)</span>.</li>
+</ol>
+<p>Entonces, para toda <span class="math inline">\(\varphi\)</span>,</p>
+<p><span class="math display">\[
+\Gamma\vdash_{\mathsf H_\tau^{=}}\varphi
+\quad\Longrightarrow\quad P(\varphi).
+\]</span></p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(\Pi=(\varphi_0,\ldots,\varphi_n)\)</span> una derivación dada. Por inducción ordinaria en <span class="math inline">\(k\le n\)</span>, probamos <span class="math inline">\(P(\varphi_k)\)</span>. Si <span class="math inline">\(\varphi_k\in\Gamma\)</span>, se usa (1); si es una instancia axiomática, se usa (2). En el caso de inferencia, la definición proporciona <span class="math inline">\(i,j&lt;k\)</span> con <span class="math inline">\(\varphi_j=\varphi_i\to\varphi_k\)</span>. Las dos hipótesis inductivas y (3) entregan <span class="math inline">\(P(\varphi_k)\)</span>. En particular <span class="math inline">\(P(\varphi_n)\)</span>. No se presupone una regla de inferencia por generalización: sólo se analizan las tres cláusulas realmente presentes en el cálculo. <span class="math inline">\(\square\)</span></p>
+<p>Este principio se aplicará a propiedades de <strong>derivaciones</strong>, no directamente a las formas de construcción de una fórmula. Es una inducción sobre la longitud de una prueba, distinta de los metateoremas de inducción estructural del Capítulo 5.</p>
+</section>
+</section>
+<section id="propiedades-estructurales-de-la-derivabilidad" class="level2">
+<h2 class="anchored" data-anchor-id="propiedades-estructurales-de-la-derivabilidad">9.10. Propiedades estructurales de la derivabilidad</h2>
+<section id="tlog-pro-00020" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00020">Proposición 9.10.1 — Premisa, axioma, MP, monotonía, finitariedad y corte</h3>
+<p>Para <span class="math inline">\(\Gamma,\Delta\subseteq\operatorname{Fm}_\tau\)</span> y fórmulas apropiadas, se tienen las seis propiedades siguientes:</p>
+<ol type="1">
+<li><strong>Premisa:</strong> <span class="math inline">\(\varphi\in\Gamma\Rightarrow\Gamma\vdash_{\mathsf H_\tau^{=}}\varphi\)</span>.</li>
+<li><strong>Axioma:</strong> <span class="math inline">\(\theta\in\operatorname{Ax}_{\mathsf H_\tau^{=}}\Rightarrow\vdash_{\mathsf H_\tau^{=}}\theta\)</span>.</li>
+<li><strong>MP:</strong> de <span class="math inline">\(\Gamma\vdash\alpha\)</span> y <span class="math inline">\(\Gamma\vdash(\alpha\to\beta)\)</span> se sigue <span class="math inline">\(\Gamma\vdash\beta\)</span>.</li>
+<li><strong>Monotonía:</strong> <span class="math inline">\(\Gamma\subseteq\Delta\)</span> y <span class="math inline">\(\Gamma\vdash\varphi\Rightarrow\Delta\vdash\varphi\)</span>.</li>
+<li><strong>Finitariedad:</strong> <span class="math inline">\(\Gamma\vdash\varphi\Rightarrow\exists\Gamma_0\subseteq\Gamma\)</span> finito con <span class="math inline">\(\Gamma_0\vdash\varphi\)</span>.</li>
+<li><strong>Corte:</strong> si <span class="math inline">\(\Delta\vdash\varphi\)</span> y <span class="math inline">\((\forall\delta\in\Delta)\;\Gamma\vdash\delta\)</span>, entonces <span class="math inline">\(\Gamma\vdash\varphi\)</span>.</li>
+</ol>
+<p>En (3)–(6), las abreviaciones <span class="math inline">\(\vdash\)</span> mantienen el subíndice fijo <span class="math inline">\(\mathsf H_\tau^{=}\)</span>.</p>
+<p><strong>Demostración.</strong> (1) y (2) tienen una prueba de una línea; (3) se obtiene concatenando las dos pruebas disponibles y agregando una aplicación de <span class="math inline">\(\mathrm{MP}\)</span>. (4) conserva cada línea-premisa, pues <span class="math inline">\(\Gamma\subseteq\Delta\)</span>; ninguna otra cláusula cambia. Para (5), basta reunir las fórmulas de <span class="math inline">\(\Gamma\)</span> usadas efectivamente como premisas en la prueba fija: son finitas y la misma secuencia demuestra la conclusión desde ellas.</p>
+<p>Para (6), una prueba fija <span class="math inline">\(\Pi\)</span> de <span class="math inline">\(\varphi\)</span> desde <span class="math inline">\(\Delta\)</span> utiliza sólo un número <strong>finito</strong> de premisas <span class="math inline">\(\delta_1,\ldots,\delta_m\in\Delta\)</span>. Para cada una existe una prueba desde <span class="math inline">\(\Gamma\)</span>; una elección <strong>finita</strong> de esas pruebas está disponible en ZF, sin AC. Insertamos dichas derivaciones antes de <span class="math inline">\(\Pi\)</span> y reemplazamos cada uso de <span class="math inline">\(\delta_i\)</span> como premisa por la aparición ya demostrada de la misma fórmula. Los índices de las aplicaciones de <span class="math inline">\(\mathrm{MP}\)</span> se desplazan manteniendo su precedencia estricta. El resultado es una derivación finita desde <span class="math inline">\(\Gamma\)</span> que termina en <span class="math inline">\(\varphi\)</span>. Si <span class="math inline">\(m=0\)</span>, se utiliza directamente <span class="math inline">\(\Pi\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La finitariedad demostrada es <strong>sintáctica</strong>; no implica aún compacidad semántica de primer orden. Del mismo modo, el corte es una operación sobre pruebas, no una sustitución de la demostración futura de corrección.</p>
+</section>
+</section>
+<section id="generalización-controlada-como-regla-admisible" class="level2">
+<h2 class="anchored" data-anchor-id="generalización-controlada-como-regla-admisible">9.11. Generalización controlada como regla admisible</h2>
+<section id="tlog-mth-00035" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00035">Metateorema 9.11.1 — Generalización bajo premisas independientes</h3>
+<p><strong>Enunciado.</strong> Si <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span>, <span class="math inline">\(x\in X\)</span>, <span class="math inline">\(x\notin\operatorname{FV}_\tau(\Gamma):=\bigcup_{\gamma\in\Gamma}\operatorname{FV}_\tau(\gamma)\)</span>, y <span class="math inline">\(\Gamma\vdash_{\mathsf H_\tau^{=}}\varphi\)</span>, entonces</p>
+<p><span class="math display">\[
+\boxed{\Gamma\vdash_{\mathsf H_\tau^{=}}\forall x\,\varphi.}
+\]</span></p>
+<p>En particular <span class="math inline">\(\vdash_{\mathsf H_\tau^{=}}\varphi\Rightarrow\vdash_{\mathsf H_\tau^{=}}\forall x\varphi\)</span> para cualquier variable <span class="math inline">\(x\)</span>, al tomar <span class="math inline">\(\Gamma=\varnothing\)</span>. Esta última propiedad es <strong>admisible para teoremas</strong>, no una regla de generalización desde premisas cualesquiera.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(\Pi=(\varphi_0,\ldots,\varphi_n)\)</span> una derivación de <span class="math inline">\(\varphi\)</span> desde <span class="math inline">\(\Gamma\)</span>. Inducimos en <span class="math inline">\(k\le n\)</span> la afirmación <span class="math inline">\(\Gamma\vdash\forall x\varphi_k\)</span>. Si <span class="math inline">\(\varphi_k\)</span> es axioma, <span class="math inline">\(\forall x\varphi_k\)</span> es también axioma, por la clausura de §9.5; hay una prueba de una línea. Si es premisa <span class="math inline">\(\gamma\in\Gamma\)</span>, la hipótesis lateral garantiza <span class="math inline">\(x\notin\operatorname{FV}(\gamma)\)</span>, por lo que <code>Q4</code> proporciona el axioma <span class="math inline">\(\gamma\to\forall x\gamma\)</span>. Junto con la prueba de una línea de <span class="math inline">\(\gamma\)</span>, <span class="math inline">\(\mathrm{MP}\)</span> produce <span class="math inline">\(\forall x\gamma\)</span>.</p>
+<p>Si <span class="math inline">\(\varphi_k=\beta\)</span> proviene por <span class="math inline">\(\mathrm{MP}\)</span> de líneas anteriores <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\alpha\to\beta\)</span>, la hipótesis inductiva da pruebas de <span class="math inline">\(\forall x\alpha\)</span> y de <span class="math inline">\(\forall x(\alpha\to\beta)\)</span>, ambas desde <span class="math inline">\(\Gamma\)</span>. Instanciamos <code>Q3</code>:</p>
+<p><span class="math display">\[
+\forall x(\alpha\to\beta)\to
+(\forall x\alpha\to\forall x\beta).
+\]</span></p>
+<p>Concatenando las dos pruebas y esta instancia y aplicando dos veces <span class="math inline">\(\mathrm{MP}\)</span>, obtenemos una prueba de <span class="math inline">\(\forall x\beta\)</span> desde <span class="math inline">\(\Gamma\)</span>. Es una transformación finita de derivaciones; no se añade ninguna regla primitiva y concluye la inducción. <span class="math inline">\(\square\)</span></p>
+<p><strong>Refinamiento por soporte finito.</strong> Por la finitariedad de §9.10, basta disponer de <strong>alguna</strong> demostración de <span class="math inline">\(\varphi\)</span> que utilice un conjunto finito de premisas <span class="math inline">\(\Gamma_0\subseteq\Gamma\)</span> con <span class="math inline">\(x\notin\operatorname{FV}(\Gamma_0)\)</span>. Se aplica el teorema a <span class="math inline">\(\Gamma_0\)</span> y después la monotonía. Esto sigue siendo una regla <strong>controlada</strong>: no autoriza generalizar una fórmula derivada con dependencia efectiva de <span class="math inline">\(x\)</span>.</p>
+</section>
+</section>
+<section id="tres-controles-de-lectura" class="level2">
+<h2 class="anchored" data-anchor-id="tres-controles-de-lectura">9.12. Tres controles de lectura</h2>
+<p><strong>Una premisa abierta no autoriza generalización.</strong> En la signatura con predicado unario <span class="math inline">\(P\)</span>, tomemos <span class="math inline">\(A=\{0,1\}\)</span>, <span class="math inline">\(P^{\mathfrak A}=\{0\}\)</span> y <span class="math inline">\(s(x)=0\)</span>. Se tiene <span class="math inline">\(\mathfrak A,s\models P(x)\)</span>, pero <span class="math inline">\(\mathfrak A,s\not\models\forall x\,P(x)\)</span>. Por ello una regla <strong>incondicional</strong> «de <span class="math inline">\(\Gamma\vdash\varphi\)</span> inferir <span class="math inline">\(\Gamma\vdash\forall x\varphi\)</span>» no sería compatible con la consecuencia local del Capítulo 8. Este ejemplo no constituye una prueba de corrección o incorrección del sistema que estamos construyendo: explica por qué se ha restringido la regla <strong>admisible</strong>.</p>
+<p><strong>La igualdad es lógica, no un símbolo relacional cualquiera.</strong> Para una función unaria <span class="math inline">\(f\)</span>, términos <span class="math inline">\(t,u\)</span> y fórmula <span class="math inline">\(\chi(z):=f(z)\doteq f(t)\)</span>, el esquema <code>E2</code> autoriza, cuando sus condiciones de sustitución se cumplen, <span class="math inline">\((t\doteq u)\to(\chi[t/z]\to\chi[u/z])\)</span>. A diferencia de una intuición de «reemplazar caracteres», cada paso se rige por una instancia con sustitución definida.</p>
+<p><strong>Un predicado nulario también puede figurar en un axioma proposicional.</strong> Si <span class="math inline">\(R\in R_0\)</span>, la instancia <code>H1</code> con <span class="math inline">\(\alpha=R()\)</span> y <span class="math inline">\(\beta=(x\doteq x)\)</span> es <span class="math inline">\(R()\to((x\doteq x)\to R())\)</span>. Los valores de esos átomos no intervienen en su reconocimiento como instancia de <code>H1</code>.</p>
+</section>
+<section id="cierre-local-del-microtramo" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-local-del-microtramo">9.13. Cierre local del microtramo</h2>
+<p>La definición de <span class="math inline">\(\vdash_{\mathsf H_\tau^{=}}\)</span> se obtuvo <strong>sin</strong> utilizar <span class="math inline">\(\models_\tau\)</span>. Se redactaron las doce familias proposicionales levantadas, cinco esquemas cuantificacionales, dos de igualdad y sus clausuras universales, una regla primitiva y demostraciones finitas de inducción, propiedades estructurales y generalización admisible. Las pruebas son metateóricas; no se importaron los teoremas de corrección/completitud de los manuales y no se atribuye verificación Lean.</p>
+<p>Permanece abierto en el Capítulo 9 el estudio deductivo del teorema de deducción, de reglas derivadas de igualdad y cuantificadores, y la construcción de las teorías como extensiones axiomáticas del cálculo. Los Capítulos 10 y 11 permanecen reservados para corrección y completitud/compacidad, respectivamente. La metateoría continúa siendo ZF sin axioma de elección.</p>
+<pre class="text"><code>TLOG-CH09-M01 = CLOSED / PASS / DRIVE-READBACK-PASS
+TLOG-CH09-0001 = PARTIAL-CLOSURE / NOT CLOSED [estado histórico tras M01]
+chapter 9 closed mathematical nodes = 11
+TLOG issued/registered/closed = 155/155 [histórico tras M01]
+DAG = 155 nodes / 406 direct edges / acyclic PASS
+formalization candidates = 44
+Lean compiled/verified = 0
+external interfaces = 0
+chapters closed = 9/24 (37.5%)
+PART I = CLOSED / PASS
+PART II = OPEN</code></pre>
+<p><strong>Siguiente microtramo:</strong> <code>TLOG-CH09-M02 — Teorema de deducción, reglas derivadas, igualdad y teorías sintácticas</code>.</p>
+<section id="vector-gráfico-de-progreso" class="level3">
+<h3 class="anchored" data-anchor-id="vector-gráfico-de-progreso">Vector gráfico de progreso</h3>
+<pre class="text"><code>LOCAL  CH09-M01 ██████████ 11/11 (100 %, auditoría matemática del microtramo)
+GLOBAL TLOG     █████████░░░░░░░░░░░░░░░ 9/24 capítulos (37,5 %)</code></pre>
+<!-- El estado histórico de la etapa de redacción de M01 se conserva en §9.13; la auditoría M01 certifica su persistencia tras el cierre del capítulo. -->
+</section>
+</section>
+<section id="el-puente-estrictamente-sintáctico-con-el-cálculo-proposicional" class="level2">
+<h2 class="anchored" data-anchor-id="el-puente-estrictamente-sintáctico-con-el-cálculo-proposicional">9.14. El puente estrictamente sintáctico con el cálculo proposicional</h2>
+<section id="tlog-lem-00023" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00023">Lema 9.14.1 — Levantamiento de demostraciones proposicionales</h3>
+<p><strong>Enunciado.</strong> Sea <span class="math inline">\(h:\mathrm{PV}\to\operatorname{Fm}_\tau\)</span> cualquier aplicación de las variables proposicionales a fórmulas de primer orden, extendida de manera única a las cinco conectivas. Si <span class="math inline">\(\Delta\vdash_{\mathsf H_{\mathrm{CPL}}}\theta\)</span>, entonces</p>
+<p><span class="math display">\[
+\boxed{h[\Delta]\vdash_{\mathsf H_\tau^{=}}h(\theta).}
+\]</span></p>
+<p>En particular, <strong>toda instancia de una tautología proposicional</strong> obtenida al reemplazar proposiciones atómicas por fórmulas arbitrarias de primer orden es un teorema del cálculo <span class="math inline">\(\mathsf H_\tau^{=}\)</span>, ya que la completitud proposicional <span class="math inline">\([TLOG-MTH-00013](capitulo-04.md#tlog-mth-00013)\)</span> permite disponer de una prueba de su esquema en <span class="math inline">\(\mathsf H_{\mathrm{CPL}}\)</span>. Esta afirmación es <em>proposicional</em>: no declara demostrada la completitud de primer orden.</p>
+<p><strong>Demostración.</strong> Tomemos una prueba proposicional finita <span class="math inline">\((\theta_0,\ldots,\theta_n)\)</span>. La imagen <span class="math inline">\((h(\theta_0),\ldots,h(\theta_n))\)</span> es también una sucesión finita. Una línea-premisa cae en <span class="math inline">\(h[\Delta]\)</span>; una instancia de cualquiera de los doce esquemas <code>H1</code>–<code>H12</code> se transforma en la correspondiente instancia de <span class="math inline">\(\operatorname{Ax}^{\mathrm{prop}}_\tau\)</span>, incluida entre los axiomas por §9.5; y una aplicación de modus ponens se conserva porque <span class="math inline">\(h(\alpha\to\beta)=h(\alpha)\to h(\beta)\)</span>. Por inducción sobre las líneas se obtiene la derivación requerida. Si <span class="math inline">\(\theta\)</span> es tautología, su derivación desde <span class="math inline">\(\varnothing\)</span> proviene del capítulo 4; aplicamos la primera parte con <span class="math inline">\(\Delta=\varnothing\)</span>. Sólo se transforman secuencias sintácticas finitas, sin interpretar estructuras ni usar elección. <span class="math inline">\(\square\)</span></p>
+<p>Este lema autoriza usar, <strong>con constancia de la instancia</strong>, tautologías implicativas clásicas y reglas como introducción/eliminación de <span class="math inline">\(\land\)</span>, doble negación, contraposición, silogismo hipotético o explosión. No autoriza aplicar una regla cuantificacional como si fuese una tautología.</p>
+</section>
+</section>
+<section id="el-teorema-de-deducción-de-primer-orden" class="level2">
+<h2 class="anchored" data-anchor-id="el-teorema-de-deducción-de-primer-orden">9.15. El teorema de deducción de primer orden</h2>
+<section id="tlog-mth-00036" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00036">Metateorema 9.15.1 — Descarga de una premisa para un cálculo con <code>MP</code></h3>
+<p><strong>Enunciado.</strong> Para cualquier <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span> y <span class="math inline">\(\alpha,\beta\in\operatorname{Fm}_\tau\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\Gamma\cup\{\alpha\}\vdash_{\mathsf H_\tau^{=}}\beta
+\quad\Longleftrightarrow\quad
+\Gamma\vdash_{\mathsf H_\tau^{=}}(\alpha\to\beta).}
+\]</span></p>
+<p>No aparece una condición sobre las variables libres de <span class="math inline">\(\alpha\)</span>, porque <strong>la única regla primitiva de la derivación es <code>MP</code></strong> y la generalización se ha incorporado como propiedad de <em>axiomas</em>, no como regla aplicable a hipótesis.</p>
+<p><strong>Demostración.</strong> Para la implicación directa, fijemos una prueba <span class="math inline">\(\Pi=(\psi_0,\ldots,\psi_n)\)</span> de <span class="math inline">\(\beta\)</span> desde <span class="math inline">\(\Gamma\cup\{\alpha\}\)</span>. Por inducción en su índice construimos pruebas desde <span class="math inline">\(\Gamma\)</span> de <span class="math inline">\(\alpha\to\psi_k\)</span>. Si <span class="math inline">\(\psi_k=\alpha\)</span>, utilizamos la tautología proposicional <span class="math inline">\(\alpha\to\alpha\)</span>, cuyo levantamiento está disponible en §9.14. Si <span class="math inline">\(\psi_k\in\Gamma\)</span> o es axioma lógico, tenemos una prueba de una línea de <span class="math inline">\(\psi_k\)</span>, a la que añadimos <code>H1</code>, <span class="math inline">\(\psi_k\to(\alpha\to\psi_k)\)</span>, y una aplicación de <code>MP</code>. Finalmente, si <span class="math inline">\(\psi_k\)</span> resulta por <code>MP</code> de <span class="math inline">\(\chi\)</span> y <span class="math inline">\(\chi\to\psi_k\)</span> en posiciones anteriores, la inducción proporciona <span class="math inline">\(\alpha\to\chi\)</span> y <span class="math inline">\(\alpha\to(\chi\to\psi_k)\)</span>. La instancia de <code>H2</code></p>
+<p><span class="math display">\[
+(\alpha\to(\chi\to\psi_k))\to
+((\alpha\to\chi)\to(\alpha\to\psi_k))
+\]</span></p>
+<p>permite inferir <span class="math inline">\(\alpha\to\psi_k\)</span> mediante dos aplicaciones de <code>MP</code>. En <span class="math inline">\(k=n\)</span> obtenemos lo buscado. Para la implicación inversa, de <span class="math inline">\(\Gamma\vdash\alpha\to\beta\)</span> y de la premisa <span class="math inline">\(\alpha\)</span> se obtiene <span class="math inline">\(\beta\)</span> por <code>MP</code>, tras monotonía. <span class="math inline">\(\square\)</span></p>
+<p><strong>Control de alcance.</strong> El teorema descarga <strong>una premisa formal</strong>. No permite, por sí solo, introducir cuantificadores arbitrarios en pruebas que dependen de esa premisa. La diferencia entre el teorema de deducción irrestricto de este cálculo y la generalización lateralmente restringida de §9.11 es intencional.</p>
+</section>
+</section>
+<section id="reglas-derivadas-proposicionales" class="level2">
+<h2 class="anchored" data-anchor-id="reglas-derivadas-proposicionales">9.16. Reglas derivadas proposicionales</h2>
+<section id="tlog-pro-00021" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00021">Proposición 9.16.1 — Conjunción, disyunción, bicondicional y reducción clásica</h3>
+<p>Para <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span>, <span class="math inline">\(\alpha,\beta,\gamma\in\operatorname{Fm}_\tau\)</span>, son <strong>reglas admisibles</strong>:</p>
+<ol type="1">
+<li>De <span class="math inline">\(\Gamma\vdash\alpha\)</span> y <span class="math inline">\(\Gamma\vdash\beta\)</span> se obtiene <span class="math inline">\(\Gamma\vdash\alpha\land\beta\)</span>; de <span class="math inline">\(\Gamma\vdash\alpha\land\beta\)</span>, cada conjuntando.</li>
+<li>De <span class="math inline">\(\Gamma\vdash\alpha\)</span> se obtiene <span class="math inline">\(\Gamma\vdash\alpha\lor\beta\)</span>, y simétricamente; de <span class="math inline">\(\Gamma\vdash\alpha\to\gamma\)</span>, <span class="math inline">\(\Gamma\vdash\beta\to\gamma\)</span> y <span class="math inline">\(\Gamma\vdash\alpha\lor\beta\)</span>, se obtiene <span class="math inline">\(\Gamma\vdash\gamma\)</span>.</li>
+<li>De <span class="math inline">\(\Gamma\vdash\alpha\leftrightarrow\beta\)</span> se obtienen las dos implicaciones, y viceversa.</li>
+<li>Se admiten <span class="math inline">\(\Gamma\vdash\neg\neg\alpha\Rightarrow\Gamma\vdash\alpha\)</span>, contraposición, silogismo hipotético y <span class="math inline">\(\Gamma\vdash\alpha,\neg\alpha\Rightarrow\Gamma\vdash\gamma\)</span>.</li>
+</ol>
+<p><strong>Demostración.</strong> Cada regla sigue de una instancia concreta de los esquemas <code>H4</code>–<code>H12</code> y <code>H1</code>–<code>H3</code>, o de una tautología proposicional levantada por §9.14. Por ejemplo, <span class="math inline">\(\alpha\to(\beta\to\alpha\land\beta)\)</span> es <code>H6</code>: dos usos de <code>MP</code> dan (1); <span class="math inline">\((\alpha\to\gamma)\to((\beta\to\gamma)\to((\alpha\lor\beta)\to\gamma))\)</span> es <code>H9</code> y tres usos dan (2). La regla de explosión proviene de la tautología <span class="math inline">\(\alpha\to(\neg\alpha\to\gamma)\)</span>, y la contraposición de <span class="math inline">\((\alpha\to\beta)\to(\neg\beta\to\neg\alpha)\)</span>. Todas poseen pruebas puramente proposicionales por §9.14 y el Capítulo 4. Concatenamos las demostraciones y aplicamos <code>MP</code> el número finito de veces indicado. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="la-igualdad-funciona-deductivamente-como-identidad" class="level2">
+<h2 class="anchored" data-anchor-id="la-igualdad-funciona-deductivamente-como-identidad">9.17. La igualdad funciona deductivamente como identidad</h2>
+<section id="tlog-pro-00022" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00022">Proposición 9.17.1 — Simetría, transitividad y congruencia</h3>
+<p>Para términos <span class="math inline">\(t,u,v\)</span> se derivan:</p>
+<p><span class="math display">\[
+\begin{gathered}
+\vdash t\doteq t,\\
+\vdash (t\doteq u)\to(u\doteq t),\\
+\vdash (t\doteq u)\to((u\doteq v)\to(t\doteq v)).
+\end{gathered}
+\]</span></p>
+<p>Asimismo, dada una función <span class="math inline">\(f\in F_n\)</span>, para <span class="math inline">\(n\ge1\)</span>, y una relación <span class="math inline">\(R\in R_n\)</span>, la igualdad de argumentos permite derivar las correspondientes congruencias:</p>
+<p><span class="math display">\[
+\{t_i\doteq u_i:1\le i\le n\}\ \vdash\
+f(t_1,\ldots,t_n)\doteq f(u_1,\ldots,u_n),
+\]</span></p>
+<p><span class="math display">\[
+\{t_i\doteq u_i:1\le i\le n\}\cup\{R(t_1,\ldots,t_n)\}
+\ \vdash\ R(u_1,\ldots,u_n).
+\]</span></p>
+<p>Para <span class="math inline">\(n=0\)</span>, no hay hipótesis de igualdad: la expresión funcional es el mismo término constante y el predicado nulario es el mismo átomo, respectivamente.</p>
+<p><strong>Demostración.</strong> La reflexividad es <code>E1</code>. Para la simetría, tomemos una variable <span class="math inline">\(z\)</span> ausente de <span class="math inline">\(t,u\)</span> y la fórmula atómica <span class="math inline">\(\chi(z):=z\doteq t\)</span>. La instancia de <code>E2</code> es</p>
+<p><span class="math display">\[
+(t\doteq u)\to((t\doteq t)\to(u\doteq t)).
+\]</span></p>
+<p>Por <code>E1</code> y las reglas proposicionales se obtiene la implicación de simetría. Para la transitividad, escogemos <span class="math inline">\(z\)</span> ausente de <span class="math inline">\(t,u,v\)</span> y <span class="math inline">\(\chi(z):=t\doteq z\)</span>; <code>E2</code> produce</p>
+<p><span class="math display">\[
+(u\doteq v)\to((t\doteq u)\to(t\doteq v)).
+\]</span></p>
+<p>Se intercambia el orden de las hipótesis mediante una tautología de implicación, obteniendo la forma enunciada. Para las congruencias, sustituyamos <strong>un argumento por vez</strong>. Si <span class="math inline">\(\bar w\)</span> es la lista actual de argumentos y queremos cambiar su <span class="math inline">\(i\)</span>-ésimo término <span class="math inline">\(t_i\)</span> a <span class="math inline">\(u_i\)</span>, elegimos <span class="math inline">\(z\)</span> ausente de todos los términos y consideramos <span class="math inline">\(\chi(z):=f(w_1,\ldots,w_{i-1},z,w_{i+1},\ldots,w_n)\doteq f(\bar w)\)</span>. <code>E2</code> y reflexividad prueban la igualdad de los dos valores de función con el orden eventualmente invertido, que corregimos por simetría. La relación se trata con <span class="math inline">\(\chi(z):=R(w_1,\ldots,w_{i-1},z,w_{i+1},\ldots,w_n)\)</span>. Repetimos el paso finitas veces, y en el caso funcional encadenamos los resultados usando transitividad. Los reemplazos son <code>FreeFor</code> porque las fórmulas auxiliares son <strong>atómicas</strong> y <span class="math inline">\(z\)</span> es fresca; no hay cuantificadores que capturen variables. No se generaliza silenciosamente el esquema <code>E2</code> a un reemplazo textual arbitrario. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="reglas-cuantificacionales-derivadas" class="level2">
+<h2 class="anchored" data-anchor-id="reglas-cuantificacionales-derivadas">9.18. Reglas cuantificacionales derivadas</h2>
+<section id="tlog-pro-00023" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00023">Proposición 9.18.1 — Particularización, introducción existencial y dualidad</h3>
+<p>Para <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span> y <span class="math inline">\(\operatorname{FreeFor}_\tau(t,x,\varphi)\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Gamma\vdash\forall x\,\varphi&amp;\Longrightarrow\Gamma\vdash\varphi[t/x]_{\mathrm{lit}},\\
+\Gamma\vdash\varphi[t/x]_{\mathrm{lit}}&amp;\Longrightarrow\Gamma\vdash\exists x\,\varphi.
+\end{aligned}
+\]</span></p>
+<p>Además, bajo la condición <span class="math inline">\(x\notin\operatorname{FV}(\Gamma)\)</span>, se tiene <span class="math inline">\(\Gamma\vdash\varphi\Rightarrow\Gamma\vdash\forall x\varphi\)</span>. También es admisible la <strong>eliminación existencial controlada</strong>: si <span class="math inline">\(\Gamma\vdash\exists x\varphi\)</span>, <span class="math inline">\(\Gamma\vdash\varphi\to\psi\)</span> y <span class="math inline">\(x\notin\operatorname{FV}(\Gamma)\cup\operatorname{FV}(\psi)\)</span>, entonces <span class="math inline">\(\Gamma\vdash\psi\)</span>. Para toda <span class="math inline">\(\varphi\)</span>, sin condiciones laterales, son teoremas las dualidades</p>
+<p><span class="math display">\[
+\vdash(\exists x\,\varphi\leftrightarrow\neg\forall x\,\neg\varphi),
+\qquad
+\vdash(\forall x\,\varphi\leftrightarrow\neg\exists x\,\neg\varphi).
+\]</span></p>
+<p><strong>Demostración.</strong> Los dos primeros resultados son <code>Q1</code> y <code>Q2</code> seguidos de <code>MP</code>; el tercero es el metateorema 9.11.1. La primera dualidad es <code>Q5</code>. Para la segunda, sustituimos <span class="math inline">\(\varphi\)</span> por <span class="math inline">\(\neg\varphi\)</span> en <code>Q5</code>: <span class="math inline">\(\exists x\neg\varphi\leftrightarrow\neg\forall x\neg\neg\varphi\)</span>. Por equivalencia proposicional entre <span class="math inline">\(\varphi\)</span> y <span class="math inline">\(\neg\neg\varphi\)</span>, y por la congruencia de <span class="math inline">\(\forall\)</span> respecto de implicaciones teoremáticas derivada de <code>Q3</code> y la generalización para teoremas, se obtiene <span class="math inline">\(\forall x\neg\neg\varphi\leftrightarrow\forall x\varphi\)</span>. Finalmente, las leyes clásicas de negación y sustitución de equivalentes (9.16) concluyen la segunda dualidad. Cada aplicación de la congruencia cuantificacional se efectúa sobre un <strong>teorema</strong>; por eso ninguna variable queda libre en premisas utilizadas indebidamente. Para la eliminación existencial, de <span class="math inline">\(\Gamma\vdash\varphi\to\psi\)</span> la contraposición proposicional da <span class="math inline">\(\Gamma\vdash\neg\psi\to\neg\varphi\)</span>. Puesto que <span class="math inline">\(x\notin\operatorname{FV}(\Gamma)\)</span>, se puede generalizar esta implicación a <span class="math inline">\(\forall x(\neg\psi\to\neg\varphi)\)</span>. Por <code>Q3</code> y <code>Q4</code> (ya que <span class="math inline">\(x\notin\operatorname{FV}(\psi)\)</span>) se deduce <span class="math inline">\(\Gamma\vdash\neg\psi\to\forall x\neg\varphi\)</span>. <code>Q5</code> y la hipótesis <span class="math inline">\(\Gamma\vdash\exists x\varphi\)</span> proporcionan <span class="math inline">\(\Gamma\vdash\neg\forall x\neg\varphi\)</span>; mediante contraposición y doble negación clásicas concluye <span class="math inline">\(\Gamma\vdash\psi\)</span>. Todas las premisas han conservado su dependencia y las dos condiciones laterales se utilizaron expresamente. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="los-cambios-alfa-son-deductivamente-invisibles" class="level2">
+<h2 class="anchored" data-anchor-id="los-cambios-alfa-son-deductivamente-invisibles">9.19. Los cambios alfa son deductivamente invisibles</h2>
+<section id="tlog-mth-00037" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00037">Metateorema 9.19.1 — Equivalencia alfa implica equivalencia demostrable</h3>
+<p><strong>Enunciado.</strong> Si <span class="math inline">\(\varphi\equiv_\alpha\psi\)</span> en la gramática del Capítulo 6, entonces</p>
+<p><span class="math display">\[
+\boxed{\vdash_{\mathsf H_\tau^{=}}\varphi\leftrightarrow\psi.}
+\]</span></p>
+<p>El enunciado <strong>no</strong> confunde equivalencia alfa sintáctica, equivalencia demostrable y equivalencia semántica; sólo establece una implicación entre las dos primeras.</p>
+<p><strong>Demostración.</strong> Examinemos primero un paso alfa elemental <span class="math inline">\(\forall x\,\chi\rightsquigarrow_\alpha\forall y\,\chi[y/x]_{\mathrm{lit}}\)</span> con <span class="math inline">\(y\)</span> fresca para todos los nombres de <span class="math inline">\(\chi\)</span>. Sea <span class="math inline">\(\chi'=\chi[y/x]_{\mathrm{lit}}\)</span>. Desde la hipótesis <span class="math inline">\(\forall x\chi\)</span>, <code>Q1</code> con el término variable <span class="math inline">\(y\)</span> da <span class="math inline">\(\chi'\)</span>. Como <span class="math inline">\(y\)</span> no ocurre libre en <span class="math inline">\(\forall x\chi\)</span>, la regla admisible de §9.11 permite concluir <span class="math inline">\(\forall y\chi'\)</span>. El teorema de deducción descarga la hipótesis y produce</p>
+<p><span class="math display">\[
+\vdash(\forall x\chi)\to(\forall y\chi').
+\]</span></p>
+<p>Para la dirección inversa, la sustitución literal <span class="math inline">\(\chi'[x/y]_{\mathrm{lit}}\)</span> recupera <span class="math inline">\(\chi\)</span>: sólo se restauran hojas que eran ocurrencias libres de <span class="math inline">\(x\)</span>, y la frescura inicial evita colisiones y capturas, aun si <span class="math inline">\(\chi\)</span> posee vinculantes internos que se llaman <span class="math inline">\(x\)</span>. Como <span class="math inline">\(x\)</span> no pertenece a <span class="math inline">\(\operatorname{FV}(\forall y\chi')\)</span>, particularizar <span class="math inline">\(\forall y\chi'\)</span> con <span class="math inline">\(x\)</span>, generalizar después en <span class="math inline">\(x\)</span> y descargar la hipótesis da la implicación inversa. Por §9.16 obtenemos el bicondicional.</p>
+<p>Para <span class="math inline">\(\exists\)</span> usamos la dualidad de §9.18 y el caso universal aplicado a <span class="math inline">\(\neg\chi\)</span>: el renombrado ligado de <span class="math inline">\(\exists x\chi\)</span> es equivalente al de <span class="math inline">\(\forall x\neg\chi\)</span> y la equivalencia se recupera negando ambos lados. Para extender un paso alfa a un contexto, los cinco conectivos conservan equivalencias por tautologías proposicionales. Si <span class="math inline">\(\vdash\rho\leftrightarrow\eta\)</span>, la regla de generalización para teoremas aplicada a ambas implicaciones, junto con <code>Q3</code>, da <span class="math inline">\(\vdash\forall z\rho\leftrightarrow\forall z\eta\)</span>, y la dualidad obtiene lo mismo para <span class="math inline">\(\exists z\)</span>. Así cada paso alfa contextual preserva equivalencia demostrable. Por reflexividad, simetría y transitividad del bicondicional clásico, también la preserva su clausura de equivalencia <span class="math inline">\(\equiv_\alpha\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Nota crítica.</strong> Aquí la frescura del nombre de renombrado es fuerte: incluye los <strong>nombres ligados</strong> de la matriz, no solamente sus variables libres. Con ello la ida y la vuelta de la sustitución literal son válidas; sin esa condición, el razonamiento de recuperación de la matriz no estaría justificado.</p>
+</section>
+</section>
+<section id="conjuntos-deductivamente-cerrados-y-teorías-de-sentencias" class="level2">
+<h2 class="anchored" data-anchor-id="conjuntos-deductivamente-cerrados-y-teorías-de-sentencias">9.20. Conjuntos deductivamente cerrados y teorías de sentencias</h2>
+<section id="tlog-def-00055" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00055">Definición 9.20.1 — Clausura deductiva y teoría sintáctica</h3>
+<p>Para <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span> definimos</p>
+<p><span class="math display">\[
+\operatorname{Cn}^{\mathrm{ded}}_{\mathsf H_\tau^{=}}(\Gamma)
+:=\{\varphi\in\operatorname{Fm}_\tau:\Gamma\vdash_{\mathsf H_\tau^{=}}\varphi\}.
+\]</span></p>
+<p>Este es un <strong>conjunto</strong> por separación. Llamamos <em>conjunto deductivamente cerrado de fórmulas</em> a un <span class="math inline">\(D\subseteq\operatorname{Fm}_\tau\)</span> para el cual <span class="math inline">\(D=\operatorname{Cn}^{\mathrm{ded}}(D)\)</span>. No se impone que las fórmulas de <span class="math inline">\(D\)</span> sean sentencias.</p>
+<p>Una <em>teoría sintáctica de sentencias</em> es, en cambio, un conjunto <span class="math inline">\(T\subseteq\operatorname{Sent}_\tau\)</span> con</p>
+<p><span class="math display">\[
+\boxed{T=\operatorname{Cn}^{\mathrm{ded}}(T)\cap\operatorname{Sent}_\tau.}
+\]</span></p>
+<p>La intersección con <span class="math inline">\(\operatorname{Sent}_\tau\)</span> es indispensable: incluso desde premisas que son sentencias se derivan fórmulas abiertas como <span class="math inline">\(x\doteq x\)</span>. Para un conjunto de axiomas de sentencia <span class="math inline">\(S\)</span>, su <strong>teoría generada</strong> se define por <span class="math inline">\(\operatorname{Th}^{\mathrm{ded}}_\tau(S):=\operatorname{Cn}^{\mathrm{ded}}(S)\cap\operatorname{Sent}_\tau\)</span>. Esta definición no pide ni presupone modelos de <span class="math inline">\(S\)</span>.</p>
+</section>
+</section>
+<section id="la-clausura-deductiva-es-un-operador-finitario" class="level2">
+<h2 class="anchored" data-anchor-id="la-clausura-deductiva-es-un-operador-finitario">9.21. La clausura deductiva es un operador finitario</h2>
+<section id="tlog-pro-00024" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00024">Proposición 9.21.1 — Extensividad, monotonía, idempotencia y cierre de teorías</h3>
+<p>Para cualesquiera <span class="math inline">\(\Gamma,\Delta\subseteq\operatorname{Fm}_\tau\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\Gamma\subseteq\operatorname{Cn}^{\mathrm{ded}}(\Gamma),\\
+&amp;\Gamma\subseteq\Delta\Rightarrow
+\operatorname{Cn}^{\mathrm{ded}}(\Gamma)\subseteq
+\operatorname{Cn}^{\mathrm{ded}}(\Delta),\\
+&amp;\operatorname{Cn}^{\mathrm{ded}}(\operatorname{Cn}^{\mathrm{ded}}(\Gamma))
+=\operatorname{Cn}^{\mathrm{ded}}(\Gamma),\\
+&amp;\operatorname{Cn}^{\mathrm{ded}}(\Gamma)
+=\bigcup_{\substack{\Gamma_0\subseteq\Gamma\\\Gamma_0\text{ finito}}}
+\operatorname{Cn}^{\mathrm{ded}}(\Gamma_0).
+\end{aligned}
+\]</span></p>
+<p>Además, <span class="math inline">\(\operatorname{Th}^{\mathrm{ded}}_\tau(S)\)</span> es una teoría sintáctica de sentencias; todo conjunto de sentencias <span class="math inline">\(S\)</span> está contenido en su teoría generada, y cualquier teoría de sentencias que contenga <span class="math inline">\(S\)</span> contiene también a <span class="math inline">\(\operatorname{Th}^{\mathrm{ded}}_\tau(S)\)</span>.</p>
+<p><strong>Demostración.</strong> Las dos primeras propiedades se deducen de las reglas de premisa y monotonía de §9.10. Una dirección de la idempotencia es extensividad; para la otra, cada miembro <span class="math inline">\(\delta\in\operatorname{Cn}^{\mathrm{ded}}(\Gamma)\)</span> tiene una demostración desde <span class="math inline">\(\Gamma\)</span>, y el corte de §9.10 transforma toda demostración posterior que lo utilice en una desde <span class="math inline">\(\Gamma\)</span>. La identidad finitaria es exactamente la finitariedad de pruebas del mismo apartado, en ambas direcciones por monotonía. Para las sentencias, si <span class="math inline">\(S\subseteq\operatorname{Sent}_\tau\)</span>, el cierre <span class="math inline">\(D=\operatorname{Cn}^{\mathrm{ded}}(S)\)</span> es cerrado por idempotencia. Sea <span class="math inline">\(T=D\cap\operatorname{Sent}_\tau\)</span>. La inclusión <span class="math inline">\(T\subseteq D\)</span> y la idempotencia dan <span class="math inline">\(\operatorname{Cn}^{\mathrm{ded}}(T)\subseteq D\)</span>; inversamente <span class="math inline">\(S\subseteq T\)</span> implica <span class="math inline">\(D\subseteq\operatorname{Cn}^{\mathrm{ded}}(T)\)</span>. Así <span class="math inline">\(\operatorname{Cn}^{\mathrm{ded}}(T)=D\)</span>, y al intersectar con sentencias obtenemos <span class="math inline">\(T=\operatorname{Th}^{\mathrm{ded}}_\tau(T)\)</span>. La minimalidad sigue por monotonía y cierre de cualquier teoría que contenga <span class="math inline">\(S\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="consistencia-como-ausencia-de-contradicción-demostrable" class="level2">
+<h2 class="anchored" data-anchor-id="consistencia-como-ausencia-de-contradicción-demostrable">9.22. Consistencia como ausencia de contradicción demostrable</h2>
+<section id="tlog-def-00056" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00056">Definición 9.22.1 — Contradicción fija y consistencia sintáctica</h3>
+<p>Fijamos la <strong>sentencia</strong> <span class="math inline">\(\kappa:=\forall x_0(x_0\doteq x_0)\)</span> y la abreviatura metateórica de fórmula objeto</p>
+<p><span class="math display">\[
+\boxed{\bot_\tau:=(\kappa\land\neg\kappa).}
+\]</span></p>
+<p>No se amplía el alfabeto objeto con un nuevo símbolo <span class="math inline">\(\bot\)</span>. Para <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span>, decimos que <span class="math inline">\(\Gamma\)</span> es <em>inconsistente sintácticamente</em> cuando <span class="math inline">\(\Gamma\vdash_{\mathsf H_\tau^{=}}\bot_\tau\)</span>, y <em>consistente</em> cuando <span class="math inline">\(\Gamma\nvdash_{\mathsf H_\tau^{=}}\bot_\tau\)</span>. Estas nociones se formulan sólo en términos de derivaciones; <strong>no</strong> son equivalentes por definición a existencia de modelo.</p>
+<p>La oración <span class="math inline">\(\kappa\)</span> es teorema: <span class="math inline">\(x_0\doteq x_0\)</span> es <code>E1</code> y su clausura universal es otro axioma de §9.5. Esta observación fija un testigo sintáctico explícito y estable para los controles de consistencia.</p>
+</section>
+</section>
+<section id="caracterizaciones-puramente-deductivas-de-consistencia" class="level2">
+<h2 class="anchored" data-anchor-id="caracterizaciones-puramente-deductivas-de-consistencia">9.23. Caracterizaciones puramente deductivas de consistencia</h2>
+<section id="tlog-pro-00025" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00025">Proposición 9.23.1 — Explosión, pares contradictorios y adjunción</h3>
+<p>Para un conjunto <span class="math inline">\(\Gamma\subseteq\operatorname{Fm}_\tau\)</span> se equivalen:</p>
+<ol type="1">
+<li><span class="math inline">\(\Gamma\vdash\bot_\tau\)</span>.</li>
+<li>Existen <span class="math inline">\(\alpha\in\operatorname{Fm}_\tau\)</span> tal que <span class="math inline">\(\Gamma\vdash\alpha\)</span> y <span class="math inline">\(\Gamma\vdash\neg\alpha\)</span>.</li>
+<li>Para toda <span class="math inline">\(\beta\in\operatorname{Fm}_\tau\)</span>, <span class="math inline">\(\Gamma\vdash\beta\)</span>.</li>
+</ol>
+<p>Para toda fórmula <span class="math inline">\(\rho\)</span>, se tiene asimismo</p>
+<p><span class="math display">\[
+\boxed{\Gamma\cup\{\rho\}\text{ es inconsistente}
+\quad\Longleftrightarrow\quad\Gamma\vdash\neg\rho.}
+\]</span></p>
+<p><strong>Demostración.</strong> (1) implica (2) tomando <span class="math inline">\(\alpha=\kappa\)</span> y eliminando la conjunción de <span class="math inline">\(\kappa\land\neg\kappa\)</span> mediante §9.16. De (2), la regla derivada de conjunción produce <span class="math inline">\(\alpha\land\neg\alpha\)</span>, y la tautología proposicional <span class="math inline">\((\alpha\land\neg\alpha)\to\bot_\tau\)</span> —levantada por §9.14— produce (1). La explosión de §9.16 obtiene cualquier <span class="math inline">\(\beta\)</span> desde el par contradictorio, dando (3); al tomar <span class="math inline">\(\beta=\bot_\tau\)</span> se vuelve a (1).</p>
+<p>Si <span class="math inline">\(\Gamma\cup\{\rho\}\)</span> es inconsistente, el teorema de deducción entrega <span class="math inline">\(\Gamma\vdash\rho\to\bot_\tau\)</span>. La instancia de la tautología clásica <span class="math inline">\((\rho\to\bot_\tau)\to\neg\rho\)</span>, donde <span class="math inline">\(\bot_\tau\)</span> es la conjunción <span class="math inline">\(\kappa\land\neg\kappa\)</span>, da <span class="math inline">\(\Gamma\vdash\neg\rho\)</span>. Inversamente, desde <span class="math inline">\(\Gamma\vdash\neg\rho\)</span> la premisa adicional <span class="math inline">\(\rho\)</span> permite obtener una contradicción y por tanto <span class="math inline">\(\bot_\tau\)</span>. No se emplea satisfacibilidad, corrección ni completitud. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="teorías-de-sentencias-y-clausura-universal" class="level2">
+<h2 class="anchored" data-anchor-id="teorías-de-sentencias-y-clausura-universal">9.24. Teorías de sentencias y clausura universal</h2>
+<section id="tlog-mth-00038" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00038">Metateorema 9.24.1 — Las sentencias como premisas autorizan generalización</h3>
+<p><strong>Enunciado.</strong> Sea <span class="math inline">\(S\subseteq\operatorname{Sent}_\tau\)</span> un conjunto cualquiera de sentencias y sea <span class="math inline">\(\varphi\in\operatorname{Fm}_\tau\)</span>. Con la clausura universal canónica <span class="math inline">\(\varphi^\forall\)</span> de §8.30, se verifica</p>
+<p><span class="math display">\[
+\boxed{S\vdash_{\mathsf H_\tau^{=}}\varphi
+\quad\Longleftrightarrow\quad
+S\vdash_{\mathsf H_\tau^{=}}\varphi^\forall.}
+\]</span></p>
+<p>Más generalmente, para cualquier variable <span class="math inline">\(x\)</span>, <span class="math inline">\(S\vdash\varphi\iff S\vdash\forall x\varphi\)</span>. Estas equivalencias son <strong>sintácticas</strong> y no se identifican con la relación de consecuencia global del Capítulo 8.</p>
+<p><strong>Demostración.</strong> Al ser todas las fórmulas de <span class="math inline">\(S\)</span> sentencias, <span class="math inline">\(\operatorname{FV}(S)=\varnothing\)</span>. La admisibilidad de la generalización (§9.11) permite pasar de una prueba de <span class="math inline">\(\varphi\)</span> desde <span class="math inline">\(S\)</span> a otra de <span class="math inline">\(\forall x\varphi\)</span> desde <span class="math inline">\(S\)</span>, para cualquier <span class="math inline">\(x\)</span>, y repetir la transformación un número finito de veces. La clausura universal <span class="math inline">\(\varphi^\forall\)</span> cuantifica sólo las finitas variables libres, en orden fijado por §8.30. Recíprocamente, de <span class="math inline">\(\forall x\theta\)</span> podemos inferir <span class="math inline">\(\theta\)</span> por <code>Q1</code> usando el <strong>término variable <span class="math inline">\(x\)</span></strong>, que siempre es libre para sustituirse a sí mismo, seguido de <code>MP</code>; iterando sobre el prefijo finito de <span class="math inline">\(\varphi^\forall\)</span> recuperamos <span class="math inline">\(\varphi\)</span>. No aparecen premisas adicionales que dependan de las variables generalizadas. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="ejemplos-y-fronteras-de-lo-demostrado" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-y-fronteras-de-lo-demostrado">9.25. Ejemplos y fronteras de lo demostrado</h2>
+<p><strong>Una premisa abierta y el fallo de la generalización irrestricta.</strong> Si <span class="math inline">\(P\)</span> es un símbolo relacional unario, entonces <span class="math inline">\(\{P(x)\}\vdash P(x)\)</span> por regla de premisa. Esto <strong>no</strong> permite escribir <span class="math inline">\(\{P(x)\}\vdash\forall xP(x)\)</span> por §9.11, pues <span class="math inline">\(x\in\operatorname{FV}(\{P(x)\})\)</span>. Tampoco se ha demostrado su <em>no derivabilidad</em>: para ello se necesitaría la corrección del sistema, diferida al Capítulo 10. El contramodelo semántico del §9.12 ilustra el peligro, pero no se utiliza como prueba de un resultado sintáctico aquí.</p>
+<p><strong>Constantes, predicados nularios y congruencia.</strong> Si <span class="math inline">\(c\in F_0\)</span>, <code>E1</code> autoriza <span class="math inline">\(c\doteq c\)</span>. Si <span class="math inline">\(R\in R_0\)</span>, las reglas proposicionales permiten <span class="math inline">\(\{R(),R()\to\chi\}\vdash\chi\)</span>, sin interpretar <span class="math inline">\(R()\)</span>. Estas particularidades verifican que el cálculo conserva las aridades nulas de los capítulos 5–8.</p>
+<p><strong>Teoría sintáctica versus teoría semántica.</strong> La clausura <span class="math inline">\(\operatorname{Th}^{\mathrm{ded}}_\tau(S)\)</span> se determina exclusivamente por derivaciones finitas. La teoría <span class="math inline">\(\operatorname{Th}_\tau(\mathfrak A)\)</span> y la clausura <span class="math inline">\(\operatorname{Cn}^{\mathrm{sem}}_\tau(S)\)</span> del Capítulo 8 se determinan por satisfacción. La coincidencia de ciertos cierres, bajo condiciones precisas, requerirá los teoremas de corrección y completitud. Este capítulo no los importa.</p>
+</section>
+<section id="cierre-matemático-de-ch09-m02-y-del-capítulo-9" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-matemático-de-ch09-m02-y-del-capítulo-9">9.26. Cierre matemático de <code>CH09-M02</code> y del Capítulo 9</h2>
+<p>Los resultados §§9.14–9.24 completan la función arquitectónica del Capítulo 9: ya existe un cálculo de Hilbert para fórmulas arbitrarias de signatura conjuntista, con axiomas y reglas tipadas, pruebas finitas, teorema de deducción, generalización con condición lateral, igualdad congruencial, reglas derivadas, clausura deductiva y nociones sintácticas de teoría y consistencia. Los esquemas cubren funciones/relaciones nularias y ambos cuantificadores <strong>primitivos</strong>.</p>
+<p><strong>Frontera rigurosa:</strong> una afirmación <span class="math inline">\(\Gamma\vdash\varphi\)</span> todavía <strong>no</strong> implica aquí <span class="math inline">\(\Gamma\models_\tau\varphi\)</span> por un metateorema ya registrado; tampoco se infiere completitud, compacidad, decidibilidad ni enumerabilidad efectiva para signaturas arbitrarias. Tales obligaciones tienen sus propios capítulos y condiciones de fundamento.</p>
+<pre class="text"><code>TLOG-CH09-M01 = CLOSED / PASS / DRIVE-READBACK-PASS
+TLOG-CH09-M02 = CLOSED / PASS / DRIVE-READBACK-PASS
+TLOG-CH09-0001 = CLOSED / PASS / DRIVE-READBACK-PASS
+new mathematical nodes CH09-M02 = 11
+chapter 9 nodes = 22
+TLOG registered/closed nodes = 166/166
+DAG = 166 nodes / 446 direct edges / acyclic PASS
+Lean compiled/verified = 0
+external interfaces = 0
+chapters closed mathematically = 10/24 (41.7 %)
+PART I = CLOSED; PART II = OPEN</code></pre>
+<p><strong>Siguiente frente:</strong> <code>TLOG-CH10-M01 — Corrección del cálculo de primer orden: validez de los esquemas, preservación de MP y teorema de corrección</code>.</p>
+<section id="vector-de-progreso-del-microtramo" class="level3">
+<h3 class="anchored" data-anchor-id="vector-de-progreso-del-microtramo">Vector de progreso del microtramo</h3>
+<pre class="text"><code>LOCAL  CH09-M02 ██████████ 11/11 (100 %, pruebas redactadas)
+GLOBAL TLOG     ██████████░░░░░░░░░░░░░░ 10/24 capítulos (41,7 %)</code></pre>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-08.html">← Capítulo 8</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-10.html">Capítulo 10 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

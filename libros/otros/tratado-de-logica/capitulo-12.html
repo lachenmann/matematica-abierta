@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 12 — El lenguaje de la teoría de conjuntos y los axiomas de ZF – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#la-teoría-de-conjuntos-como-objeto-formal" id="toc-la-teoría-de-conjuntos-como-objeto-formal" class="nav-link active" data-scroll-target="#la-teoría-de-conjuntos-como-objeto-formal">12.0. La teoría de conjuntos como objeto formal</a></li>
+  <li><a href="#separación-estricta-de-zf-metateórica-y-zf-objeto" id="toc-separación-estricta-de-zf-metateórica-y-zf-objeto" class="nav-link" data-scroll-target="#separación-estricta-de-zf-metateórica-y-zf-objeto">12.1. Separación estricta de ZF metateórica y ZF objeto</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00014" id="toc-tlog-cnv-00014" class="nav-link" data-scroll-target="#tlog-cnv-00014">Convención 12.1.1 — Separación estricta de ZF metateórica y ZF objeto</a></li>
+  </ul></li>
+  <li><a href="#signatura-pura-de-pertenencia" id="toc-signatura-pura-de-pertenencia" class="nav-link" data-scroll-target="#signatura-pura-de-pertenencia">12.2. Signatura pura de pertenencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00060" id="toc-tlog-def-00060" class="nav-link" data-scroll-target="#tlog-def-00060">Definición 12.2.1 — Signatura pura de pertenencia</a></li>
+  </ul></li>
+  <li><a href="#abreviaciones-conservativas-y-normalización-de-vinculantes" id="toc-abreviaciones-conservativas-y-normalización-de-vinculantes" class="nav-link" data-scroll-target="#abreviaciones-conservativas-y-normalización-de-vinculantes">12.3. Abreviaciones conservativas y normalización de vinculantes</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00061" id="toc-tlog-def-00061" class="nav-link" data-scroll-target="#tlog-def-00061">Definición 12.3.1 — Abreviaciones conservativas y normalización de vinculantes</a></li>
+  </ul></li>
+  <li><a href="#axioma-de-extensionalidad" id="toc-axioma-de-extensionalidad" class="nav-link" data-scroll-target="#axioma-de-extensionalidad">12.4. Axioma de extensionalidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00005" id="toc-tlog-axm-00005" class="nav-link" data-scroll-target="#tlog-axm-00005">Axioma 12.4.1 — Axioma de extensionalidad</a></li>
+  </ul></li>
+  <li><a href="#axioma-de-pares" id="toc-axioma-de-pares" class="nav-link" data-scroll-target="#axioma-de-pares">12.5. Axioma de pares</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00006" id="toc-tlog-axm-00006" class="nav-link" data-scroll-target="#tlog-axm-00006">Axioma 12.5.1 — Axioma de pares</a></li>
+  </ul></li>
+  <li><a href="#axioma-de-unión" id="toc-axioma-de-unión" class="nav-link" data-scroll-target="#axioma-de-unión">12.6. Axioma de unión</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00007" id="toc-tlog-axm-00007" class="nav-link" data-scroll-target="#tlog-axm-00007">Axioma 12.6.1 — Axioma de unión</a></li>
+  </ul></li>
+  <li><a href="#axioma-del-conjunto-potencia" id="toc-axioma-del-conjunto-potencia" class="nav-link" data-scroll-target="#axioma-del-conjunto-potencia">12.7. Axioma del conjunto potencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00008" id="toc-tlog-axm-00008" class="nav-link" data-scroll-target="#tlog-axm-00008">Axioma 12.7.1 — Axioma del conjunto potencia</a></li>
+  </ul></li>
+  <li><a href="#axioma-del-infinito-en-lenguaje-primitivo" id="toc-axioma-del-infinito-en-lenguaje-primitivo" class="nav-link" data-scroll-target="#axioma-del-infinito-en-lenguaje-primitivo">12.8. Axioma del infinito en lenguaje primitivo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00009" id="toc-tlog-axm-00009" class="nav-link" data-scroll-target="#tlog-axm-00009">Axioma 12.8.1 — Axioma del infinito en lenguaje primitivo</a></li>
+  </ul></li>
+  <li><a href="#esquema-de-separación-con-parámetros" id="toc-esquema-de-separación-con-parámetros" class="nav-link" data-scroll-target="#esquema-de-separación-con-parámetros">12.9. Esquema de separación con parámetros</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00010" id="toc-tlog-axm-00010" class="nav-link" data-scroll-target="#tlog-axm-00010">Esquema axiomático 12.9.1 — Esquema de separación con parámetros</a></li>
+  </ul></li>
+  <li><a href="#esquema-de-reemplazo-funcional-sobre-conjuntos" id="toc-esquema-de-reemplazo-funcional-sobre-conjuntos" class="nav-link" data-scroll-target="#esquema-de-reemplazo-funcional-sobre-conjuntos">12.10. Esquema de reemplazo funcional sobre conjuntos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00011" id="toc-tlog-axm-00011" class="nav-link" data-scroll-target="#tlog-axm-00011">Esquema axiomático 12.10.1 — Esquema de reemplazo funcional sobre conjuntos</a></li>
+  </ul></li>
+  <li><a href="#axioma-de-fundamentación-o-regularidad" id="toc-axioma-de-fundamentación-o-regularidad" class="nav-link" data-scroll-target="#axioma-de-fundamentación-o-regularidad">12.11. Axioma de fundamentación o regularidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-axm-00012" id="toc-tlog-axm-00012" class="nav-link" data-scroll-target="#tlog-axm-00012">Axioma 12.11.1 — Axioma de fundamentación o regularidad</a></li>
+  </ul></li>
+  <li><a href="#conjunto-de-axiomas-objeto-de-zf" id="toc-conjunto-de-axiomas-objeto-de-zf" class="nav-link" data-scroll-target="#conjunto-de-axiomas-objeto-de-zf">12.12. Conjunto de axiomas objeto de ZF</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00062" id="toc-tlog-def-00062" class="nav-link" data-scroll-target="#tlog-def-00062">Definición 12.12.1 — Conjunto de axiomas objeto de ZF</a></li>
+  </ul></li>
+  <li><a href="#conjuntidad-y-numerabilidad-de-las-instancias-de-zf" id="toc-conjuntidad-y-numerabilidad-de-las-instancias-de-zf" class="nav-link" data-scroll-target="#conjuntidad-y-numerabilidad-de-las-instancias-de-zf">12.13. Conjuntidad y numerabilidad de las instancias de ZF</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00035" id="toc-tlog-lem-00035" class="nav-link" data-scroll-target="#tlog-lem-00035">Lema 12.13.1 — Conjuntidad y numerabilidad de las instancias de ZF</a></li>
+  </ul></li>
+  <li><a href="#teoría-objeto-zf-derivabilidad-y-satisfacción" id="toc-teoría-objeto-zf-derivabilidad-y-satisfacción" class="nav-link" data-scroll-target="#teoría-objeto-zf-derivabilidad-y-satisfacción">12.14. Teoría objeto ZF, derivabilidad y satisfacción</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00063" id="toc-tlog-def-00063" class="nav-link" data-scroll-target="#tlog-def-00063">Definición 12.14.1 — Teoría objeto ZF, derivabilidad y satisfacción</a></li>
+  </ul></li>
+  <li><a href="#existencia-y-unicidad-del-conjunto-vacío-en-zf-objeto" id="toc-existencia-y-unicidad-del-conjunto-vacío-en-zf-objeto" class="nav-link" data-scroll-target="#existencia-y-unicidad-del-conjunto-vacío-en-zf-objeto">12.15. Existencia y unicidad del conjunto vacío en ZF objeto</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00030" id="toc-tlog-pro-00030" class="nav-link" data-scroll-target="#tlog-pro-00030">Proposición 12.15.1 — Existencia y unicidad del conjunto vacío en ZF objeto</a></li>
+  </ul></li>
+  <li><a href="#imposibilidad-de-un-conjunto-universal-argumento-de-russell" id="toc-imposibilidad-de-un-conjunto-universal-argumento-de-russell" class="nav-link" data-scroll-target="#imposibilidad-de-un-conjunto-universal-argumento-de-russell">12.16. Imposibilidad de un conjunto universal: argumento de Russell</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00031" id="toc-tlog-pro-00031" class="nav-link" data-scroll-target="#tlog-pro-00031">Proposición 12.16.1 — Imposibilidad de un conjunto universal: argumento de Russell</a></li>
+  </ul></li>
+  <li><a href="#la-regularidad-excluye-la-autopertenencia" id="toc-la-regularidad-excluye-la-autopertenencia" class="nav-link" data-scroll-target="#la-regularidad-excluye-la-autopertenencia">12.17. La regularidad excluye la autopertenencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00032" id="toc-tlog-pro-00032" class="nav-link" data-scroll-target="#tlog-pro-00032">Proposición 12.17.1 — La regularidad excluye la autopertenencia</a></li>
+  </ul></li>
+  <li><a href="#existencia-condicional-de-modelos-de-zf-objeto" id="toc-existencia-condicional-de-modelos-de-zf-objeto" class="nav-link" data-scroll-target="#existencia-condicional-de-modelos-de-zf-objeto">12.18. Existencia condicional de modelos de ZF objeto</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00050" id="toc-tlog-mth-00050" class="nav-link" data-scroll-target="#tlog-mth-00050">Metateorema 12.18.1 — Existencia condicional de modelos de ZF objeto</a></li>
+  </ul></li>
+  <li><a href="#control-del-primer-bloque-y-obligaciones-de-cierre-del-capítulo" id="toc-control-del-primer-bloque-y-obligaciones-de-cierre-del-capítulo" class="nav-link" data-scroll-target="#control-del-primer-bloque-y-obligaciones-de-cierre-del-capítulo">12.19. Control del primer bloque y obligaciones de cierre del capítulo</a></li>
+  <li><a href="#variantes-axiomáticas-y-criterios-de-equivalencia" id="toc-variantes-axiomáticas-y-criterios-de-equivalencia" class="nav-link" data-scroll-target="#variantes-axiomáticas-y-criterios-de-equivalencia">12.20. Variantes axiomáticas y criterios de equivalencia</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cnv-00015" id="toc-tlog-cnv-00015" class="nav-link" data-scroll-target="#tlog-cnv-00015">Convención 12.20.1 — Equivalencia de presentaciones de una teoría objeto</a></li>
+  </ul></li>
+  <li><a href="#renombrado-y-cierre-de-los-esquemas" id="toc-renombrado-y-cierre-de-los-esquemas" class="nav-link" data-scroll-target="#renombrado-y-cierre-de-los-esquemas">12.21. Renombrado y cierre de los esquemas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00036" id="toc-tlog-lem-00036" class="nav-link" data-scroll-target="#tlog-lem-00036">Lema 12.21.1 — Invariancia deductiva de instancias bajo conversión alfa</a></li>
+  </ul></li>
+  <li><a href="#separación-y-dependencia-del-conjunto-ambiente" id="toc-separación-y-dependencia-del-conjunto-ambiente" class="nav-link" data-scroll-target="#separación-y-dependencia-del-conjunto-ambiente">12.22. Separación y dependencia del conjunto ambiente</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00033" id="toc-tlog-pro-00033" class="nav-link" data-scroll-target="#tlog-pro-00033">Proposición 12.22.1 — Equivalencia de los dos esquemas paramétricos de separación</a></li>
+  </ul></li>
+  <li><a href="#reemplazo-global-y-reemplazo-restringido-al-dominio" id="toc-reemplazo-global-y-reemplazo-restringido-al-dominio" class="nav-link" data-scroll-target="#reemplazo-global-y-reemplazo-restringido-al-dominio">12.23. Reemplazo global y reemplazo restringido al dominio</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00034" id="toc-tlog-pro-00034" class="nav-link" data-scroll-target="#tlog-pro-00034">Proposición 12.23.1 — Equivalencia de funcionalidad global y sobre el conjunto de partida</a></li>
+  </ul></li>
+  <li><a href="#forma-de-cobertura-funcional" id="toc-forma-de-cobertura-funcional" class="nav-link" data-scroll-target="#forma-de-cobertura-funcional">12.24. Forma de cobertura funcional</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00064" id="toc-tlog-def-00064" class="nav-link" data-scroll-target="#tlog-def-00064">Definición 12.24.1 — Esquema de cobertura de imágenes funcionales</a></li>
+  </ul></li>
+  <li><a href="#de-la-cobertura-a-la-imagen-exacta" id="toc-de-la-cobertura-a-la-imagen-exacta" class="nav-link" data-scroll-target="#de-la-cobertura-a-la-imagen-exacta">12.25. De la cobertura a la imagen exacta</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00051" id="toc-tlog-mth-00051" class="nav-link" data-scroll-target="#tlog-mth-00051">Metateorema 12.25.1 — Equivalencia de cobertura funcional y reemplazo en presencia de separación</a></li>
+  </ul></li>
+  <li><a href="#el-vacío-sin-utilizar-infinito" id="toc-el-vacío-sin-utilizar-infinito" class="nav-link" data-scroll-target="#el-vacío-sin-utilizar-infinito">12.26. El vacío sin utilizar infinito</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00035" id="toc-tlog-pro-00035" class="nav-link" data-scroll-target="#tlog-pro-00035">Proposición 12.26.1 — El conjunto vacío se demuestra con pares y separación</a></li>
+  </ul></li>
+  <li><a href="#el-nombre-del-vacío-como-extensión-definicional" id="toc-el-nombre-del-vacío-como-extensión-definicional" class="nav-link" data-scroll-target="#el-nombre-del-vacío-como-extensión-definicional">12.27. El nombre del vacío como extensión definicional</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00065" id="toc-tlog-def-00065" class="nav-link" data-scroll-target="#tlog-def-00065">Definición 12.27.1 — Extensión por una constante definida</a></li>
+  </ul></li>
+  <li><a href="#conservatividad-de-la-extensión-por-una-constante-definida" id="toc-conservatividad-de-la-extensión-por-una-constante-definida" class="nav-link" data-scroll-target="#conservatividad-de-la-extensión-por-una-constante-definida">12.28. Conservatividad de la extensión por una constante definida</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00052" id="toc-tlog-mth-00052" class="nav-link" data-scroll-target="#tlog-mth-00052">Metateorema 12.28.1 — Conservatividad sintáctica y semántica de definiciones únicas</a></li>
+  </ul></li>
+  <li><a href="#aplicación-canónica-a-la-constante-del-vacío" id="toc-aplicación-canónica-a-la-constante-del-vacío" class="nav-link" data-scroll-target="#aplicación-canónica-a-la-constante-del-vacío">12.29. Aplicación canónica a la constante del vacío</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00013" id="toc-tlog-cor-00013" class="nav-link" data-scroll-target="#tlog-cor-00013">Corolario 12.29.1 — La introducción de <span class="math inline">\(\varnothing\)</span> no crea teoremas antiguos</a></li>
+  </ul></li>
+  <li><a href="#instanciación-con-parámetros-axioma-cerrado-frente-a-cuerpo-abierto" id="toc-instanciación-con-parámetros-axioma-cerrado-frente-a-cuerpo-abierto" class="nav-link" data-scroll-target="#instanciación-con-parámetros-axioma-cerrado-frente-a-cuerpo-abierto">12.30. Instanciación con parámetros: axioma cerrado frente a cuerpo abierto</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00037" id="toc-tlog-lem-00037" class="nav-link" data-scroll-target="#tlog-lem-00037">Lema 12.30.1 — Particularización correcta de las instancias sentenciales</a></li>
+  </ul></li>
+  <li><a href="#los-testigos-de-separación-y-de-reemplazo-exacto-son-únicos" id="toc-los-testigos-de-separación-y-de-reemplazo-exacto-son-únicos" class="nav-link" data-scroll-target="#los-testigos-de-separación-y-de-reemplazo-exacto-son-únicos">12.31. Los testigos de separación y de reemplazo exacto son únicos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00038" id="toc-tlog-lem-00038" class="nav-link" data-scroll-target="#tlog-lem-00038">Lema 12.31.1 — Unicidad extensional de subconjuntos e imágenes definidos</a></li>
+  </ul></li>
+  <li><a href="#cierre-de-las-equivalencias-axiomáticas" id="toc-cierre-de-las-equivalencias-axiomáticas" class="nav-link" data-scroll-target="#cierre-de-las-equivalencias-axiomáticas">12.32. Cierre de las equivalencias axiomáticas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00053" id="toc-tlog-mth-00053" class="nav-link" data-scroll-target="#tlog-mth-00053">Metateorema 12.32.1 — Invariancia de la teoría objeto bajo las presentaciones alternativas autorizadas</a></li>
+  </ul></li>
+  <li><a href="#frontera-exacta-entre-teoría-objeto-definiciones-y-metateoría" id="toc-frontera-exacta-entre-teoría-objeto-definiciones-y-metateoría" class="nav-link" data-scroll-target="#frontera-exacta-entre-teoría-objeto-definiciones-y-metateoría">12.33. Frontera exacta entre teoría objeto, definiciones y metateoría</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 12 — El lenguaje de la teoría de conjuntos y los axiomas de ZF</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-11.html">← Capítulo 11</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-13.html">Capítulo 13 →</a></p>
+<section id="la-teoría-de-conjuntos-como-objeto-formal" class="level2">
+<h2 class="anchored" data-anchor-id="la-teoría-de-conjuntos-como-objeto-formal">12.0. La teoría de conjuntos como objeto formal</h2>
+<p>La Parte II ha definido de modo autónomo la sintaxis y la semántica de <span class="math inline">\(\mathrm{FOL}_{=}\)</span>, así como el cálculo deductivo <span class="math inline">\(\mathsf H_\tau^{=}\)</span>. La Parte III construye a partir de ellos la infraestructura conjuntista requerida por el corpus, comenzando por una <strong>teoría objeto de pertenencia</strong>, no por una nueva metateoría tácita. El contrato es estricto:</p>
+<p><span class="math display">\[
+\boxed{\mathsf M_{\mathrm{ext}}=\mathrm{ZF}\text{ clásica (sin AC)}\qquad\neq\qquad\mathsf{ZF}_{\mathrm{obj}}=(\tau_\in,\operatorname{Ax}_{\mathsf{ZF}}).}
+\]</span></p>
+<p>En particular, las expresiones <span class="math inline">\(\{a,b\}\)</span>, <span class="math inline">\(\varnothing\)</span>, <span class="math inline">\(\bigcup a\)</span>, <span class="math inline">\(\mathcal P(a)\)</span> no se tomarán inicialmente como términos del lenguaje puro. Todos los axiomas se escriben primero usando únicamente <span class="math inline">\(\in\)</span>, igualdad y la gramática lógica de los capítulos 5–6. Las abreviaciones editoriales se justifican por expansión y se introducen sólo cuando su existencia y unicidad son legítimas.</p>
+<p><strong>Procedencia y alcance:</strong> <code>TLOG-SRC-0002</code> (Enderton) y <code>TLOG-SRC-0003</code> (Rautenberg) conservan su papel previo de fundamentos lógico-formales. <code>TLOG-SRC-00011</code>, suplemento «Zermelo–Fraenkel Set Theory (ZF)» de <em>Stanford Encyclopedia of Philosophy</em>, se coteja en línea para las <strong>familias de axiomas</strong> (extensionalidad, pares, infinito, separación, reemplazo y regularidad). Los esquemas y derivaciones que siguen están reconstruidos específicamente para la firma primitiva y el cálculo HFOL= de TLOG. <strong>No se atribuye una lectura integral de un libro adicional ni una prueba importada</strong>.</p>
+</section>
+<section id="separación-estricta-de-zf-metateórica-y-zf-objeto" class="level2">
+<h2 class="anchored" data-anchor-id="separación-estricta-de-zf-metateórica-y-zf-objeto">12.1. Separación estricta de ZF metateórica y ZF objeto</h2>
+<section id="tlog-cnv-00014" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00014">Convención 12.1.1 — Separación estricta de ZF metateórica y ZF objeto</h3>
+<p>La notación <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span> significa la <strong>metateoría externa</strong> ZF clásica sin AC ni BPI incorporados. <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span> designa una <strong>teoría formal de sentencias</strong>, presentada más abajo mediante una signatura y un conjunto explícito de axiomas. No se trata de dos nombres del mismo objeto: la primera es el marco de razonamiento; la segunda es un conjunto de árboles sintácticos construido dentro de ese marco.</p>
+<p>Toda invocación de un axioma de <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span> en una demostración se indica como un paso de <strong>deducción objeto</strong>, <span class="math inline">\(\operatorname{Ax}_{\mathsf{ZF}}\vdash_{\mathsf H_{\tau_\in}^{=}}\theta\)</span>. No se inferirá por ello que <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span> tiene un modelo, es consistente o posee un universo de todos los conjuntos como <em>conjunto</em>. Los hechos sobre códigos, relaciones y sucesiones en el presente desarrollo pertenecen a <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span>. No se efectúa una sustitución encubierta de BPI por el axioma de elección.</p>
+</section>
+</section>
+<section id="signatura-pura-de-pertenencia" class="level2">
+<h2 class="anchored" data-anchor-id="signatura-pura-de-pertenencia">12.2. Signatura pura de pertenencia</h2>
+<section id="tlog-def-00060" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00060">Definición 12.2.1 — Signatura pura de pertenencia</h3>
+<p>Definimos la signatura extralógica unisortada <span class="math inline">\(\tau_\in\)</span> por</p>
+<p><span class="math display">\[
+F_n=\varnothing\quad(n\in\omega),\qquad R_2=\{\dot\in\},\qquad R_n=\varnothing\quad(n\ne2).
+\]</span></p>
+<p><span class="math inline">\(\dot\in\)</span> es un <strong>único símbolo relacional binario de objeto</strong>; imprimiremos <span class="math inline">\(x\mathbin\in y\)</span>, sin identificarlo con la relación de pertenencia de la metateoría. <span class="math inline">\(x\doteq y\)</span> continúa siendo <strong>igualdad lógica primitiva</strong>, no un segundo símbolo relacional extralógico. No hay constantes, funciones, símbolos de clase, cuantificador de clase ni predicados de verdad primitivos. Los términos <span class="math inline">\(\operatorname{Tm}_{\tau_\in}\)</span> son exactamente variables individuales <span class="math inline">\(X\)</span>: por ausencia de símbolos funcionales no se generan términos compuestos. Las fórmulas <span class="math inline">\(\operatorname{Fm}_{\tau_\in}\)</span> y sentencias <span class="math inline">\(\operatorname{Sent}_{\tau_\in}\)</span> son las del Capítulo 5 con cinco conectivos y <span class="math inline">\(\forall,\exists\)</span> primitivos.</p>
+<p>El texto formal mantendrá <span class="math inline">\(u\in v\)</span> para el átomo <span class="math inline">\(\dot\in(u,v)\)</span>; dentro de una demostración <strong>sobre</strong> el sistema utilizaremos <span class="math inline">\(a\mathrel{\in_{\mathrm{meta}}}b\)</span> cuando sea necesario desambiguar. Las estructuras objeto son conjuntos no vacíos acompañados por una relación binaria que <strong>no tiene por qué coincidir</strong> con la pertenencia externa.</p>
+</section>
+</section>
+<section id="abreviaciones-conservativas-y-normalización-de-vinculantes" class="level2">
+<h2 class="anchored" data-anchor-id="abreviaciones-conservativas-y-normalización-de-vinculantes">12.3. Abreviaciones conservativas y normalización de vinculantes</h2>
+<section id="tlog-def-00061" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00061">Definición 12.3.1 — Abreviaciones conservativas y normalización de vinculantes</h3>
+<p>En el lenguaje objeto se permiten las siguientes <strong>macroabreviaciones puramente sintácticas</strong>, siempre expandidas a fórmulas con los constructores primitivos:</p>
+<p><span class="math display">\[
+\begin{aligned}
+a\notin b&amp;:\equiv\neg(a\in b),\\
+a\subseteq b&amp;:\equiv\forall u\,(u\in a\to u\in b),\\
+\forall u\in a\,\psi&amp;:\equiv\forall u\,(u\in a\to\psi),\\
+\exists u\in a\,\psi&amp;:\equiv\exists u\,(u\in a\land\psi),\\
+\exists!u\,\psi(u)&amp;:\equiv\exists u\,[\psi(u)\land\forall v(\psi(v)\to v\doteq u)].
+\end{aligned}
+\]</span></p>
+<p>La variable auxiliar <span class="math inline">\(u\)</span> de <span class="math inline">\(a\subseteq b\)</span> se elige fresca respecto de ambos argumentos; la de unicidad <span class="math inline">\(v\)</span> es fresca respecto del contexto. Las ocurrencias de <span class="math inline">\(\psi(v)\)</span> significan sustitución de <strong>las ocurrencias libres designadas</strong> de <span class="math inline">\(u\)</span>, después de un renombrado alfa que impida captura. Por §6.29 la elección de nombres no altera las propiedades semánticas ni deductivas pertinentes. <span class="math inline">\(\bar p=(p_1,\ldots,p_k)\)</span> denota sólo un <strong>bloque finito de variables distintas</strong>, y <span class="math inline">\(\forall\bar p\)</span> significa un prefijo finito de cuantificadores universales; para <span class="math inline">\(k=0\)</span> es vacío.</p>
+<p>Las expresiones <span class="math inline">\(\varnothing\)</span>, <span class="math inline">\(\{a,b\}\)</span>, <span class="math inline">\(\bigcup a\)</span>, <span class="math inline">\(\mathcal P(a)\)</span> y <span class="math inline">\(\omega\)</span> <strong>no son aún términos del lenguaje objeto</strong>: su introducción como definiciones conservativas estará justificada en su debido lugar; únicamente <span class="math inline">\(\varnothing\)</span> será habilitada parcialmente por la prueba de §12.15.</p>
+</section>
+</section>
+<section id="axioma-de-extensionalidad" class="level2">
+<h2 class="anchored" data-anchor-id="axioma-de-extensionalidad">12.4. Axioma de extensionalidad</h2>
+<section id="tlog-axm-00005" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00005">Axioma 12.4.1 — Axioma de extensionalidad</h3>
+<p>El axioma es la sentencia del lenguaje de pertenencia</p>
+<p><span class="math display">\[
+\boxed{\forall a\forall b\,\Bigl[\bigl(\forall u\,(u\in a\leftrightarrow u\in b)\bigr)\to a\doteq b\Bigr].}
+\]</span></p>
+<p>Afirma identidad de objetos cuando tienen exactamente los mismos miembros. La implicación inversa se deduce de las reglas lógicas de igualdad y no se incorpora como un segundo axioma. En este lugar <strong>no</strong> se introduce una definición de igualdad por pertenencia: la igualdad sigue siendo lógica. Se trata de una única sentencia, no de un esquema paramétrico.</p>
+</section>
+</section>
+<section id="axioma-de-pares" class="level2">
+<h2 class="anchored" data-anchor-id="axioma-de-pares">12.5. Axioma de pares</h2>
+<section id="tlog-axm-00006" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00006">Axioma 12.5.1 — Axioma de pares</h3>
+<p>Se adopta la siguiente sentencia cerrada:</p>
+<p><span class="math display">\[
+\boxed{\forall a\forall b\exists c\forall u\,[u\in c\leftrightarrow(u\doteq a\lor u\doteq b)].}
+\]</span></p>
+<p>La existencia del objeto con exactamente los dos miembros prescritos es axiomática; su <strong>unicidad</strong> requerirá el axioma de extensionalidad. Se permite <span class="math inline">\(a\doteq b\)</span>, caso que posteriormente fundamentará el singleton. No se emplea <span class="math inline">\(\{a,b\}\)</span> en el <strong>enunciado formal</strong>, para evitar presuponer la construcción que precisamente se axiomatiza.</p>
+</section>
+</section>
+<section id="axioma-de-unión" class="level2">
+<h2 class="anchored" data-anchor-id="axioma-de-unión">12.6. Axioma de unión</h2>
+<section id="tlog-axm-00007" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00007">Axioma 12.6.1 — Axioma de unión</h3>
+<p>La sentencia de unión es</p>
+<p><span class="math display">\[
+\boxed{\forall a\exists b\forall u\,[u\in b\leftrightarrow\exists v\,(v\in a\land u\in v)].}
+\]</span></p>
+<p><span class="math inline">\(b\)</span> contiene precisamente los miembros de miembros de <span class="math inline">\(a\)</span>. Ni la existencia de un supuesto operador primitivo de unión ni un axioma de unión binaria se introducen subrepticiamente. La construcción <span class="math inline">\(\bigcup a\)</span> y su carácter único se desarrollarán desde extensionalidad en el Capítulo 13.</p>
+</section>
+</section>
+<section id="axioma-del-conjunto-potencia" class="level2">
+<h2 class="anchored" data-anchor-id="axioma-del-conjunto-potencia">12.7. Axioma del conjunto potencia</h2>
+<section id="tlog-axm-00008" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00008">Axioma 12.7.1 — Axioma del conjunto potencia</h3>
+<p>La sentencia es</p>
+<p><span class="math display">\[
+\boxed{\forall a\exists b\forall u\,[u\in b\leftrightarrow\forall v\,(v\in u\to v\in a)].}
+\]</span></p>
+<p>La expresión interior a la derecha es la expansión de <span class="math inline">\(u\subseteq a\)</span>, sin símbolo relacional primitivo nuevo. <span class="math inline">\(b\)</span> agrupa exactamente los subconjuntos de <span class="math inline">\(a\)</span>. La notación <span class="math inline">\(\mathcal P(a)\)</span> queda diferida a la prueba de unicidad correspondiente.</p>
+</section>
+</section>
+<section id="axioma-del-infinito-en-lenguaje-primitivo" class="level2">
+<h2 class="anchored" data-anchor-id="axioma-del-infinito-en-lenguaje-primitivo">12.8. Axioma del infinito en lenguaje primitivo</h2>
+<section id="tlog-axm-00009" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00009">Axioma 12.8.1 — Axioma del infinito en lenguaje primitivo</h3>
+<p>Para no anticipar <span class="math inline">\(\varnothing\)</span>, singletons o sucesores, fijamos <strong>literalmente</strong> la sentencia</p>
+<p><span class="math display">\[
+\boxed{\begin{aligned}
+\exists I\,\Bigl[&amp;\exists e\,(e\in I\land\forall u\,\neg(u\in e))\\
+&amp;\land\forall a\,\bigl(a\in I\to\exists b\,(b\in I\\
+&amp;\qquad\land\forall u\,[u\in b\leftrightarrow(u\in a\lor u\doteq a)])\bigr)\Bigr].
+\end{aligned}}
+\]</span></p>
+<p>El primer testigo es un miembro sin elementos; para cada miembro <span class="math inline">\(a\in I\)</span> existe en <span class="math inline">\(I\)</span> un miembro <span class="math inline">\(b\)</span> caracterizado extensionalmente por «elementos de <span class="math inline">\(a\)</span>, más <span class="math inline">\(a\)</span>». El enunciado expresa la habitual clausura bajo sucesor de von Neumann, pero <strong>no emplea aún <span class="math inline">\(a\cup\{a\}\)</span></strong> como término. Tras derivar existencia y unicidad de los conjuntos involucrados, recuperaremos la forma abreviada familiar. No se usa una noción previa de «conjunto infinito» para definir el axioma.</p>
+</section>
+</section>
+<section id="esquema-de-separación-con-parámetros" class="level2">
+<h2 class="anchored" data-anchor-id="esquema-de-separación-con-parámetros">12.9. Esquema de separación con parámetros</h2>
+<section id="tlog-axm-00010" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00010">Esquema axiomático 12.9.1 — Esquema de separación con parámetros</h3>
+<p>Sea <span class="math inline">\(\theta(u,a,\bar p)\in\operatorname{Fm}_{\tau_\in}\)</span> una fórmula cualquiera cuyas variables libres están entre <span class="math inline">\(u,a,p_1,\dots,p_k\)</span>. Exigimos que <span class="math inline">\(u,a,p_i\)</span> sean distintos y que el testigo <span class="math inline">\(b\)</span> <strong>no esté libre</strong> en <span class="math inline">\(\theta\)</span>; si un nombre auxiliar aparece ligado en <span class="math inline">\(\theta\)</span>, renombramos la fórmula alfa antes de construir la instancia. La instancia de <strong>separación</strong> es la sentencia</p>
+<p><span class="math display">\[
+\boxed{\operatorname{Sep}_{\theta}:\quad
+\forall\bar p\forall a\exists b\forall u\,[u\in b\leftrightarrow(u\in a\land\theta(u,a,\bar p))].}
+\]</span></p>
+<p>La notación <span class="math inline">\(\operatorname{Sep}_\theta\)</span> nombra <em>metateóricamente</em> el árbol de fórmula resultante. Por cada fórmula <span class="math inline">\(\theta\)</span> se obtiene <strong>una sentencia</strong>, no una cuantificación objeto sobre <span class="math inline">\(\theta\)</span>. El nombre <span class="math inline">\(a\)</span> puede figurar libre dentro del esquema original y es entonces cuantificado en la instancia; esto permite condiciones de separación que dependen también del conjunto de partida. En las pruebas se usa como caso <span class="math inline">\(\theta(u)\equiv\neg(u\in u)\)</span>. Separación sólo forma un subconjunto de un conjunto <span class="math inline">\(a\)</span> ya dado; <strong>no</strong> afirma comprensión irrestricta.</p>
+</section>
+</section>
+<section id="esquema-de-reemplazo-funcional-sobre-conjuntos" class="level2">
+<h2 class="anchored" data-anchor-id="esquema-de-reemplazo-funcional-sobre-conjuntos">12.10. Esquema de reemplazo funcional sobre conjuntos</h2>
+<section id="tlog-axm-00011" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00011">Esquema axiomático 12.10.1 — Esquema de reemplazo funcional sobre conjuntos</h3>
+<p>Sea <span class="math inline">\(\rho(u,v,a,\bar p)\in\operatorname{Fm}_{\tau_\in}\)</span> una fórmula arbitraria con variables libres entre <span class="math inline">\(u,v,a,p_1,\ldots,p_k\)</span>. Los nombres <span class="math inline">\(u,v,a,p_i\)</span> son distintos; <span class="math inline">\(b\)</span>, el testigo del conjunto imagen, se elige fresco respecto del soporte libre de <span class="math inline">\(\rho\)</span>; se normaliza cualquier colisión ligada mediante equivalencia alfa. La instancia <strong>restringida al dominio</strong> de reemplazo es la sentencia</p>
+<p><span class="math display">\[
+\boxed{\begin{aligned}
+\operatorname{Rep}_{\rho}:\quad\forall\bar p\forall a\,\Bigl[&amp;\bigl(\forall u\,(u\in a\to\exists!v\,\rho(u,v,a,\bar p))\bigr)\\
+&amp;\to\exists b\forall v\,[v\in b\leftrightarrow\exists u\,(u\in a\land\rho(u,v,a,\bar p))]\Bigr].
+\end{aligned}}
+\]</span></p>
+<p><span class="math inline">\(\exists!\)</span> se expande según §12.3. El carácter de función es <strong>condicional, sobre el conjunto de partida</strong>; no se exige que <span class="math inline">\(\rho\)</span> defina una aplicación total del universo objeto. Como parte de la especificación de formación, se distinguen las variables <span class="math inline">\(v\)</span> de <span class="math inline">\(\exists!v\)</span> y <span class="math inline">\(\forall v\)</span> por su alcance, y ninguna queda capturada. La imagen es un conjunto aunque no sea subconjunto del dominio original. Esta forma equivale, en presencia de los demás axiomas, a formulaciones corrientes que exigen funcionalidad global; aquí fijamos explícitamente la versión restringida, sin utilizar un operador metateórico de clase como símbolo objeto.</p>
+</section>
+</section>
+<section id="axioma-de-fundamentación-o-regularidad" class="level2">
+<h2 class="anchored" data-anchor-id="axioma-de-fundamentación-o-regularidad">12.11. Axioma de fundamentación o regularidad</h2>
+<section id="tlog-axm-00012" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-axm-00012">Axioma 12.11.1 — Axioma de fundamentación o regularidad</h3>
+<p>Se adopta la sentencia sin abreviación de vacío:</p>
+<p><span class="math display">\[
+\boxed{\forall a\,\Bigl[(\exists u\,u\in a)\to
+\exists v\,\bigl(v\in a\land\forall w\,(w\in a\to\neg(w\in v))\bigr)\Bigr].}
+\]</span></p>
+<p>Todo objeto con algún miembro posee un miembro <span class="math inline">\(v\)</span> sin intersección de miembros con el objeto inicial: <span class="math inline">\(v\)</span> es <span class="math inline">\(\in\)</span>-minimal <strong>dentro de ese conjunto</strong>. No se infiere de aquí que la relación de pertenencia sea un buen orden lineal del universo ni que cada clase propia tenga elemento mínimo. Esta sentencia, junto con pares, permitirá probar <span class="math inline">\(\forall x\neg(x\in x)\)</span> en §12.17.</p>
+</section>
+</section>
+<section id="conjunto-de-axiomas-objeto-de-zf" class="level2">
+<h2 class="anchored" data-anchor-id="conjunto-de-axiomas-objeto-de-zf">12.12. Conjunto de axiomas objeto de ZF</h2>
+<section id="tlog-def-00062" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00062">Definición 12.12.1 — Conjunto de axiomas objeto de ZF</h3>
+<p>Definimos, en <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span>, el conjunto de <strong>sentencias objeto</strong></p>
+<p><span class="math display">\[
+\boxed{\operatorname{Ax}_{\mathsf{ZF}}:=\{\operatorname{Ext},\operatorname{Pair},\operatorname{Union},\operatorname{Power},\operatorname{Inf},\operatorname{Reg}\}\cup\{\operatorname{Sep}_{\theta}:\theta\in\operatorname{Fm}_{\tau_\in}\}\cup\{\operatorname{Rep}_{\rho}:\rho\in\operatorname{Fm}_{\tau_\in}\}.}
+\]</span></p>
+<p>En las dos últimas familias se incluyen sólo instancias <strong>bien tipadas</strong> en los esquemas de §§12.9–12.10; las fórmulas originales se renombran y sus parámetros se cierran universalmente. Extensionalidad, pares, unión, potencia, infinito y regularidad son <strong>seis</strong> sentencias individuales; separación y reemplazo son <strong>dos</strong> esquemas. El nombre <span class="math inline">\(\operatorname{Ax}_{\mathsf{ZF}}\)</span> se refiere a este conjunto explícito, no al poder de deducción de la metateoría ni a una clase de todos los modelos.</p>
+<p>No hay en el conjunto un axioma de elección <span class="math inline">\(\mathsf{AC}\)</span>, el principio BPI ni axiomas que cuantifiquen sobre clases. La prueba de §12.13 justifica además que <span class="math inline">\(\operatorname{Ax}_{\mathsf{ZF}}\)</span> es un <strong>conjunto numerable de sentencias</strong> en la metateoría.</p>
+</section>
+</section>
+<section id="conjuntidad-y-numerabilidad-de-las-instancias-de-zf" class="level2">
+<h2 class="anchored" data-anchor-id="conjuntidad-y-numerabilidad-de-las-instancias-de-zf">12.13. Conjuntidad y numerabilidad de las instancias de ZF</h2>
+<section id="tlog-lem-00035" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00035">Lema 12.13.1 — Conjuntidad y numerabilidad de las instancias de ZF</h3>
+<p><strong>Enunciado.</strong> En <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span>, <span class="math inline">\(\operatorname{Ax}_{\mathsf{ZF}}\)</span> es un conjunto numerable de miembros de <span class="math inline">\(\operatorname{Sent}_{\tau_\in}\)</span>; cada instancia está determinada por un código finito de fórmula y su regla fija de cierre de parámetros.</p>
+<p><strong>Demostración.</strong> La signatura <span class="math inline">\(\tau_\in\)</span> consta de un símbolo extralógico; las variables <span class="math inline">\(X\)</span> y los tokens lógicos forman conjuntos explícitamente numerables. Codificamos tokens por naturales distintos, las secuencias finitas por una aplicación inyectiva en <span class="math inline">\(\omega\)</span>, y los árboles sintácticos por sus serializaciones parentizadas de legibilidad única (§5.14). De este modo <span class="math inline">\(\operatorname{Fm}_{\tau_\in}\subseteq\omega\)</span> tras una codificación inyectiva. Para una fórmula dada, la elección de las variables de la matriz se hace con las posiciones marcadas y se asignan nombres frescos por <strong>menor código libre</strong>, obteniendo una instancia única por reglas primitivas de formación; las fórmulas inadmisibles se omiten. Separación y reemplazo en la metateoría permiten reunir los gráficos de esas dos operaciones y sus imágenes como <strong>conjuntos</strong> de sentencias. Sus imágenes son numerables porque todo valor recibe el mínimo código de un antecedente; la unión con las seis sentencias aisladas sigue siendo numerable por un etiquetado finito. Cada prefijo universal cierra todas las variables libres designadas y el renombrado previo evita captura, luego los resultados pertenecen a <span class="math inline">\(\operatorname{Sent}_{\tau_\in}\)</span>. No se emplean AC, CC, DC ni BPI: una sola codificación explícita gobierna toda la construcción. <span class="math inline">\(\square\)</span></p>
+<p>La numerabilidad <strong>de los códigos de las fórmulas</strong> no convierte en decidible el conjunto de teoremas de ZF; no se hace esa afirmación.</p>
+</section>
+</section>
+<section id="teoría-objeto-zf-derivabilidad-y-satisfacción" class="level2">
+<h2 class="anchored" data-anchor-id="teoría-objeto-zf-derivabilidad-y-satisfacción">12.14. Teoría objeto ZF, derivabilidad y satisfacción</h2>
+<section id="tlog-def-00063" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00063">Definición 12.14.1 — Teoría objeto ZF, derivabilidad y satisfacción</h3>
+<p>Definimos <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span> como el <strong>par tipado</strong> formado por el cálculo lógico <span class="math inline">\(\mathsf H_{\tau_\in}^{=}\)</span> y la teoría de premisas <span class="math inline">\(\operatorname{Ax}_{\mathsf{ZF}}\)</span>. Para una sentencia <span class="math inline">\(\sigma\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathsf{ZF}_{\mathrm{obj}}\vdash\sigma
+&amp;:\Longleftrightarrow
+\operatorname{Ax}_{\mathsf{ZF}}\vdash_{\mathsf H_{\tau_\in}^{=}}\sigma,\\
+\mathfrak A\models\mathsf{ZF}_{\mathrm{obj}}
+&amp;:\Longleftrightarrow\mathfrak A\models_{\tau_\in}\operatorname{Ax}_{\mathsf{ZF}}.
+\end{aligned}
+\]</span></p>
+<p>La primera es una <strong>relación metateórica de existencia de una prueba finita</strong>; la segunda es una <strong>relación metateórica de satisfacción</strong> de todos los axiomas por una estructura <strong>de conjunto</strong> cuyo dominio puede tener relación de pertenencia no estándar. Ni <span class="math inline">\(\operatorname{Mod}(\mathsf{ZF}_{\mathrm{obj}})\)</span> ni la totalidad de estructuras se afirman conjuntos: son clases definibles. <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span> no es, por definición, <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span>. Los axiomas de ZF en la metateoría se utilizan para construir esta teoría objeto, no como líneas de prueba dentro de ella, salvo cuando una instancia concreta se incorpore explícitamente a la derivación.</p>
+</section>
+</section>
+<section id="existencia-y-unicidad-del-conjunto-vacío-en-zf-objeto" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-y-unicidad-del-conjunto-vacío-en-zf-objeto">12.15. Existencia y unicidad del conjunto vacío en ZF objeto</h2>
+<section id="tlog-pro-00030" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00030">Proposición 12.15.1 — Existencia y unicidad del conjunto vacío en ZF objeto</h3>
+<p><strong>Enunciado objeto.</strong></p>
+<p><span class="math display">\[
+\boxed{\mathsf{ZF}_{\mathrm{obj}}\vdash\exists e\,\bigl[(\forall u\,\neg(u\in e))\land\forall d\,((\forall u\,\neg(u\in d))\to d\doteq e)\bigr].}
+\]</span></p>
+<p><strong>Demostración en <span class="math inline">\(\mathsf H_{\tau_\in}^{=}\)</span> desde los axiomas objeto.</strong> La sentencia de infinito de §12.8 aporta un <span class="math inline">\(I\)</span> y un miembro <span class="math inline">\(e\in I\)</span> con <span class="math inline">\(\forall u\neg(u\in e)\)</span>. Supóngase que <span class="math inline">\(d\)</span> también satisface <span class="math inline">\(\forall u\neg(u\in d)\)</span>. Para un <span class="math inline">\(u\)</span> arbitrario, ambas proposiciones <span class="math inline">\(u\in d\)</span> y <span class="math inline">\(u\in e\)</span> son falsas, de modo que la lógica proposicional prueba <span class="math inline">\((u\in d)\leftrightarrow(u\in e)\)</span>. Como se razona sin premisas abiertas adicionales, se generaliza sobre <span class="math inline">\(u\)</span>, y el axioma de extensionalidad da <span class="math inline">\(d\doteq e\)</span>. El cálculo de primer orden obtiene por introducción existencial el enunciado completo. <span class="math inline">\(\square\)</span></p>
+<p><strong>Convención derivada:</strong> después de esta prueba, <span class="math inline">\(\varnothing\)</span> podrá denotar metalingüísticamente el <strong>único</strong> objeto sin elementos, dentro de una derivación o interpretación de ZF. Al ser un símbolo no perteneciente a <span class="math inline">\(\tau_\in\)</span>, todo uso formal de <span class="math inline">\(\varnothing\)</span> debe leerse como extensión definicional eliminable mediante su propiedad única; no se añadió una constante primitiva al lenguaje.</p>
+</section>
+</section>
+<section id="imposibilidad-de-un-conjunto-universal-argumento-de-russell" class="level2">
+<h2 class="anchored" data-anchor-id="imposibilidad-de-un-conjunto-universal-argumento-de-russell">12.16. Imposibilidad de un conjunto universal: argumento de Russell</h2>
+<section id="tlog-pro-00031" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00031">Proposición 12.16.1 — Imposibilidad de un conjunto universal: argumento de Russell</h3>
+<p><strong>Enunciado objeto.</strong></p>
+<p><span class="math display">\[
+\boxed{\mathsf{ZF}_{\mathrm{obj}}\vdash\neg\exists a\forall u\,(u\in a).}
+\]</span></p>
+<p><strong>Demostración objeto.</strong> Supongamos, para derivar contradicción, que <span class="math inline">\(a\)</span> contiene todos los objetos: <span class="math inline">\(\forall u(u\in a)\)</span>. Instanciamos el <strong>esquema de separación</strong> con la fórmula de un parámetro libre <span class="math inline">\(\theta(u,a):=\neg(u\in u)\)</span> (en realidad no depende de <span class="math inline">\(a\)</span>). Su sentencia asegura un <span class="math inline">\(r\)</span> tal que</p>
+<p><span class="math display">\[
+\forall u\,[u\in r\leftrightarrow(u\in a\land\neg(u\in u))].
+\]</span></p>
+<p>La particularización universal para <span class="math inline">\(u=r\)</span> es libre de captura y entrega</p>
+<p><span class="math display">\[
+r\in r\leftrightarrow(r\in a\land\neg(r\in r)).
+\]</span></p>
+<p>De la universalidad supuesta resulta <span class="math inline">\(r\in a\)</span>, y el bicondicional se reduce a <span class="math inline">\(r\in r\leftrightarrow\neg(r\in r)\)</span>. La base clásica proposicional de <span class="math inline">\(\mathsf H_{\tau_\in}^{=}\)</span> deriva contradicción; descargando la suposición por el teorema de deducción se obtiene <span class="math inline">\(\neg\forall u(u\in a)\)</span>, y, sin depender de <span class="math inline">\(a\)</span>, finalmente <span class="math inline">\(\neg\exists a\forall u(u\in a)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Esta prueba <strong>no usa regularidad</strong>. En particular, la supuesta colección <span class="math inline">\(\{u:u=u\}\)</span> no puede ser un <strong>conjunto objeto</strong>. En un metalenguaje de clases puede hablarse de «universo» <span class="math inline">\(V\)</span> como clase definible; no es una constante objeto ni un conjunto de todos los conjuntos.</p>
+</section>
+</section>
+<section id="la-regularidad-excluye-la-autopertenencia" class="level2">
+<h2 class="anchored" data-anchor-id="la-regularidad-excluye-la-autopertenencia">12.17. La regularidad excluye la autopertenencia</h2>
+<section id="tlog-pro-00032" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00032">Proposición 12.17.1 — La regularidad excluye la autopertenencia</h3>
+<p><strong>Enunciado objeto.</strong></p>
+<p><span class="math display">\[
+\boxed{\mathsf{ZF}_{\mathrm{obj}}\vdash\forall x\,\neg(x\in x).}
+\]</span></p>
+<p><strong>Demostración objeto.</strong> Sea <span class="math inline">\(x\)</span> una variable arbitraria y supóngase <span class="math inline">\(x\in x\)</span>. El axioma de pares con las dos entradas iguales proporciona un objeto <span class="math inline">\(s\)</span> con <span class="math inline">\(\forall u\,[u\in s\leftrightarrow(u\doteq x)]\)</span>. En particular <span class="math inline">\(x\in s\)</span>. Por regularidad aplicada a <span class="math inline">\(s\)</span> obtenemos un miembro <span class="math inline">\(v\in s\)</span> tal que <span class="math inline">\(\forall w\,(w\in s\to\neg(w\in v))\)</span>. De <span class="math inline">\(v\in s\)</span> y la propiedad definitoria del par resulta <span class="math inline">\(v\doteq x\)</span>. Como <span class="math inline">\(x\in s\)</span>, la condición minimal con <span class="math inline">\(w=x\)</span> afirma <span class="math inline">\(\neg(x\in v)\)</span>; por sustitución de iguales y <span class="math inline">\(x\in x\)</span>, se deduce <span class="math inline">\(x\in v\)</span>, contradicción. El teorema de deducción descarga <span class="math inline">\(x\in x\)</span>, y la generalización sobre la variable arbitraria concluye. <span class="math inline">\(\square\)</span></p>
+<p>Este resultado demuestra la imposibilidad de <strong>ciclos unitarios</strong> en ZF objeto. No es una prueba de que toda clase propia tenga miembro <span class="math inline">\(\in\)</span>-minimal ni usa la noción de secuencia infinita de descensos.</p>
+</section>
+</section>
+<section id="existencia-condicional-de-modelos-de-zf-objeto" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-condicional-de-modelos-de-zf-objeto">12.18. Existencia condicional de modelos de ZF objeto</h2>
+<section id="tlog-mth-00050" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00050">Metateorema 12.18.1 — Existencia condicional de modelos de ZF objeto</h3>
+<p><strong>Enunciado en <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span>.</strong></p>
+<p><span class="math display">\[
+\boxed{\operatorname{Con}(\mathsf{ZF}_{\mathrm{obj}})\quad\Longrightarrow\quad
+\exists\mathfrak A\;(\mathfrak A\models\mathsf{ZF}_{\mathrm{obj}}).}
+\]</span></p>
+<p>Donde <span class="math inline">\(\operatorname{Con}(\mathsf{ZF}_{\mathrm{obj}})\)</span> abrevia la <strong>ausencia de una derivación finita</strong> de la contradicción sentencial desde <span class="math inline">\(\operatorname{Ax}_{\mathsf{ZF}}\)</span>; no es una sentencia ya aritmetizada del lenguaje objeto. La estructura <span class="math inline">\(\mathfrak A\)</span>, si existe, es una <span class="math inline">\(\tau_\in\)</span>-estructura de <strong>conjunto</strong>.</p>
+<p><strong>Demostración metateórica.</strong> Por §12.13 la signatura pura de pertenencia es finita (en particular numerable) y <span class="math inline">\(\operatorname{Ax}_{\mathsf{ZF}}\)</span> es un conjunto numerable de sentencias. Suponiendo la consistencia sintáctica en el cálculo <span class="math inline">\(\mathsf H_{\tau_\in}^{=}\)</span>, la existencia de modelos del §11.10 (<span class="math inline">\(\texttt{TLOG-MTH-00043}\)</span>) proporciona una <span class="math inline">\(\tau_\in\)</span>-estructura que satisface <strong>todas</strong> las sentencias de <span class="math inline">\(\operatorname{Ax}_{\mathsf{ZF}}\)</span>. Por la definición §12.14 satisface <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span>. La implicación está demostrada en <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span> sin BPI ni AC. <span class="math inline">\(\square\)</span></p>
+<p><strong>Alcance exacto:</strong> no se ha demostrado aquí <span class="math inline">\(\operatorname{Con}(\mathsf{ZF}_{\mathrm{obj}})\)</span>; tampoco se ha supuesto por definición que la estructura pertenezca a la jerarquía externa de manera transitiva o con <span class="math inline">\(\in\)</span> estándar. Una afirmación de existencia de modelo <strong>sin antecedente</strong> no se sigue del teorema. La no confusión entre niveles es esencial para las futuras interfaces de incompletitud.</p>
+</section>
+</section>
+<section id="control-del-primer-bloque-y-obligaciones-de-cierre-del-capítulo" class="level2">
+<h2 class="anchored" data-anchor-id="control-del-primer-bloque-y-obligaciones-de-cierre-del-capítulo">12.19. Control del primer bloque y obligaciones de cierre del capítulo</h2>
+<p><code>TLOG-CH12-M01</code> fija el lenguaje puro y todas las ocho familias de axiomas; demuestra tres proposiciones objeto y la aplicación metateórica condicional de completitud. Permanece <strong>abierto</strong> el desarrollo de notaciones y construcciones elementales por extensionalidad, cuya materia se distribuye con los Capítulos 13–16 sin alterar la arquitectura aprobada. También queda por auditar en el próximo microtramo el tratamiento sistemático de deducciones con parámetros y las equivalencias entre presentaciones usuales de los esquemas, antes del cierre final del Capítulo 12.</p>
+<ul>
+<li>Signatura única <span class="math inline">\(\tau_\in\)</span>, con igualdad lógica y pertenencia relacional binaria: <code>PASS</code>.</li>
+<li>Axiomas objeto cerrados, dos esquemas infinitos tipados, fórmula de infinito sin términos derivados: <code>PASS</code>.</li>
+<li>Ninguna clase propia como elemento del dominio; no se deriva consistencia de la teoría objeto: <code>PASS</code>.</li>
+<li><span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span> no confundida con <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span>: <code>PASS</code>.</li>
+<li>Sin AC, BPI ni nuevas reglas primitivas: <code>PASS</code>.</li>
+<li>No se proclama formalización Lean ni publicación web.</li>
+</ul>
+<pre class="text"><code>TLOG-CH12-M01 = CLOSED / LOCAL QA PASS / DRIVE READBACK PASS
+TLOG-CH12-0001 = PARTIAL-CLOSURE / NOT CLOSED
+PART III = OPEN
+PARTS CLOSED = 2/5
+NEW CH12 RESULTS = 18
+TLOG NODE COUNT = 220
+TLOG DAG EDGES = 667
+FORMALIZATION CANDIDATES = 64 / LEAN VERIFIED = 0
+CHAPTERS CLOSED = 12/24 (50.0%)</code></pre>
+<p>Siguiente: <code>TLOG-CH12-M02 — Equivalencias de esquemas, control formal de definiciones y auditoría de cierre de la axiomatización objeto</code>.</p>
+</section>
+<section id="variantes-axiomáticas-y-criterios-de-equivalencia" class="level2">
+<h2 class="anchored" data-anchor-id="variantes-axiomáticas-y-criterios-de-equivalencia">12.20. Variantes axiomáticas y criterios de equivalencia</h2>
+<section id="tlog-cnv-00015" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cnv-00015">Convención 12.20.1 — Equivalencia de presentaciones de una teoría objeto</h3>
+<p>Fijada la signatura pura <span class="math inline">\(\tau_\in\)</span>, dos conjuntos de sentencias <span class="math inline">\(T,T'\subseteq\operatorname{Sent}_{\tau_\in}\)</span> son <strong>deductivamente equivalentes</strong> si</p>
+<p><span class="math display">\[
+\operatorname{Cn}^{\mathrm{ded}}_{\mathsf H_{\tau_\in}^{=}}(T)
+=\operatorname{Cn}^{\mathrm{ded}}_{\mathsf H_{\tau_\in}^{=}}(T').
+\]</span></p>
+<p>Esta condición no exige identidad <em>literal</em> de los árboles que integran <span class="math inline">\(T\)</span> y <span class="math inline">\(T'\)</span>. Las variantes de esquema de §§12.22–12.25 se compararán en ese sentido: para cada fórmula generadora, se construye una <strong>derivación finita</strong> de la instancia correspondiente, y viceversa. No se introduce cuantificación objeto sobre fórmulas ni se confunde equivalencia deductiva de teorías con identidad de sus axiomas.</p>
+<p>La posibilidad de reemplazar una expresión por otra dentro de una fórmula exige una justificación de equivalencia lógica o una expansión definicional expresamente tipada. No basta la semejanza tipográfica.</p>
+</section>
+</section>
+<section id="renombrado-y-cierre-de-los-esquemas" class="level2">
+<h2 class="anchored" data-anchor-id="renombrado-y-cierre-de-los-esquemas">12.21. Renombrado y cierre de los esquemas</h2>
+<section id="tlog-lem-00036" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00036">Lema 12.21.1 — Invariancia deductiva de instancias bajo conversión alfa</h3>
+<p>Para toda matriz admitida por separación o reemplazo, dos elecciones admisibles de nombres <strong>ligados auxiliares</strong>, que conservan los nombres y posiciones de los parámetros libres, generan clausuras sentenciales <span class="math inline">\(\sigma,\sigma'\)</span> equivalentes por conversión alfa, y</p>
+<p><span class="math display">\[
+\vdash_{\mathsf H_{\tau_\in}^{=}}(\sigma\leftrightarrow\sigma').
+\]</span></p>
+<p><strong>Demostración.</strong> Una instancia se obtiene de un árbol finito con lugares distinguidos para las variables de dominio, imagen, testigo y parámetros. En cada inserción elegimos un nombre que no pertenece al conjunto finito de nombres libres o ligados que podría producir captura; la existencia se sigue de la infinitud de <span class="math inline">\(X\)</span> y de la selección de frescos de §6.18. Dos elecciones distintas conservan los mismos marcadores de variable libre y los mismos índices de vinculación en el código <span class="math inline">\(\operatorname{db}_{\tau_\in}\)</span>; la igualdad de códigos implica <span class="math inline">\(\sigma\equiv_\alpha\sigma'\)</span> por §6.29. El teorema deductivo de equivalencia alfa de §9.19 entrega el bicondicional. En este enunciado <strong>no</strong> se permite reordenar arbitrariamente los cuantificadores que vinculan parámetros distintos; tal reordenamiento, cuando se emplee, se prueba mediante las reglas ordinarias de primer orden. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="separación-y-dependencia-del-conjunto-ambiente" class="level2">
+<h2 class="anchored" data-anchor-id="separación-y-dependencia-del-conjunto-ambiente">12.22. Separación y dependencia del conjunto ambiente</h2>
+<section id="tlog-pro-00033" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00033">Proposición 12.22.1 — Equivalencia de los dos esquemas paramétricos de separación</h3>
+<p>Sea <span class="math inline">\(\operatorname{Sep}^{\mathrm{amb}}\)</span> el esquema de §12.9, que permite a la matriz <span class="math inline">\(\theta(u,a,\bar p)\)</span> mencionar el conjunto ambiente <span class="math inline">\(a\)</span>. Sea <span class="math inline">\(\operatorname{Sep}^{\mathrm{par}}\)</span> el esquema aparentemente más restringido, cuyas matrices <span class="math inline">\(\psi(u,\bar q)\)</span> no mencionan <strong>la variable designada como ambiente</strong> <span class="math inline">\(a\)</span>, aunque pueden mencionar parámetros <span class="math inline">\(\bar q\)</span> arbitrarios. Entonces</p>
+<p><span class="math display">\[
+\boxed{\operatorname{Sep}^{\mathrm{amb}}\equiv_{\mathrm{ded}}\operatorname{Sep}^{\mathrm{par}}}
+\]</span></p>
+<p>sobre la lógica de primer orden con igualdad; no se necesita reemplazo ni elección.</p>
+<p><strong>Demostración.</strong> Toda matriz <span class="math inline">\(\psi(u,\bar q)\)</span> sin dependencia de <span class="math inline">\(a\)</span> es admisible para <span class="math inline">\(\operatorname{Sep}^{\mathrm{amb}}\)</span>, de modo que cada axioma de la versión paramétrica es una instancia de la primera, con renombrados frescos si procede. Para la otra dirección fijamos <span class="math inline">\(\theta(u,a,\bar p)\)</span> y escogemos un nombre nuevo <span class="math inline">\(q\)</span> que no aparezca en ella. Sea <span class="math inline">\(\psi(u,q,\bar p)\)</span> el árbol obtenido <strong>renombrando sólo las apariciones libres designadas</strong> de <span class="math inline">\(a\)</span> como <span class="math inline">\(q\)</span>, con conversión alfa previa de los vinculantes incompatibles. El esquema <span class="math inline">\(\operatorname{Sep}^{\mathrm{par}}\)</span> proporciona la sentencia</p>
+<p><span class="math display">\[
+\forall q\,\forall\bar p\,\forall a\,\exists b\,\forall u\,
+\bigl[u\in b\leftrightarrow(u\in a\land\psi(u,q,\bar p))\bigr].
+\]</span></p>
+<p>Para evitar una <strong>captura real</strong> que se produciría al sustituir directamente <span class="math inline">\(q:=a\)</span> bajo el cuantificador interior <span class="math inline">\(\forall a\)</span>, tomamos primero una variable fresca <span class="math inline">\(d\)</span> y una lista de variables frescas y distintas <span class="math inline">\(\bar r=(r_1,\ldots,r_k)\)</span>, todas fuera del soporte completo y de los nombres ligados de la matriz. Particularizamos <span class="math inline">\(\forall q\)</span> con <span class="math inline">\(q:=d\)</span> (sin captura), retiramos mediante particularización el prefijo <span class="math inline">\(\forall\bar p\)</span> reemplazando sus variables sucesivamente por los nombres frescos <span class="math inline">\(\bar r\)</span>, y sólo <strong>después</strong> particularizamos el cuantificador interior <span class="math inline">\(\forall a\)</span> con <span class="math inline">\(a:=d\)</span>. Esto produce</p>
+<p><span class="math display">\[
+\exists b\,\forall u\,[u\in b\leftrightarrow(u\in d\land\theta(u,d,\bar r))].
+\]</span></p>
+<p>La deducción proviene de una <strong>sentencia</strong>; aplicamos la generalización derivada de §9.24 para obtener el cierre universal de <span class="math inline">\(\bar r\)</span> y de <span class="math inline">\(d\)</span>, y renombramos sus vinculantes como <span class="math inline">\(\bar p\)</span> y <span class="math inline">\(a\)</span> mediante equivalencia alfa. Así recuperamos precisamente la instancia de <span class="math inline">\(\operatorname{Sep}^{\mathrm{amb}}\)</span>, sin emplear una sustitución capturante. Así cada instancia de <span class="math inline">\(\operatorname{Sep}^{\mathrm{amb}}\)</span> es consecuencia de una instancia de <span class="math inline">\(\operatorname{Sep}^{\mathrm{par}}\)</span>. La equivalencia de teorías se obtiene por corte y finitud de las derivaciones. <span class="math inline">\(\square\)</span></p>
+<p>No se ha producido el axioma de comprensión irrestricta: la existencia del conjunto ambiente <span class="math inline">\(a\)</span> sigue siendo una hipótesis interna indispensable.</p>
+</section>
+</section>
+<section id="reemplazo-global-y-reemplazo-restringido-al-dominio" class="level2">
+<h2 class="anchored" data-anchor-id="reemplazo-global-y-reemplazo-restringido-al-dominio">12.23. Reemplazo global y reemplazo restringido al dominio</h2>
+<section id="tlog-pro-00034" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00034">Proposición 12.23.1 — Equivalencia de funcionalidad global y sobre el conjunto de partida</h3>
+<p>Para una fórmula <span class="math inline">\(\rho(u,v,\bar p)\)</span> del lenguaje puro consideremos la familia alternativa <span class="math inline">\(\operatorname{Rep}^{\mathrm{glob}}\)</span> cuyas instancias tienen la forma</p>
+<p><span class="math display">\[
+\forall\bar p\Bigl[
+  \bigl(\forall u\exists!v\,\rho(u,v,\bar p)\bigr)
+  \to\forall a\exists b\forall v\bigl(v\in b\leftrightarrow
+       \exists u(u\in a\land\rho(u,v,\bar p))\bigr)
+\Bigr].
+\]</span></p>
+<p>Aquí <span class="math inline">\(a\)</span> es el dominio cuantificado <em>después</em> de la condición global y los parámetros de <span class="math inline">\(\rho\)</span> son completamente libres de elegir. Entonces la familia de §12.10, que exige funcionalidad únicamente sobre <span class="math inline">\(a\)</span>, y <span class="math inline">\(\operatorname{Rep}^{\mathrm{glob}}\)</span> son deductivamente equivalentes.</p>
+<p><strong>Demostración.</strong> De las instancias restringidas a <span class="math inline">\(a\)</span> se obtienen las globales: si <span class="math inline">\(\forall u\exists!v\rho\)</span>, entonces <span class="math inline">\(\forall u(u\in a\to\exists!v\rho)\)</span> para cada <span class="math inline">\(a\)</span>, y se aplica §12.10.</p>
+<p>Recíprocamente, fijemos <span class="math inline">\(\rho(u,v,a,\bar p)\)</span> y construyamos la <strong>relación totalizada</strong></p>
+<p><span class="math display">\[
+\widehat\rho(u,v,a,\bar p):\equiv
+\bigl(u\in a\land\rho(u,v,a,\bar p)\bigr)
+\lor\bigl(\neg(u\in a)\land v\doteq u\bigr).
+\]</span></p>
+<p>Renombramos previamente los vinculantes para que <span class="math inline">\(u,v,a,\bar p\)</span> sean distintos y ningún reemplazo capture variables. Bajo <span class="math inline">\(\forall u(u\in a\to\exists!v\rho)\)</span>, la nueva relación tiene para <strong>todo</strong> <span class="math inline">\(u\)</span> un único valor: dentro de <span class="math inline">\(a\)</span>, el valor único de <span class="math inline">\(\rho\)</span>; fuera de <span class="math inline">\(a\)</span>, exactamente <span class="math inline">\(u\)</span>. Por tanto se satisface <span class="math inline">\(\forall u\exists!v\widehat\rho\)</span>. Aplicamos la instancia global correspondiente, considerando <span class="math inline">\(a\)</span> como <strong>parámetro</strong> de <span class="math inline">\(\widehat\rho\)</span>, y especializamos su variable de dominio <span class="math inline">\(d\)</span> al mismo <span class="math inline">\(a\)</span>. Resulta un conjunto <span class="math inline">\(b\)</span> con</p>
+<p><span class="math display">\[
+\forall v\Bigl[v\in b\leftrightarrow
+\exists u\bigl(u\in a\land\widehat\rho(u,v,a,\bar p)\bigr)\Bigr].
+\]</span></p>
+<p>Para <span class="math inline">\(u\in a\)</span>, <span class="math inline">\(\widehat\rho(u,v,a,\bar p)\leftrightarrow\rho(u,v,a,\bar p)\)</span> es demostrable proposicionalmente. Sustituyéndolo en la fórmula anterior obtenemos exactamente el consecuente de la instancia restringida. Cerramos universalmente los parámetros desde las premisas sentenciales, según §9.24. No se elige una familia de valores: la totalización fija <strong>por fórmula</strong> un valor único fuera del dominio. <span class="math inline">\(\square\)</span></p>
+<p>La equivalencia es deductiva y presupone que la variante global <strong>admite parámetros</strong>, incluido aquel que designa el dominio en la totalización.</p>
+</section>
+</section>
+<section id="forma-de-cobertura-funcional" class="level2">
+<h2 class="anchored" data-anchor-id="forma-de-cobertura-funcional">12.24. Forma de cobertura funcional</h2>
+<section id="tlog-def-00064" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00064">Definición 12.24.1 — Esquema de cobertura de imágenes funcionales</h3>
+<p>Para toda <span class="math inline">\(\rho(u,v,a,\bar p)\)</span> admisible, denotamos por <span class="math inline">\(\operatorname{Cov}_{\rho}\)</span> la sentencia</p>
+<p><span class="math display">\[
+\forall\bar p\forall a\Bigl[
+\bigl(\forall u(u\in a\to\exists!v\,\rho(u,v,a,\bar p))\bigr)
+\to\exists c\,\forall u\bigl(u\in a\to
+       \exists v(v\in c\land\rho(u,v,a,\bar p))\bigr)
+\Bigr].
+\]</span></p>
+<p>El conjunto <span class="math inline">\(c\)</span> contiene todos los valores de la relación funcional, pero <strong>puede contener elementos adicionales</strong>. Esto constituye un esquema de cobertura <em>funcional</em>, no el esquema general de colección para relaciones multivaluadas. Las variables testigo <span class="math inline">\(c,v\)</span> se normalizan y refrescan conforme al lema de §12.21.</p>
+</section>
+</section>
+<section id="de-la-cobertura-a-la-imagen-exacta" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-cobertura-a-la-imagen-exacta">12.25. De la cobertura a la imagen exacta</h2>
+<section id="tlog-mth-00051" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00051">Metateorema 12.25.1 — Equivalencia de cobertura funcional y reemplazo en presencia de separación</h3>
+<p>Sobre un sistema que contiene separación, las familias <span class="math inline">\(\{\operatorname{Cov}_\rho\}_\rho\)</span> y <span class="math inline">\(\{\operatorname{Rep}_\rho\}_\rho\)</span> generan las mismas consecuencias deductivas. En particular, <strong>no</strong> necesitamos elección para obtener la imagen <em>exacta</em> a partir de una cobertura funcional.</p>
+<p><strong>Demostración.</strong> Dada una instancia de reemplazo, su conjunto imagen exacto <span class="math inline">\(b\)</span> satisface <span class="math inline">\(\operatorname{Cov}_\rho\)</span>: para cada <span class="math inline">\(u\in a\)</span>, la hipótesis funcional aporta <span class="math inline">\(v\)</span> y el bicondicional definidor de <span class="math inline">\(b\)</span> asegura <span class="math inline">\(v\in b\)</span>.</p>
+<p>En sentido inverso, supongamos <span class="math inline">\(\operatorname{Cov}_\rho\)</span> y <span class="math inline">\(\forall u\in a\,\exists!v\rho\)</span>. Hay entonces un conjunto <span class="math inline">\(c\)</span> que contiene un testigo de <span class="math inline">\(\rho(u,-)\)</span> para cada <span class="math inline">\(u\in a\)</span>. Aplicamos <strong>separación sobre ese mismo conjunto</strong> con la matriz</p>
+<p><span class="math display">\[
+\theta(v,c,a,\bar p):\equiv
+  \exists u\,(u\in a\land\rho(u,v,a,\bar p)).
+\]</span></p>
+<p>La instancia produce <span class="math inline">\(b\)</span> con</p>
+<p><span class="math display">\[
+\forall v\,[v\in b\leftrightarrow(v\in c\land\theta(v,c,a,\bar p))].
+\]</span></p>
+<p>Demostramos <span class="math inline">\(\theta(v,c,a,\bar p)\Rightarrow v\in c\)</span>: el testigo <span class="math inline">\(u\in a\)</span> tiene, por cobertura, algún <span class="math inline">\(w\in c\)</span> con <span class="math inline">\(\rho(u,w,a,\bar p)\)</span>; por unicidad funcional de <span class="math inline">\(\rho\)</span> sobre <span class="math inline">\(a\)</span>, <span class="math inline">\(v\doteq w\)</span>, y la sustitución por iguales en <span class="math inline">\(v\in c\)</span> da <span class="math inline">\(v\in c\)</span>. En consecuencia el bicondicional se simplifica a <span class="math inline">\(v\in b\leftrightarrow\theta(v,c,a,\bar p)\)</span>, exactamente la imagen de reemplazo de §12.10. Se trata de una prueba con existencia y unicidad <strong>dentro</strong> de la teoría objeto, sin seleccionar simultáneamente valores por una función externa. <span class="math inline">\(\square\)</span></p>
+<p><strong>Límite:</strong> esta equivalencia cubre sólo relaciones que ya son funcionales en <span class="math inline">\(a\)</span>. La colección para relaciones arbitrarias no funcionales no queda demostrada por este argumento; no se confunden ambos principios.</p>
+</section>
+</section>
+<section id="el-vacío-sin-utilizar-infinito" class="level2">
+<h2 class="anchored" data-anchor-id="el-vacío-sin-utilizar-infinito">12.26. El vacío sin utilizar infinito</h2>
+<section id="tlog-pro-00035" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00035">Proposición 12.26.1 — El conjunto vacío se demuestra con pares y separación</h3>
+<p>Ya es demostrable <span class="math inline">\(\exists!e\,\forall u\neg(u\in e)\)</span> en el fragmento de <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span> que sólo utiliza <strong>pares, separación y extensionalidad</strong>, sin emplear infinito, unión, potencia, reemplazo ni regularidad.</p>
+<p><strong>Demostración objeto.</strong> Por la no vacuidad lógica del dominio y la reflexividad de la igualdad, existe un objeto <span class="math inline">\(a\)</span>. Aplicamos pares a <span class="math inline">\(a,a\)</span>, obteniendo un conjunto <span class="math inline">\(s\)</span> cuyos miembros son exactamente <span class="math inline">\(a\)</span>. Instanciamos separación sobre <span class="math inline">\(s\)</span> con <span class="math inline">\(\theta(u,s):\equiv\neg(u\doteq u)\)</span>, fórmula sin testigos externos. Existe <span class="math inline">\(e\)</span> tal que</p>
+<p><span class="math display">\[
+\forall u\,[u\in e\leftrightarrow(u\in s\land\neg(u\doteq u))].
+\]</span></p>
+<p>Como <span class="math inline">\(u\doteq u\)</span> es axioma lógico para cada <span class="math inline">\(u\)</span>, el consecuente es falso; por lógica clásica, <span class="math inline">\(\forall u\neg(u\in e)\)</span>. Si <span class="math inline">\(e'\)</span> tiene también ningún miembro, entonces <span class="math inline">\(\forall u(u\in e\leftrightarrow u\in e')\)</span>; la extensionalidad proporciona <span class="math inline">\(e\doteq e'\)</span>. Unimos existencia y unicidad por las reglas deductivas de primer orden. <span class="math inline">\(\square\)</span></p>
+<p>Esto <strong>mejora la dependencia de la demostración</strong>, no prueba independencia axiomática de infinito. La derivación alternativa de §12.15 sigue siendo válida y registrada con su propia genealogía deductiva.</p>
+</section>
+</section>
+<section id="el-nombre-del-vacío-como-extensión-definicional" class="level2">
+<h2 class="anchored" data-anchor-id="el-nombre-del-vacío-como-extensión-definicional">12.27. El nombre del vacío como extensión definicional</h2>
+<section id="tlog-def-00065" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00065">Definición 12.27.1 — Extensión por una constante definida</h3>
+<p>Sea <span class="math inline">\(\varepsilon\)</span> un símbolo <strong>nuevo</strong>, de aridad funcional cero, no perteneciente a <span class="math inline">\(\tau_\in\)</span>. Construimos <span class="math inline">\(\tau_\in^\varepsilon\)</span> añadiendo <span class="math inline">\(\varepsilon\)</span> a <span class="math inline">\(F_0\)</span>, y definimos la teoría ampliada</p>
+<p><span class="math display">\[
+T_\varepsilon:=\operatorname{Ax}_{\mathsf{ZF}}
+\cup\{\delta(\varepsilon)\},\qquad
+\delta(z):\equiv\forall u\neg(u\in z).
+\]</span></p>
+<p>La nueva expresión <span class="math inline">\(\varepsilon\)</span> es un <strong>término cerrado sólo del lenguaje extendido</strong>. La existencia y unicidad de su referente están justificadas deductivamente por §12.26, no presupuestas por una sintaxis mayor. La grafía editorial <span class="math inline">\(\varnothing\)</span> puede representar <span class="math inline">\(\varepsilon\)</span> <strong>siempre que conste este compromiso definicional</strong>, o puede entenderse como notación eliminable en el lenguaje puro. No se añade <span class="math inline">\(\varepsilon\)</span> al conjunto canónico de símbolos de <span class="math inline">\(\tau_\in\)</span>, ni <span class="math inline">\(\delta(\varepsilon)\)</span> a <span class="math inline">\(\operatorname{Ax}_{\mathsf{ZF}}\)</span>.</p>
+</section>
+</section>
+<section id="conservatividad-de-la-extensión-por-una-constante-definida" class="level2">
+<h2 class="anchored" data-anchor-id="conservatividad-de-la-extensión-por-una-constante-definida">12.28. Conservatividad de la extensión por una constante definida</h2>
+<section id="tlog-mth-00052" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00052">Metateorema 12.28.1 — Conservatividad sintáctica y semántica de definiciones únicas</h3>
+<p><strong>Enunciado.</strong> Sea <span class="math inline">\(L\)</span> una signatura numerable, <span class="math inline">\(T\subseteq\operatorname{Sent}_L\)</span>, <span class="math inline">\(\delta(x)\in\operatorname{Fm}_L\)</span> con <span class="math inline">\(\operatorname{FV}(\delta)\subseteq\{x\}\)</span>, y supongamos</p>
+<p><span class="math display">\[
+T\vdash_{\mathsf H_L^{=}}\exists!x\,\delta(x).
+\]</span></p>
+<p>Añadamos una sola constante fresca <span class="math inline">\(c\)</span>, formando <span class="math inline">\(L^+=L\sqcup\{c\}\)</span> y <span class="math inline">\(T^+=T\cup\{\delta(c)\}\)</span>. Entonces, para <strong>toda fórmula del lenguaje original</strong> <span class="math inline">\(\varphi\in\operatorname{Fm}_L\)</span>,</p>
+<p><span class="math display">\[
+\boxed{T^+\vdash_{\mathsf H_{L^+}^{=}}\varphi
+\quad\Longleftrightarrow\quad
+T\vdash_{\mathsf H_L^{=}}\varphi.}
+\]</span></p>
+<p>Además, el reducto de cada modelo de <span class="math inline">\(T^+\)</span> es modelo de <span class="math inline">\(T\)</span>, y <strong>cada</strong> modelo de <span class="math inline">\(T\)</span> posee una única expansión a modelo de <span class="math inline">\(T^+\)</span> al interpretar <span class="math inline">\(c\)</span> por el único testigo de <span class="math inline">\(\delta\)</span>.</p>
+<p><strong>Demostración.</strong> El transporte de una derivación de <span class="math inline">\(T\)</span> al lenguaje ampliado es inmediato, pues las instancias axiomáticas y los pasos de <span class="math inline">\(\mathrm{MP}\)</span> persisten bajo la inclusión de signaturas (§§7.13 y 9.5). Para la implicación opuesta comenzamos con una <strong>sentencia</strong> <span class="math inline">\(\sigma\in\operatorname{Sent}_L\)</span>. Supongamos <span class="math inline">\(T\nvdash\sigma\)</span>. Por el núcleo clásico, teorema de deducción y finitud de las pruebas (§§9.15, 9.23), <span class="math inline">\(T\cup\{\neg\sigma\}\)</span> es sintácticamente consistente. Puesto que <span class="math inline">\(L\)</span> es numerable, el teorema de existencia de modelos de §11.10 produce en la metateoría ZF una estructura <span class="math inline">\(\mathfrak A\)</span> que satisface <span class="math inline">\(T\cup\{\neg\sigma\}\)</span>. Por corrección de §10.7, <span class="math inline">\(T\vdash\exists!x\delta(x)\)</span> fuerza que <span class="math inline">\(\mathfrak A\)</span> tenga <strong>un único</strong> elemento <span class="math inline">\(a\)</span> que cumple <span class="math inline">\(\delta\)</span>. Interpretamos la nueva constante por <span class="math inline">\(a\)</span>, obteniendo la expansión <span class="math inline">\(\mathfrak A^+\)</span>. Por el lema de preservación bajo reductos y la semántica de sustitución segura, <span class="math inline">\(\mathfrak A^+\models T^+\)</span> y <span class="math inline">\(\mathfrak A^+\models\neg\sigma\)</span>. Si <span class="math inline">\(T^+\vdash\sigma\)</span>, la corrección de §10.7 daría <span class="math inline">\(\mathfrak A^+\models\sigma\)</span>, contradicción. Por contraposición, <span class="math inline">\(T^+\vdash\sigma\Rightarrow T\vdash\sigma\)</span>.</p>
+<p>Para <span class="math inline">\(\varphi\)</span> <strong>abierta</strong>, las premisas <span class="math inline">\(T^+\)</span> son sentencias. El principio deductivo de generalización desde premisas sentenciales (§9.24) transforma <span class="math inline">\(T^+\vdash\varphi\)</span> en <span class="math inline">\(T^+\vdash\varphi^\forall\)</span>, donde <span class="math inline">\(\varphi^\forall\in\operatorname{Sent}_L\)</span> es su clausura universal. Por el caso sentencial, <span class="math inline">\(T\vdash\varphi^\forall\)</span>; una secuencia finita de particularizaciones universales lleva a <span class="math inline">\(T\vdash\varphi\)</span>. Para la afirmación semántica, toda estructura de <span class="math inline">\(T\)</span> tiene un único testigo de <span class="math inline">\(\delta\)</span> por corrección y el teorema de unicidad, de modo que la interpretación de <span class="math inline">\(c\)</span> está <strong>forzada</strong>, no elegida entre múltiples posibilidades. La correspondencia de modelos se sigue de la coincidencia de las interpretaciones de todos los símbolos antiguos. <span class="math inline">\(\square\)</span></p>
+<p><strong>Límites exactos:</strong> (i) el uso de completitud es legítimo en <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathrm{ZF}\)</span> porque <span class="math inline">\(L\)</span> es numerable; (ii) no se deduce <span class="math inline">\(\operatorname{Con}(T)\)</span>; (iii) la conservatividad <strong>no</strong> significa que las fórmulas que contienen el símbolo nuevo fueran ya fórmulas del lenguaje original; (iv) la prueba usa existencia <strong>y unicidad</strong>, no meramente existencia.</p>
+</section>
+</section>
+<section id="aplicación-canónica-a-la-constante-del-vacío" class="level2">
+<h2 class="anchored" data-anchor-id="aplicación-canónica-a-la-constante-del-vacío">12.29. Aplicación canónica a la constante del vacío</h2>
+<section id="tlog-cor-00013" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00013">Corolario 12.29.1 — La introducción de <span class="math inline">\(\varnothing\)</span> no crea teoremas antiguos</h3>
+<p>Para toda <span class="math inline">\(\varphi\in\operatorname{Fm}_{\tau_\in}\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\operatorname{Ax}_{\mathsf{ZF}}\vdash_{\tau_\in}\varphi
+\iff
+T_\varepsilon\vdash_{\tau_\in^\varepsilon}\varphi.}
+\]</span></p>
+<p><strong>Demostración.</strong> §12.26 demuestra en el lenguaje primitivo <span class="math inline">\(\operatorname{Ax}_{\mathsf{ZF}}\vdash\exists!z\,\delta(z)\)</span> y la signatura <span class="math inline">\(\tau_\in\)</span> es finita, por lo tanto numerable. Aplicamos el metateorema de §12.28 con <span class="math inline">\(T=\operatorname{Ax}_{\mathsf{ZF}}\)</span> y <span class="math inline">\(c=\varepsilon\)</span>. La extensión se define por el único axioma <span class="math inline">\(\delta(\varepsilon)\)</span> y su símbolo nuevo es puramente funcional nulario. <span class="math inline">\(\square\)</span></p>
+<p>La prueba no interpreta la teoría objeto en el universo de la metateoría ni convierte <span class="math inline">\(\varnothing\)</span> en símbolo primitivo. Las construcciones de pares, unión y potencia seguirán su propio desarrollo en el Capítulo 13.</p>
+</section>
+</section>
+<section id="instanciación-con-parámetros-axioma-cerrado-frente-a-cuerpo-abierto" class="level2">
+<h2 class="anchored" data-anchor-id="instanciación-con-parámetros-axioma-cerrado-frente-a-cuerpo-abierto">12.30. Instanciación con parámetros: axioma cerrado frente a cuerpo abierto</h2>
+<section id="tlog-lem-00037" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00037">Lema 12.30.1 — Particularización correcta de las instancias sentenciales</h3>
+<p>Sea <span class="math inline">\(\sigma=\forall p_1\cdots\forall p_k\forall a\,\chi(\bar p,a)\in\operatorname{Ax}_{\mathsf{ZF}}\)</span> una instancia universalmente cerrada de separación o reemplazo. Para cualquier sucesión finita de variables individuales o términos del lenguaje de pertenencia <span class="math inline">\(\bar t,t\)</span> <strong>libres para sustituir</strong> sus variables cuantificadas,</p>
+<p><span class="math display">\[
+\operatorname{Ax}_{\mathsf{ZF}}\vdash_{\mathsf H_{\tau_\in}^{=}}\chi(\bar t,t).
+\]</span></p>
+<p><strong>Demostración.</strong> La sentencia <span class="math inline">\(\sigma\)</span> es línea-premisa admisible. Aplicamos el esquema lógico de particularización universal, con <span class="math inline">\(\operatorname{FreeFor}\)</span> satisfecho en cada paso. Si los nombres propuestos producen captura en una matriz interior, primero normalizamos las declaraciones ligadas por §12.21. Eliminamos sucesivamente los cuantificadores del prefijo y obtenemos <span class="math inline">\(\chi(\bar t,t)\)</span> mediante <span class="math inline">\(\mathrm{MP}\)</span>. Cada paso es una deducción objeto finita. <span class="math inline">\(\square\)</span></p>
+<p>La formulación <strong>no</strong> convierte automáticamente los cuerpos <span class="math inline">\(\chi(\bar p,a)\)</span> en axiomas primitivos sin cierre; tampoco autoriza generalizar desde premisas abiertas arbitrarias. La recuperación de clausuras universales desde un conjunto sentencial de premisas utiliza precisamente la condición lateral de §9.24.</p>
+</section>
+</section>
+<section id="los-testigos-de-separación-y-de-reemplazo-exacto-son-únicos" class="level2">
+<h2 class="anchored" data-anchor-id="los-testigos-de-separación-y-de-reemplazo-exacto-son-únicos">12.31. Los testigos de separación y de reemplazo exacto son únicos</h2>
+<section id="tlog-lem-00038" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00038">Lema 12.31.1 — Unicidad extensional de subconjuntos e imágenes definidos</h3>
+<p>Para cada matriz <span class="math inline">\(\theta(u,a,\bar p)\)</span> de separación y cada matriz <span class="math inline">\(\rho(u,v,a,\bar p)\)</span> de reemplazo, la teoría objeto demuestra, con las premisas funcionales exigidas para <span class="math inline">\(\rho\)</span>, la <strong>unicidad</strong> del testigo <span class="math inline">\(b\)</span> cuyo conjunto de miembros está descrito por el correspondiente bicondicional. Más precisamente, si <span class="math inline">\(b,b'\)</span> cumplen</p>
+<p><span class="math display">\[
+\forall u\,[u\in b\leftrightarrow(u\in a\land\theta(u,a,\bar p))]
+\quad\text{y}\quad
+\forall u\,[u\in b'\leftrightarrow(u\in a\land\theta(u,a,\bar p))],
+\]</span></p>
+<p>entonces <span class="math inline">\(b\doteq b'\)</span>; y análogamente si ambos satisfacen <span class="math inline">\(\forall v\,[v\in b\leftrightarrow\exists u(u\in a\land\rho(u,v,a,\bar p))]\)</span>.</p>
+<p><strong>Demostración objeto.</strong> En el primer caso, para todo <span class="math inline">\(u\)</span>, los dos bicondicionales implican <span class="math inline">\(u\in b\leftrightarrow u\in b'\)</span>. Por introducción universal desde los cuerpos indicados —con sus parámetros tratados como datos fijos y sin generalización inválida desde ellos— se obtiene <span class="math inline">\(\forall u(u\in b\leftrightarrow u\in b')\)</span>. Extensionalidad (§12.4) implica <span class="math inline">\(b\doteq b'\)</span>. La misma secuencia funciona para el segundo caso, porque la fórmula de pertenencia de los dos testigos es idéntica; la hipótesis funcional se requiere para la <strong>existencia</strong> del testigo de reemplazo, no para este paso de unicidad. <span class="math inline">\(\square\)</span></p>
+<p>En consecuencia, una futura notación de subconjunto separado o imagen por reemplazo se podrá introducir mediante una definición cuya existencia y unicidad han sido demostradas, pero <strong>no</strong> se promueve en este capítulo una nueva operación primitiva de conjuntos.</p>
+</section>
+</section>
+<section id="cierre-de-las-equivalencias-axiomáticas" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-de-las-equivalencias-axiomáticas">12.32. Cierre de las equivalencias axiomáticas</h2>
+<section id="tlog-mth-00053" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00053">Metateorema 12.32.1 — Invariancia de la teoría objeto bajo las presentaciones alternativas autorizadas</h3>
+<p>Denotemos por <span class="math inline">\(\operatorname{Ax}^{\mathrm{alt}}_{\mathsf{ZF}}\)</span> un conjunto de sentencias del <strong>mismo lenguaje puro</strong> que conserva literalmente los seis axiomas individuales y sustituye, de manera independiente:</p>
+<ul>
+<li>separación con matriz que depende del ambiente por la versión con el ambiente tratado como un parámetro ordinario;</li>
+<li>reemplazo funcional restringido al dominio por su forma global con parámetros; o</li>
+<li>reemplazo exacto por cobertura <strong>funcional</strong>, <strong>siempre reteniendo separación</strong>.</li>
+</ul>
+<p>Entonces, para toda fórmula <span class="math inline">\(\varphi\in\operatorname{Fm}_{\tau_\in}\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{Ax}_{\mathsf{ZF}}\vdash_{\mathsf H_{\tau_\in}^{=}}\varphi
+\iff
+\operatorname{Ax}^{\mathrm{alt}}_{\mathsf{ZF}}\vdash_{\mathsf H_{\tau_\in}^{=}}\varphi.}
+\]</span></p>
+<p><strong>Demostración.</strong> Para separación, §12.22 exhibe una derivación finita en ambos sentidos para cada instancia. Para reemplazo global/restringido, §12.23 construye las transformaciones sintácticas respectivas, incluyendo la totalización fuera del conjunto de partida. Para la cobertura, §12.25 establece los dos sentidos en presencia de separación. La invariancia bajo nombres ligados alternativos sigue de §12.21. Dada una demostración concreta desde una de estas teorías, sólo utiliza <strong>finitas</strong> instancias axiomáticas; reemplazamos cada instancia de la familia modificada por su derivación desde la otra familia. El lema de corte de §9.10 permite ensamblar las pruebas y conservar la conclusión. Repetimos el procedimiento en sentido contrario. Por tanto ambas relaciones de derivabilidad coinciden sobre todas las fórmulas del lenguaje puro. <span class="math inline">\(\square\)</span></p>
+<p><strong>Control de alcance:</strong> no se ha probado equivalencia con colección para relaciones <strong>arbitrarias</strong>, ni con cualquier combinación de axiomas más débiles que los explicitados. Tampoco se ha añadido elección ni se ha cambiado la signatura primitiva.</p>
+</section>
+</section>
+<section id="frontera-exacta-entre-teoría-objeto-definiciones-y-metateoría" class="level2">
+<h2 class="anchored" data-anchor-id="frontera-exacta-entre-teoría-objeto-definiciones-y-metateoría">12.33. Frontera exacta entre teoría objeto, definiciones y metateoría</h2>
+<p>La reconstrucción conserva <strong>tres niveles</strong>: (a) axiomas y teoremas de <span class="math inline">\(\mathsf{ZF}_{\mathrm{obj}}\)</span> en la sintaxis pura; (b) abreviaciones eliminables o extensiones definicionales conservativas introducidas después de demostrar existencia y unicidad; (c) construcciones metateóricas realizadas en <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span>. No hay transitividad automática entre estos niveles. Las presentaciones alternativas de §§12.22–12.25 son <strong>deductivamente</strong> equivalentes, no idénticas como conjuntos de árboles. El uso de completitud en §12.28 es metateórico y restringido a signaturas numerables; no establece por sí mismo <span class="math inline">\(\operatorname{Con}(\mathsf{ZF}_{\mathrm{obj}})\)</span>.</p>
+<p>Las operaciones <span class="math inline">\(\{a,b\}\)</span>, <span class="math inline">\(\bigcup a\)</span>, <span class="math inline">\(\mathcal P(a)\)</span> y las funciones de conjunto siguen reservadas para el Capítulo 13, y relaciones, aplicaciones, cocientes e inducción para los capítulos 14–16. <strong>No</strong> se necesita formular ni interpretar <span class="math inline">\(\mathsf{AC}\)</span> como axioma objeto para esta infraestructura. Los esquemas de separación/reemplazo permanecen metasintácticos; cada instancia concreta es una sentencia de primer orden.</p>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-11.html">← Capítulo 11</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-13.html">Capítulo 13 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

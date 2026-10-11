@@ -1,0 +1,2364 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 6 — Variables, sustitución y recursión sintáctica – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#objeto-hipótesis-y-frontera" id="toc-objeto-hipótesis-y-frontera" class="nav-link active" data-scroll-target="#objeto-hipótesis-y-frontera">6.0. Objeto, hipótesis y frontera</a>
+  <ul class="collapse">
+  <li><a href="#fuentes-cotejadas" id="toc-fuentes-cotejadas" class="nav-link" data-scroll-target="#fuentes-cotejadas">Fuentes cotejadas</a></li>
+  </ul></li>
+  <li><a href="#ocurrencias-de-variables-individuales" id="toc-ocurrencias-de-variables-individuales" class="nav-link" data-scroll-target="#ocurrencias-de-variables-individuales">6.1. Ocurrencias de variables individuales</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00028" id="toc-tlog-def-00028" class="nav-link" data-scroll-target="#tlog-def-00028">Definición 6.1.1 — Direcciones de ocurrencias individuales</a></li>
+  </ul></li>
+  <li><a href="#alcance-de-los-cuantificadores" id="toc-alcance-de-los-cuantificadores" class="nav-link" data-scroll-target="#alcance-de-los-cuantificadores">6.2. Alcance de los cuantificadores</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00029" id="toc-tlog-def-00029" class="nav-link" data-scroll-target="#tlog-def-00029">Definición 6.2.1 — Alcance y vinculación</a></li>
+  </ul></li>
+  <li><a href="#unicidad-del-vínculo" id="toc-unicidad-del-vínculo" class="nav-link" data-scroll-target="#unicidad-del-vínculo">6.3. Unicidad del vínculo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00011" id="toc-tlog-lem-00011" class="nav-link" data-scroll-target="#tlog-lem-00011">Lema 6.3.1 — Existencia y unicidad del vinculante más próximo</a></li>
+  </ul></li>
+  <li><a href="#variables-libres-y-ligadas" id="toc-variables-libres-y-ligadas" class="nav-link" data-scroll-target="#variables-libres-y-ligadas">6.4. Variables libres y ligadas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00030" id="toc-tlog-def-00030" class="nav-link" data-scroll-target="#tlog-def-00030">Definición 6.4.1 — Ocurrencias libres, ocurrencias ligadas y variables libres</a></li>
+  </ul></li>
+  <li><a href="#caracterización-estructural-de-variables-libres" id="toc-caracterización-estructural-de-variables-libres" class="nav-link" data-scroll-target="#caracterización-estructural-de-variables-libres">6.5. Caracterización estructural de variables libres</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00016" id="toc-tlog-mth-00016" class="nav-link" data-scroll-target="#tlog-mth-00016">Metateorema 6.5.1 — Ecuaciones de variables libres</a></li>
+  </ul></li>
+  <li><a href="#fórmulas-cerradas" id="toc-fórmulas-cerradas" class="nav-link" data-scroll-target="#fórmulas-cerradas">6.6. Fórmulas cerradas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00031" id="toc-tlog-def-00031" class="nav-link" data-scroll-target="#tlog-def-00031">Definición 6.6.1 — Sentencia</a></li>
+  </ul></li>
+  <li><a href="#finitud-y-distinciones-necesarias" id="toc-finitud-y-distinciones-necesarias" class="nav-link" data-scroll-target="#finitud-y-distinciones-necesarias">6.7. Finitud y distinciones necesarias</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00005" id="toc-tlog-pro-00005" class="nav-link" data-scroll-target="#tlog-pro-00005">Proposición 6.7.1 — Finitud y coexistencia de estados de ocurrencia</a></li>
+  </ul></li>
+  <li><a href="#ejemplos-de-análisis-de-alcance" id="toc-ejemplos-de-análisis-de-alcance" class="nav-link" data-scroll-target="#ejemplos-de-análisis-de-alcance">6.8. Ejemplos de análisis de alcance</a></li>
+  <li><a href="#frontera-y-estado-de-m01" id="toc-frontera-y-estado-de-m01" class="nav-link" data-scroll-target="#frontera-y-estado-de-m01">6.9. Frontera y estado de <code>M01</code></a></li>
+  <li><a href="#recursión-estructural-sobre-términos" id="toc-recursión-estructural-sobre-términos" class="nav-link" data-scroll-target="#recursión-estructural-sobre-términos">6.10. Recursión estructural sobre términos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00017" id="toc-tlog-mth-00017" class="nav-link" data-scroll-target="#tlog-mth-00017">Metateorema 6.10.1 — Existencia y unicidad de la recursión de términos</a></li>
+  </ul></li>
+  <li><a href="#recursión-estructural-sobre-fórmulas" id="toc-recursión-estructural-sobre-fórmulas" class="nav-link" data-scroll-target="#recursión-estructural-sobre-fórmulas">6.11. Recursión estructural sobre fórmulas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00018" id="toc-tlog-mth-00018" class="nav-link" data-scroll-target="#tlog-mth-00018">Metateorema 6.11.1 — Existencia y unicidad de la recursión de fórmulas</a></li>
+  </ul></li>
+  <li><a href="#la-función-de-variables-libres-como-instancia-recursiva" id="toc-la-función-de-variables-libres-como-instancia-recursiva" class="nav-link" data-scroll-target="#la-función-de-variables-libres-como-instancia-recursiva">6.12. La función de variables libres como instancia recursiva</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00004" id="toc-tlog-cor-00004" class="nav-link" data-scroll-target="#tlog-cor-00004">Corolario 6.12.1 — Caracterización funcional única de <span class="math inline">\(\operatorname{FV}_\tau\)</span></a></li>
+  </ul></li>
+  <li><a href="#sustitución-simultánea-de-términos" id="toc-sustitución-simultánea-de-términos" class="nav-link" data-scroll-target="#sustitución-simultánea-de-términos">6.13. Sustitución simultánea de términos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00032" id="toc-tlog-def-00032" class="nav-link" data-scroll-target="#tlog-def-00032">Definición 6.13.1 — Sustitución de variables por términos</a></li>
+  </ul></li>
+  <li><a href="#soporte-de-variables-después-de-sustituir-términos" id="toc-soporte-de-variables-después-de-sustituir-términos" class="nav-link" data-scroll-target="#soporte-de-variables-después-de-sustituir-términos">6.14. Soporte de variables después de sustituir términos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00012" id="toc-tlog-lem-00012" class="nav-link" data-scroll-target="#tlog-lem-00012">Lema 6.14.1 — Fórmula exacta de soporte</a></li>
+  </ul></li>
+  <li><a href="#identidad-composición-y-carácter-simultáneo" id="toc-identidad-composición-y-carácter-simultáneo" class="nav-link" data-scroll-target="#identidad-composición-y-carácter-simultáneo">6.15. Identidad, composición y carácter simultáneo</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00006" id="toc-tlog-pro-00006" class="nav-link" data-scroll-target="#tlog-pro-00006">Proposición 6.15.1 — Leyes algebraicas de la sustitución de términos</a></li>
+  </ul></li>
+  <li><a href="#advertencia-necesaria-antes-de-sustituir-fórmulas" id="toc-advertencia-necesaria-antes-de-sustituir-fórmulas" class="nav-link" data-scroll-target="#advertencia-necesaria-antes-de-sustituir-fórmulas">6.16. Advertencia necesaria antes de sustituir fórmulas</a></li>
+  <li><a href="#estado-y-frontera-del-microtramo-m02" id="toc-estado-y-frontera-del-microtramo-m02" class="nav-link" data-scroll-target="#estado-y-frontera-del-microtramo-m02">6.17. Estado y frontera del microtramo <code>M02</code></a></li>
+  <li><a href="#nombres-sintácticos-y-selección-canónica-de-variables-frescas" id="toc-nombres-sintácticos-y-selección-canónica-de-variables-frescas" class="nav-link" data-scroll-target="#nombres-sintácticos-y-selección-canónica-de-variables-frescas">6.18. Nombres sintácticos y selección canónica de variables frescas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00033" id="toc-tlog-def-00033" class="nav-link" data-scroll-target="#tlog-def-00033">Definición 6.18.1 — Soporte total de nombres de una fórmula</a></li>
+  </ul></li>
+  <li><a href="#libertad-para-sustituir" id="toc-libertad-para-sustituir" class="nav-link" data-scroll-target="#libertad-para-sustituir">6.19. Libertad para sustituir</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00034" id="toc-tlog-def-00034" class="nav-link" data-scroll-target="#tlog-def-00034">Definición 6.19.1 — Predicado sintáctico «<span class="math inline">\(t\)</span> libre para <span class="math inline">\(x\)</span> en <span class="math inline">\(\varphi\)</span>»</a></li>
+  </ul></li>
+  <li><a href="#caracterización-por-ocurrencias" id="toc-caracterización-por-ocurrencias" class="nav-link" data-scroll-target="#caracterización-por-ocurrencias">6.20. Caracterización por ocurrencias</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00013" id="toc-tlog-lem-00013" class="nav-link" data-scroll-target="#tlog-lem-00013">Lema 6.20.1 — Criterio necesario y suficiente de ausencia de captura</a></li>
+  </ul></li>
+  <li><a href="#sustitución-literal-segura-de-fórmulas" id="toc-sustitución-literal-segura-de-fórmulas" class="nav-link" data-scroll-target="#sustitución-literal-segura-de-fórmulas">6.21. Sustitución literal segura de fórmulas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00035" id="toc-tlog-def-00035" class="nav-link" data-scroll-target="#tlog-def-00035">Definición 6.21.1 — Sustitución literal bajo la condición «libre para»</a></li>
+  </ul></li>
+  <li><a href="#variables-libres-después-de-una-sustitución-segura" id="toc-variables-libres-después-de-una-sustitución-segura" class="nav-link" data-scroll-target="#variables-libres-después-de-una-sustitución-segura">6.22. Variables libres después de una sustitución segura</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00014" id="toc-tlog-lem-00014" class="nav-link" data-scroll-target="#tlog-lem-00014">Lema 6.22.1 — Fórmula exacta del soporte libre</a></li>
+  </ul></li>
+  <li><a href="#renombrado-ligado-y-equivalencia-alfa" id="toc-renombrado-ligado-y-equivalencia-alfa" class="nav-link" data-scroll-target="#renombrado-ligado-y-equivalencia-alfa">6.23. Renombrado ligado y equivalencia alfa</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00036" id="toc-tlog-def-00036" class="nav-link" data-scroll-target="#tlog-def-00036">Definición 6.23.1 — Paso alfa elemental y clausura contextual</a></li>
+  </ul></li>
+  <li><a href="#lo-que-conserva-el-renombrado-alfa" id="toc-lo-que-conserva-el-renombrado-alfa" class="nav-link" data-scroll-target="#lo-que-conserva-el-renombrado-alfa">6.24. Lo que conserva el renombrado alfa</a>
+  <ul class="collapse">
+  <li><a href="#tlog-pro-00007" id="toc-tlog-pro-00007" class="nav-link" data-scroll-target="#tlog-pro-00007">Proposición 6.24.1 — Conservación de variables libres y rango</a></li>
+  </ul></li>
+  <li><a href="#sustitución-total-sin-captura-mediante-nombres-frescos" id="toc-sustitución-total-sin-captura-mediante-nombres-frescos" class="nav-link" data-scroll-target="#sustitución-total-sin-captura-mediante-nombres-frescos">6.25. Sustitución total sin captura mediante nombres frescos</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00019" id="toc-tlog-mth-00019" class="nav-link" data-scroll-target="#tlog-mth-00019">Metateorema 6.25.1 — Existencia y unicidad de la sustitución canónica con prevención de captura</a></li>
+  </ul></li>
+  <li><a href="#cuatro-situaciones-que-no-deben-confundirse" id="toc-cuatro-situaciones-que-no-deben-confundirse" class="nav-link" data-scroll-target="#cuatro-situaciones-que-no-deben-confundirse">6.26. Cuatro situaciones que no deben confundirse</a></li>
+  <li><a href="#frontera-y-estado-de-m03" id="toc-frontera-y-estado-de-m03" class="nav-link" data-scroll-target="#frontera-y-estado-de-m03">6.27. Frontera y estado de <code>M03</code></a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00037" id="toc-tlog-def-00037" class="nav-link" data-scroll-target="#tlog-def-00037">Definición 6.28.1 — Código por profundidad del vinculante</a></li>
+  </ul></li>
+  <li><a href="#caracterización-exacta-de-la-equivalencia-alfa" id="toc-caracterización-exacta-de-la-equivalencia-alfa" class="nav-link" data-scroll-target="#caracterización-exacta-de-la-equivalencia-alfa">6.29. Caracterización exacta de la equivalencia alfa</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00020" id="toc-tlog-mth-00020" class="nav-link" data-scroll-target="#tlog-mth-00020">Metateorema 6.29.1 — Renombrado alfa si y sólo si coincide el código</a></li>
+  </ul></li>
+  <li><a href="#sustitución-simultánea-de-fórmulas-con-prevención-de-captura" id="toc-sustitución-simultánea-de-fórmulas-con-prevención-de-captura" class="nav-link" data-scroll-target="#sustitución-simultánea-de-fórmulas-con-prevención-de-captura">6.30. Sustitución simultánea de fórmulas, con prevención de captura</a>
+  <ul class="collapse">
+  <li><a href="#tlog-def-00038" id="toc-tlog-def-00038" class="nav-link" data-scroll-target="#tlog-def-00038">Definición 6.30.1 — Extensión total de una sustitución global</a></li>
+  </ul></li>
+  <li><a href="#lema-de-transporte-de-ocurrencias-soporte-y-localidad" id="toc-lema-de-transporte-de-ocurrencias-soporte-y-localidad" class="nav-link" data-scroll-target="#lema-de-transporte-de-ocurrencias-soporte-y-localidad">6.31. Lema de transporte de ocurrencias, soporte y localidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-lem-00015" id="toc-tlog-lem-00015" class="nav-link" data-scroll-target="#tlog-lem-00015">Lema 6.31.1 — Conmutación con el código sin nombres</a></li>
+  </ul></li>
+  <li><a href="#compatibilidad-alfa-e-identidad" id="toc-compatibilidad-alfa-e-identidad" class="nav-link" data-scroll-target="#compatibilidad-alfa-e-identidad">6.32. Compatibilidad alfa e identidad</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00021" id="toc-tlog-mth-00021" class="nav-link" data-scroll-target="#tlog-mth-00021">Metateorema 6.32.1 — Descenso de la sustitución al cociente alfa</a></li>
+  </ul></li>
+  <li><a href="#composición-de-sustituciones-en-fórmulas" id="toc-composición-de-sustituciones-en-fórmulas" class="nav-link" data-scroll-target="#composición-de-sustituciones-en-fórmulas">6.33. Composición de sustituciones en fórmulas</a>
+  <ul class="collapse">
+  <li><a href="#tlog-mth-00022" id="toc-tlog-mth-00022" class="nav-link" data-scroll-target="#tlog-mth-00022">Metateorema 6.33.1 — Ley de composición módulo equivalencia alfa</a></li>
+  </ul></li>
+  <li><a href="#estructura-algebraica-de-las-sustituciones-y-sus-clases" id="toc-estructura-algebraica-de-las-sustituciones-y-sus-clases" class="nav-link" data-scroll-target="#estructura-algebraica-de-las-sustituciones-y-sus-clases">6.34. Estructura algebraica de las sustituciones y sus clases</a>
+  <ul class="collapse">
+  <li><a href="#tlog-cor-00005" id="toc-tlog-cor-00005" class="nav-link" data-scroll-target="#tlog-cor-00005">Corolario 6.34.1 — Acción derecha del monoide de sustituciones sobre clases alfa</a></li>
+  </ul></li>
+  <li><a href="#cierre-sintáctico-del-capítulo-6" id="toc-cierre-sintáctico-del-capítulo-6" class="nav-link" data-scroll-target="#cierre-sintáctico-del-capítulo-6">6.35. Cierre sintáctico del Capítulo 6</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 6 — Variables, sustitución y recursión sintáctica</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-05.html">← Capítulo 5</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-07.html">Capítulo 7 →</a></p>
+<section id="objeto-hipótesis-y-frontera" class="level2">
+<h2 class="anchored" data-anchor-id="objeto-hipótesis-y-frontera">6.0. Objeto, hipótesis y frontera</h2>
+<p>El Capítulo 5 ha construido, para una signatura unisortada arbitraria <span class="math inline">\(\tau\)</span>, los términos <span class="math inline">\(\operatorname{Tm}_\tau\)</span>, las fórmulas atómicas <span class="math inline">\(\operatorname{At}_\tau\)</span>, las fórmulas <span class="math inline">\(\operatorname{Fm}_\tau\)</span>, sus árboles de análisis únicos y la inducción estructural. Aquí se investiga <strong>qué ocurrencias de variables quedan sujetas al alcance de un cuantificador</strong> y cuáles permanecen disponibles para sustitución. El bloque <code>TLOG-CH06-M01</code> estudia ocurrencias y vínculos sin ejecutar sustituciones. El bloque <code>TLOG-CH06-M02</code> añade recursión general y sustitución de términos; <code>M03</code> construye sustitución individual segura y renombrado alfa; <code>M04</code> demuestra las leyes generales de sustitución simultánea de fórmulas y cierra la sintaxis del capítulo.</p>
+<p>En todo el capítulo se trabaja en <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathrm{ZF}+\)</span> lógica clásica, sin axioma de elección global, con el conjunto <span class="math inline">\(X=\{x_i:i\in\omega\}\)</span> del §5.3. Los cinco conectivos y ambos cuantificadores siguen siendo operadores <strong>primitivos</strong> de la sintaxis; el signo <span class="math inline">\(\doteq\)</span> es igualdad lógica <strong>en una fórmula objeto</strong> y nunca igualdad metateórica entre términos. Los dominios e interpretaciones de símbolos extralógicos sólo se introducirán en el Capítulo 7.</p>
+<section id="fuentes-cotejadas" class="level3">
+<h3 class="anchored" data-anchor-id="fuentes-cotejadas">Fuentes cotejadas</h3>
+<ul>
+<li><code>TLOG-SRC-0002</code>: Enderton, <em>A Mathematical Introduction to Logic</em>, 2.ª ed.&nbsp;(2001), cap. 2, §2.1, pp.&nbsp;76–77: distinción entre apariciones libres y ligadas y cláusula metateórica de variables libres. Rol <code>proof-model / countercheck</code>.</li>
+<li><code>TLOG-SRC-0003</code>: Rautenberg, <em>A Concise Introduction to Mathematical Logic</em>, 3.ª ed.&nbsp;(2010), cap. 2, §2.2, pp.&nbsp;58–59: alcance, cuantificación repetida, posible coexistencia de usos libres y ligados y fórmulas cerradas. Rol <code>countercheck</code>.</li>
+</ul>
+<p>Para <code>M02</code> se amplía el cotejo a Enderton, cap. 1 §1.4 pp.&nbsp;38–41 (recursión en álgebras libremente generadas), y Rautenberg, cap. 2 §2.2 pp.&nbsp;58–60 (recursión de fórmulas y sustituciones). Para <code>M03</code> se cotejan además Enderton, cap. 2 §2.4 pp.&nbsp;112–114 (captura y libertad para sustituir), y Rautenberg, cap. 2 §§2.2–2.3 pp.&nbsp;59–61 y 70–72 (sustituciones y condiciones de colisión). El tratamiento alfa de TLOG se reconstruye de forma exclusivamente <strong>sintáctica</strong>, sin importar las equivalencias semánticas de Rautenberg §2.4.</p>
+<p>Las pruebas del capítulo se reconstruyen desde los <strong>árboles parentizados propios de TLOG</strong>. La noción explícita de dirección de ocurrencia y el vínculo con el <strong>cuantificador homónimo más cercano</strong> son decisiones formales locales. No se traslada a TLOG una política de sustitución de las fuentes sin examinar previamente la captura.</p>
+</section>
+</section>
+<section id="ocurrencias-de-variables-individuales" class="level2">
+<h2 class="anchored" data-anchor-id="ocurrencias-de-variables-individuales">6.1. Ocurrencias de variables individuales</h2>
+<section id="tlog-def-00028" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00028">Definición 6.1.1 — Direcciones de ocurrencias individuales</h3>
+<p>El árbol sintáctico finito de un término o fórmula tiene una <strong>dirección</strong> para cada nodo: una secuencia finita de etiquetas de rama desde la raíz. La raíz posee dirección vacía <span class="math inline">\(\epsilon\)</span>. En una aplicación funcional de aridad <span class="math inline">\(n\)</span>, se etiquetan sus hijos <span class="math inline">\(1,\ldots,n\)</span>; en un átomo relacional, sus términos argumentos reciben análogamente direcciones <span class="math inline">\(1,\ldots,n\)</span>; en una ecuación se distinguen los lados <span class="math inline">\(\mathtt{izq},\mathtt{der}\)</span>; en una negación el hijo <span class="math inline">\(\mathtt{cuerpo}\)</span>; en un binario <span class="math inline">\(\mathtt{izq},\mathtt{der}\)</span>; y en una cuantificación, su única <strong>matriz</strong> se alcanza por <span class="math inline">\(\mathtt{matriz}\)</span>. Los tipos de nodo y de rama están etiquetados, de modo que la reutilización de <span class="math inline">\(\mathtt{izq}\)</span> en árboles de distinta clase no crea ambigüedad.</p>
+<p>Una <strong>ocurrencia de variable individual en posición de término</strong> es la dirección de una hoja <span class="math inline">\(x\in X\)</span> en un árbol de término que aparece dentro de una fórmula atómica. Se cuenta cada <strong>posición</strong> por separado, aun cuando su token sea igual al de otra hoja. Denotamos el conjunto de tales ocurrencias por <span class="math inline">\(\operatorname{Occ}_X(\varphi)\)</span>. Para <span class="math inline">\(o\in\operatorname{Occ}_X(\varphi)\)</span>, <span class="math inline">\(\operatorname{var}_\varphi(o)\in X\)</span> es el token leído en esa hoja. De forma análoga, <span class="math inline">\(\operatorname{Occ}_X(t)\)</span> registra las hojas variables de un término <span class="math inline">\(t\)</span>.</p>
+<p>Los cuantificadores tienen además una <strong>declaración</strong> de variable <span class="math inline">\(x\)</span> en su nodo raíz. El conjunto de declaraciones, con dirección y nombre, se escribe <span class="math inline">\(\operatorname{Binder}_\tau(\varphi)\)</span>. La declaración <span class="math inline">\((b,Q,x)\)</span> en la dirección <span class="math inline">\(b\)</span> de <span class="math inline">\(\operatorname{Quant}_{Q,x}(\psi)\)</span> <strong>no es una hoja de término</strong>: por definición no es un elemento de <span class="math inline">\(\operatorname{Occ}_X(\varphi)\)</span>. Así se separan un token que declara un vínculo y las ocurrencias sobre las cuales ese vínculo puede operar.</p>
+<p>Definimos también el soporte de un término:</p>
+<p><span class="math display">\[
+\operatorname{Var}_\tau(t):=
+\{\operatorname{var}_t(o):o\in\operatorname{Occ}_X(t)\}.
+\]</span></p>
+<p>Las hojas de una constante nularia <span class="math inline">\(f()\)</span> y las de un átomo relacional nulario <span class="math inline">\(R()\)</span> no contienen variables. Todos los conjuntos anteriores son finitos porque proceden de árboles finitos con aridades finitas. Su definición no necesita recurrir a la futura operación general de recursión sintáctica: consiste en seleccionar y etiquetar posiciones de árboles ya construidos por <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-lem-00009">TLOG-LEM-00009</a> y <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-lem-00010">TLOG-LEM-00010</a>.</p>
+</section>
+</section>
+<section id="alcance-de-los-cuantificadores" class="level2">
+<h2 class="anchored" data-anchor-id="alcance-de-los-cuantificadores">6.2. Alcance de los cuantificadores</h2>
+<section id="tlog-def-00029" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00029">Definición 6.2.1 — Alcance y vinculación</h3>
+<p>Sea <span class="math inline">\(b\)</span> la dirección de una declaración cuantificadora <span class="math inline">\((b,Q,x)\)</span> en el árbol de una fórmula <span class="math inline">\(\varphi\)</span>. El <strong>alcance sintáctico</strong> de esa declaración es el subárbol de fórmula correspondiente a su matriz <span class="math inline">\(\psi\)</span>; por tanto incluye todos los descendientes de la dirección <span class="math inline">\(b\mathbin{\frown}\langle\mathtt{matriz}\rangle\)</span>, pero <strong>no</strong> incluye ramas hermanas de un constructor binario situado fuera de la matriz. Una ocurrencia de término <span class="math inline">\(o\in\operatorname{Occ}_X(\varphi)\)</span> se encuentra en ese alcance precisamente cuando su dirección prolonga aquella dirección de matriz.</p>
+<p>Decimos que la declaración <span class="math inline">\((b,Q,x)\)</span> es <strong>candidata a vincular</strong> la ocurrencia <span class="math inline">\(o\)</span> si <span class="math inline">\(\operatorname{var}_\varphi(o)=x\)</span> y <span class="math inline">\(o\)</span> pertenece a su alcance. Cuando existen varias declaraciones homónimas anidadas que satisfacen estas condiciones, llamamos <strong>cuantificador vinculante</strong> de <span class="math inline">\(o\)</span> a la de mayor profundidad, esto es, la declaración candidata cuyo nodo es ancestro propio más próximo a <span class="math inline">\(o\)</span>. Denotamos este cuantificador por <span class="math inline">\(\operatorname{bind}_\varphi(o)\)</span>. Si no existe ninguno, escribimos <span class="math inline">\(\operatorname{bind}_\varphi(o)=\varnothing\)</span> como abreviatura de «ningún cuantificador vinculante»; <span class="math inline">\(\varnothing\)</span> no es una declaración de cuantificador.</p>
+<p>El cuantificador exterior sigue teniendo su propio alcance aunque una declaración homónima interior <strong>oculte</strong> su influencia sobre ciertas ocurrencias. La elección de <span class="math inline">\(\forall\)</span> o <span class="math inline">\(\exists\)</span> no modifica esta regla puramente sintáctica.</p>
+</section>
+</section>
+<section id="unicidad-del-vínculo" class="level2">
+<h2 class="anchored" data-anchor-id="unicidad-del-vínculo">6.3. Unicidad del vínculo</h2>
+<section id="tlog-lem-00011" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00011">Lema 6.3.1 — Existencia y unicidad del vinculante más próximo</h3>
+<p>Para cada fórmula <span class="math inline">\(\varphi\)</span> y cada ocurrencia <span class="math inline">\(o\in\operatorname{Occ}_X(\varphi)\)</span>, existe <strong>a lo sumo una</strong> declaración <span class="math inline">\(\operatorname{bind}_\varphi(o)\)</span>. Si hay al menos una declaración candidata, existe exactamente una que cumple la condición de máxima profundidad. En consecuencia, la distinción entre ocurrencia libre y vinculada que se definirá en §6.4 es <strong>exhaustiva y excluyente</strong>.</p>
+<section id="demostración" class="level4">
+<h4 class="anchored" data-anchor-id="demostración">Demostración</h4>
+<p>La legibilidad única de §5.14 produce un árbol finito en el que la dirección de <span class="math inline">\(o\)</span> determina una sola cadena de ancestros desde la raíz hasta su hoja. Todos los cuantificadores candidatos se encuentran entre esos ancestros; en particular, sus direcciones se comparan por relación de prefijo y, si son distintas, por longitud. Una familia finita no vacía de tales direcciones posee una longitud máxima. Si dos candidatas tuvieran esa misma longitud, serían el mismo prefijo de la dirección <span class="math inline">\(o\)</span>; por la unicidad del análisis sintáctico, corresponderían a un único nodo cuantificador y a una única declaración. Así existe una candidata máxima única. En ausencia de candidatas no se asigna vinculante. Estos dos casos agotan todas las posibilidades. <span class="math inline">\(\square\)</span></p>
+<p>La prueba utiliza sólo finitud y unicidad del árbol; no usa semántica, elección ni equivalencia entre fórmulas.</p>
+</section>
+</section>
+</section>
+<section id="variables-libres-y-ligadas" class="level2">
+<h2 class="anchored" data-anchor-id="variables-libres-y-ligadas">6.4. Variables libres y ligadas</h2>
+<section id="tlog-def-00030" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00030">Definición 6.4.1 — Ocurrencias libres, ocurrencias ligadas y variables libres</h3>
+<p>Una ocurrencia <span class="math inline">\(o\in\operatorname{Occ}_X(\varphi)\)</span> se llama <strong>libre</strong> si no tiene cuantificador vinculante y <strong>ligada</strong> si lo tiene. Escribimos</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{FreeOcc}_\tau(\varphi)&amp;:=\{o\in\operatorname{Occ}_X(\varphi):\operatorname{bind}_\varphi(o)=\varnothing\},\\
+\operatorname{BoundOcc}_\tau(\varphi)&amp;:=\operatorname{Occ}_X(\varphi)\setminus\operatorname{FreeOcc}_\tau(\varphi).
+\end{aligned}
+\]</span></p>
+<p>El conjunto de <strong>variables libres</strong> es el conjunto de nombres que tienen al menos una ocurrencia libre:</p>
+<p><span class="math display">\[
+\boxed{\operatorname{FV}_\tau(\varphi):=
+\{\operatorname{var}_\varphi(o):o\in\operatorname{FreeOcc}_\tau(\varphi)\}.}
+\]</span></p>
+<p>Para evitar dos nociones homónimas, fijamos asimismo</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{QVar}_\tau(\varphi)
+&amp;:=\{x\in X:\exists b,Q\ ((b,Q,x)\in\operatorname{Binder}_\tau(\varphi))\},\\
+\operatorname{BVocc}_\tau(\varphi)
+&amp;:=\{\operatorname{var}_\varphi(o):o\in\operatorname{BoundOcc}_\tau(\varphi)\}.
+\end{aligned}
+\]</span></p>
+<p>La primera colección contiene los <strong>nombres declarados por cuantificadores</strong>; la segunda, los nombres de las <strong>ocurrencias de término efectivamente ligadas</strong>. Una cuantificación vacua puede añadir un nombre a <span class="math inline">\(\operatorname{QVar}_\tau\)</span> sin añadir ninguna ocurrencia a <span class="math inline">\(\operatorname{BoundOcc}_\tau\)</span> o a <span class="math inline">\(\operatorname{BVocc}_\tau\)</span>. Un mismo nombre <span class="math inline">\(x\)</span> puede pertenecer a <span class="math inline">\(\operatorname{FV}_\tau(\varphi)\)</span> y a <span class="math inline">\(\operatorname{BVocc}_\tau(\varphi)\)</span> porque ambas propiedades se refieren a <strong>ocurrencias distintas</strong>.</p>
+<p>Esta definición clasifica ocurrencias de <strong>términos en fórmulas</strong>. Los tokens que figuran en las declaraciones de cuantificación están etiquetados como declaradores, no como ocurrencias libres o ligadas de término.</p>
+</section>
+</section>
+<section id="caracterización-estructural-de-variables-libres" class="level2">
+<h2 class="anchored" data-anchor-id="caracterización-estructural-de-variables-libres">6.5. Caracterización estructural de variables libres</h2>
+<section id="tlog-mth-00016" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00016">Metateorema 6.5.1 — Ecuaciones de variables libres</h3>
+<p>Para cualquier término <span class="math inline">\(t\)</span>, cualquier fórmula <span class="math inline">\(\varphi,\psi\)</span>, <span class="math inline">\(Q\in\{\forall,\exists\}\)</span>, <span class="math inline">\(x\in X\)</span>, y <span class="math inline">\(\circ\in\{\land,\lor,\to,\leftrightarrow\}\)</span>, el conjunto de variables libres de §6.4 satisface:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{Var}_\tau(x)&amp;=\{x\},\\
+\operatorname{Var}_\tau(f(t_1,\ldots,t_n))&amp;=\bigcup_{i=1}^{n}\operatorname{Var}_\tau(t_i) \quad(f\in F_n),\\
+\operatorname{FV}_\tau(\operatorname{Rel}_{R}(t_1,\ldots,t_n))
+&amp;=\bigcup_{i=1}^{n}\operatorname{Var}_\tau(t_i) \quad(R\in R_n),\\
+\operatorname{FV}_\tau(\operatorname{Eq}(s,t))
+&amp;=\operatorname{Var}_\tau(s)\cup\operatorname{Var}_\tau(t),\\
+\operatorname{FV}_\tau(\operatorname{Neg}(\varphi))&amp;=\operatorname{FV}_\tau(\varphi),\\
+\operatorname{FV}_\tau(\operatorname{Bin}_{\circ}(\varphi,\psi))
+&amp;=\operatorname{FV}_\tau(\varphi)\cup\operatorname{FV}_\tau(\psi),\\
+\operatorname{FV}_\tau(\operatorname{Quant}_{Q,x}(\varphi))
+&amp;=\operatorname{FV}_\tau(\varphi)\setminus\{x\}.
+\end{aligned}
+\]</span></p>
+<p>Las uniones de aridad cero son <span class="math inline">\(\varnothing\)</span>. Las ecuaciones son válidas para ambos cuantificadores <strong>primitivos</strong>, sin identificar <span class="math inline">\(\exists x\varphi\)</span> con ninguna abreviatura que use <span class="math inline">\(\forall\)</span>.</p>
+<section id="demostración-1" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-1">Demostración</h4>
+<p><strong>Primer paso: términos.</strong> Una hoja variable <span class="math inline">\(x\)</span> es su única ocurrencia; una aplicación <span class="math inline">\(f(t_1,\ldots,t_n)\)</span> añade el símbolo <span class="math inline">\(f\)</span> y separadores, pero no hojas variables nuevas. Las hojas del término compuesto son exactamente las de los <span class="math inline">\(n\)</span> argumentos en sus direcciones disjuntas. Esto demuestra la cláusula de <span class="math inline">\(\operatorname{Var}_\tau\)</span>, incluyendo <span class="math inline">\(n=0\)</span>. El razonamiento recorre los constructores de <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-mth-00014">TLOG-MTH-00014</a>.</p>
+<p><strong>Segundo paso: átomos.</strong> En un átomo no existe un ancestro cuantificador; por tanto, todas sus hojas variables son libres. En <span class="math inline">\(\operatorname{Rel}_{R}(t_1,\ldots,t_n)\)</span> se reúnen las ocurrencias de cada término argumento, y en <span class="math inline">\(\operatorname{Eq}(s,t)\)</span>, las de sus dos lados. Esto prueba las dos ecuaciones atómicas.</p>
+<p><strong>Tercer paso: fórmulas compuestas.</strong> Procedemos por los casos de inducción de <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-mth-00015">TLOG-MTH-00015</a>. La negación no incorpora declaraciones ni modifica ancestros cuantificadores de sus hojas; las libres son exactamente las de la matriz. Un constructor binario tampoco incorpora declaradores; cada ocurrencia está en una de sus dos ramas y conserva en ella el mismo vinculante que antes de formar el binario. Por eso las variables libres son la unión indicada.</p>
+<p>Por último, <span class="math inline">\(\operatorname{Quant}_{Q,x}(\varphi)\)</span> incorpora una declaración exterior de <span class="math inline">\(x\)</span>, cuyo alcance es la matriz completa. Si una hoja ya tenía un vinculante en <span class="math inline">\(\varphi\)</span>, éste continúa siendo el más cercano; si era libre y su nombre es <span class="math inline">\(x\)</span>, la nueva declaración la vincula; y si era libre pero tiene nombre distinto de <span class="math inline">\(x\)</span>, sigue sin vinculante. En consecuencia, se eliminan <strong>exactamente</strong> los nombres <span class="math inline">\(x\)</span> de las ocurrencias anteriormente libres. Obtenemos <span class="math inline">\(\operatorname{FV}_\tau(\varphi)\setminus\{x\}\)</span>, con independencia de que <span class="math inline">\(Q\)</span> sea <span class="math inline">\(\forall\)</span> o <span class="math inline">\(\exists\)</span>. No quedan otros constructores. <span class="math inline">\(\square\)</span></p>
+<p>El teorema prueba que las ecuaciones usuales de variables libres coinciden con la definición fundamental <strong>por direcciones de ocurrencia</strong>. No se invoca una transformación arbitraria de fórmulas definida por recursión ni un teorema de sustitución pendiente.</p>
+</section>
+</section>
+</section>
+<section id="fórmulas-cerradas" class="level2">
+<h2 class="anchored" data-anchor-id="fórmulas-cerradas">6.6. Fórmulas cerradas</h2>
+<section id="tlog-def-00031" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00031">Definición 6.6.1 — Sentencia</h3>
+<p>Una <strong>fórmula cerrada</strong>, también llamada <strong>sentencia</strong> de la signatura <span class="math inline">\(\tau\)</span>, es una fórmula sin ocurrencias individuales libres:</p>
+<p><span class="math display">\[
+\operatorname{Sent}_\tau:=\{
+\varphi\in\operatorname{Fm}_\tau:
+\operatorname{FV}_\tau(\varphi)=\varnothing
+\}.
+\]</span></p>
+<p>El término «sentencia» designa aquí sólo una propiedad <strong>sintáctica</strong>. No afirma verdad, validez ni demostrabilidad. Una sentencia puede tener cuantificadores vacuos; también puede carecer de cuantificadores si, por ejemplo, sus términos son constantes o se usa un predicado nulario. La clase <span class="math inline">\(\operatorname{Sent}_\tau\)</span> es un conjunto en ZF porque es un subconjunto definido de <span class="math inline">\(\operatorname{Fm}_\tau\)</span>.</p>
+</section>
+</section>
+<section id="finitud-y-distinciones-necesarias" class="level2">
+<h2 class="anchored" data-anchor-id="finitud-y-distinciones-necesarias">6.7. Finitud y distinciones necesarias</h2>
+<section id="tlog-pro-00005" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00005">Proposición 6.7.1 — Finitud y coexistencia de estados de ocurrencia</h3>
+<p>Para toda fórmula <span class="math inline">\(\varphi\in\operatorname{Fm}_\tau\)</span>:</p>
+<ol type="1">
+<li><span class="math inline">\(\operatorname{FV}_\tau(\varphi)\)</span>, <span class="math inline">\(\operatorname{QVar}_\tau(\varphi)\)</span>, <span class="math inline">\(\operatorname{FreeOcc}_\tau(\varphi)\)</span> y <span class="math inline">\(\operatorname{BoundOcc}_\tau(\varphi)\)</span> son conjuntos finitos.</li>
+<li><span class="math inline">\(\operatorname{FreeOcc}_\tau(\varphi)\)</span> y <span class="math inline">\(\operatorname{BoundOcc}_\tau(\varphi)\)</span> particionan <span class="math inline">\(\operatorname{Occ}_X(\varphi)\)</span>, aun cuando <span class="math inline">\(\operatorname{FV}_\tau(\varphi)\cap\operatorname{BVocc}_\tau(\varphi)\ne\varnothing\)</span>.</li>
+<li>La igualdad de conjuntos <span class="math inline">\(\operatorname{FV}_\tau(\operatorname{Quant}_{\forall,x}(\psi))=\operatorname{FV}_\tau(\operatorname{Quant}_{\exists,x}(\psi))\)</span> es una <strong>identidad sintáctica</strong> de soportes libres, no una equivalencia lógica entre las fórmulas cuantificadas.</li>
+<li>Un cuantificador puede tener alcance no vacío y no vincular ninguna ocurrencia del nombre declarado (<em>cuantificación vacua</em>).</li>
+</ol>
+<section id="demostración-2" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-2">Demostración</h4>
+<p>El árbol de análisis de <span class="math inline">\(\varphi\)</span> contiene un número finito de nodos, luego sólo un número finito de hojas variables y declaraciones cuantificadoras. Las cuatro colecciones del punto 1 son subconjuntos o imágenes de esas colecciones finitas; son finitas. La partición del punto 2 es inmediata de la existencia o inexistencia de vinculante único por el lema 6.3.1. El punto 3 es la aplicación de la última ecuación del metateorema 6.5.1 a <span class="math inline">\(Q=\forall\)</span> y a <span class="math inline">\(Q=\exists\)</span>. Para el punto 4, basta tomar <span class="math inline">\(\psi=(x_1\doteq x_1)\)</span> y cuantificar con <span class="math inline">\(x_0\ne x_1\)</span>: la matriz existe, pero no contiene ninguna ocurrencia de <span class="math inline">\(x_0\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Para comprobar que el punto 2 permite de verdad nombres simultáneamente libres y ligados, elijamos una signatura con <span class="math inline">\(P\in R_1\)</span> y la fórmula</p>
+<p><span class="math display">\[
+\Phi:=\bigl((\forall x_0\,P(x_0))\land P(x_0)\bigr).
+\]</span></p>
+<p>La primera aparición de <span class="math inline">\(x_0\)</span> como argumento de <span class="math inline">\(P\)</span> tiene vinculante <span class="math inline">\(\forall x_0\)</span>; la segunda está en la rama derecha de la conjunción y queda libre, fuera del alcance de ese cuantificador. Por tanto <span class="math inline">\(x_0\in\operatorname{FV}_\tau(\Phi)\cap\operatorname{BVocc}_\tau(\Phi)\)</span>, sin que ninguna <strong>ocurrencia individual</strong> sea simultáneamente libre y ligada.</p>
+</section>
+</section>
+</section>
+<section id="ejemplos-de-análisis-de-alcance" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-de-análisis-de-alcance">6.8. Ejemplos de análisis de alcance</h2>
+<p><strong>Cuantificación anidada y ocultamiento.</strong> En</p>
+<p><span class="math display">\[
+\Theta:=\forall x_0\,\exists x_0\,P(x_0),
+\]</span></p>
+<p>el vinculante de la única ocurrencia de término <span class="math inline">\(x_0\)</span> es el <span class="math inline">\(\exists x_0\)</span> interno, no el <span class="math inline">\(\forall x_0\)</span> externo. El cuantificador externo tiene alcance que contiene al interno, pero no vincula ninguna ocurrencia de término en esta fórmula. Además <span class="math inline">\(\operatorname{FV}_\tau(\Theta)=\varnothing\)</span>; es una sentencia.</p>
+<p><strong>Aparición declarativa, sin aparición de término.</strong> Si <span class="math inline">\(Q\in R_0\)</span>, la fórmula <span class="math inline">\(\forall x_0\,Q()\)</span> tiene <span class="math inline">\(\operatorname{QVar}_\tau=\{x_0\}\)</span> y <span class="math inline">\(\operatorname{Occ}_X=\varnothing\)</span>. El nombre <span class="math inline">\(x_0\)</span> figura en el token de declaración, pero no es una ocurrencia libre ni ligada de término.</p>
+<p><strong>Igualdad puramente lógica.</strong> En la signatura vacía, <span class="math inline">\(\forall x_0\,(x_0\doteq x_1)\)</span> contiene una ocurrencia ligada de <span class="math inline">\(x_0\)</span> y una libre de <span class="math inline">\(x_1\)</span>; no es una sentencia. Cuantificar externamente por <span class="math inline">\(x_1\)</span> sí produce una sentencia. Estas afirmaciones dependen sólo de la sintaxis de igualdad como átomo.</p>
+</section>
+<section id="frontera-y-estado-de-m01" class="level2">
+<h2 class="anchored" data-anchor-id="frontera-y-estado-de-m01">6.9. Frontera y estado de <code>M01</code></h2>
+<p>El bloque demuestra los vínculos entre declaraciones de cuantificación y ocurrencias individuales, así como las ecuaciones y la finitud de variables libres. <strong>No</strong> autoriza aún escribir <span class="math inline">\(\varphi[t/x]\)</span> sin condiciones, sustituir bajo cuantificadores, efectuar <span class="math inline">\(\alpha\)</span>-renombrado ni identificar <span class="math inline">\(\alpha\)</span>-equivalencia con igualdad sintáctica. Esas obligaciones exigen una teoría precisa de recursión y sustitución, que continuará dentro de este capítulo. No se construye ningún modelo ni cálculo deductivo de primer orden.</p>
+<pre class="text"><code>TLOG-CH06-M01 = CLOSED / PASS
+TLOG-CH06-0001 = PARTIAL-CLOSURE / NOT CLOSED
+new mathematical nodes = 7
+chapter 6 nodes = 7 closed
+TLOG registered/closed nodes = 76/76
+DAG = 76 nodes / 163 direct edges / PASS
+external interfaces = 0
+formalization candidates = 17
+compiled/verified = 0
+chapters closed = 6/24
+PART I = CLOSED / PASS
+PART II = OPEN</code></pre>
+<p>Siguiente microtramo: <code>TLOG-CH06-M02 — Recursión sintáctica de términos y fórmulas; preparación de sustituciones</code>.</p>
+</section>
+<section id="recursión-estructural-sobre-términos" class="level2">
+<h2 class="anchored" data-anchor-id="recursión-estructural-sobre-términos">6.10. Recursión estructural sobre términos</h2>
+<section id="tlog-mth-00017" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00017">Metateorema 6.10.1 — Existencia y unicidad de la recursión de términos</h3>
+<p>Sea <span class="math inline">\(\tau=((F_n)_{n\in\omega},(R_n)_{n\in\omega})\)</span> una signatura, <span class="math inline">\(A\)</span> un <strong>conjunto</strong> y supongamos dados:</p>
+<ul>
+<li>una aplicación <span class="math inline">\(a:X\to A\)</span>;</li>
+<li>para cada <span class="math inline">\(n\in\omega\)</span> y cada <span class="math inline">\(f\in F_n\)</span>, una aplicación <span class="math inline">\(G_f:A^n\to A\)</span>, incluido <span class="math inline">\(n=0\)</span> (en ese caso <span class="math inline">\(A^0=\{()\}\)</span>).</li>
+</ul>
+<p>Entonces existe <strong>una única</strong> función <span class="math inline">\(h:\operatorname{Tm}_\tau\to A\)</span> tal que</p>
+<p><span class="math display">\[
+\boxed{h(x)=a(x)\quad(x\in X),\qquad
+h(f(t_1,\ldots,t_n))=G_f(h(t_1),\ldots,h(t_n)).}
+\]</span></p>
+<p>Las ecuaciones requieren <span class="math inline">\(n\)</span> argumentos exactamente y son válidas también para las constantes <span class="math inline">\(f()\)</span>, cuyo valor es <span class="math inline">\(G_f(())\)</span>. No se supone numerabilidad de <span class="math inline">\(\tau\)</span>, efectividad de las operaciones <span class="math inline">\(G_f\)</span> ni elección.</p>
+<section id="demostración-3" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-3">Demostración</h4>
+<p>La definición inductiva <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-def-00024">TLOG-DEF-00024</a> construye los conjuntos crecientes <span class="math inline">\(T_k\)</span> con <span class="math inline">\(\operatorname{Tm}_\tau=\bigcup_{k&lt;\omega}T_k\)</span>. Definimos, por recursión ordinaria sobre <span class="math inline">\(k\)</span>, funciones compatibles <span class="math inline">\(h_k:T_k\to A\)</span>. En <span class="math inline">\(T_0\)</span> asignamos <span class="math inline">\(a(x)\)</span> a cada variable y <span class="math inline">\(G_f(())\)</span> a cada constante <span class="math inline">\(f()\)</span>. Son asignaciones compatibles porque los constructores variable y aplicación funcional nularia son disjuntos.</p>
+<p>Si <span class="math inline">\(h_k\)</span> está definido, conservamos sus valores en <span class="math inline">\(T_k\)</span>. A cada término nuevo de <span class="math inline">\(T_{k+1}\setminus T_k\)</span>, necesariamente de la forma <span class="math inline">\(f(t_1,\ldots,t_n)\)</span> con <span class="math inline">\(n\ge1\)</span> y <span class="math inline">\(t_i\in T_k\)</span>, asignamos <span class="math inline">\(G_f(h_k(t_1),\ldots,h_k(t_n))\)</span>. La legibilidad única de <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-lem-00009">TLOG-LEM-00009</a> asegura que <span class="math inline">\(f\)</span> y la lista ordenada de argumentos no admiten una segunda lectura. Si una expresión ya estaba en <span class="math inline">\(T_k\)</span>, su valor anterior satisface la misma ecuación por la construcción en la etapa de su primera aparición; por tanto, conservarlo no genera incompatibilidad. Así <span class="math inline">\(h_{k+1}|_{T_k}=h_k\)</span>.</p>
+<p>La unión <span class="math inline">\(h:=\bigcup_{k&lt;\omega}h_k\)</span> es una función con dominio <span class="math inline">\(\operatorname{Tm}_\tau\)</span> y satisface ambas cláusulas: todos los argumentos de cualquier aplicación están en una etapa común y finita. Si <span class="math inline">\(h'\)</span> satisface las mismas cláusulas, <span class="math inline">\(h'(x)=h(x)\)</span> en las variables y constantes. La inducción estructural <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-mth-00014">TLOG-MTH-00014</a> propaga la igualdad desde los argumentos a cada aplicación funcional, luego <span class="math inline">\(h'=h\)</span>. Todas las etapas, grafos y uniones se obtienen en ZF. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Alcance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El principio de inducción de §5.6 demuestra propiedades de funciones <strong>ya definidas</strong>; este metateorema demuestra que los datos recursivos compatibles determinan efectivamente una función y que no pueden determinar dos. Esa diferencia es indispensable para la sustitución.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="recursión-estructural-sobre-fórmulas" class="level2">
+<h2 class="anchored" data-anchor-id="recursión-estructural-sobre-fórmulas">6.11. Recursión estructural sobre fórmulas</h2>
+<section id="tlog-mth-00018" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00018">Metateorema 6.11.1 — Existencia y unicidad de la recursión de fórmulas</h3>
+<p>Sea <span class="math inline">\(B\)</span> un conjunto y fijemos los siguientes <strong>datos de recursión</strong>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+b&amp;:\operatorname{At}_\tau\to B,\\
+N&amp;:B\to B,\\
+D_\circ&amp;:B\times B\to B &amp;&amp;(\circ\in\{\land,\lor,\to,\leftrightarrow\}),\\
+U_{Q,x}&amp;:B\to B &amp;&amp;(Q\in\{\forall,\exists\},\ x\in X).
+\end{aligned}
+\]</span></p>
+<p>Existe <strong>una única</strong> función <span class="math inline">\(H:\operatorname{Fm}_\tau\to B\)</span> que satisface simultáneamente</p>
+<p><span class="math display">\[
+\begin{aligned}
+H(\alpha)&amp;=b(\alpha)&amp;&amp; (\alpha\in\operatorname{At}_\tau),\\
+H(\operatorname{Neg}(\varphi))&amp;=N(H(\varphi)),\\
+H(\operatorname{Bin}_\circ(\varphi,\psi))&amp;=D_\circ(H(\varphi),H(\psi)),\\
+H(\operatorname{Quant}_{Q,x}(\varphi))&amp;=U_{Q,x}(H(\varphi)).
+\end{aligned}
+\]</span></p>
+<p>Ambos cuantificadores y los cuatro conectivos binarios se tratan como constructores <strong>primitivos distintos</strong>. El mapa inicial <span class="math inline">\(b\)</span> abarca los átomos relacionales, incluso los nularios, y las ecuaciones de igualdad lógica. Los valores de <span class="math inline">\(H\)</span> no tienen interpretación semántica presupuesta.</p>
+<section id="demostración-4" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-4">Demostración</h4>
+<p>Empleamos la sucesión <span class="math inline">\(W_0=\operatorname{At}_\tau\)</span>, <span class="math inline">\(W_{k+1}\)</span> del §5.13. Sobre <span class="math inline">\(W_0\)</span> definimos <span class="math inline">\(H_0=b\)</span>. Dado <span class="math inline">\(H_k:W_k\to B\)</span>, extendemos su valor a cada fórmula nueva de <span class="math inline">\(W_{k+1}\setminus W_k\)</span> mediante una de las tres cláusulas compuestas. En cada caso, las subfórmulas inmediatas pertenecen a <span class="math inline">\(W_k\)</span>. Por <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-lem-00010">TLOG-LEM-00010</a>, la fórmula determina <strong>exactamente un</strong> constructor raíz y sus argumentos; por tanto ninguna fórmula recibe prescripciones incompatibles. Las fórmulas que ya pertenecen a <span class="math inline">\(W_k\)</span> conservan su valor, que satisface las cláusulas aplicables por la etapa en que fueron incorporadas.</p>
+<p>Obtenemos una familia compatible de grafos y su unión <span class="math inline">\(H=\bigcup_kH_k\)</span>, con dominio <span class="math inline">\(\operatorname{Fm}_\tau\)</span>. Cada cláusula se cumple porque una fórmula compuesta y todas sus subfórmulas aparecen en etapas finitas. Para la unicidad, si <span class="math inline">\(H'\)</span> satisface los mismos datos, las dos funciones coinciden en todos los átomos. La inducción estructural <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-mth-00015">TLOG-MTH-00015</a>, usando sucesivamente los casos de negación, los cuatro conectivos y ambos cuantificadores para cada <span class="math inline">\(x\)</span>, demuestra <span class="math inline">\(H'(\varphi)=H(\varphi)\)</span> para toda fórmula. La recursión sobre <span class="math inline">\(\omega\)</span> y las imágenes de conjuntos se realizan en ZF, sin AC. <span class="math inline">\(\square\)</span></p>
+<p>Es esencial que las operaciones <span class="math inline">\(U_{Q,x}\)</span> estén dadas <strong>para todos</strong> los pares <span class="math inline">\((Q,x)\)</span>. El enunciado no permite asumir una sola cláusula cuantificadora ni confundir la variable que declara el cuantificador con una variable libre de su matriz.</p>
+</section>
+</section>
+</section>
+<section id="la-función-de-variables-libres-como-instancia-recursiva" class="level2">
+<h2 class="anchored" data-anchor-id="la-función-de-variables-libres-como-instancia-recursiva">6.12. La función de variables libres como instancia recursiva</h2>
+<section id="tlog-cor-00004" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00004">Corolario 6.12.1 — Caracterización funcional única de <span class="math inline">\(\operatorname{FV}_\tau\)</span></h3>
+<p>La aplicación <span class="math inline">\(\operatorname{FV}_\tau:\operatorname{Fm}_\tau\to\mathcal P(X)\)</span>, definida originalmente por <strong>ocurrencias y vínculos</strong> en §6.4, es la única función <span class="math inline">\(V:\operatorname{Fm}_\tau\to\mathcal P(X)\)</span> que satisface</p>
+<p><span class="math display">\[
+\begin{aligned}
+V(\operatorname{Rel}_R(t_1,\ldots,t_n))&amp;=\bigcup_{i=1}^n\operatorname{Var}_\tau(t_i),\\
+V(\operatorname{Eq}(s,t))&amp;=\operatorname{Var}_\tau(s)\cup\operatorname{Var}_\tau(t),\\
+V(\operatorname{Neg}(\varphi))&amp;=V(\varphi),\\
+V(\operatorname{Bin}_\circ(\varphi,\psi))&amp;=V(\varphi)\cup V(\psi),\\
+V(\operatorname{Quant}_{Q,x}(\varphi))&amp;=V(\varphi)\setminus\{x\}.
+\end{aligned}
+\]</span></p>
+<section id="demostración-5" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-5">Demostración</h4>
+<p>Tomamos <span class="math inline">\(B=\mathcal P(X)\)</span> en el metateorema 6.11.1; asignamos a cada átomo su conjunto de variables de término, a la negación la identidad, a cada conectivo binario la unión y a cada par <span class="math inline">\((Q,x)\)</span> la operación <span class="math inline">\(S\mapsto S\setminus\{x\}\)</span>. Son aplicaciones totales sobre conjuntos y satisfacen las hipótesis de recursión. El metateorema garantiza exactamente una función <span class="math inline">\(V\)</span>. Por <a href="#tlog-mth-00016">TLOG-MTH-00016</a>, <span class="math inline">\(\operatorname{FV}_\tau\)</span> —ya definida sin usar recursión general— satisface esas cinco familias de ecuaciones; de ahí, por unicidad, <span class="math inline">\(V=\operatorname{FV}_\tau\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Esta identificación <strong>verifica</strong> la definición por ocurrencias ya cerrada; no la sustituye retroactivamente ni convierte las variables libres en un concepto semántico.</p>
+</section>
+</section>
+</section>
+<section id="sustitución-simultánea-de-términos" class="level2">
+<h2 class="anchored" data-anchor-id="sustitución-simultánea-de-términos">6.13. Sustitución simultánea de términos</h2>
+<section id="tlog-def-00032" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00032">Definición 6.13.1 — Sustitución de variables por términos</h3>
+<p>Una <strong>sustitución de términos</strong> de signatura <span class="math inline">\(\tau\)</span> es una aplicación total</p>
+<p><span class="math display">\[
+\sigma:X\longrightarrow\operatorname{Tm}_\tau.
+\]</span></p>
+<p>Aplicando el metateorema 6.10.1 con <span class="math inline">\(A=\operatorname{Tm}_\tau\)</span>, <span class="math inline">\(a=\sigma\)</span> y <span class="math inline">\(G_f(t_1,\ldots,t_n)=f(t_1,\ldots,t_n)\)</span>, obtenemos su <strong>extensión homomórfica única</strong> <span class="math inline">\(\widehat\sigma:\operatorname{Tm}_\tau\to\operatorname{Tm}_\tau\)</span>. Denotamos <span class="math inline">\(t^\sigma:=\widehat\sigma(t)\)</span>. Satisface</p>
+<p><span class="math display">\[
+\boxed{x^\sigma=\sigma(x),\qquad
+f(t_1,\ldots,t_n)^\sigma=f(t_1^\sigma,\ldots,t_n^\sigma).}
+\]</span></p>
+<p>Una constante <span class="math inline">\(f()\)</span> queda inalterada. El reemplazo es <strong>simultáneo</strong>: los términos insertados como <span class="math inline">\(\sigma(x)\)</span> no son sustituidos por segunda vez durante la misma operación. Se define el <strong>soporte</strong> de la sustitución como</p>
+<p><span class="math display">\[
+\operatorname{supp}(\sigma):=\{x\in X:\sigma(x)\ne x\}.
+\]</span></p>
+<p>La sustitución es <em>finitaria</em> o <em>de soporte finito</em> cuando ese conjunto es finito. Dados nombres individuales distintos <span class="math inline">\(x_1,\ldots,x_m\)</span> y términos <span class="math inline">\(s_1,\ldots,s_m\)</span>, la aplicación <span class="math inline">\(\sigma(x_i)=s_i\)</span> y <span class="math inline">\(\sigma(y)=y\)</span> fuera de esa lista es una sustitución finitaria, aun si algún <span class="math inline">\(s_i\)</span> contiene alguno de los <span class="math inline">\(x_j\)</span>. El caso <span class="math inline">\(m=0\)</span> da la identidad. Para una sustitución simple, <span class="math inline">\(t[s/x]\)</span> <strong>sólo cuando <span class="math inline">\(t\)</span> es término</strong> abrevia <span class="math inline">\(t^{\sigma_{x\mapsto s}}\)</span>, donde <span class="math inline">\(\sigma_{x\mapsto s}(x)=s\)</span> y deja fijas las demás variables.</p>
+<p><strong>Frontera de dominio.</strong> La expresión <span class="math inline">\(\varphi^\sigma\)</span> para <span class="math inline">\(\varphi\in\operatorname{Fm}_\tau\)</span> <strong>no queda definida</strong> por esta pieza. Sobre términos no existe cuantificador que pueda capturar una variable; sobre fórmulas sí. No se transportará la notación <span class="math inline">\([s/x]\)</span> de términos a fórmulas hasta especificar una política de ligadura.</p>
+</section>
+</section>
+<section id="soporte-de-variables-después-de-sustituir-términos" class="level2">
+<h2 class="anchored" data-anchor-id="soporte-de-variables-después-de-sustituir-términos">6.14. Soporte de variables después de sustituir términos</h2>
+<section id="tlog-lem-00012" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00012">Lema 6.14.1 — Fórmula exacta de soporte</h3>
+<p>Para toda sustitución <span class="math inline">\(\sigma:X\to\operatorname{Tm}_\tau\)</span> y todo término <span class="math inline">\(t\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\operatorname{Var}_\tau(t^\sigma)
+=\bigcup_{x\in\operatorname{Var}_\tau(t)}\operatorname{Var}_\tau(\sigma(x)).}
+\]</span></p>
+<p>En particular, ambos lados son conjuntos <strong>finitos</strong>; no se requiere que <span class="math inline">\(\operatorname{supp}(\sigma)\)</span> sea finito.</p>
+<section id="demostración-6" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-6">Demostración</h4>
+<p>Aplicamos la inducción estructural <a href="../../../libros/otros/tratado-de-logica/capitulo-05.html#tlog-mth-00014">TLOG-MTH-00014</a>. Si <span class="math inline">\(t=x\)</span>, el lado izquierdo es <span class="math inline">\(\operatorname{Var}_\tau(\sigma(x))\)</span> por la definición de <span class="math inline">\(x^\sigma\)</span>, y el derecho es la unión indexada por el singleton <span class="math inline">\(\{x\}\)</span>. Si <span class="math inline">\(t=f(t_1,\ldots,t_n)\)</span>, la cláusula de sustitución de §6.13 y las ecuaciones de variables de <a href="#tlog-mth-00016">TLOG-MTH-00016</a> dan</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{Var}_\tau(t^\sigma)
+&amp;=\bigcup_{i=1}^n\operatorname{Var}_\tau(t_i^\sigma)\\
+&amp;=\bigcup_{i=1}^n\ \bigcup_{x\in\operatorname{Var}_\tau(t_i)}\operatorname{Var}_\tau(\sigma(x))\\
+&amp;=\bigcup_{x\in\operatorname{Var}_\tau(t)}\operatorname{Var}_\tau(\sigma(x)).
+\end{aligned}
+\]</span></p>
+<p>Para <span class="math inline">\(n=0\)</span>, ambos miembros son la unión vacía y valen <span class="math inline">\(\varnothing\)</span>. Para <span class="math inline">\(n&gt;0\)</span>, sólo se reordenan uniones <strong>finitas</strong>; la ecuación de soporte de <span class="math inline">\(t\)</span> justifica la última igualdad. Como <span class="math inline">\(\operatorname{Var}_\tau(t)\)</span> es finito y cada <span class="math inline">\(\sigma(x)\)</span> es un término finito, también lo es la unión. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Límite de interpretación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La fórmula es una identidad de conjuntos de nombres presentes en un <strong>término</strong>. No afirma que las variables de <span class="math inline">\(\sigma(x)\)</span> conserven su condición libre cuando se introduzcan dentro de una fórmula cuantificada.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="identidad-composición-y-carácter-simultáneo" class="level2">
+<h2 class="anchored" data-anchor-id="identidad-composición-y-carácter-simultáneo">6.15. Identidad, composición y carácter simultáneo</h2>
+<section id="tlog-pro-00006" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00006">Proposición 6.15.1 — Leyes algebraicas de la sustitución de términos</h3>
+<p>Definimos <span class="math inline">\(\iota:X\to\operatorname{Tm}_\tau\)</span> por <span class="math inline">\(\iota(x)=x\)</span>. Para sustituciones <span class="math inline">\(\sigma,\rho\)</span> definimos una tercera sustitución <span class="math inline">\(\sigma\star\rho\)</span> por</p>
+<p><span class="math display">\[
+(\sigma\star\rho)(x):=(\sigma(x))^\rho.
+\]</span></p>
+<p>La estrella significa: aplicar primero <span class="math inline">\(\sigma\)</span> y después <span class="math inline">\(\rho\)</span>. Para todo término <span class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[
+\boxed{t^\iota=t,\qquad (t^\sigma)^\rho=t^{\sigma\star\rho}.}
+\]</span></p>
+<p>Además, <span class="math inline">\(\star\)</span> es asociativa y <span class="math inline">\(\iota\)</span> es identidad bilateral en el conjunto de sustituciones de términos de signatura <span class="math inline">\(\tau\)</span>.</p>
+<section id="demostración-7" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-7">Demostración</h4>
+<p><strong>Identidad.</strong> La función identidad <span class="math inline">\(t\mapsto t\)</span> satisface las cláusulas de extensión de <span class="math inline">\(\iota\)</span>; por la unicidad de <a href="#tlog-mth-00017">TLOG-MTH-00017</a>, coincide con <span class="math inline">\(\widehat\iota\)</span>. Equivalentemente, se comprueba por inducción sobre términos.</p>
+<p><strong>Composición.</strong> La función <span class="math inline">\(k(t):=(t^\sigma)^\rho\)</span> satisface <span class="math inline">\(k(x)=(\sigma(x))^\rho=(\sigma\star\rho)(x)\)</span>. Si <span class="math inline">\(t=f(t_1,\ldots,t_n)\)</span>, la extensión de ambas sustituciones da <span class="math inline">\(k(t)=f(k(t_1),\ldots,k(t_n))\)</span>, también cuando <span class="math inline">\(n=0\)</span>. Por la unicidad de la extensión correspondiente a <span class="math inline">\(\sigma\star\rho\)</span>, tenemos <span class="math inline">\(k=\widehat{\sigma\star\rho}\)</span>. Esto prueba la segunda identidad.</p>
+<p>Para la asociatividad, en cualquier <span class="math inline">\(x\in X\)</span> las dos composiciones se evalúan como</p>
+<p><span class="math display">\[
+((\sigma\star\rho)\star\kappa)(x)=((\sigma(x))^\rho)^\kappa
+=(\sigma(x))^{\rho\star\kappa}
+=(\sigma\star(\rho\star\kappa))(x).
+\]</span></p>
+<p>La igualdad para todos los <span class="math inline">\(x\)</span> implica igualdad de funciones. Finalmente <span class="math inline">\((\iota\star\sigma)(x)=x^\sigma=\sigma(x)\)</span> y <span class="math inline">\((\sigma\star\iota)(x)=\sigma(x)^\iota=\sigma(x)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Por qué «simultánea» no significa «sucesiva».</strong> Sea <span class="math inline">\(f\in F_2\)</span>, <span class="math inline">\(t=f(x_0,x_1)\)</span> y sea <span class="math inline">\(\sigma\)</span> el intercambio <span class="math inline">\(x_0\mapsto x_1\)</span>, <span class="math inline">\(x_1\mapsto x_0\)</span>, identidad en las demás variables. Entonces</p>
+<p><span class="math display">\[
+t^\sigma=f(x_1,x_0).
+\]</span></p>
+<p>En cambio, aplicar primero la sustitución simple <span class="math inline">\([x_1/x_0]\)</span> y después <span class="math inline">\([x_0/x_1]\)</span> produce</p>
+<p><span class="math display">\[
+\bigl(t[x_1/x_0]\bigr)[x_0/x_1]
+=f(x_0,x_0),
+\]</span></p>
+<p>que no es el intercambio. La composición correcta registra las sustituciones sucesivas mediante <span class="math inline">\(\star\)</span>, y no mediante una superposición ingenua de tablas de reemplazo.</p>
+</section>
+</section>
+</section>
+<section id="advertencia-necesaria-antes-de-sustituir-fórmulas" class="level2">
+<h2 class="anchored" data-anchor-id="advertencia-necesaria-antes-de-sustituir-fórmulas">6.16. Advertencia necesaria antes de sustituir fórmulas</h2>
+<p>Considérese una signatura con <span class="math inline">\(P\in R_1\)</span> y la fórmula <span class="math inline">\(\forall x_0(P(x_1))\)</span>. En ella, la ocurrencia de término <span class="math inline">\(x_1\)</span> es libre, según §6.4. Si se insertara <strong>literalmente</strong> <span class="math inline">\(x_0\)</span> en esa posición, se obtendría la cadena bien formada <span class="math inline">\(\forall x_0(P(x_0))\)</span>; pero la ocurrencia insertada quedaría ahora <strong>ligada</strong> por el cuantificador exterior. Este fenómeno es <strong>captura de variable</strong>. La inserción descrita ilustra un error, <strong>no</strong> define una operación autorizada sobre fórmulas.</p>
+<p>La recursión de §6.11 permite definir funciones sobre fórmulas cuando se proporcionan sus datos estructurales, pero esos datos deben ser <strong>adecuados a la ligadura</strong>. Para una sustitución de fórmulas que conserve correctamente las ocurrencias libres, hay que distinguir al menos: la variable que se reemplaza, los nombres libres del término introducido, las declaraciones bajo las que se entra y la necesidad eventual de escoger un nombre fresco. Ninguna de estas decisiones se suple con la simple cláusula de términos de §6.13.</p>
+<p>No se ha demostrado aún una equivalencia alfa ni se han fijado operaciones de renombrado de declaraciones. Tampoco se ha decidido por mera exposición que <span class="math inline">\(\forall x_0P(x_0)\)</span> y <span class="math inline">\(\forall x_2P(x_2)\)</span> sean <strong>la misma cadena</strong>: son expresiones formalmente distintas aunque más adelante se pueda estudiar una relación de renombrado entre ellas.</p>
+</section>
+<section id="estado-y-frontera-del-microtramo-m02" class="level2">
+<h2 class="anchored" data-anchor-id="estado-y-frontera-del-microtramo-m02">6.17. Estado y frontera del microtramo <code>M02</code></h2>
+<p>El bloque establece por primera vez <strong>existencia y unicidad de definiciones recursivas generales</strong> sobre términos y fórmulas; recupera la función <span class="math inline">\(\operatorname{FV}_\tau\)</span> como instancia única y construye la sustitución <strong>únicamente sobre términos</strong>, con fórmula exacta de soporte y leyes de identidad/composición. Ningún teorema del bloque depende de semántica ni de reglas deductivas de primer orden.</p>
+<pre class="text"><code>TLOG-CH06-M01 = CLOSED / PASS
+TLOG-CH06-M02 = CLOSED / PASS
+TLOG-CH06-0001 = PARTIAL-CLOSURE / NOT CLOSED
+new mathematical nodes = 6
+chapter 6 closed nodes = 13
+TLOG registered/closed nodes = 82/82
+DAG = 82 nodes / 179 direct edges / PASS
+external interfaces = 0
+formalization candidates = 20
+compiled/verified = 0
+chapters closed = 6/24
+PART I = CLOSED / PASS
+PART II = OPEN</code></pre>
+<p>Siguiente microtramo: <code>TLOG-CH06-M03 — Sustitución de fórmulas, libertad para sustituir, captura y renombrado de variables ligadas</code>.</p>
+</section>
+<section id="nombres-sintácticos-y-selección-canónica-de-variables-frescas" class="level2">
+<h2 class="anchored" data-anchor-id="nombres-sintácticos-y-selección-canónica-de-variables-frescas">6.18. Nombres sintácticos y selección canónica de variables frescas</h2>
+<section id="tlog-def-00033" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00033">Definición 6.18.1 — Soporte total de nombres de una fórmula</h3>
+<p>No basta conocer las <strong>variables libres</strong> para renombrar un cuantificador: hay que evitar también las declaraciones interiores con las cuales podría producirse una colisión. Para una fórmula <span class="math inline">\(\varphi\)</span>, definimos el <strong>soporte total de nombres</strong></p>
+<p><span class="math display">\[
+\operatorname{Names}_\tau(\varphi):=
+\{\operatorname{var}_\varphi(o):o\in\operatorname{Occ}_X(\varphi)\}
+\cup\operatorname{QVar}_\tau(\varphi).
+\]</span></p>
+<p>Es una unión de conjuntos finitos, por <a href="#tlog-pro-00005">TLOG-PRO-00005</a>. En particular, <span class="math inline">\(\operatorname{FV}_\tau(\varphi)\subseteq\operatorname{Names}_\tau(\varphi)\)</span>. Si <span class="math inline">\(A\subseteq X\)</span> es <strong>finito</strong>, sea</p>
+<p><span class="math display">\[
+\operatorname{fresh}(A):=x_{\min\{i\in\omega:x_i\notin A\}}.
+\]</span></p>
+<p>Como <span class="math inline">\(X=\{x_i:i\in\omega\}\)</span> es infinito y <span class="math inline">\(A\)</span> finito, el conjunto de índices es no vacío, tiene mínimo y determina <strong>una única</strong> variable fresca. Esta operación usa el orden fijado de <span class="math inline">\(X\)</span>, sin selección arbitraria ni axioma de elección. La restricción a conjuntos finitos es esencial: la construcción no pretende escoger una variable fuera de cualquier subconjunto de <span class="math inline">\(X\)</span>.</p>
+</section>
+</section>
+<section id="libertad-para-sustituir" class="level2">
+<h2 class="anchored" data-anchor-id="libertad-para-sustituir">6.19. Libertad para sustituir</h2>
+<section id="tlog-def-00034" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00034">Definición 6.19.1 — Predicado sintáctico «<span class="math inline">\(t\)</span> libre para <span class="math inline">\(x\)</span> en <span class="math inline">\(\varphi\)</span>»</h3>
+<p>Fijados <span class="math inline">\(t\in\operatorname{Tm}_\tau\)</span> y <span class="math inline">\(x\in X\)</span>, definimos por recursión sobre la fórmula el predicado metateórico <span class="math inline">\(\operatorname{FreeFor}_\tau(t,x,\varphi)\)</span>. En los átomos vale siempre; atraviesa negación sin cambio y un conectivo binario si y sólo si vale en ambas ramas. Para <span class="math inline">\(Q\in\{\forall,\exists\}\)</span>, la condición de cuantificación es</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{FreeFor}_\tau(t,x,Qy\,\psi)
+\iff
+\begin{cases}
+\mathrm{verdadero}, &amp;y=x,\\
+\operatorname{FreeFor}_\tau(t,x,\psi)\ \land\
+\bigl(x\notin\operatorname{FV}_\tau(\psi)\ \lor\ y\notin\operatorname{Var}_\tau(t)\bigr),&amp;y\ne x.
+\end{cases}}
+\]</span></p>
+<p>En el caso <span class="math inline">\(y=x\)</span>, <strong>ninguna</strong> ocurrencia de <span class="math inline">\(x\)</span> en la matriz es libre en la fórmula completa <span class="math inline">\(Qx\,\psi\)</span>: no se atraviesa ese cuantificador al sustituir las ocurrencias libres de <span class="math inline">\(x\)</span>. Si <span class="math inline">\(y\ne x\)</span>, es indispensable que no haya peligro en la matriz y, cuando haya una ocurrencia libre de <span class="math inline">\(x\)</span> en ella, que la variable declarada <span class="math inline">\(y\)</span> no figure entre los nombres del término <span class="math inline">\(t\)</span> que se insertará. Las cláusulas cubren los átomos nularios, los cinco conectivos primitivos (uno unario y cuatro binarios) y ambos cuantificadores primitivos; por <a href="#tlog-mth-00018">TLOG-MTH-00018</a> el predicado está determinado de manera única.</p>
+<p>Ser libre para sustituir <strong>no significa</strong> que <span class="math inline">\(t\)</span> carezca de variables ni que su inserción cambie una fórmula semánticamente. Es únicamente una condición de <strong>seguridad sintáctica</strong> para preservar la ausencia de captura.</p>
+</section>
+</section>
+<section id="caracterización-por-ocurrencias" class="level2">
+<h2 class="anchored" data-anchor-id="caracterización-por-ocurrencias">6.20. Caracterización por ocurrencias</h2>
+<section id="tlog-lem-00013" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00013">Lema 6.20.1 — Criterio necesario y suficiente de ausencia de captura</h3>
+<p>Para <span class="math inline">\(t\in\operatorname{Tm}_\tau\)</span>, <span class="math inline">\(x\in X\)</span> y <span class="math inline">\(\varphi\in\operatorname{Fm}_\tau\)</span>, son equivalentes:</p>
+<ol type="1">
+<li><span class="math inline">\(\operatorname{FreeFor}_\tau(t,x,\varphi)\)</span>.</li>
+<li>Para <strong>cada ocurrencia libre</strong> <span class="math inline">\(o\in\operatorname{FreeOcc}_\tau(\varphi)\)</span> cuyo nombre sea <span class="math inline">\(x\)</span>, ningún cuantificador ancestro de <span class="math inline">\(o\)</span> declara una variable perteneciente a <span class="math inline">\(\operatorname{Var}_\tau(t)\)</span>.</li>
+</ol>
+<p>En particular, <span class="math inline">\(x\notin\operatorname{FV}_\tau(\varphi)\)</span> implica <span class="math inline">\(\operatorname{FreeFor}_\tau(t,x,\varphi)\)</span>, y <span class="math inline">\(\operatorname{FreeFor}_\tau(x,x,\varphi)\)</span> vale para toda fórmula <span class="math inline">\(\varphi\)</span>.</p>
+<section id="demostración-8" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-8">Demostración</h4>
+<p>Inducimos sobre la estructura de <span class="math inline">\(\varphi\)</span>. En un átomo todas las hojas son libres y no hay cuantificadores ancestros; ambas condiciones son verdaderas. La negación conserva todas las declaraciones internas y no añade ninguna, por lo que la equivalencia se hereda. En un binario, sus dos conjuntos de ocurrencias forman ramas disjuntas, y la propiedad es la conjunción de las propiedades de ambas ramas.</p>
+<p>Supongamos <span class="math inline">\(\varphi=Qy\,\psi\)</span>. Si <span class="math inline">\(y=x\)</span>, todas las ocurrencias de término <span class="math inline">\(x\)</span> de la matriz quedan bajo un cuantificador homónimo y, por tanto, <strong>ninguna</strong> es libre en la fórmula completa: la condición de ocurrencias es vacía y coincide con la primera rama de la definición. Si <span class="math inline">\(y\ne x\)</span>, las ocurrencias libres de <span class="math inline">\(x\)</span> en <span class="math inline">\(\varphi\)</span> son exactamente las libres de <span class="math inline">\(x\)</span> en <span class="math inline">\(\psi\)</span>, según <a href="#tlog-mth-00016">TLOG-MTH-00016</a>. A sus ancestros en <span class="math inline">\(\psi\)</span> se añade el cuantificador exterior <span class="math inline">\(Qy\)</span>. Por hipótesis inductiva, los ancestros interiores son inocuos si y sólo si <span class="math inline">\(\operatorname{FreeFor}_\tau(t,x,\psi)\)</span>, y el nuevo ancestro lo es si y sólo si no existe una ocurrencia libre de <span class="math inline">\(x\)</span> en <span class="math inline">\(\psi\)</span> o <span class="math inline">\(y\notin\operatorname{Var}_\tau(t)\)</span>. Ésa es exactamente la segunda rama de §6.19. <span class="math inline">\(\square\)</span></p>
+<p>Para la primera consecuencia no existen ocurrencias libres de <span class="math inline">\(x\)</span> y el criterio es vacío. Para la segunda, toda ocurrencia libre de <span class="math inline">\(x\)</span> carece de cuantificadores ancestrales homónimos <span class="math inline">\(x\)</span>, de modo que ninguno declara una variable del conjunto <span class="math inline">\(\operatorname{Var}_\tau(x)=\{x\}\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="sustitución-literal-segura-de-fórmulas" class="level2">
+<h2 class="anchored" data-anchor-id="sustitución-literal-segura-de-fórmulas">6.21. Sustitución literal segura de fórmulas</h2>
+<section id="tlog-def-00035" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00035">Definición 6.21.1 — Sustitución literal bajo la condición «libre para»</h3>
+<p>Para una triple <span class="math inline">\((\varphi,x,t)\)</span> que satisfaga <span class="math inline">\(\operatorname{FreeFor}_\tau(t,x,\varphi)\)</span>, definimos <span class="math inline">\(\varphi[t/x]_{\mathrm{lit}}\)</span> como la fórmula que sustituye <strong>simultáneamente</strong> las ocurrencias libres de <span class="math inline">\(x\)</span> por copias intactas del término <span class="math inline">\(t\)</span>, sin sustituir de nuevo dentro de esas copias y sin modificar nombres de cuantificadores. En los átomos se aplica a cada término la sustitución <span class="math inline">\(\sigma_{x,t}\)</span> del §6.13, donde <span class="math inline">\(\sigma_{x,t}(x)=t\)</span> y <span class="math inline">\(\sigma_{x,t}(z)=z\)</span> para <span class="math inline">\(z\ne x\)</span>. Negación y conectivos binarios se reconstruyen a partir de los resultados en sus componentes. Finalmente,</p>
+<p><span class="math display">\[
+(Qy\,\psi)[t/x]_{\mathrm{lit}}
+:=\begin{cases}
+Qx\,\psi,&amp;y=x,\\
+Qy\,\bigl(\psi[t/x]_{\mathrm{lit}}\bigr),&amp;y\ne x.
+\end{cases}
+\]</span></p>
+<p>La segunda rama sólo se usa en el dominio seguro de la definición. En cada aplicación del caso <span class="math inline">\(y\ne x\)</span>, §6.19 asegura que la matriz también pertenece a ese dominio. Por inducción sobre el rango de las fórmulas, existe una única fórmula en cada triple admitida. La cláusula <span class="math inline">\(y=x\)</span> no atraviesa el cuantificador, aunque <span class="math inline">\(x\)</span> figure en su matriz como hoja de término.</p>
+<p>La escritura <span class="math inline">\(\varphi[t/x]\)</span> <strong>sin subíndice</strong> se admite en este capítulo únicamente como abreviación de <span class="math inline">\(\varphi[t/x]_{\mathrm{lit}}\)</span> cuando se ha declarado o demostrado que <span class="math inline">\(t\)</span> es libre para <span class="math inline">\(x\)</span> en <span class="math inline">\(\varphi\)</span>. Fuera de ese dominio no denota aquí una sustitución literal autorizada. La sustitución total por renombrado tendrá otro símbolo (§6.25).</p>
+</section>
+</section>
+<section id="variables-libres-después-de-una-sustitución-segura" class="level2">
+<h2 class="anchored" data-anchor-id="variables-libres-después-de-una-sustitución-segura">6.22. Variables libres después de una sustitución segura</h2>
+<section id="tlog-lem-00014" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00014">Lema 6.22.1 — Fórmula exacta del soporte libre</h3>
+<p>Si <span class="math inline">\(\operatorname{FreeFor}_\tau(t,x,\varphi)\)</span>, entonces</p>
+<p><span class="math display">\[
+\boxed{\operatorname{FV}_\tau(\varphi[t/x]_{\mathrm{lit}})
+=\bigl(\operatorname{FV}_\tau(\varphi)\setminus\{x\}\bigr)
+\cup
+\begin{cases}
+\operatorname{Var}_\tau(t),&amp;x\in\operatorname{FV}_\tau(\varphi),\\
+\varnothing,&amp;x\notin\operatorname{FV}_\tau(\varphi).
+\end{cases}}
+\]</span></p>
+<section id="demostración-9" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-9">Demostración</h4>
+<p>Procedemos por inducción sobre la fórmula. En los átomos todas las variables son libres y la tesis resulta de las cláusulas de <span class="math inline">\(\sigma_{x,t}\)</span> y de la identidad exacta de <a href="#tlog-lem-00012">TLOG-LEM-00012</a>, aplicadas a sus términos argumentos. La negación no modifica <span class="math inline">\(\operatorname{FV}\)</span>. Para una fórmula binaria, la unión de los conjuntos resultantes de sus dos ramas coincide con el miembro derecho: se incorpora <span class="math inline">\(\operatorname{Var}(t)\)</span> precisamente cuando al menos una rama tenía <span class="math inline">\(x\)</span> libre.</p>
+<p>Sea <span class="math inline">\(\varphi=Qy\,\psi\)</span>. Si <span class="math inline">\(y=x\)</span>, §6.21 deja intacta la fórmula completa y <span class="math inline">\(x\notin\operatorname{FV}_\tau(Qx\,\psi)\)</span>; la igualdad es inmediata. Si <span class="math inline">\(y\ne x\)</span>, aplicamos la hipótesis inductiva a <span class="math inline">\(\psi\)</span>. Cuando <span class="math inline">\(x\notin\operatorname{FV}_\tau(\psi)\)</span>, la sustitución no afecta las hojas libres y no aparece una copia de <span class="math inline">\(t\)</span>. Cuando <span class="math inline">\(x\in\operatorname{FV}_\tau(\psi)\)</span>, la seguridad de §6.19 exige <span class="math inline">\(y\notin\operatorname{Var}_\tau(t)\)</span>. En cualquiera de los casos, eliminar <span class="math inline">\(y\)</span> al formar <span class="math inline">\(Qy\)</span> conmuta con la eliminación de <span class="math inline">\(x\)</span> y no elimina ninguna variable libre introducida por <span class="math inline">\(t\)</span>. Se obtiene exactamente la igualdad enunciada para <span class="math inline">\(Qy\,\psi\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>De manera particular, si <span class="math inline">\(x\notin\operatorname{FV}_\tau(\varphi)\)</span>, la sustitución literal está definida y <span class="math inline">\(\varphi[t/x]_{\mathrm{lit}}=\varphi\)</span>, por inducción sobre las cláusulas de §6.21. Esta identidad es <strong>literal</strong>, no una declaración de equivalencia lógica.</p>
+</section>
+</section>
+</section>
+<section id="renombrado-ligado-y-equivalencia-alfa" class="level2">
+<h2 class="anchored" data-anchor-id="renombrado-ligado-y-equivalencia-alfa">6.23. Renombrado ligado y equivalencia alfa</h2>
+<section id="tlog-def-00036" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00036">Definición 6.23.1 — Paso alfa elemental y clausura contextual</h3>
+<p>Sea <span class="math inline">\(Qx\,\psi\)</span> una fórmula cuantificada y elijamos <span class="math inline">\(y\in X\)</span> con <span class="math inline">\(y\notin\operatorname{Names}_\tau(\psi)\cup\{x\}\)</span>. La variable <span class="math inline">\(y\)</span> no aparece en ninguna hoja de término ni en ningún declarador de <span class="math inline">\(\psi\)</span>. Por el criterio de §6.20, <span class="math inline">\(y\)</span> es libre para <span class="math inline">\(x\)</span> en <span class="math inline">\(\psi\)</span>. Autorizamos entonces el <strong>paso de renombrado ligado</strong></p>
+<p><span class="math display">\[
+\boxed{Qx\,\psi\quad\rightsquigarrow_\alpha\quad Qy\,\bigl(\psi[y/x]_{\mathrm{lit}}\bigr).}
+\]</span></p>
+<p>Este paso cambia la declaración del cuantificador exterior y, <strong>sólo</strong> dentro de su matriz, las ocurrencias de término de <span class="math inline">\(x\)</span> que eran libres en <span class="math inline">\(\psi\)</span>; no cambia las apariciones de <span class="math inline">\(x\)</span> ligadas por cuantificadores homónimos interiores. La exigencia fuerte de frescura evita que una declaración de <span class="math inline">\(y\)</span> situada dentro de la matriz capture las nuevas hojas <span class="math inline">\(y\)</span>. Ambos cuantificadores primitivos <span class="math inline">\(\forall\)</span> y <span class="math inline">\(\exists\)</span> obedecen idéntica regla.</p>
+<p>Un <strong>paso alfa contextual</strong> reemplaza una única subfórmula cuantificada de la forma anterior en cualquier dirección de un árbol de fórmula, dejando iguales los demás nodos. Definimos <span class="math inline">\(\varphi\equiv_\alpha\chi\)</span> si existe una cadena <strong>finita</strong> de fórmulas desde <span class="math inline">\(\varphi\)</span> hasta <span class="math inline">\(\chi\)</span> en la que cada par consecutivo está relacionado por un paso alfa contextual en uno u otro sentido. Se permite la cadena de longitud cero. Por construcción, <span class="math inline">\(\equiv_\alpha\)</span> es una relación <strong>reflexiva, simétrica y transitiva</strong> y es una congruencia respecto de todos los constructores de fórmula. No es igualdad literal de expresiones ni se le atribuye aún equivalencia semántica, que exige la teoría de modelos de los capítulos posteriores.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Firmeza de la condición de frescura
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En una matriz <span class="math inline">\(\psi=\forall y\,P(x)\)</span>, el nombre <span class="math inline">\(y\)</span> no está libre, pero sí aparece como <strong>declarador</strong>. Sustituir ingenuamente <span class="math inline">\(x\)</span> por <span class="math inline">\(y\)</span> produciría captura. Por eso la condición <span class="math inline">\(y\notin\operatorname{FV}(\psi)\)</span> es demasiado débil para <strong>este paso literal</strong>; aquí exigimos <span class="math inline">\(y\notin\operatorname{Names}(\psi)\)</span>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="lo-que-conserva-el-renombrado-alfa" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-conserva-el-renombrado-alfa">6.24. Lo que conserva el renombrado alfa</h2>
+<section id="tlog-pro-00007" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-pro-00007">Proposición 6.24.1 — Conservación de variables libres y rango</h3>
+<p>Si <span class="math inline">\(\varphi\equiv_\alpha\chi\)</span>, entonces</p>
+<p><span class="math display">\[
+\operatorname{FV}_\tau(\varphi)=\operatorname{FV}_\tau(\chi),
+\qquad
+\operatorname{rk}_\tau(\varphi)=\operatorname{rk}_\tau(\chi).
+\]</span></p>
+<section id="demostración-10" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-10">Demostración</h4>
+<p>Basta examinar un paso alfa elemental. Para <span class="math inline">\(y\notin\operatorname{Names}(\psi)\cup\{x\}\)</span>, la fórmula de §6.22, con término sustituyente igual a la variable <span class="math inline">\(y\)</span>, da</p>
+<p><span class="math display">\[
+\operatorname{FV}_\tau(\psi[y/x]_{\mathrm{lit}})
+=(\operatorname{FV}_\tau(\psi)\setminus\{x\})\cup E,
+\]</span></p>
+<p>donde <span class="math inline">\(E=\{y\}\)</span> si <span class="math inline">\(x\)</span> era libre en <span class="math inline">\(\psi\)</span>, y <span class="math inline">\(E=\varnothing\)</span> en caso contrario. Como <span class="math inline">\(y\notin\operatorname{FV}_\tau(\psi)\)</span>, al aplicar el cuantificador exterior <span class="math inline">\(Qy\)</span> y eliminar <span class="math inline">\(y\)</span> se obtiene</p>
+<p><span class="math display">\[
+\operatorname{FV}_\tau(Qy\,\psi[y/x]_{\mathrm{lit}})
+=\operatorname{FV}_\tau(\psi)\setminus\{x\}
+=\operatorname{FV}_\tau(Qx\,\psi).
+\]</span></p>
+<p>El reemplazo de una hoja variable por otra hoja variable no altera el número ni las posiciones de constructores de fórmula; tampoco modifica un paso de cuantificación, por lo que el rango sintáctico se conserva. En un <strong>contexto</strong> de fórmula, las ecuaciones de <a href="#tlog-mth-00016">TLOG-MTH-00016</a> muestran que si dos subfórmulas tienen el mismo conjunto de variables libres, el mismo vale para los árboles completos; las ecuaciones de rango del §5.16 dan la conclusión paralela para <span class="math inline">\(\operatorname{rk}\)</span>. La simetría de los pasos y la transitividad de una cadena finita conservan ambas identidades. <span class="math inline">\(\square\)</span></p>
+<p><strong>Advertencia:</strong> no concluimos que <span class="math inline">\(\operatorname{Names}_\tau(\varphi)=\operatorname{Names}_\tau(\chi)\)</span>: precisamente el renombrado cambia nombres declarados. Tampoco se ha construido todavía la satisfacción en estructuras; la identidad de <span class="math inline">\(\operatorname{FV}\)</span> es una afirmación sintáctica, no una prueba de equivalencia lógica.</p>
+</section>
+</section>
+</section>
+<section id="sustitución-total-sin-captura-mediante-nombres-frescos" class="level2">
+<h2 class="anchored" data-anchor-id="sustitución-total-sin-captura-mediante-nombres-frescos">6.25. Sustitución total sin captura mediante nombres frescos</h2>
+<section id="tlog-mth-00019" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00019">Metateorema 6.25.1 — Existencia y unicidad de la sustitución canónica con prevención de captura</h3>
+<p>Para cada <span class="math inline">\(x\in X\)</span> y <span class="math inline">\(t\in\operatorname{Tm}_\tau\)</span> existe una <strong>única</strong> transformación determinada por las cláusulas siguientes,</p>
+<p><span class="math display">\[
+\operatorname{CA}_{x,t}:\operatorname{Fm}_\tau\longrightarrow\operatorname{Fm}_\tau,
+\]</span></p>
+<p>que realiza el reemplazo de las ocurrencias libres de <span class="math inline">\(x\)</span> por <span class="math inline">\(t\)</span>, <strong>renombrando antes</strong> cualquier cuantificador que pudiera capturar una variable del término insertado. Las cláusulas son las siguientes:</p>
+<ol type="1">
+<li>En los átomos, aplicar a los términos argumentos <span class="math inline">\(\sigma_{x,t}\)</span> del §6.13.</li>
+<li>En negación y en los cuatro conectivos binarios, aplicar <span class="math inline">\(\operatorname{CA}_{x,t}\)</span> a cada componente y reconstruir el constructor original.</li>
+<li>Para <span class="math inline">\(Qy\,\psi\)</span>, usar exactamente:</li>
+</ol>
+<p><span class="math display">\[
+\operatorname{CA}_{x,t}(Qy\,\psi)=
+\begin{cases}
+Qy\,\psi,&amp;y=x\ \text{o}\ x\notin\operatorname{FV}_\tau(\psi),\\[2pt]
+Qy\,\operatorname{CA}_{x,t}(\psi),&amp;y\ne x,\ x\in\operatorname{FV}_\tau(\psi),\ y\notin\operatorname{Var}_\tau(t),\\[2pt]
+Qz\,\operatorname{CA}_{x,t}(\psi[z/y]_{\mathrm{lit}}),&amp;y\ne x,\ x\in\operatorname{FV}_\tau(\psi),\ y\in\operatorname{Var}_\tau(t),
+\end{cases}
+\]</span></p>
+<p>siendo en la tercera rama</p>
+<p><span class="math display">\[
+z:=\operatorname{fresh}\bigl(\operatorname{Names}_\tau(\psi)\cup\operatorname{Var}_\tau(t)\cup\{x,y\}\bigr).
+\]</span></p>
+<p>Como <span class="math inline">\(z\notin\operatorname{Names}_\tau(\psi)\cup\{y\}\)</span>, la expresión <span class="math inline">\(\psi[z/y]_{\mathrm{lit}}\)</span> está definida y realiza el paso alfa de §6.23. La elección de <span class="math inline">\(z\)</span> es <strong>determinista</strong> y no exige AC. La condición adicional <span class="math inline">\(z\notin\operatorname{Var}(t)\)</span> impide que el nuevo cuantificador capture hojas de <span class="math inline">\(t\)</span>. En la primera rama no se toca la fórmula cuando no hay ninguna ocurrencia libre de <span class="math inline">\(x\)</span> que deba sustituirse en ella.</p>
+<p>La transformación satisface, para toda fórmula <span class="math inline">\(\varphi\)</span>:</p>
+<p><span class="math display">\[
+\boxed{\operatorname{FV}_\tau(\operatorname{CA}_{x,t}(\varphi))
+=(\operatorname{FV}_\tau(\varphi)\setminus\{x\})
+\cup
+\begin{cases}
+\operatorname{Var}_\tau(t),&amp;x\in\operatorname{FV}_\tau(\varphi),\\
+\varnothing,&amp;x\notin\operatorname{FV}_\tau(\varphi).
+\end{cases}}
+\]</span></p>
+<p>Asimismo, si <span class="math inline">\(\operatorname{FreeFor}_\tau(t,x,\varphi)\)</span>, entonces la transformación coincide <strong>literalmente</strong> con la sustitución segura del §6.21:</p>
+<p><span class="math display">\[
+\operatorname{CA}_{x,t}(\varphi)=\varphi[t/x]_{\mathrm{lit}}.
+\]</span></p>
+<section id="demostración-11" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-11">Demostración</h4>
+<p><strong>Existencia.</strong> Recurrimos por inducción ordinaria sobre el rango <span class="math inline">\(\operatorname{rk}_\tau(\varphi)\)</span>. Los casos atómico y de conectivos son inmediatos a partir de §6.13 y de las cláusulas de reconstrucción. En el caso <span class="math inline">\(Qy\,\psi\)</span>, las tres condiciones anteriores son exhaustivas y mutuamente excluyentes. Las dos primeras ramas terminan en la fórmula dada o piden el valor de la función sobre la subfórmula estrictamente menor <span class="math inline">\(\psi\)</span>. En la última rama, primero se elige el único <span class="math inline">\(z\)</span> fresco de §6.18 y se forma <span class="math inline">\(\psi'=\psi[z/y]_{\mathrm{lit}}\)</span>. Este renombrado reemplaza variables por variables y conserva el rango de <span class="math inline">\(\psi\)</span>:</p>
+<p><span class="math display">\[
+\operatorname{rk}_\tau(\psi')=\operatorname{rk}_\tau(\psi)
+&lt;\operatorname{rk}_\tau(Qy\,\psi).
+\]</span></p>
+<p>La hipótesis de inducción ya define <span class="math inline">\(\operatorname{CA}_{x,t}(\psi')\)</span>. Así se obtiene siempre una fórmula y termina la construcción, aun en presencia de cuantificadores homónimos anidados. Para formalizar la función como <strong>conjunto</strong>, en cada etapa de rango definimos su gráfico sobre las fórmulas de rango acotado, usando reemplazo en ZF. Las definiciones coinciden en los niveles comunes porque el caso de un constructor depende únicamente de valores de rango estrictamente menor. La unión de los gráficos es una función de <span class="math inline">\(\operatorname{Fm}_\tau\)</span> en sí mismo. No se necesita numerar los símbolos de la signatura.</p>
+<p><strong>Unicidad.</strong> En un átomo, las cláusulas obligan a aplicar una sustitución de términos ya única. Los demás casos están determinados por el constructor y las condiciones booleanas expresadas en ellos. En la última rama el conjunto prohibido es finito y el mínimo índice fresco es único; la matriz renombrada está fijada por §6.21. La inducción sobre el rango impone el mismo resultado en todos los argumentos recursivos. No pueden existir dos funciones diferentes que cumplan las cláusulas.</p>
+<p><strong>Soporte libre.</strong> Inducimos otra vez sobre el rango. Los casos atómicos y proposicionales siguen la demostración de <a href="#tlog-lem-00014">TLOG-LEM-00014</a>. En <span class="math inline">\(Qy\,\psi\)</span>, si <span class="math inline">\(y=x\)</span> o <span class="math inline">\(x\notin\operatorname{FV}(\psi)\)</span>, la primera rama no altera la fórmula y la identidad es inmediata. Si <span class="math inline">\(y\ne x\)</span>, <span class="math inline">\(x\)</span> es libre en <span class="math inline">\(\psi\)</span>, y <span class="math inline">\(y\notin\operatorname{Var}(t)\)</span>, aplicamos la hipótesis inductiva a la matriz y eliminamos <span class="math inline">\(y\)</span>; como <span class="math inline">\(y\ne x\)</span> y <span class="math inline">\(y\notin\operatorname{Var}(t)\)</span>, el resultado es</p>
+<p><span class="math display">\[
+(\operatorname{FV}(\psi)\setminus\{x,y\})\cup\operatorname{Var}(t),
+\]</span></p>
+<p>que es el miembro derecho para la fórmula cuantificada.</p>
+<p>En la tercera rama <span class="math inline">\(y\in\operatorname{Var}(t)\)</span>, elegimos <span class="math inline">\(z\)</span> fresco. Por <a href="#tlog-lem-00014">TLOG-LEM-00014</a>, <span class="math inline">\(\operatorname{FV}(\psi')=(\operatorname{FV}(\psi)\setminus\{y\})\cup E_z\)</span>, con <span class="math inline">\(E_z=\{z\}\)</span> exactamente cuando <span class="math inline">\(y\in\operatorname{FV}(\psi)\)</span>. Además <span class="math inline">\(x\ne y\)</span>, <span class="math inline">\(z\ne x\)</span> y <span class="math inline">\(x\in\operatorname{FV}(\psi')\)</span>. La hipótesis inductiva da</p>
+<p><span class="math display">\[
+\operatorname{FV}(\operatorname{CA}_{x,t}(\psi'))
+=(\operatorname{FV}(\psi')\setminus\{x\})\cup\operatorname{Var}(t).
+\]</span></p>
+<p>Al reconstruir <span class="math inline">\(Qz\)</span> se elimina <span class="math inline">\(z\)</span>, y como <span class="math inline">\(z\notin\operatorname{Var}(t)\)</span>, queda otra vez <span class="math inline">\((\operatorname{FV}(\psi)\setminus\{x,y\})\cup\operatorname{Var}(t)\)</span>. Éste es exactamente el miembro derecho para <span class="math inline">\(Qy\,\psi\)</span>, pues <span class="math inline">\(x\in\operatorname{FV}(\psi)\)</span> y <span class="math inline">\(x\ne y\)</span>. En particular, ninguna variable nueva del término <span class="math inline">\(t\)</span> queda ligada por el cuantificador introducido.</p>
+<p><strong>Coincidencia con la sustitución segura.</strong> Si <span class="math inline">\(\operatorname{FreeFor}(t,x,\varphi)\)</span>, una inducción estructural compara las cláusulas de §6.21 con las de este teorema. En el caso <span class="math inline">\(Qy\,\psi\)</span>, si <span class="math inline">\(y=x\)</span>, ambas dejan intacta la fórmula; si <span class="math inline">\(y\ne x\)</span> y <span class="math inline">\(x\notin\operatorname{FV}(\psi)\)</span>, las dos dan también la misma fórmula. En el caso restante, el predicado <code>FreeFor</code> obliga a <span class="math inline">\(y\notin\operatorname{Var}(t)\)</span> y a la seguridad en la matriz: ambas operaciones reconstruyen <span class="math inline">\(Qy\)</span> a partir de la misma sustitución, por hipótesis inductiva. Por ello <strong>nunca</strong> se activa la rama de renombrado fresco cuando la sustitución literal estaba permitida. <span class="math inline">\(\square\)</span></p>
+<p>La elección determinista del nombre fresco proporciona <strong>unicidad literal de esta implementación</strong>. La teoría de equivalencia alfa permite estudiar otras elecciones de nombres; en este microtramo no se afirma aún que todas las políticas de renombrado produzcan fórmulas alfa-equivalentes, ni una ley general de composición de sustituciones de fórmulas. Ambas cuestiones requieren un control adicional en <code>M04</code>.</p>
+</section>
+</section>
+</section>
+<section id="cuatro-situaciones-que-no-deben-confundirse" class="level2">
+<h2 class="anchored" data-anchor-id="cuatro-situaciones-que-no-deben-confundirse">6.26. Cuatro situaciones que no deben confundirse</h2>
+<p><strong>Captura evitada.</strong> En una signatura con <span class="math inline">\(P\in R_1\)</span>, tómese <span class="math inline">\(\varphi=\forall x_0(P(x_1))\)</span> y <span class="math inline">\(t=x_0\)</span>, <span class="math inline">\(x=x_1\)</span>. La sustitución literal no está permitida: la ocurrencia libre de <span class="math inline">\(x_1\)</span> se encuentra bajo el cuantificador <span class="math inline">\(\forall x_0\)</span>, y <span class="math inline">\(x_0\in\operatorname{Var}(t)\)</span>. La operación <span class="math inline">\(\operatorname{CA}_{x_1,x_0}\)</span> elige el primer <span class="math inline">\(x_k\)</span> fresco distinto de <span class="math inline">\(x_0,x_1\)</span>, aquí <span class="math inline">\(x_2\)</span>, y da</p>
+<p><span class="math display">\[
+\operatorname{CA}_{x_1,x_0}(\forall x_0 P(x_1))=\forall x_2 P(x_0).
+\]</span></p>
+<p>La variable <span class="math inline">\(x_0\)</span> <strong>permanece libre</strong>, como exige el teorema 6.25.1.</p>
+<p><strong>Sombra de un cuantificador homónimo.</strong> Sea <span class="math inline">\(\varphi=\forall x_0\,\exists x_0 P(x_0)\)</span>. Para cualquier término <span class="math inline">\(t\)</span>, <span class="math inline">\(\operatorname{CA}_{x_0,t}(\varphi)=\varphi\)</span>: no existen ocurrencias libres de <span class="math inline">\(x_0\)</span>. No se renombra ni se sustituye el <span class="math inline">\(x_0\)</span> ligado del predicado.</p>
+<p><strong>Coexistencia de ocurrencias.</strong> En <span class="math inline">\(\varphi=(\forall x_0 P(x_0))\land P(x_0)\)</span>, sustituir <span class="math inline">\(x_0\)</span> por <span class="math inline">\(x_1\)</span> en el sentido de <span class="math inline">\(\operatorname{CA}_{x_0,x_1}\)</span> sólo afecta la rama derecha, de modo que se obtiene <span class="math inline">\((\forall x_0P(x_0))\land P(x_1)\)</span>. La ocurrencia ligada de la rama izquierda permanece idéntica.</p>
+<p><strong>Renombrado y literalidad.</strong> <span class="math inline">\(\forall x_0P(x_0)\)</span> y <span class="math inline">\(\forall x_2P(x_2)\)</span> son fórmulas <strong>distintas como secuencias de tokens</strong>, relacionadas por un paso alfa si <span class="math inline">\(x_2\)</span> es fresco en la matriz. Ningún resultado de este capítulo convierte su relación <span class="math inline">\(\equiv_\alpha\)</span> en igualdad metateórica.</p>
+</section>
+<section id="frontera-y-estado-de-m03" class="level2">
+<h2 class="anchored" data-anchor-id="frontera-y-estado-de-m03">6.27. Frontera y estado de <code>M03</code></h2>
+<p>El tercer bloque define un predicado preciso de libertad para sustituir, prueba su equivalencia con el criterio por ocurrencias, construye la sustitución literal <strong>sólo cuando es segura</strong>, caracteriza su conjunto de variables libres, formaliza los pasos de renombrado alfa y una equivalencia alfa sintáctica, y demuestra una operación <strong>total y determinista</strong> de sustitución individual que evita captura mediante nombres frescos. Todo se fundamenta en árboles y rangos finitos dentro de <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathrm{ZF}\)</span> sin elección silenciosa. No se ha introducido satisfacción, validez ni derivabilidad de primer orden.</p>
+<pre class="text"><code>TLOG-CH06-M01 = CLOSED / PASS
+TLOG-CH06-M02 = CLOSED / PASS
+TLOG-CH06-M03 = CLOSED / PASS
+TLOG-CH06-0001 = PARTIAL-CLOSURE / NOT CLOSED
+new mathematical nodes = 8
+chapter 6 closed nodes = 21
+TLOG registered/closed nodes = 90/90
+DAG = 90 nodes / 208 direct edges / PASS
+external interfaces = 0
+formalization candidates = 25
+compiled/verified = 0
+chapters closed = 6/24
+PART I = CLOSED / PASS
+PART II = OPEN</code></pre>
+<p><strong>Siguiente microtramo:</strong> <code>TLOG-CH06-M04 — Compatibilidad de equivalencia alfa y sustituciones; leyes de composición y cierre sintáctico del capítulo</code>. ## 6.28. Representación sintáctica sin nombres de variables ligadas</p>
+<section id="tlog-def-00037" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00037">Definición 6.28.1 — Código por profundidad del vinculante</h3>
+<p>Para comparar fórmulas sin depender de la elección de los nombres ligados introducimos un <strong>código puramente sintáctico</strong>. Los términos codificados conservan cada símbolo funcional de <span class="math inline">\(\tau\)</span> y reemplazan una hoja variable por uno de dos constructores <em>metateóricos</em> disjuntos:</p>
+<p><span class="math display">\[
+\mathtt{F}(x)\quad(x\in X),\qquad
+\mathtt{B}(j)\quad(j\in\omega).
+\]</span></p>
+<p>El primero expresa un nombre <strong>libre</strong>; el segundo expresa una aparición <strong>ligada</strong> al cuantificador situado a distancia <span class="math inline">\(j\)</span> entre los cuantificadores ancestros, contada desde el más próximo (índice cero). No se incorporan estos dos constructores al lenguaje objeto: son etiquetas de árboles en la metateoría <span class="math inline">\(\mathsf M_{\mathrm{ext}}\)</span>. Las aplicaciones de función preservan su aridad, incluso <span class="math inline">\(n=0\)</span>; los átomos preservan su símbolo relacional o igualdad lógica; la negación y los cuatro conectivos binarios preservan su constructor; cada cuantificador conserva <span class="math inline">\(Q\in\{\forall,\exists\}\)</span>, pero <strong>omite el nombre declarado</strong>.</p>
+<p>Formalmente, dada una lista finita <span class="math inline">\(\Delta=(y_0,\ldots,y_{m-1})\)</span> de declaraciones ancestro, de la más interior a la más exterior, codificamos una hoja <span class="math inline">\(x\)</span> por <span class="math inline">\(\mathtt{B}(j)\)</span> si <span class="math inline">\(j&lt;m\)</span> es el menor índice con <span class="math inline">\(y_j=x\)</span>, y por <span class="math inline">\(\mathtt{F}(x)\)</span> si no existe tal índice. El resto de los constructores se codifica componente a componente. En un cuantificador <span class="math inline">\(Qy\,\psi\)</span>, suprimimos el nombre <span class="math inline">\(y\)</span> del constructor codificado y procesamos la matriz con la lista <span class="math inline">\((y)\mathbin{\frown}\Delta\)</span>. Escribimos <span class="math inline">\(\operatorname{db}_\Delta(\varphi)\)</span> para el resultado y fijamos</p>
+<p><span class="math display">\[
+\boxed{\operatorname{db}_\tau(\varphi):=\operatorname{db}_{()}(\varphi).}
+\]</span></p>
+<p>El código es un árbol finito con todas las referencias <span class="math inline">\(\mathtt{B}(j)\)</span> <strong>bien situadas</strong>: en una hoja con <span class="math inline">\(d\)</span> cuantificadores antecesores se tiene <span class="math inline">\(j&lt;d\)</span>. Un código de término tomado aisladamente utiliza solamente <span class="math inline">\(\mathtt{F}(x)\)</span>, pues no posee cuantificadores ancestros. El conjunto de todos estos árboles codificados se obtiene mediante formación de árboles finitos sobre conjuntos de etiquetas y separación en ZF. La función <span class="math inline">\(\operatorname{db}_\tau\)</span> es única por el árbol legible unívocamente de §5.14 y el cuantificador homónimo más próximo de §6.3. <strong>No</strong> es una numeración de Gödel ni una codificación efectiva; esas nociones continúan diferidas a la Parte IV.</p>
+</section>
+</section>
+<section id="caracterización-exacta-de-la-equivalencia-alfa" class="level2">
+<h2 class="anchored" data-anchor-id="caracterización-exacta-de-la-equivalencia-alfa">6.29. Caracterización exacta de la equivalencia alfa</h2>
+<section id="tlog-mth-00020" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00020">Metateorema 6.29.1 — Renombrado alfa si y sólo si coincide el código</h3>
+<p>Para cualesquiera fórmulas <span class="math inline">\(\varphi,\chi\in\operatorname{Fm}_\tau\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\varphi\equiv_\alpha\chi
+\quad\Longleftrightarrow\quad
+\operatorname{db}_\tau(\varphi)=\operatorname{db}_\tau(\chi).}
+\]</span></p>
+<section id="demostración-12" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-12">Demostración</h4>
+<p><strong>Dirección directa.</strong> En un paso alfa elemental de §6.23, <span class="math inline">\(Qx\,\psi\rightsquigarrow_\alpha Qy\,\psi[y/x]_{\mathrm{lit}}\)</span>, el nuevo nombre <span class="math inline">\(y\)</span> no aparece en la matriz anterior. Las hojas que tenían como vinculante el cuantificador exterior pasan a llevar el nombre <span class="math inline">\(y\)</span>, pero siguen teniendo <strong>exactamente ese vinculante a la misma distancia</strong>; las hojas vinculadas por cuantificadores interiores y las libres permanecen clasificadas del mismo modo. Por tanto, todas las etiquetas <span class="math inline">\(\mathtt{B}(j)\)</span> y <span class="math inline">\(\mathtt{F}(z)\)</span> se conservan en sus respectivas posiciones; también se conservan los operadores y aridades. El mismo razonamiento vale en cualquier contexto: la sustitución del subárbol por otro con las mismas referencias relativas a su propio alcance no altera la distancia de los vinculantes externos. Cada paso contextual preserva <span class="math inline">\(\operatorname{db}\)</span>, y la igualdad se propaga a cadenas finitas, incluidas las inversas.</p>
+<p><strong>Dirección inversa.</strong> Supongamos iguales los códigos. En particular, ambas fórmulas tienen idénticos constructores, posiciones atómicas, símbolos extralógicos y árbol de cuantificadores <strong>sin nombres</strong>. Sea <span class="math inline">\(h\in\omega\)</span> el máximo número de cuantificadores estrictamente ancestrales de cualquier nodo cuantificador en ambos árboles (<span class="math inline">\(h=0\)</span> si no hay cuantificadores). El conjunto <span class="math inline">\(A=\operatorname{Names}_\tau(\varphi)\cup\operatorname{Names}_\tau(\chi)\)</span> es finito. Elegimos, en orden creciente, <span class="math inline">\(h+1\)</span> variables diferentes <span class="math inline">\(z_0,\ldots,z_h\)</span> fuera de <span class="math inline">\(A\)</span>. Esta selección finita es determinada por el orden fijo <span class="math inline">\(X=\{x_i\}\)</span>, sin elección.</p>
+<p>Transformamos cada fórmula <strong>desde la raíz hacia las matrices</strong>, recorriendo sus cuantificadores por profundidad. En profundidad <span class="math inline">\(d\)</span>, renombramos su declarador como <span class="math inline">\(z_d\)</span>, mediante el paso contextual autorizado de §6.23. El paso es legítimo: <span class="math inline">\(z_d\)</span> no figuraba en las fórmulas originales y tampoco ha sido introducido a profundidades menores, porque <span class="math inline">\(z_d\ne z_e\)</span> para <span class="math inline">\(e&lt;d\)</span>. Por tanto, <span class="math inline">\(z_d\)</span> no aparece en la matriz que va a renombrarse. La sustitución literal cambia únicamente las hojas ligadas por la declaración reemplazada, respetando las ocultaciones por cuantificadores homónimos interiores. Tras finitos pasos, toda declaración a profundidad <span class="math inline">\(d\)</span> tiene nombre <span class="math inline">\(z_d\)</span>. El árbol resultante depende <strong>únicamente</strong> del código: una hoja <span class="math inline">\(\mathtt{B}(j)\)</span>, situada bajo <span class="math inline">\(d\)</span> cuantificadores, recibe el nombre <span class="math inline">\(z_{d-1-j}\)</span>, mientras que <span class="math inline">\(\mathtt{F}(x)\)</span> sigue siendo <span class="math inline">\(x\)</span>. Como los códigos iniciales coinciden, las dos formas renombradas son la <strong>misma fórmula literal</strong>. Cada original está relacionada con esa forma por una cadena alfa finita; la simetría y transitividad de §6.23 concluyen <span class="math inline">\(\varphi\equiv_\alpha\chi\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Esta prueba proporciona un criterio <strong>combinatorio</strong>, no semántico, para la equivalencia alfa. La expresión «sin nombres» describe sólo las variables <em>ligadas</em>: los nombres libres se conservan literalmente en el código.</p>
+</section>
+</section>
+</section>
+<section id="sustitución-simultánea-de-fórmulas-con-prevención-de-captura" class="level2">
+<h2 class="anchored" data-anchor-id="sustitución-simultánea-de-fórmulas-con-prevención-de-captura">6.30. Sustitución simultánea de fórmulas, con prevención de captura</h2>
+<section id="tlog-def-00038" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-def-00038">Definición 6.30.1 — Extensión total de una sustitución global</h3>
+<p>Sea <span class="math inline">\(\sigma:X\to\operatorname{Tm}_\tau\)</span> una sustitución <strong>arbitraria</strong> —no es necesario que tenga soporte finito—. Definimos una operación sobre fórmulas <span class="math inline">\(\mathcal S_\sigma:\operatorname{Fm}_\tau\to\operatorname{Fm}_\tau\)</span>. En un átomo aplicamos la extensión de términos del §6.13 a todos sus argumentos. Negación y conectivos binarios preservan el constructor y aplican <span class="math inline">\(\mathcal S_\sigma\)</span> a sus subfórmulas. Para una fórmula cuantificada <span class="math inline">\(Qy\,\psi\)</span>, ponemos</p>
+<p><span class="math display">\[
+C_\sigma(\psi;y):=
+\bigcup_{u\in\operatorname{FV}_\tau(\psi)\setminus\{y\}}
+\operatorname{Var}_\tau(\sigma(u)),
+\qquad
+\sigma_{[v]}(w):=
+\begin{cases}v,&amp;w=v,\\\sigma(w),&amp;w\ne v.\end{cases}
+\]</span></p>
+<p>La unión <span class="math inline">\(C_\sigma(\psi;y)\)</span> es finita aunque <span class="math inline">\(\sigma\)</span> tenga soporte infinito, porque <span class="math inline">\(\operatorname{FV}_\tau(\psi)\)</span> es finito y la imagen de cada variable es un término finito. Las cláusulas cuantificadas son</p>
+<p><span class="math display">\[
+\boxed{
+\mathcal S_\sigma(Qy\,\psi)=
+\begin{cases}
+Qy\,\mathcal S_{\sigma_{[y]}}(\psi),
+&amp; y\notin C_\sigma(\psi;y),\\[3pt]
+Qz\,\mathcal S_{\sigma_{[z]}}\bigl(\psi[z/y]_{\mathrm{lit}}\bigr),
+&amp; y\in C_\sigma(\psi;y),
+\end{cases}}
+\]</span></p>
+<p>con</p>
+<p><span class="math display">\[
+z:=\operatorname{fresh}\bigl(
+\operatorname{Names}_\tau(\psi)\cup C_\sigma(\psi;y)\cup\{y\}
+\bigr)
+\]</span></p>
+<p>en la segunda rama. Allí <span class="math inline">\(z\notin\operatorname{Names}_\tau(\psi)\)</span>, de modo que <span class="math inline">\(\psi[z/y]_{\mathrm{lit}}\)</span> está bien definida y realiza un paso alfa del cuantificador. Además <span class="math inline">\(z\notin C_\sigma(\psi;y)\)</span>: ninguna variable introducida al sustituir las ocurrencias que eran libres bajo <span class="math inline">\(Qy\)</span> será capturada por el nuevo <span class="math inline">\(Qz\)</span>. En <strong>ambas</strong> ramas, <span class="math inline">\(\sigma_{[v]}\)</span> protege las hojas originalmente vinculadas al cuantificador de nombre <span class="math inline">\(v\)</span>; jamás se sustituye otra vez dentro de un término ya insertado.</p>
+<p>La existencia de <span class="math inline">\(\mathcal S_\sigma\)</span> se obtiene por recursión sobre el <strong>rango</strong> de fórmula, exactamente como en §6.25. En la rama de renombrado, <span class="math inline">\(\psi[z/y]_{\mathrm{lit}}\)</span> tiene el mismo rango que <span class="math inline">\(\psi\)</span>, estrictamente menor que el de <span class="math inline">\(Qy\psi\)</span>. Las cláusulas son excluyentes y el <span class="math inline">\(z\)</span> fresco tiene un valor único; así se obtiene también unicidad <strong>literal</strong> de la transformación definida, incluso para signaturas arbitrarias y <span class="math inline">\(\sigma\)</span> de soporte infinito. Los grafos funcionales por rango y su unión existen en ZF. Ésta es una <strong>definición</strong>, no una equivalencia semántica de fórmulas.</p>
+</section>
+</section>
+<section id="lema-de-transporte-de-ocurrencias-soporte-y-localidad" class="level2">
+<h2 class="anchored" data-anchor-id="lema-de-transporte-de-ocurrencias-soporte-y-localidad">6.31. Lema de transporte de ocurrencias, soporte y localidad</h2>
+<section id="tlog-lem-00015" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-lem-00015">Lema 6.31.1 — Conmutación con el código sin nombres</h3>
+<p>En un <strong>término codificado</strong>, definimos <span class="math inline">\(D_\sigma\)</span> reemplazando cada hoja <span class="math inline">\(\mathtt{F}(x)\)</span> por el árbol de término codificado de <span class="math inline">\(\sigma(x)\)</span>, cuyas hojas son todas de tipo <span class="math inline">\(\mathtt{F}\)</span>; dejamos intacta cada hoja <span class="math inline">\(\mathtt{B}(j)\)</span> y reconstruimos cada función con la misma aridad. Extendemos <span class="math inline">\(D_\sigma\)</span> a fórmulas codificadas preservando átomos, conectivos y cuantificadores <strong>sin nombre</strong>. Los nuevos árboles están bien situados, porque no se introducen marcadores <span class="math inline">\(\mathtt{B}(j)\)</span> nuevos. Entonces, para toda <span class="math inline">\(\varphi\in\operatorname{Fm}_\tau\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{db}_\tau\bigl(\mathcal S_\sigma(\varphi)\bigr)
+=D_\sigma\bigl(\operatorname{db}_\tau(\varphi)\bigr).}
+\]</span></p>
+<p>Se obtienen, además, tres consecuencias:</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{FV}_\tau(\mathcal S_\sigma(\varphi))
+=\bigcup_{x\in\operatorname{FV}_\tau(\varphi)}
+\operatorname{Var}_\tau(\sigma(x)),\qquad
+\operatorname{rk}_\tau(\mathcal S_\sigma(\varphi))
+=\operatorname{rk}_\tau(\varphi).}
+\]</span></p>
+<p>La operación es <strong>literalmente local</strong> en las variables libres: si <span class="math inline">\(\sigma(x)=\rho(x)\)</span> para todo <span class="math inline">\(x\in\operatorname{FV}_\tau(\varphi)\)</span>, entonces <span class="math inline">\(\mathcal S_\sigma(\varphi)=\mathcal S_\rho(\varphi)\)</span>. Finalmente, para la sustitución simple <span class="math inline">\(\sigma_{x,t}\)</span> de §6.13,</p>
+<p><span class="math display">\[
+\boxed{\mathcal S_{\sigma_{x,t}}(\varphi)
+=\operatorname{CA}_{x,t}(\varphi)}
+\]</span></p>
+<p><strong>como igualdad literal</strong>, con la implementación determinista de §6.25.</p>
+<section id="demostración-13" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-13">Demostración</h4>
+<p>Probamos por inducción sobre el rango una afirmación <strong>más fina que la igualdad de códigos</strong>: cada hoja de término originalmente <strong>ligada</strong> sigue vinculada, después de transformar la fórmula, al cuantificador correspondiente y a la <strong>misma distancia en su cadena de ancestros</strong>; cada hoja originalmente libre <span class="math inline">\(x\)</span> se sustituye por una copia del término <span class="math inline">\(\sigma(x)\)</span>, cuyas hojas son todas <strong>libres</strong>, sin efectuar reemplazos secundarios dentro de la copia. Ningún constructor lógico ni posición de argumento funcional o relacional cambia.</p>
+<p>En los átomos, todas las hojas eran libres y la afirmación es exactamente la sustitución de términos del §6.13. Negación y los cuatro conectivos binarios no introducen vínculos y preservan las afirmaciones inductivas en sus ramas. Ante <span class="math inline">\(Qy\,\psi\)</span>, las hojas de nombre <span class="math inline">\(y\)</span> libres en <span class="math inline">\(\psi\)</span> estaban vinculadas por ese cuantificador; por ello <span class="math inline">\(\sigma_{[y]}(y)=y\)</span>. En la primera rama, la hipótesis <span class="math inline">\(y\notin C_\sigma(\psi;y)\)</span> impide capturar una hoja introducida por cualquiera de las demás imágenes activas. La inducción aplicada a la matriz preserva exactamente los vínculos de las hojas originales y la libertad de las nuevas. En la segunda rama se ejecuta primero el cambio alfa <span class="math inline">\(Qy\psi\rightsquigarrow_\alpha Qz\psi[z/y]_{\mathrm{lit}}\)</span>, que <strong>preserva la distancia de cada vinculante</strong> por §6.29; la condición <span class="math inline">\(z\notin C_\sigma(\psi;y)\)</span> impide capturar las nuevas hojas. La inducción se aplica a la matriz renombrada, que tiene menor rango, con <span class="math inline">\(\sigma_{[z]}(z)=z\)</span>. Ambas ramas prueban la correspondencia de ocurrencias y, por las cláusulas de §6.28, la igualdad con <span class="math inline">\(D_\sigma\)</span>.</p>
+<p>Las variables libres de un código son precisamente los nombres de sus hojas <span class="math inline">\(\mathtt{F}\)</span>; <span class="math inline">\(D_\sigma\)</span> reemplaza esas hojas por términos con soporte <span class="math inline">\(\operatorname{Var}(\sigma(x))\)</span>. Esto prueba la fórmula del soporte; la igualdad de rango sigue de la preservación de todos los constructores de fórmula. Para la <strong>localidad literal</strong>, hacemos una segunda inducción sobre el rango y suponemos que las dos sustituciones coinciden en <span class="math inline">\(\operatorname{FV}(\varphi)\)</span>. En un átomo sus aplicaciones coinciden término a término. En un cuantificador <span class="math inline">\(Qy\psi\)</span>, las imágenes relevantes para <span class="math inline">\(C_\sigma(\psi;y)\)</span> y <span class="math inline">\(C_\rho(\psi;y)\)</span> coinciden; así la rama elegida y, cuando proceda, la variable fresca <span class="math inline">\(z\)</span> son idénticas. Las sustituciones sobrescritas <span class="math inline">\(\sigma_{[y]},\rho_{[y]}\)</span> (o <span class="math inline">\(\sigma_{[z]},\rho_{[z]}\)</span>) coinciden sobre las variables libres de la matriz correspondiente: sobre los nombres exteriores por hipótesis y sobre el declarador protegido por definición. La hipótesis inductiva concluye igualdad <strong>literal</strong> en las matrices y, por tanto, en la fórmula completa.</p>
+<p>Para el caso simple <span class="math inline">\(\sigma_{x,t}\)</span>, el único término no idéntico de su tabla es <span class="math inline">\(t\)</span> en <span class="math inline">\(x\)</span>. Si <span class="math inline">\(y=x\)</span>, el cuantificador queda protegido y no altera su matriz; si <span class="math inline">\(y\ne x\)</span> y <span class="math inline">\(x\notin\operatorname{FV}(\psi)\)</span>, ambas operaciones son la identidad en esa rama. Si <span class="math inline">\(x\in\operatorname{FV}(\psi)\)</span>, el test <span class="math inline">\(y\in C_\sigma(\psi;y)\)</span> equivale a <span class="math inline">\(y\in\operatorname{Var}(t)\)</span>: las otras imágenes activas son variables que ya figuran en <span class="math inline">\(\operatorname{Names}(\psi)\)</span> y ninguna es <span class="math inline">\(y\)</span>. En ese caso, el conjunto de nombres prohibidos para <span class="math inline">\(\operatorname{fresh}\)</span> coincide con el de §6.25, porque <span class="math inline">\(x\in\operatorname{Names}(\psi)\)</span>. La inducción identifica las matrices transformadas; las cláusulas coinciden <strong>token por token</strong>. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Alcance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La localidad literal depende de esta política concreta de elegir <span class="math inline">\(\operatorname{fresh}\)</span> sólo a partir de los nombres de la matriz y de las <strong>imágenes activas</strong>. No debe generalizarse sin prueba a una implementación que inspeccione el soporte infinito de <span class="math inline">\(\sigma\)</span>, ni sustituirse por la afirmación de que cualquier política de frescura produce la misma cadena.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="compatibilidad-alfa-e-identidad" class="level2">
+<h2 class="anchored" data-anchor-id="compatibilidad-alfa-e-identidad">6.32. Compatibilidad alfa e identidad</h2>
+<section id="tlog-mth-00021" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00021">Metateorema 6.32.1 — Descenso de la sustitución al cociente alfa</h3>
+<p>Para <span class="math inline">\(\sigma:X\to\operatorname{Tm}_\tau\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\varphi\equiv_\alpha\chi
+\ \Longrightarrow\
+\mathcal S_\sigma(\varphi)\equiv_\alpha
+\mathcal S_\sigma(\chi).}
+\]</span></p>
+<p>La sustitución identidad <span class="math inline">\(\iota(x)=x\)</span> de §6.15 satisface, incluso <strong>literalmente</strong>,</p>
+<p><span class="math display">\[
+\boxed{\mathcal S_\iota(\varphi)=\varphi.}
+\]</span></p>
+<p>Asimismo, si <span class="math inline">\(\varphi\in\operatorname{Sent}_\tau\)</span>, entonces <span class="math inline">\(\mathcal S_\sigma(\varphi)=\varphi\)</span> como fórmulas literales, para toda sustitución <span class="math inline">\(\sigma\)</span>.</p>
+<section id="demostración-14" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-14">Demostración</h4>
+<p>Si <span class="math inline">\(\varphi\equiv_\alpha\chi\)</span>, §6.29 da <span class="math inline">\(\operatorname{db}(\varphi)=\operatorname{db}(\chi)\)</span>. Aplicamos <span class="math inline">\(D_\sigma\)</span> a ambos lados y, por §6.31, obtenemos</p>
+<p><span class="math display">\[
+\operatorname{db}(\mathcal S_\sigma\varphi)
+=D_\sigma(\operatorname{db}\varphi)
+=D_\sigma(\operatorname{db}\chi)
+=\operatorname{db}(\mathcal S_\sigma\chi).
+\]</span></p>
+<p>La dirección inversa de §6.29 prueba la compatibilidad deseada. Para la identidad <strong>literal</strong>, inducimos sobre el rango de <span class="math inline">\(\varphi\)</span>: en un átomo todos los términos quedan intactos, y los conectivos preservan la fórmula por hipótesis inductiva. Bajo <span class="math inline">\(Qy\psi\)</span>, las imágenes activas por <span class="math inline">\(\iota\)</span> son exactamente las variables <span class="math inline">\(u\in\operatorname{FV}(\psi)\setminus\{y\}\)</span>, ninguna de las cuales es <span class="math inline">\(y\)</span>. Se elige la primera rama y <span class="math inline">\(\iota_{[y]}=\iota\)</span>; por hipótesis, la matriz no cambia. Para una sentencia, aplicamos la localidad literal de §6.31: <span class="math inline">\(\sigma\)</span> y <span class="math inline">\(\iota\)</span> coinciden <strong>vacuamente</strong> sobre <span class="math inline">\(\operatorname{FV}(\varphi)=\varnothing\)</span>. Concluimos <span class="math inline">\(\mathcal S_\sigma\varphi=\mathcal S_\iota\varphi=\varphi\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La compatibilidad <strong>no</strong> expresa igualdad literal entre las transformaciones de dos fórmulas alfa-equivalentes: las dos construcciones pueden escoger nombres nuevos diferentes. Ésa es precisamente la razón de trabajar con <span class="math inline">\(\equiv_\alpha\)</span>.</p>
+</section>
+</section>
+</section>
+<section id="composición-de-sustituciones-en-fórmulas" class="level2">
+<h2 class="anchored" data-anchor-id="composición-de-sustituciones-en-fórmulas">6.33. Composición de sustituciones en fórmulas</h2>
+<section id="tlog-mth-00022" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-mth-00022">Metateorema 6.33.1 — Ley de composición módulo equivalencia alfa</h3>
+<p>Sean <span class="math inline">\(\sigma,\rho:X\to\operatorname{Tm}_\tau\)</span>, con la composición de términos <span class="math inline">\(\sigma\star\rho\)</span> del §6.15, que <strong>primero</strong> aplica <span class="math inline">\(\sigma\)</span> y <strong>después</strong> <span class="math inline">\(\rho\)</span>. Para toda fórmula <span class="math inline">\(\varphi\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\mathcal S_\rho\bigl(\mathcal S_\sigma(\varphi)\bigr)
+\ \equiv_\alpha\
+\mathcal S_{\sigma\star\rho}(\varphi).}
+\]</span></p>
+<p>La identidad es, en general, una <strong>equivalencia alfa</strong>, no una igualdad literal de cadenas.</p>
+<section id="demostración-15" class="level4">
+<h4 class="anchored" data-anchor-id="demostración-15">Demostración</h4>
+<p>Por §6.31, basta comparar los códigos de las dos fórmulas. Para todo código bien situado <span class="math inline">\(c\)</span>, una inducción sobre el árbol codificado demuestra las igualdades <strong>literales</strong></p>
+<p><span class="math display">\[
+D_\iota(c)=c,
+\qquad
+D_\rho(D_\sigma(c))=D_{\sigma\star\rho}(c).
+\]</span></p>
+<p>En una hoja ligada <span class="math inline">\(\mathtt{B}(j)\)</span>, las tres operaciones son la identidad. En una hoja libre <span class="math inline">\(\mathtt{F}(x)\)</span>, la segunda composición produce el código del término <span class="math inline">\((\sigma(x))^\rho\)</span>, que por <a href="#tlog-pro-00006">TLOG-PRO-00006</a> es exactamente el código del término <span class="math inline">\((\sigma\star\rho)(x)\)</span>. Las funciones de aridad finita reconstruyen el mismo constructor a partir de la igualdad en todos sus argumentos, incluidos los casos nularios; los átomos y los cinco conectivos, así como ambos cuantificadores sin nombre, la heredan de sus componentes. Así queda probada la ecuación para todo código.</p>
+<p>Por consiguiente,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{db}_\tau(\mathcal S_\rho(\mathcal S_\sigma\varphi))
+&amp;=D_\rho(\operatorname{db}_\tau(\mathcal S_\sigma\varphi))\\
+&amp;=D_\rho(D_\sigma(\operatorname{db}_\tau\varphi))\\
+&amp;=D_{\sigma\star\rho}(\operatorname{db}_\tau\varphi)\\
+&amp;=\operatorname{db}_\tau(\mathcal S_{\sigma\star\rho}\varphi).
+\end{aligned}
+\]</span></p>
+<p>El metateorema 6.29.1 transforma la igualdad de códigos en equivalencia alfa. No se ha empleado ninguna propiedad de verdad o de consecuencia semántica. <span class="math inline">\(\square\)</span></p>
+<p><strong>Contracontrol de literalidad.</strong> En una signatura con <span class="math inline">\(P\in R_1\)</span>, sean <span class="math inline">\(\varphi=\forall x_0P(x_1)\)</span>, <span class="math inline">\(\sigma=\sigma_{x_1,x_0}\)</span> y <span class="math inline">\(\rho=\sigma_{x_0,x_2}\)</span>. Las cláusulas deterministas dan</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal S_\sigma(\varphi)&amp;=\forall x_2P(x_0),\\
+\mathcal S_\rho(\mathcal S_\sigma(\varphi))&amp;=\forall x_1P(x_2),\\
+\mathcal S_{\sigma\star\rho}(\varphi)&amp;=\forall x_0P(x_2).
+\end{aligned}
+\]</span></p>
+<p>Las dos últimas expresiones <strong>no son iguales literalmente</strong>, pero sí están relacionadas por renombrado alfa (sus cuantificadores son vacuos y sus matrices idénticas). Esto demuestra por qué la conclusión del teorema no debe reforzarse indebidamente.</p>
+</section>
+</section>
+</section>
+<section id="estructura-algebraica-de-las-sustituciones-y-sus-clases" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-algebraica-de-las-sustituciones-y-sus-clases">6.34. Estructura algebraica de las sustituciones y sus clases</h2>
+<section id="tlog-cor-00005" class="level3">
+<h3 class="anchored" data-anchor-id="tlog-cor-00005">Corolario 6.34.1 — Acción derecha del monoide de sustituciones sobre clases alfa</h3>
+<p>Sea <span class="math inline">\(\mathscr Q_\tau:=\operatorname{Fm}_\tau/{\equiv_\alpha}\)</span> el <strong>conjunto cociente</strong> de fórmulas por la equivalencia alfa de §6.23. Su existencia en ZF resulta por separación sobre <span class="math inline">\(\mathcal P(\operatorname{Fm}_\tau)\)</span> y reemplazo. Para <span class="math inline">\(\sigma\in\operatorname{Tm}_\tau^X\)</span> definimos</p>
+<p><span class="math display">\[
+[\varphi]_\alpha\cdot\sigma
+:=[\mathcal S_\sigma(\varphi)]_\alpha.
+\]</span></p>
+<p>Por el metateorema 6.32.1, la definición es independiente del representante elegido. Los metateoremas 6.32.1 y 6.33.1 demuestran las identidades</p>
+<p><span class="math display">\[
+\boxed{
+[\varphi]_\alpha\cdot\iota=[\varphi]_\alpha,
+\qquad
+([\varphi]_\alpha\cdot\sigma)\cdot\rho
+=[\varphi]_\alpha\cdot(\sigma\star\rho).}
+\]</span></p>
+<p>Como <span class="math inline">\((\operatorname{Tm}_\tau^X,\star,\iota)\)</span> es un monoide por <a href="#tlog-pro-00006">TLOG-PRO-00006</a>, estas ecuaciones establecen una <strong>acción derecha</strong> de ese monoide sobre el conjunto <span class="math inline">\(\mathscr Q_\tau\)</span>. También se preserva exactamente el soporte libre de una clase:</p>
+<p><span class="math display">\[
+\operatorname{FV}_\tau(\mathcal S_\sigma\varphi)
+=\bigcup_{x\in\operatorname{FV}_\tau(\varphi)}\operatorname{Var}_\tau(\sigma(x)),
+\]</span></p>
+<p>puesto que <span class="math inline">\(\operatorname{FV}\)</span> es invariante bajo <span class="math inline">\(\equiv_\alpha\)</span> por §6.24. La construcción de este cociente <strong>no</strong> identifica fórmulas lógicamente equivalentes ni interpreta símbolos en estructuras: es una identificación puramente sintáctica de elecciones de nombres ligados.</p>
+</section>
+</section>
+<section id="cierre-sintáctico-del-capítulo-6" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-sintáctico-del-capítulo-6">6.35. Cierre sintáctico del Capítulo 6</h2>
+<p>La teoría desarrollada en este capítulo cumple ahora las obligaciones arquitectónicas del Capítulo 6: (i) ocurrencias y vinculantes cuantificadores con unicidad; (ii) variables libres, sentencias e inducción/recursión general; (iii) sustitución simultánea de términos y sus leyes; (iv) libertad para sustituir y prevención de captura; (v) renombrado alfa y caracterización independiente por códigos; (vi) sustitución total de fórmulas con localidad, compatibilidad alfa, identidad y composición <strong>en el cociente adecuado</strong>.</p>
+<p>No se ha introducido semántica de primer orden, equivalencia lógica ni relación deductiva de primer orden. Por tanto, los resultados sintácticos se exportan al Capítulo 7 sin presuposiciones de modelos. El uso de <span class="math inline">\(\mathsf M_{\mathrm{ext}}=\mathrm{ZF}+\)</span> lógica clásica no ha requerido elección global, cardinalidades de la signatura ni procedimientos efectivos para listar sus símbolos. El número natural usado como índice de vinculante <strong>no</strong> es una codificación aritmética de fórmulas.</p>
+<pre class="text"><code>TLOG-CH06-M01 = CLOSED / PASS
+TLOG-CH06-M02 = CLOSED / PASS
+TLOG-CH06-M03 = CLOSED / PASS
+TLOG-CH06-M04 = CLOSED / PASS
+TLOG-CH06-0001 = CLOSED / PASS
+new mathematical nodes = 7
+chapter 6 closed nodes = 28
+TLOG registered/closed nodes = 97/97
+DAG = 97 nodes / 232 direct edges / PASS
+external interfaces = 0
+formalization candidates = 30
+compiled/verified = 0
+chapters closed = 7/24
+PART I = CLOSED / PASS
+PART II = OPEN</code></pre>
+<p><strong>Siguiente capítulo:</strong> <code>TLOG-CH07-0001 — Estructuras, asignaciones e interpretación</code>, comenzando por universos no vacíos, interpretaciones de la signatura y evaluación de términos.</p>
+<p><a href="../../../libros/otros/tratado-de-logica/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-de-logica/resultados.html">Resultados</a> · <a href="../../../libros/otros/tratado-de-logica/verificacion.html">Verificación</a></p>
+<p><a href="../../../libros/otros/tratado-de-logica/capitulo-05.html">← Capítulo 5</a> · <a href="../../../libros/otros/tratado-de-logica/capitulo-07.html">Capítulo 7 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
