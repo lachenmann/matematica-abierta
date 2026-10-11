@@ -1,3 +1,6 @@
+import MatematicaAbierta.Continuo.CalculoExistencialRCA
+import MatematicaAbierta.Continuo.MultiploComunUniformeRCA
+import MatematicaAbierta.Continuo.ParametroUniformeBetaRCA
 import MatematicaAbierta.Continuo.DiferenciasInternasRCA
 import MatematicaAbierta.Continuo.IdentidadModulosBetaRCA
 import MatematicaAbierta.Continuo.CRTConstructivoDosRCA
