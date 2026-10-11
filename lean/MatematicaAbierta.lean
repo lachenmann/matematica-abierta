@@ -1,3 +1,7 @@
+import MatematicaAbierta.Continuo.InversosProductoRCA
+import MatematicaAbierta.Continuo.ProductoAcumuladoRCA
+import MatematicaAbierta.Continuo.CompatibilidadProductoRCA
+import MatematicaAbierta.Continuo.InvarianteCRTParcialRCA
 import MatematicaAbierta.Continuo.CalculoExistencialRCA
 import MatematicaAbierta.Continuo.MultiploComunUniformeRCA
 import MatematicaAbierta.Continuo.ParametroUniformeBetaRCA
