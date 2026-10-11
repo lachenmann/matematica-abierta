@@ -1,3 +1,10 @@
+import MatematicaAbierta.Continuo.CalculoOrdenRCA
+import MatematicaAbierta.Continuo.LecturasBetaRCA
+import MatematicaAbierta.Continuo.EmparejamientoInternoRCA
+import MatematicaAbierta.Continuo.SelectoresInternosRCA
+import MatematicaAbierta.Continuo.PropiedadesTrazaRCA
+import MatematicaAbierta.Continuo.ExtensionGraficaRCA
+import MatematicaAbierta.Continuo.TotalidadTrazaRCA
 import MatematicaAbierta.Continuo.CalculoRCA
 import MatematicaAbierta.Continuo.TrazasInduccionRCA
 import MatematicaAbierta.Continuo.ConstruccionBaseTrazaRCA
