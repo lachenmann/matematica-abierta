@@ -1,3 +1,7 @@
+import MatematicaAbierta.Continuo.InversosFuturosRCA
+import MatematicaAbierta.Continuo.ActualizacionCodigoCRTRCA
+import MatematicaAbierta.Continuo.PasoEstadoCRTRCA
+import MatematicaAbierta.Continuo.CRTFinitoUniformeRCA
 import MatematicaAbierta.Continuo.InversosProductoRCA
 import MatematicaAbierta.Continuo.ProductoAcumuladoRCA
 import MatematicaAbierta.Continuo.CompatibilidadProductoRCA
@@ -73,8 +77,3 @@ import MatematicaAbierta.MCL.U00.L02_Igualdad
 Este módulo importa las demostraciones completas que deben comprobarse en CI.
 Cada módulo nuevo debe incorporarse aquí para que `lake build` lo verifique.
 -/
-
-import MatematicaAbierta.Continuo.InversosFuturosRCA
-import MatematicaAbierta.Continuo.ActualizacionCodigoCRTRCA
-import MatematicaAbierta.Continuo.PasoEstadoCRTRCA
-import MatematicaAbierta.Continuo.CRTFinitoUniformeRCA
