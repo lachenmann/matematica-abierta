@@ -1,0 +1,463 @@
+# 2A · Span e independencia lineal
+
+**Estado:** `COTEJADO`  
+**Fuente:** Sheldon Axler, *Linear Algebra Done Right*, 4.ª ed., PDF oficial de 16-08-2026, pp. 28–38.  
+**Licencia:** adaptación/traducción no oficial bajo CC BY-NC 4.0.  
+**Control de erratas:** se incorporan las correcciones oficiales de p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`) ya presentes en el PDF canónico de 16-08-2026.
+
+> [TRAD] Traducción de trabajo de Matemática Abierta. Se preservan numeración, fórmulas y estructura lógica del original. La notación `span` se mantiene como operador; en prosa se usa «subespacio generado» cuando resulta natural.
+
+Hasta ahora hemos escrito las listas de números entre paréntesis, y seguiremos haciéndolo para los elementos de $\mathbf F^n$. A partir de este punto también necesitamos listas cuyos términos son vectores. Para evitar confusiones, normalmente escribiremos estas listas de vectores sin un par de paréntesis que abarque toda la lista.
+
+## 2.1 Notación: lista de vectores
+
+Normalmente escribiremos las listas de vectores sin paréntesis exteriores.
+
+## Combinaciones lineales y span
+
+Una suma de múltiplos escalares de los vectores de una lista se llama **combinación lineal** de esa lista.
+
+## 2.2 Definición: combinación lineal
+
+Una combinación lineal de una lista $v_1,\ldots,v_m$ de vectores de $V$ es un vector de la forma
+
+$$
+a_1v_1+\cdots+a_mv_m,
+$$
+
+donde $a_1,\ldots,a_m\in\mathbf F$.
+
+## 2.3 Ejemplo: combinaciones lineales en $\mathbf R^3$
+
+El vector $(17,-4,2)$ es una combinación lineal de $(2,1,-3),(1,-2,4)$ porque
+
+$$
+(17,-4,2)=6(2,1,-3)+5(1,-2,4).
+$$
+
+En cambio, $(17,-4,5)$ no es una combinación lineal de esos dos vectores. Si lo fuera, existirían $a_1,a_2\in\mathbf R$ tales que
+
+$$
+(17,-4,5)=a_1(2,1,-3)+a_2(1,-2,4),
+$$
+
+lo que exigiría resolver simultáneamente
+
+$$
+17=2a_1+a_2,\qquad -4=a_1-2a_2,\qquad 5=-3a_1+4a_2,
+$$
+
+sistema que no tiene solución.
+
+## 2.4 Definición: span
+
+El conjunto de todas las combinaciones lineales de una lista $v_1,\ldots,v_m$ de vectores de $V$ se llama **span** o **subespacio generado** por $v_1,\ldots,v_m$ y se denota
+
+$$
+\operatorname{span}(v_1,\ldots,v_m).
+$$
+
+Así,
+
+$$
+\operatorname{span}(v_1,\ldots,v_m)
+=
+\{a_1v_1+\cdots+a_mv_m:a_1,\ldots,a_m\in\mathbf F\}.
+$$
+
+Por definición,
+
+$$
+\operatorname{span}(\,)=\{0\}
+$$
+
+para la lista vacía.
+
+## 2.5 Ejemplo: span
+
+El Ejemplo 2.3 muestra que
+
+$$
+(17,-4,2)\in\operatorname{span}((2,1,-3),(1,-2,4)),
+$$
+
+mientras que
+
+$$
+(17,-4,5)\notin\operatorname{span}((2,1,-3),(1,-2,4)).
+$$
+
+## 2.6 El span es el menor subespacio que contiene a la lista
+
+El span de una lista de vectores de $V$ es el menor subespacio de $V$ que contiene a todos los vectores de la lista.
+
+**Demostración.** Sea $v_1,\ldots,v_m$ una lista de vectores de $V$. El vector $0$ pertenece a su span porque
+
+$$
+0=0v_1+\cdots+0v_m.
+$$
+
+El span es cerrado bajo suma, pues
+
+$$
+(a_1v_1+\cdots+a_mv_m)+(c_1v_1+\cdots+c_mv_m)
+=(a_1+c_1)v_1+\cdots+(a_m+c_m)v_m,
+$$
+
+y es cerrado bajo multiplicación por escalares, porque
+
+$$
+\lambda(a_1v_1+\cdots+a_mv_m)
+=(\lambda a_1)v_1+\cdots+(\lambda a_m)v_m.
+$$
+
+Por 1.34, el span es un subespacio de $V$. Además, cada $v_k$ pertenece al span tomando coeficiente $1$ para $v_k$ y $0$ para los restantes vectores.
+
+Finalmente, cualquier subespacio de $V$ que contenga a todos los $v_k$ debe contener todas sus combinaciones lineales. Por tanto debe contener $\operatorname{span}(v_1,\ldots,v_m)$. $\square$
+
+## 2.7 Definición: genera
+
+Si
+
+$$
+\operatorname{span}(v_1,\ldots,v_m)=V,
+$$
+
+decimos que la lista $v_1,\ldots,v_m$ **genera** $V$.
+
+## 2.8 Ejemplo: una lista que genera $\mathbf F^n$
+
+La lista
+
+$$
+(1,0,\ldots,0),(0,1,0,\ldots,0),\ldots,(0,\ldots,0,1)
+$$
+
+genera $\mathbf F^n$. En efecto, para todo $(x_1,\ldots,x_n)\in\mathbf F^n$,
+
+$$
+(x_1,\ldots,x_n)
+=x_1(1,0,\ldots,0)+\cdots+x_n(0,\ldots,0,1).
+$$
+
+## 2.9 Definición: espacio vectorial de dimensión finita
+
+Un espacio vectorial se llama **de dimensión finita** si alguna lista de vectores del espacio lo genera.
+
+Toda lista tiene, por definición, longitud finita. En particular, 2.8 muestra que $\mathbf F^n$ es de dimensión finita.
+
+## 2.10 Definición: polinomio, $\mathcal P(\mathbf F)$
+
+Una función $p:\mathbf F\to\mathbf F$ se llama **polinomio con coeficientes en $\mathbf F$** si existen $a_0,\ldots,a_m\in\mathbf F$ tales que
+
+$$
+p(z)=a_0+a_1z+a_2z^2+\cdots+a_mz^m
+$$
+
+para todo $z\in\mathbf F$.
+
+Denotamos por $\mathcal P(\mathbf F)$ el conjunto de todos los polinomios con coeficientes en $\mathbf F$.
+
+Con las operaciones usuales de suma y multiplicación por escalares, $\mathcal P(\mathbf F)$ es un espacio vectorial sobre $\mathbf F$. Los coeficientes de un polinomio quedan determinados de manera única por el polinomio; este hecho se demostrará posteriormente en 4.8.
+
+## 2.11 Definición: grado de un polinomio, $\deg p$
+
+Un polinomio $p\in\mathcal P(\mathbf F)$ tiene **grado** $m$ si puede escribirse
+
+$$
+p(z)=a_0+a_1z+\cdots+a_mz^m
+$$
+
+con $a_m\neq0$.
+
+El polinomio idénticamente nulo tiene, por convenio, grado $-\infty$. El grado de $p$ se denota $\deg p$.
+
+## 2.12 Notación: $\mathcal P_m(\mathbf F)$
+
+Para un entero no negativo $m$, $\mathcal P_m(\mathbf F)$ denota el conjunto de los polinomios con coeficientes en $\mathbf F$ y grado a lo sumo $m$.
+
+Como
+
+$$
+\mathcal P_m(\mathbf F)=\operatorname{span}(1,z,\ldots,z^m),
+$$
+
+$\mathcal P_m(\mathbf F)$ es de dimensión finita.
+
+## 2.13 Definición: espacio vectorial de dimensión infinita
+
+Un espacio vectorial se llama **de dimensión infinita** si no es de dimensión finita.
+
+## 2.14 Ejemplo: $\mathcal P(\mathbf F)$ es de dimensión infinita
+
+Tómese cualquier lista finita de polinomios y sea $m$ el mayor de sus grados. Toda combinación lineal de esos polinomios tiene grado a lo sumo $m$, por lo que $z^{m+1}$ no pertenece a su span. Así ninguna lista finita genera $\mathcal P(\mathbf F)$.
+
+## Independencia lineal
+
+Supongamos que $v\in\operatorname{span}(v_1,\ldots,v_m)$. Puede escribirse
+
+$$
+v=a_1v_1+\cdots+a_mv_m.
+$$
+
+La cuestión decisiva es si los escalares $a_1,\ldots,a_m$ están determinados de manera única. Si también
+
+$$
+v=c_1v_1+\cdots+c_mv_m,
+$$
+
+entonces
+
+$$
+0=(a_1-c_1)v_1+\cdots+(a_m-c_m)v_m.
+$$
+
+Esto conduce a la siguiente definición.
+
+## 2.15 Definición: linealmente independiente
+
+Una lista $v_1,\ldots,v_m$ de vectores de $V$ se llama **linealmente independiente** si la única elección de escalares $a_1,\ldots,a_m\in\mathbf F$ que satisface
+
+$$
+a_1v_1+\cdots+a_mv_m=0
+$$
+
+es
+
+$$
+a_1=\cdots=a_m=0.
+$$
+
+La lista vacía también se declara linealmente independiente.
+
+Equivalentemente, $v_1,\ldots,v_m$ es linealmente independiente si cada vector de su span admite una única representación como combinación lineal de esa lista.
+
+## 2.16 Ejemplos: listas linealmente independientes
+
+**(a)** La lista
+
+$$
+(1,0,0,0),(0,1,0,0),(0,0,1,0)
+$$
+
+es linealmente independiente en $\mathbf F^4$: una combinación lineal igual a $0$ obliga a que sus tres coeficientes sean $0$.
+
+**(b)** Para todo entero no negativo $m$, la lista
+
+$$
+1,z,\ldots,z^m
+$$
+
+es linealmente independiente en $\mathcal P(\mathbf F)$, porque un polinomio idénticamente nulo tiene todos sus coeficientes iguales a $0$.
+
+**(c)** Una lista de longitud uno es linealmente independiente si y sólo si su único vector es distinto de $0$.
+
+**(d)** Una lista de longitud dos es linealmente independiente si y sólo si ninguno de sus dos vectores es múltiplo escalar del otro.
+
+Eliminar términos de una lista linealmente independiente conserva la independencia lineal.
+
+## 2.17 Definición: linealmente dependiente
+
+Una lista de vectores de $V$ se llama **linealmente dependiente** si no es linealmente independiente.
+
+Equivalentemente, $v_1,\ldots,v_m$ es linealmente dependiente si existen escalares $a_1,\ldots,a_m\in\mathbf F$, no todos nulos, tales que
+
+$$
+a_1v_1+\cdots+a_mv_m=0.
+$$
+
+## 2.18 Ejemplos: listas linealmente dependientes
+
+La lista
+
+$$
+(2,3,1),(1,-1,2),(7,3,8)
+$$
+
+es linealmente dependiente porque
+
+$$
+2(2,3,1)+3(1,-1,2)-(7,3,8)=(0,0,0).
+$$
+
+La lista
+
+$$
+(2,3,1),(1,-1,2),(7,3,c)
+$$
+
+es linealmente dependiente si y sólo si $c=8$.
+
+Si algún vector de una lista es combinación lineal de los demás, la lista es linealmente dependiente. En particular, toda lista que contenga el vector $0$ es linealmente dependiente.
+
+## 2.19 Lema de dependencia lineal
+
+Supongamos que $v_1,\ldots,v_m$ es una lista linealmente dependiente en $V$. Entonces existe
+
+$$
+k\in\{1,\ldots,m\}
+$$
+
+tal que
+
+$$
+v_k\in\operatorname{span}(v_1,\ldots,v_{k-1}).
+$$
+
+Además, si se elimina de la lista un término $v_k$ que cumple esa condición, el span de la lista restante es igual a $\operatorname{span}(v_1,\ldots,v_m)$.
+
+**Demostración.** Como la lista es dependiente, existen $a_1,\ldots,a_m$, no todos nulos, con
+
+$$
+a_1v_1+\cdots+a_mv_m=0.
+$$
+
+Sea $k$ el mayor índice para el cual $a_k\neq0$. Entonces
+
+$$
+v_k=-\frac{a_1}{a_k}v_1-\cdots-\frac{a_{k-1}}{a_k}v_{k-1},
+$$
+
+y por tanto $v_k\in\operatorname{span}(v_1,\ldots,v_{k-1})$.
+
+Ahora supongamos que para cierto $k$ tenemos
+
+## 2.20
+
+$$
+v_k=b_1v_1+\cdots+b_{k-1}v_{k-1}.
+$$
+
+Toda combinación lineal de $v_1,\ldots,v_m$ puede reescribirse sustituyendo $v_k$ mediante 2.20. Por ello, eliminar $v_k$ no cambia el span. $\square$
+
+Si $k=1$, la condición significa simplemente $v_1=0$, porque $\operatorname{span}(\,)=\{0\}$.
+
+## 2.21 Ejemplo: menor $k$ en el lema de dependencia lineal
+
+Considérese en $\mathbf R^3$ la lista
+
+$$
+(1,2,3),(6,5,4),(15,16,17),(8,9,7).
+$$
+
+El primer vector no es $0$, por lo que $k=1$ no sirve. El segundo no es múltiplo escalar del primero, por lo que $k=2$ tampoco sirve. En cambio,
+
+$$
+(15,16,17)=3(1,2,3)+2(6,5,4),
+$$
+
+de modo que el menor índice que funciona es $k=3$.
+
+## 2.22 Longitud de lista linealmente independiente $\leq$ longitud de lista generadora
+
+En un espacio vectorial de dimensión finita, la longitud de toda lista linealmente independiente es menor o igual que la longitud de toda lista generadora.
+
+**Demostración.** Sea $u_1,\ldots,u_m$ una lista linealmente independiente y sea $w_1,\ldots,w_n$ una lista que genera $V$. Partimos de la lista generadora de los $w$.
+
+Añadimos $u_1$. La nueva lista es dependiente porque $u_1$ está en el span de los $w$. Por el lema 2.19 podemos eliminar uno de los $w$ sin cambiar el span. Repetimos el procedimiento con $u_2$, luego con $u_3$, etc. La independencia de $u_1,\ldots,u_m$ garantiza que en cada etapa el vector eliminable puede elegirse entre los $w$ restantes y no entre los $u$ ya incorporados.
+
+Por tanto, por cada $u_k$ introducido debe existir un $w$ que pueda retirarse. Hay al menos tantos $w$ como $u$, de donde
+
+$$
+m\le n.
+$$
+
+$\square$
+
+## 2.23 Ejemplo: ninguna lista de longitud cuatro es linealmente independiente en $\mathbf R^3$
+
+La lista estándar de tres vectores genera $\mathbf R^3$. Por 2.22, una lista linealmente independiente en $\mathbf R^3$ no puede tener longitud mayor que tres.
+
+## 2.24 Ejemplo: ninguna lista de longitud tres genera $\mathbf R^4$
+
+La lista estándar de cuatro vectores de $\mathbf R^4$ es linealmente independiente. Por 2.22, toda lista generadora de $\mathbf R^4$ debe tener longitud al menos cuatro.
+
+## 2.25 Subespacios de dimensión finita
+
+Todo subespacio de un espacio vectorial de dimensión finita es de dimensión finita.
+
+**Demostración.** Sea $U$ un subespacio de un espacio vectorial de dimensión finita $V$.
+
+Si $U=\{0\}$, el resultado es inmediato. Si no, elegimos $u_1\in U$, $u_1\neq0$. Mientras $U\neq\operatorname{span}(u_1,\ldots,u_{k-1})$, elegimos
+
+$$
+u_k\in U\setminus\operatorname{span}(u_1,\ldots,u_{k-1}).
+$$
+
+En cada etapa la lista construida es linealmente independiente, por el lema 2.19. Pero 2.22 impide que una lista linealmente independiente en $V$ sea más larga que una lista generadora fija de $V$. Por tanto el proceso debe detenerse. En ese momento $U$ está generado por una lista finita y, por consiguiente, es de dimensión finita. $\square$
+
+# Ejercicios 2A
+
+1. Encuentra una lista de cuatro vectores distintos de $\mathbf F^3$ cuyo span sea
+   $$
+   \{(x,y,z)\in\mathbf F^3:x+y+z=0\}.
+   $$
+2. Demuestra o da un contraejemplo: si $v_1,v_2,v_3,v_4$ genera $V$, entonces
+   $$
+   v_1-v_2,\ v_2-v_3,\ v_3-v_4,\ v_4
+   $$
+   también genera $V$.
+3. Sea $v_1,\ldots,v_m$ una lista de vectores de $V$. Para $k\in\{1,\ldots,m\}$ define
+   $$
+   w_k=v_1+\cdots+v_k.
+   $$
+   Demuestra que
+   $$
+   \operatorname{span}(v_1,\ldots,v_m)=\operatorname{span}(w_1,\ldots,w_m).
+   $$
+4. (a) Demuestra que una lista de longitud uno es linealmente independiente si y sólo si su único vector no es $0$.  
+   (b) Demuestra que una lista de longitud dos es linealmente independiente si y sólo si ninguno de sus dos vectores es múltiplo escalar del otro.
+5. Encuentra $t\in\mathbf R$ tal que
+   $$
+   (3,1,4),(2,-3,5),(5,9,t)
+   $$
+   no sea linealmente independiente en $\mathbf R^3$.
+6. Demuestra que
+   $$
+   (2,3,1),(1,-1,2),(7,3,c)
+   $$
+   es linealmente dependiente en $\mathbf F^3$ si y sólo si $c=8$.
+7. (a) Considerando $\mathbf C$ como espacio vectorial sobre $\mathbf R$, demuestra que $1+i,1-i$ es linealmente independiente.  
+   (b) Considerando $\mathbf C$ como espacio vectorial sobre $\mathbf C$, demuestra que esa misma lista es linealmente dependiente.
+8. Supón que $v_1,v_2,v_3,v_4$ es linealmente independiente. Demuestra que
+   $$
+   v_1-v_2,\ v_2-v_3,\ v_3-v_4,\ v_4
+   $$
+   también es linealmente independiente.
+9. Demuestra o da un contraejemplo: si $v_1,\ldots,v_m$ es linealmente independiente, entonces
+   $$
+   5v_1-4v_2,\ v_2,\ldots,v_m
+   $$
+   es linealmente independiente.
+10. Demuestra o da un contraejemplo: si $v_1,\ldots,v_m$ es linealmente independiente y $\lambda\in\mathbf F$, $\lambda\neq0$, entonces
+    $$
+    \lambda v_1,\ldots,\lambda v_m
+    $$
+    es linealmente independiente.
+11. Demuestra o da un contraejemplo: si $v_1,\ldots,v_m$ y $w_1,\ldots,w_m$ son listas linealmente independientes, entonces
+    $$
+    v_1+w_1,\ldots,v_m+w_m
+    $$
+    es linealmente independiente.
+12. Supón que $v_1,\ldots,v_m$ es linealmente independiente y $w\in V$. Demuestra que si
+    $$
+    v_1+w,\ldots,v_m+w
+    $$
+    es linealmente dependiente, entonces $w\in\operatorname{span}(v_1,\ldots,v_m)$.
+13. Supón que $v_1,\ldots,v_m$ es linealmente independiente y $w\in V$. Demuestra que
+    $$
+    v_1,\ldots,v_m,w\text{ es linealmente independiente}
+    \iff
+    w\notin\operatorname{span}(v_1,\ldots,v_m).
+    $$
+14. Con $w_k=v_1+\cdots+v_k$, demuestra que $v_1,\ldots,v_m$ es linealmente independiente si y sólo si $w_1,\ldots,w_m$ lo es.
+15. Explica por qué no existe una lista de seis polinomios linealmente independiente en $\mathcal P_4(\mathbf F)$.
+16. Explica por qué ninguna lista de cuatro polinomios genera $\mathcal P_4(\mathbf F)$.
+17. Demuestra que $V$ es de dimensión infinita si y sólo si existe una sucesión $v_1,v_2,\ldots$ de vectores de $V$ tal que $v_1,\ldots,v_m$ es linealmente independiente para todo entero positivo $m$.
+18. Demuestra que $\mathbf F^\infty$ es de dimensión infinita.
+19. Demuestra que el espacio vectorial real de todas las funciones continuas $[0,1]\to\mathbf R$ es de dimensión infinita.
+20. Sean $p_0,p_1,\ldots,p_m\in\mathcal P_m(\mathbf F)$ y supón que
+    $$
+    p_k(2)=0
+    $$
+    para cada $k\in\{0,\ldots,m\}$. Demuestra que $p_0,p_1,\ldots,p_m$ no es linealmente independiente en $\mathcal P_m(\mathbf F)$.
