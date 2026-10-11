@@ -11,9 +11,11 @@ base=os.environ.get('APM_QA_URL','http://127.0.0.1:8791')
 checks=[]
 with sync_playwright() as p:
  browser=p.chromium.launch()
+ # Reuse immutable asset/font caches, while keeping a fresh page for each case.
+ contexts={width:browser.new_context(viewport={"width":width,"height":1000},device_scale_factor=1) for width in [375,1440]}
  for row in manifest['chapters']:
   for width in [375,1440]:
-   page=browser.new_page(viewport={'width':width,'height':1000},device_scale_factor=1)
+   page=contexts[width].new_page()
    errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
    response=page.goto(base+'/'+row['path'].replace('.md','.html'),wait_until='networkidle',timeout=120000)
    page.wait_for_function('!!window.MathJax?.startup?.promise',timeout=120000)
