@@ -1,3 +1,7 @@
+import MatematicaAbierta.Continuo.DivisionInternaRCA
+import MatematicaAbierta.Continuo.DivisionBetaRCA
+import MatematicaAbierta.Continuo.AritmeticaModularInternaRCA
+import MatematicaAbierta.Continuo.ContratoExtensionBetaRCA
 import MatematicaAbierta.Continuo.CalculoOrdenRCA
 import MatematicaAbierta.Continuo.LecturasBetaRCA
 import MatematicaAbierta.Continuo.EmparejamientoInternoRCA
