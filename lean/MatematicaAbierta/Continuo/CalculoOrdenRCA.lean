@@ -76,6 +76,12 @@ inductive Proof : List Formula → Formula → Type where
       Proof Γ (.eq (.add v t) (.add v u)) → Proof Γ (.eq t u)
   | orderCases {Γ : List Formula} {p : Formula} (t u : Term) :
       Proof (.lt t u :: Γ) p → Proof (.eq t u :: Γ) p → Proof (.lt u t :: Γ) p → Proof Γ p
+  -- The SAME guarded RCA₀ IΣ₁ scheme, now accepting extended proof trees.
+  | sigma1Induction {Γ : List Formula} {p : Formula} (x : ℕ) :
+      Sigma1 p → freshNum x Γ = true →
+      p.safe x (.lit 0) = true → p.safe x (.succ (.var x)) = true →
+      Proof Γ (p.subst x (.lit 0)) →
+      Proof Γ (.allN x (.imp p (p.subst x (.succ (.var x))))) → Proof Γ (.allN x p)
 
 def ax {Γ : List Formula} {t u : Term} (h : EqProof t u) : Proof Γ (.eq t u) := .embed (.arithmetic h)
 def eqRefl {Γ : List Formula} (t : Term) : Proof Γ (.eq t t) := ax (.refl t)
@@ -134,6 +140,8 @@ def profile {Γ : List Formula} {p : Formula} : Proof Γ p → Profile
       let a:=(profile h).node; {a with arithmeticBasis:=a.arithmeticBasis+1}
   | .orderCases _ _ h k l =>
       let a:=(((profile h).plus (profile k)).plus (profile l)).node; {a with orderCases:=a.orderCases+1}
+  | .sigma1Induction _ _ _ _ _ h k =>
+      let a:=((profile h).plus (profile k)).node; {a with sigma1:=a.sigma1+1}
 
 #print axioms mulSuccessorLeft
 #print axioms leThenSucc
