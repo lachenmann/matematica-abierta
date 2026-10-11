@@ -1,3 +1,6 @@
+import MatematicaAbierta.Continuo.ReconstruccionTrazaSucesoraRCA
+import MatematicaAbierta.Continuo.TransportePasosTrazaRCA
+import MatematicaAbierta.Continuo.ContratoExtensionCompletoRCA
 import MatematicaAbierta.Continuo.RenombradoConjuntosRCA
 import MatematicaAbierta.Continuo.CRTCanalesSeparadosRCA
 import MatematicaAbierta.Continuo.DatosRecodificacionBetaRCA
