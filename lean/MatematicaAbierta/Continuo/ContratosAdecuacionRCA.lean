@@ -1,4 +1,4 @@
-import MatematicaAbierta.Continuo.AuditoriaGuardaRenombradoRCA
+import MatematicaAbierta.Continuo.AdecuacionLogicaOrdinariaRCA
 
 /-! M15: sufficient guarded rule contracts and remaining theory obligations.
 These structures are explicit contracts, NOT axioms and NOT inhabited here.
@@ -164,8 +164,8 @@ def PreservationContract (target : IndependentPresentation) : Prop :=
   ∀ (Γ : List Formula) (p : Formula), LogicaClasicaOrdinariaRCA.Proof Γ p →
     Nonempty (target.derivation (Γ.map target.encode) (target.encode p))
 
-example : AuditoriaGuardaRenombradoRCA.different.numFree.contains 171 = true := rfl
-example : (Formula.allN 171 AuditoriaGuardaRenombradoRCA.different).numFree.contains 171 = false := rfl
+example : (Formula.imp (.eq (.var 170) (.var 171)) .bot).numFree.contains 171 = true := rfl
+example : (Formula.allN 171 (Formula.imp (.eq (.var 170) (.var 171)) .bot)).numFree.contains 171 = false := rfl
 #print axioms allBI_valid
 #print axioms allBE_valid
 #print axioms exBI_valid

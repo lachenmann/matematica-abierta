@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.CRTDosModulosBetaRCA
 
 /-! M08 C07 (pair case), C09: explicit NEW b'=delta*(L+1) and a code for
@@ -72,7 +73,7 @@ def orderedOpen : Proof [.lt (.var 0) (.var 1)] orderedResult := by
       (.exB 2 (.succ (.var 1))
         (.conj (.eq (.var 1) (.add (.var 0) (.var 2))) (.lt (.lit 0) (.var 2)))) :=
     .impE (SelectoresInternosRCA.closed h1) hyp
-  apply Proof.exBErename 2 26 (.succ (.var 1)) (by decide) (by decide) (by decide) (by decide) hg
+  audit_rename "ParametroParBetaRCA.lean:75" using Proof.exBErename 2 26 (.succ (.var 1)) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) hg
   apply Proof.exBI 2 (.succ (.var 1)) (.var 26) (by decide) (push hyp)
   have p0 := Proof.allE 24 (.var 24) (by decide) pairCode
   have p1 := Proof.allE 25 (.var 25) (by decide) p0

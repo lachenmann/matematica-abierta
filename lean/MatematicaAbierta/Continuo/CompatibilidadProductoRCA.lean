@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.ProductoAcumuladoRCA
 
 /-! M10/C10: product/new-modulus compatibility follows from effective
@@ -23,12 +24,12 @@ def posGap : Formula := .exB 2 (.succ K)
       (.exB 17 (.succ B) (.conj (.lt (.lit 0) (.var 17)) (.eq B (.mul (.var 2) (.var 17)))))))
 
 def posGapOpen : Proof pairΓ posGap := by
-  apply Proof.exBErename 2 26 (.succ K) (by decide) (by decide) (by decide) (by decide) differenceOpen
+  audit_rename "CompatibilidadProductoRCA.lean:26" using Proof.exBErename 2 26 (.succ K) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) differenceOpen
   have old : Proof (Formula.conj (.eq (.var 21) (.add (.var 20) (.var 26)))
       (.conj (.lt (.lit 0) (.var 26)) (.exB 17 (.succ B) (.eq B (.mul (.var 26) (.var 17))))) ::
       .lt (.var 26) (.succ K) :: pairΓ)
       (.exB 17 (.succ B) (.eq B (.mul (.var 26) (.var 17)))) := .andR (.andR hyp)
-  apply Proof.exBErename 17 31 (.succ B) (by decide) (by decide) (by decide) (by decide) old
+  audit_rename "CompatibilidadProductoRCA.lean:31" using Proof.exBErename 17 31 (.succ B) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) old
   have bPos : Proof (Formula.eq B (.mul (.var 26) (.var 31)) ::
       .lt (.var 31) (.succ B) ::
       Formula.conj (.eq (.var 21) (.add (.var 20) (.var 26)))

@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.CalculoOrdenRCA
 import MatematicaAbierta.Continuo.ConstruccionBaseTrazaRCA
 
@@ -58,11 +59,11 @@ def betaWitnessUnique : Proof betaWitnessContext (.eq (.var 1) (.var 2)) := by
 
 def betaUniqueOpen : Proof betaContext (.eq (.var 1) (.var 2)) := by
   have hu : Proof betaContext betaU := push hyp
-  apply Proof.exBErename 12 14 (.succ (.var 8)) (by decide) (by decide) rfl (by decide) (.andR hu)
+  audit_rename "LecturasBetaRCA.lean:61" using Proof.exBErename 12 14 (.succ (.var 8)) (by decide) (by decide) rfl (by decide) (by decide) (by decide) (.andR hu)
   have hv : Proof
       [.eq (.var 8) (.add (.mul (.var 14) (modulus (.var 0) (.var 9))) (.var 1)),
        .lt (.var 14) (.succ (.var 8)), betaV, betaU] betaV := push (push hyp)
-  apply Proof.exBErename 12 15 (.succ (.var 8)) (by decide) (by decide) rfl (by decide) (.andR hv)
+  audit_rename "LecturasBetaRCA.lean:65" using Proof.exBErename 12 15 (.succ (.var 8)) (by decide) (by decide) rfl (by decide) (by decide) (by decide) (.andR hv)
   exact betaWitnessUnique
 
 def betaUniqueFormula : Formula :=

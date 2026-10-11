@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.InversosFuturosRCA
 
 /-! M11/T07. A'=A+P*q*(d+r), from A=h*m+rho, m=rho+d,
@@ -63,7 +64,7 @@ def prefixPoint : Proof prefixPointΓ (beta aNext b (.var 16) (.var 17)) := by
         (.eq p (.mul (.var 17) (modulus (.var 16) b)))) :=
       .allBE 16 k (.var 16) (by decide) hFac (push (push hyp))
     -- Rename the bound name by eliminating and reintroducing it ordinarily.
-    apply Proof.exBErename 17 77 (.succ p) (by decide) (by decide) (by decide) (by decide) original
+    audit_rename "ActualizacionCodigoCRTRCA.lean:66" using Proof.exBErename 17 77 (.succ p) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) original
     exact .exBI 23 (.succ p) (.var 77) (by decide) (push hyp) hyp
   have h0 := Proof.allE 8 A (by decide) PreservacionModularBetaRCA.liftBetaClosed
   have h1 := Proof.allE 9 b (by decide) h0

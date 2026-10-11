@@ -40,7 +40,8 @@ inductive Proof : List Formula → Formula → Type where
       Proof Γ (.exB x bound p) → Proof (p :: .lt (.var x) bound :: Γ) q → Proof Γ q
   | exBErename {Γ : List Formula} {p q : Formula} (x y : ℕ) (bound : Term) :
       freshNum y Γ = true → q.numFree.contains y = false → bound.vars.contains y = false →
-      p.safe x (.var y) = true → Proof Γ (.exB x bound p) →
+      p.safe x (.var y) = true → x ≠ y → p.numFree.contains y = false →
+      Proof Γ (.exB x bound p) →
       Proof (p.subst x (.var y) :: .lt (.var y) bound :: Γ) q → Proof Γ q
   | eqSymm {Γ : List Formula} {t u : Term} : Proof Γ (.eq t u) → Proof Γ (.eq u t)
   | eqTrans {Γ : List Formula} {t u v : Term} : Proof Γ (.eq t u) → Proof Γ (.eq u v) → Proof Γ (.eq t v)
@@ -129,7 +130,7 @@ def profile {Γ : List Formula} {p : Formula} : Proof Γ p → Profile
   | .impE h k | .andI h k | .eqTrans h k | .eqAdd h k | .eqMul h k | .leTrans h k | .leAdd h k | .ltTrans h k =>
       ((profile h).plus (profile k)).node
   | .allI _ _ h | .allE _ _ _ h | .allBI _ _ _ _ h => (profile h).node
-  | .allBE _ _ _ _ h k | .exBI _ _ _ _ h k | .exBE _ _ _ _ _ h k | .exBErename _ _ _ _ _ _ _ h k =>
+  | .allBE _ _ _ _ h k | .exBI _ _ _ _ h k | .exBE _ _ _ _ _ h k | .exBErename _ _ _ _ _ _ _ _ _ h k =>
       ((profile h).plus (profile k)).node
   | .eqSubst _ _ _ _ _ _ h k => ((profile h).plus (profile k)).node
   | .leRewrite h k l | .ltRewrite h k l => (((profile h).plus (profile k)).plus (profile l)).node

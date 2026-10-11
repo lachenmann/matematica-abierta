@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.IdentidadModulosBetaRCA
 
 /-! M08 C09: constructive two-modulus CRT from a POSITIVE inverse
@@ -110,10 +111,10 @@ def crtWitness : Proof yContext crtConclusion := by
     exact he₂
 
 def crtOpen : Proof crtContext crtConclusion := by
-  apply Proof.exBErename 2 26 (.succ (.var 21)) (by decide) (by decide) (by decide)
-    (by decide) complementExists
-  apply Proof.exBErename 2 27 (.succ pTerm) (by decide) (by decide) (by decide)
-    (by decide) pPredecessor
+  audit_rename "CRTConstructivoDosRCA.lean:113" using Proof.exBErename 2 26 (.succ (.var 21)) (by decide) (by decide) (by decide)
+    (by decide) (by decide) (by decide) complementExists
+  audit_rename "CRTConstructivoDosRCA.lean:115" using Proof.exBErename 2 27 (.succ pTerm) (by decide) (by decide) (by decide)
+    (by decide) (by decide) (by decide) pPredecessor
   exact crtWitness
 
 def crtTwo : Proof []

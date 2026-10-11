@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.CRTCanalesSeparadosRCA
 import MatematicaAbierta.Continuo.TotalidadTrazaRCA
 
@@ -186,10 +187,10 @@ def oldTotal (c : Channel) : Proof oldTotalΓ (totalFormula c) := by
   have htotal := Proof.impE (closed TotalidadTrazaRCA.traceTotal) ht
   have hi := Proof.allE 0 (.var 16) (by decide) htotal
   have hp := Proof.impE hi (hyp : Proof oldTotalΓ (.le (.var 16) stageBound))
-  apply Proof.exBErename 1 121 valueBound (by decide) (by cases c <;> decide)
-    (by decide) (by decide) hp
-  apply Proof.exBErename 2 122 valueBound (by decide) (by cases c <;> decide)
-    (by decide) (by decide) hyp
+  audit_rename "DatosRecodificacionBetaRCA.lean:189" using Proof.exBErename 1 121 valueBound (by decide) (by cases c <;> decide)
+    (by decide) (by decide) (by decide) (by cases c <;> decide) hp
+  audit_rename "DatosRecodificacionBetaRCA.lean:191" using Proof.exBErename 2 122 valueBound (by decide) (by cases c <;> decide)
+    (by decide) (by decide) (by decide) (by cases c <;> decide) hyp
   exact oldTotalLeaf c
 
 def totalΓ : List Formula := [.le (.var 16) newK,extensionInput]

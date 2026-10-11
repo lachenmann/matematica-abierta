@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.ParametroUniformeBetaRCA
 
 /-! M10/C10: positive inverse certificates are multiplied explicitly.
@@ -70,7 +71,7 @@ def swapOpen : Proof swapContext swapConclusion := by
     .impE (.allBE 1 (.succ (.var 20)) (.lit 1) (by decide)
       (SelectoresInternosRCA.closed (.allE 0 (.var 20) (by decide) boundedDifference))
       (leThenSucc oneLe)) oneLe
-  apply Proof.exBErename 2 34 (.succ (.var 20)) (by decide) (by decide) (by decide) (by decide) predecessor
+  audit_rename "InversosProductoRCA.lean:73" using Proof.exBErename 2 34 (.succ (.var 20)) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) predecessor
   have zLe : Proof ([Formula.eq (.var 20) (.add (.lit 1) (.var 34)),
       .lt (.var 34) (.succ (.var 20))] ++ swapContext) (.le (.var 34) (.var 20)) :=
     .leRewrite (eqRefl _) (.eqSymm hyp) (leLeftAdd (.var 34) (.lit 1))

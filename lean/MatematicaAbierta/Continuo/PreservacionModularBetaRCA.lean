@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.AritmeticaModularInternaRCA
 
 /-! M07 / H04-04.c/d: numeric preservation with the SAME b, conditional on
@@ -36,14 +37,14 @@ def liftedWitness : Proof quotientContext (newReading (.var 0) (.var 1)) := by
   exact he
 
 def pointOpen : Proof pointContext (newReading (.var 0) (.var 1)) := by
-  apply Proof.exBErename 23 15 (.succ (.var 30)) (by decide) (by decide) (by decide)
-    (by decide) hyp
+  audit_rename "PreservacionModularBetaRCA.lean:39" using Proof.exBErename 23 15 (.succ (.var 30)) (by decide) (by decide) (by decide)
+    (by decide) (by decide) (by decide) hyp
   have hβ : Proof
       [.eq (.var 30) (.mul (.var 15) (modulus (.var 0) (.var 9))),
        .lt (.var 15) (.succ (.var 30)), factorCertificate (.var 0), oldReading (.var 0) (.var 1)]
       (oldReading (.var 0) (.var 1)) := push (push (push hyp))
-  apply Proof.exBErename 12 14 (.succ (.var 8)) (by decide) (by decide) (by decide)
-    (by decide) (.andR hβ)
+  audit_rename "PreservacionModularBetaRCA.lean:45" using Proof.exBErename 12 14 (.succ (.var 8)) (by decide) (by decide) (by decide)
+    (by decide) (by decide) (by decide) (.andR hβ)
   exact liftedWitness
 
 def pointFormula : Formula := .imp (oldReading (.var 0) (.var 1))

@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.LecturasBetaRCA
 import MatematicaAbierta.Continuo.EmparejamientoInternoRCA
 
@@ -29,10 +30,10 @@ def closed {Γ : List Formula} {p : Formula} (h : Proof [] p) : Proof Γ p :=
   .weaken (fun _ hm => False.elim (List.not_mem_nil hm)) h
 
 def alphaForward (c : Channel) : Proof [originalMatrix c] (namedMatrix c) := by
-  apply Proof.exBErename 1 16 (.succ (.var 0))
-    (by cases c <;> decide) (by cases c <;> decide) rfl (by cases c <;> decide) hyp
-  apply Proof.exBErename 2 17 (.succ (.var 0))
-    (by cases c <;> decide) (by cases c <;> decide) rfl (by cases c <;> decide) hyp
+  audit_rename "SelectoresInternosRCA.lean:32" using Proof.exBErename 1 16 (.succ (.var 0))
+    (by cases c <;> decide) (by cases c <;> decide) rfl (by cases c <;> decide) (by decide) (by cases c <;> decide) hyp
+  audit_rename "SelectoresInternosRCA.lean:34" using Proof.exBErename 2 17 (.succ (.var 0))
+    (by cases c <;> decide) (by cases c <;> decide) rfl (by cases c <;> decide) (by decide) (by cases c <;> decide) hyp
   apply Proof.exBI 16 (.succ (.var 0)) (.var 16) (by cases c <;> decide)
   · exact push (push (push hyp))
   apply Proof.exBI 17 (.succ (.var 0)) (.var 17) (by cases c <;> decide)

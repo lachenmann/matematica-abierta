@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.InversosProductoRCA
 
 /-! M10/C10: internally certified product extension P'=P*m_k, with
@@ -25,7 +26,7 @@ def factorCases : Proof stepΓ factorConclusion := by
   · have old : Proof (.lt (.var 16) k :: stepΓ)
         (.exB 17 (.succ p) (.eq p (.mul (.var 17) (modulus (.var 16) b)))) :=
       .allBE 16 k (.var 16) (by decide) (.andR (push (push hyp))) hyp
-    apply Proof.exBErename 17 31 (.succ p) (by decide) (by decide) (by decide) (by decide) old
+    audit_rename "ProductoAcumuladoRCA.lean:28" using Proof.exBErename 17 31 (.succ p) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) old
     have he : Proof (Formula.eq p (.mul (.var 31) (modulus (.var 16) b)) ::
         .lt (.var 31) (.succ p) :: .lt (.var 16) k :: stepΓ)
         (.eq nextP (.mul (.mul (.var 31) n) (modulus (.var 16) b))) :=

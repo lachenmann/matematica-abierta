@@ -189,8 +189,8 @@ def ordered (ρ : ℕ → ℕ) (hi : Function.Injective ρ)
     simpa only [rename, subst, List.map_cons] using CalculoOrdenRCA.Proof.exBI x b t (by simpa only [freshNumMap, numFree, safe] using f) (by simpa only [rename, subst, List.map_cons] using ordered ρ hi h) (by simpa only [rename, subst, List.map_cons] using ordered ρ hi k)
   | .exBE x b f g l h k => by
     simpa only [rename, subst, List.map_cons] using CalculoOrdenRCA.Proof.exBE x b (by simpa only [freshNumMap, numFree, safe] using f) (by simpa only [freshNumMap, numFree, safe] using g) l (by simpa only [rename, subst, List.map_cons] using ordered ρ hi h) (by simpa only [rename, subst, List.map_cons] using ordered ρ hi k)
-  | @CalculoOrdenRCA.Proof.exBErename _ bp _ x y b f g l z h k => by
-    simpa only [rename, subst, List.map_cons] using CalculoOrdenRCA.Proof.exBErename (p := rename ρ bp) x y b (by simpa only [freshNumMap, numFree, safe] using f) (by simpa only [freshNumMap, numFree, safe] using g) l (by simpa only [freshNumMap, numFree, safe] using z) (by simpa only [rename, subst, List.map_cons] using ordered ρ hi h) (by simpa only [rename, subst, List.map_cons] using ordered ρ hi k)
+  | @CalculoOrdenRCA.Proof.exBErename _ bp _ x y b f g l z ne body h k => by
+    simpa only [rename, subst, List.map_cons] using CalculoOrdenRCA.Proof.exBErename (p := rename ρ bp) x y b (by simpa only [freshNumMap, numFree, safe] using f) (by simpa only [freshNumMap, numFree, safe] using g) l (by simpa only [freshNumMap, numFree, safe] using z) ne (by simpa only [numFree] using body) (by simpa only [rename, subst, List.map_cons] using ordered ρ hi h) (by simpa only [rename, subst, List.map_cons] using ordered ρ hi k)
   | .eqSymm h => by
     simpa only [rename, subst, List.map_cons] using CalculoOrdenRCA.Proof.eqSymm (by simpa only [rename, subst, List.map_cons] using ordered ρ hi h)
   | .eqTrans h k => by

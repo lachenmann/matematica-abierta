@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.SelectoresInternosRCA
 
 /-! H04-04.g: derive BaseGraph and StepGraph from the NUMERIC trace
@@ -109,8 +110,8 @@ def stepFromTrace : Proof constructionContext stepGraph := by
   apply Proof.exBE 5 valueBound (by decide) (by decide) rfl hs
   apply Proof.exBE 6 valueBound (by decide) (by decide) rfl hyp
   apply Proof.exBE 7 (.lit 2) (by decide) (by decide) rfl hyp
-  apply Proof.exBErename 1 18 valueBound (by decide) (by decide) rfl (by decide) hyp
-  apply Proof.exBErename 2 19 valueBound (by decide) (by decide) rfl (by decide) hyp
+  audit_rename "PropiedadesTrazaRCA.lean:112" using Proof.exBErename 1 18 valueBound (by decide) (by decide) rfl (by decide) (by decide) (by decide) hyp
+  audit_rename "PropiedadesTrazaRCA.lean:113" using Proof.exBErename 2 19 valueBound (by decide) (by decide) rfl (by decide) (by decide) (by decide) hyp
   exact leafToStep nu nd hu hd
 
 def traceToGraphProperties : Proof []

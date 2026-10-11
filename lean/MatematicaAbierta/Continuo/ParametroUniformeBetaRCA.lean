@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.MultiploComunUniformeRCA
 
 /-! M09 C07: scaled uniform multiple and explicit certificates for positive
@@ -20,7 +21,7 @@ def scaledMatrix : Proof [cm K M] (cm K scaled) := by
         (.exB 17 (.succ M) (.eq M (.mul (.var 16) (.var 17)))) :=
       .impE (.allBE 16 (.succ K) (.var 16) (by decide)
         (.andR (push (push hyp))) (push hyp)) hyp
-    apply Proof.exBErename 17 31 (.succ M) (by decide) (by decide) (by decide) (by decide) ho
+    audit_rename "ParametroUniformeBetaRCA.lean:23" using Proof.exBErename 17 31 (.succ M) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) ho
     have he : Proof [Formula.eq M (.mul (.var 16) (.var 31)),
         .lt (.var 31) (.succ M), .lt (.lit 0) (.var 16), .lt (.var 16) (.succ K),cm K M]
         (.eq scaled (.mul (.var 16) (.mul (.var 31) (.succ L)))) :=
@@ -52,7 +53,7 @@ def differenceOpen : Proof pairΓ differenceCertificate := by
       (.conj (.eq (.var 21) (.add (.var 20) (.var 2))) (.lt (.lit 0) (.var 2)))) :=
     .impE (SelectoresInternosRCA.closed (.allE 21 (.var 21) (by decide)
       (.allE 20 (.var 20) (by decide) gapFromOrder))) (push hyp)
-  apply Proof.exBErename 2 26 (.succ (.var 21)) (by decide) (by decide) (by decide) (by decide) hg
+  audit_rename "ParametroUniformeBetaRCA.lean:55" using Proof.exBErename 2 26 (.succ (.var 21)) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) hg
   have hd : Proof [Formula.conj (.eq (.var 21) (.add (.var 20) (.var 26))) (.lt (.lit 0) (.var 26)),
       .lt (.var 26) (.succ (.var 21)),.le (.var 21) K,.lt (.var 20) (.var 21),cm K B]
       (.lt (.var 26) (.succ K)) :=

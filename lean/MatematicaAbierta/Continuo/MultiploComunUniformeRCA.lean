@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.CalculoExistencialRCA
 
 /-! M09 C07: actual Sigma1 induction with ordinary unbounded existential
@@ -38,7 +39,7 @@ def stepCases : Proof stepΓ stepResidue := by
         (.exB 17 (.succ M) (.eq M (.mul (.var 16) (.var 17)))) :=
       .impE (.allBE 16 (.succ K) (.var 16) (by decide)
         (.andR (push (push (push hyp)))) hyp) (push hyp)
-    apply Proof.exBErename 17 31 (.succ M) (by decide) (by decide) (by decide) (by decide) old
+    audit_rename "MultiploComunUniformeRCA.lean:41" using Proof.exBErename 17 31 (.succ M) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) old
     have he : Proof (Formula.eq M (.mul (.var 16) (.var 31)) ::
         .lt (.var 31) (.succ M) :: .lt (.var 16) (.succ K) :: stepΓ)
         (.eq nextM (.mul (.var 16) (.mul (.var 31) (.succ K)))) :=

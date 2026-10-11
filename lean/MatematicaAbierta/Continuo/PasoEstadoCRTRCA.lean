@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.ActualizacionCodigoCRTRCA
 
 /-! M11: all bounded fields of S are assembled for k<=N. Residue data and
@@ -125,13 +126,13 @@ def stateNext : Proof Γd (state (.succ k) nextP aNext cap) := by
     (.andI (.andR psNext) (.andI readingsNext nextFuture))))
 
 def stateStepOpen : Proof Γ0 result := by
-  apply Proof.exBErename 54 68 C (by decide) (by decide) (by decide) (by decide) atK
-  apply Proof.exBErename 55 70 C (by decide) (by decide) (by decide) (by decide) hyp
-  apply Proof.exBErename 17 69 R (by decide) (by decide) (by decide) (by decide) datumAtK
-  apply Proof.exBErename 1 72 (.succ A) (by decide) (by decide) (by decide) (by decide) divisionAtK
-  apply Proof.exBErename 12 73 (.succ A) (by decide) (by decide) (by decide) (by decide)
+  audit_rename "PasoEstadoCRTRCA.lean:128" using Proof.exBErename 54 68 C (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) atK
+  audit_rename "PasoEstadoCRTRCA.lean:129" using Proof.exBErename 55 70 C (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) hyp
+  audit_rename "PasoEstadoCRTRCA.lean:130" using Proof.exBErename 17 69 R (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) datumAtK
+  audit_rename "PasoEstadoCRTRCA.lean:131" using Proof.exBErename 1 72 (.succ A) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) divisionAtK
+  audit_rename "PasoEstadoCRTRCA.lean:132" using Proof.exBErename 12 73 (.succ A) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide)
     (.andR (hyp : Proof Γrho _))
-  apply Proof.exBErename 2 74 (.succ n) (by decide) (by decide) (by decide) (by decide) complementAtK
+  audit_rename "PasoEstadoCRTRCA.lean:134" using Proof.exBErename 2 74 (.succ n) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) complementAtK
   exact .exBI 75 cap aNext (by decide)
     (valueBoundFrom (.andL (.andR (rca_ctx : Proof Γd (state k p A C)))) rca_ctx rca_ctx hyp rca_ctx)
     stateNext

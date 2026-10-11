@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.ContratoExtensionBetaRCA
 import MatematicaAbierta.Continuo.PreservacionModularBetaRCA
 
@@ -82,7 +83,7 @@ def gapOpen : Proof [.lt (.var 20) (.var 21)] gapFormula := by
     .impE (.allBE 1 (.succ (.var 21)) (.var 20) (by decide)
       (SelectoresInternosRCA.closed (.allE 0 (.var 21) (by decide) boundedDifference))
       (leThenSucc (.ltLe hyp))) (.ltLe hyp)
-  apply Proof.exBErename 2 26 (.succ (.var 21)) (by decide) (by decide) (by decide) (by decide) hd
+  audit_rename "DiferenciasInternasRCA.lean:85" using Proof.exBErename 2 26 (.succ (.var 21)) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) hd
   apply Proof.exBI 2 (.succ (.var 21)) (.var 26) (by decide) (push hyp)
   exact .andI hyp (positiveComplement (.var 20) (.var 26) (.var 21) (push (push hyp)) hyp)
 def gapFromOrder : Proof []

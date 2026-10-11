@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.DiferenciasInternasRCA
 
 /-! M08 C08/C09: an internally derived POSITIVE inverse certificate.
@@ -103,8 +104,8 @@ def predecessorExists : Proof identityContext
   exact .impE (.allBE 1 (.succ hbTerm) (.lit 1) (by decide) hd (leThenSucc hone)) hone
 
 def identityOpen : Proof identityContext conclusion := by
-  apply Proof.exBErename 2 24 (.succ hbTerm) (by decide) (by decide) (by decide)
-    (by decide) predecessorExists
+  audit_rename "IdentidadModulosBetaRCA.lean:106" using Proof.exBErename 2 24 (.succ hbTerm) (by decide) (by decide) (by decide)
+    (by decide) (by decide) (by decide) predecessorExists
   have hz : Proof
       (.eq hbTerm (.add (.lit 1) (.var 24)) :: .lt (.var 24) (.succ hbTerm) :: identityContext)
       (.le (.var 24) hbTerm) :=

@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.InvarianteCRTParcialRCA
 
 /-! M11/T06. Uniform bounds depend only on N,b,P,C,R. Every new inverse
@@ -138,14 +139,14 @@ def pairWitness : Proof inverseΓ pairResult := by
     (.exBI 65 B (.var 65) (by decide) vBound (.hypothesis (by repeat first | exact List.mem_cons_self | apply List.mem_cons_of_mem)))
 
 def pairUniformOpen : Proof pairΓ pairResult := by
-  apply Proof.exBErename 2 60 (.succ N) (by decide) (by decide) (by decide) (by decide) gapProof
-  apply Proof.exBErename 17 61 (.succ b) (by decide) (by decide) (by decide) (by decide)
+  audit_rename "InversosFuturosRCA.lean:141" using Proof.exBErename 2 60 (.succ N) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) gapProof
+  audit_rename "InversosFuturosRCA.lean:142" using Proof.exBErename 17 61 (.succ b) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide)
     (.andR (.andR (hyp : Proof gapΓ _)))
-  apply Proof.exBErename 2 62 (.succ hb) (by decide) (by decide) (by decide) (by decide) predecessor
-  apply Proof.exBErename 32 64 (.succ (.add (.lit 1) (.mul ll n)))
-    (by decide) (by decide) (by decide) (by decide) reverse
-  apply Proof.exBErename 33 65 (.succ (.mul n qq))
-    (by decide) (by decide) (by decide) (by decide) hyp
+  audit_rename "InversosFuturosRCA.lean:144" using Proof.exBErename 2 62 (.succ hb) (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) predecessor
+  audit_rename "InversosFuturosRCA.lean:145" using Proof.exBErename 32 64 (.succ (.add (.lit 1) (.mul ll n)))
+    (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) reverse
+  audit_rename "InversosFuturosRCA.lean:147" using Proof.exBErename 33 65 (.succ (.mul n qq))
+    (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) hyp
   exact pairWitness
 def pairUniform : Proof [] ([0,9,3,18].foldr Formula.allN
     (.imp (MultiploComunUniformeRCA.cm N b) (.imp (.lt k j) (.imp (.le j N) pairResult)))) :=
@@ -209,11 +210,11 @@ def futureWitness : Proof combinedΓ newInverse := by
   exact .andI (positiveProduct u (.var 64) (.andL stored) (.andL pair))
     (combineInverse p n (modulus j b) u (.var 64) v (.var 65) (.andR stored) (.andR pair))
 def futurePoint : Proof pointΓ newInverse := by
-  apply Proof.exBErename 54 66 C (by decide) (by decide) (by decide) (by decide) oldAtJ
-  apply Proof.exBErename 55 67 C (by decide) (by decide) (by decide) (by decide) hyp
-  apply Proof.exBErename 64 64 B (by decide) (by decide) (by decide) (by decide)
+  audit_rename "InversosFuturosRCA.lean:212" using Proof.exBErename 54 66 C (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) oldAtJ
+  audit_rename "InversosFuturosRCA.lean:213" using Proof.exBErename 55 67 C (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) hyp
+  audit_rename "InversosFuturosRCA.lean:214" using Proof.exBE 64 B (by decide) (by decide) (by decide)
     (push (push (push (push pairAtJ))))
-  apply Proof.exBErename 65 65 B (by decide) (by decide) (by decide) (by decide) hyp
+  audit_rename "InversosFuturosRCA.lean:216" using Proof.exBE 65 B (by decide) (by decide) (by decide) hyp
   exact futureWitness
 def futureStepOpen : Proof futureΓ (future (.succ k) nextP b N cap) := by
   apply Proof.allBI 18 (.succ N) (by decide) (by decide)

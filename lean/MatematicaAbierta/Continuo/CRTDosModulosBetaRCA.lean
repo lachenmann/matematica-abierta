@@ -1,3 +1,4 @@
+import MatematicaAbierta.Continuo.AuditoriaInstanciasRenombradoRCA
 import MatematicaAbierta.Continuo.CoprimalidadPositivaRCA
 
 /-! M08 C08/C09: TWO prescribed beta readings, with the inverse certificate
@@ -61,16 +62,16 @@ def eliminateCode : Proof inverseContext result := by
       (.le (specialUpper (.var 33)) (specialUpper majorant)) :=
     leAddLeft (.var 24) (.leMulRight (modulus (.var 0) (.var 4))
       (.leMulRight (.add (.var 24) (modulus (.var 1) (.var 4))) (.ltLe (push hyp))))
-  apply Proof.exBErename 28 34 (.succ (specialUpper (.var 33)))
-    (by decide) (by decide) (by decide) (by decide) crtFromInverse
+  audit_rename "CRTDosModulosBetaRCA.lean:64" using Proof.exBErename 28 34 (.succ (specialUpper (.var 33)))
+    (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) crtFromInverse
   apply Proof.exBI 28 (.succ (specialUpper majorant)) (.var 34) (by decide)
     (.ltLeTrans (push hyp) (succLe (push (push hupper))))
   exact hyp
 
 def specialOpen : Proof [input] result := by
-  apply Proof.exBErename 22 32 (.succ qCandidate) (by decide) (by decide) (by decide)
-    (by decide) inverseFromInput
-  apply Proof.exBErename 23 33 majorant (by decide) (by decide) (by decide) (by decide) hyp
+  audit_rename "CRTDosModulosBetaRCA.lean:71" using Proof.exBErename 22 32 (.succ qCandidate) (by decide) (by decide) (by decide)
+    (by decide) (by decide) (by decide) inverseFromInput
+  audit_rename "CRTDosModulosBetaRCA.lean:73" using Proof.exBErename 23 33 majorant (by decide) (by decide) (by decide) (by decide) (by decide) (by decide) hyp
   exact eliminateCode
 
 /-- r,s are bound FIRST so substituting c,b depending on r,s cannot capture them. -/
