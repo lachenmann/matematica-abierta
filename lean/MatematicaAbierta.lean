@@ -1,3 +1,10 @@
+import MatematicaAbierta.Continuo.RenombradoConjuntosRCA
+import MatematicaAbierta.Continuo.CRTCanalesSeparadosRCA
+import MatematicaAbierta.Continuo.DatosRecodificacionBetaRCA
+import MatematicaAbierta.Continuo.CalculoConjuntosRCA
+import MatematicaAbierta.Continuo.PreservacionRecodificacionRCA
+import MatematicaAbierta.Continuo.RecodificacionNumericaBetaRCA
+import MatematicaAbierta.Continuo.FinitudDatosBetaRCA
 import MatematicaAbierta.Continuo.InversosFuturosRCA
 import MatematicaAbierta.Continuo.ActualizacionCodigoCRTRCA
 import MatematicaAbierta.Continuo.PasoEstadoCRTRCA
