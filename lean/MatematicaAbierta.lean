@@ -1,3 +1,9 @@
+import MatematicaAbierta.Continuo.DiferenciasInternasRCA
+import MatematicaAbierta.Continuo.IdentidadModulosBetaRCA
+import MatematicaAbierta.Continuo.CRTConstructivoDosRCA
+import MatematicaAbierta.Continuo.CoprimalidadPositivaRCA
+import MatematicaAbierta.Continuo.CRTDosModulosBetaRCA
+import MatematicaAbierta.Continuo.ParametroParBetaRCA
 import MatematicaAbierta.Continuo.PreservacionModularBetaRCA
 import MatematicaAbierta.Continuo.DivisionInternaRCA
 import MatematicaAbierta.Continuo.DivisionBetaRCA
