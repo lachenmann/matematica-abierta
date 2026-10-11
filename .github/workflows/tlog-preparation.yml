@@ -1,0 +1,21 @@
+name: TLOG preparation
+on:
+  pull_request:
+    paths:
+      - 'MA-Lean/profiles/tlog.json'
+      - 'MA-Lean/mapeos/TLOG/**'
+      - 'MA-Lean/adapters/tlog_preflight.py'
+      - 'MA-Lean/tests/test_tlog_preflight.py'
+      - '.github/workflows/tlog-preparation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'MA-Lean/mapeos/TLOG/**'
+      - 'MA-Lean/adapters/tlog_preflight.py'
+jobs:
+  preparation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: python3 MA-Lean/adapters/tlog_preflight.py --repo-root .
+      - run: python3 -m unittest discover -s MA-Lean/tests -p 'test_tlog_preflight.py' -v

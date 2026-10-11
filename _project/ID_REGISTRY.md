@@ -9,9 +9,9 @@
 | Artículo | MA-ART-0017 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0202 |
+| Capítulo | MA-BCH-0226 |
 | Curso | MA-CRS-0002 |
-| Libro | MA-BOK-0014 |
+| Libro | MA-BOK-0015 |
 
 ## IDs asignados
 
@@ -372,3 +372,34 @@ C1–C7 conservan sus IDs públicos. C8–C26 usan el siguiente bloque disponibl
 | MA-BCH-0199 | book-chapter | MA-BCH-APM-01-020 | `libros/capitulos/algebra-para-matematicos-capitulo-24-polinomios-operaciones-y-division.md` | published |
 | MA-BCH-0200 | book-chapter | MA-BCH-APM-01-021 | `libros/capitulos/algebra-para-matematicos-capitulo-25-raices-factores-e-irreducibilidad-elemental.md` | published |
 | MA-BCH-0201 | book-chapter | MA-BCH-APM-01-022 | `libros/capitulos/algebra-para-matematicos-capitulo-26-numeros-complejos-y-el-horizonte-de-las-ecuaciones.md` | published |
+
+
+## TLOG — Edición de estudio, 2026-10-11
+
+| ID | Tipo | Título | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BOK-0014 | book | Tratado de lógica | libros/otros/tratado-de-logica/index.qmd | published; Lean pendiente |
+| MA-BCH-0202 | book-chapter | Capítulo 0 — Niveles, lenguajes y sistemas formales | libros/otros/tratado-de-logica/capitulo-00.md | published; TLOG-CH00-0001 |
+| MA-BCH-0203 | book-chapter | Capítulo 1 — Sintaxis proposicional | libros/otros/tratado-de-logica/capitulo-01.md | published; TLOG-CH01-0001 |
+| MA-BCH-0204 | book-chapter | Capítulo 2 — Semántica proposicional | libros/otros/tratado-de-logica/capitulo-02.md | published; TLOG-CH02-0001 |
+| MA-BCH-0205 | book-chapter | Capítulo 3 — Cálculo proposicional | libros/otros/tratado-de-logica/capitulo-03.md | published; TLOG-CH03-0001 |
+| MA-BCH-0206 | book-chapter | Capítulo 4 — Corrección y completitud proposicional | libros/otros/tratado-de-logica/capitulo-04.md | published; TLOG-CH04-0001 |
+| MA-BCH-0207 | book-chapter | Capítulo 5 — Signaturas, términos y fórmulas | libros/otros/tratado-de-logica/capitulo-05.md | published; TLOG-CH05-0001 |
+| MA-BCH-0208 | book-chapter | Capítulo 6 — Variables, sustitución y recursión sintáctica | libros/otros/tratado-de-logica/capitulo-06.md | published; TLOG-CH06-0001 |
+| MA-BCH-0209 | book-chapter | Capítulo 7 — Estructuras, asignaciones e interpretación | libros/otros/tratado-de-logica/capitulo-07.md | published; TLOG-CH07-0001 |
+| MA-BCH-0210 | book-chapter | Capítulo 8 — Satisfacción, verdad y consecuencia | libros/otros/tratado-de-logica/capitulo-08.md | published; TLOG-CH08-0001 |
+| MA-BCH-0211 | book-chapter | Capítulo 9 — Sistemas deductivos y teorías | libros/otros/tratado-de-logica/capitulo-09.md | published; TLOG-CH09-0001 |
+| MA-BCH-0212 | book-chapter | Capítulo 10 — Teorema de corrección | libros/otros/tratado-de-logica/capitulo-10.md | published; TLOG-CH10-0001 |
+| MA-BCH-0213 | book-chapter | Capítulo 11 — Completitud y compacidad | libros/otros/tratado-de-logica/capitulo-11.md | published; TLOG-CH11-0001 |
+| MA-BCH-0214 | book-chapter | Capítulo 12 — El lenguaje de la teoría de conjuntos y los axiomas de ZF | libros/otros/tratado-de-logica/capitulo-12.md | published; TLOG-CH12-0001 |
+| MA-BCH-0215 | book-chapter | Capítulo 13 — Construcciones elementales de conjuntos | libros/otros/tratado-de-logica/capitulo-13.md | published; TLOG-CH13-0001 |
+| MA-BCH-0216 | book-chapter | Capítulo 14 — Relaciones, productos y funciones | libros/otros/tratado-de-logica/capitulo-14.md | published; TLOG-CH14-0001 |
+| MA-BCH-0217 | book-chapter | Capítulo 15 — Equivalencias, cocientes y órdenes | libros/otros/tratado-de-logica/capitulo-15.md | published; TLOG-CH15-0001 |
+| MA-BCH-0218 | book-chapter | Capítulo 16 — Naturales, inducción, recursión y secuencias finitas | libros/otros/tratado-de-logica/capitulo-16.md | published; TLOG-CH16-0001 |
+| MA-BCH-0219 | book-chapter | Capítulo 17 — Computabilidad mínima para la metamatemática | libros/otros/tratado-de-logica/capitulo-17.md | published; TLOG-CH17-0001 |
+| MA-BCH-0220 | book-chapter | Capítulo 18 — Codificación efectiva de expresiones y derivaciones | libros/otros/tratado-de-logica/capitulo-18.md | published; TLOG-CH18-0001 |
+| MA-BCH-0221 | book-chapter | Capítulo 19 — Representabilidad en aritmética | libros/otros/tratado-de-logica/capitulo-19.md | published; TLOG-CH19-0001 |
+| MA-BCH-0222 | book-chapter | Capítulo 20 — Diagonalización y lema diagonal | libros/otros/tratado-de-logica/capitulo-20.md | published; TLOG-CH20-0001 |
+| MA-BCH-0223 | book-chapter | Capítulo 21 — Primer teorema de incompletitud | libros/otros/tratado-de-logica/capitulo-21.md | published; TLOG-CH21-0001 |
+| MA-BCH-0224 | book-chapter | Capítulo 22 — Segundo teorema de incompletitud | libros/otros/tratado-de-logica/capitulo-22.md | published; TLOG-CH22-0001 |
+| MA-BCH-0225 | book-chapter | Capítulo 23 — Indecidibilidad, límites y frontera con GAS | libros/otros/tratado-de-logica/capitulo-23.md | published; TLOG-CH23-0001 |
