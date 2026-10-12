@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C06
-source-sha256: 2df0efc20be84084ff22f3a6ca094ea3a4d2d010b824d6928648fbcd2bf0477e
+source-sha256: bb716ba5a324be7214a23e715a2a30dbd5c7c6c91e851c8551d4321c04f7a8a6
 content-id: MA-BCH-0337
 content-type: book-chapter
 related:
@@ -178,6 +178,18 @@ H(x)=\int_0^x e^{-t^2}\,dt
 $$
 
 es derivable y $H'(x)=e^{-x^2}$, aunque **no hayamos hallado una expresión cerrada** para $H$. No hace falta demostrar aquí si esa primitiva admite o no una expresión mediante funciones elementales: la existencia y su derivada ya son consecuencias rigurosas del teorema.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Barrow, Newton y Leibniz: tangentes y cuadraturas se encuentran"}
+
+*Lectura opcional.*
+
+Barrow estudió geométricamente vínculos entre tangentes y cuadraturas. Newton relacionó magnitudes fluyentes con sus fluxiones, y Leibniz articuló diferenciación y sumación en un lenguaje simbólico. Eran caminos diferentes hacia una conexión decisiva: reconstruir una magnitud a partir de su cambio y obtener el cambio de una acumulación.
+
+La primera parte del Teorema Fundamental hace preciso uno de esos sentidos dentro del marco del libro. La continuidad de la función en el punto es lo que convierte el promedio sobre un intervalo pequeño en su valor local. Reconocer antecedentes históricos no elimina esa hipótesis ni convierte las construcciones antiguas en la integral moderna.
+
+**Fuente:** [Leibniz, De geometria recondita (1686), traducción de Thiago Dourado; notas históricas del capítulo 6](https://www.rbhm.org.br/index.php/RBHM/article/view/379).
+
+:::
 
 ## 6.5. Qué sucede si la función no es continua
 

@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C05
-source-sha256: eb9b2077d194cc43ecd344c25c0775abc0361c5c8bd76a71134b633a42825bb0
+source-sha256: 10148aacdaa5f9cb8b5d2fcc0ca63e765990e5380954af2944b24d5f27d0cabf
 content-id: MA-BCH-0336
 content-type: book-chapter
 related:
@@ -261,6 +261,18 @@ $$
 Así $h$ es integrable. Además, dado $\varepsilon>0$ y particiones cada vez más finas, toda suma etiquetada satisface $|S(h;P,\xi)|\le2BN\|P\|\to0$ porque sólo los intervalos que contienen $F$ pueden aportar un valor distinto de cero. Por el Teorema 5.3, su integral es cero. $\square$
 
 La última afirmación es **finita**, no una autorización para modificar una función en un conjunto numerable arbitrario. Que algo sea verdadero para cinco puntos no demuestra que lo sea para infinitos puntos, por dispersos que parezcan.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Riemann y Darboux: la integral también necesita hipótesis"}
+
+*Lectura opcional.*
+
+El análisis del siglo XIX amplió la pregunta por la integral: además de calcular áreas familiares, había que decidir qué funciones podían integrarse. La memoria de Riemann sobre series trigonométricas y el Mémoire sur les fonctions discontinues de Darboux (1875) son hitos de ese cambio de problema.
+
+Las sumas inferiores y superiores de este capítulo permiten ver la dificultad: no basta con dibujar muchos rectángulos; su diferencia debe hacerse arbitrariamente pequeña. El criterio recién demostrado es nuestra formulación contemporánea. Las funciones discontinuas que siguen mostrarán por qué la existencia de la integral no puede deducirse de una imagen sugestiva.
+
+**Fuente:** [Darboux, Mémoire sur les fonctions discontinues (1875); notas históricas del capítulo 5](https://www.numdam.org/articles/10.24033/asens.122/).
+
+:::
 
 ## 5.6. Dos funciones que revelan los límites del concepto
 

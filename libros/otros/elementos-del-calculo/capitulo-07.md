@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C07
-source-sha256: eed6cdffac3800a2795e61e07ba650c6c78a8e4ab2d69fe29a97637dac2e5da6
+source-sha256: 8cae43fcd07ca344d7f40d4aa8dd0a757c55db60310f7415ee2d173934861587
 content-id: MA-BCH-0338
 content-type: book-chapter
 related:
@@ -171,6 +171,18 @@ $$
 **Demostración.** Es la igualdad de derivadas $(uv)'=u'v+uv'$ junto con la unicidad de primitivas salvo constante en intervalos. $\square$
 
 La aplicación no consiste en «pasar una derivada al otro factor» sin costo: intercambia un integral por otro. Su valor depende de que el segundo sea más fácil, o de que el mismo integral aparezca otra vez y se pueda despejar algebraicamente.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Una notación que hace visibles operaciones inversas"}
+
+*Lectura opcional.*
+
+En su artículo de 1686 sobre geometría y análisis de indivisibles, Leibniz expuso la relación recíproca entre diferenciación y sumación. La escritura integral ayudó a conservar a la vista la operación inversa y la magnitud respecto de la cual se trabajaba.
+
+Integrar por partes ilustra aquí esa fuerza organizadora: la regla del producto, leída a través del Teorema Fundamental, se convierte en una regla de integración. La sustitución hace algo semejante con la cadena. Esa lectura es una explicación moderna del parentesco entre operaciones; no afirma que Leibniz escribiera exactamente los enunciados con extremos e hipótesis que acabamos de demostrar.
+
+**Fuente:** [Leibniz, De geometria recondita (1686), traducción de Thiago Dourado](https://www.rbhm.org.br/index.php/RBHM/article/view/379).
+
+:::
 
 ## 7.5. Dos integraciones por partes reveladoras
 

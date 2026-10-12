@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C02
-source-sha256: beca3ec5832a098e115c688dc8f63406e9e2366ef6ea2a3edb6f9eecede5ccde
+source-sha256: a0af5d516698d693d8da098328d5e7b065fb696f77f794d29c2b1905f59cdbdb
 content-id: MA-BCH-0333
 content-type: book-chapter
 related:
@@ -111,6 +111,18 @@ $$
 
 Para un exponente entero negativo, $x^{-n}=1/x^n$ se estudia en $x\ne0$; la regla del cociente produce $(x^{-n})'=-n x^{-n-1}$. En ningún caso una fórmula justifica evaluar una función fuera de su dominio.
 
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Leibniz: un cálculo de diferencias"}
+
+*Lectura opcional.*
+
+El artículo Nova methodus, publicado por Leibniz en Acta Eruditorum en 1684, presentó un cálculo diferencial para problemas de tangentes, máximos y mínimos. Su importancia no fue sólo reunir resultados: una notación para las diferencias permitía tratar sistemáticamente sumas, productos, cocientes y potencias.
+
+Las reglas que acabamos de demostrar muestran esa ventaja. Una expresión complicada puede descomponerse en operaciones conocidas. Pero la eficacia de la escritura y la validez de una regla son cuestiones distintas: aquí cada regla se sostiene en una prueba y mantiene explícitas sus condiciones de dominio.
+
+**Fuente:** [Leibniz, Nova methodus (1684), traducción de Thiago Dourado, pp. 47–49](https://www.rbhm.org.br/index.php/RBHM/article/download/377/340).
+
+:::
+
 ## 2.3. La composición y la regla de la cadena
 
 El problema cambia cuando una función se evalúa **dentro de otra**. Si una magnitud depende de una segunda y ésta depende de una tercera, ¿cómo se combinan sus variaciones locales?
@@ -147,6 +159,18 @@ $$
 Un contraste útil: $f(t)=|t|$ no es derivable en $0$, pero $f(g(x))$ con $g(x)=x^2$ coincide con $x^2$ y **sí** es derivable en $0$. Las hipótesis de la regla de la cadena son suficientes, no condiciones necesarias para cada composición particular.
 
 **Definición 2.2 (`EDC-C02-DEF-002`).** Una expresión de la forma $f\circ g$, con dominio efectivo $\{x\in\operatorname{dom}g:g(x)\in\operatorname{dom}f\}$, es una **composición admisible**. El dominio efectivo debe determinarse *antes* de derivar. Así, $\sqrt{1-x^2}$ está definida sobre $[-1,1]$, pero no tendrá derivada real bilateral en los extremos de ese intervalo.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Por qué seguimos escribiendo como Leibniz"}
+
+*Lectura opcional.*
+
+La escritura $dy/dx$ conserva la idea leibniziana de comparar diferencias de magnitudes relacionadas. Una de sus ventajas pedagógicas aparece en la regla de la cadena: $dy/dx=(dy/du)(du/dx)$ recuerda que el cambio de una magnitud depende del de otra intermedia.
+
+En este libro, esa igualdad expresa el teorema que acabamos de probar; no autoriza por sí sola a cancelar símbolos como si fueran números ordinarios. De hecho, la demostración sigue siendo válida cuando el incremento de la función interior se anula. La notación sugiere la estructura de la relación, mientras que la prueba determina cuándo podemos usarla.
+
+**Fuente:** [L’Hôpital, Analyse des infiniment petits (1696), sección I, advertencia sobre la característica d](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf).
+
+:::
 
 ## 2.4. La derivada de la función inversa
 

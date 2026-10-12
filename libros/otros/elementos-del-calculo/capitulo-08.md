@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C08
-source-sha256: fd2b64bd790b320062dbac75aa6cadd0b7b2eb2cbfdfcb0d882383d060c8ee81
+source-sha256: 8478a210d7385ae884b5512b6b9c331ab28d018797bb8a8368a8f2f7a170306f
 content-id: MA-BCH-0339
 content-type: book-chapter
 related:
@@ -103,6 +103,18 @@ $$
 
 La función $1/n$ **tiende a cero**, pero su serie diverge. Éste es el contraejemplo preciso que faltaba al Lema 8.1. La agrupación por potencias de dos también permite explicar históricamente algunos argumentos medievales sobre la armónica, sin identificar automáticamente la prueba moderna con un manuscrito particular; véanse las [notas H1](capitulo-08-notas.html).
 
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Jakob y Johann Bernoulli ante la serie armónica"}
+
+*Lectura opcional.*
+
+Jakob Bernoulli trató la serie armónica en su Tractatus de seriebus infinitis. En la sección XVI atribuyó a su hermano Johann un argumento de divergencia. El pasaje recuerda que «los Bernoulli» eran personas distintas, con contribuciones que conviene identificar en lugar de fundirlas en un solo nombre.
+
+La sorpresa matemática es la que acabamos de probar: términos cada vez menores pueden producir sumas parciales sin cota. Nuestro argumento por bloques es una prueba moderna autónoma; el razonamiento reproducido en el tratado utiliza otras manipulaciones. La historia enriquece la pregunta, pero no sustituye el control de sumas finitas y límites.
+
+**Fuente:** [Jakob Bernoulli, Tractatus, § XVI, facsímil reproducido por William Dunham, The Bernoullis and the Harmonic Series (1987), pp. 21–22](https://www.ms.uky.edu/~dhje223/Bernoullis.pdf).
+
+:::
+
 ## 8.5. Convergencia absoluta, alternancia y reordenación
 
 **Definición 8.2 (convergencia absoluta y condicional; `EDC-C08-DEF-002`).** La serie $\sum a_n$ converge *absolutamente* si converge $\sum|a_n|$. Es *condicionalmente convergente* si $\sum a_n$ converge pero $\sum|a_n|$ no.
@@ -139,6 +151,18 @@ La serie armónica alternante $1-1/2+1/3-\cdots$ converge por este teorema, pero
 **Demostración.** En el primer caso con $L<1$, elegimos $q$ con $L<q<1$; a partir de un índice $N$ se cumple $|a_{n+1}|\le q|a_n|$, por lo que $|a_{N+k}|\le|a_N|q^k$. Convergencia absoluta resulta por comparación geométrica. Si $L>1$, hay $q>1$ con $|a_{n+1}|\ge q|a_n|$ en una cola y el término no tiende a cero. Para la raíz, si $L<1$ tomamos $L<q<1$, de modo que $|a_n|\le q^n$ eventualmente; si $L>1$, $|a_n|\ge q^n$ para algún $q>1$ eventualmente. Cuando $L=1$, las series $\sum 1/n$ y $\sum1/n^2$ poseen ambas razones consecutivas y raíces en el límite iguales a uno, pero divergen y convergen respectivamente. $\square$
 
 La comparación geométrica es el motor de ambos criterios. Un cociente con límite uno **no** debe confundirse con prueba de convergencia; la información disponible resulta demasiado gruesa para distinguir las potencias $n^{-1}$ y $n^{-2}$.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cauchy: una suma infinita requiere condiciones"}
+
+*Lectura opcional.*
+
+En el capítulo VI del Cours d’analyse (1821), Cauchy estudió la convergencia antes de operar con series. Allí trató, entre otros procedimientos, los criterios basados en raíces y cocientes que acabamos de desarrollar.
+
+La conexión explica una exigencia del capítulo: escribir una sucesión de términos no garantiza que tenga una suma, ni que toda transformación conserve su valor. Nuestros criterios proporcionan condiciones precisas y dejan un caso sin decidir cuando el límite correspondiente es uno. La eficacia de una fórmula debe ir acompañada por el examen de su alcance.
+
+**Fuente:** [Cauchy, Cours d’analyse (1821), capítulo VI, § III](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier).
+
+:::
 
 ## 8.7. Una serie cuyos términos dependen de $x$
 

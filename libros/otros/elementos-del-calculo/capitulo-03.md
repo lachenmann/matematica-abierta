@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C03
-source-sha256: b385d33de6377b69d31e22ff56c5d8de72f54f7d0706b13be30c571223123d2c
+source-sha256: af07a3c1632c89d83b91d126973e7ac06e5bf0cffe84363dc096409951cdda17
 content-id: MA-BCH-0334
 content-type: book-chapter
 related:
@@ -143,6 +143,18 @@ Para $f(x)=x^2$ entre $a=-1$ y $b=2$, la pendiente media es $(4-1)/(2-(-1))=1$. 
 
 El valor medio enlaza dos niveles que los capítulos anteriores habían mantenido separados: no toda información local se convierte automáticamente en conclusión global, pero las hipótesis de continuidad y derivabilidad sí permiten transportar la derivada hacia la diferencia finita de los valores de una función.
 
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Los nombres de los teoremas no son sus actas de nacimiento"}
+
+*Lectura opcional.*
+
+Fermat, Rolle, Lagrange y Cauchy aparecen asociados a resultados sobre extremos y variación, pero los enunciados que usamos hoy son el producto de una larga reorganización del análisis. Un método antiguo de tangentes no equivale automáticamente a nuestro teorema sobre funciones derivables en un intervalo.
+
+La sucesión Fermat–Rolle–valor medio que acabamos de recorrer es una organización lógica de las pruebas. Leerla como una cronología exacta daría una imagen engañosa: se modificaron tanto las preguntas como las hipótesis y el concepto de función. Conviene reconocer la genealogía de los problemas sin atribuir a cada autor nuestra formulación literal.
+
+**Fuente:** [Notas históricas del capítulo 3, apartados H1–H3](capitulo-03-notas.html).
+
+:::
+
 ## 3.5. Monotonía, constancia y unicidad
 
 **Definición 3.3 (`EDC-C03-DEF-003`).** Una función $f:I\to\mathbb R$ es **no decreciente** cuando $x<y$ implica $f(x)\le f(y)$; es **estrictamente creciente** si la conclusión es $f(x)<f(y)$. Las definiciones de no creciente y estrictamente decreciente invierten esas comparaciones.
@@ -204,6 +216,18 @@ $$
 **Demostración.** La monotonía estricta sigue del Teorema 3.4. Si $u=f(x)$ y $v=f(y)$, con $x<y$, el valor medio da $v-u=f'(c)(y-x)\ge m(y-x)$. Reordenamos y obtenemos la desigualdad, que es simétrica en $u,v$. $\square$
 
 En este capítulo las cotas de derivadas son herramientas de prueba. No sustituimos las hipótesis por un dibujo ni usamos reglas globales sobre funciones que sólo sabemos derivables en un punto.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — L’Hôpital y Johann Bernoulli: un tratado que difundió el cálculo"}
+
+*Lectura opcional.*
+
+En 1696 apareció Analyse des infiniment petits pour l’intelligence des lignes courbes, de L’Hôpital. El tratado organizaba el cálculo diferencial alrededor de tangentes, extremos, puntos de inflexión y otros problemas geométricos. En su prefacio, L’Hôpital reconoció expresamente su deuda con Leibniz y con los Bernoulli, en particular con Johann.
+
+La célebre regla que lleva el nombre de L’Hôpital pertenece a esa tradición de estudiar cocientes que presentan indeterminaciones. Su nombre no debe borrar la contribución de Johann Bernoulli. Tampoco permite reemplazar sin condiciones un cociente de funciones por uno de derivadas: el valor medio prepara herramientas para ese problema, pero la regla requiere un enunciado y una prueba propios.
+
+**Fuente:** [L’Hôpital, Analyse des infiniment petits (1696), prefacio y sección IX](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf).
+
+:::
 
 ## 3.7. Aproximación lineal y control del error
 

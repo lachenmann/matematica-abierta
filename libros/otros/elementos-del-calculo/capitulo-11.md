@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C11
-source-sha256: bf354b0ee90c341120c0b29a44573e0d2ed5d5a5632a2d86530cf5e93aa83734
+source-sha256: 3c966b9760478bb78f3b2ef4bfaf7f3daa5a10787afcdedee176a9efb0366c14
 content-id: MA-BCH-0342
 content-type: book-chapter
 related:
@@ -208,6 +208,18 @@ Los siglos XVI y XVII intensificaron la investigación de tangentes, máximos, i
 Newton organizó parte de su trabajo en torno a magnitudes que *fluyen* y sus tasas, denominadas *fluxiones*. Leibniz elaboró una notación diferencial e integral con fuerte orientación operatoria. La relación inversa entre derivar y acumular figura en ambas genealogías, pero nuestra demostración del Teorema Fundamental para funciones continuas sobre un intervalo real es una **reformulación contemporánea**. No debemos adjudicar a ninguno de estos matemáticos la formulación literal en términos de $\sup_PL$, $\inf_PU$ o $\varepsilon$–$\delta$.
 
 La controversia de prioridad entre Newton y Leibniz ha recibido numerosas reconstrucciones historiográficas; la finalidad de C11 no es resolverla mediante un criterio arbitrario de primacía, sino reconocer la diferencia entre creación de procedimientos, manuscritos, circulación, publicación, notación y posterior rigor. Lo mismo ocurre con el nombre «Taylor» para series que poseen antecedentes en tradiciones diferentes. En el arco de este libro, la **unidad conceptual demostrada** proviene del Teorema Fundamental, independientemente de la prioridad histórica de una notación.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Una historia de problemas, manuscritos y publicaciones"}
+
+*Lectura opcional.*
+
+La historia del cálculo no cabe en un único año ni en una lista de inventores. Los problemas de cuadratura y tangencia tienen antecedentes antiguos; los siglos XVI y XVII aportaron nuevos métodos y relaciones con el movimiento; Newton y Leibniz construyeron síntesis de gran alcance. El desarrollo de reglas, series y aplicaciones continuó mediante tratados, correspondencia y controversias.
+
+Por eso conviene separar la fecha de una publicación, la de un manuscrito y una afirmación retrospectiva de prioridad. También conviene leer las tradiciones china e india consideradas en la sección anterior por sus propios problemas, sin suponer una transmisión que no hayamos documentado. Las notas históricas del capítulo amplían este recorrido y sus fuentes.
+
+**Fuente:** [Notas históricas del capítulo 11, apartados H1–H8](capitulo-11-notas.html).
+
+:::
 
 ## 11.10. El rigor del siglo XIX no consistió en cambiar nombres
 

@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C01
-source-sha256: cca4f547560e84a718164ccd1652696d7c3df82e8618946bdc1164a62b25abc3
+source-sha256: 42da0780a408964e4227e7bdd4d56887a31363bb992599bb32ab9b0c867f5c9d
 content-id: MA-BCH-0332
 content-type: book-chapter
 related:
@@ -140,6 +140,18 @@ con $\delta\le r$ si es necesario. El orden de los cuantificadores impide escoge
 **Demostración.** Si $L$ y $M$ satisfacen la definición, ambos son límites finitos de la misma función $h\mapsto Q_f(a,h)$ en $h=0$, que es un punto de acumulación de su dominio perforado. La unicidad del límite funcional de C00 obliga a $L=M$. $\square$
 
 Al escribir $f'(a)$ no debe confundirse el número obtenido en $a$ con la **función derivada** $f'$ que eventualmente se obtiene cuando repetimos el procedimiento en distintos puntos. Es perfectamente posible que una función sea derivable sólo en una parte de su dominio.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Newton: magnitudes que fluyen"}
+
+*Lectura opcional.*
+
+Newton pensaba las magnitudes variables como cantidades generadas por movimiento continuo. Las llamaba fluentes, y a sus velocidades de variación, fluxiones. Así, el problema de una tangente podía ponerse en relación con el de una velocidad: comparar cómo cambian dos magnitudes mientras transcurre un mismo tiempo.
+
+Esto ayuda a leer la derivada recién definida: una razón de cambio media se aproxima a una razón instantánea. La conexión es conceptual; nuestra prueba por límites usa un marco moderno. El testimonio retrospectivo de Newton sobre sus métodos se escribió en el contexto de la disputa de prioridad con Leibniz y exige esa reserva al fechar descubrimientos.
+
+**Fuente:** [Newton, History of the Method of Fluxions, transcripción del Newton Project](https://newtonproject.ox.ac.uk/view/texts/normalized/NATP00356).
+
+:::
 
 ## 1.5. Primeras derivadas obtenidas sin reglas memorizadas
 

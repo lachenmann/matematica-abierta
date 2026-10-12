@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C10
-source-sha256: 7213233b7af3857b0fe4e5b3682b2a96f374a52eaa980a06e5646933dcb8aea7
+source-sha256: 5933bbe6b916465c197a476b15835270784ff1ab9c21ba8af64a4994d771aedd
 content-id: MA-BCH-0341
 content-type: book-chapter
 related:
@@ -79,6 +79,18 @@ $$
 **Demostración.** La composición del integrando es continua. La implicación directa es C06 aplicado a $y'$. En la inversa, derivamos la acumulación por la primera parte de C06. En un intervalo cerrado basta interpretar derivadas en puntos interiores. $\square$
 
 La forma integral es la herramienta de comparación que necesitaremos más adelante. **Importante:** esta equivalencia no demuestra existencia para una función arbitraria $F$; empieza suponiendo que la función $y$ del enunciado está disponible.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — El problema inverso de tangentes"}
+
+*Lectura opcional.*
+
+Antes de convertirse en una teoría general de ecuaciones diferenciales, reconstruir una curva a partir de relaciones entre sus tangentes era un problema geométrico concreto. L’Hôpital describió el cálculo integral como una operación que remonta de las diferencias a las magnitudes, y vinculó ese programa con rectificaciones, cuadraturas y centros de gravedad.
+
+Nuestra incógnita es ahora una función cuya derivada satisface una relación dada. La semejanza histórica ayuda a entender por qué derivación e integración se necesitan mutuamente. Sin embargo, hallar una fórmula candidata no resuelve todos los problemas: hay que verificarla, precisar su intervalo y estudiar qué determina el dato inicial.
+
+**Fuente:** [L’Hôpital, Analyse des infiniment petits (1696), prefacio, pasaje sobre el cálculo integral](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf).
+
+:::
 
 ## 10.3. Crecimiento y decaimiento proporcionales
 

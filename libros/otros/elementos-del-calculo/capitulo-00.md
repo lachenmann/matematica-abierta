@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C00
-source-sha256: 3a7cdad92b8003d3236c478eee1a3d93a32dcd92270a8fc3352b37dfb43a2ac7
+source-sha256: 383a3232fcf747ba0a2f565c2a5483e42d2e49c430eb06aec43a43f81b0aef67
 content-id: MA-BCH-0331
 content-type: book-chapter
 related:
@@ -267,6 +267,18 @@ La continuidad sobre $[a,b]$ exige continuidad relativa en cada punto del interv
 Estas reglas permiten demostrar sin cálculo diferencial que los polinomios son continuos en toda la recta y las funciones racionales son continuas en los puntos de su dominio.
 
 **Repertorio que encontraremos después.** Las potencias $x^m$ con $m\in\mathbb N$ son polinomios y su continuidad ya está justificada aquí. En cambio, al escribir $\sqrt{x}$ hay que exigir $x\ge0$, al escribir $\ln x$ hay que exigir $x>0$, y al escribir $x^r$ para $r\in\mathbb R$ arbitrario la base positiva evita problemas de definición. Las funciones $\exp x$, $\sin x$ y $\cos x$ se consideran en la recta real, pero no se empleará en este capítulo su continuidad como premisa no demostrada. Sus construcciones y los límites específicos que justifican sus reglas de derivación se presentarán en C02 o se reconstruirán explícitamente cuando el argumento los necesite. Distinguir **dominio**, **valor** y **comportamiento límite** es parte del método, no un detalle de notación.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cauchy: precisar qué significa acercarse"}
+
+*Lectura opcional.*
+
+En el Cours d’analyse (1821), Cauchy hizo de los límites, la continuidad y la convergencia asuntos centrales de la enseñanza del análisis. Su introducción insiste en determinar las condiciones bajo las cuales las fórmulas son válidas. Conservaba, sin embargo, un lenguaje de cantidades variables e infinitamente pequeñas que no coincide palabra por palabra con nuestras definiciones.
+
+El vínculo con esta sección es metodológico: «acercarse» debe tener un significado que permita justificar una conclusión. La definición actual que acabamos de usar pertenece al desarrollo posterior del análisis; no es una transcripción del vocabulario de Cauchy.
+
+**Fuente:** [Cauchy, Cours d’analyse (1821), introducción y capítulo II](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier).
+
+:::
 
 ## 0.5. Dos teoremas que hacen posible el cálculo
 
