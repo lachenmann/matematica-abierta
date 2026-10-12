@@ -21,8 +21,18 @@ const sample = new Set(['ANM-C00.md','ANM-C03_SOLUCIONES.md','ANM-C04_MICROCONTR
    const math=await page.locator('main .math').count();
    if(math){
     await page.waitForFunction(()=>window.MathJax && window.MathJax.startup && window.MathJax.startup.promise,null,{timeout:90000});
-    await page.evaluate(async()=>{await MathJax.startup.promise;if(MathJax.whenReady)await MathJax.whenReady(()=>{});});
-    await page.waitForFunction(()=>document.querySelectorAll('main mjx-container').length>=document.querySelectorAll('main .math').length,null,{timeout:90000});
+    await page.evaluate(async()=>{await MathJax.startup.promise;if(MathJax.typesetPromise)await MathJax.typesetPromise([document.querySelector('main')]);if(MathJax.whenReady)await MathJax.whenReady(()=>{});});
+    const diagnostic=await page.evaluate(()=>({
+     total:document.querySelectorAll('main .math').length,
+     spans:document.querySelectorAll('main span.math').length,
+     rendered:document.querySelectorAll('main mjx-container').length,
+     missing:[...document.querySelectorAll('main span.math')].filter(x=>!x.querySelector('mjx-container')).slice(0,20).map(x=>({tag:x.tagName,text:x.textContent,html:x.outerHTML.slice(0,1500)})),
+     errors:[...document.querySelectorAll('main mjx-merror,main [data-mjx-error]')].map(x=>x.textContent),
+     config:MathJax.config?.loader
+    }));
+    fs.writeFileSync(path.join(out,item.source.replace('.md','')+'-math-diagnostic.json'),JSON.stringify(diagnostic,null,2));
+    console.log('Math diagnostics',item.source,diagnostic.total,diagnostic.spans,diagnostic.rendered,diagnostic.missing.length);
+    if(diagnostic.missing.length)throw Error('Unrendered math: '+JSON.stringify(diagnostic));
    }
    const result=await page.evaluate(()=>({
     math:document.querySelectorAll('main .math').length,
