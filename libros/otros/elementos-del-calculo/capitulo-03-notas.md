@@ -37,6 +37,8 @@ La búsqueda de máximos y mínimos mediante operaciones algebraicas tiene en Pi
 **Fuente secundaria localizada y consultada por su contenido público:** Kenneth M. Monks, «Fermat’s Method for Finding Maxima and Minima: A Mini-Primary Source Project for Calculus 1 Students», *Convergence*, Mathematical Association of America, febrero de 2023, DOI `10.4169/convergence20230201`, [Consultar fuente](https://old.maa.org/press/periodicals/convergence/fermat-s-method-for-finding-maxima-and-minima-a-mini-primary-source-project-for-calculus-1-students) . La ficha presenta un proyecto de lectura sobre Fermat y su desacuerdo con Descartes. El texto visible contiene una traducción de una comunicación de Fermat enviada a Descartes por mediación de Mersenne en 1638, con localizador atribuido a una edición de escritos de Fermat de 1636–1642, pp. 133–134. **No** se ha cotejado dicha edición primaria, por lo que la localización de páginas se conserva sólo como referencia de la fuente secundaria.
 
 
+La demostración con cocientes laterales de §3.2 pertenece íntegramente a EDC.
+
 ## H2. Michel Rolle: teoría algebraica de ecuaciones y resistencia a infinitésimos
 
 La biografía de MacTutor sitúa el resultado asociado a Rolle en su obra *Démonstration d'une Méthode pour resoudre les Egalitez de tous les degrez* (1691), vinculada con un método de «cascadas» de ecuaciones polinómicas. Señala que el nombre posterior «teorema de Rolle» fue empleado por Giusto Bellavitis en 1846. El contexto **no** era todavía el teorema general moderno para toda función continua en $[a,b]$ y derivable en $(a,b)$ que se demuestra en §3.3.

@@ -56,6 +56,8 @@ El trabajo de habilitación de Riemann sobre la representación de funciones med
 - *MAA Reviews*, [reseña de *Bernhard Riemann, 1826–1866*](https://old.maa.org/node/107984), pasaje sobre la habilitación de 1854 y publicación póstuma.
 
 
+La teoría de C05 es una demostración matemática nueva en notación actual, no una traducción de su habilitación.
+
 ## H4. Gaston Darboux, 1875: sumas superiores e inferiores
 
 La conexión histórica más directa con la estructura del capítulo es el trabajo de **Gaston Darboux**, *Mémoire sur les fonctions discontinues*, publicado en 1875. La presentación por sumas inferiores y superiores y su convergencia común ofrece el criterio que hoy llamamos de Riemann–Darboux. El nombre doble reconoce una genealogía, no la afirmación de que Riemann y Darboux redactaron la misma prueba en el mismo lenguaje.

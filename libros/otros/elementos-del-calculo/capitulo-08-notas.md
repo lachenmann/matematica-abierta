@@ -37,6 +37,8 @@ La demostración por agrupaciones sucesivas en bloques crecientes proporciona un
 **Fuente historiográfica y pedagógica localizada y con texto accesible:** Jeff Babb, «Mathematical Concepts and Proofs from Nicole Oresme: Using the History of Calculus to Teach Mathematics», *Science & Education* **14** (2005), 443–456, DOI [10.1007/s11191-004-7937-y](https://doi.org/10.1007/s11191-004-7937-y). El registro abierto en [ResearchGate](https://www.researchgate.net/publication/260263038_Mathematical_Concepts_and_Proofs_from_Nicole_Oresme_Using_the_History_of_Calculus_to_Teach_Mathematics) incluye título, resumen y un pasaje sobre la divergencia de la armónica, con reconstrucción pedagógica por bloques. La edición primaria de Oresme no fue cotejada.
 
 
+El argumento de la Proposición 8.1 es una prueba moderna autónoma.
+
 ## H2. Series en el cálculo de Newton y Leibniz
 
 Durante los siglos XVII y XVIII, las expansiones infinitas se utilizaron para obtener cuadraturas, aproximaciones y representaciones de funciones. El tránsito entre expresiones algebraicas finitas y procedimientos infinitos no obedecía aún a una teoría única de convergencia; en particular, sería anacrónico atribuir a Newton el Teorema 8.9 formulado mediante una cota uniforme local de restos.

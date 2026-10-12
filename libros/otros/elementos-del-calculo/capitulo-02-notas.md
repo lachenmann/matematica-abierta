@@ -39,6 +39,8 @@ Este expediente acompaña [el capítulo 2](capitulo-02.html), pero no sustituye 
 **Fuente contextual leída:** MacTutor, [«Calculus history — The rise of calculus»](https://mathshistory.st-andrews.ac.uk/HistTopics/The_rise_of_calculus/), pasajes dedicados a las maneras distintas en que Newton y Leibniz concibieron sus procedimientos. Este contexto no certifica que una expresión puntual de nuestro capítulo fuera escrita originalmente por ninguno de ellos.
 
 
+Cualquier análisis filológico de la formulación original de la regla de la cadena necesitará fuente primaria y localizador. La prueba de §2.3 es enteramente moderna y propia.
+
 ## H2. La marca de prima y la diferenciación de funciones
 
 La notación $f'(x)$, particularmente útil para ver a la derivada como **función derivada**, no es una notación que debamos atribuir sin examen a Newton. La cronología de MacTutor la vincula con Joseph-Louis Lagrange y documenta usos de marcas primas en obras y memorias suyas del último tercio del siglo XVIII, con aparición de expresiones próximas a las actuales en ediciones posteriores.
@@ -56,6 +58,7 @@ Los logaritmos surgieron históricamente en contextos de cálculo numérico, tab
 
 **Complemento leído:** [«Logarithms: A 'Great Tale' for Use in the Classroom»](https://old.maa.org/press/periodicals/convergence/logarithms-the-early-history-of-a-familiar-function-logarithms-a-great-tale-for-use-in-the-classroom), de las mismas autoras, sección sobre el vínculo entre relaciones logarítmicas, tablas y cálculo astronómico.
 
+No se atribuye a Napier ni a Bürgi la igualdad moderna $(\ln x)'=1/x$ como si fuera una ecuación escrita en su propia notación.
 
 ## H4. La base natural y la letra e
 
@@ -63,6 +66,8 @@ Nuestro símbolo $e=\sum_{n\ge0}1/n!$ representa una definición matemáticament
 
 **Fuente secundaria leída:** MacTutor, [«Earliest Uses of Symbols for Constants»](https://mathshistory.st-andrews.ac.uk/Miller/mathsym/constants/), apartado **The base of natural logarithms**. La ficha documenta el uso de la letra $e$ por Euler en un manuscrito situado hacia 1727–1728 y distingue el conocimiento anterior de la constante de la elección posterior de la letra.
 
+
+No extrapolamos la fecha de una grafía a la invención de todas las propiedades de la función exponencial.
 
 ## H5. Funciones trigonométricas, radianes y estabilización de símbolos
 
