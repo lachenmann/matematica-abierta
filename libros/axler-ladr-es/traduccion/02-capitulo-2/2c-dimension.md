@@ -1,0 +1,430 @@
+# 2C · Dimensión
+
+**Estado:** `COTEJADO`  
+**Fuente:** Sheldon Axler, *Linear Algebra Done Right*, 4.ª ed., PDF oficial de 16-08-2026, pp. 44–50.  
+**Licencia:** adaptación/traducción no oficial bajo CC BY-NC 4.0.  
+**Control de erratas:** la errata oficial vigente no registra correcciones específicas para las pp. 44–50.
+
+> [TRAD] Traducción de trabajo de Matemática Abierta. Se preservan numeración, fórmulas y estructura lógica.
+
+Aunque hemos estado trabajando con espacios vectoriales de dimensión finita, todavía no hemos definido la dimensión de uno de estos espacios. ¿Cómo debería definirse?
+
+Una definición razonable debería hacer que la dimensión de $\mathbf F^n$ fuera $n$. Obsérvese que la base estándar
+
+$$
+(1,0,\ldots,0),(0,1,0,\ldots,0),\ldots,(0,\ldots,0,1)
+$$
+
+de $\mathbf F^n$ tiene longitud $n$. Esto sugiere definir la dimensión como la longitud de una base. Sin embargo, un espacio vectorial de dimensión finita suele tener muchas bases distintas, y esta definición sólo tendría sentido si todas las bases de un mismo espacio tuvieran la misma longitud. Afortunadamente, eso es exactamente lo que ocurre.
+
+## 2.34 La longitud de una base no depende de la base
+
+Cualesquiera dos bases de un espacio vectorial de dimensión finita tienen la misma longitud.
+
+**Demostración.** Supongamos que $V$ es de dimensión finita y sean $B_1$ y $B_2$ dos bases de $V$. La lista $B_1$ es linealmente independiente en $V$ y $B_2$ genera $V$, así que por 2.22 la longitud de $B_1$ es a lo sumo la longitud de $B_2$. Intercambiando los papeles de $B_1$ y $B_2$, obtenemos también que la longitud de $B_2$ es a lo sumo la longitud de $B_1$. Por tanto ambas longitudes son iguales. $\square$
+
+Ahora podemos definir formalmente la dimensión.
+
+## 2.35 Definición: dimensión, $\dim V$
+
+- La **dimensión** de un espacio vectorial de dimensión finita es la longitud de cualquiera de sus bases.
+- La dimensión de un espacio vectorial de dimensión finita $V$ se denota por $\dim V$.
+
+## 2.36 Ejemplos: dimensiones
+
+- $\dim \mathbf F^n=n$, porque la base estándar de $\mathbf F^n$ tiene longitud $n$.
+- $\dim \mathcal P_m(\mathbf F)=m+1$, porque la base estándar
+  $$
+  1,z,\ldots,z^m
+  $$
+  tiene longitud $m+1$.
+- Si
+  $$
+  U=\{(x,x,y)\in\mathbf F^3:x,y\in\mathbf F\},
+  $$
+  entonces $\dim U=2$, porque
+  $$
+  (1,1,0),(0,0,1)
+  $$
+  es una base de $U$.
+- Si
+  $$
+  U=\{(x,y,z)\in\mathbf F^3:x+y+z=0\},
+  $$
+  entonces $\dim U=2$, porque
+  $$
+  (1,-1,0),(1,0,-1)
+  $$
+  es una base de $U$.
+
+Todo subespacio de un espacio vectorial de dimensión finita es de dimensión finita por 2.25, y por tanto tiene una dimensión.
+
+## 2.37 Dimensión de un subespacio
+
+Si $V$ es de dimensión finita y $U$ es un subespacio de $V$, entonces
+
+$$
+\dim U\le \dim V.
+$$
+
+**Demostración.** Una base de $U$ puede verse como una lista linealmente independiente en $V$, mientras que una base de $V$ es una lista generadora de $V$. El resultado se sigue de 2.22. $\square$
+
+La dimensión depende del cuerpo de escalares. El espacio vectorial real $\mathbf R^2$ tiene dimensión $2$, mientras que el espacio vectorial complejo $\mathbf C$ tiene dimensión $1$. Como conjuntos, $\mathbf R^2$ puede identificarse con $\mathbf C$, y la suma coincide, al igual que la multiplicación por escalares reales. Por tanto, al hablar de dimensión no puede ignorarse el papel de la elección de $\mathbf F$.
+
+Para comprobar que una lista es una base de $V$, la definición exige verificar dos propiedades: independencia lineal y generación. Los dos resultados siguientes muestran que, si la lista tiene la longitud correcta, basta comprobar una de ellas.
+
+## 2.38 Una lista linealmente independiente de la longitud correcta es una base
+
+Supongamos que $V$ es de dimensión finita. Toda lista linealmente independiente de vectores de $V$ cuya longitud sea $\dim V$ es una base de $V$.
+
+**Demostración.** Sea $\dim V=n$ y supongamos que
+
+$$
+v_1,\ldots,v_n
+$$
+
+es linealmente independiente. Por 2.32, esta lista puede extenderse a una base de $V$. Pero toda base de $V$ tiene longitud $n$, así que la extensión debe ser trivial: no puede añadirse ningún vector. Luego la lista original ya es una base. $\square$
+
+## 2.39 Un subespacio de dimensión completa es todo el espacio
+
+Supongamos que $V$ es de dimensión finita y que $U$ es un subespacio de $V$ tal que
+
+$$
+\dim U=\dim V.
+$$
+
+Entonces
+
+$$
+U=V.
+$$
+
+**Demostración.** Sea $u_1,\ldots,u_n$ una base de $U$. Entonces $n=\dim U=\dim V$. Como esta lista es linealmente independiente en $V$ y tiene longitud $\dim V$, por 2.38 es una base de $V$. Por tanto todo vector de $V$ pertenece al span de $u_1,\ldots,u_n$, que es $U$. Así $V=U$. $\square$
+
+## 2.40 Ejemplo: una base de $\mathbf F^2$
+
+Considérese la lista
+
+$$
+(5,7),(4,3).
+$$
+
+Es una lista linealmente independiente en $\mathbf F^2$, porque ninguno de los dos vectores es múltiplo escalar del otro. Como tiene longitud $2=\dim\mathbf F^2$, 2.38 implica que es una base de $\mathbf F^2$. No es necesario comprobar por separado que genera el espacio.
+
+## 2.41 Ejemplo: una base de un subespacio de $\mathcal P_3(\mathbf R)$
+
+Sea
+
+$$
+U=\{p\in\mathcal P_3(\mathbf R):p'(5)=0\}.
+$$
+
+Los polinomios
+
+$$
+1,(x-5)^2,(x-5)^3
+$$
+
+pertenecen a $U$. Si
+
+$$
+a+b(x-5)^2+c(x-5)^3=0
+$$
+
+para todo $x\in\mathbf R$, el término de grado $3$ obliga a que $c=0$; después el término de grado $2$ obliga a que $b=0$, y finalmente $a=0$. La lista es, por tanto, linealmente independiente. De aquí
+
+$$
+3\le\dim U.
+$$
+
+Por 2.37,
+
+$$
+\dim U\le\dim\mathcal P_3(\mathbf R)=4.
+$$
+
+El polinomio $x$ no pertenece a $U$, porque su derivada es la función constante $1$. Por tanto $U\ne\mathcal P_3(\mathbf R)$, y por 2.39 no puede tener dimensión $4$. Así
+
+$$
+\dim U=3.
+$$
+
+La lista linealmente independiente
+
+$$
+1,(x-5)^2,(x-5)^3
+$$
+
+tiene entonces longitud $\dim U$, de modo que por 2.38 es una base de $U$.
+
+## 2.42 Una lista generadora de la longitud correcta es una base
+
+Supongamos que $V$ es de dimensión finita. Toda lista generadora de $V$ cuya longitud sea $\dim V$ es una base de $V$.
+
+**Demostración.** Sea $\dim V=n$ y supongamos que
+
+$$
+v_1,\ldots,v_n
+$$
+
+genera $V$. Por 2.30 esta lista puede reducirse a una base de $V$. Pero toda base de $V$ tiene longitud $n$, así que no puede eliminarse ningún vector. Por tanto la lista original es ya una base. $\square$
+
+El resultado siguiente proporciona una fórmula para la dimensión de la suma de dos subespacios. Es análoga a la fórmula de conteo para dos conjuntos finitos: el número de elementos de una unión es la suma de los números de elementos de los dos conjuntos menos el número de elementos de su intersección.
+
+## 2.43 Dimensión de una suma
+
+Si $V_1$ y $V_2$ son subespacios de un espacio vectorial de dimensión finita, entonces
+
+$$
+\boxed{\dim(V_1+V_2)=\dim V_1+\dim V_2-\dim(V_1\cap V_2)}.
+$$
+
+**Demostración.** Sea
+
+$$
+v_1,\ldots,v_m
+$$
+
+una base de $V_1\cap V_2$, de modo que
+
+$$
+\dim(V_1\cap V_2)=m.
+$$
+
+Extendemos esa base, por 2.32, a una base
+
+$$
+v_1,\ldots,v_m,u_1,\ldots,u_j
+$$
+
+de $V_1$, y a una base
+
+$$
+v_1,\ldots,v_m,w_1,\ldots,w_k
+$$
+
+de $V_2$. Por tanto
+
+$$
+\dim V_1=m+j,\qquad \dim V_2=m+k.
+$$
+
+Mostraremos que
+
+## 2.44
+
+$$
+v_1,\ldots,v_m,u_1,\ldots,u_j,w_1,\ldots,w_k
+$$
+
+es una base de $V_1+V_2$. Si esto es cierto, entonces
+
+$$
+\begin{aligned}
+\dim(V_1+V_2)
+&=m+j+k\\
+&=(m+j)+(m+k)-m\\
+&=\dim V_1+\dim V_2-\dim(V_1\cap V_2).
+\end{aligned}
+$$
+
+La lista 2.44 está contenida en $V_1+V_2$, y su span contiene tanto $V_1$ como $V_2$; por consiguiente genera $V_1+V_2$. Sólo queda demostrar que es linealmente independiente.
+
+Supongamos que
+
+$$
+a_1v_1+\cdots+a_mv_m+b_1u_1+\cdots+b_ju_j+c_1w_1+\cdots+c_kw_k=0.
+$$
+
+Reescribiendo,
+
+## 2.45
+
+$$
+c_1w_1+\cdots+c_kw_k
+=-a_1v_1-\cdots-a_mv_m-b_1u_1-\cdots-b_ju_j.
+$$
+
+El lado derecho pertenece a $V_1$ y el izquierdo a $V_2$, de modo que el vector común pertenece a $V_1\cap V_2$. Como $v_1,\ldots,v_m$ es una base de la intersección, existen escalares $d_1,\ldots,d_m$ tales que
+
+$$
+c_1w_1+\cdots+c_kw_k=d_1v_1+\cdots+d_mv_m.
+$$
+
+Pero
+
+$$
+v_1,\ldots,v_m,w_1,\ldots,w_k
+$$
+
+es linealmente independiente, pues es una base de $V_2$. Por tanto todos los $c$ y los $d$ son $0$. La ecuación original queda
+
+$$
+a_1v_1+\cdots+a_mv_m+b_1u_1+\cdots+b_ju_j=0,
+$$
+
+y la independencia de la base de $V_1$ obliga a que todos los $a$ y los $b$ sean también $0$. Así 2.44 es linealmente independiente y la demostración queda completa. $\square$
+
+## Analogía entre conjuntos finitos y espacios vectoriales de dimensión finita
+
+Para un conjunto finito $S$, escribimos $\#S$ para indicar su número de elementos. Las siguientes correspondencias ayudan a visualizar la analogía entre cardinalidad y dimensión:
+
+| Conjuntos finitos | Espacios vectoriales de dimensión finita |
+|---|---|
+| $S$ es finito | $V$ es de dimensión finita |
+| $\#S$ | $\dim V$ |
+| $S_1\cup S_2$ es el menor subconjunto que contiene a $S_1$ y $S_2$ | $V_1+V_2$ es el menor subespacio que contiene a $V_1$ y $V_2$ |
+| $\#(S_1\cup S_2)=\#S_1+\#S_2-\#(S_1\cap S_2)$ | $\dim(V_1+V_2)=\dim V_1+\dim V_2-\dim(V_1\cap V_2)$ |
+| $\#(S_1\cup S_2)=\#S_1+\#S_2\iff S_1\cap S_2=\varnothing$ | $\dim(V_1+V_2)=\dim V_1+\dim V_2\iff V_1\cap V_2=\{0\}$ |
+| $S_1\cup\cdots\cup S_m$ es una unión disjunta $\iff \#(S_1\cup\cdots\cup S_m)=\#S_1+\cdots+\#S_m$ | $V_1+\cdots+V_m$ es una suma directa $\iff \dim(V_1+\cdots+V_m)=\dim V_1+\cdots+\dim V_m$ |
+
+La demostración de la equivalencia de la última fila para espacios vectoriales aparecerá en 3.94. Los ejercicios 12–18 exploran resultados sobre espacios vectoriales que tienen análogos naturales para conjuntos.
+
+# Ejercicios 2C
+
+1. Demuestra que los subespacios de $\mathbf R^2$ son precisamente $\{0\}$, todas las rectas de $\mathbf R^2$ que pasan por el origen y $\mathbf R^2$.
+2. Demuestra que los subespacios de $\mathbf R^3$ son precisamente $\{0\}$, todas las rectas de $\mathbf R^3$ que pasan por el origen, todos los planos de $\mathbf R^3$ que pasan por el origen y $\mathbf R^3$.
+3. (a) Sea
+   $$
+   U=\{p\in\mathcal P_4(\mathbf F):p(6)=0\}.
+   $$
+   Encuentra una base de $U$.  
+   (b) Extiende la base de (a) a una base de $\mathcal P_4(\mathbf F)$.  
+   (c) Encuentra un subespacio $W$ de $\mathcal P_4(\mathbf F)$ tal que
+   $$
+   \mathcal P_4(\mathbf F)=U\oplus W.
+   $$
+4. (a) Sea
+   $$
+   U=\{p\in\mathcal P_4(\mathbf R):p''(6)=0\}.
+   $$
+   Encuentra una base de $U$.  
+   (b) Extiende la base de (a) a una base de $\mathcal P_4(\mathbf R)$.  
+   (c) Encuentra un subespacio $W$ de $\mathcal P_4(\mathbf R)$ tal que
+   $$
+   \mathcal P_4(\mathbf R)=U\oplus W.
+   $$
+5. (a) Sea
+   $$
+   U=\{p\in\mathcal P_4(\mathbf F):p(2)=p(5)\}.
+   $$
+   Encuentra una base de $U$.  
+   (b) Extiende la base de (a) a una base de $\mathcal P_4(\mathbf F)$.  
+   (c) Encuentra un subespacio $W$ de $\mathcal P_4(\mathbf F)$ tal que
+   $$
+   \mathcal P_4(\mathbf F)=U\oplus W.
+   $$
+6. (a) Sea
+   $$
+   U=\{p\in\mathcal P_4(\mathbf F):p(2)=p(5)=p(6)\}.
+   $$
+   Encuentra una base de $U$.  
+   (b) Extiende la base de (a) a una base de $\mathcal P_4(\mathbf F)$.  
+   (c) Encuentra un subespacio $W$ de $\mathcal P_4(\mathbf F)$ tal que
+   $$
+   \mathcal P_4(\mathbf F)=U\oplus W.
+   $$
+7. (a) Sea
+   $$
+   U=\left\{p\in\mathcal P_4(\mathbf R):\int_{-1}^{1}p=0\right\}.
+   $$
+   Encuentra una base de $U$.  
+   (b) Extiende la base de (a) a una base de $\mathcal P_4(\mathbf R)$.  
+   (c) Encuentra un subespacio $W$ de $\mathcal P_4(\mathbf R)$ tal que
+   $$
+   \mathcal P_4(\mathbf R)=U\oplus W.
+   $$
+8. Supón que $v_1,\ldots,v_m$ es linealmente independiente en $V$ y que $w\in V$. Demuestra que
+   $$
+   \dim\operatorname{span}(v_1+w,\ldots,v_m+w)\ge m-1.
+   $$
+9. Supón que $m$ es un entero positivo y que $p_0,p_1,\ldots,p_m\in\mathcal P(\mathbf F)$ son tales que cada $p_k$ tiene grado $k$. Demuestra que
+   $$
+   p_0,p_1,\ldots,p_m
+   $$
+   es una base de $\mathcal P_m(\mathbf F)$.
+10. Supón que $m$ es un entero positivo. Para $0\le k\le m$, define
+    $$
+    p_k(x)=x^k(1-x)^{m-k}.
+    $$
+    Demuestra que $p_0,\ldots,p_m$ es una base de $\mathcal P_m(\mathbf F)$.
+
+    La base de este ejercicio conduce a los llamados **polinomios de Bernstein**, que se utilizan para aproximar funciones continuas en $[0,1]$.
+11. Supón que $U$ y $W$ son subespacios de dimensión $4$ de $\mathbf C^6$. Demuestra que existen dos vectores de $U\cap W$ tales que ninguno es múltiplo escalar del otro.
+12. Supón que $U$ y $W$ son subespacios de $\mathbf R^8$ tales que
+    $$
+    \dim U=3,\qquad \dim W=5,\qquad U+W=\mathbf R^8.
+    $$
+    Demuestra que
+    $$
+    \mathbf R^8=U\oplus W.
+    $$
+13. Supón que $U$ y $W$ son ambos subespacios de dimensión $5$ de $\mathbf R^9$. Demuestra que
+    $$
+    U\cap W\ne\{0\}.
+    $$
+14. Supón que $V$ tiene dimensión $10$ y que $V_1,V_2,V_3$ son subespacios de $V$ con
+    $$
+    \dim V_1=\dim V_2=\dim V_3=7.
+    $$
+    Demuestra que
+    $$
+    V_1\cap V_2\cap V_3\ne\{0\}.
+    $$
+15. Supón que $V$ es de dimensión finita y que $V_1,V_2,V_3$ son subespacios de $V$ tales que
+    $$
+    \dim V_1+\dim V_2+\dim V_3>2\dim V.
+    $$
+    Demuestra que
+    $$
+    V_1\cap V_2\cap V_3\ne\{0\}.
+    $$
+16. Supón que $V$ es de dimensión finita y que $U$ es un subespacio propio de $V$. Sea
+    $$
+    n=\dim V,\qquad m=\dim U.
+    $$
+    Demuestra que existen $n-m$ subespacios de $V$, cada uno de dimensión $n-1$, cuya intersección es $U$.
+17. Supón que $V_1,\ldots,V_m$ son subespacios de dimensión finita de $V$. Demuestra que $V_1+\cdots+V_m$ es de dimensión finita y que
+    $$
+    \dim(V_1+\cdots+V_m)\le\dim V_1+\cdots+\dim V_m.
+    $$
+
+    La desigualdad es una igualdad si y sólo si $V_1+\cdots+V_m$ es una suma directa; esto se demostrará en 3.94.
+18. Supón que $V$ es de dimensión finita, con
+    $$
+    \dim V=n\ge1.
+    $$
+    Demuestra que existen subespacios unidimensionales $V_1,\ldots,V_n$ de $V$ tales que
+    $$
+    V=V_1\oplus\cdots\oplus V_n.
+    $$
+19. Explica por qué, por analogía con la fórmula para el número de elementos de la unión de tres conjuntos finitos, podría conjeturarse que
+    $$
+    \begin{aligned}
+    \dim(V_1+V_2+V_3)
+    &=\dim V_1+\dim V_2+\dim V_3\\
+    &\quad-\dim(V_1\cap V_2)-\dim(V_1\cap V_3)-\dim(V_2\cap V_3)\\
+    &\quad+\dim(V_1\cap V_2\cap V_3).
+    \end{aligned}
+    $$
+    Luego demuestra esta fórmula o da un contraejemplo.
+20. Demuestra que, si $V_1,V_2,V_3$ son subespacios de un espacio vectorial de dimensión finita, entonces
+    $$
+    \begin{aligned}
+    \dim(V_1+V_2+V_3)
+    &=\dim V_1+\dim V_2+\dim V_3\\
+    &\quad-\frac{\dim(V_1\cap V_2)+\dim(V_1\cap V_3)+\dim(V_2\cap V_3)}{3}\\
+    &\quad-\frac{\dim((V_1+V_2)\cap V_3)+\dim((V_1+V_3)\cap V_2)+\dim((V_2+V_3)\cap V_1)}{3}.
+    \end{aligned}
+    $$
+
+    Aunque el lado derecho no parece, a primera vista, un entero, la identidad demuestra que necesariamente lo es.
+
+---
+
+> «Abandoné de inmediato mis antiguas ocupaciones, dejé de lado la historia natural y toda su progenie como una creación deforme y abortada, y sentí el mayor desprecio por una pretendida ciencia que jamás podría siquiera franquear el umbral del conocimiento verdadero. En ese estado de ánimo me entregué a las matemáticas y a las ramas de estudio vinculadas con esa ciencia, por estar construidas sobre fundamentos seguros y ser, por ello, dignas de mi consideración.»  
+> —Mary Wollstonecraft Shelley, *Frankenstein*
+
+---
+
+**Atribución:** Sheldon Axler, *Linear Algebra Done Right*, 4.ª edición. Traducción/adaptación no oficial realizada para Matemática Abierta bajo CC BY-NC 4.0. Fuente oficial: <https://linear.axler.net/>.
