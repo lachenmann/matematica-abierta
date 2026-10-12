@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: 'Capítulo 13 — Límites de funciones: control de dos escalas'
-date-modified: '2026-10-11'
+date-modified: '2026-10-12'
 provenance:
   type: original
   sources:
@@ -26,7 +26,7 @@ provenance:
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 13](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html) · [Ejercicios](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-13)
 
 ¿Qué significa que unas entradas próximas a un punto produzcan salidas próximas a un destino? En cálculo aprendimos a reconocer y calcular límites; aquí reconstruiremos el contrato que autoriza esas operaciones. No basta ensayar unas pocas entradas ni encontrar una ruta favorable: queremos controlar toda una ventana del dominio y responder a cualquier precisión de salida.
 
@@ -69,38 +69,232 @@ La ventana se encoge alrededor de $a$; la ventana de salida alrededor de $L$. Es
 
 ### Antes de seguir
 
+#### Microcontrol 1
+
 []{#MA-MIC-ANM-01-013-001}
 
-1. ¿Tiene que pertenecer $a$ al dominio para preguntar por el límite en $a$?
+¿Tiene que pertenecer $a$ al dominio para preguntar por el límite en $a$?
+
+[]{#MA-MSOL-ANM-01-013-001}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 1</summary>
+
+No. Debe ser punto de acumulación del dominio. Por ejemplo, $0\notin(0,\infty)$ y cada radio positivo contiene una entrada positiva distinta de cero.
+
+El límite observa entradas del dominio arbitrariamente próximas a $a$, no una evaluación en $a$. En el dominio positivo, dado cualquier radio $r>0$, la entrada $r/2$ es positiva y está a distancia menor que $r$ de cero. Así cero acumula entradas aunque no sea una de ellas. La condición de acumulación garantiza que la aproximación tenga contenido; pertenecer al dominio, en cambio, sólo permitiría hablar además del valor central.
+
+</details>
+
+#### Microcontrol 2
 
 []{#MA-MIC-ANM-01-013-002}
 
-2. ¿Qué elimina $0<|x-a|$?
+¿Qué elimina $0<|x-a|$?
+
+[]{#MA-MSOL-ANM-01-013-002}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 2</summary>
+
+Elimina $x=a$; asegura que sólo se usan entradas distintas del centro.
+
+La magnitud $|x-a|$ es cero exactamente cuando $x=a$. Pedir que sea positiva descarta esa entrada y deja una ventana perforada. El límite puede coincidir con $f(a)$, diferir de él o existir cuando $f(a)$ ni siquiera está definido. La definición no decide esa relación, porque todas sus estimaciones se aplican a otras entradas. Confundir la ventana con una bola sin perforar añadiría un control sobre el valor central.
+
+</details>
+
+#### Microcontrol 3
 
 []{#MA-MIC-ANM-01-013-003}
 
-3. ¿Qué significa $a\in D^{\prime}$ en forma cuantificada?
+¿Qué significa $a\in D^{\prime}$ en forma cuantificada?
+
+[]{#MA-MSOL-ANM-01-013-003}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 3</summary>
+
+$\forall r>0\ \exists x\in D:0<|x-a|<r$. Toda ventana perforada contiene una entrada.
+
+Primero se recibe un radio positivo arbitrario y después se busca una entrada del dominio distinta del centro dentro de él. El testigo puede variar con el radio; no se exige una entrada que esté en todas las ventanas. La condición significa que ninguna escala positiva agota las aproximaciones disponibles. Si existiera un radio sin esas entradas, el punto no sería de acumulación, aunque perteneciera al dominio como punto aislado.
+
+</details>
+
+#### Microcontrol 4
 
 []{#MA-MIC-ANM-01-013-004}
 
-4. Si $D=\{a\}$, ¿la fórmula perforada distingue un candidato $L$?
+Si $D=\{a\}$, ¿la fórmula perforada distingue un candidato $L$?
+
+[]{#MA-MSOL-ANM-01-013-004}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 4</summary>
+
+No. Su antecedente nunca se cumple, por lo que vale por vacuidad para todo $L$. Nuestra definición no asigna límite en ese caso.
+
+Para este dominio, ninguna entrada cumple simultáneamente $x\in D$ y $x\ne a$. Por eso la implicación que exige error pequeño nunca encuentra una entrada a la que aplicarse y es verdadera para cualquier candidato. No distingue un destino único. Exigir acumulación elimina esta vacuidad y permite la prueba de unicidad. Bajo la convención del capítulo, en un punto aislado no se declara un límite perforado mediante esa fórmula.
+
+</details>
+
+#### Microcontrol 5
 
 []{#MA-MIC-ANM-01-013-005}
 
-5. ¿Cómo se escribe el control mediante imágenes de ventanas?
+¿Cómo se escribe el control mediante imágenes de ventanas?
+
+[]{#MA-MSOL-ANM-01-013-005}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 5</summary>
+
+Para cada $\varepsilon>0$ hay $\delta>0$ con $f[U_D(a,\delta)]\subseteq B(L,\varepsilon)$.
+
+La ventana $U_D(a,\delta)=\{x\in D:0<|x-a|<\delta\}$ reúne exactamente las entradas sometidas al control. Pedir que su imagen esté en $B(L,\varepsilon)$ equivale a pedir $|f(x)-L|<\varepsilon$ para cada una. La inclusión es universal: ningún punto de la ventana puede dar una salida fuera de la bola. La escala de entrada se elige para responder a la precisión solicitada en las salidas.
+
+</details>
+
+#### Microcontrol 6
 
 []{#MA-MIC-ANM-01-013-006}
 
-6. ¿Qué preimagen contiene la ventana perforada cuando el radio es válido?
+¿Qué preimagen contiene la ventana perforada cuando el radio es válido?
+
+[]{#MA-MSOL-ANM-01-013-006}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 6</summary>
+
+$f^{-1}[B(L,\varepsilon)]$. Cada entrada de la ventana produce una salida en esa bola.
+
+La preimagen de la bola de salidas es el conjunto de entradas $x\in D$ que satisfacen $|f(x)-L|<\varepsilon$. Si el radio es válido, toda entrada de la ventana perforada pertenece a ese conjunto. Así el control puede expresarse como $U_D(a,\delta)\subseteq f^{-1}[B(L,\varepsilon)]$. Esta formulación no necesita una función inversa: utiliza la preimagen para seleccionar entradas por sus salidas.
+
+</details>
+
+#### Microcontrol 7
 
 []{#MA-MIC-ANM-01-013-007}
 
-7. ¿Cambia el límite si sólo cambiamos $f(a)$?
+¿Cambia el límite si sólo cambiamos $f(a)$?
+
+[]{#MA-MSOL-ANM-01-013-007}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 7</summary>
+
+No. Las entradas que evalúa la definición son distintas de $a$, por lo que sus valores permanecen iguales.
+
+Si dos funciones coinciden en las entradas distintas de $a$ de una misma ventana, las estimaciones del límite ven exactamente los mismos valores allí. Modificar sólo la evaluación central no cambia ninguna de esas desigualdades. Si se añade o elimina el propio centro del dominio, tampoco cambian las entradas perforadas ni la acumulación. El resultado permite comparar el comportamiento próximo al punto con el dato particular de su evaluación.
+
+</details>
+
+#### Microcontrol 8
 
 []{#MA-MIC-ANM-01-013-008}
 
-8. ¿Qué radio reúne coincidencia local y control de $f$?
+¿Qué radio reúne coincidencia local y control de $f$?
 
+[]{#MA-MSOL-ANM-01-013-008}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 8</summary>
+
+$\min(r,\delta_f)$, donde $r>0$ es el radio de coincidencia y $\delta_f>0$ controla el error. Así se cumplen las dos condiciones.
+
+El radio de coincidencia asegura que podemos sustituir $g(x)$ por $f(x)$; el radio de precisión asegura que este valor está cerca de $L$. Tomar el mínimo mantiene ambas garantías simultáneamente, porque una entrada más cercana que ese mínimo está dentro de las dos ventanas. El mínimo de dos números positivos sigue siendo positivo. Sólo entonces el control de una función se transporta a la otra.
+
+</details>
+
+### Ejercicios de la sección 13.1
+
+[]{#ejercicios-13}
+
+#### Ejercicio 1. El agujero no decide el destino
+
+[]{#MA-EX-ANM-01-013-001}
+
+Define $f:\mathbb R\to\mathbb R$ por $f(x)=2x+5$ si $x\ne-1$ y $f(-1)=100$. Prueba desde la definición el límite en $-1$ y explica qué dato se excluye.
+
+[]{#MA-SOL-ANM-01-013-001}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 1</summary>
+
+El candidato es $3$. Para $\varepsilon>0$ tomamos $\delta=\varepsilon/2$. Si $0<|x+1|<\delta$, entonces $x\ne-1$, por lo que $|f(x)-3|=2|x+1|<\varepsilon$. El punto $-1$ acumula entradas reales, por ejemplo $-1+\delta/2$. La definición controla entradas distintas del centro; el valor $100$ no interviene.
+
+**Retorno visual.** Véase [C13-F01](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html#fig-anm-c13-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+La condición positiva $0<|x+1|$ garantiza que se aplica la rama afín y no la evaluación excepcional. Restar el candidato tres da $2x+2=2(x+1)$, por lo que el error se controla exactamente mediante la distancia de entrada. El radio elegido es positivo para toda tolerancia positiva y funciona para todas las entradas de la ventana. El valor cien queda excluido por la definición, no porque sea pequeño o despreciable.
+
+</details>
+
+#### Ejercicio 2. Una pregunta sin entradas
+
+[]{#MA-EX-ANM-01-013-002}
+
+Para $D=\{0\}\cup[2,3]$ y cualquier $f:D\to\mathbb R$, analiza la fórmula perforada en $a=0$. ¿Hay un límite bajo la convención del capítulo?
+
+[]{#MA-SOL-ANM-01-013-002}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 2</summary>
+
+Con $\delta=1$, no existe $x\in D$ con $0<|x|<1$. La implicación sería verdadera para todo $L$ y toda tolerancia usando ese mismo radio. Pero $0$ no es punto de acumulación de $D$, así que no asignamos límite. El fallo no depende de los valores de $f$: depende de las rutas inexistentes.
+
+El centro cero pertenece al dominio, pero sus demás entradas están al menos a distancia dos. Por eso una ventana suficientemente pequeña no contiene entradas perforadas. La fórmula de precisión no discrimina ningún candidato y sería satisfecha incluso por números incompatibles entre sí. La hipótesis de acumulación evita esta ambigüedad: pertenecer al dominio no basta para preguntar por un límite perforado bajo la convención adoptada.
+
+</details>
+
+#### Ejercicio 3. Dos lenguajes del mismo control
+
+[]{#MA-EX-ANM-01-013-003}
+
+Prueba directamente que $f[U_D(a,\delta)]\subseteq B(L,\varepsilon)$ equivale a $U_D(a,\delta)\subseteq f^{-1}[B(L,\varepsilon)]$. Mantén separados valores y conjuntos.
+
+[]{#MA-SOL-ANM-01-013-003}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 3</summary>
+
+Si vale la inclusión de imágenes y $x\in U_D(a,\delta)$, entonces $f(x)\in f[U_D(a,\delta)]\subseteq B(L,\varepsilon)$, luego $x\in f^{-1}[B(L,\varepsilon)]$. A la inversa, si toda entrada de la ventana está en esa preimagen y $y$ pertenece a la imagen, existe un testigo $x$ de la ventana con $y=f(x)$; la pertenencia a la preimagen da $y\in B(L,\varepsilon)$. $f(x)$ es un valor; la imagen y la preimagen son conjuntos.
+
+La primera inclusión controla salidas y la segunda selecciona entradas. Para pasar de una a otra se usa la misma evaluación $f(x)$, sin invertir la función. En la vuelta, una salida de la imagen viene acompañada de una entrada testigo de la ventana. La prueba conserva el recorte por $D$ y la exclusión del centro. Así ambas formulaciones expresan el mismo control universal, aunque sus conjuntos vivan en espacios distintos.
+
+</details>
+
+#### Ejercicio 4. Igualdad en un germen perforado
+
+[]{#MA-EX-ANM-01-013-004}
+
+Sean $f,g:D\to\mathbb R$ iguales siempre que $0<|x-a|<r$, con $r>0$ y $a\in D^{\prime}$. Prueba que tienen exactamente los mismos candidatos de límite.
+
+[]{#MA-SOL-ANM-01-013-004}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 4</summary>
+
+Fijemos un candidato $L$ y supongamos $f\to L$. Para cada $\varepsilon>0$, un radio $\delta_f$ de $f$ se reúne con $r$ mediante $\delta=\min(r,\delta_f)>0$. En la ventana resultante $g(x)=f(x)$ y $|g(x)-L|<\varepsilon$. Luego $g\to L$. Intercambiar $f,g$ prueba la recíproca para ese mismo candidato. Como $L$ era arbitrario, los conjuntos de candidatos coinciden.
+
+El candidato se mantiene fijo durante cada dirección de la prueba. El radio mínimo asegura que las funciones coincidan donde se aplica la estimación del límite, y por eso el error puede trasladarse sin cambiarlo. Después invertimos los papeles. No importa que las funciones difieran en el centro o en entradas lejanas: el límite se decide en alguna ventana perforada donde ambas tienen los mismos datos de salida.
+
+</details>
+
+#### Ejercicio 5. Cambiar valores en infinitos puntos lejanos
+
+[]{#MA-EX-ANM-01-013-005}
+
+Construye dos funciones reales que difieran en infinitos puntos, una no acotada globalmente, y que tengan límite cero en cero por coincidencia local. Prueba las afirmaciones.
+
+[]{#MA-SOL-ANM-01-013-005}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 5</summary>
+
+Sea $f(x)=0$ para todo real, y sea $g(x)=0$ si $|x|<1$, $g(x)=x^2$ si $|x|\ge1$. Difieren en todos los enteros positivos, un conjunto infinito. $g(n)=n^2$ no admite cota global por arquimedianidad. Ambas coinciden en la ventana de radio $1$; para toda tolerancia, ese radio hace el error cero. La información fuera de una ventana fija no determina el límite.
+
+Cada entero positivo produce salida cero en $f$ y salida $n^2$ en $g$, de modo que existen infinitas discrepancias. Para refutar cualquier barrera global propuesta a $g$, basta escoger un entero cuyo cuadrado la supere. Cerca de cero, en cambio, ambas funciones valen exactamente cero. El mismo radio uno responde a todas las tolerancias. La cantidad de discrepancias no decide el límite; importa su ubicación respecto de las ventanas locales.
+
+</details>
 ## 13.2. Diseñar una respuesta para toda la ventana
 
 []{#MA-SEC-ANM-01-013-002}
@@ -143,38 +337,232 @@ Cada ejemplo sigue el mismo método: descomponer el error, controlar factores au
 
 ### Antes de seguir
 
+#### Microcontrol 9
+
 []{#MA-MIC-ANM-01-013-009}
 
-1. ¿Puede $\delta$ depender de la entrada $x$ bajo el cuantificador universal?
+¿Puede $\delta$ depender de la entrada $x$ bajo el cuantificador universal?
+
+[]{#MA-MSOL-ANM-01-013-009}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 9</summary>
+
+No. Se fija antes de verificar toda entrada. Puede depender de $\varepsilon$ y de los datos fijados.
+
+La definición tiene el orden $\forall\varepsilon>0\;\exists\delta>0\;\forall x\in D$. El radio debe responder al desafío antes de considerar la entrada arbitraria y servir para todas las entradas de su ventana. Elegirlo después de conocer cada $x$ cambiaría ese orden e incluso permitiría excluir esa entrada escogiendo un radio menor que su distancia al centro. Eso no demostraría un control común de aproximación.
+
+</details>
+
+#### Microcontrol 10
 
 []{#MA-MIC-ANM-01-013-010}
 
-2. Para $f(x)=3x-2$ en $a=1$, ¿qué radio explícito sirve?
+Para $f(x)=3x-2$ en $a=1$, ¿qué radio explícito sirve?
+
+[]{#MA-MSOL-ANM-01-013-010}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 10</summary>
+
+$\delta=\varepsilon/3$, pues $|f(x)-1|=3|x-1|<3\delta=\varepsilon$.
+
+La salida candidata es $3\cdot1-2=1$. Restarla de la regla da $f(x)-1=3(x-1)$, y al tomar magnitudes el error de salida es tres veces el de entrada. Por eso recibida $\varepsilon>0$ escogemos el radio positivo $\varepsilon/3$. Cualquier entrada con $0<|x-1|<\delta$ cumple el error estricto. La misma elección funciona para toda la ventana y no depende de una entrada concreta.
+
+</details>
+
+#### Microcontrol 11
 
 []{#MA-MIC-ANM-01-013-011}
 
-3. ¿Es válido exigir un solo $\delta>0$ para todas las tolerancias?
+¿Es válido exigir un solo $\delta>0$ para todas las tolerancias?
+
+[]{#MA-MSOL-ANM-01-013-011}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 11</summary>
+
+Es una condición más fuerte. Para una afín no constante no existe tal radio: una entrada no central dentro de él tiene error positivo, y una tolerancia menor lo refuta.
+
+En una afín de pendiente $m\ne0$ y dominio real, fijado un radio $\delta>0$ podemos escoger $x=a+\delta/2$. Su error respecto de $ma+c$ es $|m|\delta/2>0$. Una tolerancia igual a la mitad de ese error refuta ese radio. Por tanto una única escala de entrada no puede responder a todas las precisiones. La definición permite que el radio se reduzca a medida que la tolerancia lo exige.
+
+</details>
+
+#### Microcontrol 12
 
 []{#MA-MIC-ANM-01-013-012}
 
-4. ¿Qué ocurre con la afín si $m=0$?
+¿Qué ocurre con la afín si $m=0$?
+
+[]{#MA-MSOL-ANM-01-013-012}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 12</summary>
+
+Es constante y su error respecto de $c$ es cero; cualquier radio positivo sirve.
+
+La asignación se reduce a $f(x)=c$ y el destino es $c$. Para cualquier entrada del dominio, $|f(x)-c|=0$, menor que cualquier tolerancia positiva. Podemos escoger, por ejemplo, $\delta=1$ sin dividir por la pendiente. Como siempre, el centro debe acumular entradas del dominio para formular el límite bajo esta convención. El caso constante separa una estimación trivial de las fórmulas que requieren $|m|>0$.
+
+</details>
+
+#### Microcontrol 13
 
 []{#MA-MIC-ANM-01-013-013}
 
-5. ¿Qué cota para $|x+a|$ produce $|x-a|<1$?
+¿Qué cota para $|x+a|$ produce $|x-a|<1$?
+
+[]{#MA-MSOL-ANM-01-013-013}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 13</summary>
+
+$|x+a|\le |x-a|+2|a|<1+2|a|$. Esa constante permite controlar el producto de errores.
+
+Escribimos $x+a=(x-a)+2a$. La triangular da $|x+a|\le|x-a|+2|a|$, y la ventana auxiliar de radio uno hace el primer sumando menor que uno. La constante $1+2|a|$ está fijada por el centro y no por la entrada variable. Así la factorización $|x^2-a^2|=|x-a||x+a|$ se convierte en un error pequeño multiplicado por un factor uniformemente acotado.
+
+</details>
+
+#### Microcontrol 14
 
 []{#MA-MIC-ANM-01-013-014}
 
-6. ¿Por qué se toma un mínimo en la prueba del cuadrado?
+¿Por qué se toma un mínimo en la prueba del cuadrado?
+
+[]{#MA-MSOL-ANM-01-013-014}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 14</summary>
+
+Para asegurar a la vez el radio auxiliar $1$ y el radio de precisión $\varepsilon/(1+2|a|)$.
+
+Si sólo usáramos el radio de precisión, quizá no podríamos controlar el factor $|x+a|$. Si sólo usáramos el auxiliar, el error no tendría por qué satisfacer una tolerancia pequeña. Escogemos $\delta=\min\{1,\varepsilon/(1+2|a|)\}$: la primera condición acota el factor y la segunda ajusta la precisión. El denominador es siempre positivo, incluso en $a=0$, y el mínimo también es positivo.
+
+</details>
+
+#### Microcontrol 15
 
 []{#MA-MIC-ANM-01-013-015}
 
-7. ¿Un radio válido debe ser el máximo posible?
+¿Un radio válido debe ser el máximo posible?
+
+[]{#MA-MSOL-ANM-01-013-015}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 15</summary>
+
+No. Basta un radio positivo cuyo control universal se pueda verificar; cualquier reducción positiva también sirve.
+
+La definición pide existencia de algún radio válido, no una optimización. Si funciona $\delta$, también funciona cualquier $0<\delta'\le\delta$, porque la nueva ventana contiene menos entradas y todas ellas estaban ya controladas. Una elección conservadora puede facilitar las estimaciones sin cambiar la conclusión. Afirmar que un radio es máximo requiere una prueba adicional que descarte todos los radios mayores; no forma parte de demostrar el límite.
+
+</details>
+
+#### Microcontrol 16
 
 []{#MA-MIC-ANM-01-013-016}
 
-8. ¿Qué barrera protege $1/x$ si $|x-a|<|a|/2$ y $a\ne0$?
+¿Qué barrera protege $1/x$ si $|x-a|<|a|/2$ y $a\ne0$?
 
+[]{#MA-MSOL-ANM-01-013-016}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 16</summary>
+
+$|x|\ge |a|-|x-a|>|a|/2>0$, de modo que el denominador está separado de cero uniformemente en la ventana.
+
+La triangular inversa da $|x|\ge|a|-|x-a|$. Bajo el radio indicado, ese margen supera $|a|/2$, que es positivo porque $a\ne0$. De esta forma todas las entradas de la ventana evitan cero con una misma separación. Entonces $|1/x-1/a|=|x-a|/(|x||a|)$ se domina por $2|x-a|/|a|^2$. La barrera convierte el denominador variable en una constante segura para diseñar el radio de precisión.
+
+</details>
+
+### Ejercicios de la sección 13.2
+
+#### Ejercicio 6. Diseñar el radio de una afín decreciente
+
+[]{#MA-EX-ANM-01-013-006}
+
+Prueba desde la definición que $-4x+7$ tiene límite $-1$ en $a=2$. Determina el mayor radio simétrico válido para un desafío $\varepsilon>0$.
+
+[]{#MA-SOL-ANM-01-013-006}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 6</summary>
+
+El error es $4|x-2|$. $\delta=\varepsilon/4$ sirve porque la entrada satisface una desigualdad estricta. Si $\delta>\varepsilon/4$, tomamos $t=(\delta+\varepsilon/4)/2$ y $x=2+t$. Entonces $0<t<\delta$ y $4t>\varepsilon$, infracción. Por tanto el radio dado es el mayor. El signo de la pendiente invierte orden, pero el error depende de su magnitud.
+
+**Retorno visual.** Véase [C13-F02](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html#fig-anm-c13-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+Como la magnitud de la pendiente es cuatro, el error de salida es exactamente cuatro veces el de entrada. El radio $\varepsilon/4$ sirve incluso en el caso frontera, porque las entradas están a distancia estrictamente menor que el radio. Para cualquier radio mayor, la distancia $t$ elegida entre ambos umbrales produce un infractor dentro de la ventana. Estos dos argumentos demuestran validez y maximalidad, que son obligaciones diferentes.
+
+</details>
+
+#### Ejercicio 7. Un radio conservador para un cuadrado
+
+[]{#MA-EX-ANM-01-013-007}
+
+Prueba desde la definición $x^2\to4$ en $2$ y da un radio explícito que no necesite resolver una desigualdad cuadrática.
+
+[]{#MA-SOL-ANM-01-013-007}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 7</summary>
+
+Para $|x-2|<1$, $|x+2|\le|x-2|+4<5$. Dado $\varepsilon>0$, tomamos $\delta=\min(1,\varepsilon/5)$. Entonces $|x^2-4|=|x-2||x+2|<5|x-2|<5\delta\le\varepsilon$. El radio auxiliar elimina el factor variable.
+
+La factorización introduce un factor variable $x+2$. Antes de ajustar la precisión, imponemos una ventana de radio uno para acotar su magnitud por cinco. Luego la condición $|x-2|<\varepsilon/5$ hace pequeño el producto. El mínimo conserva ambas condiciones a la vez. No se afirma que sea el mayor radio, ni se necesita resolver la desigualdad exacta para demostrar existencia del límite.
+
+</details>
+
+#### Ejercicio 8. Radio óptimo del cuadrado en uno
+
+[]{#MA-EX-ANM-01-013-008}
+
+Para $0<\varepsilon<1$, demuestra que el mayor radio simétrico para $|x^2-1|<\varepsilon$ alrededor de $1$ es $\delta_*=\sqrt{1+\varepsilon}-1$.
+
+[]{#MA-SOL-ANM-01-013-008}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 8</summary>
+
+La componente de entradas positivas que satisface el error es $(\sqrt{1-\varepsilon},\sqrt{1+\varepsilon})$. Los márgenes desde $1$ son $1-\sqrt{1-\varepsilon}$ y $\sqrt{1+\varepsilon}-1$. El segundo es menor: racionalizar da $\varepsilon/(1+\sqrt{1-\varepsilon})>\varepsilon/(1+\sqrt{1+\varepsilon})$. Así el intervalo simétrico de radio $\delta_*$ queda dentro de esa componente, pues su extremo inferior supera $\sqrt{1-\varepsilon}$. Si un radio es mayor, incluye $x=\sqrt{1+\varepsilon}$, distinto de $1$, cuyo error es exactamente $\varepsilon$, infracción.
+
+**Retorno visual.** Véase [C13-F03](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html#fig-anm-c13-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+Alrededor de uno, con $0<\varepsilon<1$, las entradas admisibles positivas están entre las dos raíces indicadas. El lado derecho ofrece el margen menor, por lo que determina la mayor ventana simétrica. El radio óptimo aún funciona porque su extremo superior queda fuera de la bola abierta de entradas. Cualquier aumento lo incluye y produce error exactamente igual a la tolerancia, que ya infringe el requisito estricto. Así la frontera permite acreditar la optimalidad.
+
+</details>
+
+#### Ejercicio 9. Reparar una respuesta que depende de la entrada
+
+[]{#MA-EX-ANM-01-013-009}
+
+Un borrador afirma: «Para probar $x^2\to1$, tomo $\delta=\varepsilon/(|x+1|+1)$; así el error será pequeño». Localiza el defecto y escribe una prueba válida.
+
+[]{#MA-SOL-ANM-01-013-009}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 9</summary>
+
+La expresión de $\delta$ utiliza el $x$ que debía verificarse después de fijar el radio. No produce una respuesta única para toda la ventana. La reparación fija primero $|x-1|<1$, que da $|x+1|<3$, y elige $\delta=\min(1,\varepsilon/3)$. Para toda entrada de esa ventana, $|x^2-1|<3|x-1|<\varepsilon$. La fórmula defectuosa queda como objeto de diagnóstico, no como prueba.
+
+La respuesta debe fijarse antes de considerar la entrada arbitraria. El borrador usa precisamente esa entrada para definir el tamaño de su ventana, por lo que no prueba un radio común. La reparación sustituye el factor variable por una constante obtenida en una ventana auxiliar. Con $|x-1|<1$, $|x+1|<3$, y el mínimo propuesto hace $|x^2-1|=|x-1||x+1|<\varepsilon$ para toda la ventana.
+
+</details>
+
+#### Ejercicio 10. Proteger un recíproco desplazado
+
+[]{#MA-EX-ANM-01-013-010}
+
+Prueba desde la definición que $1/(x-3)$ tiene límite $-1/2$ en $a=1$.
+
+[]{#MA-SOL-ANM-01-013-010}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 10</summary>
+
+Si $|x-1|<1$, entonces $|x-3|\ge2-|x-1|>1$; las entradas no alcanzan $3$. El error es $|1/(x-3)+1/2|=|x-1|/(2|x-3|)<|x-1|/2$. Tomamos $\delta=\min(1,2\varepsilon)$. Para toda entrada del dominio dentro de esa ventana, el error es menor que $\delta/2\le\varepsilon$.
+
+El dominio natural excluye tres. La ventana auxiliar alrededor de uno permanece separada de ese punto porque $|x-3|>1$. Después de reunir los cocientes, el numerador del error es $x-1$ y el denominador tiene magnitud mayor que dos. El radio de precisión $2\varepsilon$ controla ese error y el mínimo conserva la protección del denominador. La prueba declara por qué cada evaluación está permitida antes de aplicar la estimación.
+
+</details>
 ## 13.3. Un destino, barreras locales y orden
 
 []{#MA-SEC-ANM-01-013-003}
@@ -205,38 +593,228 @@ Un límite finito proporciona barreras locales; las barreras también pueden con
 
 ### Antes de seguir
 
+#### Microcontrol 17
+
 []{#MA-MIC-ANM-01-013-017}
 
-1. ¿Dónde se utiliza acumulación al demostrar unicidad?
+¿Dónde se utiliza acumulación al demostrar unicidad?
+
+[]{#MA-MSOL-ANM-01-013-017}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 17</summary>
+
+Al obtener una entrada en el mínimo de los dos radios. Sin esa entrada, las dos cotas no podrían compararse.
+
+Los dos candidatos proporcionan radios, pero para confrontar sus estimaciones necesitamos una entrada donde ambas valgan. La acumulación entrega $x\in D$ distinto de $a$ en la ventana de radio mínimo. Su salida sirve entonces como punto intermedio entre los dos candidatos. Si no hubiera entradas, ambos controles serían vacíos y no producirían contradicción. Éste es el lugar concreto donde la hipótesis de acumulación asegura contenido a la prueba.
+
+</details>
+
+#### Microcontrol 18
 
 []{#MA-MIC-ANM-01-013-018}
 
-2. ¿Qué tolerancia se usa para dos destinos separados por $d>0$?
+¿Qué tolerancia se usa para dos destinos separados por $d>0$?
+
+[]{#MA-MSOL-ANM-01-013-018}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 18</summary>
+
+$\varepsilon=d/3$. Las dos distancias a una salida común suman menos que $2d/3<d$, contradicción.
+
+Si los candidatos son $L$ y $M$ con $d=|L-M|>0$, elegimos radios para tolerancia $d/3$ respecto de cada uno. Una entrada común a ambas ventanas tiene salida $f(x)$ que satisface las dos cotas. La triangular da $d\le|L-f(x)|+|f(x)-M|<2d/3<d$, imposible. La elección divide el presupuesto dejando un margen estricto; no basta hablar de dos destinos cercanos sin fijar una tolerancia que los separe.
+
+</details>
+
+#### Microcontrol 19
 
 []{#MA-MIC-ANM-01-013-019}
 
-3. ¿Un límite finito implica acotación global?
+¿Un límite finito implica acotación global?
+
+[]{#MA-MSOL-ANM-01-013-019}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 19</summary>
+
+No. Sólo proporciona acotación en alguna ventana perforada; $x^2$ tiene límite cero en cero y no está acotada en $\mathbb R$.
+
+El límite sólo controla entradas suficientemente cercanas al centro. La función puede crecer sin cota lejos de esa región. Para el cuadrado en cero, $|x|<\sqrt\varepsilon$ implica $x^2<\varepsilon$, lo que prueba el límite. Pero ninguna barrera global domina $x^2$ para todos los reales. La conclusión válida es acotación local perforada, no una propiedad de todo el dominio.
+
+</details>
+
+#### Microcontrol 20
 
 []{#MA-MIC-ANM-01-013-020}
 
-4. ¿Qué cota local sale del desafío $\varepsilon=1$?
+¿Qué cota local sale del desafío $\varepsilon=1$?
+
+[]{#MA-MSOL-ANM-01-013-020}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 20</summary>
+
+$|f(x)|<|L|+1$ cerca del centro, al usar $|f(x)|\le|f(x)-L|+|L|$.
+
+El desafío uno proporciona un radio donde $|f(x)-L|<1$. Introducimos $L$ en la diferencia y usamos $|f(x)|\le|f(x)-L|+|L|<1+|L|$. Esto acota todas las salidas de esa ventana por la misma constante. No hemos controlado aún el centro excluido ni entradas lejanas. Si el centro pertenece al dominio y queremos incluirlo, basta ampliar la barrera para incorporar también su valor.
+
+</details>
+
+#### Microcontrol 21
 
 []{#MA-MIC-ANM-01-013-021}
 
-5. ¿El orden estricto $f(x)<g(x)$ obliga $L<M$?
+¿El orden estricto $f(x)<g(x)$ obliga $L<M$?
+
+[]{#MA-MSOL-ANM-01-013-021}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 21</summary>
+
+No. Por ejemplo $f(x)=0$, $g(x)=x$ en $(0,\infty)$ tienen límite cero en cero.
+
+En el dominio positivo, cada entrada cumple $0<x$, así que la función cero está estrictamente debajo de la identidad. Sin embargo, ambas se aproximan a cero cuando las entradas se acercan a cero. La diferencia positiva puede hacerse arbitrariamente pequeña y desaparecer en el límite. El orden de límites conserva una desigualdad no estricta: un control estricto entre valores no obliga a mantener separación positiva entre los destinos.
+
+</details>
+
+#### Microcontrol 22
 
 []{#MA-MIC-ANM-01-013-022}
 
-6. ¿Qué hay que suponer de $f$ antes de usar el encierro?
+¿Qué hay que suponer de $f$ antes de usar el encierro?
+
+[]{#MA-MSOL-ANM-01-013-022}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 22</summary>
+
+Que esté entre las dos barreras localmente, con el mismo dominio pertinente. No se supone que ya tenga límite: el argumento construye su convergencia.
+
+Las barreras deben satisfacer $u(x)\le f(x)\le v(x)$ en una ventana pertinente y tender ambas al mismo $L$. Para cada tolerancia tomamos una ventana donde las dos barreras estén cerca de $L$, junto con la de encierro. Entonces $L-\varepsilon<f(x)<L+\varepsilon$. Esa estimación demuestra el límite de $f$ sin suponerlo. El dominio y la acumulación siguen siendo necesarios para que el límite formulado tenga contenido.
+
+</details>
+
+#### Microcontrol 23
 
 []{#MA-MIC-ANM-01-013-023}
 
-7. Si $|b(x)|\le K$ cerca de cero, ¿qué error controla $xb(x)$?
+Si $|b(x)|\le K$ cerca de cero, ¿qué error controla $xb(x)$?
+
+[]{#MA-MSOL-ANM-01-013-023}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 23</summary>
+
+$|xb(x)|\le K|x|$. Para $K>0$ se usa $\delta\le\varepsilon/K$; para $K=0$ el error es cero.
+
+Si la acotación de $b$ vale en un radio $r$, para $K>0$ tomamos $\delta=\min\{r,\varepsilon/K\}$. Cada entrada perforada de esa ventana satisface $|xb(x)|\le K|x|<\varepsilon$. El mínimo reúne la región de acotación y la precisión. Para $K=0$, $b(x)=0$ en la ventana y el producto ya tiene error cero. Separar ese caso evita una división por cero.
+
+</details>
+
+#### Microcontrol 24
 
 []{#MA-MIC-ANM-01-013-024}
 
-8. ¿Necesita $b$ tener límite para que $xb(x)\to0$?
+¿Necesita $b$ tener límite para que $xb(x)\to0$?
 
+[]{#MA-MSOL-ANM-01-013-024}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 24</summary>
+
+No. Basta su acotación local, que domina la oscilación por un factor que se hace pequeño.
+
+Una función localmente acotada puede oscilar sin aproximarse a un único número. Por ejemplo, cerca de cero puede valer uno en entradas racionales y menos uno en irracionales. Al multiplicarla por $x$, el error absoluto queda a lo sumo $|x|$, que se hace pequeño uniformemente. La oscilación no necesita desaparecer por sí sola; basta que su tamaño esté limitado y que el otro factor tienda a cero.
+
+</details>
+
+### Ejercicios de la sección 13.3
+
+#### Ejercicio 11. Una cota que incluye el centro
+
+[]{#MA-EX-ANM-01-013-011}
+
+Si $a\in D$, $a\in D^{\prime}$ y $f\to L$, prueba que $f$ está acotada en alguna ventana no perforada $D\cap B(a,r)$, sin suponer $f(a)=L$.
+
+[]{#MA-SOL-ANM-01-013-011}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 11</summary>
+
+La tolerancia $1$ entrega $r>0$ con $|f(x)|<|L|+1$ para toda entrada no central de la ventana. Elegimos $K=\max(|L|+1,|f(a)|+1)$. En el centro, $|f(a)|<K$; fuera del centro, la cota previa da $|f(x)|<K$. La unión de ambos casos prueba acotación. Sólo se añadió un valor finito a una cota local.
+
+La definición da una barrera sólo para las entradas no centrales. Para ampliar a la ventana completa hay que añadir el valor particular $f(a)$, que es un real finito porque $a\in D$. Tomar el máximo de ambas barreras cubre los dos casos. No se necesita que ese valor central coincida con $L$: una evaluación excepcional puede estar lejos del destino y aun así incluirse en una cota local finita.
+
+</details>
+
+#### Ejercicio 12. Encierro sin existencia supuesta
+
+[]{#MA-EX-ANM-01-013-012}
+
+Sea $f:\mathbb R\to\mathbb R$ y supongamos $-x^2\le f(x)\le2x^2$ para $0<|x|<1$. Prueba $f\to0$ sin usar reglas algebraicas posteriores.
+
+[]{#MA-SOL-ANM-01-013-012}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 12</summary>
+
+Las cotas implican $|f(x)|\le2x^2$ en esa ventana. Para $\varepsilon>0$ tomamos $\delta=\min(1,\sqrt{\varepsilon/2})>0$. Si $0<|x|<\delta$, entonces $|f(x)|\le2x^2<2\delta^2\le\varepsilon$. No se supuso que $f$ tuviera límite: el control universal lo establece. Las raíces positivas pertenecen al álgebra real elemental.
+
+Si $f(x)$ es no negativo, la cota superior da $|f(x)|\le2x^2$; si es negativo, la inferior da $|f(x)|\le x^2\le2x^2$. Por eso la estimación absoluta es válida en ambos casos. El radio elegido permanece en la región de encierro y hace $2x^2<\varepsilon$. La prueba parte de desigualdades sobre valores y construye directamente el límite, sin presuponer un destino de $f$.
+
+</details>
+
+#### Ejercicio 13. Oscilar y aun así converger
+
+[]{#MA-EX-ANM-01-013-013}
+
+Sea $b(x)=1$ para $x$ racional y $b(x)=-1$ para $x$ irracional. Prueba que $h(x)=xb(x)$ tiene límite cero en cero, sin decidir si $b$ tiene límite.
+
+[]{#MA-SOL-ANM-01-013-013}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 13</summary>
+
+Para toda entrada, $|b(x)|=1$ y $|h(x)|=|x|$. Dado $\varepsilon>0$ basta $\delta=\varepsilon$. Si $0<|x|<\delta$, el error de $h$ es menor que $\varepsilon$. El control procede de la magnitud del factor, no de la existencia de su límite.
+
+La magnitud de $b(x)$ es uno en cualquiera de sus dos ramas, así que no hace falta conocer su comportamiento de límite. La identidad $|xb(x)|=|x|$ reduce el control de salida al de entrada. La elección $\delta=\varepsilon$ funciona uniformemente para entradas racionales e irracionales. Las oscilaciones del signo pueden mantenerse, mientras el tamaño de las salidas se aproxima a cero.
+
+</details>
+
+#### Ejercicio 14. El orden no conserva separación estricta
+
+[]{#MA-EX-ANM-01-013-014}
+
+Construye $f<g$ en una ventana perforada con el mismo límite, y prueba que en general sí se conserva el orden no estricto de límites.
+
+[]{#MA-SOL-ANM-01-013-014}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 14</summary>
+
+En $(0,\infty)$, $f(x)=0$ y $g(x)=x$ satisfacen $f<g$ y ambas tienen límite cero: para la identidad sirve $\delta=\varepsilon$. Para la afirmación general, si $f\to L$, $g\to M$ y $L>M$, pedimos errores menores que $(L-M)/3$, reunimos radios con la ventana de orden y obtenemos una entrada por acumulación. Allí $f>L-(L-M)/3>M+(L-M)/3>g$, contradicción. Luego $L\le M$.
+
+El ejemplo demuestra que una diferencia positiva entre funciones puede desaparecer en el límite. Para el resultado general, suponemos lo contrario, $L>M$, y usamos una tolerancia menor que la separación de los destinos. Los radios y la ventana de orden deben reunirse para que las tres condiciones valgan en la misma entrada. La acumulación proporciona esa entrada. Las cotas colocarían a $f$ por encima de $g$, contradiciendo su orden local.
+
+</details>
+
+#### Ejercicio 15. Dos destinos no caben en una misma ventana
+
+[]{#MA-EX-ANM-01-013-015}
+
+Reconstruye la unicidad usando tolerancia $|L-M|/2$ en vez de un tercio. Explica por qué las desigualdades estrictas siguen bastando.
+
+[]{#MA-SOL-ANM-01-013-015}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 15</summary>
+
+Si $L\ne M$, $d=|L-M|>0$. Ambos contratos para $\varepsilon=d/2$ dan radios positivos. Acumulación proporciona una entrada en su mínimo. La triangular da $d\le|L-f(x)|+|f(x)-M|<d/2+d/2=d$, contradicción. La igualdad en la suma de tolerancias es admisible porque los errores individuales son estrictamente menores.
+
+Cada error es estrictamente menor que la mitad de la distancia entre candidatos. Al sumarlos obtenemos una cantidad estrictamente menor que la distancia completa, aunque los dos presupuestos sumen exactamente esa distancia. Por eso no se exige un margen de un tercio en esta variante. La entrada común sigue siendo indispensable y viene de la acumulación; sin ella, los controles podrían ser vacíos y la triangular no podría aplicarse a una salida real.
+
+</details>
 ## 13.4. Negar un candidato y construir infracciones
 
 []{#MA-SEC-ANM-01-013-004}
@@ -280,38 +858,230 @@ Otra refutación útil: $r(x)=1/x$ en $(0,\infty)$ no tiene límite real finito 
 
 ### Antes de seguir
 
+#### Microcontrol 25
+
 []{#MA-MIC-ANM-01-013-025}
 
-1. ¿Cuál es el orden de cuantificadores al refutar un candidato?
+¿Cuál es el orden de cuantificadores al refutar un candidato?
+
+[]{#MA-MSOL-ANM-01-013-025}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 25</summary>
+
+$\exists\varepsilon_0>0\ \forall\delta>0\ \exists x\in D$. La tolerancia queda fija y el infractor puede depender del radio.
+
+Fijado el candidato $L$, refutarlo exige una tolerancia positiva que ninguna ventana consiga cumplir. Después de que se proponga cualquier radio, encontramos una entrada $x\in D$ con $0<|x-a|<\delta$ y $|f(x)-L|\ge\varepsilon_0$. El infractor puede cambiar con el radio; la tolerancia no. Esta persistencia a todas las escalas distingue una refutación de observar un único valor lejano al candidato.
+
+</details>
+
+#### Microcontrol 26
 
 []{#MA-MIC-ANM-01-013-026}
 
-2. ¿Por qué la negación usa $\ge\varepsilon_0$?
+¿Por qué la negación usa $\ge\varepsilon_0$?
+
+[]{#MA-MSOL-ANM-01-013-026}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 26</summary>
+
+Porque negar $|f(x)-L|<\varepsilon_0$ en el orden real da $|f(x)-L|\ge\varepsilon_0$. La frontera también infringe una bola abierta.
+
+La bola de precisión usa desigualdad estricta. Su complemento incluye tanto salidas más lejanas como las que quedan exactamente en su frontera. Por ejemplo, un error igual a uno incumple el desafío $\varepsilon_0=1$. Si en la negación exigiéramos sólo errores mayores que la tolerancia, eliminaríamos infractores legítimos. La inversión de cuantificadores debe acompañarse de la negación exacta de la desigualdad.
+
+</details>
+
+#### Microcontrol 27
 
 []{#MA-MIC-ANM-01-013-027}
 
-3. ¿Refutar $L=0$ basta para demostrar que no existe ningún límite?
+¿Refutar $L=0$ basta para demostrar que no existe ningún límite?
+
+[]{#MA-MSOL-ANM-01-013-027}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 27</summary>
+
+No. Otro real podría ser límite. Hay que descartar todos los candidatos o usar una contradicción independiente del candidato.
+
+La función constante uno no tiene límite cero, pero sí tiene límite uno. Por eso una refutación del candidato cero no descarta existencia de límite. Para demostrar inexistencia, debemos mostrar que cada real propuesto falla, o producir datos que contradigan cualquier posible destino, como dos rutas admisibles cuyas imágenes tengan límites distintos. La conclusión debe conservar el alcance lógico del argumento que se ha probado.
+
+</details>
+
+#### Microcontrol 28
 
 []{#MA-MIC-ANM-01-013-028}
 
-4. ¿Por qué usamos $1/(n+1)$ en vez de $1/n$ desde $n=0$?
+¿Por qué usamos $1/(n+1)$ en vez de $1/n$ desde $n=0$?
+
+[]{#MA-MSOL-ANM-01-013-028}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 28</summary>
+
+Porque $n+1>0$ para todos los índices, mientras $1/0$ no está definido.
+
+La indexación comienza en cero, de modo que $1/n$ no define el primer término. Sustituir el denominador por $n+1$ lo hace positivo para todos los índices y produce una sucesión completa. Sus términos se acercan a cero porque, para cualquier tolerancia, podemos hacer $n+1$ mayor que su recíproco. El desplazamiento corrige la definición sin cambiar el mecanismo de aproximación por escalas cada vez menores.
+
+</details>
+
+#### Microcontrol 29
 
 []{#MA-MIC-ANM-01-013-029}
 
-5. ¿Qué prueba la no vaciedad de todos los conjuntos $E_n$?
+¿Qué prueba la no vaciedad de todos los conjuntos $E_n$?
+
+[]{#MA-MSOL-ANM-01-013-029}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 29</summary>
+
+Que el candidato falla. Para cualquier radio elegimos una escala menor y un único infractor de ese conjunto.
+
+Cada $E_n$ reúne infractores de la misma tolerancia dentro de la escala $\eta_n=1/(n+1)$. Para un radio arbitrario $\delta$, arquimedianidad permite elegir $n$ con $\eta_n<\delta$. La no vaciedad de ese conjunto proporciona una entrada que también está dentro del radio propuesto y mantiene el error grande. Para refutar el candidato sólo escogemos un testigo de un conjunto a la vez; no necesitamos todavía una sucesión de testigos.
+
+</details>
+
+#### Microcontrol 30
 
 []{#MA-MIC-ANM-01-013-030}
 
-6. ¿La no vaciedad de cada $E_n$ proporciona por sí sola un selector?
+¿La no vaciedad de cada $E_n$ proporciona por sí sola un selector?
+
+[]{#MA-MSOL-ANM-01-013-030}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 30</summary>
+
+No. $\forall n\exists x\in E_n$ no permite intercambiar cuantificadores sin una regla de selección o una hipótesis adicional.
+
+Construir una sucesión requiere una asignación simultánea $n\mapsto x_n$ con $x_n\in E_n$ para todo índice. La afirmación de que cada conjunto tiene algún elemento no especifica esa asignación. En el marco fundacional explícito del capítulo, el paso se justifica mediante una regla dada, una enumeración que permita seleccionar mínimos o el principio adicional de elección numerable. No debe quedar oculto en la frase «escojamos un infractor para cada escala».
+
+</details>
+
+#### Microcontrol 31
 
 []{#MA-MIC-ANM-01-013-031}
 
-7. Para el salto con valores $\pm1$, ¿por qué una distancia a $L$ es al menos $1$?
+Para el salto con valores $\pm1$, ¿por qué una distancia a $L$ es al menos $1$?
+
+[]{#MA-MSOL-ANM-01-013-031}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 31</summary>
+
+Si ambas fueran menores que $1$, la triangular daría $2=|1-(-1)|<2$, contradicción.
+
+Las dos salidas del salto están separadas por dos unidades. Si el candidato estuviera a menos de una unidad de ambas, usarlo como punto intermedio daría una separación menor que dos, contradicción. Al menos una rama conserva por tanto error mayor o igual que uno. Elegimos esa rama según $L$ y, para cada radio, una entrada de su signo a distancia $\delta/2$. Así el error persiste arbitrariamente cerca del centro.
+
+</details>
+
+#### Microcontrol 32
 
 []{#MA-MIC-ANM-01-013-032}
 
-8. ¿Qué asegura $x=\min(\delta/2,1/[2(|L|+1)])$ en la refutación de $1/x$?
+¿Qué asegura $x=\min(\delta/2,1/[2(|L|+1)])$ en la refutación de $1/x$?
 
+[]{#MA-MSOL-ANM-01-013-032}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 32</summary>
+
+$0<x<\delta$ y $1/x\ge2(|L|+1)$, luego $|1/x-L|>1$. Funciona para cualquier candidato real.
+
+Los dos números del mínimo son positivos, de modo que $x>0$. Además $x\le\delta/2<\delta$ y $x\le1/[2(|L|+1)]$, lo que implica $1/x\ge2(|L|+1)$. La triangular inversa da $|1/x-L|\ge1/x-|L|\ge|L|+2>1$. La misma tolerancia uno refuta cada candidato finito, usando una entrada que puede depender de él y del radio.
+
+</details>
+
+### Ejercicios de la sección 13.4
+
+#### Ejercicio 16. La frontera ya es infracción
+
+[]{#MA-EX-ANM-01-013-016}
+
+Para $f(x)=x$ en cero y candidato $L=1$, da una tolerancia fija y un infractor explícito para cada radio.
+
+[]{#MA-SOL-ANM-01-013-016}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 16</summary>
+
+Tomemos $\varepsilon_0=1$. Dado $\delta>0$, sea $x=-\delta/2$. Entonces $0<|x|<\delta$ y $|x-1|=1+\delta/2>1$. El candidato se refuta aunque la función sí tiene otro límite, cero.
+
+**Retorno visual.** Véase [C13-F04](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html#fig-anm-c13-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+El candidato uno queda a distancia $1+\delta/2$ de la salida negativa elegida. La tolerancia uno se fija antes del radio y todos los radios tienen un infractor no central. Esto refuta el candidato uno, mientras la función identidad tiene límite cero por el control $\delta=\varepsilon$. Para ilustrar específicamente la frontera también puede usarse tolerancia $1/2$ y una entrada positiva suficientemente pequeña, pero el infractor negativo ya prueba la refutación pedida.
+
+</details>
+
+#### Ejercicio 17. Una escala basta para todos los radios
+
+[]{#MA-EX-ANM-01-013-017}
+
+Sean $r_n>0$ tales que para cada $\delta>0$ existe $n$ con $r_n<\delta$. Prueba que la negación del límite equivale a no vaciedad de los infractores en cada escala $r_n$, para una misma tolerancia.
+
+[]{#MA-SOL-ANM-01-013-017}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 17</summary>
+
+La negación completa aplicada a $\delta=r_n$ produce un infractor para cada $n$ con la misma $\varepsilon_0$. A la inversa, dados conjuntos no vacíos y un radio cualquiera $\delta$, la propiedad de la escala da $n$ con $r_n<\delta$. Un único punto infractor de ese conjunto también está en la ventana de radio $\delta$ y conserva el error $\ge\varepsilon_0$. No hace falta escoger todos los puntos a la vez.
+
+No se exige que la escala sea monótona: sólo que contenga algún radio menor que cualquier radio propuesto. En la dirección inversa escogemos ese índice y usamos un testigo del conjunto correspondiente. La tolerancia debe ser la misma en todos los conjuntos, para que la infracción persista al cambiar de escala. La prueba refuta el candidato sin construir todavía una función que elija testigos para todos los índices simultáneamente.
+
+</details>
+
+#### Ejercicio 18. Todos los reales quedan descartados
+
+[]{#MA-EX-ANM-01-013-018}
+
+Prueba directamente, sin sucesiones, que $f(x)=1/|x|$ en $\mathbb R\setminus\{0\}$ no tiene límite real finito en cero.
+
+[]{#MA-SOL-ANM-01-013-018}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 18</summary>
+
+Fijemos cualquier $L$. Para tolerancia $1$ y cualquier $\delta>0$, elegimos $x=\min(\delta/2,1/[2(|L|+1)])>0$. Está en el dominio y en la ventana perforada; $1/|x|\ge2(|L|+1)$ implica $|f(x)-L|\ge f(x)-|L|>1$. Cada candidato tiene infractores arbitrariamente próximos, por lo que no existe límite real finito.
+
+El candidato real $L$ es arbitrario, y la tolerancia uno sirve para todos. El segundo término del mínimo hace que la salida sea mayor que la magnitud de $L$ con un margen superior a uno; el primero sitúa la entrada dentro de cualquier ventana propuesta. Se verifican dominio, perforación y error grande. La conclusión descarta todos los límites reales finitos, sin introducir aquí una definición de límite infinito.
+
+</details>
+
+#### Ejercicio 19. Cada entrada favorable no es un límite
+
+[]{#MA-EX-ANM-01-013-019}
+
+Prueba que la condición «para todo $\varepsilon,\delta>0$ existe $x$ con $0<|x|<\delta$ y $|f(x)|<\varepsilon$» no garantiza $f\to0$.
+
+[]{#MA-SOL-ANM-01-013-019}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 19</summary>
+
+Sea $f(x)=0$ para $x>0$, $f(x)=1$ para $x\le0$. Dadas $\varepsilon,\delta>0$, el punto $\delta/2$ cumple la condición favorable. Pero el punto $-\delta/2$ tiene error $1$ para cada radio, por lo que la tolerancia $\varepsilon_0=1/2$ refuta $L=0$. La condición débil elige una entrada; el límite debe controlar todas.
+
+En cada ventana hay una entrada positiva que entrega salida cero, por lo que el enunciado débil encuentra un testigo favorable para cualquier precisión. En la misma ventana hay también una entrada negativa con salida uno. El límite exige controlar ambas, no sólo seleccionar la que conviene. La tolerancia fija $1/2$ y los infractores negativos muestran la diferencia entre existencia de un punto bueno y control universal de la ventana.
+
+</details>
+
+#### Ejercicio 20. Fallo sin magnitud infinita
+
+[]{#MA-EX-ANM-01-013-020}
+
+Construye una función globalmente acotada sin límite en cero y refútala para todo candidato mediante una tolerancia fija.
+
+[]{#MA-SOL-ANM-01-013-020}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 20</summary>
+
+El salto con salidas $-1$ y $1$ está acotado por $1$. Para cada candidato $L$ una de las distancias a esas dos salidas es $\ge1$, por triangular. Fijado ese signo, el punto con ese signo y magnitud $\delta/2$ infringe el error para cualquier radio, con tolerancia $1$. La falta de límite puede deberse a incompatibilidad de destinos sin que los valores sean grandes.
+
+Para cada candidato, la distancia entre las dos salidas obliga a que una de ellas quede separada de él al menos por uno. Elegimos esa rama una vez fijado el candidato. Después cada radio proporciona una entrada de la rama con magnitud $\delta/2$. Así se verifican todos los cuantificadores de la refutación. La función mantiene magnitudes iguales a uno, de modo que la inexistencia del límite no puede atribuirse a falta de acotación.
+
+</details>
 ## 13.5. Lo que detectan las sucesiones
 
 []{#MA-SEC-ANM-01-013-005}
@@ -348,38 +1118,230 @@ Una sola ruta con imágenes que no convergen a un candidato lo refuta. Dos rutas
 
 ### Antes de seguir
 
+#### Microcontrol 33
+
 []{#MA-MIC-ANM-01-013-033}
 
-1. ¿Qué tres condiciones hacen admisible a $(x_n)$?
+¿Qué tres condiciones hacen admisible a $(x_n)$?
+
+[]{#MA-MSOL-ANM-01-013-033}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 33</summary>
+
+$x_n\in D$, $x_n\ne a$ para todos los índices y $x_n\to a$.
+
+Las dos primeras condiciones aseguran que cada evaluación $f(x_n)$ está definida y corresponde a una entrada perforada. La convergencia de las entradas asegura que toda cola suficientemente tardía queda dentro de cualquier radio dado. Juntas permiten transportar el control funcional a un control secuencial. Acercarse al centro no basta si se utilizan entradas fuera del dominio o si se repite el centro que la definición excluye.
+
+</details>
+
+#### Microcontrol 34
 
 []{#MA-MIC-ANM-01-013-034}
 
-2. ¿Cómo se encadenan $\varepsilon$, $\delta$ y $N$ en la dirección directa?
+¿Cómo se encadenan $\varepsilon$, $\delta$ y $N$ en la dirección directa?
+
+[]{#MA-MSOL-ANM-01-013-034}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 34</summary>
+
+$\varepsilon$ exige un radio $\delta$ para la función; la convergencia de entradas proporciona $N$ para ese radio; la cola cumple el error de salida.
+
+Recibida $\varepsilon>0$, el límite funcional entrega un radio $\delta>0$. La convergencia $x_n\to a$ entrega luego un corte $N$ con $|x_n-a|<\delta$ para todos los índices tardíos. La admisibilidad aporta $x_n\ne a$ y $x_n\in D$, completando el antecedente del control funcional. Por eso $|f(x_n)-L|<\varepsilon$ en toda esa cola. Cada escala se elige después de la que debe responder.
+
+</details>
+
+#### Microcontrol 35
 
 []{#MA-MIC-ANM-01-013-035}
 
-3. ¿Por qué la sucesión constante $x_n=a$ no es admisible?
+¿Por qué la sucesión constante $x_n=a$ no es admisible?
+
+[]{#MA-MSOL-ANM-01-013-035}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 35</summary>
+
+Porque alcanza siempre el centro excluido. Evaluaría $f(a)$, un dato que el límite perforado no controla.
+
+La sucesión constante en el centro sí converge a él, pero no cumple $x_n\ne a$. Si $f(a)$ está definido, sus imágenes serían constantemente ese valor, que puede diferir del límite perforado. Si el centro no pertenece al dominio, las imágenes ni siquiera podrían evaluarse. Excluirlo evita que un dato central ajeno al límite se introduzca en una ruta que pretende comprobar la aproximación.
+
+</details>
+
+#### Microcontrol 36
 
 []{#MA-MIC-ANM-01-013-036}
 
-4. Si una ruta admisible tiene imágenes que no convergen a $L$, ¿qué concluyes?
+Si una ruta admisible tiene imágenes que no convergen a $L$, ¿qué concluyes?
+
+[]{#MA-MSOL-ANM-01-013-036}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 36</summary>
+
+Que $L$ no puede ser el límite funcional. Si lo fuera, la dirección directa controlaría también esa ruta.
+
+La dirección directa afirma que un límite funcional debe controlar todas las sucesiones admisibles. Encontrar una sola que incumpla la convergencia hacia $L$ contradice esa consecuencia necesaria. Esto refuta precisamente ese candidato. Si las imágenes convergen a otro valor, podríamos estar viendo el verdadero destino; para descartar cualquier límite hacen falta además datos que contradigan todos los candidatos, por ejemplo dos rutas con destinos diferentes.
+
+</details>
+
+#### Microcontrol 37
 
 []{#MA-MIC-ANM-01-013-037}
 
-5. ¿Qué regla elige infractores cuando está dada $e:\mathbb N\to D$ sobreyectiva?
+¿Qué regla elige infractores cuando está dada $e:\mathbb N\to D$ sobreyectiva?
+
+[]{#MA-MSOL-ANM-01-013-037}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 37</summary>
+
+$k_n=\min\{k:e(k)\in E_n\}$ y $x_n=e(k_n)$. La no vaciedad garantiza un mínimo natural único.
+
+La sobreyectividad de $e$ garantiza que algún índice de la enumeración representa un elemento del conjunto no vacío $E_n$. El conjunto de esos índices es entonces un subconjunto no vacío de naturales y tiene un mínimo único. Esta regla define $x_n$ sin escoger arbitrariamente entre reales. Como $x_n\in E_n$, sus distancias al centro quedan por debajo de $1/(n+1)$ y sus errores de salida mantienen la tolerancia que refuta el candidato.
+
+</details>
+
+#### Microcontrol 38
 
 []{#MA-MIC-ANM-01-013-038}
 
-6. ¿Deben crecer estrictamente los $k_n$ de ese selector?
+¿Deben crecer estrictamente los $k_n$ de ese selector?
+
+[]{#MA-MSOL-ANM-01-013-038}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 38</summary>
+
+No. No se está construyendo una subsucesión de $e$; se escoge una entrada que infringe cada escala.
+
+El objetivo es satisfacer una condición de pertenencia a $E_n$ en cada escala, no preservar el orden de una enumeración. La regla vuelve a buscar el primer índice admisible para cada conjunto y no impone crecimiento estricto. Para que $x_n\to a$ basta la cota $0<|x_n-a|<1/(n+1)$. No hace falta interpretar la ruta como extracción de $e$ ni añadir condiciones a los índices que la construcción no proporciona.
+
+</details>
+
+#### Microcontrol 39
 
 []{#MA-MIC-ANM-01-013-039}
 
-7. ¿Qué hipótesis permite la recíproca en cualquier dominio real?
+¿Qué hipótesis permite la recíproca en cualquier dominio real?
+
+[]{#MA-MSOL-ANM-01-013-039}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 39</summary>
+
+$\mathrm{CC}(\mathbb R)$, aplicada explícitamente a la familia de conjuntos reales no vacíos $E_n$. El teorema es condicional a esa hipótesis.
+
+Cuando el dominio no tiene una enumeración dada, los conjuntos $E_n$ siguen siendo subconjuntos reales no vacíos, pero falta la regla anterior de mínimos de índices. El principio $\mathrm{CC}(\mathbb R)$ entrega un selector para esa familia numerable. Con él construimos una ruta que se acerca a $a$ mientras mantiene el error grande y contradice la hipótesis secuencial. El capítulo registra esta hipótesis adicional explícitamente; la dirección directa no la utiliza.
+
+</details>
+
+#### Microcontrol 40
 
 []{#MA-MIC-ANM-01-013-040}
 
-8. ¿Necesita elección numerable la refutación por las rutas $\pm1/(n+1)$?
+¿Necesita elección numerable la refutación por las rutas $\pm1/(n+1)$?
 
+[]{#MA-MSOL-ANM-01-013-040}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 40</summary>
+
+No. Las dos rutas están dadas por fórmulas y la dirección directa basta para comparar sus destinos distintos.
+
+Las fórmulas ya definen cada término de las dos rutas, por lo que no se seleccionan elementos de conjuntos arbitrarios. En el salto, sus imágenes son constantemente menos uno y uno. Si existiera un límite funcional, la dirección directa obligaría a que ambas imágenes convergieran a él; la unicidad del límite de sucesiones lo identificaría con dos números distintos. La contradicción se obtiene sin recurrir a la recíproca condicional.
+
+</details>
+
+### Ejercicios de la sección 13.5
+
+#### Ejercicio 21. Una ruta favorable engaña
+
+[]{#MA-EX-ANM-01-013-021}
+
+Sea $f(x)=0$ si $x=1/(n+1)$ para algún $n\in\mathbb N$ y $f(x)=1$ en las demás entradas reales. Encuentra dos rutas admisibles en cero que descarten un límite.
+
+[]{#MA-SOL-ANM-01-013-021}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 21</summary>
+
+La ruta $u_n=1/(n+1)$ tiene imágenes cero. La ruta $v_n=-1/(n+1)$ tiene imágenes uno, pues nunca coincide con una entrada positiva de la primera ruta. Ambas evitan cero y convergen a él por C06. Si hubiese límite $L$, la dirección directa y la unicidad secuencial darían a la vez $L=0$ y $L=1$, contradicción.
+
+Las dos rutas pertenecen al dominio real, nunca alcanzan cero y sus magnitudes $1/(n+1)$ tienden a cero. La primera coincide por construcción con las entradas de valor cero; la segunda es negativa y por eso siempre produce uno. La dirección directa del criterio secuencial obligaría a ambas imágenes a tener el mismo destino si existiera un límite funcional. Basta esta contradicción y no se utiliza elección numerable, porque las rutas están dadas por fórmulas.
+
+</details>
+
+#### Ejercicio 22. Un prefijo puede tocar el centro
+
+[]{#MA-EX-ANM-01-013-022}
+
+Supón $f\to L$ en $a$, $x_n\in D$ y $x_n\to a$, con $x_n\ne a$ para todos los índices a partir de cierto $N_0$. Prueba $f(x_n)\to L$ si $f$ está definida en todos los términos.
+
+[]{#MA-SOL-ANM-01-013-022}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 22</summary>
+
+Dado $\varepsilon>0$, el límite funcional ofrece $\delta$. La convergencia de $x_n$ da $N_1$ que asegura $|x_n-a|<\delta$. Para $n\ge\max(N_0,N_1)$ también hay distancia positiva, y la implicación funcional produce error menor que $\varepsilon$. Los términos anteriores no afectan la convergencia.
+
+El corte máximo reúne aproximación al centro y evitación eventual del centro. A partir de él, cada término satisface todas las condiciones del límite perforado. Los términos iniciales pueden evaluar $f(a)$, pero sólo forman un prefijo finito y no alteran la convergencia de las imágenes. La hipótesis de que todas las evaluaciones estén definidas asegura que la sucesión de imágenes sea un objeto completo, no una lista con términos ausentes.
+
+</details>
+
+#### Ejercicio 23. El mínimo vive en los índices
+
+[]{#MA-EX-ANM-01-013-023}
+
+En un dominio enumerado, justifica la existencia del selector $x_n=e(\min I_n)$ y explica por qué no se toma el mínimo de $E_n\subseteq\mathbb R$.
+
+[]{#MA-SOL-ANM-01-013-023}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 23</summary>
+
+Por sobreyectividad y no vaciedad de $E_n$, el conjunto $I_n=\{k:e(k)\in E_n\}$ contiene algún natural. El buen orden da un mínimo único. La regla $n\mapsto\min I_n$ es funcional y su composición con $e$ produce el selector real. Un conjunto real no vacío puede no tener mínimo, por ejemplo $(0,1)$; no se puede reemplazar el mínimo de índices por uno de valores.
+
+**Retorno visual.** Véase [C13-F05](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html#fig-anm-c13-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+La enumeración permite convertir una búsqueda entre reales en una búsqueda entre naturales. Por sobreyectividad, algún índice representa un infractor; el conjunto de índices es no vacío y su menor elemento es único. Esa unicidad define una regla para cada escala. Un conjunto de reales puede no tener un menor valor y, aunque lo tuviera en algunos casos, no se ha supuesto tal propiedad para todos los $E_n$. El buen orden utilizado pertenece a los índices naturales.
+
+</details>
+
+#### Ejercicio 24. La ruta de infracciones prueba la recíproca
+
+[]{#MA-EX-ANM-01-013-024}
+
+Bajo $\mathrm{CC}(\mathbb R)$, prueba la recíproca secuencial y localiza exactamente el uso de la hipótesis.
+
+[]{#MA-SOL-ANM-01-013-024}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 24</summary>
+
+Supongamos que todas las rutas admisibles tienen imágenes tendiendo a $L$ y que falla el contrato funcional. Hay $\varepsilon_0>0$ y conjuntos reales $E_n$ no vacíos de infractores con $0<|x-a|<1/(n+1)$. Aplicamos aquí, y sólo aquí, $\mathrm{CC}(\mathbb R)$ para obtener una función $n\mapsto x_n\in E_n$. Las cotas implican $x_n\to a$, pero $|f(x_n)-L|\ge\varepsilon_0$ para todos los índices impide convergencia de imágenes a $L$. La contradicción prueba el límite. No se presenta como prueba incondicional.
+
+La hipótesis adicional sólo aparece al convertir los conjuntos de infractores en una sucesión simultáneamente seleccionada. Una vez dada esa sucesión, las distancias al centro tienden a cero por su cota $1/(n+1)$, y los errores de salida permanecen por encima de la misma tolerancia positiva. La ruta contradice el supuesto de convergencia de todas las imágenes admisibles. Las demás estimaciones no necesitan una nueva elección, y la conclusión mantiene explícita la condición fundacional.
+
+</details>
+
+#### Ejercicio 25. No hace falta una ruta distinta en cada paso
+
+[]{#MA-EX-ANM-01-013-025}
+
+Para el selector de infractores, demuestra que los términos no necesitan ser distintos entre sí, pero ningún punto fijo distinto de $a$ puede aparecer en índices arbitrariamente grandes.
+
+[]{#MA-SOL-ANM-01-013-025}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 25</summary>
+
+La prueba de convergencia sólo necesita $|x_n-a|<1/(n+1)$; no usa inyectividad. Si un punto fijo $t\ne a$ apareciera en índices arbitrariamente grandes, su distancia $d=|t-a|>0$ tendría que ser menor que $1/(n+1)$ para índices con esa escala menor que $d$, imposible. Puede haber repeticiones finitas de valores, aunque no se hayan exigido términos diferentes.
+
+Si $t\ne a$ tiene distancia fija $d>0$, existe un corte desde el cual $1/(n+1)<d$. La cota de los infractores excluye entonces que $x_n=t$ en cualquier índice posterior. Cada valor no central puede repetirse al principio, pero sólo finitas veces. No se deduce que todos los términos sean distintos ni se necesita imponerlo: la convergencia sigue únicamente de que sus distancias al centro se reduzcan con la escala.
+
+</details>
 ## 13.6. Combinar límites con presupuestos de error
 
 []{#MA-SEC-ANM-01-013-006}
@@ -428,38 +1390,228 @@ Si $Q(a)=0$, la regla de cocientes no decide nada. $(x^2-1)/(x-1)$ en $x\ne1$ se
 
 ### Antes de seguir
 
+#### Microcontrol 41
+
 []{#MA-MIC-ANM-01-013-041}
 
-1. ¿Cómo se reparte $\varepsilon$ en una suma?
+¿Cómo se reparte $\varepsilon$ en una suma?
+
+[]{#MA-MSOL-ANM-01-013-041}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 41</summary>
+
+Con errores menores que $\varepsilon/2$ para cada sumando y el mínimo de ambos radios.
+
+La diferencia de la suma respecto del destino es $(f-L)+(g-M)$. La triangular la domina por la suma de ambos errores. Pedimos que cada uno sea menor que $\varepsilon/2$ y escogemos el mínimo de sus radios, para que los dos controles valgan en la misma ventana. El error total queda entonces estrictamente por debajo de $\varepsilon$. Reducir ventanas permite sincronizar condiciones; no hace falta conocer un radio óptimo.
+
+</details>
+
+#### Microcontrol 42
 
 []{#MA-MIC-ANM-01-013-042}
 
-2. ¿Cómo se trata la multiplicación por una constante nula?
+¿Cómo se trata la multiplicación por una constante nula?
+
+[]{#MA-MSOL-ANM-01-013-042}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 42</summary>
+
+Por separado: el error de la función cero es cero, sin dividir por la constante.
+
+Si la constante es cero, tanto la función multiplicada como el destino multiplicado son cero en toda entrada admitida. El error es por tanto cero y cualquier radio positivo sirve. Para una constante $c\ne0$ se pide al límite original una precisión $\varepsilon/|c|$. Esta fórmula sólo se usa después de separar el caso cero, porque dividir por su magnitud en ese caso no tendría sentido.
+
+</details>
+
+#### Microcontrol 43
 
 []{#MA-MIC-ANM-01-013-043}
 
-3. ¿Qué identidad prepara el producto?
+¿Qué identidad prepara el producto?
+
+[]{#MA-MSOL-ANM-01-013-043}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 43</summary>
+
+$fg-LM=f(g-M)+M(f-L)$. Se controla $f$ con una barrera local y los dos errores con radios.
+
+Añadir y restar $fM$ produce la identidad $fg-LM=f(g-M)+M(f-L)$. El primer error aparece multiplicado por un valor variable de $f$, que necesita una barrera local común; el segundo por la constante $M$. Una cota como $|f|<|L|+1$ convierte ambos multiplicadores en datos fijos. Entonces podemos distribuir la tolerancia entre los dos errores y reunir los radios que aseguran barrera y precisión.
+
+</details>
+
+#### Microcontrol 44
 
 []{#MA-MIC-ANM-01-013-044}
 
-4. ¿Por qué $|M|+1$ es útil en el presupuesto de producto?
+¿Por qué $|M|+1$ es útil en el presupuesto de producto?
+
+[]{#MA-MSOL-ANM-01-013-044}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 44</summary>
+
+Es positivo incluso si $M=0$, y domina $|M|$. Permite dividir por una constante segura.
+
+Si usáramos $|M|$ en un denominador, el caso $M=0$ dejaría la expresión sin definir. Usar $|M|+1$ mantiene un denominador positivo y no menor que la magnitud del multiplicador. Por ejemplo, pedir $|f-L|<\varepsilon/[2(|M|+1)]$ garantiza que $|M||f-L|<\varepsilon/2$ cuando el multiplicador es positivo; si es cero, el producto del error es cero. La elección deja un margen uniforme y cubre ambos casos.
+
+</details>
+
+#### Microcontrol 45
 
 []{#MA-MIC-ANM-01-013-045}
 
-5. ¿Qué tolerancia garantiza que $g$ no se anule si $M\ne0$?
+¿Qué tolerancia garantiza que $g$ no se anule si $M\ne0$?
+
+[]{#MA-MSOL-ANM-01-013-045}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 45</summary>
+
+$|g-M|<|M|/2$, que implica $|g|>|M|/2>0$.
+
+El límite de $g$ entrega un radio para la tolerancia positiva $|M|/2$. En esa ventana, la triangular inversa da $|g(x)|\ge|M|-|g(x)-M|>|M|/2$. Así $g$ no sólo evita cero, sino que queda separado de él por una constante común. Esta barrera permite controlar errores de recíprocos y cocientes sin dejar crecer arbitrariamente el denominador invertido.
+
+</details>
+
+#### Microcontrol 46
 
 []{#MA-MIC-ANM-01-013-046}
 
-6. ¿Cuál es el dominio correcto de $f/g$?
+¿Cuál es el dominio correcto de $f/g$?
+
+[]{#MA-MSOL-ANM-01-013-046}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 46</summary>
+
+$D_0=\{x\in D:g(x)\ne0\}$. Si $M\ne0$, incluye toda una ventana perforada del dominio original.
+
+El cociente sólo se evalúa donde el denominador es distinto de cero. Declarar $D_0$ hace visible esa condición. Si $M\ne0$, la barrera local anterior muestra que toda entrada del dominio original suficientemente próxima y distinta de $a$ pertenece a $D_0$. Como $a$ acumulaba esas entradas, también acumula el dominio del cociente. Los ceros lejanos pueden excluirse sin alterar la pregunta de límite local.
+
+</details>
+
+#### Microcontrol 47
 
 []{#MA-MIC-ANM-01-013-047}
 
-7. ¿Qué sucede con el cociente si el límite del denominador es cero?
+¿Qué sucede con el cociente si el límite del denominador es cero?
+
+[]{#MA-MSOL-ANM-01-013-047}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 47</summary>
+
+La regla no se aplica. Puede haber cancelación y límite finito, o puede faltar límite; hace falta otro argumento.
+
+El dato $g\to0$ no proporciona la barrera inferior positiva usada en la regla. Por ejemplo, en entradas no nulas el cociente $x/x$ vale uno y tiene límite uno; en cambio $1/x$ no tiene límite real finito en cero. Ambos tienen denominador que tiende a cero y conclusiones diferentes. No se asigna significado a una división por el límite cero; se estudia el cociente en su dominio mediante otro control.
+
+</details>
+
+#### Microcontrol 48
 
 []{#MA-MIC-ANM-01-013-048}
 
-8. ¿Necesita la regla de producto el criterio secuencial recíproco?
+¿Necesita la regla de producto el criterio secuencial recíproco?
 
+[]{#MA-MSOL-ANM-01-013-048}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 48</summary>
+
+No. Se demostró directamente con radios, cota local e identidades algebraicas.
+
+Las estimaciones del producto trabajan con una entrada arbitraria de una ventana perforada. Usan una identidad algebraica, acotación local y radios que hacen pequeños los errores. No seleccionan una sucesión de entradas ni convierten condiciones secuenciales en condiciones funcionales. Por tanto la prueba directa no hereda la hipótesis de elección numerable que se declaró en otro teorema. Mantener separadas las vías de prueba preserva su alcance fundacional.
+
+</details>
+
+### Ejercicios de la sección 13.6
+
+#### Ejercicio 26. Cancelar antes de usar un cociente
+
+[]{#MA-EX-ANM-01-013-026}
+
+Calcula y prueba el límite en $2$ de $(x^2-4)/(x-2)$ en su dominio natural. ¿Por qué no se usa directamente la regla de cociente?
+
+[]{#MA-SOL-ANM-01-013-026}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 26</summary>
+
+El dominio es $\mathbb R\setminus\{2\}$. Allí la factorización da $(x^2-4)/(x-2)=x+2$, que tiene límite $4$: con $\delta=\varepsilon$ el error es $|x-2|<\varepsilon$. El límite del denominador es cero, por lo que el criterio de cocientes no se aplica. La cancelación es válida sólo fuera del punto excluido, exactamente el dominio pertinente.
+
+Factorizamos el numerador como $(x-2)(x+2)$. En el dominio permitido el factor $x-2$ es no nulo y puede cancelarse, obteniendo igualdad exacta con la afín $x+2$. No se extiende esa igualdad como evaluación del cociente en dos, donde el cociente no está definido. Para el límite sólo hacen falta las entradas perforadas; allí el error respecto de cuatro es $|x-2|$. La regla de cocientes no permite dividir por el límite cero del denominador.
+
+</details>
+
+#### Ejercicio 27. Un denominador con ceros lejanos
+
+[]{#MA-EX-ANM-01-013-027}
+
+Sean $f(x)=x+1$, $g(x)=x^2-4$. Prueba el límite de $f/g$ en cero y declara el dominio.
+
+[]{#MA-SOL-ANM-01-013-027}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 27</summary>
+
+El dominio es $D_0=\mathbb R\setminus\{-2,2\}$. Polinomios dan límites $1$ y $-4$ en cero; el segundo es no nulo. La regla de cocientes prueba límite $-1/4$. Los ceros lejanos no impiden una ventana local: para $|x|<1$, $|g(x)|=4-x^2>3$. No se afirma que el cociente esté definido en los puntos excluidos.
+
+Los puntos excluidos menos dos y dos no impiden que cero sea punto de acumulación del dominio. En una ventana de radio uno no aparecen esos ceros, y la cota $4-x^2>3$ protege el denominador. Los límites del numerador y denominador son uno y menos cuatro, así que la regla se aplica con destino $-1/4$. Declarar el dominio conserva la diferencia entre una estimación local válida y una fórmula evaluable en todos los reales.
+
+</details>
+
+#### Ejercicio 28. Producto desde una identidad diferente
+
+[]{#MA-EX-ANM-01-013-028}
+
+Prueba la regla de producto utilizando $fg-LM=(f-L)(g-M)+L(g-M)+M(f-L)$ y un solo presupuesto para ambos errores.
+
+[]{#MA-SOL-ANM-01-013-028}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 28</summary>
+
+Sea $A=1+|L|+|M|>0$. Dado $\varepsilon>0$, exigimos ambos errores menores que $t=\min(1,\varepsilon/A)$. En el mínimo de radios, $|(f-L)(g-M)|<t^2\le t$, y los otros términos están acotados por $|L|t$ y $|M|t$. Sumando con la estricta cota del primer término obtenemos error $<At\le\varepsilon$. Esta variante usa el pequeño tamaño del producto de errores en vez de una cota separada de $f$.
+
+La nueva identidad separa un producto de errores y dos errores multiplicados por destinos fijos. Pedir ambos errores menores que $t\le1$ controla su producto por $t^2\le t$. Los otros dos términos añaden presupuestos $|L|t$ y $|M|t$, y la constante $A$ reúne los tres. El mínimo de los radios hace disponibles los dos errores a la vez. Incluso si alguno de los destinos es cero, $A$ sigue siendo positivo y la elección está definida.
+
+</details>
+
+#### Ejercicio 29. Norma y diferencia de normas
+
+[]{#MA-EX-ANM-01-013-029}
+
+Si $f\to L$ y $g\to M$, prueba $\bigl||f|-|g|\bigr|\to\bigl||L|-|M|\bigr|$ y da un control directo del error con los dos errores originales.
+
+[]{#MA-SOL-ANM-01-013-029}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 29</summary>
+
+La triangular inversa aplicada primero a los dos reales $|f|-|g|$ y $|L|-|M|$ da error final $\le\bigl|(|f|-|g|)-(|L|-|M|)\bigr|$. La triangular y la inversa de nuevo lo acotan por $||f|-|L||+||g|-|M||\le|f-L|+|g-M|$. Pedimos cada error menor que $\varepsilon/2$ y reunimos radios. La cota prueba la conclusión directamente.
+
+El error final se estima aplicando la triangular inversa al valor absoluto exterior y luego a los dos valores absolutos interiores. Cada paso reduce el problema a las diferencias originales $f-L$ y $g-M$. La suma de esos dos errores se hace menor que $\varepsilon$ usando mitades y el mínimo de radios. Este control directo no exige separar casos según los signos de los valores ni conocer previamente límites de todas las expresiones intermedias.
+
+</details>
+
+#### Ejercicio 30. Un producto converge sin límites de los factores
+
+[]{#MA-EX-ANM-01-013-030}
+
+Construye funciones $f,g$ sin límite en cero cuyo producto sí tenga límite. Prueba todas las afirmaciones.
+
+[]{#MA-SOL-ANM-01-013-030}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 30</summary>
+
+Sea $f(x)=g(x)=s(x)$, el salto con valores $\pm1$. Las rutas positivas y negativas dan destinos distintos y refutan el límite de cada factor. Pero $f(x)g(x)=s(x)^2=1$ para toda entrada, así que el producto tiene límite $1$ con cualquier radio y error cero. La regla del producto es suficiente, no una condición necesaria para que el producto converja.
+
+Para cada factor, las entradas a ambos lados de cero producen valores constantes diferentes, y las rutas explícitas de cada signo refutan cualquier destino común. Al multiplicar los factores iguales, los signos se cancelan y queda siempre uno. El producto tiene error cero respecto de uno en toda entrada. Por tanto la convergencia de ambos factores es una hipótesis suficiente de la regla del producto, pero no una condición necesaria para que el producto concreto converja.
+
+</details>
 ## 13.7. Cambiar las rutas disponibles
 
 []{#MA-SEC-ANM-01-013-007}
@@ -494,38 +1646,230 @@ Densidad garantiza entradas próximas; no garantiza que probar sólo en esas ent
 
 ### Antes de seguir
 
+#### Microcontrol 49
+
 []{#MA-MIC-ANM-01-013-049}
 
-1. ¿Qué condición adicional se exige al restringir a $A\subseteq D$?
+¿Qué condición adicional se exige al restringir a $A\subseteq D$?
+
+[]{#MA-MSOL-ANM-01-013-049}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 49</summary>
+
+$a\in A'$. Garantiza una pregunta de límite no vacía en el dominio restringido.
+
+Reducir el dominio reduce las rutas disponibles, pero puede eliminarlas todas cerca del centro. Si $A$ sólo contiene el centro como punto aislado, la fórmula perforada sería vacía. Exigir $a\in A'$ garantiza aproximaciones en el dominio restringido. Bajo esa condición, el mismo radio del límite original controla todas las entradas de $A$ que quedan en su ventana, porque también pertenecen a $D$.
+
+</details>
+
+#### Microcontrol 50
 
 []{#MA-MIC-ANM-01-013-050}
 
-2. ¿Por qué sirve reunir finitos radios positivos mediante un mínimo?
+¿Por qué sirve reunir finitos radios positivos mediante un mínimo?
+
+[]{#MA-MSOL-ANM-01-013-050}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 50</summary>
+
+Porque su mínimo sigue siendo positivo y garantiza simultáneamente todos los controles locales.
+
+Para una cantidad finita de controles, cada radio es positivo y al menos uno de ellos es el menor. Ese menor sigue siendo positivo. Una entrada dentro de su ventana está dentro de todas las ventanas originales y satisface todos los controles simultáneamente. El argumento permite reunir acotación, coincidencia local, precisión y restricciones de dominio sin perder la existencia de una escala válida.
+
+</details>
+
+#### Microcontrol 51
 
 []{#MA-MIC-ANM-01-013-051}
 
-3. ¿Un mínimo de infinitos radios positivos tiene que ser positivo?
+¿Un mínimo de infinitos radios positivos tiene que ser positivo?
+
+[]{#MA-MSOL-ANM-01-013-051}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 51</summary>
+
+No. Los radios $1/(n+1)$ son positivos y no tienen ninguna cota inferior positiva.
+
+La familia $1,1/2,1/3,\ldots$ se acerca a cero: ante cualquier propuesta $r>0$, existe un índice con $1/(n+1)<r$. Por eso no hay un radio positivo que quede por debajo de todos. En esta familia ni siquiera existe un mínimo; su ínfimo es cero. La técnica de tomar mínimos finitos no se extiende automáticamente a infinitos controles, porque podría dejar una ventana sin radio positivo.
+
+</details>
+
+#### Microcontrol 52
 
 []{#MA-MIC-ANM-01-013-052}
 
-4. ¿Cuándo está definido el límite por la izquierda bajo nuestra convención?
+¿Cuándo está definido el límite por la izquierda bajo nuestra convención?
+
+[]{#MA-MSOL-ANM-01-013-052}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 52</summary>
+
+Cuando $a$ es punto de acumulación de $D\cap(-\infty,a)$. No basta que el lado esté nombrado.
+
+El límite izquierdo es el límite de la función restringida a las entradas menores que $a$. Para formularlo necesitamos entradas de ese lado arbitrariamente próximas al centro. Si el dominio es $[a,\infty)$, la parte izquierda está vacía y no acumula en $a$, aunque el límite derecho pueda tener sentido. Nombrar un lado no garantiza que existan aproximaciones desde él.
+
+</details>
+
+#### Microcontrol 53
 
 []{#MA-MIC-ANM-01-013-053}
 
-5. Si ambos lados acumulan, ¿qué permite reunirlos?
+Si ambos lados acumulan, ¿qué permite reunirlos?
+
+[]{#MA-MSOL-ANM-01-013-053}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 53</summary>
+
+Que ambos límites laterales sean el mismo $L$. Se usa el mínimo de sus radios y toda entrada perforada pertenece a uno de los lados.
+
+Para una tolerancia, cada límite lateral entrega un radio que controla sus entradas. Tomamos el mínimo. Cualquier entrada distinta del centro es menor o mayor que él, así que cae en uno de los dos lados y cumple la misma estimación respecto de $L$. Si los destinos fueran diferentes, esta unión de controles hacia un único número no sería posible. La igualdad de destinos es lo que permite construir el límite conjunto.
+
+</details>
+
+#### Microcontrol 54
 
 []{#MA-MIC-ANM-01-013-054}
 
-6. Si un lado no acumula, ¿qué información local ofrece?
+Si un lado no acumula, ¿qué información local ofrece?
+
+[]{#MA-MSOL-ANM-01-013-054}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 54</summary>
+
+Existe un radio positivo sin entradas de ese lado. En una ventana suficientemente pequeña sólo importa el otro lado.
+
+Negar acumulación en un lado significa que existe un radio donde no hay entradas de ese lado distintas del centro. Reduciendo también al radio válido del otro lado, toda entrada pertinente pertenece a éste y queda controlada. No se necesita asignar un límite ficticio al lado ausente. El límite en el dominio completo puede quedar determinado por las rutas realmente disponibles, junto con la condición de acumulación del dominio.
+
+</details>
+
+#### Microcontrol 55
 
 []{#MA-MIC-ANM-01-013-055}
 
-7. ¿Probar un límite en un subconjunto denso basta para una función arbitraria?
+¿Probar un límite en un subconjunto denso basta para una función arbitraria?
+
+[]{#MA-MSOL-ANM-01-013-055}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 55</summary>
+
+No. La función puede tener valores distintos en todas las entradas omitidas; el indicador racional de §13.7 es un contraejemplo.
+
+La densidad asegura que existen muchas entradas del subconjunto cerca de cada punto, pero no impone ninguna relación entre sus valores y los de las entradas omitidas. El indicador de los racionales vale uno sobre los racionales y cero sobre los irracionales. Restringir a cada uno de esos conjuntos produce destinos diferentes, aunque ambos sean densos. Para una función arbitraria, una familia de rutas favorables no reemplaza el control de todas las entradas.
+
+</details>
+
+#### Microcontrol 56
 
 []{#MA-MIC-ANM-01-013-056}
 
-8. ¿Por qué $\sqrt2/(n+1)$ es irracional para todo índice?
+¿Por qué $\sqrt2/(n+1)$ es irracional para todo índice?
 
+[]{#MA-MSOL-ANM-01-013-056}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 56</summary>
+
+Si fuese racional, multiplicarlo por el entero positivo $n+1$ haría racional a $\sqrt2$, contradicción.
+
+El denominador $n+1$ es un entero positivo, así que multiplicar un supuesto cociente racional por él conserva racionalidad. Eso produciría una expresión racional para $\sqrt2$, contradiciendo su irracionalidad ya demostrada. Además sus magnitudes tienden a cero, por lo que la fórmula proporciona una ruta de entradas irracionales próximas a cero sin una selección abstracta. La prueba valida cada término y la propiedad de aproximación.
+
+</details>
+
+### Ejercicios de la sección 13.7
+
+#### Ejercicio 31. El único lado disponible
+
+[]{#MA-EX-ANM-01-013-031}
+
+Sea $D=\{0\}\cup(0,2)$ y $f(x)=x^2$ para $x>0$, $f(0)=9$. Prueba el límite en cero a través de $D$ y analiza los límites laterales.
+
+[]{#MA-SOL-ANM-01-013-031}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 31</summary>
+
+El lado derecho acumula y el izquierdo está vacío, por lo que no le asignamos límite. Para $\varepsilon>0$, $\delta=\min(1,\sqrt\varepsilon)$ hace que toda entrada perforada sea positiva y tenga $|f(x)|=x^2<\varepsilon$. El límite en $D$ es cero y coincide con el límite derecho; el valor central $9$ se excluye.
+
+**Retorno visual.** Véase [C13-F06](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html#fig-anm-c13-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+Toda entrada perforada del dominio es positiva. La ventana propuesta la mantiene además dentro de la región donde vale la regla $x^2$ y hace su cuadrado menor que la tolerancia. La acumulación derecha puede verificarse escogiendo un positivo menor que el radio y menor que dos. El lado izquierdo no ofrece ninguna entrada, por lo que no se formula un límite allí. La evaluación nueve en el centro no interviene en el control perforado.
+
+</details>
+
+#### Ejercicio 32. Reunir piezas finitas
+
+[]{#MA-EX-ANM-01-013-032}
+
+Sea $D=D_1\cup D_2$, $a\in D_1^{\prime}\cap D_2^{\prime}$, y supón que las dos restricciones de $f$ tienen el mismo límite $L$. Prueba el límite en $D$ y la recíproca.
+
+[]{#MA-SOL-ANM-01-013-032}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 32</summary>
+
+Para $\varepsilon>0$, tomamos radios $\delta_1,\delta_2$ válidos. Su mínimo es positivo. Toda entrada perforada de $D$ pertenece a una pieza y recibe el error menor que $\varepsilon$ de esa pieza, aunque pueda pertenecer a ambas. Luego hay límite en $D$. Si el límite vale en $D$, el mismo radio funciona en cada subconjunto; la acumulación supuesta permite formular ambos límites restringidos.
+
+El mínimo de dos radios positivos vuelve a ser positivo, y cualquier entrada del dominio unión pertenece al menos a una pieza. El control de esa pieza basta para asegurar la precisión, incluso si la entrada también pertenece a la otra. En la vuelta, restringir sólo elimina entradas y conserva la estimación. La hipótesis de acumulación en cada pieza permite que ambos límites restringidos tengan sentido y no sean fórmulas vacías.
+
+</details>
+
+#### Ejercicio 33. Infinitas piezas no garantizan reunión
+
+[]{#MA-EX-ANM-01-013-033}
+
+Sea $D=(0,\infty)$ y $D_k=\{1/k\}\cup((0,\infty)\setminus\{1/j:j\in\mathbb N,\ j\ge1\})$ para $k\ge1$. Para $f(x)=1$ en los puntos $1/j$ y $f(x)=0$ en las demás entradas, prueba que cada restricción tiene límite cero y su unión no.
+
+[]{#MA-SOL-ANM-01-013-033}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 33</summary>
+
+Cada $D_k$ acumula cero: para un radio $r>0$ existe un real positivo irracional menor que $r$, que no es un recíproco entero. Tal entrada puede obtenerse explícitamente como $\sqrt2/m$ con entero $m>\sqrt2/r$. Si $\delta=1/(2k)$, la ventana de $D_k$ excluye su único punto con valor uno, $1/k$, y el error es cero para toda tolerancia. La unión de las piezas es todo $D$: los no recíprocos están en todas y cada recíproco en su pieza. La ruta $x_n=1/(n+1)$ tiene imágenes uno; para cada radio hay tal entrada con error uno, así que el candidato cero falla en la unión. Además, la ruta $\sqrt2/(n+1)$ tiene imágenes cero y descarta cualquier límite junto a la primera.
+
+En cada pieza sólo hay un punto con salida uno, y puede excluirse con un radio menor que su distancia a cero. Pero las distancias de esos puntos se reducen al variar la pieza, de modo que no hay una ventana común que los elimine todos. La unión vuelve a incorporar infinitas entradas de valor uno próximas a cero. Las dos rutas finales acreditan destinos incompatibles. Tener un radio adecuado para cada pieza no produce automáticamente un radio positivo para toda su unión.
+
+</details>
+
+#### Ejercicio 34. Una prueba densa puede omitir todo el problema
+
+[]{#MA-EX-ANM-01-013-034}
+
+Para el indicador de irracionales, prueba el límite restringido a los racionales en cero y refuta cualquier límite en el dominio real usando rutas explícitas.
+
+[]{#MA-SOL-ANM-01-013-034}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 34</summary>
+
+La restricción racional es constante cero y $\delta=1$ sirve para cualquier tolerancia; cero acumula racionales por los puntos $1/m$. En el dominio completo, $1/(n+1)$ y $\sqrt2/(n+1)$ son rutas no nulas tendiendo a cero. La segunda es irracional en cada índice, pues de lo contrario $\sqrt2$ sería racional. Las imágenes son constantes cero y uno. Un límite funcional daría el mismo límite a ambas rutas por la dirección directa, contradicción.
+
+El indicador de irracionales vale cero en cada racional, así que el límite restringido es cero con error nulo. En el dominio completo la ruta racional conserva esa salida, mientras la ruta irracional conserva la salida uno. Ambas están dadas por fórmulas y convergen a cero; el cociente de $\sqrt2$ por un entero positivo sigue siendo irracional. La densidad del conjunto favorable no impone ningún control sobre los valores del conjunto omitido.
+
+</details>
+
+#### Ejercicio 35. Al menos un lado acumula
+
+[]{#MA-EX-ANM-01-013-035}
+
+Si $a\in D^{\prime}$, demuestra que acumula al menos uno de $D\cap(-\infty,a)$ y $D\cap(a,\infty)$. Si exactamente uno acumula, prueba que ese lado decide el límite completo.
+
+[]{#MA-SOL-ANM-01-013-035}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 35</summary>
+
+Si ninguno acumulara, habría radios positivos $r_-,r_+$ sin entradas de cada lado en sus ventanas. En el mínimo no habría ninguna entrada distinta de $a$ del dominio, contradicción. Si sólo el derecho acumula, el izquierdo tiene un radio sin entradas. Todo control del límite derecho se reúne con ese radio y controla el dominio completo; la implicación inversa es restricción. El caso izquierdo es simétrico.
+
+Si ninguno de los lados acumulara, existirían dos radios que eliminan sus respectivas entradas. Su mínimo eliminaría todas las entradas distintas del centro, contradiciendo la acumulación del dominio. Si sólo un lado acumula, el otro está ausente en alguna ventana y puede descartarse al reducir el radio. El límite completo se vuelve exactamente el límite del lado disponible. No se asigna un destino por vacuidad al lado que falta.
+
+</details>
 ## 13.8. Componer controles sin perder la perforación
 
 []{#MA-SEC-ANM-01-013-008}
@@ -564,38 +1908,233 @@ Este capítulo ha separado cercanía, evaluación central y rutas disponibles. E
 
 ### Antes de seguir
 
+#### Microcontrol 57
+
 []{#MA-MIC-ANM-01-013-057}
 
-1. ¿Qué desafío se presenta a $f$ después de fijar $\varepsilon$ para $g\circ f$?
+¿Qué desafío se presenta a $f$ después de fijar $\varepsilon$ para $g\circ f$?
+
+[]{#MA-MSOL-ANM-01-013-057}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 57</summary>
+
+El radio intermedio $\eta$ que entrega el límite de $g$ para esa tolerancia final.
+
+El límite exterior convierte el desafío final $\varepsilon$ en una escala intermedia $\eta$ alrededor de $b$. A continuación pedimos al límite interior que haga $f(x)$ suficientemente cercano a $b$ para entrar en esa escala. El radio final es el que responde a este segundo desafío, combinado con las restricciones locales. La composición encadena dos controles y su orden de diseño va desde la precisión final hacia la entrada inicial.
+
+</details>
+
+#### Microcontrol 58
 
 []{#MA-MIC-ANM-01-013-058}
 
-2. ¿Qué dato falta si sólo sabemos $|f(x)-b|<\eta$?
+¿Qué dato falta si sólo sabemos $|f(x)-b|<\eta$?
+
+[]{#MA-MSOL-ANM-01-013-058}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 58</summary>
+
+Que $f(x)\ne b$, si vamos a usar el límite perforado de $g$. La cercanía sola permite alcanzar el centro.
+
+El control del límite exterior se aplica a entradas con $0<|y-b|<\eta$. La estimación $|f(x)-b|<\eta$ sólo da la desigualdad superior y permite que la magnitud sea cero. Si la salida interior alcanza $b$, estaríamos evaluando $g(b)$, que el límite perforado de $g$ no controla. Por eso hace falta evitar localmente ese centro o verificar por separado que su valor exterior sea el destino correcto.
+
+</details>
+
+#### Microcontrol 59
 
 []{#MA-MIC-ANM-01-013-059}
 
-3. ¿Qué alternativa permite que $f(x)=b$?
+¿Qué alternativa permite que $f(x)=b$?
+
+[]{#MA-MSOL-ANM-01-013-059}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 59</summary>
+
+Que $b\in E$ y $g(b)=L$. En ese caso la salida central tiene error exactamente cero.
+
+Si la salida interior alcanza $b$ y $g(b)=L$, la composición entrega exactamente $L$ y tiene error cero. Si no alcanza $b$, se aplica el control perforado exterior. Separar ambos casos permite cubrir toda la ventana de entradas. También hay que tener $b$ en el dominio de $g$ para usar su evaluación. La condición sobre el valor central resuelve el caso que la desigualdad perforada dejaba fuera.
+
+</details>
+
+#### Microcontrol 60
 
 []{#MA-MIC-ANM-01-013-060}
 
-4. ¿Qué falla en la composición de una función cero con $g(0)=1$, $g(y)=0$ fuera de cero?
+¿Qué falla en la composición de una función cero con $g(0)=1$, $g(y)=0$ fuera de cero?
+
+[]{#MA-MSOL-ANM-01-013-060}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 60</summary>
+
+La interior cae siempre en el centro. Aunque ambos límites aislados son cero, la composición es constante uno.
+
+La función interior $f(x)=0$ tiene límite cero, y la exterior dada tiene límite perforado cero en cero porque vale cero en todas las entradas no centrales. Pero cada composición evalúa precisamente el centro exterior, donde $g(0)=1$. Por eso $g(f(x))=1$ en toda entrada y su límite es uno. El ejemplo refuta la aplicación de una regla de composición que ignore la perforación y el valor central.
+
+</details>
+
+#### Microcontrol 61
 
 []{#MA-MIC-ANM-01-013-061}
 
-5. ¿Qué papel desempeña el tipo $f:D\to E$?
+¿Qué papel desempeña el tipo $f:D\to E$?
+
+[]{#MA-MSOL-ANM-01-013-061}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 61</summary>
+
+Garantiza que $g(f(x))$ esté definido. Una regla algebraica sin pertenencia al dominio de $g$ no basta.
+
+Si el dominio exterior de $g$ es $E$, el tipo $f:D\to E$ asegura que cada salida intermedia pertenece a ese dominio. La cercanía a $b$ no bastaría: una salida muy próxima podría seguir siendo una entrada no admitida. Primero verificamos que la composición pueda evaluarse en las entradas pertinentes y después diseñamos las estimaciones de límite. Un certificado numérico no reemplaza la comprobación del dominio.
+
+</details>
+
+#### Microcontrol 62
 
 []{#MA-MIC-ANM-01-013-062}
 
-6. Con $|f(x)-b|\le C|x-a|$, $C>0$, ¿qué radio de precisión sirve?
+Con $|f(x)-b|\le C|x-a|$, $C>0$, ¿qué radio de precisión sirve?
+
+[]{#MA-MSOL-ANM-01-013-062}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 62</summary>
+
+$\eta_g(\varepsilon)/C$, combinado por mínimo con las restricciones locales. La desigualdad estricta de entrada produce error intermedio menor que $\eta_g(\varepsilon)$.
+
+La cota interior entrega $|f(x)-b|\le C|x-a|$. Elegir $\delta\le\eta_g(\varepsilon)/C$ hace que la desigualdad estricta $|x-a|<\delta$ produzca $|f(x)-b|<\eta_g(\varepsilon)$. El mínimo con radios auxiliares asegura la validez de la cota y la condición de evitación o del valor central. Se debe conservar ese último requisito: la cota superior de distancias no prueba por sí sola que la salida interior evite $b$.
+
+</details>
+
+#### Microcontrol 63
 
 []{#MA-MIC-ANM-01-013-063}
 
-7. Si $C=0$ en esa cota, ¿qué ocurre localmente?
+Si $C=0$ en esa cota, ¿qué ocurre localmente?
+
+[]{#MA-MSOL-ANM-01-013-063}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 63</summary>
+
+$f(x)=b$. El mecanismo de composición necesita $g(b)=L$; la evitación es incompatible con la ventana no vacía.
+
+La cota $|f(x)-b|\le0$ fuerza igualdad con $b$ en toda la ventana donde vale. Si esas entradas son no vacías por acumulación, no pueden además satisfacer $f(x)\ne b$. La vía de evitación queda descartada. La composición local evalúa siempre $g(b)$ y sólo obtiene el destino propuesto si ese valor es $L$. Este caso se estudia directamente y no se divide por $C$.
+
+</details>
+
+#### Microcontrol 64
 
 []{#MA-MIC-ANM-01-013-064}
 
-8. ¿Qué verifica finalmente un certificado de límite?
+¿Qué verifica finalmente un certificado de límite?
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 13](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html) · [Ejercicios](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-microcontroles.html)
+[]{#MA-MSOL-ANM-01-013-064}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 64</summary>
+
+Que el radio sea positivo y dependa sólo de datos permitidos, y que todas las entradas del dominio en su ventana perforada satisfagan el error de salida.
+
+Después de proponer el radio debemos comprobar que sea positivo para cada tolerancia positiva y que se elija antes de la entrada arbitraria. Luego tomamos cualquier $x\in D$ con $0<|x-a|<\delta$ y derivamos el error estricto. El argumento debe verificar también las condiciones de dominio y cualquier denominador usado. La acumulación garantiza que no se trate de ventanas vacías. Una fórmula para $\delta$ sin esta comprobación universal todavía no completa la prueba.
+
+</details>
+
+### Ejercicios de la sección 13.8
+
+#### Ejercicio 36. La composición pierde el centro perforado
+
+[]{#MA-EX-ANM-01-013-036}
+
+Construye $f,g:\mathbb R\to\mathbb R$ con $\lim_{x\to0}f(x)=0$ y $\lim_{y\to0}g(y)=0$ pero $\lim_{x\to0}g(f(x))=2$. Explica la falla del argumento usual.
+
+[]{#MA-SOL-ANM-01-013-036}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 36</summary>
+
+Tomamos $f(x)=0$ para todos los reales; $g(y)=0$ si $y\ne0$ y $g(0)=2$. Los dos límites son cero porque sus errores son cero en las ventanas pertinentes. La composición es constante dos y tiene límite dos. El límite perforado de $g$ sólo controla entradas distintas de cero; la interior cae siempre en cero.
+
+**Retorno visual.** Véase [C13-F07](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html#fig-anm-c13-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+El límite exterior observa sólo entradas distintas de cero y por eso no controla $g(0)=2$. La interior, en cambio, entrega cero en todas las entradas y obliga a la composición a evaluar ese valor excepcional. Esto separa el límite perforado de la exterior de su evaluación central. El ejemplo satisface los tipos y demuestra todas las conclusiones mediante errores nulos; el fallo de la regla ingenua está en perder la perforación, no en una composición mal definida.
+
+</details>
+
+#### Ejercicio 37. Componer dos cuadrados con certificados
+
+[]{#MA-EX-ANM-01-013-037}
+
+Prueba directamente mediante radios anidados que $x^4\to1$ en $1$, usando el certificado del cuadrado y la alternativa central para la segunda etapa.
+
+[]{#MA-SOL-ANM-01-013-037}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 37</summary>
+
+Para $g(y)=y^2$ en $b=1$, el radio $\eta=\min(1,\varepsilon/3)$ es válido y $g(1)=1$. Para $f(x)=x^2$ en $1$, tomamos $\delta=\min(1,\eta/3)$. Entonces $|f(x)-1|<\eta$. Si $f(x)\ne1$ aplica el control de $g$; si $f(x)=1$, el error final es cero. El tipo real de ambas funciones permite componerlas. Así $|x^4-1|<\varepsilon$ en toda la ventana.
+
+El diseño empieza con la tolerancia final. La segunda etapa entrega una escala intermedia $\eta$, y la primera entrega un radio que sitúa sus salidas dentro de esa escala. Si la salida intermedia coincide con uno, el valor central de la exterior es el destino correcto y el error es cero. Si no coincide, se aplica su certificado perforado. La prueba cubre ambas posibilidades en toda la ventana y evita usar el límite exterior donde su hipótesis no valga.
+
+</details>
+
+#### Ejercicio 38. La alternativa central sin límites conocidos
+
+[]{#MA-EX-ANM-01-013-038}
+
+Sean $f:D\to E$, $g:E\to\mathbb R$, $a\in D^{\prime}$. Supón que $f(x)=b\in E$ en alguna ventana perforada. Determina y prueba el límite de la composición sin suponer que exista un límite de $g$ en $b$.
+
+[]{#MA-SOL-ANM-01-013-038}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 38</summary>
+
+En esa misma ventana la composición tiene valor constante $g(b)$. Para cualquier $\varepsilon>0$ usamos su radio $r$ y el error es cero. Por tanto el límite es $g(b)$. No importa el comportamiento de $g$ fuera de la salida única localmente alcanzada; las hipótesis del teorema general de composición eran suficientes, no necesarias.
+
+Sólo necesitamos saber que la interior es localmente constante y que $b$ está en el dominio de la exterior. Todas las salidas compuestas de esa ventana son exactamente $g(b)$, por lo que el mismo radio responde a cualquier tolerancia. El comportamiento de $g$ en otras entradas resulta irrelevante para esta composición local. No estamos deduciendo un límite exterior: construimos directamente el de la composición mediante las salidas que realmente alcanza.
+
+</details>
+
+#### Ejercicio 39. Composición a través de un subconjunto de salidas
+
+[]{#MA-EX-ANM-01-013-039}
+
+Sean $f:D\to E$, $a\in D^{\prime}$, $b\in A^{\prime}$ para $A\subseteq E$, y $g:E\to\mathbb R$. Supón $f\to b$, $g|_A\to L$ y que $f(x)\in A\setminus\{b\}$ cerca de $a$. Prueba el límite de $g\circ f$ aunque $g$ no tenga límite en todo $E$.
+
+[]{#MA-SOL-ANM-01-013-039}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 39</summary>
+
+Fijado $\varepsilon>0$, el contrato de $g|_A$ ofrece $\eta>0$ para entradas de $A$ próximas y distintas de $b$. El límite de $f$ ofrece $\delta_f>0$ para ese radio. Reunimos $\delta_f$ con el radio $r$ de pertenencia y evitación. Para toda entrada de la nueva ventana, $f(x)\in A\setminus\{b\}$ y $|f(x)-b|<\eta$, de modo que $|g(f(x))-L|<\varepsilon$. El segundo contrato sólo se necesita en las salidas realmente disponibles.
+
+La restricción exterior sólo controla entradas de $A$ diferentes de $b$. La hipótesis de pertenencia y evitación asegura que la interior entregue precisamente entradas de ese tipo, y su límite las aproxima a $b$ dentro del radio requerido. El mínimo reúne estos dos controles. La exterior puede comportarse de otra manera en $E\setminus A$ sin afectar la conclusión, porque esas salidas intermedias no aparecen localmente en la composición.
+
+</details>
+
+#### Ejercicio 40. Un criterio exacto para tocar una salida defectuosa
+
+[]{#MA-EX-ANM-01-013-040}
+
+Sean $f:D\to E$, $a\in D^{\prime}$, $b\in E\cap E^{\prime}$, $g:E\to\mathbb R$, $f\to b$ y $g\to L$ en $b$, con $g(b)\ne L$. Prueba que $g\circ f\to L$ si y sólo si $f(x)\ne b$ en alguna ventana perforada de $a$.
+
+[]{#MA-SOL-ANM-01-013-040}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 40</summary>
+
+La evitación es suficiente por el teorema del texto. Para probar necesidad, supongamos que la composición tiende a $L$ y sea $d=|g(b)-L|>0$. Su contrato para $\varepsilon=d/2$ da $\delta>0$ con error menor que $d/2$ en la ventana. Si alguna entrada allí tuviera $f(x)=b$, el error final sería $d$, contradicción. Luego todas evitan $b$. El defecto central convierte una condición suficiente en una condición necesaria para ese destino particular.
+
+**Retorno visual.** Véase [C13-F07](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html#fig-anm-c13-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+El defecto central tiene magnitud fija $d=|g(b)-L|>0$. Un control de la composición con tolerancia $d/2$ no puede permitir ni una entrada local que alcance $b$, porque su salida final tendría error exactamente $d$. Esto demuestra necesidad de la evitación. La dirección suficiente utiliza después los límites interior y exterior con radios anidados. La equivalencia es para el destino particular $L$; no afirma que cualquier composición que toque el centro carezca de todo límite.
+
+</details>
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-13)
 
 [← Capítulo 12](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html) · [Capítulo 14 →](analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad.html)

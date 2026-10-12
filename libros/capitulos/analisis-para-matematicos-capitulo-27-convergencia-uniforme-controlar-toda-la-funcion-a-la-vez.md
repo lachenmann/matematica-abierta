@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: 'Capítulo 27 — Convergencia uniforme: controlar toda la función a la vez'
-date-modified: '2026-10-11'
+date-modified: '2026-10-12'
 provenance:
   type: original
   sources:
@@ -26,7 +26,7 @@ provenance:
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 27](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html) · [Ejercicios](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-27)
 
 El contrato de C26 permitió una cola para cada entrada. Ahora exigiremos una cola común y construiremos la envolvente y la distancia que la miden. C02/C03 justifican los supremos; C10 construye destinos de columnas de Cauchy; C14 se usa en rutas dadas. No se importan teoremas de intercambio de C28 ni series de funciones o teoría métrica posterior.
 
@@ -73,38 +73,206 @@ No hace falta elegir infinitamente muchos puntos de conjuntos arbitrarios para e
 
 ### Microcontroles
 
+#### Microcontrol 1
+
 []{#MA-MIC-ANM-01-027-001}
 
-1. ¿Qué dato recibe primero el contrato uniforme?
+¿Qué dato recibe primero el contrato uniforme?
+
+[]{#MA-MSOL-ANM-01-027-001}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 1</summary>
+
+Una tolerancia positiva; después se elige un corte que debe funcionar para toda entrada y toda la cola.
+
+</details>
+
+#### Microcontrol 2
 
 []{#MA-MIC-ANM-01-027-002}
 
-2. ¿Puede el corte uniforme depender de la entrada?
+¿Puede el corte uniforme depender de la entrada?
+
+[]{#MA-MSOL-ANM-01-027-002}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 2</summary>
+
+No. Debe elegirse antes de la entrada que habrá que controlar.
+
+</details>
+
+#### Microcontrol 3
 
 []{#MA-MIC-ANM-01-027-003}
 
-3. ¿Qué anchura tiene la banda de tolerancia $\varepsilon$?
+¿Qué anchura tiene la banda de tolerancia $\varepsilon$?
+
+[]{#MA-MSOL-ANM-01-027-003}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 3</summary>
+
+Anchura vertical2ε, entre f(x)−ε y f(x)+ε, con fronteras excluidas.
+
+</details>
+
+#### Microcontrol 4
 
 []{#MA-MIC-ANM-01-027-004}
 
-4. ¿Implica uniformidad convergencia puntual?
+¿Implica uniformidad convergencia puntual?
+
+[]{#MA-MSOL-ANM-01-027-004}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 4</summary>
+
+Sí; el mismo corte simultáneo sirve en cualquier entrada que fijemos.
+
+</details>
+
+#### Microcontrol 5
 
 []{#MA-MIC-ANM-01-027-005}
 
-5. ¿Qué entrada puede variar en una refutación uniforme?
+¿Qué entrada puede variar en una refutación uniforme?
+
+[]{#MA-MSOL-ANM-01-027-005}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 5</summary>
+
+La entrada infractora puede depender del corte y del índice tardío elegido.
+
+</details>
+
+#### Microcontrol 6
 
 []{#MA-MIC-ANM-01-027-006}
 
-6. ¿Qué error tiene $x+1/(n+1)$ respecto de $x$?
+¿Qué error tiene $x+1/(n+1)$ respecto de $x$?
+
+[]{#MA-MSOL-ANM-01-027-006}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 6</summary>
+
+Exactamente1/(n+1) en toda la recta, aunque los valores de ambas funciones sean no acotados.
+
+</details>
+
+#### Microcontrol 7
 
 []{#MA-MIC-ANM-01-027-007}
 
-7. ¿Qué testigo refuta uniformidad de $x/(n+1)$ en la recta?
+¿Qué testigo refuta uniformidad de $x/(n+1)$ en la recta?
+
+[]{#MA-MSOL-ANM-01-027-007}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 7</summary>
+
+En la fila n se toma x=n+1, con error1 respecto de cero.
+
+</details>
+
+#### Microcontrol 8
 
 []{#MA-MIC-ANM-01-027-008}
 
-8. ¿Qué ocurre en un dominio vacío?
+¿Qué ocurre en un dominio vacío?
 
+[]{#MA-MSOL-ANM-01-027-008}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 8</summary>
+
+Hay una única función y el contrato uniforme se satisface vacuamente.
+
+</details>
+
+### Ejercicios de la sección 27.1
+
+[]{#ejercicios-27}
+
+#### Ejercicio 1. Banda sobre una función no acotada
+
+[]{#MA-EX-ANM-01-027-001}
+
+Prueba uniformidad de $f_n(x)=x+1/(n+1)$ hacia $x$ en $\mathbb R$ y explica qué está acotado.
+
+[]{#MA-SOL-ANM-01-027-001}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 1</summary>
+
+Fijada $\varepsilon>0$, elegimos un natural $N>1/\varepsilon$. Para todos $n\ge N$ y $x\in\mathbb R$, el error es1/(n+1)≤1/(N+1)<ε. El corte no depende de la entrada, así la convergencia es uniforme. Los valores de cada fila y del límite son no acotados en la recta, pero sus diferencias tienen magnitud constante1/(n+1). La cota relevante para el contrato es la del error.
+
+**Retorno visual.** Véase [C27-F01](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 2. Negación con testigo móvil
+
+[]{#MA-EX-ANM-01-027-002}
+
+Refuta uniformidad hacia cero de $g_n(x)=x/(n+1)$ en $\mathbb R$, sin refutar su convergencia puntual.
+
+[]{#MA-SOL-ANM-01-027-002}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 2</summary>
+
+Usamos tolerancia $\varepsilon_0=1/2$. Dado cualquier corte $N$, tomamos $n=N$ y $x=N+1$. El error es1≥ε0. Se cumple la negación uniforme con entrada dependiente del corte. Para una entrada fija, en cambio, un natural mayor que |x|/ε controla toda la cola y prueba límite puntual cero. Los dos alcances son distintos.
+
+</details>
+
+#### Ejercicio 3. Unicidad sin nueva selección
+
+[]{#MA-EX-ANM-01-027-003}
+
+Demuestra que una familia tiene a lo sumo un límite uniforme en un dominio común, incluido el vacío.
+
+[]{#MA-SOL-ANM-01-027-003}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 3</summary>
+
+Dos límites uniformes son también límites puntuales: cada corte simultáneo funciona en una entrada fija. Por unicidad numérica de C26, ambos valores coinciden en toda entrada; igualdad de funciones da un solo límite. Si el dominio es vacío, existe una única función vacía, así la conclusión también vale sin producir ninguna entrada. No se selecciona un punto de una colección vacía.
+
+</details>
+
+#### Ejercicio 4. Toda la cola, no una fila
+
+[]{#MA-EX-ANM-01-027-004}
+
+En un dominio no vacío, toma filas constantes $f_n=(-1)^n$. Explica por qué las filas pares no certifican convergencia uniforme.
+
+[]{#MA-SOL-ANM-01-027-004}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 4</summary>
+
+Las filas pares son exactamente1, así esa subsucesión converge uniformemente a1. Las impares son exactamente−1. Si toda la familia tuviera límite uniforme, lo tendría puntual en cualquier entrada y las subsecuencias numéricas constantes compartirían ese destino, contradiciendo unicidad. Una fila favorable o infinitas filas favorables no controlan todas las filas de una cola.
+
+</details>
+
+#### Ejercicio 5. Cambiar el prefijo
+
+[]{#MA-EX-ANM-01-027-005}
+
+Prueba que modificar un número finito de filas no altera una convergencia uniforme dada.
+
+[]{#MA-SOL-ANM-01-027-005}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 5</summary>
+
+Supongamos que la nueva familia coincide con la anterior para todo índice n≥M. Para una tolerancia, la familia original entrega un corte N independiente de la entrada. El corte máximo(N,M) controla todas las filas nuevas posteriores, pues coinciden con las antiguas y tienen error menor que ε en todas las entradas. Los valores del prefijo modificado no intervienen, aunque sean no acotados.
+
+</details>
 ## 27.2. La envolvente de error y sus fronteras
 
 []{#MA-SEC-ANM-01-027-002}
@@ -155,38 +323,204 @@ La convergencia uniforme dice que para cada $\eta$ esos conjuntos son vacíos en
 
 ### Microcontroles
 
+#### Microcontrol 9
+
 []{#MA-MIC-ANM-01-027-009}
 
-1. ¿Qué se comprueba antes de formar una envolvente real?
+¿Qué se comprueba antes de formar una envolvente real?
+
+[]{#MA-MSOL-ANM-01-027-009}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 9</summary>
+
+Que la imagen de errores sea no vacía y acotada; el vacío se trata por una convención aparte.
+
+</details>
+
+#### Microcontrol 10
 
 []{#MA-MIC-ANM-01-027-010}
 
-2. ¿Se exige envolvente real para todas las filas iniciales?
+¿Se exige envolvente real para todas las filas iniciales?
+
+[]{#MA-MSOL-ANM-01-027-010}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 10</summary>
+
+No. Basta una cola con errores acotados y supremos tendentes a cero.
+
+</details>
+
+#### Microcontrol 11
 
 []{#MA-MIC-ANM-01-027-011}
 
-3. ¿Qué margen convierte control puntual estricto en supremo estricto?
+¿Qué margen convierte control puntual estricto en supremo estricto?
+
+[]{#MA-MSOL-ANM-01-027-011}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 11</summary>
+
+Usar toleranciaε/2: el supremo es≤ε/2<ε.
+
+</details>
+
+#### Microcontrol 12
 
 []{#MA-MIC-ANM-01-027-012}
 
-4. ¿Puede cada error ser menor que1 y su supremo ser1?
+¿Puede cada error ser menor que1 y su supremo ser1?
+
+[]{#MA-MSOL-ANM-01-027-012}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 12</summary>
+
+Sí; e(x)=x en(0,1) lo muestra sin que haya máximo.
+
+</details>
+
+#### Microcontrol 13
 
 []{#MA-MIC-ANM-01-027-013}
 
-5. ¿Qué diferencia entre vacío y convención de error cero se conserva?
+¿Qué diferencia entre vacío y convención de error cero se conserva?
+
+[]{#MA-MSOL-ANM-01-027-013}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 13</summary>
+
+El error de la función vacía se define0; no se afirma que el conjunto vacío tenga supremo real0.
+
+</details>
+
+#### Microcontrol 14
 
 []{#MA-MIC-ANM-01-027-014}
 
-6. ¿Qué son los conjuntos $B_n(\eta)$?
+¿Qué son los conjuntos $B_n(\eta)$?
+
+[]{#MA-MSOL-ANM-01-027-014}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 14</summary>
+
+Las entradas cuyo error en la fila n es al menosη.
+
+</details>
+
+#### Microcontrol 15
 
 []{#MA-MIC-ANM-01-027-015}
 
-7. ¿Qué dice uniformidad sobre esos conjuntos?
+¿Qué dice uniformidad sobre esos conjuntos?
+
+[]{#MA-MSOL-ANM-01-027-015}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 15</summary>
+
+Para cadaη>0, todos son vacíos desde un único corte en adelante.
+
+</details>
+
+#### Microcontrol 16
 
 []{#MA-MIC-ANM-01-027-016}
 
-8. ¿Qué dice puntualidad sobre una entrada fija y esos conjuntos?
+¿Qué dice puntualidad sobre una entrada fija y esos conjuntos?
 
+[]{#MA-MSOL-ANM-01-027-016}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 16</summary>
+
+Que esa entrada deja de pertenecer a ellos eventualmente, con un corte que puede depender de ella.
+
+</details>
+
+### Ejercicios de la sección 27.2
+
+#### Ejercicio 6. Supremo y frontera abierta
+
+[]{#MA-EX-ANM-01-027-006}
+
+En $X=(0,1)$ demuestra que todos los errores $e(x)=x$ son menores que1 pero su supremo es1.
+
+[]{#MA-SOL-ANM-01-027-006}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 6</summary>
+
+El número1 acota la imagen. Si c<1, el punto y=(1+máx(c,0))/2 pertenece a(0,1) y es mayor que c, por lo que c no acota todos los errores. Así el supremo es1. Ningún punto lo alcanza porque todas las entradas son menores que1. El error estricto en cada punto sólo da supremo≤1; para obtener supremo<ε se requiere usar un margen como ε/2.
+
+**Retorno visual.** Véase [C27-F02](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 7. Una fila sin envolvente real
+
+[]{#MA-EX-ANM-01-027-007}
+
+En $(0,1]$, define $f_0(x)=1/x$ y $f_n=0$ para $n\ge1$. Analiza uniformidad y existencia de envolventes.
+
+[]{#MA-SOL-ANM-01-027-007}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 7</summary>
+
+La candidata es cero. Para toda ε>0 sirve N=1, pues cada fila posterior coincide con ella, de modo que hay uniformidad. En la primera fila, dado B≥0, x=1/(B+1) pertenece al dominio y da errorB+1>B. No existe supremo real de ese conjunto de errores. Las envolventes existen desde el índice1 y valen0; la caracterización se formula sobre esa cola.
+
+</details>
+
+#### Ejercicio 8. Acreditar el criterio
+
+[]{#MA-EX-ANM-01-027-008}
+
+Demuestra que si las envolventes reales de una cola satisfacen $E_n\to0$, hay convergencia uniforme.
+
+[]{#MA-SOL-ANM-01-027-008}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 8</summary>
+
+Para ε>0, el límite numérico entrega un corte N dentro de la cola con E_n<ε para todos n≥N. Por definición de supremo, para cualquier entrada |f_n(x)−f(x)|≤E_n<ε. El mismo N sirve para todos x y todos los índices posteriores. En el vacío se usa la convención de error0 y el contrato es vacuo.
+
+</details>
+
+#### Ejercicio 9. El margen al pasar al supremo
+
+[]{#MA-EX-ANM-01-027-009}
+
+Prueba la dirección uniforme⇒envolventes de cola tendentes a cero, cuidando la desigualdad estricta.
+
+[]{#MA-SOL-ANM-01-027-009}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 9</summary>
+
+Uniformidad con tolerancia1 da una cola de conjuntos de error no vacíos acotados cuando X no es vacío, por lo que C03 produce sus supremos. Para ε>0, recibimos un corte uniforme para ε/2 y lo reunimos con el de existencia. Cada supremo de esa cola es≤ε/2<ε. Esto prueba el límite0. No se cambia una desigualdad estricta punto a punto por una estricta del supremo sin el margen.
+
+</details>
+
+#### Ejercicio 10. Regiones que nunca se vacían
+
+[]{#MA-EX-ANM-01-027-010}
+
+Para las tiendas $t_n$ de C26, analiza $B_n(1/2)=\{x:t_n(x)\ge1/2\}$ y sus columnas.
+
+[]{#MA-SOL-ANM-01-027-010}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 10</summary>
+
+Con k=n+3, la condición es |kx−2|≤1/2, luego B_n(1/2)=[3/(2k),5/(2k)], no vacío para toda etapa y dentro de[0,1]. La entrada0 no pertenece a ninguno. Para x>0 fijo, desde k>3/x queda fuera del soporte y también de B_n. Así cada entrada sale eventualmente, pero ningún conjunto de infracción queda vacío. Esto distingue puntualidad de uniformidad.
+
+</details>
 ## 27.3. Calcular la peor discrepancia
 
 []{#MA-SEC-ANM-01-027-003}
@@ -227,38 +561,204 @@ Una ventana de dibujo finita no decide el supremo sobre toda $\mathbb R$. El cua
 
 ### Microcontroles
 
+#### Microcontrol 17
+
 []{#MA-MIC-ANM-01-027-017}
 
-1. ¿Cuál es la envolvente de las potencias en $[0,1]$ para $n\ge1$?
+¿Cuál es la envolvente de las potencias en $[0,1]$ para $n\ge1$?
+
+[]{#MA-MSOL-ANM-01-027-017}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 17</summary>
+
+Uno; el error no lo alcanza porque en1 vale0 y antes de1 es menor que1.
+
+</details>
+
+#### Microcontrol 18
 
 []{#MA-MIC-ANM-01-027-018}
 
-2. ¿Qué controla las potencias en $[0,c]$ con $c<1$?
+¿Qué controla las potencias en $[0,c]$ con $c<1$?
+
+[]{#MA-MSOL-ANM-01-027-018}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 18</summary>
+
+La cota y máximo c^n, que tiende a cero por Bernoulli.
+
+</details>
+
+#### Microcontrol 19
 
 []{#MA-MIC-ANM-01-027-019}
 
-3. ¿Qué ocurre si $c=0$?
+¿Qué ocurre si $c=0$?
+
+[]{#MA-MSOL-ANM-01-027-019}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 19</summary>
+
+La única entrada es cero y el error de las potencias vale0 desde n=1.
+
+</details>
+
+#### Microcontrol 20
 
 []{#MA-MIC-ANM-01-027-020}
 
-4. ¿Dónde alcanza su error máximo la tienda $t_n$?
+¿Dónde alcanza su error máximo la tienda $t_n$?
+
+[]{#MA-MSOL-ANM-01-027-020}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 20</summary>
+
+En x=2/(n+3), donde vale1.
+
+</details>
+
+#### Microcontrol 21
 
 []{#MA-MIC-ANM-01-027-021}
 
-5. ¿Qué envolvente tiene la tienda normalizada?
+¿Qué envolvente tiene la tienda normalizada?
+
+[]{#MA-MSOL-ANM-01-027-021}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 21</summary>
+
+k=n+3, alcanzada en el mismo centro móvil.
+
+</details>
+
+#### Microcontrol 22
 
 []{#MA-MIC-ANM-01-027-022}
 
-6. ¿Qué cuadrado produce la cota global de $h_n$?
+¿Qué cuadrado produce la cota global de $h_n$?
+
+[]{#MA-MSOL-ANM-01-027-022}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 22</summary>
+
+(√k|x|−1)^2≥0, con k=n+1.
+
+</details>
+
+#### Microcontrol 23
 
 []{#MA-MIC-ANM-01-027-023}
 
-7. ¿Dónde alcanza $h_n$ su máximo de magnitud?
+¿Dónde alcanza $h_n$ su máximo de magnitud?
+
+[]{#MA-MSOL-ANM-01-027-023}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 23</summary>
+
+En x=±1/√k, con valor1/(2√k).
+
+</details>
+
+#### Microcontrol 24
 
 []{#MA-MIC-ANM-01-027-024}
 
-8. ¿Decide un dominio no acotado que la convergencia falle?
+¿Decide un dominio no acotado que la convergencia falle?
 
+[]{#MA-MSOL-ANM-01-027-024}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 24</summary>
+
+No. h_n converge uniformemente a cero en toda la recta mediante una cota global.
+
+</details>
+
+### Ejercicios de la sección 27.3
+
+#### Ejercicio 11. Supremo sin máximo de las potencias
+
+[]{#MA-EX-ANM-01-027-011}
+
+Calcula la envolvente del error respecto del límite puntual de las potencias en $[0,1]$ para $n\ge1$.
+
+[]{#MA-SOL-ANM-01-027-011}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 11</summary>
+
+En1 el error es0 y para x<1 es x^n<1, así1 es cota y no se alcanza. Dada cualquier cota propuesta0≤c<1, tomamos0<s<(1−c)/(n+1) y x=1−s. Bernoulli da x^n≥1−ns>c, así c falla. Cotas negativas fallan ante el error0. Por tanto E_n=1 sin máximo; no hay uniformidad.
+
+</details>
+
+#### Ejercicio 12. Una restricción con máximo
+
+[]{#MA-EX-ANM-01-027-012}
+
+Para $0<c<1$, calcula la envolvente de las potencias hacia cero en $[0,c]$ y un corte suficiente.
+
+[]{#MA-SOL-ANM-01-027-012}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 12</summary>
+
+Para n≥1 y0≤x≤c se tiene x^n≤c^n, y la igualdad se alcanza en c. Así E_n=c^n. Poniendo t=1/c−1>0, Bernoulli produce c^n≤1/(1+nt). Un natural N>1/(εt), reunido con1, da E_n<ε en toda la cola. Para c=0 la familia tiene error0 desde la etapa1.
+
+</details>
+
+#### Ejercicio 13. Un pico que sigue siendo grande
+
+[]{#MA-EX-ANM-01-027-013}
+
+Calcula las envolventes de $t_n$ y $(n+3)t_n$ en $[0,1]$ y refuta sus convergencias uniformes hacia cero.
+
+[]{#MA-SOL-ANM-01-027-013}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 13</summary>
+
+Con k=n+3, las tiendas tienen cota1 y alcanzan1 en2/k, así E_n(t)=1. Las normalizadas tienen cota k y alcanzan k en el mismo centro, así E_n(b)=k. Para tolerancia1/2, en cualquier índice posterior al corte ese centro es infractor. Los centros están en el dominio. Ninguna envolvente tiende a cero aunque los límites puntuales sean cero.
+
+</details>
+
+#### Ejercicio 14. Un máximo global decreciente
+
+[]{#MA-EX-ANM-01-027-014}
+
+Para $h_n=x/[1+(n+1)x^2]$ en $\mathbb R$, prueba el máximo exacto del error y uniformidad.
+
+[]{#MA-SOL-ANM-01-027-014}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 14</summary>
+
+Con k=n+1, el cuadrado(√k|x|−1)^2≥0 da1+kx²≥2√k|x|. Para x≠0, dividir por factores positivos implica |h_n(x)|≤1/(2√k), y en0 el error es0. En x=±1/√k se alcanza la cota, por lo que es el máximo exacto. Un natural N>1/(4ε²) hace ese máximo menor que ε en toda la cola. No se necesita acotar el dominio.
+
+**Retorno visual.** Véase [C27-F03](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 15. La amplitud reduce el error
+
+[]{#MA-EX-ANM-01-027-015}
+
+Define $v_n(x)=x^{n+1}/(n+1)$ en $[0,1]$. Calcula el máximo y demuestra uniformidad hacia cero.
+
+[]{#MA-SOL-ANM-01-027-015}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 15</summary>
+
+En el dominio,0≤x^(n+1)≤1, así el error es≤1/(n+1). En x=1 se alcanza esa cota; es el máximo y la envolvente. Un natural N>1/ε da error menor que ε para todos n≥N y x del segmento. A diferencia de x^n, la amplitud1/(n+1) reduce también la peor discrepancia del extremo, no sólo las columnas interiores.
+
+</details>
 ## 27.4. Restringir el dominio y seguir rutas
 
 []{#MA-SEC-ANM-01-027-004}
@@ -304,38 +804,204 @@ La conversa no vale con una sola subsucesión. Filas constantes $f_n(x)=(-1)^n$ 
 
 ### Microcontroles
 
+#### Microcontrol 25
+
 []{#MA-MIC-ANM-01-027-025}
 
-1. ¿Qué corte sirve después de restringir el dominio?
+¿Qué corte sirve después de restringir el dominio?
+
+[]{#MA-MSOL-ANM-01-027-025}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 25</summary>
+
+El mismo corte de uniformidad en el dominio mayor.
+
+</details>
+
+#### Microcontrol 26
 
 []{#MA-MIC-ANM-01-027-026}
 
-2. ¿Cómo se reúnen finitariamente los cortes de piezas?
+¿Cómo se reúnen finitariamente los cortes de piezas?
+
+[]{#MA-MSOL-ANM-01-027-026}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 26</summary>
+
+Con su máximo, que domina todas las obligaciones para la tolerancia fijada.
+
+</details>
+
+#### Microcontrol 27
 
 []{#MA-MIC-ANM-01-027-027}
 
-3. ¿Hace falta que las piezas sean abiertas o cerradas?
+¿Hace falta que las piezas sean abiertas o cerradas?
+
+[]{#MA-MSOL-ANM-01-027-027}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 27</summary>
+
+No; el argumento de reunión finita sólo usa pertenencia a alguna pieza.
+
+</details>
+
+#### Microcontrol 28
 
 []{#MA-MIC-ANM-01-027-028}
 
-4. ¿Qué puede fallar en una unión infinita?
+¿Qué puede fallar en una unión infinita?
+
+[]{#MA-MSOL-ANM-01-027-028}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 28</summary>
+
+Los cortes de las piezas pueden no tener una barrera común.
+
+</details>
+
+#### Microcontrol 29
 
 []{#MA-MIC-ANM-01-027-029}
 
-5. ¿Qué error controla uniformidad para cualquier ruta $x_n$?
+¿Qué error controla uniformidad para cualquier ruta $x_n$?
+
+[]{#MA-MSOL-ANM-01-027-029}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 29</summary>
+
+|f_n(x_n)−f(x_n)|, sin exigir que las entradas converjan.
+
+</details>
+
+#### Microcontrol 30
 
 []{#MA-MIC-ANM-01-027-030}
 
-6. ¿Qué dato adicional permite comparar con $f(x)$?
+¿Qué dato adicional permite comparar con $f(x)$?
+
+[]{#MA-MSOL-ANM-01-027-030}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 30</summary>
+
+Que x_n→x∈X y que f sea continua en x.
+
+</details>
+
+#### Microcontrol 31
 
 []{#MA-MIC-ANM-01-027-031}
 
-7. ¿Qué cota de índices tiene una subsucesión estrictamente creciente?
+¿Qué cota de índices tiene una subsucesión estrictamente creciente?
+
+[]{#MA-MSOL-ANM-01-027-031}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 31</summary>
+
+n_j≥j, por inducción en naturales; permite heredar el corte uniforme.
+
+</details>
+
+#### Microcontrol 32
 
 []{#MA-MIC-ANM-01-027-032}
 
-8. ¿Basta una subsucesión uniforme para afirmar uniformidad de la familia?
+¿Basta una subsucesión uniforme para afirmar uniformidad de la familia?
 
+[]{#MA-MSOL-ANM-01-027-032}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 32</summary>
+
+No; las filas constantes alternantes tienen una subsucesión par constante y la familia no converge.
+
+</details>
+
+### Ejercicios de la sección 27.4
+
+#### Ejercicio 16. Restricción con barrera común
+
+[]{#MA-EX-ANM-01-027-016}
+
+Si hay convergencia uniforme en $X$, demuestra uniformidad en cualquier $Y\subseteq X$ y compara envolventes cuando existen.
+
+[]{#MA-SOL-ANM-01-027-016}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 16</summary>
+
+El corte uniforme en X ya controla todas las entradas de Y, así funciona sin cambios. Para conjuntos no vacíos, la imagen de errores de Y es subconjunto de la de X; cada cota de la mayor acota la menor y C02 da E_n(Y)≤E_n(X). En una pieza vacía se adopta error0 y no hay obligaciones. No se deduce igualdad de envolventes.
+
+</details>
+
+#### Ejercicio 17. Reunión de dos contratos
+
+[]{#MA-EX-ANM-01-027-017}
+
+Si $X=A\cup B$ y las restricciones convergen uniformemente a la misma candidata, acredita el contrato en $X$.
+
+[]{#MA-SOL-ANM-01-027-017}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 17</summary>
+
+Para ε>0, tomamos los cortes N_A y N_B y su máximo N. Si n≥N y x∈X, pertenece a A o B y el contrato de esa pieza entrega error<ε. Los cortes son independientes de la entrada. Si alguna pieza es vacía basta el corte de la otra. El argumento no necesita topología de las piezas, sólo una unión finita.
+
+</details>
+
+#### Ejercicio 18. Una unión infinita falla
+
+[]{#MA-EX-ANM-01-027-018}
+
+Usa $X_j=[0,1-1/(j+2)]$ para mostrar que uniformidad en cada pieza no implica uniformidad en la unión.
+
+[]{#MA-SOL-ANM-01-027-018}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 18</summary>
+
+La unión es[0,1): para cualquier x<1, la arquimedianidad permite1/(j+2)≤1−x. En cada pieza la envolvente de las potencias es c_j^n→0, así hay uniformidad hacia cero. En la unión el supremo del error es1 para todo n≥1, como en §27.3, y no hay uniformidad. Los cortes dependientes de j no tienen una barrera común que permita tomar un máximo infinito.
+
+**Retorno visual.** Véase [C27-F04](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 19. Una ruta cualquiera
+
+[]{#MA-EX-ANM-01-027-019}
+
+Si $f_n\to f$ uniformemente y está dada una ruta $x_n\in X$, prueba $|f_n(x_n)-f(x_n)|\to0$. ¿Se exige convergencia de la ruta?
+
+[]{#MA-SOL-ANM-01-027-019}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 19</summary>
+
+Para una tolerancia, el contrato entrega un corte que controla toda entrada en toda fila posterior. En particular, controla la entrada x_n de la fila n. Por ello el error diagonal respecto del valor f(x_n) es menor que ε para n≥N. No se exige convergencia de x_n. Para cambiar el destino a f(x), se necesitarían además x_n→x y un dato como continuidad de f en x.
+
+</details>
+
+#### Ejercicio 20. Subsucesión y prefijo
+
+[]{#MA-EX-ANM-01-027-020}
+
+Prueba transferencia uniforme a una subsucesión estrictamente creciente de índices y explica por qué la conversa con una sola subsucesión falla.
+
+[]{#MA-SOL-ANM-01-027-020}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 20</summary>
+
+Por inducción, índices naturales estrictamente crecientes n_j cumplen n_j≥j. El corte uniforme N de la familia completa sirve desde j≥N, pues n_j≥N y controla todas las entradas. La conversa falla para filas constantes(−1)^n: la subsucesión par es igual a1 en todo el dominio pero la completa alterna dos destinos distintos en cada entrada. Una cola completa tiene más obligaciones que una subsucesión.
+
+</details>
 ## 27.5. Operar bajo un presupuesto común
 
 []{#MA-SEC-ANM-01-027-005}
@@ -389,38 +1055,204 @@ La estimación prueba uniformidad de la cola de recíprocos. Para una familia de
 
 ### Microcontroles
 
+#### Microcontrol 33
+
 []{#MA-MIC-ANM-01-027-033}
 
-1. ¿Qué permite la suma de dos errores uniformes?
+¿Qué permite la suma de dos errores uniformes?
+
+[]{#MA-MSOL-ANM-01-027-033}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 33</summary>
+
+Repartir la tolerancia y tomar el máximo de dos cortes independientes de la entrada.
+
+</details>
+
+#### Microcontrol 34
 
 []{#MA-MIC-ANM-01-027-034}
 
-2. ¿Qué desigualdad controla el valor absoluto?
+¿Qué desigualdad controla el valor absoluto?
+
+[]{#MA-MSOL-ANM-01-027-034}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 34</summary>
+
+La triangular inversa: ||u|−|v||≤|u−v|.
+
+</details>
+
+#### Microcontrol 35
 
 []{#MA-MIC-ANM-01-027-035}
 
-3. ¿Qué hipótesis suficiente se declara para una composición exterior?
+¿Qué hipótesis suficiente se declara para una composición exterior?
+
+[]{#MA-MSOL-ANM-01-027-035}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 35</summary>
+
+Una constante Lipschitz común en un dominio que contenga todos los valores utilizados.
+
+</details>
+
+#### Microcontrol 36
 
 []{#MA-MIC-ANM-01-027-036}
 
-4. ¿Qué barrera obtiene la prueba del producto para $f_n$?
+¿Qué barrera obtiene la prueba del producto para $f_n$?
+
+[]{#MA-MSOL-ANM-01-027-036}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 36</summary>
+
+|f_n|≤A+1 en una cola, desde |f|≤A y error uniforme menor que1.
+
+</details>
+
+#### Microcontrol 37
 
 []{#MA-MIC-ANM-01-027-037}
 
-5. ¿Por qué el producto con $x$ puede perder uniformidad?
+¿Por qué el producto con $x$ puede perder uniformidad?
+
+[]{#MA-MSOL-ANM-01-027-037}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 37</summary>
+
+No hay una barrera de |x| en la recta que permita convertir el pequeño error del otro factor en uno global.
+
+</details>
+
+#### Microcontrol 38
 
 []{#MA-MIC-ANM-01-027-038}
 
-6. ¿Basta continuidad del cuadrado para conservar uniformidad en valores no acotados?
+¿Basta continuidad del cuadrado para conservar uniformidad en valores no acotados?
+
+[]{#MA-MSOL-ANM-01-027-038}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 38</summary>
+
+No; el error de cuadrar x+1/(n+1) crece sin cota al variar x.
+
+</details>
+
+#### Microcontrol 39
 
 []{#MA-MIC-ANM-01-027-039}
 
-7. ¿Qué margen uniforme evita ceros en denominadores?
+¿Qué margen uniforme evita ceros en denominadores?
+
+[]{#MA-MSOL-ANM-01-027-039}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 39</summary>
+
+|g|≥m>0 y error|g_n−g|<m/2 garantizan |g_n|>m/2 en toda la cola.
+
+</details>
+
+#### Microcontrol 40
 
 []{#MA-MIC-ANM-01-027-040}
 
-8. ¿Qué debe revisarse para recíprocos desde el índice inicial?
+¿Qué debe revisarse para recíprocos desde el índice inicial?
 
+[]{#MA-MSOL-ANM-01-027-040}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 40</summary>
+
+Que las filas iniciales no tengan ceros en el dominio, o que se declare su reparación.
+
+</details>
+
+### Ejercicios de la sección 27.5
+
+#### Ejercicio 21. Álgebra con dos presupuestos
+
+[]{#MA-EX-ANM-01-027-021}
+
+Prueba convergencia uniforme de $\alpha f_n+\beta g_n$ cuando ambas familias convergen uniformemente.
+
+[]{#MA-SOL-ANM-01-027-021}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 21</summary>
+
+Para ε>0 pedimos los errores de f_n y g_n menores que ε/[2(|α|+1)] y ε/[2(|β|+1)], respectivamente. Sus cortes no dependen de la entrada; tomamos el máximo. En cualquier fila posterior y entrada, la triangular da error≤|α||f_n−f|+|β||g_n−g|<ε. Los denominadores positivos incluyen coeficientes cero sin dividir por ellos.
+
+</details>
+
+#### Ejercicio 22. Producto con barreras declaradas
+
+[]{#MA-EX-ANM-01-027-022}
+
+Demuestra uniformidad del producto cuando $|f|\le A$, $|g|\le B$ y hay uniformidad de las dos familias hacia esos límites.
+
+[]{#MA-SOL-ANM-01-027-022}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 22</summary>
+
+El corte para |f_n−f|<1 produce |f_n|≤A+1 en toda entrada de la cola. Allí el error de producto es≤(A+1)|g_n−g|+B|f_n−f|. Pedimos los dos errores menores que ε/[2(A+2)] y ε/[2(B+1)] y reunimos ambos cortes con el de la barrera. La suma es<ε. Las constantes A,B son globales, por lo que el corte no depende de x.
+
+</details>
+
+#### Ejercicio 23. Producto sin barrera
+
+[]{#MA-EX-ANM-01-027-023}
+
+Construye dos familias uniformemente convergentes en $\mathbb R$ cuyo producto no converge uniformemente al producto de límites.
+
+[]{#MA-SOL-ANM-01-027-023}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 23</summary>
+
+Tomamos f_n(x)=x, con error0 hacia x, y g_n(x)=1/(n+1), con error independiente de x tendente a cero. El producto de límites es0 y el producto de filas es x/(n+1). Para cada N, la entrada x=N+1 en la fila n=N da error1; tolerancia1/2 refuta uniformidad. La barrera de f(x)=x falta en todo el dominio.
+
+**Retorno visual.** Véase [C27-F05](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 24. Cuadrar una aproximación global
+
+[]{#MA-EX-ANM-01-027-024}
+
+Analiza el cuadrado de $f_n(x)=x+1/(n+1)$ en $\mathbb R$ y explica qué control permitiría cuadrar.
+
+[]{#MA-SOL-ANM-01-027-024}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 24</summary>
+
+La familia original converge uniformemente a x. El error de los cuadrados es |2x/(n+1)+1/(n+1)^2|, no acotado para ningún n, así no hay uniformidad hacia x². Para una refutación explícita basta x=n+1: el error es2+1/(n+1)²>1. Si todos los valores de filas y límite estuvieran en[−M,M], el cuadrado tendría cota Lipschitz2M por |u²−v²|=|u−v||u+v|, que sí transportaría el contrato.
+
+</details>
+
+#### Ejercicio 25. Recíproco con margen
+
+[]{#MA-EX-ANM-01-027-025}
+
+Si $|g(x)|\ge m>0$ y $g_n\to g$ uniformemente, prueba uniformidad de los recíprocos de la cola y declara su dominio.
+
+[]{#MA-SOL-ANM-01-027-025}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 25</summary>
+
+Un corte uniforme para error<m/2 da |g_n(x)|>m/2 en todas las entradas de la cola. Así esa cola de recíprocos está definida en X. El error es |g_n−g|/(|g_n||g|)≤2|g_n−g|/m². Un corte para error de g_n menor que εm²/2, reunido con el de dominio, hace el error recíproco<ε. Las primeras filas pueden tener ceros; para una familia desde cero deben revisarse o repararse explícitamente.
+
+</details>
 ## 27.6. Una distancia entre funciones acotadas
 
 []{#MA-SEC-ANM-01-027-006}
@@ -486,38 +1318,204 @@ sí tiene diferencias acotadas: entre dos miembros se cancela $f_0$. La misma f�
 
 ### Microcontroles
 
+#### Microcontrol 41
+
 []{#MA-MIC-ANM-01-027-041}
 
-1. ¿Qué funciones pertenecen a $\mathcal B(X)$?
+¿Qué funciones pertenecen a $\mathcal B(X)$?
+
+[]{#MA-MSOL-ANM-01-027-041}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 41</summary>
+
+Las funciones reales sobre X cuyos valores tienen una barrera de magnitud válida para toda entrada.
+
+</details>
+
+#### Microcontrol 42
 
 []{#MA-MIC-ANM-01-027-042}
 
-2. ¿Qué principio asegura existencia de la norma cuando $X$ no es vacío?
+¿Qué principio asegura existencia de la norma cuando $X$ no es vacío?
+
+[]{#MA-MSOL-ANM-01-027-042}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 42</summary>
+
+Completitud de C03 aplicada a la imagen no vacía acotada de |u|.
+
+</details>
+
+#### Microcontrol 43
 
 []{#MA-MIC-ANM-01-027-043}
 
-3. ¿Qué valor de norma se declara en el dominio vacío?
+¿Qué valor de norma se declara en el dominio vacío?
+
+[]{#MA-MSOL-ANM-01-027-043}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 43</summary>
+
+Cero, por convención para la función única, no por un supremo real del vacío.
+
+</details>
+
+#### Microcontrol 44
 
 []{#MA-MIC-ANM-01-027-044}
 
-4. ¿Qué dice norma cero sobre la función?
+¿Qué dice norma cero sobre la función?
+
+[]{#MA-MSOL-ANM-01-027-044}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 44</summary>
+
+Que todos sus valores son0 y por tanto es la función cero.
+
+</details>
+
+#### Microcontrol 45
 
 []{#MA-MIC-ANM-01-027-045}
 
-5. ¿Cómo se trata el escalar cero en homogeneidad?
+¿Cómo se trata el escalar cero en homogeneidad?
+
+[]{#MA-MSOL-ANM-01-027-045}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 45</summary>
+
+Por verificación directa; no se divide por su magnitud.
+
+</details>
+
+#### Microcontrol 46
 
 []{#MA-MIC-ANM-01-027-046}
 
-6. ¿Qué identidad da la distancia triangular?
+¿Qué identidad da la distancia triangular?
+
+[]{#MA-MSOL-ANM-01-027-046}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 46</summary>
+
+u−w=(u−v)+(v−w), junto con la desigualdad triangular de la norma.
+
+</details>
+
+#### Microcontrol 47
 
 []{#MA-MIC-ANM-01-027-047}
 
-7. ¿Puede una gráfica estar en una banda abierta sin quedar en la bola estricta del mismo radio?
+¿Puede una gráfica estar en una banda abierta sin quedar en la bola estricta del mismo radio?
+
+[]{#MA-MSOL-ANM-01-027-047}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 47</summary>
+
+Sí; los errores pueden ser menores que el radio y tener supremo exactamente igual a él.
+
+</details>
+
+#### Microcontrol 48
 
 []{#MA-MIC-ANM-01-027-048}
 
-8. ¿Qué permite una clase $f_0+\mathcal B(X)$?
+¿Qué permite una clase $f_0+\mathcal B(X)$?
 
+[]{#MA-MSOL-ANM-01-027-048}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 48</summary>
+
+Medir diferencias acotadas aunque la base y sus traslaciones sean no acotadas.
+
+</details>
+
+### Ejercicios de la sección 27.6
+
+#### Ejercicio 26. Norma y salida cero
+
+[]{#MA-EX-ANM-01-027-026}
+
+Prueba que $\|u\|_\infty=0$ en $\mathcal B(X)$ si y sólo si $u$ es la función cero, incluido $X$ vacío.
+
+[]{#MA-SOL-ANM-01-027-026}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 26</summary>
+
+Para X no vacío, cada |u(x)| está entre0 y su supremo. Si el supremo es0, todos los valores son0, así u es la función cero. Si u es cero, la imagen de magnitudes es{0} y tiene supremo0. Para el vacío se declaró norma0; la única función es la función cero vacía, por lo que la equivalencia también vale sin fingir un supremo del conjunto vacío.
+
+</details>
+
+#### Ejercicio 27. Homogeneidad sin máximos
+
+[]{#MA-EX-ANM-01-027-027}
+
+Demuestra $\|\alpha u\|_\infty=|\alpha|\|u\|_\infty$ sin suponer que la norma se alcance.
+
+[]{#MA-SOL-ANM-01-027-027}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 27</summary>
+
+Para α≠0, el número |α|‖u‖∞ acota todas las magnitudes de αu. Si C es cualquier cota de éstas, C/|α| acota las magnitudes de u; la minimalidad del supremo da |α|‖u‖∞≤C. Por tanto ese número es el supremo buscado. Para α=0 se verifican directamente ambos lados0. En el dominio vacío ambas normas fueron definidas0 y la igualdad es inmediata.
+
+</details>
+
+#### Ejercicio 28. Distancia triangular
+
+[]{#MA-EX-ANM-01-027-028}
+
+Verifica la desigualdad triangular de $d_\infty(u,v)=\|u-v\|_\infty$ para funciones acotadas.
+
+[]{#MA-SOL-ANM-01-027-028}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 28</summary>
+
+Para cualquier entrada, |u(x)−w(x)|≤|u(x)−v(x)|+|v(x)−w(x)|≤d∞(u,v)+d∞(v,w). El miembro derecho es una cota superior real de todas las diferencias u−w. Tomando su supremo obtenemos d∞(u,w)≤d∞(u,v)+d∞(v,w). Las tres diferencias están acotadas porque las funciones lo están. En el vacío todas las distancias son0.
+
+</details>
+
+#### Ejercicio 29. Banda y bola de frontera estricta
+
+[]{#MA-EX-ANM-01-027-029}
+
+En $X=(0,1)$, compara la banda de radio1 entre $u(x)=x$ y cero con la bola $d_\infty(u,0)<1$.
+
+[]{#MA-SOL-ANM-01-027-029}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 29</summary>
+
+Para todas las entradas, |u(x)|=x<1, así la gráfica queda en la banda abierta de radio1 alrededor de cero. Pero d∞(u,0)=sup(0,1)=1, y u no pertenece a la bola estricta de radio1. No hay contradicción: pertenencia punto a punto a una banda abierta permite supremo en la frontera. Al usar radios menores en un contrato de convergencia, esa diferencia se resuelve con ε/2.
+
+**Retorno visual.** Véase [C27-F06](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 30. Clase trasladada
+
+[]{#MA-EX-ANM-01-027-030}
+
+En $\mathbb R$ explica por qué la distancia suprema no es real entre $x$ y0, pero sí entre $x+u$ y $x+v$ para $u,v$ acotadas.
+
+[]{#MA-SOL-ANM-01-027-030}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 30</summary>
+
+La magnitud |x| no tiene cota real en toda la recta, de modo que no hay supremo real para la diferencia entre x y0. En cambio,(x+u)−(x+v)=u−v es acotada por la suma de barreras de u y v. Su supremo real existe por C03 y define una distancia en la clase x+$\mathcal B(\mathbb R)$. La parte no acotada común se cancela; no se extiende la distancia real a pares arbitrarios de funciones.
+
+</details>
 ## 27.7. Cauchy uniforme y completitud
 
 []{#MA-SEC-ANM-01-027-007}
@@ -580,38 +1578,208 @@ Para un dominio no vacío, ante cualquier corte elegimos un entero $m\ge\max(N,1
 
 ### Microcontroles
 
+#### Microcontrol 49
+
 []{#MA-MIC-ANM-01-027-049}
 
-1. ¿Cuántos índices universales controla Cauchy uniforme?
+¿Cuántos índices universales controla Cauchy uniforme?
+
+[]{#MA-MSOL-ANM-01-027-049}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 49</summary>
+
+Dos, m y n, ambos posteriores a un único corte que también sirve en toda entrada.
+
+</details>
+
+#### Microcontrol 50
 
 []{#MA-MIC-ANM-01-027-050}
 
-2. ¿Qué dirección del criterio no usa completitud?
+¿Qué dirección del criterio no usa completitud?
+
+[]{#MA-MSOL-ANM-01-027-050}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 50</summary>
+
+Uniformemente convergente⇒uniformemente de Cauchy, mediante la triangular y dos errores.
+
+</details>
+
+#### Microcontrol 51
 
 []{#MA-MIC-ANM-01-027-051}
 
-3. ¿Dónde interviene completitud en la vuelta?
+¿Dónde interviene completitud en la vuelta?
+
+[]{#MA-MSOL-ANM-01-027-051}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 51</summary>
+
+En C10, al dar un límite real a cada columna de Cauchy.
+
+</details>
+
+#### Microcontrol 52
 
 []{#MA-MIC-ANM-01-027-052}
 
-4. ¿Qué se mantiene fijo al llevar $m$ al límite?
+¿Qué se mantiene fijo al llevar $m$ al límite?
+
+[]{#MA-MSOL-ANM-01-027-052}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 52</summary>
+
+El índice n≥N y la entrada x; el corte común ya se eligió antes de ambos.
+
+</details>
+
+#### Microcontrol 53
 
 []{#MA-MIC-ANM-01-027-053}
 
-5. ¿Qué sentido tiene la desigualdad tras ese límite?
+¿Qué sentido tiene la desigualdad tras ese límite?
+
+[]{#MA-MSOL-ANM-01-027-053}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 53</summary>
+
+|f_n(x)−f(x)|≤ε/3; el límite conserva la cota superior, sin invertirla.
+
+</details>
+
+#### Microcontrol 54
 
 []{#MA-MIC-ANM-01-027-054}
 
-6. ¿Qué fila demuestra acotación del límite en $\mathcal B(X)$?
+¿Qué fila demuestra acotación del límite en $\mathcal B(X)$?
+
+[]{#MA-MSOL-ANM-01-027-054}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 54</summary>
+
+Una fila de referencia f_N, con barrera final‖f_N‖∞+1 para todas las entradas.
+
+</details>
+
+#### Microcontrol 55
 
 []{#MA-MIC-ANM-01-027-055}
 
-7. ¿Qué significa completitud secuencial para esa distancia?
+¿Qué significa completitud secuencial para esa distancia?
+
+[]{#MA-MSOL-ANM-01-027-055}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 55</summary>
+
+Que toda sucesión de Cauchy tiene límite dentro de$\mathcal B(X)$ en distancia suprema.
+
+</details>
+
+#### Microcontrol 56
 
 []{#MA-MIC-ANM-01-027-056}
 
-8. ¿Por qué no basta que las diferencias de vecinos tiendan a cero?
+¿Por qué no basta que las diferencias de vecinos tiendan a cero?
 
+[]{#MA-MSOL-ANM-01-027-056}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 56</summary>
+
+Los pares lejanos de una cola pueden seguir separados, como H_(2m)−H_m≥1/2.
+
+</details>
+
+### Ejercicios de la sección 27.7
+
+#### Ejercicio 31. De destino a pares
+
+[]{#MA-EX-ANM-01-027-031}
+
+Prueba que convergencia uniforme implica el contrato uniforme de Cauchy e identifica el uso de completitud.
+
+[]{#MA-SOL-ANM-01-027-031}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 31</summary>
+
+Para $\varepsilon>0$ recibimos un corte uniforme para $\varepsilon/3$. Si $m,n\ge N$ y $x\in X$, la triangular da
+
+$$|f_n(x)-f_m(x)|\le |f_n(x)-f(x)|+|f(x)-f_m(x)|<2\varepsilon/3<\varepsilon.$$
+
+El mismo corte controla los dos índices y toda entrada. Esta dirección sólo usa el destino ya dado y la triangular; no necesita completitud.
+
+</details>
+
+#### Ejercicio 32. Construir primero el límite
+
+[]{#MA-EX-ANM-01-027-032}
+
+Desde Cauchy uniforme, demuestra existencia de un límite uniforme sin conocer su fórmula.
+
+[]{#MA-SOL-ANM-01-027-032}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 32</summary>
+
+Cada columna es de Cauchy real, así C10 da un límite único y C26 reúne los límites en una función f. Para ε>0 elegimos un corte común de Cauchy con ε/3. Fijados n≥N y x, todos m≥N satisfacen |f_n(x)−f_m(x)|<ε/3. Al llevar m al límite, álgebra y orden dan |f_n(x)−f(x)|≤ε/3<ε. El corte se eligió antes de n y x, así controla toda la función. La desigualdad tras el límite es≤, no≥.
+
+</details>
+
+#### Ejercicio 33. Conservar el destino en funciones acotadas
+
+[]{#MA-EX-ANM-01-027-033}
+
+Prueba completitud secuencial de $\mathcal B(X)$ para la distancia suprema.
+
+[]{#MA-SOL-ANM-01-027-033}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 33</summary>
+
+Una sucesión de Cauchy en d∞ cumple el contrato uniforme de Cauchy y tiene límite uniforme real f por el criterio. Con tolerancia1 tomamos una fila de referencia f_N; pasar m al límite en |f_m(x)−f_N(x)|<1 da |f(x)|≤‖f_N‖∞+1 para toda entrada. Así f pertenece a$\mathcal B(X)$. El criterio de envolventes identifica la convergencia uniforme con d∞(f_n,f)→0. La existencia numérica usa C10; la barrera común conserva el espacio.
+
+</details>
+
+#### Ejercicio 34. Vecinos cada vez más próximos
+
+[]{#MA-EX-ANM-01-027-034}
+
+Para filas constantes $H_n=\sum_{j=1}^n1/j$, $H_0=0$, prueba que diferencias de vecinos tendentes a cero no bastan para Cauchy uniforme.
+
+[]{#MA-SOL-ANM-01-027-034}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 34</summary>
+
+En un dominio no vacío, d∞(H_(n+1),H_n)=1/(n+1)→0. Pero para m≥1, H_(2m)−H_m suma m términos, cada uno≥1/(2m), así la diferencia es≥1/2. Ante un corte N elegimos m≥máx(N,1); ambos índices son posteriores y cualquier entrada muestra separación≥1/2. Tolerancia1/2 refuta Cauchy uniforme. El contrato controla todos los pares tardíos, no sólo vecinos.
+
+**Retorno visual.** Véase [C27-F07](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 35. La completitud tiene un lugar
+
+[]{#MA-EX-ANM-01-027-035}
+
+Explica qué pasos del criterio uniforme de Cauchy gastan completitud y cuáles sólo usan orden y cortes.
+
+[]{#MA-SOL-ANM-01-027-035}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 35</summary>
+
+Convergencia uniforme⇒Cauchy usa únicamente triangular y un corte común. En la vuelta, C10 usa completitud de ℝ para obtener el destino de cada columna; unicidad construye el grafo. Una vez existente la función límite, el paso de m→∞ conserva la cota no estricta por orden, y el margen ε/3 entrega el contrato uniforme. La permanencia en$\mathcal B(X)$ usa una fila acotada de referencia. No se supone compacidad ni continuidad de las filas.
+
+</details>
 ## 27.8. Certificar una aproximación completa
 
 []{#MA-SEC-ANM-01-027-008}
@@ -669,38 +1837,209 @@ El próximo capítulo preguntará qué operaciones pueden atravesar este nuevo c
 
 ### Microcontroles
 
+#### Microcontrol 57
+
 []{#MA-MIC-ANM-01-027-057}
 
-1. ¿Qué suma usa el presupuesto geométrico de incrementos?
+¿Qué suma usa el presupuesto geométrico de incrementos?
+
+[]{#MA-MSOL-ANM-01-027-057}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 57</summary>
+
+Una suma finita entre las etapas m y n−1; no se presupone una serie de funciones.
+
+</details>
+
+#### Microcontrol 58
 
 []{#MA-MIC-ANM-01-027-058}
 
-2. ¿Qué cota común se obtiene para dos etapas con $n>m$?
+¿Qué cota común se obtiene para dos etapas con $n>m$?
+
+[]{#MA-MSOL-ANM-01-027-058}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 58</summary>
+
+Cq^m/(1−q), válida para toda entrada.
+
+</details>
+
+#### Microcontrol 59
 
 []{#MA-MIC-ANM-01-027-059}
 
-3. ¿Qué error se certifica después de construir el límite?
+¿Qué error se certifica después de construir el límite?
+
+[]{#MA-MSOL-ANM-01-027-059}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 59</summary>
+
+|f−f_m|≤Cq^m/(1−q) en todo el dominio.
+
+</details>
+
+#### Microcontrol 60
 
 []{#MA-MIC-ANM-01-027-060}
 
-4. ¿Qué ocurre si $C=0$?
+¿Qué ocurre si $C=0$?
+
+[]{#MA-MSOL-ANM-01-027-060}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 60</summary>
+
+Todos los incrementos son0 y todas las filas coinciden.
+
+</details>
+
+#### Microcontrol 61
 
 []{#MA-MIC-ANM-01-027-061}
 
-5. ¿Cómo se evita ambigüedad si se permite $q=0$?
+¿Cómo se evita ambigüedad si se permite $q=0$?
+
+[]{#MA-MSOL-ANM-01-027-061}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 61</summary>
+
+Se declara cota inicialC y cotas posteriores0; desde la etapa1 la familia es constante.
+
+</details>
+
+#### Microcontrol 62
 
 []{#MA-MIC-ANM-01-027-062}
 
-6. ¿Cuándo se concluye que el límite es acotado?
+¿Cuándo se concluye que el límite es acotado?
+
+[]{#MA-MSOL-ANM-01-027-062}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 62</summary>
+
+Cuando una fila de referencia está acotada; el presupuesto sólo acota diferencias si la base es arbitraria.
+
+</details>
+
+#### Microcontrol 63
 
 []{#MA-MIC-ANM-01-027-063}
 
-7. ¿Qué refuta $s_n=\mathbf1_{(0,1/(n+1))}$?
+¿Qué refuta $s_n=\mathbf1_{(0,1/(n+1))}$?
+
+[]{#MA-MSOL-ANM-01-027-063}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 63</summary>
+
+Que monotonía por columnas y límite continuo basten sin otros datos: el error máximo sigue siendo1.
+
+</details>
+
+#### Microcontrol 64
 
 []{#MA-MIC-ANM-01-027-064}
 
-8. ¿Qué única puerta sigue a este capítulo?
+¿Qué única puerta sigue a este capítulo?
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 27](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html) · [Ejercicios](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-microcontroles.html)
+[]{#MA-MSOL-ANM-01-027-064}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 64</summary>
+
+C28: demostrar con sus hipótesis cuándo continuidad, integración y diferenciación pueden atravesar los límites.
+
+</details>
+
+### Ejercicios de la sección 27.8
+
+#### Ejercicio 36. Presupuesto geométrico finito
+
+[]{#MA-EX-ANM-01-027-036}
+
+Si $|f_{j+1}(x)-f_j(x)|\le Cq^j$ con $0<q<1$, prueba Cauchy uniforme y una cota del error posterior.
+
+[]{#MA-SOL-ANM-01-027-036}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 36</summary>
+
+Para $n>m$, telescopar y sumar una cantidad finita de errores da, para toda entrada,
+
+$$|f_n(x)-f_m(x)|\le C\sum_{j=m}^{n-1}q^j=Cq^m\frac{1-q^{n-m}}{1-q}\le\frac{Cq^m}{1-q}.$$
+
+Intercambiamos índices si $m>n$; si coinciden, el error es cero. Como $q^m\to0$, hay un corte común para todos los pares, y el criterio produce $f$. Fijando $m$ y pasando $n$ al límite, obtenemos $|f(x)-f_m(x)|\le Cq^m/(1-q)$ en todo $X$.
+
+</details>
+
+#### Ejercicio 37. Destino acotado o diferencia acotada
+
+[]{#MA-EX-ANM-01-027-037}
+
+Bajo el presupuesto geométrico, compara el caso de una fila inicial acotada con el de una base arbitraria.
+
+[]{#MA-SOL-ANM-01-027-037}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 37</summary>
+
+Telescopar desde0 da |f_n(x)−f_0(x)|≤C/(1−q). Al pasar al límite se conserva la misma barrera para f−f_0. Si f_0 está acotada, entonces |f_n| y |f| están acotados por ‖f_0‖∞+C/(1−q), y todos viven en$\mathcal B(X)$. Si f_0 no está acotada, sólo se garantiza pertenencia a f_0+$\mathcal B(X)$. No se concluye acotación de f sin esa premisa.
+
+</details>
+
+#### Ejercicio 38. Un presupuesto que se alcanza
+
+[]{#MA-EX-ANM-01-027-038}
+
+Con $|a|\le1$ y base arbitraria $r$, estudia $f_n=r+(1-2^{-n})a$ y calcula una cota uniforme de error.
+
+[]{#MA-SOL-ANM-01-027-038}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 38</summary>
+
+El incremento es2^(−n−1)a, de magnitud≤(1/2)(1/2)^n. El presupuesto geométrico sirve con C=1/2,q=1/2 y da cota2^(−n). Directamente f_n−(r+a)=−2^(−n)a, cuya magnitud es≤2^(−n); por ello el límite uniforme es r+a. Si |a| alcanza1, la cota es el máximo exacto. Si sólo tiene supremo1, es la envolvente exacta sin exigir máximo. La base r puede ser no acotada.
+
+**Retorno visual.** Véase [C27-F08](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 39. Monotonía con límite continuo
+
+[]{#MA-EX-ANM-01-027-039}
+
+En $[0,1]$, analiza $s_n=\mathbf1_{(0,1/(n+1))}$: monotonía, límite, continuidad de éste y uniformidad.
+
+[]{#MA-SOL-ANM-01-027-039}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 39</summary>
+
+Los intervalos positivos se encogen, así s_(n+1)≤s_n entrada por entrada. En0 todas las filas valen0. Para x>0 fijo, desde n+1>1/x queda fuera y la columna vale0. El límite puntual es cero, continuo. Sin embargo x_n=1/[2(n+1)] pertenece al intervalo positivo y da error1 en toda etapa; no hay uniformidad. Las filas son discontinuas, por lo que no se puede usar un resultado que requiera continuidad de ellas omitiendo esa hipótesis.
+
+</details>
+
+#### Ejercicio 40. Una auditoría de condiciones
+
+[]{#MA-EX-ANM-01-027-040}
+
+Reúne los datos que se necesitan para afirmar uniformidad, usar la distancia suprema y comparar una diagonal con el valor límite en su destino.
+
+[]{#MA-SOL-ANM-01-027-040}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 40</summary>
+
+Uniformidad requiere un corte por tolerancia que controle todas las entradas y todas las filas posteriores; una barrera universal tendente a cero basta. La distancia suprema real requiere diferencias acotadas en la clase utilizada, con convención explícita para el vacío; no vale sobre todas las funciones arbitrarias. Para una ruta dada, uniformidad controla f_n(x_n)−f(x_n). Si x_n→x y f es continua en x, C14 y la triangular permiten compararla con f(x). La continuidad del límite no se deduce aquí sin prueba: su preservación se trata en C28.
+
+</details>
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-27)
 
 [← Capítulo 26](analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html) · [Capítulo 28 →](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html)

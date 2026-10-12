@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 28 — Intercambiar límites con operaciones
-date-modified: '2026-10-11'
+date-modified: '2026-10-12'
 provenance:
   type: original
   sources:
@@ -26,7 +26,7 @@ provenance:
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 28](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html) · [Ejercicios](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-28)
 
 C27 construyó el contrato uniforme. Ahora probaremos qué operaciones conserva, construyendo cada destino antes de identificarlo: continuidad, límites relativos, integrabilidad y derivabilidad. C14/C18/C23 son centrales; C10/C13/C16/C17/C19/C24 aportan interfaces declaradas. C29 sólo se anuncia al final.
 
@@ -52,38 +52,206 @@ Para $f_n(x)=x+1/(n+1)$ en toda la recta, el error de aproximación es $1/(n+1)$
 
 ### Microcontroles
 
+#### Microcontrol 1
+
 []{#MA-MIC-ANM-01-028-001}
 
-1. ¿Qué se fija antes de obtener el radio de continuidad?
+¿Qué se fija antes de obtener el radio de continuidad?
+
+[]{#MA-MSOL-ANM-01-028-001}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 1</summary>
+
+Una fila posterior al corte de error uniforme.
+
+</details>
+
+#### Microcontrol 2
 
 []{#MA-MIC-ANM-01-028-002}
 
-2. ¿Cuántos errores controla la prueba de R1?
+¿Cuántos errores controla la prueba de R1?
+
+[]{#MA-MSOL-ANM-01-028-002}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 2</summary>
+
+Tres: aproximación en ambas entradas y variación de la fila fija.
+
+</details>
+
+#### Microcontrol 3
 
 []{#MA-MIC-ANM-01-028-003}
 
-3. ¿La fila fijada necesita una cota global de valores?
+¿La fila fijada necesita una cota global de valores?
+
+[]{#MA-MSOL-ANM-01-028-003}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 3</summary>
+
+No; la prueba sólo usa error uniforme y continuidad.
+
+</details>
+
+#### Microcontrol 4
 
 []{#MA-MIC-ANM-01-028-004}
 
-4. ¿Los radios de continuidad deben ser comunes a todas las filas?
+¿Los radios de continuidad deben ser comunes a todas las filas?
+
+[]{#MA-MSOL-ANM-01-028-004}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 4</summary>
+
+No; basta el radio de la fila escogida para la tolerancia dada.
+
+</details>
+
+#### Microcontrol 5
 
 []{#MA-MIC-ANM-01-028-005}
 
-5. ¿Qué hipótesis de filas conserva continuidad uniforme?
+¿Qué hipótesis de filas conserva continuidad uniforme?
+
+[]{#MA-MSOL-ANM-01-028-005}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 5</summary>
+
+Continuidad uniforme de las filas, además de convergencia uniforme.
+
+</details>
+
+#### Microcontrol 6
 
 []{#MA-MIC-ANM-01-028-006}
 
-6. ¿Un destino continuo obliga convergencia uniforme?
+¿Un destino continuo obliga convergencia uniforme?
+
+[]{#MA-MSOL-ANM-01-028-006}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 6</summary>
+
+No; las potencias en $[0,1)$ tienen destino cero y envolvente uno.
+
+</details>
+
+#### Microcontrol 7
 
 []{#MA-MIC-ANM-01-028-007}
 
-7. ¿Qué continuidad se usa en bordes del dominio?
+¿Qué continuidad se usa en bordes del dominio?
+
+[]{#MA-MSOL-ANM-01-028-007}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 7</summary>
+
+Continuidad relativa al mismo dominio común.
+
+</details>
+
+#### Microcontrol 8
 
 []{#MA-MIC-ANM-01-028-008}
 
-8. ¿Qué ocurre en un dominio vacío?
+¿Qué ocurre en un dominio vacío?
 
+[]{#MA-MSOL-ANM-01-028-008}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 8</summary>
+
+La conclusión no tiene puntos que comprobar.
+
+</details>
+
+### Ejercicios de la sección 28.1
+
+[]{#ejercicios-28}
+
+#### Ejercicio 1. Una fila dentro de la banda
+
+[]{#MA-EX-ANM-01-028-001}
+
+Prueba continuidad del límite uniforme en un punto donde todas las filas son continuas.
+
+[]{#MA-SOL-ANM-01-028-001}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 1</summary>
+
+Fijamos $\varepsilon>0$. Uniformidad da una fila $f_N$ con error menor que $\varepsilon/3$ en toda entrada. Continuidad de esa fila en $x_0$ entrega un radio para $|f_N(x)-f_N(x_0)|<\varepsilon/3$. La triangular entre $f(x),f_N(x),f_N(x_0),f(x_0)$ suma tres errores menores que $\varepsilon/3$. El mismo radio controla todas las entradas relativas próximas; no necesita controlar todas las filas.
+
+**Retorno visual.** Véase [C28-F01](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html#fig-anm-c28-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 2. Radios para todos los pares
+
+[]{#MA-EX-ANM-01-028-002}
+
+Prueba que un límite uniforme de funciones uniformemente continuas es uniformemente continuo, sin radio común previo para las filas.
+
+[]{#MA-SOL-ANM-01-028-002}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 2</summary>
+
+Escogemos una fila con error uniforme menor que $\varepsilon/3$. La continuidad uniforme de esa fila produce un radio para todo par $x,y$. Sumamos error de aproximación en $x$, variación de la fila y error en $y$. El resultado es menor que $\varepsilon$ para todo par próximo. El radio depende de la tolerancia y de la fila fijada, que es suficiente.
+
+</details>
+
+#### Ejercicio 3. Destino continuo sin uniformidad
+
+[]{#MA-EX-ANM-01-028-003}
+
+Explica por qué las potencias en $[0,1)$ refutan la recíproca del teorema de continuidad.
+
+[]{#MA-SOL-ANM-01-028-003}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 3</summary>
+
+Para cada entrada $x<1$, $x^n\to0$, cuyo destino es continuo. Para cada $n\ge1$, Bernoulli produce valores de $x^n$ arbitrariamente próximos a uno desde abajo; su supremo es uno. Las envolventes no tienden a cero. Por tanto continuidad del destino no obliga uniformidad.
+
+</details>
+
+#### Ejercicio 4. Valores sin barrera global
+
+[]{#MA-EX-ANM-01-028-004}
+
+Analiza continuidad y uniformidad de $x+1/(n+1)$ en $\mathbb R$.
+
+[]{#MA-SOL-ANM-01-028-004}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 4</summary>
+
+La diferencia con la identidad es constante $1/(n+1)$ y tiende a cero uniformemente. Todas las filas y el límite satisfacen $|f(x)-f(y)|=|x-y|$, de modo que son uniformemente continuos. Sus valores son no acotados: para cualquier barrera se elige una entrada positiva suficientemente grande. R1 no necesita una barrera de valores.
+
+</details>
+
+#### Ejercicio 5. Filas continuas arbitrariamente tardías
+
+[]{#MA-EX-ANM-01-028-005}
+
+Demuestra la versión de R1 que sólo exige filas continuas en $x_0$ con índices arbitrariamente grandes.
+
+[]{#MA-SOL-ANM-01-028-005}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 5</summary>
+
+Para la tolerancia $\varepsilon/3$, el corte uniforme es $N$. La hipótesis entrega un índice $n\ge N$ de una fila continua en $x_0$. Fijamos esa fila y su radio de continuidad. Los errores de aproximación en ambas entradas son menores que $\varepsilon/3$ por pertenecer a la cola, y la variación central también. La triangular prueba continuidad del límite; no hay que construir una subsecuencia infinita.
+
+</details>
 ## 28.2. Dos límites con un presupuesto común
 
 []{#MA-SEC-ANM-01-028-002}
@@ -120,38 +288,204 @@ Para $f_n(x)=x+1/(n+1)$, $a=0$, tenemos $p_n=1/(n+1)$ y $p=0$. En cambio, $r_n(x
 
 ### Microcontroles
 
+#### Microcontrol 9
+
 []{#MA-MIC-ANM-01-028-009}
 
-1. ¿Por qué el centro de R2 debe acumular?
+¿Por qué el centro de R2 debe acumular?
+
+[]{#MA-MSOL-ANM-01-028-009}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 9</summary>
+
+Para que las ventanas perforadas tengan entradas y los límites sean únicos.
+
+</details>
+
+#### Microcontrol 10
 
 []{#MA-MIC-ANM-01-028-010}
 
-2. ¿Qué se construye primero en R2?
+¿Qué se construye primero en R2?
+
+[]{#MA-MSOL-ANM-01-028-010}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 10</summary>
+
+El límite numérico de los destinos de las filas.
+
+</details>
+
+#### Microcontrol 11
 
 []{#MA-MIC-ANM-01-028-011}
 
-3. ¿Qué cota queda al pasar una entrada al límite?
+¿Qué cota queda al pasar una entrada al límite?
+
+[]{#MA-MSOL-ANM-01-028-011}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 11</summary>
+
+Una cota débil, por ejemplo $|p_n-p_m|\le\eta/2$.
+
+</details>
+
+#### Microcontrol 12
 
 []{#MA-MIC-ANM-01-028-012}
 
-4. ¿Qué construye el destino de una sucesión de Cauchy real?
+¿Qué construye el destino de una sucesión de Cauchy real?
+
+[]{#MA-MSOL-ANM-01-028-012}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 12</summary>
+
+La completitud numérica de C10.
+
+</details>
+
+#### Microcontrol 13
 
 []{#MA-MIC-ANM-01-028-013}
 
-5. ¿El valor de la función en el centro participa?
+¿El valor de la función en el centro participa?
+
+[]{#MA-MSOL-ANM-01-028-013}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 13</summary>
+
+No en el límite relativo perforado.
+
+</details>
+
+#### Microcontrol 14
 
 []{#MA-MIC-ANM-01-028-014}
 
-6. ¿Basta uniformidad en una ventana fija?
+¿Basta uniformidad en una ventana fija?
+
+[]{#MA-MSOL-ANM-01-028-014}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 14</summary>
+
+Sí, tras restringir el dominio a esa ventana perforada.
+
+</details>
+
+#### Microcontrol 15
 
 []{#MA-MIC-ANM-01-028-015}
 
-7. ¿Qué valor conserva la ruta racional $x_n=1/(n+1)$?
+¿Qué valor conserva la ruta racional $x_n=1/(n+1)$?
+
+[]{#MA-MSOL-ANM-01-028-015}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 15</summary>
+
+$1/2$ en toda etapa, frente a iterados uno y cero.
+
+</details>
+
+#### Microcontrol 16
 
 []{#MA-MIC-ANM-01-028-016}
 
-8. ¿Se escoge una ruta por cada escala en la prueba?
+¿Se escoge una ruta por cada escala en la prueba?
 
+[]{#MA-MSOL-ANM-01-028-016}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 16</summary>
+
+No; la prueba es por ventanas y las rutas usadas son dadas explícitamente.
+
+</details>
+
+### Ejercicios de la sección 28.2
+
+#### Ejercicio 6. Construir el destino de los destinos
+
+[]{#MA-EX-ANM-01-028-006}
+
+Bajo R2, demuestra que los límites de fila $p_n$ forman una sucesión de Cauchy.
+
+[]{#MA-SOL-ANM-01-028-006}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 6</summary>
+
+Para $\eta>0$, Cauchy uniforme de las filas da $N$ con diferencias menores que $\eta/2$ para toda entrada y todo par posterior. Fijamos $m,n\ge N$ y pasamos la entrada al punto de acumulación. C13 conserva la cota débil: $|p_n-p_m|\le\eta/2<\eta$. El mismo corte controla todos los pares. C10 entrega el único destino real $p$.
+
+</details>
+
+#### Ejercicio 7. El límite que aún no existía
+
+[]{#MA-EX-ANM-01-028-007}
+
+Completa la prueba de existencia de $\lim_{x\to a}f(x)$ en R2.
+
+[]{#MA-SOL-ANM-01-028-007}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 7</summary>
+
+Una vez construido $p=\lim_n p_n$, fijamos una fila posterior tanto al corte uniforme para $\varepsilon/3$ como al de $|p_n-p|<\varepsilon/3$. Su límite relativo entrega un radio con $|f_n(x)-p_n|<\varepsilon/3$ en la ventana perforada. La suma de esas tres diferencias prueba $f(x)\to p$. El valor de $f(a)$ no participa.
+
+</details>
+
+#### Ejercicio 8. Iterados diferentes
+
+[]{#MA-EX-ANM-01-028-008}
+
+Calcula los dos iterados y la ruta $x_n=1/(n+1)$ de $r_n(x)=(n+1)x/[1+(n+1)x]$ en $(0,1]$.
+
+[]{#MA-SOL-ANM-01-028-008}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 8</summary>
+
+Para una entrada positiva fija, el cociente tiende a uno, cuyo límite al acercarse a cero es uno. Para un índice fijo, el cociente tiende a cero cuando la entrada tiende a cero; el límite de esos destinos es cero. En la ruta indicada el numerador vale uno y el denominador dos, así el valor es $1/2$ en todas las etapas. El error respecto del límite puntual es $1/[1+(n+1)x]$, cuyo supremo es uno; no hay uniformidad.
+
+**Retorno visual.** Véase [C28-F02](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html#fig-anm-c28-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 9. Uniformidad en una ventana fija
+
+[]{#MA-EX-ANM-01-028-009}
+
+Explica cómo R2 se aplica si sólo hay convergencia uniforme en $X\cap\{0<|x-a|<r\}$ para un $r>0$ fijo.
+
+[]{#MA-SOL-ANM-01-028-009}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 9</summary>
+
+Restringimos todas las filas a ese dominio común. Sigue acumulando en $a$, y los límites relativos originales se conservan por restricción a una ventana fija. Aplicamos R2 allí. El límite de $f$ obtenido en la ventana es también su límite en $X$ porque todo argumento suficientemente próximo y distinto del centro pertenece a ella. Ventanas distintas por índice no permiten esta reducción.
+
+</details>
+
+#### Ejercicio 10. Una ruta conjunta
+
+[]{#MA-EX-ANM-01-028-010}
+
+Prueba $f_n(x_n)\to p$ bajo R2 para cualquier ruta dada $x_n\in X\setminus\{a\}$ con $x_n\to a$.
+
+[]{#MA-SOL-ANM-01-028-010}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 10</summary>
+
+La diferencia con $p$ está bajo $|f_n(x_n)-f(x_n)|+|f(x_n)-p|$. El primer término tiende a cero por el corte uniforme, independiente de la entrada elegida. El segundo lo hace por el límite relativo de $f$ y la ruta perforada dada. Cortes para $\varepsilon/2$ y su máximo completan el contrato. No se necesita seleccionar una ruta.
+
+</details>
 ## 28.3. Compacidad y monotonía: el mecanismo de Dini
 
 []{#MA-SEC-ANM-01-028-003}
@@ -178,38 +512,204 @@ Las indicadoras $s_n=\mathbf1_{(0,1/(n+1))}$ sobre $[0,1]$ decrecen puntualmente
 
 ### Microcontroles
 
+#### Microcontrol 17
+
 []{#MA-MIC-ANM-01-028-017}
 
-1. ¿Qué error es no negativo en Dini decreciente?
+¿Qué error es no negativo en Dini decreciente?
+
+[]{#MA-MSOL-ANM-01-028-017}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 17</summary>
+
+$e_n=f_n-f$, por orden de cada columna al límite.
+
+</details>
+
+#### Microcontrol 18
 
 []{#MA-MIC-ANM-01-028-018}
 
-2. ¿Qué hace abiertos los conjuntos de error pequeño?
+¿Qué hace abiertos los conjuntos de error pequeño?
+
+[]{#MA-MSOL-ANM-01-028-018}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 18</summary>
+
+Continuidad de las filas y del destino.
+
+</details>
+
+#### Microcontrol 19
 
 []{#MA-MIC-ANM-01-028-019}
 
-3. ¿Qué permite obtener una subcubierta finita?
+¿Qué permite obtener una subcubierta finita?
+
+[]{#MA-MSOL-ANM-01-028-019}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 19</summary>
+
+Compacidad del dominio.
+
+</details>
+
+#### Microcontrol 20
 
 []{#MA-MIC-ANM-01-028-020}
 
-4. ¿Qué convierte los índices finitos en una cola común?
+¿Qué convierte los índices finitos en una cola común?
+
+[]{#MA-MSOL-ANM-01-028-020}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 20</summary>
+
+Monotonía de los errores y el máximo finito de índices.
+
+</details>
+
+#### Microcontrol 21
 
 []{#MA-MIC-ANM-01-028-021}
 
-5. ¿Dini entrega una tasa numérica general?
+¿Dini entrega una tasa numérica general?
+
+[]{#MA-MSOL-ANM-01-028-021}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 21</summary>
+
+No; garantiza un corte para cada tolerancia.
+
+</details>
+
+#### Microcontrol 22
 
 []{#MA-MIC-ANM-01-028-022}
 
-6. ¿Qué falta en las potencias sobre $(0,1)$?
+¿Qué falta en las potencias sobre $(0,1)$?
+
+[]{#MA-MSOL-ANM-01-028-022}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 22</summary>
+
+Compacidad, aunque el destino cero sea continuo.
+
+</details>
+
+#### Microcontrol 23
 
 []{#MA-MIC-ANM-01-028-023}
 
-7. ¿Qué falta en las indicadoras decrecientes del intervalo pequeño?
+¿Qué falta en las indicadoras decrecientes del intervalo pequeño?
+
+[]{#MA-MSOL-ANM-01-028-023}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 23</summary>
+
+Continuidad de las filas.
+
+</details>
+
+#### Microcontrol 24
 
 []{#MA-MIC-ANM-01-028-024}
 
-8. ¿Qué falta en las tiendas continuas de altura uno?
+¿Qué falta en las tiendas continuas de altura uno?
 
+[]{#MA-MSOL-ANM-01-028-024}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 24</summary>
+
+Monotonía por columnas.
+
+</details>
+
+### Ejercicios de la sección 28.3
+
+#### Ejercicio 11. La cubierta creciente
+
+[]{#MA-EX-ANM-01-028-011}
+
+Prueba Dini para filas continuas decrecientes hacia un límite continuo en un compacto.
+
+[]{#MA-SOL-ANM-01-028-011}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 11</summary>
+
+El error $e_n=f_n-f$ es no negativo por orden al límite y decrece a cero. Para $\varepsilon>0$, los conjuntos relativos $U_n=\{e_n<\varepsilon/2\}$ son abiertos crecientes y cubren el compacto. La familia de todas las bolas reales con cortes contenidos en algún $U_n$ es una cubierta abierta dada. Una subcubierta finita entrega un máximo de índices $N$; toda entrada está en $U_N$ y sigue estando en $U_n$ para $n\ge N$. El error es menor que $\varepsilon$. El vacío se trata vacuamente.
+
+**Retorno visual.** Véase [C28-F03](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html#fig-anm-c28-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 12. Sin compacidad
+
+[]{#MA-EX-ANM-01-028-012}
+
+Usa potencias en $(0,1)$ para mostrar que no puede omitirse compacidad en Dini.
+
+[]{#MA-SOL-ANM-01-028-012}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 12</summary>
+
+Las filas son continuas, decrecen por columnas y tienden puntualmente a cero continuo. El dominio abierto no es compacto. Para cada índice positivo la envolvente de $x^n$ es uno, aunque no se alcanza. Así no hay convergencia uniforme. Las cubiertas crecientes de error pequeño no tienen un miembro que cubra toda la pieza.
+
+</details>
+
+#### Ejercicio 13. Sin continuidad de las filas
+
+[]{#MA-EX-ANM-01-028-013}
+
+Analiza $s_n=\mathbf1_{(0,1/(n+1))}$ en $[0,1]$.
+
+[]{#MA-SOL-ANM-01-028-013}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 13</summary>
+
+Los soportes decrecen. En cero el valor es siempre cero; para cada entrada positiva la cola queda fuera del soporte. El límite es cero continuo. Cada fila toma el valor uno en $x_n=1/[2(n+1)]$, por lo que su envolvente es uno. Las filas tienen discontinuidad en el origen y en el otro borde interior cuando éste existe. Falta continuidad de las filas, aun con compacidad y monotonía.
+
+</details>
+
+#### Ejercicio 14. Sin monotonía
+
+[]{#MA-EX-ANM-01-028-014}
+
+Explica qué hipótesis de Dini falta para las tiendas de C26 en $[0,1]$.
+
+[]{#MA-SOL-ANM-01-028-014}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 14</summary>
+
+Las tiendas con $k=n+3$ son continuas, su soporte es $[1/k,3/k]$, y cada entrada positiva queda fuera de la cola; en cero siempre valen cero. El límite cero es continuo y el dominio compacto. Su máximo uno, alcanzado en $2/k$, refuta uniformidad. Si fueran decrecientes por columnas, Dini la garantizaría; tampoco son crecientes, pues una columna creciente no negativa que termina en cero sería siempre cero. Falta monotonía de la familia.
+
+</details>
+
+#### Ejercicio 15. Pegar uniformidad local
+
+[]{#MA-EX-ANM-01-028-015}
+
+Prueba que una cubierta abierta dada de un compacto, con convergencia uniforme en cada corte, permite uniformidad global.
+
+[]{#MA-SOL-ANM-01-028-015}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 15</summary>
+
+Compacidad reduce la cubierta a una subfamilia finita. Para una tolerancia fija, cada una de esas piezas entrega un corte uniforme. Tomamos el máximo finito de los cortes. Toda entrada pertenece a una pieza escogida y cumple el error posterior común. Si el compacto es vacío, cualquier corte sirve. La prueba necesita vecindades fijas con uniformidad, no sólo continuidad puntual de filas.
+
+</details>
 ## 28.4. La integral soporta un error global pequeño
 
 []{#MA-SEC-ANM-01-028-004}
@@ -244,38 +744,204 @@ Para $f_n(t)=t^2+1/(n+1)$ en $[0,1]$, la integral es $1/3+1/(n+1)$ y el error es
 
 ### Microcontroles
 
+#### Microcontrol 25
+
 []{#MA-MIC-ANM-01-028-025}
 
-1. ¿Qué debe probarse antes de escribir la integral del destino?
+¿Qué debe probarse antes de escribir la integral del destino?
+
+[]{#MA-MSOL-ANM-01-028-025}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 25</summary>
+
+Acotación e integrabilidad del destino.
+
+</details>
+
+#### Microcontrol 26
 
 []{#MA-MIC-ANM-01-028-026}
 
-2. ¿Cómo cambia la brecha Darboux con error global $\delta$?
+¿Cómo cambia la brecha Darboux con error global $\delta$?
+
+[]{#MA-MSOL-ANM-01-028-026}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 26</summary>
+
+Aumenta a lo sumo $2\delta(b-a)$.
+
+</details>
+
+#### Microcontrol 27
 
 []{#MA-MIC-ANM-01-028-027}
 
-3. ¿Por qué aparecen dos contribuciones de error en la brecha?
+¿Por qué aparecen dos contribuciones de error en la brecha?
+
+[]{#MA-MSOL-ANM-01-028-027}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 27</summary>
+
+Una en la suma superior y otra en la inferior.
+
+</details>
+
+#### Microcontrol 28
 
 []{#MA-MIC-ANM-01-028-028}
 
-4. ¿Qué error controla el valor integral?
+¿Qué error controla el valor integral?
+
+[]{#MA-MSOL-ANM-01-028-028}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 28</summary>
+
+La longitud del segmento multiplicada por la envolvente de error.
+
+</details>
+
+#### Microcontrol 29
 
 []{#MA-MIC-ANM-01-028-029}
 
-5. ¿Debe alcanzarse la envolvente para integrar su cota?
+¿Debe alcanzarse la envolvente para integrar su cota?
+
+[]{#MA-MSOL-ANM-01-028-029}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 29</summary>
+
+No; basta que sea una cota real para todos los valores.
+
+</details>
+
+#### Microcontrol 30
 
 []{#MA-MIC-ANM-01-028-030}
 
-6. ¿Cómo se trata un segmento de longitud cero?
+¿Cómo se trata un segmento de longitud cero?
+
+[]{#MA-MSOL-ANM-01-028-030}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 30</summary>
+
+La integral es cero por convención, sin dividir por la longitud.
+
+</details>
+
+#### Microcontrol 31
 
 []{#MA-MIC-ANM-01-028-031}
 
-7. ¿Qué conserva la integral de las tiendas normalizadas?
+¿Qué conserva la integral de las tiendas normalizadas?
+
+[]{#MA-MSOL-ANM-01-028-031}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 31</summary>
+
+Uno en cada etapa, frente a integral cero del destino.
+
+</details>
+
+#### Microcontrol 32
 
 []{#MA-MIC-ANM-01-028-032}
 
-8. ¿Qué falla para el destino Dirichlet?
+¿Qué falla para el destino Dirichlet?
 
+[]{#MA-MSOL-ANM-01-028-032}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 32</summary>
+
+La integral del destino no existe en Riemann.
+
+</details>
+
+### Ejercicios de la sección 28.4
+
+#### Ejercicio 16. Existencia antes de integrar
+
+[]{#MA-EX-ANM-01-028-016}
+
+Prueba integrabilidad del límite uniforme de funciones integrables mediante brechas de Darboux.
+
+[]{#MA-SOL-ANM-01-028-016}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 16</summary>
+
+La uniformidad con tolerancia uno y una fila acotada acotan el límite. Si $|f-f_n|\le\delta$, extremos locales y suma de anchuras dan $G(f,P)\le G(f_n,P)+2\delta\ell$. Para $\varepsilon>0$ escogemos una fila con error menor que $\varepsilon/[8(\ell+1)]$ y una partición de esa fila con brecha menor que $\varepsilon/2$. La brecha de $f$ es menor que $3\varepsilon/4$. C23 acredita su integrabilidad. Para longitud cero la integral es cero por convención.
+
+</details>
+
+#### Ejercicio 17. Error del valor integral
+
+[]{#MA-EX-ANM-01-028-017}
+
+Obtén una cota del error de integrales en un segmento de longitud $\ell$ con envolvente $E_n$.
+
+[]{#MA-SOL-ANM-01-028-017}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 17</summary>
+
+La integrabilidad de ambos términos acredita la diferencia y su absoluto. Linealidad, triangular integral y orden dan $|I_n-I|\le\int|f_n-f|\le\ell E_n$. El supremo es real en la cola y no necesita alcanzarse. Como $E_n\to0$, también lo hace este error.
+
+</details>
+
+#### Ejercicio 18. La cota se alcanza
+
+[]{#MA-EX-ANM-01-028-018}
+
+Calcula integral y error de $f_n(t)=t^2+1/(n+1)$ en $[0,1]$.
+
+[]{#MA-SOL-ANM-01-028-018}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 18</summary>
+
+C23/C24 dan $I_n=1/3+1/(n+1)$ y $I=1/3$. La envolvente es $E_n=1/(n+1)$ y la longitud es uno. El error integral es exactamente $E_n$, mostrando optimalidad de la cota general para perturbaciones constantes positivas.
+
+</details>
+
+#### Ejercicio 19. Destinos existentes pero distintos
+
+[]{#MA-EX-ANM-01-028-019}
+
+Usa las tiendas normalizadas para refutar intercambio integral bajo convergencia sólo puntual.
+
+[]{#MA-SOL-ANM-01-028-019}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 19</summary>
+
+La tienda de altura uno y base de anchura $2/k$ tiene área $1/k$, con $k=n+3$. Multiplicarla por $k$ deja límite puntual cero y hace integral uno en cada etapa. La integral del destino es cero. Ambas existen y el límite de los valores integrales es uno, distinto de cero. No hay uniformidad: la altura de las filas normalizadas es $k$.
+
+**Retorno visual.** Véase [C28-F04](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html#fig-anm-c28-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 20. Un destino no integrable
+
+[]{#MA-EX-ANM-01-028-020}
+
+Distingue la falla integral de los indicadores finitos de racionales de C25 de la anterior.
+
+[]{#MA-SOL-ANM-01-028-020}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 20</summary>
+
+Cada indicador de un conjunto finito de racionales integra cero. La sucesión que añade racionales de una enumeración tiende puntualmente a Dirichlet: uno en racionales y cero en irracionales. Cada pieza de longitud positiva tiene oscilación uno, de modo que ninguna partición da brecha menor que la longitud total. El destino no es integrable; la integral final está indefinida. Esto difiere de dos integrales existentes con valores distintos.
+
+</details>
 ## 28.5. Acumulaciones, pesos y extremos variables
 
 []{#MA-SEC-ANM-01-028-005}
@@ -312,38 +978,204 @@ Para $f_n(t)=t^2+1/(n+1)$, $c=0$, $A_n(x)=x^3/3+x/(n+1)$. El error de acumulaci�
 
 ### Microcontroles
 
+#### Microcontrol 33
+
 []{#MA-MIC-ANM-01-028-033}
 
-1. ¿Qué corte controla todas las acumulaciones?
+¿Qué corte controla todas las acumulaciones?
+
+[]{#MA-MSOL-ANM-01-028-033}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 33</summary>
+
+El corte uniforme de integrandas y una longitud común finita.
+
+</details>
+
+#### Microcontrol 34
 
 []{#MA-MIC-ANM-01-028-034}
 
-2. ¿Qué se hace si el destino de acumulación precede al anclaje?
+¿Qué se hace si el destino de acumulación precede al anclaje?
+
+[]{#MA-MSOL-ANM-01-028-034}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 34</summary>
+
+Se orienta la integral invirtiendo sus límites.
+
+</details>
+
+#### Microcontrol 35
 
 []{#MA-MIC-ANM-01-028-035}
 
-3. ¿Qué hipótesis permite identificar la derivada de toda acumulación?
+¿Qué hipótesis permite identificar la derivada de toda acumulación?
+
+[]{#MA-MSOL-ANM-01-028-035}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 35</summary>
+
+Continuidad de la integranda en el centro pertinente.
+
+</details>
+
+#### Microcontrol 36
 
 []{#MA-MIC-ANM-01-028-036}
 
-4. ¿Qué debe acreditarse para un peso integrable fijo?
+¿Qué debe acreditarse para un peso integrable fijo?
+
+[]{#MA-MSOL-ANM-01-028-036}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 36</summary>
+
+Integrabilidad de productos y una barrera o integral del absoluto del peso.
+
+</details>
+
+#### Microcontrol 37
 
 []{#MA-MIC-ANM-01-028-037}
 
-5. ¿Cuántos errores hay al mover ambos extremos?
+¿Cuántos errores hay al mover ambos extremos?
+
+[]{#MA-MSOL-ANM-01-028-037}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 37</summary>
+
+Tres: integranda, extremo inicial y extremo final.
+
+</details>
+
+#### Microcontrol 38
 
 []{#MA-MIC-ANM-01-028-038}
 
-6. ¿Dónde deben permanecer los extremos móviles?
+¿Dónde deben permanecer los extremos móviles?
+
+[]{#MA-MSOL-ANM-01-028-038}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 38</summary>
+
+En un mismo segmento cerrado de longitud finita.
+
+</details>
+
+#### Microcontrol 39
 
 []{#MA-MIC-ANM-01-028-039}
 
-7. ¿Cuánto integra $1/(n+1)$ sobre $[0,n+1]$?
+¿Cuánto integra $1/(n+1)$ sobre $[0,n+1]$?
+
+[]{#MA-MSOL-ANM-01-028-039}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 39</summary>
+
+Uno; la longitud compensa el error pequeño.
+
+</details>
+
+#### Microcontrol 40
 
 []{#MA-MIC-ANM-01-028-040}
 
-8. ¿Uniformidad es necesaria para igualdad de límites integrales?
+¿Uniformidad es necesaria para igualdad de límites integrales?
 
+[]{#MA-MSOL-ANM-01-028-040}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 40</summary>
+
+No; las tiendas sin normalizar integran $1/(n+3)\to0$.
+
+</details>
+
+### Ejercicios de la sección 28.5
+
+#### Ejercicio 21. Todas las acumulaciones
+
+[]{#MA-EX-ANM-01-028-021}
+
+Prueba uniformidad de $A_n(x)=\int_c^x f_n$ hacia $A(x)=\int_c^x f$ bajo R4.
+
+[]{#MA-SOL-ANM-01-028-021}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 21</summary>
+
+Restricción e integración orientada permiten cada acumulación. En el segmento entre $c$ y $x$, el error está bajo $|x-c|E_n\le\ell E_n$. Para $x=c$ vale cero y para $x<c$ se invierte el signo antes de aplicar orden. La cota global tendente a cero prueba uniformidad para todos los destinos $x$.
+
+</details>
+
+#### Ejercicio 22. Peso integrable
+
+[]{#MA-EX-ANM-01-028-022}
+
+Para un peso fijo integrable $w$, obtiene el error ponderado usando $\int|w|$.
+
+[]{#MA-SOL-ANM-01-028-022}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 22</summary>
+
+C23 acredita productos, diferencias y absolutos. La desigualdad puntual $|w(f_n-f)|\le E_n|w|$ se integra por orden, dando error a lo sumo $E_n\int|w|$. La integral de $|w|$ es finita en el marco cerrado; su producto por $E_n$ tiende a cero. Si $|w|\le M$, se obtiene la cota menos fina $M\ell E_n$.
+
+</details>
+
+#### Ejercicio 23. Mover los extremos
+
+[]{#MA-EX-ANM-01-028-023}
+
+Demuestra la estimación de R5 para $u_n,v_n\to u,v$ dentro de $[a,b]$.
+
+[]{#MA-SOL-ANM-01-028-023}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 23</summary>
+
+Insertamos la integral de $f$ con extremos $u_n,v_n$. El cambio de integranda cuesta a lo sumo $|v_n-u_n|E_n\le\ell E_n$. La aditividad orientada expresa los cambios de extremos como dos integrales de $f$; si $|f|\le B$, cuestan a lo sumo $B|u_n-u|$ y $B|v_n-v|$. Triangular suma los tres términos y todos tienden a cero. Inversiones e igualdad de extremos están cubiertas por orientación.
+
+</details>
+
+#### Ejercicio 24. El marco que crece
+
+[]{#MA-EX-ANM-01-028-024}
+
+Explica por qué $f_n=1/(n+1)$ en $\mathbb R$ puede tener integral uno en $[0,n+1]$ pese a convergencia uniforme a cero.
+
+[]{#MA-SOL-ANM-01-028-024}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 24</summary>
+
+El error uniforme es $1/(n+1)$ y la longitud de la etapa es $n+1$. Su producto es uno, que es exactamente la integral. No hay un marco de longitud fija ni extremos con destinos finitos dentro de él. Cada integral es propia y finita; el ejemplo no necesita integrales impropias.
+
+**Retorno visual.** Véase [C28-F05](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html#fig-anm-c28-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 25. Continuidad de la acumulada y derivada
+
+[]{#MA-EX-ANM-01-028-025}
+
+¿Qué cambia al acumular integrandas continuas frente a integrandas sólo integrables?
+
+[]{#MA-SOL-ANM-01-028-025}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 25</summary>
+
+Ambos casos dan acumulaciones existentes, continuas y convergentes uniformemente por R5/C24. Si las integrandas son continuas, R1 hace continuo al destino y C24 identifica la derivada de su acumulada con él en todo punto interior. Para una integranda sólo integrable, esa identificación exige continuidad en el punto: un valor aislado puede cambiar la integranda sin cambiar la acumulada, y un salto puede impedir derivabilidad.
+
+</details>
 ## 28.6. Derivadas uniformes y un valor de anclaje
 
 []{#MA-SEC-ANM-01-028-006}
@@ -384,38 +1216,202 @@ En un intervalo abierto arbitrario el argumento se aplica a cada segmento cerrad
 
 ### Microcontroles
 
+#### Microcontrol 41
+
 []{#MA-MIC-ANM-01-028-041}
 
-1. ¿Qué dato fija la constante aditiva en R6?
+¿Qué dato fija la constante aditiva en R6?
+
+[]{#MA-MSOL-ANM-01-028-041}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 41</summary>
+
+Convergencia de valores en un anclaje.
+
+</details>
+
+#### Microcontrol 42
 
 []{#MA-MIC-ANM-01-028-042}
 
-2. ¿En qué dominio se controlan uniformemente las derivadas?
+¿En qué dominio se controlan uniformemente las derivadas?
+
+[]{#MA-MSOL-ANM-01-028-042}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 42</summary>
+
+En el interior del mismo segmento.
+
+</details>
+
+#### Microcontrol 43
 
 []{#MA-MIC-ANM-01-028-043}
 
-3. ¿Qué herramienta convierte derivadas en cotas de incrementos?
+¿Qué herramienta convierte derivadas en cotas de incrementos?
+
+[]{#MA-MSOL-ANM-01-028-043}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 43</summary>
+
+Valor medio y su consecuencia de C19.
+
+</details>
+
+#### Microcontrol 44
 
 []{#MA-MIC-ANM-01-028-044}
 
-4. ¿Qué se fija antes de pasar una etapa al límite en incrementos?
+¿Qué se fija antes de pasar una etapa al límite en incrementos?
+
+[]{#MA-MSOL-ANM-01-028-044}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 44</summary>
+
+La fila comparada y las dos entradas.
+
+</details>
+
+#### Microcontrol 45
 
 []{#MA-MIC-ANM-01-028-045}
 
-5. ¿Se supone derivabilidad del destino para obtener esa cota?
+¿Se supone derivabilidad del destino para obtener esa cota?
+
+[]{#MA-MSOL-ANM-01-028-045}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 45</summary>
+
+No; se deduce después mediante cocientes.
+
+</details>
+
+#### Microcontrol 46
 
 []{#MA-MIC-ANM-01-028-046}
 
-6. ¿Cómo se divide la cota de incrementos?
+¿Cómo se divide la cota de incrementos?
+
+[]{#MA-MSOL-ANM-01-028-046}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 46</summary>
+
+Por la distancia positiva entre entradas distintas.
+
+</details>
+
+#### Microcontrol 47
 
 []{#MA-MIC-ANM-01-028-047}
 
-7. ¿R6 necesita derivadas continuas?
+¿R6 necesita derivadas continuas?
+
+[]{#MA-MSOL-ANM-01-028-047}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 47</summary>
+
+No, sólo derivabilidad de filas y convergencia uniforme de sus derivadas.
+
+</details>
+
+#### Microcontrol 48
 
 []{#MA-MIC-ANM-01-028-048}
 
-8. ¿Qué factor limita la uniformidad de valores en dominios no acotados?
+¿Qué factor limita la uniformidad de valores en dominios no acotados?
 
+[]{#MA-MSOL-ANM-01-028-048}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 48</summary>
+
+La distancia al anclaje, que puede carecer de barrera global.
+
+</details>
+
+### Ejercicios de la sección 28.6
+
+#### Ejercicio 26. La ancla y todos los valores
+
+[]{#MA-EX-ANM-01-028-026}
+
+Prueba Cauchy uniforme de las filas bajo R6.
+
+[]{#MA-SOL-ANM-01-028-026}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 26</summary>
+
+Cauchy del anclaje controla $|f_n(c)-f_m(c)|<\varepsilon/2$. Cauchy uniforme de derivadas entrega una cola con diferencia menor que $\varepsilon/[2(\ell+1)]$. C19 aplicado a $f_n-f_m$ entre $c$ y cualquier entrada da error a lo sumo el de anclaje más la cota de derivadas por $|x-c|\le\ell$. El máximo de ambos cortes sirve para todos los pares y entradas; C27 construye el límite uniforme.
+
+</details>
+
+#### Ejercicio 27. El error de incrementos
+
+[]{#MA-EX-ANM-01-028-027}
+
+Demuestra $|(f-f_n)(y)-(f-f_n)(x)|\le E_n|y-x|$ sin suponer derivabilidad previa de $f$.
+
+[]{#MA-SOL-ANM-01-028-027}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 27</summary>
+
+Para índices en la cola, la diferencia de derivadas $g_m-g_n$ está bajo $E_m+E_n$. C19 da la misma constante multiplicando $|y-x|$ para los incrementos de $f_m-f_n$. Fijamos $n,x,y$ y pasamos $m$ al límite. Los valores de $f_m$ convergen, $E_m\to0$, y orden conserva la desigualdad débil. Así se obtiene la cota pedida antes de derivar el destino.
+
+</details>
+
+#### Ejercicio 28. Tres errores de cocientes
+
+[]{#MA-EX-ANM-01-028-028}
+
+Completa la identificación $f^{\prime}=g$ de R6 a partir de la cota de incrementos.
+
+[]{#MA-SOL-ANM-01-028-028}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 28</summary>
+
+En un centro interior fijo, escogemos una fila con $E_n<\varepsilon/3$. Dividir la cota de incrementos por la distancia no nula da error entre cocientes a lo sumo $E_n$. Derivabilidad de la fila fija da un radio para acercar su cociente a $g_n(x_0)$ con error menor que $\varepsilon/3$. La diferencia entre $g_n(x_0)$ y $g(x_0)$ es a lo sumo $E_n$. Triangular deja error menor que $\varepsilon$. Se restringe además el radio para permanecer dentro del segmento.
+
+</details>
+
+#### Ejercicio 29. Certificado de valores desde derivadas
+
+[]{#MA-EX-ANM-01-028-029}
+
+Obtén una cota de aproximación de valores usando la ancla y $E_n$ en R6.
+
+[]{#MA-SOL-ANM-01-028-029}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 29</summary>
+
+En la cota de incrementos tomamos una entrada igual a $c$. La diferencia restante del error en $c$ es $f(c)-f_n(c)=\lambda-f_n(c)$. Triangular da $|f_n(x)-f(x)|\le |f_n(c)-\lambda|+|x-c|E_n$. Para una cota uniforme se reemplaza la distancia por $\ell$. Ambos términos tienden a cero; el segundo controla variaciones y el primero la constante aditiva.
+
+</details>
+
+#### Ejercicio 30. Derivadas sin continuidad
+
+[]{#MA-EX-ANM-01-028-030}
+
+Explica por qué R6 no necesita continuidad de $g_n$ ni de $g$.
+
+[]{#MA-SOL-ANM-01-028-030}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 30</summary>
+
+C19 sólo exige continuidad de $f_n-f_m$ en cada segmento y derivabilidad en su interior; no exige continuidad de la derivada. Las cotas de diferencias de derivadas permiten estimar incrementos. La identificación final usa derivabilidad de una fila y el presupuesto de incrementos, sin integrar $g$ ni aplicar el teorema fundamental a una función posiblemente discontinua. Si se añaden derivadas continuas, R1 sí conserva esa continuidad como conclusión adicional.
+
+</details>
 ## 28.7. Lo que la convergencia de valores no controla
 
 []{#MA-SEC-ANM-01-028-007}
@@ -444,38 +1440,204 @@ La operación de derivar no es continua respecto de la sola norma de valores: $h
 
 ### Microcontroles
 
+#### Microcontrol 49
+
 []{#MA-MIC-ANM-01-028-049}
 
-1. ¿Qué envolvente tienen las raíces suavizadas frente a $|x|$?
+¿Qué envolvente tienen las raíces suavizadas frente a $|x|$?
+
+[]{#MA-MSOL-ANM-01-028-049}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 49</summary>
+
+$1/(n+1)$, alcanzada en cero.
+
+</details>
+
+#### Microcontrol 50
 
 []{#MA-MIC-ANM-01-028-050}
 
-2. ¿Por qué $|x|$ no deriva en cero?
+¿Por qué $|x|$ no deriva en cero?
+
+[]{#MA-MSOL-ANM-01-028-050}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 50</summary>
+
+Sus cocientes laterales son menos uno y uno.
+
+</details>
+
+#### Microcontrol 51
 
 []{#MA-MIC-ANM-01-028-051}
 
-3. ¿Qué valor tienen $h_n^{\prime}$ en cero?
+¿Qué valor tienen $h_n^{\prime}$ en cero?
+
+[]{#MA-MSOL-ANM-01-028-051}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 51</summary>
+
+Uno en todas las etapas.
+
+</details>
+
+#### Microcontrol 52
 
 []{#MA-MIC-ANM-01-028-052}
 
-4. ¿Qué derivada tiene el destino cero de $h_n$?
+¿Qué derivada tiene el destino cero de $h_n$?
+
+[]{#MA-MSOL-ANM-01-028-052}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 52</summary>
+
+Cero en todos los centros.
+
+</details>
+
+#### Microcontrol 53
 
 []{#MA-MIC-ANM-01-028-053}
 
-5. ¿Qué no detecta la operación de derivar?
+¿Qué no detecta la operación de derivar?
+
+[]{#MA-MSOL-ANM-01-028-053}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 53</summary>
+
+Las constantes aditivas de cada componente.
+
+</details>
+
+#### Microcontrol 54
 
 []{#MA-MIC-ANM-01-028-054}
 
-6. ¿Una ancla controla otra componente separada?
+¿Una ancla controla otra componente separada?
+
+[]{#MA-MSOL-ANM-01-028-054}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 54</summary>
+
+No; falta un segmento del dominio que las una.
+
+</details>
+
+#### Microcontrol 55
 
 []{#MA-MIC-ANM-01-028-055}
 
-7. ¿Dónde convergen uniformemente los valores $x/(n+1)$?
+¿Dónde convergen uniformemente los valores $x/(n+1)$?
+
+[]{#MA-MSOL-ANM-01-028-055}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 55</summary>
+
+En cada segmento acotado, aunque no en toda la recta.
+
+</details>
+
+#### Microcontrol 56
 
 []{#MA-MIC-ANM-01-028-056}
 
-8. ¿La sola norma de valores controla la derivada?
+¿La sola norma de valores controla la derivada?
 
+[]{#MA-MSOL-ANM-01-028-056}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 56</summary>
+
+No; $h_n$ tiende uniformemente a cero y sus derivadas no.
+
+</details>
+
+### Ejercicios de la sección 28.7
+
+#### Ejercicio 31. Una esquina como límite uniforme
+
+[]{#MA-EX-ANM-01-028-031}
+
+Prueba convergencia uniforme de $q_n(x)=\sqrt{x^2+(n+1)^{-2}}$ a $|x|$ en $\mathbb R$ y describe su derivabilidad.
+
+[]{#MA-SOL-ANM-01-028-031}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 31</summary>
+
+La raíz es al menos $|x|$. El cuadrado de $|x|+1/k$ es al menos $x^2+k^{-2}$, con $k=n+1$, y ambos lados son no negativos. Así el error está entre cero y $1/k$, con igualdad en cero. Cada fila deriva a $x/\sqrt{x^2+k^{-2}}$. El destino tiene cocientes laterales menos uno y uno en cero, por lo que no es derivable allí. Uniformidad de valores no conserva derivabilidad.
+
+</details>
+
+#### Ejercicio 32. Los dos destinos de derivadas existen
+
+[]{#MA-EX-ANM-01-028-032}
+
+Para $h_n=x/(1+(n+1)x^2)$, compara $\lim_n h_n^{\prime}$ con la derivada de $\lim_n h_n$.
+
+[]{#MA-SOL-ANM-01-028-032}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 32</summary>
+
+La envolvente de valores es $1/[2\sqrt{n+1}]$, de modo que el destino es cero uniforme. La regla de cociente da $h_n^{\prime}=(1-kx^2)/(1+kx^2)^2$. En cero vale uno; para cada entrada no nula tiende a cero por división por $k^2x^4$. Su límite puntual es la indicadora de cero. La derivada del destino es cero en toda la recta, así los valores discrepan en cero. Las derivadas no convergen uniformemente, pues son continuas y su destino no lo es.
+
+**Retorno visual.** Véase [C28-F06](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html#fig-anm-c28-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 33. Sin anclaje
+
+[]{#MA-EX-ANM-01-028-033}
+
+Construye dos familias con derivadas uniformemente cero y sin convergencia de valores.
+
+[]{#MA-SOL-ANM-01-028-033}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 33</summary>
+
+Las constantes $f_n=n$ tienen derivadas cero y valores que divergen en cada entrada. Las constantes $f_n=(-1)^n$ también tienen derivadas cero y valores alternantes sin límite. Ninguna cumple convergencia en un anclaje. La derivada no detecta la constante aditiva, que R6 debe fijar por otro dato.
+
+</details>
+
+#### Ejercicio 34. Sólo uniformidad en segmentos
+
+[]{#MA-EX-ANM-01-028-034}
+
+Analiza R6 para $f_n=x/(n+1)$ en toda la recta con anclaje cero.
+
+[]{#MA-SOL-ANM-01-028-034}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 34</summary>
+
+Las derivadas constantes $1/(n+1)$ convergen uniformemente a cero y el anclaje es siempre cero. En $[-M,M]$ el error de valores tiene envolvente $M/(n+1)$, tendente a cero. En toda la recta cada etapa tiene errores no acotados y en la entrada $n+1$ vale uno. No hay uniformidad global. La cota de R6 contiene la distancia al anclaje, que está acotada sólo en un marco finito.
+
+</details>
+
+#### Ejercicio 35. Una ancla por componente
+
+[]{#MA-EX-ANM-01-028-035}
+
+Construye un ejemplo en $[0,1]\cup[2,3]$ donde la ancla en la primera pieza no controle la segunda.
+
+[]{#MA-SOL-ANM-01-028-035}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 35</summary>
+
+Tomamos $f_n=0$ en la primera pieza y $f_n=n$ en la segunda. Cada restricción es constante y continua, con derivada interior cero. Las derivadas convergen uniformemente a cero en los interiores y $f_n(0)=0$. En la segunda pieza los valores divergen. El segmento entre una entrada de cada pieza atraviesa el hueco y no pertenece al dominio; C19 no puede unirlas.
+
+</details>
 ## 28.8. Certificar varias operaciones a la vez
 
 []{#MA-SEC-ANM-01-028-008}
@@ -510,38 +1672,207 @@ C29 usará estas herramientas sobre sucesiones de sumas parciales. Aquí sólo s
 
 ### Microcontroles
 
+#### Microcontrol 57
+
 []{#MA-MIC-ANM-01-028-057}
 
-1. ¿Qué envolvente tiene la capa de derivadas del paquete polinómico?
+¿Qué envolvente tiene la capa de derivadas del paquete polinómico?
+
+[]{#MA-MSOL-ANM-01-028-057}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 57</summary>
+
+$2^{-n}$.
+
+</details>
+
+#### Microcontrol 58
 
 []{#MA-MIC-ANM-01-028-058}
 
-2. ¿Qué anclaje del paquete es exacto?
+¿Qué anclaje del paquete es exacto?
+
+[]{#MA-MSOL-ANM-01-028-058}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 58</summary>
+
+El valor cero en $x=0$.
+
+</details>
+
+#### Microcontrol 59
 
 []{#MA-MIC-ANM-01-028-059}
 
-3. ¿Qué envolvente tiene su error de acumulación?
+¿Qué envolvente tiene su error de acumulación?
+
+[]{#MA-MSOL-ANM-01-028-059}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 59</summary>
+
+$2^{-n}/2$ en $[-1,1]$.
+
+</details>
+
+#### Microcontrol 60
 
 []{#MA-MIC-ANM-01-028-060}
 
-4. ¿El error integral firmado en el segmento simétrico es igual a esa envolvente?
+¿El error integral firmado en el segmento simétrico es igual a esa envolvente?
+
+[]{#MA-MSOL-ANM-01-028-060}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 60</summary>
+
+No; es cero por imparidad del error de integrandas.
+
+</details>
+
+#### Microcontrol 61
 
 []{#MA-MIC-ANM-01-028-061}
 
-5. ¿Sirve $n=3$ para error estrictamente menor que $1/8$?
+¿Sirve $n=3$ para error estrictamente menor que $1/8$?
+
+[]{#MA-MSOL-ANM-01-028-061}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 61</summary>
+
+No; está en la frontera. El corte mínimo es cuatro.
+
+</details>
+
+#### Microcontrol 62
 
 []{#MA-MIC-ANM-01-028-062}
 
-6. ¿Qué dos capas suma la norma $C^1$?
+¿Qué dos capas suma la norma $C^1$?
+
+[]{#MA-MSOL-ANM-01-028-062}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 62</summary>
+
+Norma suprema de valores y de derivadas extendidas al cerrado.
+
+</details>
+
+#### Microcontrol 63
 
 []{#MA-MIC-ANM-01-028-063}
 
-7. ¿Qué anclas se necesitan para controlar órdenes hasta $r$?
+¿Qué anclas se necesitan para controlar órdenes hasta $r$?
+
+[]{#MA-MSOL-ANM-01-028-063}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 63</summary>
+
+Valores de órdenes cero hasta $r-1$ en un anclaje común.
+
+</details>
+
+#### Microcontrol 64
 
 []{#MA-MIC-ANM-01-028-064}
 
-8. ¿Cuál es la única puerta siguiente?
+¿Cuál es la única puerta siguiente?
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 28](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html) · [Ejercicios](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-microcontroles.html)
+[]{#MA-MSOL-ANM-01-028-064}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 64</summary>
+
+C29: series de funciones y series de potencias, aún sin abrir.
+
+</details>
+
+### Ejercicios de la sección 28.8
+
+#### Ejercicio 36. El paquete polinómico
+
+[]{#MA-EX-ANM-01-028-036}
+
+Calcula envolventes de valores y derivadas de $f_n=x^2+(1-2^{-n})x$ frente a $f=x^2+x$ en $[-1,1]$.
+
+[]{#MA-SOL-ANM-01-028-036}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 36</summary>
+
+La diferencia de valores es $-2^{-n}x$, así su envolvente es $2^{-n}$, alcanzada en los extremos. Las derivadas difieren por la constante $-2^{-n}$ y tienen la misma envolvente. El anclaje en cero es exacto. R6 acredita el paso de derivadas; la norma de dos capas del error es $2^{1-n}$.
+
+</details>
+
+#### Ejercicio 37. El error de acumulación
+
+[]{#MA-EX-ANM-01-028-037}
+
+Obtén las acumuladas del ejemplo anterior con anclaje cero y su envolvente exacta.
+
+[]{#MA-SOL-ANM-01-028-037}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 37</summary>
+
+C24 y las reglas polinómicas dan $A_n=x^3/3+(1-2^{-n})x^2/2$ y $A=x^3/3+x^2/2$. Su diferencia es $-2^{-n}x^2/2$, cuya envolvente es $2^{-n}/2$, alcanzada en los extremos. En el intervalo simétrico completo, el error integral de las integrandas es cero por imparidad de la perturbación; eso no vuelve cero el error de cada acumulada.
+
+**Retorno visual.** Véase [C28-F07](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html#fig-anm-c28-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 38. Frontera estricta dyádica
+
+[]{#MA-EX-ANM-01-028-038}
+
+Encuentra el corte mínimo para error de derivadas estrictamente menor que $1/8$ en el ejemplo polinómico.
+
+[]{#MA-SOL-ANM-01-028-038}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 38</summary>
+
+El error de derivadas es $2^{-n}$. En $n=3$ es exactamente $1/8$, por lo que no cumple la desigualdad estricta. En $n=4$ es $1/16<1/8$ y toda etapa posterior disminuye. Los índices menores tampoco sirven. El corte mínimo es cuatro.
+
+**Retorno visual.** Véase [C28-F08](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html#fig-anm-c28-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 39. Norma de dos capas
+
+[]{#MA-EX-ANM-01-028-039}
+
+Verifica que $\|u\|_{C^1}=\|u\|_\infty+\|u^{\prime}\|_\infty$ es una norma en la clase definida en R8.
+
+[]{#MA-SOL-ANM-01-028-039}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 39</summary>
+
+Continuidad en el compacto acota ambas capas, por lo que los dos supremos existen. Positividad es suma de positivos; norma cero obliga la capa de valores cero y por tanto la función cero. Homogeneidad sigue de la linealidad de derivadas y homogeneidad de ambas normas supremas. Triangular se aplica a valores y derivadas por separado y se suma. Las extensiones continuas de derivadas son únicas y se suman y escalan junto con ellas.
+
+</details>
+
+#### Ejercicio 40. Inducción finita de órdenes
+
+[]{#MA-EX-ANM-01-028-040}
+
+Justifica convergencia de todas las derivadas hasta orden $r$ bajo las hipótesis de R8.
+
+[]{#MA-SOL-ANM-01-028-040}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 40</summary>
+
+La capa de orden $r$ converge uniformemente por hipótesis y es continua. Aplicamos R6 a la de orden $r-1$, usando su valor convergente en el anclaje; obtenemos uniformidad e identificación de su derivada con la capa superior. Repetimos con el orden $r-2$ y continuamos un número finito de veces hasta los valores. R1 conserva continuidad de cada destino; en los bordes se usan extensiones y derivadas de un lado. No se intercambia una suma infinita ni se invoca Taylor.
+
+</details>
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-28)
 
 [← Capítulo 27](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html) · [Capítulo 29 →](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html)
