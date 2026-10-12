@@ -23,6 +23,6 @@ def main():
  def git(*args):return subprocess.check_output(['git',*args],cwd=root,text=True)
  paths={row['path'] for row in json.loads((root/'data/apm-tome-i-manifest.json').read_text())['chapters']}
  changed=git('diff','--name-only',a.base,'HEAD').splitlines()
- decision=required(changed,paths,git('show',a.base+':_quarto.yml'),(root/'_quarto.yml').read_text())
+ decision=required(changed,paths,git('show',a.base+':_quarto.yml'),git('show','HEAD:_quarto.yml'))
  print('required='+str(decision).lower())
 if __name__=='__main__':main()
