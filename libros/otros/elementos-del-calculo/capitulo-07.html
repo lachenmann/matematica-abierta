@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 7. Integrar como método – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-una-integral-existente-a-una-estrategia-de-cálculo" id="toc-de-una-integral-existente-a-una-estrategia-de-cálculo" class="nav-link active" data-scroll-target="#de-una-integral-existente-a-una-estrategia-de-cálculo">7.1. De una integral existente a una estrategia de cálculo</a></li>
+  <li><a href="#el-teorema-de-sustitución-deshacer-la-regla-de-la-cadena" id="toc-el-teorema-de-sustitución-deshacer-la-regla-de-la-cadena" class="nav-link" data-scroll-target="#el-teorema-de-sustitución-deshacer-la-regla-de-la-cadena">7.2. El teorema de sustitución: deshacer la regla de la cadena</a></li>
+  <li><a href="#transformar-correctamente-los-extremos" id="toc-transformar-correctamente-los-extremos" class="nav-link" data-scroll-target="#transformar-correctamente-los-extremos">7.3. Transformar correctamente los extremos</a></li>
+  <li><a href="#la-regla-del-producto-conduce-a-integración-por-partes" id="toc-la-regla-del-producto-conduce-a-integración-por-partes" class="nav-link" data-scroll-target="#la-regla-del-producto-conduce-a-integración-por-partes">7.4. La regla del producto conduce a integración por partes</a></li>
+  <li><a href="#dos-integraciones-por-partes-reveladoras" id="toc-dos-integraciones-por-partes-reveladoras" class="nav-link" data-scroll-target="#dos-integraciones-por-partes-reveladoras">7.5. Dos integraciones por partes reveladoras</a></li>
+  <li><a href="#cuando-la-integral-reaparece-el-método-cíclico" id="toc-cuando-la-integral-reaparece-el-método-cíclico" class="nav-link" data-scroll-target="#cuando-la-integral-reaparece-el-método-cíclico">7.6. Cuando la integral reaparece: el método cíclico</a></li>
+  <li><a href="#fracciones-racionales-y-el-trabajo-algebraico-previo" id="toc-fracciones-racionales-y-el-trabajo-algebraico-previo" class="nav-link" data-scroll-target="#fracciones-racionales-y-el-trabajo-algebraico-previo">7.7. Fracciones racionales y el trabajo algebraico previo</a></li>
+  <li><a href="#factores-repetidos-cuadráticos-y-dominio-original" id="toc-factores-repetidos-cuadráticos-y-dominio-original" class="nav-link" data-scroll-target="#factores-repetidos-cuadráticos-y-dominio-original">7.8. Factores repetidos, cuadráticos y dominio original</a></li>
+  <li><a href="#un-repertorio-derivado-no-memorizado" id="toc-un-repertorio-derivado-no-memorizado" class="nav-link" data-scroll-target="#un-repertorio-derivado-no-memorizado">7.9. Un repertorio derivado, no memorizado</a></li>
+  <li><a href="#acumulaciones-geométricas-área-entre-curvas" id="toc-acumulaciones-geométricas-área-entre-curvas" class="nav-link" data-scroll-target="#acumulaciones-geométricas-área-entre-curvas">7.10. Acumulaciones geométricas: área entre curvas</a></li>
+  <li><a href="#acumulaciones-físicas-trabajo-y-balance" id="toc-acumulaciones-físicas-trabajo-y-balance" class="nav-link" data-scroll-target="#acumulaciones-físicas-trabajo-y-balance">7.11. Acumulaciones físicas: trabajo y balance</a></li>
+  <li><a href="#estrategia-límites-e-historia-de-un-oficio-matemático" id="toc-estrategia-límites-e-historia-de-un-oficio-matemático" class="nav-link" data-scroll-target="#estrategia-límites-e-historia-de-un-oficio-matemático">7.12. Estrategia, límites e historia de un oficio matemático</a>
+  <ul class="collapse">
+  <li><a href="#mapa-de-dependencias-y-alcance" id="toc-mapa-de-dependencias-y-alcance" class="nav-link" data-scroll-target="#mapa-de-dependencias-y-alcance">Mapa de dependencias y alcance</a></li>
+  <li><a href="#trabajo-del-lector" id="toc-trabajo-del-lector" class="nav-link" data-scroll-target="#trabajo-del-lector">Trabajo del lector</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 7. Integrar como método</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">12 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="index.html">Índice del libro</a> · <a href="prefacio.html">Prefacio</a> · <a href="itinerarios.html">Itinerarios</a></p>
+<p><a href="capitulo-07.html">Exposición</a> · <a href="capitulo-07-ejercicios.html">Ejercicios</a> · <a href="capitulo-07-soluciones.html">Soluciones</a> · <a href="capitulo-07-notas.html">Notas históricas</a></p>
+<p><a href="capitulo-06.html">← Capítulo 6</a> · <a href="capitulo-08.html">Capítulo 8 →</a></p>
+<blockquote class="blockquote">
+<p><strong>Pregunta generadora.</strong> Conocemos la definición rigurosa de integral y sabemos calcularla mediante primitivas. ¿Cómo reconocer una primitiva cuando el integrando es una composición, un producto o una función racional que no aparece en una tabla elemental?</p>
+</blockquote>
+<p>Una definición no es por sí sola un procedimiento de cálculo. La integral de Riemann–Darboux, construida en el capítulo 5, determina un valor mediante cotas inferiores y superiores; el Teorema Fundamental, demostrado en el capítulo 6, permite reemplazar esa tarea por otra: buscar una función cuya derivada sea el integrando. Surge entonces un problema nuevo. La derivada de <span class="math inline">\(e^{x^2}\)</span> se obtiene en una línea, pero la función <span class="math inline">\(e^{x^2}\)</span> no entrega de inmediato una primitiva reconocible. La derivada de <span class="math inline">\(x e^x\)</span> obedece una regla sencilla, pero integrar <span class="math inline">\(xe^x\)</span> parece pedir una operación inversa.</p>
+<p>En este capítulo no aprenderemos «trucos» aislados. <strong>Reconstruiremos tres procedimientos a partir de identidades ya demostradas:</strong> la sustitución desde la regla de la cadena, la integración por partes desde la regla del producto y las fracciones parciales desde el álgebra de polinomios. Cada operación se formulará en un intervalo en el que los objetos estén definidos, y cada integral definida conservará sus extremos y su orientación. Veremos, además, cómo decidir entre métodos, cómo medir acumulaciones físicas y qué límites tiene la búsqueda de expresiones elementales.</p>
+<section id="de-una-integral-existente-a-una-estrategia-de-cálculo" class="level2">
+<h2 class="anchored" data-anchor-id="de-una-integral-existente-a-una-estrategia-de-cálculo">7.1. De una integral existente a una estrategia de cálculo</h2>
+<p>Consideremos</p>
+<p><span class="math display">\[
+I=\int_0^1 2x\,e^{x^2}\,dx.
+\]</span></p>
+<p>Por C02, la derivada de <span class="math inline">\(x\mapsto e^{x^2}\)</span> es <span class="math inline">\(2xe^{x^2}\)</span>. Por C05 el integrando es continuo, luego integrable; por C06,</p>
+<p><span class="math display">\[
+I=[e^{x^2}]_0^1=e-1.
+\]</span></p>
+<p>La observación fundamental es que la expresión <span class="math inline">\(2x\)</span> no es un factor decorativo: es la derivada de la expresión <span class="math inline">\(x^2\)</span> que aparece dentro de la exponencial. La <em>estructura</em> del integrando nos conduce a su primitiva.</p>
+<p><strong>Definición 7.1 (<code>EDC-C07-DEF-001</code>; primitiva sobre un intervalo).</strong> Si <span class="math inline">\(I\subseteq\mathbb R\)</span> es un intervalo abierto y <span class="math inline">\(f:I\to\mathbb R\)</span>, una primitiva de <span class="math inline">\(f\)</span> sobre <span class="math inline">\(I\)</span> es una función derivable <span class="math inline">\(F:I\to\mathbb R\)</span> tal que <span class="math inline">\(F'=f\)</span> en todos los puntos de <span class="math inline">\(I\)</span>. Denotamos informalmente la familia de primitivas por</p>
+<p><span class="math display">\[
+\int f(x)\,dx=F(x)+C,\qquad C\in\mathbb R,
+\]</span></p>
+<p>cuando se sabe que <span class="math inline">\(F\)</span> existe. Esta notación <strong>no define una segunda integral</strong>: resume la afirmación sobre una familia de funciones cuya diferencia es constante, demostrada en C06 por el valor medio. En cada componente separada del dominio, la constante puede elegirse independientemente.</p>
+<p>No toda expresión admite evaluación aplicando una única fórmula de potencias. Antes de transformar una integral conviene responder tres preguntas: ¿existe como integral propia sobre los extremos indicados?, ¿qué derivada conocida se oculta en el integrando?, ¿en qué intervalo puede realizarse el cálculo sin atravesar una singularidad? El orden importa. La identidad algebraica correcta no convierte en integrable una función no acotada en el intervalo cerrado.</p>
+</section>
+<section id="el-teorema-de-sustitución-deshacer-la-regla-de-la-cadena" class="level2">
+<h2 class="anchored" data-anchor-id="el-teorema-de-sustitución-deshacer-la-regla-de-la-cadena">7.2. El teorema de sustitución: deshacer la regla de la cadena</h2>
+<p><strong>Teorema 7.1 (sustitución orientada; <code>EDC-C07-THM-001</code>).</strong> Sean <span class="math inline">\(J\subseteq\mathbb R\)</span> un intervalo abierto, <span class="math inline">\(f:J\to\mathbb R\)</span> continua, y <span class="math inline">\(\phi:[\alpha,\beta]\to J\)</span> una función continuamente derivable, con <span class="math inline">\(\alpha&lt;\beta\)</span>. Entonces</p>
+<p><span class="math display">\[
+\boxed{\int_\alpha^\beta f(\phi(t))\phi'(t)\,dt
+=\int_{\phi(\alpha)}^{\phi(\beta)}f(u)\,du.}
+\]</span></p>
+<p>La función <span class="math inline">\(\phi\)</span> <strong>no tiene que ser inyectiva ni monótona</strong>. Los extremos de la derecha pueden coincidir o estar en orden inverso. En la izquierda y en la derecha las integrales existen en sentido propio.</p>
+<p><strong>Demostración.</strong> El recorrido compacto de <span class="math inline">\(\phi\)</span> está contenido en <span class="math inline">\(J\)</span>. Elegimos <span class="math inline">\(u_0\in J\)</span> y definimos, para <span class="math inline">\(u\in J\)</span>, <span class="math inline">\(F(u)=\int_{u_0}^{u}f(s)\,ds\)</span>; la integral orientada existe porque el segmento entre <span class="math inline">\(u_0\)</span> y <span class="math inline">\(u\)</span> es compacto y está contenido en <span class="math inline">\(J\)</span>. La primera parte del Teorema Fundamental (<code>EDC-C06-THM-002</code>) prueba que <span class="math inline">\(F'(u)=f(u)\)</span> para todo <span class="math inline">\(u\in J\)</span>. Por la regla de la cadena (<code>EDC-C02-THM-002</code>),</p>
+<p><span class="math display">\[
+(F\circ\phi)'(t)=f(\phi(t))\phi'(t),\qquad \alpha&lt;t&lt;\beta.
+\]</span></p>
+<p>El producto de funciones continuas <span class="math inline">\(f\circ\phi\)</span> y <span class="math inline">\(\phi'\)</span> es continuo en <span class="math inline">\([\alpha,\beta]\)</span>; además, <span class="math inline">\(F\circ\phi\)</span> es continuo hasta los extremos. La segunda parte del Teorema Fundamental (<code>EDC-C06-THM-005</code>) da</p>
+<p><span class="math display">\[
+\int_\alpha^\beta f(\phi(t))\phi'(t)\,dt
+=F(\phi(\beta))-F(\phi(\alpha))
+=\int_{\phi(\alpha)}^{\phi(\beta)}f(u)\,du.
+\]</span></p>
+<p>La última igualdad usa la aditividad orientada demostrada en C05. No hubo sustitución formal de símbolos diferenciales sin justificación. <span class="math inline">\(\square\)</span></p>
+<p><strong>Corolario 7.1 (sustitución en una primitiva; <code>EDC-C07-COR-001</code>).</strong> Bajo las hipótesis locales de la regla de la cadena, si <span class="math inline">\(F'=f\)</span> en un intervalo que contiene <span class="math inline">\(\phi(I)\)</span>, entonces</p>
+<p><span class="math display">\[
+\int f(\phi(x))\phi'(x)\,dx=F(\phi(x))+C
+\]</span></p>
+<p>sobre cada intervalo abierto <span class="math inline">\(I\)</span> donde la expresión esté definida. <strong>Demostración.</strong> Derivamos <span class="math inline">\(F\circ\phi\)</span> mediante la cadena; la descripción de todas las primitivas sigue del valor medio de C03. <span class="math inline">\(\square\)</span></p>
+<p>La regla incluye cambios de variable que invierten la orientación. Si <span class="math inline">\(\phi(t)=1-t\)</span> para <span class="math inline">\(t\in[0,1]\)</span>, entonces <span class="math inline">\(\phi'(t)=-1\)</span> y</p>
+<p><span class="math display">\[
+\int_0^1 -f(1-t)\,dt=\int_1^0 f(u)\,du
+=-\int_0^1 f(u)\,du.
+\]</span></p>
+<p>La función compuesta se integra aquí con su derivada, <strong>no con el valor absoluto</strong> de ella. El valor absoluto aparece en otros problemas de medida geométrica, no en la fórmula orientada del teorema.</p>
+</section>
+<section id="transformar-correctamente-los-extremos" class="level2">
+<h2 class="anchored" data-anchor-id="transformar-correctamente-los-extremos">7.3. Transformar correctamente los extremos</h2>
+<p>El procedimiento operativo es útil precisamente porque deja ver qué se conserva. Si <span class="math inline">\(u=\phi(x)\)</span> en una integral <strong>definida</strong>, se convierten <em>ambos</em> extremos y se integra con respecto a <span class="math inline">\(u\)</span>. Por ejemplo,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int_0^1 x\sqrt{1+x^2}\,dx
+&amp;=\frac12\int_1^2\sqrt{u}\,du\\
+&amp;=\frac12\left[\frac23u^{3/2}\right]_1^2
+=\frac{2\sqrt2-1}{3}.
+\end{aligned}
+\]</span></p>
+<p>Se usó <span class="math inline">\(u=1+x^2\)</span>, <span class="math inline">\(du/dx=2x\)</span> y <span class="math inline">\(u(0)=1\)</span>, <span class="math inline">\(u(1)=2\)</span>. La potencia <span class="math inline">\(u^{1/2}\)</span> es continua para <span class="math inline">\(u&gt;0\)</span>, de modo que todas las integrales escritas son propias.</p>
+<p>Un cambio no monótono tampoco rompe el teorema. Tomemos <span class="math inline">\(\phi(t)=t^2\)</span> para <span class="math inline">\(-1\le t\le1\)</span>. Entonces</p>
+<p><span class="math display">\[
+\int_{-1}^1 2t\,e^{t^2}\,dt=\int_1^1e^u\,du=0.
+\]</span></p>
+<p>Este resultado se entiende porque las contribuciones para <span class="math inline">\(t&lt;0\)</span> y <span class="math inline">\(t&gt;0\)</span> tienen signos opuestos. <strong>No</strong> describe el área sin signo bajo <span class="math inline">\(2t e^{t^2}\)</span>. Si se hubiera reemplazado <span class="math inline">\(2t\)</span> por <span class="math inline">\(|2t|\)</span>, se habría cambiado el problema.</p>
+<p><strong>Proposición 7.1 (invariancia por traslación y escala afín; <code>EDC-C07-PRP-001</code>).</strong> Sean <span class="math inline">\(f\)</span> continua en un intervalo abierto <span class="math inline">\(J\)</span> y <span class="math inline">\(\phi(t)=ct+d\)</span> con <span class="math inline">\(c\ne0\)</span>. Para <span class="math inline">\(\alpha&lt;\beta\)</span> tales que <span class="math inline">\(\phi([\alpha,\beta])\subset J\)</span>,</p>
+<p><span class="math display">\[
+\int_\alpha^\beta f(ct+d)\,dt
+=\frac1c\int_{c\alpha+d}^{c\beta+d}f(u)\,du.
+\]</span></p>
+<p><strong>Demostración.</strong> En el Teorema 7.1 sustituimos <span class="math inline">\(\phi'(t)=c\)</span> y dividimos por <span class="math inline">\(c\ne0\)</span>. Cuando <span class="math inline">\(c&lt;0\)</span>, la orientación de los nuevos extremos explica el signo final. <span class="math inline">\(\square\)</span></p>
+<p><strong>Error a evitar.</strong> No es correcto cambiar el integrando a <span class="math inline">\(f(u)\)</span> y conservar simultáneamente los viejos extremos de <span class="math inline">\(x\)</span>; tampoco es correcto poner <span class="math inline">\(du=\phi'(x)dx\)</span> como una ecuación entre números independientes de la demostración. Esa abreviatura se admite sólo como memoria del teorema ya probado.</p>
+</section>
+<section id="la-regla-del-producto-conduce-a-integración-por-partes" class="level2">
+<h2 class="anchored" data-anchor-id="la-regla-del-producto-conduce-a-integración-por-partes">7.4. La regla del producto conduce a integración por partes</h2>
+<p><strong>Teorema 7.2 (integración por partes; <code>EDC-C07-THM-002</code>).</strong> Sean <span class="math inline">\(u,v:[a,b]\to\mathbb R\)</span> funciones de clase <span class="math inline">\(C^1\)</span>, con <span class="math inline">\(a&lt;b\)</span>; esto significa continuas en <span class="math inline">\([a,b]\)</span>, derivables en <span class="math inline">\((a,b)\)</span> y con derivadas interiores que se prolongan continuamente a <span class="math inline">\([a,b]\)</span>. Entonces</p>
+<p><span class="math display">\[
+\boxed{\int_a^b u(x)v'(x)\,dx
+=\bigl[u(x)v(x)\bigr]_a^b-\int_a^b u'(x)v(x)\,dx.}
+\]</span></p>
+<p><strong>Demostración.</strong> La regla del producto de C02 produce <span class="math inline">\((uv)'=u'v+uv'\)</span> en el interior. Los tres términos del lado derecho son continuos en <span class="math inline">\([a,b]\)</span> según las prolongaciones indicadas; en particular, ambas integrales existen por C05. Como <span class="math inline">\(uv\)</span> es continua hasta los extremos, la segunda parte del Teorema Fundamental de C06 da</p>
+<p><span class="math display">\[
+[uv]_a^b=\int_a^b(u'v+uv')\,dx
+=\int_a^b u'v\,dx+\int_a^b uv'\,dx.
+\]</span></p>
+<p>La fórmula sigue despejando el último término. <span class="math inline">\(\square\)</span></p>
+<p><strong>Corolario 7.2 (forma indefinida; <code>EDC-C07-COR-002</code>).</strong> En un intervalo abierto en el que <span class="math inline">\(u,v\)</span> sean derivables y los productos estén definidos, <span class="math inline">\(uv\)</span> es una primitiva de <span class="math inline">\(u'v+uv'\)</span>. Siempre que alguno de los sumandos tenga primitiva, se puede escribir</p>
+<p><span class="math display">\[
+\int uv'\,dx=uv-\int u'v\,dx+C.
+\]</span></p>
+<p><strong>Demostración.</strong> Es la igualdad de derivadas <span class="math inline">\((uv)'=u'v+uv'\)</span> junto con la unicidad de primitivas salvo constante en intervalos. <span class="math inline">\(\square\)</span></p>
+<p>La aplicación no consiste en «pasar una derivada al otro factor» sin costo: intercambia un integral por otro. Su valor depende de que el segundo sea más fácil, o de que el mismo integral aparezca otra vez y se pueda despejar algebraicamente.</p>
+</section>
+<section id="dos-integraciones-por-partes-reveladoras" class="level2">
+<h2 class="anchored" data-anchor-id="dos-integraciones-por-partes-reveladoras">7.5. Dos integraciones por partes reveladoras</h2>
+<p><strong>Primera: un polinomio por una exponencial.</strong> Poniendo <span class="math inline">\(u=x\)</span>, <span class="math inline">\(v'=e^x\)</span>, <span class="math inline">\(v=e^x\)</span> en <span class="math inline">\([0,1]\)</span>,</p>
+<p><span class="math display">\[
+\int_0^1 xe^x\,dx=[xe^x]_0^1-\int_0^1e^x\,dx=e-(e-1)=1.
+\]</span></p>
+<p>La fórmula indefinida correspondiente es <span class="math inline">\(\int xe^x\,dx=(x-1)e^x+C\)</span>; derivarla confirma el resultado. Si el factor polinómico tiene grado dos o mayor, repetir el procedimiento disminuye su grado:</p>
+<p><span class="math display">\[
+\int x^2e^x\,dx=e^x(x^2-2x+2)+C.
+\]</span></p>
+<p><strong>Segunda: un logaritmo que no presenta producto.</strong> En <span class="math inline">\([1,e]\)</span> escribimos <span class="math inline">\(\ln x=(\ln x)\cdot1\)</span> y elegimos <span class="math inline">\(u=\ln x\)</span>, <span class="math inline">\(v'=1\)</span>, de donde <span class="math inline">\(u'=1/x\)</span>, <span class="math inline">\(v=x\)</span>. Resulta</p>
+<p><span class="math display">\[
+\int_1^e\ln x\,dx=[x\ln x]_1^e-\int_1^e1\,dx=e-(e-1)=1.
+\]</span></p>
+<p>Aquí la restricción <span class="math inline">\(x&gt;0\)</span> es indispensable; no existe un <span class="math inline">\(\ln x\)</span> real para <span class="math inline">\(x\le0\)</span> en nuestra definición de C02. Por la misma idea, una primitiva de <span class="math inline">\(\ln x\)</span> sobre <span class="math inline">\((0,\infty)\)</span> es <span class="math inline">\(x\ln x-x\)</span>.</p>
+<p><strong>Proposición 7.2 (reducción polinomio–exponencial; <code>EDC-C07-PRP-002</code>).</strong> Si <span class="math inline">\(p\)</span> es un polinomio de grado <span class="math inline">\(n\ge0\)</span>, la función <span class="math inline">\(p(x)e^x\)</span> tiene sobre <span class="math inline">\(\mathbb R\)</span> una primitiva de la forma <span class="math inline">\(e^x q(x)\)</span> con <span class="math inline">\(q\)</span> polinomio de grado a lo sumo <span class="math inline">\(n\)</span>. En particular se obtiene mediante un número finito de integraciones por partes.</p>
+<p><strong>Demostración.</strong> Escribimos <span class="math inline">\(q=p-p'+p''-\cdots+(-1)^np^{(n)}\)</span>. La suma es finita porque <span class="math inline">\(p^{(n+1)}=0\)</span>. De la regla del producto,</p>
+<p><span class="math display">\[
+\frac{d}{dx}(e^xq)=e^x(q+q')=e^xp,
+\]</span></p>
+<p>ya que todos los términos intermedios se cancelan. La integración por partes reproduce la misma cancelación paso a paso. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="cuando-la-integral-reaparece-el-método-cíclico" class="level2">
+<h2 class="anchored" data-anchor-id="cuando-la-integral-reaparece-el-método-cíclico">7.6. Cuando la integral reaparece: el método cíclico</h2>
+<p>Consideremos <span class="math inline">\(I=\int e^x\cos x\,dx\)</span> sobre <span class="math inline">\(\mathbb R\)</span>. Aplicamos partes con <span class="math inline">\(u=\cos x\)</span>, <span class="math inline">\(v'=e^x\)</span>:</p>
+<p><span class="math display">\[
+I=e^x\cos x+\int e^x\sin x\,dx.
+\]</span></p>
+<p>A la integral nueva <span class="math inline">\(J=\int e^x\sin x\,dx\)</span> aplicamos partes con <span class="math inline">\(u=\sin x\)</span>, <span class="math inline">\(v'=e^x\)</span>:</p>
+<p><span class="math display">\[
+J=e^x\sin x-\int e^x\cos x\,dx.
+\]</span></p>
+<p>Para evitar ambigüedades entre familias que difieren en una constante, puede hacerse primero con integrales de <span class="math inline">\(0\)</span> a <span class="math inline">\(x\)</span>. Sus identidades dan <span class="math inline">\(2I(x)=e^x(\sin x+\cos x)-1\)</span> para <span class="math inline">\(I(x)=\int_0^xe^t\cos t\,dt\)</span>. De aquí resulta la familia de primitivas</p>
+<p><span class="math display">\[
+\boxed{\int e^x\cos x\,dx=\frac{e^x}{2}(\sin x+\cos x)+C.}
+\]</span></p>
+<p>Un control por derivación directa confirma el factor <span class="math inline">\(1/2\)</span>. La repetición aquí <strong>no</strong> reduce el grado de una función: cierra un sistema de dos integrales y permite despejar una de ellas.</p>
+<p>La decisión sobre el método es estructural: si aparece <span class="math inline">\(f(g(x))g'(x)\)</span> pensamos en cadena; si aparece <span class="math inline">\(u(x)v'(x)\)</span> cuyo intercambio simplifica, pensamos en producto. No hay un algoritmo universal que garantice una expresión elemental para cualquier integrando continuo.</p>
+</section>
+<section id="fracciones-racionales-y-el-trabajo-algebraico-previo" class="level2">
+<h2 class="anchored" data-anchor-id="fracciones-racionales-y-el-trabajo-algebraico-previo">7.7. Fracciones racionales y el trabajo algebraico previo</h2>
+<p>Una <em>función racional</em> es un cociente <span class="math inline">\(R(x)=P(x)/Q(x)\)</span> de polinomios, definido donde <span class="math inline">\(Q(x)\ne0\)</span>. Sobre cada intervalo cerrado contenido en su dominio es continua e integrable por C05. Para encontrar primitivas, primero efectuamos la división polinómica si <span class="math inline">\(\deg P\ge\deg Q\)</span>. El resto es una fracción propia, con numerador de grado menor que el denominador.</p>
+<p><strong>Definición 7.2 (<code>EDC-C07-DEF-002</code>; fracción propia y descomposición parcial).</strong> La fracción <span class="math inline">\(P/Q\)</span> es <em>propia</em> si <span class="math inline">\(\deg P&lt;\deg Q\)</span> y <span class="math inline">\(Q\)</span> no es el polinomio nulo. Una <em>descomposición en fracciones parciales</em> es una identidad racional que expresa <span class="math inline">\(P/Q\)</span> como suma de fracciones con denominadores de factores más simples de <span class="math inline">\(Q\)</span>, válida en el dominio original. La descomposición debe verificarse por una identidad de polinomios; no autoriza a rellenar puntos excluidos del dominio original.</p>
+<p><strong>Teorema 7.3 (denominadores lineales simples; <code>EDC-C07-THM-003</code>).</strong> Sea</p>
+<p><span class="math display">\[
+Q(x)=c\prod_{j=1}^m(x-r_j),\qquad c\ne0,
+\]</span></p>
+<p>con raíces reales <span class="math inline">\(r_1,\ldots,r_m\)</span> <strong>distintas</strong>, y sea <span class="math inline">\(\deg P&lt;m\)</span>. Entonces, para <span class="math inline">\(x\notin\{r_1,\ldots,r_m\}\)</span>,</p>
+<p><span class="math display">\[
+\frac{P(x)}{Q(x)}=\sum_{j=1}^m\frac{A_j}{x-r_j},
+\qquad A_j=\frac{P(r_j)}{Q'(r_j)}.
+\]</span></p>
+<p><strong>Demostración.</strong> Como las raíces son simples, <span class="math inline">\(Q'(r_j)=c\prod_{k\ne j}(r_j-r_k)\ne0\)</span>. Multipliquemos la identidad propuesta por <span class="math inline">\(Q(x)\)</span> y definamos</p>
+<p><span class="math display">\[
+H(x)=P(x)-\sum_{j=1}^m A_j\frac{Q(x)}{x-r_j}.
+\]</span></p>
+<p>Cada cociente <span class="math inline">\(Q(x)/(x-r_j)\)</span> es un polinomio de grado <span class="math inline">\(m-1\)</span>. Por tanto, <span class="math inline">\(H\)</span> es un polinomio de grado menor que <span class="math inline">\(m\)</span>. Al evaluar en <span class="math inline">\(x=r_i\)</span>, todos los términos con <span class="math inline">\(j\ne i\)</span> se anulan; el término restante es <span class="math inline">\(A_iQ'(r_i)=P(r_i)\)</span>. Así <span class="math inline">\(H(r_i)=0\)</span> para las <span class="math inline">\(m\)</span> raíces distintas. Un polinomio de grado menor que <span class="math inline">\(m\)</span> no puede tener <span class="math inline">\(m\)</span> raíces distintas salvo que sea idénticamente cero, como se prueba reiterando la factorización por <span class="math inline">\((x-r_i)\)</span>. Queda demostrada la identidad. <span class="math inline">\(\square\)</span></p>
+<p><strong>Corolario 7.3 (primitiva racional en raíces simples; <code>EDC-C07-COR-003</code>).</strong> Bajo las hipótesis del Teorema 7.3, en <strong>cada intervalo abierto</strong> que no contenga raíces de <span class="math inline">\(Q\)</span>,</p>
+<p><span class="math display">\[
+\int\frac{P(x)}{Q(x)}\,dx
+=\sum_{j=1}^m A_j\ln|x-r_j|+C.
+\]</span></p>
+<p><strong>Demostración.</strong> En ese intervalo, <span class="math inline">\(\frac{d}{dx}\ln|x-r_j|=1/(x-r_j)\)</span> por C02. Derivamos la suma y usamos la identidad anterior. <span class="math inline">\(\square\)</span></p>
+<p><strong>Ejemplo.</strong> Para <span class="math inline">\(x\ne0,1\)</span>,</p>
+<p><span class="math display">\[
+\frac1{x(x-1)}=-\frac1x+\frac1{x-1},
+\]</span></p>
+<p>por lo que en <span class="math inline">\((-\infty,0)\)</span>, <span class="math inline">\((0,1)\)</span> y <span class="math inline">\((1,\infty)\)</span>, por separado,</p>
+<p><span class="math display">\[
+\int\frac{dx}{x(x-1)}=\ln|x-1|-\ln|x|+C.
+\]</span></p>
+<p>No existe una constante de integración que, por arte de notación, obligue a enlazar primitivas a través de una singularidad.</p>
+</section>
+<section id="factores-repetidos-cuadráticos-y-dominio-original" class="level2">
+<h2 class="anchored" data-anchor-id="factores-repetidos-cuadráticos-y-dominio-original">7.8. Factores repetidos, cuadráticos y dominio original</h2>
+<p>La presencia de raíces repetidas o factores cuadráticos irreducibles exige más álgebra que el Teorema 7.3. En lugar de introducir sin prueba un teorema general de factorización y descomposición para todo polinomio real, estudiaremos identidades <strong>comprobadas multiplicando denominadores</strong>.</p>
+<p><strong>Raíz repetida.</strong> Para <span class="math inline">\(x\notin\{0,1\}\)</span>,</p>
+<p><span class="math display">\[
+\frac1{x(x-1)^2}=\frac1x-\frac1{x-1}+\frac1{(x-1)^2}.
+\]</span></p>
+<p>La suma de las tres fracciones, al llevarla al denominador común, tiene numerador uno. Las primitivas respectivas son <span class="math inline">\(\ln|x|\)</span>, <span class="math inline">\(-\ln|x-1|\)</span> y <span class="math inline">\(-1/(x-1)\)</span>; así,</p>
+<p><span class="math display">\[
+\int\frac{dx}{x(x-1)^2}
+=\ln|x|-\ln|x-1|-\frac1{x-1}+C.
+\]</span></p>
+<p><strong>Factor cuadrático sin raíces reales.</strong> Para todo real, <span class="math inline">\((x+1)^2+1&gt;0\)</span> y</p>
+<p><span class="math display">\[
+\frac{2x+3}{x^2+2x+2}
+=\frac{2x+2}{(x+1)^2+1}+\frac1{(x+1)^2+1}.
+\]</span></p>
+<p>La primera fracción es la derivada logarítmica del denominador; la segunda se integra con la derivada de <span class="math inline">\(\arctan\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\int\frac{2x+3}{x^2+2x+2}\,dx
+=\ln(x^2+2x+2)+\arctan(x+1)+C.
+\]</span></p>
+<p><strong>División antes de descomponer.</strong> En el dominio <span class="math inline">\(x\ne\pm1\)</span>,</p>
+<p><span class="math display">\[
+\frac{x^3+1}{x^2-1}=x+\frac{x+1}{(x-1)(x+1)}=x+\frac1{x-1}.
+\]</span></p>
+<p>Su primitiva en cada componente del <strong>dominio original</strong> es <span class="math inline">\(x^2/2+\ln|x-1|+C\)</span>. Aunque la expresión simplificada tenga valor en <span class="math inline">\(x=-1\)</span>, la función original no lo tiene allí. Esa exclusión debe conservarse al describir las primitivas.</p>
+<p><strong>Proposición 7.3 (diferenciación como control; <code>EDC-C07-PRP-003</code>).</strong> En un intervalo abierto <span class="math inline">\(I\)</span> sobre el que una identidad racional <span class="math inline">\(R=S\)</span> sea válida y una expresión candidata <span class="math inline">\(G\)</span> satisfaga <span class="math inline">\(G'=S\)</span>, la misma <span class="math inline">\(G\)</span> es primitiva de <span class="math inline">\(R\)</span> sobre <span class="math inline">\(I\)</span>.</p>
+<p><strong>Demostración.</strong> Para cada <span class="math inline">\(x\in I\)</span>, las identidades evaluadas en <span class="math inline">\(x\)</span> dan <span class="math inline">\(G'(x)=S(x)=R(x)\)</span>. La hipótesis sobre el intervalo evita singularidades. <span class="math inline">\(\square\)</span></p>
+<p>Esta proposición aparentemente modesta fija una regla de auditoría: <strong>una antiderivada se verifica derivándola sobre el dominio declarado</strong>, no por semejanza superficial con una fórmula de tabla.</p>
+</section>
+<section id="un-repertorio-derivado-no-memorizado" class="level2">
+<h2 class="anchored" data-anchor-id="un-repertorio-derivado-no-memorizado">7.9. Un repertorio derivado, no memorizado</h2>
+<p>Las siguientes identidades se justifican aplicando el Teorema Fundamental a las derivadas ya probadas en C02; siempre se entienden en intervalos contenidos en el dominio real del integrando:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int x^r\,dx&amp;=\frac{x^{r+1}}{r+1}+C
+&amp;&amp; (x&gt;0,\ r\in\mathbb R\setminus\{-1\}),\\
+\int \frac{dx}{x}&amp;=\ln|x|+C&amp;&amp;(x\ne0),\\
+\int e^{kx}\,dx&amp;=\frac{e^{kx}}{k}+C&amp;&amp;(k\ne0),\\
+\int\cos(kx)\,dx&amp;=\frac{\sin(kx)}k+C&amp;&amp;(k\ne0),\\
+\int\sin(kx)\,dx&amp;=-\frac{\cos(kx)}k+C&amp;&amp;(k\ne0),\\
+\int\frac{dx}{1+x^2}&amp;=\arctan x+C,\\
+\int\frac{dx}{\cos^2x}&amp;=\tan x+C&amp;&amp;(\cos x\ne0).
+\end{aligned}
+\]</span></p>
+<p>Para <span class="math inline">\(k=0\)</span>, las exponenciales y trigonométricas se tratan como constantes; las fórmulas con <span class="math inline">\(1/k\)</span> <strong>no</strong> son aplicables. Para exponentes enteros no negativos, la regla de potencias vale también en <span class="math inline">\(x\le0\)</span> según C02, y se puede integrar sobre cualquier intervalo real. Para <span class="math inline">\(r=-1\)</span>, la primitiva es logarítmica en cada semieje.</p>
+<p>La identidad <span class="math inline">\(\sin^2x=(1-\cos2x)/2\)</span>, que viene de trigonometría elemental, conduce a</p>
+<p><span class="math display">\[
+\int\sin^2x\,dx=\frac x2-\frac{\sin2x}{4}+C.
+\]</span></p>
+<p>Es esencial reconocer que una <em>tabla</em> sólo condensa pruebas disponibles: no reemplaza la verificación de dominio, regularidad o singularidades en la integral concreta.</p>
+</section>
+<section id="acumulaciones-geométricas-área-entre-curvas" class="level2">
+<h2 class="anchored" data-anchor-id="acumulaciones-geométricas-área-entre-curvas">7.10. Acumulaciones geométricas: área entre curvas</h2>
+<p>Supongamos que <span class="math inline">\(f,g:[a,b]\to\mathbb R\)</span> son continuas. Si <span class="math inline">\(f(x)\ge g(x)\)</span> para todo <span class="math inline">\(x\)</span>, el área de la región vertical entre ambas gráficas está dada por la integral de la <strong>altura no negativa</strong> <span class="math inline">\(f-g\)</span>:</p>
+<p><span class="math display">\[
+\boxed{A=\int_a^b [f(x)-g(x)]\,dx.}
+\]</span></p>
+<p>Esta interpretación de área se apoya en las aproximaciones rectangulares de C04 y en la definición integrable de C05. Si las gráficas se cruzan y ninguna queda arriba en todo el intervalo, el área total es</p>
+<p><span class="math display">\[
+A=\int_a^b|f(x)-g(x)|\,dx.
+\]</span></p>
+<p>La continuidad hace que el integrando sea Riemann-integrable, pero <strong>para calcular</strong> la expresión habitualmente conviene localizar los cruces y separar los intervalos. No se puede sustituir el área entre curvas por el valor absoluto de la integral orientada en general.</p>
+<p><strong>Ejemplo.</strong> En <span class="math inline">\([0,2]\)</span>, <span class="math inline">\(2x\ge x^2\)</span> y</p>
+<p><span class="math display">\[
+A=\int_0^2(2x-x^2)\,dx
+=\left[x^2-\frac{x^3}{3}\right]_0^2=\frac43.
+\]</span></p>
+<p>La fórmula de área no requiere que ambas funciones sean no negativas por separado; sólo exige comparar sus alturas. La geometría del arco parabólico de C04 puede utilizarse como comprobación independiente del valor.</p>
+<p><strong>Proposición 7.4 (cota geométrica del área; <code>EDC-C07-PRP-004</code>).</strong> Si <span class="math inline">\(f,g\)</span> son continuas sobre <span class="math inline">\([a,b]\)</span> y <span class="math inline">\(|f(x)-g(x)|\le M\)</span> allí, entonces</p>
+<p><span class="math display">\[
+0\le\int_a^b|f-g|\,dx\le M(b-a).
+\]</span></p>
+<p><strong>Demostración.</strong> La continuidad de <span class="math inline">\(|f-g|\)</span> asegura integrabilidad, y el orden de C05 aplicado a <span class="math inline">\(0\le|f-g|\le M\)</span> da la desigualdad. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="acumulaciones-físicas-trabajo-y-balance" class="level2">
+<h2 class="anchored" data-anchor-id="acumulaciones-físicas-trabajo-y-balance">7.11. Acumulaciones físicas: trabajo y balance</h2>
+<p>Si una fuerza escalar <span class="math inline">\(F(x)\)</span> actúa a lo largo de una trayectoria unidimensional cuyo desplazamiento se modela por la coordenada <span class="math inline">\(x\)</span>, el trabajo orientado en el modelo se escribe</p>
+<p><span class="math display">\[
+W=\int_a^b F(x)\,dx.
+\]</span></p>
+<p>La hipótesis de que la fuerza depende sólo de la posición y es continua en el trayecto asegura existencia de la integral propia. Si <span class="math inline">\(F(x)\)</span> se mide en newtons y <span class="math inline">\(x\)</span> en metros, el trabajo se mide en newton-metros, es decir, joules. <strong>El signo</strong> distingue trabajo que favorece u obstaculiza el desplazamiento según la orientación elegida.</p>
+<p><strong>Ejemplo: resorte lineal.</strong> Para una fuerza aplicada <span class="math inline">\(F(x)=kx\)</span> al extender un resorte desde su posición de equilibrio hasta una elongación <span class="math inline">\(L\ge0\)</span>, donde <span class="math inline">\(k&gt;0\)</span> tiene unidades <span class="math inline">\(\mathrm{N}/\mathrm m\)</span>,</p>
+<p><span class="math display">\[
+W=\int_0^L kx\,dx=\frac12kL^2.
+\]</span></p>
+<p>La fuerza de restitución del propio resorte tiene signo opuesto, <span class="math inline">\(-kx\)</span>, y por tanto su trabajo orientado en el mismo desplazamiento es <span class="math inline">\(-kL^2/2\)</span>. Las dos respuestas son coherentes: describen <strong>fuerzas distintas</strong>.</p>
+<p><strong>Balance de tasa.</strong> Si una magnitud <span class="math inline">\(Q(t)\)</span> satisface <span class="math inline">\(Q'=r(t)\)</span> en un intervalo temporal y <span class="math inline">\(r\)</span> es continua, entonces</p>
+<p><span class="math display">\[
+Q(t_1)-Q(t_0)=\int_{t_0}^{t_1}r(t)\,dt.
+\]</span></p>
+<p>Esto no es una nueva ley física: es el Teorema Fundamental aplicado a la relación diferencial postulada por el modelo. El cálculo no determina por sí solo qué tasa describe correctamente un fenómeno; ésa es una hipótesis empírica que debe contrastarse por separado.</p>
+</section>
+<section id="estrategia-límites-e-historia-de-un-oficio-matemático" class="level2">
+<h2 class="anchored" data-anchor-id="estrategia-límites-e-historia-de-un-oficio-matemático">7.12. Estrategia, límites e historia de un oficio matemático</h2>
+<p>En el cálculo elemental es tentador interpretar <span class="math inline">\(\int f\)</span> como un problema de reconocimiento visual: «si veo un polinomio, pruebo potencia; si veo un producto, pruebo partes». Pero la elección racional se hace <strong>después</strong> de verificar integrabilidad, dominio y orientación. Se empieza por simplificar álgebra o trigonometría, comprobar si la función es una composición con su derivada, y sólo entonces escoger un método que reduzca de verdad el problema. En integrales definidas hay que transformar los extremos y respetar el signo de la derivada del cambio de variable; en funciones racionales hay que examinar polos, factores repetidos y posibles agujeros del dominio original.</p>
+<p>El límite conceptual es tan importante como el método. Toda función continua sobre un intervalo compacto tiene una integral de Riemann y, por C06, una primitiva obtenida como función de acumulación. Sin embargo, <strong>no hemos demostrado que cada primitiva pueda expresarse mediante un número finito de potencias, logaritmos, exponenciales, funciones trigonométricas y operaciones algebraicas</strong>. La función</p>
+<p><span class="math display">\[
+H(x)=\int_0^xe^{-t^2}\,dt
+\]</span></p>
+<p>está perfectamente definida para todo <span class="math inline">\(x\)</span>, es derivable y satisface <span class="math inline">\(H'=e^{-x^2}\)</span>. No necesitamos decidir aquí qué expresiones elementales existen o no para <span class="math inline">\(H\)</span>: el Teorema Fundamental ya asegura lo que importa para su existencia y variación. Tampoco introducimos integrales impropias, integrales múltiples, teoría de medida o técnicas avanzadas de fracciones racionales con raíces complejas.</p>
+<p>Históricamente, las cuadraturas, sumaciones y reglas operatorias no surgieron todas con las mismas definiciones actuales. Los problemas geométricos antiguos y las transformaciones de los siglos XVII–XIX dieron lugar a familias de procedimientos que hoy pueden unificarse mediante producto, cadena y Teorema Fundamental. La notación de Leibniz conserva esa genealogía, pero el símbolo <span class="math inline">\(du\)</span> no sustituye la prueba analítica que hemos realizado. La <a href="capitulo-07-notas.html">documentación histórica</a> distingue las síntesis efectivamente consultadas de las fuentes primarias y libros sólo localizados, sin atribuir a Newton o Leibniz enunciados modernos de Riemann–Darboux.</p>
+<section id="mapa-de-dependencias-y-alcance" class="level3">
+<h3 class="anchored" data-anchor-id="mapa-de-dependencias-y-alcance">Mapa de dependencias y alcance</h3>
+<ul>
+<li><strong>C00–C01:</strong> límites, continuidad, intervalos, derivadas puntuales y dominios de funciones.</li>
+<li><strong>C02:</strong> producto, cadena, derivación de logaritmos, exponenciales, potencias y trigonometría; división algebraica básica de polinomios.</li>
+<li><strong>C03:</strong> teorema del valor medio y unicidad de primitivas salvo constante.</li>
+<li><strong>C04–C05:</strong> sumas geométricas, definición independiente de integral, linealidad, orden, aditividad, integral orientada e integrabilidad de funciones continuas.</li>
+<li><strong>C06:</strong> Teorema Fundamental en sus dos partes, primitivas, y justificación de acumulaciones con extremos variables.</li>
+<li><strong>Aportaciones de C07:</strong> <code>EDC-C07-THM-001--003</code>, <code>PRP-001--004</code>, <code>COR-001--003</code>, dos definiciones y procedimientos justificados de sustitución, partes y fracciones racionales en casos controlados.</li>
+<li><strong>No utilizado:</strong> series generales de C08, Taylor de C09, teoría de EDO de C10, Lebesgue, integrales impropias o cambio de variables multivariado.</li>
+</ul>
+</section>
+<section id="trabajo-del-lector" class="level3">
+<h3 class="anchored" data-anchor-id="trabajo-del-lector">Trabajo del lector</h3>
+<p>Los <a href="capitulo-07-ejercicios.html">ejercicios de C07</a> incluyen diagnóstico de hipótesis, cálculo mediante distintos métodos, pruebas de las reglas, aplicaciones y un desafío de síntesis. Sus <a href="capitulo-07-soluciones.html">soluciones</a> se entregan separadas de la exposición; cada resolución especifica el intervalo real y la técnica empleada. El marco histórico y los niveles efectivos de consulta están en <a href="capitulo-07-notas.html">notas de fuentes</a>.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

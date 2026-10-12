@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 3. Extremos, crecimiento y aproximación local – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#un-problema-sencillo-con-una-dificultad-escondida" id="toc-un-problema-sencillo-con-una-dificultad-escondida" class="nav-link active" data-scroll-target="#un-problema-sencillo-con-una-dificultad-escondida">3.1. Un problema sencillo con una dificultad escondida</a></li>
+  <li><a href="#extremos-locales-y-el-principio-de-fermat" id="toc-extremos-locales-y-el-principio-de-fermat" class="nav-link" data-scroll-target="#extremos-locales-y-el-principio-de-fermat">3.2. Extremos locales y el principio de Fermat</a></li>
+  <li><a href="#rolle-dos-valores-iguales-fuerzan-una-pendiente-nula" id="toc-rolle-dos-valores-iguales-fuerzan-una-pendiente-nula" class="nav-link" data-scroll-target="#rolle-dos-valores-iguales-fuerzan-una-pendiente-nula">3.3. Rolle: dos valores iguales fuerzan una pendiente nula</a></li>
+  <li><a href="#el-teorema-del-valor-medio" id="toc-el-teorema-del-valor-medio" class="nav-link" data-scroll-target="#el-teorema-del-valor-medio">3.4. El teorema del valor medio</a></li>
+  <li><a href="#monotonía-constancia-y-unicidad" id="toc-monotonía-constancia-y-unicidad" class="nav-link" data-scroll-target="#monotonía-constancia-y-unicidad">3.5. Monotonía, constancia y unicidad</a></li>
+  <li><a href="#estimar-una-variación-sin-calcularla-exactamente" id="toc-estimar-una-variación-sin-calcularla-exactamente" class="nav-link" data-scroll-target="#estimar-una-variación-sin-calcularla-exactamente">3.6. Estimar una variación sin calcularla exactamente</a></li>
+  <li><a href="#aproximación-lineal-y-control-del-error" id="toc-aproximación-lineal-y-control-del-error" class="nav-link" data-scroll-target="#aproximación-lineal-y-control-del-error">3.7. Aproximación lineal y control del error</a></li>
+  <li><a href="#convexidad-de-las-pendientes-a-la-forma-de-la-gráfica" id="toc-convexidad-de-las-pendientes-a-la-forma-de-la-gráfica" class="nav-link" data-scroll-target="#convexidad-de-las-pendientes-a-la-forma-de-la-gráfica">3.8. Convexidad: de las pendientes a la forma de la gráfica</a></li>
+  <li><a href="#qué-decide-la-segunda-derivada-en-un-punto" id="toc-qué-decide-la-segunda-derivada-en-un-punto" class="nav-link" data-scroll-target="#qué-decide-la-segunda-derivada-en-un-punto">3.9. Qué decide la segunda derivada en un punto</a></li>
+  <li><a href="#las-derivadas-tienen-una-propiedad-intermedia" id="toc-las-derivadas-tienen-una-propiedad-intermedia" class="nav-link" data-scroll-target="#las-derivadas-tienen-una-propiedad-intermedia">3.10. Las derivadas tienen una propiedad intermedia</a></li>
+  <li><a href="#un-método-de-optimización-con-hipótesis-comprobables" id="toc-un-método-de-optimización-con-hipótesis-comprobables" class="nav-link" data-scroll-target="#un-método-de-optimización-con-hipótesis-comprobables">3.11. Un método de optimización con hipótesis comprobables</a></li>
+  <li><a href="#historia-alcance-y-tránsito-a-las-cuadraturas" id="toc-historia-alcance-y-tránsito-a-las-cuadraturas" class="nav-link" data-scroll-target="#historia-alcance-y-tránsito-a-las-cuadraturas">3.12. Historia, alcance y tránsito a las cuadraturas</a>
+  <ul class="collapse">
+  <li><a href="#mapa-de-dependencias" id="toc-mapa-de-dependencias" class="nav-link" data-scroll-target="#mapa-de-dependencias">Mapa de dependencias</a></li>
+  <li><a href="#trabajo-del-lector" id="toc-trabajo-del-lector" class="nav-link" data-scroll-target="#trabajo-del-lector">Trabajo del lector</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 3. Extremos, crecimiento y aproximación local</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">12 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="index.html">Índice del libro</a> · <a href="prefacio.html">Prefacio</a> · <a href="itinerarios.html">Itinerarios</a></p>
+<p><a href="capitulo-03.html">Exposición</a> · <a href="capitulo-03-ejercicios.html">Ejercicios</a> · <a href="capitulo-03-soluciones.html">Soluciones</a> · <a href="capitulo-03-notas.html">Notas históricas</a></p>
+<p><a href="capitulo-02.html">← Capítulo 2</a> · <a href="capitulo-04.html">Capítulo 4 →</a></p>
+<blockquote class="blockquote">
+<p><strong>Pregunta generadora.</strong> Si una derivada describe lo que ocurre muy cerca de un punto, ¿con qué derecho podemos utilizarla para decidir cómo se comporta una función en un intervalo entero, dónde alcanza sus extremos y cuánto nos equivocamos al sustituirla por una recta?</p>
+</blockquote>
+<p>Los capítulos anteriores dieron significado a la derivada y permitieron calcularla en funciones construidas mediante operaciones algebraicas, composición, exponenciales y trigonometría. Falta un paso lógico crucial. Saber que <span class="math inline">\(f'(a)&gt;0\)</span> describe el comportamiento de cocientes incrementales próximos a <span class="math inline">\(a\)</span>, pero no demuestra que <span class="math inline">\(f\)</span> crezca en todo su dominio. Tampoco basta resolver <span class="math inline">\(f'(x)=0\)</span> para encontrar los máximos y mínimos de un problema: la ecuación puede tener soluciones que no sean extremos, y los extremos pueden aparecer donde no exista derivada o en los bordes del dominio.</p>
+<p>El problema de este capítulo consiste en pasar de un resultado <strong>local</strong> a una conclusión <strong>sobre un intervalo</strong>. Utilizaremos las consecuencias de la continuidad sobre intervalos cerrados demostradas en C00, la definición de derivada y su aproximación afín de C01 y las reglas operativas de C02. De esa combinación surgirán el principio de Fermat, el teorema de Rolle y el teorema del valor medio. A partir de ellos organizaremos la monotonía, las desigualdades de incremento, la convexidad y una primera teoría de optimización rigurosa. No utilizaremos la integral ni la fórmula de Taylor, reservadas para capítulos posteriores.</p>
+<section id="un-problema-sencillo-con-una-dificultad-escondida" class="level2">
+<h2 class="anchored" data-anchor-id="un-problema-sencillo-con-una-dificultad-escondida">3.1. Un problema sencillo con una dificultad escondida</h2>
+<p>Sea <span class="math inline">\(f(x)=x^3-3x\)</span> en el intervalo <span class="math inline">\([-2,2]\)</span>. El cálculo algebraico de C02 da</p>
+<p><span class="math display">\[
+f'(x)=3x^2-3=3(x-1)(x+1).
+\]</span></p>
+<p>Los puntos <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span> son candidatos a extremos. Sin embargo, ¿por qué deberíamos mirar precisamente los ceros de la derivada? ¿Y por qué no olvidar los extremos del intervalo <span class="math inline">\(-2\)</span> y <span class="math inline">\(2\)</span>? Los valores son</p>
+<p><span class="math display">\[
+\begin{array}{c|rrrr}
+x&amp;-2&amp;-1&amp;1&amp;2\\ \hline
+f(x)&amp;-2&amp;2&amp;-2&amp;2.
+\end{array}
+\]</span></p>
+<p>Este ejemplo tiene extremos absolutos que se alcanzan tanto dentro del intervalo como en sus bordes. Más adelante podremos justificar por el signo de <span class="math inline">\(f'\)</span> qué ocurre entre esos cuatro puntos. Primero debemos formular exactamente la relación entre un extremo interior y una derivada.</p>
+</section>
+<section id="extremos-locales-y-el-principio-de-fermat" class="level2">
+<h2 class="anchored" data-anchor-id="extremos-locales-y-el-principio-de-fermat">3.2. Extremos locales y el principio de Fermat</h2>
+<p><strong>Definición 3.1 (<code>EDC-C03-DEF-001</code>).</strong> Sean <span class="math inline">\(D\subseteq\mathbb R\)</span>, <span class="math inline">\(f:D\to\mathbb R\)</span> y <span class="math inline">\(c\in D\)</span>. Decimos que <span class="math inline">\(f\)</span> tiene un <strong>máximo local</strong> en <span class="math inline">\(c\)</span> si existe <span class="math inline">\(\delta&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+f(x)\le f(c)\qquad(x\in D,\ |x-c|&lt;\delta).
+\]</span></p>
+<p>Se define análogamente un <strong>mínimo local</strong> invirtiendo la desigualdad. Si la desigualdad es estricta para <span class="math inline">\(x\ne c\)</span>, el extremo local es estricto. Un <strong>máximo absoluto</strong> exige <span class="math inline">\(f(x)\le f(c)\)</span> para <strong>todo</strong> <span class="math inline">\(x\in D\)</span>; un mínimo absoluto se define de modo dual. Un extremo local se entiende siempre <em>relativo al dominio especificado</em>.</p>
+<p>Los extremos absolutos existen para toda función continua en <span class="math inline">\([a,b]\)</span>, <span class="math inline">\(a&lt;b\)</span>, por el teorema de los valores extremos de C00 (<code>EDC-C00-THM-007</code>). Pero nada en dicho teorema asegura que los puntos que los realizan sean interiores.</p>
+<p><strong>Teorema 3.1 (principio de Fermat; <code>EDC-C03-THM-001</code>).</strong> Sea <span class="math inline">\(f:D\to\mathbb R\)</span> y sea <span class="math inline">\(c\)</span> un punto interior de <span class="math inline">\(D\)</span>. Si <span class="math inline">\(f\)</span> tiene un extremo local en <span class="math inline">\(c\)</span> y es derivable allí, entonces</p>
+<p><span class="math display">\[
+f'(c)=0.
+\]</span></p>
+<p><strong>Demostración.</strong> Supongamos primero que <span class="math inline">\(c\)</span> es un máximo local. Para <span class="math inline">\(h&gt;0\)</span> suficientemente pequeño,</p>
+<p><span class="math display">\[
+\frac{f(c+h)-f(c)}{h}\le0,
+\]</span></p>
+<p>mientras que para <span class="math inline">\(h&lt;0\)</span> suficientemente pequeño la misma fracción es mayor o igual que cero, pues el numerador no es positivo y el denominador es negativo. La existencia de la derivada bilateral obliga a que los dos límites laterales coincidan: uno no puede ser positivo y el otro no puede ser negativo. Por tanto <span class="math inline">\(f'(c)=0\)</span>. Para un mínimo basta aplicar la demostración a <span class="math inline">\(-f\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La conclusión es <strong>necesaria, no suficiente</strong>. Para <span class="math inline">\(f(x)=x^3\)</span>, se cumple <span class="math inline">\(f'(0)=0\)</span>, pero <span class="math inline">\(0\)</span> no es máximo ni mínimo local: a ambos lados toma valores de signos opuestos. Para <span class="math inline">\(f(x)=|x|\)</span>, <span class="math inline">\(0\)</span> sí es un mínimo local, pero <span class="math inline">\(f'(0)\)</span> no existe. Para <span class="math inline">\(f(x)=x\)</span> en <span class="math inline">\([0,1]\)</span>, el mínimo absoluto se alcanza en <span class="math inline">\(0\)</span>, punto de borde; la derivada unilateral derecha vale <span class="math inline">\(1\)</span>, no cero. Ninguno de estos hechos contradice el teorema, porque en cada ejemplo falta una hipótesis distinta.</p>
+<p><strong>Definición 3.2 (<code>EDC-C03-DEF-002</code>).</strong> Para una función definida sobre un intervalo, un punto <strong>estacionario</strong> interior es un punto donde existe <span class="math inline">\(f'(c)=0\)</span>. Llamaremos <strong>candidato crítico interior</strong> a un punto interior donde <span class="math inline">\(f'(c)=0\)</span> o donde la función no es derivable. Usaremos esta expresión como instrumento para buscar extremos, sin afirmar que cada candidato sea uno.</p>
+<p>La terminología está deliberadamente fijada: no confundiremos punto estacionario con todo punto de posible extremo. El método correcto exige <strong>comprobar</strong> qué ocurre en los candidatos y en los extremos del dominio.</p>
+</section>
+<section id="rolle-dos-valores-iguales-fuerzan-una-pendiente-nula" class="level2">
+<h2 class="anchored" data-anchor-id="rolle-dos-valores-iguales-fuerzan-una-pendiente-nula">3.3. Rolle: dos valores iguales fuerzan una pendiente nula</h2>
+<p>Imaginemos una curva que comienza y termina a la misma altura. ¿Necesariamente tiene entre ambos extremos una tangente horizontal? La afirmación no es cierta para una curva con un ángulo agudo, pero sí cuando la continuidad y la derivabilidad se distribuyen correctamente.</p>
+<p><strong>Teorema 3.2 (Rolle; <code>EDC-C03-THM-002</code>).</strong> Sean <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(f:[a,b]\to\mathbb R\)</span>. Supongamos que:</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> es continua en <span class="math inline">\([a,b]\)</span>;</li>
+<li><span class="math inline">\(f\)</span> es derivable en <span class="math inline">\((a,b)\)</span>;</li>
+<li><span class="math inline">\(f(a)=f(b)\)</span>.</li>
+</ol>
+<p>Entonces existe <span class="math inline">\(c\in(a,b)\)</span> tal que <span class="math inline">\(f'(c)=0\)</span>.</p>
+<p><strong>Demostración.</strong> Por el teorema de los valores extremos de C00, <span class="math inline">\(f\)</span> alcanza su máximo <span class="math inline">\(M\)</span> y su mínimo <span class="math inline">\(m\)</span> en <span class="math inline">\([a,b]\)</span>. Si <span class="math inline">\(M=m\)</span>, es constante y <span class="math inline">\(f'(x)=0\)</span> en cada punto interior. Si <span class="math inline">\(M&gt;m\)</span>, al menos uno de esos valores es distinto del valor común <span class="math inline">\(f(a)=f(b)\)</span>. Ese extremo no puede realizarse únicamente en los bordes, cuyos valores son iguales: existe un punto <span class="math inline">\(c\in(a,b)\)</span> donde se alcanza. En <span class="math inline">\(c\)</span> se aplica el principio de Fermat y se obtiene <span class="math inline">\(f'(c)=0\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>El ejemplo <span class="math inline">\(f(x)=|x|\)</span> en <span class="math inline">\([-1,1]\)</span> enseña por qué la derivabilidad interior importa: los valores extremos son iguales, <span class="math inline">\(f(-1)=f(1)=1\)</span>, pero la derivada vale <span class="math inline">\(-1\)</span> para <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(1\)</span> para <span class="math inline">\(x&gt;0\)</span> y no existe en <span class="math inline">\(0\)</span>. No hay ningún punto interior de derivada nula. El ejemplo <span class="math inline">\(f(x)=x\)</span> en <span class="math inline">\([0,1]\)</span> muestra por qué hace falta la igualdad de extremos. Y la discontinuidad puede destruir la conclusión aunque exista derivada en todo punto interior donde la función está definida: por ejemplo, <span class="math inline">\(f(0)=f(1)=0\)</span> y <span class="math inline">\(f(x)=x\)</span> para <span class="math inline">\(0&lt;x&lt;1\)</span> no es continua en <span class="math inline">\(1\)</span> y tiene derivada interior <span class="math inline">\(1\)</span>.</p>
+</section>
+<section id="el-teorema-del-valor-medio" class="level2">
+<h2 class="anchored" data-anchor-id="el-teorema-del-valor-medio">3.4. El teorema del valor medio</h2>
+<p>En un intervalo <span class="math inline">\([a,b]\)</span>, el cambio total <span class="math inline">\(f(b)-f(a)\)</span> determina la pendiente de la secante</p>
+<p><span class="math display">\[
+m=\frac{f(b)-f(a)}{b-a}.
+\]</span></p>
+<p>La pregunta decisiva es si esa pendiente global aparece como derivada en algún punto intermedio. La respuesta reduce una comparación entre extremos a una propiedad local.</p>
+<p><strong>Teorema 3.3 (valor medio de Lagrange; <code>EDC-C03-THM-003</code>).</strong> Sean <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(f:[a,b]\to\mathbb R\)</span> continua en <span class="math inline">\([a,b]\)</span> y derivable en <span class="math inline">\((a,b)\)</span>. Existe un punto <span class="math inline">\(c\in(a,b)\)</span> tal que</p>
+<p><span class="math display">\[
+f'(c)=\frac{f(b)-f(a)}{b-a},
+\qquad\text{equivalentemente}\qquad
+f(b)-f(a)=f'(c)(b-a).
+\]</span></p>
+<p><strong>Demostración.</strong> Construimos la función auxiliar</p>
+<p><span class="math display">\[
+g(x)=f(x)-\left[f(a)+\frac{f(b)-f(a)}{b-a}(x-a)\right].
+\]</span></p>
+<p>La cantidad entre corchetes es la ecuación de la recta secante. Por las hipótesis y las reglas de derivación ya demostradas, <span class="math inline">\(g\)</span> es continua en <span class="math inline">\([a,b]\)</span> y derivable en <span class="math inline">\((a,b)\)</span>. Además <span class="math inline">\(g(a)=g(b)=0\)</span>. Por Rolle existe <span class="math inline">\(c\in(a,b)\)</span> con <span class="math inline">\(g'(c)=0\)</span>, es decir,</p>
+<p><span class="math display">\[
+f'(c)-\frac{f(b)-f(a)}{b-a}=0.
+\]</span></p>
+<p><span class="math inline">\(\square\)</span></p>
+<p>Para <span class="math inline">\(f(x)=x^2\)</span> entre <span class="math inline">\(a=-1\)</span> y <span class="math inline">\(b=2\)</span>, la pendiente media es <span class="math inline">\((4-1)/(2-(-1))=1\)</span>. Como <span class="math inline">\(f'(x)=2x\)</span>, el punto garantizado es <span class="math inline">\(c=1/2\)</span>. En general, el teorema asegura la <strong>existencia</strong> de algún <span class="math inline">\(c\)</span>; no identifica un único punto ni afirma que <span class="math inline">\(c\)</span> sea el punto medio de <span class="math inline">\([a,b]\)</span>.</p>
+<p>El valor medio enlaza dos niveles que los capítulos anteriores habían mantenido separados: no toda información local se convierte automáticamente en conclusión global, pero las hipótesis de continuidad y derivabilidad sí permiten transportar la derivada hacia la diferencia finita de los valores de una función.</p>
+</section>
+<section id="monotonía-constancia-y-unicidad" class="level2">
+<h2 class="anchored" data-anchor-id="monotonía-constancia-y-unicidad">3.5. Monotonía, constancia y unicidad</h2>
+<p><strong>Definición 3.3 (<code>EDC-C03-DEF-003</code>).</strong> Una función <span class="math inline">\(f:I\to\mathbb R\)</span> es <strong>no decreciente</strong> cuando <span class="math inline">\(x&lt;y\)</span> implica <span class="math inline">\(f(x)\le f(y)\)</span>; es <strong>estrictamente creciente</strong> si la conclusión es <span class="math inline">\(f(x)&lt;f(y)\)</span>. Las definiciones de no creciente y estrictamente decreciente invierten esas comparaciones.</p>
+<p><strong>Teorema 3.4 (criterios de monotonía; <code>EDC-C03-THM-004</code>).</strong> Sea <span class="math inline">\(I\subseteq\mathbb R\)</span> un intervalo abierto y sea <span class="math inline">\(f:I\to\mathbb R\)</span> derivable. Entonces:</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> es no decreciente en <span class="math inline">\(I\)</span> <strong>si y sólo si</strong> <span class="math inline">\(f'(x)\ge0\)</span> para todo <span class="math inline">\(x\in I\)</span>.</li>
+<li>Si <span class="math inline">\(f'(x)&gt;0\)</span> para todo <span class="math inline">\(x\in I\)</span>, entonces <span class="math inline">\(f\)</span> es estrictamente creciente. Si <span class="math inline">\(f'(x)&lt;0\)</span> en todo <span class="math inline">\(I\)</span>, es estrictamente decreciente.</li>
+<li><span class="math inline">\(f\)</span> es constante en <span class="math inline">\(I\)</span> <strong>si y sólo si</strong> <span class="math inline">\(f'(x)=0\)</span> para todo <span class="math inline">\(x\in I\)</span>.</li>
+</ol>
+<p>Para intervalos de cualquier tipo que posean extremos de borde, las conclusiones entre puntos del intervalo se conservan si <span class="math inline">\(f\)</span> es continua en esos extremos y derivable en el interior.</p>
+<p><strong>Demostración.</strong> Sean <span class="math inline">\(x&lt;y\)</span> en <span class="math inline">\(I\)</span>. El valor medio, aplicado en <span class="math inline">\([x,y]\)</span>, da <span class="math inline">\(f(y)-f(x)=f'(c)(y-x)\)</span> para algún <span class="math inline">\(c\in(x,y)\)</span>. Como <span class="math inline">\(y-x&gt;0\)</span>, las condiciones sobre el signo de la derivada producen las implicaciones directas de 1, 2 y 3. Recíprocamente, si <span class="math inline">\(f\)</span> es no decreciente, para <span class="math inline">\(h&gt;0\)</span> suficientemente pequeño el cociente <span class="math inline">\((f(x+h)-f(x))/h\)</span> es no negativo; para <span class="math inline">\(h&lt;0\)</span> sucede lo mismo, pues numerador y denominador son no positivos. El límite existe y es <span class="math inline">\(f'(x)\ge0\)</span>. Si <span class="math inline">\(f\)</span> es constante, los cocientes son cero. Si <span class="math inline">\(f'=0\)</span> en todos los puntos, el valor medio da <span class="math inline">\(f(y)=f(x)\)</span> para cada par. <span class="math inline">\(\square\)</span></p>
+<p>El recíproco estricto <strong>no</strong> exige <span class="math inline">\(f'(x)&gt;0\)</span> en todos los puntos: la función <span class="math inline">\(x\mapsto x^3\)</span> es estrictamente creciente en <span class="math inline">\(\mathbb R\)</span> y tiene <span class="math inline">\(f'(0)=0\)</span>. A su vez, <span class="math inline">\(f'(x)\ge0\)</span> sólo fuerza crecimiento no estricto: puede haber tramos donde la función sea constante.</p>
+<p><strong>Corolario 3.1 (unicidad de primitivas potenciales; <code>EDC-C03-COR-001</code>).</strong> Sea <span class="math inline">\(I\subseteq\mathbb R\)</span> un intervalo no vacío, abierto, cerrado, semiabierto o no acotado. Sean <span class="math inline">\(f,g:I\to\mathbb R\)</span> <strong>continuas en todo <span class="math inline">\(I\)</span> según la definición de continuidad relativa de C00</strong> (también en cualquier extremo incluido) y derivables en su interior <span class="math inline">\(I^{\circ}\)</span>. Si <span class="math inline">\(f'(x)=g'(x)\)</span> para todo <span class="math inline">\(x\in I^{\circ}\)</span>, entonces <span class="math inline">\(f-g\)</span> es constante en <strong>todo <span class="math inline">\(I\)</span></strong>. Para un intervalo de un solo punto, la conclusión es trivial. Por tanto, una función cuya derivada se conoce queda determinada <strong>salvo una constante aditiva</strong>, siempre que ya exista alguna función con esa derivada y se controlen sus valores de borde.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(h=f-g\)</span>. Para cualesquiera <span class="math inline">\(u&lt;v\)</span> en <span class="math inline">\(I\)</span>, el segmento <span class="math inline">\([u,v]\)</span> está contenido en <span class="math inline">\(I\)</span> por ser intervalo. La función <span class="math inline">\(h\)</span> es continua en <span class="math inline">\([u,v]\)</span>, incluidos sus extremos, y derivable en <span class="math inline">\((u,v)\)</span>, con <span class="math inline">\(h'=0\)</span>. El teorema del valor medio proporciona <span class="math inline">\(c\in(u,v)\)</span> con <span class="math inline">\(h(v)-h(u)=h'(c)(v-u)=0\)</span>. Como <span class="math inline">\(u,v\)</span> son arbitrarios, <span class="math inline">\(h\)</span> es constante en todo <span class="math inline">\(I\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Esta observación será decisiva en la teoría integral. Por ahora no hemos probado que <em>toda</em> función dada sea derivada de otra, ni hemos definido una integral.</p>
+</section>
+<section id="estimar-una-variación-sin-calcularla-exactamente" class="level2">
+<h2 class="anchored" data-anchor-id="estimar-una-variación-sin-calcularla-exactamente">3.6. Estimar una variación sin calcularla exactamente</h2>
+<p><strong>Teorema 3.5 (cotas de incremento; <code>EDC-C03-THM-005</code>).</strong> Sea <span class="math inline">\(f:[a,b]\to\mathbb R\)</span> continua en <span class="math inline">\([a,b]\)</span> y derivable en <span class="math inline">\((a,b)\)</span>, donde <span class="math inline">\(a&lt;b\)</span>. Si <span class="math inline">\(m,M\in\mathbb R\)</span> satisfacen</p>
+<p><span class="math display">\[
+m\le f'(x)\le M\qquad(x\in(a,b)),
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+m(b-a)\le f(b)-f(a)\le M(b-a).
+\]</span></p>
+<p>En particular, si <span class="math inline">\(|f'(x)|\le K\)</span> para todo <span class="math inline">\(x\in(a,b)\)</span> y <span class="math inline">\(K\ge0\)</span>, entonces</p>
+<p><span class="math display">\[
+|f(b)-f(a)|\le K|b-a|.
+\]</span></p>
+<p><strong>Demostración.</strong> El teorema del valor medio proporciona un <span class="math inline">\(c\in(a,b)\)</span> con <span class="math inline">\(f(b)-f(a)=f'(c)(b-a)\)</span>. Como <span class="math inline">\(b-a&gt;0\)</span>, multiplicar las desigualdades que acotan a <span class="math inline">\(f'(c)\)</span> produce el resultado. La cota absoluta surge tomando <span class="math inline">\(m=-K\)</span> y <span class="math inline">\(M=K\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Aplicación: una desigualdad trigonométrica.</strong> Como <span class="math inline">\(|\cos x|\le1\)</span> para todo real y <span class="math inline">\(\sin'=\cos\)</span> se demostró en C02, para cualesquiera <span class="math inline">\(a,b\in\mathbb R\)</span> tenemos</p>
+<p><span class="math display">\[
+|\sin b-\sin a|\le|b-a|.
+\]</span></p>
+<p>Esto no se deduce de una mera observación gráfica: es un control cuantitativo válido para todos los pares de argumentos reales.</p>
+<p><strong>Proposición 3.1 (inversas y control de sensibilidad; <code>EDC-C03-PRP-001</code>).</strong> Sea <span class="math inline">\(I\)</span> un intervalo abierto y <span class="math inline">\(f:I\to\mathbb R\)</span> derivable, con <span class="math inline">\(f'(x)\ge m&gt;0\)</span> en todo <span class="math inline">\(I\)</span>. Entonces <span class="math inline">\(f\)</span> es estrictamente creciente, admite una inversa <span class="math inline">\(F:f(I)\to I\)</span> y</p>
+<p><span class="math display">\[
+|F(v)-F(u)|\le\frac{|v-u|}{m}\qquad(u,v\in f(I)).
+\]</span></p>
+<p><strong>Demostración.</strong> La monotonía estricta sigue del Teorema 3.4. Si <span class="math inline">\(u=f(x)\)</span> y <span class="math inline">\(v=f(y)\)</span>, con <span class="math inline">\(x&lt;y\)</span>, el valor medio da <span class="math inline">\(v-u=f'(c)(y-x)\ge m(y-x)\)</span>. Reordenamos y obtenemos la desigualdad, que es simétrica en <span class="math inline">\(u,v\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>En este capítulo las cotas de derivadas son herramientas de prueba. No sustituimos las hipótesis por un dibujo ni usamos reglas globales sobre funciones que sólo sabemos derivables en un punto.</p>
+</section>
+<section id="aproximación-lineal-y-control-del-error" class="level2">
+<h2 class="anchored" data-anchor-id="aproximación-lineal-y-control-del-error">3.7. Aproximación lineal y control del error</h2>
+<p>En C01 probamos que la derivabilidad en <span class="math inline">\(a\)</span> equivale a</p>
+<p><span class="math display">\[
+f(a+h)=f(a)+f'(a)h+r_a(h),\qquad\frac{r_a(h)}{|h|}\longrightarrow0
+\quad(h\to0,\ h\ne0).
+\]</span></p>
+<p>Esta es una afirmación <strong>local</strong>: no ofrece por sí sola una tolerancia común para intervalos grandes. El teorema del valor medio permite convertirla en una estimación comprobable cuando conocemos cómo varía la derivada.</p>
+<p><strong>Proposición 3.2 (error de linealización; <code>EDC-C03-PRP-002</code>).</strong> Sea <span class="math inline">\(I\)</span> un intervalo abierto, <span class="math inline">\(a\in I\)</span>, y supongamos que <span class="math inline">\(f\)</span> es derivable en <span class="math inline">\(I\)</span>. Para <span class="math inline">\(a+h\in I\)</span>, <span class="math inline">\(h\ne0\)</span>, existe un punto <span class="math inline">\(c\)</span> estrictamente entre <span class="math inline">\(a\)</span> y <span class="math inline">\(a+h\)</span> tal que</p>
+<p><span class="math display">\[
+f(a+h)-f(a)-f'(a)h=[f'(c)-f'(a)]h.
+\]</span></p>
+<p>Si además <span class="math inline">\(f'\)</span> es continua en <span class="math inline">\(a\)</span>, el error es <span class="math inline">\(o(|h|)\)</span>, de acuerdo con C01. Si <span class="math inline">\(f'\)</span> es derivable en el intervalo entre <span class="math inline">\(a\)</span> y <span class="math inline">\(a+h\)</span> y <span class="math inline">\(|f''|\le K\)</span> allí, entonces</p>
+<p><span class="math display">\[
+|f(a+h)-f(a)-f'(a)h|\le K|h|^2.
+\]</span></p>
+<p><strong>Demostración.</strong> El valor medio aplicado entre <span class="math inline">\(a\)</span> y <span class="math inline">\(a+h\)</span> da la primera igualdad; su orientación no altera el resultado. Si <span class="math inline">\(f'\)</span> es continua en <span class="math inline">\(a\)</span>, <span class="math inline">\(c\to a\)</span> cuando <span class="math inline">\(h\to0\)</span>, por lo que <span class="math inline">\(f'(c)-f'(a)\to0\)</span>. Para la cota cuadrática, el teorema del valor medio aplicado a <span class="math inline">\(f'\)</span> entre <span class="math inline">\(a\)</span> y <span class="math inline">\(c\)</span> da <span class="math inline">\(|f'(c)-f'(a)|\le K|c-a|\le K|h|\)</span>, y concluimos. <span class="math inline">\(\square\)</span></p>
+<p>La estimación cuadrática tiene una constante deliberadamente no óptima: su fuerza aquí radica en que necesita sólo resultados ya demostrados. Una fórmula precisa con resto de orden superior —incluida su constante— será objeto del capítulo 9. Tampoco debe confundirse una aproximación lineal con una igualdad polinómica exacta en todo un intervalo.</p>
+</section>
+<section id="convexidad-de-las-pendientes-a-la-forma-de-la-gráfica" class="level2">
+<h2 class="anchored" data-anchor-id="convexidad-de-las-pendientes-a-la-forma-de-la-gráfica">3.8. Convexidad: de las pendientes a la forma de la gráfica</h2>
+<p>Hay funciones cuya inclinación no permanece constante pero aumenta sistemáticamente. Ese fenómeno se formaliza sin hablar de curvatura de superficies ni de espacios abstractos.</p>
+<p><strong>Definición 3.4 (<code>EDC-C03-DEF-004</code>).</strong> Una función <span class="math inline">\(f:I\to\mathbb R\)</span>, sobre un intervalo <span class="math inline">\(I\)</span>, es <strong>convexa</strong> si para cualesquiera <span class="math inline">\(x,y\in I\)</span> y <span class="math inline">\(t\in[0,1]\)</span> se cumple</p>
+<p><span class="math display">\[
+f((1-t)x+ty)\le(1-t)f(x)+tf(y).
+\]</span></p>
+<p>Si la desigualdad es estricta cuando <span class="math inline">\(x\ne y\)</span> y <span class="math inline">\(0&lt;t&lt;1\)</span>, se dice que <span class="math inline">\(f\)</span> es <strong>estrictamente convexa</strong>. La <strong>concavidad</strong> se define por convexidad de <span class="math inline">\(-f\)</span>.</p>
+<p><strong>Teorema 3.6 (pendientes y convexidad; <code>EDC-C03-THM-006</code>).</strong> Sea <span class="math inline">\(I\)</span> un intervalo abierto y <span class="math inline">\(f:I\to\mathbb R\)</span> derivable. Son equivalentes:</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> es convexa;</li>
+<li><span class="math inline">\(f'\)</span> es no decreciente;</li>
+<li>para todo <span class="math inline">\(x,y\in I\)</span>,</li>
+</ol>
+<p><span class="math display">\[
+f(y)\ge f(x)+f'(x)(y-x).
+\]</span></p>
+<p>Si <span class="math inline">\(f'\)</span> es estrictamente creciente, entonces <span class="math inline">\(f\)</span> es estrictamente convexa.</p>
+<p><strong>Demostración.</strong> Supongamos primero que <span class="math inline">\(f\)</span> es convexa. Para <span class="math inline">\(x&lt;y&lt;z\)</span>, la desigualdad convexa con <span class="math inline">\(y=(1-t)x+tz\)</span> implica</p>
+<p><span class="math display">\[
+\frac{f(y)-f(x)}{y-x}\le\frac{f(z)-f(x)}{z-x}\le\frac{f(z)-f(y)}{z-y}.
+\]</span></p>
+<p>Fijando <span class="math inline">\(x&lt;z\)</span> y haciendo <span class="math inline">\(y\to x^+\)</span> en la primera comparación obtenemos <span class="math inline">\(f'(x)\le(f(z)-f(x))/(z-x)\)</span>. Haciendo <span class="math inline">\(y\to z^-\)</span> en la segunda obtenemos <span class="math inline">\((f(z)-f(x))/(z-x)\le f'(z)\)</span>. Por tanto <span class="math inline">\(f'(x)\le f'(z)\)</span>.</p>
+<p>Si <span class="math inline">\(f'\)</span> es no decreciente, para <span class="math inline">\(y&gt;x\)</span> el valor medio da <span class="math inline">\(f(y)-f(x)=f'(c)(y-x)\ge f'(x)(y-x)\)</span>, pues <span class="math inline">\(c\in(x,y)\)</span>. Si <span class="math inline">\(y&lt;x\)</span>, el mismo teorema da <span class="math inline">\(f(y)-f(x)=f'(c)(y-x)\)</span> con <span class="math inline">\(c\in(y,x)\)</span>, y como <span class="math inline">\(f'(c)\le f'(x)\)</span> la multiplicación por <span class="math inline">\(y-x&lt;0\)</span> vuelve a producir la desigualdad de 3.</p>
+<p>Finalmente, si vale 3 y <span class="math inline">\(z=(1-t)x+ty\)</span>, aplicamos la desigualdad de soporte con base <span class="math inline">\(z\)</span> a <span class="math inline">\(x\)</span> y a <span class="math inline">\(y\)</span> y multiplicamos por <span class="math inline">\(1-t\)</span> y <span class="math inline">\(t\)</span>, respectivamente. Al sumar, los términos que contienen <span class="math inline">\(f'(z)\)</span> se cancelan y resulta <span class="math inline">\(f(z)\le(1-t)f(x)+tf(y)\)</span>. Si <span class="math inline">\(f'\)</span> es estrictamente creciente, en el paso del valor medio para <span class="math inline">\(x\ne y\)</span> la desigualdad de soporte es estricta; de ello se deduce convexidad estricta para <span class="math inline">\(0&lt;t&lt;1\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La desigualdad de soporte dice que <strong>la recta tangente queda por debajo de la gráfica</strong> de una función convexa derivable. Esta afirmación ya no es una mera descripción gráfica: procede de un teorema con hipótesis y prueba.</p>
+<p><strong>Corolario 3.2 (criterio por la segunda derivada; <code>EDC-C03-COR-002</code>).</strong> Si <span class="math inline">\(f\)</span> es dos veces derivable sobre un intervalo abierto <span class="math inline">\(I\)</span> y <span class="math inline">\(f''(x)\ge0\)</span> para todo <span class="math inline">\(x\in I\)</span>, entonces <span class="math inline">\(f\)</span> es convexa. Si <span class="math inline">\(f''(x)&gt;0\)</span> en todo <span class="math inline">\(I\)</span>, es estrictamente convexa. Las afirmaciones duales valen cuando <span class="math inline">\(f''\le0\)</span> o <span class="math inline">\(f''&lt;0\)</span>.</p>
+<p><strong>Demostración.</strong> Apliquemos el criterio de monotonía del Teorema 3.4 a <span class="math inline">\(f'\)</span>, que es derivable y tiene derivada <span class="math inline">\(f''\)</span>. Después aplicamos el Teorema 3.6. <span class="math inline">\(\square\)</span></p>
+<p><strong>Ejemplo.</strong> Como <span class="math inline">\((\ln x)''=-1/x^2&lt;0\)</span> para <span class="math inline">\(x&gt;0\)</span>, el logaritmo es estrictamente cóncavo en <span class="math inline">\((0,\infty)\)</span>. La desigualdad de soporte para una función cóncava, con base <span class="math inline">\(x=1\)</span>, produce</p>
+<p><span class="math display">\[
+\ln y\le\ln1+(\ln1)'(y-1)=y-1,\qquad y&gt;0.
+\]</span></p>
+<p>Hay igualdad si <span class="math inline">\(y=1\)</span>, y es estricta en los demás puntos. La propiedad no depende de haber definido todavía la integral del logaritmo.</p>
+</section>
+<section id="qué-decide-la-segunda-derivada-en-un-punto" class="level2">
+<h2 class="anchored" data-anchor-id="qué-decide-la-segunda-derivada-en-un-punto">3.9. Qué decide la segunda derivada en un punto</h2>
+<p>El principio de Fermat reduce la búsqueda de extremos interiores derivables a puntos donde <span class="math inline">\(f'=0\)</span>. La segunda derivada puede ayudar a <strong>clasificarlos</strong>, pero sólo bajo sus hipótesis.</p>
+<p><strong>Teorema 3.7 (criterio local de segunda derivada; <code>EDC-C03-THM-007</code>).</strong> Sea <span class="math inline">\(c\)</span> interior de un intervalo abierto <span class="math inline">\(I\)</span>, y supongamos que <span class="math inline">\(f\)</span> es derivable en una vecindad de <span class="math inline">\(c\)</span>, que <span class="math inline">\(f'(c)=0\)</span> y que <span class="math inline">\(f'\)</span> es derivable en <span class="math inline">\(c\)</span>. Si <span class="math inline">\(f''(c)&gt;0\)</span>, entonces <span class="math inline">\(f\)</span> tiene un mínimo local estricto en <span class="math inline">\(c\)</span>. Si <span class="math inline">\(f''(c)&lt;0\)</span>, tiene un máximo local estricto allí.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(f''(c)&gt;0\)</span>, por definición de la derivada de <span class="math inline">\(f'\)</span> existe <span class="math inline">\(\delta&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+\frac{f'(c+h)-f'(c)}h&gt;0\qquad(0&lt;|h|&lt;\delta).
+\]</span></p>
+<p>Como <span class="math inline">\(f'(c)=0\)</span>, esto implica <span class="math inline">\(f'(c+h)&lt;0\)</span> para <span class="math inline">\(h&lt;0\)</span> y <span class="math inline">\(f'(c+h)&gt;0\)</span> para <span class="math inline">\(h&gt;0\)</span>. Por el criterio de monotonía, <span class="math inline">\(f\)</span> decrece estrictamente en el tramo izquierdo y crece estrictamente en el derecho (reduciendo <span class="math inline">\(\delta\)</span> si fuera necesario). Se alcanza un mínimo estricto en <span class="math inline">\(c\)</span>. El caso negativo se aplica a <span class="math inline">\(-f\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Cuando <span class="math inline">\(f''(c)=0\)</span>, el criterio no resuelve nada. Las funciones <span class="math inline">\(x^4\)</span>, <span class="math inline">\(-x^4\)</span> y <span class="math inline">\(x^3\)</span> tienen en <span class="math inline">\(0\)</span> primera y segunda derivadas nulas; la primera tiene mínimo, la segunda máximo y la tercera ningún extremo. No hay una regla correcta que convierta automáticamente la igualdad <span class="math inline">\(f''(c)=0\)</span> en una clasificación.</p>
+</section>
+<section id="las-derivadas-tienen-una-propiedad-intermedia" class="level2">
+<h2 class="anchored" data-anchor-id="las-derivadas-tienen-una-propiedad-intermedia">3.10. Las derivadas tienen una propiedad intermedia</h2>
+<p>En C02 vimos una función derivable cuya derivada no es continua. No obstante, una derivada no puede saltar arbitrariamente de un valor a otro dejando todos los valores intermedios sin alcanzar.</p>
+<p><strong>Teorema 3.8 (propiedad de Darboux de la derivada; <code>EDC-C03-THM-008</code>).</strong> Sea <span class="math inline">\(f:I\to\mathbb R\)</span> derivable en un intervalo abierto <span class="math inline">\(I\)</span>, y sean <span class="math inline">\(a&lt;b\)</span> dos puntos de <span class="math inline">\(I\)</span>. Si un número <span class="math inline">\(\lambda\)</span> está estrictamente entre <span class="math inline">\(f'(a)\)</span> y <span class="math inline">\(f'(b)\)</span>, existe <span class="math inline">\(c\in(a,b)\)</span> tal que <span class="math inline">\(f'(c)=\lambda\)</span>.</p>
+<p><strong>Demostración.</strong> Consideremos <span class="math inline">\(g(x)=f(x)-\lambda x\)</span>. Supongamos primero que <span class="math inline">\(f'(a)&lt;\lambda&lt;f'(b)\)</span>, de modo que <span class="math inline">\(g'(a)&lt;0&lt;g'(b)\)</span>. Como <span class="math inline">\(g'(a)&lt;0\)</span>, para incrementos positivos suficientemente pequeños tenemos <span class="math inline">\(g(a+h)&lt;g(a)\)</span>; por tanto <span class="math inline">\(a\)</span> no realiza el mínimo absoluto de <span class="math inline">\(g\)</span> en <span class="math inline">\([a,b]\)</span>. Análogamente, <span class="math inline">\(g'(b)&gt;0\)</span> implica que para ciertos <span class="math inline">\(h&lt;0\)</span> pequeños se cumple <span class="math inline">\(g(b+h)&lt;g(b)\)</span>: tampoco <span class="math inline">\(b\)</span> realiza el mínimo. Por continuidad y valores extremos, <span class="math inline">\(g\)</span> tiene un mínimo absoluto en algún punto interior <span class="math inline">\(c\)</span>, y por Fermat <span class="math inline">\(g'(c)=0\)</span>. Así <span class="math inline">\(f'(c)=\lambda\)</span>. Si el orden de las derivadas extremas es el inverso, aplicamos lo anterior a <span class="math inline">\(-f\)</span> y <span class="math inline">\(-\lambda\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Este resultado no dice que toda derivada sea continua. Dice algo más preciso y compatible con el ejemplo de C02: <strong>si toma dos valores, también toma los intermedios en algún punto entre ellos</strong>.</p>
+</section>
+<section id="un-método-de-optimización-con-hipótesis-comprobables" class="level2">
+<h2 class="anchored" data-anchor-id="un-método-de-optimización-con-hipótesis-comprobables">3.11. Un método de optimización con hipótesis comprobables</h2>
+<p>La estrategia para maximizar o minimizar una función <span class="math inline">\(f\)</span> continua en un intervalo compacto <span class="math inline">\([a,b]\)</span> se apoya ahora en una cadena de razones, no sólo en un procedimiento formal:</p>
+<ol type="1">
+<li>el teorema de valores extremos garantiza la existencia de máximo y mínimo;</li>
+<li>cualquier extremo absoluto <strong>interior donde exista derivada</strong> tiene derivada cero, por Fermat;</li>
+<li>los puntos interiores de no derivabilidad y los extremos de borde también deben examinarse;</li>
+<li>los valores de los candidatos se comparan, o se estudian intervalos de signo de la derivada mediante el valor medio.</li>
+</ol>
+<p>No se exige que el dominio original sea compacto: cuando se trata de un intervalo abierto o ilimitado habrá que investigar si el extremo existe y qué pasa al acercarse a sus bordes. Escribir <span class="math inline">\(f'(x)=0\)</span> no garantiza por sí solo que el máximo exista.</p>
+<p><strong>Proposición 3.3 (optimización en intervalos cerrados; <code>EDC-C03-PRP-003</code>).</strong> Sea <span class="math inline">\(f:[a,b]\to\mathbb R\)</span> continua y derivable salvo quizás en un conjunto <span class="math inline">\(S\subset(a,b)\)</span>. Todo punto donde <span class="math inline">\(f\)</span> alcanza un máximo o mínimo absoluto pertenece a <span class="math inline">\(\{a,b\}\cup S\cup\{c\in(a,b)\setminus S:f'(c)=0\}\)</span>. Si este conjunto de candidatos es finito, comparar sus valores identifica los extremos absolutos.</p>
+<p><strong>Demostración.</strong> La existencia es el teorema de valores extremos. Si un extremo ocurre en <span class="math inline">\(c\in(a,b)\setminus S\)</span>, existe derivada y Fermat impone <span class="math inline">\(f'(c)=0\)</span>. Todo caso restante está entre los bordes o en <span class="math inline">\(S\)</span>. Para un conjunto finito de candidatos, cada extremo absoluto tiene que estar en él y basta comparar los valores. <span class="math inline">\(\square\)</span></p>
+<p><strong>Ejemplo 1: el rectángulo de perímetro fijo.</strong> Si el perímetro es <span class="math inline">\(P&gt;0\)</span>, sus lados positivos <span class="math inline">\(x,y\)</span> satisfacen <span class="math inline">\(x+y=P/2\)</span> y el área es</p>
+<p><span class="math display">\[
+A(x)=x\left(\frac P2-x\right),\qquad0&lt;x&lt;\frac P2.
+\]</span></p>
+<p>El polinomio se extiende continuamente a <span class="math inline">\([0,P/2]\)</span> con valores nulos en los extremos. Como <span class="math inline">\(A'(x)=P/2-2x\)</span>, es positivo para <span class="math inline">\(x&lt;P/4\)</span> y negativo para <span class="math inline">\(x&gt;P/4\)</span>. El valor máximo entre rectángulos no degenerados corresponde a <span class="math inline">\(x=y=P/4\)</span> y es <span class="math inline">\(P^2/16\)</span>. La restricción geométrica importa: un lado negativo no pertenece al problema.</p>
+<p><strong>Ejemplo 2: una familia con decaimiento.</strong> Sean <span class="math inline">\(\alpha,\lambda&gt;0\)</span> y</p>
+<p><span class="math display">\[
+F(x)=x^{\alpha}e^{-\lambda x},\qquad x&gt;0.
+\]</span></p>
+<p>Por las reglas de C02,</p>
+<p><span class="math display">\[
+F'(x)=x^{\alpha-1}e^{-\lambda x}(\alpha-\lambda x).
+\]</span></p>
+<p>Los dos primeros factores son positivos, de modo que <span class="math inline">\(F\)</span> crece para <span class="math inline">\(0&lt;x&lt;\alpha/\lambda\)</span> y decrece después. El máximo global en el semieje positivo se realiza en <span class="math inline">\(x=\alpha/\lambda\)</span>, con valor <span class="math inline">\((\alpha/\lambda)^{\alpha}e^{-\alpha}\)</span>. No hemos necesitado afirmar sin prueba que la derivada negativa en un solo punto fuerza decrecimiento en todo el semieje: la desigualdad de signos está verificada en intervalos completos.</p>
+</section>
+<section id="historia-alcance-y-tránsito-a-las-cuadraturas" class="level2">
+<h2 class="anchored" data-anchor-id="historia-alcance-y-tránsito-a-las-cuadraturas">3.12. Historia, alcance y tránsito a las cuadraturas</h2>
+<p>La búsqueda de extremos es históricamente anterior a la formulación moderna de la derivada. Fermat utilizó métodos algebraicos para abordar máximos, mínimos y tangentes; no corresponde atribuirle automáticamente la prueba con límites laterales que acabamos de dar. El resultado asociado al nombre de Michel Rolle apareció en un contexto de álgebra y teoría de ecuaciones, no como una proposición escrita con nuestro vocabulario de función continua y derivable. Las elaboraciones rigurosas posteriores del valor medio forman parte de una historia más extensa y no de un instante único de descubrimiento. Los documentos historiográficos consultados, sus localizadores y sus límites se registran en <a href="capitulo-03-notas.html">notas históricas</a>; este capítulo utiliza pruebas modernas propias.</p>
+<p>Hemos establecido un nuevo puente fundamental:</p>
+<p><span class="math display">\[
+\text{derivada local}\xrightarrow[\text{continuidad y derivabilidad}]{\text{Rolle y valor medio}}
+\text{crecimiento, cotas y extremos en intervalos}.
+\]</span></p>
+<p>Ahora poseemos un repertorio suficiente para abordar problemas de variación y justificar métodos de optimización. Pero no hemos definido el área bajo una curva ni la acumulación de una magnitud variable. En C04 comenzaremos por cuadraturas y procedimientos históricos de aproximación; C05 convertirá esos métodos en la teoría rigurosa de la integral. Sólo en C06 estableceremos su relación con la derivación.</p>
+<section id="mapa-de-dependencias" class="level3">
+<h3 class="anchored" data-anchor-id="mapa-de-dependencias">Mapa de dependencias</h3>
+<ul>
+<li><strong>De C00:</strong> orden y completitud de <span class="math inline">\(\mathbb R\)</span>, continuidad, valores extremos, criterio secuencial y teorema del valor intermedio.</li>
+<li><strong>De C01:</strong> derivada bilateral en un punto interior, límites laterales, aproximación afín y derivabilidad implica continuidad.</li>
+<li><strong>De C02:</strong> suma, producto, composición, inversas y derivadas de potencias, exponencial, logaritmo y trigonometría, todas en sus dominios.</li>
+<li><strong>Nuevos:</strong> <code>EDC-C03-THM-001--008</code>, <code>EDC-C03-PRP-001--003</code>, <code>EDC-C03-COR-001--002</code>, y las definiciones locales; no se invoca un resultado de C04–C11.</li>
+<li><strong>Reservado:</strong> integrales, teorema fundamental, Taylor con resto e hipótesis de convergencia de series generales.</li>
+</ul>
+</section>
+<section id="trabajo-del-lector" class="level3">
+<h3 class="anchored" data-anchor-id="trabajo-del-lector">Trabajo del lector</h3>
+<p>El banco <a href="capitulo-03-ejercicios.html">Ejercicios del capítulo 3</a> propone problemas de lectura de hipótesis, cálculo aplicado, demostración, contraejemplos, optimización y una síntesis final. Las <a href="capitulo-03-soluciones.html">soluciones desarrolladas</a> se conservan en archivo independiente: resolver antes de consultarlas forma parte del método del libro.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

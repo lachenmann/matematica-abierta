@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 2. La derivada como operación – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-un-valor-derivado-a-una-función-derivada" id="toc-de-un-valor-derivado-a-una-función-derivada" class="nav-link active" data-scroll-target="#de-un-valor-derivado-a-una-función-derivada">2.1. De un valor derivado a una función derivada</a></li>
+  <li><a href="#sumas-productos-y-cocientes" id="toc-sumas-productos-y-cocientes" class="nav-link" data-scroll-target="#sumas-productos-y-cocientes">2.2. Sumas, productos y cocientes</a></li>
+  <li><a href="#la-composición-y-la-regla-de-la-cadena" id="toc-la-composición-y-la-regla-de-la-cadena" class="nav-link" data-scroll-target="#la-composición-y-la-regla-de-la-cadena">2.3. La composición y la regla de la cadena</a></li>
+  <li><a href="#la-derivada-de-la-función-inversa" id="toc-la-derivada-de-la-función-inversa" class="nav-link" data-scroll-target="#la-derivada-de-la-función-inversa">2.4. La derivada de la función inversa</a></li>
+  <li><a href="#derivar-relaciones-sin-despejar-primero" id="toc-derivar-relaciones-sin-despejar-primero" class="nav-link" data-scroll-target="#derivar-relaciones-sin-despejar-primero">2.5. Derivar relaciones sin despejar primero</a></li>
+  <li><a href="#un-problema-que-las-reglas-no-resuelven-la-exponencial" id="toc-un-problema-que-las-reglas-no-resuelven-la-exponencial" class="nav-link" data-scroll-target="#un-problema-que-las-reglas-no-resuelven-la-exponencial">2.6. Un problema que las reglas no resuelven: la exponencial</a></li>
+  <li><a href="#el-logaritmo-y-las-potencias-reales" id="toc-el-logaritmo-y-las-potencias-reales" class="nav-link" data-scroll-target="#el-logaritmo-y-las-potencias-reales">2.7. El logaritmo y las potencias reales</a></li>
+  <li><a href="#por-qué-importan-los-radianes-seno-y-coseno" id="toc-por-qué-importan-los-radianes-seno-y-coseno" class="nav-link" data-scroll-target="#por-qué-importan-los-radianes-seno-y-coseno">2.8. Por qué importan los radianes: seno y coseno</a></li>
+  <li><a href="#funciones-trigonométricas-inversas" id="toc-funciones-trigonométricas-inversas" class="nav-link" data-scroll-target="#funciones-trigonométricas-inversas">2.9. Funciones trigonométricas inversas</a></li>
+  <li><a href="#una-función-derivable-cuya-derivada-no-es-continua" id="toc-una-función-derivable-cuya-derivada-no-es-continua" class="nav-link" data-scroll-target="#una-función-derivable-cuya-derivada-no-es-continua">2.10. Una función derivable cuya derivada no es continua</a></li>
+  <li><a href="#interpretar-fórmulas-dominios-unidades-y-sensibilidad" id="toc-interpretar-fórmulas-dominios-unidades-y-sensibilidad" class="nav-link" data-scroll-target="#interpretar-fórmulas-dominios-unidades-y-sensibilidad">2.11. Interpretar fórmulas: dominios, unidades y sensibilidad</a></li>
+  <li><a href="#síntesis-y-frontera-del-capítulo" id="toc-síntesis-y-frontera-del-capítulo" class="nav-link" data-scroll-target="#síntesis-y-frontera-del-capítulo">2.12. Síntesis y frontera del capítulo</a>
+  <ul class="collapse">
+  <li><a href="#mapa-explícito-de-dependencias" id="toc-mapa-explícito-de-dependencias" class="nav-link" data-scroll-target="#mapa-explícito-de-dependencias">Mapa explícito de dependencias</a></li>
+  <li><a href="#trabajo-del-lector" id="toc-trabajo-del-lector" class="nav-link" data-scroll-target="#trabajo-del-lector">Trabajo del lector</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 2. La derivada como operación</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">12 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="index.html">Índice del libro</a> · <a href="prefacio.html">Prefacio</a> · <a href="itinerarios.html">Itinerarios</a></p>
+<p><a href="capitulo-02.html">Exposición</a> · <a href="capitulo-02-ejercicios.html">Ejercicios</a> · <a href="capitulo-02-soluciones.html">Soluciones</a> · <a href="capitulo-02-notas.html">Notas históricas</a></p>
+<p><a href="capitulo-01.html">← Capítulo 1</a> · <a href="capitulo-03.html">Capítulo 3 →</a></p>
+<blockquote class="blockquote">
+<p><strong>Pregunta generadora.</strong> Si conocemos cómo varían dos funciones, ¿qué podemos deducir del cambio de su suma, su producto, su cociente o su composición? ¿Y cómo convertir ese conocimiento en un método para estudiar funciones cada vez más complejas?</p>
+</blockquote>
+<p>En el capítulo anterior, una derivada era el resultado de examinar un problema local: el límite de los cocientes de diferencias de una función en un punto. Obtuvimos así pendientes de rectas tangentes, velocidades instantáneas y una caracterización mediante aproximación afín. Ahora necesitamos reconocer una estructura que aparece cuando construimos <strong>funciones nuevas a partir de funciones conocidas</strong>. La derivada no debe quedar reducida a una tabla de respuestas: es una operación sujeta a reglas que han de ser demostradas y cuyos dominios deben mantenerse a la vista.</p>
+<p>Hay un obstáculo adicional. Las potencias, los logaritmos y las funciones trigonométricas son conocidas mucho antes de que el cálculo las reúna, pero conocer sus identidades algebraicas no basta para conocer sus derivadas. Veremos cómo se justifican los límites específicos que permiten diferenciarlas, evitando suponer de antemano el Teorema del Valor Medio (capítulo 3), la teoría general de series (capítulo 8) o el Teorema Fundamental del Cálculo (capítulo 6). Para la exponencial construiremos, de manera autocontenida, <strong>una serie particular</strong>: su convergencia y las operaciones que usemos se demostrarán aquí, sin postular reglas generales aún no establecidas.</p>
+<section id="de-un-valor-derivado-a-una-función-derivada" class="level2">
+<h2 class="anchored" data-anchor-id="de-un-valor-derivado-a-una-función-derivada">2.1. De un valor derivado a una función derivada</h2>
+<p>Sea <span class="math inline">\(I\subseteq\mathbb R\)</span> un intervalo abierto no vacío y <span class="math inline">\(f:I\to\mathbb R\)</span>. Si <span class="math inline">\(f\)</span> es derivable en cada <span class="math inline">\(x\in I\)</span>, obtenemos una nueva función <span class="math inline">\(f':I\to\mathbb R\)</span> definida por</p>
+<p><span class="math display">\[
+f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}h,
+\]</span></p>
+<p>con <span class="math inline">\(h\ne0\)</span> y <span class="math inline">\(x+h\in I\)</span>. Escribiremos también <span class="math inline">\(Df=f'\)</span> y, cuando <span class="math inline">\(y=f(x)\)</span>, <span class="math inline">\(dy/dx=f'(x)\)</span>. La primera forma acentúa que derivar es operar sobre funciones; la segunda conserva una notación histórica que resulta útil en cálculos compuestos. Ninguna permite dividir literalmente dos números llamados <span class="math inline">\(dy\)</span> y <span class="math inline">\(dx\)</span> sin justificar la operación que representan.</p>
+<p><strong>Definición 2.1 (<code>EDC-C02-DEF-001</code>).</strong> Designamos por <span class="math inline">\(\mathcal D(I)\)</span> el conjunto de funciones reales derivables en cada punto de <span class="math inline">\(I\)</span>. El <strong>operador derivación</strong> es</p>
+<p><span class="math display">\[
+D:\mathcal D(I)\longrightarrow\mathbb R^I,
+\qquad Df=f'.
+\]</span></p>
+<p>El codominio <span class="math inline">\(\mathbb R^I\)</span> denota todas las funciones de <span class="math inline">\(I\)</span> a <span class="math inline">\(\mathbb R\)</span>; no hemos afirmado que <span class="math inline">\(f'\)</span> sea continua o que vuelva a pertenecer a <span class="math inline">\(\mathcal D(I)\)</span>. La función <span class="math inline">\(x\mapsto|x|\)</span> ofrece una advertencia inmediata: puede fallar la derivabilidad en un punto interior. Más adelante veremos incluso derivadas que existen pero no son continuas.</p>
+<p>Nuestro método consistirá en volver siempre al cociente incremental. Sólo después de demostrar una regla tendremos derecho a emplearla en otros ejemplos.</p>
+</section>
+<section id="sumas-productos-y-cocientes" class="level2">
+<h2 class="anchored" data-anchor-id="sumas-productos-y-cocientes">2.2. Sumas, productos y cocientes</h2>
+<p><strong>Teorema 2.1 (reglas algebraicas; <code>EDC-C02-THM-001</code>).</strong> Sea <span class="math inline">\(a\)</span> un punto interior de un dominio común <span class="math inline">\(D\subseteq\mathbb R\)</span>, y sean <span class="math inline">\(f,g:D\to\mathbb R\)</span> derivables en <span class="math inline">\(a\)</span>. Para cualesquiera <span class="math inline">\(\alpha,\beta\in\mathbb R\)</span> se tiene</p>
+<p><span class="math display">\[
+(\alpha f+\beta g)'(a)=\alpha f'(a)+\beta g'(a),
+\]</span></p>
+<p><span class="math display">\[
+(fg)'(a)=f'(a)g(a)+f(a)g'(a).
+\]</span></p>
+<p>Si además <span class="math inline">\(g(a)\ne0\)</span>, el cociente <span class="math inline">\(f/g\)</span> está definido en un entorno de <span class="math inline">\(a\)</span> y</p>
+<p><span class="math display">\[
+\left(\frac fg\right)'(a)
+=\frac{f'(a)g(a)-f(a)g'(a)}{g(a)^2}.
+\]</span></p>
+<p><strong>Demostración.</strong> La primera identidad surge directamente de la linealidad de las diferencias y del álgebra de límites de C00. Para el producto sumamos y restamos <span class="math inline">\(f(a)g(a+h)\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\frac{f(a+h)g(a+h)-f(a)g(a)}h\\
+&amp;\qquad=\frac{f(a+h)-f(a)}h\,g(a+h)
++f(a)\frac{g(a+h)-g(a)}h.
+\end{aligned}
+\]</span></p>
+<p>Como derivabilidad implica continuidad (<code>EDC-C01-THM-003</code>), <span class="math inline">\(g(a+h)\to g(a)\)</span>, y los límites producen la fórmula. Para el cociente, <span class="math inline">\(g(a)\ne0\)</span> y continuidad garantizan <span class="math inline">\(g(a+h)\ne0\)</span> para <span class="math inline">\(h\)</span> suficientemente pequeño. Calculamos</p>
+<p><span class="math display">\[
+\frac{f(a+h)/g(a+h)-f(a)/g(a)}h
+=\frac{g(a)[f(a+h)-f(a)]-f(a)[g(a+h)-g(a)]}{h\,g(a+h)g(a)}.
+\]</span></p>
+<p>El límite existe y el denominador tiende a <span class="math inline">\(g(a)^2\ne0\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>En particular, <span class="math inline">\((cf)'=cf'\)</span> y <span class="math inline">\((f+g)'=f'+g'\)</span>. La derivación es <strong>lineal</strong>, pero no multiplica valores: la expresión <span class="math inline">\((fg)'=f'g'\)</span> suele ser falsa. Tampoco vale <span class="math inline">\((f/g)'=f'/g'\)</span>.</p>
+<p><strong>Proposición 2.1 (<code>EDC-C02-PRP-001</code>).</strong> La derivada de una función constante es cero, la de <span class="math inline">\(x\mapsto x\)</span> es <span class="math inline">\(1\)</span> y, para cada entero <span class="math inline">\(n\ge1\)</span>,</p>
+<p><span class="math display">\[
+\frac{d}{dx}x^n=nx^{n-1}\qquad(x\in\mathbb R).
+\]</span></p>
+<p><strong>Demostración.</strong> Las primeras dos afirmaciones salen de la definición. Si la fórmula vale para <span class="math inline">\(n\)</span>, la regla del producto aplicada a <span class="math inline">\(x^{n+1}=x^n x\)</span> da <span class="math inline">\((n+1)x^n\)</span>. La inducción arranca en <span class="math inline">\(n=1\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Para un exponente entero negativo, <span class="math inline">\(x^{-n}=1/x^n\)</span> se estudia en <span class="math inline">\(x\ne0\)</span>; la regla del cociente produce <span class="math inline">\((x^{-n})'=-n x^{-n-1}\)</span>. En ningún caso una fórmula justifica evaluar una función fuera de su dominio.</p>
+</section>
+<section id="la-composición-y-la-regla-de-la-cadena" class="level2">
+<h2 class="anchored" data-anchor-id="la-composición-y-la-regla-de-la-cadena">2.3. La composición y la regla de la cadena</h2>
+<p>El problema cambia cuando una función se evalúa <strong>dentro de otra</strong>. Si una magnitud depende de una segunda y ésta depende de una tercera, ¿cómo se combinan sus variaciones locales?</p>
+<p><strong>Teorema 2.2 (regla de la cadena; <code>EDC-C02-THM-002</code>).</strong> Sean <span class="math inline">\(I,J\subseteq\mathbb R\)</span> intervalos abiertos, <span class="math inline">\(g:I\to J\)</span> y <span class="math inline">\(f:J\to\mathbb R\)</span>. Si <span class="math inline">\(g\)</span> es derivable en <span class="math inline">\(a\in I\)</span> y <span class="math inline">\(f\)</span> es derivable en <span class="math inline">\(b=g(a)\)</span>, entonces <span class="math inline">\(f\circ g\)</span> es derivable en <span class="math inline">\(a\)</span> y</p>
+<p><span class="math display">\[
+(f\circ g)'(a)=f'(g(a))\,g'(a).
+\]</span></p>
+<p><strong>Demostración.</strong> El teorema de aproximación lineal de C01 permite escribir, para <span class="math inline">\(u\)</span> próximo a <span class="math inline">\(0\)</span>,</p>
+<p><span class="math display">\[
+f(b+u)-f(b)=u\,[f'(b)+\eta(u)],
+\qquad \eta(u)\longrightarrow0,
+\]</span></p>
+<p>con la convención <span class="math inline">\(\eta(0)=0\)</span>. Esta identidad incluye el caso <span class="math inline">\(u=0\)</span>. Tomemos <span class="math inline">\(u=g(a+h)-g(a)\)</span>. Como <span class="math inline">\(g\)</span> es continua en <span class="math inline">\(a\)</span>, <span class="math inline">\(u\to0\)</span>. Entonces</p>
+<p><span class="math display">\[
+\frac{f(g(a+h))-f(g(a))}h
+=\frac{g(a+h)-g(a)}h
+\,[f'(b)+\eta(g(a+h)-g(a))].
+\]</span></p>
+<p>El primer factor tiende a <span class="math inline">\(g'(a)\)</span> y el segundo a <span class="math inline">\(f'(b)\)</span>. Esta prueba funciona incluso si <span class="math inline">\(g(a+h)=g(a)\)</span> para infinitos incrementos: no hemos dividido por <span class="math inline">\(g(a+h)-g(a)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Por ejemplo, si <span class="math inline">\(u(x)=x^2+1\)</span> y <span class="math inline">\(f(t)=t^3\)</span>, entonces</p>
+<p><span class="math display">\[
+\frac d{dx}(x^2+1)^3=3(x^2+1)^2(2x).
+\]</span></p>
+<p>Un contraste útil: <span class="math inline">\(f(t)=|t|\)</span> no es derivable en <span class="math inline">\(0\)</span>, pero <span class="math inline">\(f(g(x))\)</span> con <span class="math inline">\(g(x)=x^2\)</span> coincide con <span class="math inline">\(x^2\)</span> y <strong>sí</strong> es derivable en <span class="math inline">\(0\)</span>. Las hipótesis de la regla de la cadena son suficientes, no condiciones necesarias para cada composición particular.</p>
+<p><strong>Definición 2.2 (<code>EDC-C02-DEF-002</code>).</strong> Una expresión de la forma <span class="math inline">\(f\circ g\)</span>, con dominio efectivo <span class="math inline">\(\{x\in\operatorname{dom}g:g(x)\in\operatorname{dom}f\}\)</span>, es una <strong>composición admisible</strong>. El dominio efectivo debe determinarse <em>antes</em> de derivar. Así, <span class="math inline">\(\sqrt{1-x^2}\)</span> está definida sobre <span class="math inline">\([-1,1]\)</span>, pero no tendrá derivada real bilateral en los extremos de ese intervalo.</p>
+</section>
+<section id="la-derivada-de-la-función-inversa" class="level2">
+<h2 class="anchored" data-anchor-id="la-derivada-de-la-función-inversa">2.4. La derivada de la función inversa</h2>
+<p>Conocer el movimiento de <span class="math inline">\(f\)</span> no debe confundirse con conocer el de su inversa. Los incrementos se intercambian, pero sólo si realmente existe una rama inversa y ésta aproxima correctamente su punto correspondiente.</p>
+<p><strong>Teorema 2.3 (derivada de la inversa; <code>EDC-C02-THM-003</code>).</strong> Sea <span class="math inline">\(I\)</span> un intervalo abierto, <span class="math inline">\(f:I\to\mathbb R\)</span> continua y estrictamente monótona, y sea <span class="math inline">\(a\in I\)</span>. Si <span class="math inline">\(f\)</span> es derivable en <span class="math inline">\(a\)</span> y <span class="math inline">\(f'(a)\ne0\)</span>, entonces su inversa <span class="math inline">\(F:f(I)\to I\)</span> es derivable en <span class="math inline">\(b=f(a)\)</span> y</p>
+<p><span class="math display">\[
+F'(b)=\frac1{f'(a)}.
+\]</span></p>
+<p><strong>Demostración.</strong> La continuidad y monotonía estricta, junto con el teorema del valor intermedio (<code>EDC-C00-THM-006</code>), hacen que <span class="math inline">\(f(I)\)</span> sea un intervalo y que <span class="math inline">\(F\)</span> sea continua en <span class="math inline">\(b\)</span>. Podemos justificar esta última afirmación directamente: dados <span class="math inline">\(a_-&lt;a&lt;a_+\)</span> en <span class="math inline">\(I\)</span>, la monotonía sitúa todos los valores suficientemente próximos a <span class="math inline">\(f(a)\)</span> entre <span class="math inline">\(f(a_-)\)</span> y <span class="math inline">\(f(a_+)\)</span>, y por tanto sus preimágenes entre <span class="math inline">\(a_-\)</span> y <span class="math inline">\(a_+\)</span>. Haciendo aproximarse <span class="math inline">\(a_\pm\)</span> a <span class="math inline">\(a\)</span>, se obtiene <span class="math inline">\(F(y)\to a\)</span> cuando <span class="math inline">\(y\to b\)</span>.</p>
+<p>Para <span class="math inline">\(y\ne b\)</span> en <span class="math inline">\(f(I)\)</span>, escribamos <span class="math inline">\(x=F(y)\ne a\)</span>. Así,</p>
+<p><span class="math display">\[
+\frac{F(y)-F(b)}{y-b}
+=\frac{x-a}{f(x)-f(a)}
+=\left[\frac{f(x)-f(a)}{x-a}\right]^{-1}.
+\]</span></p>
+<p>La expresión entre corchetes se aproxima a <span class="math inline">\(f'(a)\ne0\)</span> cuando <span class="math inline">\(x\to a\)</span>, de modo que su recíproco converge a <span class="math inline">\(1/f'(a)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La hipótesis <span class="math inline">\(f'(a)\ne0\)</span> no es una formalidad. Si <span class="math inline">\(f(x)=x^3\)</span>, su inversa es <span class="math inline">\(F(y)=\sqrt[3]{y}\)</span>: en <span class="math inline">\(a=0\)</span>, <span class="math inline">\(f'(0)=0\)</span>, y el cociente <span class="math inline">\(F(h)/h=|h|^{-2/3}\)</span> no tiene límite real finito. En cambio, para <span class="math inline">\(f(x)=x^2\)</span> restringida a <span class="math inline">\((0,\infty)\)</span>, obtenemos</p>
+<p><span class="math display">\[
+\frac d{dy}\sqrt y=\frac1{2\sqrt y},\qquad y&gt;0.
+\]</span></p>
+<p>La derivada no se extiende como número real finito a <span class="math inline">\(y=0\)</span>.</p>
+</section>
+<section id="derivar-relaciones-sin-despejar-primero" class="level2">
+<h2 class="anchored" data-anchor-id="derivar-relaciones-sin-despejar-primero">2.5. Derivar relaciones sin despejar primero</h2>
+<p>Algunas curvas se describen por una relación entre dos cantidades y no por una sola fórmula explícita. Pensemos en la circunferencia de radio <span class="math inline">\(r&gt;0\)</span>:</p>
+<p><span class="math display">\[
+x^2+y^2=r^2.
+\]</span></p>
+<p>Si en un intervalo <span class="math inline">\(J\subset(-r,r)\)</span> elegimos una rama diferenciable <span class="math inline">\(y=y(x)\)</span> que satisfaga la relación, las reglas ya demostradas dan</p>
+<p><span class="math display">\[
+2x+2y(x)y'(x)=0.
+\]</span></p>
+<p>Si <span class="math inline">\(y(x)\ne0\)</span> concluimos <span class="math inline">\(y'(x)=-x/y(x)\)</span>. Esta forma evita despejar una raíz antes de empezar, pero <strong>no prueba</strong> por sí sola que exista una rama diferenciable. Para justificarla aquí basta escoger la rama superior explícita <span class="math inline">\(y(x)=\sqrt{r^2-x^2}\)</span> en <span class="math inline">\((-r,r)\)</span>, cuya diferenciabilidad se deduce de los teoremas de inversa y cadena; la inferior se trata de igual modo.</p>
+<p><strong>Proposición 2.2 (derivación implícita condicionada; <code>EDC-C02-PRP-002</code>).</strong> Si <span class="math inline">\(P(x,y)\)</span> es un polinomio y <span class="math inline">\(y:J\to\mathbb R\)</span> es una función derivable sobre un intervalo abierto <span class="math inline">\(J\)</span> tal que <span class="math inline">\(P(x,y(x))=0\)</span>, la identidad se puede derivar término a término mediante producto y cadena. Si el coeficiente que multiplica a <span class="math inline">\(y'(x)\)</span> en la identidad obtenida es no nulo, esa ecuación determina <span class="math inline">\(y'(x)\)</span>. Esta proposición no afirma existencia de <span class="math inline">\(y\)</span>, ni unicidad de la rama ni un teorema general de la función implícita.</p>
+<p><strong>Demostración.</strong> Un monomio <span class="math inline">\(c x^m y(x)^n\)</span> es producto de funciones derivables, por las reglas de los §§2.2–2.3 y la derivación de potencias enteras no negativas. La suma finita de estos monomios es derivable. Como la función compuesta <span class="math inline">\(P(x,y(x))\)</span> es idénticamente cero, su derivada vale cero. La resolución algebraica final requiere que el coeficiente de <span class="math inline">\(y'\)</span> no se anule. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="un-problema-que-las-reglas-no-resuelven-la-exponencial" class="level2">
+<h2 class="anchored" data-anchor-id="un-problema-que-las-reglas-no-resuelven-la-exponencial">2.6. Un problema que las reglas no resuelven: la exponencial</h2>
+<p>Hasta aquí sabemos <strong>combinar</strong> derivadas, pero el problema de encontrar la derivada de una función nueva sigue abierto. La exponencial constituye un buen laboratorio: buscamos una función continua y positiva que convierta sumas de argumentos en productos y cuya tasa local vuelva a ser la propia función.</p>
+<p>Construiremos ese objeto sin recurrir a una integral todavía indefinida. Tampoco tomaremos como demostrada una teoría general de series infinitas: justificaremos cada paso necesario para <strong>esta serie concreta</strong>.</p>
+<p><strong>Lema 2.1 (serie exponencial particular; <code>EDC-C02-LEM-001</code>).</strong> Para cada <span class="math inline">\(x\in\mathbb R\)</span> converge absolutamente la sucesión de sumas parciales</p>
+<p><span class="math display">\[
+E_N(x)=\sum_{n=0}^{N}\frac{x^n}{n!},\qquad 0!=1.
+\]</span></p>
+<p>Su límite, denotado por <span class="math inline">\(E(x)\)</span>, satisface <span class="math inline">\(E(0)=1\)</span> y</p>
+<p><span class="math display">\[
+E(x+y)=E(x)E(y)\qquad (x,y\in\mathbb R).
+\]</span></p>
+<p><strong>Demostración.</strong> Fijemos <span class="math inline">\(R&gt;0\)</span>. Si <span class="math inline">\(N+2&gt;R\)</span>, para <span class="math inline">\(|x|\le R\)</span> la cola de términos absolutos está acotada por una progresión geométrica:</p>
+<p><span class="math display">\[
+\sum_{n=N+1}^{\infty}\frac{|x|^n}{n!}
+\le\frac{R^{N+1}}{(N+1)!}
+\frac1{1-R/(N+2)}.
+\]</span></p>
+<p>El factor <span class="math inline">\(R^{N+1}/(N+1)!\)</span> tiende a cero, pues a partir de cierto índice cada cociente de términos consecutivos es menor que <span class="math inline">\(1/2\)</span>. En consecuencia, las sumas son de Cauchy y convergen en <span class="math inline">\(\mathbb R\)</span> por completitud (la equivalencia entre completitud por supremo y criterio de Cauchy para sucesiones se puede deducir de C00; alternativamente, aquí las sumas absolutas no negativas son crecientes y acotadas por la comparación geométrica, y el Teorema 0.2 basta).</p>
+<p>Para <span class="math inline">\(x,y\)</span> fijados, la suma de valores absolutos de todos los términos <span class="math inline">\(x^py^q/(p!q!)\)</span> es</p>
+<p><span class="math display">\[
+\sum_{p,q\ge0}\frac{|x|^p|y|^q}{p!q!}=E(|x|)E(|y|)&lt;\infty.
+\]</span></p>
+<p>Esta igualdad se entiende como límite de sumas <strong>rectangulares finitas</strong> de términos no negativos. La convergencia absoluta permite agrupar los términos de la suma doble por <span class="math inline">\(p+q=n\)</span>: la contribución que queda fuera de un cuadrado <span class="math inline">\(0\le p,q\le N\)</span> se acota por las colas positivas correspondientes, que tienden a cero. La fórmula binomial <strong>finita</strong> da entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+E(x)E(y)&amp;=\sum_{n=0}^{\infty}\sum_{p=0}^{n}\frac{x^py^{n-p}}{p!(n-p)!}\\
+&amp;=\sum_{n=0}^{\infty}\frac{(x+y)^n}{n!}=E(x+y).
+\end{aligned}
+\]</span></p>
+<p>No se ha derivado ni integrado término a término ninguna serie de funciones. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 2.3 (<code>EDC-C02-PRP-003</code>).</strong> La función <span class="math inline">\(E\)</span> es positiva, continua y estrictamente creciente; <span class="math inline">\(E(\mathbb R)=(0,\infty)\)</span>.</p>
+<p><strong>Demostración.</strong> La identidad anterior implica <span class="math inline">\(E(x)E(-x)=E(0)=1\)</span>, de modo que <span class="math inline">\(E(x)\ne0\)</span>. Como <span class="math inline">\(E(x)=E(x/2)^2\)</span>, se tiene <span class="math inline">\(E(x)&gt;0\)</span>. Para <span class="math inline">\(h&gt;0\)</span>, todos los términos de la serie que define <span class="math inline">\(E(h)\)</span> son positivos, y <span class="math inline">\(E(h)&gt;1+h&gt;1\)</span>. Si <span class="math inline">\(y&gt;x\)</span>, entonces <span class="math inline">\(E(y)=E(x)E(y-x)&gt;E(x)\)</span>, probando crecimiento estricto.</p>
+<p>Para <span class="math inline">\(|h|\le1\)</span>, la serie absoluta da <span class="math inline">\(|E(h)-1|\le\sum_{n\ge1}|h|^n/n!\le|h|E(1)\)</span>, de donde <span class="math inline">\(E(h)\to1\)</span> al tender <span class="math inline">\(h\)</span> a cero. Por <span class="math inline">\(E(x+h)=E(x)E(h)\)</span>, <span class="math inline">\(E\)</span> es continua en todo <span class="math inline">\(x\)</span>. Además <span class="math inline">\(E(x)\ge1+x\to\infty\)</span> para <span class="math inline">\(x\to+\infty\)</span>, mientras <span class="math inline">\(E(-x)=1/E(x)\to0\)</span> para <span class="math inline">\(x\to+\infty\)</span>. Por continuidad y el teorema del valor intermedio, su imagen es exactamente <span class="math inline">\((0,\infty)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Teorema 2.4 (derivada de la exponencial; <code>EDC-C02-THM-004</code>).</strong> Para todo <span class="math inline">\(x\in\mathbb R\)</span>,</p>
+<p><span class="math display">\[
+E'(x)=E(x).
+\]</span></p>
+<p><strong>Demostración.</strong> Para <span class="math inline">\(|h|\le1\)</span>,</p>
+<p><span class="math display">\[
+\left|\frac{E(h)-1}{h}-1\right|
+\le\frac1{|h|}\sum_{n=2}^{\infty}\frac{|h|^n}{n!}
+\le\frac{|h|}{2}E(1)\longrightarrow0,
+\]</span></p>
+<p>pues <span class="math inline">\((m+2)!\ge2m!\)</span>. Así, <span class="math inline">\(E'(0)=1\)</span>. Por la identidad aditiva,</p>
+<p><span class="math display">\[
+\frac{E(x+h)-E(x)}h
+=E(x)\frac{E(h)-1}h\longrightarrow E(x).
+\]</span></p>
+<p>Se sigue la afirmación. <span class="math inline">\(\square\)</span></p>
+<p><strong>Definición 2.3 (<code>EDC-C02-DEF-003</code>).</strong> Escribimos <span class="math inline">\(e=E(1)\)</span> y <span class="math inline">\(e^x=E(x)\)</span>, <span class="math inline">\(x\in\mathbb R\)</span>. La definición es compatible con las potencias racionales ordinarias, pues <span class="math inline">\((E(m/n))^n=E(m)=e^m\)</span> y <span class="math inline">\(E(m/n)&gt;0\)</span>. No se ha supuesto previamente que <span class="math inline">\(e^x\)</span> tenga derivada <span class="math inline">\(e^x\)</span>: esa propiedad acaba de demostrarse.</p>
+<p>Esta construcción prepara una comparación que el capítulo 8 retomará: <strong>converger como suma infinita</strong> no equivale, en general, a permitir derivar una serie término a término. Aquí no hemos utilizado ese intercambio, sino una estimación de la cola y la identidad multiplicativa especial de <span class="math inline">\(E\)</span>.</p>
+</section>
+<section id="el-logaritmo-y-las-potencias-reales" class="level2">
+<h2 class="anchored" data-anchor-id="el-logaritmo-y-las-potencias-reales">2.7. El logaritmo y las potencias reales</h2>
+<p>La función <span class="math inline">\(E\)</span> es continua, estrictamente creciente y transforma <span class="math inline">\(\mathbb R\)</span> sobre <span class="math inline">\((0,\infty)\)</span>. Posee, por tanto, una inversa en todo el semieje positivo.</p>
+<p><strong>Definición 2.4 (<code>EDC-C02-DEF-004</code>).</strong> Llamamos <strong>logaritmo natural</strong> a <span class="math inline">\(\ln:(0,\infty)\to\mathbb R\)</span>, la inversa de <span class="math inline">\(E\)</span>: <span class="math inline">\(\ln(E(x))=x\)</span> y <span class="math inline">\(E(\ln y)=y\)</span> para <span class="math inline">\(y&gt;0\)</span>. Para <span class="math inline">\(a&gt;0\)</span> definimos la función exponencial de base <span class="math inline">\(a\)</span> por <span class="math inline">\(a^x=E(x\ln a)\)</span>; si <span class="math inline">\(a\ne1\)</span>, definimos <span class="math inline">\(\log_a y=\ln y/\ln a\)</span>, <span class="math inline">\(y&gt;0\)</span>.</p>
+<p>De <span class="math inline">\(E(u+v)=E(u)E(v)\)</span> y su inyectividad se obtiene</p>
+<p><span class="math display">\[
+\ln(xy)=\ln x+\ln y\qquad(x,y&gt;0).
+\]</span></p>
+<p><strong>Teorema 2.5 (logaritmo y potencia real; <code>EDC-C02-THM-005</code>).</strong> Para <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(a&gt;0\)</span> y <span class="math inline">\(r\in\mathbb R\)</span>,</p>
+<p><span class="math display">\[
+(\ln x)'=\frac1x,\qquad
+(a^x)'=a^x\ln a,\qquad
+(x^r)'=r x^{r-1},
+\]</span></p>
+<p>siempre que <span class="math inline">\(x^r\)</span> se entienda, para base positiva, como <span class="math inline">\(E(r\ln x)\)</span>.</p>
+<p><strong>Demostración.</strong> El Teorema 2.3, aplicado a <span class="math inline">\(E\)</span> en <span class="math inline">\(\ln x\)</span> y a <span class="math inline">\(E'(\ln x)=E(\ln x)=x&gt;0\)</span>, da <span class="math inline">\((\ln x)'=1/x\)</span>. Por la regla de la cadena y el Teorema 2.4,</p>
+<p><span class="math display">\[
+\frac d{dx}E(x\ln a)=E(x\ln a)\ln a.
+\]</span></p>
+<p>Finalmente, para <span class="math inline">\(x&gt;0\)</span>,</p>
+<p><span class="math display">\[
+\frac d{dx}E(r\ln x)=E(r\ln x)\frac r x=rx^{r-1}.
+\]</span></p>
+<p><span class="math inline">\(\square\)</span></p>
+<p>Por ejemplo, <span class="math inline">\((\sqrt{x})'=1/(2\sqrt{x})\)</span> si <span class="math inline">\(x&gt;0\)</span>, como ya dedujimos por la regla de la inversa. La función <span class="math inline">\(x\mapsto\ln|x|\)</span> está definida para <span class="math inline">\(x\ne0\)</span> y su derivada allí es <span class="math inline">\(1/x\)</span>, mediante la cadena sobre cada semieje; <strong>no</strong> debe confundirse con <span class="math inline">\(\ln x\)</span>, definida sólo para <span class="math inline">\(x&gt;0\)</span>.</p>
+<p><strong>Nota de dominio.</strong> La expresión <span class="math inline">\(x^r\)</span> para <span class="math inline">\(x&lt;0\)</span> puede ser real para algunos exponentes racionales, pero no se deduce de la definición general <span class="math inline">\(E(r\ln x)\)</span>. Cualquier ampliación a bases negativas exige un dominio y una justificación propios. En <span class="math inline">\(x=0\)</span>, incluso para <span class="math inline">\(r&gt;0\)</span>, la existencia de la derivada debe analizarse por separado; la fórmula del teorema no lo incluye.</p>
+</section>
+<section id="por-qué-importan-los-radianes-seno-y-coseno" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-importan-los-radianes-seno-y-coseno">2.8. Por qué importan los radianes: seno y coseno</h2>
+<p>Las fórmulas de adición de la trigonometría se conocen sin cálculo diferencial:</p>
+<p><span class="math display">\[
+\sin(x+h)=\sin x\cos h+\cos x\sin h,
+\]</span></p>
+<p><span class="math display">\[
+\cos(x+h)=\cos x\cos h-\sin x\sin h.
+\]</span></p>
+<p>Para derivarlas basta estudiar el comportamiento de <span class="math inline">\(\sin h/h\)</span> y <span class="math inline">\((\cos h-1)/h\)</span> en el origen. Pero el primer límite depende de la <strong>unidad angular</strong>.</p>
+<p><strong>Contrato geométrico previo (MAT-01).</strong> La prueba siguiente emplea las identidades trigonométricas de adición y las reglas elementales de áreas poligonales: fórmula del triángulo, monotonía bajo inclusión y aditividad para piezas sin solapamiento interior. También emplea <strong>un antecedente de geometría circular</strong>: un sector del círculo unitario que subtiende un ángulo de <span class="math inline">\(h\)</span> radianes tiene área <span class="math inline">\(h/2\)</span>. Esta relación puede obtenerse en geometría euclídea mediante agotamiento poligonal, pero <strong>no se demuestra aquí la existencia general del área sectorial ni su normalización</strong>. Es una premisa geométrica expresamente admitida, no una aplicación de la integral de Riemann aún indefinida ni una consecuencia del axioma del supremo de C00.</p>
+<p><strong>Lema 2.2 (normalización circular; <code>EDC-C02-LEM-002</code>).</strong> Si los argumentos trigonométricos se miden en radianes, entonces</p>
+<p><span class="math display">\[
+\lim_{h\to0}\frac{\sin h}{h}=1,
+\qquad
+\lim_{h\to0}\frac{\cos h-1}{h}=0.
+\]</span></p>
+<p><strong>Demostración geométrica.</strong> Para <span class="math inline">\(0&lt;h&lt;\pi/2\)</span>, el triángulo inscrito bajo el arco de la circunferencia unidad, el sector circular y el triángulo exterior determinado por la tangente tienen áreas ordenadas. La geometría elemental del círculo, con ángulos en radianes y área del sector unitario igual a <span class="math inline">\(h/2\)</span>, da</p>
+<p><span class="math display">\[
+\frac{\sin h}{2}\le\frac h2\le\frac{\tan h}{2},
+\qquad\text{luego}\qquad
+\cos h\le\frac{\sin h}{h}\le1.
+\]</span></p>
+<p>El triángulo interior tiene área <span class="math inline">\(\sin h/2\)</span>, el sector área <span class="math inline">\(h/2\)</span> por la premisa geométrica declarada, y el triángulo exterior área <span class="math inline">\(\tan h/2\)</span>. El orden de inclusión de estas figuras justifica las desigualdades <strong>condicionalmente a aquella premisa</strong>. No usamos integrales ni derivadas en el argumento. Además, <span class="math inline">\(0\le\sin h\le h\)</span> y <span class="math inline">\(\cos h=\sqrt{1-\sin^2h}\to1\)</span>, por lo que el encajonamiento da el primer límite por la derecha; la imparidad del seno lo extiende al lado izquierdo. Finalmente,</p>
+<p><span class="math display">\[
+\frac{\cos h-1}{h}=-\frac{\sin^2h}{h(1+\cos h)}\longrightarrow0,
+\]</span></p>
+<p>pues <span class="math inline">\(|\sin h|\le|h|\)</span> cerca de cero. <span class="math inline">\(\square\)</span></p>
+<p>El alcance exacto es éste: los límites de seno y coseno quedan demostrados <strong>a partir de</strong> las identidades trigonométricas y de la medida geométrica previa de sectores. Una construcción independiente de esa medida mediante polígonos inscritos y circunscritos constituiría un desarrollo adicional de geometría. Esta dependencia explícita no debilita las conclusiones analíticas, pero impide describir el lema como demostrado únicamente desde la completitud de <span class="math inline">\(\mathbb R\)</span>.</p>
+<figure id="fig-edc-c02-01" class="quarto-float-fig figure">
+<img src="../../../assets/books/elementos-del-calculo/EDC-C02-F01_SECTOR_RADIANES.svg" alt="Sector del círculo unitario entre un radio horizontal y otro de ángulo h. Un triángulo interior, un sector y un triángulo exterior por tangente tienen áreas sen(h)/2, h/2 y tan(h)/2." class="figure-img">
+<figcaption>
+Figura 2.1. Comparación sectorial utilizada en el Lema 2.2. La igualdad área del sector = h/2 es la premisa geométrica previa declarada, no una consecuencia de la futura integral.
+</figcaption>
+</figure>
+<p><strong>Teorema 2.6 (derivadas trigonométricas; <code>EDC-C02-THM-006</code>).</strong> Para todo <span class="math inline">\(x\in\mathbb R\)</span>,</p>
+<p><span class="math display">\[
+(\sin x)'=\cos x,
+\qquad (\cos x)'=-\sin x.
+\]</span></p>
+<p>En cada punto donde <span class="math inline">\(\cos x\ne0\)</span>,</p>
+<p><span class="math display">\[
+(\tan x)'=\frac1{\cos^2x}=1+\tan^2x.
+\]</span></p>
+<p><strong>Demostración.</strong> De las fórmulas de adición,</p>
+<p><span class="math display">\[
+\frac{\sin(x+h)-\sin x}h
+=\sin x\frac{\cos h-1}h+\cos x\frac{\sin h}h.
+\]</span></p>
+<p>Por el Lema 2.2, su límite es <span class="math inline">\(\cos x\)</span>. Análogamente,</p>
+<p><span class="math display">\[
+\frac{\cos(x+h)-\cos x}h
+=\cos x\frac{\cos h-1}h-\sin x\frac{\sin h}h
+\longrightarrow-\sin x.
+\]</span></p>
+<p>La fórmula de la tangente sale de la regla del cociente aplicada a <span class="math inline">\(\sin x/\cos x\)</span> en los intervalos donde <span class="math inline">\(\cos x\ne0\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Aplicando la regla de la cadena, para <span class="math inline">\(g\)</span> derivable donde corresponda,</p>
+<p><span class="math display">\[
+(\sin\circ g)'=(\cos\circ g)g',\qquad
+(\cos\circ g)'=-(\sin\circ g)g'.
+\]</span></p>
+<p>Estas fórmulas <strong>no</strong> son válidas si se reemplazan radianes por grados sin el factor de conversión <span class="math inline">\(\pi/180\)</span>.</p>
+</section>
+<section id="funciones-trigonométricas-inversas" class="level2">
+<h2 class="anchored" data-anchor-id="funciones-trigonométricas-inversas">2.9. Funciones trigonométricas inversas</h2>
+<p>En <span class="math inline">\((-\pi/2,\pi/2)\)</span> el seno es estrictamente creciente: si <span class="math inline">\(u&lt;v\)</span> allí, la identidad</p>
+<p><span class="math display">\[
+\sin v-\sin u=2\cos\!\left(\frac{u+v}2\right)
+\sin\!\left(\frac{v-u}2\right)&gt;0
+\]</span></p>
+<p>lo demuestra geométricamente, sin apelar al Teorema del Valor Medio. En ese intervalo el seno tiene inversa, denominada <span class="math inline">\(\arcsin\)</span>, cuyo dominio es <span class="math inline">\((-1,1)\)</span>. Para la rama usual <span class="math inline">\(\arccos:(-1,1)\to(0,\pi)\)</span> se procede del mismo modo con el coseno estrictamente decreciente; la tangente es estrictamente creciente en <span class="math inline">\((-\pi/2,\pi/2)\)</span> y su imagen es <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>Teorema 2.7 (<code>EDC-C02-THM-007</code>).</strong> En los dominios abiertos indicados,</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\arcsin x)'&amp;=\frac1{\sqrt{1-x^2}},&amp;&amp;-1&lt;x&lt;1,\\
+(\arccos x)'&amp;=-\frac1{\sqrt{1-x^2}},&amp;&amp;-1&lt;x&lt;1,\\
+(\arctan x)'&amp;=\frac1{1+x^2},&amp;&amp;x\in\mathbb R.
+\end{aligned}
+\]</span></p>
+<p><strong>Demostración.</strong> En la rama <span class="math inline">\(\arcsin\)</span>, la regla de la inversa da <span class="math inline">\(1/\cos(\arcsin x)\)</span>; este coseno es positivo y vale <span class="math inline">\(\sqrt{1-x^2}\)</span>. En la rama <span class="math inline">\(\arccos\)</span>, el seno es positivo y la derivada del coseno vale <span class="math inline">\(-\sin\)</span>, lo que produce el signo negativo. Para <span class="math inline">\(\arctan\)</span>, el recíproco de <span class="math inline">\((\tan y)'=1+\tan^2y\)</span> evaluado en <span class="math inline">\(y=\arctan x\)</span> es <span class="math inline">\(1/(1+x^2)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La derivada de <span class="math inline">\(\arcsin x\)</span> se hace ilimitada cuando <span class="math inline">\(x\to1^-\)</span>, pero esto no autoriza a afirmar una derivada finita en el extremo <span class="math inline">\(x=1\)</span>: allí tampoco existe un entorno bilateral dentro del dominio de su rama cerrada.</p>
+</section>
+<section id="una-función-derivable-cuya-derivada-no-es-continua" class="level2">
+<h2 class="anchored" data-anchor-id="una-función-derivable-cuya-derivada-no-es-continua">2.10. Una función derivable cuya derivada no es continua</h2>
+<p>En C01 probamos que derivabilidad implica continuidad de la <strong>función original</strong>. Sería tentador concluir que la nueva función <span class="math inline">\(f'\)</span> es también continua. No es así.</p>
+<p>Definamos</p>
+<p><span class="math display">\[
+f(x)=\begin{cases}
+x^2\sin(1/x),&amp;x\ne0,\\
+0,&amp;x=0.
+\end{cases}
+\]</span></p>
+<p>El cociente incremental en el origen es <span class="math inline">\(f(h)/h=h\sin(1/h)\to0\)</span>, pues <span class="math inline">\(|h\sin(1/h)|\le|h|\)</span>. Así <span class="math inline">\(f'(0)=0\)</span>. Para <span class="math inline">\(x\ne0\)</span>, producto y cadena dan</p>
+<p><span class="math display">\[
+f'(x)=2x\sin(1/x)-\cos(1/x).
+\]</span></p>
+<p>Si tomamos <span class="math inline">\(x_n=1/(2\pi n)\)</span> y <span class="math inline">\(y_n=1/((2n+1)\pi)\)</span>, ambos tienden a cero; sin embargo, <span class="math inline">\(f'(x_n)=-1\)</span> y <span class="math inline">\(f'(y_n)=1\)</span>. Por tanto, <span class="math inline">\(f'\)</span> no tiene límite en <span class="math inline">\(0\)</span> y no es continua allí. Esta discontinuidad no contradice el teorema de C01: <strong><span class="math inline">\(f\)</span> sí es continua en <span class="math inline">\(0\)</span></strong>.</p>
+<p>El ejemplo también nos advierte que no es lícito aplicar a toda derivada cualquier propiedad que haya sido probada sólo para funciones continuas.</p>
+</section>
+<section id="interpretar-fórmulas-dominios-unidades-y-sensibilidad" class="level2">
+<h2 class="anchored" data-anchor-id="interpretar-fórmulas-dominios-unidades-y-sensibilidad">2.11. Interpretar fórmulas: dominios, unidades y sensibilidad</h2>
+<p>En una magnitud física, <span class="math inline">\(f'(x)\)</span> conserva las unidades de <span class="math inline">\(f\)</span> divididas por las de <span class="math inline">\(x\)</span>. La regla de la cadena respeta esa estructura. Si <span class="math inline">\(s\)</span> mide metros, <span class="math inline">\(t\)</span> segundos y <span class="math inline">\(s=s(u(t))\)</span>, el producto <span class="math inline">\((ds/du)(du/dt)\)</span> tiene unidades de metros por segundo, siempre que los dominios de las funciones estén correctamente identificados.</p>
+<p>Una medida adimensional de sensibilidad es la <strong>elasticidad</strong>: para <span class="math inline">\(x\ne0\)</span> y <span class="math inline">\(f(x)\ne0\)</span> definimos</p>
+<p><span class="math display">\[
+\mathcal E_f(x)=\frac{x f'(x)}{f(x)}.
+\]</span></p>
+<p>Por ejemplo, si <span class="math inline">\(f(x)=x^r\)</span> con <span class="math inline">\(x&gt;0\)</span>, la elasticidad vale constantemente <span class="math inline">\(r\)</span>. Si <span class="math inline">\(f(x)=a^x\)</span>, con <span class="math inline">\(a&gt;0\)</span> y <span class="math inline">\(x\ne0\)</span>, vale <span class="math inline">\(x\ln a\)</span>. En ambos casos estamos interpretando derivadas <strong>ya demostradas</strong>, no infiriendo una ley dinámica desconocida.</p>
+<p>La regla de la cadena puede expresarse con notación de Leibniz, <span class="math inline">\(dy/dx=(dy/du)(du/dx)\)</span>, cuando <span class="math inline">\(y=f(u)\)</span>, <span class="math inline">\(u=g(x)\)</span> son derivables en los puntos pertinentes. Esa forma refleja la composición de razones de cambio; una cancelación puramente tipográfica de símbolos no sustituye la prueba de §2.3.</p>
+</section>
+<section id="síntesis-y-frontera-del-capítulo" class="level2">
+<h2 class="anchored" data-anchor-id="síntesis-y-frontera-del-capítulo">2.12. Síntesis y frontera del capítulo</h2>
+<p>Hemos construido una teoría operativa local:</p>
+<p><span class="math display">\[
+\boxed{\begin{gathered}
+\text{derivadas de las funciones componentes}\\
+\Downarrow\\
+\text{sumas, productos, cocientes y composiciones}\\
+\Downarrow\\
+\text{derivadas de expresiones nuevas}.
+\end{gathered}}
+\]</span></p>
+<p>El repertorio ya incluye potencias reales sobre <span class="math inline">\((0,\infty)\)</span>, exponenciales, logaritmos y funciones trigonométricas en sus dominios precisos. Se demostró además un caso particular de construcción por serie sin tomar como permiso universal el intercambio entre límites y operaciones.</p>
+<p>Todavía no hemos demostrado que el signo de <span class="math inline">\(f'\)</span> en <strong>todo un intervalo</strong> gobierne globalmente la monotonía, ni que una función continua y derivable alcance entre dos puntos una pendiente derivada igual a su cambio medio. Tales afirmaciones son el problema del <strong>capítulo 3</strong>, donde surgirán los teoremas de Rolle y del valor medio. Tampoco hemos integrado ninguna función.</p>
+<section id="mapa-explícito-de-dependencias" class="level3">
+<h3 class="anchored" data-anchor-id="mapa-explícito-de-dependencias">Mapa explícito de dependencias</h3>
+<ul>
+<li><strong>De C00:</strong> estructura de <span class="math inline">\(\mathbb R\)</span>, completitud, álgebra de límites, convergencia monótona, continuidad, criterio secuencial y valor intermedio.</li>
+<li><strong>De C01:</strong> definición de derivada en punto interior, derivabilidad implica continuidad y caracterización por aproximación afín.</li>
+<li><strong>Aportaciones de C02:</strong> <code>EDC-C02-THM-001--007</code>, reglas y construcciones aquí demostradas; medida de ángulo en radianes como herramienta de geometría previa.</li>
+<li><strong>No utilizado:</strong> Rolle, teorema del valor medio, integración de Riemann, Teorema Fundamental, Taylor ni resultados generales de análisis funcional.</li>
+<li><strong>Origen historiográfico de las notaciones y de las funciones:</strong> <a href="capitulo-02-notas.html">notas históricas y control de fuentes</a>.</li>
+</ul>
+</section>
+<section id="trabajo-del-lector" class="level3">
+<h3 class="anchored" data-anchor-id="trabajo-del-lector">Trabajo del lector</h3>
+<p>Los <a href="capitulo-02-ejercicios.html">ejercicios de este capítulo</a> están organizados por objetivos, desde identificación de dominios y composición hasta demostraciones y contraejemplos. Las <a href="capitulo-02-soluciones.html">soluciones desarrolladas</a> permanecen separadas de la exposición para preservar el valor del trabajo independiente.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
