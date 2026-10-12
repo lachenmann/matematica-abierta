@@ -51,7 +51,15 @@ const sample = new Set(['ANM-C00.md','ANM-C03_SOLUCIONES.md','ANM-C04_MICROCONTR
      await page.evaluate(t=>{const toggle=document.querySelector('.quarto-color-scheme-toggle');const dark=document.body.classList.contains('quarto-dark');if((t==='dark')!==dark && toggle)toggle.click();},theme);
      await page.waitForTimeout(250);
      const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2);
-     if(overflow)failures.push({source:item.source,kind:'mobile-overflow',theme});
+     if(overflow){
+      const wide=await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(x=>{
+       if(x.getBoundingClientRect().right<=innerWidth+2)return false;
+       for(let p=x.parentElement;p&&p!==document.body;p=p.parentElement)if(['auto','scroll','hidden'].includes(getComputedStyle(p).overflowX)&&p.getBoundingClientRect().right<=innerWidth+2)return false;
+       return true;
+      }).slice(0,12).map(x=>({tag:x.tagName,classes:String(x.className),right:x.getBoundingClientRect().right,text:x.textContent.slice(0,160)})));
+      console.log('Mobile overflow',item.source,theme,JSON.stringify(wide));
+      failures.push({source:item.source,kind:'mobile-overflow',theme,wide});
+     }
      await page.screenshot({path:path.join(out,item.source.replace('.md','')+'-'+theme+'.png'),fullPage:false});
     }
     await page.setViewportSize({width:1365,height:900});

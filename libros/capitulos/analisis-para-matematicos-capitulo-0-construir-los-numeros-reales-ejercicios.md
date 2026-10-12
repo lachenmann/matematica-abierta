@@ -26,6 +26,16 @@ provenance:
   - ANM-C00_EJERCICIOS.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
+include-in-header:
+  text: |
+    <script>
+    window.MathJax = window.MathJax || {};
+    window.MathJax.tex = window.MathJax.tex || {};
+    window.MathJax.tex.macros = Object.assign({}, window.MathJax.tex.macros, {
+      xhookrightarrow: ["\\overset{#1}{\\hookrightarrow}", 1],
+      centernot: ["\\mathrel{\\rlap{/}#1}", 1]
+    });
+    </script>
 ---
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)
