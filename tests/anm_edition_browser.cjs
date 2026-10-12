@@ -20,7 +20,7 @@ const sample = new Set(['ANM-C00.md','ANM-C03_SOLUCIONES.md','ANM-C04_MICROCONTR
    if(!response || response.status()!==200)throw Error('Missing page: '+url);
    const math=await page.locator('main .math').count();
    if(math){
-    await page.waitForFunction(()=>window.MathJax && window.MathJax.startup && window.MathJax.startup.promise,null,{timeout:90000});
+    await page.waitForFunction(()=>!!window.MathJax?.startup?.promise,null,{timeout:90000});
     await page.evaluate(async()=>{await MathJax.startup.promise;if(MathJax.typesetPromise)await MathJax.typesetPromise([document.querySelector('main')]);if(MathJax.whenReady)await MathJax.whenReady(()=>{});});
     const diagnostic=await page.evaluate(()=>({
      total:document.querySelectorAll('main .math').length,
@@ -38,12 +38,13 @@ const sample = new Set(['ANM-C00.md','ANM-C03_SOLUCIONES.md','ANM-C04_MICROCONTR
     math:document.querySelectorAll('main .math').length,
     rendered:document.querySelectorAll('main mjx-container').length,
     mathErrors:[...document.querySelectorAll('main mjx-merror,main [data-mjx-error]')].map(x=>x.getAttribute('data-mjx-error')||x.textContent),
+    undefinedCommands:[...document.querySelectorAll('main mjx-mtext,main [mathcolor="red"]')].filter(x=>(x.style.color==='red'||x.getAttribute('mathcolor')==='red')&&/\\[A-Za-z]+/.test(x.textContent)).map(x=>x.textContent),
     brokenImages:[...document.querySelectorAll('main img')].filter(x=>!x.complete||x.naturalWidth===0).map(x=>x.src),
     duplicateIds:[...document.querySelectorAll('main [id]')].map(x=>x.id).filter((x,i,a)=>a.indexOf(x)!==i),
     overflow:document.documentElement.scrollWidth>window.innerWidth+2
    }));
    rows.push({source:item.source,url,...result});
-   if(result.mathErrors.length||result.brokenImages.length||result.duplicateIds.length||result.overflow)failures.push(rows.at(-1));
+   if(result.mathErrors.length||result.undefinedCommands.length||result.brokenImages.length||result.duplicateIds.length||result.overflow)failures.push(rows.at(-1));
    if(sample.has(item.source)){
     for(const theme of ['light','dark']){
      await page.setViewportSize({width:393,height:852});
