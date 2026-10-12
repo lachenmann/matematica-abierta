@@ -17,9 +17,9 @@ class C01FullSemantics(unittest.TestCase):
         cls.solutions = (ROOT / SOLUTIONS).read_text(encoding="utf-8")
         cls.registry = json.loads((ROOT / REGISTRY).read_text(encoding="utf-8"))
 
-    def test_eight_figures_in_main_text(self):
+    def test_twelve_figures_in_integrated_chapter(self):
         matches = list(SRC_FIG.finditer(self.main))
-        self.assertEqual(tuple(m.group(2) for m in matches), MAIN_IDS)
+        self.assertEqual(tuple(m.group(2) for m in matches), ("C01-F01", "C01-F02", "C01-F03", "C01-F05", "C01-F11", "C01-F06", "C01-F07", "C01-F12", "C01-F08", "C01-F13", "C01-F09", "C01-F14"))
 
     def test_four_figures_in_worked_solutions(self):
         matches = list(SRC_FIG.finditer(self.solutions))
@@ -27,8 +27,11 @@ class C01FullSemantics(unittest.TestCase):
 
     def test_all_figures_have_unique_stable_anchors_and_descriptive_alts(self):
         matches = list(SRC_FIG.finditer(self.main + "\n" + self.solutions))
-        self.assertEqual(len(matches), 12)
+        self.assertEqual(len(matches), 16)
         self.assertEqual(len({m.group(3) for m in matches}), 12)
+        for src in (self.main, self.solutions):
+            anchors = [m.group(3) for m in SRC_FIG.finditer(src)]
+            self.assertEqual(len(anchors), len(set(anchors)))
         for m in matches:
             self.assertEqual(m.group(3), "fig-anm-c01-f" + m.group(2)[-2:])
             self.assertGreaterEqual(len(m.group(4)), 50)
@@ -40,7 +43,7 @@ class C01FullSemantics(unittest.TestCase):
             self.assertNotRegex(src, r"(?m)^\*Figura C01-F\d\d\.")
 
     def test_fifteen_prose_references_are_stable_links(self):
-        self.assertEqual(len(SOURCE_LINK.findall(self.main)), 9)
+        self.assertEqual(len(SOURCE_LINK.findall(self.main)), 15)
         self.assertEqual(len(SOURCE_LINK.findall(self.solutions)), 6)
         for key, anchor_key in SOURCE_LINK.findall(self.main + self.solutions):
             self.assertEqual(key, anchor_key)

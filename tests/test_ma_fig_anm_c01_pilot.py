@@ -31,7 +31,7 @@ class C01PilotTests(unittest.TestCase):
         self.assertNotIn("*Figura C01-F12.", self.solutions)
 
     def test_full_chapter_rollout_retains_pilot_and_12_figures(self):
-        self.assertEqual(self.chapter.count('svg){#fig-anm-c01-'), 8)
+        self.assertEqual(self.chapter.count('svg){#fig-anm-c01-'), 12)
         self.assertEqual(self.solutions.count('svg){#fig-anm-c01-'), 4)
         self.assertEqual(self.chapter.count('svg){fig-alt="'), 0)
         self.assertEqual(self.solutions.count('svg){fig-alt="'), 0)
