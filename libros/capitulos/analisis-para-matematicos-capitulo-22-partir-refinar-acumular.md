@@ -69,6 +69,8 @@ La longitud $b-a$ es un dato algebraico demostrado. Un dibujo de rectángulos ay
 
 Una lista finita estrictamente creciente con primer nodo $a$, último $b$ y al menos una pieza, bajo $a<b$.
 
+Escribimos $a=x_0<x_1<\cdots<x_n=b$ con $n\ge1$. La lista proporciona exactamente $n$ piezas y ninguna tiene anchura cero. Para comprobar una partición hay que revisar extremos y todas las comparaciones consecutivas.
+
 </details>
 
 #### Microcontrol 2
@@ -83,6 +85,8 @@ Una lista finita estrictamente creciente con primer nodo $a$, último $b$ y al m
 <summary>Ver solución del microcontrol 2</summary>
 
 No: son naturales. Los nodos y las anchuras son reales; cuando se multiplica por un índice se usa su copia real.
+
+El índice identifica una posición de la lista; el nodo es la coordenada que ocupa esa posición. En $x_i=a+i(b-a)/n$, las operaciones de coordenadas son reales y utilizan las copias reales de $i$ y $n$. Como $n\ge1$, su denominador real es positivo.
 
 </details>
 
@@ -99,6 +103,8 @@ No: son naturales. Los nodos y las anchuras son reales; cuando se multiplica por
 
 Porque $x_{i-1}<x_i$, por lo que $x_i-x_{i-1}>0$.
 
+La positividad permite usar la anchura como peso de una altura sin invertir desigualdades. Un nodo repetido daría peso cero y violaría el contrato de partición. Una pareja en orden inverso daría anchura negativa y tampoco sería una pieza válida.
+
 </details>
 
 #### Microcontrol 4
@@ -113,6 +119,8 @@ Porque $x_{i-1}<x_i$, por lo que $x_i-x_{i-1}>0$.
 <summary>Ver solución del microcontrol 4</summary>
 
 $b-a$, por telescopía finita: cada nodo interior aparece una vez positivo y otra negativo.
+
+La suma es $(x_1-x_0)+\cdots+(x_n-x_{n-1})$. Los términos interiores se cancelan y quedan $x_n-x_0=b-a$. Esta identidad convierte cotas locales por pieza en cotas globales por longitud.
 
 </details>
 
@@ -129,6 +137,8 @@ $b-a$, por telescopía finita: cada nodo interior aparece una vez positivo y otr
 
 No: comparten su nodo. Sus interiores sí son disjuntos.
 
+Las piezas $[x_{i-1},x_i]$ y $[x_i,x_{i+1}]$ contienen ambas a $x_i$. Al quitar sus extremos, sus interiores no se intersectan. Una suma asigna un término a cada pieza y conserva esa convención aunque alguna etiqueta sea el nodo compartido.
+
 </details>
 
 #### Microcontrol 6
@@ -143,6 +153,8 @@ No: comparten su nodo. Sus interiores sí son disjuntos.
 <summary>Ver solución del microcontrol 6</summary>
 
 Con el menor $j$ que cumple $t<x_j$; entonces $x_{j-1}\le t<x_j$.
+
+El último índice satisface $t<x_n=b$, así existe un índice admisible. El menor de ellos es positivo y su anterior no satisface la desigualdad, dando $x_{j-1}\le t$. Para $t=b$ se usa directamente la última pieza.
 
 </details>
 
@@ -159,6 +171,8 @@ Con el menor $j$ que cumple $t<x_j$; entonces $x_{j-1}\le t<x_j$.
 
 $1/4$ y $3/4$; suman1 y no son iguales.
 
+Restar nodos consecutivos da $1/4-0=1/4$ y $1-1/4=3/4$. La suma es uno, pero la pieza más ancha mide tres cuartos. Más adelante esa mayor anchura, y no el promedio, determinará la malla.
+
 </details>
 
 #### Microcontrol 8
@@ -173,6 +187,8 @@ $1/4$ y $3/4$; suman1 y no son iguales.
 <summary>Ver solución del microcontrol 8</summary>
 
 No. Exige $a<b$; una convención degenerada se debe declarar separadamente.
+
+Una lista estrictamente creciente con al menos una pieza no puede empezar y terminar en el mismo real. Las pruebas que dividen la longitud o toman máximos de anchuras se desarrollan bajo $a<b$. El segmento degenerado necesita sus propias convenciones.
 
 </details>
 
@@ -191,7 +207,7 @@ Decide cuáles de $(0,1/2,1)$, $(0,1/2,1/2,1)$ y $(0,3/4,1/4,1)$ son particiones
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 1</summary>
 
-Sólo la primera: conserva extremos y tiene comparaciones estrictas. La segunda repite un nodo, por lo que hay anchura cero; la tercera disminuye de3/4 a1/4. Un dibujo con varios cortes no corrige esas fallas.
+La lista $(0,1/2,1)$ cumple $0<1/2<1$ y conserva los dos extremos, así es una partición. En $(0,1/2,1/2,1)$ aparece una comparación de igualdad y la anchura correspondiente es cero. La tercera lista tiene $3/4>1/4$, por lo que deja de crecer y produce una anchura negativa. Sólo la primera satisface todas las condiciones del contrato.
 
 </details>
 
@@ -206,7 +222,7 @@ Calcula anchuras de $P=(-1,-1/4,1/2,2)$ y demuestra la suma general por inducci�
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 2</summary>
 
-Son3/4,3/4,3/2; suman3=2−(−1). Para una pieza la identidad es $x_1-x_0$. Si vale para $r$ piezas, añadir $x_{r+1}-x_r$ da $(x_r-x_0)+(x_{r+1}-x_r)=x_{r+1}-x_0$, que prueba el paso.
+Las anchuras son $-1/4-(-1)=3/4$, $1/2-(-1/4)=3/4$ y $2-1/2=3/2$. Su suma vale $3=2-(-1)$. Para una pieza, la suma general es $x_1-x_0$. Si hasta la pieza $r$ vale $x_r-x_0$, añadir $x_{r+1}-x_r$ deja $x_{r+1}-x_0$. La inducción finita prueba la identidad de longitudes para cualquier partición.
 
 **Retorno visual.** Véase [C22-F01](analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html#fig-anm-c22-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -223,7 +239,7 @@ Para la partición del ejercicio anterior localiza $t=0$ y $t=2$; demuestra la c
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 3</summary>
 
-Cero pertenece a $[-1/4,1/2]$ y2 al último intervalo. En general, si $t<b$, el menor $j$ con $t<x_j$ existe pues $n$ pertenece; no es0 porque $t\ge a$. La minimalidad da $x_{j-1}\le t<x_j$. Si $t=b$ pertenece al último, existente por $n\ge1$.
+Cero queda en $[-1/4,1/2]$, la segunda pieza, y dos en $[1/2,2]$, la última. Para una entrada $t<b$, el conjunto de índices con $t<x_j$ es no vacío porque contiene a $n$. Su mínimo $j$ es positivo y la minimalidad da $x_{j-1}\le t<x_j$. Para $t=b$ se usa directamente la última pieza, existente porque $n\ge1$. Así todo el segmento queda cubierto.
 
 </details>
 
@@ -238,7 +254,7 @@ Explica el solapamiento de piezas cerradas y construye una cobertura disjunta pa
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 4</summary>
 
-Los cerrados vecinos comparten1/3 o2/3. La cobertura disjunta es $[0,1/3]$, $(1/3,2/3]$, $(2/3,1]$; cada punto pertenece a una sola pieza y la unión es $[0,1]$. No cambian las anchuras.
+Las piezas cerradas comparten sus nodos interiores: un tercio está en las dos primeras y dos tercios en las dos últimas. Una cobertura disjunta es $[0,1/3]$, $(1/3,2/3]$ y $(2/3,1]$. Los nodos compartidos se asignan ahora a una sola pieza y las demás entradas conservan su ubicación. La unión sigue siendo $[0,1]$ y las longitudes son las mismas.
 
 </details>
 
@@ -253,7 +269,7 @@ Describe una codificación de todas las particiones como conjunto y exhibe un el
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 5</summary>
 
-Codificar por $(n,p)$ con $p:\{0,\ldots,n\}\to[a,b]$ tipada. Sus grafos están en $\mathcal P(\mathbb N\times[a,b])$ y dominios en $\mathcal P(\mathbb N)$; el producto con $\mathbb N$ es conjunto ambiente. Separar los que tienen extremos y crecimiento estricto da el conjunto. $(1,p)$ con $p(0)=a,p(1)=b$ es un elemento porque $a<b$.
+Una partición puede codificarse por $(n,p)$, donde $n\in\mathbb N$, $n\ge1$ y $p:\{0,\ldots,n\}\to[a,b]$. Los grafos de esas funciones pertenecen al conjunto $\mathcal P(\mathbb N\times[a,b])$, así un ambiente para los códigos es $\mathbb N\times\mathcal P(\mathbb N\times[a,b])$. Separar los códigos con extremos $p(0)=a$, $p(n)=b$ y crecimiento estricto define el conjunto de particiones. El código con $n=1$ y valores $a,b$ pertenece a él porque $a<b$.
 
 </details>
 ## 22.2. Refinar conservando los cortes
@@ -289,6 +305,8 @@ Por ejemplo, $(0,1/2,1)$ y $(0,1/3,2/3,1)$ tienen refinamiento común $(0,1/3,1/
 
 $V(P)\subseteq V(Q)$: $Q$ conserva todos los nodos de $P$.
 
+Todos los cortes antiguos aparecen en la lista nueva, quizá con índices diferentes. Los cortes adicionales subdividen piezas y permiten comparar contribuciones dentro de sus padres. La definición se formula mediante conjuntos de nodos, no mediante igualdad de posiciones en las listas.
+
 </details>
 
 #### Microcontrol 10
@@ -303,6 +321,8 @@ $V(P)\subseteq V(Q)$: $Q$ conserva todos los nodos de $P$.
 <summary>Ver solución del microcontrol 10</summary>
 
 Sí. La inclusión permite igualdad; sólo el refinamiento propio exige un nodo nuevo.
+
+La inclusión $V(P)\subseteq V(P)$ siempre vale. El símbolo de refinamiento expresa conservar cortes, lo que incluye conservarlos todos sin añadir ninguno. La condición de ser propio se declara aparte como una inclusión estricta.
 
 </details>
 
@@ -319,6 +339,8 @@ Sí. La inclusión permite igualdad; sólo el refinamiento propio exige un nodo 
 
 La inclusión de nodos es transitiva.
 
+Si todos los nodos de $P$ están en $Q$ y todos los de $Q$ en $R$, cada nodo de $P$ está en $R$. Ordenar las listas no altera sus conjuntos de nodos. Por ello $P\preceq R$ con el mismo intervalo de extremos.
+
 </details>
 
 #### Microcontrol 12
@@ -333,6 +355,8 @@ La inclusión de nodos es transitiva.
 <summary>Ver solución del microcontrol 12</summary>
 
 Entre $x_{j-1}$ y $x_j$, donde $j$ es el menor índice con $t<x_j$.
+
+Si el punto aún no es nodo, la localización proporciona desigualdades estrictas $x_{j-1}<t<x_j$. Insertarlo allí conserva la lista creciente y divide una única pieza. Los otros nodos y anchuras permanecen como estaban.
 
 </details>
 
@@ -349,6 +373,8 @@ Entre $x_{j-1}$ y $x_j$, donde $j$ es el menor índice con $t<x_j$.
 
 No se modifica la partición. Repetirlo violaría crecimiento estricto.
 
+Cada coordenada aparece una sola vez en una lista estrictamente creciente. Insertar otra copia crearía dos nodos consecutivos iguales y una anchura cero. En el caso de un nodo existente, la operación de inserción devuelve la partición original.
+
 </details>
 
 #### Microcontrol 14
@@ -363,6 +389,8 @@ No se modifica la partición. Repetirlo violaría crecimiento estricto.
 <summary>Ver solución del microcontrol 14</summary>
 
 Una: reemplaza una pieza por dos.
+
+Una pieza $[u,v]$ pasa a las dos $[u,t]$ y $[t,v]$, ambas de anchura positiva. Su número aumenta de uno a dos. La longitud se conserva porque $(t-u)+(v-t)=v-u$.
 
 </details>
 
@@ -379,6 +407,8 @@ Una: reemplaza una pieza por dos.
 
 La unión finita $V(P)\cup V(Q)$, ordenada sin repeticiones.
 
+La unión contiene cada corte de las dos listas y sigue siendo finita. Ordenarla sin repeticiones produce una partición de los mismos extremos. Cualquier otro refinamiento común contiene también esa unión, que explica su minimalidad.
+
 </details>
 
 #### Microcontrol 16
@@ -393,6 +423,8 @@ La unión finita $V(P)\cup V(Q)$, ordenada sin repeticiones.
 <summary>Ver solución del microcontrol 16</summary>
 
 No en general: se pierde el nodo antiguo $1/2$.
+
+La nueva lista puede tener incluso menor malla y aun así perder un corte antiguo. Refinamiento exige conservación de nodos, no sólo una mejora numérica de resolución. Para comparar ambas listas se ordena la unión de sus nodos.
 
 </details>
 
@@ -409,7 +441,7 @@ Inserta $t=2/5$ en $(0,1/4,3/4,1)$; identifica las dos anchuras nuevas.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 6</summary>
 
-La lista es $(0,1/4,2/5,3/4,1)$. La pieza original de anchura1/2 se divide en3/20 y7/20, cuya suma es1/2. Las restantes anchuras son1/4. El crecimiento estricto queda preservado.
+Las desigualdades $1/4<2/5<3/4$ localizan la inserción en la segunda pieza. La nueva lista es $(0,1/4,2/5,3/4,1)$. Sus dos anchuras nuevas son $2/5-1/4=3/20$ y $3/4-2/5=7/20$, ambas positivas y con suma $1/2$. Las otras dos anchuras siguen siendo $1/4$. Se conserva cada corte antiguo y se añade una pieza.
 
 </details>
 
@@ -424,7 +456,7 @@ Construye el menor refinamiento común de $(0,1/2,1)$ y $(0,1/3,2/3,1)$ y justif
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 7</summary>
 
-Es $(0,1/3,1/2,2/3,1)$. Cada nodo viene de una de las listas, por lo que refina a ambas. Cualquier refinamiento de ambas contiene su unión, y por eso refina a esta lista. Sus anchuras son1/3,1/6,1/6,1/3.
+La unión de nodos ordenada es $(0,1/3,1/2,2/3,1)$. Contiene ambas listas originales, por lo que las refina. Cualquier refinamiento común debe contener cada nodo de una u otra y por tanto esta unión; de ahí que sea el menor. Las anchuras son $1/3,1/6,1/6,1/3$, todas positivas y con suma uno.
 
 **Retorno visual.** Véase [C22-F02](analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html#fig-anm-c22-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -441,7 +473,7 @@ Explica por qué insertar $1/2$ en $(0,1/2,1)$ no añade una pieza válida.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 8</summary>
 
-El conjunto de nodos permanece igual. Repetir1/2 en la lista rompería la comparación estricta y produciría una pieza de anchura cero. La única lista ordenada de ese conjunto es la original.
+El punto medio ya pertenece al conjunto de nodos. Insertar una segunda copia produciría dos coordenadas consecutivas iguales y anchura cero. La inserción válida deja la lista $(0,1/2,1)$ como estaba. Su conjunto ordenado de nodos no contiene una nueva pieza.
 
 </details>
 
@@ -456,7 +488,7 @@ Demuestra reflexividad, transitividad y antisimetría de $\preceq$.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 9</summary>
 
-Las dos primeras son las propiedades de inclusión de nodos. Si $P\preceq Q$ y $Q\preceq P$, los conjuntos finitos coinciden. Sus listas crecientes tienen el mismo mínimo; eliminarlo y repetir por inducción da igualdad de todas las entradas y longitudes, luego $P=Q$.
+Reflexividad y transitividad proceden de las mismas propiedades de inclusión de conjuntos de nodos. Para antisimetría, $P\preceq Q$ y $Q\preceq P$ implican $V(P)=V(Q)$. Un conjunto finito de reales tiene una única lista estrictamente creciente: su primera entrada es el mínimo y, al retirarla, la inducción determina las restantes. Así las listas y sus longitudes coinciden y $P=Q$.
 
 </details>
 
@@ -471,7 +503,7 @@ Compara $(0,1/2,1)$ y $(0,1/3,2/3,1)$ bajo refinamiento; explica cómo corregir 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 10</summary>
 
-Ninguna refina a la otra:1/2 falta en la segunda y1/3 falta en la primera. La comparación legítima se hace en la unión ordenada, que conserva todos los cortes y es refinamiento común.
+La segunda lista no contiene el nodo $1/2$ y la primera no contiene $1/3$ ni $2/3$. Ninguna conserva todos los nodos de la otra, así son incomparables bajo refinamiento. Su unión ordenada sí da un refinamiento común. Mover un corte o comparar sólo el número de piezas no sustituye la inclusión requerida.
 
 </details>
 ## 22.3. La malla mide el peor intervalo
@@ -507,6 +539,8 @@ Contar intervalos no basta. En $[0,1]$ podemos conservar $[0,1/2]$ y dividir $[1
 
 La máxima anchura de las piezas, no la anchura media ni su número.
 
+Una pieza grande puede permitir etiquetas bastante alejadas dentro de ella. Por eso se usa la peor anchura para controlar todas las etiquetas simultáneamente. El número de piezas sólo ofrece una anchura media y puede ocultar esa pieza grande.
+
 </details>
 
 #### Microcontrol 18
@@ -521,6 +555,8 @@ La máxima anchura de las piezas, no la anchura media ni su número.
 <summary>Ver solución del microcontrol 18</summary>
 
 Es el máximo de una lista finita no vacía de reales, construido por comparaciones sucesivas.
+
+La lista de anchuras tiene $n\ge1$ miembros positivos. Se empieza por la primera y se compara sucesivamente con las demás, conservando la mayor. El resultado es una de las anchuras y domina a todas, con lo que define la malla.
 
 </details>
 
@@ -537,6 +573,8 @@ Es el máximo de una lista finita no vacía de reales, construido por comparacio
 
 No aumenta: cada pieza hija está contenida en un padre.
 
+Entre nodos consecutivos nuevos no puede quedar un nodo antiguo, pues éste también sería nuevo. Cada pieza nueva queda entonces dentro de una pieza antigua y su longitud no la supera. Tomar el máximo conserva la desigualdad de mallas.
+
 </details>
 
 #### Microcontrol 20
@@ -551,6 +589,8 @@ No aumenta: cada pieza hija está contenida en un padre.
 <summary>Ver solución del microcontrol 20</summary>
 
 No. Puede dejar intacta una pieza de anchura máxima.
+
+Si se subdivide una pieza pequeña y queda otra de longitud máxima sin tocar, el máximo sigue siendo el mismo. La relación de mallas sólo asegura desigualdad no estricta. Para reducirla de verdad hay que controlar todas las piezas más anchas.
 
 </details>
 
@@ -567,6 +607,8 @@ No. Puede dejar intacta una pieza de anchura máxima.
 
 $(b-a)/n$, con $n\ge1$ y copia real positiva.
 
+Los nodos uniformes son $x_i=a+i(b-a)/n$. Restar dos consecutivos elimina $a$ y da siempre $(b-a)/n$. Como todas las anchuras coinciden, su máximo tiene ese mismo valor.
+
 </details>
 
 #### Microcontrol 22
@@ -581,6 +623,8 @@ $(b-a)/n$, con $n\ge1$ y copia real positiva.
 <summary>Ver solución del microcontrol 22</summary>
 
 Arquimedianidad: elegir $n>(b-a)/\delta$ y usar la partición uniforme.
+
+El cociente $(b-a)/\delta$ es real positivo. Arquimedianidad proporciona un natural mayor y por ello al menos uno. Dividir la longitud por ese número positivo da una malla estrictamente menor que la escala pedida.
 
 </details>
 
@@ -597,6 +641,8 @@ Arquimedianidad: elegir $n>(b-a)/\delta$ y usar la partición uniforme.
 
 Se puede conservar una pieza de anchura1/2 y subdividir sólo el resto; la malla sigue siendo1/2.
 
+Subdividir únicamente $[1/2,1]$ puede aumentar indefinidamente el número de piezas. La pieza $[0,1/2]$ sigue aportando al máximo su longitud fija. Esa cadena de refinamientos muestra que aumentar piezas no garantiza malla tendente a cero.
+
 </details>
 
 #### Microcontrol 24
@@ -611,6 +657,8 @@ Se puede conservar una pieza de anchura1/2 y subdividir sólo el resto; la malla
 <summary>Ver solución del microcontrol 24</summary>
 
 Se toma su refinamiento común con una uniforme suficientemente fina.
+
+El refinamiento común conserva todos los nodos antiguos y todos los de la uniforme elegida. Su malla no supera la de esta última por la propiedad de hijos y padres. Así cumple a la vez conservación de datos y resolución prescrita.
 
 </details>
 
@@ -627,7 +675,7 @@ Calcula malla y anchura media de $(0,1/4,1)$; demuestra $(b-a)/n\le\|P\|$.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 11</summary>
 
-Malla3/4, promedio1/2. Como cada anchura es≤malla, sumar $n$ desigualdades da $b-a\le n\|P\|$. La copia real de $n$ es positiva, por lo que dividir conserva el orden y da la cota.
+Las anchuras son $1/4$ y $3/4$, por lo que la malla es $3/4$ y el promedio $1/2$. En general, cada $\Delta_i\le\|P\|$. Sumar las $n$ desigualdades y usar telescopía da $b-a\le n\|P\|$. La copia real de $n\ge1$ es positiva, y dividir entrega $(b-a)/n\le\|P\|$.
 
 </details>
 
@@ -642,7 +690,7 @@ Demuestra que $P\preceq Q$ implica $\|Q\|\le\|P\|$.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 12</summary>
 
-Una pieza entre dos nodos consecutivos de $Q$ no puede contener un nodo de $P$ en su interior: también sería nodo de $Q$, contradicción. Localizarla entre nodos consecutivos antiguos da un padre que la contiene. Su anchura≤anchura padre≤malla antigua; el máximo de todas las hijas conserva la cota.
+Sean $u<v$ dos nodos consecutivos de $Q$. Ningún nodo de $P$ puede quedar estrictamente entre ellos, pues también sería nodo de $Q$. Por ello la pieza $[u,v]$ está contenida en algún padre de $P$. Su anchura no supera la del padre, que a su vez no supera $\|P\|$. Tomar el máximo de todas las anchuras nuevas da $\|Q\|\le\|P\|$.
 
 **Retorno visual.** Véase [C22-F03](analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html#fig-anm-c22-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -659,7 +707,7 @@ Construye una cadena de refinamientos de $[0,1]$ con número de piezas creciente
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 13</summary>
 
-Para $k\ge0$, usar0,1/2 y los cortes $1/2+j/2^{k+1}$ con $1\le j\le2^k$. Cada siguiente lista divide las piezas de la mitad derecha y conserva los nodos anteriores. La izquierda mide1/2 y las derechas≤1/2; la malla es siempre1/2, aunque hay $2^k+1$ piezas.
+Para $k\ge0$ tomamos los nodos cero, un medio y $1/2+j/2^{k+1}$ para $1\le j\le2^k$. Los nuevos cortes sólo subdividen la mitad derecha y los cortes anteriores se conservan. La mitad izquierda sigue siendo una pieza de anchura $1/2$, mientras todas las derechas miden $1/2^{k+1}\le1/2$. La malla es siempre $1/2$, aunque el número de piezas $2^k+1$ crece sin cota.
 
 </details>
 
@@ -674,7 +722,7 @@ Construye una partición de $[-1,2]$ con malla estrictamente menor que1/10.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 14</summary>
 
-Longitud3; elegir uniforme con31 piezas da malla3/31<1/10. Los nodos $-1+3i/31$ son crecientes y tienen los extremos exigidos. Una de30 piezas sólo daría igualdad, que no satisface el pedido estricto.
+El segmento tiene longitud tres. Una uniforme de treinta y una piezas tiene nodos $x_i=-1+3i/31$ y anchura $3/31<1/10$. Su lista es estrictamente creciente y va de menos uno a dos. Con treinta piezas se obtendría malla exactamente $1/10$, insuficiente para el pedido estricto.
 
 </details>
 
@@ -689,7 +737,7 @@ Dada $P$ y $\delta>0$, prueba que hay un refinamiento de $P$ de malla menor que 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 15</summary>
 
-Arquimedianidad proporciona $n>(b-a)/\delta$. $U_n$ tiene malla $(b-a)/n<\delta$. El menor refinamiento común $R$ de $P,U_n$ refina a $P$ y su malla≤malla de $U_n$, por el ejercicio anterior; así cumple el radio.
+Arquimedianidad da un natural $n>(b-a)/\delta$, y la uniforme $U_n$ cumple $\|U_n\|<\delta$. Formamos el refinamiento común $R$ con los nodos de $P$ y $U_n$. Conserva todos los cortes de $P$ y su malla no supera la de $U_n$. Por tanto $P\preceq R$ y $\|R\|<\delta$.
 
 </details>
 ## 22.4. Etiquetas y acumulación firmada
@@ -729,6 +777,8 @@ Para $f(x)=x$ en $[0,1]$, $P=(0,1/2,1)$ tiene sumas izquierda $1/4$, media $1/2$
 
 Un punto dado $\xi_i\in[x_{i-1},x_i]$ para cada índice de pieza.
 
+La etiqueta indica en qué entrada se toma la altura que multiplica la anchura. Puede ser interior o cualquiera de los dos extremos de su pieza. La familia tiene un dato por cada índice de pieza, aunque algunas coordenadas se repitan.
+
 </details>
 
 #### Microcontrol 26
@@ -743,6 +793,8 @@ Un punto dado $\xi_i\in[x_{i-1},x_i]$ para cada índice de pieza.
 <summary>Ver solución del microcontrol 26</summary>
 
 Sí: un nodo compartido puede etiquetar las dos piezas vecinas.
+
+El punto $x_i$ pertenece a sus dos piezas vecinas y puede elegirse para ambas. Las dos contribuciones siguen siendo términos distintos, con sus propias anchuras. Este hecho será importante al contar el efecto de valores excepcionales en nodos.
 
 </details>
 
@@ -759,6 +811,8 @@ Sí: un nodo compartido puede etiquetar las dos piezas vecinas.
 
 $S(f;P,\xi)=\sum_i f(\xi_i)\Delta_i$, una suma real finita.
 
+Cada término combina una evaluación real definida de $f$ con una anchura real positiva. El número de términos es finito y la suma se calcula con operaciones reales ordinarias. Todavía no se ha pasado a un límite de particiones.
+
 </details>
 
 #### Microcontrol 28
@@ -773,6 +827,8 @@ $S(f;P,\xi)=\sum_i f(\xi_i)\Delta_i$, una suma real finita.
 <summary>Ver solución del microcontrol 28</summary>
 
 No para existir; sí se necesitan hipótesis adicionales para controlar uniformemente todas las sumas.
+
+Una lista finita de evaluaciones reales siempre tiene suma real. Una función no acotada puede producir sumas cada vez mayores al cambiar etiquetas o particiones. La existencia de una suma particular y el control universal de toda la familia son obligaciones diferentes.
 
 </details>
 
@@ -789,6 +845,8 @@ No para existir; sí se necesitan hipótesis adicionales para controlar uniforme
 
 $c(b-a)$, cualquiera sea la partición y sus etiquetas.
 
+Todos los términos tienen altura $c$, así se factoriza $c\sum_i\Delta_i$. La identidad de longitudes da $c(b-a)$. Esto vale también si $c$ es negativo y para cualquier elección admisible de etiquetas.
+
 </details>
 
 #### Microcontrol 30
@@ -803,6 +861,8 @@ $c(b-a)$, cualquiera sea la partición y sus etiquetas.
 <summary>Ver solución del microcontrol 30</summary>
 
 Altura negativa por anchura positiva: acumulación firmada, no área geométrica negativa.
+
+La anchura nunca es negativa en una partición válida. El signo de cada término procede únicamente del valor de la función. Alturas de signos opuestos pueden cancelarse al sumar, mientras las áreas geométricas de sus regiones se sumarían como magnitudes.
 
 </details>
 
@@ -819,6 +879,8 @@ Altura negativa por anchura positiva: acumulación firmada, no área geométrica
 
 La misma partición y las mismas etiquetas; $f\le g$ en el intervalo da el orden de sus sumas.
 
+Con los mismos datos, la comparación se realiza término a término en cada entrada $\xi_i$. La anchura positiva conserva el sentido de $f(\xi_i)\le g(\xi_i)$. Sumar esas desigualdades prueba el orden de las sumas.
+
 </details>
 
 #### Microcontrol 32
@@ -833,6 +895,8 @@ La misma partición y las mismas etiquetas; $f\le g$ en el intervalo da el orden
 <summary>Ver solución del microcontrol 32</summary>
 
 $|S|\le M\sum_i\Delta_i=M(b-a)$, sin máximo alcanzado.
+
+La triangular da $|\sum f(\xi_i)\Delta_i|\le\sum|f(\xi_i)|\Delta_i$. Sustituir la barrera y sumar longitudes produce $M(b-a)$. Basta que la barrera valga en todas las entradas; ninguna debe alcanzarla.
 
 </details>
 
@@ -849,7 +913,7 @@ Para $f(x)=x$ y $(0,1/2,1)$ calcula sumas izquierda, media y derecha.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 16</summary>
 
-Las alturas son $(0,1/2)$, $(1/4,3/4)$ y $(1/2,1)$; las anchuras son ambas1/2. Las sumas son1/4,1/2 y3/4. No hay todavía igualdad de todas las sumas de una partición.
+Las dos anchuras son $1/2$. Las etiquetas izquierdas $(0,1/2)$ dan $0\cdot1/2+(1/2)\cdot1/2=1/4$. Las medias $(1/4,3/4)$ dan $1/2$, y las derechas $(1/2,1)$ dan $3/4$. La función y partición son las mismas; sólo cambia la familia de alturas. Estas sumas finitas todavía no son iguales entre sí.
 
 </details>
 
@@ -864,7 +928,7 @@ Para $f(x)=2x-1$ y la misma partición calcula las tres sumas y explica la cance
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 17</summary>
 
-Alturas izquierda−1,0 dan−1/2; medias−1/2,1/2 dan0; derechas0,1 dan1/2. En la media hay una contribución−1/4 y otra1/4. El valor0 es su suma firmada y no una afirmación de área geométrica nula.
+Para $2x-1$, las alturas izquierdas son menos uno y cero, las medias menos un medio y un medio, y las derechas cero y uno. Ponderar cada pareja por las anchuras $1/2$ produce sumas $-1/2$, cero y $1/2$. En la media se cancelan contribuciones $-1/4$ y $1/4$. El resultado describe acumulación firmada; las magnitudes geométricas de ambas regiones no se cancelarían.
 
 **Retorno visual.** Véase [C22-F04](analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html#fig-anm-c22-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -881,7 +945,7 @@ Demuestra linealidad y preservación de orden con partición y etiquetas fijas.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 18</summary>
 
-Sustituir $(\alpha f+\beta g)(\xi_i)=\alpha f(\xi_i)+\beta g(\xi_i)$, multiplicar por anchura y usar distributividad finita separa las dos sumas. Si $f\le g$, cada diferencia $(g(\xi_i)-f(\xi_i))\Delta_i\ge0$; sumar da el orden.
+Con partición y etiquetas fijas, sustituimos $(\alpha f+\beta g)(\xi_i)=\alpha f(\xi_i)+\beta g(\xi_i)$. La distributividad de sumas finitas da $S(\alpha f+\beta g)=\alpha S(f)+\beta S(g)$. Si $f\le g$, cada término $(g(\xi_i)-f(\xi_i))\Delta_i$ es no negativo porque la anchura es positiva. Sumar prueba $S(f)\le S(g)$.
 
 </details>
 
@@ -896,7 +960,7 @@ En $(0,1/2,1)$ usa la etiqueta1/2 para ambas piezas. ¿Es válida? Calcula la su
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 19</summary>
 
-Sí:1/2 pertenece a ambos intervalos cerrados. Ambas alturas valen1/4; multiplicar por1/2 y sumar da1/4. La familia de etiquetas conserva dos índices aun cuando sus valores coinciden.
+La etiqueta $1/2$ pertenece tanto a $[0,1/2]$ como a $[1/2,1]$, así es válida en ambas. Para el cuadrado, ambas alturas valen $1/4$. La suma es $(1/4)(1/2)+(1/4)(1/2)=1/4$. Las etiquetas siguen siendo dos datos indexados aunque coincida su coordenada.
 
 </details>
 
@@ -911,7 +975,7 @@ Si $-2\le f\le3$ en $[-1,2]$, acota todas las sumas y su valor absoluto.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 20</summary>
 
-Comparar con las constantes−2 y3 da $-6\le S\le9$. También $|f|\le3$ da $|S|\le9$ por triangular y longitud3. No se requiere que $f$ alcance−2 o3; son cotas universales dadas.
+La longitud de $[-1,2]$ es tres. Comparar las alturas con constantes da $-2\cdot3\le S\le3\cdot3$, es decir $-6\le S\le9$. La triangular y $|f|\le3$ dan además $|S|\le9$. Las barreras protegen todas las entradas sin exigir que exista un argumento de máximo o mínimo.
 
 </details>
 ## 22.5. Lo que un cambio de etiquetas puede alterar
@@ -957,6 +1021,8 @@ No hay monotonía general de sumas etiquetadas al refinar. Para $f(x)=x$, la par
 
 Por $\sum_i |f(\xi_i)-f(\eta_i)|\Delta_i$, usando resta y triangular.
 
+Las anchuras quedan fijas, de modo que restar las dos sumas sólo cambia sus alturas. La triangular limita el error total por la suma de errores locales ponderados. Cada estimación por pieza debe proteger las dos etiquetas que finalmente se usen.
+
 </details>
 
 #### Microcontrol 34
@@ -971,6 +1037,8 @@ Por $\sum_i |f(\xi_i)-f(\eta_i)|\Delta_i$, usando resta y triangular.
 <summary>Ver solución del microcontrol 34</summary>
 
 Que controle todos los pares de entradas de la pieza, no sólo los dos valores muestreados.
+
+Las etiquetas todavía pueden cambiar dentro de toda la pieza. Por eso se necesita $|f(u)-f(v)|\le d_i$ para cualesquiera $u,v$ de ella. Comprobar únicamente una pareja concreta dejaría otras etiquetas fuera del certificado.
 
 </details>
 
@@ -987,6 +1055,8 @@ Que controle todos los pares de entradas de la pieza, no sólo los dos valores m
 
 $L\Delta_i$, porque ambas distan a lo sumo su anchura.
 
+La distancia entre dos puntos del mismo intervalo cerrado no supera su longitud. Aplicar Lipschitz a esa pareja da $|f(\xi_i)-f(\eta_i)|\le L\Delta_i$. Multiplicar por la anchura introduce el término cuadrático $L\Delta_i^2$.
+
 </details>
 
 #### Microcontrol 36
@@ -1001,6 +1071,8 @@ $L\Delta_i$, porque ambas distan a lo sumo su anchura.
 <summary>Ver solución del microcontrol 36</summary>
 
 Cada $\Delta_i\le\|P\|$ y es positiva; multiplicar por $\Delta_i$ y sumar.
+
+El máximo domina cada anchura y todas son positivas. Por ello $\Delta_i^2\le\|P\|\Delta_i$. Sumar y usar telescopía de longitudes obtiene la cota por malla y longitud total.
 
 </details>
 
@@ -1017,6 +1089,8 @@ Cada $\Delta_i\le\|P\|$ y es positiva; multiplicar por $\Delta_i$ y sumar.
 
 $L\|P\|(b-a)$, por reescribir cada contribución antigua en las piezas hijas.
 
+Las longitudes hijas suman la del padre y permiten repetir su altura antigua en todos los términos hijos. Cada etiqueta hija permanece dentro del padre y se compara con la antigua mediante su anchura. La misma cota cuadrática por padres produce el certificado.
+
 </details>
 
 #### Microcontrol 38
@@ -1031,6 +1105,8 @@ $L\|P\|(b-a)$, por reescribir cada contribución antigua en las piezas hijas.
 <summary>Ver solución del microcontrol 38</summary>
 
 Por su refinamiento común y triangular; cota $L(b-a)(\|P\|+\|Q\|)$.
+
+Una tercera suma en el refinamiento común se usa como puente entre las dos anteriores. Cada comparación con ese puente tiene una barrera de su propia malla original. La triangular suma ambas barreras y elimina la dependencia de etiquetas.
 
 </details>
 
@@ -1047,6 +1123,8 @@ Por su refinamiento común y triangular; cota $L(b-a)(\|P\|+\|Q\|)$.
 
 No. Para $x$, una suma1/2 puede dar1/4 o3/4 en el mismo refinamiento, según etiquetas.
 
+La conservación de nodos no decide qué alturas se tomarán en las piezas nuevas. Etiquetas izquierdas o derechas pueden desplazar la suma en sentidos opuestos. Las cotas de error controlan esa variación sin prometer monotonía.
+
 </details>
 
 #### Microcontrol 40
@@ -1061,6 +1139,8 @@ No. Para $x$, una suma1/2 puede dar1/4 o3/4 en el mismo refinamiento, según eti
 <summary>Ver solución del microcontrol 40</summary>
 
 No por sí sola; todavía se necesita un número que cumpla el contrato universal.
+
+Que las sumas de una misma partición sean cercanas sólo relaciona miembros de una familia. El contrato de integral pide además un real candidato al que todas se aproximen con el orden de tolerancias declarado. Existencia de ese valor requiere un argumento propio.
 
 </details>
 
@@ -1077,7 +1157,7 @@ Demuestra la cota de diferencia de etiquetas y aplícala a $f(x)=x$ en una parti
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 21</summary>
 
-Restar sumas y triangular da $|S_\xi-S_\eta|\le\sum|f(\xi_i)-f(\eta_i)|\Delta_i$. Para $x$, cada diferencia≤anchura, de modo que la suma≤$\sum\Delta_i^2\le\|P\|$, usando telescopía de longitudes1.
+Restar sumas con las mismas anchuras da $S_\xi-S_\eta=\sum_i(f(\xi_i)-f(\eta_i))\Delta_i$. Por triangular, su magnitud no supera $\sum_i|f(\xi_i)-f(\eta_i)|\Delta_i$. Para la identidad, cada diferencia es $|\xi_i-\eta_i|\le\Delta_i$. En $[0,1]$ resulta $|S_\xi-S_\eta|\le\sum_i\Delta_i^2\le\|P\|$, porque las anchuras suman uno.
 
 </details>
 
@@ -1092,7 +1172,7 @@ Explica por qué dos alturas casi iguales no proporcionan una cota local univers
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 22</summary>
 
-Se puede definir una función cero en los dos puntos muestreados y con valor arbitrariamente grande en un tercer punto de la pieza. Las dos muestras coinciden, pero una etiqueta en el tercer punto cambia la suma en esa altura por la anchura. La cota $d_i$ necesita todos los pares, no dos evaluaciones.
+En una pieza de longitud positiva tomamos dos entradas muestreadas y una tercera distinta. Una función puede valer cero en las dos primeras y una altura $H$ arbitrariamente grande en la tercera. Las muestras coinciden exactamente, pero usar la tercera como etiqueta cambia su contribución en $H$ por la anchura. La cota local que protege cualquier etiqueta debe limitar todas las parejas de entradas de la pieza.
 
 </details>
 
@@ -1107,7 +1187,7 @@ Prueba la cota $L\|P\|(b-a)$ entre una suma sobre $P$ y otra sobre un refinamien
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 23</summary>
 
-Las hijas de cada padre tienen anchuras que suman la antigua. Reescribir la suma vieja como $\sum_{J\subset I_i}f(\xi_i)|J|$ y restar las hijas. La diferencia de alturas≤$L\Delta_i$ porque ambas entradas están en el padre. Triangular y sumar dan $L\sum_i\Delta_i^2\le L\|P\|(b-a)$.
+En cada padre $I_i$, las anchuras de sus hijas suman $\Delta_i$. Reescribimos la contribución antigua como $\sum_{J\subseteq I_i}f(\xi_i)|J|$. La etiqueta de cada hija y la antigua están en ese padre, de modo que Lipschitz limita su diferencia de alturas por $L\Delta_i$. Ponderar por las longitudes hijas y sumar da $L\Delta_i^2$. Finalmente, la triangular entrega $|S_P-S_Q|\le L\sum_i\Delta_i^2\le L\|P\|(b-a)$.
 
 </details>
 
@@ -1122,7 +1202,7 @@ Da dos sumas de un mismo refinamiento que estén a ambos lados de la suma media1
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 24</summary>
 
-Refinar en0,1/2,1. Etiquetas izquierdas dan1/4 y derechas3/4, respectivamente menores y mayores que1/2. Se conservan función e intervalo; cambia sólo la familia de etiquetas. Refinamiento no obliga monotonía de suma.
+La partición trivial $(0,1)$ con etiqueta media produce suma $1/2$ para la identidad. En el refinamiento $(0,1/2,1)$, las etiquetas izquierdas producen $1/4$ y las derechas $3/4$. Una queda por debajo y otra por encima de la suma antigua. Refinar conserva cortes, pero no decide un sentido de cambio para sumas etiquetadas.
 
 **Retorno visual.** Véase [C22-F05](analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html#fig-anm-c22-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1139,7 +1219,7 @@ Si $f$ es Lipschitz3 en $[0,2]$ y las mallas de $P,Q$ son≤1/10 y≤1/20, acota
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 25</summary>
 
-El refinamiento común $R$ y etiquetas dadas en él permiten triangular dos comparaciones con padres. La cota es $3\cdot2(\|P\|+\|Q\|)\le6(1/10+1/20)=9/10$. Es independiente de todas las etiquetas; no afirma por sí sola un valor integral.
+Tomamos el refinamiento común y una familia explícita de etiquetas en él, por ejemplo las izquierdas. Cada suma original se compara con esa tercera usando su malla y la barrera Lipschitz tres. La triangular da $|S_P-S_Q|\le3\cdot2(\|P\|+\|Q\|)\le6(1/10+1/20)=9/10$. La cota protege todas las etiquetas originales y no identifica todavía un valor integral.
 
 </details>
 ## 22.6. Escalones: exactitud finita y nodos excepcionales
@@ -1183,6 +1263,8 @@ Es un certificado conservador válido para cualquier partición y etiquetas; no 
 
 $A=\sum_j c_j(z_j-z_{j-1})$ con constantes interiores dadas.
 
+Cada intervalo entre cortes aporta su constante interior multiplicada por la longitud. La lista de cortes y constantes es finita y determina un real. Los valores asignados únicamente en los nodos no aparecen en esa fórmula de acumulación.
+
 </details>
 
 #### Microcontrol 42
@@ -1197,6 +1279,8 @@ $A=\sum_j c_j(z_j-z_{j-1})$ con constantes interiores dadas.
 <summary>Ver solución del microcontrol 42</summary>
 
 Se copia la altura y las dos anchuras suman la original.
+
+El corte nuevo cae dentro de una región de altura constante $c$. Sustituir $c(v-u)$ por $c(t-u)+c(v-t)$ no cambia el resultado por distributividad. Repetir finitamente esta operación conserva la acumulación al refinar.
 
 </details>
 
@@ -1213,6 +1297,8 @@ Se copia la altura y las dos anchuras suman la original.
 
 En el refinamiento común las constantes interiores coinciden; sumar allí da el mismo $A$.
 
+En cada interior del refinamiento común, ambas representaciones describen los mismos valores de la función. Sus constantes coinciden y las contribuciones son iguales. La invariancia por inserciones relaciona después esa suma común con las dos originales.
+
 </details>
 
 #### Microcontrol 44
@@ -1227,6 +1313,8 @@ En el refinamiento común las constantes interiores coinciden; sumar allí da el
 <summary>Ver solución del microcontrol 44</summary>
 
 No. Un nodo es un punto sin intervalo de anchura positiva.
+
+La fórmula del escalón sólo asigna pesos a intervalos de longitud positiva. Modificar un valor puntual no crea uno de esos intervalos. Una suma etiquetada sí puede tomar esa altura puntual, de modo que su efecto debe estimarse aparte.
 
 </details>
 
@@ -1243,6 +1331,8 @@ No. Un nodo es un punto sin intervalo de anchura positiva.
 
 No. Puede usar etiquetas en nodos excepcionales o piezas que cruzan un salto.
 
+Una etiqueta en un corte puede leer un valor distinto de las constantes de ambos lados. Una pieza que cruza un salto puede usar una altura de un solo lado para toda su anchura. El certificado universal controla esas situaciones sin afirmar exactitud de cada suma.
+
 </details>
 
 #### Microcontrol 46
@@ -1257,6 +1347,8 @@ No. Puede usar etiquetas en nodos excepcionales o piezas que cruzan un salto.
 <summary>Ver solución del microcontrol 46</summary>
 
 A lo sumo dos; en extremos a lo sumo una.
+
+Un punto interior a una pieza sólo pertenece a ella. Si coincide con un nodo interior, pertenece a las dos vecinas; los demás intervalos quedan separados por nodos. En los bordes del segmento sólo existe una pieza vecina.
 
 </details>
 
@@ -1273,6 +1365,8 @@ A lo sumo dos; en extremos a lo sumo una.
 
 Diferencia de sumas $\le2kD\|P\|$ para la misma partición y etiquetas.
 
+Cada punto modificado puede afectar como máximo dos términos de una suma con etiquetas dadas. Hay por ello a lo sumo $2k$ contribuciones distintas que requieren cota. Cada una tiene magnitud a lo sumo $D\|P\|$, dando el resultado por triangular.
+
 </details>
 
 #### Microcontrol 48
@@ -1287,6 +1381,8 @@ Diferencia de sumas $\le2kD\|P\|$ para la misma partición y etiquetas.
 <summary>Ver solución del microcontrol 48</summary>
 
 $|S-A|\le4B(m+1)\|P\|$, contando padres que tocan sus nodos.
+
+Los padres que no tocan cortes del escalón tienen altura constante y contribución exacta. Los que sí los tocan son finitos y su longitud total se acota por el número de nodos y la malla. La barrera $2B$ de diferencias de alturas completa el certificado.
 
 </details>
 
@@ -1303,7 +1399,7 @@ Sea $s=2$ en $(0,1/3)$ y $s=-1$ en $(1/3,1)$ con valores nodales arbitrarios. Ca
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 26</summary>
 
-$A=2/3-2/3=0$. Insertar dentro de una región reemplaza $c(v-u)$ por $c(t-u)+c(v-t)=c(v-u)$. Los nodos excepcionales no entran en la fórmula de $A$. En el refinamiento común de dos representaciones las mismas constantes interiores prueban invariancia completa.
+La acumulación es $A=2(1/3)+(-1)(2/3)=0$. Insertar un corte $t$ dentro de una región constante de altura $c$ conserva su contribución porque $c(t-u)+c(v-t)=c(v-u)$. Las demás regiones quedan intactas. Los valores nodales arbitrarios no aparecen en esta fórmula; su efecto sobre sumas etiquetadas se controla por otro argumento.
 
 </details>
 
@@ -1318,7 +1414,7 @@ Para la función cero salvo $s(1/2)=10$, toma $(0,1/2,1)$ con ambas etiquetas en
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 27</summary>
 
-Ambas alturas son10 y cada anchura1/2; $S=10$. Las constantes interiores son cero y $A=0$. Una suma etiquetada finita puede diferir mucho por repetir una etiqueta excepcional, aunque la integral futura sea0.
+Las dos etiquetas iguales a un medio leen la altura excepcional diez. Con anchuras medias, $S=10/2+10/2=10$. Las constantes interiores de ambos lados son cero y su acumulación $A$ es cero. Esta diferencia pertenece a una suma concreta de malla $1/2$; al reducir la malla el certificado limita cuánto pueden pesar etiquetas excepcionales.
 
 **Retorno visual.** Véase [C22-F06](analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html#fig-anm-c22-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1335,7 +1431,7 @@ Prueba la cota $2kD\|P\|$ para funciones que sólo difieren en $k$ puntos y $|f-
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 28</summary>
 
-Una etiqueta con diferencia no nula debe ser uno de esos puntos. Cada punto está en a lo sumo dos piezas cerradas; las piezas no vecinas están separadas por nodos. Hay a lo sumo $2k$ términos no nulos, cada uno de valor absoluto≤$D\|P\|$. Triangular da la cota; para $k=0$ no hay términos.
+Un término sólo cambia si su etiqueta es alguno de los $k$ puntos modificados. Cada punto pertenece como máximo a dos piezas cerradas, así hay a lo sumo $2k$ términos afectados. Cada uno tiene magnitud a lo sumo $D\Delta_i\le D\|P\|$. La triangular da $|S_f-S_g|\le2kD\|P\|$. Si $k=0$ o $D=0$, las sumas coinciden.
 
 </details>
 
@@ -1350,7 +1446,7 @@ Demuestra el certificado $4B(m+1)\|P\|$ para un escalón con $m$ piezas y $|s|\l
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 29</summary>
 
-Refinar $P$ con todos los nodos del escalón y sumar las constantes interiores en las hijas: da $A$. Un padre que no toca ningún nodo aporta exactamente esa suma. Los otros padres son a lo sumo $2(m+1)$, porque cada nodo toca como máximo dos; su longitud total≤$2(m+1)\|P\|$. En ellos la diferencia de alturas≤$2B$. Multiplicar y triangular da la cota, con posibles sobrecuentas que sólo la ensanchan.
+Refinamos $P$ añadiendo los $m+1$ nodos del escalón y calculamos $A$ con sus constantes interiores en las piezas hijas. Un padre que no toca esos nodos queda dentro de una región constante y aporta exactamente lo mismo que sus hijas. Los padres restantes son a lo sumo $2(m+1)$ y su longitud total no supera $2(m+1)\|P\|$. En cada uno, la diferencia entre su altura y cualquier altura hija no supera $2B$. Ponderar y sumar produce $|S-A|\le4B(m+1)\|P\|$, aun si el recuento repite algún padre.
 
 </details>
 
@@ -1365,7 +1461,7 @@ Representa la constante3 en $[0,2]$ con una pieza y con cortes1/2 y3/2; demuestr
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 30</summary>
 
-Una pieza da $3\cdot2=6$. Las tres anchuras son1/2,1,1/2 y dan3/2+3+3/2=6. La invariancia general usa el refinamiento común y las constantes iguales en cada interior hijo, no un acuerdo casual de este ejemplo.
+Una única pieza de longitud dos y altura tres aporta seis. Con cortes $1/2$ y $3/2$, las anchuras son $1/2$, uno y $1/2$, y las contribuciones $3/2$, tres y $3/2$ suman seis. La identidad de longitudes explica esta igualdad para cualquier subdivisión de una región constante. Dos representaciones generales se comparan mediante su refinamiento común.
 
 </details>
 ## 22.7. Un límite que todas las etiquetas deben compartir
@@ -1404,6 +1500,8 @@ No hemos probado que toda función acotada sea integrable ni que toda continua l
 
 Primero $I$, después cada tolerancia $\varepsilon$, luego $\delta$, y sólo entonces todas las particiones y etiquetas.
 
+El candidato integral pertenece al enunciado antes de pedir precisiones. El radio responde a cada precisión y después debe proteger cualquier partición suficientemente fina con cualquier etiqueta admisible. Ese orden impide elegir una escala que excluya sólo el objeto ya examinado.
+
 </details>
 
 #### Microcontrol 50
@@ -1418,6 +1516,8 @@ Primero $I$, después cada tolerancia $\varepsilon$, luego $\delta$, y sólo ent
 <summary>Ver solución del microcontrol 50</summary>
 
 No. Debe servir para todas las etiquetas de todas las particiones de malla menor.
+
+Las etiquetas son parte de los datos universalmente cuantificados tras fijar el radio. Una escala que se adapte a ellas no demostraría independencia de sus elecciones. La malla controla la separación de entradas dentro de todas las piezas y ofrece la escala común.
 
 </details>
 
@@ -1434,6 +1534,8 @@ No. Debe servir para todas las etiquetas de todas las particiones de malla menor
 
 Existen particiones uniformes con malla menor que cualquier radio positivo.
 
+Arquimedianidad permite una uniforme de anchura menor que cualquier radio dado. Sus etiquetas izquierdas son explícitas y válidas. Así siempre existe alguna suma a la que aplicar dos candidatos de límite, evitando una unicidad vacía.
+
 </details>
 
 #### Microcontrol 52
@@ -1448,6 +1550,8 @@ Existen particiones uniformes con malla menor que cualquier radio positivo.
 <summary>Ver solución del microcontrol 52</summary>
 
 Si $d=|I-J|>0$, una suma dentro de $d/3$ de ambos daría $d<2d/3$ por triangular.
+
+Se piden radios a ambos candidatos con la misma tolerancia $d/3$ y se toma su mínimo. Una uniforme fina y etiquetas explícitas producen una suma que cumple los dos errores. La triangular fuerza una distancia entre candidatos menor que ella misma, contradicción.
 
 </details>
 
@@ -1464,6 +1568,8 @@ Si $d=|I-J|>0$, una suma dentro de $d/3$ de ambos daría $d<2d/3$ por triangular
 
 $\delta=\varepsilon/C$; malla estrictamente menor da error estrictamente menor que $\varepsilon$.
 
+La barrera es común a toda la familia de sumas. Si la malla es estrictamente menor que $\varepsilon/C$, el producto de barrera y malla queda estrictamente bajo el desafío. El radio no depende de la partición ni de sus etiquetas.
+
 </details>
 
 #### Microcontrol 54
@@ -1478,6 +1584,8 @@ $\delta=\varepsilon/C$; malla estrictamente menor da error estrictamente menor q
 <summary>Ver solución del microcontrol 54</summary>
 
 Todas las sumas valen $I$; cualquier radio positivo sirve.
+
+La desigualdad $|S-I|\le0$ obliga a igualdad para cada suma. Ninguna reducción adicional de malla es necesaria para aproximar ese valor. Se trata este caso antes de introducir una fórmula que dividiría por la barrera nula.
 
 </details>
 
@@ -1494,6 +1602,8 @@ Todas las sumas valen $I$; cualquier radio positivo sirve.
 
 Sus sumas etiquetadas tienden a $I$ para cualquier familia dada de etiquetas.
 
+Para una tolerancia se obtiene primero el radio universal. La convergencia de mallas proporciona después un índice a partir del cual todas las particiones dadas lo cumplen. Sus etiquetas pueden variar porque el contrato ya las controla a todas.
+
 </details>
 
 #### Microcontrol 56
@@ -1508,6 +1618,8 @@ Sus sumas etiquetadas tienden a $I$ para cualquier familia dada de etiquetas.
 <summary>Ver solución del microcontrol 56</summary>
 
 No. Aquí se probaron escalones y ejemplos con certificados; C23 construirá resultados generales.
+
+El escalón y los polinomios examinados disponen de candidatos explícitos y certificados de todas sus sumas. El resultado general para continuas aún necesita construir ese candidato. La proximidad entre sumas y su acotación son herramientas, pero aquí no se sustituyen por un teorema todavía pendiente.
 
 </details>
 
@@ -1524,7 +1636,7 @@ Escribe el contrato de integral y explica qué falla si el radio se permite depe
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 31</summary>
 
-Existe $I$ tal que para cada $\varepsilon>0$ hay $\delta>0$ que sirve para todas las particiones y etiquetas con malla<radio. Si la partición se elige primero, se puede tomar un radio≤su malla y la implicación será vacía para ese objeto. No se controla ninguna familia de resoluciones pequeñas ni las demás etiquetas.
+El contrato pide un real $I$ tal que para cada $\varepsilon>0$ exista $\delta>0$ y para toda partición etiquetada con $\|P\|<\delta$ se cumpla $|S-I|<\varepsilon$. Si se permite elegir el radio después de una partición particular, puede tomarse $\delta\le\|P\|$ y dejar falsa la premisa de esa implicación. Ese truco no controla las particiones realmente finas. El radio debe responder a la tolerancia antes de examinar cualquier partición o etiqueta.
 
 </details>
 
@@ -1539,7 +1651,7 @@ Demuestra unicidad del valor integral incluyendo una partición que satisfaga lo
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 32</summary>
 
-Si $I\ne J$, sea $d=|I-J|>0$. Obtener radios $\delta_I,\delta_J$ para tolerancia $d/3$; una uniforme suficientemente fina cumple ambos. Con etiquetas izquierdas dadas, triangular da $d\le|I-S|+|S-J|<2d/3$, contradicción. La existencia de esa partición es arquimediana.
+Si $I\ne J$, fijamos $d=|I-J|>0$ y obtenemos radios para error $d/3$ de ambos contratos. Arquimedianidad da una uniforme de malla menor que su mínimo. Con etiquetas izquierdas explícitas, su suma $S$ cumple ambos errores. La triangular da $d\le|I-S|+|S-J|<2d/3$, contradicción. La partición construida muestra que la prueba aplica a una suma existente.
 
 </details>
 
@@ -1554,7 +1666,7 @@ Si todas las sumas cumplen $|S-I|\le5\|P\|$ en $[0,1]$, produce radio para toler
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 33</summary>
 
-Tomar $\delta=1/500$. Malla estrictamente menor da error<1/100. La uniforme de501 piezas cumple1/501<1/500;500 piezas sólo garantizarían error≤1/100 y no la exigencia estricta.
+La barrera cinco pide malla estrictamente menor que $(1/100)/5=1/500$. Por ello sirve radio $\delta=1/500$. Una uniforme de quinientas una piezas en $[0,1]$ tiene malla $1/501<\delta$ y garantiza el desafío. Con quinientas, la cota sólo daría error menor o igual que $1/100$, insuficiente para garantizar estrictitud.
 
 **Retorno visual.** Véase [C22-F07](analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html#fig-anm-c22-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1571,7 +1683,7 @@ Si $f$ es integrable y $g$ difiere sólo en $k$ puntos por diferencias≤$D$, de
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 34</summary>
 
-Triangular $|S_g-I|\le|S_g-S_f|+|S_f-I|$. Pedir a $f$ error<ε/2. Si $2kD>0$, tomar además malla<ε/(4kD), que da diferencia<ε/2. El mínimo de los dos radios sirve. Si $2kD=0$, las sumas coinciden y basta el radio de $f$.
+Con los mismos datos, $|S_g-I|\le|S_g-S_f|+|S_f-I|$. Pedimos primero a la integrabilidad de $f$ un radio para error $\varepsilon/2$. Si $kD>0$, la cota de modificación finita queda menor que $\varepsilon/2$ al exigir además malla menor que $\varepsilon/(4kD)$. El mínimo de ambos radios protege cualquier suma de $g$. Si $kD=0$, las sumas coinciden y basta el primer radio. Así $g$ cumple el contrato con el mismo $I$.
 
 </details>
 
@@ -1586,7 +1698,7 @@ Sea $\|P_r\|\to0$ con etiquetas dadas. Demuestra convergencia de las sumas si $f
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 35</summary>
 
-Para ε, obtener δ del contrato universal; la convergencia de mallas da un índice tras el cual todas son<δ. Entonces todos los errores son<ε, que es convergencia a $I$. Invertir esta prueba no es válido: el control de una sola lista de particiones/etiquetas no abarca todas las demás.
+Para una tolerancia $\varepsilon$, el contrato universal entrega $\delta>0$. Como las mallas dadas tienden a cero, existe un índice $N$ desde el que todas son menores que $\delta$. Sus sumas, con las etiquetas dadas, cumplen entonces $|S_r-I|<\varepsilon$. Esto prueba convergencia a $I$. Una sola sucesión de datos no controla por ese argumento las otras particiones y etiquetas cuantificadas por el contrato.
 
 </details>
 ## 22.8. Certificados antes de fórmulas de integración
@@ -1633,6 +1745,8 @@ Para error menor que $1/100$, el certificado universal $2\|P\|$ permite elegir $
 
 $(b^2-a^2)/2$ exactamente, por telescopía de cuadrados.
 
+En una pieza $[u,v]$, su altura media $(u+v)/2$ multiplicada por $v-u$ vale $(v^2-u^2)/2$. Al sumar se cancelan los cuadrados de nodos interiores. Queda un candidato exacto para todas las particiones con esas etiquetas medias.
+
 </details>
 
 #### Microcontrol 58
@@ -1647,6 +1761,8 @@ $(b^2-a^2)/2$ exactamente, por telescopía de cuadrados.
 <summary>Ver solución del microcontrol 58</summary>
 
 $(b-a)\|P\|/2$, pues la distancia al punto medio es a lo sumo media anchura.
+
+Cualquier etiqueta está a distancia como máximo $(v-u)/2$ del medio de su pieza. Para la identidad esa distancia es también diferencia de alturas. Ponderar y sumar da media suma de cuadrados de anchuras, dominada por la malla y longitud.
 
 </details>
 
@@ -1663,6 +1779,8 @@ $(b-a)\|P\|/2$, pues la distancia al punto medio es a lo sumo media anchura.
 
 $\alpha(b^2-a^2)/2+\beta(b-a)$, por álgebra finita y el certificado del caso lineal.
 
+La linealidad de sumas transforma el candidato del caso lineal y añade la acumulación exacta de la constante. La magnitud $|\alpha|$ multiplica su certificado de error. La altura constante no agrega error, cualquiera que sea su signo.
+
 </details>
 
 #### Microcontrol 60
@@ -1677,6 +1795,8 @@ $\alpha(b^2-a^2)/2+\beta(b-a)$, por álgebra finita y el certificado del caso li
 <summary>Ver solución del microcontrol 60</summary>
 
 $(v^3-u^3)/3=(v-u)(u^2+uv+v^2)/3$.
+
+La factorización del incremento cúbico permite compararlo con una media de tres alturas cuadráticas. Esa media queda entre las alturas de borde de una pieza no negativa. Al sumar los incrementos cúbicos se obtiene telescopía, que produce el candidato del cuadrado.
 
 </details>
 
@@ -1693,6 +1813,8 @@ $(v^3-u^3)/3=(v-u)(u^2+uv+v^2)/3$.
 
 $|S(x^2)-1/3|\le2\|P\|$ en $[0,1]$.
 
+La diferencia local entre una altura etiquetada y la media cuadrática no supera dos veces la anchura. Tras ponderar, el error es a lo sumo $2\Delta_i^2$. Sumar en $[0,1]$ produce la barrera $2\|P\|$ para cualquier familia de etiquetas.
+
 </details>
 
 #### Microcontrol 62
@@ -1707,6 +1829,8 @@ $|S(x^2)-1/3|\le2\|P\|$ en $[0,1]$.
 <summary>Ver solución del microcontrol 62</summary>
 
 $7/32$ y $15/32$, respectivamente.
+
+Cada anchura mide un cuarto y cada altura de borde es un cuadrado de múltiplos de un cuarto. El denominador de las contribuciones es por ello sesenta y cuatro. Las listas de cuadrados empiezan en cero para la izquierda y en uno para la derecha.
 
 </details>
 
@@ -1723,6 +1847,8 @@ $7/32$ y $15/32$, respectivamente.
 
 No. La suma uniforme es $1/3-1/(12n^2)$.
 
+El error de puntos medios mantiene un término positivo que sólo desaparece al aumentar indefinidamente la resolución. Para cualquier natural finito $n\ge1$, $1/(12n^2)>0$. La exactitud media del caso lineal no se transfiere al cuadrado.
+
 </details>
 
 #### Microcontrol 64
@@ -1737,6 +1863,8 @@ No. La suma uniforme es $1/3-1/(12n^2)$.
 <summary>Ver solución del microcontrol 64</summary>
 
 Malla menor que1/200; en uniforme, un natural $n>200$.
+
+La condición estricta $2\|P\|<1/100$ se satisface con malla menor que $1/200$. En una uniforme de $[0,1]$ la malla es $1/n$, así se toma un natural mayor que doscientos. Esa elección protege todas las etiquetas, no sólo las medias.
 
 </details>
 
@@ -1753,7 +1881,7 @@ Demuestra integral de $x$ en $[-1,2]$ usando puntos medios y da certificado.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 36</summary>
 
-En cada pieza, media por anchura es $(v^2-u^2)/2$; sumar telescopa a $(4-1)/2=3/2$. Cualquier etiqueta difiere de la media≤anchura/2, por lo que el error total≤$(1/2)\sum\Delta_i^2\le(3/2)\|P\|$. El contrato con ese certificado prueba el valor3/2.
+En cada pieza $[u,v]$, la contribución media de la identidad vale $(u+v)(v-u)/2=(v^2-u^2)/2$. La suma telescópica en $[-1,2]$ es $(4-1)/2=3/2$. Cualquier etiqueta dista del medio a lo sumo media anchura, así su error total no supera $(1/2)\sum_i\Delta_i^2\le(3/2)\|P\|$. Para una tolerancia $\varepsilon$ sirve radio $2\varepsilon/3$. El contrato prueba integral $3/2$ sin antiderivadas.
 
 </details>
 
@@ -1768,7 +1896,7 @@ Calcula la integral de $2x-1$ en $[0,1]$ mediante sumas finitas y certificado.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 37</summary>
 
-La suma es dos veces la de $x$ menos1, pues las anchuras suman1. El valor candidato es $2(1/2)-1=0$. El error≤$2\cdot\|P\|/2=\|P\|$. Escoger radioε prueba el contrato; no se ha interpretado el resultado como área geométrica total.
+La linealidad finita da $S(2x-1)=2S(x)-1$ en $[0,1]$. El certificado de la identidad ofrece candidato $1/2$ y error a lo sumo $\|P\|/2$. Por tanto el nuevo candidato es cero y $|S(2x-1)|\le\|P\|$. El radio $\delta=\varepsilon$ satisface el contrato para todas las etiquetas. El valor cero representa una cancelación firmada de contribuciones.
 
 </details>
 
@@ -1783,7 +1911,7 @@ Prueba el certificado universal de $x^2$ en $[0,1]$ y su valor integral.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 38</summary>
 
-En $[u,v]$, la media $(u^2+uv+v^2)/3$ está entre $u^2,v^2$, igual que $\xi^2$. La diferencia≤$v^2-u^2\le2(v-u)$. Multiplicar por anchura y comparar con $(v^3-u^3)/3$ da error≤$2\Delta^2$. Sumar telescopa a1/3 y error≤$2\|P\|$. Para ε tomarδ=ε/2.
+En una pieza $[u,v]\subseteq[0,1]$, tanto $\xi^2$ como $(u^2+uv+v^2)/3$ quedan entre $u^2$ y $v^2$. Su diferencia de magnitudes no supera $v^2-u^2=(v-u)(v+u)\le2(v-u)$. Multiplicar por la anchura compara la contribución etiquetada con $(v^3-u^3)/3$ con error a lo sumo $2\Delta_i^2$. Los incrementos cúbicos telescopan a $1/3$ y la triangular da $|S-1/3|\le2\|P\|$. Para $\varepsilon>0$, el radio $\varepsilon/2$ prueba el contrato.
 
 </details>
 
@@ -1798,7 +1926,7 @@ Calcula sumas izquierda, derecha y media de $x^2$ en uniforme de cuatro piezas, 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 39</summary>
 
-Izquierda: $(0+1+4+9)/64=7/32$. Derecha: $(1+4+9+16)/64=15/32$. Media: $(1+9+25+49)/256=21/64$. Para todo n, inducción de $\sum i=n(n+1)/2$ y $\sum i^2=n(n+1)(2n+1)/6$, expandir $(i-1)^2$ o $(i-1/2)^2$ da las fórmulas del texto;21/64=1/3−1/192. Ninguna de estas sumas finitas es el límite1/3.
+Para cuatro piezas, las sumas de bordes son $(0+1+4+9)/64=7/32$ y $(1+4+9+16)/64=15/32$. Las medias producen $(1+9+25+49)/256=21/64$. Las identidades finitas $\sum_{i=1}^n i=n(n+1)/2$ y $\sum_{i=1}^n i^2=n(n+1)(2n+1)/6$ se prueban por inducción sumando el término siguiente. Sustituirlas da sumas izquierda $1/3-1/(2n)+1/(6n^2)$, derecha $1/3+1/(2n)+1/(6n^2)$ y media $1/3-1/(12n^2)$. En $n=4$ esta última difiere de $1/3$ en $1/192$. Las tres cuentas son sumas finitas y no el valor límite.
 
 </details>
 
@@ -1813,7 +1941,7 @@ Elige una uniforme que certifique error de $x^2$ menor que1/100 para todas sus e
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 40</summary>
 
-La cota universal es2/n, así que n201 da2/201<1/100 para cualquier etiqueta. El error medio exacto es1/(12·201²), mucho menor. La cota universal sirve aun al mezclar etiquetas arbitrarias; usar sólo el error medio no certifica las demás familias.
+La uniforme de doscientas una piezas tiene malla $1/201$. El certificado universal da error a lo sumo $2/201<1/100$ para cualquier etiqueta. Las medias de esa misma partición tienen error exacto $1/(12\cdot201^2)$, mucho menor. Esa mejora depende de usar las medias y no protege una familia arbitraria de etiquetas. La elección de resolución universal utiliza la barrera que sí cubre todas.
 
 **Retorno visual.** Véase [C22-F08](analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html#fig-anm-c22-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
