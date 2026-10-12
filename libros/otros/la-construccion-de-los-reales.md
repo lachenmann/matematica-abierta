@@ -27,13 +27,12 @@ license: GFDL-1.3-or-later
 
 ## Contenido
 
-| Parte | Problema central |
-|---|---|
-| I. El problema de definir un sistema numérico | Distinguir axiomas, orden, supremos y existencia de un modelo. |
-| II. Construir un modelo a partir de los racionales | Cortaduras, operaciones, inclusión racional y completitud. |
-| III. ¿Qué significa que los reales sean únicos? | Construir el isomorfismo, verificar sus propiedades y demostrar su unicidad. |
-| IV. Medir una suma y controlar un error | Valor absoluto, desigualdad triangular, normas y sucesiones. |
-| Apéndices | Operaciones por recintos racionales, otra identificación con las cortaduras y comparación de construcciones. |
+1. [**El problema de definir un sistema numérico**](../../assets/books/cdr/la-construccion-de-los-reales-estudio.pdf#page=7).
+2. [**Construir un modelo a partir de los racionales**](../../assets/books/cdr/la-construccion-de-los-reales-estudio.pdf#page=20).
+3. [**¿Qué significa que los reales sean únicos?**](../../assets/books/cdr/la-construccion-de-los-reales-estudio.pdf#page=41).
+4. [**Medir una suma y controlar un error**](../../assets/books/cdr/la-construccion-de-los-reales-estudio.pdf#page=62).
+
+Los tres apéndices se consultan en el [PDF completo](../../assets/books/cdr/la-construccion-de-los-reales-estudio.pdf).
 
 Los ejercicios aparecen al final de cada capítulo, seguidos de sus resoluciones. Conviene intentar cada problema antes de consultar la solución.
 
