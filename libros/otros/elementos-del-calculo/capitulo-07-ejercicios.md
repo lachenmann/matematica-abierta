@@ -22,7 +22,7 @@ provenance:
     note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra
       independiente.'
 source-id: EDC-C07-EJERCICIOS
-source-sha256: f36796ed37c82726d5ea07885a081a2c595d4488c81c448d52873f6ae15aa46d
+source-sha256: cf173c11db642879f7eeb6c60fa641de5bb1351ad0edd425b7c367fd8e1255da
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)

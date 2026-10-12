@@ -1,5 +1,5 @@
 ---
-title: "Soluciones — Capítulo 3"
+title: Soluciones — Capítulo 3
 content-id: MA-BCH-0094
 content-type: book-chapter
 collection: PM-ANA
@@ -9,27 +9,33 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
-prerequisites: [MA-BCH-0084]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- orden
+- topologia
+prerequisites:
+- MA-BCH-0084
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C03; referencias de contraste en la portada del libro."
+  - ANM-C03_SOLUCIONES.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.md)
-
-# Soluciones — Capítulo 3
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)
 
 ## §3.1. El problema heredado: definir no basta
 
 []{#MA-SOL-ANM-01-003-001}
+
+[]{#MA-EX-ANM-01-003-001}
 
 ### 1. Qué permiten concluir las hipótesis
 
@@ -119,6 +125,8 @@ ni un supremo existente, ni un máximo.
 
 []{#MA-SOL-ANM-01-003-002}
 
+[]{#MA-EX-ANM-01-003-002}
+
 ### 2. Densidad no fabrica una frontera
 
 La densidad de $\mathbb Q$ afirma
@@ -162,6 +170,8 @@ La conclusión correcta derivada de la densidad es sólo local: entre dos racion
 **Uso de completitud:** ninguno. El objetivo es diagnosticar por qué densidad y completitud responden preguntas lógicamente distintas.
 
 []{#MA-SOL-ANM-01-003-003}
+
+[]{#MA-EX-ANM-01-003-003}
 
 ### 3. Probar el fallo racional sin nombrar la frontera
 
@@ -379,6 +389,8 @@ $$
 
 []{#MA-SOL-ANM-01-003-004}
 
+[]{#MA-EX-ANM-01-003-004}
+
 ### 4. Cambiar el umbral cambia la existencia, no la densidad
 
 **Estrategia.** Los tres conjuntos viven en el mismo sistema ordenado y denso, $\mathbb Q$. Por tanto, cualquier diferencia en la existencia o pertenencia de la barrera no puede explicarse por un cambio de densidad. Debemos examinar la familia de cotas y si la barrera relevante está disponible como racional.
@@ -531,6 +543,8 @@ Los tres conjuntos viven en el mismo sistema denso $\mathbb Q$. Por tanto, la de
 
 []{#MA-SOL-ANM-01-003-005}
 
+[]{#MA-EX-ANM-01-003-005}
+
 ### 5. Antes de invocar el principio
 
 El principio del supremo exige simultáneamente que el conjunto sea no vacío y esté acotado superiormente en $\mathbb R$.
@@ -607,6 +621,8 @@ $$
 **Uso de completitud:** únicamente en los casos $A$ y $D$, para pasar de «no vacío + acotado superiormente» a la existencia del supremo real. La existencia o inexistencia de máximo se decide después mediante pertenencia y orden.
 
 []{#MA-SOL-ANM-01-003-006}
+
+[]{#MA-EX-ANM-01-003-006}
 
 ### 6. El mismo conjunto, dos universos distintos
 
@@ -700,6 +716,8 @@ $$
 
 []{#MA-SOL-ANM-01-003-007}
 
+[]{#MA-EX-ANM-01-003-007}
+
 ### 7. La inclusión produce una desigualdad entre supremos existentes
 
 **Estrategia.** Antes de comparar supremos debemos justificar que ambos existen. Sólo después podremos usar la propiedad de menor cota superior.
@@ -768,6 +786,8 @@ $$
 **Uso de completitud:** dos aplicaciones, una para garantizar la existencia de $\sup A$ y otra para garantizar la existencia de $\sup B$. La desigualdad final no consume nueva completitud; procede de inclusión, condición de cota superior y minimalidad.
 
 []{#MA-SOL-ANM-01-003-008}
+
+[]{#MA-EX-ANM-01-003-008}
 
 ### 8. Trasladar un conjunto sin gastar completitud dos veces
 
@@ -890,6 +910,8 @@ $$
 
 []{#MA-SOL-ANM-01-003-009}
 
+[]{#MA-EX-ANM-01-003-009}
+
 ### 9. Un supremo real no vuelve completo a $\mathbb Q$
 
 La primera parte del argumento del estudiante es correcta.
@@ -986,6 +1008,8 @@ Ese paso no está justificado.
 ## §3.3. La cara dual: el principio del ínfimo
 
 []{#MA-SOL-ANM-01-003-010}
+
+[]{#MA-EX-ANM-01-003-010}
 
 ### 10. Traducir una prueba superior a lenguaje inferior
 
@@ -1139,6 +1163,8 @@ La reflexión no aporta una segunda completitud. Su papel es transportar, con in
 **Uso de completitud:** ninguno nuevo en esta traducción. Si $s=\sup(-A)$ ya está disponible, todo el diccionario se obtiene por orden y reflexión. La existencia de $s$ será el paso de completitud cuando se derive el ínfimo a partir de SUP.
 
 []{#MA-SOL-ANM-01-003-011}
+
+[]{#MA-EX-ANM-01-003-011}
 
 ### 11. Las familias completas de cotas también se reflejan
 
@@ -1304,6 +1330,8 @@ $$
 
 []{#MA-SOL-ANM-01-003-012}
 
+[]{#MA-EX-ANM-01-003-012}
+
 ### 12. El ínfimo de una unión
 
 Como $A$ y $B$ son no vacíos, existen
@@ -1428,6 +1456,8 @@ $$
 **Uso de completitud:** en la justificación de existencia de los ínfimos. Una vez existentes, la igualdad se deduce exclusivamente de inclusión, condición de cota inferior y maximalidad. Si se abre cada aplicación del principio del ínfimo, su fundamento último es el principio del supremo aplicado a los conjuntos reflejados correspondientes.
 
 []{#MA-SOL-ANM-01-003-013}
+
+[]{#MA-EX-ANM-01-003-013}
 
 ### 13. Trasladar un ínfimo abriendo la caja negra
 
@@ -1584,6 +1614,8 @@ Sólo la flecha marcada `SUP` consume completitud.
 **Uso de completitud:** exactamente una aplicación directa, al producir $s=\sup(-A)$. Todo lo posterior es reflexión, orden, traslación y definiciones.
 
 []{#MA-SOL-ANM-01-003-014}
+
+[]{#MA-EX-ANM-01-003-014}
 
 ### 14. Una transformación afín decreciente intercambia las fronteras
 
@@ -1789,6 +1821,8 @@ lo invierte. Lo que estaba abajo pasa arriba y lo que estaba arriba pasa abajo. 
 
 []{#MA-SOL-ANM-01-003-015}
 
+[]{#MA-EX-ANM-01-003-015}
+
 ### 15. Un paso positivo repetido supera cualquier barrera
 
 Como $h>0$, el cociente
@@ -1833,6 +1867,8 @@ $$
 **Uso de completitud:** indirecto. No se invoca SUP en esta prueba. Se usa la propiedad arquimediana, que §3.4 ya derivó de completitud.
 
 []{#MA-SOL-ANM-01-003-016}
+
+[]{#MA-EX-ANM-01-003-016}
 
 ### 16. Construir una malla finita más fina que una tolerancia
 
@@ -1923,6 +1959,8 @@ La construcción contiene exactamente $N+1$ puntos. Es una subdivisión finita d
 **Uso de completitud:** indirecto, a través de la propiedad arquimediana usada para elegir $N$. Todo lo posterior es álgebra finita.
 
 []{#MA-SOL-ANM-01-003-017}
+
+[]{#MA-EX-ANM-01-003-017}
 
 ### 17. Abrir toda la cadena: de SUP a una escala $L/N<\varepsilon$
 
@@ -2035,6 +2073,8 @@ Así, la desigualdad final no contiene un símbolo de supremo, pero su disponibi
 
 []{#MA-SOL-ANM-01-003-018}
 
+[]{#MA-EX-ANM-01-003-018}
+
 ### 18. «No tiene máximo» no significa «no está acotado»
 
 La afirmación falsa del argumento es:
@@ -2100,6 +2140,8 @@ La prueba reparada no contradice el ejemplo $(0,1)$. En ese conjunto, la existen
 **Uso de completitud:** directo y único al producir $s=\sup\mathbb N$. El diagnóstico muestra por qué “no tener máximo” no basta para obtener no acotación.
 
 []{#MA-SOL-ANM-01-003-019}
+
+[]{#MA-EX-ANM-01-003-019}
 
 ### 19. Arquimediano no implica completo
 
@@ -2244,6 +2286,8 @@ $$
 
 []{#MA-SOL-ANM-01-003-020}
 
+[]{#MA-EX-ANM-01-003-020}
+
 ### 20. Antes de aplicar el teorema de intervalos encajados
 
 El teorema de §3.5 exige simultáneamente, para cada $n$:
@@ -2377,6 +2421,8 @@ $$
 
 []{#MA-SOL-ANM-01-003-021}
 
+[]{#MA-EX-ANM-01-003-021}
+
 ### 21. La misma existencia vista desde los extremos derechos
 
 Tenemos intervalos
@@ -2490,6 +2536,8 @@ $$
 **Uso de completitud:** un único paso de existencia, expresado aquí mediante `INF`. Como §3.3 ya demostró `SUP \Rightarrow INF`, este uso hereda la completitud de `SUP`; las desigualdades posteriores son maximalidad y condición de cota inferior.
 
 []{#MA-SOL-ANM-01-003-022}
+
+[]{#MA-EX-ANM-01-003-022}
 
 ### 22. Describir toda la intersección, no sólo encontrar un punto
 
@@ -2664,6 +2712,8 @@ La fórmula no fuerza $s=t$. Si $s<t$, la intersección contiene todo el interva
 
 []{#MA-SOL-ANM-01-003-023}
 
+[]{#MA-EX-ANM-01-003-023}
+
 ### 23. Un solo gasto de completitud, tres usos del supremo
 
 Partimos de una familia cerrada, no vacía y encajada
@@ -2780,6 +2830,8 @@ Sólo una flecha está marcada con `COMPLETITUD`.
 **Uso de completitud:** exactamente uno y directo, al producir $x=\sup A$. Las líneas $a_n\le x$ y $x\le b_n$ consumen únicamente las propiedades de cota superior y minimalidad del supremo ya existente.
 
 []{#MA-SOL-ANM-01-003-024}
+
+[]{#MA-EX-ANM-01-003-024}
 
 ### 24. Qué ocurre al retirar una hipótesis
 
@@ -2902,6 +2954,8 @@ No muestran que toda familia no cerrada tenga intersección vacía ni que toda f
 **Uso de completitud:** ninguno directo. En la parte A se usa indirectamente la propiedad arquimediana ya derivada de completitud; la parte B es puramente conjuntista y de orden.
 
 []{#MA-SOL-ANM-01-003-025}
+
+[]{#MA-EX-ANM-01-003-025}
 
 ### 25. Transportar intervalos encajados por una transformación afín
 
@@ -3077,6 +3131,8 @@ Conceptualmente, el signo de $\lambda$ modifica la **orientación** del interval
 
 []{#MA-SOL-ANM-01-003-026}
 
+[]{#MA-EX-ANM-01-003-026}
+
 ### 26. El estrechamiento controla la cardinalidad sin usar encajamiento
 
 Supongamos que existen dos puntos distintos
@@ -3135,6 +3191,8 @@ El cierre tampoco participa en la contradicción de unicidad en sí misma: inclu
 **Uso de completitud:** ninguno. Es una prueba puramente métrica y de orden.
 
 []{#MA-SOL-ANM-01-003-027}
+
+[]{#MA-EX-ANM-01-003-027}
 
 ### 27. Desmontar el teorema del singleton en piezas lógicas
 
@@ -3292,6 +3350,8 @@ Fusionarlas en la frase “por completitud queda un único punto” borra una di
 
 []{#MA-SOL-ANM-01-003-028}
 
+[]{#MA-EX-ANM-01-003-028}
+
 ### 28. «Se hace cada vez más pequeño» no es todavía una prueba
 
 La frase “cada vez es más pequeño” sólo afirma, en el mejor de los casos, que
@@ -3378,6 +3438,8 @@ No se necesita ninguna afirmación sobre convergencia.
 **Uso de completitud:** directo sólo detrás del teorema de existencia de §3.5; indirecto a través de arquimedianidad en la verificación cuantitativa de la bisección.
 
 []{#MA-SOL-ANM-01-003-029}
+
+[]{#MA-EX-ANM-01-003-029}
 
 ### 29. Estrechamiento arbitrario sin punto común
 
@@ -3468,6 +3530,8 @@ El estrechamiento controla **cuántos** puntos pueden sobrevivir, no garantiza q
 **Uso de completitud:** ninguno directo. Se usa indirectamente arquimedianidad para producir escalas pequeñas. El fallo de existencia proviene de que los intervalos no son cerrados.
 
 []{#MA-SOL-ANM-01-003-030}
+
+[]{#MA-EX-ANM-01-003-030}
 
 ### 30. Refinar en $p$ partes en vez de bisecar
 
@@ -3580,6 +3644,8 @@ $$
 **Uso de completitud:** directo detrás de la existencia de §3.5 e indirecto a través de arquimedianidad para demostrar el estrechamiento finito.
 
 []{#MA-SOL-ANM-01-003-031}
+
+[]{#MA-EX-ANM-01-003-031}
 
 ### 31. Tres formas de reconocer que el núcleo es un solo punto
 
@@ -3753,15 +3819,15 @@ Por tanto, las equivalencias posteriores no son nuevas aplicaciones del principi
 
 **Uso de completitud:** en la existencia de $s$ y $t$; no hay gasto adicional de completitud en las equivalencias.
 
-La figura C03-F11 comprime estas tres descripciones equivalentes y mantiene fuera del triángulo el único antecedente estructural: la existencia previa de $s$ y $t$.
+La figura [C03-F11](#fig-anm-c03-f11) comprime estas tres descripciones equivalentes y mantiene fuera del triángulo el único antecedente estructural: la existencia previa de $s$ y $t$.
 
-![](../../assets/books/anm/C03/C03-F11.svg){fig-alt="Diagrama triangular de equivalencias entre estrechamiento, coincidencia s=t e intersección puntual, con completitud indicada sólo como dependencia previa para la existencia de s y t."}
-
-*Figura C03-F11. Una vez existentes s y t, estrechamiento arbitrario, s=t e intersección puntual son tres descripciones equivalentes.*
+![Una vez existentes s y t, estrechamiento arbitrario, s=t e intersección puntual son tres descripciones equivalentes.](../../assets/books/anm/C03/C03-F11.svg){#fig-anm-c03-f11 fig-alt="Diagrama triangular de equivalencias entre estrechamiento, coincidencia s=t e intersección puntual, con completitud indicada sólo como dependencia previa para la existencia de s y t."}
 
 ## §3.7. Tres lenguajes para una recta sin huecos
 
 []{#MA-SOL-ANM-01-003-032}
+
+[]{#MA-EX-ANM-01-003-032}
 
 ### 32. El mismo objeto en tres lenguajes
 
@@ -3945,6 +4011,8 @@ La **traducción** entre las descripciones usa sólo definiciones, cuantificador
 
 []{#MA-SOL-ANM-01-003-033}
 
+[]{#MA-EX-ANM-01-003-033}
+
 ### 33. De SUP a GCI sin pasar por SEP
 
 Sea
@@ -4083,6 +4151,8 @@ La ruta con SEP hace visible un vocabulario intermedio; la ruta directa comprime
 **Uso de completitud:** exactamente una aplicación directa, al producir $s=\sup L$. Las desigualdades $a_i\le s\le b_i$ usan sólo condición de cota y minimalidad del supremo ya existente.
 
 []{#MA-SOL-ANM-01-003-034}
+
+[]{#MA-EX-ANM-01-003-034}
 
 ### 34. «Intervalos encajados» no basta para decir «equivalente»
 
@@ -4243,6 +4313,8 @@ $$
 **Uso de completitud:** GCI es una interfaz equivalente de completitud. El diagnóstico lógico de por qué una consecuencia no es automáticamente una equivalencia no usa una nueva aplicación de completitud.
 
 []{#MA-SOL-ANM-01-003-035}
+
+[]{#MA-EX-ANM-01-003-035}
 
 ### 35. El mismo fallo racional en tres idiomas
 
@@ -4435,9 +4507,9 @@ La misma instancia queda entonces expresada en tres lenguajes:
 $$
 \boxed{
 \begin{array}{c}
-\sup_{\mathbb Q}A\text{ no existe}\[2mm]
+\sup_{\mathbb Q}A\text{ no existe}\\[2mm]
 \Updownarrow\\[2mm]
-\text{no existe separador racional entre }A\text{ y }B\[2mm]
+\text{no existe separador racional entre }A\text{ y }B\\[2mm]
 \Updownarrow\\[2mm]
 \displaystyle
 \bigcap_{(a,b)\in A\times B}[a,b]_{\mathbb Q}=\varnothing.
@@ -4450,6 +4522,8 @@ No hemos identificado ninguna frontera real externa. El argumento describe exclu
 **Uso de completitud:** ninguno. El ejercicio traduce un contraejemplo de incompletitud ya establecido dentro de $\mathbb Q$.
 
 []{#MA-SOL-ANM-01-003-036}
+
+[]{#MA-EX-ANM-01-003-036}
 
 ### 36. De intersecciones por pares a una intersección global
 
@@ -4619,6 +4693,8 @@ La separación de capas es esencial:
 
 []{#MA-SOL-ANM-01-003-037}
 
+[]{#MA-EX-ANM-01-003-037}
+
 ### 37. GCI más estrechamiento: unicidad sin numerabilidad ni encajamiento
 
 Tenemos una familia no vacía
@@ -4778,6 +4854,8 @@ Este ejercicio conecta §3.6 y §3.7 sin confundir sus papeles: cambiar la inter
 ## §3.8. Dónde se gasta la completitud
 
 []{#MA-SOL-ANM-01-003-038}
+
+[]{#MA-EX-ANM-01-003-038}
 
 ### 38. Auditar una prueba con tres capas de dependencia
 
@@ -5011,6 +5089,8 @@ Esta última inferencia es lógica elemental.
 
 []{#MA-SOL-ANM-01-003-039}
 
+[]{#MA-EX-ANM-01-003-039}
+
 ### 39. Recompilar la prueba usando separación en lugar de SUP
 
 Queremos probar la no vaciedad de
@@ -5181,13 +5261,13 @@ Después de producir ese objeto, las dos pruebas terminan con pasos elementales 
 
 **Uso de completitud:** una sola vez en lenguaje SEP. Por la equivalencia establecida en §3.7, esta invocación es lógicamente una interfaz equivalente del mismo principio estructural representado originalmente por SUP.
 
-La figura C03-F12 coloca ambas compilaciones en paralelo: cambia el objeto estructural intermedio, pero no aparece una segunda fuente de existencia.
+La figura [C03-F12](#fig-anm-c03-f12) coloca ambas compilaciones en paralelo: cambia el objeto estructural intermedio, pero no aparece una segunda fuente de existencia.
 
-![](../../assets/books/anm/C03/C03-F12.svg){fig-alt="Dos flujos paralelos parten de la compatibilidad cruzada y terminan en un punto común; uno usa SUP y otro SEP, cada cual con una sola marca COMPLETITUD."}
-
-*Figura C03-F12. SUP y SEP recompilan la misma prueba de existencia con distintos objetos intermedios, sin añadir una segunda infraestructura de completitud.*
+![SUP y SEP recompilan la misma prueba de existencia con distintos objetos intermedios, sin añadir una segunda infraestructura de completitud.](../../assets/books/anm/C03/C03-F12.svg){#fig-anm-c03-f12 fig-alt="Dos flujos paralelos parten de la compatibilidad cruzada y terminan en un punto común; uno usa SUP y otro SEP, cada cual con una sola marca COMPLETITUD."}
 
 []{#MA-SOL-ANM-01-003-040}
+
+[]{#MA-EX-ANM-01-003-040}
 
 ### 40. Qué sobrevive sin completitud y qué debe exportar C03
 
@@ -5327,3 +5407,5 @@ $$
 Ése es el contenido estructural de la frase “la completitud es infraestructura de existencia”.
 
 **Uso de completitud:** el ejercicio no introduce una nueva aplicación del principio; organiza y conecta las dependencias ya establecidas en C03 y distingue lo que permanece válido en $\mathbb Q$ de las garantías generales que allí fallan.
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)

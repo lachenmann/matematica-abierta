@@ -1,5 +1,5 @@
 ---
-title: "Soluciones — Capítulo 1"
+title: Soluciones — Capítulo 1
 content-id: MA-BCH-0088
 content-type: book-chapter
 collection: PM-ANA
@@ -9,27 +9,32 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
+topics:
+- analisis-real
+- orden
+- topologia
 prerequisites: []
-related: [MA-BOK-0010]
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C01; referencias de contraste en la portada del libro."
+  - ANM-C01_SOLUCIONES.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.md)
-
-# Soluciones — Capítulo 1
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html)
 
 ## §1.1. La misma recta, varias estructuras
 
 []{#MA-SOL-ANM-01-001-001}
+
+[]{#MA-EX-ANM-01-001-001}
 
 ### 1. Lo que el orden no dice
 
@@ -60,6 +65,8 @@ seguimos teniendo $0<1<4$, pero ahora $y$ está a $1$ unidad de $x$ y a $3$ unid
 El patrón de orden es idéntico en las dos ternas; las separaciones no. **El orden determina quién está antes, después o entre quiénes, pero no determina por sí solo las distancias.**
 
 []{#MA-SOL-ANM-01-001-002}
+
+[]{#MA-EX-ANM-01-001-002}
 
 ### 2. Reflejar no destruye toda la información
 
@@ -100,6 +107,8 @@ Por tanto, la conclusión del estudiante mezcla dos clases de información. Es c
 La lección es precisamente la de §1.1: una transformación puede alterar lo que ve el orden sin alterar lo que ve la distancia.
 
 []{#MA-SOL-ANM-01-001-003}
+
+[]{#MA-EX-ANM-01-001-003}
 
 ### 3. Un orden fijo, separaciones variables
 
@@ -160,6 +169,8 @@ pero cambia la información métrica: las dos separaciones varían continuamente
 Este ejemplo muestra por qué no debemos leer una relación de orden como si contuviera automáticamente información cuantitativa sobre distancias.
 
 []{#MA-SOL-ANM-01-001-004}
+
+[]{#MA-EX-ANM-01-001-004}
 
 ### 4. Tres capas sobre los mismos números
 
@@ -237,6 +248,8 @@ La idea transferible es que **usar los mismos números no convierte en equivalen
 
 []{#MA-SOL-ANM-01-001-005}
 
+[]{#MA-EX-ANM-01-001-005}
+
 ### 5. Una condición, tres escrituras
 
 La desigualdad
@@ -262,6 +275,8 @@ Comprobemos los tres puntos pedidos directamente en la desigualdad:
 La notación de intervalo no añade información nueva: comprime exactamente las mismas decisiones de inclusión y exclusión que ya estaban en los signos de desigualdad.
 
 []{#MA-SOL-ANM-01-001-006}
+
+[]{#MA-EX-ANM-01-001-006}
 
 ### 6. Dos fronteras, cuatro regiones
 
@@ -307,6 +322,8 @@ Así, paréntesis y corchetes no son cuatro convenciones desconectadas. Cada sí
 
 []{#MA-SOL-ANM-01-001-007}
 
+[]{#MA-EX-ANM-01-001-007}
+
 ### 7. ¿Puede incluirse el infinito?
 
 La escritura
@@ -348,6 +365,8 @@ Aquí $2$ queda excluido por la desigualdad estricta y, nuevamente, $-\infty$ no
 La idea que corrige el error es ésta: **los corchetes deciden si pertenece un extremo real; $\pm\infty$ no son extremos reales del conjunto.**
 
 []{#MA-SOL-ANM-01-001-008}
+
+[]{#MA-EX-ANM-01-001-008}
 
 ### 8. El mismo tramo sin elegir orientación
 
@@ -408,6 +427,8 @@ $$
 Por tanto, la formulación con mínimo y máximo encapsula en una sola expresión los dos órdenes posibles de los extremos. Su ventaja no es meramente abreviar: permite hablar del tramo entre $p$ y $q$ de una forma que no depende del orden en que hayamos nombrado esos puntos.
 
 []{#MA-SOL-ANM-01-001-009}
+
+[]{#MA-EX-ANM-01-001-009}
 
 ### 9. Dos formas equivalentes de «estar entre»
 
@@ -507,6 +528,8 @@ La idea transferible es que la fórmula con $\min$ y $\max$ no introduce una nue
 
 []{#MA-SOL-ANM-01-001-010}
 
+[]{#MA-EX-ANM-01-001-010}
+
 ### 10. Una distancia con centro desplazado
 
 La expresión
@@ -546,6 +569,8 @@ $$
 Aparecen exactamente dos soluciones porque una distancia positiva no registra orientación. Los desplazamientos $5$ y $-5$ son distintos, pero sus valores absolutos coinciden.
 
 []{#MA-SOL-ANM-01-001-011}
+
+[]{#MA-EX-ANM-01-001-011}
 
 ### 11. Del valor absoluto a una región de la recta
 
@@ -610,6 +635,8 @@ y tampoco pertenece.
 La lectura geométrica y la desigualdad de orden describen la misma región, pero la comprobación directa confirma que no hemos perdido la información sobre la frontera.
 
 []{#MA-SOL-ANM-01-001-012}
+
+[]{#MA-EX-ANM-01-001-012}
 
 ### 12. Desplazamiento no es lo mismo que distancia
 
@@ -677,6 +704,8 @@ El valor absoluto no «se quita» por costumbre; se elimina sólo después de co
 
 []{#MA-SOL-ANM-01-001-013}
 
+[]{#MA-EX-ANM-01-001-013}
+
 ### 13. Dos puntos simétricos respecto de un centro
 
 Tenemos
@@ -726,6 +755,8 @@ $$
 no permite decidir de qué lado del centro está $x$. La distancia conserva el tamaño; el signo del desplazamiento conserva la orientación.
 
 []{#MA-SOL-ANM-01-001-014}
+
+[]{#MA-EX-ANM-01-001-014}
 
 ### 14. Un centro común para dos puntos equidistantes
 
@@ -823,6 +854,8 @@ Este problema conecta tres lenguajes del capítulo. La igualdad de valores absol
 
 []{#MA-SOL-ANM-01-001-015}
 
+[]{#MA-EX-ANM-01-001-015}
+
 ### 15. Tres propiedades que salen de la definición
 
 Partimos siempre de
@@ -869,6 +902,8 @@ $$
 Las tres propiedades no se han supuesto a partir de una teoría abstracta de métricas: se han derivado de propiedades elementales del valor absoluto y de la definición concreta de $d$ sobre $\mathbb R$.
 
 []{#MA-SOL-ANM-01-001-016}
+
+[]{#MA-EX-ANM-01-001-016}
 
 ### 16. Reconstruir la desigualdad triangular
 
@@ -934,6 +969,8 @@ La idea transferible es que la desigualdad triangular aparece al **descomponer u
 
 []{#MA-SOL-ANM-01-001-017}
 
+[]{#MA-EX-ANM-01-001-017}
+
 ### 17. De la desigualdad triangular a una cota inversa
 
 Partimos de la identidad
@@ -987,6 +1024,8 @@ $$
 La desigualdad controla cuánto pueden diferir las distancias de dos puntos al origen a partir de la distancia que hay entre esos mismos puntos.
 
 []{#MA-SOL-ANM-01-001-018}
+
+[]{#MA-EX-ANM-01-001-018}
 
 ### 18. Una igualdad demasiado fuerte
 
@@ -1055,6 +1094,8 @@ $$
 El contraejemplo destruye la igualdad universal, no la desigualdad triangular. Determinar exactamente cuándo aparece igualdad requiere una pregunta adicional que se estudiará en la sección siguiente.
 
 []{#MA-SOL-ANM-01-001-019}
+
+[]{#MA-EX-ANM-01-001-019}
 
 ### 19. Mover el punto de referencia en la desigualdad inversa
 
@@ -1129,6 +1170,8 @@ El punto de referencia puede desplazarse, pero la separación fija entre $x$ e $
 
 []{#MA-SOL-ANM-01-001-020}
 
+[]{#MA-EX-ANM-01-001-020}
+
 ### 20. Encadenar estimaciones de distancia
 
 Aplicamos primero la desigualdad triangular pasando por $z$:
@@ -1187,6 +1230,8 @@ $$
 La idea importante es que los errores parciales pueden **acumularse por suma**. Si cada tramo introduce como máximo un error $r$, tres tramos producen una cota global de $3r$. La desigualdad triangular permite pasar de controles locales a un control total sin conocer la orientación de cada desplazamiento.
 
 []{#MA-SOL-ANM-01-001-021}
+
+[]{#MA-EX-ANM-01-001-021}
 
 ### 21. Transportar una cota a un punto cercano
 
@@ -1323,6 +1368,8 @@ El resultado expresa una regla de propagación de error: si $y$ está a lo sumo 
 
 []{#MA-SOL-ANM-01-001-022}
 
+[]{#MA-EX-ANM-01-001-022}
+
 ### 22. Igualdad sin retroceso
 
 Supongamos primero que
@@ -1390,6 +1437,8 @@ Los casos $y=x$ o $y=z$ están incluidos: una de las dos distancias parciales se
 Geométricamente, cuando $y$ está entre los extremos, la ruta $x\to y\to z$ avanza a lo largo del mismo segmento sin sobrepasar ningún extremo y sin desandar ningún tramo. Por eso la suma de las longitudes parciales coincide exactamente con la longitud directa.
 
 []{#MA-SOL-ANM-01-001-023}
+
+[]{#MA-EX-ANM-01-001-023}
 
 ### 23. La igualdad obliga al punto intermedio
 
@@ -1476,6 +1525,8 @@ La igualdad triangular excluye exactamente los puntos que obligarían a salir de
 
 []{#MA-SOL-ANM-01-001-024}
 
+[]{#MA-EX-ANM-01-001-024}
+
 ### 24. Estar entre no significa ser el punto medio
 
 La afirmación es falsa. La igualdad
@@ -1557,6 +1608,8 @@ Si $z\le y\le x$, el mismo cálculo conduce a la misma fórmula.
 Así, **estar entre** significa ausencia de retroceso; **ser punto medio** añade una segunda condición: las dos partes del recorrido deben tener la misma longitud.
 
 []{#MA-SOL-ANM-01-001-025}
+
+[]{#MA-EX-ANM-01-001-025}
 
 ### 25. Medir exactamente el retroceso
 
@@ -1654,6 +1707,8 @@ La figura [C01-F11](#fig-anm-c01-f11) concentra esta lectura en una sola compara
 
 []{#MA-SOL-ANM-01-001-026}
 
+[]{#MA-EX-ANM-01-001-026}
+
 ### 26. Cuatro puntos y una ruta sin retroceso
 
 **Cómo pensar este problema.** La igualdad total compara la ruta directa $x\to z$ con una ruta que visita dos puntos intermedios. Conviene insertar primero una ruta menos refinada y formar una cadena de desigualdades. Si el primer y el último término terminan siendo iguales, ninguna desigualdad intermedia puede haber sido estricta.
@@ -1748,6 +1803,8 @@ $$
 La igualdad total caracteriza exactamente una ruta cuyos puntos visitados aparecen en orden monotónico: nunca hay que retroceder para alcanzar el siguiente punto.
 
 []{#MA-SOL-ANM-01-001-027}
+
+[]{#MA-EX-ANM-01-001-027}
 
 ### 27. Lo que las distancias revelan —y lo que no
 
@@ -1865,6 +1922,8 @@ La conclusión es doble. Las distancias sí permiten recuperar **qué punto est�
 
 []{#MA-SOL-ANM-01-001-028}
 
+[]{#MA-EX-ANM-01-001-028}
+
 ### 28. Leer una bola en cuatro lenguajes
 
 Por definición,
@@ -1924,6 +1983,8 @@ Ahora comprobamos los puntos desde la condición métrica:
 Los extremos del intervalo quedan fuera precisamente porque la bola usa la desigualdad estricta $d(x,2)<3$.
 
 []{#MA-SOL-ANM-01-001-029}
+
+[]{#MA-EX-ANM-01-001-029}
 
 ### 29. Recuperar centro y radio desde un intervalo
 
@@ -2015,6 +2076,8 @@ La positividad del radio no es una condición añadida después: está contenida
 
 []{#MA-SOL-ANM-01-001-030}
 
+[]{#MA-EX-ANM-01-001-030}
+
 ### 30. Mismo centro, radios distintos
 
 Supongamos
@@ -2093,6 +2156,8 @@ El centro no ha cambiado: ambas bolas están organizadas alrededor del mismo pun
 
 []{#MA-SOL-ANM-01-001-031}
 
+[]{#MA-EX-ANM-01-001-031}
+
 ### 31. Mover el centro: cuándo dos bolas se encuentran
 
 Como ambas bolas tienen radio $r$,
@@ -2164,6 +2229,8 @@ La figura [C01-F12](#fig-anm-c01-f12) concentra esta lectura en una sola compara
 ![La posición relativa de las fronteras controla solapamiento, inclusión y contacto límite de bolas y tolerancias.](../../assets/books/anm/C01/C01-F12.svg){#fig-anm-c01-f12 fig-alt="Figura multipanel: bolas abiertas de igual radio que se solapan, tocan fronteras o se separan; una bola abierta incluida en otra; y dos intervalos cerrados que se tocan en un único punto."}
 
 []{#MA-SOL-ANM-01-001-032}
+
+[]{#MA-EX-ANM-01-001-032}
 
 ### 32. Cuándo una bola cabe dentro de otra
 
@@ -2301,6 +2368,8 @@ El panel de inclusión de la figura [C01-F12](#fig-anm-c01-f12) muestra esta mis
 
 []{#MA-SOL-ANM-01-001-033}
 
+[]{#MA-EX-ANM-01-001-033}
+
 ### 33. Una tolerancia escondida dentro de una expresión lineal
 
 Partimos de
@@ -2364,6 +2433,8 @@ $$
 El paso decisivo no fue «resolver una desigualdad con valor absoluto» de forma mecánica, sino reconocer que la expresión escondía una condición de tolerancia alrededor del centro $5/2$.
 
 []{#MA-SOL-ANM-01-001-034}
+
+[]{#MA-EX-ANM-01-001-034}
 
 ### 34. Estar lejos de un centro
 
@@ -2453,6 +2524,8 @@ Los dos extremos se incluyen porque la comparación original es $\ge$, no $>$.
 
 []{#MA-SOL-ANM-01-001-035}
 
+[]{#MA-EX-ANM-01-001-035}
+
 ### 35. Una rama desaparecida
 
 La equivalencia propuesta es falsa porque conserva sólo la región situada a la derecha del centro. La condición
@@ -2504,6 +2577,8 @@ $$
 El error proviene de tratar $x-a$ como si sólo importara su signo positivo. El valor absoluto elimina la orientación y conserva la separación: una distancia mayor que $r$ puede alcanzarse alejándose hacia la derecha o hacia la izquierda.
 
 []{#MA-SOL-ANM-01-001-036}
+
+[]{#MA-EX-ANM-01-001-036}
 
 ### 36. Entre dos umbrales de distancia
 
@@ -2583,6 +2658,8 @@ $$
 queda excluida porque allí la distancia al centro no supera $r$. Por eso el conjunto solución se parte en dos componentes: estamos seleccionando puntos que están **suficientemente lejos** de $a$, pero no **demasiado lejos**.
 
 []{#MA-SOL-ANM-01-001-037}
+
+[]{#MA-EX-ANM-01-001-037}
 
 ### 37. Dos tolerancias simultáneas
 
@@ -2676,6 +2753,8 @@ los intervalos se tocan en un solo punto, que pertenece a ambos porque las dos t
 El panel de contacto cerrado de la figura [C01-F12](#fig-anm-c01-f12) contrasta este caso con el contacto de bolas abiertas: aquí el punto de tangencia sí pertenece a ambas regiones porque las desigualdades no son estrictas.
 
 []{#MA-SOL-ANM-01-001-038}
+
+[]{#MA-EX-ANM-01-001-038}
 
 ### 38. Una familia que no crece por inclusión
 
@@ -2805,6 +2884,8 @@ La figura [C01-F13](#fig-anm-c01-f13) concentra esta lectura en una sola compara
 
 []{#MA-SOL-ANM-01-001-039}
 
+[]{#MA-EX-ANM-01-001-039}
+
 ### 39. Preservar distancias no significa preservar orientación
 
 La conclusión del estudiante es falsa. Basta considerar la reflexión
@@ -2862,6 +2943,8 @@ está entre $F(x)$ y $F(z)$.
 Por tanto, una isometría conserva separaciones y también la relación no orientada de estar entre. Lo que las distancias no determinan es **qué dirección llamamos izquierda y cuál derecha**. Una reflexión conserva toda la información métrica y de betweenness, pero cambia globalmente la orientación.
 
 []{#MA-SOL-ANM-01-001-040}
+
+[]{#MA-EX-ANM-01-001-040}
 
 ### 40. Trasladar y escalar en una sola transformación
 
@@ -2979,6 +3062,8 @@ Por eso no modifica la separación relativa ni el sentido de la orientación: s�
 
 []{#MA-SOL-ANM-01-001-041}
 
+[]{#MA-EX-ANM-01-001-041}
+
 ### 41. Componer transformaciones: escala y orientación
 
 **Cómo pensar este problema.** Cada transformación lleva dos datos estructurales: un factor métrico positivo, $|\lambda|$ o $|\mu|$, y un signo que decide la orientación. Al componer, ambos datos se multiplican.
@@ -3080,6 +3165,8 @@ Reflejar dos veces respecto del mismo punto devuelve cada punto a su posición o
 La conclusión transferible es que la orientación se comporta multiplicativamente mediante el signo, mientras que el cambio de escala métrica se comporta multiplicativamente mediante el valor absoluto.
 
 []{#MA-SOL-ANM-01-001-042}
+
+[]{#MA-EX-ANM-01-001-042}
 
 ### 42. Clasificar todas las isometrías de la recta
 
@@ -3278,3 +3365,5 @@ Este resultado cierra el hilo conceptual del capítulo. Las distancias determina
 La figura [C01-F14](#fig-anm-c01-f14) concentra esta lectura en una sola comparación.
 
 ![Tras normalizar F(0), toda isometría fija el origen y sólo puede elegir un signo global: las dos ramas finales son traslación o reflexión seguida de traslación.](../../assets/books/anm/C01/C01-F14.svg){#fig-anm-c01-f14 fig-alt="Diagrama de flujo de la prueba: se define G(x)=F(x)-F(0), se obtiene G(0)=0 y |G(x)|=|x|, se fuerza un signo global y aparecen las dos formas F(x)=x+c o F(x)=-x+c."}
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html)

@@ -18,7 +18,7 @@ for f in files:
   assert {x.replace('-EXR-','-SOL-') for x in a}==b,(f,a,b);exc+=len(a);sol+=len(b)
 assert exc==sol==338,(exc,sol)
 assert len(ids)==len(set(ids))==13
-assert 'MA-BOK-0015' in ids and all(f'MA-BCH-{i:04d}' in ids for i in range(226,238))
+assert 'MA-BOK-0015' in ids and all(f'MA-BCH-{i:04d}' in ids for i in range(331,343))
 svg=list((root/'assets/books/elementos-del-calculo').glob('*.svg'));assert len(svg)==7
 for figure in svg:
  assert len(figure.read_bytes())>1000

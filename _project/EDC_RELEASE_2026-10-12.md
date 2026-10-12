@@ -2,7 +2,7 @@
 
 Alta de *Elementos del cálculo — Un enfoque histórico, problemático y fundacional*, obra original de Alevi Peña para Matemática Abierta. Publicación y GNU FDL 1.3 o posterior solicitadas por el autor el 12 de octubre de 2026.
 
-- Libro `MA-BOK-0015`; C00–C11 `MA-BCH-0226`–`MA-BCH-0237`.
+- Libro `MA-BOK-0015`; C00–C11 `MA-BCH-0331`–`MA-BCH-0342`.
 - 52 unidades procedentes de Markdown, más portada, atlas, bibliografía y nota editorial: 56 páginas públicas.
 - 338 pares ejercicio/solución, 14 investigaciones adicionales con soluciones y siete SVG originales.
 - Enlaces de lectura desde Libros y Otros libros; navegación por capítulo y tipología.

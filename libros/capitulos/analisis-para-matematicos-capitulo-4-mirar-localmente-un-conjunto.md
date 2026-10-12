@@ -1,5 +1,5 @@
 ---
-title: "Capítulo 4 — Mirar localmente un conjunto"
+title: Capítulo 4 — Mirar localmente un conjunto
 content-id: MA-BCH-0086
 content-type: book-chapter
 collection: PM-ANA
@@ -9,21 +9,39 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
-prerequisites: [MA-BCH-0083]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- orden
+- topologia
+prerequisites:
+- MA-BCH-0083
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C04; referencias de contraste en la portada del libro."
+  - ANM-C04.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
+include-in-header:
+  text: |
+    <script>
+    window.MathJax = window.MathJax || {};
+    window.MathJax.tex = window.MathJax.tex || {};
+    window.MathJax.tex.macros = Object.assign({}, window.MathJax.tex.macros, {
+      xhookrightarrow: ["\\overset{#1}{\\hookrightarrow}", 1],
+      centernot: ["\\mathrel{\\rlap{/}#1}", 1]
+    });
+    </script>
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.md)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 4](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html) · [Ejercicios](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.html)
+
+[]{#MA-SEC-ANM-01-004-008}
 
 Hasta ahora hemos mirado la recta real desde tres escalas distintas. En C01 aprendimos a reconocer su orden y su geometría métrica: intervalos, distancia, valor absoluto y bolas. En C02 usamos el orden para describir barreras de conjuntos, y en C03 añadimos la completitud que garantiza ciertas fronteras extremales. Ahora cambiaremos otra vez el punto de vista.
 
@@ -494,11 +512,9 @@ No estamos formulando todavía axiomas abstractos de una topología. Simplemente
 
 ### La figura que necesitaremos
 
-La figura `C04-F01` distingue una vecindad básica de una vecindad general. La matemática no depende de la figura, pero el contraste hace visible el margen exigido por la definición.
+La figura `[C04-F01](#fig-anm-c04-f01)` distingue una vecindad básica de una vecindad general. La matemática no depende de la figura, pero el contraste hace visible el margen exigido por la definición.
 
-![](../../assets/books/anm/C04/C04-F01.svg){fig-alt="Dos paneles comparan un conjunto que contiene una bola centrada en x con otro que contiene a x sólo como punto de borde y no es vecindad."}
-
-*Figura C04-F01. La bola es la ventana básica. Una vecindad general puede ser mayor, pero debe contener alguna bola centrada en el punto.*
+![La bola es la ventana básica. Una vecindad general puede ser mayor, pero debe contener alguna bola centrada en el punto.](../../assets/books/anm/C04/C04-F01.svg){#fig-anm-c04-f01 fig-alt="Dos paneles comparan un conjunto que contiene una bola centrada en x con otro que contiene a x sólo como punto de borde y no es vecindad."}
 
 La idea que la figura hace visible puede expresarse también sin dibujo:
 
@@ -1281,7 +1297,7 @@ La pertenencia del centro y el comportamiento de las ventanas son datos distinto
 
 ### La figura de comparación local
 
-La figura `C04-F02`, integrada físicamente en §4.4 una vez definida la frontera, compara con una misma gramática de ventanas los distintos comportamientos locales. En esta sección anticipamos sólo sus dos primeros casos: interior y exterior.
+La figura `[C04-F02](#fig-anm-c04-f02)`, integrada físicamente en §4.4 una vez definida la frontera, compara con una misma gramática de ventanas los distintos comportamientos locales. En esta sección anticipamos sólo sus dos primeros casos: interior y exterior.
 
 La parte ya disponible puede escribirse sin dibujo como
 
@@ -1952,11 +1968,9 @@ El punto $1/2$ muestra por qué la imagen «añadir extremos» es insuficiente. 
 
 ### La figura de clausura
 
-La figura `C04-F03` rompe precisamente la falsa identificación entre clausura y «cerrar extremos».
+La figura `[C04-F03](#fig-anm-c04-f03)` rompe precisamente la falsa identificación entre clausura y «cerrar extremos».
 
-![](../../assets/books/anm/C04/C04-F03.svg){fig-alt="Dos rectas muestran un intervalo abierto perforado en un medio y su clausura; una lupa local muestra que toda ventana alrededor de la perforación vuelve a encontrar el conjunto."}
-
-*Figura C04-F03. La clausura no se define añadiendo extremos: también recupera puntos interiores ausentes cuando ninguna ventana logra evitar al conjunto.*
+![La clausura no se define añadiendo extremos: también recupera puntos interiores ausentes cuando ninguna ventana logra evitar al conjunto.](../../assets/books/anm/C04/C04-F03.svg){#fig-anm-c04-f03 fig-alt="Dos rectas muestran un intervalo abierto perforado en un medio y su clausura; una lupa local muestra que toda ventana alrededor de la perforación vuelve a encontrar el conjunto."}
 
 La figura usa el ejemplo
 
@@ -2577,11 +2591,9 @@ $$
 
 Alrededor de cada uno, toda bola positiva contiene puntos del intervalo $(0,1)$ y también puntos exteriores a $[0,1]$. Por tanto ambos son fronterizos, independientemente de que el extremo concreto haya sido incluido o excluido del conjunto.
 
-La figura `C04-F05` hace visible exactamente esta independencia.
+La figura `[C04-F05](#fig-anm-c04-f05)` hace visible exactamente esta independencia.
 
-![](../../assets/books/anm/C04/C04-F05.svg){fig-alt="Cuatro filas muestran los intervalos (0,1), [0,1], [0,1) y (0,1]; la pertenencia de los extremos cambia pero la frontera permanece igual a {0,1}."}
-
-*Figura C04-F05. La frontera describe lo que ve toda ventana, no si el centro pertenece al conjunto.*
+![La frontera describe lo que ve toda ventana, no si el centro pertenece al conjunto.](../../assets/books/anm/C04/C04-F05.svg){#fig-anm-c04-f05 fig-alt="Cuatro filas muestran los intervalos (0,1), [0,1], [0,1) y (0,1]; la pertenencia de los extremos cambia pero la frontera permanece igual a {0,1}."}
 
 La figura no define frontera mediante «extremos». Muestra sólo un ejemplo donde modificar la pertenencia de los extremos deja inalterado el test local de frontera.
 
@@ -2822,13 +2834,11 @@ Esta partición resume geométricamente las tres respuestas posibles al test de 
 
 ### Relectura de la figura central de ventanas
 
-`C04-F02`, registrada en §4.2, estaba deliberadamente incompleta en su primera lectura. Allí usamos sólo los casos interior y exterior.
+`[C04-F02](#fig-anm-c04-f02)`, registrada en §4.2, estaba deliberadamente incompleta en su primera lectura. Allí usamos sólo los casos interior y exterior.
 
 Ahora ya puede leerse su tercer panel.
 
-![](../../assets/books/anm/C04/C04-F02.svg){fig-alt="Tres paneles muestran interior, exterior y frontera con la misma gramática de ventanas; el tercer panel recuerda que la definición cuantifica todos los radios."}
-
-*Figura C04-F02. Interior y exterior requieren que exista margen; en la frontera toda ventana positiva ve ambos lados. Las ventanas dibujadas son sólo instancias.*
+![Interior y exterior requieren que exista margen; en la frontera toda ventana positiva ve ambos lados. Las ventanas dibujadas son sólo instancias.](../../assets/books/anm/C04/C04-F02.svg){#fig-anm-c04-f02 fig-alt="Tres paneles muestran interior, exterior y frontera con la misma gramática de ventanas; el tercer panel recuerda que la definición cuantifica todos los radios."}
 
 La comparación lógica completa es
 
@@ -3311,7 +3321,7 @@ La pertenencia a $A$ cambia entre los casos, pero no es el criterio que decide l
 
 ### La figura de la bola perforada
 
-La figura `C04-F04`, integrada físicamente en §4.6, compara adherencia, acumulación y el fenómeno representado por el punto $2$ en el ejemplo anterior.
+La figura `[C04-F04](#fig-anm-c04-f04)`, integrada físicamente en §4.6, compara adherencia, acumulación y el fenómeno representado por el punto $2$ en el ejemplo anterior.
 
 La figura hace visible que la diferencia matemática no consiste en cambiar el radio, sino en cambiar el **conjunto que se inspecciona**:
 
@@ -4078,13 +4088,11 @@ Esta configuración separa cuatro preguntas distintas:
 
 Confundir cualquiera de ellas con otra destruye la clasificación local.
 
-### Relectura de `C04-F04`
+### Relectura de `[C04-F04](#fig-anm-c04-f04)`
 
-La figura `C04-F04`, anticipada en §4.5, puede leerse ahora con su tercer concepto.
+La figura `[C04-F04](#fig-anm-c04-f04)`, anticipada en §4.5, puede leerse ahora con su tercer concepto.
 
-![](../../assets/books/anm/C04/C04-F04.svg){fig-alt="Tres paneles para x igual a cero, un medio y dos comparan bola completa, bola perforada y ventana aislante en A igual a (0,1) unido con el punto 2."}
-
-*Figura C04-F04. Perforar el centro cambia el test: un punto aislado puede ser adherente sin ser de acumulación, y un punto de acumulación puede quedar fuera del conjunto.*
+![Perforar el centro cambia el test: un punto aislado puede ser adherente sin ser de acumulación, y un punto de acumulación puede quedar fuera del conjunto.](../../assets/books/anm/C04/C04-F04.svg){#fig-anm-c04-f04 fig-alt="Tres paneles para x igual a cero, un medio y dos comparan bola completa, bola perforada y ventana aislante en A igual a (0,1) unido con el punto 2."}
 
 En $x=2$ la figura muestra una ventana con
 
@@ -4862,11 +4870,9 @@ $$
 
 ### La figura local → global
 
-La figura `C04-F06` muestra el cambio de escala de esta sección.
+La figura `[C04-F06](#fig-anm-c04-f06)` muestra el cambio de escala de esta sección.
 
-![](../../assets/books/anm/C04/C04-F06.svg){fig-alt="Dos paneles muestran varios radios locales distintos en un abierto y ventanas exteriores que evitan un cerrado; una banda inferior contrasta el orden correcto de cuantificadores con un radio global falso."}
-
-*Figura C04-F06. Ser abierto es global, pero se construye con radios locales que pueden depender del punto; cerrado se lee dualmente en el complemento.*
+![Ser abierto es global, pero se construye con radios locales que pueden depender del punto; cerrado se lee dualmente en el complemento.](../../assets/books/anm/C04/C04-F06.svg){#fig-anm-c04-f06 fig-alt="Dos paneles muestran varios radios locales distintos en un abierto y ventanas exteriores que evitan un cerrado; una banda inferior contrasta el orden correcto de cuantificadores con un radio global falso."}
 
 El panel de abierto representa varios puntos
 
@@ -5783,11 +5789,9 @@ La perforación muestra algo que un simple intervalo no deja ver: un punto puede
 
 ### La figura de síntesis
 
-La figura `C04-F08` representa el diccionario anterior sin convertirlo en una tabla para memorizar.
+La figura `[C04-F08](#fig-anm-c04-f08)` representa el diccionario anterior sin convertirlo en una tabla para memorizar.
 
-![](../../assets/books/anm/C04/C04-F08.svg){fig-alt="Mapa lógico con B(x,r) en el centro y seis nodos para interior, exterior, adherencia, frontera, acumulación y aislamiento."}
-
-*Figura C04-F08. Las nociones de C04 reutilizan la misma ventana y cambian el cuantificador o la forma de intersectar el conjunto.*
+![Las nociones de C04 reutilizan la misma ventana y cambian el cuantificador o la forma de intersectar el conjunto.](../../assets/books/anm/C04/C04-F08.svg){#fig-anm-c04-f08 fig-alt="Mapa lógico con B(x,r) en el centro y seis nodos para interior, exterior, adherencia, frontera, acumulación y aislamiento."}
 
 La figura conserva como objeto común la ventana $B(x,r)$ y hace visibles sólo las modificaciones estructurales: contener $A$ o $A^c$, tocar $A$, tocar simultáneamente ambos lados, perforar el centro o aislarlo.
 
@@ -5883,4 +5887,6 @@ $$
 
 heredada de C01 se ha convertido en un lenguaje para leer la estructura local de los subconjuntos de la recta real.
 
-[← Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 4](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html) · [Ejercicios](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.html)
+
+[← Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Capítulo 5 →](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual.html)

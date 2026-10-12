@@ -22,8 +22,8 @@ provenance:
     note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra
       independiente.'
 source-id: EDC-C10
-source-sha256: 4fa49254e8498f7061a1ce0d68ee1b16022ba88392e96f6a458b01ccb6e80398
-content-id: MA-BCH-0236
+source-sha256: 7213233b7af3857b0fe4e5b3682b2a96f374a52eaa980a06e5646933dcb8aea7
+content-id: MA-BCH-0341
 content-type: book-chapter
 related:
 - MA-BOK-0015

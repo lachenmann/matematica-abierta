@@ -1,5 +1,5 @@
 ---
-title: "Ejercicios — Capítulo 3"
+title: Ejercicios — Capítulo 3
 content-id: MA-BCH-0093
 content-type: book-chapter
 collection: PM-ANA
@@ -9,27 +9,35 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
-prerequisites: [MA-BCH-0084]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- orden
+- topologia
+prerequisites:
+- MA-BCH-0084
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C03; referencias de contraste en la portada del libro."
+  - ANM-C03_EJERCICIOS.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.md)
-
-# Ejercicios — Capítulo 3
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)
 
 ## §3.1. El problema heredado: definir no basta
 
 []{#MA-EX-ANM-01-003-001}
+
+[]{#MA-SEC-ANM-01-003-001}
+
+[]{#MA-SOL-ANM-01-003-001}
 
 ### 1. Qué permiten concluir las hipótesis
 
@@ -60,6 +68,8 @@ Para cada afirmación que no esté forzada, indica qué información adicional f
 
 []{#MA-EX-ANM-01-003-002}
 
+[]{#MA-SOL-ANM-01-003-002}
+
 ### 2. Densidad no fabrica una frontera
 
 Un estudiante razona así sobre
@@ -80,6 +90,8 @@ Diagnostica el argumento.
 No invoques todavía ningún principio de completitud de $\mathbb R$.
 
 []{#MA-EX-ANM-01-003-003}
+
+[]{#MA-SOL-ANM-01-003-003}
 
 ### 3. Probar el fallo racional sin nombrar la frontera
 
@@ -120,6 +132,8 @@ La demostración debe permanecer enteramente dentro de $\mathbb Q$ y no debe ide
 
 []{#MA-EX-ANM-01-003-004}
 
+[]{#MA-SOL-ANM-01-003-004}
+
 ### 4. Cambiar el umbral cambia la existencia, no la densidad
 
 Compara los tres conjuntos racionales
@@ -158,6 +172,10 @@ No uses resultados de §3.2 o posteriores.
 
 []{#MA-EX-ANM-01-003-005}
 
+[]{#MA-SEC-ANM-01-003-002}
+
+[]{#MA-SOL-ANM-01-003-005}
+
 ### 5. Antes de invocar el principio
 
 Para cada conjunto siguiente, decide si el **principio del supremo** puede aplicarse directamente en $\mathbb R$:
@@ -183,6 +201,8 @@ No calcules supremos mediante resultados posteriores: el objetivo es entrenar la
 
 []{#MA-EX-ANM-01-003-006}
 
+[]{#MA-SOL-ANM-01-003-006}
+
 ### 6. El mismo conjunto, dos universos distintos
 
 Considera de nuevo
@@ -205,6 +225,8 @@ Podemos leerlo como subconjunto de $\mathbb Q$ o, usando $\mathbb Q\subseteq\mat
 No identifiques $s$ con ningún número real concreto.
 
 []{#MA-EX-ANM-01-003-007}
+
+[]{#MA-SOL-ANM-01-003-007}
 
 ### 7. La inclusión produce una desigualdad entre supremos existentes
 
@@ -236,6 +258,8 @@ No cites simplemente «monotonía del supremo»: reconstruye la demostración de
 
 []{#MA-EX-ANM-01-003-008}
 
+[]{#MA-SOL-ANM-01-003-008}
+
 ### 8. Trasladar un conjunto sin gastar completitud dos veces
 
 Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente, y sea $c\in\mathbb R$. Define
@@ -265,6 +289,8 @@ Al final, identifica qué paso usa completitud y cuáles usan sólo orden, álge
 
 []{#MA-EX-ANM-01-003-009}
 
+[]{#MA-SOL-ANM-01-003-009}
+
 ### 9. Un supremo real no vuelve completo a $\mathbb Q$
 
 Un estudiante afirma:
@@ -284,6 +310,10 @@ La respuesta debe distinguir **existencia externa en $\mathbb R$** de **existenc
 ## §3.3. La cara dual: el principio del ínfimo
 
 []{#MA-EX-ANM-01-003-010}
+
+[]{#MA-SEC-ANM-01-003-003}
+
+[]{#MA-SOL-ANM-01-003-010}
 
 ### 10. Traducir una prueba superior a lenguaje inferior
 
@@ -309,6 +339,8 @@ En cada traducción debes sustituir explícitamente $b=-a$, indicar cuándo una 
 Concluye qué papel desempeña la reflexión en el paso de supremo a ínfimo. No invoques todavía ningún resultado de §3.4 o posteriores.
 
 []{#MA-EX-ANM-01-003-011}
+
+[]{#MA-SOL-ANM-01-003-011}
 
 ### 11. Las familias completas de cotas también se reflejan
 
@@ -348,6 +380,8 @@ La prueba debe localizar exactamente el único paso de completitud y separar la 
 
 []{#MA-EX-ANM-01-003-012}
 
+[]{#MA-SOL-ANM-01-003-012}
+
 ### 12. El ínfimo de una unión
 
 Sean $A,B\subseteq\mathbb R$ conjuntos no vacíos y acotados inferiormente.
@@ -374,6 +408,8 @@ La demostración debe incluir:
 No cites una fórmula conocida para uniones: deriva la igualdad desde las definiciones y el principio del ínfimo ya obtenido en §3.3.
 
 []{#MA-EX-ANM-01-003-013}
+
+[]{#MA-SOL-ANM-01-003-013}
 
 ### 13. Trasladar un ínfimo abriendo la caja negra
 
@@ -404,6 +440,8 @@ En particular:
 5. explica por qué no fue necesario gastar completitud una segunda vez para $A+c$.
 
 []{#MA-EX-ANM-01-003-014}
+
+[]{#MA-SOL-ANM-01-003-014}
 
 ### 14. Una transformación afín decreciente intercambia las fronteras
 
@@ -451,6 +489,10 @@ No uses propiedad arquimediana, sucesiones ni resultados de §3.4 o posteriores.
 
 []{#MA-EX-ANM-01-003-015}
 
+[]{#MA-SEC-ANM-01-003-004}
+
+[]{#MA-SOL-ANM-01-003-015}
+
 ### 15. Un paso positivo repetido supera cualquier barrera
 
 Sean
@@ -477,6 +519,8 @@ Tu prueba debe:
 No vuelvas a demostrar desde cero la propiedad arquimediana: úsala como el resultado ya obtenido en §3.4.
 
 []{#MA-EX-ANM-01-003-016}
+
+[]{#MA-SOL-ANM-01-003-016}
 
 ### 16. Construir una malla finita más fina que una tolerancia
 
@@ -515,6 +559,8 @@ No uses resultados de §3.5 o posteriores.
 
 []{#MA-EX-ANM-01-003-017}
 
+[]{#MA-SOL-ANM-01-003-017}
+
 ### 17. Abrir toda la cadena: de SUP a una escala $L/N<\varepsilon$
 
 Sean
@@ -547,6 +593,8 @@ La respuesta debe dejar visible por qué la existencia de $N$ depende estructura
 
 []{#MA-EX-ANM-01-003-018}
 
+[]{#MA-SOL-ANM-01-003-018}
+
 ### 18. «No tiene máximo» no significa «no está acotado»
 
 Un estudiante propone esta prueba de la propiedad arquimediana:
@@ -562,6 +610,8 @@ Diagnostica el argumento.
 5. Explica por qué la prueba reparada no contradice el contraejemplo del apartado 2.
 
 []{#MA-EX-ANM-01-003-019}
+
+[]{#MA-SOL-ANM-01-003-019}
 
 ### 19. Arquimediano no implica completo
 
@@ -596,6 +646,10 @@ No identifiques el hueco de $S_2$ con ningún número real concreto: utiliza ún
 ## §3.5. Intervalos encajados: conservar un punto al refinar
 
 []{#MA-EX-ANM-01-003-020}
+
+[]{#MA-SEC-ANM-01-003-005}
+
+[]{#MA-SOL-ANM-01-003-020}
 
 ### 20. Antes de aplicar el teorema de intervalos encajados
 
@@ -634,6 +688,8 @@ En cada caso verifica por separado:
 No calcules todavía la intersección cuando no sea necesario. El objetivo es entrenar la lectura exacta de hipótesis antes de invocar una consecuencia de completitud.
 
 []{#MA-EX-ANM-01-003-021}
+
+[]{#MA-SOL-ANM-01-003-021}
 
 ### 21. La misma existencia vista desde los extremos derechos
 
@@ -679,6 +735,8 @@ Debes demostrar, en este orden:
 Localiza el paso que hereda completitud a través del principio del ínfimo de §3.3 y explica por qué las desigualdades posteriores no consumen una nueva aplicación de completitud.
 
 []{#MA-EX-ANM-01-003-022}
+
+[]{#MA-SOL-ANM-01-003-022}
 
 ### 22. Describir toda la intersección, no sólo encontrar un punto
 
@@ -730,6 +788,8 @@ No añadas ninguna hipótesis de estrechamiento. El resultado debe dejar abierta
 
 []{#MA-EX-ANM-01-003-023}
 
+[]{#MA-SOL-ANM-01-003-023}
+
 ### 23. Un solo gasto de completitud, tres usos del supremo
 
 Considera la prueba estándar de §3.5 y el conjunto
@@ -762,6 +822,8 @@ Tu respuesta debe:
 No introduzcas convergencia, compactidad ni resultados de §3.6 o posteriores.
 
 []{#MA-EX-ANM-01-003-024}
+
+[]{#MA-SOL-ANM-01-003-024}
 
 ### 24. Qué ocurre al retirar una hipótesis
 
@@ -802,6 +864,8 @@ $$
 Concluye qué muestran estos ejemplos —y qué **no** muestran— acerca del papel de las hipótesis de cierre y encajamiento.
 
 []{#MA-EX-ANM-01-003-025}
+
+[]{#MA-SOL-ANM-01-003-025}
 
 ### 25. Transportar intervalos encajados por una transformación afín
 
@@ -860,6 +924,10 @@ Explica conceptualmente por qué una transformación afín biyectiva puede inver
 
 []{#MA-EX-ANM-01-003-026}
 
+[]{#MA-SEC-ANM-01-003-006}
+
+[]{#MA-SOL-ANM-01-003-026}
+
 ### 26. El estrechamiento controla la cardinalidad sin usar encajamiento
 
 Sea
@@ -904,6 +972,8 @@ Al final, identifica cuáles de las hipótesis habituales de §3.5 —cierre, en
 
 []{#MA-EX-ANM-01-003-027}
 
+[]{#MA-SOL-ANM-01-003-027}
+
 ### 27. Desmontar el teorema del singleton en piezas lógicas
 
 Sean
@@ -947,6 +1017,8 @@ Dibuja al final, en texto matemático, dos rutas de dependencia: una para **exis
 
 []{#MA-EX-ANM-01-003-028}
 
+[]{#MA-SOL-ANM-01-003-028}
+
 ### 28. «Se hace cada vez más pequeño» no es todavía una prueba
 
 Un estudiante parte de un intervalo de ancho $L>0$, lo biseca repetidamente y escribe:
@@ -972,6 +1044,8 @@ Diagnostica el argumento.
 No escribas $\lim_{k\to\infty}L/2^k$ ni cites resultados sobre sucesiones.
 
 []{#MA-EX-ANM-01-003-029}
+
+[]{#MA-SOL-ANM-01-003-029}
 
 ### 29. Estrechamiento arbitrario sin punto común
 
@@ -1007,6 +1081,8 @@ $$
 $$
 
 []{#MA-EX-ANM-01-003-030}
+
+[]{#MA-SOL-ANM-01-003-030}
 
 ### 30. Refinar en $p$ partes en vez de bisecar
 
@@ -1050,6 +1126,8 @@ Demuestra que:
 Explica qué parte del argumento cambia respecto de la bisección y qué parte permanece idéntica. No uses teoría de convergencia.
 
 []{#MA-EX-ANM-01-003-031}
+
+[]{#MA-SOL-ANM-01-003-031}
 
 ### 31. Tres formas de reconocer que el núcleo es un solo punto
 
@@ -1106,6 +1184,10 @@ Cierra el ejercicio indicando exactamente dónde se requiere completitud para di
 
 []{#MA-EX-ANM-01-003-032}
 
+[]{#MA-SEC-ANM-01-003-007}
+
+[]{#MA-SOL-ANM-01-003-032}
+
 ### 32. El mismo objeto en tres lenguajes
 
 Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente, y sea
@@ -1134,6 +1216,8 @@ Traduce la búsqueda de $\sup A$ a los otros dos lenguajes equivalentes de §3.7
 Indica qué parte del argumento es una mera **traducción lógica** y qué parte necesita una hipótesis estructural de existencia si todavía no sabemos que el objeto existe.
 
 []{#MA-EX-ANM-01-003-033}
+
+[]{#MA-SOL-ANM-01-003-033}
 
 ### 33. De SUP a GCI sin pasar por SEP
 
@@ -1179,6 +1263,8 @@ Cierra comparando esta ruta directa con la ruta `SUP ⇒ SEP ⇒ GCI`: ¿qué pa
 
 []{#MA-EX-ANM-01-003-034}
 
+[]{#MA-SOL-ANM-01-003-034}
+
 ### 34. «Intervalos encajados» no basta para decir «equivalente»
 
 Un estudiante resume §3.7 así:
@@ -1202,6 +1288,8 @@ Diagnostica esta conclusión.
 La respuesta debe distinguir cuidadosamente **equivalencia demostrada**, **consecuencia** y **especialización**.
 
 []{#MA-EX-ANM-01-003-035}
+
+[]{#MA-SOL-ANM-01-003-035}
 
 ### 35. El mismo fallo racional en tres idiomas
 
@@ -1251,6 +1339,8 @@ No nombres la frontera real ausente ni uses la completitud de $\mathbb R$ para r
 
 []{#MA-EX-ANM-01-003-036}
 
+[]{#MA-SOL-ANM-01-003-036}
+
 ### 36. De intersecciones por pares a una intersección global
 
 Sea
@@ -1292,6 +1382,8 @@ La solución debe separar dos capas:
 Explica por qué, en esta prueba, el hecho de trabajar en la recta ordenada es esencial para convertir la intersección por pares en desigualdades entre extremos.
 
 []{#MA-EX-ANM-01-003-037}
+
+[]{#MA-SOL-ANM-01-003-037}
 
 ### 37. GCI más estrechamiento: unicidad sin numerabilidad ni encajamiento
 
@@ -1338,6 +1430,10 @@ Concluye comparando este resultado con §3.6: determina exactamente qué hipóte
 ## §3.8. Dónde se gasta la completitud
 
 []{#MA-EX-ANM-01-003-038}
+
+[]{#MA-SEC-ANM-01-003-008}
+
+[]{#MA-SOL-ANM-01-003-038}
 
 ### 38. Auditar una prueba con tres capas de dependencia
 
@@ -1403,6 +1499,8 @@ No resumas todo diciendo simplemente «la prueba usa completitud».
 
 []{#MA-EX-ANM-01-003-039}
 
+[]{#MA-SOL-ANM-01-003-039}
+
 ### 39. Recompilar la prueba usando separación en lugar de SUP
 
 En §3.5, la existencia de un punto común para una familia numerable de intervalos cerrados encajados se demostró usando
@@ -1467,6 +1565,8 @@ No introduzcas supremos ni ínfimos en la prueba recompilada.
 
 []{#MA-EX-ANM-01-003-040}
 
+[]{#MA-SOL-ANM-01-003-040}
+
 ### 40. Qué sobrevive sin completitud y qué debe exportar C03
 
 Compara estructuralmente $\mathbb R$ con $\mathbb Q$ usando únicamente los resultados establecidos en C02–C03 y el conjunto
@@ -1502,3 +1602,5 @@ Después responde estas cuestiones de conexión:
 4. explica por qué esta clasificación no constituye todavía una demostración de ningún teorema de C07, C10 o C23.
 
 Cierra formulando en una sola frase matemática —sin apelar a la imagen informal de una línea continua— qué aporta la completitud de $\mathbb R$.
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)
