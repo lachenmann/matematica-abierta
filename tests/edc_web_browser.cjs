@@ -39,7 +39,7 @@ const base=process.env.EDC_QA_URL||'http://127.0.0.1:8767';
     if(filename==='capitulo-02.html'||filename==='figuras.html'){
      const image=page.locator('main img').first();if(await image.count()){await image.scrollIntoViewIfNeeded();await page.screenshot({path:path.join(output,`figure-${filename}-${width}.png`)});}
     }
-    await page.locator('a.quarto-color-scheme-toggle').first().click();
+    await page.evaluate(()=>window.quartoToggleColorScheme());
     await page.evaluate(async()=>{await document.fonts.ready;});
     const dark=await page.evaluate(()=>({theme:document.body.classList.contains('quarto-dark')?'dark':'light',width:innerWidth,pageWidth:document.documentElement.scrollWidth,mathErrors:document.querySelectorAll('mjx-merror,merror,[data-mjx-error],[mathcolor="red"]').length}));
     dark.pass=dark.theme==='dark'&&dark.pageWidth<=width+2&&!dark.mathErrors;dark.filename=filename;darkChecks.push(dark);
