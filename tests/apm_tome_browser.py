@@ -15,11 +15,17 @@ with sync_playwright() as p:
  contexts={width:browser.new_context(viewport={"width":width,"height":1000},device_scale_factor=1) for width in [375,1440]}
  for row in manifest['chapters']:
   for width in [375,1440]:
+   print(json.dumps({'phase':'START','chapter':row['chapter'],'width':width}),flush=True)
+   (out/'current-page.json').write_text(json.dumps({'chapter':row['chapter'],'width':width,'phase':'START'}))
    page=contexts[width].new_page()
    errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
    response=page.goto(base+'/'+row['path'].replace('.md','.html'),wait_until='networkidle',timeout=120000)
    page.wait_for_function('!!window.MathJax?.startup?.promise',timeout=120000)
-   page.evaluate('async()=>{await MathJax.startup.promise;await document.fonts.ready}')
+   page.evaluate('''async()=>{
+    const bounded=(promise,ms,label)=>Promise.race([promise,new Promise((_,reject)=>setTimeout(()=>reject(new Error(label+' exceeded '+ms+'ms')),ms))]);
+    await bounded(MathJax.startup.promise,120000,'MathJax startup');
+    await bounded(document.fonts.ready,30000,'Font readiness');
+   }''')
    data=page.evaluate('''()=>{
     const main=document.querySelector('main.content');const ids=[...main.querySelectorAll('[id]')].map(x=>x.id);
     return {width:innerWidth,pageWidth:document.documentElement.scrollWidth,
