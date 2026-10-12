@@ -239,21 +239,15 @@ Aprender álgebra consiste en gran medida en aprender a reconocer esas preguntas
 
 **Edición del 2 de octubre de 2026:** están disponibles los **capítulos 1–40 y las tres interfaces fundacionales**, incluida la interfaz inicial presentada como capítulo 0. Son **43 unidades matemáticas**, además del prefacio y la guía de lectura.
 
-::: {.talg-parts-table}
-
-| Parte | Unidades | Contenido |
-|---|---|---|
-| [Parte 0 — Fundamentos y lenguaje](#parte-0) | Tres interfaces fundacionales | Funciones, inversas, equivalencias y cocientes |
-| [Parte I — Operaciones y estructuras](#parte-i) | Capítulo 1 | Operaciones binarias, magmas y asociatividad |
-| [Parte II — Monoides y grupos](#parte-ii) | Capítulos 2–13 | Subgrupos, morfismos, normalidad, cocientes e isomorfía |
-| [Parte III — Anillos y dominios](#parte-iii) | Capítulos 14–21 | Unidades, ideales, cocientes y dominios íntegros |
-| [Parte IV — Cuerpos](#parte-iv) | Capítulos 22–24 | Subcuerpos, morfismos y cuerpo de fracciones |
-| [Parte V — Estructuras ordenadas](#parte-v) | Capítulos 25–28 | Grupos, anillos y cuerpos ordenados; arquimedianidad |
-| [Parte VI — Construcciones y transporte](#parte-vi) | Capítulos 29–31 | Productos, isomorfías superiores, correspondencia y descenso |
-| [Parte VII — Espacios vectoriales](#parte-vii) | Capítulos 32–37 | Subespacios, bases, dimensión finita, mapas lineales, cocientes y dualidad |
-| [Parte VIII — Álgebra multilineal básica](#parte-viii) | Capítulos 38–40 | Bilinealidad, multilinealidad, formas y producto tensorial |
-
-:::
+1. [Parte 0 — Fundamentos y lenguaje](#parte-0) — Tres interfaces fundacionales: Funciones, inversas, equivalencias y cocientes.
+2. [Parte I — Operaciones y estructuras](#parte-i) — Capítulo 1: Operaciones binarias, magmas y asociatividad.
+3. [Parte II — Monoides y grupos](#parte-ii) — Capítulos 2–13: Subgrupos, morfismos, normalidad, cocientes e isomorfía.
+4. [Parte III — Anillos y dominios](#parte-iii) — Capítulos 14–21: Unidades, ideales, cocientes y dominios íntegros.
+5. [Parte IV — Cuerpos](#parte-iv) — Capítulos 22–24: Subcuerpos, morfismos y cuerpo de fracciones.
+6. [Parte V — Estructuras ordenadas](#parte-v) — Capítulos 25–28: Grupos, anillos y cuerpos ordenados; arquimedianidad.
+7. [Parte VI — Construcciones y transporte](#parte-vi) — Capítulos 29–31: Productos, isomorfías superiores, correspondencia y descenso.
+8. [Parte VII — Espacios vectoriales](#parte-vii) — Capítulos 32–37: Subespacios, bases, dimensión finita, mapas lineales, cocientes y dualidad.
+9. [Parte VIII — Álgebra multilineal básica](#parte-viii) — Capítulos 38–40: Bilinealidad, multilinealidad, formas y producto tensorial.
 
 Las referencias de lectura usan números editoriales; los identificadores estables se conservan como anclas para recorrer las dependencias. Cada capítulo presenta sus definiciones, hipótesis y demostraciones, con los fundamentos y usos del axioma de elección declarados donde corresponden.
 
@@ -261,70 +255,156 @@ Las referencias de lectura usan números editoriales; los identificadores establ
 
 ### Parte 0 — Fundamentos y lenguaje {#parte-0}
 
-1. [**Capítulo 0 — Interfaz fundacional para Álgebra**](../capitulos/tratado-de-algebra-capitulo-0-interfaz-fundacional.md) (`MA-BCH-0021`) — establece la interfaz explícita con el fundamento lógico-conjuntista: pares ordenados, productos cartesianos, funciones, identidad y composición; verifica la ausencia de circularidad y deja habilitada la definición formal de operación binaria.
-2. [**Interfaz funcional II — Biyectividad e inversas**](../capitulos/tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md) (`MA-BCH-0022`) — incorpora inyectividad, sobreyectividad, biyectividad y función inversa; separa explícitamente la biyectividad de la compatibilidad algebraica y prepara la noción de isomorfismo.
-3. [**Interfaz fundacional III — Relaciones de equivalencia y cocientes**](../capitulos/tratado-de-algebra-relaciones-equivalencia-cocientes.md) (`MA-BCH-0023`) — incorpora relaciones de equivalencia, clases y conjuntos cociente; fija la distinción entre representante y clase y exige pruebas explícitas de buena definición para operaciones sobre cocientes.
+0. [**Interfaz fundacional para Álgebra**](../capitulos/tratado-de-algebra-capitulo-0-interfaz-fundacional.md) (`MA-BCH-0021`).
+
+    establece la interfaz explícita con el fundamento lógico-conjuntista: pares ordenados, productos cartesianos, funciones, identidad y composición; verifica la ausencia de circularidad y deja habilitada la definición formal de operación binaria.
+2. [**Interfaz funcional II — Biyectividad e inversas**](../capitulos/tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md) (`MA-BCH-0022`).
+
+    incorpora inyectividad, sobreyectividad, biyectividad y función inversa; separa explícitamente la biyectividad de la compatibilidad algebraica y prepara la noción de isomorfismo.
+3. [**Interfaz fundacional III — Relaciones de equivalencia y cocientes**](../capitulos/tratado-de-algebra-relaciones-equivalencia-cocientes.md) (`MA-BCH-0023`).
+
+    incorpora relaciones de equivalencia, clases y conjuntos cociente; fija la distinción entre representante y clase y exige pruebas explícitas de buena definición para operaciones sobre cocientes.
 
 ### Parte I — Operaciones y estructuras {#parte-i}
 
-4. [**Capítulo 1 — Operaciones binarias y estructuras elementales**](../capitulos/tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md) (`MA-BCH-0024`) — inicia la Parte I con la definición de operación binaria interna, la notación infija, el magma como estructura mínima y la asociatividad como primera ley algebraica.
+1. [**Operaciones binarias y estructuras elementales**](../capitulos/tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md) (`MA-BCH-0024`).
+
+    inicia la Parte I con la definición de operación binaria interna, la notación infija, el magma como estructura mínima y la asociatividad como primera ley algebraica.
 
 ### Parte II — Monoides y grupos {#parte-ii}
 
-5. [**Capítulo 2 — Semigrupos**](../capitulos/tratado-de-algebra-capitulo-2-semigrupos.md) (`MA-BCH-0025`) — abre la Parte II definiendo el semigrupo como magma asociativo y separa lo que la asociatividad permite de las propiedades que todavía no se han introducido.
-6. [**Capítulo 3 — Elementos neutros y monoides**](../capitulos/tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md) (`MA-BCH-0026`) — distingue neutros izquierdo, derecho y bilateral; demuestra la coincidencia de neutros laterales y la unicidad del neutro sin usar asociatividad; define monoide como semigrupo con neutro bilateral.
-7. [**Capítulo 4 — Inversos y grupos**](../capitulos/tratado-de-algebra-capitulo-4-inversos-y-grupos.md) (`MA-BCH-0027`) — distingue inversos izquierdo, derecho y bilateral; demuestra mediante asociatividad que los inversos laterales coinciden y que el inverso es único; define grupo como monoide en el que todo elemento posee inverso bilateral.
-8. [**Capítulo 5 — Conmutatividad y grupos abelianos**](../capitulos/tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md) (`MA-BCH-0028`) — introduce la conmutatividad como una ley independiente de una operación binaria y define el grupo abeliano como grupo con operación conmutativa, cerrando la primera jerarquía estructural del tratado.
-9. [**Capítulo 6 — Subestructuras y criterio de subgrupo**](../capitulos/tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md) (`MA-BCH-0030`) — construye la restricción canónica de una operación a subconjuntos cerrados, define submagmas, subsemigrupos, submonoides y subgrupos y demuestra el criterio de subgrupo de una sola condición.
-10. [**Capítulo 7 — Homomorfismos de magmas, monoides y grupos**](../capitulos/tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md) (`MA-BCH-0032`) — introduce la noción de homomorfismo desde magmas hasta grupos, demuestra estabilidad bajo identidad y composición y prueba que, en grupos, la preservación del neutro y de los inversos se deduce de la preservación de la operación.
-11. [**Capítulo 8 — Isomorfismos**](../capitulos/tratado-de-algebra-capitulo-8-isomorfismos.md) (`MA-BCH-0033`) — define isomorfismos como homomorfismos biyectivos, demuestra estabilidad bajo inversas, identidades y composición, introduce la relación de isomorfía y la distingue de la igualdad literal.
-12. [**Capítulo 9 — Núcleo e imagen de homomorfismos de grupos**](../capitulos/tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md) (`MA-BCH-0034`) — construye núcleo e imagen como subgrupos canónicos de un homomorfismo y caracteriza la inyectividad mediante el núcleo trivial y la sobreyectividad mediante la imagen total.
-13. [**Capítulo 10 — Subgrupos normales**](../capitulos/tratado-de-algebra-capitulo-10-subgrupos-normales.md) (`MA-BCH-0035`) — introduce la normalidad mediante conjugación y demuestra la normalidad de núcleos y de subgrupos de grupos abelianos.
-14. [**Capítulo 11 — Clases laterales y caracterización de la normalidad**](../capitulos/tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md) (`MA-BCH-0036`) — construye clases laterales y conecta su igualdad con la normalidad.
-15. [**Capítulo 12 — Cocientes de grupos**](../capitulos/tratado-de-algebra-capitulo-12-cocientes-de-grupos.md) (`MA-BCH-0037`) — construye grupos cociente y la proyección canónica después de demostrar la buena definición del producto.
-16. [**Capítulo 13 — Primer teorema de isomorfía para grupos**](../capitulos/tratado-de-algebra-capitulo-13-primer-teorema-de-isomorfia-para-grupos.md) (`MA-BCH-0038`) — identifica el cociente por el núcleo con la estructura inducida sobre la imagen.
+2. [**Semigrupos**](../capitulos/tratado-de-algebra-capitulo-2-semigrupos.md) (`MA-BCH-0025`).
+
+    abre la Parte II definiendo el semigrupo como magma asociativo y separa lo que la asociatividad permite de las propiedades que todavía no se han introducido.
+3. [**Elementos neutros y monoides**](../capitulos/tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md) (`MA-BCH-0026`).
+
+    distingue neutros izquierdo, derecho y bilateral; demuestra la coincidencia de neutros laterales y la unicidad del neutro sin usar asociatividad; define monoide como semigrupo con neutro bilateral.
+4. [**Inversos y grupos**](../capitulos/tratado-de-algebra-capitulo-4-inversos-y-grupos.md) (`MA-BCH-0027`).
+
+    distingue inversos izquierdo, derecho y bilateral; demuestra mediante asociatividad que los inversos laterales coinciden y que el inverso es único; define grupo como monoide en el que todo elemento posee inverso bilateral.
+5. [**Conmutatividad y grupos abelianos**](../capitulos/tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md) (`MA-BCH-0028`).
+
+    introduce la conmutatividad como una ley independiente de una operación binaria y define el grupo abeliano como grupo con operación conmutativa, cerrando la primera jerarquía estructural del tratado.
+6. [**Subestructuras y criterio de subgrupo**](../capitulos/tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md) (`MA-BCH-0030`).
+
+    construye la restricción canónica de una operación a subconjuntos cerrados, define submagmas, subsemigrupos, submonoides y subgrupos y demuestra el criterio de subgrupo de una sola condición.
+7. [**Homomorfismos de magmas, monoides y grupos**](../capitulos/tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md) (`MA-BCH-0032`).
+
+    introduce la noción de homomorfismo desde magmas hasta grupos, demuestra estabilidad bajo identidad y composición y prueba que, en grupos, la preservación del neutro y de los inversos se deduce de la preservación de la operación.
+8. [**Isomorfismos**](../capitulos/tratado-de-algebra-capitulo-8-isomorfismos.md) (`MA-BCH-0033`).
+
+    define isomorfismos como homomorfismos biyectivos, demuestra estabilidad bajo inversas, identidades y composición, introduce la relación de isomorfía y la distingue de la igualdad literal.
+9. [**Núcleo e imagen de homomorfismos de grupos**](../capitulos/tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md) (`MA-BCH-0034`).
+
+    construye núcleo e imagen como subgrupos canónicos de un homomorfismo y caracteriza la inyectividad mediante el núcleo trivial y la sobreyectividad mediante la imagen total.
+10. [**Subgrupos normales**](../capitulos/tratado-de-algebra-capitulo-10-subgrupos-normales.md) (`MA-BCH-0035`).
+
+    introduce la normalidad mediante conjugación y demuestra la normalidad de núcleos y de subgrupos de grupos abelianos.
+11. [**Clases laterales y caracterización de la normalidad**](../capitulos/tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md) (`MA-BCH-0036`).
+
+    construye clases laterales y conecta su igualdad con la normalidad.
+12. [**Cocientes de grupos**](../capitulos/tratado-de-algebra-capitulo-12-cocientes-de-grupos.md) (`MA-BCH-0037`).
+
+    construye grupos cociente y la proyección canónica después de demostrar la buena definición del producto.
+13. [**Primer teorema de isomorfía para grupos**](../capitulos/tratado-de-algebra-capitulo-13-primer-teorema-de-isomorfia-para-grupos.md) (`MA-BCH-0038`).
+
+    identifica el cociente por el núcleo con la estructura inducida sobre la imagen.
 
 ### Parte III — Anillos y dominios {#parte-iii}
 
-17. [**Capítulo 14 — Anillos**](../capitulos/tratado-de-algebra-capitulo-14-anillos.md) (`MA-BCH-0039`) — abre la teoría de anillos asociativos unitarios y desarrolla sus primeras leyes estructurales.
-18. [**Capítulo 15 — Unidades de un anillo**](../capitulos/tratado-de-algebra-capitulo-15-unidades-de-un-anillo.md) (`MA-BCH-0040`) — construye el conjunto y el grupo de unidades de un anillo.
-19. [**Capítulo 16 — No trivialidad y divisores de cero**](../capitulos/tratado-de-algebra-capitulo-16-no-trivialidad-y-divisores-de-cero.md) (`MA-BCH-0041`) — introduce no trivialidad, divisores de cero laterales y criterios de cancelación.
-20. [**Capítulo 17 — Subanillos y homomorfismos de anillos**](../capitulos/tratado-de-algebra-capitulo-17-subanillos-y-homomorfismos-de-anillos.md) (`MA-BCH-0042`) — fija la convención unital de subanillos y morfismos y estudia su núcleo e imagen.
-21. [**Capítulo 18 — Ideales**](../capitulos/tratado-de-algebra-capitulo-18-ideales.md) (`MA-BCH-0043`) — introduce ideales laterales y bilaterales y su relación con núcleos.
-22. [**Capítulo 19 — Cocientes de anillos**](../capitulos/tratado-de-algebra-capitulo-19-cocientes-de-anillos.md) (`MA-BCH-0044`) — construye congruencias y operaciones bien definidas sobre clases módulo un ideal.
-23. [**Capítulo 20 — Isomorfismos y primer teorema de isomorfía para anillos**](../capitulos/tratado-de-algebra-capitulo-20-isomorfismos-y-primer-teorema-de-isomorfia-para-anillos.md) (`MA-BCH-0045`) — desarrolla la isomorfía de anillos y su primer teorema fundamental.
-24. [**Capítulo 21 — Dominios íntegros**](../capitulos/tratado-de-algebra-capitulo-21-dominios-integros.md) (`MA-BCH-0046`) — define dominios íntegros y sus caracterizaciones mediante producto nulo y cancelación.
+14. [**Anillos**](../capitulos/tratado-de-algebra-capitulo-14-anillos.md) (`MA-BCH-0039`).
+
+    abre la teoría de anillos asociativos unitarios y desarrolla sus primeras leyes estructurales.
+15. [**Unidades de un anillo**](../capitulos/tratado-de-algebra-capitulo-15-unidades-de-un-anillo.md) (`MA-BCH-0040`).
+
+    construye el conjunto y el grupo de unidades de un anillo.
+16. [**No trivialidad y divisores de cero**](../capitulos/tratado-de-algebra-capitulo-16-no-trivialidad-y-divisores-de-cero.md) (`MA-BCH-0041`).
+
+    introduce no trivialidad, divisores de cero laterales y criterios de cancelación.
+17. [**Subanillos y homomorfismos de anillos**](../capitulos/tratado-de-algebra-capitulo-17-subanillos-y-homomorfismos-de-anillos.md) (`MA-BCH-0042`).
+
+    fija la convención unital de subanillos y morfismos y estudia su núcleo e imagen.
+18. [**Ideales**](../capitulos/tratado-de-algebra-capitulo-18-ideales.md) (`MA-BCH-0043`).
+
+    introduce ideales laterales y bilaterales y su relación con núcleos.
+19. [**Cocientes de anillos**](../capitulos/tratado-de-algebra-capitulo-19-cocientes-de-anillos.md) (`MA-BCH-0044`).
+
+    construye congruencias y operaciones bien definidas sobre clases módulo un ideal.
+20. [**Isomorfismos y primer teorema de isomorfía para anillos**](../capitulos/tratado-de-algebra-capitulo-20-isomorfismos-y-primer-teorema-de-isomorfia-para-anillos.md) (`MA-BCH-0045`).
+
+    desarrolla la isomorfía de anillos y su primer teorema fundamental.
+21. [**Dominios íntegros**](../capitulos/tratado-de-algebra-capitulo-21-dominios-integros.md) (`MA-BCH-0046`).
+
+    define dominios íntegros y sus caracterizaciones mediante producto nulo y cancelación.
 
 ### Parte IV — Cuerpos {#parte-iv}
 
-25. [**Capítulo 22 — Cuerpos y subcuerpos**](../capitulos/tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.md) (`MA-BCH-0047`) — introduce cuerpos y subcuerpos sobre la infraestructura anular previa.
-26. [**Capítulo 23 — Homomorfismos de cuerpos**](../capitulos/tratado-de-algebra-capitulo-23-homomorfismos-de-cuerpos.md) (`MA-BCH-0048`) — especializa los homomorfismos de anillos y demuestra la inyectividad automática entre cuerpos.
-27. [**Capítulo 24 — Cuerpo de fracciones de un dominio íntegro**](../capitulos/tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md) (`MA-BCH-0049`) — construye el cuerpo de fracciones sin elección global de representantes y establece la inmersión canónica del dominio.
+22. [**Cuerpos y subcuerpos**](../capitulos/tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.md) (`MA-BCH-0047`).
+
+    introduce cuerpos y subcuerpos sobre la infraestructura anular previa.
+23. [**Homomorfismos de cuerpos**](../capitulos/tratado-de-algebra-capitulo-23-homomorfismos-de-cuerpos.md) (`MA-BCH-0048`).
+
+    especializa los homomorfismos de anillos y demuestra la inyectividad automática entre cuerpos.
+24. [**Cuerpo de fracciones de un dominio íntegro**](../capitulos/tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md) (`MA-BCH-0049`).
+
+    construye el cuerpo de fracciones sin elección global de representantes y establece la inmersión canónica del dominio.
 
 ### Parte V — Estructuras ordenadas {#parte-v}
 
-28. [**Capítulo 25 — Grupos ordenados**](../capitulos/tratado-de-algebra-capitulo-25-grupos-ordenados.md) (`MA-BCH-0050`) — abre la Parte V con compatibilidad entre orden y operación de grupo y la reconstrucción mediante conos.
-29. [**Capítulo 26 — Anillos ordenados**](../capitulos/tratado-de-algebra-capitulo-26-anillos-ordenados.md) (`MA-BCH-0062`) — estudia la compatibilidad multiplicativa del orden y las hipótesis necesarias para las desigualdades estrictas.
-30. [**Capítulo 27 — Cuerpos ordenados**](../capitulos/tratado-de-algebra-capitulo-27-cuerpos-ordenados.md) (`MA-BCH-0135`) — Capítulo del Tratado moderno de Álgebra dedicado a cuerpos ordenados, inversos, división y comparación de cocientes.
-31. [**Capítulo 28 — Propiedades arquimedianas**](../capitulos/tratado-de-algebra-capitulo-28-propiedades-arquimedianas.md) (`MA-BCH-0136`) — Capítulo del Tratado moderno de Álgebra dedicado a numerales internos, arquimedianidad, cambios de escala y recíprocos pequeños.
+25. [**Grupos ordenados**](../capitulos/tratado-de-algebra-capitulo-25-grupos-ordenados.md) (`MA-BCH-0050`).
+
+    abre la Parte V con compatibilidad entre orden y operación de grupo y la reconstrucción mediante conos.
+26. [**Anillos ordenados**](../capitulos/tratado-de-algebra-capitulo-26-anillos-ordenados.md) (`MA-BCH-0062`).
+
+    estudia la compatibilidad multiplicativa del orden y las hipótesis necesarias para las desigualdades estrictas.
+27. [**Cuerpos ordenados**](../capitulos/tratado-de-algebra-capitulo-27-cuerpos-ordenados.md) (`MA-BCH-0135`).
+
+    Capítulo del Tratado moderno de Álgebra dedicado a cuerpos ordenados, inversos, división y comparación de cocientes.
+28. [**Propiedades arquimedianas**](../capitulos/tratado-de-algebra-capitulo-28-propiedades-arquimedianas.md) (`MA-BCH-0136`).
+
+    Capítulo del Tratado moderno de Álgebra dedicado a numerales internos, arquimedianidad, cambios de escala y recíprocos pequeños.
 
 ### Parte VI — Construcciones y transporte {#parte-vi}
 
-32. [**Capítulo 29 — Productos directos y propiedades universales**](../capitulos/tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md) (`MA-BCH-0137`) — Capítulo del Tratado moderno de Álgebra dedicado a productos directos y propiedades universales de productos, cocientes y cuerpos de fracciones.
-33. [**Capítulo 30 — Teoremas de isomorfía superiores y correspondencia**](../capitulos/tratado-de-algebra-capitulo-30-teoremas-de-isomorfia-superiores-y-correspondencia.md) (`MA-BCH-0138`) — Capítulo del Tratado moderno de Álgebra dedicado a los segundos y terceros teoremas de isomorfía y a la correspondencia de subgrupos e ideales en cocientes.
-34. [**Capítulo 31 — Descenso y transporte de estructura**](../capitulos/tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md) (`MA-BCH-0139`) — Capítulo del Tratado moderno de Álgebra dedicado al descenso de homomorfismos entre cocientes y al transporte de subestructuras mediante isomorfismos.
+29. [**Productos directos y propiedades universales**](../capitulos/tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md) (`MA-BCH-0137`).
+
+    Capítulo del Tratado moderno de Álgebra dedicado a productos directos y propiedades universales de productos, cocientes y cuerpos de fracciones.
+30. [**Teoremas de isomorfía superiores y correspondencia**](../capitulos/tratado-de-algebra-capitulo-30-teoremas-de-isomorfia-superiores-y-correspondencia.md) (`MA-BCH-0138`).
+
+    Capítulo del Tratado moderno de Álgebra dedicado a los segundos y terceros teoremas de isomorfía y a la correspondencia de subgrupos e ideales en cocientes.
+31. [**Descenso y transporte de estructura**](../capitulos/tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md) (`MA-BCH-0139`).
+
+    Capítulo del Tratado moderno de Álgebra dedicado al descenso de homomorfismos entre cocientes y al transporte de subestructuras mediante isomorfismos.
 
 ### Parte VII — Espacios vectoriales {#parte-vii}
 
-35. [**Capítulo 32 — Espacios vectoriales: definición y ejemplos**](../capitulos/tratado-de-algebra-capitulo-32-espacios-vectoriales-definicion-y-ejemplos.md) (`MA-BCH-0140`) — Definición de espacio vectorial sobre un cuerpo, identidades escalares y construcción de espacios de funciones y potencias finitas.
-36. [**Capítulo 33 — Subespacios y generación**](../capitulos/tratado-de-algebra-capitulo-33-subespacios-y-generacion.md) (`MA-BCH-0141`) — Criterio de subespacio, sumas finitas y construcción del subespacio generado, con sus propiedades de minimalidad, intersección y suma.
-37. [**Capítulo 34 — Independencia lineal y bases**](../capitulos/tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.md) (`MA-BCH-0142`) — Independencia lineal, coordenadas de soporte finito, extracción y extensión finitas de bases y existencia general bajo la hipótesis adicional de Zorn.
-38. [**Capítulo 35 — Dimensión finita**](../capitulos/tratado-de-algebra-capitulo-35-dimension-finita.md) (`MA-BCH-0143`) — Intercambio finito, dimensión natural bien definida, criterios de base, finitud de subespacios y fórmula de dimensión para sumas y sumas directas internas.
-39. [**Capítulo 36 — Aplicaciones lineales**](../capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.md) (`MA-BCH-0144`) — Linealidad, núcleo e imagen, espacio libre de soporte finito, extensión sobre una base dada y fórmula de rango-nulidad en dimensión finita.
-40. [**Capítulo 37 — Cocientes y dualidad elemental**](../capitulos/tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.md) (`MA-BCH-0145`) — Cocientes vectoriales, factorización lineal, dual algebraico, base dual, evaluación canónica y aniquiladores en dimensión finita.
+32. [**Espacios vectoriales: definición y ejemplos**](../capitulos/tratado-de-algebra-capitulo-32-espacios-vectoriales-definicion-y-ejemplos.md) (`MA-BCH-0140`).
+
+    Definición de espacio vectorial sobre un cuerpo, identidades escalares y construcción de espacios de funciones y potencias finitas.
+33. [**Subespacios y generación**](../capitulos/tratado-de-algebra-capitulo-33-subespacios-y-generacion.md) (`MA-BCH-0141`).
+
+    Criterio de subespacio, sumas finitas y construcción del subespacio generado, con sus propiedades de minimalidad, intersección y suma.
+34. [**Independencia lineal y bases**](../capitulos/tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.md) (`MA-BCH-0142`).
+
+    Independencia lineal, coordenadas de soporte finito, extracción y extensión finitas de bases y existencia general bajo la hipótesis adicional de Zorn.
+35. [**Dimensión finita**](../capitulos/tratado-de-algebra-capitulo-35-dimension-finita.md) (`MA-BCH-0143`).
+
+    Intercambio finito, dimensión natural bien definida, criterios de base, finitud de subespacios y fórmula de dimensión para sumas y sumas directas internas.
+36. [**Aplicaciones lineales**](../capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.md) (`MA-BCH-0144`).
+
+    Linealidad, núcleo e imagen, espacio libre de soporte finito, extensión sobre una base dada y fórmula de rango-nulidad en dimensión finita.
+37. [**Cocientes y dualidad elemental**](../capitulos/tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.md) (`MA-BCH-0145`).
+
+    Cocientes vectoriales, factorización lineal, dual algebraico, base dual, evaluación canónica y aniquiladores en dimensión finita.
 
 ### Parte VIII — Álgebra multilineal básica {#parte-viii}
 
-41. [**Capítulo 38 — Aplicaciones bilineales**](../capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md) (`MA-BCH-0146`) — Bilinealidad, operaciones puntuales, expansión finita, ejemplos y especificación única por valores sobre dos bases dadas.
-42. [**Capítulo 39 — Multilinealidad y formas**](../capitulos/tratado-de-algebra-capitulo-39-multilinealidad-y-formas.md) (`MA-BCH-0147`) — Aplicaciones multilineales de aridad positiva y finita, especificación por bases dadas, formas simétricas y alternantes, y la excepción de característica dos.
-43. [**Capítulo 40 — Infraestructura tensorial mínima**](../capitulos/tratado-de-algebra-capitulo-40-infraestructura-tensorial-minima.md) (`MA-BCH-0148`) — Construcción del producto tensorial por cociente, aplicación canónica, tensores puros, propiedad universal, mapas inducidos y bases tensoriales dadas.
+38. [**Aplicaciones bilineales**](../capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md) (`MA-BCH-0146`).
+
+    Bilinealidad, operaciones puntuales, expansión finita, ejemplos y especificación única por valores sobre dos bases dadas.
+39. [**Multilinealidad y formas**](../capitulos/tratado-de-algebra-capitulo-39-multilinealidad-y-formas.md) (`MA-BCH-0147`).
+
+    Aplicaciones multilineales de aridad positiva y finita, especificación por bases dadas, formas simétricas y alternantes, y la excepción de característica dos.
+40. [**Infraestructura tensorial mínima**](../capitulos/tratado-de-algebra-capitulo-40-infraestructura-tensorial-minima.md) (`MA-BCH-0148`).
+
+    Construcción del producto tensorial por cociente, aplicación canónica, tensores puros, propiedad universal, mapas inducidos y bases tensoriales dadas.

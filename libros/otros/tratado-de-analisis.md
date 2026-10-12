@@ -173,57 +173,107 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
 ### Parte I — Fundamentos y construcción de los reales
 
-1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — Fija la lógica ambiente y los axiomas conjuntistas; desarrolla conjuntos, relaciones, cocientes, funciones, familias indexadas y órdenes, y establece el lenguaje deductivo necesario para construir los sistemas numéricos.
+0. [**Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`).
 
-2. [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) (`MA-BCH-0007`) — Construye $\mathbb N=\omega$ y desarrolla inducción, recursión, suma, producto y orden natural; demuestra la estructura de Peano, la tricotomía decidible, el buen orden y la inducción fuerte.
+    Fija la lógica ambiente y los axiomas conjuntistas; desarrolla conjuntos, relaciones, cocientes, funciones, familias indexadas y órdenes, y establece el lenguaje deductivo necesario para construir los sistemas numéricos.
 
-3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — Construye $\mathbb Z$ como cociente de diferencias formales; define sus operaciones y su orden, demuestra que es un dominio íntegro ordenado y establece la incrustación canónica de $\mathbb N$.
+1. [**Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) (`MA-BCH-0007`).
 
-4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — Construye $\mathbb Q$ mediante fracciones de enteros; demuestra su estructura de cuerpo ordenado, densidad y arquimedianidad, y exhibe una falla concreta de completitud que conduce a los números reales.
+    Construye $\mathbb N=\omega$ y desarrolla inducción, recursión, suma, producto y orden natural; demuestra la estructura de Peano, la tricotomía decidible, el buen orden y la inducción fuerte.
 
-5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — Desarrolla cuerpos ordenados, valor absoluto, intervalos, densidad y arquimedianidad; formula con precisión el problema de la completitud y prepara la construcción de los reales mediante cortaduras de Dedekind.
+2. [**Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`).
 
-6. [**Capítulo 5 — Cortaduras de Dedekind**](../capitulos/tratado-de-analisis-capitulo-5-cortaduras-de-dedekind.md) (`MA-BCH-0051`) — Construye las cortaduras como subconjuntos de $\mathbb Q$, caracteriza sus propiedades, ordena el nuevo sistema por inclusión e incorpora canónicamente los racionales en el futuro cuerpo de los reales.
+    Construye $\mathbb Z$ como cociente de diferencias formales; define sus operaciones y su orden, demuestra que es un dominio íntegro ordenado y establece la incrustación canónica de $\mathbb N$.
 
-7. [**Capítulo 6 — Aritmética de las cortaduras**](../capitulos/tratado-de-analisis-capitulo-6-aritmetica-de-las-cortaduras.md) (`MA-BCH-0052`) — Define la suma, el cero y las operaciones fundamentales sobre cortaduras; verifica su buena definición y compatibilidad con el orden, avanzando desde la estructura ordenada hacia la estructura algebraica real.
+3. [**Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`).
 
-8. [**Capítulo 7 — Completitud de los reales de Dedekind**](../capitulos/tratado-de-analisis-capitulo-7-completitud-de-los-reales-de-dedekind.md) (`MA-BCH-0053`) — Construye el supremo de todo conjunto no vacío y acotado de cortaduras, demuestra la completitud del modelo de Dedekind y cierra la primera construcción rigurosa del cuerpo de los reales.
+    Construye $\mathbb Q$ mediante fracciones de enteros; demuestra su estructura de cuerpo ordenado, densidad y arquimedianidad, y exhibe una falla concreta de completitud que conduce a los números reales.
 
-9. [**Capítulo 8 — Sucesiones racionales y aproximación**](../capitulos/tratado-de-analisis-capitulo-8-sucesiones-racionales-y-aproximacion.md) (`MA-BCH-0054`) — Introduce sucesiones en $\mathbb Q$, distancia racional, convergencia y condición de Cauchy; muestra la incompletitud secuencial de los racionales y prepara una segunda construcción de los números reales.
+4. [**Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`).
 
-10. [**Capítulo 9 — El cuerpo de Cauchy**](../capitulos/tratado-de-analisis-capitulo-9-el-cuerpo-de-cauchy.md) (`MA-BCH-0055`) — Construye el cociente de las sucesiones racionales de Cauchy por las sucesiones nulas; define operaciones y orden sobre clases y establece la estructura algebraica del nuevo modelo real.
+    Desarrolla cuerpos ordenados, valor absoluto, intervalos, densidad y arquimedianidad; formula con precisión el problema de la completitud y prepara la construcción de los reales mediante cortaduras de Dedekind.
 
-11. [**Capítulo 10 — Completitud del cuerpo de Cauchy**](../capitulos/tratado-de-analisis-capitulo-10-completitud-del-cuerpo-de-cauchy.md) (`MA-BCH-0056`) — Desarrolla sucesiones de Cauchy en el nuevo cuerpo, construye aproximantes racionales y una diagonal convergente, y demuestra que la completación de Cauchy de $\mathbb Q$ es secuencialmente completa.
+5. [**Cortaduras de Dedekind**](../capitulos/tratado-de-analisis-capitulo-5-cortaduras-de-dedekind.md) (`MA-BCH-0051`).
 
-12. [**Capítulo 11 — Dedekind y Cauchy**](../capitulos/tratado-de-analisis-capitulo-11-dedekind-y-cauchy.md) (`MA-BCH-0057`) — Construye la correspondencia entre clases de sucesiones de Cauchy y cortaduras de Dedekind; prueba su buena definición y demuestra que preserva el orden y las operaciones fundamentales.
+    Construye las cortaduras como subconjuntos de $\mathbb Q$, caracteriza sus propiedades, ordena el nuevo sistema por inclusión e incorpora canónicamente los racionales en el futuro cuerpo de los reales.
 
-13. [**Capítulo 12 — Unicidad**](../capitulos/tratado-de-analisis-capitulo-12-unicidad.md) (`MA-BCH-0058`) — Pasa de los dos modelos concretos a la caracterización abstracta de los cuerpos ordenados completos; construye la copia racional canónica y demuestra la unicidad esencial del sistema de los reales.
+6. [**Aritmética de las cortaduras**](../capitulos/tratado-de-analisis-capitulo-6-aritmetica-de-las-cortaduras.md) (`MA-BCH-0052`).
+
+    Define la suma, el cero y las operaciones fundamentales sobre cortaduras; verifica su buena definición y compatibilidad con el orden, avanzando desde la estructura ordenada hacia la estructura algebraica real.
+
+7. [**Completitud de los reales de Dedekind**](../capitulos/tratado-de-analisis-capitulo-7-completitud-de-los-reales-de-dedekind.md) (`MA-BCH-0053`).
+
+    Construye el supremo de todo conjunto no vacío y acotado de cortaduras, demuestra la completitud del modelo de Dedekind y cierra la primera construcción rigurosa del cuerpo de los reales.
+
+8. [**Sucesiones racionales y aproximación**](../capitulos/tratado-de-analisis-capitulo-8-sucesiones-racionales-y-aproximacion.md) (`MA-BCH-0054`).
+
+    Introduce sucesiones en $\mathbb Q$, distancia racional, convergencia y condición de Cauchy; muestra la incompletitud secuencial de los racionales y prepara una segunda construcción de los números reales.
+
+9. [**El cuerpo de Cauchy**](../capitulos/tratado-de-analisis-capitulo-9-el-cuerpo-de-cauchy.md) (`MA-BCH-0055`).
+
+    Construye el cociente de las sucesiones racionales de Cauchy por las sucesiones nulas; define operaciones y orden sobre clases y establece la estructura algebraica del nuevo modelo real.
+
+10. [**Completitud del cuerpo de Cauchy**](../capitulos/tratado-de-analisis-capitulo-10-completitud-del-cuerpo-de-cauchy.md) (`MA-BCH-0056`).
+
+    Desarrolla sucesiones de Cauchy en el nuevo cuerpo, construye aproximantes racionales y una diagonal convergente, y demuestra que la completación de Cauchy de $\mathbb Q$ es secuencialmente completa.
+
+11. [**Dedekind y Cauchy**](../capitulos/tratado-de-analisis-capitulo-11-dedekind-y-cauchy.md) (`MA-BCH-0057`).
+
+    Construye la correspondencia entre clases de sucesiones de Cauchy y cortaduras de Dedekind; prueba su buena definición y demuestra que preserva el orden y las operaciones fundamentales.
+
+12. [**Unicidad**](../capitulos/tratado-de-analisis-capitulo-12-unicidad.md) (`MA-BCH-0058`).
+
+    Pasa de los dos modelos concretos a la caracterización abstracta de los cuerpos ordenados completos; construye la copia racional canónica y demuestra la unicidad esencial del sistema de los reales.
 
 ### Parte II — Núcleo del análisis real
 
-14. [**Capítulo 13 — Sucesiones reales**](../capitulos/tratado-de-analisis-capitulo-13-sucesiones-reales.md) (`MA-BCH-0059`) — Inicia el análisis sobre $\mathbb R$ mediante sucesiones como funciones; estudia colas, propiedades eventuales, convergencia, subsucesiones y límites inferior y superior, apoyándose en la completitud previamente construida.
+13. [**Sucesiones reales**](../capitulos/tratado-de-analisis-capitulo-13-sucesiones-reales.md) (`MA-BCH-0059`).
 
-15. [**Capítulo 14 — Series numéricas**](../capitulos/tratado-de-analisis-capitulo-14-series-numericas.md) (`MA-BCH-0060`) — Define series y sumas parciales; desarrolla el criterio de Cauchy, convergencia absoluta, comparación, series geométricas y armónicas, y criterios basados en raíces y límites superiores.
+    Inicia el análisis sobre $\mathbb R$ mediante sucesiones como funciones; estudia colas, propiedades eventuales, convergencia, subsucesiones y límites inferior y superior, apoyándose en la completitud previamente construida.
 
-16. [**Capítulo 15 — Topología de la recta real**](../capitulos/tratado-de-analisis-capitulo-15-topologia-de-la-recta-real.md) (`MA-BCH-0061`) — Construye la topología de $\mathbb R$ mediante bolas y vecindades; estudia interior, exterior, adherencia, conjuntos abiertos y cerrados, densidad e intervalos como preparación para límites y continuidad.
+14. [**Series numéricas**](../capitulos/tratado-de-analisis-capitulo-14-series-numericas.md) (`MA-BCH-0060`).
 
-17. [**Capítulo 16 — Límites de funciones**](../capitulos/tratado-de-analisis-capitulo-16-limites-de-funciones.md) (`MA-BCH-0067`) — Define el límite funcional y demuestra su unicidad; establece el criterio secuencial, el álgebra de límites, la composición y los límites laterales con dominios e hipótesis explícitos.
+    Define series y sumas parciales; desarrolla el criterio de Cauchy, convergencia absoluta, comparación, series geométricas y armónicas, y criterios basados en raíces y límites superiores.
 
-18. [**Capítulo 17 — Continuidad**](../capitulos/tratado-de-analisis-capitulo-17-continuidad.md) (`MA-BCH-0068`) — Desarrolla continuidad puntual y global, su caracterización secuencial y el álgebra de funciones continuas; estudia restricciones, composiciones y continuidad sobre intervalos dentro de la recta real.
+15. [**Topología de la recta real**](../capitulos/tratado-de-analisis-capitulo-15-topologia-de-la-recta-real.md) (`MA-BCH-0061`).
 
-19. [**Capítulo 18 — Compacidad y conexidad en la recta**](../capitulos/tratado-de-analisis-capitulo-18-compacidad-y-conexidad-en-la-recta.md) (`MA-BCH-0069`) — Caracteriza compacidad y conexidad en $\mathbb R$; demuestra Heine–Borel, la existencia de extremos y el teorema del valor intermedio, explicitando las dependencias fundacionales de cada equivalencia.
+    Construye la topología de $\mathbb R$ mediante bolas y vecindades; estudia interior, exterior, adherencia, conjuntos abiertos y cerrados, densidad e intervalos como preparación para límites y continuidad.
 
-20. [**Capítulo 19 — Diferenciación**](../capitulos/tratado-de-analisis-capitulo-19-diferenciacion.md) (`MA-BCH-0070`) — Introduce la derivada como límite y desarrolla sus reglas algebraicas, la regla de la cadena, derivadas laterales y aproximación lineal, manteniendo explícitos dominios, puntos de acumulación e hipótesis.
+16. [**Límites de funciones**](../capitulos/tratado-de-analisis-capitulo-16-limites-de-funciones.md) (`MA-BCH-0067`).
 
-21. [**Capítulo 20 — Teoremas fundamentales del cálculo diferencial**](../capitulos/tratado-de-analisis-capitulo-20-teoremas-fundamentales-del-calculo-diferencial.md) (`MA-BCH-0071`) — Estudia los extremos locales y demuestra los teoremas de Rolle y del valor medio; deriva consecuencias sobre monotonía, convexidad, constancia y la regla de L’Hôpital.
+    Define el límite funcional y demuestra su unicidad; establece el criterio secuencial, el álgebra de límites, la composición y los límites laterales con dominios e hipótesis explícitos.
 
-22. [**Capítulo 21 — Integral de Riemann**](../capitulos/tratado-de-analisis-capitulo-21-integral-de-riemann.md) (`MA-BCH-0072`) — Construye la integral mediante particiones, refinamientos y sumas de Darboux; caracteriza la integrabilidad de Riemann y demuestra sus propiedades de linealidad, monotonía, aditividad y estimación.
+17. [**Continuidad**](../capitulos/tratado-de-analisis-capitulo-17-continuidad.md) (`MA-BCH-0068`).
 
-23. [**Capítulo 22 — Teorema fundamental del cálculo**](../capitulos/tratado-de-analisis-capitulo-22-teorema-fundamental-del-calculo.md) (`MA-BCH-0073`) — Relaciona integración y diferenciación mediante funciones de acumulación; demuestra las dos formas del teorema fundamental del cálculo, la fórmula de Newton–Leibniz y el cambio de variable.
+    Desarrolla continuidad puntual y global, su caracterización secuencial y el álgebra de funciones continuas; estudia restricciones, composiciones y continuidad sobre intervalos dentro de la recta real.
 
-24. [**Capítulo 23 — Sucesiones y series de funciones**](../capitulos/tratado-de-analisis-capitulo-23-sucesiones-y-series-de-funciones.md) (`MA-BCH-0074`) — Distingue convergencia puntual y uniforme; estudia continuidad, integración y diferenciación de límites, y desarrolla series de funciones, el criterio uniforme de Cauchy y el criterio de Weierstrass.
+18. [**Compacidad y conexidad en la recta**](../capitulos/tratado-de-analisis-capitulo-18-compacidad-y-conexidad-en-la-recta.md) (`MA-BCH-0069`).
 
-25. [**Capítulo 24 — Series de potencias**](../capitulos/tratado-de-analisis-capitulo-24-series-de-potencias.md) (`MA-BCH-0075`) — Desarrolla conjunto y radio de convergencia, comportamiento en los extremos y fórmula de Cauchy–Hadamard; justifica operaciones término a término y conecta derivadas, series de Taylor y analiticidad.
+    Caracteriza compacidad y conexidad en $\mathbb R$; demuestra Heine–Borel, la existencia de extremos y el teorema del valor intermedio, explicitando las dependencias fundacionales de cada equivalencia.
+
+19. [**Diferenciación**](../capitulos/tratado-de-analisis-capitulo-19-diferenciacion.md) (`MA-BCH-0070`).
+
+    Introduce la derivada como límite y desarrolla sus reglas algebraicas, la regla de la cadena, derivadas laterales y aproximación lineal, manteniendo explícitos dominios, puntos de acumulación e hipótesis.
+
+20. [**Teoremas fundamentales del cálculo diferencial**](../capitulos/tratado-de-analisis-capitulo-20-teoremas-fundamentales-del-calculo-diferencial.md) (`MA-BCH-0071`).
+
+    Estudia los extremos locales y demuestra los teoremas de Rolle y del valor medio; deriva consecuencias sobre monotonía, convexidad, constancia y la regla de L’Hôpital.
+
+21. [**Integral de Riemann**](../capitulos/tratado-de-analisis-capitulo-21-integral-de-riemann.md) (`MA-BCH-0072`).
+
+    Construye la integral mediante particiones, refinamientos y sumas de Darboux; caracteriza la integrabilidad de Riemann y demuestra sus propiedades de linealidad, monotonía, aditividad y estimación.
+
+22. [**Teorema fundamental del cálculo**](../capitulos/tratado-de-analisis-capitulo-22-teorema-fundamental-del-calculo.md) (`MA-BCH-0073`).
+
+    Relaciona integración y diferenciación mediante funciones de acumulación; demuestra las dos formas del teorema fundamental del cálculo, la fórmula de Newton–Leibniz y el cambio de variable.
+
+23. [**Sucesiones y series de funciones**](../capitulos/tratado-de-analisis-capitulo-23-sucesiones-y-series-de-funciones.md) (`MA-BCH-0074`).
+
+    Distingue convergencia puntual y uniforme; estudia continuidad, integración y diferenciación de límites, y desarrolla series de funciones, el criterio uniforme de Cauchy y el criterio de Weierstrass.
+
+24. [**Series de potencias**](../capitulos/tratado-de-analisis-capitulo-24-series-de-potencias.md) (`MA-BCH-0075`).
+
+    Desarrolla conjunto y radio de convergencia, comportamiento en los extremos y fórmula de Cauchy–Hadamard; justifica operaciones término a término y conecta derivadas, series de Taylor y analiticidad.
 
 26. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces a las nociones publicadas.
 
