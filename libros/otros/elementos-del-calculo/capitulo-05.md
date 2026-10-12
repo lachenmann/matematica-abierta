@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-05.md) · [Ejercicios](capitulo-05-ejercicios.md) · [Soluciones](capitulo-05-soluciones.md) · [Notas históricas](capitulo-05-notas.md)
+[Exposición](capitulo-05.html) · [Ejercicios](capitulo-05-ejercicios.html) · [Soluciones](capitulo-05-soluciones.html) · [Notas históricas](capitulo-05-notas.html)
 
-[← Capítulo 4](capitulo-04.md) · [Capítulo 6 →](capitulo-06.md)
+[← Capítulo 4](capitulo-04.html) · [Capítulo 6 →](capitulo-06.html)
 
 > **Pregunta generadora.** ¿Qué garantiza que todas las aproximaciones razonables de una acumulación —con particiones desiguales y muestras distintas— determinan un único número real? ¿Qué sucede cuando no lo hacen?
 
@@ -494,8 +494,8 @@ La continuidad y la monotonía resultaron condiciones suficientes de integrabili
 - **C01–C03:** ninguno de sus teoremas de derivación se usa para **definir** la integral; algunos cálculos especiales de C04 ya contenían el teorema del valor medio de C03.
 - **C05:** `EDC-C05-THM-001--009`, tres lemas, tres proposiciones y cinco definiciones, con independencia de C06.
 - **Excluidos:** integrales impropias, Lebesgue, teoremas de medida, convergencia uniforme sistemática y Teorema Fundamental del Cálculo.
-- **Historia:** [notas históricas y procedencia de fuentes](capitulo-05-notas.md).
+- **Historia:** [notas históricas y procedencia de fuentes](capitulo-05-notas.html).
 
 ### Trabajo del lector
 
-Los [ejercicios del capítulo](capitulo-05-ejercicios.md) distinguen el reconocimiento del valor integral, las pruebas de existencia y la auditoría de cuantificadores. Sus [soluciones desarrolladas](capitulo-05-soluciones.md) permanecen separadas de la exposición, sin adelantar procedimientos del capítulo siguiente.
+Los [ejercicios del capítulo](capitulo-05-ejercicios.html) distinguen el reconocimiento del valor integral, las pruebas de existencia y la auditoría de cuantificadores. Sus [soluciones desarrolladas](capitulo-05-soluciones.html) permanecen separadas de la exposición, sin adelantar procedimientos del capítulo siguiente.

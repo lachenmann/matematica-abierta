@@ -25,9 +25,9 @@ source-id: EDC_LABORATORIO_SOLUCIONES
 source-sha256: 65be8b51086b0c883cc1a84de4675728cee34cc4352dbbf9616612848292a791
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-Cada solución responde al problema `INV-Cxx-nn` con el mismo código en [el laboratorio](laboratorio.md). Se conservan las hipótesis y fronteras lógicas de los capítulos originales.
+Cada solución responde al problema `INV-Cxx-nn` con el mismo código en [el laboratorio](laboratorio.html). Se conservan las hipótesis y fronteras lógicas de los capítulos originales.
 
 ## SOL-INV-C00-01 — Herón sin derivadas
 

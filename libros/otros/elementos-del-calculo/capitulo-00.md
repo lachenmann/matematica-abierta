@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-00.md) · [Ejercicios](capitulo-00-ejercicios.md) · [Soluciones](capitulo-00-soluciones.md) · [Notas históricas](capitulo-00-notas.md)
+[Exposición](capitulo-00.html) · [Ejercicios](capitulo-00-ejercicios.html) · [Soluciones](capitulo-00-soluciones.html) · [Notas históricas](capitulo-00-notas.html)
 
-[Capítulo 1 →](capitulo-01.md)
+[Capítulo 1 →](capitulo-01.html)
 
 > **Pregunta generadora.** ¿Qué permiten comprender ya los números reales, los límites y la continuidad, y qué debemos construir todavía para responder a los problemas de las tangentes, la velocidad y el área?
 
@@ -395,7 +395,7 @@ La función $F$ tiene, en este sentido todavía exploratorio, una tasa de cambio
 
 ## 0.8. Un puente histórico y el camino que sigue
 
-Los problemas de cuadratura y los de tangentes no son invenciones de un curso moderno de cálculo. La cuadratura de regiones curvilíneas cuenta con antecedentes antiguos, entre ellos el estudio de Arquímedes del segmento parabólico. En la matemática europea de los siglos XVI y XVII se desarrollaron asimismo procedimientos para tangentes, cuadraturas y magnitudes variables; Newton y Leibniz fueron decisivos para articular parte de esas investigaciones en métodos generales, aunque con conceptos y lenguajes distintos de los actuales. Estas formulaciones son deliberadamente prudentes: los testimonios, las dataciones y las diferencias entre métodos se registran en las [notas históricas](capitulo-00-notas.md), no se deducen del álgebra moderna que acabamos de escribir.
+Los problemas de cuadratura y los de tangentes no son invenciones de un curso moderno de cálculo. La cuadratura de regiones curvilíneas cuenta con antecedentes antiguos, entre ellos el estudio de Arquímedes del segmento parabólico. En la matemática europea de los siglos XVI y XVII se desarrollaron asimismo procedimientos para tangentes, cuadraturas y magnitudes variables; Newton y Leibniz fueron decisivos para articular parte de esas investigaciones en métodos generales, aunque con conceptos y lenguajes distintos de los actuales. Estas formulaciones son deliberadamente prudentes: los testimonios, las dataciones y las diferencias entre métodos se registran en las [notas históricas](capitulo-00-notas.html), no se deducen del álgebra moderna que acabamos de escribir.
 
 La organización de este libro no pretende reconstruir una sucesión lineal de descubrimientos. Empezamos por el límite porque es una herramienta de **justificación** especialmente clara para el lector actual; históricamente muchas cuadraturas, procedimientos de tangentes y desarrollos en serie precedieron a las definiciones rigurosas que hoy usamos para evaluarlos. No debemos atribuir retrospectivamente una demostración con $\varepsilon$ y $\delta$ a quien operaba con agotamiento geométrico, indivisibles, fluxiones u otros recursos. La historia ilumina por qué fueron necesarias ciertas ideas, pero las demostraciones que siguen son nuestras y pertenecen a la matemática contemporánea.
 
@@ -423,6 +423,6 @@ El capítulo siguiente vuelve al primer problema: del cociente incremental a la 
 - **Fundamento adoptado:** axiomas de cuerpo ordenado y completitud de $\mathbb R$, aritmética de $\mathbb N$ e identidades algebraicas finitas. No se utiliza derivación, integración, Taylor, teorema de Rolle ni Teorema Fundamental.
 - **Resultados derivados:** `EDC-C00-THM-001` → `EDC-C00-THM-002` y `EDC-C00-THM-003` → `EDC-C00-THM-004`; `EDC-C00-THM-005` y `EDC-C00-PRP-002` permiten transportar límites/continuidad; `EDC-C00-THM-006--008` requieren continuidad y completitud en intervalos cerrados de la recta.
 - **Uso posterior:** C01 y C02 usarán límites y continuidad; C03, valores extremos; C04–C05, completitud, extremos y continuidad uniforme; C06, lo anterior junto con la teoría diferencial e integral ya construida.
-- **Lecturas complementarias:** Gabor Toth, *Elements of Mathematics* (2021), lectura previa o paralela recomendada; otras fuentes históricas documentadas en [Notas históricas del capítulo 0](capitulo-00-notas.md). Ninguna de estas lecturas es requisito para validar las demostraciones presentes.
+- **Lecturas complementarias:** Gabor Toth, *Elements of Mathematics* (2021), lectura previa o paralela recomendada; otras fuentes históricas documentadas en [Notas históricas del capítulo 0](capitulo-00-notas.html). Ninguna de estas lecturas es requisito para validar las demostraciones presentes.
 
-**Trabajo del lector.** Los [ejercicios de este capítulo](capitulo-00-ejercicios.md) desarrollan la lectura precisa de cuantificadores, la búsqueda de contraejemplos, el uso de completitud y la interpretación de sumas y cocientes. Sus desarrollos completos están separados en [soluciones](capitulo-00-soluciones.md) para no interrumpir la exposición.
+**Trabajo del lector.** Los [ejercicios de este capítulo](capitulo-00-ejercicios.html) desarrollan la lectura precisa de cuantificadores, la búsqueda de contraejemplos, el uso de completitud y la interpretación de sumas y cocientes. Sus desarrollos completos están separados en [soluciones](capitulo-00-soluciones.html) para no interrumpir la exposición.

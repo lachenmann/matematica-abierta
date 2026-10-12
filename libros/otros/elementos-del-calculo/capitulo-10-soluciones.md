@@ -25,11 +25,11 @@ source-id: EDC-C10-SOLUCIONES
 source-sha256: bea9017466aecb98f68602da83b4ccbc8b84f0c8ef1007cf98b6930b80738da1
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-10.md) · [Ejercicios](capitulo-10-ejercicios.md) · [Soluciones](capitulo-10-soluciones.md) · [Notas históricas](capitulo-10-notas.md)
+[Exposición](capitulo-10.html) · [Ejercicios](capitulo-10-ejercicios.html) · [Soluciones](capitulo-10-soluciones.html) · [Notas históricas](capitulo-10-notas.html)
 
-Las respuestas corresponden biunívocamente a [los treinta ejercicios de C10](capitulo-10-ejercicios.md). En cada resultado se explicita el intervalo o rama y se diferencia la comprobación de una fórmula de su existencia y unicidad. No se invocan C11 ni teoremas generales de existencia de EDO que no se hayan demostrado.
+Las respuestas corresponden biunívocamente a [los treinta ejercicios de C10](capitulo-10-ejercicios.html). En cada resultado se explicita el intervalo o rama y se diferencia la comprobación de una fórmula de su existencia y unicidad. No se invocan C11 ni teoremas generales de existencia de EDO que no se hayan demostrado.
 
 ## A. Interpretar ecuaciones y condiciones iniciales
 

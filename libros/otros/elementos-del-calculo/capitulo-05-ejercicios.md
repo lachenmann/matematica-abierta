@@ -25,11 +25,11 @@ source-id: EDC-C05-EJERCICIOS
 source-sha256: b913ef2f5457226a74423b30e054c5fd7e324b09d12f5ec14fa44c2503597383
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-05.md) · [Ejercicios](capitulo-05-ejercicios.md) · [Soluciones](capitulo-05-soluciones.md) · [Notas históricas](capitulo-05-notas.md)
+[Exposición](capitulo-05.html) · [Ejercicios](capitulo-05-ejercicios.html) · [Soluciones](capitulo-05-soluciones.html) · [Notas históricas](capitulo-05-notas.html)
 
-Cada ejercicio se resuelve con los resultados de C00–C05, **sin invocar el Teorema Fundamental del Cálculo**, que aparecerá en C06. Es necesario distinguir particiones, etiquetas, integrabilidad, signo de la función y existencia de primitivas. Toda respuesta tiene un desarrollo independiente con ID correspondiente en [el solucionario](capitulo-05-soluciones.md).
+Cada ejercicio se resuelve con los resultados de C00–C05, **sin invocar el Teorema Fundamental del Cálculo**, que aparecerá en C06. Es necesario distinguir particiones, etiquetas, integrabilidad, signo de la función y existencia de primitivas. Toda respuesta tiene un desarrollo independiente con ID correspondiente en [el solucionario](capitulo-05-soluciones.html).
 
 ## A. Definiciones, supremos y lenguaje
 

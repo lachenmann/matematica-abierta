@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-11.md) · [Ejercicios](capitulo-11-ejercicios.md) · [Soluciones](capitulo-11-soluciones.md) · [Notas históricas](capitulo-11-notas.md)
+[Exposición](capitulo-11.html) · [Ejercicios](capitulo-11-ejercicios.html) · [Soluciones](capitulo-11-soluciones.html) · [Notas históricas](capitulo-11-notas.html)
 
-[← Capítulo 10](capitulo-10.md)
+[← Capítulo 10](capitulo-10.html)
 
 > **Pregunta generadora.** ¿Qué hemos demostrado efectivamente al transformar problemas de tangentes, velocidades, cuadraturas, series y trayectorias en una teoría del cálculo? ¿De qué supuestos depende esa unidad y qué dificultades anuncian el análisis real?
 
@@ -200,7 +200,7 @@ En la tradición china, los comentarios de Liu Hui a los *Nueve capítulos sobre
 
 En Kerala, al sur de la India, la historiografía reconoce resultados de series trigonométricas atribuidos a Madhava, de fines del siglo XIV y comienzos del XV, preservados en obras posteriores de su escuela. Nuestra expresión $\arctan x=\sum(-1)^n x^{2n+1}/(2n+1)$ es una **traducción moderna de una identidad**; no es transcripción de un manuscrito conservado de Madhava ni se equipara sin examen con nuestras pruebas de convergencia. El problema historiográfico incluye la transmisión indirecta a través de autores posteriores y la diferencia entre descubrir fórmulas y desarrollar una teoría general de funciones analíticas.
 
-Estas tres historias demuestran que las preguntas por acumulaciones y aproximaciones no pertenecen en exclusiva a una secuencia europea única. Tampoco autorizan sustituir el estudio de fuentes por una narrativa de «primeros inventores». La procedencia de cada afirmación se registra en [las notas históricas H1–H3](capitulo-11-notas.md).
+Estas tres historias demuestran que las preguntas por acumulaciones y aproximaciones no pertenecen en exclusiva a una secuencia europea única. Tampoco autorizan sustituir el estudio de fuentes por una narrativa de «primeros inventores». La procedencia de cada afirmación se registra en [las notas históricas H1–H3](capitulo-11-notas.html).
 
 ## 11.9. La síntesis moderna: tangente, cuadratura y movimiento
 
@@ -248,7 +248,7 @@ El proyecto unificador del libro puede escribirse, ahora con referencias a prueb
 
 La continuidad, las derivadas, las integrales y las soluciones de ecuaciones diferenciales no son «el mismo objeto». Su **unidad matemática** consiste en que una cadena de teoremas hace posible pasar de unas preguntas a otras con las condiciones bajo control. La unidad histórica es más compleja: métodos con parecidos matemáticos se desarrollaron en tradiciones y épocas diferentes, y sus conceptos fueron transformados por la escritura posterior.
 
-El libro se cierra con una disciplina intelectual, no con una fórmula mágica: **identificar el objeto, declarar el dominio, explicitar el límite, demostrar el error y comprobar cada hipótesis antes de usar un teorema**. Los [treinta ejercicios de síntesis](capitulo-11-ejercicios.md) y sus [treinta soluciones separadas](capitulo-11-soluciones.md) permiten verificar si esa disciplina se ha adquirido. Las [notas H1–H9](capitulo-11-notas.md) preservan el estado real de consulta de las fuentes, y la auditoría transversal posterior determinará si los doce capítulos forman una edición íntegra coherente.
+El libro se cierra con una disciplina intelectual, no con una fórmula mágica: **identificar el objeto, declarar el dominio, explicitar el límite, demostrar el error y comprobar cada hipótesis antes de usar un teorema**. Los [treinta ejercicios de síntesis](capitulo-11-ejercicios.html) y sus [treinta soluciones separadas](capitulo-11-soluciones.html) permiten verificar si esa disciplina se ha adquirido. Las [notas H1–H9](capitulo-11-notas.html) preservan el estado real de consulta de las fuentes, y la auditoría transversal posterior determinará si los doce capítulos forman una edición íntegra coherente.
 
 ### Dependencias y límites editoriales
 

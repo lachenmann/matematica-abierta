@@ -25,9 +25,9 @@ source-id: EDC-C06-EJERCICIOS
 source-sha256: ce055f7e02da681fb5793b03883ef42a95e09fce3a74785eed044782c091d320
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-06.md) · [Ejercicios](capitulo-06-ejercicios.md) · [Soluciones](capitulo-06-soluciones.md) · [Notas históricas](capitulo-06-notas.md)
+[Exposición](capitulo-06.html) · [Ejercicios](capitulo-06-ejercicios.html) · [Soluciones](capitulo-06-soluciones.html) · [Notas históricas](capitulo-06-notas.html)
 
 El propósito es utilizar el Teorema Fundamental como una afirmación **demostrada y condicionada**, no como una regla de cancelación formal. En cada cálculo, indique continuidad, intervalo y primitiva empleada cuando corresponda. Los ejercicios dependen de C00–C06; ninguno requiere técnicas de sustitución o integración por partes del capítulo 7.
 
@@ -105,4 +105,4 @@ El propósito es utilizar el Teorema Fundamental como una afirmación **demostra
 
 ---
 
-Cada `EDC-C06-EXR-nnn` tiene una única solución razonada `EDC-C06-SOL-nnn` en [el archivo independiente de soluciones](capitulo-06-soluciones.md).
+Cada `EDC-C06-EXR-nnn` tiene una única solución razonada `EDC-C06-SOL-nnn` en [el archivo independiente de soluciones](capitulo-06-soluciones.html).

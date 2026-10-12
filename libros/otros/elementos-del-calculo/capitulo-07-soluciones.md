@@ -25,11 +25,11 @@ source-id: EDC-C07-SOLUCIONES
 source-sha256: e744038e9a6a91565d0ee7d5009203a7ccccafca27fe5567265ca3ca1827bfdb
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-07.md) · [Ejercicios](capitulo-07-ejercicios.md) · [Soluciones](capitulo-07-soluciones.md) · [Notas históricas](capitulo-07-notas.md)
+[Exposición](capitulo-07.html) · [Ejercicios](capitulo-07-ejercicios.html) · [Soluciones](capitulo-07-soluciones.html) · [Notas históricas](capitulo-07-notas.html)
 
-Las siguientes soluciones corresponden, una por una, a [los treinta ejercicios del capítulo](capitulo-07-ejercicios.md). Se han utilizado únicamente resultados demostrados en C00–C07. Los cálculos no se separan de sus hipótesis: las funciones racionales se integran sobre intervalos que evitan sus polos, las fórmulas de sustitución conservan extremos orientados y las integrales definidas son propias.
+Las siguientes soluciones corresponden, una por una, a [los treinta ejercicios del capítulo](capitulo-07-ejercicios.html). Se han utilizado únicamente resultados demostrados en C00–C07. Los cálculos no se separan de sus hipótesis: las funciones racionales se integran sobre intervalos que evitan sus polos, las fórmulas de sustitución conservan extremos orientados y las integrales definidas son propias.
 
 ## A. Hipótesis, lenguaje y elecciones de método
 

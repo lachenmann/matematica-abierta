@@ -25,11 +25,11 @@ source-id: EDC-C03-NOTAS-HISTORICAS
 source-sha256: 7363a5c6fe9f019dd5a0a05ba2a26ce04045196eae02cddeb8e3923fa3311343
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-03.md) · [Ejercicios](capitulo-03-ejercicios.md) · [Soluciones](capitulo-03-soluciones.md) · [Notas históricas](capitulo-03-notas.md)
+[Exposición](capitulo-03.html) · [Ejercicios](capitulo-03-ejercicios.html) · [Soluciones](capitulo-03-soluciones.html) · [Notas históricas](capitulo-03-notas.html)
 
-Las notas acompañan [el capítulo 3](capitulo-03.md) sin convertirse en premisas de sus demostraciones. Distinguen **una reconstrucción matemática contemporánea**, las investigaciones históricas secundarias efectivamente consultadas y la disponibilidad de documentos primarios que aún no se han cotejado en su texto. Un título localizado no equivale a una lectura; una noticia biográfica no avala una atribución de prioridad absoluta.
+Las notas acompañan [el capítulo 3](capitulo-03.html) sin convertirse en premisas de sus demostraciones. Distinguen **una reconstrucción matemática contemporánea**, las investigaciones históricas secundarias efectivamente consultadas y la disponibilidad de documentos primarios que aún no se han cotejado en su texto. Un título localizado no equivale a una lectura; una noticia biográfica no avala una atribución de prioridad absoluta.
 
 ## H1. Fermat: un problema anterior a la derivada moderna
 
@@ -76,7 +76,7 @@ La optimización no se agota en el cálculo de una derivada. Los problemas geom�
 
 *Elements of Mathematics* de Gabor Toth ya introduce nociones de derivabilidad, puntos críticos y principio de Fermat en su capítulo 4. El propósito de C03 no es reclamar prioridad temática frente a Toth, sino articular con detalle una teoría propia de Rolle y del valor medio, las desigualdades globales de incremento, la convexidad y la optimización, manteniendo una cadena demostrativa independiente. El resultado previo de Toth constituye una **inspiración intelectual**, no una autorización para reproducir su redacción o sus problemas.
 
-*Cálculo para matemáticos* contiene tratamientos afines de Rolle, valor medio, monotonía y convexidad. No se han copiado de ese corpus las demostraciones, figuras o ejercicios; se mantiene la separación documental, de identificadores y de licencias. Véase la [nota editorial sobre autonomía y fuentes](edicion.md).
+*Cálculo para matemáticos* contiene tratamientos afines de Rolle, valor medio, monotonía y convexidad. No se han copiado de ese corpus las demostraciones, figuras o ejercicios; se mantiene la separación documental, de identificadores y de licencias. Véase la [nota editorial sobre autonomía y fuentes](edicion.html).
 
 ## Matriz de fuentes y reservas
 

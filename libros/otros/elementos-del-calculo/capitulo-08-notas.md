@@ -25,11 +25,11 @@ source-id: EDC-C08-NOTAS-HISTORICAS
 source-sha256: b0d83da62a2d5e0f7e32fd3c618ffdfe5f544188c05094b51d012e54f583c3f9
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-08.md) · [Ejercicios](capitulo-08-ejercicios.md) · [Soluciones](capitulo-08-soluciones.md) · [Notas históricas](capitulo-08-notas.md)
+[Exposición](capitulo-08.html) · [Ejercicios](capitulo-08-ejercicios.html) · [Soluciones](capitulo-08-soluciones.html) · [Notas históricas](capitulo-08-notas.html)
 
-Estas notas acompañan [el capítulo 8](capitulo-08.md) y separan la genealogía de los procedimientos infinitos de la **demostración moderna** de las propiedades de series. En particular, nuestras pruebas mediante límites de sucesiones reales, completitud, radio de convergencia y cotas cuantificadas se han escrito para EDC y no se atribuyen literalmente a autores de épocas anteriores. El material efectivamente leído en web se diferencia de una referencia bibliográfica meramente localizada o de un facsímil no cotejado.
+Estas notas acompañan [el capítulo 8](capitulo-08.html) y separan la genealogía de los procedimientos infinitos de la **demostración moderna** de las propiedades de series. En particular, nuestras pruebas mediante límites de sucesiones reales, completitud, radio de convergencia y cotas cuantificadas se han escrito para EDC y no se atribuyen literalmente a autores de épocas anteriores. El material efectivamente leído en web se diferencia de una referencia bibliográfica meramente localizada o de un facsímil no cotejado.
 
 ## H1. La armónica y Nicole Oresme
 

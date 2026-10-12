@@ -25,11 +25,11 @@ source-id: EDC-C02-NOTAS-HISTORICAS
 source-sha256: a894fa7c9b2684368e2ef931b2c23d517221e99ad42f272489de280c8b3c17d5
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-02.md) · [Ejercicios](capitulo-02-ejercicios.md) · [Soluciones](capitulo-02-soluciones.md) · [Notas históricas](capitulo-02-notas.md)
+[Exposición](capitulo-02.html) · [Ejercicios](capitulo-02-ejercicios.html) · [Soluciones](capitulo-02-soluciones.html) · [Notas históricas](capitulo-02-notas.html)
 
-Este expediente acompaña [el capítulo 2](capitulo-02.md), pero no sustituye sus demostraciones. Distingue la matemática **reconstruida hoy**, los testimonios publicados y la historiografía consultada. Una referencia web leída no se presenta como colación de una fuente primaria; los libros ubicados por metadatos en Drive no se presentan como leídos. Se mantiene la independencia editorial respecto de Toth y de *Cálculo para matemáticos*.
+Este expediente acompaña [el capítulo 2](capitulo-02.html), pero no sustituye sus demostraciones. Distingue la matemática **reconstruida hoy**, los testimonios publicados y la historiografía consultada. Una referencia web leída no se presenta como colación de una fuente primaria; los libros ubicados por metadatos en Drive no se presentan como leídos. Se mantiene la independencia editorial respecto de Toth y de *Cálculo para matemáticos*.
 
 ## H1. Dos notaciones y dos concepciones del cálculo
 

@@ -25,11 +25,11 @@ source-id: EDC-C05-NOTAS-HISTORICAS
 source-sha256: 652daa6bd165bd443adb328e3d5cbc031a29bf7a94f8e3faae3aa44a5915c14c
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-05.md) · [Ejercicios](capitulo-05-ejercicios.md) · [Soluciones](capitulo-05-soluciones.md) · [Notas históricas](capitulo-05-notas.md)
+[Exposición](capitulo-05.html) · [Ejercicios](capitulo-05-ejercicios.html) · [Soluciones](capitulo-05-soluciones.html) · [Notas históricas](capitulo-05-notas.html)
 
-Este expediente acompaña [el capítulo 5](capitulo-05.md), pero no sustituye ni justifica sus teoremas matemáticos. Se distinguen (i) testimonio primario efectivamente consultado; (ii) catálogos y registros de ediciones que **localizan** un documento pero no constituyen lectura de su contenido; (iii) historiografía secundaria realmente consultada; y (iv) pruebas modernas redactadas en EDC. Los símbolos $\varepsilon$, supremos sobre particiones, sumas de Darboux y el formalismo de funciones acotadas pertenecen a nuestra reconstrucción, no se atribuyen indiscriminadamente a todos los autores nombrados.
+Este expediente acompaña [el capítulo 5](capitulo-05.html), pero no sustituye ni justifica sus teoremas matemáticos. Se distinguen (i) testimonio primario efectivamente consultado; (ii) catálogos y registros de ediciones que **localizan** un documento pero no constituyen lectura de su contenido; (iii) historiografía secundaria realmente consultada; y (iv) pruebas modernas redactadas en EDC. Los símbolos $\varepsilon$, supremos sobre particiones, sumas de Darboux y el formalismo de funciones acotadas pertenecen a nuestra reconstrucción, no se atribuyen indiscriminadamente a todos los autores nombrados.
 
 ## H1. De las cuadraturas al problema de la integración de funciones
 

@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-02.md) · [Ejercicios](capitulo-02-ejercicios.md) · [Soluciones](capitulo-02-soluciones.md) · [Notas históricas](capitulo-02-notas.md)
+[Exposición](capitulo-02.html) · [Ejercicios](capitulo-02-ejercicios.html) · [Soluciones](capitulo-02-soluciones.html) · [Notas históricas](capitulo-02-notas.html)
 
-[← Capítulo 1](capitulo-01.md) · [Capítulo 3 →](capitulo-03.md)
+[← Capítulo 1](capitulo-01.html) · [Capítulo 3 →](capitulo-03.html)
 
 > **Pregunta generadora.** Si conocemos cómo varían dos funciones, ¿qué podemos deducir del cambio de su suma, su producto, su cociente o su composición? ¿Y cómo convertir ese conocimiento en un método para estudiar funciones cada vez más complejas?
 
@@ -488,8 +488,8 @@ Todavía no hemos demostrado que el signo de $f'$ en **todo un intervalo** gobie
 - **De C01:** definición de derivada en punto interior, derivabilidad implica continuidad y caracterización por aproximación afín.
 - **Aportaciones de C02:** `EDC-C02-THM-001--007`, reglas y construcciones aquí demostradas; medida de ángulo en radianes como herramienta de geometría previa.
 - **No utilizado:** Rolle, teorema del valor medio, integración de Riemann, Teorema Fundamental, Taylor ni resultados generales de análisis funcional.
-- **Origen historiográfico de las notaciones y de las funciones:** [notas históricas y control de fuentes](capitulo-02-notas.md).
+- **Origen historiográfico de las notaciones y de las funciones:** [notas históricas y control de fuentes](capitulo-02-notas.html).
 
 ### Trabajo del lector
 
-Los [ejercicios de este capítulo](capitulo-02-ejercicios.md) están organizados por objetivos, desde identificación de dominios y composición hasta demostraciones y contraejemplos. Las [soluciones desarrolladas](capitulo-02-soluciones.md) permanecen separadas de la exposición para preservar el valor del trabajo independiente.
+Los [ejercicios de este capítulo](capitulo-02-ejercicios.html) están organizados por objetivos, desde identificación de dominios y composición hasta demostraciones y contraejemplos. Las [soluciones desarrolladas](capitulo-02-soluciones.html) permanecen separadas de la exposición para preservar el valor del trabajo independiente.

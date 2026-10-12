@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-10.md) · [Ejercicios](capitulo-10-ejercicios.md) · [Soluciones](capitulo-10-soluciones.md) · [Notas históricas](capitulo-10-notas.md)
+[Exposición](capitulo-10.html) · [Ejercicios](capitulo-10-ejercicios.html) · [Soluciones](capitulo-10-soluciones.html) · [Notas históricas](capitulo-10-notas.html)
 
-[← Capítulo 9](capitulo-09.md) · [Capítulo 11 →](capitulo-11.md)
+[← Capítulo 9](capitulo-09.html) · [Capítulo 11 →](capitulo-11.html)
 
 > **Pregunta generadora.** Si no conocemos una función, pero sabemos cómo debe cambiar en cada instante, ¿podemos reconstruirla? ¿Cuánta información contiene una ley diferencial, qué añade una condición inicial y cuándo esa información determina una sola trayectoria?
 
@@ -251,7 +251,7 @@ para una constante $L$ adecuada porque $u,v$ están acotados. El Teorema 10.6 fu
 
 **Demostración.** Los valores constantes anulan el campo. Para $y_0<0$, $A=K/y_0-1<-1$ y $1+A e^{-r(t-t_0)}=0$ cuando $t=t_0+(\ln(-A))/r>t_0$. En el intervalo desde $t_0$ hasta ese tiempo sin incluirlo la fórmula satisface la EDO; no puede prolongarse por ella a través del denominador nulo. $\square$
 
-Los parámetros $r$ y $K$ no son conclusiones matemáticas extraídas de un censo: son hipótesis de un modelo que debe verificarse por otros medios. La curva logística está asociada a los estudios poblacionales decimonónicos de Verhulst; las fechas y el alcance histórico se precisan en [las notas](capitulo-10-notas.md).
+Los parámetros $r$ y $K$ no son conclusiones matemáticas extraídas de un censo: son hipótesis de un modelo que debe verificarse por otros medios. La curva logística está asociada a los estudios poblacionales decimonónicos de Verhulst; las fechas y el alcance histórico se precisan en [las notas](capitulo-10-notas.html).
 
 ![Dos soluciones logísticas positivas con K=1,2: una crece desde y0=0,23 y otra decrece desde y0=1,85 hacia la recta de equilibrio y=K.](/assets/books/elementos-del-calculo/EDC-C10-F01_TRAYECTORIAS_LOGISTICAS.svg)
 
@@ -341,7 +341,7 @@ La expresión $y_{j+1}=y_j+hF(t_j,y_j)$ se denomina *paso explícito de Euler*. 
 
 ## 10.12. Del problema inverso de tangentes a la teoría de las trayectorias
 
-La pregunta de este capítulo se relaciona históricamente con el *problema inverso de tangentes*: si la pendiente de una curva está sometida a cierta ley, ¿qué curva puede tenerla? Los métodos de Newton, Leibniz, los Bernoulli y Euler se desarrollaron en relación con problemas de mecánica, geometría y cálculo; la teoría moderna distingue luego entre hallar fórmulas, decidir existencia, demostrar unicidad y controlar la dependencia de las condiciones iniciales. Nuestras demostraciones anteriores están escritas con las herramientas de C00–C09 y no se presentan como transcripciones de esos autores. Las [notas históricas](capitulo-10-notas.md) precisan qué testimonios modernos y registros primarios fueron efectivamente examinados.
+La pregunta de este capítulo se relaciona históricamente con el *problema inverso de tangentes*: si la pendiente de una curva está sometida a cierta ley, ¿qué curva puede tenerla? Los métodos de Newton, Leibniz, los Bernoulli y Euler se desarrollaron en relación con problemas de mecánica, geometría y cálculo; la teoría moderna distingue luego entre hallar fórmulas, decidir existencia, demostrar unicidad y controlar la dependencia de las condiciones iniciales. Nuestras demostraciones anteriores están escritas con las herramientas de C00–C09 y no se presentan como transcripciones de esos autores. Las [notas históricas](capitulo-10-notas.html) precisan qué testimonios modernos y registros primarios fueron efectivamente examinados.
 
 Hemos probado **existencia y unicidad global** para las ecuaciones lineales de primer orden con coeficientes continuos sobre su intervalo de datos; **existencia y unicidad en una rama** para las separables que no cruzan ceros; **unicidad condicional** para soluciones ya existentes bajo una cota Lipschitz; y **existencia y unicidad explícitas** para la oscilación armónica lineal. Hemos exhibido una EDO con infinitas soluciones para un mismo dato, y un modelo logístico cuya fórmula puede perder sentido en tiempo finito para ciertos valores iniciales. Así, *resolver una ecuación* no es siempre el mismo problema lógico.
 
@@ -354,4 +354,4 @@ Hemos probado **existencia y unicidad global** para las ecuaciones lineales de p
 - **Resultados originales de C10:** `EDC-C10-THM-001--010`, `LEM-001--002`, `PRP-001--004`, `DEF-001--003`, `COR-001--002`.
 - **Fuera del alcance:** teorema general de existencia de Peano, Picard–Lindelöf como teorema demostrado, problemas de frontera de orden alto, sistemas y EDP, teoría de control, estabilidad no lineal global y análisis funcional.
 
-Los [treinta ejercicios](capitulo-10-ejercicios.md) desarrollan el diagnóstico de hipótesis, la construcción explícita de trayectorias, la unicidad, los equilibrios, los modelos y el error de aproximación. Las [soluciones](capitulo-10-soluciones.md) se presentan de forma separada, cada una con su identificador propio y comprobación por sustitución cuando corresponde. La [documentación histórica](capitulo-10-notas.md) conserva referencias, niveles de acceso y límites de atribución.
+Los [treinta ejercicios](capitulo-10-ejercicios.html) desarrollan el diagnóstico de hipótesis, la construcción explícita de trayectorias, la unicidad, los equilibrios, los modelos y el error de aproximación. Las [soluciones](capitulo-10-soluciones.html) se presentan de forma separada, cada una con su identificador propio y comprobación por sustitución cuando corresponde. La [documentación histórica](capitulo-10-notas.html) conserva referencias, niveles de acceso y límites de atribución.

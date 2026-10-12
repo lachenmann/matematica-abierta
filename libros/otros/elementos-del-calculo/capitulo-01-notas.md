@@ -25,11 +25,11 @@ source-id: EDC-C01-NOTAS-HISTORICAS
 source-sha256: d2759b68f2351b7819ca55f5a4cdcbe8e5a826fd8a9e1539aeafedd0bebcee22
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-01.md) · [Ejercicios](capitulo-01-ejercicios.md) · [Soluciones](capitulo-01-soluciones.md) · [Notas históricas](capitulo-01-notas.md)
+[Exposición](capitulo-01.html) · [Ejercicios](capitulo-01-ejercicios.html) · [Soluciones](capitulo-01-soluciones.html) · [Notas históricas](capitulo-01-notas.html)
 
-Estas notas acompañan [el capítulo 1](capitulo-01.md) sin incorporarse a sus demostraciones. No equiparan el vocabulario de los siglos XVI–XVII con límites $\varepsilon$–$\delta$ ni con la definición moderna de función. Una afirmación respaldada por una síntesis historiográfica secundaria no se convierte por ello en lectura directa de la fuente primaria correspondiente.
+Estas notas acompañan [el capítulo 1](capitulo-01.html) sin incorporarse a sus demostraciones. No equiparan el vocabulario de los siglos XVI–XVII con límites $\varepsilon$–$\delta$ ni con la definición moderna de función. Una afirmación respaldada por una síntesis historiográfica secundaria no se convierte por ello en lectura directa de la fuente primaria correspondiente.
 
 ## H1. Galileo, movimiento y tiempo cuadrático
 

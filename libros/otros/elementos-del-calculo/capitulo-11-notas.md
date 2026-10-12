@@ -25,11 +25,11 @@ source-id: EDC-C11-NOTAS-HISTORICAS
 source-sha256: f1570b225f4e129ee596f53f716d3fe66ad87e6f8babd143961e37d87d333ab9
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-11.md) · [Ejercicios](capitulo-11-ejercicios.md) · [Soluciones](capitulo-11-soluciones.md) · [Notas históricas](capitulo-11-notas.md)
+[Exposición](capitulo-11.html) · [Ejercicios](capitulo-11-ejercicios.html) · [Soluciones](capitulo-11-soluciones.html) · [Notas históricas](capitulo-11-notas.html)
 
-Estas notas acompañan [el capítulo de síntesis](capitulo-11.md) y su examen de conjunto de C00–C10. Adoptamos cuatro categorías distintas: **A** = texto o entrada secundaria efectivamente abierta y leída; **B** = ficha bibliográfica o resumen inspeccionado, sin lectura íntegra; **C** = testimonio primario disponible pero **no colacionado íntegramente**; **D** = demostración **actual** de EDC, no atribuible literalmente al autor histórico. La fecha de una obra y la formulación de un teorema son objetos documentales distintos. Una identidad en notación matemática moderna jamás se presenta aquí como transcripción de un manuscrito antiguo.
+Estas notas acompañan [el capítulo de síntesis](capitulo-11.html) y su examen de conjunto de C00–C10. Adoptamos cuatro categorías distintas: **A** = texto o entrada secundaria efectivamente abierta y leída; **B** = ficha bibliográfica o resumen inspeccionado, sin lectura íntegra; **C** = testimonio primario disponible pero **no colacionado íntegramente**; **D** = demostración **actual** de EDC, no atribuible literalmente al autor histórico. La fecha de una obra y la formulación de un teorema son objetos documentales distintos. Una identidad en notación matemática moderna jamás se presenta aquí como transcripción de un manuscrito antiguo.
 
 ## H1. Eudoxo, Arquímedes y las cuadraturas griegas
 
@@ -99,7 +99,7 @@ Los contraejemplos de C11 son pruebas **matemáticas actuales**. $|x|$ separa co
 
 Los modelos de enfriamiento y población de C10 ilustran otro límite: comprobar por derivación una trayectoria **no valida la ley física o biológica**. Historia de modelos, historia de las pruebas y verdad matemática deben permanecer separadas. También debe conservarse la frontera con la auditoría de la obra entera: que C11 tenga ejercicios, soluciones, pruebas y readback no implica haber reexaminado transversalmente todas las dependencias de C00–C11 ni haber terminado la composición tipográfica de la edición integral.
 
-**Fuentes secundarias y primarias tratadas en C10:** consultar [notas H1–H8 de C10](capitulo-10-notas.md), con el registro de [Verhulst (1845) en Persée](https://www.persee.fr/doc/marb_0770-8157_1845_num_18_1_3438), [MacTutor, Euler](https://mathshistory.st-andrews.ac.uk/Biographies/Euler/) y el estudio histórico acerca de la *Scala graduum caloris* de Newton (referencias allí diferenciadas). No se han reabierto esos originales para introducir nuevas citas en C11.
+**Fuentes secundarias y primarias tratadas en C10:** consultar [notas H1–H8 de C10](capitulo-10-notas.html), con el registro de [Verhulst (1845) en Persée](https://www.persee.fr/doc/marb_0770-8157_1845_num_18_1_3438), [MacTutor, Euler](https://mathshistory.st-andrews.ac.uk/Biographies/Euler/) y el estudio histórico acerca de la *Scala graduum caloris* de Newton (referencias allí diferenciadas). No se han reabierto esos originales para introducir nuevas citas en C11.
 
 
 ## Registro consolidado de procedencia

@@ -25,9 +25,9 @@ source-id: EDC_ITINERARIOS_DE_LECTURA
 source-sha256: 0ff2e4ace53d02f8be56ff06a3fb1a0f9734d1bba6496c0bbd20c14441547f7e
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-*Elementos del cálculo — Un enfoque histórico, problemático y fundacional* puede estudiarse íntegramente o mediante recorridos seleccionados. Esta guía hace visible una diferencia pedagógica: **la obra tiene un solo corpus de demostraciones, pero no todos los lectores tienen las mismas preguntas ni necesitan el mismo ritmo**. Los recorridos reconocen, sin reproducir literalmente, el énfasis que Gabor Toth concede a los estudiantes inquisitivos, los seminarios universitarios y los círculos matemáticos. [Los catorce problemas de investigación](laboratorio.md) y [sus soluciones razonadas](laboratorio-soluciones.md) son material adicional propio.
+*Elementos del cálculo — Un enfoque histórico, problemático y fundacional* puede estudiarse íntegramente o mediante recorridos seleccionados. Esta guía hace visible una diferencia pedagógica: **la obra tiene un solo corpus de demostraciones, pero no todos los lectores tienen las mismas preguntas ni necesitan el mismo ritmo**. Los recorridos reconocen, sin reproducir literalmente, el énfasis que Gabor Toth concede a los estudiantes inquisitivos, los seminarios universitarios y los círculos matemáticos. [Los catorce problemas de investigación](laboratorio.html) y [sus soluciones razonadas](laboratorio-soluciones.html) son material adicional propio.
 
 ## A. Primera lectura razonada — 12 semanas
 

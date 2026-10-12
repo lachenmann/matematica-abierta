@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-07.md) · [Ejercicios](capitulo-07-ejercicios.md) · [Soluciones](capitulo-07-soluciones.md) · [Notas históricas](capitulo-07-notas.md)
+[Exposición](capitulo-07.html) · [Ejercicios](capitulo-07-ejercicios.html) · [Soluciones](capitulo-07-soluciones.html) · [Notas históricas](capitulo-07-notas.html)
 
-[← Capítulo 6](capitulo-06.md) · [Capítulo 8 →](capitulo-08.md)
+[← Capítulo 6](capitulo-06.html) · [Capítulo 8 →](capitulo-08.html)
 
 > **Pregunta generadora.** Conocemos la definición rigurosa de integral y sabemos calcularla mediante primitivas. ¿Cómo reconocer una primitiva cuando el integrando es una composición, un producto o una función racional que no aparece en una tabla elemental?
 
@@ -422,7 +422,7 @@ $$
 
 está perfectamente definida para todo $x$, es derivable y satisface $H'=e^{-x^2}$. No necesitamos decidir aquí qué expresiones elementales existen o no para $H$: el Teorema Fundamental ya asegura lo que importa para su existencia y variación. Tampoco introducimos integrales impropias, integrales múltiples, teoría de medida o técnicas avanzadas de fracciones racionales con raíces complejas.
 
-Históricamente, las cuadraturas, sumaciones y reglas operatorias no surgieron todas con las mismas definiciones actuales. Los problemas geométricos antiguos y las transformaciones de los siglos XVII–XIX dieron lugar a familias de procedimientos que hoy pueden unificarse mediante producto, cadena y Teorema Fundamental. La notación de Leibniz conserva esa genealogía, pero el símbolo $du$ no sustituye la prueba analítica que hemos realizado. La [documentación histórica](capitulo-07-notas.md) distingue las síntesis efectivamente consultadas de las fuentes primarias y libros sólo localizados, sin atribuir a Newton o Leibniz enunciados modernos de Riemann–Darboux.
+Históricamente, las cuadraturas, sumaciones y reglas operatorias no surgieron todas con las mismas definiciones actuales. Los problemas geométricos antiguos y las transformaciones de los siglos XVII–XIX dieron lugar a familias de procedimientos que hoy pueden unificarse mediante producto, cadena y Teorema Fundamental. La notación de Leibniz conserva esa genealogía, pero el símbolo $du$ no sustituye la prueba analítica que hemos realizado. La [documentación histórica](capitulo-07-notas.html) distingue las síntesis efectivamente consultadas de las fuentes primarias y libros sólo localizados, sin atribuir a Newton o Leibniz enunciados modernos de Riemann–Darboux.
 
 ### Mapa de dependencias y alcance
 
@@ -436,4 +436,4 @@ Históricamente, las cuadraturas, sumaciones y reglas operatorias no surgieron t
 
 ### Trabajo del lector
 
-Los [ejercicios de C07](capitulo-07-ejercicios.md) incluyen diagnóstico de hipótesis, cálculo mediante distintos métodos, pruebas de las reglas, aplicaciones y un desafío de síntesis. Sus [soluciones](capitulo-07-soluciones.md) se entregan separadas de la exposición; cada resolución especifica el intervalo real y la técnica empleada. El marco histórico y los niveles efectivos de consulta están en [notas de fuentes](capitulo-07-notas.md).
+Los [ejercicios de C07](capitulo-07-ejercicios.html) incluyen diagnóstico de hipótesis, cálculo mediante distintos métodos, pruebas de las reglas, aplicaciones y un desafío de síntesis. Sus [soluciones](capitulo-07-soluciones.html) se entregan separadas de la exposición; cada resolución especifica el intervalo real y la técnica empleada. El marco histórico y los niveles efectivos de consulta están en [notas de fuentes](capitulo-07-notas.html).

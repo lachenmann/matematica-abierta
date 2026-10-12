@@ -25,11 +25,11 @@ source-id: EDC-C11-EJERCICIOS
 source-sha256: b5b6984c416c3da6c02e15ad57fa9be7b250a6b0c7809a0c70326dca89148b09
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-11.md) · [Ejercicios](capitulo-11-ejercicios.md) · [Soluciones](capitulo-11-soluciones.md) · [Notas históricas](capitulo-11-notas.md)
+[Exposición](capitulo-11.html) · [Ejercicios](capitulo-11-ejercicios.html) · [Soluciones](capitulo-11-soluciones.html) · [Notas históricas](capitulo-11-notas.html)
 
-Los treinta problemas recorren las cinco convergencias conceptuales del libro y exigen **demostrar**, no sólo recordar fórmulas. Las preguntas históricas se responden desde [las notas documentadas](capitulo-11-notas.md): no se atribuirán originales que no hayan sido cotejados. Los problemas `EDC-C11-EXR-001--030` corresponden uno por uno a [EDC-C11-SOLUCIONES](capitulo-11-soluciones.md).
+Los treinta problemas recorren las cinco convergencias conceptuales del libro y exigen **demostrar**, no sólo recordar fórmulas. Las preguntas históricas se responden desde [las notas documentadas](capitulo-11-notas.html): no se atribuirán originales que no hayan sido cotejados. Los problemas `EDC-C11-EXR-001--030` corresponden uno por uno a [EDC-C11-SOLUCIONES](capitulo-11-soluciones.html).
 
 ## A. Qué constituye una prueba en cálculo
 
@@ -105,4 +105,4 @@ Los treinta problemas recorren las cinco convergencias conceptuales del libro y 
 
 ---
 
-**Correspondencia editorial:** los treinta IDs `EDC-C11-EXR-001--030` se emparejan exactamente con `EDC-C11-SOL-001--030` en [las soluciones desarrolladas](capitulo-11-soluciones.md).
+**Correspondencia editorial:** los treinta IDs `EDC-C11-EXR-001--030` se emparejan exactamente con `EDC-C11-SOL-001--030` en [las soluciones desarrolladas](capitulo-11-soluciones.html).

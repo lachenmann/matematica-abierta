@@ -25,11 +25,11 @@ source-id: EDC-C07-EJERCICIOS
 source-sha256: f36796ed37c82726d5ea07885a081a2c595d4488c81c448d52873f6ae15aa46d
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-07.md) · [Ejercicios](capitulo-07-ejercicios.md) · [Soluciones](capitulo-07-soluciones.md) · [Notas históricas](capitulo-07-notas.md)
+[Exposición](capitulo-07.html) · [Ejercicios](capitulo-07-ejercicios.html) · [Soluciones](capitulo-07-soluciones.html) · [Notas históricas](capitulo-07-notas.html)
 
-Cada enunciado se resuelve utilizando sólo los capítulos C00–C07. Salvo indicación expresa, las integrales son propias, sobre intervalos cerrados donde el integrando está definido. Para las primitivas indefinidas deben identificarse los componentes del dominio y la constante; para las integrales definidas, comprobarse la orientación y los extremos. Las soluciones completas están en [un archivo independiente](capitulo-07-soluciones.md).
+Cada enunciado se resuelve utilizando sólo los capítulos C00–C07. Salvo indicación expresa, las integrales son propias, sobre intervalos cerrados donde el integrando está definido. Para las primitivas indefinidas deben identificarse los componentes del dominio y la constante; para las integrales definidas, comprobarse la orientación y los extremos. Las soluciones completas están en [un archivo independiente](capitulo-07-soluciones.html).
 
 ## A. Hipótesis, lenguaje y elecciones de método
 
@@ -111,4 +111,4 @@ Utilice sustitución, integración por partes y fracciones parciales, respectiva
 
 ---
 
-**Correspondencia editorial:** Los treinta identificadores `EDC-C07-EXR-001--030` tienen desarrollos únicos `EDC-C07-SOL-001--030` en [las soluciones del capítulo 7](capitulo-07-soluciones.md).
+**Correspondencia editorial:** Los treinta identificadores `EDC-C07-EXR-001--030` tienen desarrollos únicos `EDC-C07-SOL-001--030` en [las soluciones del capítulo 7](capitulo-07-soluciones.html).

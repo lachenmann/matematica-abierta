@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-08.md) · [Ejercicios](capitulo-08-ejercicios.md) · [Soluciones](capitulo-08-soluciones.md) · [Notas históricas](capitulo-08-notas.md)
+[Exposición](capitulo-08.html) · [Ejercicios](capitulo-08-ejercicios.html) · [Soluciones](capitulo-08-soluciones.html) · [Notas históricas](capitulo-08-notas.html)
 
-[← Capítulo 7](capitulo-07.md) · [Capítulo 9 →](capitulo-09.md)
+[← Capítulo 7](capitulo-07.html) · [Capítulo 9 →](capitulo-09.html)
 
 > **Pregunta generadora.** Una suma finita se obtiene realizando cierto número de adiciones. ¿Qué condiciones autorizan a escribir una suma con infinitos términos y, todavía más, a derivar o integrar una función presentada mediante esa suma?
 
@@ -102,7 +102,7 @@ $$
 
 **Demostración.** Para $p>1$, agrupemos los índices en bloques $2^k\le n<2^{k+1}$, cada uno con $2^k$ términos. La suma en el bloque no supera $2^k(2^k)^{-p}=2^{-k(p-1)}$. Al sumar los primeros bloques obtenemos una cota por sumas parciales de una serie geométrica de razón $2^{1-p}<1$. El Lema 8.2 asegura convergencia. Para $p=1$, en el bloque $2^k\le n<2^{k+1}$ cada término es mayor que $2^{-(k+1)}$ y la suma del bloque es al menos $1/2$; por tanto las sumas parciales de la armónica no están acotadas. Si $0<p<1$, $n^{-p}\ge n^{-1}$ para $n\ge1$ y aplicamos comparación. $\square$
 
-La función $1/n$ **tiende a cero**, pero su serie diverge. Éste es el contraejemplo preciso que faltaba al Lema 8.1. La agrupación por potencias de dos también permite explicar históricamente algunos argumentos medievales sobre la armónica, sin identificar automáticamente la prueba moderna con un manuscrito particular; véanse las [notas H1](capitulo-08-notas.md).
+La función $1/n$ **tiende a cero**, pero su serie diverge. Éste es el contraejemplo preciso que faltaba al Lema 8.1. La agrupación por potencias de dos también permite explicar históricamente algunos argumentos medievales sobre la armónica, sin identificar automáticamente la prueba moderna con un manuscrito particular; véanse las [notas H1](capitulo-08-notas.html).
 
 ## 8.5. Convergencia absoluta, alternancia y reordenación
 
@@ -317,7 +317,7 @@ $$
 \boxed{\frac\pi4=\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}.}
 $$
 
-Esta última igualdad combina una identidad **finita**, integrabilidad propia y una estimación del resto; no extrapola ilegalmente el Teorema 8.9 hasta la frontera. El desarrollo histórico de fórmulas similares no debe confundirse con la prueba que aquí acabamos de construir; véanse las [notas H3–H5](capitulo-08-notas.md).
+Esta última igualdad combina una identidad **finita**, integrabilidad propia y una estimación del resto; no extrapola ilegalmente el Teorema 8.9 hasta la frontera. El desarrollo histórico de fórmulas similares no debe confundirse con la prueba que aquí acabamos de construir; véanse las [notas H3–H5](capitulo-08-notas.html).
 
 ## 8.12. Qué queda demostrado y qué permanece abierto
 
@@ -336,4 +336,4 @@ Históricamente, las series estuvieron ligadas a aproximaciones numéricas, cuad
 
 ### Trabajo del lector
 
-Los [treinta ejercicios](capitulo-08-ejercicios.md) distinguen pruebas de convergencia, estimación de errores, reordenación, fronteras, productos y operaciones interiores con series de potencias. Las [soluciones completas](capitulo-08-soluciones.md) se presentan por separado, con dominio, hipótesis y cálculos razonados; la [documentación histórica](capitulo-08-notas.md) conserva el estado de verificación de cada referencia.
+Los [treinta ejercicios](capitulo-08-ejercicios.html) distinguen pruebas de convergencia, estimación de errores, reordenación, fronteras, productos y operaciones interiores con series de potencias. Las [soluciones completas](capitulo-08-soluciones.html) se presentan por separado, con dominio, hipótesis y cálculos razonados; la [documentación histórica](capitulo-08-notas.html) conserva el estado de verificación de cada referencia.

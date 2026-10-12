@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-04.md) · [Ejercicios](capitulo-04-ejercicios.md) · [Soluciones](capitulo-04-soluciones.md) · [Notas históricas](capitulo-04-notas.md)
+[Exposición](capitulo-04.html) · [Ejercicios](capitulo-04-ejercicios.html) · [Soluciones](capitulo-04-soluciones.html) · [Notas históricas](capitulo-04-notas.html)
 
-[← Capítulo 3](capitulo-03.md) · [Capítulo 5 →](capitulo-05.md)
+[← Capítulo 3](capitulo-03.html) · [Capítulo 5 →](capitulo-05.html)
 
 > **Pregunta generadora.** Sabemos calcular exactamente el área de un triángulo y de un rectángulo. ¿Cómo asignar un valor justificado a una región de contorno curvo, de tal manera que distintas aproximaciones geométricas no produzcan respuestas incompatibles?
 
@@ -71,7 +71,7 @@ $$
 
 por el principio arquimediano (`EDC-C00-THM-001`). La definición de límite proporciona $N$. $\square$
 
-En geometría antigua, una reducción reiterada del resto a una parte suficientemente pequeña permitió fundamentar comparaciones de magnitudes sin recurrir a una suma infinita como operación previamente definida. **No afirmamos** que el lema anterior sea la escritura literal de Euclides o Arquímedes: expresa en lenguaje de sucesiones una lógica afín a la del agotamiento. La Proposición X.1 de los *Elementos* de Euclides formula una disminución repetida de una magnitud hasta que el residuo resulta menor que otra magnitud dada; véanse las [notas históricas H1](capitulo-04-notas.md).
+En geometría antigua, una reducción reiterada del resto a una parte suficientemente pequeña permitió fundamentar comparaciones de magnitudes sin recurrir a una suma infinita como operación previamente definida. **No afirmamos** que el lema anterior sea la escritura literal de Euclides o Arquímedes: expresa en lenguaje de sucesiones una lógica afín a la del agotamiento. La Proposición X.1 de los *Elementos* de Euclides formula una disminución repetida de una magnitud hasta que el residuo resulta menor que otra magnitud dada; véanse las [notas históricas H1](capitulo-04-notas.html).
 
 **Proposición 4.1 (`EDC-C04-PRP-001`; unicidad por encaje).** Sean $L_n\le U_n$ números reales para cada $n\ge1$, y supongamos que $U_n-L_n\to0$. Si dos números $A,B$ satisfacen $L_n\le A,B\le U_n$ para todo $n$, entonces $A=B$.
 
@@ -179,7 +179,7 @@ La fórmula se extiende a todo arco de parábola que sea la gráfica de un polin
 
 La *Cuadratura de la parábola* reúne procedimientos mecánicos y geométricos y culmina, en su Proposición 24, con el resultado de los cuatro tercios del triángulo inscrito. La versión que acabamos de demostrar utiliza coordenadas cartesianas, polinomios, índices $n$ y límites; no es una reconstrucción literal de los argumentos del siglo III a. C. Su valor didáctico reside en hacer visibles la recurrencia de las áreas, la fórmula finita y el error que puede hacerse arbitrariamente pequeño.
 
-La introducción de la obra, conservada en traducción inglesa reproducida por MacTutor, presenta a Arquímedes describiendo una búsqueda inicialmente motivada por medios mecánicos y posteriormente justificada geométricamente. El contexto está documentado en [H2](capitulo-04-notas.md), sin convertir esa traducción accesible en una colación del texto griego.
+La introducción de la obra, conservada en traducción inglesa reproducida por MacTutor, presenta a Arquímedes describiendo una búsqueda inicialmente motivada por medios mecánicos y posteriormente justificada geométricamente. El contexto está documentado en [H2](capitulo-04-notas.html), sin convertir esa traducción accesible en una colación del texto griego.
 
 Es importante no confundir **justificación de una cuadratura particular** con una teoría de área aplicable a cualquier función. El éxito con la parábola no garantiza que las aproximaciones de todas las regiones curvilíneas sean convergentes o que el valor obtenido sea independiente del procedimiento de muestreo.
 
@@ -343,7 +343,7 @@ Hay que distinguir tres afirmaciones:
 2. Es tentador imaginar una superficie como una colección de líneas paralelas de espesor nulo.
 3. **No se deduce** de lo anterior que cualquier colección arbitraria de líneas tenga, por simple suma informal, un área bien definida.
 
-En la geometría elemental, los polígonos pueden seccionarse y sus áreas compararse por descomposiciones finitas. Para regiones curvas, la comparación entre secciones exige reglas adicionales y una teoría de aproximación. Cavalieri no puede reducirse a una simple aplicación del teorema de Fubini, que aún no existe dentro de nuestra obra. La relación histórica y los límites de nuestra reconstrucción se documentan en [H4](capitulo-04-notas.md).
+En la geometría elemental, los polígonos pueden seccionarse y sus áreas compararse por descomposiciones finitas. Para regiones curvas, la comparación entre secciones exige reglas adicionales y una teoría de aproximación. Cavalieri no puede reducirse a una simple aplicación del teorema de Fubini, que aún no existe dentro de nuestra obra. La relación histórica y los límites de nuestra reconstrucción se documentan en [H4](capitulo-04-notas.html).
 
 ## 4.11. El obstáculo: dos familias de rectángulos incompatibles
 
@@ -365,8 +365,8 @@ En el capítulo 5 estableceremos el significado preciso de *integrabilidad de Ri
 - **De C01–C03:** la derivada de polinomios y el teorema del valor medio se emplean sólo en el laboratorio especial de potencias (§4.7); la convexidad caracteriza la posición de una curva respecto de su cuerda (§4.8). Los argumentos de agotamiento parabólico no precisan cálculo diferencial.
 - **Aportaciones de C04:** `EDC-C04-THM-001--004`, `EDC-C04-LEM-001--003` y `EDC-C04-PRP-001--003`, más las aproximaciones rectangulares y su interpretación geométrica.
 - **Expresamente no utilizado:** definición general de integral de Riemann–Darboux, Teorema Fundamental, cálculo de primitivas como cuadratura general, series de funciones o teoría de medida.
-- **Fuentes históricas:** [Notas del capítulo 4](capitulo-04-notas.md), distinguiendo testimonio antiguo traducido, historiografía leída y libros localizados sin lectura directa.
+- **Fuentes históricas:** [Notas del capítulo 4](capitulo-04-notas.html), distinguiendo testimonio antiguo traducido, historiografía leída y libros localizados sin lectura directa.
 
 ### Trabajo del lector
 
-Los [ejercicios del capítulo](capitulo-04-ejercicios.md) buscan reconstruir polígonos, estimar errores, refutar argumentos inválidos y demostrar identidades finitas. Sus [soluciones desarrolladas](capitulo-04-soluciones.md) se entregan por separado para preservar el trabajo autónomo.
+Los [ejercicios del capítulo](capitulo-04-ejercicios.html) buscan reconstruir polígonos, estimar errores, refutar argumentos inválidos y demostrar identidades finitas. Sus [soluciones desarrolladas](capitulo-04-soluciones.html) se entregan por separado para preservar el trabajo autónomo.

@@ -25,11 +25,11 @@ source-id: EDC-C00-EJERCICIOS
 source-sha256: ae9921fa11bc3713fdd3d12b403207cbd7bedab29020591fdf084e650edb4e4a
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-00.md) · [Ejercicios](capitulo-00-ejercicios.md) · [Soluciones](capitulo-00-soluciones.md) · [Notas históricas](capitulo-00-notas.md)
+[Exposición](capitulo-00.html) · [Ejercicios](capitulo-00-ejercicios.html) · [Soluciones](capitulo-00-soluciones.html) · [Notas históricas](capitulo-00-notas.html)
 
-Estos problemas acompañan [Del límite a la pregunta por el cálculo](capitulo-00.md). Se han distribuido por intención matemática y no sólo por dificultad computacional. En todos los casos se pide justificar las afirmaciones; ninguna gráfica o aproximación decimal reemplaza una prueba. Las respuestas desarrolladas figuran, por los mismos números, en [Soluciones del capítulo 0](capitulo-00-soluciones.md).
+Estos problemas acompañan [Del límite a la pregunta por el cálculo](capitulo-00.html). Se han distribuido por intención matemática y no sólo por dificultad computacional. En todos los casos se pide justificar las afirmaciones; ninguna gráfica o aproximación decimal reemplaza una prueba. Las respuestas desarrolladas figuran, por los mismos números, en [Soluciones del capítulo 0](capitulo-00-soluciones.html).
 
 ## A. Lenguaje y lectura conceptual
 
@@ -115,4 +115,4 @@ Para $r>0$, en $[0,r]$ y con $f(x)=x^2$, calcule las sumas izquierda y derecha d
 
 ---
 
-**Trazabilidad:** 18 enunciados propios, `EDC-C00-EXR-001` a `EDC-C00-EXR-018`; 18 soluciones correspondientes, en [EDC-C00-SOLUCIONES](capitulo-00-soluciones.md). Los ejercicios no suman nuevas unidades al indicador global de capítulos.
+**Trazabilidad:** 18 enunciados propios, `EDC-C00-EXR-001` a `EDC-C00-EXR-018`; 18 soluciones correspondientes, en [EDC-C00-SOLUCIONES](capitulo-00-soluciones.html). Los ejercicios no suman nuevas unidades al indicador global de capítulos.

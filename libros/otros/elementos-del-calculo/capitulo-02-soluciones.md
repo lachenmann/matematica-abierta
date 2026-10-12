@@ -25,9 +25,9 @@ source-id: EDC-C02-SOLUCIONES
 source-sha256: ea2091e9334b9c4e5aac0611c44c0d87b76169b21d218691f2a71134c168eda4
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-02.md) · [Ejercicios](capitulo-02-ejercicios.md) · [Soluciones](capitulo-02-soluciones.md) · [Notas históricas](capitulo-02-notas.md)
+[Exposición](capitulo-02.html) · [Ejercicios](capitulo-02-ejercicios.html) · [Soluciones](capitulo-02-soluciones.html) · [Notas históricas](capitulo-02-notas.html)
 
 Estas soluciones son elaboraciones matemáticas propias. La referencia `EDC-C02-SOL-nnn` corresponde exactamente al enunciado `EDC-C02-EXR-nnn`; todos los argumentos se apoyan en C00–C02. Cada hipótesis de dominio se conserva a lo largo del cálculo.
 

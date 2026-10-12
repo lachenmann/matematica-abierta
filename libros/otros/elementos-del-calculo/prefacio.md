@@ -25,7 +25,7 @@ source-id: PREFACIO
 source-sha256: 238b28c7604d2b17a38627c2c60118b0bb8924eaa9ff70e4e33983f0f52ffa79
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
 Las matemáticas suelen presentarse como una sucesión de respuestas. Primero aprendemos a derivar, después a integrar; resolvemos ejercicios, aplicamos fórmulas y comprobamos los resultados. Pero, al recorrer ese camino, no siempre alcanzamos a ver la pregunta que hizo necesaria cada operación. ¿Qué dificultad había antes de que existiera una derivada? ¿Qué queríamos averiguar cuando todavía no disponíamos de una integral? ¿Y por qué dos procedimientos nacidos de problemas aparentemente distintos terminaron unidos por uno de los teoremas más importantes de la matemática?
 

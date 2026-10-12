@@ -25,9 +25,9 @@ source-id: EDC-C03-SOLUCIONES
 source-sha256: 2e3b80886e7855ea72db511e4736194c8e15b9f1b5ada0ea8db7fc3f1ca5721e
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-03.md) · [Ejercicios](capitulo-03-ejercicios.md) · [Soluciones](capitulo-03-soluciones.md) · [Notas históricas](capitulo-03-notas.md)
+[Exposición](capitulo-03.html) · [Ejercicios](capitulo-03-ejercicios.html) · [Soluciones](capitulo-03-soluciones.html) · [Notas históricas](capitulo-03-notas.html)
 
 Cada entrada `EDC-C03-SOL-nnn` corresponde al ejercicio `EDC-C03-EXR-nnn`. Las soluciones se apoyan exclusivamente en los capítulos 0–3. Cuando una demostración emplea el teorema del valor medio, se comprueban su continuidad y derivabilidad sobre el intervalo pertinente.
 

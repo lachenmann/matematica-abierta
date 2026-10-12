@@ -25,11 +25,11 @@ source-id: EDC-C00-NOTAS-HISTORICAS
 source-sha256: 705cd55dd6cf6dfad651b0c0a92ba3c203154c0d0376e86c987c786bb4cdf8bf
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-00.md) · [Ejercicios](capitulo-00-ejercicios.md) · [Soluciones](capitulo-00-soluciones.md) · [Notas históricas](capitulo-00-notas.md)
+[Exposición](capitulo-00.html) · [Ejercicios](capitulo-00-ejercicios.html) · [Soluciones](capitulo-00-soluciones.html) · [Notas históricas](capitulo-00-notas.html)
 
-Estas notas acompañan el [capítulo 0](capitulo-00.md). Su función es **documentar afirmaciones y advertir sobre anacronismos**, no suministrar por autoridad histórica pruebas de las proposiciones matemáticas, que se ofrecen dentro de la exposición. Cada entrada indica el tipo de fuente, el pasaje consultado y el límite de la afirmación.
+Estas notas acompañan el [capítulo 0](capitulo-00.html). Su función es **documentar afirmaciones y advertir sobre anacronismos**, no suministrar por autoridad histórica pruebas de las proposiciones matemáticas, que se ofrecen dentro de la exposición. Cada entrada indica el tipo de fuente, el pasaje consultado y el límite de la afirmación.
 
 ## H1 — Cuadraturas antiguas y Arquímedes
 
@@ -57,7 +57,7 @@ La sucesión didáctica «límites → derivadas → integrales → series» no 
 
 ## H4 — Genealogía intelectual del proyecto
 
-La lectura previa o paralela de Gabor Toth, *Elements of Mathematics: A Problem-Centered Approach to History and Foundations*, Springer, 2021, es recomendada expresamente en el [prefacio de EDC](prefacio.md). Esa genealogía explica la decisión de partir de problemas y llegar a demostraciones, pero **no convierte los pasajes de Toth en fuentes primarias de historia** ni atribuye a su autor participación en esta obra.
+La lectura previa o paralela de Gabor Toth, *Elements of Mathematics: A Problem-Centered Approach to History and Foundations*, Springer, 2021, es recomendada expresamente en el [prefacio de EDC](prefacio.html). Esa genealogía explica la decisión de partir de problemas y llegar a demostraciones, pero **no convierte los pasajes de Toth en fuentes primarias de historia** ni atribuye a su autor participación en esta obra.
 
 **Registros internos contrastados en EDC-M00:** `TOTH-EOM/PROJECT_STATUS.md`, `TOTH_CLOSURE_AUDIT.md` y `TOTH-C04-S03` (diferenciabilidad); todos mantienen independencia editorial. Los ejemplos y demostraciones del capítulo 0 son reconstrucciones autónomas. No se trasladan ejercicios, ilustraciones ni prosa de Toth o *Cálculo para matemáticos*.
 

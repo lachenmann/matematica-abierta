@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-03.md) · [Ejercicios](capitulo-03-ejercicios.md) · [Soluciones](capitulo-03-soluciones.md) · [Notas históricas](capitulo-03-notas.md)
+[Exposición](capitulo-03.html) · [Ejercicios](capitulo-03-ejercicios.html) · [Soluciones](capitulo-03-soluciones.html) · [Notas históricas](capitulo-03-notas.html)
 
-[← Capítulo 2](capitulo-02.md) · [Capítulo 4 →](capitulo-04.md)
+[← Capítulo 2](capitulo-02.html) · [Capítulo 4 →](capitulo-04.html)
 
 > **Pregunta generadora.** Si una derivada describe lo que ocurre muy cerca de un punto, ¿con qué derecho podemos utilizarla para decidir cómo se comporta una función en un intervalo entero, dónde alcanza sus extremos y cuánto nos equivocamos al sustituirla por una recta?
 
@@ -348,7 +348,7 @@ Los dos primeros factores son positivos, de modo que $F$ crece para $0<x<\alpha/
 
 ## 3.12. Historia, alcance y tránsito a las cuadraturas
 
-La búsqueda de extremos es históricamente anterior a la formulación moderna de la derivada. Fermat utilizó métodos algebraicos para abordar máximos, mínimos y tangentes; no corresponde atribuirle automáticamente la prueba con límites laterales que acabamos de dar. El resultado asociado al nombre de Michel Rolle apareció en un contexto de álgebra y teoría de ecuaciones, no como una proposición escrita con nuestro vocabulario de función continua y derivable. Las elaboraciones rigurosas posteriores del valor medio forman parte de una historia más extensa y no de un instante único de descubrimiento. Los documentos historiográficos consultados, sus localizadores y sus límites se registran en [notas históricas](capitulo-03-notas.md); este capítulo utiliza pruebas modernas propias.
+La búsqueda de extremos es históricamente anterior a la formulación moderna de la derivada. Fermat utilizó métodos algebraicos para abordar máximos, mínimos y tangentes; no corresponde atribuirle automáticamente la prueba con límites laterales que acabamos de dar. El resultado asociado al nombre de Michel Rolle apareció en un contexto de álgebra y teoría de ecuaciones, no como una proposición escrita con nuestro vocabulario de función continua y derivable. Las elaboraciones rigurosas posteriores del valor medio forman parte de una historia más extensa y no de un instante único de descubrimiento. Los documentos historiográficos consultados, sus localizadores y sus límites se registran en [notas históricas](capitulo-03-notas.html); este capítulo utiliza pruebas modernas propias.
 
 Hemos establecido un nuevo puente fundamental:
 
@@ -369,4 +369,4 @@ Ahora poseemos un repertorio suficiente para abordar problemas de variación y j
 
 ### Trabajo del lector
 
-El banco [Ejercicios del capítulo 3](capitulo-03-ejercicios.md) propone problemas de lectura de hipótesis, cálculo aplicado, demostración, contraejemplos, optimización y una síntesis final. Las [soluciones desarrolladas](capitulo-03-soluciones.md) se conservan en archivo independiente: resolver antes de consultarlas forma parte del método del libro.
+El banco [Ejercicios del capítulo 3](capitulo-03-ejercicios.html) propone problemas de lectura de hipótesis, cálculo aplicado, demostración, contraejemplos, optimización y una síntesis final. Las [soluciones desarrolladas](capitulo-03-soluciones.html) se conservan en archivo independiente: resolver antes de consultarlas forma parte del método del libro.

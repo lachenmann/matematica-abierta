@@ -25,9 +25,9 @@ source-id: EDC_LABORATORIO_PROBLEMAS
 source-sha256: 6c522f134a5257d73a5b4419a65965fb75a49b11918fcf5a14bc4d57594e78e3
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-Estos problemas complementan, **sin sustituir ni renumerar**, los 338 ejercicios y soluciones del cuerpo del libro. La pregunta se plantea antes de ofrecer un procedimiento, y exige demostrar por qué funciona. Cada solución se encuentra por el mismo identificador en [el solucionario independiente](laboratorio-soluciones.md). Los problemas se proponen con las herramientas disponibles **hasta** el capítulo indicado; ninguno presupone Lebesgue, espacios métricos abstractos o Picard–Lindelöf general.
+Estos problemas complementan, **sin sustituir ni renumerar**, los 338 ejercicios y soluciones del cuerpo del libro. La pregunta se plantea antes de ofrecer un procedimiento, y exige demostrar por qué funciona. Cada solución se encuentra por el mismo identificador en [el solucionario independiente](laboratorio-soluciones.html). Los problemas se proponen con las herramientas disponibles **hasta** el capítulo indicado; ninguno presupone Lebesgue, espacios métricos abstractos o Picard–Lindelöf general.
 
 ## Variación y fundamentos
 

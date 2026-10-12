@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-06.md) · [Ejercicios](capitulo-06-ejercicios.md) · [Soluciones](capitulo-06-soluciones.md) · [Notas históricas](capitulo-06-notas.md)
+[Exposición](capitulo-06.html) · [Ejercicios](capitulo-06-ejercicios.html) · [Soluciones](capitulo-06-soluciones.html) · [Notas históricas](capitulo-06-notas.html)
 
-[← Capítulo 5](capitulo-05.md) · [Capítulo 7 →](capitulo-07.md)
+[← Capítulo 5](capitulo-05.html) · [Capítulo 7 →](capitulo-07.html)
 
 > **Pregunta generadora.** ¿Por qué la acumulación de una magnitud variable puede recuperarse mediante una derivada, y por qué conocer una primitiva permite calcular una integral sin volver a sumar rectángulos?
 
@@ -363,7 +363,7 @@ La idea del Teorema Fundamental no es que ambos operadores se cancelen como sím
 
 El problema de la relación entre tangentes y cuadraturas antecede a nuestras definiciones del siglo XIX. En el siglo XVII se discutieron curvas asociadas a áreas, métodos de tangentes, magnitudes fluyentes y sumaciones infinitesimales. Isaac Barrow articuló relaciones geométricas entre curvas y sus tangentes; Newton formuló métodos de fluxiones y cuadraturas; Leibniz elaboró una notación diferencial e integral de gran alcance. También James Gregory aparece en estudios especializados de la genealogía del teorema. **No** identificaremos sin más esas construcciones con las dos afirmaciones modernas en lenguaje de funciones continuas e integrales de Riemann–Darboux.
 
-Esta cautela no debilita el interés histórico: muestra precisamente la transformación. Un vínculo que surgió de problemas geométricos y mecánicos encuentra ahora una demostración dentro de un sistema de definiciones explícitas. Los testimonios y las interpretaciones de la historiografía, incluidos desacuerdos en la manera de atribuir las primeras formulaciones, se consignan en [las notas históricas y de fuentes](capitulo-06-notas.md).
+Esta cautela no debilita el interés histórico: muestra precisamente la transformación. Un vínculo que surgió de problemas geométricos y mecánicos encuentra ahora una demostración dentro de un sistema de definiciones explícitas. Los testimonios y las interpretaciones de la historiografía, incluidos desacuerdos en la manera de atribuir las primeras formulaciones, se consignan en [las notas históricas y de fuentes](capitulo-06-notas.html).
 
 La identidad que reúne ambos caminos puede escribirse con toda su carga lógica:
 
@@ -388,4 +388,4 @@ Aquí $C([a,b])$ significa simplemente «funciones continuas sobre $[a,b]$», si
 
 ### Trabajo del lector
 
-Los [ejercicios](capitulo-06-ejercicios.md) trabajan separadamente las dos direcciones del teorema, el control de hipótesis, las orientaciones, los extremos variables y la crítica de inferencias inválidas. Se entregan [soluciones completas](capitulo-06-soluciones.md) con la misma numeración. Las fuentes históricas y sus distintos niveles de verificación aparecen en [las notas](capitulo-06-notas.md).
+Los [ejercicios](capitulo-06-ejercicios.html) trabajan separadamente las dos direcciones del teorema, el control de hipótesis, las orientaciones, los extremos variables y la crítica de inferencias inválidas. Se entregan [soluciones completas](capitulo-06-soluciones.html) con la misma numeración. Las fuentes históricas y sus distintos niveles de verificación aparecen en [las notas](capitulo-06-notas.html).

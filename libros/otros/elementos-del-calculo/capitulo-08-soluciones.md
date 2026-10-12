@@ -25,11 +25,11 @@ source-id: EDC-C08-SOLUCIONES
 source-sha256: 2d510a51c8d8370b8d6527f4f8781f12ea63c78b3f2b32000166e3771c0f5796
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-08.md) · [Ejercicios](capitulo-08-ejercicios.md) · [Soluciones](capitulo-08-soluciones.md) · [Notas históricas](capitulo-08-notas.md)
+[Exposición](capitulo-08.html) · [Ejercicios](capitulo-08-ejercicios.html) · [Soluciones](capitulo-08-soluciones.html) · [Notas históricas](capitulo-08-notas.html)
 
-Cada resolución corresponde a un único ejercicio de [C08](capitulo-08-ejercicios.md) e identifica la hipótesis decisiva. Todas las operaciones infinitas quedan respaldadas por resultados de C00–C08; las fórmulas de Taylor de C09 no se utilizan.
+Cada resolución corresponde a un único ejercicio de [C08](capitulo-08-ejercicios.html) e identifica la hipótesis decisiva. Todas las operaciones infinitas quedan respaldadas por resultados de C00–C08; las fórmulas de Taylor de C09 no se utilizan.
 
 ## A. El significado de sumar infinitamente
 

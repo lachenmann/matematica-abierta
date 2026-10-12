@@ -25,11 +25,11 @@ source-id: EDC-C10-EJERCICIOS
 source-sha256: dd5fe3af40a2cbf4cbc733e89217ccc0eeb41095726e45c35e1773b441932065
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-10.md) · [Ejercicios](capitulo-10-ejercicios.md) · [Soluciones](capitulo-10-soluciones.md) · [Notas históricas](capitulo-10-notas.md)
+[Exposición](capitulo-10.html) · [Ejercicios](capitulo-10-ejercicios.html) · [Soluciones](capitulo-10-soluciones.html) · [Notas históricas](capitulo-10-notas.html)
 
-Cada problema debe resolverse con los resultados disponibles hasta C10. Distinga la existencia de una solución, la verificación por sustitución, la demostración de unicidad y el intervalo donde se afirma cada resultado. Las soluciones están en [un archivo independiente](capitulo-10-soluciones.md); la numeración `EDC-C10-EXR-nnn` se corresponde exactamente con `EDC-C10-SOL-nnn`.
+Cada problema debe resolverse con los resultados disponibles hasta C10. Distinga la existencia de una solución, la verificación por sustitución, la demostración de unicidad y el intervalo donde se afirma cada resultado. Las soluciones están en [un archivo independiente](capitulo-10-soluciones.html); la numeración `EDC-C10-EXR-nnn` se corresponde exactamente con `EDC-C10-SOL-nnn`.
 
 ## A. Interpretar ecuaciones y condiciones iniciales
 
@@ -105,4 +105,4 @@ Cada problema debe resolverse con los resultados disponibles hasta C10. Distinga
 
 ---
 
-**Correspondencia:** los treinta problemas `EDC-C10-EXR-001--030` poseen las treinta soluciones `EDC-C10-SOL-001--030` en [el archivo de resoluciones](capitulo-10-soluciones.md), sin exigir C11.
+**Correspondencia:** los treinta problemas `EDC-C10-EXR-001--030` poseen las treinta soluciones `EDC-C10-SOL-001--030` en [el archivo de resoluciones](capitulo-10-soluciones.html), sin exigir C11.

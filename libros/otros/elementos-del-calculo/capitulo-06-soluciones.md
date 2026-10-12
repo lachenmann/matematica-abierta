@@ -25,9 +25,9 @@ source-id: EDC-C06-SOLUCIONES
 source-sha256: 9f949f1581247bb84a9bbb2abd61ea695764b6b935dd73b74644a58a66a615e0
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-06.md) · [Ejercicios](capitulo-06-ejercicios.md) · [Soluciones](capitulo-06-soluciones.md) · [Notas históricas](capitulo-06-notas.md)
+[Exposición](capitulo-06.html) · [Ejercicios](capitulo-06-ejercicios.html) · [Soluciones](capitulo-06-soluciones.html) · [Notas históricas](capitulo-06-notas.html)
 
 Se emplean exclusivamente las construcciones de C00–C06; los teoremas de integral ya demostrados en C05 y el Teorema Fundamental de C06 se invocan con sus condiciones de continuidad, integrabilidad, orientación y dominio. El identificador `EDC-C06-SOL-nnn` corresponde exactamente al problema `EDC-C06-EXR-nnn`.
 

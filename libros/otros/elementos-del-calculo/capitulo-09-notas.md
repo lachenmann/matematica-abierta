@@ -25,11 +25,11 @@ source-id: EDC-C09-NOTAS-HISTORICAS
 source-sha256: 9560d8b24feca6863faf39affaffebb8afe496e0686233376b786817f23564a2
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-09.md) · [Ejercicios](capitulo-09-ejercicios.md) · [Soluciones](capitulo-09-soluciones.md) · [Notas históricas](capitulo-09-notas.md)
+[Exposición](capitulo-09.html) · [Ejercicios](capitulo-09-ejercicios.html) · [Soluciones](capitulo-09-soluciones.html) · [Notas históricas](capitulo-09-notas.html)
 
-Las afirmaciones históricas de [C09](capitulo-09.md) se separan de las demostraciones matemáticas. Las primeras describen tradiciones documentadas; las segundas son **reconstrucciones originales modernas**, formuladas con intervalos reales, límites, derivadas y el Teorema Fundamental construido en C00–C08. No atribuimos retrospectivamente a un autor de los siglos XVII o XVIII un «resto de Lagrange» con las hipótesis precisas de nuestro Teorema 9.4, ni damos por sentada la coincidencia de una función $C^\infty$ con una serie de potencias.
+Las afirmaciones históricas de [C09](capitulo-09.html) se separan de las demostraciones matemáticas. Las primeras describen tradiciones documentadas; las segundas son **reconstrucciones originales modernas**, formuladas con intervalos reales, límites, derivadas y el Teorema Fundamental construido en C00–C08. No atribuimos retrospectivamente a un autor de los siglos XVII o XVIII un «resto de Lagrange» con las hipótesis precisas de nuestro Teorema 9.4, ni damos por sentada la coincidencia de una función $C^\infty$ con una serie de potencias.
 
 ## H1. El binomio generalizado y Newton
 

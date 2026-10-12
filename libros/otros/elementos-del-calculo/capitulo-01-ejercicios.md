@@ -25,11 +25,11 @@ source-id: EDC-C01-EJERCICIOS
 source-sha256: ba1151fa5faf6aa3612d21f9a204c4ef94db63eec617343c8005607869268099
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-01.md) · [Ejercicios](capitulo-01-ejercicios.md) · [Soluciones](capitulo-01-soluciones.md) · [Notas históricas](capitulo-01-notas.md)
+[Exposición](capitulo-01.html) · [Ejercicios](capitulo-01-ejercicios.html) · [Soluciones](capitulo-01-soluciones.html) · [Notas históricas](capitulo-01-notas.html)
 
-Los enunciados son independientes de sus desarrollos, reunidos en [Soluciones del capítulo 1](capitulo-01-soluciones.md). En todos los ejercicios se pide justificar el límite correspondiente, no limitarse a citar una tabla de derivadas. Los identificadores `EXR` y `SOL` se corresponden por los tres dígitos finales.
+Los enunciados son independientes de sus desarrollos, reunidos en [Soluciones del capítulo 1](capitulo-01-soluciones.html). En todos los ejercicios se pide justificar el límite correspondiente, no limitarse a citar una tabla de derivadas. Los identificadores `EXR` y `SOL` se corresponden por los tres dígitos finales.
 
 ## A. Comprender la pregunta
 
@@ -131,4 +131,4 @@ Indique por qué los denominadores nunca se anulan.
 
 ---
 
-**Protocolo de resolución.** Todas las soluciones están desarrolladas en [EDC-C01-SOLUCIONES](capitulo-01-soluciones.md). Ningún ejercicio precisa Rolle, el teorema del valor medio, las reglas generales de C02 ni un teorema del cálculo integral. Si un paso utiliza límites, debe poder justificarse con el capítulo 0.
+**Protocolo de resolución.** Todas las soluciones están desarrolladas en [EDC-C01-SOLUCIONES](capitulo-01-soluciones.html). Ningún ejercicio precisa Rolle, el teorema del valor medio, las reglas generales de C02 ni un teorema del cálculo integral. Si un paso utiliza límites, debe poder justificarse con el capítulo 0.

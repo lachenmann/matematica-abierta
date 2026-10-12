@@ -25,11 +25,11 @@ source-id: EDC-C10-NOTAS-HISTORICAS
 source-sha256: cabbc9e2cb6c16fef4926b6259538c0956b22b7919e4ecbf7aaa8cdea9140db6
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-10.md) · [Ejercicios](capitulo-10-ejercicios.md) · [Soluciones](capitulo-10-soluciones.md) · [Notas históricas](capitulo-10-notas.md)
+[Exposición](capitulo-10.html) · [Ejercicios](capitulo-10-ejercicios.html) · [Soluciones](capitulo-10-soluciones.html) · [Notas históricas](capitulo-10-notas.html)
 
-Estas notas acompañan [el capítulo 10](capitulo-10.md). Se distinguen tres niveles: **historia documentada**, **reconstrucción matemática contemporánea** y **modelos físicos o biológicos idealizados**. Las demostraciones y condiciones de regularidad del capítulo pertenecen a EDC y no se atribuyen literalmente a autores antiguos. Una ficha de un original no cuenta como colación de su contenido; un resultado matemático moderno no acredita por sí mismo una prioridad histórica.
+Estas notas acompañan [el capítulo 10](capitulo-10.html). Se distinguen tres niveles: **historia documentada**, **reconstrucción matemática contemporánea** y **modelos físicos o biológicos idealizados**. Las demostraciones y condiciones de regularidad del capítulo pertenecen a EDC y no se atribuyen literalmente a autores antiguos. Una ficha de un original no cuenta como colación de su contenido; un resultado matemático moderno no acredita por sí mismo una prioridad histórica.
 
 ## H1. El problema inverso de tangentes y las ecuaciones diferenciales
 

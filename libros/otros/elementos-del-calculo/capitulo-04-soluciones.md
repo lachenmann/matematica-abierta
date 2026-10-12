@@ -25,9 +25,9 @@ source-id: EDC-C04-SOLUCIONES
 source-sha256: 3d5e579dc107c111fa42f5419f1f3f35684a342a3ad0f6ca989450937e23d5bc
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-04.md) · [Ejercicios](capitulo-04-ejercicios.md) · [Soluciones](capitulo-04-soluciones.md) · [Notas históricas](capitulo-04-notas.md)
+[Exposición](capitulo-04.html) · [Ejercicios](capitulo-04-ejercicios.html) · [Soluciones](capitulo-04-soluciones.html) · [Notas históricas](capitulo-04-notas.html)
 
 Las soluciones son demostraciones y cálculos propios correspondientes a los treinta ejercicios del capítulo. Se usan únicamente resultados de C00–C04 y geometría elemental de polígonos. La noción general de integral todavía no interviene.
 

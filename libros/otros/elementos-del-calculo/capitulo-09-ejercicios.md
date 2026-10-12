@@ -25,11 +25,11 @@ source-id: EDC-C09-EJERCICIOS
 source-sha256: baf9d3ccba78229f2fe72b0537de3153d8aac84e2156e61b2a2ef46887a44f0b
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-09.md) · [Ejercicios](capitulo-09-ejercicios.md) · [Soluciones](capitulo-09-soluciones.md) · [Notas históricas](capitulo-09-notas.md)
+[Exposición](capitulo-09.html) · [Ejercicios](capitulo-09-ejercicios.html) · [Soluciones](capitulo-09-soluciones.html) · [Notas históricas](capitulo-09-notas.html)
 
-El propósito de los ejercicios no es memorizar desarrollos: se debe distinguir una identidad polinómica, un polinomio local, una estimación finita y una serie infinita. Justifique en cada caso el intervalo, las hipótesis de derivabilidad y, si corresponde, el paso al límite. Las soluciones independientes aparecen en [el archivo correspondiente](capitulo-09-soluciones.md). Sólo se utilizan C00–C09.
+El propósito de los ejercicios no es memorizar desarrollos: se debe distinguir una identidad polinómica, un polinomio local, una estimación finita y una serie infinita. Justifique en cada caso el intervalo, las hipótesis de derivabilidad y, si corresponde, el paso al límite. Las soluciones independientes aparecen en [el archivo correspondiente](capitulo-09-soluciones.html). Sólo se utilizan C00–C09.
 
 ## A. El binomio de Newton y las series binomiales
 
@@ -105,4 +105,4 @@ El propósito de los ejercicios no es memorizar desarrollos: se debe distinguir 
 
 ---
 
-**Correspondencia editorial:** Los IDs `EDC-C09-EXR-001--030` se resuelven uno por uno en [EDC-C09-SOLUCIONES](capitulo-09-soluciones.md), sin utilizar C10 ni C11.
+**Correspondencia editorial:** Los IDs `EDC-C09-EXR-001--030` se resuelven uno por uno en [EDC-C09-SOLUCIONES](capitulo-09-soluciones.html), sin utilizar C10 ni C11.

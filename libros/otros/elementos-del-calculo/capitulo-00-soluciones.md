@@ -25,11 +25,11 @@ source-id: EDC-C00-SOLUCIONES
 source-sha256: 5460bd705864313ffb87106635b4338b812c0ff969dc3afff83141883cbcbb13
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-00.md) · [Ejercicios](capitulo-00-ejercicios.md) · [Soluciones](capitulo-00-soluciones.md) · [Notas históricas](capitulo-00-notas.md)
+[Exposición](capitulo-00.html) · [Ejercicios](capitulo-00-ejercicios.html) · [Soluciones](capitulo-00-soluciones.html) · [Notas históricas](capitulo-00-notas.html)
 
-Este archivo desarrolla las respuestas a [los 18 ejercicios del capítulo 0](capitulo-00-ejercicios.md). El identificador de una solución `EDC-C00-SOL-nnn` corresponde exactamente al del ejercicio `EDC-C00-EXR-nnn`. Las soluciones son elaboraciones propias; no se atribuyen a Toth ni a un manual externo.
+Este archivo desarrolla las respuestas a [los 18 ejercicios del capítulo 0](capitulo-00-ejercicios.html). El identificador de una solución `EDC-C00-SOL-nnn` corresponde exactamente al del ejercicio `EDC-C00-EXR-nnn`. Las soluciones son elaboraciones propias; no se atribuyen a Toth ni a un manual externo.
 
 ## A. Lenguaje y lectura conceptual
 

@@ -25,11 +25,11 @@ source-id: EDC-C09-SOLUCIONES
 source-sha256: 90865a7a613d35afae027bdbd437a4b82e181d3839b781a669924a18eca9fc28
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-09.md) · [Ejercicios](capitulo-09-ejercicios.md) · [Soluciones](capitulo-09-soluciones.md) · [Notas históricas](capitulo-09-notas.md)
+[Exposición](capitulo-09.html) · [Ejercicios](capitulo-09-ejercicios.html) · [Soluciones](capitulo-09-soluciones.html) · [Notas históricas](capitulo-09-notas.html)
 
-Las soluciones se escriben en correspondencia biunívoca con [los ejercicios de C09](capitulo-09-ejercicios.md). Se distingue el **resto finito** de un límite de restos cuando el orden crece. Se invocan únicamente C00–C09; el Teorema Fundamental, la integral de Darboux y las operaciones locales con series de potencias ya han sido establecidos.
+Las soluciones se escriben en correspondencia biunívoca con [los ejercicios de C09](capitulo-09-ejercicios.html). Se distingue el **resto finito** de un límite de restos cuando el orden crece. Se invocan únicamente C00–C09; el Teorema Fundamental, la integral de Darboux y las operaciones locales con series de potencias ya han sido establecidos.
 
 ## A. Binomio y series de Newton
 

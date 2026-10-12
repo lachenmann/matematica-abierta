@@ -25,11 +25,11 @@ source-id: EDC-C01-SOLUCIONES
 source-sha256: 28460382e176ed386a11e0653f203be40495e279a42dad13bef00a18c3a02f67
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-01.md) · [Ejercicios](capitulo-01-ejercicios.md) · [Soluciones](capitulo-01-soluciones.md) · [Notas históricas](capitulo-01-notas.md)
+[Exposición](capitulo-01.html) · [Ejercicios](capitulo-01-ejercicios.html) · [Soluciones](capitulo-01-soluciones.html) · [Notas históricas](capitulo-01-notas.html)
 
-Estas resoluciones corresponden uno a uno a los [22 enunciados del capítulo](capitulo-01-ejercicios.md). Se usa el criterio de límite, continuidad y operaciones algebraicas de C00; no se emplean como caja negra las reglas generales de derivación de C02.
+Estas resoluciones corresponden uno a uno a los [22 enunciados del capítulo](capitulo-01-ejercicios.html). Se usa el criterio de límite, continuidad y operaciones algebraicas de C00; no se emplean como caja negra las reglas generales de derivación de C02.
 
 ## A. Comprender la pregunta
 

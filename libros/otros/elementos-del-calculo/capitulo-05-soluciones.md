@@ -25,9 +25,9 @@ source-id: EDC-C05-SOLUCIONES
 source-sha256: 4221f626813fdbc35dec8547d6f1acdb13102dd0e50673350b6e4db006009605
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-05.md) · [Ejercicios](capitulo-05-ejercicios.md) · [Soluciones](capitulo-05-soluciones.md) · [Notas históricas](capitulo-05-notas.md)
+[Exposición](capitulo-05.html) · [Ejercicios](capitulo-05-ejercicios.html) · [Soluciones](capitulo-05-soluciones.html) · [Notas históricas](capitulo-05-notas.html)
 
 Las soluciones distinguen los problemas de existencia de los de evaluación; todas utilizan únicamente C00–C05. Cada demostración se ofrece en el dominio indicado y no usa el Teorema Fundamental del Cálculo. Las identidades de valores de integrales de potencias se apoyan en el agotamiento numérico de C04, no en una primitiva general.
 

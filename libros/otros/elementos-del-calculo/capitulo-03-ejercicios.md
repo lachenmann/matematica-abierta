@@ -25,9 +25,9 @@ source-id: EDC-C03-EJERCICIOS
 source-sha256: 89d20c7c920122dfba2655dff9727b5e93b1010aec4d4865253ae3abc68e02dc
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-03.md) · [Ejercicios](capitulo-03-ejercicios.md) · [Soluciones](capitulo-03-soluciones.md) · [Notas históricas](capitulo-03-notas.md)
+[Exposición](capitulo-03.html) · [Ejercicios](capitulo-03-ejercicios.html) · [Soluciones](capitulo-03-soluciones.html) · [Notas históricas](capitulo-03-notas.html)
 
 Los ejercicios se resuelven a partir de C00–C03. En cada caso se deben justificar dominios, hipótesis y resultados, no limitarse a una fórmula. Las referencias `EDC-C03-EXR-nnn` corresponden uno a uno a las soluciones del archivo independiente.
 
@@ -119,4 +119,4 @@ Indique si la cota tiene que ser la mejor posible y proporcione un ejemplo donde
 
 ---
 
-**Correspondencia editorial:** `EDC-C03-EXR-001--030` ↔ `EDC-C03-SOL-001--030`. Todos los enunciados serán resueltos en [el archivo independiente de soluciones](capitulo-03-soluciones.md).
+**Correspondencia editorial:** `EDC-C03-EXR-001--030` ↔ `EDC-C03-SOL-001--030`. Todos los enunciados serán resueltos en [el archivo independiente de soluciones](capitulo-03-soluciones.html).

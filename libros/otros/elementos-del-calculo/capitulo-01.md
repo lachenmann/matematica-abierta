@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-01.md) · [Ejercicios](capitulo-01-ejercicios.md) · [Soluciones](capitulo-01-soluciones.md) · [Notas históricas](capitulo-01-notas.md)
+[Exposición](capitulo-01.html) · [Ejercicios](capitulo-01-ejercicios.html) · [Soluciones](capitulo-01-soluciones.html) · [Notas históricas](capitulo-01-notas.html)
 
-[← Capítulo 0](capitulo-00.md) · [Capítulo 2 →](capitulo-02.md)
+[← Capítulo 0](capitulo-00.html) · [Capítulo 2 →](capitulo-02.html)
 
 > **Pregunta generadora.** ¿Cómo asignar a una curva una inclinación en un punto y a un móvil una velocidad en un instante, sin dividir por un incremento que ya se ha hecho cero?
 
@@ -43,7 +43,7 @@ En el capítulo anterior aprendimos a trabajar con límites reales, a distinguir
 
 ## 1.1. Una secante que se aproxima, pero no se anula
 
-Volvamos a $f(x)=x^2$, el primer problema de [C00, §0.1](capitulo-00.md). Fijemos $a\in\mathbb R$. La recta por $P=(a,a^2)$ y $Q_h=(a+h,(a+h)^2)$, para $h\ne0$, tiene pendiente
+Volvamos a $f(x)=x^2$, el primer problema de [C00, §0.1](capitulo-00.html). Fijemos $a\in\mathbb R$. La recta por $P=(a,a^2)$ y $Q_h=(a+h,(a+h)^2)$, para $h\ne0$, tiene pendiente
 
 $$
 \frac{(a+h)^2-a^2}{(a+h)-a}=2a+h.
@@ -89,7 +89,7 @@ $$
 
 Por tanto, las velocidades medias se aproximan a $v_0+2ct$ cuando $h\to0$. Si $c$ tiene dimensiones de longitud/tiempo$^2$, la expresión resultante tiene dimensiones de longitud/tiempo, como corresponde. **El límite es una afirmación matemática** acerca del modelo; su interpretación como una ley del movimiento exige, adicionalmente, que el modelo sea adecuado a la situación física.
 
-**Nota histórica H1.** El estudio galileano de la caída uniformemente acelerada proporciona una motivación histórica para la relación entre distancia y cuadrado del tiempo. No afirmamos que Galileo formulara una derivada mediante límites modernos: véanse [notas históricas H1–H5](capitulo-01-notas.md).
+**Nota histórica H1.** El estudio galileano de la caída uniformemente acelerada proporciona una motivación histórica para la relación entre distancia y cuadrado del tiempo. No afirmamos que Galileo formulara una derivada mediante límites modernos: véanse [notas históricas H1–H5](capitulo-01-notas.html).
 
 ## 1.3. La razón de cambio media
 
@@ -361,7 +361,7 @@ Los problemas que ahora unificamos en la noción de derivada tuvieron recorridos
 
 Newton trabajó con cantidades variables y sus *fluxiones*; Leibniz articuló el cálculo diferencial mediante otros conceptos y una notación de enorme influencia. La historia de sus contribuciones y de su disputa de prioridad no puede reducirse limpiamente a una sola fecha de invención. Para el problema de este capítulo importa reconocer que esas tradiciones acercaron preguntas de geometría y movimiento, aunque no las formularon del modo moderno utilizado en nuestras demostraciones [H4–H5].
 
-Las [notas históricas de C01](capitulo-01-notas.md) identifican las obras de contraste, sus localizadores textuales y sus límites documentales. El álgebra de $x^2$ o $x^3$ que hemos realizado **es una reconstrucción matemática nuestra**, no una transcripción ficticia de una demostración histórica.
+Las [notas históricas de C01](capitulo-01-notas.html) identifican las obras de contraste, sus localizadores textuales y sus límites documentales. El álgebra de $x^2$ o $x^3$ que hemos realizado **es una reconstrucción matemática nuestra**, no una transcripción ficticia de una demostración histórica.
 
 ## 1.12. Síntesis: qué hemos demostrado y qué falta
 
@@ -385,4 +385,4 @@ Hemos demostrado con los resultados de C00, y sin utilizar reglas futuras, la un
 
 ### Trabajo del lector
 
-Los [ejercicios del capítulo 1](capitulo-01-ejercicios.md) proponen cálculos por definición, diagnósticos de dominio y derivadas laterales, contraejemplos y argumentos breves de demostración. Las [soluciones desarrolladas](capitulo-01-soluciones.md) se presentan aparte, con correspondencia exacta de identificadores. Se conservan también las [notas históricas](capitulo-01-notas.md), separadas del discurso demostrativo.
+Los [ejercicios del capítulo 1](capitulo-01-ejercicios.html) proponen cálculos por definición, diagnósticos de dominio y derivadas laterales, contraejemplos y argumentos breves de demostración. Las [soluciones desarrolladas](capitulo-01-soluciones.html) se presentan aparte, con correspondencia exacta de identificadores. Se conservan también las [notas históricas](capitulo-01-notas.html), separadas del discurso demostrativo.

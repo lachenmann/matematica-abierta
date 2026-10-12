@@ -25,9 +25,9 @@ source-id: EDC-C04-EJERCICIOS
 source-sha256: 3ecbade3ed52a56c9749112d6607772ddd03b6f4297e1974f9f821b5adbd54e6
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-04.md) · [Ejercicios](capitulo-04-ejercicios.md) · [Soluciones](capitulo-04-soluciones.md) · [Notas históricas](capitulo-04-notas.md)
+[Exposición](capitulo-04.html) · [Ejercicios](capitulo-04-ejercicios.html) · [Soluciones](capitulo-04-soluciones.html) · [Notas históricas](capitulo-04-notas.html)
 
 El objetivo de estos problemas es justificar aproximaciones geométricas mediante cálculos finitos, estimaciones del resto y argumentos de límite. **No** se debe emplear la definición de integral de Riemann–Darboux ni el Teorema Fundamental del Cálculo. Pueden utilizarse los resultados demostrados en C00–C04. Cada ejercicio tiene una solución independiente identificada con el mismo número.
 
@@ -107,4 +107,4 @@ El objetivo de estos problemas es justificar aproximaciones geométricas mediant
 
 ---
 
-Las soluciones independientes de `EDC-C04-EXR-001--030` se encuentran en [EDC-C04-SOLUCIONES](capitulo-04-soluciones.md). Los incisos conceptuales, numéricos y demostrativos se auditan con el mismo nivel de rigor; el banco de ejercicios no constituye capítulos adicionales.
+Las soluciones independientes de `EDC-C04-EXR-001--030` se encuentran en [EDC-C04-SOLUCIONES](capitulo-04-soluciones.html). Los incisos conceptuales, numéricos y demostrativos se auditan con el mismo nivel de rigor; el banco de ejercicios no constituye capítulos adicionales.

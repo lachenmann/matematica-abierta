@@ -23,7 +23,7 @@ provenance:
       independiente.'
 ---
 
-[Índice](index.qmd)
+[Índice](index.html)
 
 ## Identidad y alcance
 

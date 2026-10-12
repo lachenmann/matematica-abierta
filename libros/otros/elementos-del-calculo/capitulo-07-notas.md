@@ -25,11 +25,11 @@ source-id: EDC-C07-NOTAS-HISTORICAS
 source-sha256: 73e7be0e6194f0e16b1b83cffe9e743e4acc592c81637623b110940cd06fd994
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-07.md) · [Ejercicios](capitulo-07-ejercicios.md) · [Soluciones](capitulo-07-soluciones.md) · [Notas históricas](capitulo-07-notas.md)
+[Exposición](capitulo-07.html) · [Ejercicios](capitulo-07-ejercicios.html) · [Soluciones](capitulo-07-soluciones.html) · [Notas históricas](capitulo-07-notas.html)
 
-Estas notas acompañan [el capítulo 7](capitulo-07.md) y distinguen los antecedentes históricos de los **teoremas formulados hoy**. La técnica moderna de sustitución se justifica en EDC desde la regla de la cadena y el Teorema Fundamental; la integración por partes, desde la regla del producto; las fracciones parciales, desde identidades de polinomios. Ninguna prueba moderna del capítulo se presenta como transcripción de un texto de los siglos XVII–XIX. La exposición no ha importado pasajes del libro de Gabor Toth ni del proyecto independiente *Cálculo para matemáticos*.
+Estas notas acompañan [el capítulo 7](capitulo-07.html) y distinguen los antecedentes históricos de los **teoremas formulados hoy**. La técnica moderna de sustitución se justifica en EDC desde la regla de la cadena y el Teorema Fundamental; la integración por partes, desde la regla del producto; las fracciones parciales, desde identidades de polinomios. Ninguna prueba moderna del capítulo se presenta como transcripción de un texto de los siglos XVII–XIX. La exposición no ha importado pasajes del libro de Gabor Toth ni del proyecto independiente *Cálculo para matemáticos*.
 
 ## H1. La búsqueda histórica de cuadraturas y primitivas
 

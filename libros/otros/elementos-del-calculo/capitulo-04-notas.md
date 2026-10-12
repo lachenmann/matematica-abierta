@@ -25,11 +25,11 @@ source-id: EDC-C04-NOTAS-HISTORICAS
 source-sha256: 1bb94765e01eb363cb5185f39aecb9677358b42e1ea3d4c8ce2a8caa2886304c
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-04.md) · [Ejercicios](capitulo-04-ejercicios.md) · [Soluciones](capitulo-04-soluciones.md) · [Notas históricas](capitulo-04-notas.md)
+[Exposición](capitulo-04.html) · [Ejercicios](capitulo-04-ejercicios.html) · [Soluciones](capitulo-04-soluciones.html) · [Notas históricas](capitulo-04-notas.html)
 
-Estas notas acompañan [el capítulo 4](capitulo-04.md) y documentan sus referencias. La distinción fundamental es triple: (i) **fuentes históricas traducidas o reproducidas que pudieron leerse en línea**; (ii) **historiografía secundaria efectivamente consultada**; (iii) **archivos y fichas sólo localizados**. Una coincidencia matemática entre notación actual y resultado antiguo no acredita que el procedimiento o la demostración moderna se encontrara en un texto histórico. Las pruebas del capítulo son construcciones contemporáneas propias.
+Estas notas acompañan [el capítulo 4](capitulo-04.html) y documentan sus referencias. La distinción fundamental es triple: (i) **fuentes históricas traducidas o reproducidas que pudieron leerse en línea**; (ii) **historiografía secundaria efectivamente consultada**; (iii) **archivos y fichas sólo localizados**. Una coincidencia matemática entre notación actual y resultado antiguo no acredita que el procedimiento o la demostración moderna se encontrara en un texto histórico. Las pruebas del capítulo son construcciones contemporáneas propias.
 
 ## H1. Euclides X.1, Eudoxo y el agotamiento
 

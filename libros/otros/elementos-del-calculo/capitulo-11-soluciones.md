@@ -25,11 +25,11 @@ source-id: EDC-C11-SOLUCIONES
 source-sha256: 1e6a6a2a59d20289efaffad08abe22cf0e2df130748affe2ee7fb006fd888e59
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-11.md) · [Ejercicios](capitulo-11-ejercicios.md) · [Soluciones](capitulo-11-soluciones.md) · [Notas históricas](capitulo-11-notas.md)
+[Exposición](capitulo-11.html) · [Ejercicios](capitulo-11-ejercicios.html) · [Soluciones](capitulo-11-soluciones.html) · [Notas históricas](capitulo-11-notas.html)
 
-Cada solución responde exactamente a un problema de [C11](capitulo-11-ejercicios.md). No se añaden teoremas de análisis real o de EDO que el libro no haya demostrado. En las preguntas históricas se diferencia una conclusión documentada de la reconstrucción matemática moderna.
+Cada solución responde exactamente a un problema de [C11](capitulo-11-ejercicios.html). No se añaden teoremas de análisis real o de EDO que el libro no haya demostrado. En las preguntas históricas se diferencia una conclusión documentada de la reconstrucción matemática moderna.
 
 ## A. Qué constituye una prueba en cálculo
 

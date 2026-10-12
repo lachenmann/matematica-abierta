@@ -25,9 +25,9 @@ source-id: EDC-C02-EJERCICIOS
 source-sha256: 2b7ff455af522b566ea5f81e985a3b494667a449608f16bc02b5a2fb40b62255
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-02.md) · [Ejercicios](capitulo-02-ejercicios.md) · [Soluciones](capitulo-02-soluciones.md) · [Notas históricas](capitulo-02-notas.md)
+[Exposición](capitulo-02.html) · [Ejercicios](capitulo-02-ejercicios.html) · [Soluciones](capitulo-02-soluciones.html) · [Notas históricas](capitulo-02-notas.html)
 
 Todos los ejercicios están concebidos para resolverse usando únicamente los capítulos 0–2. Las reglas deben emplearse **sobre sus dominios**. Salvo indicación contraria, se pide justificar los pasos esenciales y no limitarse a escribir una fórmula.
 
@@ -109,4 +109,4 @@ No se pide una teoría de ecuaciones diferenciales ni una afirmación de unicida
 
 ---
 
-**Correspondencia editorial:** los ejercicios `EDC-C02-EXR-001--028` se desarrollan, con la misma numeración, en [las soluciones del capítulo](capitulo-02-soluciones.md).
+**Correspondencia editorial:** los ejercicios `EDC-C02-EXR-001--028` se desarrollan, con la misma numeración, en [las soluciones del capítulo](capitulo-02-soluciones.html).

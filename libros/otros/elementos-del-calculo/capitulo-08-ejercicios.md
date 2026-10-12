@@ -25,9 +25,9 @@ source-id: EDC-C08-EJERCICIOS
 source-sha256: 95dfb65c57a67f7d6b4c664aa68bc459959b4b7a12da9df63b9e2cdd8fb57f6c
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-08.md) · [Ejercicios](capitulo-08-ejercicios.md) · [Soluciones](capitulo-08-soluciones.md) · [Notas históricas](capitulo-08-notas.md)
+[Exposición](capitulo-08.html) · [Ejercicios](capitulo-08-ejercicios.html) · [Soluciones](capitulo-08-soluciones.html) · [Notas históricas](capitulo-08-notas.html)
 
 Se utilizarán únicamente C00–C08. No se invocará un desarrollo de Taylor aún no probado (C09), ni se extrapolarán identidades válidas para $|x|<R$ a los puntos fronterizos sin una prueba adicional. Cada ejercicio posee una solución razonada independiente con idéntico número.
 
@@ -112,4 +112,4 @@ Indique qué estimación asegura la legalidad de integrar el desarrollo en el in
 
 ---
 
-**Correspondencia:** los identificadores `EDC-C08-EXR-001--030` remiten a las resoluciones independientes `EDC-C08-SOL-001--030` en [EDC-C08-SOLUCIONES](capitulo-08-soluciones.md).
+**Correspondencia:** los identificadores `EDC-C08-EXR-001--030` remiten a las resoluciones independientes `EDC-C08-SOL-001--030` en [EDC-C08-SOLUCIONES](capitulo-08-soluciones.html).

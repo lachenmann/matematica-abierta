@@ -25,11 +25,11 @@ source-id: EDC-C06-NOTAS-HISTORICAS
 source-sha256: 0483dc9490d4c5524d33cc0d6bcc297486ca306bccbe8d2cc13baeea0fed0bcd
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-06.md) · [Ejercicios](capitulo-06-ejercicios.md) · [Soluciones](capitulo-06-soluciones.md) · [Notas históricas](capitulo-06-notas.md)
+[Exposición](capitulo-06.html) · [Ejercicios](capitulo-06-ejercicios.html) · [Soluciones](capitulo-06-soluciones.html) · [Notas históricas](capitulo-06-notas.html)
 
-Estas notas acompañan [el capítulo 6](capitulo-06.md) y conservan la diferencia entre las **pruebas actuales**, la **historiografía efectivamente consultada** y las **fuentes primarias localizadas pero todavía no colacionadas**. Las demostraciones de EDC pertenecen a un sistema moderno de funciones reales, derivadas por límite e integral Riemann–Darboux. No atribuimos ese sistema retrospectivamente a autores de los siglos XVII o XVIII.
+Estas notas acompañan [el capítulo 6](capitulo-06.html) y conservan la diferencia entre las **pruebas actuales**, la **historiografía efectivamente consultada** y las **fuentes primarias localizadas pero todavía no colacionadas**. Las demostraciones de EDC pertenecen a un sistema moderno de funciones reales, derivadas por límite e integral Riemann–Darboux. No atribuimos ese sistema retrospectivamente a autores de los siglos XVII o XVIII.
 
 ## H1. Un resultado con más de una genealogía
 

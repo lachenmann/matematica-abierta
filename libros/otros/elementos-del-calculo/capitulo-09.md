@@ -29,11 +29,11 @@ related:
 - MA-BOK-0015
 ---
 
-[Índice del libro](index.qmd) · [Prefacio](prefacio.md) · [Itinerarios](itinerarios.md)
+[Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-09.md) · [Ejercicios](capitulo-09-ejercicios.md) · [Soluciones](capitulo-09-soluciones.md) · [Notas históricas](capitulo-09-notas.md)
+[Exposición](capitulo-09.html) · [Ejercicios](capitulo-09-ejercicios.html) · [Soluciones](capitulo-09-soluciones.html) · [Notas históricas](capitulo-09-notas.html)
 
-[← Capítulo 8](capitulo-08.md) · [Capítulo 10 →](capitulo-10.md)
+[← Capítulo 8](capitulo-08.html) · [Capítulo 10 →](capitulo-10.html)
 
 > **Pregunta generadora.** Si conocemos una función y sus primeras derivadas en un punto, ¿hasta dónde podemos reconstruirla mediante un polinomio? ¿Qué informa una aproximación finita y qué prueba adicional haría falta para transformarla en una identidad con una serie infinita?
 
@@ -404,7 +404,7 @@ Se trata de un resultado **local y condicional**: no garantiza convergencia para
 
 ## 9.12. La genealogía histórica y el balance fundacional
 
-El desarrollo binomial de Newton, las series de funciones y las aproximaciones asociadas hoy al nombre de Taylor nacieron de problemas de cuadraturas, tangentes, diferencias y cálculos astronómicos. La publicación en 1715 de *Methodus incrementorum directa et inversa* por Brook Taylor es un hito bibliográfico verificable; no implica que todas las expansiones o aproximaciones fueran desconocidas antes. Las fuentes históricas examinadas también registran contribuciones afines de Gregory, Newton, Leibniz y Bernoulli, así como la posterior reformulación en un lenguaje riguroso de funciones y restos. Los detalles documentales y las reservas acerca de ediciones originales están en [las notas históricas](capitulo-09-notas.md).
+El desarrollo binomial de Newton, las series de funciones y las aproximaciones asociadas hoy al nombre de Taylor nacieron de problemas de cuadraturas, tangentes, diferencias y cálculos astronómicos. La publicación en 1715 de *Methodus incrementorum directa et inversa* por Brook Taylor es un hito bibliográfico verificable; no implica que todas las expansiones o aproximaciones fueran desconocidas antes. Las fuentes históricas examinadas también registran contribuciones afines de Gregory, Newton, Leibniz y Bernoulli, así como la posterior reformulación en un lenguaje riguroso de funciones y restos. Los detalles documentales y las reservas acerca de ediciones originales están en [las notas históricas](capitulo-09-notas.html).
 
 El arco matemático queda ahora cerrado con precisión:
 
@@ -428,4 +428,4 @@ El paso adicional $n\to\infty$ no forma parte de la flecha anterior; requiere un
 
 ### Trabajo del lector
 
-Los [treinta problemas originales](capitulo-09-ejercicios.md) examinan por separado el binomio finito y generalizado, datos de derivadas, tres formas del resto, tolerancias numéricas, representación por series, ejemplos no analíticos y la iteración de Newton. Las [soluciones desarrolladas](capitulo-09-soluciones.md) conservan la misma numeración y las [notas](capitulo-09-notas.md) distinguen fuentes efectivamente consultadas, testimonios primarios localizados y reconstrucción matemática moderna.
+Los [treinta problemas originales](capitulo-09-ejercicios.html) examinan por separado el binomio finito y generalizado, datos de derivadas, tres formas del resto, tolerancias numéricas, representación por series, ejemplos no analíticos y la iteración de Newton. Las [soluciones desarrolladas](capitulo-09-soluciones.html) conservan la misma numeración y las [notas](capitulo-09-notas.html) distinguen fuentes efectivamente consultadas, testimonios primarios localizados y reconstrucción matemática moderna.
