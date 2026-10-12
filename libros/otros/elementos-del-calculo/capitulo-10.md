@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C10
-source-sha256: 5933bbe6b916465c197a476b15835270784ff1ab9c21ba8af64a4994d771aedd
+source-sha256: 828cfc1ac64139c95d466a4afe0758d43b17c159649953813be5b20fa7c738b5
 content-id: MA-BCH-0341
 content-type: book-chapter
 related:
@@ -80,15 +80,17 @@ $$
 
 La forma integral es la herramienta de comparación que necesitaremos más adelante. **Importante:** esta equivalencia no demuestra existencia para una función arbitraria $F$; empieza suponiendo que la función $y$ del enunciado está disponible.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — El problema inverso de tangentes"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Reconstruir una curva a partir de sus tangentes"}
 
 *Lectura opcional.*
 
-Antes de convertirse en una teoría general de ecuaciones diferenciales, reconstruir una curva a partir de relaciones entre sus tangentes era un problema geométrico concreto. L’Hôpital describió el cálculo integral como una operación que remonta de las diferencias a las magnitudes, y vinculó ese programa con rectificaciones, cuadraturas y centros de gravedad.
+Hasta ahora hemos partido de una función y hemos preguntado cómo cambia. Invirtamos el juego: alguien nos describe el cambio, pero esconde la función. ¿Podemos reconstruirla?
 
-Nuestra incógnita es ahora una función cuya derivada satisface una relación dada. La semejanza histórica ayuda a entender por qué derivación e integración se necesitan mutuamente. Sin embargo, hallar una fórmula candidata no resuelve todos los problemas: hay que verificarla, precisar su intervalo y estudiar qué determina el dato inicial.
+En los comienzos del cálculo, una pregunta semejante aparecía como el problema inverso de tangentes: buscar una curva a partir de información sobre la dirección de sus tangentes. L’Hôpital vinculó ese programa con áreas, longitudes de curvas y otras magnitudes geométricas.
 
-**Fuente:** [L’Hôpital, Analyse des infiniment petits (1696), prefacio, pasaje sobre el cálculo integral](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf).
+Las ecuaciones diferenciales continúan ese juego de reconstrucción. Podemos conocer la velocidad de una magnitud, una relación entre su tamaño y su crecimiento, o una ley que gobierna su movimiento. Una condición inicial nos da un punto desde el cual empezar a seguir la trayectoria. Así, una regla de cambio y un dato concreto pueden contarnos cómo evoluciona un sistema.
+
+**Para seguir leyendo:** [L’Hôpital, Analyse des infiniment petits (1696), prefacio, pasaje sobre el cálculo integral](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf).
 
 :::
 

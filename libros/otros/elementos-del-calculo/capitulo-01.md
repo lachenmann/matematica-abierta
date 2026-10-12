@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C01
-source-sha256: 42da0780a408964e4227e7bdd4d56887a31363bb992599bb32ab9b0c867f5c9d
+source-sha256: f96ddd0913eed76cdb380c65be21965e755d7f781bfb50ccff3f9991e6dda06b
 content-id: MA-BCH-0332
 content-type: book-chapter
 related:
@@ -141,15 +141,17 @@ con $\delta\le r$ si es necesario. El orden de los cuantificadores impide escoge
 
 Al escribir $f'(a)$ no debe confundirse el número obtenido en $a$ con la **función derivada** $f'$ que eventualmente se obtiene cuando repetimos el procedimiento en distintos puntos. Es perfectamente posible que una función sea derivable sólo en una parte de su dominio.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Newton: magnitudes que fluyen"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Newton: seguir el movimiento de una curva"}
 
 *Lectura opcional.*
 
-Newton pensaba las magnitudes variables como cantidades generadas por movimiento continuo. Las llamaba fluentes, y a sus velocidades de variación, fluxiones. Así, el problema de una tangente podía ponerse en relación con el de una velocidad: comparar cómo cambian dos magnitudes mientras transcurre un mismo tiempo.
+Imaginemos un punto que recorre una curva. Mientras avanza hacia la derecha, su altura cambia: a veces crece con rapidez, a veces lentamente, a veces empieza a bajar. Podemos mirar el dibujo como una figura quieta, pero también como la huella de un movimiento.
 
-Esto ayuda a leer la derivada recién definida: una razón de cambio media se aproxima a una razón instantánea. La conexión es conceptual; nuestra prueba por límites usa un marco moderno. El testimonio retrospectivo de Newton sobre sus métodos se escribió en el contexto de la disputa de prioridad con Leibniz y exige esa reserva al fechar descubrimientos.
+Esta segunda mirada fue muy importante para Newton. Llamaba fluentes a las magnitudes que cambian y fluxiones a sus velocidades de cambio. Los nombres evocan justamente algo que fluye. Encontrar la inclinación de una curva y estudiar una velocidad quedaban así estrechamente relacionados.
 
-**Fuente:** [Newton, History of the Method of Fluxions, transcripción del Newton Project](https://newtonproject.ox.ac.uk/view/texts/normalized/NATP00356).
+La derivada que acabamos de definir recoge esa intuición: nos dice cómo está cambiando una magnitud en un instante. Cuando calculamos la pendiente de una tangente, también podemos pensar que estamos siguiendo un movimiento y preguntando qué está ocurriendo justo ahora.
+
+**Para seguir leyendo:** [Newton, History of the Method of Fluxions, transcripción del Newton Project](https://newtonproject.ox.ac.uk/view/texts/normalized/NATP00356).
 
 :::
 

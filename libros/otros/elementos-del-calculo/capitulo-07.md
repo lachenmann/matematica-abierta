@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C07
-source-sha256: 8cae43fcd07ca344d7f40d4aa8dd0a757c55db60310f7415ee2d173934861587
+source-sha256: 6c86beff05d29601e1bee91ffd38e60744e8aa936268d82699b0889ec48f33de
 content-id: MA-BCH-0338
 content-type: book-chapter
 related:
@@ -172,15 +172,17 @@ $$
 
 La aplicación no consiste en «pasar una derivada al otro factor» sin costo: intercambia un integral por otro. Su valor depende de que el segundo sea más fácil, o de que el mismo integral aparezca otra vez y se pueda despejar algebraicamente.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Una notación que hace visibles operaciones inversas"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Leibniz: recorrer una regla en sentido contrario"}
 
 *Lectura opcional.*
 
-En su artículo de 1686 sobre geometría y análisis de indivisibles, Leibniz expuso la relación recíproca entre diferenciación y sumación. La escritura integral ayudó a conservar a la vista la operación inversa y la magnitud respecto de la cual se trabajaba.
+Una buena regla puede servir para algo más que la tarea para la cual la aprendimos. La regla del producto, por ejemplo, explica cómo derivar dos factores multiplicados. Si la recorremos en sentido contrario, se transforma en una herramienta para integrar: la integración por partes.
 
-Integrar por partes ilustra aquí esa fuerza organizadora: la regla del producto, leída a través del Teorema Fundamental, se convierte en una regla de integración. La sustitución hace algo semejante con la cadena. Esa lectura es una explicación moderna del parentesco entre operaciones; no afirma que Leibniz escribiera exactamente los enunciados con extremos e hipótesis que acabamos de demostrar.
+Esta posibilidad de ir y volver ocupa un lugar importante en el cálculo de Leibniz. En su artículo de 1686 presentó diferenciación y sumación como operaciones recíprocas. Su escritura ayudaba a reconocer esos viajes de ida y vuelta.
 
-**Fuente:** [Leibniz, De geometria recondita (1686), traducción de Thiago Dourado](https://www.rbhm.org.br/index.php/RBHM/article/view/379).
+Por eso los métodos de integración guardan tantos parecidos con las reglas de derivación. La sustitución vuelve sobre la cadena; la integración por partes vuelve sobre el producto. Cuando una integral parece difícil, vale la pena preguntarse qué regla conocida podría estar escondida en ella. Aprender a integrar también consiste en aprender a reconocer caminos que ya hemos recorrido.
+
+**Para seguir leyendo:** [Leibniz, De geometria recondita (1686), traducción de Thiago Dourado](https://www.rbhm.org.br/index.php/RBHM/article/view/379).
 
 :::
 

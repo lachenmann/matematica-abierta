@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C00
-source-sha256: 383a3232fcf747ba0a2f565c2a5483e42d2e49c430eb06aec43a43f81b0aef67
+source-sha256: bcd6eefaf242714d53df38c756287b391d710951ce9ce60c7f8c5a732f461120
 content-id: MA-BCH-0331
 content-type: book-chapter
 related:
@@ -268,15 +268,17 @@ Estas reglas permiten demostrar sin cálculo diferencial que los polinomios son 
 
 **Repertorio que encontraremos después.** Las potencias $x^m$ con $m\in\mathbb N$ son polinomios y su continuidad ya está justificada aquí. En cambio, al escribir $\sqrt{x}$ hay que exigir $x\ge0$, al escribir $\ln x$ hay que exigir $x>0$, y al escribir $x^r$ para $r\in\mathbb R$ arbitrario la base positiva evita problemas de definición. Las funciones $\exp x$, $\sin x$ y $\cos x$ se consideran en la recta real, pero no se empleará en este capítulo su continuidad como premisa no demostrada. Sus construcciones y los límites específicos que justifican sus reglas de derivación se presentarán en C02 o se reconstruirán explícitamente cuando el argumento los necesite. Distinguir **dominio**, **valor** y **comportamiento límite** es parte del método, no un detalle de notación.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cauchy: precisar qué significa acercarse"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cauchy y el arte de acercarse"}
 
 *Lectura opcional.*
 
-En el Cours d’analyse (1821), Cauchy hizo de los límites, la continuidad y la convergencia asuntos centrales de la enseñanza del análisis. Su introducción insiste en determinar las condiciones bajo las cuales las fórmulas son válidas. Conservaba, sin embargo, un lenguaje de cantidades variables e infinitamente pequeñas que no coincide palabra por palabra con nuestras definiciones.
+Una mitad, una cuarta parte, una octava… Cada paso nos deja más cerca de cero. Podemos continuar cuanto queramos: siempre habrá otro paso. ¿Cómo decir con precisión adónde conduce ese recorrido?
 
-El vínculo con esta sección es metodológico: «acercarse» debe tener un significado que permita justificar una conclusión. La definición actual que acabamos de usar pertenece al desarrollo posterior del análisis; no es una transcripción del vocabulario de Cauchy.
+Esta pregunta ocupa un lugar central en el Cours d’analyse que Cauchy publicó en 1821 para sus alumnos. Allí las cantidades variables, los límites y la continuidad forman parte de un mismo esfuerzo: dar un lenguaje claro a lo que cambia y se aproxima.
 
-**Fuente:** [Cauchy, Cours d’analyse (1821), introducción y capítulo II](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier).
+El límite nos permite describir el destino de una sucesión sin tener que ejecutar infinitos pasos. Por eso resulta tan útil: podemos hablar de una pendiente instantánea o de un área exacta aun cuando nuestros primeros cálculos sólo produzcan aproximaciones. Al estudiar límites estamos aprendiendo ese arte de acercarnos lo suficiente.
+
+**Para seguir leyendo:** [Cauchy, Cours d’analyse (1821), introducción y capítulo II](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier).
 
 :::
 

@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C04
-source-sha256: 172b2ee32ec29650f9405e697004e0a33e552153136d12ddaa3092aeb6568e57
+source-sha256: 6565070ce85499b4e733be09e165f378c81caf1540b6286b79c06bff6cb4f832
 content-id: MA-BCH-0335
 content-type: book-chapter
 related:
@@ -185,15 +185,17 @@ La introducción de la obra, conservada en traducción inglesa reproducida por M
 
 Es importante no confundir **justificación de una cuadratura particular** con una teoría de área aplicable a cualquier función. El éxito con la parábola no garantiza que las aproximaciones de todas las regiones curvilíneas sean convergentes o que el valor obtenido sea independiente del procedimiento de muestreo.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Arquímedes: encontrar un área y demostrarla"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Arquímedes: el área que faltaba"}
 
 *Lectura opcional.*
 
-En la carta a Dositeo que abre la Cuadratura de la parábola, Arquímedes distingue el hallazgo de un resultado mediante consideraciones mecánicas de su demostración geométrica. La distinción importa: una figura, una analogía o un cálculo convincente pueden sugerir el área sin constituir todavía una prueba.
+Dibujar un triángulo dentro de una parábola es fácil. Lo fascinante comienza cuando nos preguntamos cuánto del área queda afuera y si podemos recuperar ese resto añadiendo nuevos triángulos.
 
-Nuestro resto geométrico explícito cumple esa segunda tarea en lenguaje actual: mide lo que falta y permite hacerlo menor que cualquier cantidad fijada. Ese parentesco explica la presencia de Arquímedes en un libro de cálculo, sin atribuirle integrales de Riemann ni una teoría moderna de series.
+Arquímedes encontró una respuesta extraordinaria: el segmento parabólico tiene un área igual a cuatro tercios de la del triángulo con la misma base y altura. En la carta a Dositeo que acompaña la Cuadratura de la parábola cuenta que llegó al resultado mediante consideraciones mecánicas y después lo demostró geométricamente. La imaginación y la prueba participaron en el descubrimiento.
 
-**Fuente:** [Arquímedes, carta a Dositeo, traducción reproducida en MacTutor](https://mathshistory.st-andrews.ac.uk/Extras/Archimedes_parabola/).
+La construcción de este capítulo permite sentir la fuerza de esa idea. Cada nueva generación de triángulos ocupa parte de lo que faltaba; el hueco disminuye siguiendo una pauta. Podemos acercarnos al área exacta y, además, saber cuánto queda por recuperar. Un problema antiguo se vuelve así una lección muy viva sobre aproximación.
+
+**Para seguir leyendo:** [Arquímedes, carta a Dositeo, traducción reproducida en MacTutor](https://mathshistory.st-andrews.ac.uk/Extras/Archimedes_parabola/).
 
 :::
 
@@ -359,15 +361,17 @@ Hay que distinguir tres afirmaciones:
 
 En la geometría elemental, los polígonos pueden seccionarse y sus áreas compararse por descomposiciones finitas. Para regiones curvas, la comparación entre secciones exige reglas adicionales y una teoría de aproximación. Cavalieri no puede reducirse a una simple aplicación del teorema de Fubini, que aún no existe dentro de nuestra obra. La relación histórica y los límites de nuestra reconstrucción se documentan en [H4](capitulo-04-notas.html).
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cavalieri: comparar regiones mediante sus secciones"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cavalieri: mirar un sólido rebanada por rebanada"}
 
 *Lectura opcional.*
 
-La Geometria indivisibilibus de Cavalieri, publicada en 1635, exploró la comparación de figuras mediante sus secciones. Ese modo de pensar abrió caminos para cuadraturas y volúmenes, y también suscitó controversias sobre qué podía componerse legítimamente a partir de indivisibles.
+Imaginemos dos panes de formas distintas. Los cortamos a la misma altura y comparamos sus rebanadas. Si en cada nivel las secciones tienen la misma área, resulta tentador pensar que los panes contienen el mismo volumen.
 
-La sección anterior recupera el problema, pero lo reformula con aproximaciones finitas y restos controlados. El puente hacia la integral no consiste en declarar que una región «está hecha de líneas»: consiste en explicar qué sumas usamos, cómo cambian al refinarse y por qué determinan una magnitud.
+Esta manera de mirar las figuras nos acerca a Cavalieri y a su Geometria indivisibilibus, publicada en 1635. En lugar de examinar sólo el contorno de una región o de un sólido, sus métodos dirigían la atención hacia las secciones que lo atraviesan.
 
-**Fuente:** [Notas históricas del capítulo 4, apartado H4](capitulo-04-notas.html).
+La imagen es muy fecunda para aprender a integrar. Un corte nos informa sobre un nivel; reunir la información de muchos niveles permite estudiar el conjunto. Los rectángulos de nuestras sumas desempeñan un papel parecido: cada uno representa una pequeña contribución. Al comparar y reunir esas contribuciones, vamos pasando del perfil de una figura a la magnitud que encierra.
+
+**Para seguir leyendo:** [Notas históricas del capítulo 4, apartado H4](capitulo-04-notas.html).
 
 :::
 

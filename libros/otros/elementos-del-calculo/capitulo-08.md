@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C08
-source-sha256: 8478a210d7385ae884b5512b6b9c331ab28d018797bb8a8368a8f2f7a170306f
+source-sha256: d1a4f8b81c85fe8d17f7b518756151efaeb29348641173a9f473f851a66eb07d
 content-id: MA-BCH-0339
 content-type: book-chapter
 related:
@@ -103,15 +103,17 @@ $$
 
 La función $1/n$ **tiende a cero**, pero su serie diverge. Éste es el contraejemplo preciso que faltaba al Lema 8.1. La agrupación por potencias de dos también permite explicar históricamente algunos argumentos medievales sobre la armónica, sin identificar automáticamente la prueba moderna con un manuscrito particular; véanse las [notas H1](capitulo-08-notas.html).
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Jakob y Johann Bernoulli ante la serie armónica"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Los hermanos Bernoulli y una suma que nunca termina de crecer"}
 
 *Lectura opcional.*
 
-Jakob Bernoulli trató la serie armónica en su Tractatus de seriebus infinitis. En la sección XVI atribuyó a su hermano Johann un argumento de divergencia. El pasaje recuerda que «los Bernoulli» eran personas distintas, con contribuciones que conviene identificar en lugar de fundirlas en un solo nombre.
+Sumemos uno, después un medio, después un tercio, un cuarto… Cada nuevo término es menor que el anterior. Parece razonable esperar que, tarde o temprano, la suma deje de crecer de manera apreciable. La serie armónica guarda una sorpresa: puede superar cualquier cantidad que fijemos.
 
-La sorpresa matemática es la que acabamos de probar: términos cada vez menores pueden producir sumas parciales sin cota. Nuestro argumento por bloques es una prueba moderna autónoma; el razonamiento reproducido en el tratado utiliza otras manipulaciones. La historia enriquece la pregunta, pero no sustituye el control de sumas finitas y límites.
+Los hermanos Jakob y Johann Bernoulli se interesaron por este fenómeno. En la sección XVI de su Tractatus de seriebus infinitis, Jakob presentó un argumento de divergencia y atribuyó el hallazgo a Johann. La pregunta viajaba incluso de un hermano a otro.
 
-**Fuente:** [Jakob Bernoulli, Tractatus, § XVI, facsímil reproducido por William Dunham, The Bernoullis and the Harmonic Series (1987), pp. 21–22](https://www.ms.uky.edu/~dhje223/Bernoullis.pdf).
+Podemos recordar la sorpresa agrupando los términos. Aunque cada sumando se haga pequeño, hay cada vez más sumandos disponibles para formar nuevos bloques. La disminución de las piezas y el crecimiento del conjunto compiten entre sí. Esa competencia es una de las preguntas más interesantes de toda la teoría de series.
+
+**Para seguir leyendo:** [Jakob Bernoulli, Tractatus, § XVI, facsímil reproducido por William Dunham, The Bernoullis and the Harmonic Series (1987), pp. 21–22](https://www.ms.uky.edu/~dhje223/Bernoullis.pdf).
 
 :::
 
@@ -152,15 +154,17 @@ La serie armónica alternante $1-1/2+1/3-\cdots$ converge por este teorema, pero
 
 La comparación geométrica es el motor de ambos criterios. Un cociente con límite uno **no** debe confundirse con prueba de convergencia; la información disponible resulta demasiado gruesa para distinguir las potencias $n^{-1}$ y $n^{-2}$.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cauchy: una suma infinita requiere condiciones"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cauchy: averiguar si las piezas alcanzan a formar una suma"}
 
 *Lectura opcional.*
 
-En el capítulo VI del Cours d’analyse (1821), Cauchy estudió la convergencia antes de operar con series. Allí trató, entre otros procedimientos, los criterios basados en raíces y cocientes que acabamos de desarrollar.
+Hay series en las que las piezas se hacen pequeñas con mucha rapidez, y otras en las que disminuyen despacio. ¿Cómo reconocer, sin sumar una por una, cuáles se reunirán en una cantidad finita?
 
-La conexión explica una exigencia del capítulo: escribir una sucesión de términos no garantiza que tenga una suma, ni que toda transformación conserve su valor. Nuestros criterios proporcionan condiciones precisas y dejan un caso sin decidir cuando el límite correspondiente es uno. La eficacia de una fórmula debe ir acompañada por el examen de su alcance.
+En el capítulo VI de su Cours d’analyse de 1821, Cauchy estudió procedimientos para responder a esa pregunta. Entre ellos aparecen criterios basados en raíces y en cocientes de términos consecutivos. La convergencia se convirtió así en algo que podíamos investigar con herramientas concretas.
 
-**Fuente:** [Cauchy, Cours d’analyse (1821), capítulo VI, § III](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier).
+El criterio del cociente tiene una intuición especialmente sencilla: comparar cada pieza con la anterior. Si, a partir de cierto punto, las piezas se reducen al menos con la rapidez de una progresión geométrica convergente, ya conocemos una buena forma de estimar lo que falta. Una familia de sumas que entendemos bien nos ayuda a comprender otras más complicadas.
+
+**Para seguir leyendo:** [Cauchy, Cours d’analyse (1821), capítulo VI, § III](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier).
 
 :::
 

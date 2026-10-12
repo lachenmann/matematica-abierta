@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C03
-source-sha256: af07a3c1632c89d83b91d126973e7ac06e5bf0cffe84363dc096409951cdda17
+source-sha256: 7abd9b8b07f0232e86ce2c8949d67bd69d7bf351bded3d73814eebaf6aa80237
 content-id: MA-BCH-0334
 content-type: book-chapter
 related:
@@ -143,15 +143,17 @@ Para $f(x)=x^2$ entre $a=-1$ y $b=2$, la pendiente media es $(4-1)/(2-(-1))=1$. 
 
 El valor medio enlaza dos niveles que los capítulos anteriores habían mantenido separados: no toda información local se convierte automáticamente en conclusión global, pero las hipótesis de continuidad y derivabilidad sí permiten transportar la derivada hacia la diferencia finita de los valores de una función.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Los nombres de los teoremas no son sus actas de nacimiento"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — De una cumbre al teorema del valor medio"}
 
 *Lectura opcional.*
 
-Fermat, Rolle, Lagrange y Cauchy aparecen asociados a resultados sobre extremos y variación, pero los enunciados que usamos hoy son el producto de una larga reorganización del análisis. Un método antiguo de tangentes no equivale automáticamente a nuestro teorema sobre funciones derivables en un intervalo.
+Quien sube una colina y después baja suele pasar por un lugar donde la pendiente se aplana. Esta imagen nos ayuda a recordar la pregunta de Fermat por los máximos y mínimos: ¿qué tiene de especial el punto donde una cantidad deja de crecer y empieza a disminuir?
 
-La sucesión Fermat–Rolle–valor medio que acabamos de recorrer es una organización lógica de las pruebas. Leerla como una cronología exacta daría una imagen engañosa: se modificaron tanto las preguntas como las hipótesis y el concepto de función. Conviene reconocer la genealogía de los problemas sin atribuir a cada autor nuestra formulación literal.
+Ahora pensemos en una curva que comienza y termina a la misma altura. Entre ambos extremos puede subir y bajar; el teorema de Rolle encuentra un punto con tangente horizontal. Si las alturas finales son distintas, el teorema del valor medio encuentra una tangente paralela a la secante que une los extremos.
 
-**Fuente:** [Notas históricas del capítulo 3, apartados H1–H3](capitulo-03-notas.html).
+Las preguntas históricas sobre extremos, raíces y tangentes se encuentran aquí en un mismo paisaje. Los nombres de Fermat y Rolle nos ayudan a recorrerlo: primero una cumbre, luego dos alturas iguales y finalmente una comparación entre el cambio de todo el camino y el cambio en uno de sus puntos.
+
+**Para seguir leyendo:** [Notas históricas del capítulo 3, apartados H1–H3](capitulo-03-notas.html).
 
 :::
 
@@ -217,15 +219,17 @@ $$
 
 En este capítulo las cotas de derivadas son herramientas de prueba. No sustituimos las hipótesis por un dibujo ni usamos reglas globales sobre funciones que sólo sabemos derivables en un punto.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — L’Hôpital y Johann Bernoulli: un tratado que difundió el cálculo"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — L’Hôpital y Bernoulli: de las lecciones al libro"}
 
 *Lectura opcional.*
 
-En 1696 apareció Analyse des infiniment petits pour l’intelligence des lignes courbes, de L’Hôpital. El tratado organizaba el cálculo diferencial alrededor de tangentes, extremos, puntos de inflexión y otros problemas geométricos. En su prefacio, L’Hôpital reconoció expresamente su deuda con Leibniz y con los Bernoulli, en particular con Johann.
+Antes de escribir su tratado, el marqués de L’Hôpital fue alumno del nuevo cálculo. En 1691 y 1692 recibió lecciones de Johann Bernoulli. Aquellas enseñanzas formaron parte del camino que llevó a su Analyse des infiniment petits, publicado en 1696.
 
-La célebre regla que lleva el nombre de L’Hôpital pertenece a esa tradición de estudiar cocientes que presentan indeterminaciones. Su nombre no debe borrar la contribución de Johann Bernoulli. Tampoco permite reemplazar sin condiciones un cociente de funciones por uno de derivadas: el valor medio prepara herramientas para ese problema, pero la regla requiere un enunciado y una prueba propios.
+El libro iba desde las reglas de cálculo hasta tangentes, máximos, mínimos y puntos de inflexión. En el prefacio, L’Hôpital agradecía el trabajo de Leibniz y de los Bernoulli, especialmente el de Johann. Detrás del tratado había lecciones, preguntas y correspondencia: aprender y enseñar también hicieron avanzar el cálculo.
 
-**Fuente:** [L’Hôpital, Analyse des infiniment petits (1696), prefacio y sección IX](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf).
+En sus páginas aparece el problema que hoy asociamos a la regla de L’Hôpital: ¿qué hacer cuando el numerador y el denominador de un cociente se acercan ambos a cero? Es una pregunta natural después de estudiar razones de cambio. Las derivadas ofrecen una pista, y los teoremas sobre variación ayudan a comprender por qué puede funcionar.
+
+**Para seguir leyendo:** [L’Hôpital, Analyse des infiniment petits (1696); Bradley, Petrilli y Sandifer, edición anotada (2015), introducción](https://link.springer.com/book/10.1007/978-3-319-17115-9).
 
 :::
 

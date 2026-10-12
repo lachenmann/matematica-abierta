@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C05
-source-sha256: 10148aacdaa5f9cb8b5d2fcc0ca63e765990e5380954af2944b24d5f27d0cabf
+source-sha256: 1e46c01730c67ece0aef0b69d59574c78664e70b1568ea0fefdb1d69ff691a5e
 content-id: MA-BCH-0336
 content-type: book-chapter
 related:
@@ -262,15 +262,17 @@ Así $h$ es integrable. Además, dado $\varepsilon>0$ y particiones cada vez má
 
 La última afirmación es **finita**, no una autorización para modificar una función en un conjunto numerable arbitrario. Que algo sea verdadero para cinco puntos no demuestra que lo sea para infinitos puntos, por dispersos que parezcan.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Riemann y Darboux: la integral también necesita hipótesis"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Riemann y Darboux: medir desde abajo y desde arriba"}
 
 *Lectura opcional.*
 
-El análisis del siglo XIX amplió la pregunta por la integral: además de calcular áreas familiares, había que decidir qué funciones podían integrarse. La memoria de Riemann sobre series trigonométricas y el Mémoire sur les fonctions discontinues de Darboux (1875) son hitos de ese cambio de problema.
+Queremos medir una región bajo una curva, pero la curva nos complica el dibujo. Podemos colocar rectángulos que queden enteramente debajo y otros que cubran todo el borde superior. Obtenemos dos cuentas: una que se queda corta y otra que se pasa.
 
-Las sumas inferiores y superiores de este capítulo permiten ver la dificultad: no basta con dibujar muchos rectángulos; su diferencia debe hacerse arbitrariamente pequeña. El criterio recién demostrado es nuestra formulación contemporánea. Las funciones discontinuas que siguen mostrarán por qué la existencia de la integral no puede deducirse de una imagen sugestiva.
+La idea ofrece una forma muy intuitiva de reconocer un área: refinar los rectángulos hasta que ambas cuentas se aproximen tanto como queramos. Éste es el corazón de las sumas inferiores y superiores que acabamos de estudiar.
 
-**Fuente:** [Darboux, Mémoire sur les fonctions discontinues (1875); notas históricas del capítulo 5](https://www.numdam.org/articles/10.24033/asens.122/).
+En el siglo XIX, Riemann y Darboux exploraron la integración cuando las funciones podían tener comportamientos mucho más variados que una curva suave. La memoria de Darboux de 1875 pertenece a esa historia. Su encuentro con este capítulo es fácil de recordar: medir también puede consistir en encerrar una cantidad entre dos estimaciones y hacer cada vez más estrecho el espacio que las separa.
+
+**Para seguir leyendo:** [Darboux, Mémoire sur les fonctions discontinues (1875); notas históricas del capítulo 5](https://www.numdam.org/articles/10.24033/asens.122/).
 
 :::
 

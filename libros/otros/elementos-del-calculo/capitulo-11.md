@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C11
-source-sha256: 3c966b9760478bb78f3b2ef4bfaf7f3daa5a10787afcdedee176a9efb0366c14
+source-sha256: 9f3a228d6677701f97453089f253633e498df2344a773e045f43e22ceb9b6968
 content-id: MA-BCH-0342
 content-type: book-chapter
 related:
@@ -209,15 +209,17 @@ Newton organizó parte de su trabajo en torno a magnitudes que *fluyen* y sus ta
 
 La controversia de prioridad entre Newton y Leibniz ha recibido numerosas reconstrucciones historiográficas; la finalidad de C11 no es resolverla mediante un criterio arbitrario de primacía, sino reconocer la diferencia entre creación de procedimientos, manuscritos, circulación, publicación, notación y posterior rigor. Lo mismo ocurre con el nombre «Taylor» para series que poseen antecedentes en tradiciones diferentes. En el arco de este libro, la **unidad conceptual demostrada** proviene del Teorema Fundamental, independientemente de la prioridad histórica de una notación.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Una historia de problemas, manuscritos y publicaciones"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Una conversación que atraviesa los siglos"}
 
 *Lectura opcional.*
 
-La historia del cálculo no cabe en un único año ni en una lista de inventores. Los problemas de cuadratura y tangencia tienen antecedentes antiguos; los siglos XVI y XVII aportaron nuevos métodos y relaciones con el movimiento; Newton y Leibniz construyeron síntesis de gran alcance. El desarrollo de reglas, series y aplicaciones continuó mediante tratados, correspondencia y controversias.
+Podemos recorrer la historia del cálculo siguiendo unas pocas preguntas que reaparecen bajo formas nuevas: ¿cuánto ocupa esta región?, ¿hacia dónde apunta esta curva?, ¿cómo cambia esta magnitud?, ¿qué podemos aprender reuniendo pequeñas contribuciones?
 
-Por eso conviene separar la fecha de una publicación, la de un manuscrito y una afirmación retrospectiva de prioridad. También conviene leer las tradiciones china e india consideradas en la sección anterior por sus propios problemas, sin suponer una transmisión que no hayamos documentado. Las notas históricas del capítulo amplían este recorrido y sus fuentes.
+Arquímedes, las tradiciones china e india estudiadas en este capítulo, los métodos de cuadratura y tangencia de los siglos XVI y XVII, y los trabajos de Newton y Leibniz ofrecen distintas entradas a ese recorrido. Después, series, aproximaciones y ecuaciones diferenciales ampliaron el paisaje; el análisis del siglo XIX dio nuevas herramientas para explorar sus dificultades.
 
-**Fuente:** [Notas históricas del capítulo 11, apartados H1–H8](capitulo-11-notas.html).
+Al cerrar el libro, podemos volver a esas preguntas con más recursos. Una tangente ya nos habla de velocidades; un área, de acumulación; una serie, de aproximación. La historia ayuda a recordar cómo se encontraron estos problemas y por qué siguen siendo fértiles. El cálculo conserva algo de aquella conversación cada vez que una pregunta conocida nos lleva a una idea nueva.
+
+**Para seguir leyendo:** [Notas históricas del capítulo 11, apartados H1–H8](capitulo-11-notas.html).
 
 :::
 

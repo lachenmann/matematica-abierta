@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C02
-source-sha256: a0af5d516698d693d8da098328d5e7b065fb696f77f794d29c2b1905f59cdbdb
+source-sha256: d3c75dac6352aa1c3734af6e9161550886591cf63c25a9ed0759ae0aa160be96
 content-id: MA-BCH-0333
 content-type: book-chapter
 related:
@@ -111,15 +111,17 @@ $$
 
 Para un exponente entero negativo, $x^{-n}=1/x^n$ se estudia en $x\ne0$; la regla del cociente produce $(x^{-n})'=-n x^{-n-1}$. En ningún caso una fórmula justifica evaluar una función fuera de su dominio.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Leibniz: un cálculo de diferencias"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Leibniz: aprender a calcular con piezas sencillas"}
 
 *Lectura opcional.*
 
-El artículo Nova methodus, publicado por Leibniz en Acta Eruditorum en 1684, presentó un cálculo diferencial para problemas de tangentes, máximos y mínimos. Su importancia no fue sólo reunir resultados: una notación para las diferencias permitía tratar sistemáticamente sumas, productos, cocientes y potencias.
+Una fórmula larga puede intimidar. Pero si reconocemos una suma aquí, un producto allá y una potencia dentro de otra expresión, el cálculo empieza a parecerse a un trabajo de ensamblaje: cada pieza tiene una regla y podemos combinarlas.
 
-Las reglas que acabamos de demostrar muestran esa ventaja. Una expresión complicada puede descomponerse en operaciones conocidas. Pero la eficacia de la escritura y la validez de una regla son cuestiones distintas: aquí cada regla se sostiene en una prueba y mantiene explícitas sus condiciones de dominio.
+En 1684 Leibniz publicó su Nova methodus en Acta Eruditorum. El artículo presentaba un cálculo para tangentes, máximos y mínimos, acompañado por una escritura de diferencias que permitía trabajar con muchas expresiones mediante unas pocas reglas.
 
-**Fuente:** [Leibniz, Nova methodus (1684), traducción de Thiago Dourado, pp. 47–49](https://www.rbhm.org.br/index.php/RBHM/article/download/377/340).
+Ésa es una de las grandes alegrías de aprender cálculo: descubrir que una idea sencilla sirve una y otra vez. Las reglas del producto y del cociente que acabamos de estudiar convierten problemas distintos en miembros de una misma familia. Una vez reconocida la estructura, la fórmula deja de ser una maraña y se vuelve un recorrido que podemos seguir.
+
+**Para seguir leyendo:** [Leibniz, Nova methodus (1684), traducción de Thiago Dourado, pp. 47–49](https://www.rbhm.org.br/index.php/RBHM/article/download/377/340).
 
 :::
 
@@ -160,15 +162,17 @@ Un contraste útil: $f(t)=|t|$ no es derivable en $0$, pero $f(g(x))$ con $g(x)=
 
 **Definición 2.2 (`EDC-C02-DEF-002`).** Una expresión de la forma $f\circ g$, con dominio efectivo $\{x\in\operatorname{dom}g:g(x)\in\operatorname{dom}f\}$, es una **composición admisible**. El dominio efectivo debe determinarse *antes* de derivar. Así, $\sqrt{1-x^2}$ está definida sobre $[-1,1]$, pero no tendrá derivada real bilateral en los extremos de ese intervalo.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Por qué seguimos escribiendo como Leibniz"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Leibniz y una notación que cuenta una historia"}
 
 *Lectura opcional.*
 
-La escritura $dy/dx$ conserva la idea leibniziana de comparar diferencias de magnitudes relacionadas. Una de sus ventajas pedagógicas aparece en la regla de la cadena: $dy/dx=(dy/du)(du/dx)$ recuerda que el cambio de una magnitud depende del de otra intermedia.
+La altura de una planta cambia con el tiempo; el volumen de un globo cambia con su radio. Para hablar de esos cambios conviene recordar tanto la magnitud que observamos como aquella respecto de la cual cambia. La escritura $dy/dx$ hace precisamente eso: conserva ambas a la vista.
 
-En este libro, esa igualdad expresa el teorema que acabamos de probar; no autoriza por sí sola a cancelar símbolos como si fueran números ordinarios. De hecho, la demostración sigue siendo válida cuando el incremento de la función interior se anula. La notación sugiere la estructura de la relación, mientras que la prueba determina cuándo podemos usarla.
+La notación de Leibniz resulta especialmente expresiva cuando hay una dependencia intermedia. Si el radio depende del tiempo y el volumen depende del radio, seguimos dos eslabones. La regla de la cadena, $dy/dx=(dy/du)(du/dx)$, dibuja ese recorrido casi como un pequeño mapa.
 
-**Fuente:** [L’Hôpital, Analyse des infiniment petits (1696), sección I, advertencia sobre la característica d](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf).
+Leibniz dio al cálculo una escritura capaz de sugerir conexiones. Basta mirar los denominadores para recordar por dónde pasa la dependencia. El teorema que acabamos de demostrar nos permite convertir ese mapa en un cálculo: combinar los cambios de cada eslabón para obtener el cambio total.
+
+**Para seguir leyendo:** [L’Hôpital, Analyse des infiniment petits (1696), sección I, advertencia sobre la característica d](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf).
 
 :::
 

@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C09
-source-sha256: 2f4805af59cf22365232598171957f69dac42209900478d47d2070e09de81318
+source-sha256: 815b2a6c1ab31fe82fa6992f616bce3348e3976327bd8769671fa5c4eb7f0ddd
 content-id: MA-BCH-0340
 content-type: book-chapter
 related:
@@ -333,15 +333,17 @@ Al evaluar en cero, $f^{(n)}(0)/n!=\binom\alpha n$. Por ello, los coeficientes b
 
 Por tanto, «la función existe en $x$» y «su desarrollo en torno a $a$ converge en $x$» son afirmaciones diferentes. Para la potencia $(1+x)^\alpha$ no polinómica, la serie centrada en cero tiene radio uno; sus fronteras se estudian aparte, aun cuando la función tenga sentido en parte de ellas.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Newton y Taylor: de una expansión a un error controlado"}
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Newton y Taylor: conocer una curva por sus alrededores"}
 
 *Lectura opcional.*
 
-Newton utilizó series en sus métodos de cuadratura; Taylor presentó su Methodus incrementorum directa et inversa en 1715. El título de Taylor reúne ya dos direcciones: pasar de magnitudes a incrementos y reconstruir magnitudes a partir de relaciones entre incrementos. La aproximación polinómica se inscribe en esa historia de procedimientos directos e inversos.
+Una recta tangente nos da una primera descripción de una curva cerca de un punto. Podemos mejorar el retrato añadiendo información sobre su curvatura y sobre cambios de órdenes superiores. El resultado es un polinomio que recoge esos detalles de la función en sus alrededores.
 
-En este capítulo añadimos una exigencia precisa: la fórmula debe venir acompañada por un resto que determine su alcance. El binomio generalizado muestra el encuentro entre expansiones y derivadas; la sección siguiente mostrará que disponer de derivadas de todos los órdenes no basta para identificar una función con su serie.
+Newton utilizó series para estudiar cuadraturas. En 1715 Taylor publicó su Methodus incrementorum directa et inversa, dedicado a las relaciones entre magnitudes e incrementos y al camino de regreso desde esos incrementos. Las aproximaciones polinómicas forman parte de esa historia.
 
-**Fuente:** [Taylor, Methodus incrementorum (1715), prefacio, traducción anotada de Ian Bruce; notas históricas del capítulo 9](https://www.17centurymaths.com/contents/brooktaylor/methodofincrementspartone.pdf).
+La imagen de un retrato local ayuda a entender lo que hacemos aquí. Cada derivada aporta un detalle; el resto nos dice cuánto puede faltar en el dibujo. Así obtenemos tanto una aproximación como una medida de su calidad. El mismo lenguaje que permite describir una curva sirve también para calcular con ella sin conocer todos sus valores.
+
+**Para seguir leyendo:** [Taylor, Methodus incrementorum (1715), prefacio, traducción anotada de Ian Bruce; notas históricas del capítulo 9](https://www.17centurymaths.com/contents/brooktaylor/methodofincrementspartone.pdf).
 
 :::
 
