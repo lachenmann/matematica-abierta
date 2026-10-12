@@ -217,11 +217,20 @@ jobs:
           python3 -m playwright install --with-deps chromium
           python3 tests/offline_parity_browser.py --site _site --output .ma-build/offline-parity
 
+      - name: Determine APM browser QA scope
+        id: apm_scope
+        env:
+          APM_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          python3 -m unittest tests/test_apm_qa_scope.py
+          python3 tools/apm_qa_scope.py --base "$APM_BASE_SHA" >> "$GITHUB_OUTPUT"
+
       - name: APM Tomo I full desktop and phone composition QA
+        if: steps.apm_scope.outputs.required == 'true'
         run: python3 tests/apm_tome_browser.py
 
       - name: Preserve APM visual evidence
-        if: always()
+        if: always() && steps.apm_scope.outputs.required == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: apm-tome-i-visual-qa
