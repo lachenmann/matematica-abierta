@@ -116,14 +116,16 @@ La arquitectura completa del volumen es más extensa que esta lista: estos punto
 
 ## Capítulos en publicación
 
-1. [**Capítulo 1 — Proposiciones y razonamiento deductivo**](../capitulos/topos-desde-cero-capitulo-1-proposiciones-y-razonamiento-deductivo.md) (`MA-BCH-0002`) — **publicado completo en la edición web**.
-   - **1.1 — Proposiciones y valores de verdad:** publicada completa.
-   - **1.2 — Negación, conjunción y disyunción:** publicada completa.
-   - **1.3 — Tablas de verdad y equivalencia lógica:** publicada completa.
-   - [**1.4 — Implicación, contrapositiva y recíproca**](../capitulos/topos-desde-cero-1-4-implicacion-contrapositiva-y-reciproca.md) (`MA-LES-0001`): publicada completa como unidad web modular.
-   - [**1.5 — Bicondicionales y condiciones necesarias y suficientes**](../capitulos/topos-desde-cero-1-5-bicondicionales-y-condiciones-necesarias-y-suficientes.md) (`MA-LES-0002`): publicada completa como unidad web modular.
-   - [**1.6 — Argumentos deductivos y validez**](../capitulos/topos-desde-cero-1-6-argumentos-deductivos-y-validez.md) (`MA-LES-0003`): publicada completa como unidad web modular.
-   - [**1.7 — Repaso acumulativo del capítulo 1**](../capitulos/topos-desde-cero-1-7-repaso-acumulativo-del-capitulo-1.md) (`MA-LES-0004`): publicada completa como unidad web modular.
+1. [**Proposiciones y razonamiento deductivo**](../capitulos/topos-desde-cero-capitulo-1-proposiciones-y-razonamiento-deductivo.md) (`MA-BCH-0002`).
+
+    **publicado completo en la edición web**.
+    - **1.1 — Proposiciones y valores de verdad:** publicada completa.
+    - **1.2 — Negación, conjunción y disyunción:** publicada completa.
+    - **1.3 — Tablas de verdad y equivalencia lógica:** publicada completa.
+    - [**1.4 — Implicación, contrapositiva y recíproca**](../capitulos/topos-desde-cero-1-4-implicacion-contrapositiva-y-reciproca.md) (`MA-LES-0001`): publicada completa como unidad web modular.
+    - [**1.5 — Bicondicionales y condiciones necesarias y suficientes**](../capitulos/topos-desde-cero-1-5-bicondicionales-y-condiciones-necesarias-y-suficientes.md) (`MA-LES-0002`): publicada completa como unidad web modular.
+    - [**1.6 — Argumentos deductivos y validez**](../capitulos/topos-desde-cero-1-6-argumentos-deductivos-y-validez.md) (`MA-LES-0003`): publicada completa como unidad web modular.
+    - [**1.7 — Repaso acumulativo del capítulo 1**](../capitulos/topos-desde-cero-1-7-repaso-acumulativo-del-capitulo-1.md) (`MA-LES-0004`): publicada completa como unidad web modular.
 
 2. **Capítulo 2 — Cuantificadores y estructura lógica:** siguiente capítulo previsto para migración.
 
