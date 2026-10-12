@@ -230,6 +230,8 @@ Compara $f:\mathbb R\to\mathbb R$, $g:[0,\infty)\to\mathbb R$ y $h:[0,\infty)\to
 
 $g$ y $h$ tienen exactamente los pares $(x,x^2)$ con $x\ge0$, luego el mismo grafo. Sus codominios difieren, así que no son iguales. El grafo de $f$ contiene además, por ejemplo, $(-1,1)$, ausente de los otros dos. $f$ tiene distinto dominio de $g$ y $h$. Ningún par es igual como función tipada. Todas coinciden numéricamente en entradas no negativas.
 
+Conviene comparar los datos uno por uno. Las funciones $g$ y $h$ tienen el mismo dominio y los mismos valores, por lo que sus grafos coinciden, pero sus codominios no. La función $f$ tiene otro dominio y admite pares con primera coordenada negativa. La igualdad numérica $f(x)=g(x)=h(x)$ para $x\ge0$ sólo compara evaluaciones compartidas. Bajo la convención tipada del capítulo, ninguna pareja coincide en los tres datos necesarios para ser el mismo objeto.
+
 </details>
 
 #### Ejercicio 2. Una relación que debe repararse
@@ -244,6 +246,8 @@ En $D=\{0,1,2\}$ y $E=\{0,1,4\}$ considera $R=\{(0,0),(1,1),(1,4)\}$. Explica po
 <summary>Ver solución del ejercicio 2</summary>
 
 La entrada $1$ tiene dos salidas distintas y la entrada $2$ no tiene ninguna. Eliminamos $(1,4)$ y añadimos $(2,4)$; quedan $(0,0),(1,1),(2,4)$. Cada entrada de $D$ tiene exactamente una salida en $E$. Sólo borrar o sólo añadir no repararía las dos deficiencias.
+
+Hay dos fallos independientes: falta existencia de salida para la entrada dos y falta unicidad para la entrada uno. Eliminar $(1,4)$ deja una sola salida para uno; añadir $(2,4)$ proporciona la salida ausente. La relación reparada es $\{(0,0),(1,1),(2,4)\}$. Verificar que cada primera coordenada de $D$ aparece una vez acredita ambas condiciones. También hay otras reparaciones posibles; no se exige que la nueva función sea sobreyectiva.
 
 </details>
 
@@ -260,6 +264,8 @@ Dado un conjunto finito $A\subseteq\mathbb R$, construye dos funciones distintas
 
 Como $A$ es finito y $\mathbb R$ infinito, existe $t\in\mathbb R\setminus A$. Por ejemplo, si $A$ no es vacío, $t=1+\sum_{a\in A}|a|$ supera todo elemento de $A$; si es vacío, sirve $t=0$. Definimos $f(x)=0$ para todo real y $g(x)=1$ cuando $x=t$, $g(x)=0$ en otro caso. Son funciones del mismo tipo, coinciden en $A$ y difieren en $t$. La tabla de $A$ no determina sus valores restantes.
 
+La elección explícita de $t$ evita depender de una tabla concreta. Si $A$ no es vacío, cada $a\in A$ satisface $a\le|a|\le\sum_{z\in A}|z|<t$, por lo que $t$ está fuera de $A$. Las funciones construidas asignan una salida única a cada real y tienen el mismo tipo. Para toda entrada observada ambas valen cero, pero en $t$ valen cero y uno. Incluso una tabla con muchísimas entradas finitas deja sin determinar otras evaluaciones.
+
 </details>
 
 #### Ejercicio 4. Identidad extensional
@@ -275,6 +281,8 @@ Prueba que para $f,g:D\to E$ la igualdad $G_f=G_g$ equivale a $f(x)=g(x)$ para t
 
 Si los grafos coinciden, $(x,f(x))\in G_g$, de modo que por unicidad de salida de $g$, $f(x)=g(x)$. Recíprocamente, igualdad de valores para toda entrada hace que cada par $(x,f(x))$ sea $(x,g(x))$ y viceversa; los grafos coinciden. Con dominio y codominio iguales, la convención tipada da $f=g$. Con codominios diferentes, la igualdad de grafos no basta, como muestran las dos versiones del cuadrado.
 
+Para deducir igualdad de valores desde igualdad de grafos, el par $(x,f(x))$ debe aparecer también en el grafo de $g$. Como su primera coordenada es la misma entrada $x$ y $g$ tiene salida única, su segunda coordenada sólo puede ser $g(x)$. La dirección contraria compara cada par en ambos sentidos. El grafo no registra elementos del codominio que nunca se alcanzan; por eso hay que fijar también los codominios para concluir igualdad de objetos tipados.
+
 </details>
 
 #### Ejercicio 5. Discreto frente a real
@@ -289,6 +297,8 @@ Para $a:\mathbb N\to\mathbb R$, $a_n=2n+1$, y $f:\mathbb R\to\mathbb R$, $f(x)=2
 <summary>Ver solución del ejercicio 5</summary>
 
 $G_a=\{(n,2n+1):n\in\mathbb N\}\subsetneq G_f$. La inclusión es estricta porque $(1/2,2)$ pertenece a $G_f$ y no a $G_a$. La sucesión tiene dominio $\mathbb N=\{0,1,\ldots\}$ y grafo discreto; la recta representa el grafo de $f$. El mismo cálculo en entradas naturales no identifica los dos objetos.
+
+Cada índice natural también es real, y ambas asignaciones producen $2n+1$ allí; esto prueba la inclusión de grafos. La entrada $1/2$ demuestra que la inclusión es propia. Un dibujo que una los puntos de la sucesión añade evaluaciones para entradas que no pertenecen a $\mathbb N$. Esos puntos intermedios forman parte del grafo de la función real, no del grafo de la sucesión. La expresión algebraica compartida no elimina la diferencia de dominios.
 
 </details>
 ## 12.2. Imagen: transportar un conjunto
@@ -484,6 +494,8 @@ Calcula la imagen de $[-3,2)$ por $q:\mathbb R\to\mathbb R$, $q(x)=x^2$, proband
 
 La imagen es $[0,9]$. Toda entrada tiene $|x|\le3$, así que su cuadrado está en ese intervalo. Para $0\le y\le9$, la entrada $x=-\sqrt y\in[-3,0]\subseteq[-3,2)$ alcanza $y$. En particular $9$ se alcanza en $-3$, aunque $3$ no esté disponible; y cero se alcanza en cero.
 
+La inclusión hacia $[0,9]$ usa que toda entrada del intervalo tiene magnitud a lo sumo tres. Para la vuelta, elegimos la raíz negativa, no la positiva: $-\sqrt y$ está siempre entre menos tres y cero, incluso para salidas mayores o iguales que cuatro. Así evita el extremo dos excluido del dominio. Nueve sí se alcanza gracias al extremo menos tres incluido. Calcular la imagen exige considerar todas las ramas disponibles, no transportar sólo los dos extremos por orden.
+
 </details>
 
 #### Ejercicio 7. Unión con dos piezas
@@ -498,6 +510,8 @@ Calcula $q[[-2,-1]\cup(0,1)]$ para el cuadrado real. Justifica extremos y huecos
 <summary>Ver solución del ejercicio 7</summary>
 
 La primera pieza tiene imagen $[1,4]$: sus cuadrados están allí y $-\sqrt y$ alcanza cada $y$ de ese intervalo. La segunda tiene imagen $(0,1)$, con testigo $\sqrt y$. Por tanto la imagen de la unión es $(0,4]$. El valor $1$ sí se alcanza en $-1$, cero no se alcanza porque ninguna entrada es cero, y $4$ sí se alcanza en $-2$.
+
+La unión de imágenes es $[1,4]\cup(0,1)=(0,4]$. No queda un hueco en uno, porque la rama negativa lo incluye aunque la positiva lo excluya. Cero queda fuera porque las dos piezas excluyen la entrada cero; cuatro queda dentro porque menos dos pertenece al dominio seleccionado. Para cualquier salida intermedia elegimos una raíz en la pieza adecuada. Esta comprobación de testigos explica por qué los extremos de cada pieza pueden compensarse al reunir las imágenes.
 
 </details>
 
@@ -514,6 +528,8 @@ Si $A\subseteq D$ es finito y $f:D\to E$, prueba que $|f[A]|\le|A|$ y que hay ig
 
 Enumeramos $A=\{a_1,\ldots,a_n\}$ con entradas distintas. Su imagen consta de los $n$ valores listados, eliminando repeticiones, por lo que tiene a lo sumo $n$ elementos. Si la restricción es inyectiva, todos son distintos y hay $n$. Si no lo es, dos valores de la lista coinciden, y tras eliminar esa repetición quedan a lo sumo $n-1$. Para $A=\varnothing$, ambas cardinalidades son cero y la restricción es inyectiva de manera vacua.
 
+La lista de salidas tiene tantos lugares como entradas, pero varios lugares pueden contener el mismo valor. El conjunto imagen elimina esas repeticiones. Si existe una colisión entre dos entradas distintas, al menos un lugar de la lista no aporta un elemento nuevo y la cardinalidad baja. Si no hay colisiones, cada entrada aporta un elemento distinto y las cardinalidades coinciden. La afirmación trata la inyectividad de la restricción a $A$, no exige inyectividad en todo $D$.
+
 </details>
 
 #### Ejercicio 9. La inclusión no estudia el orden
@@ -529,6 +545,8 @@ Construye una función real que no sea no decreciente ni no creciente y demuestr
 
 Sirve $q(x)=x^2$. No es no decreciente porque $-2<-1$ pero $4>1$; no es no creciente porque $1<2$ pero $1<4$. Sin embargo, para $A\subseteq C$, cada salida de $q[A]$ tiene testigo $x\in A\subseteq C$, luego pertenece a $q[C]$. Son propiedades distintas: inclusión de conjuntos frente a comparación de valores.
 
+Los dos pares elegidos refutan por separado los dos sentidos de monotonía. Después, para cualquier inclusión de conjuntos $A\subseteq C$, la prueba de inclusión de imágenes sólo reutiliza el testigo de cada salida. No compara qué entrada es mayor ni cómo se ordenan sus salidas. La operación $A\mapsto f[A]$ conserva el orden dado por inclusión para cualquier función, aunque $x\mapsto f(x)$ no conserve ninguno de los órdenes numéricos de la recta.
+
 </details>
 
 #### Ejercicio 10. Imagen de una diferencia
@@ -543,6 +561,8 @@ Prueba $f[A]\setminus f[C]\subseteq f[A\setminus C]$ para $A,C\subseteq D$ y da 
 <summary>Ver solución del ejercicio 10</summary>
 
 Si $y\in f[A]\setminus f[C]$, existe $a\in A$ con $f(a)=y$. Ese $a$ no puede estar en $C$, pues entonces $y\in f[C]$. Así $a\in A\setminus C$, que prueba la inclusión. Para $q(x)=x^2$, $A=\{-1,1\}$ y $C=\{1\}$, el lado izquierdo es vacío y el derecho es $q[\{-1\}]=\{1\}$. Una entrada fuera de $C$ puede compartir salida con otra dentro de $C$.
+
+La condición $y\notin f[C]$ impide que cualquier testigo de esa salida pertenezca a $C$. Por eso un testigo en $A$ debe estar fuera de $C$. La vuelta puede fallar: una entrada fuera de $C$ puede compartir su salida con otra dentro de $C$. En el ejemplo, menos uno está en $A\setminus C$, pero su salida uno también es producida por la entrada uno de $C$, y se elimina al restar los conjuntos de salidas.
 
 </details>
 ## 12.3. Preimagen: seleccionar por la salida
@@ -763,6 +783,8 @@ Calcula $q^{-1}[[0,1)\cup\{4\}]$ para $q:\mathbb R\to\mathbb R$, $q(x)=x^2$.
 
 La condición $0\le x^2<1$ equivale a $|x|<1$, y $x^2=4$ equivale a $x=-2$ o $x=2$. Por tanto la preimagen es $(-1,1)\cup\{-2,2\}$. Se excluyen $\pm1$ por la desigualdad estricta, y se incluyen cero y las dos raíces de cuatro.
 
+La preimagen conserva la unión, así que podemos resolver las dos condiciones por separado. Para la banda $[0,1)$, la no negatividad del cuadrado ya es automática y la condición restante es $|x|<1$. Para la salida aislada cuatro, las entradas son dos y menos dos. Estos puntos están separados de la banda central y permanecen aislados en la respuesta. No debemos rellenar los intervalos entre ellos: sus cuadrados no pertenecen al conjunto de salidas solicitado.
+
 </details>
 
 #### Ejercicio 12. El dominio recorta la respuesta
@@ -777,6 +799,8 @@ Sea $f:[-1,3)\to\mathbb R$, $f(x)=x^2$. Calcula $f^{-1}[(1,4]]$.
 <summary>Ver solución del ejercicio 12</summary>
 
 En toda la recta la condición da $[-2,-1)\cup(1,2]$. Intersectando con el dominio $[-1,3)$ desaparece la rama negativa, incluido $-1$ que además no cumple $x^2>1$. Queda $(1,2]$. Ambas inclusiones siguen de resolver la condición y exigir pertenencia al dominio.
+
+Primero resolvemos la desigualdad $1<x^2\le4$ sin el recorte de dominio; después intersectamos el resultado con $[-1,3)$. La rama negativa $[-2,-1)$ queda totalmente fuera de ese dominio. El punto menos uno, aunque está en el dominio, tampoco cumple la condición estricta de la salida. La rama positiva $(1,2]$ sí queda completa dentro. Resolver la condición algebraica y verificar el dominio son dos obligaciones distintas y ambas son necesarias.
 
 </details>
 
@@ -793,6 +817,8 @@ Para $f:D\to E$, demuestra que las fibras sobre los elementos de $f[D]$ son no v
 
 Cada $y\in f[D]$ tiene un testigo de entrada, así que su fibra no es vacía. Si una entrada pertenece a las fibras de $y,z$, su única salida es tanto $y$ como $z$, luego $y=z$. Cada $x\in D$ pertenece a la fibra sobre $f(x)\in f[D]$, y toda fibra es subconjunto de $D$; su unión es exactamente $D$. Si $D$ es vacío, la familia es vacía y su unión también.
 
+La familia se indexa por la imagen $f[D]$, no por todo el codominio: así cada pieza tiene al menos una entrada. Dos fibras distintas no pueden compartir una entrada, porque ésta tendría dos salidas distintas. Para cubrir el dominio basta escoger, para cada entrada $x$, la fibra cuyo índice es su propia salida $f(x)$. No se necesita elegir una entrada representativa en cada fibra. Cada entrada pertenece a exactamente una pieza y las piezas pueden contener varias entradas.
+
 </details>
 
 #### Ejercicio 14. Recuperar todas las salidas solicitadas
@@ -808,6 +834,8 @@ Prueba que $f[f^{-1}[B]]=B$ para todo $B\subseteq E$ si y sólo si $f:D\to E$ es
 
 Si es sobreyectiva, $f[D]=E$ y la identidad del texto da $f[f^{-1}[B]]=B\cap E=B$. Recíprocamente, aplicamos la hipótesis a $B=E$: como $f^{-1}[E]=D$, obtenemos $f[D]=E$, que es sobreyectividad. No se necesita inyectividad: puede haber varias entradas para cada salida.
 
+La dirección directa usa que una función sobreyectiva no deja salidas imposibles en $E$, por lo que intersectar $B$ con su imagen no elimina nada. Para la recíproca no necesitamos probar la identidad con todos los subconjuntos uno por uno: la hipótesis universal permite escoger el subconjunto concreto $B=E$. Recuperar todas sus salidas obliga a $f[D]=E$. La unicidad de sus entradas no interviene, así que no hace falta inyectividad.
+
 </details>
 
 #### Ejercicio 15. La preimagen conoce la función
@@ -822,6 +850,8 @@ Sean $f,g:D\to E$. Si $f^{-1}[B]=g^{-1}[B]$ para todo $B\subseteq E$, demuestra 
 <summary>Ver solución del ejercicio 15</summary>
 
 Para una entrada cualquiera $x\in D$, tomamos $B=\{f(x)\}$. Entonces $x\in f^{-1}[B]=g^{-1}[B]$, luego $g(x)\in\{f(x)\}$ y $g(x)=f(x)$. Vale para toda entrada y los tipos coinciden, así que las funciones son iguales. Si $D$ es vacío, los dos grafos son vacíos y la conclusión también vale. El conjunto de prueba puede elegirse después de fijar la entrada porque la hipótesis cubre todos los subconjuntos.
+
+El conjunto $B$ se elige después de fijar una entrada $x$, y eso es legítimo porque la hipótesis cubre todos los subconjuntos del codominio. En el conjunto unitario $\{f(x)\}$ sólo hay un valor disponible. La igualdad de preimágenes obliga a que la salida de $g$ para esa misma entrada sea ese valor. Repetimos el razonamiento para una entrada arbitraria, no para una muestra finita. Con tipos iguales, la coincidencia de todas las evaluaciones identifica ambas funciones.
 
 </details>
 ## 12.4. Qué operaciones sobreviven al transporte
@@ -1038,6 +1068,8 @@ Prueba directamente $f^{-1}[(B\cup H)\setminus K]=(f^{-1}[B]\cup f^{-1}[H])\setm
 
 Para $x\in D$, pertenecer al lado izquierdo significa $(f(x)\in B\text{ o }f(x)\in H)$ y $f(x)\notin K$. Esto equivale a $(x\in f^{-1}[B]\text{ o }x\in f^{-1}[H])$ y $x\notin f^{-1}[K]$, exactamente el lado derecho. Como la equivalencia vale para toda entrada, extensionalidad da igualdad. No se han supuesto inyectividad o sobreyectividad.
 
+La prueba traduce operaciones de conjuntos a condiciones lógicas: unión se convierte en «o» y diferencia en «y no». La preimagen evalúa siempre la misma entrada $x$, de modo que esas condiciones pueden combinarse sin elegir testigos diferentes. Al traducirlas de vuelta obtenemos exactamente el conjunto del segundo miembro. La equivalencia para cada entrada acredita ambas inclusiones de una sola vez y evita suponer reglas de imágenes que no siempre son válidas.
+
 </details>
 
 #### Ejercicio 17. La intersección detecta inyectividad
@@ -1055,6 +1087,8 @@ La dirección inyectiva está probada en el texto: los dos testigos de una salid
 
 **Retorno visual.** Véase [C12-F03](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html#fig-anm-c12-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+Para la vuelta, los conjuntos unitarios permiten detectar cualquier colisión. Si dos entradas distintas comparten salida, sus conjuntos unitarios son disjuntos, pero sus imágenes se intersectan en esa salida. La identidad exigida para todos los conjuntos no puede tolerar esta diferencia. En la dirección directa, la inyectividad junta los dos testigos de una salida común en una sola entrada de la intersección. Por eso la ley universal caracteriza exactamente la ausencia de colisiones.
+
 </details>
 
 #### Ejercicio 18. Saturar dos veces
@@ -1069,6 +1103,8 @@ Define $S(A)=f^{-1}[f[A]]$. Prueba $A\subseteq S(A)$, que $A\subseteq C$ implica
 <summary>Ver solución del ejercicio 18</summary>
 
 Cada $a\in A$ tiene salida en $f[A]$, luego está en $S(A)$. Si $A\subseteq C$, las inclusiones conservadas por imagen y preimagen dan $S(A)\subseteq S(C)$. Finalmente $f[S(A)]=f[f^{-1}[f[A]]]=f[A]\cap f[D]=f[A]$. Tomando preimagen, $S(S(A))=f^{-1}[f[S(A)]]=f^{-1}[f[A]]=S(A)$. La saturación añade fibras completas una sola vez.
+
+La saturación reúne todas las entradas que comparten alguna salida con una entrada de $A$. La primera aplicación puede añadir entradas nuevas, pero no añade salidas nuevas: $f[S(A)]=f[A]$. Por eso una segunda aplicación selecciona las mismas fibras completas y no cambia el resultado. Las tres propiedades se comprueban con inclusiones y la identidad de imagen de una preimagen; no exigen que $f$ sea inyectiva. Si lo fuera, no habría nada que añadir y $S(A)=A$.
 
 </details>
 
@@ -1085,6 +1121,8 @@ Prueba que $f[D\setminus A]=E\setminus f[A]$ para todo $A\subseteq D$ si y sólo
 
 Si $f$ es biyectiva, toda $y\in E$ tiene una única entrada $x$; está en la imagen de $D\setminus A$ exactamente cuando $x\notin A$, lo que equivale a $y\notin f[A]$. Para la recíproca, usar $A=\varnothing$ da $f[D]=E$, sobreyectividad. Si $a\ne c$ y $f(a)=f(c)$, tomando $A=\{a\}$, la salida común pertenece a $f[D\setminus A]$ por el testigo $c$ y también a $f[A]$, contradiciendo la igualdad con el complemento. Por tanto es inyectiva.
 
+La igualdad de complementos impone dos cosas a la vez. Usar el conjunto vacío obliga a alcanzar todo el codominio. Después, cualquier par de entradas distintas con la misma salida haría que esa salida apareciera tanto en $f[A]$ como en $f[D\setminus A]$ para un $A$ adecuado, lo que un complemento prohíbe. A la inversa, para una biyectiva cada salida tiene una entrada única, que está exactamente en una de las dos partes del dominio. Esto prueba la identidad y explica las dos hipótesis necesarias.
+
 </details>
 
 #### Ejercicio 20. Seleccionar una partición
@@ -1099,6 +1137,8 @@ Sea $E=B_1\cup\cdots\cup B_k$ una partición finita en piezas no vacías. Prueba
 <summary>Ver solución del ejercicio 20</summary>
 
 Toda entrada tiene salida en alguna pieza, de modo que pertenece a alguna preimagen. Si pertenece a dos, su salida está en ambas piezas; la disjunción de las $B_i$ lo impide cuando los índices son distintos. Pero una pieza puede no contener salidas alcanzadas. Por ejemplo, para el cuadrado real, las piezas $(-\infty,0)$ y $[0,\infty)$ particionan $\mathbb R$ y la primera tiene preimagen vacía. Tras eliminar piezas vacías, las restantes sí particionan $D$ si éste no es vacío.
+
+Cubrir todo $E$ garantiza que cada salida esté en alguna pieza y, por tanto, cada entrada en alguna preimagen. La disjunción garantiza que una entrada no caiga en dos preimágenes distintas. Pero que una pieza de salidas sea no vacía no obliga a que contenga una salida alcanzada. Para el cuadrado, la pieza negativa existe y tiene preimagen vacía. El transporte hacia atrás conserva cobertura y disjunción, pero puede perder la no vacuidad de las piezas.
 
 </details>
 ## 12.5. Componer, restringir y deshacer
@@ -1299,6 +1339,8 @@ Para $f(x)=x^2$ y $g(y)=3-y$, ambas reales, calcula $(g\circ f)^{-1}[[1,3)]$ por
 
 Primero $1\le3-y<3$ equivale a $0<y\le2$, luego $g^{-1}[[1,3)]=(0,2]$. Después $0<x^2\le2$ da $[-\sqrt2,0)\cup(0,\sqrt2]$. Cero se excluye porque su salida compuesta es $3$; ambas raíces de dos se incluyen porque su salida es $1$.
 
+La última etapa se resuelve primero: $1\le3-y$ da $y\le2$, y $3-y<3$ da $y>0$. Así el conjunto intermedio es $(0,2]$. Aplicar luego el cuadrado exige $0<x^2\le2$, que admite las dos ramas y excluye cero. El extremo tres abierto de las salidas finales explica esa exclusión; el extremo uno cerrado explica que se incluyan las raíces de dos. El procedimiento mantiene los extremos correctos en cada etapa.
+
 </details>
 
 #### Ejercicio 22. Una composición sin tipo
@@ -1313,6 +1355,8 @@ Sea $f:\mathbb R\to\mathbb R$, $f(x)=x-1$, y $g:\mathbb R\setminus\{0\}\to\mathb
 <summary>Ver solución del ejercicio 22</summary>
 
 No: $f(1)=0$ no pertenece al dominio de $g$. Las entradas admisibles son $f^{-1}[\mathbb R\setminus\{0\}]=\mathbb R\setminus\{1\}$. Restringiendo $f$ a ese dominio, la composición válida es $h:\mathbb R\setminus\{1\}\to\mathbb R$, $h(x)=1/(x-1)$. Cada evaluación de la segunda etapa está ahora autorizada.
+
+El problema no es calcular una fórmula formal, sino comprobar que cada evaluación intermedia está permitida. En la entrada uno, la primera etapa entrega cero y la segunda no está definida allí. El dominio máximo admitido por esa fórmula compuesta es el conjunto de entradas con $x-1\ne0$. La restricción debe además declarar que sus salidas intermedias pertenecen a $\mathbb R\setminus\{0\}$, el dominio de $g$. Con esos datos, la regla $1/(x-1)$ queda bien definida.
 
 </details>
 
@@ -1329,6 +1373,8 @@ Para $f:D\to E$ y $h:E\to D$, prueba que $h\circ f=\operatorname{id}_D$ implica 
 
 Si $f(x)=f(z)$, aplicar $h$ y la primera identidad da $x=z$. Con la segunda, cada $y\in E$ tiene entrada $h(y)$ y $f(h(y))=y$. Para distinguirlas, sea $f:[0,\infty)\to\mathbb R$ la inclusión $f(x)=x$, y $h:\mathbb R\to[0,\infty)$, $h(y)=\max(y,0)$. Para $x\ge0$, $h(f(x))=x$. Pero $f(h(-1))=0\ne-1$, así que no hay segunda identidad y $f$ no es sobreyectiva.
 
+La primera identidad permite recuperar cualquier entrada después de aplicar $f$; por eso dos entradas con salida común tendrían que recuperarse como la misma. La segunda identidad asegura que toda salida se produce a partir de la entrada $h(y)$; por eso garantiza sobreyectividad. En el ejemplo, las entradas no negativas sí se recuperan, pero las salidas negativas se reemplazan por cero y no pueden recuperarse. Una identidad por sí sola no demuestra que $h$ sea una inversa en ambos sentidos.
+
 </details>
 
 #### Ejercicio 24. Inversa sobre la imagen
@@ -1344,6 +1390,8 @@ Si $f:D\to E$ es inyectiva, demuestra que cambiando el codominio a $f[D]$ se obt
 
 La asignación $\widetilde f:D\to f[D]$ es válida y mantiene inyectividad. Es sobreyectiva por definición de imagen: cada $y\in f[D]$ tiene una entrada. Luego tiene inversa $f[D]\to D$. Si hay $y\in E\setminus f[D]$, no existe entrada que alcance $y$, por lo que esa inversa no puede deshacer la asignación en tal salida. Ejemplo: inclusión $[0,\infty)\to\mathbb R$, cuya imagen es $[0,\infty)$.
 
+Cambiar el codominio a la imagen no modifica las evaluaciones ni el grafo, pero sí el objeto tipado. La nueva función alcanza todo lo declarado por definición, y la inyectividad original proporciona unicidad. Su inversa acepta únicamente salidas alcanzadas. Si el codominio original contenía salidas sin testigo, una inversa definida allí no podría cumplir $f(f^{-1}(y))=y$. La construcción distingue una inversa sobre la imagen de una inversa sobre todo el codominio original.
+
 </details>
 
 #### Ejercicio 25. La inversa de una composición
@@ -1358,6 +1406,8 @@ Sean $f:D\to E$ y $g:E\to F$ biyectivas. Prueba que $g\circ f$ es biyectiva y su
 <summary>Ver solución del ejercicio 25</summary>
 
 La candidata $h=f^{-1}\circ g^{-1}:F\to D$ está tipada. Para $x\in D$, $h(g(f(x)))=f^{-1}(g^{-1}(g(f(x))))=f^{-1}(f(x))=x$. Para $z\in F$, $g(f(h(z)))=g(f(f^{-1}(g^{-1}(z))))=g(g^{-1}(z))=z$. Las dos identidades probadas en el texto garantizan biyectividad y unicidad de la inversa. El orden se invierte porque primero debe deshacerse la última etapa.
+
+Una salida final $z\in F$ se deshace primero mediante $g^{-1}$, que la lleva al conjunto intermedio $E$. Después $f^{-1}$ la lleva a la entrada inicial en $D$. Invertir ese orden daría, en general, una composición sin tipos compatibles. Las dos identidades verificadas garantizan tanto recuperar todas las entradas como producir todas las salidas; juntas prueban biyectividad. La comprobación debe hacerse para variables arbitrarias de ambos conjuntos, no para ejemplos puntuales.
 
 </details>
 ## 12.6. Transportar el orden no rellena los huecos
@@ -1575,6 +1625,8 @@ Calcula la imagen de $[-1,2)$ por $h(x)=-3x+2$ con codominio real. Justifica amb
 
 De $-1\le x<2$, al multiplicar por $-3$ y sumar $2$, resulta $-4<h(x)\le5$. Para $t\in(-4,5]$, $x=(2-t)/3$ satisface $-1\le x<2$ y $h(x)=t$. La imagen es $(-4,5]$. El extremo abierto de entrada pasa a extremo inferior abierto, y el cerrado a superior cerrado.
 
+La pendiente negativa invierte las desigualdades al multiplicar por menos tres. El extremo izquierdo incluido menos uno produce la salida superior cinco incluida; el extremo derecho excluido dos correspondería a la salida inferior menos cuatro excluida. Para la inclusión contraria, despejamos $x=(2-t)/3$ y comprobamos directamente que cada salida $-4<t\le5$ da una entrada válida. Así calculamos toda la imagen sin depender de la apariencia de una gráfica.
+
 </details>
 
 #### Ejercicio 27. Dos sentidos estrictos
@@ -1589,6 +1641,8 @@ Si $f:D\to E\subseteq\mathbb R$ y $g:E\to\mathbb R$ son estrictamente decrecient
 <summary>Ver solución del ejercicio 27</summary>
 
 Para $x<y$ en $D$, $f(x)>f(y)$. Como $f(y)<f(x)$ y ambas salidas pertenecen a $E$, el decrecimiento estricto de $g$ da $g(f(y))>g(f(x))$. Así $(g\circ f)(x)<(g\circ f)(y)$. La compatibilidad de dominios permite aplicar la segunda hipótesis.
+
+El primer decrecimiento invierte el orden de las entradas y el segundo vuelve a invertirlo. Para $x<y$, las salidas intermedias cumplen $f(y)<f(x)$; al aplicar $g$ a ese par ordenado obtenemos $g(f(x))<g(f(y))$. Las desigualdades siguen siendo estrictas, por lo que la composición es estrictamente creciente. La compatibilidad de tipos es indispensable para usar la segunda hipótesis con esas salidas intermedias.
 
 </details>
 
@@ -1607,6 +1661,8 @@ El transporte por ramas da $[-2,0)\cup[1,3]$ y los valores extremos dan $[s(-2),
 
 **Retorno visual.** Véase [C12-F04](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html#fig-anm-c12-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La rama negativa conserva $[-2,0)$ y la no negativa traslada $[0,2]$ a $[1,3]$. Los extremos originales producen menos dos y tres, de modo que el intervalo entre ellos es $[-2,3]$. Una salida como $1/2$ acredita que la inclusión es propia. El crecimiento estricto sigue válido al cruzar cero, porque toda salida de la rama izquierda es negativa y toda salida de la derecha es al menos uno. Ese orden no garantiza que se alcancen los valores del hueco.
+
 </details>
 
 #### Ejercicio 29. Orden de la inversa
@@ -1622,6 +1678,8 @@ Si $f:D\to E$ es estrictamente creciente y biyectiva, con $D,E\subseteq\mathbb R
 
 Para $u<v$ en $E$, sean $x=f^{-1}(u)$, $y=f^{-1}(v)$. Si $x=y$, entonces $u=v$, imposible. Si $x>y$, crecimiento estricto da $u=f(x)>f(y)=v$, también imposible. Por tricotomía queda $x<y$. Así la inversa conserva el orden estricto en su propio dominio $E$.
 
+La biyectividad asegura que las entradas inversas $x,y$ existen y son únicas. Para determinar su orden, descartamos las otras dos posibilidades de la tricotomía: igualdad daría salidas iguales y orden inverso daría salidas en orden inverso por el crecimiento de $f$. Queda necesariamente $x<y$. No se supone que $D$ o $E$ sean intervalos; basta que sus elementos hereden el orden real y que la función preserve estrictamente ese orden.
+
 </details>
 
 #### Ejercicio 30. Inyectividad no decide monotonía
@@ -1636,6 +1694,8 @@ Construye una biyectiva $\mathbb R\to\mathbb R$ que no sea no decreciente ni no 
 <summary>Ver solución del ejercicio 30</summary>
 
 Intercambiamos $0$ y $1$ y fijamos todo otro real: $f(0)=1$, $f(1)=0$, $f(x)=x$ para $x\notin\{0,1\}$. Aplicarla dos veces devuelve cada entrada, así que es biyectiva. No es no decreciente porque $0<1$ pero $f(0)>f(1)$. No es no creciente porque $2<3$ y $f(2)<f(3)$. Reversibilidad y orden son propiedades independientes.
+
+La asignación intercambia dos entradas y deja todas las demás fijas. Aplicarla dos veces restaura cada real, lo que proporciona una inversa igual a ella misma y prueba biyectividad. Un par de entradas prueba el fallo del crecimiento no estricto y otro prueba el fallo del decrecimiento no estricto. La conclusión no se deriva sólo de que la función parezca irregular: cada propiedad universal se refuta mediante testigos explícitos.
 
 </details>
 ## 12.7. Distancia y escala: medir la deformación
@@ -1857,6 +1917,8 @@ Para $h(x)=mx+c$ en toda $\mathbb R$, prueba que $|m|$ es la menor cota de expan
 
 La identidad $|h(x)-h(y)|=|m||x-y|$ muestra que $|m|$ sirve. Si $L$ es otra cota, usamos $x=0$, $y=1$ y obtenemos $|m|\le L$. Vale también para $m=0$: la menor cota no negativa es cero. La traslación no influye en el resultado.
 
+Para demostrar que una cota es la menor hay que probar dos afirmaciones: que sirve para todos los pares y que cualquier otra cota debe ser al menos esa. La identidad exacta de distancias prueba la primera. El par cero y uno, separado por una unidad, convierte la condición de otra cota $L$ en $|m|\le L$. El caso $m=0$ queda incluido y alcanza la menor cota no negativa cero. La constante $c$ desaparece al restar salidas.
+
 </details>
 
 #### Ejercicio 32. Una cota sin reversibilidad
@@ -1871,6 +1933,8 @@ Prueba que $f(x)=\max(x,0)$ tiene cota de expansión $1$ en $\mathbb R$ y no es 
 <summary>Ver solución del ejercicio 32</summary>
 
 Si ambas entradas son no negativas, la distancia de salidas es $|x-y|$; si ambas son no positivas, es cero. Si $x<0<y$, es $y\le y-x=|x-y|$; el caso invertido es simétrico. Los extremos cero están incluidos en los primeros casos. Así la cota es $1$. Pero $f(-1)=f(-2)=0$, por lo que no es inyectiva.
+
+La verificación separa las regiones donde cambia la fórmula. En la región positiva la función es la identidad, en la negativa es constante cero y entre regiones la distancia de salidas sólo recoge la parte positiva de la separación original. En todos los casos no aumenta distancias. Sin embargo, muchas entradas negativas comparten la salida cero. Una cota superior de distancias limita la expansión, pero no impide colapsar entradas distintas; para eso haría falta otro argumento.
 
 </details>
 
@@ -1887,6 +1951,8 @@ Prueba que $2R$ es la menor cota de expansión del cuadrado en $[-R,R]$, $R>0$, 
 
 La factorización del texto prueba la cota $2R$. Para refutar $0\le L<2R$, elegimos $t=\min(R,(2R-L)/2)>0$, $x=R$, $y=R-t\in[0,R)$. El cociente de distancias, permitido porque $t>0$, es $x+y=2R-t>L$: si $t=(2R-L)/2$, el resultado es $(2R+L)/2>L$; si $t=R$, esta rama exige $L\le0$ y, como $L\ge0$, $L=0<R$. Se viola la cota. Por tanto ninguna menor sirve.
 
+La cota superior viene de $|x+y|\le2R$. Para mostrar optimalidad, buscamos pares muy próximos al extremo $R$, cuyos cocientes de distancias son $x+y$ y se aproximan a $2R$. Ante cualquier $L<2R$, la elección de $t>0$ hace $2R-t>L$ sin salir del intervalo. No necesitamos un par que alcance exactamente el cociente $2R$: basta refutar cada factor menor con un par admisible. La prueba usa desigualdades algebraicas y no derivadas.
+
 </details>
 
 #### Ejercicio 34. Deshacer con control de distancia
@@ -1902,6 +1968,8 @@ Supón $c|x-y|\le|f(x)-f(y)|\le L|x-y|$ para $x,y\in D$, con $0<c\le L$. Prueba 
 
 La cota inferior hace inyectiva a $f$, así que existe $h:f[D]\to D$. Para $u=f(x)$, $v=f(y)$, las desigualdades dan $c|h(u)-h(v)|\le|u-v|\le L|h(u)-h(v)|$. Dividiendo por constantes positivas, $(1/L)|u-v|\le|h(u)-h(v)|\le(1/c)|u-v|$. Todo par de la imagen tiene entradas únicas, así que las cotas cubren el dominio completo de $h$. No se exige sobreyectividad hacia el codominio original.
 
+La cota inferior positiva impide que dos entradas distintas compartan salida, por lo que permite definir la inversa sobre $f[D]$. Sustituir $x=h(u)$ y $y=h(v)$ convierte las cotas originales en cotas para la distancia de entradas recuperadas. Al dividir, el factor superior original produce una cota inferior $1/L$ para la inversa, y el factor inferior original produce una cota superior $1/c$. Controlar expansión y colapso permite deshacer la transformación con control cuantitativo.
+
 </details>
 
 #### Ejercicio 35. Cota compuesta con restricción
@@ -1916,6 +1984,8 @@ Sean $q:[-2,2]\to[0,4]$, $q(x)=x^2$, y $h:[0,4]\to\mathbb R$, $h(y)=3y-1$. Obté
 <summary>Ver solución del ejercicio 35</summary>
 
 $q$ tiene cota $4$ y $h$ tiene escala exacta $3$, luego la composición tiene cota $12$. Si $0\le L<12$, tomamos $t=\min(1,(12-L)/6)>0$, $x=2$, $y=2-t\in[1,2)$. El cociente de distancias de salidas es $3(x+y)=12-3t$. Como $t\le(12-L)/6$, ese valor es al menos $(12+L)/2>L$. Se contradice la cota $L$. Así $12$ es la menor.
+
+El factor cuatro del cuadrado en $[-2,2]$ se multiplica por la escala exacta tres de la segunda etapa, dando doce. Que el producto sea una cota no demuestra por sí solo optimalidad; ésta requiere otro argumento. Los pares cercanos al extremo dos tienen cociente de distancias $3(x+y)$ próximo a doce. La elección indicada mantiene ambas entradas en el dominio y supera cualquier factor menor propuesto. Así la cota compuesta resulta óptima en este caso concreto.
 
 </details>
 ## 12.8. Representaciones y ventanas de control
@@ -2131,6 +2201,8 @@ La imagen es $P=\{(a,b):0\le b\le1,\ b\le a\le b+1\}$. Si $0\le u,v\le1$, entonc
 
 **Retorno visual.** Véase [C12-F06](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html#fig-anm-c12-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+Las desigualdades de salida no se obtienen sólo enviando los cuatro vértices. La coordenada $b=v$ queda entre cero y uno, y $a-b=u$ también queda entre cero y uno, lo que describe todos los puntos enviados. Para la vuelta, esas mismas condiciones garantizan que la entrada recuperada $(a-b,b)$ está en el cuadrado. Al comprobar las dos direcciones incluimos toda la región y su frontera, y no únicamente su contorno dibujado.
+
 </details>
 
 #### Ejercicio 37. Una rejilla no es un grafo escalar
@@ -2145,6 +2217,8 @@ Explica por qué la imagen por $T$ de la recta $v=0$ puede ser una parte de un d
 <summary>Ver solución del ejercicio 37</summary>
 
 Para $v=0$, $T(u,0)=(u,0)$, así que la imagen es la recta horizontal de pares $(a,0)$. Ese conjunto es el grafo de la función escalar $f:\mathbb R\to\mathbb R$, $f(a)=0$. Sin embargo, $T$ recibe pares $(u,v)$ y devuelve pares; $f$ recibe un real y devuelve cero. Su tipo, asignación y dominio difieren. Un mismo conjunto dibujado puede representar objetos en papeles distintos.
+
+La recta horizontal es un conjunto de pares del plano. Puede describirse como imagen de un conjunto bajo una transformación del plano o como grafo de una función de una variable real. En el primer papel, cada punto de la recta inicial es una entrada completa de $T$; en el segundo, la primera coordenada es la entrada y la segunda la salida de la función constante. Coincidir en el conjunto representado no identifica las funciones que lo producen ni sus tipos.
 
 </details>
 
@@ -2163,6 +2237,8 @@ Para $m\ne0$, la condición es $|m||x-x_0|<\rho$, por lo que la preimagen es $B(
 
 **Retorno visual.** Véase [C12-F07](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html#fig-anm-c12-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+El caso frontera $r=\rho/|m|$ sí funciona: pertenecer a una bola abierta da $|x-x_0|<r$, y al multiplicar se conserva una distancia de salida estrictamente menor que $\rho$. Si $r$ es mayor, el punto situado exactamente a distancia $\rho/|m|$ de $x_0$ está dentro de la ventana de entrada, pero su salida cae en la frontera excluida. Para $m=0$ no se divide por cero; se comprueba directamente que todas las salidas coinciden con el centro solicitado.
+
 </details>
 
 #### Ejercicio 39. Pertenencia sin vecindad
@@ -2180,6 +2256,8 @@ $B(0,1/2)=(-1/2,1/2)$ contiene cero y no contiene uno. Por tanto la preimagen es
 
 **Retorno visual.** Véase [C12-F07](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html#fig-anm-c12-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+Sólo la entrada cero produce una salida dentro de $(-1/2,1/2)$; todas las otras entradas producen uno, que queda fuera. El conjunto seleccionado es entonces un punto aislado. Para ser vecindad real de cero tendría que contener alguna bola de radio positivo, pero cualquier radio propuesto admite una entrada no nula todavía más cercana. El testigo $r/2$ muestra ese fallo para todos los radios, no sólo para una ventana particular.
+
 </details>
 
 #### Ejercicio 40. Reconstruir imagen desde todas las selecciones
@@ -2194,6 +2272,8 @@ Sean $A\subseteq D$ y $C\subseteq E$. Supón que para todo $B\subseteq E$ se cum
 <summary>Ver solución del ejercicio 40</summary>
 
 Por la equivalencia del manuscrito, la segunda condición equivale a $f[A]\subseteq B$. Así $C$ y $f[A]$ tienen exactamente los mismos conjuntos que los contienen. Tomando $B=C$, la inclusión $C\subseteq C$ implica $f[A]\subseteq C$. Tomando $B=f[A]$, la inclusión $f[A]\subseteq f[A]$ implica $C\subseteq f[A]$. Las dos inclusiones dan igualdad. La caracterización recupera el transporte hacia delante a partir de su relación con todas las selecciones hacia atrás, incluidos los casos vacíos.
+
+La hipótesis describe qué conjuntos contienen a $C$ y los compara con una selección de entradas. La equivalencia entre imagen y preimagen convierte esa selección en la condición de contener a $f[A]$. Para recuperar la igualdad elegimos dos conjuntos de prueba: $C$ y $f[A]$. Cada uno se contiene a sí mismo, y la equivalencia obliga a que contenga al otro. Las dos inclusiones concluyen la prueba sin escoger elementos concretos y abarcan también los casos vacíos.
 
 </details>
 
