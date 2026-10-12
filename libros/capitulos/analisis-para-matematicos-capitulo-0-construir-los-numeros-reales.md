@@ -26,6 +26,16 @@ provenance:
   - ANM-C00.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
+include-in-header:
+  text: |
+    <script>
+    window.MathJax = window.MathJax || {};
+    window.MathJax.tex = window.MathJax.tex || {};
+    window.MathJax.tex.macros = Object.assign({}, window.MathJax.tex.macros, {
+      xhookrightarrow: ["\\overset{#1}{\\hookrightarrow}", 1],
+      centernot: ["\\mathrel{\\rlap{/}#1}", 1]
+    });
+    </script>
 ---
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-0)
@@ -284,8 +294,6 @@ $$
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 1</summary>
 
-**Respuesta.**
-
 Porque una **especificación** sólo describe qué propiedades debería satisfacer un objeto si existiera. Una lista de condiciones puede incluso ser incompatible. Para demostrar existencia hace falta exhibir al menos un modelo concreto y verificar que cumple simultáneamente todas las condiciones exigidas.
 
 En símbolos, el paso inválido sería confundir
@@ -301,26 +309,6 @@ $$
 $$
 
 Definir la clase buscada no produce por sí solo un elemento de esa clase.
-
-**Fundamento en la sección 0.1.**
-
-Hemos descrito con bastante precisión qué queremos. Eso no demuestra que podamos tenerlo.
-
-En matemáticas es posible escribir sistemas de condiciones incompatibles. Por ejemplo, podríamos pedir un número $x$ que satisficiera simultáneamente
-
-$$
-x<0
-$$
-
-y
-
-$$
-x>1.
-$$
-
-La frase está perfectamente formada, pero no por eso existe un objeto que la satisfaga.
-
-Con una estructura axiomática ocurre lo mismo a otra escala. Podemos enumerar propiedades deseables y estudiar qué consecuencias tendrían **si** algún sistema las cumpliera. Pero mientras no construyamos al menos un modelo, sigue abierta la cuestión de si todas esas propiedades pueden coexistir.
 
 </details>
 
@@ -356,8 +344,6 @@ Si $A\subseteq F$ tiene una cota superior, ¿qué condición adicional debe sati
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 3</summary>
 
-**Respuesta.**
-
 Si $s$ ya es una cota superior de $A$, falta que sea la **menor** de todas ellas. Es decir, debe cumplirse
 
 $$
@@ -381,20 +367,6 @@ $$
 \boxed{s=\sup A}.
 $$
 
-**Fundamento en la sección 0.1.**
-
-Hasta aquí ya tenemos una estructura bastante rica. Podemos hacer álgebra y podemos hablar de izquierda y derecha en una representación ordenada. Sin embargo, todavía falta exactamente la propiedad que hará posible gran parte del análisis.
-
-Supongamos que $A\subseteq F$ es un conjunto no vacío y que está acotado superiormente. Esto significa que existe algún $u\in F$ tal que
-
-$$
-a\le u
-$$
-
-para todo $a\in A$.
-
-Podemos entonces preguntar si existe una **menor cota superior**: una cota $s$ que siga estando por encima de todos los elementos de $A$, pero que no pueda reemplazarse por ninguna cota superior más pequeña.
-
 </details>
 
 #### Microcontrol 4
@@ -407,8 +379,6 @@ Podemos entonces preguntar si existe una **menor cota superior**: una cota $s$ q
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 4</summary>
-
-**Respuesta.**
 
 Decir que $A$ está **acotado superiormente** significa sólo que existe algún $u\in F$ tal que
 
@@ -428,14 +398,6 @@ $$
 $$
 
 sin una hipótesis adicional de completitud. Precisamente la propiedad del supremo exige que esa implicación sí valga para todo subconjunto no vacío y acotado superiormente.
-
-**Fundamento en la sección 0.1.**
-
-> Todo subconjunto no vacío de $F$ que esté acotado superiormente debe poseer un supremo en $F$.
-
-Ésta es la forma de completitud que utilizaremos en este capítulo. Más precisamente, se trata de **completitud de orden mediante la propiedad del supremo**.
-
-No estamos hablando todavía de sucesiones de Cauchy ni de convergencia. Esas formulaciones aparecerán mucho más adelante. Aquí la completitud significa algo muy concreto: cuando el orden exige una mejor barrera para un conjunto no vacío y acotado superiormente, esa barrera existe dentro del propio sistema.
 
 </details>
 
@@ -1144,8 +1106,6 @@ no habría terminado todavía.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 7</summary>
 
-**Respuesta.**
-
 La inyectividad impide que dos elementos distintos del sistema original se vuelvan indistinguibles después del transporte. Si existieran $a
 e b$ con
 
@@ -1165,24 +1125,6 @@ $$
 
 La preservación de operaciones y relaciones sólo produce una copia fiel cuando los elementos distintos siguen siendo distintos.
 
-**Fundamento en la sección 0.2.**
-
-Ésta es precisamente la función de la inyectividad. Si dos elementos distintos $a,b\in A$ fueran enviados al mismo punto,
-
-$$
-\iota(a)=\iota(b),
-$$
-
-el sistema mayor habría perdido la capacidad de distinguirlos. Ya no tendríamos una copia fiel del sistema original.
-
-Y ésta es la función de las identidades de preservación. Si, por ejemplo,
-
-$$
-\iota(a+b)\ne\iota(a)+\iota(b),
-$$
-
-entonces calcular primero en $A$ y transportar el resultado no coincidiría con transportar los datos y calcular después en $B$. La vieja aritmética habría cambiado durante el traslado.
-
 </details>
 
 #### Microcontrol 8
@@ -1195,8 +1137,6 @@ entonces calcular primero en $A$ y transportar el resultado no coincidiría con 
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 8</summary>
-
-**Respuesta.**
 
 La igualdad
 
@@ -1211,26 +1151,6 @@ dice que podemos proceder de dos maneras sin cambiar el resultado.
 
 La condición de preservación afirma que ambos caminos terminan en el mismo elemento de $B$. Así, la suma antigua no cambia al pasar al sistema mayor.
 
-**Fundamento en la sección 0.2.**
-
-el sistema mayor habría perdido la capacidad de distinguirlos. Ya no tendríamos una copia fiel del sistema original.
-
-Y ésta es la función de las identidades de preservación. Si, por ejemplo,
-
-$$
-\iota(a+b)\ne\iota(a)+\iota(b),
-$$
-
-entonces calcular primero en $A$ y transportar el resultado no coincidiría con transportar los datos y calcular después en $B$. La vieja aritmética habría cambiado durante el traslado.
-
-Una buena incrustación evita ambos problemas.
-
-Ahora podemos precisar por qué la notación
-
-$$
-\mathbb N\subseteq\mathbb Z\subseteq\mathbb Q
-$$
-
 </details>
 
 #### Microcontrol 9
@@ -1243,8 +1163,6 @@ $$
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 9</summary>
-
-**Respuesta.**
 
 Al pasar de $\mathbb N$ a $\mathbb Z$ aparecen los **opuestos aditivos**, de modo que se pueden resolver ecuaciones que exigen una diferencia negativa. Por ejemplo,
 
@@ -1272,20 +1190,6 @@ $$
 
 Cada ampliación añade soluciones nuevas sin borrar la aritmética que ya estaba disponible.
 
-**Fundamento en la sección 0.2.**
-
-Los naturales sirven muy bien para contar y multiplicar cantidades no negativas. Pero su aritmética tiene una limitación inmediata: la resta no siempre puede resolverse dentro de $\mathbb N$.
-
-Por ejemplo, la ecuación
-
-$$
-x+3=1
-$$
-
-no tiene solución natural.
-
-Los enteros amplían el sistema incorporando opuestos aditivos. La idea importante para nosotros no es reconstruir aquí $\mathbb Z$ como clases de pares de naturales; esa construcción pertenece a un nivel fundacional más profundo que estamos tomando como disponible. Lo que sí necesitamos entender es cómo los naturales sobreviven dentro de los enteros.
-
 </details>
 
 #### Microcontrol 10
@@ -1299,8 +1203,6 @@ Los enteros amplían el sistema incorporando opuestos aditivos. La idea importan
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 10</summary>
 
-**Respuesta.**
-
 Porque ni $\mathbb N$ ni $\mathbb Z$ son cuerpos. En $\mathbb N$ ni siquiera todos los elementos poseen opuesto aditivo dentro del sistema, y en $\mathbb Z$ un entero no nulo como $2$ no tiene inverso multiplicativo entero.
 
 La flecha
@@ -1310,18 +1212,6 @@ $$
 $$
 
 sí es una incrustación de la estructura disponible en $\mathbb N$: preserva suma, producto, orden y los elementos distinguidos pertinentes. Lo incorrecto es atribuir al dominio y al codominio una estructura de cuerpo que no poseen.
-
-**Fundamento en la sección 0.2.**
-
-La palabra «relevantes» importa. No todos los sistemas poseen exactamente la misma clase de estructura. $\mathbb N$ no es un cuerpo y $\mathbb Z$ tampoco. Por eso sería incorrecto llamar uniformemente «incrustaciones de cuerpos» a todas las flechas de la cadena
-
-$$
-\mathbb N\hookrightarrow\mathbb Z\hookrightarrow\mathbb Q.
-$$
-
-Lo correcto es preguntar, en cada etapa, **qué estructura existe ya y qué debe preservarse al pasar al sistema mayor**.
-
-Por ejemplo, si una incrustación entre dos sistemas ordenados con suma y producto se denota por $\iota$, esperamos relaciones como
 
 </details>
 
@@ -1367,8 +1257,6 @@ La última escritura no debe confundirse con una inclusión literal que estuvier
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 12</summary>
 
-**Respuesta.**
-
 Como $\mathbb Q$ es ya un cuerpo ordenado, una futura incrustación
 
 $$
@@ -1404,35 +1292,6 @@ p<q
 $$
 
 Sólo después de verificar esa copia estructural estará justificada la economía notacional de escribir $\mathbb Q\subseteq F$.
-
-**Fundamento en la sección 0.2.**
-
-el producto,
-
-$$
-\iota_{\mathbb Z\mathbb Q}(mn)
-=
-\iota_{\mathbb Z\mathbb Q}(m)
-\iota_{\mathbb Z\mathbb Q}(n),
-$$
-
-el cero y la unidad,
-
-$$
-\iota_{\mathbb Z\mathbb Q}(0)=0,
-\qquad
-\iota_{\mathbb Z\mathbb Q}(1)=1,
-$$
-
-y el orden:
-
-$$
-m<n
-\quad\Longleftrightarrow\quad
-\frac m1<\frac n1.
-$$
-
-Además es inyectiva. Por eso podemos decir con precisión que $\mathbb Z$ se incrusta como anillo ordenado en $\mathbb Q$.
 
 </details>
 Ya estamos en condiciones de hacer la primera prueba real del capítulo. No construiremos todavía un sistema nuevo. Antes examinaremos si el último sistema disponible, $\mathbb Q$, satisface la especificación completa. La próxima sección localizará con precisión el punto en que falla.
@@ -2373,8 +2232,6 @@ Verifica directamente que $1\in S_2$ y que $2$ es una cota superior de $S_2$ en 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 13</summary>
 
-**Respuesta.**
-
 Por definición,
 
 $$
@@ -2405,30 +2262,6 @@ contradiciendo $q^2<2$. Luego todo $q\in S_2$ satisface $q<2$, y en particular $
 
 $$
 \boxed{S_2\ne\varnothing\quad\text{y}\quad 2\text{ es una cota superior de }S_2.}
-$$
-
-**Fundamento en la sección 0.3.**
-
-El conjunto no es vacío, porque
-
-$$
-1\in S_2.
-$$
-
-También está acotado superiormente. En efecto, $2$ es una cota superior: si $q\in S_2$ y ocurriera $q\ge2$, entonces, como $q\ge0$,
-
-$$
-q^2\ge4>2,
-$$
-
-contradiciendo la condición $q^2<2$. Por tanto todo $q\in S_2$ satisface $q<2$.
-
-Así tenemos, enteramente dentro de los racionales,
-
-$$
-S_2\ne\varnothing
-\qquad\text{y}\qquad
-S_2\text{ está acotado superiormente en }\mathbb Q.
 $$
 
 </details>
@@ -2474,8 +2307,6 @@ En el caso $s^2<2$, identifica exactamente qué propiedad del supuesto supremo c
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 15</summary>
 
-**Respuesta.**
-
 En ese caso se construye un racional $\delta>0$ tal que
 
 $$
@@ -2502,26 +2333,6 @@ $$
 \boxed{s\text{ no puede ser cota superior de }S_2.}
 $$
 
-**Fundamento en la sección 0.3.**
-
-Consideremos
-
-$$
-S_2=\{q\in\mathbb Q:q\ge0,\ q^2<2\}.
-$$
-
-Todo lo que aparece en esta definición pertenece a $\mathbb Q$. No hemos introducido ningún número real nuevo ni hemos supuesto la existencia de un elemento cuyo cuadrado sea $2$.
-
-Primero verifiquemos las dos hipótesis que harían aplicable la propiedad del supremo si $\mathbb Q$ fuera completo.
-
-El conjunto no es vacío, porque
-
-$$
-1\in S_2.
-$$
-
-También está acotado superiormente. En efecto, $2$ es una cota superior: si $q\in S_2$ y ocurriera $q\ge2$, entonces, como $q\ge0$,
-
 </details>
 
 #### Microcontrol 16
@@ -2534,8 +2345,6 @@ En el caso $s^2>2$, identifica exactamente qué propiedad del supuesto supremo c
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 16</summary>
-
-**Respuesta.**
 
 En este caso se construye un racional positivo
 
@@ -2563,28 +2372,6 @@ Por eso el caso $s^2>2$ falla porque
 
 $$
 \boxed{s\text{ no puede ser la menor cota superior de }S_2.}
-$$
-
-**Fundamento en la sección 0.3.**
-
-Ahora tomemos cualquier $q\in S_2$. Si ocurriera $q\ge t$, como ambos son no negativos tendríamos
-
-$$
-q^2\ge t^2>2,
-$$
-
-lo cual contradice $q^2<2$. Por tanto
-
-$$
-q<t
-$$
-
-para todo $q\in S_2$.
-
-Eso significa que $t$ es también una cota superior de $S_2$. Pero
-
-$$
-t<s,
 $$
 
 </details>
@@ -3595,8 +3382,6 @@ Verifica directamente que, para cada $c\in\mathbb Q$, el conjunto $L_c=\{q\in\ma
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 19</summary>
 
-**Respuesta.**
-
 Sea
 $$
 L_c=\{q\in\mathbb Q:q<c\},
@@ -3617,37 +3402,6 @@ $$
 \boxed{L_c\text{ es una cortadura de Dedekind}.}
 $$
 
-**Fundamento en la sección 0.4.**
-
-porque $2-q^2\le2$ y $2q+3\ge3$. Por tanto $\delta^2<\delta$. Ahora
-
-$$
-\begin{aligned}
-(q+\delta)^2
-&=q^2+2q\delta+\delta^2\\
-&<q^2+(2q+1)\delta\\
-&=q^2+(2-q^2)\frac{2q+1}{2q+3}\\
-&<q^2+(2-q^2)\\
-&=2.
-\end{aligned}
-$$
-
-Así,
-
-$$
-q+\delta\in A_2
-\qquad\text{y}\qquad
-q+\delta>q.
-$$
-
-Ningún elemento de $A_2$ puede ser máximo.
-
-Hemos demostrado, sin introducir ningún irracional preexistente, que
-
-$$
-\boxed{A_2\text{ es una cortadura de Dedekind}.}
-$$
-
 </details>
 
 #### Microcontrol 20
@@ -3660,8 +3414,6 @@ Explica por qué $\{q\in\mathbb Q:q\le c\}$ queda excluido por la condición «s
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 20</summary>
-
-**Respuesta.**
 
 El conjunto
 $$
@@ -3677,26 +3429,6 @@ $$
 $$
 Son conjuntos distintos, pero ambos codificarían intuitivamente la misma frontera racional $c$. La cláusula «sin máximo» fija una convención única: una frontera racional se representa por los racionales estrictamente menores que ella.
 
-**Fundamento en la sección 0.4.**
-
-Supongamos otra vez que $c\in\mathbb Q$. Si sólo exigiéramos que el conjunto fuera no vacío, propio y cerrado hacia abajo, entonces los dos conjuntos
-
-$$
-\{q\in\mathbb Q:q<c\}
-$$
-
-y
-
-$$
-\{q\in\mathbb Q:q\le c\}
-$$
-
-serían admisibles.
-
-Los dos describen la misma separación intuitiva de los racionales alrededor de $c$, pero serían dos objetos distintos. El segundo contiene un máximo, precisamente $c$; el primero no.
-
-La convención de exigir **ausencia de máximo** elimina esa duplicación. Cuando la frontera corresponde a un racional, la codificamos siempre mediante los racionales estrictamente menores que ella.
-
 </details>
 
 #### Microcontrol 21
@@ -3709,8 +3441,6 @@ En la comprobación de $A_2$, ¿por qué hay que separar los casos $q<0$ y $q\ge
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 21</summary>
-
-**Respuesta.**
 
 Para demostrar que $A_2$ no tiene máximo debemos, dado $q\in A_2$, encontrar otro elemento de $A_2$ estrictamente mayor.
 
@@ -3728,35 +3458,6 @@ Entonces $q+\delta\in A_2$ y $q+\delta>q$.
 
 Los casos se separan porque la razón que garantiza la pertenencia —negatividad o desigualdad cuadrática— es distinta en cada región.
 
-**Fundamento en la sección 0.4.**
-
-de modo que $r\in A_2$ y $r>q$.
-
-Queda el caso $q\ge0$. Entonces $q^2<2$. Definamos
-
-$$
-\delta=\frac{2-q^2}{2q+3}.
-$$
-
-El número $\delta$ es racional y positivo. Además,
-
-$$
-0<\delta<1,
-$$
-
-porque $2-q^2\le2$ y $2q+3\ge3$. Por tanto $\delta^2<\delta$. Ahora
-
-$$
-\begin{aligned}
-(q+\delta)^2
-&=q^2+2q\delta+\delta^2\\
-&<q^2+(2q+1)\delta\\
-&=q^2+(2-q^2)\frac{2q+1}{2q+3}\\
-&<q^2+(2-q^2)\\
-&=2.
-\end{aligned}
-$$
-
 </details>
 
 #### Microcontrol 22
@@ -3770,8 +3471,6 @@ $$
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 22</summary>
 
-**Respuesta.**
-
 Partimos de $A\not\subseteq B$ y elegimos $a\in A\setminus B$. Para un $b\in B$ arbitrario, no puede ocurrir $a<b$, porque la clausura hacia abajo de $B$ implicaría $a\in B$. Tampoco puede ocurrir $a=b$.
 
 Es exactamente aquí donde usamos la **tricotomía** del orden racional: entre $a<b$, $a=b$ y $b<a$, descartadas las dos primeras posibilidades, necesariamente
@@ -3781,28 +3480,6 @@ $$
 Como $a\in A$ y $A$ es cerrado hacia abajo, $b\in A$. Al ser $b\in B$ arbitrario,
 $$
 B\subseteq A.
-$$
-
-**Fundamento en la sección 0.4.**
-
-**Demostración.** Si $A\subseteq B$, no hay nada que probar. Supongamos entonces que
-
-$$
-A\not\subseteq B.
-$$
-
-Existe por tanto algún
-
-$$
-a\in A\setminus B.
-$$
-
-Tomemos un elemento cualquiera $b\in B$. No puede ocurrir que $a<b$, porque entonces, como $b\in B$ y $B$ es cerrado hacia abajo, tendríamos $a\in B$, contradicción. Tampoco puede ocurrir $a=b$, porque $a\notin B$ y $b\in B$.
-
-Por la tricotomía del orden racional, necesariamente
-
-$$
-b<a.
 $$
 
 </details>
@@ -3845,8 +3522,6 @@ la posición codificada por $B$ queda estrictamente más a la derecha que la cod
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 24</summary>
 
-**Respuesta.**
-
 La inclusión
 $$
 \mathcal D\subseteq\mathcal P(\mathbb Q)
@@ -3856,16 +3531,6 @@ justifica que $\mathcal D$ es un conjunto bien definido. Además, §0.4 le da un
 Pero todavía falta definir y verificar suma y producto, cero y uno, opuestos e inversos multiplicativos, las leyes de cuerpo, la compatibilidad con el orden y la propiedad del supremo.
 
 Por tanto, de $\mathcal D\subseteq\mathcal P(\mathbb Q)$ no se sigue que $\mathcal D$ sea un cuerpo ordenado completo. En §0.4 hemos construido **el dominio y su orden**; la estructura algebraica y la completitud todavía deben demostrarse.
-
-**Fundamento en la sección 0.4.**
-
-Una cortadura no es un racional, ni es todavía un «punto de la recta real» previamente existente. Es un conjunto de racionales con una estructura de orden que acabamos de construir.
-
-La figura [C00-F04](#fig-anm-c00-f04) concentra esta lectura en un único mapa visual.
-
-Tenemos un conjunto $\mathcal D$ y hemos demostrado que sus elementos están linealmente ordenados por inclusión. Esto ya reproduce una parte esencial de la idea de posición, pero está muy lejos de cerrar nuestra especificación inicial.
-
-Todavía no sabemos sumar dos cortaduras. No sabemos multiplicarlas. No hemos construido un cero, un uno, opuestos ni inversos. Mucho menos hemos demostrado que $\mathcal D$ sea completo.
 
 </details>
 Ya tenemos el primer objeto nuevo del capítulo. No nació de dibujar un punto ausente, sino de registrar qué racionales deberían quedar antes de él. El próximo paso será comprobar que los racionales mismos reaparecen dentro de este lenguaje sin perder su orden.
@@ -5217,8 +4882,6 @@ Demuestra directamente que $(-2)^*\subsetneq0^*\subsetneq3^*$ sin apelar a la pr
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 25</summary>
 
-**Respuesta.**
-
 Por definición,
 
 $$
@@ -5263,30 +4926,6 @@ $$
 \boxed{(-2)^*\subsetneq0^*\subsetneq3^*.}
 $$
 
-**Fundamento en la sección 0.5.**
-
-Sin introducir ninguna frontera real preexistente, podemos situarla entre dos posiciones racionales conocidas:
-
-$$
-\boxed{1^*\subsetneq A_2\subsetneq2^*.}
-$$
-
-En efecto, si $r<1$, entonces o bien $r<0$, o bien $0\le r<1$, y en este último caso $r^2<1<2$; por tanto $r\in A_2$. Además
-
-$$
-1\in A_2
-\qquad\text{pero}\qquad
-1\notin1^*,
-$$
-
-así que la primera inclusión es estricta.
-
-Por otro lado, todo $r\in A_2$ satisface $r<2$. Si $r<0$, esto es inmediato; si $r\ge0$ y $r^2<2$, no puede ocurrir $r\ge2$, porque entonces $r^2\ge4$. Por consiguiente
-
-$$
-A_2\subseteq2^*.
-$$
-
 </details>
 
 #### Microcontrol 26
@@ -5299,8 +4938,6 @@ Si $p^*\subsetneq q^*$, ¿por qué un elemento de $q^*\setminus p^*$ permite con
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 26</summary>
-
-**Respuesta.**
 
 La inclusión estricta garantiza que existe algún
 
@@ -5334,30 +4971,6 @@ $$
 
 El elemento de la diferencia funciona como un testigo racional que queda a la izquierda de $q$ pero no a la izquierda de $p$.
 
-**Fundamento en la sección 0.5.**
-
-Podemos volver incluso a la cortadura $A_2$ de §0.4. Recordemos
-
-$$
-A_2=\{q\in\mathbb Q:q<0\ \text{o}\ q^2<2\}.
-$$
-
-Sin introducir ninguna frontera real preexistente, podemos situarla entre dos posiciones racionales conocidas:
-
-$$
-\boxed{1^*\subsetneq A_2\subsetneq2^*.}
-$$
-
-En efecto, si $r<1$, entonces o bien $r<0$, o bien $0\le r<1$, y en este último caso $r^2<1<2$; por tanto $r\in A_2$. Además
-
-$$
-1\in A_2
-\qquad\text{pero}\qquad
-1\notin1^*,
-$$
-
-así que la primera inclusión es estricta.
-
 </details>
 
 #### Microcontrol 27
@@ -5370,8 +4983,6 @@ Explica por qué la equivalencia $p<q\Longleftrightarrow p^*\subsetneq q^*$ cont
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 27</summary>
-
-**Respuesta.**
 
 La implicación
 
@@ -5401,28 +5012,6 @@ $$
 
 Eso es reflexión del orden. Así, la equivalencia certifica que dentro de la imagen no aparecen comparaciones estrictas nuevas que no correspondan a una comparación racional original.
 
-**Fundamento en la sección 0.5.**
-
-y en particular
-
-$$
-p<q.
-$$
-
-Quedan demostradas ambas implicaciones. $\square$
-
-Esta proposición concentra exactamente la relación que buscábamos. La aplicación $\iota_{\mathbb Q}$ no sólo **preserva** el orden estricto; también lo **refleja**:
-
-$$
-p<q
-\quad\Longleftrightarrow\quad
-\iota_{\mathbb Q}(p)<_{\mathcal D}\iota_{\mathbb Q}(q).
-$$
-
-En otras palabras, mirar las imágenes dentro de $\mathcal D$ permite recuperar por completo el orden racional original.
-
-La preservación y reflexión del orden ya contienen casi toda la información necesaria para demostrar que no colapsamos racionales distintos.
-
 </details>
 
 #### Microcontrol 28
@@ -5435,8 +5024,6 @@ La preservación y reflexión del orden ya contienen casi toda la información n
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 28</summary>
-
-**Respuesta.**
 
 Supongamos
 
@@ -5473,26 +5060,6 @@ $$
 $$
 
 y por tanto $\iota_{\mathbb Q}$ es inyectiva. La igualdad de imágenes no puede ocultar dos racionales distintos porque cualquier desigualdad entre ellos produciría una inclusión estricta entre sus cortaduras.
-
-**Fundamento en la sección 0.5.**
-
-En otras palabras, mirar las imágenes dentro de $\mathcal D$ permite recuperar por completo el orden racional original.
-
-La preservación y reflexión del orden ya contienen casi toda la información necesaria para demostrar que no colapsamos racionales distintos.
-
-Supongamos
-
-$$
-p^*=q^*.
-$$
-
-Si $p<q$, la proposición anterior obligaría a
-
-$$
-p^*\subsetneq q^*,
-$$
-
-contradicción. Si $q<p$, obtendríamos análogamente
 
 </details>
 
@@ -7276,8 +6843,6 @@ En la prueba de clausura de $A+B$, explica por qué cualquier racional exterior 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 32</summary>
 
-**Respuesta.**
-
 Sean $A\in\mathcal D$, $u\notin A$ y $a\in A$. Queremos justificar que necesariamente
 
 $$
@@ -7306,30 +6871,6 @@ $$
 
 de modo que $u+v\notin A+B$.
 
-**Fundamento en la sección 0.6.**
-
-Entonces
-
-$$
-a_0+b_0\in A+B,
-$$
-
-de modo que $A+B$ no es vacío.
-
-Para ver que es propio, elijamos racionales exteriores
-
-$$
-u\notin A,
-\qquad
-v\notin B.
-$$
-
-Todo elemento de una cortadura está estrictamente por debajo de cualquier racional exterior. En efecto, si $a\in A$ y $u\notin A$, no puede ocurrir $u\le a$, porque la clausura hacia abajo obligaría a $u\in A$. Por tanto
-
-$$
-a<u.
-$$
-
 </details>
 
 #### Microcontrol 33
@@ -7342,8 +6883,6 @@ Demuestra de nuevo $p^*+q^*=(p+q)^*$ buscando explícitamente, para $x<p+q$, dos
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 33</summary>
-
-**Respuesta.**
 
 Queremos demostrar
 
@@ -7403,26 +6942,6 @@ $$
 $$
 
 La elección simétrica de $\varepsilon$ reparte exactamente entre los dos sumandos el margen que separa a $x$ de $p+q$.
-
-**Fundamento en la sección 0.6.**
-
-Todavía no hemos certificado el producto, de modo que la incrustación de **cuerpos** sigue pendiente.
-
-La suma de cortaduras hereda estas dos leyes de la suma racional, pero conviene verificar por qué.
-
-Para $A,B,C\in\mathcal D$, un racional $x$ pertenece a $(A+B)+C$ exactamente cuando existen
-
-$$
-a\in A,\qquad b\in B,\qquad c\in C
-$$
-
-tales que
-
-$$
-x=(a+b)+c.
-$$
-
-Por asociatividad en $\mathbb Q$,
 
 </details>
 
@@ -7629,8 +7148,6 @@ Demuestra que $A\subseteq B$ si y sólo si $A+C\subseteq B+C$ usando el opuesto 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 37</summary>
 
-**Respuesta.**
-
 Supongamos primero
 
 $$
@@ -7691,30 +7208,6 @@ $$
 
 La posibilidad de cancelar $C$ depende precisamente de que ya hayamos construido su opuesto aditivo.
 
-**Fundamento en la sección 0.6.**
-
-entonces cualquier elemento de $A+C$ tiene la forma $a+c$ con $a\in A\subseteq B$ y $c\in C$. Por tanto
-
-$$
-A+C\subseteq B+C.
-$$
-
-Así la suma preserva el orden.
-
-Una vez disponibles los opuestos, podemos demostrar también la recíproca. Si
-
-$$
-A+C\subseteq B+C,
-$$
-
-sumamos $-C$ a ambos lados. La monotonía recién demostrada da
-
-$$
-(A+C)+(-C)
-\subseteq
-(B+C)+(-C).
-$$
-
 </details>
 
 #### Microcontrol 38
@@ -7727,8 +7220,6 @@ Verifica directamente que $-(q^*)=(-q)^*$.
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 38</summary>
-
-**Respuesta.**
 
 Queremos probar directamente
 
@@ -7785,34 +7276,6 @@ $$
 $$
 
 La construcción del opuesto en $\mathcal D$ reproduce exactamente el opuesto racional sobre la copia $q\mapsto q^*$.
-
-**Fundamento en la sección 0.6.**
-
-Recíprocamente, si $x<-q$, tomamos $s=q$. Como $q\notin q^*$ y
-
-$$
-x<-q=-s,
-$$
-
-la definición del opuesto da
-
-$$
-x\in-(q^*).
-$$
-
-Por tanto la copia racional conserva ya toda su estructura aditiva:
-
-$$
-\boxed{
-\begin{aligned}
-(p+q)^*&=p^*+q^*,\\
-0_{\mathcal D}&=0^*,\\
-(-q)^*&=-(q^*).
-\end{aligned}
-}
-$$
-
-El certificado parcial de §0.5 ha crecido:
 
 </details>
 
@@ -10036,8 +9499,6 @@ Demuestra las equivalencias $A>0^*\Longleftrightarrow0\in A\Longleftrightarrow\e
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 41</summary>
 
-**Respuesta.**
-
 Queremos probar
 
 $$
@@ -10064,20 +9525,6 @@ $$
 
 La inclusión es estricta porque $a\in A$ pero $a\notin0^*$. Así $0^*\subsetneq A$, es decir, $A>0^*$.
 
-**Fundamento en la sección 0.7.**
-
-> **Lema.** Para $A\in\mathcal D$, son equivalentes:
->
-> 1. $0^*<_{\mathcal D}A$;
-> 2. $0\in A$;
-> 3. existe $a\in A$ con $a>0$.
-
-**Demostración.** Si $0^*\subsetneq A$, existe $x\in A\setminus0^*$. Entonces $x\ge0$. Si $x=0$, ya tenemos $0\in A$; si $x>0$, la clausura hacia abajo de $A$ da igualmente $0\in A$.
-
-Si $0\in A$, la ausencia de máximo proporciona $a\in A$ con $0<a$.
-
-Finalmente, si $a\in A$ y $a>0$, todo $q<0$ satisface $q<a$, luego $q\in A$. Así $0^*\subseteq A$, y la inclusión es estricta porque $a\in A\setminus0^*$. $\square$
-
 </details>
 
 #### Microcontrol 42
@@ -10090,8 +9537,6 @@ En la clausura de $A\cdot_+B$, ¿por qué un racional exterior $u\notin A$ debe 
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 42</summary>
-
-**Respuesta.**
 
 Supongamos $A>0^*$ y $u\notin A$. Por la equivalencia anterior,
 
@@ -10108,31 +9553,6 @@ $$
 $$
 
 Este hecho es el que permite comparar productos conservando el sentido del orden: para $a\in A_{>0}$ y un exterior $u\notin A$, tenemos $0<a<u$, y al multiplicar por cantidades positivas la desigualdad sigue orientada de la misma manera.
-
-**Fundamento en la sección 0.7.**
-
-Así quedan preservados suma, producto, cero, uno y orden. En consecuencia,
-
-$$
-\boxed{
-\iota_{\mathbb Q}:\mathbb Q\hookrightarrow\mathcal D
-\text{ es una incrustación de cuerpos ordenados}.
-}
-$$
-
-La identificación habitual queda ahora plenamente autorizada: cuando no haya peligro de confundir objetos con sus códigos, podremos escribir
-
-$$
-\mathbb Q\subseteq\mathcal D
-$$
-
-entendiendo que hemos identificado cada racional $q$ con su imagen $q^*$.
-
-También los inversos racionales se conservan. Si $q\ne0$, entonces
-
-$$
-q^*\cdot(q^{-1})^*=(qq^{-1})^*=1^*.
-$$
 
 </details>
 
@@ -12483,8 +11903,6 @@ Sea $\mathscr A\subseteq\mathcal D$ no vacía. Explica por qué la unión $\bigc
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 51</summary>
 
-**Respuesta.**
-
 Sea
 
 $$
@@ -12509,28 +11927,6 @@ $$
 
 La hipótesis de que $\mathscr A$ esté acotada superiormente no interviene aquí: la clausura inferior se hereda localmente de un único miembro de la familia que contiene a $q$.
 
-**Fundamento en la sección 0.8.**
-
-una familia **no vacía** de cortaduras y supongamos que está **acotada superiormente** en $\mathcal D$.
-
-Esto significa que existe alguna cortadura
-
-$$
-U\in\mathcal D
-$$
-
-tal que
-
-$$
-A\subseteq U
-\qquad
-\text{para todo }A\in\mathscr A.
-$$
-
-Recordemos que en $\mathcal D$ el orden es la inclusión. Por tanto decir que $U$ es una cota superior no introduce una noción nueva: significa exactamente que $U$ contiene toda la información racional contenida en cada miembro de $\mathscr A$.
-
-Si buscamos la **menor** cortadura con esa propiedad, parece natural no añadir ninguna información racional innecesaria. Debemos reunir solamente los racionales que ya aparecen en alguno de los miembros de la familia.
-
 </details>
 
 #### Microcontrol 52
@@ -12543,8 +11939,6 @@ Si buscamos la **menor** cortadura con esa propiedad, parece natural no añadir 
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 52</summary>
-
-**Respuesta.**
 
 La acotación superior se necesita en la verificación de que
 
@@ -12581,30 +11975,6 @@ Luego tampoco puede ocurrir $S=\mathbb Q$.
 
 Así, la hipótesis de acotación se gasta exactamente para impedir que la unión de todos los miembros de $\mathscr A$ crezca hasta ocupar todo $\mathbb Q$.
 
-**Fundamento en la sección 0.8.**
-
-Aquí se usa exactamente la hipótesis de acotación superior.
-
-Sea $U\in\mathcal D$ una cota superior de $\mathscr A$. Entonces
-
-$$
-A\subseteq U
-\qquad
-\text{para todo }A\in\mathscr A.
-$$
-
-Si $q\in S$, por definición de unión existe $A\in\mathscr A$ tal que $q\in A$. Como $A\subseteq U$,
-
-$$
-q\in U.
-$$
-
-Luego
-
-$$
-S\subseteq U.
-$$
-
 </details>
 
 #### Microcontrol 53
@@ -12617,8 +11987,6 @@ $$
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 53</summary>
-
-**Respuesta.**
 
 Sea $U$ una cota superior de $\mathscr A$. En el orden de $\mathcal D$, esto significa
 
@@ -12648,28 +12016,6 @@ $$
 
 La inclusión es simplemente la traducción conjuntista de que $U$ domina simultáneamente a todos los miembros de la familia.
 
-**Fundamento en la sección 0.8.**
-
-Esto vale para todo $A\in\mathscr A$. Así $S$ es una cota superior de la familia.
-
-Sea ahora $V\in\mathcal D$ cualquier cota superior de $\mathscr A$.
-
-Entonces
-
-$$
-A\subseteq V
-\qquad
-\text{para todo }A\in\mathscr A.
-$$
-
-Tomemos un racional cualquiera
-
-$$
-q\in S.
-$$
-
-Por definición de unión existe algún $A\in\mathscr A$ con
-
 </details>
 
 #### Microcontrol 54
@@ -12682,8 +12028,6 @@ Demuestra directamente que $\bigcup\mathscr A$ no tiene máximo usando sólo que
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 54</summary>
-
-**Respuesta.**
 
 Sea
 
@@ -12710,28 +12054,6 @@ $$
 $$
 
 No hace falta coordinar simultáneamente todos los miembros de la familia: basta trabajar en la cortadura concreta que testimonia la pertenencia de $q$ a la unión.
-
-**Fundamento en la sección 0.8.**
-
-Si $q\in S$, por definición de unión existe $A\in\mathscr A$ tal que $q\in A$. Como $A\subseteq U$,
-
-$$
-q\in U.
-$$
-
-Luego
-
-$$
-S\subseteq U.
-$$
-
-Pero $U$ es una cortadura, así que
-
-$$
-U\ne\mathbb Q.
-$$
-
-Por consiguiente $S$ tampoco puede ser todo $\mathbb Q$. En efecto, si $S=\mathbb Q$, de
 
 </details>
 
@@ -12796,8 +12118,6 @@ Si $V$ es otra cota superior, explica por qué cada $q\in S$ debe pertenecer a $
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 56</summary>
 
-**Respuesta.**
-
 Sea $V\in\mathcal D$ otra cota superior de $\mathscr A$. Entonces
 
 $$
@@ -12832,28 +12152,6 @@ S\le_{\mathcal D}V,
 $$
 
 y prueba que $S$ es menor o igual que cualquier otra cota superior.
-
-**Fundamento en la sección 0.8.**
-
-Como el orden de $\mathcal D$ es la inclusión,
-
-$$
-A\le_{\mathcal D}S.
-$$
-
-Esto vale para todo $A\in\mathscr A$. Así $S$ es una cota superior de la familia.
-
-Sea ahora $V\in\mathcal D$ cualquier cota superior de $\mathscr A$.
-
-Entonces
-
-$$
-A\subseteq V
-\qquad
-\text{para todo }A\in\mathscr A.
-$$
-
-Tomemos un racional cualquiera
 
 </details>
 
@@ -12900,8 +12198,6 @@ Por tanto la fórmula es una conclusión de la construcción, no una importació
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 58</summary>
 
-**Respuesta.**
-
 El primer certificado proviene de §0.7:
 
 ```text
@@ -12941,34 +12237,6 @@ Por tanto
 $$
 \boxed{\mathcal D\text{ es un cuerpo ordenado completo}.}
 $$
-
-**Fundamento en la sección 0.8.**
-
-Ahora podemos juntar por primera vez los dos certificados necesarios.
-
-De §0.7:
-
-```text
-ORDERED_FIELD = VERIFIED
-```
-
-De la prueba recién terminada:
-
-```text
-SUPREMUM_PROPERTY = VERIFIED
-```
-
-Por definición de cuerpo ordenado completo, obtenemos:
-
-> **Teorema de existencia.**
->
-> La estructura de cortaduras de Dedekind
->
-> $$
-> (\mathcal D,+,\cdot,\le_{\mathcal D})
-> $$
->
-> es un cuerpo ordenado completo.
 
 </details>
 
@@ -14801,8 +14069,6 @@ Pero ahora disponemos de todas las piezas conceptuales para atacarla.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 62</summary>
 
-**Respuesta.**
-
 En un cuerpo ordenado se tiene $0_F<1_F$. Sumando $1_F$ repetidamente y usando la invariancia del orden por traslación obtenemos, para $n>0$,
 
 $$
@@ -14823,28 +14089,6 @@ $$
 
 El orden impide que los numerales positivos colapsen en el cero.
 
-**Fundamento en la sección 0.9.**
-
-de modo que
-
-$$
-\nu_F(n)\ne0_F.
-$$
-
-Por tanto no existe entero positivo $n$ tal que
-
-$$
-\underbrace{1_F+\cdots+1_F}_{n\text{ veces}}=0_F.
-$$
-
-Esto demuestra:
-
-$$
-\boxed{\operatorname{char}F=0.}
-$$
-
-La conclusión es más importante de lo que parece. Significa que los numerales naturales no colapsan dentro de $F$ y que podemos prolongar esa copia a los enteros y luego a los racionales.
-
 </details>
 
 #### Microcontrol 63
@@ -14857,8 +14101,6 @@ Explica por qué la definición de $\jmath_{\mathbb Z}^F(m-n)$ no depende de la 
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 63</summary>
-
-**Respuesta.**
 
 Supongamos que el mismo entero admite dos representaciones
 
@@ -14891,28 +14133,6 @@ $$
 $$
 es independiente del representante escogido.
 
-**Fundamento en la sección 0.9.**
-
-Esto demuestra:
-
-$$
-\boxed{\operatorname{char}F=0.}
-$$
-
-La conclusión es más importante de lo que parece. Significa que los numerales naturales no colapsan dentro de $F$ y que podemos prolongar esa copia a los enteros y luego a los racionales.
-
-Los enteros no se introducen en $F$ mediante una identificación literal. Construimos una aplicación.
-
-Si un entero está representado por la diferencia formal $m-n$, definimos
-
-$$
-\jmath_{\mathbb Z}^F(m-n)
-=
-\nu_F(m)-\nu_F(n).
-$$
-
-La definición es independiente de la representación.
-
 </details>
 
 #### Microcontrol 64
@@ -14925,8 +14145,6 @@ Para $q=a/b$, ¿qué propiedad garantiza que $\iota_F(q)$ no depende del represe
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 64</summary>
-
-**Respuesta.**
 
 Si
 
@@ -14959,35 +14177,6 @@ $$
 
 no depende de la fracción elegida. La propiedad decisiva es la **igualdad por productos cruzados**, transportada por la multiplicatividad, junto con la no anulación de los denominadores.
 
-**Fundamento en la sección 0.9.**
-
-Ahora podemos incorporar divisiones.
-
-Sea
-
-$$
-q=\frac ab\in\mathbb Q,
-\qquad
-a,b\in\mathbb Z,
-\qquad
-b\ne0.
-$$
-
-Definimos
-
-$$
-\boxed{
-\iota_F(q)
-=
-\jmath_{\mathbb Z}^F(a)
-\bigl(\jmath_{\mathbb Z}^F(b)\bigr)^{-1}.
-}
-$$
-
-El inverso existe porque $b\ne0$ y $\jmath_{\mathbb Z}^F$ es inyectiva.
-
-Debemos verificar que el valor no depende de la fracción elegida.
-
 </details>
 
 #### Microcontrol 65
@@ -15000,8 +14189,6 @@ Debemos verificar que el valor no depende de la fracción elegida.
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 65</summary>
-
-**Respuesta.**
 
 La completitud no se usa para construir la copia canónica de $\mathbb Q$: característica cero, enteros y racionales aparecen en cualquier cuerpo ordenado.
 
@@ -15018,26 +14205,6 @@ $$
 
 Ese supremo es la herramienta que produce la contradicción.
 
-**Fundamento en la sección 0.9.**
-
-Hasta aquí sólo hemos usado que $F$ es un cuerpo ordenado.
-
-Ahora gastaremos por primera vez la hipótesis adicional:
-
-$$
-\boxed{F\text{ es completo}.}
-$$
-
-La consecuencia inmediata será la propiedad arquimediana.
-
-> **Teorema.** Todo cuerpo ordenado completo es arquimediano.
-
-**Demostración.** Supongamos, por contradicción, que los numerales de $F$ estuvieran acotados superiormente. Es decir, que el conjunto
-
-$$
-N_F=\{\nu_F(n):n\in\mathbb N\}
-$$
-
 </details>
 
 #### Microcontrol 66
@@ -15050,8 +14217,6 @@ Reconstruye la contradicción que demuestra que un cuerpo ordenado completo es a
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 66</summary>
-
-**Respuesta.**
 
 Supongamos que $N_F$ está acotado superiormente y sea
 
@@ -15083,28 +14248,6 @@ $$
 \boxed{F\text{ es arquimediano}.}
 $$
 
-**Fundamento en la sección 0.9.**
-
-el elemento $s-1_F$ no puede ser también cota superior de $N_F$: de serlo, sería una cota superior estrictamente menor que el supremo.
-
-Por tanto existe algún $n\in\mathbb N$ tal que
-
-$$
-s-1_F<\nu_F(n).
-$$
-
-Sumando $1_F$,
-
-$$
-s<\nu_F(n)+1_F
-=
-\nu_F(n+1).
-$$
-
-Pero $\nu_F(n+1)\in N_F$, contradiciendo que $s$ sea cota superior.
-
-Luego los numerales no están acotados superiormente. Equivalentemente, para todo $x\in F$ existe $n\in\mathbb N$ tal que
-
 </details>
 
 #### Microcontrol 67
@@ -15117,8 +14260,6 @@ En el lema de localización entera, ¿por qué no basta con saber simplemente qu
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 67</summary>
-
-**Respuesta.**
 
 Saber solamente que existe un entero $m$ con
 
@@ -15133,26 +14274,6 @@ $$
 $$
 
 La información adicional de que $m$ es el **primer** entero de cierta lista que queda por encima de $x$ es lo que produce la desigualdad inferior con $m-1$.
-
-**Fundamento en la sección 0.9.**
-
-Entonces su predecesor es
-
-$$
-m-1=-n+k,
-$$
-
-y las dos desigualdades anteriores se escriben exactamente como
-
-$$
-\iota_F(m-1)\le x<\iota_F(m).
-$$
-
-$\square$
-
-Éste es el eslabón que no debe quedar oculto detrás de la palabra «arquimediano».
-
-La propiedad arquimediana dice que la rejilla entera llega suficientemente lejos; el lema anterior dice algo más operativo: **todo elemento queda atrapado en una celda de anchura uno de esa rejilla**.
 
 </details>
 
@@ -15169,8 +14290,6 @@ $$
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 68</summary>
-
-**Respuesta.**
 
 Se define
 
@@ -15199,32 +14318,6 @@ $$
 
 El mínimo convierte una cota cualquiera en una **celda entera consecutiva**.
 
-**Fundamento en la sección 0.9.**
-
-Este conjunto no es vacío. Por ejemplo, si tomamos $k=2n+1$, entonces
-
-$$
--\nu_F(n)+\nu_F(2n+1)
-=
-\nu_F(n+1)
->
-x.
-$$
-
-Por el buen orden de $\mathbb N$, $K$ tiene un elemento mínimo; llamémoslo $k_0$.
-
-No puede ser $k_0=0$, porque
-
-$$
--\nu_F(n)<x.
-$$
-
-Por tanto
-
-$$
-k_0=k+1
-$$
-
 </details>
 
 #### Microcontrol 69
@@ -15237,8 +14330,6 @@ Para $x<y$, ¿por qué elegir $1/n<y-x$ y localizar $nx$ produce un racional ent
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 69</summary>
-
-**Respuesta.**
 
 Sean $x<y$. La arquimedianidad permite elegir $n>0$ con
 
@@ -15271,30 +14362,6 @@ $$
 $$
 
 El paso $1/n<y-x$ hace que la malla racional sea más fina que la separación entre $x$ e $y$.
-
-**Fundamento en la sección 0.9.**
-
-es positiva. Por tanto $(y-x)^{-1}>0$. La arquimedianidad proporciona $n\in\mathbb N$ tal que
-
-$$
-(y-x)^{-1}<\nu_F(n).
-$$
-
-Esta desigualdad obliga a $n>0$. Como ambos miembros son positivos, al invertir se revierte el orden:
-
-$$
-0<\nu_F(n)^{-1}<y-x.
-$$
-
-La compatibilidad de la copia racional con los inversos identifica
-
-$$
-\nu_F(n)^{-1}
-=
-\iota_F\!\left(\frac1n\right).
-$$
-
-Así,
 
 </details>
 
@@ -15343,8 +14410,6 @@ La densidad se usa en las condiciones **no vacío**, **propio** y **sin máximo*
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 71</summary>
 
-**Respuesta.**
-
 El conjunto
 
 $$
@@ -15370,36 +14435,6 @@ $$
 
 La completitud no fabrica la traza; garantiza que la información racional contenida en ella puede volver a reunirse en un elemento de $F$.
 
-**Fundamento en la sección 0.9.**
-
-contradiciendo que $s$ sea una cota superior de ese conjunto.
-
-Por tanto no puede ocurrir $s<x$. Como ya sabemos $s\le x$, concluimos
-
-$$
-s=x.
-$$
-
-Así obtenemos la fórmula de reconstrucción:
-
-$$
-\boxed{
-x
-=
-\sup_F
-\{\iota_F(q):q\in A_x\}.
-}
-$$
-
-La interpretación es fundamental:
-
-$$
-\boxed{
-\text{un elemento de }F
-\text{ queda determinado por los racionales que están debajo de él}.
-}
-$$
-
 </details>
 
 #### Microcontrol 72
@@ -15412,8 +14447,6 @@ $$
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 72</summary>
-
-**Respuesta.**
 
 Si
 
@@ -15440,36 +14473,6 @@ $$
 $$
 
 La traza racional determina al elemento de manera inyectiva: dos posiciones distintas no pueden tener exactamente los mismos racionales por debajo.
-
-**Fundamento en la sección 0.9.**
-
-contradiciendo que $s$ sea una cota superior de ese conjunto.
-
-Por tanto no puede ocurrir $s<x$. Como ya sabemos $s\le x$, concluimos
-
-$$
-s=x.
-$$
-
-Así obtenemos la fórmula de reconstrucción:
-
-$$
-\boxed{
-x
-=
-\sup_F
-\{\iota_F(q):q\in A_x\}.
-}
-$$
-
-La interpretación es fundamental:
-
-$$
-\boxed{
-\text{un elemento de }F
-\text{ queda determinado por los racionales que están debajo de él}.
-}
-$$
 
 </details>
 
@@ -17584,8 +16587,6 @@ REAL_NUMBER_STRUCTURE = CANONICAL_UP_TO_UNIQUE_ORDERED_FIELD_ISOMORPHISM
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 74</summary>
 
-**Respuesta.**
-
 La expresión
 
 $$
@@ -17607,34 +16608,6 @@ $$
 \boxed{\phi(x)=\sup_G\iota_G(A_x).}
 $$
 
-**Fundamento en la sección 0.10.**
-
-Ahora sí hemos verificado:
-
-$$
-\iota_G(A_x)\ne\varnothing
-$$
-
-y
-
-$$
-\iota_G(A_x)\text{ está acotado superiormente en }G.
-$$
-
-Aquí aparece el primer gasto de completitud de esta sección. Como $G$ es completo, existe el supremo de ese conjunto.
-
-Podemos definir, legítimamente,
-
-$$
-\boxed{
-\phi:F\longrightarrow G,
-\qquad
-\phi(x)
-=
-\sup_G\{\iota_G(q):q\in A_x\}.
-}
-$$
-
 </details>
 
 #### Microcontrol 75
@@ -17647,8 +16620,6 @@ $$
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 75</summary>
-
-**Respuesta.**
 
 La completitud de $G$ se gasta una vez comprobado que
 
@@ -17664,34 +16635,6 @@ $$
 
 Nada anterior en la construcción de $A_x$ o de la copia racional de $G$ necesita completitud. La hipótesis adicional de que $G$ es completo se usa precisamente para convertir la información racional transportada en un elemento concreto de $G$.
 
-**Fundamento en la sección 0.10.**
-
-Ahora sí hemos verificado:
-
-$$
-\iota_G(A_x)\ne\varnothing
-$$
-
-y
-
-$$
-\iota_G(A_x)\text{ está acotado superiormente en }G.
-$$
-
-Aquí aparece el primer gasto de completitud de esta sección. Como $G$ es completo, existe el supremo de ese conjunto.
-
-Podemos definir, legítimamente,
-
-$$
-\boxed{
-\phi:F\longrightarrow G,
-\qquad
-\phi(x)
-=
-\sup_G\{\iota_G(q):q\in A_x\}.
-}
-$$
-
 </details>
 
 #### Microcontrol 76
@@ -17704,8 +16647,6 @@ Demuestra que $A_{\phi(x)}=A_x$ y explica por qué la ausencia de máximo de $A_
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 76</summary>
-
-**Respuesta.**
 
 Sea
 
@@ -17735,28 +16676,6 @@ $$
 \boxed{A_{\phi(x)}=A_x.}
 $$
 
-**Fundamento en la sección 0.10.**
-
-Luego necesariamente
-
-$$
-q\in A_x.
-$$
-
-Hemos obtenido la segunda inclusión y, por tanto,
-
-$$
-\boxed{
-A_{\phi(x)}=A_x.
-}
-$$
-
-$\square$
-
-Este resultado explica exactamente qué hace $\phi$. No transporta la representación conjuntista de $x$; transporta su **posición racional**.
-
-En §0.9 demostramos que, en cualquier cuerpo ordenado completo,
-
 </details>
 
 #### Microcontrol 77
@@ -17769,8 +16688,6 @@ En §0.9 demostramos que, en cualquier cuerpo ordenado completo,
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 77</summary>
-
-**Respuesta.**
 
 En §0.9 se demostró, dentro de cualquier cuerpo ordenado completo,
 
@@ -17808,30 +16725,6 @@ $$
 \boxed{x<y\Longleftrightarrow\phi(x)<\phi(y).}
 $$
 
-**Fundamento en la sección 0.10.**
-
-Hemos obtenido la segunda inclusión y, por tanto,
-
-$$
-\boxed{
-A_{\phi(x)}=A_x.
-}
-$$
-
-$\square$
-
-Este resultado explica exactamente qué hace $\phi$. No transporta la representación conjuntista de $x$; transporta su **posición racional**.
-
-En §0.9 demostramos que, en cualquier cuerpo ordenado completo,
-
-$$
-x\le y
-\quad\Longleftrightarrow\quad
-A_x\subseteq A_y
-$$
-
-y
-
 </details>
 
 #### Microcontrol 78
@@ -17844,8 +16737,6 @@ Explica por qué la construcción simétrica $\psi:G\to F$ demuestra sobreyectiv
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 78</summary>
-
-**Respuesta.**
 
 Intercambiamos los papeles de los cuerpos y definimos
 
@@ -17890,33 +16781,6 @@ $$
 
 y $\phi$ es sobreyectiva. No se eligió una preimagen entre varias: la preimagen de $y$ está canónicamente determinada como $\psi(y)$.
 
-**Fundamento en la sección 0.10.**
-
-Simétricamente, para todo $y\in G$,
-
-$$
-\boxed{\phi(\psi(y))=y.}
-$$
-
-Así,
-
-$$
-\boxed{
-\psi=\phi^{-1}.
-}
-$$
-
-En particular,
-
-$$
-\boxed{
-\phi:F\longrightarrow G
-\text{ es biyectiva}.
-}
-$$
-
-La sobreyectividad no proviene de contar elementos ni de una elección sobre fibras. La preimagen de $y$ está dada canónicamente por $\psi(y)$.
-
 </details>
 
 #### Microcontrol 79
@@ -17929,8 +16793,6 @@ La sobreyectividad no proviene de contar elementos ni de una elección sobre fib
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 79</summary>
-
-**Respuesta.**
 
 Para $q\in\mathbb Q$,
 
@@ -17969,37 +16831,6 @@ $$
 
 En particular, $\phi(0_F)=0_G$ y $\phi(1_F)=1_G$.
 
-**Fundamento en la sección 0.10.**
-
-La traza determina al elemento en $G$. Por tanto
-
-$$
-\boxed{
-\phi(\iota_F(q))=\iota_G(q)
-\qquad(q\in\mathbb Q).
-}
-$$
-
-Es decir,
-
-$$
-\boxed{
-\phi\circ\iota_F=\iota_G.
-}
-$$
-
-En particular,
-
-$$
-\boxed{
-\phi(0_F)=0_G,
-\qquad
-\phi(1_F)=1_G.
-}
-$$
-
-Para demostrar que $\phi$ conserva la suma evitaremos intentar calcular directamente el supremo de $A_{x+y}$.
-
 </details>
 
 #### Microcontrol 80
@@ -18012,8 +16843,6 @@ Reconstruye la caracterización racional de $A_{x+y}$ y señala las dos aplicaci
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 80</summary>
-
-**Respuesta.**
 
 Para $q\in\mathbb Q$,
 
@@ -18056,28 +16885,6 @@ La recíproca usa sólo preservación de suma y orden de la copia racional: si $
 $$
 \iota_F(q)<\iota_F(r)+\iota_F(s)<x+y.
 $$
-
-**Fundamento en la sección 0.10.**
-
-La composición
-
-$$
-T\circ\iota_F:\mathbb Q\longrightarrow G
-$$
-
-es también una incrustación de cuerpos ordenados: $T$ preserva $0$, $1$, suma, producto y orden.
-
-Pero en §0.9 demostramos que la copia racional en un cuerpo ordenado es **canónica y única**.
-
-Por tanto
-
-$$
-\boxed{
-T\circ\iota_F=\iota_G.
-}
-$$
-
-Así todo isomorfismo de cuerpos ordenados entre $F$ y $G$ fija automáticamente la copia racional, en el sentido estructural correcto.
 
 </details>
 
@@ -18130,8 +16937,6 @@ Recorre los tres casos adicionales de signo necesarios para extender la multipli
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 82</summary>
 
-**Respuesta.**
-
 El caso $x,y\ge0$ ya está probado. Quedan tres posibilidades.
 
 1. Si $x<0\le y$, entonces $-x>0$ y
@@ -18160,30 +16965,6 @@ $$
 
 para todos $x,y\in F$.
 
-**Fundamento en la sección 0.10.**
-
-Por unicidad del inverso aditivo,
-
-$$
-\boxed{
-\phi(-x)=-\phi(x).
-}
-$$
-
-Así también se conserva la resta.
-
-La multiplicación exige una precaución adicional: el orden del producto se comporta limpiamente al trabajar primero con factores no negativos.
-
-Sean
-
-$$
-0_F\le x,
-\qquad
-0_F\le y.
-$$
-
-Para $q\in\mathbb Q$ tenemos la siguiente caracterización.
-
 </details>
 
 #### Microcontrol 83
@@ -18196,8 +16977,6 @@ Para $q\in\mathbb Q$ tenemos la siguiente caracterización.
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 83</summary>
-
-**Respuesta.**
 
 Sea
 
@@ -18221,26 +17000,6 @@ $$
 
 Todo isomorfismo posible coincide sobre la copia racional canónica.
 
-**Fundamento en la sección 0.10.**
-
-es también una incrustación de cuerpos ordenados: $T$ preserva $0$, $1$, suma, producto y orden.
-
-Pero en §0.9 demostramos que la copia racional en un cuerpo ordenado es **canónica y única**.
-
-Por tanto
-
-$$
-\boxed{
-T\circ\iota_F=\iota_G.
-}
-$$
-
-Así todo isomorfismo de cuerpos ordenados entre $F$ y $G$ fija automáticamente la copia racional, en el sentido estructural correcto.
-
-Fijemos $x\in F$.
-
-Para cualquier $q\in\mathbb Q$,
-
 </details>
 
 #### Microcontrol 84
@@ -18253,8 +17012,6 @@ Explica por qué conservar la misma traza racional fuerza $T(x)=\phi(x)$.
 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 84</summary>
-
-**Respuesta.**
 
 Para $q\in\mathbb Q$,
 
@@ -18293,34 +17050,6 @@ $$
 $$
 
 Esto vale para todo $x$, así que $T=\phi$.
-
-**Fundamento en la sección 0.10.**
-
-Además, como $\psi$ se construye por el mismo procedimiento, también preserva y refleja el orden. Por tanto $\phi$ ya es un isomorfismo de los órdenes lineales subyacentes.
-
-Falta demostrar que conserva la aritmética.
-
-Sea $q\in\mathbb Q$.
-
-La traza racional de $\iota_F(q)$ es
-
-$$
-A_{\iota_F(q)}
-=
-\{r\in\mathbb Q:r<q\}
-=
-q^*.
-$$
-
-En efecto,
-
-$$
-r\in A_{\iota_F(q)}
-\Longleftrightarrow
-\iota_F(r)<\iota_F(q)
-\Longleftrightarrow
-r<q.
-$$
 
 </details>
 
@@ -18363,8 +17092,6 @@ $$
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 86</summary>
 
-**Respuesta.**
-
 La construcción
 
 $$
@@ -18380,34 +17107,6 @@ Nada de la prueba estructural proporciona automáticamente esos datos para repre
 $$
 \boxed{\text{canónico por unicidad}\ne\text{computable por sí solo}.}
 $$
-
-**Fundamento en la sección 0.10.**
-
-Es decir,
-
-$$
-\boxed{
-F\cong G
-\quad
-\text{mediante un único isomorfismo de cuerpos ordenados}.
-}
-$$
-
-La estructura no depende de la implementación.
-
-También conviene distinguir otra idea:
-
-$$
-\boxed{
-\text{canónico por unicidad}
-\neq
-\text{computable}.
-}
-$$
-
-La fórmula de $\phi$ mediante trazas racionales y supremos determina una función matemática única. Eso no afirma que, dada una representación arbitraria de elementos de $F$ y $G$, exista automáticamente un algoritmo que calcule sus imágenes.
-
-Nuestra cuestión aquí era estructural, y esa cuestión queda completamente resuelta.
 
 </details>
 
