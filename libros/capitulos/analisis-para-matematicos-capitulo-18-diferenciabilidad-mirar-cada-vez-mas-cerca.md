@@ -70,6 +70,8 @@ El radio $\delta=\eta$ prueba $f'(a)=2a$ para cada $a$. En particular las secant
 
 En $D\setminus\{a\}$; $f(a)$ debe existir, pero $q_{f,a}(a)$ no está definido.
 
+La diferencia de valores utiliza la evaluación central $f(a)$, por lo que $a$ debe ser una entrada. La división utiliza $x-a$ y sólo se permite cuando $x\ne a$. Así el centro pertenece al dominio de la función, pero no al del cociente. La derivada estudia un límite de ese nuevo objeto sin evaluarlo en su centro.
+
 </details>
 
 #### Microcontrol 2
@@ -84,6 +86,8 @@ En $D\setminus\{a\}$; $f(a)$ debe existir, pero $q_{f,a}(a)$ no está definido.
 <summary>Ver solución del microcontrol 2</summary>
 
 Para disponer de entradas distintas del centro en todo radio y garantizar unicidad del límite; en un aislado la condición sería vacía para cualquier pendiente.
+
+La acumulación permite encontrar una entrada perforada en cualquier ventana positiva. Sin ella, elegir una ventana vacía haría válidas todas las pendientes candidatas y no habría un valor único que llamar derivada. El capítulo excluye ese caso mediante una condición sobre el dominio antes de investigar el límite.
 
 </details>
 
@@ -100,6 +104,8 @@ Para disponer de entradas distintas del centro en todo radio y garantizar unicid
 
 La función, su dominio, el centro y la tolerancia para el error de pendiente. El radio se fija antes de la entrada variable.
 
+El centro permanece fijo en todas las secantes de esa prueba. El radio puede responder al centro y a la precisión, pero no adaptarse después a cada entrada. Para verificarlo se consideran todas las entradas admisibles con distancia positiva menor que él. Una tabla de algunas secantes no cumple esa obligación universal.
+
 </details>
 
 #### Microcontrol 4
@@ -114,6 +120,8 @@ La función, su dominio, el centro y la tolerancia para el error de pendiente. E
 <summary>Ver solución del microcontrol 4</summary>
 
 Es $2a$, porque el cociente en $a+h$ es $2a+h$ para $h\ne0$ y su diferencia respecto de $2a$ vale $h$.
+
+La factorización del numerador cancela $h$ sólo porque se ha excluido $h=0$. El error de pendiente tiene magnitud $|h|$ y por ello el radio igual a la tolerancia lo controla directamente. La evaluación central del cuadrado ya está definida. Ninguna secante individual tiene que coincidir con el valor límite para que la prueba funcione.
 
 </details>
 
@@ -130,6 +138,8 @@ Es $2a$, porque el cociente en $a+h$ es $2a+h$ para $h\ne0$ y su diferencia resp
 
 No. La derivada definida aquí exige un límite finito único de todas las secantes suficientemente cercanas.
 
+El tamaño de una secante concreta no determina el límite del conjunto de secantes próximas. Puede variar según la escala o según el lado de aproximación. Aquí la definición pide un real finito y control de todas las entradas admitidas. Una tendencia sin cota tampoco produce una derivada real finita bajo esta convención.
+
 </details>
 
 #### Microcontrol 6
@@ -144,6 +154,8 @@ No. La derivada definida aquí exige un límite finito único de todas las secan
 <summary>Ver solución del microcontrol 6</summary>
 
 El centro y su acumulación en el dominio restringido; luego los mismos radios controlan sus argumentos perforados.
+
+La restricción conserva el valor central y los cocientes de las entradas que mantiene. Los radios originales siguen controlando esos cocientes. Pero la restricción podría aislar el centro, y entonces faltaría una premisa de la definición. Conservar acumulación asegura que la nueva derivada exista en el sentido adoptado y tenga el mismo valor.
 
 </details>
 
@@ -160,6 +172,8 @@ El centro y su acumulación en el dominio restringido; luego los mismos radios c
 
 Uno: todos los cocientes relativos perforados valen uno. Esto no afirma derivabilidad bilateral sobre toda la recta.
 
+En ese dominio sólo hay entradas positivas distintas del centro y allí $|x|=x$. El cociente vale exactamente uno y su error respecto de uno es cero. En la recta se añaden entradas negativas con cociente menos uno, que cambian la pregunta de límite. Una conclusión relativa no se transporta al dominio mayor sin revisar esas nuevas entradas.
+
 </details>
 
 #### Microcontrol 8
@@ -174,6 +188,8 @@ Uno: todos los cocientes relativos perforados valen uno. Esto no afirma derivabi
 <summary>Ver solución del microcontrol 8</summary>
 
 No en su único punto, porque ese punto no es de acumulación del dominio.
+
+Su única entrada es aislada y no hay secantes admitidas en ninguna escala. La continuidad sí puede verificarse allí porque compara el valor central consigo mismo. La derivada, en cambio, exige acumulación para identificar una pendiente a partir de otras entradas. Son condiciones diferentes sobre el mismo punto.
 
 </details>
 
@@ -194,6 +210,8 @@ Escribe la definición relativa de derivada para $f:D\to\mathbb R$ y explica por
 
 Se exige $a\in D\cap\operatorname{Acc}(D)$ y un real $L$ con $\forall\eta>0\exists\delta>0\forall x\in D$, $0<|x-a|<\delta$ implica $|(f(x)-f(a))/(x-a)-L|<\eta$. El cociente vive en $D\setminus\{a\}$. En un aislado existe un radio sin entradas perforadas, de modo que cualquier $L$ cumpliría la condición vacía y se perdería unicidad. En $\{0\}$ no se define derivada. En $[0,\infty)$, cero es de acumulación y el límite relativo sólo usa entradas positivas; es un concepto de derivada derecha respecto de ese dominio.
 
+La evaluación central y la acumulación son premisas diferentes: la primera permite formar el numerador y la segunda impide que la prueba de límite sea vacía. El radio controla una precisión de pendiente y debe funcionar para todas las entradas perforadas admitidas. En el semieje la aproximación relativa sólo visita un lado, mientras en el singleton no existen secantes que determinen una pendiente.
+
 </details>
 
 #### Ejercicio 2. Secantes del cuadrado
@@ -211,6 +229,8 @@ Para $h\ne0$, $[(a+h)^2-a^2]/h=2a+h$. Dada tolerancia $\eta>0$, $\delta=\eta$ ha
 
 **Retorno visual.** Véase [C18-F01](analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca.html#fig-anm-c18-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La cancelación de $h$ se realiza únicamente en el dominio perforado. El radio explícito prueba un control de todas las secantes, algo que no aportan tres valores particulares. Las secantes de incrementos positivos y negativos se sitúan a ambos lados de dos, pero su error se mide con la misma magnitud $|h|$. Así se separa el límite de sus aproximaciones concretas.
+
 </details>
 
 #### Ejercicio 3. Dos límites candidatos
@@ -225,6 +245,8 @@ Prueba directamente unicidad de la derivada con acumulación, sin usar una suces
 <summary>Ver solución del ejercicio 3</summary>
 
 Si $L,M$ cumplen la definición y $d=|L-M|>0$, pedimos tolerancia $d/3$ a ambas condiciones. El mínimo de sus radios es positivo. Acumulación entrega un único testigo perforado dentro de ese mínimo. Para su pendiente $q$, $d\le|L-q|+|q-M|<2d/3$, contradicción. Se obtiene existencia de un testigo para el radio fijado, sin una elección simultánea de entradas.
+
+Ambos controles se piden para el mismo centro y la misma tolerancia de pendiente. El mínimo de radios permite aplicarlos a una sola secante. Acumulación justifica un testigo dentro de esa ventana y la triangular produce la contradicción. No hace falta construir simultáneamente testigos a todas las escalas ni una ruta seleccionada.
 
 </details>
 
@@ -241,6 +263,8 @@ Prueba la derivada relativa de $|x|$ en cero sobre $[0,\infty)$ y refuta inferir
 
 En el dominio positivo perforado, el cociente es $|x|/x=1$, así cualquier radio sirve para cualquier tolerancia y la derivada relativa es uno. Sobre la recta, el cociente en las entradas negativas es menos uno. Para todo radio hay entradas positivas y negativas con pendientes separadas por dos, incompatibles con acercamiento común a un real. La restricción de una derivada existente la conserva si acumula en el centro, pero una derivada restringida puede omitir entradas que impiden el límite en el dominio mayor.
 
+La derivada relativa sólo exige el límite de las secantes que sobreviven a la restricción. En el semieje todas valen uno. Al ampliar el dominio se agregan secantes negativas de valor menos uno y deja de existir un destino común. La herencia de derivada funciona hacia restricciones acumulantes, pero esta conclusión no se invierte.
+
 </details>
 
 #### Ejercicio 5. Cambiar el valor central
@@ -255,6 +279,8 @@ Sea $F(x)=x^2$ para $x\ne0$ y $F(0)=1$. Decide derivabilidad en cero y compara c
 <summary>Ver solución del ejercicio 5</summary>
 
 Para $x\ne0$, $q_{F,0}(x)=x-1/x$, que no tiene límite finito en cero. Más directamente, $F$ no es continua en cero: las entradas $x_n=1/(n+1)$ tienen salidas tendentes a cero, distintas del valor central uno; R3 refuta derivabilidad. Este uso de R3 es una consecuencia posterior de R1 dentro del capítulo. El cuadrado usual sí tiene valor central cero y derivada cero. Que dos funciones coincidan en el dominio perforado no garantiza iguales cocientes si sus valores centrales difieren.
+
+El valor central aparece en todos los numeradores incrementales y no puede modificarse sin cambiar los cocientes. Las salidas perforadas conservan su límite cero mientras la función asigna uno en el centro. La discontinuidad refuta derivabilidad por la implicación de R3. Coincidir fuera del centro no basta para conservar una derivada centrada allí.
 
 </details>
 ## 18.2. El error que desaparece al ampliar
@@ -297,6 +323,8 @@ Si $|u|\le R$ y $0<t<\delta/(R+1)$, la estimación anterior da $|G_t(u)-Lu|<\eta
 
 El resto dividido por el incremento, que debe tender a cero; equivalentemente, $|r_L(x)|<\eta|x-a|$ para toda tolerancia en algún radio.
 
+La identidad $r_L(x)/(x-a)=q_{f,a}(x)-L$ convierte error normalizado en error de pendiente. Multiplicar las magnitudes por $|x-a|>0$ da la versión con presupuestos lineales. La equivalencia sólo se formula en entradas perforadas. En el centro el resto vale cero, pero la razón no se define.
+
 </details>
 
 #### Microcontrol 10
@@ -311,6 +339,8 @@ El resto dividido por el incremento, que debe tender a cero; equivalentemente, $
 <summary>Ver solución del microcontrol 10</summary>
 
 Para una función continua, restar cualquier recta por el centro sigue dando error tendente a cero. La normalización por $x-a$ distingue las pendientes.
+
+Todas las rectas que pasan por el punto central tienen el mismo valor allí. Si la función es continua, su diferencia con cualquiera de ellas tiende a cero en magnitud absoluta. Dividir por el incremento pregunta algo más preciso: si el error desaparece en comparación con la distancia de entrada. Esa condición distingue el modelo de primer orden.
 
 </details>
 
@@ -327,6 +357,8 @@ Para una función continua, restar cualquier recta por el centro sigue dando err
 
 $r_{2a}(a+h)=h^2$, por expansión exacta.
 
+La expansión da $(a+h)^2=a^2+2ah+h^2$. Los dos primeros términos son exactamente el modelo afín con pendiente $2a$ y el tercero es el resto. Al normalizar por $h\ne0$ queda $h$, que tiende a cero. Este ejemplo tiene un resto cuadrático demostrado, aunque no toda función derivable deba tenerlo.
+
 </details>
 
 #### Microcontrol 12
@@ -341,6 +373,8 @@ $r_{2a}(a+h)=h^2$, por expansión exacta.
 <summary>Ver solución del microcontrol 12</summary>
 
 Proporciona una entrada perforada dentro del mínimo de dos radios; al dividir allí, dos pendientes distintas contradicen ambos presupuestos de error.
+
+Si dos pendientes distaran $d>0$, sus presupuestos de resto se pedirían con una fracción de $d$. Una entrada perforada dentro de ambos radios permite restar las identidades y dividir por su distancia positiva. La suma de los errores sería menor que la distancia entre las pendientes. La acumulación justifica esa entrada concreta, sin seleccionar una ruta.
 
 </details>
 
@@ -357,6 +391,8 @@ Proporciona una entrada perforada dentro del mínimo de dos radios; al dividir a
 
 Sólo las que cumplen $a+tu\in D$; si el dominio está roto no puede suponerse que todo un marco de $u$ sea admisible.
 
+El zoom transforma una coordenada $u$ en la entrada original $a+tu$. Su evaluación sólo existe si esa entrada pertenece a $D$, y se usa una escala $t\ne0$ para dividir. En un dominio con huecos, el conjunto admisible de coordenadas puede depender de $t$. Dibujar un marco completo no autoriza llenar esos huecos.
+
 </details>
 
 #### Microcontrol 14
@@ -371,6 +407,8 @@ Sólo las que cumplen $a+tu\in D$; si el dominio está roto no puede suponerse q
 <summary>Ver solución del microcontrol 14</summary>
 
 La cota $\eta|u|$ se convierte en una cota común $\eta R$. Sin limitar $u$, ese presupuesto no protege toda la recta.
+
+La estimación de derivabilidad se multiplica por la magnitud de la coordenada ampliada. Un marco acotado permite sustituirla por una barrera común y diseñar una escala válida para todas sus entradas admitidas. Si $R=0$, sólo hay la coordenada central y su error es cero. Sin una barrera del marco, la misma estimación no produce control uniforme sobre todas las coordenadas.
 
 </details>
 
@@ -387,6 +425,8 @@ La cota $\eta|u|$ se convierte en una cota común $\eta R$. Sin limitar $u$, ese
 
 Una abreviatura del límite cero del error normalizado sobre el dominio perforado, sin imponer una tasa cuadrática.
 
+El símbolo resume una obligación de tolerancias: el cociente de magnitudes del resto por $|x-a|$ puede hacerse menor que cualquier positivo. No añade una constante $B$ con resto menor que $B|x-a|^2$. Las dos tasas son distintas y el ejemplo $|x|\sqrt{|x|}$ las separa. La notación conserva el dominio relativo de aproximación.
+
 </details>
 
 #### Microcontrol 16
@@ -401,6 +441,8 @@ Una abreviatura del límite cero del error normalizado sobre el dominio perforad
 <summary>Ver solución del microcontrol 16</summary>
 
 No. Su propiedad es el error de orden menor que $|x-a|$ al acercarse al centro.
+
+La propiedad se refiere a cómo cambia el error al reducir la distancia al centro. No compara todas las rectas mediante un criterio de ajuste en un intervalo fijo. Una recta distinta podría aproximar mejor alguna entrada lejana sin ser el modelo de primer orden. La unicidad demostrada corresponde al error normalizado tendente a cero.
 
 </details>
 
@@ -419,6 +461,8 @@ Prueba equivalencia entre derivada $L$ y resto $r_L=o(|x-a|)$ sobre el dominio r
 
 Para $x\ne a$, $r_L(x)/(x-a)=q_{f,a}(x)-L$. Por tanto la condición de límite cero de ese cociente equivale término a término a la definición de derivada. En magnitudes, multiplicar o dividir por el positivo $|x-a|$ traduce $|q-L|<\eta$ en $|r_L|<\eta|x-a|$. En el centro $r_L(a)=0$, sin atribuir allí un cociente. Ambos sentidos conservan el mismo radio y dominio perforado.
 
+El resto se define restando el valor central y el término lineal propuesto. La identidad de razones muestra que las dos condiciones son equivalentes para cada entrada perforada, sin cambiar los cuantificadores ni radios. El uso de magnitudes conserva el control también para incrementos negativos. En el centro se comprueba el resto cero por evaluación directa y no por una división.
+
 </details>
 
 #### Ejercicio 7. Un marco completo de zoom
@@ -436,6 +480,8 @@ $G_t(u)=[(1+tu)^2-1]/t=2u+tu^2$. En el marco $|u|\le2$, el error es $tu^2\le4t$.
 
 **Retorno visual.** Véase [C18-F02](analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca.html#fig-anm-c18-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La ampliación divide la variación vertical por la misma escala que cambia las coordenadas horizontales. El término lineal queda $2u$ y el resto ampliado queda $tu^2$. La cota de marco convierte este último en un error común $4t$. Su dependencia del marco explica por qué la aproximación se afirma en regiones acotadas de coordenadas ampliadas.
+
 </details>
 
 #### Ejercicio 8. Todas las rectas tienen error absoluto pequeño
@@ -450,6 +496,8 @@ Para el cuadrado centrado en $a$, demuestra que cualquier recta de pendiente $M$
 <summary>Ver solución del ejercicio 8</summary>
 
 El resto es $(2a-M)h+h^2$, cuya magnitud no supera $(|2a-M|+|h|)|h|$ y tiende a cero cuando $h\to0$. Pero su cociente por $h$ es $2a-M+h$, con límite $2a-M$. Este límite sólo vale cero si $M=2a$. El error absoluto no distingue pendientes porque todas las rectas pasan por el mismo punto y son continuas allí; el error normalizado sí las distingue.
+
+El término proporcional a $h$ tiende a cero incluso cuando su coeficiente es no nulo. Por eso cualquier pendiente propuesta produce error absoluto pequeño. Al dividir por $h$, ese coeficiente permanece y sólo desaparece para la pendiente correcta. El modelo de primer orden exige esa segunda comprobación, que es más fuerte que continuidad del error.
 
 </details>
 
@@ -466,6 +514,8 @@ Prueba unicidad del modelo lineal usando únicamente estimaciones de resto y un 
 
 Si sirven $L,M$ distintos, sea $d=|L-M|>0$. Las estimaciones con presupuesto $d/3$ entregan dos radios. Acumulación permite un punto distinto del centro en el menor de ellos. Como $(L-M)(x-a)=r_M(x)-r_L(x)$, la triangular y ambas cotas dan $d|x-a|<2d|x-a|/3$. Dividir por $|x-a|>0$ contradice $d>0$. No se construye una sucesión ni se elige un testigo para cada radio a la vez.
 
+Las dos identidades de resto contienen los mismos valores de función y por ello éstos se cancelan al restarlas. Queda una comparación entre diferencia de pendientes y suma de errores. La entrada de acumulación tiene distancia positiva y permite dividir sin pérdida de información. Un único testigo bajo los dos radios basta para probar unicidad.
+
 </details>
 
 #### Ejercicio 10. Zoom sobre un dominio roto
@@ -480,6 +530,8 @@ Sea $D=\{0\}\cup\{1/(n+1):n\in\mathbb N\}$ y $f(x)=x^2$ en $D$. Prueba derivada 
 <summary>Ver solución del ejercicio 10</summary>
 
 Cero acumula en $D$ por las entradas explícitas $1/(n+1)$. Para $x\in D\setminus\{0\}$, $q=x$, por lo que $\delta=\eta$ prueba derivada cero. Para $t>0$, las entradas del zoom son $u=0$ y $u=1/[t(n+1)]$. Allí $G_t(u)=tu^2$. En $|u|\le R$ el error no supera $tR^2$, pero no se ha definido $G_t$ en los otros puntos del marco. La estimación es común a las entradas admisibles y no rellena los huecos del dominio.
+
+La sucesión explícita acredita acumulación del dominio en cero, pero los radios de derivada controlan todas sus entradas, no sólo una cola elegida. En el zoom, resolver $tu\in D$ determina exactamente las coordenadas permitidas. La cota por $tR^2$ es válida en todo el marco admisible. No implica que la función ampliada esté definida en los huecos entre esas coordenadas.
 
 </details>
 ## 18.3. Continuidad, esquinas y alcance del control
@@ -515,6 +567,8 @@ Para $\varepsilon>0$, $\delta=\min(r,\varepsilon/C)$ controla el error de salida
 
 La tolerancia uno respecto de $L$; resulta $|q|<|L|+1$ cerca del centro.
 
+El límite finito de pendientes implica que dentro de alguna ventana su distancia a $L$ es menor que uno. La triangular da entonces $|q|<|L|+1$, una constante estrictamente positiva. Multiplicar por la distancia de entrada controla el error de valores. La barrera se obtiene del límite antes de elegir la precisión de continuidad.
+
 </details>
 
 #### Microcontrol 18
@@ -529,6 +583,8 @@ La tolerancia uno respecto de $L$; resulta $|q|<|L|+1$ cerca del centro.
 <summary>Ver solución del microcontrol 18</summary>
 
 Se comprueba aparte: el error de salida es cero. No se evalúa allí el cociente perforado.
+
+La continuidad incluye la entrada central y allí la diferencia $f(a)-f(a)$ vale cero. Para entradas distintas se usa la cota de secantes y se multiplica por $|x-a|$. Separar estos dos casos verifica toda la bola relativa. Así se evita introducir una evaluación de $q$ que no pertenece a su dominio.
 
 </details>
 
@@ -545,6 +601,8 @@ Se comprueba aparte: el error de salida es cero. No se evalúa allí el cociente
 
 $\min(r,\varepsilon/C)$ con $C>0$, usando el radio $r$ donde la cota está probada.
 
+El primer radio conserva la región donde la estimación es válida; el segundo convierte distancia en precisión de salida. Su mínimo positivo cumple ambas condiciones a la vez. La distancia de entrada estricta da error final estricto, incluso si la cota inicial es no estricta. La positividad de $C$ legitima la división.
+
 </details>
 
 #### Microcontrol 20
@@ -559,6 +617,8 @@ $\min(r,\varepsilon/C)$ con $C>0$, usando el radio $r$ donde la cota está proba
 <summary>Ver solución del microcontrol 20</summary>
 
 Las pendientes de las entradas positivas y negativas son uno y menos uno; no pueden acercarse al mismo real con error menor que $1/2$.
+
+Dentro de cualquier radio positivo se pueden tomar entradas de signos opuestos. Sus pendientes difieren en dos y, si ambas estuvieran a distancia menor que medio de un candidato, la triangular las separaría menos que uno. Esa contradicción descarta cualquier candidato real. La refutación utiliza secantes válidas, no sólo la forma visible de la esquina.
 
 </details>
 
@@ -575,6 +635,8 @@ Las pendientes de las entradas positivas y negativas son uno y menos uno; no pue
 
 No. $x^3$ tiene derivada cero en cero y cambia de valor y de signo arbitrariamente cerca.
 
+El cociente centrado de $x^3$ es $x^2$ y tiende a cero. Sin embargo, entradas positivas y negativas tienen salidas de signos opuestos respecto del valor central. Por eso tampoco hay máximo ni mínimo local en cero. Una pendiente nula sólo identifica el término lineal del modelo y no decide el comportamiento restante.
+
 </details>
 
 #### Microcontrol 22
@@ -589,6 +651,8 @@ No. $x^3$ tiene derivada cero en cero y cambia de valor y de signo arbitrariamen
 <summary>Ver solución del microcontrol 22</summary>
 
 $a$. El resultado compara $f(x)$ con $f(a)$, sin controlar todos los pares $x,y$ próximos.
+
+La estimación tiene forma $|f(x)-f(a)|\le C|x-a|$ con una evaluación central fija. Una condición Lipschitz vecina pediría una cota para $|f(x)-f(y)|$ de cualquier par en la región. Ese nuevo centro $y$ no está controlado por la primera afirmación. El ejemplo racional/irracional muestra que la diferencia de alcance es efectiva.
 
 </details>
 
@@ -605,6 +669,8 @@ $a$. El resultado compara $f(x)$ con $f(a)$, sin controlar todos los pares $x,y$
 
 Cero, pues su cociente tiene magnitud a lo sumo $|x|$ aunque sea discontinua en todos los otros puntos.
 
+En el centro cero la función vale cero y satisface $|F(x)|\le x^2$ para todas las entradas. Por ello su cociente tiene error a lo sumo $|x|$ respecto de cero. La densidad de ambas clases de entradas provoca discontinuidad en cada centro no nulo. La derivabilidad puntual no convierte ese control centrado en regularidad de todo el entorno.
+
 </details>
 
 #### Microcontrol 24
@@ -619,6 +685,8 @@ Cero, pues su cociente tiene magnitud a lo sumo $|x|$ aunque sea discontinua en 
 <summary>Ver solución del microcontrol 24</summary>
 
 Cerca del centro, las entradas mayores que $a$ tienen salida mayor que $f(a)$ y las menores tienen salida menor. No es aún monotonía entre todos los pares.
+
+La tolerancia $f\prime(a)/2$ mantiene positivas las secantes suficientemente cercanas. El signo del incremento $x-a$ decide entonces el de la diferencia $f(x)-f(a)$. Esto compara cada entrada con el mismo centro. No se han controlado secantes centradas en otros puntos y por ello no se deduce crecimiento de toda una vecindad.
 
 </details>
 
@@ -637,6 +705,8 @@ Reconstruye la prueba de continuidad desde una derivada finita, incluidos los pr
 
 La tolerancia uno de derivabilidad da $r>0$ con $|q-L|<1$ en el radio perforado, así $|q|<C=|L|+1>0$. Multiplicar por $|x-a|$ da error de valores menor que $C|x-a|$. Para $\varepsilon>0$, $\delta=\min(r,\varepsilon/C)$ sirve para todo argumento distinto del centro de distancia menor. En el centro el error es cero. Esta última comprobación convierte un control perforado en continuidad sobre una bola no perforada del mismo dominio.
 
+Primero se obtiene una barrera finita de pendientes usando tolerancia uno, sin depender del desafío posterior de valores. Después se reduce la distancia de entrada según esa barrera. El centro, excluido de los cocientes, se incorpora por su error de valor cero. La prueba concluye continuidad relativa en todo el dominio de aproximación sin evaluar la secante en el centro.
+
 </details>
 
 #### Ejercicio 12. La esquina refuta todos los radios
@@ -654,6 +724,8 @@ La triangular inversa da $||x|-|a||\le|x-a|$, de modo que $\delta=\varepsilon$ p
 
 **Retorno visual.** Véase [C18-F03](analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca.html#fig-anm-c18-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La continuidad usa una desigualdad de valores válida para cualquier par, incluidos los centros. La no derivabilidad usa una precisión fija de pendientes y dos entradas perforadas dentro del radio que ofrecería el candidato. Sus cocientes incompatibles contradicen la triangular. Así continuidad y falta de derivada quedan demostradas con controles distintos y completos.
+
 </details>
 
 #### Ejercicio 13. Pendiente cero sin extremo
@@ -668,6 +740,8 @@ Prueba que $x^3$ tiene derivada cero en cero y que allí no es constante ni tien
 <summary>Ver solución del ejercicio 13</summary>
 
 Para $h\ne0$, el cociente vale $h^2$; $\delta=\sqrt\eta$ da error menor que $\eta$ y prueba derivada cero. Todo radio admite $h=\delta/2>0$ y $-h<0$, con valores $h^3>0$ y $-h^3<0$ respecto del valor central cero. Así ninguna vecindad relativa tiene todos sus valores por encima o por debajo del central, y tampoco son constantes. La recta horizontal local no contiene información suficiente para decidir extremos.
+
+La precisión de pendiente se convierte en radio mediante la raíz positiva de $\eta$. Las entradas de signos opuestos dentro de cualquier ventana producen valores a ambos lados de cero. Por eso no hay constancia ni extremo local, aunque el término lineal del modelo sea horizontal. No se utiliza una regla sobre extremos que aún no haya sido demostrada.
 
 </details>
 
@@ -684,6 +758,8 @@ Analiza $F(x)=x^2$ en racionales y cero en irracionales. Prueba $F\prime(0)=0$ y
 
 Como $F(0)=0$ y $|F(x)|\le x^2$, $|q_{F,0}(x)|\le|x|$ prueba derivada cero con $\delta=\eta$. En cada $b\ne0$ es discontinua: si es racional, irracionales arbitrariamente próximos tienen salida cero en lugar de $b^2$; si es irracional, racionales con $|x-b|<|b|/2$ tienen salida mayor que $b^2/4$ en lugar de cero. La densidad garantiza tales testigos en cualquier radio. Una cota Lipschitz para todos los pares de alguna bola de cero implicaría continuidad en cada punto interior de esa bola, por radio $\varepsilon/L$ si $L>0$, o constancia si $L=0$. Elegir allí un $b\ne0$ produce contradicción. La cota centrada de R3 sigue siendo válida y no equivale a esa cota de pares.
 
+La barrera $|F(x)|\le x^2$ funciona para entradas racionales e irracionales y prueba el límite de secantes en cero. Fuera de cero la densidad entrega entradas de la clase opuesta con salida separada del valor central. Si hubiese una cota Lipschitz en una bola de cero, acreditaría continuidad en un punto no nulo interior de esa bola. Esa contradicción distingue control centrado de control de todos los pares vecinos.
+
 </details>
 
 #### Ejercicio 15. Comparar sólo con el centro
@@ -698,6 +774,8 @@ Si $f\prime(a)=L>0$, prueba las comparaciones locales con $f(a)$ a cada lado del
 <summary>Ver solución del ejercicio 15</summary>
 
 Con tolerancia $L/2$, la definición entrega un radio donde $q>L/2>0$ para argumentos perforados. La identidad $f(x)-f(a)=q(x)(x-a)$ da diferencia positiva para $x>a$ y negativa para $x<a$, dentro de ese radio y del dominio. No se exige que ambos lados tengan entradas; sólo se afirma la implicación cuando las hay. El centro está fijo: no se han comparado salidas de dos entradas arbitrarias diferentes de $a$, por lo que no se ha probado monotonía en toda una vecindad.
+
+La positividad de las secantes se obtiene de un límite positivo con un presupuesto que conserva la mitad de su valor. Multiplicar por el incremento cambia el signo según el lado, sin exigir que ambos lados existan en el dominio. La conclusión compara sólo con $f(a)$. Para monotonía entre otros pares haría falta un argumento adicional que controle centros variables.
 
 </details>
 ## 18.4. Operaciones sobre incrementos
@@ -738,6 +816,8 @@ La segunda fórmula resulta del producto de $f|_E$ con $1/g$, ambos tipados $E\t
 
 El factor $f(x)$ en $f(x)q_g(x)+g(a)q_f(x)$; R3 da su límite $f(a)$.
 
+La identidad del producto mezcla cocientes centrados con un valor variable de la función. Los límites de los cocientes no bastan para ese factor. Derivabilidad de $f$ implica continuidad y proporciona $f(x)\to f(a)$. Sólo después se aplica la regla de producto de límites y se obtiene la fórmula solicitada.
+
 </details>
 
 #### Microcontrol 26
@@ -752,6 +832,8 @@ El factor $f(x)$ en $f(x)q_g(x)+g(a)q_f(x)$; R3 da su límite $f(a)$.
 <summary>Ver solución del microcontrol 26</summary>
 
 Un mismo dominio $D$ para ambos sumandos, con $a\in D\cap\operatorname{Acc}(D)$ y ambas derivadas existentes allí.
+
+Para sumar los cocientes se necesitan ambas evaluaciones en cada entrada considerada y el mismo denominador $x-a$. Si los dominios fueran distintos, habría que restringirlos a su intersección y comprobar acumulación allí. La mera acumulación de cada dominio separado no garantiza esa premisa común. El dominio declarado evita esa omisión.
 
 </details>
 
@@ -768,6 +850,8 @@ Un mismo dominio $D$ para ambos sumandos, con $a\in D\cap\operatorname{Acc}(D)$ 
 
 En una vecindad relativa, $|g(x)|>|g(a)|/2>0$, por lo que el recíproco está definido cerca.
 
+La triangular inversa da $|g(x)|\ge|g(a)|-|g(x)-g(a)|$. Pedir a continuidad error menor que la mitad de $|g(a)|$ entrega la separación requerida. Ese margen asegura definición del recíproco y control del denominador de su secante. La hipótesis $g(a)\ne0$ también protege la propia evaluación central.
+
 </details>
 
 #### Microcontrol 28
@@ -782,6 +866,8 @@ En una vecindad relativa, $|g(x)|>|g(a)|/2>0$, por lo que el recíproco está de
 <summary>Ver solución del microcontrol 28</summary>
 
 $E=\{x\in D:g(x)\ne0\}$, con numerador restringido expresamente a ese dominio.
+
+El cociente sólo tiene valor donde su denominador no se anula. Tanto el numerador como el denominador se consideran allí restringidos y conservan sus evaluaciones originales. En un centro con $g(a)\ne0$, el margen local protege una ventana completa relativa. No se asigna derivada del cociente en los ceros excluidos de su dominio.
 
 </details>
 
@@ -798,6 +884,8 @@ $E=\{x\in D:g(x)\ne0\}$, con numerador restringido expresamente a ese dominio.
 
 Contiene toda una vecindad relativa de $a$ en $D$ y $a$ ya era de acumulación en $D$.
 
+Para cualquier ventana deseada se toma el mínimo de su radio y el radio donde el denominador está protegido. La acumulación de $D$ proporciona dentro una entrada distinta de $a$. Esa entrada pertenece también a $E$ porque allí $g$ no se anula. Así se acredita acumulación del dominio efectivo con un testigo para cada ventana.
+
 </details>
 
 #### Microcontrol 30
@@ -812,6 +900,8 @@ Contiene toda una vecindad relativa de $a$ en $D$ y $a$ ya era de acumulación e
 <summary>Ver solución del microcontrol 30</summary>
 
 El negativo: $-(g\prime(a))/g(a)^2$, procedente de la diferencia de recíprocos.
+
+Al restar recíprocos, el numerador es $g(a)-g(x)$ y por ello introduce el signo menos respecto del cociente de $g$. El denominador es $g(x)g(a)$ y tiende a $g(a)^2>0$. La protección local permite aplicar la regla de límite del cociente. El signo proviene de una identidad, no de una regla memorizada sin dominio.
 
 </details>
 
@@ -828,6 +918,8 @@ El negativo: $-(g\prime(a))/g(a)^2$, procedente de la diferencia de recíprocos.
 
 Como la constante uno, con derivada cero; no se escribe una fórmula que contenga $0a^{-1}$ en $a=0$.
 
+La función potencia cero se define como uno también en el origen en esta convención. Su numerador incremental es cero y su derivada vale cero. La fórmula para potencias positivas se demuestra con exponentes no negativos. Escribir formalmente $0a^{-1}$ en el origen introduciría una expresión indefinida que no representa esa constante.
+
 </details>
 
 #### Microcontrol 32
@@ -842,6 +934,8 @@ Como la constante uno, con derivada cero; no se escribe una fórmula que conteng
 <summary>Ver solución del microcontrol 32</summary>
 
 No. Vale uno y deriva a cero sólo en $\mathbb R\setminus\{0\}$. Incluir cero requiere una extensión distinta.
+
+La cancelación es una igualdad válida sólo cuando el divisor no es cero. Allí la función original es constante y sus secantes valen cero. En cero no dispone de evaluación, que es una premisa de derivabilidad. Añadir un valor en el hueco define otro objeto cuyo comportamiento debe comprobarse como extensión.
 
 </details>
 
@@ -860,6 +954,8 @@ Deriva suma y producto desde las identidades de cocientes, e indica dónde se us
 
 En el dominio perforado común, $q_{\alpha f+\beta g}=\alpha q_f+\beta q_g$; límites finitos dan $\alpha f\prime(a)+\beta g\prime(a)$. Para producto, sumar y restar $f(a)g(x)$ da $q_{fg}=f(x)q_g+g(a)q_f$. La diferenciabilidad de $f$ da continuidad por R3, así el primer factor tiende a $f(a)$; los demás límites son los de los cocientes o la constante. El resultado es $f(a)g\prime(a)+g(a)f\prime(a)$. Sin ese paso no se habría justificado el límite del factor $f(x)$.
 
+Cada identidad se verifica antes de pasar al límite y utiliza el mismo dominio perforado. En el producto aparece un valor variable, que necesita el límite proporcionado por continuidad desde derivabilidad. Las demás piezas son constantes o secantes con límite ya supuesto. Esa identificación de factores explica por qué la fórmula no es sólo manipulación formal de símbolos.
+
 </details>
 
 #### Ejercicio 17. Dominio del recíproco
@@ -874,6 +970,8 @@ Prueba la regla del recíproco y justifica acumulación de su dominio efectivo.
 <summary>Ver solución del ejercicio 17</summary>
 
 Si $g(a)\ne0$, continuidad da una vecindad relativa donde $|g(x)|>|g(a)|/2$. Por tanto $E=\{g\ne0\}$ contiene esa vecindad y $a\in E$. Para cada radio, acumulación de $D$ da un testigo perforado dentro de su mínimo con el radio de la vecindad, así $a\in\operatorname{Acc}(E)$. En $E\setminus\{a\}$, $q_{1/g}=-q_g/[g(x)g(a)]$. El denominador tiende al no nulo $g(a)^2$; C13 prueba el límite $-g\prime(a)/g(a)^2$. El margen verifica tanto las divisiones como el dominio de la derivada.
+
+La no anulación central proporciona por continuidad una ventana donde todas las divisiones son válidas. Esa ventana relativa también conserva acumulación al reducir cualquier radio propuesto. En ella los cocientes restringidos mantienen su límite original. El signo negativo y el cuadrado del denominador provienen directamente de la diferencia de recíprocos.
 
 </details>
 
@@ -890,6 +988,8 @@ Deriva $f(x)=(x+1)/(x^2+1)$ en su dominio real e indica por qué no hay puntos e
 
 El denominador es $x^2+1\ge1$, así el dominio es toda $\mathbb R$. Numerador y denominador tienen derivadas uno y $2a$. La regla da $f\prime(a)=[(a^2+1)-2a(a+1)]/(a^2+1)^2=(1-2a-a^2)/(a^2+1)^2$. Cada centro real es de acumulación y el denominador no se anula allí. La identidad se obtiene dentro de R4 sin regla de la cadena ni valor medio.
 
+La desigualdad global del denominador acredita que ninguna entrada real queda excluida. La fórmula del cociente se aplica en un centro arbitrario y sus evaluaciones están definidas. Expandir el numerador reúne los términos en $1-2a-a^2$. La prueba conserva dominio y acumulación antes de presentar la expresión final de la derivada.
+
 </details>
 
 #### Ejercicio 19. Un hueco no desaparece al cancelar
@@ -905,6 +1005,8 @@ Una solución simplifica $(x^2-1)/(x-1)$ a $x+1$ y asigna derivada uno en $x=1$.
 
 La función original tiene dominio $\mathbb R\setminus\{1\}$; no tiene valor ni derivada en uno. En ese dominio coincide con $x+1$ y su derivada es uno en cada centro válido. La función $G:\mathbb R\to\mathbb R$, $G(x)=x+1$, es una extensión distinta que asigna $G(1)=2$ y sí tiene $G\prime(1)=1$. Cancelar permite igualdad de valores donde ambas expresiones están definidas, sin cambiar el dominio de la función original.
 
+La identidad simplificada no modifica el conjunto de entradas del cociente original. En los centros válidos sus cocientes coinciden con los de la afín y tienen derivada uno. Para preguntar por uno hay que definir una extensión con una evaluación allí. La función afín completa ofrece esa extensión y su derivada se acredita como una propiedad del nuevo objeto.
+
 </details>
 
 #### Ejercicio 20. Potencias enteras con base cero
@@ -919,6 +1021,8 @@ Prueba por inducción la derivada de $x^n$ para $n\ge1$, trata $n=0$ y deriva $x
 <summary>Ver solución del ejercicio 20</summary>
 
 La base $n=1$ es la identidad, con derivada uno. Si la fórmula vale para $n\ge1$, producto de $x^n$ e identidad da $na^{n-1}a+a^n=(n+1)a^n$, también en cero; no hay exponentes negativos en esa igualdad. La potencia cero es constante uno, con derivada cero por su cociente, sin usar $0a^{-1}$. En el dominio sin cero, recíproco de $x^n$ da $-na^{n-1}/a^{2n}=-na^{-n-1}$. Cada división está legitimada por $a\ne0$.
+
+La inducción para exponentes positivos se realiza con producto y nunca requiere invertir la base. El exponente cero se trata como una constante para evitar una expresión con potencia negativa en el origen. Las potencias negativas se declaran después en el dominio sin cero y usan recíprocos legitimados. Separar los casos conserva la fórmula correcta y las divisiones válidas.
 
 </details>
 ## 18.5. La cadena cuando el incremento interior se anula
@@ -959,6 +1063,8 @@ La única división en la identidad es por $x-a\ne0$. No se exige $L\ne0$ ni que
 
 La división por $g(x)-g(a)$ en la factorización habitual de secantes; el cociente de la composición sí está definido si $x\ne a$.
 
+Puede ocurrir que $x\ne a$ pero la función interior repita su salida central. El cociente compuesto sigue teniendo denominador $x-a\ne0$, mientras la secante exterior escrita con $g(x)-g(a)$ no está definida. La prueba debe incluir esas entradas. Rellenar el factor exterior en su centro evita excluirlas silenciosamente.
+
 </details>
 
 #### Microcontrol 34
@@ -973,6 +1079,8 @@ La división por $g(x)-g(a)$ en la factorización habitual de secantes; el cocie
 <summary>Ver solución del microcontrol 34</summary>
 
 $f\prime(b)$, como valor de una nueva función, sin efectuar la división exterior en el centro.
+
+El factor exterior es una función nueva que coincide con las secantes fuera de $b$ y declara un valor en $b$. Ese valor es el límite ya demostrado de las secantes exteriores. No se afirma que el cociente original tuviera evaluación central. La nueva definición permite usar composición continua cuando la interior alcanza exactamente $b$.
 
 </details>
 
@@ -989,6 +1097,8 @@ $f\prime(b)$, como valor de una nueva función, sin efectuar la división exteri
 
 Fuera del centro sus valores convergen a $f\prime(b)$ por derivabilidad, y en el centro su diferencia respecto de ese valor es cero.
 
+La derivada exterior controla todas las entradas perforadas de $E$ próximas a $b$. El valor añadido en el centro coincide con el destino de ese límite y tiene error cero. Ambos casos cumplen el mismo radio de continuidad relativa. Así $A$ transporta aproximaciones que pueden visitar el centro, no sólo las que lo evitan.
+
 </details>
 
 #### Microcontrol 36
@@ -1003,6 +1113,8 @@ Fuera del centro sus valores convergen a $f\prime(b)$ por derivabilidad, y en el
 <summary>Ver solución del microcontrol 36</summary>
 
 $q_{f\circ g,a}(x)=A(g(x))q_{g,a}(x)$; ambos incrementos de salida son cero cuando $g(x)=b$.
+
+Si $g(x)\ne b$, la identidad proviene de multiplicar secantes y cancelar un incremento no nulo. Si $g(x)=b$, el cociente compuesto y el interior valen cero, por lo que la igualdad también vale con $A(b)$ finito. Separar los casos acredita todas las entradas perforadas del dominio inicial. No se efectúa una división exterior en su centro.
 
 </details>
 
@@ -1019,6 +1131,8 @@ $q_{f\circ g,a}(x)=A(g(x))q_{g,a}(x)$; ambos incrementos de salida son cero cuan
 
 No. El producto de límites sigue siendo válido si $g\prime(a)=0$.
 
+La secante interior puede tender a cero y seguirá estando acotada cerca del centro porque su límite es finito. La secante exterior rellenada tiende a la derivada exterior por continuidad compuesta. El producto tiende entonces al producto de derivadas, que puede ser cero. No hay ninguna división por la derivada interior en esta regla.
+
 </details>
 
 #### Microcontrol 38
@@ -1033,6 +1147,8 @@ No. El producto de límites sigue siendo válido si $g\prime(a)=0$.
 <summary>Ver solución del microcontrol 38</summary>
 
 $g:D\to E$ y $f:E\to\mathbb R$, de modo que toda imagen interior es entrada admisible exterior.
+
+La inclusión de tipos asegura que cada evaluación intermedia pueda usarse como entrada de $f$. Así el dominio compuesto coincide con $D$ y su acumulación ya está declarada. Si sólo hay compatibilidad parcial, debe definirse la preimagen efectiva de $E$ y revisarla antes de aplicar la cadena. La proximidad numérica no sustituye pertenencia.
 
 </details>
 
@@ -1049,6 +1165,8 @@ $g:D\to E$ y $f:E\to\mathbb R$, de modo que toda imagen interior es entrada admi
 
 $a\in T\cap\operatorname{Acc}(T)$. La acumulación del dominio original y del exterior no la garantiza.
 
+La función compuesta sólo se evalúa en las entradas que la interior envía al dominio exterior. Ese conjunto puede reducirse a un punto aislado aunque los dominios de ambos factores acumulen en sus respectivos centros. La definición de derivada debe aplicarse al dominio compuesto real. El ejemplo con cuadrado y semieje negativo muestra exactamente esa pérdida.
+
 </details>
 
 #### Microcontrol 40
@@ -1063,6 +1181,8 @@ $a\in T\cap\operatorname{Acc}(T)$. La acumulación del dominio original y del ex
 <summary>Ver solución del microcontrol 40</summary>
 
 No, es un singleton. Aun así la cadena funciona si la función exterior es derivable en su propio dominio acumulante.
+
+Las salidas de la interior pueden permanecer siempre en $b$ sin visitar otras entradas exteriores. La función $A$ está definida y es continua también en ese punto. La derivada exterior se ha establecido respecto de $E$, no de la imagen singleton de la interior. Así el cociente compuesto puede ser cero en todas las entradas perforadas y cumplir la cadena.
 
 </details>
 
@@ -1081,6 +1201,8 @@ Construye $A$ para una función exterior derivable en $b$ y prueba su continuida
 
 En $E\setminus\{b\}$ ponemos $A(y)=(f(y)-f(b))/(y-b)$ y en $b$ ponemos $A(b)=M=f\prime(b)$. Para cualquier tolerancia, los radios de derivabilidad controlan $|A(y)-M|$ fuera del centro; en él esa diferencia es cero, así $A$ es continua en $b$. Multiplicar la definición da $f(y)-f(b)=A(y)(y-b)$ para $y\ne b$, y en $b$ ambos lados valen cero. Es una nueva función con un valor declarado en el centro, no una división por cero.
 
+Rellenar el factor exterior conserva el límite de sus secantes y añade el caso central con error cero. La identidad de incrementos vale entonces para todas las entradas exteriores, incluso $b$. Se obtiene una función continua útil para componer, sin afirmar que el cociente perforado original estuviera definido en su centro. Esta construcción repara el caso de incremento interior nulo.
+
 </details>
 
 #### Ejercicio 22. Los dos presupuestos de la cadena
@@ -1095,6 +1217,8 @@ Prueba la cadena con una estimación de error que siga siendo válida cuando el 
 <summary>Ver solución del ejercicio 22</summary>
 
 Sea $L=g\prime(a)$, $M=f\prime(b)$ y $C=|L|+1$. La identidad de incrementos con $A$ da $q_{f\circ g}=A(g(x))q_g$ para todo $x\ne a$, incluidos los que satisfacen $g(x)=b$. Cerca del centro, $|q_g|<C$. Continuidad de $A$ en $b$ y de $g$ en $a$ entrega radio para error $|A(g(x))-M|<\varepsilon/(2C)$. Derivabilidad interior entrega otro para $|q_g-L|<\varepsilon/[2(|M|+1)]$. En el mínimo de estos radios y el de la cota, la diferencia respecto de $ML$ es a lo sumo $|A-M||q_g|+|M||q_g-L|<\varepsilon$. De este modo se prueba el límite sin dividir por $g(x)-b$.
+
+La barrera positiva $C=|L|+1$ controla el factor interior variable. El primer presupuesto se divide por esa barrera y el segundo por $|M|+1$, evitando problemas si alguna derivada vale cero. El mínimo reúne los tres controles en una misma ventana. Cuando la salida interior es exactamente $b$, la identidad sigue siendo válida y no introduce una secante exterior indefinida.
 
 </details>
 
@@ -1113,6 +1237,8 @@ El cociente interior es cero a la izquierda y $x$ a la derecha, por lo que su ma
 
 **Retorno visual.** Véase [C18-F04](analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca.html#fig-anm-c18-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La rama izquierda produce un incremento interior exactamente nulo en muchas entradas perforadas. La derecha produce un cociente que tiende a cero, compatible con la misma derivada interior. La exterior rellenada tiene valor dos en uno y multiplica correctamente el cero izquierdo. El cálculo compuesto directo confirma el límite sin descartar ninguna rama.
+
 </details>
 
 #### Ejercicio 24. Acumulación perdida en la composición
@@ -1128,6 +1254,8 @@ Sean $g(x)=x^2$ sobre $\mathbb R$ y $f(y)=y$ sobre $E=(-\infty,0]$. Halla el dom
 
 El dominio efectivo $T=\{x:x^2\le0\}$ es $\{0\}$. La interior tiene derivada cero en cero sobre la recta; la exterior tiene derivada relativa uno en cero sobre $E$, que acumula allí desde la izquierda. Pero cero no acumula en $T$, por lo que R1 no define una derivada de la composición sobre su dominio. Las acumulaciones de los dominios originales no garantizan la de la preimagen efectiva. La multiplicación formal de derivadas omite una hipótesis de la cadena.
 
+La condición de entrada exterior se traduce en $x^2\le0$, cuya única solución real es cero. Así la composición sí tiene valor central, pero su dominio no aporta entradas perforadas. Las derivadas de los factores en sus propios dominios no reparan esa falta de acumulación. La multiplicación formal omite una premisa de la definición aplicada al objeto compuesto.
+
 </details>
 
 #### Ejercicio 25. Interior constante y exterior no lineal
@@ -1142,6 +1270,8 @@ Sea $g:D\to E$ constante con valor $b$ y $a\in D\cap\operatorname{Acc}(D)$. Si $
 <summary>Ver solución del ejercicio 25</summary>
 
 La interior tiene cociente cero en todo su dominio perforado, así $g\prime(a)=0$. La composición es constante con valor $f(b)$ y también tiene derivada cero. La fórmula da $f\prime(b)\cdot0=0$. La imagen $g[D]=\{b\}$ no acumula en $b$; esto no impide usar la derivada exterior calculada en $E$, donde sí se exige acumulación. El factor $A$ puede evaluarse en $b$ y vale $f\prime(b)$ en todas las entradas compuestas.
+
+La derivada exterior pertenece al dominio $E$ donde fue probada, aunque la interior sólo alcance un valor de él. El factor rellenado se evalúa siempre en ese mismo centro. El cociente interior y el compuesto valen cero en toda entrada perforada. La imagen singleton de la interior no necesita acumular para este argumento compatible de cadena.
 
 </details>
 ## 18.6. Invertir la pendiente exige volver al punto
@@ -1182,6 +1312,8 @@ $|\sqrt y-a|=|y-a^2|/(\sqrt y+a)\le|y-a^2|/a$, de modo que la inversa es continu
 
 Inyectividad de $f$; cada $y\in f[D]$ tiene un único antecedente en $D$.
 
+Pertenecer a la imagen asegura existencia de antecedente y la inyectividad asegura unicidad. De ambos datos se define $h:f[D]\to D$. No se garantiza continuidad de ese retorno sólo por construirlo. Esa propiedad adicional tiene una función propia en la prueba de derivabilidad inversa.
+
 </details>
 
 #### Microcontrol 42
@@ -1196,6 +1328,8 @@ Inyectividad de $f$; cada $y\in f[D]$ tiene un único antecedente en $D$.
 <summary>Ver solución del microcontrol 42</summary>
 
 Continuidad de $f$ en el centro, acumulación de $D$ e inyectividad para que un antecedente distinto produzca un valor distinto.
+
+La continuidad lleva una entrada próxima a $a$ a una salida próxima a $b$. La acumulación proporciona una entrada distinta dentro del radio que responda al desafío de salida. La inyectividad hace que su salida también sea distinta de $b$. Así se obtiene un miembro perforado de la imagen en cada ventana sin seleccionar una sucesión.
 
 </details>
 
@@ -1212,6 +1346,8 @@ Continuidad de $f$ en el centro, acumulación de $D$ e inyectividad para que un 
 
 Continuidad de la inversa $h$ en $b$; no basta saber que la inversa existe.
 
+El cociente inverso se escribe usando $x=h(y)$ y el límite original sólo controla entradas cercanas a $a$. La continuidad de $h$ convierte una ventana en salidas en esa cercanía de antecedentes. La existencia de la inversa sólo identifica $x$, no acredita que esté próximo. El ejemplo de la inversa que salta separa ambas obligaciones.
+
 </details>
 
 #### Microcontrol 44
@@ -1226,6 +1362,8 @@ Continuidad de la inversa $h$ en $b$; no basta saber que la inversa existe.
 <summary>Ver solución del microcontrol 44</summary>
 
 Para separar las pendientes originales de cero y controlar sus recíprocos mediante el margen $|L|/2$.
+
+La tolerancia $|L|/2$ en el límite de secantes asegura $|q_f|>|L|/2>0$ cerca de $a$. Esto permite invertir y acotar el error del recíproco por el error original. Si $L=0$, no hay ese margen y la inversa puede tener cocientes sin límite real finito. La raíz en cero ejemplifica tal fallo.
 
 </details>
 
@@ -1242,6 +1380,8 @@ Para separar las pendientes originales de cero y controlar sus recíprocos media
 
 Porque $h(y)=a$ daría $y=f(h(y))=f(a)=b$, contradicción.
 
+La identidad $f(h(y))=y$ vale en todo el dominio de la inversa. Si el antecedente fuera $a$, obligaría a que la salida fuese $b$. Por contradicción, las entradas perforadas de la inversa se convierten en entradas perforadas para el cociente original. Esa evitación legitima la identidad de secantes recíprocas.
+
 </details>
 
 #### Microcontrol 46
@@ -1256,6 +1396,8 @@ Porque $h(y)=a$ daría $y=f(h(y))=f(a)=b$, contradicción.
 <summary>Ver solución del microcontrol 46</summary>
 
 $1/(2\sqrt b)$, aplicando la inversa del cuadrado en $a=\sqrt b>0$.
+
+Para $b>0$ su antecedente $a=\sqrt b$ es positivo y la pendiente del cuadrado $2a$ no es cero. La raíz es continua allí y la identidad de secantes recíprocas entrega $1/(2a)$. Sustituir $a$ por su expresión da la fórmula. El centro cero requiere otra pregunta porque allí falla la pendiente no nula.
 
 </details>
 
@@ -1272,6 +1414,8 @@ $1/(2\sqrt b)$, aplicando la inversa del cuadrado en $a=\sqrt b>0$.
 
 Eso aplicaría la cadena suponiendo ya la derivabilidad de $h$, precisamente lo que falta demostrar.
 
+La regla de la cadena tiene como premisa derivabilidad de sus dos factores en los centros correspondientes. Aplicarla con $h$ antes de demostrar esa premisa sólo despeja un valor hipotético, sin acreditar existencia. La identidad directa de secantes sí puede establecer un límite sin presuponer derivabilidad inversa. Esa es la reparación del argumento circular.
+
 </details>
 
 #### Microcontrol 48
@@ -1286,6 +1430,8 @@ Eso aplicaría la cadena suponiendo ya la derivabilidad de $h$, precisamente lo 
 <summary>Ver solución del microcontrol 48</summary>
 
 Su cociente relativo es $1/\sqrt y$, sin límite real finito. La pendiente del cuadrado que se invertiría vale cero.
+
+La raíz sí es continua y tiene centro acumulante en su dominio no negativo. Pero sus secantes desde cero superan cualquier barrera al tomar entradas positivas suficientemente pequeñas. Un límite real finito implicaría acotación local de esas secantes, contradicción. La regla de inversa no se aplica con pendiente original cero.
 
 </details>
 
@@ -1304,6 +1450,8 @@ En R6 explica por separado el papel de inyectividad, continuidad de la inversa y
 
 Inyectividad construye un único antecedente por valor de la imagen y hace que $x\ne a$ produzca $f(x)\ne b$. Continuidad de $h$ en $b$ convierte aproximación de salidas en aproximación de antecedentes a $a$. La condición $L\ne0$ separa las pendientes originales de cero para invertirlas. Para cada $\rho>0$, continuidad de $f$ en $a$ da un radio con error menor que $\rho$; acumulación de $D$ entrega una entrada distinta del centro dentro de él. Su imagen pertenece a $H$, es distinta de $b$ y está a distancia menor que $\rho$. Esto prueba acumulación de la imagen sin seleccionar una sucesión.
 
+La derivabilidad original aporta continuidad en $a$, necesaria para llevar entradas próximas a salidas próximas. La inyectividad protege la evitación del centro y construye la inversa. Su continuidad realiza el transporte contrario de proximidad, y la pendiente no nula protege la inversión de secantes. Nombrar cada función de las hipótesis evita confundir existencia de inversa con continuidad de ese retorno.
+
 </details>
 
 #### Ejercicio 27. Secantes recíprocas del cuadrado
@@ -1321,6 +1469,8 @@ La inyectividad del cuadrado en el dominio no negativo y C10 identifican la inve
 
 **Retorno visual.** Véase [C18-F05](analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca.html#fig-anm-c18-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La racionalización de la diferencia de raíces da una cota de continuidad porque $a>0$ mantiene el denominador al menos en $a$. El orden no negativo asegura inyectividad del cuadrado y una inversa legítima. Las secantes inversas son recíprocas de las originales, con denominadores no nulos. El límite original $2a$ permite finalmente invertir y obtener la derivada.
+
 </details>
 
 #### Ejercicio 28. Un centro de pendiente cero
@@ -1335,6 +1485,8 @@ Prueba que el cuadrado tiene derivada relativa cero en cero y que su inversa ra�
 <summary>Ver solución del ejercicio 28</summary>
 
 Para $x>0$, la pendiente del cuadrado centrada en cero es $x\to0$. La pendiente de la raíz sobre $[0,\infty)$ es $1/\sqrt y$ para $y>0$. Dadas cota $B>0$ y escala $r>0$, se elige $0<y<\min(r,1/(B+1)^2)$ y se obtiene cociente mayor que $B$. Si hubiera límite finito, sus cocientes estarían acotados por $|L|+1$ en algún radio, contradicción. La inversa existe y es continua, pero no se satisface la hipótesis de pendiente original no nula.
+
+El cuadrado tiene secantes relativas positivas que tienden a cero. Al invertirlas, las secantes de la raíz pueden superar cualquier número en cualquier ventana positiva. Un límite finito tendría una barrera local, por lo que ese crecimiento lo refuta. La existencia y continuidad de la inversa permanecen verdaderas; la premisa que falla es la pendiente original no nula.
 
 </details>
 
@@ -1351,6 +1503,8 @@ En $D=[0,1)\cup[2,3]$, sea $f(x)=x$ en la primera pieza y $x-1$ en la segunda. A
 
 Las imágenes son $[0,1)$ y $[1,2]$, disjuntas, y ambas ramas son inyectivas; la imagen total es $[0,2]$. En una bola de radio menor que uno centrada en dos sólo hay puntos de la segunda pieza y su cociente es uno, así $f\prime(2)=1$ relativamente a $D$. La inversa satisface $h(1)=2$, pero para $y_n=1-1/(n+2)$ se tiene $h(y_n)=y_n\to1$. Sus diferencias respecto de dos son mayores que uno mientras las entradas convergen a uno. No es continua allí y, por R3, no es derivable. Esto refuta que derivada original no nula e inyectividad hagan innecesaria continuidad de la inversa en dominios arbitrarios.
 
+El dominio separado permite aislar la segunda regla cerca de dos y acreditar una secante constante uno. En la imagen las dos piezas se juntan en uno y las salidas inferiores recuperan entradas de la primera pieza. Esas entradas no se aproximan a dos, pese a que las salidas se aproximan a uno. El ejemplo muestra por qué continuidad inversa es una premisa independiente en R6.
+
 </details>
 
 #### Ejercicio 30. Evitar una prueba circular
@@ -1365,6 +1519,8 @@ Una demostración deriva $f\circ h=\mathrm{id}$ y despeja $h\prime(b)$ sin haber
 <summary>Ver solución del ejercicio 30</summary>
 
 La cadena sólo se aplica si la derivada interior existe, así el despeje presupone la conclusión. Se toma directamente un $y\ne b$ de la imagen y $x=h(y)\ne a$. La identidad de inversa da $q_h(y)=1/q_f(x)$. Continuidad de $h$ asegura $x\to a$; derivada original no nula entrega margen $|q_f|>|L|/2$. Entonces $|q_h-1/L|\le2|q_f-L|/|L|^2$, que se hace menor que cualquier tolerancia con los radios de derivabilidad y continuidad. Así se obtiene existencia antes de usar una regla que la exigiría.
+
+La identidad $q_h=1/q_f$ se obtiene para entradas perforadas de la inversa sin presuponer que exista su límite. La continuidad de $h$ proporciona cercanía de antecedentes y la derivada original los controla. El margen de pendiente mantiene positivo el denominador de la estimación de error recíproco. Así se demuestra primero existencia de la derivada inversa y después su valor, evitando usar cadena circularmente.
 
 </details>
 ## 18.7. Una derivada es otra función
@@ -1405,6 +1561,8 @@ En los extremos, $\phi(\pm1)=\phi'(\pm1)=0$. Más explícitamente, si $e=c_n\pm 
 
 $\operatorname{Diff}(f)$: centros del dominio que son de acumulación y donde el límite de pendientes existe finito.
 
+Cada valor de $f\prime$ se asigna después de comprobar pertenencia del centro, acumulación y límite real finito de su cociente. El conjunto de centros que cumplen esas condiciones es su dominio propio. Puede ser todo el dominio original, un subconjunto pequeño o incluso vacío. La función derivada no hereda automáticamente todas las entradas de $f$.
+
 </details>
 
 #### Microcontrol 50
@@ -1419,6 +1577,8 @@ $\operatorname{Diff}(f)$: centros del dominio que son de acumulación y donde el
 <summary>Ver solución del microcontrol 50</summary>
 
 No. Puede preguntarse un límite si el punto acumula en su dominio, pero continuidad requiere un valor en el punto.
+
+La continuidad puntual compara otras evaluaciones con un valor central existente. Si ese valor falta, la pregunta no satisface la definición. Un límite perforado puede formularse en un punto exterior que acumule en el dominio de la derivada. Distinguir ambas preguntas evita rellenar un valor sin una extensión declarada.
 
 </details>
 
@@ -1435,6 +1595,8 @@ No. Puede preguntarse un límite si el punto acumula en su dominio, pero continu
 
 La suma de semianchos vecinos $5c_n^2/32$ es menor que la distancia entre centros $c_n/2$; los intervalos ordenados quedan separados.
 
+Cada centro siguiente vale la mitad del anterior y su semiancho la cuarta parte. La suma de los semianchos es menor que la distancia entre centros, dejando un hueco positivo entre vecinos. Ese orden de vecinos separa también intervalos no consecutivos. La comprobación utiliza las fórmulas para todo índice, no sólo los bultos dibujados.
+
 </details>
 
 #### Microcontrol 52
@@ -1449,6 +1611,8 @@ La suma de semianchos vecinos $5c_n^2/32$ es menor que la distancia entre centro
 <summary>Ver solución del microcontrol 52</summary>
 
 $0\le F(x)\le x^2/2$, por lo que el cociente centrado en cero tiene magnitud a lo sumo $|x|/2$.
+
+La función vale cero en el centro y fuera de los intervalos, y dentro de ellos la barrera cuadrática controla todas sus salidas. Para $x\ne0$, dividir por $|x|$ da error de pendiente a lo sumo $|x|/2$. Un radio, por ejemplo $2\eta$, lo hace menor que $\eta$. La prueba en cero es directa y no usa un pegado infinito.
 
 </details>
 
@@ -1465,6 +1629,8 @@ $0\le F(x)\le x^2/2$, por lo que el cociente centrado en cero tiene magnitud a l
 
 La rama interior se anula con orden al menos dos y da cociente tendente a cero; la rama exterior es cero.
 
+En el extremo el valor de la rama interior también es cero. La cota cuadrática respecto de la distancia a ese extremo, dividida por el incremento no nulo, da una cantidad tendente a cero. Del lado exterior la función permanece cero. Así ambas partes cumplen el mismo límite de secantes, dentro de una vecindad que aísla ese bulto.
+
 </details>
 
 #### Microcontrol 54
@@ -1479,6 +1645,8 @@ La rama interior se anula con orden al menos dos y da cociente tendente a cero; 
 <summary>Ver solución del microcontrol 54</summary>
 
 $x_n=c_n+w_n/2\to0$, con $F\prime(x_n)=-3/2$ para todo $n$, frente a $F\prime(0)=0$.
+
+Los puntos elegidos están en el interior de sus propios bultos y tienden a cero porque centros y semianchos tienden a cero. La fórmula derivada interior produce el valor fijo menos tres medios en todos ellos. Su distancia a $F\prime(0)=0$ no baja de uno. La dirección directa de continuidad para esta ruta explícita refuta continuidad de la derivada.
 
 </details>
 
@@ -1495,6 +1663,8 @@ $x_n=c_n+w_n/2\to0$, con $F\prime(x_n)=-3/2$ para todo $n$, frente a $F\prime(0)
 
 Fuera de cero sólo hay finitos intervalos en una vecindad; cero se trata directamente con la cota global del cociente.
 
+En un punto positivo no nulo, la cola de intervalos acaba por quedar por debajo de una vecindad del punto. Sólo quedan finitos bultos que revisar allí y se puede usar su separación. En un punto negativo una vecindad no toca ninguno. En cero esas exclusiones no funcionan, por lo que se usa la cota global de secantes.
+
 </details>
 
 #### Microcontrol 56
@@ -1509,6 +1679,8 @@ Fuera de cero sólo hay finitos intervalos en una vecindad; cero se trata direct
 <summary>Ver solución del microcontrol 56</summary>
 
 No. La prueba usa fórmulas y cotas para todo $n$; la imagen representa una muestra finita.
+
+Una figura finita puede orientar sobre amplitudes y anchuras, pero no comprueba todos los índices de la cola. Las desigualdades simbólicas justifican separación, finitud local y aproximación a cero para la familia completa. La ruta de puntos con derivada fija también está definida para todos los naturales. Esa evidencia algebraica sostiene el caso infinito.
 
 </details>
 
@@ -1527,6 +1699,8 @@ Escribe el dominio y los valores de la función derivada de $|x|$ sobre $\mathbb
 
 En cada centro positivo hay una vecindad donde la función es la identidad y la derivada vale uno; en cada centro negativo hay una donde es menos la identidad y vale menos uno. En cero no existe derivada. Así su dominio es $\mathbb R\setminus\{0\}$. Cero acumula en ese dominio, por lo que puede preguntarse su límite; no existe por los dos valores laterales diferentes. No se habla de continuidad allí porque falta un valor de la función derivada en cero.
 
+En los centros no nulos basta una ventana que no cruce cero para identificar la función con una regla afín. En cero las secantes originales impiden definir la derivada. La nueva función derivada tiene por ello dominio perforado y allí dos valores constantes. Un límite en cero es una pregunta válida de acumulación, mientras continuidad allí necesitaría una evaluación que falta.
+
 </details>
 
 #### Ejercicio 32. Separar la familia de bultos
@@ -1541,6 +1715,8 @@ Para $c_n=2^{-(n+1)}$, $w_n=c_n^2/8$, prueba positividad y disjunción de $I_n$.
 <summary>Ver solución del ejercicio 32</summary>
 
 Como $c_n\le1/2$, $w_n<c_n/2$, por lo que el intervalo es positivo y queda en $[c_n/2,3c_n/2]$. La distancia entre centros vecinos es $c_n/2$ y la suma de semianchos $w_n+w_{n+1}=5c_n^2/32<c_n/2$. Los intervalos quedan ordenados y separados, lo que implica disjunción de cualquier par. Si el punto $x>0$ está fijado, los centros de la cola y sus extremos quedan por debajo de $x/2$ desde algún índice, dejando sólo finitos intervalos posibles en una bola pequeña. Si $x<0$, una bola dentro de la semirrecta negativa no toca ninguno. Sólo en cero se acumula la familia.
+
+La escala geométrica de centros hace que los semianchos disminuyan más rápido que su separación. La desigualdad entre vecinos establece un orden con huecos y separa todos los intervalos. Para finitud local basta eliminar una cola completa por debajo de un punto positivo fijado. El origen se distingue porque cualquier vecindad suya sigue encontrando intervalos de esa cola.
 
 </details>
 
@@ -1559,6 +1735,8 @@ En cada intervalo, $0\le F\le w_n=c_n^2/8\le x^2/2$ porque $x\ge c_n/2$; fuera d
 
 **Retorno visual.** Véase [C18-F06](analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca.html#fig-anm-c18-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La cota cuadrática de valores resuelve el origen sin presuponer reglas de pegado infinito. En cada punto no nulo la finitud local reduce el análisis a una zona exterior, un interior o un extremo de bulto. Los extremos usan su propia cota de resto y los interiores las reglas ya probadas. La ruta con derivada menos tres medios refuta continuidad de la derivada mediante una precisión fija.
+
 </details>
 
 #### Ejercicio 34. La forma del extremo
@@ -1574,6 +1752,8 @@ Prueba la cota $|\phi(u)|\le4|u-1|^2$ cerca del extremo derecho en $[-1,1]$, y s
 
 En $[-1,1]$, $(1-u^2)^2=(1-u)^2(1+u)^2\le4(u-1)^2$ y también $\le4(u+1)^2$. Si $e=c_n+w_n$, entonces $u-1=(x-e)/w_n$, de donde $|F(x)|\le4|x-e|^2/w_n$. Como $F(e)=0$, el cociente centrado en $e$ tiene magnitud a lo sumo $4|x-e|/w_n$ en la rama interior y cero fuera. El radio $\eta w_n/4$, reducido para aislar el bulto, da error menor que $\eta$. El extremo izquierdo se trata con $u+1$ y el mismo presupuesto.
 
+El factor que no se anula en el extremo tiene magnitud a lo sumo dos en $[-1,1]$. Elevarlo al cuadrado proporciona la constante cuatro, mientras el otro factor conserva la distancia cuadrática al extremo. El cambio de coordenadas introduce $w_n$ y transforma esa cota en un control de secante lineal en $|x-e|$. El radio se reduce además para excluir otros bultos.
+
 </details>
 
 #### Ejercicio 35. Pendiente puntual y función derivada
@@ -1588,6 +1768,8 @@ Compara el dominio de la derivada de la función racional/irracional de R3 con e
 <summary>Ver solución del ejercicio 35</summary>
 
 La primera es derivable en cero y discontinua en todo otro punto; por R3 no es derivable fuera de cero. Su dominio de derivada es exactamente $\{0\}$ y la función derivada allí vale cero. La familia de bultos es derivable en toda la recta, pero su derivada es discontinua en cero. Así fallan dos inferencias distintas: derivabilidad en un centro no garantiza derivabilidad en una vecindad, y derivabilidad en toda una vecindad no garantiza continuidad de la función derivada. La derivada sobre un singleton es continua relativamente a él, aunque ese hecho no la extienda al entorno.
+
+La primera función sólo admite derivada en cero porque en todos los otros puntos falla continuidad. Su derivada en dominio singleton es continua relativamente, pero no ofrece valores vecinos. La segunda admite derivada en todo el dominio real y aun así su función derivada falla continuidad en cero. Estos ejemplos refutan dos implicaciones diferentes y deben leerse con sus dominios propios.
 
 </details>
 ## 18.8. Certificar una aproximación local
@@ -1629,6 +1811,8 @@ se anula en todos los puntos de $S$, pero $p_c'(0)=c$. Cada denominador es no nu
 
 Una cota demostrada $|r(a+h)|\le Bh^2$ en una vecindad especificada, adicional a la mera existencia de la derivada.
 
+La derivada garantiza un error pequeño comparado con $|h|$, pero no una tasa específica más rápida. Para certificar una cota cuadrática hay que demostrar la desigualdad y nombrar la vecindad donde vale. Con esos datos se pueden calcular radios de error de valor y de pendiente. No se introduce Taylor como justificación de una cota aún no probada.
+
 </details>
 
 #### Microcontrol 58
@@ -1643,6 +1827,8 @@ Una cota demostrada $|r(a+h)|\le Bh^2$ en una vecindad especificada, adicional a
 <summary>Ver solución del microcontrol 58</summary>
 
 $1+h/2=201/200$; el error absoluto está acotado por $1/20000$.
+
+El modelo afín tiene valor central uno y pendiente media. Al sustituir el incremento $1/100$ se obtiene exactamente $1+1/200=201/200$. La cota cuadrática con constante media da $h^2/2=1/20000$. Se trata de un certificado de error absoluto para una entrada dentro de la vecindad declarada.
 
 </details>
 
@@ -1659,6 +1845,8 @@ $1+h/2=201/200$; el error absoluto está acotado por $1/20000$.
 
 Por encima: el resto exacto es $-h^2/[2(\sqrt{1+h}+1)^2]\le0$.
 
+El denominador de la identidad es positivo y el numerador negativo o cero. Por ello el valor exacto menos el modelo es no positivo. El modelo sobreestima la raíz y coincide con ella cuando $h=0$. Este signo se obtiene por racionalización, sin usar concavidad ni un teorema posterior.
+
 </details>
 
 #### Microcontrol 60
@@ -1673,6 +1861,8 @@ Por encima: el resto exacto es $-h^2/[2(\sqrt{1+h}+1)^2]\le0$.
 <summary>Ver solución del microcontrol 60</summary>
 
 El segundo es el resto dividido por $h\ne0$; con cota $Bh^2$, sus magnitudes son a lo sumo $Bh^2$ y $B|h|$, respectivamente.
+
+El error de valor es la diferencia entre evaluación exacta y modelo afín. El error de secante divide esa diferencia por el incremento perforado. En magnitudes, la cota cuadrática se transforma en una lineal al dividir por $|h|$. En el centro el error de valor es cero, pero no se define una secante allí.
 
 </details>
 
@@ -1689,6 +1879,8 @@ El segundo es el resto dividido por $h\ne0$; con cota $Bh^2$, sus magnitudes son
 
 No. $|x|\sqrt{|x|}$ tiene derivada cero en cero, pero el cociente de su resto por $x^2$ es $1/\sqrt{|x|}$ y no está acotado.
 
+El cociente centrado tiene magnitud $\sqrt{|x|}$ y tiende a cero, acreditando derivada nula. La razón del resto respecto de $x^2$ crece sin cota, así ninguna constante cuadrática sirve en toda una ventana. La misma función cumple el modelo de primer orden y refuta esa tasa adicional. Esto precisa el alcance de la notación de resto pequeño.
+
 </details>
 
 #### Microcontrol 62
@@ -1703,6 +1895,8 @@ No. $|x|\sqrt{|x|}$ tiene derivada cero en cero, pero el cociente de su resto po
 <summary>Ver solución del microcontrol 62</summary>
 
 Uno. Si las únicas muestras son el centro, la construcción da simplemente $p_c(x)=cx$.
+
+Cuando no hay nodos distintos de cero, no hay factores de anulación adicionales. La convención de producto vacío permite usar la misma fórmula y deja una función afín. Su valor en cero es cero y su cociente perforado es exactamente $c$. No se inventan divisores correspondientes a una lista vacía.
 
 </details>
 
@@ -1719,6 +1913,8 @@ Uno. Si las únicas muestras son el centro, la construcción da simplemente $p_c
 
 $c$, pues su cociente es $c$ por un producto finito de factores que tienden a uno.
 
+Para cada nodo no nulo, el factor $(x-s)/(-s)$ tiende a uno al acercarse a cero. El producto es finito y su límite también es uno. Multiplicar por $c$ da el límite de la secante, mientras cada factor anula el polinomio en su nodo. Así una misma tabla finita de ceros permite cualquier pendiente prescrita.
+
 </details>
 
 #### Microcontrol 64
@@ -1733,6 +1929,8 @@ $c$, pues su cociente es $c$ por un producto finito de factores que tienden a un
 <summary>Ver solución del microcontrol 64</summary>
 
 Todas las entradas admisibles dentro de un radio para cada tolerancia, no sólo los puntos muestreados.
+
+Un certificado proporciona para cada precisión un radio que controla todas las secantes admitidas dentro de él. Una tabla sólo acredita valores en puntos particulares y puede omitir entradas mucho más próximas. Los polinomios construidos con pendientes arbitrarias mantienen la misma tabla. Por eso las muestras no determinan por sí solas una derivada.
 
 </details>
 
@@ -1753,6 +1951,8 @@ Con $s=\sqrt{1+h}\ge0$, $s-1=h/(s+1)$. Entonces $s-1-h/2=h(1-s)/[2(s+1)]=-h^2/[2
 
 **Retorno visual.** Véase [C18-F07](analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca.html#fig-anm-c18-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La condición $h>-1$ asegura definición real de la raíz y el denominador $s+1$ es siempre positivo. La racionalización obtiene una identidad de resto, no sólo un límite. Su signo acredita sobreestimación y su magnitud da una cota cuadrática en la vecindad indicada. La identidad incluye el incremento cero sin dividir por él.
+
 </details>
 
 #### Ejercicio 37. Un valor y dos tolerancias
@@ -1770,6 +1970,8 @@ El incremento es $h=1/100$ y R8 da $0\le201/200-\sqrt{101/100}\le h^2/2=1/20000$
 
 **Retorno visual.** Véase [C18-F07](analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca.html#fig-anm-c18-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+El incremento utilizado pertenece a la región donde se demostró la cota de resto. La aproximación y ambas cotas se expresan con fracciones exactas. Dividir el error de valor por $|h|=1/100$ lo amplifica cien veces para obtener el error de secante. La distinción explica por qué las dos tolerancias numéricas son distintas aunque procedan del mismo certificado.
+
 </details>
 
 #### Ejercicio 38. Tolerancias desde una cota dada
@@ -1784,6 +1986,8 @@ Si $|r(a+h)|\le Bh^2$ en $|h|<\rho$, da condiciones para error de valor menor qu
 <summary>Ver solución del ejercicio 38</summary>
 
 Si $B>0$, basta $|h|<\min(\rho,\sqrt{\varepsilon/B})$ para tener $Bh^2<\varepsilon$. Para el cociente con $h\ne0$, basta $|h|<\min(\rho,\eta/B)$, porque $|r/h|\le B|h|<\eta$. En $h=0$ el error del valor es cero; no se evalúa el cociente. Si $B=0$, el resto es cero en toda la vecindad admisible y cualquier incremento de ella da valor exacto, mientras todas sus secantes perforadas tienen pendiente exactamente $L$.
+
+Cada mínimo conserva la vecindad donde se sabe que la cota vale y añade la escala que responde al desafío. Para $B>0$ el error cuadrático se ajusta con una raíz y el normalizado con un radio lineal. El centro sólo participa en la primera pregunta y tiene resto cero. Cuando $B=0$, se trata directamente la igualdad de valores y secantes antes de introducir cualquier división por la barrera.
 
 </details>
 
@@ -1800,6 +2004,8 @@ Para $f(x)=|x|\sqrt{|x|}$, prueba derivada cero en cero y ausencia de una cota c
 
 El cociente tiene magnitud $\sqrt{|x|}$, de modo que $\delta=\eta^2$ prueba derivada cero. Si una cota $|f(x)|\le Bx^2$ con $B>0$ valiera en una vecindad perforada, dividir por $x^2$ daría $1/\sqrt{|x|}\le B$. Elegir allí $0<|x|<1/(B+1)^2$ lo contradice. Para $B=0$ cualquier entrada no nula ya contradice la cota. La derivada sólo exige resto de orden menor que lineal; no impone una tasa cuadrática. La expresión usa producto y raíz, sin regla general de potencias fraccionarias.
 
+El resto es todo el valor de la función porque el centro y la pendiente propuestos son cero. Su cociente normalizado tiende a cero y acredita el modelo de primer orden. Al compararlo con $x^2$, la razón crece sin cota y permite infringir cualquier barrera finita dentro de cualquier radio. La ausencia de tasa cuadrática no contradice la derivada ya demostrada.
+
 </details>
 
 #### Ejercicio 40. Muestras idénticas, pendientes arbitrarias
@@ -1814,6 +2020,8 @@ Dado $S\subseteq\mathbb R$ finito con $0\in S$ y un real $c$, construye un polin
 <summary>Ver solución del ejercicio 40</summary>
 
 Sea $p_c(x)=cx\prod_{s\in S\setminus\{0\}}(x-s)/(-s)$, con producto vacío igual a uno. Todos los denominadores son no nulos. En cero se anula por el factor $x$; en cada otro nodo se anula por su factor correspondiente. En $x\ne0$, el cociente centrado en cero es $c\prod_s(x-s)/(-s)$, que tiende a $c$ porque cada factor tiende a uno y sólo hay finitos. Por tanto $p_c\prime(0)=c$, incluso si $c=0$ o no hay otros nodos. La misma tabla de ceros es compatible con toda pendiente prescrita. Las muestras no determinan un control de todas las entradas cercanas y no sustituyen la condición de derivabilidad.
+
+Los factores se construyen sólo para nodos no nulos, por lo que todos sus divisores están definidos. Cada nodo tiene un factor de anulación y cero tiene el factor inicial $x$. El cociente central conserva un producto finito de factores con límite uno, haciendo posible cualquier pendiente $c$. La tabla fija valores, pero no controla todas las entradas perforadas próximas que exige el certificado de derivada.
 
 </details>
 
