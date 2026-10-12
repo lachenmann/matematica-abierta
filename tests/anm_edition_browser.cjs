@@ -18,6 +18,18 @@ const sample = new Set(['ANM-C00.md','ANM-C03_SOLUCIONES.md','ANM-C04_MICROCONTR
    const url=new URL(item.path.replace(/\.md$/,'.html'),base).href;
    const response=await page.goto(url,{waitUntil:'networkidle',timeout:120000});
    if(!response || response.status()!==200)throw Error('Missing page: '+url);
+   if(/^ANM-C\d{2}\.md$/.test(item.source)) {
+    const ds=page.locator('main details.anm-solution');
+    if(await ds.count()===0)throw Error('No integrated solutions: '+item.source);
+    for(const position of [0,(await ds.count())-1]){
+     const disclosure=ds.nth(position);
+     if(await disclosure.getAttribute('open')!==null)throw Error('Solution initially open');
+     await disclosure.locator('summary').click();
+     if(await disclosure.getAttribute('open')===null)throw Error('Solution did not open');
+     await disclosure.locator('summary').click();
+     if(await disclosure.getAttribute('open')!==null)throw Error('Solution did not close');
+    }
+   }
    const math=await page.locator('main .math').count();
    if(math){
     await page.waitForFunction(()=>!!window.MathJax?.startup?.promise,null,{timeout:90000});

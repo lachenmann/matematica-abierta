@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 29 — Series de funciones y series de potencias
-date-modified: '2026-10-11'
+date-modified: '2026-10-12'
 provenance:
   type: original
   sources:
@@ -26,7 +26,7 @@ provenance:
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 29](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html) · [Ejercicios](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-29)
 
 C11 permite controlar sumas numéricas;C27–C28 aportan uniformidad y operaciones. Ahora construiremos series funcionales, radios de potencias y certificados interiores. Las fronteras se examinan aparte. El puente hacia ACM conserva los mecanismos de magnitud sin adelantar teoremas complejos.
 
@@ -58,38 +58,206 @@ En todo $(-1,1)$ falta uniformidad: cada resto $x^{n+1}/(1-x)$ es no acotado cua
 
 ### Microcontroles
 
+#### Microcontrol 1
+
 []{#MA-MIC-ANM-01-029-001}
 
-1. ¿Qué objeto existe antes de definir la suma de una serie funcional?
+¿Qué objeto existe antes de definir la suma de una serie funcional?
+
+[]{#MA-MSOL-ANM-01-029-001}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 1</summary>
+
+Cada parcial finito $S_n=\sum_{j=0}^n u_j$, con dominio común $X$.
+
+</details>
+
+#### Microcontrol 2
 
 []{#MA-MIC-ANM-01-029-002}
 
-2. ¿Qué define el dominio $D$?
+¿Qué define el dominio $D$?
+
+[]{#MA-MSOL-ANM-01-029-002}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 2</summary>
+
+La existencia de un límite real finito de $S_n(x)$ en esa entrada.
+
+</details>
+
+#### Microcontrol 3
 
 []{#MA-MIC-ANM-01-029-003}
 
-3. ¿Desde qué índice empieza $R_n$?
+¿Desde qué índice empieza $R_n$?
+
+[]{#MA-MSOL-ANM-01-029-003}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 3</summary>
+
+Desde $n+1$, pues el parcial incluye el término de índice $n$.
+
+</details>
+
+#### Microcontrol 4
 
 []{#MA-MIC-ANM-01-029-004}
 
-4. ¿Cuál es el orden de cuantificadores uniforme?
+¿Cuál es el orden de cuantificadores uniforme?
+
+[]{#MA-MSOL-ANM-01-029-004}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 4</summary>
+
+$\forall\varepsilon>0\exists N\forall n\ge N\forall x\in Y$ para el error menor que $\varepsilon$.
+
+</details>
+
+#### Microcontrol 5
 
 []{#MA-MIC-ANM-01-029-005}
 
-5. ¿Cauchy uniforme requiere conocer primero la suma?
+¿Cauchy uniforme requiere conocer primero la suma?
+
+[]{#MA-MSOL-ANM-01-029-005}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 5</summary>
+
+No. Construye cada destino por completitud real y luego acredita un corte común.
+
+</details>
+
+#### Microcontrol 6
 
 []{#MA-MIC-ANM-01-029-006}
 
-6. ¿Qué implica uniformidad sobre los términos?
+¿Qué implica uniformidad sobre los términos?
+
+[]{#MA-MSOL-ANM-01-029-006}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 6</summary>
+
+Que tienden uniformemente a cero, comparando dos parciales consecutivos.
+
+</details>
+
+#### Microcontrol 7
 
 []{#MA-MIC-ANM-01-029-007}
 
-7. ¿Por qué un prefijo no acotado puede ser inocuo?
+¿Por qué un prefijo no acotado puede ser inocuo?
+
+[]{#MA-MSOL-ANM-01-029-007}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 7</summary>
+
+Porque se cancela en diferencias de parciales posteriores y en el resto frente al destino.
+
+</details>
+
+#### Microcontrol 8
 
 []{#MA-MIC-ANM-01-029-008}
 
-8. ¿La geométrica es uniforme en todo $(-1,1)$?
+¿La geométrica es uniforme en todo $(-1,1)$?
 
+[]{#MA-MSOL-ANM-01-029-008}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 8</summary>
+
+No. Cada resto es no acotado cerca de $1$, aunque haya uniformidad en ventanas cerradas interiores.
+
+</details>
+
+### Ejercicios de la sección 29.1
+
+[]{#ejercicios-29}
+
+#### Ejercicio 1. La geométrica en dos dominios
+
+[]{#MA-EX-ANM-01-029-001}
+
+Para $u_j(x)=x^j$, encuentre dominio, suma y una envolvente en $[-r,r]$, $0<r<1$. Decida uniformidad en $(-1,1)$.
+
+[]{#MA-SOL-ANM-01-029-001}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 1</summary>
+
+La identidad finita da $S_n=(1-x^{n+1})/(1-x)$ cuando $x\ne1$. Para $|x|<1$ su límite es $1/(1-x)$ y el resto $x^{n+1}/(1-x)$ tiene magnitud a lo sumo $r^{n+1}/(1-r)$ en la ventana. Si $|x|\ge1$, los términos no tienden a cero, así que el dominio es exactamente $(-1,1)$. Para cada $n$, el resto crece sin cota al aproximarse $x$ a $1$ desde la izquierda; no puede existir un corte uniforme en todo el dominio.
+
+**Retorno visual.** Véase [C29-F01](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 2. Un término necesario
+
+[]{#MA-EX-ANM-01-029-002}
+
+Pruebe que la convergencia uniforme de una serie implica que sus términos tienden uniformemente a cero. Refute la recíproca.
+
+[]{#MA-SOL-ANM-01-029-002}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 2</summary>
+
+Dado $\varepsilon>0$, escoja $N$ con $|S_n-S|<\varepsilon/2$ para $n\ge N$ y toda entrada. Si $j\ge N+1$, ambos $j,j-1$ superan el corte; la triangular da $|u_j|=|S_j-S_{j-1}|<\varepsilon$. La serie de funciones constantes $1/(j+1)$ tiene términos uniformemente nulos pero sumas parciales armónicas divergentes. El control de un término no controla bloques de longitud arbitraria.
+
+</details>
+
+#### Ejercicio 3. Cortes dependientes de la entrada
+
+[]{#MA-EX-ANM-01-029-003}
+
+Diagnostique: «para todo $x$ existe un corte geométrico, así que hay un corte para todo $(-1,1)$». Exhiba entradas que impiden un corte dado.
+
+[]{#MA-SOL-ANM-01-029-003}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 3</summary>
+
+Se ha intercambiado $\forall x\exists N_x$ por $\exists N\forall x$. Para un índice dado $n$, tome $x_n=1-1/(2(n+1))$. Por la desigualdad finita de Bernoulli, $x_n^{n+1}\ge1/2$. Por tanto el resto geométrico es al menos $(n+1)$; en particular no es menor que $1$. Cada columna converge, pero estas entradas cambiantes impiden cualquier corte común.
+
+</details>
+
+#### Ejercicio 4. Prefijo no acotado
+
+[]{#MA-EX-ANM-01-029-004}
+
+En $\mathbb R$ tome $u_0(x)=x^2$ y $u_j(x)=2^{-j}$ para $j\ge1$. Pruebe uniformidad y explique por qué no puede haber mayorante global finito para $u_0$.
+
+[]{#MA-SOL-ANM-01-029-004}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 4</summary>
+
+Para $n\ge0$, $S_n(x)=x^2+1-2^{-n}$ y $S=x^2+1$, de modo que el error es exactamente $2^{-n}$ en toda la recta. Sin embargo $x^2$ no está acotado globalmente y ningún $M_0$ finito lo domina. La cola uniforme no exige una barrera de valores para el prefijo común.
+
+</details>
+
+#### Ejercicio 5. Cauchy sin suma conocida
+
+[]{#MA-EX-ANM-01-029-005}
+
+Suponga $|\sum_{j=n+1}^m u_j(x)|\le\eta_n$ para todos $m>n$ y $x\in X$, con $\eta_n\to0$. Construya la suma y un certificado.
+
+[]{#MA-SOL-ANM-01-029-005}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 5</summary>
+
+Fijada cada entrada, la cota y la simetría de diferencias hacen Cauchy la sucesión $S_n(x)$; completitud real entrega $S(x)$. Para $n,x$ fijos, pasar $m$ al límite conserva $|S-S_n|\le\eta_n$. Dado $\varepsilon>0$, un corte con toda la cola de $\eta_n$ menor que $\varepsilon$ funciona para todas las entradas. La existencia del destino procede de Cauchy, y la uniformidad del mismo presupuesto.
+
+</details>
 ## 29.2. El criterio M y lo que no afirma
 
 []{#MA-SEC-ANM-01-029-002}
@@ -116,38 +284,204 @@ Si la comparación M sólo vale desde un índice fijo, se aplica al tramo final.
 
 ### Microcontroles
 
+#### Microcontrol 9
+
 []{#MA-MIC-ANM-01-029-009}
 
-1. ¿Qué debe dominar $M_j$?
+¿Qué debe dominar $M_j$?
+
+[]{#MA-MSOL-ANM-01-029-009}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 9</summary>
+
+$|u_j(x)|$ para todas las entradas del dominio elegido, con el mismo número $M_j\ge0$.
+
+</details>
+
+#### Microcontrol 10
 
 []{#MA-MIC-ANM-01-029-010}
 
-2. ¿Qué condición numérica falta si sólo se dan mayorantes?
+¿Qué condición numérica falta si sólo se dan mayorantes?
+
+[]{#MA-MSOL-ANM-01-029-010}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 10</summary>
+
+Que la serie $\sum M_j$ converja; tener cada mayorante finito no basta.
+
+</details>
+
+#### Microcontrol 11
 
 []{#MA-MIC-ANM-01-029-011}
 
-3. ¿Cómo se controla un bloque finito bajo M?
+¿Cómo se controla un bloque finito bajo M?
+
+[]{#MA-MSOL-ANM-01-029-011}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 11</summary>
+
+Por $|\sum_{j=n+1}^m u_j|\le\sum_{j=n+1}^m M_j$, una cola numérica común.
+
+</details>
+
+#### Microcontrol 12
 
 []{#MA-MIC-ANM-01-029-012}
 
-4. ¿Qué desigualdad queda al pasar al límite?
+¿Qué desigualdad queda al pasar al límite?
+
+[]{#MA-MSOL-ANM-01-029-012}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 12</summary>
+
+$|S-S_n|\le T_n$. Se conserva la desigualdad débil y se añade margen para tolerancia estricta.
+
+</details>
+
+#### Microcontrol 13
 
 []{#MA-MIC-ANM-01-029-013}
 
-5. ¿M controla la serie de magnitudes?
+¿M controla la serie de magnitudes?
+
+[]{#MA-MSOL-ANM-01-029-013}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 13</summary>
+
+Sí. Sus bloques positivos tienen los mismos mayorantes numéricos sumables.
+
+</details>
+
+#### Microcontrol 14
 
 []{#MA-MIC-ANM-01-029-014}
 
-6. ¿Es necesario M para uniformidad?
+¿Es necesario M para uniformidad?
+
+[]{#MA-MSOL-ANM-01-029-014}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 14</summary>
+
+No. Los términos con soportes puntuales disjuntos tienen cola uniforme $1/(n+2)$ y normas armónicas no sumables.
+
+</details>
+
+#### Microcontrol 15
 
 []{#MA-MIC-ANM-01-029-015}
 
-7. ¿Absoluta puntual implica uniforme?
+¿Absoluta puntual implica uniforme?
+
+[]{#MA-MSOL-ANM-01-029-015}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 15</summary>
+
+No. La geométrica en todo $(-1,1)$ es absoluta puntual y no uniforme.
+
+</details>
+
+#### Microcontrol 16
 
 []{#MA-MIC-ANM-01-029-016}
 
-8. Con $E_n\le2^{-n}$, ¿qué corte certifica error menor que $1/8$?
+Con $E_n\le2^{-n}$, ¿qué corte certifica error menor que $1/8$?
 
+[]{#MA-MSOL-ANM-01-029-016}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 16</summary>
+
+$n\ge4$. En $n=3$ la cota sólo es igual a la tolerancia.
+
+</details>
+
+### Ejercicios de la sección 29.2
+
+#### Ejercicio 6. Mayorante dyádico
+
+[]{#MA-EX-ANM-01-029-006}
+
+Si $|u_j(x)|\le3\,2^{-j}$, dé cota de suma y cola y el primer índice garantizado para error estrictamente menor que $3/8$.
+
+[]{#MA-SOL-ANM-01-029-006}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 6</summary>
+
+La suma del mayorante es $6$, así que $|S(x)|\le6$. La cola desde $n+1$ es $3\,2^{-n}$. La desigualdad $3\,2^{-n}<3/8$ equivale a $n>3$, luego el primer índice garantizado es $4$. En $n=3$ la cota iguala la tolerancia; no acredita una desigualdad estricta.
+
+</details>
+
+#### Ejercicio 7. La serie de magnitudes
+
+[]{#MA-EX-ANM-01-029-007}
+
+Pruebe directamente que las hipótesis M hacen uniforme $\sum|u_j|$ y acotan su destino por $\sum M_j$.
+
+[]{#MA-SOL-ANM-01-029-007}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 7</summary>
+
+Para parciales positivos $A_n(x)=\sum_{j=0}^n|u_j(x)|$, la diferencia $A_m-A_n$ es una cola positiva dominada por la cola del mayorante, común a todas las entradas. Cauchy uniforme produce $A(x)$ y el error a lo sumo $T_n$. Las desigualdades finitas $A_n\le\sum_{j=0}^n M_j$ pasan al límite y dan $A\le\sum M_j$. Ésta es una prueba sobre otra serie, no una identificación de $A$ con $|S|$.
+
+</details>
+
+#### Ejercicio 8. Uniformidad sin criterio M
+
+[]{#MA-EX-ANM-01-029-008}
+
+Use $u_j(x)=\mathbf1_{\{j\}}(x)/(j+1)$ en $X=\mathbb N_0$ para refutar que el criterio M sea necesario incluso para uniformidad de las magnitudes.
+
+[]{#MA-SOL-ANM-01-029-008}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 8</summary>
+
+En $x=k$ hay exactamente un término no nulo y la suma vale $1/(k+1)$. El resto es cero si $k\le n$ y $1/(k+1)$ si $k>n$; su máximo es $1/(n+2)$, alcanzado en $k=n+1$. Las magnitudes son las mismas funciones, así que su serie también es uniforme. Cualquier $M_j$ común debe dominar la entrada $x=j$ y satisface $M_j\ge1/(j+1)$; comparación con la armónica impide sumabilidad.
+
+**Retorno visual.** Véase [C29-F02](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 9. Cancelación uniforme
+
+[]{#MA-EX-ANM-01-029-009}
+
+Considere $u_j(x)=(-1)^j/(j+1)$ en cualquier conjunto no vacío $X$. Decida uniformidad, absoluta y posibilidad de M.
+
+[]{#MA-SOL-ANM-01-029-009}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 9</summary>
+
+Todos los parciales son constantes. C11 da un destino numérico y resto de magnitud a lo sumo $1/(n+2)$; la misma cota vale para todo $X$, luego hay uniformidad. Las magnitudes forman la armónica divergente en cada entrada. Por tanto no hay convergencia absoluta ni mayorante M sumable, pues éste tendría que dominar cada magnitud armónica.
+
+</details>
+
+#### Ejercicio 10. Cambio de parámetro
+
+[]{#MA-EX-ANM-01-029-010}
+
+En $Y=[0,1]$ sea $u_j(x)=x^j/3^j$. Encuentre una suma explícita y compare el resto exacto con M.
+
+[]{#MA-SOL-ANM-01-029-010}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 10</summary>
+
+Es geométrica de razón $x/3$, así que $S=1/(1-x/3)$ y $R_n=(x/3)^{n+1}/(1-x/3)$. M usa $M_j=3^{-j}$ y cola $3^{-n}/2$. Para $0\le x\le1$, el resto no negativo crece con $x$ porque crecen numerador y recíproco del denominador; en $x=1$ vale precisamente $3^{-n}/2$. Aquí el certificado M es la envolvente exacta, no sólo una cota suficiente.
+
+</details>
 ## 29.3. Operaciones sobre sumas infinitas
 
 []{#MA-SEC-ANM-01-029-003}
@@ -174,38 +508,204 @@ El ancla paga las constantes que las derivadas no ven. La prueba de C28 usa valo
 
 ### Microcontroles
 
+#### Microcontrol 17
+
 []{#MA-MIC-ANM-01-029-017}
 
-1. ¿Por qué son continuos los parciales si lo son los términos?
+¿Por qué son continuos los parciales si lo son los términos?
+
+[]{#MA-MSOL-ANM-01-029-017}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 17</summary>
+
+Por cierre de continuidad bajo sumas finitas; después C28 usa uniformidad para el destino.
+
+</details>
+
+#### Microcontrol 18
 
 []{#MA-MIC-ANM-01-029-018}
 
-2. ¿Cuál es el marco del intercambio de integral?
+¿Cuál es el marco del intercambio de integral?
+
+[]{#MA-MSOL-ANM-01-029-018}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 18</summary>
+
+Un intervalo cerrado fijo de longitud finita, términos integrables y convergencia uniforme de parciales.
+
+</details>
+
+#### Microcontrol 19
 
 []{#MA-MIC-ANM-01-029-019}
 
-3. ¿Qué debe probarse antes de integrar el destino?
+¿Qué debe probarse antes de integrar el destino?
+
+[]{#MA-MSOL-ANM-01-029-019}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 19</summary>
+
+Su integrabilidad. C28 la construye por Darboux a partir de las aproximaciones uniformes.
+
+</details>
+
+#### Microcontrol 20
 
 []{#MA-MIC-ANM-01-029-020}
 
-4. ¿Cuál es la cota de error integral?
+¿Cuál es la cota de error integral?
+
+[]{#MA-MSOL-ANM-01-029-020}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 20</summary>
+
+$(b-a)E_n$ en $[a,b]$; desde un ancla $c$, $|x-c|E_n$.
+
+</details>
+
+#### Microcontrol 21
 
 []{#MA-MIC-ANM-01-029-021}
 
-5. ¿Qué serie debe ser uniforme para derivar?
+¿Qué serie debe ser uniforme para derivar?
+
+[]{#MA-MSOL-ANM-01-029-021}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 21</summary>
+
+La serie de derivadas, además de convergencia numérica de los valores en una ancla.
+
+</details>
+
+#### Microcontrol 22
 
 []{#MA-MIC-ANM-01-029-022}
 
-6. ¿Por qué hace falta el ancla?
+¿Por qué hace falta el ancla?
+
+[]{#MA-MSOL-ANM-01-029-022}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 22</summary>
+
+Las derivadas no ven constantes; los niveles de los parciales pueden divergir aun con derivadas cero.
+
+</details>
+
+#### Microcontrol 23
 
 []{#MA-MIC-ANM-01-029-023}
 
-7. ¿Se exige continuidad de las derivadas en ese teorema?
+¿Se exige continuidad de las derivadas en ese teorema?
+
+[]{#MA-MSOL-ANM-01-029-023}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 23</summary>
+
+No. C28 utiliza valor medio e incrementos de filas derivables.
+
+</details>
+
+#### Microcontrol 24
 
 []{#MA-MIC-ANM-01-029-024}
 
-8. ¿Qué muestra el telescopio de raíces suavizadas?
+¿Qué muestra el telescopio de raíces suavizadas?
 
+[]{#MA-MSOL-ANM-01-029-024}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 24</summary>
+
+Una serie de términos suaves con suma uniforme $|x|$ que no es derivable en cero.
+
+</details>
+
+### Ejercicios de la sección 29.3
+
+#### Ejercicio 11. Integrales y orientación
+
+[]{#MA-EX-ANM-01-029-011}
+
+Si una serie integrable en $[-2,3]$ tiene $|R_n|\le2^{-n}$, acote error de su integral completa y de las acumuladas desde $1$.
+
+[]{#MA-SOL-ANM-01-029-011}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 11</summary>
+
+La uniformidad acredita integrabilidad del destino por C28. La longitud completa es $5$, por lo que el error de integral es a lo sumo $5\,2^{-n}$. Para cada $x$, la acumulada orientada desde $1$ tiene error a lo sumo $|x-1|2^{-n}$, y sobre todo el marco $|x-1|\le3$. El error uniforme de acumuladas es a lo sumo $3\,2^{-n}$, tanto a la izquierda como a la derecha del ancla.
+
+</details>
+
+#### Ejercicio 12. Serie derivada con ancla
+
+[]{#MA-EX-ANM-01-029-012}
+
+Formule y pruebe el teorema derivativo de §29.3 usando sólo el teorema de sucesiones de C28.
+
+[]{#MA-SOL-ANM-01-029-012}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 12</summary>
+
+Sean los términos continuos en $[a,b]$ y derivables en $(a,b)$; supongamos la serie de derivadas uniforme a $g$ y la serie de valores en $c\in[a,b]$ convergente a $\lambda$. Las sumas finitas $S_n$ son continuas y derivables, $S_n^{\prime}$ son los parciales de la serie derivada y $S_n(c)\to\lambda$. Cumplen exactamente C28: derivadas uniformes más ancla convergente. Allí se construye el límite uniforme $S$ de valores y se demuestra $S^{\prime}=g$ mediante incrementos. La identidad de series es esa conclusión, no una derivación formal previa.
+
+</details>
+
+#### Ejercicio 13. Telescopio suave con esquina
+
+[]{#MA-EX-ANM-01-029-013}
+
+Para $h_n(x)=\sqrt{x^2+1/(n+1)^2}$ forme la serie telescópica de §29.3. Pruebe uniformidad y la falla de derivación en cero.
+
+[]{#MA-SOL-ANM-01-029-013}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 13</summary>
+
+Los parciales telescópicos son $h_n$. Con $a=1/(n+1)$, $0\le\sqrt{x^2+a^2}-|x|=a^2/(\sqrt{x^2+a^2}+|x|)\le a$, con igualdad en cero. Por tanto el error uniforme es $a$. Cada fila es derivable y $h_n^{\prime}(0)=0$, pero el límite $|x|$ tiene cocientes $1$ desde la derecha y $-1$ desde la izquierda. Su derivada en cero no existe; el límite de derivadas en ese punto no permite intercambiarlas.
+
+**Retorno visual.** Véase [C29-F03](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 14. Constantes invisibles
+
+[]{#MA-EX-ANM-01-029-014}
+
+Dé una serie cuya serie de derivadas converja uniformemente, pero cuya serie de valores diverja. Identifique la hipótesis perdida.
+
+[]{#MA-SOL-ANM-01-029-014}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 14</summary>
+
+Tome $u_j(x)=1$ en $[0,1]$. Las derivadas son cero y su serie converge uniformemente a cero. Los parciales de valores son $n+1$, divergentes en toda entrada. Falta convergencia de la serie de valores en una ancla. Uniformidad de pendientes sólo controla diferencias espaciales; no controla el nivel absoluto de los parciales.
+
+</details>
+
+#### Ejercicio 15. Serie polinómica integrada
+
+[]{#MA-EX-ANM-01-029-015}
+
+En $[-1,1]$ tome $u_j(x)=2^{-j}x^2$. Calcule suma, derivada, integral desde cero y sus errores uniformes.
+
+[]{#MA-SOL-ANM-01-029-015}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 15</summary>
+
+Los coeficientes suman $2$, luego $S=2x^2$, $S_n=(2-2^{-n})x^2$. Las derivadas tienen mayorantes $2\,2^{-j}$ y el ancla cero es exacta, así que el intercambio es válido y $S^{\prime}=4x$. La integral es $2x^3/3$. Los errores uniformes de valores, derivadas y acumuladas son respectivamente $2^{-n}$, $2^{1-n}$ y $2^{-n}/3$, alcanzados en los extremos. La integración orientada da el signo correcto cuando $x<0$.
+
+</details>
 ## 29.4. Un punto de convergencia abre una región interior
 
 []{#MA-SEC-ANM-01-029-004}
@@ -230,38 +730,204 @@ Cuando $0<R<\infty$, el dominio es $(c-R,c+R)$ más ninguno, uno o ambos extremo
 
 ### Microcontroles
 
+#### Microcontrol 25
+
 []{#MA-MIC-ANM-01-029-025}
 
-1. ¿Cuánto vale una serie de potencias en su centro?
+¿Cuánto vale una serie de potencias en su centro?
+
+[]{#MA-MSOL-ANM-01-029-025}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 25</summary>
+
+$a_0$; el monomio de orden cero es la función constante $1$.
+
+</details>
+
+#### Microcontrol 26
 
 []{#MA-MIC-ANM-01-029-026}
 
-2. ¿Qué acotación proporciona convergencia en $t\ne c$?
+¿Qué acotación proporciona convergencia en $t\ne c$?
+
+[]{#MA-MSOL-ANM-01-029-026}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 26</summary>
+
+Los términos $a_j(t-c)^j$ tienden a cero y por ello tienen magnitudes acotadas por un $M$ común.
+
+</details>
+
+#### Microcontrol 27
 
 []{#MA-MIC-ANM-01-029-027}
 
-3. ¿Cuál es la razón del mayorante interior?
+¿Cuál es la razón del mayorante interior?
+
+[]{#MA-MSOL-ANM-01-029-027}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 27</summary>
+
+$\rho=r/|t-c|<1$ para el segmento de radio $r$.
+
+</details>
+
+#### Microcontrol 28
 
 []{#MA-MIC-ANM-01-029-028}
 
-4. ¿Cómo se define un radio finito?
+¿Cómo se define un radio finito?
+
+[]{#MA-MSOL-ANM-01-029-028}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 28</summary>
+
+Como el supremo de las distancias al centro de todas las entradas convergentes.
+
+</details>
+
+#### Microcontrol 29
 
 []{#MA-MIC-ANM-01-029-029}
 
-5. ¿Debe alcanzarse el supremo?
+¿Debe alcanzarse el supremo?
+
+[]{#MA-MSOL-ANM-01-029-029}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 29</summary>
+
+No. Para proteger un radio menor basta una distancia convergente mayor que él.
+
+</details>
+
+#### Microcontrol 30
 
 []{#MA-MIC-ANM-01-029-030}
 
-6. ¿Qué significa $R=0$?
+¿Qué significa $R=0$?
+
+[]{#MA-MSOL-ANM-01-029-030}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 30</summary>
+
+Que sólo converge en el centro, con suma $a_0$.
+
+</details>
+
+#### Microcontrol 31
 
 []{#MA-MIC-ANM-01-029-031}
 
-7. ¿Qué significa $R=\infty$?
+¿Qué significa $R=\infty$?
+
+[]{#MA-MSOL-ANM-01-029-031}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 31</summary>
+
+Convergencia en toda la recta y uniformidad en cada segmento acotado, sin prometer uniformidad global.
+
+</details>
+
+#### Microcontrol 32
 
 []{#MA-MIC-ANM-01-029-032}
 
-8. ¿El radio decide los dos extremos?
+¿El radio decide los dos extremos?
 
+[]{#MA-MSOL-ANM-01-029-032}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 32</summary>
+
+No. Se sustituyen por separado para estudiar sus dos series numéricas.
+
+</details>
+
+### Ejercicios de la sección 29.4
+
+#### Ejercicio 16. Convergencia en una entrada
+
+[]{#MA-EX-ANM-01-029-016}
+
+Una serie de centro $2$ converge en $t=-1$ y satisface $|a_j(-3)^j|\le5$. Dé una ventana protegida y cota de cola sobre $[0,4]$.
+
+[]{#MA-SOL-ANM-01-029-016}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 16</summary>
+
+La distancia convergente es $3$, mientras $[0,4]$ tiene radio $2$ respecto del centro. El lema interior usa $\rho=2/3$, da convergencia absoluta y uniforme, y cota $5(2/3)^{n+1}/(1-2/3)=15(2/3)^{n+1}$. También asegura toda distancia estrictamente menor que $3$, sin decidir $5$, el extremo opuesto a $-1$.
+
+**Retorno visual.** Véase [C29-F04](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 17. Supremo sin pertenencia
+
+[]{#MA-EX-ANM-01-029-017}
+
+Reconstruya el radio a partir de $H$ y pruebe interior y exterior. Evite afirmar convergencia en la distancia $R$.
+
+[]{#MA-SOL-ANM-01-029-017}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 17</summary>
+
+$H$ contiene cero. Si está acotado tiene supremo $R$; si no, se usa el caso infinito. Para cualquier $0<r<R$ existe una distancia convergente $d>r$, porque de otro modo $r$ sería cota superior de $H$. El lema interior controla el segmento de radio $r$. El centro converge por separado. Una entrada convergente de distancia mayor que un $R$ finito pondría en $H$ un número superior a su cota, contradicción. Ningún paso necesita una entrada convergente de distancia exactamente $R$.
+
+</details>
+
+#### Ejercicio 18. El término constante
+
+[]{#MA-EX-ANM-01-029-018}
+
+Diagnostique «una serie de potencias da cero en su centro». Dé un ejemplo y trate $R=0$.
+
+[]{#MA-SOL-ANM-01-029-018}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 18</summary>
+
+El monomio de orden cero es constante $1$; todos los monomios de orden positivo se anulan en el centro. La suma vale $a_0$. Por ejemplo $7+\sum_{j\ge1}j!(x-c)^j$ sólo converge en $c$, y allí vale $7$. El radio cero describe un dominio de un punto, no el valor de la función. La notación del monomio constante evita una evaluación ambigua de $0^0$.
+
+</details>
+
+#### Ejercicio 19. Compactos interiores
+
+[]{#MA-EX-ANM-01-029-019}
+
+Pruebe que una serie de radio $R>0$ converge uniformemente en todo compacto $K\subset(c-R,c+R)$.
+
+[]{#MA-SOL-ANM-01-029-019}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 19</summary>
+
+Si $K$ es vacío, la condición es vacua. En caso contrario, continuidad de $|x-c|$ y compacidad entregan un máximo $d$. Cada punto está en el intervalo abierto, luego el punto que alcanza el máximo tiene $d<R$. Escoja $r$ con $d<r<R$ (si $R=\infty$, cualquier $r>d$). El segmento cerrado de radio $r$ tiene uniformidad por el lema; restringir a $K$ conserva el corte común.
+
+</details>
+
+#### Ejercicio 20. Radios iguales no dan cortes iguales
+
+[]{#MA-EX-ANM-01-029-020}
+
+Compare la geométrica y $\sum x^j/(j+1)^2$, ambas de radio $1$, en todo $[-1,1]$ y en $(-1,1)$.
+
+[]{#MA-SOL-ANM-01-029-020}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 20</summary>
+
+La geométrica no converge en los extremos y no es uniforme en todo el abierto, pues su resto no está acotado cerca de $1$. Para la segunda, $|x^j|/(j+1)^2\le1/(j+1)^2$ en el cerrado, y la serie de estos mayorantes converge por comparación telescópica. M acredita uniformidad en todo el cerrado, y por restricción en el abierto. El radio describe la región interior de convergencia absoluta, pero no una tasa ni uniformidad hasta su frontera.
+
+</details>
 ## 29.5. Calcular el radio y examinar los extremos
 
 []{#MA-SEC-ANM-01-029-005}
@@ -293,38 +959,204 @@ Una serie con sólo finitos coeficientes no nulos tiene $R=\infty$. Para $a_j=j!
 
 ### Microcontroles
 
+#### Microcontrol 33
+
 []{#MA-MIC-ANM-01-029-033}
 
-1. ¿Qué demuestra un cociente límite menor que $1$?
+¿Qué demuestra un cociente límite menor que $1$?
+
+[]{#MA-MSOL-ANM-01-029-033}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 33</summary>
+
+Una barrera geométrica eventual con razón $q<1$, que garantiza convergencia absoluta.
+
+</details>
+
+#### Microcontrol 34
 
 []{#MA-MIC-ANM-01-029-034}
 
-2. ¿Qué demuestra un cociente límite mayor que $1$?
+¿Qué demuestra un cociente límite mayor que $1$?
+
+[]{#MA-MSOL-ANM-01-029-034}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 34</summary>
+
+Crecimiento eventual de magnitudes por un factor $q>1$, impidiendo que los términos tiendan a cero.
+
+</details>
+
+#### Microcontrol 35
 
 []{#MA-MIC-ANM-01-029-035}
 
-3. ¿Qué decide un cociente límite igual a $1$?
+¿Qué decide un cociente límite igual a $1$?
+
+[]{#MA-MSOL-ANM-01-029-035}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 35</summary>
+
+Nada por ese método; pueden ocurrir convergencia o divergencia.
+
+</details>
+
+#### Microcontrol 36
 
 []{#MA-MIC-ANM-01-029-036}
 
-4. ¿Cuándo se prohíbe el cociente consecutivo de coeficientes?
+¿Cuándo se prohíbe el cociente consecutivo de coeficientes?
+
+[]{#MA-MSOL-ANM-01-029-036}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 36</summary>
+
+Cuando los denominadores son cero infinitamente a menudo y no hay tramo final donde esté definido.
+
+</details>
+
+#### Microcontrol 37
 
 []{#MA-MIC-ANM-01-029-037}
 
-5. ¿Qué radio da un límite de raíces $L\in(0,\infty)$?
+¿Qué radio da un límite de raíces $L\in(0,\infty)$?
+
+[]{#MA-MSOL-ANM-01-029-037}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 37</summary>
+
+$R=1/L$, por aplicar barreras geométricas a los términos en cada entrada.
+
+</details>
+
+#### Microcontrol 38
 
 []{#MA-MIC-ANM-01-029-038}
 
-6. ¿Qué radios dan los casos $L=0$ y $L=\infty$?
+¿Qué radios dan los casos $L=0$ y $L=\infty$?
+
+[]{#MA-MSOL-ANM-01-029-038}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 38</summary>
+
+Radio infinito y radio cero respectivamente; son casos, no divisiones reales.
+
+</details>
+
+#### Microcontrol 39
 
 []{#MA-MIC-ANM-01-029-039}
 
-7. ¿Cómo convergen los extremos de $\sum_{j\ge1}x^j/j$?
+¿Cómo convergen los extremos de $\sum_{j\ge1}x^j/j$?
+
+[]{#MA-MSOL-ANM-01-029-039}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 39</summary>
+
+En $-1$ condicionalmente por alternada; en $1$ diverge la armónica.
+
+</details>
+
+#### Microcontrol 40
 
 []{#MA-MIC-ANM-01-029-040}
 
-8. ¿Por qué converge $\sum1/(j+1)^2$ sin otro criterio?
+¿Por qué converge $\sum1/(j+1)^2$ sin otro criterio?
 
+[]{#MA-MSOL-ANM-01-029-040}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 40</summary>
+
+Para $j\ge1$ se domina por $1/j-1/(j+1)$, una serie telescópica positiva sumable.
+
+</details>
+
+### Ejercicios de la sección 29.5
+
+#### Ejercicio 21. Cocientes acreditados
+
+[]{#MA-EX-ANM-01-029-021}
+
+Pruebe el criterio de cociente cuando el límite es menor que $1$ y cuando es mayor que $1$, indicando el tratamiento de un prefijo.
+
+[]{#MA-SOL-ANM-01-029-021}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 21</summary>
+
+Suponga términos eventualmente no nulos. Si el límite $L<1$, elija $L<q<1$ y un índice $N$ después del cual cada cociente es a lo sumo $q$. Inducción da $|b_{N+k}|\le|b_N|q^k$; la cola converge absolutamente por comparación geométrica y el prefijo finito no altera ello. Si $L>1$, elija $1<q<L$ y un índice con cocientes al menos $q$. Entonces $|b_{N+k}|\ge|b_N|q^k$, con $|b_N|>0$; los términos no tienden a cero. El límite $1$ no proporciona ninguna de esas dos barreras.
+
+</details>
+
+#### Ejercicio 22. Trasladar y escalar
+
+[]{#MA-EX-ANM-01-029-022}
+
+Encuentre radio y dominio de $\sum_{j=1}^{\infty}((x-2)/3)^j/j$.
+
+[]{#MA-SOL-ANM-01-029-022}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 22</summary>
+
+El centro es $2$ y los cocientes de coeficientes en potencias de $x-2$ tienden a $1/3$, así que el radio es $3$. En $x=-1$, la razón normalizada es $-1$ y la alternada converge condicionalmente. En $x=5$ es $1$ y diverge la armónica. El dominio es $[-1,5)$. Los puntos exteriores divergen por el radio; los interiores convergen absolutamente.
+
+</details>
+
+#### Ejercicio 23. Ceros en los coeficientes
+
+[]{#MA-EX-ANM-01-029-023}
+
+Encuentre el radio de $\sum_{k=0}^{\infty}(x-1)^{2k}$ y explique por qué no sirve el cociente consecutivo de sus coeficientes.
+
+[]{#MA-SOL-ANM-01-029-023}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 23</summary>
+
+La serie es geométrica de razón $(x-1)^2$. Converge si esa razón es menor que $1$, es decir $|x-1|<1$, y diverge en los extremos y fuera porque los términos no desaparecen. Tiene radio $1$ y dominio $(0,2)$. Los coeficientes de grados impares son cero, de modo que hay cocientes indefinidos infinitamente a menudo; no se cumplen las hipótesis del método consecutivo.
+
+</details>
+
+#### Ejercicio 24. Raíz sin cociente
+
+[]{#MA-EX-ANM-01-029-024}
+
+Para $a_j=2^j$ si $j$ es par y $a_j=2^j/(j+1)$ si es impar, calcule $R$. Justifique el límite de raíces usado.
+
+[]{#MA-SOL-ANM-01-029-024}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 24</summary>
+
+Para los índices pares la raíz es $2$; para los impares es $2/(j+1)^{1/j}$. Para probar $(j+1)^{1/j}\to1$, fijado $q>1$, la sucesión $(j+1)/q^j$ tiene cociente tendente a $1/q<1$, luego tiende a cero por barrera geométrica; eventualmente $j+1<q^j$. Así $1\le(j+1)^{1/j}<q$, y el límite es $1$. Las raíces de $a_j$ tienden a $2$, así que $R=1/2$. Los cocientes consecutivos alternan entre valores tendentes a cero e infinito, por lo que ese método no decide.
+
+</details>
+
+#### Ejercicio 25. Todos los extremos
+
+[]{#MA-EX-ANM-01-029-025}
+
+Construya series de radio $2$ y centro $-3$ con cada uno de los cuatro posibles dominios de extremos.
+
+[]{#MA-SOL-ANM-01-029-025}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 25</summary>
+
+Use $z=(x+3)/2$. La geométrica en $z$ tiene dominio $(-5,-1)$. La serie $\sum_{j\ge1}z^j/j$ tiene dominio $[-5,-1)$, y $\sum_{j\ge1}(-1)^jz^j/j$ tiene $(-5,-1]$. La serie $\sum_{j\ge0}z^j/(j+1)^2$ tiene $[-5,-1]$. En todos los casos el radio es $2$ por los cocientes de los coeficientes escalados. Las evaluaciones $z=\pm1$ se justifican respectivamente por término no nulo, alternada, armónica y comparación positiva telescópica.
+
+**Retorno visual.** Véase [C29-F05](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
 ## 29.6. Derivar e integrar dentro del radio
 
 []{#MA-SEC-ANM-01-029-006}
@@ -359,38 +1191,204 @@ Cada orden tiene uniformidad en segmentos interiores. El orden $k$ se fija antes
 
 ### Microcontroles
 
+#### Microcontrol 41
+
 []{#MA-MIC-ANM-01-029-041}
 
-1. ¿Por qué se reservan dos radios $r<s<R$?
+¿Por qué se reservan dos radios $r<s<R$?
+
+[]{#MA-MSOL-ANM-01-029-041}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 41</summary>
+
+Para que el margen geométrico $r/s<1$ absorba los factores de índice de los términos derivados.
+
+</details>
+
+#### Microcontrol 42
 
 []{#MA-MIC-ANM-01-029-042}
 
-2. ¿Qué ancla tienen los parciales originales en $c$?
+¿Qué ancla tienen los parciales originales en $c$?
+
+[]{#MA-MSOL-ANM-01-029-042}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 42</summary>
+
+$S_n(c)=a_0$ exactamente para todo $n$.
+
+</details>
+
+#### Microcontrol 43
 
 []{#MA-MIC-ANM-01-029-043}
 
-3. ¿Cómo se justifica el mayorante derivado sin circularidad?
+¿Cómo se justifica el mayorante derivado sin circularidad?
+
+[]{#MA-MSOL-ANM-01-029-043}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 43</summary>
+
+Se deriva una identidad polinómica finita y se pasan límites numéricos ya controlados.
+
+</details>
+
+#### Microcontrol 44
 
 []{#MA-MIC-ANM-01-029-044}
 
-4. ¿Cuál es el radio de la serie derivada?
+¿Cuál es el radio de la serie derivada?
+
+[]{#MA-MSOL-ANM-01-029-044}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 44</summary>
+
+El mismo que el original, por convergencia interior y la comparación inversa de magnitudes.
+
+</details>
+
+#### Microcontrol 45
 
 []{#MA-MIC-ANM-01-029-045}
 
-5. ¿La integrada puede aumentar el radio?
+¿La integrada puede aumentar el radio?
+
+[]{#MA-MSOL-ANM-01-029-045}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 45</summary>
+
+No. Convergencia a una distancia $d$ da una barrera ponderada que fuerza convergencia original en cada radio menor.
+
+</details>
+
+#### Microcontrol 46
 
 []{#MA-MIC-ANM-01-029-046}
 
-6. ¿Dónde se permite la fórmula de derivación?
+¿Dónde se permite la fórmula de derivación?
+
+[]{#MA-MSOL-ANM-01-029-046}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 46</summary>
+
+Sólo en $|x-c|<R$, con una ventana interior alrededor del punto.
+
+</details>
+
+#### Microcontrol 47
 
 []{#MA-MIC-ANM-01-029-047}
 
-7. ¿Qué se fija antes del corte para derivadas iteradas?
+¿Qué se fija antes del corte para derivadas iteradas?
+
+[]{#MA-MSOL-ANM-01-029-047}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 47</summary>
+
+El orden finito $k$; no se promete control común de todos los órdenes.
+
+</details>
+
+#### Microcontrol 48
 
 []{#MA-MIC-ANM-01-029-048}
 
-8. ¿Qué vale $F^{(k)}(c)$?
+¿Qué vale $F^{(k)}(c)$?
 
+[]{#MA-MSOL-ANM-01-029-048}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 48</summary>
+
+$k!a_k$, pues todos los monomios restantes de grado positivo se anulan en el centro.
+
+</details>
+
+### Ejercicios de la sección 29.6
+
+#### Ejercicio 26. La cola derivada
+
+[]{#MA-EX-ANM-01-029-026}
+
+Deduzca $\sum_{j>n}j\rho^{j-1}$, $0<\rho<1$, sin derivar una serie infinita.
+
+[]{#MA-SOL-ANM-01-029-026}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 26</summary>
+
+Derive la identidad polinómica finita $\sum_{j=0}^n\rho^j=(1-\rho^{n+1})/(1-\rho)$. Resulta $\sum_{j=1}^n j\rho^{j-1}=[1-(n+1)\rho^n+n\rho^{n+1}]/(1-\rho)^2$. La comparación de cocientes hace $n\rho^n\to0$, así que la suma total es $1/(1-\rho)^2$. Restar el parcial da $\rho^n[(n+1)-n\rho]/(1-\rho)^2$. El orden lógico acredita el mayorante antes de intercambiar derivadas y límites.
+
+**Retorno visual.** Véase [C29-F06](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 27. Presupuesto derivativo concreto
+
+[]{#MA-EX-ANM-01-029-027}
+
+Si $|a_j|\le3\,2^{-j}$, acote en $[-1,1]$ el resto de la serie derivada y evalúe la cota en $n=4$.
+
+[]{#MA-SOL-ANM-01-029-027}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 27</summary>
+
+Los términos derivados están dominados por $3j\,2^{-j}$. La cola desde $j=n+1$ es $(3/2)\sum_{j>n}j(1/2)^{j-1}$. Con la fórmula anterior resulta $3(n+2)2^{-n}$. Para $n=4$ es $18/16=9/8$. Esta cota puede ser grande aunque el resto de valores sea $3\,2^{-n}$: el factor de índice consume parte del margen geométrico. El ancla constante y la sumabilidad derivada acreditan el intercambio en cualquier ventana estrictamente interior a radio $2$.
+
+</details>
+
+#### Ejercicio 28. Una frontera no derivable por la serie
+
+[]{#MA-EX-ANM-01-029-028}
+
+Para $F(x)=\sum_{j\ge1}x^j/j$, explique por qué la convergencia en $-1$ no autoriza la fórmula de serie derivada allí.
+
+[]{#MA-SOL-ANM-01-029-028}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 28</summary>
+
+La serie de valores converge condicionalmente en $-1$ por C11. Dentro del radio su derivada es $\sum_{j\ge1}x^{j-1}=1/(1-x)$. En $x=-1$ los términos de esa serie derivada alternan entre $1$ y $-1$ y no tienden a cero; diverge. El teorema de potencias declara sólo entradas estrictamente interiores. Incluso si la función interior admitiera una extensión derivable al borde, no sería lícito igualar esa derivada con una serie divergente.
+
+</details>
+
+#### Ejercicio 29. Integral y radio
+
+[]{#MA-EX-ANM-01-029-029}
+
+Pruebe que dividir los coeficientes por $j+1$ e incrementar el grado no aumenta el radio de una serie de radio positivo.
+
+[]{#MA-SOL-ANM-01-029-029}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 29</summary>
+
+La integrada ya converge en el interior por comparación y el teorema de integración. Si converge en una distancia $d>0$, existe $B$ con $|a_j|d^{j+1}/(j+1)\le B$. Para $0<r<d$, $|a_j|r^j\le(B/d)(j+1)(r/d)^j$, cuya serie converge por cociente. El radio original es al menos todos esos $r$. Si el radio de la integrada fuese mayor, escoger una distancia convergente y luego un $r$ entre el radio original y esa distancia contradiría lo anterior. La misma prueba cubre un supuesto radio integrado infinito frente a uno original finito.
+
+</details>
+
+#### Ejercicio 30. Orden finito y ancla
+
+[]{#MA-EX-ANM-01-029-030}
+
+Obtenga $F^{(3)}$ y $a_3$ para una serie de centro $c$ y radio positivo. Precise la región válida.
+
+[]{#MA-SOL-ANM-01-029-030}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 30</summary>
+
+Iterar tres veces el teorema derivativo, con igualdad de radios en cada paso, da $F^{(3)}(x)=\sum_{j\ge3}j(j-1)(j-2)a_j(x-c)^{j-3}$ en $|x-c|<R$. En el centro sólo sobrevive $j=3$, luego $F^{(3)}(c)=6a_3$ y $a_3=F^{(3)}(c)/6$. Cada derivación usa uniformidad en una ventana interior y el ancla de su serie. No se hace una afirmación en la frontera ni para órdenes que cambien con el corte.
+
+</details>
 ## 29.7. Coeficientes, funciones y certificados
 
 []{#MA-SEC-ANM-01-029-007}
@@ -419,38 +1417,204 @@ Si dos series del mismo centro representan la misma función en una vecindad de 
 
 ### Microcontroles
 
+#### Microcontrol 49
+
 []{#MA-MIC-ANM-01-029-049}
 
-1. ¿Por qué $E$ se deriva en toda la recta?
+¿Por qué $E$ se deriva en toda la recta?
+
+[]{#MA-MSOL-ANM-01-029-049}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 49</summary>
+
+Tiene radio infinito y alrededor de cada entrada hay un segmento interior acotado con el control requerido.
+
+</details>
+
+#### Microcontrol 50
 
 []{#MA-MIC-ANM-01-029-050}
 
-2. ¿Qué reindexación da $E^{\prime}=E$?
+¿Qué reindexación da $E^{\prime}=E$?
+
+[]{#MA-MSOL-ANM-01-029-050}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 50</summary>
+
+$j/j!=1/(j-1)!$ para $j\ge1$, seguido del índice $k=j-1$.
+
+</details>
+
+#### Microcontrol 51
 
 []{#MA-MIC-ANM-01-029-051}
 
-3. ¿Cómo se acredita $E(x)E(-x)=1$?
+¿Cómo se acredita $E(x)E(-x)=1$?
+
+[]{#MA-MSOL-ANM-01-029-051}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 51</summary>
+
+El producto tiene derivada cero y valor $1$ en cero; valor medio lo hace constante en cada segmento.
+
+</details>
+
+#### Microcontrol 52
 
 []{#MA-MIC-ANM-01-029-052}
 
-4. ¿Por qué $E$ es positiva?
+¿Por qué $E$ es positiva?
+
+[]{#MA-MSOL-ANM-01-029-052}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 52</summary>
+
+No tiene ceros por el producto recíproco, es continua y vale $1$ en cero; valor intermedio excluye valores negativos.
+
+</details>
+
+#### Microcontrol 53
 
 []{#MA-MIC-ANM-01-029-053}
 
-5. ¿Qué barrera usa la cola factorial después del grado $n$?
+¿Qué barrera usa la cola factorial después del grado $n$?
+
+[]{#MA-MSOL-ANM-01-029-053}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 53</summary>
+
+Primer término $r^{n+1}/(n+1)!$ y cociente máximo $r/(n+2)<1$.
+
+</details>
+
+#### Microcontrol 54
 
 []{#MA-MIC-ANM-01-029-054}
 
-6. ¿Qué cota da grado cuatro en $[-1,1]$?
+¿Qué cota da grado cuatro en $[-1,1]$?
+
+[]{#MA-MSOL-ANM-01-029-054}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 54</summary>
+
+$1/100$, estrictamente menor que $1/50$.
+
+</details>
+
+#### Microcontrol 55
 
 []{#MA-MIC-ANM-01-029-055}
 
-7. ¿La unicidad de coeficientes construye una serie para toda función suave?
+¿La unicidad de coeficientes construye una serie para toda función suave?
+
+[]{#MA-MSOL-ANM-01-029-055}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 55</summary>
+
+No. Compara representaciones convergentes ya existentes en una vecindad del mismo centro.
+
+</details>
+
+#### Microcontrol 56
 
 []{#MA-MIC-ANM-01-029-056}
 
-8. ¿Qué identifica la integral geométrica sin nombrar logaritmos?
+¿Qué identifica la integral geométrica sin nombrar logaritmos?
 
+[]{#MA-MSOL-ANM-01-029-056}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 56</summary>
+
+$L(x)=\int_0^x(1-t)^{-1}\,dt=\sum_{j\ge1}x^j/j$ sólo en el intervalo abierto interior.
+
+</details>
+
+### Ejercicios de la sección 29.7
+
+#### Ejercicio 31. Certificado factorial
+
+[]{#MA-EX-ANM-01-029-031}
+
+Calcule la cota factorial para $E$ en $[-1,1]$ con $n=4$ y compruebe tolerancia estricta $1/50$.
+
+[]{#MA-SOL-ANM-01-029-031}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 31</summary>
+
+El primer término omitido tiene magnitud a lo sumo $1/5!=1/120$. Desde allí los cocientes son a lo sumo $1/6$, de modo que la cola está dominada por $(1/120)/(1-1/6)=1/100$. Puesto que $1/100<1/50$, el mismo parcial de grado cuatro satisface la tolerancia en todas las entradas de la ventana. No se usa una aproximación decimal de la suma.
+
+**Retorno visual.** Véase [C29-F07](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 32. Ecuación y positividad
+
+[]{#MA-EX-ANM-01-029-032}
+
+Pruebe $E^{\prime}=E$, $E(x)E(-x)=1$ y $E(x)>0$ usando las operaciones ya acreditadas.
+
+[]{#MA-SOL-ANM-01-029-032}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 32</summary>
+
+Radio infinito y derivación término a término dan $E^{\prime}=\sum_{j\ge1}x^{j-1}/(j-1)!=E$, por reindexación finita y límite. Producto y cadena dan derivada cero a $E(x)E(-x)$; valor medio sobre el segmento entre cero y cualquier $x$ lo identifica con el valor inicial $1$. Por tanto $E$ no se anula. Es continua y vale $1$ en cero; si tomara un valor negativo, valor intermedio en el segmento correspondiente produciría un cero, contradicción. Luego siempre es positiva.
+
+</details>
+
+#### Ejercicio 33. Unicidad de coeficientes
+
+[]{#MA-EX-ANM-01-029-033}
+
+Dos series del mismo centro representan la misma función cerca del centro y tienen radios positivos. Pruebe que sus coeficientes coinciden.
+
+[]{#MA-SOL-ANM-01-029-033}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 33</summary>
+
+Para cada entero fijo $k$, la derivación iterada acreditada entrega en el centro $k!a_k$ para la primera representación y $k!b_k$ para la segunda. Las funciones coinciden en una vecindad abierta, luego por definición de derivadas y su iteración sus derivadas de orden $k$ allí coinciden. Como $k!\ne0$, $a_k=b_k$. El argumento requiere representaciones convergentes previamente existentes; no construye una representación para cualquier función suave.
+
+</details>
+
+#### Ejercicio 34. Integral geométrica
+
+[]{#MA-EX-ANM-01-029-034}
+
+Defina $L(x)=\int_0^x(1-t)^{-1}\,dt$ en $(-1,1)$. Encuentre su serie y su derivada sin nombrar un logaritmo.
+
+[]{#MA-SOL-ANM-01-029-034}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 34</summary>
+
+Cada segmento que une cero con $x$ está estrictamente dentro de $(-1,1)$ y la geométrica converge uniformemente allí. Integración término a término da $L(x)=\sum_{j\ge0}x^{j+1}/(j+1)=\sum_{j\ge1}x^j/j$. El integrando es continuo, así que el TFC de C24 da $L^{\prime}(x)=1/(1-x)$ en el interior y $L(0)=0$. Las cotas de error son longitud por resto geométrico. El resultado no asigna valores al integral en la singularidad $1$.
+
+</details>
+
+#### Ejercicio 35. Ley de adición y unicidad concreta
+
+[]{#MA-EX-ANM-01-029-035}
+
+Pruebe la ley de adición de $E$ y la unicidad de $y^{\prime}=y$, $y(0)=1$, en un intervalo que contiene cero.
+
+[]{#MA-SOL-ANM-01-029-035}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 35</summary>
+
+Para $a$ fijo, la derivada de $E(a+t)E(-t)$ es cero por $E^{\prime}=E$, producto y cadena; valor medio lo hace constante igual a $E(a)$. Multiplicar por $E(t)$, usando el producto recíproco, da $E(a+t)=E(a)E(t)$. Para otra solución $y$, la misma regla da derivada cero a $y(t)E(-t)$. En cada segmento desde cero dentro del intervalo el valor medio la hace igual a $1$, por la condición inicial. Multiplicar por $E(t)$ entrega $y(t)=E(t)$. Es una prueba para esta ecuación, no la invocación de una teoría general.
+
+</details>
 ## 29.8. Productos y el puente hacia análisis complejo
 
 []{#MA-SEC-ANM-01-029-008}
@@ -477,38 +1641,205 @@ Si las series de magnitudes convergen uniformemente en una ventana y sus totales
 
 ### Microcontroles
 
+#### Microcontrol 57
+
 []{#MA-MIC-ANM-01-029-057}
 
-1. ¿Cómo se define el coeficiente del producto de Cauchy?
+¿Cómo se define el coeficiente del producto de Cauchy?
+
+[]{#MA-MSOL-ANM-01-029-057}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 57</summary>
+
+$\gamma_n=\sum_{j=0}^n\alpha_j\beta_{n-j}$, una suma finita.
+
+</details>
+
+#### Microcontrol 58
 
 []{#MA-MIC-ANM-01-029-058}
 
-2. ¿Qué pares recoge el parcial de grado $N$?
+¿Qué pares recoge el parcial de grado $N$?
+
+[]{#MA-MSOL-ANM-01-029-058}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 58</summary>
+
+El triángulo de índices no negativos $j+k\le N$.
+
+</details>
+
+#### Microcontrol 59
 
 []{#MA-MIC-ANM-01-029-059}
 
-3. ¿Por qué sirve $h=\lfloor N/2\rfloor$?
+¿Por qué sirve $h=\lfloor N/2\rfloor$?
+
+[]{#MA-MSOL-ANM-01-029-059}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 59</summary>
+
+Si $j+k>N$, al menos uno de los índices excede $h$; de otro modo su suma sería a lo sumo $N$.
+
+</details>
+
+#### Microcontrol 60
 
 []{#MA-MIC-ANM-01-029-060}
 
-4. ¿Cuál es la cota de resto del producto?
+¿Cuál es la cota de resto del producto?
+
+[]{#MA-MSOL-ANM-01-029-060}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 60</summary>
+
+$B_*T_\alpha(h)+A_*T_\beta(h)$ para series numéricas absolutamente convergentes.
+
+</details>
+
+#### Microcontrol 61
 
 []{#MA-MIC-ANM-01-029-061}
 
-5. ¿Qué límite se toma primero en la prueba?
+¿Qué límite se toma primero en la prueba?
+
+[]{#MA-MSOL-ANM-01-029-061}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 61</summary>
+
+El del cuadrado $m\to\infty$ con triángulo $N$ fijo; después se hace $N\to\infty$.
+
+</details>
+
+#### Microcontrol 62
 
 []{#MA-MIC-ANM-01-029-062}
 
-6. ¿El radio del producto debe ser igual al mínimo?
+¿El radio del producto debe ser igual al mínimo?
+
+[]{#MA-MSOL-ANM-01-029-062}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 62</summary>
+
+No. Es al menos el mínimo y puede crecer por cancelación de coeficientes.
+
+</details>
+
+#### Microcontrol 63
 
 []{#MA-MIC-ANM-01-029-063}
 
-7. ¿Qué protegen los mayorantes comunes en una ventana?
+¿Qué protegen los mayorantes comunes en una ventana?
+
+[]{#MA-MSOL-ANM-01-029-063}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 63</summary>
+
+Uniformidad de las colas y barreras comunes para que los factores no amplifiquen los errores.
+
+</details>
+
+#### Microcontrol 64
 
 []{#MA-MIC-ANM-01-029-064}
 
-8. ¿Qué cambia al anticipar el plano complejo?
+¿Qué cambia al anticipar el plano complejo?
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 29](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html) · [Ejercicios](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-microcontroles.html)
+[]{#MA-MSOL-ANM-01-029-064}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 64</summary>
+
+Las regiones radiales serán discos. Aquí no se ha demostrado diferenciabilidad compleja ni comportamiento general de la frontera.
+
+</details>
+
+### Ejercicios de la sección 29.8
+
+#### Ejercicio 36. Triángulo de coeficientes
+
+[]{#MA-EX-ANM-01-029-036}
+
+Encuentre los coeficientes del producto de dos geométricas centradas en cero e identifique la función resultante dentro de radio $1$.
+
+[]{#MA-SOL-ANM-01-029-036}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 36</summary>
+
+Cada coeficiente es $d_n=\sum_{j=0}^n1=n+1$. La absoluta interior y el producto de Cauchy probado entregan $\sum_{n\ge0}(n+1)x^n=(1-x)^{-2}$ para $|x|<1$. Sus cocientes de coeficientes tienden a $1$, luego su radio es $1$. En ambos extremos los términos tienen magnitudes $n+1$, así que diverge allí. La cuenta finita de pares del triángulo explica el factor $n+1$.
+
+**Retorno visual.** Véase [C29-F08](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 37. Colas del producto
+
+[]{#MA-EX-ANM-01-029-037}
+
+Pruebe la cota triangular del producto numérico y explique el orden de sus dos límites.
+
+[]{#MA-SOL-ANM-01-029-037}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 37</summary>
+
+En el cuadrado de índice $m\ge N$, el triángulo de suma de índices a lo sumo $N$ está incluido. Para cualquier par excluido, al menos un índice excede $h=\lfloor N/2\rfloor$. La suma finita de magnitudes excluidas está entonces dominada por $B_*T_\alpha(h)+A_*T_\beta(h)$; contar dos veces algunos pares sólo aumenta la cota. Con $N$ fijo, pasar $m$ al límite hace converger el producto de parciales a $AB$. La cota pasa con desigualdad débil. Después $N\to\infty$ hace desaparecer las colas y demuestra que los parciales triangulares tienden a $AB$.
+
+</details>
+
+#### Ejercicio 38. El radio del producto puede crecer
+
+[]{#MA-EX-ANM-01-029-038}
+
+Use la geométrica y $1-x$ para refutar que el radio del producto sea siempre exactamente el mínimo de los radios.
+
+[]{#MA-SOL-ANM-01-029-038}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 38</summary>
+
+La geométrica tiene coeficientes $a_n=1$ y radio $1$. El polinomio $1-x$ tiene $b_0=1$, $b_1=-1$, los demás cero y radio infinito. Los coeficientes del producto son $d_0=1$ y, para $n\ge1$, $d_n=a_n-a_{n-1}=0$. Su serie es constante y tiene radio infinito, mayor que el mínimo $1$. La igualdad entre el producto de las funciones originales y esa serie se acredita en $(-1,1)$; la geométrica original sigue divergente fuera.
+
+</details>
+
+#### Ejercicio 39. Uniformidad del producto funcional
+
+[]{#MA-EX-ANM-01-029-039}
+
+Si dos series de magnitudes son uniformes en $Y$ con totales acotados por $A_*,B_*$, demuestre uniformidad de su producto de Cauchy.
+
+[]{#MA-SOL-ANM-01-029-039}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 39</summary>
+
+En cada entrada son absolutamente convergentes y el producto numérico identifica el destino. Las colas de magnitudes tienen envolventes comunes $t_\alpha(h),t_\beta(h)\to0$ por la uniformidad supuesta. La cota triangular vale simultáneamente: el resto del producto de Cauchy es a lo sumo $B_*t_\alpha(\lfloor N/2\rfloor)+A_*t_\beta(\lfloor N/2\rfloor)$. Este presupuesto tiende a cero con un corte independiente de la entrada. Las barreras comunes se usan para que los factores no amplifiquen arbitrariamente las colas.
+
+</details>
+
+#### Ejercicio 40. Un certificado reutilizable y su alcance
+
+[]{#MA-EX-ANM-01-029-040}
+
+Para el cuadrado de la geométrica en $[-1/2,1/2]$, obtenga una cota de cola de producto por triángulos y compárela con la cola exacta de coeficientes. Indique qué parte anticipa ACM.
+
+[]{#MA-SOL-ANM-01-029-040}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 40</summary>
+
+Cada serie de magnitudes está acotada por $2$, con cola desde $h+1$ a lo sumo $2^{-h}$. El método triangular da cota $4\,2^{-\lfloor N/2\rfloor}$. Por la identidad ponderada geométrica, la cola de coeficientes $(n+1)x^n$ tiene envolvente exacta en $x=1/2$: $\sum_{n>N}(n+1)2^{-n}=(N+3)2^{-N}$. La primera es suficiente y suele ser menos ajustada; ambas tienden a cero. El argumento usa magnitudes, triangular y regiones interiores, mecanismos que se trasladarán a discos complejos. No acredita por sí solo diferenciabilidad compleja ni valores en toda la frontera.
+
+</details>
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-29)
 
 [← Capítulo 28](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html) · [Capítulo 30 →](analisis-para-matematicos-capitulo-30-espacios-metricos.html)

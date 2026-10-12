@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 12 — Qué hace una función
-date-modified: '2026-10-11'
+date-modified: '2026-10-12'
 provenance:
   type: original
   sources:
@@ -26,7 +26,7 @@ provenance:
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 12](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html) · [Ejercicios](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-12)
 
 Una función transforma entradas en salidas y, al hacerlo, transporta conjuntos. Puede conservar información o perderla: fusionar puntos, omitir valores, invertir el orden y cambiar distancias. Queremos describir esas acciones sin confundir el objeto con su fórmula o con el dibujo de su gráfica.
 
@@ -77,38 +77,204 @@ La pregunta que acompañará al capítulo será: dado un conjunto de entradas, �
 
 ### Antes de seguir
 
+#### Microcontrol 1
+
 []{#MA-MIC-ANM-01-012-001}
 
-1. ¿Basta la fórmula $x^2$ para determinar una función?
+¿Basta la fórmula $x^2$ para determinar una función?
+
+[]{#MA-MSOL-ANM-01-012-001}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 1</summary>
+
+No. Deben declararse dominio, codominio y asignación. La fórmula puede definir funciones distintas al cambiar esos conjuntos.
+
+</details>
+
+#### Microcontrol 2
 
 []{#MA-MIC-ANM-01-012-002}
 
-2. ¿Qué diferencia hay entre $f$ y $f(2)$ si $f(x)=x^2$?
+¿Qué diferencia hay entre $f$ y $f(2)$ si $f(x)=x^2$?
+
+[]{#MA-MSOL-ANM-01-012-002}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 2</summary>
+
+$f$ es la función; si $2$ pertenece al dominio, $f(2)=4$ es un elemento del codominio.
+
+</details>
+
+#### Microcontrol 3
 
 []{#MA-MIC-ANM-01-012-003}
 
-3. ¿Incumple la definición de función que $f(-2)=f(2)$?
+¿Incumple la definición de función que $f(-2)=f(2)$?
+
+[]{#MA-MSOL-ANM-01-012-003}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 3</summary>
+
+No. Entradas distintas pueden compartir salida. Se exige una única salida para cada entrada.
+
+</details>
+
+#### Microcontrol 4
 
 []{#MA-MIC-ANM-01-012-004}
 
-4. ¿Qué conjunto contiene al grafo de $f:D\to E$?
+¿Qué conjunto contiene al grafo de $f:D\to E$?
+
+[]{#MA-MSOL-ANM-01-012-004}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 4</summary>
+
+$D\times E$, pues cada par del grafo tiene entrada en $D$ y salida en $E$.
+
+</details>
+
+#### Microcontrol 5
 
 []{#MA-MIC-ANM-01-012-005}
 
-5. ¿Son iguales dos funciones con el mismo grafo y codominios distintos bajo nuestra convención?
+¿Son iguales dos funciones con el mismo grafo y codominios distintos bajo nuestra convención?
+
+[]{#MA-MSOL-ANM-01-012-005}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 5</summary>
+
+No. El codominio forma parte del objeto tipado, aunque coincidan todos los pares.
+
+</details>
+
+#### Microcontrol 6
 
 []{#MA-MIC-ANM-01-012-006}
 
-6. ¿Tres evaluaciones iguales prueban igualdad de funciones en $\mathbb R$?
+¿Tres evaluaciones iguales prueban igualdad de funciones en $\mathbb R$?
+
+[]{#MA-MSOL-ANM-01-012-006}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 6</summary>
+
+No. Se necesita el mismo tipo e igualdad de valores para toda entrada del dominio; tres entradas no cubren $\mathbb R$.
+
+</details>
+
+#### Microcontrol 7
 
 []{#MA-MIC-ANM-01-012-007}
 
-7. ¿Puede evaluarse en cero $h:\mathbb R\setminus\{0\}\to\mathbb R$, $h(x)=1/x$?
+¿Puede evaluarse en cero $h:\mathbb R\setminus\{0\}\to\mathbb R$, $h(x)=1/x$?
+
+[]{#MA-MSOL-ANM-01-012-007}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 7</summary>
+
+No: cero no pertenece al dominio, por lo que $h(0)$ no es una evaluación definida.
+
+</details>
+
+#### Microcontrol 8
 
 []{#MA-MIC-ANM-01-012-008}
 
-8. ¿Incluye el grafo de $a_n=n^2$ el punto $(1/2,1/4)$?
+¿Incluye el grafo de $a_n=n^2$ el punto $(1/2,1/4)$?
 
+[]{#MA-MSOL-ANM-01-012-008}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 8</summary>
+
+No. $a:\mathbb N\to\mathbb R$ sólo admite índices naturales, con $\mathbb N=\{0,1,2,\ldots\}$; $1/2$ no es un índice.
+
+</details>
+
+### Ejercicios de la sección 12.1
+
+[]{#ejercicios-12}
+
+#### Ejercicio 1. La misma regla, tres objetos
+
+[]{#MA-EX-ANM-01-012-001}
+
+Compara $f:\mathbb R\to\mathbb R$, $g:[0,\infty)\to\mathbb R$ y $h:[0,\infty)\to[0,\infty)$, todas dadas por $x^2$. Determina cuáles tienen el mismo grafo y cuáles son iguales como funciones tipadas.
+
+[]{#MA-SOL-ANM-01-012-001}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 1</summary>
+
+$g$ y $h$ tienen exactamente los pares $(x,x^2)$ con $x\ge0$, luego el mismo grafo. Sus codominios difieren, así que no son iguales. El grafo de $f$ contiene además, por ejemplo, $(-1,1)$, ausente de los otros dos. $f$ tiene distinto dominio de $g$ y $h$. Ningún par es igual como función tipada. Todas coinciden numéricamente en entradas no negativas.
+
+</details>
+
+#### Ejercicio 2. Una relación que debe repararse
+
+[]{#MA-EX-ANM-01-012-002}
+
+En $D=\{0,1,2\}$ y $E=\{0,1,4\}$ considera $R=\{(0,0),(1,1),(1,4)\}$. Explica por qué no es el grafo de una función $D\to E$ y construye una reparación eliminando un par y añadiendo otro.
+
+[]{#MA-SOL-ANM-01-012-002}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 2</summary>
+
+La entrada $1$ tiene dos salidas distintas y la entrada $2$ no tiene ninguna. Eliminamos $(1,4)$ y añadimos $(2,4)$; quedan $(0,0),(1,1),(2,4)$. Cada entrada de $D$ tiene exactamente una salida en $E$. Sólo borrar o sólo añadir no repararía las dos deficiencias.
+
+</details>
+
+#### Ejercicio 3. Ninguna tabla finita decide toda la función
+
+[]{#MA-EX-ANM-01-012-003}
+
+Dado un conjunto finito $A\subseteq\mathbb R$, construye dos funciones distintas $\mathbb R\to\mathbb R$ que coincidan en todas las entradas de $A$.
+
+[]{#MA-SOL-ANM-01-012-003}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 3</summary>
+
+Como $A$ es finito y $\mathbb R$ infinito, existe $t\in\mathbb R\setminus A$. Por ejemplo, si $A$ no es vacío, $t=1+\sum_{a\in A}|a|$ supera todo elemento de $A$; si es vacío, sirve $t=0$. Definimos $f(x)=0$ para todo real y $g(x)=1$ cuando $x=t$, $g(x)=0$ en otro caso. Son funciones del mismo tipo, coinciden en $A$ y difieren en $t$. La tabla de $A$ no determina sus valores restantes.
+
+</details>
+
+#### Ejercicio 4. Identidad extensional
+
+[]{#MA-EX-ANM-01-012-004}
+
+Prueba que para $f,g:D\to E$ la igualdad $G_f=G_g$ equivale a $f(x)=g(x)$ para todo $x\in D$. Explica por qué deben fijarse los tipos para concluir $f=g$.
+
+[]{#MA-SOL-ANM-01-012-004}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 4</summary>
+
+Si los grafos coinciden, $(x,f(x))\in G_g$, de modo que por unicidad de salida de $g$, $f(x)=g(x)$. Recíprocamente, igualdad de valores para toda entrada hace que cada par $(x,f(x))$ sea $(x,g(x))$ y viceversa; los grafos coinciden. Con dominio y codominio iguales, la convención tipada da $f=g$. Con codominios diferentes, la igualdad de grafos no basta, como muestran las dos versiones del cuadrado.
+
+</details>
+
+#### Ejercicio 5. Discreto frente a real
+
+[]{#MA-EX-ANM-01-012-005}
+
+Para $a:\mathbb N\to\mathbb R$, $a_n=2n+1$, y $f:\mathbb R\to\mathbb R$, $f(x)=2x+1$, determina la relación entre sus grafos. ¿Es la sucesión una recta?
+
+[]{#MA-SOL-ANM-01-012-005}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 5</summary>
+
+$G_a=\{(n,2n+1):n\in\mathbb N\}\subsetneq G_f$. La inclusión es estricta porque $(1/2,2)$ pertenece a $G_f$ y no a $G_a$. La sucesión tiene dominio $\mathbb N=\{0,1,\ldots\}$ y grafo discreto; la recta representa el grafo de $f$. El mismo cálculo en entradas naturales no identifica los dos objetos.
+
+</details>
 ## 12.2. Imagen: transportar un conjunto
 
 []{#MA-SEC-ANM-01-012-002}
@@ -151,38 +317,202 @@ No inferimos $q[(-2,2)]=(q(-2),q(2))$. Los extremos ni siquiera pertenecen al co
 
 ### Antes de seguir
 
+#### Microcontrol 9
+
 []{#MA-MIC-ANM-01-012-009}
 
-1. ¿Qué testigo exige $y\in f[A]$?
+¿Qué testigo exige $y\in f[A]$?
+
+[]{#MA-MSOL-ANM-01-012-009}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 9</summary>
+
+Una entrada $x\in A$ con $f(x)=y$. Sin pertenencia a $A$, resolver la ecuación no basta.
+
+</details>
+
+#### Microcontrol 10
 
 []{#MA-MIC-ANM-01-012-010}
 
-2. ¿Son el mismo objeto $f(2)$ y $f[\{2\}]$?
+¿Son el mismo objeto $f(2)$ y $f[\{2\}]$?
+
+[]{#MA-MSOL-ANM-01-012-010}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 10</summary>
+
+No: el primero es un valor; el segundo es el conjunto unitario $\{f(2)\}$, si $2$ está en el dominio.
+
+</details>
+
+#### Microcontrol 11
 
 []{#MA-MIC-ANM-01-012-011}
 
-3. Para $q(x)=x^2$, ¿cuál es $q[\{-2,2\}]$?
+Para $q(x)=x^2$, ¿cuál es $q[\{-2,2\}]$?
+
+[]{#MA-MSOL-ANM-01-012-011}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 11</summary>
+
+$\{4\}$. La imagen es un conjunto y no conserva dos copias del mismo valor.
+
+</details>
+
+#### Microcontrol 12
 
 []{#MA-MIC-ANM-01-012-012}
 
-4. ¿Cuál es la imagen del conjunto vacío?
+¿Cuál es la imagen del conjunto vacío?
+
+[]{#MA-MSOL-ANM-01-012-012}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 12</summary>
+
+$f[\varnothing]=\varnothing$, porque no existe una entrada que pueda ser testigo.
+
+</details>
+
+#### Microcontrol 13
 
 []{#MA-MIC-ANM-01-012-013}
 
-5. ¿Implica $A\subseteq C$ que $f[A]\subseteq f[C]$?
+¿Implica $A\subseteq C$ que $f[A]\subseteq f[C]$?
+
+[]{#MA-MSOL-ANM-01-012-013}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 13</summary>
+
+Sí, si ambos son subconjuntos del dominio. Todo testigo en $A$ también pertenece a $C$.
+
+</details>
+
+#### Microcontrol 14
 
 []{#MA-MIC-ANM-01-012-014}
 
-6. ¿Tiene que coincidir $f[D]$ con el codominio $E$?
+¿Tiene que coincidir $f[D]$ con el codominio $E$?
+
+[]{#MA-MSOL-ANM-01-012-014}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 14</summary>
+
+No. Sólo $f[D]\subseteq E$ es obligatorio. La igualdad caracteriza sobreyectividad.
+
+</details>
+
+#### Microcontrol 15
 
 []{#MA-MIC-ANM-01-012-015}
 
-7. ¿Qué entrada de $[-2,1]$ alcanza $4$ bajo el cuadrado?
+¿Qué entrada de $[-2,1]$ alcanza $4$ bajo el cuadrado?
+
+[]{#MA-MSOL-ANM-01-012-015}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 15</summary>
+
+$-2$, pues $(-2)^2=4$ y $-2\in[-2,1]$. La otra raíz, $2$, no es un testigo en ese intervalo.
+
+</details>
+
+#### Microcontrol 16
 
 []{#MA-MIC-ANM-01-012-016}
 
-8. ¿Cuál es $q[(-2,2)]$ para $q(x)=x^2$?
+¿Cuál es $q[(-2,2)]$ para $q(x)=x^2$?
 
+[]{#MA-MSOL-ANM-01-012-016}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 16</summary>
+
+$[0,4)$: todo cuadrado de esas entradas está allí y, para $0\le y<4$, $x=\sqrt y\in(-2,2)$ alcanza $y$.
+
+</details>
+
+### Ejercicios de la sección 12.2
+
+#### Ejercicio 6. Imagen exacta de un intervalo
+
+[]{#MA-EX-ANM-01-012-006}
+
+Calcula la imagen de $[-3,2)$ por $q:\mathbb R\to\mathbb R$, $q(x)=x^2$, probando ambas inclusiones.
+
+[]{#MA-SOL-ANM-01-012-006}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 6</summary>
+
+La imagen es $[0,9]$. Toda entrada tiene $|x|\le3$, así que su cuadrado está en ese intervalo. Para $0\le y\le9$, la entrada $x=-\sqrt y\in[-3,0]\subseteq[-3,2)$ alcanza $y$. En particular $9$ se alcanza en $-3$, aunque $3$ no esté disponible; y cero se alcanza en cero.
+
+</details>
+
+#### Ejercicio 7. Unión con dos piezas
+
+[]{#MA-EX-ANM-01-012-007}
+
+Calcula $q[[-2,-1]\cup(0,1)]$ para el cuadrado real. Justifica extremos y huecos.
+
+[]{#MA-SOL-ANM-01-012-007}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 7</summary>
+
+La primera pieza tiene imagen $[1,4]$: sus cuadrados están allí y $-\sqrt y$ alcanza cada $y$ de ese intervalo. La segunda tiene imagen $(0,1)$, con testigo $\sqrt y$. Por tanto la imagen de la unión es $(0,4]$. El valor $1$ sí se alcanza en $-1$, cero no se alcanza porque ninguna entrada es cero, y $4$ sí se alcanza en $-2$.
+
+</details>
+
+#### Ejercicio 8. Imagen y cardinalidad finita
+
+[]{#MA-EX-ANM-01-012-008}
+
+Si $A\subseteq D$ es finito y $f:D\to E$, prueba que $|f[A]|\le|A|$ y que hay igualdad si y sólo si $f|_A$ es inyectiva.
+
+[]{#MA-SOL-ANM-01-012-008}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 8</summary>
+
+Enumeramos $A=\{a_1,\ldots,a_n\}$ con entradas distintas. Su imagen consta de los $n$ valores listados, eliminando repeticiones, por lo que tiene a lo sumo $n$ elementos. Si la restricción es inyectiva, todos son distintos y hay $n$. Si no lo es, dos valores de la lista coinciden, y tras eliminar esa repetición quedan a lo sumo $n-1$. Para $A=\varnothing$, ambas cardinalidades son cero y la restricción es inyectiva de manera vacua.
+
+</details>
+
+#### Ejercicio 9. La inclusión no estudia el orden
+
+[]{#MA-EX-ANM-01-012-009}
+
+Construye una función real que no sea no decreciente ni no creciente y demuestra que su operación de imagen conserva inclusiones de conjuntos.
+
+[]{#MA-SOL-ANM-01-012-009}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 9</summary>
+
+Sirve $q(x)=x^2$. No es no decreciente porque $-2<-1$ pero $4>1$; no es no creciente porque $1<2$ pero $1<4$. Sin embargo, para $A\subseteq C$, cada salida de $q[A]$ tiene testigo $x\in A\subseteq C$, luego pertenece a $q[C]$. Son propiedades distintas: inclusión de conjuntos frente a comparación de valores.
+
+</details>
+
+#### Ejercicio 10. Imagen de una diferencia
+
+[]{#MA-EX-ANM-01-012-010}
+
+Prueba $f[A]\setminus f[C]\subseteq f[A\setminus C]$ para $A,C\subseteq D$ y da un ejemplo en que la inclusión sea estricta.
+
+[]{#MA-SOL-ANM-01-012-010}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 10</summary>
+
+Si $y\in f[A]\setminus f[C]$, existe $a\in A$ con $f(a)=y$. Ese $a$ no puede estar en $C$, pues entonces $y\in f[C]$. Así $a\in A\setminus C$, que prueba la inclusión. Para $q(x)=x^2$, $A=\{-1,1\}$ y $C=\{1\}$, el lado izquierdo es vacío y el derecho es $q[\{-1\}]=\{1\}$. Una entrada fuera de $C$ puede compartir salida con otra dentro de $C$.
+
+</details>
 ## 12.3. Preimagen: seleccionar por la salida
 
 []{#MA-SEC-ANM-01-012-003}
@@ -250,38 +580,202 @@ Si $B=\{-1,4\}$ para $q$, la preimagen es $\{-2,2\}$ y su imagen es $\{4\}$: el 
 
 ### Antes de seguir
 
+#### Microcontrol 17
+
 []{#MA-MIC-ANM-01-012-017}
 
-1. ¿En qué conjunto vive $f^{-1}[B]$ si $f:D\to E$?
+¿En qué conjunto vive $f^{-1}[B]$ si $f:D\to E$?
+
+[]{#MA-MSOL-ANM-01-012-017}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 17</summary>
+
+En $D$: por definición es el conjunto de entradas del dominio cuya salida pertenece a $B\subseteq E$.
+
+</details>
+
+#### Microcontrol 18
 
 []{#MA-MIC-ANM-01-012-018}
 
-2. ¿Se necesita que $f$ tenga función inversa para tomar preimágenes?
+¿Se necesita que $f$ tenga función inversa para tomar preimágenes?
+
+[]{#MA-MSOL-ANM-01-012-018}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 18</summary>
+
+No. La preimagen comprueba $f(x)\in B$ para $x\in D$; existe para cualquier función.
+
+</details>
+
+#### Microcontrol 19
 
 []{#MA-MIC-ANM-01-012-019}
 
-3. ¿Cuál es la fibra del cuadrado real sobre $4$?
+¿Cuál es la fibra del cuadrado real sobre $4$?
+
+[]{#MA-MSOL-ANM-01-012-019}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 19</summary>
+
+$\{-2,2\}$: ambas entradas y sólo ellas satisfacen $x^2=4$.
+
+</details>
+
+#### Microcontrol 20
 
 []{#MA-MIC-ANM-01-012-020}
 
-4. ¿Cuál es la fibra del cuadrado real sobre $-1$?
+¿Cuál es la fibra del cuadrado real sobre $-1$?
+
+[]{#MA-MSOL-ANM-01-012-020}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 20</summary>
+
+$\varnothing$, porque un cuadrado real es no negativo.
+
+</details>
+
+#### Microcontrol 21
 
 []{#MA-MIC-ANM-01-012-021}
 
-5. ¿Cuál es $f^{-1}[E]$?
+¿Cuál es $f^{-1}[E]$?
+
+[]{#MA-MSOL-ANM-01-012-021}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 21</summary>
+
+$D$, pues toda entrada del dominio tiene salida en el codominio.
+
+</details>
+
+#### Microcontrol 22
 
 []{#MA-MIC-ANM-01-012-022}
 
-6. ¿Cuál es $q^{-1}[(1,4]]$ para el cuadrado en $\mathbb R$?
+¿Cuál es $q^{-1}[(1,4]]$ para el cuadrado en $\mathbb R$?
+
+[]{#MA-MSOL-ANM-01-012-022}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 22</summary>
+
+$[-2,-1)\cup(1,2]$, ya que $1<x^2\le4$ equivale a $1<|x|\le2$.
+
+</details>
+
+#### Microcontrol 23
 
 []{#MA-MIC-ANM-01-012-023}
 
-7. ¿Cómo cambia esa preimagen si el dominio se restringe a $[0,\infty)$?
+¿Cómo cambia esa preimagen si el dominio se restringe a $[0,\infty)$?
+
+[]{#MA-MSOL-ANM-01-012-023}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 23</summary>
+
+Se recorta por el nuevo dominio y queda $(1,2]$. Las entradas negativas dejan de estar disponibles.
+
+</details>
+
+#### Microcontrol 24
 
 []{#MA-MIC-ANM-01-012-024}
 
-8. ¿Qué recupera $f[f^{-1}[B]]$?
+¿Qué recupera $f[f^{-1}[B]]$?
 
+[]{#MA-MSOL-ANM-01-012-024}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 24</summary>
+
+$B\cap f[D]$. Recupera exactamente las salidas de $B$ que la función realmente alcanza, no las salidas imposibles.
+
+</details>
+
+### Ejercicios de la sección 12.3
+
+#### Ejercicio 11. Selección de dos bandas
+
+[]{#MA-EX-ANM-01-012-011}
+
+Calcula $q^{-1}[[0,1)\cup\{4\}]$ para $q:\mathbb R\to\mathbb R$, $q(x)=x^2$.
+
+[]{#MA-SOL-ANM-01-012-011}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 11</summary>
+
+La condición $0\le x^2<1$ equivale a $|x|<1$, y $x^2=4$ equivale a $x=-2$ o $x=2$. Por tanto la preimagen es $(-1,1)\cup\{-2,2\}$. Se excluyen $\pm1$ por la desigualdad estricta, y se incluyen cero y las dos raíces de cuatro.
+
+</details>
+
+#### Ejercicio 12. El dominio recorta la respuesta
+
+[]{#MA-EX-ANM-01-012-012}
+
+Sea $f:[-1,3)\to\mathbb R$, $f(x)=x^2$. Calcula $f^{-1}[(1,4]]$.
+
+[]{#MA-SOL-ANM-01-012-012}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 12</summary>
+
+En toda la recta la condición da $[-2,-1)\cup(1,2]$. Intersectando con el dominio $[-1,3)$ desaparece la rama negativa, incluido $-1$ que además no cumple $x^2>1$. Queda $(1,2]$. Ambas inclusiones siguen de resolver la condición y exigir pertenencia al dominio.
+
+</details>
+
+#### Ejercicio 13. Las fibras particionan el dominio
+
+[]{#MA-EX-ANM-01-012-013}
+
+Para $f:D\to E$, demuestra que las fibras sobre los elementos de $f[D]$ son no vacías, disjuntas dos a dos y su unión es $D$.
+
+[]{#MA-SOL-ANM-01-012-013}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 13</summary>
+
+Cada $y\in f[D]$ tiene un testigo de entrada, así que su fibra no es vacía. Si una entrada pertenece a las fibras de $y,z$, su única salida es tanto $y$ como $z$, luego $y=z$. Cada $x\in D$ pertenece a la fibra sobre $f(x)\in f[D]$, y toda fibra es subconjunto de $D$; su unión es exactamente $D$. Si $D$ es vacío, la familia es vacía y su unión también.
+
+</details>
+
+#### Ejercicio 14. Recuperar todas las salidas solicitadas
+
+[]{#MA-EX-ANM-01-012-014}
+
+Prueba que $f[f^{-1}[B]]=B$ para todo $B\subseteq E$ si y sólo si $f:D\to E$ es sobreyectiva.
+
+[]{#MA-SOL-ANM-01-012-014}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 14</summary>
+
+Si es sobreyectiva, $f[D]=E$ y la identidad del texto da $f[f^{-1}[B]]=B\cap E=B$. Recíprocamente, aplicamos la hipótesis a $B=E$: como $f^{-1}[E]=D$, obtenemos $f[D]=E$, que es sobreyectividad. No se necesita inyectividad: puede haber varias entradas para cada salida.
+
+</details>
+
+#### Ejercicio 15. La preimagen conoce la función
+
+[]{#MA-EX-ANM-01-012-015}
+
+Sean $f,g:D\to E$. Si $f^{-1}[B]=g^{-1}[B]$ para todo $B\subseteq E$, demuestra que $f=g$.
+
+[]{#MA-SOL-ANM-01-012-015}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 15</summary>
+
+Para una entrada cualquiera $x\in D$, tomamos $B=\{f(x)\}$. Entonces $x\in f^{-1}[B]=g^{-1}[B]$, luego $g(x)\in\{f(x)\}$ y $g(x)=f(x)$. Vale para toda entrada y los tipos coinciden, así que las funciones son iguales. Si $D$ es vacío, los dos grafos son vacíos y la conclusión también vale. El conjunto de prueba puede elegirse después de fijar la entrada porque la hipótesis cubre todos los subconjuntos.
+
+</details>
 ## 12.4. Qué operaciones sobreviven al transporte
 
 []{#MA-SEC-ANM-01-012-004}
@@ -345,38 +839,204 @@ La imagen tampoco conserva complementos en general. Para el cuadrado, $q[\mathbb
 
 ### Antes de seguir
 
+#### Microcontrol 25
+
 []{#MA-MIC-ANM-01-012-025}
 
-1. ¿La imagen conserva la unión de dos conjuntos de entradas?
+¿La imagen conserva la unión de dos conjuntos de entradas?
+
+[]{#MA-MSOL-ANM-01-012-025}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 25</summary>
+
+Sí: $f[A\cup C]=f[A]\cup f[C]$. Un testigo en la unión pertenece a uno de los conjuntos, y recíprocamente.
+
+</details>
+
+#### Microcontrol 26
 
 []{#MA-MIC-ANM-01-012-026}
 
-2. ¿Qué inclusión siempre vale para la imagen de una intersección?
+¿Qué inclusión siempre vale para la imagen de una intersección?
+
+[]{#MA-MSOL-ANM-01-012-026}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 26</summary>
+
+$f[A\cap C]\subseteq f[A]\cap f[C]$, porque un testigo común sirve para ambas imágenes.
+
+</details>
+
+#### Microcontrol 27
 
 []{#MA-MIC-ANM-01-012-027}
 
-3. Con $q(x)=x^2$, $A=\{-1\}$ y $C=\{1\}$, ¿por qué falla la igualdad anterior?
+Con $q(x)=x^2$, $A=\{-1\}$ y $C=\{1\}$, ¿por qué falla la igualdad anterior?
+
+[]{#MA-MSOL-ANM-01-012-027}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 27</summary>
+
+$A\cap C=\varnothing$ tiene imagen vacía, pero $q[A]\cap q[C]=\{1\}$. La salida común procede de dos entradas distintas.
+
+</details>
+
+#### Microcontrol 28
 
 []{#MA-MIC-ANM-01-012-028}
 
-4. ¿Qué hipótesis reúne los dos testigos de una salida común?
+¿Qué hipótesis reúne los dos testigos de una salida común?
+
+[]{#MA-MSOL-ANM-01-012-028}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 28</summary>
+
+Inyectividad: de $f(a)=f(c)$ se obtiene $a=c$, que pertenece entonces a ambos conjuntos.
+
+</details>
+
+#### Microcontrol 29
 
 []{#MA-MIC-ANM-01-012-029}
 
-5. ¿Qué preimagen tiene $B\cap H$?
+¿Qué preimagen tiene $B\cap H$?
+
+[]{#MA-MSOL-ANM-01-012-029}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 29</summary>
+
+$f^{-1}[B]\cap f^{-1}[H]$, pues una entrada cumple ambas condiciones exactamente cuando su única salida pertenece a ambos conjuntos.
+
+</details>
+
+#### Microcontrol 30
 
 []{#MA-MIC-ANM-01-012-030}
 
-6. ¿Cuáles son los universos de los complementos en la ley de preimagen?
+¿Cuáles son los universos de los complementos en la ley de preimagen?
+
+[]{#MA-MSOL-ANM-01-012-030}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 30</summary>
+
+$E$ a la izquierda y $D$ a la derecha: $f^{-1}[E\setminus B]=D\setminus f^{-1}[B]$.
+
+</details>
+
+#### Microcontrol 31
 
 []{#MA-MIC-ANM-01-012-031}
 
-7. ¿Siempre se cumple $A=f^{-1}[f[A]]$?
+¿Siempre se cumple $A=f^{-1}[f[A]]$?
+
+[]{#MA-MSOL-ANM-01-012-031}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 31</summary>
+
+No. Siempre hay inclusión de $A$ en el lado derecho, pero para el cuadrado y $A=\{1\}$ el lado derecho es $\{-1,1\}$. Inyectividad garantiza igualdad.
+
+</details>
+
+#### Microcontrol 32
 
 []{#MA-MIC-ANM-01-012-032}
 
-8. ¿Cuál es la preimagen de $B\setminus H$?
+¿Cuál es la preimagen de $B\setminus H$?
 
+[]{#MA-MSOL-ANM-01-012-032}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 32</summary>
+
+$f^{-1}[B]\setminus f^{-1}[H]$: equivale a exigir $f(x)\in B$ y $f(x)\notin H$ a una entrada $x\in D$.
+
+</details>
+
+### Ejercicios de la sección 12.4
+
+#### Ejercicio 16. Álgebra de una selección
+
+[]{#MA-EX-ANM-01-012-016}
+
+Prueba directamente $f^{-1}[(B\cup H)\setminus K]=(f^{-1}[B]\cup f^{-1}[H])\setminus f^{-1}[K]$ para $B,H,K\subseteq E$.
+
+[]{#MA-SOL-ANM-01-012-016}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 16</summary>
+
+Para $x\in D$, pertenecer al lado izquierdo significa $(f(x)\in B\text{ o }f(x)\in H)$ y $f(x)\notin K$. Esto equivale a $(x\in f^{-1}[B]\text{ o }x\in f^{-1}[H])$ y $x\notin f^{-1}[K]$, exactamente el lado derecho. Como la equivalencia vale para toda entrada, extensionalidad da igualdad. No se han supuesto inyectividad o sobreyectividad.
+
+</details>
+
+#### Ejercicio 17. La intersección detecta inyectividad
+
+[]{#MA-EX-ANM-01-012-017}
+
+Prueba que $f[A\cap C]=f[A]\cap f[C]$ para todos $A,C\subseteq D$ si y sólo si $f$ es inyectiva.
+
+[]{#MA-SOL-ANM-01-012-017}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 17</summary>
+
+La dirección inyectiva está probada en el texto: los dos testigos de una salida común coinciden. Para la recíproca, supongamos $f(a)=f(c)$ y $a\ne c$. Tomando $A=\{a\}$, $C=\{c\}$, la imagen de su intersección es vacía, mientras que la intersección de imágenes es $\{f(a)\}$, contradicción. Luego no hay entradas distintas con igual salida.
+
+**Retorno visual.** Véase [C12-F03](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html#fig-anm-c12-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 18. Saturar dos veces
+
+[]{#MA-EX-ANM-01-012-018}
+
+Define $S(A)=f^{-1}[f[A]]$. Prueba $A\subseteq S(A)$, que $A\subseteq C$ implica $S(A)\subseteq S(C)$ y que $S(S(A))=S(A)$.
+
+[]{#MA-SOL-ANM-01-012-018}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 18</summary>
+
+Cada $a\in A$ tiene salida en $f[A]$, luego está en $S(A)$. Si $A\subseteq C$, las inclusiones conservadas por imagen y preimagen dan $S(A)\subseteq S(C)$. Finalmente $f[S(A)]=f[f^{-1}[f[A]]]=f[A]\cap f[D]=f[A]$. Tomando preimagen, $S(S(A))=f^{-1}[f[S(A)]]=f^{-1}[f[A]]=S(A)$. La saturación añade fibras completas una sola vez.
+
+</details>
+
+#### Ejercicio 19. Complementos y biyectividad
+
+[]{#MA-EX-ANM-01-012-019}
+
+Prueba que $f[D\setminus A]=E\setminus f[A]$ para todo $A\subseteq D$ si y sólo si $f:D\to E$ es biyectiva.
+
+[]{#MA-SOL-ANM-01-012-019}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 19</summary>
+
+Si $f$ es biyectiva, toda $y\in E$ tiene una única entrada $x$; está en la imagen de $D\setminus A$ exactamente cuando $x\notin A$, lo que equivale a $y\notin f[A]$. Para la recíproca, usar $A=\varnothing$ da $f[D]=E$, sobreyectividad. Si $a\ne c$ y $f(a)=f(c)$, tomando $A=\{a\}$, la salida común pertenece a $f[D\setminus A]$ por el testigo $c$ y también a $f[A]$, contradiciendo la igualdad con el complemento. Por tanto es inyectiva.
+
+</details>
+
+#### Ejercicio 20. Seleccionar una partición
+
+[]{#MA-EX-ANM-01-012-020}
+
+Sea $E=B_1\cup\cdots\cup B_k$ una partición finita en piezas no vacías. Prueba que sus preimágenes cubren $D$ y son disjuntas, y explica por qué pueden no formar una partición en piezas no vacías.
+
+[]{#MA-SOL-ANM-01-012-020}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 20</summary>
+
+Toda entrada tiene salida en alguna pieza, de modo que pertenece a alguna preimagen. Si pertenece a dos, su salida está en ambas piezas; la disjunción de las $B_i$ lo impide cuando los índices son distintos. Pero una pieza puede no contener salidas alcanzadas. Por ejemplo, para el cuadrado real, las piezas $(-\infty,0)$ y $[0,\infty)$ particionan $\mathbb R$ y la primera tiene preimagen vacía. Tras eliminar piezas vacías, las restantes sí particionan $D$ si éste no es vacío.
+
+</details>
 ## 12.5. Componer, restringir y deshacer
 
 []{#MA-SEC-ANM-01-012-005}
@@ -424,38 +1084,202 @@ Para $f(x)=2x+1$ como aplicación $\mathbb R\to\mathbb R$, la igualdad de salida
 
 ### Antes de seguir
 
+#### Microcontrol 33
+
 []{#MA-MIC-ANM-01-012-033}
 
-1. ¿Qué tipo tiene $g\circ f$ si $f:D\to E$ y $g:E\to F$?
+¿Qué tipo tiene $g\circ f$ si $f:D\to E$ y $g:E\to F$?
+
+[]{#MA-MSOL-ANM-01-012-033}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 33</summary>
+
+$D\to F$, con $(g\circ f)(x)=g(f(x))$; la salida de $f$ es una entrada autorizada de $g$.
+
+</details>
+
+#### Microcontrol 34
 
 []{#MA-MIC-ANM-01-012-034}
 
-2. ¿Cómo se calcula $(g\circ f)[A]$ por etapas?
+¿Cómo se calcula $(g\circ f)[A]$ por etapas?
+
+[]{#MA-MSOL-ANM-01-012-034}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 34</summary>
+
+Como $g[f[A]]$: primero transportamos las entradas por $f$ y después sus salidas por $g$.
+
+</details>
+
+#### Microcontrol 35
 
 []{#MA-MIC-ANM-01-012-035}
 
-3. ¿En qué orden se calcula $(g\circ f)^{-1}[C]$?
+¿En qué orden se calcula $(g\circ f)^{-1}[C]$?
+
+[]{#MA-MSOL-ANM-01-012-035}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 35</summary>
+
+Primero $g^{-1}[C]$ en $E$, después $f^{-1}[g^{-1}[C]]$ en $D$. Es la condición $g(f(x))\in C$.
+
+</details>
+
+#### Microcontrol 36
 
 []{#MA-MIC-ANM-01-012-036}
 
-4. ¿Cuál es el dominio de $f|_A$?
+¿Cuál es el dominio de $f|_A$?
+
+[]{#MA-MSOL-ANM-01-012-036}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 36</summary>
+
+$A\subseteq D$. La restricción mantiene los valores en $A$ y el codominio $E$.
+
+</details>
+
+#### Microcontrol 37
 
 []{#MA-MIC-ANM-01-012-037}
 
-5. ¿Cuál es $(f|_A)^{-1}[B]$?
+¿Cuál es $(f|_A)^{-1}[B]$?
+
+[]{#MA-MSOL-ANM-01-012-037}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 37</summary>
+
+$A\cap f^{-1}[B]$, porque sólo se admiten las entradas de $A$ cuya salida está en $B$.
+
+</details>
+
+#### Microcontrol 38
 
 []{#MA-MIC-ANM-01-012-038}
 
-6. ¿Qué dos propiedades permiten construir una función inversa $E\to D$?
+¿Qué dos propiedades permiten construir una función inversa $E\to D$?
+
+[]{#MA-MSOL-ANM-01-012-038}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 38</summary>
+
+Sobreyectividad, para que cada $y\in E$ tenga entrada, e inyectividad, para que esa entrada sea única; juntas forman biyectividad.
+
+</details>
+
+#### Microcontrol 39
 
 []{#MA-MIC-ANM-01-012-039}
 
-7. ¿Cuál es la inversa de $f:\mathbb R\to\mathbb R$, $f(x)=2x+1$?
+¿Cuál es la inversa de $f:\mathbb R\to\mathbb R$, $f(x)=2x+1$?
+
+[]{#MA-MSOL-ANM-01-012-039}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 39</summary>
+
+$h(y)=(y-1)/2$. Sustituir verifica $h(f(x))=x$ y $f(h(y))=y$ para todos los reales.
+
+</details>
+
+#### Microcontrol 40
 
 []{#MA-MIC-ANM-01-012-040}
 
-8. ¿Por qué restringir el cuadrado a entradas no negativas no basta para hacerlo biyectivo hacia $\mathbb R$?
+¿Por qué restringir el cuadrado a entradas no negativas no basta para hacerlo biyectivo hacia $\mathbb R$?
 
+[]{#MA-MSOL-ANM-01-012-040}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 40</summary>
+
+Porque ninguna entrada alcanza una salida negativa. Para biyectividad hay que declarar codominio $[0,\infty)$ además de restringir el dominio.
+
+</details>
+
+### Ejercicios de la sección 12.5
+
+#### Ejercicio 21. La última etapa se filtra primero
+
+[]{#MA-EX-ANM-01-012-021}
+
+Para $f(x)=x^2$ y $g(y)=3-y$, ambas reales, calcula $(g\circ f)^{-1}[[1,3)]$ por etapas.
+
+[]{#MA-SOL-ANM-01-012-021}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 21</summary>
+
+Primero $1\le3-y<3$ equivale a $0<y\le2$, luego $g^{-1}[[1,3)]=(0,2]$. Después $0<x^2\le2$ da $[-\sqrt2,0)\cup(0,\sqrt2]$. Cero se excluye porque su salida compuesta es $3$; ambas raíces de dos se incluyen porque su salida es $1$.
+
+</details>
+
+#### Ejercicio 22. Una composición sin tipo
+
+[]{#MA-EX-ANM-01-012-022}
+
+Sea $f:\mathbb R\to\mathbb R$, $f(x)=x-1$, y $g:\mathbb R\setminus\{0\}\to\mathbb R$, $g(y)=1/y$. ¿Define $g\circ f$ una función en todo $\mathbb R$? Declara la composición válida y su regla.
+
+[]{#MA-SOL-ANM-01-012-022}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 22</summary>
+
+No: $f(1)=0$ no pertenece al dominio de $g$. Las entradas admisibles son $f^{-1}[\mathbb R\setminus\{0\}]=\mathbb R\setminus\{1\}$. Restringiendo $f$ a ese dominio, la composición válida es $h:\mathbb R\setminus\{1\}\to\mathbb R$, $h(x)=1/(x-1)$. Cada evaluación de la segunda etapa está ahora autorizada.
+
+</details>
+
+#### Ejercicio 23. Dos identidades distintas
+
+[]{#MA-EX-ANM-01-012-023}
+
+Para $f:D\to E$ y $h:E\to D$, prueba que $h\circ f=\operatorname{id}_D$ implica inyectividad de $f$ y que $f\circ h=\operatorname{id}_E$ implica sobreyectividad de $f$. Da un ejemplo donde sólo se cumpla la primera.
+
+[]{#MA-SOL-ANM-01-012-023}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 23</summary>
+
+Si $f(x)=f(z)$, aplicar $h$ y la primera identidad da $x=z$. Con la segunda, cada $y\in E$ tiene entrada $h(y)$ y $f(h(y))=y$. Para distinguirlas, sea $f:[0,\infty)\to\mathbb R$ la inclusión $f(x)=x$, y $h:\mathbb R\to[0,\infty)$, $h(y)=\max(y,0)$. Para $x\ge0$, $h(f(x))=x$. Pero $f(h(-1))=0\ne-1$, así que no hay segunda identidad y $f$ no es sobreyectiva.
+
+</details>
+
+#### Ejercicio 24. Inversa sobre la imagen
+
+[]{#MA-EX-ANM-01-012-024}
+
+Si $f:D\to E$ es inyectiva, demuestra que cambiando el codominio a $f[D]$ se obtiene una biyectiva. ¿Por qué su inversa no tiene necesariamente dominio $E$?
+
+[]{#MA-SOL-ANM-01-012-024}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 24</summary>
+
+La asignación $\widetilde f:D\to f[D]$ es válida y mantiene inyectividad. Es sobreyectiva por definición de imagen: cada $y\in f[D]$ tiene una entrada. Luego tiene inversa $f[D]\to D$. Si hay $y\in E\setminus f[D]$, no existe entrada que alcance $y$, por lo que esa inversa no puede deshacer la asignación en tal salida. Ejemplo: inclusión $[0,\infty)\to\mathbb R$, cuya imagen es $[0,\infty)$.
+
+</details>
+
+#### Ejercicio 25. La inversa de una composición
+
+[]{#MA-EX-ANM-01-012-025}
+
+Sean $f:D\to E$ y $g:E\to F$ biyectivas. Prueba que $g\circ f$ es biyectiva y su inversa es $f^{-1}\circ g^{-1}$.
+
+[]{#MA-SOL-ANM-01-012-025}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 25</summary>
+
+La candidata $h=f^{-1}\circ g^{-1}:F\to D$ está tipada. Para $x\in D$, $h(g(f(x)))=f^{-1}(g^{-1}(g(f(x))))=f^{-1}(f(x))=x$. Para $z\in F$, $g(f(h(z)))=g(f(f^{-1}(g^{-1}(z))))=g(g^{-1}(z))=z$. Las dos identidades probadas en el texto garantizan biyectividad y unicidad de la inversa. El orden se invierte porque primero debe deshacerse la última etapa.
+
+</details>
 ## 12.6. Transportar el orden no rellena los huecos
 
 []{#MA-SEC-ANM-01-012-006}
@@ -520,38 +1344,204 @@ El cuadrado es estrictamente creciente en $[0,\infty)$ y estrictamente decrecien
 
 ### Antes de seguir
 
+#### Microcontrol 41
+
 []{#MA-MIC-ANM-01-012-041}
 
-1. ¿Qué significa no decreciente en un dominio $D\subseteq\mathbb R$?
+¿Qué significa no decreciente en un dominio $D\subseteq\mathbb R$?
+
+[]{#MA-MSOL-ANM-01-012-041}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 41</summary>
+
+Para todos $x,y\in D$, $x\le y$ implica $f(x)\le f(y)$. El sentido no estricto permite valores iguales.
+
+</details>
+
+#### Microcontrol 42
 
 []{#MA-MIC-ANM-01-012-042}
 
-2. ¿Una función estrictamente creciente es inyectiva?
+¿Una función estrictamente creciente es inyectiva?
+
+[]{#MA-MSOL-ANM-01-012-042}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 42</summary>
+
+Sí. Entradas distintas se ordenan por tricotomía y sus salidas quedan estrictamente ordenadas, luego son distintas.
+
+</details>
+
+#### Microcontrol 43
 
 []{#MA-MIC-ANM-01-012-043}
 
-3. ¿Una función no decreciente tiene que ser inyectiva?
+¿Una función no decreciente tiene que ser inyectiva?
+
+[]{#MA-MSOL-ANM-01-012-043}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 43</summary>
+
+No. Una constante en un dominio con dos entradas distintas es no decreciente y les asigna la misma salida.
+
+</details>
+
+#### Microcontrol 44
 
 []{#MA-MIC-ANM-01-012-044}
 
-4. ¿Qué controla el intervalo $[f(a),f(b)]$ si $f$ es no decreciente?
+¿Qué controla el intervalo $[f(a),f(b)]$ si $f$ es no decreciente?
+
+[]{#MA-MSOL-ANM-01-012-044}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 44</summary>
+
+Contiene $f[D\cap[a,b]]$, pues $a\le x\le b$ implica $f(a)\le f(x)\le f(b)$. No promete todas las salidas intermedias.
+
+</details>
+
+#### Microcontrol 45
 
 []{#MA-MIC-ANM-01-012-045}
 
-5. Para la función de salto $s$ del texto, ¿se alcanza $1/2$?
+Para la función de salto $s$ del texto, ¿se alcanza $1/2$?
+
+[]{#MA-MSOL-ANM-01-012-045}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 45</summary>
+
+No. Las entradas negativas dan salidas negativas y las no negativas dan salidas al menos $1$.
+
+</details>
+
+#### Microcontrol 46
 
 []{#MA-MIC-ANM-01-012-046}
 
-6. ¿Cuál es $s[[-1,1]]$?
+¿Cuál es $s[[-1,1]]$?
+
+[]{#MA-MSOL-ANM-01-012-046}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 46</summary>
+
+$[-1,0)\cup[1,2]$, transportando cada una de las dos ramas con sus extremos correctos.
+
+</details>
+
+#### Microcontrol 47
 
 []{#MA-MIC-ANM-01-012-047}
 
-7. ¿Qué signo de $m$ hace decreciente estricta a $h(x)=mx+c$?
+¿Qué signo de $m$ hace decreciente estricta a $h(x)=mx+c$?
+
+[]{#MA-MSOL-ANM-01-012-047}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 47</summary>
+
+$m<0$, porque para $x<y$ el producto $m(y-x)$ es negativo, luego $h(y)<h(x)$.
+
+</details>
+
+#### Microcontrol 48
 
 []{#MA-MIC-ANM-01-012-048}
 
-8. ¿En qué rama es creciente estricta la función cuadrado?
+¿En qué rama es creciente estricta la función cuadrado?
 
+[]{#MA-MSOL-ANM-01-012-048}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 48</summary>
+
+En $[0,\infty)$: si $0\le x<y$, $y^2-x^2=(y-x)(y+x)>0$. En la rama no positiva es decreciente estricta.
+
+</details>
+
+### Ejercicios de la sección 12.6
+
+#### Ejercicio 26. Imagen con orientación invertida
+
+[]{#MA-EX-ANM-01-012-026}
+
+Calcula la imagen de $[-1,2)$ por $h(x)=-3x+2$ con codominio real. Justifica ambas inclusiones.
+
+[]{#MA-SOL-ANM-01-012-026}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 26</summary>
+
+De $-1\le x<2$, al multiplicar por $-3$ y sumar $2$, resulta $-4<h(x)\le5$. Para $t\in(-4,5]$, $x=(2-t)/3$ satisface $-1\le x<2$ y $h(x)=t$. La imagen es $(-4,5]$. El extremo abierto de entrada pasa a extremo inferior abierto, y el cerrado a superior cerrado.
+
+</details>
+
+#### Ejercicio 27. Dos sentidos estrictos
+
+[]{#MA-EX-ANM-01-012-027}
+
+Si $f:D\to E\subseteq\mathbb R$ y $g:E\to\mathbb R$ son estrictamente decrecientes, prueba que $g\circ f$ es estrictamente creciente.
+
+[]{#MA-SOL-ANM-01-012-027}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 27</summary>
+
+Para $x<y$ en $D$, $f(x)>f(y)$. Como $f(y)<f(x)$ y ambas salidas pertenecen a $E$, el decrecimiento estricto de $g$ da $g(f(y))>g(f(x))$. Así $(g\circ f)(x)<(g\circ f)(y)$. La compatibilidad de dominios permite aplicar la segunda hipótesis.
+
+</details>
+
+#### Ejercicio 28. La inclusión de extremos puede ser propia
+
+[]{#MA-EX-ANM-01-012-028}
+
+Para la función $s$ de §12.6, prueba que $s[[-2,2]]$ es un subconjunto propio de $[s(-2),s(2)]$ aun siendo $s$ estrictamente creciente.
+
+[]{#MA-SOL-ANM-01-012-028}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 28</summary>
+
+El transporte por ramas da $[-2,0)\cup[1,3]$ y los valores extremos dan $[s(-2),s(2)]=[-2,3]$. Hay inclusión y es propia porque $1/2$ pertenece al segundo conjunto y no al primero. La prueba del crecimiento estricto en el texto incluye el caso que cruza cero; el hueco no lo contradice, pues crecimiento compara salidas existentes sin construir nuevas.
+
+**Retorno visual.** Véase [C12-F04](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html#fig-anm-c12-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 29. Orden de la inversa
+
+[]{#MA-EX-ANM-01-012-029}
+
+Si $f:D\to E$ es estrictamente creciente y biyectiva, con $D,E\subseteq\mathbb R$, prueba que $f^{-1}$ es estrictamente creciente.
+
+[]{#MA-SOL-ANM-01-012-029}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 29</summary>
+
+Para $u<v$ en $E$, sean $x=f^{-1}(u)$, $y=f^{-1}(v)$. Si $x=y$, entonces $u=v$, imposible. Si $x>y$, crecimiento estricto da $u=f(x)>f(y)=v$, también imposible. Por tricotomía queda $x<y$. Así la inversa conserva el orden estricto en su propio dominio $E$.
+
+</details>
+
+#### Ejercicio 30. Inyectividad no decide monotonía
+
+[]{#MA-EX-ANM-01-012-030}
+
+Construye una biyectiva $\mathbb R\to\mathbb R$ que no sea no decreciente ni no creciente.
+
+[]{#MA-SOL-ANM-01-012-030}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 30</summary>
+
+Intercambiamos $0$ y $1$ y fijamos todo otro real: $f(0)=1$, $f(1)=0$, $f(x)=x$ para $x\notin\{0,1\}$. Aplicarla dos veces devuelve cada entrada, así que es biyectiva. No es no decreciente porque $0<1$ pero $f(0)>f(1)$. No es no creciente porque $2<3$ y $f(2)<f(3)$. Reversibilidad y orden son propiedades independientes.
+
+</details>
 ## 12.7. Distancia y escala: medir la deformación
 
 []{#MA-SEC-ANM-01-012-007}
@@ -620,38 +1610,202 @@ El producto controla la composición. Estos son controles algebraicos de distanc
 
 ### Antes de seguir
 
+#### Microcontrol 49
+
 []{#MA-MIC-ANM-01-012-049}
 
-1. ¿Qué factor multiplica las distancias bajo $h(x)=mx+c$?
+¿Qué factor multiplica las distancias bajo $h(x)=mx+c$?
+
+[]{#MA-MSOL-ANM-01-012-049}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 49</summary>
+
+$|m|$, ya que $|h(x)-h(y)|=|m||x-y|$; $c$ se cancela.
+
+</details>
+
+#### Microcontrol 50
 
 []{#MA-MIC-ANM-01-012-050}
 
-2. ¿Puede una función invertir el orden y conservar todas las distancias?
+¿Puede una función invertir el orden y conservar todas las distancias?
+
+[]{#MA-MSOL-ANM-01-012-050}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 50</summary>
+
+Sí: $h(x)=-x$ es estrictamente decreciente y $|-x-(-y)|=|x-y|$.
+
+</details>
+
+#### Microcontrol 51
 
 []{#MA-MIC-ANM-01-012-051}
 
-3. ¿De qué puede depender una cota de expansión $L$?
+¿De qué puede depender una cota de expansión $L$?
+
+[]{#MA-MSOL-ANM-01-012-051}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 51</summary>
+
+Puede depender de la función y del dominio declarado, pero debe fijarse antes de elegir el par $x,y$ y servir para todos los pares de ese dominio.
+
+</details>
+
+#### Microcontrol 52
 
 []{#MA-MIC-ANM-01-012-052}
 
-4. ¿Qué cota de expansión tiene $x\mapsto|x|$?
+¿Qué cota de expansión tiene $x\mapsto|x|$?
+
+[]{#MA-MSOL-ANM-01-012-052}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 52</summary>
+
+$L=1$, por $\bigl||x|-|y|\bigr|\le|x-y|$, consecuencia de la desigualdad triangular en ambos sentidos.
+
+</details>
+
+#### Microcontrol 53
 
 []{#MA-MIC-ANM-01-012-053}
 
-5. ¿Qué cota da la factorización del cuadrado en $[-R,R]$ con $R>0$?
+¿Qué cota da la factorización del cuadrado en $[-R,R]$ con $R>0$?
+
+[]{#MA-MSOL-ANM-01-012-053}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 53</summary>
+
+$2R$: $|x^2-y^2|=|x-y||x+y|\le2R|x-y|$.
+
+</details>
+
+#### Microcontrol 54
 
 []{#MA-MIC-ANM-01-012-054}
 
-6. ¿Por qué no sirve una cota finita $L\ge0$ para el cuadrado en toda la recta?
+¿Por qué no sirve una cota finita $L\ge0$ para el cuadrado en toda la recta?
+
+[]{#MA-MSOL-ANM-01-012-054}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 54</summary>
+
+El par $x=L+1$, $y=x+1$ tiene distancia $1$ y distancia de salidas $2L+3>L$, contradiciendo la cota propuesta.
+
+</details>
+
+#### Microcontrol 55
 
 []{#MA-MIC-ANM-01-012-055}
 
-7. ¿Qué garantiza una cota inferior $c|x-y|\le|f(x)-f(y)|$ con $c>0$?
+¿Qué garantiza una cota inferior $c|x-y|\le|f(x)-f(y)|$ con $c>0$?
+
+[]{#MA-MSOL-ANM-01-012-055}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 55</summary>
+
+Inyectividad: si las salidas coinciden, la desigualdad obliga a $|x-y|=0$, luego $x=y$.
+
+</details>
+
+#### Microcontrol 56
 
 []{#MA-MIC-ANM-01-012-056}
 
-8. ¿Qué cota tiene una composición de funciones con cotas $L$ y $M$ compatibles?
+¿Qué cota tiene una composición de funciones con cotas $L$ y $M$ compatibles?
 
+[]{#MA-MSOL-ANM-01-012-056}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 56</summary>
+
+$ML$, al aplicar primero $|g(f(x))-g(f(y))|\le M|f(x)-f(y)|$ y después la cota $L$.
+
+</details>
+
+### Ejercicios de la sección 12.7
+
+#### Ejercicio 31. La mejor escala afín
+
+[]{#MA-EX-ANM-01-012-031}
+
+Para $h(x)=mx+c$ en toda $\mathbb R$, prueba que $|m|$ es la menor cota de expansión no negativa.
+
+[]{#MA-SOL-ANM-01-012-031}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 31</summary>
+
+La identidad $|h(x)-h(y)|=|m||x-y|$ muestra que $|m|$ sirve. Si $L$ es otra cota, usamos $x=0$, $y=1$ y obtenemos $|m|\le L$. Vale también para $m=0$: la menor cota no negativa es cero. La traslación no influye en el resultado.
+
+</details>
+
+#### Ejercicio 32. Una cota sin reversibilidad
+
+[]{#MA-EX-ANM-01-012-032}
+
+Prueba que $f(x)=\max(x,0)$ tiene cota de expansión $1$ en $\mathbb R$ y no es inyectiva.
+
+[]{#MA-SOL-ANM-01-012-032}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 32</summary>
+
+Si ambas entradas son no negativas, la distancia de salidas es $|x-y|$; si ambas son no positivas, es cero. Si $x<0<y$, es $y\le y-x=|x-y|$; el caso invertido es simétrico. Los extremos cero están incluidos en los primeros casos. Así la cota es $1$. Pero $f(-1)=f(-2)=0$, por lo que no es inyectiva.
+
+</details>
+
+#### Ejercicio 33. La cota del cuadrado depende del radio
+
+[]{#MA-EX-ANM-01-012-033}
+
+Prueba que $2R$ es la menor cota de expansión del cuadrado en $[-R,R]$, $R>0$, sin derivadas.
+
+[]{#MA-SOL-ANM-01-012-033}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 33</summary>
+
+La factorización del texto prueba la cota $2R$. Para refutar $0\le L<2R$, elegimos $t=\min(R,(2R-L)/2)>0$, $x=R$, $y=R-t\in[0,R)$. El cociente de distancias, permitido porque $t>0$, es $x+y=2R-t>L$: si $t=(2R-L)/2$, el resultado es $(2R+L)/2>L$; si $t=R$, esta rama exige $L\le0$ y, como $L\ge0$, $L=0<R$. Se viola la cota. Por tanto ninguna menor sirve.
+
+</details>
+
+#### Ejercicio 34. Deshacer con control de distancia
+
+[]{#MA-EX-ANM-01-012-034}
+
+Supón $c|x-y|\le|f(x)-f(y)|\le L|x-y|$ para $x,y\in D$, con $0<c\le L$. Prueba las cotas de la inversa sobre la imagen.
+
+[]{#MA-SOL-ANM-01-012-034}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 34</summary>
+
+La cota inferior hace inyectiva a $f$, así que existe $h:f[D]\to D$. Para $u=f(x)$, $v=f(y)$, las desigualdades dan $c|h(u)-h(v)|\le|u-v|\le L|h(u)-h(v)|$. Dividiendo por constantes positivas, $(1/L)|u-v|\le|h(u)-h(v)|\le(1/c)|u-v|$. Todo par de la imagen tiene entradas únicas, así que las cotas cubren el dominio completo de $h$. No se exige sobreyectividad hacia el codominio original.
+
+</details>
+
+#### Ejercicio 35. Cota compuesta con restricción
+
+[]{#MA-EX-ANM-01-012-035}
+
+Sean $q:[-2,2]\to[0,4]$, $q(x)=x^2$, y $h:[0,4]\to\mathbb R$, $h(y)=3y-1$. Obtén una cota para $h\circ q$ y demuestra si es la menor posible.
+
+[]{#MA-SOL-ANM-01-012-035}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 35</summary>
+
+$q$ tiene cota $4$ y $h$ tiene escala exacta $3$, luego la composición tiene cota $12$. Si $0\le L<12$, tomamos $t=\min(1,(12-L)/6)>0$, $x=2$, $y=2-t\in[1,2)$. El cociente de distancias de salidas es $3(x+y)=12-3t$. Como $t\le(12-L)/6$, ese valor es al menos $(12+L)/2>L$. Se contradice la cota $L$. Así $12$ es la menor.
+
+</details>
 ## 12.8. Representaciones y ventanas de control
 
 []{#MA-SEC-ANM-01-012-008}
@@ -712,38 +1866,209 @@ Volvemos a la pregunta inicial: una función transporta puntos y conjuntos; pued
 
 ### Antes de seguir
 
+#### Microcontrol 57
+
 []{#MA-MIC-ANM-01-012-057}
 
-1. ¿Qué tipo tiene $T(u,v)=(u+v,v)$ en el texto?
+¿Qué tipo tiene $T(u,v)=(u+v,v)$ en el texto?
+
+[]{#MA-MSOL-ANM-01-012-057}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 57</summary>
+
+$T:\mathbb R^2\to\mathbb R^2$; tanto entrada como salida son pares reales, no valores escalares.
+
+</details>
+
+#### Microcontrol 58
 
 []{#MA-MIC-ANM-01-012-058}
 
-2. ¿Cuál es la inversa de esa transformación de rejilla?
+¿Cuál es la inversa de esa transformación de rejilla?
+
+[]{#MA-MSOL-ANM-01-012-058}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 58</summary>
+
+$S(a,b)=(a-b,b)$, pues $S(T(u,v))=(u,v)$ y $T(S(a,b))=(a,b)$.
+
+</details>
+
+#### Microcontrol 59
 
 []{#MA-MIC-ANM-01-012-059}
 
-3. ¿En qué se transforma la recta $u=j$ bajo $T$?
+¿En qué se transforma la recta $u=j$ bajo $T$?
+
+[]{#MA-MSOL-ANM-01-012-059}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 59</summary>
+
+En la recta parametrizada por $(j+v,v)$, que cumple $a-b=j$ en coordenadas de salida $(a,b)$.
+
+</details>
+
+#### Microcontrol 60
 
 []{#MA-MIC-ANM-01-012-060}
 
-4. ¿Multiplica $T$ todas las longitudes por un mismo factor?
+¿Multiplica $T$ todas las longitudes por un mismo factor?
+
+[]{#MA-MSOL-ANM-01-012-060}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 60</summary>
+
+No: el segmento de $(0,0)$ a $(1,0)$ conserva longitud $1$, mientras que el de $(0,0)$ a $(0,1)$ pasa a longitud $\sqrt2$.
+
+</details>
+
+#### Microcontrol 61
 
 []{#MA-MIC-ANM-01-012-061}
 
-5. ¿Qué inclusión de entradas equivale a $f[A]\subseteq B$?
+¿Qué inclusión de entradas equivale a $f[A]\subseteq B$?
+
+[]{#MA-MSOL-ANM-01-012-061}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 61</summary>
+
+$A\subseteq f^{-1}[B]$. Ambas dicen que toda entrada de $A$ tiene salida en $B$.
+
+</details>
+
+#### Microcontrol 62
 
 []{#MA-MIC-ANM-01-012-062}
 
-6. ¿Por qué se recorta $B(x_0,r)$ por $D$ al usarla como ventana de entrada?
+¿Por qué se recorta $B(x_0,r)$ por $D$ al usarla como ventana de entrada?
+
+[]{#MA-MSOL-ANM-01-012-062}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 62</summary>
+
+Porque sólo se puede transportar un subconjunto del dominio. Entradas fuera de $D$ no tienen evaluación por $f$.
+
+</details>
+
+#### Microcontrol 63
 
 []{#MA-MIC-ANM-01-012-063}
 
-7. Para el cuadrado, ¿qué cota certifica la ventana de radio $1/4$ alrededor de $1$ hacia radio $1$ alrededor de su salida?
+Para el cuadrado, ¿qué cota certifica la ventana de radio $1/4$ alrededor de $1$ hacia radio $1$ alrededor de su salida?
+
+[]{#MA-MSOL-ANM-01-012-063}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 63</summary>
+
+Si $|x-1|<1/4$, entonces $|x+1|<9/4$ y $|x^2-1|<9/16<1$. Así toda la ventana de entrada se transporta dentro de la de salida.
+
+</details>
+
+#### Microcontrol 64
 
 []{#MA-MIC-ANM-01-012-064}
 
-8. ¿Es vecindad de cero la preimagen $s^{-1}[B(1,1/4)]=[0,1/4)$?
+¿Es vecindad de cero la preimagen $s^{-1}[B(1,1/4)]=[0,1/4)$?
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 12](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html) · [Ejercicios](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-microcontroles.html)
+[]{#MA-MSOL-ANM-01-012-064}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 64</summary>
+
+No. Contiene cero pero ninguna bola de radio positivo centrada en cero, ya que toda esa bola contiene entradas negativas.
+
+</details>
+
+### Ejercicios de la sección 12.8
+
+#### Ejercicio 36. Transportar el cuadrado entero
+
+[]{#MA-EX-ANM-01-012-036}
+
+Para $T(u,v)=(u+v,v)$, calcula la imagen de $[0,1]^2$ mediante desigualdades en las coordenadas de salida $(a,b)$; prueba ambas inclusiones.
+
+[]{#MA-SOL-ANM-01-012-036}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 36</summary>
+
+La imagen es $P=\{(a,b):0\le b\le1,\ b\le a\le b+1\}$. Si $0\le u,v\le1$, entonces $b=v$ y $a=u+v$, de donde las desigualdades. Si $(a,b)\in P$, la entrada $(u,v)=(a-b,b)$ satisface $0\le u,v\le1$ y $T(u,v)=(a,b)$. Los vértices son los del paralelogramo mostrado en el texto; el argumento cubre también su interior y frontera.
+
+**Retorno visual.** Véase [C12-F06](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html#fig-anm-c12-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 37. Una rejilla no es un grafo escalar
+
+[]{#MA-EX-ANM-01-012-037}
+
+Explica por qué la imagen por $T$ de la recta $v=0$ puede ser una parte de un dibujo de rejilla y también el grafo de una función escalar, pero $T$ no es esa función escalar.
+
+[]{#MA-SOL-ANM-01-012-037}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 37</summary>
+
+Para $v=0$, $T(u,0)=(u,0)$, así que la imagen es la recta horizontal de pares $(a,0)$. Ese conjunto es el grafo de la función escalar $f:\mathbb R\to\mathbb R$, $f(a)=0$. Sin embargo, $T$ recibe pares $(u,v)$ y devuelve pares; $f$ recibe un real y devuelve cero. Su tipo, asignación y dominio difieren. Un mismo conjunto dibujado puede representar objetos en papeles distintos.
+
+</details>
+
+#### Ejercicio 38. Ventana certificada para una afín
+
+[]{#MA-EX-ANM-01-012-038}
+
+Sea $f(x)=mx+c$ en $\mathbb R$, $x_0\in\mathbb R$ y $\rho>0$. Si $m\ne0$, calcula $f^{-1}[B(f(x_0),\rho)]$ y decide para qué $r>0$ vale $f[B(x_0,r)]\subseteq B(f(x_0),\rho)$. Trata $m=0$.
+
+[]{#MA-SOL-ANM-01-012-038}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 38</summary>
+
+Para $m\ne0$, la condición es $|m||x-x_0|<\rho$, por lo que la preimagen es $B(x_0,\rho/|m|)$. La inclusión de ventanas vale exactamente para $r\le\rho/|m|$: con esa condición todo punto de la bola menor satisface la desigualdad; si $r$ es mayor, la entrada $x=x_0+\rho/|m|$ está dentro de la primera bola pero su salida tiene distancia exactamente $\rho$, excluida de la segunda. Si $m=0$, la salida es siempre $c=f(x_0)$, la preimagen es toda $\mathbb R$ y cualquier $r>0$ sirve.
+
+**Retorno visual.** Véase [C12-F07](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html#fig-anm-c12-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 39. Pertenencia sin vecindad
+
+[]{#MA-EX-ANM-01-012-039}
+
+Define $p:\mathbb R\to\mathbb R$ por $p(0)=0$ y $p(x)=1$ si $x\ne0$. Calcula $p^{-1}[B(0,1/2)]$ y prueba que no es vecindad de cero.
+
+[]{#MA-SOL-ANM-01-012-039}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 39</summary>
+
+$B(0,1/2)=(-1/2,1/2)$ contiene cero y no contiene uno. Por tanto la preimagen es $\{0\}$. Para cualquier $r>0$, el punto $r/2$ es distinto de cero y pertenece a $B(0,r)$, pero no a la preimagen. Ninguna bola positiva centrada en cero cabe en ella. Contener el centro no garantiza ser vecindad.
+
+**Retorno visual.** Véase [C12-F07](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html#fig-anm-c12-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+</details>
+
+#### Ejercicio 40. Reconstruir imagen desde todas las selecciones
+
+[]{#MA-EX-ANM-01-012-040}
+
+Sean $A\subseteq D$ y $C\subseteq E$. Supón que para todo $B\subseteq E$ se cumple $C\subseteq B$ si y sólo si $A\subseteq f^{-1}[B]$. Prueba que $C=f[A]$.
+
+[]{#MA-SOL-ANM-01-012-040}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 40</summary>
+
+Por la equivalencia del manuscrito, la segunda condición equivale a $f[A]\subseteq B$. Así $C$ y $f[A]$ tienen exactamente los mismos conjuntos que los contienen. Tomando $B=C$, la inclusión $C\subseteq C$ implica $f[A]\subseteq C$. Tomando $B=f[A]$, la inclusión $f[A]\subseteq f[A]$ implica $C\subseteq f[A]$. Las dos inclusiones dan igualdad. La caracterización recupera el transporte hacia delante a partir de su relación con todas las selecciones hacia atrás, incluidos los casos vacíos.
+
+</details>
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-12)
 
 [← Capítulo 11](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html) · [Capítulo 13 →](analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html)

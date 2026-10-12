@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 11 — Series como laboratorio de convergencia
-date-modified: '2026-10-11'
+date-modified: '2026-10-12'
 provenance:
   type: original
   sources:
@@ -26,7 +26,7 @@ provenance:
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 11](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html) · [Ejercicios](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-11)
 
 Una sucesión de aportes puede tender a cero y seguir acumulando cantidades apreciables. Queremos decidir cuándo el proceso de sumación tiene un destino real, qué controla los bloques que aún faltan y cómo certificar una aproximación sin conocer la suma exacta. Las sumas parciales serán el puente entre acumulación y los límites de C06 y C10.
 
@@ -72,38 +72,350 @@ La figura compara aportes y totales en el mismo índice. Leer un punto en el pan
 
 ### Antes de seguir
 
+#### Microcontrol 1
+
 []{#MA-MIC-ANM-01-011-001}
 
-1. ¿Cuántos términos contiene $s_n=\sum_{k=0}^n a_k$?
+¿Cuántos términos contiene $s_n=\sum_{k=0}^n a_k$?
+
+[]{#MA-MSOL-ANM-01-011-001}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 1</summary>
+
+**Respuesta.**
+
+$n+1$, porque los índices van de cero a $n$ inclusive.
+
+**Fundamento en la sección 11.1.**
+
+Dada $a:\mathbb N\to\mathbb R$, con $\mathbb N=\{0,1,2,\ldots\}$, definimos su **sucesión de sumas parciales** $s=\operatorname{PS}(a)$ mediante
+
+$$
+s_0=a_0,\qquad s_{n+1}=s_n+a_{n+1}.
+$$
+
+Cada paso suma dos reales y determina un único real; la recursión define $s$ en todos los naturales y una inducción prueba su unicidad. Escribimos $s_n=\sum_{k=0}^n a_k$: contiene $n+1$ términos, no $n$. Una suma con ningún término se toma igual a cero cuando aparezca un bloque vacío.
+
+La **serie de términos $a$** es este proceso de sumación. Decimos que converge si $s_n\to S$ para algún $S\in\mathbb R$, y entonces llamamos a $S$ su suma y escribimos
+
+</details>
+
+#### Microcontrol 2
 
 []{#MA-MIC-ANM-01-011-002}
 
-2. ¿Cuál es el término inicial de $\operatorname{PS}(a)$?
+¿Cuál es el término inicial de $\operatorname{PS}(a)$?
+
+[]{#MA-MSOL-ANM-01-011-002}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 2</summary>
+
+**Respuesta.**
+
+$s_0=a_0$; no es automáticamente cero.
+
+**Fundamento en la sección 11.1.**
+
+La primera igualdad es la condición inicial; la segunda se obtiene restando $s_n$ en la recursión. Por ello $\operatorname{PS}(a)=\operatorname{PS}(b)$ implica $a=b$. En cambio, tener la misma suma real no obliga a tener los mismos términos: $(1,0,0,\ldots)$ y $(1/2,1/2,0,\ldots)$ generan procesos diferentes que convergen ambos a uno.
+
+Para $a_n=(-1)^n$, las sumas parciales son $s_{2k}=1$ y $s_{2k+1}=0$, como se verifica por parejas. La sucesión $s$ está acotada, pero no converge: después de cualquier corte hay sumas parciales de ambos valores. Para $a_n=0$ todos los totales valen cero. Incluso cuando término y total tienen el mismo valor en un índice, siguen cumpliendo papeles distintos.
+
+</details>
+
+#### Microcontrol 3
 
 []{#MA-MIC-ANM-01-011-003}
 
-3. ¿Qué condición permite llamar suma real a $\sum_{n=0}^{\infty}a_n$?
+¿Qué condición permite llamar suma real a $\sum_{n=0}^{\infty}a_n$?
+
+[]{#MA-MSOL-ANM-01-011-003}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 3</summary>
+
+**Respuesta.**
+
+Que la sucesión de sumas parciales converja a un real $S$; entonces el símbolo de suma designa ese límite único.
+
+**Fundamento en la sección 11.1.**
+
+La **serie de términos $a$** es este proceso de sumación. Decimos que converge si $s_n\to S$ para algún $S\in\mathbb R$, y entonces llamamos a $S$ su suma y escribimos
+
+$$
+\sum_{n=0}^{\infty}a_n=S.
+$$
+
+Antes de demostrar convergencia, el símbolo de serie designa el proceso que estamos estudiando; no afirma que ya exista ese real. El límite es único por C06. Una serie divergente puede tener sumas parciales no acotadas o puede oscilar dentro de una región acotada.
+
+**Recuperar los aportes.** La construcción conserva toda la información de $a$, pues
+
+</details>
+
+#### Microcontrol 4
 
 []{#MA-MIC-ANM-01-011-004}
 
-4. ¿Cómo se recupera $a_{n+1}$ a partir de dos totales?
+¿Cómo se recupera $a_{n+1}$ a partir de dos totales?
+
+[]{#MA-MSOL-ANM-01-011-004}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 4</summary>
+
+**Respuesta.**
+
+$a_{n+1}=s_{n+1}-s_n$, por la recursión.
+
+**Fundamento en la sección 11.1.**
+
+Los aportes $1,1/2,1/4,\ldots$ disminuyen; los totales $1,3/2,7/4,\ldots$ aumentan. Son dos sucesiones reales diferentes. Para estudiar lo que se acumula necesitamos construir la segunda a partir de la primera y decidir después si tiene un destino real.
+
+Dada $a:\mathbb N\to\mathbb R$, con $\mathbb N=\{0,1,2,\ldots\}$, definimos su **sucesión de sumas parciales** $s=\operatorname{PS}(a)$ mediante
+
+$$
+s_0=a_0,\qquad s_{n+1}=s_n+a_{n+1}.
+$$
+
+Cada paso suma dos reales y determina un único real; la recursión define $s$ en todos los naturales y una inducción prueba su unicidad. Escribimos $s_n=\sum_{k=0}^n a_k$: contiene $n+1$ términos, no $n$. Una suma con ningún término se toma igual a cero cuando aparezca un bloque vacío.
+
+</details>
+
+#### Microcontrol 5
 
 []{#MA-MIC-ANM-01-011-005}
 
-5. ¿Tener la misma suma implica tener los mismos términos?
+¿Tener la misma suma implica tener los mismos términos?
+
+[]{#MA-MSOL-ANM-01-011-005}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 5</summary>
+
+**Respuesta.**
+
+No. $(1,0,0,\ldots)$ y $(1/2,1/2,0,\ldots)$ tienen suma uno y distintos términos y procesos.
+
+**Fundamento en la sección 11.1.**
+
+La primera igualdad es la condición inicial; la segunda se obtiene restando $s_n$ en la recursión. Por ello $\operatorname{PS}(a)=\operatorname{PS}(b)$ implica $a=b$. En cambio, tener la misma suma real no obliga a tener los mismos términos: $(1,0,0,\ldots)$ y $(1/2,1/2,0,\ldots)$ generan procesos diferentes que convergen ambos a uno.
+
+Para $a_n=(-1)^n$, las sumas parciales son $s_{2k}=1$ y $s_{2k+1}=0$, como se verifica por parejas. La sucesión $s$ está acotada, pero no converge: después de cualquier corte hay sumas parciales de ambos valores. Para $a_n=0$ todos los totales valen cero. Incluso cuando término y total tienen el mismo valor en un índice, siguen cumpliendo papeles distintos.
+
+</details>
+
+#### Microcontrol 6
 
 []{#MA-MIC-ANM-01-011-006}
 
-6. ¿Qué totales produce $a_n=(-1)^n$?
+¿Qué totales produce $a_n=(-1)^n$?
+
+[]{#MA-MSOL-ANM-01-011-006}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 6</summary>
+
+**Respuesta.**
+
+$s_{2k}=1$ y $s_{2k+1}=0$, al cancelar parejas consecutivas.
+
+**Fundamento en la sección 11.1.**
+
+La primera igualdad es la condición inicial; la segunda se obtiene restando $s_n$ en la recursión. Por ello $\operatorname{PS}(a)=\operatorname{PS}(b)$ implica $a=b$. En cambio, tener la misma suma real no obliga a tener los mismos términos: $(1,0,0,\ldots)$ y $(1/2,1/2,0,\ldots)$ generan procesos diferentes que convergen ambos a uno.
+
+Para $a_n=(-1)^n$, las sumas parciales son $s_{2k}=1$ y $s_{2k+1}=0$, como se verifica por parejas. La sucesión $s$ está acotada, pero no converge: después de cualquier corte hay sumas parciales de ambos valores. Para $a_n=0$ todos los totales valen cero. Incluso cuando término y total tienen el mismo valor en un índice, siguen cumpliendo papeles distintos.
+
+</details>
+
+#### Microcontrol 7
 
 []{#MA-MIC-ANM-01-011-007}
 
-7. ¿La acotación de esos totales garantiza convergencia?
+¿La acotación de esos totales garantiza convergencia?
+
+[]{#MA-MSOL-ANM-01-011-007}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 7</summary>
+
+**Respuesta.**
+
+No. Después de cualquier corte hay totales separados por uno, de modo que falla Cauchy.
+
+**Fundamento en la sección 11.1.**
+
+La primera igualdad es la condición inicial; la segunda se obtiene restando $s_n$ en la recursión. Por ello $\operatorname{PS}(a)=\operatorname{PS}(b)$ implica $a=b$. En cambio, tener la misma suma real no obliga a tener los mismos términos: $(1,0,0,\ldots)$ y $(1/2,1/2,0,\ldots)$ generan procesos diferentes que convergen ambos a uno.
+
+Para $a_n=(-1)^n$, las sumas parciales son $s_{2k}=1$ y $s_{2k+1}=0$, como se verifica por parejas. La sucesión $s$ está acotada, pero no converge: después de cualquier corte hay sumas parciales de ambos valores. Para $a_n=0$ todos los totales valen cero. Incluso cuando término y total tienen el mismo valor en un índice, siguen cumpliendo papeles distintos.
+
+</details>
+
+#### Microcontrol 8
 
 []{#MA-MIC-ANM-01-011-008}
 
-8. ¿Son $a$, $\operatorname{PS}(a)$ y su suma el mismo tipo de objeto?
+¿Son $a$, $\operatorname{PS}(a)$ y su suma el mismo tipo de objeto?
 
+[]{#MA-MSOL-ANM-01-011-008}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 8</summary>
+
+**Respuesta.**
+
+No. $a$ y $\operatorname{PS}(a)$ son funciones $\mathbb N\to\mathbb R$ con papeles diferentes; su suma, si existe, es un número real.
+
+**Fundamento en la sección 11.1.**
+
+La primera igualdad es la condición inicial; la segunda se obtiene restando $s_n$ en la recursión. Por ello $\operatorname{PS}(a)=\operatorname{PS}(b)$ implica $a=b$. En cambio, tener la misma suma real no obliga a tener los mismos términos: $(1,0,0,\ldots)$ y $(1/2,1/2,0,\ldots)$ generan procesos diferentes que convergen ambos a uno.
+
+Para $a_n=(-1)^n$, las sumas parciales son $s_{2k}=1$ y $s_{2k+1}=0$, como se verifica por parejas. La sucesión $s$ está acotada, pero no converge: después de cualquier corte hay sumas parciales de ambos valores. Para $a_n=0$ todos los totales valen cero. Incluso cuando término y total tienen el mismo valor en un índice, siguen cumpliendo papeles distintos.
+
+</details>
+
+### Ejercicios de la sección 11.1
+
+[]{#ejercicios-11}
+
+#### Ejercicio 1. Aportes y totales
+
+[]{#MA-EX-ANM-01-011-001}
+
+Calcula $s_0,s_1,s_2,s_3$ para $a_n=2^{-n}$. Distingue ambos objetos.
+
+[]{#MA-SOL-ANM-01-011-001}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 1</summary>
+
+**Respuesta.**
+
+Los términos son $1,1/2,1/4,1/8$ y los totales $1,3/2,7/4,15/8$. $a$ y $s$ son sucesiones reales distintas; $s_n$ acumula $n+1$ valores de $a$.
+
+Después del argumento, la [figura 11.1](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f01) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.1.**
+
+Los aportes $1,1/2,1/4,\ldots$ disminuyen; los totales $1,3/2,7/4,\ldots$ aumentan. Son dos sucesiones reales diferentes. Para estudiar lo que se acumula necesitamos construir la segunda a partir de la primera y decidir después si tiene un destino real.
+
+Dada $a:\mathbb N\to\mathbb R$, con $\mathbb N=\{0,1,2,\ldots\}$, definimos su **sucesión de sumas parciales** $s=\operatorname{PS}(a)$ mediante
+
+$$
+s_0=a_0,\qquad s_{n+1}=s_n+a_{n+1}.
+$$
+
+Cada paso suma dos reales y determina un único real; la recursión define $s$ en todos los naturales y una inducción prueba su unicidad. Escribimos $s_n=\sum_{k=0}^n a_k$: contiene $n+1$ términos, no $n$. Una suma con ningún término se toma igual a cero cuando aparezca un bloque vacío.
+
+</details>
+
+#### Ejercicio 2. Recuperar una serie
+
+[]{#MA-EX-ANM-01-011-002}
+
+Si se prescribe $s_n=(n+1)/(n+2)$, encuentra la única sucesión de términos que produce esos totales y decide convergencia.
+
+[]{#MA-SOL-ANM-01-011-002}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 2</summary>
+
+**Respuesta.**
+
+$a_0=s_0=1/2$. Para $n\ge1$, $a_n=s_n-s_{n-1}=(n+1)/(n+2)-n/(n+1)=1/((n+1)(n+2))$. La recursión verifica los totales, y su recuperación demuestra unicidad. Como $s_n=1-1/(n+2)\to1$, la serie tiene suma uno. La misma fórmula también da el término inicial si se evalúa en cero.
+
+**Fundamento en la sección 11.1.**
+
+**Recuperar los aportes.** La construcción conserva toda la información de $a$, pues
+
+$$
+a_0=s_0,\qquad a_{n+1}=s_{n+1}-s_n.
+$$
+
+La primera igualdad es la condición inicial; la segunda se obtiene restando $s_n$ en la recursión. Por ello $\operatorname{PS}(a)=\operatorname{PS}(b)$ implica $a=b$. En cambio, tener la misma suma real no obliga a tener los mismos términos: $(1,0,0,\ldots)$ y $(1/2,1/2,0,\ldots)$ generan procesos diferentes que convergen ambos a uno.
+
+Para $a_n=(-1)^n$, las sumas parciales son $s_{2k}=1$ y $s_{2k+1}=0$, como se verifica por parejas. La sucesión $s$ está acotada, pero no converge: después de cualquier corte hay sumas parciales de ambos valores. Para $a_n=0$ todos los totales valen cero. Incluso cuando término y total tienen el mismo valor en un índice, siguen cumpliendo papeles distintos.
+
+</details>
+
+#### Ejercicio 3. Misma suma, distinto proceso
+
+[]{#MA-EX-ANM-01-011-003}
+
+Construye dos sucesiones distintas de soporte finito con la misma suma y prueba que sus procesos son distintos.
+
+[]{#MA-SOL-ANM-01-011-003}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 3</summary>
+
+**Respuesta.**
+
+Tomemos $a=(1,0,0,\ldots)$ y $b=(0,1,0,\ldots)$. Sus totales son $s_n=1$ en todo índice y $t_0=0$, $t_n=1$ para $n\ge1$. Ambas sumas valen uno, pero $a_0\ne b_0$ y $s_0\ne t_0$. Igualdad numérica de sumas no implica igualdad de funciones.
+
+Después del argumento, la [figura 11.1](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f01) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.1.**
+
+**Recuperar los aportes.** La construcción conserva toda la información de $a$, pues
+
+$$
+a_0=s_0,\qquad a_{n+1}=s_{n+1}-s_n.
+$$
+
+La primera igualdad es la condición inicial; la segunda se obtiene restando $s_n$ en la recursión. Por ello $\operatorname{PS}(a)=\operatorname{PS}(b)$ implica $a=b$. En cambio, tener la misma suma real no obliga a tener los mismos términos: $(1,0,0,\ldots)$ y $(1/2,1/2,0,\ldots)$ generan procesos diferentes que convergen ambos a uno.
+
+Para $a_n=(-1)^n$, las sumas parciales son $s_{2k}=1$ y $s_{2k+1}=0$, como se verifica por parejas. La sucesión $s$ está acotada, pero no converge: después de cualquier corte hay sumas parciales de ambos valores. Para $a_n=0$ todos los totales valen cero. Incluso cuando término y total tienen el mismo valor en un índice, siguen cumpliendo papeles distintos.
+
+</details>
+
+#### Ejercicio 4. Una transformación reversible
+
+[]{#MA-EX-ANM-01-011-004}
+
+Prueba que toda sucesión real $s$ es el proceso de sumación de una única sucesión real $a$.
+
+[]{#MA-SOL-ANM-01-011-004}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 4</summary>
+
+**Respuesta.**
+
+Definamos $a_0=s_0$ y $a_{n+1}=s_{n+1}-s_n$. Si $u=\operatorname{PS}(a)$, entonces $u_0=s_0$. Suponiendo $u_n=s_n$, la recursión da $u_{n+1}=s_n+s_{n+1}-s_n=s_{n+1}$. Inducción prueba $u=s$. Si otro $b$ produce $s$, la recuperación de §11.1 fuerza $b_0=a_0$ y $b_{n+1}=a_{n+1}$. Es una correspondencia entre sucesiones, sin exigir convergencia.
+
+Después del argumento, la [figura 11.1](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f01) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.1.**
+
+Dada $a:\mathbb N\to\mathbb R$, con $\mathbb N=\{0,1,2,\ldots\}$, definimos su **sucesión de sumas parciales** $s=\operatorname{PS}(a)$ mediante
+
+$$
+s_0=a_0,\qquad s_{n+1}=s_n+a_{n+1}.
+$$
+
+Cada paso suma dos reales y determina un único real; la recursión define $s$ en todos los naturales y una inducción prueba su unicidad. Escribimos $s_n=\sum_{k=0}^n a_k$: contiene $n+1$ términos, no $n$. Una suma con ningún término se toma igual a cero cuando aparezca un bloque vacío.
+
+La **serie de términos $a$** es este proceso de sumación. Decimos que converge si $s_n\to S$ para algún $S\in\mathbb R$, y entonces llamamos a $S$ su suma y escribimos
+
+</details>
+
+#### Ejercicio 5. Totales acotados y término nulo
+
+[]{#MA-EX-ANM-01-011-005}
+
+Construye una serie con términos que tienden a cero y sumas parciales acotadas que no convergen.
+
+[]{#MA-SOL-ANM-01-011-005}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 5</summary>
+
+Prescribamos bloques: para cada $m\ge1$, $m$ términos $1/m$ seguidos de $m$ términos $-1/m$. El bloque ocupa $m(m-1)\le n\le m(m+1)-1$; sus extremos consecutivos cubren todos los naturales. Los totales van de cero a uno y regresan a cero, así que están en $[0,1]$. Dada $\varepsilon>0$, tomar $M$ con $1/M<\varepsilon$ hace $|a_n|\le1/M<\varepsilon$ desde el comienzo del bloque $M$. Los totales de mitad y final de cada bloque son uno y cero en índices arbitrariamente grandes; falla Cauchy con tolerancia $1/2$.
+
+Después del argumento, la [figura 11.5](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f05) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+</details>
 ## 11.2. Cauchy mide bloques completos
 
 []{#MA-SEC-ANM-01-011-002}
@@ -150,38 +462,376 @@ La muestra exhibe algunos bloques; la elección $m=N+1$ prueba que existen despu
 
 ### Antes de seguir
 
+#### Microcontrol 9
+
 []{#MA-MIC-ANM-01-011-009}
 
-1. ¿Por qué el bloque $s_p-s_q$ empieza en $q+1$?
+¿Por qué el bloque $s_p-s_q$ empieza en $q+1$?
+
+[]{#MA-MSOL-ANM-01-011-009}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 9</summary>
+
+**Respuesta.**
+
+Porque $s_q$ ya contiene $a_q$; los nuevos términos son $a_{q+1},\ldots,a_p$.
+
+**Fundamento en la sección 11.2.**
+
+Dos totales tardíos difieren en lo que se sumó entre sus cortes. Si $p>q$, la recursión y una inducción sobre $p-q$ dan la identidad finita
+
+$$
+s_p-s_q=\sum_{k=q+1}^{p}a_k.
+$$
+
+El bloque empieza en $q+1$ porque $a_q$ ya forma parte de $s_q$. El caso $p=q+1$ es la recursión; al prolongar el extremo superior se añade $a_{p+1}$ a ambos miembros. Esta identidad traduce la pregunta sobre dos sumas parciales a una pregunta sobre cualquier acumulación tardía.
+
+**Criterio de Cauchy para series reales.** La serie de $a$ converge si y sólo si
+
+</details>
+
+#### Microcontrol 10
 
 []{#MA-MIC-ANM-01-011-010}
 
-2. ¿En qué orden se eligen tolerancia, corte y extremos de bloque?
+¿En qué orden se eligen tolerancia, corte y extremos de bloque?
+
+[]{#MA-MSOL-ANM-01-011-010}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 10</summary>
+
+**Respuesta.**
+
+Primero $\varepsilon>0$, después un único $N$ que puede depender de ella, y luego todos $p>q\ge N$.
+
+**Fundamento en la sección 11.2.**
+
+El corte se escoge antes que los dos extremos; debe funcionar para bloques de cualquier longitud. Permitir un corte distinto para cada longitud fija debilitaría el enunciado.
+
+**Condición necesaria.** Si una serie converge, entonces $a_n\to0$. En efecto, para $n\ge N+1$, el bloque con $q=n-1$ y $p=n$ tiene un término y da $|a_n|<\varepsilon$. Este argumento muestra también la limitación: controlar bloques de longitud uno no controla todos los bloques.
+
+La serie de $a_n=1/(n+1)$ lo muestra. Sus términos tienden a cero. Para cualquier corte $N$, pongamos $m=N+1$, $q=m-1$ y $p=2m-1$. Ambos índices están después del corte y
+
+</details>
+
+#### Microcontrol 11
 
 []{#MA-MIC-ANM-01-011-011}
 
-3. ¿Puede el corte depender de la longitud del bloque?
+¿Puede el corte depender de la longitud del bloque?
+
+[]{#MA-MSOL-ANM-01-011-011}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 11</summary>
+
+**Respuesta.**
+
+No en el criterio: debe controlar simultáneamente todas las longitudes.
+
+**Fundamento en la sección 11.2.**
+
+**Condición necesaria.** Si una serie converge, entonces $a_n\to0$. En efecto, para $n\ge N+1$, el bloque con $q=n-1$ y $p=n$ tiene un término y da $|a_n|<\varepsilon$. Este argumento muestra también la limitación: controlar bloques de longitud uno no controla todos los bloques.
+
+La serie de $a_n=1/(n+1)$ lo muestra. Sus términos tienden a cero. Para cualquier corte $N$, pongamos $m=N+1$, $q=m-1$ y $p=2m-1$. Ambos índices están después del corte y
+
+$$
+s_{2m-1}-s_{m-1}=\sum_{j=m+1}^{2m}\frac1j\ge m\frac1{2m}=\frac12.
+$$
+
+La tolerancia fija $1/2$ contradice el criterio. La longitud del bloque crece: muchos aportes pequeños pueden acumular una cantidad que no desaparece. Esta prueba de divergencia usa sumas finitas, no un valor supuesto de una suma infinita.
+
+</details>
+
+#### Microcontrol 12
 
 []{#MA-MIC-ANM-01-011-012}
 
-4. ¿Cómo se cubre el caso $p=q$ al recuperar Cauchy?
+¿Cómo se cubre el caso $p=q$ al recuperar Cauchy?
+
+[]{#MA-MSOL-ANM-01-011-012}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 12</summary>
+
+**Respuesta.**
+
+La distancia entre el mismo total y sí mismo es cero, menor que cualquier tolerancia positiva.
+
+**Fundamento en la sección 11.2.**
+
+El bloque empieza en $q+1$ porque $a_q$ ya forma parte de $s_q$. El caso $p=q+1$ es la recursión; al prolongar el extremo superior se añade $a_{p+1}$ a ambos miembros. Esta identidad traduce la pregunta sobre dos sumas parciales a una pregunta sobre cualquier acumulación tardía.
+
+**Criterio de Cauchy para series reales.** La serie de $a$ converge si y sólo si
+
+$$
+\forall\varepsilon>0\ \exists N\in\mathbb N\ \forall p,q\in\mathbb N:
+\quad p>q\ge N\ \Longrightarrow\
+\left|\sum_{k=q+1}^{p}a_k\right|<\varepsilon.
+$$
+
+Por definición, la serie converge cuando converge $s$. C10 equivale esa convergencia real a que $|s_p-s_q|<\varepsilon$ para todos $p,q\ge N$, y la identidad demuestra una dirección. Recíprocamente, si los bloques ordenados cumplen el control, los pares con $p>q$ quedan controlados; si $q>p$, intercambiamos los índices y usamos simetría del valor absoluto; si $p=q$, la distancia es cero. Así $s$ es de Cauchy y C10 aporta un destino real. La completitud se usa en esta última existencia, no en la identidad finita.
+
+</details>
+
+#### Microcontrol 13
 
 []{#MA-MIC-ANM-01-011-013}
 
-5. ¿Dónde se usa completitud en el criterio de bloques?
+¿Dónde se usa completitud en el criterio de bloques?
+
+[]{#MA-MSOL-ANM-01-011-013}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 13</summary>
+
+**Respuesta.**
+
+En pasar de Cauchy de $s$ a existencia de un límite real, mediante C10; no en la identidad de sumas finitas.
+
+**Fundamento en la sección 11.2.**
+
+Por definición, la serie converge cuando converge $s$. C10 equivale esa convergencia real a que $|s_p-s_q|<\varepsilon$ para todos $p,q\ge N$, y la identidad demuestra una dirección. Recíprocamente, si los bloques ordenados cumplen el control, los pares con $p>q$ quedan controlados; si $q>p$, intercambiamos los índices y usamos simetría del valor absoluto; si $p=q$, la distancia es cero. Así $s$ es de Cauchy y C10 aporta un destino real. La completitud se usa en esta última existencia, no en la identidad finita.
+
+</details>
+
+#### Microcontrol 14
 
 []{#MA-MIC-ANM-01-011-014}
 
-6. ¿Por qué convergencia de la serie implica $a_n\to0$?
+¿Por qué convergencia de la serie implica $a_n\to0$?
+
+[]{#MA-MSOL-ANM-01-011-014}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 14</summary>
+
+**Respuesta.**
+
+Para $n\ge N+1$, el bloque de un término entre $n-1$ y $n$ da $|a_n|<\varepsilon$.
+
+**Fundamento en la sección 11.2.**
+
+El corte se escoge antes que los dos extremos; debe funcionar para bloques de cualquier longitud. Permitir un corte distinto para cada longitud fija debilitaría el enunciado.
+
+**Condición necesaria.** Si una serie converge, entonces $a_n\to0$. En efecto, para $n\ge N+1$, el bloque con $q=n-1$ y $p=n$ tiene un término y da $|a_n|<\varepsilon$. Este argumento muestra también la limitación: controlar bloques de longitud uno no controla todos los bloques.
+
+La serie de $a_n=1/(n+1)$ lo muestra. Sus términos tienden a cero. Para cualquier corte $N$, pongamos $m=N+1$, $q=m-1$ y $p=2m-1$. Ambos índices están después del corte y
+
+</details>
+
+#### Microcontrol 15
 
 []{#MA-MIC-ANM-01-011-015}
 
-7. ¿Qué pares de cortes niegan Cauchy en la armónica?
+¿Qué pares de cortes niegan Cauchy en la armónica?
+
+[]{#MA-MSOL-ANM-01-011-015}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 15</summary>
+
+**Respuesta.**
+
+Para cualquier $N$, tomar $m=N+1$, $q=m-1$ y $p=2m-1$ da una diferencia al menos $1/2$.
+
+**Fundamento en la sección 11.2.**
+
+Dos totales tardíos difieren en lo que se sumó entre sus cortes. Si $p>q$, la recursión y una inducción sobre $p-q$ dan la identidad finita
+
+$$
+s_p-s_q=\sum_{k=q+1}^{p}a_k.
+$$
+
+El bloque empieza en $q+1$ porque $a_q$ ya forma parte de $s_q$. El caso $p=q+1$ es la recursión; al prolongar el extremo superior se añade $a_{p+1}$ a ambos miembros. Esta identidad traduce la pregunta sobre dos sumas parciales a una pregunta sobre cualquier acumulación tardía.
+
+**Criterio de Cauchy para series reales.** La serie de $a$ converge si y sólo si
+
+</details>
+
+#### Microcontrol 16
 
 []{#MA-MIC-ANM-01-011-016}
 
-8. ¿El término nulo es una condición suficiente?
+¿El término nulo es una condición suficiente?
 
+[]{#MA-MSOL-ANM-01-011-016}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 16</summary>
+
+**Respuesta.**
+
+No. $1/(n+1)\to0$, pero sus bloques largos anteriores mantienen suma al menos $1/2$ después de cada corte.
+
+**Fundamento en la sección 11.2.**
+
+**Condición necesaria.** Si una serie converge, entonces $a_n\to0$. En efecto, para $n\ge N+1$, el bloque con $q=n-1$ y $p=n$ tiene un término y da $|a_n|<\varepsilon$. Este argumento muestra también la limitación: controlar bloques de longitud uno no controla todos los bloques.
+
+La serie de $a_n=1/(n+1)$ lo muestra. Sus términos tienden a cero. Para cualquier corte $N$, pongamos $m=N+1$, $q=m-1$ y $p=2m-1$. Ambos índices están después del corte y
+
+$$
+s_{2m-1}-s_{m-1}=\sum_{j=m+1}^{2m}\frac1j\ge m\frac1{2m}=\frac12.
+$$
+
+La tolerancia fija $1/2$ contradice el criterio. La longitud del bloque crece: muchos aportes pequeños pueden acumular una cantidad que no desaparece. Esta prueba de divergencia usa sumas finitas, no un valor supuesto de una suma infinita.
+
+</details>
+
+### Ejercicios de la sección 11.2
+
+#### Ejercicio 6. Identidad de bloques
+
+[]{#MA-EX-ANM-01-011-006}
+
+Prueba por inducción que $s_p-s_q=\sum_{j=q+1}^pa_j$ cuando $p>q$.
+
+[]{#MA-SOL-ANM-01-011-006}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 6</summary>
+
+**Respuesta.**
+
+Fijemos $q$. Para $p=q+1$, la recursión da la identidad. Si vale para $p$, entonces $s_{p+1}-s_q=(s_p-s_q)+a_{p+1}=\sum_{j=q+1}^{p+1}a_j$. La inducción sobre $p-q\ge1$ cubre todos los extremos; no interviene una suma infinita.
+
+**Fundamento en la sección 11.2.**
+
+Dos totales tardíos difieren en lo que se sumó entre sus cortes. Si $p>q$, la recursión y una inducción sobre $p-q$ dan la identidad finita
+
+$$
+s_p-s_q=\sum_{k=q+1}^{p}a_k.
+$$
+
+El bloque empieza en $q+1$ porque $a_q$ ya forma parte de $s_q$. El caso $p=q+1$ es la recursión; al prolongar el extremo superior se añade $a_{p+1}$ a ambos miembros. Esta identidad traduce la pregunta sobre dos sumas parciales a una pregunta sobre cualquier acumulación tardía.
+
+**Criterio de Cauchy para series reales.** La serie de $a$ converge si y sólo si
+
+</details>
+
+#### Ejercicio 7. La longitud no puede elegir el corte
+
+[]{#MA-EX-ANM-01-011-007}
+
+En la armónica $a_n=1/(n+1)$, muestra que los bloques de cualquier longitud fija tienden a cero al alejar su inicio. Explica por qué la serie diverge.
+
+[]{#MA-SOL-ANM-01-011-007}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 7</summary>
+
+**Respuesta.**
+
+Para un natural fijo $r\ge1$, $0\le\sum_{j=q+1}^{q+r}1/(j+1)\le r/(q+2)\to0$. El corte de esta estimación depende de $r$. Cauchy exige uno solo para todas las longitudes. Tomando $q=m-1$, $p=2m-1$, se obtiene un bloque al menos $1/2$ después de cualquier corte, así que no converge.
+
+Después del argumento, la [figura 11.2](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f02) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.2.**
+
+**Condición necesaria.** Si una serie converge, entonces $a_n\to0$. En efecto, para $n\ge N+1$, el bloque con $q=n-1$ y $p=n$ tiene un término y da $|a_n|<\varepsilon$. Este argumento muestra también la limitación: controlar bloques de longitud uno no controla todos los bloques.
+
+La serie de $a_n=1/(n+1)$ lo muestra. Sus términos tienden a cero. Para cualquier corte $N$, pongamos $m=N+1$, $q=m-1$ y $p=2m-1$. Ambos índices están después del corte y
+
+$$
+s_{2m-1}-s_{m-1}=\sum_{j=m+1}^{2m}\frac1j\ge m\frac1{2m}=\frac12.
+$$
+
+La tolerancia fija $1/2$ contradice el criterio. La longitud del bloque crece: muchos aportes pequeños pueden acumular una cantidad que no desaparece. Esta prueba de divergencia usa sumas finitas, no un valor supuesto de una suma infinita.
+
+</details>
+
+#### Ejercicio 8. Términos que no desaparecen
+
+[]{#MA-EX-ANM-01-011-008}
+
+Descarta convergencia de las series con términos $a_n=(-1)^n$ y $b_n=(n+1)/(n+2)$.
+
+[]{#MA-SOL-ANM-01-011-008}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 8</summary>
+
+**Respuesta.**
+
+En la primera, $|a_n|=1$ en cada índice; en la segunda, $b_n\ge1/2$. Ninguna sucesión de términos tiende a cero, y la condición necesaria de §11.2 descarta ambas convergencias. No hace falta calcular sus totales para aplicar esa condición.
+
+**Fundamento en la sección 11.2.**
+
+**Condición necesaria.** Si una serie converge, entonces $a_n\to0$. En efecto, para $n\ge N+1$, el bloque con $q=n-1$ y $p=n$ tiene un término y da $|a_n|<\varepsilon$. Este argumento muestra también la limitación: controlar bloques de longitud uno no controla todos los bloques.
+
+La serie de $a_n=1/(n+1)$ lo muestra. Sus términos tienden a cero. Para cualquier corte $N$, pongamos $m=N+1$, $q=m-1$ y $p=2m-1$. Ambos índices están después del corte y
+
+$$
+s_{2m-1}-s_{m-1}=\sum_{j=m+1}^{2m}\frac1j\ge m\frac1{2m}=\frac12.
+$$
+
+La tolerancia fija $1/2$ contradice el criterio. La longitud del bloque crece: muchos aportes pequeños pueden acumular una cantidad que no desaparece. Esta prueba de divergencia usa sumas finitas, no un valor supuesto de una suma infinita.
+
+</details>
+
+#### Ejercicio 9. Acumulación en potencias de dos
+
+[]{#MA-EX-ANM-01-011-009}
+
+Prueba $s_{2^m-1}\ge1+m/2$ para las sumas parciales armónicas, con $m\in\mathbb N$.
+
+[]{#MA-SOL-ANM-01-011-009}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 9</summary>
+
+**Respuesta.**
+
+En la notación de denominadores, $s_{2^m-1}=\sum_{j=1}^{2^m}1/j$. Para cada $i=1,\ldots,m$, el bloque $j=2^{i-1}+1,\ldots,2^i$ tiene $2^{i-1}$ términos, cada uno al menos $1/2^i$, de modo que aporta al menos $1/2$. Añadiendo el término $j=1$ resulta la cota, también válida para $m=0$. Es una partición finita; prueba que los totales carecen de barrera superior.
+
+Después del argumento, la [figura 11.2](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f02) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.2.**
+
+**Condición necesaria.** Si una serie converge, entonces $a_n\to0$. En efecto, para $n\ge N+1$, el bloque con $q=n-1$ y $p=n$ tiene un término y da $|a_n|<\varepsilon$. Este argumento muestra también la limitación: controlar bloques de longitud uno no controla todos los bloques.
+
+La serie de $a_n=1/(n+1)$ lo muestra. Sus términos tienden a cero. Para cualquier corte $N$, pongamos $m=N+1$, $q=m-1$ y $p=2m-1$. Ambos índices están después del corte y
+
+$$
+s_{2m-1}-s_{m-1}=\sum_{j=m+1}^{2m}\frac1j\ge m\frac1{2m}=\frac12.
+$$
+
+La tolerancia fija $1/2$ contradice el criterio. La longitud del bloque crece: muchos aportes pequeños pueden acumular una cantidad que no desaparece. Esta prueba de divergencia usa sumas finitas, no un valor supuesto de una suma infinita.
+
+</details>
+
+#### Ejercicio 10. Reparar una falsa prueba
+
+[]{#MA-EX-ANM-01-011-010}
+
+Diagnostica: «Como $a_n\to0$, cada término de un bloque tardío es menor que $\varepsilon$; por tanto su suma es menor que $\varepsilon$». Repara el argumento cuando todo bloque tiene longitud a lo sumo $M\ge1$.
+
+[]{#MA-SOL-ANM-01-011-010}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 10</summary>
+
+**Respuesta.**
+
+Una suma de muchos términos puede exceder $\varepsilon$, y los signos tampoco autorizan ignorar magnitudes. Si la longitud está acotada por $M$, basta hacer $|a_j|<\varepsilon/M$ en la cola. La triangular finita da magnitud del bloque menor que $r\varepsilon/M\le\varepsilon$ para $1\le r\le M$; el bloque vacío vale cero. Esto controla sólo bloques de esas longitudes, no el criterio completo sin otra hipótesis.
+
+Después del argumento, la [figura 11.2](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f02) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.2.**
+
+**Condición necesaria.** Si una serie converge, entonces $a_n\to0$. En efecto, para $n\ge N+1$, el bloque con $q=n-1$ y $p=n$ tiene un término y da $|a_n|<\varepsilon$. Este argumento muestra también la limitación: controlar bloques de longitud uno no controla todos los bloques.
+
+La serie de $a_n=1/(n+1)$ lo muestra. Sus términos tienden a cero. Para cualquier corte $N$, pongamos $m=N+1$, $q=m-1$ y $p=2m-1$. Ambos índices están después del corte y
+
+$$
+s_{2m-1}-s_{m-1}=\sum_{j=m+1}^{2m}\frac1j\ge m\frac1{2m}=\frac12.
+$$
+
+La tolerancia fija $1/2$ contradice el criterio. La longitud del bloque crece: muchos aportes pequeños pueden acumular una cantidad que no desaparece. Esta prueba de divergencia usa sumas finitas, no un valor supuesto de una suma infinita.
+
+</details>
 ## 11.3. Fórmulas finitas y restos exactos
 
 []{#MA-SEC-ANM-01-011-003}
@@ -223,38 +873,356 @@ Para $r=-1/2$, el total alterna alrededor de $2/3$ y su error exacto es $(2/3)2^
 
 ### Antes de seguir
 
+#### Microcontrol 17
+
 []{#MA-MIC-ANM-01-011-017}
 
-1. ¿Qué total produce $a_n=c_n-c_{n+1}$?
+¿Qué total produce $a_n=c_n-c_{n+1}$?
+
+[]{#MA-MSOL-ANM-01-011-017}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 17</summary>
+
+**Respuesta.**
+
+$s_n=c_0-c_{n+1}$ por cancelación finita, demostrable por inducción.
+
+**Fundamento en la sección 11.3.**
+
+Si $a_n=c_n-c_{n+1}$, una inducción cancela términos consecutivos y entrega
+
+$$
+s_n=c_0-c_{n+1}.
+$$
+
+Por C06, si $c_n\to C$, entonces la serie converge y su suma es $c_0-C$. Recíprocamente, si $s_n\to S$, la misma identidad da $c_{n+1}\to c_0-S$, y la sucesión completa $c$ tiene ese límite: un único término inicial no altera el control eventual. Cuando convergen, el **resto** en el corte $n$ es el real
+
+$$
+R_n=S-s_n=c_{n+1}-C.
+$$
+
+Por ejemplo, $a_n=1/((n+1)(n+2))=1/(n+1)-1/(n+2)$ produce $s_n=1-1/(n+2)$, suma uno y resto $1/(n+2)$. No se requiere un criterio nuevo para cada fracción: se reconoce una diferencia finita y se reutiliza un límite conocido.
+
+</details>
+
+#### Microcontrol 18
 
 []{#MA-MIC-ANM-01-011-018}
 
-2. ¿Cuál es el resto telescópico si $c_n\to C$?
+¿Cuál es el resto telescópico si $c_n\to C$?
+
+[]{#MA-MSOL-ANM-01-011-018}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 18</summary>
+
+**Respuesta.**
+
+La suma es $c_0-C$ y $R_n=c_{n+1}-C$.
+
+**Fundamento en la sección 11.3.**
+
+Por C06, si $c_n\to C$, entonces la serie converge y su suma es $c_0-C$. Recíprocamente, si $s_n\to S$, la misma identidad da $c_{n+1}\to c_0-S$, y la sucesión completa $c$ tiene ese límite: un único término inicial no altera el control eventual. Cuando convergen, el **resto** en el corte $n$ es el real
+
+$$
+R_n=S-s_n=c_{n+1}-C.
+$$
+
+Por ejemplo, $a_n=1/((n+1)(n+2))=1/(n+1)-1/(n+2)$ produce $s_n=1-1/(n+2)$, suma uno y resto $1/(n+2)$. No se requiere un criterio nuevo para cada fracción: se reconoce una diferencia finita y se reutiliza un límite conocido.
+
+</details>
+
+#### Microcontrol 19
 
 []{#MA-MIC-ANM-01-011-019}
 
-3. ¿Cuál es la suma de $1/((n+1)(n+2))$?
+¿Cuál es la suma de $1/((n+1)(n+2))$?
+
+[]{#MA-MSOL-ANM-01-011-019}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 19</summary>
+
+**Respuesta.**
+
+Uno: $s_n=1-1/(n+2)\to1$.
+
+**Fundamento en la sección 11.3.**
+
+Por C06, si $c_n\to C$, entonces la serie converge y su suma es $c_0-C$. Recíprocamente, si $s_n\to S$, la misma identidad da $c_{n+1}\to c_0-S$, y la sucesión completa $c$ tiene ese límite: un único término inicial no altera el control eventual. Cuando convergen, el **resto** en el corte $n$ es el real
+
+$$
+R_n=S-s_n=c_{n+1}-C.
+$$
+
+Por ejemplo, $a_n=1/((n+1)(n+2))=1/(n+1)-1/(n+2)$ produce $s_n=1-1/(n+2)$, suma uno y resto $1/(n+2)$. No se requiere un criterio nuevo para cada fracción: se reconoce una diferencia finita y se reutiliza un límite conocido.
+
+</details>
+
+#### Microcontrol 20
 
 []{#MA-MIC-ANM-01-011-020}
 
-4. ¿Qué identidad geométrica es válida antes de cualquier límite?
+¿Qué identidad geométrica es válida antes de cualquier límite?
+
+[]{#MA-MSOL-ANM-01-011-020}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 20</summary>
+
+**Respuesta.**
+
+$(1-r)\sum_{k=0}^nr^k=1-r^{n+1}$, para todo real $r$ y natural $n$.
+
+**Fundamento en la sección 11.3.**
+
+Una fórmula para el total finito puede resolver simultáneamente existencia y error. La estrategia consiste en simplificar $s_n$ antes de tomar límites; manipular una supuesta suma infinita invertiría ese orden.
+
+Si $a_n=c_n-c_{n+1}$, una inducción cancela términos consecutivos y entrega
+
+$$
+s_n=c_0-c_{n+1}.
+$$
+
+Por C06, si $c_n\to C$, entonces la serie converge y su suma es $c_0-C$. Recíprocamente, si $s_n\to S$, la misma identidad da $c_{n+1}\to c_0-S$, y la sucesión completa $c$ tiene ese límite: un único término inicial no altera el control eventual. Cuando convergen, el **resto** en el corte $n$ es el real
+
+</details>
+
+#### Microcontrol 21
 
 []{#MA-MIC-ANM-01-011-021}
 
-5. ¿Para qué razones reales converge la geométrica?
+¿Para qué razones reales converge la geométrica?
+
+[]{#MA-MSOL-ANM-01-011-021}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 21</summary>
+
+**Respuesta.**
+
+Exactamente para $|r|<1$; fuera de ese intervalo los términos no tienden a cero.
+
+**Fundamento en la sección 11.3.**
+
+Si $|r|<1$, las potencias $r^{n+1}$ tienden a cero. Para $0<\rho=|r|<1$, escribimos $\rho^{-1}=1+t$ con $t>0$; la inducción da $(1+t)^n\ge1+nt$, por lo que $\rho^n\le1/(1+nt)\to0$ por arquimedianidad. Si $r=0$, el primer término vale uno y los siguientes cero. Como $1-r\ne0$, C06 aplicado a la identidad finita demuestra
+
+$$
+S=\frac1{1-r},\qquad R_n=\frac{r^{n+1}}{1-r},\qquad
+|R_n|=\frac{|r|^{n+1}}{|1-r|}.
+$$
+
+La estimación precisa usa $|1-r|$; para razones negativas puede ser mejor que reemplazarlo por $1-|r|$. La serie geométrica converge exactamente para $|r|<1$. Si $|r|\ge1$, sus términos no tienden a cero: $|r^n|\ge1$ en cada índice, y la condición necesaria de §11.2 descarta convergencia. Esto incluye $r=1$ y $r=-1$ sin dividir por cero.
+
+</details>
+
+#### Microcontrol 22
 
 []{#MA-MIC-ANM-01-011-022}
 
-6. ¿Qué ocurre con la geométrica de razón cero?
+¿Qué ocurre con la geométrica de razón cero?
+
+[]{#MA-MSOL-ANM-01-011-022}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 22</summary>
+
+**Respuesta.**
+
+Con $r^0=1$, sus términos son uno y luego ceros, así que su suma es uno.
+
+**Fundamento en la sección 11.3.**
+
+Para la serie geométrica $a_n=r^n$, las potencias naturales satisfacen $r^0=1$ y $r^{n+1}=r^nr$; en particular usamos $0^0=1$ como convención de exponente cero. Al restar la suma finita multiplicada por $r$, o por inducción, obtenemos
+
+$$
+(1-r)s_n=1-r^{n+1}.
+$$
+
+Si $|r|<1$, las potencias $r^{n+1}$ tienden a cero. Para $0<\rho=|r|<1$, escribimos $\rho^{-1}=1+t$ con $t>0$; la inducción da $(1+t)^n\ge1+nt$, por lo que $\rho^n\le1/(1+nt)\to0$ por arquimedianidad. Si $r=0$, el primer término vale uno y los siguientes cero. Como $1-r\ne0$, C06 aplicado a la identidad finita demuestra
+
+</details>
+
+#### Microcontrol 23
 
 []{#MA-MIC-ANM-01-011-023}
 
-7. ¿Cuál es el resto exacto cuando $|r|<1$?
+¿Cuál es el resto exacto cuando $|r|<1$?
+
+[]{#MA-MSOL-ANM-01-011-023}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 23</summary>
+
+**Respuesta.**
+
+$R_n=r^{n+1}/(1-r)$, después de probar $S=1/(1-r)$.
+
+**Fundamento en la sección 11.3.**
+
+La estimación precisa usa $|1-r|$; para razones negativas puede ser mejor que reemplazarlo por $1-|r|$. La serie geométrica converge exactamente para $|r|<1$. Si $|r|\ge1$, sus términos no tienden a cero: $|r^n|\ge1$ en cada índice, y la condición necesaria de §11.2 descarta convergencia. Esto incluye $r=1$ y $r=-1$ sin dividir por cero.
+
+Para $r=-1/2$, el total alterna alrededor de $2/3$ y su error exacto es $(2/3)2^{-(n+1)}$. El valor numérico del destino aparece después de la identidad y de la prueba del límite de las potencias.
+
+</details>
+
+#### Microcontrol 24
 
 []{#MA-MIC-ANM-01-011-024}
 
-8. ¿Es correcto dividir por $1-r$ para estudiar $r=1$?
+¿Es correcto dividir por $1-r$ para estudiar $r=1$?
 
+[]{#MA-MSOL-ANM-01-011-024}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 24</summary>
+
+**Respuesta.**
+
+No. Para $r=1$, $s_n=n+1$ y la condición del término nulo ya descarta convergencia.
+
+**Fundamento en la sección 11.3.**
+
+Si $|r|<1$, las potencias $r^{n+1}$ tienden a cero. Para $0<\rho=|r|<1$, escribimos $\rho^{-1}=1+t$ con $t>0$; la inducción da $(1+t)^n\ge1+nt$, por lo que $\rho^n\le1/(1+nt)\to0$ por arquimedianidad. Si $r=0$, el primer término vale uno y los siguientes cero. Como $1-r\ne0$, C06 aplicado a la identidad finita demuestra
+
+$$
+S=\frac1{1-r},\qquad R_n=\frac{r^{n+1}}{1-r},\qquad
+|R_n|=\frac{|r|^{n+1}}{|1-r|}.
+$$
+
+La estimación precisa usa $|1-r|$; para razones negativas puede ser mejor que reemplazarlo por $1-|r|$. La serie geométrica converge exactamente para $|r|<1$. Si $|r|\ge1$, sus términos no tienden a cero: $|r^n|\ge1$ en cada índice, y la condición necesaria de §11.2 descarta convergencia. Esto incluye $r=1$ y $r=-1$ sin dividir por cero.
+
+</details>
+
+### Ejercicios de la sección 11.3
+
+#### Ejercicio 11. Telescopaje y corte
+
+[]{#MA-EX-ANM-01-011-011}
+
+Para $a_n=1/((n+1)(n+2))$, calcula el total, suma y resto; encuentra un corte que garantice error menor que $1/100$.
+
+[]{#MA-SOL-ANM-01-011-011}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 11</summary>
+
+**Respuesta.**
+
+La descomposición $a_n=1/(n+1)-1/(n+2)$ da $s_n=1-1/(n+2)$. La suma es uno y el resto $1/(n+2)$. Error estrictamente menor que $1/100$ equivale a $n+2>100$; basta $n=99$ y todos los cortes posteriores. $n=98$ sólo da igualdad con la tolerancia.
+
+Después del argumento, la [figura 11.3](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f03) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.3.**
+
+La estimación precisa usa $|1-r|$; para razones negativas puede ser mejor que reemplazarlo por $1-|r|$. La serie geométrica converge exactamente para $|r|<1$. Si $|r|\ge1$, sus términos no tienden a cero: $|r^n|\ge1$ en cada índice, y la condición necesaria de §11.2 descarta convergencia. Esto incluye $r=1$ y $r=-1$ sin dividir por cero.
+
+Para $r=-1/2$, el total alterna alrededor de $2/3$ y su error exacto es $(2/3)2^{-(n+1)}$. El valor numérico del destino aparece después de la identidad y de la prueba del límite de las potencias.
+
+</details>
+
+#### Ejercicio 12. Razón negativa
+
+[]{#MA-EX-ANM-01-011-012}
+
+Calcula la suma y resto de la geométrica $r=-1/2$. Encuentra un corte que certifique error menor que $1/100$.
+
+[]{#MA-SOL-ANM-01-011-012}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 12</summary>
+
+**Respuesta.**
+
+Por §11.3, $S=2/3$ y $R_n=(2/3)(-1/2)^{n+1}$. Su magnitud es $1/(3\cdot2^n)$. Para $n=6$ vale $1/192<1/100$, y para $n=5$ vale $1/96>1/100$; por ello seis es el primer corte suficiente en la cota exacta. Hasta él se suman siete términos.
+
+Después del argumento, la [figura 11.3](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f03) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.3.**
+
+La estimación precisa usa $|1-r|$; para razones negativas puede ser mejor que reemplazarlo por $1-|r|$. La serie geométrica converge exactamente para $|r|<1$. Si $|r|\ge1$, sus términos no tienden a cero: $|r^n|\ge1$ en cada índice, y la condición necesaria de §11.2 descarta convergencia. Esto incluye $r=1$ y $r=-1$ sin dividir por cero.
+
+Para $r=-1/2$, el total alterna alrededor de $2/3$ y su error exacto es $(2/3)2^{-(n+1)}$. El valor numérico del destino aparece después de la identidad y de la prueba del límite de las potencias.
+
+</details>
+
+#### Ejercicio 13. Todos los casos geométricos
+
+[]{#MA-EX-ANM-01-011-013}
+
+Clasifica la convergencia de $\sum r^n$ para todos los reales $r$, incluyendo cero y ambos extremos.
+
+[]{#MA-SOL-ANM-01-011-013}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 13</summary>
+
+**Respuesta.**
+
+Si $|r|<1$, la identidad finita y $r^{n+1}\to0$ dan suma $1/(1-r)$. En cero se usa $r^0=1$: suma uno. Para $|r|\ge1$, $|r^n|\ge1$, por lo que falla el término nulo. En particular $r=1$ tiene totales $n+1$, y $r=-1$ totales uno/cero; ambas divergen.
+
+Después del argumento, la [figura 11.3](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f03) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.3.**
+
+La estimación precisa usa $|1-r|$; para razones negativas puede ser mejor que reemplazarlo por $1-|r|$. La serie geométrica converge exactamente para $|r|<1$. Si $|r|\ge1$, sus términos no tienden a cero: $|r^n|\ge1$ en cada índice, y la condición necesaria de §11.2 descarta convergencia. Esto incluye $r=1$ y $r=-1$ sin dividir por cero.
+
+Para $r=-1/2$, el total alterna alrededor de $2/3$ y su error exacto es $(2/3)2^{-(n+1)}$. El valor numérico del destino aparece después de la identidad y de la prueba del límite de las potencias.
+
+</details>
+
+#### Ejercicio 14. La diferencia puede sumar sin magnitudes
+
+[]{#MA-EX-ANM-01-011-014}
+
+Para $c_n=(-1)^n/(n+1)$, prueba convergencia de la serie $a_n=c_n-c_{n+1}$ y decide si la serie de magnitudes $|a_n|$ converge.
+
+[]{#MA-SOL-ANM-01-011-014}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 14</summary>
+
+**Respuesta.**
+
+$c_n\to0$, así que por telescopaje $s_n=1-c_{n+1}\to1$. Además $a_n=(-1)^n[1/(n+1)+1/(n+2)]$, luego $|a_n|\ge1/(n+1)$. Si sus magnitudes tuvieran totales acotados, los armónicos quedarían acotados por comparación finita, contradiciendo 11.9. La serie original converge y la de magnitudes diverge. La prueba sólo usa telescopaje y la acumulación armónica ya establecida; no necesita el criterio alternado ni el de convergencia absoluta.
+
+**Fundamento en la sección 11.3.**
+
+La estimación precisa usa $|1-r|$; para razones negativas puede ser mejor que reemplazarlo por $1-|r|$. La serie geométrica converge exactamente para $|r|<1$. Si $|r|\ge1$, sus términos no tienden a cero: $|r^n|\ge1$ en cada índice, y la condición necesaria de §11.2 descarta convergencia. Esto incluye $r=1$ y $r=-1$ sin dividir por cero.
+
+Para $r=-1/2$, el total alterna alrededor de $2/3$ y su error exacto es $(2/3)2^{-(n+1)}$. El valor numérico del destino aparece después de la identidad y de la prueba del límite de las potencias.
+
+</details>
+
+#### Ejercicio 15. Telescopar no crea destino
+
+[]{#MA-EX-ANM-01-011-015}
+
+Sea $a_n=c_n-c_{n+1}$. Prueba que su serie converge si y sólo si $c_n$ converge, y relaciona ambos límites.
+
+[]{#MA-SOL-ANM-01-011-015}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 15</summary>
+
+**Respuesta.**
+
+Siempre $s_n=c_0-c_{n+1}$. Si $c_n\to C$, la serie tiene suma $c_0-C$. Si $s_n\to S$, entonces $c_{n+1}=c_0-s_n\to c_0-S$; para $n\ge1$ se traslada el corte en una unidad, y el término $c_0$ no afecta el límite. Así $c_n\to c_0-S$. El telescopaje proporciona una equivalencia, no convergencia automática.
+
+**Fundamento en la sección 11.3.**
+
+Una fórmula para el total finito puede resolver simultáneamente existencia y error. La estrategia consiste en simplificar $s_n$ antes de tomar límites; manipular una supuesta suma infinita invertiría ese orden.
+
+Si $a_n=c_n-c_{n+1}$, una inducción cancela términos consecutivos y entrega
+
+$$
+s_n=c_0-c_{n+1}.
+$$
+
+Por C06, si $c_n\to C$, entonces la serie converge y su suma es $c_0-C$. Recíprocamente, si $s_n\to S$, la misma identidad da $c_{n+1}\to c_0-S$, y la sucesión completa $c$ tiene ese límite: un único término inicial no altera el control eventual. Cuando convergen, el **resto** en el corte $n$ es el real
+
+</details>
 ## 11.4. Acumulación positiva y barreras
 
 []{#MA-SEC-ANM-01-011-004}
@@ -289,38 +1257,352 @@ Encontrar una barrera puede probar existencia sin calcular el valor exacto del d
 
 ### Antes de seguir
 
+#### Microcontrol 25
+
 []{#MA-MIC-ANM-01-011-025}
 
-1. ¿Qué hipótesis hace crecientes las sumas parciales?
+¿Qué hipótesis hace crecientes las sumas parciales?
+
+[]{#MA-MSOL-ANM-01-011-025}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 25</summary>
+
+**Respuesta.**
+
+$a_n\ge0$: el incremento $s_{n+1}-s_n=a_{n+1}$ es no negativo.
+
+**Fundamento en la sección 11.4.**
+
+Cuando $a_n\ge0$, cada nuevo aporte mueve el total hacia la derecha: $s_{n+1}-s_n=a_{n+1}\ge0$. El control de cancelaciones desaparece y la cuestión se reduce a encontrar una barrera superior para todos los totales.
+
+**Barrera positiva.** Una serie de términos no negativos converge si y sólo si sus sumas parciales están acotadas superiormente. La necesidad se sigue de C06. Para probar suficiencia desde las bases de completitud, sea
+
+$$
+S=\sup\{s_n:n\in\mathbb N\}.
+$$
+
+El conjunto es no vacío y tiene cota superior por hipótesis, de modo que el supremo real existe por C03, la base de completitud heredada en C10. Dada $\varepsilon>0$, $S-\varepsilon$ no puede ser cota superior: existe $N$ con $S-\varepsilon<s_N\le S$. La no negatividad asegura que para todo $n\ge N$, $s_N\le s_n\le S$, luego $|S-s_n|<\varepsilon$. Hemos reconstruido el mecanismo de monotonía y barrera sin necesitar importar otro criterio de series.
+
+</details>
+
+#### Microcontrol 26
 
 []{#MA-MIC-ANM-01-011-026}
 
-2. ¿Qué cota basta para una serie no negativa?
+¿Qué cota basta para una serie no negativa?
+
+[]{#MA-MSOL-ANM-01-011-026}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 26</summary>
+
+**Respuesta.**
+
+Una cota superior real común a todas sus sumas parciales.
+
+**Fundamento en la sección 11.4.**
+
+**Barrera positiva.** Una serie de términos no negativos converge si y sólo si sus sumas parciales están acotadas superiormente. La necesidad se sigue de C06. Para probar suficiencia desde las bases de completitud, sea
+
+$$
+S=\sup\{s_n:n\in\mathbb N\}.
+$$
+
+El conjunto es no vacío y tiene cota superior por hipótesis, de modo que el supremo real existe por C03, la base de completitud heredada en C10. Dada $\varepsilon>0$, $S-\varepsilon$ no puede ser cota superior: existe $N$ con $S-\varepsilon<s_N\le S$. La no negatividad asegura que para todo $n\ge N$, $s_N\le s_n\le S$, luego $|S-s_n|<\varepsilon$. Hemos reconstruido el mecanismo de monotonía y barrera sin necesitar importar otro criterio de series.
+
+</details>
+
+#### Microcontrol 27
 
 []{#MA-MIC-ANM-01-011-027}
 
-3. ¿Qué conjunto se usa para construir el destino por supremo?
+¿Qué conjunto se usa para construir el destino por supremo?
+
+[]{#MA-MSOL-ANM-01-011-027}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 27</summary>
+
+**Respuesta.**
+
+$\{s_n:n\in\mathbb N\}$, no vacío y acotado superiormente.
+
+**Fundamento en la sección 11.4.**
+
+**Barrera positiva.** Una serie de términos no negativos converge si y sólo si sus sumas parciales están acotadas superiormente. La necesidad se sigue de C06. Para probar suficiencia desde las bases de completitud, sea
+
+$$
+S=\sup\{s_n:n\in\mathbb N\}.
+$$
+
+El conjunto es no vacío y tiene cota superior por hipótesis, de modo que el supremo real existe por C03, la base de completitud heredada en C10. Dada $\varepsilon>0$, $S-\varepsilon$ no puede ser cota superior: existe $N$ con $S-\varepsilon<s_N\le S$. La no negatividad asegura que para todo $n\ge N$, $s_N\le s_n\le S$, luego $|S-s_n|<\varepsilon$. Hemos reconstruido el mecanismo de monotonía y barrera sin necesitar importar otro criterio de series.
+
+</details>
+
+#### Microcontrol 28
 
 []{#MA-MIC-ANM-01-011-028}
 
-4. ¿Cómo se encuentra un total cercano por debajo del supremo?
+¿Cómo se encuentra un total cercano por debajo del supremo?
+
+[]{#MA-MSOL-ANM-01-011-028}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 28</summary>
+
+**Respuesta.**
+
+$S-\varepsilon$ no es cota superior, por lo que existe $N$ con $s_N>S-\varepsilon$.
+
+**Fundamento en la sección 11.4.**
+
+Cuando $a_n\ge0$, cada nuevo aporte mueve el total hacia la derecha: $s_{n+1}-s_n=a_{n+1}\ge0$. El control de cancelaciones desaparece y la cuestión se reduce a encontrar una barrera superior para todos los totales.
+
+**Barrera positiva.** Una serie de términos no negativos converge si y sólo si sus sumas parciales están acotadas superiormente. La necesidad se sigue de C06. Para probar suficiencia desde las bases de completitud, sea
+
+$$
+S=\sup\{s_n:n\in\mathbb N\}.
+$$
+
+El conjunto es no vacío y tiene cota superior por hipótesis, de modo que el supremo real existe por C03, la base de completitud heredada en C10. Dada $\varepsilon>0$, $S-\varepsilon$ no puede ser cota superior: existe $N$ con $S-\varepsilon<s_N\le S$. La no negatividad asegura que para todo $n\ge N$, $s_N\le s_n\le S$, luego $|S-s_n|<\varepsilon$. Hemos reconstruido el mecanismo de monotonía y barrera sin necesitar importar otro criterio de series.
+
+</details>
+
+#### Microcontrol 29
 
 []{#MA-MIC-ANM-01-011-029}
 
-5. ¿Por qué todos los totales posteriores siguen cerca?
+¿Por qué todos los totales posteriores siguen cerca?
+
+[]{#MA-MSOL-ANM-01-011-029}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 29</summary>
+
+**Respuesta.**
+
+La no negatividad da $s_N\le s_n\le S$ para $n\ge N$.
+
+**Fundamento en la sección 11.4.**
+
+El conjunto es no vacío y tiene cota superior por hipótesis, de modo que el supremo real existe por C03, la base de completitud heredada en C10. Dada $\varepsilon>0$, $S-\varepsilon$ no puede ser cota superior: existe $N$ con $S-\varepsilon<s_N\le S$. La no negatividad asegura que para todo $n\ge N$, $s_N\le s_n\le S$, luego $|S-s_n|<\varepsilon$. Hemos reconstruido el mecanismo de monotonía y barrera sin necesitar importar otro criterio de series.
+
+Si los totales no tienen cota superior, exceden finalmente cualquier real $M$: existe $N$ con $s_N>M$, y todos los posteriores son mayores que $M$. Esta es una descripción de divergencia hacia arriba; no asigna a la serie una suma real llamada infinito.
+
+</details>
+
+#### Microcontrol 30
 
 []{#MA-MIC-ANM-01-011-030}
 
-6. ¿Qué conclusión da $0\le a_n\le b_n$ si la serie de $b$ converge?
+¿Qué conclusión da $0\le a_n\le b_n$ si la serie de $b$ converge?
+
+[]{#MA-MSOL-ANM-01-011-030}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 30</summary>
+
+**Respuesta.**
+
+La serie de $a$ converge y $0\le S_a\le S_b$ si la comparación vale desde el inicio.
+
+**Fundamento en la sección 11.4.**
+
+La serie de la derecha tiene suma uno por §11.3, así que $\sum a_n$ converge con suma entre cero y uno. Incluso su resto se controla: para $p>n$ sumamos la comparación sólo en el bloque $n+1,\ldots,p$ y luego tomamos $p\to\infty$. El telescopaje entrega
+
+$$
+0\le S_a-s_n\le\frac1{n+2}.
+$$
+
+Encontrar una barrera puede probar existencia sin calcular el valor exacto del destino. El bloque posterior da además un certificado de error.
+
+</details>
+
+#### Microcontrol 31
 
 []{#MA-MIC-ANM-01-011-031}
 
-7. ¿Una comparación eventual conserva automáticamente el orden de sumas completas?
+¿Una comparación eventual conserva automáticamente el orden de sumas completas?
+
+[]{#MA-MSOL-ANM-01-011-031}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 31</summary>
+
+**Respuesta.**
+
+No. Los prefijos pueden modificar esas sumas; la comparación garantiza convergencia de las colas.
+
+**Fundamento en la sección 11.4.**
+
+**Comparación directa.** Si $0\le a_n\le b_n$ en todos los índices y la serie de $b$ converge, entonces la de $a$ también converge y sus sumas cumplen $0\le S_a\le S_b$. Las desigualdades se conservan al sumar finitamente, de modo que $0\le s_n\le t_n\le S_b$. La barrera positiva aporta $S_a$ y C06 conserva el orden al pasar al límite. También podemos comparar desde un índice fijo: se aplica el mismo argumento a las colas reindexadas, dejando el prefijo como una suma real finita. En ese caso, la desigualdad entre sumas completas requiere considerar sus prefijos y no se afirma automáticamente.
+
+</details>
+
+#### Microcontrol 32
 
 []{#MA-MIC-ANM-01-011-032}
 
-8. ¿Qué resto garantiza la comparación para $a_n=1/(n+2)^2$?
+¿Qué resto garantiza la comparación para $a_n=1/(n+2)^2$?
 
+[]{#MA-MSOL-ANM-01-011-032}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 32</summary>
+
+**Respuesta.**
+
+$0\le S_a-s_n\le1/(n+2)$, comparando el bloque posterior con la serie telescópica.
+
+**Fundamento en la sección 11.4.**
+
+La serie de la derecha tiene suma uno por §11.3, así que $\sum a_n$ converge con suma entre cero y uno. Incluso su resto se controla: para $p>n$ sumamos la comparación sólo en el bloque $n+1,\ldots,p$ y luego tomamos $p\to\infty$. El telescopaje entrega
+
+$$
+0\le S_a-s_n\le\frac1{n+2}.
+$$
+
+Encontrar una barrera puede probar existencia sin calcular el valor exacto del destino. El bloque posterior da además un certificado de error.
+
+</details>
+
+### Ejercicios de la sección 11.4
+
+#### Ejercicio 16. Dónde se usa la barrera
+
+[]{#MA-EX-ANM-01-011-016}
+
+Reconstruye desde el supremo la convergencia de una serie no negativa con totales acotados superiormente.
+
+[]{#MA-SOL-ANM-01-011-016}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 16</summary>
+
+**Respuesta.**
+
+Sea $S=\sup\{s_n\}$, real por no vacuidad y cota. Dada $\varepsilon>0$, existe $N$ con $s_N>S-\varepsilon$ por optimalidad del supremo. La no negatividad hace $s_N\le s_n\le S$ para todo $n\ge N$, así que $|s_n-S|<\varepsilon$. Completitud construye $S$ y el signo mantiene cerca toda la cola.
+
+**Fundamento en la sección 11.4.**
+
+Cuando $a_n\ge0$, cada nuevo aporte mueve el total hacia la derecha: $s_{n+1}-s_n=a_{n+1}\ge0$. El control de cancelaciones desaparece y la cuestión se reduce a encontrar una barrera superior para todos los totales.
+
+**Barrera positiva.** Una serie de términos no negativos converge si y sólo si sus sumas parciales están acotadas superiormente. La necesidad se sigue de C06. Para probar suficiencia desde las bases de completitud, sea
+
+$$
+S=\sup\{s_n:n\in\mathbb N\}.
+$$
+
+El conjunto es no vacío y tiene cota superior por hipótesis, de modo que el supremo real existe por C03, la base de completitud heredada en C10. Dada $\varepsilon>0$, $S-\varepsilon$ no puede ser cota superior: existe $N$ con $S-\varepsilon<s_N\le S$. La no negatividad asegura que para todo $n\ge N$, $s_N\le s_n\le S$, luego $|S-s_n|<\varepsilon$. Hemos reconstruido el mecanismo de monotonía y barrera sin necesitar importar otro criterio de series.
+
+</details>
+
+#### Ejercicio 17. Comparar y estimar
+
+[]{#MA-EX-ANM-01-011-017}
+
+Prueba convergencia de $\sum1/(n+2)^2$ y una cota de resto usando el telescopaje de §11.3.
+
+[]{#MA-SOL-ANM-01-011-017}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 17</summary>
+
+**Respuesta.**
+
+Para todo $n$, $0\le1/(n+2)^2\le1/((n+1)(n+2))$. Sus totales están entre cero y los telescópicos, por tanto entre cero y uno. La barrera positiva prueba existencia de $S$. Para $p>n$, comparar sólo la cola da $0\le s_p-s_n\le1/(n+2)-1/(p+2)$. Al tomar $p\to\infty$, $0\le S-s_n\le1/(n+2)$.
+
+**Fundamento en la sección 11.4.**
+
+La serie de la derecha tiene suma uno por §11.3, así que $\sum a_n$ converge con suma entre cero y uno. Incluso su resto se controla: para $p>n$ sumamos la comparación sólo en el bloque $n+1,\ldots,p$ y luego tomamos $p\to\infty$. El telescopaje entrega
+
+$$
+0\le S_a-s_n\le\frac1{n+2}.
+$$
+
+Encontrar una barrera puede probar existencia sin calcular el valor exacto del destino. El bloque posterior da además un certificado de error.
+
+</details>
+
+#### Ejercicio 18. Comparación eventual
+
+[]{#MA-EX-ANM-01-011-018}
+
+Sea $a_0=100$ y $a_n=2^{-n}$ para $n\ge1$, y sea $b_n=2^{-n}$ en todos los índices. Compara las convergencias y las sumas.
+
+[]{#MA-SOL-ANM-01-011-018}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 18</summary>
+
+**Respuesta.**
+
+Coinciden desde uno y difieren en $a_0-b_0=99$. La geométrica de $b$ tiene suma dos, así que los totales de $a$ son los de $b$ más 99 y su suma es 101. La comparación eventual no da $S_a\le S_b$; conserva convergencia pero debe incorporar el prefijo.
+
+**Fundamento en la sección 11.4.**
+
+Si los totales no tienen cota superior, exceden finalmente cualquier real $M$: existe $N$ con $s_N>M$, y todos los posteriores son mayores que $M$. Esta es una descripción de divergencia hacia arriba; no asigna a la serie una suma real llamada infinito.
+
+**Comparación directa.** Si $0\le a_n\le b_n$ en todos los índices y la serie de $b$ converge, entonces la de $a$ también converge y sus sumas cumplen $0\le S_a\le S_b$. Las desigualdades se conservan al sumar finitamente, de modo que $0\le s_n\le t_n\le S_b$. La barrera positiva aporta $S_a$ y C06 conserva el orden al pasar al límite. También podemos comparar desde un índice fijo: se aplica el mismo argumento a las colas reindexadas, dejando el prefijo como una suma real finita. En ese caso, la desigualdad entre sumas completas requiere considerar sus prefijos y no se afirma automáticamente.
+
+</details>
+
+#### Ejercicio 19. Una barrera para series con signos
+
+[]{#MA-EX-ANM-01-011-019}
+
+Explica por qué la prueba positiva no se aplica a una serie arbitraria cuyas sumas parciales son acotadas superiormente; aporta un contraejemplo.
+
+[]{#MA-SOL-ANM-01-011-019}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 19</summary>
+
+**Respuesta.**
+
+El supremo puede existir, pero tras encontrar un total cercano no sabemos que los posteriores sean mayores. Para $a_n=(-1)^n$, el supremo de los totales es uno y éstos alternan uno/cero; no se conserva cercanía al supremo. Falta la no negatividad de los incrementos.
+
+Después del argumento, la [figura 11.1](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f01) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.4.**
+
+Cuando $a_n\ge0$, cada nuevo aporte mueve el total hacia la derecha: $s_{n+1}-s_n=a_{n+1}\ge0$. El control de cancelaciones desaparece y la cuestión se reduce a encontrar una barrera superior para todos los totales.
+
+**Barrera positiva.** Una serie de términos no negativos converge si y sólo si sus sumas parciales están acotadas superiormente. La necesidad se sigue de C06. Para probar suficiencia desde las bases de completitud, sea
+
+$$
+S=\sup\{s_n:n\in\mathbb N\}.
+$$
+
+El conjunto es no vacío y tiene cota superior por hipótesis, de modo que el supremo real existe por C03, la base de completitud heredada en C10. Dada $\varepsilon>0$, $S-\varepsilon$ no puede ser cota superior: existe $N$ con $S-\varepsilon<s_N\le S$. La no negatividad asegura que para todo $n\ge N$, $s_N\le s_n\le S$, luego $|S-s_n|<\varepsilon$. Hemos reconstruido el mecanismo de monotonía y barrera sin necesitar importar otro criterio de series.
+
+</details>
+
+#### Ejercicio 20. Barrera sin fórmula de suma
+
+[]{#MA-EX-ANM-01-011-020}
+
+Para cualquier sucesión $0\le\theta_n\le1$, prueba convergencia de $a_n=\theta_n/((n+1)(n+2))$ y estima su resto sin identificar su suma.
+
+[]{#MA-SOL-ANM-01-011-020}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 20</summary>
+
+**Respuesta.**
+
+La comparación finita con $b_n=1/((n+1)(n+2))$ acota todos los totales por uno y prueba convergencia por §11.4. Comparando bloques y tomando el límite del extremo posterior resulta $0\le S-s_n\le1/(n+2)$. Se conserva uniformidad en la elección de $\theta$, pero no se afirma que las diferentes sucesiones tengan la misma suma.
+
+Después del argumento, la [figura 11.1](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f01) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.4.**
+
+Si los totales no tienen cota superior, exceden finalmente cualquier real $M$: existe $N$ con $s_N>M$, y todos los posteriores son mayores que $M$. Esta es una descripción de divergencia hacia arriba; no asigna a la serie una suma real llamada infinito.
+
+**Comparación directa.** Si $0\le a_n\le b_n$ en todos los índices y la serie de $b$ converge, entonces la de $a$ también converge y sus sumas cumplen $0\le S_a\le S_b$. Las desigualdades se conservan al sumar finitamente, de modo que $0\le s_n\le t_n\le S_b$. La barrera positiva aporta $S_a$ y C06 conserva el orden al pasar al límite. También podemos comparar desde un índice fijo: se aplica el mismo argumento a las colas reindexadas, dejando el prefijo como una suma real finita. En ese caso, la desigualdad entre sumas completas requiere considerar sus prefijos y no se afirma automáticamente.
+
+</details>
 ## 11.5. Control absoluto de la acumulación
 
 []{#MA-SEC-ANM-01-011-005}
@@ -358,38 +1640,366 @@ La serie $a_n=(-1)^n$ muestra que acotación de $s$ no basta. La afirmación rec
 
 ### Antes de seguir
 
+#### Microcontrol 33
+
 []{#MA-MIC-ANM-01-011-033}
 
-1. ¿Qué significa convergencia absoluta?
+¿Qué significa convergencia absoluta?
+
+[]{#MA-MSOL-ANM-01-011-033}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 33</summary>
+
+**Respuesta.**
+
+Que converge la serie de términos $|a_n|$.
+
+**Fundamento en la sección 11.5.**
+
+La serie de $a$ **converge absolutamente** cuando converge la serie de $|a_n|$. Si la original converge y la de magnitudes diverge, la convergencia es **condicional**. Este segundo término sólo se aplica cuando existe la suma de la original.
+
+Escribamos $u_n=\sum_{k=0}^n|a_k|$. Una inducción basada en la desigualdad triangular prueba
+
+$$
+|s_n|\le u_n,\qquad
+|s_p-s_q|\le u_p-u_q=\sum_{k=q+1}^p|a_k|\quad(p>q).
+$$
+
+En la inducción del bloque, añadir el siguiente término aumenta el lado derecho en su magnitud; el caso inicial de un término es igualdad. Estas estimaciones son finitas y no suponen convergencia.
+
+</details>
+
+#### Microcontrol 34
 
 []{#MA-MIC-ANM-01-011-034}
 
-2. ¿Qué condición adicional exige llamar condicional a una convergencia?
+¿Qué condición adicional exige llamar condicional a una convergencia?
+
+[]{#MA-MSOL-ANM-01-011-034}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 34</summary>
+
+**Respuesta.**
+
+La original converge, mientras la serie de magnitudes diverge.
+
+**Fundamento en la sección 11.5.**
+
+La serie de $a$ **converge absolutamente** cuando converge la serie de $|a_n|$. Si la original converge y la de magnitudes diverge, la convergencia es **condicional**. Este segundo término sólo se aplica cuando existe la suma de la original.
+
+Escribamos $u_n=\sum_{k=0}^n|a_k|$. Una inducción basada en la desigualdad triangular prueba
+
+$$
+|s_n|\le u_n,\qquad
+|s_p-s_q|\le u_p-u_q=\sum_{k=q+1}^p|a_k|\quad(p>q).
+$$
+
+En la inducción del bloque, añadir el siguiente término aumenta el lado derecho en su magnitud; el caso inicial de un término es igualdad. Estas estimaciones son finitas y no suponen convergencia.
+
+</details>
+
+#### Microcontrol 35
 
 []{#MA-MIC-ANM-01-011-035}
 
-3. ¿Qué desigualdad domina un bloque con signos?
+¿Qué desigualdad domina un bloque con signos?
+
+[]{#MA-MSOL-ANM-01-011-035}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 35</summary>
+
+**Respuesta.**
+
+$|\sum_{k=q+1}^pa_k|\le\sum_{k=q+1}^p|a_k|$ por triangular finita.
+
+**Fundamento en la sección 11.5.**
+
+Con signos variables, una cota superior de $s_n$ no impide que los totales bajen u oscilen. Un control más fuerte suma las magnitudes y, mediante la desigualdad triangular, protege cualquier bloque independientemente de sus cancelaciones.
+
+La serie de $a$ **converge absolutamente** cuando converge la serie de $|a_n|$. Si la original converge y la de magnitudes diverge, la convergencia es **condicional**. Este segundo término sólo se aplica cuando existe la suma de la original.
+
+Escribamos $u_n=\sum_{k=0}^n|a_k|$. Una inducción basada en la desigualdad triangular prueba
+
+</details>
+
+#### Microcontrol 36
 
 []{#MA-MIC-ANM-01-011-036}
 
-4. ¿Por qué un corte para las magnitudes sirve para la original?
+¿Por qué un corte para las magnitudes sirve para la original?
+
+[]{#MA-MSOL-ANM-01-011-036}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 36</summary>
+
+**Respuesta.**
+
+La suma del bloque de magnitudes es no negativa y domina la distancia de los totales originales; el mismo corte prueba Cauchy.
+
+**Fundamento en la sección 11.5.**
+
+Con signos variables, una cota superior de $s_n$ no impide que los totales bajen u oscilen. Un control más fuerte suma las magnitudes y, mediante la desigualdad triangular, protege cualquier bloque independientemente de sus cancelaciones.
+
+La serie de $a$ **converge absolutamente** cuando converge la serie de $|a_n|$. Si la original converge y la de magnitudes diverge, la convergencia es **condicional**. Este segundo término sólo se aplica cuando existe la suma de la original.
+
+Escribamos $u_n=\sum_{k=0}^n|a_k|$. Una inducción basada en la desigualdad triangular prueba
+
+</details>
+
+#### Microcontrol 37
 
 []{#MA-MIC-ANM-01-011-037}
 
-5. ¿Se necesita sumar primero la original para aplicar control absoluto?
+¿Se necesita sumar primero la original para aplicar control absoluto?
+
+[]{#MA-MSOL-ANM-01-011-037}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 37</summary>
+
+**Respuesta.**
+
+No. Se dominan bloques finitos y se obtiene existencia del límite mediante C10.
+
+**Fundamento en la sección 11.5.**
+
+**La convergencia absoluta implica convergencia.** Si $u_n\to A$, Cauchy aplicado a $u$ proporciona, para cada $\varepsilon>0$, un único corte que controla todos sus bloques. Como $u$ crece, $u_p-u_q=|u_p-u_q|<\varepsilon$ después de ese corte. La estimación anterior controla entonces $|s_p-s_q|$, y C10 garantiza $s_n\to S\in\mathbb R$. Completitud aparece en esa garantía de destino. Tomando límites en $|s_n|\le u_n$, mediante $||s_n|-|S||\le|s_n-S|$ y el orden de C06, resulta $|S|\le A$.
+
+Hay una versión de error más útil que la desigualdad global. Fijado $n$, en todos los bloques posteriores $|s_p-s_n|\le u_p-u_n$; al tomar $p\to\infty$ obtenemos
+
+</details>
+
+#### Microcontrol 38
 
 []{#MA-MIC-ANM-01-011-038}
 
-6. ¿Qué relación hay entre las sumas $S$ y $A$ de la original y las magnitudes?
+¿Qué relación hay entre las sumas $S$ y $A$ de la original y las magnitudes?
+
+[]{#MA-MSOL-ANM-01-011-038}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 38</summary>
+
+**Respuesta.**
+
+$|S|\le A$, al pasar al límite en $|s_n|\le u_n$.
+
+**Fundamento en la sección 11.5.**
+
+Hay una versión de error más útil que la desigualdad global. Fijado $n$, en todos los bloques posteriores $|s_p-s_n|\le u_p-u_n$; al tomar $p\to\infty$ obtenemos
+
+$$
+|R_n|=|S-s_n|\le A-u_n.
+$$
+
+Si $|a_n|\le C\rho^n$ con $C\ge0$ y $0<\rho<1$, la comparación de magnitudes con la geométrica prueba convergencia absoluta y
+
+$$
+|R_n|\le\frac{C\rho^{n+1}}{1-\rho}.
+$$
+
+Para $C=0$, todos los términos son cero. Para $C>0$, se escoge el corte usando el límite de $\rho^n$ ya probado; el número de términos sumados hasta $n$ sigue siendo $n+1$. Los signos pueden depender arbitrariamente del índice porque el control absoluto trabaja antes de toda cancelación.
+
+</details>
+
+#### Microcontrol 39
 
 []{#MA-MIC-ANM-01-011-039}
 
-7. ¿Qué cota de error proporciona $u_n\to A$?
+¿Qué cota de error proporciona $u_n\to A$?
+
+[]{#MA-MSOL-ANM-01-011-039}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 39</summary>
+
+**Respuesta.**
+
+$|S-s_n|\le A-u_n$, tomando el límite del extremo posterior del bloque.
+
+**Fundamento en la sección 11.5.**
+
+**La convergencia absoluta implica convergencia.** Si $u_n\to A$, Cauchy aplicado a $u$ proporciona, para cada $\varepsilon>0$, un único corte que controla todos sus bloques. Como $u$ crece, $u_p-u_q=|u_p-u_q|<\varepsilon$ después de ese corte. La estimación anterior controla entonces $|s_p-s_q|$, y C10 garantiza $s_n\to S\in\mathbb R$. Completitud aparece en esa garantía de destino. Tomando límites en $|s_n|\le u_n$, mediante $||s_n|-|S||\le|s_n-S|$ y el orden de C06, resulta $|S|\le A$.
+
+Hay una versión de error más útil que la desigualdad global. Fijado $n$, en todos los bloques posteriores $|s_p-s_n|\le u_p-u_n$; al tomar $p\to\infty$ obtenemos
+
+</details>
+
+#### Microcontrol 40
 
 []{#MA-MIC-ANM-01-011-040}
 
-8. ¿Qué error asegura $|a_n|\le C\rho^n$ con $0<\rho<1$?
+¿Qué error asegura $|a_n|\le C\rho^n$ con $0<\rho<1$?
 
+[]{#MA-MSOL-ANM-01-011-040}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 40</summary>
+
+**Respuesta.**
+
+$|S-s_n|\le C\rho^{n+1}/(1-\rho)$; para $C=0$ el error es cero.
+
+**Fundamento en la sección 11.5.**
+
+Hay una versión de error más útil que la desigualdad global. Fijado $n$, en todos los bloques posteriores $|s_p-s_n|\le u_p-u_n$; al tomar $p\to\infty$ obtenemos
+
+$$
+|R_n|=|S-s_n|\le A-u_n.
+$$
+
+Si $|a_n|\le C\rho^n$ con $C\ge0$ y $0<\rho<1$, la comparación de magnitudes con la geométrica prueba convergencia absoluta y
+
+$$
+|R_n|\le\frac{C\rho^{n+1}}{1-\rho}.
+$$
+
+Para $C=0$, todos los términos son cero. Para $C>0$, se escoge el corte usando el límite de $\rho^n$ ya probado; el número de términos sumados hasta $n$ sigue siendo $n+1$. Los signos pueden depender arbitrariamente del índice porque el control absoluto trabaja antes de toda cancelación.
+
+</details>
+
+### Ejercicios de la sección 11.5
+
+#### Ejercicio 21. Triangular finita
+
+[]{#MA-EX-ANM-01-011-021}
+
+Prueba la desigualdad $|\sum_{j=q+1}^pa_j|\le\sum_{j=q+1}^p|a_j|$ sin suponer convergencia.
+
+[]{#MA-SOL-ANM-01-011-021}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 21</summary>
+
+**Respuesta.**
+
+Para longitud uno es igualdad. Si vale hasta $p$, la triangular da $|\sum_{j=q+1}^{p+1}a_j|\le|\sum_{j=q+1}^pa_j|+|a_{p+1}|\le\sum_{j=q+1}^{p+1}|a_j|$. Inducción sobre la longitud cubre todos los bloques finitos.
+
+**Fundamento en la sección 11.5.**
+
+Escribamos $u_n=\sum_{k=0}^n|a_k|$. Una inducción basada en la desigualdad triangular prueba
+
+$$
+|s_n|\le u_n,\qquad
+|s_p-s_q|\le u_p-u_q=\sum_{k=q+1}^p|a_k|\quad(p>q).
+$$
+
+En la inducción del bloque, añadir el siguiente término aumenta el lado derecho en su magnitud; el caso inicial de un término es igualdad. Estas estimaciones son finitas y no suponen convergencia.
+
+**La convergencia absoluta implica convergencia.** Si $u_n\to A$, Cauchy aplicado a $u$ proporciona, para cada $\varepsilon>0$, un único corte que controla todos sus bloques. Como $u$ crece, $u_p-u_q=|u_p-u_q|<\varepsilon$ después de ese corte. La estimación anterior controla entonces $|s_p-s_q|$, y C10 garantiza $s_n\to S\in\mathbb R$. Completitud aparece en esa garantía de destino. Tomando límites en $|s_n|\le u_n$, mediante $||s_n|-|S||\le|s_n-S|$ y el orden de C06, resulta $|S|\le A$.
+
+</details>
+
+#### Ejercicio 22. Signos libres
+
+[]{#MA-EX-ANM-01-011-022}
+
+Sea $\sigma_n\in\{-1,1\}$ en cada índice. Prueba convergencia absoluta de $a_n=\sigma_n2^{-n}$ y estima el resto.
+
+[]{#MA-SOL-ANM-01-011-022}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 22</summary>
+
+**Respuesta.**
+
+Las magnitudes son $2^{-n}$ y su serie geométrica tiene suma dos. Por §11.5, la original converge absolutamente. La cola de magnitudes posterior a $n$ tiene suma $2^{-n}$, por tanto $|S-s_n|\le2^{-n}$. La estimación es independiente de cómo cambian los signos.
+
+Después del argumento, la [figura 11.4](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f04) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.5.**
+
+Si $|a_n|\le C\rho^n$ con $C\ge0$ y $0<\rho<1$, la comparación de magnitudes con la geométrica prueba convergencia absoluta y
+
+$$
+|R_n|\le\frac{C\rho^{n+1}}{1-\rho}.
+$$
+
+Para $C=0$, todos los términos son cero. Para $C>0$, se escoge el corte usando el límite de $\rho^n$ ya probado; el número de términos sumados hasta $n$ sigue siendo $n+1$. Los signos pueden depender arbitrariamente del índice porque el control absoluto trabaja antes de toda cancelación.
+
+La serie $a_n=(-1)^n$ muestra que acotación de $s$ no basta. La afirmación recíproca, que toda serie convergente sea absoluta, requiere otro examen: el próximo mecanismo conservará cancelaciones y permitirá un ejemplo condicional.
+
+</details>
+
+#### Ejercicio 23. Orden de las hipótesis
+
+[]{#MA-EX-ANM-01-011-023}
+
+Diagnostica: «Como $|s_n|\le u_n$ y $u_n$ converge, $s_n$ converge». Escribe una prueba correcta de convergencia absoluta implica convergencia.
+
+[]{#MA-SOL-ANM-01-011-023}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 23</summary>
+
+**Respuesta.**
+
+Una cota de valores sólo da acotación. Para reparar, usar $|s_p-s_q|\le u_p-u_q$. Si $u$ converge, es Cauchy; para $p>q$ tardíos, su incremento no negativo es menor que la tolerancia. El mismo corte controla los bloques originales y C10 produce un límite real de $s$.
+
+Después del argumento, la [figura 11.4](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f04) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.5.**
+
+Si $|a_n|\le C\rho^n$ con $C\ge0$ y $0<\rho<1$, la comparación de magnitudes con la geométrica prueba convergencia absoluta y
+
+$$
+|R_n|\le\frac{C\rho^{n+1}}{1-\rho}.
+$$
+
+Para $C=0$, todos los términos son cero. Para $C>0$, se escoge el corte usando el límite de $\rho^n$ ya probado; el número de términos sumados hasta $n$ sigue siendo $n+1$. Los signos pueden depender arbitrariamente del índice porque el control absoluto trabaja antes de toda cancelación.
+
+La serie $a_n=(-1)^n$ muestra que acotación de $s$ no basta. La afirmación recíproca, que toda serie convergente sea absoluta, requiere otro examen: el próximo mecanismo conservará cancelaciones y permitirá un ejemplo condicional.
+
+</details>
+
+#### Ejercicio 24. Sumas y restos
+
+[]{#MA-EX-ANM-01-011-024}
+
+Si las series de $a$ y $|a|$ tienen sumas $S,A$, demuestra $|S|\le A$ y $|S-s_n|\le A-u_n$.
+
+[]{#MA-SOL-ANM-01-011-024}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 24</summary>
+
+**Respuesta.**
+
+La triangular finita da $|s_p|\le u_p$; la desigualdad inversa de valor absoluto y C06 permiten pasar al límite, dando $|S|\le A$. Fijado $n$, para todos $p>n$ vale $|s_p-s_n|\le u_p-u_n$; al tomar el límite de $p$, el lado izquierdo tiende a $|S-s_n|$ y el derecho a $A-u_n$. El orden de límites da la cota solicitada.
+
+**Fundamento en la sección 11.5.**
+
+Escribamos $u_n=\sum_{k=0}^n|a_k|$. Una inducción basada en la desigualdad triangular prueba
+
+$$
+|s_n|\le u_n,\qquad
+|s_p-s_q|\le u_p-u_q=\sum_{k=q+1}^p|a_k|\quad(p>q).
+$$
+
+En la inducción del bloque, añadir el siguiente término aumenta el lado derecho en su magnitud; el caso inicial de un término es igualdad. Estas estimaciones son finitas y no suponen convergencia.
+
+**La convergencia absoluta implica convergencia.** Si $u_n\to A$, Cauchy aplicado a $u$ proporciona, para cada $\varepsilon>0$, un único corte que controla todos sus bloques. Como $u$ crece, $u_p-u_q=|u_p-u_q|<\varepsilon$ después de ese corte. La estimación anterior controla entonces $|s_p-s_q|$, y C10 garantiza $s_n\to S\in\mathbb R$. Completitud aparece en esa garantía de destino. Tomando límites en $|s_n|\le u_n$, mediante $||s_n|-|S||\le|s_n-S|$ y el orden de C06, resulta $|S|\le A$.
+
+</details>
+
+#### Ejercicio 25. Localizar igualdad
+
+[]{#MA-EX-ANM-01-011-025}
+
+Supón que la serie de $a$ converge absolutamente. Prueba que $|S|=A$ si y sólo si todos los términos tienen un signo común, permitiendo ceros.
+
+[]{#MA-SOL-ANM-01-011-025}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 25</summary>
+
+Si todos son no negativos, $S=A$; si todos son no positivos, $S=-A$, por identidades finitas y límites. Para la recíproca definamos $p_n=(|a_n|+a_n)/2\ge0$ y $m_n=(|a_n|-a_n)/2\ge0$. Sus totales convergen a $P=(A+S)/2$ y $M=(A-S)/2$ por álgebra de límites; $P,M\ge0$. La igualdad $|S|=A$ fuerza $M=0$ si $S\ge0$, o $P=0$ si $S\le0$. Una serie no negativa de suma cero tiene cada término cero, pues cada término es menor o igual a un total posterior, que es a lo sumo cero. Así en el primer caso $m_n=0$ y $a_n\ge0$; en el segundo $p_n=0$ y $a_n\le0$. Si $A=0$, todos los términos son cero y ambas descripciones sirven.
+
+</details>
 ## 11.6. Alternancia: encerrar sin sumar magnitudes
 
 []{#MA-SEC-ANM-01-011-006}
@@ -440,38 +2050,350 @@ La figura conserva un eje de valores común para los intervalos y separa términ
 
 ### Antes de seguir
 
+#### Microcontrol 41
+
 []{#MA-MIC-ANM-01-011-041}
 
-1. ¿Qué tres condiciones se imponen a la alternancia?
+¿Qué tres condiciones se imponen a la alternancia?
+
+[]{#MA-MSOL-ANM-01-011-041}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 41</summary>
+
+**Respuesta.**
+
+Los términos son $(-1)^nb_n$, las magnitudes son no negativas y decrecientes, y $b_n\to0$.
+
+**Fundamento en la sección 11.6.**
+
+Supongamos $0\le b_{n+1}\le b_n$ y $b_n\to0$, y tomemos $a_n=(-1)^nb_n$. La alternancia fija los signos, el decrecimiento impide que la segunda magnitud de una pareja supere la primera y el límite cero hará pequeño cualquier bloque tardío. Debemos mostrar cómo cooperan esas tres condiciones.
+
+**Lema de bloque alternado.** Si $c_0\ge c_1\ge\cdots\ge c_m\ge0$, entonces
+
+$$
+0\le c_0-c_1+c_2-\cdots+(-1)^mc_m\le c_0.
+$$
+
+La cota inferior se obtiene agrupando $(c_0-c_1)+(c_2-c_3)+\cdots$, con un último término no negativo si sobra. Para la superior, escribimos $c_0-(c_1-c_2)-(c_3-c_4)-\cdots$, y restamos también el último término si el índice final es impar. Cada diferencia entre magnitudes contiguas es no negativa. Las dos formas son reorganizaciones de una suma finita, no de una serie infinita.
+
+</details>
+
+#### Microcontrol 42
 
 []{#MA-MIC-ANM-01-011-042}
 
-2. ¿Qué cota tiene un bloque alternado que empieza en $q+1$?
+¿Qué cota tiene un bloque alternado que empieza en $q+1$?
+
+[]{#MA-MSOL-ANM-01-011-042}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 42</summary>
+
+**Respuesta.**
+
+$|s_p-s_q|\le b_{q+1}$ para $p>q$, por el lema de emparejamiento.
+
+**Fundamento en la sección 11.6.**
+
+**Lema de bloque alternado.** Si $c_0\ge c_1\ge\cdots\ge c_m\ge0$, entonces
+
+$$
+0\le c_0-c_1+c_2-\cdots+(-1)^mc_m\le c_0.
+$$
+
+La cota inferior se obtiene agrupando $(c_0-c_1)+(c_2-c_3)+\cdots$, con un último término no negativo si sobra. Para la superior, escribimos $c_0-(c_1-c_2)-(c_3-c_4)-\cdots$, y restamos también el último término si el índice final es impar. Cada diferencia entre magnitudes contiguas es no negativa. Las dos formas son reorganizaciones de una suma finita, no de una serie infinita.
+
+**Criterio alternado.** La serie de $(-1)^nb_n$ converge. En un bloque desde $q+1$ hasta $p$, sacar el signo inicial y aplicar el lema da
+
+</details>
+
+#### Microcontrol 43
 
 []{#MA-MIC-ANM-01-011-043}
 
-3. ¿Qué hipótesis permite emparejar diferencias no negativas?
+¿Qué hipótesis permite emparejar diferencias no negativas?
+
+[]{#MA-MSOL-ANM-01-011-043}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 43</summary>
+
+**Respuesta.**
+
+El decrecimiento $b_{n+1}\le b_n$.
+
+**Fundamento en la sección 11.6.**
+
+La figura conserva un eje de valores común para los intervalos y separa términos de sumas parciales. La anchura permite un error garantizado aunque el destino carezca todavía de una fórmula.
+
+**Una hipótesis que no se puede borrar.** La alternancia y el término nulo sin decrecimiento no bastan. Sea $d_k=1/(k+1)$, $b_{2k}=2d_k$ y $b_{2k+1}=d_k$. Entonces $b_n\to0$ y los signos alternan, pero cada pareja aporta $d_k$. Las sumas parciales de índice $2m+1$ son $\sum_{k=0}^m d_k$, no acotadas por §11.4 y la divergencia armónica. La serie original tampoco converge, pues una extracción de una sucesión convergente tendría el mismo límite por el control ε–N. La monotonía impedía esa acumulación repetida del desequilibrio.
+
+</details>
+
+#### Microcontrol 44
 
 []{#MA-MIC-ANM-01-011-044}
 
-4. ¿Qué hipótesis hace pequeño el control del bloque?
+¿Qué hipótesis hace pequeño el control del bloque?
+
+[]{#MA-MSOL-ANM-01-011-044}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 44</summary>
+
+**Respuesta.**
+
+$b_n\to0$ permite un único corte con $b_{q+1}<\varepsilon$ para todos los bloques tardíos.
+
+**Fundamento en la sección 11.6.**
+
+**Criterio alternado.** La serie de $(-1)^nb_n$ converge. En un bloque desde $q+1$ hasta $p$, sacar el signo inicial y aplicar el lema da
+
+$$
+0\le(-1)^{q+1}(s_p-s_q)\le b_{q+1},\qquad
+|s_p-s_q|\le b_{q+1}.
+$$
+
+Dada $\varepsilon>0$, elegimos $N$ tal que $b_j<\varepsilon$ para $j\ge N$. Si $p>q\ge N$, también $q+1\ge N$; la estimación vale para cualquier longitud del bloque y prueba Cauchy. C10 proporciona $S\in\mathbb R$. Hemos probado Leibniz directamente desde bloques, sin reunir dos límites de paridades mediante un resultado no explicado.
+
+Fijado $n$, tomamos $p\to\infty$ en el control con signo para obtener
+
+</details>
+
+#### Microcontrol 45
 
 []{#MA-MIC-ANM-01-011-045}
 
-5. ¿Qué error y signo tiene el resto?
+¿Qué error y signo tiene el resto?
+
+[]{#MA-MSOL-ANM-01-011-045}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 45</summary>
+
+**Respuesta.**
+
+$0\le(-1)^{n+1}(S-s_n)\le b_{n+1}$, así que el resto tiene el signo del próximo término salvo que sea cero.
+
+**Fundamento en la sección 11.6.**
+
+| k | Extremo inferior $s_{2k+1}$ | Extremo superior $s_{2k}$ | Anchura |
+|---|---|---|---|
+| 0 | 1/2 | 1 | 1/2 |
+| 1 | 7/12 | 5/6 | 1/4 |
+| 2 | 37/60 | 47/60 | 1/6 |
+| 3 | 533/840 | 319/420 | 1/8 |
+| 4 | 1627/2520 | 1879/2520 | 1/10 |
+| 5 | 18107/27720 | 20417/27720 | 1/12 |
+
+La figura conserva un eje de valores común para los intervalos y separa términos de sumas parciales. La anchura permite un error garantizado aunque el destino carezca todavía de una fórmula.
+
+</details>
+
+#### Microcontrol 46
 
 []{#MA-MIC-ANM-01-011-046}
 
-6. ¿Qué intervalo contiene la suma entre los cortes $2k$ y $2k+1$?
+¿Qué intervalo contiene la suma entre los cortes $2k$ y $2k+1$?
+
+[]{#MA-MSOL-ANM-01-011-046}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 46</summary>
+
+**Respuesta.**
+
+$[s_{2k+1},s_{2k}]$, de anchura $b_{2k+1}$.
+
+**Fundamento en la sección 11.6.**
+
+Si $n$ es par, $s_{n+1}\le S\le s_n$; si $n$ es impar, $s_n\le S\le s_{n+1}$. En particular, los intervalos $[s_{2k+1},s_{2k}]$ contienen el destino. Sus extremos inferiores crecen porque $s_{2k+3}-s_{2k+1}=b_{2k+2}-b_{2k+3}\ge0$; los superiores decrecen porque $s_{2k+2}-s_{2k}=-b_{2k+1}+b_{2k+2}\le0$. La anchura es $b_{2k+1}$ y tiende a cero. Estos intervalos reinterpretan un destino cuya existencia ya se ha demostrado.
+
+Para $b_n=1/(n+1)$, la serie alternada converge y $|R_n|\le1/(n+2)$. La serie de magnitudes es la armónica divergente de §11.2: la convergencia es condicional. No precisamos calcular $S$ ni identificarlo con un logaritmo para probar o estimar la convergencia.
+
+</details>
+
+#### Microcontrol 47
 
 []{#MA-MIC-ANM-01-011-047}
 
-7. ¿Por qué la armónica alternada es condicional?
+¿Por qué la armónica alternada es condicional?
+
+[]{#MA-MSOL-ANM-01-011-047}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 47</summary>
+
+**Respuesta.**
+
+La alternancia decreciente prueba convergencia, mientras la serie de magnitudes es la armónica divergente.
+
+**Fundamento en la sección 11.6.**
+
+Si $n$ es par, $s_{n+1}\le S\le s_n$; si $n$ es impar, $s_n\le S\le s_{n+1}$. En particular, los intervalos $[s_{2k+1},s_{2k}]$ contienen el destino. Sus extremos inferiores crecen porque $s_{2k+3}-s_{2k+1}=b_{2k+2}-b_{2k+3}\ge0$; los superiores decrecen porque $s_{2k+2}-s_{2k}=-b_{2k+1}+b_{2k+2}\le0$. La anchura es $b_{2k+1}$ y tiende a cero. Estos intervalos reinterpretan un destino cuya existencia ya se ha demostrado.
+
+Para $b_n=1/(n+1)$, la serie alternada converge y $|R_n|\le1/(n+2)$. La serie de magnitudes es la armónica divergente de §11.2: la convergencia es condicional. No precisamos calcular $S$ ni identificarlo con un logaritmo para probar o estimar la convergencia.
+
+</details>
+
+#### Microcontrol 48
 
 []{#MA-MIC-ANM-01-011-048}
 
-8. ¿Qué falla si se alternan $2/(k+1)$ y $1/(k+1)$ por parejas?
+¿Qué falla si se alternan $2/(k+1)$ y $1/(k+1)$ por parejas?
 
+[]{#MA-MSOL-ANM-01-011-048}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 48</summary>
+
+**Respuesta.**
+
+Las magnitudes tienden a cero, pero no decrecen globalmente y cada pareja aporta $1/(k+1)$; los totales de fin de pareja son armónicos no acotados.
+
+**Fundamento en la sección 11.6.**
+
+**Una hipótesis que no se puede borrar.** La alternancia y el término nulo sin decrecimiento no bastan. Sea $d_k=1/(k+1)$, $b_{2k}=2d_k$ y $b_{2k+1}=d_k$. Entonces $b_n\to0$ y los signos alternan, pero cada pareja aporta $d_k$. Las sumas parciales de índice $2m+1$ son $\sum_{k=0}^m d_k$, no acotadas por §11.4 y la divergencia armónica. La serie original tampoco converge, pues una extracción de una sucesión convergente tendría el mismo límite por el control ε–N. La monotonía impedía esa acumulación repetida del desequilibrio.
+
+</details>
+
+### Ejercicios de la sección 11.6
+
+#### Ejercicio 26. Lema alternado
+
+[]{#MA-EX-ANM-01-011-026}
+
+Prueba que una suma finita alternada de magnitudes decrecientes no negativas está entre cero y la primera magnitud.
+
+[]{#MA-SOL-ANM-01-011-026}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 26</summary>
+
+**Respuesta.**
+
+Para la cota inferior agrupar pares $c_0-c_1$, $c_2-c_3$, etc., dejando el último término positivo si sobra. Todos los sumandos son no negativos. Para la superior, escribir $c_0-(c_1-c_2)-(c_3-c_4)-\cdots$ y restar el último término si el índice final es impar. Las cantidades restadas son no negativas. Ambas escrituras provienen de la misma suma finita.
+
+Después del argumento, la [figura 11.4](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f04) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.6.**
+
+Supongamos $0\le b_{n+1}\le b_n$ y $b_n\to0$, y tomemos $a_n=(-1)^nb_n$. La alternancia fija los signos, el decrecimiento impide que la segunda magnitud de una pareja supere la primera y el límite cero hará pequeño cualquier bloque tardío. Debemos mostrar cómo cooperan esas tres condiciones.
+
+**Lema de bloque alternado.** Si $c_0\ge c_1\ge\cdots\ge c_m\ge0$, entonces
+
+$$
+0\le c_0-c_1+c_2-\cdots+(-1)^mc_m\le c_0.
+$$
+
+La cota inferior se obtiene agrupando $(c_0-c_1)+(c_2-c_3)+\cdots$, con un último término no negativo si sobra. Para la superior, escribimos $c_0-(c_1-c_2)-(c_3-c_4)-\cdots$, y restamos también el último término si el índice final es impar. Cada diferencia entre magnitudes contiguas es no negativa. Las dos formas son reorganizaciones de una suma finita, no de una serie infinita.
+
+</details>
+
+#### Ejercicio 27. Un corte alternado
+
+[]{#MA-EX-ANM-01-011-027}
+
+Para $a_n=(-1)^n/(n+1)$, prueba convergencia y encuentra un corte que garantice error menor que $1/100$.
+
+[]{#MA-SOL-ANM-01-011-027}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 27</summary>
+
+**Respuesta.**
+
+Las magnitudes decrecen y tienden a cero, así que el criterio probado en §11.6 aporta un real $S$. Su resto satisface $|S-s_n|\le1/(n+2)$. Tomar $n=99$ hace esta cota $1/101<1/100$ y controla todo corte posterior. No se calcula $S$ para certificar esa precisión.
+
+Después del argumento, la [figura 11.4](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f04) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.6.**
+
+La figura conserva un eje de valores común para los intervalos y separa términos de sumas parciales. La anchura permite un error garantizado aunque el destino carezca todavía de una fórmula.
+
+**Una hipótesis que no se puede borrar.** La alternancia y el término nulo sin decrecimiento no bastan. Sea $d_k=1/(k+1)$, $b_{2k}=2d_k$ y $b_{2k+1}=d_k$. Entonces $b_n\to0$ y los signos alternan, pero cada pareja aporta $d_k$. Las sumas parciales de índice $2m+1$ son $\sum_{k=0}^m d_k$, no acotadas por §11.4 y la divergencia armónica. La serie original tampoco converge, pues una extracción de una sucesión convergente tendría el mismo límite por el control ε–N. La monotonía impedía esa acumulación repetida del desequilibrio.
+
+</details>
+
+#### Ejercicio 28. El signo del resto
+
+[]{#MA-EX-ANM-01-011-028}
+
+Para una serie $(-1)^nb_n$ bajo las hipótesis de §11.6, demuestra que $s_n$ queda por encima de la suma si $n$ es par y por debajo si es impar.
+
+[]{#MA-SOL-ANM-01-011-028}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 28</summary>
+
+**Respuesta.**
+
+El control finito $0\le(-1)^{n+1}(s_p-s_n)\le b_{n+1}$ pasa al límite con $n$ fijo. Para $n$ par, $0\le-(S-s_n)$, así que $S\le s_n$; para $n$ impar, $0\le S-s_n$, así que $s_n\le S$. Las desigualdades son débiles: puede haber igualdad si desaparece el resto.
+
+Después del argumento, la [figura 11.4](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f04) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.6.**
+
+La figura conserva un eje de valores común para los intervalos y separa términos de sumas parciales. La anchura permite un error garantizado aunque el destino carezca todavía de una fórmula.
+
+**Una hipótesis que no se puede borrar.** La alternancia y el término nulo sin decrecimiento no bastan. Sea $d_k=1/(k+1)$, $b_{2k}=2d_k$ y $b_{2k+1}=d_k$. Entonces $b_n\to0$ y los signos alternan, pero cada pareja aporta $d_k$. Las sumas parciales de índice $2m+1$ son $\sum_{k=0}^m d_k$, no acotadas por §11.4 y la divergencia armónica. La serie original tampoco converge, pues una extracción de una sucesión convergente tendría el mismo límite por el control ε–N. La monotonía impedía esa acumulación repetida del desequilibrio.
+
+</details>
+
+#### Ejercicio 29. Borrar el decrecimiento
+
+[]{#MA-EX-ANM-01-011-029}
+
+Construye una serie de signos alternados y términos nulos que diverja; explica la hipótesis que falla.
+
+[]{#MA-SOL-ANM-01-011-029}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 29</summary>
+
+**Respuesta.**
+
+Tomemos $a_{2k}=2/(k+1)$ y $a_{2k+1}=-1/(k+1)$. Ambas paridades de magnitudes tienden a cero, así que $a_n\to0$ por un corte común. Cada pareja suma $1/(k+1)$, y los totales $s_{2m+1}$ son armónicos no acotados. Por tanto la serie diverge. Las magnitudes no decrecen: para $k\ge1$, $2/(k+2)>1/(k+1)$. La desigualdad de parejas del lema no puede aplicarse.
+
+Después del argumento, la [figura 11.4](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f04) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.6.**
+
+La figura conserva un eje de valores común para los intervalos y separa términos de sumas parciales. La anchura permite un error garantizado aunque el destino carezca todavía de una fórmula.
+
+**Una hipótesis que no se puede borrar.** La alternancia y el término nulo sin decrecimiento no bastan. Sea $d_k=1/(k+1)$, $b_{2k}=2d_k$ y $b_{2k+1}=d_k$. Entonces $b_n\to0$ y los signos alternan, pero cada pareja aporta $d_k$. Las sumas parciales de índice $2m+1$ son $\sum_{k=0}^m d_k$, no acotadas por §11.4 y la divergencia armónica. La serie original tampoco converge, pues una extracción de una sucesión convergente tendría el mismo límite por el control ε–N. La monotonía impedía esa acumulación repetida del desequilibrio.
+
+</details>
+
+#### Ejercicio 30. Alternancia eventual
+
+[]{#MA-EX-ANM-01-011-030}
+
+Supón que desde un índice $m$ los términos son $a_{m+k}=\eta(-1)^kb_k$, con $\eta\in\{-1,1\}$ y $b_k$ decreciente no negativa hacia cero. Prueba convergencia y estima el error en cortes $n\ge m$.
+
+[]{#MA-SOL-ANM-01-011-030}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 30</summary>
+
+**Respuesta.**
+
+Aplique §11.6 a la cola reindexada, con un signo global $\eta$ que no altera las magnitudes de bloques. La serie de términos $(-1)^kb_k$ tiene suma $T$; la cola con el signo global tiene suma $\eta T$, y añadir el prefijo finito $P_m$ da $S=P_m+\eta T$. En el corte original $n\ge m$, la siguiente magnitud es $b_{n-m+1}$, por lo que $|S-s_n|\le b_{n-m+1}$. El resto tiene el signo de $\eta(-1)^{n-m+1}$ salvo cero. No se exige comportamiento alternado del prefijo.
+
+**Fundamento en la sección 11.6.**
+
+**Lema de bloque alternado.** Si $c_0\ge c_1\ge\cdots\ge c_m\ge0$, entonces
+
+$$
+0\le c_0-c_1+c_2-\cdots+(-1)^mc_m\le c_0.
+$$
+
+La cota inferior se obtiene agrupando $(c_0-c_1)+(c_2-c_3)+\cdots$, con un último término no negativo si sobra. Para la superior, escribimos $c_0-(c_1-c_2)-(c_3-c_4)-\cdots$, y restamos también el último término si el índice final es impar. Cada diferencia entre magnitudes contiguas es no negativa. Las dos formas son reorganizaciones de una suma finita, no de una serie infinita.
+
+**Criterio alternado.** La serie de $(-1)^nb_n$ converge. En un bloque desde $q+1$ hasta $p$, sacar el signo inicial y aplicar el lema da
+
+</details>
 ## 11.7. Agrupar términos y conservar el recorrido
 
 []{#MA-SEC-ANM-01-011-007}
@@ -506,38 +2428,324 @@ El dibujo muestra el recorrido que la agrupación ocultaría. El control de long
 
 ### Antes de seguir
 
+#### Microcontrol 49
+
 []{#MA-MIC-ANM-01-011-049}
 
-1. ¿Qué son las sumas parciales de la serie agrupada?
+¿Qué son las sumas parciales de la serie agrupada?
+
+[]{#MA-MSOL-ANM-01-011-049}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 49</summary>
+
+**Respuesta.**
+
+$t_k=s_{\phi(k)}$: los totales originales en los extremos de los grupos consecutivos.
+
+**Fundamento en la sección 11.7.**
+
+Agrupar términos consecutivos conserva los totales en los extremos de cada grupo, pero deja de mostrar los totales intermedios. Para precisar esta operación, sea $\phi:\mathbb N\to\mathbb N$ estrictamente creciente y definamos
+
+$$
+g_0=\sum_{j=0}^{\phi(0)}a_j,\qquad
+g_k=\sum_{j=\phi(k-1)+1}^{\phi(k)}a_j\quad(k\ge1).
+$$
+
+Cada grupo es finito y no vacío. Una inducción y la partición de sumas finitas demuestran que sus sumas parciales son $t_k=s_{\phi(k)}$. Si la serie original converge a $S$, también converge la agrupada a $S$: la inducción da $\phi(k)\ge k$, de modo que el mismo corte ε–N controla $s_{\phi(k)}$. No se permutan términos.
+
+</details>
+
+#### Microcontrol 50
 
 []{#MA-MIC-ANM-01-011-050}
 
-2. ¿Por qué convergencia original implica convergencia agrupada?
+¿Por qué convergencia original implica convergencia agrupada?
+
+[]{#MA-MSOL-ANM-01-011-050}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 50</summary>
+
+**Respuesta.**
+
+$\phi(k)\ge k$ por inducción, de modo que el mismo control eventual alcanza los extremos de grupo y conserva el límite.
+
+**Fundamento en la sección 11.7.**
+
+Agrupar términos consecutivos conserva los totales en los extremos de cada grupo, pero deja de mostrar los totales intermedios. Para precisar esta operación, sea $\phi:\mathbb N\to\mathbb N$ estrictamente creciente y definamos
+
+$$
+g_0=\sum_{j=0}^{\phi(0)}a_j,\qquad
+g_k=\sum_{j=\phi(k-1)+1}^{\phi(k)}a_j\quad(k\ge1).
+$$
+
+Cada grupo es finito y no vacío. Una inducción y la partición de sumas finitas demuestran que sus sumas parciales son $t_k=s_{\phi(k)}$. Si la serie original converge a $S$, también converge la agrupada a $S$: la inducción da $\phi(k)\ge k$, de modo que el mismo corte ε–N controla $s_{\phi(k)}$. No se permutan términos.
+
+</details>
+
+#### Microcontrol 51
 
 []{#MA-MIC-ANM-01-011-051}
 
-3. ¿Puede fallar la recíproca?
+¿Puede fallar la recíproca?
+
+[]{#MA-MSOL-ANM-01-011-051}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 51</summary>
+
+**Respuesta.**
+
+Sí. Parejas $(1,-1)$ dan grupos cero, pero los totales originales alternan uno y cero.
+
+**Fundamento en la sección 11.7.**
+
+Cada grupo es finito y no vacío. Una inducción y la partición de sumas finitas demuestran que sus sumas parciales son $t_k=s_{\phi(k)}$. Si la serie original converge a $S$, también converge la agrupada a $S$: la inducción da $\phi(k)\ge k$, de modo que el mismo corte ε–N controla $s_{\phi(k)}$. No se permutan términos.
+
+La recíproca falla. Agrupar $(1,-1,1,-1,\ldots)$ por parejas produce $g_k=0$ y $t_k=0$, pero el proceso original alterna entre uno y cero. Hemos seleccionado una extracción convergente, no demostrado convergencia del recorrido completo.
+
+</details>
+
+#### Microcontrol 52
 
 []{#MA-MIC-ANM-01-011-052}
 
-4. ¿Qué índices deja de mostrar la agrupación?
+¿Qué índices deja de mostrar la agrupación?
+
+[]{#MA-MSOL-ANM-01-011-052}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 52</summary>
+
+**Respuesta.**
+
+Los índices interiores entre dos extremos sucesivos, donde pueden producirse excursiones.
+
+**Fundamento en la sección 11.7.**
+
+Agrupar términos consecutivos conserva los totales en los extremos de cada grupo, pero deja de mostrar los totales intermedios. Para precisar esta operación, sea $\phi:\mathbb N\to\mathbb N$ estrictamente creciente y definamos
+
+$$
+g_0=\sum_{j=0}^{\phi(0)}a_j,\qquad
+g_k=\sum_{j=\phi(k-1)+1}^{\phi(k)}a_j\quad(k\ge1).
+$$
+
+Cada grupo es finito y no vacío. Una inducción y la partición de sumas finitas demuestran que sus sumas parciales son $t_k=s_{\phi(k)}$. Si la serie original converge a $S$, también converge la agrupada a $S$: la inducción da $\phi(k)\ge k$, de modo que el mismo corte ε–N controla $s_{\phi(k)}$. No se permutan términos.
+
+</details>
+
+#### Microcontrol 53
 
 []{#MA-MIC-ANM-01-011-053}
 
-5. ¿Qué condición interior recupera la convergencia completa?
+¿Qué condición interior recupera la convergencia completa?
+
+[]{#MA-MSOL-ANM-01-011-053}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 53</summary>
+
+**Respuesta.**
+
+Que las distancias de todos los totales de cada grupo a su extremo tiendan uniformemente a cero, además de convergencia de los extremos.
+
+**Fundamento en la sección 11.7.**
+
+La recíproca falla. Agrupar $(1,-1,1,-1,\ldots)$ por parejas produce $g_k=0$ y $t_k=0$, pero el proceso original alterna entre uno y cero. Hemos seleccionado una extracción convergente, no demostrado convergencia del recorrido completo.
+
+**Qué información falta.** Para cada $n>\phi(0)$ existe un único $k\ge1$ con $\phi(k-1)<n\le\phi(k)$: basta tomar el menor índice cuyo extremo alcanza $n$, que existe porque $\phi(k)\ge k$. Si $t_k\to S$ y las distancias interiores a ese extremo tienden uniformemente a cero, los índices omitidos recuperan el mismo destino. En términos precisos, si para todo $\varepsilon>0$ existe $K$ tal que
+
+</details>
+
+#### Microcontrol 54
 
 []{#MA-MIC-ANM-01-011-054}
 
-6. ¿Qué dos hipótesis bastan para ese control interior?
+¿Qué dos hipótesis bastan para ese control interior?
+
+[]{#MA-MSOL-ANM-01-011-054}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 54</summary>
+
+**Respuesta.**
+
+$a_n\to0$ y una cota natural común $M$ para la longitud de cada grupo.
+
+**Fundamento en la sección 11.7.**
+
+entonces $s_n\to S$. Para probarlo, hacemos menores que $\varepsilon/2$ tanto la distancia interior como $|t_k-S|$, con un corte común $K\ge1$. Todo $n\ge\phi(K-1)+1$ pertenece a un grupo con $k\ge K$; la desigualdad triangular da $|s_n-S|<\varepsilon$.
+
+Una condición suficiente fácil de verificar es que los grupos tengan longitud acotada y $a_n\to0$. Si las longitudes son a lo sumo un natural $M\ge1$, entonces $s_{\phi(k)}-s_n$ suma a lo sumo $M$ términos del propio grupo. Dada $\varepsilon>0$, escogemos $J$ con $|a_j|<\varepsilon/M$ para $j\ge J$. Para $k\ge\max\{1,J\}$, $\phi(k-1)+1\ge k\ge J$; todos los términos interiores pertenecen a esa cola y su suma de magnitudes es menor que $\varepsilon$ cuando el bloque no es vacío. Si es vacío, la distancia es cero. La condición anterior queda probada. No negatividad no interviene: el control es absoluto y finito.
+
+</details>
+
+#### Microcontrol 55
 
 []{#MA-MIC-ANM-01-011-055}
 
-7. ¿Cómo se usa la cota $M$?
+¿Cómo se usa la cota $M$?
+
+[]{#MA-MSOL-ANM-01-011-055}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 55</summary>
+
+**Respuesta.**
+
+Se hacen los términos menores que $\varepsilon/M$; cualquier distancia interior suma a lo sumo $M$ magnitudes y resulta menor que $\varepsilon$.
+
+**Fundamento en la sección 11.7.**
+
+entonces $s_n\to S$. Para probarlo, hacemos menores que $\varepsilon/2$ tanto la distancia interior como $|t_k-S|$, con un corte común $K\ge1$. Todo $n\ge\phi(K-1)+1$ pertenece a un grupo con $k\ge K$; la desigualdad triangular da $|s_n-S|<\varepsilon$.
+
+Una condición suficiente fácil de verificar es que los grupos tengan longitud acotada y $a_n\to0$. Si las longitudes son a lo sumo un natural $M\ge1$, entonces $s_{\phi(k)}-s_n$ suma a lo sumo $M$ términos del propio grupo. Dada $\varepsilon>0$, escogemos $J$ con $|a_j|<\varepsilon/M$ para $j\ge J$. Para $k\ge\max\{1,J\}$, $\phi(k-1)+1\ge k\ge J$; todos los términos interiores pertenecen a esa cola y su suma de magnitudes es menor que $\varepsilon$ cuando el bloque no es vacío. Si es vacío, la distancia es cero. La condición anterior queda probada. No negatividad no interviene: el control es absoluto y finito.
+
+</details>
+
+#### Microcontrol 56
 
 []{#MA-MIC-ANM-01-011-056}
 
-8. ¿Qué muestra el bloque de $m$ aportes $1/m$ y $m$ aportes $-1/m$?
+¿Qué muestra el bloque de $m$ aportes $1/m$ y $m$ aportes $-1/m$?
 
+[]{#MA-MSOL-ANM-01-011-056}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 56</summary>
+
+**Respuesta.**
+
+Términos que tienden a cero y extremos de grupo cero pueden coexistir con totales interiores uno; sin controlar longitud o excursión, la agrupación oculta divergencia.
+
+**Fundamento en la sección 11.7.**
+
+El límite cero del término por sí solo tampoco permite cualquier longitud de grupo. En el bloque número $m\ge1$, pongamos $m$ aportes $1/m$ seguidos de $m$ aportes $-1/m$. El bloque empieza en el índice $m(m-1)$ y termina en $m(m+1)-1$. Esos intervalos particionan $\mathbb N$. Los términos tienden a cero; los totales de fin de bloque son cero, mientras los totales tras la mitad positiva valen uno. Agrupar cada bloque produce suma cero, pero la serie original diverge. El grupo puede acumular una excursión fija aunque cada aporte sea pequeño.
+
+</details>
+
+### Ejercicios de la sección 11.7
+
+#### Ejercicio 31. Extremos de grupos
+
+[]{#MA-EX-ANM-01-011-031}
+
+Prueba la identidad $t_k=s_{\phi(k)}$ para los grupos consecutivos de §11.7.
+
+[]{#MA-SOL-ANM-01-011-031}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 31</summary>
+
+**Respuesta.**
+
+Para $k=0$, $t_0=g_0=s_{\phi(0)}$. Si vale para $k-1$, sumar el bloque desde $\phi(k-1)+1$ hasta $\phi(k)$ da $t_k=s_{\phi(k-1)}+[s_{\phi(k)}-s_{\phi(k-1)}]=s_{\phi(k)}$. Inducción prueba la identidad sin reordenar términos.
+
+Después del argumento, la [figura 11.5](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f05) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.7.**
+
+Agrupar términos consecutivos conserva los totales en los extremos de cada grupo, pero deja de mostrar los totales intermedios. Para precisar esta operación, sea $\phi:\mathbb N\to\mathbb N$ estrictamente creciente y definamos
+
+$$
+g_0=\sum_{j=0}^{\phi(0)}a_j,\qquad
+g_k=\sum_{j=\phi(k-1)+1}^{\phi(k)}a_j\quad(k\ge1).
+$$
+
+Cada grupo es finito y no vacío. Una inducción y la partición de sumas finitas demuestran que sus sumas parciales son $t_k=s_{\phi(k)}$. Si la serie original converge a $S$, también converge la agrupada a $S$: la inducción da $\phi(k)\ge k$, de modo que el mismo corte ε–N controla $s_{\phi(k)}$. No se permutan términos.
+
+</details>
+
+#### Ejercicio 32. Una agrupación engañosa
+
+[]{#MA-EX-ANM-01-011-032}
+
+Agrupa por parejas la serie $(-1)^n$ y compara su convergencia con la original.
+
+[]{#MA-SOL-ANM-01-011-032}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 32</summary>
+
+**Respuesta.**
+
+Con $\phi(k)=2k+1$, cada grupo es $1-1=0$, así que la serie agrupada tiene suma cero. La original tiene totales par uno e impar cero y no es Cauchy. La agrupación sólo conserva una extracción de sus totales y no suministra control de los índices pares omitidos.
+
+Después del argumento, la [figura 11.5](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f05) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.7.**
+
+Cada grupo es finito y no vacío. Una inducción y la partición de sumas finitas demuestran que sus sumas parciales son $t_k=s_{\phi(k)}$. Si la serie original converge a $S$, también converge la agrupada a $S$: la inducción da $\phi(k)\ge k$, de modo que el mismo corte ε–N controla $s_{\phi(k)}$. No se permutan términos.
+
+La recíproca falla. Agrupar $(1,-1,1,-1,\ldots)$ por parejas produce $g_k=0$ y $t_k=0$, pero el proceso original alterna entre uno y cero. Hemos seleccionado una extracción convergente, no demostrado convergencia del recorrido completo.
+
+</details>
+
+#### Ejercicio 33. Grupos de longitud acotada
+
+[]{#MA-EX-ANM-01-011-033}
+
+Prueba que si $a_n\to0$, los grupos tienen longitud a lo sumo $M\ge1$ y la serie agrupada converge, entonces la original converge a la misma suma.
+
+[]{#MA-SOL-ANM-01-011-033}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 33</summary>
+
+**Respuesta.**
+
+Escojamos $J$ con $|a_j|<\varepsilon/(2M)$ para $j\ge J$ y un corte $K\ge\max\{1,J\}$ de grupos con $|t_k-S|<\varepsilon/2$. Para $k\ge K$, todo índice del grupo es al menos $\phi(k-1)+1\ge k\ge J$. La diferencia de un total interior al extremo suma a lo sumo $M$ magnitudes, luego es menor que $\varepsilon/2$ o cero. Todo $n\ge\phi(K-1)+1$ pertenece a esos grupos, así que $|s_n-S|\le|s_n-t_k|+|t_k-S|<\varepsilon$.
+
+Después del argumento, la [figura 11.5](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f05) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.7.**
+
+entonces $s_n\to S$. Para probarlo, hacemos menores que $\varepsilon/2$ tanto la distancia interior como $|t_k-S|$, con un corte común $K\ge1$. Todo $n\ge\phi(K-1)+1$ pertenece a un grupo con $k\ge K$; la desigualdad triangular da $|s_n-S|<\varepsilon$.
+
+Una condición suficiente fácil de verificar es que los grupos tengan longitud acotada y $a_n\to0$. Si las longitudes son a lo sumo un natural $M\ge1$, entonces $s_{\phi(k)}-s_n$ suma a lo sumo $M$ términos del propio grupo. Dada $\varepsilon>0$, escogemos $J$ con $|a_j|<\varepsilon/M$ para $j\ge J$. Para $k\ge\max\{1,J\}$, $\phi(k-1)+1\ge k\ge J$; todos los términos interiores pertenecen a esa cola y su suma de magnitudes es menor que $\varepsilon$ cuando el bloque no es vacío. Si es vacío, la distancia es cero. La condición anterior queda probada. No negatividad no interviene: el control es absoluto y finito.
+
+</details>
+
+#### Ejercicio 34. Longitud no necesaria
+
+[]{#MA-EX-ANM-01-011-034}
+
+Construye una serie convergente agrupada en bloques de longitud no acotada y explica por qué eso no contradice la condición suficiente de grupos cortos.
+
+[]{#MA-SOL-ANM-01-011-034}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 34</summary>
+
+**Respuesta.**
+
+La geométrica $a_n=2^{-n}$ converge a dos. Tomemos $\phi(k)=(k+1)^2-1$: el grupo inicial tiene un término y el grupo $k\ge1$ tiene longitud $2k+1$, no acotada. Por la dirección directa de §11.7, la agrupada conserva suma dos. La cota de longitud es suficiente para recuperar convergencia a partir de extremos y término nulo, no necesaria para toda agrupación de una serie ya convergente.
+
+**Fundamento en la sección 11.7.**
+
+entonces $s_n\to S$. Para probarlo, hacemos menores que $\varepsilon/2$ tanto la distancia interior como $|t_k-S|$, con un corte común $K\ge1$. Todo $n\ge\phi(K-1)+1$ pertenece a un grupo con $k\ge K$; la desigualdad triangular da $|s_n-S|<\varepsilon$.
+
+Una condición suficiente fácil de verificar es que los grupos tengan longitud acotada y $a_n\to0$. Si las longitudes son a lo sumo un natural $M\ge1$, entonces $s_{\phi(k)}-s_n$ suma a lo sumo $M$ términos del propio grupo. Dada $\varepsilon>0$, escogemos $J$ con $|a_j|<\varepsilon/M$ para $j\ge J$. Para $k\ge\max\{1,J\}$, $\phi(k-1)+1\ge k\ge J$; todos los términos interiores pertenecen a esa cola y su suma de magnitudes es menor que $\varepsilon$ cuando el bloque no es vacío. Si es vacío, la distancia es cero. La condición anterior queda probada. No negatividad no interviene: el control es absoluto y finito.
+
+</details>
+
+#### Ejercicio 35. Excursiones que se reducen
+
+[]{#MA-EX-ANM-01-011-035}
+
+En el bloque $m\ge1$, coloca $m$ términos $h_m/m$ y luego $m$ términos $-h_m/m$, donde $0\le h_m\le1$. Demuestra que la serie converge si y sólo si $h_m\to0$, y decide su suma.
+
+[]{#MA-SOL-ANM-01-011-035}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 35</summary>
+
+El bloque ocupa $m(m-1)\le n\le m(m+1)-1$. Sus totales empiezan en cero, suben a $h_m$ y vuelven a cero. Si $h_m\to0$, todo total de los bloques tardíos está entre cero y $h_m$, así que converge a cero por un corte en el comienzo de un bloque. Si la serie converge, los totales finales cero fuerzan suma cero por una extracción con índices crecientes; los totales de mitad son $h_m$ y deben tender también a cero. Por tanto la equivalencia y suma quedan establecidas. Además $|a_n|\le1/m\to0$ en todo caso: ese control por sí solo no decide el resultado.
+
+Después del argumento, la [figura 11.5](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f05) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+</details>
 ## 11.8. Elegir un control y certificar el error
 
 []{#MA-SEC-ANM-01-011-008}
@@ -578,38 +2786,349 @@ El laboratorio deja varias maneras de controlar una acumulación, cada una con h
 
 ### Antes de seguir
 
+#### Microcontrol 57
+
 []{#MA-MIC-ANM-01-011-057}
 
-1. ¿Basta $E_n\le\varepsilon$ para certificar error estrictamente menor que $\varepsilon$?
+¿Basta $E_n\le\varepsilon$ para certificar error estrictamente menor que $\varepsilon$?
+
+[]{#MA-MSOL-ANM-01-011-057}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 57</summary>
+
+**Respuesta.**
+
+No. Si sólo sabemos $|S-s_n|\le E_n$, es suficiente exigir $E_n<\varepsilon$.
+
+**Fundamento en la sección 11.8.**
+
+Un certificado útil separa existencia de precisión. Primero se prueba que $s_n\to S$; luego una cota $|S-s_n|\le E_n$ permite decidir si el total calculado cumple la tolerancia. Para asegurar error estrictamente menor que $\varepsilon$ se escoge $E_n<\varepsilon$, no sólo $E_n\le\varepsilon$. Si conocemos $L_n\le S\le U_n$, podemos usar el punto medio $M_n=(L_n+U_n)/2$ como aproximación, con
+
+$$
+|S-M_n|\le\frac{U_n-L_n}{2}.
+$$
+
+La prueba es finita: restar $M_n$ a las dos desigualdades deja fronteras simétricas. El punto medio es un real construido con dos totales; puede ser una mejor aproximación aunque no sea una suma parcial de la serie.
+
+</details>
+
+#### Microcontrol 58
 
 []{#MA-MIC-ANM-01-011-058}
 
-2. ¿Qué error tiene el punto medio de un intervalo certificado?
+¿Qué error tiene el punto medio de un intervalo certificado?
+
+[]{#MA-MSOL-ANM-01-011-058}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 58</summary>
+
+**Respuesta.**
+
+Si $L_n\le S\le U_n$, su punto medio tiene error a lo sumo $(U_n-L_n)/2$.
+
+**Fundamento en la sección 11.8.**
+
+En la armónica alternada de §11.6, $L_k=s_{2k+1}$, $U_k=s_{2k}$ y $U_k-L_k=1/(2k+2)$. El punto medio tiene error a lo sumo $1/(4k+4)$. Con $k=2$, $s_4=47/60$, $s_5=37/60$, y por tanto
+
+$$
+\frac{37}{60}\le S\le\frac{47}{60},\qquad
+M_2=\frac7{10},\qquad |S-M_2|\le\frac1{12}<\frac1{10}.
+$$
+
+El cálculo usa seis términos para construir ambos extremos; no convierte $7/10$ en el valor exacto de $S$. La precisión se certifica sin usar una fórmula del destino.
+
+La mitad de la anchura controla el error del punto medio; la anchura completa controla el de un extremo. Se conserva el origen de cada número para no confundir total, aproximación y suma.
+
+</details>
+
+#### Microcontrol 59
 
 []{#MA-MIC-ANM-01-011-059}
 
-3. ¿Debe ese punto medio ser una suma parcial?
+¿Debe ese punto medio ser una suma parcial?
+
+[]{#MA-MSOL-ANM-01-011-059}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 59</summary>
+
+**Respuesta.**
+
+No. Es un real construido como promedio de dos fronteras y puede no coincidir con ningún total.
+
+**Fundamento en la sección 11.8.**
+
+Un certificado útil separa existencia de precisión. Primero se prueba que $s_n\to S$; luego una cota $|S-s_n|\le E_n$ permite decidir si el total calculado cumple la tolerancia. Para asegurar error estrictamente menor que $\varepsilon$ se escoge $E_n<\varepsilon$, no sólo $E_n\le\varepsilon$. Si conocemos $L_n\le S\le U_n$, podemos usar el punto medio $M_n=(L_n+U_n)/2$ como aproximación, con
+
+$$
+|S-M_n|\le\frac{U_n-L_n}{2}.
+$$
+
+La prueba es finita: restar $M_n$ a las dos desigualdades deja fronteras simétricas. El punto medio es un real construido con dos totales; puede ser una mejor aproximación aunque no sea una suma parcial de la serie.
+
+</details>
+
+#### Microcontrol 60
 
 []{#MA-MIC-ANM-01-011-060}
 
-4. ¿Qué intervalo se obtiene con $s_4$ y $s_5$ en la armónica alternada?
+¿Qué intervalo se obtiene con $s_4$ y $s_5$ en la armónica alternada?
+
+[]{#MA-MSOL-ANM-01-011-060}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 60</summary>
+
+**Respuesta.**
+
+$[37/60,47/60]$, cuyo punto medio es $7/10$ y cuyo semiancho es $1/12$.
+
+**Fundamento en la sección 11.8.**
+
+En la armónica alternada de §11.6, $L_k=s_{2k+1}$, $U_k=s_{2k}$ y $U_k-L_k=1/(2k+2)$. El punto medio tiene error a lo sumo $1/(4k+4)$. Con $k=2$, $s_4=47/60$, $s_5=37/60$, y por tanto
+
+$$
+\frac{37}{60}\le S\le\frac{47}{60},\qquad
+M_2=\frac7{10},\qquad |S-M_2|\le\frac1{12}<\frac1{10}.
+$$
+
+El cálculo usa seis términos para construir ambos extremos; no convierte $7/10$ en el valor exacto de $S$. La precisión se certifica sin usar una fórmula del destino.
+
+La mitad de la anchura controla el error del punto medio; la anchura completa controla el de un extremo. Se conserva el origen de cada número para no confundir total, aproximación y suma.
+
+</details>
+
+#### Microcontrol 61
 
 []{#MA-MIC-ANM-01-011-061}
 
-5. ¿Ese cálculo demuestra que la suma vale $7/10$?
+¿Ese cálculo demuestra que la suma vale $7/10$?
+
+[]{#MA-MSOL-ANM-01-011-061}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 61</summary>
+
+**Respuesta.**
+
+No. Demuestra $|S-7/10|\le1/12$, una aproximación con error certificado.
+
+**Fundamento en la sección 11.8.**
+
+El cálculo usa seis términos para construir ambos extremos; no convierte $7/10$ en el valor exacto de $S$. La precisión se certifica sin usar una fórmula del destino.
+
+La mitad de la anchura controla el error del punto medio; la anchura completa controla el de un extremo. Se conserva el origen de cada número para no confundir total, aproximación y suma.
+
+Las operaciones entre series también requieren una traducción finita. Si las series de $a,b$ convergen a $A,B$ y $\alpha,\beta\in\mathbb R$, una inducción da
+
+</details>
+
+#### Microcontrol 62
 
 []{#MA-MIC-ANM-01-011-062}
 
-6. ¿Qué permite sumar linealmente dos series convergentes?
+¿Qué permite sumar linealmente dos series convergentes?
+
+[]{#MA-MSOL-ANM-01-011-062}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 62</summary>
+
+**Respuesta.**
+
+La identidad de sumas finitas y el álgebra de límites de C06 dan suma $\alpha A+\beta B$.
+
+**Fundamento en la sección 11.8.**
+
+Las operaciones entre series también requieren una traducción finita. Si las series de $a,b$ convergen a $A,B$ y $\alpha,\beta\in\mathbb R$, una inducción da
+
+$$
+\sum_{j=0}^n(\alpha a_j+\beta b_j)
+=\alpha\sum_{j=0}^na_j+\beta\sum_{j=0}^nb_j.
+$$
+
+El álgebra de C06 prueba entonces convergencia y suma $\alpha A+\beta B$. No basta conocer $a_n\to0$ y $b_n\to0$. Si eliminamos un prefijo de longitud $m$, la cola reindexada $c_k=a_{m+k}$ tiene totales $s_{m+n}-P_m$, donde $P_m=\sum_{j=0}^{m-1}a_j$ y $P_0=0$. Su suma es $S-P_m$ cuando la original converge; recíprocamente, convergencia de la cola permite añadir el prefijo. Igual comportamiento de convergencia no significa igualdad numérica de las sumas.
+
+</details>
+
+#### Microcontrol 63
 
 []{#MA-MIC-ANM-01-011-063}
 
-7. ¿Qué suma tiene la cola reindexada que elimina $m$ términos?
+¿Qué suma tiene la cola reindexada que elimina $m$ términos?
+
+[]{#MA-MSOL-ANM-01-011-063}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 63</summary>
+
+**Respuesta.**
+
+$S-P_m$, con $P_m=\sum_{j=0}^{m-1}a_j$ y $P_0=0$.
+
+**Fundamento en la sección 11.8.**
+
+Las operaciones entre series también requieren una traducción finita. Si las series de $a,b$ convergen a $A,B$ y $\alpha,\beta\in\mathbb R$, una inducción da
+
+$$
+\sum_{j=0}^n(\alpha a_j+\beta b_j)
+=\alpha\sum_{j=0}^na_j+\beta\sum_{j=0}^nb_j.
+$$
+
+El álgebra de C06 prueba entonces convergencia y suma $\alpha A+\beta B$. No basta conocer $a_n\to0$ y $b_n\to0$. Si eliminamos un prefijo de longitud $m$, la cola reindexada $c_k=a_{m+k}$ tiene totales $s_{m+n}-P_m$, donde $P_m=\sum_{j=0}^{m-1}a_j$ y $P_0=0$. Su suma es $S-P_m$ cuando la original converge; recíprocamente, convergencia de la cola permite añadir el prefijo. Igual comportamiento de convergencia no significa igualdad numérica de las sumas.
+
+</details>
+
+#### Microcontrol 64
 
 []{#MA-MIC-ANM-01-011-064}
 
-8. ¿Una muestra finita de totales demuestra convergencia?
+¿Una muestra finita de totales demuestra convergencia?
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 11](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html) · [Ejercicios](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-microcontroles.html)
+[]{#MA-MSOL-ANM-01-011-064}
+
+<details class="anm-solution">
+<summary>Ver solución del microcontrol 64</summary>
+
+**Respuesta.**
+
+No. La prueba debe controlar todos los bloques después de un corte; la muestra sólo ilustra valores seleccionados.
+
+**Fundamento en la sección 11.8.**
+
+El laboratorio deja varias maneras de controlar una acumulación, cada una con hipótesis identificables. Una lista finita de valores no decide por sí sola una convergencia infinita; la prueba debe alcanzar todos los bloques posteriores. A la vez, una estimación explícita puede convertir esa prueba en un corte utilizable cuando los términos y los datos de la cota pueden evaluarse. La definición de convergencia sola no proporciona ese procedimiento efectivo.
+
+</details>
+
+### Ejercicios de la sección 11.8
+
+#### Ejercicio 36. Una tolerancia estricta
+
+[]{#MA-EX-ANM-01-011-036}
+
+Para $\sum2^{-n}$, encuentra el primer índice de corte que garantiza error estrictamente menor que $1/16$, y el número de términos utilizados.
+
+[]{#MA-SOL-ANM-01-011-036}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 36</summary>
+
+**Respuesta.**
+
+El resto exacto es $2^{-n}$. Se necesita $2^{-n}<1/16=2^{-4}$, así que el primer índice es $n=5$ y se suman seis términos. En $n=4$ el error es exactamente la tolerancia.
+
+Después del argumento, la [figura 11.3](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f03) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.8.**
+
+La primera decisión ante una serie consiste en identificar qué sucesión de totales estamos estudiando y qué mecanismo controla sus bloques. Una fórmula telescópica puede dar el resto exacto; una comparación no negativa produce una barrera; el control absoluto garantiza estabilidad sin seguir los signos; el control alternado preserva cancelaciones y entrega un intervalo. Cada mecanismo responde a una dificultad concreta.
+
+Un certificado útil separa existencia de precisión. Primero se prueba que $s_n\to S$; luego una cota $|S-s_n|\le E_n$ permite decidir si el total calculado cumple la tolerancia. Para asegurar error estrictamente menor que $\varepsilon$ se escoge $E_n<\varepsilon$, no sólo $E_n\le\varepsilon$. Si conocemos $L_n\le S\le U_n$, podemos usar el punto medio $M_n=(L_n+U_n)/2$ como aproximación, con
+
+</details>
+
+#### Ejercicio 37. Certificado sin suma conocida
+
+[]{#MA-EX-ANM-01-011-037}
+
+En la armónica alternada, usa $s_4,s_5$ para obtener un intervalo y una aproximación de error menor que $1/10$.
+
+[]{#MA-SOL-ANM-01-011-037}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 37</summary>
+
+**Respuesta.**
+
+La prueba de §11.6 da $s_5\le S\le s_4$. Sumando finitamente, $s_4=47/60$ y $s_5=37/60$. El punto medio es $7/10$ y el semiancho $1/12<1/10$. Por tanto $|S-7/10|\le1/12$; no se identifica $S$ con ese punto medio.
+
+Después del argumento, la [figura 11.6](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f06) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+**Fundamento en la sección 11.8.**
+
+La prueba es finita: restar $M_n$ a las dos desigualdades deja fronteras simétricas. El punto medio es un real construido con dos totales; puede ser una mejor aproximación aunque no sea una suma parcial de la serie.
+
+En la armónica alternada de §11.6, $L_k=s_{2k+1}$, $U_k=s_{2k}$ y $U_k-L_k=1/(2k+2)$. El punto medio tiene error a lo sumo $1/(4k+4)$. Con $k=2$, $s_4=47/60$, $s_5=37/60$, y por tanto
+
+$$
+\frac{37}{60}\le S\le\frac{47}{60},\qquad
+M_2=\frac7{10},\qquad |S-M_2|\le\frac1{12}<\frac1{10}.
+$$
+
+El cálculo usa seis términos para construir ambos extremos; no convierte $7/10$ en el valor exacto de $S$. La precisión se certifica sin usar una fórmula del destino.
+
+</details>
+
+#### Ejercicio 38. Linealidad con dominio de validez
+
+[]{#MA-EX-ANM-01-011-038}
+
+Prueba linealidad de la suma para dos series convergentes. Muestra por qué no permite asignar sumas a dos series divergentes.
+
+[]{#MA-SOL-ANM-01-011-038}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 38</summary>
+
+**Respuesta.**
+
+La identidad finita de §11.8 da totales $\alpha s_n+\beta t_n$. C06, con $s_n\to A$ y $t_n\to B$, prueba suma $\alpha A+\beta B$. Las hipótesis no se borran: las series de términos uno y menos uno divergen, pero su suma término a término es la serie cero convergente. No existen dos sumas reales previas que puedan sumarse en ese ejemplo.
+
+**Fundamento en la sección 11.8.**
+
+Las operaciones entre series también requieren una traducción finita. Si las series de $a,b$ convergen a $A,B$ y $\alpha,\beta\in\mathbb R$, una inducción da
+
+$$
+\sum_{j=0}^n(\alpha a_j+\beta b_j)
+=\alpha\sum_{j=0}^na_j+\beta\sum_{j=0}^nb_j.
+$$
+
+El álgebra de C06 prueba entonces convergencia y suma $\alpha A+\beta B$. No basta conocer $a_n\to0$ y $b_n\to0$. Si eliminamos un prefijo de longitud $m$, la cola reindexada $c_k=a_{m+k}$ tiene totales $s_{m+n}-P_m$, donde $P_m=\sum_{j=0}^{m-1}a_j$ y $P_0=0$. Su suma es $S-P_m$ cuando la original converge; recíprocamente, convergencia de la cola permite añadir el prefijo. Igual comportamiento de convergencia no significa igualdad numérica de las sumas.
+
+</details>
+
+#### Ejercicio 39. Cambiar sólo un prefijo
+
+[]{#MA-EX-ANM-01-011-039}
+
+Si $a$ y $b$ coinciden para $n\ge m$, demuestra equivalencia de convergencia y relaciona sus sumas, incluyendo $m=0$.
+
+[]{#MA-SOL-ANM-01-011-039}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 39</summary>
+
+**Respuesta.**
+
+Para todo $n\ge m$, sus totales difieren en $D=\sum_{j=0}^{m-1}(a_j-b_j)$; en $m=0$ la suma vacía es cero. Si un proceso converge, el otro converge sumando o restando la constante $D$ en su cola. Cuando ambas sumas existen, $S_a-S_b=D$. Los términos pueden ser distintos y tener convergencia equivalente sin igualdad de sumas.
+
+**Fundamento en la sección 11.8.**
+
+El álgebra de C06 prueba entonces convergencia y suma $\alpha A+\beta B$. No basta conocer $a_n\to0$ y $b_n\to0$. Si eliminamos un prefijo de longitud $m$, la cola reindexada $c_k=a_{m+k}$ tiene totales $s_{m+n}-P_m$, donde $P_m=\sum_{j=0}^{m-1}a_j$ y $P_0=0$. Su suma es $S-P_m$ cuando la original converge; recíprocamente, convergencia de la cola permite añadir el prefijo. Igual comportamiento de convergencia no significa igualdad numérica de las sumas.
+
+El laboratorio deja varias maneras de controlar una acumulación, cada una con hipótesis identificables. Una lista finita de valores no decide por sí sola una convergencia infinita; la prueba debe alcanzar todos los bloques posteriores. A la vez, una estimación explícita puede convertir esa prueba en un corte utilizable cuando los términos y los datos de la cota pueden evaluarse. La definición de convergencia sola no proporciona ese procedimiento efectivo.
+
+</details>
+
+#### Ejercicio 40. Dos mecanismos en una sola serie
+
+[]{#MA-EX-ANM-01-011-040}
+
+Sea $a_n=(-1)^n/(n+1)+e_n$ con $|e_n|\le2^{-n}$. Prueba convergencia, una cota de resto y que la convergencia es condicional.
+
+[]{#MA-SOL-ANM-01-011-040}
+
+<details class="anm-solution">
+<summary>Ver solución del ejercicio 40</summary>
+
+La alternada tiene suma $B$ y error a lo sumo $1/(n+2)$. La perturbación geométricamente dominada converge absolutamente a $E$, con error a lo sumo $2^{-n}$. Linealidad da suma $S=B+E$, y triangular da $|S-s_n|\le1/(n+2)+2^{-n}$. Para demostrar que no es absoluta, la triangular implica $1/(n+1)\le|a_n|+|e_n|$. Si la serie de $|a_n|$ convergiera, sus totales y los de $|e_n|$ estarían acotados; sumando esta desigualdad, los totales armónicos quedarían acotados, contradicción. La original converge y sus magnitudes no, de modo que es condicional.
+
+Después del argumento, la [figura 11.4](analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html#fig-anm-c11-f04) permite contrastar el mecanismo con el ejemplo del capítulo.
+
+</details>
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-11)
 
 [← Capítulo 10](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html) · [Capítulo 12 →](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html)
