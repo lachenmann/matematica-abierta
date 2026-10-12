@@ -217,6 +217,8 @@ Compara la definición de Cauchy con la condición: para todo $\varepsilon>0$ y 
 
 La definición de Cauchy exige un corte antes de todos los pares posteriores. La segunda condición es verdadera para cualquier sucesión tomando $q=p$, con distancia cero. No impone Cauchy: $(-1)^n$ la satisface y no es de Cauchy.
 
+En la segunda condición el testigo $q$ puede elegirse después de conocer $p$, y nada exige que sea diferente de él. La elección $q=p$ hace que el enunciado sea verdadero para toda sucesión. En Cauchy, en cambio, tras fijar el corte la desigualdad debe valer para cualquier elección de ambos índices. En la alternancia, los índices consecutivos $N,N+1$ tienen distancia dos; así se ve concretamente el control que falta en la condición propuesta.
+
 </details>
 
 #### Ejercicio 2. Un corte recíproco
@@ -234,6 +236,8 @@ Los términos posteriores a $N$ están en $(0,1/(N+1)]$, luego cualquier distanc
 
 Después de la prueba, puede retomarse la [figura 10.1](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f01) para contrastar el mecanismo con el ejemplo del capítulo.
 
+El corte cero requiere un examen separado porque la cota del diámetro es no estricta. Si ambos valores están en $(0,1]$, su distancia es estrictamente menor que uno, incluso cuando uno de ellos es el valor uno. Para $0<\varepsilon<1$, escogemos un natural $q$ con $1/(q+1)\le1-\varepsilon$: el par $0,q$ tiene distancia al menos $\varepsilon$ y demuestra que ese corte no sirve. Un corte posterior con $1/(N+1)<\varepsilon$ evita el problema para todos los pares a la vez.
+
 </details>
 
 #### Ejercicio 3. Constantes y repetición
@@ -248,6 +252,8 @@ Prueba que toda sucesión constante es de Cauchy y explica por qué no se exigen
 <summary>Ver solución del ejercicio 3</summary>
 
 Si $a_n=c$ para todos los índices, $|a_p-a_q|=0$ para todo par. El corte cero sirve para toda tolerancia positiva. La sucesión sigue siendo una función aunque repita un valor; Cauchy controla distancias, no inyectividad.
+
+Leamos todos los cuantificadores: recibimos una tolerancia positiva arbitraria, respondemos con $N=0$ y consideramos cualesquiera $p,q\ge0$. La igualdad de los valores da distancia cero, que satisface la desigualdad estricta por la positividad de la tolerancia. Esto prueba la condición completa. Repetir valores no impide ser una función: lo exigido es un valor único para cada índice, no un índice único para cada valor.
 
 </details>
 
@@ -266,6 +272,8 @@ Para pares iguales la distancia es cero. Para $p<q$, intercambiar los índices u
 
 Después de la prueba, puede retomarse la [figura 10.1](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f01) para contrastar el mecanismo con el ejemplo del capítulo.
 
+La implicación desde la definición completa es inmediata, porque los pares con $p>q$ son una parte de los pares permitidos. Para la implicación inversa, fijamos el corte entregado por la condición reducida y clasificamos cualquier par posterior según $p>q$, $p=q$ o $p<q$. Cada caso cumple la desigualdad con ese mismo corte. Es necesario que el control reducido abarque todos los pares ordenados, no sólo los consecutivos.
+
 </details>
 
 #### Ejercicio 5. Una escala discreta de tolerancias
@@ -280,6 +288,8 @@ Demuestra que basta probar: para todo entero $k\ge1$ existe $N_k$ que controla t
 <summary>Ver solución del ejercicio 5</summary>
 
 La condición de Cauchy implica cada una de esas condiciones al usar $\varepsilon=1/k$. Recíprocamente, dada $\varepsilon>0$, arquimedianidad da $k\ge1$ con $1/k<\varepsilon$; el corte de esa condición controla cualquier par posterior con distancia menor que $\varepsilon$. No se intercambia el índice universal de par con el corte.
+
+No necesitamos que los cortes $N_k$ formen una sucesión creciente. Para una tolerancia concreta basta seleccionar un entero $k>1/\varepsilon$ y conservar únicamente el corte asociado a él. Entonces $p,q\ge N_k$ implica $|a_p-a_q|<1/k<\varepsilon$. La escala discreta funciona porque contiene tolerancias arbitrariamente pequeñas. Una lista finita de tolerancias no tendría esa propiedad y dejaría sin comprobar precisiones menores que todas ellas.
 
 </details>
 ## 10.2. Del destino común al control interno
@@ -460,6 +470,8 @@ Si $a_n\to L$, para $\varepsilon>0$ escoger un corte que haga $|a_n-L|<\varepsil
 
 Después de la prueba, puede retomarse la [figura 10.2](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f02) para contrastar el mecanismo con el ejemplo del capítulo.
 
+Introducimos el destino como punto intermedio: $a_p-a_q=(a_p-L)+(L-a_q)$. Cada diferencia está controlada por la convergencia, siempre que ambos índices estén en su cola. Repartir el presupuesto en mitades permite sumar las dos cotas y conservar la tolerancia requerida. No podemos concluir distancia menor que $\varepsilon$ si sólo sabemos que cada error es menor que $\varepsilon$: eso daría únicamente una distancia menor que $2\varepsilon$.
+
 </details>
 
 #### Ejercicio 7. Alternancia amortiguada
@@ -476,6 +488,8 @@ Prueba Cauchy directamente para $a_n=(-1)^n/(n+1)$ y compara el corte con el de 
 $|a_p-a_q|\le1/(p+1)+1/(q+1)\le2/(N+1)$ para pares posteriores a $N$. Tomar cualquier natural con $N+1>2/\varepsilon$ garantiza control. Para términos positivos bastaba $N+1>1/\varepsilon$; aquí pueden sumarse las magnitudes de signos opuestos. Ambos son cortes suficientes, sin afirmar optimalidad.
 
 Después de la prueba, puede retomarse la [figura 10.2](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f02) para contrastar el mecanismo con el ejemplo del capítulo.
+
+Cuando los índices tienen paridades opuestas, los valores quedan a ambos lados de cero y su distancia es la suma de sus magnitudes. La triangular proporciona una sola cota que también sirve cuando las paridades coinciden. Por eso $2/(N+1)$ es un presupuesto seguro. Escogido $N$ con esa cota menor que la tolerancia, el argumento ya no depende de cuáles sean los dos índices. No se necesita obtener el mejor corte para demostrar Cauchy.
 
 </details>
 
@@ -494,6 +508,8 @@ Por triangular, dos errores menores que $r$ suman menos que $2r$. Los puntos $L-
 
 Después de la prueba, puede retomarse la [figura 10.2](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f02) para contrastar el mecanismo con el ejemplo del capítulo.
 
+Cada punto de la ventana satisface $|x-L|<r$. Para dos puntos $x,y$, la triangular da $|x-y|\le|x-L|+|y-L|<2r$. Los puntos propuestos tienen errores individuales $3r/4$, pero distancia $3r/2$. Por tanto, el radio mide distancia al centro y el diámetro mide separación entre puntos. Para transformar una ventana en un control de Cauchy con tolerancia $\varepsilon$, basta usar radio $\varepsilon/2$.
+
 </details>
 
 #### Ejercicio 9. Transportar un corte conocido
@@ -509,6 +525,8 @@ Supón que $|a_n-L|\le C/(n+1)$ para todos los índices y $C\ge0$. Da un corte d
 
 Si $C=0$, la sucesión es constante $L$ y sirve cero. Si $C>0$, para $p,q\ge N$ la distancia es a lo sumo $2C/(N+1)$. Cualquier $N$ con $N+1>2C/\varepsilon$ garantiza la condición. La cota no estricta inicial se convierte en estricta al escoger el corte.
 
+La estimación frente a $L$ entrega dos errores, cada uno a lo sumo $C/(N+1)$, y por eso la distancia entre términos es a lo sumo $2C/(N+1)$. La propiedad arquimediana permite escoger $N$ haciendo esa última cantidad estrictamente menor que $\varepsilon$. Si $C=0$, la hipótesis implica $|a_n-L|=0$ para todo $n$: todos los términos son $L$ y ninguna división por $C$ resulta necesaria.
+
 </details>
 
 #### Ejercicio 10. Una recíproca pendiente
@@ -523,6 +541,8 @@ Explica qué obligación falta después de demostrar que una convergente es de C
 <summary>Ver solución del ejercicio 10</summary>
 
 Falta demostrar que cada sucesión con control interno tiene un destino dentro del codominio. La desigualdad triangular relaciona distancias con un centro ya dado; no crea ese centro. La prueba de §10.4 lo construirá por completitud. El contraste racional de §10.7 mostrará por qué esa obligación no es meramente formal.
+
+Demostrar «si converge, es de Cauchy» parte de un número $L$ que ya existe. La recíproca parte únicamente de distancias entre términos y debe producir ese número. Por ejemplo, las bisecciones racionales de §10.7 satisfacen el control interno, aunque su destino no pertenece a los racionales. La construcción real funciona porque permite tomar los extremos y supremos necesarios dentro del codominio. La completitud resuelve una obligación de existencia que la triangular no aborda.
 
 </details>
 ## 10.3. Encerrar una cola y recuperar la acotación
@@ -710,6 +730,8 @@ Con tolerancia uno obtener $N_0$, fijar el índice ancla en $N_0$ y deducir $|a_
 
 Después de la prueba, puede retomarse la [figura 10.3](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f03) para contrastar el mecanismo con el ejemplo del capítulo.
 
+Fijado el ancla $a_{N_0}$, la triangular da $|a_n|\le|a_n-a_{N_0}|+|a_{N_0}|<1+|a_{N_0}|$ para toda la cola. El prefijo contiene sólo los índices $0,\ldots,N_0-1$. Si existe, ponemos $B=\max\{1+|a_{N_0}|,|a_0|,\ldots,|a_{N_0-1}|\}$. Cada término queda cubierto por una de esas dos partes y satisface $|a_n|\le B$. Tomar el máximo de una lista finita requiere orden lineal, no completitud.
+
 </details>
 
 #### Ejercicio 12. La cota no basta
@@ -724,6 +746,8 @@ Da una sucesión real acotada que no sea de Cauchy y prueba ambas afirmaciones.
 <summary>Ver solución del ejercicio 12</summary>
 
 $a_n=(-1)^n$ tiene magnitud uno. Para cualquier corte, $p=N,q=N+1$ dan distancia dos. La tolerancia fija uno impide la condición de Cauchy en cualquier cola. La acotación sólo evita escape; no obliga a proximidad mutua.
+
+Para probar acotación basta observar $-1\le a_n\le1$. Para negar Cauchy necesitamos otra comprobación: fijamos $\varepsilon_0=1$ antes de recibir el corte. Los índices consecutivos posteriores tienen signos opuestos, de modo que $|a_N-a_{N+1}|=2\ge\varepsilon_0$. La misma tolerancia falla en todas las colas. Hemos probado por separado las dos propiedades pedidas, sin deducir una de la apariencia del gráfico.
 
 </details>
 
@@ -742,6 +766,8 @@ $I_N=[0,1/(N+1)]$ y su anchura es $1/(N+1)$. El extremo superior se alcanza en $
 
 Después de la prueba, puede retomarse la [figura 10.4](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f04) para contrastar el mecanismo con el ejemplo del capítulo.
 
+El mayor valor de la cola es $a_N=1/(N+1)$. Cero es una cota inferior, y ninguna cota positiva es válida: para cualquier $b>0$, arquimedianidad permite encontrar $n\ge N$ con $1/(n+1)<b$. Por tanto el ínfimo es cero. El intervalo cerrado une ambos extremos, pero la sucesión sólo toma los valores recíprocos discretos; por ejemplo, cero nunca aparece. Un intervalo de extremos es una envolvente y no el conjunto exacto de valores.
+
 </details>
 
 #### Ejercicio 14. Ancho no estricto
@@ -759,6 +785,8 @@ Para cada valor fijo $y$ de la cola, todos sus valores $x$ cumplen $x<y+\eta$. T
 
 Después de la prueba, puede retomarse la [figura 10.4](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f04) para contrastar el mecanismo con el ejemplo del capítulo.
 
+La justificación se hace en dos pasos porque los extremos pueden no alcanzarse. Con $y$ fijo, $y+\eta$ es una cota superior de la cola, luego su supremo no la supera. Al reorganizar esa desigualdad obtenemos $u_N-\eta\le y$ para todo valor de la cola; así $u_N-\eta$ es cota inferior y no supera su ínfimo. Este paso sólo conserva desigualdad no estricta: que cada valor quede estrictamente antes de una barrera no obliga a que su supremo quede estrictamente antes.
+
 </details>
 
 #### Ejercicio 15. La igualdad puede sobrevivir
@@ -775,6 +803,8 @@ Construye una sucesión de Cauchy cuya cola de corte cero tenga todas sus distan
 Tomar $a_n=1/(n+1)$. Todos sus valores son positivos y a lo sumo uno, de modo que cada distancia es menor que uno. El supremo es uno y el ínfimo cero, luego anchura uno. La sucesión es de Cauchy por el control recíproco. Se verifica que pasar a extremos puede perder la desigualdad estricta.
 
 Después de la prueba, puede retomarse la [figura 10.4](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f04) para contrastar el mecanismo con el ejemplo del capítulo.
+
+Para dos valores $x,y\in(0,1]$, si $x\ge y$ tenemos $x-y<x\le1$, y en el otro orden usamos simetría. Así todos los pares tienen distancia menor que uno. Sin embargo, el valor uno está presente y los valores se acercan arbitrariamente a cero, por lo que el intervalo de extremos es $[0,1]$. La anchura uno puede ser el supremo de las distancias aunque ninguna distancia individual valga uno.
 
 </details>
 ## 10.4. La completitud construye el destino
@@ -971,6 +1001,8 @@ El índice $r=\max\{M,N\}$ pertenece a ambas colas y da $\ell_M\le a_r\le u_N$. 
 
 Después de la prueba, puede retomarse la [figura 10.4](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f04) para contrastar el mecanismo con el ejemplo del capítulo.
 
+El punto común a ambas colas funciona como puente: pertenece a la cola de $M$, por lo que está por encima de $\ell_M$, y pertenece a la de $N$, por lo que está por debajo de $u_N$. Manteniendo $N$ fijo y variando $M$, comprobamos que $u_N$ es una cota de todos los inferiores. Sólo entonces podemos tomar el supremo de ese conjunto y situarlo por debajo de cada $u_N$.
+
 </details>
 
 #### Ejercicio 17. Existencia y comprobación
@@ -987,6 +1019,8 @@ Construye $L$ para una sucesión de Cauchy sin invocar convergencia monótona ni
 Por acotación existen extremos reales de cada cola. El conjunto no vacío de inferiores es acotado superiormente y tiene supremo $L$ por completitud. La comparación entre cortes da $\ell_N\le L\le u_N$ para todo $N$. Dada $\varepsilon>0$, usar Cauchy con $\varepsilon/2$ para obtener anchura a lo sumo $\varepsilon/2$ en una cola. Todos sus términos y $L$ están en ese intervalo, de modo que $|a_n-L|\le\varepsilon/2<\varepsilon$.
 
 Después de la prueba, puede retomarse la [figura 10.4](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f04) para contrastar el mecanismo con el ejemplo del capítulo.
+
+La acotación global obtenida antes garantiza que cada cola es no vacía y tiene extremos reales. El conjunto de inferiores contiene $\ell_0$ y, por la comparación cruzada, está acotado por $u_0$. Su supremo $L$ existe. Para cualquier $N$, $\ell_N\le L$ por definición de supremo y $L\le u_N$ por la cota cruzada. El intervalo estrecho contiene así tanto el destino construido como todos los términos posteriores. La última estimación verifica, en vez de presuponer, que ese destino es el límite.
 
 </details>
 
@@ -1005,6 +1039,8 @@ El real $L$ construido pertenece a todos los intervalos. Si $x,y$ estuvieran en 
 
 Después de la prueba, puede retomarse la [figura 10.4](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f04) para contrastar el mecanismo con el ejemplo del capítulo.
 
+La existencia no se obtiene únicamente de que las anchuras se hagan pequeñas: usamos primero el $L$ real construido y verificamos su pertenencia a cada intervalo. Para unicidad, cualquier par de puntos de un intervalo está separado a lo sumo por su anchura. Si dos puntos de la intersección fueran distintos, un intervalo más estrecho que su distancia no podría contenerlos a ambos. La intersección no es vacía y tiene a lo sumo un elemento, luego es exactamente $\{L\}$.
+
 </details>
 
 #### Ejercicio 19. Recuperar el criterio desde anchuras
@@ -1022,6 +1058,8 @@ Cauchy con tolerancia $\varepsilon/2$ fuerza anchura a lo sumo $\varepsilon/2$ e
 
 Después de la prueba, puede retomarse la [figura 10.4](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f04) para contrastar el mecanismo con el ejemplo del capítulo.
 
+En la dirección de Cauchy a anchuras, el corte para $\varepsilon/2$ controla también todas las colas que empiezan más tarde, porque son subconjuntos de esa cola. El lema de extremos da anchuras a lo sumo $\varepsilon/2<\varepsilon$. En la otra dirección sólo hace falta una cola cuya anchura sea menor que la tolerancia pedida; cualquier par de términos de esa cola queda dentro de sus extremos. Ninguna de las dos direcciones usa un límite de los términos.
+
 </details>
 
 #### Ejercicio 20. Conocer una extracción basta con Cauchy
@@ -1036,6 +1074,8 @@ Supón que $a$ es de Cauchy y que $a_{\varphi(k)}\to L$, donde $\varphi:\mathbb 
 <summary>Ver solución del ejercicio 20</summary>
 
 Una inducción da $\varphi(k)\ge k$. Para $\varepsilon>0$, tomar el corte $N_1$ de Cauchy con tolerancia $\varepsilon/2$ y el corte $K$ de la extracción para la misma tolerancia respecto de $L$. Fijar $k=\max\{K,N_1\}$, así $\varphi(k)\ge N_1$ y $|a_{\varphi(k)}-L|<\varepsilon/2$. Para todo $n\ge N_1$, $|a_n-L|\le|a_n-a_{\varphi(k)}|+|a_{\varphi(k)}-L|<\varepsilon$. Se necesita una extracción ya dada, no BW.
+
+El término extraído que sirve de ancla se escoge una sola vez para la tolerancia dada, antes de considerar el índice arbitrario $n$. Su índice original es suficientemente tardío para aplicar Cauchy, y su valor es suficientemente cercano a $L$ por convergencia de la extracción. La triangular conecta cualquier término posterior con ese ancla. Cauchy elimina así las excursiones que una subsucesión convergente podría dejar sin observar en una sucesión general.
 
 </details>
 ## 10.5. Negar Cauchy: encontrar pares separados
@@ -1225,6 +1265,8 @@ Escribe la negación de Cauchy y úsala para $a_n=(-1)^n$.
 
 Existe $\varepsilon_0>0$ tal que para cada $N$ existen $p,q\ge N$ con $|a_p-a_q|\ge\varepsilon_0$. Para la alternancia escoger $\varepsilon_0=1$ y los índices $N,N+1$, cuya distancia es dos. La tolerancia se fija primero; los testigos se escogen después del corte.
 
+Negamos sucesivamente los cuantificadores de la definición: «para todo $\varepsilon$ existe $N$ para todos $p,q$» se convierte en «existe $\varepsilon_0$ para todo $N$ existen $p,q$». También cambia $<\varepsilon_0$ por $\ge\varepsilon_0$. La alternancia proporciona testigos que dependen del corte, pero la tolerancia queda fija. Una sola pareja separada sólo descartaría ciertos cortes; la construcción para cada $N$ descarta todas las colas posibles.
+
 </details>
 
 #### Ejercicio 22. Tolerancia móvil
@@ -1239,6 +1281,8 @@ Existe $\varepsilon_0>0$ tal que para cada $N$ existen $p,q\ge N$ con $|a_p-a_q|
 <summary>Ver solución del ejercicio 22</summary>
 
 No. $1/(n+1)$ tiene términos distintos después de cada corte, pero es de Cauchy. La distancia de los testigos puede hacerse tan pequeña como se quiera al mover el corte; no hay una tolerancia positiva fija que todas las colas infrinjan.
+
+En la sucesión recíproca, $a_N\ne a_{N+1}$ después de cualquier corte. Sus distancias, sin embargo, no están separadas de cero por una constante positiva. De hecho, todos los valores de una cola están en un intervalo cuya anchura $1/(N+1)$ tiende a cero. La propiedad de ser distintos conserva información cualitativa, mientras Cauchy exige un control cuantitativo que permita cualquier precisión. Distinguirse no impide acercarse arbitrariamente.
 
 </details>
 
@@ -1257,6 +1301,8 @@ El salto es $1/(n+2)$ y tiende a cero. Para $m\ge1$, la diferencia $h_{2m-1}-h_{
 
 Después de la prueba, puede retomarse la [figura 10.5](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f05) para contrastar el mecanismo con el ejemplo del capítulo.
 
+El salto vecino se calcula cancelando el prefijo común de las dos sumas parciales, lo que deja $1/(n+2)$. Para pares lejanos, la cancelación deja un bloque entero y cada aporte pequeño se suma a los demás. El bloque de longitud $m$ entre los extremos indicados tiene denominadores no mayores que $2m$ y suma al menos $m/(2m)$. Este contraste demuestra que controlar un aporte nuevo no controla la separación entre dos acumulados arbitrariamente tardíos.
+
 </details>
 
 #### Ejercicio 24. Vecindad de longitud fija
@@ -1274,6 +1320,8 @@ Si $r=0$ la diferencia es cero. Si $r>0$, contiene $r$ sumandos con denominadore
 
 Después de la prueba, puede retomarse la [figura 10.5](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f05) para contrastar el mecanismo con el ejemplo del capítulo.
 
+Para $r>0$ y $\varepsilon>0$, un corte con $N+2>r/\varepsilon$ garantiza $h_{n+r}-h_n\le r/(n+2)<\varepsilon$ para $n\ge N$. Ese corte es válido después de fijar $r$. La condición de Cauchy invierte esa dependencia: el corte debe servir antes de escoger la distancia entre los índices. Los bloques armónicos con separación creciente muestran que esa exigencia adicional no se deduce de los límites para cada $r$ fijo.
+
 </details>
 
 #### Ejercicio 25. Acotada con saltos pequeños
@@ -1288,6 +1336,8 @@ Construye una sucesión acotada con saltos que tienden a cero y que no sea de Ca
 <summary>Ver solución del ejercicio 25</summary>
 
 Concatenar los bloques de la sugerencia y reindexar desde cero. Todos los valores están en $[0,1]$. Dentro del bloque $m$, cada salto es $1/m$; entre bloques ambos valores de unión son cero y el salto es cero. Dada $\varepsilon>0$, después de los finitos bloques con $m$ pequeño todos los saltos son menores que $\varepsilon$. Pero cada bloque tardío contiene cero y uno; después de cualquier corte se puede elegir un bloque completo y dos índices con distancia uno. La tolerancia fija uno niega Cauchy. La acotación no repara el fallo de controlar sólo vecinos.
+
+Cada bloque contiene $2m+1$ valores, y sólo hay finitos índices en los bloques anteriores a cualquiera dado. Por eso, para hacer pequeños todos los saltos posteriores, basta descartar los primeros bloques hasta que $1/m<\varepsilon$; la unión entre bloques introduce un salto cero. Para negar Cauchy escogemos un bloque completo que empiece después del corte propuesto. Sus posiciones con valores cero y uno proporcionan dos testigos de distancia uno, aunque sus muchos saltos individuales sean pequeños.
 
 </details>
 ## 10.6. Conservar el control al operar
@@ -1486,6 +1536,8 @@ Prueba directamente que suma, diferencia y escala real de sucesiones de Cauchy s
 
 Para suma y diferencia, triangular acota su diferencia de términos por la suma de las diferencias de cada factor; tomar máximo de cortes con tolerancia $\varepsilon/2$. Para escalar no cero, usar la tolerancia $\varepsilon/|c|$, ya que la nueva distancia es $|c|$ veces la original. Si $c=0$, la sucesión es constante y sirve corte cero.
 
+Para la diferencia se escribe $(a_p-b_p)-(a_q-b_q)=(a_p-a_q)-(b_p-b_q)$ y se aplica la misma triangular que para la suma. El máximo de los dos cortes asegura que los dos controles estén disponibles simultáneamente. Para escala $c\ne0$, la identidad $|ca_p-ca_q|=|c||a_p-a_q|$ indica exactamente la precisión que hay que pedir. Todos estos argumentos actúan directamente sobre pares y no necesitan conocer los límites de las sucesiones.
+
 </details>
 
 #### Ejercicio 27. Producto sin conocer destinos
@@ -1500,6 +1552,8 @@ Prueba que el producto de dos sucesiones reales de Cauchy es de Cauchy usando su
 <summary>Ver solución del ejercicio 27</summary>
 
 Por acotación, fijar $A,B\ge0$ con magnitudes de $a,b$ a lo sumo esos números. La identidad $a_pb_p-a_qb_q=a_p(b_p-b_q)+b_q(a_p-a_q)$ da cota $A|b_p-b_q|+B|a_p-a_q|$. Escoger cortes con tolerancias $\varepsilon/[2(A+1)]$ para $b$ y $\varepsilon/[2(B+1)]$ para $a$. Después del máximo la cota es a lo sumo la suma de dos cantidades menores que $\varepsilon/2$, con casos de cota cero igualmente controlados. No se requiere signo positivo de términos.
+
+Añadir y restar $a_pb_q$ separa la diferencia del producto en una diferencia de $b$ multiplicada por $a_p$ y una diferencia de $a$ multiplicada por $b_q$. Las cotas globales controlan esos multiplicadores. Los denominadores $A+1$ y $B+1$ son positivos incluso cuando una cota es cero. El máximo de los cortes garantiza las dos estimaciones y deja un margen respecto de $\varepsilon$. Esta prueba explica por qué diferencias pequeñas necesitan multiplicadores acotados.
 
 </details>
 
@@ -1516,6 +1570,10 @@ Sea $a$ de Cauchy y $|a_n|\ge c>0$ para $n\ge N_0$. Prueba que la sucesión $b_k
 
 Los recíprocos de esta cola están definidos. Para un corte original $H$ que controle $a$ con tolerancia $c^2\varepsilon$, tomar un corte nuevo $K=\max\{H,N_0\}$. Si $p,q\ge K$, sus índices originales $p+N_0,q+N_0$ superan ambos cortes y la distancia de recíprocos es a lo sumo la distancia de términos dividida por $c^2$, menor que $\varepsilon$. Los ceros previos no afectan a esta cola reindexada, pero impedirían definir recíprocos en todos los índices de $a$.
 
+Para dos índices reindexados tardíos, la identidad es
+$$|b_p-b_q|=\frac{|a_{p+N_0}-a_{q+N_0}|}{|a_{p+N_0}a_{q+N_0}|}\le\frac{|a_{p+N_0}-a_{q+N_0}|}{c^2}.$$
+El corte elegido asegura el control del numerador y que se aplique la cota inferior positiva del denominador. La reindexación comienza precisamente donde los recíprocos están definidos; no asignamos un valor artificial a los recíprocos de ceros anteriores.
+
 </details>
 
 #### Ejercicio 29. Diferencia de Cauchy no es error nulo
@@ -1531,6 +1589,8 @@ Si $a,b$ son de Cauchy y $a-b$ también lo es, ¿deben tener el mismo límite? �
 
 No. Las constantes $a_n=0$ y $b_n=1$ son de Cauchy y su diferencia constante menos uno también, con destinos distintos. Basta que $a_n-b_n\to0$: ambos tienen límites reales por el criterio y la regla de resta de C06 da diferencia de límites cero. Ser de Cauchy para la diferencia sólo asegura que ésta tiene algún límite, no que sea cero.
 
+La hipótesis de que $a-b$ sea de Cauchy no añade aquí una restricción: ya se sigue del cierre por diferencias de dos sucesiones de Cauchy. Si sus límites son $A$ y $B$, la diferencia converge a $A-B$, que puede ser cualquier real. Para forzar $A=B$ hace falta que esa diferencia tienda específicamente a cero. Las constantes del contraejemplo permiten verificar todos estos hechos sin cálculos de cortes complicados.
+
 </details>
 
 #### Ejercicio 30. Valor absoluto no tiene recíproca
@@ -1545,6 +1605,8 @@ Prueba que $a$ de Cauchy implica $|a|$ de Cauchy y muestra que la vuelta falla.
 <summary>Ver solución del ejercicio 30</summary>
 
 La triangular inversa $\big||a_p|-|a_q|\big|\le|a_p-a_q|$ permite usar el mismo corte. Para la vuelta, $a_n=(-1)^n$ no es de Cauchy, mientras $|a_n|=1$ es constante. La operación olvida el signo y puede borrar separaciones.
+
+La operación valor absoluto es capaz de juntar dos valores opuestos: uno y menos uno tienen la misma magnitud. La triangular inversa demuestra que nunca aumenta la separación, por lo que transporta un control de Cauchy en la dirección indicada. Pero juntar valores destruye información y puede convertir una sucesión oscilante en una constante. El contraejemplo comprueba que no podemos reconstruir el control de los signos a partir del control de las magnitudes.
 
 </details>
 ## 10.7. La distancia permanece; el codominio cambia
@@ -1743,6 +1805,8 @@ Los intervalos son $[1,2]$, $[1,3/2]$, $[5/4,3/2]$, $[11/8,3/2]$. Los puntos med
 
 Después de la prueba, puede retomarse la [figura 10.6](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f06) para contrastar el mecanismo con el ejemplo del capítulo.
 
+Los extremos inferiores tienen cuadrados $1$, $1$, $25/16$ y $121/64$, todos menores que dos; los superiores tienen cuadrados $4$, $9/4$, $9/4$ y $9/4$, todos mayores que dos. En cada paso el punto medio es racional y su cuadrado determina cuál extremo sustituir. Las longitudes se reducen a la mitad sin usar todavía la existencia de una raíz. La bisección construye primero datos racionales verificables y deja para después la cuestión de su destino.
+
 </details>
 
 #### Ejercicio 32. Cauchy racional sin raíz presupuesta
@@ -1759,6 +1823,8 @@ Demuestra que los extremos inferiores de esa bisección son de Cauchy antes de c
 Los intervalos están encajados y tienen anchura $2^{-N}$. Para $p,q\ge N$, los extremos inferiores posteriores pertenecen a $[l_N,u_N]$, luego su distancia es a lo sumo $2^{-N}$. Escoger por arquimedianidad $N$ con $2^{-N}<\varepsilon$ garantiza todos los pares. La existencia de una raíz real aún no se ha usado: sólo extremos racionales y anchuras conocidas.
 
 Después de la prueba, puede retomarse la [figura 10.6](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f06) para contrastar el mecanismo con el ejemplo del capítulo.
+
+La pertenencia de ambos extremos inferiores tardíos al mismo intervalo se sigue del encajamiento, no de conocer su valor límite. Como la anchura inicial es uno y cada paso la divide por dos, la longitud del intervalo de corte $N$ es $2^{-N}$. Ésta domina la distancia entre cualquier par posterior. Que $2^{-N}\to0$ permite escoger el corte para cada tolerancia; así la prueba de Cauchy precede a la construcción de una raíz real.
 
 </details>
 
@@ -1777,6 +1843,8 @@ El criterio real proporciona $l_n\to L$, y $u_n-l_n=2^{-n}\to0$ da $u_n\to L$. P
 
 Después de la prueba, puede retomarse la [figura 10.6](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f06) para contrastar el mecanismo con el ejemplo del capítulo.
 
+Las dos sucesiones de extremos tienen el mismo límite porque su diferencia es una anchura que tiende a cero. Las desigualdades estrictas de sus cuadrados pasan al límite como desigualdades no estrictas, y juntas fuerzan $L^2=2$. La prueba de irracionalidad descarta un límite dentro de $\mathbb Q$. Si alguien propusiera un límite racional distinto, su inclusión en los reales conservaría las distancias y la unicidad lo identificaría con $L$, produciendo la misma contradicción.
+
 </details>
 
 #### Ejercicio 34. Un intervalo retiene el destino
@@ -1792,6 +1860,8 @@ Prueba que toda sucesión de Cauchy con valores en $[A,B]$, con $A\le B$ reales,
 
 El criterio real proporciona un límite $L$. Las cotas $A\le a_n\le B$ pasan al límite por C06, luego $A\le L\le B$. En $(0,1)$, la sucesión $1/(n+2)$ es de Cauchy y converge en $\mathbb R$ a cero, fuera del conjunto; unicidad impide otro destino interior. La pertenencia del límite al codominio no se sigue sólo de proximidad.
 
+El intervalo cerrado retiene el destino porque las dos desigualdades que lo definen se conservan al pasar al límite. Para el intervalo abierto, las desigualdades estrictas pueden convertirse en igualdad: $0<1/(n+2)<1$ en cada índice, pero el límite es cero. Este ejemplo muestra concretamente dónde se pierde pertenencia. Para $A=B$, toda la sucesión es igual a ese valor y la conclusión para el intervalo cerrado sigue siendo válida.
+
 </details>
 
 #### Ejercicio 35. Conjunto finito
@@ -1806,6 +1876,8 @@ Demuestra que una sucesión con valores en un conjunto real finito no vacío es 
 <summary>Ver solución del ejercicio 35</summary>
 
 Si el conjunto tiene un único valor, la afirmación es inmediata. Si tiene varios, sea $\delta>0$ la mínima distancia entre dos valores distintos, existente por finitud. Cauchy con tolerancia $\delta$ fuerza que todos los términos posteriores sean iguales entre sí, pues distintos darían distancia al menos $\delta$. Así la cola es constante. Recíprocamente, una cola constante tiene todas sus distancias cero y prueba Cauchy.
+
+Si el conjunto tiene al menos dos elementos, la lista de distancias entre elementos distintos es finita, no vacía y contiene sólo números positivos. Su mínimo $\delta$ es por tanto positivo. Un corte de Cauchy con tolerancia $\delta$ prohíbe cualquier pareja de valores distintos en la cola. Fijando el término del corte, todos los posteriores deben coincidir con él. En la recíproca, el corte donde empieza la constancia funciona para todas las tolerancias positivas.
 
 </details>
 ## 10.8. Estimar el error antes de conocer la respuesta
@@ -2010,6 +2082,10 @@ La estimación de §10.8 con $C=5,\rho=1/2$ da $|a_p-a_q|\le10\,2^{-q}$ para $p>
 
 Después de la prueba, puede retomarse la [figura 10.7](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f07) para contrastar el mecanismo con el ejemplo del capítulo.
 
+Para $p>q$, telescopamos la diferencia y sumamos las cotas de los saltos:
+$$|a_p-a_q|\le5\sum_{j=q}^{p-1}2^{-j}=10\,2^{-q}(1-2^{-(p-q)})\le10\,2^{-q}.$$
+Con $q\ge N$, la cota no supera $10\,2^{-N}$. Una vez obtenido el límite, dejamos $p\to\infty$ manteniendo $q=n$ fijo. Queda una cota de error que tiende a cero. El índice $N$ debe hacerla estrictamente menor que la tolerancia, no sólo menor o igual.
+
 </details>
 
 #### Ejercicio 37. Sumar antes de tomar un límite
@@ -2026,6 +2102,8 @@ Prueba la identidad geométrica finita usada en §10.8 y explica por qué no pre
 Para $p>q$, multiplicar $S=\rho^q+\cdots+\rho^{p-1}$ por $1-\rho$ deja $S-\rho S=\rho^q-\rho^p$ tras cancelar términos. Como $1-\rho\ne0$, $S=\rho^q(1-\rho^{p-q})/(1-\rho)$. Todas las operaciones son finitas; el control de pares y luego Cauchy construyen el límite de la sucesión, sin asignar valor a una suma infinita.
 
 Después de la prueba, puede retomarse la [figura 10.7](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f07) para contrastar el mecanismo con el ejemplo del capítulo.
+
+La cancelación se comprueba comparando los exponentes: la suma original empieza en $q$ y termina en $p-1$; la multiplicada por $\rho$ empieza en $q+1$ y termina en $p$. Sólo sobreviven el primer aporte de la original y el último de la multiplicada. Como $0<\rho<1$, la división por $1-\rho$ está permitida. La fórmula proporciona una cota de cualquier bloque finito; la existencia de un límite es una conclusión posterior de ese control.
 
 </details>
 
@@ -2044,6 +2122,8 @@ En cero la fórmula da cero. Si vale en $n$, entonces $(3(1-2^{-n})+3)/2=3(1-2^{
 
 Después de la prueba, puede retomarse la [figura 10.7](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f07) para contrastar el mecanismo con el ejemplo del capítulo.
 
+La sustitución en la recurrencia muestra que el error respecto de tres se divide por dos en cada paso: $3-x_{n+1}=(3-x_n)/2$. Con error inicial tres obtenemos $3-x_n=3\,2^{-n}$ por inducción. El destino tres es además punto fijo porque $(3+3)/2=3$. La comparación con la cota general acredita en este caso igualdad, pero la prueba general sólo promete una cota superior y no impone que todas las estimaciones sean exactas.
+
 </details>
 
 #### Ejercicio 39. Iterar dentro de un intervalo
@@ -2061,6 +2141,8 @@ La imagen en el mismo intervalo permite definir todos los iterados por recursió
 
 Después de la prueba, puede retomarse la [figura 10.7](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f07) para contrastar el mecanismo con el ejemplo del capítulo.
 
+Hay que verificar la pertenencia del límite antes de escribir $F(L)$, pues la función sólo está dada en $[A,B]$. Primero la invariancia mantiene todos los iterados en ese intervalo; luego Cauchy aporta un límite real; finalmente las cotas del intervalo pasan al límite. Ya con $L$ en el dominio, la condición contractiva controla $F(L)-F(x_n)$ y la recurrencia sustituye $F(x_n)$ por $x_{n+1}$. La unicidad viene de $(1-\rho)|L-M|\le0$ para dos puntos fijos.
+
 </details>
 
 #### Ejercicio 40. La misma contracción con codominio incompleto
@@ -2077,6 +2159,8 @@ En $X=\mathbb Q\cap[1,2]$, define $F(x)=(x+2/x)/2$. Prueba que $F:X\to X$ contra
 Es racional para todo racional no cero. Para $1\le x\le2$, $F(x)-1=(x^2-2x+2)/(2x)=((x-1)^2+1)/(2x)>0$ y $2-F(x)=(4x-x^2-2)/(2x)\ge1/(2x)>0$, pues $4x-x^2-2=2-(x-2)^2\ge1$ en ese intervalo. Así $F(x)\in X$. Además $|F(x)-F(y)|=|x-y|\,|1-2/(xy)|/2$. Como $1\le xy\le4$, $1/2\le2/(xy)\le2$ y el último factor absoluto es a lo sumo uno, dando contracción por $1/2$. Un punto fijo resolvería $x^2=2$, imposible en $\mathbb Q$. Los iterados son de Cauchy y convergen en $\mathbb R$; el centro real no tiene por qué pertenecer a $X$. Falta completitud del codominio, y por eso no se puede evaluar allí $F(L)$ como una función sobre $X$.
 
 Después de la prueba, puede retomarse la [figura 10.6](analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html#fig-anm-c10-f06) para contrastar el mecanismo con el ejemplo del capítulo.
+
+La identidad para las distancias se obtiene de $1/x-1/y=(y-x)/(xy)$. Sobre $[1,2]$ el producto $xy$ está entre uno y cuatro, lo que controla uniformemente el factor de la diferencia. La contracción asegura Cauchy de los iterados, pero el límite obtenido en los reales tiene cuadrado dos y queda fuera de $X$. Evaluar $F$ en ese real requeriría extender la función a otro dominio. El fracaso no está en la estimación contractiva, sino en retener el límite en el codominio original.
 
 </details>
 
