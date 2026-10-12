@@ -99,131 +99,131 @@ Cada capítulo ofrece su exposición y tres bancos completos de actividades. Con
 
 0. [**Construir los números reales**](../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) (`MA-BCH-0175`).
 
-   [Ejercicios: 48](../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones: 48](../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Microcontroles resueltos: 87](../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)
+    [Ejercicios: 48](../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones: 48](../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Microcontroles resueltos: 87](../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)
 
 1. [**La recta real como espacio ordenado y métrico**](../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) (`MA-BCH-0083`).
 
-   [Ejercicios: 42](../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones: 42](../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html) · [Microcontroles resueltos: 38](../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html)
+    [Ejercicios: 42](../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones: 42](../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html) · [Microcontroles resueltos: 38](../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html)
 
 2. [**Cotas, extremos y barreras**](../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html) (`MA-BCH-0084`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html) · [Microcontroles resueltos: 46](../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html) · [Microcontroles resueltos: 46](../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html)
 
 3. [**Completitud: una recta sin huecos**](../capitulos/analisis-para-matematicos-capitulo-3-completitud.html) (`MA-BCH-0085`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Microcontroles resueltos: 84](../capitulos/analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Microcontroles resueltos: 84](../capitulos/analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)
 
 4. [**Mirar localmente un conjunto**](../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html) (`MA-BCH-0086`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.html) · [Microcontroles resueltos: 65](../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.html) · [Microcontroles resueltos: 65](../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.html)
 
 5. [**Sucesiones y comportamiento eventual**](../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual.html) (`MA-BCH-0179`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-microcontroles.html)
 
 6. [**Convergencia: el juego de ε y N**](../capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n.html) (`MA-BCH-0226`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-microcontroles.html)
 
 7. [**Monotonía, cotas y existencia de límites**](../capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.html) (`MA-BCH-0230`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-microcontroles.html)
 
 8. [**Subsucesiones, acumulación y Bolzano–Weierstrass**](../capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html) (`MA-BCH-0234`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-microcontroles.html)
 
 9. [**Límite superior e inferior: las envolventes de una cola**](../capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html) (`MA-BCH-0238`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-microcontroles.html)
 
 10. [**Cauchy: converger sin conocer el destino**](../capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html) (`MA-BCH-0242`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-microcontroles.html)
 
 11. [**Series como laboratorio de convergencia**](../capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html) (`MA-BCH-0246`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-microcontroles.html)
 
 12. [**Qué hace una función**](../capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html) (`MA-BCH-0250`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-microcontroles.html)
 
 13. [**Límites de funciones: control de dos escalas**](../capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html) (`MA-BCH-0254`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-microcontroles.html)
 
 14. [**Continuidad: transportar proximidad**](../capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad.html) (`MA-BCH-0258`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-microcontroles.html)
 
 15. [**Conexidad: por qué un intervalo no se rompe**](../capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe.html) (`MA-BCH-0262`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-microcontroles.html)
 
 16. [**Compacidad: del control local al control finito**](../capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito.html) (`MA-BCH-0266`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-microcontroles.html)
 
 17. [**Continuidad uniforme: una escala que sirve para todo**](../capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo.html) (`MA-BCH-0270`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-microcontroles.html)
 
 18. [**Diferenciabilidad: mirar cada vez más cerca**](../capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca.html) (`MA-BCH-0274`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-microcontroles.html)
 
 19. [**De lo local a lo global**](../capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.html) (`MA-BCH-0278`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-microcontroles.html)
 
 20. [**Convexidad y control por tangentes y secantes**](../capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes.html) (`MA-BCH-0282`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-microcontroles.html)
 
 21. [**Taylor: modelos locales y error**](../capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error.html) (`MA-BCH-0286`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-microcontroles.html)
 
 22. [**Partir, refinar, acumular**](../capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html) (`MA-BCH-0290`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-microcontroles.html)
 
 23. [**Integral de Riemann y Darboux**](../capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux.html) (`MA-BCH-0294`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-microcontroles.html)
 
 24. [**El teorema fundamental del cálculo**](../capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html) (`MA-BCH-0298`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-microcontroles.html)
 
 25. [**La frontera de Riemann**](../capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html) (`MA-BCH-0302`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-microcontroles.html)
 
 26. [**Sucesiones de funciones: converger punto por punto**](../capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html) (`MA-BCH-0306`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-microcontroles.html)
 
 27. [**Convergencia uniforme: controlar toda la función a la vez**](../capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html) (`MA-BCH-0310`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-microcontroles.html)
 
 28. [**Intercambiar límites con operaciones**](../capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html) (`MA-BCH-0314`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-microcontroles.html)
 
 29. [**Series de funciones y series de potencias**](../capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html) (`MA-BCH-0318`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-microcontroles.html)
 
 30. [**Espacios métricos**](../capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos.html) (`MA-BCH-0322`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-microcontroles.html)
 
 31. [**Completitud, compacidad y conexidad en espacios métricos**](../capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos.html) (`MA-BCH-0326`).
 
-   [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-microcontroles.html)
+    [Ejercicios: 40](../capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-ejercicios.html) · [Soluciones: 40](../capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-soluciones.html) · [Microcontroles resueltos: 64](../capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-microcontroles.html)
 
 [Epílogo — Después de la recta](../capitulos/analisis-para-matematicos-epilogo.html)
 
