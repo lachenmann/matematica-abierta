@@ -32,7 +32,7 @@ const base=process.env.EDC_QA_URL||'http://127.0.0.1:8767';
    Object.assign(check,{filename,status:response.status(),errors});
    check.pass=check.status===200&&check.pageWidth<=width+2&&check.sourceMath===check.renderedMath&&!check.mathErrors&&!check.failedImages.length&&!check.emptyAlt&&!check.duplicateIds.length&&!check.privateReferences&&!check.missingFragments.length&&!errors.length&&check.titleCount===1;
    results.push(check);console.log(JSON.stringify({filename,width,math:check.renderedMath,pass:check.pass}));
-   if(['index.html','capitulo-02.html','capitulo-05.html','capitulo-09-soluciones.html','figuras.html','edicion.html'].includes(filename)){
+   if(['index.html','capitulo-00-notas.html','capitulo-03-notas.html','capitulo-02.html','capitulo-05.html','capitulo-09-soluciones.html','figuras.html','edicion.html'].includes(filename)){
     await page.screenshot({path:path.join(output,filename.replace('.html',`-${width}.png`))});
     if(filename==='capitulo-02.html'||filename==='figuras.html'){
      const image=page.locator('main img').first();if(await image.count()){await image.scrollIntoViewIfNeeded();await page.screenshot({path:path.join(output,`figure-${filename}-${width}.png`)});}

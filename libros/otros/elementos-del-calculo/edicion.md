@@ -47,6 +47,6 @@ La licencia comprende el texto original y las figuras originales de esta edició
 
 ## Citación y erratas
 
-Peña, Alevi (2026). *Elementos del cálculo: Un enfoque histórico, problemático y fundacional*. Matemática Abierta, edición web 1.0. https://matematicaabierta.cl/libros/otros/elementos-del-calculo/index.html
+Peña, Alevi (2026). *Elementos del cálculo: Un enfoque histórico, problemático y fundacional*. Matemática Abierta, edición web 1.0. [Edición web en Matemática Abierta](https://matematicaabierta.cl/libros/otros/elementos-del-calculo/index.html)
 
 Para comunicar una errata, [abrir una incidencia en el repositorio de Matemática Abierta](https://github.com/lachenmann/matematica-abierta/issues/new) e indicar el capítulo, el identificador EDC del resultado o ejercicio y el pasaje afectado.
