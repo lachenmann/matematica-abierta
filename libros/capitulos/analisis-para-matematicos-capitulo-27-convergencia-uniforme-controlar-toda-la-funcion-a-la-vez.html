@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 27 — Convergencia uniforme: controlar toda la función a la vez – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#una-cola-que-sirve-para-todas-las-entradas" id="toc-una-cola-que-sirve-para-todas-las-entradas" class="nav-link active" data-scroll-target="#una-cola-que-sirve-para-todas-las-entradas">27.1. Una cola que sirve para todas las entradas</a>
+  <ul class="collapse">
+  <li><a href="#ver-una-banda-y-formular-lo-que-significa" id="toc-ver-una-banda-y-formular-lo-que-significa" class="nav-link" data-scroll-target="#ver-una-banda-y-formular-lo-que-significa">Ver una banda y formular lo que significa</a></li>
+  <li><a href="#comparar-y-negar-los-dos-contratos" id="toc-comparar-y-negar-los-dos-contratos" class="nav-link" data-scroll-target="#comparar-y-negar-los-dos-contratos">Comparar y negar los dos contratos</a></li>
+  <li><a href="#microcontroles" id="toc-microcontroles" class="nav-link" data-scroll-target="#microcontroles">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#la-envolvente-de-error-y-sus-fronteras" id="toc-la-envolvente-de-error-y-sus-fronteras" class="nav-link" data-scroll-target="#la-envolvente-de-error-y-sus-fronteras">27.2. La envolvente de error y sus fronteras</a>
+  <ul class="collapse">
+  <li><a href="#el-criterio-de-las-envolventes-con-su-dominio-exacto" id="toc-el-criterio-de-las-envolventes-con-su-dominio-exacto" class="nav-link" data-scroll-target="#el-criterio-de-las-envolventes-con-su-dominio-exacto">El criterio de las envolventes, con su dominio exacto</a></li>
+  <li><a href="#estricto-en-cada-entrada-no-es-estricto-en-el-supremo" id="toc-estricto-en-cada-entrada-no-es-estricto-en-el-supremo" class="nav-link" data-scroll-target="#estricto-en-cada-entrada-no-es-estricto-en-el-supremo">Estricto en cada entrada no es estricto en el supremo</a></li>
+  <li><a href="#regiones-de-infracción" id="toc-regiones-de-infracción" class="nav-link" data-scroll-target="#regiones-de-infracción">Regiones de infracción</a></li>
+  <li><a href="#microcontroles-1" id="toc-microcontroles-1" class="nav-link" data-scroll-target="#microcontroles-1">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#calcular-la-peor-discrepancia" id="toc-calcular-la-peor-discrepancia" class="nav-link" data-scroll-target="#calcular-la-peor-discrepancia">27.3. Calcular la peor discrepancia</a>
+  <ul class="collapse">
+  <li><a href="#potencias-una-barrera-que-no-se-alcanza" id="toc-potencias-una-barrera-que-no-se-alcanza" class="nav-link" data-scroll-target="#potencias-una-barrera-que-no-se-alcanza">Potencias: una barrera que no se alcanza</a></li>
+  <li><a href="#tiendas-máximo-móvil" id="toc-tiendas-máximo-móvil" class="nav-link" data-scroll-target="#tiendas-máximo-móvil">Tiendas: máximo móvil</a></li>
+  <li><a href="#un-máximo-decreciente-en-toda-la-recta" id="toc-un-máximo-decreciente-en-toda-la-recta" class="nav-link" data-scroll-target="#un-máximo-decreciente-en-toda-la-recta">Un máximo decreciente en toda la recta</a></li>
+  <li><a href="#microcontroles-2" id="toc-microcontroles-2" class="nav-link" data-scroll-target="#microcontroles-2">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#restringir-el-dominio-y-seguir-rutas" id="toc-restringir-el-dominio-y-seguir-rutas" class="nav-link" data-scroll-target="#restringir-el-dominio-y-seguir-rutas">27.4. Restringir el dominio y seguir rutas</a>
+  <ul class="collapse">
+  <li><a href="#restringir-y-reunir-finitamente" id="toc-restringir-y-reunir-finitamente" class="nav-link" data-scroll-target="#restringir-y-reunir-finitamente">Restringir y reunir finitamente</a></li>
+  <li><a href="#un-contrato-que-controla-cualquier-ruta-dada" id="toc-un-contrato-que-controla-cualquier-ruta-dada" class="nav-link" data-scroll-target="#un-contrato-que-controla-cualquier-ruta-dada">Un contrato que controla cualquier ruta dada</a></li>
+  <li><a href="#reindexar-y-conservar-una-cola" id="toc-reindexar-y-conservar-una-cola" class="nav-link" data-scroll-target="#reindexar-y-conservar-una-cola">Reindexar y conservar una cola</a></li>
+  <li><a href="#microcontroles-3" id="toc-microcontroles-3" class="nav-link" data-scroll-target="#microcontroles-3">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#operar-bajo-un-presupuesto-común" id="toc-operar-bajo-un-presupuesto-común" class="nav-link" data-scroll-target="#operar-bajo-un-presupuesto-común">27.5. Operar bajo un presupuesto común</a>
+  <ul class="collapse">
+  <li><a href="#reglas-lineales-y-operaciones-de-proximidad" id="toc-reglas-lineales-y-operaciones-de-proximidad" class="nav-link" data-scroll-target="#reglas-lineales-y-operaciones-de-proximidad">Reglas lineales y operaciones de proximidad</a></li>
+  <li><a href="#productos-declarar-la-barrera-que-se-gasta" id="toc-productos-declarar-la-barrera-que-se-gasta" class="nav-link" data-scroll-target="#productos-declarar-la-barrera-que-se-gasta">Productos: declarar la barrera que se gasta</a></li>
+  <li><a href="#recíprocos-con-margen-común" id="toc-recíprocos-con-margen-común" class="nav-link" data-scroll-target="#recíprocos-con-margen-común">Recíprocos con margen común</a></li>
+  <li><a href="#microcontroles-4" id="toc-microcontroles-4" class="nav-link" data-scroll-target="#microcontroles-4">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#una-distancia-entre-funciones-acotadas" id="toc-una-distancia-entre-funciones-acotadas" class="nav-link" data-scroll-target="#una-distancia-entre-funciones-acotadas">27.6. Una distancia entre funciones acotadas</a>
+  <ul class="collapse">
+  <li><a href="#construir-el-espacio-y-la-norma" id="toc-construir-el-espacio-y-la-norma" class="nav-link" data-scroll-target="#construir-el-espacio-y-la-norma">Construir el espacio y la norma</a></li>
+  <li><a href="#la-distancia-suprema" id="toc-la-distancia-suprema" class="nav-link" data-scroll-target="#la-distancia-suprema">La distancia suprema</a></li>
+  <li><a href="#funciones-no-acotadas-y-clases-de-diferencia-acotada" id="toc-funciones-no-acotadas-y-clases-de-diferencia-acotada" class="nav-link" data-scroll-target="#funciones-no-acotadas-y-clases-de-diferencia-acotada">Funciones no acotadas y clases de diferencia acotada</a></li>
+  <li><a href="#microcontroles-5" id="toc-microcontroles-5" class="nav-link" data-scroll-target="#microcontroles-5">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#cauchy-uniforme-y-completitud" id="toc-cauchy-uniforme-y-completitud" class="nav-link" data-scroll-target="#cauchy-uniforme-y-completitud">27.7. Cauchy uniforme y completitud</a>
+  <ul class="collapse">
+  <li><a href="#el-criterio-uniforme-de-cauchy" id="toc-el-criterio-uniforme-de-cauchy" class="nav-link" data-scroll-target="#el-criterio-uniforme-de-cauchy">El criterio uniforme de Cauchy</a></li>
+  <li><a href="#completitud-de-las-funciones-acotadas" id="toc-completitud-de-las-funciones-acotadas" class="nav-link" data-scroll-target="#completitud-de-las-funciones-acotadas">Completitud de las funciones acotadas</a></li>
+  <li><a href="#dos-precauciones-antes-de-reutilizar" id="toc-dos-precauciones-antes-de-reutilizar" class="nav-link" data-scroll-target="#dos-precauciones-antes-de-reutilizar">Dos precauciones antes de reutilizar</a></li>
+  <li><a href="#microcontroles-6" id="toc-microcontroles-6" class="nav-link" data-scroll-target="#microcontroles-6">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#certificar-una-aproximación-completa" id="toc-certificar-una-aproximación-completa" class="nav-link" data-scroll-target="#certificar-una-aproximación-completa">27.8. Certificar una aproximación completa</a>
+  <ul class="collapse">
+  <li><a href="#sumar-sólo-un-presupuesto-finito-de-incrementos" id="toc-sumar-sólo-un-presupuesto-finito-de-incrementos" class="nav-link" data-scroll-target="#sumar-sólo-un-presupuesto-finito-de-incrementos">Sumar sólo un presupuesto finito de incrementos</a></li>
+  <li><a href="#hipótesis-que-parecen-suficientes-y-no-lo-son" id="toc-hipótesis-que-parecen-suficientes-y-no-lo-son" class="nav-link" data-scroll-target="#hipótesis-que-parecen-suficientes-y-no-lo-son">Hipótesis que parecen suficientes y no lo son</a></li>
+  <li><a href="#volver-a-mirar-el-contrato" id="toc-volver-a-mirar-el-contrato" class="nav-link" data-scroll-target="#volver-a-mirar-el-contrato">Volver a mirar el contrato</a></li>
+  <li><a href="#microcontroles-7" id="toc-microcontroles-7" class="nav-link" data-scroll-target="#microcontroles-7">Microcontroles</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 27 — Convergencia uniforme: controlar toda la función a la vez</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html">Capítulo 27</a> · <a href="analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>El contrato de C26 permitió una cola para cada entrada. Ahora exigiremos una cola común y construiremos la envolvente y la distancia que la miden. C02/C03 justifican los supremos; C10 construye destinos de columnas de Cauchy; C14 se usa en rutas dadas. No se importan teoremas de intercambio de C28 ni series de funciones o teoría métrica posterior.</p>
+<section id="una-cola-que-sirve-para-todas-las-entradas" class="level2">
+<h2 class="anchored" data-anchor-id="una-cola-que-sirve-para-todas-las-entradas">27.1. Una cola que sirve para todas las entradas</h2>
+<p><span id="MA-SEC-ANM-01-027-001"></span></p>
+<p>C26 mantuvo fija una entrada y construyó para ella una cola. Ahora recibimos una tolerancia y debemos entregar una sola cola que funcione en todas las entradas del dominio. Sea <span class="math inline">\(X\subseteq\mathbb R\)</span>, y sean <span class="math inline">\(f_n,f:X\to\mathbb R\)</span> para <span class="math inline">\(n\in\mathbb N=\{0,1,\ldots\}\)</span>. Decimos que <span class="math inline">\(f_n\)</span> converge <strong>uniformemente</strong> a <span class="math inline">\(f\)</span> en <span class="math inline">\(X\)</span> si <span class="math display">\[
+\forall\varepsilon&gt;0\ \exists N\in\mathbb N\
+\forall n\ge N\ \forall x\in X:\quad |f_n(x)-f(x)|&lt;\varepsilon.
+\]</span> Escribimos <span class="math inline">\(f_n\to f\)</span> uniformemente en <span class="math inline">\(X\)</span>. La elección de <span class="math inline">\(N\)</span> precede a la entrada que habrá que controlar. El dominio es parte del contrato; una misma fórmula puede cumplirlo en un dominio y fallarlo en otro.</p>
+<section id="ver-una-banda-y-formular-lo-que-significa" class="level3">
+<h3 class="anchored" data-anchor-id="ver-una-banda-y-formular-lo-que-significa">Ver una banda y formular lo que significa</h3>
+<p>Para una tolerancia fija, la banda abierta <span class="math display">\[
+\{(x,y)\in X\times\mathbb R:f(x)-\varepsilon&lt;y&lt;f(x)+\varepsilon\}
+\]</span> contiene las gráficas completas de todas las filas posteriores a <span class="math inline">\(N\)</span>. La anchura vertical es <span class="math inline">\(2\varepsilon\)</span>. No se afirma que la banda sea horizontal ni que el límite sea continuo: está definida alrededor de los valores de una función dada. El requisito es que ninguna entrada de ninguna fila de la cola salga de ella.</p>
+<p>Por ejemplo, <span class="math inline">\(f_n(x)=x+1/(n+1)\)</span> converge uniformemente a <span class="math inline">\(f(x)=x\)</span> en toda <span class="math inline">\(\mathbb R\)</span>. Dada <span class="math inline">\(\varepsilon&gt;0\)</span>, elegimos un natural <span class="math inline">\(N&gt;1/\varepsilon\)</span>. Para todo <span class="math inline">\(n\ge N\)</span> y todo <span class="math inline">\(x\)</span>, <span class="math display">\[
+|f_n(x)-f(x)|=\frac1{n+1}\le\frac1{N+1}&lt;\varepsilon.
+\]</span> El corte no depende de <span class="math inline">\(x\)</span>. Aunque las funciones no están acotadas en la recta, su <strong>diferencia</strong> sí tiene una barrera común. No se debe confundir acotación de los valores con acotación del error.</p>
+</section>
+<section id="comparar-y-negar-los-dos-contratos" class="level3">
+<h3 class="anchored" data-anchor-id="comparar-y-negar-los-dos-contratos">Comparar y negar los dos contratos</h3>
+<p>La convergencia uniforme implica la puntual: el corte que funciona en todas las entradas sirve en la entrada que fijemos. La unicidad del límite puntual de C26 da también unicidad uniforme. Si <span class="math inline">\(X\)</span> es vacío, el contrato es vacuo y todas las filas y el límite son la única función vacía; no es necesario formar un supremo de una imagen vacía.</p>
+<p>La negación hacia una candidata fija es <span class="math display">\[
+\exists\varepsilon_0&gt;0\ \forall N\in\mathbb N\
+\exists n\ge N\ \exists x\in X:
+|f_n(x)-f(x)|\ge\varepsilon_0.
+\]</span> Ahora la entrada infractora puede cambiar con el corte y el índice. Para <span class="math inline">\(g_n(x)=x/(n+1)\)</span> en <span class="math inline">\(\mathbb R\)</span>, C26 probó límite puntual cero. Con <span class="math inline">\(\varepsilon_0=1/2\)</span>, ante cualquier <span class="math inline">\(N\)</span> tomamos <span class="math inline">\(n=N\)</span> y <span class="math inline">\(x=N+1\)</span>: el error es1. Por tanto la convergencia no es uniforme en la recta.</p>
+<p>No hace falta elegir infinitamente muchos puntos de conjuntos arbitrarios para esta refutación: el testigo está dado por una fórmula para cada desafío. La negación lógica afirma existencia de infracciones; convertirlas en una sucesión simultáneamente escogida requeriría justificar una regla de selección si no disponemos de fórmulas. No usaremos esa conversión como herramienta oculta.</p>
+<div id="fig-anm-c27-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En la ventana dibujada−1≤x≤1, f_n=x+1/(n+1) y límite f=x. La banda de tolerancia1/4 tiene fronteras abiertas: n=3 cae en la frontera y no sirve; n=4 y n=9 quedan dentro. La prueba controla toda la recta y todas las filas desdeN=4.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c27-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C27/C27-F01.svg" class="img-fluid figure-img" alt="En la ventana dibujada−1≤x≤1, f_n=x+1/(n+1) y límite f=x. La banda de tolerancia1/4 tiene fronteras abiertas: n=3 cae en la frontera y no sirve; n=4 y n=9 quedan dentro. La prueba controla toda la recta y todas las filas desdeN=4.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c27-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: En la ventana dibujada−1≤x≤1, f_n=x+1/(n+1) y límite f=x. La banda de tolerancia1/4 tiene fronteras abiertas: n=3 cae en la frontera y no sirve; n=4 y n=9 quedan dentro. La prueba controla toda la recta y todas las filas desdeN=4.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="microcontroles" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-027-001"></span></p>
+<ol type="1">
+<li>¿Qué dato recibe primero el contrato uniforme?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-002"></span></p>
+<ol start="2" type="1">
+<li>¿Puede el corte uniforme depender de la entrada?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-003"></span></p>
+<ol start="3" type="1">
+<li>¿Qué anchura tiene la banda de tolerancia <span class="math inline">\(\varepsilon\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-004"></span></p>
+<ol start="4" type="1">
+<li>¿Implica uniformidad convergencia puntual?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-005"></span></p>
+<ol start="5" type="1">
+<li>¿Qué entrada puede variar en una refutación uniforme?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-006"></span></p>
+<ol start="6" type="1">
+<li>¿Qué error tiene <span class="math inline">\(x+1/(n+1)\)</span> respecto de <span class="math inline">\(x\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-007"></span></p>
+<ol start="7" type="1">
+<li>¿Qué testigo refuta uniformidad de <span class="math inline">\(x/(n+1)\)</span> en la recta?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-008"></span></p>
+<ol start="8" type="1">
+<li>¿Qué ocurre en un dominio vacío?</li>
+</ol>
+</section>
+</section>
+<section id="la-envolvente-de-error-y-sus-fronteras" class="level2">
+<h2 class="anchored" data-anchor-id="la-envolvente-de-error-y-sus-fronteras">27.2. La envolvente de error y sus fronteras</h2>
+<p><span id="MA-SEC-ANM-01-027-002"></span></p>
+<p>Para una fila <span class="math inline">\(n\)</span> y candidata <span class="math inline">\(f\)</span>, definimos el conjunto de errores <span class="math display">\[
+A_n=\{|f_n(x)-f(x)|:x\in X\}.
+\]</span> Si <span class="math inline">\(X\)</span> es no vacío, este conjunto es no vacío y está formado por números no negativos. Antes de escribir un supremo real debemos comprobar que tiene una cota superior. Cuando la tiene, C03 permite definir <span class="math display">\[
+E_n=\sup A_n.
+\]</span> Esta <strong>envolvente de error</strong> es una barrera, aunque ninguna entrada la alcance.</p>
+<section id="el-criterio-de-las-envolventes-con-su-dominio-exacto" class="level3">
+<h3 class="anchored" data-anchor-id="el-criterio-de-las-envolventes-con-su-dominio-exacto">El criterio de las envolventes, con su dominio exacto</h3>
+<p><strong>Proposición.</strong> Para <span class="math inline">\(X\ne\varnothing\)</span>, la convergencia uniforme equivale a que desde algún índice todos los <span class="math inline">\(A_n\)</span> sean acotados y sus supremos reales <span class="math inline">\(E_n\)</span> tiendan a cero. Se permite que unas pocas filas iniciales tengan error no acotado.</p>
+<p>Si hay convergencia uniforme, aplicamos primero el contrato con tolerancia1. En la cola correspondiente todos los errores son menores que1, así existe cada <span class="math inline">\(E_n\)</span>. Para una precisión <span class="math inline">\(\varepsilon&gt;0\)</span>, usamos ahora la tolerancia <span class="math inline">\(\varepsilon/2\)</span> y reunimos ese corte con el primero. Entonces, en toda fila de la nueva cola, <span class="math display">\[
+0\le E_n\le\varepsilon/2&lt;\varepsilon.
+\]</span> La primera desigualdad no requiere un máximo; la segunda se obtiene porque <span class="math inline">\(\varepsilon/2\)</span> es cota superior de <strong>todos</strong> los errores de la fila.</p>
+<p>Recíprocamente, si los <span class="math inline">\(E_n\)</span> reales de una cola convergen a cero, un corte con <span class="math inline">\(E_n&lt;\varepsilon\)</span> da, para toda entrada, <span class="math display">\[
+|f_n(x)-f(x)|\le E_n&lt;\varepsilon.
+\]</span> Eso es el contrato uniforme. La prueba incluye todos los índices posteriores, no sólo una subsucesión de filas favorables.</p>
+<p>Podemos adoptar para el vacío la convención <span class="math inline">\(E_n=0\)</span> y conservar la equivalencia. Es una convención para el error de la función vacía; no se dice que el conjunto vacío tenga supremo real cero en el orden usual.</p>
+</section>
+<section id="estricto-en-cada-entrada-no-es-estricto-en-el-supremo" class="level3">
+<h3 class="anchored" data-anchor-id="estricto-en-cada-entrada-no-es-estricto-en-el-supremo">Estricto en cada entrada no es estricto en el supremo</h3>
+<p>En <span class="math inline">\(X=(0,1)\)</span>, la función de error <span class="math inline">\(e(x)=x\)</span> cumple <span class="math inline">\(e(x)&lt;1\)</span> en toda entrada y tiene supremo1. No lo alcanza. Para demostrar ese supremo,1 es cota superior y cualquier <span class="math inline">\(c&lt;1\)</span> deja algún punto mayor que <span class="math inline">\(c\)</span> dentro del intervalo, por ejemplo <span class="math inline">\((1+\max(c,0))/2\)</span>. Por tanto no se puede inferir <span class="math inline">\(E_n&lt;\varepsilon\)</span> sólo de errores individuales menores que <span class="math inline">\(\varepsilon\)</span>. La tolerancia partida de la prueba anterior convierte una cota no estricta en la precisión estricta requerida.</p>
+<p>Tampoco se puede exigir que todos los errores iniciales sean acotados. En <span class="math inline">\(X=(0,1]\)</span>, definamos <span class="math inline">\(f_0(x)=1/x\)</span> y <span class="math inline">\(f_n(x)=0\)</span> para <span class="math inline">\(n\ge1\)</span>, con candidata cero. La convergencia es uniforme: sirve <span class="math inline">\(N=1\)</span> para cualquier tolerancia. Pero la imagen de errores de la primera fila no tiene cota real. Suprimir el prefijo no altera una propiedad de cola.</p>
+</section>
+<section id="regiones-de-infracción" class="level3">
+<h3 class="anchored" data-anchor-id="regiones-de-infracción">Regiones de infracción</h3>
+<p>Para <span class="math inline">\(\eta&gt;0\)</span>, sea <span class="math display">\[
+B_n(\eta)=\{x\in X:|f_n(x)-f(x)|\ge\eta\}.
+\]</span> La convergencia uniforme dice que para cada <span class="math inline">\(\eta\)</span> esos conjuntos son vacíos en toda una cola. La puntual dice que cada entrada deja de pertenecer a ellos eventualmente, con un corte que puede depender de ella. Todos los puntos pueden salir eventualmente sin que llegue una etapa en que el conjunto entero quede vacío. Las tiendas de C26 realizan exactamente esa posibilidad.</p>
+<div id="fig-anm-c27-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En(0,1), e(x)=x es menor que1 en toda entrada pero tiene supremo1 no alcanzado. A la derecha, la familia f0=1/x y fn=0 desde n=1 converge uniformemente aunque la primera fila no tenga envolvente real. No se representa un supremo infinito como número.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c27-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C27/C27-F02.svg" class="img-fluid figure-img" alt="En(0,1), e(x)=x es menor que1 en toda entrada pero tiene supremo1 no alcanzado. A la derecha, la familia f0=1/x y fn=0 desde n=1 converge uniformemente aunque la primera fila no tenga envolvente real. No se representa un supremo infinito como número.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c27-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: En(0,1), e(x)=x es menor que1 en toda entrada pero tiene supremo1 no alcanzado. A la derecha, la familia f0=1/x y fn=0 desde n=1 converge uniformemente aunque la primera fila no tenga envolvente real. No se representa un supremo infinito como número.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="microcontroles-1" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-1">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-027-009"></span></p>
+<ol type="1">
+<li>¿Qué se comprueba antes de formar una envolvente real?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-010"></span></p>
+<ol start="2" type="1">
+<li>¿Se exige envolvente real para todas las filas iniciales?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-011"></span></p>
+<ol start="3" type="1">
+<li>¿Qué margen convierte control puntual estricto en supremo estricto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-012"></span></p>
+<ol start="4" type="1">
+<li>¿Puede cada error ser menor que1 y su supremo ser1?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-013"></span></p>
+<ol start="5" type="1">
+<li>¿Qué diferencia entre vacío y convención de error cero se conserva?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-014"></span></p>
+<ol start="6" type="1">
+<li>¿Qué son los conjuntos <span class="math inline">\(B_n(\eta)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-015"></span></p>
+<ol start="7" type="1">
+<li>¿Qué dice uniformidad sobre esos conjuntos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-016"></span></p>
+<ol start="8" type="1">
+<li>¿Qué dice puntualidad sobre una entrada fija y esos conjuntos?</li>
+</ol>
+</section>
+</section>
+<section id="calcular-la-peor-discrepancia" class="level2">
+<h2 class="anchored" data-anchor-id="calcular-la-peor-discrepancia">27.3. Calcular la peor discrepancia</h2>
+<p><span id="MA-SEC-ANM-01-027-003"></span></p>
+<p>Calcular una envolvente puede acreditar el control global o detectar una obstrucción. En cada ejemplo distinguiremos la cota superior de la prueba de que es la mejor, y el supremo de su posible realización.</p>
+<section id="potencias-una-barrera-que-no-se-alcanza" class="level3">
+<h3 class="anchored" data-anchor-id="potencias-una-barrera-que-no-se-alcanza">Potencias: una barrera que no se alcanza</h3>
+<p>Con <span class="math inline">\(p_0=1\)</span>, <span class="math inline">\(p_n(x)=x^n\)</span> para <span class="math inline">\(n\ge1\)</span> en <span class="math inline">\([0,1]\)</span>, C26 probó límite puntual <span class="math inline">\(p=0\)</span> antes de1 y <span class="math inline">\(p(1)=1\)</span>. Para <span class="math inline">\(n\ge1\)</span>, el error en1 es0 y en toda entrada menor que1 es <span class="math inline">\(x^n&lt;1\)</span>. No hay máximo de error, pero su supremo es1.</p>
+<p>Para probar la última afirmación, sea <span class="math inline">\(0\le c&lt;1\)</span> una supuesta cota menor. Elegimos <span class="math inline">\(0&lt;s&lt;(1-c)/(n+1)\)</span> y <span class="math inline">\(x=1-s\in[0,1)\)</span>. Bernoulli de C26 da <span class="math display">\[
+x^n\ge1-ns&gt;c.
+\]</span> Así <span class="math inline">\(c\)</span> no es cota. Las cotas negativas tampoco lo son porque hay error0. La envolvente vale1 en todas las filas, incluido el prefijo <span class="math inline">\(p_0\)</span>, y no tiende a cero. En <span class="math inline">\([0,1)\)</span> el límite es cero continuo, pero la misma envolvente1 impide convergencia uniforme.</p>
+<p>En cambio, en <span class="math inline">\([0,c]\)</span> con <span class="math inline">\(0&lt;c&lt;1\)</span>, la candidata es cero y el máximo de error es <span class="math inline">\(c^n\)</span>, alcanzado en <span class="math inline">\(c\)</span>. Con <span class="math inline">\(t=1/c-1&gt;0\)</span>, Bernoulli da <span class="math inline">\(c^n\le1/(1+nt)\to0\)</span>. Sobre <span class="math inline">\([0,0]\)</span>, el error es cero desde <span class="math inline">\(n=1\)</span>. El dominio modifica la peor discrepancia.</p>
+</section>
+<section id="tiendas-máximo-móvil" class="level3">
+<h3 class="anchored" data-anchor-id="tiendas-máximo-móvil">Tiendas: máximo móvil</h3>
+<p>Para <span class="math inline">\(k=n+3\)</span> y <span class="math inline">\(t_n(x)=\max(0,1-|kx-2|)\)</span> en <span class="math inline">\([0,1]\)</span>, C26 probó límite puntual cero. La cota <span class="math inline">\(0\le t_n\le1\)</span> se alcanza en <span class="math inline">\(x=2/k\)</span>, de modo que <span class="math inline">\(E_n=1\)</span>. Para las tiendas normalizadas <span class="math inline">\(b_n=k\,t_n\)</span>, el máximo de error es <span class="math inline">\(k\)</span>. Ambas familias fallan el contrato uniforme aunque sus columnas queden eventualmente en cero. Aquí la obstrucción es un máximo realizado, a diferencia de las potencias.</p>
+</section>
+<section id="un-máximo-decreciente-en-toda-la-recta" class="level3">
+<h3 class="anchored" data-anchor-id="un-máximo-decreciente-en-toda-la-recta">Un máximo decreciente en toda la recta</h3>
+<p>Para <span class="math inline">\(k=n+1\)</span> y <span class="math display">\[
+h_n(x)=\frac{x}{1+kx^2},\qquad x\in\mathbb R,
+\]</span> el límite puntual es cero. El cuadrado <span class="math inline">\((\sqrt{k}|x|-1)^2\ge0\)</span> demuestra <span class="math inline">\(1+kx^2\ge2\sqrt{k}|x|\)</span>. En <span class="math inline">\(x\ne0\)</span>, dividir por denominadores positivos da <span class="math display">\[
+|h_n(x)|\le\frac1{2\sqrt{k}}.
+\]</span> En cero se verifica directamente. La igualdad se alcanza en <span class="math inline">\(x=\pm1/\sqrt{k}\)</span>, por lo que <span class="math inline">\(E_n=1/(2\sqrt{k})\)</span>. Dada <span class="math inline">\(\varepsilon&gt;0\)</span>, un natural <span class="math inline">\(N&gt;1/(4\varepsilon^2)\)</span> hace <span class="math inline">\(E_n&lt;\varepsilon\)</span> para todo <span class="math inline">\(n\ge N\)</span>. Tenemos convergencia uniforme en un dominio no acotado.</p>
+<p>Una ventana de dibujo finita no decide el supremo sobre toda <span class="math inline">\(\mathbb R\)</span>. El cuadrado positivo y los puntos de igualdad son el certificado global; la figura sólo los representa. En estos ejemplos el tamaño del dominio, por sí solo, no determina el modo de convergencia.</p>
+<div id="fig-anm-c27-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Potencias en[0,1] y tiendas de altura1 conservan envolvente1; potencias en[0,1/2] tienen máximo2^(−n); h_n sobreR tiene máximo1/(2√(n+1)). Las líneas muestran envolventes certificadas por fórmulas, no supremos inferidos de un muestreo.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c27-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C27/C27-F03.svg" class="img-fluid figure-img" alt="Potencias en[0,1] y tiendas de altura1 conservan envolvente1; potencias en[0,1/2] tienen máximo2^(−n); h_n sobreR tiene máximo1/(2√(n+1)). Las líneas muestran envolventes certificadas por fórmulas, no supremos inferidos de un muestreo.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c27-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Potencias en[0,1] y tiendas de altura1 conservan envolvente1; potencias en[0,1/2] tienen máximo2^(−n); h_n sobreR tiene máximo1/(2√(n+1)). Las líneas muestran envolventes certificadas por fórmulas, no supremos inferidos de un muestreo.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="microcontroles-2" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-2">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-027-017"></span></p>
+<ol type="1">
+<li>¿Cuál es la envolvente de las potencias en <span class="math inline">\([0,1]\)</span> para <span class="math inline">\(n\ge1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-018"></span></p>
+<ol start="2" type="1">
+<li>¿Qué controla las potencias en <span class="math inline">\([0,c]\)</span> con <span class="math inline">\(c&lt;1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-019"></span></p>
+<ol start="3" type="1">
+<li>¿Qué ocurre si <span class="math inline">\(c=0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-020"></span></p>
+<ol start="4" type="1">
+<li>¿Dónde alcanza su error máximo la tienda <span class="math inline">\(t_n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-021"></span></p>
+<ol start="5" type="1">
+<li>¿Qué envolvente tiene la tienda normalizada?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-022"></span></p>
+<ol start="6" type="1">
+<li>¿Qué cuadrado produce la cota global de <span class="math inline">\(h_n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-023"></span></p>
+<ol start="7" type="1">
+<li>¿Dónde alcanza <span class="math inline">\(h_n\)</span> su máximo de magnitud?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-024"></span></p>
+<ol start="8" type="1">
+<li>¿Decide un dominio no acotado que la convergencia falle?</li>
+</ol>
+</section>
+</section>
+<section id="restringir-el-dominio-y-seguir-rutas" class="level2">
+<h2 class="anchored" data-anchor-id="restringir-el-dominio-y-seguir-rutas">27.4. Restringir el dominio y seguir rutas</h2>
+<p><span id="MA-SEC-ANM-01-027-004"></span></p>
+<p>La convergencia uniforme se refiere a un dominio concreto. Sus reglas de transporte deben conservar ese dato; olvidar el dominio puede convertir una estimación correcta en una conclusión falsa.</p>
+<section id="restringir-y-reunir-finitamente" class="level3">
+<h3 class="anchored" data-anchor-id="restringir-y-reunir-finitamente">Restringir y reunir finitamente</h3>
+<p>Si <span class="math inline">\(f_n\to f\)</span> uniformemente en <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\subseteq X\)</span>, el mismo corte funciona en <span class="math inline">\(Y\)</span>. Cuando ambos conjuntos son no vacíos y las envolventes existen, la inclusión de imágenes de error da <span class="math inline">\(E_n(Y)\le E_n(X)\)</span> por C02. La igualdad no está garantizada.</p>
+<p>Si <span class="math inline">\(X=X_1\cup\cdots\cup X_m\)</span> y hay convergencia uniforme de las restricciones hacia la misma candidata en cada pieza, para una tolerancia tomamos los <span class="math inline">\(m\)</span> cortes y su máximo. Toda entrada de <span class="math inline">\(X\)</span> pertenece a alguna pieza y queda controlada. Las piezas vacías no añaden obligaciones. No se exige que sean abiertas o cerradas: el argumento es finito y lógico.</p>
+<p>Una unión infinita no admite automáticamente el mismo paso. En <span class="math inline">\(X=[0,1)\)</span>, sea <span class="math display">\[
+X_j=[0,c_j],\qquad c_j=1-\frac1{j+2},\quad j\in\mathbb N.
+\]</span> Estas piezas cubren <span class="math inline">\(X\)</span>: para <span class="math inline">\(x&lt;1\)</span>, la arquimedianidad permite <span class="math inline">\(1/(j+2)\le1-x\)</span>. Las potencias convergen uniformemente a cero en cada <span class="math inline">\(X_j\)</span> por §27.3, pero no en su unión. Los cortes pueden crecer con la pieza y no tienen por qué tener una barrera común.</p>
+</section>
+<section id="un-contrato-que-controla-cualquier-ruta-dada" class="level3">
+<h3 class="anchored" data-anchor-id="un-contrato-que-controla-cualquier-ruta-dada">Un contrato que controla cualquier ruta dada</h3>
+<p>Supongamos convergencia uniforme y que está dada cualquier sucesión <span class="math inline">\(x_n\in X\)</span>. El mismo corte entrega <span class="math display">\[
+|f_n(x_n)-f(x_n)|\longrightarrow0.
+\]</span> No necesitamos que las entradas converjan. A diferencia de C26, ahora pueden variar porque todas estaban incluidas en la obligación después del corte.</p>
+<p>Si además <span class="math inline">\(x_n\to x\in X\)</span> y <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(x\)</span>, la dirección secuencial directa de C14 da <span class="math inline">\(f(x_n)\to f(x)\)</span>. La desigualdad <span class="math display">\[
+|f_n(x_n)-f(x)|
+\le |f_n(x_n)-f(x_n)|+|f(x_n)-f(x)|
+\]</span> prueba convergencia de la diagonal a <span class="math inline">\(f(x)\)</span>. Aquí continuidad del límite se declara como hipótesis; aún no la hemos deducido de continuidad de las filas. C28 estudiará esa preservación.</p>
+<p>Para detectar fracaso uniforme basta una ruta explícita con errores que no desaparecen en índices arbitrariamente tardíos. Las tiendas tienen <span class="math inline">\(x_n=2/(n+3)\)</span> y error1. No afirmamos sin hipótesis de selección que todo fracaso pueda convertirse automáticamente en una diagonal previamente dada.</p>
+</section>
+<section id="reindexar-y-conservar-una-cola" class="level3">
+<h3 class="anchored" data-anchor-id="reindexar-y-conservar-una-cola">Reindexar y conservar una cola</h3>
+<p>Cambiar unas pocas filas iniciales no altera convergencia uniforme: se reúne el corte anterior con el final del prefijo modificado. Para una subsucesión de índices estrictamente crecientes <span class="math inline">\(n_j\)</span>, la inducción da <span class="math inline">\(n_j\ge j\)</span>, así el corte uniforme en <span class="math inline">\(n\)</span> también funciona desde <span class="math inline">\(j\ge N\)</span>. Toda subsucesión converge uniformemente al mismo límite.</p>
+<p>La conversa no vale con una sola subsucesión. Filas constantes <span class="math inline">\(f_n(x)=(-1)^n\)</span> en un dominio no vacío tienen subsucesión par uniformemente igual a1, pero la familia completa no converge ni puntualmente. Capturar algunas filas no captura toda una cola.</p>
+<div id="fig-anm-c27-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A la izquierda, envolventes de potencias en dos miembros de la familia X_j=[0,1−1/(j+2)] y en la unión de todos sus miembros[0,1). Cada restricción cerrada tiene cota decreciente, pero la unión infinita mantiene error supremo1. A la derecha, una ruta sin límite x_n=(−1)^n sigue teniendo error1/(n+1) bajo la familia uniforme x+1/(n+1).">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c27-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C27/C27-F04.svg" class="img-fluid figure-img" alt="A la izquierda, envolventes de potencias en dos miembros de la familia X_j=[0,1−1/(j+2)] y en la unión de todos sus miembros[0,1). Cada restricción cerrada tiene cota decreciente, pero la unión infinita mantiene error supremo1. A la derecha, una ruta sin límite x_n=(−1)^n sigue teniendo error1/(n+1) bajo la familia uniforme x+1/(n+1).">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c27-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: A la izquierda, envolventes de potencias en dos miembros de la familia X_j=[0,1−1/(j+2)] y en la unión de todos sus miembros[0,1). Cada restricción cerrada tiene cota decreciente, pero la unión infinita mantiene error supremo1. A la derecha, una ruta sin límite x_n=(−1)^n sigue teniendo error1/(n+1) bajo la familia uniforme x+1/(n+1).
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="microcontroles-3" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-3">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-027-025"></span></p>
+<ol type="1">
+<li>¿Qué corte sirve después de restringir el dominio?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-026"></span></p>
+<ol start="2" type="1">
+<li>¿Cómo se reúnen finitariamente los cortes de piezas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-027"></span></p>
+<ol start="3" type="1">
+<li>¿Hace falta que las piezas sean abiertas o cerradas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-028"></span></p>
+<ol start="4" type="1">
+<li>¿Qué puede fallar en una unión infinita?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-029"></span></p>
+<ol start="5" type="1">
+<li>¿Qué error controla uniformidad para cualquier ruta <span class="math inline">\(x_n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-030"></span></p>
+<ol start="6" type="1">
+<li>¿Qué dato adicional permite comparar con <span class="math inline">\(f(x)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-031"></span></p>
+<ol start="7" type="1">
+<li>¿Qué cota de índices tiene una subsucesión estrictamente creciente?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-032"></span></p>
+<ol start="8" type="1">
+<li>¿Basta una subsucesión uniforme para afirmar uniformidad de la familia?</li>
+</ol>
+</section>
+</section>
+<section id="operar-bajo-un-presupuesto-común" class="level2">
+<h2 class="anchored" data-anchor-id="operar-bajo-un-presupuesto-común">27.5. Operar bajo un presupuesto común</h2>
+<p><span id="MA-SEC-ANM-01-027-005"></span></p>
+<p>Una estimación para todas las entradas permite reunir presupuestos de error sin volver a escoger el corte en cada punto. Pero los factores y denominadores necesitan barreras que también valgan en todo el dominio.</p>
+<section id="reglas-lineales-y-operaciones-de-proximidad" class="level3">
+<h3 class="anchored" data-anchor-id="reglas-lineales-y-operaciones-de-proximidad">Reglas lineales y operaciones de proximidad</h3>
+<p>Si <span class="math inline">\(f_n\to f\)</span> y <span class="math inline">\(g_n\to g\)</span> uniformemente en <span class="math inline">\(X\)</span>, entonces <span class="math inline">\(\alpha f_n+\beta g_n\to\alpha f+\beta g\)</span> uniformemente. Las cotas <span class="math display">\[
+|\alpha(f_n-f)+\beta(g_n-g)|
+\le|\alpha||f_n-f|+|\beta||g_n-g|
+\]</span> valen entrada por entrada; pedimos errores menores que <span class="math inline">\(\varepsilon/[2(|\alpha|+1)]\)</span> y <span class="math inline">\(\varepsilon/[2(|\beta|+1)]\)</span> y reunimos dos cortes independientes de la entrada.</p>
+<p>La triangular inversa prueba uniformidad de <span class="math inline">\(|f_n|\to|f|\)</span>. Para el máximo de dos valores usamos <span class="math display">\[
+\max(u,v)=\frac{u+v+|u-v|}{2};
+\]</span> las reglas anteriores dan <span class="math inline">\(\max(f_n,g_n)\to\max(f,g)\)</span> uniformemente.</p>
+<p>Más generalmente, si <span class="math inline">\(\phi:D\to\mathbb R\)</span> cumple una cota Lipschitz común <span class="math inline">\(|\phi(u)-\phi(v)|\le L|u-v|\)</span> y todos los valores de <span class="math inline">\(f_n,f\)</span> están en <span class="math inline">\(D\)</span>, entonces <span class="math inline">\(\phi\circ f_n\to\phi\circ f\)</span> uniformemente. La precisión <span class="math inline">\(\varepsilon/(L+1)\)</span> para las entradas de <span class="math inline">\(\phi\)</span> da el error requerido, incluido <span class="math inline">\(L=0\)</span>. El dominio y la constante común van antes de la composición.</p>
+</section>
+<section id="productos-declarar-la-barrera-que-se-gasta" class="level3">
+<h3 class="anchored" data-anchor-id="productos-declarar-la-barrera-que-se-gasta">Productos: declarar la barrera que se gasta</h3>
+<p>Supongamos además <span class="math inline">\(|f(x)|\le A\)</span> y <span class="math inline">\(|g(x)|\le B\)</span> en todo <span class="math inline">\(X\)</span>. Un corte uniforme para <span class="math inline">\(|f_n-f|&lt;1\)</span> da <span class="math inline">\(|f_n(x)|\le A+1\)</span> en todas las entradas de la cola. Allí <span class="math display">\[
+|f_n(x)g_n(x)-f(x)g(x)|
+\le (A+1)|g_n(x)-g(x)|+B|f_n(x)-f(x)|.
+\]</span> Usando errores menores que <span class="math inline">\(\varepsilon/[2(A+2)]\)</span> y <span class="math inline">\(\varepsilon/[2(B+1)]\)</span>, y el corte de la barrera, obtenemos convergencia uniforme del producto.</p>
+<p>El supuesto de valores acotados no puede eliminarse sin otro control. En <span class="math inline">\(\mathbb R\)</span>, <span class="math inline">\(f_n(x)=x\)</span> converge uniformemente a <span class="math inline">\(x\)</span> con error cero y <span class="math inline">\(g_n(x)=1/(n+1)\)</span> converge uniformemente a cero. El producto <span class="math inline">\(x/(n+1)\)</span> sólo converge puntualmente a cero, como §27.1 refutó. El error pequeño del segundo factor se multiplica por entradas sin barrera.</p>
+<p>Tampoco continuidad de la operación exterior basta por sí sola en un dominio de valores no acotado. Las funciones <span class="math inline">\(x+1/(n+1)\)</span> convergen uniformemente a <span class="math inline">\(x\)</span>, pero después de elevar al cuadrado el error es <span class="math display">\[
+\left|\frac{2x}{n+1}+\frac1{(n+1)^2}\right|,
+\]</span> no acotado en <span class="math inline">\(\mathbb R\)</span> para ninguna fila. En un rango <span class="math inline">\([-M,M]\)</span> común, en cambio, <span class="math inline">\(|u^2-v^2|\le2M|u-v|\)</span> certifica esa composición.</p>
+</section>
+<section id="recíprocos-con-margen-común" class="level3">
+<h3 class="anchored" data-anchor-id="recíprocos-con-margen-común">Recíprocos con margen común</h3>
+<p>Si <span class="math inline">\(|g(x)|\ge m&gt;0\)</span> en todo <span class="math inline">\(X\)</span> y <span class="math inline">\(g_n\to g\)</span> uniformemente, un corte para error menor que <span class="math inline">\(m/2\)</span> da <span class="math inline">\(|g_n(x)|&gt;m/2\)</span> simultáneamente. Los recíprocos están definidos en toda esa cola y <span class="math display">\[
+\left|\frac1{g_n(x)}-\frac1{g(x)}\right|
+\le\frac{2|g_n(x)-g(x)|}{m^2}.
+\]</span> La estimación prueba uniformidad de la cola de recíprocos. Para una familia definida desde el índice cero se requiere que las filas iniciales no tengan ceros o que se declare una reparación; la prueba sólo garantiza el dominio de la cola. Con numeradores uniformemente convergentes a una función acotada, el producto anterior da el cociente.</p>
+<div id="fig-anm-c27-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Familias x y1/(n+1) convergen uniformemente por separado enR, pero el producto x/(n+1) tiene error sin barrera global. Las gráficas sólo muestran una ventana; la ruta x_n=n+1 da error1 y acredita el fallo en cada etapa. La barrera de valores que exige la prueba del producto falta.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c27-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C27/C27-F05.svg" class="img-fluid figure-img" alt="Familias x y1/(n+1) convergen uniformemente por separado enR, pero el producto x/(n+1) tiene error sin barrera global. Las gráficas sólo muestran una ventana; la ruta x_n=n+1 da error1 y acredita el fallo en cada etapa. La barrera de valores que exige la prueba del producto falta.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c27-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Familias x y1/(n+1) convergen uniformemente por separado enR, pero el producto x/(n+1) tiene error sin barrera global. Las gráficas sólo muestran una ventana; la ruta x_n=n+1 da error1 y acredita el fallo en cada etapa. La barrera de valores que exige la prueba del producto falta.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="microcontroles-4" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-4">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-027-033"></span></p>
+<ol type="1">
+<li>¿Qué permite la suma de dos errores uniformes?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-034"></span></p>
+<ol start="2" type="1">
+<li>¿Qué desigualdad controla el valor absoluto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-035"></span></p>
+<ol start="3" type="1">
+<li>¿Qué hipótesis suficiente se declara para una composición exterior?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-036"></span></p>
+<ol start="4" type="1">
+<li>¿Qué barrera obtiene la prueba del producto para <span class="math inline">\(f_n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-037"></span></p>
+<ol start="5" type="1">
+<li>¿Por qué el producto con <span class="math inline">\(x\)</span> puede perder uniformidad?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-038"></span></p>
+<ol start="6" type="1">
+<li>¿Basta continuidad del cuadrado para conservar uniformidad en valores no acotados?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-039"></span></p>
+<ol start="7" type="1">
+<li>¿Qué margen uniforme evita ceros en denominadores?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-040"></span></p>
+<ol start="8" type="1">
+<li>¿Qué debe revisarse para recíprocos desde el índice inicial?</li>
+</ol>
+</section>
+</section>
+<section id="una-distancia-entre-funciones-acotadas" class="level2">
+<h2 class="anchored" data-anchor-id="una-distancia-entre-funciones-acotadas">27.6. Una distancia entre funciones acotadas</h2>
+<p><span id="MA-SEC-ANM-01-027-006"></span></p>
+<p>Queremos que la envolvente no sea sólo una cuenta para cada ejemplo: puede medir la distancia entre dos funciones completas. Hay que elegir un conjunto donde esa distancia sea siempre un real.</p>
+<section id="construir-el-espacio-y-la-norma" class="level3">
+<h3 class="anchored" data-anchor-id="construir-el-espacio-y-la-norma">Construir el espacio y la norma</h3>
+<p>Sea <span class="math display">\[
+\mathcal B(X)=\{u:X\to\mathbb R:\exists B\ge0\
+\forall x\in X,\ |u(x)|\le B\}.
+\]</span> Es un subconjunto de la colección de funciones de C26. Sumas y múltiplos permanecen en él por <span class="math inline">\(|u+v|\le B_u+B_v\)</span> y <span class="math inline">\(|\alpha u|\le|\alpha|B_u\)</span>. La función cero pertenece a él.</p>
+<p>Para <span class="math inline">\(X\ne\varnothing\)</span>, la imagen de <span class="math inline">\(|u|\)</span> es no vacía y acotada; C03 da <span class="math display">\[
+\|u\|_\infty=\sup_{x\in X}|u(x)|.
+\]</span> Para <span class="math inline">\(X=\varnothing\)</span> definimos <span class="math inline">\(\|u\|_\infty=0\)</span>. Verifiquemos las propiedades, sin suponer máximos inexistentes.</p>
+<p>La norma es no negativa. Si vale cero, cada <span class="math inline">\(|u(x)|\le0\)</span>, luego <span class="math inline">\(u\)</span> es cero; la conversa es inmediata. Para una constante <span class="math inline">\(\alpha\ne0\)</span>, multiplicar todas las cotas por <span class="math inline">\(|\alpha|\)</span> y dividirlas de vuelta prueba <span class="math display">\[
+\|\alpha u\|_\infty=|\alpha|\,\|u\|_\infty.
+\]</span> Más explícitamente, <span class="math inline">\(|\alpha|\|u\|_\infty\)</span> es cota de los valores de <span class="math inline">\(|\alpha u|\)</span>, y cualquier cota de éstos, dividida por <span class="math inline">\(|\alpha|\)</span>, acota los de <span class="math inline">\(|u|\)</span>. Para <span class="math inline">\(\alpha=0\)</span> la igualdad se comprueba aparte.</p>
+<p>Finalmente, <span class="math display">\[
+|u(x)+v(x)|\le\|u\|_\infty+\|v\|_\infty
+\]</span> para todo <span class="math inline">\(x\)</span>, de modo que el miembro derecho es cota superior y <span class="math display">\[
+\|u+v\|_\infty\le\|u\|_\infty+\|v\|_\infty.
+\]</span> Estas propiedades también valen para el vacío, donde sólo hay una función.</p>
+</section>
+<section id="la-distancia-suprema" class="level3">
+<h3 class="anchored" data-anchor-id="la-distancia-suprema">La distancia suprema</h3>
+<p>Definimos <span class="math display">\[
+d_\infty(u,v)=\|u-v\|_\infty.
+\]</span> Es finita porque <span class="math inline">\(u-v\)</span> es acotada; es no negativa, simétrica y vale cero exactamente cuando <span class="math inline">\(u=v\)</span>. Como <span class="math inline">\(u-w=(u-v)+(v-w)\)</span>, la desigualdad de norma prueba <span class="math display">\[
+d_\infty(u,w)\le d_\infty(u,v)+d_\infty(v,w).
+\]</span> Estas son las propiedades de una distancia. La teoría general de espacios métricos llegará en C30; aquí la distancia ha sido construida y verificada en un caso concreto.</p>
+<p>Converger para esta distancia significa <span class="math inline">\(d_\infty(f_n,f)\to0\)</span>. Cuando todos los objetos pertenecen a <span class="math inline">\(\mathcal B(X)\)</span>, §27.2 demuestra que equivale al contrato uniforme. La bola de radio <span class="math inline">\(r&gt;0\)</span> está dada por <span class="math inline">\(d_\infty(u,v)&lt;r\)</span>: todas las diferencias de valores son menores que <span class="math inline">\(r\)</span>. La conversa para un radio fijo puede fallar si todos los errores son menores que <span class="math inline">\(r\)</span> pero su supremo es <span class="math inline">\(r\)</span>. Las bandas y las bolas dan el mismo modo de convergencia al permitir precisiones menores, no siempre el mismo conjunto para una frontera estricta fija.</p>
+</section>
+<section id="funciones-no-acotadas-y-clases-de-diferencia-acotada" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-no-acotadas-y-clases-de-diferencia-acotada">Funciones no acotadas y clases de diferencia acotada</h3>
+<p>No obtenemos una distancia real en la colección de <strong>todas</strong> las funciones poniendo el mismo símbolo. En <span class="math inline">\(X=\mathbb R\)</span>, la diferencia entre <span class="math inline">\(u(x)=x\)</span> y cero no tiene cota superior de magnitud, así no tiene un supremo real. Tampoco el vacío se resuelve fingiendo un supremo que no existe.</p>
+<p>Sin embargo, fijada una función cualquiera <span class="math inline">\(f_0\)</span>, la clase <span class="math display">\[
+f_0+\mathcal B(X)=\{f_0+u:u\in\mathcal B(X)\}
+\]</span> sí tiene diferencias acotadas: entre dos miembros se cancela <span class="math inline">\(f_0\)</span>. La misma fórmula define una distancia allí. Esto explica por qué <span class="math inline">\(x+1/(n+1)\)</span> puede converger uniformemente a <span class="math inline">\(x\)</span> aunque ninguna función pertenezca a <span class="math inline">\(\mathcal B(\mathbb R)\)</span>. No se necesita asignar distancia finita a pares cuyo error no está acotado.</p>
+<div id="fig-anm-c27-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Para u(x)=x en(0,1), toda gráfica cae en la banda abierta de radio1 alrededor de cero, pero d∞(u,0)=1 queda fuera de la bola estricta. A la derecha, las diferencias entre x+1/(n+1) y x son constantes: las bases no acotadas se cancelan y viven en una clase trasladada con distancia real.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c27-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C27/C27-F06.svg" class="img-fluid figure-img" alt="Para u(x)=x en(0,1), toda gráfica cae en la banda abierta de radio1 alrededor de cero, pero d∞(u,0)=1 queda fuera de la bola estricta. A la derecha, las diferencias entre x+1/(n+1) y x son constantes: las bases no acotadas se cancelan y viven en una clase trasladada con distancia real.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c27-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Para u(x)=x en(0,1), toda gráfica cae en la banda abierta de radio1 alrededor de cero, pero d∞(u,0)=1 queda fuera de la bola estricta. A la derecha, las diferencias entre x+1/(n+1) y x son constantes: las bases no acotadas se cancelan y viven en una clase trasladada con distancia real.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="microcontroles-5" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-5">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-027-041"></span></p>
+<ol type="1">
+<li>¿Qué funciones pertenecen a <span class="math inline">\(\mathcal B(X)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-042"></span></p>
+<ol start="2" type="1">
+<li>¿Qué principio asegura existencia de la norma cuando <span class="math inline">\(X\)</span> no es vacío?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-043"></span></p>
+<ol start="3" type="1">
+<li>¿Qué valor de norma se declara en el dominio vacío?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-044"></span></p>
+<ol start="4" type="1">
+<li>¿Qué dice norma cero sobre la función?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-045"></span></p>
+<ol start="5" type="1">
+<li>¿Cómo se trata el escalar cero en homogeneidad?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-046"></span></p>
+<ol start="6" type="1">
+<li>¿Qué identidad da la distancia triangular?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-047"></span></p>
+<ol start="7" type="1">
+<li>¿Puede una gráfica estar en una banda abierta sin quedar en la bola estricta del mismo radio?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-048"></span></p>
+<ol start="8" type="1">
+<li>¿Qué permite una clase <span class="math inline">\(f_0+\mathcal B(X)\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="cauchy-uniforme-y-completitud" class="level2">
+<h2 class="anchored" data-anchor-id="cauchy-uniforme-y-completitud">27.7. Cauchy uniforme y completitud</h2>
+<p><span id="MA-SEC-ANM-01-027-007"></span></p>
+<p>C10 permitió converger sin conocer previamente el destino de una sucesión real. Podemos pedir ahora que el control de pares sirva al mismo tiempo en todas las entradas.</p>
+<section id="el-criterio-uniforme-de-cauchy" class="level3">
+<h3 class="anchored" data-anchor-id="el-criterio-uniforme-de-cauchy">El criterio uniforme de Cauchy</h3>
+<p>Una familia dada es <strong>uniformemente de Cauchy</strong> en <span class="math inline">\(X\)</span> si <span class="math display">\[
+\forall\varepsilon&gt;0\ \exists N\in\mathbb N\
+\forall m,n\ge N\ \forall x\in X:\quad
+|f_n(x)-f_m(x)|&lt;\varepsilon.
+\]</span> <strong>Teorema.</strong> Para funciones reales en un dominio común, este contrato equivale a la existencia de una función <span class="math inline">\(f:X\to\mathbb R\)</span> hacia la que la familia converge uniformemente.</p>
+<p>En la ida, un corte de convergencia con tolerancia <span class="math inline">\(\varepsilon/3\)</span> controla dos errores. Para <span class="math inline">\(m,n\)</span> posteriores y cualquier <span class="math inline">\(x\)</span>, <span class="math display">\[
+|f_n(x)-f_m(x)|
+\le |f_n(x)-f(x)|+|f(x)-f_m(x)|
+&lt;2\varepsilon/3&lt;\varepsilon.
+\]</span> Esta dirección no usa completitud.</p>
+<p>En la vuelta, fijada cualquier entrada <span class="math inline">\(x\)</span>, el contrato uniforme implica que su columna es de Cauchy en <span class="math inline">\(\mathbb R\)</span>. C10, y por tanto completitud de los reales, entrega su límite. C26 construye la función <span class="math inline">\(f\)</span> mediante el grafo de esas salidas únicas, sin seleccionar arbitrariamente números límite.</p>
+<p>Fijemos ahora <span class="math inline">\(\varepsilon&gt;0\)</span> y recibamos un único corte <span class="math inline">\(N\)</span> del contrato de Cauchy con tolerancia <span class="math inline">\(\varepsilon/3\)</span>. Para cualquier <span class="math inline">\(n\ge N\)</span> y cualquier <span class="math inline">\(x\)</span>, todos los índices <span class="math inline">\(m\ge N\)</span> cumplen <span class="math display">\[
+|f_n(x)-f_m(x)|&lt;\varepsilon/3.
+\]</span> Mantenemos <strong>fijos</strong> <span class="math inline">\(n\)</span> y <span class="math inline">\(x\)</span> y hacemos tender <span class="math inline">\(m\)</span> a infinito. El álgebra numérica, continuidad del absoluto y preservación del orden de C26 dan <span class="math display">\[
+|f_n(x)-f(x)|\le\varepsilon/3&lt;\varepsilon.
+\]</span> La desigualdad después del límite es no estricta y tiene ese sentido, no el inverso. Como el corte se eligió antes de <span class="math inline">\(n\)</span> y <span class="math inline">\(x\)</span>, el resultado vale para toda la cola y todo el dominio. Hemos probado uniformidad, no sólo puntualidad.</p>
+<p>En el vacío la función única resuelve el teorema vacuamente. Ninguna parte de la vuelta requiere continuidad de las filas, un dominio compacto o una fórmula explícita del límite.</p>
+</section>
+<section id="completitud-de-las-funciones-acotadas" class="level3">
+<h3 class="anchored" data-anchor-id="completitud-de-las-funciones-acotadas">Completitud de las funciones acotadas</h3>
+<p>Para una sucesión en <span class="math inline">\(\mathcal B(X)\)</span>, el criterio de Cauchy para <span class="math inline">\(d_\infty\)</span> equivale al contrato anterior. Una distancia menor que <span class="math inline">\(\varepsilon\)</span> controla cada entrada. En sentido inverso, usar el contrato con <span class="math inline">\(\varepsilon/2\)</span> da supremo como máximo <span class="math inline">\(\varepsilon/2&lt;\varepsilon\)</span>. Otra vez se cuida la frontera del supremo.</p>
+<p>Sea una sucesión de Cauchy en esa distancia. El teorema produce un límite uniforme real <span class="math inline">\(f\)</span>. Falta probar que permanece en <span class="math inline">\(\mathcal B(X)\)</span>. El contrato de Cauchy con tolerancia1 da un corte <span class="math inline">\(N\)</span>. Para cualquier <span class="math inline">\(x\)</span>, los valores posteriores satisfacen <span class="math inline">\(|f_m(x)-f_N(x)|&lt;1\)</span>; al pasar al límite, <span class="math display">\[
+|f(x)|\le |f_N(x)|+1\le\|f_N\|_\infty+1.
+\]</span> Así <span class="math inline">\(f\)</span> es acotada. §27.2 da <span class="math inline">\(d_\infty(f_n,f)\to0\)</span>. Hemos demostrado <strong>completitud secuencial</strong>: toda sucesión de Cauchy para esta distancia tiene límite dentro del espacio. La existencia del destino procede de la completitud de <span class="math inline">\(\mathbb R\)</span> en cada columna, y el control común lo conserva dentro del conjunto de funciones acotadas.</p>
+</section>
+<section id="dos-precauciones-antes-de-reutilizar" class="level3">
+<h3 class="anchored" data-anchor-id="dos-precauciones-antes-de-reutilizar">Dos precauciones antes de reutilizar</h3>
+<p>Cauchy puntual no basta: las tiendas de C26 tienen columnas convergentes, pero no son uniformemente de Cauchy, pues de serlo el teorema las haría uniformemente convergentes al único límite puntual cero, contra §27.3.</p>
+<p>Controlar sólo vecinos tampoco basta. Para filas constantes <span class="math inline">\(q_n(x)=H_n\)</span>, donde <span class="math inline">\(H_0=0\)</span> y <span class="math inline">\(H_n=\sum_{j=1}^n1/j\)</span>, las diferencias de vecinos son <span class="math inline">\(1/(n+1)\to0\)</span> en todas las entradas. Pero entre etapas <span class="math inline">\(m\)</span> y <span class="math inline">\(2m\)</span>, <span class="math display">\[
+H_{2m}-H_m=\sum_{j=m+1}^{2m}\frac1j\ge\frac12.
+\]</span> Para un dominio no vacío, ante cualquier corte elegimos un entero <span class="math inline">\(m\ge\max(N,1)\)</span> y obtenemos dos filas tardías separadas. El contrato exige todos los pares, no sólo los consecutivos.</p>
+<div id="fig-anm-c27-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Filas constantes dyádicas f_n=1−2^(−n) admiten un presupuesto común para todos los pares y convergen a1. Las filas H_n tienen diferencias vecinas1/(n+1)→0, pero H_(2m)−H_m≥1/2 para todo m≥1. Las muestras de índices ilustran una cota demostrada para todos los pares tardíos necesarios.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c27-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C27/C27-F07.svg" class="img-fluid figure-img" alt="Filas constantes dyádicas f_n=1−2^(−n) admiten un presupuesto común para todos los pares y convergen a1. Las filas H_n tienen diferencias vecinas1/(n+1)→0, pero H_(2m)−H_m≥1/2 para todo m≥1. Las muestras de índices ilustran una cota demostrada para todos los pares tardíos necesarios.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c27-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Filas constantes dyádicas f_n=1−2^(−n) admiten un presupuesto común para todos los pares y convergen a1. Las filas H_n tienen diferencias vecinas1/(n+1)→0, pero H_(2m)−H_m≥1/2 para todo m≥1. Las muestras de índices ilustran una cota demostrada para todos los pares tardíos necesarios.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="microcontroles-6" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-6">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-027-049"></span></p>
+<ol type="1">
+<li>¿Cuántos índices universales controla Cauchy uniforme?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-050"></span></p>
+<ol start="2" type="1">
+<li>¿Qué dirección del criterio no usa completitud?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-051"></span></p>
+<ol start="3" type="1">
+<li>¿Dónde interviene completitud en la vuelta?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-052"></span></p>
+<ol start="4" type="1">
+<li>¿Qué se mantiene fijo al llevar <span class="math inline">\(m\)</span> al límite?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-053"></span></p>
+<ol start="5" type="1">
+<li>¿Qué sentido tiene la desigualdad tras ese límite?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-054"></span></p>
+<ol start="6" type="1">
+<li>¿Qué fila demuestra acotación del límite en <span class="math inline">\(\mathcal B(X)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-055"></span></p>
+<ol start="7" type="1">
+<li>¿Qué significa completitud secuencial para esa distancia?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-056"></span></p>
+<ol start="8" type="1">
+<li>¿Por qué no basta que las diferencias de vecinos tiendan a cero?</li>
+</ol>
+</section>
+</section>
+<section id="certificar-una-aproximación-completa" class="level2">
+<h2 class="anchored" data-anchor-id="certificar-una-aproximación-completa">27.8. Certificar una aproximación completa</h2>
+<p><span id="MA-SEC-ANM-01-027-008"></span></p>
+<p>Ya tenemos un modo de convergencia, una envolvente real cuando el error está acotado, una distancia en un espacio adecuado y un criterio que construye destinos. Terminemos con certificados que permiten usarlos sin adivinar una fórmula límite.</p>
+<section id="sumar-sólo-un-presupuesto-finito-de-incrementos" class="level3">
+<h3 class="anchored" data-anchor-id="sumar-sólo-un-presupuesto-finito-de-incrementos">Sumar sólo un presupuesto finito de incrementos</h3>
+<p>Supongamos que hay constantes <span class="math inline">\(C\ge0\)</span> y <span class="math inline">\(0&lt;q&lt;1\)</span> con <span class="math display">\[
+|f_{j+1}(x)-f_j(x)|\le Cq^j
+\quad\text{para todo }j\in\mathbb N,\ x\in X.
+\]</span> Si <span class="math inline">\(n&gt;m\)</span>, telescopar incrementos y aplicar la triangular da <span class="math display">\[
+|f_n(x)-f_m(x)|
+\le C\sum_{j=m}^{n-1}q^j
+=Cq^m\frac{1-q^{n-m}}{1-q}
+\le\frac{Cq^m}{1-q}.
+\]</span> La identidad geométrica es finita y se verifica multiplicando la suma por <span class="math inline">\(1-q\)</span>; no se usa teoría de series de funciones. Para <span class="math inline">\(m&gt;n\)</span> intercambiamos los índices y para <span class="math inline">\(m=n\)</span> la diferencia es cero. Como <span class="math inline">\(q^m\to0\)</span> por C06, un corte independiente de la entrada hace esta barrera menor que cualquier tolerancia. La familia es uniformemente de Cauchy y §27.7 produce un límite uniforme <span class="math inline">\(f\)</span>.</p>
+<p>Manteniendo fijo <span class="math inline">\(m\)</span> y pasando <span class="math inline">\(n\)</span> al límite en la cota, obtenemos el certificado posterior <span class="math display">\[
+|f(x)-f_m(x)|\le\frac{Cq^m}{1-q}
+\quad\text{para toda }x.
+\]</span> Si <span class="math inline">\(C=0\)</span> todas las filas coinciden. Si se desea permitir <span class="math inline">\(q=0\)</span>, se define la cota de incremento inicial como <span class="math inline">\(C\)</span> y las posteriores como cero; desde la etapa1 la familia es constante. No se deja un <span class="math inline">\(0^0\)</span> ambiguo dentro de un presupuesto.</p>
+<p>Si la fila inicial está acotada, telescopar desde ella da <span class="math inline">\(|f_n(x)|\le\|f_0\|_\infty+C/(1-q)\)</span> y el límite pertenece a <span class="math inline">\(\mathcal B(X)\)</span>. Si no lo está, las diferencias <span class="math inline">\(f_n-f_0\)</span> sí están acotadas por la misma constante: la familia y el límite viven en la clase <span class="math inline">\(f_0+\mathcal B(X)\)</span>. La acotación del destino se concluye sólo en el caso que la acredita.</p>
+<p>Como ejemplo, con cualquier <span class="math inline">\(a\)</span> acotada por1 y cualquier función base <span class="math inline">\(r\)</span>, la familia <span class="math display">\[
+f_n(x)=r(x)+(1-2^{-n})a(x)
+\]</span> tiene incremento <span class="math inline">\(2^{-(n+1)}a(x)\)</span>, por lo que sirve <span class="math inline">\(C=1/2\)</span> y <span class="math inline">\(q=1/2\)</span>. El certificado de error es <span class="math inline">\(2^{-n}\)</span> y el límite explícito es <span class="math inline">\(r+a\)</span>. La construcción funciona aunque <span class="math inline">\(r\)</span> no sea acotada.</p>
+</section>
+<section id="hipótesis-que-parecen-suficientes-y-no-lo-son" class="level3">
+<h3 class="anchored" data-anchor-id="hipótesis-que-parecen-suficientes-y-no-lo-son">Hipótesis que parecen suficientes y no lo son</h3>
+<p>Columnas monótonas y límite continuo no garantizan uniformidad sin otros datos. En <span class="math inline">\([0,1]\)</span>, sea <span class="math display">\[
+s_n(x)=\mathbf1_{(0,\,1/(n+1))}(x).
+\]</span> La columna de cero siempre vale0. Cada entrada positiva queda fuera del intervalo eventualmente, y los intervalos se encogen: <span class="math inline">\(s_{n+1}(x)\le s_n(x)\)</span> para toda entrada. El límite puntual es cero, continuo. Sin embargo, en <span class="math inline">\(x_n=1/[2(n+1)]\)</span> todas las filas valen1 y sus envolventes son1. La convergencia no es uniforme. Las filas son discontinuas; no se puede importar un teorema sobre continuidad y monotonía omitiendo esa hipótesis.</p>
+<p>Tampoco ser uniformemente convergente significa tener valores conjuntamente acotados si las filas son no acotadas, como mostró la traslación de <span class="math inline">\(x\)</span>. Si las filas sí pertenecen a <span class="math inline">\(\mathcal B(X)\)</span>, uniformidad da límite acotado y una barrera común de toda la familia: la cola se controla por una fila de referencia y el límite, y los supremos de las filas iniciales finitas se reúnen por un máximo. Cada premisa desempeña un papel.</p>
+</section>
+<section id="volver-a-mirar-el-contrato" class="level3">
+<h3 class="anchored" data-anchor-id="volver-a-mirar-el-contrato">Volver a mirar el contrato</h3>
+<p>Para acreditar uniformidad, una cota de error válida para toda entrada y toda una cola basta; no tiene que ser el supremo exacto. Para refutarla basta una tolerancia y testigos tardíos dentro del dominio. Para usar una distancia, se declara primero la clase en que las diferencias son acotadas. Para construir un límite desde Cauchy, se rastrea la completitud de las columnas y se mantiene el corte común al pasar al límite.</p>
+<p>El próximo capítulo preguntará qué operaciones pueden atravesar este nuevo contrato: continuidad, integración y diferenciación. C27 ha preparado la herramienta y ya sabe que el control global de valores, por sí solo, no resuelve todos los intercambios. Las hipótesis que los autorizan serán demostradas en C28, sin utilizarlas antes de tiempo aquí.</p>
+<div id="fig-anm-c27-f08" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Con C=q=1/2, las cotas de incrementos son2^(−j−1) y el presupuesto posterior2^(−m). En la familia f_n=r+(1−2^(−n))a, |a|≤1, ese presupuesto controla todo el error hacia r+a, aunque r sea no acotada. El destino se acredita por Cauchy uniforme antes de usar la estimación posterior.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c27-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C27/C27-F08.svg" class="img-fluid figure-img" alt="Con C=q=1/2, las cotas de incrementos son2^(−j−1) y el presupuesto posterior2^(−m). En la familia f_n=r+(1−2^(−n))a, |a|≤1, ese presupuesto controla todo el error hacia r+a, aunque r sea no acotada. El destino se acredita por Cauchy uniforme antes de usar la estimación posterior.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c27-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Con C=q=1/2, las cotas de incrementos son2^(−j−1) y el presupuesto posterior2^(−m). En la familia f_n=r+(1−2^(−n))a, |a|≤1, ese presupuesto controla todo el error hacia r+a, aunque r sea no acotada. El destino se acredita por Cauchy uniforme antes de usar la estimación posterior.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="microcontroles-7" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-7">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-027-057"></span></p>
+<ol type="1">
+<li>¿Qué suma usa el presupuesto geométrico de incrementos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-058"></span></p>
+<ol start="2" type="1">
+<li>¿Qué cota común se obtiene para dos etapas con <span class="math inline">\(n&gt;m\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-059"></span></p>
+<ol start="3" type="1">
+<li>¿Qué error se certifica después de construir el límite?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-060"></span></p>
+<ol start="4" type="1">
+<li>¿Qué ocurre si <span class="math inline">\(C=0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-061"></span></p>
+<ol start="5" type="1">
+<li>¿Cómo se evita ambigüedad si se permite <span class="math inline">\(q=0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-062"></span></p>
+<ol start="6" type="1">
+<li>¿Cuándo se concluye que el límite es acotado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-063"></span></p>
+<ol start="7" type="1">
+<li>¿Qué refuta <span class="math inline">\(s_n=\mathbf1_{(0,1/(n+1))}\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-027-064"></span></p>
+<ol start="8" type="1">
+<li>¿Qué única puerta sigue a este capítulo?</li>
+</ol>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html">Capítulo 27</a> · <a href="analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-microcontroles.html">Soluciones de microcontroles</a></p>
+<p><a href="analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html">← Capítulo 26</a> · <a href="analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html">Capítulo 28 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

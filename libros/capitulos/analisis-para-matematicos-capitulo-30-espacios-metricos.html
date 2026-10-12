@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 30 — Espacios métricos – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#conservar-la-distancia-soltar-las-coordenadas" id="toc-conservar-la-distancia-soltar-las-coordenadas" class="nav-link active" data-scroll-target="#conservar-la-distancia-soltar-las-coordenadas">30.1. Conservar la distancia, soltar las coordenadas</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles" id="toc-microcontroles" class="nav-link" data-scroll-target="#microcontroles">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#bolas-y-el-margen-de-una-ventana" id="toc-bolas-y-el-margen-de-una-ventana" class="nav-link" data-scroll-target="#bolas-y-el-margen-de-una-ventana">30.2. Bolas y el margen de una ventana</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-1" id="toc-microcontroles-1" class="nav-link" data-scroll-target="#microcontroles-1">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#abiertos-cerrados-y-ambiente-relativo" id="toc-abiertos-cerrados-y-ambiente-relativo" class="nav-link" data-scroll-target="#abiertos-cerrados-y-ambiente-relativo">30.3. Abiertos, cerrados y ambiente relativo</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-2" id="toc-microcontroles-2" class="nav-link" data-scroll-target="#microcontroles-2">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#convergencia-con-un-destino-en-el-espacio" id="toc-convergencia-con-un-destino-en-el-espacio" class="nav-link" data-scroll-target="#convergencia-con-un-destino-en-el-espacio">30.4. Convergencia con un destino en el espacio</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-3" id="toc-microcontroles-3" class="nav-link" data-scroll-target="#microcontroles-3">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#cauchy-compara-toda-la-cola" id="toc-cauchy-compara-toda-la-cola" class="nav-link" data-scroll-target="#cauchy-compara-toda-la-cola">30.5. Cauchy compara toda la cola</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-4" id="toc-microcontroles-4" class="nav-link" data-scroll-target="#microcontroles-4">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#continuidad-entre-espacios-métricos" id="toc-continuidad-entre-espacios-métricos" class="nav-link" data-scroll-target="#continuidad-entre-espacios-métricos">30.6. Continuidad entre espacios métricos</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-5" id="toc-microcontroles-5" class="nav-link" data-scroll-target="#microcontroles-5">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#una-escala-común-y-espacios-de-funciones" id="toc-una-escala-común-y-espacios-de-funciones" class="nav-link" data-scroll-target="#una-escala-común-y-espacios-de-funciones">30.7. Una escala común y espacios de funciones</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-6" id="toc-microcontroles-6" class="nav-link" data-scroll-target="#microcontroles-6">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#cambiar-la-métrica-y-auditar-lo-que-permanece" id="toc-cambiar-la-métrica-y-auditar-lo-que-permanece" class="nav-link" data-scroll-target="#cambiar-la-métrica-y-auditar-lo-que-permanece">30.8. Cambiar la métrica y auditar lo que permanece</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-7" id="toc-microcontroles-7" class="nav-link" data-scroll-target="#microcontroles-7">Microcontroles</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 30 — Espacios métricos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-30-espacios-metricos.html">Capítulo 30</a> · <a href="analisis-para-matematicos-capitulo-30-espacios-metricos-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-30-espacios-metricos-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-30-espacios-metricos-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>C1 separó orden y distancia; C4,C6,C10 yC14 construyeron ventanas, convergencia, Cauchy y continuidad. Ahora reconstruiremos esas pruebas cuando los puntos sólo tienen una métrica. El destino debe vivir en su espacio, y las recíprocas secuenciales declaran selección de testigos. C31 queda como única puerta siguiente.</p>
+<section id="conservar-la-distancia-soltar-las-coordenadas" class="level2">
+<h2 class="anchored" data-anchor-id="conservar-la-distancia-soltar-las-coordenadas">30.1. Conservar la distancia, soltar las coordenadas</h2>
+<p><span id="MA-SEC-ANM-01-030-001"></span></p>
+<p>En la recta, muchas pruebas parecían usar simultáneamente orden, operaciones y distancia. Ahora preguntamos cuáles sobreviven cuando los puntos ya no son números. El conjunto puede estar formado por palabras, funciones o configuraciones; la información disponible será una distancia real entre cada par.</p>
+<p>Una <strong>métrica</strong> en un conjunto <span class="math inline">\(X\)</span> es una función <span class="math inline">\(d:X\times X\to[0,\infty)\)</span> que, para todos <span class="math inline">\(x,y,z\in X\)</span>, cumple <span class="math display">\[d(x,y)=0\iff x=y,\qquad d(x,y)=d(y,x),\qquad d(x,z)\le d(x,y)+d(y,z).\]</span> El par <span class="math inline">\((X,d)\)</span> es un espacio métrico. Las distancias son números reales finitos; los puntos no necesitan sumar, restar ni compararse por un orden. El espacio vacío satisface los axiomas de modo vacuo, pero no tiene sucesiones ni centros. Declararemos no vacío el dominio cuando necesitemos un punto de referencia.</p>
+<p>La métrica usual <span class="math inline">\(d(x,y)=|x-y|\)</span> en <span class="math inline">\(\mathbb R\)</span> cumple los axiomas por C1. La restricción a cualquier subconjunto conserva las tres propiedades. Así <span class="math inline">\(\mathbb Q\)</span> y <span class="math inline">\((0,1)\)</span> tienen métricas usuales sin heredar por ello todas las propiedades globales de <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>La métrica discreta</strong> en cualquier conjunto es <span class="math inline">\(d_D(x,y)=0\)</span> si <span class="math inline">\(x=y\)</span>, y <span class="math inline">\(1\)</span> en otro caso. Positividad y simetría son inmediatas. Si los extremos son distintos, cualquier punto intermedio coincide con uno de ellos o es distinto de ambos; la suma de las dos distancias es respectivamente <span class="math inline">\(1\)</span> o <span class="math inline">\(2\)</span>, y domina a <span class="math inline">\(1\)</span>. Si los extremos coinciden, la triangular tiene lado izquierdo cero. La prueba cubre todos los triples, no sólo una muestra finita.</p>
+<p><strong>Palabras binarias.</strong> Para <span class="math inline">\(X=\{0,1\}^m\)</span>, con <span class="math inline">\(m\ge1\)</span> fijo, la distancia de Hamming cuenta coordenadas diferentes. Si <span class="math inline">\(x_i\ne z_i\)</span>, no pueden cumplirse a la vez <span class="math inline">\(x_i=y_i\)</span> y <span class="math inline">\(y_i=z_i\)</span>. Por tanto <span class="math display">\[\mathbf1_{\{x_i\ne z_i\}}\le\mathbf1_{\{x_i\ne y_i\}}+\mathbf1_{\{y_i\ne z_i\}}.\]</span> Sumar las <span class="math inline">\(m\)</span> desigualdades prueba la triangular; las otras propiedades son directas. La proximidad mide coincidencia de símbolos, sin necesidad de una recta que ordene las palabras.</p>
+<p><strong>Diagnosticar propuestas.</strong> <span class="math inline">\(|x-y|^2\)</span> no es una métrica en <span class="math inline">\(\mathbb R\)</span>: entre <span class="math inline">\(0,1,2\)</span>, el trayecto directo cuesta <span class="math inline">\(4\)</span> y el desvío cuesta <span class="math inline">\(1+1\)</span>. Una función no negativa y simétrica que vale cero en la diagonal todavía puede fallar. Asimismo <span class="math inline">\(p((a,b),(c,e))=|a-c|\)</span> en <span class="math inline">\(\mathbb R^2\)</span> satisface triangular y simetría, pero distancia cero no distingue puntos con primera coordenada igual. Es una pseudométrica, no una métrica sobre ese conjunto. Si se omitiera la separación, la unicidad de límites que probaremos después perdería su conclusión de igualdad de puntos.</p>
+<p><strong>La primera herramienta universal.</strong> De la triangular, primero en un sentido y luego en el otro, <span class="math display">\[|d(x,a)-d(y,a)|\le d(x,y).\]</span> Aquí sí restamos números: los valores reales de la distancia, no los puntos <span class="math inline">\(x,y\)</span>. Esta desigualdad triangular inversa permitirá cambiar centros, abrir ventanas y demostrar continuidad sin coordenadas.</p>
+<div id="fig-anm-c30-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Las palabras000,101 y111 tienen distancias de Hamming2,1 y3. Cada columna contribuye según desacuerdo de símbolos; el triángulo directo3 coincide con el desvío2+1. La propuesta cuadrática real falla en0,1,2: directo4 y desvío1+1. El primer mecanismo se prueba para todas las coordenadas; el segundo es un contraejemplo completo.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c30-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C30/C30-F01.svg" class="img-fluid figure-img" alt="Las palabras000,101 y111 tienen distancias de Hamming2,1 y3. Cada columna contribuye según desacuerdo de símbolos; el triángulo directo3 coincide con el desvío2+1. La propuesta cuadrática real falla en0,1,2: directo4 y desvío1+1. El primer mecanismo se prueba para todas las coordenadas; el segundo es un contraejemplo completo.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c30-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Las palabras000,101 y111 tienen distancias de Hamming2,1 y3. Cada columna contribuye según desacuerdo de símbolos; el triángulo directo3 coincide con el desvío2+1. La propuesta cuadrática real falla en0,1,2: directo4 y desvío1+1. El primer mecanismo se prueba para todas las coordenadas; el segundo es un contraejemplo completo.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-030-001"></span></p>
+<ol type="1">
+<li>¿Qué estructura deben tener los puntos de un espacio métrico?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-002"></span></p>
+<ol start="2" type="1">
+<li>¿Qué tipo de números son las distancias?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-003"></span></p>
+<ol start="3" type="1">
+<li>¿Qué axioma impide distancia cero entre puntos distintos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-004"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué la discreta cumple triangular?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-005"></span></p>
+<ol start="5" type="1">
+<li>¿Qué cuenta Hamming?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-006"></span></p>
+<ol start="6" type="1">
+<li>¿Qué triple refuta la distancia usual al cuadrado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-007"></span></p>
+<ol start="7" type="1">
+<li>¿Qué se resta en la triangular inversa?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-008"></span></p>
+<ol start="8" type="1">
+<li>¿Una restricción de una métrica sigue siendo métrica?</li>
+</ol>
+</section>
+</section>
+<section id="bolas-y-el-margen-de-una-ventana" class="level2">
+<h2 class="anchored" data-anchor-id="bolas-y-el-margen-de-una-ventana">30.2. Bolas y el margen de una ventana</h2>
+<p><span id="MA-SEC-ANM-01-030-002"></span></p>
+<p>Para <span class="math inline">\(a\in X\)</span> y <span class="math inline">\(r&gt;0\)</span>, definimos la bola abierta y la bola cerrada métrica <span class="math display">\[B_d(a,r)=\{x\in X:d(x,a)&lt;r\},\qquad C_d(a,r)=\{x\in X:d(x,a)\le r\}.\]</span> La segunda notación evita confundirla con la clausura de la primera, que no siempre coincide con ella. El centro pertenece a ambas; aumentar el radio amplía cada bola por monotonía de la desigualdad.</p>
+<p><strong>Una entrada interior conserva margen.</strong> Si <span class="math inline">\(y\in B_d(a,r)\)</span>, la cantidad <span class="math inline">\(\eta=r-d(a,y)\)</span> es positiva. Para <span class="math inline">\(z\in B_d(y,\eta)\)</span>, <span class="math display">\[d(a,z)\le d(a,y)+d(y,z)&lt;d(a,y)+\eta=r.\]</span> Por tanto <span class="math inline">\(B_d(y,\eta)\subset B_d(a,r)\)</span>. La forma concreta de la bola puede cambiar; el margen nace siempre de la triangular. Más generalmente, <span class="math inline">\(B_d(y,s)\subset B_d(a,r)\)</span> cuando <span class="math inline">\(d(a,y)+s\le r\)</span> y <span class="math inline">\(s&gt;0\)</span>, porque la pertenencia a la primera bola aporta una desigualdad estricta. La inclusión puede darse sin esa condición suficiente, por ejemplo en espacios discretos.</p>
+<p>Un conjunto <span class="math inline">\(V\subset X\)</span> es una vecindad de <span class="math inline">\(a\)</span> si contiene alguna bola abierta centrada en <span class="math inline">\(a\)</span>. Puede tener componentes adicionales y no necesita ser una bola. El enunciado es local: se exige una ventana positiva alrededor del punto, no una forma particular del conjunto completo.</p>
+<p><strong>Dos geometrías sin una norma presupuesta.</strong> Para pares <span class="math inline">\(x=(x_1,x_2)\)</span>, <span class="math inline">\(y=(y_1,y_2)\)</span>, definimos <span class="math display">\[d_1(x,y)=|x_1-y_1|+|x_2-y_2|,\qquad d_\infty(x,y)=\max\{|x_1-y_1|,|x_2-y_2|\}.\]</span> Positividad y separación se leen coordenada a coordenada; simetría procede del valor absoluto. Para <span class="math inline">\(d_1\)</span>, sumamos las dos triangulares reales. Para <span class="math inline">\(d_\infty\)</span>, cada diferencia de coordenadas es a lo sumo <span class="math inline">\(d_\infty(x,z)+d_\infty(z,y)\)</span>; el máximo conserva esa cota. Las bolas unitarias en el origen son respectivamente un rombo abierto y un cuadrado abierto. No se deduce una métrica de una figura: las desigualdades ya la probaron.</p>
+<p>En la métrica discreta, <span class="math inline">\(B_D(a,r)=\{a\}\)</span> cuando <span class="math inline">\(0&lt;r\le1\)</span>, y <span class="math inline">\(B_D(a,r)=X\)</span> cuando <span class="math inline">\(r&gt;1\)</span>. En el radio exactamente <span class="math inline">\(1\)</span>, todos los otros puntos están excluidos. En cambio <span class="math inline">\(C_D(a,1)=X\)</span>. No hay una interpolación entre radios que produzca una región gradual de puntos.</p>
+<p><strong>Una bola cerrada es cerrada.</strong> Anticipando la definición por complemento que formalizaremos enseguida, si <span class="math inline">\(x\notin C_d(a,r)\)</span>, el radio <span class="math inline">\(s=(d(x,a)-r)/2&gt;0\)</span> cumple, para <span class="math inline">\(d(x,y)&lt;s\)</span>, <span class="math display">\[d(y,a)\ge d(x,a)-d(x,y)&gt;d(x,a)-s&gt;r.\]</span> Así la ventana alrededor de <span class="math inline">\(x\)</span> queda en el complemento. Esto prueba cierre de <span class="math inline">\(C_d(a,r)\)</span>, pero no igualdad con la clausura de <span class="math inline">\(B_d(a,r)\)</span>. En un espacio discreto de al menos dos puntos, la bola abierta de radio <span class="math inline">\(1\)</span> es el singleton <span class="math inline">\(\{a\}\)</span>, ya cerrado, mientras la bola cerrada de ese radio es todo <span class="math inline">\(X\)</span>.</p>
+<div id="fig-anm-c30-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Las bolas unidad de d1 y d∞ en el origen son rombo y cuadrado, con fronteras excluidas. La entrada(1/2,1/2) pertenece al cuadrado y queda en la frontera del rombo. En la discreta, la bola abierta de radio1 sólo contiene el centro y la cerrada de radio1 contiene todos los puntos del conjunto ilustrado. Abierto/cerrado se codifica con formas además de color.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c30-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C30/C30-F02.svg" class="img-fluid figure-img" alt="Las bolas unidad de d1 y d∞ en el origen son rombo y cuadrado, con fronteras excluidas. La entrada(1/2,1/2) pertenece al cuadrado y queda en la frontera del rombo. En la discreta, la bola abierta de radio1 sólo contiene el centro y la cerrada de radio1 contiene todos los puntos del conjunto ilustrado. Abierto/cerrado se codifica con formas además de color.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c30-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Las bolas unidad de d1 y d∞ en el origen son rombo y cuadrado, con fronteras excluidas. La entrada(1/2,1/2) pertenece al cuadrado y queda en la frontera del rombo. En la discreta, la bola abierta de radio1 sólo contiene el centro y la cerrada de radio1 contiene todos los puntos del conjunto ilustrado. Abierto/cerrado se codifica con formas además de color.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-1" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-1">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-030-009"></span></p>
+<ol type="1">
+<li>¿Qué desigualdad define una bola abierta?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-010"></span></p>
+<ol start="2" type="1">
+<li>¿Qué radio interior entrega un punto <span class="math inline">\(y\in B(a,r)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-011"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué ese radio produce inclusión de bolas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-012"></span></p>
+<ol start="4" type="1">
+<li>¿Una vecindad tiene que ser una bola?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-013"></span></p>
+<ol start="5" type="1">
+<li>¿Qué forma tiene la bola unidad de <span class="math inline">\(d_1\)</span> en el plano?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-014"></span></p>
+<ol start="6" type="1">
+<li>¿Qué forma tiene la bola unidad de <span class="math inline">\(d_\infty\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-015"></span></p>
+<ol start="7" type="1">
+<li>¿Cuánto contiene <span class="math inline">\(B_D(a,1)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-016"></span></p>
+<ol start="8" type="1">
+<li>¿Bola cerrada y clausura de bola abierta siempre coinciden?</li>
+</ol>
+</section>
+</section>
+<section id="abiertos-cerrados-y-ambiente-relativo" class="level2">
+<h2 class="anchored" data-anchor-id="abiertos-cerrados-y-ambiente-relativo">30.3. Abiertos, cerrados y ambiente relativo</h2>
+<p><span id="MA-SEC-ANM-01-030-003"></span></p>
+<p>Un conjunto <span class="math inline">\(U\subset X\)</span> es <strong>abierto</strong> si cada <span class="math inline">\(x\in U\)</span> tiene un radio <span class="math inline">\(r&gt;0\)</span> con <span class="math inline">\(B_d(x,r)\subset U\)</span>. Es <strong>cerrado</strong> si <span class="math inline">\(X\setminus U\)</span> es abierto. Por esta definición, <span class="math inline">\(\varnothing\)</span> y <span class="math inline">\(X\)</span> son abiertos y cerrados. Una bola abierta es abierta por el margen de §30.2.</p>
+<p><strong>Reunir regiones.</strong> La unión arbitraria de abiertos es abierta: una entrada de la unión pertenece a alguno de sus miembros y usa el radio de ese miembro. La intersección de una cantidad finita de abiertos es abierta: para un punto común, tomamos el mínimo positivo de sus radios. La intersección vacía es <span class="math inline">\(X\)</span>. Una intersección infinita puede perder todo radio: en la recta, <span class="math inline">\(\bigcap_{n\ge0}(-1/(n+1),1/(n+1))=\{0\}\)</span>. Los complementos dan intersecciones arbitrarias y uniones finitas de cerrados.</p>
+<p><strong>Interior y clausura.</strong> El interior <span class="math inline">\(\operatorname{int}_X A\)</span> contiene puntos de <span class="math inline">\(A\)</span> con una bola completa dentro de <span class="math inline">\(A\)</span>. Es abierto por el lema del margen y es el mayor abierto contenido en <span class="math inline">\(A\)</span>. La clausura <span class="math inline">\(\operatorname{cl}_X A\)</span> contiene puntos <span class="math inline">\(x\in X\)</span> tales que cada bola centrada en <span class="math inline">\(x\)</span> encuentra a <span class="math inline">\(A\)</span>: <span class="math display">\[x\in\operatorname{cl}_X A\iff\forall r&gt;0:\ B_d(x,r)\cap A\ne\varnothing.\]</span> Contiene <span class="math inline">\(A\)</span>. Su complemento es abierto: si una bola <span class="math inline">\(B_d(x,r)\)</span> evita <span class="math inline">\(A\)</span>, cualquier <span class="math inline">\(y\)</span> de esa bola tiene una bola alrededor de sí contenida en ella, y por ello también queda fuera de la clausura. Así la clausura es cerrada. Si <span class="math inline">\(F\)</span> es cerrado y contiene <span class="math inline">\(A\)</span>, un punto fuera de <span class="math inline">\(F\)</span> tiene una bola que evita <span class="math inline">\(F\)</span>, luego evita <span class="math inline">\(A\)</span>; no pertenece a la clausura. Esto prueba que la clausura es el menor cerrado que contiene <span class="math inline">\(A\)</span>. En particular <span class="math inline">\(A\)</span> es cerrado si y sólo si <span class="math inline">\(A=\operatorname{cl}_X A\)</span>.</p>
+<p>La frontera es <span class="math inline">\(\partial_X A=\operatorname{cl}_X A\cap\operatorname{cl}_X(X\setminus A)\)</span>. Sus puntos encuentran ambos conjuntos en cualquier ventana. Puesto que <span class="math inline">\(x\notin\operatorname{cl}_X(X\setminus A)\)</span> equivale a tener una bola dentro de <span class="math inline">\(A\)</span>, también <span class="math display">\[\partial_X A=\operatorname{cl}_X A\setminus\operatorname{int}_X A.\]</span> Es cerrada por intersección de cerrados. No depende de que exista una orientación izquierda/derecha.</p>
+<p><strong>Cambiar el ambiente.</strong> Un subconjunto <span class="math inline">\(Y\subset X\)</span> lleva la métrica restringida. Sus bolas son exactamente <span class="math inline">\(B_Y(y,r)=Y\cap B_X(y,r)\)</span>. Para <span class="math inline">\(A\subset Y\)</span>, <span class="math display">\[A\text{ abierto en }Y\iff A=Y\cap U\text{ para algún abierto }U\subset X.\]</span> La ida construye <span class="math inline">\(U\)</span> como la unión de todas las bolas de <span class="math inline">\(X\)</span> con centro en <span class="math inline">\(A\)</span> y cuya intersección con <span class="math inline">\(Y\)</span> quede en <span class="math inline">\(A\)</span>. Cada centro tiene al menos una, sin elegir un radio simultáneamente para cada punto. La vuelta usa una bola interior de <span class="math inline">\(U\)</span> en cada punto. Complementar dentro de <span class="math inline">\(Y\)</span> da la representación de cerrados relativos como <span class="math inline">\(Y\cap F\)</span>. Además, la fórmula de bolas demuestra directamente <span class="math display">\[\operatorname{cl}_Y A=Y\cap\operatorname{cl}_X A.\]</span> Interior y frontera requieren también el complemento correcto: no se obtienen en general intersectando los correspondientes objetos de <span class="math inline">\(X\)</span> con <span class="math inline">\(Y\)</span>.</p>
+<p>Por ejemplo, <span class="math inline">\(Y=[0,1]\)</span> y <span class="math inline">\(A=[0,1/2)\)</span> con distancia usual. En <span class="math inline">\(Y\)</span>, <span class="math inline">\(A\)</span> es abierto, su clausura es <span class="math inline">\([0,1/2]\)</span> y su frontera es sólo <span class="math inline">\(\{1/2\}\)</span>. En toda la recta su interior es <span class="math inline">\((0,1/2)\)</span> y su frontera es <span class="math inline">\(\{0,1/2\}\)</span>. La etiqueta del ambiente cambia una conclusión concreta.</p>
+<div id="fig-anm-c30-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Para A=[0,1/2), el ambienteR da frontera{0,1/2}, mientras Y=[0,1] da frontera{1/2}. El punto0 pertenece aA en ambos, pero enY es interior relativo. Las bandas distinguen conjunto, ambiente y marcadores de frontera; no se obtiene frontera relativa sólo intersectando la absoluta.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c30-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C30/C30-F03.svg" class="img-fluid figure-img" alt="Para A=[0,1/2), el ambienteR da frontera{0,1/2}, mientras Y=[0,1] da frontera{1/2}. El punto0 pertenece aA en ambos, pero enY es interior relativo. Las bandas distinguen conjunto, ambiente y marcadores de frontera; no se obtiene frontera relativa sólo intersectando la absoluta.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c30-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Para A=[0,1/2), el ambienteR da frontera{0,1/2}, mientras Y=[0,1] da frontera{1/2}. El punto0 pertenece aA en ambos, pero enY es interior relativo. Las bandas distinguen conjunto, ambiente y marcadores de frontera; no se obtiene frontera relativa sólo intersectando la absoluta.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-2" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-2">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-030-017"></span></p>
+<ol type="1">
+<li>¿Cómo se define abierto sin coordenadas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-018"></span></p>
+<ol start="2" type="1">
+<li>¿Qué operación arbitraria conserva abiertos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-019"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué sólo se promete intersección finita de abiertos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-020"></span></p>
+<ol start="4" type="1">
+<li>¿Qué exige pertenecer a la clausura?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-021"></span></p>
+<ol start="5" type="1">
+<li>¿Qué caracteriza la frontera?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-022"></span></p>
+<ol start="6" type="1">
+<li>¿Qué bola tiene un subespacio <span class="math inline">\(Y\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-023"></span></p>
+<ol start="7" type="1">
+<li>¿Cómo cambia la clausura al restringir el ambiente?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-024"></span></p>
+<ol start="8" type="1">
+<li>¿El interior relativo se obtiene siempre intersectando el absoluto?</li>
+</ol>
+</section>
+</section>
+<section id="convergencia-con-un-destino-en-el-espacio" class="level2">
+<h2 class="anchored" data-anchor-id="convergencia-con-un-destino-en-el-espacio">30.4. Convergencia con un destino en el espacio</h2>
+<p><span id="MA-SEC-ANM-01-030-004"></span></p>
+<p>Una sucesión en <span class="math inline">\(X\)</span> es una función <span class="math inline">\(x:\mathbb N_0\to X\)</span>. Converge a <span class="math inline">\(a\in X\)</span> si <span class="math display">\[\forall\varepsilon&gt;0\ \exists N\ \forall n\ge N:\quad d(x_n,a)&lt;\varepsilon.\]</span> El destino debe pertenecer al espacio declarado. La condición equivale a captura eventual por cada vecindad de <span class="math inline">\(a\)</span>: una vecindad contiene una bola, y cada bola es una vecindad. No se requiere que los puntos tengan coordenadas o puedan restarse.</p>
+<p><strong>Unicidad sin orden.</strong> Si hubiera dos destinos <span class="math inline">\(a\ne b\)</span>, su separación <span class="math inline">\(D=d(a,b)&gt;0\)</span> permitiría pedir a ambas convergencias tolerancia <span class="math inline">\(D/3\)</span>. Después del máximo de sus cortes, un mismo término cumpliría <span class="math display">\[D\le d(a,x_n)+d(x_n,b)&lt;2D/3,\]</span> contradicción. Sólo se usaron separación, triangular y sincronización de cortes. Ninguna completitud interviene.</p>
+<p>Una sucesión convergente es acotada: existe una bola de radio finito que contiene todos sus valores. La captura con tolerancia <span class="math inline">\(1\)</span> acota la cola respecto del destino; las distancias del prefijo finito tienen un máximo. Aumentar ese máximo y <span class="math inline">\(1\)</span> en una unidad proporciona una bola abierta que contiene todo. Si no hay prefijo, basta radio <span class="math inline">\(2\)</span>. Cambiar el centro a <span class="math inline">\(b\in X\)</span> aumenta la cota a lo sumo en <span class="math inline">\(d(a,b)\)</span>; la acotación no depende de una referencia privilegiada. La sucesión tiene valores, por lo que aquí <span class="math inline">\(X\)</span> es necesariamente no vacío.</p>
+<p><strong>Transportar lo eventual.</strong> Cambiar finitos términos no altera un destino. Si <span class="math inline">\(n_k\)</span> es estrictamente creciente en <span class="math inline">\(\mathbb N_0\)</span>, la inducción da <span class="math inline">\(n_k\ge k\)</span>; por ello la subsucesión conserva cualquier corte de convergencia. Si <span class="math inline">\(x_n\to a\)</span> y <span class="math inline">\(d(x_n,y_n)\to0\)</span>, entonces <span class="math inline">\(y_n\to a\)</span> por <span class="math display">\[d(y_n,a)\le d(y_n,x_n)+d(x_n,a).\]</span> Cada error se hace menor que <span class="math inline">\(\varepsilon/2\)</span> y se toma el máximo de cortes. Aun sin operaciones en <span class="math inline">\(X\)</span>, existe una regla de perturbación pequeña. La triangular inversa también da <span class="math inline">\(d(x_n,b)\to d(a,b)\)</span> para cada <span class="math inline">\(b\)</span> fijo. Más generalmente, si <span class="math inline">\(y_n\to b\)</span>, dos aplicaciones de triangular prueban <span class="math display">\[|d(x_n,y_n)-d(a,b)|\le d(x_n,a)+d(y_n,b)\to0.\]</span> Los límites del último renglón son reales, ya acreditados por C6.</p>
+<p><strong>Cierre y selección de testigos.</strong> Si una sucesión con valores en <span class="math inline">\(A\)</span> converge a <span class="math inline">\(a\in X\)</span>, cada bola de <span class="math inline">\(a\)</span> contiene términos tardíos, así que <span class="math inline">\(a\in\operatorname{cl}_X A\)</span>. En particular un conjunto cerrado retiene todos esos destinos. La vuelta requiere reunir testigos: si <span class="math inline">\(a\in\operatorname{cl}_X A\)</span>, los conjuntos <span class="math inline">\(A\cap B(a,1/(n+1))\)</span> son no vacíos. Si se dispone de una selección <span class="math inline">\(a_n\)</span> en cada uno, su distancia a <span class="math inline">\(a\)</span> es menor que <span class="math inline">\(1/(n+1)\)</span> y converge. La existencia general de esa selección se garantiza bajo <strong>elección numerable para subconjuntos de <span class="math inline">\(X\)</span></strong>, que denotaremos <span class="math inline">\(\mathrm{CC}(X)\)</span>; también basta una selección explícitamente dada. No se esconde esta interfaz lógica en la frase «escojamos una sucesión».</p>
+<p>Bajo esa misma condición, <span class="math inline">\(A\)</span> es cerrado si y sólo si contiene el límite de toda sucesión suya convergente en <span class="math inline">\(X\)</span>: si no fuera cerrado, un punto de su clausura fuera de <span class="math inline">\(A\)</span> y la selección anterior refutarían la propiedad. La dirección desde cerrado no usa elección. Si los testigos son naturales dentro de un conjunto enumerado, se puede escoger el primer índice admisible y evitar una elección arbitraria.</p>
+<p>En la métrica discreta, converger a <span class="math inline">\(a\)</span> equivale a ser eventualmente igual a <span class="math inline">\(a\)</span>, porque la tolerancia <span class="math inline">\(1/2\)</span> excluye cualquier otro punto. En la usual sobre <span class="math inline">\(\mathbb R\)</span>, <span class="math inline">\(1/(n+1)\to0\)</span> sin ser eventualmente cero. La misma sintaxis de captura adquiere contenido diferente al cambiar la métrica.</p>
+<div id="fig-anm-c30-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Los recíprocos1/(n+1) convergen a0 en la métrica usual y tienen error1/(n+1), con corte estricto n4 para tolerancia1/4. Los mismos valores tienen distancia discreta1 a0 en todos los índices y no convergen a ningún destino discreto, pues sus términos son todos distintos. Los puntos representan índices enteros, sin interpolar una sucesión.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c30-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C30/C30-F04.svg" class="img-fluid figure-img" alt="Los recíprocos1/(n+1) convergen a0 en la métrica usual y tienen error1/(n+1), con corte estricto n4 para tolerancia1/4. Los mismos valores tienen distancia discreta1 a0 en todos los índices y no convergen a ningún destino discreto, pues sus términos son todos distintos. Los puntos representan índices enteros, sin interpolar una sucesión.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c30-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Los recíprocos1/(n+1) convergen a0 en la métrica usual y tienen error1/(n+1), con corte estricto n4 para tolerancia1/4. Los mismos valores tienen distancia discreta1 a0 en todos los índices y no convergen a ningún destino discreto, pues sus términos son todos distintos. Los puntos representan índices enteros, sin interpolar una sucesión.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-3" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-3">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-030-025"></span></p>
+<ol type="1">
+<li>¿Dónde debe vivir el destino de una sucesión en <span class="math inline">\(X\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-026"></span></p>
+<ol start="2" type="1">
+<li>¿Qué orden de cuantificadores expresa convergencia?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-027"></span></p>
+<ol start="3" type="1">
+<li>¿Qué prueba unicidad sin completitud?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-028"></span></p>
+<ol start="4" type="1">
+<li>¿Cómo se acota el prefijo de una convergente?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-029"></span></p>
+<ol start="5" type="1">
+<li>¿Por qué una subsucesión conserva un corte?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-030"></span></p>
+<ol start="6" type="1">
+<li>¿Qué hace una perturbación de distancia nula al destino?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-031"></span></p>
+<ol start="7" type="1">
+<li>¿Qué dirección entre clausura y sucesiones no requiere selección?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-032"></span></p>
+<ol start="8" type="1">
+<li>¿Qué interfaz se declara para construir testigos de clausura?</li>
+</ol>
+</section>
+</section>
+<section id="cauchy-compara-toda-la-cola" class="level2">
+<h2 class="anchored" data-anchor-id="cauchy-compara-toda-la-cola">30.5. Cauchy compara toda la cola</h2>
+<p><span id="MA-SEC-ANM-01-030-005"></span></p>
+<p>La condición de <strong>Cauchy</strong> compara dos índices tardíos sin nombrar destino: <span class="math display">\[\forall\varepsilon&gt;0\ \exists N\ \forall p,q\ge N:\quad d(x_p,x_q)&lt;\varepsilon.\]</span> El corte precede a ambos índices. Conocer sólo <span class="math inline">\(d(x_{n+1},x_n)\to0\)</span> no basta. La negación fija una tolerancia <span class="math inline">\(\varepsilon_0&gt;0\)</span> antes del corte adversario y exige, para todo <span class="math inline">\(N\)</span>, algún par <span class="math inline">\(p,q\ge N\)</span> con <span class="math inline">\(d(x_p,x_q)\ge\varepsilon_0\)</span>.</p>
+<p><strong>Convergente implica Cauchy.</strong> Si <span class="math inline">\(x_n\to a\)</span>, usemos tolerancia <span class="math inline">\(\varepsilon/2\)</span> en la convergencia. Después de su corte, la triangular a través de <span class="math inline">\(a\)</span> da distancia entre cualesquiera dos términos menor que <span class="math inline">\(\varepsilon\)</span>. Esta prueba no necesita construir un destino: lo recibe de la hipótesis.</p>
+<p><strong>Cauchy implica acotada.</strong> Con tolerancia <span class="math inline">\(1\)</span> fijamos una cola y su término <span class="math inline">\(x_{N_0}\)</span>. Todo término posterior está a distancia menor que <span class="math inline">\(1\)</span> de esa referencia. Las distancias de los finitísimos términos anteriores tienen máximo; un radio que exceda ese máximo y <span class="math inline">\(1\)</span> contiene la sucesión. De nuevo la prueba no usa completitud. La recíproca falla: una alternancia entre dos puntos distintos es acotada y conserva separación positiva después de todo corte.</p>
+<p><strong>Una subsucesión puede revelar el destino.</strong> Si <span class="math inline">\(x\)</span> es de Cauchy y una subsucesión <span class="math inline">\(x_{n_k}\to a\in X\)</span>, entonces toda <span class="math inline">\(x\)</span> converge a <span class="math inline">\(a\)</span>. Recibido <span class="math inline">\(\varepsilon\)</span>, tomamos el corte de Cauchy para <span class="math inline">\(\varepsilon/2\)</span>. Elegimos un término de la subsucesión posterior a ese corte y a su propio corte de convergencia, lo que es posible porque <span class="math inline">\(n_k\ge k\)</span>. Fijado ese término como referencia, para todo <span class="math inline">\(n\)</span> posterior al corte de Cauchy, <span class="math display">\[d(x_n,a)\le d(x_n,x_{n_k})+d(x_{n_k},a)&lt;\varepsilon.\]</span> Se usa una elección finita de un índice natural, no se supone que exista siempre una subsucesión convergente.</p>
+<p><strong>Cauchy no garantiza destino en un espacio arbitrario.</strong> En <span class="math inline">\(X=(0,1)\)</span> con distancia usual, <span class="math inline">\(x_n=1/(n+2)\)</span> es de Cauchy: para <span class="math inline">\(p,q\ge N\)</span> sus valores están en <span class="math inline">\((0,1/(N+2)]\)</span>, y su separación es a lo sumo <span class="math inline">\(1/(N+2)\)</span>. Vista en <span class="math inline">\(\mathbb R\)</span>, converge a cero. Si convergiera a <span class="math inline">\(a\in(0,1)\)</span>, las mismas distancias acreditarían esa convergencia en <span class="math inline">\(\mathbb R\)</span>, y unicidad forzaría <span class="math inline">\(a=0\)</span>, imposible. C10 construía destinos reales mediante completitud; aquí no hemos añadido esa propiedad a todo conjunto con distancia.</p>
+<p>En la métrica discreta, Cauchy implica cola constante: con tolerancia <span class="math inline">\(1/2\)</span>, todos los pares tardíos deben coincidir con <span class="math inline">\(x_N\)</span>. Por eso esas sucesiones sí tienen destino. La existencia de destinos de Cauchy será una pregunta central de C31, junto con compacidad y conexidad; aquí sólo hemos distinguido las obligaciones.</p>
+<p><strong>Un presupuesto de saltos que sí controla bloques.</strong> Si <span class="math inline">\(d(x_{n+1},x_n)\le C\rho^n\)</span>, con <span class="math inline">\(C\ge0\)</span> y <span class="math inline">\(0&lt;\rho&lt;1\)</span>, la triangular iterada finitamente da, para <span class="math inline">\(p&gt;q\)</span>, <span class="math display">\[d(x_p,x_q)\le\sum_{j=q}^{p-1}C\rho^j\le\frac{C\rho^q}{1-\rho}.\]</span> La identidad geométrica finita y <span class="math inline">\(\rho^q\to0\)</span> hacen Cauchy a <span class="math inline">\(x\)</span>. Sin una propiedad adicional del espacio no se declara un destino. Si ya existe <span class="math inline">\(a\)</span> con <span class="math inline">\(x_p\to a\)</span>, pasar <span class="math inline">\(p\)</span> al límite en la distancia prueba el certificado <span class="math inline">\(d(x_q,a)\le C\rho^q/(1-\rho)\)</span>. Estabilización, existencia y error quedan como pasos distintos.</p>
+<div id="fig-anm-c30-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En(0,1), los términos1/(n+2) son Cauchy con cota de pares1/(N+2), pero el candidato externo0 queda fuera del espacio. En sumas armónicas finitas, los saltos vecinos desaparecen y los pares de bloques de longitud creciente siguen separados al menos por1/2. Las diferencias exactas acreditan la negación de Cauchy.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c30-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C30/C30-F05.svg" class="img-fluid figure-img" alt="En(0,1), los términos1/(n+2) son Cauchy con cota de pares1/(N+2), pero el candidato externo0 queda fuera del espacio. En sumas armónicas finitas, los saltos vecinos desaparecen y los pares de bloques de longitud creciente siguen separados al menos por1/2. Las diferencias exactas acreditan la negación de Cauchy.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c30-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: En(0,1), los términos1/(n+2) son Cauchy con cota de pares1/(N+2), pero el candidato externo0 queda fuera del espacio. En sumas armónicas finitas, los saltos vecinos desaparecen y los pares de bloques de longitud creciente siguen separados al menos por1/2. Las diferencias exactas acreditan la negación de Cauchy.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-4" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-4">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-030-033"></span></p>
+<ol type="1">
+<li>¿Qué compara Cauchy?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-034"></span></p>
+<ol start="2" type="1">
+<li>¿Cuál es la negación correcta de Cauchy?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-035"></span></p>
+<ol start="3" type="1">
+<li>¿Qué tolerancia de convergencia demuestra Cauchy con <span class="math inline">\(\varepsilon\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-036"></span></p>
+<ol start="4" type="1">
+<li>¿Qué tolerancia de Cauchy basta para acotar?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-037"></span></p>
+<ol start="5" type="1">
+<li>¿Cauchy implica destino en cualquier métrica?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-038"></span></p>
+<ol start="6" type="1">
+<li>¿Qué significa Cauchy en la discreta?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-039"></span></p>
+<ol start="7" type="1">
+<li>¿Una subsucesión convergente basta sin Cauchy?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-040"></span></p>
+<ol start="8" type="1">
+<li>¿Qué acredita una barrera geométrica de saltos?</li>
+</ol>
+</section>
+</section>
+<section id="continuidad-entre-espacios-métricos" class="level2">
+<h2 class="anchored" data-anchor-id="continuidad-entre-espacios-métricos">30.6. Continuidad entre espacios métricos</h2>
+<p><span id="MA-SEC-ANM-01-030-006"></span></p>
+<p>Sean espacios métricos <span class="math inline">\((X,d_X)\)</span> y <span class="math inline">\((Y,d_Y)\)</span> y una función <span class="math inline">\(f:X\to Y\)</span>. Es continua en <span class="math inline">\(a\in X\)</span> si <span class="math display">\[\forall\varepsilon&gt;0\ \exists\delta&gt;0\ \forall x\in X:\quad d_X(x,a)&lt;\delta\ \Longrightarrow\ d_Y(f(x),f(a))&lt;\varepsilon.\]</span> Se incluye el centro. El radio de entrada puede depender de <span class="math inline">\(a\)</span> y de la tolerancia. En un punto aislado la continuidad de cualquier función es automática: una bola que sólo contiene el centro cumple todas las exigencias.</p>
+<p><strong>Continuidad transporta sucesiones dadas.</strong> Si <span class="math inline">\(x_n\to a\)</span>, primero pedimos a <span class="math inline">\(f\)</span> un radio <span class="math inline">\(\delta\)</span> para la tolerancia de salida, y luego a la sucesión un corte que la sitúe dentro de esa bola. Entonces <span class="math inline">\(f(x_n)\to f(a)\)</span>. No se elige una sucesión para probar esta dirección: ya es parte de la hipótesis.</p>
+<p>Para la vuelta, la falla de continuidad en <span class="math inline">\(a\)</span> fija <span class="math inline">\(\varepsilon_0&gt;0\)</span> y, para cada <span class="math inline">\(\delta&gt;0\)</span>, una entrada con <span class="math inline">\(d_X(x,a)&lt;\delta\)</span> y <span class="math inline">\(d_Y(f(x),f(a))\ge\varepsilon_0\)</span>. Los conjuntos de infractores con <span class="math inline">\(\delta=1/(n+1)\)</span> son no vacíos. Bajo <span class="math inline">\(\mathrm{CC}(X)\)</span>, o si esos testigos se suministran, forman una sucesión que converge a <span class="math inline">\(a\)</span> y cuyas imágenes no convergen a <span class="math inline">\(f(a)\)</span>. Así el criterio secuencial es una equivalencia con esa interfaz explícita; la implicación directa es incondicional.</p>
+<p><strong>La caracterización por abiertos no necesita esa selección.</strong> <span class="math inline">\(f\)</span> es continua en todos sus puntos si y sólo si <span class="math inline">\(f^{-1}[V]\)</span> es abierto en <span class="math inline">\(X\)</span> para todo abierto <span class="math inline">\(V\subset Y\)</span>. Si <span class="math inline">\(f\)</span> es continua y <span class="math inline">\(a\)</span> está en la preimagen, una bola de salida alrededor de <span class="math inline">\(f(a)\)</span> cabe en <span class="math inline">\(V\)</span>; su radio entra como tolerancia y produce una bola de entrada contenida en la preimagen. Ésta es abierta por definición. Recíprocamente, para <span class="math inline">\(a,\varepsilon\)</span>, la bola abierta <span class="math inline">\(B_Y(f(a),\varepsilon)\)</span> tiene preimagen abierta que contiene <span class="math inline">\(a\)</span>. Alguna bola alrededor de <span class="math inline">\(a\)</span> cabe en ella y da exactamente el radio requerido. Complementar y usar <span class="math inline">\(f^{-1}[Y\setminus F]=X\setminus f^{-1}[F]\)</span> acredita el criterio equivalente por cerrados.</p>
+<p><strong>Componer y restringir.</strong> Para <span class="math inline">\(f:X\to Y\)</span> continua en <span class="math inline">\(a\)</span> y <span class="math inline">\(g:Y\to Z\)</span> continua en <span class="math inline">\(f(a)\)</span>, una tolerancia de <span class="math inline">\(Z\)</span> da primero un radio <span class="math inline">\(\eta\)</span> en <span class="math inline">\(Y\)</span>; usar <span class="math inline">\(\eta\)</span> como tolerancia de <span class="math inline">\(f\)</span> da el radio de <span class="math inline">\(X\)</span>. La cadena de implicaciones prueba continuidad de <span class="math inline">\(g\circ f\)</span>. Restringir el dominio conserva la prueba porque sus bolas son intersecciones. Un cambio a un subespacio de salida que contiene el recorrido tampoco cambia las distancias de salida; debe declararse el codominio correcto.</p>
+<p><strong>Funciones que siempre tenemos.</strong> Para <span class="math inline">\(b\in X\)</span>, <span class="math inline">\(x\mapsto d_X(x,b)\)</span> es continua hacia <span class="math inline">\(\mathbb R\)</span>: la triangular inversa da error a lo sumo <span class="math inline">\(d_X(x,a)\)</span>, así que sirve <span class="math inline">\(\delta=\varepsilon\)</span>. Los singletons son cerrados: alrededor de <span class="math inline">\(x\ne b\)</span> la bola de radio <span class="math inline">\(d_X(x,b)/2\)</span> evita a <span class="math inline">\(b\)</span>. Los conjuntos de nivel de una función continua real son cerrados por preimagen de singletons, y las regiones definidas por desigualdades estrictas son abiertas por preimagen de intervalos abiertos.</p>
+<p>La continuidad asegura preimágenes abiertas, no imágenes abiertas. Una función constante <span class="math inline">\(\mathbb R\to\mathbb R\)</span> envía el abierto completo a un singleton no abierto. Tampoco una biyección continua garantiza inversa continua: la identidad del conjunto <span class="math inline">\(\mathbb R\)</span>, desde su métrica discreta hacia la usual, es continua en cada punto aislado; su inversa no es continua, pues ninguna ventana usual en cero contiene sólo ese punto. Son funciones tipadas entre métricas distintas, aunque la regla de valores sea la misma.</p>
+<div id="fig-anm-c30-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La función valor absoluto lleva hacia atrás la banda abierta de salida(1,2) a las dos ventanas(−2,−1) y(1,2). Para la identidad de la usual hacia la discreta, cualquier radioδ falla con una entradaδ/2 distinta de0: la distancia discreta de salida sigue siendo1. Las tres radios ilustrados no sustituyen la regla válida para todoδ>0.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c30-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C30/C30-F06.svg" class="img-fluid figure-img" alt="La función valor absoluto lleva hacia atrás la banda abierta de salida(1,2) a las dos ventanas(−2,−1) y(1,2). Para la identidad de la usual hacia la discreta, cualquier radioδ falla con una entradaδ/2 distinta de0: la distancia discreta de salida sigue siendo1. Las tres radios ilustrados no sustituyen la regla válida para todoδ>0.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c30-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: La función valor absoluto lleva hacia atrás la banda abierta de salida(1,2) a las dos ventanas(−2,−1) y(1,2). Para la identidad de la usual hacia la discreta, cualquier radioδ falla con una entradaδ/2 distinta de0: la distancia discreta de salida sigue siendo1. Las tres radios ilustrados no sustituyen la regla válida para todoδ&gt;0.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-5" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-5">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-030-041"></span></p>
+<ol type="1">
+<li>¿Cuál es el centro de salida en continuidad en <span class="math inline">\(a\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-042"></span></p>
+<ol start="2" type="1">
+<li>¿Qué sucede en un punto aislado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-043"></span></p>
+<ol start="3" type="1">
+<li>¿Continuidad transporta una sucesión dada sin elección?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-044"></span></p>
+<ol start="4" type="1">
+<li>¿Qué necesita la recíproca secuencial general?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-045"></span></p>
+<ol start="5" type="1">
+<li>¿En qué dirección viajan los abiertos bajo continuidad?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-046"></span></p>
+<ol start="6" type="1">
+<li>¿El criterio por preimágenes necesita construir sucesiones?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-047"></span></p>
+<ol start="7" type="1">
+<li>¿Por qué la distancia a un punto es continua?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-048"></span></p>
+<ol start="8" type="1">
+<li>¿Una biyección continua siempre tiene inversa continua?</li>
+</ol>
+</section>
+</section>
+<section id="una-escala-común-y-espacios-de-funciones" class="level2">
+<h2 class="anchored" data-anchor-id="una-escala-común-y-espacios-de-funciones">30.7. Una escala común y espacios de funciones</h2>
+<p><span id="MA-SEC-ANM-01-030-007"></span></p>
+<p>La continuidad uniforme exige un radio común para todos los pares de entradas: <span class="math display">\[\forall\varepsilon&gt;0\ \exists\delta&gt;0\ \forall x,y\in X:\quad d_X(x,y)&lt;\delta\ \Longrightarrow\ d_Y(f(x),f(y))&lt;\varepsilon.\]</span> No se fija un centro antes de pedir el radio. Una función es <span class="math inline">\(L\)</span>-Lipschitz, con <span class="math inline">\(L\ge0\)</span>, si <span class="math inline">\(d_Y(f(x),f(y))\le Ld_X(x,y)\)</span> para todo par. Si <span class="math inline">\(L&gt;0\)</span>, <span class="math inline">\(\delta=\varepsilon/L\)</span> acredita continuidad uniforme; si <span class="math inline">\(L=0\)</span>, todas las imágenes coinciden y sirve cualquier radio positivo. Para dominio vacío, las condiciones son vacuas y no hace falta nombrar una imagen común.</p>
+<p><strong>Cauchy se transporta bajo una escala común.</strong> Recibida una tolerancia de salida, continuidad uniforme entrega <span class="math inline">\(\delta\)</span> para todos los pares. Cauchy en <span class="math inline">\(X\)</span> sitúa después de un corte todas las parejas a distancia menor que <span class="math inline">\(\delta\)</span>. Sus imágenes quedan a distancia menor que la tolerancia, por lo que forman una sucesión de Cauchy en <span class="math inline">\(Y\)</span>. No se necesita que la sucesión original ni su imagen tengan destino.</p>
+<p>La continuidad punto a punto no basta para ese transporte. En <span class="math inline">\((0,1)\)</span>, <span class="math inline">\(f(x)=1/x\)</span> es continua: en un centro <span class="math inline">\(a&gt;0\)</span>, si <span class="math inline">\(|x-a|&lt;a/2\)</span>, entonces <span class="math inline">\(x&gt;a/2\)</span> y <span class="math inline">\(|1/x-1/a|\le2|x-a|/a^2\)</span>, lo que permite un radio dependiente de <span class="math inline">\(a\)</span>. Pero para <span class="math inline">\(x_n=1/(n+2)\)</span> e <span class="math inline">\(y_n=1/(n+3)\)</span>, la distancia de entrada es <span class="math inline">\(1/((n+2)(n+3))\to0\)</span> y la de salida es exactamente <span class="math inline">\(1\)</span>. Estos pares niegan uniformidad, con tolerancia fija <span class="math inline">\(1/2\)</span>. Además la sucesión Cauchy <span class="math inline">\(x_n\)</span> tiene imágenes <span class="math inline">\(n+2\)</span>, que no son de Cauchy. La falla ocurre hacia un punto que no pertenece al dominio, de modo que no contradice continuidad en ningún centro suyo.</p>
+<p><strong>Distancia a un conjunto.</strong> Si <span class="math inline">\(A\subset X\)</span> es no vacío, definimos <span class="math inline">\(\operatorname{dist}(x,A)=\inf\{d(x,a):a\in A\}\)</span>. El conjunto de distancias es no vacío y acotado inferiormente por cero, por lo que el ínfimo real de C3 existe y es finito. Para <span class="math inline">\(\eta&gt;0\)</span> hay <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(d(y,a)&lt;\operatorname{dist}(y,A)+\eta\)</span>. La triangular da <span class="math display">\[\operatorname{dist}(x,A)\le d(x,y)+\operatorname{dist}(y,A)+\eta.\]</span> Si la desigualdad sin <span class="math inline">\(\eta\)</span> fallara, elegir <span class="math inline">\(\eta\)</span> menor que su diferencia positiva daría contradicción. Intercambiar <span class="math inline">\(x,y\)</span> demuestra <span class="math display">\[|\operatorname{dist}(x,A)-\operatorname{dist}(y,A)|\le d(x,y).\]</span> Es una función <span class="math inline">\(1\)</span>-Lipschitz. Además <span class="math inline">\(\operatorname{dist}(x,A)=0\)</span> si y sólo si <span class="math inline">\(x\in\operatorname{cl}_X A\)</span>: cada bola encuentra una distancia menor que su radio, y recíprocamente un ínfimo cero permite obtener esa distancia. No es necesario que el ínfimo se alcance; distancia cero a un conjunto no significa pertenencia si el conjunto no es cerrado. Para <span class="math inline">\(A=\varnothing\)</span> no se define aquí una distancia real finita mediante ese ínfimo.</p>
+<p><strong>Los puntos también pueden ser funciones.</strong> Para un conjunto no vacío <span class="math inline">\(T\)</span>, sea <span class="math inline">\(\mathcal B(T)\)</span> el conjunto de funciones reales acotadas sobre <span class="math inline">\(T\)</span>. Definimos <span class="math display">\[D_\infty(f,g)=\sup_{t\in T}|f(t)-g(t)|.\]</span> Las cotas de <span class="math inline">\(f,g\)</span> aseguran finitud; el conjunto de magnitudes no vacío tiene supremo por C3. Si el supremo es cero, todas las magnitudes son cero y <span class="math inline">\(f=g\)</span>. Simetría es directa. La triangular puntual queda dominada por <span class="math inline">\(D_\infty(f,h)+D_\infty(h,g)\)</span>; tomar supremo prueba la triangular métrica. C27 ya había desarrollado esta distancia, y ahora reconocemos su lugar entre las métricas generales.</p>
+<p>Convergencia en esta métrica equivale a convergencia uniforme hacia una función acotada: una distancia de supremo menor que <span class="math inline">\(\varepsilon\)</span> controla todas las entradas; en sentido inverso, control puntual estricto con tolerancia <span class="math inline">\(\varepsilon/2\)</span> deja supremo a lo sumo <span class="math inline">\(\varepsilon/2&lt;\varepsilon\)</span>. Se conserva el margen entre desigualdad estricta y supremo. Por ejemplo en <span class="math inline">\(T=[0,1]\)</span>, <span class="math inline">\(f_n(t)=t/(n+1)\)</span> tiene distancia exacta <span class="math inline">\(1/(n+1)\)</span> a cero. La convergencia puntual sola de <span class="math inline">\(t^{n+1}\)</span> al destino discontinuo que vale uno en <span class="math inline">\(1\)</span> y cero antes tiene distancia de supremo <span class="math inline">\(1\)</span> en cada índice. No hay convergencia métrica aunque cada evaluación converja.</p>
+<div id="fig-anm-c30-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Los errores de t^(n+1) frente al destino puntual valen t^(n+1) para t<1 y0 en1; su supremo es1 sin alcanzarse. Las curvas no contienen una falsa unión entre el límite izquierdo y el valor extremo. La distancia real aA=(0,1) vale0 en[0,1], aunque el ínfimo no se alcance en los extremos; fuera es la separación al extremo más cercano.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c30-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C30/C30-F07.svg" class="img-fluid figure-img" alt="Los errores de t^(n+1) frente al destino puntual valen t^(n+1) para t<1 y0 en1; su supremo es1 sin alcanzarse. Las curvas no contienen una falsa unión entre el límite izquierdo y el valor extremo. La distancia real aA=(0,1) vale0 en[0,1], aunque el ínfimo no se alcance en los extremos; fuera es la separación al extremo más cercano.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c30-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Los errores de t^(n+1) frente al destino puntual valen t^(n+1) para t&lt;1 y0 en1; su supremo es1 sin alcanzarse. Las curvas no contienen una falsa unión entre el límite izquierdo y el valor extremo. La distancia real aA=(0,1) vale0 en[0,1], aunque el ínfimo no se alcance en los extremos; fuera es la separación al extremo más cercano.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-6" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-6">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-030-049"></span></p>
+<ol type="1">
+<li>¿Qué cambia en los cuantificadores de continuidad uniforme?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-050"></span></p>
+<ol start="2" type="1">
+<li>¿Qué radio da una cota Lipschitz con <span class="math inline">\(L&gt;0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-051"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué la uniforme transporta Cauchy?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-052"></span></p>
+<ol start="4" type="1">
+<li>¿Qué pares refutan uniformidad de <span class="math inline">\(1/x\)</span> en <span class="math inline">\((0,1)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-053"></span></p>
+<ol start="5" type="1">
+<li>¿Qué condición necesita la distancia real a un conjunto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-054"></span></p>
+<ol start="6" type="1">
+<li>¿Distancia cero a <span class="math inline">\(A\)</span> implica pertenencia a <span class="math inline">\(A\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-055"></span></p>
+<ol start="7" type="1">
+<li>¿Qué asegura finitud de <span class="math inline">\(D_\infty(f,g)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-056"></span></p>
+<ol start="8" type="1">
+<li>¿Cómo se pasa de error uniforme estricto a supremo estricto?</li>
+</ol>
+</section>
+</section>
+<section id="cambiar-la-métrica-y-auditar-lo-que-permanece" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-la-métrica-y-auditar-lo-que-permanece">30.8. Cambiar la métrica y auditar lo que permanece</h2>
+<p><span id="MA-SEC-ANM-01-030-008"></span></p>
+<p>Un conjunto puede llevar varias métricas. Antes de decir que son «equivalentes», precisemos qué propiedad se quiere conservar.</p>
+<p><strong>Comparación cuantitativa.</strong> Si <span class="math inline">\(c,C&gt;0\)</span> y <span class="math inline">\(c\,d(x,y)\le e(x,y)\le C\,d(x,y)\)</span> para todos los pares, las identidades en ambos sentidos son Lipschitz. Las inclusiones de bolas <span class="math display">\[B_d(a,r/C)\subset B_e(a,r),\qquad B_e(a,cr)\subset B_d(a,r)\]</span> prueban que ambas métricas definen los mismos abiertos. Las mismas desigualdades convierten tolerancias y demuestran que tienen las mismas convergencias, los mismos destinos y las mismas sucesiones de Cauchy. También convierten cotas de conjuntos. Para <span class="math inline">\(d_1,d_\infty\)</span> en <span class="math inline">\(\mathbb R^2\)</span>, <span class="math display">\[d_\infty\le d_1\le2d_\infty.\]</span> Las bolas son diferentes, pero las capturas eventuales y los conjuntos abiertos coinciden. Una sucesión converge para ellas si y sólo si sus dos coordenadas convergen en <span class="math inline">\(\mathbb R\)</span>, pues cada error de coordenada está bajo el máximo, y el máximo de dos cortes controla ambas. El mismo razonamiento con pares prueba la equivalencia coordenada a coordenada de Cauchy.</p>
+<p><strong>Una métrica acotada que conserva controles pequeños.</strong> Para cualquier métrica <span class="math inline">\(d\)</span>, sea <span class="math inline">\(e(x,y)=\min\{1,d(x,y)\}\)</span>. Separación y simetría se conservan. Para números no negativos <span class="math inline">\(u,v\)</span>, <span class="math display">\[\min\{1,u+v\}\le\min\{1,u\}+\min\{1,v\};\]</span> si alguno es al menos uno, el lado derecho es al menos uno; si ambos son menores, el lado derecho es <span class="math inline">\(u+v\)</span>. Combinarlo con la triangular prueba que <span class="math inline">\(e\)</span> es métrica. Para <span class="math inline">\(0&lt;r\le1\)</span>, sus bolas abiertas coinciden con las de <span class="math inline">\(d\)</span>. Por tanto definen los mismos abiertos. Para controlar convergencia o Cauchy en <span class="math inline">\(d\)</span>, pedir en <span class="math inline">\(e\)</span> tolerancia <span class="math inline">\(\min\{\varepsilon/2,1/2\}\)</span> fuerza una distancia menor que uno, donde <span class="math inline">\(e=d\)</span>, y menor que <span class="math inline">\(\varepsilon\)</span>. La dirección inversa usa <span class="math inline">\(e\le d\)</span>. Sin embargo todo el espacio es acotado en <span class="math inline">\(e\)</span>, mientras puede no serlo en <span class="math inline">\(d\)</span>. La comparación local no impone una cota global por un múltiplo fijo de <span class="math inline">\(e\)</span>.</p>
+<p><strong>Los mismos abiertos no bastan para Cauchy.</strong> Definamos <span class="math display">\[\phi(x)=\frac{x}{1+|x|},\qquad e_\phi(x,y)=|\phi(x)-\phi(y)|\quad(x,y\in\mathbb R).\]</span> La función <span class="math inline">\(\phi\)</span> es una biyección de <span class="math inline">\(\mathbb R\)</span> a <span class="math inline">\((-1,1)\)</span>, con inversa <span class="math inline">\(\psi(t)=t/(1-|t|)\)</span>. En cada semirrecta la regla es estrictamente creciente; las imágenes negativa y positiva están separadas por cero. Como <span class="math inline">\(|\phi(x)|=|x|/(1+|x|)\)</span>, tenemos <span class="math inline">\(1-|\phi(x)|=1/(1+|x|)\)</span> y <span class="math inline">\(\psi(\phi(x))=x\)</span>. Para <span class="math inline">\(|t|&lt;1\)</span>, <span class="math inline">\(|\psi(t)|=|t|/(1-|t|)\)</span> y <span class="math inline">\(1+|\psi(t)|=1/(1-|t|)\)</span>, luego <span class="math inline">\(\phi(\psi(t))=t\)</span>. Estas identidades prueban inyectividad y sobreyectividad sin una elección de preimágenes. Ambas funciones son continuas por las reglas de valor absoluto, suma y cociente de C14; los denominadores son positivos en sus respectivos dominios. La separación de <span class="math inline">\(e_\phi\)</span> procede de inyectividad, y simetría/triangular de la métrica usual en las imágenes.</p>
+<p>Las mismas funciones continuas e inversas prueban que <span class="math inline">\(e_\phi\)</span> y la distancia usual tienen los mismos abiertos: una bola <span class="math inline">\(e_\phi\)</span> es la preimagen por <span class="math inline">\(\phi\)</span> de una ventana relativa de <span class="math inline">\((-1,1)\)</span>, abierta en la distancia usual; a la inversa, la imagen por <span class="math inline">\(\phi\)</span> de un abierto usual es la preimagen por <span class="math inline">\(\psi\)</span> de ese abierto y es abierta relativa, de donde cada punto recibe una bola <span class="math inline">\(e_\phi\)</span> interior. Con esas bolas se convierten capturas y radios locales. Las convergencias a destinos reales y las funciones continuas son las mismas.</p>
+<p>Pero <span class="math inline">\(x_n=n\)</span> es de Cauchy en <span class="math inline">\(e_\phi\)</span>: sus imágenes <span class="math inline">\(n/(n+1)\)</span> tienen toda la cola entre <span class="math inline">\(N/(N+1)\)</span> y <span class="math inline">\(1\)</span>, así que las distancias son a lo sumo <span class="math inline">\(1/(N+1)\)</span>. No es de Cauchy usual, porque los vecinos distan uno. No converge a ningún real en <span class="math inline">\(e_\phi\)</span>, pues las imágenes convergen a <span class="math inline">\(1\)</span>, que queda fuera de <span class="math inline">\((-1,1)\)</span>. Una coincidencia de ventanas locales no garantiza un radio uniforme global para la identidad inversa. La sucesión también demuestra que misma topología no significa mismos conjuntos acotados.</p>
+<p><strong>Balance de herramientas.</strong> Sobreviven las pruebas de ventanas, unicidad, perturbación, convergente implica Cauchy, acotación y continuidad por preimágenes. El orden y las operaciones sólo se usan en los valores reales de las distancias o en ejemplos que poseen esas estructuras. La equivalencia secuencial inversa conserva su interfaz <span class="math inline">\(\mathrm{CC}(X)\)</span> o testigos dados. El paso Cauchy→destino, las equivalencias de compacidad y la estructura de conjuntos conexos requieren un nuevo examen. La única puerta siguiente es C31, <em>Completitud, compacidad y conexidad en espacios métricos</em>.</p>
+<div id="fig-anm-c30-f08" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La transformaciónφ(x)=x/(1+|x|) envíaR biyectivamente a(−1,1), con inversa continua. Por ella la métricaeφ tiene los mismos abiertos que la usual. La sucesiónn tiene cota de cola1/(N+1) en eφ y separación de vecinos1 en la usual. Sus imágenes tienden al punto externo1, por lo que no tiene destino real en eφ. La ventana gráfica[−6,6] no representa todo el recorrido deφ.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c30-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C30/C30-F08.svg" class="img-fluid figure-img" alt="La transformaciónφ(x)=x/(1+|x|) envíaR biyectivamente a(−1,1), con inversa continua. Por ella la métricaeφ tiene los mismos abiertos que la usual. La sucesiónn tiene cota de cola1/(N+1) en eφ y separación de vecinos1 en la usual. Sus imágenes tienden al punto externo1, por lo que no tiene destino real en eφ. La ventana gráfica[−6,6] no representa todo el recorrido deφ.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c30-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: La transformaciónφ(x)=x/(1+|x|) envíaR biyectivamente a(−1,1), con inversa continua. Por ella la métricaeφ tiene los mismos abiertos que la usual. La sucesiónn tiene cota de cola1/(N+1) en eφ y separación de vecinos1 en la usual. Sus imágenes tienden al punto externo1, por lo que no tiene destino real en eφ. La ventana gráfica[−6,6] no representa todo el recorrido deφ.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-7" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-7">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-030-057"></span></p>
+<ol type="1">
+<li>¿Qué compara <span class="math inline">\(d_1\)</span> y <span class="math inline">\(d_\infty\)</span> en el plano?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-058"></span></p>
+<ol start="2" type="1">
+<li>¿Qué preserva una comparación global por constantes positivas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-059"></span></p>
+<ol start="3" type="1">
+<li>¿Qué radios conservan bolas al usar <span class="math inline">\(\min\{1,d\}\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-060"></span></p>
+<ol start="4" type="1">
+<li>¿La métrica recortada conserva acotación global?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-061"></span></p>
+<ol start="5" type="1">
+<li>¿Cuál es la inversa de <span class="math inline">\(\phi(x)=x/(1+|x|)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-062"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué <span class="math inline">\(n\)</span> es Cauchy en <span class="math inline">\(e_\phi\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-063"></span></p>
+<ol start="7" type="1">
+<li>¿Mismos abiertos garantizan mismas Cauchy?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-030-064"></span></p>
+<ol start="8" type="1">
+<li>¿Qué queda para C31?</li>
+</ol>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-30-espacios-metricos.html">Capítulo 30</a> · <a href="analisis-para-matematicos-capitulo-30-espacios-metricos-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-30-espacios-metricos-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-30-espacios-metricos-microcontroles.html">Soluciones de microcontroles</a></p>
+<p><a href="analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html">← Capítulo 29</a> · <a href="analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos.html">Capítulo 31 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

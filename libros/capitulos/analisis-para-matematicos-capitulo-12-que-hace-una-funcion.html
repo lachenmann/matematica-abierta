@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 12 — Qué hace una función – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#una-función-tiene-un-tipo" id="toc-una-función-tiene-un-tipo" class="nav-link active" data-scroll-target="#una-función-tiene-un-tipo">12.1. Una función tiene un tipo</a>
+  <ul class="collapse">
+  <li><a href="#la-asignación-y-sus-tres-datos" id="toc-la-asignación-y-sus-tres-datos" class="nav-link" data-scroll-target="#la-asignación-y-sus-tres-datos">La asignación y sus tres datos</a></li>
+  <li><a href="#tres-objetos-que-conviene-separar" id="toc-tres-objetos-que-conviene-separar" class="nav-link" data-scroll-target="#tres-objetos-que-conviene-separar">Tres objetos que conviene separar</a></li>
+  <li><a href="#el-tipo-impide-errores-de-composición" id="toc-el-tipo-impide-errores-de-composición" class="nav-link" data-scroll-target="#el-tipo-impide-errores-de-composición">El tipo impide errores de composición</a></li>
+  <li><a href="#antes-de-seguir" id="toc-antes-de-seguir" class="nav-link" data-scroll-target="#antes-de-seguir">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#imagen-transportar-un-conjunto" id="toc-imagen-transportar-un-conjunto" class="nav-link" data-scroll-target="#imagen-transportar-un-conjunto">12.2. Imagen: transportar un conjunto</a>
+  <ul class="collapse">
+  <li><a href="#la-prueba-exige-un-testigo" id="toc-la-prueba-exige-un-testigo" class="nav-link" data-scroll-target="#la-prueba-exige-un-testigo">La prueba exige un testigo</a></li>
+  <li><a href="#la-imagen-reúne-pero-no-cuenta-multiplicidades" id="toc-la-imagen-reúne-pero-no-cuenta-multiplicidades" class="nav-link" data-scroll-target="#la-imagen-reúne-pero-no-cuenta-multiplicidades">La imagen reúne, pero no cuenta multiplicidades</a></li>
+  <li><a href="#la-imagen-de-una-ventana-debe-calcularse" id="toc-la-imagen-de-una-ventana-debe-calcularse" class="nav-link" data-scroll-target="#la-imagen-de-una-ventana-debe-calcularse">La imagen de una ventana debe calcularse</a></li>
+  <li><a href="#antes-de-seguir-1" id="toc-antes-de-seguir-1" class="nav-link" data-scroll-target="#antes-de-seguir-1">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#preimagen-seleccionar-por-la-salida" id="toc-preimagen-seleccionar-por-la-salida" class="nav-link" data-scroll-target="#preimagen-seleccionar-por-la-salida">12.3. Preimagen: seleccionar por la salida</a>
+  <ul class="collapse">
+  <li><a href="#fibras-todas-las-entradas-de-una-misma-salida" id="toc-fibras-todas-las-entradas-de-una-misma-salida" class="nav-link" data-scroll-target="#fibras-todas-las-entradas-de-una-misma-salida">Fibras: todas las entradas de una misma salida</a></li>
+  <li><a href="#resolver-la-condición-y-después-respetar-el-dominio" id="toc-resolver-la-condición-y-después-respetar-el-dominio" class="nav-link" data-scroll-target="#resolver-la-condición-y-después-respetar-el-dominio">Resolver la condición y después respetar el dominio</a></li>
+  <li><a href="#dos-identidades-que-orientan-la-selección" id="toc-dos-identidades-que-orientan-la-selección" class="nav-link" data-scroll-target="#dos-identidades-que-orientan-la-selección">Dos identidades que orientan la selección</a></li>
+  <li><a href="#antes-de-seguir-2" id="toc-antes-de-seguir-2" class="nav-link" data-scroll-target="#antes-de-seguir-2">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#qué-operaciones-sobreviven-al-transporte" id="toc-qué-operaciones-sobreviven-al-transporte" class="nav-link" data-scroll-target="#qué-operaciones-sobreviven-al-transporte">12.4. Qué operaciones sobreviven al transporte</a>
+  <ul class="collapse">
+  <li><a href="#la-imagen-y-sus-testigos" id="toc-la-imagen-y-sus-testigos" class="nav-link" data-scroll-target="#la-imagen-y-sus-testigos">La imagen y sus testigos</a></li>
+  <li><a href="#la-preimagen-conserva-las-operaciones" id="toc-la-preimagen-conserva-las-operaciones" class="nav-link" data-scroll-target="#la-preimagen-conserva-las-operaciones">La preimagen conserva las operaciones</a></li>
+  <li><a href="#qué-recupera-la-vuelta-al-dominio" id="toc-qué-recupera-la-vuelta-al-dominio" class="nav-link" data-scroll-target="#qué-recupera-la-vuelta-al-dominio">Qué recupera la vuelta al dominio</a></li>
+  <li><a href="#antes-de-seguir-3" id="toc-antes-de-seguir-3" class="nav-link" data-scroll-target="#antes-de-seguir-3">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#componer-restringir-y-deshacer" id="toc-componer-restringir-y-deshacer" class="nav-link" data-scroll-target="#componer-restringir-y-deshacer">12.5. Componer, restringir y deshacer</a>
+  <ul class="collapse">
+  <li><a href="#dos-etapas-hacia-delante-y-hacia-atrás" id="toc-dos-etapas-hacia-delante-y-hacia-atrás" class="nav-link" data-scroll-target="#dos-etapas-hacia-delante-y-hacia-atrás">Dos etapas hacia delante y hacia atrás</a></li>
+  <li><a href="#restringir-cambia-el-objeto" id="toc-restringir-cambia-el-objeto" class="nav-link" data-scroll-target="#restringir-cambia-el-objeto">Restringir cambia el objeto</a></li>
+  <li><a href="#cuándo-existe-una-inversa" id="toc-cuándo-existe-una-inversa" class="nav-link" data-scroll-target="#cuándo-existe-una-inversa">Cuándo existe una inversa</a></li>
+  <li><a href="#antes-de-seguir-4" id="toc-antes-de-seguir-4" class="nav-link" data-scroll-target="#antes-de-seguir-4">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#transportar-el-orden-no-rellena-los-huecos" id="toc-transportar-el-orden-no-rellena-los-huecos" class="nav-link" data-scroll-target="#transportar-el-orden-no-rellena-los-huecos">12.6. Transportar el orden no rellena los huecos</a>
+  <ul class="collapse">
+  <li><a href="#orden-estricto-y-recuperación" id="toc-orden-estricto-y-recuperación" class="nav-link" data-scroll-target="#orden-estricto-y-recuperación">Orden estricto y recuperación</a></li>
+  <li><a href="#un-salto-que-conserva-el-orden" id="toc-un-salto-que-conserva-el-orden" class="nav-link" data-scroll-target="#un-salto-que-conserva-el-orden">Un salto que conserva el orden</a></li>
+  <li><a href="#las-funciones-afines-permiten-un-cálculo-completo" id="toc-las-funciones-afines-permiten-un-cálculo-completo" class="nav-link" data-scroll-target="#las-funciones-afines-permiten-un-cálculo-completo">Las funciones afines permiten un cálculo completo</a></li>
+  <li><a href="#antes-de-seguir-5" id="toc-antes-de-seguir-5" class="nav-link" data-scroll-target="#antes-de-seguir-5">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#distancia-y-escala-medir-la-deformación" id="toc-distancia-y-escala-medir-la-deformación" class="nav-link" data-scroll-target="#distancia-y-escala-medir-la-deformación">12.7. Distancia y escala: medir la deformación</a>
+  <ul class="collapse">
+  <li><a href="#escala-exacta-en-una-aplicación-afín" id="toc-escala-exacta-en-una-aplicación-afín" class="nav-link" data-scroll-target="#escala-exacta-en-una-aplicación-afín">Escala exacta en una aplicación afín</a></li>
+  <li><a href="#una-cota-uniforme-es-una-afirmación-sobre-todo-el-dominio" id="toc-una-cota-uniforme-es-una-afirmación-sobre-todo-el-dominio" class="nav-link" data-scroll-target="#una-cota-uniforme-es-una-afirmación-sobre-todo-el-dominio">Una cota uniforme es una afirmación sobre todo el dominio</a></li>
+  <li><a href="#el-dominio-cambia-el-control-del-cuadrado" id="toc-el-dominio-cambia-el-control-del-cuadrado" class="nav-link" data-scroll-target="#el-dominio-cambia-el-control-del-cuadrado">El dominio cambia el control del cuadrado</a></li>
+  <li><a href="#control-inferior-y-composición" id="toc-control-inferior-y-composición" class="nav-link" data-scroll-target="#control-inferior-y-composición">Control inferior y composición</a></li>
+  <li><a href="#antes-de-seguir-6" id="toc-antes-de-seguir-6" class="nav-link" data-scroll-target="#antes-de-seguir-6">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#representaciones-y-ventanas-de-control" id="toc-representaciones-y-ventanas-de-control" class="nav-link" data-scroll-target="#representaciones-y-ventanas-de-control">12.8. Representaciones y ventanas de control</a>
+  <ul class="collapse">
+  <li><a href="#una-rejilla-necesita-una-función-planar" id="toc-una-rejilla-necesita-una-función-planar" class="nav-link" data-scroll-target="#una-rejilla-necesita-una-función-planar">Una rejilla necesita una función planar</a></li>
+  <li><a href="#dos-ventanas-y-una-sola-condición-de-transporte" id="toc-dos-ventanas-y-una-sola-condición-de-transporte" class="nav-link" data-scroll-target="#dos-ventanas-y-una-sola-condición-de-transporte">Dos ventanas y una sola condición de transporte</a></li>
+  <li><a href="#pertenecer-no-es-rodear" id="toc-pertenecer-no-es-rodear" class="nav-link" data-scroll-target="#pertenecer-no-es-rodear">Pertenecer no es rodear</a></li>
+  <li><a href="#antes-de-seguir-7" id="toc-antes-de-seguir-7" class="nav-link" data-scroll-target="#antes-de-seguir-7">Antes de seguir</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 12 — Qué hace una función</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html">Capítulo 12</a> · <a href="analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-12-que-hace-una-funcion-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>Una función transforma entradas en salidas y, al hacerlo, transporta conjuntos. Puede conservar información o perderla: fusionar puntos, omitir valores, invertir el orden y cambiar distancias. Queremos describir esas acciones sin confundir el objeto con su fórmula o con el dibujo de su gráfica.</p>
+<p>La teoría elemental de funciones será nuestro punto de partida externo; las bolas y vecindades de C04 permitirán formular ventanas de entrada y salida. Reconstruiremos las leyes necesarias con testigos y pertenencias. No necesitaremos límites de funciones, continuidad o derivadas: primero aprenderemos a decir con precisión qué transporta una función.</p>
+<section id="una-función-tiene-un-tipo" class="level2">
+<h2 class="anchored" data-anchor-id="una-función-tiene-un-tipo">12.1. Una función tiene un tipo</h2>
+<p><span id="MA-SEC-ANM-01-012-001"></span></p>
+<p>Escribir <span class="math inline">\(x^2\)</span> no dice todavía qué entradas admitimos ni en qué conjunto buscamos las salidas. Comparemos</p>
+<p><span class="math display">\[
+f:\mathbb R\to\mathbb R,\quad f(x)=x^2,
+\qquad g:[0,\infty)\to[0,\infty),\quad g(x)=x^2.
+\]</span></p>
+<p>Ambas reglas dan <span class="math inline">\(4\)</span> al introducir <span class="math inline">\(2\)</span>. Sin embargo, <span class="math inline">\(-2\)</span> pertenece al dominio de <span class="math inline">\(f\)</span> y no al de <span class="math inline">\(g\)</span>. Tampoco tienen el mismo codominio. Coinciden numéricamente en sus entradas comunes, pero son funciones distintas. El tipo forma parte de lo que afirmamos.</p>
+<section id="la-asignación-y-sus-tres-datos" class="level3">
+<h3 class="anchored" data-anchor-id="la-asignación-y-sus-tres-datos">La asignación y sus tres datos</h3>
+<p>Una función <span class="math inline">\(f:D\to E\)</span> consta de un dominio <span class="math inline">\(D\)</span>, un codominio <span class="math inline">\(E\)</span> y una asignación que a cada <span class="math inline">\(x\in D\)</span> hace corresponder exactamente un <span class="math inline">\(f(x)\in E\)</span>. «Cada» impide dejar entradas sin salida; «exactamente un» impide asignar dos salidas distintas a una misma entrada. No impide que entradas distintas compartan salida.</p>
+<p>Su <strong>grafo</strong> es el conjunto</p>
+<p><span class="math display">\[
+G_f=\{(x,f(x)):x\in D\}\subseteq D\times E.
+\]</span></p>
+<p>Adoptamos la convención tipada: dos funciones son iguales cuando sus dominios, sus codominios y sus asignaciones coinciden. Un grafo dibujado dentro de un plano puede ocultar el codominio declarado. Por ejemplo, las aplicaciones <span class="math inline">\(\mathbb R\to\mathbb R\)</span> y <span class="math inline">\(\mathbb R\to[0,\infty)\)</span> dadas por <span class="math inline">\(x^2\)</span> tienen el mismo conjunto de pares, pero distintos codominios; son objetos tipados distintos.</p>
+<p>La regla <span class="math inline">\(f(x)=\pm\sqrt{x}\)</span>, con las dos salidas admitidas para <span class="math inline">\(x&gt;0\)</span>, no define una función real. En cambio, <span class="math inline">\(f(x)=x^2\)</span> sí: cada entrada tiene una única salida, aunque <span class="math inline">\(f(-2)=f(2)\)</span>. La dificultad de reconstruir una entrada a partir de la salida no viola la definición.</p>
+</section>
+<section id="tres-objetos-que-conviene-separar" class="level3">
+<h3 class="anchored" data-anchor-id="tres-objetos-que-conviene-separar">Tres objetos que conviene separar</h3>
+<p><span class="math inline">\(f\)</span> es una función; <span class="math inline">\(f(2)=4\)</span> es un valor; <span class="math inline">\(G_f\)</span> es un conjunto de pares. La gráfica cartesiana representa el grafo cuando ambos conjuntos son subconjuntos de <span class="math inline">\(\mathbb R\)</span>. Las flechas entre conjuntos y una tabla representan la misma asignación desde otras perspectivas. Una tabla parcial sólo registra algunas entradas: por sí sola no determina los valores que faltan en un dominio infinito.</p>
+<p>Para comparar funciones tipadas <span class="math inline">\(f,g:D\to E\)</span>, basta comprobar <span class="math inline">\(f(x)=g(x)\)</span> para todo <span class="math inline">\(x\in D\)</span>. Entonces cada par del grafo de una está en el de la otra y recíprocamente. La igualdad de grafos y tipos da igualdad de funciones. Comprobarlo sólo en tres entradas prueba únicamente tres igualdades numéricas.</p>
+<p>En particular, <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span>, <span class="math inline">\(a_n=n^2\)</span>, es una sucesión y su grafo tiene puntos <span class="math inline">\((n,n^2)\)</span> con <span class="math inline">\(n=0,1,2,\ldots\)</span>. No incluye entradas entre naturales. La función real <span class="math inline">\(f(x)=x^2\)</span> tiene otro dominio. No se debe completar el grafo discreto con una curva y declarar que el objeto sigue siendo la misma sucesión.</p>
+</section>
+<section id="el-tipo-impide-errores-de-composición" class="level3">
+<h3 class="anchored" data-anchor-id="el-tipo-impide-errores-de-composición">El tipo impide errores de composición</h3>
+<p>Una fórmula también puede esconder una entrada prohibida. Si <span class="math inline">\(h:\mathbb R\setminus\{0\}\to\mathbb R\)</span> se define por <span class="math inline">\(h(x)=1/x\)</span>, <span class="math inline">\(h(0)\)</span> no existe como evaluación de esa función. No se corrige esto cambiando el resultado: primero habría que definir otro objeto con otro dominio y una nueva asignación en cero.</p>
+<p>La pregunta que acompañará al capítulo será: dado un conjunto de entradas, ¿qué salidas produce?, y dado un conjunto de salidas aceptables, ¿qué entradas lo alcanzan? Para responderla, debemos conservar <span class="math inline">\(D\)</span> y <span class="math inline">\(E\)</span> en cada paso.</p>
+<div id="fig-anm-c12-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En el dominio finito {-2,0,2}, el cuadrado asigna una salida a cada entrada; dos entradas comparten 4 y el codominio {-1,0,4} contiene una salida no alcanzada.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c12-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C12/C12-F01.svg" class="img-fluid figure-img" alt="En el dominio finito {-2,0,2}, el cuadrado asigna una salida a cada entrada; dos entradas comparten 4 y el codominio {-1,0,4} contiene una salida no alcanzada.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c12-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: En el dominio finito {-2,0,2}, el cuadrado asigna una salida a cada entrada; dos entradas comparten 4 y el codominio {-1,0,4} contiene una salida no alcanzada.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="antes-de-seguir" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-012-001"></span></p>
+<ol type="1">
+<li>¿Basta la fórmula <span class="math inline">\(x^2\)</span> para determinar una función?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-002"></span></p>
+<ol start="2" type="1">
+<li>¿Qué diferencia hay entre <span class="math inline">\(f\)</span> y <span class="math inline">\(f(2)\)</span> si <span class="math inline">\(f(x)=x^2\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-003"></span></p>
+<ol start="3" type="1">
+<li>¿Incumple la definición de función que <span class="math inline">\(f(-2)=f(2)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-004"></span></p>
+<ol start="4" type="1">
+<li>¿Qué conjunto contiene al grafo de <span class="math inline">\(f:D\to E\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-005"></span></p>
+<ol start="5" type="1">
+<li>¿Son iguales dos funciones con el mismo grafo y codominios distintos bajo nuestra convención?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-006"></span></p>
+<ol start="6" type="1">
+<li>¿Tres evaluaciones iguales prueban igualdad de funciones en <span class="math inline">\(\mathbb R\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-007"></span></p>
+<ol start="7" type="1">
+<li>¿Puede evaluarse en cero <span class="math inline">\(h:\mathbb R\setminus\{0\}\to\mathbb R\)</span>, <span class="math inline">\(h(x)=1/x\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-008"></span></p>
+<ol start="8" type="1">
+<li>¿Incluye el grafo de <span class="math inline">\(a_n=n^2\)</span> el punto <span class="math inline">\((1/2,1/4)\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="imagen-transportar-un-conjunto" class="level2">
+<h2 class="anchored" data-anchor-id="imagen-transportar-un-conjunto">12.2. Imagen: transportar un conjunto</h2>
+<p><span id="MA-SEC-ANM-01-012-002"></span></p>
+<p>Al introducir una entrada, obtenemos un valor. Al introducir un conjunto de entradas, reunimos las salidas que realmente se alcanzan. Si <span class="math inline">\(f:D\to E\)</span> y <span class="math inline">\(A\subseteq D\)</span>, su <strong>imagen directa</strong> es</p>
+<p><span class="math display">\[
+f[A]=\{y\in E:\text{existe }x\in A\text{ con }f(x)=y\}.
+\]</span></p>
+<p>Usamos corchetes para distinguir esta operación de <span class="math inline">\(f(x)\)</span>. Así, <span class="math inline">\(f[\{2\}]=\{f(2)\}\)</span> es un conjunto unitario, mientras que <span class="math inline">\(f(2)\)</span> es un elemento del codominio. El conjunto <span class="math inline">\(f[D]\)</span>, imagen total, puede ser menor que <span class="math inline">\(E\)</span>. El codominio expresa salidas permitidas; la imagen expresa salidas alcanzadas.</p>
+<section id="la-prueba-exige-un-testigo" class="level3">
+<h3 class="anchored" data-anchor-id="la-prueba-exige-un-testigo">La prueba exige un testigo</h3>
+<p>Para afirmar <span class="math inline">\(y\in f[A]\)</span> hay que encontrar una entrada <span class="math inline">\(x\in A\)</span> con salida <span class="math inline">\(y\)</span>. Para calcular una imagen exactamente no basta producir algunos valores: debemos probar que ninguna otra salida aparece y que todas las salidas anunciadas se alcanzan.</p>
+<p>Sea <span class="math inline">\(q:\mathbb R\to\mathbb R\)</span>, <span class="math inline">\(q(x)=x^2\)</span>, y <span class="math inline">\(A=[-2,1]\)</span>. Afirmamos <span class="math inline">\(q[A]=[0,4]\)</span>. Si <span class="math inline">\(x\in A\)</span>, entonces <span class="math inline">\(|x|\le2\)</span> y <span class="math inline">\(0\le x^2\le4\)</span>, de modo que <span class="math inline">\(q[A]\subseteq[0,4]\)</span>. Recíprocamente, para <span class="math inline">\(y\in[0,4]\)</span>, la raíz real no negativa <span class="math inline">\(\sqrt y\)</span> existe y satisface <span class="math inline">\(0\le\sqrt y\le2\)</span>. La entrada <span class="math inline">\(x=-\sqrt y\)</span> está en <span class="math inline">\([-2,0]\subseteq A\)</span> y <span class="math inline">\(x^2=y\)</span>. Por tanto <span class="math inline">\([0,4]\subseteq q[A]\)</span>. La existencia y unicidad de la raíz no negativa se acreditaron en §10.7; no las deducimos de un teorema posterior sobre funciones.</p>
+<p>Observe por qué elegimos la raíz negativa: <span class="math inline">\(\sqrt4=2\)</span> no pertenece a <span class="math inline">\(A\)</span>. Una solución algebraica de <span class="math inline">\(x^2=y\)</span> que queda fuera del dominio considerado no sirve como testigo. La imagen depende del conjunto de entradas, no sólo de la ecuación.</p>
+<div id="fig-anm-c12-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="El cuadrado transporta [-2,1] a [0,4]. Seleccionar las salidas (1,4] recupera dos ramas: [-2,-1) y (1,2]. Imagen y preimagen responden preguntas distintas.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c12-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C12/C12-F02.svg" class="img-fluid figure-img" alt="El cuadrado transporta [-2,1] a [0,4]. Seleccionar las salidas (1,4] recupera dos ramas: [-2,-1) y (1,2]. Imagen y preimagen responden preguntas distintas.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c12-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: El cuadrado transporta [-2,1] a [0,4]. Seleccionar las salidas (1,4] recupera dos ramas: [-2,-1) y (1,2]. Imagen y preimagen responden preguntas distintas.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="la-imagen-reúne-pero-no-cuenta-multiplicidades" class="level3">
+<h3 class="anchored" data-anchor-id="la-imagen-reúne-pero-no-cuenta-multiplicidades">La imagen reúne, pero no cuenta multiplicidades</h3>
+<p>Para el conjunto finito <span class="math inline">\(A=\{-2,-1,1,2\}\)</span>, <span class="math inline">\(q[A]=\{1,4\}\)</span>. Cuatro entradas producen dos salidas. Los conjuntos no guardan repeticiones: no escribimos dos copias de <span class="math inline">\(1\)</span>. La identificación de entradas será responsable de algunas pérdidas de información.</p>
+<p>Si <span class="math inline">\(A\subseteq C\subseteq D\)</span>, entonces <span class="math inline">\(f[A]\subseteq f[C]\)</span>. En efecto, un testigo <span class="math inline">\(x\in A\)</span> también está en <span class="math inline">\(C\)</span>. La misma entrada sirve en ambas definiciones. Esta propiedad se llama monotonía de la operación de imagen respecto de la inclusión; no dice que <span class="math inline">\(f\)</span> sea creciente como función de números reales. El cuadrado respeta esta inclusión aunque no sea creciente en toda la recta.</p>
+<p>Además,</p>
+<p><span class="math display">\[
+f[\varnothing]=\varnothing,\qquad f[\{x\}]=\{f(x)\}.
+\]</span></p>
+<p>La primera igualdad se debe a la inexistencia de testigos en el vacío. En la segunda, la única entrada permitida es <span class="math inline">\(x\)</span>. Aunque <span class="math inline">\(D\)</span> sea vacío, la definición sigue funcionando: la función vacía <span class="math inline">\(\varnothing\to E\)</span> tiene imagen vacía.</p>
+</section>
+<section id="la-imagen-de-una-ventana-debe-calcularse" class="level3">
+<h3 class="anchored" data-anchor-id="la-imagen-de-una-ventana-debe-calcularse">La imagen de una ventana debe calcularse</h3>
+<p>No inferimos <span class="math inline">\(q[(-2,2)]=(q(-2),q(2))\)</span>. Los extremos ni siquiera pertenecen al conjunto de entradas, y esa expresión sería <span class="math inline">\((4,4)=\varnothing\)</span>. El cálculo correcto es <span class="math inline">\([0,4)\)</span>: cero se alcanza, todo cuadrado de una entrada del intervalo es menor que cuatro y, para cada <span class="math inline">\(0\le y&lt;4\)</span>, <span class="math inline">\(\sqrt y\in(-2,2)\)</span> sirve como testigo. Transportar un intervalo requiere estudiar el mecanismo de la función; no consiste en transportar ciegamente sus extremos.</p>
+</section>
+<section id="antes-de-seguir-1" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-1">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-012-009"></span></p>
+<ol type="1">
+<li>¿Qué testigo exige <span class="math inline">\(y\in f[A]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-010"></span></p>
+<ol start="2" type="1">
+<li>¿Son el mismo objeto <span class="math inline">\(f(2)\)</span> y <span class="math inline">\(f[\{2\}]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-011"></span></p>
+<ol start="3" type="1">
+<li>Para <span class="math inline">\(q(x)=x^2\)</span>, ¿cuál es <span class="math inline">\(q[\{-2,2\}]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-012"></span></p>
+<ol start="4" type="1">
+<li>¿Cuál es la imagen del conjunto vacío?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-013"></span></p>
+<ol start="5" type="1">
+<li>¿Implica <span class="math inline">\(A\subseteq C\)</span> que <span class="math inline">\(f[A]\subseteq f[C]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-014"></span></p>
+<ol start="6" type="1">
+<li>¿Tiene que coincidir <span class="math inline">\(f[D]\)</span> con el codominio <span class="math inline">\(E\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-015"></span></p>
+<ol start="7" type="1">
+<li>¿Qué entrada de <span class="math inline">\([-2,1]\)</span> alcanza <span class="math inline">\(4\)</span> bajo el cuadrado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-016"></span></p>
+<ol start="8" type="1">
+<li>¿Cuál es <span class="math inline">\(q[(-2,2)]\)</span> para <span class="math inline">\(q(x)=x^2\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="preimagen-seleccionar-por-la-salida" class="level2">
+<h2 class="anchored" data-anchor-id="preimagen-seleccionar-por-la-salida">12.3. Preimagen: seleccionar por la salida</h2>
+<p><span id="MA-SEC-ANM-01-012-003"></span></p>
+<p>Ahora fijamos las salidas aceptables. Si <span class="math inline">\(f:D\to E\)</span> y <span class="math inline">\(B\subseteq E\)</span>, definimos la <strong>preimagen</strong></p>
+<p><span class="math display">\[
+f^{-1}[B]=\{x\in D:f(x)\in B\}.
+\]</span></p>
+<p>Es un subconjunto del dominio. No evaluamos una función inversa; comprobamos una condición sobre la salida de cada entrada. La preimagen está definida para cualquier función, incluso cuando muchas entradas comparten salida o algunas salidas nunca se alcanzan.</p>
+<section id="fibras-todas-las-entradas-de-una-misma-salida" class="level3">
+<h3 class="anchored" data-anchor-id="fibras-todas-las-entradas-de-una-misma-salida">Fibras: todas las entradas de una misma salida</h3>
+<p>La preimagen <span class="math inline">\(f^{-1}[\{y\}]\)</span> se llama <strong>fibra sobre <span class="math inline">\(y\)</span></strong>. Para <span class="math inline">\(q:\mathbb R\to\mathbb R\)</span>, <span class="math inline">\(q(x)=x^2\)</span>,</p>
+<p><span class="math display">\[
+q^{-1}[\{4\}]=\{-2,2\},\qquad
+q^{-1}[\{0\}]=\{0\},\qquad
+q^{-1}[\{-1\}]=\varnothing.
+\]</span></p>
+<p>Una fibra puede tener dos elementos, uno o ninguno. Lo que es único en una función es la salida de cada entrada, no la entrada de cada salida. La notación <span class="math inline">\(q^{-1}(4)\)</span> como evaluación de una inversa no está autorizada: <span class="math inline">\(q:\mathbb R\to\mathbb R\)</span> no es biyectiva.</p>
+<p>Dos fibras distintas son disjuntas. Si <span class="math inline">\(x\)</span> estuviera en las fibras de <span class="math inline">\(y\)</span> y <span class="math inline">\(z\)</span>, tendríamos <span class="math inline">\(f(x)=y\)</span> y <span class="math inline">\(f(x)=z\)</span>, luego <span class="math inline">\(y=z\)</span>. Aquí gastamos exactamente la unicidad de salida.</p>
+</section>
+<section id="resolver-la-condición-y-después-respetar-el-dominio" class="level3">
+<h3 class="anchored" data-anchor-id="resolver-la-condición-y-después-respetar-el-dominio">Resolver la condición y después respetar el dominio</h3>
+<p>Para el mismo cuadrado,</p>
+<p><span class="math display">\[
+q^{-1}[(1,4]]=\{x\in\mathbb R:1&lt;x^2\le4\}
+=[-2,-1)\cup(1,2].
+\]</span></p>
+<p>La condición equivale a <span class="math inline">\(1&lt;|x|\le2\)</span>. Por eso incluimos <span class="math inline">\(-2\)</span> y <span class="math inline">\(2\)</span>, excluimos <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span>, y conservamos dos ramas. La fibra no elige automáticamente una raíz positiva.</p>
+<p>Si cambiamos la función a <span class="math inline">\(r:[0,\infty)\to\mathbb R\)</span>, <span class="math inline">\(r(x)=x^2\)</span>, la misma condición produce</p>
+<p><span class="math display">\[
+r^{-1}[(1,4]]=(1,2].
+\]</span></p>
+<p>La rama negativa desaparece porque nunca perteneció al dominio de <span class="math inline">\(r\)</span>. No desaparece por una modificación del conjunto de salidas.</p>
+</section>
+<section id="dos-identidades-que-orientan-la-selección" class="level3">
+<h3 class="anchored" data-anchor-id="dos-identidades-que-orientan-la-selección">Dos identidades que orientan la selección</h3>
+<p>Para toda función <span class="math inline">\(f:D\to E\)</span>,</p>
+<p><span class="math display">\[
+f^{-1}[E]=D,\qquad f^{-1}[\varnothing]=\varnothing.
+\]</span></p>
+<p>Toda entrada tiene salida en <span class="math inline">\(E\)</span>; ninguna tiene salida en el vacío. También, si <span class="math inline">\(B\subseteq H\subseteq E\)</span>, entonces <span class="math inline">\(f^{-1}[B]\subseteq f^{-1}[H]\)</span>: una salida aceptada por <span class="math inline">\(B\)</span> es aceptada por <span class="math inline">\(H\)</span>.</p>
+<p>Hay una identidad más informativa:</p>
+<p><span class="math display">\[
+f[f^{-1}[B]]=B\cap f[D].
+\]</span></p>
+<p>Para probar la inclusión de izquierda a derecha, si <span class="math inline">\(y=f(x)\)</span> con <span class="math inline">\(x\in f^{-1}[B]\)</span>, entonces <span class="math inline">\(y\in B\)</span> y <span class="math inline">\(y\in f[D]\)</span>. Recíprocamente, si <span class="math inline">\(y\in B\cap f[D]\)</span>, existe <span class="math inline">\(x\in D\)</span> con <span class="math inline">\(f(x)=y\)</span>; como <span class="math inline">\(y\in B\)</span>, ese <span class="math inline">\(x\)</span> está en <span class="math inline">\(f^{-1}[B]\)</span>, luego <span class="math inline">\(y\)</span> está en su imagen. La igualdad dice que volver hacia delante recupera sólo las salidas solicitadas que podían alcanzarse.</p>
+<p>Si <span class="math inline">\(B=\{-1,4\}\)</span> para <span class="math inline">\(q\)</span>, la preimagen es <span class="math inline">\(\{-2,2\}\)</span> y su imagen es <span class="math inline">\(\{4\}\)</span>: el valor imposible <span class="math inline">\(-1\)</span> no reaparece. La preimagen es una selección de entradas compatibles, no una promesa de que toda salida tenga entrada.</p>
+</section>
+<section id="antes-de-seguir-2" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-2">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-012-017"></span></p>
+<ol type="1">
+<li>¿En qué conjunto vive <span class="math inline">\(f^{-1}[B]\)</span> si <span class="math inline">\(f:D\to E\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-018"></span></p>
+<ol start="2" type="1">
+<li>¿Se necesita que <span class="math inline">\(f\)</span> tenga función inversa para tomar preimágenes?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-019"></span></p>
+<ol start="3" type="1">
+<li>¿Cuál es la fibra del cuadrado real sobre <span class="math inline">\(4\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-020"></span></p>
+<ol start="4" type="1">
+<li>¿Cuál es la fibra del cuadrado real sobre <span class="math inline">\(-1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-021"></span></p>
+<ol start="5" type="1">
+<li>¿Cuál es <span class="math inline">\(f^{-1}[E]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-022"></span></p>
+<ol start="6" type="1">
+<li>¿Cuál es <span class="math inline">\(q^{-1}[(1,4]]\)</span> para el cuadrado en <span class="math inline">\(\mathbb R\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-023"></span></p>
+<ol start="7" type="1">
+<li>¿Cómo cambia esa preimagen si el dominio se restringe a <span class="math inline">\([0,\infty)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-024"></span></p>
+<ol start="8" type="1">
+<li>¿Qué recupera <span class="math inline">\(f[f^{-1}[B]]\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="qué-operaciones-sobreviven-al-transporte" class="level2">
+<h2 class="anchored" data-anchor-id="qué-operaciones-sobreviven-al-transporte">12.4. Qué operaciones sobreviven al transporte</h2>
+<p><span id="MA-SEC-ANM-01-012-004"></span></p>
+<p>Unir dos grupos de entradas y luego transportarlos produce las mismas salidas que transportarlos por separado y unir sus imágenes. Intersectar exige más cuidado: una salida común puede venir de entradas distintas.</p>
+<p>Fijemos <span class="math inline">\(f:D\to E\)</span>, <span class="math inline">\(A,C\subseteq D\)</span> y <span class="math inline">\(B,H\subseteq E\)</span>.</p>
+<section id="la-imagen-y-sus-testigos" class="level3">
+<h3 class="anchored" data-anchor-id="la-imagen-y-sus-testigos">La imagen y sus testigos</h3>
+<p>Tenemos</p>
+<p><span class="math display">\[
+f[A\cup C]=f[A]\cup f[C],\qquad
+f[A\cap C]\subseteq f[A]\cap f[C].
+\]</span></p>
+<p>En la primera igualdad, <span class="math inline">\(y\)</span> pertenece al lado izquierdo si existe <span class="math inline">\(x\)</span> con <span class="math inline">\(f(x)=y\)</span> y <span class="math inline">\(x\in A\)</span> o <span class="math inline">\(x\in C\)</span>. Esto equivale a que <span class="math inline">\(y\)</span> tenga un testigo en alguno de los dos conjuntos, es decir, a pertenecer a alguna imagen. Ambas implicaciones usan el mismo testigo escogido.</p>
+<p>Para la segunda, un testigo en <span class="math inline">\(A\cap C\)</span> pertenece a los dos conjuntos. Pero en sentido contrario, <span class="math inline">\(y\in f[A]\cap f[C]\)</span> sólo da <span class="math inline">\(a\in A\)</span> y <span class="math inline">\(c\in C\)</span> con <span class="math inline">\(f(a)=f(c)=y\)</span>. No sabemos que <span class="math inline">\(a=c\)</span>.</p>
+<p>Con <span class="math inline">\(q(x)=x^2\)</span>, <span class="math inline">\(A=\{-1\}\)</span> y <span class="math inline">\(C=\{1\}\)</span>, la intersección de entradas es vacía, mientras que las dos imágenes son <span class="math inline">\(\{1\}\)</span>. Así, la inclusión puede ser estricta. Si <span class="math inline">\(f\)</span> es <strong>inyectiva</strong>, es decir, <span class="math inline">\(f(a)=f(c)\)</span> implica <span class="math inline">\(a=c\)</span>, los dos testigos coinciden y pertenecen a <span class="math inline">\(A\cap C\)</span>. En ese caso obtenemos igualdad.</p>
+<div id="fig-anm-c12-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Una salida en ambas imágenes puede tener dos testigos diferentes. Para convertirlos en una entrada común se necesita inyectividad.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c12-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C12/C12-F03.svg" class="img-fluid figure-img" alt="Una salida en ambas imágenes puede tener dos testigos diferentes. Para convertirlos en una entrada común se necesita inyectividad.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c12-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Una salida en ambas imágenes puede tener dos testigos diferentes. Para convertirlos en una entrada común se necesita inyectividad.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="la-preimagen-conserva-las-operaciones" class="level3">
+<h3 class="anchored" data-anchor-id="la-preimagen-conserva-las-operaciones">La preimagen conserva las operaciones</h3>
+<p>Para una entrada fija <span class="math inline">\(x\in D\)</span> hay una única salida que podemos comparar con ambos conjuntos. Por eso las siguientes equivalencias son exactas:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x\in f^{-1}[B\cup H]&amp;\iff f(x)\in B\text{ o }f(x)\in H,\\
+x\in f^{-1}[B\cap H]&amp;\iff f(x)\in B\text{ y }f(x)\in H,\\
+x\in f^{-1}[E\setminus B]&amp;\iff f(x)\notin B.
+\end{aligned}
+\]</span></p>
+<p>La primera condición equivale a pertenecer a <span class="math inline">\(f^{-1}[B]\cup f^{-1}[H]\)</span>; la segunda, a <span class="math inline">\(f^{-1}[B]\cap f^{-1}[H]\)</span>; la tercera, a <span class="math inline">\(D\setminus f^{-1}[B]\)</span>. Por extensionalidad,</p>
+<p><span class="math display">\[
+\begin{aligned}
+f^{-1}[B\cup H]&amp;=f^{-1}[B]\cup f^{-1}[H],\\
+f^{-1}[B\cap H]&amp;=f^{-1}[B]\cap f^{-1}[H],\\
+f^{-1}[E\setminus B]&amp;=D\setminus f^{-1}[B].
+\end{aligned}
+\]</span></p>
+<p>Ninguna de estas pruebas necesita inyectividad o sobreyectividad. Sí necesita los complementos correctos: a la izquierda complementamos dentro de <span class="math inline">\(E\)</span>, a la derecha dentro de <span class="math inline">\(D\)</span>. El criterio <span class="math inline">\(f(x)\in B\setminus H\)</span> equivale a <span class="math inline">\(f(x)\in B\)</span> y <span class="math inline">\(f(x)\notin H\)</span>; por el mismo argumento,</p>
+<p><span class="math display">\[
+f^{-1}[B\setminus H]=f^{-1}[B]\setminus f^{-1}[H].
+\]</span></p>
+</section>
+<section id="qué-recupera-la-vuelta-al-dominio" class="level3">
+<h3 class="anchored" data-anchor-id="qué-recupera-la-vuelta-al-dominio">Qué recupera la vuelta al dominio</h3>
+<p>Siempre <span class="math inline">\(A\subseteq f^{-1}[f[A]]\)</span>, pues cada <span class="math inline">\(a\in A\)</span> tiene su salida en <span class="math inline">\(f[A]\)</span>. Para <span class="math inline">\(q\)</span> y <span class="math inline">\(A=\{1\}\)</span>, el lado derecho es <span class="math inline">\(\{-1,1\}\)</span>: hemos añadido entradas que comparten salida con alguna entrada original. Llamaremos a este conjunto la <strong>saturación de <span class="math inline">\(A\)</span> por las fibras</strong>.</p>
+<p>Si <span class="math inline">\(f\)</span> es inyectiva, una entrada <span class="math inline">\(x\)</span> del lado derecho comparte salida con algún <span class="math inline">\(a\in A\)</span>; entonces <span class="math inline">\(x=a\)</span>, y la inclusión se convierte en igualdad. La hipótesis se utiliza para recuperar la entrada y no para justificar la existencia de preimagen.</p>
+<p>La imagen tampoco conserva complementos en general. Para el cuadrado, <span class="math inline">\(q[\mathbb R\setminus\{1\}]=[0,\infty)\)</span> porque el valor <span class="math inline">\(1\)</span> aún se alcanza en <span class="math inline">\(-1\)</span>. En cambio, <span class="math inline">\(\mathbb R\setminus q[\{1\}]=\mathbb R\setminus\{1\}\)</span>. Identificar entradas y omitir salidas del codominio impide una ley de complementos. No confundamos esa pérdida con las leyes exactas de selección hacia atrás.</p>
+</section>
+<section id="antes-de-seguir-3" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-3">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-012-025"></span></p>
+<ol type="1">
+<li>¿La imagen conserva la unión de dos conjuntos de entradas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-026"></span></p>
+<ol start="2" type="1">
+<li>¿Qué inclusión siempre vale para la imagen de una intersección?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-027"></span></p>
+<ol start="3" type="1">
+<li>Con <span class="math inline">\(q(x)=x^2\)</span>, <span class="math inline">\(A=\{-1\}\)</span> y <span class="math inline">\(C=\{1\}\)</span>, ¿por qué falla la igualdad anterior?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-028"></span></p>
+<ol start="4" type="1">
+<li>¿Qué hipótesis reúne los dos testigos de una salida común?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-029"></span></p>
+<ol start="5" type="1">
+<li>¿Qué preimagen tiene <span class="math inline">\(B\cap H\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-030"></span></p>
+<ol start="6" type="1">
+<li>¿Cuáles son los universos de los complementos en la ley de preimagen?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-031"></span></p>
+<ol start="7" type="1">
+<li>¿Siempre se cumple <span class="math inline">\(A=f^{-1}[f[A]]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-032"></span></p>
+<ol start="8" type="1">
+<li>¿Cuál es la preimagen de <span class="math inline">\(B\setminus H\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="componer-restringir-y-deshacer" class="level2">
+<h2 class="anchored" data-anchor-id="componer-restringir-y-deshacer">12.5. Componer, restringir y deshacer</h2>
+<p><span id="MA-SEC-ANM-01-012-005"></span></p>
+<p>Una transformación puede alimentar otra. Si <span class="math inline">\(f:D\to E\)</span> y <span class="math inline">\(g:E\to F\)</span>, definimos <span class="math inline">\(g\circ f:D\to F\)</span> por <span class="math inline">\((g\circ f)(x)=g(f(x))\)</span>. El tipo garantiza que la segunda evaluación está autorizada. Más generalmente, basta que la imagen de <span class="math inline">\(f\)</span> esté contenida en el dominio de <span class="math inline">\(g\)</span>; entonces se declara explícitamente el tipo de la composición.</p>
+<section id="dos-etapas-hacia-delante-y-hacia-atrás" class="level3">
+<h3 class="anchored" data-anchor-id="dos-etapas-hacia-delante-y-hacia-atrás">Dos etapas hacia delante y hacia atrás</h3>
+<p>Si <span class="math inline">\(A\subseteq D\)</span> y <span class="math inline">\(C\subseteq F\)</span>,</p>
+<p><span class="math display">\[
+(g\circ f)[A]=g[f[A]],\qquad
+(g\circ f)^{-1}[C]=f^{-1}[g^{-1}[C]].
+\]</span></p>
+<p>La primera igualdad se prueba con testigos. Una salida de <span class="math inline">\((g\circ f)[A]\)</span> es <span class="math inline">\(g(f(x))\)</span> con <span class="math inline">\(x\in A\)</span>, luego proviene por <span class="math inline">\(g\)</span> de un elemento de <span class="math inline">\(f[A]\)</span>. Recíprocamente, si <span class="math inline">\(z=g(y)\)</span> con <span class="math inline">\(y\in f[A]\)</span>, existe <span class="math inline">\(x\in A\)</span> con <span class="math inline">\(f(x)=y\)</span>, de modo que <span class="math inline">\(z=g(f(x))\)</span>. Para la segunda, una entrada <span class="math inline">\(x\in D\)</span> satisface <span class="math inline">\(g(f(x))\in C\)</span> exactamente cuando <span class="math inline">\(f(x)\in g^{-1}[C]\)</span>, es decir, <span class="math inline">\(x\in f^{-1}[g^{-1}[C]]\)</span>. Hacia atrás comprobamos primero el filtro de la última etapa.</p>
+<p>Por ejemplo, <span class="math inline">\(f(x)=x^2\)</span> y <span class="math inline">\(g(y)=y+1\)</span>, ambas reales, dan <span class="math inline">\((g\circ f)(x)=x^2+1\)</span>. Para llegar a <span class="math inline">\((2,5]\)</span>, primero <span class="math inline">\(y+1\in(2,5]\)</span> exige <span class="math inline">\(y\in(1,4]\)</span>; después <span class="math inline">\(x^2\in(1,4]\)</span> exige <span class="math inline">\(x\in[-2,-1)\cup(1,2]\)</span>. No se ha invertido el cuadrado como función.</p>
+</section>
+<section id="restringir-cambia-el-objeto" class="level3">
+<h3 class="anchored" data-anchor-id="restringir-cambia-el-objeto">Restringir cambia el objeto</h3>
+<p>Para <span class="math inline">\(A\subseteq D\)</span>, la <strong>restricción</strong> <span class="math inline">\(f|_A:A\to E\)</span> conserva las asignaciones en <span class="math inline">\(A\)</span>. Su imagen es <span class="math inline">\(f[A]\)</span> y, para <span class="math inline">\(B\subseteq E\)</span>,</p>
+<p><span class="math display">\[
+(f|_A)^{-1}[B]=A\cap f^{-1}[B].
+\]</span></p>
+<p>Ambos lados seleccionan precisamente los <span class="math inline">\(x\in A\)</span> cuya salida está en <span class="math inline">\(B\)</span>. Restricción y cambio de codominio son decisiones diferentes. Restringir el cuadrado a <span class="math inline">\([0,\infty)\)</span> hace única la entrada de cada salida alcanzada; declarar luego codominio <span class="math inline">\([0,\infty)\)</span> hace que todas las salidas declaradas se alcancen.</p>
+</section>
+<section id="cuándo-existe-una-inversa" class="level3">
+<h3 class="anchored" data-anchor-id="cuándo-existe-una-inversa">Cuándo existe una inversa</h3>
+<p><span class="math inline">\(f:D\to E\)</span> es <strong>sobreyectiva</strong> si <span class="math inline">\(f[D]=E\)</span>, y <strong>biyectiva</strong> si además es inyectiva. Sólo entonces existe una función inversa <span class="math inline">\(h:E\to D\)</span> que deshace <span class="math inline">\(f\)</span> en ambas direcciones:</p>
+<p><span class="math display">\[
+h\circ f=\operatorname{id}_D,\qquad f\circ h=\operatorname{id}_E.
+\]</span></p>
+<p>Construyámosla. Para cada <span class="math inline">\(y\in E\)</span>, sobreyectividad proporciona <span class="math inline">\(x\in D\)</span> con <span class="math inline">\(f(x)=y\)</span>; inyectividad asegura que ese <span class="math inline">\(x\)</span> es único. Definimos <span class="math inline">\(h(y)\)</span> como esa entrada. Entonces <span class="math inline">\(h(f(x))=x\)</span> y <span class="math inline">\(f(h(y))=y\)</span>, que son las identidades anunciadas. Si otra función <span class="math inline">\(k\)</span> las cumple, <span class="math inline">\(f(k(y))=y=f(h(y))\)</span> e inyectividad da <span class="math inline">\(k(y)=h(y)\)</span> para todo <span class="math inline">\(y\)</span>; la inversa es única.</p>
+<p>También la condición es necesaria. Si existen las dos identidades, de <span class="math inline">\(f(x)=f(z)\)</span> obtenemos <span class="math inline">\(x=h(f(x))=h(f(z))=z\)</span>, luego inyectividad. Para cada <span class="math inline">\(y\in E\)</span>, <span class="math inline">\(x=h(y)\)</span> cumple <span class="math inline">\(f(x)=y\)</span>, luego sobreyectividad. Hemos probado ambas direcciones.</p>
+<p>Escribimos <span class="math inline">\(h=f^{-1}\)</span> sólo tras esta verificación. Ahora sí <span class="math inline">\(f^{-1}(y)\)</span> es una entrada y <span class="math inline">\(f^{-1}[B]=h[B]\)</span> es su colección para <span class="math inline">\(y\in B\)</span>. En efecto, <span class="math inline">\(x\)</span> pertenece al primer conjunto si <span class="math inline">\(f(x)\in B\)</span>, y entonces <span class="math inline">\(x=h(f(x))\)</span> está en <span class="math inline">\(h[B]\)</span>; recíprocamente <span class="math inline">\(x=h(y)\)</span> con <span class="math inline">\(y\in B\)</span> implica <span class="math inline">\(f(x)=y\in B\)</span>.</p>
+<p>Para <span class="math inline">\(f(x)=2x+1\)</span> como aplicación <span class="math inline">\(\mathbb R\to\mathbb R\)</span>, la igualdad de salidas da <span class="math inline">\(x=z\)</span>, y para cualquier <span class="math inline">\(y\)</span> sirve <span class="math inline">\(x=(y-1)/2\)</span>. La inversa es <span class="math inline">\(h(y)=(y-1)/2\)</span>. Para el cuadrado real completo no existe inversa; para la aplicación <span class="math inline">\([0,\infty)\to[0,\infty)\)</span> sí, y es la raíz no negativa. El tipo decide qué puede deshacerse.</p>
+</section>
+<section id="antes-de-seguir-4" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-4">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-012-033"></span></p>
+<ol type="1">
+<li>¿Qué tipo tiene <span class="math inline">\(g\circ f\)</span> si <span class="math inline">\(f:D\to E\)</span> y <span class="math inline">\(g:E\to F\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-034"></span></p>
+<ol start="2" type="1">
+<li>¿Cómo se calcula <span class="math inline">\((g\circ f)[A]\)</span> por etapas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-035"></span></p>
+<ol start="3" type="1">
+<li>¿En qué orden se calcula <span class="math inline">\((g\circ f)^{-1}[C]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-036"></span></p>
+<ol start="4" type="1">
+<li>¿Cuál es el dominio de <span class="math inline">\(f|_A\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-037"></span></p>
+<ol start="5" type="1">
+<li>¿Cuál es <span class="math inline">\((f|_A)^{-1}[B]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-038"></span></p>
+<ol start="6" type="1">
+<li>¿Qué dos propiedades permiten construir una función inversa <span class="math inline">\(E\to D\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-039"></span></p>
+<ol start="7" type="1">
+<li>¿Cuál es la inversa de <span class="math inline">\(f:\mathbb R\to\mathbb R\)</span>, <span class="math inline">\(f(x)=2x+1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-040"></span></p>
+<ol start="8" type="1">
+<li>¿Por qué restringir el cuadrado a entradas no negativas no basta para hacerlo biyectivo hacia <span class="math inline">\(\mathbb R\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="transportar-el-orden-no-rellena-los-huecos" class="level2">
+<h2 class="anchored" data-anchor-id="transportar-el-orden-no-rellena-los-huecos">12.6. Transportar el orden no rellena los huecos</h2>
+<p><span id="MA-SEC-ANM-01-012-006"></span></p>
+<p>Ya sabemos transportar conjuntos. En la recta podemos preguntar además si una transformación conserva la comparación entre entradas. Sea <span class="math inline">\(f:D\to\mathbb R\)</span>, <span class="math inline">\(D\subseteq\mathbb R\)</span>. Diremos que es <strong>no decreciente</strong> cuando</p>
+<p><span class="math display">\[
+x,y\in D,\quad x\le y\quad\Longrightarrow\quad f(x)\le f(y).
+\]</span></p>
+<p>Es <strong>estrictamente creciente</strong> cuando <span class="math inline">\(x&lt;y\)</span> implica <span class="math inline">\(f(x)&lt;f(y)\)</span>. «No creciente» y «estrictamente decreciente» invierten las desigualdades entre salidas. Siempre declaramos cuál sentido usamos: algunas convenciones llaman creciente al caso no estricto.</p>
+<section id="orden-estricto-y-recuperación" class="level3">
+<h3 class="anchored" data-anchor-id="orden-estricto-y-recuperación">Orden estricto y recuperación</h3>
+<p>Una función estrictamente creciente es inyectiva. Si <span class="math inline">\(x\ne y\)</span>, la tricotomía da <span class="math inline">\(x&lt;y\)</span> o <span class="math inline">\(y&lt;x\)</span>; en ambos casos sus salidas son distintas. La misma prueba sirve para una estrictamente decreciente. Una no decreciente puede ser constante en todo su dominio y no ser inyectiva.</p>
+<p>Si <span class="math inline">\(f\)</span> es no decreciente y <span class="math inline">\(a,b\in D\)</span> con <span class="math inline">\(a\le b\)</span>, entonces</p>
+<p><span class="math display">\[
+f[D\cap[a,b]]\subseteq[f(a),f(b)].
+\]</span></p>
+<p>Cada entrada <span class="math inline">\(x\)</span> del conjunto cumple <span class="math inline">\(a\le x\le b\)</span>, de donde <span class="math inline">\(f(a)\le f(x)\le f(b)\)</span>. Esto es una inclusión, no una igualdad prometida: el argumento controla las salidas que existen, pero no produce testigos para todas las salidas intermedias.</p>
+</section>
+<section id="un-salto-que-conserva-el-orden" class="level3">
+<h3 class="anchored" data-anchor-id="un-salto-que-conserva-el-orden">Un salto que conserva el orden</h3>
+<p>Definamos <span class="math inline">\(s:\mathbb R\to\mathbb R\)</span> por</p>
+<p><span class="math display">\[
+s(x)=\begin{cases}x,&amp;x&lt;0,\\x+1,&amp;x\ge0.\end{cases}
+\]</span></p>
+<p>Es estrictamente creciente. Para dos entradas negativas o dos no negativas, la diferencia de salidas es la diferencia de entradas. Si <span class="math inline">\(x&lt;0\le y\)</span>, entonces <span class="math inline">\(s(x)=x&lt;0&lt;1\le y+1=s(y)\)</span>. Son todos los casos para <span class="math inline">\(x&lt;y\)</span>.</p>
+<p>Sin embargo,</p>
+<p><span class="math display">\[
+s[[-1,1]]=[-1,0)\cup[1,2].
+\]</span></p>
+<p>En la rama negativa alcanzamos exactamente <span class="math inline">\([-1,0)\)</span>; en la no negativa exactamente <span class="math inline">\([1,2]\)</span>. El valor <span class="math inline">\(1/2\)</span> queda entre <span class="math inline">\(s(-1)=-1\)</span> y <span class="math inline">\(s(1)=2\)</span>, pero no tiene entrada. Monotonía estricta no rellena huecos. Un resultado que garantice salidas intermedias necesitará otra hipótesis, que estudiaremos más adelante.</p>
+<div id="fig-anm-c12-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="El salto conserva el orden estricto entre todas las entradas, pero la imagen de [-1,1] es [-1,0) unión [1,2]. Ordenar salidas existentes no produce las que faltan.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c12-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C12/C12-F04.svg" class="img-fluid figure-img" alt="El salto conserva el orden estricto entre todas las entradas, pero la imagen de [-1,1] es [-1,0) unión [1,2]. Ordenar salidas existentes no produce las que faltan.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c12-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: El salto conserva el orden estricto entre todas las entradas, pero la imagen de [-1,1] es [-1,0) unión [1,2]. Ordenar salidas existentes no produce las que faltan.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="las-funciones-afines-permiten-un-cálculo-completo" class="level3">
+<h3 class="anchored" data-anchor-id="las-funciones-afines-permiten-un-cálculo-completo">Las funciones afines permiten un cálculo completo</h3>
+<p>Para <span class="math inline">\(h(x)=mx+b\)</span> como aplicación real, la diferencia <span class="math inline">\(h(y)-h(x)=m(y-x)\)</span> decide el orden: creciente estricta si <span class="math inline">\(m&gt;0\)</span>, decreciente estricta si <span class="math inline">\(m&lt;0\)</span>, constante si <span class="math inline">\(m=0\)</span>.</p>
+<p>Para calcular las imágenes de intervalos, escribamos <span class="math inline">\(h(x)=mx+c\)</span>, con <span class="math inline">\(c\)</span> como término independiente. Así,</p>
+<p><span class="math display">\[
+h[[a,b]]=[ma+c,mb+c]\quad(m&gt;0),
+\]</span></p>
+<p><span class="math display">\[
+h[[a,b]]=[mb+c,ma+c]\quad(m&lt;0).
+\]</span></p>
+<p>La inclusión sale del orden. Para la inclusión inversa, dado <span class="math inline">\(t\)</span> entre las salidas extremas, <span class="math inline">\(x=(t-c)/m\)</span> satisface las desigualdades de entrada, con inversión al dividir por <span class="math inline">\(m&lt;0\)</span>, y alcanza <span class="math inline">\(t\)</span>. La misma prueba para extremos estrictos da imágenes de intervalos abiertos, y permite decidir cada extremo en intervalos semiabiertos. Si <span class="math inline">\(m=0\)</span> y el intervalo es no vacío, la imagen es <span class="math inline">\(\{c\}\)</span>.</p>
+<p>El cuadrado es estrictamente creciente en <span class="math inline">\([0,\infty)\)</span> y estrictamente decreciente en <span class="math inline">\((-\infty,0]\)</span>. Para <span class="math inline">\(0\le x&lt;y\)</span>, <span class="math inline">\(y^2-x^2=(y-x)(y+x)&gt;0\)</span>. Para <span class="math inline">\(x&lt;y\le0\)</span>, ambos factores tienen signos que dan <span class="math inline">\(y^2-x^2&lt;0\)</span>. Separar ramas explica por qué el cuadrado no conserva el orden en toda la recta y por qué una sola fórmula puede requerir dos mecanismos de transporte.</p>
+</section>
+<section id="antes-de-seguir-5" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-5">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-012-041"></span></p>
+<ol type="1">
+<li>¿Qué significa no decreciente en un dominio <span class="math inline">\(D\subseteq\mathbb R\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-042"></span></p>
+<ol start="2" type="1">
+<li>¿Una función estrictamente creciente es inyectiva?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-043"></span></p>
+<ol start="3" type="1">
+<li>¿Una función no decreciente tiene que ser inyectiva?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-044"></span></p>
+<ol start="4" type="1">
+<li>¿Qué controla el intervalo <span class="math inline">\([f(a),f(b)]\)</span> si <span class="math inline">\(f\)</span> es no decreciente?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-045"></span></p>
+<ol start="5" type="1">
+<li>Para la función de salto <span class="math inline">\(s\)</span> del texto, ¿se alcanza <span class="math inline">\(1/2\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-046"></span></p>
+<ol start="6" type="1">
+<li>¿Cuál es <span class="math inline">\(s[[-1,1]]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-047"></span></p>
+<ol start="7" type="1">
+<li>¿Qué signo de <span class="math inline">\(m\)</span> hace decreciente estricta a <span class="math inline">\(h(x)=mx+c\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-048"></span></p>
+<ol start="8" type="1">
+<li>¿En qué rama es creciente estricta la función cuadrado?</li>
+</ol>
+</section>
+</section>
+<section id="distancia-y-escala-medir-la-deformación" class="level2">
+<h2 class="anchored" data-anchor-id="distancia-y-escala-medir-la-deformación">12.7. Distancia y escala: medir la deformación</h2>
+<p><span id="MA-SEC-ANM-01-012-007"></span></p>
+<p>Conservar el orden no dice cuánto se separan las salidas. Una transformación puede mantener izquierda y derecha mientras amplía las distancias; otra puede invertir el orden y conservar todas las distancias. Mediremos esto mediante pares de entradas.</p>
+<section id="escala-exacta-en-una-aplicación-afín" class="level3">
+<h3 class="anchored" data-anchor-id="escala-exacta-en-una-aplicación-afín">Escala exacta en una aplicación afín</h3>
+<p>Si <span class="math inline">\(h(x)=mx+c\)</span>, entonces para todo <span class="math inline">\(x,y\in\mathbb R\)</span>,</p>
+<p><span class="math display">\[
+|h(x)-h(y)|=|m(x-y)|=|m|\,|x-y|.
+\]</span></p>
+<p>La traslación <span class="math inline">\(c\)</span> se cancela. El factor métrico es <span class="math inline">\(|m|\)</span>, mientras que el signo de <span class="math inline">\(m\)</span> decide la orientación. Para <span class="math inline">\(m=-1\)</span> se invierte el orden y se conserva la distancia; para <span class="math inline">\(m=2\)</span> se conserva el orden y se duplica la distancia; para <span class="math inline">\(m=0\)</span> todas las distancias se vuelven cero.</p>
+<div id="fig-anm-c12-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La traslación cambia posición, el signo de m cambia orientación y |m| cambia distancia. Los tres papeles se separan en h(x)=mx+c.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c12-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C12/C12-F05.svg" class="img-fluid figure-img" alt="La traslación cambia posición, el signo de m cambia orientación y |m| cambia distancia. Los tres papeles se separan en h(x)=mx+c.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c12-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: La traslación cambia posición, el signo de m cambia orientación y |m| cambia distancia. Los tres papeles se separan en h(x)=mx+c.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="una-cota-uniforme-es-una-afirmación-sobre-todo-el-dominio" class="level3">
+<h3 class="anchored" data-anchor-id="una-cota-uniforme-es-una-afirmación-sobre-todo-el-dominio">Una cota uniforme es una afirmación sobre todo el dominio</h3>
+<p>Una función <span class="math inline">\(f:D\to\mathbb R\)</span> tiene <strong>cota de expansión <span class="math inline">\(L\)</span></strong>, o es <span class="math inline">\(L\)</span>-Lipschitz, si <span class="math inline">\(L\ge0\)</span> y</p>
+<p><span class="math display">\[
+|f(x)-f(y)|\le L|x-y|\qquad\text{para todos }x,y\in D.
+\]</span></p>
+<p>El mismo <span class="math inline">\(L\)</span> debe servir para todos los pares. No basta calcular el cociente para dos entradas seleccionadas. La desigualdad tiene sentido también cuando <span class="math inline">\(x=y\)</span>, sin dividir por cero. Si <span class="math inline">\(0\le L&lt;1\)</span>, esta estimación expresa contracción de distancias; si <span class="math inline">\(L=1\)</span>, impide expansión; no exige igualdad exacta.</p>
+<p>Por la desigualdad triangular, <span class="math inline">\(|x|\le|x-y|+|y|\)</span> y <span class="math inline">\(|y|\le|x-y|+|x|\)</span>. Restando obtenemos</p>
+<p><span class="math display">\[
+\bigl||x|-|y|\bigr|\le|x-y|.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(x\mapsto|x|\)</span> tiene cota <span class="math inline">\(1\)</span>, aunque identifica <span class="math inline">\(x\)</span> y <span class="math inline">\(-x\)</span>. Una cota superior de distancia no garantiza que la entrada pueda recuperarse.</p>
+</section>
+<section id="el-dominio-cambia-el-control-del-cuadrado" class="level3">
+<h3 class="anchored" data-anchor-id="el-dominio-cambia-el-control-del-cuadrado">El dominio cambia el control del cuadrado</h3>
+<p>Para <span class="math inline">\(q(x)=x^2\)</span>,</p>
+<p><span class="math display">\[
+|q(x)-q(y)|=|x-y|\,|x+y|.
+\]</span></p>
+<p>Si <span class="math inline">\(x,y\in[-R,R]\)</span> con <span class="math inline">\(R&gt;0\)</span>, <span class="math inline">\(|x+y|\le|x|+|y|\le2R\)</span>, y obtenemos cota <span class="math inline">\(2R\)</span>. La factorización produce el control; el dominio lo hace uniforme.</p>
+<p>No existe una cota finita <span class="math inline">\(L\)</span> para el cuadrado en toda <span class="math inline">\(\mathbb R\)</span>. Dado cualquier <span class="math inline">\(L\ge0\)</span>, tomemos <span class="math inline">\(x=L+1\)</span> e <span class="math inline">\(y=x+1\)</span>. Su distancia es <span class="math inline">\(1\)</span>, pero la distancia de salidas es <span class="math inline">\(2x+1=2L+3&gt;L\)</span>. Hemos elegido un par después de recibir la constante propuesta y refutado su universalidad. No necesitamos derivadas.</p>
+</section>
+<section id="control-inferior-y-composición" class="level3">
+<h3 class="anchored" data-anchor-id="control-inferior-y-composición">Control inferior y composición</h3>
+<p>Si además existe <span class="math inline">\(c&gt;0\)</span> con</p>
+<p><span class="math display">\[
+c|x-y|\le|f(x)-f(y)|\qquad(x,y\in D),
+\]</span></p>
+<p><span class="math inline">\(f\)</span> es inyectiva: salidas iguales fuerzan <span class="math inline">\(c|x-y|=0\)</span>, luego <span class="math inline">\(x=y\)</span>. Para la inversa sobre la imagen, <span class="math inline">\(h:f[D]\to D\)</span>, poniendo <span class="math inline">\(u=f(x)\)</span> y <span class="math inline">\(v=f(y)\)</span> se obtiene <span class="math inline">\(|h(u)-h(v)|\le |u-v|/c\)</span>. Su dominio es la imagen, aunque el codominio original de <span class="math inline">\(f\)</span> sea mayor.</p>
+<p>Finalmente, si <span class="math inline">\(f:D\to E\subseteq\mathbb R\)</span> tiene cota <span class="math inline">\(L\)</span> y <span class="math inline">\(g:E\to\mathbb R\)</span> tiene cota <span class="math inline">\(M\)</span>, entonces</p>
+<p><span class="math display">\[
+|g(f(x))-g(f(y))|\le M|f(x)-f(y)|\le ML|x-y|.
+\]</span></p>
+<p>El producto controla la composición. Estos son controles algebraicos de distancia; su relación con límites y continuidad se desarrollará después, sin usarla como herramienta aquí.</p>
+</section>
+<section id="antes-de-seguir-6" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-6">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-012-049"></span></p>
+<ol type="1">
+<li>¿Qué factor multiplica las distancias bajo <span class="math inline">\(h(x)=mx+c\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-050"></span></p>
+<ol start="2" type="1">
+<li>¿Puede una función invertir el orden y conservar todas las distancias?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-051"></span></p>
+<ol start="3" type="1">
+<li>¿De qué puede depender una cota de expansión <span class="math inline">\(L\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-052"></span></p>
+<ol start="4" type="1">
+<li>¿Qué cota de expansión tiene <span class="math inline">\(x\mapsto|x|\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-053"></span></p>
+<ol start="5" type="1">
+<li>¿Qué cota da la factorización del cuadrado en <span class="math inline">\([-R,R]\)</span> con <span class="math inline">\(R&gt;0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-054"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué no sirve una cota finita <span class="math inline">\(L\ge0\)</span> para el cuadrado en toda la recta?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-055"></span></p>
+<ol start="7" type="1">
+<li>¿Qué garantiza una cota inferior <span class="math inline">\(c|x-y|\le|f(x)-f(y)|\)</span> con <span class="math inline">\(c&gt;0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-056"></span></p>
+<ol start="8" type="1">
+<li>¿Qué cota tiene una composición de funciones con cotas <span class="math inline">\(L\)</span> y <span class="math inline">\(M\)</span> compatibles?</li>
+</ol>
+</section>
+</section>
+<section id="representaciones-y-ventanas-de-control" class="level2">
+<h2 class="anchored" data-anchor-id="representaciones-y-ventanas-de-control">12.8. Representaciones y ventanas de control</h2>
+<p><span id="MA-SEC-ANM-01-012-008"></span></p>
+<p>Una gráfica organiza entradas horizontalmente y salidas verticalmente; una tabla fija algunas evaluaciones; una representación por flechas muestra identificaciones; una imagen de rejilla revela cómo se deforman direcciones. Cada representación responde preguntas distintas. Ninguna sustituye el tipo ni las pruebas de transporte.</p>
+<section id="una-rejilla-necesita-una-función-planar" class="level3">
+<h3 class="anchored" data-anchor-id="una-rejilla-necesita-una-función-planar">Una rejilla necesita una función planar</h3>
+<p>Para hacer literal la transformación de una rejilla, ampliamos el universo y lo declaramos:</p>
+<p><span class="math display">\[
+T:\mathbb R^2\to\mathbb R^2,\qquad T(u,v)=(u+v,v).
+\]</span></p>
+<p>La entrada es un par y la salida otro par. <span class="math inline">\(T\)</span> no es una función escalar <span class="math inline">\(\mathbb R\to\mathbb R\)</span>, ni es el grafo de una función escalar. Su inversa es <span class="math inline">\(S(a,b)=(a-b,b)\)</span>: sustituir da <span class="math inline">\(S(T(u,v))=(u,v)\)</span> y <span class="math inline">\(T(S(a,b))=(a,b)\)</span>. Ambas composiciones están tipadas en <span class="math inline">\(\mathbb R^2\)</span>.</p>
+<p>La recta horizontal <span class="math inline">\(v=k\)</span> se transforma en <span class="math inline">\((u+k,k)\)</span> y sigue siendo horizontal. La recta vertical <span class="math inline">\(u=j\)</span> se transforma en <span class="math inline">\((j+v,v)\)</span>, una recta oblicua. En particular, el cuadrado con vértices <span class="math inline">\((0,0),(1,0),(1,1),(0,1)\)</span> se transforma en el paralelogramo de vértices <span class="math inline">\((0,0),(1,0),(2,1),(1,1)\)</span>. Los lados horizontales conservan longitud; un lado vertical unitario pasa a tener longitud <span class="math inline">\(\sqrt2\)</span> según la distancia euclídea <span class="math inline">\(\sqrt{(a-c)^2+(b-d)^2}\)</span>. La deformación depende de la dirección, no de un único factor de escala exacto.</p>
+<div id="fig-anm-c12-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="T:R²→R² transporta el cuadrado unitario a un paralelogramo. Su inversa (a,b)↦(a−b,b) recupera las entradas; la escala depende de la dirección.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c12-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C12/C12-F06.svg" class="img-fluid figure-img" alt="T:R²→R² transporta el cuadrado unitario a un paralelogramo. Su inversa (a,b)↦(a−b,b) recupera las entradas; la escala depende de la dirección.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c12-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: T:R²→R² transporta el cuadrado unitario a un paralelogramo. Su inversa (a,b)↦(a−b,b) recupera las entradas; la escala depende de la dirección.
+</figcaption>
+</figure>
+</div>
+<p>La rejilla es un conjunto de rectas; su transporte se define punto a punto por <span class="math inline">\(T\)</span>. No se deduce ninguna propiedad de una región infinita sólo porque un dibujo muestre seis segmentos. Las fórmulas de las rectas y la inversa justifican lo que la figura representa.</p>
+</section>
+<section id="dos-ventanas-y-una-sola-condición-de-transporte" class="level3">
+<h3 class="anchored" data-anchor-id="dos-ventanas-y-una-sola-condición-de-transporte">Dos ventanas y una sola condición de transporte</h3>
+<p>Regresemos a <span class="math inline">\(f:D\to E\)</span>, con <span class="math inline">\(D,E\subseteq\mathbb R\)</span>. Para <span class="math inline">\(A\subseteq D\)</span> y <span class="math inline">\(B\subseteq E\)</span>,</p>
+<p><span class="math display">\[
+f[A]\subseteq B\quad\Longleftrightarrow\quad A\subseteq f^{-1}[B].
+\]</span></p>
+<p>Si <span class="math inline">\(f[A]\subseteq B\)</span>, cada <span class="math inline">\(x\in A\)</span> tiene <span class="math inline">\(f(x)\in f[A]\subseteq B\)</span>, luego <span class="math inline">\(x\in f^{-1}[B]\)</span>. Recíprocamente, si <span class="math inline">\(A\subseteq f^{-1}[B]\)</span> y <span class="math inline">\(y\in f[A]\)</span>, un testigo <span class="math inline">\(x\in A\)</span> cumple <span class="math inline">\(f(x)=y\)</span> y <span class="math inline">\(f(x)\in B\)</span>; entonces <span class="math inline">\(y\in B\)</span>. Las dos implicaciones mantienen el tipo de los conjuntos.</p>
+<p>Con <span class="math inline">\(x_0\in D\)</span> y radios <span class="math inline">\(r,\rho&gt;0\)</span>, podemos aplicar esta equivalencia a</p>
+<p><span class="math display">\[
+U=D\cap B(x_0,r),\qquad V=E\cap B(f(x_0),\rho).
+\]</span></p>
+<p>Transportar toda la ventana de entrada dentro de la ventana de salida equivale a que la primera esté contenida en la preimagen de la segunda. Son radios fijos, no una definición de límite. Una función arbitraria puede incumplir la inclusión, aunque el centro sí esté en la preimagen.</p>
+<p>Para <span class="math inline">\(q(x)=x^2\)</span>, <span class="math inline">\(x_0=1\)</span>, <span class="math inline">\(r=1/4\)</span> y <span class="math inline">\(\rho=1\)</span>, las entradas de <span class="math inline">\(U=(3/4,5/4)\)</span> satisfacen <span class="math inline">\(|x+1|&lt;9/4\)</span>, por lo que</p>
+<p><span class="math display">\[
+|q(x)-q(1)|=|x-1|\,|x+1|&lt;\frac14\frac94=\frac9{16}&lt;1.
+\]</span></p>
+<p>Así <span class="math inline">\(q[U]\subseteq(0,2)\)</span>, y equivalentemente <span class="math inline">\(U\subseteq q^{-1}[(0,2)]\)</span>. Hemos certificado la inclusión mediante una estimación; la apariencia de la parábola no es la prueba.</p>
+</section>
+<section id="pertenecer-no-es-rodear" class="level3">
+<h3 class="anchored" data-anchor-id="pertenecer-no-es-rodear">Pertenecer no es rodear</h3>
+<p>Para la función de salto <span class="math inline">\(s\)</span> de §12.6, <span class="math inline">\(s(0)=1\)</span>. La preimagen de la bola <span class="math inline">\(B(1,1/4)=(3/4,5/4)\)</span> es <span class="math inline">\([0,1/4)\)</span>. En la rama negativa no hay salida positiva; en la no negativa la condición es <span class="math inline">\(3/4&lt;x+1&lt;5/4\)</span>, que recortada por <span class="math inline">\(x\ge0\)</span> da ese intervalo.</p>
+<p>La preimagen contiene <span class="math inline">\(0\)</span>, pero no es vecindad de <span class="math inline">\(0\)</span> en la recta: ninguna bola de radio positivo centrada en cero cabe en ella, pues siempre contiene entradas negativas. Es la distinción de C04 aplicada a una selección por salidas. El transporte de ventanas planteará nuevas preguntas en el capítulo siguiente.</p>
+<p>Volvemos a la pregunta inicial: una función transporta puntos y conjuntos; puede identificar entradas, omitir salidas, invertir el orden o deformar distancias. Imagen, preimagen, tipo y estimaciones nos permiten especificar qué ocurre antes de introducir cualquier teoría de límites de funciones.</p>
+<div id="fig-anm-c12-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En el cuadrado, una estimación certifica que una ventana completa cabe en la preimagen. En el salto, la preimagen contiene el centro pero no es vecindad. La pertenencia y el margen alrededor del centro son datos distintos.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c12-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C12/C12-F07.svg" class="img-fluid figure-img" alt="En el cuadrado, una estimación certifica que una ventana completa cabe en la preimagen. En el salto, la preimagen contiene el centro pero no es vecindad. La pertenencia y el margen alrededor del centro son datos distintos.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c12-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: En el cuadrado, una estimación certifica que una ventana completa cabe en la preimagen. En el salto, la preimagen contiene el centro pero no es vecindad. La pertenencia y el margen alrededor del centro son datos distintos.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="antes-de-seguir-7" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-7">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-012-057"></span></p>
+<ol type="1">
+<li>¿Qué tipo tiene <span class="math inline">\(T(u,v)=(u+v,v)\)</span> en el texto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-058"></span></p>
+<ol start="2" type="1">
+<li>¿Cuál es la inversa de esa transformación de rejilla?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-059"></span></p>
+<ol start="3" type="1">
+<li>¿En qué se transforma la recta <span class="math inline">\(u=j\)</span> bajo <span class="math inline">\(T\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-060"></span></p>
+<ol start="4" type="1">
+<li>¿Multiplica <span class="math inline">\(T\)</span> todas las longitudes por un mismo factor?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-061"></span></p>
+<ol start="5" type="1">
+<li>¿Qué inclusión de entradas equivale a <span class="math inline">\(f[A]\subseteq B\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-062"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué se recorta <span class="math inline">\(B(x_0,r)\)</span> por <span class="math inline">\(D\)</span> al usarla como ventana de entrada?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-063"></span></p>
+<ol start="7" type="1">
+<li>Para el cuadrado, ¿qué cota certifica la ventana de radio <span class="math inline">\(1/4\)</span> alrededor de <span class="math inline">\(1\)</span> hacia radio <span class="math inline">\(1\)</span> alrededor de su salida?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-012-064"></span></p>
+<ol start="8" type="1">
+<li>¿Es vecindad de cero la preimagen <span class="math inline">\(s^{-1}[B(1,1/4)]=[0,1/4)\)</span>?</li>
+</ol>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html">Capítulo 12</a> · <a href="analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-12-que-hace-una-funcion-microcontroles.html">Soluciones de microcontroles</a></p>
+<p><a href="analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html">← Capítulo 11</a> · <a href="analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html">Capítulo 13 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

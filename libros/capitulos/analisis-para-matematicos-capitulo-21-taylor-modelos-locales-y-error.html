@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 21 — Taylor: modelos locales y error – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#un-polinomio-para-los-datos-de-un-centro" id="toc-un-polinomio-para-los-datos-de-un-centro" class="nav-link active" data-scroll-target="#un-polinomio-para-los-datos-de-un-centro">21.1. Un polinomio para los datos de un centro</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles" id="toc-microcontroles" class="nav-link" data-scroll-target="#microcontroles">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#rolle-se-repite-sin-perder-sus-hipótesis" id="toc-rolle-se-repite-sin-perder-sus-hipótesis" class="nav-link" data-scroll-target="#rolle-se-repite-sin-perder-sus-hipótesis">21.2. Rolle se repite sin perder sus hipótesis</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-1" id="toc-microcontroles-1" class="nav-link" data-scroll-target="#microcontroles-1">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#forzar-el-resto-la-fórmula-de-lagrange" id="toc-forzar-el-resto-la-fórmula-de-lagrange" class="nav-link" data-scroll-target="#forzar-el-resto-la-fórmula-de-lagrange">21.3. Forzar el resto: la fórmula de Lagrange</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-2" id="toc-microcontroles-2" class="nav-link" data-scroll-target="#microcontroles-2">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#un-punto-desconocido-una-cota-verificable" id="toc-un-punto-desconocido-una-cota-verificable" class="nav-link" data-scroll-target="#un-punto-desconocido-una-cota-verificable">21.4. Un punto desconocido, una cota verificable</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-3" id="toc-microcontroles-3" class="nav-link" data-scroll-target="#microcontroles-3">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#peano-lo-que-desaparece-al-cambiar-de-escala" id="toc-peano-lo-que-desaparece-al-cambiar-de-escala" class="nav-link" data-scroll-target="#peano-lo-que-desaparece-al-cambiar-de-escala">21.5. Peano: lo que desaparece al cambiar de escala</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-4" id="toc-microcontroles-4" class="nav-link" data-scroll-target="#microcontroles-4">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#la-primera-derivada-que-no-se-anula" id="toc-la-primera-derivada-que-no-se-anula" class="nav-link" data-scroll-target="#la-primera-derivada-que-no-se-anula">21.6. La primera derivada que no se anula</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-5" id="toc-microcontroles-5" class="nav-link" data-scroll-target="#microcontroles-5">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#aproximantes-con-certificados-racionales" id="toc-aproximantes-con-certificados-racionales" class="nav-link" data-scroll-target="#aproximantes-con-certificados-racionales">21.7. Aproximantes con certificados racionales</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-6" id="toc-microcontroles-6" class="nav-link" data-scroll-target="#microcontroles-6">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#combinar-modelos-y-elegir-la-resolución" id="toc-combinar-modelos-y-elegir-la-resolución" class="nav-link" data-scroll-target="#combinar-modelos-y-elegir-la-resolución">21.8. Combinar modelos y elegir la resolución</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-7" id="toc-microcontroles-7" class="nav-link" data-scroll-target="#microcontroles-7">Microcontroles</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 21 — Taylor: modelos locales y error</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error.html">Capítulo 21</a> · <a href="analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>Una aproximación no queda certificada al escribir sus coeficientes. Este capítulo construye el polinomio central finito, demuestra lo que deja fuera y precisa cómo controlar ese resto. Se distinguen datos centrales, información en un segmento y cotas sobre una región completa.</p>
+<p>C18 aporta diferenciabilidad y reglas; C19 Rolle, Lagrange y Cauchy; C20 bandas y alcance de convexidad. Inducción, sumas finitas, tipos, límites, continuidad y raíces son interfaces heredadas. No se usan integrales, sumas infinitas ni reglas nuevas para potencias reales generales. El polinomio vive en toda la recta, pero el error se evalúa sólo donde la función original existe.</p>
+<section id="un-polinomio-para-los-datos-de-un-centro" class="level2">
+<h2 class="anchored" data-anchor-id="un-polinomio-para-los-datos-de-un-centro">21.1. Un polinomio para los datos de un centro</h2>
+<p><span id="MA-SEC-ANM-01-021-001"></span></p>
+<p>La recta de C18 conserva el valor y la primera derivada de una función en un centro. Si conocemos más derivadas, ¿qué polinomio conserva exactamente esos datos? Primero resolvamos este problema finito; todavía no afirmamos nada sobre el error fuera del centro.</p>
+<p>Fijemos <span class="math inline">\(n\ge0\)</span> y un centro <span class="math inline">\(c\)</span>. Escribimos <span class="math inline">\(f^{(0)}=f\)</span> y <span class="math inline">\(f^{(k+1)}=(f^{(k)})'\)</span> donde esas derivadas existen en el dominio indicado. El factorial se define por <span class="math inline">\(0!=1\)</span> y <span class="math inline">\((k+1)!=(k+1)k!\)</span>. Inducción demuestra su positividad. En fórmulas reales, <span class="math inline">\(k!\)</span> abrevia su copia real positiva mediante la incrustación de naturales; no identificamos silenciosamente los dos tipos. La potencia de exponente cero es la función constante1, también en el centro.</p>
+<p>Busquemos <span class="math inline">\(P(t)=\sum_{k=0}^n a_k(t-c)^k\)</span>. Las reglas de C18 para productos finitos dan, por inducción, que la derivada de orden <span class="math inline">\(j\)</span> del término de grado <span class="math inline">\(k\)</span> es cero si <span class="math inline">\(j&gt;k\)</span>, y es <span class="math inline">\(k!/(k-j)!\,(t-c)^{k-j}\)</span> si <span class="math inline">\(j\le k\)</span>. Al evaluar en <span class="math inline">\(c\)</span>, sólo sobrevive el término <span class="math inline">\(k=j\)</span>. Por tanto</p>
+<p><span class="math display">\[P^{(j)}(c)=j!a_j,\qquad 0\le j\le n.\]</span></p>
+<p>Para imponer <span class="math inline">\(P^{(j)}(c)=f^{(j)}(c)\)</span> no hay elección libre: <span class="math inline">\(a_j=f^{(j)}(c)/j!\)</span>. Queda determinado el <strong>polinomio de Taylor de orden <span class="math inline">\(n\)</span></strong>:</p>
+<p><span class="math display">\[T_{n,c}f(t)=\sum_{k=0}^n\frac{f^{(k)}(c)}{k!}(t-c)^k.\]</span></p>
+<p>Es el único polinomio de grado a lo sumo <span class="math inline">\(n\)</span> que reproduce todos esos datos en el centro. «Orden <span class="math inline">\(n\)</span>» no significa grado exactamente <span class="math inline">\(n\)</span>: el coeficiente superior puede ser cero. Para <span class="math inline">\(n=0\)</span> sólo retenemos el valor; para <span class="math inline">\(n=1\)</span> recuperamos la recta; para <span class="math inline">\(n=2\)</span> aparece <span class="math inline">\(f''(c)(t-c)^2/2\)</span>. La definición usa datos finitos, no infinitas derivadas ni una suma infinita.</p>
+<p>Si <span class="math inline">\(f(t)=t^3\)</span> y <span class="math inline">\(c=1\)</span>, tenemos <span class="math inline">\(f(c)=1\)</span>, <span class="math inline">\(f'(c)=3\)</span> y <span class="math inline">\(f''(c)=6\)</span>. Así <span class="math inline">\(T_{2,1}f(1+h)=1+3h+3h^2\)</span>. La identidad <span class="math inline">\((1+h)^3=1+3h+3h^2+h^3\)</span> muestra en este caso un resto exacto <span class="math inline">\(h^3\)</span>. No hemos probado todavía que todas las funciones tengan un resto semejante.</p>
+<p>La igualdad de datos centrales tampoco determina toda una función. Para un <span class="math inline">\(n\)</span> fijo, los polinomios <span class="math inline">\(P(t)\)</span> y <span class="math inline">\(P(t)+A(t-c)^{n+1}\)</span> tienen los mismos valores derivados de órdenes0 a<span class="math inline">\(n\)</span> en <span class="math inline">\(c\)</span>, para cualquier real <span class="math inline">\(A\)</span>, pero difieren fuera del centro si <span class="math inline">\(A\ne0\)</span>. La unicidad afirmada sólo afecta a polinomios de grado a lo sumo <span class="math inline">\(n\)</span>.</p>
+<div id="fig-anm-c21-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="El cubo centrado en1 tiene T₁=1+3h y T₂=1+3h+3h². El resto de orden2 es h³, no cero fuera del centro. Las identidades finitas prueban estos valores; la coincidencia central no determina una función completa.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c21-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C21/C21-F01.svg" class="img-fluid figure-img" alt="El cubo centrado en1 tiene T₁=1+3h y T₂=1+3h+3h². El resto de orden2 es h³, no cero fuera del centro. Las identidades finitas prueban estos valores; la coincidencia central no determina una función completa.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c21-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: El cubo centrado en1 tiene T₁=1+3h y T₂=1+3h+3h². El resto de orden2 es h³, no cero fuera del centro. Las identidades finitas prueban estos valores; la coincidencia central no determina una función completa.
+</figcaption>
+</figure>
+</div>
+<p>En el resto del capítulo escribiremos <span class="math inline">\(R_{n,c}(x)=f(x)-T_{n,c}f(x)\)</span>. Es una función del dominio de <span class="math inline">\(f\)</span>, mientras el polinomio está definido en toda <span class="math inline">\(\mathbb R\)</span>. Cada comparación se hace en entradas donde la función original existe.</p>
+<section id="microcontroles" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-021-001"></span></p>
+<ol type="1">
+<li>¿Qué datos conserva el polinomio de Taylor de orden <span class="math inline">\(n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-002"></span></p>
+<ol start="2" type="1">
+<li>¿Cuál es el valor de <span class="math inline">\(0!\)</span> y por qué importa?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-003"></span></p>
+<ol start="3" type="1">
+<li>¿Qué significa <span class="math inline">\(k!\)</span> cuando aparece en un cociente real?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-004"></span></p>
+<ol start="4" type="1">
+<li>¿Qué coeficiente corresponde a la derivada de orden <span class="math inline">\(j\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-005"></span></p>
+<ol start="5" type="1">
+<li>¿El orden <span class="math inline">\(n\)</span> obliga a grado exactamente <span class="math inline">\(n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-006"></span></p>
+<ol start="6" type="1">
+<li>¿Dónde está definido el polinomio y dónde el resto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-007"></span></p>
+<ol start="7" type="1">
+<li>¿Qué resto tiene <span class="math inline">\(t^3\)</span> a orden2 y centro1?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-008"></span></p>
+<ol start="8" type="1">
+<li>¿Los datos centrales hasta orden <span class="math inline">\(n\)</span> determinan una función completa?</li>
+</ol>
+</section>
+</section>
+<section id="rolle-se-repite-sin-perder-sus-hipótesis" class="level2">
+<h2 class="anchored" data-anchor-id="rolle-se-repite-sin-perder-sus-hipótesis">21.2. Rolle se repite sin perder sus hipótesis</h2>
+<p><span id="MA-SEC-ANM-01-021-002"></span></p>
+<p>Para convertir coincidencias de derivadas en una identidad del resto necesitamos una herramienta de C19 repetida un número finito de veces. Sea <span class="math inline">\(x\ne c\)</span> y <span class="math inline">\(K=[\min(c,x),\max(c,x)]\)</span>. Supongamos que hay funciones <span class="math inline">\(H_0,\ldots,H_n\)</span> continuas en <span class="math inline">\(K\)</span>, con <span class="math inline">\(H_k'=H_{k+1}\)</span> en su interior para <span class="math inline">\(k&lt;n\)</span>, y que <span class="math inline">\(H_n\)</span> también es derivable en el interior. Exijamos</p>
+<p><span class="math display">\[H_k(c)=0\quad(0\le k\le n),\qquad H_0(x)=0.\]</span></p>
+<p>No exigimos continuidad de <span class="math inline">\(H_n'\)</span> ni su existencia en los bordes.</p>
+<p>Empezamos con <span class="math inline">\(z_0=x\)</span>. Rolle aplicado a <span class="math inline">\(H_0\)</span> entre <span class="math inline">\(c\)</span> y <span class="math inline">\(z_0\)</span> da un <span class="math inline">\(z_1\)</span> estrictamente entre ambos con <span class="math inline">\(H_0'(z_1)=0\)</span>. Si <span class="math inline">\(n\ge1\)</span>, la identidad de la cadena dice <span class="math inline">\(H_1(z_1)=0\)</span>; además <span class="math inline">\(H_1(c)=0\)</span>. Ahora Rolle aplicado a <span class="math inline">\(H_1\)</span> entre <span class="math inline">\(c\)</span> y <span class="math inline">\(z_1\)</span> da <span class="math inline">\(z_2\)</span> estrictamente entre ambos. Repetimos.</p>
+<p>El invariante del paso <span class="math inline">\(k\)</span> es <span class="math inline">\(H_k(c)=H_k(z_k)=0\)</span>, con <span class="math inline">\(z_k\ne c\)</span>; continuidad en el subsegmento y derivabilidad en su interior permiten obtener <span class="math inline">\(z_{k+1}\)</span> con <span class="math inline">\(H_k'(z_{k+1})=0\)</span>. Para <span class="math inline">\(k&lt;n\)</span> se convierte en <span class="math inline">\(H_{k+1}(z_{k+1})=0\)</span> y permite continuar. En el paso final obtenemos</p>
+<p><span class="math display">\[H_n'(z_{n+1})=0,\qquad z_{n+1}\text{ estrictamente entre }c\text{ y }x.\]</span></p>
+<p>Se han usado <span class="math inline">\(n+1\)</span> aplicaciones de Rolle, no <span class="math inline">\(n\)</span>. El caso <span class="math inline">\(n=0\)</span> consiste en una sola. Si <span class="math inline">\(x&lt;c\)</span>, todos los segmentos se ordenan mediante mínimo y máximo; los nuevos puntos siguen acercándose a <span class="math inline">\(c\)</span> por el lado izquierdo. La derivada de una restricción interior coincide con la original, y cada subsegmento mantiene extremos distintos. Si <span class="math inline">\(x=c\)</span>, no hay segmento no degenerado y no se afirma un punto intermedio.</p>
+<p>Cuando una función <span class="math inline">\(H\)</span> tiene derivadas continuas hasta orden <span class="math inline">\(n\)</span> en ese segmento, tomamos <span class="math inline">\(H_k=H^{(k)}\)</span> y leemos la hipótesis como un cero central repetido, más otro cero en <span class="math inline">\(x\)</span>. La continuidad de los primeros miembros es exactamente lo que permite cada Rolle; la derivada final no necesita ser continua.</p>
+<p>Por ejemplo <span class="math inline">\(H(t)=t^3(1-t)\)</span>, con <span class="math inline">\(c=0\)</span> y <span class="math inline">\(x=1\)</span>, cumple <span class="math inline">\(H(0)=H'(0)=H''(0)=0\)</span> y <span class="math inline">\(H(1)=0\)</span>. Una elección es <span class="math inline">\(z_1=3/4\)</span>, <span class="math inline">\(z_2=1/2\)</span> y <span class="math inline">\(z_3=1/4\)</span>: <span class="math inline">\(H'(3/4)=0\)</span>, <span class="math inline">\(H''(1/2)=0\)</span> y <span class="math inline">\(H'''(1/4)=0\)</span>. Cada nuevo punto queda dentro del segmento anterior. Estas coordenadas son particulares de este polinomio; el lema general sólo asegura existencia.</p>
+<div id="fig-anm-c21-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Para H=t³(1−t), con n=2, una cadena válida usa z₁=3/4, z₂=1/2 y z₃=1/4. Cada paso conserva un cero en el centro0 y obtiene el otro en el segmento anterior. Hay n+1=3 aplicaciones; los puntos exactos son particulares del ejemplo.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c21-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C21/C21-F02.svg" class="img-fluid figure-img" alt="Para H=t³(1−t), con n=2, una cadena válida usa z₁=3/4, z₂=1/2 y z₃=1/4. Cada paso conserva un cero en el centro0 y obtiene el otro en el segmento anterior. Hay n+1=3 aplicaciones; los puntos exactos son particulares del ejemplo.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c21-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Para H=t³(1−t), con n=2, una cadena válida usa z₁=3/4, z₂=1/2 y z₃=1/4. Cada paso conserva un cero en el centro0 y obtiene el otro en el segmento anterior. Hay n+1=3 aplicaciones; los puntos exactos son particulares del ejemplo.
+</figcaption>
+</figure>
+</div>
+<p>No se supone una elección simultánea de puntos para todas las entradas o todos los órdenes. Para un <span class="math inline">\(n\)</span> y un <span class="math inline">\(x\)</span> fijados, una inducción finita construye las existencias necesarias. Tampoco se confunde el número de ceros de <span class="math inline">\(H\)</span> con el de sus derivadas: las igualdades centrales de cada miembro suministran un borde reutilizable en cada paso.</p>
+<section id="microcontroles-1" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-1">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-021-009"></span></p>
+<ol type="1">
+<li>¿Qué igualdades centrales se necesitan para Rolle repetido de orden <span class="math inline">\(n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-010"></span></p>
+<ol start="2" type="1">
+<li>¿Cuántas aplicaciones de Rolle produce la última derivada nula?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-011"></span></p>
+<ol start="3" type="1">
+<li>¿Qué invariante permite continuar el paso <span class="math inline">\(k\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-012"></span></p>
+<ol start="4" type="1">
+<li>¿Qué relación enlaza los miembros de la cadena?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-013"></span></p>
+<ol start="5" type="1">
+<li>¿Se pide continuidad de la derivada final?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-014"></span></p>
+<ol start="6" type="1">
+<li>¿Cómo se ordena el segmento si <span class="math inline">\(x&lt;c\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-015"></span></p>
+<ol start="7" type="1">
+<li>¿Qué punto intermedio se afirma si <span class="math inline">\(x=c\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-016"></span></p>
+<ol start="8" type="1">
+<li>¿Se selecciona una familia infinita de testigos?</li>
+</ol>
+</section>
+</section>
+<section id="forzar-el-resto-la-fórmula-de-lagrange" class="level2">
+<h2 class="anchored" data-anchor-id="forzar-el-resto-la-fórmula-de-lagrange">21.3. Forzar el resto: la fórmula de Lagrange</h2>
+<p><span id="MA-SEC-ANM-01-021-003"></span></p>
+<p>Tomemos una función <span class="math inline">\(f\)</span> derivable hasta orden <span class="math inline">\(n+1\)</span> en un intervalo abierto <span class="math inline">\(J\)</span>, y un centro <span class="math inline">\(c\)</span> y una entrada <span class="math inline">\(x\)</span> de <span class="math inline">\(J\)</span>. La existencia de cada derivada hasta orden <span class="math inline">\(n+1\)</span> hace continuas a las funciones <span class="math inline">\(f,\ldots,f^{(n)}\)</span> sobre cada segmento interior. No se supone continuidad de <span class="math inline">\(f^{(n+1)}\)</span>.</p>
+<p>Para <span class="math inline">\(x=c\)</span>, <span class="math inline">\(R_{n,c}(c)=0\)</span> por construcción. Sea ahora <span class="math inline">\(x\ne c\)</span> y fijemos el coeficiente</p>
+<p><span class="math display">\[A=\frac{R_{n,c}(x)}{(x-c)^{n+1}}.\]</span></p>
+<p>El denominador es no nulo. El coeficiente depende de la entrada que acabamos de fijar; no representa un único valor válido para todas las entradas. Definamos en el segmento que une <span class="math inline">\(c\)</span> y <span class="math inline">\(x\)</span></p>
+<p><span class="math display">\[H(t)=f(t)-T_{n,c}f(t)-A(t-c)^{n+1}.\]</span></p>
+<p>La elección de <span class="math inline">\(A\)</span> fuerza <span class="math inline">\(H(x)=0\)</span>. En el centro, la coincidencia de datos de Taylor y el exponente <span class="math inline">\(n+1\)</span> dan <span class="math inline">\(H^{(k)}(c)=0\)</span> para <span class="math inline">\(0\le k\le n\)</span>. Los miembros hasta orden <span class="math inline">\(n\)</span> son continuos sobre el segmento y enlazan sus derivadas. El lema de Rolle repetido produce un <span class="math inline">\(\xi\)</span> estrictamente entre <span class="math inline">\(c\)</span> y <span class="math inline">\(x\)</span> con <span class="math inline">\(H^{(n+1)}(\xi)=0\)</span>.</p>
+<p>La derivada de orden <span class="math inline">\(n+1\)</span> del polinomio de Taylor es cero; la de <span class="math inline">\((t-c)^{n+1}\)</span> es la constante <span class="math inline">\((n+1)!\)</span>. Entonces</p>
+<p><span class="math display">\[0=f^{(n+1)}(\xi)-A(n+1)!.\]</span></p>
+<p>Despejar <span class="math inline">\(A\)</span> y recuperar su definición demuestra la igualdad exacta</p>
+<p><span class="math display">\[f(x)=T_{n,c}f(x)+\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-c)^{n+1}.\]</span></p>
+<p>Es Taylor finito con <strong>resto de Lagrange</strong>. Para <span class="math inline">\(n=0\)</span> recupera el valor medio de C19; para <span class="math inline">\(n=1\)</span> convierte la diferencia respecto de la tangente en una segunda derivada intermedia por <span class="math inline">\((x-c)^2/2\)</span>. El testigo puede depender de <span class="math inline">\(f,n,c,x\)</span> y no tiene por qué ser único o el punto medio. No se lo usa como una constante al variar esos datos.</p>
+<p>La prueba también admite un contrato sobre un segmento cerrado: una cadena dada <span class="math inline">\(f_0,\ldots,f_n\)</span> continua incluyendo los bordes, con <span class="math inline">\(f_k'=f_{k+1}\)</span> en el interior, y <span class="math inline">\(f_n'\)</span> existente en todo el interior. El polinomio usa los valores <span class="math inline">\(f_k(c)\)</span> de esas extensiones continuas; la derivada final sólo se evalúa en <span class="math inline">\(\xi\)</span>. No se presupone un operador de derivación en los bordes. Las identidades para <span class="math inline">\(H_k\)</span> y Rolle son las mismas. Este contrato incluye centros fronterizos y no pide la derivada final en el propio centro.</p>
+<div id="fig-anm-c21-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Para t³ en centro0, entrada1 y orden1, R=1 y A=1. El auxiliar H=t³−t² tiene los ceros centrales requeridos y otro en1. La derivada final H′′=6t−2 se anula en ξ=1/3 y devuelve R=f′′(ξ)/2=1.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c21-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C21/C21-F03.svg" class="img-fluid figure-img" alt="Para t³ en centro0, entrada1 y orden1, R=1 y A=1. El auxiliar H=t³−t² tiene los ceros centrales requeridos y otro en1. La derivada final H′′=6t−2 se anula en ξ=1/3 y devuelve R=f′′(ξ)/2=1.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c21-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Para t³ en centro0, entrada1 y orden1, R=1 y A=1. El auxiliar H=t³−t² tiene los ceros centrales requeridos y otro en1. La derivada final H′′=6t−2 se anula en ξ=1/3 y devuelve R=f′′(ξ)/2=1.
+</figcaption>
+</figure>
+</div>
+<p>Para <span class="math inline">\(f(t)=t^3\)</span>, centro1 y orden2, <span class="math inline">\(f'''=6\)</span> y el resto es <span class="math inline">\(6h^3/3!=h^3\)</span>, coincidente con la expansión exacta de21.1. No hay un punto distinguido: todos los puntos interiores dan el mismo valor de tercera derivada. Para el cuadrado y orden1 ocurre lo mismo con la segunda derivada constante.</p>
+<section id="microcontroles-2" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-2">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-021-017"></span></p>
+<ol type="1">
+<li>¿Qué coeficiente fuerza la anulación del auxiliar en <span class="math inline">\(x\ne c\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-018"></span></p>
+<ol start="2" type="1">
+<li>¿Qué función auxiliar se usa en la prueba de Lagrange?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-019"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué se anulan sus datos centrales hasta orden <span class="math inline">\(n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-020"></span></p>
+<ol start="4" type="1">
+<li>¿Qué igualdad deja el último Rolle?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-021"></span></p>
+<ol start="5" type="1">
+<li>¿Qué posición tiene <span class="math inline">\(\xi\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-022"></span></p>
+<ol start="6" type="1">
+<li>¿De qué datos puede depender el testigo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-023"></span></p>
+<ol start="7" type="1">
+<li>¿Es necesaria continuidad de <span class="math inline">\(f^{(n+1)}\)</span> para la prueba por Rolle?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-024"></span></p>
+<ol start="8" type="1">
+<li>¿Qué se usa como dato central en el contrato cerrado?</li>
+</ol>
+</section>
+</section>
+<section id="un-punto-desconocido-una-cota-verificable" class="level2">
+<h2 class="anchored" data-anchor-id="un-punto-desconocido-una-cota-verificable">21.4. Un punto desconocido, una cota verificable</h2>
+<p><span id="MA-SEC-ANM-01-021-004"></span></p>
+<p>La fórmula exacta contiene un punto desconocido. Para certificar error conviene eliminarlo mediante una cota que controle todas sus ubicaciones posibles. Bajo el contrato anterior, si <span class="math inline">\(|f^{(n+1)}(t)|\le M\)</span> en todo el interior del segmento, con <span class="math inline">\(M\ge0\)</span>, obtenemos</p>
+<p><span class="math display">\[|R_{n,c}(x)|\le\frac{M}{(n+1)!}|x-c|^{n+1}.\]</span></p>
+<p>Para <span class="math inline">\(x=c\)</span> los dos lados son cero; para <span class="math inline">\(x\ne c\)</span> aplicamos la cota en un testigo suministrado por Lagrange. No hace falta que la derivada final alcance un máximo o sea continua. Si <span class="math inline">\(M=0\)</span>, el resto es cero y no se divide por <span class="math inline">\(M\)</span>.</p>
+<p>Cuando la misma <span class="math inline">\(M\)</span> sirve en el interior de <span class="math inline">\([c-\rho,c+\rho]\)</span>, el mismo número <span class="math inline">\(M\rho^{n+1}/(n+1)!\)</span> acota todos los errores de ese segmento. El orden lógico es región, cota universal, entrada y testigo; tomar un máximo sobre puntos desconocidos sin justificarlo no resuelve el problema.</p>
+<p>También hay una forma exacta de Cauchy. En el contrato abierto de21.3, fijemos <span class="math inline">\(x\)</span> y dejemos variar el centro auxiliar <span class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[G(t)=f(x)-\sum_{k=0}^n\frac{f^{(k)}(t)}{k!}(x-t)^k.\]</span></p>
+<p>En el extremo <span class="math inline">\(t=x\)</span>, el término de grado cero da <span class="math inline">\(G(x)=0\)</span>; en <span class="math inline">\(t=c\)</span> tenemos <span class="math inline">\(G(c)=R_{n,c}(x)\)</span>. Al derivar, la parte que deriva <span class="math inline">\(f^{(k)}\)</span> cancela con la que deriva la potencia del término siguiente. Los dos sumatorios finitos dejan</p>
+<p><span class="math display">\[G'(t)=-\frac{f^{(n+1)}(t)}{n!}(x-t)^n.\]</span></p>
+<p>Esta cancelación puede comprobarse término a término; para <span class="math inline">\(n=0\)</span> sólo hay <span class="math inline">\(G'=-f'\)</span>. Lagrange aplicado a <span class="math inline">\(G\)</span> en el segmento, o Cauchy de C19 con la segunda función <span class="math inline">\(t\)</span>, produce un <span class="math inline">\(\eta\)</span> estrictamente interior con</p>
+<p><span class="math display">\[R_{n,c}(x)=\frac{f^{(n+1)}(\eta)}{n!}(x-\eta)^n(x-c).\]</span></p>
+<p>El signo procede de <span class="math inline">\(G(x)-G(c)=-R_{n,c}(x)\)</span> y del signo negativo de <span class="math inline">\(G'\)</span>. Para <span class="math inline">\(n=0\)</span> la potencia vale1, sin un cociente nulo. Como <span class="math inline">\(|x-\eta|\le|x-c|\)</span>, una cota absoluta da <span class="math inline">\(|R|\le M|x-c|^{n+1}/n!\)</span>. Es válida aunque, con una cota constante, suele ser menos ajustada que Lagrange. Las dos formas pueden tener testigos diferentes.</p>
+<p>Si <span class="math inline">\(m\le f^{(n+1)}\le M\)</span>, el coeficiente <span class="math inline">\(R/(x-c)^{n+1}\)</span> de Lagrange está entre <span class="math inline">\(m/(n+1)!\)</span> y <span class="math inline">\(M/(n+1)!\)</span>. Para transformarlo en una banda del resto hay que atender al signo de <span class="math inline">\((x-c)^{n+1}\)</span>. Si es negativo, el orden de las cotas se invierte. Una cota absoluta evita este cambio; una banda firmada conserva información direccional.</p>
+<div id="fig-anm-c21-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Con f=t³, c=0, x=1 y n=1, G=1−3t²+2t³ y G′=−6t(1−t). La secante de G tiene pendiente−1 y dos testigos η=(1±1/√3)/2. Ambos dan R=6η(1−η)=1, distintos del ξ=1/3 de Lagrange.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c21-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C21/C21-F04.svg" class="img-fluid figure-img" alt="Con f=t³, c=0, x=1 y n=1, G=1−3t²+2t³ y G′=−6t(1−t). La secante de G tiene pendiente−1 y dos testigos η=(1±1/√3)/2. Ambos dan R=6η(1−η)=1, distintos del ξ=1/3 de Lagrange.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c21-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Con f=t³, c=0, x=1 y n=1, G=1−3t²+2t³ y G′=−6t(1−t). La secante de G tiene pendiente−1 y dos testigos η=(1±1/√3)/2. Ambos dan R=6η(1−η)=1, distintos del ξ=1/3 de Lagrange.
+</figcaption>
+</figure>
+</div>
+<p>Con <span class="math inline">\(n=1\)</span>, el exponente2 siempre es no negativo y recuperamos las bandas cuadráticas de C20. Si <span class="math inline">\(n=2\)</span> y <span class="math inline">\(f'''\)</span> es positiva, el resto es positivo a la derecha del centro y negativo a su izquierda. «Error pequeño» y «error de signo conocido» son conclusiones diferentes.</p>
+<section id="microcontroles-3" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-3">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-021-025"></span></p>
+<ol type="1">
+<li>¿Qué cota elimina el testigo de Lagrange?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-026"></span></p>
+<ol start="2" type="1">
+<li>¿Qué hacer si <span class="math inline">\(M=0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-027"></span></p>
+<ol start="3" type="1">
+<li>¿Qué número controla todos los errores si <span class="math inline">\(|x-c|\le\rho\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-028"></span></p>
+<ol start="4" type="1">
+<li>¿Qué función permite derivar telescópicamente la forma de Cauchy?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-029"></span></p>
+<ol start="5" type="1">
+<li>¿Cuál es su derivada después de cancelar términos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-030"></span></p>
+<ol start="6" type="1">
+<li>¿Qué forma tiene el resto de Cauchy?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-031"></span></p>
+<ol start="7" type="1">
+<li>¿Los testigos de Lagrange y Cauchy tienen que coincidir?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-032"></span></p>
+<ol start="8" type="1">
+<li>¿Qué ocurre al multiplicar la banda de coeficientes por un incremento elevado negativo?</li>
+</ol>
+</section>
+</section>
+<section id="peano-lo-que-desaparece-al-cambiar-de-escala" class="level2">
+<h2 class="anchored" data-anchor-id="peano-lo-que-desaparece-al-cambiar-de-escala">21.5. Peano: lo que desaparece al cambiar de escala</h2>
+<p><span id="MA-SEC-ANM-01-021-005"></span></p>
+<p>La cota anterior gasta una derivada adicional. Existe una conclusión local bajo menos información: para <span class="math inline">\(n\ge1\)</span>, si <span class="math inline">\(f\)</span> tiene derivadas hasta orden <span class="math inline">\(n-1\)</span> en un intervalo abierto alrededor de <span class="math inline">\(c\)</span>, y la función <span class="math inline">\(f^{(n-1)}\)</span> es derivable en <span class="math inline">\(c\)</span>, entonces</p>
+<p><span class="math display">\[R_{n,c}(c+h)=o(|h|^n)\qquad(h\to0).\]</span></p>
+<p>Para <span class="math inline">\(n=1\)</span> la hipótesis significa solamente que <span class="math inline">\(f\)</span> es derivable en <span class="math inline">\(c\)</span>; no pide derivabilidad en otros centros. Para <span class="math inline">\(n\ge2\)</span> las derivadas inferiores existen en un entorno, pero la de orden <span class="math inline">\(n\)</span> se exige sólo en el centro. El símbolo <span class="math inline">\(o\)</span> abrevia la condición: para cada <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(\delta&gt;0\)</span> tal que</p>
+<p><span class="math display">\[0&lt;|h|&lt;\delta\ \Longrightarrow\ |R_{n,c}(c+h)|&lt;\varepsilon|h|^n.\]</span></p>
+<p>El radio se mantiene dentro del dominio. La forma de <strong>Peano</strong> dice que el error normalizado desaparece; no suministra por sí sola una constante para <span class="math inline">\(|h|^{n+1}\)</span> ni un radio numérico calculable.</p>
+<p>Demostremos por inducción. Para <span class="math inline">\(n=1\)</span> es exactamente la definición de derivada en <span class="math inline">\(c\)</span>, multiplicada por <span class="math inline">\(|h|\)</span>. Para el paso <span class="math inline">\(n\ge2\)</span>, pongamos <span class="math inline">\(H=f-T_{n,c}f\)</span>. El polinomio conserva todos los datos centrales, por lo que <span class="math inline">\(H^{(k)}(c)=0\)</span> para <span class="math inline">\(0\le k\le n\)</span>. Aplicamos la hipótesis inductiva a <span class="math inline">\(H'\)</span> con orden <span class="math inline">\(n-1\)</span>: su polinomio central es cero y</p>
+<p><span class="math display">\[H'(c+u)=o(|u|^{n-1}).\]</span></p>
+<p>Fijada <span class="math inline">\(\varepsilon&gt;0\)</span>, elegimos un radio donde <span class="math inline">\(|H'(c+u)|&lt;n\varepsilon|u|^{n-1}\)</span> para toda entrada perforada. Para <span class="math inline">\(0&lt;|h|\)</span> dentro de ese radio, Cauchy de C19 entre <span class="math inline">\(c\)</span> y <span class="math inline">\(c+h\)</span>, con funciones <span class="math inline">\(H(t)\)</span> y <span class="math inline">\((t-c)^n\)</span>, da un <span class="math inline">\(\xi\)</span> interior:</p>
+<p><span class="math display">\[\frac{H(c+h)}{h^n}=
+\frac{H'(\xi)}{n(\xi-c)^{n-1}}.\]</span></p>
+<p>Ambas funciones son continuas en el segmento y derivables en su interior: para <span class="math inline">\(n\ge2\)</span> se dispone de <span class="math inline">\(H'\)</span> en el entorno. El denominador de la derivada no es cero porque <span class="math inline">\(\xi\ne c\)</span>. El incremento de la potencia es <span class="math inline">\(h^n\ne0\)</span>. La cota inductiva en <span class="math inline">\(\xi\)</span> hace que el valor absoluto del cociente sea menor que <span class="math inline">\(\varepsilon\)</span>. Así termina la inducción sin derivada de orden <span class="math inline">\(n+1\)</span> ni continuidad supuesta de la derivada de orden <span class="math inline">\(n\)</span> en un entorno.</p>
+<p>Para <span class="math inline">\(n=0\)</span>, la afirmación <span class="math inline">\(f(c+h)-f(c)=o(1)\)</span> es continuidad en <span class="math inline">\(c\)</span> y se trata separadamente. Tampoco se deriva un resto pequeño: de <span class="math inline">\(r(h)=o(|h|^n)\)</span> no se puede inferir una fórmula para <span class="math inline">\(r'(h)\)</span> sin hipótesis adicionales.</p>
+<p>Un ejemplo distingue órdenes. Sea <span class="math inline">\(f(h)=h^2\sqrt{|h|}\)</span>. En cero, <span class="math inline">\(f'(0)=f''(0)=0\)</span>; fuera de cero, <span class="math inline">\(f'(h)=(5/2)\operatorname{sgn}(h)|h|^{3/2}\)</span> y <span class="math inline">\(f''(h)=(15/4)\sqrt{|h|}\)</span>. Estas fórmulas se obtienen por producto y derivada de raíz en cada lado; los cocientes centrales verifican los dos valores nulos. Su polinomio de orden2 es cero y</p>
+<p><span class="math display">\[\frac{f(h)}{|h|^2}=\sqrt{|h|}\to0,\qquad
+\frac{f(h)}{|h|^3}=\frac1{\sqrt{|h|}}.\]</span></p>
+<p>El segundo cociente es no acotado cerca de cero. Hay resto de Peano de orden2, pero no una cota <span class="math inline">\(C|h|^3\)</span> con constante finita en un radio. La derivada tercera fuera de cero es no acotada; que existan testigos de Lagrange en segmentos unilaterales no crea una cota uniforme.</p>
+<div id="fig-anm-c21-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Para R=h²√|h|, el cociente por |h|² es √|h| y tiende a cero, mientras el cociente por |h|³ es1/√|h| y no está acotado cerca de cero. Se representan distancias positivas con escala logarítmica y se excluye la entrada0. Las identidades y radios, no el dibujo, prueban ambos comportamientos.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c21-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C21/C21-F05.svg" class="img-fluid figure-img" alt="Para R=h²√|h|, el cociente por |h|² es √|h| y tiende a cero, mientras el cociente por |h|³ es1/√|h| y no está acotado cerca de cero. Se representan distancias positivas con escala logarítmica y se excluye la entrada0. Las identidades y radios, no el dibujo, prueban ambos comportamientos.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c21-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Para R=h²√|h|, el cociente por |h|² es √|h| y tiende a cero, mientras el cociente por |h|³ es1/√|h| y no está acotado cerca de cero. Se representan distancias positivas con escala logarítmica y se excluye la entrada0. Las identidades y radios, no el dibujo, prueban ambos comportamientos.
+</figcaption>
+</figure>
+</div>
+<p>La escala correcta es parte del enunciado: un error que tiende a cero en valor absoluto puede seguir siendo enorme al dividirlo por <span class="math inline">\(|h|^n\)</span>. El zoom muestra una regla normalizada ya demostrada y no sustituye el radio que controla todas las entradas.</p>
+<section id="microcontroles-4" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-4">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-021-033"></span></p>
+<ol type="1">
+<li>¿Qué significa <span class="math inline">\(R(c+h)=o(|h|^n)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-034"></span></p>
+<ol start="2" type="1">
+<li>¿Qué caso de Peano corresponde a<span class="math inline">\(n=1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-035"></span></p>
+<ol start="3" type="1">
+<li>¿Dónde se exige la derivada de orden<span class="math inline">\(n\)</span> en el contrato de Peano?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-036"></span></p>
+<ol start="4" type="1">
+<li>¿Qué herramienta recupera<span class="math inline">\(H\)</span> desde una cota para<span class="math inline">\(H\prime\)</span> en la inducción?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-037"></span></p>
+<ol start="5" type="1">
+<li>¿Peano proporciona una constante para<span class="math inline">\(|h|^{n+1}\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-038"></span></p>
+<ol start="6" type="1">
+<li>¿Qué cociente tiende a cero para<span class="math inline">\(h^2\sqrt{|h|}\)</span> a orden2?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-039"></span></p>
+<ol start="7" type="1">
+<li>¿Por qué ese ejemplo no tiene una cota<span class="math inline">\(C|h|^3\)</span> en un radio?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-040"></span></p>
+<ol start="8" type="1">
+<li>¿Puede derivarse un símbolo<span class="math inline">\(o\)</span> sin hipótesis adicionales?</li>
+</ol>
+</section>
+</section>
+<section id="la-primera-derivada-que-no-se-anula" class="level2">
+<h2 class="anchored" data-anchor-id="la-primera-derivada-que-no-se-anula">21.6. La primera derivada que no se anula</h2>
+<p><span id="MA-SEC-ANM-01-021-006"></span></p>
+<p>Taylor local puede decidir la forma de una función cerca de un centro, incluso cuando las primeras pendientes no distinguen el caso. Supongamos las hipótesis de Peano de orden <span class="math inline">\(m\ge1\)</span>, que <span class="math inline">\(f^{(k)}(c)=0\)</span> para <span class="math inline">\(1\le k&lt;m\)</span>, y que <span class="math inline">\(f^{(m)}(c)\ne0\)</span>. Con <span class="math inline">\(a=f^{(m)}(c)/m!\)</span>,</p>
+<p><span class="math display">\[f(c+h)-f(c)=ah^m+r(h),\qquad r(h)=o(|h|^m).\]</span></p>
+<p>Elegimos un radio donde <span class="math inline">\(|r(h)|&lt;(|a|/2)|h|^m\)</span>. Para entradas no nulas dentro de él, el término principal domina: el error no puede cambiar su signo. Si <span class="math inline">\(m\)</span> es par, <span class="math inline">\(h^m=|h|^m\)</span> en ambos lados. Con <span class="math inline">\(a&gt;0\)</span> hay un mínimo local estricto; con <span class="math inline">\(a&lt;0\)</span>, un máximo local estricto. Si <span class="math inline">\(m\)</span> es impar, el término principal cambia de signo al cambiar el lado y por ello no hay extremo local. Se requieren entradas por ambos lados; el criterio se afirma en un centro interior.</p>
+<p>Este argumento incluye el criterio de segunda derivada en un punto estacionario, pero no necesita que <span class="math inline">\(f''\)</span> sea continua en un entorno. También explica <span class="math inline">\(x^4\)</span> y <span class="math inline">\(x^3\)</span> en cero: el primer orden no nulo es4, positivo y par en el primer caso;3, positivo e impar en el segundo. Las funciones tienen derivada primera nula en cero, pero comportamientos distintos.</p>
+<p>Si todos los datos hasta orden <span class="math inline">\(n\)</span> se anulan, el criterio guarda silencio. Los polinomios <span class="math inline">\(h^{2(n+1)}\)</span>, <span class="math inline">\(-h^{2(n+1)}\)</span> y <span class="math inline">\(h^{2(n+1)+1}\)</span> tienen los mismos datos hasta ese orden, incluidos el valor cero, y respectivamente presentan mínimo, máximo y ausencia de extremo en cero. No se dice que sus primeras derivadas no nulas sean las mismas: precisamente esa información está fuera del paquete de datos fijado.</p>
+<p>La conclusión es local, no global. <span class="math inline">\(q(h)=h^2-h^4\)</span> tiene un mínimo local estricto en cero por el primer término no nulo positivo de orden2. Pero <span class="math inline">\(q(2)=-12&lt;q(0)=0\)</span>, de modo que cero no es un mínimo global. C20 podía pasar de pendiente cero a mínimo global porque añadía convexidad en todo el intervalo. No intercambiamos esa hipótesis con un desarrollo central.</p>
+<p>Para un error de signo conocido también importa la paridad. Si <span class="math inline">\(f^{(n+1)}\)</span> tiene signo positivo en todo el segmento y no es cero en el testigo, el resto de Lagrange tiene el signo de <span class="math inline">\((x-c)^{n+1}\)</span>. En cambio Peano no ofrece un signo del resto; permite controlar su tamaño relativo frente a un término principal no nulo.</p>
+<div id="fig-anm-c21-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En cero, h⁴ tiene primer coeficiente no nulo positivo de orden4 y mínimo estricto; h³ lo tiene de orden3 y cambia de signo. El criterio usa un radio donde el resto no supera la mitad del término principal y exige un centro interior con ambos lados.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c21-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C21/C21-F06.svg" class="img-fluid figure-img" alt="En cero, h⁴ tiene primer coeficiente no nulo positivo de orden4 y mínimo estricto; h³ lo tiene de orden3 y cambia de signo. El criterio usa un radio donde el resto no supera la mitad del término principal y exige un centro interior con ambos lados.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c21-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: En cero, h⁴ tiene primer coeficiente no nulo positivo de orden4 y mínimo estricto; h³ lo tiene de orden3 y cambia de signo. El criterio usa un radio donde el resto no supera la mitad del término principal y exige un centro interior con ambos lados.
+</figcaption>
+</figure>
+</div>
+<p>Cuando el centro es borde, sólo hay un lado admisible y el caso impar puede comportarse como un extremo relativo. La función <span class="math inline">\(x\)</span> en <span class="math inline">\([0,1]\)</span> tiene mínimo en cero. Antes de aplicar un criterio de paridad hay que fijar el dominio y sus entradas admisibles.</p>
+<section id="microcontroles-5" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-5">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-021-041"></span></p>
+<ol type="1">
+<li>¿Qué término decide el criterio de la primera derivada no nula?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-042"></span></p>
+<ol start="2" type="1">
+<li>¿Qué tolerancia evita que el resto cambie el signo principal?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-043"></span></p>
+<ol start="3" type="1">
+<li>¿Qué da un primer orden no nulo par con coeficiente positivo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-044"></span></p>
+<ol start="4" type="1">
+<li>¿Qué da un primer orden no nulo impar?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-045"></span></p>
+<ol start="5" type="1">
+<li>¿Qué concluye el criterio si todas las derivadas disponibles son cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-046"></span></p>
+<ol start="6" type="1">
+<li>¿Un mínimo local de Taylor es automáticamente global?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-047"></span></p>
+<ol start="7" type="1">
+<li>¿Qué cambia al aplicar paridad en una frontera?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-048"></span></p>
+<ol start="8" type="1">
+<li>¿Peano determina por sí solo el signo del resto?</li>
+</ol>
+</section>
+</section>
+<section id="aproximantes-con-certificados-racionales" class="level2">
+<h2 class="anchored" data-anchor-id="aproximantes-con-certificados-racionales">21.7. Aproximantes con certificados racionales</h2>
+<p><span id="MA-SEC-ANM-01-021-007"></span></p>
+<p>Un número escrito en un aproximante no es todavía un certificado. Debemos identificar el dominio de todas las derivadas usadas y una cota válida en el segmento completo.</p>
+<p>Primero tomemos <span class="math inline">\(f(h)=1/(1-h)\)</span> para <span class="math inline">\(h&lt;1\)</span>, centro0. Inducción con la regla del cociente da <span class="math inline">\(f^{(k)}(h)=k!/(1-h)^{k+1}\)</span> y por ello <span class="math inline">\(T_{n,0}f(h)=\sum_{k=0}^n h^k\)</span>. La identidad geométrica finita proporciona un resto más preciso que un testigo:</p>
+<p><span class="math display">\[(1-h)\sum_{k=0}^n h^k=1-h^{n+1},\qquad
+R_{n,0}(h)=\frac{h^{n+1}}{1-h}.\]</span></p>
+<p>Es una identidad de sumas finitas; no se ha usado una serie. En <span class="math inline">\(|h|\le\rho&lt;1\)</span>, <span class="math inline">\(1-h\ge1-\rho&gt;0\)</span> y por tanto <span class="math inline">\(|R|\le\rho^{n+1}/(1-\rho)\)</span>. La distancia a la singularidad es parte de la cota. No vale cruzar <span class="math inline">\(h=1\)</span> ni omitir ese margen.</p>
+<p>Para una raíz, sea <span class="math inline">\(g(h)=\sqrt{1+h}\)</span>, <span class="math inline">\(h&gt;-1\)</span>. C18 da</p>
+<p><span class="math display">\[g'(h)=\frac1{2\sqrt{1+h}},\quad
+g''(h)=-\frac1{4(1+h)^{3/2}},\quad
+g'''(h)=\frac3{8(1+h)^{5/2}}.\]</span></p>
+<p>Aquí <span class="math inline">\((1+h)^{3/2}\)</span> y <span class="math inline">\((1+h)^{5/2}\)</span> abrevian productos de potencias enteras por la raíz positiva; las fórmulas proceden de producto, cociente y cadena, no de una regla nueva para exponentes reales. En cero, el aproximante de orden2 es</p>
+<p><span class="math display">\[T_{2,0}g(h)=1+\frac h2-\frac{h^2}8.\]</span></p>
+<p>Para <span class="math inline">\(|h|\le1/4\)</span>, <span class="math inline">\(1+h\ge3/4\)</span> y <span class="math inline">\(\sqrt{1+h}\ge3/4\)</span>: la raíz de un número al menos3/4 es al menos3/4 por comparación de cuadrados y positividad. Así</p>
+<p><span class="math display">\[0&lt;g'''(h)\le\frac3{8(3/4)^2(3/4)}=\frac89.\]</span></p>
+<p>Lagrange da <span class="math inline">\(|R_2(h)|\le(4/27)|h|^3\)</span>. En <span class="math inline">\(h=1/4\)</span>, el resto es positivo y</p>
+<p><span class="math display">\[\frac{143}{128}&lt;\sqrt{\frac54}\le\frac{143}{128}+\frac1{432}.\]</span></p>
+<p>El primer número es el polinomio evaluado; la cantidad1/432 es un límite superior de error, no una cifra estimada desde una gráfica. La positividad estricta de la tercera derivada y <span class="math inline">\(h&gt;0\)</span> justifican el extremo inferior abierto.</p>
+<p>Podemos cotejar el certificado con un mecanismo algebraico independiente. La diferencia de cuadrados es <span class="math inline">\(5/4-(143/128)^2=31/16384&gt;0\)</span>. Racionalizar da</p>
+<p><span class="math display">\[\sqrt{\frac54}-\frac{143}{128}
+=\frac{31}{16384\left(\sqrt{5/4}+143/128\right)}
+\le\frac{31}{34688}.\]</span></p>
+<p>La última cota usa <span class="math inline">\(\sqrt{5/4}\ge1\)</span>, así el denominador es al menos <span class="math inline">\(16384(271/128)=34688\)</span>. Es más ajustada que1/432. La comparación no invalida Taylor: dos mecanismos pueden certificar la misma cantidad con eficiencias distintas.</p>
+<div id="fig-anm-c21-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Para la raíz, T₂=1+h/2−h²/8 y en |h|≤1/4 vale |R₂|≤(4/27)|h|³. En h=1/4 el aproximante143/128 es inferior a √(5/4); Taylor acota su error por1/432 y racionalización por31/34688. Los extremos izquierdos abiertos indican error estrictamente positivo; no se infiere una coordenada de raíz desde la figura.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c21-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C21/C21-F07.svg" class="img-fluid figure-img" alt="Para la raíz, T₂=1+h/2−h²/8 y en |h|≤1/4 vale |R₂|≤(4/27)|h|³. En h=1/4 el aproximante143/128 es inferior a √(5/4); Taylor acota su error por1/432 y racionalización por31/34688. Los extremos izquierdos abiertos indican error estrictamente positivo; no se infiere una coordenada de raíz desde la figura.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c21-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Para la raíz, T₂=1+h/2−h²/8 y en |h|≤1/4 vale |R₂|≤(4/27)|h|³. En h=1/4 el aproximante143/128 es inferior a √(5/4); Taylor acota su error por1/432 y racionalización por31/34688. Los extremos izquierdos abiertos indican error estrictamente positivo; no se infiere una coordenada de raíz desde la figura.
+</figcaption>
+</figure>
+</div>
+<p>Ni el polinomio central ni unas pocas muestras detectan por sí solos el margen de dominio o el valor máximo posible de una derivada. El certificado reúne aproximante, región, hipótesis y cota; conserva el error como parte de la respuesta.</p>
+<section id="microcontroles-6" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-6">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-021-049"></span></p>
+<ol type="1">
+<li>¿Qué polinomio central tiene<span class="math inline">\(1/(1-h)\)</span> a orden<span class="math inline">\(n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-050"></span></p>
+<ol start="2" type="1">
+<li>¿Cuál es su resto exacto finito?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-051"></span></p>
+<ol start="3" type="1">
+<li>¿Qué margen protege el denominador en<span class="math inline">\(|h|\le\rho&lt;1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-052"></span></p>
+<ol start="4" type="1">
+<li>¿Qué polinomio de orden2 aproxima<span class="math inline">\(\sqrt{1+h}\)</span> en cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-053"></span></p>
+<ol start="5" type="1">
+<li>¿Qué cota racional de tercera derivada sirve en<span class="math inline">\(|h|\le1/4\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-054"></span></p>
+<ol start="6" type="1">
+<li>¿Qué certificado da Taylor para<span class="math inline">\(\sqrt{5/4}\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-055"></span></p>
+<ol start="7" type="1">
+<li>¿Qué diferencia de cuadrados permite un cotejo independiente?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-056"></span></p>
+<ol start="8" type="1">
+<li>¿Una muestra de derivada basta para certificar el error?</li>
+</ol>
+</section>
+</section>
+<section id="combinar-modelos-y-elegir-la-resolución" class="level2">
+<h2 class="anchored" data-anchor-id="combinar-modelos-y-elegir-la-resolución">21.8. Combinar modelos y elegir la resolución</h2>
+<p><span id="MA-SEC-ANM-01-021-008"></span></p>
+<p>Los modelos locales también pueden combinarse. Para un <span class="math inline">\(n\ge1\)</span> fijo y centro0, supongamos <span class="math inline">\(f(h)=P(h)+u(h)\)</span> y <span class="math inline">\(g(h)=Q(h)+v(h)\)</span>, con polinomios de grado a lo sumo<span class="math inline">\(n\)</span> y <span class="math inline">\(u,v=o(|h|^n)\)</span>. La suma tiene modelo <span class="math inline">\(P+Q\)</span> porque la triangular suma los dos errores normalizados.</p>
+<p>Para el producto,</p>
+<p><span class="math display">\[fg=PQ+Pv+Qu+uv.\]</span></p>
+<p>Los polinomios son acotados en un radio por continuidad en cero. Dividir <span class="math inline">\(Pv\)</span> y <span class="math inline">\(Qu\)</span> por <span class="math inline">\(|h|^n\)</span> deja un factor acotado por otro que tiende a cero. Además <span class="math inline">\(v(h)\to0\)</span>, y <span class="math inline">\(|uv|/|h|^n=(|u|/|h|^n)|v|\to0\)</span>. Por tanto el error del producto respecto de <span class="math inline">\(PQ\)</span> es <span class="math inline">\(o(|h|^n)\)</span>. Si <span class="math inline">\(PQ\)</span> tiene términos de grado mayor que<span class="math inline">\(n\)</span>, los eliminamos: su suma finita es <span class="math inline">\(h^{n+1}\)</span> por otro polinomio, y al normalizar por <span class="math inline">\(|h|^n\)</span> tiende a cero. La parte truncada es un modelo del mismo orden, sin derivar el resto.</p>
+<p>La sustitución exige conservar dominio y escala. Por ejemplo</p>
+<p><span class="math display">\[F(h)=\frac1{1-h-h^2}.\]</span></p>
+<p>En <span class="math inline">\(|h|\le1/4\)</span>, el denominador es al menos <span class="math inline">\(1-1/4-1/16=11/16&gt;0\)</span>. Un cálculo exacto da</p>
+<p><span class="math display">\[(1+h+2h^2)(1-h-h^2)=1-3h^3-2h^4,\]</span></p>
+<p>y así</p>
+<p><span class="math display">\[F(h)=1+h+2h^2+\frac{3h^3+2h^4}{1-h-h^2}.\]</span></p>
+<p>El resto queda acotado por <span class="math inline">\((56/11)|h|^3\)</span> en ese segmento. Además <span class="math inline">\(F(0)=1\)</span>, <span class="math inline">\(F'(0)=1\)</span> y <span class="math inline">\(F''(0)=4\)</span>, por cociente y cadena, de modo que el polinomio mostrado es realmente su Taylor de orden2. Sustituir una expresión en un modelo sin comprobar denominadores podría haber perdido precisamente esta garantía.</p>
+<p>Para elegir un grado no basta pensar «más términos, menos error». Se fija primero una región y una tolerancia, y se prueba una cota en función del grado. Para <span class="math inline">\(1/(1-h)\)</span> en <span class="math inline">\(|h|\le1/4\)</span>,21.7 da</p>
+<p><span class="math display">\[|R_n(h)|\le\frac{(1/4)^{n+1}}{3/4}=\frac1{3\cdot4^n}.\]</span></p>
+<p>El orden4 produce1/768, mayor que1/1000; el orden5 produce1/3072, menor. Esta cota uniforme certifica el objetivo1/1000 con orden5. Es además el menor orden que funciona con esta cota: los números decrecen al multiplicar por1/4, y en <span class="math inline">\(h=1/4\)</span> la igualdad del resto hace fallar cada orden hasta4. En esa entrada el polinomio de orden5 vale1365/1024 y su error frente a4/3 es exactamente1/3072.</p>
+<div id="fig-anm-c21-f08" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Para1/(1−h) en |h|≤1/4, el resto finito da cota1/(3·4ⁿ). El orden4 falla la tolerancia1/1000 porque en1/4 su error es1/768; orden5 la satisface con1/3072, que se alcanza allí. El panel izquierdo representa ocho grados finitos y no afirma una expansión infinita.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c21-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C21/C21-F08.svg" class="img-fluid figure-img" alt="Para1/(1−h) en |h|≤1/4, el resto finito da cota1/(3·4ⁿ). El orden4 falla la tolerancia1/1000 porque en1/4 su error es1/768; orden5 la satisface con1/3072, que se alcanza allí. El panel izquierdo representa ocho grados finitos y no afirma una expansión infinita.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c21-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Para1/(1−h) en |h|≤1/4, el resto finito da cota1/(3·4ⁿ). El orden4 falla la tolerancia1/1000 porque en1/4 su error es1/768; orden5 la satisface con1/3072, que se alcanza allí. El panel izquierdo representa ocho grados finitos y no afirma una expansión infinita.
+</figcaption>
+</figure>
+</div>
+<p>Cambiar el centro también cambia todos los datos. Para una función polinómica conocida se puede reexpandir exactamente; para una función general no se trasladan los coeficientes centrales sin nueva información o un control del error de traslado. Aquí cada expansión conserva su centro declarado.</p>
+<p>Finalmente, un paquete finito de derivadas y de valores muestreados no impone una función completa ni un error universal fuera de la región certificada. Si <span class="math inline">\(h_1,\ldots,h_m\)</span> son muestras no nulas y <span class="math inline">\(P\)</span> un modelo central de orden<span class="math inline">\(n\)</span>, los polinomios</p>
+<p><span class="math display">\[P(h)+A\,h^{n+1}\prod_{j=1}^m(h-h_j)^2\]</span></p>
+<p>conservan los datos centrales hasta orden<span class="math inline">\(n\)</span> y los valores en todas las muestras. En otra entrada no nula distinta de ellas, el factor multiplicador es no cero y variar <span class="math inline">\(A\)</span> permite modificar el valor arbitrariamente. El producto vacío, si no hay muestras, vale1. Esta construcción finita muestra el límite de la información disponible.</p>
+<p>El radio que se reduce para un orden fijo y el grado que aumenta en una región fija son controles distintos. Este capítulo demuestra polinomios finitos, residuos y certificados; no declara que una expansión infinita represente a una función. La teoría de sumas infinitas necesitará sus propias condiciones y su propia justificación del resto.</p>
+<section id="microcontroles-7" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-7">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-021-057"></span></p>
+<ol type="1">
+<li>¿Qué errores aparecen al multiplicar<span class="math inline">\(P+u\)</span> por<span class="math inline">\(Q+v\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-058"></span></p>
+<ol start="2" type="1">
+<li>¿Por qué un polinomio de términos de grado mayor que<span class="math inline">\(n\)</span> es<span class="math inline">\(o(|h|^n)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-059"></span></p>
+<ol start="3" type="1">
+<li>¿Qué margen tiene<span class="math inline">\(1-h-h^2\)</span> en<span class="math inline">\(|h|\le1/4\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-060"></span></p>
+<ol start="4" type="1">
+<li>¿Qué Taylor de orden2 tiene<span class="math inline">\(1/(1-h-h^2)\)</span> en cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-061"></span></p>
+<ol start="5" type="1">
+<li>¿Qué orden certifica error menor que<span class="math inline">\(1/1000\)</span> para<span class="math inline">\(1/(1-h)\)</span> en<span class="math inline">\(|h|\le1/4\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-062"></span></p>
+<ol start="6" type="1">
+<li>¿Qué dos procesos no deben confundirse?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-063"></span></p>
+<ol start="7" type="1">
+<li>¿Cómo preservar datos centrales y un número finito de muestras mientras se cambia otra salida?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-021-064"></span></p>
+<ol start="8" type="1">
+<li>¿Qué representación infinita se ha probado en este capítulo?</li>
+</ol>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error.html">Capítulo 21</a> · <a href="analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-microcontroles.html">Soluciones de microcontroles</a></p>
+<p><a href="analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes.html">← Capítulo 20</a> · <a href="analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html">Capítulo 22 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

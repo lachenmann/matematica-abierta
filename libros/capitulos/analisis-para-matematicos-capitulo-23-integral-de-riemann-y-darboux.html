@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 23 — Integral de Riemann y Darboux – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#cotas-de-valores-y-oscilación" id="toc-cotas-de-valores-y-oscilación" class="nav-link active" data-scroll-target="#cotas-de-valores-y-oscilación">23.1. Cotas de valores y oscilación</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles" id="toc-microcontroles" class="nav-link" data-scroll-target="#microcontroles">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#dos-sumas-que-el-refinamiento-sí-ordena" id="toc-dos-sumas-que-el-refinamiento-sí-ordena" class="nav-link" data-scroll-target="#dos-sumas-que-el-refinamiento-sí-ordena">23.2. Dos sumas que el refinamiento sí ordena</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-1" id="toc-microcontroles-1" class="nav-link" data-scroll-target="#microcontroles-1">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#completitud-y-criterio-de-darboux" id="toc-completitud-y-criterio-de-darboux" class="nav-link" data-scroll-target="#completitud-y-criterio-de-darboux">23.3. Completitud y criterio de Darboux</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-2" id="toc-microcontroles-2" class="nav-link" data-scroll-target="#microcontroles-2">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#el-puente-hacia-todas-las-sumas-de-riemann" id="toc-el-puente-hacia-todas-las-sumas-de-riemann" class="nav-link" data-scroll-target="#el-puente-hacia-todas-las-sumas-de-riemann">23.4. El puente hacia todas las sumas de Riemann</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-3" id="toc-microcontroles-3" class="nav-link" data-scroll-target="#microcontroles-3">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#clases-integrables-y-radios-útiles" id="toc-clases-integrables-y-radios-útiles" class="nav-link" data-scroll-target="#clases-integrables-y-radios-útiles">23.5. Clases integrables y radios útiles</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-4" id="toc-microcontroles-4" class="nav-link" data-scroll-target="#microcontroles-4">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#álgebra-de-funciones-e-integrales" id="toc-álgebra-de-funciones-e-integrales" class="nav-link" data-scroll-target="#álgebra-de-funciones-e-integrales">23.6. Álgebra de funciones e integrales</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-5" id="toc-microcontroles-5" class="nav-link" data-scroll-target="#microcontroles-5">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#restringir-pegar-y-orientar" id="toc-restringir-pegar-y-orientar" class="nav-link" data-scroll-target="#restringir-pegar-y-orientar">23.7. Restringir, pegar y orientar</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-6" id="toc-microcontroles-6" class="nav-link" data-scroll-target="#microcontroles-6">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#certificar-un-valor-y-reconocer-el-alcance" id="toc-certificar-un-valor-y-reconocer-el-alcance" class="nav-link" data-scroll-target="#certificar-un-valor-y-reconocer-el-alcance">23.8. Certificar un valor y reconocer el alcance</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-7" id="toc-microcontroles-7" class="nav-link" data-scroll-target="#microcontroles-7">Microcontroles</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 23 — Integral de Riemann y Darboux</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux.html">Capítulo 23</a> · <a href="analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>C22 construyó sumas finitas y un límite que debe controlar toda etiqueta. Ahora construiremos dos envolventes a partir de cotas de valores, demostraremos cuándo coinciden y probaremos que producen exactamente ese límite. La brecha ponderada de oscilaciones será el certificado que conecta ambos métodos.</p>
+<p>C02/C03 orden y completitud, C14 continuidad y C22 particiones/sumas son herramientas centrales. C16/C17 ya cerrados aportan la interfaz de compacidad y escala uniforme sólo para el caso continuo. No usamos antiderivadas ni el teorema fundamental, reservado para C24.</p>
+<section id="cotas-de-valores-y-oscilación" class="level2">
+<h2 class="anchored" data-anchor-id="cotas-de-valores-y-oscilación">23.1. Cotas de valores y oscilación</h2>
+<p><span id="MA-SEC-ANM-01-023-001"></span></p>
+<p>Fijemos <span class="math inline">\(a&lt;b\)</span> y una función <span class="math inline">\(f:[a,b]\to\mathbb R\)</span>. Hasta que se diga otra cosa, suponemos una cota dada <span class="math inline">\(|f(t)|\le B\)</span> con <span class="math inline">\(B\ge0\)</span>, válida para todas las entradas. Para cualquier conjunto no vacío <span class="math inline">\(J\subseteq[a,b]\)</span>, su imagen es no vacía y acotada. Completitud de C03 da los reales</p>
+<p><span class="math display">\[m(f,J)=\inf f[J],\qquad M(f,J)=\sup f[J],\qquad
+\omega(f,J)=M(f,J)-m(f,J)\ge0.\]</span></p>
+<p>La oscilación es una diferencia de cotas extremas, no una derivada ni la diferencia entre dos muestras elegidas. No exigimos que los extremos se alcancen. Si <span class="math inline">\(J\subseteq K\)</span>, la inclusión de imágenes y las propiedades de cotas dan</p>
+<p><span class="math display">\[m(f,K)\le m(f,J)\le M(f,J)\le M(f,K),\qquad
+\omega(f,J)\le\omega(f,K).\]</span></p>
+<p>En efecto, toda cota inferior de <span class="math inline">\(f[K]\)</span> acota <span class="math inline">\(f[J]\)</span>, y toda cota superior de <span class="math inline">\(f[K]\)</span> también; maximalidad del ínfimo y minimalidad del supremo prueban las comparaciones. Se dispone de <span class="math inline">\(-B\le m\le M\le B\)</span>, de modo que <span class="math inline">\(\omega\le2B\)</span>.</p>
+<p>Para <span class="math inline">\(\eta&gt;0\)</span> hay entradas <span class="math inline">\(s,t\in J\)</span> con <span class="math inline">\(f(s)&gt;M-\eta\)</span> y <span class="math inline">\(f(t)&lt;m+\eta\)</span>: de lo contrario <span class="math inline">\(M-\eta\)</span> sería cota superior o <span class="math inline">\(m+\eta\)</span> cota inferior, contradiciendo su carácter extremo. Son testigos para la precisión fijada; no una regla que alcance el supremo.</p>
+<p>Por ejemplo, en <span class="math inline">\([0,1]\)</span> definamos <span class="math inline">\(g(x)=x\)</span> para <span class="math inline">\(0&lt;x&lt;1\)</span> y <span class="math inline">\(g(0)=g(1)=1/2\)</span>. Su ínfimo es0 y su supremo1, ninguno alcanzado. Las cotas son verificables: todo valor está entre0 y1, y entradas positivas arbitrariamente próximas a0 o a1 impiden mejorarlas. La oscilación vale1. Por contraste, para <span class="math inline">\(x^2\)</span> en <span class="math inline">\([u,v]\subseteq[0,1]\)</span>, <span class="math inline">\(m=u^2\)</span>, <span class="math inline">\(M=v^2\)</span> y <span class="math inline">\(\omega=v^2-u^2\)</span>, pues el cuadrado preserva el orden no negativo.</p>
+<div id="fig-anm-c23-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="g(x)=x en(0,1), con g(0)=g(1)=1/2: ínfimo0 y supremo1 no alcanzados. Extremos de curva abiertos; valores nodales cerrados en1/2.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c23-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C23/C23-F01.svg" class="img-fluid figure-img" alt="g(x)=x en(0,1), con g(0)=g(1)=1/2: ínfimo0 y supremo1 no alcanzados. Extremos de curva abiertos; valores nodales cerrados en1/2.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c23-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: g(x)=x en(0,1), con g(0)=g(1)=1/2: ínfimo0 y supremo1 no alcanzados. Extremos de curva abiertos; valores nodales cerrados en1/2.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-023-001"></span></p>
+<ol type="1">
+<li>¿Qué hipótesis permite extremos locales reales?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-002"></span></p>
+<ol start="2" type="1">
+<li>¿La oscilación es una derivada?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-003"></span></p>
+<ol start="3" type="1">
+<li>¿Deben alcanzarse <span class="math inline">\(m\)</span> y <span class="math inline">\(M\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-004"></span></p>
+<ol start="4" type="1">
+<li>¿Qué ocurre al restringir a <span class="math inline">\(J\subseteq K\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-005"></span></p>
+<ol start="5" type="1">
+<li>¿Qué cota da <span class="math inline">\(|f|\le B\)</span> para la oscilación?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-006"></span></p>
+<ol start="6" type="1">
+<li>¿Cómo se obtiene una altura cercana al supremo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-007"></span></p>
+<ol start="7" type="1">
+<li>¿Cuál es la oscilación de <span class="math inline">\(x^2\)</span> en <span class="math inline">\([u,v]\subseteq[0,1]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-008"></span></p>
+<ol start="8" type="1">
+<li>¿Dos muestras determinan la oscilación?</li>
+</ol>
+</section>
+</section>
+<section id="dos-sumas-que-el-refinamiento-sí-ordena" class="level2">
+<h2 class="anchored" data-anchor-id="dos-sumas-que-el-refinamiento-sí-ordena">23.2. Dos sumas que el refinamiento sí ordena</h2>
+<p><span id="MA-SEC-ANM-01-023-002"></span></p>
+<p>Sea <span class="math inline">\(P=(x_0,\ldots,x_n)\)</span> una partición de C22, <span class="math inline">\(I_i=[x_{i-1},x_i]\)</span> y <span class="math inline">\(\Delta_i&gt;0\)</span>. Definimos</p>
+<p><span class="math display">\[L(f,P)=\sum_i m(f,I_i)\Delta_i,\qquad
+U(f,P)=\sum_i M(f,I_i)\Delta_i.\]</span></p>
+<p>Son números reales finitos. Para cualquier familia de etiquetas admisibles,</p>
+<p><span class="math display">\[-B(b-a)\le L(f,P)\le S(f;P,\xi)\le U(f,P)\le B(b-a).\]</span></p>
+<p>Multiplicar <span class="math inline">\(m_i\le f(\xi_i)\le M_i\)</span> por anchuras positivas y sumar prueba el encierro. Restar suma a suma da la identidad fundamental</p>
+<p><span class="math display">\[G(f,P):=U(f,P)-L(f,P)=\sum_i\omega(f,I_i)\Delta_i.\]</span></p>
+<p>La brecha es no negativa. Vale cero exactamente cuando todas las oscilaciones de piezas son cero: cada sumando es no negativo y, si su suma es cero, cada producto es cero; dividir por su anchura positiva fuerza oscilación cero. Sobre piezas cerradas, eso hace constante a <span class="math inline">\(f\)</span> en cada una. Los nodos compartidos igualan las constantes vecinas: brecha cero en alguna partición implica que <span class="math inline">\(f\)</span> es constante en todo <span class="math inline">\([a,b]\)</span>. Por ello integrabilidad no exige una partición de brecha cero.</p>
+<p>Si <span class="math inline">\(P\preceq Q\)</span>, cada pieza hija está contenida en su padre; su ínfimo no es menor y su supremo no es mayor. Las anchuras de las hijas suman la del padre. Multiplicar las comparaciones por esas anchuras y agrupar finitamente prueba</p>
+<p><span class="math display">\[L(f,P)\le L(f,Q)\le U(f,Q)\le U(f,P).\]</span></p>
+<p>Aquí sí existe monotonía, a diferencia de sumas etiquetadas arbitrarias. Para particiones distintas <span class="math inline">\(P,Q\)</span>, su refinamiento común <span class="math inline">\(R\)</span> da <span class="math inline">\(L(f,P)\le L(f,R)\le U(f,R)\le U(f,Q)\)</span>. Toda suma inferior queda bajo toda superior, aunque procedan de cortes incompatibles.</p>
+<p>Para <span class="math inline">\(x^2\)</span> en uniforme de <span class="math inline">\(n\)</span> piezas sobre <span class="math inline">\([0,1]\)</span>, las sumas son las izquierda y derecha calculadas en C22:</p>
+<p><span class="math display">\[L_n=\frac13-\frac1{2n}+\frac1{6n^2},\quad
+U_n=\frac13+\frac1{2n}+\frac1{6n^2},\quad G_n=\frac1n.\]</span></p>
+<p>El encierro usa cotas verdaderas sobre cada pieza, no una colección de muestras sin garantía.</p>
+<div id="fig-anm-c23-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="x² en[0,1]: rectángulos inferiores/superiores con n2 y n4. Las cotas locales son extremos verdaderos; brechas1/2 y1/4. La recta curva es la misma en ambos paneles.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c23-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C23/C23-F02.svg" class="img-fluid figure-img" alt="x² en[0,1]: rectángulos inferiores/superiores con n2 y n4. Las cotas locales son extremos verdaderos; brechas1/2 y1/4. La recta curva es la misma en ambos paneles.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c23-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: x² en[0,1]: rectángulos inferiores/superiores con n2 y n4. Las cotas locales son extremos verdaderos; brechas1/2 y1/4. La recta curva es la misma en ambos paneles.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-1" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-1">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-023-009"></span></p>
+<ol type="1">
+<li>¿Cómo se define <span class="math inline">\(L\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-010"></span></p>
+<ol start="2" type="1">
+<li>¿Cómo se define <span class="math inline">\(U\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-011"></span></p>
+<ol start="3" type="1">
+<li>¿Dónde queda una suma etiquetada?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-012"></span></p>
+<ol start="4" type="1">
+<li>¿Qué expresa la brecha?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-013"></span></p>
+<ol start="5" type="1">
+<li>¿Qué significa brecha cero sobre piezas cerradas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-014"></span></p>
+<ol start="6" type="1">
+<li>¿Qué sumas ordena el refinamiento?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-015"></span></p>
+<ol start="7" type="1">
+<li>¿Cómo se comparan <span class="math inline">\(L(P)\)</span> y <span class="math inline">\(U(Q)\)</span> con cortes distintos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-016"></span></p>
+<ol start="8" type="1">
+<li>¿Cuál es la brecha uniforme de <span class="math inline">\(x^2\)</span> en <span class="math inline">\([0,1]\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="completitud-y-criterio-de-darboux" class="level2">
+<h2 class="anchored" data-anchor-id="completitud-y-criterio-de-darboux">23.3. Completitud y criterio de Darboux</h2>
+<p><span id="MA-SEC-ANM-01-023-003"></span></p>
+<p>Los conjuntos <span class="math inline">\(\mathcal L_f=\{L(f,P):P\text{ partición}\}\)</span> y <span class="math inline">\(\mathcal U_f=\{U(f,P):P\text{ partición}\}\)</span> son imágenes de funciones reales sobre el conjunto de particiones construido en C22. La partición trivial prueba que son no vacíos; las cotas de la sección anterior prueban acotación. Definimos la integral inferior <span class="math inline">\(\ell_f=\sup\mathcal L_f\)</span> y la superior <span class="math inline">\(u_f=\inf\mathcal U_f\)</span>.</p>
+<p>Para toda <span class="math inline">\(P,Q\)</span>,</p>
+<p><span class="math display">\[L(f,P)\le\ell_f\le u_f\le U(f,Q).\]</span></p>
+<p>La desigualdad central merece prueba: cada <span class="math inline">\(U(f,Q)\)</span> acota todas las sumas inferiores, así que <span class="math inline">\(\ell_f\le U(f,Q)\)</span>; al valer para todo <span class="math inline">\(Q\)</span>, <span class="math inline">\(\ell_f\)</span> es cota inferior de <span class="math inline">\(\mathcal U_f\)</span> y no supera su ínfimo. No se postula una partición óptima.</p>
+<p>Llamamos integrable de Darboux a <span class="math inline">\(f\)</span> cuando <span class="math inline">\(\ell_f=u_f\)</span>. Su valor común se escribirá <span class="math inline">\(I_D\)</span>. El <strong>criterio de Darboux</strong> es</p>
+<p><span class="math display">\[\ell_f=u_f\quad\Longleftrightarrow\quad
+\forall\varepsilon&gt;0\ \exists P:\ G(f,P)&lt;\varepsilon.\]</span></p>
+<p>Para la dirección directa, la propiedad del supremo proporciona <span class="math inline">\(P\)</span> con <span class="math inline">\(L(f,P)&gt;\ell_f-\varepsilon/2\)</span>; el ínfimo da <span class="math inline">\(Q\)</span> con <span class="math inline">\(U(f,Q)&lt;u_f+\varepsilon/2\)</span>. Su refinamiento común <span class="math inline">\(R\)</span> tiene brecha menor que <span class="math inline">\(\varepsilon\)</span> cuando los extremos coinciden. Sólo se instancian dos testigos para una tolerancia fijada. Para la inversa, <span class="math inline">\(0\le u_f-\ell_f\le G(f,P)\)</span> para toda <span class="math inline">\(P\)</span>; si la diferencia fuese <span class="math inline">\(d&gt;0\)</span>, pedir brecha menor que <span class="math inline">\(d/2\)</span> sería contradictorio. Por tanto es cero.</p>
+<p>Una partición buena conserva la precisión bajo todo refinamiento. El criterio equivale también a: para cada tolerancia existe <span class="math inline">\(P\)</span> tal que todos sus refinamientos tienen brecha menor que ella; la recíproca usa el refinamiento reflexivo <span class="math inline">\(P\preceq P\)</span>.</p>
+<p>Si <span class="math inline">\(f\)</span> es integrable, <span class="math inline">\(I_D\)</span> y todas las sumas etiquetadas de <span class="math inline">\(P\)</span> están en <span class="math inline">\([L,U]\)</span>, por lo que <span class="math inline">\(|S-I_D|\le G\)</span>. El punto medio numérico <span class="math inline">\(A_P=(L+U)/2\)</span> tiene certificado más fino <span class="math inline">\(|A_P-I_D|\le G/2\)</span>. No afirma que <span class="math inline">\(A_P\)</span> sea una suma etiquetada ni el valor exacto. Para <span class="math inline">\(x^2\)</span>, <span class="math inline">\(G_n=1/n\to0\)</span>, así que el criterio recupera el valor <span class="math inline">\(1/3\)</span> de C22, aunque ninguna partición tenga brecha cero.</p>
+<div id="fig-anm-c23-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En x², los intervalos [L_n,U_n] para n2,4,8,16 se acercan a1/3. Con n4, medio11/32 y media anchura1/8; no se afirma exactitud del medio.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c23-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C23/C23-F03.svg" class="img-fluid figure-img" alt="En x², los intervalos [L_n,U_n] para n2,4,8,16 se acercan a1/3. Con n4, medio11/32 y media anchura1/8; no se afirma exactitud del medio.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c23-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: En x², los intervalos [L_n,U_n] para n2,4,8,16 se acercan a1/3. Con n4, medio11/32 y media anchura1/8; no se afirma exactitud del medio.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-2" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-2">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-023-017"></span></p>
+<ol type="1">
+<li>¿Por qué los conjuntos de sumas son no vacíos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-018"></span></p>
+<ol start="2" type="1">
+<li>¿Qué define la integral inferior?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-019"></span></p>
+<ol start="3" type="1">
+<li>¿Qué define la integral superior?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-020"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué <span class="math inline">\(\ell_f\le u_f\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-021"></span></p>
+<ol start="5" type="1">
+<li>¿Cuál es el criterio de Darboux?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-022"></span></p>
+<ol start="6" type="1">
+<li>¿Cómo se aproxima a ambos extremos a la vez?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-023"></span></p>
+<ol start="7" type="1">
+<li>¿Una partición buena conserva su precisión al refinar?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-024"></span></p>
+<ol start="8" type="1">
+<li>¿Qué error certifica <span class="math inline">\((L+U)/2\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="el-puente-hacia-todas-las-sumas-de-riemann" class="level2">
+<h2 class="anchored" data-anchor-id="el-puente-hacia-todas-las-sumas-de-riemann">23.4. El puente hacia todas las sumas de Riemann</h2>
+<p><span id="MA-SEC-ANM-01-023-004"></span></p>
+<p>C22 definió Riemann por un real <span class="math inline">\(I_R\)</span> y el contrato <span class="math inline">\(\forall\varepsilon&gt;0\exists\delta&gt;0\forall(P,\xi)\)</span>, malla menor que <span class="math inline">\(\delta\)</span> implica <span class="math inline">\(|S-I_R|&lt;\varepsilon\)</span>. Demostraremos su equivalencia con Darboux, con igualdad de valores.</p>
+<p>Primero, ese contrato obliga acotación aun si no se añadió como hipótesis. Pedimos tolerancia1 y fijamos una uniforme <span class="math inline">\(P\)</span> de malla menor que el radio; elegimos etiquetas medias. Para cada pieza <span class="math inline">\(i\)</span>, dejamos todas las otras etiquetas fijas y variamos <span class="math inline">\(t\in I_i\)</span>. La suma tiene forma <span class="math inline">\(f(t)\Delta_i+C_i\)</span> y queda entre <span class="math inline">\(I_R-1\)</span> e <span class="math inline">\(I_R+1\)</span>. Así <span class="math inline">\(|f(t)|\le(|I_R|+1+|C_i|)/\Delta_i\)</span>. Las anchuras son positivas y hay sólo finitísimas cotas; su máximo acota <span class="math inline">\(f\)</span> en el intervalo cubierto por las piezas.</p>
+<p>Para una partición fija y <span class="math inline">\(\eta&gt;0\)</span>, hay etiquetas <span class="math inline">\(\xi^+\)</span> y <span class="math inline">\(\xi^-\)</span> con</p>
+<p><span class="math display">\[U(f,P)-\eta&lt;S(f;P,\xi^+)\le U(f,P),\quad
+L(f,P)\le S(f;P,\xi^-)&lt;L(f,P)+\eta.\]</span></p>
+<p>En cada pieza aproximamos supremo o ínfimo con error menor que <span class="math inline">\(\eta/(b-a)\)</span>; sumar los errores ponderados por anchuras da menos que <span class="math inline">\(\eta\)</span>. La elección de la familia finita se justifica por inducción en sus índices: añadir un testigo existencial al prefijo. No se necesitan extremos alcanzados ni elección para una familia infinita.</p>
+<p>Si existe <span class="math inline">\(I_R\)</span>, pedimos error <span class="math inline">\(\varepsilon/4\)</span> y fijamos una uniforme que cumpla el radio. El lema con <span class="math inline">\(\eta=\varepsilon/4\)</span> da <span class="math inline">\(U&lt;I_R+\varepsilon/2\)</span> y <span class="math inline">\(L&gt;I_R-\varepsilon/2\)</span>, luego <span class="math inline">\(G&lt;\varepsilon\)</span>. Darboux existe y su valor queda entre esos extremos para cada tolerancia; si difería de <span class="math inline">\(I_R\)</span>, elegir una tolerancia menor que la distancia contradice ese encierro. Por tanto <span class="math inline">\(I_D=I_R\)</span>.</p>
+<p>La vuelta requiere controlar particiones que no refinan la buena. Fijemos <span class="math inline">\(P_*\)</span> con brecha menor que <span class="math inline">\(\varepsilon/2\)</span>, y sea <span class="math inline">\(q\)</span> su número de nodos interiores. Para cualquier <span class="math inline">\(Q\)</span>, formamos <span class="math inline">\(R=Q\cup P_*\)</span>. Sólo cambian las piezas de <span class="math inline">\(Q\)</span> cuyo interior contiene algún nodo interior de <span class="math inline">\(P_*\)</span>; hay a lo sumo <span class="math inline">\(q\)</span>, pues los interiores son disjuntos. En cada pieza modificada, la suma superior puede bajar como máximo <span class="math inline">\(2B\)</span> veces su anchura: tanto altura antigua como alturas hijas están en <span class="math inline">\([-B,B]\)</span> y las anchuras hijas suman la antigua. El aumento inferior tiene la misma cota. En las demás piezas no cambia nada. Sumando,</p>
+<p><span class="math display">\[G(f,Q)\le G(f,R)+4Bq\|Q\|
+\le G(f,P_*)+4Bq\|Q\|.\]</span></p>
+<p>Si <span class="math inline">\(Bq&gt;0\)</span>, tomamos <span class="math inline">\(\delta=\varepsilon/(8Bq)\)</span>. Malla menor da brecha menor que <span class="math inline">\(\varepsilon\)</span>, y el encierro común de <span class="math inline">\(S\)</span> e <span class="math inline">\(I_D\)</span> prueba el contrato de Riemann. Si <span class="math inline">\(Bq=0\)</span>, el segundo término es cero y cualquier radio positivo sirve: no se divide por cero. Queda además demostrado que, para una función acotada integrable, todas las particiones de malla suficientemente pequeña tienen brecha pequeña. Conservar los cortes y reducir la malla son rutas distintas, conectadas por este conteo finito.</p>
+<div id="fig-anm-c23-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="P*=(0,1/2,1), Q=(0,2/5,7/10,1). Sólo la pieza[2/5,7/10] de Q contiene el corte1/2 en su interior. R es la unión; q1 y malla Q2/5 controlan el coste por4Bq·malla.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c23-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C23/C23-F04.svg" class="img-fluid figure-img" alt="P*=(0,1/2,1), Q=(0,2/5,7/10,1). Sólo la pieza[2/5,7/10] de Q contiene el corte1/2 en su interior. R es la unión; q1 y malla Q2/5 controlan el coste por4Bq·malla.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c23-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: P*=(0,1/2,1), Q=(0,2/5,7/10,1). Sólo la pieza[2/5,7/10] de Q contiene el corte1/2 en su interior. R es la unión; q1 y malla Q2/5 controlan el coste por4Bq·malla.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-3" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-3">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-023-025"></span></p>
+<ol type="1">
+<li>¿El contrato de Riemann obliga acotación?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-026"></span></p>
+<ol start="2" type="1">
+<li>¿Se necesitan máximos alcanzados para aproximar <span class="math inline">\(U\)</span> con etiquetas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-027"></span></p>
+<ol start="3" type="1">
+<li>¿Una familia finita de testigos exige elección infinita?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-028"></span></p>
+<ol start="4" type="1">
+<li>¿Qué prueba Riemann⇒Darboux?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-029"></span></p>
+<ol start="5" type="1">
+<li>¿Por qué no basta refinar sólo la partición buena?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-030"></span></p>
+<ol start="6" type="1">
+<li>¿Qué cuenta <span class="math inline">\(q\)</span> en el puente inverso?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-031"></span></p>
+<ol start="7" type="1">
+<li>¿Qué cota conecta las brechas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-032"></span></p>
+<ol start="8" type="1">
+<li>¿Qué se hace si <span class="math inline">\(Bq=0\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="clases-integrables-y-radios-útiles" class="level2">
+<h2 class="anchored" data-anchor-id="clases-integrables-y-radios-útiles">23.5. Clases integrables y radios útiles</h2>
+<p><span id="MA-SEC-ANM-01-023-005"></span></p>
+<p>Una función no decreciente en <span class="math inline">\([a,b]\)</span> está acotada entre sus valores extremos. En cada pieza, <span class="math inline">\(m_i=f(x_{i-1})\)</span>, <span class="math inline">\(M_i=f(x_i)\)</span>, de donde</p>
+<p><span class="math display">\[G(f,P)=\sum_i(f(x_i)-f(x_{i-1}))\Delta_i
+\le\|P\|(f(b)-f(a)).\]</span></p>
+<p>Las diferencias son no negativas y su suma telescopa. Uniformes de malla pequeña y el criterio prueban integrabilidad, sin continuidad. Si la diferencia extrema es cero, la función es constante y no se divide por ella. Para funciones no crecientes se aplica lo anterior a <span class="math inline">\(-f\)</span>, o se invierten los extremos; la cota es <span class="math inline">\(\|P\||f(b)-f(a)|\)</span>.</p>
+<p>Si <span class="math inline">\(f\)</span> es Lipschitz con constante <span class="math inline">\(L\)</span>, la diferencia de cualesquiera valores en una pieza es menor o igual que <span class="math inline">\(L\Delta_i\)</span>. Esto implica <span class="math inline">\(M_i-m_i\le L\Delta_i\)</span>: para todo <span class="math inline">\(s,t\)</span>, <span class="math inline">\(f(s)\le f(t)+L\Delta_i\)</span>; tomar primero supremo en <span class="math inline">\(s\)</span> y luego ínfimo en <span class="math inline">\(t\)</span> conserva la cota. Así <span class="math inline">\(G\le L\|P\|(b-a)\)</span> y obtenemos integrabilidad y un radio explícito si <span class="math inline">\(L&gt;0\)</span>.</p>
+<p>Toda función continua en <span class="math inline">\([a,b]\)</span> es integrable. Precisemos la herramienta heredada: C16 da compacidad del intervalo cerrado y subcubrimientos finitos; C17 conecta esa compacidad con una escala uniforme. Reconstruimos el mecanismo que necesitamos sin selección infinita. Para tolerancia1, consideramos todos los pares <span class="math inline">\((c,r)\)</span> con <span class="math inline">\(c\in[a,b]\)</span>, <span class="math inline">\(r&gt;0\)</span> y <span class="math inline">\(|f(y)-f(c)|&lt;1\)</span> cuando <span class="math inline">\(y\)</span> está en el dominio y <span class="math inline">\(|y-c|&lt;r\)</span>. Sus bolas de radio <span class="math inline">\(r/2\)</span> cubren el intervalo por continuidad. Un subcubrimiento finito da cota <span class="math inline">\(\max_j(|f(c_j)|+1)\)</span>.</p>
+<p>Para <span class="math inline">\(\eta&gt;0\)</span>, repetimos con error <span class="math inline">\(\eta/2\)</span> y bolas interiores de radio <span class="math inline">\(r/2\)</span>. Un subcubrimiento finito proporciona <span class="math inline">\(\delta=\min_j r_j/2&gt;0\)</span>. Si <span class="math inline">\(|s-t|&lt;\delta\)</span>, elegimos una de esas bolas que contiene <span class="math inline">\(s\)</span>; tanto <span class="math inline">\(s\)</span> como <span class="math inline">\(t\)</span> están a distancia menor que <span class="math inline">\(r_j\)</span> de su centro, y triangular da <span class="math inline">\(|f(s)-f(t)|&lt;\eta\)</span>. Si una pieza mide menos que <span class="math inline">\(\delta\)</span>, todos sus valores difieren menos que <span class="math inline">\(\eta\)</span> y su oscilación es a lo sumo <span class="math inline">\(\eta\)</span>. Pedir <span class="math inline">\(\eta=\varepsilon/(2(b-a))\)</span> produce <span class="math inline">\(G\le\eta(b-a)=\varepsilon/2&lt;\varepsilon\)</span> en cualquier partición de esa malla. No se supone que los supremos se alcancen; el margen absorbe la desigualdad no estricta al tomarlos.</p>
+<p>C22 ya probó integrabilidad de escalones y estabilidad por modificaciones finitas; la equivalencia les asigna también el mismo valor de Darboux. Continuidad es suficiente, no necesaria. Un salto monotónico o un valor aislado puede ser integrable. La continuidad local sola sobre un intervalo abierto no suministra la compacidad ni la acotación usadas aquí.</p>
+<div id="fig-anm-c23-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="h=0 para x<1/2 y h=1 para x≥1/2 es monótona con salto. En uniformes pares su brecha1/n tiende a0, controlada por malla, sin continuidad.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c23-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C23/C23-F05.svg" class="img-fluid figure-img" alt="h=0 para x<1/2 y h=1 para x≥1/2 es monótona con salto. En uniformes pares su brecha1/n tiende a0, controlada por malla, sin continuidad.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c23-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: h=0 para x&lt;1/2 y h=1 para x≥1/2 es monótona con salto. En uniformes pares su brecha1/n tiende a0, controlada por malla, sin continuidad.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-4" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-4">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-023-033"></span></p>
+<ol type="1">
+<li>¿Por qué una monótona en un cerrado está acotada?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-034"></span></p>
+<ol start="2" type="1">
+<li>¿Qué cota de brecha tiene una no decreciente?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-035"></span></p>
+<ol start="3" type="1">
+<li>¿Qué cota da Lipschitz L?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-036"></span></p>
+<ol start="4" type="1">
+<li>¿Qué herramienta adicional usa el caso continuo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-037"></span></p>
+<ol start="5" type="1">
+<li>¿Por qué continuidad en el cerrado da cota global?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-038"></span></p>
+<ol start="6" type="1">
+<li>¿Cómo se fabrica un radio uniforme?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-039"></span></p>
+<ol start="7" type="1">
+<li>¿Por qué se pide η=ε/(2(b−a))?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-040"></span></p>
+<ol start="8" type="1">
+<li>¿La continuidad es necesaria para integrar?</li>
+</ol>
+</section>
+</section>
+<section id="álgebra-de-funciones-e-integrales" class="level2">
+<h2 class="anchored" data-anchor-id="álgebra-de-funciones-e-integrales">23.6. Álgebra de funciones e integrales</h2>
+<p><span id="MA-SEC-ANM-01-023-006"></span></p>
+<p>Para funciones acotadas, comparar todos los pares de valores da</p>
+<p><span class="math display">\[\omega(f+g,J)\le\omega(f,J)+\omega(g,J),\qquad
+\omega(\alpha f,J)=|\alpha|\omega(f,J).\]</span></p>
+<p>La primera sigue porque <span class="math inline">\((f+g)(s)-(f+g)(t)\)</span> está bajo la suma de las dos oscilaciones; tomar los extremos justifica la cota. Para <span class="math inline">\(\alpha&lt;0\)</span>, supremo e ínfimo intercambian su papel, de donde el valor absoluto; para <span class="math inline">\(\alpha=0\)</span> ambos son cero. También <span class="math inline">\(||f(s)|-|f(t)||\le|f(s)-f(t)|\)</span>, por lo que <span class="math inline">\(\omega(|f|,J)\le\omega(f,J)\)</span>.</p>
+<p>Si <span class="math inline">\(|f|\le B_f\)</span>, <span class="math inline">\(|g|\le B_g\)</span>, la identidad</p>
+<p><span class="math display">\[f(s)g(s)-f(t)g(t)=f(s)(g(s)-g(t))+g(t)(f(s)-f(t))\]</span></p>
+<p>da <span class="math inline">\(\omega(fg,J)\le B_f\omega(g,J)+B_g\omega(f,J)\)</span>. No se multiplica una integral por otra: es una cota local del producto de funciones.</p>
+<p>Si <span class="math inline">\(f,g\)</span> son integrables, elegimos particiones con brechas tan pequeñas como se requiera para cada una y las llevamos a un refinamiento común. Las desigualdades anteriores producen brechas arbitrariamente pequeñas para sumas, múltiplos, valor absoluto y producto. Por ejemplo, para producto basta pedir a ambas brecha menor que <span class="math inline">\(\varepsilon/(B_f+B_g+1)\)</span>: el resultado es menor que <span class="math inline">\(\varepsilon\)</span>, incluso si alguna constante es cero.</p>
+<p>Los valores de sumas y múltiplos se calculan con la equivalencia de Riemann y la identidad finita de C22. Para <span class="math inline">\(h=\alpha f+\beta g\)</span>, pedimos a ambos errores menores que <span class="math inline">\(\varepsilon/(|\alpha|+|\beta|+1)\)</span> y tomamos el menor de sus radios. Triangular demuestra que <span class="math inline">\(S(h)\)</span> se acerca a <span class="math inline">\(\alpha I_f+\beta I_g\)</span> con error menor que <span class="math inline">\(\varepsilon\)</span>; unicidad identifica el valor. Es linealidad de la integral, no una regla de primitivas.</p>
+<p>Si <span class="math inline">\(f\le g\)</span>, entonces <span class="math inline">\(I_f\le I_g\)</span>: de lo contrario su diferencia <span class="math inline">\(d&gt;0\)</span> y una misma partición fina darían, con errores <span class="math inline">\(d/3\)</span>, <span class="math inline">\(S(f)&gt;S(g)\)</span>, contradiciendo el orden de sumas con las mismas etiquetas. Como <span class="math inline">\(-|f|\le f\le|f|\)</span>, el orden y la linealidad dan <span class="math inline">\(|I_f|\le I_{|f|}\)</span>. Generalmente no hay igualdad. Para <span class="math inline">\(f(x)=2x-1\)</span> en <span class="math inline">\([0,1]\)</span>, C22 da <span class="math inline">\(I_f=0\)</span>; dividir en <span class="math inline">\(1/2\)</span> y sumar dos triángulos mediante las fórmulas afines que justificaremos en la sección siguiente da <span class="math inline">\(I_{|f|}=1/2\)</span>. El producto tampoco tiene integral <span class="math inline">\(I_f I_g\)</span>: para <span class="math inline">\(f=g=x\)</span>, <span class="math inline">\(I_{x^2}=1/3\)</span> frente a <span class="math inline">\(I_x^2=1/4\)</span>.</p>
+<div id="fig-anm-c23-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="f=2x−1 tiene integral firmada0 y valor absoluto integral1/2. En el panel derecho, x² tiene integral1/3 y el cuadrado de la integral de x es1/4: el producto de funciones no da producto de integrales.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c23-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C23/C23-F06.svg" class="img-fluid figure-img" alt="f=2x−1 tiene integral firmada0 y valor absoluto integral1/2. En el panel derecho, x² tiene integral1/3 y el cuadrado de la integral de x es1/4: el producto de funciones no da producto de integrales.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c23-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: f=2x−1 tiene integral firmada0 y valor absoluto integral1/2. En el panel derecho, x² tiene integral1/3 y el cuadrado de la integral de x es1/4: el producto de funciones no da producto de integrales.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-5" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-5">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-023-041"></span></p>
+<ol type="1">
+<li>¿Qué cota tiene la oscilación de una suma?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-042"></span></p>
+<ol start="2" type="1">
+<li>¿Qué sucede con un múltiplo negativo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-043"></span></p>
+<ol start="3" type="1">
+<li>¿Qué controla el valor absoluto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-044"></span></p>
+<ol start="4" type="1">
+<li>¿Qué cota controla un producto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-045"></span></p>
+<ol start="5" type="1">
+<li>¿Por qué se necesita un refinamiento común en álgebra?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-046"></span></p>
+<ol start="6" type="1">
+<li>¿Cómo se identifica el valor de una combinación lineal?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-047"></span></p>
+<ol start="7" type="1">
+<li>¿Siempre <span class="math inline">\(I_{fg}=I_f I_g\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-048"></span></p>
+<ol start="8" type="1">
+<li>¿Qué desigualdad integral da el valor absoluto?</li>
+</ol>
+</section>
+</section>
+<section id="restringir-pegar-y-orientar" class="level2">
+<h2 class="anchored" data-anchor-id="restringir-pegar-y-orientar">23.7. Restringir, pegar y orientar</h2>
+<p><span id="MA-SEC-ANM-01-023-007"></span></p>
+<p>Sea <span class="math inline">\(a&lt;c&lt;b\)</span> y <span class="math inline">\(f\)</span> acotada. Si es integrable en <span class="math inline">\([a,b]\)</span>, también lo es en cada subintervalo. Dada una partición de brecha pequeña, insertamos <span class="math inline">\(c\)</span>: la brecha no aumenta y se descompone exactamente en las dos brechas de las particiones restringidas. Como ambas son no negativas, cada una es menor que la tolerancia original. El criterio prueba las dos integrabilidades.</p>
+<p>Recíprocamente, si las restricciones son integrables, para cada tolerancia tomamos particiones de ambas con brechas menores que <span class="math inline">\(\varepsilon/2\)</span>. Concatenarlas en el nodo común <span class="math inline">\(c\)</span> da una partición de <span class="math inline">\([a,b]\)</span> cuya brecha es la suma, menor que <span class="math inline">\(\varepsilon\)</span>. Aquí el valor de <span class="math inline">\(f(c)\)</span> es uno y el mismo en ambas restricciones; no se pegan dos valores incompatibles. Así <span class="math inline">\(f\)</span> es integrable en todo el intervalo.</p>
+<p>La aditividad del valor requiere también prueba. Elijamos particiones en ambos lados con brechas menores que <span class="math inline">\(\varepsilon/4\)</span> y cualquier familia explícita de etiquetas en ellas. Sus sumas se concatenan exactamente: <span class="math inline">\(S_{a,b}=S_{a,c}+S_{c,b}\)</span>. Las tres integrales quedan a distancia menor que <span class="math inline">\(\varepsilon/4,\varepsilon/4,\varepsilon/2\)</span>, respectivamente, de esas sumas, pues la brecha completa es menor que <span class="math inline">\(\varepsilon/2\)</span>. Triangular da</p>
+<p><span class="math display">\[\left|I_{a,b}-(I_{a,c}+I_{c,b})\right|&lt;\varepsilon.\]</span></p>
+<p>Para todo <span class="math inline">\(\varepsilon\)</span> implica igualdad. Por inducción se extiende a finitísimas piezas; no una aditividad numerable sin nuevas hipótesis.</p>
+<p>Con ello, <span class="math inline">\(|2x-1|\)</span> se integra como <span class="math inline">\(1-2x\)</span> a la izquierda de <span class="math inline">\(1/2\)</span> y <span class="math inline">\(2x-1\)</span> a la derecha. La fórmula afín de C22 da <span class="math inline">\(1/4\)</span> en cada mitad, total <span class="math inline">\(1/2\)</span>. Un único punto no aporta una anchura positiva: C22 prueba que cambiar finitos valores conserva integral; el puente de este capítulo lo traslada a Darboux, aun cuando sus sumas para una partición fija cambien.</p>
+<p>Ahora declaramos convenciones separadas: <span class="math inline">\(\int_a^a f=0\)</span> y <span class="math inline">\(\int_b^a f=-\int_a^b f\)</span> cuando la integral sobre el intervalo ordenado existe. No son particiones con anchuras negativas ni una división por longitud cero. La aditividad se extiende a cualquier orden de tres extremos cuando existe integral en el intervalo que los contiene: se ordenan los extremos, se aplica la igualdad positiva demostrada y se transponen términos con estas convenciones.</p>
+<div id="fig-anm-c23-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="|2x−1| se acumula con1/4 en cada mitad, total1/2. Orientación inversa da−1/2 por convención posterior, sin piezas de anchura negativa.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c23-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C23/C23-F07.svg" class="img-fluid figure-img" alt="|2x−1| se acumula con1/4 en cada mitad, total1/2. Orientación inversa da−1/2 por convención posterior, sin piezas de anchura negativa.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c23-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: |2x−1| se acumula con1/4 en cada mitad, total1/2. Orientación inversa da−1/2 por convención posterior, sin piezas de anchura negativa.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-6" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-6">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-023-049"></span></p>
+<ol type="1">
+<li>¿Cómo se restringe una función integrable?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-050"></span></p>
+<ol start="2" type="1">
+<li>¿Cómo se pegan dos restricciones integrables?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-051"></span></p>
+<ol start="3" type="1">
+<li>¿Qué ocurre con el valor del nodo común?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-052"></span></p>
+<ol start="4" type="1">
+<li>¿Cómo se prueba aditividad del valor?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-053"></span></p>
+<ol start="5" type="1">
+<li>¿Se probó aditividad numerable?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-054"></span></p>
+<ol start="6" type="1">
+<li>¿Cambiar valores en finitos puntos conserva la integral?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-055"></span></p>
+<ol start="7" type="1">
+<li>¿Qué significa orientación inversa?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-056"></span></p>
+<ol start="8" type="1">
+<li>¿Qué vale el intervalo degenerado?</li>
+</ol>
+</section>
+</section>
+<section id="certificar-un-valor-y-reconocer-el-alcance" class="level2">
+<h2 class="anchored" data-anchor-id="certificar-un-valor-y-reconocer-el-alcance">23.8. Certificar un valor y reconocer el alcance</h2>
+<p><span id="MA-SEC-ANM-01-023-008"></span></p>
+<p>Las cotas de Darboux producen un certificado numérico cuando se conocen cotas locales universales. Si no calculamos los extremos exactos, pero tenemos <span class="math inline">\(a_i\le f(t)\le b_i\)</span> para todo <span class="math inline">\(t\in I_i\)</span>, entonces</p>
+<p><span class="math display">\[\sum_i a_i\Delta_i\le L(f,P)\le I_f\le U(f,P)\le\sum_i b_i\Delta_i\]</span></p>
+<p>para una función cuya integrabilidad se haya demostrado. La anchura del intervalo exterior es un error certificado; una sola pareja de cotas estrechas no prueba integrabilidad para todas las tolerancias. Si se producen tales brechas exteriores arbitrariamente pequeñas, el criterio sí la prueba.</p>
+<p>Para <span class="math inline">\(x^2\)</span> en <span class="math inline">\([0,1]\)</span>, <span class="math inline">\(n=4\)</span> uniforme da <span class="math inline">\([7/32,15/32]\)</span>. Su punto medio es <span class="math inline">\(11/32\)</span> y su certificado de error es <span class="math inline">\(1/8\)</span>; el error real respecto de <span class="math inline">\(1/3\)</span> es <span class="math inline">\(1/96\)</span>, menor que esa cota. La precisión garantizada por el punto medio de las cotas para uniforme general es <span class="math inline">\(1/(2n)\)</span>; para error menor que <span class="math inline">\(1/100\)</span> basta <span class="math inline">\(n&gt;50\)</span>. Este certificado es de ese aproximante numérico, no de toda suma etiquetada, que con la misma partición tiene error a lo sumo <span class="math inline">\(1/n\)</span>.</p>
+<p>Un valor aislado separa integrabilidad de exactitud finita. Sea <span class="math inline">\(p(1/2)=1\)</span> y <span class="math inline">\(p(x)=0\)</span> para el resto de <span class="math inline">\([0,1]\)</span>. En la partición <span class="math inline">\((0,1/2,1)\)</span>, los dos cerrados contienen el pico: <span class="math inline">\(L=0\)</span>, <span class="math inline">\(U=1\)</span>. Para <span class="math inline">\(0&lt;r&lt;1/2\)</span>, insertemos los nodos <span class="math inline">\(1/2-r\)</span> y <span class="math inline">\(1/2+r\)</span>. Sólo las dos piezas vecinas al pico tienen supremo1; sus anchuras suman <span class="math inline">\(2r\)</span>. Por tanto <span class="math inline">\(L=0\)</span>, <span class="math inline">\(U=2r\)</span>. Elegir <span class="math inline">\(r&lt;\min(1/2,\varepsilon/2)\)</span> da el criterio y valor0. Ninguna partición tiene brecha cero porque el pico pertenece a por lo menos una pieza de anchura positiva. No se usa teoría de medida.</p>
+<p>Una brecha persistente puede, por el contrario, impedir integrabilidad. Si una función acotada toma0 y1 en toda pieza no degenerada, todas sus sumas inferiores son0 y superiores <span class="math inline">\(b-a\)</span>. Sus integrales extremas difieren. Es una condición universal sobre cada pieza, no una conclusión que se pueda extraer de unos puntos de dibujo; C25 estudiará ejemplos de discontinuidad y esa frontera con detalle.</p>
+<p>El cierre deja habilitada una integral única por dos construcciones equivalentes, clases integrables y operaciones justificadas. El capítulo siguiente relacionará acumulación y derivada; aquí no se ha aplicado el teorema fundamental ni una regla general de antiderivadas.</p>
+<div id="fig-anm-c23-f08" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Con n4, x² está certificado entre7/32 y15/32 y su medio11/32. Para el pico p(1/2)=1, p=0 fuera, cortes1/2±r dan L0,U2r: integral0 con toda brecha finita positiva.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c23-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C23/C23-F08.svg" class="img-fluid figure-img" alt="Con n4, x² está certificado entre7/32 y15/32 y su medio11/32. Para el pico p(1/2)=1, p=0 fuera, cortes1/2±r dan L0,U2r: integral0 con toda brecha finita positiva.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c23-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Con n4, x² está certificado entre7/32 y15/32 y su medio11/32. Para el pico p(1/2)=1, p=0 fuera, cortes1/2±r dan L0,U2r: integral0 con toda brecha finita positiva.
+</figcaption>
+</figure>
+</div>
+<section id="microcontroles-7" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-7">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-023-057"></span></p>
+<ol type="1">
+<li>¿Qué necesitan las cotas numéricas <span class="math inline">\(a_i,b_i\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-058"></span></p>
+<ol start="2" type="1">
+<li>¿Una brecha pequeña una sola vez prueba integrabilidad?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-059"></span></p>
+<ol start="3" type="1">
+<li>¿Cuál es el encierro de <span class="math inline">\(x^2\)</span> con n4?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-060"></span></p>
+<ol start="4" type="1">
+<li>¿Cuál es su punto medio y error certificado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-061"></span></p>
+<ol start="5" type="1">
+<li>¿Qué n certifica error medio menor que1/100?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-062"></span></p>
+<ol start="6" type="1">
+<li>¿Qué brecha tiene el pico con nodos1/2±r?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-063"></span></p>
+<ol start="7" type="1">
+<li>¿El pico integrable tiene alguna partición de brecha cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-023-064"></span></p>
+<ol start="8" type="1">
+<li>¿Qué impide integrar una función que toma0 y1 en toda pieza?</li>
+</ol>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux.html">Capítulo 23</a> · <a href="analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-microcontroles.html">Soluciones de microcontroles</a></p>
+<p><a href="analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html">← Capítulo 22</a> · <a href="analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html">Capítulo 24 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

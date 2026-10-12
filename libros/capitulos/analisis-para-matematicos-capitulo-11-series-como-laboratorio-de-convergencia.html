@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 11 — Series como laboratorio de convergencia – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-los-términos-a-las-sumas-parciales" id="toc-de-los-términos-a-las-sumas-parciales" class="nav-link active" data-scroll-target="#de-los-términos-a-las-sumas-parciales">11.1. De los términos a las sumas parciales</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir" id="toc-antes-de-seguir" class="nav-link" data-scroll-target="#antes-de-seguir">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#cauchy-mide-bloques-completos" id="toc-cauchy-mide-bloques-completos" class="nav-link" data-scroll-target="#cauchy-mide-bloques-completos">11.2. Cauchy mide bloques completos</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-1" id="toc-antes-de-seguir-1" class="nav-link" data-scroll-target="#antes-de-seguir-1">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#fórmulas-finitas-y-restos-exactos" id="toc-fórmulas-finitas-y-restos-exactos" class="nav-link" data-scroll-target="#fórmulas-finitas-y-restos-exactos">11.3. Fórmulas finitas y restos exactos</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-2" id="toc-antes-de-seguir-2" class="nav-link" data-scroll-target="#antes-de-seguir-2">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#acumulación-positiva-y-barreras" id="toc-acumulación-positiva-y-barreras" class="nav-link" data-scroll-target="#acumulación-positiva-y-barreras">11.4. Acumulación positiva y barreras</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-3" id="toc-antes-de-seguir-3" class="nav-link" data-scroll-target="#antes-de-seguir-3">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#control-absoluto-de-la-acumulación" id="toc-control-absoluto-de-la-acumulación" class="nav-link" data-scroll-target="#control-absoluto-de-la-acumulación">11.5. Control absoluto de la acumulación</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-4" id="toc-antes-de-seguir-4" class="nav-link" data-scroll-target="#antes-de-seguir-4">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#alternancia-encerrar-sin-sumar-magnitudes" id="toc-alternancia-encerrar-sin-sumar-magnitudes" class="nav-link" data-scroll-target="#alternancia-encerrar-sin-sumar-magnitudes">11.6. Alternancia: encerrar sin sumar magnitudes</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-5" id="toc-antes-de-seguir-5" class="nav-link" data-scroll-target="#antes-de-seguir-5">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#agrupar-términos-y-conservar-el-recorrido" id="toc-agrupar-términos-y-conservar-el-recorrido" class="nav-link" data-scroll-target="#agrupar-términos-y-conservar-el-recorrido">11.7. Agrupar términos y conservar el recorrido</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-6" id="toc-antes-de-seguir-6" class="nav-link" data-scroll-target="#antes-de-seguir-6">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#elegir-un-control-y-certificar-el-error" id="toc-elegir-un-control-y-certificar-el-error" class="nav-link" data-scroll-target="#elegir-un-control-y-certificar-el-error">11.8. Elegir un control y certificar el error</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-7" id="toc-antes-de-seguir-7" class="nav-link" data-scroll-target="#antes-de-seguir-7">Antes de seguir</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 11 — Series como laboratorio de convergencia</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html">Capítulo 11</a> · <a href="analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>Una sucesión de aportes puede tender a cero y seguir acumulando cantidades apreciables. Queremos decidir cuándo el proceso de sumación tiene un destino real, qué controla los bloques que aún faltan y cómo certificar una aproximación sin conocer la suma exacta. Las sumas parciales serán el puente entre acumulación y los límites de C06 y C10.</p>
+<p>Trabajaremos con sucesiones reales e índices desde cero. Seleccionaremos mecanismos de convergencia por lo que permiten ver: fórmulas finitas, barreras positivas, control de magnitudes, cancelación alternada y conservación de los índices al agrupar. Cada mecanismo se prueba antes de emplearlo. El objetivo es reconocer qué hipótesis convierte una intuición de acumulación en un control uniforme de toda la cola.</p>
+<section id="de-los-términos-a-las-sumas-parciales" class="level2">
+<h2 class="anchored" data-anchor-id="de-los-términos-a-las-sumas-parciales">11.1. De los términos a las sumas parciales</h2>
+<p><span id="MA-SEC-ANM-01-011-001"></span></p>
+<p>Los aportes <span class="math inline">\(1,1/2,1/4,\ldots\)</span> disminuyen; los totales <span class="math inline">\(1,3/2,7/4,\ldots\)</span> aumentan. Son dos sucesiones reales diferentes. Para estudiar lo que se acumula necesitamos construir la segunda a partir de la primera y decidir después si tiene un destino real.</p>
+<p>Dada <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span>, con <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span>, definimos su <strong>sucesión de sumas parciales</strong> <span class="math inline">\(s=\operatorname{PS}(a)\)</span> mediante</p>
+<p><span class="math display">\[
+s_0=a_0,\qquad s_{n+1}=s_n+a_{n+1}.
+\]</span></p>
+<p>Cada paso suma dos reales y determina un único real; la recursión define <span class="math inline">\(s\)</span> en todos los naturales y una inducción prueba su unicidad. Escribimos <span class="math inline">\(s_n=\sum_{k=0}^n a_k\)</span>: contiene <span class="math inline">\(n+1\)</span> términos, no <span class="math inline">\(n\)</span>. Una suma con ningún término se toma igual a cero cuando aparezca un bloque vacío.</p>
+<p>La <strong>serie de términos <span class="math inline">\(a\)</span></strong> es este proceso de sumación. Decimos que converge si <span class="math inline">\(s_n\to S\)</span> para algún <span class="math inline">\(S\in\mathbb R\)</span>, y entonces llamamos a <span class="math inline">\(S\)</span> su suma y escribimos</p>
+<p><span class="math display">\[
+\sum_{n=0}^{\infty}a_n=S.
+\]</span></p>
+<p>Antes de demostrar convergencia, el símbolo de serie designa el proceso que estamos estudiando; no afirma que ya exista ese real. El límite es único por C06. Una serie divergente puede tener sumas parciales no acotadas o puede oscilar dentro de una región acotada.</p>
+<p><strong>Recuperar los aportes.</strong> La construcción conserva toda la información de <span class="math inline">\(a\)</span>, pues</p>
+<p><span class="math display">\[
+a_0=s_0,\qquad a_{n+1}=s_{n+1}-s_n.
+\]</span></p>
+<p>La primera igualdad es la condición inicial; la segunda se obtiene restando <span class="math inline">\(s_n\)</span> en la recursión. Por ello <span class="math inline">\(\operatorname{PS}(a)=\operatorname{PS}(b)\)</span> implica <span class="math inline">\(a=b\)</span>. En cambio, tener la misma suma real no obliga a tener los mismos términos: <span class="math inline">\((1,0,0,\ldots)\)</span> y <span class="math inline">\((1/2,1/2,0,\ldots)\)</span> generan procesos diferentes que convergen ambos a uno.</p>
+<p>Para <span class="math inline">\(a_n=(-1)^n\)</span>, las sumas parciales son <span class="math inline">\(s_{2k}=1\)</span> y <span class="math inline">\(s_{2k+1}=0\)</span>, como se verifica por parejas. La sucesión <span class="math inline">\(s\)</span> está acotada, pero no converge: después de cualquier corte hay sumas parciales de ambos valores. Para <span class="math inline">\(a_n=0\)</span> todos los totales valen cero. Incluso cuando término y total tienen el mismo valor en un índice, siguen cumpliendo papeles distintos.</p>
+<p>En el ejemplo inicial <span class="math inline">\(a_n=2^{-n}\)</span>, una inducción en la recursión da <span class="math inline">\(s_n=2-2^{-n}\)</span>. Además <span class="math inline">\(2^n\ge n+1\)</span> por inducción, luego <span class="math inline">\(2^{-n}\le1/(n+1)\)</span>. Para cualquier <span class="math inline">\(\varepsilon&gt;0\)</span>, elegir <span class="math inline">\(N+1&gt;1/\varepsilon\)</span> hace tanto <span class="math inline">\(|a_n|\)</span> como <span class="math inline">\(|s_n-2|\)</span> menores que <span class="math inline">\(\varepsilon\)</span> para <span class="math inline">\(n\ge N\)</span>. Así los dos destinos mostrados quedan probados directamente, antes de desarrollar la identidad geométrica general.</p>
+<div id="fig-anm-c11-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Los aportes geométricos disminuyen hacia cero mientras los totales aumentan hacia dos. En el índice n se han acumulado n+1 términos: los paneles representan dos sucesiones distintas.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c11-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C11/C11-F01.svg" class="img-fluid figure-img" alt="Los aportes geométricos disminuyen hacia cero mientras los totales aumentan hacia dos. En el índice n se han acumulado n+1 términos: los paneles representan dos sucesiones distintas.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c11-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Los aportes geométricos disminuyen hacia cero mientras los totales aumentan hacia dos. En el índice n se han acumulado n+1 términos: los paneles representan dos sucesiones distintas.
+</figcaption>
+</figure>
+</div>
+<p>La figura compara aportes y totales en el mismo índice. Leer un punto en el panel de términos no permite inferir el destino del panel de acumulación; éste es el objeto al que aplicaremos Cauchy.</p>
+<section id="antes-de-seguir" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-011-001"></span></p>
+<ol type="1">
+<li>¿Cuántos términos contiene <span class="math inline">\(s_n=\sum_{k=0}^n a_k\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-002"></span></p>
+<ol start="2" type="1">
+<li>¿Cuál es el término inicial de <span class="math inline">\(\operatorname{PS}(a)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-003"></span></p>
+<ol start="3" type="1">
+<li>¿Qué condición permite llamar suma real a <span class="math inline">\(\sum_{n=0}^{\infty}a_n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-004"></span></p>
+<ol start="4" type="1">
+<li>¿Cómo se recupera <span class="math inline">\(a_{n+1}\)</span> a partir de dos totales?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-005"></span></p>
+<ol start="5" type="1">
+<li>¿Tener la misma suma implica tener los mismos términos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-006"></span></p>
+<ol start="6" type="1">
+<li>¿Qué totales produce <span class="math inline">\(a_n=(-1)^n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-007"></span></p>
+<ol start="7" type="1">
+<li>¿La acotación de esos totales garantiza convergencia?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-008"></span></p>
+<ol start="8" type="1">
+<li>¿Son <span class="math inline">\(a\)</span>, <span class="math inline">\(\operatorname{PS}(a)\)</span> y su suma el mismo tipo de objeto?</li>
+</ol>
+</section>
+</section>
+<section id="cauchy-mide-bloques-completos" class="level2">
+<h2 class="anchored" data-anchor-id="cauchy-mide-bloques-completos">11.2. Cauchy mide bloques completos</h2>
+<p><span id="MA-SEC-ANM-01-011-002"></span></p>
+<p>Dos totales tardíos difieren en lo que se sumó entre sus cortes. Si <span class="math inline">\(p&gt;q\)</span>, la recursión y una inducción sobre <span class="math inline">\(p-q\)</span> dan la identidad finita</p>
+<p><span class="math display">\[
+s_p-s_q=\sum_{k=q+1}^{p}a_k.
+\]</span></p>
+<p>El bloque empieza en <span class="math inline">\(q+1\)</span> porque <span class="math inline">\(a_q\)</span> ya forma parte de <span class="math inline">\(s_q\)</span>. El caso <span class="math inline">\(p=q+1\)</span> es la recursión; al prolongar el extremo superior se añade <span class="math inline">\(a_{p+1}\)</span> a ambos miembros. Esta identidad traduce la pregunta sobre dos sumas parciales a una pregunta sobre cualquier acumulación tardía.</p>
+<p><strong>Criterio de Cauchy para series reales.</strong> La serie de <span class="math inline">\(a\)</span> converge si y sólo si</p>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\ \exists N\in\mathbb N\ \forall p,q\in\mathbb N:
+\quad p&gt;q\ge N\ \Longrightarrow\
+\left|\sum_{k=q+1}^{p}a_k\right|&lt;\varepsilon.
+\]</span></p>
+<p>Por definición, la serie converge cuando converge <span class="math inline">\(s\)</span>. C10 equivale esa convergencia real a que <span class="math inline">\(|s_p-s_q|&lt;\varepsilon\)</span> para todos <span class="math inline">\(p,q\ge N\)</span>, y la identidad demuestra una dirección. Recíprocamente, si los bloques ordenados cumplen el control, los pares con <span class="math inline">\(p&gt;q\)</span> quedan controlados; si <span class="math inline">\(q&gt;p\)</span>, intercambiamos los índices y usamos simetría del valor absoluto; si <span class="math inline">\(p=q\)</span>, la distancia es cero. Así <span class="math inline">\(s\)</span> es de Cauchy y C10 aporta un destino real. La completitud se usa en esta última existencia, no en la identidad finita.</p>
+<p>El corte se escoge antes que los dos extremos; debe funcionar para bloques de cualquier longitud. Permitir un corte distinto para cada longitud fija debilitaría el enunciado.</p>
+<p><strong>Condición necesaria.</strong> Si una serie converge, entonces <span class="math inline">\(a_n\to0\)</span>. En efecto, para <span class="math inline">\(n\ge N+1\)</span>, el bloque con <span class="math inline">\(q=n-1\)</span> y <span class="math inline">\(p=n\)</span> tiene un término y da <span class="math inline">\(|a_n|&lt;\varepsilon\)</span>. Este argumento muestra también la limitación: controlar bloques de longitud uno no controla todos los bloques.</p>
+<p>La serie de <span class="math inline">\(a_n=1/(n+1)\)</span> lo muestra. Sus términos tienden a cero. Para cualquier corte <span class="math inline">\(N\)</span>, pongamos <span class="math inline">\(m=N+1\)</span>, <span class="math inline">\(q=m-1\)</span> y <span class="math inline">\(p=2m-1\)</span>. Ambos índices están después del corte y</p>
+<p><span class="math display">\[
+s_{2m-1}-s_{m-1}=\sum_{j=m+1}^{2m}\frac1j\ge m\frac1{2m}=\frac12.
+\]</span></p>
+<p>La tolerancia fija <span class="math inline">\(1/2\)</span> contradice el criterio. La longitud del bloque crece: muchos aportes pequeños pueden acumular una cantidad que no desaparece. Esta prueba de divergencia usa sumas finitas, no un valor supuesto de una suma infinita.</p>
+<div id="fig-anm-c11-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Los bloques de m aportes armónicos entre los denominadores m+1 y 2m conservan suma al menos un medio. Los términos individuales se reducen, pero la longitud del bloque puede crecer.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c11-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C11/C11-F02.svg" class="img-fluid figure-img" alt="Los bloques de m aportes armónicos entre los denominadores m+1 y 2m conservan suma al menos un medio. Los términos individuales se reducen, pero la longitud del bloque puede crecer.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c11-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Los bloques de m aportes armónicos entre los denominadores m+1 y 2m conservan suma al menos un medio. Los términos individuales se reducen, pero la longitud del bloque puede crecer.
+</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>m</th>
+<th>q = m−1</th>
+<th>p = 2m−1</th>
+<th>Cota inferior exacta del bloque</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td>3</td>
+<td>7</td>
+<td>≥ <span class="math inline">\(1/2\)</span></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>7</td>
+<td>15</td>
+<td>≥ <span class="math inline">\(1/2\)</span></td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td>15</td>
+<td>31</td>
+<td>≥ <span class="math inline">\(1/2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>La muestra exhibe algunos bloques; la elección <span class="math inline">\(m=N+1\)</span> prueba que existen después de todo corte. La figura por sí sola no extiende un cálculo finito a todos los índices.</p>
+<section id="antes-de-seguir-1" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-1">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-011-009"></span></p>
+<ol type="1">
+<li>¿Por qué el bloque <span class="math inline">\(s_p-s_q\)</span> empieza en <span class="math inline">\(q+1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-010"></span></p>
+<ol start="2" type="1">
+<li>¿En qué orden se eligen tolerancia, corte y extremos de bloque?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-011"></span></p>
+<ol start="3" type="1">
+<li>¿Puede el corte depender de la longitud del bloque?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-012"></span></p>
+<ol start="4" type="1">
+<li>¿Cómo se cubre el caso <span class="math inline">\(p=q\)</span> al recuperar Cauchy?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-013"></span></p>
+<ol start="5" type="1">
+<li>¿Dónde se usa completitud en el criterio de bloques?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-014"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué convergencia de la serie implica <span class="math inline">\(a_n\to0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-015"></span></p>
+<ol start="7" type="1">
+<li>¿Qué pares de cortes niegan Cauchy en la armónica?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-016"></span></p>
+<ol start="8" type="1">
+<li>¿El término nulo es una condición suficiente?</li>
+</ol>
+</section>
+</section>
+<section id="fórmulas-finitas-y-restos-exactos" class="level2">
+<h2 class="anchored" data-anchor-id="fórmulas-finitas-y-restos-exactos">11.3. Fórmulas finitas y restos exactos</h2>
+<p><span id="MA-SEC-ANM-01-011-003"></span></p>
+<p>Una fórmula para el total finito puede resolver simultáneamente existencia y error. La estrategia consiste en simplificar <span class="math inline">\(s_n\)</span> antes de tomar límites; manipular una supuesta suma infinita invertiría ese orden.</p>
+<p>Si <span class="math inline">\(a_n=c_n-c_{n+1}\)</span>, una inducción cancela términos consecutivos y entrega</p>
+<p><span class="math display">\[
+s_n=c_0-c_{n+1}.
+\]</span></p>
+<p>Por C06, si <span class="math inline">\(c_n\to C\)</span>, entonces la serie converge y su suma es <span class="math inline">\(c_0-C\)</span>. Recíprocamente, si <span class="math inline">\(s_n\to S\)</span>, la misma identidad da <span class="math inline">\(c_{n+1}\to c_0-S\)</span>, y la sucesión completa <span class="math inline">\(c\)</span> tiene ese límite: un único término inicial no altera el control eventual. Cuando convergen, el <strong>resto</strong> en el corte <span class="math inline">\(n\)</span> es el real</p>
+<p><span class="math display">\[
+R_n=S-s_n=c_{n+1}-C.
+\]</span></p>
+<p>Por ejemplo, <span class="math inline">\(a_n=1/((n+1)(n+2))=1/(n+1)-1/(n+2)\)</span> produce <span class="math inline">\(s_n=1-1/(n+2)\)</span>, suma uno y resto <span class="math inline">\(1/(n+2)\)</span>. No se requiere un criterio nuevo para cada fracción: se reconoce una diferencia finita y se reutiliza un límite conocido.</p>
+<p>Para la serie geométrica <span class="math inline">\(a_n=r^n\)</span>, las potencias naturales satisfacen <span class="math inline">\(r^0=1\)</span> y <span class="math inline">\(r^{n+1}=r^nr\)</span>; en particular usamos <span class="math inline">\(0^0=1\)</span> como convención de exponente cero. Al restar la suma finita multiplicada por <span class="math inline">\(r\)</span>, o por inducción, obtenemos</p>
+<p><span class="math display">\[
+(1-r)s_n=1-r^{n+1}.
+\]</span></p>
+<p>Si <span class="math inline">\(|r|&lt;1\)</span>, las potencias <span class="math inline">\(r^{n+1}\)</span> tienden a cero. Para <span class="math inline">\(0&lt;\rho=|r|&lt;1\)</span>, escribimos <span class="math inline">\(\rho^{-1}=1+t\)</span> con <span class="math inline">\(t&gt;0\)</span>; la inducción da <span class="math inline">\((1+t)^n\ge1+nt\)</span>, por lo que <span class="math inline">\(\rho^n\le1/(1+nt)\to0\)</span> por arquimedianidad. Si <span class="math inline">\(r=0\)</span>, el primer término vale uno y los siguientes cero. Como <span class="math inline">\(1-r\ne0\)</span>, C06 aplicado a la identidad finita demuestra</p>
+<p><span class="math display">\[
+S=\frac1{1-r},\qquad R_n=\frac{r^{n+1}}{1-r},\qquad
+|R_n|=\frac{|r|^{n+1}}{|1-r|}.
+\]</span></p>
+<p>La estimación precisa usa <span class="math inline">\(|1-r|\)</span>; para razones negativas puede ser mejor que reemplazarlo por <span class="math inline">\(1-|r|\)</span>. La serie geométrica converge exactamente para <span class="math inline">\(|r|&lt;1\)</span>. Si <span class="math inline">\(|r|\ge1\)</span>, sus términos no tienden a cero: <span class="math inline">\(|r^n|\ge1\)</span> en cada índice, y la condición necesaria de §11.2 descarta convergencia. Esto incluye <span class="math inline">\(r=1\)</span> y <span class="math inline">\(r=-1\)</span> sin dividir por cero.</p>
+<div id="fig-anm-c11-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La geométrica de razón menos un medio alterna sus totales alrededor de dos tercios. La identidad finita determina el resto con signo, no sólo una cota de su magnitud.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c11-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C11/C11-F03.svg" class="img-fluid figure-img" alt="La geométrica de razón menos un medio alterna sus totales alrededor de dos tercios. La identidad finita determina el resto con signo, no sólo una cota de su magnitud.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c11-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: La geométrica de razón menos un medio alterna sus totales alrededor de dos tercios. La identidad finita determina el resto con signo, no sólo una cota de su magnitud.
+</figcaption>
+</figure>
+</div>
+<p>Para <span class="math inline">\(r=-1/2\)</span>, el total alterna alrededor de <span class="math inline">\(2/3\)</span> y su error exacto es <span class="math inline">\((2/3)2^{-(n+1)}\)</span>. El valor numérico del destino aparece después de la identidad y de la prueba del límite de las potencias.</p>
+<section id="antes-de-seguir-2" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-2">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-011-017"></span></p>
+<ol type="1">
+<li>¿Qué total produce <span class="math inline">\(a_n=c_n-c_{n+1}\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-018"></span></p>
+<ol start="2" type="1">
+<li>¿Cuál es el resto telescópico si <span class="math inline">\(c_n\to C\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-019"></span></p>
+<ol start="3" type="1">
+<li>¿Cuál es la suma de <span class="math inline">\(1/((n+1)(n+2))\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-020"></span></p>
+<ol start="4" type="1">
+<li>¿Qué identidad geométrica es válida antes de cualquier límite?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-021"></span></p>
+<ol start="5" type="1">
+<li>¿Para qué razones reales converge la geométrica?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-022"></span></p>
+<ol start="6" type="1">
+<li>¿Qué ocurre con la geométrica de razón cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-023"></span></p>
+<ol start="7" type="1">
+<li>¿Cuál es el resto exacto cuando <span class="math inline">\(|r|&lt;1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-024"></span></p>
+<ol start="8" type="1">
+<li>¿Es correcto dividir por <span class="math inline">\(1-r\)</span> para estudiar <span class="math inline">\(r=1\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="acumulación-positiva-y-barreras" class="level2">
+<h2 class="anchored" data-anchor-id="acumulación-positiva-y-barreras">11.4. Acumulación positiva y barreras</h2>
+<p><span id="MA-SEC-ANM-01-011-004"></span></p>
+<p>Cuando <span class="math inline">\(a_n\ge0\)</span>, cada nuevo aporte mueve el total hacia la derecha: <span class="math inline">\(s_{n+1}-s_n=a_{n+1}\ge0\)</span>. El control de cancelaciones desaparece y la cuestión se reduce a encontrar una barrera superior para todos los totales.</p>
+<p><strong>Barrera positiva.</strong> Una serie de términos no negativos converge si y sólo si sus sumas parciales están acotadas superiormente. La necesidad se sigue de C06. Para probar suficiencia desde las bases de completitud, sea</p>
+<p><span class="math display">\[
+S=\sup\{s_n:n\in\mathbb N\}.
+\]</span></p>
+<p>El conjunto es no vacío y tiene cota superior por hipótesis, de modo que el supremo real existe por C03, la base de completitud heredada en C10. Dada <span class="math inline">\(\varepsilon&gt;0\)</span>, <span class="math inline">\(S-\varepsilon\)</span> no puede ser cota superior: existe <span class="math inline">\(N\)</span> con <span class="math inline">\(S-\varepsilon&lt;s_N\le S\)</span>. La no negatividad asegura que para todo <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(s_N\le s_n\le S\)</span>, luego <span class="math inline">\(|S-s_n|&lt;\varepsilon\)</span>. Hemos reconstruido el mecanismo de monotonía y barrera sin necesitar importar otro criterio de series.</p>
+<p>Si los totales no tienen cota superior, exceden finalmente cualquier real <span class="math inline">\(M\)</span>: existe <span class="math inline">\(N\)</span> con <span class="math inline">\(s_N&gt;M\)</span>, y todos los posteriores son mayores que <span class="math inline">\(M\)</span>. Esta es una descripción de divergencia hacia arriba; no asigna a la serie una suma real llamada infinito.</p>
+<p><strong>Comparación directa.</strong> Si <span class="math inline">\(0\le a_n\le b_n\)</span> en todos los índices y la serie de <span class="math inline">\(b\)</span> converge, entonces la de <span class="math inline">\(a\)</span> también converge y sus sumas cumplen <span class="math inline">\(0\le S_a\le S_b\)</span>. Las desigualdades se conservan al sumar finitamente, de modo que <span class="math inline">\(0\le s_n\le t_n\le S_b\)</span>. La barrera positiva aporta <span class="math inline">\(S_a\)</span> y C06 conserva el orden al pasar al límite. También podemos comparar desde un índice fijo: se aplica el mismo argumento a las colas reindexadas, dejando el prefijo como una suma real finita. En ese caso, la desigualdad entre sumas completas requiere considerar sus prefijos y no se afirma automáticamente.</p>
+<p>El ejemplo <span class="math inline">\(a_n=1/(n+2)^2\)</span> queda dominado por</p>
+<p><span class="math display">\[
+0\le\frac1{(n+2)^2}\le\frac1{(n+1)(n+2)}.
+\]</span></p>
+<p>La serie de la derecha tiene suma uno por §11.3, así que <span class="math inline">\(\sum a_n\)</span> converge con suma entre cero y uno. Incluso su resto se controla: para <span class="math inline">\(p&gt;n\)</span> sumamos la comparación sólo en el bloque <span class="math inline">\(n+1,\ldots,p\)</span> y luego tomamos <span class="math inline">\(p\to\infty\)</span>. El telescopaje entrega</p>
+<p><span class="math display">\[
+0\le S_a-s_n\le\frac1{n+2}.
+\]</span></p>
+<p>Encontrar una barrera puede probar existencia sin calcular el valor exacto del destino. El bloque posterior da además un certificado de error.</p>
+<section id="antes-de-seguir-3" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-3">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-011-025"></span></p>
+<ol type="1">
+<li>¿Qué hipótesis hace crecientes las sumas parciales?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-026"></span></p>
+<ol start="2" type="1">
+<li>¿Qué cota basta para una serie no negativa?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-027"></span></p>
+<ol start="3" type="1">
+<li>¿Qué conjunto se usa para construir el destino por supremo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-028"></span></p>
+<ol start="4" type="1">
+<li>¿Cómo se encuentra un total cercano por debajo del supremo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-029"></span></p>
+<ol start="5" type="1">
+<li>¿Por qué todos los totales posteriores siguen cerca?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-030"></span></p>
+<ol start="6" type="1">
+<li>¿Qué conclusión da <span class="math inline">\(0\le a_n\le b_n\)</span> si la serie de <span class="math inline">\(b\)</span> converge?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-031"></span></p>
+<ol start="7" type="1">
+<li>¿Una comparación eventual conserva automáticamente el orden de sumas completas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-032"></span></p>
+<ol start="8" type="1">
+<li>¿Qué resto garantiza la comparación para <span class="math inline">\(a_n=1/(n+2)^2\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="control-absoluto-de-la-acumulación" class="level2">
+<h2 class="anchored" data-anchor-id="control-absoluto-de-la-acumulación">11.5. Control absoluto de la acumulación</h2>
+<p><span id="MA-SEC-ANM-01-011-005"></span></p>
+<p>Con signos variables, una cota superior de <span class="math inline">\(s_n\)</span> no impide que los totales bajen u oscilen. Un control más fuerte suma las magnitudes y, mediante la desigualdad triangular, protege cualquier bloque independientemente de sus cancelaciones.</p>
+<p>La serie de <span class="math inline">\(a\)</span> <strong>converge absolutamente</strong> cuando converge la serie de <span class="math inline">\(|a_n|\)</span>. Si la original converge y la de magnitudes diverge, la convergencia es <strong>condicional</strong>. Este segundo término sólo se aplica cuando existe la suma de la original.</p>
+<p>Escribamos <span class="math inline">\(u_n=\sum_{k=0}^n|a_k|\)</span>. Una inducción basada en la desigualdad triangular prueba</p>
+<p><span class="math display">\[
+|s_n|\le u_n,\qquad
+|s_p-s_q|\le u_p-u_q=\sum_{k=q+1}^p|a_k|\quad(p&gt;q).
+\]</span></p>
+<p>En la inducción del bloque, añadir el siguiente término aumenta el lado derecho en su magnitud; el caso inicial de un término es igualdad. Estas estimaciones son finitas y no suponen convergencia.</p>
+<p><strong>La convergencia absoluta implica convergencia.</strong> Si <span class="math inline">\(u_n\to A\)</span>, Cauchy aplicado a <span class="math inline">\(u\)</span> proporciona, para cada <span class="math inline">\(\varepsilon&gt;0\)</span>, un único corte que controla todos sus bloques. Como <span class="math inline">\(u\)</span> crece, <span class="math inline">\(u_p-u_q=|u_p-u_q|&lt;\varepsilon\)</span> después de ese corte. La estimación anterior controla entonces <span class="math inline">\(|s_p-s_q|\)</span>, y C10 garantiza <span class="math inline">\(s_n\to S\in\mathbb R\)</span>. Completitud aparece en esa garantía de destino. Tomando límites en <span class="math inline">\(|s_n|\le u_n\)</span>, mediante <span class="math inline">\(||s_n|-|S||\le|s_n-S|\)</span> y el orden de C06, resulta <span class="math inline">\(|S|\le A\)</span>.</p>
+<p>Hay una versión de error más útil que la desigualdad global. Fijado <span class="math inline">\(n\)</span>, en todos los bloques posteriores <span class="math inline">\(|s_p-s_n|\le u_p-u_n\)</span>; al tomar <span class="math inline">\(p\to\infty\)</span> obtenemos</p>
+<p><span class="math display">\[
+|R_n|=|S-s_n|\le A-u_n.
+\]</span></p>
+<p>Si <span class="math inline">\(|a_n|\le C\rho^n\)</span> con <span class="math inline">\(C\ge0\)</span> y <span class="math inline">\(0&lt;\rho&lt;1\)</span>, la comparación de magnitudes con la geométrica prueba convergencia absoluta y</p>
+<p><span class="math display">\[
+|R_n|\le\frac{C\rho^{n+1}}{1-\rho}.
+\]</span></p>
+<p>Para <span class="math inline">\(C=0\)</span>, todos los términos son cero. Para <span class="math inline">\(C&gt;0\)</span>, se escoge el corte usando el límite de <span class="math inline">\(\rho^n\)</span> ya probado; el número de términos sumados hasta <span class="math inline">\(n\)</span> sigue siendo <span class="math inline">\(n+1\)</span>. Los signos pueden depender arbitrariamente del índice porque el control absoluto trabaja antes de toda cancelación.</p>
+<p>La serie <span class="math inline">\(a_n=(-1)^n\)</span> muestra que acotación de <span class="math inline">\(s\)</span> no basta. La afirmación recíproca, que toda serie convergente sea absoluta, requiere otro examen: el próximo mecanismo conservará cancelaciones y permitirá un ejemplo condicional.</p>
+<section id="antes-de-seguir-4" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-4">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-011-033"></span></p>
+<ol type="1">
+<li>¿Qué significa convergencia absoluta?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-034"></span></p>
+<ol start="2" type="1">
+<li>¿Qué condición adicional exige llamar condicional a una convergencia?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-035"></span></p>
+<ol start="3" type="1">
+<li>¿Qué desigualdad domina un bloque con signos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-036"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué un corte para las magnitudes sirve para la original?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-037"></span></p>
+<ol start="5" type="1">
+<li>¿Se necesita sumar primero la original para aplicar control absoluto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-038"></span></p>
+<ol start="6" type="1">
+<li>¿Qué relación hay entre las sumas <span class="math inline">\(S\)</span> y <span class="math inline">\(A\)</span> de la original y las magnitudes?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-039"></span></p>
+<ol start="7" type="1">
+<li>¿Qué cota de error proporciona <span class="math inline">\(u_n\to A\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-040"></span></p>
+<ol start="8" type="1">
+<li>¿Qué error asegura <span class="math inline">\(|a_n|\le C\rho^n\)</span> con <span class="math inline">\(0&lt;\rho&lt;1\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="alternancia-encerrar-sin-sumar-magnitudes" class="level2">
+<h2 class="anchored" data-anchor-id="alternancia-encerrar-sin-sumar-magnitudes">11.6. Alternancia: encerrar sin sumar magnitudes</h2>
+<p><span id="MA-SEC-ANM-01-011-006"></span></p>
+<p>Supongamos <span class="math inline">\(0\le b_{n+1}\le b_n\)</span> y <span class="math inline">\(b_n\to0\)</span>, y tomemos <span class="math inline">\(a_n=(-1)^nb_n\)</span>. La alternancia fija los signos, el decrecimiento impide que la segunda magnitud de una pareja supere la primera y el límite cero hará pequeño cualquier bloque tardío. Debemos mostrar cómo cooperan esas tres condiciones.</p>
+<p><strong>Lema de bloque alternado.</strong> Si <span class="math inline">\(c_0\ge c_1\ge\cdots\ge c_m\ge0\)</span>, entonces</p>
+<p><span class="math display">\[
+0\le c_0-c_1+c_2-\cdots+(-1)^mc_m\le c_0.
+\]</span></p>
+<p>La cota inferior se obtiene agrupando <span class="math inline">\((c_0-c_1)+(c_2-c_3)+\cdots\)</span>, con un último término no negativo si sobra. Para la superior, escribimos <span class="math inline">\(c_0-(c_1-c_2)-(c_3-c_4)-\cdots\)</span>, y restamos también el último término si el índice final es impar. Cada diferencia entre magnitudes contiguas es no negativa. Las dos formas son reorganizaciones de una suma finita, no de una serie infinita.</p>
+<p><strong>Criterio alternado.</strong> La serie de <span class="math inline">\((-1)^nb_n\)</span> converge. En un bloque desde <span class="math inline">\(q+1\)</span> hasta <span class="math inline">\(p\)</span>, sacar el signo inicial y aplicar el lema da</p>
+<p><span class="math display">\[
+0\le(-1)^{q+1}(s_p-s_q)\le b_{q+1},\qquad
+|s_p-s_q|\le b_{q+1}.
+\]</span></p>
+<p>Dada <span class="math inline">\(\varepsilon&gt;0\)</span>, elegimos <span class="math inline">\(N\)</span> tal que <span class="math inline">\(b_j&lt;\varepsilon\)</span> para <span class="math inline">\(j\ge N\)</span>. Si <span class="math inline">\(p&gt;q\ge N\)</span>, también <span class="math inline">\(q+1\ge N\)</span>; la estimación vale para cualquier longitud del bloque y prueba Cauchy. C10 proporciona <span class="math inline">\(S\in\mathbb R\)</span>. Hemos probado Leibniz directamente desde bloques, sin reunir dos límites de paridades mediante un resultado no explicado.</p>
+<p>Fijado <span class="math inline">\(n\)</span>, tomamos <span class="math inline">\(p\to\infty\)</span> en el control con signo para obtener</p>
+<p><span class="math display">\[
+0\le(-1)^{n+1}R_n\le b_{n+1},\qquad |R_n|\le b_{n+1}.
+\]</span></p>
+<p>Si <span class="math inline">\(n\)</span> es par, <span class="math inline">\(s_{n+1}\le S\le s_n\)</span>; si <span class="math inline">\(n\)</span> es impar, <span class="math inline">\(s_n\le S\le s_{n+1}\)</span>. En particular, los intervalos <span class="math inline">\([s_{2k+1},s_{2k}]\)</span> contienen el destino. Sus extremos inferiores crecen porque <span class="math inline">\(s_{2k+3}-s_{2k+1}=b_{2k+2}-b_{2k+3}\ge0\)</span>; los superiores decrecen porque <span class="math inline">\(s_{2k+2}-s_{2k}=-b_{2k+1}+b_{2k+2}\le0\)</span>. La anchura es <span class="math inline">\(b_{2k+1}\)</span> y tiende a cero. Estos intervalos reinterpretan un destino cuya existencia ya se ha demostrado.</p>
+<p>Para <span class="math inline">\(b_n=1/(n+1)\)</span>, la serie alternada converge y <span class="math inline">\(|R_n|\le1/(n+2)\)</span>. La serie de magnitudes es la armónica divergente de §11.2: la convergencia es condicional. No precisamos calcular <span class="math inline">\(S\)</span> ni identificarlo con un logaritmo para probar o estimar la convergencia.</p>
+<div id="fig-anm-c11-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La cancelación mantiene los totales alternados en intervalos que se estrechan, aunque los totales de magnitudes crezcan sin barrera. Los extremos de paridad encierran la suma y la anchura es la siguiente magnitud.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c11-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C11/C11-F04.svg" class="img-fluid figure-img" alt="La cancelación mantiene los totales alternados en intervalos que se estrechan, aunque los totales de magnitudes crezcan sin barrera. Los extremos de paridad encierran la suma y la anchura es la siguiente magnitud.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c11-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: La cancelación mantiene los totales alternados en intervalos que se estrechan, aunque los totales de magnitudes crezcan sin barrera. Los extremos de paridad encierran la suma y la anchura es la siguiente magnitud.
+</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>k</th>
+<th>Extremo inferior <span class="math inline">\(s_{2k+1}\)</span></th>
+<th>Extremo superior <span class="math inline">\(s_{2k}\)</span></th>
+<th>Anchura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>1/2</td>
+<td>1</td>
+<td>1/2</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>7/12</td>
+<td>5/6</td>
+<td>1/4</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>37/60</td>
+<td>47/60</td>
+<td>1/6</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>533/840</td>
+<td>319/420</td>
+<td>1/8</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>1627/2520</td>
+<td>1879/2520</td>
+<td>1/10</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>18107/27720</td>
+<td>20417/27720</td>
+<td>1/12</td>
+</tr>
+</tbody>
+</table>
+<p>La figura conserva un eje de valores común para los intervalos y separa términos de sumas parciales. La anchura permite un error garantizado aunque el destino carezca todavía de una fórmula.</p>
+<p><strong>Una hipótesis que no se puede borrar.</strong> La alternancia y el término nulo sin decrecimiento no bastan. Sea <span class="math inline">\(d_k=1/(k+1)\)</span>, <span class="math inline">\(b_{2k}=2d_k\)</span> y <span class="math inline">\(b_{2k+1}=d_k\)</span>. Entonces <span class="math inline">\(b_n\to0\)</span> y los signos alternan, pero cada pareja aporta <span class="math inline">\(d_k\)</span>. Las sumas parciales de índice <span class="math inline">\(2m+1\)</span> son <span class="math inline">\(\sum_{k=0}^m d_k\)</span>, no acotadas por §11.4 y la divergencia armónica. La serie original tampoco converge, pues una extracción de una sucesión convergente tendría el mismo límite por el control ε–N. La monotonía impedía esa acumulación repetida del desequilibrio.</p>
+<section id="antes-de-seguir-5" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-5">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-011-041"></span></p>
+<ol type="1">
+<li>¿Qué tres condiciones se imponen a la alternancia?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-042"></span></p>
+<ol start="2" type="1">
+<li>¿Qué cota tiene un bloque alternado que empieza en <span class="math inline">\(q+1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-043"></span></p>
+<ol start="3" type="1">
+<li>¿Qué hipótesis permite emparejar diferencias no negativas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-044"></span></p>
+<ol start="4" type="1">
+<li>¿Qué hipótesis hace pequeño el control del bloque?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-045"></span></p>
+<ol start="5" type="1">
+<li>¿Qué error y signo tiene el resto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-046"></span></p>
+<ol start="6" type="1">
+<li>¿Qué intervalo contiene la suma entre los cortes <span class="math inline">\(2k\)</span> y <span class="math inline">\(2k+1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-047"></span></p>
+<ol start="7" type="1">
+<li>¿Por qué la armónica alternada es condicional?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-048"></span></p>
+<ol start="8" type="1">
+<li>¿Qué falla si se alternan <span class="math inline">\(2/(k+1)\)</span> y <span class="math inline">\(1/(k+1)\)</span> por parejas?</li>
+</ol>
+</section>
+</section>
+<section id="agrupar-términos-y-conservar-el-recorrido" class="level2">
+<h2 class="anchored" data-anchor-id="agrupar-términos-y-conservar-el-recorrido">11.7. Agrupar términos y conservar el recorrido</h2>
+<p><span id="MA-SEC-ANM-01-011-007"></span></p>
+<p>Agrupar términos consecutivos conserva los totales en los extremos de cada grupo, pero deja de mostrar los totales intermedios. Para precisar esta operación, sea <span class="math inline">\(\phi:\mathbb N\to\mathbb N\)</span> estrictamente creciente y definamos</p>
+<p><span class="math display">\[
+g_0=\sum_{j=0}^{\phi(0)}a_j,\qquad
+g_k=\sum_{j=\phi(k-1)+1}^{\phi(k)}a_j\quad(k\ge1).
+\]</span></p>
+<p>Cada grupo es finito y no vacío. Una inducción y la partición de sumas finitas demuestran que sus sumas parciales son <span class="math inline">\(t_k=s_{\phi(k)}\)</span>. Si la serie original converge a <span class="math inline">\(S\)</span>, también converge la agrupada a <span class="math inline">\(S\)</span>: la inducción da <span class="math inline">\(\phi(k)\ge k\)</span>, de modo que el mismo corte ε–N controla <span class="math inline">\(s_{\phi(k)}\)</span>. No se permutan términos.</p>
+<p>La recíproca falla. Agrupar <span class="math inline">\((1,-1,1,-1,\ldots)\)</span> por parejas produce <span class="math inline">\(g_k=0\)</span> y <span class="math inline">\(t_k=0\)</span>, pero el proceso original alterna entre uno y cero. Hemos seleccionado una extracción convergente, no demostrado convergencia del recorrido completo.</p>
+<p><strong>Qué información falta.</strong> Para cada <span class="math inline">\(n&gt;\phi(0)\)</span> existe un único <span class="math inline">\(k\ge1\)</span> con <span class="math inline">\(\phi(k-1)&lt;n\le\phi(k)\)</span>: basta tomar el menor índice cuyo extremo alcanza <span class="math inline">\(n\)</span>, que existe porque <span class="math inline">\(\phi(k)\ge k\)</span>. Si <span class="math inline">\(t_k\to S\)</span> y las distancias interiores a ese extremo tienden uniformemente a cero, los índices omitidos recuperan el mismo destino. En términos precisos, si para todo <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(K\)</span> tal que</p>
+<p><span class="math display">\[
+k\ge K,\quad \phi(k-1)&lt;n\le\phi(k)
+\quad\Longrightarrow\quad |s_n-s_{\phi(k)}|&lt;\varepsilon,
+\]</span></p>
+<p>entonces <span class="math inline">\(s_n\to S\)</span>. Para probarlo, hacemos menores que <span class="math inline">\(\varepsilon/2\)</span> tanto la distancia interior como <span class="math inline">\(|t_k-S|\)</span>, con un corte común <span class="math inline">\(K\ge1\)</span>. Todo <span class="math inline">\(n\ge\phi(K-1)+1\)</span> pertenece a un grupo con <span class="math inline">\(k\ge K\)</span>; la desigualdad triangular da <span class="math inline">\(|s_n-S|&lt;\varepsilon\)</span>.</p>
+<p>Una condición suficiente fácil de verificar es que los grupos tengan longitud acotada y <span class="math inline">\(a_n\to0\)</span>. Si las longitudes son a lo sumo un natural <span class="math inline">\(M\ge1\)</span>, entonces <span class="math inline">\(s_{\phi(k)}-s_n\)</span> suma a lo sumo <span class="math inline">\(M\)</span> términos del propio grupo. Dada <span class="math inline">\(\varepsilon&gt;0\)</span>, escogemos <span class="math inline">\(J\)</span> con <span class="math inline">\(|a_j|&lt;\varepsilon/M\)</span> para <span class="math inline">\(j\ge J\)</span>. Para <span class="math inline">\(k\ge\max\{1,J\}\)</span>, <span class="math inline">\(\phi(k-1)+1\ge k\ge J\)</span>; todos los términos interiores pertenecen a esa cola y su suma de magnitudes es menor que <span class="math inline">\(\varepsilon\)</span> cuando el bloque no es vacío. Si es vacío, la distancia es cero. La condición anterior queda probada. No negatividad no interviene: el control es absoluto y finito.</p>
+<p>El límite cero del término por sí solo tampoco permite cualquier longitud de grupo. En el bloque número <span class="math inline">\(m\ge1\)</span>, pongamos <span class="math inline">\(m\)</span> aportes <span class="math inline">\(1/m\)</span> seguidos de <span class="math inline">\(m\)</span> aportes <span class="math inline">\(-1/m\)</span>. El bloque empieza en el índice <span class="math inline">\(m(m-1)\)</span> y termina en <span class="math inline">\(m(m+1)-1\)</span>. Esos intervalos particionan <span class="math inline">\(\mathbb N\)</span>. Los términos tienden a cero; los totales de fin de bloque son cero, mientras los totales tras la mitad positiva valen uno. Agrupar cada bloque produce suma cero, pero la serie original diverge. El grupo puede acumular una excursión fija aunque cada aporte sea pequeño.</p>
+<div id="fig-anm-c11-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Cada grupo termina con total cero, pero su mitad alcanza uno. Los términos se hacen pequeños y los grupos más largos: conservar sólo sus extremos borra excursiones que impiden convergencia.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c11-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C11/C11-F05.svg" class="img-fluid figure-img" alt="Cada grupo termina con total cero, pero su mitad alcanza uno. Los términos se hacen pequeños y los grupos más largos: conservar sólo sus extremos borra excursiones que impiden convergencia.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c11-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Cada grupo termina con total cero, pero su mitad alcanza uno. Los términos se hacen pequeños y los grupos más largos: conservar sólo sus extremos borra excursiones que impiden convergencia.
+</figcaption>
+</figure>
+</div>
+<p>El dibujo muestra el recorrido que la agrupación ocultaría. El control de longitudes de grupo es una manera de impedir que esos índices intermedios se alejen del destino.</p>
+<section id="antes-de-seguir-6" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-6">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-011-049"></span></p>
+<ol type="1">
+<li>¿Qué son las sumas parciales de la serie agrupada?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-050"></span></p>
+<ol start="2" type="1">
+<li>¿Por qué convergencia original implica convergencia agrupada?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-051"></span></p>
+<ol start="3" type="1">
+<li>¿Puede fallar la recíproca?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-052"></span></p>
+<ol start="4" type="1">
+<li>¿Qué índices deja de mostrar la agrupación?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-053"></span></p>
+<ol start="5" type="1">
+<li>¿Qué condición interior recupera la convergencia completa?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-054"></span></p>
+<ol start="6" type="1">
+<li>¿Qué dos hipótesis bastan para ese control interior?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-055"></span></p>
+<ol start="7" type="1">
+<li>¿Cómo se usa la cota <span class="math inline">\(M\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-056"></span></p>
+<ol start="8" type="1">
+<li>¿Qué muestra el bloque de <span class="math inline">\(m\)</span> aportes <span class="math inline">\(1/m\)</span> y <span class="math inline">\(m\)</span> aportes <span class="math inline">\(-1/m\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="elegir-un-control-y-certificar-el-error" class="level2">
+<h2 class="anchored" data-anchor-id="elegir-un-control-y-certificar-el-error">11.8. Elegir un control y certificar el error</h2>
+<p><span id="MA-SEC-ANM-01-011-008"></span></p>
+<p>La primera decisión ante una serie consiste en identificar qué sucesión de totales estamos estudiando y qué mecanismo controla sus bloques. Una fórmula telescópica puede dar el resto exacto; una comparación no negativa produce una barrera; el control absoluto garantiza estabilidad sin seguir los signos; el control alternado preserva cancelaciones y entrega un intervalo. Cada mecanismo responde a una dificultad concreta.</p>
+<p>Un certificado útil separa existencia de precisión. Primero se prueba que <span class="math inline">\(s_n\to S\)</span>; luego una cota <span class="math inline">\(|S-s_n|\le E_n\)</span> permite decidir si el total calculado cumple la tolerancia. Para asegurar error estrictamente menor que <span class="math inline">\(\varepsilon\)</span> se escoge <span class="math inline">\(E_n&lt;\varepsilon\)</span>, no sólo <span class="math inline">\(E_n\le\varepsilon\)</span>. Si conocemos <span class="math inline">\(L_n\le S\le U_n\)</span>, podemos usar el punto medio <span class="math inline">\(M_n=(L_n+U_n)/2\)</span> como aproximación, con</p>
+<p><span class="math display">\[
+|S-M_n|\le\frac{U_n-L_n}{2}.
+\]</span></p>
+<p>La prueba es finita: restar <span class="math inline">\(M_n\)</span> a las dos desigualdades deja fronteras simétricas. El punto medio es un real construido con dos totales; puede ser una mejor aproximación aunque no sea una suma parcial de la serie.</p>
+<p>En la armónica alternada de §11.6, <span class="math inline">\(L_k=s_{2k+1}\)</span>, <span class="math inline">\(U_k=s_{2k}\)</span> y <span class="math inline">\(U_k-L_k=1/(2k+2)\)</span>. El punto medio tiene error a lo sumo <span class="math inline">\(1/(4k+4)\)</span>. Con <span class="math inline">\(k=2\)</span>, <span class="math inline">\(s_4=47/60\)</span>, <span class="math inline">\(s_5=37/60\)</span>, y por tanto</p>
+<p><span class="math display">\[
+\frac{37}{60}\le S\le\frac{47}{60},\qquad
+M_2=\frac7{10},\qquad |S-M_2|\le\frac1{12}&lt;\frac1{10}.
+\]</span></p>
+<p>El cálculo usa seis términos para construir ambos extremos; no convierte <span class="math inline">\(7/10\)</span> en el valor exacto de <span class="math inline">\(S\)</span>. La precisión se certifica sin usar una fórmula del destino.</p>
+<div id="fig-anm-c11-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="El intervalo entre s_5 y s_4 contiene la suma de la armónica alternada. Su punto medio, siete décimos, tiene error a lo sumo un doceavo, menor que un décimo, sin afirmar que sea la suma exacta.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c11-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C11/C11-F06.svg" class="img-fluid figure-img" alt="El intervalo entre s_5 y s_4 contiene la suma de la armónica alternada. Su punto medio, siete décimos, tiene error a lo sumo un doceavo, menor que un décimo, sin afirmar que sea la suma exacta.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c11-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: El intervalo entre s_5 y s_4 contiene la suma de la armónica alternada. Su punto medio, siete décimos, tiene error a lo sumo un doceavo, menor que un décimo, sin afirmar que sea la suma exacta.
+</figcaption>
+</figure>
+</div>
+<p>La mitad de la anchura controla el error del punto medio; la anchura completa controla el de un extremo. Se conserva el origen de cada número para no confundir total, aproximación y suma.</p>
+<p>Las operaciones entre series también requieren una traducción finita. Si las series de <span class="math inline">\(a,b\)</span> convergen a <span class="math inline">\(A,B\)</span> y <span class="math inline">\(\alpha,\beta\in\mathbb R\)</span>, una inducción da</p>
+<p><span class="math display">\[
+\sum_{j=0}^n(\alpha a_j+\beta b_j)
+=\alpha\sum_{j=0}^na_j+\beta\sum_{j=0}^nb_j.
+\]</span></p>
+<p>El álgebra de C06 prueba entonces convergencia y suma <span class="math inline">\(\alpha A+\beta B\)</span>. No basta conocer <span class="math inline">\(a_n\to0\)</span> y <span class="math inline">\(b_n\to0\)</span>. Si eliminamos un prefijo de longitud <span class="math inline">\(m\)</span>, la cola reindexada <span class="math inline">\(c_k=a_{m+k}\)</span> tiene totales <span class="math inline">\(s_{m+n}-P_m\)</span>, donde <span class="math inline">\(P_m=\sum_{j=0}^{m-1}a_j\)</span> y <span class="math inline">\(P_0=0\)</span>. Su suma es <span class="math inline">\(S-P_m\)</span> cuando la original converge; recíprocamente, convergencia de la cola permite añadir el prefijo. Igual comportamiento de convergencia no significa igualdad numérica de las sumas.</p>
+<p>El laboratorio deja varias maneras de controlar una acumulación, cada una con hipótesis identificables. Una lista finita de valores no decide por sí sola una convergencia infinita; la prueba debe alcanzar todos los bloques posteriores. A la vez, una estimación explícita puede convertir esa prueba en un corte utilizable cuando los términos y los datos de la cota pueden evaluarse. La definición de convergencia sola no proporciona ese procedimiento efectivo.</p>
+<section id="antes-de-seguir-7" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-7">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-011-057"></span></p>
+<ol type="1">
+<li>¿Basta <span class="math inline">\(E_n\le\varepsilon\)</span> para certificar error estrictamente menor que <span class="math inline">\(\varepsilon\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-058"></span></p>
+<ol start="2" type="1">
+<li>¿Qué error tiene el punto medio de un intervalo certificado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-059"></span></p>
+<ol start="3" type="1">
+<li>¿Debe ese punto medio ser una suma parcial?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-060"></span></p>
+<ol start="4" type="1">
+<li>¿Qué intervalo se obtiene con <span class="math inline">\(s_4\)</span> y <span class="math inline">\(s_5\)</span> en la armónica alternada?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-061"></span></p>
+<ol start="5" type="1">
+<li>¿Ese cálculo demuestra que la suma vale <span class="math inline">\(7/10\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-062"></span></p>
+<ol start="6" type="1">
+<li>¿Qué permite sumar linealmente dos series convergentes?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-063"></span></p>
+<ol start="7" type="1">
+<li>¿Qué suma tiene la cola reindexada que elimina <span class="math inline">\(m\)</span> términos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-011-064"></span></p>
+<ol start="8" type="1">
+<li>¿Una muestra finita de totales demuestra convergencia?</li>
+</ol>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html">Capítulo 11</a> · <a href="analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-microcontroles.html">Soluciones de microcontroles</a></p>
+<p><a href="analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html">← Capítulo 10</a> · <a href="analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html">Capítulo 12 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

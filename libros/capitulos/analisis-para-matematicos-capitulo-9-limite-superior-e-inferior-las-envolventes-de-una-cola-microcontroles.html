@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Soluciones de microcontroles — Capítulo 9 – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#conservar-la-cola-y-olvidar-el-prefijo" id="toc-conservar-la-cola-y-olvidar-el-prefijo" class="nav-link active" data-scroll-target="#conservar-la-cola-y-olvidar-el-prefijo">§9.1 — Conservar la cola y olvidar el prefijo</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-001" id="toc-microcontrol-001" class="nav-link" data-scroll-target="#microcontrol-001">Microcontrol 001</a></li>
+  <li><a href="#microcontrol-002" id="toc-microcontrol-002" class="nav-link" data-scroll-target="#microcontrol-002">Microcontrol 002</a></li>
+  <li><a href="#microcontrol-003" id="toc-microcontrol-003" class="nav-link" data-scroll-target="#microcontrol-003">Microcontrol 003</a></li>
+  <li><a href="#microcontrol-004" id="toc-microcontrol-004" class="nav-link" data-scroll-target="#microcontrol-004">Microcontrol 004</a></li>
+  <li><a href="#microcontrol-005" id="toc-microcontrol-005" class="nav-link" data-scroll-target="#microcontrol-005">Microcontrol 005</a></li>
+  <li><a href="#microcontrol-006" id="toc-microcontrol-006" class="nav-link" data-scroll-target="#microcontrol-006">Microcontrol 006</a></li>
+  <li><a href="#microcontrol-007" id="toc-microcontrol-007" class="nav-link" data-scroll-target="#microcontrol-007">Microcontrol 007</a></li>
+  <li><a href="#microcontrol-008" id="toc-microcontrol-008" class="nav-link" data-scroll-target="#microcontrol-008">Microcontrol 008</a></li>
+  </ul></li>
+  <li><a href="#dos-envolventes-que-sí-tienen-dirección" id="toc-dos-envolventes-que-sí-tienen-dirección" class="nav-link" data-scroll-target="#dos-envolventes-que-sí-tienen-dirección">§9.2 — Dos envolventes que sí tienen dirección</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-009" id="toc-microcontrol-009" class="nav-link" data-scroll-target="#microcontrol-009">Microcontrol 009</a></li>
+  <li><a href="#microcontrol-010" id="toc-microcontrol-010" class="nav-link" data-scroll-target="#microcontrol-010">Microcontrol 010</a></li>
+  <li><a href="#microcontrol-011" id="toc-microcontrol-011" class="nav-link" data-scroll-target="#microcontrol-011">Microcontrol 011</a></li>
+  <li><a href="#microcontrol-012" id="toc-microcontrol-012" class="nav-link" data-scroll-target="#microcontrol-012">Microcontrol 012</a></li>
+  <li><a href="#microcontrol-013" id="toc-microcontrol-013" class="nav-link" data-scroll-target="#microcontrol-013">Microcontrol 013</a></li>
+  <li><a href="#microcontrol-014" id="toc-microcontrol-014" class="nav-link" data-scroll-target="#microcontrol-014">Microcontrol 014</a></li>
+  <li><a href="#microcontrol-015" id="toc-microcontrol-015" class="nav-link" data-scroll-target="#microcontrol-015">Microcontrol 015</a></li>
+  <li><a href="#microcontrol-016" id="toc-microcontrol-016" class="nav-link" data-scroll-target="#microcontrol-016">Microcontrol 016</a></li>
+  </ul></li>
+  <li><a href="#fronteras-eventuales-y-visitas-tardías" id="toc-fronteras-eventuales-y-visitas-tardías" class="nav-link" data-scroll-target="#fronteras-eventuales-y-visitas-tardías">§9.3 — Fronteras eventuales y visitas tardías</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-017" id="toc-microcontrol-017" class="nav-link" data-scroll-target="#microcontrol-017">Microcontrol 017</a></li>
+  <li><a href="#microcontrol-018" id="toc-microcontrol-018" class="nav-link" data-scroll-target="#microcontrol-018">Microcontrol 018</a></li>
+  <li><a href="#microcontrol-019" id="toc-microcontrol-019" class="nav-link" data-scroll-target="#microcontrol-019">Microcontrol 019</a></li>
+  <li><a href="#microcontrol-020" id="toc-microcontrol-020" class="nav-link" data-scroll-target="#microcontrol-020">Microcontrol 020</a></li>
+  <li><a href="#microcontrol-021" id="toc-microcontrol-021" class="nav-link" data-scroll-target="#microcontrol-021">Microcontrol 021</a></li>
+  <li><a href="#microcontrol-022" id="toc-microcontrol-022" class="nav-link" data-scroll-target="#microcontrol-022">Microcontrol 022</a></li>
+  <li><a href="#microcontrol-023" id="toc-microcontrol-023" class="nav-link" data-scroll-target="#microcontrol-023">Microcontrol 023</a></li>
+  <li><a href="#microcontrol-024" id="toc-microcontrol-024" class="nav-link" data-scroll-target="#microcontrol-024">Microcontrol 024</a></li>
+  </ul></li>
+  <li><a href="#alcanzar-las-fronteras-mediante-extracciones" id="toc-alcanzar-las-fronteras-mediante-extracciones" class="nav-link" data-scroll-target="#alcanzar-las-fronteras-mediante-extracciones">§9.4 — Alcanzar las fronteras mediante extracciones</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-025" id="toc-microcontrol-025" class="nav-link" data-scroll-target="#microcontrol-025">Microcontrol 025</a></li>
+  <li><a href="#microcontrol-026" id="toc-microcontrol-026" class="nav-link" data-scroll-target="#microcontrol-026">Microcontrol 026</a></li>
+  <li><a href="#microcontrol-027" id="toc-microcontrol-027" class="nav-link" data-scroll-target="#microcontrol-027">Microcontrol 027</a></li>
+  <li><a href="#microcontrol-028" id="toc-microcontrol-028" class="nav-link" data-scroll-target="#microcontrol-028">Microcontrol 028</a></li>
+  <li><a href="#microcontrol-029" id="toc-microcontrol-029" class="nav-link" data-scroll-target="#microcontrol-029">Microcontrol 029</a></li>
+  <li><a href="#microcontrol-030" id="toc-microcontrol-030" class="nav-link" data-scroll-target="#microcontrol-030">Microcontrol 030</a></li>
+  <li><a href="#microcontrol-031" id="toc-microcontrol-031" class="nav-link" data-scroll-target="#microcontrol-031">Microcontrol 031</a></li>
+  <li><a href="#microcontrol-032" id="toc-microcontrol-032" class="nav-link" data-scroll-target="#microcontrol-032">Microcontrol 032</a></li>
+  </ul></li>
+  <li><a href="#medir-la-oscilación-y-reconocer-convergencia" id="toc-medir-la-oscilación-y-reconocer-convergencia" class="nav-link" data-scroll-target="#medir-la-oscilación-y-reconocer-convergencia">§9.5 — Medir la oscilación y reconocer convergencia</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-033" id="toc-microcontrol-033" class="nav-link" data-scroll-target="#microcontrol-033">Microcontrol 033</a></li>
+  <li><a href="#microcontrol-034" id="toc-microcontrol-034" class="nav-link" data-scroll-target="#microcontrol-034">Microcontrol 034</a></li>
+  <li><a href="#microcontrol-035" id="toc-microcontrol-035" class="nav-link" data-scroll-target="#microcontrol-035">Microcontrol 035</a></li>
+  <li><a href="#microcontrol-036" id="toc-microcontrol-036" class="nav-link" data-scroll-target="#microcontrol-036">Microcontrol 036</a></li>
+  <li><a href="#microcontrol-037" id="toc-microcontrol-037" class="nav-link" data-scroll-target="#microcontrol-037">Microcontrol 037</a></li>
+  <li><a href="#microcontrol-038" id="toc-microcontrol-038" class="nav-link" data-scroll-target="#microcontrol-038">Microcontrol 038</a></li>
+  <li><a href="#microcontrol-039" id="toc-microcontrol-039" class="nav-link" data-scroll-target="#microcontrol-039">Microcontrol 039</a></li>
+  <li><a href="#microcontrol-040" id="toc-microcontrol-040" class="nav-link" data-scroll-target="#microcontrol-040">Microcontrol 040</a></li>
+  </ul></li>
+  <li><a href="#cambiar-términos-sin-cambiar-las-fronteras" id="toc-cambiar-términos-sin-cambiar-las-fronteras" class="nav-link" data-scroll-target="#cambiar-términos-sin-cambiar-las-fronteras">§9.6 — Cambiar términos sin cambiar las fronteras</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-041" id="toc-microcontrol-041" class="nav-link" data-scroll-target="#microcontrol-041">Microcontrol 041</a></li>
+  <li><a href="#microcontrol-042" id="toc-microcontrol-042" class="nav-link" data-scroll-target="#microcontrol-042">Microcontrol 042</a></li>
+  <li><a href="#microcontrol-043" id="toc-microcontrol-043" class="nav-link" data-scroll-target="#microcontrol-043">Microcontrol 043</a></li>
+  <li><a href="#microcontrol-044" id="toc-microcontrol-044" class="nav-link" data-scroll-target="#microcontrol-044">Microcontrol 044</a></li>
+  <li><a href="#microcontrol-045" id="toc-microcontrol-045" class="nav-link" data-scroll-target="#microcontrol-045">Microcontrol 045</a></li>
+  <li><a href="#microcontrol-046" id="toc-microcontrol-046" class="nav-link" data-scroll-target="#microcontrol-046">Microcontrol 046</a></li>
+  <li><a href="#microcontrol-047" id="toc-microcontrol-047" class="nav-link" data-scroll-target="#microcontrol-047">Microcontrol 047</a></li>
+  <li><a href="#microcontrol-048" id="toc-microcontrol-048" class="nav-link" data-scroll-target="#microcontrol-048">Microcontrol 048</a></li>
+  </ul></li>
+  <li><a href="#comparar-y-combinar-comportamientos" id="toc-comparar-y-combinar-comportamientos" class="nav-link" data-scroll-target="#comparar-y-combinar-comportamientos">§9.7 — Comparar y combinar comportamientos</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-049" id="toc-microcontrol-049" class="nav-link" data-scroll-target="#microcontrol-049">Microcontrol 049</a></li>
+  <li><a href="#microcontrol-050" id="toc-microcontrol-050" class="nav-link" data-scroll-target="#microcontrol-050">Microcontrol 050</a></li>
+  <li><a href="#microcontrol-051" id="toc-microcontrol-051" class="nav-link" data-scroll-target="#microcontrol-051">Microcontrol 051</a></li>
+  <li><a href="#microcontrol-052" id="toc-microcontrol-052" class="nav-link" data-scroll-target="#microcontrol-052">Microcontrol 052</a></li>
+  <li><a href="#microcontrol-053" id="toc-microcontrol-053" class="nav-link" data-scroll-target="#microcontrol-053">Microcontrol 053</a></li>
+  <li><a href="#microcontrol-054" id="toc-microcontrol-054" class="nav-link" data-scroll-target="#microcontrol-054">Microcontrol 054</a></li>
+  <li><a href="#microcontrol-055" id="toc-microcontrol-055" class="nav-link" data-scroll-target="#microcontrol-055">Microcontrol 055</a></li>
+  <li><a href="#microcontrol-056" id="toc-microcontrol-056" class="nav-link" data-scroll-target="#microcontrol-056">Microcontrol 056</a></li>
+  </ul></li>
+  <li><a href="#qué-describen-los-extremos-y-qué-dejan-abierto" id="toc-qué-describen-los-extremos-y-qué-dejan-abierto" class="nav-link" data-scroll-target="#qué-describen-los-extremos-y-qué-dejan-abierto">§9.8 — Qué describen los extremos y qué dejan abierto</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-057" id="toc-microcontrol-057" class="nav-link" data-scroll-target="#microcontrol-057">Microcontrol 057</a></li>
+  <li><a href="#microcontrol-058" id="toc-microcontrol-058" class="nav-link" data-scroll-target="#microcontrol-058">Microcontrol 058</a></li>
+  <li><a href="#microcontrol-059" id="toc-microcontrol-059" class="nav-link" data-scroll-target="#microcontrol-059">Microcontrol 059</a></li>
+  <li><a href="#microcontrol-060" id="toc-microcontrol-060" class="nav-link" data-scroll-target="#microcontrol-060">Microcontrol 060</a></li>
+  <li><a href="#microcontrol-061" id="toc-microcontrol-061" class="nav-link" data-scroll-target="#microcontrol-061">Microcontrol 061</a></li>
+  <li><a href="#microcontrol-062" id="toc-microcontrol-062" class="nav-link" data-scroll-target="#microcontrol-062">Microcontrol 062</a></li>
+  <li><a href="#microcontrol-063" id="toc-microcontrol-063" class="nav-link" data-scroll-target="#microcontrol-063">Microcontrol 063</a></li>
+  <li><a href="#microcontrol-064" id="toc-microcontrol-064" class="nav-link" data-scroll-target="#microcontrol-064">Microcontrol 064</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Soluciones de microcontroles — Capítulo 9</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html">Capítulo 9</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y huellas vinculan cada solución con el manuscrito.</p>
+<section id="conservar-la-cola-y-olvidar-el-prefijo" class="level2">
+<h2 class="anchored" data-anchor-id="conservar-la-cola-y-olvidar-el-prefijo">§9.1 — Conservar la cola y olvidar el prefijo</h2>
+<section id="microcontrol-001" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-001">Microcontrol 001</h3>
+<p><span id="MA-MIC-ANM-01-009-001"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-001"></span></p>
+<p><span id="MA-SEC-ANM-01-009-001"></span></p>
+<p><strong>Pregunta.</strong> ¿En qué conjuntos viven el corte <span class="math inline">\(N\)</span> y los valores de <span class="math inline">\(T_N\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(N\)</span> es natural; <span class="math inline">\(T_N\)</span> es un subconjunto de <span class="math inline">\(\mathbb R\)</span>. El conjunto de índices de la cola es un subconjunto de <span class="math inline">\(\mathbb N\)</span>.</p>
+</section>
+<section id="microcontrol-002" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-002">Microcontrol 002</h3>
+<p><span id="MA-MIC-ANM-01-009-002"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-002"></span></p>
+<p><strong>Pregunta.</strong> ¿Por qué <span class="math inline">\(T_N\)</span> no es vacío?</p>
+<p><strong>Solución.</strong> Contiene <span class="math inline">\(a_N\)</span>, porque el índice <span class="math inline">\(N\)</span> pertenece a su propia cola.</p>
+</section>
+<section id="microcontrol-003" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-003">Microcontrol 003</h3>
+<p><span id="MA-MIC-ANM-01-009-003"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-003"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué hipótesis permite que <span class="math inline">\(\ell_N\)</span> y <span class="math inline">\(u_N\)</span> sean reales?</p>
+<p><strong>Solución.</strong> La cola es no vacía y acotada porque la sucesión lo es; completitud proporciona su ínfimo y supremo reales.</p>
+</section>
+<section id="microcontrol-004" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-004">Microcontrol 004</h3>
+<p><span id="MA-MIC-ANM-01-009-004"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-004"></span></p>
+<p><strong>Pregunta.</strong> ¿Debe <span class="math inline">\(u_N\)</span> ser uno de los términos de la cola?</p>
+<p><strong>Solución.</strong> No.&nbsp;Para <span class="math inline">\(a_n=1-1/(n+1)\)</span>, toda cola tiene supremo uno y ningún término vale uno.</p>
+</section>
+<section id="microcontrol-005" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-005">Microcontrol 005</h3>
+<p><span id="MA-MIC-ANM-01-009-005"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-005"></span></p>
+<p><strong>Pregunta.</strong> Calcula <span class="math inline">\(\ell_N\)</span> y <span class="math inline">\(u_N\)</span> para <span class="math inline">\(a_n=1/(n+1)\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\ell_N=0\)</span> y <span class="math inline">\(u_N=1/(N+1)\)</span>. El supremo se alcanza en <span class="math inline">\(N\)</span>; el ínfimo no se alcanza y se justifica por arquimedianidad.</p>
+</section>
+<section id="microcontrol-006" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-006">Microcontrol 006</h3>
+<p><span id="MA-MIC-ANM-01-009-006"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-006"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué contradicción aparece si todos los términos de la cola satisfacen <span class="math inline">\(a_n\le u_N-\eta\)</span> con <span class="math inline">\(\eta&gt;0\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(u_N-\eta\)</span> sería una cota superior menor que el supremo <span class="math inline">\(u_N\)</span>, contradiciendo su minimalidad.</p>
+</section>
+<section id="microcontrol-007" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-007">Microcontrol 007</h3>
+<p><span id="MA-MIC-ANM-01-009-007"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-007"></span></p>
+<p><strong>Pregunta.</strong> ¿Una cola constante tiene infinitos valores distintos?</p>
+<p><strong>Solución.</strong> No.&nbsp;Tiene infinitos índices y un único valor; repetir valores no afecta a que la sucesión sea una función.</p>
+</section>
+<section id="microcontrol-008" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-008">Microcontrol 008</h3>
+<p><span id="MA-MIC-ANM-01-009-008"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-008"></span></p>
+<p><strong>Pregunta.</strong> Para <span class="math inline">\(a_0=10\)</span> y <span class="math inline">\(a_n=0\)</span> si <span class="math inline">\(n\ge1\)</span>, ¿cuándo cambia el supremo de cola?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(u_0=10\)</span> y <span class="math inline">\(u_N=0\)</span> para todo <span class="math inline">\(N\ge1\)</span>. El cambio ocurre al pasar del corte cero al uno.</p>
+</section>
+</section>
+<section id="dos-envolventes-que-sí-tienen-dirección" class="level2">
+<h2 class="anchored" data-anchor-id="dos-envolventes-que-sí-tienen-dirección">§9.2 — Dos envolventes que sí tienen dirección</h2>
+<section id="microcontrol-009" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-009">Microcontrol 009</h3>
+<p><span id="MA-MIC-ANM-01-009-009"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-009"></span></p>
+<p><span id="MA-SEC-ANM-01-009-002"></span></p>
+<p><strong>Pregunta.</strong> ¿Cuál es la inclusión entre <span class="math inline">\(T_{N+1}\)</span> y <span class="math inline">\(T_N\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(T_{N+1}\subseteq T_N\)</span>: sólo se retira un índice disponible, sin añadir valores.</p>
+</section>
+<section id="microcontrol-010" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-010">Microcontrol 010</h3>
+<p><span id="MA-MIC-ANM-01-009-010"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-010"></span></p>
+<p><strong>Pregunta.</strong> ¿En qué sentido es monótona la envolvente inferior?</p>
+<p><strong>Solución.</strong> Es no decreciente: <span class="math inline">\(\ell_{N+1}\ge\ell_N\)</span>, porque cada cota inferior de <span class="math inline">\(T_N\)</span> también acota <span class="math inline">\(T_{N+1}\)</span>.</p>
+</section>
+<section id="microcontrol-011" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-011">Microcontrol 011</h3>
+<p><span id="MA-MIC-ANM-01-009-011"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-011"></span></p>
+<p><strong>Pregunta.</strong> ¿En qué sentido es monótona la envolvente superior?</p>
+<p><strong>Solución.</strong> Es no creciente: <span class="math inline">\(u_{N+1}\le u_N\)</span>, porque cada cota superior de <span class="math inline">\(T_N\)</span> también acota <span class="math inline">\(T_{N+1}\)</span>.</p>
+</section>
+<section id="microcontrol-012" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-012">Microcontrol 012</h3>
+<p><span id="MA-MIC-ANM-01-009-012"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-012"></span></p>
+<p><strong>Pregunta.</strong> Escribe el supremo exterior que define <span class="math inline">\(\alpha\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\alpha=\sup\{\ell_N:N\in\mathbb N\}\)</span>; el conjunto está formado por ínfimos reales de colas.</p>
+</section>
+<section id="microcontrol-013" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-013">Microcontrol 013</h3>
+<p><span id="MA-MIC-ANM-01-009-013"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-013"></span></p>
+<p><strong>Pregunta.</strong> Escribe el ínfimo exterior que define <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\beta=\inf\{u_N:N\in\mathbb N\}\)</span>; el conjunto está formado por supremos reales de colas.</p>
+</section>
+<section id="microcontrol-014" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-014">Microcontrol 014</h3>
+<p><span id="MA-MIC-ANM-01-009-014"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-014"></span></p>
+<p><strong>Pregunta.</strong> ¿Por qué <span class="math inline">\(\alpha\le\beta\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\ell_N\le u_N\)</span> para todo <span class="math inline">\(N\)</span>; ambas envolventes convergen, y C06 conserva el orden al pasar al límite.</p>
+</section>
+<section id="microcontrol-015" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-015">Microcontrol 015</h3>
+<p><span id="MA-MIC-ANM-01-009-015"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-015"></span></p>
+<p><strong>Pregunta.</strong> Para <span class="math inline">\(a_n=(-1)^n(1+1/(n+1))\)</span>, ¿cuáles son los extremos asintóticos?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\alpha=-1\)</span> y <span class="math inline">\(\beta=1\)</span>. Los primeros índices impares y pares de cada cola dan sus extremos, cuyas correcciones recíprocas tienden a cero.</p>
+</section>
+<section id="microcontrol-016" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-016">Microcontrol 016</h3>
+<p><span id="MA-MIC-ANM-01-009-016"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-016"></span></p>
+<p><strong>Pregunta.</strong> ¿El ejemplo anterior tiene términos en <span class="math inline">\([\alpha,\beta]\)</span>?</p>
+<p><strong>Solución.</strong> No.&nbsp;Los pares son mayores que uno y los impares menores que menos uno. La banda asintótica exacta no tiene por qué contener términos.</p>
+</section>
+</section>
+<section id="fronteras-eventuales-y-visitas-tardías" class="level2">
+<h2 class="anchored" data-anchor-id="fronteras-eventuales-y-visitas-tardías">§9.3 — Fronteras eventuales y visitas tardías</h2>
+<section id="microcontrol-017" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-017">Microcontrol 017</h3>
+<p><span id="MA-MIC-ANM-01-009-017"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-017"></span></p>
+<p><span id="MA-SEC-ANM-01-009-003"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué orden de cuantificadores expresa una cota superior eventual con tolerancia <span class="math inline">\(\varepsilon\)</span>?</p>
+<p><strong>Solución.</strong> Para cada <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(N\)</span> tal que para todo <span class="math inline">\(n\ge N\)</span> se cumple <span class="math inline">\(a_n&lt;\beta+\varepsilon\)</span>.</p>
+</section>
+<section id="microcontrol-018" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-018">Microcontrol 018</h3>
+<p><span id="MA-MIC-ANM-01-009-018"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-018"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué orden de cuantificadores expresa visitas tardías cerca de <span class="math inline">\(\beta\)</span> desde abajo?</p>
+<p><strong>Solución.</strong> Para cada <span class="math inline">\(\varepsilon&gt;0\)</span> y cada corte <span class="math inline">\(K\)</span> existe <span class="math inline">\(n\ge K\)</span> con <span class="math inline">\(a_n&gt;\beta-\varepsilon\)</span>.</p>
+</section>
+<section id="microcontrol-019" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-019">Microcontrol 019</h3>
+<p><span id="MA-MIC-ANM-01-009-019"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-019"></span></p>
+<p><strong>Pregunta.</strong> ¿La condición de visitas obliga a que toda la cola esté cerca de <span class="math inline">\(\beta\)</span>?</p>
+<p><strong>Solución.</strong> No.&nbsp;Sólo garantiza algún índice posterior a cada corte; la alternancia cero–uno visita uno tarde y también conserva ceros tarde.</p>
+</section>
+<section id="microcontrol-020" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-020">Microcontrol 020</h3>
+<p><span id="MA-MIC-ANM-01-009-020"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-020"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué ocurre con las visitas a alturas al menos <span class="math inline">\(t\)</span> si <span class="math inline">\(t&gt;\beta\)</span>?</p>
+<p><strong>Solución.</strong> Son finitas: con tolerancia <span class="math inline">\((t-\beta)/2\)</span>, toda una cola queda por debajo de <span class="math inline">\(t\)</span>.</p>
+</section>
+<section id="microcontrol-021" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-021">Microcontrol 021</h3>
+<p><span id="MA-MIC-ANM-01-009-021"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-021"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué ocurre si <span class="math inline">\(t&lt;\beta\)</span> con los índices que cumplen <span class="math inline">\(a_n&gt;t\)</span>?</p>
+<p><strong>Solución.</strong> Hay infinitos: la propiedad de visitas con tolerancia <span class="math inline">\(\beta-t\)</span> proporciona uno después de cualquier corte.</p>
+</section>
+<section id="microcontrol-022" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-022">Microcontrol 022</h3>
+<p><span id="MA-MIC-ANM-01-009-022"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-022"></span></p>
+<p><strong>Pregunta.</strong> ¿Se puede decidir sólo con <span class="math inline">\(\beta\)</span> si hay infinitos índices con <span class="math inline">\(a_n=\beta\)</span>?</p>
+<p><strong>Solución.</strong> No.&nbsp;La constante uno los tiene; <span class="math inline">\(1-1/(n+1)\)</span> tiene la misma frontera uno y no la alcanza.</p>
+</section>
+<section id="microcontrol-023" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-023">Microcontrol 023</h3>
+<p><span id="MA-MIC-ANM-01-009-023"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-023"></span></p>
+<p><strong>Pregunta.</strong> Escribe las dos condiciones que caracterizan <span class="math inline">\(\alpha\)</span>.</p>
+<p><strong>Solución.</strong> Para cada <span class="math inline">\(\varepsilon&gt;0\)</span>, alguna cola cumple <span class="math inline">\(a_n&gt;\alpha-\varepsilon\)</span>; para cada <span class="math inline">\(\varepsilon&gt;0\)</span> y corte <span class="math inline">\(K\)</span>, algún <span class="math inline">\(n\ge K\)</span> cumple <span class="math inline">\(a_n&lt;\alpha+\varepsilon\)</span>.</p>
+</section>
+<section id="microcontrol-024" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-024">Microcontrol 024</h3>
+<p><span id="MA-MIC-ANM-01-009-024"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-024"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué banda abierta contiene alguna cola para cada <span class="math inline">\(\varepsilon&gt;0\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\((\alpha-\varepsilon,\beta+\varepsilon)\)</span>, usando el máximo de los dos cortes de las cotas eventuales.</p>
+</section>
+</section>
+<section id="alcanzar-las-fronteras-mediante-extracciones" class="level2">
+<h2 class="anchored" data-anchor-id="alcanzar-las-fronteras-mediante-extracciones">§9.4 — Alcanzar las fronteras mediante extracciones</h2>
+<section id="microcontrol-025" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-025">Microcontrol 025</h3>
+<p><span id="MA-MIC-ANM-01-009-025"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-025"></span></p>
+<p><span id="MA-SEC-ANM-01-009-004"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué dos restricciones se coordinan antes de elegir un índice próximo a <span class="math inline">\(\beta\)</span>?</p>
+<p><strong>Solución.</strong> La cota eventual <span class="math inline">\(a_n&lt;\beta+\delta\)</span> y la visita tardía <span class="math inline">\(a_n&gt;\beta-\delta\)</span>, aplicada después del corte de la primera y del corte solicitado.</p>
+</section>
+<section id="microcontrol-026" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-026">Microcontrol 026</h3>
+<p><span id="MA-MIC-ANM-01-009-026"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-026"></span></p>
+<p><strong>Pregunta.</strong> ¿Por qué existe el mínimo que define <span class="math inline">\(n_0\)</span>?</p>
+<p><strong>Solución.</strong> El conjunto de índices con <span class="math inline">\(|a_n-\beta|&lt;1\)</span> es no vacío por la coordinación anterior; todo subconjunto no vacío de <span class="math inline">\(\mathbb N\)</span> tiene mínimo.</p>
+</section>
+<section id="microcontrol-027" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-027">Microcontrol 027</h3>
+<p><span id="MA-MIC-ANM-01-009-027"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-027"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué evita que <span class="math inline">\(n_k\)</span> repita un índice previo?</p>
+<p><strong>Solución.</strong> Para <span class="math inline">\(k\ge1\)</span> se exige <span class="math inline">\(n_k\ge n_{k-1}+1\)</span>; por inducción todos los índices elegidos son distintos y están ordenados.</p>
+</section>
+<section id="microcontrol-028" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-028">Microcontrol 028</h3>
+<p><span id="MA-MIC-ANM-01-009-028"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-028"></span></p>
+<p><strong>Pregunta.</strong> ¿Por qué usamos <span class="math inline">\(1/(k+1)\)</span> en vez de <span class="math inline">\(1/k\)</span>?</p>
+<p><strong>Solución.</strong> El índice nuevo empieza en cero; <span class="math inline">\(1/(k+1)\)</span> está definido y es positivo para todo <span class="math inline">\(k\in\mathbb N\)</span>.</p>
+</section>
+<section id="microcontrol-029" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-029">Microcontrol 029</h3>
+<p><span id="MA-MIC-ANM-01-009-029"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-029"></span></p>
+<p><strong>Pregunta.</strong> ¿En qué dominio vive el selector <span class="math inline">\(k\mapsto n_k\)</span>?</p>
+<p><strong>Solución.</strong> Es una función <span class="math inline">\(\mathbb N\to\mathbb N\)</span> estrictamente creciente; al componer con <span class="math inline">\(a\)</span> se obtiene una sucesión real <span class="math inline">\(k\mapsto a_{n_k}\)</span>.</p>
+</section>
+<section id="microcontrol-030" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-030">Microcontrol 030</h3>
+<p><span id="MA-MIC-ANM-01-009-030"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-030"></span></p>
+<p><strong>Pregunta.</strong> ¿Cómo demuestra <span class="math inline">\(|a_{n_k}-\beta|&lt;1/(k+1)\)</span> la convergencia?</p>
+<p><strong>Solución.</strong> Para <span class="math inline">\(\varepsilon&gt;0\)</span>, elegir por arquimedianidad <span class="math inline">\(K\)</span> con <span class="math inline">\(1/(K+1)&lt;\varepsilon\)</span>. Todo <span class="math inline">\(k\ge K\)</span> tiene error menor que <span class="math inline">\(\varepsilon\)</span>.</p>
+</section>
+<section id="microcontrol-031" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-031">Microcontrol 031</h3>
+<p><span id="MA-MIC-ANM-01-009-031"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-031"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué desigualdad satisface cualquier límite <span class="math inline">\(x\)</span> de subsucesión?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\alpha\le x\le\beta\)</span>: para cada corte fijo la subsucesión queda eventualmente entre <span class="math inline">\(\ell_N,u_N\)</span>; se pasa al límite en la extracción y después en <span class="math inline">\(N\)</span>.</p>
+</section>
+<section id="microcontrol-032" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-032">Microcontrol 032</h3>
+<p><span id="MA-MIC-ANM-01-009-032"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-032"></span></p>
+<p><strong>Pregunta.</strong> ¿Por qué <span class="math inline">\(\beta\)</span> es máximo de <span class="math inline">\(\operatorname{LimSub}(a)\)</span> y no sólo su supremo?</p>
+<p><strong>Solución.</strong> La extracción superior demuestra que <span class="math inline">\(\beta\)</span> pertenece al conjunto, y el confinamiento demuestra que ningún elemento lo supera.</p>
+</section>
+</section>
+<section id="medir-la-oscilación-y-reconocer-convergencia" class="level2">
+<h2 class="anchored" data-anchor-id="medir-la-oscilación-y-reconocer-convergencia">§9.5 — Medir la oscilación y reconocer convergencia</h2>
+<section id="microcontrol-033" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-033">Microcontrol 033</h3>
+<p><span id="MA-MIC-ANM-01-009-033"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-033"></span></p>
+<p><span id="MA-SEC-ANM-01-009-005"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué concluyes si <span class="math inline">\(\alpha=\beta=L\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(a_n\to L\)</span>. Para cada tolerancia, las dos envolventes se acercan a <span class="math inline">\(L\)</span> y encierran toda una cola entre <span class="math inline">\(L-\varepsilon\)</span> y <span class="math inline">\(L+\varepsilon\)</span>.</p>
+</section>
+<section id="microcontrol-034" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-034">Microcontrol 034</h3>
+<p><span id="MA-MIC-ANM-01-009-034"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-034"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué concluyes sobre los extremos si <span class="math inline">\(a_n\to L\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\alpha=\beta=L\)</span>, porque las extracciones de ambos extremos son subsucesiones de una convergente y comparten su límite.</p>
+</section>
+<section id="microcontrol-035" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-035">Microcontrol 035</h3>
+<p><span id="MA-MIC-ANM-01-009-035"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-035"></span></p>
+<p><strong>Pregunta.</strong> ¿Cómo se define la anchura <span class="math inline">\(d_N\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(d_N=u_N-\ell_N\)</span>, un real no negativo que mide la diferencia entre extremos de la cola.</p>
+</section>
+<section id="microcontrol-036" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-036">Microcontrol 036</h3>
+<p><span id="MA-MIC-ANM-01-009-036"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-036"></span></p>
+<p><strong>Pregunta.</strong> ¿Por qué <span class="math inline">\(d_N\)</span> no aumenta?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(u_{N+1}\le u_N\)</span> y <span class="math inline">\(\ell_{N+1}\ge\ell_N\)</span>; al restar, <span class="math inline">\(d_{N+1}\le d_N\)</span>.</p>
+</section>
+<section id="microcontrol-037" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-037">Microcontrol 037</h3>
+<p><span id="MA-MIC-ANM-01-009-037"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-037"></span></p>
+<p><strong>Pregunta.</strong> ¿Cuál es el límite de <span class="math inline">\(d_N\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\beta-\alpha\)</span>, por la regla de diferencia de límites reales finitos de C06.</p>
+</section>
+<section id="microcontrol-038" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-038">Microcontrol 038</h3>
+<p><span id="MA-MIC-ANM-01-009-038"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-038"></span></p>
+<p><strong>Pregunta.</strong> ¿Debe la máxima distancia entre dos términos de una cola existir?</p>
+<p><strong>Solución.</strong> No.&nbsp;Existe su supremo <span class="math inline">\(d_N\)</span>, pero puede no alcanzarse. En la cola de <span class="math inline">\(1/(n+1)\)</span>, la anchura es <span class="math inline">\(1/(N+1)\)</span> y ninguna distancia entre términos la alcanza.</p>
+</section>
+<section id="microcontrol-039" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-039">Microcontrol 039</h3>
+<p><span id="MA-MIC-ANM-01-009-039"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-039"></span></p>
+<p><strong>Pregunta.</strong> Calcula la oscilación asintótica de la alternancia cero–uno.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\omega=1-0=1\)</span>, porque toda cola tiene ambos valores.</p>
+</section>
+<section id="microcontrol-040" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-040">Microcontrol 040</h3>
+<p><span id="MA-MIC-ANM-01-009-040"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-040"></span></p>
+<p><strong>Pregunta.</strong> ¿Oscilar de lado para siempre impide converger?</p>
+<p><strong>Solución.</strong> No.&nbsp;<span class="math inline">\((-1)^n/(n+1)\)</span> cambia de signo siempre y converge a cero; su oscilación asintótica es cero.</p>
+</section>
+</section>
+<section id="cambiar-términos-sin-cambiar-las-fronteras" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-términos-sin-cambiar-las-fronteras">§9.6 — Cambiar términos sin cambiar las fronteras</h2>
+<section id="microcontrol-041" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-041">Microcontrol 041</h3>
+<p><span id="MA-MIC-ANM-01-009-041"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-041"></span></p>
+<p><span id="MA-SEC-ANM-01-009-006"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué ocurre con <span class="math inline">\(\alpha,\beta\)</span> si se cambian finitos términos?</p>
+<p><strong>Solución.</strong> Se conservan: las colas coinciden después del último índice modificado, y la modificación finita preserva la acotación.</p>
+</section>
+<section id="microcontrol-042" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-042">Microcontrol 042</h3>
+<p><span id="MA-MIC-ANM-01-009-042"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-042"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué conjunto de cola tiene <span class="math inline">\(b_k=a_{k+r}\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(T_K(b)=T_{K+r}(a)\)</span>; el desplazamiento fija <span class="math inline">\(r\in\mathbb N\)</span> y reindexa la cola desde cero.</p>
+</section>
+<section id="microcontrol-043" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-043">Microcontrol 043</h3>
+<p><span id="MA-MIC-ANM-01-009-043"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-043"></span></p>
+<p><strong>Pregunta.</strong> ¿Por qué <span class="math inline">\(b\)</span> es acotada si <span class="math inline">\(a\)</span> lo es y <span class="math inline">\(b_n-a_n\to0\)</span>?</p>
+<p><strong>Solución.</strong> La diferencia convergente es acotada; la desigualdad <span class="math inline">\(|b_n|\le|a_n|+|b_n-a_n|\)</span> da una cota global.</p>
+</section>
+<section id="microcontrol-044" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-044">Microcontrol 044</h3>
+<p><span id="MA-MIC-ANM-01-009-044"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-044"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué cota de <span class="math inline">\(u_N(b)\)</span> obtienes de <span class="math inline">\(|a_n-b_n|&lt;\varepsilon\)</span> para todo <span class="math inline">\(n\ge N\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(u_N(b)\le u_N(a)+\varepsilon\)</span>, porque <span class="math inline">\(u_N(a)+\varepsilon\)</span> es una cota superior de todos los <span class="math inline">\(b_n\)</span> de esa cola.</p>
+</section>
+<section id="microcontrol-045" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-045">Microcontrol 045</h3>
+<p><span id="MA-MIC-ANM-01-009-045"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-045"></span></p>
+<p><strong>Pregunta.</strong> ¿Por qué se comparan las envolventes también intercambiando <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>?</p>
+<p><strong>Solución.</strong> Para controlar ambas direcciones de su diferencia y concluir <span class="math inline">\(|\beta(a)-\beta(b)|\le\varepsilon\)</span> y lo análogo para <span class="math inline">\(\alpha\)</span>.</p>
+</section>
+<section id="microcontrol-046" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-046">Microcontrol 046</h3>
+<p><span id="MA-MIC-ANM-01-009-046"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-046"></span></p>
+<p><strong>Pregunta.</strong> Calcula los extremos de <span class="math inline">\(a_n=(-1)^n+1/(n+1)\)</span>.</p>
+<p><strong>Solución.</strong> Son <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span>. Su diferencia respecto de <span class="math inline">\((-1)^n\)</span> tiende a cero, así que se aplica estabilidad ante perturbación.</p>
+</section>
+<section id="microcontrol-047" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-047">Microcontrol 047</h3>
+<p><span id="MA-MIC-ANM-01-009-047"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-047"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué hace una traslación constante <span class="math inline">\(c\)</span> a los extremos?</p>
+<p><strong>Solución.</strong> Los suma en <span class="math inline">\(c\)</span>: <span class="math inline">\(\alpha(a+c)=\alpha(a)+c\)</span> y <span class="math inline">\(\beta(a+c)=\beta(a)+c\)</span>, porque trasladar preserva la optimalidad de las cotas.</p>
+</section>
+<section id="microcontrol-048" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-048">Microcontrol 048</h3>
+<p><span id="MA-MIC-ANM-01-009-048"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-048"></span></p>
+<p><strong>Pregunta.</strong> ¿Modificar infinitos términos obliga a cambiar los extremos?</p>
+<p><strong>Solución.</strong> No.&nbsp;Añadir <span class="math inline">\(1/(n+1)\)</span> cambia todos los términos de cualquier sucesión real, pero preserva sus extremos cuando la sucesión es acotada.</p>
+</section>
+</section>
+<section id="comparar-y-combinar-comportamientos" class="level2">
+<h2 class="anchored" data-anchor-id="comparar-y-combinar-comportamientos">§9.7 — Comparar y combinar comportamientos</h2>
+<section id="microcontrol-049" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-049">Microcontrol 049</h3>
+<p><span id="MA-MIC-ANM-01-009-049"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-049"></span></p>
+<p><span id="MA-SEC-ANM-01-009-007"></span></p>
+<p><strong>Pregunta.</strong> Si <span class="math inline">\(a_n\le b_n\)</span> eventualmente, ¿qué orden tienen sus extremos?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\alpha_a\le\alpha_b\)</span> y <span class="math inline">\(\beta_a\le\beta_b\)</span>, por comparación de extremos de las colas posteriores y conservación de orden bajo límites.</p>
+</section>
+<section id="microcontrol-050" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-050">Microcontrol 050</h3>
+<p><span id="MA-MIC-ANM-01-009-050"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-050"></span></p>
+<p><strong>Pregunta.</strong> ¿Una desigualdad estricta entre términos obliga a desigualdad estricta entre extremos?</p>
+<p><strong>Solución.</strong> No.&nbsp;<span class="math inline">\(0&lt;1/(n+1)\)</span> en cada índice, pero ambas sucesiones tienen los dos extremos iguales a cero.</p>
+</section>
+<section id="microcontrol-051" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-051">Microcontrol 051</h3>
+<p><span id="MA-MIC-ANM-01-009-051"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-051"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué ocurre al multiplicar por una constante positiva <span class="math inline">\(c\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\alpha(ca)=c\alpha_a\)</span> y <span class="math inline">\(\beta(ca)=c\beta_a\)</span>, pues se preservan orden y extremos de cola.</p>
+</section>
+<section id="microcontrol-052" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-052">Microcontrol 052</h3>
+<p><span id="MA-MIC-ANM-01-009-052"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-052"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué ocurre al multiplicar por una constante negativa <span class="math inline">\(c\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\alpha(ca)=c\beta_a\)</span> y <span class="math inline">\(\beta(ca)=c\alpha_a\)</span>, porque la multiplicación invierte el orden.</p>
+</section>
+<section id="microcontrol-053" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-053">Microcontrol 053</h3>
+<p><span id="MA-MIC-ANM-01-009-053"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-053"></span></p>
+<p><strong>Pregunta.</strong> Escribe la cota general superior para una suma de sucesiones acotadas.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\beta(a+b)\le\beta_a+\beta_b\)</span>. Los supremos de cada cola dan una cota de la suma, aunque procedan de índices diferentes.</p>
+</section>
+<section id="microcontrol-054" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-054">Microcontrol 054</h3>
+<p><span id="MA-MIC-ANM-01-009-054"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-054"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué extremos tiene la suma si <span class="math inline">\(a_n=(-1)^n\)</span> y <span class="math inline">\(b_n=-a_n\)</span>?</p>
+<p><strong>Solución.</strong> Ambos son cero porque la suma es constante cero. La suma de fronteras superiores, en cambio, es dos.</p>
+</section>
+<section id="microcontrol-055" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-055">Microcontrol 055</h3>
+<p><span id="MA-MIC-ANM-01-009-055"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-055"></span></p>
+<p><strong>Pregunta.</strong> Si <span class="math inline">\(b_n\to B\)</span>, ¿cuál es <span class="math inline">\(\beta(a+b)\)</span>?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\beta_a+B\)</span>, por traslación en <span class="math inline">\(B\)</span> y estabilidad ante la perturbación <span class="math inline">\(b_n-B\to0\)</span>.</p>
+</section>
+<section id="microcontrol-056" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-056">Microcontrol 056</h3>
+<p><span id="MA-MIC-ANM-01-009-056"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-056"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué hipótesis de signo permite la cota <span class="math inline">\(\beta(ab)\le\beta_a\beta_b\)</span>?</p>
+<p><strong>Solución.</strong> Que ambos factores sean no negativos, al menos eventualmente, además de acotados. Entonces se pueden multiplicar sus cotas superiores de cola sin invertir orden.</p>
+</section>
+</section>
+<section id="qué-describen-los-extremos-y-qué-dejan-abierto" class="level2">
+<h2 class="anchored" data-anchor-id="qué-describen-los-extremos-y-qué-dejan-abierto">§9.8 — Qué describen los extremos y qué dejan abierto</h2>
+<section id="microcontrol-057" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-057">Microcontrol 057</h3>
+<p><span id="MA-MIC-ANM-01-009-057"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-057"></span></p>
+<p><span id="MA-SEC-ANM-01-009-008"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué extremos tiene la sucesión que vale uno en potencias de dos y cero en los demás índices?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\alpha=0\)</span> y <span class="math inline">\(\beta=1\)</span>, porque todo corte deja alguna potencia de dos y algún índice de la forma <span class="math inline">\(2^j+1\)</span> con <span class="math inline">\(j\ge1\)</span>, que no es potencia.</p>
+</section>
+<section id="microcontrol-058" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-058">Microcontrol 058</h3>
+<p><span id="MA-MIC-ANM-01-009-058"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-058"></span></p>
+<p><strong>Pregunta.</strong> ¿La separación creciente entre picos elimina su efecto sobre <span class="math inline">\(\beta\)</span>?</p>
+<p><strong>Solución.</strong> No.&nbsp;Mientras sobrevivan picos de altura uno después de cualquier corte, el supremo de cada cola sigue siendo uno.</p>
+</section>
+<section id="microcontrol-059" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-059">Microcontrol 059</h3>
+<p><span id="MA-MIC-ANM-01-009-059"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-059"></span></p>
+<p><strong>Pregunta.</strong> ¿Igualdad de ambos extremos entre dos sucesiones significa igualdad de funciones?</p>
+<p><strong>Solución.</strong> No.&nbsp;La constante cero y <span class="math inline">\(1/(n+1)\)</span> tienen ambos extremos cero, pero difieren en todos los términos.</p>
+</section>
+<section id="microcontrol-060" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-060">Microcontrol 060</h3>
+<p><span id="MA-MIC-ANM-01-009-060"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-060"></span></p>
+<p><strong>Pregunta.</strong> ¿Dos sucesiones con extremos cero y uno deben tener el mismo conjunto de destinos?</p>
+<p><strong>Solución.</strong> No.&nbsp;La alternancia cero–uno tiene destinos <span class="math inline">\(\{0,1\}\)</span> y el patrón periódico cero–medio–uno tiene <span class="math inline">\(\{0,1/2,1\}\)</span>.</p>
+</section>
+<section id="microcontrol-061" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-061">Microcontrol 061</h3>
+<p><span id="MA-MIC-ANM-01-009-061"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-061"></span></p>
+<p><strong>Pregunta.</strong> ¿Por qué una sucesión con imagen finita no puede tener un destino fuera de esa imagen?</p>
+<p><strong>Solución.</strong> La distancia mínima desde ese real a los finitos valores de la imagen sería positiva; ninguna subsucesión podría acercarse con una tolerancia menor.</p>
+</section>
+<section id="microcontrol-062" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-062">Microcontrol 062</h3>
+<p><span id="MA-MIC-ANM-01-009-062"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-062"></span></p>
+<p><strong>Pregunta.</strong> ¿Por qué no se aplica la definición real finita de <span class="math inline">\(\beta\)</span> a <span class="math inline">\(a_n=n\)</span>?</p>
+<p><strong>Solución.</strong> Cada cola carece de supremo real, porque sus valores superan toda cota real; el primer nivel de la definición falla.</p>
+</section>
+<section id="microcontrol-063" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-063">Microcontrol 063</h3>
+<p><span id="MA-MIC-ANM-01-009-063"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-063"></span></p>
+<p><strong>Pregunta.</strong> ¿Qué impide que los ínfimos de cola de <span class="math inline">\(a_n=n\)</span> produzcan un <span class="math inline">\(\alpha\)</span> real?</p>
+<p><strong>Solución.</strong> Son <span class="math inline">\(\ell_N=N\)</span>, una sucesión sin límite real. Tener ínfimos reales de cada cola no basta para que converja su envolvente.</p>
+</section>
+<section id="microcontrol-064" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-064">Microcontrol 064</h3>
+<p><span id="MA-MIC-ANM-01-009-064"></span></p>
+<p><span id="MA-MSOL-ANM-01-009-064"></span></p>
+<p><strong>Pregunta.</strong> Escribe en orden los cuatro objetos de la construcción central.</p>
+<p><strong>Solución.</strong> Conjunto de valores de cola; supremo e ínfimo reales de esa cola; dos sucesiones monótonas de extremos; sus límites reales <span class="math inline">\(\beta\)</span> y <span class="math inline">\(\alpha\)</span>.</p>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html">Capítulo 9</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-microcontroles.html">Soluciones de microcontroles</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 13 — Límites de funciones: control de dos escalas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#aproximarse-sin-tocar-el-centro" id="toc-aproximarse-sin-tocar-el-centro" class="nav-link active" data-scroll-target="#aproximarse-sin-tocar-el-centro">13.1. Aproximarse sin tocar el centro</a>
+  <ul class="collapse">
+  <li><a href="#el-conjunto-por-el-que-nos-aproximamos" id="toc-el-conjunto-por-el-que-nos-aproximamos" class="nav-link" data-scroll-target="#el-conjunto-por-el-que-nos-aproximamos">El conjunto por el que nos aproximamos</a></li>
+  <li><a href="#por-qué-exigimos-acumulación" id="toc-por-qué-exigimos-acumulación" class="nav-link" data-scroll-target="#por-qué-exigimos-acumulación">Por qué exigimos acumulación</a></li>
+  <li><a href="#antes-de-seguir" id="toc-antes-de-seguir" class="nav-link" data-scroll-target="#antes-de-seguir">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#diseñar-una-respuesta-para-toda-la-ventana" id="toc-diseñar-una-respuesta-para-toda-la-ventana" class="nav-link" data-scroll-target="#diseñar-una-respuesta-para-toda-la-ventana">13.2. Diseñar una respuesta para toda la ventana</a>
+  <ul class="collapse">
+  <li><a href="#trabajar-hacia-atrás-y-escribir-hacia-delante" id="toc-trabajar-hacia-atrás-y-escribir-hacia-delante" class="nav-link" data-scroll-target="#trabajar-hacia-atrás-y-escribir-hacia-delante">Trabajar hacia atrás y escribir hacia delante</a></li>
+  <li><a href="#un-factor-variable-necesita-primero-una-barrera" id="toc-un-factor-variable-necesita-primero-una-barrera" class="nav-link" data-scroll-target="#un-factor-variable-necesita-primero-una-barrera">Un factor variable necesita primero una barrera</a></li>
+  <li><a href="#evitar-un-denominador-pequeño" id="toc-evitar-un-denominador-pequeño" class="nav-link" data-scroll-target="#evitar-un-denominador-pequeño">Evitar un denominador pequeño</a></li>
+  <li><a href="#antes-de-seguir-1" id="toc-antes-de-seguir-1" class="nav-link" data-scroll-target="#antes-de-seguir-1">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#un-destino-barreras-locales-y-orden" id="toc-un-destino-barreras-locales-y-orden" class="nav-link" data-scroll-target="#un-destino-barreras-locales-y-orden">13.3. Un destino, barreras locales y orden</a>
+  <ul class="collapse">
+  <li><a href="#unicidad" id="toc-unicidad" class="nav-link" data-scroll-target="#unicidad">Unicidad</a></li>
+  <li><a href="#acotación-suficiente-cerca-del-centro" id="toc-acotación-suficiente-cerca-del-centro" class="nav-link" data-scroll-target="#acotación-suficiente-cerca-del-centro">Acotación suficiente cerca del centro</a></li>
+  <li><a href="#el-orden-eventual-pasa-al-límite" id="toc-el-orden-eventual-pasa-al-límite" class="nav-link" data-scroll-target="#el-orden-eventual-pasa-al-límite">El orden eventual pasa al límite</a></li>
+  <li><a href="#antes-de-seguir-2" id="toc-antes-de-seguir-2" class="nav-link" data-scroll-target="#antes-de-seguir-2">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#negar-un-candidato-y-construir-infracciones" id="toc-negar-un-candidato-y-construir-infracciones" class="nav-link" data-scroll-target="#negar-un-candidato-y-construir-infracciones">13.4. Negar un candidato y construir infracciones</a>
+  <ul class="collapse">
+  <li><a href="#la-negación-conserva-el-orden-de-dependencias" id="toc-la-negación-conserva-el-orden-de-dependencias" class="nav-link" data-scroll-target="#la-negación-conserva-el-orden-de-dependencias">La negación conserva el orden de dependencias</a></li>
+  <li><a href="#una-infracción-en-cada-escala" id="toc-una-infracción-en-cada-escala" class="nav-link" data-scroll-target="#una-infracción-en-cada-escala">Una infracción en cada escala</a></li>
+  <li><a href="#refutar-todos-los-destinos" id="toc-refutar-todos-los-destinos" class="nav-link" data-scroll-target="#refutar-todos-los-destinos">Refutar todos los destinos</a></li>
+  <li><a href="#antes-de-seguir-3" id="toc-antes-de-seguir-3" class="nav-link" data-scroll-target="#antes-de-seguir-3">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#lo-que-detectan-las-sucesiones" id="toc-lo-que-detectan-las-sucesiones" class="nav-link" data-scroll-target="#lo-que-detectan-las-sucesiones">13.5. Lo que detectan las sucesiones</a>
+  <ul class="collapse">
+  <li><a href="#de-la-ventana-a-cualquier-ruta" id="toc-de-la-ventana-a-cualquier-ruta" class="nav-link" data-scroll-target="#de-la-ventana-a-cualquier-ruta">De la ventana a cualquier ruta</a></li>
+  <li><a href="#la-recíproca-dónde-aparece-una-selección" id="toc-la-recíproca-dónde-aparece-una-selección" class="nav-link" data-scroll-target="#la-recíproca-dónde-aparece-una-selección">La recíproca: dónde aparece una selección</a></li>
+  <li><a href="#refutar-con-rutas-ya-dadas" id="toc-refutar-con-rutas-ya-dadas" class="nav-link" data-scroll-target="#refutar-con-rutas-ya-dadas">Refutar con rutas ya dadas</a></li>
+  <li><a href="#antes-de-seguir-4" id="toc-antes-de-seguir-4" class="nav-link" data-scroll-target="#antes-de-seguir-4">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#combinar-límites-con-presupuestos-de-error" id="toc-combinar-límites-con-presupuestos-de-error" class="nav-link" data-scroll-target="#combinar-límites-con-presupuestos-de-error">13.6. Combinar límites con presupuestos de error</a>
+  <ul class="collapse">
+  <li><a href="#sumas-constantes-y-magnitudes" id="toc-sumas-constantes-y-magnitudes" class="nav-link" data-scroll-target="#sumas-constantes-y-magnitudes">Sumas, constantes y magnitudes</a></li>
+  <li><a href="#el-producto-necesita-una-barrera-y-dos-errores" id="toc-el-producto-necesita-una-barrera-y-dos-errores" class="nav-link" data-scroll-target="#el-producto-necesita-una-barrera-y-dos-errores">El producto necesita una barrera y dos errores</a></li>
+  <li><a href="#recíprocos-y-cocientes-restringir-el-dominio-a-tiempo" id="toc-recíprocos-y-cocientes-restringir-el-dominio-a-tiempo" class="nav-link" data-scroll-target="#recíprocos-y-cocientes-restringir-el-dominio-a-tiempo">Recíprocos y cocientes: restringir el dominio a tiempo</a></li>
+  <li><a href="#primer-uso-y-una-trampa" id="toc-primer-uso-y-una-trampa" class="nav-link" data-scroll-target="#primer-uso-y-una-trampa">Primer uso y una trampa</a></li>
+  <li><a href="#antes-de-seguir-5" id="toc-antes-de-seguir-5" class="nav-link" data-scroll-target="#antes-de-seguir-5">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#cambiar-las-rutas-disponibles" id="toc-cambiar-las-rutas-disponibles" class="nav-link" data-scroll-target="#cambiar-las-rutas-disponibles">13.7. Cambiar las rutas disponibles</a>
+  <ul class="collapse">
+  <li><a href="#restricción-y-reunión-finita" id="toc-restricción-y-reunión-finita" class="nav-link" data-scroll-target="#restricción-y-reunión-finita">Restricción y reunión finita</a></li>
+  <li><a href="#lados-disponibles-lados-inexistentes" id="toc-lados-disponibles-lados-inexistentes" class="nav-link" data-scroll-target="#lados-disponibles-lados-inexistentes">Lados disponibles, lados inexistentes</a></li>
+  <li><a href="#un-dominio-denso-puede-ocultar-todas-las-infracciones" id="toc-un-dominio-denso-puede-ocultar-todas-las-infracciones" class="nav-link" data-scroll-target="#un-dominio-denso-puede-ocultar-todas-las-infracciones">Un dominio denso puede ocultar todas las infracciones</a></li>
+  <li><a href="#antes-de-seguir-6" id="toc-antes-de-seguir-6" class="nav-link" data-scroll-target="#antes-de-seguir-6">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#componer-controles-sin-perder-la-perforación" id="toc-componer-controles-sin-perder-la-perforación" class="nav-link" data-scroll-target="#componer-controles-sin-perder-la-perforación">13.8. Componer controles sin perder la perforación</a>
+  <ul class="collapse">
+  <li><a href="#composición-con-evitación-del-centro-intermedio" id="toc-composición-con-evitación-del-centro-intermedio" class="nav-link" data-scroll-target="#composición-con-evitación-del-centro-intermedio">Composición con evitación del centro intermedio</a></li>
+  <li><a href="#una-alternativa-permite-tocar-el-centro" id="toc-una-alternativa-permite-tocar-el-centro" class="nav-link" data-scroll-target="#una-alternativa-permite-tocar-el-centro">Una alternativa permite tocar el centro</a></li>
+  <li><a href="#un-certificado-que-se-puede-reutilizar" id="toc-un-certificado-que-se-puede-reutilizar" class="nav-link" data-scroll-target="#un-certificado-que-se-puede-reutilizar">Un certificado que se puede reutilizar</a></li>
+  <li><a href="#antes-de-seguir-7" id="toc-antes-de-seguir-7" class="nav-link" data-scroll-target="#antes-de-seguir-7">Antes de seguir</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 13 — Límites de funciones: control de dos escalas</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html">Capítulo 13</a> · <a href="analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>¿Qué significa que unas entradas próximas a un punto produzcan salidas próximas a un destino? En cálculo aprendimos a reconocer y calcular límites; aquí reconstruiremos el contrato que autoriza esas operaciones. No basta ensayar unas pocas entradas ni encontrar una ruta favorable: queremos controlar toda una ventana del dominio y responder a cualquier precisión de salida.</p>
+<p>Usaremos las bolas y la acumulación de C04, las sucesiones de C06 y el transporte de conjuntos de C12. Primero entregaremos radios explícitos desde la definición; después construiremos unicidad, negación, criterios secuenciales y reglas. Mantendremos visible qué escala depende de cuál y dónde una hipótesis permite dar el siguiente paso.</p>
+<section id="aproximarse-sin-tocar-el-centro" class="level2">
+<h2 class="anchored" data-anchor-id="aproximarse-sin-tocar-el-centro">13.1. Aproximarse sin tocar el centro</h2>
+<p><span id="MA-SEC-ANM-01-013-001"></span></p>
+<p>En C12 aprendimos a transportar una ventana de entradas dentro de una ventana de salidas. Ahora queremos hacerlo para cualquier precisión de salida que se nos proponga. El tamaño de la ventana de entrada se adaptará al desafío. Ésta es la diferencia entre haber comprobado una inclusión concreta y disponer de un límite.</p>
+<p>Empecemos con <span class="math inline">\(q(x)=x^2\)</span> cerca de <span class="math inline">\(1\)</span>. La identidad <span class="math inline">\(x^2-1=(x-1)(x+1)\)</span> sugiere que las salidas se aproximan a <span class="math inline">\(1\)</span> cuando las entradas se aproximan a <span class="math inline">\(1\)</span>. Pero podemos cambiar la función sólo en el centro: <span class="math inline">\(h(1)=4\)</span>, <span class="math inline">\(h(x)=x^2\)</span> si <span class="math inline">\(x\ne1\)</span>. Las salidas de las entradas próximas y distintas de <span class="math inline">\(1\)</span> siguen siendo las mismas. El límite que queremos estudiar no puede depender del valor aislado <span class="math inline">\(h(1)\)</span>.</p>
+<section id="el-conjunto-por-el-que-nos-aproximamos" class="level3">
+<h3 class="anchored" data-anchor-id="el-conjunto-por-el-que-nos-aproximamos">El conjunto por el que nos aproximamos</h3>
+<p>Sean <span class="math inline">\(D\subseteq\mathbb R\)</span> y <span class="math inline">\(a\in\mathbb R\)</span>. Recordemos de C04 que <span class="math inline">\(a\)</span> es punto de acumulación de <span class="math inline">\(D\)</span> si para cada <span class="math inline">\(r&gt;0\)</span> existe <span class="math inline">\(x\in D\)</span> con <span class="math inline">\(0&lt;|x-a|&lt;r\)</span>. Escribiremos <span class="math inline">\(a\in D'\)</span>. No se requiere <span class="math inline">\(a\in D\)</span>: cero es punto de acumulación de <span class="math inline">\((0,\infty)\)</span> sin pertenecer a ese dominio.</p>
+<p>Llamemos <span class="math inline">\(U_D(a,r)=\{x\in D:0&lt;|x-a|&lt;r\}\)</span> a la ventana perforada de entrada. La intersección con <span class="math inline">\(D\)</span> conserva el tipo; la perforación elimina el centro. Por acumulación, <span class="math inline">\(U_D(a,r)\)</span> es no vacía para todo radio positivo. No hemos elegido una sucesión de puntos: sólo afirmamos existencia para cada radio.</p>
+<p><strong>Definición.</strong> Para <span class="math inline">\(f:D\to\mathbb R\)</span>, <span class="math inline">\(a\in D'\)</span> y <span class="math inline">\(L\in\mathbb R\)</span>, decimos que <span class="math inline">\(f\)</span> tiene límite <span class="math inline">\(L\)</span> en <span class="math inline">\(a\)</span> a través de <span class="math inline">\(D\)</span> si</p>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\ \exists\delta&gt;0\ \forall x\in D:
+\quad 0&lt;|x-a|&lt;\delta\ \Longrightarrow\ |f(x)-L|&lt;\varepsilon.
+\]</span></p>
+<p>Escribimos <span class="math inline">\(\lim_{x\to a,\ x\in D}f(x)=L\)</span>, abreviando el dominio cuando sea inequívoco. En este capítulo todos los límites funcionales son reales finitos en puntos reales finitos.</p>
+<p>La condición equivale a <span class="math inline">\(f[U_D(a,\delta)]\subseteq B(L,\varepsilon)\)</span> para cada desafío <span class="math inline">\(\varepsilon\)</span> y alguna respuesta <span class="math inline">\(\delta\)</span>. En efecto, un valor de la imagen tiene un testigo <span class="math inline">\(x\)</span> en la ventana perforada y la desigualdad lo coloca en la bola de salida. A la inversa, si cada imagen está en la bola, evaluar en cualquier <span class="math inline">\(x\)</span> de esa ventana da la desigualdad exigida. Por C12 también equivale a <span class="math inline">\(U_D(a,\delta)\subseteq f^{-1}[B(L,\varepsilon)]\)</span>.</p>
+<div id="fig-anm-c13-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="C13-F01. La perforación omite el valor h(1)=4. Las entradas no centrales siguen la regla x² y se aproximan al destino 1. El círculo vacío distingue el hueco del valor asignado; la banda es un desafío, no una prueba.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c13-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C13/C13-F01.svg" class="img-fluid figure-img" alt="C13-F01. La perforación omite el valor h(1)=4. Las entradas no centrales siguen la regla x² y se aproximan al destino 1. El círculo vacío distingue el hueco del valor asignado; la banda es un desafío, no una prueba.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c13-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: C13-F01. La perforación omite el valor h(1)=4. Las entradas no centrales siguen la regla x² y se aproximan al destino 1. El círculo vacío distingue el hueco del valor asignado; la banda es un desafío, no una prueba.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="por-qué-exigimos-acumulación" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-exigimos-acumulación">Por qué exigimos acumulación</h3>
+<p>Si <span class="math inline">\(D=\{a\}\)</span>, ninguna entrada cumple <span class="math inline">\(0&lt;|x-a|&lt;\delta\)</span>. La implicación sería verdadera para cualquier candidato <span class="math inline">\(L\)</span>, por vacuidad. La fórmula lógica sigue teniendo sentido, pero no distingue un destino. Nuestra convención reserva la palabra límite para <span class="math inline">\(a\in D'\)</span>.</p>
+<p>Tampoco importa cambiar valores lejos del centro. Si <span class="math inline">\(f,g:D\to\mathbb R\)</span> coinciden en <span class="math inline">\(U_D(a,r)\)</span> para algún <span class="math inline">\(r&gt;0\)</span> y <span class="math inline">\(f\to L\)</span>, dado <span class="math inline">\(\varepsilon\)</span> tomamos un radio válido <span class="math inline">\(\delta_f\)</span> y usamos <span class="math inline">\(\delta=\min(r,\delta_f)\)</span>. Toda entrada pertinente ve <span class="math inline">\(g(x)=f(x)\)</span> y el mismo control. Intercambiar las funciones prueba la equivalencia. Cambiar sólo <span class="math inline">\(f(a)\)</span>, si existe, es un caso particular.</p>
+<p>La ventana se encoge alrededor de <span class="math inline">\(a\)</span>; la ventana de salida alrededor de <span class="math inline">\(L\)</span>. Esos centros cumplen papeles distintos y aún no hemos relacionado <span class="math inline">\(L\)</span> con <span class="math inline">\(f(a)\)</span>.</p>
+</section>
+<section id="antes-de-seguir" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-013-001"></span></p>
+<ol type="1">
+<li>¿Tiene que pertenecer <span class="math inline">\(a\)</span> al dominio para preguntar por el límite en <span class="math inline">\(a\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-002"></span></p>
+<ol start="2" type="1">
+<li>¿Qué elimina <span class="math inline">\(0&lt;|x-a|\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-003"></span></p>
+<ol start="3" type="1">
+<li>¿Qué significa <span class="math inline">\(a\in D^{\prime}\)</span> en forma cuantificada?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-004"></span></p>
+<ol start="4" type="1">
+<li>Si <span class="math inline">\(D=\{a\}\)</span>, ¿la fórmula perforada distingue un candidato <span class="math inline">\(L\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-005"></span></p>
+<ol start="5" type="1">
+<li>¿Cómo se escribe el control mediante imágenes de ventanas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-006"></span></p>
+<ol start="6" type="1">
+<li>¿Qué preimagen contiene la ventana perforada cuando el radio es válido?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-007"></span></p>
+<ol start="7" type="1">
+<li>¿Cambia el límite si sólo cambiamos <span class="math inline">\(f(a)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-008"></span></p>
+<ol start="8" type="1">
+<li>¿Qué radio reúne coincidencia local y control de <span class="math inline">\(f\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="diseñar-una-respuesta-para-toda-la-ventana" class="level2">
+<h2 class="anchored" data-anchor-id="diseñar-una-respuesta-para-toda-la-ventana">13.2. Diseñar una respuesta para toda la ventana</h2>
+<p><span id="MA-SEC-ANM-01-013-002"></span></p>
+<p>La definición propone un juego con orden fijo: se declaran <span class="math inline">\(f,D,a,L\)</span>; se recibe <span class="math inline">\(\varepsilon\)</span>; se produce <span class="math inline">\(\delta\)</span>; después se verifica toda entrada admisible. Elegir <span class="math inline">\(\delta\)</span> después de ver <span class="math inline">\(x\)</span> cambia el problema. Una respuesta puede depender de los datos fijos y de <span class="math inline">\(\varepsilon\)</span>, pero no de la entrada universal.</p>
+<section id="trabajar-hacia-atrás-y-escribir-hacia-delante" class="level3">
+<h3 class="anchored" data-anchor-id="trabajar-hacia-atrás-y-escribir-hacia-delante">Trabajar hacia atrás y escribir hacia delante</h3>
+<p>Para <span class="math inline">\(f(x)=3x-2\)</span> y <span class="math inline">\(a=1\)</span>, el candidato es <span class="math inline">\(L=1\)</span>. Queremos <span class="math inline">\(|(3x-2)-1|&lt;\varepsilon\)</span>. Simplificar revela <span class="math inline">\(3|x-1|&lt;\varepsilon\)</span>, lo que sugiere <span class="math inline">\(\delta=\varepsilon/3\)</span>.</p>
+<p>La prueba final comienza con el desafío: fijado <span class="math inline">\(\varepsilon&gt;0\)</span>, sea <span class="math inline">\(\delta=\varepsilon/3&gt;0\)</span>. Si <span class="math inline">\(0&lt;|x-1|&lt;\delta\)</span>, entonces <span class="math inline">\(|f(x)-1|=3|x-1|&lt;3\delta=\varepsilon\)</span>. No se calcula primero una entrada favorable: el argumento sirve para todas las que satisfacen la hipótesis.</p>
+<div id="fig-anm-c13-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="C13-F02. Para 3x−2 en a=1, el error de salida es tres veces el de entrada. Cada desafío ε tiene respuesta δ=ε/3; los bordes se excluyen. Dos instancias ilustran la fórmula que la prueba verifica para todo ε.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c13-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C13/C13-F02.svg" class="img-fluid figure-img" alt="C13-F02. Para 3x−2 en a=1, el error de salida es tres veces el de entrada. Cada desafío ε tiene respuesta δ=ε/3; los bordes se excluyen. Dos instancias ilustran la fórmula que la prueba verifica para todo ε.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c13-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: C13-F02. Para 3x−2 en a=1, el error de salida es tres veces el de entrada. Cada desafío ε tiene respuesta δ=ε/3; los bordes se excluyen. Dos instancias ilustran la fórmula que la prueba verifica para todo ε.
+</figcaption>
+</figure>
+</div>
+<p>Para una función afín <span class="math inline">\(mx+c\)</span> cerca de cualquier <span class="math inline">\(a\)</span>, la identidad de errores es <span class="math inline">\(|f(x)-(ma+c)|=|m||x-a|\)</span>. Si <span class="math inline">\(m\ne0\)</span>, funciona <span class="math inline">\(\delta=\varepsilon/|m|\)</span>. Si <span class="math inline">\(m=0\)</span>, el error es cero y cualquier radio positivo sirve. Reducir un radio válido conserva su validez; no hay razón para exigir un único radio.</p>
+</section>
+<section id="un-factor-variable-necesita-primero-una-barrera" class="level3">
+<h3 class="anchored" data-anchor-id="un-factor-variable-necesita-primero-una-barrera">Un factor variable necesita primero una barrera</h3>
+<p>Volvamos a <span class="math inline">\(q(x)=x^2\)</span> en <span class="math inline">\(a\)</span>. La identidad <span class="math inline">\(|x^2-a^2|=|x-a||x+a|\)</span> contiene un factor no controlado. Introducimos una condición auxiliar: <span class="math inline">\(|x-a|&lt;1\)</span>. Entonces <span class="math inline">\(|x+a|\le |x-a|+2|a|&lt;1+2|a|=:C\)</span>, con <span class="math inline">\(C&gt;0\)</span>. Ahora podemos controlar el otro factor.</p>
+<p>Fijado <span class="math inline">\(\varepsilon&gt;0\)</span>, elijamos <span class="math inline">\(\delta=\min(1,\varepsilon/C)\)</span>. Para toda entrada con <span class="math inline">\(0&lt;|x-a|&lt;\delta\)</span> obtenemos <span class="math inline">\(|x^2-a^2|&lt;C|x-a|&lt;C\delta\le\varepsilon\)</span>. Las dos tareas son distintas: el radio <span class="math inline">\(1\)</span> congela el factor variable; el radio <span class="math inline">\(\varepsilon/C\)</span> ajusta la precisión. El mínimo hace que se cumplan simultáneamente.</p>
+<div id="fig-anm-c13-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="C13-F03. En x² alrededor de 1 y con ε=1/2, el certificado de la prueba usa δ=1/6. El mayor radio simétrico es √(3/2)−1. El certificado conservador basta para demostrar el límite; la optimización exige el argumento adicional del ejercicio 13.8.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c13-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C13/C13-F03.svg" class="img-fluid figure-img" alt="C13-F03. En x² alrededor de 1 y con ε=1/2, el certificado de la prueba usa δ=1/6. El mayor radio simétrico es √(3/2)−1. El certificado conservador basta para demostrar el límite; la optimización exige el argumento adicional del ejercicio 13.8.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c13-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: C13-F03. En x² alrededor de 1 y con ε=1/2, el certificado de la prueba usa δ=1/6. El mayor radio simétrico es √(3/2)−1. El certificado conservador basta para demostrar el límite; la optimización exige el argumento adicional del ejercicio 13.8.
+</figcaption>
+</figure>
+</div>
+<p>El radio no necesita ser el mayor posible. En <span class="math inline">\(a=1\)</span>, <span class="math inline">\(\delta=\min(1,\varepsilon/3)\)</span> es cómodo aunque conservador. Buscar el radio óptimo puede ser un problema distinto; para demostrar un límite basta un certificado verificable.</p>
+</section>
+<section id="evitar-un-denominador-pequeño" class="level3">
+<h3 class="anchored" data-anchor-id="evitar-un-denominador-pequeño">Evitar un denominador pequeño</h3>
+<p>Para <span class="math inline">\(r(x)=1/x\)</span> en <span class="math inline">\(a\ne0\)</span>, restringimos <span class="math inline">\(|x-a|&lt;|a|/2\)</span>. La triangular inversa da <span class="math inline">\(|x|\ge |a|-|x-a|&gt;|a|/2\)</span>. En esa ventana el dominio excluye cero automáticamente y</p>
+<p><span class="math display">\[
+\left|\frac1x-\frac1a\right|
+=\frac{|x-a|}{|x||a|}
+&lt;\frac{2|x-a|}{|a|^2}.
+\]</span></p>
+<p>El radio <span class="math inline">\(\delta=\min(|a|/2,\varepsilon |a|^2/2)\)</span> prueba <span class="math inline">\(\lim_{x\to a}1/x=1/a\)</span>. No basta decir que un denominador es distinto de cero: hay que separarlo de cero por una barrera positiva válida para toda la ventana.</p>
+<p>Cada ejemplo sigue el mismo método: descomponer el error, controlar factores auxiliares y reunir restricciones mediante un mínimo. No usamos reglas de límites todavía; estamos construyéndolas desde desigualdades.</p>
+</section>
+<section id="antes-de-seguir-1" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-1">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-013-009"></span></p>
+<ol type="1">
+<li>¿Puede <span class="math inline">\(\delta\)</span> depender de la entrada <span class="math inline">\(x\)</span> bajo el cuantificador universal?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-010"></span></p>
+<ol start="2" type="1">
+<li>Para <span class="math inline">\(f(x)=3x-2\)</span> en <span class="math inline">\(a=1\)</span>, ¿qué radio explícito sirve?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-011"></span></p>
+<ol start="3" type="1">
+<li>¿Es válido exigir un solo <span class="math inline">\(\delta&gt;0\)</span> para todas las tolerancias?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-012"></span></p>
+<ol start="4" type="1">
+<li>¿Qué ocurre con la afín si <span class="math inline">\(m=0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-013"></span></p>
+<ol start="5" type="1">
+<li>¿Qué cota para <span class="math inline">\(|x+a|\)</span> produce <span class="math inline">\(|x-a|&lt;1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-014"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué se toma un mínimo en la prueba del cuadrado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-015"></span></p>
+<ol start="7" type="1">
+<li>¿Un radio válido debe ser el máximo posible?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-016"></span></p>
+<ol start="8" type="1">
+<li>¿Qué barrera protege <span class="math inline">\(1/x\)</span> si <span class="math inline">\(|x-a|&lt;|a|/2\)</span> y <span class="math inline">\(a\ne0\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="un-destino-barreras-locales-y-orden" class="level2">
+<h2 class="anchored" data-anchor-id="un-destino-barreras-locales-y-orden">13.3. Un destino, barreras locales y orden</h2>
+<p><span id="MA-SEC-ANM-01-013-003"></span></p>
+<p>La definición presenta un candidato <span class="math inline">\(L\)</span>. Antes de llamarlo el límite debemos comprobar que ningún otro candidato puede cumplir el mismo contrato. La geometría sugiere usar dos ventanas de salida disjuntas, pero necesitamos una entrada que ambas estén obligadas a controlar.</p>
+<section id="unicidad" class="level3">
+<h3 class="anchored" data-anchor-id="unicidad">Unicidad</h3>
+<p><strong>Teorema.</strong> Si <span class="math inline">\(a\in D'\)</span> y <span class="math inline">\(f:D\to\mathbb R\)</span> tiene límites <span class="math inline">\(L\)</span> y <span class="math inline">\(M\)</span> en <span class="math inline">\(a\)</span>, entonces <span class="math inline">\(L=M\)</span>.</p>
+<p>Si fueran distintos, <span class="math inline">\(d=|L-M|&gt;0\)</span>. Proponemos <span class="math inline">\(\varepsilon=d/3\)</span> a ambos contratos, obteniendo <span class="math inline">\(\delta_L,\delta_M&gt;0\)</span>. Tomamos <span class="math inline">\(\delta=\min(\delta_L,\delta_M)\)</span>. Aquí gastamos la acumulación: existe <span class="math inline">\(x\in D\)</span> con <span class="math inline">\(0&lt;|x-a|&lt;\delta\)</span>. Para esa misma entrada las dos cotas dan <span class="math inline">\(d\le |L-f(x)|+|f(x)-M|&lt;2d/3\)</span>, contradicción. La coincidencia de la entrada importa tanto como la separación de las salidas.</p>
+</section>
+<section id="acotación-suficiente-cerca-del-centro" class="level3">
+<h3 class="anchored" data-anchor-id="acotación-suficiente-cerca-del-centro">Acotación suficiente cerca del centro</h3>
+<p>Si <span class="math inline">\(f\to L\)</span>, usamos una sola tolerancia, <span class="math inline">\(\varepsilon=1\)</span>. Existe <span class="math inline">\(r&gt;0\)</span> con <span class="math inline">\(|f(x)-L|&lt;1\)</span> en <span class="math inline">\(U_D(a,r)\)</span>; por tanto <span class="math inline">\(|f(x)|\le |f(x)-L|+|L|&lt;|L|+1\)</span>. Ésta es una cota local perforada. No afirma acotación de toda la función: <span class="math inline">\(x^2\to0\)</span> en cero y es no acotada en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p>Si <span class="math inline">\(a\in D\)</span> podemos incluir su valor en una cota mayor, por ejemplo <span class="math inline">\(\max(|L|+1,|f(a)|+1)\)</span>. Esto no transforma el límite en una afirmación sobre el valor central; sólo añade un dato finito a una cota.</p>
+</section>
+<section id="el-orden-eventual-pasa-al-límite" class="level3">
+<h3 class="anchored" data-anchor-id="el-orden-eventual-pasa-al-límite">El orden eventual pasa al límite</h3>
+<p>Supongamos <span class="math inline">\(f,g:D\to\mathbb R\)</span>, <span class="math inline">\(f\to L\)</span>, <span class="math inline">\(g\to M\)</span> y <span class="math inline">\(f(x)\le g(x)\)</span> en alguna ventana perforada. Si <span class="math inline">\(L&gt;M\)</span>, ponemos <span class="math inline">\(\varepsilon=(L-M)/3\)</span> y reunimos los dos radios y la ventana de orden. Acumulación entrega una entrada allí. Entonces <span class="math inline">\(f(x)&gt;L-\varepsilon&gt;M+\varepsilon&gt;g(x)\)</span>, contradicción. Concluimos <span class="math inline">\(L\le M\)</span>. Un orden estricto de valores no fuerza orden estricto de límites: <span class="math inline">\(0&lt;x\)</span> en <span class="math inline">\((0,\infty)\)</span> y ambas funciones tienen límite cero.</p>
+<p><strong>Teorema del encierro.</strong> Si <span class="math inline">\(p(x)\le f(x)\le q(x)\)</span> cerca de <span class="math inline">\(a\)</span>, <span class="math inline">\(p\to L\)</span> y <span class="math inline">\(q\to L\)</span>, entonces <span class="math inline">\(f\to L\)</span>. Para <span class="math inline">\(\varepsilon&gt;0\)</span>, reúna radios para <span class="math inline">\(p,q\)</span> y para el orden. Allí <span class="math inline">\(L-\varepsilon&lt;p(x)\le f(x)\le q(x)&lt;L+\varepsilon\)</span>, luego <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span>. No hemos supuesto existencia previa del límite de <span class="math inline">\(f\)</span>; acabamos de probarla.</p>
+<p>Como primer uso, sea <span class="math inline">\(b:D\to\mathbb R\)</span> con <span class="math inline">\(|b(x)|\le K\)</span> cerca de cero, donde <span class="math inline">\(K\ge0\)</span> y <span class="math inline">\(0\in D'\)</span>. Para <span class="math inline">\(h(x)=xb(x)\)</span>, <span class="math inline">\(|h(x)|\le K|x|\)</span>. Si <span class="math inline">\(K=0\)</span>, el error es cero localmente. Si <span class="math inline">\(K&gt;0\)</span>, <span class="math inline">\(\delta=\min(r,\varepsilon/K)\)</span> prueba <span class="math inline">\(h\to0\)</span>. El factor <span class="math inline">\(b\)</span> puede carecer de límite: sólo usamos su cota.</p>
+<p>Un límite finito proporciona barreras locales; las barreras también pueden construir límites. Esta doble dirección será útil al operar con funciones que oscilan.</p>
+</section>
+<section id="antes-de-seguir-2" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-2">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-013-017"></span></p>
+<ol type="1">
+<li>¿Dónde se utiliza acumulación al demostrar unicidad?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-018"></span></p>
+<ol start="2" type="1">
+<li>¿Qué tolerancia se usa para dos destinos separados por <span class="math inline">\(d&gt;0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-019"></span></p>
+<ol start="3" type="1">
+<li>¿Un límite finito implica acotación global?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-020"></span></p>
+<ol start="4" type="1">
+<li>¿Qué cota local sale del desafío <span class="math inline">\(\varepsilon=1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-021"></span></p>
+<ol start="5" type="1">
+<li>¿El orden estricto <span class="math inline">\(f(x)&lt;g(x)\)</span> obliga <span class="math inline">\(L&lt;M\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-022"></span></p>
+<ol start="6" type="1">
+<li>¿Qué hay que suponer de <span class="math inline">\(f\)</span> antes de usar el encierro?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-023"></span></p>
+<ol start="7" type="1">
+<li>Si <span class="math inline">\(|b(x)|\le K\)</span> cerca de cero, ¿qué error controla <span class="math inline">\(xb(x)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-024"></span></p>
+<ol start="8" type="1">
+<li>¿Necesita <span class="math inline">\(b\)</span> tener límite para que <span class="math inline">\(xb(x)\to0\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="negar-un-candidato-y-construir-infracciones" class="level2">
+<h2 class="anchored" data-anchor-id="negar-un-candidato-y-construir-infracciones">13.4. Negar un candidato y construir infracciones</h2>
+<p><span id="MA-SEC-ANM-01-013-004"></span></p>
+<p>Para probar un límite debemos responder a todas las tolerancias. Para refutar un candidato basta encontrar una tolerancia que ninguna ventana de entrada pueda satisfacer. La tolerancia de fracaso permanece fija mientras el radio de entrada cambia.</p>
+<section id="la-negación-conserva-el-orden-de-dependencias" class="level3">
+<h3 class="anchored" data-anchor-id="la-negación-conserva-el-orden-de-dependencias">La negación conserva el orden de dependencias</h3>
+<p>Con los datos <span class="math inline">\(f,D,a,L\)</span> fijados y <span class="math inline">\(a\in D'\)</span>, negar el contrato equivale a</p>
+<p><span class="math display">\[
+\exists\varepsilon_0&gt;0\ \forall\delta&gt;0\ \exists x\in D:
+\quad 0&lt;|x-a|&lt;\delta,\qquad |f(x)-L|\ge\varepsilon_0.
+\]</span></p>
+<p>El punto infractor sí puede depender del radio. La desigualdad final es <span class="math inline">\(\ge\)</span>, no <span class="math inline">\(&gt;\)</span>: alcanzar la frontera de la bola abierta ya incumple el control.</p>
+<p>Decir que <span class="math inline">\(L\)</span> no es límite es diferente de decir que la función no tiene ningún límite. Para lo segundo debemos descartar todo <span class="math inline">\(L\in\mathbb R\)</span> o usar un argumento que impida un destino único.</p>
+</section>
+<section id="una-infracción-en-cada-escala" class="level3">
+<h3 class="anchored" data-anchor-id="una-infracción-en-cada-escala">Una infracción en cada escala</h3>
+<p>Para <span class="math inline">\(n\in\mathbb N=\{0,1,\ldots\}\)</span>, sea <span class="math inline">\(\eta_n=1/(n+1)\)</span>. Por C06, <span class="math inline">\(\eta_n\to0\)</span>. Un candidato falla si y sólo si hay <span class="math inline">\(\varepsilon_0&gt;0\)</span> para el que todos los conjuntos</p>
+<p><span class="math display">\[
+E_n=\{x\in D:0&lt;|x-a|&lt;\eta_n,\ |f(x)-L|\ge\varepsilon_0\}
+\]</span></p>
+<p>son no vacíos. La negación completa implica esto al usar <span class="math inline">\(\delta=\eta_n\)</span>. Recíprocamente, fijado cualquier <span class="math inline">\(\delta&gt;0\)</span>, elegimos un índice con <span class="math inline">\(\eta_n&lt;\delta\)</span> y obtenemos un único testigo de <span class="math inline">\(E_n\)</span>. Ese punto incumple también el radio <span class="math inline">\(\delta\)</span>.</p>
+<p>Hemos construido una familia de conjuntos de infractores. No hemos construido automáticamente una función que elija un elemento de cada <span class="math inline">\(E_n\)</span>. La distinción entre <span class="math inline">\(\forall n\,\exists x\)</span> y <span class="math inline">\(\exists(x_n)\,\forall n\)</span> se volverá necesaria en la equivalencia secuencial.</p>
+<div id="fig-anm-c13-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="C13-F04. Para f(x)=1 y el candidato L=0, xₙ=1/(n+2) infringe la tolerancia fija ε₀=1/2 dentro de cada escala ηₙ=1/(n+1). Esto refuta sólo el candidato 0: la función sí tiene límite 1. La fórmula proporciona aquí la ruta explícita.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c13-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C13/C13-F04.svg" class="img-fluid figure-img" alt="C13-F04. Para f(x)=1 y el candidato L=0, xₙ=1/(n+2) infringe la tolerancia fija ε₀=1/2 dentro de cada escala ηₙ=1/(n+1). Esto refuta sólo el candidato 0: la función sí tiene límite 1. La fórmula proporciona aquí la ruta explícita.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c13-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: C13-F04. Para f(x)=1 y el candidato L=0, xₙ=1/(n+2) infringe la tolerancia fija ε₀=1/2 dentro de cada escala ηₙ=1/(n+1). Esto refuta sólo el candidato 0: la función sí tiene límite 1. La fórmula proporciona aquí la ruta explícita.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="refutar-todos-los-destinos" class="level3">
+<h3 class="anchored" data-anchor-id="refutar-todos-los-destinos">Refutar todos los destinos</h3>
+<p>Sea <span class="math inline">\(s(x)=-1\)</span> para <span class="math inline">\(x&lt;0\)</span> y <span class="math inline">\(s(x)=1\)</span> para <span class="math inline">\(x\ge0\)</span>, en dominio real. Para cualquier <span class="math inline">\(L\)</span>, al menos una de las distancias <span class="math inline">\(|-1-L|\)</span>, <span class="math inline">\(|1-L|\)</span> es <span class="math inline">\(\ge1\)</span>: si ambas fueran menores que <span class="math inline">\(1\)</span>, la triangular daría <span class="math inline">\(2&lt;2\)</span>.</p>
+<p>Elegimos un signo cuya salida tenga esa distancia. Dado <span class="math inline">\(\delta&gt;0\)</span>, el punto <span class="math inline">\(x=-\delta/2\)</span> o <span class="math inline">\(x=\delta/2\)</span>, según el signo elegido, es infractor con la tolerancia fija <span class="math inline">\(\varepsilon_0=1\)</span>. El signo depende de <span class="math inline">\(L\)</span>; el punto depende de <span class="math inline">\(\delta\)</span>. Así se descarta todo candidato sin convertir el dibujo en una prueba.</p>
+<p>Otra refutación útil: <span class="math inline">\(r(x)=1/x\)</span> en <span class="math inline">\((0,\infty)\)</span> no tiene límite real finito en cero. Para cualquier <span class="math inline">\(L\)</span> y <span class="math inline">\(\delta&gt;0\)</span>, elijamos <span class="math inline">\(x=\min(\delta/2,1/[2(|L|+1)])&gt;0\)</span>. Entonces <span class="math inline">\(x&lt;\delta\)</span> y <span class="math inline">\(1/x\ge2(|L|+1)\)</span>, de donde <span class="math inline">\(|1/x-L|\ge1/x-|L|&gt;1\)</span>. No hemos definido aquí un límite infinito; sólo descartamos todos los reales.</p>
+</section>
+<section id="antes-de-seguir-3" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-3">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-013-025"></span></p>
+<ol type="1">
+<li>¿Cuál es el orden de cuantificadores al refutar un candidato?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-026"></span></p>
+<ol start="2" type="1">
+<li>¿Por qué la negación usa <span class="math inline">\(\ge\varepsilon_0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-027"></span></p>
+<ol start="3" type="1">
+<li>¿Refutar <span class="math inline">\(L=0\)</span> basta para demostrar que no existe ningún límite?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-028"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué usamos <span class="math inline">\(1/(n+1)\)</span> en vez de <span class="math inline">\(1/n\)</span> desde <span class="math inline">\(n=0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-029"></span></p>
+<ol start="5" type="1">
+<li>¿Qué prueba la no vaciedad de todos los conjuntos <span class="math inline">\(E_n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-030"></span></p>
+<ol start="6" type="1">
+<li>¿La no vaciedad de cada <span class="math inline">\(E_n\)</span> proporciona por sí sola un selector?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-031"></span></p>
+<ol start="7" type="1">
+<li>Para el salto con valores <span class="math inline">\(\pm1\)</span>, ¿por qué una distancia a <span class="math inline">\(L\)</span> es al menos <span class="math inline">\(1\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-032"></span></p>
+<ol start="8" type="1">
+<li>¿Qué asegura <span class="math inline">\(x=\min(\delta/2,1/[2(|L|+1)])\)</span> en la refutación de <span class="math inline">\(1/x\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="lo-que-detectan-las-sucesiones" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-detectan-las-sucesiones">13.5. Lo que detectan las sucesiones</h2>
+<p><span id="MA-SEC-ANM-01-013-005"></span></p>
+<p>Una aproximación secuencial elige una ruta numerada dentro del dominio. El límite funcional debe controlar todas esas rutas, pero una ruta favorable no certifica el comportamiento de toda una ventana.</p>
+<p>Llamemos admisible a una sucesión <span class="math inline">\((x_n)\)</span> con <span class="math inline">\(x_n\in D\setminus\{a\}\)</span> para todos los índices y <span class="math inline">\(x_n\to a\)</span>. Las imágenes forman una sucesión bien tipada: <span class="math inline">\(x:\mathbb N\to D\)</span> se compone con <span class="math inline">\(f:D\to\mathbb R\)</span>. No basta que <span class="math inline">\(x_n\)</span> sea real; debe pertenecer al dominio y evitar el centro.</p>
+<section id="de-la-ventana-a-cualquier-ruta" class="level3">
+<h3 class="anchored" data-anchor-id="de-la-ventana-a-cualquier-ruta">De la ventana a cualquier ruta</h3>
+<p><strong>Proposición.</strong> Si <span class="math inline">\(f\to L\)</span> en <span class="math inline">\(a\)</span>, entonces <span class="math inline">\(f(x_n)\to L\)</span> para toda sucesión admisible.</p>
+<p>Fijemos tal sucesión y <span class="math inline">\(\varepsilon&gt;0\)</span>. El límite funcional ofrece <span class="math inline">\(\delta&gt;0\)</span>. La convergencia de entradas ofrece <span class="math inline">\(N\)</span> con <span class="math inline">\(|x_n-a|&lt;\delta\)</span> para <span class="math inline">\(n\ge N\)</span>. Por admisibilidad, también <span class="math inline">\(0&lt;|x_n-a|\)</span>; la implicación funcional da <span class="math inline">\(|f(x_n)-L|&lt;\varepsilon\)</span> en toda esa cola. No se ha elegido una nueva sucesión.</p>
+<p>Si permitiéramos términos iguales a <span class="math inline">\(a\)</span>, la sucesión constante del centro exigiría <span class="math inline">\(f(a)=L\)</span>. La definición perforada no proporciona esa igualdad. Se puede permitir un prefijo finito de centros si la cola los evita, usando el carácter eventual de C06.</p>
+</section>
+<section id="la-recíproca-dónde-aparece-una-selección" class="level3">
+<h3 class="anchored" data-anchor-id="la-recíproca-dónde-aparece-una-selección">La recíproca: dónde aparece una selección</h3>
+<p>Si el candidato falla, §13.4 ofrece conjuntos <span class="math inline">\(E_n\)</span> no vacíos. Para contradecir el control de todas las rutas queremos una ruta con <span class="math inline">\(x_n\in E_n\)</span>. Una colección de existencias no es todavía una regla de selección.</p>
+<p><strong>Teorema para un dominio enumerado.</strong> Si está dada una sobreyección <span class="math inline">\(e:\mathbb N\to D\)</span>, entonces <span class="math inline">\(f\to L\)</span> si y sólo si todas las sucesiones admisibles tienen imágenes que convergen a <span class="math inline">\(L\)</span>.</p>
+<p>La dirección directa está probada. Para la inversa, si el límite falla, fijemos <span class="math inline">\(\varepsilon_0\)</span> y los <span class="math inline">\(E_n\)</span>. El conjunto <span class="math inline">\(I_n=\{k\in\mathbb N:e(k)\in E_n\}\)</span> es no vacío por sobreyectividad. Definimos <span class="math inline">\(k_n=\min I_n\)</span>, mínimo único de naturales, y <span class="math inline">\(x_n=e(k_n)\)</span>. Entonces <span class="math inline">\(0&lt;|x_n-a|&lt;1/(n+1)\)</span>, luego <span class="math inline">\(x_n\to a\)</span>, mientras <span class="math inline">\(|f(x_n)-L|\ge\varepsilon_0\)</span> para todo índice. Sus imágenes no convergen a <span class="math inline">\(L\)</span>, contradicción. Los <span class="math inline">\(k_n\)</span> no tienen que ser estrictamente crecientes; ésta no es una extracción de una sucesión previa.</p>
+<div id="fig-anm-c13-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="C13-F05. En el dominio de recíprocos enteros, con f=1, a=L=0 y ε₀=1/2, la enumeración empieza con los denominadores 1,4,2,8,3,5,7,6 y continúa 9,10,… . Se marca e(k)<1/(n+1) y se rodea el menor índice válido. Los índices seleccionados pueden repetirse; el mínimo es de índices, no de valores reales.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c13-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C13/C13-F05.svg" class="img-fluid figure-img" alt="C13-F05. En el dominio de recíprocos enteros, con f=1, a=L=0 y ε₀=1/2, la enumeración empieza con los denominadores 1,4,2,8,3,5,7,6 y continúa 9,10,… . Se marca e(k)<1/(n+1) y se rodea el menor índice válido. Los índices seleccionados pueden repetirse; el mínimo es de índices, no de valores reales.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c13-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: C13-F05. En el dominio de recíprocos enteros, con f=1, a=L=0 y ε₀=1/2, la enumeración empieza con los denominadores 1,4,2,8,3,5,7,6 y continúa 9,10,… . Se marca e(k)&lt;1/(n+1) y se rodea el menor índice válido. Los índices seleccionados pueden repetirse; el mínimo es de índices, no de valores reales.
+</figcaption>
+</figure>
+</div>
+<p><strong>Teorema condicional para dominios arbitrarios.</strong> Bajo el principio de elección numerable para subconjuntos de reales, <span class="math inline">\(\mathrm{CC}(\mathbb R)\)</span>, vale la misma equivalencia para todo <span class="math inline">\(D\subseteq\mathbb R\)</span>. Este principio dice que cada familia numerable de subconjuntos reales no vacíos admite un selector. Aplicarlo a los <span class="math inline">\(E_n\)</span> produce <span class="math inline">\(x_n\in E_n\)</span>; las dos desigualdades anteriores completan la contradicción. Es exactamente el paso adicional. No lo necesitamos para la dirección directa ni para el caso enumerado, y no lo incorporamos silenciosamente como axioma.</p>
+</section>
+<section id="refutar-con-rutas-ya-dadas" class="level3">
+<h3 class="anchored" data-anchor-id="refutar-con-rutas-ya-dadas">Refutar con rutas ya dadas</h3>
+<p>Para el salto de §13.4, <span class="math inline">\(u_n=-1/(n+1)\)</span> y <span class="math inline">\(v_n=1/(n+1)\)</span> son admisibles en cero. Sus imágenes son constantes <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span>. Si hubiese límite funcional <span class="math inline">\(L\)</span>, la dirección directa y la unicidad secuencial de C06 obligarían <span class="math inline">\(L=-1=1\)</span>. Esta refutación es incondicional: las rutas están dadas mediante fórmulas, no elegidas de conjuntos arbitrarios.</p>
+<p>Una sola ruta con imágenes que no convergen a un candidato lo refuta. Dos rutas con destinos distintos refutan la existencia de cualquier límite. Muchas rutas favorables, sin argumento universal, no prueban existencia.</p>
+</section>
+<section id="antes-de-seguir-4" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-4">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-013-033"></span></p>
+<ol type="1">
+<li>¿Qué tres condiciones hacen admisible a <span class="math inline">\((x_n)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-034"></span></p>
+<ol start="2" type="1">
+<li>¿Cómo se encadenan <span class="math inline">\(\varepsilon\)</span>, <span class="math inline">\(\delta\)</span> y <span class="math inline">\(N\)</span> en la dirección directa?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-035"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué la sucesión constante <span class="math inline">\(x_n=a\)</span> no es admisible?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-036"></span></p>
+<ol start="4" type="1">
+<li>Si una ruta admisible tiene imágenes que no convergen a <span class="math inline">\(L\)</span>, ¿qué concluyes?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-037"></span></p>
+<ol start="5" type="1">
+<li>¿Qué regla elige infractores cuando está dada <span class="math inline">\(e:\mathbb N\to D\)</span> sobreyectiva?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-038"></span></p>
+<ol start="6" type="1">
+<li>¿Deben crecer estrictamente los <span class="math inline">\(k_n\)</span> de ese selector?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-039"></span></p>
+<ol start="7" type="1">
+<li>¿Qué hipótesis permite la recíproca en cualquier dominio real?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-040"></span></p>
+<ol start="8" type="1">
+<li>¿Necesita elección numerable la refutación por las rutas <span class="math inline">\(\pm1/(n+1)\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="combinar-límites-con-presupuestos-de-error" class="level2">
+<h2 class="anchored" data-anchor-id="combinar-límites-con-presupuestos-de-error">13.6. Combinar límites con presupuestos de error</h2>
+<p><span id="MA-SEC-ANM-01-013-006"></span></p>
+<p>Ya sabemos construir radios para funciones concretas. Ahora probaremos reglas que permitan combinar límites sin rehacer toda la estimación. Las pruebas se harán con ventanas, de modo que no dependerán de la recíproca secuencial condicional.</p>
+<p>Sean <span class="math inline">\(f,g:D\to\mathbb R\)</span>, <span class="math inline">\(a\in D'\)</span>, <span class="math inline">\(f\to L\)</span> y <span class="math inline">\(g\to M\)</span>. Todas las restricciones siguientes se cumplen en ventanas perforadas de ese mismo dominio.</p>
+<section id="sumas-constantes-y-magnitudes" class="level3">
+<h3 class="anchored" data-anchor-id="sumas-constantes-y-magnitudes">Sumas, constantes y magnitudes</h3>
+<p>Para <span class="math inline">\(\varepsilon&gt;0\)</span>, tomamos radios que aseguren <span class="math inline">\(|f-L|&lt;\varepsilon/2\)</span> y <span class="math inline">\(|g-M|&lt;\varepsilon/2\)</span>. Su mínimo da <span class="math inline">\(|(f+g)-(L+M)|\le |f-L|+|g-M|&lt;\varepsilon\)</span>. Por tanto <span class="math inline">\(f+g\to L+M\)</span>.</p>
+<p>Para <span class="math inline">\(\lambda f\)</span>, si <span class="math inline">\(\lambda=0\)</span> el error es cero; si <span class="math inline">\(\lambda\ne0\)</span>, pedimos <span class="math inline">\(|f-L|&lt;\varepsilon/|\lambda|\)</span>. Entonces <span class="math inline">\(|\lambda f-\lambda L|&lt;\varepsilon\)</span>. Esto prueba también restas usando <span class="math inline">\(\lambda=-1\)</span> y la regla de suma. La triangular inversa da <span class="math inline">\(||f|-|L||\le |f-L|\)</span>, así que <span class="math inline">\(|f|\to|L|\)</span> con el mismo radio.</p>
+</section>
+<section id="el-producto-necesita-una-barrera-y-dos-errores" class="level3">
+<h3 class="anchored" data-anchor-id="el-producto-necesita-una-barrera-y-dos-errores">El producto necesita una barrera y dos errores</h3>
+<p>La identidad útil es <span class="math inline">\(fg-LM=f(g-M)+M(f-L)\)</span>. El primer factor <span class="math inline">\(f\)</span> varía; §13.3 nos permite fijar <span class="math inline">\(|f|&lt;A:=|L|+1\)</span> en algún radio <span class="math inline">\(r\)</span>. Sea <span class="math inline">\(B=|M|+1&gt;0\)</span>. Para <span class="math inline">\(\varepsilon&gt;0\)</span> pedimos <span class="math inline">\(|g-M|&lt;\varepsilon/(2A)\)</span> y <span class="math inline">\(|f-L|&lt;\varepsilon/(2B)\)</span>, y reunimos esos radios con <span class="math inline">\(r\)</span>. Allí</p>
+<p><span class="math display">\[
+|fg-LM|\le |f||g-M|+|M||f-L|
+&lt;A\frac{\varepsilon}{2A}+B\frac{\varepsilon}{2B}
+=\varepsilon.
+\]</span></p>
+<p>El uso de <span class="math inline">\(B\)</span> evita dividir por <span class="math inline">\(|M|\)</span> cuando <span class="math inline">\(M=0\)</span>. La identidad no basta sola: la cota local convierte un coeficiente variable en una constante que permite repartir el presupuesto.</p>
+</section>
+<section id="recíprocos-y-cocientes-restringir-el-dominio-a-tiempo" class="level3">
+<h3 class="anchored" data-anchor-id="recíprocos-y-cocientes-restringir-el-dominio-a-tiempo">Recíprocos y cocientes: restringir el dominio a tiempo</h3>
+<p>Si <span class="math inline">\(M\ne0\)</span>, pedir <span class="math inline">\(|g-M|&lt;|M|/2\)</span> da <span class="math inline">\(|g|&gt;|M|/2\)</span>. Por tanto <span class="math inline">\(g(x)\ne0\)</span> cerca de <span class="math inline">\(a\)</span> y</p>
+<p><span class="math display">\[
+\left|\frac1{g(x)}-\frac1M\right|
+=\frac{|g(x)-M|}{|g(x)||M|}
+&lt;\frac{2|g(x)-M|}{|M|^2}.
+\]</span></p>
+<p>Pedimos además <span class="math inline">\(|g-M|&lt;\varepsilon |M|^2/2\)</span> y tomamos el mínimo de radios. Así <span class="math inline">\(1/g\to1/M\)</span> en <span class="math inline">\(D_0=\{x\in D:g(x)\ne0\}\)</span>. Este dominio tiene a <span class="math inline">\(a\)</span> como punto de acumulación: para cualquier radio, la acumulación de <span class="math inline">\(D\)</span> ofrece un punto dentro del mínimo con la ventana de no anulación, y ese punto pertenece a <span class="math inline">\(D_0\)</span>.</p>
+<p>La restricción de <span class="math inline">\(f\)</span> a <span class="math inline">\(D_0\)</span> conserva su límite porque el control universal en <span class="math inline">\(D\)</span> vale en el subconjunto. Aplicar la regla del producto a <span class="math inline">\(f|_{D_0}\)</span> y <span class="math inline">\(1/g\)</span> prueba <span class="math inline">\(f/g\to L/M\)</span>. No se afirma que el cociente esté definido en todos los puntos del dominio original.</p>
+</section>
+<section id="primer-uso-y-una-trampa" class="level3">
+<h3 class="anchored" data-anchor-id="primer-uso-y-una-trampa">Primer uso y una trampa</h3>
+<p>Suma y producto prueban por inducción finita que un polinomio <span class="math inline">\(P\)</span> tiene límite <span class="math inline">\(P(a)\)</span> en cada <span class="math inline">\(a\)</span>: las constantes y la identidad cumplen la definición, multiplicar construye potencias y sumar reúne términos. Si <span class="math inline">\(Q(a)\ne0\)</span>, el cociente <span class="math inline">\(P/Q\)</span> tiene límite <span class="math inline">\(P(a)/Q(a)\)</span> en su dominio natural. Esta prueba no usa continuidad ni derivadas.</p>
+<p>Si <span class="math inline">\(Q(a)=0\)</span>, la regla de cocientes no decide nada. <span class="math inline">\((x^2-1)/(x-1)\)</span> en <span class="math inline">\(x\ne1\)</span> se simplifica a <span class="math inline">\(x+1\)</span> y tiene límite <span class="math inline">\(2\)</span> en <span class="math inline">\(1\)</span>. En cambio <span class="math inline">\(1/(x-1)\)</span> no tiene límite finito allí. El denominador límite no nulo es una hipótesis suficiente del criterio, no una clasificación de todo cociente posible.</p>
+</section>
+<section id="antes-de-seguir-5" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-5">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-013-041"></span></p>
+<ol type="1">
+<li>¿Cómo se reparte <span class="math inline">\(\varepsilon\)</span> en una suma?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-042"></span></p>
+<ol start="2" type="1">
+<li>¿Cómo se trata la multiplicación por una constante nula?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-043"></span></p>
+<ol start="3" type="1">
+<li>¿Qué identidad prepara el producto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-044"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué <span class="math inline">\(|M|+1\)</span> es útil en el presupuesto de producto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-045"></span></p>
+<ol start="5" type="1">
+<li>¿Qué tolerancia garantiza que <span class="math inline">\(g\)</span> no se anule si <span class="math inline">\(M\ne0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-046"></span></p>
+<ol start="6" type="1">
+<li>¿Cuál es el dominio correcto de <span class="math inline">\(f/g\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-047"></span></p>
+<ol start="7" type="1">
+<li>¿Qué sucede con el cociente si el límite del denominador es cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-048"></span></p>
+<ol start="8" type="1">
+<li>¿Necesita la regla de producto el criterio secuencial recíproco?</li>
+</ol>
+</section>
+</section>
+<section id="cambiar-las-rutas-disponibles" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-las-rutas-disponibles">13.7. Cambiar las rutas disponibles</h2>
+<p><span id="MA-SEC-ANM-01-013-007"></span></p>
+<p>El dominio forma parte de la pregunta. Si retiramos entradas, retiramos posibles infractores. Un límite que vale en un dominio grande se conserva al restringirlo; un límite obtenido en un dominio pequeño puede dejar de valer al devolver entradas.</p>
+<section id="restricción-y-reunión-finita" class="level3">
+<h3 class="anchored" data-anchor-id="restricción-y-reunión-finita">Restricción y reunión finita</h3>
+<p>Si <span class="math inline">\(A\subseteq D\)</span>, <span class="math inline">\(a\in A'\)</span> y <span class="math inline">\(f\to L\)</span> a través de <span class="math inline">\(D\)</span>, el mismo radio controla <span class="math inline">\(f|_A\)</span>. La acumulación de <span class="math inline">\(A\)</span> asegura que la nueva pregunta no sea vacía.</p>
+<p>Más generalmente, sean <span class="math inline">\(D_1,\ldots,D_k\subseteq D\)</span>, con <span class="math inline">\(k\ge1\)</span>, <span class="math inline">\(a\in D_i'\)</span> para todos, y supongamos que existe <span class="math inline">\(r&gt;0\)</span> con <span class="math inline">\(U_D(a,r)\subseteq D_1\cup\cdots\cup D_k\)</span>. Si las restricciones tienen el mismo límite <span class="math inline">\(L\)</span>, dado <span class="math inline">\(\varepsilon\)</span> tomamos un radio por cada una y el mínimo con <span class="math inline">\(r\)</span>. Toda entrada de la ventana pertenece a alguna pieza y cumple su estimación. Así <span class="math inline">\(f\to L\)</span> en <span class="math inline">\(D\)</span>. Es una reunión finita de radios positivos; una familia infinita no proporciona necesariamente un mínimo positivo.</p>
+</section>
+<section id="lados-disponibles-lados-inexistentes" class="level3">
+<h3 class="anchored" data-anchor-id="lados-disponibles-lados-inexistentes">Lados disponibles, lados inexistentes</h3>
+<p>Definimos <span class="math inline">\(D_-=D\cap(-\infty,a)\)</span> y <span class="math inline">\(D_+=D\cap(a,\infty)\)</span>. El límite por la izquierda es el límite de <span class="math inline">\(f|_{D_-}\)</span> en <span class="math inline">\(a\)</span>, siempre que <span class="math inline">\(a\in D_-'\)</span>; análogamente a la derecha. No asignamos un límite a un lado que no acumula entradas.</p>
+<p>Cuando ambos lados acumulan, el límite en <span class="math inline">\(D\)</span> existe y es <span class="math inline">\(L\)</span> si y sólo si ambos límites laterales existen y son <span class="math inline">\(L\)</span>. La ida es restricción; la vuelta usa la reunión finita, pues toda entrada perforada pertenece a un lado.</p>
+<div id="fig-anm-c13-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="C13-F06. El salto tiene destinos laterales −1 y 1 en el dominio real, por lo que no admite un destino común. Restringido a entradas positivas, tiene límite 1 en cero. El lado izquierdo ausente no recibe un límite por vacuidad.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c13-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C13/C13-F06.svg" class="img-fluid figure-img" alt="C13-F06. El salto tiene destinos laterales −1 y 1 en el dominio real, por lo que no admite un destino común. Restringido a entradas positivas, tiene límite 1 en cero. El lado izquierdo ausente no recibe un límite por vacuidad.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c13-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: C13-F06. El salto tiene destinos laterales −1 y 1 en el dominio real, por lo que no admite un destino común. Restringido a entradas positivas, tiene límite 1 en cero. El lado izquierdo ausente no recibe un límite por vacuidad.
+</figcaption>
+</figure>
+</div>
+<p>Si sólo acumula <span class="math inline">\(D_+\)</span>, existe un radio sin entradas de <span class="math inline">\(D_-\)</span>: ésa es la negación de acumulación del lado izquierdo. En esa ventana el límite en <span class="math inline">\(D\)</span> equivale al de la derecha. Si <span class="math inline">\(a\in D'\)</span>, al menos un lado acumula: si ninguno lo hiciera, el mínimo de sus radios sin entradas eliminaría toda ventana perforada, contradicción.</p>
+<p>El salto <span class="math inline">\(s\)</span> tiene límites laterales <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span>, y no tiene límite en el dominio real. Restringir a <span class="math inline">\((0,\infty)\)</span> deja un límite perfectamente válido en cero, aunque cero no pertenezca al dominio.</p>
+</section>
+<section id="un-dominio-denso-puede-ocultar-todas-las-infracciones" class="level3">
+<h3 class="anchored" data-anchor-id="un-dominio-denso-puede-ocultar-todas-las-infracciones">Un dominio denso puede ocultar todas las infracciones</h3>
+<p>Sea <span class="math inline">\(d:\mathbb R\to\mathbb R\)</span>, con <span class="math inline">\(d(x)=0\)</span> si <span class="math inline">\(x\in\mathbb Q\)</span> y <span class="math inline">\(d(x)=1\)</span> en caso contrario; aquí <span class="math inline">\(\mathbb Q\)</span> significa su copia canónica en <span class="math inline">\(\mathbb R\)</span>. La restricción racional tiene límite cero en cada punto de acumulación de ese dominio porque es constante.</p>
+<p>En cero, la función completa no tiene límite. Las rutas <span class="math inline">\(u_n=1/(n+1)\)</span> y <span class="math inline">\(v_n=\sqrt2/(n+1)\)</span> convergen a cero, son no nulas, y sus valores son respectivamente <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>. Cada <span class="math inline">\(v_n\)</span> es irracional: de ser racional, multiplicarlo por el entero no nulo <span class="math inline">\(n+1\)</span> haría racional a <span class="math inline">\(\sqrt2\)</span>, contradiciendo C10. La dirección secuencial ya probada descarta un destino común.</p>
+<p>Densidad garantiza entradas próximas; no garantiza que probar sólo en esas entradas describa una función arbitraria. Para rescatar tal inferencia harían falta hipótesis adicionales, que no estamos suponiendo.</p>
+</section>
+<section id="antes-de-seguir-6" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-6">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-013-049"></span></p>
+<ol type="1">
+<li>¿Qué condición adicional se exige al restringir a <span class="math inline">\(A\subseteq D\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-050"></span></p>
+<ol start="2" type="1">
+<li>¿Por qué sirve reunir finitos radios positivos mediante un mínimo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-051"></span></p>
+<ol start="3" type="1">
+<li>¿Un mínimo de infinitos radios positivos tiene que ser positivo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-052"></span></p>
+<ol start="4" type="1">
+<li>¿Cuándo está definido el límite por la izquierda bajo nuestra convención?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-053"></span></p>
+<ol start="5" type="1">
+<li>Si ambos lados acumulan, ¿qué permite reunirlos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-054"></span></p>
+<ol start="6" type="1">
+<li>Si un lado no acumula, ¿qué información local ofrece?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-055"></span></p>
+<ol start="7" type="1">
+<li>¿Probar un límite en un subconjunto denso basta para una función arbitraria?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-056"></span></p>
+<ol start="8" type="1">
+<li>¿Por qué <span class="math inline">\(\sqrt2/(n+1)\)</span> es irracional para todo índice?</li>
+</ol>
+</section>
+</section>
+<section id="componer-controles-sin-perder-la-perforación" class="level2">
+<h2 class="anchored" data-anchor-id="componer-controles-sin-perder-la-perforación">13.8. Componer controles sin perder la perforación</h2>
+<p><span id="MA-SEC-ANM-01-013-008"></span></p>
+<p>Transportar dos ventanas consecutivas parece inmediato: primero <span class="math inline">\(f\)</span> acerca <span class="math inline">\(x\)</span> a <span class="math inline">\(b\)</span>; después <span class="math inline">\(g\)</span> acerca la salida a <span class="math inline">\(L\)</span>. Pero el segundo límite controla entradas próximas a <span class="math inline">\(b\)</span> y distintas de <span class="math inline">\(b\)</span>. La primera función puede enviar muchas entradas directamente a ese centro.</p>
+<section id="composición-con-evitación-del-centro-intermedio" class="level3">
+<h3 class="anchored" data-anchor-id="composición-con-evitación-del-centro-intermedio">Composición con evitación del centro intermedio</h3>
+<p><strong>Teorema.</strong> Sean <span class="math inline">\(f:D\to E\)</span>, con <span class="math inline">\(D,E\subseteq\mathbb R\)</span>, <span class="math inline">\(a\in D'\)</span>, <span class="math inline">\(b\in E'\)</span> y <span class="math inline">\(g:E\to\mathbb R\)</span>. Supongamos <span class="math inline">\(f\to b\)</span> en <span class="math inline">\(a\)</span>, <span class="math inline">\(g\to L\)</span> en <span class="math inline">\(b\)</span>, y que existe <span class="math inline">\(r&gt;0\)</span> con <span class="math inline">\(f(x)\ne b\)</span> para todo <span class="math inline">\(x\in U_D(a,r)\)</span>. Entonces <span class="math inline">\(g\circ f\to L\)</span> en <span class="math inline">\(a\)</span>.</p>
+<p><strong>Mapa de la prueba.</strong> El desafío final <span class="math inline">\(\varepsilon\)</span> determina un radio intermedio <span class="math inline">\(\eta\)</span> para <span class="math inline">\(g\)</span>; ese radio es el desafío que presentamos a <span class="math inline">\(f\)</span>. La evitación garantiza que el punto intermedio esté en la ventana perforada y no sólo en la ventana completa.</p>
+<p>Fijemos <span class="math inline">\(\varepsilon&gt;0\)</span>. Para <span class="math inline">\(g\)</span> obtenemos <span class="math inline">\(\eta&gt;0\)</span> tal que <span class="math inline">\(y\in E\)</span>, <span class="math inline">\(0&lt;|y-b|&lt;\eta\)</span> implica <span class="math inline">\(|g(y)-L|&lt;\varepsilon\)</span>. Para <span class="math inline">\(f\)</span> obtenemos <span class="math inline">\(\delta_f&gt;0\)</span> que asegura <span class="math inline">\(|f(x)-b|&lt;\eta\)</span>. Sea <span class="math inline">\(\delta=\min(r,\delta_f)\)</span>. Para cualquier <span class="math inline">\(x\in U_D(a,\delta)\)</span>, el tipo da <span class="math inline">\(f(x)\in E\)</span>, la primera cota da distancia menor que <span class="math inline">\(\eta\)</span> y la evitación da distancia positiva. Podemos aplicar el segundo contrato: <span class="math inline">\(|g(f(x))-L|&lt;\varepsilon\)</span>. Así se reensamblan las dos metas.</p>
+</section>
+<section id="una-alternativa-permite-tocar-el-centro" class="level3">
+<h3 class="anchored" data-anchor-id="una-alternativa-permite-tocar-el-centro">Una alternativa permite tocar el centro</h3>
+<p>Si <span class="math inline">\(b\in E\)</span> y <span class="math inline">\(g(b)=L\)</span>, podemos retirar la evitación. Con el mismo radio de <span class="math inline">\(f\)</span>, cada entrada produce uno de dos casos. Si <span class="math inline">\(f(x)\ne b\)</span>, usamos el límite de <span class="math inline">\(g\)</span>; si <span class="math inline">\(f(x)=b\)</span>, el error final es <span class="math inline">\(|g(b)-L|=0\)</span>. El argumento prueba la composición sin haber introducido aún el vocabulario de continuidad.</p>
+<div id="fig-anm-c13-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="C13-F07. La interior envía toda entrada a 0. La exterior tiene límite 0 en 0, pero g(0)=1; su contrato perforado no controla ese valor. La composición es constante 1. La cercanía intermedia necesita además evitación del centro o un valor central compatible.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c13-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C13/C13-F07.svg" class="img-fluid figure-img" alt="C13-F07. La interior envía toda entrada a 0. La exterior tiene límite 0 en 0, pero g(0)=1; su contrato perforado no controla ese valor. La composición es constante 1. La cercanía intermedia necesita además evitación del centro o un valor central compatible.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c13-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: C13-F07. La interior envía toda entrada a 0. La exterior tiene límite 0 en 0, pero g(0)=1; su contrato perforado no controla ese valor. La composición es constante 1. La cercanía intermedia necesita además evitación del centro o un valor central compatible.
+</figcaption>
+</figure>
+</div>
+<p>La alternativa es necesaria para ese mecanismo. Sea <span class="math inline">\(f(x)=0\)</span> en todo <span class="math inline">\(\mathbb R\)</span> y <span class="math inline">\(g(y)=0\)</span> si <span class="math inline">\(y\ne0\)</span>, <span class="math inline">\(g(0)=1\)</span>. Tenemos <span class="math inline">\(f\to0\)</span> en cero y <span class="math inline">\(g\to0\)</span> en cero, pero <span class="math inline">\((g\circ f)(x)=1\)</span> para toda entrada, cuyo límite es <span class="math inline">\(1\)</span>, no <span class="math inline">\(0\)</span>. No falló la cercanía: falló la autorización para aplicar un contrato perforado en su centro.</p>
+</section>
+<section id="un-certificado-que-se-puede-reutilizar" class="level3">
+<h3 class="anchored" data-anchor-id="un-certificado-que-se-puede-reutilizar">Un certificado que se puede reutilizar</h3>
+<p>Supongamos que <span class="math inline">\(|f(x)-b|\le C|x-a|\)</span> cerca de <span class="math inline">\(a\)</span>, con <span class="math inline">\(C&gt;0\)</span>, y que para cada <span class="math inline">\(\varepsilon&gt;0\)</span> tenemos un radio válido <span class="math inline">\(\eta_g(\varepsilon)\)</span> para <span class="math inline">\(g\)</span>. Si se cumple la evitación o la alternativa <span class="math inline">\(g(b)=L\)</span>, sirve</p>
+<p><span class="math display">\[
+\delta(\varepsilon)=\min\left(r,\frac{\eta_g(\varepsilon)}{C}\right),
+\]</span></p>
+<p>donde <span class="math inline">\(r\)</span> reúne las restricciones locales. Para <span class="math inline">\(x\)</span> dentro de ese radio, <span class="math inline">\(|f(x)-b|&lt;\eta_g(\varepsilon)\)</span>, y el argumento anterior decide el caso central. Si <span class="math inline">\(C=0\)</span>, la cota fuerza <span class="math inline">\(f(x)=b\)</span> localmente; sólo la alternativa central permite esta prueba y el resultado es inmediato.</p>
+<p>Una prueba de límite consta de dos piezas: un procedimiento para producir radios y una verificación universal en el dominio. Un gráfico propone el mecanismo; una tabla ensaya casos; una sucesión puede detectar una infracción. La desigualdad o el argumento universal es lo que certifica toda la ventana.</p>
+<p>Este capítulo ha separado cercanía, evaluación central y rutas disponibles. En el siguiente preguntaremos qué cambia al exigir que el destino sea precisamente el valor de la función en el centro.</p>
+</section>
+<section id="antes-de-seguir-7" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-7">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-013-057"></span></p>
+<ol type="1">
+<li>¿Qué desafío se presenta a <span class="math inline">\(f\)</span> después de fijar <span class="math inline">\(\varepsilon\)</span> para <span class="math inline">\(g\circ f\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-058"></span></p>
+<ol start="2" type="1">
+<li>¿Qué dato falta si sólo sabemos <span class="math inline">\(|f(x)-b|&lt;\eta\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-059"></span></p>
+<ol start="3" type="1">
+<li>¿Qué alternativa permite que <span class="math inline">\(f(x)=b\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-060"></span></p>
+<ol start="4" type="1">
+<li>¿Qué falla en la composición de una función cero con <span class="math inline">\(g(0)=1\)</span>, <span class="math inline">\(g(y)=0\)</span> fuera de cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-061"></span></p>
+<ol start="5" type="1">
+<li>¿Qué papel desempeña el tipo <span class="math inline">\(f:D\to E\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-062"></span></p>
+<ol start="6" type="1">
+<li>Con <span class="math inline">\(|f(x)-b|\le C|x-a|\)</span>, <span class="math inline">\(C&gt;0\)</span>, ¿qué radio de precisión sirve?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-063"></span></p>
+<ol start="7" type="1">
+<li>Si <span class="math inline">\(C=0\)</span> en esa cota, ¿qué ocurre localmente?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-013-064"></span></p>
+<ol start="8" type="1">
+<li>¿Qué verifica finalmente un certificado de límite?</li>
+</ol>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html">Capítulo 13</a> · <a href="analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-microcontroles.html">Soluciones de microcontroles</a></p>
+<p><a href="analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html">← Capítulo 12</a> · <a href="analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad.html">Capítulo 14 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

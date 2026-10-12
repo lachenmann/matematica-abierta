@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 8 — Subsucesiones, acumulación y Bolzano–Weierstrass – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#seleccionar-términos-sin-perder-el-orden" id="toc-seleccionar-términos-sin-perder-el-orden" class="nav-link active" data-scroll-target="#seleccionar-términos-sin-perder-el-orden">8.1. Seleccionar términos sin perder el orden</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir" id="toc-antes-de-seguir" class="nav-link" data-scroll-target="#antes-de-seguir">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#lo-que-conserva-una-subsucesión" id="toc-lo-que-conserva-una-subsucesión" class="nav-link" data-scroll-target="#lo-que-conserva-una-subsucesión">8.2. Lo que conserva una subsucesión</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-1" id="toc-antes-de-seguir-1" class="nav-link" data-scroll-target="#antes-de-seguir-1">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#regresar-cerca-de-un-punto" id="toc-regresar-cerca-de-un-punto" class="nav-link" data-scroll-target="#regresar-cerca-de-un-punto">8.3. Regresar cerca de un punto</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-2" id="toc-antes-de-seguir-2" class="nav-link" data-scroll-target="#antes-de-seguir-2">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#puntos-de-una-sucesión-y-puntos-de-un-conjunto" id="toc-puntos-de-una-sucesión-y-puntos-de-un-conjunto" class="nav-link" data-scroll-target="#puntos-de-una-sucesión-y-puntos-de-un-conjunto">8.4. Puntos de una sucesión y puntos de un conjunto</a>
+  <ul class="collapse">
+  <li><a href="#adherencia-y-sucesiones-de-puntos-del-conjunto" id="toc-adherencia-y-sucesiones-de-puntos-del-conjunto" class="nav-link" data-scroll-target="#adherencia-y-sucesiones-de-puntos-del-conjunto">Adherencia y sucesiones de puntos del conjunto</a></li>
+  <li><a href="#acumulación-y-exclusión-del-centro" id="toc-acumulación-y-exclusión-del-centro" class="nav-link" data-scroll-target="#acumulación-y-exclusión-del-centro">Acumulación y exclusión del centro</a></li>
+  <li><a href="#lo-que-la-imagen-no-conserva" id="toc-lo-que-la-imagen-no-conserva" class="nav-link" data-scroll-target="#lo-que-la-imagen-no-conserva">Lo que la imagen no conserva</a></li>
+  <li><a href="#antes-de-seguir-3" id="toc-antes-de-seguir-3" class="nav-link" data-scroll-target="#antes-de-seguir-3">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#dividir-el-espacio-y-conservar-índices" id="toc-dividir-el-espacio-y-conservar-índices" class="nav-link" data-scroll-target="#dividir-el-espacio-y-conservar-índices">8.5. Dividir el espacio y conservar índices</a>
+  <ul class="collapse">
+  <li><a href="#una-mitad-que-no-agote-las-visitas" id="toc-una-mitad-que-no-agote-las-visitas" class="nav-link" data-scroll-target="#una-mitad-que-no-agote-las-visitas">Una mitad que no agote las visitas</a></li>
+  <li><a href="#existencia-y-unicidad-del-punto-común" id="toc-existencia-y-unicidad-del-punto-común" class="nav-link" data-scroll-target="#existencia-y-unicidad-del-punto-común">Existencia y unicidad del punto común</a></li>
+  <li><a href="#antes-de-seguir-4" id="toc-antes-de-seguir-4" class="nav-link" data-scroll-target="#antes-de-seguir-4">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#bolzanoweierstrass-construir-la-extracción" id="toc-bolzanoweierstrass-construir-la-extracción" class="nav-link" data-scroll-target="#bolzanoweierstrass-construir-la-extracción">8.6. Bolzano–Weierstrass: construir la extracción</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-5" id="toc-antes-de-seguir-5" class="nav-link" data-scroll-target="#antes-de-seguir-5">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#de-la-extracción-a-los-conjuntos" id="toc-de-la-extracción-a-los-conjuntos" class="nav-link" data-scroll-target="#de-la-extracción-a-los-conjuntos">8.7. De la extracción a los conjuntos</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-6" id="toc-antes-de-seguir-6" class="nav-link" data-scroll-target="#antes-de-seguir-6">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#cuándo-las-extracciones-determinan-la-sucesión" id="toc-cuándo-las-extracciones-determinan-la-sucesión" class="nav-link" data-scroll-target="#cuándo-las-extracciones-determinan-la-sucesión">8.8. Cuándo las extracciones determinan la sucesión</a>
+  <ul class="collapse">
+  <li><a href="#el-papel-de-la-acotación" id="toc-el-papel-de-la-acotación" class="nav-link" data-scroll-target="#el-papel-de-la-acotación">El papel de la acotación</a></li>
+  <li><a href="#antes-de-seguir-7" id="toc-antes-de-seguir-7" class="nav-link" data-scroll-target="#antes-de-seguir-7">Antes de seguir</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 8 — Subsucesiones, acumulación y Bolzano–Weierstrass</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html">Capítulo 8</a> · <a href="analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>Una sucesión puede permanecer entre dos barreras y seguir oscilando. El capítulo anterior obtuvo convergencia cuando había además una dirección monótona; ahora preguntaremos qué se puede rescatar de la sola acotación. La respuesta requerirá cambiar el objeto que seguimos: elegiremos algunos términos, conservando su orden, y construiremos una sucesión nueva.</p>
+<p>Primero precisaremos qué significa extraer y qué ocurre con el índice original. Después relacionaremos los destinos de las extracciones con la idea de volver cerca de un punto. Esa preparación permitirá demostrar Bolzano–Weierstrass: toda sucesión real acotada contiene una subsucesión convergente. El argumento hará visible dónde interviene la completitud y por qué necesitamos conservar infinitos índices en cada paso.</p>
+<p>Usaremos la propiedad arquimediana y los intervalos cerrados encajados de C03, las nociones locales de C04 y la definición, unicidad y reglas elementales de convergencia de C06. Las sucesiones mantienen dominio <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span> y codominio <span class="math inline">\(\mathbb R\)</span>. La extracción no añade un término final ni convierte una muestra finita en prueba de un comportamiento infinito.</p>
+<section id="seleccionar-términos-sin-perder-el-orden" class="level2">
+<h2 class="anchored" data-anchor-id="seleccionar-términos-sin-perder-el-orden">8.1. Seleccionar términos sin perder el orden</h2>
+<p><span id="MA-SEC-ANM-01-008-001"></span></p>
+<p>La sucesión <span class="math inline">\(a_n=(-1)^n\)</span> no se acerca a un único número: alterna entre uno y menos uno. Sin embargo, si leemos sólo los términos de índice impar, obtenemos una sucesión constante igual a menos uno. Hemos descartado términos, pero conservamos el orden en que aparecían. Esa operación permite encontrar un comportamiento estable dentro de una sucesión que no lo tiene globalmente.</p>
+<p>Hay dos preguntas distintas al escribir el primer término de la nueva sucesión: qué posición ocupa ahora y qué posición ocupaba antes. En el ejemplo, la posición nueva cero corresponde a la posición original uno; la nueva uno, a la original tres. La regla que relaciona ambas es <span class="math inline">\(\varphi(k)=2k+1\)</span>.</p>
+<p><strong>Definición.</strong> Sea <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span>. Una <strong>subsucesión</strong> de <span class="math inline">\(a\)</span> es una sucesión <span class="math inline">\(b=a\circ\varphi\)</span>, donde <span class="math inline">\(\varphi:\mathbb N\to\mathbb N\)</span> es estrictamente creciente. Así, <span class="math inline">\(b_k=a_{\varphi(k)}\)</span>, y <span class="math inline">\(i&lt;j\)</span> implica <span class="math inline">\(\varphi(i)&lt;\varphi(j)\)</span>.</p>
+<p>Conservamos <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span>. El índice nuevo <span class="math inline">\(k\)</span> y el índice original <span class="math inline">\(\varphi(k)\)</span> son naturales; <span class="math inline">\(a_{\varphi(k)}\)</span> es un real. Cuando un natural aparece en una expresión real como <span class="math inline">\(1/(k+1)\)</span>, se entiende su imagen mediante la inclusión canónica. La coincidencia de numerales no identifica los objetos de ambos sistemas.</p>
+<p>El crecimiento estricto impide repetir índices y volver hacia atrás. Permite saltar tantos términos como queramos, e incluso no saltar ninguno: la identidad <span class="math inline">\(\varphi(k)=k\)</span> produce la propia sucesión. También permite repetir valores; en nuestro ejemplo todos los índices elegidos son diferentes y todas las evaluaciones valen menos uno. Por otra parte, la regla <span class="math inline">\(\varphi(k)=0\)</span> produce una función compuesta constante, pero no es un selector de subsucesión: se detiene en un único índice.</p>
+<p><strong>Lema de los índices.</strong> Todo selector estrictamente creciente satisface <span class="math inline">\(\varphi(k)\ge k\)</span>. Además, la composición de dos selectores estrictamente crecientes vuelve a serlo.</p>
+<p>Para la primera afirmación usamos inducción. En cero, <span class="math inline">\(\varphi(0)\ge0\)</span> porque su valor es natural. Si <span class="math inline">\(\varphi(k)\ge k\)</span>, el crecimiento estricto entre naturales da <span class="math inline">\(\varphi(k+1)\ge\varphi(k)+1\ge k+1\)</span>. La comparación de índices consecutivos basta para acreditar crecimiento estricto universal: si <span class="math inline">\(i&lt;j\)</span>, se encadenan las desigualdades desde <span class="math inline">\(i\)</span> hasta <span class="math inline">\(j\)</span>. Para la composición, si <span class="math inline">\(i&lt;j\)</span>, entonces <span class="math inline">\(\psi(i)&lt;\psi(j)\)</span>, y aplicar el crecimiento de <span class="math inline">\(\varphi\)</span> da <span class="math inline">\(\varphi(\psi(i))&lt;\varphi(\psi(j))\)</span>.</p>
+<p>Este lema tendrá una utilidad concreta: llegar lejos en el índice nuevo garantiza haber llegado al menos igual de lejos en el original. Y si extraemos de una extracción, la función resultante sigue siendo una subsucesión de la inicial, pues <span class="math inline">\(b_{\psi(j)}=a_{(\varphi\circ\psi)(j)}\)</span>. El orden de la composición está determinado por el recorrido: primero <span class="math inline">\(j\)</span> pasa a <span class="math inline">\(\psi(j)\)</span> y después a <span class="math inline">\(\varphi(\psi(j))\)</span>.</p>
+<p>La figura siguiente mantiene separados esos recorridos y las alturas seleccionadas.</p>
+<div id="fig-anm-c08-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La selección impar cambia el índice horizontal y conserva la altura menos uno. Los índices elegidos son distintos, aunque los valores se repiten.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c08-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C08/C08-F01.svg" class="img-fluid figure-img" alt="La selección impar cambia el índice horizontal y conserva la altura menos uno. Los índices elegidos son distintos, aunque los valores se repiten.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c08-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: La selección impar cambia el índice horizontal y conserva la altura menos uno. Los índices elegidos son distintos, aunque los valores se repiten.
+</figcaption>
+</figure>
+</div>
+<p>Al trasladar los puntos impares a la gráfica de <span class="math inline">\(b\)</span>, cambia su coordenada horizontal: el punto original <span class="math inline">\((3,-1)\)</span> corresponde al punto nuevo <span class="math inline">\((1,-1)\)</span>. La altura se conserva. Ninguna de las dos gráficas contiene segmentos entre términos; ambas representan funciones de dominio natural.</p>
+<section id="antes-de-seguir" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-008-001"></span></p>
+<ol type="1">
+<li>Para <span class="math inline">\(a_n=(-1)^n\)</span> y <span class="math inline">\(\varphi(k)=2k+1\)</span>, calcula <span class="math inline">\(\varphi(0)\)</span>, <span class="math inline">\(\varphi(2)\)</span> y <span class="math inline">\(b_2=a_{\varphi(2)}\)</span>.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-002"></span></p>
+<ol start="2" type="1">
+<li>¿Por qué <span class="math inline">\(\varphi(k)=k+3\)</span> define una subsucesión desde <span class="math inline">\(k=0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-003"></span></p>
+<ol start="3" type="1">
+<li>¿Es <span class="math inline">\(\varphi(k)=0\)</span> un selector de subsucesión? Justifica.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-004"></span></p>
+<ol start="4" type="1">
+<li>¿Puede una subsucesión constante provenir de índices todos distintos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-005"></span></p>
+<ol start="5" type="1">
+<li>Escribe dominio y codominio de <span class="math inline">\(a\)</span>, <span class="math inline">\(\varphi\)</span> y <span class="math inline">\(a\circ\varphi\)</span>.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-006"></span></p>
+<ol start="6" type="1">
+<li>¿Qué paso permite deducir <span class="math inline">\(\varphi(k+1)\ge k+1\)</span> a partir de <span class="math inline">\(\varphi(k)\ge k\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-007"></span></p>
+<ol start="7" type="1">
+<li>Si <span class="math inline">\(\varphi(k)=2k+1\)</span> y <span class="math inline">\(\psi(j)=3j\)</span>, calcula el selector de una extracción de la extracción.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-008"></span></p>
+<ol start="8" type="1">
+<li>¿Dónde se representa en la gráfica nueva el término original <span class="math inline">\((5,-1)\)</span> de la selección impar?</li>
+</ol>
+</section>
+</section>
+<section id="lo-que-conserva-una-subsucesión" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-conserva-una-subsucesión">8.2. Lo que conserva una subsucesión</h2>
+<p><span id="MA-SEC-ANM-01-008-002"></span></p>
+<p>Si una ventana alrededor de <span class="math inline">\(L\)</span> contiene todos los términos desde cierto índice, cualquier selección que avance indefinidamente terminará dentro de esa ventana. El lema anterior convierte esta lectura geométrica en una prueba con los dos índices bien separados.</p>
+<p><strong>Proposición.</strong> Si <span class="math inline">\(a_n\to L\)</span> y <span class="math inline">\(\varphi\)</span> es un selector estrictamente creciente, entonces <span class="math inline">\(a_{\varphi(k)}\to L\)</span>.</p>
+<p>Fijemos <span class="math inline">\(\varepsilon&gt;0\)</span>. La convergencia original proporciona <span class="math inline">\(N\in\mathbb N\)</span> tal que <span class="math inline">\(n\ge N\)</span> implica <span class="math inline">\(|a_n-L|&lt;\varepsilon\)</span>. Para verificar la definición en el dominio nuevo, tomamos <span class="math inline">\(K=N\)</span>. Si <span class="math inline">\(k\ge K\)</span>, entonces <span class="math inline">\(\varphi(k)\ge k\ge N\)</span>, por lo que <span class="math inline">\(|a_{\varphi(k)}-L|&lt;\varepsilon\)</span>. Se ha obtenido un umbral válido para cada tolerancia, y eso demuestra la proposición.</p>
+<p>No afirmamos que <span class="math inline">\(K=N\)</span> sea el menor umbral posible: un selector puede avanzar mucho más rápido. Lo que importa es que el umbral elegido funciona para todos los índices nuevos posteriores. La prueba tampoco exige que los valores seleccionados sean distintos.</p>
+<p>Como primer uso, volvamos a <span class="math inline">\((-1)^n\)</span>. La selección par es constante uno y la impar es constante menos uno. Si la sucesión original tuviera límite <span class="math inline">\(L\)</span>, ambas selecciones convergerían a <span class="math inline">\(L\)</span>. La unicidad del límite demostrada en §6.4 obligaría a que uno fuese igual a menos uno, una contradicción. Dos destinos diferentes de subsucesiones bastan para descartar la convergencia global.</p>
+<p>La existencia de una sola subsucesión convergente deja abierta la conducta de los términos descartados. Consideremos ahora la función definida, para cada <span class="math inline">\(j\in\mathbb N\)</span>, por <span class="math inline">\(a_{2j}=1/(j+1)\)</span> y <span class="math inline">\(a_{2j+1}=2\)</span>. La paridad determina un único valor en cada índice. Su subsucesión par <span class="math inline">\(b_k=1/(k+1)\)</span> converge a cero, mientras que la impar es constante dos; de nuevo la sucesión completa carece de límite real.</p>
+<div id="fig-anm-c08-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La ventana de radio medio captura la selección par desde k=2, pero los términos impares de la sucesión original permanecen en dos. La frontera no pertenece a la ventana.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c08-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C08/C08-F02.svg" class="img-fluid figure-img" alt="La ventana de radio medio captura la selección par desde k=2, pero los términos impares de la sucesión original permanecen en dos. La frontera no pertenece a la ventana.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c08-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: La ventana de radio medio captura la selección par desde k=2, pero los términos impares de la sucesión original permanecen en dos. La frontera no pertenece a la ventana.
+</figcaption>
+</figure>
+</div>
+<p>Para la ventana dibujada, de radio <span class="math inline">\(1/2\)</span>, el término <span class="math inline">\(b_1=1/2\)</span> está en la frontera y no satisface la desigualdad estricta. Desde <span class="math inline">\(k=2\)</span>, en cambio, <span class="math inline">\(b_k\le1/3&lt;1/2\)</span>. En la gráfica original aún aparecen términos iguales a dos después de cualquier corte. El sombreado muestra una tolerancia concreta; la convergencia de <span class="math inline">\(b\)</span> se debe al argumento para toda tolerancia de C06, no a la cantidad de puntos visibles.</p>
+<p>También se conservan cotas: si <span class="math inline">\(|a_n|\le M\)</span> para todo <span class="math inline">\(n\)</span>, sustituir <span class="math inline">\(n\)</span> por <span class="math inline">\(\varphi(k)\)</span> da <span class="math inline">\(|a_{\varphi(k)}|\le M\)</span>. Si <span class="math inline">\(a\)</span> es no decreciente, el orden <span class="math inline">\(\varphi(k)&lt;\varphi(k+1)\)</span> da <span class="math inline">\(a_{\varphi(k)}\le a_{\varphi(k+1)}\)</span>; una subsucesión de una sucesión no creciente conserva de la misma manera esa dirección. Ninguna de estas afirmaciones obliga a que la sucesión original tenga las propiedades de una selección particular.</p>
+<section id="antes-de-seguir-1" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-1">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-008-009"></span></p>
+<ol type="1">
+<li>Si <span class="math inline">\(N\)</span> sirve para una tolerancia de <span class="math inline">\(a_n\to L\)</span>, ¿por qué <span class="math inline">\(K=N\)</span> sirve para cualquier subsucesión?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-010"></span></p>
+<ol start="2" type="1">
+<li>¿Debe <span class="math inline">\(K=N\)</span> ser el menor umbral de la subsucesión?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-011"></span></p>
+<ol start="3" type="1">
+<li>¿Qué contradicción producen las selecciones par e impar de <span class="math inline">\((-1)^n\)</span> si suponemos convergencia?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-012"></span></p>
+<ol start="4" type="1">
+<li>En el ejemplo <span class="math inline">\(b_k=1/(k+1)\)</span>, ¿entra <span class="math inline">\(b_1\)</span> en la ventana de radio <span class="math inline">\(1/2\)</span> alrededor de cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-013"></span></p>
+<ol start="5" type="1">
+<li>Para ese mismo radio, verifica que <span class="math inline">\(K=2\)</span> funciona para <span class="math inline">\(b\)</span>.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-014"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué la selección par convergente del ejemplo par-impar no demuestra convergencia global?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-015"></span></p>
+<ol start="7" type="1">
+<li>Si <span class="math inline">\(|a_n|\le7\)</span> para todo <span class="math inline">\(n\)</span>, ¿qué cota hereda <span class="math inline">\(a_{\varphi(k)}\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-016"></span></p>
+<ol start="8" type="1">
+<li>¿Cómo se prueba que una subsucesión de una sucesión no decreciente es no decreciente?</li>
+</ol>
+</section>
+</section>
+<section id="regresar-cerca-de-un-punto" class="level2">
+<h2 class="anchored" data-anchor-id="regresar-cerca-de-un-punto">8.3. Regresar cerca de un punto</h2>
+<p><span id="MA-SEC-ANM-01-008-003"></span></p>
+<p>La sucesión par-impar anterior regresa cerca de cero después de cualquier corte, aunque nunca quede completamente atrapada allí. Conviene dar un nombre a ese regreso persistente. Una visita aislada al comienzo no basta: debe ser posible exigir al mismo tiempo cercanía y un índice arbitrariamente tardío.</p>
+<p><strong>Definición.</strong> Un real <span class="math inline">\(L\)</span> es un <strong>punto de acumulación de la sucesión</strong> <span class="math inline">\(a\)</span> si</p>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\ \forall N\in\mathbb N\ \exists n\ge N:
+|a_n-L|&lt;\varepsilon.
+\]</span></p>
+<p>Diremos también <em>punto de acumulación secuencial</em> para distinguirlo de la acumulación de un conjunto. La condición significa que cada bola <span class="math inline">\(B(L,\varepsilon)\)</span> contiene términos con índices arbitrariamente grandes. Equivale a que el conjunto de índices de visita sea infinito: un conjunto finito de índices queda antes de algún corte, mientras que un conjunto infinito no cabe en un prefijo finito.</p>
+<p>En la convergencia, después de fijar <span class="math inline">\(\varepsilon\)</span> buscamos un corte a partir del cual <strong>todos</strong> los términos entren. Aquí, dados <span class="math inline">\(\varepsilon\)</span> y un corte cualquiera, buscamos <strong>algún</strong> término posterior dentro. La diferencia permite que una sucesión tenga varios puntos de acumulación secuencial, como sucede con uno y menos uno para <span class="math inline">\((-1)^n\)</span>.</p>
+<p><strong>Proposición.</strong> Un real <span class="math inline">\(L\)</span> es punto de acumulación secuencial de <span class="math inline">\(a\)</span> si y sólo si existe una subsucesión de <span class="math inline">\(a\)</span> que converge a <span class="math inline">\(L\)</span>.</p>
+<p>La construcción debe satisfacer dos obligaciones que no se resuelven por separado: los errores han de reducirse y los índices han de avanzar. Para forzar la primera utilizaremos <span class="math inline">\(1/(k+1)\)</span>; para la segunda, el índice elegido antes más uno.</p>
+<p>Supongamos primero que <span class="math inline">\(L\)</span> cumple la definición. El conjunto de índices con <span class="math inline">\(|a_n-L|&lt;1\)</span> es no vacío; sea <span class="math inline">\(n_0\)</span> su mínimo. Una vez elegido <span class="math inline">\(n_k\)</span>, la definición aplicada al corte <span class="math inline">\(n_k+1\)</span> y al radio <span class="math inline">\(1/(k+2)\)</span> garantiza que el conjunto</p>
+<p><span class="math display">\[
+\{n\in\mathbb N:n\ge n_k+1,\ |a_n-L|&lt;1/(k+2)\}
+\]</span></p>
+<p>es no vacío. Definimos <span class="math inline">\(n_{k+1}\)</span> como su mínimo. El buen orden de los naturales permite continuar la recursión, y las desigualdades <span class="math inline">\(n_{k+1}&gt;n_k\)</span> convierten <span class="math inline">\(\varphi(k)=n_k\)</span> en un selector estrictamente creciente. Por construcción, <span class="math inline">\(|a_{n_k}-L|&lt;1/(k+1)\)</span> para todo <span class="math inline">\(k\)</span>.</p>
+<p>Queda comprobar la convergencia, porque una escala escrita no sustituye su definición. Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, la propiedad arquimediana de C03 permite elegir <span class="math inline">\(K\)</span> con <span class="math inline">\(1/(K+1)&lt;\varepsilon\)</span>. Si <span class="math inline">\(k\ge K\)</span>, entonces <span class="math inline">\(|a_{n_k}-L|&lt;1/(k+1)\le1/(K+1)&lt;\varepsilon\)</span>. La subsucesión construida converge a <span class="math inline">\(L\)</span>.</p>
+<p>Recíprocamente, supongamos que <span class="math inline">\(a_{\varphi(k)}\to L\)</span>. Dados <span class="math inline">\(\varepsilon&gt;0\)</span> y <span class="math inline">\(N\in\mathbb N\)</span>, sea <span class="math inline">\(K\)</span> un umbral para esa subsucesión. Tomamos <span class="math inline">\(k=\max\{K,N\}\)</span> y <span class="math inline">\(n=\varphi(k)\)</span>. El lema de §8.1 da <span class="math inline">\(n\ge k\ge N\)</span>, y la convergencia da <span class="math inline">\(|a_n-L|&lt;\varepsilon\)</span>. Esto cumple exactamente la definición de acumulación secuencial.</p>
+<p>Para ver la construcción en acción, usemos <span class="math inline">\(a_{2j}=1/(j+1)\)</span>, <span class="math inline">\(a_{2j+1}=2\)</span> y <span class="math inline">\(L=0\)</span>. La regla de mínimos produce <span class="math inline">\(n_0=2\)</span>, <span class="math inline">\(n_1=4\)</span>, <span class="math inline">\(n_2=6\)</span> y, en general, <span class="math inline">\(n_k=2(k+1)\)</span>. En efecto, el error correspondiente es <span class="math inline">\(1/(k+2)&lt;1/(k+1)\)</span>; los índices pares anteriores que aún pudieran superar el corte no cumplen la desigualdad estricta. El término elegido no tiene por qué ser el primero después del corte.</p>
+<div id="fig-anm-c08-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="El corte impuesto y el índice elegido son diferentes. Cada paso conserva el avance temporal y obtiene un error menor que la tolerancia solicitada.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c08-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C08/C08-F04.svg" class="img-fluid figure-img" alt="El corte impuesto y el índice elegido son diferentes. Cada paso conserva el avance temporal y obtiene un error menor que la tolerancia solicitada.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c08-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: El corte impuesto y el índice elegido son diferentes. Cada paso conserva el avance temporal y obtiene un error menor que la tolerancia solicitada.
+</figcaption>
+</figure>
+</div>
+<p>El mínimo natural elimina ambigüedad en la definición de cada índice. No proporciona por sí solo un algoritmo efectivo: decidir una condición sobre reales dados abstractamente puede requerir información que no se ha especificado. La proposición es una construcción matemática por recursión y existencia de testigos.</p>
+<section id="antes-de-seguir-2" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-2">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-008-017"></span></p>
+<ol type="1">
+<li>Escribe los cuantificadores que definen un punto de acumulación secuencial <span class="math inline">\(L\)</span>.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-018"></span></p>
+<ol start="2" type="1">
+<li>¿Por qué una sola aparición de <span class="math inline">\(L\)</span> no garantiza acumulación secuencial?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-019"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué un conjunto infinito de índices contiene un índice mayor que cualquier <span class="math inline">\(m\)</span> fijado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-020"></span></p>
+<ol start="4" type="1">
+<li>¿Qué dos requisitos se imponen al elegir <span class="math inline">\(n_{k+1}\)</span> en la prueba?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-021"></span></p>
+<ol start="5" type="1">
+<li>¿Qué garantiza que cada conjunto admisible de índices tenga mínimo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-022"></span></p>
+<ol start="6" type="1">
+<li>Si <span class="math inline">\(|a_{n_k}-L|&lt;1/(k+1)\)</span>, ¿cómo eliges un umbral para <span class="math inline">\(\varepsilon&gt;0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-023"></span></p>
+<ol start="7" type="1">
+<li>En la dirección inversa, ¿por qué se toma <span class="math inline">\(k=\max\{K,N\}\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-024"></span></p>
+<ol start="8" type="1">
+<li>En el ejemplo par-impar, ¿por qué el primer mínimo para error menor que uno es <span class="math inline">\(n_0=2\)</span> y no cero?</li>
+</ol>
+</section>
+</section>
+<section id="puntos-de-una-sucesión-y-puntos-de-un-conjunto" class="level2">
+<h2 class="anchored" data-anchor-id="puntos-de-una-sucesión-y-puntos-de-un-conjunto">8.4. Puntos de una sucesión y puntos de un conjunto</h2>
+<p><span id="MA-SEC-ANM-01-008-004"></span></p>
+<p>Al pasar de una sucesión a su imagen olvidamos cuándo aparece cada valor y cuántas veces se repite. Esa pérdida de información afecta a la acumulación. La constante <span class="math inline">\(c_n=0\)</span> tiene cero como punto de acumulación secuencial, pero el conjunto <span class="math inline">\(\{0\}\)</span> no tiene puntos de acumulación: ninguna bola perforada alrededor de cero encuentra un valor distinto del centro.</p>
+<p>Recordemos las definiciones de C04 para un conjunto <span class="math inline">\(A\subseteq\mathbb R\)</span>. Un punto <span class="math inline">\(L\)</span> es <strong>adherente</strong> a <span class="math inline">\(A\)</span> si toda bola <span class="math inline">\(B(L,r)\)</span>, con <span class="math inline">\(r&gt;0\)</span>, corta a <span class="math inline">\(A\)</span>; es un <strong>punto de acumulación de <span class="math inline">\(A\)</span></strong> si toda esa bola contiene un punto de <span class="math inline">\(A\)</span> distinto de <span class="math inline">\(L\)</span>. La segunda condición permite que <span class="math inline">\(L\)</span> pertenezca o no a <span class="math inline">\(A\)</span>, pero nunca acepta al propio centro como testigo.</p>
+<section id="adherencia-y-sucesiones-de-puntos-del-conjunto" class="level3">
+<h3 class="anchored" data-anchor-id="adherencia-y-sucesiones-de-puntos-del-conjunto">Adherencia y sucesiones de puntos del conjunto</h3>
+<p><strong>Proposición.</strong> Un real <span class="math inline">\(L\)</span> es adherente a <span class="math inline">\(A\)</span> si y sólo si existe una sucesión <span class="math inline">\(x:\mathbb N\to\mathbb R\)</span> con valores en <span class="math inline">\(A\)</span> que converge a <span class="math inline">\(L\)</span>.</p>
+<p>Si <span class="math inline">\(L\)</span> es adherente, cada conjunto <span class="math inline">\(A\cap B(L,1/(k+1))\)</span> es no vacío. Elegimos un punto <span class="math inline">\(x_k\)</span> en cada uno. Entonces <span class="math inline">\(|x_k-L|&lt;1/(k+1)\)</span>, y el mismo control arquimediano usado en §8.3 prueba que <span class="math inline">\(x_k\to L\)</span>. En sentido inverso, si <span class="math inline">\(x_k\in A\)</span> y <span class="math inline">\(x_k\to L\)</span>, una bola de radio <span class="math inline">\(r&gt;0\)</span> contiene todos los términos desde un umbral; en particular contiene uno de ellos y corta a <span class="math inline">\(A\)</span>. Para <span class="math inline">\(A=\varnothing\)</span>, ambas afirmaciones son falsas: no hay punto adherente ni una función de dominio no vacío con valores allí.</p>
+<p>La elección de estos puntos reales necesita una precisión fundacional. Trabajamos en el marco clásico con elección: para el conjunto <span class="math inline">\(A\)</span> fijado, podemos fijar una función <span class="math inline">\(c\)</span> que asigna a cada subconjunto no vacío <span class="math inline">\(S\subseteq A\)</span> un elemento <span class="math inline">\(c(S)\in S\)</span>. Las elecciones anteriores pueden escribirse <span class="math inline">\(x_k=c(A\cap B(L,1/(k+1)))\)</span>. Usaremos la misma base cuando el conjunto admisible dependa de elecciones previas. No estamos tomando un mínimo real, que puede no existir, ni deduciendo esta elección de la completitud. En §8.3 elegíamos mínimos de conjuntos de <strong>índices naturales</strong>; allí basta su buen orden.</p>
+</section>
+<section id="acumulación-y-exclusión-del-centro" class="level3">
+<h3 class="anchored" data-anchor-id="acumulación-y-exclusión-del-centro">Acumulación y exclusión del centro</h3>
+<p><strong>Proposición.</strong> Un real <span class="math inline">\(L\)</span> es punto de acumulación de <span class="math inline">\(A\)</span> si y sólo si existe una sucesión de puntos de <span class="math inline">\(A\setminus\{L\}\)</span> que converge a <span class="math inline">\(L\)</span>.</p>
+<p>Si <span class="math inline">\(L\)</span> es punto de acumulación, elegimos <span class="math inline">\(x_k\)</span> en <span class="math inline">\(A\cap B(L,1/(k+1))\setminus\{L\}\)</span>, no vacío por definición. La estimación ya demostrada acredita convergencia. Recíprocamente, si una sucesión así converge a <span class="math inline">\(L\)</span>, cada bola contiene un término suyo y ese término es distinto de <span class="math inline">\(L\)</span>; queda satisfecho el criterio de bola perforada.</p>
+<p>Es posible exigir algo más: los valores elegidos pueden ser dos a dos distintos. Elegimos primero <span class="math inline">\(x_0\in A\cap B(L,1)\setminus\{L\}\)</span>. Si ya elegimos <span class="math inline">\(x_0,\ldots,x_{k-1}\)</span>, todos diferentes de <span class="math inline">\(L\)</span>, tomamos para <span class="math inline">\(k\ge1\)</span></p>
+<p><span class="math display">\[
+r_k=\min\left\{\frac1{k+1},\frac12\min_{0\le j&lt;k}|x_j-L|\right\}&gt;0.
+\]</span></p>
+<p>El mínimo interior es sobre una familia finita no vacía de números positivos. Elegimos <span class="math inline">\(x_k\in A\cap B(L,r_k)\setminus\{L\}\)</span>. Su distancia al centro es menor que la mitad de la distancia de cualquiera de los valores anteriores, de modo que no coincide con ellos. También es menor que <span class="math inline">\(1/(k+1)\)</span>; por eso la nueva sucesión converge a <span class="math inline">\(L\)</span>. La base <span class="math inline">\(k=0\)</span> se trató aparte para no tomar un mínimo de una familia vacía.</p>
+<p>Esta construcción explica por qué toda bola alrededor de un punto de acumulación de un conjunto contiene infinitos puntos de ese conjunto. Puede probarse directamente: si dentro de alguna bola de radio <span class="math inline">\(r\)</span> sólo hubiera finitos puntos distintos de <span class="math inline">\(L\)</span>, o no habría ninguno, o la menor de sus distancias positivas permitiría escoger una bola menor que los evitara a todos. Ambas posibilidades contradicen la acumulación. Recíprocamente, infinitos puntos en cada bola garantizan un testigo distinto del centro.</p>
+</section>
+<section id="lo-que-la-imagen-no-conserva" class="level3">
+<h3 class="anchored" data-anchor-id="lo-que-la-imagen-no-conserva">Lo que la imagen no conserva</h3>
+<p>Comparemos <span class="math inline">\(c_n=0\)</span> con <span class="math inline">\(d_0=0\)</span> y <span class="math inline">\(d_n=1\)</span> para <span class="math inline">\(n\ge1\)</span>.</p>
+<div id="fig-anm-c08-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Las visitas tardías de una sucesión no equivalen a acumulación de su imagen. Los conjuntos finitos dibujados no tienen puntos de acumulación.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c08-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C08/C08-F03.svg" class="img-fluid figure-img" alt="Las visitas tardías de una sucesión no equivalen a acumulación de su imagen. Los conjuntos finitos dibujados no tienen puntos de acumulación.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c08-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Las visitas tardías de una sucesión no equivalen a acumulación de su imagen. Los conjuntos finitos dibujados no tienen puntos de acumulación.
+</figcaption>
+</figure>
+</div>
+<p>En <span class="math inline">\(d\)</span>, cero pertenece a la imagen y es adherente a ella, pero no es punto secuencial: el corte <span class="math inline">\(N=1\)</span> y el radio <span class="math inline">\(1/2\)</span> eliminan todas las visitas a cero. Uno sí es un punto secuencial y es el único, porque la sucesión converge a uno. La imagen <span class="math inline">\(\{0,1\}\)</span> no tiene puntos de acumulación como conjunto. Para un centro perteneciente a ella basta un radio menor que uno; para un centro exterior basta un radio menor que la distancia a ambos puntos. La imagen conserva el cero inicial y pierde la persistencia temporal del uno.</p>
+<p>Las caracterizaciones anteriores permiten transportar preguntas entre conjuntos y sucesiones, siempre que se conserve la condición sobre los testigos. En §8.7 necesitaremos valores distintos para convertir una extracción convergente en acumulación de un conjunto.</p>
+</section>
+<section id="antes-de-seguir-3" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-3">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-008-025"></span></p>
+<ol type="1">
+<li>¿Qué condición sobre el testigo distingue adherencia de acumulación de un conjunto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-026"></span></p>
+<ol start="2" type="1">
+<li>Para <span class="math inline">\(c_n=0\)</span>, distingue acumulación secuencial de acumulación de su imagen.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-027"></span></p>
+<ol start="3" type="1">
+<li>Para <span class="math inline">\(d_0=0\)</span>, <span class="math inline">\(d_n=1\)</span> si <span class="math inline">\(n\ge1\)</span>, ¿es cero adherente a la imagen? ¿Es punto secuencial?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-028"></span></p>
+<ol start="4" type="1">
+<li>¿Qué estimación asegura convergencia de los testigos de adherencia elegidos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-029"></span></p>
+<ol start="5" type="1">
+<li>¿Puede existir una sucesión de dominio <span class="math inline">\(\mathbb N\)</span> con valores en el conjunto vacío?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-030"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué el radio de exclusión de valores anteriores es positivo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-031"></span></p>
+<ol start="7" type="1">
+<li>¿Cómo se trata el paso inicial de la construcción de valores distintos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-032"></span></p>
+<ol start="8" type="1">
+<li>¿La elección de <span class="math inline">\(x_k\in A\cap B(L,r)\)</span> significa tomar el menor real de ese conjunto?</li>
+</ol>
+</section>
+</section>
+<section id="dividir-el-espacio-y-conservar-índices" class="level2">
+<h2 class="anchored" data-anchor-id="dividir-el-espacio-y-conservar-índices">8.5. Dividir el espacio y conservar índices</h2>
+<p><span id="MA-SEC-ANM-01-008-005"></span></p>
+<p>En §8.3 conocíamos el candidato <span class="math inline">\(L\)</span> y aprovechábamos sus visitas tardías para construir una extracción. Una sucesión acotada presenta un problema anterior: ¿cómo encontrar un candidato sin tenerlo señalado? Sus valores permanecen en una región limitada, pero pueden oscilar de cualquier manera. La monotonía de C07 no está disponible como hipótesis.</p>
+<p>Buscaremos regiones cada vez menores que todavía contengan términos con índices arbitrariamente grandes. Conservar un solo término sería insuficiente: podríamos seguir encerrando el mismo índice y no obtener una subsucesión. La reserva adecuada es un conjunto infinito de índices, aunque muchos de esos índices tengan el mismo valor.</p>
+<p><strong>Mapa de la prueba.</strong> Partiremos de un intervalo que contenga todos los términos. Lo dividiremos por mitades conservando infinitos índices en la mitad elegida. La completitud proporcionará un punto común a los intervalos encajados. En §8.6 seleccionaremos índices crecientes dentro de ellos y comprobaremos la convergencia al punto común. Cada paso entrega un objeto que el siguiente necesita.</p>
+<p>Sea <span class="math inline">\(a\)</span> una sucesión acotada. Existe <span class="math inline">\(M\ge0\)</span> tal que <span class="math inline">\(|a_n|\le M\)</span> para todo <span class="math inline">\(n\)</span>. Si <span class="math inline">\(M=0\)</span>, todos los términos valen cero y la identidad ya es una selección convergente; reservemos este caso resuelto. Supongamos <span class="math inline">\(M&gt;0\)</span> y pongamos <span class="math inline">\(I_0=[-M,M]\)</span>.</p>
+<section id="una-mitad-que-no-agote-las-visitas" class="level3">
+<h3 class="anchored" data-anchor-id="una-mitad-que-no-agote-las-visitas">Una mitad que no agote las visitas</h3>
+<p>Supongamos construido un intervalo cerrado <span class="math inline">\(I_k=[u_k,v_k]\)</span> cuyo conjunto de índices de visita <span class="math inline">\(E_k=\{n\in\mathbb N:a_n\in I_k\}\)</span> es infinito. Su punto medio es <span class="math inline">\(m_k=(u_k+v_k)/2\)</span>. Las mitades cerradas <span class="math inline">\([u_k,m_k]\)</span> y <span class="math inline">\([m_k,v_k]\)</span> cubren <span class="math inline">\(I_k\)</span>. Si cada una recibiera sólo finitos índices, la unión de esos dos conjuntos finitos contendría todos los índices de <span class="math inline">\(E_k\)</span>, contradiciendo su infinitud.</p>
+<p>Por tanto al menos una mitad conserva infinitos índices. Definimos <span class="math inline">\(I_{k+1}\)</span> como la izquierda cuando ésta los conserva, y como la derecha en caso contrario. Si ambas sirven, esta regla decide cuál usar. El punto medio pertenece a las dos mitades: no necesitamos que sean disjuntas para el argumento de unión finita. Tampoco suponemos que decidir infinitud constituya un procedimiento computable con una muestra finita.</p>
+<p>La construcción comienza porque <span class="math inline">\(E_0=\mathbb N\)</span>. Por inducción, todos los <span class="math inline">\(E_k\)</span> son infinitos, todos los intervalos son cerrados y no vacíos, <span class="math inline">\(I_{k+1}\subseteq I_k\)</span> y su anchura es <span class="math inline">\(w_k=v_k-u_k=2M/2^k\)</span>. Aquí la acotación permitió crear <span class="math inline">\(I_0\)</span>; el argumento de finitud permite repetir cada partición.</p>
+<p>Para ilustrar la regla, tomemos <span class="math inline">\(a_n=(-1)^n/(n+1)\)</span> y <span class="math inline">\(M=1\)</span>. La mitad izquierda de <span class="math inline">\([-1,1]\)</span> conserva todos los términos impares. Después se elige siempre la mitad que llega a cero: una mitad negativa separada de cero sólo contiene finitos términos, pues <span class="math inline">\(1/(n+1)\)</span> llega a ser menor que cualquier distancia positiva fijada. Así <span class="math inline">\(I_k=[-2^{1-k},0]\)</span> para <span class="math inline">\(k\ge1\)</span>.</p>
+<div id="fig-anm-c08-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Los intervalos se estrechan y siguen recibiendo infinitos índices impares. La prueba de esa infinitud usa la fórmula, no el número de puntos dibujados; las mitades cerradas comparten su extremo.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c08-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C08/C08-F05.svg" class="img-fluid figure-img" alt="Los intervalos se estrechan y siguen recibiendo infinitos índices impares. La prueba de esa infinitud usa la fórmula, no el número de puntos dibujados; las mitades cerradas comparten su extremo.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c08-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Los intervalos se estrechan y siguen recibiendo infinitos índices impares. La prueba de esa infinitud usa la fórmula, no el número de puntos dibujados; las mitades cerradas comparten su extremo.
+</figcaption>
+</figure>
+</div>
+<p>Los segmentos representan intervalos cerrados del eje de valores, no trayectorias de la sucesión. La fórmula de los términos impares acredita las visitas infinitas que el dibujo finito sólo puede sugerir. En la prueba general no conocemos el punto común de antemano como ocurre en este ejemplo.</p>
+</section>
+<section id="existencia-y-unicidad-del-punto-común" class="level3">
+<h3 class="anchored" data-anchor-id="existencia-y-unicidad-del-punto-común">Existencia y unicidad del punto común</h3>
+<p>La familia encajada satisface las hipótesis del teorema de intervalos cerrados de §§3.5–3.6. Para ajustarnos a la indexación positiva de aquella formulación, ponemos <span class="math inline">\(J_m=I_{m-1}\)</span> para <span class="math inline">\(m\ge1\)</span>. Son intervalos cerrados, acotados y no vacíos, y <span class="math inline">\(J_{m+1}\subseteq J_m\)</span>. C03 garantiza un real <span class="math inline">\(L\)</span> perteneciente a todos ellos, y por tanto a todos los <span class="math inline">\(I_k\)</span>. <strong>Éste es el uso directo de completitud:</strong> asegura que el proceso no deja un hueco donde esperábamos un destino.</p>
+<p>La anchura puede hacerse menor que cualquier número positivo sin recurrir a resultados posteriores. Por inducción, <span class="math inline">\(2^k\ge k+1\)</span>: vale en cero y, si vale en <span class="math inline">\(k\)</span>, entonces <span class="math inline">\(2^{k+1}\ge2(k+1)\ge k+2\)</span>. Por ello <span class="math inline">\(w_k\le2M/(k+1)\)</span>. Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, arquimedianidad permite elegir <span class="math inline">\(K\)</span> con <span class="math inline">\(K+1&gt;2M/\varepsilon\)</span>; así <span class="math inline">\(w_K&lt;\varepsilon\)</span>. Esta propiedad arquimediana hereda también completitud según la construcción de C03, aunque aquí la reutilicemos como herramienta ya probada.</p>
+<p>Si <span class="math inline">\(L\)</span> y <span class="math inline">\(H\)</span> fueran dos puntos comunes distintos, su distancia <span class="math inline">\(d=|L-H|\)</span> sería positiva. Tomando <span class="math inline">\(K\)</span> con <span class="math inline">\(w_K&lt;d\)</span>, la pertenencia de ambos a <span class="math inline">\(I_K\)</span> daría <span class="math inline">\(d\le w_K&lt;d\)</span>, imposible. El punto común es único.</p>
+<p>Tenemos ahora un destino real y una reserva infinita de índices en cada intervalo. Aún falta enlazar esas reservas respetando el tiempo. Un punto común a intervalos no es, por sí solo, una subsucesión ni demuestra convergencia de la sucesión original.</p>
+</section>
+<section id="antes-de-seguir-4" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-4">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-008-033"></span></p>
+<ol type="1">
+<li>¿Qué ocurre si la cota inicial es <span class="math inline">\(M=0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-034"></span></p>
+<ol start="2" type="1">
+<li>¿Por qué se conservan infinitos índices y no sólo algún término en cada intervalo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-035"></span></p>
+<ol start="3" type="1">
+<li>¿Qué contradicción habría si las dos mitades recibieran sólo finitos índices?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-036"></span></p>
+<ol start="4" type="1">
+<li>¿Las mitades cerradas de un intervalo son disjuntas? ¿Afecta esto al argumento?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-037"></span></p>
+<ol start="5" type="1">
+<li>¿Cuál es la anchura de <span class="math inline">\(I_k\)</span> cuando <span class="math inline">\(I_0=[-M,M]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-038"></span></p>
+<ol start="6" type="1">
+<li>¿Qué cambio de índice permite usar la formulación de C03 con índices positivos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-039"></span></p>
+<ol start="7" type="1">
+<li>¿Dónde se usa directamente la completitud?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-040"></span></p>
+<ol start="8" type="1">
+<li>¿Cómo excluye la anchura arbitrariamente pequeña dos puntos comunes distintos?</li>
+</ol>
+</section>
+</section>
+<section id="bolzanoweierstrass-construir-la-extracción" class="level2">
+<h2 class="anchored" data-anchor-id="bolzanoweierstrass-construir-la-extracción">8.6. Bolzano–Weierstrass: construir la extracción</h2>
+<p><span id="MA-SEC-ANM-01-008-006"></span></p>
+<p><strong>Teorema de Bolzano–Weierstrass para sucesiones reales.</strong> Toda sucesión real acotada tiene una subsucesión convergente.</p>
+<p>El enunciado garantiza algún destino real para alguna selección; no promete que todas las selecciones tengan el mismo destino ni que converja la sucesión entera. En <span class="math inline">\((-1)^n\)</span> podemos elegir cualquiera de las dos paridades. El teorema alcanza sucesiones para las que no conocemos una fórmula útil del selector.</p>
+<p>La sección anterior resolvió la parte espacial de la demostración. Para <span class="math inline">\(M&gt;0\)</span> disponemos de intervalos <span class="math inline">\(I_k\)</span> encajados, de anchuras arbitrariamente pequeñas, con un punto común <span class="math inline">\(L\)</span> y con conjuntos <span class="math inline">\(E_k=\{n:a_n\in I_k\}\)</span> infinitos. Necesitamos que la elección dentro de <span class="math inline">\(I_{k+1}\)</span> ocurra después de la elección dentro de <span class="math inline">\(I_k\)</span>. Ésa es precisamente la función de haber conservado infinitos índices.</p>
+<p>Definimos <span class="math inline">\(n_0=\min E_0\)</span>. Una vez elegido <span class="math inline">\(n_k\)</span>, el conjunto <span class="math inline">\(E_{k+1}\)</span> no puede estar contenido en el prefijo finito <span class="math inline">\(\{0,\ldots,n_k\}\)</span>. Por tanto el conjunto de sus elementos mayores que <span class="math inline">\(n_k\)</span> es no vacío y tiene mínimo. Ponemos</p>
+<p><span class="math display">\[
+n_{k+1}=\min\{n\in E_{k+1}:n&gt;n_k\}.
+\]</span></p>
+<p>La recursión da un índice en cada paso, <span class="math inline">\(n_{k+1}&gt;n_k\)</span> y <span class="math inline">\(a_{n_k}\in I_k\)</span>. La primera propiedad, encadenada entre dos índices cualesquiera, demuestra que <span class="math inline">\(\varphi(k)=n_k\)</span> es un selector estrictamente creciente. Así <span class="math inline">\(b_k=a_{n_k}\)</span> es efectivamente una subsucesión de <span class="math inline">\(a\)</span>.</p>
+<p>Verifiquemos ahora su límite. Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, elegimos <span class="math inline">\(K\)</span> con <span class="math inline">\(w_K&lt;\varepsilon\)</span>, como en §8.5. Si <span class="math inline">\(k\ge K\)</span>, tanto <span class="math inline">\(a_{n_k}\)</span> como <span class="math inline">\(L\)</span> pertenecen a <span class="math inline">\(I_k\subseteq I_K\)</span>. Dos puntos de un intervalo de anchura <span class="math inline">\(w_K\)</span> distan a lo sumo esa anchura, luego</p>
+<p><span class="math display">\[
+|b_k-L|=|a_{n_k}-L|\le w_K&lt;\varepsilon.
+\]</span></p>
+<p>Esto prueba <span class="math inline">\(b_k\to L\)</span>. Si la cota inicial era <span class="math inline">\(M=0\)</span>, la selección identidad converge a cero, caso resuelto antes de la bisección. Quedan cubiertas todas las sucesiones acotadas y termina la demostración.</p>
+<p>Volvamos al ejemplo <span class="math inline">\(a_n=(-1)^n/(n+1)\)</span>. Los seis primeros mínimos de la construcción son <span class="math inline">\(0,1,3,5,7,15\)</span>, con valores <span class="math inline">\(1,-1/2,-1/4,-1/6,-1/8,-1/16\)</span>. El salto de siete a quince es real: los índices impares intermedios aún tienen valores menores que el extremo izquierdo de <span class="math inline">\(I_5=[-1/16,0]\)</span>.</p>
+<div id="fig-anm-c08-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Los índices originales 0,1,3,5,7,15 se convierten en los índices nuevos 0 a 5. Para k≥4 la anchura 1/8 de I4 controla el error y es menor que la tolerancia 1/4.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c08-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C08/C08-F06.svg" class="img-fluid figure-img" alt="Los índices originales 0,1,3,5,7,15 se convierten en los índices nuevos 0 a 5. Para k≥4 la anchura 1/8 de I4 controla el error y es menor que la tolerancia 1/4.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c08-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Los índices originales 0,1,3,5,7,15 se convierten en los índices nuevos 0 a 5. Para k≥4 la anchura 1/8 de I4 controla el error y es menor que la tolerancia 1/4.
+</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Paso k</th>
+<th>Intervalo Iₖ</th>
+<th>Índice nₖ</th>
+<th>Valor aₙₖ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>[−1,1]</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>[−1,0]</td>
+<td>1</td>
+<td>−1/2</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>[−1/2,0]</td>
+<td>3</td>
+<td>−1/4</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>[−1/4,0]</td>
+<td>5</td>
+<td>−1/6</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>[−1/8,0]</td>
+<td>7</td>
+<td>−1/8</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>[−1/16,0]</td>
+<td>15</td>
+<td>−1/16</td>
+</tr>
+</tbody>
+</table>
+<p>Para <span class="math inline">\(\varepsilon=1/4\)</span> podemos usar <span class="math inline">\(K=4\)</span>, porque <span class="math inline">\(I_4=[-1/8,0]\)</span> tiene anchura <span class="math inline">\(1/8&lt;1/4\)</span>. Ese umbral es suficiente; no se afirma que sea mínimo. La tabla separa el contador <span class="math inline">\(k\)</span> de refinamientos, el índice original <span class="math inline">\(n_k\)</span> y el valor <span class="math inline">\(a_{n_k}\)</span>. Una ampliación gráfica debe conservar esa distinción y declarar su escala.</p>
+<p>La prueba puede reconstruirse recordando las tres funciones de los objetos auxiliares: <span class="math inline">\(I_k\)</span> reduce la región de valores, <span class="math inline">\(E_k\)</span> impide que la elección de índices se detenga y <span class="math inline">\(n_k\)</span> convierte esa reserva en una función ordenada. La completitud garantiza <span class="math inline">\(L\)</span>; la estimación con la anchura garantiza convergencia. Ninguno de esos pasos autoriza a insertar un «último término» de índice infinito.</p>
+<p>Ya podemos invocar Bolzano–Weierstrass sin repetir la construcción. Por ejemplo, cualquier sucesión con valores en <span class="math inline">\([-3,7]\)</span> admite una extracción convergente, aunque oscile y repita valores. Para afirmar que el límite sigue dentro del conjunto de partida necesitaremos atender a si ese conjunto es cerrado; ésa será nuestra siguiente aplicación.</p>
+<section id="antes-de-seguir-5" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-5">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-008-041"></span></p>
+<ol type="1">
+<li>Enuncia la conclusión precisa de Bolzano–Weierstrass para una sucesión real acotada.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-042"></span></p>
+<ol start="2" type="1">
+<li>¿Por qué existe un elemento de <span class="math inline">\(E_{k+1}\)</span> mayor que <span class="math inline">\(n_k\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-043"></span></p>
+<ol start="3" type="1">
+<li>¿Qué acredita que <span class="math inline">\(b_k=a_{n_k}\)</span> sea una subsucesión?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-044"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué <span class="math inline">\(a_{n_k}\)</span> y <span class="math inline">\(L\)</span> pertenecen a <span class="math inline">\(I_K\)</span> cuando <span class="math inline">\(k\ge K\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-045"></span></p>
+<ol start="5" type="1">
+<li>Completa la estimación final que demuestra convergencia.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-046"></span></p>
+<ol start="6" type="1">
+<li>En el ejemplo alternante recíproco, calcula <span class="math inline">\(a_{15}\)</span> y la anchura de <span class="math inline">\(I_5\)</span>.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-047"></span></p>
+<ol start="7" type="1">
+<li>¿Por qué <span class="math inline">\(K=4\)</span> sirve para <span class="math inline">\(\varepsilon=1/4\)</span> en ese ejemplo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-048"></span></p>
+<ol start="8" type="1">
+<li>¿Demuestra el teorema que toda sucesión acotada converge?</li>
+</ol>
+</section>
+</section>
+<section id="de-la-extracción-a-los-conjuntos" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-extracción-a-los-conjuntos">8.7. De la extracción a los conjuntos</h2>
+<p><span id="MA-SEC-ANM-01-008-007"></span></p>
+<p>La infinitud de índices es automática en una sucesión, incluso si todos sus términos coinciden. Un conjunto infinito plantea otra condición: contiene infinitos <strong>valores distintos</strong>. Para aplicar el resultado anterior sin perder esa información construiremos una sucesión que no repita valores.</p>
+<p><strong>Teorema.</strong> Todo conjunto infinito y acotado <span class="math inline">\(A\subseteq\mathbb R\)</span> tiene al menos un punto de acumulación en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p>Fijemos la función de elección sobre los subconjuntos no vacíos de <span class="math inline">\(A\)</span> descrita en §8.4. Elegimos <span class="math inline">\(x_0\in A\)</span> y, construidos <span class="math inline">\(x_0,\ldots,x_k\)</span>, elegimos <span class="math inline">\(x_{k+1}\)</span> en <span class="math inline">\(A\setminus\{x_0,\ldots,x_k\}\)</span>. Este conjunto sigue siendo no vacío, porque quitar finitos puntos no agota un conjunto infinito. Se obtiene una sucesión de valores dos a dos distintos; no se afirma que enumere todo <span class="math inline">\(A\)</span>.</p>
+<p>Como <span class="math inline">\(A\)</span> es acotado, la sucesión también lo es. Bolzano–Weierstrass produce una subsucesión <span class="math inline">\(y_j=x_{\varphi(j)}\)</span> que converge a algún real <span class="math inline">\(L\)</span>. Los valores de <span class="math inline">\(y\)</span> siguen siendo distintos. En consecuencia, a lo sumo uno coincide con <span class="math inline">\(L\)</span>. Si ninguno coincide, <span class="math inline">\(y\)</span> ya tiene valores en <span class="math inline">\(A\setminus\{L\}\)</span>. Si <span class="math inline">\(y_{j_0}=L\)</span>, consideramos <span class="math inline">\(z_k=y_{j_0+1+k}\)</span>: esta cola reindexada conserva el límite por C06 y evita el centro. En ambos casos la caracterización de §8.4 demuestra que <span class="math inline">\(L\)</span> es punto de acumulación de <span class="math inline">\(A\)</span>.</p>
+<p>¿Por qué fue útil evitar repeticiones? Si hubiéramos elegido siempre un mismo punto de <span class="math inline">\(A\)</span>, Bolzano–Weierstrass habría encontrado una constante. Su límite sería adherente a <span class="math inline">\(A\)</span>, pero no tendríamos un testigo distinto del centro en cada bola. La separación entre adherencia y acumulación interviene exactamente al final del argumento.</p>
+<p>El punto obtenido puede quedar fuera de <span class="math inline">\(A\)</span>. Para <span class="math inline">\(A=\{1/(n+1):n\in\mathbb N\}\)</span>, todos los valores son positivos y cero no pertenece a <span class="math inline">\(A\)</span>. Sin embargo, para cada <span class="math inline">\(r&gt;0\)</span> existe <span class="math inline">\(n\)</span> con <span class="math inline">\(0&lt;1/(n+1)&lt;r\)</span>, de modo que cero es punto de acumulación de <span class="math inline">\(A\)</span>.</p>
+<div id="fig-anm-c08-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Cero es punto de acumulación de los recíprocos positivos y no pertenece a su conjunto. Sí pertenece al intervalo cerrado [0,1] que contiene todos esos puntos.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c08-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C08/C08-F07.svg" class="img-fluid figure-img" alt="Cero es punto de acumulación de los recíprocos positivos y no pertenece a su conjunto. Sí pertenece al intervalo cerrado [0,1] que contiene todos esos puntos.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c08-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Cero es punto de acumulación de los recíprocos positivos y no pertenece a su conjunto. Sí pertenece al intervalo cerrado [0,1] que contiene todos esos puntos.
+</figcaption>
+</figure>
+</div>
+<p><strong>Corolario.</strong> Toda sucesión con valores en un conjunto cerrado y acotado <span class="math inline">\(F\subseteq\mathbb R\)</span> tiene una subsucesión que converge a un punto de <span class="math inline">\(F\)</span>.</p>
+<p>La acotación proporciona una extracción convergente a <span class="math inline">\(L\)</span> por el teorema de §8.6. Puesto que sus términos están en <span class="math inline">\(F\)</span>, §8.4 muestra que <span class="math inline">\(L\)</span> es adherente a <span class="math inline">\(F\)</span>. Un conjunto cerrado contiene sus puntos adherentes, por C04, y por tanto <span class="math inline">\(L\in F\)</span>. Si <span class="math inline">\(F\)</span> es vacío, no existe una sucesión de dominio <span class="math inline">\(\mathbb N\)</span> con valores allí; la afirmación universal no requiere construir una extracción en ese caso.</p>
+<p>En particular, si todos los términos están en <span class="math inline">\([u,v]\)</span>, con <span class="math inline">\(u\le v\)</span>, se obtiene un límite subsucesional en ese mismo intervalo, incluidos sus extremos. Para un intervalo abierto la pertenencia puede fallar: <span class="math inline">\(1/(n+2)\)</span> tiene valores en <span class="math inline">\((0,1)\)</span> y converge a cero.</p>
+<p>Las hipótesis de la afirmación sobre conjuntos infinitos no se pueden borrar. Un conjunto finito no tiene puntos de acumulación: alrededor de un centro se pueden excluir sus finitísimos puntos diferentes usando el mínimo de sus distancias positivas, y si no hay ninguno la condición ya falla. Por otra parte, <span class="math inline">\(\mathbb N\)</span> considerado dentro de <span class="math inline">\(\mathbb R\)</span> es infinito, pero no tiene puntos de acumulación reales. En un centro natural, radio <span class="math inline">\(1/2\)</span> excluye los demás naturales. En un centro no natural <span class="math inline">\(L\)</span>, la bola de radio uno contiene a lo sumo finitísimos naturales; si contiene alguno, una bola menor que todas sus distancias a <span class="math inline">\(L\)</span> los excluye, y si no, esa bola ya sirve. La finitud local se debe a que un intervalo acotado sólo contiene finitísimos naturales, por arquimedianidad.</p>
+<section id="antes-de-seguir-6" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-6">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-008-049"></span></p>
+<ol type="1">
+<li>¿Por qué de un conjunto infinito se pueden elegir recursivamente valores distintos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-050"></span></p>
+<ol start="2" type="1">
+<li>¿La sucesión de valores distintos tiene que recorrer todo el conjunto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-051"></span></p>
+<ol start="3" type="1">
+<li>¿En qué paso se usa la acotación del conjunto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-052"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué a lo sumo un término de la extracción puede ser igual a su límite?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-053"></span></p>
+<ol start="5" type="1">
+<li>Si <span class="math inline">\(y_{j_0}=L\)</span>, ¿qué sucesión permite evitar el centro?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-054"></span></p>
+<ol start="6" type="1">
+<li>¿Pertenece cero a <span class="math inline">\(A=\{1/(n+1):n\in\mathbb N\}\)</span>? ¿Es punto de acumulación de <span class="math inline">\(A\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-055"></span></p>
+<ol start="7" type="1">
+<li>¿Qué añade que el conjunto que contiene los términos sea cerrado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-056"></span></p>
+<ol start="8" type="1">
+<li>Da un conjunto infinito sin punto de acumulación real y señala la hipótesis que falta.</li>
+</ol>
+</section>
+</section>
+<section id="cuándo-las-extracciones-determinan-la-sucesión" class="level2">
+<h2 class="anchored" data-anchor-id="cuándo-las-extracciones-determinan-la-sucesión">8.8. Cuándo las extracciones determinan la sucesión</h2>
+<p><span id="MA-SEC-ANM-01-008-008"></span></p>
+<p>Una selección convergente no obliga a converger a la sucesión original. Hemos visto también que dos destinos distintos impiden esa convergencia. Falta examinar una situación intermedia: conocemos un único destino posible para todas las extracciones convergentes. Bajo acotación, esa información sí resulta suficiente.</p>
+<p><strong>Teorema.</strong> Para una sucesión real acotada <span class="math inline">\(a\)</span> y un real <span class="math inline">\(L\)</span>, son equivalentes:</p>
+<ol type="1">
+<li><span class="math inline">\(a_n\to L\)</span>;</li>
+<li><span class="math inline">\(L\)</span> es el único punto de acumulación secuencial de <span class="math inline">\(a\)</span>.</li>
+</ol>
+<p>Si <span class="math inline">\(a_n\to L\)</span>, la identidad es una selección convergente a <span class="math inline">\(L\)</span>, de modo que <span class="math inline">\(L\)</span> es punto secuencial por §8.3. Si <span class="math inline">\(H\)</span> es cualquier otro punto secuencial, existe una subsucesión convergente a <span class="math inline">\(H\)</span>. Por §8.2 también converge a <span class="math inline">\(L\)</span>; la unicidad del límite da <span class="math inline">\(H=L\)</span>. Esta dirección no requiere suponer acotación por separado, pues toda sucesión convergente ya es acotada.</p>
+<p>Para la recíproca conviene trabajar con la negación. Si falla la convergencia a <span class="math inline">\(L\)</span>, existe <strong>una tolerancia fija</strong> <span class="math inline">\(\varepsilon_0&gt;0\)</span> tal que, después de cualquier corte <span class="math inline">\(N\)</span>, aparece algún término con <span class="math inline">\(|a_n-L|\ge\varepsilon_0\)</span>. La tolerancia se elige antes de construir la selección. Queremos reunir esos términos que incumplen el mismo control.</p>
+<p>Sea <span class="math inline">\(n_0\)</span> el menor índice con <span class="math inline">\(|a_{n_0}-L|\ge\varepsilon_0\)</span>. Dados <span class="math inline">\(n_k\)</span>, tomamos el menor índice <span class="math inline">\(n\ge n_k+1\)</span> con esa propiedad como <span class="math inline">\(n_{k+1}\)</span>. La negación de convergencia garantiza que cada conjunto admisible es no vacío. Así <span class="math inline">\(b_k=a_{n_k}\)</span> es una subsucesión y todos sus términos distan al menos <span class="math inline">\(\varepsilon_0\)</span> de <span class="math inline">\(L\)</span>.</p>
+<p>Aquí se utiliza la acotación de <span class="math inline">\(a\)</span>: también <span class="math inline">\(b\)</span> es acotada y Bolzano–Weierstrass proporciona un selector <span class="math inline">\(\psi\)</span> y un real <span class="math inline">\(H\)</span> con <span class="math inline">\(b_{\psi(j)}\to H\)</span>. La composición de selectores de §8.1 identifica esta nueva sucesión con una subsucesión de <span class="math inline">\(a\)</span>. Por §8.3, <span class="math inline">\(H\)</span> es punto de acumulación secuencial de <span class="math inline">\(a\)</span>; la hipótesis de unicidad obliga a que <span class="math inline">\(H=L\)</span>.</p>
+<p>Pero la convergencia a <span class="math inline">\(L\)</span> exige <span class="math inline">\(|b_{\psi(j)}-L|&lt;\varepsilon_0\)</span> para todos los índices suficientemente grandes, mientras que la construcción garantiza <span class="math inline">\(|b_{\psi(j)}-L|\ge\varepsilon_0\)</span> para <strong>todos</strong> ellos. La contradicción demuestra <span class="math inline">\(a_n\to L\)</span>.</p>
+<p>El paso decisivo fue aplicar Bolzano–Weierstrass a la selección de términos que incumplían la tolerancia. La acotación impide que esa selección carezca por completo de destinos reales. Si sólo se sabe que hay «a lo sumo un» punto secuencial, Bolzano–Weierstrass proporciona la existencia que falta bajo la misma hipótesis de acotación; sin ella, la frase no basta.</p>
+<section id="el-papel-de-la-acotación" class="level3">
+<h3 class="anchored" data-anchor-id="el-papel-de-la-acotación">El papel de la acotación</h3>
+<p>Definamos <span class="math inline">\(c_{2j}=0\)</span> y <span class="math inline">\(c_{2j+1}=j+1\)</span>. Su selección par converge a cero. Para cualquier real <span class="math inline">\(H\ne0\)</span>, escojamos <span class="math inline">\(r=|H|/2&gt;0\)</span>. Los términos pares quedan fuera de <span class="math inline">\(B(H,r)\)</span>. Además, por arquimedianidad existe <span class="math inline">\(J\)</span> con <span class="math inline">\(J+1&gt;H+r\)</span>; para <span class="math inline">\(j\ge J\)</span> los términos impares también quedan fuera, por encima de la bola. Después del corte <span class="math inline">\(2J\)</span> no hay visitas a esa bola, así que <span class="math inline">\(H\)</span> no es punto secuencial. Cero es, por tanto, el único punto secuencial real de <span class="math inline">\(c\)</span>.</p>
+<p>Sin embargo, <span class="math inline">\(c\)</span> no converge: no es acotada, ya que los términos impares superan cualquier cota real. Toda sucesión convergente es acotada por C06. La hipótesis del teorema no puede suprimirse.</p>
+<div id="fig-anm-c08-f08" class="quarto-float quarto-figure quarto-figure-center anchored" alt="El ejemplo acotado tiene dos destinos y una selección constante de infractores. El no acotado sólo tiene el destino secuencial cero: sus términos impares superan toda cota, como demuestra la fórmula.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c08-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C08/C08-F08.svg" class="img-fluid figure-img" alt="El ejemplo acotado tiene dos destinos y una selección constante de infractores. El no acotado sólo tiene el destino secuencial cero: sus términos impares superan toda cota, como demuestra la fórmula.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c08-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: El ejemplo acotado tiene dos destinos y una selección constante de infractores. El no acotado sólo tiene el destino secuencial cero: sus términos impares superan toda cota, como demuestra la fórmula.
+</figcaption>
+</figure>
+</div>
+<p>El primer panel vuelve al ejemplo acotado <span class="math inline">\(a_{2j}=1/(j+1)\)</span>, <span class="math inline">\(a_{2j+1}=2\)</span>: tiene dos destinos, cero y dos. Sirve para mostrar una selección que incumple una tolerancia alrededor de cero; <strong>no</strong> es un ejemplo con destino único. El segundo panel muestra el contraejemplo no acotado recién demostrado. La región vertical dibujada es sólo una muestra; la fórmula de los términos impares justifica su falta de cota.</p>
+<p>Al terminar el capítulo disponemos de una manera de descubrir destinos dentro de una sucesión acotada, de caracterizar la acumulación mediante extracciones y de recuperar convergencia cuando ese destino es único. Las reservas de índices, las bolas perforadas y la completitud han tenido funciones diferentes. Mantenerlas separadas permitirá estudiar más adelante las barreras que describen el conjunto de destinos cuando hay varios.</p>
+</section>
+<section id="antes-de-seguir-7" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-7">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-008-057"></span></p>
+<ol type="1">
+<li>Escribe la negación de <span class="math inline">\(a_n\to L\)</span> con una tolerancia fija.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-058"></span></p>
+<ol start="2" type="1">
+<li>¿Qué propiedad tienen todos los términos de la subsucesión que incumple esa tolerancia?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-059"></span></p>
+<ol start="3" type="1">
+<li>¿Dónde se necesita acotación en la prueba del criterio de destino único?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-060"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué el límite de una extracción de <span class="math inline">\(b\)</span> es punto secuencial de <span class="math inline">\(a\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-061"></span></p>
+<ol start="5" type="1">
+<li>¿Cuál es la contradicción después de identificar ese límite con <span class="math inline">\(L\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-062"></span></p>
+<ol start="6" type="1">
+<li>Para <span class="math inline">\(c_{2j}=0\)</span>, <span class="math inline">\(c_{2j+1}=j+1\)</span>, ¿qué selección converge a cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-063"></span></p>
+<ol start="7" type="1">
+<li>¿Por qué ese ejemplo no converge a pesar de tener un único punto secuencial?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-008-064"></span></p>
+<ol start="8" type="1">
+<li>¿Qué añade Bolzano–Weierstrass si una sucesión acotada tiene a lo sumo un punto secuencial?</li>
+</ol>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html">Capítulo 8</a> · <a href="analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-microcontroles.html">Soluciones de microcontroles</a></p>
+<p><a href="analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.html">← Capítulo 7</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html">Capítulo 9 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

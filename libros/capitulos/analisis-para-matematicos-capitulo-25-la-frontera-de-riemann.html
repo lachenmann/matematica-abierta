@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 25 — La frontera de Riemann – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#el-presupuesto-de-oscilación" id="toc-el-presupuesto-de-oscilación" class="nav-link active" data-scroll-target="#el-presupuesto-de-oscilación">25.1. El presupuesto de oscilación</a></li>
+  <li><a href="#discontinuidades-que-caben-en-collares" id="toc-discontinuidades-que-caben-en-collares" class="nav-link" data-scroll-target="#discontinuidades-que-caben-en-collares">25.2. Discontinuidades que caben en collares</a></li>
+  <li><a href="#la-obstrucción-densa-de-dirichlet" id="toc-la-obstrucción-densa-de-dirichlet" class="nav-link" data-scroll-target="#la-obstrucción-densa-de-dirichlet">25.3. La obstrucción densa de Dirichlet</a></li>
+  <li><a href="#thomae-alturas-pequeñas-y-picos-finitos" id="toc-thomae-alturas-pequeñas-y-picos-finitos" class="nav-link" data-scroll-target="#thomae-alturas-pequeñas-y-picos-finitos">25.4. Thomae: alturas pequeñas y picos finitos</a></li>
+  <li><a href="#un-criterio-exacto-por-niveles" id="toc-un-criterio-exacto-por-niveles" class="nav-link" data-scroll-target="#un-criterio-exacto-por-niveles">25.5. Un criterio exacto por niveles</a></li>
+  <li><a href="#un-soporte-infinito-de-longitud-evanescente" id="toc-un-soporte-infinito-de-longitud-evanescente" class="nav-link" data-scroll-target="#un-soporte-infinito-de-longitud-evanescente">25.6. Un soporte infinito de longitud evanescente</a></li>
+  <li><a href="#cambiar-muchos-valores-y-aproximar" id="toc-cambiar-muchos-valores-y-aproximar" class="nav-link" data-scroll-target="#cambiar-muchos-valores-y-aproximar">25.7. Cambiar muchos valores y aproximar</a></li>
+  <li><a href="#la-frontera-y-el-paso-que-todavía-falta" id="toc-la-frontera-y-el-paso-que-todavía-falta" class="nav-link" data-scroll-target="#la-frontera-y-el-paso-que-todavía-falta">25.8. La frontera y el paso que todavía falta</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 25 — La frontera de Riemann</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html">Capítulo 25</a> · <a href="analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>La continuidad global permitió integrar, pero no fue una condición necesaria. Ahora seguiremos la oscilación que las particiones pueden confinar y la que persiste en toda anchura. El criterio de C23 será la herramienta para probar cada ejemplo y caracterizar la frontera por niveles positivos.</p>
+<p>C23 es el prerrequisito central. Completitud/arquimedianidad de C03, vecindades/cerrados de C04, geométricas de C06, continuidad de C14 y compacto de C16 son interfaces previas declaradas. Normalización racional, paridad y raíz2 pertenecen al toolbox aritmético heredado; densidad se reconstruye antes de usarla. No se construye ni se usa aquí medida o integral de Lebesgue.</p>
+<section id="el-presupuesto-de-oscilación" class="level2">
+<h2 class="anchored" data-anchor-id="el-presupuesto-de-oscilación">25.1. El presupuesto de oscilación</h2>
+<p><span id="MA-SEC-ANM-01-025-001"></span></p>
+<p>C23 definió integrabilidad mediante una brecha que debe poder hacerse arbitrariamente pequeña. La continuidad global fue una condición suficiente; ahora investigaremos exactamente qué parte de esa condición puede faltar. Fijamos <span class="math inline">\(a&lt;b\)</span> y una función acotada <span class="math inline">\(f:[a,b]\to\mathbb R\)</span>, con <span class="math inline">\(|f|\le B\)</span>, <span class="math inline">\(B\ge0\)</span>.</p>
+<p><strong>R1 — Presupuesto ponderado.</strong> Para una partición <span class="math inline">\(P\)</span> con piezas cerradas <span class="math inline">\(I_i\)</span> y anchuras <span class="math inline">\(\Delta_i&gt;0\)</span>, escribimos <span class="math inline">\(\omega_i=\sup f(I_i)-\inf f(I_i)\)</span>, de modo que <span class="math display">\[G(f,P)=U(f,P)-L(f,P)=\sum_i\omega_i\Delta_i.\]</span> Fijado <span class="math inline">\(\eta&gt;0\)</span>, llamaremos malas las piezas con <span class="math inline">\(\omega_i\ge\eta\)</span> y buenas las restantes. No contamos sólo cuántas son malas: medimos la suma finita de sus anchuras, <span class="math inline">\(\lambda_P(\eta)\)</span>. Positividad y la cota <span class="math inline">\(\omega_i\le2B\)</span> dan <span class="math display">\[\eta\lambda_P(\eta)\le G(f,P),\qquad
+G(f,P)\le\eta(b-a)+2B\lambda_P(\eta).\]</span> La primera desigualdad retiene sólo términos malos; la segunda acota los buenos por <span class="math inline">\(\eta\Delta_i\)</span> y los malos por <span class="math inline">\(2B\Delta_i\)</span>. Los interiores disjuntos y la telescopía de anchuras, heredados de C22/C23, justifican el presupuesto de longitud. Los nodos compartidos no agregan longitud, pero sí pueden afectar oscilación en las dos piezas vecinas.</p>
+<p><strong>Oscilación en un punto.</strong> Para <span class="math inline">\(x\in[a,b]\)</span> y <span class="math inline">\(r&gt;0\)</span>, sea <span class="math inline">\(V_r(x)=[a,b]\cap(x-r,x+r)\)</span>. Su imagen es no vacía, pues contiene <span class="math inline">\(f(x)\)</span>, y acotada. Definimos <span class="math display">\[\Omega_f(x)=\inf_{r&gt;0}\omega(f,V_r(x)).\]</span> El conjunto de oscilaciones es no vacío y está en <span class="math inline">\([0,2B]\)</span>; completitud asegura el ínfimo. No suponemos un radio mínimo ni un extremo alcanzado. Los radios menores no aumentan oscilación por restricción.</p>
+<p>Se cumple <span class="math inline">\(\Omega_f(x)=0\)</span> si y sólo si <span class="math inline">\(f\)</span> es continua relativamente al segmento en <span class="math inline">\(x\)</span>. Si es continua, para una tolerancia <span class="math inline">\(\varepsilon/3\)</span> todos los valores de una vecindad están a distancia menor de ella respecto de <span class="math inline">\(f(x)\)</span>. Dos valores difieren menos que <span class="math inline">\(2\varepsilon/3\)</span>, y tomando supremo e ínfimo la oscilación es a lo sumo ese número. Como <span class="math inline">\(\varepsilon\)</span> es arbitraria, el ínfimo es cero. Recíprocamente, si el ínfimo es cero, para cada <span class="math inline">\(\varepsilon&gt;0\)</span> existe un radio con oscilación menor que <span class="math inline">\(\varepsilon\)</span>. Como el valor central está entre las cotas, cualquier valor de esa vecindad está a distancia menor que <span class="math inline">\(\varepsilon\)</span> de él. Es la definición de continuidad.</p>
+<p>Para cada <span class="math inline">\(\eta&gt;0\)</span> ponemos <span class="math inline">\(D_\eta=\{x:\Omega_f(x)\ge\eta\}\)</span>. Es cerrado relativo: si <span class="math inline">\(\Omega_f(x)&lt;\eta\)</span>, hay una vecindad de oscilación menor que <span class="math inline">\(\eta\)</span>. Para centros suficientemente próximos a <span class="math inline">\(x\)</span>, una vecindad menor queda dentro de ella y su oscilación puntual sigue menor que <span class="math inline">\(\eta\)</span>. Su complemento es abierto relativo. C16 hace compacto a <span class="math inline">\(D_\eta\)</span>. Estos conjuntos distinguen amplitudes de discontinuidad; no son una lista de muestras.</p>
+<div id="fig-anm-c25-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dos piezas de anchuras2/5 y3/5 con oscilaciones4/5 y1/5 aportan8/25 y3/25 a la brecha, total11/25. Para nivel1/2, la longitud mala es2/5 y su contribución mínima1/5.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c25-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C25/C25-F01.svg" class="img-fluid figure-img" alt="Dos piezas de anchuras2/5 y3/5 con oscilaciones4/5 y1/5 aportan8/25 y3/25 a la brecha, total11/25. Para nivel1/2, la longitud mala es2/5 y su contribución mínima1/5.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c25-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Dos piezas de anchuras2/5 y3/5 con oscilaciones4/5 y1/5 aportan8/25 y3/25 a la brecha, total11/25. Para nivel1/2, la longitud mala es2/5 y su contribución mínima1/5.
+</figcaption>
+</figure>
+</div>
+<p><strong>Microcontroles.</strong></p>
+<p><span id="MA-MIC-ANM-01-025-001"></span></p>
+<ol type="1">
+<li>¿Qué presupuesto define la brecha?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-002"></span></p>
+<ol start="2" type="1">
+<li>¿Cómo se define una pieza mala para nivel <span class="math inline">\(\eta&gt;0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-003"></span></p>
+<ol start="3" type="1">
+<li>¿Qué cota inferior usa las piezas malas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-004"></span></p>
+<ol start="4" type="1">
+<li>¿Qué cota superior da <span class="math inline">\(|f|\le B\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-005"></span></p>
+<ol start="5" type="1">
+<li>¿La oscilación puntual exige un radio mínimo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-006"></span></p>
+<ol start="6" type="1">
+<li>¿Qué equivale a continuidad en un punto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-007"></span></p>
+<ol start="7" type="1">
+<li>¿Por qué <span class="math inline">\(D_\eta\)</span> es cerrado relativo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-008"></span></p>
+<ol start="8" type="1">
+<li>¿Qué hace compacto a <span class="math inline">\(D_\eta\)</span>?</li>
+</ol>
+</section>
+<section id="discontinuidades-que-caben-en-collares" class="level2">
+<h2 class="anchored" data-anchor-id="discontinuidades-que-caben-en-collares">25.2. Discontinuidades que caben en collares</h2>
+<p><span id="MA-SEC-ANM-01-025-002"></span></p>
+<p>Un salto puede mantener una oscilación grande en las piezas que lo tocan, pero esas piezas pueden tener longitud pequeña. El argumento necesita separar amplitud y anchura.</p>
+<p><strong>R2 — Un número finito de discontinuidades.</strong> Una función acotada en <span class="math inline">\([a,b]\)</span> y continua fuera de un conjunto finito <span class="math inline">\(E\)</span> es integrable.</p>
+<p>Dada <span class="math inline">\(\varepsilon&gt;0\)</span>, si <span class="math inline">\(B=0\)</span> la función es cero y el resultado es inmediato. Para cubrir también ese caso sin dividir por cero, fijemos <span class="math inline">\(\eta=\varepsilon/[2(b-a)]\)</span> y <span class="math inline">\(\sigma=\varepsilon/[4(B+1)]\)</span>. Si <span class="math inline">\(E\)</span> tiene <span class="math inline">\(k\)</span> puntos, cada uno puede cubrirse por un intervalo abierto de radio <span class="math inline">\(r=\sigma/[4(k+1)]\)</span>. Su unión <span class="math inline">\(O\)</span> tiene una cobertura finita cuya suma de longitudes es <span class="math inline">\(2kr&lt;\sigma\)</span>. Con <span class="math inline">\(E\)</span> vacío tomamos <span class="math inline">\(O\)</span> vacío.</p>
+<p>Para <span class="math inline">\(x\notin O\)</span>, la continuidad proporciona un radio <span class="math inline">\(r_x&gt;0\)</span> con oscilación menor que <span class="math inline">\(\eta\)</span> sobre <span class="math inline">\(V_{r_x}(x)\)</span>: basta controlar diferencias con el centro por <span class="math inline">\(\eta/3\)</span>. Para <span class="math inline">\(x\in O\)</span>, existe un radio con <span class="math inline">\(V_{r_x}(x)\subseteq O\)</span>. Para evitar una selección infinita, usamos todos los pares válidos <span class="math inline">\((x,r)\)</span> de esos dos tipos. Sus vecindades de radio <span class="math inline">\(r/2\)</span> cubren <span class="math inline">\([a,b]\)</span>; C16 permite extraer finitos pares. Sea <span class="math inline">\(\delta\)</span> el mínimo positivo de sus radios medios.</p>
+<p>Tomemos una partición uniforme de malla menor que <span class="math inline">\(\delta\)</span>. Cada pieza tiene un punto en alguna de las vecindades de radio medio. Todos sus demás puntos quedan dentro de la correspondiente vecindad grande, pues su distancia al centro es menor que <span class="math inline">\(\delta+r/2\le r\)</span>. Así toda pieza queda contenida en <span class="math inline">\(O\)</span> o tiene oscilación menor que <span class="math inline">\(\eta\)</span>.</p>
+<p>Las piezas del primer tipo tienen suma de anchuras menor que <span class="math inline">\(\sigma\)</span>. El hecho finito usado aquí se demuestra cortando en todos los extremos de la cobertura de <span class="math inline">\(O\)</span>: cada celda cubierta contribuye una sola vez a la unión y al menos una vez a la suma de longitudes de los intervalos que la cubren. Por tanto la longitud total de piezas con interiores disjuntos contenidas en esa unión es a lo sumo dicha suma. R1 da <span class="math display">\[G(f,P)\le\eta(b-a)+2B\sigma
+=\frac\varepsilon2+\frac{B\varepsilon}{2(B+1)}&lt;\varepsilon.\]</span> El criterio de C23 concluye. No se presume uniformidad local junto a los saltos: el subcubrimiento finito fabrica la escala en las regiones donde hace falta.</p>
+<p>En <span class="math inline">\([0,1]\)</span>, el escalón de corte <span class="math inline">\(c=1/2\)</span> tiene brecha a lo sumo igual a la anchura total de piezas que tocan ese corte. Insertando <span class="math inline">\(c-r,c,c+r\)</span>, con <span class="math inline">\(0&lt;r&lt;1/2\)</span>, las piezas que tocan el corte suman <span class="math inline">\(2r\)</span>, una cota de la longitud mala. Con el valor nodal uno, la pieza derecha es constante y sólo la izquierda oscila: <span class="math inline">\(L=1/2\)</span>, <span class="math inline">\(U=1/2+r\)</span> y la brecha exacta es <span class="math inline">\(r\le2r\)</span>. El valor del nodo afecta ambos lados por ser piezas cerradas; C23 asegura que cambiarlo no altera el valor integral.</p>
+<div id="fig-anm-c25-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Escalón de corte1/2, valor nodal1, radio r=1/10. Los collares tocan dos piezas de longitud total1/5, pero la derecha es constante: L1/2,U3/5,brecha1/10.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c25-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C25/C25-F02.svg" class="img-fluid figure-img" alt="Escalón de corte1/2, valor nodal1, radio r=1/10. Los collares tocan dos piezas de longitud total1/5, pero la derecha es constante: L1/2,U3/5,brecha1/10.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c25-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Escalón de corte1/2, valor nodal1, radio r=1/10. Los collares tocan dos piezas de longitud total1/5, pero la derecha es constante: L1/2,U3/5,brecha1/10.
+</figcaption>
+</figure>
+</div>
+<p><strong>Microcontroles.</strong></p>
+<p><span id="MA-MIC-ANM-01-025-009"></span></p>
+<ol type="1">
+<li>¿Basta un número finito de discontinuidades para integrar?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-010"></span></p>
+<ol start="2" type="1">
+<li>¿Qué se controla con los collares?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-011"></span></p>
+<ol start="3" type="1">
+<li>¿Dónde se obtiene la escala común de las piezas buenas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-012"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué usar todos los pares centro/radio válidos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-013"></span></p>
+<ol start="5" type="1">
+<li>¿Qué garantiza malla menor que el mínimo radio medio?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-014"></span></p>
+<ol start="6" type="1">
+<li>¿Qué justifica sumar longitudes dentro de una unión?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-015"></span></p>
+<ol start="7" type="1">
+<li>¿Qué cota de brecha da el collar del escalón con cortes <span class="math inline">\(c-r,c,c+r\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-016"></span></p>
+<ol start="8" type="1">
+<li>¿El nodo compartido afecta una sola pieza?</li>
+</ol>
+</section>
+<section id="la-obstrucción-densa-de-dirichlet" class="level2">
+<h2 class="anchored" data-anchor-id="la-obstrucción-densa-de-dirichlet">25.3. La obstrucción densa de Dirichlet</h2>
+<p><span id="MA-SEC-ANM-01-025-003"></span></p>
+<p>Las discontinuidades pueden ser tan persistentes que ninguna longitud pequeña las confine. Para probarlo hay que encontrar valores distintos en toda pieza, no sólo en muchos puntos dibujados.</p>
+<p><strong>Densidad que vamos a gastar.</strong> Entre dos reales <span class="math inline">\(u&lt;v\)</span> existe un racional. Por arquimedianidad elija un natural positivo <span class="math inline">\(n\)</span> con <span class="math inline">\(n(v-u)&gt;1\)</span>. El principio del menor natural, después de trasladar <span class="math inline">\(nu\)</span> por un entero positivo si hace falta, proporciona un entero <span class="math inline">\(k\)</span> con <span class="math inline">\(nu&lt;k\le nu+1&lt;nv\)</span>. Entonces <span class="math inline">\(k/n\in(u,v)\)</span>. Este argumento es el lema de parte entera construido por mínimo natural; no presupone un punto racional obtenido por aproximación numérica.</p>
+<p>También existe un irracional. Parta de un racional <span class="math inline">\(q\in(u,v)\)</span> y del irracional positivo <span class="math inline">\(\sqrt2\)</span> disponible en el toolbox de raíces. Su irracionalidad se prueba por paridad: una fracción reducida <span class="math inline">\(p/q\)</span> cuyo cuadrado fuera dos obligaría a que numerador y denominador fueran pares. Elija un natural positivo <span class="math inline">\(n\)</span> con <span class="math inline">\(\sqrt2/n&lt;v-q\)</span>. El número <span class="math inline">\(q+\sqrt2/n\)</span> está en <span class="math inline">\((u,v)\)</span> y es irracional, pues si fuera racional restar <span class="math inline">\(q\)</span> y multiplicar por <span class="math inline">\(n\)</span> haría racional a <span class="math inline">\(\sqrt2\)</span>. Las vecindades relativas de borde también contienen intervalos abiertos no degenerados. Usamos normalización de fracciones y paridad como aritmética heredada, no elección de una familia infinita.</p>
+<p><strong>R3 — Dirichlet no es integrable.</strong> Defina <span class="math inline">\(d(x)=1\)</span> si <span class="math inline">\(x\)</span> es racional y <span class="math inline">\(d(x)=0\)</span> si es irracional, sobre <span class="math inline">\([a,b]\)</span>. En toda pieza no degenerada hay valores cero y uno, de modo que sus cotas son exactamente <span class="math inline">\(m_i=0,M_i=1\)</span> y <span class="math inline">\(\omega_i=1\)</span>. Por tanto, para toda partición, <span class="math display">\[L(d,P)=0,\qquad U(d,P)=b-a,\qquad G(d,P)=b-a&gt;0.\]</span> Elegir <span class="math inline">\(\varepsilon=(b-a)/2\)</span> refuta el criterio. El factor longitud es indispensable: la suma superior no vale uno en cualquier intervalo, sólo cuando su longitud es uno.</p>
+<p>En cada vecindad relativa hay ambos valores, luego <span class="math inline">\(\Omega_d(x)=1\)</span> en todo el dominio. Toda pieza es mala para <span class="math inline">\(0&lt;\eta\le1\)</span> y su presupuesto total de anchura es siempre <span class="math inline">\(b-a\)</span>. Refinar no reduce esa oscilación.</p>
+<p>El contrato de sumas etiquetadas también falla directamente: dada cualquier malla tan pequeña como se desee, elegir etiquetas racionales en las finitísimas piezas produce suma <span class="math inline">\(b-a\)</span>, e irracionales produce suma cero. Un mismo candidato no puede quedar a distancia menor que <span class="math inline">\((b-a)/3\)</span> de ambos. Se instancian sólo existencias finitas por inducción, no una selección sobre todas las particiones a la vez.</p>
+<p>Un dibujo con puntos racionales es una muestra finita de valores; no puede representar ni probar la densidad completa. La prueba anterior es la que certifica las cotas de cada intervalo.</p>
+<div id="fig-anm-c25-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dirichlet en[−1,2]: densidad racional e irracional prueba m0,M1 en toda pieza. Toda partición tiene L0,U3 y brecha3; el gráfico representa bandas certificadas, no una muestra que pruebe densidad.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c25-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C25/C25-F03.svg" class="img-fluid figure-img" alt="Dirichlet en[−1,2]: densidad racional e irracional prueba m0,M1 en toda pieza. Toda partición tiene L0,U3 y brecha3; el gráfico representa bandas certificadas, no una muestra que pruebe densidad.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c25-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Dirichlet en[−1,2]: densidad racional e irracional prueba m0,M1 en toda pieza. Toda partición tiene L0,U3 y brecha3; el gráfico representa bandas certificadas, no una muestra que pruebe densidad.
+</figcaption>
+</figure>
+</div>
+<p><strong>Microcontroles.</strong></p>
+<p><span id="MA-MIC-ANM-01-025-017"></span></p>
+<ol type="1">
+<li>¿Qué debe probarse para las cotas de Dirichlet?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-018"></span></p>
+<ol start="2" type="1">
+<li>¿Cómo se obtiene un racional entre <span class="math inline">\(u&lt;v\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-019"></span></p>
+<ol start="3" type="1">
+<li>¿Cómo se obtiene un irracional después de un racional interior?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-020"></span></p>
+<ol start="4" type="1">
+<li>¿Cuál es la suma inferior de Dirichlet?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-021"></span></p>
+<ol start="5" type="1">
+<li>¿Cuál es su suma superior en <span class="math inline">\([a,b]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-022"></span></p>
+<ol start="6" type="1">
+<li>¿Qué nivel puntual de oscilación tiene Dirichlet?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-023"></span></p>
+<ol start="7" type="1">
+<li>¿Refinar reduce su brecha?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-024"></span></p>
+<ol start="8" type="1">
+<li>¿Un dibujo de racionales certifica densidad?</li>
+</ol>
+</section>
+<section id="thomae-alturas-pequeñas-y-picos-finitos" class="level2">
+<h2 class="anchored" data-anchor-id="thomae-alturas-pequeñas-y-picos-finitos">25.4. Thomae: alturas pequeñas y picos finitos</h2>
+<p><span id="MA-SEC-ANM-01-025-004"></span></p>
+<p>Tener discontinuidades en todos los racionales no basta para impedir la integral. La amplitud de los picos puede disminuir al aumentar su complejidad aritmética.</p>
+<p><strong>R4 — Función de Thomae.</strong> Sobre <span class="math inline">\([0,1]\)</span>, definimos <span class="math inline">\(T(x)=0\)</span> si <span class="math inline">\(x\)</span> es irracional; si <span class="math inline">\(x=p/q\)</span> en su forma reducida única, <span class="math inline">\(q\ge1\)</span>, ponemos <span class="math inline">\(T(x)=1/q\)</span>. En particular <span class="math inline">\(T(0)=T(1)=1\)</span>, por denominador uno. La normalización racional heredada asegura una salida única; <span class="math inline">\(0\le T\le1\)</span>.</p>
+<p>Para un entero <span class="math inline">\(N\ge1\)</span>, el conjunto <span class="math inline">\(E_N\)</span> de racionales de denominador reducido a lo sumo <span class="math inline">\(N\)</span> es finito. Está contenido en los valores <span class="math inline">\(p/q\)</span> con <span class="math inline">\(1\le q\le N\)</span> y <span class="math inline">\(0\le p\le q\)</span>, a lo sumo <span class="math inline">\(\sum_{q=1}^N(q+1)=N(N+3)/2\)</span> candidatos. Repeticiones sólo disminuyen cardinalidad. Todo pico mayor que <span class="math inline">\(1/N\)</span> pertenece a ese conjunto, y fuera de él <span class="math inline">\(T\le1/(N+1)\)</span>.</p>
+<p><strong>Continuidad exacta.</strong> En un irracional <span class="math inline">\(x\)</span>, dado <span class="math inline">\(\varepsilon&gt;0\)</span>, elija <span class="math inline">\(N\)</span> con <span class="math inline">\(1/(N+1)&lt;\varepsilon\)</span>. Como <span class="math inline">\(E_N\)</span> es finito y no contiene <span class="math inline">\(x\)</span>, la mínima distancia a él es positiva. Un radio menor evita todos sus picos, y allí <span class="math inline">\(|T(t)-T(x)|=T(t)\le1/(N+1)&lt;\varepsilon\)</span>. Si el conjunto fuese vacío cualquier radio serviría. En un racional <span class="math inline">\(x=p/q\)</span>, cualquier vecindad contiene un irracional de valor cero, a distancia de salida <span class="math inline">\(1/q\)</span> respecto del centro. La tolerancia <span class="math inline">\(1/(2q)\)</span> refuta continuidad, también relativamente en los bordes. Así sus discontinuidades son exactamente los racionales. Además, en <span class="math inline">\(x=p/q\)</span> podemos evitar el conjunto finito <span class="math inline">\(E_q\setminus\{x\}\)</span> con un radio positivo. En esa vecindad todos los valores son a lo sumo <span class="math inline">\(1/q\)</span> y existe un irracional de valor cero, mientras el centro vale <span class="math inline">\(1/q\)</span>. Su oscilación es <span class="math inline">\(1/q\)</span>; toda vecindad contiene esos dos valores y tiene oscilación al menos <span class="math inline">\(1/q\)</span>. Por ello <span class="math inline">\(\Omega_T(x)=1/q\)</span>, y en los irracionales es cero.</p>
+<p><strong>Integral cero mediante collares finitos.</strong> Dada <span class="math inline">\(\varepsilon&gt;0\)</span>, elija <span class="math inline">\(N\)</span> con <span class="math inline">\(1/(N+1)&lt;\varepsilon/2\)</span>. Cubra los <span class="math inline">\(k=|E_N|\)</span> picos grandes con collares de radio <span class="math inline">\(r&gt;0\)</span> tan pequeño que <span class="math inline">\(2kr&lt;\varepsilon/2\)</span>; por ejemplo <span class="math inline">\(r=\varepsilon/[8(k+1)]\)</span>. Forme una partición que incluya esos picos y los extremos de sus collares recortados a <span class="math inline">\([0,1]\)</span>, eliminando repeticiones y ordenando.</p>
+<p>Toda pieza que contiene alguno de esos picos queda dentro de la unión de collares cerrados: los cortes a ambos lados impiden que se prolongue fuera de ella. Sus anchuras totales son a lo sumo <span class="math inline">\(2kr&lt;\varepsilon/2\)</span>. En las piezas restantes, todos los valores son a lo sumo <span class="math inline">\(1/(N+1)\)</span>. Por eso <span class="math display">\[0\le U(T,P)\le 2kr+\frac1{N+1}&lt;\varepsilon.\]</span> Cada pieza contiene un irracional, así <span class="math inline">\(L(T,P)=0\)</span>. El criterio de Darboux prueba integrabilidad; el encierro <span class="math inline">\(0\le I\le U(T,P)&lt;\varepsilon\)</span> para toda tolerancia obliga a <span class="math inline">\(I=0\)</span>.</p>
+<p>Para <span class="math inline">\(N=4\)</span>, los picos que deben aislarse están en <span class="math inline">\(0,1/4,1/3,1/2,2/3,3/4,1\)</span>; fuera de ellos la altura es a lo sumo <span class="math inline">\(1/5\)</span>. Esta cuenta finita sirve de certificado parcial, no de dibujo del conjunto completo de discontinuidades.</p>
+<div id="fig-anm-c25-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Thomae en[0,1]: panel izquierdo muestra sólo racionales de denominador≤16. Panel derecho aísla E4, siete picos; todo punto omitido de E4 tiene altura≤1/5. Los puntos dibujados no son toda la función.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c25-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C25/C25-F04.svg" class="img-fluid figure-img" alt="Thomae en[0,1]: panel izquierdo muestra sólo racionales de denominador≤16. Panel derecho aísla E4, siete picos; todo punto omitido de E4 tiene altura≤1/5. Los puntos dibujados no son toda la función.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c25-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Thomae en[0,1]: panel izquierdo muestra sólo racionales de denominador≤16. Panel derecho aísla E4, siete picos; todo punto omitido de E4 tiene altura≤1/5. Los puntos dibujados no son toda la función.
+</figcaption>
+</figure>
+</div>
+<p><strong>Microcontroles.</strong></p>
+<p><span id="MA-MIC-ANM-01-025-025"></span></p>
+<ol type="1">
+<li>¿Qué valor tiene Thomae en una fracción reducida <span class="math inline">\(p/q\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-026"></span></p>
+<ol start="2" type="1">
+<li>¿Cuánto vale en cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-027"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué es finito <span class="math inline">\(E_N\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-028"></span></p>
+<ol start="4" type="1">
+<li>¿Qué cota vale fuera de <span class="math inline">\(E_N\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-029"></span></p>
+<ol start="5" type="1">
+<li>¿Por qué es continua en un irracional?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-030"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué falla continuidad en un racional?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-031"></span></p>
+<ol start="7" type="1">
+<li>¿Cuál es la oscilación puntual en <span class="math inline">\(p/q\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-032"></span></p>
+<ol start="8" type="1">
+<li>¿Qué integral tiene Thomae?</li>
+</ol>
+</section>
+<section id="un-criterio-exacto-por-niveles" class="level2">
+<h2 class="anchored" data-anchor-id="un-criterio-exacto-por-niveles">25.5. Un criterio exacto por niveles</h2>
+<p><span id="MA-SEC-ANM-01-025-005"></span></p>
+<p>Podemos expresar la frontera exactamente con los conjuntos compactos <span class="math inline">\(D_\eta\)</span> de R1, usando sólo coberturas finitas por intervalos y sumas de longitudes.</p>
+<p><strong>Contenido finito nulo.</strong> Diremos que un conjunto <span class="math inline">\(E\subseteq[a,b]\)</span> tiene esta propiedad si para cada <span class="math inline">\(\sigma&gt;0\)</span> admite una cobertura por finitísimos intervalos abiertos con extremos reales finitos cuya suma de longitudes es menor que <span class="math inline">\(\sigma\)</span>. El vacío admite la cobertura vacía. No estamos definiendo una medida, ni declarando aditividad numerable. Un conjunto finito tiene la propiedad por collares; el segmento completo no la tiene, porque la longitud de una unión finita que lo cubre es al menos <span class="math inline">\(b-a\)</span>, por el corte en extremos y subaditividad finita de R2.</p>
+<p><strong>R5 — Criterio por niveles de oscilación.</strong> Para una función acotada en un cerrado no degenerado, <span class="math display">\[f\text{ es integrable}\quad\Longleftrightarrow\quad
+D_\eta\text{ tiene contenido finito nulo para todo }\eta&gt;0.\]</span></p>
+<p><strong>Necesidad.</strong> Fije <span class="math inline">\(\eta,\sigma&gt;0\)</span>. El criterio de C23 entrega <span class="math inline">\(P\)</span> con <span class="math inline">\(G(f,P)&lt;\eta\sigma/4\)</span>. Las piezas con oscilación al menos <span class="math inline">\(\eta\)</span> tienen longitud total menor que <span class="math inline">\(\sigma/4\)</span>, por R1. Un punto de <span class="math inline">\(D_\eta\)</span> que no sea nodo pertenece al interior de una pieza. Si esa pieza fuera buena, una vecindad del punto cabría dentro de ella y daría oscilación puntual menor que <span class="math inline">\(\eta\)</span>, contradicción. Así <span class="math inline">\(D_\eta\)</span> está contenido en las piezas malas y los finitísimos nodos.</p>
+<p>Si <span class="math inline">\(P\)</span> tiene <span class="math inline">\(n\)</span> piezas, amplíe cada pieza mala por un radio <span class="math inline">\(r=\sigma/[8(n+1)]\)</span> y cubra cada uno de los <span class="math inline">\(n+1\)</span> nodos con otro intervalo de ese radio. La longitud de esta cobertura abierta es menor que <span class="math display">\[\frac\sigma4+2r(2n+1)&lt;\frac{3\sigma}4&lt;\sigma.\]</span> Los nodos de borde también se cubren por intervalos reales, aunque parte de ellos quede fuera del dominio. No se ha supuesto que el conjunto de discontinuidades sea cerrado.</p>
+<p><strong>Suficiencia.</strong> Para <span class="math inline">\(\varepsilon&gt;0\)</span> tome <span class="math inline">\(\eta=\varepsilon/[2(b-a)]\)</span> y <span class="math inline">\(\sigma=\varepsilon/[4(B+1)]\)</span>. Por hipótesis cubra <span class="math inline">\(D_\eta\)</span> con finitísimos abiertos de longitud total menor que <span class="math inline">\(\sigma\)</span> y llame <span class="math inline">\(O\)</span> a su unión. Para un centro fuera de <span class="math inline">\(O\)</span>, <span class="math inline">\(\Omega_f(x)&lt;\eta\)</span>, de modo que existe una vecindad con oscilación menor que <span class="math inline">\(\eta\)</span>. Para un centro dentro de <span class="math inline">\(O\)</span>, hay una vecindad contenida en <span class="math inline">\(O\)</span>.</p>
+<p>Use todos los pares centro/radio válidos, cúbralos por vecindades de radio medio y extraiga un subcubrimiento finito mediante C16, exactamente como en R2. Una partición de malla menor que el mínimo radio medio tiene cada pieza dentro de <span class="math inline">\(O\)</span> o dentro de una vecindad buena. Las del primer tipo suman anchura menor que <span class="math inline">\(\sigma\)</span> por subaditividad finita; las otras tienen oscilación menor que <span class="math inline">\(\eta\)</span>. El mismo cálculo de R2 da <span class="math inline">\(G(f,P)&lt;\varepsilon\)</span>. C23 concluye.</p>
+<p>Los niveles compactos, no la unión de todas las discontinuidades, reciben el certificado finito. Para Thomae, <span class="math inline">\(D_\eta=\{p/q:1/q\ge\eta\}\)</span> es finito cuando <span class="math inline">\(\eta&gt;0\)</span>, aunque la unión de sus niveles positivos sea densa. Para Dirichlet, <span class="math inline">\(D_\eta=[a,b]\)</span> si <span class="math inline">\(0&lt;\eta\le1\)</span>, y falla la cobertura pequeña. No se ha desarrollado aquí el criterio de Lebesgue basado en medida.</p>
+<div id="fig-anm-c25-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Para Thomae, D_(1/4)=E4 es finito y admite collares pequeños. Su unión de niveles positivos contiene todos los racionales, densa; la banda inferior sólo representa una muestra, sin convertirla en un conjunto finito.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c25-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C25/C25-F05.svg" class="img-fluid figure-img" alt="Para Thomae, D_(1/4)=E4 es finito y admite collares pequeños. Su unión de niveles positivos contiene todos los racionales, densa; la banda inferior sólo representa una muestra, sin convertirla en un conjunto finito.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c25-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Para Thomae, D_(1/4)=E4 es finito y admite collares pequeños. Su unión de niveles positivos contiene todos los racionales, densa; la banda inferior sólo representa una muestra, sin convertirla en un conjunto finito.
+</figcaption>
+</figure>
+</div>
+<p><strong>Microcontroles.</strong></p>
+<p><span id="MA-MIC-ANM-01-025-033"></span></p>
+<ol type="1">
+<li>¿Qué significa contenido finito nulo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-034"></span></p>
+<ol start="2" type="1">
+<li>¿Se ha definido una medida?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-035"></span></p>
+<ol start="3" type="1">
+<li>¿Qué caracteriza R5?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-036"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué cubrir también los nodos en la necesidad?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-037"></span></p>
+<ol start="5" type="1">
+<li>¿Qué da <span class="math inline">\(G&lt;\eta\sigma/4\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-038"></span></p>
+<ol start="6" type="1">
+<li>¿Qué se cubre en la suficiencia?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-039"></span></p>
+<ol start="7" type="1">
+<li>¿Se exige una cobertura pequeña de todas las discontinuidades juntas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-040"></span></p>
+<ol start="8" type="1">
+<li>¿Qué falla en Dirichlet según R5?</li>
+</ol>
+</section>
+<section id="un-soporte-infinito-de-longitud-evanescente" class="level2">
+<h2 class="anchored" data-anchor-id="un-soporte-infinito-de-longitud-evanescente">25.6. Un soporte infinito de longitud evanescente</h2>
+<p><span id="MA-SEC-ANM-01-025-006"></span></p>
+<p>Las discontinuidades de una integrable tampoco están obligadas a ser un conjunto finito ni a presentarse sólo como picos aritméticos. Un soporte geométrico infinito puede confinarse con longitud cada vez menor.</p>
+<p><strong>Lema de soporte compacto.</strong> Sea <span class="math inline">\(E\subseteq[a,b]\)</span> compacto y de contenido finito nulo. Si <span class="math inline">\(f\)</span> es acotada, no negativa y cero fuera de <span class="math inline">\(E\)</span>, entonces es integrable y su integral es cero. Cubra <span class="math inline">\(E\)</span> con una unión abierta <span class="math inline">\(O\)</span> de longitud total menor que <span class="math inline">\(\varepsilon/(B+1)\)</span>. Para todos los pares <span class="math inline">\((x,r)\)</span> con <span class="math inline">\(x\in E\)</span> y <span class="math inline">\(V_r(x)\subseteq O\)</span>, los radios medios cubren <span class="math inline">\(E\)</span>; extraiga finitos por compacidad. Si <span class="math inline">\(E\)</span> es vacío, <span class="math inline">\(f=0\)</span>. Si no, su mínimo radio medio <span class="math inline">\(\delta&gt;0\)</span> tiene esta propiedad: toda pieza de malla menor que <span class="math inline">\(\delta\)</span> que toque <span class="math inline">\(E\)</span> queda dentro de <span class="math inline">\(O\)</span>. Las demás tienen supremo cero. Las primeras suman anchura menor que la cobertura, luego <span class="math inline">\(0\le U(f,P)&lt;B\varepsilon/(B+1)&lt;\varepsilon\)</span> si <span class="math inline">\(B&gt;0\)</span>; con <span class="math inline">\(B=0\)</span> es cero. Así <span class="math inline">\(G\le U&lt;\varepsilon\)</span> y el encierro obliga al valor cero. Se controlan también etiquetas en extremos del soporte.</p>
+<p><strong>R6 — El conjunto ternario de Cantor.</strong> Empiece con <span class="math inline">\(C_0=[0,1]\)</span>; en cada paso elimine el tercio medio abierto de cada componente cerrada. Por inducción, <span class="math inline">\(C_n\)</span> es unión de <span class="math inline">\(2^n\)</span> segmentos cerrados de longitud <span class="math inline">\(3^{-n}\)</span>, con longitud total <span class="math inline">\((2/3)^n\)</span>. Defina <span class="math inline">\(C=\bigcap_{n\ge0}C_n\)</span>. Es cerrado, por intersección de cerrados de C04, contenido en el compacto <span class="math inline">\([0,1]\)</span> y por tanto compacto por C16. Contiene cero y uno.</p>
+<p>Tiene contenido finito nulo: para cualquier <span class="math inline">\(\sigma&gt;0\)</span>, la convergencia geométrica de C06 permite elegir <span class="math inline">\(n\)</span> con <span class="math inline">\((2/3)^n&lt;\sigma/2\)</span>. Ampliar ligeramente sus finitísimas componentes produce intervalos abiertos que cubren <span class="math inline">\(C\)</span>, con longitud total menor que <span class="math inline">\(\sigma\)</span>. No estamos atribuyendo una medida a la intersección: sólo construimos esa cobertura para cada tolerancia.</p>
+<p>Tiene interior vacío. Si contuviera un intervalo abierto no degenerado, éste contendría un segmento de anchura <span class="math inline">\(\ell&gt;0\)</span>. Elija <span class="math inline">\(n\)</span> con <span class="math inline">\(3^{-n}&lt;\ell\)</span>. Ese segmento no cabe en una componente de <span class="math inline">\(C_n\)</span>, ni puede atravesar el hueco entre dos de ellas manteniéndose dentro de <span class="math inline">\(C_n\)</span>. Contradicción. El argumento usa orden de intervalos, no una afirmación extraída de la figura.</p>
+<p>La indicadora <span class="math inline">\(\mathbf1_C\)</span> es discontinua exactamente en <span class="math inline">\(C\)</span>. Fuera de él, la apertura del complemento da una vecindad donde vale cero. En un punto de <span class="math inline">\(C\)</span>, toda vecindad relativa contiene un punto fuera de <span class="math inline">\(C\)</span>, por interior vacío y también en bordes, y la salida cambia de uno a cero. El lema de soporte prueba integrabilidad y valor cero.</p>
+<p>El conjunto es infinito: por ejemplo todos los extremos <span class="math inline">\(3^{-n}\)</span>, <span class="math inline">\(n\ge1\)</span>, sobreviven en <span class="math inline">\(C\)</span> y son distintos. No necesitamos demostrar aquí su cardinalidad exacta. Lo que decide esta integral son coberturas finitas de longitud pequeña, no el número de puntos. Una etapa <span class="math inline">\(C_n\)</span> no es el conjunto final; sus intervalos completos no se deben dibujar como si todos sus puntos sobrevivieran.</p>
+<div id="fig-anm-c25-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Etapas C0 a C4 de la construcción ternaria: cada una envuelve C y tiene2^n componentes de3^(−n), total(2/3)^n. La figura no dibuja toda la intersección ni afirma que cada punto de una etapa sobreviva.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c25-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C25/C25-F06.svg" class="img-fluid figure-img" alt="Etapas C0 a C4 de la construcción ternaria: cada una envuelve C y tiene2^n componentes de3^(−n), total(2/3)^n. La figura no dibuja toda la intersección ni afirma que cada punto de una etapa sobreviva.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c25-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Etapas C0 a C4 de la construcción ternaria: cada una envuelve C y tiene2^n componentes de3^(−n), total(2/3)^n.&nbsp;La figura no dibuja toda la intersección ni afirma que cada punto de una etapa sobreviva.
+</figcaption>
+</figure>
+</div>
+<p><strong>Microcontroles.</strong></p>
+<p><span id="MA-MIC-ANM-01-025-041"></span></p>
+<ol type="1">
+<li>¿Qué hipótesis usa el lema de soporte?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-042"></span></p>
+<ol start="2" type="1">
+<li>¿Qué controla la malla en ese lema?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-043"></span></p>
+<ol start="3" type="1">
+<li>¿Cuántas componentes tiene <span class="math inline">\(C_n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-044"></span></p>
+<ol start="4" type="1">
+<li>¿Cuál es la anchura de cada componente?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-045"></span></p>
+<ol start="5" type="1">
+<li>¿Cuál es la longitud total de una etapa?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-046"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué el conjunto final es compacto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-047"></span></p>
+<ol start="7" type="1">
+<li>¿Dónde es discontinua <span class="math inline">\(\mathbf1_C\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-048"></span></p>
+<ol start="8" type="1">
+<li>¿Qué integral tiene esa indicadora?</li>
+</ol>
+</section>
+<section id="cambiar-muchos-valores-y-aproximar" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-muchos-valores-y-aproximar">25.7. Cambiar muchos valores y aproximar</h2>
+<p><span id="MA-SEC-ANM-01-025-007"></span></p>
+<p>C23 permite cambiar finitísimos valores sin alterar integrales. Reemplazar finito por numerable sería una afirmación diferente y puede fallar incluso en existencia.</p>
+<p><strong>R7 — La cota global permite aproximar.</strong> Sean <span class="math inline">\(g\)</span> integrable y <span class="math inline">\(f\)</span> acotada, con <span class="math inline">\(|f(t)-g(t)|\le\delta\)</span> para toda entrada. En cada pieza, <span class="math display">\[\omega(f,I)\le\omega(g,I)+2\delta,\qquad
+G(f,P)\le G(g,P)+2\delta(b-a).\]</span> En efecto, para dos entradas cualesquiera la diferencia de valores de <span class="math inline">\(f\)</span> se acota por la correspondiente de <span class="math inline">\(g\)</span> más <span class="math inline">\(2\delta\)</span>; tomar cotas extremas prueba la primera desigualdad, y ponderar por anchuras la segunda. Por tanto, si para toda <span class="math inline">\(\delta&gt;0\)</span> existe una integrable <span class="math inline">\(g\)</span> con esa cota global, <span class="math inline">\(f\)</span> es integrable: dada <span class="math inline">\(\varepsilon&gt;0\)</span>, use <span class="math inline">\(\delta=\varepsilon/[4(b-a)]\)</span>, y una partición de <span class="math inline">\(g\)</span> con brecha menor que <span class="math inline">\(\varepsilon/2\)</span>.</p>
+<p>Después de demostrar existencia, orden y linealidad dan <span class="math inline">\(|\int f-\int g|\le\delta(b-a)\)</span>. La frase después importa: no puede usarse ese error entre integrales para justificar una integral aún inexistente.</p>
+<p>Para Thomae, defina <span class="math inline">\(T_N=T\)</span> en <span class="math inline">\(E_N\)</span> y cero fuera. Su soporte es finito, por lo que es integrable de valor cero. La cota <span class="math inline">\(|T-T_N|\le1/(N+1)\)</span> vale para toda entrada. R7 da otra prueba de integrabilidad y del valor cero de <span class="math inline">\(T\)</span>. No es sólo que para cada entrada se encuentre un índice: un único <span class="math inline">\(N\)</span> controla simultáneamente todas las entradas con la tolerancia fijada.</p>
+<p><strong>Una familia distinta pierde integrabilidad.</strong> Sea <span class="math inline">\(d_N=\mathbf1_{E_N}\)</span>. Cada una tiene integral cero por cambios finitos. En un racional de denominador reducido <span class="math inline">\(q\)</span>, <span class="math inline">\(d_N(x)=1\)</span> para todo <span class="math inline">\(N\ge q\)</span>; en un irracional, todos los valores son cero. Por eso, en cada entrada, los valores se estabilizan en la función de Dirichlet. Esa función no es integrable por R3.</p>
+<p>Para todo <span class="math inline">\(N\)</span> existen racionales de denominador mayor que él: el conjunto de racionales de cualquier intervalo es infinito por densidad, mientras <span class="math inline">\(E_N\)</span> es finito. En alguna entrada <span class="math inline">\(|d-d_N|=1\)</span>, de modo que no existe una cota global que tienda a cero. La estabilización entrada por entrada no permite pasar de integrales existentes a integral del límite. Aquí no se escribe <span class="math inline">\(\int d\)</span> ni se intercambian símbolos que carecen de existencia.</p>
+<p>Thomae y cero difieren en todos los racionales, aunque sus integrales coinciden; Dirichlet y cero también difieren sólo allí, pero la primera ni siquiera es integrable. Así modificaciones en una familia infinita dada requieren un argumento nuevo. Las sucesiones de funciones tendrán su teoría en C26/C27; este contraste sólo establece las estimaciones y el fallo concretos que motivan ese paso.</p>
+<div id="fig-anm-c25-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Truncar Thomae en E_N conserva integral0 y error global≤1/(N+1). Los indicadores de E_N también integran0 y se estabilizan entrada por entrada en Dirichlet, pero mantienen error global1.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c25-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C25/C25-F07.svg" class="img-fluid figure-img" alt="Truncar Thomae en E_N conserva integral0 y error global≤1/(N+1). Los indicadores de E_N también integran0 y se estabilizan entrada por entrada en Dirichlet, pero mantienen error global1.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c25-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Truncar Thomae en E_N conserva integral0 y error global≤1/(N+1). Los indicadores de E_N también integran0 y se estabilizan entrada por entrada en Dirichlet, pero mantienen error global1.
+</figcaption>
+</figure>
+</div>
+<p><strong>Microcontroles.</strong></p>
+<p><span id="MA-MIC-ANM-01-025-049"></span></p>
+<ol type="1">
+<li>¿Qué cota global compara oscilaciones de <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-050"></span></p>
+<ol start="2" type="1">
+<li>¿Qué cota compara sus brechas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-051"></span></p>
+<ol start="3" type="1">
+<li>¿Cuándo se puede comparar los valores de sus integrales?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-052"></span></p>
+<ol start="4" type="1">
+<li>¿Qué soporte tiene <span class="math inline">\(T_N\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-053"></span></p>
+<ol start="5" type="1">
+<li>¿Qué error global aproxima Thomae?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-054"></span></p>
+<ol start="6" type="1">
+<li>¿Qué límite entrada por entrada tienen <span class="math inline">\(d_N=\mathbf1_{E_N}\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-055"></span></p>
+<ol start="7" type="1">
+<li>¿Qué error global conservan esos indicadores?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-056"></span></p>
+<ol start="8" type="1">
+<li>¿Cambiar numerablemente muchos valores es la regla de cambios finitos?</li>
+</ol>
+</section>
+<section id="la-frontera-y-el-paso-que-todavía-falta" class="level2">
+<h2 class="anchored" data-anchor-id="la-frontera-y-el-paso-que-todavía-falta">25.8. La frontera y el paso que todavía falta</h2>
+<p><span id="MA-SEC-ANM-01-025-008"></span></p>
+<p>La frontera demostrada permite separar tres preguntas: si las cotas locales existen, si sus brechas pueden colapsar y qué información puntual conserva el valor obtenido.</p>
+<p><strong>R8 — Balance de la teoría disponible.</strong> En un cerrado no degenerado, integrabilidad de Riemann exige acotación, como probó C23 desde su contrato universal de etiquetas. Con acotación, R5 caracteriza exactamente la existencia mediante contenido finito nulo de cada nivel positivo de oscilación. No exige ausencia de discontinuidades, ni que el conjunto completo de ellas admita una cobertura finita de longitud arbitrariamente pequeña.</p>
+<p>En particular los racionales de <span class="math inline">\([0,1]\)</span> no tienen contenido finito nulo. Si una unión finita de intervalos abiertos los cubre, su clausura finita cubre <span class="math inline">\([0,1]\)</span> por densidad; la longitud de esa unión de intervalos cerrados es a lo sumo la suma de longitudes originales y al menos uno. Por tanto esa suma no puede ser menor que uno. Sin embargo, los niveles positivos de oscilación de Thomae son finitos y su integral existe. Pedir contenido finito nulo al conjunto entero de discontinuidades sería una condición suficiente más fuerte, no el criterio exacto de R5.</p>
+<p>Tampoco basta limitar el número de discontinuidades sin verificar acotación. En <span class="math inline">\([0,1]\)</span>, declare <span class="math inline">\(h(0)=0\)</span> y <span class="math inline">\(h(x)=1/x\)</span> para <span class="math inline">\(x&gt;0\)</span>. Es continua fuera de cero, pero no acotada: para cualquier <span class="math inline">\(B&gt;0\)</span> una entrada positiva menor que <span class="math inline">\(1/(B+1)\)</span> tiene valor mayor que <span class="math inline">\(B\)</span>. No tiene integral de Riemann en el sentido propio de C23. No desarrollamos aquí una integral impropia ni inferimos su valor por un proceso distinto.</p>
+<p><strong>Qué informa un dibujo y qué necesita prueba.</strong> Una muestra finita de picos no certifica que todas las alturas omitidas sean pequeñas; la cota aritmética <span class="math inline">\(1/(N+1)\)</span> sí lo hace. Una etapa de Cantor no es su intersección; su longitud <span class="math inline">\((2/3)^n\)</span> sólo es útil porque toda la intersección queda dentro de ella. Rectángulos Darboux usan cotas de todas las entradas de la pieza; cambiar nodos compartidos afecta piezas finitas, aun cuando no altere el valor integral.</p>
+<p>Los ejemplos sintetizan la frontera: finitos saltos acotados admiten collares; Dirichlet conserva una oscilación de altura uno en toda anchura; Thomae confina las alturas grandes en picos finitos; un soporte compacto ternario admite coberturas pequeñas; familias entrada por entrada pueden escapar del control global.</p>
+<p>La terminología de longitud usada hasta aquí es finita y elemental. Una teoría más amplia podrá organizar coberturas numerables y tratar otras clases de funciones, pero necesitará construir sus nociones, probar sus reglas y definir otra integral. No se asigna aquí una integral alternativa a Dirichlet ni se usa el criterio de Lebesgue como una herramienta ya disponible.</p>
+<p>El siguiente problema del libro será un objeto distinto: cuando la entrada sigue fija y lo que cambia con el índice es toda una función, ¿qué significa converger y qué cuantificadores permiten conservar sus propiedades? C26 abrirá esa cuestión; este capítulo concluye la parte de integración propia con sus hipótesis y sus límites explícitos.</p>
+<div id="fig-anm-c25-f08" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Escalón,Thomae e indicadora de C tienen integral propia con los mecanismos probados; Dirichlet falla por brecha persistente y1/x falla por acotación. Las barras de Dirichlet son brechas, no valores integrales alternativos.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c25-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C25/C25-F08.svg" class="img-fluid figure-img" alt="Escalón,Thomae e indicadora de C tienen integral propia con los mecanismos probados; Dirichlet falla por brecha persistente y1/x falla por acotación. Las barras de Dirichlet son brechas, no valores integrales alternativos.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c25-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Escalón,Thomae e indicadora de C tienen integral propia con los mecanismos probados; Dirichlet falla por brecha persistente y1/x falla por acotación. Las barras de Dirichlet son brechas, no valores integrales alternativos.
+</figcaption>
+</figure>
+</div>
+<p><strong>Microcontroles.</strong></p>
+<p><span id="MA-MIC-ANM-01-025-057"></span></p>
+<ol type="1">
+<li>¿Cuál es la primera exigencia para Riemann propia?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-058"></span></p>
+<ol start="2" type="1">
+<li>¿El conjunto completo de discontinuidades debe ser de contenido finito nulo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-059"></span></p>
+<ol start="3" type="1">
+<li>¿Los racionales de <span class="math inline">\([0,1]\)</span> tienen contenido finito nulo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-060"></span></p>
+<ol start="4" type="1">
+<li>¿Basta continuidad salvo un punto sin acotación?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-061"></span></p>
+<ol start="5" type="1">
+<li>¿Una etapa finita de Cantor es su intersección?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-062"></span></p>
+<ol start="6" type="1">
+<li>¿Una tabla de alturas certifica todos los picos omitidos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-063"></span></p>
+<ol start="7" type="1">
+<li>¿Se asignó una integral de Lebesgue a Dirichlet?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-025-064"></span></p>
+<ol start="8" type="1">
+<li>¿Qué puerta sigue después del cierre?</li>
+</ol>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html">Capítulo 25</a> · <a href="analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-microcontroles.html">Soluciones de microcontroles</a></p>
+<p><a href="analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html">← Capítulo 24</a> · <a href="analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html">Capítulo 26 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

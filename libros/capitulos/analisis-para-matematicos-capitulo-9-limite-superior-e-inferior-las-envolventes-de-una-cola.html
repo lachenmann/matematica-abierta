@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 9 — Límite superior e inferior: las envolventes de una cola – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#conservar-la-cola-y-olvidar-el-prefijo" id="toc-conservar-la-cola-y-olvidar-el-prefijo" class="nav-link active" data-scroll-target="#conservar-la-cola-y-olvidar-el-prefijo">9.1. Conservar la cola y olvidar el prefijo</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir" id="toc-antes-de-seguir" class="nav-link" data-scroll-target="#antes-de-seguir">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#dos-envolventes-que-sí-tienen-dirección" id="toc-dos-envolventes-que-sí-tienen-dirección" class="nav-link" data-scroll-target="#dos-envolventes-que-sí-tienen-dirección">9.2. Dos envolventes que sí tienen dirección</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-1" id="toc-antes-de-seguir-1" class="nav-link" data-scroll-target="#antes-de-seguir-1">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#fronteras-eventuales-y-visitas-tardías" id="toc-fronteras-eventuales-y-visitas-tardías" class="nav-link" data-scroll-target="#fronteras-eventuales-y-visitas-tardías">9.3. Fronteras eventuales y visitas tardías</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-2" id="toc-antes-de-seguir-2" class="nav-link" data-scroll-target="#antes-de-seguir-2">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#alcanzar-las-fronteras-mediante-extracciones" id="toc-alcanzar-las-fronteras-mediante-extracciones" class="nav-link" data-scroll-target="#alcanzar-las-fronteras-mediante-extracciones">9.4. Alcanzar las fronteras mediante extracciones</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-3" id="toc-antes-de-seguir-3" class="nav-link" data-scroll-target="#antes-de-seguir-3">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#medir-la-oscilación-y-reconocer-convergencia" id="toc-medir-la-oscilación-y-reconocer-convergencia" class="nav-link" data-scroll-target="#medir-la-oscilación-y-reconocer-convergencia">9.5. Medir la oscilación y reconocer convergencia</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-4" id="toc-antes-de-seguir-4" class="nav-link" data-scroll-target="#antes-de-seguir-4">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#cambiar-términos-sin-cambiar-las-fronteras" id="toc-cambiar-términos-sin-cambiar-las-fronteras" class="nav-link" data-scroll-target="#cambiar-términos-sin-cambiar-las-fronteras">9.6. Cambiar términos sin cambiar las fronteras</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-5" id="toc-antes-de-seguir-5" class="nav-link" data-scroll-target="#antes-de-seguir-5">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#comparar-y-combinar-comportamientos" id="toc-comparar-y-combinar-comportamientos" class="nav-link" data-scroll-target="#comparar-y-combinar-comportamientos">9.7. Comparar y combinar comportamientos</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-6" id="toc-antes-de-seguir-6" class="nav-link" data-scroll-target="#antes-de-seguir-6">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#qué-describen-los-extremos-y-qué-dejan-abierto" id="toc-qué-describen-los-extremos-y-qué-dejan-abierto" class="nav-link" data-scroll-target="#qué-describen-los-extremos-y-qué-dejan-abierto">9.8. Qué describen los extremos y qué dejan abierto</a>
+  <ul class="collapse">
+  <li><a href="#antes-de-seguir-7" id="toc-antes-de-seguir-7" class="nav-link" data-scroll-target="#antes-de-seguir-7">Antes de seguir</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 9 — Límite superior e inferior: las envolventes de una cola</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html">Capítulo 9</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>Una sucesión acotada puede seguir oscilando. Queremos identificar dos fronteras que sobrevivan al retirar cualquier prefijo, y relacionarlas con los destinos de sus extracciones. No basta el supremo de la imagen completa: una única altura inicial puede dominarlo. Miraremos los conjuntos de valores de cola y construiremos dos sucesiones nuevas que sí tienen dirección monótona.</p>
+<p>La ruta será cola, supremo e ínfimo de cola, envolventes monótonas y límites de esas envolventes. Después construiremos extracciones que alcancen las fronteras como límites, mediremos la oscilación y estudiaremos qué operaciones conservan o comparan los extremos. Usaremos orden y sup/inf de C02, completitud de C03, colas de C05 y las herramientas de C06–C08. Todo el capítulo desarrolla la teoría real finita de sucesiones acotadas; no introduce una extensión implícita a valores infinitos.</p>
+<section id="conservar-la-cola-y-olvidar-el-prefijo" class="level2">
+<h2 class="anchored" data-anchor-id="conservar-la-cola-y-olvidar-el-prefijo">9.1. Conservar la cola y olvidar el prefijo</h2>
+<p><span id="MA-SEC-ANM-01-009-001"></span></p>
+<p>Una altura excepcional puede dominar la imagen completa sin describir lo que sucede después. Si <span class="math inline">\(a_0=10\)</span> y <span class="math inline">\(a_n=0\)</span> para <span class="math inline">\(n\ge1\)</span>, el supremo de la imagen es diez y el límite es cero. Queremos conservar las fronteras que sobreviven al avanzar el corte temporal.</p>
+<p>Fijemos una sucesión real acotada <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span>, con <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span>. Para <span class="math inline">\(N\in\mathbb N\)</span>, su conjunto de valores de cola es <span class="math inline">\(T_N=\{a_n:n\ge N\}\)</span>. El conjunto de índices <span class="math inline">\(\{n:n\ge N\}\)</span> vive en <span class="math inline">\(\mathbb N\)</span>; <span class="math inline">\(T_N\)</span> vive en <span class="math inline">\(\mathbb R\)</span>. La sucesión conserva multiplicidades y orden; el conjunto de valores los olvida. En particular, <span class="math inline">\(T_N\)</span> puede ser un singleton aunque haya infinitos índices disponibles.</p>
+<p>Cada <span class="math inline">\(T_N\)</span> contiene <span class="math inline">\(a_N\)</span> y es acotado. La completitud asegura los reales</p>
+<p><span class="math display">\[
+\ell_N=\inf T_N,\qquad u_N=\sup T_N.
+\]</span></p>
+<p>Para todo <span class="math inline">\(n\ge N\)</span> se cumple <span class="math inline">\(\ell_N\le a_n\le u_N\)</span>. Las funciones <span class="math inline">\(\ell,u:\mathbb N\to\mathbb R\)</span> son nuevas sucesiones, llamadas <strong>envolventes inferior y superior</strong>. No son en general subsucesiones de <span class="math inline">\(a\)</span>: sus valores pueden no aparecer nunca entre los términos.</p>
+<p><strong>La propiedad que necesitaremos.</strong> Para cada corte <span class="math inline">\(N\)</span> y cada <span class="math inline">\(\eta&gt;0\)</span> existen <span class="math inline">\(p,q\ge N\)</span> con <span class="math inline">\(\ell_N\le a_p&lt;\ell_N+\eta\)</span> y <span class="math inline">\(u_N-\eta&lt;a_q\le u_N\)</span>. Veamos por qué. Si ningún término de la cola superara <span class="math inline">\(u_N-\eta\)</span>, ese número sería una cota superior de <span class="math inline">\(T_N\)</span> menor que su supremo. Esto contradice la definición de supremo. Si ningún término fuera menor que <span class="math inline">\(\ell_N+\eta\)</span>, ese número sería una cota inferior mayor que el ínfimo. Los valores obtenidos pertenecen a <span class="math inline">\(T_N\)</span> y, por su definición, tienen índices al menos <span class="math inline">\(N\)</span>. No hemos supuesto que los extremos se alcancen, ni elegido aún testigos para todos los pares <span class="math inline">\((N,\eta)\)</span>.</p>
+<p>En <span class="math inline">\(a_n=1/(n+1)\)</span> tenemos <span class="math inline">\(u_N=1/(N+1)\)</span>, alcanzado en <span class="math inline">\(N\)</span>, y <span class="math inline">\(\ell_N=0\)</span>, no alcanzado. Cero es cota inferior; cualquier número positivo deja de ser cota inferior por arquimedianidad. Para la sucesión del prefijo excepcional, <span class="math inline">\(u_0=10\)</span> y <span class="math inline">\(u_N=0\)</span> desde <span class="math inline">\(N=1\)</span>, mientras que <span class="math inline">\(\ell_N=0\)</span> siempre. La frontera de una cola debe leerse con su corte, no sólo con la lista de alturas de la imagen total.</p>
+<div id="fig-anm-c09-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="El valor inicial diez determina el supremo total, pero desaparece del conjunto de valores de cola desde el corte uno.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c09-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C09/C09-F01.svg" class="img-fluid figure-img" alt="El valor inicial diez determina el supremo total, pero desaparece del conjunto de valores de cola desde el corte uno.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c09-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: El valor inicial diez determina el supremo total, pero desaparece del conjunto de valores de cola desde el corte uno.
+</figcaption>
+</figure>
+</div>
+<section id="antes-de-seguir" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-009-001"></span></p>
+<ol type="1">
+<li>¿En qué conjuntos viven el corte <span class="math inline">\(N\)</span> y los valores de <span class="math inline">\(T_N\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-002"></span></p>
+<ol start="2" type="1">
+<li>¿Por qué <span class="math inline">\(T_N\)</span> no es vacío?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-003"></span></p>
+<ol start="3" type="1">
+<li>¿Qué hipótesis permite que <span class="math inline">\(\ell_N\)</span> y <span class="math inline">\(u_N\)</span> sean reales?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-004"></span></p>
+<ol start="4" type="1">
+<li>¿Debe <span class="math inline">\(u_N\)</span> ser uno de los términos de la cola?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-005"></span></p>
+<ol start="5" type="1">
+<li>Calcula <span class="math inline">\(\ell_N\)</span> y <span class="math inline">\(u_N\)</span> para <span class="math inline">\(a_n=1/(n+1)\)</span>.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-006"></span></p>
+<ol start="6" type="1">
+<li>¿Qué contradicción aparece si todos los términos de la cola satisfacen <span class="math inline">\(a_n\le u_N-\eta\)</span> con <span class="math inline">\(\eta&gt;0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-007"></span></p>
+<ol start="7" type="1">
+<li>¿Una cola constante tiene infinitos valores distintos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-008"></span></p>
+<ol start="8" type="1">
+<li>Para <span class="math inline">\(a_0=10\)</span> y <span class="math inline">\(a_n=0\)</span> si <span class="math inline">\(n\ge1\)</span>, ¿cuándo cambia el supremo de cola?</li>
+</ol>
+</section>
+</section>
+<section id="dos-envolventes-que-sí-tienen-dirección" class="level2">
+<h2 class="anchored" data-anchor-id="dos-envolventes-que-sí-tienen-dirección">9.2. Dos envolventes que sí tienen dirección</h2>
+<p><span id="MA-SEC-ANM-01-009-002"></span></p>
+<p>La sucesión original puede saltar en ambas direcciones. Sus envolventes tienen una dirección obligada: al descartar términos, no creamos alturas nuevas. Como <span class="math inline">\(T_{N+1}\subseteq T_N\)</span>, toda cota superior de <span class="math inline">\(T_N\)</span> sigue siendo cota de <span class="math inline">\(T_{N+1}\)</span> y toda cota inferior sigue siéndolo. Las propiedades de supremo e ínfimo dan</p>
+<p><span class="math display">\[
+\ell_N\le\ell_{N+1}\le u_{N+1}\le u_N.
+\]</span></p>
+<p>Si <span class="math inline">\(m\le a_n\le M\)</span> para todo <span class="math inline">\(n\)</span>, también <span class="math inline">\(m\le\ell_N\le u_N\le M\)</span>. C07 permite concluir que ambas envolventes convergen. Definimos</p>
+<p><span class="math display">\[
+\alpha=\liminf_{n\to\infty}a_n:=\lim_{N\to\infty}\ell_N=\sup_{N\in\mathbb N}\ell_N,
+\qquad
+\beta=\limsup_{n\to\infty}a_n:=\lim_{N\to\infty}u_N=\inf_{N\in\mathbb N}u_N.
+\]</span></p>
+<p>El supremo exterior se aplica al recorrido de <span class="math inline">\(\ell\)</span> y el ínfimo exterior al recorrido de <span class="math inline">\(u\)</span>. No podemos intercambiar estas operaciones: <span class="math inline">\(\sup_N\sup T_N=u_0\)</span> describiría el supremo total, no la frontera persistente. La existencia usa completitud dos veces: primero en cada conjunto de cola; después, mediante convergencia monótona, en el conjunto de valores de cada envolvente. Unicidad de límites de C06 hace unívocas las definiciones.</p>
+<p>Por conservación del orden bajo límites, <span class="math inline">\(\alpha\le\beta\)</span>. Además, <span class="math inline">\(\ell_N\le\alpha\)</span> y <span class="math inline">\(\beta\le u_N\)</span> para todo <span class="math inline">\(N\)</span>. Esto no afirma <span class="math inline">\(\alpha\le a_n\le\beta\)</span> para todo <span class="math inline">\(n\)</span>, ni siquiera para toda una cola. Los extremos de las envolventes pueden seguir fuera del intervalo final durante cualquier tiempo finito.</p>
+<p>Tomemos <span class="math inline">\(a_n=(-1)^n(1+1/(n+1))\)</span>. Sea <span class="math inline">\(e(N)\)</span> el menor índice par al menos <span class="math inline">\(N\)</span> y <span class="math inline">\(o(N)\)</span> el menor impar al menos <span class="math inline">\(N\)</span>. Entonces <span class="math inline">\(u_N=1+1/(e(N)+1)\)</span> y <span class="math inline">\(\ell_N=-1-1/(o(N)+1)\)</span>. Los términos pares positivos disminuyen y los impares negativos aumentan; por eso sus primeros índices disponibles dan los extremos. Como <span class="math inline">\(e(N),o(N)\ge N\)</span>, las dos correcciones tienden a cero, de modo que <span class="math inline">\(\alpha=-1\)</span> y <span class="math inline">\(\beta=1\)</span>. Todos los términos quedan fuera de <span class="math inline">\([-1,1]\)</span>, aunque las fronteras asintóticas sean precisamente esos extremos.</p>
+<p>La nueva herramienta no fuerza convergencia de <span class="math inline">\(a\)</span>. Hace converger las dos sucesiones que delimitan sus colas. Visualmente obtenemos dos movimientos monótonos a partir de una oscilación.</p>
+<div id="fig-anm-c09-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La sucesión alterna fuera de la banda final; sus envolventes avanzan monótonamente hacia menos uno y uno sin exigir que los términos entren en esa banda exacta.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c09-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C09/C09-F02.svg" class="img-fluid figure-img" alt="La sucesión alterna fuera de la banda final; sus envolventes avanzan monótonamente hacia menos uno y uno sin exigir que los términos entren en esa banda exacta.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c09-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: La sucesión alterna fuera de la banda final; sus envolventes avanzan monótonamente hacia menos uno y uno sin exigir que los términos entren en esa banda exacta.
+</figcaption>
+</figure>
+</div>
+<section id="antes-de-seguir-1" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-1">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-009-009"></span></p>
+<ol type="1">
+<li>¿Cuál es la inclusión entre <span class="math inline">\(T_{N+1}\)</span> y <span class="math inline">\(T_N\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-010"></span></p>
+<ol start="2" type="1">
+<li>¿En qué sentido es monótona la envolvente inferior?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-011"></span></p>
+<ol start="3" type="1">
+<li>¿En qué sentido es monótona la envolvente superior?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-012"></span></p>
+<ol start="4" type="1">
+<li>Escribe el supremo exterior que define <span class="math inline">\(\alpha\)</span>.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-013"></span></p>
+<ol start="5" type="1">
+<li>Escribe el ínfimo exterior que define <span class="math inline">\(\beta\)</span>.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-014"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué <span class="math inline">\(\alpha\le\beta\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-015"></span></p>
+<ol start="7" type="1">
+<li>Para <span class="math inline">\(a_n=(-1)^n(1+1/(n+1))\)</span>, ¿cuáles son los extremos asintóticos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-016"></span></p>
+<ol start="8" type="1">
+<li>¿El ejemplo anterior tiene términos en <span class="math inline">\([\alpha,\beta]\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="fronteras-eventuales-y-visitas-tardías" class="level2">
+<h2 class="anchored" data-anchor-id="fronteras-eventuales-y-visitas-tardías">9.3. Fronteras eventuales y visitas tardías</h2>
+<p><span id="MA-SEC-ANM-01-009-003"></span></p>
+<p>¿Cómo se reconoce <span class="math inline">\(\beta\)</span> sin calcular todos los supremos? Necesitamos dos condiciones: ninguna altura persistentemente mayor puede sobrevivir y los términos siguen llegando cerca de la frontera desde abajo. Para una sucesión acotada, un real <span class="math inline">\(b\)</span> es su límite superior si y sólo si</p>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\ \exists N\ \forall n\ge N: a_n&lt;b+\varepsilon,
+\qquad
+\forall\varepsilon&gt;0\ \forall K\ \exists n\ge K: a_n&gt;b-\varepsilon.
+\]</span></p>
+<p><strong>Del límite superior a las condiciones.</strong> La convergencia <span class="math inline">\(u_N\to\beta\)</span> da un corte con <span class="math inline">\(u_N&lt;\beta+\varepsilon\)</span>; entonces toda su cola queda por debajo. Para cualquier corte <span class="math inline">\(K\)</span>, la aproximación del supremo da <span class="math inline">\(a_n&gt;u_K-\varepsilon\ge\beta-\varepsilon\)</span> para algún <span class="math inline">\(n\ge K\)</span>. La segunda condición permite un índice distinto para cada tolerancia y corte; no exige que toda la cola se acerque a <span class="math inline">\(\beta\)</span>.</p>
+<p><strong>De las condiciones al límite superior.</strong> La primera da <span class="math inline">\(u_N\le b+\varepsilon\)</span> para algún corte, pues una cota estricta término a término puede pasar a no estricta al tomar supremo. Así <span class="math inline">\(\beta\le b+\varepsilon\)</span>. La segunda obliga a <span class="math inline">\(u_K&gt;b-\varepsilon\)</span> para cada <span class="math inline">\(K\)</span>; al tomar límite, <span class="math inline">\(\beta\ge b-\varepsilon\)</span>. Como esto vale para toda tolerancia positiva, <span class="math inline">\(\beta=b\)</span>: si fueran diferentes, la mitad de su distancia contradiría una de esas desigualdades.</p>
+<p>La caracterización inferior es dual y conviene conservarla completa: <span class="math inline">\(c=\alpha\)</span> si y sólo si, para cada <span class="math inline">\(\varepsilon&gt;0\)</span>, todos los términos de alguna cola satisfacen <span class="math inline">\(a_n&gt;c-\varepsilon\)</span>, y para todo corte <span class="math inline">\(K\)</span> existe <span class="math inline">\(n\ge K\)</span> con <span class="math inline">\(a_n&lt;c+\varepsilon\)</span>. En efecto, <span class="math inline">\(\ell_N\to\alpha\)</span> prueba la primera condición y la aproximación del ínfimo la segunda. Recíprocamente, la primera implica <span class="math inline">\(\alpha\ge c-\varepsilon\)</span> y la segunda <span class="math inline">\(\ell_K&lt;c+\varepsilon\)</span> para cada <span class="math inline">\(K\)</span>, luego <span class="math inline">\(\alpha\le c+\varepsilon\)</span>. La misma prueba por distancia da <span class="math inline">\(\alpha=c\)</span>.</p>
+<p>Un conjunto de índices supera cualquier corte exactamente cuando es infinito, porque un prefijo natural es finito y cualquier conjunto finito de naturales tiene cota. Por tanto, «arbitrariamente tarde» equivale aquí a «para infinitos índices». Repetir un mismo valor en esos índices está permitido.</p>
+<p>Dos consecuencias útiles fijan el significado de frontera. Si <span class="math inline">\(t&gt;\beta\)</span>, sólo hay finitos índices con <span class="math inline">\(a_n\ge t\)</span>: usar <span class="math inline">\(\varepsilon=(t-\beta)/2\)</span> en la primera condición. Si <span class="math inline">\(t&lt;\beta\)</span>, hay infinitos índices con <span class="math inline">\(a_n&gt;t\)</span>: usar <span class="math inline">\(\varepsilon=\beta-t\)</span> en la segunda. Para <span class="math inline">\(t=\beta\)</span>, ambas posibilidades existen; la sucesión constante uno alcanza su frontera siempre, mientras <span class="math inline">\(1-1/(n+1)\)</span> no la alcanza nunca. Dualmente, por debajo de <span class="math inline">\(\alpha\)</span> sólo puede haber finitas visitas y por encima de <span class="math inline">\(\alpha\)</span> hay infinitas visitas inferiores al umbral.</p>
+<p>Al combinar las dos cotas eventuales, para cada <span class="math inline">\(\varepsilon&gt;0\)</span> alguna cola queda dentro de <span class="math inline">\((\alpha-\varepsilon,\beta+\varepsilon)\)</span>. Esta es la banda que podemos garantizar. El intervalo exacto <span class="math inline">\([\alpha,\beta]\)</span> puede seguir sin contener ningún término, como vimos antes.</p>
+<div id="fig-anm-c09-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Desde el corte cuatro todos los términos quedan bajo cinco cuartos. Después del corte nueve, el término de índice diez visita la ventana de radio un cuarto de la frontera superior; los términos negativos siguen fuera de ella.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c09-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C09/C09-F03.svg" class="img-fluid figure-img" alt="Desde el corte cuatro todos los términos quedan bajo cinco cuartos. Después del corte nueve, el término de índice diez visita la ventana de radio un cuarto de la frontera superior; los términos negativos siguen fuera de ella.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c09-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Desde el corte cuatro todos los términos quedan bajo cinco cuartos. Después del corte nueve, el término de índice diez visita la ventana de radio un cuarto de la frontera superior; los términos negativos siguen fuera de ella.
+</figcaption>
+</figure>
+</div>
+<section id="antes-de-seguir-2" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-2">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-009-017"></span></p>
+<ol type="1">
+<li>¿Qué orden de cuantificadores expresa una cota superior eventual con tolerancia <span class="math inline">\(\varepsilon\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-018"></span></p>
+<ol start="2" type="1">
+<li>¿Qué orden de cuantificadores expresa visitas tardías cerca de <span class="math inline">\(\beta\)</span> desde abajo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-019"></span></p>
+<ol start="3" type="1">
+<li>¿La condición de visitas obliga a que toda la cola esté cerca de <span class="math inline">\(\beta\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-020"></span></p>
+<ol start="4" type="1">
+<li>¿Qué ocurre con las visitas a alturas al menos <span class="math inline">\(t\)</span> si <span class="math inline">\(t&gt;\beta\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-021"></span></p>
+<ol start="5" type="1">
+<li>¿Qué ocurre si <span class="math inline">\(t&lt;\beta\)</span> con los índices que cumplen <span class="math inline">\(a_n&gt;t\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-022"></span></p>
+<ol start="6" type="1">
+<li>¿Se puede decidir sólo con <span class="math inline">\(\beta\)</span> si hay infinitos índices con <span class="math inline">\(a_n=\beta\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-023"></span></p>
+<ol start="7" type="1">
+<li>Escribe las dos condiciones que caracterizan <span class="math inline">\(\alpha\)</span>.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-024"></span></p>
+<ol start="8" type="1">
+<li>¿Qué banda abierta contiene alguna cola para cada <span class="math inline">\(\varepsilon&gt;0\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="alcanzar-las-fronteras-mediante-extracciones" class="level2">
+<h2 class="anchored" data-anchor-id="alcanzar-las-fronteras-mediante-extracciones">9.4. Alcanzar las fronteras mediante extracciones</h2>
+<p><span id="MA-SEC-ANM-01-009-004"></span></p>
+<p>Las fronteras existen, pero aún debemos relacionarlas con los destinos de C08. Demostraremos que <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span> son respectivamente el mínimo y el máximo del conjunto de límites de subsucesiones, que denotaremos <span class="math inline">\(\operatorname{LimSub}(a)\)</span>. Primero construiremos dos extracciones; después confinaremos cualquier otra.</p>
+<p><strong>Construir la extracción superior.</strong> Para cualquier <span class="math inline">\(\delta&gt;0\)</span> y corte <span class="math inline">\(K\)</span>, hay un término posterior con <span class="math inline">\(|a_n-\beta|&lt;\delta\)</span>. Para verlo, escogemos primero un corte <span class="math inline">\(H\)</span> desde el cual <span class="math inline">\(a_n&lt;\beta+\delta\)</span>; luego la condición de visitas, aplicada al corte <span class="math inline">\(\max\{H,K\}\)</span>, da un término con <span class="math inline">\(a_n&gt;\beta-\delta\)</span>. Ambas restricciones se cumplen en el mismo índice. Esa coordinación es el paso decisivo: una visita por un solo lado no bastaría.</p>
+<p>Definimos <span class="math inline">\(n_0\)</span> como el mínimo del conjunto no vacío <span class="math inline">\(\{n:|a_n-\beta|&lt;1\}\)</span>. Una vez definido <span class="math inline">\(n_{k-1}\)</span>, para <span class="math inline">\(k\ge1\)</span> ponemos</p>
+<p><span class="math display">\[
+n_k=\min\{n\ge n_{k-1}+1:|a_n-\beta|&lt;1/(k+1)\}.
+\]</span></p>
+<p>La propiedad anterior demuestra la no vacuidad antes de tomar cada mínimo. La recursión produce un selector estrictamente creciente <span class="math inline">\(k\mapsto n_k\)</span>; no requiere escoger un mínimo real ni testigos arbitrarios. Además <span class="math inline">\(|a_{n_k}-\beta|&lt;1/(k+1)\)</span>. Para <span class="math inline">\(\varepsilon&gt;0\)</span>, la propiedad arquimediana da <span class="math inline">\(K\)</span> con <span class="math inline">\(1/(K+1)&lt;\varepsilon\)</span>; todo <span class="math inline">\(k\ge K\)</span> satisface el error requerido. Así <span class="math inline">\(a_{n_k}\to\beta\)</span> con dominio nuevo <span class="math inline">\(\mathbb N\)</span> y codominio <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>Construir la extracción inferior.</strong> Para <span class="math inline">\(\delta,K\)</span> fijos, la cota eventual <span class="math inline">\(a_n&gt;\alpha-\delta\)</span> y la visita <span class="math inline">\(a_n&lt;\alpha+\delta\)</span> después del máximo de los cortes dan <span class="math inline">\(|a_n-\alpha|&lt;\delta\)</span>. Definimos <span class="math inline">\(m_0=\min\{n:|a_n-\alpha|&lt;1\}\)</span> y, para <span class="math inline">\(k\ge1\)</span>, <span class="math inline">\(m_k=\min\{n\ge m_{k-1}+1:|a_n-\alpha|&lt;1/(k+1)\}\)</span>. Los conjuntos son no vacíos; el selector aumenta y la misma estimación arquimediana prueba <span class="math inline">\(a_{m_k}\to\alpha\)</span>.</p>
+<p><strong>Confinar otros destinos.</strong> Si <span class="math inline">\(a_{\varphi(k)}\to x\)</span> con <span class="math inline">\(\varphi\)</span> estrictamente creciente, C08 da <span class="math inline">\(\varphi(k)\ge k\)</span>. Para cada corte fijo <span class="math inline">\(N\)</span>, todos los <span class="math inline">\(k\ge N\)</span> cumplen <span class="math inline">\(\ell_N\le a_{\varphi(k)}\le u_N\)</span>. Pasando al límite en <span class="math inline">\(k\)</span>, obtenemos <span class="math inline">\(\ell_N\le x\le u_N\)</span>. Ahora dejamos variar <span class="math inline">\(N\)</span> y pasamos al límite en las envolventes: <span class="math inline">\(\alpha\le x\le\beta\)</span>. Son dos pasos de límite con dominios diferentes; no se sustituye un índice infinito en una fórmula.</p>
+<p>Los extremos pertenecen al conjunto de destinos y acotan a todos sus elementos. Por ello</p>
+<p><span class="math display">\[
+\min\operatorname{LimSub}(a)=\alpha,\qquad
+\max\operatorname{LimSub}(a)=\beta.
+\]</span></p>
+<p>En la alternancia cero–uno los destinos son exactamente <span class="math inline">\(\{0,1\}\)</span>: las selecciones de pares e impares los alcanzan, y ningún otro real puede ser límite, porque está a distancia positiva del conjunto finito de valores. El intervalo <span class="math inline">\([0,1]\)</span> es la envolvente de esos destinos, no el conjunto completo de ellos. La construcción que acabamos de realizar ofrece candidatos concretos y demuestra su convergencia; Bolzano–Weierstrass queda disponible como contraste, pero no sustituye ninguno de esos pasos.</p>
+<div id="fig-anm-c09-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La selección par conserva valores y cambia el dominio de lectura al índice k. Sus términos se acercan a uno, aunque ningún término seleccionado vale uno.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c09-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C09/C09-F04.svg" class="img-fluid figure-img" alt="La selección par conserva valores y cambia el dominio de lectura al índice k. Sus términos se acercan a uno, aunque ningún término seleccionado vale uno.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c09-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: La selección par conserva valores y cambia el dominio de lectura al índice k. Sus términos se acercan a uno, aunque ningún término seleccionado vale uno.
+</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Índice nuevo k</th>
+<th>Índice original φ(k)</th>
+<th>Valor seleccionado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2</td>
+<td>4/3</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>4</td>
+<td>6/5</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>6</td>
+<td>8/7</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>8</td>
+<td>10/9</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>10</td>
+<td>12/11</td>
+</tr>
+</tbody>
+</table>
+<section id="antes-de-seguir-3" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-3">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-009-025"></span></p>
+<ol type="1">
+<li>¿Qué dos restricciones se coordinan antes de elegir un índice próximo a <span class="math inline">\(\beta\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-026"></span></p>
+<ol start="2" type="1">
+<li>¿Por qué existe el mínimo que define <span class="math inline">\(n_0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-027"></span></p>
+<ol start="3" type="1">
+<li>¿Qué evita que <span class="math inline">\(n_k\)</span> repita un índice previo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-028"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué usamos <span class="math inline">\(1/(k+1)\)</span> en vez de <span class="math inline">\(1/k\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-029"></span></p>
+<ol start="5" type="1">
+<li>¿En qué dominio vive el selector <span class="math inline">\(k\mapsto n_k\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-030"></span></p>
+<ol start="6" type="1">
+<li>¿Cómo demuestra <span class="math inline">\(|a_{n_k}-\beta|&lt;1/(k+1)\)</span> la convergencia?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-031"></span></p>
+<ol start="7" type="1">
+<li>¿Qué desigualdad satisface cualquier límite <span class="math inline">\(x\)</span> de subsucesión?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-032"></span></p>
+<ol start="8" type="1">
+<li>¿Por qué <span class="math inline">\(\beta\)</span> es máximo de <span class="math inline">\(\operatorname{LimSub}(a)\)</span> y no sólo su supremo?</li>
+</ol>
+</section>
+</section>
+<section id="medir-la-oscilación-y-reconocer-convergencia" class="level2">
+<h2 class="anchored" data-anchor-id="medir-la-oscilación-y-reconocer-convergencia">9.5. Medir la oscilación y reconocer convergencia</h2>
+<p><span id="MA-SEC-ANM-01-009-005"></span></p>
+<p>Las dos fronteras permiten recuperar la convergencia ordinaria. Para una sucesión real acotada,</p>
+<p><span class="math display">\[
+a_n\to L\quad\Longleftrightarrow\quad\alpha=\beta=L.
+\]</span></p>
+<p>Si <span class="math inline">\(a_n\to L\)</span>, las dos extracciones construidas en §9.4 deben converger a <span class="math inline">\(L\)</span> por C08; unicidad identifica <span class="math inline">\(\alpha=\beta=L\)</span>. Para la vuelta no basta decir que las fronteras coinciden: debemos controlar toda la cola. Si <span class="math inline">\(\alpha=\beta=L\)</span> y <span class="math inline">\(\varepsilon&gt;0\)</span>, la convergencia de las envolventes da cortes <span class="math inline">\(N_1,N_2\)</span> desde los cuales <span class="math inline">\(\ell_n&gt;L-\varepsilon\)</span> y <span class="math inline">\(u_n&lt;L+\varepsilon\)</span>, respectivamente. Con <span class="math inline">\(N=\max\{N_1,N_2\}\)</span>, todo <span class="math inline">\(n\ge N\)</span> cumple <span class="math inline">\(L-\varepsilon&lt;\ell_n\le a_n\le u_n&lt;L+\varepsilon\)</span>. Esto prueba <span class="math inline">\(|a_n-L|&lt;\varepsilon\)</span> con el orden correcto de elecciones.</p>
+<p>Podemos medir lo que queda de la oscilación mediante <span class="math inline">\(d_N=u_N-\ell_N\ge0\)</span>. Como <span class="math inline">\(u\)</span> decrece y <span class="math inline">\(\ell\)</span> crece, <span class="math inline">\(d\)</span> decrece. Las reglas de límites reales de C06 dan <span class="math inline">\(d_N\to\beta-\alpha\)</span>. Llamaremos <strong>oscilación asintótica</strong> al número <span class="math inline">\(\omega(a)=\beta-\alpha\)</span>. Así <span class="math inline">\(\omega(a)=0\)</span> si y sólo si <span class="math inline">\(a\)</span> converge. El número cero registra desaparición de amplitud, aunque los términos alternen de lado para siempre.</p>
+<p>La anchura tiene una interpretación independiente de que se alcancen los extremos:</p>
+<p><span class="math display">\[
+d_N=\sup\{|a_p-a_q|:p,q\ge N\}.
+\]</span></p>
+<p>Todo par de términos está en <span class="math inline">\([\ell_N,u_N]\)</span>, luego su distancia es a lo sumo <span class="math inline">\(d_N\)</span>. Para comprobar que ninguna cota menor sirve, fijemos <span class="math inline">\(\eta&gt;0\)</span>. La aproximación de §9.1 ofrece <span class="math inline">\(a_p&gt;u_N-\eta/2\)</span> y <span class="math inline">\(a_q&lt;\ell_N+\eta/2\)</span>, ambos en la cola. Entonces <span class="math inline">\(|a_p-a_q|\ge a_p-a_q&gt;d_N-\eta\)</span>. El conjunto de distancias es no vacío y acotado, y estas dos propiedades identifican su supremo. Los índices pueden depender de <span class="math inline">\(\eta\)</span> y <span class="math inline">\(N\)</span>; no afirmamos que el supremo de distancias sea un máximo.</p>
+<p>En <span class="math inline">\(a_n=(-1)^n/(n+1)\)</span> la envolvente superior es <span class="math inline">\(1/(e(N)+1)\)</span> y la inferior es <span class="math inline">\(-1/(o(N)+1)\)</span>. Su anchura tiende a cero y la sucesión converge a cero, aunque no sea monótona. En la alternancia cero–uno, en cambio, <span class="math inline">\(d_N=1\)</span> siempre. La monotonía de las envolventes puede convivir con una anchura persistente.</p>
+<p>Esta sección añade un diagnóstico geométrico de convergencia. Hemos probado sus equivalencias usando las fronteras ya construidas. La relación con una condición interna de proximidad entre términos se desarrollará con su propia arquitectura en el capítulo siguiente; no necesitamos anticiparla para cerrar estas pruebas.</p>
+<div id="fig-anm-c09-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La anchura de las colas amortiguadas tiende a cero; la de la alternancia cero–uno permanece en uno. Ambas envolventes son monótonas, pero sólo la primera pareja se reúne.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c09-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C09/C09-F05.svg" class="img-fluid figure-img" alt="La anchura de las colas amortiguadas tiende a cero; la de la alternancia cero–uno permanece en uno. Ambas envolventes son monótonas, pero sólo la primera pareja se reúne.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c09-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: La anchura de las colas amortiguadas tiende a cero; la de la alternancia cero–uno permanece en uno. Ambas envolventes son monótonas, pero sólo la primera pareja se reúne.
+</figcaption>
+</figure>
+</div>
+<section id="antes-de-seguir-4" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-4">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-009-033"></span></p>
+<ol type="1">
+<li>¿Qué concluyes si <span class="math inline">\(\alpha=\beta=L\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-034"></span></p>
+<ol start="2" type="1">
+<li>¿Qué concluyes sobre los extremos si <span class="math inline">\(a_n\to L\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-035"></span></p>
+<ol start="3" type="1">
+<li>¿Cómo se define la anchura <span class="math inline">\(d_N\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-036"></span></p>
+<ol start="4" type="1">
+<li>¿Por qué <span class="math inline">\(d_N\)</span> no aumenta?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-037"></span></p>
+<ol start="5" type="1">
+<li>¿Cuál es el límite de <span class="math inline">\(d_N\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-038"></span></p>
+<ol start="6" type="1">
+<li>¿Debe la máxima distancia entre dos términos de una cola existir?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-039"></span></p>
+<ol start="7" type="1">
+<li>Calcula la oscilación asintótica de la alternancia cero–uno.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-040"></span></p>
+<ol start="8" type="1">
+<li>¿Oscilar de lado para siempre impide converger?</li>
+</ol>
+</section>
+</section>
+<section id="cambiar-términos-sin-cambiar-las-fronteras" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-términos-sin-cambiar-las-fronteras">9.6. Cambiar términos sin cambiar las fronteras</h2>
+<p><span id="MA-SEC-ANM-01-009-006"></span></p>
+<p>Un objeto asintótico debería ignorar un prefijo finito. Si <span class="math inline">\(a_n=b_n\)</span> para <span class="math inline">\(n\ge N_0\)</span>, entonces <span class="math inline">\(T_N(a)=T_N(b)\)</span> para todo <span class="math inline">\(N\ge N_0\)</span>. Sus supremos e ínfimos coinciden desde ese corte, por lo que los respectivos límites coinciden. Modificar finitos términos de una sucesión acotada conserva la acotación: se incorpora a la cota la máxima magnitud de los nuevos valores, un conjunto finito. Por tanto, esa modificación conserva <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> y <span class="math inline">\(\omega\)</span> aunque cambie el supremo de la imagen total.</p>
+<p>También podemos desplazar el origen temporal. Para <span class="math inline">\(r\in\mathbb N\)</span> fijo, definamos <span class="math inline">\(b_k=a_{k+r}\)</span>. Tenemos <span class="math inline">\(T_K(b)=T_{K+r}(a)\)</span>, de modo que <span class="math inline">\(\ell_K(b)=\ell_{K+r}(a)\)</span> y <span class="math inline">\(u_K(b)=u_{K+r}(a)\)</span>. Las colas de las envolventes convergen a sus mismos límites por C06. Suprimir un prefijo y reindexar desde cero conserva los extremos; esta operación es distinta de modificar sólo el valor de un término.</p>
+<p><strong>Estabilidad ante un error que desaparece.</strong> Supongamos que <span class="math inline">\(a\)</span> es acotada y <span class="math inline">\(b_n-a_n\to0\)</span>. La diferencia es acotada por C06; por desigualdad triangular <span class="math inline">\(b\)</span> también es acotada. Para <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(N_0\)</span> con <span class="math inline">\(|b_n-a_n|&lt;\varepsilon\)</span> para <span class="math inline">\(n\ge N_0\)</span>. Si <span class="math inline">\(N\ge N_0\)</span>, entonces, para todo <span class="math inline">\(n\ge N\)</span>,</p>
+<p><span class="math display">\[
+\ell_N(a)-\varepsilon\le b_n\le u_N(a)+\varepsilon,
+\qquad
+\ell_N(b)-\varepsilon\le a_n\le u_N(b)+\varepsilon.
+\]</span></p>
+<p>Tomando extremos de cola, obtenemos <span class="math inline">\(u_N(b)\le u_N(a)+\varepsilon\)</span> y <span class="math inline">\(u_N(a)\le u_N(b)+\varepsilon\)</span>; además <span class="math inline">\(\ell_N(b)\ge\ell_N(a)-\varepsilon\)</span> y <span class="math inline">\(\ell_N(a)\ge\ell_N(b)-\varepsilon\)</span>. Al pasar al límite en <span class="math inline">\(N\)</span>, resulta <span class="math inline">\(|\beta(b)-\beta(a)|\le\varepsilon\)</span> y <span class="math inline">\(|\alpha(b)-\alpha(a)|\le\varepsilon\)</span>. La tolerancia es arbitraria, así que ambas diferencias son cero. No suponemos que el error se anule exactamente en una cola.</p>
+<p>En particular, <span class="math inline">\((-1)^n+1/(n+1)\)</span> conserva los extremos <span class="math inline">\(-1,1\)</span> de <span class="math inline">\((-1)^n\)</span>. Una perturbación pequeña en el límite conserva las fronteras y la oscilación, pero puede cambiar todos los términos. Más generalmente, la misma prueba muestra que, si <span class="math inline">\(|a_n-b_n|\le\delta\)</span> eventualmente para una constante <span class="math inline">\(\delta\ge0\)</span>, los respectivos extremos difieren a lo sumo en <span class="math inline">\(\delta\)</span>. Para trasladar por una constante exacta, los conjuntos de cola se trasladan: <span class="math inline">\(\ell_N(a+c)=\ell_N(a)+c\)</span> y <span class="math inline">\(u_N(a+c)=u_N(a)+c\)</span>, pues la traducción preserva cotas y su optimalidad. Por ello ambos extremos aumentan en <span class="math inline">\(c\)</span>.</p>
+<p>Conviene conservar las hipótesis: cambiar infinitos términos sin control puede cambiar ambas fronteras. En la alternancia cero–uno, reemplazar todos los unos por cero produce una sucesión constante. La infinitud del conjunto de cambios no decide por sí sola el efecto; lo decide su comportamiento en la cola.</p>
+<section id="antes-de-seguir-5" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-5">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-009-041"></span></p>
+<ol type="1">
+<li>¿Qué ocurre con <span class="math inline">\(\alpha,\beta\)</span> si se cambian finitos términos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-042"></span></p>
+<ol start="2" type="1">
+<li>¿Qué conjunto de cola tiene <span class="math inline">\(b_k=a_{k+r}\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-043"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué <span class="math inline">\(b\)</span> es acotada si <span class="math inline">\(a\)</span> lo es y <span class="math inline">\(b_n-a_n\to0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-044"></span></p>
+<ol start="4" type="1">
+<li>¿Qué cota de <span class="math inline">\(u_N(b)\)</span> obtienes de <span class="math inline">\(|a_n-b_n|&lt;\varepsilon\)</span> para todo <span class="math inline">\(n\ge N\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-045"></span></p>
+<ol start="5" type="1">
+<li>¿Por qué se comparan las envolventes también intercambiando <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-046"></span></p>
+<ol start="6" type="1">
+<li>Calcula los extremos de <span class="math inline">\(a_n=(-1)^n+1/(n+1)\)</span>.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-047"></span></p>
+<ol start="7" type="1">
+<li>¿Qué hace una traslación constante <span class="math inline">\(c\)</span> a los extremos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-048"></span></p>
+<ol start="8" type="1">
+<li>¿Modificar infinitos términos obliga a cambiar los extremos?</li>
+</ol>
+</section>
+</section>
+<section id="comparar-y-combinar-comportamientos" class="level2">
+<h2 class="anchored" data-anchor-id="comparar-y-combinar-comportamientos">9.7. Comparar y combinar comportamientos</h2>
+<p><span id="MA-SEC-ANM-01-009-007"></span></p>
+<p>En esta sección <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son sucesiones reales acotadas. Escribiremos <span class="math inline">\(\alpha_a,\beta_a\)</span> y <span class="math inline">\(\alpha_b,\beta_b\)</span> para sus extremos. Si <span class="math inline">\(a_n\le b_n\)</span> eventualmente, para toda cola posterior <span class="math inline">\(u_N(a)\le u_N(b)\)</span>: cada <span class="math inline">\(a_n\)</span> está por debajo de <span class="math inline">\(b_n\le u_N(b)\)</span>. También <span class="math inline">\(\ell_N(a)\le\ell_N(b)\)</span>, porque <span class="math inline">\(\ell_N(a)\le a_n\le b_n\)</span> para todos los índices de la cola y por tanto <span class="math inline">\(\ell_N(a)\)</span> es cota inferior de los valores de <span class="math inline">\(b\)</span>. Pasando al límite,</p>
+<p><span class="math display">\[
+\alpha_a\le\alpha_b,\qquad\beta_a\le\beta_b.
+\]</span></p>
+<p>Una desigualdad estricta entre términos puede dar igualdad en sus extremos. Por ejemplo, <span class="math inline">\(0&lt;1/(n+1)\)</span> en todos los índices, pero ambos límites superiores valen cero.</p>
+<p><strong>Cambiar la escala.</strong> Si <span class="math inline">\(c&gt;0\)</span>, la multiplicación preserva orden y optimalidad de cotas, luego <span class="math inline">\(\ell_N(ca)=c\ell_N(a)\)</span> y <span class="math inline">\(u_N(ca)=cu_N(a)\)</span>. Si <span class="math inline">\(c&lt;0\)</span>, invierte el orden: <span class="math inline">\(\ell_N(ca)=cu_N(a)\)</span> y <span class="math inline">\(u_N(ca)=c\ell_N(a)\)</span>. Para justificar optimalidad en este caso, una cota inferior de <span class="math inline">\(cT_N\)</span> dividida por <span class="math inline">\(c\)</span> es cota superior de <span class="math inline">\(T_N\)</span>, y una cota superior dividida por <span class="math inline">\(c\)</span> es cota inferior. Al pasar al límite se obtienen las mismas fórmulas para <span class="math inline">\(\alpha,\beta\)</span>. Si <span class="math inline">\(c=0\)</span>, ambas fronteras son cero. En particular, <span class="math inline">\(\alpha(-a)=-\beta_a\)</span> y <span class="math inline">\(\beta(-a)=-\alpha_a\)</span>.</p>
+<p><strong>Sumar sin sincronizar extremos.</strong> La suma es acotada, y para todo <span class="math inline">\(n\ge N\)</span> se cumple <span class="math inline">\(\ell_N(a)+\ell_N(b)\le a_n+b_n\le u_N(a)+u_N(b)\)</span>. Los dos términos extremos del lado derecho pueden provenir de índices diferentes. Tomando extremos y luego límites,</p>
+<p><span class="math display">\[
+\alpha_a+\alpha_b\le\alpha(a+b)\le\beta(a+b)\le\beta_a+\beta_b.
+\]</span></p>
+<p>La igualdad general sería falsa. Para <span class="math inline">\(a_n=(-1)^n\)</span> y <span class="math inline">\(b_n=-a_n\)</span>, ambas sucesiones tienen extremos <span class="math inline">\(-1,1\)</span>, mientras su suma es cero. Los máximos de una aparecen cuando la otra está en sus mínimos. En cambio, si <span class="math inline">\(b_n\to B\)</span>, escribimos <span class="math inline">\(a_n+b_n=(a_n+B)+(b_n-B)\)</span>. La traslación y la estabilidad de §9.6 dan <span class="math inline">\(\alpha(a+b)=\alpha_a+B\)</span> y <span class="math inline">\(\beta(a+b)=\beta_a+B\)</span>. Una de las dos convergencias ordinarias basta para recuperar la igualdad.</p>
+<p><strong>Producto con signo controlado.</strong> Si además <span class="math inline">\(a_n,b_n\ge0\)</span> para todos los índices, todos los extremos de cola son no negativos. Podemos multiplicar las cotas:</p>
+<p><span class="math display">\[
+\ell_N(a)\ell_N(b)\le a_nb_n\le u_N(a)u_N(b).
+\]</span></p>
+<p>El producto es acotado y las reglas de límites de C06 dan <span class="math inline">\(\alpha(ab)\ge\alpha_a\alpha_b\)</span> y <span class="math inline">\(\beta(ab)\le\beta_a\beta_b\)</span>. También vale si los factores son eventualmente no negativos, aplicando el razonamiento sólo a las colas posteriores. Sin esa hipótesis las fórmulas pueden fallar. En concreto, <span class="math inline">\(a_n=b_n\in\{-2,-1\}\)</span> alternando da <span class="math inline">\(\beta(ab)=4&gt;1=\beta_a\beta_b\)</span>. No trasladamos al producto una desigualdad diseñada para factores no negativos.</p>
+<p>Las reglas se convierten en herramientas después de verificar acotación, signo y sincronización. El retorno visual explica por qué sumar dos fronteras superiores produce una cota, aunque ninguna suma de términos alcance esa altura.</p>
+<div id="fig-anm-c09-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Los máximos de los sumandos ocurren en paridades opuestas. La suma es cero en cada índice, por debajo de la suma dos de sus fronteras superiores.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c09-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C09/C09-F06.svg" class="img-fluid figure-img" alt="Los máximos de los sumandos ocurren en paridades opuestas. La suma es cero en cada índice, por debajo de la suma dos de sus fronteras superiores.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c09-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Los máximos de los sumandos ocurren en paridades opuestas. La suma es cero en cada índice, por debajo de la suma dos de sus fronteras superiores.
+</figcaption>
+</figure>
+</div>
+<section id="antes-de-seguir-6" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-6">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-009-049"></span></p>
+<ol type="1">
+<li>Si <span class="math inline">\(a_n\le b_n\)</span> eventualmente, ¿qué orden tienen sus extremos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-050"></span></p>
+<ol start="2" type="1">
+<li>¿Una desigualdad estricta entre términos obliga a desigualdad estricta entre extremos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-051"></span></p>
+<ol start="3" type="1">
+<li>¿Qué ocurre al multiplicar por una constante positiva <span class="math inline">\(c\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-052"></span></p>
+<ol start="4" type="1">
+<li>¿Qué ocurre al multiplicar por una constante negativa <span class="math inline">\(c\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-053"></span></p>
+<ol start="5" type="1">
+<li>Escribe la cota general superior para una suma de sucesiones acotadas.</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-054"></span></p>
+<ol start="6" type="1">
+<li>¿Qué extremos tiene la suma si <span class="math inline">\(a_n=(-1)^n\)</span> y <span class="math inline">\(b_n=-a_n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-055"></span></p>
+<ol start="7" type="1">
+<li>Si <span class="math inline">\(b_n\to B\)</span>, ¿cuál es <span class="math inline">\(\beta(a+b)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-056"></span></p>
+<ol start="8" type="1">
+<li>¿Qué hipótesis de signo permite la cota <span class="math inline">\(\beta(ab)\le\beta_a\beta_b\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="qué-describen-los-extremos-y-qué-dejan-abierto" class="level2">
+<h2 class="anchored" data-anchor-id="qué-describen-los-extremos-y-qué-dejan-abierto">9.8. Qué describen los extremos y qué dejan abierto</h2>
+<p><span id="MA-SEC-ANM-01-009-008"></span></p>
+<p>Reunamos tres lecturas que deben permanecer distintas. <span class="math inline">\(\inf\{a_n:n\in\mathbb N\}\)</span> y <span class="math inline">\(\sup\{a_n:n\in\mathbb N\}\)</span> describen toda la imagen. <span class="math inline">\(\alpha,\beta\)</span> describen las fronteras persistentes de sus colas. <span class="math inline">\(\operatorname{LimSub}(a)\)</span> describe todos los destinos de extracciones convergentes. Las relaciones demostradas son</p>
+<p><span class="math display">\[
+\inf T_0\le\alpha\le\beta\le\sup T_0,
+\qquad
+\{\alpha,\beta\}\subseteq\operatorname{LimSub}(a)\subseteq[\alpha,\beta].
+\]</span></p>
+<p>La primera cadena se sigue de las cotas de las envolventes y sus límites. La segunda reúne extracción y confinamiento. Una igualdad entre extremos no identifica las sucesiones como funciones: la constante cero y <span class="math inline">\(1/(n+1)\)</span> tienen las mismas fronteras y diferentes valores en cada índice.</p>
+<p><strong>Picos escasos que persisten.</strong> Definamos <span class="math inline">\(a_n=1\)</span> si <span class="math inline">\(n=2^j\)</span> para algún <span class="math inline">\(j\in\mathbb N\)</span>, y <span class="math inline">\(a_n=0\)</span> en los demás índices. Cada cola contiene un uno: las potencias de dos superan todo corte, por ejemplo porque <span class="math inline">\(2^j\ge j+1\)</span>. También contiene un cero: los índices <span class="math inline">\(2^j+1\)</span> para <span class="math inline">\(j\ge1\)</span> no son potencias de dos y crecen sin cota. Así <span class="math inline">\(\ell_N=0\)</span> y <span class="math inline">\(u_N=1\)</span> para toda cola, luego <span class="math inline">\(\alpha=0\)</span>, <span class="math inline">\(\beta=1\)</span>. La separación creciente entre picos no elimina su efecto. Las fronteras usan la posibilidad de visitas arbitrariamente tardías, sin medir su frecuencia.</p>
+<p><strong>Dos extremos no determinan todos los destinos.</strong> La alternancia cero–uno y la sucesión periódica <span class="math inline">\(0,1/2,1,0,1/2,1,\ldots\)</span> tienen ambos extremos cero y uno. Sus conjuntos de destinos son, respectivamente, <span class="math inline">\(\{0,1\}\)</span> y <span class="math inline">\(\{0,1/2,1\}\)</span>. Para una sucesión con imagen finita, cada límite de subsucesión pertenece a esa imagen: si <span class="math inline">\(x\)</span> quedara fuera, la mínima distancia a sus finitos valores sería positiva e impediría convergencia. Los valores periódicos sí son destinos mediante selecciones de una clase de índices. Así las fronteras delimitan, pero no describen toda la estructura interna.</p>
+<p><strong>La frontera del contrato.</strong> Para <span class="math inline">\(a_n=n\)</span>, cada cola tiene ínfimo <span class="math inline">\(N\)</span>, pero carece de supremo real. Además la envolvente inferior <span class="math inline">\(N\)</span> no converge a un real. Para <span class="math inline">\(a_n=(-1)^n(n+1)\)</span>, cada cola carece de ambos extremos reales, pues incluye valores positivos y negativos sin cota. La definición real finita de este capítulo no se aplica a esos ejemplos. C06 permite describir escape hacia infinito en su sentido ordinario; una teoría de límites extremos extendidos exigiría declarar otro espacio de valores y otras reglas, y no se introduce aquí de forma tácita.</p>
+<p>La ruta completa ha sido cola, extremos reales de cola, dos envolventes monótonas y límites de esas envolventes. Volvimos después a los términos para construir destinos y medir oscilación. Quedan autorizadas las caracterizaciones, el criterio de igualdad, las invariancias y las reglas con sus hipótesis. Una muestra finita ayuda a ver esa estructura; las pruebas que controlan cualquier corte son las que la sostienen.</p>
+<section id="antes-de-seguir-7" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-7">Antes de seguir</h3>
+<p><span id="MA-MIC-ANM-01-009-057"></span></p>
+<ol type="1">
+<li>¿Qué extremos tiene la sucesión que vale uno en potencias de dos y cero en los demás índices?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-058"></span></p>
+<ol start="2" type="1">
+<li>¿La separación creciente entre picos elimina su efecto sobre <span class="math inline">\(\beta\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-059"></span></p>
+<ol start="3" type="1">
+<li>¿Igualdad de ambos extremos entre dos sucesiones significa igualdad de funciones?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-060"></span></p>
+<ol start="4" type="1">
+<li>¿Dos sucesiones con extremos cero y uno deben tener el mismo conjunto de destinos?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-061"></span></p>
+<ol start="5" type="1">
+<li>¿Por qué una sucesión con imagen finita no puede tener un destino fuera de esa imagen?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-062"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué no se aplica la definición real finita de <span class="math inline">\(\beta\)</span> a <span class="math inline">\(a_n=n\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-063"></span></p>
+<ol start="7" type="1">
+<li>¿Qué impide que los ínfimos de cola de <span class="math inline">\(a_n=n\)</span> produzcan un <span class="math inline">\(\alpha\)</span> real?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-009-064"></span></p>
+<ol start="8" type="1">
+<li>Escribe en orden los cuatro objetos de la construcción central.</li>
+</ol>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html">Capítulo 9</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-microcontroles.html">Soluciones de microcontroles</a></p>
+<p><a href="analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html">← Capítulo 8</a> · <a href="analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html">Capítulo 10 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

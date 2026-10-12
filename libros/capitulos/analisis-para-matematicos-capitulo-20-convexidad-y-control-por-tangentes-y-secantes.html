@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 20 — Convexidad y control por tangentes y secantes – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#un-segmento-impone-un-orden" id="toc-un-segmento-impone-un-orden" class="nav-link active" data-scroll-target="#un-segmento-impone-un-orden">20.1. Un segmento impone un orden</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles" id="toc-microcontroles" class="nav-link" data-scroll-target="#microcontroles">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#tres-pendientes-y-una-rigidez" id="toc-tres-pendientes-y-una-rigidez" class="nav-link" data-scroll-target="#tres-pendientes-y-una-rigidez">20.2. Tres pendientes y una rigidez</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-1" id="toc-microcontroles-1" class="nav-link" data-scroll-target="#microcontroles-1">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#la-convexidad-fabrica-continuidad" id="toc-la-convexidad-fabrica-continuidad" class="nav-link" data-scroll-target="#la-convexidad-fabrica-continuidad">20.3. La convexidad fabrica continuidad</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-2" id="toc-microcontroles-2" class="nav-link" data-scroll-target="#microcontroles-2">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#rectas-que-sostienen-y-una-envolvente" id="toc-rectas-que-sostienen-y-una-envolvente" class="nav-link" data-scroll-target="#rectas-que-sostienen-y-una-envolvente">20.4. Rectas que sostienen y una envolvente</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-3" id="toc-microcontroles-3" class="nav-link" data-scroll-target="#microcontroles-3">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#derivadas-ordenadas-curvas-convexas" id="toc-derivadas-ordenadas-curvas-convexas" class="nav-link" data-scroll-target="#derivadas-ordenadas-curvas-convexas">20.5. Derivadas ordenadas, curvas convexas</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-4" id="toc-microcontroles-4" class="nav-link" data-scroll-target="#microcontroles-4">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#la-segunda-derivada-y-sus-límites" id="toc-la-segunda-derivada-y-sus-límites" class="nav-link" data-scroll-target="#la-segunda-derivada-y-sus-límites">20.6. La segunda derivada y sus límites</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-5" id="toc-microcontroles-5" class="nav-link" data-scroll-target="#microcontroles-5">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#jensen-combinar-sin-perder-el-control" id="toc-jensen-combinar-sin-perder-el-control" class="nav-link" data-scroll-target="#jensen-combinar-sin-perder-el-control">20.7. Jensen: combinar sin perder el control</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-6" id="toc-microcontroles-6" class="nav-link" data-scroll-target="#microcontroles-6">Microcontroles</a></li>
+  </ul></li>
+  <li><a href="#bandas-cuadráticas-y-mínimos-certificados" id="toc-bandas-cuadráticas-y-mínimos-certificados" class="nav-link" data-scroll-target="#bandas-cuadráticas-y-mínimos-certificados">20.8. Bandas cuadráticas y mínimos certificados</a>
+  <ul class="collapse">
+  <li><a href="#microcontroles-7" id="toc-microcontroles-7" class="nav-link" data-scroll-target="#microcontroles-7">Microcontroles</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 20 — Convexidad y control por tangentes y secantes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes.html">Capítulo 20</a> · <a href="analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>Una cuerda compara tres salidas antes de que exista una derivada. Partiendo de esa comparación construiremos continuidad interior, pendientes laterales y rectas de soporte. Después conectaremos estas herramientas con el orden de la primera derivada y el signo de la segunda. Las desigualdades finitas y los certificados de error serán consecuencias demostradas, con sus hipótesis y límites.</p>
+<p>C18 aporta derivadas y sus reglas; C19 transporta pendientes por Lagrange, signo y constancia. Completitud para supremos, continuidad y raíces son interfaces heredadas de C03/C10/C14. C16 garantiza mínimos sólo cuando se añade continuidad sobre compacto. No se usa Taylor, integración ni nuevas reglas para potencias reales generales. Convexidad no supone derivabilidad o continuidad de borde; las extensiones al borde se justifican por separado.</p>
+<section id="un-segmento-impone-un-orden" class="level2">
+<h2 class="anchored" data-anchor-id="un-segmento-impone-un-orden">20.1. Un segmento impone un orden</h2>
+<p><span id="MA-SEC-ANM-01-020-001"></span></p>
+<p>¿Qué significa que una curva quede por debajo de las cuerdas que unen sus puntos? Antes de hablar de derivadas, fijemos dos entradas <span class="math inline">\(a,b\)</span> de un intervalo <span class="math inline">\(I\)</span> y un peso <span class="math inline">\(t\in[0,1]\)</span>. La entrada intermedia es <span class="math inline">\(z=(1-t)a+tb\)</span>; el carácter intervalar garantiza que pertenece al dominio. La altura interpolada es <span class="math inline">\((1-t)f(a)+tf(b)\)</span>. La comparación enfrenta dos procedimientos distintos: evaluar después de combinar entradas o combinar después de evaluar.</p>
+<p>Una función real finita <span class="math inline">\(f:I\to\mathbb R\)</span> es <strong>convexa</strong> si, para todo <span class="math inline">\(a,b\in I\)</span> y todo <span class="math inline">\(t\in[0,1]\)</span>,</p>
+<p><span class="math display">\[f((1-t)a+tb)\le(1-t)f(a)+tf(b).\]</span></p>
+<p>Es <strong>estrictamente convexa</strong> si la desigualdad es estricta cuando <span class="math inline">\(a\ne b\)</span> y <span class="math inline">\(0&lt;t&lt;1\)</span>. Las exclusiones son necesarias: si se repite la entrada o un peso es cero, ambos procedimientos coinciden. <strong>Cóncava</strong> significa la desigualdad opuesta; equivale a que <span class="math inline">\(-f\)</span> sea convexa. Estrictamente cóncava se define de la misma forma. No añadimos continuidad o derivabilidad a estas definiciones. En un singleton la condición estricta es vacía; los teoremas diferenciales siguientes trabajarán sobre intervalos abiertos no vacíos.</p>
+<p>Para el cuadrado no necesitamos un dibujo ni una segunda derivada. Una expansión da</p>
+<p><span class="math display">\[
+(1-t)a^2+tb^2-((1-t)a+tb)^2=t(1-t)(b-a)^2.
+\]</span></p>
+<p>Todos los factores son no negativos y el producto es positivo bajo las condiciones estrictas. Así <span class="math inline">\(x^2\)</span> es estrictamente convexa sobre <span class="math inline">\(\mathbb R\)</span>. Una recta <span class="math inline">\(A+Bx\)</span> produce diferencia cero: es convexa y cóncava, pero no estrictamente convexa en ningún intervalo con dos entradas. Añadir una recta a una función conserva exactamente sus diferencias de convexidad.</p>
+<p>El valor absoluto también es convexo. La desigualdad triangular y la homogeneidad para pesos no negativos dan</p>
+<p><span class="math display">\[|(1-t)a+tb|\le(1-t)|a|+t|b|.\]</span></p>
+<p>No es estrictamente convexo: dos entradas positivas distintas quedan en un mismo tramo recto. Además no es derivable en cero, como muestra C18. La convexidad contiene curvas con esquinas y por ello no puede definirse exigiendo tangentes.</p>
+<p>Las combinaciones <span class="math inline">\(\alpha f+\beta g\)</span> de funciones convexas son convexas para <span class="math inline">\(\alpha,\beta\ge0\)</span>: multiplicamos sus dos desigualdades por pesos no negativos y sumamos. Un coeficiente negativo puede invertir el orden; no se omite esta condición. La restricción a un subintervalo conserva la propiedad porque conserva todas sus combinaciones. La orientación del orden, no la impresión de que una curva «sube», define convexidad: <span class="math inline">\(x^2\)</span> decrece a la izquierda de cero y sigue siendo convexa.</p>
+<div id="fig-anm-c20-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En el cuadrado, entre −1 y2, la cuerda es z+2. Para z=−1+3t su diferencia con z² es9t(1−t), positiva para0<t<1 y nula en bordes. La identidad prueba convexidad estricta; el muestreo sólo la representa.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c20-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C20/C20-F01.svg" class="img-fluid figure-img" alt="En el cuadrado, entre −1 y2, la cuerda es z+2. Para z=−1+3t su diferencia con z² es9t(1−t), positiva para0<t<1 y nula en bordes. La identidad prueba convexidad estricta; el muestreo sólo la representa.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c20-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: En el cuadrado, entre −1 y2, la cuerda es z+2. Para z=−1+3t su diferencia con z² es9t(1−t), positiva para0&lt;t&lt;1 y nula en bordes. La identidad prueba convexidad estricta; el muestreo sólo la representa.
+</figcaption>
+</figure>
+</div>
+<p>La figura representa la diferencia algebraica ya calculada. Una colección finita de cuerdas no certifica una condición que cuantifica sobre todas las entradas y todos los pesos.</p>
+<section id="microcontroles" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-020-001"></span></p>
+<ol type="1">
+<li>¿Qué debe contener el dominio para comparar dos entradas por convexidad?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-002"></span></p>
+<ol start="2" type="1">
+<li>¿Qué procedimientos compara la desigualdad de convexidad?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-003"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué se excluyen pesos extremos y entradas iguales al exigir convexidad estricta?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-004"></span></p>
+<ol start="4" type="1">
+<li>¿Qué diferencia de convexidad tiene el cuadrado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-005"></span></p>
+<ol start="5" type="1">
+<li>¿Puede una función ser convexa y cóncava?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-006"></span></p>
+<ol start="6" type="1">
+<li>¿El valor absoluto es estrictamente convexo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-007"></span></p>
+<ol start="7" type="1">
+<li>¿La convexidad exige derivabilidad?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-008"></span></p>
+<ol start="8" type="1">
+<li>¿Qué signo permite sumar desigualdades de convexidad con coeficientes?</li>
+</ol>
+</section>
+</section>
+<section id="tres-pendientes-y-una-rigidez" class="level2">
+<h2 class="anchored" data-anchor-id="tres-pendientes-y-una-rigidez">20.2. Tres pendientes y una rigidez</h2>
+<p><span id="MA-SEC-ANM-01-020-002"></span></p>
+<p>La definición puede convertirse en una regla de orden para tres secantes. Si <span class="math inline">\(u&lt;v&lt;w\)</span> pertenecen a <span class="math inline">\(I\)</span>, escribimos</p>
+<p><span class="math display">\[S(u,v)=\frac{f(v)-f(u)}{v-u},\qquad
+v=\frac{w-v}{w-u}u+\frac{v-u}{w-u}w.\]</span></p>
+<p>Los denominadores son positivos. Aplicar convexidad en <span class="math inline">\(v\)</span> y multiplicar por <span class="math inline">\(w-u\)</span> produce</p>
+<p><span class="math display">\[(w-u)f(v)\le(w-v)f(u)+(v-u)f(w).\]</span></p>
+<p>Restar los términos correspondientes y dividir por productos positivos da</p>
+<p><span class="math display">\[S(u,v)\le S(u,w)\le S(v,w).\]</span></p>
+<p>También <span class="math inline">\(S(u,w)\)</span> es la media ponderada de <span class="math inline">\(S(u,v)\)</span> y <span class="math inline">\(S(v,w)\)</span>, con pesos <span class="math inline">\((v-u)/(w-u)\)</span> y <span class="math inline">\((w-v)/(w-u)\)</span>. Por ello las dos desigualdades anteriores equivalen a <span class="math inline">\(S(u,v)\le S(v,w)\)</span>. En sentido inverso, esta última desigualdad, válida para todo triple ordenado, se reorganiza en la desigualdad de convexidad en una entrada interior. Las entradas coincidentes y los pesos extremos dan igualdad directamente. Hemos probado la equivalencia sin derivadas.</p>
+<p>Con convexidad estricta, para cada triple distinto ambas desigualdades son estrictas. El mismo álgebra prueba la recíproca. Para el cuadrado, <span class="math inline">\(S(u,v)=u+v\)</span>; en <span class="math inline">\(0&lt;1&lt;3\)</span> las pendientes son <span class="math inline">\(1,3,4\)</span>. La secante larga no tiene por qué coincidir con la de un tramo pequeño.</p>
+<p>La igualdad puede ser más informativa que una cota. Supongamos que <span class="math inline">\(f\)</span> es convexa sobre <span class="math inline">\([a,b]\)</span>, <span class="math inline">\(a&lt;b\)</span>, y que en algún <span class="math inline">\(z\in(a,b)\)</span> coincide con la recta de la cuerda <span class="math inline">\(\ell\)</span>. Definamos <span class="math inline">\(h=\ell-f\)</span>. Convexidad de <span class="math inline">\(f\)</span> equivale a concavidad de <span class="math inline">\(h\)</span>; además <span class="math inline">\(h\ge0\)</span> en el segmento y <span class="math inline">\(h(a)=h(z)=h(b)=0\)</span>.</p>
+<p>Si <span class="math inline">\(a&lt;x&lt;z\)</span>, expresamos <span class="math inline">\(z\)</span> como combinación con pesos positivos de <span class="math inline">\(x\)</span> y <span class="math inline">\(b\)</span>. Concavidad da <span class="math inline">\(0=h(z)\ge\theta h(x)+(1-\theta)h(b)=\theta h(x)\)</span>, donde <span class="math inline">\(\theta&gt;0\)</span>. Así <span class="math inline">\(h(x)=0\)</span>. Para <span class="math inline">\(z&lt;x&lt;b\)</span> expresamos <span class="math inline">\(z\)</span> como combinación de <span class="math inline">\(a\)</span> y <span class="math inline">\(x\)</span> y obtenemos el mismo resultado. Los bordes y <span class="math inline">\(z\)</span> ya tenían valor cero. Entonces <span class="math inline">\(f=\ell\)</span> en todo <span class="math inline">\([a,b]\)</span>.</p>
+<p>Este argumento demuestra la <strong>rigidez de una cuerda</strong>: una igualdad interior en una función convexa obliga a un tramo afín completo. En consecuencia, una función convexa es estrictamente convexa exactamente cuando no es afín en ningún subsegmento no degenerado. No se requiere segunda derivada, y un tramo recto puede aparecer sin que toda la función sea una recta.</p>
+<div id="fig-anm-c20-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="El cuadrado tiene pendientes1,3,4 para las cuerdas de0,1,3. La secante larga es una media ponderada de las cortas. En max(0,x), el contacto interior con la cuerda de1 a3 fuerza afinidad en ese segmento; no obliga a una recta en todo el dominio.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c20-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C20/C20-F02.svg" class="img-fluid figure-img" alt="El cuadrado tiene pendientes1,3,4 para las cuerdas de0,1,3. La secante larga es una media ponderada de las cortas. En max(0,x), el contacto interior con la cuerda de1 a3 fuerza afinidad en ese segmento; no obliga a una recta en todo el dominio.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c20-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: El cuadrado tiene pendientes1,3,4 para las cuerdas de0,1,3. La secante larga es una media ponderada de las cortas. En max(0,x), el contacto interior con la cuerda de1 a3 fuerza afinidad en ese segmento; no obliga a una recta en todo el dominio.
+</figcaption>
+</figure>
+</div>
+<p>Para controlar pendientes con un extremo fijo se reutiliza el mismo triple. <span class="math inline">\(S(c,x)\)</span> no decrece cuando <span class="math inline">\(x&gt;c\)</span> aumenta; <span class="math inline">\(S(x,c)\)</span> no decrece cuando <span class="math inline">\(x&lt;c\)</span> aumenta. Estas dos familias tienen sentidos de aproximación distintos al llegar a <span class="math inline">\(c\)</span>, que serán decisivos en la sección siguiente.</p>
+<section id="microcontroles-1" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-1">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-020-009"></span></p>
+<ol type="1">
+<li>¿Qué coeficiente expresa <span class="math inline">\(v\)</span> entre <span class="math inline">\(u&lt;v&lt;w\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-010"></span></p>
+<ol start="2" type="1">
+<li>¿Cuál es el orden de las tres pendientes para una función convexa?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-011"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué la secante larga queda entre las cortas?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-012"></span></p>
+<ol start="4" type="1">
+<li>¿Basta el orden <span class="math inline">\(S(u,v)\le S(v,w)\)</span> para todos los triples?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-013"></span></p>
+<ol start="5" type="1">
+<li>¿Qué ocurre en el orden de pendientes si la convexidad es estricta?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-014"></span></p>
+<ol start="6" type="1">
+<li>¿Qué fuerza una igualdad interior con una cuerda de una función convexa?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-015"></span></p>
+<ol start="7" type="1">
+<li>¿Cómo se excluye un punto elevado de <span class="math inline">\(h=\ell-f\)</span> al tener <span class="math inline">\(h(z)=0\)</span> interior?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-016"></span></p>
+<ol start="8" type="1">
+<li>¿Cómo se caracteriza convexidad estricta sin derivadas?</li>
+</ol>
+</section>
+</section>
+<section id="la-convexidad-fabrica-continuidad" class="level2">
+<h2 class="anchored" data-anchor-id="la-convexidad-fabrica-continuidad">20.3. La convexidad fabrica continuidad</h2>
+<p><span id="MA-SEC-ANM-01-020-003"></span></p>
+<p>¿Puede la desigualdad entre tres pendientes construir por sí sola un radio de continuidad? Sea <span class="math inline">\(f\)</span> convexa y finita sobre un intervalo <span class="math inline">\(I\)</span>. Fijemos un segmento <span class="math inline">\([c,d]\)</span> en su interior, con <span class="math inline">\(c&lt;d\)</span>, y elijamos entradas <span class="math inline">\(a&lt;c&lt;d&lt;b\)</span> de <span class="math inline">\(I\)</span>. Para <span class="math inline">\(c\le x&lt;y\le d\)</span>, las comparaciones de la sección anterior dan</p>
+<p><span class="math display">\[S(a,c)\le S(a,x)\le S(x,y)\le S(y,b)\le S(d,b).\]</span></p>
+<p>Cuando <span class="math inline">\(x=c\)</span> o <span class="math inline">\(y=d\)</span>, una comparación es simplemente igualdad; no se divide por cero. Los números exteriores son finitos porque los valores de <span class="math inline">\(f\)</span> lo son y los denominadores son positivos. Definamos</p>
+<p><span class="math display">\[L=\max\{|S(a,c)|,\ |S(d,b)|\}.\]</span></p>
+<p>La banda de pendientes implica <span class="math inline">\(|f(y)-f(x)|\le L|y-x|\)</span>. Para entradas iguales el incremento es cero, y para entradas invertidas usamos simetría. Así <span class="math inline">\(f\)</span> es Lipschitz sobre todo segmento que tenga un margen interior a ambos lados. Si <span class="math inline">\(L&gt;0\)</span>, <span class="math inline">\(\delta=\varepsilon/L\)</span> prueba uniformidad en ese segmento; si <span class="math inline">\(L=0\)</span>, la función es constante allí y cualquier radio sirve. Al colocar un centro interior dentro de uno de estos segmentos se obtiene continuidad en ese centro. No hemos usado ninguna derivada ni un teorema que ya suponga continuidad.</p>
+<p>La conclusión es local en el interior. En <span class="math inline">\([0,1]\)</span>, la función <span class="math inline">\(f(0)=1\)</span> y <span class="math inline">\(f(x)=0\)</span> para <span class="math inline">\(x&gt;0\)</span> es convexa: una combinación interior positiva tiene salida cero y la altura combinada es no negativa; si la entrada combinada es cero, las entradas con peso positivo son cero y se obtiene igualdad. Sin embargo no es continua en el borde cero. La convexidad finita no autoriza extender automáticamente la continuidad a los extremos incluidos.</p>
+<p>Hay también pendientes laterales bien determinadas. Fijemos ahora <span class="math inline">\(c\in\operatorname{int}I\)</span> y consideremos</p>
+<p><span class="math display">\[A=\sup_{x&lt;c,\ x\in I}S(x,c),\qquad
+B=\inf_{y&gt;c,\ y\in I}S(c,y).\]</span></p>
+<p>Las familias no son vacías. Una secante fija de la derecha acota superiormente todas las de la izquierda, y una secante fija de la izquierda acota inferiormente todas las de la derecha. Valores de cada familia aportan la otra cota necesaria, de modo que <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son reales finitos. Cada secante izquierda es menor o igual que cada secante derecha: tomando supremo e ínfimo resulta <span class="math inline">\(A\le B\)</span>.</p>
+<p>Para identificar el límite izquierdo, dado <span class="math inline">\(\varepsilon&gt;0\)</span> el supremo proporciona un <span class="math inline">\(x_0&lt;c\)</span> con <span class="math inline">\(A-\varepsilon&lt;S(x_0,c)\le A\)</span>. Si <span class="math inline">\(x_0&lt;x&lt;c\)</span>, la monotonía con extremo fijo encierra <span class="math inline">\(S(x,c)\)</span> entre esos mismos valores. El radio <span class="math inline">\(c-x_0\)</span> prueba el límite <span class="math inline">\(A\)</span> cuando <span class="math inline">\(x\uparrow c\)</span>. A la derecha, el ínfimo proporciona <span class="math inline">\(y_0&gt;c\)</span> con <span class="math inline">\(B\le S(c,y_0)&lt;B+\varepsilon\)</span>; para <span class="math inline">\(c&lt;y&lt;y_0\)</span> la secante queda entre <span class="math inline">\(B\)</span> y esta cota. El radio <span class="math inline">\(y_0-c\)</span> prueba el límite <span class="math inline">\(B\)</span>.</p>
+<p>Por definición de cociente incremental, <span class="math inline">\(f'_-(c)=A\)</span> y <span class="math inline">\(f'_+(c)=B\)</span>. La derivada bilateral existe exactamente cuando <span class="math inline">\(A=B\)</span>: si coinciden, el mínimo de los dos radios sirve a ambos lados; si existe una derivada, sus dos restricciones tienen el mismo límite. Para <span class="math inline">\(|x|\)</span> en cero se obtienen <span class="math inline">\(A=-1\)</span> y <span class="math inline">\(B=1\)</span>. La continuidad fabricada por convexidad admite una esquina.</p>
+<div id="fig-anm-c20-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Para |x|, anclas−1 y1 encierran las secantes de[−1/2,1/2] entre−1 y1, dando L=1. Al centro0, las secantes izquierdas valen−1 y las derechas1; los círculos abiertos excluyen el cociente de incremento nulo. La función es continua y Lipschitz, pero no derivable en cero.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c20-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C20/C20-F03.svg" class="img-fluid figure-img" alt="Para |x|, anclas−1 y1 encierran las secantes de[−1/2,1/2] entre−1 y1, dando L=1. Al centro0, las secantes izquierdas valen−1 y las derechas1; los círculos abiertos excluyen el cociente de incremento nulo. La función es continua y Lipschitz, pero no derivable en cero.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c20-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Para |x|, anclas−1 y1 encierran las secantes de[−1/2,1/2] entre−1 y1, dando L=1. Al centro0, las secantes izquierdas valen−1 y las derechas1; los círculos abiertos excluyen el cociente de incremento nulo. La función es continua y Lipschitz, pero no derivable en cero.
+</figcaption>
+</figure>
+</div>
+<p>Estas derivadas laterales finitas se afirman en centros interiores. No se ha probado finitud de pendientes laterales en bordes ni una constante Lipschitz para todo un intervalo abierto no acotado.</p>
+<section id="microcontroles-2" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-2">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-020-017"></span></p>
+<ol type="1">
+<li>¿Qué margen se necesita para una constante Lipschitz en <span class="math inline">\([c,d]\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-018"></span></p>
+<ol start="2" type="1">
+<li>¿Qué constante construye la banda de secantes?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-019"></span></p>
+<ol start="3" type="1">
+<li>¿Qué radio sirve cuando <span class="math inline">\(L&gt;0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-020"></span></p>
+<ol start="4" type="1">
+<li>¿Qué hacer si <span class="math inline">\(L=0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-021"></span></p>
+<ol start="5" type="1">
+<li>¿La convexidad finita garantiza continuidad en un borde incluido?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-022"></span></p>
+<ol start="6" type="1">
+<li>¿Qué límites laterales de pendientes existen en un centro interior?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-023"></span></p>
+<ol start="7" type="1">
+<li>¿Qué dato del supremo construye el radio del límite izquierdo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-024"></span></p>
+<ol start="8" type="1">
+<li>¿Cuándo existe la derivada bilateral de una función convexa en un centro interior?</li>
+</ol>
+</section>
+</section>
+<section id="rectas-que-sostienen-y-una-envolvente" class="level2">
+<h2 class="anchored" data-anchor-id="rectas-que-sostienen-y-una-envolvente">20.4. Rectas que sostienen y una envolvente</h2>
+<p><span id="MA-SEC-ANM-01-020-004"></span></p>
+<p>Una cuerda domina la curva desde arriba entre sus extremos. Busquemos ahora rectas que queden debajo en todo el dominio. Con <span class="math inline">\(c\)</span> interior y <span class="math inline">\(A=f'_-(c)\le B=f'_+(c)\)</span> definidos antes, tomemos cualquier <span class="math inline">\(p\in[A,B]\)</span> y la recta</p>
+<p><span class="math display">\[\ell_{c,p}(x)=f(c)+p(x-c).\]</span></p>
+<p>Si <span class="math inline">\(x&gt;c\)</span>, tenemos <span class="math inline">\(S(c,x)\ge B\ge p\)</span> y por ello <span class="math inline">\(f(x)-f(c)\ge p(x-c)\)</span>. Si <span class="math inline">\(x&lt;c\)</span>, <span class="math inline">\(S(x,c)\le A\le p\)</span>; al multiplicar por <span class="math inline">\(x-c&lt;0\)</span>, el orden se invierte y se obtiene la misma desigualdad. En <span class="math inline">\(x=c\)</span> hay igualdad. Por tanto <span class="math inline">\(\ell_{c,p}(x)\le f(x)\)</span> para todo <span class="math inline">\(x\in I\)</span>.</p>
+<p>La recíproca caracteriza todas las pendientes de soporte en ese centro. Si una recta que pasa por <span class="math inline">\((c,f(c))\)</span> queda debajo para todas las entradas, a la derecha obliga a <span class="math inline">\(p\le S(c,x)\)</span> y por tanto <span class="math inline">\(p\le B\)</span>. A la izquierda obliga a <span class="math inline">\(S(x,c)\le p\)</span>, luego <span class="math inline">\(A\le p\)</span>. El conjunto de pendientes permitidas es exactamente el intervalo cerrado <span class="math inline">\([A,B]\)</span>, sin asumir que haya una tangente única.</p>
+<p>Cuando <span class="math inline">\(f\)</span> es derivable en <span class="math inline">\(c\)</span>, <span class="math inline">\(A=B=f'(c)\)</span> y la única recta de soporte que pasa por ese punto es la tangente:</p>
+<p><span class="math display">\[f(x)\ge f(c)+f'(c)(x-c).\]</span></p>
+<p>En el valor absoluto, en cero hay toda una familia <span class="math inline">\(px\)</span>, <span class="math inline">\(-1\le p\le1\)</span>; las rectas extremas <span class="math inline">\(x\)</span> y <span class="math inline">\(-x\)</span> sostienen sus dos tramos. Para el cuadrado, la tangente en <span class="math inline">\(c\)</span> es <span class="math inline">\(2cx-c^2\)</span> y la diferencia <span class="math inline">\(x^2-(2cx-c^2)=(x-c)^2\)</span> exhibe el soporte. El soporte no se restringe a un radio pequeño: controla todas las entradas del mismo intervalo.</p>
+<p>Una función convexa finita sobre un intervalo abierto no vacío es la <strong>envolvente superior</strong> de sus rectas de soporte:</p>
+<p><span class="math display">\[f(x)=\sup_{c\in I,\ p\in[f'_-(c),f'_+(c)]}\ell_{c,p}(x).\]</span></p>
+<p>Para un <span class="math inline">\(x\)</span> fijo, todas las rectas están debajo de <span class="math inline">\(f(x)\)</span> y la familia no es vacía. La recta construida con <span class="math inline">\(c=x\)</span> y cualquier pendiente del intervalo permitido alcanza exactamente <span class="math inline">\(f(x)\)</span>. Se justifican así existencia del supremo e igualdad. Esta formulación en un intervalo abierto evita atribuir un soporte finito a un borde donde puede no existir.</p>
+<p>En sentido inverso, sea una familia no vacía de rectas <span class="math inline">\(\ell_j\)</span> cuyo supremo <span class="math inline">\(F(x)\)</span> sea real finito para todas las entradas de un intervalo. Cada recta satisface <span class="math inline">\(\ell_j((1-t)a+tb)=(1-t)\ell_j(a)+t\ell_j(b)\le(1-t)F(a)+tF(b)\)</span>. Tomar el supremo da convexidad de <span class="math inline">\(F\)</span>. Ni siquiera se requiere que alguna recta alcance el supremo. Por ejemplo <span class="math inline">\(|x|=\max\{x,-x\}\)</span>.</p>
+<div id="fig-anm-c20-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Las tangentes2cx−c² sostienen x² porque su diferencia es(x−c)². Se representan tres; la envolvente completa requiere todos los centros y alcanza x² al tomar c=x. El valor absoluto es la envolvente de x y−x, y en cero admite todo soporte px con−1≤p≤1.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c20-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C20/C20-F04.svg" class="img-fluid figure-img" alt="Las tangentes2cx−c² sostienen x² porque su diferencia es(x−c)². Se representan tres; la envolvente completa requiere todos los centros y alcanza x² al tomar c=x. El valor absoluto es la envolvente de x y−x, y en cero admite todo soporte px con−1≤p≤1.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c20-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Las tangentes2cx−c² sostienen x² porque su diferencia es(x−c)². Se representan tres; la envolvente completa requiere todos los centros y alcanza x² al tomar c=x. El valor absoluto es la envolvente de x y−x, y en cero admite todo soporte px con−1≤p≤1.
+</figcaption>
+</figure>
+</div>
+<p>Dos envolventes diferentes participan en el control: las cuerdas sobre cada segmento por arriba y las rectas de soporte por abajo. Confundir sus direcciones cambia las desigualdades. Si <span class="math inline">\(f\)</span> es estrictamente convexa y derivable, la tangente toca sólo en su centro: una segunda igualdad forzaría un tramo afín, por convexidad y la rigidez de la cuerda aplicada a la diferencia respecto del soporte.</p>
+<section id="microcontroles-3" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-3">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-020-025"></span></p>
+<ol type="1">
+<li>¿Qué pendientes sostienen una función convexa desde un centro interior?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-026"></span></p>
+<ol start="2" type="1">
+<li>¿Qué cambia al multiplicar una comparación de pendientes por <span class="math inline">\(x-c&lt;0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-027"></span></p>
+<ol start="3" type="1">
+<li>¿Qué pendiente de soporte queda si la función es derivable?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-028"></span></p>
+<ol start="4" type="1">
+<li>¿Qué familia de rectas sostiene <span class="math inline">\(|x|\)</span> en cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-029"></span></p>
+<ol start="5" type="1">
+<li>¿Qué identidad verifica el soporte de la tangente del cuadrado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-030"></span></p>
+<ol start="6" type="1">
+<li>¿Por qué el supremo de todos los soportes recupera <span class="math inline">\(f(x)\)</span> en un intervalo abierto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-031"></span></p>
+<ol start="7" type="1">
+<li>¿Debe alcanzarse el supremo de una familia de rectas para que sea convexo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-032"></span></p>
+<ol start="8" type="1">
+<li>¿En qué dirección controla una cuerda y en cuál un soporte?</li>
+</ol>
+</section>
+</section>
+<section id="derivadas-ordenadas-curvas-convexas" class="level2">
+<h2 class="anchored" data-anchor-id="derivadas-ordenadas-curvas-convexas">20.5. Derivadas ordenadas, curvas convexas</h2>
+<p><span id="MA-SEC-ANM-01-020-005"></span></p>
+<p>Sea <span class="math inline">\(I\)</span> un intervalo abierto no vacío y <span class="math inline">\(f\)</span> derivable en todos sus puntos. La convexidad equivale a que <span class="math inline">\(f'\)</span> sea no decreciente. Las dos implicaciones usan herramientas diferentes.</p>
+<p>Si <span class="math inline">\(f\)</span> es convexa, para <span class="math inline">\(x&lt;y\)</span> las secantes al acercarse a sus extremos dan</p>
+<p><span class="math display">\[f'(x)\le S(x,y)\le f'(y).\]</span></p>
+<p>La primera cota se obtiene de las secantes derechas con centro <span class="math inline">\(x\)</span>, y la segunda de las izquierdas con centro <span class="math inline">\(y\)</span>, usando los límites de la sección20.3. Por transitividad <span class="math inline">\(f'(x)\le f'(y)\)</span> para cualquier par ordenado. No se supone continuidad de <span class="math inline">\(f'\)</span>.</p>
+<p>Supongamos en sentido inverso que <span class="math inline">\(f'\)</span> es no decreciente. Para <span class="math inline">\(u&lt;v&lt;w\)</span> de <span class="math inline">\(I\)</span>, cada subsegmento está en el dominio; la derivabilidad implica continuidad en sus bordes por C18. Lagrange de C19 proporciona <span class="math inline">\(c\in(u,v)\)</span> y <span class="math inline">\(d\in(v,w)\)</span> con <span class="math inline">\(S(u,v)=f'(c)\)</span> y <span class="math inline">\(S(v,w)=f'(d)\)</span>. Como <span class="math inline">\(c&lt;d\)</span>, el orden de <span class="math inline">\(f'\)</span> implica <span class="math inline">\(S(u,v)\le S(v,w)\)</span>. La equivalencia algebraica de20.2 da convexidad. Los puntos son dos testigos distintos de valor medio, y su ubicación en segmentos vecinos permite compararlos; no se afirma que coincidan.</p>
+<p>Hay otra equivalencia útil: <span class="math inline">\(f\)</span> es convexa si y sólo si todas sus tangentes son soportes globales. Una dirección fue demostrada en20.4. Para la otra, fijemos <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(z=(1-t)a+tb\)</span>, con <span class="math inline">\(0&lt;t&lt;1\)</span>. Aplicamos el soporte en <span class="math inline">\(z\)</span> a las entradas <span class="math inline">\(a,b\)</span>, multiplicamos por <span class="math inline">\(1-t,t\)</span> y sumamos. Los términos con <span class="math inline">\(f'(z)\)</span> se cancelan porque <span class="math inline">\((1-t)(a-z)+t(b-z)=0\)</span>. Resulta <span class="math inline">\((1-t)f(a)+tf(b)\ge f(z)\)</span>. Las combinaciones triviales dan igualdad.</p>
+<p>La versión estricta exige cuidado. Si <span class="math inline">\(f'\)</span> es estrictamente creciente, los dos centros <span class="math inline">\(c&lt;d\)</span> de valor medio producen pendientes estrictamente ordenadas y por20.2 <span class="math inline">\(f\)</span> es estrictamente convexa. Si <span class="math inline">\(f\)</span> es estrictamente convexa, ya sabemos que <span class="math inline">\(f'\)</span> no decrece. Si para algún <span class="math inline">\(x&lt;y\)</span> ocurriera <span class="math inline">\(f'(x)=f'(y)\)</span>, el orden encerraría todas las derivadas entre ambos en el mismo valor <span class="math inline">\(k\)</span>. C19 aplicado a <span class="math inline">\(f(t)-kt\)</span> lo haría constante en <span class="math inline">\([x,y]\)</span>. Ese tramo afín contradice la convexidad estricta. Así <span class="math inline">\(f'\)</span> es estrictamente creciente.</p>
+<p>Una derivada no decreciente no equivale a una función no decreciente. El cuadrado tiene <span class="math inline">\(f'=2x\)</span> estrictamente creciente, pero <span class="math inline">\(f\)</span> decrece en <span class="math inline">\((-\infty,0]\)</span> y crece en <span class="math inline">\([0,\infty)\)</span>. Por otro lado, el cubo es estrictamente creciente y no es convexo en toda la recta: su derivada <span class="math inline">\(3x^2\)</span> no es no decreciente en toda ella. El signo de <span class="math inline">\(f'\)</span> controla la monotonía de <span class="math inline">\(f\)</span>; el orden de <span class="math inline">\(f'\)</span> controla su convexidad.</p>
+<div id="fig-anm-c20-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="El cuadrado tiene derivada2x estrictamente creciente y por ello es estrictamente convexo. El signo negativo de esa derivada a la izquierda de cero hace decrecer f allí; el positivo a la derecha la hace crecer. El orden de pendientes y el orden de salidas son controles diferentes.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c20-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C20/C20-F05.svg" class="img-fluid figure-img" alt="El cuadrado tiene derivada2x estrictamente creciente y por ello es estrictamente convexo. El signo negativo de esa derivada a la izquierda de cero hace decrecer f allí; el positivo a la derecha la hace crecer. El orden de pendientes y el orden de salidas son controles diferentes.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c20-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: El cuadrado tiene derivada2x estrictamente creciente y por ello es estrictamente convexo. El signo negativo de esa derivada a la izquierda de cero hace decrecer f allí; el positivo a la derecha la hace crecer. El orden de pendientes y el orden de salidas son controles diferentes.
+</figcaption>
+</figure>
+</div>
+<p>Sobre <span class="math inline">\([a,b]\)</span>, si <span class="math inline">\(f\)</span> es continua incluyendo los extremos y derivable en <span class="math inline">\((a,b)\)</span>, el orden de la derivada interior basta para convexidad en todo el segmento: la prueba por los dos subsegmentos de Lagrange conserva sus hipótesis incluso cuando <span class="math inline">\(u=a\)</span> o <span class="math inline">\(w=b\)</span>. Las tangentes en centros interiores sostienen también los bordes por paso al límite. Sin continuidad en bordes esta extensión es falsa; <span class="math inline">\(f(0)=-1\)</span> y <span class="math inline">\(f(x)=0\)</span> para <span class="math inline">\(0&lt;x\le1\)</span> tiene derivada interior cero pero viola la cuerda de0 a1.</p>
+<section id="microcontroles-4" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-4">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-020-033"></span></p>
+<ol type="1">
+<li>¿Qué orden tiene <span class="math inline">\(f\prime\)</span> cuando <span class="math inline">\(f\)</span> es convexa y derivable en un intervalo abierto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-034"></span></p>
+<ol start="2" type="1">
+<li>¿Dónde quedan los dos centros de Lagrange usados para probar convexidad?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-035"></span></p>
+<ol start="3" type="1">
+<li>¿Se exige continuidad de <span class="math inline">\(f\prime\)</span> en esa prueba?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-036"></span></p>
+<ol start="4" type="1">
+<li>¿Qué cancela los términos de pendiente en la prueba por soporte en <span class="math inline">\(z\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-037"></span></p>
+<ol start="5" type="1">
+<li>¿Qué implica <span class="math inline">\(f\prime(x)=f\prime(y)\)</span> para <span class="math inline">\(x&lt;y\)</span> si <span class="math inline">\(f\prime\)</span> no decrece?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-038"></span></p>
+<ol start="6" type="1">
+<li>¿La derivada creciente obliga a que la propia función crezca?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-039"></span></p>
+<ol start="7" type="1">
+<li>¿Una función estrictamente creciente es necesariamente convexa?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-040"></span></p>
+<ol start="8" type="1">
+<li>¿Qué hipótesis adicional extiende el criterio a los extremos de <span class="math inline">\([a,b]\)</span>?</li>
+</ol>
+</section>
+</section>
+<section id="la-segunda-derivada-y-sus-límites" class="level2">
+<h2 class="anchored" data-anchor-id="la-segunda-derivada-y-sus-límites">20.6. La segunda derivada y sus límites</h2>
+<p><span id="MA-SEC-ANM-01-020-006"></span></p>
+<p>La segunda derivada es la derivada de la función <span class="math inline">\(f'\)</span> en los centros donde esta nueva derivada existe. No basta con que exista <span class="math inline">\(f'\)</span> en un solo punto. Supongamos que <span class="math inline">\(f\)</span> es dos veces derivable en cada punto de un intervalo abierto <span class="math inline">\(I\)</span>. Entonces</p>
+<p><span class="math display">\[f\text{ es convexa en }I\quad\Longleftrightarrow\quad f''(x)\ge0\text{ para todo }x\in I.\]</span></p>
+<p>Si <span class="math inline">\(f''\ge0\)</span>, C19 aplicado a la función <span class="math inline">\(f'\)</span> la hace no decreciente: esta función es derivable en <span class="math inline">\(I\)</span>, y por ello continua sobre cada segmento interior. La equivalencia de20.5 hace convexa a <span class="math inline">\(f\)</span>. En sentido inverso, si <span class="math inline">\(f\)</span> es convexa, <span class="math inline">\(f'\)</span> no decrece; donde <span class="math inline">\(f'\)</span> es derivable, todos sus cocientes incrementales son no negativos, tanto por incrementos positivos como negativos. Su límite <span class="math inline">\(f''\)</span> también es no negativo. No se ha pedido continuidad de <span class="math inline">\(f''\)</span>.</p>
+<p>Si <span class="math inline">\(f''&gt;0\)</span> en todos los puntos, C19 da crecimiento estricto de <span class="math inline">\(f'\)</span> y por ello convexidad estricta. La recíproca estricta es falsa: <span class="math inline">\(f(x)=x^4\)</span> tiene <span class="math inline">\(f'(x)=4x^3\)</span> estrictamente creciente, así es estrictamente convexa, pero <span class="math inline">\(f''(0)=0\)</span>. El criterio débil <span class="math inline">\(f''\ge0\)</span> caracteriza convexidad; el criterio positivo es una condición suficiente más fuerte para la estricta.</p>
+<p>Aplicar los mismos resultados a <span class="math inline">\(-f\)</span> demuestra concavidad cuando <span class="math inline">\(f''\le0\)</span>, y concavidad estricta si <span class="math inline">\(f''&lt;0\)</span>. En <span class="math inline">\((0,\infty)\)</span>, <span class="math inline">\(f(x)=1/x\)</span> tiene <span class="math inline">\(f'=-1/x^2\)</span> y <span class="math inline">\(f''=2/x^3&gt;0\)</span>: es decreciente y estrictamente convexa. La raíz <span class="math inline">\(g(x)=\sqrt{x}\)</span> tiene <span class="math inline">\(g'=1/(2\sqrt{x})\)</span> y <span class="math inline">\(g''=-1/(4x^{3/2})&lt;0\)</span> sobre <span class="math inline">\((0,\infty)\)</span>, de modo que es estrictamente cóncava allí. Estas fórmulas se derivan con las reglas de C18, cocientes y cadena, sin asumir reglas para potencias reales arbitrarias. Su continuidad en cero permite pasar las desigualdades al segmento que incluye ese borde.</p>
+<p>En un centro <span class="math inline">\(c\)</span> derivable de una función convexa, <span class="math inline">\(f'(c)=0\)</span> garantiza un mínimo global: el soporte horizontal dice <span class="math inline">\(f(x)\ge f(c)\)</span> para todas las entradas. Si la convexidad es estricta, el mínimo es único. Si un mínimo se alcanza en un centro interior derivable, Fermat de C19 da la condición necesaria <span class="math inline">\(f'(c)=0\)</span>. En una frontera no se exige esta igualdad: la identidad en <span class="math inline">\([0,1]\)</span> tiene su mínimo en cero y derivada relativa uno.</p>
+<p>Un signo de segunda derivada en un único centro no es un certificado global. La función <span class="math inline">\(q(x)=x^2-x^4\)</span> satisface <span class="math inline">\(q''(0)=2\)</span>, pero <span class="math inline">\(q''(x)=2-12x^2\)</span> es negativa, por ejemplo, en1; no es convexa en toda la recta. Tampoco <span class="math inline">\(f''(c)=0\)</span> determina un extremo ni un cambio de convexidad: <span class="math inline">\(x^4\)</span> es convexa a ambos lados de cero, mientras <span class="math inline">\(x^3\)</span> es cóncava a la izquierda y convexa a la derecha, y en cero no tiene extremo. Las hipótesis sobre un intervalo no se reemplazan por una muestra central.</p>
+<div id="fig-anm-c20-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La derivada4x³ del cuarto poder es estrictamente creciente y prueba convexidad estricta. Su segunda derivada12x² se anula en cero, sin cambio de convexidad. Positividad estricta en todos los centros es suficiente pero no necesaria, y no hay margen uniforme m>0 alrededor del origen.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c20-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C20/C20-F06.svg" class="img-fluid figure-img" alt="La derivada4x³ del cuarto poder es estrictamente creciente y prueba convexidad estricta. Su segunda derivada12x² se anula en cero, sin cambio de convexidad. Positividad estricta en todos los centros es suficiente pero no necesaria, y no hay margen uniforme m>0 alrededor del origen.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c20-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: La derivada4x³ del cuarto poder es estrictamente creciente y prueba convexidad estricta. Su segunda derivada12x² se anula en cero, sin cambio de convexidad. Positividad estricta en todos los centros es suficiente pero no necesaria, y no hay margen uniforme m&gt;0 alrededor del origen.
+</figcaption>
+</figure>
+</div>
+<p>Convexidad tampoco garantiza que el mínimo exista. Sobre <span class="math inline">\((0,1)\)</span>, <span class="math inline">\(x^2\)</span> es estrictamente convexa y tiene ínfimo cero, pero no lo alcanza. C16 proporciona existencia sobre segmentos compactos continuos; cuando se usa, debe nombrarse esa condición adicional.</p>
+<section id="microcontroles-5" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-5">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-020-041"></span></p>
+<ol type="1">
+<li>¿Qué significa que exista <span class="math inline">\(f\prime\prime(c)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-042"></span></p>
+<ol start="2" type="1">
+<li>¿Qué condición caracteriza convexidad cuando <span class="math inline">\(f\)</span> es dos veces derivable en todo un intervalo abierto?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-043"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué puede aplicarse C19 a <span class="math inline">\(f\prime\)</span> sin pedir continuidad de <span class="math inline">\(f\prime\prime\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-044"></span></p>
+<ol start="4" type="1">
+<li>¿Es necesaria <span class="math inline">\(f\prime\prime&gt;0\)</span> en todos los puntos para convexidad estricta?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-045"></span></p>
+<ol start="5" type="1">
+<li>¿Cómo puede <span class="math inline">\(1/x\)</span> ser decreciente y estrictamente convexa en <span class="math inline">\((0,\infty)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-046"></span></p>
+<ol start="6" type="1">
+<li>¿Qué certifica <span class="math inline">\(f\prime(c)=0\)</span> en una función convexa derivable?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-047"></span></p>
+<ol start="7" type="1">
+<li>¿Qué decide por sí solo el valor <span class="math inline">\(f\prime\prime(c)=0\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-048"></span></p>
+<ol start="8" type="1">
+<li>¿La convexidad estricta garantiza un mínimo alcanzado en un intervalo abierto?</li>
+</ol>
+</section>
+</section>
+<section id="jensen-combinar-sin-perder-el-control" class="level2">
+<h2 class="anchored" data-anchor-id="jensen-combinar-sin-perder-el-control">20.7. Jensen: combinar sin perder el control</h2>
+<p><span id="MA-SEC-ANM-01-020-007"></span></p>
+<p>La definición combina dos entradas. ¿Cómo controla una media finita? Si <span class="math inline">\(x_1,\ldots,x_n\)</span> están en <span class="math inline">\(I\)</span>, los pesos <span class="math inline">\(\lambda_i\ge0\)</span> suman1 y <span class="math inline">\(n\ge1\)</span>, entonces</p>
+<p><span class="math display">\[f\left(\sum_{i=1}^n\lambda_i x_i\right)\le\sum_{i=1}^n\lambda_i f(x_i).\]</span></p>
+<p>Esta es la desigualdad finita de Jensen. Antes de evaluar debemos comprobar que la combinación está en <span class="math inline">\(I\)</span>: la misma inducción que sigue construye cada media como combinación de entradas anteriores, y los intervalos conservan estas combinaciones.</p>
+<p>Para <span class="math inline">\(n=1\)</span> hay igualdad. Supongamos probado el caso <span class="math inline">\(n-1\)</span> y pongamos <span class="math inline">\(s=\sum_{i&lt;n}\lambda_i=1-\lambda_n\)</span>. Si <span class="math inline">\(s=0\)</span>, todos los pesos anteriores son cero y sólo queda <span class="math inline">\(x_n\)</span>. Si <span class="math inline">\(\lambda_n=0\)</span>, entonces <span class="math inline">\(s=1\)</span> y aplicamos directamente la hipótesis inductiva. En el caso restante <span class="math inline">\(0&lt;s&lt;1\)</span>, definimos <span class="math inline">\(y=\sum_{i&lt;n}(\lambda_i/s)x_i\)</span>. Los pesos normalizados son no negativos y suman1, luego <span class="math inline">\(y\in I\)</span> y <span class="math inline">\(f(y)\le\sum_{i&lt;n}(\lambda_i/s)f(x_i)\)</span>. Convexidad para <span class="math inline">\(sy+(1-s)x_n\)</span> da <span class="math inline">\(f(\sum_i\lambda_i x_i)\le sf(y)+(1-s)f(x_n)\)</span>; sustituyendo la cota anterior termina el paso. Ninguna división por un peso nulo se ha ocultado.</p>
+<p>Si <span class="math inline">\(f\)</span> es estrictamente convexa, hay igualdad exactamente cuando todas las entradas con peso positivo son iguales. Una dirección es directa. Para la otra descartemos primero pesos cero. Si al menos dos entradas activas difieren, elijamos una con valor mínimo y agrupemos todas las entradas activas con ese mismo valor. Su peso total <span class="math inline">\(\theta\)</span> satisface <span class="math inline">\(0&lt;\theta&lt;1\)</span>; la media <span class="math inline">\(y\)</span> de las restantes es estrictamente mayor que ese mínimo, porque cada una es mayor y sus pesos son positivos. La convexidad estricta entre mínimo e <span class="math inline">\(y\)</span>, seguida de Jensen en cada grupo, hace estricta la desigualdad completa. El argumento usa sólo grupos finitos.</p>
+<p>Para el cuadrado, con <span class="math inline">\(\mu=\sum_i\lambda_i x_i\)</span>, la diferencia tiene una identidad exacta:</p>
+<p><span class="math display">\[\sum_i\lambda_i x_i^2-\mu^2=\sum_i\lambda_i(x_i-\mu)^2\ge0.\]</span></p>
+<p>La expansión usa <span class="math inline">\(\sum_i\lambda_i=1\)</span> y <span class="math inline">\(\sum_i\lambda_i x_i=\mu\)</span>. La identidad también identifica la igualdad: cada término con peso positivo debe anularse. Para <span class="math inline">\(\lambda=(1/4,1/2,1/4)\)</span> y <span class="math inline">\(x=(0,1,3)\)</span> se obtiene <span class="math inline">\(\mu=5/4\)</span>, media de cuadrados <span class="math inline">\(11/4\)</span> y diferencia <span class="math inline">\(19/16\)</span>.</p>
+<p>Para entradas positivas usamos la convexidad estricta de <span class="math inline">\(1/x\)</span> ya demostrada:</p>
+<p><span class="math display">\[\frac1{\sum_i\lambda_i x_i}\le\sum_i\frac{\lambda_i}{x_i}.\]</span></p>
+<p>La media es positiva porque algún peso es positivo y todas las entradas lo son. Con pesos iguales, multiplicar por la suma positiva produce <span class="math inline">\((\sum_i x_i)(\sum_i1/x_i)\ge n^2\)</span>, con igualdad exactamente cuando todas las entradas son iguales. No se necesita logaritmo, exponencial ni una regla de potencias reales.</p>
+<div id="fig-anm-c20-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Con entradas0,1,3 y pesos1/4,1/2,1/4, la media es5/4, f(media)=25/16 y la media de cuadrados11/4. La diferencia19/16 coincide con las desviaciones ponderadas25/64,2/64,49/64. La identidad prueba no negatividad; los tres datos sólo ilustran Jensen finito.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c20-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C20/C20-F07.svg" class="img-fluid figure-img" alt="Con entradas0,1,3 y pesos1/4,1/2,1/4, la media es5/4, f(media)=25/16 y la media de cuadrados11/4. La diferencia19/16 coincide con las desviaciones ponderadas25/64,2/64,49/64. La identidad prueba no negatividad; los tres datos sólo ilustran Jensen finito.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c20-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Con entradas0,1,3 y pesos1/4,1/2,1/4, la media es5/4, f(media)=25/16 y la media de cuadrados11/4. La diferencia19/16 coincide con las desviaciones ponderadas25/64,2/64,49/64. La identidad prueba no negatividad; los tres datos sólo ilustran Jensen finito.
+</figcaption>
+</figure>
+</div>
+<p>Los pesos negativos invalidan el mecanismo: con el cuadrado, pesos2 y−1 y entradas0 y1 dan una media−1, cuyo cuadrado1 no es menor o igual que la media de cuadrados−1. La suma de pesos sigue siendo1, pero la condición de signo se perdió. Este capítulo establece Jensen finito; no convierte una suma finita en una integral o en una media infinita.</p>
+<section id="microcontroles-6" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-6">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-020-049"></span></p>
+<ol type="1">
+<li>¿Qué condiciones tienen los pesos de Jensen finito?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-050"></span></p>
+<ol start="2" type="1">
+<li>¿Qué hacer si la suma <span class="math inline">\(s\)</span> de los primeros pesos es cero?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-051"></span></p>
+<ol start="3" type="1">
+<li>¿Por qué la media normalizada de un grupo sigue en el dominio?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-052"></span></p>
+<ol start="4" type="1">
+<li>¿Cuándo hay igualdad en Jensen para una función estrictamente convexa?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-053"></span></p>
+<ol start="5" type="1">
+<li>¿Qué identidad da la diferencia de Jensen para el cuadrado?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-054"></span></p>
+<ol start="6" type="1">
+<li>¿Qué media resulta de pesos <span class="math inline">\((1/4,1/2,1/4)\)</span> y entradas <span class="math inline">\((0,1,3)\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-055"></span></p>
+<ol start="7" type="1">
+<li>¿Por qué puede invertirse la media en Jensen para <span class="math inline">\(1/x\)</span>?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-056"></span></p>
+<ol start="8" type="1">
+<li>¿Basta que los pesos sumen1 si alguno es negativo?</li>
+</ol>
+</section>
+</section>
+<section id="bandas-cuadráticas-y-mínimos-certificados" class="level2">
+<h2 class="anchored" data-anchor-id="bandas-cuadráticas-y-mínimos-certificados">20.8. Bandas cuadráticas y mínimos certificados</h2>
+<p><span id="MA-SEC-ANM-01-020-008"></span></p>
+<p>Una tangente aporta una cota inferior a una función convexa. Si además controlamos la segunda derivada, podemos encerrar el error entre dos cantidades explícitas sin usar Taylor. Sea <span class="math inline">\(f\)</span> dos veces derivable en un intervalo abierto <span class="math inline">\(I\)</span>, y supongamos <span class="math inline">\(m\le f''(x)\le M\)</span> en todos sus puntos, con <span class="math inline">\(m\le M\)</span> reales.</p>
+<p>La función <span class="math inline">\(q_m(x)=f(x)-(m/2)x^2\)</span> tiene segunda derivada <span class="math inline">\(f''-m\ge0\)</span>, luego es convexa por20.6. Su soporte en <span class="math inline">\(c\)</span> da</p>
+<p><span class="math display">\[q_m(x)\ge q_m(c)+q_m'(c)(x-c).\]</span></p>
+<p>Sustituimos <span class="math inline">\(q_m'=f'-mx\)</span> y agrupamos el polinomio cuadrático; resulta</p>
+<p><span class="math display">\[f(x)-f(c)-f'(c)(x-c)\ge\frac m2(x-c)^2.\]</span></p>
+<p>Del mismo modo <span class="math inline">\(q_M(x)=f(x)-(M/2)x^2\)</span> es cóncava, y el soporte superior de una función cóncava produce la cota opuesta. Para todo <span class="math inline">\(c,x\in I\)</span>,</p>
+<p><span class="math display">\[\frac m2(x-c)^2\le f(x)-f(c)-f'(c)(x-c)\le\frac M2(x-c)^2.\]</span></p>
+<p>No se exige <span class="math inline">\(m\ge0\)</span> para esta banda firmada. Si sólo <span class="math inline">\(|f''|\le K\)</span>, elegimos <span class="math inline">\(m=-K\)</span> y <span class="math inline">\(M=K\)</span> y obtenemos una cota absoluta <span class="math inline">\(K(x-c)^2/2\)</span>. Los límites de C18 por sí solos no aportaban este coeficiente cuadrático; aquí lo aportan las cotas universales y el criterio de convexidad.</p>
+<p>El mismo truco aplicado a cuerdas, con <span class="math inline">\(z=(1-t)a+tb\)</span>, da</p>
+<p><span class="math display">\[
+\frac m2\,t(1-t)(b-a)^2
+\le (1-t)f(a)+tf(b)-f(z)
+\le\frac M2\,t(1-t)(b-a)^2.
+\]</span></p>
+<p>Se resta la desigualdad de convexidad de <span class="math inline">\(q_m\)</span> y se usa la identidad del cuadrado de20.1; con <span class="math inline">\(q_M\)</span> se usa concavidad. Se incluyen <span class="math inline">\(t=0,1\)</span> sin división. Si <span class="math inline">\(f\)</span> es continua en los extremos de un segmento y las cotas rigen en su interior, las dos funciones auxiliares son continuas allí y20.5 permite estas mismas bandas en todo el segmento.</p>
+<div id="fig-anm-c20-f08" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En[−1,1], x²+x⁴ tiene2≤f′′≤14; desde su mínimo único0 queda entre x² y7x². El panel muestra una ventana interior. En x=1/4, la pendiente9/16 y m=2 certifican distancia≤9/32 y pérdida≤81/1024; los valores exactos son1/4 y17/256. La existencia del centro estacionario se verifica antes de usar el certificado.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-anm-c20-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../assets/books/anm/C20/C20-F08.svg" class="img-fluid figure-img" alt="En[−1,1], x²+x⁴ tiene2≤f′′≤14; desde su mínimo único0 queda entre x² y7x². El panel muestra una ventana interior. En x=1/4, la pendiente9/16 y m=2 certifican distancia≤9/32 y pérdida≤81/1024; los valores exactos son1/4 y17/256. La existencia del centro estacionario se verifica antes de usar el certificado.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c20-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: En[−1,1], x²+x⁴ tiene2≤f′′≤14; desde su mínimo único0 queda entre x² y7x². El panel muestra una ventana interior. En x=1/4, la pendiente9/16 y m=2 certifican distancia≤9/32 y pérdida≤81/1024; los valores exactos son1/4 y17/256. La existencia del centro estacionario se verifica antes de usar el certificado.
+</figcaption>
+</figure>
+</div>
+<p>Cuando <span class="math inline">\(m&gt;0\)</span>, la cota inferior hace estrictamente convexa a <span class="math inline">\(f\)</span>, lo que suele llamarse convexidad fuerte con constante <span class="math inline">\(m\)</span>. Si existe un centro <span class="math inline">\(r\)</span> con <span class="math inline">\(f'(r)=0\)</span>, es el único mínimo global. Para cualquier <span class="math inline">\(x\in I\)</span>, C19 aplicado a <span class="math inline">\(f'\)</span> entre <span class="math inline">\(r\)</span> y <span class="math inline">\(x\)</span> da <span class="math inline">\(|f'(x)|\ge m|x-r|\)</span>: el signo del incremento se conserva y cada testigo tiene segunda derivada al menos <span class="math inline">\(m\)</span>. Así</p>
+<p><span class="math display">\[|x-r|\le\frac{|f'(x)|}{m}.\]</span></p>
+<p>Además, aplicando la banda inferior con centro <span class="math inline">\(x\)</span> y entrada <span class="math inline">\(r\)</span>,</p>
+<p><span class="math display">\[0\le f(x)-f(r)\le f'(x)(x-r)-\frac m2(x-r)^2\le\frac{f'(x)^2}{2m}.\]</span></p>
+<p>La última cota se prueba completando el cuadrado en <span class="math inline">\(x-r\)</span>. Se exige la existencia del centro estacionario; <span class="math inline">\(m&gt;0\)</span> en un intervalo abierto no la garantiza, como muestra <span class="math inline">\(x^2\)</span> sobre <span class="math inline">\((0,1)\)</span>.</p>
+<p>Para <span class="math inline">\(f(x)=x^2+x^4\)</span> sobre <span class="math inline">\([-1,1]\)</span>, <span class="math inline">\(f''=2+12x^2\)</span> permite <span class="math inline">\(m=2\)</span>, <span class="math inline">\(M=14\)</span>; las hipótesis de borde se cumplen. El mínimo único es <span class="math inline">\(r=0\)</span>. En <span class="math inline">\(x=1/4\)</span>, <span class="math inline">\(f'(x)=9/16\)</span> y <span class="math inline">\(f(x)=17/256\)</span>: el certificado de posición es <span class="math inline">\(|x-r|\le9/32\)</span> y el de pérdida es <span class="math inline">\(f(x)-f(r)\le81/1024\)</span>. Los valores exactos <span class="math inline">\(1/4\le9/32\)</span> y <span class="math inline">\(17/256=68/1024\le81/1024\)</span> comprueban la consistencia; las pruebas, no esta muestra, garantizan las bandas universales.</p>
+<p>La convexidad estricta no siempre ofrece una constante <span class="math inline">\(m&gt;0\)</span>: <span class="math inline">\(x^4\)</span> tiene segunda derivada cero en el origen, y para <span class="math inline">\(x\to0\)</span> la razón <span class="math inline">\(|f'(x)|/|x|=4x^2\)</span> tiende a cero. El control cuantitativo debe gastar una hipótesis cuantitativa. C21 podrá desarrollar modelos polinómicos generales; aquí las bandas proceden de restar un cuadrado y aplicar teoremas ya demostrados.</p>
+<section id="microcontroles-7" class="level3">
+<h3 class="anchored" data-anchor-id="microcontroles-7">Microcontroles</h3>
+<p><span id="MA-MIC-ANM-01-020-057"></span></p>
+<ol type="1">
+<li>¿Qué función auxiliar convierte <span class="math inline">\(f\prime\prime\ge m\)</span> en convexidad?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-058"></span></p>
+<ol start="2" type="1">
+<li>¿Qué banda encierra la diferencia respecto de una tangente?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-059"></span></p>
+<ol start="3" type="1">
+<li>¿Debe ser <span class="math inline">\(m\)</span> positivo para la banda firmada?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-060"></span></p>
+<ol start="4" type="1">
+<li>¿Qué factor aparece en el error de una cuerda?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-061"></span></p>
+<ol start="5" type="1">
+<li>¿Qué añade <span class="math inline">\(m&gt;0\)</span> al control cualitativo?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-062"></span></p>
+<ol start="6" type="1">
+<li>¿Qué certificado de posición da una pendiente residual?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-063"></span></p>
+<ol start="7" type="1">
+<li>¿Qué certificado de pérdida de valor acompaña al de posición?</li>
+</ol>
+<p><span id="MA-MIC-ANM-01-020-064"></span></p>
+<ol start="8" type="1">
+<li>¿La convexidad estricta permite siempre dividir por una constante uniforme <span class="math inline">\(m&gt;0\)</span>?</li>
+</ol>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes.html">Capítulo 20</a> · <a href="analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-microcontroles.html">Soluciones de microcontroles</a></p>
+<p><a href="analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.html">← Capítulo 19</a> · <a href="analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error.html">Capítulo 21 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

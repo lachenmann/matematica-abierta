@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Soluciones de microcontroles — Capítulo 7 – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#comparar-términos-qué-significa-ser-monótona" id="toc-comparar-términos-qué-significa-ser-monótona" class="nav-link active" data-scroll-target="#comparar-términos-qué-significa-ser-monótona">§7.1 — Comparar términos: qué significa ser monótona</a>
+  <ul class="collapse">
+  <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">1. Solución</a></li>
+  <li><a href="#solución-1" id="toc-solución-1" class="nav-link" data-scroll-target="#solución-1">2. Solución</a></li>
+  <li><a href="#solución-2" id="toc-solución-2" class="nav-link" data-scroll-target="#solución-2">3. Solución</a></li>
+  <li><a href="#solución-3" id="toc-solución-3" class="nav-link" data-scroll-target="#solución-3">4. Solución</a></li>
+  <li><a href="#solución-4" id="toc-solución-4" class="nav-link" data-scroll-target="#solución-4">5. Solución</a></li>
+  <li><a href="#solución-5" id="toc-solución-5" class="nav-link" data-scroll-target="#solución-5">6. Solución</a></li>
+  <li><a href="#solución-6" id="toc-solución-6" class="nav-link" data-scroll-target="#solución-6">7. Solución</a></li>
+  <li><a href="#solución-7" id="toc-solución-7" class="nav-link" data-scroll-target="#solución-7">8. Solución</a></li>
+  </ul></li>
+  <li><a href="#el-conjunto-de-valores-y-su-mejor-barrera" id="toc-el-conjunto-de-valores-y-su-mejor-barrera" class="nav-link" data-scroll-target="#el-conjunto-de-valores-y-su-mejor-barrera">§7.2 — El conjunto de valores y su mejor barrera</a>
+  <ul class="collapse">
+  <li><a href="#solución-8" id="toc-solución-8" class="nav-link" data-scroll-target="#solución-8">9. Solución</a></li>
+  <li><a href="#solución-9" id="toc-solución-9" class="nav-link" data-scroll-target="#solución-9">10. Solución</a></li>
+  <li><a href="#solución-10" id="toc-solución-10" class="nav-link" data-scroll-target="#solución-10">11. Solución</a></li>
+  <li><a href="#solución-11" id="toc-solución-11" class="nav-link" data-scroll-target="#solución-11">12. Solución</a></li>
+  <li><a href="#solución-12" id="toc-solución-12" class="nav-link" data-scroll-target="#solución-12">13. Solución</a></li>
+  <li><a href="#solución-13" id="toc-solución-13" class="nav-link" data-scroll-target="#solución-13">14. Solución</a></li>
+  <li><a href="#solución-14" id="toc-solución-14" class="nav-link" data-scroll-target="#solución-14">15. Solución</a></li>
+  <li><a href="#solución-15" id="toc-solución-15" class="nav-link" data-scroll-target="#solución-15">16. Solución</a></li>
+  </ul></li>
+  <li><a href="#la-completitud-convierte-una-barrera-en-límite" id="toc-la-completitud-convierte-una-barrera-en-límite" class="nav-link" data-scroll-target="#la-completitud-convierte-una-barrera-en-límite">§7.3 — La completitud convierte una barrera en límite</a>
+  <ul class="collapse">
+  <li><a href="#solución-16" id="toc-solución-16" class="nav-link" data-scroll-target="#solución-16">17. Solución</a></li>
+  <li><a href="#solución-17" id="toc-solución-17" class="nav-link" data-scroll-target="#solución-17">18. Solución</a></li>
+  <li><a href="#solución-18" id="toc-solución-18" class="nav-link" data-scroll-target="#solución-18">19. Solución</a></li>
+  <li><a href="#solución-19" id="toc-solución-19" class="nav-link" data-scroll-target="#solución-19">20. Solución</a></li>
+  <li><a href="#solución-20" id="toc-solución-20" class="nav-link" data-scroll-target="#solución-20">21. Solución</a></li>
+  <li><a href="#solución-21" id="toc-solución-21" class="nav-link" data-scroll-target="#solución-21">22. Solución</a></li>
+  <li><a href="#solución-22" id="toc-solución-22" class="nav-link" data-scroll-target="#solución-22">23. Solución</a></li>
+  <li><a href="#solución-23" id="toc-solución-23" class="nav-link" data-scroll-target="#solución-23">24. Solución</a></li>
+  </ul></li>
+  <li><a href="#cambiar-la-dirección-y-descartar-un-prefijo" id="toc-cambiar-la-dirección-y-descartar-un-prefijo" class="nav-link" data-scroll-target="#cambiar-la-dirección-y-descartar-un-prefijo">§7.4 — Cambiar la dirección y descartar un prefijo</a>
+  <ul class="collapse">
+  <li><a href="#solución-24" id="toc-solución-24" class="nav-link" data-scroll-target="#solución-24">25. Solución</a></li>
+  <li><a href="#solución-25" id="toc-solución-25" class="nav-link" data-scroll-target="#solución-25">26. Solución</a></li>
+  <li><a href="#solución-26" id="toc-solución-26" class="nav-link" data-scroll-target="#solución-26">27. Solución</a></li>
+  <li><a href="#solución-27" id="toc-solución-27" class="nav-link" data-scroll-target="#solución-27">28. Solución</a></li>
+  <li><a href="#solución-28" id="toc-solución-28" class="nav-link" data-scroll-target="#solución-28">29. Solución</a></li>
+  <li><a href="#solución-29" id="toc-solución-29" class="nav-link" data-scroll-target="#solución-29">30. Solución</a></li>
+  <li><a href="#solución-30" id="toc-solución-30" class="nav-link" data-scroll-target="#solución-30">31. Solución</a></li>
+  <li><a href="#solución-31" id="toc-solución-31" class="nav-link" data-scroll-target="#solución-31">32. Solución</a></li>
+  </ul></li>
+  <li><a href="#qué-falla-al-retirar-una-hipótesis" id="toc-qué-falla-al-retirar-una-hipótesis" class="nav-link" data-scroll-target="#qué-falla-al-retirar-una-hipótesis">§7.5 — Qué falla al retirar una hipótesis</a>
+  <ul class="collapse">
+  <li><a href="#solución-32" id="toc-solución-32" class="nav-link" data-scroll-target="#solución-32">33. Solución</a></li>
+  <li><a href="#solución-33" id="toc-solución-33" class="nav-link" data-scroll-target="#solución-33">34. Solución</a></li>
+  <li><a href="#solución-34" id="toc-solución-34" class="nav-link" data-scroll-target="#solución-34">35. Solución</a></li>
+  <li><a href="#solución-35" id="toc-solución-35" class="nav-link" data-scroll-target="#solución-35">36. Solución</a></li>
+  <li><a href="#solución-36" id="toc-solución-36" class="nav-link" data-scroll-target="#solución-36">37. Solución</a></li>
+  <li><a href="#solución-37" id="toc-solución-37" class="nav-link" data-scroll-target="#solución-37">38. Solución</a></li>
+  <li><a href="#solución-38" id="toc-solución-38" class="nav-link" data-scroll-target="#solución-38">39. Solución</a></li>
+  <li><a href="#solución-39" id="toc-solución-39" class="nav-link" data-scroll-target="#solución-39">40. Solución</a></li>
+  </ul></li>
+  <li><a href="#una-recurrencia-existir-antes-de-calcular" id="toc-una-recurrencia-existir-antes-de-calcular" class="nav-link" data-scroll-target="#una-recurrencia-existir-antes-de-calcular">§7.6 — Una recurrencia: existir antes de calcular</a>
+  <ul class="collapse">
+  <li><a href="#solución-40" id="toc-solución-40" class="nav-link" data-scroll-target="#solución-40">41. Solución</a></li>
+  <li><a href="#solución-41" id="toc-solución-41" class="nav-link" data-scroll-target="#solución-41">42. Solución</a></li>
+  <li><a href="#solución-42" id="toc-solución-42" class="nav-link" data-scroll-target="#solución-42">43. Solución</a></li>
+  <li><a href="#solución-43" id="toc-solución-43" class="nav-link" data-scroll-target="#solución-43">44. Solución</a></li>
+  <li><a href="#solución-44" id="toc-solución-44" class="nav-link" data-scroll-target="#solución-44">45. Solución</a></li>
+  <li><a href="#solución-45" id="toc-solución-45" class="nav-link" data-scroll-target="#solución-45">46. Solución</a></li>
+  <li><a href="#solución-46" id="toc-solución-46" class="nav-link" data-scroll-target="#solución-46">47. Solución</a></li>
+  <li><a href="#solución-47" id="toc-solución-47" class="nav-link" data-scroll-target="#solución-47">48. Solución</a></li>
+  </ul></li>
+  <li><a href="#la-misma-construcción-sobre-los-racionales" id="toc-la-misma-construcción-sobre-los-racionales" class="nav-link" data-scroll-target="#la-misma-construcción-sobre-los-racionales">§7.7 — La misma construcción sobre los racionales</a>
+  <ul class="collapse">
+  <li><a href="#solución-48" id="toc-solución-48" class="nav-link" data-scroll-target="#solución-48">49. Solución</a></li>
+  <li><a href="#solución-49" id="toc-solución-49" class="nav-link" data-scroll-target="#solución-49">50. Solución</a></li>
+  <li><a href="#solución-50" id="toc-solución-50" class="nav-link" data-scroll-target="#solución-50">51. Solución</a></li>
+  <li><a href="#solución-51" id="toc-solución-51" class="nav-link" data-scroll-target="#solución-51">52. Solución</a></li>
+  <li><a href="#solución-52" id="toc-solución-52" class="nav-link" data-scroll-target="#solución-52">53. Solución</a></li>
+  <li><a href="#solución-53" id="toc-solución-53" class="nav-link" data-scroll-target="#solución-53">54. Solución</a></li>
+  <li><a href="#solución-54" id="toc-solución-54" class="nav-link" data-scroll-target="#solución-54">55. Solución</a></li>
+  <li><a href="#solución-55" id="toc-solución-55" class="nav-link" data-scroll-target="#solución-55">56. Solución</a></li>
+  </ul></li>
+  <li><a href="#elegir-el-argumento-y-declarar-su-alcance" id="toc-elegir-el-argumento-y-declarar-su-alcance" class="nav-link" data-scroll-target="#elegir-el-argumento-y-declarar-su-alcance">§7.8 — Elegir el argumento y declarar su alcance</a>
+  <ul class="collapse">
+  <li><a href="#solución-56" id="toc-solución-56" class="nav-link" data-scroll-target="#solución-56">57. Solución</a></li>
+  <li><a href="#solución-57" id="toc-solución-57" class="nav-link" data-scroll-target="#solución-57">58. Solución</a></li>
+  <li><a href="#solución-58" id="toc-solución-58" class="nav-link" data-scroll-target="#solución-58">59. Solución</a></li>
+  <li><a href="#solución-59" id="toc-solución-59" class="nav-link" data-scroll-target="#solución-59">60. Solución</a></li>
+  <li><a href="#solución-60" id="toc-solución-60" class="nav-link" data-scroll-target="#solución-60">61. Solución</a></li>
+  <li><a href="#solución-61" id="toc-solución-61" class="nav-link" data-scroll-target="#solución-61">62. Solución</a></li>
+  <li><a href="#solución-62" id="toc-solución-62" class="nav-link" data-scroll-target="#solución-62">63. Solución</a></li>
+  <li><a href="#solución-63" id="toc-solución-63" class="nav-link" data-scroll-target="#solución-63">64. Solución</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Soluciones de microcontroles — Capítulo 7</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.html">Capítulo 7</a> · <a href="analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>Las soluciones corresponden, en su orden original, a los microcontroles de «Antes de seguir» del manuscrito canónico. Se conserva <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span>. Las preguntas permanecen en el manuscrito; los metadatos internos fijan su sección, posición y huella literal.</p>
+<section id="comparar-términos-qué-significa-ser-monótona" class="level2">
+<h2 class="anchored" data-anchor-id="comparar-términos-qué-significa-ser-monótona">§7.1 — Comparar términos: qué significa ser monótona</h2>
+<section id="solución" class="level3">
+<h3 class="anchored" data-anchor-id="solución">1. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-001"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-001"></span></p>
+<p><span id="MA-SEC-ANM-01-007-001"></span></p>
+<p><span class="math inline">\(a\)</span> es una función <span class="math inline">\(\mathbb N\to\mathbb R\)</span>, es decir, una sucesión real. <span class="math inline">\(n\)</span> y <span class="math inline">\(n+1\)</span> son índices naturales; <span class="math inline">\(a_n=a(n)\)</span> y <span class="math inline">\(a_{n+1}=a(n+1)\)</span> son términos reales. La relación <span class="math inline">\(\le\)</span> escrita compara esos dos valores reales. Aunque los índices siempre cumplen <span class="math inline">\(n&lt;n+1\)</span>, eso no determina el orden de los valores que la función les asigna.</p>
+</section>
+<section id="solución-1" class="level3">
+<h3 class="anchored" data-anchor-id="solución-1">2. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-002"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-002"></span></p>
+<p>La condición es</p>
+<p><span class="math display">\[
+\bigl(\forall n\in\mathbb N,\ a_n\le a_{n+1}\bigr)
+\lor
+\bigl(\forall n\in\mathbb N,\ a_{n+1}\le a_n\bigr).
+\]</span></p>
+<p>Se exige una dirección válida en todos los índices; la disyunción inclusiva admite ambas. En cambio, <span class="math inline">\(\forall n\in\mathbb N,\ (a_n\le a_{n+1}\lor a_{n+1}\le a_n)\)</span> permite cambiar de dirección con <span class="math inline">\(n\)</span> y es verdadera para cualquier sucesión real por el orden total. Esta última condición no caracteriza monotonía.</p>
+</section>
+<section id="solución-2" class="level3">
+<h3 class="anchored" data-anchor-id="solución-2">3. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-003"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-003"></span></p>
+<p>Todo paso empieza en un índice par o impar. Si empieza en <span class="math inline">\(2k\)</span>, <span class="math inline">\(p_{2k}=k=p_{2k+1}\)</span>. Si empieza en <span class="math inline">\(2k+1\)</span>, <span class="math inline">\(p_{2k+1}=k&lt;k+1=p_{2k+2}\)</span>. Ambas comparaciones dan no decrecimiento. La subida <span class="math inline">\(p_1=0&lt;p_2=1\)</span> refuta el no crecimiento. No es estrictamente creciente, pues <span class="math inline">\(p_0=p_1=0\)</span>; las repeticiones no impiden que cada índice tenga un único valor.</p>
+</section>
+<section id="solución-3" class="level3">
+<h3 class="anchored" data-anchor-id="solución-3">4. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-004"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-004"></span></p>
+<p>Supón <span class="math inline">\(a_{k+1}\le a_k\)</span> para todo <span class="math inline">\(k\in\mathbb N\)</span>. Dados <span class="math inline">\(n\le m\)</span>, si <span class="math inline">\(n=m\)</span> basta <span class="math inline">\(a_n\le a_n\)</span>. Si <span class="math inline">\(n&lt;m\)</span>, la cadena finita <span class="math inline">\(a_m\le a_{m-1}\le\cdots\le a_n\)</span> da <span class="math inline">\(a_m\le a_n\)</span> por transitividad. Recíprocamente, si <span class="math inline">\(a_m\le a_n\)</span> para todo par <span class="math inline">\(n\le m\)</span>, tomar <span class="math inline">\(m=n+1\)</span> da <span class="math inline">\(a_{n+1}\le a_n\)</span> en cada índice. Así las dos condiciones son equivalentes, incluido el caso de índices iguales.</p>
+</section>
+<section id="solución-4" class="level3">
+<h3 class="anchored" data-anchor-id="solución-4">5. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-005"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-005"></span></p>
+<p>Para cada <span class="math inline">\(n\in\mathbb N\)</span>, el no decrecimiento da <span class="math inline">\(a_0\le a_n\)</span> y el no crecimiento da <span class="math inline">\(a_n\le a_0\)</span>. Por antisimetría, <span class="math inline">\(a_n=a_0\)</span> para todo índice: <span class="math inline">\(a\)</span> es constante. Recíprocamente, si <span class="math inline">\(a_n=c\)</span> siempre, ambas comparaciones adyacentes son <span class="math inline">\(c\le c\)</span>. Una función exige un único valor por índice, no valores distintos en índices distintos; por ello una constante sigue siendo función.</p>
+</section>
+<section id="solución-5" class="level3">
+<h3 class="anchored" data-anchor-id="solución-5">6. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-006"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-006"></span></p>
+<p>La caída <span class="math inline">\(r_0=1&gt;r_1=-1\)</span> refuta el no decrecimiento. La subida <span class="math inline">\(r_1=-1&lt;r_2=1\)</span> refuta el no crecimiento. Como fallan ambas alternativas, <span class="math inline">\(r\)</span> no es monótona. Una sola caída refuta sólo la primera alternativa: una sucesión estrictamente decreciente tiene caídas y sigue siendo monótona. Hace falta excluir también la dirección no creciente.</p>
+</section>
+<section id="solución-6" class="level3">
+<h3 class="anchored" data-anchor-id="solución-6">7. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-007"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-007"></span></p>
+<p>Si <span class="math inline">\(n\ge N\)</span>, la comparación entre índices para una sucesión no decreciente da <span class="math inline">\(a_N\le a_n\)</span>. Junto con <span class="math inline">\(c&lt;a_N\)</span>, resulta <span class="math inline">\(c&lt;a_N\le a_n\)</span>, luego <span class="math inline">\(a_n&gt;c\)</span> para todos los índices indicados.</p>
+<p>La versión opuesta dice: si <span class="math inline">\(a\)</span> es no creciente y <span class="math inline">\(a_N&lt;c\)</span>, entonces <span class="math inline">\(a_n&lt;c\)</span> para todo <span class="math inline">\(n\ge N\)</span>. En efecto, <span class="math inline">\(a_n\le a_N&lt;c\)</span> por la comparación no creciente. <span class="math inline">\(N,n\)</span> son índices naturales y <span class="math inline">\(c,a_N,a_n\)</span> son valores reales; la dirección propaga la comparación inicial.</p>
+</section>
+<section id="solución-7" class="level3">
+<h3 class="anchored" data-anchor-id="solución-7">8. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-008"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-008"></span></p>
+<p>En los índices 0–100, la muestra coincide con la sucesión identidad y aumenta estrictamente. Pero la monotonía exige una dirección para todos los pasos, incluidos los que la muestra no contiene. La caída <span class="math inline">\(b_{100}=100&gt;b_{101}=-1\)</span> refuta el no decrecimiento; la subida <span class="math inline">\(b_0=0&lt;b_1=1\)</span> refuta el no crecimiento. Así <span class="math inline">\(b\)</span> no es monótona. La función <span class="math inline">\(u:\mathbb N\to\mathbb R\)</span>, <span class="math inline">\(u_n=n\)</span>, es estrictamente creciente en todo índice y difiere de <span class="math inline">\(b\)</span>, por ejemplo en 101: <span class="math inline">\(u_{101}=101\ne-1=b_{101}\)</span>. Coincidir en una muestra no es ser la misma función.</p>
+</section>
+</section>
+<section id="el-conjunto-de-valores-y-su-mejor-barrera" class="level2">
+<h2 class="anchored" data-anchor-id="el-conjunto-de-valores-y-su-mejor-barrera">§7.2 — El conjunto de valores y su mejor barrera</h2>
+<section id="solución-8" class="level3">
+<h3 class="anchored" data-anchor-id="solución-8">9. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-009"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-009"></span></p>
+<p><span id="MA-SEC-ANM-01-007-002"></span></p>
+<p><span class="math inline">\(S_p=\{0,1,2,\ldots\}\)</span>, considerado como subconjunto de <span class="math inline">\(\mathbb R\)</span>: cada <span class="math inline">\(k\)</span> aparece en <span class="math inline">\(p\)</span> y ningún término toma otro valor. El conjunto registra cada valor una sola vez, aunque <span class="math inline">\(p_{2k}=p_{2k+1}=k\)</span>. Se pierden la multiplicidad de aparición y los índices a los que corresponde cada valor, incluido su orden. <span class="math inline">\(p:\mathbb N\to\mathbb R\)</span> es una función; <span class="math inline">\(S_p\)</span> es su conjunto de valores, no la misma clase de objeto.</p>
+</section>
+<section id="solución-9" class="level3">
+<h3 class="anchored" data-anchor-id="solución-9">10. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-010"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-010"></span></p>
+<p>Si <span class="math inline">\(a_n\le U\)</span> para todo <span class="math inline">\(n\)</span>, cada <span class="math inline">\(x\in S_a\)</span> tiene la forma <span class="math inline">\(x=a_j\)</span> y cumple <span class="math inline">\(x\le U\)</span>; así <span class="math inline">\(U\)</span> es cota superior del conjunto. Recíprocamente, si <span class="math inline">\(U\)</span> domina <span class="math inline">\(S_a\)</span>, domina cada <span class="math inline">\(a_n\)</span> porque todos los términos pertenecen a ese conjunto. <span class="math inline">\(S_a\)</span> es no vacío ya que contiene <span class="math inline">\(a_0\)</span>, un valor real de la función definida en el índice natural 0.</p>
+</section>
+<section id="solución-10" class="level3">
+<h3 class="anchored" data-anchor-id="solución-10">11. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-011"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-011"></span></p>
+<p>Las hipótesis son que <span class="math inline">\(S_a\subseteq\mathbb R\)</span> sea no vacío y esté acotado superiormente. La primera se acredita con <span class="math inline">\(a_0\)</span>; la segunda exige una cota real <span class="math inline">\(U\)</span> para todos los términos. El principio del supremo garantiza entonces la existencia de algún <span class="math inline">\(s\in\mathbb R\)</span> que es su supremo. La caracterización por cota y aproximación permite verificar si un candidato real dado es ese supremo; no asegura por sí sola que exista un candidato que cumpla las dos condiciones. No se requiere monotonía para obtener el supremo.</p>
+</section>
+<section id="solución-11" class="level3">
+<h3 class="anchored" data-anchor-id="solución-11">12. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-012"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-012"></span></p>
+<p>Si <span class="math inline">\(s=\sup S_a\)</span>, ya es cota superior. Dada <span class="math inline">\(\varepsilon&gt;0\)</span>, <span class="math inline">\(s-\varepsilon\)</span> no puede ser cota superior, pues sería una cota menor que la menor cota. Se niega la afirmación universal <span class="math inline">\(\forall n\in\mathbb N,\ a_n\le s-\varepsilon\)</span> y se obtiene <span class="math inline">\(j\in\mathbb N\)</span> con <span class="math inline">\(a_j&gt;s-\varepsilon\)</span>. La cota <span class="math inline">\(s\)</span> añade <span class="math inline">\(a_j\le s\)</span>.</p>
+<p>Recíprocamente, supón que <span class="math inline">\(s\)</span> domina todos los términos y que para cada <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(j\)</span> con <span class="math inline">\(a_j&gt;s-\varepsilon\)</span>. Sea <span class="math inline">\(U\)</span> otra cota superior. Si <span class="math inline">\(U&lt;s\)</span>, toma <span class="math inline">\(\varepsilon=s-U&gt;0\)</span>. El testigo satisface <span class="math inline">\(a_j&gt;s-\varepsilon=U\)</span>, contradiciendo que <span class="math inline">\(U\)</span> sea cota. Así <span class="math inline">\(s\le U\)</span> para toda cota superior, y junto con la condición de cota resulta <span class="math inline">\(s=\sup S_a\)</span>.</p>
+</section>
+<section id="solución-12" class="level3">
+<h3 class="anchored" data-anchor-id="solución-12">13. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-013"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-013"></span></p>
+<p><span class="math inline">\(x_3=3/4\)</span> queda fuera de <span class="math inline">\((3/4,1]\)</span> porque coincide con su frontera inferior excluida. <span class="math inline">\(x_4=4/5\)</span> está dentro, pues <span class="math inline">\(3/4&lt;4/5&lt;1\)</span>. El término 1 de la sucesión constante también está dentro, en la frontera superior incluida. La aproximación al supremo exige <span class="math inline">\(s-\varepsilon&lt;a_j\)</span>, una desigualdad estricta por abajo, pero la condición de cota permite <span class="math inline">\(a_j\le s\)</span>, incluida la igualdad con el supremo.</p>
+</section>
+<section id="solución-13" class="level3">
+<h3 class="anchored" data-anchor-id="solución-13">14. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-014"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-014"></span></p>
+<p>En ambas sucesiones, 2 es cota superior y el supremo es 1. Para <span class="math inline">\(x\)</span>, todos los términos son menores que 1 y, dada <span class="math inline">\(\varepsilon&gt;0\)</span>, C06 §6.3 proporciona <span class="math inline">\(j\)</span> con <span class="math inline">\(1/(j+1)&lt;\varepsilon\)</span>; entonces <span class="math inline">\(x_j&gt;1-\varepsilon\)</span>. Esto acredita el supremo 1, sin alcanzamiento y sin máximo. Para <span class="math inline">\(c\)</span>, el conjunto de valores es <span class="math inline">\(\{1\}\)</span>: su supremo y máximo valen 1 y se alcanzan en todo índice.</p>
+<p>La igualdad de los supremos es igualdad entre números reales; también ambas admiten la misma cota 2, que no es su supremo. Las funciones siguen siendo distintas porque <span class="math inline">\(x_0=0\ne1=c_0\)</span>, y sus conjuntos de valores también son distintos: sólo <span class="math inline">\(S_c\)</span> contiene 1.</p>
+</section>
+<section id="solución-14" class="level3">
+<h3 class="anchored" data-anchor-id="solución-14">15. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-015"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-015"></span></p>
+<p>La caracterización dice que <span class="math inline">\(t=\inf S_a\)</span> si y sólo si</p>
+<p><span class="math display">\[
+\forall n\in\mathbb N,\quad t\le a_n,
+\qquad
+\forall\varepsilon&gt;0\ \exists j\in\mathbb N,\quad a_j&lt;t+\varepsilon.
+\]</span></p>
+<p>Para <span class="math inline">\(z_n=1/(n+1)\)</span>, todos los términos son positivos, de modo que 0 es cota inferior. La convergencia <span class="math inline">\(1/(n+1)\to0\)</span>, demostrada en C06 §6.3, garantiza para cada <span class="math inline">\(\varepsilon&gt;0\)</span> un término <span class="math inline">\(z_j&lt;\varepsilon=0+\varepsilon\)</span>. Cota y aproximación acreditan el ínfimo 0. Como ningún término vale 0, el ínfimo no pertenece al conjunto, que por ello no tiene mínimo.</p>
+</section>
+<section id="solución-15" class="level3">
+<h3 class="anchored" data-anchor-id="solución-15">16. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-016"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-016"></span></p>
+<p><span class="math inline">\(S_r=\{-1,1\}\)</span> tiene supremo 1, alcanzado por <span class="math inline">\(r_0=1\)</span>. Para cualquier <span class="math inline">\(\varepsilon&gt;0\)</span>, el mismo testigo <span class="math inline">\(j=0\)</span> cumple <span class="math inline">\(1-\varepsilon&lt;r_j\le1\)</span>.</p>
+<p>Para refutar el candidato 1 como límite, fija <span class="math inline">\(\varepsilon_0=1\)</span>. Dado cualquier corte <span class="math inline">\(N\in\mathbb N\)</span>, el índice <span class="math inline">\(n=2N+1\ge N\)</span> es impar y tiene <span class="math inline">\(r_n=-1\)</span>, luego <span class="math inline">\(|r_n-1|=2\ge\varepsilon_0\)</span>. No existe un corte que controle esa tolerancia. La caracterización del supremo sólo exige un término próximo para cada tolerancia; falta el control de todos los términos desde un corte. Esta refutación excluye el candidato 1, sin pretender por sí sola excluir todos los candidatos reales.</p>
+</section>
+</section>
+<section id="la-completitud-convierte-una-barrera-en-límite" class="level2">
+<h2 class="anchored" data-anchor-id="la-completitud-convierte-una-barrera-en-límite">§7.3 — La completitud convierte una barrera en límite</h2>
+<section id="solución-16" class="level3">
+<h3 class="anchored" data-anchor-id="solución-16">17. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-017"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-017"></span></p>
+<p><span id="MA-SEC-ANM-01-007-003"></span></p>
+<p>Si <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span> es no decreciente y existe <span class="math inline">\(U\in\mathbb R\)</span> con <span class="math inline">\(a_n\le U\)</span> para todo <span class="math inline">\(n\)</span>, entonces converge al real <span class="math inline">\(s=\sup\{a_n:n\in\mathbb N\}\)</span>. No exige crecimiento estricto: admite repeticiones y constantes. Tampoco exige que <span class="math inline">\(s\)</span> sea un término; el supremo puede no alcanzarse.</p>
+</section>
+<section id="solución-17" class="level3">
+<h3 class="anchored" data-anchor-id="solución-17">18. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-018"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-018"></span></p>
+<p>Las cuatro obligaciones son: verificar que <span class="math inline">\(S_a\)</span> es no vacío y acotado superiormente, usando <span class="math inline">\(a_0\)</span> y la cota <span class="math inline">\(U\)</span>; obtener <span class="math inline">\(s=\sup S_a\in\mathbb R\)</span> por completitud; encontrar, dada <span class="math inline">\(\varepsilon&gt;0\)</span>, un término <span class="math inline">\(a_N&gt;s-\varepsilon\)</span> por minimalidad del supremo; y propagar esa comparación a todo <span class="math inline">\(n\ge N\)</span> por no decrecimiento, conservando <span class="math inline">\(a_n\le s\)</span>. Completitud se usa en la existencia de <span class="math inline">\(s\)</span>. El término próximo se obtiene de una propiedad de ese supremo ya existente, sin invocar de nuevo el principio de existencia.</p>
+</section>
+<section id="solución-18" class="level3">
+<h3 class="anchored" data-anchor-id="solución-18">19. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-019"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-019"></span></p>
+<p>Si <span class="math inline">\(s-\varepsilon\)</span> fuera cota superior, la minimalidad de <span class="math inline">\(s\)</span> implicaría <span class="math inline">\(s\le s-\varepsilon\)</span>, imposible porque <span class="math inline">\(\varepsilon&gt;0\)</span>. La negación de <span class="math inline">\(\forall n\in\mathbb N,\ a_n\le s-\varepsilon\)</span> proporciona <span class="math inline">\(N\in\mathbb N\)</span> con <span class="math inline">\(a_N&gt;s-\varepsilon\)</span>. Primero se fija <span class="math inline">\(s\)</span> a partir de la sucesión; después se recibe <span class="math inline">\(\varepsilon&gt;0\)</span>, se obtiene <span class="math inline">\(N\)</span> para esa tolerancia y se considera un índice arbitrario <span class="math inline">\(n\ge N\)</span>. El corte puede depender de la tolerancia, pero debe controlar todos esos índices.</p>
+</section>
+<section id="solución-19" class="level3">
+<h3 class="anchored" data-anchor-id="solución-19">20. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-020"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-020"></span></p>
+<p>De <span class="math inline">\(a_n\le s\)</span> se obtiene <span class="math inline">\(|a_n-s|=s-a_n\)</span>. La comparación <span class="math inline">\(a_n\ge a_N&gt;s-\varepsilon\)</span> da <span class="math inline">\(s-a_n&lt;\varepsilon\)</span>, luego <span class="math inline">\(|a_n-s|&lt;\varepsilon\)</span>. Si <span class="math inline">\(a_N=s-\varepsilon\)</span>, el error en el propio índice <span class="math inline">\(N\)</span> es exactamente <span class="math inline">\(\varepsilon\)</span>, de modo que ese corte no cumple la desigualdad estricta requerida. Si <span class="math inline">\(a_n=s\)</span>, el error es cero y satisface la condición porque <span class="math inline">\(\varepsilon&gt;0\)</span>.</p>
+</section>
+<section id="solución-20" class="level3">
+<h3 class="anchored" data-anchor-id="solución-20">21. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-021"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-021"></span></p>
+<p>La regla define un real en cada paso, pues sólo divide por el número no nulo 2. La base <span class="math inline">\(u_0=0\)</span> cumple <span class="math inline">\(0\le u_0\le1\)</span>. Si <span class="math inline">\(0\le u_n\le1\)</span>, entonces <span class="math inline">\(1/2\le(u_n+1)/2\le1\)</span>, lo que implica <span class="math inline">\(0\le u_{n+1}\le1\)</span>. La inducción conserva ambas barreras en todo índice. Además,</p>
+<p><span class="math display">\[
+u_{n+1}-u_n=\frac{1-u_n}{2}\ge0.
+\]</span></p>
+<p>Así <span class="math inline">\(u\)</span> es no decreciente y tiene cota superior 1. El teorema de §7.3 garantiza un límite real <span class="math inline">\(L=\sup S_u\)</span>, con <span class="math inline">\(0\le L\le1\)</span>. Esta conclusión acredita existencia y descripción extremal; no calcula su valor numérico mediante la recurrencia.</p>
+</section>
+<section id="solución-21" class="level3">
+<h3 class="anchored" data-anchor-id="solución-21">22. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-022"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-022"></span></p>
+<p>Para todo <span class="math inline">\(n\ge4\)</span>,</p>
+<p><span class="math display">\[
+|x_n-1|=\frac1{n+1}\le\frac15&lt;\frac14.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(N=4\)</span> controla todos los índices posteriores. En cambio, <span class="math inline">\(N=3\)</span> falla ya en el índice 3 porque <span class="math inline">\(|x_3-1|=1/4\)</span>, igual a la tolerancia y no menor. Una gráfica finita sólo exhibe los puntos de los índices representados; la estimación universal, o la propagación monótona con la cota 1, es lo que acredita el control de toda la cola. El corte 4 es un índice natural, mientras que 1 y 3/4 son alturas reales.</p>
+</section>
+<section id="solución-22" class="level3">
+<h3 class="anchored" data-anchor-id="solución-22">23. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-023"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-023"></span></p>
+<p>Fija <span class="math inline">\(\varepsilon_0=(U-s)/2&gt;0\)</span>. Para todo <span class="math inline">\(n\in\mathbb N\)</span>, la cota del supremo da <span class="math inline">\(a_n\le s&lt;U\)</span>, luego</p>
+<p><span class="math display">\[
+|a_n-U|=U-a_n\ge U-s=2\varepsilon_0&gt;\varepsilon_0.
+\]</span></p>
+<p>Ante cualquier corte propuesto <span class="math inline">\(N\)</span>, el propio índice <span class="math inline">\(n=N\)</span> infringe esa tolerancia. La sucesión no converge a <span class="math inline">\(U\)</span>. Una cota mayor que <span class="math inline">\(s\)</span> deja un margen real respecto de todos los valores y no proporciona términos arbitrariamente próximos a ella; la propiedad de menor cota superior sí permite obtenerlos.</p>
+</section>
+<section id="solución-23" class="level3">
+<h3 class="anchored" data-anchor-id="solución-23">24. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-024"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-024"></span></p>
+<p>Si <span class="math inline">\(a_K=s\)</span> y <span class="math inline">\(n\ge K\)</span>, el no decrecimiento da <span class="math inline">\(s=a_K\le a_n\)</span>. Como <span class="math inline">\(s\)</span> es cota superior, también <span class="math inline">\(a_n\le s\)</span>. Por antisimetría, <span class="math inline">\(a_n=s\)</span> para todo <span class="math inline">\(n\ge K\)</span>. El teorema admite esa cola constante: no exige dirección estricta ni ausencia de alcanzamiento. Para cualquier tolerancia positiva, el corte <span class="math inline">\(K\)</span> controla error cero en toda la cola; si <span class="math inline">\(K=0\)</span>, la sucesión completa es constante.</p>
+</section>
+</section>
+<section id="cambiar-la-dirección-y-descartar-un-prefijo" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-la-dirección-y-descartar-un-prefijo">§7.4 — Cambiar la dirección y descartar un prefijo</h2>
+<section id="solución-24" class="level3">
+<h3 class="anchored" data-anchor-id="solución-24">25. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-025"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-025"></span></p>
+<p><span id="MA-SEC-ANM-01-007-004"></span></p>
+<p>Define <span class="math inline">\(b:\mathbb N\to\mathbb R\)</span> por <span class="math inline">\(b_n=-a_n\)</span>. Si <span class="math inline">\(a_{n+1}\le a_n\)</span>, cambiar el signo da <span class="math inline">\(b_n\le b_{n+1}\)</span>, así que <span class="math inline">\(b\)</span> es no decreciente. De <span class="math inline">\(\ell_0\le a_n\)</span> se obtiene <span class="math inline">\(b_n\le-\ell_0\)</span> para todo índice: <span class="math inline">\(-\ell_0\)</span> es cota superior. En las gráficas, <span class="math inline">\((n,a_n)\)</span> se transforma en <span class="math inline">\((n,-a_n)\)</span>; se conserva la coordenada de índice y se refleja la altura respecto de cero. El dominio no cambia, pero los valores cambian de signo y las funciones no son necesariamente iguales.</p>
+</section>
+<section id="solución-25" class="level3">
+<h3 class="anchored" data-anchor-id="solución-25">26. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-026"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-026"></span></p>
+<p>Como <span class="math inline">\(b_n\le t\)</span> para todo <span class="math inline">\(n\)</span>, cambiar el signo da <span class="math inline">\(-t\le a_n\)</span>: <span class="math inline">\(-t\)</span> es cota inferior de <span class="math inline">\(S_a\)</span>. Si <span class="math inline">\(\ell\)</span> es cualquier otra cota inferior, <span class="math inline">\(\ell\le a_n\)</span> implica <span class="math inline">\(b_n\le-\ell\)</span>, de modo que <span class="math inline">\(-\ell\)</span> es cota superior de <span class="math inline">\(S_b\)</span>. La minimalidad de <span class="math inline">\(t\)</span> da <span class="math inline">\(t\le-\ell\)</span> y por tanto <span class="math inline">\(\ell\le-t\)</span>. Así <span class="math inline">\(-t\)</span> es la mayor cota inferior y <span class="math inline">\(\inf S_a=-t=-\sup S_b\)</span>. El argumento no exige que <span class="math inline">\(t\)</span> o <span class="math inline">\(-t\)</span> sean términos.</p>
+</section>
+<section id="solución-26" class="level3">
+<h3 class="anchored" data-anchor-id="solución-26">27. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-027"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-027"></span></p>
+<p>Por la regla del escalar de C06, multiplicar <span class="math inline">\(b_n\to t\)</span> por −1 da <span class="math inline">\(a_n=-b_n\to-t\)</span>. Directamente,</p>
+<p><span class="math display">\[
+|a_n-(-t)|=|-b_n+t|=|b_n-t|.
+\]</span></p>
+<p>Si un corte <span class="math inline">\(N\)</span> garantiza <span class="math inline">\(|b_n-t|&lt;\varepsilon\)</span> para todos los <span class="math inline">\(n\ge N\)</span>, esa igualdad garantiza <span class="math inline">\(|a_n+t|&lt;\varepsilon\)</span> en los mismos índices. No hace falta cambiar el corte ni la tolerancia.</p>
+</section>
+<section id="solución-27" class="level3">
+<h3 class="anchored" data-anchor-id="solución-27">28. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-028"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-028"></span></p>
+<p>La restricción <span class="math inline">\(a|_{D_T}:D_T\to\mathbb R\)</span> conserva las evaluaciones de <span class="math inline">\(a\)</span> en <span class="math inline">\(D_T=\{n\in\mathbb N:n\ge T\}\)</span>. La reindexación <span class="math inline">\(c:\mathbb N\to\mathbb R\)</span> asigna <span class="math inline">\(c_k=a_{T+k}\)</span>. Cada valor de <span class="math inline">\(c\)</span> es un valor de la restricción porque <span class="math inline">\(T+k\ge T\)</span>. Recíprocamente, si <span class="math inline">\(n\ge T\)</span>, entonces <span class="math inline">\(k=n-T\in\mathbb N\)</span> y <span class="math inline">\(a_n=c_k\)</span>. Ambas imágenes son <span class="math inline">\(S_{a,T}\)</span>.</p>
+<p>Si <span class="math inline">\(T&gt;0\)</span>, los dominios <span class="math inline">\(D_T\)</span> y <span class="math inline">\(\mathbb N\)</span> son distintos, aunque las imágenes coincidan. Si <span class="math inline">\(T=0\)</span>, <span class="math inline">\(D_T=\mathbb N\)</span> y <span class="math inline">\(c_k=a_k\)</span>; tanto la restricción como la reindexación son la misma función <span class="math inline">\(a\)</span>.</p>
+</section>
+<section id="solución-28" class="level3">
+<h3 class="anchored" data-anchor-id="solución-28">29. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-029"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-029"></span></p>
+<p>Para <span class="math inline">\(n\ge T\)</span>, no decrecimiento y una cota superior real habilitan <span class="math inline">\(a_n\to\sup S_{a,T}\)</span>; no crecimiento y una cota inferior real habilitan <span class="math inline">\(a_n\to\inf S_{a,T}\)</span>. En cada caso, <span class="math inline">\(c_k=a_{T+k}\)</span> tiene la dirección y cota correspondientes en todo <span class="math inline">\(\mathbb N\)</span>, por lo que se aplica el teorema global pertinente.</p>
+<p>Si <span class="math inline">\(|c_k-L|&lt;\varepsilon\)</span> para todo <span class="math inline">\(k\ge K\)</span>, toma <span class="math inline">\(N=T+K\)</span>. Para <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(k=n-T\)</span> es natural y cumple <span class="math inline">\(k\ge K\)</span>, luego <span class="math inline">\(|a_n-L|=|c_k-L|&lt;\varepsilon\)</span>. Si la dirección empieza desde <span class="math inline">\(T_m\)</span> y la cota desde <span class="math inline">\(T_c\)</span>, se reúnen en <span class="math inline">\(T=\max\{T_m,T_c\}\)</span>, desde donde valen ambas hipótesis.</p>
+</section>
+<section id="solución-29" class="level3">
+<h3 class="anchored" data-anchor-id="solución-29">30. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-030"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-030"></span></p>
+<p>La cláusula <span class="math inline">\(a_0=10\)</span> define el índice cero por separado; <span class="math inline">\(1/n\)</span> sólo se evalúa para <span class="math inline">\(n\ge1\)</span>, donde el denominador es no nulo. La caída <span class="math inline">\(a_0=10&gt;a_1=0\)</span> refuta el no decrecimiento global, y la subida <span class="math inline">\(a_1=0&lt;a_2=1/2\)</span> refuta el no crecimiento global. Por ello <span class="math inline">\(a\)</span> no es monótona globalmente.</p>
+<p>Desde 1, la reindexación es <span class="math inline">\(c_k=a_{1+k}=1-1/(k+1)\)</span>, la función estudiada en §§7.1–7.3. Es no decreciente, tiene supremo 1 y converge a 1. La transferencia de cola da <span class="math inline">\(a_n\to1\)</span> y <span class="math inline">\(\sup S_{a,1}=1\)</span>. El supremo global es 10: aparece en <span class="math inline">\(a_0\)</span> y domina todos los demás términos, que están en <span class="math inline">\([0,1)\)</span>. El prefijo altera el extremo global, pero no el límite.</p>
+</section>
+<section id="solución-30" class="level3">
+<h3 class="anchored" data-anchor-id="solución-30">31. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-031"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-031"></span></p>
+<p>Si <span class="math inline">\(a_n\le U\)</span> para <span class="math inline">\(n\ge T\)</span>, define</p>
+<p><span class="math display">\[
+M=\max\bigl(\{U\}\cup\{a_n:n&lt;T\}\bigr).
+\]</span></p>
+<p>El conjunto es finito y no vacío. Para <span class="math inline">\(n&lt;T\)</span>, el término pertenece al conjunto y es <span class="math inline">\(\le M\)</span>; para <span class="math inline">\(n\ge T\)</span>, <span class="math inline">\(a_n\le U\le M\)</span>. Así <span class="math inline">\(M\)</span> es cota superior global.</p>
+<p>Si <span class="math inline">\(\ell\le a_n\)</span> desde <span class="math inline">\(T\)</span>, define <span class="math inline">\(m=\min(\{\ell\}\cup\{a_n:n&lt;T\})\)</span>. Para <span class="math inline">\(n&lt;T\)</span>, <span class="math inline">\(m\le a_n\)</span> por el mínimo; para <span class="math inline">\(n\ge T\)</span>, <span class="math inline">\(m\le\ell\le a_n\)</span>. Es cota inferior global. Si <span class="math inline">\(T=0\)</span>, el prefijo está vacío y los conjuntos auxiliares son <span class="math inline">\(\{U\}\)</span> y <span class="math inline">\(\{\ell\}\)</span>: resultan <span class="math inline">\(M=U\)</span> y <span class="math inline">\(m=\ell\)</span>, sin tomar extremos de un conjunto vacío.</p>
+</section>
+<section id="solución-31" class="level3">
+<h3 class="anchored" data-anchor-id="solución-31">32. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-032"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-032"></span></p>
+<p>Desde <span class="math inline">\(T'\ge T\)</span> siguen valiendo no decrecimiento y la misma cota superior. El resultado eventual aplicado desde <span class="math inline">\(T\)</span> da <span class="math inline">\(a_n\to s=\sup S_{a,T}\)</span>; aplicado desde <span class="math inline">\(T'\)</span> da <span class="math inline">\(a_n\to s'=\sup S_{a,T'}\)</span>. La unicidad del límite real de C06 obliga a <span class="math inline">\(s=s'\)</span>.</p>
+<p>Esto no obliga a coincidir con el supremo global: en <span class="math inline">\(a_0=10\)</span> y <span class="math inline">\(a_n=1-1/n\)</span> para <span class="math inline">\(n\ge1\)</span>, el supremo de cualquier cola desde <span class="math inline">\(T'\ge1\)</span> es 1, mientras que <span class="math inline">\(\sup S_a=10\)</span>. La igualdad obtenida se refiere a las colas que cumplen las hipótesis.</p>
+</section>
+</section>
+<section id="qué-falla-al-retirar-una-hipótesis" class="level2">
+<h2 class="anchored" data-anchor-id="qué-falla-al-retirar-una-hipótesis">§7.5 — Qué falla al retirar una hipótesis</h2>
+<section id="solución-32" class="level3">
+<h3 class="anchored" data-anchor-id="solución-32">33. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-033"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-033"></span></p>
+<p><span id="MA-SEC-ANM-01-007-005"></span></p>
+<p>§7.3 exige una cota superior real; la cota inferior <span class="math inline">\(a_0\)</span> sólo impide que los términos bajen por debajo del inicial, sin impedir que crezcan más allá de toda barrera. Por ejemplo, <span class="math inline">\(a_n=n\)</span> es no decreciente y tiene cota inferior 0, pero carece de cota superior: para cualquier <span class="math inline">\(U\in\mathbb R\)</span>, la arquimedianidad proporciona <span class="math inline">\(N\in\mathbb N\)</span> con <span class="math inline">\(N&gt;U\)</span>, luego <span class="math inline">\(a_N&gt;U\)</span>. Por §7.5 escapa por arriba y no tiene límite real.</p>
+</section>
+<section id="solución-33" class="level3">
+<h3 class="anchored" data-anchor-id="solución-33">34. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-034"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-034"></span></p>
+<p>La comparación monótona entre índices da <span class="math inline">\(a_N\le a_n\)</span> para todo <span class="math inline">\(n\ge N\)</span>. Con <span class="math inline">\(a_N&gt;M\)</span>, resulta <span class="math inline">\(a_n\ge a_N&gt;M\)</span> en todos esos índices. Así el testigo se convierte en corte gracias al no decrecimiento. <span class="math inline">\(N\)</span> se elige después de fijar la barrera real <span class="math inline">\(M\)</span> y puede depender de ella, para la sucesión dada; no se exige un mismo corte para todas las barreras.</p>
+</section>
+<section id="solución-34" class="level3">
+<h3 class="anchored" data-anchor-id="solución-34">35. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-035"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-035"></span></p>
+<p>Fija <span class="math inline">\(A\in\mathbb R\)</span> y <span class="math inline">\(\varepsilon_0=1\)</span>. El escape aplicado a <span class="math inline">\(M=A+1\)</span> da <span class="math inline">\(T\in\mathbb N\)</span> con <span class="math inline">\(a_n&gt;A+1\)</span> para todos los <span class="math inline">\(n\ge T\)</span>. Ante cualquier corte propuesto <span class="math inline">\(K\)</span>, elige <span class="math inline">\(n=\max\{K,T\}\)</span>. Entonces <span class="math inline">\(n\ge K\)</span> y <span class="math inline">\(|a_n-A|=a_n-A&gt;1\)</span>. Por tanto ningún <span class="math inline">\(K\)</span> controla error menor que 1 en toda su cola, y <span class="math inline">\(A\)</span> no es límite. La barrera depende del candidato; <span class="math inline">\(T\)</span> se obtiene antes de recibir el corte propuesto y el índice infractor después de éste.</p>
+</section>
+<section id="solución-35" class="level3">
+<h3 class="anchored" data-anchor-id="solución-35">36. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-036"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-036"></span></p>
+<p>Si <span class="math inline">\(b\)</span> tuviera cota superior <span class="math inline">\(U\)</span>, de <span class="math inline">\(b_n=-a_n\le U\)</span> se seguiría <span class="math inline">\(a_n\ge-U\)</span> para todo <span class="math inline">\(n\)</span>, contradiciendo la ausencia de cota inferior de <span class="math inline">\(a\)</span>. Así <span class="math inline">\(b\)</span> carece de cota superior. Además, <span class="math inline">\(a\)</span> no creciente hace <span class="math inline">\(b\)</span> no decreciente. La exigencia <span class="math inline">\(a_n&lt;M\)</span> equivale a <span class="math inline">\(b_n&gt;-M\)</span>: se aplica el escape por arriba de <span class="math inline">\(b\)</span> a la barrera <span class="math inline">\(-M\)</span>. Cambiar el signo conserva el índice y revierte la desigualdad entre valores.</p>
+</section>
+<section id="solución-36" class="level3">
+<h3 class="anchored" data-anchor-id="solución-36">37. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-037"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-037"></span></p>
+<p>Fija la tolerancia <span class="math inline">\(\varepsilon_0=1\)</span>. Si <span class="math inline">\(A\ge0\)</span>, para cualquier corte <span class="math inline">\(K\)</span> elige el índice impar <span class="math inline">\(n=2K+1\ge K\)</span>. Su término es <span class="math inline">\(d_n=-1\)</span> y <span class="math inline">\(|d_n-A|=1+A\ge1\)</span>. Si <span class="math inline">\(A&lt;0\)</span>, elige el índice par <span class="math inline">\(n=2K\ge K\)</span>; entonces <span class="math inline">\(d_n=1\)</span> y <span class="math inline">\(|d_n-A|=1-A&gt;1\)</span>. Los dos casos cubren todos los candidatos reales. Un error igual a 1 basta porque la definición exige que todos los errores posteriores sean estrictamente menores que la tolerancia 1.</p>
+</section>
+<section id="solución-37" class="level3">
+<h3 class="anchored" data-anchor-id="solución-37">38. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-038"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-038"></span></p>
+<p>La implicación convergencia real <span class="math inline">\(\Rightarrow\)</span> acotación no requiere monotonía: es el resultado general de C06 §6.5. Para acotación <span class="math inline">\(\Rightarrow\)</span> convergencia sí se necesita la hipótesis monótona en esta equivalencia. Si la dirección es no decreciente, basta una cota superior, porque <span class="math inline">\(a_0\)</span> ya es cota inferior; se aplica §7.3. Si es no creciente, basta una cota inferior, porque <span class="math inline">\(a_0\)</span> ya es cota superior; se aplica §7.4. La constante cumple ambas direcciones y también está incluida.</p>
+</section>
+<section id="solución-38" class="level3">
+<h3 class="anchored" data-anchor-id="solución-38">39. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-039"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-039"></span></p>
+<p>La ventana <span class="math inline">\(|d_n|&lt;1/2\)</span> examina únicamente el candidato 0. Una muestra finita no acredita por sí sola el comportamiento de toda la sucesión; la fórmula <span class="math inline">\(d_n=(-1)^n\)</span> permite comprobar <span class="math inline">\(|d_n|=1\)</span> en todo índice y refutar ese candidato.</p>
+<p>Para excluir todos los candidatos se fija un real arbitrario <span class="math inline">\(A\)</span> y se usa la refutación de 037: con tolerancia 1, después de cada corte <span class="math inline">\(K\)</span> se toma <span class="math inline">\(2K+1\)</span> si <span class="math inline">\(A\ge0\)</span> o <span class="math inline">\(2K\)</span> si <span class="math inline">\(A&lt;0\)</span>. En ambos casos el error es al menos 1. La conclusión universal procede de ese argumento por casos, no de la única ventana centrada en 0.</p>
+</section>
+<section id="solución-39" class="level3">
+<h3 class="anchored" data-anchor-id="solución-39">40. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-040"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-040"></span></p>
+<p><span class="math inline">\(e_n=(-1)^n/(n+1)\)</span> converge a 0 por C06 §6.3, sin monotonía eventual: después de cualquier corte <span class="math inline">\(K\)</span>, el paso de <span class="math inline">\(2K\)</span> a <span class="math inline">\(2K+1\)</span> baja de positivo a negativo y el de <span class="math inline">\(2K+1\)</span> a <span class="math inline">\(2K+2\)</span> sube de negativo a positivo. Esos dos pasos refutan ambas direcciones en toda cola.</p>
+<p><span class="math inline">\(x_n=1-1/(n+1)\)</span> y <span class="math inline">\(c_n=1\)</span> convergen ambos a 1. La primera nunca lo alcanza porque <span class="math inline">\(1/(n+1)&gt;0\)</span>; la constante lo alcanza en cada índice. La igualdad de sus límites es igualdad de números reales, no de funciones: <span class="math inline">\(x_0=0\ne1=c_0\)</span>. Las tres tienen dominio <span class="math inline">\(\mathbb N\)</span> y codominio <span class="math inline">\(\mathbb R\)</span>, pero son sucesiones distintas.</p>
+</section>
+</section>
+<section id="una-recurrencia-existir-antes-de-calcular" class="level2">
+<h2 class="anchored" data-anchor-id="una-recurrencia-existir-antes-de-calcular">§7.6 — Una recurrencia: existir antes de calcular</h2>
+<section id="solución-40" class="level3">
+<h3 class="anchored" data-anchor-id="solución-40">41. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-041"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-041"></span></p>
+<p><span id="MA-SEC-ANM-01-007-006"></span></p>
+<p>El teorema monótono de §7.3 acredita primero la existencia de <span class="math inline">\(L_u\)</span>: <span class="math inline">\(u\)</span> es no decreciente y tiene cota superior 1. El desplazamiento de C06 §6.4 da <span class="math inline">\(u_{n+1}\to L_u\)</span>, mientras que las reglas de suma y escalar de C06 §6.6 dan <span class="math inline">\((u_n+1)/2\to(L_u+1)/2\)</span>. La recurrencia iguala estas dos sucesiones término a término; la unicidad del límite obliga a que <span class="math inline">\(L_u=(L_u+1)/2\)</span>, de donde <span class="math inline">\(L_u=1\)</span>. La ecuación identifica un límite cuya existencia ya estaba demostrada.</p>
+</section>
+<section id="solución-41" class="level3">
+<h3 class="anchored" data-anchor-id="solución-41">42. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-042"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-042"></span></p>
+<p>Ambas son funciones de <span class="math inline">\(\mathbb N\)</span> en <span class="math inline">\(\mathbb R\)</span>, pero en el índice 0 la primera vale <span class="math inline">\(u_0=0\)</span> y la desplazada vale <span class="math inline">\(u_1=1/2\)</span>. Esa diferencia basta para que sean sucesiones distintas. El dominio de la desplazada sigue siendo <span class="math inline">\(\mathbb N\)</span>: su regla evalúa <span class="math inline">\(u\)</span> en <span class="math inline">\(n+1\)</span>. Compartir el límite real 1 no las iguala como funciones.</p>
+</section>
+<section id="solución-42" class="level3">
+<h3 class="anchored" data-anchor-id="solución-42">43. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-043"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-043"></span></p>
+<p>Queda pendiente demostrar que existe un límite real. Bajo la suposición <span class="math inline">\(w_n\to W\)</span>, el desplazamiento y la regla del escalar permiten obtener <span class="math inline">\(W=-W\)</span>, luego <span class="math inline">\(W=0\)</span>; esto sólo restringe el valor de un límite supuesto. La inducción da <span class="math inline">\(w_n=(-1)^n\)</span>, y §7.5 refuta su convergencia. En particular, con tolerancia 1 y cualquier corte <span class="math inline">\(K\)</span>, el índice <span class="math inline">\(n=K\)</span> tiene <span class="math inline">\(|w_n-0|=1\)</span>, por lo que 0 tampoco es límite.</p>
+</section>
+<section id="solución-43" class="level3">
+<h3 class="anchored" data-anchor-id="solución-43">44. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-044"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-044"></span></p>
+<p>Antes de evaluar <span class="math inline">\(2/y_n\)</span> debe conocerse <span class="math inline">\(y_n\ne0\)</span>; aquí se demuestra la propiedad más fuerte <span class="math inline">\(y_n&gt;0\)</span>. La base <span class="math inline">\(y_0=2\)</span> la cumple. Si <span class="math inline">\(y_n&gt;0\)</span>, su inverso existe y <span class="math inline">\(2/y_n&gt;0\)</span>, de modo que <span class="math inline">\(y_{n+1}=(y_n+2/y_n)/2&gt;0\)</span> es un único real definido. La inducción permite continuar para todo <span class="math inline">\(n\in\mathbb N\)</span>. Con <span class="math inline">\(y_0=0\)</span>, el cociente <span class="math inline">\(2/y_0\)</span> no está definido y la prescripción no produce <span class="math inline">\(y_1\)</span>.</p>
+</section>
+<section id="solución-44" class="level3">
+<h3 class="anchored" data-anchor-id="solución-44">45. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-045"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-045"></span></p>
+<p>La positividad de los términos está acreditada antes de usar la identidad. La base es <span class="math inline">\(y_0^2=4&gt;2\)</span>. Si <span class="math inline">\(y_n^2&gt;2\)</span>, entonces <span class="math inline">\((y_n^2-2)^2&gt;0\)</span> y <span class="math inline">\(4y_n^2&gt;0\)</span>; por tanto</p>
+<p><span class="math display">\[
+y_{n+1}^2-2=\frac{(y_n^2-2)^2}{4y_n^2}&gt;0.
+\]</span></p>
+<p>La positividad estricta del numerador conserva la desigualdad estricta; un numerador meramente no negativo sólo daría <span class="math inline">\(y_{n+1}^2\ge2\)</span>. La inducción prueba <span class="math inline">\(y_n^2&gt;2\)</span> en todos los índices. Si algún término satisficiera <span class="math inline">\(0&lt;y_n&lt;1\)</span>, tendríamos <span class="math inline">\(y_n^2&lt;y_n&lt;1\)</span>, contradicción. Así <span class="math inline">\(y_n\ge1\)</span> para todo <span class="math inline">\(n\)</span>, sin presuponer una raíz ni el límite.</p>
+</section>
+<section id="solución-45" class="level3">
+<h3 class="anchored" data-anchor-id="solución-45">46. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-046"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-046"></span></p>
+<p>En <span class="math inline">\(y_{n+1}-y_n=(2-y_n^2)/(2y_n)\)</span>, el invariante <span class="math inline">\(y_n^2&gt;2\)</span> hace negativo el numerador y la positividad <span class="math inline">\(y_n&gt;0\)</span> hace positivo el denominador. La diferencia es estrictamente negativa, luego <span class="math inline">\(y\)</span> es decreciente y, en particular, no creciente. Junto con la cota inferior 1 demostrada, esto habilita el teorema de §7.4 y garantiza un límite real. La cota superior 2 se obtiene de la dirección: por comparación de índices, <span class="math inline">\(y_n\le y_0=2\)</span>.</p>
+</section>
+<section id="solución-46" class="level3">
+<h3 class="anchored" data-anchor-id="solución-46">47. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-047"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-047"></span></p>
+<p>Una sucesión positiva puede converger a 0: <span class="math inline">\(1/(n+1)\)</span> es un ejemplo de C06. Por eso la positividad de cada <span class="math inline">\(y_n\)</span> no asegura por sí sola <span class="math inline">\(L\ne0\)</span>. Aquí primero se acredita la existencia de <span class="math inline">\(L\)</span> y se aplica el orden de límites a <span class="math inline">\(1\le y_n\le2\)</span>, obteniendo <span class="math inline">\(1\le L\le2\)</span>, luego <span class="math inline">\(L&gt;0\)</span>. Para el cociente de C06 §6.6 se usan la convergencia de la constante 2 a 2, <span class="math inline">\(y_n\to L\ne0\)</span> y <span class="math inline">\(y_n\ne0\)</span> en todos los índices. Sólo con esos datos se concluye <span class="math inline">\(2/y_n\to2/L\)</span>.</p>
+</section>
+<section id="solución-47" class="level3">
+<h3 class="anchored" data-anchor-id="solución-47">48. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-048"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-048"></span></p>
+<p>Si otro real <span class="math inline">\(r&gt;0\)</span> satisface <span class="math inline">\(r^2=2\)</span>, entonces <span class="math inline">\((L-r)(L+r)=L^2-r^2=0\)</span>. Como <span class="math inline">\(L+r&gt;0\)</span>, ese factor es no nulo y resulta <span class="math inline">\(L=r\)</span>: la raíz positiva es única. Para cada <span class="math inline">\(n\in\mathbb N\)</span>, el invariante da</p>
+<p><span class="math display">\[
+(y_n-L)(y_n+L)=y_n^2-L^2=y_n^2-2&gt;0.
+\]</span></p>
+<p>Como <span class="math inline">\(y_n+L&gt;0\)</span>, se sigue <span class="math inline">\(y_n-L&gt;0\)</span>, es decir, <span class="math inline">\(y_n&gt;L\)</span> en todo índice. Los cuatro puntos de la tabla sólo verifican cuatro términos; no acreditan el invariante para todo <span class="math inline">\(n\)</span>, la existencia del límite ni la desigualdad universal respecto de él. La inducción y el teorema monótono cierran esas obligaciones. La unicidad de la raíz se prueba por factorización, no por inspección de la muestra.</p>
+</section>
+</section>
+<section id="la-misma-construcción-sobre-los-racionales" class="level2">
+<h2 class="anchored" data-anchor-id="la-misma-construcción-sobre-los-racionales">§7.7 — La misma construcción sobre los racionales</h2>
+<section id="solución-48" class="level3">
+<h3 class="anchored" data-anchor-id="solución-48">49. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-049"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-049"></span></p>
+<p><span id="MA-SEC-ANM-01-007-007"></span></p>
+<p>Los tipos son <span class="math inline">\(y:\mathbb N\to\mathbb Q\)</span>, <span class="math inline">\(\iota:\mathbb Q\to\mathbb R\)</span> y <span class="math inline">\(\widetilde y=\iota\circ y:\mathbb N\to\mathbb R\)</span>. Componer cambia el codominio de la sucesión y lleva cada valor racional a su imagen real: <span class="math inline">\(\widetilde y_n=\iota(y_n)\)</span>. Conserva el dominio <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span> y el índice de cada evaluación; no desplaza ni reordena los términos. La identificación usual de los valores no iguala las dos funciones con codominios distintos.</p>
+</section>
+<section id="solución-49" class="level3">
+<h3 class="anchored" data-anchor-id="solución-49">50. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-050"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-050"></span></p>
+<p>La base <span class="math inline">\(y_0=2\)</span> es racional positiva. Si <span class="math inline">\(y_n\in\mathbb Q\)</span> y <span class="math inline">\(y_n&gt;0\)</span>, entonces <span class="math inline">\(y_n\ne0\)</span>: esa no anulación autoriza el inverso en el cuerpo <span class="math inline">\(\mathbb Q\)</span>. Además, <span class="math inline">\(1/y_n&gt;0\)</span>, luego <span class="math inline">\(2/y_n\)</span> es racional positivo. La suma <span class="math inline">\(y_n+2/y_n\)</span> y su mitad son racionales positivas, por lo que la fórmula define un único <span class="math inline">\(y_{n+1}\in\mathbb Q\)</span> positivo. La inducción acredita ambas propiedades en todo índice, antes de ejecutar cada división.</p>
+</section>
+<section id="solución-50" class="level3">
+<h3 class="anchored" data-anchor-id="solución-50">51. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-051"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-051"></span></p>
+<p>La inclusión conserva las operaciones y los inversos de valores no nulos, así que <span class="math inline">\(\widetilde y_0=2\)</span> y <span class="math inline">\(\widetilde y_{n+1}=(\widetilde y_n+2/\widetilde y_n)/2\)</span>. Esta sucesión y la real de §7.6 tienen el mismo dominio y codominio. Coinciden en 0; si coinciden en <span class="math inline">\(n\)</span>, la fórmula ya definida produce términos iguales en <span class="math inline">\(n+1\)</span>. Por inducción coinciden en toda evaluación y son la misma función real. En cambio, <span class="math inline">\(y\)</span> tiene codominio <span class="math inline">\(\mathbb Q\)</span> y <span class="math inline">\(\widetilde y\)</span> tiene codominio <span class="math inline">\(\mathbb R\)</span>; su relación es la composición explícita con <span class="math inline">\(\iota\)</span>.</p>
+</section>
+<section id="solución-51" class="level3">
+<h3 class="anchored" data-anchor-id="solución-51">52. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-052"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-052"></span></p>
+<p>Si <span class="math inline">\(p\)</span> fuera impar, sería <span class="math inline">\(p=2k+1\)</span> para algún <span class="math inline">\(k\in\mathbb Z\)</span>, y <span class="math inline">\(p^2=2(2k^2+2k)+1\)</span> sería impar. Por contraposición, <span class="math inline">\(p^2\)</span> par obliga a <span class="math inline">\(p\)</span> par. La ecuación <span class="math inline">\(p^2=2q^2\)</span> permite escribir <span class="math inline">\(p=2h\)</span> y obtener <span class="math inline">\(4h^2=2q^2\)</span>, luego <span class="math inline">\(q^2=2h^2\)</span>. Así <span class="math inline">\(q^2\)</span> también es par y el mismo argumento hace par a <span class="math inline">\(q\)</span>. El divisor común 2 contradice que <span class="math inline">\(p/q\)</span> estuviera reducida; esa hipótesis se usa precisamente al cerrar la contradicción.</p>
+</section>
+<section id="solución-52" class="level3">
+<h3 class="anchored" data-anchor-id="solución-52">53. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-053"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-053"></span></p>
+<p>La condición de límite racional <span class="math inline">\(r\)</span> sería, para cada tolerancia real <span class="math inline">\(\varepsilon&gt;0\)</span>, encontrar <span class="math inline">\(N\in\mathbb N\)</span> tal que <span class="math inline">\(n\ge N\)</span> implique <span class="math inline">\(|\iota(y_n)-\iota(r)|&lt;\varepsilon\)</span>. Como <span class="math inline">\(\iota(y_n)=\widetilde y_n\)</span>, esto afirma <span class="math inline">\(\widetilde y_n\to\iota(r)\)</span> en <span class="math inline">\(\mathbb R\)</span>. Pero §7.6 ya dio <span class="math inline">\(\widetilde y_n\to L\)</span>. La unicidad del límite real de C06 obligaría a <span class="math inline">\(\iota(r)=L\)</span>, contradiciendo que <span class="math inline">\(L\)</span> no pertenece a la imagen de <span class="math inline">\(\mathbb Q\)</span>. Por tanto no existe tal límite racional.</p>
+</section>
+<section id="solución-53" class="level3">
+<h3 class="anchored" data-anchor-id="solución-53">54. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-054"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-054"></span></p>
+<p>Fija <span class="math inline">\(r\in\mathbb Q\)</span>. La irracionalidad de <span class="math inline">\(L\)</span> implica <span class="math inline">\(L\ne\iota(r)\)</span>, luego <span class="math inline">\(d=|L-\iota(r)|&gt;0\)</span>. Elige la tolerancia fija <span class="math inline">\(\varepsilon_0=d/2\)</span>. Como <span class="math inline">\(\widetilde y_n\to L\)</span>, existe <span class="math inline">\(T\in\mathbb N\)</span> con <span class="math inline">\(|\widetilde y_n-L|&lt;d/2\)</span> para todo <span class="math inline">\(n\ge T\)</span>. La desigualdad triangular da</p>
+<p><span class="math display">\[
+|\widetilde y_n-\iota(r)|\ge d-|L-\widetilde y_n|&gt;d/2.
+\]</span></p>
+<p>Ante cualquier corte propuesto <span class="math inline">\(K\)</span>, toma <span class="math inline">\(n=\max\{K,T\}\)</span>. Este índice es al menos <span class="math inline">\(K\)</span> y su error supera <span class="math inline">\(\varepsilon_0\)</span>, refutando la condición de límite para ese corte. La tolerancia y <span class="math inline">\(T\)</span> pueden depender de <span class="math inline">\(r\)</span>; el índice infractor se elige después de conocer <span class="math inline">\(K\)</span>.</p>
+</section>
+<section id="solución-54" class="level3">
+<h3 class="anchored" data-anchor-id="solución-54">55. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-055"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-055"></span></p>
+<p>Los cuatro puntos representan sólo cuatro evaluaciones exactas y permiten comparar esos valores. La inducción acredita racionalidad, positividad e invariantes en todos los índices; con ellos se obtienen descenso y cotas. El teorema monótono garantiza un límite real, las reglas de C06 lo identifican y la paridad prueba su irracionalidad. La ampliación cambia la escala de representación, no los valores ni la función: no puede convertir <span class="math inline">\(L\)</span> en un término. En cada índice, <span class="math inline">\(\widetilde y_n&gt;L\)</span> por §7.6; además, los términos están en la imagen de <span class="math inline">\(\mathbb Q\)</span> y <span class="math inline">\(L\)</span> no pertenece a ella.</p>
+</section>
+<section id="solución-55" class="level3">
+<h3 class="anchored" data-anchor-id="solución-55">56. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-056"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-056"></span></p>
+<p>La completitud real se usa al aplicar §7.4: garantiza que el conjunto real no vacío de valores, acotado inferiormente, tenga un ínfimo <span class="math inline">\(L\in\mathbb R\)</span>; la monotonía permite demostrar después la convergencia a ese extremo. Dentro de <span class="math inline">\(\mathbb Q\)</span> se ejecutan la construcción recursiva, los inversos de términos no nulos, la inducción de racionalidad y positividad, la identidad cuadrática, las comparaciones, el descenso y las cotas racionales 1 y 2. La paridad excluye cualquier racional cuyo cuadrado sea 2. Así, <span class="math inline">\(y:\mathbb N\to\mathbb Q\)</span> es monótona y acotada pero carece de límite racional, mientras que <span class="math inline">\(\widetilde y:\mathbb N\to\mathbb R\)</span> converge al real positivo <span class="math inline">\(L=\sqrt2\)</span>. El conjunto de candidatos permitidos cambia, aunque los índices y valores correspondientes se conservan.</p>
+</section>
+</section>
+<section id="elegir-el-argumento-y-declarar-su-alcance" class="level2">
+<h2 class="anchored" data-anchor-id="elegir-el-argumento-y-declarar-su-alcance">§7.8 — Elegir el argumento y declarar su alcance</h2>
+<section id="solución-56" class="level3">
+<h3 class="anchored" data-anchor-id="solución-56">57. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-057"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-057"></span></p>
+<p><span id="MA-SEC-ANM-01-007-008"></span></p>
+<p>Comprobar un candidato <span class="math inline">\(A\in\mathbb R\)</span> exige que, para cada <span class="math inline">\(\varepsilon&gt;0\)</span>, un corte controle <span class="math inline">\(|a_n-A|&lt;\varepsilon\)</span> en todos los índices posteriores: sirve la definición de C06. Garantizar existencia sin candidato previo requiere construir algún límite; para una sucesión real no decreciente con cota superior, §7.3 lo obtiene como supremo, y para una no creciente con cota inferior, §7.4 lo obtiene como ínfimo. Identificar un límite existente exige determinar su valor: pueden usarse las propiedades del extremo o las reglas de C06 y la unicidad, comprobando previamente las hipótesis de cada operación.</p>
+</section>
+<section id="solución-57" class="level3">
+<h3 class="anchored" data-anchor-id="solución-57">58. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-058"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-058"></span></p>
+<p>Por la definición, <span class="math inline">\(|x_n-1|=1/(n+1)\)</span>. Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, elige por arquimedianidad <span class="math inline">\(N\in\mathbb N\)</span> con <span class="math inline">\(N&gt;1/\varepsilon\)</span>. Para todo <span class="math inline">\(n\ge N\)</span>, se tiene <span class="math inline">\(n+1&gt;1/\varepsilon\)</span>, luego <span class="math inline">\(|x_n-1|&lt;\varepsilon\)</span>; así <span class="math inline">\(x_n\to1\)</span>.</p>
+<p>Por orden, <span class="math inline">\(x_{n+1}-x_n=1/[(n+1)(n+2)]&gt;0\)</span> y <span class="math inline">\(x_n&lt;1\)</span>. El teorema de §7.3 usa completitud para obtener convergencia a <span class="math inline">\(s=\sup S_x\)</span>. Si <span class="math inline">\(B&lt;1\)</span>, elige un natural <span class="math inline">\(m&gt;1/(1-B)\)</span>; entonces <span class="math inline">\(1/(m+1)&lt;1-B\)</span> y <span class="math inline">\(x_m&gt;B\)</span>. Ningún <span class="math inline">\(B&lt;1\)</span> es cota superior, mientras que 1 sí lo es, de modo que <span class="math inline">\(s=1\)</span>. La primera ruta basta con el control arquimediano del error; esa propiedad ya fue deducida de completitud en C03, por lo que no se afirma independencia de ella.</p>
+</section>
+<section id="solución-58" class="level3">
+<h3 class="anchored" data-anchor-id="solución-58">59. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-059"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-059"></span></p>
+<p>Una vez probado <span class="math inline">\(x_n\to1\)</span>, las reglas de escalar y suma de C06 §6.6, junto con la constante de valor <span class="math inline">\(-3\)</span>, dan <span class="math inline">\(2x_n-3\to2\cdot1-3=-1\)</span>. Sus hipótesis de convergencia están acreditadas. En cambio, pasar al límite en una recurrencia presupone que ese límite existe y que las operaciones están admitidas. Resolver la ecuación resultante sólo identifica candidatos necesarios. Por ejemplo, <span class="math inline">\(w_{n+1}=-w_n\)</span>, <span class="math inline">\(w_0=1\)</span>, impone <span class="math inline">\(W=-W\)</span> y <span class="math inline">\(W=0\)</span> bajo una suposición de convergencia, pero <span class="math inline">\(w_n=(-1)^n\)</span> no converge.</p>
+</section>
+<section id="solución-59" class="level3">
+<h3 class="anchored" data-anchor-id="solución-59">60. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-060"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-060"></span></p>
+<p>La restricción de <span class="math inline">\(a\)</span> tiene dominio <span class="math inline">\(D=\{n\in\mathbb N:n\ge1\}\)</span> y codominio <span class="math inline">\(\mathbb R\)</span>. La reindexación <span class="math inline">\(c:\mathbb N\to\mathbb R\)</span> tiene regla <span class="math inline">\(c_k=a_{1+k}=1-1/(k+1)=x_k\)</span>. Como <span class="math inline">\(c\)</span> y <span class="math inline">\(x\)</span> comparten dominio, codominio y cada evaluación, son la misma función. Si <span class="math inline">\(K\)</span> controla el error de <span class="math inline">\(c\)</span> para una tolerancia dada, toma <span class="math inline">\(N=1+K\)</span> para <span class="math inline">\(a\)</span>. Para <span class="math inline">\(n\ge N\)</span>, el natural <span class="math inline">\(k=n-1\)</span> satisface <span class="math inline">\(k\ge K\)</span> y <span class="math inline">\(|a_n-1|=|c_k-1|\)</span>, trasladando el mismo control.</p>
+</section>
+<section id="solución-60" class="level3">
+<h3 class="anchored" data-anchor-id="solución-60">61. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-061"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-061"></span></p>
+<p>El conjunto global <span class="math inline">\(S_a\)</span> contiene 10 y todos los demás términos son menores que 1; por eso <span class="math inline">\(\sup S_a=10\)</span>. El conjunto de cola <span class="math inline">\(S_{a,1}=\{a_n:n\ge1\}\)</span> coincide con <span class="math inline">\(S_x\)</span>, luego <span class="math inline">\(\sup S_{a,1}=1\)</span>. La sucesión original converge a 1 por transferencia desde esa cola. La conclusión correcta es: si la cola desde <span class="math inline">\(T\)</span> es no decreciente y está acotada superiormente en <span class="math inline">\(\mathbb R\)</span>, entonces el límite de la sucesión original es <span class="math inline">\(\sup S_{a,T}\)</span>. No se sustituye ese conjunto por el global, que conserva el prefijo.</p>
+</section>
+<section id="solución-61" class="level3">
+<h3 class="anchored" data-anchor-id="solución-61">62. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-062"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-062"></span></p>
+<p><span class="math inline">\(d_n=(-1)^n\)</span> está acotada, pero carece de monotonía incluso eventual: después de cualquier corte aparecen pasos de 1 a <span class="math inline">\(-1\)</span> y de <span class="math inline">\(-1\)</span> a 1. §7.5 ya refutó todos sus candidatos reales, así que no converge. <span class="math inline">\(e_n=(-1)^n/(n+1)\)</span> también carece de monotonía eventual, por pasos alternos de positivo a negativo y de negativo a positivo; sin embargo, C06 acredita <span class="math inline">\(e_n\to0\)</span> mediante el error <span class="math inline">\(1/(n+1)\)</span>. En ambos casos falta la dirección exigida para aplicar el teorema monótono; esa falla no decide por sí sola la convergencia.</p>
+<p>Para <span class="math inline">\(a_n=n\)</span> sí hay no decrecimiento y cota inferior 0, pero falta la cota superior pertinente. Por arquimedianidad, dada una barrera real <span class="math inline">\(M\)</span>, existe <span class="math inline">\(N&gt;M\)</span> y todo <span class="math inline">\(n\ge N\)</span> satisface <span class="math inline">\(a_n=n&gt;M\)</span>. Es el escape por arriba de §7.5, que excluye un límite real sin incorporar un infinito al codominio.</p>
+</section>
+<section id="solución-62" class="level3">
+<h3 class="anchored" data-anchor-id="solución-62">63. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-063"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-063"></span></p>
+<p>Para dividir por <span class="math inline">\(y_n\)</span>, la inducción de positividad prueba <span class="math inline">\(y_n&gt;0\)</span>, luego <span class="math inline">\(y_n\ne0\)</span>, antes de cada paso recursivo. Para garantizar un límite real, el invariante <span class="math inline">\(y_n^2&gt;2\)</span> y la positividad permiten demostrar descenso y la cota inferior 1; §7.4 se aplica a esa sucesión no creciente y acotada inferiormente. Para dividir por <span class="math inline">\(L\)</span>, se necesita una obligación distinta: una vez acreditado <span class="math inline">\(y_n\to L\)</span>, el orden de límites aplicado a <span class="math inline">\(1\le y_n\le2\)</span> da <span class="math inline">\(1\le L\le2\)</span>, luego <span class="math inline">\(L\ne0\)</span>. Junto con la convergencia y los denominadores no nulos, ese margen habilita la regla del cociente para <span class="math inline">\(2/y_n\to2/L\)</span>.</p>
+</section>
+<section id="solución-63" class="level3">
+<h3 class="anchored" data-anchor-id="solución-63">64. Solución</h3>
+<p><span id="MA-MIC-ANM-01-007-064"></span></p>
+<p><span id="MA-MSOL-ANM-01-007-064"></span></p>
+<p>La construcción racional es <span class="math inline">\(y:\mathbb N\to\mathbb Q\)</span>; la inclusión es <span class="math inline">\(\iota:\mathbb Q\to\mathbb R\)</span> y su composición es <span class="math inline">\(\widetilde y=\iota\circ y:\mathbb N\to\mathbb R\)</span>. Comparten índices y valores correspondientes, pero se distinguen por el codominio. El candidato de un límite racional debe pertenecer a <span class="math inline">\(\mathbb Q\)</span>; el de un límite real pertenece a <span class="math inline">\(\mathbb R\)</span>.</p>
+<p>En una prueba de convergencia a un candidato fijo <span class="math inline">\(A\)</span>, se fija primero <span class="math inline">\(\varepsilon&gt;0\)</span> y se elige <span class="math inline">\(N\)</span> que puede depender de <span class="math inline">\(\varepsilon\)</span>, de <span class="math inline">\(A\)</span> y de la sucesión, pero no del índice posterior <span class="math inline">\(n\)</span>; después se controla todo <span class="math inline">\(n\ge N\)</span>. En una prueba de escape, se fija la barrera real <span class="math inline">\(M\)</span> y se elige un corte <span class="math inline">\(N\)</span> que puede depender de ella, para controlar todos los índices posteriores. Para refutar un candidato fijo <span class="math inline">\(A\)</span>, se elige una tolerancia <span class="math inline">\(\varepsilon_0&gt;0\)</span> que puede depender de <span class="math inline">\(A\)</span>; ante cada corte propuesto <span class="math inline">\(K\)</span>, se encuentra un índice <span class="math inline">\(n\ge K\)</span>, dependiente de <span class="math inline">\(K\)</span>, con <span class="math inline">\(|a_n-A|\ge\varepsilon_0\)</span>. La tolerancia se mantiene fija al variar <span class="math inline">\(K\)</span>. En el caso racional, el error se escribe <span class="math inline">\(|\iota(y_n)-\iota(r)|\)</span> para <span class="math inline">\(r\in\mathbb Q\)</span>.</p>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.html">Capítulo 7</a> · <a href="analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-microcontroles.html">Soluciones de microcontroles</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

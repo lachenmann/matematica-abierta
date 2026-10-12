@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Soluciones de microcontroles — Capítulo 6 – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">§6.1</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link" data-scroll-target="#pregunta-1">001. Pregunta 1</a></li>
+  <li><a href="#pregunta-2" id="toc-pregunta-2" class="nav-link" data-scroll-target="#pregunta-2">002. Pregunta 2</a></li>
+  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">003. Pregunta 3</a></li>
+  <li><a href="#pregunta-4" id="toc-pregunta-4" class="nav-link" data-scroll-target="#pregunta-4">004. Pregunta 4</a></li>
+  <li><a href="#pregunta-5" id="toc-pregunta-5" class="nav-link" data-scroll-target="#pregunta-5">005. Pregunta 5</a></li>
+  <li><a href="#pregunta-6" id="toc-pregunta-6" class="nav-link" data-scroll-target="#pregunta-6">006. Pregunta 6</a></li>
+  <li><a href="#pregunta-7" id="toc-pregunta-7" class="nav-link" data-scroll-target="#pregunta-7">007. Pregunta 7</a></li>
+  <li><a href="#pregunta-8" id="toc-pregunta-8" class="nav-link" data-scroll-target="#pregunta-8">008. Pregunta 8</a></li>
+  </ul></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">§6.2</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1-1" id="toc-pregunta-1-1" class="nav-link" data-scroll-target="#pregunta-1-1">009. Pregunta 1</a></li>
+  <li><a href="#pregunta-2-1" id="toc-pregunta-2-1" class="nav-link" data-scroll-target="#pregunta-2-1">010. Pregunta 2</a></li>
+  <li><a href="#pregunta-3-1" id="toc-pregunta-3-1" class="nav-link" data-scroll-target="#pregunta-3-1">011. Pregunta 3</a></li>
+  <li><a href="#pregunta-4-1" id="toc-pregunta-4-1" class="nav-link" data-scroll-target="#pregunta-4-1">012. Pregunta 4</a></li>
+  <li><a href="#pregunta-5-1" id="toc-pregunta-5-1" class="nav-link" data-scroll-target="#pregunta-5-1">013. Pregunta 5</a></li>
+  <li><a href="#pregunta-6-1" id="toc-pregunta-6-1" class="nav-link" data-scroll-target="#pregunta-6-1">014. Pregunta 6</a></li>
+  <li><a href="#pregunta-7-1" id="toc-pregunta-7-1" class="nav-link" data-scroll-target="#pregunta-7-1">015. Pregunta 7</a></li>
+  <li><a href="#pregunta-8-1" id="toc-pregunta-8-1" class="nav-link" data-scroll-target="#pregunta-8-1">016. Pregunta 8</a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">§6.3</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1-2" id="toc-pregunta-1-2" class="nav-link" data-scroll-target="#pregunta-1-2">017. Pregunta 1</a></li>
+  <li><a href="#pregunta-2-2" id="toc-pregunta-2-2" class="nav-link" data-scroll-target="#pregunta-2-2">018. Pregunta 2</a></li>
+  <li><a href="#pregunta-3-2" id="toc-pregunta-3-2" class="nav-link" data-scroll-target="#pregunta-3-2">019. Pregunta 3</a></li>
+  <li><a href="#pregunta-4-2" id="toc-pregunta-4-2" class="nav-link" data-scroll-target="#pregunta-4-2">020. Pregunta 4</a></li>
+  <li><a href="#pregunta-5-2" id="toc-pregunta-5-2" class="nav-link" data-scroll-target="#pregunta-5-2">021. Pregunta 5</a></li>
+  <li><a href="#pregunta-6-2" id="toc-pregunta-6-2" class="nav-link" data-scroll-target="#pregunta-6-2">022. Pregunta 6</a></li>
+  <li><a href="#pregunta-7-2" id="toc-pregunta-7-2" class="nav-link" data-scroll-target="#pregunta-7-2">023. Pregunta 7</a></li>
+  <li><a href="#pregunta-8-2" id="toc-pregunta-8-2" class="nav-link" data-scroll-target="#pregunta-8-2">024. Pregunta 8</a></li>
+  </ul></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">§6.4</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1-3" id="toc-pregunta-1-3" class="nav-link" data-scroll-target="#pregunta-1-3">025. Pregunta 1</a></li>
+  <li><a href="#pregunta-2-3" id="toc-pregunta-2-3" class="nav-link" data-scroll-target="#pregunta-2-3">026. Pregunta 2</a></li>
+  <li><a href="#pregunta-3-3" id="toc-pregunta-3-3" class="nav-link" data-scroll-target="#pregunta-3-3">027. Pregunta 3</a></li>
+  <li><a href="#pregunta-4-3" id="toc-pregunta-4-3" class="nav-link" data-scroll-target="#pregunta-4-3">028. Pregunta 4</a></li>
+  <li><a href="#pregunta-5-3" id="toc-pregunta-5-3" class="nav-link" data-scroll-target="#pregunta-5-3">029. Pregunta 5</a></li>
+  <li><a href="#pregunta-6-3" id="toc-pregunta-6-3" class="nav-link" data-scroll-target="#pregunta-6-3">030. Pregunta 6</a></li>
+  <li><a href="#pregunta-7-3" id="toc-pregunta-7-3" class="nav-link" data-scroll-target="#pregunta-7-3">031. Pregunta 7</a></li>
+  <li><a href="#pregunta-8-3" id="toc-pregunta-8-3" class="nav-link" data-scroll-target="#pregunta-8-3">032. Pregunta 8</a></li>
+  </ul></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">§6.5</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1-4" id="toc-pregunta-1-4" class="nav-link" data-scroll-target="#pregunta-1-4">033. Pregunta 1</a></li>
+  <li><a href="#pregunta-2-4" id="toc-pregunta-2-4" class="nav-link" data-scroll-target="#pregunta-2-4">034. Pregunta 2</a></li>
+  <li><a href="#pregunta-3-4" id="toc-pregunta-3-4" class="nav-link" data-scroll-target="#pregunta-3-4">035. Pregunta 3</a></li>
+  <li><a href="#pregunta-4-4" id="toc-pregunta-4-4" class="nav-link" data-scroll-target="#pregunta-4-4">036. Pregunta 4</a></li>
+  <li><a href="#pregunta-5-4" id="toc-pregunta-5-4" class="nav-link" data-scroll-target="#pregunta-5-4">037. Pregunta 5</a></li>
+  <li><a href="#pregunta-6-4" id="toc-pregunta-6-4" class="nav-link" data-scroll-target="#pregunta-6-4">038. Pregunta 6</a></li>
+  <li><a href="#pregunta-7-4" id="toc-pregunta-7-4" class="nav-link" data-scroll-target="#pregunta-7-4">039. Pregunta 7</a></li>
+  <li><a href="#pregunta-8-4" id="toc-pregunta-8-4" class="nav-link" data-scroll-target="#pregunta-8-4">040. Pregunta 8</a></li>
+  </ul></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">§6.6</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1-5" id="toc-pregunta-1-5" class="nav-link" data-scroll-target="#pregunta-1-5">041. Pregunta 1</a></li>
+  <li><a href="#pregunta-2-5" id="toc-pregunta-2-5" class="nav-link" data-scroll-target="#pregunta-2-5">042. Pregunta 2</a></li>
+  <li><a href="#pregunta-3-5" id="toc-pregunta-3-5" class="nav-link" data-scroll-target="#pregunta-3-5">043. Pregunta 3</a></li>
+  <li><a href="#pregunta-4-5" id="toc-pregunta-4-5" class="nav-link" data-scroll-target="#pregunta-4-5">044. Pregunta 4</a></li>
+  <li><a href="#pregunta-5-5" id="toc-pregunta-5-5" class="nav-link" data-scroll-target="#pregunta-5-5">045. Pregunta 5</a></li>
+  <li><a href="#pregunta-6-5" id="toc-pregunta-6-5" class="nav-link" data-scroll-target="#pregunta-6-5">046. Pregunta 6</a></li>
+  <li><a href="#pregunta-7-5" id="toc-pregunta-7-5" class="nav-link" data-scroll-target="#pregunta-7-5">047. Pregunta 7</a></li>
+  <li><a href="#pregunta-8-5" id="toc-pregunta-8-5" class="nav-link" data-scroll-target="#pregunta-8-5">048. Pregunta 8</a></li>
+  </ul></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">§6.7</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1-6" id="toc-pregunta-1-6" class="nav-link" data-scroll-target="#pregunta-1-6">049. Pregunta 1</a></li>
+  <li><a href="#pregunta-2-6" id="toc-pregunta-2-6" class="nav-link" data-scroll-target="#pregunta-2-6">050. Pregunta 2</a></li>
+  <li><a href="#pregunta-3-6" id="toc-pregunta-3-6" class="nav-link" data-scroll-target="#pregunta-3-6">051. Pregunta 3</a></li>
+  <li><a href="#pregunta-4-6" id="toc-pregunta-4-6" class="nav-link" data-scroll-target="#pregunta-4-6">052. Pregunta 4</a></li>
+  <li><a href="#pregunta-5-6" id="toc-pregunta-5-6" class="nav-link" data-scroll-target="#pregunta-5-6">053. Pregunta 5</a></li>
+  <li><a href="#pregunta-6-6" id="toc-pregunta-6-6" class="nav-link" data-scroll-target="#pregunta-6-6">054. Pregunta 6</a></li>
+  <li><a href="#pregunta-7-6" id="toc-pregunta-7-6" class="nav-link" data-scroll-target="#pregunta-7-6">055. Pregunta 7</a></li>
+  <li><a href="#pregunta-8-6" id="toc-pregunta-8-6" class="nav-link" data-scroll-target="#pregunta-8-6">056. Pregunta 8</a></li>
+  </ul></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">§6.8</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-1-7" id="toc-pregunta-1-7" class="nav-link" data-scroll-target="#pregunta-1-7">057. Pregunta 1</a></li>
+  <li><a href="#pregunta-2-7" id="toc-pregunta-2-7" class="nav-link" data-scroll-target="#pregunta-2-7">058. Pregunta 2</a></li>
+  <li><a href="#pregunta-3-7" id="toc-pregunta-3-7" class="nav-link" data-scroll-target="#pregunta-3-7">059. Pregunta 3</a></li>
+  <li><a href="#pregunta-4-7" id="toc-pregunta-4-7" class="nav-link" data-scroll-target="#pregunta-4-7">060. Pregunta 4</a></li>
+  <li><a href="#pregunta-5-7" id="toc-pregunta-5-7" class="nav-link" data-scroll-target="#pregunta-5-7">061. Pregunta 5</a></li>
+  <li><a href="#pregunta-6-7" id="toc-pregunta-6-7" class="nav-link" data-scroll-target="#pregunta-6-7">062. Pregunta 6</a></li>
+  <li><a href="#pregunta-7-7" id="toc-pregunta-7-7" class="nav-link" data-scroll-target="#pregunta-7-7">063. Pregunta 7</a></li>
+  <li><a href="#pregunta-8-7" id="toc-pregunta-8-7" class="nav-link" data-scroll-target="#pregunta-8-7">064. Pregunta 8</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Soluciones de microcontroles — Capítulo 6</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">11 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n.html">Capítulo 6</a> · <a href="analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>Las soluciones corresponden, en orden, a las ocho preguntas de «Antes de seguir» de cada sección. Los enunciados permanecen en el manuscrito. Se conserva <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span>.</p>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">§6.1</h2>
+<section id="pregunta-1" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-1">001. Pregunta 1</h3>
+<p><span id="MA-MIC-ANM-01-006-001"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-001"></span></p>
+<p><span id="MA-SEC-ANM-01-006-001"></span></p>
+<p><span class="math inline">\(a\)</span> es una función <span class="math inline">\(\mathbb N\to\mathbb R\)</span>; <span class="math inline">\(n\in\mathbb N\)</span> es un índice y <span class="math inline">\(a_n\in\mathbb R\)</span> su término. El candidato <span class="math inline">\(A\in\mathbb R\)</span> es otro número real, <span class="math inline">\(\varepsilon&gt;0\)</span> una tolerancia real y <span class="math inline">\(N\in\mathbb N\)</span> un umbral. Primero se fijan la sucesión <span class="math inline">\(a\)</span> y el candidato <span class="math inline">\(A\)</span>. Después se recibe <span class="math inline">\(\varepsilon\)</span>, se elige <span class="math inline">\(N\)</span> y se toma un índice arbitrario <span class="math inline">\(n\ge N\)</span>.</p>
+</section>
+<section id="pregunta-2" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-2">002. Pregunta 2</h3>
+<p><span id="MA-MIC-ANM-01-006-002"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-002"></span></p>
+<p>La sucesión <span class="math inline">\(a\)</span> converge al candidato <span class="math inline">\(A\)</span> si, para cada tolerancia real positiva, existe un umbral natural desde el que todos los términos tienen distancia a <span class="math inline">\(A\)</span> estrictamente menor que esa tolerancia. Simbólicamente,</p>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\ \exists N\in\mathbb N\ \forall n\in\mathbb N:\quad n\ge N\Longrightarrow |a_n-A|&lt;\varepsilon.
+\]</span></p>
+<p>La sucesión y el candidato están fijados antes de esa cuantificación.</p>
+</section>
+<section id="pregunta-3" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-3">003. Pregunta 3</h3>
+<p><span id="MA-MIC-ANM-01-006-003"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-003"></span></p>
+<p>En <span class="math inline">\(B(0,2)\)</span> sirve <span class="math inline">\(N=0\)</span>, pues los dos valores posibles, 0 y 1, tienen módulo menor que 2. En <span class="math inline">\(B(0,1/2)\)</span> no sirve ningún umbral: para cualquier <span class="math inline">\(N\)</span>, el índice impar <span class="math inline">\(2N+1\ge N\)</span> tiene valor 1 y error <span class="math inline">\(1\ge1/2\)</span>. Por tanto, <span class="math inline">\(r\)</span> no converge al candidato 0. Esta comprobación, por sí sola, refuta ese candidato; no formula todavía una refutación de todos los reales.</p>
+</section>
+<section id="pregunta-4" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-4">004. Pregunta 4</h3>
+<p><span id="MA-MIC-ANM-01-006-004"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-004"></span></p>
+<p>Si <span class="math inline">\(n\ge K\ge N\)</span>, entonces <span class="math inline">\(n\ge N\)</span> y se aplica la estimación acreditada por el corte original. Así <span class="math inline">\(K\)</span> controla la misma tolerancia en toda su cola. La definición exige algún testigo natural suficiente, no el menor. La posibilidad de aumentar el umbral permite sincronizar controles sin tener que minimizar cada corte.</p>
+</section>
+<section id="pregunta-5" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-5">005. Pregunta 5</h3>
+<p><span id="MA-MIC-ANM-01-006-005"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-005"></span></p>
+<p>El valor 2 es interior, con error 0. Los valores <span class="math inline">\(5/3\)</span> y <span class="math inline">\(7/3\)</span> están en la frontera de <span class="math inline">\(B(2,1/3)\)</span>, porque sus errores respecto de 2 son exactamente <span class="math inline">\(1/3\)</span>. Sólo el valor 2 cumple el error estricto. Estar en el intervalo cerrado correspondiente no equivale a estar en la bola abierta.</p>
+</section>
+<section id="pregunta-6" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-6">006. Pregunta 6</h3>
+<p><span id="MA-MIC-ANM-01-006-006"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-006"></span></p>
+<p>Con la convención de índice inicial 0, tenemos <span class="math inline">\(b_0=9\)</span>, <span class="math inline">\(b_1=-4\)</span> y <span class="math inline">\(b_n=1\)</span> desde <span class="math inline">\(n=2\)</span>. Para cualquier <span class="math inline">\(\varepsilon&gt;0\)</span>, elegimos <span class="math inline">\(N=2\)</span>. Si <span class="math inline">\(n\ge N\)</span>, entonces <span class="math inline">\(|b_n-1|=0&lt;\varepsilon\)</span>. Los dos términos anteriores no pertenecen a la cola que debe controlarse; sus errores no invalidan el testigo.</p>
+</section>
+<section id="pregunta-7" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-7">007. Pregunta 7</h3>
+<p><span id="MA-MIC-ANM-01-006-007"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-007"></span></p>
+<p>La tabla sólo muestra finitos índices, mientras que una captura exige controlar todos los índices posteriores al corte. Además, sólo comprueba las tolerancias que aparecen en ella, mientras que la definición exige responder a cualquier real positivo. Una fórmula de error y una estimación general pueden cerrar ambas obligaciones; la inspección de esas filas no las cierra.</p>
+</section>
+<section id="pregunta-8" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-8">008. Pregunta 8</h3>
+<p><span id="MA-MIC-ANM-01-006-008"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-008"></span></p>
+<p>Si <span class="math inline">\(a_n\to A\)</span> y <span class="math inline">\(U\)</span> es una vecindad de <span class="math inline">\(A\)</span>, existe <span class="math inline">\(r&gt;0\)</span> con <span class="math inline">\(B(A,r)\subseteq U\)</span>. La convergencia captura una cola en esa bola, y la inclusión la sitúa en <span class="math inline">\(U\)</span>. Recíprocamente, si cada vecindad captura una cola, para una tolerancia arbitraria <span class="math inline">\(\varepsilon&gt;0\)</span> usamos la vecindad concreta <span class="math inline">\(U=B(A,\varepsilon)\)</span>. Su captura significa <span class="math inline">\(|a_n-A|&lt;\varepsilon\)</span> eventualmente, que recupera la definición.</p>
+</section>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">§6.2</h2>
+<section id="pregunta-1-1" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-1-1">009. Pregunta 1</h3>
+<p><span id="MA-MIC-ANM-01-006-009"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-009"></span></p>
+<p><span id="MA-SEC-ANM-01-006-002"></span></p>
+<p>Se fijan <span class="math inline">\(a\)</span> y <span class="math inline">\(A\)</span>, se recibe <span class="math inline">\(\varepsilon&gt;0\)</span>, se construye <span class="math inline">\(N\in\mathbb N\)</span> y se verifica el error para un <span class="math inline">\(n\ge N\)</span> arbitrario. El umbral puede depender de <span class="math inline">\(a,A,\varepsilon\)</span>, pero no del índice posterior que recorre la cola. Elegirlo después de conocer ese índice cambiaría la obligación: no se habría construido un corte común para todos los términos tardíos.</p>
+</section>
+<section id="pregunta-2-1" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-2-1">010. Pregunta 2</h3>
+<p><span id="MA-MIC-ANM-01-006-010"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-010"></span></p>
+<p>Si un mismo <span class="math inline">\(N\)</span> funciona para todas las tolerancias y algún <span class="math inline">\(n\ge N\)</span> tiene error <span class="math inline">\(d=|a_n-A|&gt;0\)</span>, elegimos <span class="math inline">\(\varepsilon=d/2\)</span>. La captura exigiría <span class="math inline">\(d&lt;d/2\)</span>, contradicción. Luego <span class="math inline">\(a_n=A\)</span> para todos los índices desde <span class="math inline">\(N\)</span>. A la inversa, si la sucesión es constante de valor <span class="math inline">\(A\)</span> desde un corte, el error cero hace que ese corte sirva para cualquier tolerancia positiva.</p>
+</section>
+<section id="pregunta-3-1" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-3-1">011. Pregunta 3</h3>
+<p><span id="MA-MIC-ANM-01-006-011"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-011"></span></p>
+<p>Las cantidades <span class="math inline">\(\varepsilon_n=|a_n-A|+1\)</span> se adaptan al error de cada término y garantizan una desigualdad automática. No responden a una tolerancia arbitraria recibida previamente ni producen un corte que la controle. Por ejemplo, para <span class="math inline">\(a_n=1\)</span> y candidato 0 esas elecciones siempre dan 2, pero la tolerancia <span class="math inline">\(1/2\)</span> no captura ningún término. El procedimiento elude las exigencias pequeñas en lugar de acreditarlas.</p>
+</section>
+<section id="pregunta-4-1" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-4-1">012. Pregunta 4</h3>
+<p><span id="MA-MIC-ANM-01-006-012"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-012"></span></p>
+<p>Tras recibir <span class="math inline">\(\varepsilon\)</span> y escoger <span class="math inline">\(n\)</span>, se puede poner <span class="math inline">\(N=n+1\)</span>. Entonces <span class="math inline">\(n\ge N\)</span> es falso y la implicación resulta verdadera, cualquiera que sea el error. Se perdió el control de todos los índices posteriores a un único umbral: la elección depende del término que se quería comprobar y lo deja fuera de su propia cola.</p>
+</section>
+<section id="pregunta-5-1" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-5-1">013. Pregunta 5</h3>
+<p><span id="MA-MIC-ANM-01-006-013"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-013"></span></p>
+<p>Negar sucesivamente los cuantificadores y la implicación da</p>
+<p><span class="math display">\[
+\exists\varepsilon_0&gt;0\ \forall N\in\mathbb N\ \exists n\in\mathbb N:\quad n\ge N\ \text{y}\ |a_n-A|\ge\varepsilon_0.
+\]</span></p>
+<p>El candidato permanece fijo. La negación de <span class="math inline">\(P\Rightarrow Q\)</span> es <span class="math inline">\(P\land\neg Q\)</span>: el índice debe pertenecer a la cola y fallar la estimación. Una implicación permitiría que un índice anterior al corte acreditase vacíamente la condición, sin producir ningún infractor tardío.</p>
+</section>
+<section id="pregunta-6-1" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-6-1">014. Pregunta 6</h3>
+<p><span id="MA-MIC-ANM-01-006-014"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-014"></span></p>
+<p>El índice <span class="math inline">\(2N\ge N\)</span> es interior: su valor es 0 y su error es cero. El índice <span class="math inline">\(2N+1\ge N\)</span> es infractor: su valor es 1 y el error es al menos <span class="math inline">\(1/2\)</span>. El segundo acredita la refutación, pues impide que todos los términos de la cola estén en la ventana. La existencia simultánea de visitas interiores no elimina la infracción que sobrevive a cada corte.</p>
+</section>
+<section id="pregunta-7-1" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-7-1">015. Pregunta 7</h3>
+<p><span id="MA-MIC-ANM-01-006-015"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-015"></span></p>
+<p>El error respecto de 1 es <span class="math inline">\(|3-1|=2\)</span> en todo índice. Fijamos <span class="math inline">\(\varepsilon_0=2\)</span> y, después de cualquier corte <span class="math inline">\(N\)</span>, elegimos <span class="math inline">\(n=N\)</span>. El error cae en la frontera y falla la desigualdad estricta. Esto refuta el candidato 1, pero la sucesión converge a 3: con ese candidato el error es cero desde el índice 0. Refutar un número no refuta los demás.</p>
+</section>
+<section id="pregunta-8-1" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-8-1">016. Pregunta 8</h3>
+<p><span id="MA-MIC-ANM-01-006-016"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-016"></span></p>
+<p>Con el corte 0 y condición <span class="math inline">\(n&gt;0\)</span>, sólo se inspeccionan términos nulos, así que el error es menor que <span class="math inline">\(1/2\)</span>. Con <span class="math inline">\(n\ge0\)</span> se incluye <span class="math inline">\(d_0=1\)</span> y ese corte falla; bajo nuestra convención sirve <span class="math inline">\(N=1\)</span>. En general, un umbral <span class="math inline">\(K\)</span> para <span class="math inline">\(n&gt;K\)</span> se transforma en <span class="math inline">\(K+1\)</span> para <span class="math inline">\(n\ge K+1\)</span>, porque los índices son naturales. Si un umbral <span class="math inline">\(N\)</span> funciona para <span class="math inline">\(n\ge N\)</span>, también sirve para <span class="math inline">\(n&gt;N\)</span>, ya que se reduce la cola exigida.</p>
+</section>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">§6.3</h2>
+<section id="pregunta-1-2" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-1-2">017. Pregunta 1</h3>
+<p><span id="MA-MIC-ANM-01-006-017"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-017"></span></p>
+<p><span id="MA-SEC-ANM-01-006-003"></span></p>
+<p>Por la propiedad arquimediana de C03, elegimos <span class="math inline">\(m\in\mathbb N\)</span> con <span class="math inline">\(m&gt;t\)</span>. El conjunto finito <span class="math inline">\(F=\{j\in\{0,\ldots,m\}:j\le t\}\)</span> contiene 0 y tiene máximo <span class="math inline">\(K\)</span>. Como <span class="math inline">\(m&gt;t\)</span>, el índice <span class="math inline">\(m\)</span> no pertenece a <span class="math inline">\(F\)</span>, luego <span class="math inline">\(K&lt;m\)</span> y <span class="math inline">\(K+1\le m\)</span>. Si <span class="math inline">\(K+1\le t\)</span>, su sucesor pertenecería a <span class="math inline">\(F\)</span>, contradiciendo la maximalidad. Así <span class="math inline">\(K\le t&lt;K+1\)</span>.</p>
+</section>
+<section id="pregunta-2-2" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-2-2">018. Pregunta 2</h3>
+<p><span id="MA-MIC-ANM-01-006-018"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-018"></span></p>
+<p>Si <span class="math inline">\(K\)</span> y <span class="math inline">\(J\)</span> cumplen las dos desigualdades y <span class="math inline">\(K&lt;J\)</span>, el orden natural da <span class="math inline">\(K+1\le J\le t\)</span>, contradiciendo <span class="math inline">\(t&lt;K+1\)</span>. Si <span class="math inline">\(J&lt;K\)</span>, se obtiene la contradicción simétrica. Por tanto, <span class="math inline">\(K=J\)</span>. Toda elección de <span class="math inline">\(m&gt;t\)</span> que produzca esa propiedad conduce al mismo natural, pues la unicidad depende sólo de <span class="math inline">\(t\)</span> y no del conjunto auxiliar elegido.</p>
+</section>
+<section id="pregunta-3-2" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-3-2">019. Pregunta 3</h3>
+<p><span id="MA-MIC-ANM-01-006-019"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-019"></span></p>
+<p>Para <span class="math inline">\(\varepsilon=2/5\)</span>, <span class="math inline">\(N=\lfloor5/2\rfloor=2\)</span>. Si <span class="math inline">\(n\ge2\)</span>, entonces <span class="math inline">\(n+1\ge3&gt;5/2\)</span> y, al invertir cantidades positivas, <span class="math inline">\(|a_n|=1/(n+1)\le1/3&lt;2/5\)</span>. El paso <span class="math inline">\(n+1\ge N+1&gt;1/\varepsilon\)</span> vale para cualquier índice posterior, no sólo para el primero; por eso controla toda la cola.</p>
+</section>
+<section id="pregunta-4-2" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-4-2">020. Pregunta 4</h3>
+<p><span id="MA-MIC-ANM-01-006-020"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-020"></span></p>
+<p>Con <span class="math inline">\(\varepsilon=1/3\)</span>, la propuesta da <span class="math inline">\(N'=2\)</span> y el índice 2 tiene error <span class="math inline">\(1/3\)</span>, de frontera, que no satisface la condición estricta. Con <span class="math inline">\(\varepsilon=2\)</span>, da <span class="math inline">\(N'=-1\)</span>, que no es un natural. La reparación <span class="math inline">\(N=\lfloor1/\varepsilon\rfloor\)</span> funciona para cualquier tolerancia positiva: <span class="math inline">\(n\ge N\)</span> implica <span class="math inline">\(n+1\ge N+1&gt;1/\varepsilon\)</span>, luego <span class="math inline">\(1/(n+1)&lt;\varepsilon\)</span>. Cierra tanto el dominio del testigo como la estrictitud.</p>
+</section>
+<section id="pregunta-5-2" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-5-2">021. Pregunta 5</h3>
+<p><span id="MA-MIC-ANM-01-006-021"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-021"></span></p>
+<p>Si <span class="math inline">\(\varepsilon&gt;1\)</span>, entonces <span class="math inline">\(0&lt;1/\varepsilon&lt;1\)</span> y su piso es 0. La sucesión está definida en el índice 0, donde <span class="math inline">\(a_0=1&lt;\varepsilon\)</span>; además, para todos los naturales <span class="math inline">\(n\)</span>, <span class="math inline">\(a_n\le1&lt;\varepsilon\)</span>. Así el corte 0 controla incluso el primer término. Cambia el umbral suficiente para esa tolerancia, no el dominio <span class="math inline">\(\mathbb N\)</span> de la sucesión.</p>
+</section>
+<section id="pregunta-6-2" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-6-2">022. Pregunta 6</h3>
+<p><span id="MA-MIC-ANM-01-006-022"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-022"></span></p>
+<p>Para todo natural <span class="math inline">\(n\)</span>, <span class="math inline">\(|(-1)^n|=1\)</span> y <span class="math inline">\(n+1&gt;0\)</span>, de modo que <span class="math inline">\(|s_n-0|=1/(n+1)\)</span>. Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, reutilizamos <span class="math inline">\(N=\lfloor1/\varepsilon\rfloor\)</span> y la estimación de la primera prueba: si <span class="math inline">\(n\ge N\)</span>, ese error es menor que <span class="math inline">\(\varepsilon\)</span>. La identidad del módulo elimina el signo alternante; la construcción del corte y su verificación permanecen iguales.</p>
+</section>
+<section id="pregunta-7-2" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-7-2">023. Pregunta 7</h3>
+<p><span id="MA-MIC-ANM-01-006-023"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-023"></span></p>
+<p>El error es <span class="math inline">\(|u_n-3|=2/(n+1)\)</span>. Para <span class="math inline">\(\varepsilon&gt;0\)</span> elegimos <span class="math inline">\(N=\lfloor2/\varepsilon\rfloor\)</span>; si <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(n+1\ge N+1&gt;2/\varepsilon\)</span>, luego el error es menor que <span class="math inline">\(\varepsilon\)</span>. Si el coeficiente se sustituye por 0, la sucesión es constante de valor 3 y basta <span class="math inline">\(N=0\)</span> para todas las tolerancias. No hay que aplicar el piso construido para argumentos positivos a un argumento cero.</p>
+</section>
+<section id="pregunta-8-2" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-8-2">024. Pregunta 8</h3>
+<p><span id="MA-MIC-ANM-01-006-024"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-024"></span></p>
+<p>Fijamos un candidato arbitrario <span class="math inline">\(A\)</span>. La triangular da <span class="math inline">\(2\le|1-A|+|-1-A|\)</span>, así que alguno de esos errores es al menos 1. Fijamos la tolerancia 1 y elegimos el valor separado de <span class="math inline">\(A\)</span>. Después de cualquier corte <span class="math inline">\(N\)</span>, usamos <span class="math inline">\(2N\)</span> si ese valor es 1, o <span class="math inline">\(2N+1\)</span> si es −1; el índice elegido es tardío y su error es al menos 1. El argumento vale para cada real <span class="math inline">\(A\)</span>, por lo que excluye todo límite real, no sólo el candidato 0.</p>
+</section>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">§6.4</h2>
+<section id="pregunta-1-3" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-1-3">025. Pregunta 1</h3>
+<p><span id="MA-MIC-ANM-01-006-025"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-025"></span></p>
+<p><span id="MA-SEC-ANM-01-006-004"></span></p>
+<p>Si <span class="math inline">\(a_n\to A\)</span> y <span class="math inline">\(a_n\to B\)</span> con <span class="math inline">\(A\ne B\)</span>, ponemos <span class="math inline">\(d=|A-B|&gt;0\)</span>. Las capturas con tolerancia <span class="math inline">\(d/3\)</span> proporcionan cortes <span class="math inline">\(N_A,N_B\)</span>. En un mismo índice <span class="math inline">\(n\ge\max\{N_A,N_B\}\)</span>, la triangular da <span class="math inline">\(d\le|A-a_n|+|a_n-B|&lt;2d/3\)</span>, contradicción. El máximo asegura que ambos controles recaigan en ese mismo término, necesario para enlazar las dos distancias. Así <span class="math inline">\(A=B\)</span>.</p>
+</section>
+<section id="pregunta-2-3" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-2-3">026. Pregunta 2</h3>
+<p><span id="MA-MIC-ANM-01-006-026"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-026"></span></p>
+<p>Con tolerancia <span class="math inline">\(d/3\)</span> para cada candidato, la estimación da <span class="math inline">\(d&lt;2d/3\)</span>, imposible para <span class="math inline">\(d&gt;0\)</span>. Si usamos <span class="math inline">\(d\)</span> para ambos, sólo obtenemos <span class="math inline">\(d&lt;2d\)</span>, que no contradice la separación. Las capturas pueden ajustarse porque la convergencia responde a todas las tolerancias; el reparto debe mantener el error total por debajo de la distancia entre los candidatos.</p>
+</section>
+<section id="pregunta-3-3" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-3-3">027. Pregunta 3</h3>
+<p><span id="MA-MIC-ANM-01-006-027"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-027"></span></p>
+<p>Si las dos pruebas fueran válidas, la unicidad aplicada a <span class="math inline">\(u\)</span> obligaría a <span class="math inline">\(B=3\)</span>. Cuando <span class="math inline">\(B\ne3\)</span>, sus conclusiones no pueden acreditarse simultáneamente para la misma sucesión. El teorema garantiza a lo sumo un destino real; no garantiza que exista alguno. La sucesión <span class="math inline">\((-1)^n\)</span>, cuya ausencia de todo límite ya se demostró, muestra esa diferencia.</p>
+</section>
+<section id="pregunta-4-3" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-4-3">028. Pregunta 4</h3>
+<p><span id="MA-MIC-ANM-01-006-028"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-028"></span></p>
+<p>Tomamos <span class="math inline">\(N_b=\max\{5,9\}=9\)</span>. Para cualquier <span class="math inline">\(n\ge9\)</span>, está disponible tanto la igualdad <span class="math inline">\(b_n=a_n\)</span> como la captura de <span class="math inline">\(a\)</span> respecto de <span class="math inline">\(A\)</span>. Por tanto, <span class="math inline">\(|b_n-A|=|a_n-A|&lt;\varepsilon\)</span> para la tolerancia considerada. Un corte que sólo controlase una de esas dos obligaciones no justificaría la transferencia.</p>
+</section>
+<section id="pregunta-5-3" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-5-3">029. Pregunta 5</h3>
+<p><span id="MA-MIC-ANM-01-006-029"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-029"></span></p>
+<p>Podemos tomar <span class="math inline">\(a_n=0\)</span> y <span class="math inline">\(b_n=1/(n+1)\)</span>. Ambas convergen a cero por pruebas ya disponibles y, como <span class="math inline">\(b_n&gt;0\)</span>, nunca coinciden en un índice común. Los límites son números reales iguales; las sucesiones son funciones distintas, pues sus valores difieren en cada índice. Tener igual límite no significa igualdad de funciones ni coincidencia eventual.</p>
+</section>
+<section id="pregunta-6-3" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-6-3">030. Pregunta 6</h3>
+<p><span id="MA-MIC-ANM-01-006-030"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-030"></span></p>
+<p>Si el corte de <span class="math inline">\(b\)</span> es <span class="math inline">\(K=5\)</span>, tomamos <span class="math inline">\(N=3+5=8\)</span> para <span class="math inline">\(a\)</span>: para todo <span class="math inline">\(n\ge8\)</span>, el natural <span class="math inline">\(k=n-3\ge5\)</span> satisface <span class="math inline">\(a_n=b_k\)</span>. Si el corte de <span class="math inline">\(a\)</span> es <span class="math inline">\(N=8\)</span>, sirve <span class="math inline">\(K=5\)</span> para <span class="math inline">\(b\)</span>, pues <span class="math inline">\(k\ge5\)</span> implica <span class="math inline">\(3+k\ge8\)</span>. También serviría el corte suficiente <span class="math inline">\(K=8\)</span>. En cada dirección se transportan índices de funciones con dominio <span class="math inline">\(\mathbb N\)</span> mediante la relación <span class="math inline">\(n=3+k\)</span>.</p>
+</section>
+<section id="pregunta-7-3" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-7-3">031. Pregunta 7</h3>
+<p><span id="MA-MIC-ANM-01-006-031"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-031"></span></p>
+<p>La restricción <span class="math inline">\(a|_{\mathbb N_{\ge T}}\)</span> es una función <span class="math inline">\(\mathbb N_{\ge T}\to\mathbb R\)</span>. La cola reindexada <span class="math inline">\(b_k=a_{T+k}\)</span> es una función <span class="math inline">\(\mathbb N\to\mathbb R\)</span>. El conjunto <span class="math inline">\(\{a_n:n\ge T\}\)</span> es un subconjunto de <span class="math inline">\(\mathbb R\)</span> y no conserva posiciones ni repeticiones como información indexada. Nuestra definición se aplica literalmente a <span class="math inline">\(b\)</span>. Si <span class="math inline">\(T=0\)</span>, la restricción también tiene dominio <span class="math inline">\(\mathbb N\)</span> y coincide con <span class="math inline">\(a\)</span>; para <span class="math inline">\(T&gt;0\)</span> tiene otro dominio.</p>
+</section>
+<section id="pregunta-8-3" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-8-3">032. Pregunta 8</h3>
+<p><span id="MA-MIC-ANM-01-006-032"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-032"></span></p>
+<p>Si <span class="math inline">\(b\)</span> coincidiese eventualmente con <span class="math inline">\(a\)</span> y convergiese a algún <span class="math inline">\(B\)</span>, la equivalencia por coincidencia eventual transmitiría esa convergencia a <span class="math inline">\(a\)</span>, contra la hipótesis. Por tanto, <span class="math inline">\(b\)</span> no tiene límite real. Si <span class="math inline">\(b_k=a_{T+k}\)</span> es una cola reindexada, una supuesta convergencia de <span class="math inline">\(b\)</span> se transmite a <span class="math inline">\(a\)</span> usando, para cada corte <span class="math inline">\(K\)</span> de <span class="math inline">\(b\)</span>, el corte <span class="math inline">\(T+K\)</span> en los índices originales. La misma contradicción excluye su convergencia.</p>
+</section>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">§6.5</h2>
+<section id="pregunta-1-4" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-1-4">033. Pregunta 1</h3>
+<p><span id="MA-MIC-ANM-01-006-033"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-033"></span></p>
+<p><span id="MA-SEC-ANM-01-006-005"></span></p>
+<p>La convergencia proporciona un corte <span class="math inline">\(N\)</span> para la tolerancia 1. Desde él, <span class="math inline">\(|a_n|\le|A|+|a_n-A|&lt;|A|+1\)</span>. El conjunto finito <span class="math inline">\(S=\{1,|A|+1\}\cup\{|a_j|:j&lt;N\}\)</span> tiene máximo <span class="math inline">\(M\)</span>, que cubre el prefijo y la cola, con <span class="math inline">\(|a_n|\le M\)</span> para todos los índices. Esa sola tolerancia basta para obtener una cota; la convergencia exige capturas para todas las tolerancias positivas y no se deduce de esta única banda.</p>
+</section>
+<section id="pregunta-2-4" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-2-4">034. Pregunta 2</h3>
+<p><span id="MA-MIC-ANM-01-006-034"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-034"></span></p>
+<p>Si <span class="math inline">\(N=0\)</span>, no hay índices naturales <span class="math inline">\(j&lt;N\)</span> y el prefijo es vacío. Pero <span class="math inline">\(S=\{1,|A|+1\}\)</span> permanece finito y no vacío; su máximo existe y controla la cola, que en ese caso comprende todos los índices. Se ha incluido una cota explícita antes de formar el máximo, en lugar de intentar tomar el máximo del prefijo vacío.</p>
+</section>
+<section id="pregunta-3-4" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-3-4">035. Pregunta 3</h3>
+<p><span id="MA-MIC-ANM-01-006-035"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-035"></span></p>
+<p>El candidato es 0 y, desde <span class="math inline">\(N=1\)</span>, <span class="math inline">\(0&lt;c_n\le1/2&lt;1\)</span>. La construcción da <span class="math inline">\(S=\{1,|0|+1\}\cup\{|c_0|\}=\{1,4\}\)</span> y <span class="math inline">\(M=4\)</span>. En todos los índices vale <span class="math inline">\(|c_n|\le4\)</span>, pero no puede reemplazarse por <span class="math inline">\(|c_n|&lt;4\)</span>: el término inicial tiene módulo exactamente 4. La desigualdad estricta disponible para la cola no convierte el máximo del prefijo en una cota estricta.</p>
+</section>
+<section id="pregunta-4-4" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-4-4">036. Pregunta 4</h3>
+<p><span id="MA-MIC-ANM-01-006-036"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-036"></span></p>
+<p>La sucesión tiene módulo 1 en todos los índices y está acotada por 1. Para cualquier candidato <span class="math inline">\(A\)</span>, la triangular da <span class="math inline">\(2\le|1-A|+|-1-A|\)</span>; al menos un error es mayor o igual que 1. Ese valor se obtiene después de cualquier corte <span class="math inline">\(N\)</span> en <span class="math inline">\(2N\)</span> o <span class="math inline">\(2N+1\)</span>. La tolerancia 1 refuta cada candidato, luego no hay límite real. Refutar sólo un <span class="math inline">\(A\)</span> dejaría abiertos los demás; aquí <span class="math inline">\(A\)</span> fue arbitrario.</p>
+</section>
+<section id="pregunta-5-4" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-5-4">037. Pregunta 5</h3>
+<p><span id="MA-MIC-ANM-01-006-037"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-037"></span></p>
+<p>La sucesión de error es <span class="math inline">\(e_n=a_n-3=-2/(n+1)\)</span>, función real con el mismo dominio <span class="math inline">\(\mathbb N\)</span>. En cada índice <span class="math inline">\(|e_n-0|=|a_n-3|=2/(n+1)\)</span>. Por tanto, los mismos umbrales para todas las tolerancias acreditan <span class="math inline">\(a_n\to3\)</span> y <span class="math inline">\(e_n\to0\)</span>, en ambas direcciones. La equivalencia procede de una identidad de errores, sin usar una regla de resta de límites.</p>
+</section>
+<section id="pregunta-6-4" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-6-4">038. Pregunta 6</h3>
+<p><span id="MA-MIC-ANM-01-006-038"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-038"></span></p>
+<p>Para <span class="math inline">\(C=3\)</span> tomamos <span class="math inline">\(N=\max\{4,7\}=7\)</span>. Si <span class="math inline">\(n\ge7\)</span>, ambas obligaciones están disponibles y <span class="math inline">\(|v_n|\le3|u_n|&lt;3(\varepsilon/3)=\varepsilon\)</span>. Si <span class="math inline">\(C=0\)</span>, la comparación desde <span class="math inline">\(T\)</span> da <span class="math inline">\(|v_n|\le0\)</span>, luego <span class="math inline">\(v_n=0\)</span> en esa cola. El corte <span class="math inline">\(T\)</span> sirve para todas las tolerancias positivas; no se divide por cero.</p>
+</section>
+<section id="pregunta-7-4" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-7-4">039. Pregunta 7</h3>
+<p><span id="MA-MIC-ANM-01-006-039"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-039"></span></p>
+<p>Definimos <span class="math inline">\(u_n=a_n-A\)</span> y <span class="math inline">\(v_n=|a_n|-|A|\)</span>. La identidad de errores da <span class="math inline">\(u_n\to0\)</span>. La triangular inversa asegura <span class="math inline">\(|v_n|\le|u_n|\)</span> para todo índice, así que usamos <span class="math inline">\(C=1\)</span> y <span class="math inline">\(T=0\)</span>. La transferencia produce <span class="math inline">\(v_n\to0\)</span>, equivalente a <span class="math inline">\(|a_n|\to|A|\)</span>. La comparación puede ser una igualdad; la estrictitud final viene de <span class="math inline">\(|u_n|&lt;\varepsilon\)</span> en la cola, no de una mejora estricta en la triangular inversa.</p>
+</section>
+<section id="pregunta-8-4" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-8-4">040. Pregunta 8</h3>
+<p><span id="MA-MIC-ANM-01-006-040"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-040"></span></p>
+<p>Para <span class="math inline">\(a_n=(-1)^n\)</span>, los módulos son la constante 1 y convergen, pero <span class="math inline">\(a\)</span> no tiene límite real. Para la segunda afirmación tomamos <span class="math inline">\(u_n=1/(n+1)\)</span>, <span class="math inline">\(v_n=1\)</span> y <span class="math inline">\(C_n=n+1\)</span>. Entonces <span class="math inline">\(|v_n|=C_n|u_n|\)</span> en todos los índices y <span class="math inline">\(u_n\to0\)</span>, mientras que <span class="math inline">\(v\)</span> no converge a cero. Los coeficientes variables sin una cota fija pueden compensar por completo el error pequeño. El lema requiere una constante fija, o un control que permita reducirse a ella.</p>
+</section>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">§6.6</h2>
+<section id="pregunta-1-5" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-1-5">041. Pregunta 1</h3>
+<p><span id="MA-MIC-ANM-01-006-041"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-041"></span></p>
+<p><span id="MA-SEC-ANM-01-006-006"></span></p>
+<p>Con <span class="math inline">\(a_n\to A\)</span> y <span class="math inline">\(b_n\to B\)</span>, primero se recibe <span class="math inline">\(\varepsilon&gt;0\)</span>, luego se eligen tolerancias auxiliares <span class="math inline">\(\varepsilon/2\)</span> para cada sucesión, después sus cortes <span class="math inline">\(N_a,N_b\)</span> y finalmente <span class="math inline">\(N=\max\{N_a,N_b\}\)</span>. Para todo <span class="math inline">\(n\ge N\)</span>, la triangular da <span class="math inline">\(|(a_n+b_n)-(A+B)|\le|a_n-A|+|b_n-B|&lt;\varepsilon\)</span>. También sirve el reparto <span class="math inline">\(\varepsilon/3\)</span> y <span class="math inline">\(2\varepsilon/3\)</span>: ambos son positivos y su suma es la tolerancia de salida.</p>
+</section>
+<section id="pregunta-2-5" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-2-5">042. Pregunta 2</h3>
+<p><span id="MA-MIC-ANM-01-006-042"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-042"></span></p>
+<p>Si <span class="math inline">\(a_n\to A\)</span> y <span class="math inline">\(c=0\)</span>, el error de <span class="math inline">\(ca_n\)</span> respecto de <span class="math inline">\(cA\)</span> es cero y basta el corte 0. Si <span class="math inline">\(c\ne0\)</span>, dado <span class="math inline">\(\varepsilon&gt;0\)</span> pedimos a <span class="math inline">\(a\)</span> la tolerancia <span class="math inline">\(\varepsilon/|c|\)</span>; entonces <span class="math inline">\(|ca_n-cA|=|c||a_n-A|&lt;\varepsilon\)</span> en la cola. Para la diferencia suponemos además <span class="math inline">\(b_n\to B\)</span>. El escalar −1 da <span class="math inline">\(-b_n\to-B\)</span>, y la regla de suma aplicada a <span class="math inline">\(a\)</span> y <span class="math inline">\(-b\)</span> acredita <span class="math inline">\(a_n-b_n\to A-B\)</span>.</p>
+</section>
+<section id="pregunta-3-5" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-3-5">043. Pregunta 3</h3>
+<p><span id="MA-MIC-ANM-01-006-043"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-043"></span></p>
+<p>La identidad <span class="math inline">\(a_nb_n-AB=a_n(b_n-B)+B(a_n-A)\)</span> se obtiene al sumar y restar <span class="math inline">\(a_nB\)</span>. La acotación de <span class="math inline">\(a\)</span>, consecuencia de su convergencia, permite elegir <span class="math inline">\(|a_n|\le M\)</span> con <span class="math inline">\(M\ge1\)</span>. Usamos tolerancias <span class="math inline">\(\varepsilon/(2M)\)</span> para <span class="math inline">\(b\)</span> y <span class="math inline">\(\varepsilon/[2(|B|+1)]\)</span> para <span class="math inline">\(a\)</span>, y reunimos sus cortes. Entonces el error es a lo sumo <span class="math inline">\(M|b_n-B|+|B||a_n-A|\)</span>. El primer aporte es menor que <span class="math inline">\(\varepsilon/2\)</span> y el segundo es menor o igual que <span class="math inline">\(\varepsilon/2\)</span>, por lo que el total es menor que <span class="math inline">\(\varepsilon\)</span>. La convergencia de <span class="math inline">\(a\)</span> se gasta tanto en su cota fija como en su captura de error.</p>
+</section>
+<section id="pregunta-4-5" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-4-5">044. Pregunta 4</h3>
+<p><span id="MA-MIC-ANM-01-006-044"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-044"></span></p>
+<p>Si <span class="math inline">\(B=0\)</span>, el segundo aporte <span class="math inline">\(|B||a_n-A|\)</span> es exactamente cero. No se puede conservar una desigualdad estricta al multiplicar por cero: se usa <span class="math inline">\(0\le\varepsilon/2\)</span>. El primer aporte cumple <span class="math inline">\(M|b_n-B|&lt;\varepsilon/2\)</span>, porque <span class="math inline">\(M\ge1\)</span> es positivo y se pidió la tolerancia <span class="math inline">\(\varepsilon/(2M)\)</span>. Ese aporte basta para cerrar el error total estrictamente por debajo de <span class="math inline">\(\varepsilon\)</span>, sin dividir por <span class="math inline">\(B\)</span>.</p>
+</section>
+<section id="pregunta-5-5" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-5-5">045. Pregunta 5</h3>
+<p><span id="MA-MIC-ANM-01-006-045"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-045"></span></p>
+<p>Como <span class="math inline">\(B\ne0\)</span>, <span class="math inline">\(|B|/2&gt;0\)</span> es una tolerancia legítima. La convergencia da un corte <span class="math inline">\(T\)</span> con <span class="math inline">\(|b_n-B|&lt;|B|/2\)</span> desde él. Por la triangular, <span class="math inline">\(|b_n|\ge|B|-|b_n-B|&gt;|B|/2&gt;0\)</span>. La hipótesis autoriza esa escala positiva y la no anulación tardía necesaria para invertir los términos. La prueba sólo usa módulos y también cubre <span class="math inline">\(B&lt;0\)</span>.</p>
+</section>
+<section id="pregunta-6-5" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-6-5">046. Pregunta 6</h3>
+<p><span id="MA-MIC-ANM-01-006-046"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-046"></span></p>
+<p>La sucesión <span class="math inline">\(s_n=(-1)^n/(n+1)\)</span> converge a cero. Por suma con la constante 1, <span class="math inline">\(1+s_n\to1\)</span>; cambiar los dos términos iniciales conserva ese límite, así que <span class="math inline">\(b_n\to1\)</span>. Para <span class="math inline">\(n\ge2\)</span>, <span class="math inline">\(|s_n|\le1/3\)</span> y <span class="math inline">\(b_n\ge2/3&gt;1/2\)</span>, margen válido desde <span class="math inline">\(T=2\)</span>. Definimos <span class="math inline">\(c_0=c_1=0\)</span> y <span class="math inline">\(c_n=1/b_n\)</span> para <span class="math inline">\(n\ge2\)</span>. Es una función <span class="math inline">\(\mathbb N\to\mathbb R\)</span> y la regla del inverso extendido da <span class="math inline">\(c_n\to1\)</span>. Cambiar efectivamente algún valor del prefijo cambia la función; la coincidencia eventual conserva el límite. No se toman recíprocos de los ceros iniciales.</p>
+</section>
+<section id="pregunta-7-5" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-7-5">047. Pregunta 7</h3>
+<p><span id="MA-MIC-ANM-01-006-047"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-047"></span></p>
+<p>Si todos los <span class="math inline">\(b_n\)</span> son no nulos, <span class="math inline">\(q_n=a_n/b_n\)</span> es una función <span class="math inline">\(\mathbb N\to\mathbb R\)</span> y la regla del cociente global da <span class="math inline">\(A/B\)</span>. Si sólo se garantiza no anulación desde <span class="math inline">\(T\)</span>, definimos <span class="math inline">\(z_n=0\)</span> antes de <span class="math inline">\(T\)</span> y <span class="math inline">\(z_n=a_n/b_n\)</span> desde él: la extensión tiene dominio <span class="math inline">\(\mathbb N\)</span> y converge por inverso extendido y producto. La función <span class="math inline">\(y_k=a_{T+k}/b_{T+k}\)</span> también tiene dominio <span class="math inline">\(\mathbb N\)</span>, pero sus índices son reindexados; es la cola reindexada de <span class="math inline">\(z\)</span> y converge a <span class="math inline">\(A/B\)</span> por la equivalencia de colas. La restricción a los índices originales desde <span class="math inline">\(T\)</span> tiene dominio <span class="math inline">\(\mathbb N_{\ge T}\)</span> y es otro objeto.</p>
+</section>
+<section id="pregunta-8-5" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-8-5">048. Pregunta 8</h3>
+<p><span id="MA-MIC-ANM-01-006-048"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-048"></span></p>
+<p>Si <span class="math inline">\(B=0\)</span>, ni <span class="math inline">\(1/B\)</span> ni <span class="math inline">\(A/B\)</span> son números reales, y la regla no proporciona un límite. Eso no decide todos los cocientes: para <span class="math inline">\(h_n=1/(n+1)&gt;0\)</span>, las identidades <span class="math inline">\(h_n/h_n=1\)</span> y <span class="math inline">\(h_n^2/h_n=h_n\)</span> acreditan límites 1 y 0, respectivamente, pese a que el denominador tiende a cero. Una suma convergente tampoco obliga a converger a sus sumandos: <span class="math inline">\(a_n=(-1)^n\)</span> y <span class="math inline">\(b_n=-(-1)^n\)</span> no tienen límite real, pero su suma es la constante cero.</p>
+</section>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">§6.7</h2>
+<section id="pregunta-1-6" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-1-6">049. Pregunta 1</h3>
+<p><span id="MA-MIC-ANM-01-006-049"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-049"></span></p>
+<p><span id="MA-SEC-ANM-01-006-007"></span></p>
+<p>Si <span class="math inline">\(a_n\to A\)</span>, <span class="math inline">\(b_n\to B\)</span> y <span class="math inline">\(a_n\le b_n\)</span> desde <span class="math inline">\(T\)</span>, suponemos <span class="math inline">\(A&gt;B\)</span> y ponemos <span class="math inline">\(d=A-B&gt;0\)</span>. Elegimos tolerancia <span class="math inline">\(d/3\)</span> para las dos convergencias y cortes <span class="math inline">\(N_a,N_b\)</span>. Desde <span class="math inline">\(N=\max\{T,N_a,N_b\}\)</span> valen las dos capturas y la comparación eventual. Pero <span class="math inline">\(a_n&gt;A-d/3=B+2d/3&gt;B+d/3&gt;b_n\)</span>, contradiciendo <span class="math inline">\(a_n\le b_n\)</span>. Luego <span class="math inline">\(A\le B\)</span>. El máximo reúne tres controles, incluido el corte de comparación.</p>
+</section>
+<section id="pregunta-2-6" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-2-6">050. Pregunta 2</h3>
+<p><span id="MA-MIC-ANM-01-006-050"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-050"></span></p>
+<p>La sucesión constante cero converge a 0 y satisface <span class="math inline">\(0\le x_n\)</span> en la cola indicada. El paso al límite en el orden, aplicado a esa constante y a <span class="math inline">\(x_n\to X\)</span>, da <span class="math inline">\(0\le X\)</span>. La sola positividad eventual no construye un límite: por ejemplo, <span class="math inline">\(x_n=2+(-1)^n\)</span> es positiva y toma 1 y 3 arbitrariamente tarde, por lo que ningún candidato puede capturar todas sus colas en ventanas pequeñas.</p>
+</section>
+<section id="pregunta-3-6" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-3-6">051. Pregunta 3</h3>
+<p><span id="MA-MIC-ANM-01-006-051"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-051"></span></p>
+<p>Para todo <span class="math inline">\(n\in\mathbb N\)</span>, <span class="math inline">\(n+1&gt;0\)</span> y por tanto <span class="math inline">\(0&lt;1/(n+1)\)</span>. La constante cero converge a cero y la primera prueba de §6.3 acredita el mismo destino para <span class="math inline">\(1/(n+1)\)</span>. Sus términos están estrictamente ordenados y nunca son iguales; las funciones son distintas. Sus límites son dos números iguales a 0. La comparación estricta entre términos no obliga a una separación estricta de esos números.</p>
+</section>
+<section id="pregunta-4-6" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-4-6">052. Pregunta 4</h3>
+<p><span id="MA-MIC-ANM-01-006-052"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-052"></span></p>
+<p>La regla de suma da <span class="math inline">\(a_n+\delta\to A+\delta\)</span>. Como <span class="math inline">\(a_n+\delta\le b_n\)</span> eventualmente y ambas sucesiones convergen, el paso al límite en el orden produce <span class="math inline">\(A+\delta\le B\)</span>. Al ser <span class="math inline">\(\delta&gt;0\)</span>, resulta <span class="math inline">\(A&lt;B\)</span>. La hipótesis adicional es un margen positivo fijo entre las sucesiones; la sola diferencia positiva en cada índice podría tender a cero y permitir límites iguales.</p>
+</section>
+<section id="pregunta-5-6" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-5-6">053. Pregunta 5</h3>
+<p><span id="MA-MIC-ANM-01-006-053"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-053"></span></p>
+<p>Dada <span class="math inline">\(\varepsilon&gt;0\)</span>, las convergencias de <span class="math inline">\(u,v\)</span> hacia el mismo <span class="math inline">\(L\)</span> proporcionan cortes <span class="math inline">\(N_u,N_v\)</span>. Reunimos éstos con el corte <span class="math inline">\(T\)</span> de <span class="math inline">\(u_n\le a_n\le v_n\)</span>. Para todo <span class="math inline">\(n\ge\max\{T,N_u,N_v\}\)</span>, la parte inferior de la captura de <span class="math inline">\(u\)</span> y la parte superior de la de <span class="math inline">\(v\)</span> dan <span class="math inline">\(L-\varepsilon&lt;u_n\le a_n\le v_n&lt;L+\varepsilon\)</span>. Así <span class="math inline">\(|a_n-L|&lt;\varepsilon\)</span>. La estrictitud procede de las capturas exteriores; no se supone convergencia previa de <span class="math inline">\(a\)</span>.</p>
+</section>
+<section id="pregunta-6-6" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-6-6">054. Pregunta 6</h3>
+<p><span id="MA-MIC-ANM-01-006-054"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-054"></span></p>
+<p>Tomamos <span class="math inline">\(N=\max\{3,8,5,6\}=8\)</span>. Si <span class="math inline">\(n\ge8\)</span>, ambas comparaciones y ambas capturas están disponibles. Para el destino exterior común <span class="math inline">\(L\)</span> y la tolerancia considerada, se obtiene <span class="math inline">\(L-\varepsilon&lt;u_n\le a_n\le v_n&lt;L+\varepsilon\)</span>. Por tanto, el error del término intermedio respecto de <span class="math inline">\(L\)</span> es menor que <span class="math inline">\(\varepsilon\)</span> en toda la cola desde 8.</p>
+</section>
+<section id="pregunta-7-6" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-7-6">055. Pregunta 7</h3>
+<p><span id="MA-MIC-ANM-01-006-055"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-055"></span></p>
+<p>Como <span class="math inline">\(n+1\ge1\)</span>, <span class="math inline">\(|w_n|=1/(n+1)^2\le1/(n+1)\)</span>, de donde <span class="math inline">\(-1/(n+1)\le w_n\le1/(n+1)\)</span>. Las fronteras convergen a cero por la primera prueba y la regla del escalar −1. El sándwich da <span class="math inline">\(w_n\to0\)</span>. En <span class="math inline">\(n=0\)</span>, <span class="math inline">\(w_0=1\)</span> coincide con la frontera superior; desde <span class="math inline">\(n=1\)</span>, su módulo es estrictamente menor que <span class="math inline">\(1/(n+1)\)</span>. El teorema admite comparaciones no estrictas y no requiere monotonía de la intermedia: las capturas exteriores son las que aseguran el error estricto.</p>
+</section>
+<section id="pregunta-8-6" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-8-6">056. Pregunta 8</h3>
+<p><span id="MA-MIC-ANM-01-006-056"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-056"></span></p>
+<p>En <span class="math inline">\(-1\le q_n=(-1)^n\le1\)</span>, las fronteras convergen pero a destinos distintos; falta el candidato exterior común. La separación de los valores de <span class="math inline">\(q\)</span> impide su convergencia. Para <span class="math inline">\(r_n=0\)</span> en índices pares y 1 en impares, las fronteras cero sí tienen destino común, pero sólo en los pares se cumple <span class="math inline">\(0\le r_n\le0\)</span>. No existe un corte desde el que esa comparación valga para todos los índices. Los impares arbitrariamente tardíos refutan el candidato 0. Cada una de las dos hipótesis ausentes es necesaria para aplicar el sándwich.</p>
+</section>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">§6.8</h2>
+<section id="pregunta-1-7" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-1-7">057. Pregunta 1</h3>
+<p><span id="MA-MIC-ANM-01-006-057"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-057"></span></p>
+<p><span id="MA-SEC-ANM-01-006-008"></span></p>
+<p>Acreditar <span class="math inline">\(a_n\to A\)</span> exige <span class="math inline">\(\forall\varepsilon&gt;0\ \exists N\in\mathbb N\ \forall n\ge N:\ |a_n-A|&lt;\varepsilon\)</span>. Refutar ese candidato exige <span class="math inline">\(\exists\varepsilon_0&gt;0\ \forall N\in\mathbb N\ \exists n\ge N:\ |a_n-A|\ge\varepsilon_0\)</span>. Para excluir todo límite real se antepone <span class="math inline">\(\forall A\in\mathbb R\)</span> a esta última obligación. La tolerancia puede depender de la sucesión fijada y de <span class="math inline">\(A\)</span>, pero debe quedar elegida antes del corte <span class="math inline">\(N\)</span> y del índice infractor posterior.</p>
+</section>
+<section id="pregunta-2-7" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-2-7">058. Pregunta 2</h3>
+<p><span id="MA-MIC-ANM-01-006-058"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-058"></span></p>
+<p>Como <span class="math inline">\(n+2&gt;0\)</span>, la identidad <span class="math inline">\(f_n=2-3/(n+2)\)</span> da error <span class="math inline">\(3/(n+2)\)</span>. Para <span class="math inline">\(\varepsilon&gt;0\)</span>, tomamos <span class="math inline">\(N=\lfloor3/\varepsilon\rfloor\)</span>; si <span class="math inline">\(n\ge N\)</span>, <span class="math inline">\(n+2\ge N+2&gt;3/\varepsilon\)</span>, luego el error es menor que <span class="math inline">\(\varepsilon\)</span>. Con <span class="math inline">\(\varepsilon=1/2\)</span>, el testigo es 6 y, para cualquier <span class="math inline">\(n\ge6\)</span>, el error es a lo sumo <span class="math inline">\(3/8&lt;1/2\)</span>. La desigualdad se verificó para un índice arbitrario posterior al corte; no sólo en el índice 6.</p>
+</section>
+<section id="pregunta-3-7" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-3-7">059. Pregunta 3</h3>
+<p><span id="MA-MIC-ANM-01-006-059"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-059"></span></p>
+<p>Con <span class="math inline">\(h_n=1/(n+1)\to0\)</span>, se tiene <span class="math inline">\(f_n=(2-h_n)/(1+h_n)\)</span>: multiplicar numerador y denominador por <span class="math inline">\(n+1&gt;0\)</span> recupera <span class="math inline">\((2n+1)/(n+2)\)</span>. Las reglas lineales dan límites 2 y 1 para las nuevas sucesiones. Además, <span class="math inline">\(1+h_n&gt;0\)</span> en todo índice, así que el cociente global está definido y converge a 2. Aplicar directamente la regla a <span class="math inline">\(2n+1\)</span> y <span class="math inline">\(n+2\)</span> exigiría convergencias reales finitas de ambos factores, que no están disponibles: ambas sucesiones son no acotadas y no pueden tener tales límites.</p>
+</section>
+<section id="pregunta-4-7" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-4-7">060. Pregunta 4</h3>
+<p><span id="MA-MIC-ANM-01-006-060"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-060"></span></p>
+<p>La identidad <span class="math inline">\(f_n=2-3/(n+2)&lt;2\)</span> vale en todos los índices. Luego <span class="math inline">\(|f_n-3|=3-f_n=1+3/(n+2)&gt;1\)</span>. Fijamos la tolerancia 1 y, para cualquier corte <span class="math inline">\(N\)</span>, elegimos el infractor <span class="math inline">\(n=N\)</span>. Se refuta el candidato 3, mientras que las pruebas anteriores acreditan el candidato 2. Las afirmaciones son compatibles: la refutación de un destino incorrecto no niega la convergencia a otro.</p>
+</section>
+<section id="pregunta-5-7" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-5-7">061. Pregunta 5</h3>
+<p><span id="MA-MIC-ANM-01-006-061"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-061"></span></p>
+<p>Sea <span class="math inline">\(h_n=1/(n+1)\to0\)</span> y <span class="math inline">\(v_n=x_n-3=p_n/(n+1)\)</span>. Desde <span class="math inline">\(T\)</span>, <span class="math inline">\(|v_n|\le5h_n\)</span>, así que la transferencia con <span class="math inline">\(C=5\)</span> da <span class="math inline">\(v_n\to0\)</span> y la identidad de errores da <span class="math inline">\(x_n\to3\)</span>. Para <span class="math inline">\(\varepsilon&gt;0\)</span>, podemos usar <span class="math inline">\(N=\max\{T,\lfloor5/\varepsilon\rfloor\}\)</span>: reúne la cota de <span class="math inline">\(p\)</span> con la captura de <span class="math inline">\(h\)</span> para <span class="math inline">\(\varepsilon/5\)</span>. Sólo se necesita la magnitud eventual de <span class="math inline">\(p\)</span>, no una convergencia suya.</p>
+</section>
+<section id="pregunta-6-7" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-6-7">062. Pregunta 6</h3>
+<p><span id="MA-MIC-ANM-01-006-062"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-062"></span></p>
+<p>Desde <span class="math inline">\(T\)</span>, la cota <span class="math inline">\(|p_n|\le5\)</span> y el denominador positivo dan <span class="math inline">\(3-5/(n+1)\le x_n\le3+5/(n+1)\)</span>. Las fronteras <span class="math inline">\(u_n=3-5h_n\)</span> y <span class="math inline">\(v_n=3+5h_n\)</span> convergen a 3 por reglas lineales. El sándwich acredita <span class="math inline">\(x_n\to3\)</span> sin suponer su convergencia. Sería circular pasar al límite en las dos comparaciones atribuyendo previamente un límite a <span class="math inline">\(x\)</span>, pues justamente su existencia y su candidato deben producirse mediante la captura exterior.</p>
+</section>
+<section id="pregunta-7-7" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-7-7">063. Pregunta 7</h3>
+<p><span id="MA-MIC-ANM-01-006-063"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-063"></span></p>
+<p>Si <span class="math inline">\(b_n\ne0\)</span> sólo desde <span class="math inline">\(T\)</span>, una extensión <span class="math inline">\(z:\mathbb N\to\mathbb R\)</span> asigna valores reales antes de <span class="math inline">\(T\)</span> y pone <span class="math inline">\(z_n=a_n/b_n\)</span> desde él. La cola reindexada <span class="math inline">\(y_k=a_{T+k}/b_{T+k}\)</span> también tiene dominio <span class="math inline">\(\mathbb N\)</span>, pero elimina el prefijo y usa otra correspondencia de índices. Antes de calcular se comprueba no anulación en cada evaluación y se identifica cuál función está definida. Para aplicar la regla del cociente se requieren además <span class="math inline">\(a_n\to A\)</span>, <span class="math inline">\(b_n\to B\ne0\)</span>. Bajo esas hipótesis, extensión y reindexación tienen límite <span class="math inline">\(A/B\)</span>. Una modificación del prefijo conserva el límite, aunque pueda cambiar la función.</p>
+</section>
+<section id="pregunta-8-7" class="level3">
+<h3 class="anchored" data-anchor-id="pregunta-8-7">064. Pregunta 8</h3>
+<p><span id="MA-MIC-ANM-01-006-064"></span></p>
+<p><span id="MA-MSOL-ANM-01-006-064"></span></p>
+<p>Elegimos las dos primeras afirmaciones. La sucesión <span class="math inline">\((-1)^n\)</span> es acotada por 1, pero no tiene límite real: la triangular separa alguno de sus valores persistentes de cada candidato. La conclusión válida que queda es que convergencia implica acotación, no su conversa. Para el orden, las sucesiones <span class="math inline">\(a_n=0\)</span> y <span class="math inline">\(b_n=1/(n+1)\)</span> satisfacen <span class="math inline">\(a_n&lt;b_n\)</span> en todos los índices y ambas convergen a 0. Con convergencias acreditadas y orden eventual se conserva la conclusión no estricta <span class="math inline">\(A\le B\)</span>; obtener <span class="math inline">\(A&lt;B\)</span> necesita información adicional, como un margen positivo uniforme.</p>
+<p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n.html">Capítulo 6</a> · <a href="analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-ejercicios.html">Ejercicios</a> · <a href="analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-soluciones.html">Soluciones</a> · <a href="analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-microcontroles.html">Soluciones de microcontroles</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
