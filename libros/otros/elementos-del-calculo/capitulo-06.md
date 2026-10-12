@@ -87,7 +87,7 @@ $$
 
 **Demostración.** Por continuidad relativa en $c$, elegimos $\delta$ de manera que $|f(t)-f(c)|<\varepsilon/2$ para todos los $t\in[a,b]$ con $|t-c|<\delta$. Entonces el supremo sobre $J$ no excede $\varepsilon/2<\varepsilon$. $\square$
 
-![Gráfica de f(x)=x−1/2 entre cero y uno, área negativa de −1/8 bajo el eje a la izquierda y área positiva de +1/8 a la derecha.](/assets/books/elementos-del-calculo/EDC-C06-F01_ACUMULACION_ORIENTADA.svg)
+![Gráfica de f(x)=x−1/2 entre cero y uno, área negativa de −1/8 bajo el eje a la izquierda y área positiva de +1/8 a la derecha.](/assets/books/elementos-del-calculo/EDC-C06-F01_ACUMULACION_ORIENTADA.svg){#fig-edc-c06-01 fig-alt="Gráfica de f(x)=x−1/2 entre cero y uno, área negativa de −1/8 bajo el eje a la izquierda y área positiva de +1/8 a la derecha."}
 
 *Figura 6.1.* La integral con signo suma las contribuciones orientadas y puede anularse sin que desaparezca el área geométrica total.
 

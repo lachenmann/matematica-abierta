@@ -65,7 +65,7 @@ $$
 
 ¿Podemos llamar «tangente» a esta recta? Sí, cuando precisemos qué significa aproximar la gráfica **hasta el primer orden**. Pero ni todos los cocientes incrementales tienen límite, ni una definición basada exclusivamente en «tocar una sola vez» funciona para cualquier curva.
 
-![Parábola negra y=x²; secante roja discontinua por los puntos P y Qh; tangente azul en P. La pendiente secante vale 2a+h y converge a 2a.](/assets/books/elementos-del-calculo/EDC-C01-F01_SECANTE_TANGENTE.svg)
+![Parábola negra y=x²; secante roja discontinua por los puntos P y Qh; tangente azul en P. La pendiente secante vale 2a+h y converge a 2a.](/assets/books/elementos-del-calculo/EDC-C01-F01_SECANTE_TANGENTE.svg){#fig-edc-c01-01 fig-alt="Parábola negra y=x²; secante roja discontinua por los puntos P y Qh; tangente azul en P. La pendiente secante vale 2a+h y converge a 2a."}
 
 *Figura 1.1.* La secante y la tangente cumplen ecuaciones diferentes; su coincidencia en el límite exige el cociente incremental.
 

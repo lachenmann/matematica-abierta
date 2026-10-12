@@ -118,7 +118,7 @@ No es necesario que $P$ y $Q$ tengan igual número de subintervalos ni puntos de
 
 La conclusión permite tomar supremos e ínfimos **sobre todas las particiones** sin temor a que una cota inferior quede por encima de una superior. Ésa es la compatibilidad global que faltaba en los encajes aislados del capítulo anterior.
 
-![Dos paneles con la misma partición no uniforme para f(x)=x²: a la izquierda rectángulos inferiores, a la derecha superiores, encerrando la curva.](/assets/books/elementos-del-calculo/EDC-C05-F01_SUMAS_DARBOUX.svg)
+![Dos paneles con la misma partición no uniforme para f(x)=x²: a la izquierda rectángulos inferiores, a la derecha superiores, encerrando la curva.](/assets/books/elementos-del-calculo/EDC-C05-F01_SUMAS_DARBOUX.svg){#fig-edc-c05-01 fig-alt="Dos paneles con la misma partición no uniforme para f(x)=x²: a la izquierda rectángulos inferiores, a la derecha superiores, encerrando la curva."}
 
 *Figura 5.1.* Los valores inferiores y superiores dependen de los supremos e ínfimos de la misma partición; el argumento general exige además refinamientos comunes.
 

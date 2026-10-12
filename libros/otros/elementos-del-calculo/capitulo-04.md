@@ -117,7 +117,7 @@ El triángulo con base sobre la cuerda $[(u,f(u)),(v,f(v))]$ y vértice en la gr
 
 La recurrencia explica por qué **aparece la razón $1/4$**; no es un número adivinado por la suma de una serie. A cada generación se agregan $2^n$ triángulos, cada uno de área $T/8^n$, por lo que el área total de la generación $n$ es $T/4^n$.
 
-![Parábola cóncava y=4x(1−x) entre cero y uno, triángulo inscrito inicial T y dos triángulos añadidos de área T/8 cada uno.](/assets/books/elementos-del-calculo/EDC-C04-F01_AGOTAMIENTO_PARABOLA.svg)
+![Parábola cóncava y=4x(1−x) entre cero y uno, triángulo inscrito inicial T y dos triángulos añadidos de área T/8 cada uno.](/assets/books/elementos-del-calculo/EDC-C04-F01_AGOTAMIENTO_PARABOLA.svg){#fig-edc-c04-01 fig-alt="Parábola cóncava y=4x(1−x) entre cero y uno, triángulo inscrito inicial T y dos triángulos añadidos de área T/8 cada uno."}
 
 *Figura 4.1.* Dos nuevas piezas suman T/4. El agotamiento se completa con una cota poligonal del resto, no solamente mediante el dibujo.
 

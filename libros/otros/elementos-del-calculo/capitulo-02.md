@@ -359,7 +359,7 @@ pues $|\sin h|\le|h|$ cerca de cero. $\square$
 
 El alcance exacto es éste: los límites de seno y coseno quedan demostrados **a partir de** las identidades trigonométricas y de la medida geométrica previa de sectores. Una construcción independiente de esa medida mediante polígonos inscritos y circunscritos constituiría un desarrollo adicional de geometría. Esta dependencia explícita no debilita las conclusiones analíticas, pero impide describir el lema como demostrado únicamente desde la completitud de $\mathbb R$.
 
-![Sector del círculo unitario entre un radio horizontal y otro de ángulo h. Un triángulo interior, un sector y un triángulo exterior por tangente tienen áreas sen(h)/2, h/2 y tan(h)/2.](/assets/books/elementos-del-calculo/EDC-C02-F01_SECTOR_RADIANES.svg)
+![Sector del círculo unitario entre un radio horizontal y otro de ángulo h. Un triángulo interior, un sector y un triángulo exterior por tangente tienen áreas sen(h)/2, h/2 y tan(h)/2.](/assets/books/elementos-del-calculo/EDC-C02-F01_SECTOR_RADIANES.svg){#fig-edc-c02-01 fig-alt="Sector del círculo unitario entre un radio horizontal y otro de ángulo h. Un triángulo interior, un sector y un triángulo exterior por tangente tienen áreas sen(h)/2, h/2 y tan(h)/2."}
 
 *Figura 2.1.* Comparación sectorial utilizada en el Lema 2.2. La igualdad área del sector = h/2 es la premisa geométrica previa declarada, no una consecuencia de la futura integral.
 

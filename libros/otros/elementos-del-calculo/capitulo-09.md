@@ -179,7 +179,7 @@ $$
 
 La cota es útil cuando $M$ puede estimarse **antes** de conocer el punto $\xi$. No se ha afirmado que las derivadas de todo orden estén acotadas por una misma constante, ni que aumentar $n$ siempre reduzca el error.
 
-![Gráfica de e^x y las aproximaciones T1(x)=1+x y T2(x)=1+x+x²/2, con separación vertical que representa un resto local.](/assets/books/elementos-del-calculo/EDC-C09-F01_TAYLOR_RESTO.svg)
+![Gráfica de e^x y las aproximaciones T1(x)=1+x y T2(x)=1+x+x²/2, con separación vertical que representa un resto local.](/assets/books/elementos-del-calculo/EDC-C09-F01_TAYLOR_RESTO.svg){#fig-edc-c09-01 fig-alt="Gráfica de e^x y las aproximaciones T1(x)=1+x y T2(x)=1+x+x²/2, con separación vertical que representa un resto local."}
 
 *Figura 9.1.* El dibujo sugiere la mejora local; la garantía cuantitativa procede de Taylor–Lagrange y de la cota sobre la siguiente derivada.
 

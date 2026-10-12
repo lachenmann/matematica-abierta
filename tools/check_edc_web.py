@@ -2,7 +2,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
-import argparse,re,json,collections
+import argparse,re,json,collections,xml.etree.ElementTree as ET
 root=Path(__file__).resolve().parents[1]
 folder=root/'libros/otros/elementos-del-calculo'
 parser=argparse.ArgumentParser();parser.add_argument('--site-dir',type=Path);args=parser.parse_args()
@@ -20,6 +20,9 @@ assert exc==sol==338,(exc,sol)
 assert len(ids)==len(set(ids))==13
 assert 'MA-BOK-0015' in ids and all(f'MA-BCH-{i:04d}' in ids for i in range(226,238))
 svg=list((root/'assets/books/elementos-del-calculo').glob('*.svg'));assert len(svg)==7
+for figure in svg:
+ assert len(figure.read_bytes())>1000
+ assert ET.fromstring(figure.read_bytes()).tag.endswith('svg')
 class Links(HTMLParser):
  def __init__(self):super().__init__();self.links=[];self.ids=[]
  def handle_starttag(self,tag,attrs):
@@ -52,4 +55,11 @@ if args.site_dir:
   p=site/landing
   if p.is_file():assert 'elementos-del-calculo/index.html' in p.read_text(),p
  print('EDC rendered routes/assets/fragments:',count,'PASS')
+ import sys
+ sys.path.insert(0,str(root))
+ from tools.check_ma_fig_html import verify_html_figure
+ for manifest in (root/'data/ma-fig-manifests').glob('edc-*.json'):
+  errors=verify_html_figure(site,root,json.loads(manifest.read_text()))
+  assert not errors,errors
+ print('EDC C9: 14 figure placements, captions, alt and SHA-256 PASS')
 print('EDC structure: 56 pages, 12 chapters, 338 exercise/solution pairs, 7 SVG, 13 IDs PASS')
