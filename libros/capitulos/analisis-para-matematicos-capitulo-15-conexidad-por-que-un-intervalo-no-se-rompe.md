@@ -72,6 +72,8 @@ La negación de conexidad exige exhibir una separación completa; la afirmación
 
 No vacuidad de ambas partes, disjunción, cobertura del conjunto y pertenencia de las partes al conjunto ambiente. Junto a la apertura relativa, se escriben $A,B\subseteq E$, $A,B\ne\varnothing$, $A\cap B=\varnothing$, $A\cup B=E$.
 
+La cobertura garantiza que cada entrada queda en alguna parte, y la disjunción que no queda en ambas. La no vacuidad evita la partición trivial en todo el conjunto y vacío. La pertenencia al ambiente impide añadir puntos exteriores. Después debe comprobarse apertura relativa de las dos partes: sin ese control local, las cuatro condiciones sólo describen una partición.
+
 </details>
 
 #### Microcontrol 2
@@ -86,6 +88,8 @@ No vacuidad de ambas partes, disjunción, cobertura del conjunto y pertenencia d
 <summary>Ver solución del microcontrol 2</summary>
 
 Es la intersección del ambiente con el abierto real $(-\infty,0)$. La apertura se mide dentro del ambiente, aunque el segmento no sea abierto real.
+
+Si una entrada del segmento está suficientemente cerca de otra entrada del ambiente, no puede saltar a la pieza positiva, separada por un hueco. El abierto real usado para representar la parte puede contener números ajenos al ambiente; el recorte los elimina. Así los extremos del segmento no impiden apertura relativa, aunque sí impiden apertura del segmento en la recta completa.
 
 </details>
 
@@ -102,6 +106,8 @@ Es la intersección del ambiente con el abierto real $(-\infty,0)$. La apertura 
 
 La segunda parte no es abierta relativa en cero: dado $r>0$, $-\min(r/2,1/2)$ pertenece al ambiente, dista menos que $r$ de cero y no pertenece a $[0,1]$.
 
+El testigo propuesto es negativo, pertenece a $[-1,1]$ y está dentro de la bola de radio $r$ de cero porque su magnitud es a lo sumo $r/2<r$. No pertenece a la parte no negativa. Esto funciona para todo radio y niega exactamente la existencia de una bola relativa interior en cero. Las demás condiciones de partición siguen cumpliéndose.
+
 </details>
 
 #### Microcontrol 4
@@ -116,6 +122,8 @@ La segunda parte no es abierta relativa en cero: dado $r>0$, $-\min(r/2,1/2)$ pe
 <summary>Ver solución del microcontrol 4</summary>
 
 $E\setminus A$. Si $A$ es propia y no vacía, el complemento también es no vacío; la cerradura relativa de $A$ significa que ese complemento es abierto relativo. Disjunción y cobertura son identidades de complementos.
+
+Ser propia significa $A\ne E$ y da alguna entrada en $E\setminus A$. Ser cerrada relativa significa que este complemento es abierto en el mismo ambiente, mientras la apertura de $A$ está dada. Por ello ambas partes satisfacen todos los requisitos. En una separación, recíprocamente, cada parte es complemento de la otra y resulta también cerrada relativa.
 
 </details>
 
@@ -132,6 +140,8 @@ $E\setminus A$. Si $A$ es propia y no vacía, el complemento también es no vac�
 
 Sí. Toda parte del vacío es vacía, y no pueden existir las dos partes no vacías exigidas por una separación.
 
+La definición de conexidad afirma que no existe una separación, en lugar de exigir un punto testigo. Por eso también puede cumplirse cuando no hay entradas. Si se exigiera no vacuidad como parte de otra convención, cambiaría la conclusión, pero en este capítulo la no vacuidad corresponde a las dos partes de una separación, no al conjunto conexo.
+
 </details>
 
 #### Microcontrol 6
@@ -146,6 +156,8 @@ Sí. Toda parte del vacío es vacía, y no pueden existir las dos partes no vac�
 <summary>Ver solución del microcontrol 6</summary>
 
 No. Sus únicos subconjuntos son el vacío y él mismo; no admite dos partes disjuntas no vacías. La apertura real del singleton no interviene.
+
+Si ambas partes no vacías de una partición del singleton contuvieran su única entrada, se intersectarían. Si una no la contuviera, sería vacía. Es imposible satisfacer simultáneamente no vacuidad y disjunción, antes incluso de estudiar apertura. La prueba funciona en cualquier ambiente que contenga ese punto.
 
 </details>
 
@@ -162,6 +174,8 @@ No. Sus únicos subconjuntos son el vacío y él mismo; no admite dos partes dis
 
 No. Hay que demostrar apertura relativa de ambas partes y verificar no vacuidad, disjunción y cobertura. Una frontera mal asignada puede impedir la apertura de una parte.
 
+En un intervalo podemos asignar cada punto a un color sin producir una separación topológica. La parte que recibe la frontera puede tener entradas del otro color arbitrariamente próximas. Para negar conexidad hay que proporcionar una bola relativa interior en cada punto de cada parte, además de las condiciones conjuntistas. El dibujo sólo sugiere dónde intentar esos controles.
+
 </details>
 
 #### Microcontrol 8
@@ -176,6 +190,8 @@ No. Hay que demostrar apertura relativa de ambas partes y verificar no vacuidad,
 <summary>Ver solución del microcontrol 8</summary>
 
 Niega la existencia de cualquier par que satisfaga todas las condiciones de separación; no niega la existencia de particiones arbitrarias. Un intervalo sí admite particiones, pero ninguna con ambas partes abiertas relativas y no vacías.
+
+La afirmación es universal sobre todas las posibles parejas de partes: ninguna satisface el conjunto completo de requisitos. Comprobar que una partición particular falla no acredita conexidad, pues podría existir otra separación. En cambio, para refutar conexidad basta exhibir una única pareja válida y demostrar todas sus condiciones.
 
 </details>
 
@@ -198,6 +214,8 @@ Tomamos $A=E\cap(-\infty,0)=[-3,-1]$ y $B=E\cap(0,\infty)=[2,4]$. Los rayos son 
 
 **Retorno visual.** Véase [C15-F01](analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe.html#fig-anm-c15-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+El corte cero pertenece al hueco entre las piezas y no al ambiente $E$. Así no queda ninguna entrada sin asignar, mientras los rayos incompatibles impiden asignaciones dobles. La apertura relativa se acredita con la representación por abiertos reales, no afirmando apertura real de los segmentos. En sus extremos, los puntos exteriores que refutan apertura real desaparecen al recortar por $E$.
+
 </details>
 
 #### Ejercicio 2. Una partición que no rompe el intervalo
@@ -215,6 +233,8 @@ Ambas partes son no vacías, disjuntas y cubren $E$. Además $A=E\cap(-\infty,1)
 
 **Retorno visual.** Véase [C15-F01](analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe.html#fig-anm-c15-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La existencia de un testigo para cada radio es la negación del criterio por bolas de apertura relativa. El mínimo mantiene al testigo dentro de $[0,1)$ aun cuando el radio sea grande, y también dentro de la bola aun cuando sea pequeño. La partición cumple cobertura, disjunción y no vacuidad, pero una sola parte sin apertura basta para impedir que sea separación.
+
 </details>
 
 #### Ejercicio 3. Equivalencia por complemento
@@ -229,6 +249,8 @@ Demuestra desde las definiciones que $E$ es conexo si y sólo si todo subconjunt
 <summary>Ver solución del ejercicio 3</summary>
 
 Si $E$ es conexo y $A$ es abierto y cerrado relativo, $E\setminus A$ es abierto relativo. Si $A$ no fuese vacío ni todo $E$, las dos partes serían no vacías, disjuntas y exhaustivas, separando $E$. Luego $A=\varnothing$ o $A=E$. Recíprocamente, una separación $A,B$ da $B=E\setminus A$; la apertura de $B$ hace a $A$ cerrado relativo y la de $A$ ya está dada. Por no vacuidad de ambas partes $A$ es no vacío y propio, contradiciendo el criterio. Si $E$ es vacío, su único subconjunto es vacío y no puede existir separación; ambas afirmaciones se cumplen.
+
+En la primera dirección usamos la cerradura de $A$ para convertir su complemento en una segunda parte abierta. En la recíproca usamos cobertura y disjunción para identificar esa segunda parte exactamente con el complemento. La equivalencia depende del ambiente $E$ en ambos pasos. El criterio no prohíbe todos los subconjuntos abiertos y cerrados, sino únicamente los no vacíos y propios.
 
 </details>
 
@@ -245,6 +267,8 @@ Prueba que un subconjunto finito de $\mathbb R$ es conexo exactamente cuando tie
 
 Vacío y singleton no pueden dividirse en dos partes disjuntas no vacías, luego son conexos. Si el conjunto finito tiene al menos dos puntos, se puede ordenar como $t_1<\cdots<t_m$ con $m\ge2$, usando repetidamente el menor de una lista finita por comparación. Sea $c=(t_1+t_2)/2$. No pertenece al conjunto porque está entre sus dos primeros puntos. Las partes $E\cap(-\infty,c)=\{t_1\}$ y $E\cap(c,\infty)$ son abiertas relativas, disjuntas y exhaustivas; contienen $t_1$ y $t_2$. Son una separación. Sólo se usó una lista finita y el orden real.
 
+El mínimo y el segundo punto existen porque la lista es finita y tiene al menos dos miembros. Su punto medio queda estrictamente entre ellos y ningún miembro de la lista puede ocupar ese hueco. Esto asegura cobertura por los dos rayos y no vacuidad de sus recortes. No hemos utilizado R3 para producir el corte: la construcción verifica separación directamente.
+
 </details>
 
 #### Ejercicio 5. Ambientes anidados
@@ -259,6 +283,8 @@ Si $F\subseteq E\subseteq\mathbb R$ y $A$ es abierto relativo a $E$, prueba que 
 <summary>Ver solución del ejercicio 5</summary>
 
 Escribimos $A=E\cap U$ con $U$ abierto real. Como $F\subseteq E$, $F\cap A=F\cap U$, abierto relativo a $F$. Para una separación $A,B$ de $E$, sus intersecciones con $F$ siguen siendo abiertas relativas, disjuntas y exhaustivas. Pero alguna puede ser vacía: con $E=[-2,-1]\cup[1,2]$, sus dos segmentos como partes y $F=[1,2]$, la intersección de la primera parte con $F$ es vacía. Por ello no queda una separación de $F$.
+
+La igualdad $F\cap(E\cap U)=F\cap U$ usa $F\subseteq E$ y conserva un abierto real testigo. Las propiedades de disjunción y cobertura también se conservan al recortar. La no vacuidad es la condición que puede perderse: un subconjunto conexo puede quedar íntegramente de un lado de la separación del ambiente mayor.
 
 </details>
 ## 15.2. El supremo impide romper un intervalo
@@ -312,6 +338,8 @@ La prueba gastó tres hipótesis distintas: el orden/completitud ubicó $c$; el 
 
 La condición $a,b\in I$, $a\le b\Rightarrow[a,b]\subseteq I$. En el vacío no hay pares y la condición es vacía; en una semirrecta todo punto entre dos miembros satisface la misma desigualdad que define la semirrecta.
 
+Esta formulación usa únicamente puntos ya presentes y todos los puntos entre ellos. No pide extremos globales alcanzados ni acotación. Si ambos puntos coinciden, el segmento es un singleton; si no hay puntos, no existe un par que infrinja la condición. Así la misma definición cubre intervalos abiertos, cerrados, no acotados y degenerados.
+
 </details>
 
 #### Microcontrol 10
@@ -326,6 +354,8 @@ La condición $a,b\in I$, $a\le b\Rightarrow[a,b]\subseteq I$. En el vacío no h
 <summary>Ver solución del microcontrol 10</summary>
 
 Contiene $a$ y está acotado superiormente por $b$. La completitud real da un supremo para todo conjunto real no vacío acotado superiormente.
+
+Antes de escribir $\sup S$ comprobamos las dos premisas de completitud por separado. La pertenencia de $a$ aporta no vacuidad; la inclusión en $[a,b]$ aporta la cota superior. No se exige que todo $A$ sea acotado. Este recorte es lo que permite aplicar completitud incluso si el intervalo original se extiende indefinidamente.
 
 </details>
 
@@ -342,6 +372,8 @@ Contiene $a$ y está acotado superiormente por $b$. La completitud real da un su
 
 De $a\le c\le b$ y $a,b\in I$ se deduce $c\in[a,b]\subseteq I$. Sin esa inclusión la cobertura por las dos partes no permitiría asignar $c$ a una de ellas.
 
+El supremo es un real por completitud, pero esa existencia no asegura por sí sola que sea una entrada del dominio. La condición intervalar completa la justificación al incluir todos los reales entre $a$ y $b$. Sólo después puede usarse $I=A\cup B$ para dividir el argumento en los dos casos. Separar existencia de pertenencia evita un paso inválido en dominios con huecos.
+
 </details>
 
 #### Microcontrol 12
@@ -356,6 +388,8 @@ Si $c\in A$, ¿por qué $b-c$ es positivo?
 <summary>Ver solución del microcontrol 12</summary>
 
 $b\in B$ y la disjunción impiden $c=b$; además $c\le b$ por la cota del supremo. Por tanto $c<b$.
+
+Si $c=b$, la pertenencia de $c$ a $A$ y de $b$ a $B$ daría una entrada común, prohibida por disjunción. La cota $c\le b$ deja entonces la desigualdad estricta. Esa positividad permite diseñar un avance que permanezca en el segmento; no sería legítimo dividir la distancia restante y afirmar un avance positivo antes de verificarla.
 
 </details>
 
@@ -372,6 +406,8 @@ $b\in B$ y la disjunción impiden $c=b$; además $c\le b$ por la cota del suprem
 
 Es positivo, no avanza hasta $b$ y es menor que $r$. Así $c+h$ pertenece al segmento original y a la vecindad relativa de $c$; ambas pertenencias son necesarias para concluir que está en $A$.
 
+Los dos números del mínimo son positivos, así $h>0$. Además $h\le(b-c)/2<b-c$ y $h\le r/2<r$. La primera desigualdad mantiene $c+h$ entre $c$ y $b$, dentro de $I$; la segunda lo mantiene en la ventana que garantiza pertenencia a $A$. El nuevo punto pertenece a $S$ y supera su cota superior $c$, que es la contradicción.
+
 </details>
 
 #### Microcontrol 14
@@ -386,6 +422,8 @@ Si $c\in B$, ¿por qué existe $t\in S$ mayor que $c-s/2$?
 <summary>Ver solución del microcontrol 14</summary>
 
 El número $c-s/2<c$ no puede ser cota superior de $S$, pues $c$ es la menor cota superior. La negación de ser cota da un $t\in S$ con $t>c-s/2$, y $t\le c$ por ser $c$ cota.
+
+Para cualquier tolerancia positiva por debajo de $c$, la minimalidad del supremo impide que ese umbral sea una cota superior. Aquí se usa el umbral $c-s/2$, de modo que la entrada encontrada está a distancia menor que $s$ de $c$. Como está en $S\subseteq A$, la apertura de $B$ la colocaría también en $B$, contradiciendo disjunción.
 
 </details>
 
@@ -402,6 +440,8 @@ El número $c-s/2<c$ no puede ser cota superior de $S$, pues $c$ es la menor cot
 
 No. Si $c$ está en $B$, ni siquiera pertenece a $S\subseteq A$. Se usa la aproximación por debajo del supremo, no la existencia de un máximo.
 
+Un máximo es un miembro del conjunto que domina a todos los demás; un supremo sólo es la menor cota superior. La prueba conserva esa diferencia: en el caso $c\in B$ obtiene miembros próximos por debajo, sin asignar $c$ a $S$. Pedir un máximo impediría tratar precisamente ese caso y añadiría una hipótesis no demostrada.
+
 </details>
 
 #### Microcontrol 16
@@ -416,6 +456,8 @@ No. Si $c$ está en $B$, ni siquiera pertenece a $S\subseteq A$. Se usa la aprox
 <summary>Ver solución del microcontrol 16</summary>
 
 No. Se acota sólo el auxiliar $S$ entre dos puntos concretos. Supremo, propiedad intervalar y apertura relativa bastan, incluso para intervalos no acotados.
+
+Después de suponer una separación basta fijar un punto de cada parte y recortar entre ellos. Toda la estimación ocurre en ese segmento, aunque el dominio sea la recta o una semirrecta. No se extrae una subcobertura ni una subsucesión. El recurso global utilizado es completitud real aplicada al auxiliar acotado, seguido de dos controles locales de apertura.
 
 </details>
 
@@ -434,6 +476,8 @@ En una separación hipotética $I=A\cup B$, con $a\in A$, $b\in B$, $a<b$, justi
 
 $S=A\cap[a,b]$ contiene $a$ y todos sus elementos son menores o iguales que $b$. Completitud da $c=\sup S$. Como $a\in S$, $a\le c$; como $b$ es cota, $c\le b$. La hipótesis intervalar da $[a,b]\subseteq I$, luego $c\in I=A\cup B$. La cobertura asigna una parte y la disjunción impide que pertenezca a ambas. Sin intervalaridad, $c$ podría faltar en el dominio y no habría esa dicotomía.
 
+El supremo tiene dos funciones separadas: ser cota de $S$ y ser la menor de esas cotas. La primera lo ubica entre los puntos dados; la segunda permitirá encontrar miembros próximos por debajo. La intervalaridad asegura que ese real es una entrada. Así la prueba queda preparada para usar apertura de la parte que lo contiene sin asumir que sea máximo de $S$.
+
 </details>
 
 #### Ejercicio 7. Reparar un avance fuera del dominio
@@ -451,6 +495,8 @@ La apertura relativa sólo garantiza pertenencia a $A$ de puntos de $I$ próximo
 
 **Retorno visual.** Véase [C15-F02](analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe.html#fig-anm-c15-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La vecindad relativa es $I\cap B(c,r)$: proximidad sola no da pertenencia a $I$. El mínimo reparado asegura ambas condiciones y además conserva $d\le b$, necesario para pertenecer a $S$. El ejemplo numérico sólo ilustra el avance excesivo; la reparación es simbólica y funciona en cualquier radio positivo del caso hipotético $c\in A$.
+
 </details>
 
 #### Ejercicio 8. La propiedad aproximante necesaria
@@ -465,6 +511,8 @@ En el caso $c\in B$, desarrolla desde la definición de supremo la contradicció
 <summary>Ver solución del ejercicio 8</summary>
 
 $c-s/2<c$ no es cota superior de $S$, porque sería una cota menor que la menor cota superior $c$. Por negación de la condición de cota existe $t\in S$ con $t>c-s/2$. Además $t\le c$ pues $c$ sí es cota. Como $S\subseteq A$ y $c\in B$, la disjunción da $t\ne c$. Así $0<c-t<s/2<s$, y $t\in I$ pertenece a la vecindad de $c$ dentro de $I$, que está en $B$. Queda $t\in A\cap B$, contradicción. Sólo se usó un testigo para este radio.
+
+La propiedad aproximante se deduce de minimalidad de la cota y no de una sucesión elegida previamente. El testigo $t$ no puede igualar a $c$ porque pertenece a $A$ y el centro está en $B$. Esto proporciona la distancia estrictamente positiva y menor que el radio de apertura. La contradicción es pertenecer simultáneamente a las dos partes disjuntas.
 
 </details>
 
@@ -481,6 +529,8 @@ Explica por qué el argumento del supremo no prueba conexidad de $\mathbb Q$ vis
 
 El orden racional no garantiza un supremo racional para todo subconjunto racional no vacío acotado. Si se toma el supremo en $\mathbb R$, puede quedar fuera del dominio racional y la dicotomía «pertenece a una parte» falla. El corte $c=\sqrt2\notin\mathbb Q$ da las partes racionales menores y mayores que $c$. Son abiertas relativas, disjuntas, exhaustivas y no vacías por los testigos $1$ y $2$. La densidad racional no incorpora a $c$ ni subsana el gasto de completitud y pertenencia.
 
+Completitud de la recta entrega un supremo real, pero la prueba requiere además que sea miembro del intervalo considerado. En el ambiente racional, una frontera irracional no puede asignarse a ninguna parte. El corte explícito verifica que la dificultad es real, no sólo una laguna del argumento. Densidad permite aproximar esa frontera, pero no satisface la pertenencia que falta.
+
 </details>
 
 #### Ejercicio 10. Intervalos no acotados y degenerados
@@ -495,6 +545,8 @@ Prueba que $(a,\infty)$, $\mathbb R$, $\{a\}$ y $\varnothing$ son conexos, indic
 <summary>Ver solución del ejercicio 10</summary>
 
 En la semirrecta, si $u\le v$ son miembros, todo $t\in[u,v]$ satisface $t\ge u>a$, así también pertenece. La recta contiene todos sus segmentos. Singleton y vacío satisfacen el predicado intervalar vacíamente o con segmentos degenerados. R2 los hace conexos. Su prueba acota sólo $S=A\cap[u,v]$ después de fijar dos puntos de una supuesta separación; no necesita acotar todo el intervalo. En vacío y singleton no hay dos puntos de partes disjuntas no vacías, de modo que la separación ya es imposible.
+
+Un intervalo no acotado puede contener un segmento acotado entre dos entradas cualesquiera. Es ese segmento el que aporta la cota superior del auxiliar en R2. Para vacío y singleton, la no vacuidad y disjunción de dos partes ya resultan incompatibles. Por ello el resultado abarca tanto dominios muy grandes como casos degenerados sin una premisa de compacidad.
 
 </details>
 ## 15.3. Un hueco produce dos lados
@@ -540,6 +592,8 @@ La condición de intersección es suficiente, no necesaria para toda unión cone
 
 Un $c\notin E$ situado estrictamente entre dos puntos $a<b$ de $E$. Una omisión fuera de todos sus puntos no asegura dos partes no vacías.
 
+La posición estrictamente intermedia aporta entradas presentes a ambos lados. La ausencia de $c$ permite que los rayos abiertos cubran todas las entradas sin dejar ninguna en la frontera. Si el punto omitido estuviera a la izquierda o derecha de todo el conjunto, uno de los recortes podría ser vacío y no tendríamos una separación.
+
 </details>
 
 #### Microcontrol 18
@@ -554,6 +608,8 @@ Un $c\notin E$ situado estrictamente entre dos puntos $a<b$ de $E$. Una omisión
 <summary>Ver solución del microcontrol 18</summary>
 
 Como $c\notin E$, todo $x\in E$ es distinto de $c$. La tricotomía deja sólo $x<c$ o $x>c$.
+
+Los dos rayos no incluyen la frontera $c$, y por eso su unión no es toda la recta. Al recortarlos por $E$, el único punto que podría faltar ya estaba ausente. La cobertura se prueba entrada por entrada usando tricotomía. Si $c$ perteneciera a $E$, estos dos recortes dejarían fuera esa entrada y no formarían una separación.
 
 </details>
 
@@ -570,6 +626,8 @@ Como $c\notin E$, todo $x\in E$ es distinto de $c$. La tricotomía deja sólo $x
 
 Los puntos dados $a<c<b$: $a$ está en el lado izquierdo y $b$ en el derecho.
 
+No basta que los rayos reales sean no vacíos: sus recortes con el dominio podrían no serlo. Las entradas $a$ y $b$ verifican no vacuidad de los recortes efectivos. Además, las desigualdades opuestas garantizan disjunción y los rayos aportan apertura relativa. Así cada requisito se vincula con un dato concreto de la construcción.
+
 </details>
 
 #### Microcontrol 20
@@ -584,6 +642,8 @@ Los puntos dados $a<c<b$: $a$ está en el lado izquierdo y $b$ en el derecho.
 <summary>Ver solución del microcontrol 20</summary>
 
 No. $\sqrt2$ es un punto real entre $1$ y $2$ que no es racional. Los racionales menores y mayores que ese corte forman una separación; aproximarse al corte no lo incluye en el dominio.
+
+Densidad significa que los racionales visitan todo intervalo abierto real, no que contengan todos los puntos entre dos miembros. En el corte irracional, cada racional pertenece exactamente a un lado; ambos lados son abiertos relativos y contienen $1$ o $2$. Los racionales pueden aproximarse a la frontera sin que ésta sea una entrada que conecte las partes.
 
 </details>
 
@@ -600,6 +660,8 @@ No. $\sqrt2$ es un punto real entre $1$ y $2$ que no es racional. Los racionales
 
 Si $a,b$ pertenecen a todos los miembros, cada miembro contiene $[a,b]$, luego la intersección también lo contiene. Si la intersección es vacía, la condición entre pares se cumple vacíamente.
 
+Para verificar la condición intervalar tomamos un par de la intersección y un punto entre ellos. En cada intervalo ese punto pertenece por intervalaridad, por lo que pertenece a todos y a su intersección. No se requiere seleccionar extremos de los miembros. Con la convención de familia vacía, la intersección es la recta completa y también satisface la condición.
+
 </details>
 
 #### Microcontrol 22
@@ -614,6 +676,8 @@ Si $a,b$ pertenecen a todos los miembros, cada miembro contiene $[a,b]$, luego l
 <summary>Ver solución del microcontrol 22</summary>
 
 La unión omite, por ejemplo, $3/2$ entre los puntos presentes $1/2$ y $5/2$. No es intervalo y por R3 no es conexa.
+
+El corte $3/2$ deja una parte a cada lado, ambas abiertas relativas y con entradas dadas. Como el corte falta, esas partes cubren la unión y son disjuntas. Los intervalos originales son conexos individualmente, pero esa propiedad no obliga a la unión a contener los puntos entre piezas distintas.
 
 </details>
 
@@ -630,6 +694,8 @@ La unión omite, por ejemplo, $3/2$ entre los puntos presentes $1/2$ y $5/2$. No
 
 En una supuesta separación de la unión, cada conexo debe quedar en una sola parte. El punto común obliga a que ambos queden en la misma, dejando vacía la otra parte.
 
+Al intersectar las partes de la separación con uno de los conexos obtenemos partes abiertas relativas, disjuntas y que lo cubren. Si ambas fueran no vacías lo separarían, así debe quedar entero de un lado. La entrada compartida pertenece al mismo lado para los dos conjuntos. Por ello toda la unión queda allí, contradiciendo no vacuidad del otro lado.
+
 </details>
 
 #### Microcontrol 24
@@ -644,6 +710,8 @@ En una supuesta separación de la unión, cada conexo debe quedar en una sola pa
 <summary>Ver solución del microcontrol 24</summary>
 
 No. $[0,1)$ y $[1,2]$ son disjuntos, pero su unión es $[0,2]$, que es intervalo y conexo. La condición de punto común es suficiente, no necesaria.
+
+El punto uno no pertenece a la primera pieza pero sí a la segunda. Así no falta en la unión y tampoco hay otros huecos entre cero y dos. La unión es un intervalo aunque las piezas no se intersecten. No podemos aplicar directamente el criterio de punto común, pero sí comprobar intervalaridad y usar R2.
 
 </details>
 
@@ -662,6 +730,8 @@ Para $E=[0,1]\cup(1,3]\setminus\{2\}$, interpreta los paréntesis como $E=([0,1]
 
 La unión anterior a quitar $2$ es $[0,3]$, pues $1$ está en la primera pieza. Por tanto $E=[0,3]\setminus\{2\}$. Tomamos $A=E\cap(-\infty,2)=[0,2)$ y $B=E\cap(2,\infty)=(2,3]$. Son abiertas relativas por los rayos, disjuntas y cubren $E$ porque $2$ fue omitido. Son no vacías por $0$ y $3$. $1$ no es hueco: pertenece a $E$. Las modalidades de extremos de cada pieza no deben leerse aisladas de la unión.
 
+La unión debe calcularse antes de interpretar las fronteras de cada pieza. Aunque la segunda excluya uno, la primera lo incluye y la unión no tiene hueco allí. El único corte solicitado es dos, que se retira después de unir. Los rayos alrededor de dos producen dos partes abiertas relativas incluso si sus extremos no forman abiertos reales.
+
 </details>
 
 #### Ejercicio 12. Densidad y ruptura
@@ -679,6 +749,8 @@ Usamos $c=\sqrt2$, real irracional, y $A=\mathbb Q\cap(-\infty,c)$, $B=\mathbb Q
 
 **Retorno visual.** Véase [C15-F03](analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe.html#fig-anm-c15-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+Las dos aproximaciones al corte se realizan en intervalos abiertos no vacíos, uno de cada lado, de modo que densidad aporta racionales con las desigualdades estrictas requeridas. Sus límites posibles en el ambiente real pueden coincidir sin generar intersección dentro del ambiente racional. La separación exige disjunción de las partes, no una distancia positiva global entre ellas.
+
 </details>
 
 #### Ejercicio 13. Intersecciones y uniones
@@ -693,6 +765,8 @@ Demuestra que toda intersección de intervalos reales es conexa, con la convenci
 <summary>Ver solución del ejercicio 13</summary>
 
 Si $x,y$ pertenecen a la intersección, están en cada intervalo de la familia, y el segmento entre ellos está en cada miembro, luego en la intersección. Es intervalo y R2 da conexidad. Para una familia sin miembros, la intersección relativa a $\mathbb R$ es toda $\mathbb R$, también intervalo. La unión falla para $(0,1)\cup(2,3)$: $1/2$ y $5/2$ pertenecen pero $3/2$ no; R3 da desconexión o se exhibe el corte por $3/2$.
+
+La intersección conserva puntos intermedios porque cada miembro impone la misma obligación sobre el par fijado. No importa que la familia sea infinita ni que no existan extremos globales. En una unión, en cambio, las dos entradas pueden proceder de miembros diferentes y ninguno está obligado a incluir el segmento que las une. El contraejemplo aprovecha exactamente esa diferencia.
 
 </details>
 
@@ -709,6 +783,8 @@ Sea $(E_i)_{i\in J}$ una familia no vacía de conexos reales y supón que hay $p
 
 Supongamos una separación $H=A\cup B$ y, intercambiando nombres, $p\in A$. Para cada índice fijo $i$, las partes $E_i\cap A$ y $E_i\cap B$ son abiertas relativas a $E_i$, disjuntas y exhaustivas. La primera contiene el punto común $p$. Si la segunda fuese no vacía, separaría $E_i$; por conexidad es vacía. Se ha probado para todo $i$ que $E_i\subseteq A$. Por definición de unión, $H\subseteq A$, luego $B=\varnothing$, contradicción. El punto $p$ es único testigo compartido fijado desde la hipótesis; no se produce una familia de elecciones.
 
+Para cada índice se razona con la misma entrada $p$, que ya está dada como punto común. Las intersecciones con la separación heredan apertura relativa por el cálculo de ambientes anidados. La conexidad de cada miembro obliga a eliminar su parte opuesta. El razonamiento universal sobre índices produce inclusión de toda la unión sin escoger puntos o radios para cada miembro.
+
 </details>
 
 #### Ejercicio 15. Cerrar un intervalo sin romperlo
@@ -723,6 +799,8 @@ Prueba directamente que la adherencia real $\overline I$ de un intervalo $I$ es 
 <summary>Ver solución del ejercicio 15</summary>
 
 Para $I=\varnothing$, ninguna vecindad toca $I$ y su adherencia es vacía. En el resto, tomemos $u<v$ en $\overline I$ y $u<t<v$. La vecindad de $u$ de radio $(t-u)/2$ toca $I$, dando $a\in I$ con $a<t$. La de $v$ de radio $(v-t)/2$ da $b\in I$ con $t<b$. Intervalaridad implica $t\in[a,b]\subseteq I\subseteq\overline I$. Los extremos $u,v$ ya están en la adherencia. Así todo segmento entre miembros está en ella, y es intervalo. R2 prueba conexidad. Sólo se fijaron dos testigos de vecindades para el punto $t$ considerado.
+
+Los radios alrededor de $u$ y $v$ se diseñan según el punto intermedio $t$. El primero produce una entrada estrictamente menor que $t$, y el segundo una estrictamente mayor. Intervalaridad coloca $t$ en el conjunto original, una conclusión más fuerte que pertenecer a su adherencia. Los extremos del segmento ya pertenecían a la adherencia por hipótesis y completan la condición intervalar.
 
 </details>
 ## 15.4. La continuidad transporta la imposibilidad de separar
@@ -762,6 +840,8 @@ Hay una prueba equivalente mediante funciones con sólo dos valores. **$E$ es co
 
 Preimágenes. Si las partes de la imagen son $H\cap V$ y $H\cap W$, sus preimágenes por $h:E\to\mathbb R$ son $h^{-1}[V]$ y $h^{-1}[W]$, abiertas relativas a $E$.
 
+La apertura de una parte de la imagen se expresa como recorte por un abierto real. Como todas las evaluaciones están en la imagen, tomar su preimagen equivale a tomar la del abierto real entero. El criterio de C14 da apertura relativa de las entradas seleccionadas. Se transporta una separación hacia atrás; no se afirma que las imágenes de abiertos sean abiertas.
+
 </details>
 
 #### Microcontrol 26
@@ -776,6 +856,8 @@ Preimágenes. Si las partes de la imagen son $H\cap V$ y $H\cap W$, sus preimág
 <summary>Ver solución del microcontrol 26</summary>
 
 Así la función $h=f\upharpoonright E$ tiene exactamente el ambiente de entradas que queremos separar. Su continuidad se hereda de $f$ y su imagen es $f[E]$.
+
+Las preimágenes deben tener ambiente $E$, pues la contradicción buscada es una separación de $E$. Usar todo $D$ podría producir una separación de un dominio que no se ha supuesto conexo. Restringir la función conserva continuidad relativa y hace que sus valores alcanzados sean exactamente los que aparecen en la separación hipotética de $f[E]$.
 
 </details>
 
@@ -792,6 +874,8 @@ Así la función $h=f\upharpoonright E$ tiene exactamente el ambiente de entrada
 
 Que sus valores pertenecen a la imagen: para un valor concreto $y$ de esa parte existe $x\in E$ con $f(x)=y$. No bastaría que $y$ perteneciera solamente al codominio.
 
+Una preimagen de un subconjunto no vacío del codominio puede ser vacía si la función no alcanza sus valores. Aquí cada valor elegido ya tiene una entrada porque pertenece a $f[E]$. Esa entrada queda en la preimagen de la parte correspondiente. Sólo se necesitan dos testimonios, uno por parte, para verificar no vacuidad.
+
 </details>
 
 #### Microcontrol 28
@@ -806,6 +890,8 @@ Que sus valores pertenecen a la imagen: para un valor concreto $y$ de esa parte 
 <summary>Ver solución del microcontrol 28</summary>
 
 No. Para refutar la separación se fijan sólo un valor y una preimagen en cada una de sus dos partes. No se construye un selector global de fibras.
+
+La prueba de no vacuidad trabaja con dos existencias concretas. No necesita reunir una entrada para cada salida ni invertir globalmente una función que podría no ser inyectiva. Las preimágenes se definen como conjuntos de todas las entradas que cumplen la condición. Así el argumento no introduce una selección simultánea de fibras.
 
 </details>
 
@@ -822,6 +908,8 @@ No. Para refutar la separación se fijan sólo un valor y una preimagen en cada 
 
 No. Para $q(x)=x^2$ en $[-2,2]$, $q^{-1}[\{1\}]=\{-1,1\}$, que no es intervalo, aunque $\{1\}$ sí es conexo.
 
+El singleton de salida es un intervalo degenerado y por ello conexo. Su preimagen contiene dos puntos y omite cero entre ellos; el corte por cero la separa. La continuidad de $q$ y la conexidad de su dominio siguen siendo verdaderas. El ejemplo muestra que invertir la dirección del resultado de preservación cambia la afirmación y puede hacerla falsa.
+
 </details>
 
 #### Microcontrol 30
@@ -836,6 +924,8 @@ No. Para $q(x)=x^2$ en $[-2,2]$, $q^{-1}[\{1\}]=\{-1,1\}$, que no es intervalo, 
 <summary>Ver solución del microcontrol 30</summary>
 
 No. Una función constante en $\{-1,1\}$ es continua en el dominio relativo y tiene imagen singleton, pero el dominio admite un corte por cero.
+
+La constante tiene error cero para cualquier par de entradas, de modo que es continua incluso en este dominio separado. Su imagen olvida la diferencia entre las entradas y queda reducida a un punto. Preservación sólo afirma que un dominio conexo produce una imagen conexa; una imagen conexa puede proceder de un dominio desconexo.
 
 </details>
 
@@ -852,6 +942,8 @@ No. Una función constante en $\{-1,1\}$ es continua en el dominio relativo y ti
 
 Se asigna cero a una parte y uno a la otra. En cada punto la apertura relativa da una vecindad donde la función es constante; el error de salida allí es cero para cualquier tolerancia positiva.
 
+La cobertura y la disjunción aseguran que cada entrada recibe exactamente una regla. Para una entrada de $A$, su apertura ofrece una bola relativa contenida en $A$ y por ello salida siempre cero; para una de $B$, siempre uno. Las bolas pueden cambiar con el centro. La no vacuidad de las dos partes garantiza que esta continua no sea constante.
+
 </details>
 
 #### Microcontrol 32
@@ -866,6 +958,8 @@ Se asigna cero a una parte y uno a la otra. En cada punto la apertura relativa d
 <summary>Ver solución del microcontrol 32</summary>
 
 Que para todos $x,z$ del dominio se cumple $u(x)=u(z)$. La condición universal es vacía; no se exige un valor alcanzado ni una entrada testigo.
+
+No hay dos entradas del vacío que tengan salidas distintas, por lo que se cumple la igualdad universal. Bajo esta convención el criterio de dos valores incluye el vacío de forma coherente con su conexidad. Pedir además que exista una entrada o un valor alcanzado introduciría un requisito diferente y excluiría innecesariamente ese caso.
 
 </details>
 
@@ -884,6 +978,8 @@ Reconstruye R4 para una continua $f:D\to\mathbb R$ y un conexo $E\subseteq D$. I
 
 Sea $h=f\upharpoonright E$, continua. Si $H=f[E]$ se separara como $A=H\cap V$, $B=H\cap W$ con $V,W$ abiertos reales, tomamos $P=\{x\in E:h(x)\in A\}=h^{-1}[V]$ y $Q=h^{-1}[W]$. Son abiertos relativos a $E$, mientras $A,B$ lo eran a $H$. Disjunción y cobertura se trasladan porque toda salida de $h$ está en $H=A\cup B$. Para un valor concreto en cada parte, pertenecer a $H$ da una entrada en $E$ con esa salida; ambas preimágenes son no vacías. Así separan $E$, contradicción. Si $E$ es vacío, su imagen es vacía y ya es conexa. No se usa inversa funcional ni selector de todas las fibras.
 
+La continuidad garantiza apertura sólo de las preimágenes de abiertos en el ambiente correcto. Las partes de $H$ se representan con abiertos reales para poder aplicar ese criterio a la restricción. El hecho de que las salidas estén en $H$ traslada cobertura y disjunción; el hecho de que cada parte contenga un valor alcanzado traslada no vacuidad. Así cada condición de la separación tiene una justificación propia.
+
 </details>
 
 #### Ejercicio 17. La preimagen que se divide
@@ -898,6 +994,8 @@ Para $q:[-2,2]\to\mathbb R$, $q(x)=x^2$, calcula $q^{-1}[\{1\}]$ y prueba que no
 <summary>Ver solución del ejercicio 17</summary>
 
 La ecuación $x^2=1$ equivale a $(x-1)(x+1)=0$, luego la preimagen es $\{-1,1\}$. Sus dos singletons se obtienen cortando por cero; son abiertos relativos, disjuntos y no vacíos, y cubren la preimagen. No es conexa. $q$ es continua por C14, su dominio $[-2,2]$ es conexo y $\{1\}$ también. Nada contradice R4: el teorema preserva conexidad por imagen directa, no por preimagen.
+
+La factorización permite calcular todas las entradas de la fibra, no sólo dos candidatos. Ambas raíces pertenecen al dominio indicado y no hay otras. Sus singletons constituyen una separación relativa de la fibra, aunque no sean abiertos reales. R4 sigue siendo verdadero porque se refiere a imágenes directas de conexos y no a fibras o preimágenes.
 
 </details>
 
@@ -914,6 +1012,8 @@ En $[-1,1]$ define $f(x)=x$ si $x<0$ y $f(x)=x-1$ si $x\ge0$. Calcula su imagen 
 
 La primera rama tiene imagen $[-1,0)$ y la segunda $[-1,0]$, luego la imagen total es $[-1,0]$, intervalo. Pero $f(0)=-1$. Dado $\delta>0$, ponemos $t=\min(\delta/2,1/4)>0$, $x=-t\in[-1,0)$. Entonces $|x|<\delta$ y $|f(x)-f(0)|=1-t\ge3/4>1/2$. La tolerancia $1/2$ refuta continuidad en cero. El resultado de preservación es una implicación con continuidad como premisa; que la imagen total sea intervalar no prueba controles locales ni el valor intermedio en cada subsegmento.
 
+La segunda rama recupera los valores que faltaban para que la imagen total incluya menos uno y cero. Esa coincidencia global no corrige el valor central menos uno frente a las salidas cercanas de la primera rama. El infractor se elige dentro del dominio para cualquier radio y mantiene un error mayor que la tolerancia fija. La refutación compara con $f(0)$, que es el destino exigido por continuidad.
+
 </details>
 
 #### Ejercicio 19. El criterio de dos valores
@@ -929,6 +1029,8 @@ Demuestra que $E$ es conexo si y sólo si toda continua $u:E\to\{0,1\}$ es const
 
 Si $E$ es conexo, R4 da imagen conexa de $u$ como subconjunto real. Una imagen que contuviera $0$ y $1$ sería exactamente $\{0,1\}$, que omite $1/2$ y no es intervalo; contradicción con R3. Así no hay dos entradas con salidas distintas, que es constancia. Si $E$ tuviera separación $A,B$, definimos $u=0$ en $A$, $u=1$ en $B$. Cobertura/disjunción hacen válida la función. Para cada entrada, una bola relativa contenida en su parte hace el error cero, dando continuidad para todo $\varepsilon>0$. Las dos partes no vacías dan salidas diferentes, contradicción con el criterio. En vacío la condición de constancia es universal vacía y no se exige valor alcanzado.
 
+Una función a $\{0,1\}$ puede mirarse como función real porque la inclusión de ese codominio en la recta es continua. Si alcanzara ambos valores, su imagen omitiría el punto intermedio $1/2$ y sería desconexa. Para la recíproca, la función definida por una separación es localmente constante y alcanza ambos valores. El caso vacío se conserva mediante la convención de igualdad para todas las parejas de entradas.
+
 </details>
 
 #### Ejercicio 20. Conexidad preservada por homeomorfismo
@@ -943,6 +1045,8 @@ Sea $f:E\to F$ un homeomorfismo entre subconjuntos reales. Prueba que $E$ es con
 <summary>Ver solución del ejercicio 20</summary>
 
 Si $E$ es conexo, continuidad de $f$ y sobreyectividad dan $F=f[E]$ conexo por R4. Si $F$ es conexo, la inversa $h:F\to E$ es continua y sobreyectiva sobre $E$, luego $E=h[F]$ es conexo. Para una continua sobreyectiva sin inversa continua sólo está garantizada la primera dirección. La constante $\{-1,1\}\to\{0\}$ es continua y sobreyectiva; el codominio es conexo y el dominio no. No hay inversa funcional en ese ejemplo, lo cual ya basta para refutar la recíproca general.
+
+La primera implicación sólo usa continuidad y que todas las entradas del codominio se alcancen. La segunda necesita continuidad del transporte inverso. El ejemplo constante muestra que sobreyectividad puede colapsar dos componentes en una y por eso no recupera la estructura del dominio. Los requisitos del homeomorfismo permiten razonar en ambas direcciones con imágenes de conexos.
 
 </details>
 ## 15.5. El valor intermedio como consecuencia estructural
@@ -992,6 +1096,8 @@ Una imagen intervalar puede no estar acotada ni ser cerrada: la identidad en $(0
 
 En $[\min(u,v),\max(u,v)]$, contenido en el intervalo de partida. Se aplica preservación a ese segmento, no sólo a todo el dominio.
 
+El segmento entre los dos argumentos está en $I$ y es conexo. Su imagen por la restricción continua es un intervalo que contiene ambas salidas, así también contiene el nivel intermedio. Pertenecer a esa imagen proporciona un argumento dentro del segmento específico. Aplicar el resultado sólo a todo $I$ daría un testigo sin esa localización precisa.
+
 </details>
 
 #### Microcontrol 34
@@ -1006,6 +1112,8 @@ En $[\min(u,v),\max(u,v)]$, contenido en el intervalo de partida. Se aplica pres
 <summary>Ver solución del microcontrol 34</summary>
 
 Porque es distinto de $f(u)$ y $f(v)$. Un testigo con esa salida no puede ser $u$ ni $v$, así queda en el interior si son distintos.
+
+Un argumento igual a un extremo produciría su salida extrema, distinta del nivel solicitado. Excluir esos dos argumentos del segmento cerrado deja el segmento abierto entre ellos. La estrictitud se usa para esa exclusión, no para la existencia básica. Si el nivel coincide con una salida extrema, ese extremo ya es un testigo válido.
 
 </details>
 
@@ -1022,6 +1130,8 @@ Porque es distinto de $f(u)$ y $f(v)$. Un testigo con esa salida no puede ser $u
 
 Se garantiza un cero en $[a,b]$, que puede estar en un extremo. Para asegurar uno en $(a,b)$ hacen falta signos estrictos opuestos.
 
+Si $f(a)=0$ o $f(b)=0$, la existencia ya queda probada por ese extremo. Si ninguna igualdad ocurre, los signos son estrictamente opuestos y el valor intermedio produce un cero interior. Las desigualdades débiles por sí solas no garantizan interioridad: la función $f(x)=x$ en $[0,1]$ sólo se anula en cero.
+
 </details>
 
 #### Microcontrol 36
@@ -1036,6 +1146,8 @@ Se garantiza un cero en $[a,b]$, que puede estar en un extremo. Para asegurar un
 <summary>Ver solución del microcontrol 36</summary>
 
 Con $g(x)=f(x)-y$, continua por álgebra de C14. Entonces $g(x)=0$ equivale exactamente a $f(x)=y$ y el dominio no cambia.
+
+Restar una constante conserva continuidad en el mismo dominio. Las desigualdades respecto del nivel $y$ se convierten en signos de $g$: por debajo da negativo y por encima positivo. Encontrar un cero de $g$ resuelve exactamente la ecuación original, sin cambiar sus argumentos ni imponer unicidad.
 
 </details>
 
@@ -1052,6 +1164,8 @@ Con $g(x)=f(x)-y$, continua por álgebra de C14. Entonces $g(x)=0$ equivale exac
 
 Si hubiera dos valores de signos opuestos, R5 produciría un cero entre sus argumentos. Fijando un valor, todos los demás deben tener su mismo signo.
 
+Fijamos una entrada porque el intervalo es no vacío. Su salida no nula tiene uno de los dos signos. Cualquier salida de signo contrario, junto a ella, obligaría a alcanzar cero en el segmento entre sus argumentos. Como no hay ceros, todas las salidas tienen el signo fijado. La conclusión utiliza conexión del dominio, además de estabilidad local del signo.
+
 </details>
 
 #### Microcontrol 38
@@ -1066,6 +1180,8 @@ Si hubiera dos valores de signos opuestos, R5 produciría un cero entre sus argu
 <summary>Ver solución del microcontrol 38</summary>
 
 Su dominio $\mathbb R\setminus\{0\}$ no es intervalo. La continuidad se conserva en ese dominio roto, pero falta la hipótesis que conecta los argumentos de signos opuestos.
+
+Entre una entrada negativa y una positiva aparece cero, que el dominio excluye. No podemos restringir $1/x$ al segmento que las une porque la función no está definida en toda esa región. Las dos componentes admiten signos diferentes sin ninguna discontinuidad relativa. Se mantiene continuidad y ausencia de ceros, pero se pierde la hipótesis intervalar.
 
 </details>
 
@@ -1082,6 +1198,8 @@ Su dominio $\mathbb R\setminus\{0\}$ no es intervalo. La continuidad se conserva
 
 No. $x^2$ alcanza $1$ en $-1$ y $1$. La existencia de al menos un argumento se distingue de cualquier prueba adicional de inyectividad o monotonía.
 
+La afirmación de existencia permite uno o varios argumentos con la misma salida. La continuidad controla proximidad y el valor intermedio ausencia de huecos; ninguna de esas propiedades impide fibras con varios miembros. Para obtener unicidad puede demostrarse por separado inyectividad, por ejemplo mediante estricto crecimiento en el dominio pertinente.
+
 </details>
 
 #### Microcontrol 40
@@ -1096,6 +1214,8 @@ No. $x^2$ alcanza $1$ en $-1$ y $1$. La existencia de al menos un argumento se d
 <summary>Ver solución del microcontrol 40</summary>
 
 No bajo estas hipótesis. La identidad en $(0,1)$ tiene imagen $(0,1)$, sin mínimo ni máximo. R5 prueba ausencia de huecos entre valores alcanzados, no extremos alcanzados.
+
+Que la imagen sea intervalo sólo obliga a incluir los valores entre salidas ya alcanzadas. No obliga a alcanzar su ínfimo o supremo ni a ser acotada. En la identidad sobre $(0,1)$, cada salida tiene otras menores y mayores en la imagen, así no hay extremos. No se ha supuesto compacidad ni se ha probado un teorema de extremos.
 
 </details>
 
@@ -1114,6 +1234,8 @@ Sea $I$ intervalo, $f:I\to\mathbb R$ continua y $u>v$ con $f(u)<y<f(v)$. Indica 
 
 $[v,u]\subseteq I$ por intervalaridad. La restricción continua a ese segmento tiene imagen intervalar que contiene $f(u)$ y $f(v)$, por R4 y R3. Contiene el valor intermedio $y$, así existe $c\in[v,u]$ con $f(c)=y$. Las desigualdades estrictas hacen $y$ distinto de las dos salidas extremas, luego $c\ne u,v$ y $c\in(v,u)$. El orden de las salidas no tiene que coincidir con el de los argumentos.
 
+Hay dos órdenes independientes: el de argumentos y el de valores. El segmento de argumentos se escribe $[v,u]$ porque $v<u$, mientras el nivel está entre $f(u)$ y $f(v)$ en el orden contrario. La imagen intervalar contiene el nivel sin exigir que la función sea creciente. La estrictitud de las salidas excluye los dos extremos del segmento de argumentos.
+
 </details>
 
 #### Ejercicio 22. Existencia y unicidad por pruebas distintas
@@ -1131,6 +1253,8 @@ $F$ es continua por álgebra polinomial de C14. $F(0)=-1<0$ y $F(1)=1>0$, así R
 
 **Retorno visual.** Véase [C15-F04](analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe.html#fig-anm-c15-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La factorización de la diferencia prueba crecimiento para cualquier par ordenado del segmento, no sólo en sus extremos. El segundo factor incluye uno y los otros sumandos son no negativos, así nunca se anula. Dos ceros distintos contradirían ese crecimiento. La existencia usa signos opuestos y continuidad; esta desigualdad añade la unicidad que el valor intermedio por sí solo no prometía.
+
 </details>
 
 #### Ejercicio 23. Una coincidencia de dos continuas
@@ -1146,6 +1270,8 @@ Sean $f,g:[0,1]\to\mathbb R$ continuas, con $f(0)<g(0)$ y $f(1)>g(1)$. Prueba qu
 
 $h=f-g$ es continua por C14. En cero es negativa y en uno positiva, luego R5 da $c\in(0,1)$ con $h(c)=0$, es decir $f(c)=g(c)$. No se garantiza unicidad. Por ejemplo $f(x)=(x-1/4)(x-1/2)(x-3/4)$ y $g(x)=0$ cumplen $f(0)=-3/32<0$, $f(1)=3/32>0$ y coinciden en tres entradas interiores distintas. Todas las funciones indicadas son polinomiales o constantes y por ello continuas.
 
+Restar las dos funciones convierte la coincidencia en una ecuación de cero y las comparaciones extremas en signos opuestos. En el contraejemplo, los tres factores se anulan en tres puntos distintos del interior y sus productos extremos tienen los signos requeridos. Esto mantiene todas las hipótesis de existencia mientras refuta unicidad. No hace falta estudiar derivadas para ninguna de las dos conclusiones.
+
 </details>
 
 #### Ejercicio 24. Sin ceros, un signo
@@ -1160,6 +1286,8 @@ Sea $I$ intervalo no vacío y $f:I\to\mathbb R$ continua sin ceros. Prueba que $
 <summary>Ver solución del ejercicio 24</summary>
 
 Fijamos $a\in I$. Como $f(a)\ne0$, es positivo o negativo. Si fuese positivo y hubiera $b$ con $f(b)<0$, R5 produciría cero entre $a,b$, contradicción. Todos los valores son no negativos y, al no haber ceros, positivos. El caso $f(a)<0$ es simétrico. Sin intervalaridad, $f(x)=1/x$ en $\mathbb R\setminus\{0\}$ es continua por C14, no tiene ceros y toma $-1$ y $1$. El punto omitido impide aplicar R5 entre esos argumentos.
+
+La elección inicial de una sola entrada fija cuál de las dos posibilidades de signo debe verificarse globalmente. Una salida opuesta produciría un cero dentro del segmento entre ambos argumentos, contenido en el dominio por intervalaridad. En $1/x$, ese segmento incluye una entrada prohibida, cero. Por ello la continuidad relativa de esa función no habilita el paso que conectaba ambos signos.
 
 </details>
 
@@ -1179,6 +1307,8 @@ Da un contraejemplo y enuncia la conclusión exacta que sí aporta R5.
 <summary>Ver solución del ejercicio 25</summary>
 
 Para $f(x)=x^2$ en $[-2,2]$, ambos extremos valen $4$, pero $f(0)=0$. La fórmula propuesta daría sólo $\{4\}$, y es falsa. La imagen es de hecho $[0,4]$: todo cuadrado del dominio está ahí, y para cada $y\in[0,4]$ la raíz positiva $\sqrt y\in[0,2]$ da la preimagen. R5 garantiza la inclusión del segmento entre las dos salidas extremas dentro de la imagen. No garantiza que no haya otros valores; identificar extremos globales alcanzados requiere argumentos adicionales.
+
+Las salidas de los extremos de entrada no tienen por qué ser los extremos de toda la imagen. En el ejemplo ambas son cuatro y existe una salida interior menor. Para demostrar la imagen exacta se prueban dos inclusiones: una por las cotas del cuadrado y otra construyendo una entrada para cada salida no negativa hasta cuatro. R5 sólo proporciona la inclusión del segmento entre valores alcanzados.
 
 </details>
 ## 15.6. Bisección: existencia, localización y alcance del cálculo
@@ -1236,6 +1366,8 @@ La cota de longitud no da por sí sola una cota del residual $|g(M_n)|$: una fun
 
 Con $L_0=a$, $U_0=b$, es $(b-a)/2^n$, mientras no haya detención por un cero exacto. Cada transición divide por dos la longitud anterior.
 
+En el índice cero todavía no se ha actualizado el encierro y su longitud es $b-a$. Cada paso que continúa conserva una de las dos mitades y multiplica la longitud por $1/2$. La inducción produce el exponente $n$ después de $n$ pasos. Si se detecta un cero exacto, la construcción puede detenerse y ya tenemos el argumento buscado.
+
 </details>
 
 #### Microcontrol 42
@@ -1250,6 +1382,8 @@ Con $L_0=a$, $U_0=b$, es $(b-a)/2^n$, mientras no haya detención por un cero ex
 <summary>Ver solución del microcontrol 42</summary>
 
 El inferior: $L_{n+1}=M_n$, $U_{n+1}=U_n$. El nuevo inferior conserva signo negativo y el superior conserva positivo.
+
+El medio pertenece al interior del encierro. Si su salida es negativa, comparte signo con el extremo inferior y puede sustituirlo; el extremo superior positivo permanece. Así el nuevo intervalo mantiene signos opuestos y la mitad de longitud. Si la salida fuera positiva, se reemplazaría el superior; si fuera cero, tendríamos una raíz exacta.
 
 </details>
 
@@ -1266,6 +1400,8 @@ El inferior: $L_{n+1}=M_n$, $U_{n+1}=U_n$. El nuevo inferior conserva signo nega
 
 Para $k\le n$, $L_k\le L_n\le U_n$. Para $k>n$, el anidamiento da $L_k\le U_k\le U_n$. Ambos casos prueban la cota para todo $k$.
 
+Para comparar un extremo inferior cualquiera con $U_n$ dividimos según su índice sea anterior o posterior. Antes de $n$, usamos crecimiento de los inferiores; después, decrecimiento de los superiores y pertenencia del inferior a su propio intervalo. Esos dos casos justifican que el supremo de todos los inferiores quede por debajo de cada $U_n$.
+
 </details>
 
 #### Microcontrol 44
@@ -1280,6 +1416,8 @@ Para $k\le n$, $L_k\le L_n\le U_n$. Para $k>n$, el anidamiento da $L_k\le U_k\le
 <summary>Ver solución del microcontrol 44</summary>
 
 La directa: convergencia de entradas a $c$ implica convergencia de salidas a $g(c)$. No se usa la recíproca secuencial ni selección de infractores.
+
+Las sucesiones de extremos ya están definidas por una recurrencia única y sus convergencias se prueban con cotas de longitud. Continuidad se aplica a esas rutas dadas para obtener convergencia de las salidas. No se deduce continuidad de un criterio secuencial ni se elige un testigo por cada escala. Por eso no aparece la hipótesis adicional de selección de infractores.
 
 </details>
 
@@ -1296,6 +1434,8 @@ La directa: convergencia de entradas a $c$ implica convergencia de salidas a $g(
 
 Como $c\in[L_n,U_n]$, $|M_n-c|\le(U_n-L_n)/2=(b-a)/2^{n+1}$. Es una cota de distancia de argumentos.
 
+El medio divide el encierro en dos distancias iguales. Cualquier punto de ese encierro, incluido el cero límite, dista a lo sumo la mitad de la longitud. Sustituir la fórmula de longitud aporta un factor adicional de dos y el exponente $n+1$. El resultado mide error en el argumento, no en el valor evaluado de la función.
+
 </details>
 
 #### Microcontrol 46
@@ -1310,6 +1450,8 @@ Como $c\in[L_n,U_n]$, $|M_n-c|\le(U_n-L_n)/2=(b-a)/2^{n+1}$. Es una cota de dist
 <summary>Ver solución del microcontrol 46</summary>
 
 No. Falta control cuantitativo de la variación de $g$. Continuidad permite un radio para una tolerancia dada, pero la longitud sola no proporciona una fórmula universal de residual.
+
+Una función puede cambiar sus salidas muy rápidamente en un encierro pequeño. Por ejemplo, multiplicar una función por una constante positiva no modifica sus ceros ni los signos, pero amplifica el residual. Para una cota explícita de salida haría falta un control cuantitativo adicional, como una estimación de variación. Continuidad cualitativa no convierte la longitud en una fórmula universal.
 
 </details>
 
@@ -1326,6 +1468,8 @@ No. Falta control cuantitativo de la variación de $g$. Continuidad permite un r
 
 No. Sólo indica que no se certificó un signo estricto. Puede contener valores positivos o negativos; no autoriza detención por raíz exacta ni actualización de uno de los extremos.
 
+La inclusión certificada afirma que el valor verdadero está en el intervalo de evaluación, pero no que sea cada uno de sus miembros. Si cero está dentro junto a números de ambos signos, el valor aún puede ser positivo, negativo o cero. Sólo un certificado de signo estricto autoriza descartar una mitad según la regla; igualdad exacta exige su propio certificado.
+
 </details>
 
 #### Microcontrol 48
@@ -1340,6 +1484,8 @@ No. Sólo indica que no se certificó un signo estricto. Puede contener valores 
 <summary>Ver solución del microcontrol 48</summary>
 
 Las hipótesis no incluyen una evaluación computable ni una decisión efectiva de signos reales exactos. La regla única es válida matemáticamente por tricotomía; una implementación exige certificados de signo.
+
+La tricotomía da matemáticamente un caso único para cada valor real exacto. No proporciona por sí misma un procedimiento que decida ese caso a partir de aproximaciones finitas. Una implementación necesita datos de evaluación y reglas para certificar signos, y puede quedar sin decidir cuando un intervalo de evaluación contiene cero. Esto limita la promesa computacional, sin invalidar la recurrencia matemática.
 
 </details>
 
@@ -1360,6 +1506,8 @@ $M_0=1/2$ y $F(M_0)=1/8+1/2-1=-3/8<0$, así $[L_1,U_1]=[1/2,1]$. $M_1=3/4$ y $F(
 
 **Retorno visual.** Véase [C15-F05](analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe.html#fig-anm-c15-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+Cada signo se calcula con fracciones exactas antes de decidir qué extremo sustituir. Los intervalos finales siguen conteniendo la raíz porque conservan signos opuestos y quedan anidados. El índice del medio final es tres tras las tres actualizaciones de índices cero, uno y dos. La cota $1/16$ procede de la geometría del encierro y no de aproximar el residual en $11/16$.
+
 </details>
 
 #### Ejercicio 27. Número de actualizaciones
@@ -1374,6 +1522,8 @@ Con encierro inicial de longitud $3$, encuentra un número de actualizaciones qu
 <summary>Ver solución del ejercicio 27</summary>
 
 Después de $n$ actualizaciones, el error es a lo sumo $3/2^{n+1}$. Buscamos que esa cota sea estrictamente menor que $1/1000$, equivalente a $2^{n+1}>3000$. Para $n=11$, $2^{12}=4096>3000$, así sirve; $n=10$ no lo garantiza pues $2048<3000$. En general se elige $n\in\mathbb N$ con $2^{n+1}>(b-a)/\tau$. Una cota igual a $\tau$ sólo garantiza error menor o igual, no estricto. Si hubo cero exacto antes, se dispone de error cero.
+
+La desigualdad buscada se aplica a una cota no estricta de error, por lo que esa cota debe quedar estrictamente por debajo de la tolerancia. Once actualizaciones garantizan lo pedido; diez no dan esa garantía a partir de la fórmula, aunque alguna raíz particular pudiera estar más cerca del medio. La regla general contabiliza actualizaciones, no el número escrito en el subíndice del primer medio.
 
 </details>
 
@@ -1390,6 +1540,8 @@ En el caso infinito de bisección, prueba que $c=\sup\{L_n\}$ pertenece a todos 
 
 Los $L_n$ están acotados por $b$ y el conjunto no vacío tiene supremo $c$. Para un $n$ fijo, si $k\le n$, $L_k\le L_n\le U_n$; si $k>n$, anidamiento da $L_k\le U_k\le U_n$. Así $U_n$ es cota de todos los inferiores y $L_n\le c\le U_n$. En particular $c\in[a,b]$. De $0\le c-L_n\le(b-a)/2^n$ y $0\le U_n-c\le(b-a)/2^n$ resultan ambas convergencias a $c$. Continuidad directa da $g(L_n),g(U_n)\to g(c)$. Una sucesión negativa no puede converger a un real positivo, pues una tolerancia de la mitad de ese real haría los términos positivos; análogamente la positiva no converge a negativo. Así $g(c)\le0$ y $g(c)\ge0$, luego vale cero. No se usó selección de rutas ni recíproca secuencial.
 
+El supremo existe por no vacuidad y acotación del conjunto de inferiores. Cada superior es cota de todos ellos, lo que coloca $c$ en cada encierro sin citar compacidad. Las longitudes geométricas tienden a cero y controlan por arriba las dos distancias a $c$. Después los signos de las salidas restringen su límite común a ser a la vez no positivo y no negativo, forzando exactamente cero.
+
 </details>
 
 #### Ejercicio 29. Longitud frente a residual
@@ -1405,6 +1557,8 @@ Refuta que exista una cota del residual del medio determinada sólo por la longi
 
 Para $A>0$ definimos $g_A(x)=A(x-\ell/4)$ en $[0,\ell]$. Es continua, $g_A(0)=-A\ell/4<0$, $g_A(\ell)=3A\ell/4>0$, y su raíz es $\ell/4$. El medio $\ell/2$ tiene error posicional $\ell/4$, compatible con la cota $\ell/2$, pero residual $|g_A(\ell/2)|=A\ell/4$. Dado cualquier candidato finito $B\ge0$ para esa longitud, elegimos $A>4B/\ell$, y el residual supera $B$. La longitud no controla la escala vertical; haría falta información cuantitativa adicional de la función.
 
+La escala $A$ cambia sólo la magnitud vertical de la función: la raíz y el intervalo de argumentos permanecen fijos. Por ello puede hacerse crecer el residual tanto como se quiera mientras la longitud y los signos extremos no cambian. El candidato $B$ se fija primero, y sólo después se elige $A$ que lo infrinja. Ese orden refuta una cota universal dependiente únicamente de la longitud.
+
 </details>
 
 #### Ejercicio 30. Una evaluación incierta
@@ -1419,6 +1573,8 @@ Un programa devuelve una inclusión certificada $g(M)\in[-10^{-6},2\cdot10^{-6}]
 <summary>Ver solución del ejercicio 30</summary>
 
 La inclusión permite valores negativos, cero y positivos, por lo que no certifica $g(M)<0$. Sustituir el extremo inferior puede destruir el invariante si el valor es positivo. Un certificado contenido estrictamente en $(-\infty,0)$ autoriza reemplazar el inferior; uno contenido estrictamente en $(0,\infty)$ autoriza reemplazar el superior. Una igualdad exacta certificada $g(M)=0$ autoriza detener con raíz exacta. Si el intervalo de evaluación contiene cero, se requiere refinar o conservar el encierro anterior y declarar que no se decidió el signo; no se deduce igualdad de una tolerancia pequeña. La recurrencia clásica no proporciona por sí sola esos certificados computacionales.
+
+El intervalo certificado contiene valores estrictamente negativos y positivos. Ambos son compatibles con el dato recibido, pero exigen actualizaciones opuestas. Elegir el extremo inferior sin decidir el signo puede dejar dos extremos positivos y perder la garantía de raíz encerrada. Refinar la evaluación puede ayudar, pero mientras no haya certificado suficiente se conserva el intervalo ya validado.
 
 </details>
 ## 15.7. Inyectividad, orden y continuidad de la inversa
@@ -1458,6 +1614,8 @@ No se han usado derivadas, compacidad ni una cota lineal inferior. Estricta mono
 
 $f(y)$ está estrictamente entre $f(x)$ y $f(z)$. Un pico o valle permitiría, por R5 en los dos subsegmentos, dos argumentos distintos con una misma salida, violando inyectividad.
 
+La inyectividad hace distintas las tres salidas. Si la central fuese mayor que ambas o menor que ambas, habría un nivel compartido por las imágenes de los dos subsegmentos. El valor intermedio entregaría dos argumentos distintos con ese nivel. Por ello sólo quedan las dos orientaciones estrictamente ordenadas de las tres salidas.
+
 </details>
 
 #### Microcontrol 50
@@ -1472,6 +1630,8 @@ $f(y)$ está estrictamente entre $f(x)$ y $f(z)$. Un pico o valle permitiría, p
 <summary>Ver solución del microcontrol 50</summary>
 
 Para que R5 entregue un punto interior en cada subsegmento. Así los dos testigos son distintos, uno antes de $y$ y otro después, y la contradicción de inyectividad es segura.
+
+Si el nivel coincidiera con la salida central, los dos testigos podrían ser el mismo punto $y$ y no habría contradicción. Al elegirlo estrictamente entre el pico y el mayor de los extremos, se excluyen todos los extremos de ambos subsegmentos. Queda un testigo a cada lado de $y$, necesariamente distinto del otro.
 
 </details>
 
@@ -1488,6 +1648,8 @@ Para que R5 entregue un punto interior en cada subsegmento. Así los dos testigo
 
 No. Se fija un par orientado $a<b$ y se ordenan junto con cualquier par $x<y$. Los triples consecutivos propagan el signo de las diferencias en ese conjunto finito; el par fijado determina la orientación.
 
+La propiedad de triples se aplica a todos los triples de la lista ordenada formada por el par fijado y el par solicitado. Dos diferencias adyacentes tienen el mismo signo en cada triple consecutivo; al enlazarlos, todas comparten orientación. La desigualdad del par fijado decide cuál es ese signo. Así el argumento alcanza pares situados fuera de ese primer segmento.
+
 </details>
 
 #### Microcontrol 52
@@ -1502,6 +1664,8 @@ No. Se fija un par orientado $a<b$ y se ordenan junto con cualquier par $x<y$. L
 <summary>Ver solución del microcontrol 52</summary>
 
 Inyectividad da unicidad de la entrada por valor; la definición de imagen da existencia para todo valor de $f[I]$. No se requiere sobreyectividad sobre toda $\mathbb R$.
+
+Para cada $y\in f[I]$ existe algún $x\in I$ con $f(x)=y$ por definición de imagen. Inyectividad hace ese $x$ único y permite definir $h(y)$ sin ambigüedad. Un valor real fuera de la imagen no tiene por qué disponer de entrada. Declarar el dominio exacto de la inversa evita confundir invertibilidad sobre la imagen con sobreyectividad real.
 
 </details>
 
@@ -1518,6 +1682,8 @@ Inyectividad da unicidad de la entrada por valor; la definición de imagen da ex
 
 Que $I$ sea intervalo: el punto barrera está entre esa entrada y $x_0$, ambos de $I$. Así la evaluación $f(x_0-\varepsilon/2)$ está definida.
 
+La entrada lejana dada queda a la izquierda de la barrera y el centro a la derecha. Intervalaridad incluye el punto intermedio, habilitando su evaluación. Monotonía convierte entonces esa barrera de argumentos en una separación positiva de salidas. Sin pertenencia de la barrera al dominio, esa diferencia de valores no sería una expresión definida.
+
 </details>
 
 #### Microcontrol 54
@@ -1532,6 +1698,8 @@ Que $I$ sea intervalo: el punto barrera está entre esa entrada y $x_0$, ambos d
 <summary>Ver solución del microcontrol 54</summary>
 
 No hace falta barrera izquierda porque todas las entradas ya superan ese umbral. Se asigna a ese lado una tolerancia positiva arbitraria, por ejemplo $1$, para formar el mínimo final.
+
+En ese lado no existen argumentos que violen la distancia deseada, de modo que no hay nada que excluir con un control de salidas. La tolerancia arbitraria sólo permite formar un mínimo positivo con la barrera del otro lado. No afirma que la función esté definida en un punto exterior. Este tratamiento incluye centros que son extremos del intervalo.
 
 </details>
 
@@ -1548,6 +1716,8 @@ No hace falta barrera izquierda porque todas las entradas ya superan ese umbral.
 
 No. El radio se obtiene por diferencias positivas de valores en puntos barrera y monotonía. No se supone $|f(x)-f(z)|\ge c|x-z|$ ni derivada no nula.
 
+Fijados centro y precisión, las barreras interiores tienen salidas distintas de la central por monotonía estricta. Sus diferencias positivas sirven como tolerancias y excluyen argumentos demasiado lejanos. La magnitud de esas diferencias puede depender del centro y de la precisión de cualquier manera. La prueba no exige una tasa lineal ni divide por una derivada.
+
 </details>
 
 #### Microcontrol 56
@@ -1562,6 +1732,8 @@ No. El radio se obtiene por diferencias positivas de valores en puntos barrera y
 <summary>Ver solución del microcontrol 56</summary>
 
 No. $k(x)=x$ para $x<0$ y $k(x)=x+1$ para $x\ge0$ es estrictamente creciente, pero en cero las salidas por la izquierda se aproximan a cero y $k(0)=1$. Falta continuidad.
+
+Cada rama conserva el orden, y al cruzar cero la salida de la rama derecha supera a toda salida cercana de la izquierda. Eso acredita estricto crecimiento, pero permite un hueco de valores entre cero y uno. Las entradas negativas se aproximan al centro mientras sus salidas no se aproximan a $k(0)$. Monotonía y continuidad son obligaciones distintas.
 
 </details>
 
@@ -1580,6 +1752,8 @@ Sea $f:I\to\mathbb R$ continua e inyectiva y $x<y<z$ en $I$. Prueba que $f(y)$ e
 
 Inyectividad hace distintos los tres valores. Si $f(y)>\max(f(x),f(z))$, tomamos $w=(f(y)+\max(f(x),f(z)))/2$. Es estrictamente intermedio en cada par de salidas de $[x,y]$ y $[y,z]$. R5 entrega $s\in(x,y)$ y $t\in(y,z)$ con $f(s)=w=f(t)$; como $s<t$, contradice inyectividad. Si $f(y)<\min(f(x),f(z))$, usamos el punto medio entre esas dos cantidades y repetimos. Las posibilidades restantes son precisamente $f(x)<f(y)<f(z)$ o $f(z)<f(y)<f(x)$.
 
+El nivel elegido en el pico supera ambas salidas extremas y queda por debajo de la salida central. Así R5 se aplica en los dos subsegmentos y produce argumentos interiores. En el valle se invierten las desigualdades y el mecanismo es el mismo. La inyectividad sólo se contradice cuando los dos argumentos son distintos, y su posición a ambos lados de $y$ acredita precisamente eso.
+
 </details>
 
 #### Ejercicio 32. Propagar una orientación
@@ -1594,6 +1768,8 @@ Explica detalladamente cómo la propiedad entre triples de E031, junto con un pa
 <summary>Ver solución del ejercicio 32</summary>
 
 Ordenamos los puntos distintos de $\{a,b,x,y\}$ como $t_1<\cdots<t_m$, con $2\le m\le4$. Si $m=2$, ambos pares son el mismo y la conclusión está dada. Si $m\ge3$, para cada triple consecutivo la propiedad implica que las diferencias adyacentes $f(t_{i+1})-f(t_i)$ y $f(t_{i+2})-f(t_{i+1})$ tienen igual signo estricto. Por propagación a lo largo de la lista todas tienen el mismo signo. Si fuese negativo, sumando las diferencias entre las posiciones de $a$ y $b$ resultaría $f(b)<f(a)$, contradicción. Todas son positivas; sumando entre $x$ e $y$ obtenemos $f(y)>f(x)$. El procedimiento trata puntos exteriores al par fijado y no se limita a un subintervalo.
+
+Ordenar el conjunto finito elimina repeticiones si alguno de los puntos coincide. Las diferencias adyacentes son no nulas porque cada triple tiene orden estricto de salidas. La propiedad de triples encadena sus signos, y la suma entre $a$ y $b$ fija el signo común como positivo. Finalmente se suman las diferencias entre $x$ e $y$, sin importar dónde esté ese par respecto del primero.
 
 </details>
 
@@ -1612,6 +1788,8 @@ La imagen es $J=[0,1)$: los cuadrados pertenecen a ese intervalo y cada $y\in J$
 
 **Retorno visual.** Véase [C15-F06](analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe.html#fig-anm-c15-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+No usamos continuidad previa de la raíz, sino existencia algebraica de una entrada no negativa y monotonía del cuadrado. Para precisiones pequeñas, la barrera está dentro del dominio y su salida positiva fija el radio. Una entrada a distancia al menos $\varepsilon$ produciría una salida más allá de la barrera, imposible bajo ese radio. Para precisiones al menos uno, el propio tamaño del dominio ya da la distancia estricta requerida.
+
 </details>
 
 #### Ejercicio 34. Crecimiento con salto
@@ -1627,6 +1805,8 @@ Sea $k(x)=x$ si $x<0$ y $k(x)=x+1$ si $x\ge0$. Prueba estricto crecimiento, refu
 
 En cada rama la diferencia entre salidas es la diferencia entre entradas y es positiva. Si $x<0\le z$, $k(x)=x<0<1\le z+1=k(z)$, así también crece entre ramas. Pero $k(0)=1$; dado $\delta>0$, $x=-\min(\delta/2,1/2)$ tiene $|x|<\delta$ y $|k(x)-k(0)|=1-x>1$, refutando continuidad con tolerancia $1$. La imagen es $(-\infty,0)\cup[1,\infty)$, no intervalo. Falta continuidad en la premisa de R7; estricto crecimiento solo no la garantiza.
 
+La comparación entre ramas completa la prueba de crecimiento, que no quedaría acreditada examinándolas por separado. El testigo negativo para cada radio muestra un error central que nunca baja de uno. La imagen omite cero y todos los valores hasta uno, aunque el dominio sea la recta. Es justamente continuidad la que faltaría para aplicar preservación de intervalos y R7.
+
 </details>
 
 #### Ejercicio 35. Por qué el dominio intervalar importa para la inversa
@@ -1641,6 +1821,8 @@ Retoma $D=[0,1)\cup[2,3]$ y $f(x)=x$ en la primera pieza, $f(x)=x-1$ en la segun
 <summary>Ver solución del ejercicio 35</summary>
 
 Las imágenes de las piezas son $[0,1)$ y $[1,2]$, disjuntas y exhaustivas de $[0,2]$; cada rama es inyectiva, de modo que $f$ es biyección. En cualquier centro de $D$, el radio $\delta=\min(1/2,\varepsilon)$ evita la otra pieza y dentro de la misma rama el error de salida es la distancia de entradas, menor que $\varepsilon$. Así $f$ es continua relativa. La inversa vale $h(y)=y$ para $y<1$ y $h(y)=y+1$ para $y\ge1$, luego $h(1)=2$. Dado $\eta>0$, $t=\min(\eta/2,1/2)>0$ da $y=1-t\in[0,1)$ con $|y-1|<\eta$ y $|h(y)-2|=1+t>1$. Falla continuidad con tolerancia $1$. $D$ omite puntos entre $0$ y $2$ y no es intervalo; ésa es la premisa faltante de R7.
+
+El radio auxiliar medio mantiene cada entrada próxima en la misma pieza, justificando continuidad sin conectar las piezas del dominio. Al invertir, las salidas inferiores a uno llegan arbitrariamente cerca de la salida de la entrada dos. Sus preimágenes siguen separadas de dos por más de uno. La falta de intervalaridad impide construir las barreras intermedias usadas en R7.
 
 </details>
 ## 15.8. Componentes: los intervalos máximos dentro de un dominio
@@ -1688,6 +1870,8 @@ La caja de herramientas de C15 reúne tres niveles: un dominio conexo no admite 
 
 $x\sim y$ si el segmento entre $x$ y $y$ está contenido en $D$. Cada clase $C_x$ se define por esa fórmula; la familia de todas las clases existe como colección de subconjuntos de $D$ determinados por la relación.
 
+La relación examina si todos los puntos entre dos entradas también están disponibles en el dominio. Definir $C_x=\{y\in D:x\sim y\}$ recoge directamente todos los miembros relacionados con $x$. La familia de clases se obtiene reuniendo estas clases para todos los $x\in D$, eliminando repeticiones como conjuntos. No se escoge un representante por clase.
+
 </details>
 
 #### Microcontrol 58
@@ -1702,6 +1886,8 @@ $x\sim y$ si el segmento entre $x$ y $y$ está contenido en $D$. Cada clase $C_x
 <summary>Ver solución del microcontrol 58</summary>
 
 Los segmentos entre $x,y$ y entre $y,z$ están en $D$ y comparten $y$. Su unión es intervalo y contiene $x,z$, por lo que incluye el segmento entre ellos.
+
+Los dos segmentos compartidos cubren todos los puntos entre el menor y el mayor de $x,y,z$, sea cual sea su orden. Su unión no tiene huecos y está contenida en $D$. Como $x$ y $z$ pertenecen a ella, contiene su segmento. Esto verifica transitividad sin imponer que $y$ esté necesariamente entre $x$ y $z$.
 
 </details>
 
@@ -1718,6 +1904,8 @@ Los segmentos entre $x,y$ y entre $y,z$ están en $D$ y comparten $y$. Su unión
 
 Si un conexo $E\subseteq D$ contiene $x$, R3 dice que es intervalo. Para cada $y\in E$, el segmento entre $x,y$ está en $E\subseteq D$, luego $y\in C_x$. Así $E\subseteq C_x$.
 
+Primero sabemos que $C_x$ es intervalo y por ello conexo. Luego cualquier conexo del dominio que contenga $x$ se incluye en la clase usando su propia intervalaridad. Si un conexo mayor contuviera a $C_x$, contendría a $x$ y también quedaría en $C_x$. Así la clase no puede ampliarse dentro de $D$ manteniendo conexidad.
+
 </details>
 
 #### Microcontrol 60
@@ -1732,6 +1920,8 @@ Si un conexo $E\subseteq D$ contiene $x$, R3 dice que es intervalo. Para cada $y
 <summary>Ver solución del microcontrol 60</summary>
 
 No. Son clases de equivalencia; si compartieran $z$, cualquier miembro de una estaría relacionado con $z$ y por transitividad con los miembros de la otra. Las clases serían iguales.
+
+Una entrada compartida conecta por la relación a cualquier miembro de una clase con cualquier miembro de la otra. Transitividad produce las inclusiones en ambas direcciones, de modo que las clases coinciden. Además cada entrada está en su propia clase por reflexividad. Las componentes forman así una partición de $D$, sin elegir una clase preferida para cada punto.
 
 </details>
 
@@ -1748,6 +1938,8 @@ No. Son clases de equivalencia; si compartieran $z$, cualquier miembro de una es
 
 Relativamente a $D$. El argumento de adherencia exige que el punto adherente también esté en $D$; no incorpora puntos exteriores al dominio. Una componente como $(0,1)$ no es cerrada real.
 
+Para demostrar cerradura relativa se toman puntos adherentes que además pertenecen a $D$. La pertenencia permite completar los extremos del segmento que relaciona ese punto con la clase. Un extremo ausente del dominio puede ser adherente en la recta sin incorporarse a la componente. La conclusión protege el ambiente original y no afirma cerradura absoluta.
+
 </details>
 
 #### Microcontrol 62
@@ -1762,6 +1954,8 @@ Relativamente a $D$. El argumento de adherencia exige que el punto adherente tam
 <summary>Ver solución del microcontrol 62</summary>
 
 Para todo $r>0$, por arquimedianidad existe $n$ con $0<1/(n+1)<r$. La vecindad de cero en el dominio siempre contiene otro punto. Aun así $\{0\}$ es una componente.
+
+La cota arquimediana produce una entrada positiva en toda bola de cero. Por tanto ninguna bola relativa se reduce al singleton y éste no es abierto relativo. Sin embargo, entre cero y cualquier entrada positiva hay puntos que faltan en $D$, lo que impide una componente intervalar mayor. Ser una componente no exige aislamiento.
 
 </details>
 
@@ -1778,6 +1972,8 @@ Para todo $r>0$, por arquimedianidad existe $n$ con $0<1/(n+1)<r$. La vecindad d
 
 Son singletons, porque entre dos racionales distintos hay un irracional omitido. Ningún singleton es abierto relativo: todo radio alrededor de un racional contiene otro racional por densidad.
 
+Si una componente racional tuviera dos miembros distintos, su intervalaridad incluiría un irracional entre ellos, imposible. Cada clase es por ello un singleton. Pero la densidad racional proporciona otros racionales en toda vecindad de su punto, así ninguno es abierto relativo. La cerradura de las componentes no implica apertura, incluso cuando todas son singletons.
+
 </details>
 
 #### Microcontrol 64
@@ -1792,6 +1988,8 @@ Son singletons, porque entre dos racionales distintos hay un irracional omitido.
 <summary>Ver solución del microcontrol 64</summary>
 
 Que la función sea homeomorfismo. Continuidad lleva una componente a un conexo contenido en una componente de la imagen; continuidad de la inversa y maximalidad dan la inclusión contraria. Una constante puede fusionar componentes.
+
+Continuidad da una imagen conexa, y maximalidad la ubica dentro de una componente del codominio. Para recuperar toda esa componente es necesario llevarla atrás mediante una inversa continua. El conjunto recuperado es conexo y su maximalidad en el dominio fuerza la inclusión opuesta al volver a aplicar la biyección. Una continua sin ese retorno puede fusionar componentes distintas.
 
 </details>
 
@@ -1810,6 +2008,8 @@ Prueba reflexividad, simetría y transitividad de $x\sim y\Leftrightarrow[\min(x
 
 Reflexividad usa $[x,x]=\{x\}\subseteq D$; simetría usa que min/max no cambian al permutar. Si $x\sim y$ y $y\sim z$, los dos segmentos comparten $y$ y su unión es intervalo contenido en $D$, por §15.3; contiene $x,z$, luego también el segmento entre ellos. Así $x\sim z$. Si $u,v$ están en $C_x$, transitividad da $u\sim v$. Todo $t$ entre ellos está en $D$ y satisface $u\sim t$ porque su segmento con $u$ queda en el de $u,v$. De $x\sim u$ resulta $x\sim t$, así $t\in C_x$. Es intervalo.
 
+La transitividad se aplica también cuando el punto compartido $y$ no está entre $x$ y $z$, porque la unión de sus dos segmentos no tiene huecos. Para intervalaridad de una clase, pertenecer a $D$ no basta: además cada punto intermedio debe relacionarse con $x$. El segmento menor que lo une a $u$ y la transitividad proporcionan esa segunda obligación.
+
 </details>
 
 #### Ejercicio 37. Un dominio con tres componentes
@@ -1824,6 +2024,8 @@ Determina y justifica las componentes de $D=(-2,-1]\cup\{0\}\cup[1,3)$. Indica c
 <summary>Ver solución del ejercicio 37</summary>
 
 Las tres piezas son intervalos, luego conexas. Ningún conexo de $D$ puede tocar dos piezas: si tocara la izquierda y otra, omitiría un punto entre $-1$ y $0$, como $-1/2$; si tocara cero y la derecha, omitiría $1/2$. Por R3 no sería conexo. Cada pieza es por tanto máxima y es componente. Son todas abiertas relativas: la izquierda es $D\cap(-\infty,-1/2)$, el singleton $D\cap(-1/2,1/2)$ y la derecha $D\cap(1/2,\infty)$. También son cerradas relativas por R8 o porque el complemento de cada una es unión de las otras dos abiertas relativas. No todas son cerradas reales, pues los extremos $-2$ y $3$ faltan.
+
+Cada pieza es conexa por ser intervalo, incluidos sus extremos según la definición del dominio. Para maximalidad, cualquier conjunto que toque dos piezas tendría que incluir un punto ausente entre ellas si fuese conexo. Los rayos y el intervalo abierto central exhiben apertura relativa de las tres piezas. Sus complementos relativos son uniones de las otras dos abiertas y prueban cerradura relativa sin exigir incluir extremos exteriores ausentes.
 
 </details>
 
@@ -1842,6 +2044,8 @@ Todos los puntos de $D$ son racionales. Entre dos distintos hay un irracional po
 
 **Retorno visual.** Véase [C15-F07](analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe.html#fig-anm-c15-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+Los huecos irracionales impiden unir por un segmento dos entradas cualesquiera, así la descripción por singletons incluye también cero. Para cada punto positivo, los vecinos consecutivos de la sucesión dan una distancia aislante; cero está aún más lejos que el siguiente vecino positivo. En cero no existe escala aislante porque los positivos convergen a él. Tener todas las componentes cerradas no ofrece una vecindad contenida en cada una.
+
 </details>
 
 #### Ejercicio 39. Cerradura relativa desde la adherencia
@@ -1857,6 +2061,8 @@ Prueba que una componente $C_x$ es cerrada relativa a $D$ usando un punto $z\in 
 
 Si $z=x$, ya está en $C_x$. Si $x<z$, para todo $x<t<z$ la adherencia da $w\in C_x$ con $|w-z|<(z-t)/2$, así $w>t$. Como el segmento entre $x,w$ está en $D$, $t\in D$. Los extremos $x,z$ pertenecen a $D$, así $[x,z]\subseteq D$ y $z\in C_x$. Si $z<x$, para $z<t<x$ usamos radio $(t-z)/2$ alrededor de $z$, obteniendo $w<t$ en $C_x$; el segmento entre $w,x$ contiene $t$ y está en $D$. De nuevo $[z,x]\subseteq D$, luego $z\in C_x$. Todos los puntos adherentes que están en $D$ quedan en la clase, criterio de cierre relativo. En $D=(0,1)$ hay una componente única $(0,1)$, cerrada relativa a sí misma pero no cerrada real porque cero es adherente exterior.
 
+La vecindad de adherencia se diseña para encontrar un miembro de la clase al otro lado del punto intermedio $t$. El segmento que lo conecta con $x$ coloca a $t$ en $D$. Hacer esto para todo punto entre $x$ y $z$, junto con la pertenencia de ambos extremos, completa el segmento y relaciona a $z$ con $x$. La condición $z\in D$ es esencial para el extremo y delimita la conclusión como cerradura relativa.
+
 </details>
 
 #### Ejercicio 40. Transportar o fusionar componentes
@@ -1871,6 +2077,8 @@ Prueba que un homeomorfismo transporta exactamente las componentes de su dominio
 <summary>Ver solución del ejercicio 40</summary>
 
 Sea $f:D\to H$ homeomorfismo, $C$ componente de $x$. R4 hace conexo $f[C]$, que contiene $f(x)$ y queda en la componente $K$ de ese punto por maximalidad. La inversa continua hace conexo $f^{-1}[K]$, que contiene $x$ y por maximalidad está en $C$. Aplicando la biyección $f$ obtenemos $K\subseteq f[C]$, y las dos inclusiones dan igualdad. La constante $\{-1,1\}\to\{0\}$ es continua en el dominio relativo y fusiona sus dos componentes singleton en una sola. No existe inversa funcional, mucho menos continua, por lo que no puede transportarse $K$ hacia atrás para aplicar maximalidad. Una continua general sólo garantiza imagen conexa dentro de una componente.
+
+Las dos inclusiones utilizan funciones continuas diferentes: $f$ para incluir la imagen de $C$ en $K$, y la inversa para incluir el retorno de $K$ en $C$. La biyección permite convertir esta segunda inclusión en la opuesta dentro del codominio. En la constante que fusiona dos componentes falla ese retorno funcional, por lo que continuidad hacia delante sólo conserva conexidad de cada imagen por separado.
 
 </details>
 
