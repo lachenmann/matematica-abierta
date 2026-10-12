@@ -137,6 +137,21 @@ Cada capítulo ofrece su exposición y tres bancos completos de actividades. Con
 
 [Epílogo — Después de la recta](../capitulos/analisis-para-matematicos-epilogo.html)
 
+## Referencias y procedencia
+
+La exposición, las demostraciones desarrolladas y las figuras pertenecen al proyecto ANM. Los resultados clásicos y motivos matemáticos no se presentan como nuevos. Las fuentes sirven para contrastar precisión matemática y método pedagógico; no se reproducen figuras de estos libros.
+
+- Claudio Canuto y Anita Tabacco, *Mathematical Analysis I*, segunda edición: §1.3 para orden, cotas y completitud; §3.1 para proximidad y vecindades.
+- [*Tratado de análisis*, volumen I](../otros/tratado-de-analisis.html): §§4.2–4.7 para orden y completitud; capítulo 15 para topología de la recta; §§13.1–13.2 para sucesiones y eventualidad.
+- Syafiq Johar, *The Big Book of Real Analysis*: referencia complementaria para construcción, sucesiones, ejemplos y representaciones.
+- Dexter Chua, *Part IA — Analysis I*, §2.1: sucesiones como funciones y lectura de cuantificadores.
+- Lara Alcock, *How to Think About Analysis*: definiciones, cuantificadores, ejemplos y autoexplicación.
+- James J. Callahan, *Advanced Calculus: A Geometric View*: referencia conceptual y geométrica.
+- Tristan Needham, *Visual Complex Analysis* y *Visual Differential Geometry and Forms*: referencias metodológicas para el diálogo entre figuras y demostraciones.
+- Miguel de Guzmán, *El rincón de la pizarra*: referencia metodológica de visualización.
+
+En los capítulos 2–3 se separa expresamente la definición de supremo de su garantía de existencia. En el capítulo 4, las nociones topológicas se construyen mediante bolas y cuantificadores, sin anticipar caracterizaciones secuenciales.
+
 ## Edición y revisiones
 
 La exposición y las figuras pertenecen al proyecto ANM. Los resultados clásicos no se presentan como nuevos. El libro continúa el camino de [*Cálculo para matemáticos*](calculo-para-matematicos.html): **lo que allí asumimos, aquí lo demostramos**.
