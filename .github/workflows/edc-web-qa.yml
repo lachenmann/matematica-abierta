@@ -1,0 +1,51 @@
+name: EDC complete web QA
+on:
+  pull_request:
+    paths:
+      - 'libros/otros/elementos-del-calculo/**'
+      - 'assets/books/elementos-del-calculo/**'
+      - 'data/edc-web-v1-manifest.json'
+      - '_quarto-edc-qa.yml'
+      - 'tests/edc_web_browser.cjs'
+      - 'tools/check_edc_web.py'
+      - '.github/workflows/edc-web-qa.yml'
+permissions:
+  contents: read
+jobs:
+  render-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+      - name: Render complete EDC and library entries
+        run: |
+          quarto render --profile edc-qa --to html
+          python3 tools/check_book_layout.py --site-dir _site-edc-qa
+          python3 tools/check_edc_web.py --site-dir _site-edc-qa
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/edc-browser" playwright@1.56.0
+          "$RUNNER_TEMP/edc-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Verify all desktop and phone pages
+        env:
+          NODE_PATH: ${{ runner.temp }}/edc-browser/node_modules
+        run: |
+          python3 -m http.server 8767 --directory _site-edc-qa > "$RUNNER_TEMP/edc-http.log" 2>&1 &
+          edc_server_pid=$!
+          trap 'kill "$edc_server_pid"' EXIT
+          node tests/edc_web_browser.cjs
+      - name: Preserve web QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: edc-web-qa
+          path: .ma-build/edc-browser/
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: warn

@@ -9,9 +9,9 @@
 | Artículo | MA-ART-0017 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0331 |
+| Capítulo | MA-BCH-0343 |
 | Curso | MA-CRS-0002 |
-| Libro | MA-BOK-0015 |
+| Libro | MA-BOK-0016 |
 
 ## IDs asignados
 
@@ -516,3 +516,22 @@ Se conservan los IDs y URLs publicados de C00–C05. Se incorporan C06–C31, su
 | MA-BCH-0328 | book-chapter | MA-BCH-ANM-01-031-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-soluciones.md` | published |
 | MA-BCH-0329 | book-chapter | MA-BCH-ANM-01-031-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-microcontroles.md` | published |
 | MA-BCH-0330 | book-chapter | MA-BCH-ANM-01-EPILOGUE | `libros/capitulos/analisis-para-matematicos-epilogo.md` | published |
+
+
+## EDC — Elementos del cálculo, 2026-10-12
+
+| ID | Tipo | Título | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BOK-0015 | book | Elementos del cálculo | libros/otros/elementos-del-calculo/index.qmd | published; edición web 1.0 |
+| MA-BCH-0331 | book-chapter | Capítulo 0. Del límite a la pregunta por el cálculo | libros/otros/elementos-del-calculo/capitulo-00.md | published; EDC-C00 |
+| MA-BCH-0332 | book-chapter | Capítulo 1. Tangentes, velocidades y variación | libros/otros/elementos-del-calculo/capitulo-01.md | published; EDC-C01 |
+| MA-BCH-0333 | book-chapter | Capítulo 2. La derivada como operación | libros/otros/elementos-del-calculo/capitulo-02.md | published; EDC-C02 |
+| MA-BCH-0334 | book-chapter | Capítulo 3. Extremos, crecimiento y aproximación local | libros/otros/elementos-del-calculo/capitulo-03.md | published; EDC-C03 |
+| MA-BCH-0335 | book-chapter | Capítulo 4. Cuadraturas y el desafío del área | libros/otros/elementos-del-calculo/capitulo-04.md | published; EDC-C04 |
+| MA-BCH-0336 | book-chapter | Capítulo 5. De las sumas a la integral | libros/otros/elementos-del-calculo/capitulo-05.md | published; EDC-C05 |
+| MA-BCH-0337 | book-chapter | Capítulo 6. El Teorema Fundamental del Cálculo | libros/otros/elementos-del-calculo/capitulo-06.md | published; EDC-C06 |
+| MA-BCH-0338 | book-chapter | Capítulo 7. Integrar como método | libros/otros/elementos-del-calculo/capitulo-07.md | published; EDC-C07 |
+| MA-BCH-0339 | book-chapter | Capítulo 8. Sumas infinitas y series de potencias | libros/otros/elementos-del-calculo/capitulo-08.md | published; EDC-C08 |
+| MA-BCH-0340 | book-chapter | Capítulo 9. Newton, Taylor y el problema del error | libros/otros/elementos-del-calculo/capitulo-09.md | published; EDC-C09 |
+| MA-BCH-0341 | book-chapter | Capítulo 10. De las leyes de cambio a las ecuaciones diferenciales | libros/otros/elementos-del-calculo/capitulo-10.md | published; EDC-C10 |
+| MA-BCH-0342 | book-chapter | Capítulo 11. El cálculo como teoría: alcance, historia y fundamentos | libros/otros/elementos-del-calculo/capitulo-11.md | published; EDC-C11 |
