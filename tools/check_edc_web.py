@@ -19,6 +19,15 @@ for f in files:
 assert exc==sol==338,(exc,sol)
 assert len(ids)==len(set(ids))==13
 assert 'MA-BOK-0015' in ids and all(f'MA-BCH-{i:04d}' in ids for i in range(331,343))
+historical_count=0
+for chapter in range(12):
+ text=(folder/f'capitulo-{chapter:02}.md').read_text()
+ expected=2 if chapter in [2,3,4,8] else 1
+ actual=text.count('title="Historia — ')
+ assert actual==expected,(chapter,actual,expected)
+ assert text.count('*Lectura opcional.*')==expected
+ historical_count+=actual
+assert historical_count==16
 svg=list((root/'assets/books/elementos-del-calculo').glob('*.svg'));assert len(svg)==7
 for figure in svg:
  assert len(figure.read_bytes())>1000
@@ -36,6 +45,10 @@ if args.site_dir:
  for f in files:
   page=site/f.relative_to(root).with_suffix('.html');assert page.is_file(),page
   parsed=Links();parsed.feed(page.read_text())
+  if re.fullmatch(r'capitulo-\d\d.md',f.name):
+   html=page.read_text()
+   assert 'Lectura opcional.' in html and 'Historia — ' in html,page
+   assert 'data-bs-toggle="collapse"' in html,page
   content_ids=[x for x in parsed.ids if x not in ['quarto-text-highlighting-styles','quarto-bootstrap']]
   assert len(content_ids)==len(set(content_ids)),page
   for link in parsed.links:

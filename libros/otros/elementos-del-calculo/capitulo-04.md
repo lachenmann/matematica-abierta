@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C04
-source-sha256: b348b8d637373cf7387fd7b08a81846ad679f889a6e828dc1c236084838bba71
+source-sha256: 172b2ee32ec29650f9405e697004e0a33e552153136d12ddaa3092aeb6568e57
 content-id: MA-BCH-0335
 content-type: book-chapter
 related:
@@ -185,6 +185,18 @@ La introducción de la obra, conservada en traducción inglesa reproducida por M
 
 Es importante no confundir **justificación de una cuadratura particular** con una teoría de área aplicable a cualquier función. El éxito con la parábola no garantiza que las aproximaciones de todas las regiones curvilíneas sean convergentes o que el valor obtenido sea independiente del procedimiento de muestreo.
 
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Arquímedes: encontrar un área y demostrarla"}
+
+*Lectura opcional.*
+
+En la carta a Dositeo que abre la Cuadratura de la parábola, Arquímedes distingue el hallazgo de un resultado mediante consideraciones mecánicas de su demostración geométrica. La distinción importa: una figura, una analogía o un cálculo convincente pueden sugerir el área sin constituir todavía una prueba.
+
+Nuestro resto geométrico explícito cumple esa segunda tarea en lenguaje actual: mide lo que falta y permite hacerlo menor que cualquier cantidad fijada. Ese parentesco explica la presencia de Arquímedes en un libro de cálculo, sin atribuirle integrales de Riemann ni una teoría moderna de series.
+
+**Fuente:** [Arquímedes, carta a Dositeo, traducción reproducida en MacTutor](https://mathshistory.st-andrews.ac.uk/Extras/Archimedes_parabola/).
+
+:::
+
 ## 4.6. De los triángulos a las sumas de rectángulos
 
 Consideremos ahora una función no negativa $f:[a,b]\to\mathbb R$ y una subdivisión finita
@@ -346,6 +358,18 @@ Hay que distinguir tres afirmaciones:
 3. **No se deduce** de lo anterior que cualquier colección arbitraria de líneas tenga, por simple suma informal, un área bien definida.
 
 En la geometría elemental, los polígonos pueden seccionarse y sus áreas compararse por descomposiciones finitas. Para regiones curvas, la comparación entre secciones exige reglas adicionales y una teoría de aproximación. Cavalieri no puede reducirse a una simple aplicación del teorema de Fubini, que aún no existe dentro de nuestra obra. La relación histórica y los límites de nuestra reconstrucción se documentan en [H4](capitulo-04-notas.html).
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cavalieri: comparar regiones mediante sus secciones"}
+
+*Lectura opcional.*
+
+La Geometria indivisibilibus de Cavalieri, publicada en 1635, exploró la comparación de figuras mediante sus secciones. Ese modo de pensar abrió caminos para cuadraturas y volúmenes, y también suscitó controversias sobre qué podía componerse legítimamente a partir de indivisibles.
+
+La sección anterior recupera el problema, pero lo reformula con aproximaciones finitas y restos controlados. El puente hacia la integral no consiste en declarar que una región «está hecha de líneas»: consiste en explicar qué sumas usamos, cómo cambian al refinarse y por qué determinan una magnitud.
+
+**Fuente:** [Notas históricas del capítulo 4, apartado H4](capitulo-04-notas.html).
+
+:::
 
 ## 4.11. El obstáculo: dos familias de rectángulos incompatibles
 

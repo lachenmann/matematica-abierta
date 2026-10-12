@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C09
-source-sha256: 138f85cc67d682b2b8e1b6d5a9e4cbe8a83be4ba9fcc1604ed17469e56fca5b1
+source-sha256: 2f4805af59cf22365232598171957f69dac42209900478d47d2070e09de81318
 content-id: MA-BCH-0340
 content-type: book-chapter
 related:
@@ -332,6 +332,18 @@ Al evaluar en cero, $f^{(n)}(0)/n!=\binom\alpha n$. Por ello, los coeficientes b
 **Demostración.** La regla del cociente da por inducción $f^{(n)}(0)=n!$, así que la serie de Taylor es $\sum_{n\ge0}x^n$. El Teorema 8.2 establece convergencia sólo cuando $|x|<1$; en $x=-2$ los sumandos $(-2)^n$ ni siquiera tienden a cero. Sin embargo, $1-(-2)=3\ne0$. $\square$
 
 Por tanto, «la función existe en $x$» y «su desarrollo en torno a $a$ converge en $x$» son afirmaciones diferentes. Para la potencia $(1+x)^\alpha$ no polinómica, la serie centrada en cero tiene radio uno; sus fronteras se estudian aparte, aun cuando la función tenga sentido en parte de ellas.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Newton y Taylor: de una expansión a un error controlado"}
+
+*Lectura opcional.*
+
+Newton utilizó series en sus métodos de cuadratura; Taylor presentó su Methodus incrementorum directa et inversa en 1715. El título de Taylor reúne ya dos direcciones: pasar de magnitudes a incrementos y reconstruir magnitudes a partir de relaciones entre incrementos. La aproximación polinómica se inscribe en esa historia de procedimientos directos e inversos.
+
+En este capítulo añadimos una exigencia precisa: la fórmula debe venir acompañada por un resto que determine su alcance. El binomio generalizado muestra el encuentro entre expansiones y derivadas; la sección siguiente mostrará que disponer de derivadas de todos los órdenes no basta para identificar una función con su serie.
+
+**Fuente:** [Taylor, Methodus incrementorum (1715), prefacio, traducción anotada de Ian Bruce; notas históricas del capítulo 9](https://www.17centurymaths.com/contents/brooktaylor/methodofincrementspartone.pdf).
+
+:::
 
 ## 9.10. Una función infinitamente derivable cuya serie no la representa
 
