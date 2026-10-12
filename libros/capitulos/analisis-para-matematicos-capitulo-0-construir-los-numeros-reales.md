@@ -1,5 +1,5 @@
 ---
-title: "Capítulo 0 — Construir los números reales"
+title: Capítulo 0 — Construir los números reales
 content-id: MA-BCH-0175
 content-type: book-chapter
 collection: PM-ANA
@@ -9,23 +9,30 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-10-07
-date-modified: 2026-10-09
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, numeros-reales, completitud]
+topics:
+- analisis-real
+- numeros-reales
+- completitud
 prerequisites: []
-related: [MA-BOK-0010]
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "ANM-C00.md, fuente canónica ANM; paquete C00 cerrado."
+  - ANM-C00.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.md)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)
 
 *De los racionales a la recta completa*
+
+[]{#MA-SEC-ANM-01-000-010}
 
 Los números reales suelen entrar en un curso de análisis como si ya estuvieran esperándonos. Escribimos $\mathbb R$, dibujamos una recta, colocamos sobre ella números racionales e irracionales y empezamos a hablar de límites, continuidad o derivadas. La notación funciona tan bien y la imagen de la recta es tan familiar que resulta fácil olvidar una pregunta anterior a todas esas técnicas:
 
@@ -48,6 +55,8 @@ $$
 $$
 
 ## 0.1. ¿Existen los números reales?
+
+[]{#MA-SEC-ANM-01-000-001}
 
 Para responder a una pregunta de existencia necesitamos saber antes qué estamos buscando. Decir simplemente «queremos construir $\mathbb R$» no sirve, porque el símbolo $\mathbb R$ ya presupone el objeto cuya existencia queremos justificar.
 
@@ -264,28 +273,18 @@ $$
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-000-001}
-
 1. ¿Por qué escribir una lista de axiomas para un cuerpo ordenado completo no demuestra, por sí solo, que exista uno?
-[]{#MA-MIC-ANM-01-000-002}
-
 2. ¿Qué parte de la especificación pertenece al álgebra, cuál al orden y cuál a la completitud?
-[]{#MA-MIC-ANM-01-000-003}
-
 3. Si $A\subseteq F$ tiene una cota superior, ¿qué condición adicional debe satisfacer una cota $s$ para ser $\sup A$?
-[]{#MA-MIC-ANM-01-000-004}
-
 4. ¿En qué se diferencian las afirmaciones «$A$ está acotado superiormente» y «$A$ tiene supremo en $F$»?
-[]{#MA-MIC-ANM-01-000-005}
-
 5. ¿Por qué la frase «$\mathbb Q$ está contenido en $F$» necesitará una explicación estructural y no sólo una notación de inclusión?
-[]{#MA-MIC-ANM-01-000-006}
-
 6. Si algún día construimos dos candidatos $F$ y $G$, ¿por qué no sería razonable exigir desde el comienzo que sean literalmente el mismo conjunto?
 
 La sección siguiente se ocupará de la quinta pregunta. Antes de decidir cómo construir un sistema nuevo, necesitamos comprender con precisión qué significa **extender** un sistema numérico sin destruir la estructura que ya posee. Ese análisis nos llevará desde $\mathbb N$ hasta $\mathbb Q$ y dejará preparado el lenguaje con el que, más adelante, podremos preguntar qué significa que los racionales estén incorporados en un sistema mayor.
 
 ## 0.2. Extender sin perder estructura: de $\mathbb N$ a $\mathbb Q$
+
+[]{#MA-SEC-ANM-01-000-002}
 
 La sección anterior dejó pendiente una frase que solemos escribir sin pensarlo demasiado:
 
@@ -663,28 +662,18 @@ no habría terminado todavía.
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-000-007}
-
 1. ¿Por qué la inyectividad es indispensable si queremos considerar a $A$ como una copia dentro de $B$?
-[]{#MA-MIC-ANM-01-000-008}
-
 2. ¿Qué significa que una incrustación conserve la suma? Explica la igualdad $\iota(a+b)=\iota(a)+\iota(b)$ como dos caminos que deben dar el mismo resultado.
-[]{#MA-MIC-ANM-01-000-009}
-
 3. ¿Qué nueva clase de ecuaciones puede resolverse al pasar de $\mathbb N$ a $\mathbb Z$? ¿Y al pasar de $\mathbb Z$ a $\mathbb Q$?
-[]{#MA-MIC-ANM-01-000-010}
-
 4. ¿Por qué es incorrecto llamar «incrustación de cuerpos» a la flecha $\mathbb N\hookrightarrow\mathbb Z$?
-[]{#MA-MIC-ANM-01-000-011}
-
 5. Explica la diferencia entre $A\hookrightarrow B$, $\iota(A)\subseteq B$ y la convención de escribir $A\subseteq B$ después de identificar $A$ con $\iota(A)$.
-[]{#MA-MIC-ANM-01-000-012}
-
 6. ¿Qué propiedades tendría que conservar una futura copia de $\mathbb Q$ dentro de un sistema candidato para que pudiéramos decir que éste prolonga la aritmética racional?
 
 Ya estamos en condiciones de hacer la primera prueba real del capítulo. No construiremos todavía un sistema nuevo. Antes examinaremos si el último sistema disponible, $\mathbb Q$, satisface la especificación completa. La próxima sección localizará con precisión el punto en que falla.
 
 ## 0.3. El obstáculo: $\mathbb Q$ no está completo
+
+[]{#MA-SEC-ANM-01-000-003}
 
 La cadena
 
@@ -1049,27 +1038,17 @@ No responderemos aún con un nombre. La sección siguiente construirá el objeto
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-000-013}
-
 1. Verifica directamente que $1\in S_2$ y que $2$ es una cota superior de $S_2$ en $\mathbb Q$.
-[]{#MA-MIC-ANM-01-000-014}
-
 2. ¿Por qué no basta con demostrar que ningún racional satisface $s^2=2$ para concluir inmediatamente que $S_2$ no tiene supremo racional? ¿Qué aportan los dos argumentos de perturbación?
-[]{#MA-MIC-ANM-01-000-015}
-
 3. En el caso $s^2<2$, identifica exactamente qué propiedad del supuesto supremo contradice el racional $s+\delta$.
-[]{#MA-MIC-ANM-01-000-016}
-
 4. En el caso $s^2>2$, identifica exactamente qué propiedad del supuesto supremo contradice el racional $t=s-\delta$.
-[]{#MA-MIC-ANM-01-000-017}
-
 5. Explica con tus palabras la diferencia lógica entre densidad y completitud.
-[]{#MA-MIC-ANM-01-000-018}
-
 6. ¿Por qué esta demostración no necesita suponer de antemano la existencia de un número real cuyo cuadrado sea $2$?
 
 Hemos llegado al punto en que la necesidad de una construcción ya no es una intuición. Es una consecuencia demostrada: el último sistema de nuestra cadena disponible, $\mathbb Q$, posee la aritmética y el orden que queremos conservar, pero no la completitud que necesitamos añadir. El siguiente paso será diseñar una manera de representar una frontera ausente **sin usar todavía el punto que falta**.
 ## 0.4. Construir una frontera sin tener el punto
+
+[]{#MA-SEC-ANM-01-000-004}
 
 La sección anterior terminó con una situación incómoda. El conjunto
 
@@ -1449,28 +1428,18 @@ La respuesta comenzará observando que cada racional ya determina una cortadura 
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-000-019}
-
 1. Verifica directamente que, para cada $c\in\mathbb Q$, el conjunto $L_c=\{q\in\mathbb Q:q<c\}$ es una cortadura de Dedekind.
-[]{#MA-MIC-ANM-01-000-020}
-
 2. Explica por qué $\{q\in\mathbb Q:q\le c\}$ queda excluido por la condición «sin máximo» y qué duplicación evitaríamos de no imponerla.
-[]{#MA-MIC-ANM-01-000-021}
-
 3. En la comprobación de $A_2$, ¿por qué hay que separar los casos $q<0$ y $q\ge0$ al demostrar que no existe máximo?
-[]{#MA-MIC-ANM-01-000-022}
-
 4. ¿En qué paso de la prueba de linealidad usamos que el orden de $\mathbb Q$ satisface tricotomía?
-[]{#MA-MIC-ANM-01-000-023}
-
 5. Si $A\subsetneq B$, ¿qué interpretación tiene esa inclusión en términos de los racionales situados «a la izquierda» de las posiciones codificadas?
-[]{#MA-MIC-ANM-01-000-024}
-
 6. ¿Por qué la existencia del conjunto $\mathcal D\subseteq\mathcal P(\mathbb Q)$ no demuestra todavía que hayamos construido un cuerpo ordenado completo?
 
 Ya tenemos el primer objeto nuevo del capítulo. No nació de dibujar un punto ausente, sino de registrar qué racionales deberían quedar antes de él. El próximo paso será comprobar que los racionales mismos reaparecen dentro de este lenguaje sin perder su orden.
 
 ## 0.5. Una copia de $\mathbb Q$ dentro del nuevo sistema
+
+[]{#MA-SEC-ANM-01-000-005}
 
 En §0.4 construimos un nuevo dominio, $\mathcal D$, cuyos elementos son cortaduras de Dedekind. Sabemos además que $\mathcal D$ está linealmente ordenado por inclusión. Pero la construcción sólo será útil para nuestro problema original si el sistema racional que ya conocemos reaparece dentro de ella sin perder su orden.
 
@@ -1939,31 +1908,19 @@ $$
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-000-025}
-
 1. Demuestra directamente que $(-2)^*\subsetneq0^*\subsetneq3^*$ sin apelar a la proposición general.
-[]{#MA-MIC-ANM-01-000-026}
-
 2. Si $p^*\subsetneq q^*$, ¿por qué un elemento de $q^*\setminus p^*$ permite concluir $p<q$?
-[]{#MA-MIC-ANM-01-000-027}
-
 3. Explica por qué la equivalencia $p<q\Longleftrightarrow p^*\subsetneq q^*$ contiene más información que la sola implicación $p<q\Rightarrow p^*\subsetneq q^*$.
-[]{#MA-MIC-ANM-01-000-028}
-
 4. ¿Cómo se deduce la inyectividad de $\iota_{\mathbb Q}$ a partir de la preservación y reflexión del orden?
-[]{#MA-MIC-ANM-01-000-029}
-
 5. Verifica con detalle las inclusiones $1^*\subsetneq A_2\subsetneq2^*$ sin introducir un número cuyo cuadrado sea $2$.
-[]{#MA-MIC-ANM-01-000-030}
-
 6. ¿Por qué todavía no podemos llamar a $\iota_{\mathbb Q}$ «incrustación de cuerpos ordenados»?
-[]{#MA-MIC-ANM-01-000-031}
-
 7. ¿Qué dos identidades tendrán que verificarse más adelante para demostrar que la suma y el producto racionales se conservan dentro de $\mathcal D$?
 
 La copia racional ya está situada en el nuevo orden. Ahora debemos darle al resto de $\mathcal D$ una aritmética compatible con ella.
 
 ## 0.6. Dar aritmética a las cortaduras I: suma y opuesto
+
+[]{#MA-SEC-ANM-01-000-006}
 
 En §0.5 conseguimos que los racionales reaparecieran dentro de $\mathcal D$ sin perder su orden. Pero un sistema de números reales no puede limitarse a ordenar posiciones: debe permitir operar con ellas.
 
@@ -2872,34 +2829,20 @@ El producto será más delicado que la suma porque el signo importa. Primero ten
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-000-032}
-
 1. En la prueba de clausura de $A+B$, explica por qué cualquier racional exterior $u\notin A$ domina estrictamente a todo $a\in A$.
-[]{#MA-MIC-ANM-01-000-033}
-
 2. Demuestra de nuevo $p^*+q^*=(p+q)^*$ buscando explícitamente, para $x<p+q$, dos racionales $a<p$ y $b<q$ cuya suma sea exactamente $x$.
-[]{#MA-MIC-ANM-01-000-034}
-
 3. ¿Por qué el conjunto $\{-s:s\notin A\}$ no sirve en general como definición de $-A$? Examina el caso $A=q^*$.
-[]{#MA-MIC-ANM-01-000-035}
-
 4. En el lema de aproximación racional, ¿dónde se usa la propiedad arquimediana de $\mathbb Q$?
-[]{#MA-MIC-ANM-01-000-036}
-
 5. Sigue con detalle la inclusión $0^*\subseteq A+(-A)$ e identifica para qué se introduce $h=-x/2$.
-[]{#MA-MIC-ANM-01-000-037}
-
 6. Demuestra que $A\subseteq B$ si y sólo si $A+C\subseteq B+C$ usando el opuesto de $C$.
-[]{#MA-MIC-ANM-01-000-038}
-
 7. Verifica directamente que $-(q^*)=(-q)^*$.
-[]{#MA-MIC-ANM-01-000-039}
-
 8. ¿Qué parte exacta de la estructura de cuerpo falta todavía antes de poder certificar $\mathbb Q\hookrightarrow\mathcal D$ como incrustación de cuerpos ordenados?
 
 La estructura aditiva está cerrada. En la próxima sección construiremos la multiplicación, la unidad y los inversos multiplicativos; sólo entonces podremos decidir si $\mathcal D$ es realmente un cuerpo ordenado.
 
 ## 0.7. Dar aritmética a las cortaduras II: producto e inverso
+
+[]{#MA-SEC-ANM-01-000-007}
 
 La suma pudo construirse directamente a partir de sumas racionales. Para el producto aparece una dificultad nueva: **el signo importa**.
 
@@ -3873,7 +3816,7 @@ $$
 
 Si alguno de los factores es cero, las identidades son inmediatas. Si ambos son no nulos, la tricotomía de signos reduce cada miembro al mismo producto positivo, con exactamente el mismo número de opuestos exteriores. La involutividad $-(-A)=A$ cierra los casos.
 
-Ahora fijemos $A>0^*$ y permitamos que $B,C$ tengan cualquier signo. Si $B$ y $C$ son ambos positivos, ya tenemos la distributividad. Si ambos son negativos, escribimos
+Ahora fijemos $A>0^*$ y permitamos que $B,C$ tengan cualquier signo. Si $B=0^*$ o $C=0^*$, la identidad se reduce, respectivamente, a $AC=0^*+AC$ o $AB=AB+0^*$, por la definición del producto con cero y la identidad aditiva. Podemos suponer entonces que ambos son no nulos. Si $B$ y $C$ son ambos positivos, ya tenemos la distributividad. Si ambos son negativos, escribimos
 
 $$
 B=-B_0,
@@ -4182,43 +4125,23 @@ La pregunta decisiva será si esa unión es otra cortadura y, cuando la familia 
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-000-040}
-
 1. Explica por qué $\{ab:a\in A,b\in B\}$ no puede usarse como producto ingenuo de dos cortaduras arbitrarias.
-[]{#MA-MIC-ANM-01-000-041}
-
 2. Demuestra las equivalencias $A>0^*\Longleftrightarrow0\in A\Longleftrightarrow\exists a\in A$ con $a>0$.
-[]{#MA-MIC-ANM-01-000-042}
-
 3. En la clausura de $A\cdot_+B$, ¿por qué un racional exterior $u\notin A$ debe ser positivo cuando $A>0^*$?
-[]{#MA-MIC-ANM-01-000-043}
-
 4. Verifica directamente $p^*\cdot_+q^*=(pq)^*$ para $p,q>0$ y localiza dónde se usa la densidad de $\mathbb Q$.
-[]{#MA-MIC-ANM-01-000-044}
-
 5. Recorre los cinco casos de la definición del producto general y comprueba que todos los argumentos enviados a $\cdot_+$ son positivos.
-[]{#MA-MIC-ANM-01-000-045}
-
 6. ¿Por qué la definición de $A^{-1,+}$ incluye automáticamente todos los racionales $q\le0$?
-[]{#MA-MIC-ANM-01-000-046}
-
 7. En la prueba $A\cdot_+A^{-1,+}=1^*$, explica qué papel cumplen el lema de aproximación racional y la elección de $h<(1-x)c$.
-[]{#MA-MIC-ANM-01-000-047}
-
 8. Reconstruye la asociatividad positiva mostrando por qué la desigualdad $x<abc$ permite fabricar el testigo intermedio necesario en cada agrupación.
-[]{#MA-MIC-ANM-01-000-048}
-
 9. En la distributividad con signos opuestos, ¿por qué es necesario comparar $B$ con $-C$ antes de aplicar la distributividad positiva?
-[]{#MA-MIC-ANM-01-000-049}
-
 10. Enumera exactamente qué propiedades hacen ahora de $\mathcal D$ un cuerpo ordenado y cuál sigue faltando para que sea un sistema de números reales según §0.1.
-[]{#MA-MIC-ANM-01-000-050}
-
 11. Explica por qué sólo ahora queda plenamente justificada la abreviatura $\mathbb Q\subseteq\mathcal D$.
 
 La aritmética está cerrada. Falta comprobar si el nuevo cuerpo ordenado tiene la propiedad que motivó toda la construcción: la completitud.
 
 ## 0.8. Sí existen: el supremo como unión
+
+[]{#MA-SEC-ANM-01-000-008}
 
 Volvamos a la pregunta con la que comenzó el capítulo.
 
@@ -4828,43 +4751,23 @@ Para responder tendremos que abandonar por un momento la implementación concret
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-000-051}
-
 1. Sea $\mathscr A\subseteq\mathcal D$ no vacía. Explica por qué la unión $\bigcup\mathscr A$ es automáticamente cerrada hacia abajo, incluso antes de usar la hipótesis de acotación superior.
-[]{#MA-MIC-ANM-01-000-052}
-
 2. ¿En qué paso exacto se necesita que $\mathscr A$ esté acotada superiormente?
-[]{#MA-MIC-ANM-01-000-053}
-
 3. ¿Por qué una cota superior $U$ de $\mathscr A$ garantiza $\bigcup\mathscr A\subseteq U$?
-[]{#MA-MIC-ANM-01-000-054}
-
 4. Demuestra directamente que $\bigcup\mathscr A$ no tiene máximo usando sólo que cada miembro de $\mathscr A$ no tiene máximo.
-[]{#MA-MIC-ANM-01-000-055}
-
 5. Separa con tus propias palabras las dos afirmaciones «$S$ es una cortadura» y «$S$ es el supremo». ¿Por qué ninguna de ellas contiene automáticamente a la otra?
-[]{#MA-MIC-ANM-01-000-056}
-
 6. Si $V$ es otra cota superior, explica por qué cada $q\in S$ debe pertenecer a $V$.
-[]{#MA-MIC-ANM-01-000-057}
-
 7. ¿Por qué la identidad $\sup_{\mathcal D}\mathscr A=\bigcup\mathscr A$ no presupone la existencia previa de números reales?
-[]{#MA-MIC-ANM-01-000-058}
-
 8. ¿Qué dos certificados distintos se combinan para concluir que $\mathcal D$ es un cuerpo ordenado completo?
-[]{#MA-MIC-ANM-01-000-059}
-
 9. ¿Por qué sólo ahora queda autorizado llamar a $\mathcal D$ «un modelo de los números reales»?
-[]{#MA-MIC-ANM-01-000-060}
-
 10. Explica la diferencia entre «hemos demostrado que existe un modelo» y «hemos demostrado que el modelo es único».
-[]{#MA-MIC-ANM-01-000-061}
-
 11. ¿Por qué la existencia de $A_2\in\mathcal D$ muestra ahora algo más fuerte que lo que sabíamos de $A_2$ al terminar §0.4?
 
 La existencia está resuelta. El próximo problema ya no consiste en fabricar un candidato, sino en determinar cuánto depende la estructura obtenida del modo concreto en que la construimos.
 
 ## 0.9. ¿Podría haber otros reales?
+
+[]{#MA-SEC-ANM-01-000-009}
 
 La pregunta de existencia ya está cerrada.
 
@@ -5935,44 +5838,20 @@ Pero ahora disponemos de todas las piezas conceptuales para atacarla.
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-000-062}
-
 1. ¿Por qué un cuerpo ordenado debe tener característica cero?
-[]{#MA-MIC-ANM-01-000-063}
-
 2. Explica por qué la definición de $\jmath_{\mathbb Z}^F(m-n)$ no depende de la diferencia formal elegida.
-[]{#MA-MIC-ANM-01-000-064}
-
 3. Para $q=a/b$, ¿qué propiedad garantiza que $\iota_F(q)$ no depende del representante racional?
-[]{#MA-MIC-ANM-01-000-065}
-
 4. ¿En qué momento exacto de esta sección se usa por primera vez la completitud de $F$?
-[]{#MA-MIC-ANM-01-000-066}
-
 5. Reconstruye la contradicción que demuestra que un cuerpo ordenado completo es arquimediano.
-[]{#MA-MIC-ANM-01-000-067}
-
 6. En el lema de localización entera, ¿por qué no basta con saber simplemente que existe algún entero mayor que $x$?
-[]{#MA-MIC-ANM-01-000-068}
-
 7. Explica el papel del mínimo de $K$ en la producción de
    $$
    m-1\le x<m.
    $$
-[]{#MA-MIC-ANM-01-000-069}
-
 8. Para $x<y$, ¿por qué elegir $1/n<y-x$ y localizar $nx$ produce un racional entre ambos?
-[]{#MA-MIC-ANM-01-000-070}
-
 9. Verifica las cuatro condiciones que hacen de $A_x$ una cortadura y señala en cuáles se usa la densidad racional.
-[]{#MA-MIC-ANM-01-000-071}
-
 10. ¿Dónde se gasta la completitud por segunda vez al reconstruir $x$ desde $A_x$?
-[]{#MA-MIC-ANM-01-000-072}
-
 11. ¿Por qué la igualdad $A_x=A_y$ obliga a $x=y$?
-[]{#MA-MIC-ANM-01-000-073}
-
 12. Explica por qué $\mathbb Q$ puede servir como interfaz común entre dos cuerpos ordenados completos cuyos elementos sean literalmente distintos.
 
 Ya no dependemos de la codificación por cortaduras para hablar de la posición de un real abstracto. La posición puede registrarse racionalmente en cualquier modelo completo. La pregunta final es ahora concreta:
@@ -7303,50 +7182,22 @@ REAL_NUMBER_STRUCTURE = CANONICAL_UP_TO_UNIQUE_ORDERED_FIELD_ISOMORPHISM
 
 ### Antes de cerrar el manuscrito del capítulo
 
-[]{#MA-MIC-ANM-01-000-074}
-
 1. ¿Por qué no está bien definida $\phi(x)=\sup_G\iota_G(A_x)$ hasta comprobar no vaciedad y acotación de $\iota_G(A_x)$?
-[]{#MA-MIC-ANM-01-000-075}
-
 2. ¿Dónde se usa exactamente la completitud de $G$ al construir $\phi$?
-[]{#MA-MIC-ANM-01-000-076}
-
 3. Demuestra que $A_{\phi(x)}=A_x$ y explica por qué la ausencia de máximo de $A_x$ es necesaria para una de las inclusiones.
-[]{#MA-MIC-ANM-01-000-077}
-
 4. ¿Por qué la igualdad de trazas implica que $\phi$ preserva y refleja el orden?
-[]{#MA-MIC-ANM-01-000-078}
-
 5. Explica por qué la construcción simétrica $\psi:G\to F$ demuestra sobreyectividad sin elegir preimágenes.
-[]{#MA-MIC-ANM-01-000-079}
-
 6. ¿Por qué $\phi(\iota_F(q))=\iota_G(q)$ para todo racional $q$?
-[]{#MA-MIC-ANM-01-000-080}
-
 7. Reconstruye la caracterización racional de $A_{x+y}$ y señala las dos aplicaciones de densidad.
-[]{#MA-MIC-ANM-01-000-081}
-
 8. ¿Por qué la caracterización de $A_{xy}$ se formula primero para $x,y\ge0$?
-[]{#MA-MIC-ANM-01-000-082}
-
 9. Recorre los tres casos adicionales de signo necesarios para extender la multiplicatividad a todo $F$.
-[]{#MA-MIC-ANM-01-000-083}
-
 10. ¿Por qué cualquier isomorfismo de cuerpos ordenados $T:F\to G$ debe enviar la copia racional canónica de $F$ a la de $G$?
-[]{#MA-MIC-ANM-01-000-084}
-
 11. Explica por qué conservar la misma traza racional fuerza $T(x)=\phi(x)$.
-[]{#MA-MIC-ANM-01-000-085}
-
 12. Distingue cuidadosamente:
     - igualdad literal;
     - existencia de un isomorfismo;
     - existencia de un único isomorfismo de cuerpos ordenados.
-[]{#MA-MIC-ANM-01-000-086}
-
 13. ¿Por qué la unicidad estructural no implica por sí sola computabilidad del transporte?
-[]{#MA-MIC-ANM-01-000-087}
-
 14. Explica en qué sentido las cortaduras de Dedekind son una realización de los reales, pero no su «esencia conjuntista».
 
 Con esto, el arco matemático del capítulo queda completo. Construimos un modelo, demostramos que satisface la especificación y después demostramos que cualquier otro modelo con la misma especificación posee exactamente la misma estructura.
@@ -7355,6 +7206,12 @@ A partir del capítulo siguiente podremos trabajar con $\mathbb R$ sin ocultar q
 
 ## Lectura complementaria
 
-[*La construcción de los reales*](../otros/la-construccion-de-los-reales.md) ofrece otra ruta de demostración de la unicidad mediante operaciones con conjuntos y supremos, y desarrolla operaciones sobre cortaduras mediante recintos racionales. Puede leerse después de este capítulo para comparar estrategias y estudiar sus comprobaciones adicionales. La [guía de lectura](../../blog/la-construccion-de-los-reales-existencia-unicidad-y-dos-caminos.md) explica la relación entre ambas exposiciones y da acceso al libro completo, con sus 78 ejercicios resueltos.
+[*La construcción de los reales*](https://matematicaabierta.cl/libros/otros/la-construccion-de-los-reales.html) ofrece otra ruta de demostración de la unicidad mediante operaciones con conjuntos y supremos, y desarrolla operaciones sobre cortaduras mediante recintos racionales. Puede leerse después de este capítulo para comparar estrategias y estudiar sus comprobaciones adicionales. La [guía de lectura](https://matematicaabierta.cl/blog/la-construccion-de-los-reales-existencia-unicidad-y-dos-caminos.html) explica la relación entre ambas exposiciones y da acceso al libro completo, con sus 78 ejercicios resueltos.
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.md)
+## Lectura complementaria
+
+[*La construcción de los reales*](../otros/la-construccion-de-los-reales.html) ofrece otra ruta de demostración de la unicidad mediante operaciones con conjuntos y supremos, y desarrolla operaciones sobre cortaduras mediante recintos racionales. Puede leerse después de este capítulo para comparar estrategias y estudiar sus comprobaciones adicionales. La [guía de lectura](../../blog/la-construccion-de-los-reales-existencia-unicidad-y-dos-caminos.html) explica la relación entre ambas exposiciones y da acceso al libro completo, con sus 78 ejercicios resueltos.
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)
+
+[← Prefacio](../para-matematicos/analisis-para-matematicos.html#prefacio) · [Capítulo 1 →](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html)

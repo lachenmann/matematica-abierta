@@ -1,5 +1,5 @@
 ---
-title: "Soluciones de microcontroles — Capítulo 3"
+title: Soluciones de microcontroles — Capítulo 3
 content-id: MA-BCH-0095
 content-type: book-chapter
 collection: PM-ANA
@@ -9,27 +9,35 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
-prerequisites: [MA-BCH-0084]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- orden
+- topologia
+prerequisites:
+- MA-BCH-0084
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C03; referencias de contraste en la portada del libro."
+  - ANM-C03_MICROCONTROLES_SOLUCIONES.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.md)
-
-# Soluciones de microcontroles — Capítulo 3
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)
 
 ## §3.1. El problema heredado: definir no basta
 
 []{#MA-MSOL-ANM-01-003-001}
+
+[]{#MA-MIC-ANM-01-003-001}
+
+[]{#MA-SEC-ANM-01-003-001}
 
 ### 1. ¿Qué información expresa la igualdad $\sup A=\min U(A)$ y qué información **no** expresa por sí sola?
 
@@ -66,6 +74,8 @@ $$
 **Uso de completitud:** ninguno. Precisamente se está distinguiendo la definición del futuro principio de existencia.
 
 []{#MA-MSOL-ANM-01-003-002}
+
+[]{#MA-MIC-ANM-01-003-002}
 
 ### 2. Si $U(A)\ne\varnothing$, ¿por qué eso no obliga lógicamente a que $U(A)$ tenga un mínimo?
 
@@ -104,6 +114,8 @@ $$
 **Uso de completitud:** ninguno.
 
 []{#MA-MSOL-ANM-01-003-003}
+
+[]{#MA-MIC-ANM-01-003-003}
 
 ### 3. Verifica que $1\in S_2$ y que $2$ es una cota superior racional de $S_2$.
 
@@ -155,6 +167,8 @@ Así quedan verificadas simultáneamente la no vaciedad de $S_2$ y la existencia
 
 []{#MA-MSOL-ANM-01-003-004}
 
+[]{#MA-MIC-ANM-01-003-004}
+
 ### 4. ¿Qué falla exactamente para $S_2$ dentro de $\mathbb Q$: la existencia de cotas superiores o la existencia de una menor cota superior racional?
 
 Para $S_2$ **no falla la existencia de cotas superiores racionales**. El microcontrol anterior ya exhibe una:
@@ -183,6 +197,8 @@ Equivalentemente, $S_2$ no posee supremo **dentro de $\mathbb Q$**.
 
 []{#MA-MSOL-ANM-01-003-005}
 
+[]{#MA-MIC-ANM-01-003-005}
+
 ### 5. ¿Por qué la densidad de $\mathbb Q$ no resuelve ese fallo?
 
 La densidad de $\mathbb Q$ afirma que, dados racionales $p<q$, existe otro racional $r$ tal que
@@ -210,6 +226,8 @@ La densidad permite **refinar entre puntos existentes**; no garantiza que el sis
 **Uso de completitud:** ninguno.
 
 []{#MA-MSOL-ANM-01-003-006}
+
+[]{#MA-MIC-ANM-01-003-006}
 
 ### 6. ¿Qué tendría que añadir una propiedad de completitud para convertir la teoría condicional de C02 en una teoría de existencia?
 
@@ -256,6 +274,10 @@ En §3.1 esto es todavía la **forma de la garantía que necesitamos**, no un pr
 ## §3.2. El principio del supremo
 
 []{#MA-MSOL-ANM-01-003-007}
+
+[]{#MA-MIC-ANM-01-003-007}
+
+[]{#MA-SEC-ANM-01-003-002}
 
 ### 7. Separa, en el principio del supremo, las tres hipótesis escritas sobre $A$ de la conclusión de existencia.
 
@@ -306,6 +328,8 @@ Por tanto, el principio transforma las tres condiciones de entrada en la existen
 
 []{#MA-MSOL-ANM-01-003-008}
 
+[]{#MA-MIC-ANM-01-003-008}
+
 ### 8. ¿Por qué la definición $s=\min U(A)$ no basta para demostrar que $s$ existe?
 
 La expresión
@@ -351,6 +375,8 @@ La existencia requiere una propiedad estructural adicional; en $\mathbb R$, esa 
 
 []{#MA-MSOL-ANM-01-003-009}
 
+[]{#MA-MIC-ANM-01-003-009}
+
 ### 9. Si $A$ es no vacío y está acotado superiormente, ¿qué garantiza la completitud sobre $U(A)$?
 
 Como $A$ es no vacío y está acotado superiormente, el principio del supremo garantiza que existe
@@ -380,6 +406,8 @@ $$
 **Uso de completitud:** directo, al pasar de $A\ne\varnothing$ y $U(A)\ne\varnothing$ a la existencia de $\min U(A)$.
 
 []{#MA-MSOL-ANM-01-003-010}
+
+[]{#MA-MIC-ANM-01-003-010}
 
 ### 10. Explica por qué el principio del supremo no implica que $\sup A\in A$.
 
@@ -429,6 +457,8 @@ es justamente la que permite identificar al supremo con un máximo.
 
 []{#MA-MSOL-ANM-01-003-011}
 
+[]{#MA-MIC-ANM-01-003-011}
+
 ### 11. Para $S_2\subseteq\mathbb Q$, identifica el paso que falla en $\mathbb Q$ pero queda autorizado cuando consideramos $S_2\subseteq\mathbb R$.
 
 En ambos universos podemos verificar las mismas condiciones elementales:
@@ -464,6 +494,8 @@ La diferencia no está en la no vaciedad, la acotación o la densidad, sino en l
 **Uso de completitud:** exactamente en la existencia de $\sup_{\mathbb R}S_2$; no se identifica ese real con ningún número concreto.
 
 []{#MA-MSOL-ANM-01-003-012}
+
+[]{#MA-MIC-ANM-01-003-012}
 
 ### 12. Cadena de completitud y caracterización por $\varepsilon$
 
@@ -515,6 +547,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-013}
 
+[]{#MA-MIC-ANM-01-003-013}
+
 ### 13. ¿Por qué sería incorrecto aplicar el principio del supremo a $A=\mathbb R$ sin más?
 
 Porque una de las hipótesis del principio falla.
@@ -550,6 +584,8 @@ Como falta la hipótesis de acotación superior, el principio del supremo no aut
 **Uso de completitud:** ninguno, porque el principio ni siquiera es aplicable; primero deben verificarse sus hipótesis.
 
 []{#MA-MSOL-ANM-01-003-014}
+
+[]{#MA-MIC-ANM-01-003-014}
 
 ### 14. En la prueba “si $r<\sup A$, entonces existe $a\in A$ con $r<a$”, localiza exactamente el único paso que depende de completitud.
 
@@ -601,6 +637,10 @@ seguida únicamente de minimalidad del supremo y negación de la definición de 
 
 []{#MA-MSOL-ANM-01-003-015}
 
+[]{#MA-MIC-ANM-01-003-015}
+
+[]{#MA-SEC-ANM-01-003-003}
+
 ### 15. Si $A$ es no vacío y está acotado inferiormente, ¿por qué $-A$ está acotado superiormente?
 
 Como $A$ está acotado inferiormente, existe algún $l\in\mathbb R$ tal que
@@ -628,6 +668,8 @@ Así, $-A$ está acotado superiormente. Además, como $A\ne\varnothing$, si $a_0
 **Uso de completitud:** ninguno. Sólo se usan la hipótesis de acotación inferior y la inversión del orden bajo la reflexión.
 
 []{#MA-MSOL-ANM-01-003-016}
+
+[]{#MA-MIC-ANM-01-003-016}
 
 ### 16. En la prueba de existencia de $\inf A$, ¿cuál es exactamente el **Paso de completitud**?
 
@@ -673,6 +715,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-017}
 
+[]{#MA-MIC-ANM-01-003-017}
+
 ### 17. Si $s=\sup(-A)$, demuestra sin omitir la inversión de desigualdades que $-s$ es una cota inferior de $A$.
 
 Sea $a\in A$ cualquiera. Entonces
@@ -710,6 +754,8 @@ Por definición, $-s$ es una cota inferior de $A$.
 **Uso de completitud:** ninguno nuevo. Se usa solamente que el supremo $s$ ya existe y que es cota superior de $-A$.
 
 []{#MA-MSOL-ANM-01-003-018}
+
+[]{#MA-MIC-ANM-01-003-018}
 
 ### 18. Si $l$ es una cota inferior cualquiera de $A$, ¿por qué $-l$ es una cota superior de $-A$ y cómo conduce eso a $l\le -s$?
 
@@ -757,6 +803,8 @@ Así, toda cota inferior $l$ de $A$ queda por debajo de $-s$. Junto con el micro
 
 []{#MA-MSOL-ANM-01-003-019}
 
+[]{#MA-MIC-ANM-01-003-019}
+
 ### 19. Explica por qué la identidad $\inf A=-\sup(-A)$ cumple ahora una función de existencia que no tenía en C02.
 
 En C02 la identidad
@@ -792,6 +840,8 @@ La fórmula pasa, pues, de identidad condicional a mecanismo de transporte de ex
 **Uso de completitud:** directo en la existencia de $\sup(-A)$; la reflexión posterior no añade otra aplicación.
 
 []{#MA-MSOL-ANM-01-003-020}
+
+[]{#MA-MIC-ANM-01-003-020}
 
 ### 20. Demuestra la implicación `INF ⇒ SUP` usando sólo la reflexión.
 
@@ -877,6 +927,8 @@ La prueba usa sólo el principio INF supuesto y la reflexión del orden.
 
 []{#MA-MSOL-ANM-01-003-021}
 
+[]{#MA-MIC-ANM-01-003-021}
+
 ### 21. ¿Por qué `SUP ⇔ INF` no significa que hayamos adoptado dos axiomas independientes?
 
 Porque una equivalencia lógica permite derivar cada formulación a partir de la otra.
@@ -904,6 +956,8 @@ Pero sólo **SUP** fue postulado como punto de partida. INF es recuperable como 
 Así, la equivalencia significa “misma información estructural expresada en dos lenguajes”, no “dos hipótesis independientes que deban acumularse”.
 
 []{#MA-MSOL-ANM-01-003-022}
+
+[]{#MA-MIC-ANM-01-003-022}
 
 ### 22. Para $A=(2,\infty)$, identifica qué principio puede aplicarse, qué reflejo conviene estudiar y cuál es el ínfimo.
 
@@ -946,6 +1000,8 @@ Obsérvese que $2\notin A$: el ínfimo existe aunque no sea mínimo.
 **Uso de completitud:** en la garantía general de existencia del supremo de $-A$ —o, equivalentemente, del ínfimo de $A$—; la identificación concreta del valor usa la teoría elemental de C02.
 
 []{#MA-MSOL-ANM-01-003-023}
+
+[]{#MA-MIC-ANM-01-003-023}
 
 ### 23. En la cadena que conduce a la caracterización $\varepsilon$ del ínfimo, distingue el paso que usa completitud del paso que usa C02.
 
@@ -1001,6 +1057,10 @@ $$
 
 []{#MA-MSOL-ANM-01-003-024}
 
+[]{#MA-MIC-ANM-01-003-024}
+
+[]{#MA-SEC-ANM-01-003-004}
+
 ### 24. ¿Por qué la hipótesis “$\mathbb N$ está acotado superiormente” permite invocar el principio del supremo?
 
 El principio del supremo exige dos condiciones sobre el conjunto al que se aplica: que sea no vacío y que esté acotado superiormente.
@@ -1030,6 +1090,8 @@ $$
 **Uso de completitud:** directo únicamente en esta conclusión de existencia. La no vaciedad y la acotación supuesta son las hipótesis que permiten aplicar el principio.
 
 []{#MA-MSOL-ANM-01-003-025}
+
+[]{#MA-MIC-ANM-01-003-025}
 
 ### 25. En la prueba de arquimedianidad, ¿cuál es exactamente el único **Paso de completitud**?
 
@@ -1062,6 +1124,8 @@ $$
 **Uso de completitud:** una sola vez, en la existencia de $s$.
 
 []{#MA-MSOL-ANM-01-003-026}
+
+[]{#MA-MIC-ANM-01-003-026}
 
 ### 26. ¿Por qué $s-1$ no puede ser una cota superior si $s=\sup\mathbb N$?
 
@@ -1096,6 +1160,8 @@ $$
 **Uso de completitud:** ninguno nuevo. Sólo se usa la minimalidad del supremo cuya existencia ya fue obtenida.
 
 []{#MA-MSOL-ANM-01-003-027}
+
+[]{#MA-MIC-ANM-01-003-027}
 
 ### 27. Explica cuidadosamente cómo la negación de “$s-1$ es cota superior” produce un natural $n$ con $n>s-1$.
 
@@ -1133,6 +1199,8 @@ El testigo $n$ no lo produce una nueva aplicación de completitud. Aparece al ne
 
 []{#MA-MSOL-ANM-01-003-028}
 
+[]{#MA-MIC-ANM-01-003-028}
+
 ### 28. ¿Dónde se usa que $n+1$ vuelve a pertenecer a $\mathbb N$?
 
 Del paso anterior obtenemos un natural $n$ tal que
@@ -1162,6 +1230,8 @@ Como $s$ es cota superior de $\mathbb N$, todo elemento de $\mathbb N$ debería 
 **Uso de completitud:** ninguno nuevo; este paso es puramente aritmético y de pertenencia.
 
 []{#MA-MSOL-ANM-01-003-029}
+
+[]{#MA-MIC-ANM-01-003-029}
 
 ### 29. Demuestra que “$\mathbb N$ no está acotado superiormente” equivale a “para todo $x\in\mathbb R$ existe $n\in\mathbb N$ con $n>x$”.
 
@@ -1208,6 +1278,8 @@ $$
 **Uso de completitud:** ninguno en esta equivalencia. La completitud fue necesaria antes para demostrar que la primera formulación es verdadera en $\mathbb R$.
 
 []{#MA-MSOL-ANM-01-003-030}
+
+[]{#MA-MIC-ANM-01-003-030}
 
 ### 30. Dado $\varepsilon>0$, justifica cada paso de la deducción
 
@@ -1259,6 +1331,8 @@ La positividad es indispensable para justificar tanto las divisiones como el sen
 
 []{#MA-MSOL-ANM-01-003-031}
 
+[]{#MA-MIC-ANM-01-003-031}
+
 ### 31. ¿Por qué la afirmación $\forall\varepsilon>0\;\exists n:1/n<\varepsilon$ no necesita todavía el lenguaje de convergencia?
 
 Porque la afirmación ya tiene un significado completo usando sólo cuantificadores, orden y aritmética:
@@ -1282,6 +1356,8 @@ En particular, aquí no estamos usando como argumento una condición “eventual
 Por tanto, el contenido de §3.4 permanece enteramente dentro de la propiedad arquimediana y del orden.
 
 []{#MA-MSOL-ANM-01-003-032}
+
+[]{#MA-MIC-ANM-01-003-032}
 
 ### 32. ¿Qué muestra $\mathbb Q$ acerca de la conversa “arquimediano $\Rightarrow$ completo”?
 
@@ -1320,6 +1396,8 @@ $$
 $\mathbb Q$ conserva la propiedad arquimediana pero carece de la garantía general de existencia de supremos.
 
 []{#MA-MSOL-ANM-01-003-033}
+
+[]{#MA-MIC-ANM-01-003-033}
 
 ### 33. En una prueba futura que use $1/n<\varepsilon$, ¿qué dependencia estructural queda escondida detrás de esa elección de $n$?
 
@@ -1360,6 +1438,10 @@ No hay una nueva aplicación directa del principio del supremo en cada elección
 ## §3.5. Intervalos encajados: conservar un punto al refinar
 
 []{#MA-MSOL-ANM-01-003-034}
+
+[]{#MA-MIC-ANM-01-003-034}
+
+[]{#MA-SEC-ANM-01-003-005}
 
 ### 34. Si $I_{n+1}\subseteq I_n$, demuestra directamente que $a_n\le a_{n+1}$ y $b_{n+1}\le b_n$.
 
@@ -1414,6 +1496,8 @@ La inclusión de intervalos fuerza, pues, que los extremos izquierdos avancen ha
 **Uso de completitud:** ninguno. Sólo se usa pertenencia a intervalos cerrados e inclusión.
 
 []{#MA-MSOL-ANM-01-003-035}
+
+[]{#MA-MIC-ANM-01-003-035}
 
 ### 35. Demuestra por casos que $a_m\le b_n$ para cualesquiera $m,n\ge1$.
 
@@ -1471,6 +1555,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-036}
 
+[]{#MA-MIC-ANM-01-003-036}
+
 ### 36. ¿Por qué el conjunto $A=\{a_n:n\ge1\}$ es no vacío?
 
 Por definición,
@@ -1496,6 +1582,8 @@ Esta verificación es necesaria antes de invocar el principio del supremo.
 **Uso de completitud:** ninguno. Sólo se exhibe un elemento de $A$.
 
 []{#MA-MSOL-ANM-01-003-037}
+
+[]{#MA-MIC-ANM-01-003-037}
 
 ### 37. ¿Por qué **cada** $b_n$ es una cota superior de $A$?
 
@@ -1532,6 +1620,8 @@ Como $n$ era arbitrario, esto vale para **cada** extremo derecho $b_n$.
 **Uso de completitud:** ninguno. Esta acotación se deduce de la compatibilidad cruzada.
 
 []{#MA-MSOL-ANM-01-003-038}
+
+[]{#MA-MIC-ANM-01-003-038}
 
 ### 38. Localiza exactamente el único **Paso de completitud** en la prueba del teorema.
 
@@ -1587,6 +1677,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-039}
 
+[]{#MA-MIC-ANM-01-003-039}
+
 ### 39. Una vez definido $x=\sup A$, ¿qué propiedad del supremo da $a_n\le x$?
 
 Como
@@ -1619,6 +1711,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-040}
 
+[]{#MA-MIC-ANM-01-003-040}
+
 ### 40. ¿Qué propiedad del supremo da $x\le b_n$?
 
 Ya sabemos que, para cada $n$,
@@ -1644,6 +1738,8 @@ $$
 **Uso de completitud:** ninguno nuevo. Se usa únicamente la minimalidad del supremo ya existente.
 
 []{#MA-MSOL-ANM-01-003-041}
+
+[]{#MA-MIC-ANM-01-003-041}
 
 ### 41. ¿Por qué esas dos desigualdades permiten concluir $x\in I_n$ sólo porque $I_n$ es cerrado?
 
@@ -1692,6 +1788,8 @@ Así, las desigualdades no bastan para un intervalo abierto, pero sí bastan exa
 **Uso de completitud:** ninguno nuevo.
 
 []{#MA-MSOL-ANM-01-003-042}
+
+[]{#MA-MIC-ANM-01-003-042}
 
 ### 42. Verifica sin lenguaje de límites que los intervalos $J_n=(0,1/n)$ están encajados y tienen intersección vacía.
 
@@ -1771,6 +1869,8 @@ No se ha usado lenguaje de límites. La única dependencia no elemental es la pr
 
 []{#MA-MSOL-ANM-01-003-043}
 
+[]{#MA-MIC-ANM-01-003-043}
+
 ### 43. Da un ejemplo de intervalos cerrados encajados cuya intersección contenga más de un punto.
 
 Tomemos la familia constante
@@ -1804,6 +1904,8 @@ Por tanto, una familia cerrada y encajada puede satisfacer todas las hipótesis 
 
 []{#MA-MSOL-ANM-01-003-044}
 
+[]{#MA-MIC-ANM-01-003-044}
+
 ### 44. ¿Por qué el teorema de esta sección garantiza existencia pero no unicidad?
 
 La conclusión demostrada en §3.5 es únicamente
@@ -1836,6 +1938,8 @@ Así, las hipótesis de §3.5 son suficientes para **existencia**, pero no para 
 La unicidad requerirá una condición adicional de estrechamiento, reservada para §3.6; aquí no la usamos todavía.
 
 []{#MA-MSOL-ANM-01-003-045}
+
+[]{#MA-MIC-ANM-01-003-045}
 
 ### 45. ¿Qué diferencia de estatus lógico debemos conservar entre el caso numerable encajado de §3.5 y el principio general de intersección que aparecerá en §3.7?
 
@@ -1885,6 +1989,10 @@ Aquí sólo registramos esa diferencia de estatus, tal como la sección la anunc
 ## §3.6. Refinar hasta aislar un único punto
 
 []{#MA-MSOL-ANM-01-003-046}
+
+[]{#MA-MIC-ANM-01-003-046}
+
+[]{#MA-SEC-ANM-01-003-006}
 
 ### 46. ¿Por qué el estrechamiento arbitrario, por sí solo, garantiza como máximo un punto pero no existencia?
 
@@ -1945,6 +2053,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-047}
 
+[]{#MA-MIC-ANM-01-003-047}
+
 ### 47. Si $x\ne y$ pertenecieran a todos los intervalos, ¿por qué $\delta=|x-y|$ es una tolerancia legítima en la hipótesis de estrechamiento?
 
 La hipótesis de estrechamiento puede aplicarse a **cualquier** número real positivo $\varepsilon$.
@@ -1993,6 +2103,8 @@ No se ha elegido una tolerancia especial desde fuera del problema: la propia sep
 **Uso de completitud:** ninguno.
 
 []{#MA-MSOL-ANM-01-003-048}
+
+[]{#MA-MIC-ANM-01-003-048}
 
 ### 48. Si $x,y\in[a_n,b_n]$, demuestra que $|x-y|\le b_n-a_n$.
 
@@ -2070,6 +2182,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-049}
 
+[]{#MA-MIC-ANM-01-003-049}
+
 ### 49. ¿Dónde aparece la contradicción al elegir $n$ con $b_n-a_n<|x-y|$?
 
 Si $x$ e $y$ pertenecen a todos los intervalos, entonces también pertenecen al intervalo particular $I_n=[a_n,b_n]$ elegido mediante el estrechamiento.
@@ -2109,6 +2223,8 @@ $$
 **Uso de completitud:** ninguno nuevo. La contradicción usa sólo pertenencia al intervalo, distancia y estrechamiento.
 
 []{#MA-MSOL-ANM-01-003-050}
+
+[]{#MA-MIC-ANM-01-003-050}
 
 ### 50. ¿Qué parte del teorema “la intersección es un singleton” hereda completitud desde §3.5?
 
@@ -2162,6 +2278,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-051}
 
+[]{#MA-MIC-ANM-01-003-051}
+
 ### 51. ¿Por qué la prueba de unicidad no necesita una segunda aplicación del principio del supremo?
 
 Una vez que estudiamos la unicidad, el argumento ya no necesita producir un nuevo extremo.
@@ -2209,6 +2327,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-003-052}
+
+[]{#MA-MIC-ANM-01-003-052}
 
 ### 52. Explica por qué $I_n=[0,1]$ viola exactamente la hipótesis de estrechamiento.
 
@@ -2260,6 +2380,8 @@ Las demás hipótesis sí se cumplen: los intervalos son cerrados, no vacíos y 
 
 []{#MA-MSOL-ANM-01-003-053}
 
+[]{#MA-MIC-ANM-01-003-053}
+
 ### 53. ¿Por qué los intervalos abiertos $(0,1/n)$ muestran que estrechamiento no sustituye a la hipótesis de existencia?
 
 Consideremos
@@ -2306,6 +2428,8 @@ La existencia y la unicidad son capas lógicas distintas.
 
 []{#MA-MSOL-ANM-01-003-054}
 
+[]{#MA-MIC-ANM-01-003-054}
+
 ### 54. Verifica por inducción que tras $k$ bisecciones el ancho es $L/2^k$.
 
 Sea $L>0$ el ancho inicial del intervalo $J_0$.
@@ -2351,6 +2475,8 @@ $$
 **Uso de completitud:** ninguno; es una identidad finita obtenida por inducción.
 
 []{#MA-MSOL-ANM-01-003-055}
+
+[]{#MA-MIC-ANM-01-003-055}
 
 ### 55. Demuestra por inducción que $2^r\ge r+1$ para todo $r\ge1$.
 
@@ -2405,6 +2531,8 @@ $$
 **Uso de completitud:** ninguno.
 
 []{#MA-MSOL-ANM-01-003-056}
+
+[]{#MA-MIC-ANM-01-003-056}
 
 ### 56. Dado $\varepsilon>0$, reconstruye el argumento finito que produce $k$ con $L/2^k<\varepsilon$ sin usar notación de límite.
 
@@ -2463,6 +2591,8 @@ El argumento es enteramente finito: dada una tolerancia concreta, produce un ent
 **Dependencia estructural:** la elección de $m$ usa arquimedianidad; ésta fue derivada previamente de completitud, de modo que aquí la dependencia de completitud es indirecta.
 
 []{#MA-MSOL-ANM-01-003-057}
+
+[]{#MA-MIC-ANM-01-003-057}
 
 ### 57. Señala por separado dónde intervienen completitud, arquimedianidad, encajamiento y estrechamiento en el argumento de bisección.
 
@@ -2539,6 +2669,10 @@ No se usa convergencia como argumento en ninguna de estas tres cadenas.
 
 []{#MA-MSOL-ANM-01-003-058}
 
+[]{#MA-MIC-ANM-01-003-058}
+
+[]{#MA-SEC-ANM-01-003-007}
+
 ### 58. En la prueba `SUP ⇒ SEP`, ¿por qué la no vaciedad de $B$ permite demostrar que $A$ está acotado superiormente?
 
 La no vaciedad de $B$ permite **elegir un testigo concreto** $b_0\in B$.
@@ -2576,6 +2710,8 @@ Así, la no vaciedad de $B$ no es decorativa: proporciona el elemento que certif
 **Uso de completitud:** ninguno todavía. Aquí sólo se verifica la hipótesis de acotación superior.
 
 []{#MA-MSOL-ANM-01-003-059}
+
+[]{#MA-MIC-ANM-01-003-059}
 
 ### 59. Una vez definido $s=\sup A$, ¿por qué cada $b\in B$ debe satisfacer $s\le b$?
 
@@ -2619,6 +2755,8 @@ Junto con $a\le s$ para todo $a\in A$, esto demuestra que $s$ separa ambas clase
 
 []{#MA-MSOL-ANM-01-003-060}
 
+[]{#MA-MIC-ANM-01-003-060}
+
 ### 60. En la prueba `SEP ⇒ SUP`, ¿por qué un separador entre $A$ y $U(A)$ es automáticamente una cota superior de $A$?
 
 En la prueba **SEP $\Rightarrow$ SUP** aplicamos separación a las dos clases
@@ -2656,6 +2794,8 @@ No hace falta ninguna inferencia adicional: la propiedad de separación ya entre
 **Uso de completitud:** si SEP se toma como principio en esta dirección, no se invoca SUP; se está reconstruyendo SUP a partir de SEP.
 
 []{#MA-MSOL-ANM-01-003-061}
+
+[]{#MA-MIC-ANM-01-003-061}
 
 ### 61. ¿Qué parte de la desigualdad $a\le c\le u$ demuestra que $c$ es la **menor** cota superior?
 
@@ -2713,6 +2853,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-062}
 
+[]{#MA-MIC-ANM-01-003-062}
+
 ### 62. Formula con todos sus cuantificadores la condición cruzada de **GCI**.
 
 Sea una familia no vacía de intervalos cerrados
@@ -2749,6 +2891,8 @@ a_i\le c\le b_i
 $$
 
 []{#MA-MSOL-ANM-01-003-063}
+
+[]{#MA-MIC-ANM-01-003-063}
 
 ### 63. ¿Por qué la condición cruzada implica que cada intervalo $[a_i,b_i]$ es no vacío?
 
@@ -2798,6 +2942,8 @@ $$
 La no vaciedad individual de cada intervalo es así una consecuencia inmediata de la condición cruzada.
 
 []{#MA-MSOL-ANM-01-003-064}
+
+[]{#MA-MIC-ANM-01-003-064}
 
 ### 64. En la prueba `SEP ⇒ GCI`, explica por qué separar los conjuntos de extremos izquierdos y derechos produce un punto perteneciente a **todos** los intervalos.
 
@@ -2865,6 +3011,8 @@ La clave es que SEP controla simultáneamente **todos** los extremos izquierdos 
 
 []{#MA-MSOL-ANM-01-003-065}
 
+[]{#MA-MIC-ANM-01-003-065}
+
 ### 65. En la prueba `GCI ⇒ SEP`, ¿por qué usamos la familia indexada por $A\times B$?
 
 En **GCI $\Rightarrow$ SEP** partimos de dos conjuntos no vacíos $A,B\subseteq\mathbb R$ tales que
@@ -2920,6 +3068,8 @@ $$
 Por eso $A\times B$ es la indexación correcta.
 
 []{#MA-MSOL-ANM-01-003-066}
+
+[]{#MA-MIC-ANM-01-003-066}
 
 ### 66. Justifica cuidadosamente por qué un punto común a todos los intervalos $[a,b]$, con $(a,b)\in A\times B$, queda por encima de todo $A$ y por debajo de todo $B$.
 
@@ -3007,6 +3157,8 @@ Así el punto común es exactamente un separador.
 
 []{#MA-MSOL-ANM-01-003-067}
 
+[]{#MA-MIC-ANM-01-003-067}
+
 ### 67. ¿Cómo recupera directamente **GCI** el supremo de un conjunto $A$ usando la familia $[a,u]$ con $u\in U(A)$?
 
 Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente. Entonces
@@ -3081,6 +3233,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-068}
 
+[]{#MA-MIC-ANM-01-003-068}
+
 ### 68. ¿Por qué el caso numerable encajado de §3.5 satisface la condición cruzada?
 
 En §3.5, para una familia cerrada y encajada
@@ -3125,6 +3279,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-069}
 
+[]{#MA-MIC-ANM-01-003-069}
+
 ### 69. ¿Por qué en este libro escribimos `GCI ⇒ caso numerable encajado` y no cerramos automáticamente una equivalencia en sentido inverso?
 
 Porque lo demostrado en esta arquitectura es una implicación **desde la formulación general hacia un caso particular**:
@@ -3162,6 +3318,8 @@ $$
 y evita convertir “caso particular” en “formulación equivalente” por mera semejanza verbal.
 
 []{#MA-MSOL-ANM-01-003-070}
+
+[]{#MA-MIC-ANM-01-003-070}
 
 ### 70. Explica por qué el estrechamiento arbitrario pertenece a la capa de unicidad y no a la equivalencia básica `SUP ⇔ INF ⇔ SEP ⇔ GCI`.
 
@@ -3209,6 +3367,8 @@ no existencia.
 La existencia del punto proviene de la infraestructura de completitud; el estrechamiento elimina la posibilidad de que sobrevivan dos puntos diferentes. Por eso pertenece a una capa adicional y no constituye, sin más, una quinta formulación equivalente.
 
 []{#MA-MSOL-ANM-01-003-071}
+
+[]{#MA-MIC-ANM-01-003-071}
 
 ### 71. Para $S_2\subseteq\mathbb Q$, demuestra que un separador racional entre $S_2$ y sus cotas superiores racionales sería necesariamente $\sup_{\mathbb Q}S_2$.
 
@@ -3282,6 +3442,8 @@ Pero §3.1 estableció que ese supremo racional no existe. Por contradicción, t
 Así se traduce exactamente el fallo de SUP al lenguaje SEP.
 
 []{#MA-MSOL-ANM-01-003-072}
+
+[]{#MA-MIC-ANM-01-003-072}
 
 ### 72. Explica cómo el mismo fallo de $\mathbb Q$ puede leerse como ausencia de supremo, ausencia de separador y fallo de una intersección general de intervalos cerrados racionales.
 
@@ -3388,6 +3550,10 @@ La densidad de $\mathbb Q$ no corrige ninguno de estos fallos; lo que falta es l
 
 []{#MA-MSOL-ANM-01-003-073}
 
+[]{#MA-MIC-ANM-01-003-073}
+
+[]{#MA-SEC-ANM-01-003-008}
+
 ### 73. Da un ejemplo de una afirmación sobre supremos que use sólo la **definición** y no la garantía general de existencia.
 
 Un ejemplo es la afirmación siguiente:
@@ -3426,6 +3592,8 @@ $$
 es una afirmación de **Nivel 1: orden y definición**, no un nuevo gasto de completitud.
 
 []{#MA-MSOL-ANM-01-003-074}
+
+[]{#MA-MIC-ANM-01-003-074}
 
 ### 74. En la prueba de existencia del ínfimo, ¿dónde se encuentra exactamente el uso heredado del principio del supremo?
 
@@ -3483,6 +3651,8 @@ no en las inversiones posteriores de desigualdad ni en la definición $i=-s$.
 
 []{#MA-MSOL-ANM-01-003-075}
 
+[]{#MA-MIC-ANM-01-003-075}
+
 ### 75. En la prueba de arquimedianidad, separa el único paso que usa completitud de los pasos puramente aritméticos.
 
 La prueba comienza suponiendo, para obtener una contradicción, que
@@ -3535,6 +3705,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-076}
 
+[]{#MA-MIC-ANM-01-003-076}
+
 ### 76. ¿Por qué usar después la afirmación $1/n<\varepsilon$ puede constituir un uso **indirecto** de completitud?
 
 La afirmación pertinente es
@@ -3569,6 +3741,8 @@ Así, una prueba que invoque sólo el último eslabón puede no tener un **uso d
 Eso es precisamente lo que significa encapsular una dependencia en un teorema previo.
 
 []{#MA-MSOL-ANM-01-003-077}
+
+[]{#MA-MIC-ANM-01-003-077}
 
 ### 77. En el teorema de intervalos cerrados encajados, identifica las líneas de orden y la línea exacta de existencia proporcionada por completitud.
 
@@ -3640,6 +3814,8 @@ La completitud se gasta exactamente una vez: en producir $x=\sup A$.
 
 []{#MA-MSOL-ANM-01-003-078}
 
+[]{#MA-MIC-ANM-01-003-078}
+
 ### 78. ¿Por qué la unicidad por estrechamiento no necesita otra aplicación del principio del supremo?
 
 Supongamos que ya existen dos puntos
@@ -3703,6 +3879,8 @@ no consume completitud de forma directa.
 
 []{#MA-MSOL-ANM-01-003-079}
 
+[]{#MA-MIC-ANM-01-003-079}
+
 ### 79. Explica cómo una sola prueba puede contener a la vez una dependencia directa, una dependencia indirecta y pasos puramente elementales.
 
 La construcción por bisección de §3.6 proporciona un ejemplo completo.
@@ -3753,6 +3931,8 @@ Clasificar la demostración completa con una única etiqueta ocultaría esta est
 
 []{#MA-MSOL-ANM-01-003-080}
 
+[]{#MA-MIC-ANM-01-003-080}
+
 ### 80. ¿Por qué `SUP`, `INF`, `SEP` y `GCI` deben entenderse como interfaces equivalentes y no como cuatro axiomas acumulativos?
 
 Porque en §3.3 y §3.7 se demostraron implicaciones suficientes para obtener
@@ -3800,6 +3980,8 @@ $$
 Una prueba futura puede elegir la interfaz más natural para su problema sin multiplicar los supuestos estructurales.
 
 []{#MA-MSOL-ANM-01-003-081}
+
+[]{#MA-MIC-ANM-01-003-081}
 
 ### 81. ¿Qué propiedades relevantes conserva $\mathbb Q$ y qué garantía de existencia general le falta?
 
@@ -3852,6 +4034,8 @@ Por equivalencia, también pueden fallar allí las garantías generales SEP y GC
 
 []{#MA-MSOL-ANM-01-003-082}
 
+[]{#MA-MIC-ANM-01-003-082}
+
 ### 82. ¿Por qué el hecho de que $\mathbb Q$ sea denso no repara su falta de completitud?
 
 La densidad responde a una pregunta local:
@@ -3883,6 +4067,8 @@ $$
 La densidad permite refinar entre racionales existentes, pero no crea el objeto que falta cuando una familia completa de restricciones exige una menor cota superior no racional.
 
 []{#MA-MSOL-ANM-01-003-083}
+
+[]{#MA-MIC-ANM-01-003-083}
 
 ### 83. Distingue el papel futuro de C07, C10 y C23 respecto de C03 sin demostrar todavía ninguno de sus resultados.
 
@@ -3916,6 +4102,8 @@ $$
 
 []{#MA-MSOL-ANM-01-003-084}
 
+[]{#MA-MIC-ANM-01-003-084}
+
 ### 84. Formula con tus propias palabras la idea de «recta sin huecos» sin usar como definición ni «recta continua» ni «tener muchísimos puntos».
 
 Una formulación compatible con lo demostrado en C03 es ésta:
@@ -3945,3 +4133,5 @@ La síntesis conceptual de C03 es, por tanto:
 $$
 \boxed{\text{la completitud es infraestructura de existencia}.}
 $$
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)

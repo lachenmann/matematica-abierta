@@ -1,5 +1,5 @@
 ---
-title: "Soluciones de microcontroles — Capítulo 1"
+title: Soluciones de microcontroles — Capítulo 1
 content-id: MA-BCH-0089
 content-type: book-chapter
 collection: PM-ANA
@@ -9,33 +9,42 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
+topics:
+- analisis-real
+- orden
+- topologia
 prerequisites: []
-related: [MA-BOK-0010]
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C01; referencias de contraste en la portada del libro."
+  - ANM-C01_MICROCONTROLES_SOLUCIONES.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.md)
-
-# Soluciones de microcontroles — Capítulo 1
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html)
 
 ## §1.1. La misma recta, varias estructuras
 
 []{#MA-MSOL-ANM-01-001-001}
+
+[]{#MA-MIC-ANM-01-001-001}
+
+[]{#MA-SEC-ANM-01-001-001}
 
 ### 1. $x<y$
 
 La estructura que actúa en primer plano es el **orden**. La relación $x<y$ afirma que $x$ precede a $y$ en el orden usual de $\mathbb R$; no especifica cuánto los separa ni exige realizar una operación algebraica entre ellos.
 
 []{#MA-MSOL-ANM-01-001-002}
+
+[]{#MA-MIC-ANM-01-001-002}
 
 ### 2. «$y$ está entre $x$ y $z$»
 
@@ -48,6 +57,8 @@ $$
 Más adelante esta relación podrá reconocerse también mediante distancias, pero en este punto del capítulo su contenido primario es posicional: indica dónde está $y$ respecto de los extremos.
 
 []{#MA-MSOL-ANM-01-001-003}
+
+[]{#MA-MIC-ANM-01-001-003}
 
 ### 3. «$x$ y $y$ están separados por la misma cantidad que $u$ y $v$»
 
@@ -67,11 +78,15 @@ La orientación de cada par no importa: sólo se compara cuánto separa a sus pu
 
 []{#MA-MSOL-ANM-01-001-004}
 
+[]{#MA-MIC-ANM-01-001-004}
+
 ### 4. $x+y=z$
 
 La estructura que aparece en primer plano es la **algebraica**. La igualdad relaciona los tres números mediante la operación de suma. Por sí sola no afirma cuál es mayor ni menor, ni cuánto separa a un par de puntos en la recta.
 
 []{#MA-MSOL-ANM-01-001-005}
+
+[]{#MA-MIC-ANM-01-001-005}
 
 ### 5. «Al reflejar una configuración, cambian izquierda y derecha pero no las separaciones»
 
@@ -83,6 +98,10 @@ La propia reflexión puede describirse algebraicamente mediante $x\mapsto -x$, p
 
 []{#MA-MSOL-ANM-01-001-006}
 
+[]{#MA-MIC-ANM-01-001-006}
+
+[]{#MA-SEC-ANM-01-001-002}
+
 ### 6. $x\in(-3,2)$
 
 La notación de intervalo indica que $x$ queda estrictamente entre $-3$ y $2$. Como ambos extremos aparecen con paréntesis, ninguno pertenece al conjunto. Por tanto,
@@ -92,6 +111,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-001-007}
+
+[]{#MA-MIC-ANM-01-001-007}
 
 ### 7. $x\in[0,5)$
 
@@ -103,6 +124,8 @@ $$
 
 []{#MA-MSOL-ANM-01-001-008}
 
+[]{#MA-MIC-ANM-01-001-008}
+
 ### 8. $-1<x\le4$
 
 La desigualdad estricta en $-1$ excluye ese extremo; la desigualdad no estricta en $4$ lo incluye. En notación de intervalo,
@@ -112,6 +135,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-001-009}
+
+[]{#MA-MIC-ANM-01-001-009}
 
 ### 9. $x>6$
 
@@ -124,6 +149,8 @@ $$
 El símbolo $\infty$ siempre aparece con paréntesis porque no es un número real que pueda pertenecer al intervalo.
 
 []{#MA-MSOL-ANM-01-001-010}
+
+[]{#MA-MIC-ANM-01-001-010}
 
 ### 10. $x\le0$
 
@@ -139,6 +166,10 @@ De nuevo, $-\infty$ lleva paréntesis porque no es un punto de $\mathbb R$; el c
 
 []{#MA-MSOL-ANM-01-001-011}
 
+[]{#MA-MIC-ANM-01-001-011}
+
+[]{#MA-SEC-ANM-01-001-003}
+
 ### 11. Si $|x|=6$, ¿qué sabemos sobre la posición de $x$?
 
 La condición dice que $x$ está exactamente a $6$ unidades del origen. En la recta hay dos puntos con esa separación, uno a cada lado de $0$:
@@ -150,6 +181,8 @@ $$
 El valor absoluto determina la distancia al origen, pero no la orientación: saber $|x|=6$ no permite elegir entre derecha e izquierda.
 
 []{#MA-MSOL-ANM-01-001-012}
+
+[]{#MA-MIC-ANM-01-001-012}
 
 ### 12. Si $|x|<2$, ¿en qué parte de la recta puede estar $x$?
 
@@ -169,6 +202,8 @@ Los extremos no pertenecen porque en $x=\pm2$ la distancia al origen vale exacta
 
 []{#MA-MSOL-ANM-01-001-013}
 
+[]{#MA-MIC-ANM-01-001-013}
+
 ### 13. ¿Qué diferencia de información hay entre $x-a$ y $|x-a|$?
 
 La cantidad $x-a$ es un **desplazamiento orientado** desde $a$ hasta $x$: su signo indica de qué lado de $a$ queda $x$, y su magnitud indica cuánto se ha desplazado.
@@ -178,6 +213,8 @@ En cambio, $|x-a|$ conserva sólo el tamaño de ese desplazamiento. Es siempre n
 Así, al pasar de $x-a$ a $|x-a|$ conservamos cuánto separa a los puntos, pero perdemos la información izquierda–derecha.
 
 []{#MA-MSOL-ANM-01-001-014}
+
+[]{#MA-MIC-ANM-01-001-014}
 
 ### 14. Si $|x-a|=0$, ¿qué debe ocurrir?
 
@@ -196,6 +233,10 @@ Por tanto, el único punto situado a distancia cero del centro $a$ es el propio 
 ## §1.4. Distancia entre dos puntos reales
 
 []{#MA-MSOL-ANM-01-001-015}
+
+[]{#MA-MIC-ANM-01-001-015}
+
+[]{#MA-SEC-ANM-01-001-004}
 
 ### 15. ¿Por qué $d(2,7)=d(7,2)$ aunque $2-7$ y $7-2$ tengan signos distintos?
 
@@ -221,6 +262,8 @@ $$
 
 []{#MA-MSOL-ANM-01-001-016}
 
+[]{#MA-MIC-ANM-01-001-016}
+
 ### 16. Si $d(x,y)=0$, ¿qué podemos concluir y qué propiedad acabamos de usar?
 
 Podemos concluir que los dos puntos coinciden:
@@ -239,6 +282,8 @@ La propiedad utilizada es la **identidad de los puntos a distancia cero**: la di
 
 []{#MA-MSOL-ANM-01-001-017}
 
+[]{#MA-MIC-ANM-01-001-017}
+
 ### 17. ¿Qué afirma en palabras $d(x,z)\le d(x,y)+d(y,z)$?
 
 Afirma que ir directamente de $x$ a $z$ nunca requiere más longitud que ir de $x$ a $z$ pasando primero por $y$.
@@ -252,6 +297,8 @@ $$
 suma las longitudes de los dos tramos de la ruta quebrada $x\to y\to z$. La **desigualdad triangular** dice, por tanto, que introducir un punto intermedio no puede acortar la distancia directa entre los extremos.
 
 []{#MA-MSOL-ANM-01-001-018}
+
+[]{#MA-MIC-ANM-01-001-018}
 
 ### 18. ¿Qué controla la desigualdad $\bigl||x|-|y|\bigr|\le |x-y|$?
 
@@ -272,6 +319,10 @@ Así, si $x$ e $y$ están muy cerca, sus distancias al origen también deben ser
 ## §1.5. La desigualdad triangular y la geometría de «estar entre»
 
 []{#MA-MSOL-ANM-01-001-019}
+
+[]{#MA-MIC-ANM-01-001-019}
+
+[]{#MA-SEC-ANM-01-001-005}
 
 ### 19. Si $x=-2$, $z=5$ y $y=1$, ¿esperamos igualdad o desigualdad estricta?
 
@@ -296,6 +347,8 @@ $$
 La ruta que pasa por $y=1$ no contiene retroceso: recorre exactamente el mismo tramo que la ruta directa.
 
 []{#MA-MSOL-ANM-01-001-020}
+
+[]{#MA-MIC-ANM-01-001-020}
 
 ### 20. Si $x=-2$, $z=5$ y $y=8$, ¿dónde aparece el recorrido extra?
 
@@ -323,6 +376,8 @@ Esos $6$ corresponden exactamente al tramo de longitud $3$ entre $5$ y $8$, reco
 
 []{#MA-MSOL-ANM-01-001-021}
 
+[]{#MA-MIC-ANM-01-001-021}
+
 ### 21. Si $d(x,z)=d(x,y)+d(y,z)$, ¿qué podemos afirmar sobre la posición de $y$ sin saber cuál de $x$ o $z$ está a la izquierda?
 
 Podemos afirmar que $y$ está **entre** $x$ y $z$. La formulación que no presupone orientación es
@@ -334,6 +389,8 @@ $$
 Ésta es precisamente la caracterización del caso de igualdad de la desigualdad triangular en la recta: la ruta $x\to y\to z$ no añade longitud si y sólo si $y$ pertenece al tramo cerrado determinado por los extremos.
 
 []{#MA-MSOL-ANM-01-001-022}
+
+[]{#MA-MIC-ANM-01-001-022}
 
 ### 22. ¿Por qué los casos $y=x$ y $y=z$ deben formar parte de la caracterización?
 
@@ -373,6 +430,10 @@ $$
 
 []{#MA-MSOL-ANM-01-001-023}
 
+[]{#MA-MIC-ANM-01-001-023}
+
+[]{#MA-SEC-ANM-01-001-006}
+
 ### 23. ¿Qué cambia en $B(a,r)$ si sustituimos $a$ por $a+3$ y mantenemos fijo $r$?
 
 La bola original es
@@ -397,6 +458,8 @@ Ambos extremos se desplazan $3$ unidades hacia la derecha. El radio no cambia, d
 
 []{#MA-MSOL-ANM-01-001-024}
 
+[]{#MA-MIC-ANM-01-001-024}
+
 ### 24. ¿Qué cambia si dejamos fijo $a$ y duplicamos $r$?
 
 Con radio $r$ tenemos
@@ -414,6 +477,8 @@ $$
 El centro $a$ permanece fijo, pero cada frontera queda ahora al doble de distancia del centro. La ventana se ensancha simétricamente en ambas direcciones.
 
 []{#MA-MSOL-ANM-01-001-025}
+
+[]{#MA-MIC-ANM-01-001-025}
 
 ### 25. ¿Por qué $a-r$ y $a+r$ quedan a la misma distancia del centro?
 
@@ -441,6 +506,8 @@ Los dos puntos son simétricos respecto del centro: uno está a la izquierda y e
 
 []{#MA-MSOL-ANM-01-001-026}
 
+[]{#MA-MIC-ANM-01-001-026}
+
 ### 26. ¿Por qué esos dos puntos no pertenecen a $B(a,r)$?
 
 La definición exige una desigualdad estricta:
@@ -466,6 +533,8 @@ $$
 Ésta es precisamente la razón por la que la bola abierta corresponde al intervalo abierto $(a-r,a+r)$.
 
 []{#MA-MSOL-ANM-01-001-027}
+
+[]{#MA-MIC-ANM-01-001-027}
 
 ### 27. ¿Qué falla si intentamos usar $r=0$ como radio de una bola abierta?
 
@@ -494,6 +563,10 @@ Lo que falla no es la lógica de la desigualdad, sino la interpretación que bus
 ## §1.7. Traducir entre orden, distancia y tolerancia
 
 []{#MA-MSOL-ANM-01-001-028}
+
+[]{#MA-MIC-ANM-01-001-028}
+
+[]{#MA-SEC-ANM-01-001-007}
 
 ### 28. Si $d(x,a)\le r$, ¿qué intervalo describe la condición?
 
@@ -525,6 +598,8 @@ Los extremos se incluyen porque la comparación es $\le$.
 
 []{#MA-MSOL-ANM-01-001-029}
 
+[]{#MA-MIC-ANM-01-001-029}
+
 ### 29. Si $x\in(a-r,a+r)$, ¿qué desigualdad de distancia satisface $x$?
 
 La pertenencia al intervalo abierto equivale a
@@ -555,6 +630,8 @@ Así, el intervalo abierto alrededor de $a$ describe exactamente los puntos situ
 
 []{#MA-MSOL-ANM-01-001-030}
 
+[]{#MA-MIC-ANM-01-001-030}
+
 ### 30. Si $x\in(-\infty,a-r)\cup(a+r,\infty)$, ¿qué podemos afirmar sobre $|x-a|$?
 
 La unión indica que $x$ queda fuera de las dos fronteras $a-r$ y $a+r$:
@@ -574,6 +651,8 @@ $$
 Equivalentemente, $d(x,a)>r$: el punto está fuera de la región de radio $r$ alrededor de $a$.
 
 []{#MA-MSOL-ANM-01-001-031}
+
+[]{#MA-MIC-ANM-01-001-031}
 
 ### 31. Si $|x-a|\ge r$, ¿qué ocurre con los puntos $a-r$ y $a+r$?
 
@@ -598,6 +677,8 @@ $$
 Ésta es la diferencia precisa entre $|x-a|>r$ y $|x-a|\ge r$: la segunda incluye las dos fronteras.
 
 []{#MA-MSOL-ANM-01-001-032}
+
+[]{#MA-MIC-ANM-01-001-032}
 
 ### 32. ¿Qué ocurre al aumentar $r$ en $d(x,a)<r$ y en $d(x,a)>r$?
 
@@ -637,6 +718,10 @@ Las dos familias responden de manera opuesta al mismo cambio de parámetro: aume
 
 []{#MA-MSOL-ANM-01-001-033}
 
+[]{#MA-MIC-ANM-01-001-033}
+
+[]{#MA-SEC-ANM-01-001-008}
+
 ### 33. Si trasladamos todos los puntos por $c$, ¿qué ocurre con el orden y con las distancias?
 
 Ambas estructuras se preservan. Si $x<y$, entonces
@@ -654,6 +739,8 @@ $$
 Por tanto, una traslación desplaza toda la configuración como un bloque rígido: **conserva el orden y conserva exactamente todas las distancias**.
 
 []{#MA-MSOL-ANM-01-001-034}
+
+[]{#MA-MIC-ANM-01-001-034}
 
 ### 34. Si $\lambda=3$, ¿qué ocurre con una distancia de longitud $2$? ¿Y con el orden?
 
@@ -679,6 +766,8 @@ Así, las distancias se **triplican** y el orden se **preserva**.
 
 []{#MA-MSOL-ANM-01-001-035}
 
+[]{#MA-MIC-ANM-01-001-035}
+
 ### 35. Si $\lambda=-3$, ¿qué cambia respecto del caso anterior?
 
 La magnitud del factor de escala sigue siendo $|-3|=3$, de modo que una distancia de longitud $2$ vuelve a convertirse en
@@ -696,6 +785,8 @@ $$
 Por tanto, **las distancias se triplican igual que antes, pero el orden se invierte**. La métrica registra $|\lambda|$; el orden, en cambio, distingue el signo de $\lambda$.
 
 []{#MA-MSOL-ANM-01-001-036}
+
+[]{#MA-MIC-ANM-01-001-036}
 
 ### 36. ¿Por qué $x\mapsto -x$ preserva distancias y, sin embargo, invierte el orden?
 
@@ -716,6 +807,8 @@ $$
 La reflexión muestra así que **preservar distancias no equivale a preservar orientación**: la métrica permanece intacta mientras izquierda y derecha se intercambian.
 
 []{#MA-MSOL-ANM-01-001-037}
+
+[]{#MA-MIC-ANM-01-001-037}
 
 ### 37. ¿Por qué $\lambda=0$ no debe clasificarse como una transformación que «invierte» el orden?
 
@@ -747,6 +840,8 @@ $$
 
 []{#MA-MSOL-ANM-01-001-038}
 
+[]{#MA-MIC-ANM-01-001-038}
+
 ### 38. ¿Qué información podemos perder aunque conozcamos todas las distancias de una configuración?
 
 Podemos perder la **orientación izquierda–derecha**. Una configuración y su reflejo respecto del origen tienen exactamente las mismas distancias, porque
@@ -762,3 +857,5 @@ x<y\iff -x>-y.
 $$
 
 Así, conocer todas las separaciones permite recuperar mucha información métrica —por ejemplo, qué puntos están entre otros mediante igualdades de distancias—, pero no permite distinguir una configuración de su imagen reflejada. **La métrica no determina por sí sola una orientación de la recta.**
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html)

@@ -1,5 +1,5 @@
 ---
-title: "Capítulo 2 — Cotas, extremos y barreras"
+title: Capítulo 2 — Cotas, extremos y barreras
 content-id: MA-BCH-0084
 content-type: book-chapter
 collection: PM-ANA
@@ -9,21 +9,29 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
-prerequisites: [MA-BCH-0083]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- orden
+- topologia
+prerequisites:
+- MA-BCH-0083
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C02; referencias de contraste en la portada del libro."
+  - ANM-C02.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.md)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html)
+
+[]{#MA-SEC-ANM-01-002-008}
 
 En el capítulo anterior aprendimos a mirar la recta real con un poco más de cuidado. Ya no era solamente el lugar donde colocamos números: distinguimos qué información pertenece al orden, qué información pertenece a la distancia y cómo ambas estructuras se coordinan en $\mathbb R$. Ahora vamos a usar sólo una parte de esa infraestructura —el orden— para plantear una pregunta nueva.
 
@@ -161,11 +169,9 @@ Acabamos de obtener una primera propiedad estructural:
 
 Dualmente, si $l$ es una cota inferior de $A$ y $m\le l$, entonces $m$ también es una cota inferior.
 
-La figura C02-F01 hace visible precisamente esta movilidad de las barreras.
+La figura [C02-F01](#fig-anm-c02-f01) hace visible precisamente esta movilidad de las barreras.
 
-![](../../assets/books/anm/C02/C02-F01.svg){fig-alt="Dos paneles muestran cotas superiores e inferiores válidas e inválidas alrededor de un conjunto finito sobre la recta. Las barreras válidas conservan su propiedad al moverse en la dirección exterior y pueden perderla al cruzar elementos del conjunto."}
-
-*Figura C02-F01. La validez de una barrera depende de su posición respecto del conjunto: una cota superior sigue siéndolo al desplazarse a la derecha y una inferior al desplazarse a la izquierda.*
+![La validez de una barrera depende de su posición respecto del conjunto: una cota superior sigue siéndolo al desplazarse a la derecha y una inferior al desplazarse a la izquierda.](../../assets/books/anm/C02/C02-F01.svg){#fig-anm-c02-f01 fig-alt="Dos paneles muestran cotas superiores e inferiores válidas e inválidas alrededor de un conjunto finito sobre la recta. Las barreras válidas conservan su propiedad al moverse en la dirección exterior y pueden perderla al cruzar elementos del conjunto."}
 
 La idea visual no reemplaza la definición. Una barrera dibujada puede parecer válida en un caso particular; la afirmación matemática exige verificar la desigualdad para **todo** elemento del conjunto.
 
@@ -490,11 +496,9 @@ $$
 \min A=-2.
 $$
 
-La figura C02-F02 hace visible esta diferencia sin convertirla en una mera cuestión de apariencia gráfica.
+La figura [C02-F02](#fig-anm-c02-f02) hace visible esta diferencia sin convertirla en una mera cuestión de apariencia gráfica.
 
-![](../../assets/books/anm/C02/C02-F02.svg){fig-alt="Dos intervalos comparan extremos cerrados y abiertos. En el intervalo cerrado los extremos pertenecen y son mínimo y máximo; en el abierto las mismas fronteras no pertenecen y no son extremos alcanzados."}
-
-*Figura C02-F02. Máximo y mínimo combinan dos condiciones: ser barrera y pertenecer al conjunto; los puntos llenos y huecos separan visualmente ambas condiciones.*
+![Máximo y mínimo combinan dos condiciones: ser barrera y pertenecer al conjunto; los puntos llenos y huecos separan visualmente ambas condiciones.](../../assets/books/anm/C02/C02-F02.svg){#fig-anm-c02-f02 fig-alt="Dos intervalos comparan extremos cerrados y abiertos. En el intervalo cerrado los extremos pertenecen y son mínimo y máximo; en el abierto las mismas fronteras no pertenecen y no son extremos alcanzados."}
 
 El dibujo puede ayudarnos a ver la diferencia entre una barrera exterior y una barrera alcanzada. Pero la condición matemática sigue siendo la conjunción exacta
 
@@ -835,11 +839,9 @@ $$
 
 Estas identidades muestran que, cuando el extremo existe, toda la familia de barreras queda determinada por una sola posición crítica.
 
-La figura C02-F03 separa visualmente los tres objetos que intervienen aquí: el conjunto original $A$, el conjunto $U(A)$ de cotas superiores y el conjunto $L(A)$ de cotas inferiores.
+La figura [C02-F03](#fig-anm-c02-f03) separa visualmente los tres objetos que intervienen aquí: el conjunto original $A$, el conjunto $U(A)$ de cotas superiores y el conjunto $L(A)$ de cotas inferiores.
 
-![](../../assets/books/anm/C02/C02-F03.svg){fig-alt="Tres carriles alineados muestran A=(2,5), L(A)=(-infinito,2] y U(A)=[5,infinito). Las marcas 2 y 5 son respectivamente el máximo de L(A) y el mínimo de U(A), aunque sean puntos abiertos en A."}
-
-*Figura C02-F03. El supremo y el ínfimo son extremos de las familias de cotas U(A) y L(A), no condiciones de pertenencia al conjunto original.*
+![El supremo y el ínfimo son extremos de las familias de cotas U(A) y L(A), no condiciones de pertenencia al conjunto original.](../../assets/books/anm/C02/C02-F03.svg){#fig-anm-c02-f03 fig-alt="Tres carriles alineados muestran A=(2,5), L(A)=(-infinito,2] y U(A)=[5,infinito). Las marcas 2 y 5 son respectivamente el máximo de L(A) y el mínimo de U(A), aunque sean puntos abiertos en A."}
 
 La separación de carriles es matemáticamente importante: un punto puede ser extremo de $U(A)$ sin que eso diga todavía si pertenece a $A$.
 
@@ -1083,11 +1085,9 @@ $$
 
 mientras que $B$ no tiene máximo.
 
-La figura C02-F04 hace visible exactamente esta invariancia de la barrera y el cambio de pertenencia.
+La figura [C02-F04](#fig-anm-c02-f04) hace visible exactamente esta invariancia de la barrera y el cambio de pertenencia.
 
-![](../../assets/books/anm/C02/C02-F04.svg){fig-alt="Dos intervalos alineados, uno cerrado en s y otro abierto en s, comparten el mismo supremo. Sólo el intervalo que contiene s tiene máximo."}
-
-*Figura C02-F04. Cerrar o abrir la barrera extremal puede cambiar la existencia del máximo sin cambiar el supremo.*
+![Cerrar o abrir la barrera extremal puede cambiar la existencia del máximo sin cambiar el supremo.](../../assets/books/anm/C02/C02-F04.svg){#fig-anm-c02-f04 fig-alt="Dos intervalos alineados, uno cerrado en s y otro abierto en s, comparten el mismo supremo. Sólo el intervalo que contiene s tiene máximo."}
 
 El punto esencial no es que un extremo se dibuje lleno o hueco. Esa diferencia gráfica sólo codifica una afirmación lógica:
 
@@ -1312,11 +1312,9 @@ Esto no significa necesariamente que $s$ pertenezca a $A$. Si $s\in A$, podemos 
 
 Por eso esta formulación describe tanto extremos alcanzados como no alcanzados.
 
-La figura C02-F05 hace visible exactamente esta idea, sin convertir las distintas elecciones de $\varepsilon$ en una sucesión.
+La figura [C02-F05](#fig-anm-c02-f05) hace visible exactamente esta idea, sin convertir las distintas elecciones de $\varepsilon$ en una sucesión.
 
-![](../../assets/books/anm/C02/C02-F05.svg){fig-alt="Tres franjas de distinto ancho junto a una misma barrera s muestran un testigo de A dentro de cada una. Las franjas son instancias independientes y no forman una sucesión."}
-
-*Figura C02-F05. La caracterización epsilon dice que ninguna franja positiva inmediatamente bajo el supremo puede quedar vacía de puntos del conjunto.*
+![La caracterización epsilon dice que ninguna franja positiva inmediatamente bajo el supremo puede quedar vacía de puntos del conjunto.](../../assets/books/anm/C02/C02-F05.svg){#fig-anm-c02-f05 fig-alt="Tres franjas de distinto ancho junto a una misma barrera s muestran un testigo de A dentro de cada una. Las franjas son instancias independientes y no forman una sucesión."}
 
 El dibujo puede mostrar varias anchuras posibles, pero la afirmación matemática no habla de una lista de anchuras ni de puntos elegidos de antemano. El orden de los cuantificadores es esencial:
 
@@ -1707,11 +1705,9 @@ cuando ambos ínfimos existen.
 
 Al agregar puntos, la barrera inferior extremal no puede desplazarse hacia la derecha. Puede moverse hacia la izquierda o permanecer fija.
 
-La figura C02-F06 muestra primero la inclusión entre conjuntos de cotas y sólo después el movimiento posible de las barreras extremales.
+La figura [C02-F06](#fig-anm-c02-f06) muestra primero la inclusión entre conjuntos de cotas y sólo después el movimiento posible de las barreras extremales.
 
-![](../../assets/books/anm/C02/C02-F06.svg){fig-alt="Tres paneles comparan una inclusión estricta con el mismo supremo, otra con supremo desplazado y la adición de un punto dentro o fuera del intervalo entre ínfimo y supremo."}
-
-*Figura C02-F06. Al ampliar un conjunto, las familias de cotas se restringen; las barreras extremales pueden permanecer o desplazarse según dónde aparezcan los nuevos puntos.*
+![Al ampliar un conjunto, las familias de cotas se restringen; las barreras extremales pueden permanecer o desplazarse según dónde aparezcan los nuevos puntos.](../../assets/books/anm/C02/C02-F06.svg){#fig-anm-c02-f06 fig-alt="Tres paneles comparan una inclusión estricta con el mismo supremo, otra con supremo desplazado y la adición de un punto dentro o fuera del intervalo entre ínfimo y supremo."}
 
 La secuencia lógica es importante. No estamos memorizando dos desigualdades aisladas: primero comprendemos cómo la inclusión modifica las **familias de cotas** y después leemos qué ocurre con sus extremos.
 
@@ -1889,11 +1885,9 @@ $$
 
 Estas identidades no son reglas algebraicas independientes. Expresan simplemente que la reflexión invierte el orden y, con él, intercambia barreras superiores e inferiores.
 
-La figura C02-F07 acompaña esta dualidad mediante la reflexión de la recta, sin sustituir la justificación algebraica de la inversión del orden.
+La figura [C02-F07](analisis-para-matematicos-capitulo-3-completitud.html#fig-anm-c02-f07) acompaña esta dualidad mediante la reflexión de la recta, sin sustituir la justificación algebraica de la inversión del orden.
 
-![](../../assets/books/anm/C02/C02-F07.svg){fig-alt="Dos rectas muestran A=[-1,4) y -A=(-4,1]. Flechas de reflexión relacionan inf A con sup(-A) y sup A con inf(-A)."}
-
-*Figura C02-F07. La reflexión x↦−x invierte el orden y convierte cotas inferiores en superiores, intercambiando ínfimo y supremo con cambio de signo.*
+![La reflexión x↦−x invierte el orden y convierte cotas inferiores en superiores, intercambiando ínfimo y supremo con cambio de signo.](../../assets/books/anm/C02/C02-F07.svg){#fig-anm-c02-f07 fig-alt="Dos rectas muestran A=[-1,4) y -A=(-4,1]. Flechas de reflexión relacionan inf A con sup(-A) y sup A con inf(-A)."}
 
 ### Qué no estamos haciendo todavía
 
@@ -2037,11 +2031,9 @@ y el mínimo de ese conjunto es $1$.
 
 Pero ese cálculo particular no demuestra una afirmación general sobre **todo** subconjunto no vacío y acotado superiormente de $\mathbb R$.
 
-La figura C02-F08 fija precisamente esta separación entre definición y existencia.
+La figura [C02-F08](#fig-anm-c02-f08) fija precisamente esta separación entre definición y existencia.
 
-![](../../assets/books/anm/C02/C02-F08.svg){fig-alt="Diagrama vertical de tres niveles: definición, verificación particular y garantía general. En el último nivel permanece abierta la pregunta min U(A)?, conectada mediante una flecha discontinua con C03 completitud."}
-
-*Figura C02-F08. Definir el supremo y verificarlo en un caso concreto no equivalen a disponer de una garantía general de existencia; esa última puerta queda para C03.*
+![Definir el supremo y verificarlo en un caso concreto no equivalen a disponer de una garantía general de existencia; esa última puerta queda para C03.](../../assets/books/anm/C02/C02-F08.svg){#fig-anm-c02-f08 fig-alt="Diagrama vertical de tres niveles: definición, verificación particular y garantía general. En el último nivel permanece abierta la pregunta min U(A)?, conectada mediante una flecha discontinua con C03 completitud."}
 
 El signo de interrogación es parte del contenido matemático: la figura no debe sugerir que toda familia de cotas posee automáticamente una barrera extremal.
 
@@ -2324,7 +2316,7 @@ Lo que todavía no podemos afirmar como resultado disponible en C02 es:
 
 Ese salto es precisamente el problema de existencia.
 
-La figura C02-F08, ya introducida en §2.7, sirve también como mapa de esta transición: primero hay que tener cotas y después hay que justificar que entre ellas aparezca una cota extremal.
+La figura [C02-F08](#fig-anm-c02-f08), ya introducida en §2.7, sirve también como mapa de esta transición: primero hay que tener cotas y después hay que justificar que entre ellas aparezca una cota extremal.
 
 El esquema debe seguir conservando el signo de interrogación en
 
@@ -2420,4 +2412,6 @@ Pero deja abierta, deliberadamente, una sola necesidad central:
 
 C02 termina aquí. La respuesta comienza en el capítulo siguiente.
 
-[← Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Capítulo 3 →](analisis-para-matematicos-capitulo-3-completitud.md)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html)
+
+[← Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Capítulo 3 →](analisis-para-matematicos-capitulo-3-completitud.html)

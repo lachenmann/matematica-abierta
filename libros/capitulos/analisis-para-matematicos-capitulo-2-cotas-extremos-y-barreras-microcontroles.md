@@ -1,5 +1,5 @@
 ---
-title: "Soluciones de microcontroles — Capítulo 2"
+title: Soluciones de microcontroles — Capítulo 2
 content-id: MA-BCH-0092
 content-type: book-chapter
 collection: PM-ANA
@@ -9,27 +9,35 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
-prerequisites: [MA-BCH-0083]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- orden
+- topologia
+prerequisites:
+- MA-BCH-0083
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C02; referencias de contraste en la portada del libro."
+  - ANM-C02_MICROCONTROLES_SOLUCIONES.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.md)
-
-# Soluciones de microcontroles — Capítulo 2
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html)
 
 ## §2.1. Controlar un conjunto desde arriba y desde abajo
 
 []{#MA-MSOL-ANM-01-002-001}
+
+[]{#MA-MIC-ANM-01-002-001}
+
+[]{#MA-SEC-ANM-01-002-001}
 
 ### 1. Para $A=(-2,4)$, decide si $4$, $5$ y $3$ son cotas superiores
 
@@ -63,6 +71,8 @@ $$
 
 []{#MA-MSOL-ANM-01-002-002}
 
+[]{#MA-MIC-ANM-01-002-002}
+
 ### 2. Para $A=(-2,4)$, decide si $-2$, $-3$ y $0$ son cotas inferiores
 
 Los números $-2$ y $-3$ son cotas inferiores de $A$.
@@ -95,6 +105,8 @@ $$
 
 []{#MA-MSOL-ANM-01-002-003}
 
+[]{#MA-MIC-ANM-01-002-003}
+
 ### 3. ¿Puede una cota superior pertenecer al conjunto? ¿Puede no pertenecer?
 
 Sí en ambos casos. La definición de cota superior exige únicamente que el número domine a todos los elementos del conjunto; no decide su pertenencia.
@@ -118,6 +130,8 @@ el mismo número $1$ es cota superior pero no pertenece a $B$.
 Por tanto, ser cota superior y pertenecer al conjunto son propiedades independientes.
 
 []{#MA-MSOL-ANM-01-002-004}
+
+[]{#MA-MIC-ANM-01-002-004}
 
 ### 4. Si $u\in U(A)$ y $v>u$, ¿qué puedes afirmar sobre $v$?
 
@@ -146,6 +160,8 @@ La familia $U(A)$ es, por tanto, estable al desplazar una cota hacia la derecha.
 
 []{#MA-MSOL-ANM-01-002-005}
 
+[]{#MA-MIC-ANM-01-002-005}
+
 ### 5. Da un ejemplo de un conjunto infinito pero acotado
 
 Un ejemplo es
@@ -164,6 +180,8 @@ $$
 Así, la acotación controla la posición de los elementos, no su cantidad.
 
 []{#MA-MSOL-ANM-01-002-006}
+
+[]{#MA-MIC-ANM-01-002-006}
 
 ### 6. Da un ejemplo de un conjunto acotado superiormente pero no inferiormente
 
@@ -201,6 +219,10 @@ $$
 
 []{#MA-MSOL-ANM-01-002-007}
 
+[]{#MA-MIC-ANM-01-002-007}
+
+[]{#MA-SEC-ANM-01-002-002}
+
 ### 7. Para $A=\{-3,-1,2,7\}$, determina $\max A$ y $\min A$
 
 El número $7$ pertenece a $A$ y todo elemento de $A$ es menor o igual que $7$. Por tanto,
@@ -216,6 +238,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-002-008}
+
+[]{#MA-MIC-ANM-01-002-008}
 
 ### 8. En $B=[-2,5)$, ¿existe máximo? ¿existe mínimo? Justifica usando las definiciones
 
@@ -253,6 +277,8 @@ $$
 
 []{#MA-MSOL-ANM-01-002-009}
 
+[]{#MA-MIC-ANM-01-002-009}
+
 ### 9. Si $u\in U(A)$ y además $u\in A$, ¿qué puedes concluir?
 
 Podemos concluir que $u$ es el máximo de $A$.
@@ -272,6 +298,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-002-010}
+
+[]{#MA-MIC-ANM-01-002-010}
 
 ### 10. ¿Es correcta la afirmación «toda cota superior de un conjunto acotado es su máximo»? Explica el error
 
@@ -299,6 +327,8 @@ El error consiste en omitir la condición de pertenencia.
 
 []{#MA-MSOL-ANM-01-002-011}
 
+[]{#MA-MIC-ANM-01-002-011}
+
 ### 11. Demuestra directamente que $(2,4)$ no tiene máximo
 
 Sea $x\in(2,4)$ cualquier elemento. Como $x<4$, el número
@@ -322,6 +352,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-002-012}
+
+[]{#MA-MIC-ANM-01-002-012}
 
 ### 12. ¿Puede un conjunto tener dos máximos distintos? ¿Qué parte de la prueba de unicidad lo impide?
 
@@ -351,6 +383,10 @@ La prueba depende de combinar las dos partes de la definición: **cada máximo e
 
 []{#MA-MSOL-ANM-01-002-013}
 
+[]{#MA-MIC-ANM-01-002-013}
+
+[]{#MA-SEC-ANM-01-002-003}
+
 ### 13. Para $A=(2,5)$, determina $U(A)$ y $L(A)$ y, a partir de ellos, identifica $\sup A$ e $\inf A$
 
 Las cotas superiores son exactamente los números mayores o iguales que $5$:
@@ -376,6 +412,8 @@ $$
 Ni $2$ ni $5$ pertenecen a $A$; eso no afecta a su papel como barreras extremales.
 
 []{#MA-MSOL-ANM-01-002-014}
+
+[]{#MA-MIC-ANM-01-002-014}
 
 ### 14. Para $B=\{-4,1,7\}$, escribe $U(B)$ y $L(B)$ y localiza sus extremos
 
@@ -407,6 +445,8 @@ $$
 
 []{#MA-MSOL-ANM-01-002-015}
 
+[]{#MA-MIC-ANM-01-002-015}
+
 ### 15. Si $s=\sup A$, ¿por qué ningún número menor que $s$ puede pertenecer a $U(A)$?
 
 Porque $s$ es, por definición, la **menor** cota superior de $A$.
@@ -420,6 +460,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-002-016}
+
+[]{#MA-MIC-ANM-01-002-016}
 
 ### 16. Demuestra directamente que, si $s=\sup A$, entonces $U(A)=[s,\infty)$
 
@@ -455,6 +497,8 @@ $$
 
 []{#MA-MSOL-ANM-01-002-017}
 
+[]{#MA-MIC-ANM-01-002-017}
+
 ### 17. Formula y demuestra la afirmación dual para el ínfimo
 
 La afirmación dual es:
@@ -489,6 +533,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-002-018}
+
+[]{#MA-MIC-ANM-01-002-018}
 
 ### 18. Explica por qué la definición de supremo no incluye la condición $s\in A$
 
@@ -533,6 +579,10 @@ La pertenencia de la barrera extremal es una cuestión distinta, que se estudia 
 
 []{#MA-MSOL-ANM-01-002-019}
 
+[]{#MA-MIC-ANM-01-002-019}
+
+[]{#MA-SEC-ANM-01-002-004}
+
 ### 19. Para $A=[-1,3)$, determina $\inf A$, $\sup A$, $\min A$ y decide si existe $\max A$
 
 La barrera inferior es $-1$, y además pertenece al conjunto. Por tanto,
@@ -564,6 +614,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-002-020}
+
+[]{#MA-MIC-ANM-01-002-020}
 
 ### 20. Para $B=(-2,4]$, identifica qué barrera extremal está alcanzada y cuál no
 
@@ -599,6 +651,8 @@ Por tanto, la barrera superior está alcanzada y la inferior no.
 
 []{#MA-MSOL-ANM-01-002-021}
 
+[]{#MA-MIC-ANM-01-002-021}
+
 ### 21. Supón que $\sup A$ existe. Demuestra que, si $\sup A\in A$, entonces $\sup A=\max A$
 
 Sea
@@ -628,6 +682,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-002-022}
+
+[]{#MA-MIC-ANM-01-002-022}
 
 ### 22. Demuestra directamente que, si $\max A$ existe, entonces también existe $\sup A$ y ambos coinciden
 
@@ -665,6 +721,8 @@ $$
 
 []{#MA-MSOL-ANM-01-002-023}
 
+[]{#MA-MIC-ANM-01-002-023}
+
 ### 23. Da un ejemplo de una cota superior que no sea el supremo
 
 Tomemos
@@ -690,6 +748,8 @@ de modo que $2$ no es el supremo.
 Por tanto, una cota superior puede controlar al conjunto sin ser la barrera superior extremal.
 
 []{#MA-MSOL-ANM-01-002-024}
+
+[]{#MA-MIC-ANM-01-002-024}
 
 ### 24. Da un ejemplo de un conjunto con supremo pero sin máximo, y otro con máximo
 
@@ -737,6 +797,10 @@ Los dos conjuntos tienen la misma barrera superior extremal; lo que cambia es si
 
 []{#MA-MSOL-ANM-01-002-025}
 
+[]{#MA-MIC-ANM-01-002-025}
+
+[]{#MA-SEC-ANM-01-002-005}
+
 ### 25. Para $A=(2,5)$ y $s=5$, verifica directamente la condición con $\varepsilon$
 
 Sea $\varepsilon>0$. Debemos encontrar un elemento $a\in(2,5)$ tal que
@@ -773,6 +837,8 @@ $$
 
 []{#MA-MSOL-ANM-01-002-026}
 
+[]{#MA-MIC-ANM-01-002-026}
+
 ### 26. Explica por qué, si existe $\varepsilon_0>0$ tal que ningún elemento de $A$ pertenece a $(s-\varepsilon_0,s]$, entonces $s$ no puede ser el supremo
 
 Si $s$ fuera el supremo de $A$, la caracterización $\varepsilon$ exigiría que para **todo** $\varepsilon>0$ existiera algún $a\in A$ con
@@ -798,6 +864,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-002-027}
+
+[]{#MA-MIC-ANM-01-002-027}
 
 ### 27. Supón que $A\ne\varnothing$, que $s$ es cota superior y que para todo $\varepsilon>0$ existe $a\in A$ con $s-\varepsilon<a\le s$. Demuestra que $s=\sup A$
 
@@ -844,6 +912,8 @@ $$
 
 []{#MA-MSOL-ANM-01-002-028}
 
+[]{#MA-MIC-ANM-01-002-028}
+
 ### 28. Formula y demuestra la versión dual para el ínfimo
 
 La versión dual dice: si $A\ne\varnothing$, $i$ es una cota inferior de $A$ y
@@ -882,6 +952,8 @@ Como $i$ ya era cota inferior, resulta ser la mayor de todas ellas. Luego $i=\in
 
 []{#MA-MSOL-ANM-01-002-029}
 
+[]{#MA-MIC-ANM-01-002-029}
+
 ### 29. ¿Qué cambia en la condición cuando el supremo pertenece a $A$?
 
 La condición cuantificada no cambia:
@@ -910,6 +982,8 @@ Así, la caracterización cubre tanto el supremo alcanzado como el no alcanzado.
 
 []{#MA-MSOL-ANM-01-002-030}
 
+[]{#MA-MIC-ANM-01-002-030}
+
 ### 30. Explica por qué la expresión “hay puntos arbitrariamente cerca del supremo” no obliga todavía a introducir una sucesión
 
 La afirmación que hemos probado tiene la forma
@@ -927,6 +1001,10 @@ Cada elección de $\varepsilon$ plantea un problema independiente de existencia.
 ## §2.6. Comparar conjuntos por sus barreras
 
 []{#MA-MSOL-ANM-01-002-031}
+
+[]{#MA-MIC-ANM-01-002-031}
+
+[]{#MA-SEC-ANM-01-002-006}
 
 ### 31. Si $A\subseteq B$, demuestra directamente que $U(B)\subseteq U(A)$
 
@@ -951,6 +1029,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-002-032}
+
+[]{#MA-MIC-ANM-01-002-032}
 
 ### 32. Formula y demuestra la inclusión correspondiente para $L(A)$ y $L(B)$
 
@@ -978,6 +1058,8 @@ Por tanto $l\in L(A)$, lo que prueba la inclusión.
 
 []{#MA-MSOL-ANM-01-002-033}
 
+[]{#MA-MIC-ANM-01-002-033}
+
 ### 33. Supón que $A\subseteq B$ y que existen $\sup A$ y $\sup B$. Demuestra que $\sup A\le\sup B$
 
 Como $\sup B$ es una cota superior de $B$, pertenece a $U(B)$. Por la inclusión recién demostrada,
@@ -997,6 +1079,8 @@ $$
 La desigualdad puede ser igualdad: la inclusión de conjuntos no obliga a que la barrera superior se desplace estrictamente.
 
 []{#MA-MSOL-ANM-01-002-034}
+
+[]{#MA-MIC-ANM-01-002-034}
 
 ### 34. Da un ejemplo con $A\subsetneq B$ pero $\sup A=\sup B$
 
@@ -1019,6 +1103,8 @@ $$
 Por tanto, de $A\subsetneq B$ no se puede deducir $\sup A<\sup B$.
 
 []{#MA-MSOL-ANM-01-002-035}
+
+[]{#MA-MIC-ANM-01-002-035}
 
 ### 35. Si existen $\inf A$ y $\sup(-A)$, explica por qué la reflexión obliga a que $\sup(-A)=-\inf A$
 
@@ -1043,6 +1129,8 @@ $$
 La identidad expresa exactamente la inversión del orden bajo la reflexión $x\mapsto -x$.
 
 []{#MA-MSOL-ANM-01-002-036}
+
+[]{#MA-MIC-ANM-01-002-036}
 
 ### 36. Para $A=[-1,4)$, determina $-A$ y compara sus extremos con los de $A$
 
@@ -1086,6 +1174,10 @@ Además, $1\in -A$, por lo que $\max(-A)=1$, mientras que $-4\notin -A$, de modo
 
 []{#MA-MSOL-ANM-01-002-037}
 
+[]{#MA-MIC-ANM-01-002-037}
+
+[]{#MA-SEC-ANM-01-002-007}
+
 ### 37. Explica por qué la definición de $\sup A$ no demuestra por sí sola que $\sup A$ exista
 
 Una definición establece **qué condiciones tendría que satisfacer** un número para recibir el nombre de supremo, pero no asegura que haya algún número que efectivamente las cumpla.
@@ -1101,6 +1193,8 @@ cuando ese mínimo existe.
 Por tanto, antes de poder escribir $\sup A$ debemos saber que $U(A)$ tiene un mínimo. Esa existencia es una cuestión adicional a la definición.
 
 []{#MA-MSOL-ANM-01-002-038}
+
+[]{#MA-MIC-ANM-01-002-038}
 
 ### 38. Para $A=(0,\infty)$, identifica cuál de los dos obstáculos para la existencia del supremo falla primero
 
@@ -1121,6 +1215,8 @@ $$
 Ni siquiera llegamos a preguntar si $U(A)$ tiene mínimo, porque no hay cotas superiores entre las cuales buscar una barrera extremal.
 
 []{#MA-MSOL-ANM-01-002-039}
+
+[]{#MA-MIC-ANM-01-002-039}
 
 ### 39. Demuestra que $U(\varnothing)=L(\varnothing)=\mathbb R$
 
@@ -1156,6 +1252,8 @@ $$
 
 []{#MA-MSOL-ANM-01-002-040}
 
+[]{#MA-MIC-ANM-01-002-040}
+
 ### 40. Explica por qué de la igualdad anterior no se obtiene un supremo o un ínfimo real del conjunto vacío
 
 Para obtener un supremo real necesitaríamos
@@ -1188,6 +1286,8 @@ $$
 
 []{#MA-MSOL-ANM-01-002-041}
 
+[]{#MA-MIC-ANM-01-002-041}
+
 ### 41. ¿Qué muestra conceptualmente el contraste con $\mathbb Q$ respecto del papel del orden?
 
 Muestra que **tener un orden y disponer de cotas superiores no basta, por sí solo, para garantizar una menor cota superior dentro del mismo sistema numérico**.
@@ -1203,6 +1303,8 @@ tiene cotas superiores en $\mathbb Q$, pero el contraste está precisamente dise
 La función del ejemplo en C02 es conceptual: separar las propiedades del **orden** de la propiedad adicional que hará falta para garantizar extremos. No usamos aquí ese contraste para demostrar la completitud de $\mathbb R$.
 
 []{#MA-MSOL-ANM-01-002-042}
+
+[]{#MA-MIC-ANM-01-002-042}
 
 ### 42. Distingue entre “verificar un supremo en un ejemplo” y “garantizar la existencia del supremo para toda una clase de conjuntos”
 
@@ -1222,6 +1324,10 @@ Ese segundo nivel no se obtiene repitiendo la definición: requiere una propieda
 ## §2.8. De las barreras a la completitud
 
 []{#MA-MSOL-ANM-01-002-043}
+
+[]{#MA-MIC-ANM-01-002-043}
+
+[]{#MA-SEC-ANM-01-002-008}
 
 ### 43. ¿Por qué $\sup A$ puede existir sin pertenecer a $A$?
 
@@ -1249,6 +1355,8 @@ No hay contradicción: $1$ es la barrera superior extremal aunque el conjunto no
 
 []{#MA-MSOL-ANM-01-002-044}
 
+[]{#MA-MIC-ANM-01-002-044}
+
 ### 44. ¿Por qué, si $\max A$ existe, entonces coincide necesariamente con $\sup A$?
 
 Sea
@@ -1273,6 +1381,8 @@ $$
 
 []{#MA-MSOL-ANM-01-002-045}
 
+[]{#MA-MIC-ANM-01-002-045}
+
 ### 45. ¿Qué niega exactamente la condición
 
 $$
@@ -1295,6 +1405,8 @@ Por tanto, la condición expresa que **ninguna disminución positiva del supremo
 
 []{#MA-MSOL-ANM-01-002-046}
 
+[]{#MA-MIC-ANM-01-002-046}
+
 ### 46. ¿Qué nueva afirmación necesita C03 para convertir la teoría condicional de C02 en una garantía general de existencia dentro de $\mathbb R$?
 
 C03 necesita introducir y justificar la afirmación:
@@ -1304,3 +1416,5 @@ C03 necesita introducir y justificar la afirmación:
 Ésta es una afirmación de **existencia general**. No redefine qué es un supremo: garantiza que, bajo las hipótesis adecuadas, el objeto definido existe.
 
 C02 sólo identifica esta pieza faltante y no la usa como teorema. La demostración o adopción de esa propiedad pertenece al capítulo siguiente.
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html)

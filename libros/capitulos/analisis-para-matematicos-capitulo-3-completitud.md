@@ -1,5 +1,5 @@
 ---
-title: "Capítulo 3 — Completitud: una recta sin huecos"
+title: 'Capítulo 3 — Completitud: una recta sin huecos'
 content-id: MA-BCH-0085
 content-type: book-chapter
 collection: PM-ANA
@@ -9,21 +9,29 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
-prerequisites: [MA-BCH-0084]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- orden
+- topologia
+prerequisites:
+- MA-BCH-0084
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C03; referencias de contraste en la portada del libro."
+  - ANM-C03.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.md)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)
+
+[]{#MA-SEC-ANM-01-003-008}
 
 El capítulo anterior terminó en un punto muy preciso. Aprendimos a definir cotas, máximos, mínimos, supremos e ínfimos; aprendimos también a distinguir una barrera cualquiera de la mejor barrera posible y una barrera alcanzada de otra que no pertenece al conjunto. Pero quedó una pregunta abierta que ninguna definición puede resolver por sí sola.
 
@@ -94,11 +102,9 @@ sino
 
 > “¿existe dentro del sistema numérico una barrera que sea menor que todas las demás cotas superiores?”
 
-La figura C03-F01 hace visible esta diferencia entre el estado lógico de C02 —`min U(A)?`— y la garantía de existencia que introduce C03.
+La figura [C03-F01](#fig-anm-c03-f01) hace visible esta diferencia entre el estado lógico de C02 —`min U(A)?`— y la garantía de existencia que introduce C03.
 
-![](../../assets/books/anm/C03/C03-F01.svg){fig-alt="Tres paneles separan definición condicional, hipótesis verificadas y existencia garantizada del supremo; una etiqueta recuerda que no se decide si el supremo pertenece al conjunto."}
-
-*Figura C03-F01. La definición describe la mejor barrera; completitud garantiza su existencia bajo las hipótesis, sin decidir si pertenece a A.*
+![La definición describe la mejor barrera; completitud garantiza su existencia bajo las hipótesis, sin decidir si pertenece a A.](../../assets/books/anm/C03/C03-F01.svg){#fig-anm-c03-f01 fig-alt="Tres paneles separan definición condicional, hipótesis verificadas y existencia garantizada del supremo; una etiqueta recuerda que no se decide si el supremo pertenece al conjunto."}
 
 La figura no sustituye el argumento lógico; la idea esencial sigue siendo:
 
@@ -157,11 +163,9 @@ El defecto es más sutil:
 
 > hay conjuntos racionales no vacíos y acotados superiormente cuya familia de cotas superiores racionales **no tiene una menor cota superior racional**.
 
-La figura C03-F02 representa precisamente este fenómeno: no mediante un punto irracional ya identificado, sino mostrando que $U_{\mathbb Q}(S_2)$ tiene cotas racionales mejorables y, sin embargo, ninguna de ellas es mínima.
+La figura [C03-F02](#fig-anm-c03-f02) representa precisamente este fenómeno: no mediante un punto irracional ya identificado, sino mostrando que $U_{\mathbb Q}(S_2)$ tiene cotas racionales mejorables y, sin embargo, ninguna de ellas es mínima.
 
-![](../../assets/books/anm/C03/C03-F02.svg){fig-alt="Dos paneles muestran S2 racional y una familia de cotas superiores racionales mejorables sin mínimo; Q aparece como denso y arquimediano, pero incompleto."}
-
-*Figura C03-F02. En Q pueden existir cotas superiores racionales sin una menor cota superior racional; densidad y arquimedianidad no reparan ese defecto.*
+![En Q pueden existir cotas superiores racionales sin una menor cota superior racional; densidad y arquimedianidad no reparan ese defecto.](../../assets/books/anm/C03/C03-F02.svg){#fig-anm-c03-f02 fig-alt="Dos paneles muestran S2 racional y una familia de cotas superiores racionales mejorables sin mínimo; Q aparece como denso y arquimediano, pero incompleto."}
 
 La etiqueta «arquimediano» de la figura es una **anticipación explícita de §3.4**. No interviene en el diagnóstico de §3.1: aquí sólo usamos que la densidad de $\mathbb Q$ no garantiza la existencia de una menor cota superior racional.
 
@@ -577,7 +581,7 @@ Así se localiza el hueco lógico.
 
 ### La figura de transición, releída
 
-La figura C03-F01, introducida en §3.1 como puente entre C02 y C03, puede releerse ahora a la luz del principio del supremo.
+La figura [C03-F01](#fig-anm-c03-f01), introducida en §3.1 como puente entre C02 y C03, puede releerse ahora a la luz del principio del supremo.
 
 Ahora podemos leer sus dos lados con precisión.
 
@@ -963,7 +967,7 @@ Estas fórmulas expresan una simetría real del orden: “arriba” y “abajo�
 
 ### Reutilización visual: la reflexión ya estaba preparada
 
-C02 produjo una figura para esta dualidad: `C02-F07`, donde la reflexión $x\mapsto -x$ intercambia supremo e ínfimo con cambio de signo.
+C02 produjo una figura para esta dualidad: `[C02-F07](#fig-anm-c02-f07)`, donde la reflexión $x\mapsto -x$ intercambia supremo e ínfimo con cambio de signo.
 
 En C03 no necesitamos crear un nuevo activo `C03-F03`. La misma figura recibe ahora una lectura más profunda.
 
@@ -985,9 +989,7 @@ $$
 \inf A\text{ existe}.
 $$
 
-![](../../assets/books/anm/C02/C02-F07.svg){fig-alt="Dos rectas muestran A=[-1,4) y -A=(-4,1]. Flechas de reflexión relacionan inf A con sup(-A) y sup A con inf(-A)."}
-
-*Figura C02-F07. La reflexión x↦−x invierte el orden y, en C03, transporta también la garantía de existencia: de sup(-A) existente obtenemos inf A=-sup(-A) sin un segundo principio de completitud.*
+![La reflexión x↦−x invierte el orden y, en C03, transporta también la garantía de existencia: de sup(-A) existente obtenemos inf A=-sup(-A) sin un segundo principio de completitud.](../../assets/books/anm/C02/C02-F07.svg){#fig-anm-c02-f07 fig-alt="Dos rectas muestran A=[-1,4) y -A=(-4,1]. Flechas de reflexión relacionan inf A con sup(-A) y sup A con inf(-A)."}
 
 La figura reutilizada es geométricamente la misma que en C02; lo que cambia es la función lógica que ahora sabemos leer en ella.
 
@@ -1379,11 +1381,9 @@ Las demás dependen de:
 
 Esta separación es importante. La completitud no dice directamente que los naturales sean ilimitados. Lo que hace es permitirnos formar el supuesto supremo de $\mathbb N$ bajo una hipótesis contradictoria. Una vez que ese objeto existe, la aritmética de los naturales destruye la posibilidad de que sea realmente una cota superior.
 
-La figura C03-F04 representa exactamente esta anatomía: un único distintivo de **COMPLETITUD** sobre el paso $s=\sup\mathbb N$ y, después, sólo orden y aritmética.
+La figura [C03-F04](#fig-anm-c03-f04) representa exactamente esta anatomía: un único distintivo de **COMPLETITUD** sobre el paso $s=\sup\mathbb N$ y, después, sólo orden y aritmética.
 
-![](../../assets/books/anm/C03/C03-F04.svg){fig-alt="Cadena lógica desde suponer N acotado hasta la contradicción n+1>s; sólo el nodo s=sup N lleva la marca COMPLETITUD."}
-
-*Figura C03-F04. La completitud se usa una sola vez para producir s=sup N bajo la hipótesis contradictoria; el resto es orden y aritmética.*
+![La completitud se usa una sola vez para producir s=sup N bajo la hipótesis contradictoria; el resto es orden y aritmética.](../../assets/books/anm/C03/C03-F04.svg){#fig-anm-c03-f04 fig-alt="Cadena lógica desde suponer N acotado hasta la contradicción n+1&gt;s; sólo el nodo s=sup N lleva la marca COMPLETITUD."}
 
 ### La formulación cuantificada
 
@@ -2091,11 +2091,9 @@ La primera queda resuelta en esta sección mediante completitud.
 
 La segunda requerirá una hipótesis adicional de estrechamiento y será el problema de §3.6.
 
-La figura C03-F06 hace visible esta distinción: una cadena de intervalos cerrados encajados puede conservar un núcleo común no degenerado, mientras una familia semiabierta puede estrecharse y perder todo punto común.
+La figura [C03-F06](#fig-anm-c03-f06) hace visible esta distinción: una cadena de intervalos cerrados encajados puede conservar un núcleo común no degenerado, mientras una familia semiabierta puede estrecharse y perder todo punto común.
 
-![](../../assets/books/anm/C03/C03-F06.svg){fig-alt="Dos paneles contrastan cerrados encajados con núcleo no degenerado y semiabiertos estrechantes con intersección vacía."}
-
-*Figura C03-F06. Los intervalos cerrados encajados garantizan existencia pero no unicidad; una familia semiabierta puede estrecharse y aun así perder todo punto común.*
+![Los intervalos cerrados encajados garantizan existencia pero no unicidad; una familia semiabierta puede estrecharse y aun así perder todo punto común.](../../assets/books/anm/C03/C03-F06.svg){#fig-anm-c03-f06 fig-alt="Dos paneles contrastan cerrados encajados con núcleo no degenerado y semiabiertos estrechantes con intersección vacía."}
 
 ### El estatus lógico de este teorema
 
@@ -2116,7 +2114,7 @@ $$
 
 es una primera señal de esa estructura general, pero no adelantaremos todavía su teoría completa.
 
-La figura C03-F05 aparecerá en §3.7, donde la formulación general podrá compararse con este caso numerable; aquí basta registrar la condición cruzada que la prepara.
+La figura [C03-F05](#fig-anm-c03-f05) aparecerá en §3.7, donde la formulación general podrá compararse con este caso numerable; aquí basta registrar la condición cruzada que la prepara.
 
 ### Qué hemos ganado exactamente
 
@@ -2421,11 +2419,9 @@ Eso es incompatible con que el mismo intervalo contenga simultáneamente a $x$ y
 
 La contradicción es completamente finita una vez elegido el índice $n$.
 
-La figura C03-F07 representa esta estructura: dos candidatos $x<y$, la distancia fija $\delta=y-x$ y un intervalo cuyo ancho es menor que $\delta$.
+La figura [C03-F07](#fig-anm-c03-f07) representa esta estructura: dos candidatos $x<y$, la distancia fija $\delta=y-x$ y un intervalo cuyo ancho es menor que $\delta$.
 
-![](../../assets/books/anm/C03/C03-F07.svg){fig-alt="Dos puntos x e y determinan delta igual a su distancia; un intervalo de ancho menor que delta no puede contenerlos a ambos."}
-
-*Figura C03-F07. Dos puntos distintos no pueden permanecer en intervalos cuyo ancho puede hacerse menor que su distancia positiva.*
+![Dos puntos distintos no pueden permanecer en intervalos cuyo ancho puede hacerse menor que su distancia positiva.](../../assets/books/anm/C03/C03-F07.svg){#fig-anm-c03-f07 fig-alt="Dos puntos x e y determinan delta igual a su distancia; un intervalo de ancho menor que delta no puede contenerlos a ambos."}
 
 La figura no reemplaza la prueba. Su función es hacer visible por qué una distancia positiva fija no puede sobrevivir dentro de restricciones cuyo ancho puede quedar por debajo de ella.
 
@@ -2715,11 +2711,9 @@ $$
 
 y una tolerancia $\varepsilon$ que se supera después de un número finito de pasos.
 
-La figura C03-F08 resume ese mecanismo finito sin introducir lenguaje de convergencia.
+La figura [C03-F08](#fig-anm-c03-f08) resume ese mecanismo finito sin introducir lenguaje de convergencia.
 
-![](../../assets/books/anm/C03/C03-F08.svg){fig-alt="Una rama de bisección muestra anchos L, L/2, L/4 y L/8 y una regla final para elegir k finito según epsilon."}
-
-*Figura C03-F08. Dada una tolerancia positiva, arquimedianidad permite elegir un número finito de bisecciones con L/2^k menor que epsilon, sin lenguaje de límites.*
+![Dada una tolerancia positiva, arquimedianidad permite elegir un número finito de bisecciones con L/2^k menor que epsilon, sin lenguaje de límites.](../../assets/books/anm/C03/C03-F08.svg){#fig-anm-c03-f08 fig-alt="Una rama de bisección muestra anchos L, L/2, L/4 y L/8 y una regla final para elegir k finito según epsilon."}
 
 ### Qué depende de qué
 
@@ -3577,7 +3571,7 @@ Es decir, $c$ es exactamente un separador entre el conjunto de extremos izquierd
 
 Ésta es la razón estructural de que separación e intersección general sean equivalentes.
 
-La figura C03-F05 hace visible esta lectura sin presentar la familia como una simple cadena numerable: la condición cruzada y la compatibilidad por pares preparan el paso global de GCI al punto común.
+La figura [C03-F05](#fig-anm-c03-f05) hace visible esta lectura sin presentar la familia como una simple cadena numerable: la condición cruzada y la compatibilidad por pares preparan el paso global de GCI al punto común.
 
 ### La cadena completa de equivalencias
 
@@ -3895,17 +3889,13 @@ El problema es que ciertas familias de restricciones compatibles no poseen dentr
 
 ### Dos figuras, dos funciones distintas
 
-La figura `C03-F05` corresponde al contenido matemático local de **GCI**: representa una familia general, no necesariamente numerable ni encajada, cuyos extremos satisfacen la condición cruzada y que posee un punto común $c$.
+La figura `[C03-F05](#fig-anm-c03-f05)` corresponde al contenido matemático local de **GCI**: representa una familia general, no necesariamente numerable ni encajada, cuyos extremos satisfacen la condición cruzada y que posee un punto común $c$.
 
-![](../../assets/books/anm/C03/C03-F05.svg){fig-alt="Varios intervalos cerrados no presentados como cadena comparten un punto; un panel lateral separa condición cruzada, compatibilidad por pares y el uso de GCI."}
+![La condición cruzada de una familia general de intervalos cerrados permite, mediante GCI, obtener un punto común; en la recta equivale a intersección por pares.](../../assets/books/anm/C03/C03-F05.svg){#fig-anm-c03-f05 fig-alt="Varios intervalos cerrados no presentados como cadena comparten un punto; un panel lateral separa condición cruzada, compatibilidad por pares y el uso de GCI."}
 
-*Figura C03-F05. La condición cruzada de una familia general de intervalos cerrados permite, mediante GCI, obtener un punto común; en la recta equivale a intersección por pares.*
+La figura `[C03-F09](#fig-anm-c03-f09)` tiene una función diferente: organiza el estatus lógico de las formulaciones.
 
-La figura `C03-F09` tiene una función diferente: organiza el estatus lógico de las formulaciones.
-
-![](../../assets/books/anm/C03/C03-F09.svg){fig-alt="Cuatro nodos equivalentes forman un ciclo; una flecha unilateral baja al caso numerable encajado y un carril separado lleva del estrechamiento a unicidad."}
-
-*Figura C03-F09. SUP, INF, SEP y GCI forman un ciclo de equivalencias; el caso numerable encajado es una consecuencia y el estrechamiento pertenece a la capa de unicidad.*
+![SUP, INF, SEP y GCI forman un ciclo de equivalencias; el caso numerable encajado es una consecuencia y el estrechamiento pertenece a la capa de unicidad.](../../assets/books/anm/C03/C03-F09.svg){#fig-anm-c03-f09 fig-alt="Cuatro nodos equivalentes forman un ciclo; una flecha unilateral baja al caso numerable encajado y un carril separado lleva del estrechamiento a unicidad."}
 
 La distinción visual preserva exactamente los símbolos lógicos:
 
@@ -4501,7 +4491,7 @@ C03 proporciona el caso canónico de referencia: completitud de orden expresada 
 
 ### La figura final: un mapa de infraestructura
 
-La figura `C03-F10` representa estas dependencias futuras.
+La figura `[C03-F10](#fig-anm-c03-f10)` representa estas dependencias futuras.
 
 No es una cronología decorativa.
 
@@ -4510,9 +4500,7 @@ Distingue dos tipos de conexión:
 - **uso directo o estructural previsto**, cuando un capítulo futuro necesita una garantía de existencia proveniente de C03;
 - **comparación o reformulación posterior**, cuando el objetivo es relacionar la completitud de orden con otra noción de completitud.
 
-![](../../assets/books/anm/C03/C03-F10.svg){fig-alt="Grafo con C03 en el centro: C07, C08, C16 y C23 reciben flechas de consumo estructural; C10 y C31 flechas de comparación o reformulación; todos están marcados FUTURO."}
-
-*Figura C03-F10. C03 exporta infraestructura de existencia a capítulos futuros y sirve de referencia para comparaciones posteriores de completitud.*
+![C03 exporta infraestructura de existencia a capítulos futuros y sirve de referencia para comparaciones posteriores de completitud.](../../assets/books/anm/C03/C03-F10.svg){#fig-anm-c03-f10 fig-alt="Grafo con C03 en el centro: C07, C08, C16 y C23 reciben flechas de consumo estructural; C10 y C31 flechas de comparación o reformulación; todos están marcados FUTURO."}
 
 La lectura debe evitar un error importante: una flecha desde C03 hacia C07 o C16 no significa que esos teoremas ya estén demostrados. Significa únicamente que, cuando se demuestren, deberán declarar qué infraestructura reciben de completitud.
 
@@ -4600,6 +4588,8 @@ Por ahora, la conclusión es suficiente:
 11. Distingue el papel futuro de C07, C10 y C23 respecto de C03 sin demostrar todavía ninguno de sus resultados.
 12. Formula con tus propias palabras la idea de «recta sin huecos» sin usar como definición ni «recta continua» ni «tener muchísimos puntos».
 
-Con esto se completa el recorrido del capítulo. La completitud ha dejado de ser una intuición gráfica vaga y se ha convertido en una dependencia matemática rastreable: sabemos qué garantiza, qué no garantiza, qué formulaciones equivalentes admite y qué resultados futuros deberán declarar cuándo la consumen.
+Con esto queda cerrada la **redacción seccional** del capítulo. La completitud ha dejado de ser una intuición gráfica vaga y se ha convertido en una dependencia matemática rastreable: sabemos qué garantiza, qué no garantiza, qué formulaciones equivalentes admite y qué resultados futuros deberán declarar cuándo la consumen.
 
-[← Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Capítulo 4 →](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.md)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)
+
+[← Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html) · [Capítulo 4 →](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html)

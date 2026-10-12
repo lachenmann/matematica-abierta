@@ -1,5 +1,5 @@
 ---
-title: "Soluciones — Capítulo 2"
+title: Soluciones — Capítulo 2
 content-id: MA-BCH-0091
 content-type: book-chapter
 collection: PM-ANA
@@ -9,27 +9,33 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
-prerequisites: [MA-BCH-0083]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- orden
+- topologia
+prerequisites:
+- MA-BCH-0083
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C02; referencias de contraste en la portada del libro."
+  - ANM-C02_SOLUCIONES.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.md)
-
-# Soluciones — Capítulo 2
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html)
 
 ## §2.1. Controlar un conjunto desde arriba y desde abajo
 
 []{#MA-SOL-ANM-01-002-001}
+
+[]{#MA-EX-ANM-01-002-001}
 
 ### 1. Barreras válidas e inválidas
 
@@ -100,6 +106,8 @@ Obsérvese que $-2$ y $3$ no pertenecen a $A$ y, sin embargo, sí son cotas. La 
 
 []{#MA-SOL-ANM-01-002-002}
 
+[]{#MA-EX-ANM-01-002-002}
+
 ### 2. Cuatro formas de estar acotado
 
 Para
@@ -166,6 +174,8 @@ En resumen:
 - $D$: no acotado en ninguna dirección.
 
 []{#MA-SOL-ANM-01-002-003}
+
+[]{#MA-EX-ANM-01-002-003}
 
 ### 3. Del conjunto a todas sus cotas
 
@@ -263,6 +273,8 @@ El extremo $-4$ no pertenece a $A$, pero sí es cota inferior. Esto vuelve a mos
 
 []{#MA-SOL-ANM-01-002-004}
 
+[]{#MA-EX-ANM-01-002-004}
+
 ### 4. Mover una barrera en la dirección equivocada
 
 La afirmación es falsa.
@@ -334,6 +346,8 @@ $$
 La dirección importa: una cota superior puede desplazarse con seguridad hacia la derecha; una cota inferior, hacia la izquierda. En la dirección contraria puede seguir siendo válida o puede dejar de serlo, y la información disponible no basta para decidirlo.
 
 []{#MA-SOL-ANM-01-002-005}
+
+[]{#MA-EX-ANM-01-002-005}
 
 ### 5. Trasladar un conjunto traslada sus barreras
 
@@ -483,6 +497,8 @@ La estructura no cambia: las familias de cotas siguen siendo semirrectas del mis
 
 []{#MA-SOL-ANM-01-002-006}
 
+[]{#MA-EX-ANM-01-002-006}
+
 ### 6. Cota, pertenencia y extremo
 
 Tenemos
@@ -553,6 +569,8 @@ En resumen:
 - pertenecer al conjunto no basta para ser máximo o mínimo.
 
 []{#MA-SOL-ANM-01-002-007}
+
+[]{#MA-EX-ANM-01-002-007}
 
 ### 7. Quitar un extremo cambia la respuesta
 
@@ -646,6 +664,8 @@ $$
 Eliminar un extremo alcanzado puede destruir exactamente el extremo correspondiente sin alterar por ello la existencia del otro.
 
 []{#MA-SOL-ANM-01-002-008}
+
+[]{#MA-EX-ANM-01-002-008}
 
 ### 8. La intersección que contiene al máximo
 
@@ -745,6 +765,8 @@ La unicidad de máximo y mínimo aparece aquí como consecuencia directa de la i
 
 []{#MA-SOL-ANM-01-002-009}
 
+[]{#MA-EX-ANM-01-002-009}
+
 ### 9. Dos conjuntos no vacíos no tienen por qué encontrarse
 
 **Diagnóstico.** El paso inválido es
@@ -816,6 +838,8 @@ Así, $A$ está acotado superiormente pero no tiene máximo. El ejemplo no contr
 Ésa es precisamente la información adicional que exigiría un máximo.
 
 []{#MA-SOL-ANM-01-002-010}
+
+[]{#MA-EX-ANM-01-002-010}
 
 ### 10. Qué hacen las transformaciones afines con máximo y mínimo
 
@@ -937,6 +961,8 @@ No hemos usado ninguna noción posterior. Todo depende de pertenencia al conjunt
 
 []{#MA-SOL-ANM-01-002-011}
 
+[]{#MA-EX-ANM-01-002-011}
+
 ### 11. Cota no significa barrera extremal
 
 Tenemos
@@ -1004,6 +1030,8 @@ $$
 El punto decisivo es que una cota cualquiera sólo satisface la condición de **control**. Para ser supremo debe ser, además, la menor de todas las cotas superiores; para ser ínfimo, la mayor de todas las cotas inferiores.
 
 []{#MA-SOL-ANM-01-002-012}
+
+[]{#MA-EX-ANM-01-002-012}
 
 ### 12. Distintos conjuntos, las mismas familias de cotas
 
@@ -1086,6 +1114,8 @@ Así, las familias $U(A)$ y $L(A)$ determinan la posición de las barreras extre
 
 []{#MA-SOL-ANM-01-002-013}
 
+[]{#MA-EX-ANM-01-002-013}
+
 ### 13. Por qué no puede haber dos supremos
 
 Supongamos que $s$ y $t$ son ambos supremos de $A$.
@@ -1142,6 +1172,8 @@ $$
 Así, supremo e ínfimo, cuando existen, son necesariamente únicos.
 
 []{#MA-SOL-ANM-01-002-014}
+
+[]{#MA-EX-ANM-01-002-014}
 
 ### 14. Una condición necesaria no basta
 
@@ -1206,6 +1238,8 @@ La frase «el supremo no tiene por qué pertenecer al conjunto» es verdadera, p
 Sólo cuando ambas condiciones se cumplen hemos identificado el supremo.
 
 []{#MA-SOL-ANM-01-002-015}
+
+[]{#MA-EX-ANM-01-002-015}
 
 ### 15. El intervalo de control más ajustado
 
@@ -1318,6 +1352,8 @@ $$
 El resultado no afirma que las barreras extremales pertenezcan a $A$. Afirma algo diferente: cualquier intervalo $[l,u]$ que controle a todo el conjunto debe ser al menos tan amplio como $[i,s]$.
 
 []{#MA-SOL-ANM-01-002-016}
+
+[]{#MA-EX-ANM-01-002-016}
 
 ### 16. Trasladar y escalar una barrera extremal
 
@@ -1463,6 +1499,8 @@ Todo el argumento usa únicamente las definiciones de cota, supremo e ínfimo y 
 
 []{#MA-SOL-ANM-01-002-017}
 
+[]{#MA-EX-ANM-01-002-017}
+
 ### 17. Cinco afirmaciones sobre alcanzar la barrera
 
 **1. Verdadera.** Si $s=\sup A$, entonces $s$ es cota superior de $A$. Si además $s\in A$, se cumplen exactamente las dos condiciones de la definición de máximo:
@@ -1518,6 +1556,8 @@ La diferencia decisiva es, por tanto:
 > el supremo responde a dónde está la menor cota superior; el máximo exige además que esa barrera pertenezca al conjunto.
 
 []{#MA-SOL-ANM-01-002-018}
+
+[]{#MA-EX-ANM-01-002-018}
 
 ### 18. El criterio de alcanzamiento
 
@@ -1627,6 +1667,8 @@ $$
 
 []{#MA-SOL-ANM-01-002-019}
 
+[]{#MA-EX-ANM-01-002-019}
+
 ### 19. Misma barrera no significa mismo máximo
 
 La afirmación del estudiante es falsa.
@@ -1696,6 +1738,8 @@ Una versión verdadera es la siguiente:
 En efecto, todo máximo es también el supremo del conjunto correspondiente.
 
 []{#MA-SOL-ANM-01-002-020}
+
+[]{#MA-EX-ANM-01-002-020}
 
 ### 20. Añadir la barrera o rebasarla
 
@@ -1785,6 +1829,8 @@ Las dos modificaciones tienen efectos distintos:
 - añadir $c>s$ obliga a mover la barrera extremal hasta $c$.
 
 []{#MA-SOL-ANM-01-002-021}
+
+[]{#MA-EX-ANM-01-002-021}
 
 ### 21. Intersecar el conjunto con sus propias cotas
 
@@ -1930,6 +1976,8 @@ Los cuatro conjuntos comparten las mismas barreras extremales $0$ y $1$. Lo úni
 
 []{#MA-SOL-ANM-01-002-022}
 
+[]{#MA-EX-ANM-01-002-022}
+
 ### 22. Franjas pegadas a la barrera
 
 Para ambos conjuntos la barrera superior extremal es $s=1$, de modo que las franjas dependen únicamente de $\varepsilon$.
@@ -2012,6 +2060,8 @@ En $A$, en cambio, el testigo debe elegirse dentro del intervalo abierto y puede
 
 []{#MA-SOL-ANM-01-002-023}
 
+[]{#MA-EX-ANM-01-002-023}
+
 ### 23. Del supremo a la condición $\varepsilon$
 
 Sea
@@ -2080,6 +2130,8 @@ $$
 El argumento no construye una lista de puntos. Para cada margen positivo se afirma independientemente la existencia de un testigo adecuado.
 
 []{#MA-SOL-ANM-01-002-024}
+
+[]{#MA-EX-ANM-01-002-024}
 
 ### 24. De la condición $\varepsilon$ al supremo
 
@@ -2150,6 +2202,8 @@ $$
 La condición $\varepsilon$ por sí sola no reemplaza la primera parte de la definición: hemos usado explícitamente que $s$ ya era cota superior.
 
 []{#MA-SOL-ANM-01-002-025}
+
+[]{#MA-EX-ANM-01-002-025}
 
 ### 25. Cambiar el orden de los cuantificadores cambia la afirmación
 
@@ -2246,6 +2300,8 @@ $$
 Por tanto, (II) es una condición más fuerte: puede cumplirse cuando la barrera pertenece al conjunto, pero no es equivalente a la caracterización general del supremo.
 
 []{#MA-SOL-ANM-01-002-026}
+
+[]{#MA-EX-ANM-01-002-026}
 
 ### 26. La caracterización dual del ínfimo
 
@@ -2375,6 +2431,8 @@ $$
 Las dos formulaciones son, por tanto, equivalentes.
 
 []{#MA-SOL-ANM-01-002-027}
+
+[]{#MA-EX-ANM-01-002-027}
 
 ### 27. Sumar conjuntos suma sus barreras extremales
 
@@ -2520,15 +2578,15 @@ $$
 
 No se ha invocado completitud: las existencias de $s_A,s_B,i_A,i_B$ estaban dadas como hipótesis, y la prueba sólo transporta sus propiedades extremales a la suma de conjuntos.
 
-La figura C02-F09 sintetiza las dos mitades de la prueba del supremo y hace visible por qué se reparte el margen $\varepsilon$ en dos franjas de anchura $\varepsilon/2$.
+La figura [C02-F09](#fig-anm-c02-f09) sintetiza las dos mitades de la prueba del supremo y hace visible por qué se reparte el margen $\varepsilon$ en dos franjas de anchura $\varepsilon/2$.
 
-![](../../assets/books/anm/C02/C02-F09.svg){fig-alt="Tres paneles muestran puntos a y b a menos de epsilon sobre dos de sus supremos y la suma a+b a menos de epsilon de sA+sB. Un panel inferior separa las dos mitades de la prueba."}
-
-*Figura C02-F09. La prueba de sup(A+B)=sup A+sup B combina una cota superior obvia con testigos a y b elegidos dentro de franjas epsilon sobre dos.*
+![La prueba de sup(A+B)=sup A+sup B combina una cota superior obvia con testigos a y b elegidos dentro de franjas epsilon sobre dos.](../../assets/books/anm/C02/C02-F09.svg){#fig-anm-c02-f09 fig-alt="Tres paneles muestran puntos a y b a menos de epsilon sobre dos de sus supremos y la suma a+b a menos de epsilon de sA+sB. Un panel inferior separa las dos mitades de la prueba."}
 
 ## §2.6. Comparar conjuntos por sus barreras
 
 []{#MA-SOL-ANM-01-002-028}
+
+[]{#MA-EX-ANM-01-002-028}
 
 ### 28. Dos conjuntos, cuatro familias de cotas
 
@@ -2629,6 +2687,8 @@ $$
 La representación en una misma escala muestra el fenómeno central: al pasar del conjunto pequeño al grande, las semirrectas de cotas se hacen más restrictivas y sus extremos pueden desplazarse hacia afuera.
 
 []{#MA-SOL-ANM-01-002-029}
+
+[]{#MA-EX-ANM-01-002-029}
 
 ### 29. De la inclusión de conjuntos a la monotonía de sus barreras
 
@@ -2757,6 +2817,8 @@ $$
 
 []{#MA-SOL-ANM-01-002-030}
 
+[]{#MA-EX-ANM-01-002-030}
+
 ### 30. Reflejar un conjunto intercambia arriba y abajo
 
 Definimos
@@ -2877,6 +2939,8 @@ Las fórmulas son una consecuencia de la inversión del orden, no una convenció
 
 []{#MA-SOL-ANM-01-002-031}
 
+[]{#MA-EX-ANM-01-002-031}
+
 ### 31. Inclusión estricta no obliga a desigualdad estricta
 
 La afirmación es falsa.
@@ -2966,6 +3030,8 @@ $$
 cuando los extremos correspondientes existen. La inclusión estricta del conjunto no decide si estas desigualdades serán estrictas o no.
 
 []{#MA-SOL-ANM-01-002-032}
+
+[]{#MA-EX-ANM-01-002-032}
 
 ### 32. Dónde añadir un punto determina qué barrera se mueve
 
@@ -3102,6 +3168,8 @@ $$
 El punto añadido sólo desplaza una barrera cuando cae fuera del intervalo de control $[i,s]$ por el lado correspondiente.
 
 []{#MA-SOL-ANM-01-002-033}
+
+[]{#MA-EX-ANM-01-002-033}
 
 ### 33. Cuándo la inclusión deja intactas todas las cotas
 
@@ -3265,6 +3333,8 @@ Sin embargo, $A$ contiene sólo dos puntos y $B$ contiene todo el intervalo entr
 
 []{#MA-SOL-ANM-01-002-034}
 
+[]{#MA-EX-ANM-01-002-034}
+
 ### 34. Definir no es garantizar
 
 **1. Se deduce de la definición.** Si
@@ -3335,6 +3405,8 @@ El ejercicio separa dos preguntas:
 C02 resuelve completamente la primera y deja abierta la garantía general de la segunda.
 
 []{#MA-SOL-ANM-01-002-035}
+
+[]{#MA-EX-ANM-01-002-035}
 
 ### 35. Un mapa de los dos obstáculos
 
@@ -3424,6 +3496,8 @@ No se necesita introducir $+\infty$ para describir ninguno de los tres casos.
 
 []{#MA-SOL-ANM-01-002-036}
 
+[]{#MA-EX-ANM-01-002-036}
+
 ### 36. Una conclusión correcta con una prueba incompleta
 
 El argumento comienza correctamente. Si $A$ está acotado superiormente, entonces por definición existe al menos una cota superior, de modo que
@@ -3469,6 +3543,8 @@ sea falsa. Estamos mostrando que **el razonamiento propuesto no la demuestra**. 
 En C02 esa garantía general todavía no está disponible. La prueba, por tanto, queda lógicamente incompleta aunque apunte hacia la afirmación que motivará C03.
 
 []{#MA-SOL-ANM-01-002-037}
+
+[]{#MA-EX-ANM-01-002-037}
 
 ### 37. El vacío tiene todas las cotas, pero ningún extremo real
 
@@ -3562,6 +3638,8 @@ Las fallas son distintas:
 Tener muchas cotas —incluso todas— no equivale a tener una cota extremal.
 
 []{#MA-SOL-ANM-01-002-038}
+
+[]{#MA-EX-ANM-01-002-038}
 
 ### 38. El hueco racional: cotas sin supremo en $\mathbb Q$
 
@@ -3797,6 +3875,8 @@ El orden y la acotación, por sí solos, no garantizan la existencia de la barre
 
 []{#MA-SOL-ANM-01-002-039}
 
+[]{#MA-EX-ANM-01-002-039}
+
 ### 39. Un mapa de equivalencias alrededor de una barrera
 
 Partimos de un conjunto no vacío $A\subseteq\mathbb R$ y un número real $s$.
@@ -3994,13 +4074,13 @@ $$
 
 Por eso el capítulo puede haber agotado la teoría de **reconocimiento** del supremo sin haber demostrado todavía una garantía general de **existencia**.
 
-La figura C02-F10 reúne estas dependencias en un único mapa lógico y deja la garantía general de existencia como una puerta discontinua hacia C03.
+La figura [C02-F10](#fig-anm-c02-f10) reúne estas dependencias en un único mapa lógico y deja la garantía general de existencia como una puerta discontinua hacia C03.
 
-![](../../assets/books/anm/C02/C02-F10.svg){fig-alt="Grafo de dependencias con nodos para s=sup A, s=min U(A), cota superior más condición epsilon, s en A, s=max A y una caja discontinua C03 para la garantía general de existencia."}
-
-*Figura C02-F10. Las relaciones de C02 forman un grafo: varias caracterizaciones del supremo son equivalentes; la pertenencia produce máximo; la garantía general de existencia pertenece a C03.*
+![Las relaciones de C02 forman un grafo: varias caracterizaciones del supremo son equivalentes; la pertenencia produce máximo; la garantía general de existencia pertenece a C03.](../../assets/books/anm/C02/C02-F10.svg){#fig-anm-c02-f10 fig-alt="Grafo de dependencias con nodos para s=sup A, s=min U(A), cota superior más condición epsilon, s en A, s=max A y una caja discontinua C03 para la garantía general de existencia."}
 
 []{#MA-SOL-ANM-01-002-040}
+
+[]{#MA-EX-ANM-01-002-040}
 
 ### 40. Diseñar con precisión la pieza que falta
 
@@ -4184,4 +4264,6 @@ La separación final puede expresarse así:
 
 Ésta es la frontera exacta entre C02 y C03.
 
-La figura C02-F10, integrada tras la solución 39, puede releerse aquí como mapa de dependencias: las equivalencias de C02 permanecen activas, mientras la flecha discontinua hacia C03 representa únicamente la garantía de existencia que todavía falta.
+La figura [C02-F10](#fig-anm-c02-f10), integrada tras la solución 39, puede releerse aquí como mapa de dependencias: las equivalencias de C02 permanecen activas, mientras la flecha discontinua hacia C03 representa únicamente la garantía de existencia que todavía falta.
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html)

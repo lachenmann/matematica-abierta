@@ -1,5 +1,5 @@
 ---
-title: "Ejercicios — Capítulo 4"
+title: Ejercicios — Capítulo 4
 content-id: MA-BCH-0096
 content-type: book-chapter
 collection: PM-ANA
@@ -9,27 +9,35 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
-prerequisites: [MA-BCH-0083]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- orden
+- topologia
+prerequisites:
+- MA-BCH-0083
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C04; referencias de contraste en la portada del libro."
+  - ANM-C04_EJERCICIOS.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Capítulo 4](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.md)
-
-# Ejercicios — Capítulo 4
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 4](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html) · [Ejercicios](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.html)
 
 ## §4.1. Ventanas alrededor de un punto: vecindades
 
 []{#MA-EX-ANM-01-004-001}
+
+[]{#MA-SEC-ANM-01-004-001}
+
+[]{#MA-SOL-ANM-01-004-001}
 
 ### 1. Una definición, varias formas lógicas
 
@@ -66,6 +74,8 @@ No uses ninguna terminología de secciones posteriores.
 
 []{#MA-EX-ANM-01-004-002}
 
+[]{#MA-SOL-ANM-01-004-002}
+
 ### 2. El conjunto de radios que realmente sirven
 
 Sea
@@ -95,6 +105,8 @@ e) Compara $R_V(-1)$ y $R_V(2)$ y explica qué muestra el ejemplo acerca de la d
 Tu respuesta debe distinguir entre «pertenecer a $V$» y «disponer de un radio positivo cuya bola completa quede dentro de $V$».
 
 []{#MA-EX-ANM-01-004-003}
+
+[]{#MA-SOL-ANM-01-004-003}
 
 ### 3. Intersecciones finitas sí; intersecciones arbitrarias, no
 
@@ -141,6 +153,8 @@ No uses teoría de conjuntos abiertos ni resultados de §4.7.
 
 []{#MA-EX-ANM-01-004-004}
 
+[]{#MA-SOL-ANM-01-004-004}
+
 ### 4. Cuando «tocar» una ventana se confunde con «llenarla»
 
 Un estudiante quiere demostrar que
@@ -172,6 +186,10 @@ e) Repara la conclusión del estudiante sin introducir aún nombres de conceptos
 ## §4.2. Interior y exterior: tener margen
 
 []{#MA-EX-ANM-01-004-005}
+
+[]{#MA-SEC-ANM-01-004-002}
+
+[]{#MA-SOL-ANM-01-004-005}
 
 ### 5. Negar correctamente el margen
 
@@ -210,6 +228,8 @@ e) Explica por qué la alternativa «interior o exterior» no agota necesariamen
 No nombres todavía la tercera clase local que aparecerá más adelante.
 
 []{#MA-EX-ANM-01-004-006}
+
+[]{#MA-SOL-ANM-01-004-006}
 
 ### 6. Dos familias de radios alrededor del mismo conjunto
 
@@ -250,6 +270,8 @@ b) explica qué información aporta conocer el conjunto completo de radios admis
 c) compara los casos $x=-1$ y $x=4$: uno pertenece a $A$ y el otro no, pero ambos producen el mismo patrón de radios admisibles. Explica por qué esto confirma que pertenencia y margen local son datos distintos.
 
 []{#MA-EX-ANM-01-004-007}
+
+[]{#MA-SOL-ANM-01-004-007}
 
 ### 7. Clasificar todo un conjunto por margen local
 
@@ -292,6 +314,8 @@ d) verifica al final que cada punto real ha quedado clasificado como interior, e
 No uses todavía ninguna noción posterior a §4.2.
 
 []{#MA-EX-ANM-01-004-008}
+
+[]{#MA-SOL-ANM-01-004-008}
 
 ### 8. Cómo se comporta el interior bajo operaciones de conjuntos
 
@@ -341,6 +365,8 @@ Identifica el punto que pertenece al interior de $A\cup B$ pero no a $\operatorn
 
 []{#MA-EX-ANM-01-004-009}
 
+[]{#MA-SOL-ANM-01-004-009}
+
 ### 9. Añadir puntos sin crear margen
 
 Sea $t>1$ y considera
@@ -385,6 +411,10 @@ e) Formula con tus propias palabras una conclusión general: ¿qué muestra esta
 
 []{#MA-EX-ANM-01-004-010}
 
+[]{#MA-SEC-ANM-01-004-003}
+
+[]{#MA-SOL-ANM-01-004-010}
+
 ### 10. Una clausura con intervalos y un punto separado
 
 Sea
@@ -410,6 +440,8 @@ $$
 y explicar por qué no hay otros puntos adherentes.
 
 []{#MA-EX-ANM-01-004-011}
+
+[]{#MA-SOL-ANM-01-004-011}
 
 ### 11. La clausura de una unión finita
 
@@ -437,6 +469,8 @@ Para una de las inclusiones puedes usar la monotonicidad de la clausura ya demos
 Al final, identifica dónde se usa que sólo hay **dos** conjuntos.
 
 []{#MA-EX-ANM-01-004-012}
+
+[]{#MA-SOL-ANM-01-004-012}
 
 ### 12. La intersección se comporta de otra manera
 
@@ -469,6 +503,8 @@ d) Explica por qué el fracaso de la igualdad no contradice la identidad del eje
 Tu solución no debe invocar conjuntos cerrados ni resultados de §4.7.
 
 []{#MA-EX-ANM-01-004-013}
+
+[]{#MA-SOL-ANM-01-004-013}
 
 ### 13. Reparar una prueba de idempotencia
 
@@ -513,6 +549,8 @@ d) Explica por qué la elección corregida permite cerrar el argumento para un r
 e) Resume en una frase el mecanismo reutilizable de la reparación.
 
 []{#MA-EX-ANM-01-004-014}
+
+[]{#MA-SOL-ANM-01-004-014}
 
 ### 14. Perforar, rellenar y añadir un punto separado
 
@@ -573,6 +611,10 @@ e) Formula una conclusión conceptual: ¿qué información local detecta la clau
 
 []{#MA-EX-ANM-01-004-015}
 
+[]{#MA-SEC-ANM-01-004-004}
+
+[]{#MA-SOL-ANM-01-004-015}
+
 ### 15. El espacio lógico de tres estados locales
 
 Sean $A\subseteq\mathbb R$ y $x\in\mathbb R$. Considera las dos preguntas:
@@ -626,6 +668,8 @@ d) Resume el resultado en una tabla con tres filas: interior, exterior y fronter
 
 []{#MA-EX-ANM-01-004-016}
 
+[]{#MA-SOL-ANM-01-004-016}
+
 ### 16. Clasificar una configuración completa
 
 Sea
@@ -668,6 +712,8 @@ $$
 $$
 
 []{#MA-EX-ANM-01-004-017}
+
+[]{#MA-SOL-ANM-01-004-017}
 
 ### 17. La frontera de una unión no puede aparecer de la nada
 
@@ -713,6 +759,8 @@ d) Explica geométricamente por qué el punto $0$ desaparece de la frontera cuan
 
 []{#MA-EX-ANM-01-004-018}
 
+[]{#MA-SOL-ANM-01-004-018}
+
 ### 18. Dos radios que no están sincronizados
 
 Un estudiante quiere probar que $x\in\partial A$ y dispone de la siguiente información:
@@ -753,6 +801,8 @@ d) Si lo son, repara la demostración mediante una reparametrización adecuada d
 e) Explica qué enseña este ejemplo sobre la necesidad de sincronizar escalas cuando una definición exige dos condiciones dentro de la **misma** bola.
 
 []{#MA-EX-ANM-01-004-019}
+
+[]{#MA-SOL-ANM-01-004-019}
 
 ### 19. La frontera no es monótona
 
@@ -818,6 +868,10 @@ Tu argumento debe usar únicamente las definiciones locales disponibles hasta §
 
 []{#MA-EX-ANM-01-004-020}
 
+[]{#MA-SEC-ANM-01-004-005}
+
+[]{#MA-SOL-ANM-01-004-020}
+
 ### 20. Negar una bola perforada
 
 Sean $A\subseteq\mathbb R$ y $x\in\mathbb R$.
@@ -848,6 +902,8 @@ e) Usa $A=(0,1)$ y $x=0$ para mostrar que un punto puede pertenecer a $\operator
 
 []{#MA-EX-ANM-01-004-021}
 
+[]{#MA-SOL-ANM-01-004-021}
+
 ### 21. Calcular todos los puntos de acumulación
 
 Sea
@@ -863,6 +919,8 @@ Para cada punto que afirmes de acumulación, comienza con un radio arbitrario $r
 
 []{#MA-EX-ANM-01-004-022}
 
+[]{#MA-SOL-ANM-01-004-022}
+
 ### 22. La acumulación de una unión finita
 
 Sean $A,B\subseteq\mathbb R$. Demuestra que
@@ -877,6 +935,8 @@ La prueba debe incluir la inclusión obtenida por monotonicidad y la inclusión 
 Explica al final por qué el argumento depende de que la unión sea finita. No uses sucesiones.
 
 []{#MA-EX-ANM-01-004-023}
+
+[]{#MA-SOL-ANM-01-004-023}
 
 ### 23. Dos testigos distintos no producen un testigo común
 
@@ -907,6 +967,8 @@ d) Explica por qué «existe un punto de $A$ y existe un punto de $B$» no equiv
 
 []{#MA-EX-ANM-01-004-024}
 
+[]{#MA-SOL-ANM-01-004-024}
+
 ### 24. Quitar un punto, añadirlo y colocar otro lejos
 
 Sean $s\in(0,1)$ y $t>1$, y define
@@ -934,6 +996,10 @@ Concluye explicando qué diferencia conceptual existe entre modificar la pertene
 ## §4.6. Puntos aislados y descomposición local
 
 []{#MA-EX-ANM-01-004-025}
+
+[]{#MA-SEC-ANM-01-004-006}
+
+[]{#MA-SOL-ANM-01-004-025}
 
 ### 25. Dos comportamientos dentro del mismo conjunto
 
@@ -975,6 +1041,8 @@ e) explicar qué información adicional aporta esta descomposición respecto de 
 
 []{#MA-EX-ANM-01-004-026}
 
+[]{#MA-SOL-ANM-01-004-026}
+
 ### 26. Aislamiento expresado mediante vecindades
 
 Sean $A\subseteq\mathbb R$ y $x\in A$.
@@ -1004,6 +1072,8 @@ Concluye explicando por qué la palabra «vecindad» no cambia el contenido mate
 
 []{#MA-EX-ANM-01-004-027}
 
+[]{#MA-SOL-ANM-01-004-027}
+
 ### 27. No ser de acumulación no basta para ser aislado
 
 Refuta la afirmación
@@ -1027,6 +1097,8 @@ d) identificar la hipótesis exacta que falta para convertir la afirmación fals
 e) escribir esa equivalencia correcta.
 
 []{#MA-EX-ANM-01-004-028}
+
+[]{#MA-SOL-ANM-01-004-028}
 
 ### 28. El aislamiento no se conserva al agrandar el conjunto
 
@@ -1059,6 +1131,8 @@ d) Formula y demuestra la propiedad que sí es válida en la dirección opuesta:
 e) Explica por qué añadir puntos cerca del centro puede destruir aislamiento, mientras que retirar puntos conservando el centro no puede hacerlo.
 
 []{#MA-EX-ANM-01-004-029}
+
+[]{#MA-SOL-ANM-01-004-029}
 
 ### 29. Qué modificaciones puede ignorar un punto aislado
 
@@ -1104,6 +1178,10 @@ e) Extrae una conclusión local: explica por qué el aislamiento depende únicam
 
 []{#MA-EX-ANM-01-004-030}
 
+[]{#MA-SEC-ANM-01-004-007}
+
+[]{#MA-SOL-ANM-01-004-030}
+
 ### 30. Un radio por punto no es un radio para todos
 
 Considera el intervalo
@@ -1142,6 +1220,8 @@ d) Da un ejemplo de conjunto para el cual la afirmación fuerte sí sea verdader
 
 []{#MA-EX-ANM-01-004-031}
 
+[]{#MA-SOL-ANM-01-004-031}
+
 ### 31. Del margen local al complemento cerrado
 
 Sea
@@ -1175,6 +1255,8 @@ $$
 $$
 
 []{#MA-EX-ANM-01-004-032}
+
+[]{#MA-SOL-ANM-01-004-032}
 
 ### 32. Interior e intersecciones: qué sobrevive para familias arbitrarias
 
@@ -1216,6 +1298,8 @@ d) Identifica exactamente qué paso de la demostración finita deja de estar dis
 
 []{#MA-EX-ANM-01-004-033}
 
+[]{#MA-SOL-ANM-01-004-033}
+
 ### 33. La frontera siempre es cerrada
 
 Sea $A\subseteq\mathbb R$.
@@ -1256,6 +1340,8 @@ c) por qué la intersección de esos dos conjuntos es cerrada.
 Concluye explicando por qué este resultado no afirma que la frontera deba ser finita ni que deba estar contenida en $A$.
 
 []{#MA-EX-ANM-01-004-034}
+
+[]{#MA-SOL-ANM-01-004-034}
 
 ### 34. El mínimo de infinitos radios puede desaparecer
 
@@ -1305,6 +1391,8 @@ e) Repara el enunciado del estudiante sustituyendo «arbitraria» por la hipóte
 
 []{#MA-EX-ANM-01-004-035}
 
+[]{#MA-SOL-ANM-01-004-035}
+
 ### 35. Una unión arbitraria de cerrados puede dejar de ser cerrada
 
 Para cada $r>0$, define
@@ -1328,6 +1416,8 @@ d) Explica por qué esto no contradice el teorema de que las uniones **finitas**
 e) Pasa al complemento y explica cómo este mismo ejemplo refleja el fallo de estabilidad de los abiertos bajo intersecciones arbitrarias.
 
 []{#MA-EX-ANM-01-004-036}
+
+[]{#MA-SOL-ANM-01-004-036}
 
 ### 36. Dos envolventes extremales de un conjunto
 
@@ -1389,6 +1479,10 @@ y determina las dos envolventes.
 
 []{#MA-EX-ANM-01-004-037}
 
+[]{#MA-SEC-ANM-01-004-008}
+
+[]{#MA-SOL-ANM-01-004-037}
+
 ### 37. Reconstruir el diccionario desde tres decisiones
 
 Sea $A\subseteq\mathbb R$ y fija $x\in\mathbb R$.
@@ -1442,6 +1536,8 @@ Finalmente, explica cuál de las seis nociones no puede decidirse sólo con info
 
 []{#MA-EX-ANM-01-004-038}
 
+[]{#MA-SOL-ANM-01-004-038}
+
 ### 38. Radiografía completa de un conjunto mixto
 
 Sea
@@ -1479,6 +1575,8 @@ Tu solución debe usar las identidades del capítulo para reducir trabajo cuando
 - por qué $-1$ pertenece a la frontera aunque pertenezca a $A$.
 
 []{#MA-EX-ANM-01-004-039}
+
+[]{#MA-SOL-ANM-01-004-039}
 
 ### 39. Cinco formas de reconocer que un conjunto es cerrado
 
@@ -1521,6 +1619,8 @@ $$
 Al final, explica qué aporta la quinta caracterización respecto de las otras cuatro: ¿qué dice de los puntos donde toda ventana ve ambos lados?
 
 []{#MA-EX-ANM-01-004-040}
+
+[]{#MA-SOL-ANM-01-004-040}
 
 ### 40. Reconstrucción inversa a partir de datos locales
 
@@ -1585,3 +1685,5 @@ A
 $$
 
 y no una mera inspección de la respuesta propuesta.
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 4](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html) · [Ejercicios](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.html)
