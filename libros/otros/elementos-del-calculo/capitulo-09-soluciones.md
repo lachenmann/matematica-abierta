@@ -7,20 +7,19 @@ editorial-project: EDC
 date-modified: '2026-10-12'
 license: GFDL-1.3-or-later
 areas:
-- calculo
-- analisis
-- fundamentos
+  - calculo
+  - analisis
+  - fundamentos
 level: intermedio
 topics:
-- calculo-de-una-variable
-- historia-de-las-matematicas
+  - calculo-de-una-variable
+  - historia-de-las-matematicas
 number-sections: false
 provenance:
   type: original
   sources:
-  - role: idea
-    note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra
-      independiente.'
+    - role: idea
+      note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C09-SOLUCIONES
 source-sha256: 5c3678b0f922e1ad2412c95c3995f41e4c56f8ea861f191f6759f15f4213a9f3
 ---

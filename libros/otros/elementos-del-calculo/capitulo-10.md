@@ -7,26 +7,25 @@ editorial-project: EDC
 date-modified: '2026-10-12'
 license: GFDL-1.3-or-later
 areas:
-- calculo
-- analisis
-- fundamentos
+  - calculo
+  - analisis
+  - fundamentos
 level: intermedio
 topics:
-- calculo-de-una-variable
-- historia-de-las-matematicas
+  - calculo-de-una-variable
+  - historia-de-las-matematicas
 number-sections: false
 provenance:
   type: original
   sources:
-  - role: idea
-    note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra
-      independiente.'
+    - role: idea
+      note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C10
 source-sha256: 7213233b7af3857b0fe4e5b3682b2a96f374a52eaa980a06e5646933dcb8aea7
 content-id: MA-BCH-0341
 content-type: book-chapter
 related:
-- MA-BOK-0015
+  - MA-BOK-0015
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -253,9 +252,12 @@ para una constante $L$ adecuada porque $u,v$ están acotados. El Teorema 10.6 fu
 
 Los parámetros $r$ y $K$ no son conclusiones matemáticas extraídas de un censo: son hipótesis de un modelo que debe verificarse por otros medios. La curva logística está asociada a los estudios poblacionales decimonónicos de Verhulst; las fechas y el alcance histórico se precisan en [las notas](capitulo-10-notas.html).
 
-![Dos soluciones logísticas positivas con K=1,2: una crece desde y0=0,23 y otra decrece desde y0=1,85 hacia la recta de equilibrio y=K.](/assets/books/elementos-del-calculo/EDC-C10-F01_TRAYECTORIAS_LOGISTICAS.svg){#fig-edc-c10-01 fig-alt="Dos soluciones logísticas positivas con K=1,2: una crece desde y0=0,23 y otra decrece desde y0=1,85 hacia la recta de equilibrio y=K."}
+<figure id="fig-edc-c10-01" class="quarto-float-fig">
+<img src="/assets/books/elementos-del-calculo/EDC-C10-F01_TRAYECTORIAS_LOGISTICAS.svg" alt="Dos soluciones logísticas positivas con K=1,2: una crece desde y0=0,23 y otra decrece desde y0=1,85 hacia la recta de equilibrio y=K.">
+<figcaption>Figura 10.1. Las dos ramas muestran el papel del dato inicial en el modelo idealizado; la unicidad se obtiene de las hipótesis demostradas, no del gráfico.</figcaption>
+</figure>
 
-*Figura 10.1.* Las dos ramas muestran el papel del dato inicial en el modelo idealizado; la unicidad se obtiene de las hipótesis demostradas, no del gráfico.
+
 
 ## 10.9. Enfriamiento: una diferencia que disminuye
 

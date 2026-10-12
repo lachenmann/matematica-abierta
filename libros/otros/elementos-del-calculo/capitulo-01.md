@@ -7,26 +7,25 @@ editorial-project: EDC
 date-modified: '2026-10-12'
 license: GFDL-1.3-or-later
 areas:
-- calculo
-- analisis
-- fundamentos
+  - calculo
+  - analisis
+  - fundamentos
 level: intermedio
 topics:
-- calculo-de-una-variable
-- historia-de-las-matematicas
+  - calculo-de-una-variable
+  - historia-de-las-matematicas
 number-sections: false
 provenance:
   type: original
   sources:
-  - role: idea
-    note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra
-      independiente.'
+    - role: idea
+      note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C01
 source-sha256: cca4f547560e84a718164ccd1652696d7c3df82e8618946bdc1164a62b25abc3
 content-id: MA-BCH-0332
 content-type: book-chapter
 related:
-- MA-BOK-0015
+  - MA-BOK-0015
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -65,9 +64,12 @@ $$
 
 ¿Podemos llamar «tangente» a esta recta? Sí, cuando precisemos qué significa aproximar la gráfica **hasta el primer orden**. Pero ni todos los cocientes incrementales tienen límite, ni una definición basada exclusivamente en «tocar una sola vez» funciona para cualquier curva.
 
-![Parábola negra y=x²; secante roja discontinua por los puntos P y Qh; tangente azul en P. La pendiente secante vale 2a+h y converge a 2a.](/assets/books/elementos-del-calculo/EDC-C01-F01_SECANTE_TANGENTE.svg){#fig-edc-c01-01 fig-alt="Parábola negra y=x²; secante roja discontinua por los puntos P y Qh; tangente azul en P. La pendiente secante vale 2a+h y converge a 2a."}
+<figure id="fig-edc-c01-01" class="quarto-float-fig">
+<img src="/assets/books/elementos-del-calculo/EDC-C01-F01_SECANTE_TANGENTE.svg" alt="Parábola negra y=x²; secante roja discontinua por los puntos P y Qh; tangente azul en P. La pendiente secante vale 2a+h y converge a 2a.">
+<figcaption>Figura 1.1. La secante y la tangente cumplen ecuaciones diferentes; su coincidencia en el límite exige el cociente incremental.</figcaption>
+</figure>
 
-*Figura 1.1.* La secante y la tangente cumplen ecuaciones diferentes; su coincidencia en el límite exige el cociente incremental.
+
 
 ## 1.2. De la geometría al movimiento: dos problemas distintos
 

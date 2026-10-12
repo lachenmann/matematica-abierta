@@ -7,26 +7,25 @@ editorial-project: EDC
 date-modified: '2026-10-12'
 license: GFDL-1.3-or-later
 areas:
-- calculo
-- analisis
-- fundamentos
+  - calculo
+  - analisis
+  - fundamentos
 level: intermedio
 topics:
-- calculo-de-una-variable
-- historia-de-las-matematicas
+  - calculo-de-una-variable
+  - historia-de-las-matematicas
 number-sections: false
 provenance:
   type: original
   sources:
-  - role: idea
-    note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra
-      independiente.'
+    - role: idea
+      note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C09
 source-sha256: 138f85cc67d682b2b8e1b6d5a9e4cbe8a83be4ba9fcc1604ed17469e56fca5b1
 content-id: MA-BCH-0340
 content-type: book-chapter
 related:
-- MA-BOK-0015
+  - MA-BOK-0015
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -179,9 +178,12 @@ $$
 
 La cota es útil cuando $M$ puede estimarse **antes** de conocer el punto $\xi$. No se ha afirmado que las derivadas de todo orden estén acotadas por una misma constante, ni que aumentar $n$ siempre reduzca el error.
 
-![Gráfica de e^x y las aproximaciones T1(x)=1+x y T2(x)=1+x+x²/2, con separación vertical que representa un resto local.](/assets/books/elementos-del-calculo/EDC-C09-F01_TAYLOR_RESTO.svg){#fig-edc-c09-01 fig-alt="Gráfica de e^x y las aproximaciones T1(x)=1+x y T2(x)=1+x+x²/2, con separación vertical que representa un resto local."}
+<figure id="fig-edc-c09-01" class="quarto-float-fig">
+<img src="/assets/books/elementos-del-calculo/EDC-C09-F01_TAYLOR_RESTO.svg" alt="Gráfica de e^x y las aproximaciones T1(x)=1+x y T2(x)=1+x+x²/2, con separación vertical que representa un resto local.">
+<figcaption>Figura 9.1. El dibujo sugiere la mejora local; la garantía cuantitativa procede de Taylor–Lagrange y de la cota sobre la siguiente derivada.</figcaption>
+</figure>
 
-*Figura 9.1.* El dibujo sugiere la mejora local; la garantía cuantitativa procede de Taylor–Lagrange y de la cota sobre la siguiente derivada.
+
 
 ## 9.5. El resto como integral y su relación con el cálculo acumulativo
 

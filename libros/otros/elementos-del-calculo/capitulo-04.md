@@ -7,26 +7,25 @@ editorial-project: EDC
 date-modified: '2026-10-12'
 license: GFDL-1.3-or-later
 areas:
-- calculo
-- analisis
-- fundamentos
+  - calculo
+  - analisis
+  - fundamentos
 level: intermedio
 topics:
-- calculo-de-una-variable
-- historia-de-las-matematicas
+  - calculo-de-una-variable
+  - historia-de-las-matematicas
 number-sections: false
 provenance:
   type: original
   sources:
-  - role: idea
-    note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra
-      independiente.'
+    - role: idea
+      note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C04
 source-sha256: b348b8d637373cf7387fd7b08a81846ad679f889a6e828dc1c236084838bba71
 content-id: MA-BCH-0335
 content-type: book-chapter
 related:
-- MA-BOK-0015
+  - MA-BOK-0015
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -117,9 +116,12 @@ El triángulo con base sobre la cuerda $[(u,f(u)),(v,f(v))]$ y vértice en la gr
 
 La recurrencia explica por qué **aparece la razón $1/4$**; no es un número adivinado por la suma de una serie. A cada generación se agregan $2^n$ triángulos, cada uno de área $T/8^n$, por lo que el área total de la generación $n$ es $T/4^n$.
 
-![Parábola cóncava y=4x(1−x) entre cero y uno, triángulo inscrito inicial T y dos triángulos añadidos de área T/8 cada uno.](/assets/books/elementos-del-calculo/EDC-C04-F01_AGOTAMIENTO_PARABOLA.svg){#fig-edc-c04-01 fig-alt="Parábola cóncava y=4x(1−x) entre cero y uno, triángulo inscrito inicial T y dos triángulos añadidos de área T/8 cada uno."}
+<figure id="fig-edc-c04-01" class="quarto-float-fig">
+<img src="/assets/books/elementos-del-calculo/EDC-C04-F01_AGOTAMIENTO_PARABOLA.svg" alt="Parábola cóncava y=4x(1−x) entre cero y uno, triángulo inscrito inicial T y dos triángulos añadidos de área T/8 cada uno.">
+<figcaption>Figura 4.1. Dos nuevas piezas suman T/4. El agotamiento se completa con una cota poligonal del resto, no solamente mediante el dibujo.</figcaption>
+</figure>
 
-*Figura 4.1.* Dos nuevas piezas suman T/4. El agotamiento se completa con una cota poligonal del resto, no solamente mediante el dibujo.
+
 
 ## 4.4. Una suma finita y un resto geométrico explícito
 

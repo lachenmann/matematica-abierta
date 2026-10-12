@@ -7,26 +7,25 @@ editorial-project: EDC
 date-modified: '2026-10-12'
 license: GFDL-1.3-or-later
 areas:
-- calculo
-- analisis
-- fundamentos
+  - calculo
+  - analisis
+  - fundamentos
 level: intermedio
 topics:
-- calculo-de-una-variable
-- historia-de-las-matematicas
+  - calculo-de-una-variable
+  - historia-de-las-matematicas
 number-sections: false
 provenance:
   type: original
   sources:
-  - role: idea
-    note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra
-      independiente.'
+    - role: idea
+      note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C02
 source-sha256: beca3ec5832a098e115c688dc8f63406e9e2366ef6ea2a3edb6f9eecede5ccde
 content-id: MA-BCH-0333
 content-type: book-chapter
 related:
-- MA-BOK-0015
+  - MA-BOK-0015
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -359,9 +358,12 @@ pues $|\sin h|\le|h|$ cerca de cero. $\square$
 
 El alcance exacto es éste: los límites de seno y coseno quedan demostrados **a partir de** las identidades trigonométricas y de la medida geométrica previa de sectores. Una construcción independiente de esa medida mediante polígonos inscritos y circunscritos constituiría un desarrollo adicional de geometría. Esta dependencia explícita no debilita las conclusiones analíticas, pero impide describir el lema como demostrado únicamente desde la completitud de $\mathbb R$.
 
-![Sector del círculo unitario entre un radio horizontal y otro de ángulo h. Un triángulo interior, un sector y un triángulo exterior por tangente tienen áreas sen(h)/2, h/2 y tan(h)/2.](/assets/books/elementos-del-calculo/EDC-C02-F01_SECTOR_RADIANES.svg){#fig-edc-c02-01 fig-alt="Sector del círculo unitario entre un radio horizontal y otro de ángulo h. Un triángulo interior, un sector y un triángulo exterior por tangente tienen áreas sen(h)/2, h/2 y tan(h)/2."}
+<figure id="fig-edc-c02-01" class="quarto-float-fig">
+<img src="/assets/books/elementos-del-calculo/EDC-C02-F01_SECTOR_RADIANES.svg" alt="Sector del círculo unitario entre un radio horizontal y otro de ángulo h. Un triángulo interior, un sector y un triángulo exterior por tangente tienen áreas sen(h)/2, h/2 y tan(h)/2.">
+<figcaption>Figura 2.1. Comparación sectorial utilizada en el Lema 2.2. La igualdad área del sector = h/2 es la premisa geométrica previa declarada, no una consecuencia de la futura integral.</figcaption>
+</figure>
 
-*Figura 2.1.* Comparación sectorial utilizada en el Lema 2.2. La igualdad área del sector = h/2 es la premisa geométrica previa declarada, no una consecuencia de la futura integral.
+
 
 **Teorema 2.6 (derivadas trigonométricas; `EDC-C02-THM-006`).** Para todo $x\in\mathbb R$,
 

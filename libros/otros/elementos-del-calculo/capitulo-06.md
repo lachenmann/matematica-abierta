@@ -7,26 +7,25 @@ editorial-project: EDC
 date-modified: '2026-10-12'
 license: GFDL-1.3-or-later
 areas:
-- calculo
-- analisis
-- fundamentos
+  - calculo
+  - analisis
+  - fundamentos
 level: intermedio
 topics:
-- calculo-de-una-variable
-- historia-de-las-matematicas
+  - calculo-de-una-variable
+  - historia-de-las-matematicas
 number-sections: false
 provenance:
   type: original
   sources:
-  - role: idea
-    note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra
-      independiente.'
+    - role: idea
+      note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C06
 source-sha256: 2df0efc20be84084ff22f3a6ca094ea3a4d2d010b824d6928648fbcd2bf0477e
 content-id: MA-BCH-0337
 content-type: book-chapter
 related:
-- MA-BOK-0015
+  - MA-BOK-0015
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -87,9 +86,12 @@ $$
 
 **Demostración.** Por continuidad relativa en $c$, elegimos $\delta$ de manera que $|f(t)-f(c)|<\varepsilon/2$ para todos los $t\in[a,b]$ con $|t-c|<\delta$. Entonces el supremo sobre $J$ no excede $\varepsilon/2<\varepsilon$. $\square$
 
-![Gráfica de f(x)=x−1/2 entre cero y uno, área negativa de −1/8 bajo el eje a la izquierda y área positiva de +1/8 a la derecha.](/assets/books/elementos-del-calculo/EDC-C06-F01_ACUMULACION_ORIENTADA.svg){#fig-edc-c06-01 fig-alt="Gráfica de f(x)=x−1/2 entre cero y uno, área negativa de −1/8 bajo el eje a la izquierda y área positiva de +1/8 a la derecha."}
+<figure id="fig-edc-c06-01" class="quarto-float-fig">
+<img src="/assets/books/elementos-del-calculo/EDC-C06-F01_ACUMULACION_ORIENTADA.svg" alt="Gráfica de f(x)=x−1/2 entre cero y uno, área negativa de −1/8 bajo el eje a la izquierda y área positiva de +1/8 a la derecha.">
+<figcaption>Figura 6.1. La integral con signo suma las contribuciones orientadas y puede anularse sin que desaparezca el área geométrica total.</figcaption>
+</figure>
 
-*Figura 6.1.* La integral con signo suma las contribuciones orientadas y puede anularse sin que desaparezca el área geométrica total.
+
 
 ## 6.3. La función de acumulación es continua, aun antes de derivarla
 

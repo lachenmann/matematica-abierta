@@ -7,26 +7,25 @@ editorial-project: EDC
 date-modified: '2026-10-12'
 license: GFDL-1.3-or-later
 areas:
-- calculo
-- analisis
-- fundamentos
+  - calculo
+  - analisis
+  - fundamentos
 level: intermedio
 topics:
-- calculo-de-una-variable
-- historia-de-las-matematicas
+  - calculo-de-una-variable
+  - historia-de-las-matematicas
 number-sections: false
 provenance:
   type: original
   sources:
-  - role: idea
-    note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra
-      independiente.'
+    - role: idea
+      note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C05
 source-sha256: eb9b2077d194cc43ecd344c25c0775abc0361c5c8bd76a71134b633a42825bb0
 content-id: MA-BCH-0336
 content-type: book-chapter
 related:
-- MA-BOK-0015
+  - MA-BOK-0015
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -118,9 +117,12 @@ No es necesario que $P$ y $Q$ tengan igual número de subintervalos ni puntos de
 
 La conclusión permite tomar supremos e ínfimos **sobre todas las particiones** sin temor a que una cota inferior quede por encima de una superior. Ésa es la compatibilidad global que faltaba en los encajes aislados del capítulo anterior.
 
-![Dos paneles con la misma partición no uniforme para f(x)=x²: a la izquierda rectángulos inferiores, a la derecha superiores, encerrando la curva.](/assets/books/elementos-del-calculo/EDC-C05-F01_SUMAS_DARBOUX.svg){#fig-edc-c05-01 fig-alt="Dos paneles con la misma partición no uniforme para f(x)=x²: a la izquierda rectángulos inferiores, a la derecha superiores, encerrando la curva."}
+<figure id="fig-edc-c05-01" class="quarto-float-fig">
+<img src="/assets/books/elementos-del-calculo/EDC-C05-F01_SUMAS_DARBOUX.svg" alt="Dos paneles con la misma partición no uniforme para f(x)=x²: a la izquierda rectángulos inferiores, a la derecha superiores, encerrando la curva.">
+<figcaption>Figura 5.1. Los valores inferiores y superiores dependen de los supremos e ínfimos de la misma partición; el argumento general exige además refinamientos comunes.</figcaption>
+</figure>
 
-*Figura 5.1.* Los valores inferiores y superiores dependen de los supremos e ínfimos de la misma partición; el argumento general exige además refinamientos comunes.
+
 
 ## 5.3. Construcción por completitud
 
