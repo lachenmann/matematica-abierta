@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0017 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0226 |
+| Capítulo | MA-BCH-0331 |
 | Curso | MA-CRS-0002 |
 | Libro | MA-BOK-0015 |
 
@@ -403,3 +403,116 @@ C1–C7 conservan sus IDs públicos. C8–C26 usan el siguiente bloque disponibl
 | MA-BCH-0223 | book-chapter | Capítulo 21 — Primer teorema de incompletitud | libros/otros/tratado-de-logica/capitulo-21.md | published; TLOG-CH21-0001 |
 | MA-BCH-0224 | book-chapter | Capítulo 22 — Segundo teorema de incompletitud | libros/otros/tratado-de-logica/capitulo-22.md | published; TLOG-CH22-0001 |
 | MA-BCH-0225 | book-chapter | Capítulo 23 — Indecidibilidad, límites y frontera con GAS | libros/otros/tratado-de-logica/capitulo-23.md | published; TLOG-CH23-0001 |
+
+
+## ANM — Edición completa, 2026-10-11
+
+Se conservan los IDs y URLs publicados de C00–C05. Se incorporan C06–C31, sus tres bancos y el epílogo. Los IDs editoriales canónicos permanecen independientes y no se renumeran.
+
+| ID público | Tipo | ID editorial | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BCH-0226 | book-chapter | MA-BCH-ANM-01-006 | `libros/capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n.md` | published |
+| MA-BCH-0227 | book-chapter | MA-BCH-ANM-01-006-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-ejercicios.md` | published |
+| MA-BCH-0228 | book-chapter | MA-BCH-ANM-01-006-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-soluciones.md` | published |
+| MA-BCH-0229 | book-chapter | MA-BCH-ANM-01-006-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-microcontroles.md` | published |
+| MA-BCH-0230 | book-chapter | MA-BCH-ANM-01-007 | `libros/capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.md` | published |
+| MA-BCH-0231 | book-chapter | MA-BCH-ANM-01-007-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-ejercicios.md` | published |
+| MA-BCH-0232 | book-chapter | MA-BCH-ANM-01-007-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-soluciones.md` | published |
+| MA-BCH-0233 | book-chapter | MA-BCH-ANM-01-007-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-microcontroles.md` | published |
+| MA-BCH-0234 | book-chapter | MA-BCH-ANM-01-008 | `libros/capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.md` | published |
+| MA-BCH-0235 | book-chapter | MA-BCH-ANM-01-008-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-ejercicios.md` | published |
+| MA-BCH-0236 | book-chapter | MA-BCH-ANM-01-008-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-soluciones.md` | published |
+| MA-BCH-0237 | book-chapter | MA-BCH-ANM-01-008-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-microcontroles.md` | published |
+| MA-BCH-0238 | book-chapter | MA-BCH-ANM-01-009 | `libros/capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.md` | published |
+| MA-BCH-0239 | book-chapter | MA-BCH-ANM-01-009-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.md` | published |
+| MA-BCH-0240 | book-chapter | MA-BCH-ANM-01-009-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.md` | published |
+| MA-BCH-0241 | book-chapter | MA-BCH-ANM-01-009-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-microcontroles.md` | published |
+| MA-BCH-0242 | book-chapter | MA-BCH-ANM-01-010 | `libros/capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.md` | published |
+| MA-BCH-0243 | book-chapter | MA-BCH-ANM-01-010-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-ejercicios.md` | published |
+| MA-BCH-0244 | book-chapter | MA-BCH-ANM-01-010-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-soluciones.md` | published |
+| MA-BCH-0245 | book-chapter | MA-BCH-ANM-01-010-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-microcontroles.md` | published |
+| MA-BCH-0246 | book-chapter | MA-BCH-ANM-01-011 | `libros/capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.md` | published |
+| MA-BCH-0247 | book-chapter | MA-BCH-ANM-01-011-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-ejercicios.md` | published |
+| MA-BCH-0248 | book-chapter | MA-BCH-ANM-01-011-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-soluciones.md` | published |
+| MA-BCH-0249 | book-chapter | MA-BCH-ANM-01-011-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-microcontroles.md` | published |
+| MA-BCH-0250 | book-chapter | MA-BCH-ANM-01-012 | `libros/capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion.md` | published |
+| MA-BCH-0251 | book-chapter | MA-BCH-ANM-01-012-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.md` | published |
+| MA-BCH-0252 | book-chapter | MA-BCH-ANM-01-012-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.md` | published |
+| MA-BCH-0253 | book-chapter | MA-BCH-ANM-01-012-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-microcontroles.md` | published |
+| MA-BCH-0254 | book-chapter | MA-BCH-ANM-01-013 | `libros/capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.md` | published |
+| MA-BCH-0255 | book-chapter | MA-BCH-ANM-01-013-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-ejercicios.md` | published |
+| MA-BCH-0256 | book-chapter | MA-BCH-ANM-01-013-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-soluciones.md` | published |
+| MA-BCH-0257 | book-chapter | MA-BCH-ANM-01-013-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-microcontroles.md` | published |
+| MA-BCH-0258 | book-chapter | MA-BCH-ANM-01-014 | `libros/capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad.md` | published |
+| MA-BCH-0259 | book-chapter | MA-BCH-ANM-01-014-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-ejercicios.md` | published |
+| MA-BCH-0260 | book-chapter | MA-BCH-ANM-01-014-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-soluciones.md` | published |
+| MA-BCH-0261 | book-chapter | MA-BCH-ANM-01-014-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-microcontroles.md` | published |
+| MA-BCH-0262 | book-chapter | MA-BCH-ANM-01-015 | `libros/capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe.md` | published |
+| MA-BCH-0263 | book-chapter | MA-BCH-ANM-01-015-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-ejercicios.md` | published |
+| MA-BCH-0264 | book-chapter | MA-BCH-ANM-01-015-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-soluciones.md` | published |
+| MA-BCH-0265 | book-chapter | MA-BCH-ANM-01-015-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-microcontroles.md` | published |
+| MA-BCH-0266 | book-chapter | MA-BCH-ANM-01-016 | `libros/capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito.md` | published |
+| MA-BCH-0267 | book-chapter | MA-BCH-ANM-01-016-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-ejercicios.md` | published |
+| MA-BCH-0268 | book-chapter | MA-BCH-ANM-01-016-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-soluciones.md` | published |
+| MA-BCH-0269 | book-chapter | MA-BCH-ANM-01-016-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-microcontroles.md` | published |
+| MA-BCH-0270 | book-chapter | MA-BCH-ANM-01-017 | `libros/capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo.md` | published |
+| MA-BCH-0271 | book-chapter | MA-BCH-ANM-01-017-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-ejercicios.md` | published |
+| MA-BCH-0272 | book-chapter | MA-BCH-ANM-01-017-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-soluciones.md` | published |
+| MA-BCH-0273 | book-chapter | MA-BCH-ANM-01-017-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-microcontroles.md` | published |
+| MA-BCH-0274 | book-chapter | MA-BCH-ANM-01-018 | `libros/capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca.md` | published |
+| MA-BCH-0275 | book-chapter | MA-BCH-ANM-01-018-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-ejercicios.md` | published |
+| MA-BCH-0276 | book-chapter | MA-BCH-ANM-01-018-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-soluciones.md` | published |
+| MA-BCH-0277 | book-chapter | MA-BCH-ANM-01-018-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-microcontroles.md` | published |
+| MA-BCH-0278 | book-chapter | MA-BCH-ANM-01-019 | `libros/capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.md` | published |
+| MA-BCH-0279 | book-chapter | MA-BCH-ANM-01-019-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-ejercicios.md` | published |
+| MA-BCH-0280 | book-chapter | MA-BCH-ANM-01-019-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-soluciones.md` | published |
+| MA-BCH-0281 | book-chapter | MA-BCH-ANM-01-019-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-microcontroles.md` | published |
+| MA-BCH-0282 | book-chapter | MA-BCH-ANM-01-020 | `libros/capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes.md` | published |
+| MA-BCH-0283 | book-chapter | MA-BCH-ANM-01-020-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-ejercicios.md` | published |
+| MA-BCH-0284 | book-chapter | MA-BCH-ANM-01-020-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-soluciones.md` | published |
+| MA-BCH-0285 | book-chapter | MA-BCH-ANM-01-020-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-microcontroles.md` | published |
+| MA-BCH-0286 | book-chapter | MA-BCH-ANM-01-021 | `libros/capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error.md` | published |
+| MA-BCH-0287 | book-chapter | MA-BCH-ANM-01-021-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-ejercicios.md` | published |
+| MA-BCH-0288 | book-chapter | MA-BCH-ANM-01-021-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-soluciones.md` | published |
+| MA-BCH-0289 | book-chapter | MA-BCH-ANM-01-021-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-microcontroles.md` | published |
+| MA-BCH-0290 | book-chapter | MA-BCH-ANM-01-022 | `libros/capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular.md` | published |
+| MA-BCH-0291 | book-chapter | MA-BCH-ANM-01-022-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-ejercicios.md` | published |
+| MA-BCH-0292 | book-chapter | MA-BCH-ANM-01-022-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-soluciones.md` | published |
+| MA-BCH-0293 | book-chapter | MA-BCH-ANM-01-022-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-microcontroles.md` | published |
+| MA-BCH-0294 | book-chapter | MA-BCH-ANM-01-023 | `libros/capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux.md` | published |
+| MA-BCH-0295 | book-chapter | MA-BCH-ANM-01-023-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-ejercicios.md` | published |
+| MA-BCH-0296 | book-chapter | MA-BCH-ANM-01-023-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-soluciones.md` | published |
+| MA-BCH-0297 | book-chapter | MA-BCH-ANM-01-023-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-microcontroles.md` | published |
+| MA-BCH-0298 | book-chapter | MA-BCH-ANM-01-024 | `libros/capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.md` | published |
+| MA-BCH-0299 | book-chapter | MA-BCH-ANM-01-024-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-ejercicios.md` | published |
+| MA-BCH-0300 | book-chapter | MA-BCH-ANM-01-024-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-soluciones.md` | published |
+| MA-BCH-0301 | book-chapter | MA-BCH-ANM-01-024-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-microcontroles.md` | published |
+| MA-BCH-0302 | book-chapter | MA-BCH-ANM-01-025 | `libros/capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.md` | published |
+| MA-BCH-0303 | book-chapter | MA-BCH-ANM-01-025-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-ejercicios.md` | published |
+| MA-BCH-0304 | book-chapter | MA-BCH-ANM-01-025-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-soluciones.md` | published |
+| MA-BCH-0305 | book-chapter | MA-BCH-ANM-01-025-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-microcontroles.md` | published |
+| MA-BCH-0306 | book-chapter | MA-BCH-ANM-01-026 | `libros/capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.md` | published |
+| MA-BCH-0307 | book-chapter | MA-BCH-ANM-01-026-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-ejercicios.md` | published |
+| MA-BCH-0308 | book-chapter | MA-BCH-ANM-01-026-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-soluciones.md` | published |
+| MA-BCH-0309 | book-chapter | MA-BCH-ANM-01-026-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-microcontroles.md` | published |
+| MA-BCH-0310 | book-chapter | MA-BCH-ANM-01-027 | `libros/capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.md` | published |
+| MA-BCH-0311 | book-chapter | MA-BCH-ANM-01-027-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-ejercicios.md` | published |
+| MA-BCH-0312 | book-chapter | MA-BCH-ANM-01-027-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-soluciones.md` | published |
+| MA-BCH-0313 | book-chapter | MA-BCH-ANM-01-027-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-microcontroles.md` | published |
+| MA-BCH-0314 | book-chapter | MA-BCH-ANM-01-028 | `libros/capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.md` | published |
+| MA-BCH-0315 | book-chapter | MA-BCH-ANM-01-028-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-ejercicios.md` | published |
+| MA-BCH-0316 | book-chapter | MA-BCH-ANM-01-028-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-soluciones.md` | published |
+| MA-BCH-0317 | book-chapter | MA-BCH-ANM-01-028-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-microcontroles.md` | published |
+| MA-BCH-0318 | book-chapter | MA-BCH-ANM-01-029 | `libros/capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.md` | published |
+| MA-BCH-0319 | book-chapter | MA-BCH-ANM-01-029-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-ejercicios.md` | published |
+| MA-BCH-0320 | book-chapter | MA-BCH-ANM-01-029-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-soluciones.md` | published |
+| MA-BCH-0321 | book-chapter | MA-BCH-ANM-01-029-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-microcontroles.md` | published |
+| MA-BCH-0322 | book-chapter | MA-BCH-ANM-01-030 | `libros/capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos.md` | published |
+| MA-BCH-0323 | book-chapter | MA-BCH-ANM-01-030-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-ejercicios.md` | published |
+| MA-BCH-0324 | book-chapter | MA-BCH-ANM-01-030-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-soluciones.md` | published |
+| MA-BCH-0325 | book-chapter | MA-BCH-ANM-01-030-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-microcontroles.md` | published |
+| MA-BCH-0326 | book-chapter | MA-BCH-ANM-01-031 | `libros/capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos.md` | published |
+| MA-BCH-0327 | book-chapter | MA-BCH-ANM-01-031-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-ejercicios.md` | published |
+| MA-BCH-0328 | book-chapter | MA-BCH-ANM-01-031-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-soluciones.md` | published |
+| MA-BCH-0329 | book-chapter | MA-BCH-ANM-01-031-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-microcontroles.md` | published |
+| MA-BCH-0330 | book-chapter | MA-BCH-ANM-01-EPILOGUE | `libros/capitulos/analisis-para-matematicos-epilogo.md` | published |

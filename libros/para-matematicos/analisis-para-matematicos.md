@@ -1,7 +1,8 @@
 ---
-title: "Análisis real para matemáticos"
-subtitle: "Un enfoque visual y geométrico"
-description: "Orden, distancia, completitud y topología de la recta real, con figuras originales y soluciones desarrolladas."
+title: Análisis real para matemáticos
+subtitle: Un enfoque visual y geométrico
+description: 'Edición completa: construcción de los reales, límites, continuidad,
+  cálculo diferencial e integral, convergencia uniforme y espacios métricos.'
 content-id: MA-BOK-0010
 content-type: book
 collection: PM-ANA
@@ -9,28 +10,66 @@ editorial-project: ANM
 editorial-id: MA-BOK-ANM-01
 status: published
 date-created: 2026-09-30
-date-modified: 2026-10-07
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, completitud, topologia]
+topics:
+- analisis-real
+- orden
+- completitud
+- topologia
 prerequisites: []
-related: [MA-BCH-0175, MA-BCH-0083, MA-BCH-0084, MA-BCH-0085, MA-BCH-0086, MA-BCH-0179]
+related:
+- MA-BCH-0175
+- MA-BCH-0083
+- MA-BCH-0084
+- MA-BCH-0085
+- MA-BCH-0086
+- MA-BCH-0179
+- MA-BCH-0226
+- MA-BCH-0230
+- MA-BCH-0234
+- MA-BCH-0238
+- MA-BCH-0242
+- MA-BCH-0246
+- MA-BCH-0250
+- MA-BCH-0254
+- MA-BCH-0258
+- MA-BCH-0262
+- MA-BCH-0266
+- MA-BCH-0270
+- MA-BCH-0274
+- MA-BCH-0278
+- MA-BCH-0282
+- MA-BCH-0286
+- MA-BCH-0290
+- MA-BCH-0294
+- MA-BCH-0298
+- MA-BCH-0302
+- MA-BCH-0306
+- MA-BCH-0310
+- MA-BCH-0314
+- MA-BCH-0318
+- MA-BCH-0322
+- MA-BCH-0326
 provenance:
   type: original
   sources:
-    - "Manuscrito canónico ANM, capítulos 0–5 cerrados."
+  - Manuscrito canónico ANM completo, prefacio, C00–C31 y epílogo; auditoría integral
+    ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 ---
 
-Este libro estudia el análisis real mediante una cooperación constante entre razonamiento, lenguaje simbólico y geometría. Las figuras ayudan a formular preguntas y comprender las demostraciones; cada afirmación general conserva su justificación matemática.
+Esta edición reúne el libro completo: **32 capítulos (0–31)**, prefacio y epílogo, **1.290 ejercicios con sus soluciones** y **2.048 microcontroles resueltos**. El recorrido parte de la construcción de los números reales y llega a los espacios métricos, pasando por límites, continuidad, derivadas, integrales y convergencia uniforme.
 
-Se presupone familiaridad con aritmética, álgebra elemental, conjuntos y cuantificadores. El recorrido comienza construyendo los números reales y estableciendo su unicidad estructural. Después distingue el orden de la recta y su distancia, estudia completitud y topología local, y construye el lenguaje de sucesiones y comportamiento eventual.
+[Comenzar por el capítulo 0](../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Leer el prefacio](#prefacio) · [Consultar el epílogo](../capitulos/analisis-para-matematicos-epilogo.html)
 
 ## Prefacio {#prefacio}
 
 Al aprender cálculo descubrimos que podemos estudiar el movimiento en un instante, aproximar una curva por una recta y obtener una cantidad acumulada a partir de contribuciones cada vez más pequeñas. Aprendemos a trabajar con límites, derivadas e integrales; vemos cómo esas ideas se relacionan y cómo permiten resolver problemas que la aritmética y el álgebra elementales no alcanzaban a formular. Pero, junto con ese aprendizaje, aparecen preguntas que merecen un recorrido propio. ¿Por qué existen los límites cuya existencia afirmamos? ¿Qué propiedad de los números reales sostiene nuestros argumentos? ¿Cuándo podemos pasar de una aproximación a una igualdad, o intercambiar un límite con otra operación?
 
-Este libro nace de esas preguntas y continúa el camino de [*Cálculo para matemáticos*](calculo-para-matematicos.md). La relación entre ambos puede expresarse en una frase: **lo que allí asumimos, aquí lo demostramos**. La frase señala un cambio de profundidad. En el libro de cálculo encontramos explicaciones y demostraciones, pero también aceptamos ciertas propiedades de la recta real como punto de partida y utilizamos resultados cuyo fundamento completo exige detenerse más de lo que conviene en una primera exploración. Aquí hacemos de esos fundamentos un objeto de estudio: reconstruimos las razones que permiten confiar en las herramientas y examinamos las hipótesis bajo las cuales funcionan.
+Este libro nace de esas preguntas y continúa el camino de *Cálculo para matemáticos*. La relación entre ambos puede expresarse en una frase: **lo que allí asumimos, aquí lo demostramos**. La frase señala un cambio de profundidad. En el libro de cálculo encontramos explicaciones y demostraciones, pero también aceptamos ciertas propiedades de la recta real como punto de partida y utilizamos resultados cuyo fundamento completo exige detenerse más de lo que conviene en una primera exploración. Aquí hacemos de esos fundamentos un objeto de estudio: reconstruimos las razones que permiten confiar en las herramientas y examinamos las hipótesis bajo las cuales funcionan.
 
 Pensemos en una sucesión creciente que permanece por debajo de una cota. Sus términos avanzan sin retroceder y no pueden crecer indefinidamente. Es natural imaginar que se aproximan a un límite. Sin embargo, esa imagen contiene una pregunta: ¿el punto al que se acercan pertenece necesariamente al sistema numérico en el que estamos trabajando? En los racionales, una sucesión creciente y acotada puede aproximarse a un número que no es racional. En los reales, el teorema de convergencia monótona garantiza la existencia del límite. Comprender esa diferencia nos lleva a la completitud y, finalmente, a preguntar cómo se construye una recta en la que tales límites tengan un lugar.
 
@@ -56,80 +95,52 @@ El análisis comienza a volverse propio cuando podemos explicar por qué una her
 
 ## Capítulos disponibles
 
-La edición reúne **seis capítulos completos (0–5)**, **250 ejercicios con soluciones desarrolladas**, **384 microcontroles con sus soluciones** y **61 figuras originales** que cubren 62 ubicaciones visuales. Conviene resolver las actividades antes de consultar las respuestas.
+Cada capítulo ofrece su exposición y tres bancos completos de actividades. Conviene resolver las preguntas antes de consultar las respuestas.
 
 <table class="ma-chapter-table">
-<thead>
-<tr>
-<th scope="col">Capítulo</th>
-<th scope="col">Tema</th>
-<th scope="col">Ejercicios</th>
-<th scope="col">Microcontroles</th>
-</tr>
-</thead>
+<thead><tr><th scope="col">Capítulo</th><th scope="col">Tema</th><th scope="col">Ejercicios</th><th scope="col">Soluciones</th><th scope="col">Microcontroles resueltos</th></tr></thead>
 <tbody>
-<tr>
-<td>0</td>
-<td><a href="../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html">Construir los números reales</a></td>
-<td>48</td>
-<td>87</td>
-</tr>
-<tr>
-<td>1</td>
-<td><a href="../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html">La recta real como espacio ordenado y métrico</a></td>
-<td>42</td>
-<td>38</td>
-</tr>
-<tr>
-<td>2</td>
-<td><a href="../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html">Cotas, extremos y barreras</a></td>
-<td>40</td>
-<td>46</td>
-</tr>
-<tr>
-<td>3</td>
-<td><a href="../capitulos/analisis-para-matematicos-capitulo-3-completitud.html">Completitud: una recta sin huecos</a></td>
-<td>40</td>
-<td>84</td>
-</tr>
-<tr>
-<td>4</td>
-<td><a href="../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html">Mirar localmente un conjunto</a></td>
-<td>40</td>
-<td>65</td>
-</tr>
-<tr>
-<td>5</td>
-<td><a href="../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual.html">Sucesiones y comportamiento eventual</a></td>
-<td>40</td>
-<td>64</td>
-</tr>
+<tr><td>0</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html">Construir los números reales</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html">48</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html">48</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html">87</a></td></tr>
+<tr><td>1</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html">La recta real como espacio ordenado y métrico</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html">42</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html">42</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html">38</a></td></tr>
+<tr><td>2</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html">Cotas, extremos y barreras</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html">46</a></td></tr>
+<tr><td>3</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-3-completitud.html">Completitud: una recta sin huecos</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-3-completitud-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-3-completitud-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-3-completitud-microcontroles.html">84</a></td></tr>
+<tr><td>4</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html">Mirar localmente un conjunto</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.html">65</a></td></tr>
+<tr><td>5</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual.html">Sucesiones y comportamiento eventual</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-microcontroles.html">64</a></td></tr>
+<tr><td>6</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n.html">Convergencia: el juego de ε y N</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n-microcontroles.html">64</a></td></tr>
+<tr><td>7</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.html">Monotonía, cotas y existencia de límites</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-microcontroles.html">64</a></td></tr>
+<tr><td>8</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html">Subsucesiones, acumulación y Bolzano–Weierstrass</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass-microcontroles.html">64</a></td></tr>
+<tr><td>9</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html">Límite superior e inferior: las envolventes de una cola</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-microcontroles.html">64</a></td></tr>
+<tr><td>10</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino.html">Cauchy: converger sin conocer el destino</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-10-cauchy-converger-sin-conocer-el-destino-microcontroles.html">64</a></td></tr>
+<tr><td>11</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia.html">Series como laboratorio de convergencia</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-11-series-como-laboratorio-de-convergencia-microcontroles.html">64</a></td></tr>
+<tr><td>12</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html">Qué hace una función</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-12-que-hace-una-funcion-microcontroles.html">64</a></td></tr>
+<tr><td>13</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas.html">Límites de funciones: control de dos escalas</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-13-limites-de-funciones-control-de-dos-escalas-microcontroles.html">64</a></td></tr>
+<tr><td>14</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad.html">Continuidad: transportar proximidad</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-14-continuidad-transportar-proximidad-microcontroles.html">64</a></td></tr>
+<tr><td>15</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe.html">Conexidad: por qué un intervalo no se rompe</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-15-conexidad-por-que-un-intervalo-no-se-rompe-microcontroles.html">64</a></td></tr>
+<tr><td>16</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito.html">Compacidad: del control local al control finito</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-16-compacidad-del-control-local-al-control-finito-microcontroles.html">64</a></td></tr>
+<tr><td>17</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo.html">Continuidad uniforme: una escala que sirve para todo</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo-microcontroles.html">64</a></td></tr>
+<tr><td>18</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca.html">Diferenciabilidad: mirar cada vez más cerca</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-18-diferenciabilidad-mirar-cada-vez-mas-cerca-microcontroles.html">64</a></td></tr>
+<tr><td>19</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.html">De lo local a lo global</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global-microcontroles.html">64</a></td></tr>
+<tr><td>20</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes.html">Convexidad y control por tangentes y secantes</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-20-convexidad-y-control-por-tangentes-y-secantes-microcontroles.html">64</a></td></tr>
+<tr><td>21</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error.html">Taylor: modelos locales y error</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-microcontroles.html">64</a></td></tr>
+<tr><td>22</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html">Partir, refinar, acumular</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-22-partir-refinar-acumular-microcontroles.html">64</a></td></tr>
+<tr><td>23</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux.html">Integral de Riemann y Darboux</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-microcontroles.html">64</a></td></tr>
+<tr><td>24</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html">El teorema fundamental del cálculo</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo-microcontroles.html">64</a></td></tr>
+<tr><td>25</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html">La frontera de Riemann</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-microcontroles.html">64</a></td></tr>
+<tr><td>26</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html">Sucesiones de funciones: converger punto por punto</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto-microcontroles.html">64</a></td></tr>
+<tr><td>27</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html">Convergencia uniforme: controlar toda la función a la vez</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez-microcontroles.html">64</a></td></tr>
+<tr><td>28</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html">Intercambiar límites con operaciones</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-microcontroles.html">64</a></td></tr>
+<tr><td>29</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html">Series de funciones y series de potencias</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias-microcontroles.html">64</a></td></tr>
+<tr><td>30</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos.html">Espacios métricos</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-30-espacios-metricos-microcontroles.html">64</a></td></tr>
+<tr><td>31</td><td><a href="../capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos.html">Completitud, compacidad y conexidad en espacios métricos</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-ejercicios.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-soluciones.html">40</a></td><td><a href="../capitulos/analisis-para-matematicos-capitulo-31-completitud-compacidad-y-conexidad-en-espacios-metricos-microcontroles.html">64</a></td></tr>
 </tbody>
 </table>
 
-Cada capítulo enlaza su banco de ejercicios, el solucionario principal y las soluciones de los microcontroles incluidos en la exposición.
+[Epílogo — Después de la recta](../capitulos/analisis-para-matematicos-epilogo.html)
 
-## Publicación progresiva
+## Edición y revisiones
 
-El libro permanece en desarrollo. El plan canónico comprende 32 capítulos (0–31); esta entrega publica el prefacio y los capítulos 0–5 terminados. Los capítulos siguientes se incorporarán después de completar su revisión matemática, pedagógica, visual y editorial.
+La exposición y las figuras pertenecen al proyecto ANM. Los resultados clásicos no se presentan como nuevos. El libro continúa el camino de [*Cálculo para matemáticos*](calculo-para-matematicos.html): **lo que allí asumimos, aquí lo demostramos**.
 
-## Referencias y procedencia
-
-La exposición, las demostraciones desarrolladas y las figuras pertenecen al proyecto ANM. Los resultados clásicos y motivos matemáticos no se presentan como nuevos. Las fuentes sirven para contrastar precisión matemática y método pedagógico; no se reproducen figuras de estos libros.
-
-- Claudio Canuto y Anita Tabacco, *Mathematical Analysis I*, segunda edición: §1.3 para orden, cotas y completitud; §3.1 para proximidad y vecindades.
-- [*Tratado de análisis*, volumen I](../otros/tratado-de-analisis.md): §§4.2–4.7 para orden y completitud; capítulo 15 para topología de la recta; §§13.1–13.2 para sucesiones y eventualidad.
-- Syafiq Johar, *The Big Book of Real Analysis*: referencia complementaria para construcción, sucesiones, ejemplos y representaciones.
-- Dexter Chua, *Part IA — Analysis I*, §2.1: sucesiones como funciones y lectura de cuantificadores.
-- Lara Alcock, *How to Think About Analysis*: definiciones, cuantificadores, ejemplos y autoexplicación.
-- James J. Callahan, *Advanced Calculus: A Geometric View*: referencia conceptual y geométrica.
-- Tristan Needham, *Visual Complex Analysis* y *Visual Differential Geometry and Forms*: referencias metodológicas para el diálogo entre figuras y demostraciones.
-- Miguel de Guzmán, *El rincón de la pizarra*: referencia metodológica de visualización.
-
-En los capítulos 2–3 se separa expresamente la definición de supremo de su garantía de existencia. En el capítulo 4, las nociones topológicas se construyen mediante bolas y cuantificadores, sin anticipar caracterizaciones secuenciales.
-
-## Erratas y revisiones
-
-Para [comunicar una errata](https://github.com/lachenmann/matematica-abierta/issues/new), indica capítulo, sección o actividad, el pasaje y la corrección propuesta. Las revisiones se realizarán primero sobre el manuscrito fuente y se sincronizarán después con esta edición.
+Para [comunicar una errata](https://github.com/lachenmann/matematica-abierta/issues/new), indica capítulo, sección o actividad, el pasaje y la corrección propuesta. Las revisiones se realizan primero sobre el manuscrito fuente y se sincronizan después con esta edición.
 
 [Volver a la colección Para matemáticos](index.qmd)

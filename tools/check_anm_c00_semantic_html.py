@@ -30,7 +30,7 @@ FIG_RE = re.compile(
 )
 SOURCE_LINK_RE = re.compile(
     r'\[C00-F(\d{2})(?: \(\*\*[^)\n]+\*\*\))?\]'
-    r'\(' + re.escape(STEM) + r'\.md#fig-anm-c00-f\d{2}\)'
+    r'\(' + re.escape(STEM) + r'\.(?:md|html)#fig-anm-c00-f\d{2}\)'
 )
 
 

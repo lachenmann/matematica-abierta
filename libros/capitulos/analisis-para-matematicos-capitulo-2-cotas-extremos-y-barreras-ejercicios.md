@@ -1,5 +1,5 @@
 ---
-title: "Ejercicios — Capítulo 2"
+title: Ejercicios — Capítulo 2
 content-id: MA-BCH-0090
 content-type: book-chapter
 collection: PM-ANA
@@ -9,27 +9,35 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
-prerequisites: [MA-BCH-0083]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- orden
+- topologia
+prerequisites:
+- MA-BCH-0083
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C02; referencias de contraste en la portada del libro."
+  - ANM-C02_EJERCICIOS.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.md)
-
-# Ejercicios — Capítulo 2
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html)
 
 ## §2.1. Controlar un conjunto desde arriba y desde abajo
 
 []{#MA-EX-ANM-01-002-001}
+
+[]{#MA-SEC-ANM-01-002-001}
+
+[]{#MA-SOL-ANM-01-002-001}
 
 ### 1. Barreras válidas e inválidas
 
@@ -55,6 +63,8 @@ decide si es:
 Justifica cada respuesta directamente desde las definiciones. En particular, explica por qué la pertenencia o no pertenencia del número a $A$ no decide por sí sola si es cota.
 
 []{#MA-EX-ANM-01-002-002}
+
+[]{#MA-SOL-ANM-01-002-002}
 
 ### 2. Cuatro formas de estar acotado
 
@@ -90,6 +100,8 @@ No uses máximo, mínimo, supremo ni ínfimo.
 
 []{#MA-EX-ANM-01-002-003}
 
+[]{#MA-SOL-ANM-01-002-003}
+
 ### 3. Del conjunto a todas sus cotas
 
 Sea
@@ -114,6 +126,8 @@ Tu respuesta debe justificar las dos inclusiones en cada caso. Es decir, no bast
 
 []{#MA-EX-ANM-01-002-004}
 
+[]{#MA-SOL-ANM-01-002-004}
+
 ### 4. Mover una barrera en la dirección equivocada
 
 Un estudiante afirma:
@@ -128,6 +142,8 @@ Un estudiante afirma:
 El diagnóstico debe distinguir cuidadosamente lo que se deduce de que $u$ sea **una** cota superior de lo que no se deduce.
 
 []{#MA-EX-ANM-01-002-005}
+
+[]{#MA-SOL-ANM-01-002-005}
 
 ### 5. Trasladar un conjunto traslada sus barreras
 
@@ -169,6 +185,10 @@ El objetivo es identificar qué parte del lenguaje de cotas cambia y qué parte 
 
 []{#MA-EX-ANM-01-002-006}
 
+[]{#MA-SEC-ANM-01-002-002}
+
+[]{#MA-SOL-ANM-01-002-006}
+
 ### 6. Cota, pertenencia y extremo
 
 Sea
@@ -193,6 +213,8 @@ decide:
 Justifica cada clasificación usando las dos condiciones de las definiciones de máximo y mínimo. Al final, indica si $A$ posee máximo y si posee mínimo.
 
 []{#MA-EX-ANM-01-002-007}
+
+[]{#MA-SOL-ANM-01-002-007}
 
 ### 7. Quitar un extremo cambia la respuesta
 
@@ -221,6 +243,8 @@ No uses supremo ni ínfimo. El objetivo es aislar exactamente qué efecto tiene 
 
 []{#MA-EX-ANM-01-002-008}
 
+[]{#MA-SOL-ANM-01-002-008}
+
 ### 8. La intersección que contiene al máximo
 
 Sea $A\subseteq\mathbb R$.
@@ -241,6 +265,8 @@ Sea $A\subseteq\mathbb R$.
 La prueba debe salir exclusivamente de pertenencia, definición de cota y antisimetría del orden.
 
 []{#MA-EX-ANM-01-002-009}
+
+[]{#MA-SOL-ANM-01-002-009}
 
 ### 9. Dos conjuntos no vacíos no tienen por qué encontrarse
 
@@ -263,6 +289,8 @@ No uses supremo para el diagnóstico.
 
 []{#MA-EX-ANM-01-002-010}
 
+[]{#MA-SOL-ANM-01-002-010}
+
 ### 10. Qué hacen las transformaciones afines con máximo y mínimo
 
 Sea $A\subseteq\mathbb R$ un conjunto que posee máximo $M$ y mínimo $m$. Para $\alpha,\beta\in\mathbb R$, define
@@ -282,6 +310,10 @@ Tu demostración debe explicar por qué el signo de $\alpha$ decide si los papel
 ## §2.3. La mejor barrera: supremo e ínfimo
 
 []{#MA-EX-ANM-01-002-011}
+
+[]{#MA-SEC-ANM-01-002-003}
+
+[]{#MA-SOL-ANM-01-002-011}
 
 ### 11. Cota no significa barrera extremal
 
@@ -307,6 +339,8 @@ No basta con identificar una cota: debes distinguir entre **controlar** al conju
 
 []{#MA-EX-ANM-01-002-012}
 
+[]{#MA-SOL-ANM-01-002-012}
+
 ### 12. Distintos conjuntos, las mismas familias de cotas
 
 Supón que un conjunto no vacío $A\subseteq\mathbb R$ satisface
@@ -330,6 +364,8 @@ No uses todavía la relación entre supremo y máximo.
 
 []{#MA-EX-ANM-01-002-013}
 
+[]{#MA-SOL-ANM-01-002-013}
+
 ### 13. Por qué no puede haber dos supremos
 
 Sea $A\subseteq\mathbb R$.
@@ -344,6 +380,8 @@ Sea $A\subseteq\mathbb R$.
 La prueba debe reducir la unicidad a dos desigualdades opuestas y a la antisimetría del orden.
 
 []{#MA-EX-ANM-01-002-014}
+
+[]{#MA-SOL-ANM-01-002-014}
 
 ### 14. Una condición necesaria no basta
 
@@ -362,6 +400,8 @@ Diagnostica el razonamiento.
 Tu respuesta debe distinguir entre «ser una cota superior» y «ser la menor cota superior».
 
 []{#MA-EX-ANM-01-002-015}
+
+[]{#MA-SOL-ANM-01-002-015}
 
 ### 15. El intervalo de control más ajustado
 
@@ -394,6 +434,8 @@ Interpreta el resultado: entre todos los intervalos de la forma $[l,u]$ que cont
 No supongas que $i$ o $s$ pertenecen a $A$.
 
 []{#MA-EX-ANM-01-002-016}
+
+[]{#MA-SOL-ANM-01-002-016}
 
 ### 16. Trasladar y escalar una barrera extremal
 
@@ -435,6 +477,10 @@ No uses caracterizaciones con $\varepsilon$, sucesiones ni completitud.
 
 []{#MA-EX-ANM-01-002-017}
 
+[]{#MA-SEC-ANM-01-002-004}
+
+[]{#MA-SOL-ANM-01-002-017}
+
 ### 17. Cinco afirmaciones sobre alcanzar la barrera
 
 Para cada una de las afirmaciones siguientes, decide si es siempre verdadera o falsa. Cuando sea verdadera, justifica desde las definiciones; cuando sea falsa, da un contraejemplo explícito.
@@ -448,6 +494,8 @@ Para cada una de las afirmaciones siguientes, decide si es siempre verdadera o f
 En cada caso distingue con precisión la **existencia de la barrera extremal** de su **pertenencia al conjunto**.
 
 []{#MA-EX-ANM-01-002-018}
+
+[]{#MA-SOL-ANM-01-002-018}
 
 ### 18. El criterio de alcanzamiento
 
@@ -473,6 +521,8 @@ No cites el resultado como teorema ya conocido: reconstruye cada dirección a pa
 
 []{#MA-EX-ANM-01-002-019}
 
+[]{#MA-SOL-ANM-01-002-019}
+
 ### 19. Misma barrera no significa mismo máximo
 
 Un estudiante afirma:
@@ -492,6 +542,8 @@ Un estudiante afirma:
 El objetivo es separar **posición de la barrera extremal** de **pertenencia de esa barrera**.
 
 []{#MA-EX-ANM-01-002-020}
+
+[]{#MA-SOL-ANM-01-002-020}
 
 ### 20. Añadir la barrera o rebasarla
 
@@ -529,6 +581,8 @@ Demuestra que:
 Interpreta la diferencia: **añadir la barrera extremal** cambia el alcanzamiento sin mover la barrera, mientras que **añadir un punto más allá de ella** obliga a desplazarla.
 
 []{#MA-EX-ANM-01-002-021}
+
+[]{#MA-SOL-ANM-01-002-021}
 
 ### 21. Intersecar el conjunto con sus propias cotas
 
@@ -569,6 +623,10 @@ Este ejercicio debe conectar las tres capas ya construidas: **conjunto original,
 
 []{#MA-EX-ANM-01-002-022}
 
+[]{#MA-SEC-ANM-01-002-005}
+
+[]{#MA-SOL-ANM-01-002-022}
+
 ### 22. Franjas pegadas a la barrera
 
 Considera los conjuntos
@@ -607,6 +665,8 @@ $$
 
 []{#MA-EX-ANM-01-002-023}
 
+[]{#MA-SOL-ANM-01-002-023}
+
 ### 23. Del supremo a la condición $\varepsilon$
 
 Sea $A\subseteq\mathbb R$ no vacío y supón que
@@ -633,6 +693,8 @@ No uses sucesiones, límites ni completitud.
 
 []{#MA-EX-ANM-01-002-024}
 
+[]{#MA-SOL-ANM-01-002-024}
+
 ### 24. De la condición $\varepsilon$ al supremo
 
 Sea $A\subseteq\mathbb R$ no vacío. Supón que $s$ es una cota superior de $A$ y que
@@ -658,6 +720,8 @@ $$
 Indica con precisión dónde utilizas que $s$ ya es una cota superior.
 
 []{#MA-EX-ANM-01-002-025}
+
+[]{#MA-SOL-ANM-01-002-025}
 
 ### 25. Cambiar el orden de los cuantificadores cambia la afirmación
 
@@ -696,6 +760,8 @@ $$
 
 []{#MA-EX-ANM-01-002-026}
 
+[]{#MA-SOL-ANM-01-002-026}
+
 ### 26. La caracterización dual del ínfimo
 
 Sea $A\subseteq\mathbb R$ no vacío.
@@ -724,6 +790,8 @@ Después demuestra que esta formulación es equivalente a la siguiente:
 No cites la versión superior como una «regla automática»: reconstruye el argumento dual.
 
 []{#MA-EX-ANM-01-002-027}
+
+[]{#MA-SOL-ANM-01-002-027}
 
 ### 27. Sumar conjuntos suma sus barreras extremales
 
@@ -770,6 +838,10 @@ No introduzcas sucesiones.
 
 []{#MA-EX-ANM-01-002-028}
 
+[]{#MA-SEC-ANM-01-002-006}
+
+[]{#MA-SOL-ANM-01-002-028}
+
 ### 28. Dos conjuntos, cuatro familias de cotas
 
 Considera
@@ -794,6 +866,8 @@ $$
 El objetivo es hacer visible que **agrandar el conjunto original reduce las familias de cotas admisibles**.
 
 []{#MA-EX-ANM-01-002-029}
+
+[]{#MA-SOL-ANM-01-002-029}
 
 ### 29. De la inclusión de conjuntos a la monotonía de sus barreras
 
@@ -823,6 +897,8 @@ $$
 La prueba debe mostrar la secuencia lógica completa: **primero se comparan las familias de cotas; después sus extremos**.
 
 []{#MA-EX-ANM-01-002-030}
+
+[]{#MA-SOL-ANM-01-002-030}
 
 ### 30. Reflejar un conjunto intercambia arriba y abajo
 
@@ -865,6 +941,8 @@ No trates estas fórmulas como reglas memorizadas: la prueba debe pasar por la i
 
 []{#MA-EX-ANM-01-002-031}
 
+[]{#MA-SOL-ANM-01-002-031}
+
 ### 31. Inclusión estricta no obliga a desigualdad estricta
 
 Un estudiante afirma:
@@ -889,6 +967,8 @@ Un estudiante afirma:
 El diagnóstico debe distinguir **inclusión estricta de conjuntos** de **desplazamiento estricto de barreras**.
 
 []{#MA-EX-ANM-01-002-032}
+
+[]{#MA-SOL-ANM-01-002-032}
 
 ### 32. Dónde añadir un punto determina qué barrera se mueve
 
@@ -917,6 +997,8 @@ Tu respuesta debe explicar por qué un punto añadido **dentro del intervalo de 
 No uses ninguna garantía general de existencia: trabaja sólo con los extremos ya dados para $A$ y con el punto añadido.
 
 []{#MA-EX-ANM-01-002-033}
+
+[]{#MA-SOL-ANM-01-002-033}
 
 ### 33. Cuándo la inclusión deja intactas todas las cotas
 
@@ -968,6 +1050,10 @@ El ejercicio conecta tres niveles: **inclusión de conjuntos, familias completas
 
 []{#MA-EX-ANM-01-002-034}
 
+[]{#MA-SEC-ANM-01-002-007}
+
+[]{#MA-SOL-ANM-01-002-034}
+
 ### 34. Definir no es garantizar
 
 Decide cuáles de las afirmaciones siguientes se deducen **sólo de las definiciones** desarrolladas en C02 y cuáles requieren una hipótesis o un resultado adicional. Justifica cada respuesta.
@@ -982,6 +1068,8 @@ Decide cuáles de las afirmaciones siguientes se deducen **sólo de las definici
 En las afirmaciones 4 y 5 no debes invocar completitud. El objetivo es separar **significado de una definición** de **garantía de existencia**.
 
 []{#MA-EX-ANM-01-002-035}
+
+[]{#MA-SOL-ANM-01-002-035}
 
 ### 35. Un mapa de los dos obstáculos
 
@@ -1021,6 +1109,8 @@ No uses $+\infty$ como valor del supremo.
 
 []{#MA-EX-ANM-01-002-036}
 
+[]{#MA-SOL-ANM-01-002-036}
+
 ### 36. Una conclusión correcta con una prueba incompleta
 
 Un estudiante razona así:
@@ -1037,6 +1127,8 @@ Analiza el argumento.
 No enuncies ni demuestres todavía el teorema de completitud de C03.
 
 []{#MA-EX-ANM-01-002-037}
+
+[]{#MA-SOL-ANM-01-002-037}
 
 ### 37. El vacío tiene todas las cotas, pero ningún extremo real
 
@@ -1058,6 +1150,8 @@ Diagnostica la afirmación desde las definiciones.
 El diagnóstico debe distinguir **tener muchas cotas** de **tener una cota extremal**.
 
 []{#MA-EX-ANM-01-002-038}
+
+[]{#MA-SOL-ANM-01-002-038}
 
 ### 38. El hueco racional: cotas sin supremo en $\mathbb Q$
 
@@ -1084,6 +1178,10 @@ Explica al final qué muestra este ejemplo sobre la diferencia entre **orden**, 
 ## §2.8. De las barreras a la completitud
 
 []{#MA-EX-ANM-01-002-039}
+
+[]{#MA-SEC-ANM-01-002-008}
+
+[]{#MA-SOL-ANM-01-002-039}
 
 ### 39. Un mapa de equivalencias alrededor de una barrera
 
@@ -1124,6 +1222,8 @@ No uses completitud ni ningún resultado de C03.
 
 []{#MA-EX-ANM-01-002-040}
 
+[]{#MA-SOL-ANM-01-002-040}
+
 ### 40. Diseñar con precisión la pieza que falta
 
 Considera la siguiente afirmación, que **no debes demostrar** en este ejercicio:
@@ -1151,3 +1251,5 @@ Trabaja con (S) únicamente como una proposición hipotética cuya función es c
    - **garantizar** que un supremo exista.
 
 El objetivo no es probar completitud, sino formular exactamente qué debe aportar C03 y por qué esa aportación es lógicamente independiente de las definiciones de C02.
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 2](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html) · [Ejercicios](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html)

@@ -1,5 +1,5 @@
 ---
-title: "Soluciones de microcontroles — Capítulo 4"
+title: Soluciones de microcontroles — Capítulo 4
 content-id: MA-BCH-0098
 content-type: book-chapter
 collection: PM-ANA
@@ -9,27 +9,35 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
-prerequisites: [MA-BCH-0083]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- orden
+- topologia
+prerequisites:
+- MA-BCH-0083
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C04; referencias de contraste en la portada del libro."
+  - ANM-C04_MICROCONTROLES_SOLUCIONES.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Capítulo 4](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.md)
-
-# Soluciones de microcontroles — Capítulo 4
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 4](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html) · [Ejercicios](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.html)
 
 ## §4.1. Ventanas alrededor de un punto: vecindades
 
 []{#MA-MSOL-ANM-01-004-001}
+
+[]{#MA-MIC-ANM-01-004-001}
+
+[]{#MA-SEC-ANM-01-004-001}
 
 ### 1. Escribe $B(2,1/3)$ como intervalo abierto y explica qué desigualdad de valor absoluto describe sus puntos.
 
@@ -76,6 +84,8 @@ La desigualdad de valor absoluto expresa exactamente que la distancia de $y$ al 
 
 []{#MA-MSOL-ANM-01-004-002}
 
+[]{#MA-MIC-ANM-01-004-002}
+
 ### 2. Para $V=(-1,1)\cup\{3\}$, exhibe dos radios distintos que certifiquen que $V$ es vecindad de $0$.
 
 Podemos elegir, por ejemplo,
@@ -106,6 +116,8 @@ Por tanto existen al menos dos radios positivos que certifican que $V$ es vecind
 El punto aislado $3$ no interviene en la certificación: basta con que alguna bola centrada en $0$ quede contenida en $V$.
 
 []{#MA-MSOL-ANM-01-004-003}
+
+[]{#MA-MIC-ANM-01-004-003}
 
 ### 3. Decide si $[0,2)$ es una vecindad de $0$. No basta responder sí o no: debes justificarlo directamente a partir de la definición.
 
@@ -173,6 +185,8 @@ no basta: falta margen a la izquierda del centro.
 
 []{#MA-MSOL-ANM-01-004-004}
 
+[]{#MA-MIC-ANM-01-004-004}
+
 ### 4. Demuestra que si $V$ es vecindad de $x$, entonces $x\in V$. Da después un contraejemplo que muestre que la conversa es falsa.
 
 Si $V$ es vecindad de $x$, existe $r>0$ tal que
@@ -235,6 +249,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-005}
 
+[]{#MA-MIC-ANM-01-004-005}
+
 ### 5. Supón que $V$ es vecindad de $x$ y que $V\subseteq W$. Demuestra que $W$ también es vecindad de $x$.
 
 Como $V$ es vecindad de $x$, existe $r>0$ tal que
@@ -266,6 +282,8 @@ $$
 Geométricamente, agrandar un conjunto no destruye una ventana que ya cabía dentro de él.
 
 []{#MA-MSOL-ANM-01-004-006}
+
+[]{#MA-MIC-ANM-01-004-006}
 
 ### 6. Si $V$ y $W$ son vecindades de $x$, demuestra que $V\cap W$ es vecindad de $x$ indicando explícitamente qué radio eliges.
 
@@ -335,6 +353,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-007}
 
+[]{#MA-MIC-ANM-01-004-007}
+
 ### 7. Si $B(x,r)\subseteq V$ y $0<s\le r$, demuestra que $B(x,s)\subseteq V$. ¿Qué te dice esto sobre la frase «podemos mirar con ventanas arbitrariamente pequeñas»?
 
 Sea
@@ -398,6 +418,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-008}
+
+[]{#MA-MIC-ANM-01-004-008}
 
 ### 8. Sea $y\in B(x,r)$. Construye un $\delta>0$ en función de $r$ y $|y-x|$ tal que $B(y,\delta)\subseteq B(x,r)$, y señala exactamente dónde usas la desigualdad triangular.
 
@@ -505,6 +527,10 @@ $$
 
 []{#MA-MSOL-ANM-01-004-009}
 
+[]{#MA-MIC-ANM-01-004-009}
+
+[]{#MA-SEC-ANM-01-004-002}
+
 ### 9. Para $A=[-2,3]$, determina cuáles de los puntos $-2$, $0$ y $3$ son interiores. En cada caso interior, exhibe un radio que funcione; en cada caso no interior, demuestra que ningún radio puede funcionar.
 
 El punto $0$ es interior. Por ejemplo,
@@ -551,6 +577,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-010}
 
+[]{#MA-MIC-ANM-01-004-010}
+
 ### 10. Demuestra directamente desde la definición que $\operatorname{int}(A)\subseteq A$ para todo $A\subseteq\mathbb R$.
 
 Sea
@@ -586,6 +614,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-011}
+
+[]{#MA-MIC-ANM-01-004-011}
 
 ### 11. Sea $A=(a,b)$ con $a<b$ y $x\in(a,b)$. Construye un radio explícito en función de $x-a$ y $b-x$ que certifique que $x$ es interior.
 
@@ -668,6 +698,8 @@ certifica que $x$ es interior a $(a,b)$.
 
 []{#MA-MSOL-ANM-01-004-012}
 
+[]{#MA-MIC-ANM-01-004-012}
+
 ### 12. Para $A=(0,1)$, explica por qué $0\notin A$ pero $0$ no es exterior a $A$. Tu argumento debe comenzar con un radio arbitrario $r>0$.
 
 Es claro que
@@ -737,6 +769,8 @@ No pertenecer al conjunto no basta para tener margen exterior.
 
 []{#MA-MSOL-ANM-01-004-013}
 
+[]{#MA-MIC-ANM-01-004-013}
+
 ### 13. Demuestra que $x$ es exterior a $A$ si y sólo si $A^c$ es vecindad de $x$.
 
 Por definición,
@@ -764,6 +798,8 @@ A^c\text{ es vecindad de }x.
 $$
 
 []{#MA-MSOL-ANM-01-004-014}
+
+[]{#MA-MIC-ANM-01-004-014}
 
 ### 14. Prueba la identidad $\operatorname{ext}(A)=\operatorname{int}(A^c)$ sin usar ninguna noción posterior de este capítulo.
 
@@ -801,6 +837,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-015}
+
+[]{#MA-MIC-ANM-01-004-015}
 
 ### 15. Si $A\subseteq B$, demuestra $\operatorname{int}(A)\subseteq\operatorname{int}(B)$ y deriva después $\operatorname{ext}(B)\subseteq\operatorname{ext}(A)$.
 
@@ -881,6 +919,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-016}
+
+[]{#MA-MIC-ANM-01-004-016}
 
 ### 16. Para $A=[0,1)$, verifica que $\operatorname{int}(A)=(0,1)$ y $\operatorname{ext}(A)=(-\infty,0)\cup(1,\infty)$. ¿Qué ocurre localmente en $0$ y en $1$ que impide clasificarlos en cualquiera de esos dos conjuntos?
 
@@ -1015,6 +1055,10 @@ Por eso ninguno de los dos extremos pertenece al interior ni al exterior.
 
 []{#MA-MSOL-ANM-01-004-017}
 
+[]{#MA-MIC-ANM-01-004-017}
+
+[]{#MA-SEC-ANM-01-004-003}
+
 ### 17. Despliega la negación lógica de $\exists r>0:\ B(x,r)\cap A=\varnothing$ y explica por qué produce exactamente la definición de punto adherente.
 
 Negar
@@ -1036,6 +1080,8 @@ $$
 Por tanto, ser adherente a $A$ es la negación exacta de ser exterior a $A$.
 
 []{#MA-MSOL-ANM-01-004-018}
+
+[]{#MA-MIC-ANM-01-004-018}
 
 ### 18. Demuestra directamente que $A\subseteq\overline A$ para todo $A\subseteq\mathbb R$.
 
@@ -1063,6 +1109,8 @@ A\subseteq\overline A.
 $$
 
 []{#MA-MSOL-ANM-01-004-019}
+
+[]{#MA-MIC-ANM-01-004-019}
 
 ### 19. Para $A=(0,1)$, prueba con un radio arbitrario que $0,1\in\overline A$, aunque ninguno de los dos pertenezca a $A$.
 
@@ -1107,6 +1155,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-020}
 
+[]{#MA-MIC-ANM-01-004-020}
+
 ### 20. Demuestra $\overline A=(\operatorname{ext}(A))^c=(\operatorname{int}(A^c))^c$.
 
 Por definición,
@@ -1149,6 +1199,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-021}
 
+[]{#MA-MIC-ANM-01-004-021}
+
 ### 21. Si $A\subseteq B$, demuestra la monotonicidad $\overline A\subseteq\overline B$.
 
 Supongamos $A\subseteq B$ y sea
@@ -1185,6 +1237,8 @@ A\subseteq B
 $$
 
 []{#MA-MSOL-ANM-01-004-022}
+
+[]{#MA-MIC-ANM-01-004-022}
 
 ### 22. Reproduce la prueba de $\overline{\overline A}=\overline A$ indicando por qué se usan radios $r/2$ y dónde interviene la desigualdad triangular.
 
@@ -1241,6 +1295,8 @@ $$
 Los radios $r/2$ reparten el margen total $r$ entre los dos desplazamientos que después suma la desigualdad triangular.
 
 []{#MA-MSOL-ANM-01-004-023}
+
+[]{#MA-MIC-ANM-01-004-023}
 
 ### 23. Sea $A=(0,1)\setminus\{1/2\}$. Demuestra sin usar sucesiones que $1/2\in\overline A$ y que ningún punto de $(-\infty,0)\cup(1,\infty)$ pertenece a $\overline A$.
 
@@ -1299,6 +1355,8 @@ pertenece a $\overline A$.
 
 []{#MA-MSOL-ANM-01-004-024}
 
+[]{#MA-MIC-ANM-01-004-024}
+
 ### 24. Demuestra que $x\in\overline A$ si y sólo si toda vecindad de $x$ intersecta $A$. Tu prueba debe volver explícitamente a una bola contenida en la vecindad.
 
 Supongamos primero que
@@ -1347,6 +1405,10 @@ $$
 ## §4.4. Frontera: toda ventana ve ambos lados
 
 []{#MA-MSOL-ANM-01-004-025}
+
+[]{#MA-MIC-ANM-01-004-025}
+
+[]{#MA-SEC-ANM-01-004-004}
 
 ### 25. Demuestra directamente desde la definición que $\partial(A^c)=\partial A$.
 
@@ -1400,6 +1462,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-026}
+
+[]{#MA-MIC-ANM-01-004-026}
 
 ### 26. Para $A=[-1,2)$, demuestra que $\partial A=\{-1,2\}$, indicando en cada extremo cómo encuentras, para un radio arbitrario, un punto de $A$ y uno de $A^c$ dentro de la bola.
 
@@ -1519,6 +1583,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-027}
 
+[]{#MA-MIC-ANM-01-004-027}
+
 ### 27. Demuestra $\partial A=\overline A\cap\overline{A^c}$ desplegando ambos lados únicamente mediante cuantificadores sobre bolas.
 
 Sea $x\in\mathbb R$.
@@ -1586,6 +1652,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-028}
 
+[]{#MA-MIC-ANM-01-004-028}
+
 ### 28. Deduce de la identidad anterior que $\partial A=\overline A\setminus\operatorname{int}(A)$.
 
 Partimos de
@@ -1633,6 +1701,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-029}
+
+[]{#MA-MIC-ANM-01-004-029}
 
 ### 29. Para $A=(0,1)\setminus\{1/2\}$, demuestra que $\partial A=\{0,1/2,1\}$. Explica por qué este ejemplo impide definir frontera como «conjunto de extremos».
 
@@ -1697,6 +1767,8 @@ no es un extremo global del intervalo $(0,1)$, pero sí es fronterizo: toda bola
 Por eso la frontera no puede definirse como «conjunto de extremos». Es una propiedad local de las ventanas alrededor de cada punto.
 
 []{#MA-MSOL-ANM-01-004-030}
+
+[]{#MA-MIC-ANM-01-004-030}
 
 ### 30. Demuestra que ningún punto interior y ningún punto exterior puede pertenecer a $\partial A$.
 
@@ -1763,6 +1835,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-031}
+
+[]{#MA-MIC-ANM-01-004-031}
 
 ### 31. Prueba la partición disjunta $\mathbb R=\operatorname{int}(A)\,\dot\cup\,\partial A\,\dot\cup\,\operatorname{ext}(A)$.
 
@@ -1857,6 +1931,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-032}
 
+[]{#MA-MIC-ANM-01-004-032}
+
 ### 32. Compara $(0,1)$, $[0,1]$, $[0,1)$ y $(0,1]$. ¿Qué cambia al incluir o excluir los extremos y qué permanece invariante respecto de la frontera?
 
 En los cuatro conjuntos, los puntos estrictamente interiores al intervalo satisfacen
@@ -1894,6 +1970,10 @@ La frontera depende de lo que ve **toda ventana alrededor del punto**, no de si 
 
 []{#MA-MSOL-ANM-01-004-033}
 
+[]{#MA-MIC-ANM-01-004-033}
+
+[]{#MA-SEC-ANM-01-004-005}
+
 ### 33. Escribe en cuantificadores la diferencia exacta entre $x\in\overline A$ y $x\in\operatorname{Acc}(A)$. ¿Qué único conjunto cambia dentro de la intersección?
 
 La adherencia se expresa como
@@ -1927,6 +2007,8 @@ Todo lo demás permanece igual: el cuantificador es universal y seguimos pidiend
 La acumulación es más exigente porque impide usar siempre el propio centro como testigo cuando $x\in A$.
 
 []{#MA-MSOL-ANM-01-004-034}
+
+[]{#MA-MIC-ANM-01-004-034}
 
 ### 34. Demuestra directamente que $\operatorname{Acc}(A)\subseteq\overline A$.
 
@@ -1973,6 +2055,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-035}
+
+[]{#MA-MIC-ANM-01-004-035}
 
 ### 35. Para $A=(0,1)\cup\{2\}$, demuestra que $0$ y $1/2$ son puntos de acumulación, mientras que $2$ no lo es.
 
@@ -2073,6 +2157,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-036}
 
+[]{#MA-MIC-ANM-01-004-036}
+
 ### 36. Da un ejemplo de un punto de acumulación que no pertenezca al conjunto y otro de un punto de acumulación que sí pertenezca.
 
 Podemos usar otra vez
@@ -2127,6 +2213,8 @@ La acumulación no decide la pertenencia del centro.
 
 []{#MA-MSOL-ANM-01-004-037}
 
+[]{#MA-MIC-ANM-01-004-037}
+
 ### 37. Demuestra que ningún punto exterior a $A$ puede pertenecer a $\operatorname{Acc}(A)$.
 
 Supongamos
@@ -2172,6 +2260,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-038}
+
+[]{#MA-MIC-ANM-01-004-038}
 
 ### 38. Prueba $\overline A=A\cup\operatorname{Acc}(A)$ sin usar sucesiones.
 
@@ -2261,6 +2351,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-039}
 
+[]{#MA-MIC-ANM-01-004-039}
+
 ### 39. Si $A\subseteq B$, demuestra $\operatorname{Acc}(A)\subseteq\operatorname{Acc}(B)$.
 
 Supongamos
@@ -2326,6 +2418,8 @@ A\subseteq B
 $$
 
 []{#MA-MSOL-ANM-01-004-040}
+
+[]{#MA-MIC-ANM-01-004-040}
 
 ### 40. Para $a<b$, demuestra directamente mediante bolas perforadas que $\operatorname{Acc}((a,b))=[a,b]$.
 
@@ -2481,6 +2575,10 @@ $$
 
 []{#MA-MSOL-ANM-01-004-041}
 
+[]{#MA-MIC-ANM-01-004-041}
+
+[]{#MA-SEC-ANM-01-004-006}
+
 ### 41. Demuestra directamente que si $x$ es aislado en $A$, entonces $x\in\overline A$ pero $x\notin\operatorname{Acc}(A)$.
 
 Si $x$ es aislado en $A$, entonces
@@ -2526,6 +2624,8 @@ x\notin\operatorname{Acc}(A).
 $$
 
 []{#MA-MSOL-ANM-01-004-042}
+
+[]{#MA-MIC-ANM-01-004-042}
 
 ### 42. Prueba la equivalencia $x\text{ aislado en }A\iff x\in A\setminus\operatorname{Acc}(A)$.
 
@@ -2584,6 +2684,8 @@ x\in A\setminus\operatorname{Acc}(A).
 $$
 
 []{#MA-MSOL-ANM-01-004-043}
+
+[]{#MA-MIC-ANM-01-004-043}
 
 ### 43. Para $A=(0,1)\cup\{2\}$, clasifica $0$, $1/2$ y $2$ respecto de pertenencia, adherencia, acumulación y aislamiento.
 
@@ -2661,6 +2763,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-044}
 
+[]{#MA-MIC-ANM-01-004-044}
+
 ### 44. Demuestra que todo $n\in\mathbb Z$ es aislado en $\mathbb Z$ usando un radio que pueda elegirse igual para todos los enteros.
 
 Sea
@@ -2717,6 +2821,8 @@ El mismo radio $1/2$ sirve para todos los enteros.
 
 []{#MA-MSOL-ANM-01-004-045}
 
+[]{#MA-MIC-ANM-01-004-045}
+
 ### 45. Demuestra directamente que $\mathbb Z\cap\operatorname{Acc}(\mathbb Z)=\varnothing$.
 
 Sea
@@ -2766,6 +2872,8 @@ $$
 Esta afirmación es local respecto de los puntos pertenecientes a $\mathbb Z$ y no requiere clasificar aquí los centros reales exteriores a $\mathbb Z$.
 
 []{#MA-MSOL-ANM-01-004-046}
+
+[]{#MA-MIC-ANM-01-004-046}
 
 ### 46. Sea $F\subseteq\mathbb R$ finito. Demuestra que cada punto de $F$ es aislado. Separa explícitamente el caso en que $F$ tiene un solo elemento.
 
@@ -2850,6 +2958,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-047}
 
+[]{#MA-MIC-ANM-01-004-047}
+
 ### 47. Explica por qué el hecho de que $x$ sea aislado en $A$ no implica que $\{x\}$ contenga una bola abierta de $\mathbb R$ alrededor de $x$.
 
 Que $x$ sea aislado en $A$ significa que existe $r>0$ tal que
@@ -2887,6 +2997,8 @@ $$
 Así, aislamiento significa que $x$ queda solo **respecto del conjunto $A$**, no que el singleton $\{x\}$ contenga una bola de la recta real.
 
 []{#MA-MSOL-ANM-01-004-048}
+
+[]{#MA-MIC-ANM-01-004-048}
 
 ### 48. Demuestra la descomposición disjunta $A=(A\cap\operatorname{Acc}(A))\,\dot\cup\,(A\setminus\operatorname{Acc}(A))$, e interpreta matemáticamente ambas partes.
 
@@ -2941,6 +3053,10 @@ Por tanto la descomposición separa exhaustivamente, dentro del propio conjunto,
 ## §4.7. Abiertos y cerrados: de lo local a lo global
 
 []{#MA-MSOL-ANM-01-004-049}
+
+[]{#MA-MIC-ANM-01-004-049}
+
+[]{#MA-SEC-ANM-01-004-007}
 
 ### 49. Demuestra directamente, usando la definición, que todo intervalo abierto $(a,b)$ es un conjunto abierto.
 
@@ -3000,6 +3116,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-050}
+
+[]{#MA-MIC-ANM-01-004-050}
 
 ### 50. Prueba $A\text{ abierto}\iff A=\operatorname{int}(A)$.
 
@@ -3065,6 +3183,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-051}
 
+[]{#MA-MIC-ANM-01-004-051}
+
 ### 51. Sea $\{A_i\}_{i\in I}$ una familia arbitraria de abiertos. Demuestra que $\bigcup_{i\in I}A_i$ es abierto, identificando exactamente dónde se elige un índice de la familia.
 
 Definamos
@@ -3126,6 +3246,8 @@ La familia puede ser arbitraria porque, para un punto de la unión, basta encont
 
 []{#MA-MSOL-ANM-01-004-052}
 
+[]{#MA-MIC-ANM-01-004-052}
+
 ### 52. Demuestra que la intersección de dos abiertos es abierta y explica por qué aparece el radio $\min\{r,s\}$.
 
 Sean $A$ y $B$ abiertos y sea
@@ -3183,6 +3305,8 @@ $$
 El mínimo aparece porque necesitamos un único radio que no exceda ninguno de los dos radios disponibles.
 
 []{#MA-MSOL-ANM-01-004-053}
+
+[]{#MA-MIC-ANM-01-004-053}
 
 ### 53. Prueba $F\text{ cerrado}\iff F=\overline F$ únicamente con las definiciones y la dualidad entre exterior y clausura.
 
@@ -3302,6 +3426,8 @@ $$
 
 []{#MA-MSOL-ANM-01-004-054}
 
+[]{#MA-MIC-ANM-01-004-054}
+
 ### 54. Deduce $A\text{ cerrado}\iff\operatorname{Acc}(A)\subseteq A$.
 
 Sabemos que
@@ -3353,6 +3479,8 @@ $$
 La condición no dice que todos los puntos de $A$ sean de acumulación; sólo exige que ningún punto de acumulación quede fuera del conjunto.
 
 []{#MA-MSOL-ANM-01-004-055}
+
+[]{#MA-MIC-ANM-01-004-055}
 
 ### 55. Demuestra que $\overline A$ es el menor conjunto cerrado que contiene a $A$.
 
@@ -3416,6 +3544,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-056}
+
+[]{#MA-MIC-ANM-01-004-056}
 
 ### 56. Usa complementos y las leyes de De Morgan para demostrar que las intersecciones arbitrarias de cerrados son cerradas y las uniones finitas de cerrados son cerradas.
 
@@ -3500,6 +3630,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-057}
+
+[]{#MA-MIC-ANM-01-004-057}
 
 ### 57. Clasifica $(0,1)$, $[0,1]$, $[0,1)$, $\varnothing$ y $\mathbb R$ como abiertos, cerrados, ambos o ninguno, justificando cada respuesta mediante los criterios de esta sección.
 
@@ -3615,6 +3747,10 @@ $$
 
 []{#MA-MSOL-ANM-01-004-058}
 
+[]{#MA-MIC-ANM-01-004-058}
+
+[]{#MA-SEC-ANM-01-004-008}
+
 ### 58. Completa, sin consultar las secciones anteriores, los seis tests locales para interior, exterior, adherencia, frontera, acumulación y aislamiento. Después verifica cada cuantificador.
 
 Los seis tests son
@@ -3668,6 +3804,8 @@ Interior, exterior y aislamiento buscan algún radio favorable. Adherencia, fron
 
 []{#MA-MSOL-ANM-01-004-059}
 
+[]{#MA-MIC-ANM-01-004-059}
+
 ### 59. Demuestra de nuevo $\operatorname{int}(A)\subseteq A\subseteq\overline A$, indicando qué definición justifica cada inclusión.
 
 Sea
@@ -3714,6 +3852,8 @@ La primera inclusión usa la definición de interior; la segunda, la definición
 
 []{#MA-MSOL-ANM-01-004-060}
 
+[]{#MA-MIC-ANM-01-004-060}
+
 ### 60. Prueba $\operatorname{int}(\operatorname{int}(A))=\operatorname{int}(A)$ y compara su mecanismo con la prueba de $\overline{\overline A}=\overline A$.
 
 Siempre,
@@ -3758,6 +3898,8 @@ El mecanismo es dual al de la idempotencia de la clausura: una vez aplicada la o
 
 []{#MA-MSOL-ANM-01-004-061}
 
+[]{#MA-MIC-ANM-01-004-061}
+
 ### 61. Para $a<b$, construye una tabla con interior, clausura, frontera y condición abierto/cerrado de $(a,b)$, $[a,b]$ y $[a,b)$.
 
 Los tres conjuntos tienen
@@ -3777,14 +3919,16 @@ $$
 A & \operatorname{int}(A) & \overline A & \partial A & \text{clasificación}\\
 \hline
 (a,b) & (a,b) & [a,b] & \{a,b\} & \text{abierto, no cerrado}\\
-[a,b] & (a,b) & [a,b] & \{a,b\} & \text{cerrado, no abierto}\\
-[a,b) & (a,b) & [a,b] & \{a,b\} & \text{ni abierto ni cerrado}
+{}[a,b] & (a,b) & [a,b] & \{a,b\} & \text{cerrado, no abierto}\\
+{}[a,b) & (a,b) & [a,b] & \{a,b\} & \text{ni abierto ni cerrado}
 \end{array}
 $$
 
 La diferencia está en la pertenencia de los extremos, mientras que la clausura y la frontera permanecen invariantes.
 
 []{#MA-MSOL-ANM-01-004-062}
+
+[]{#MA-MIC-ANM-01-004-062}
 
 ### 62. Para $A=(0,1)\cup\{2\}$, determina $\operatorname{int}(A)$, $\overline A$, $\partial A$ y $\operatorname{Acc}(A)$, y explica qué propiedad local distingue al punto $2$.
 
@@ -3823,6 +3967,8 @@ $$
 Es adherente y fronterizo, pero no es punto de acumulación.
 
 []{#MA-MSOL-ANM-01-004-063}
+
+[]{#MA-MIC-ANM-01-004-063}
 
 ### 63. Para $A=(0,1)\setminus\{1/2\}$, explica por qué $1/2$ pertenece simultáneamente a $\overline A$, $\partial A$ y $\operatorname{Acc}(A)$, pero no a $A$.
 
@@ -3877,6 +4023,8 @@ $$
 $$
 
 []{#MA-MSOL-ANM-01-004-064}
+
+[]{#MA-MIC-ANM-01-004-064}
 
 ### 64. Decide cuál es la negación correcta de cada afirmación y explica qué noción del capítulo aparece al interpretar cada negación.
 
@@ -3948,8 +4096,12 @@ Así, negar un universal produce un radio testigo, mientras que negar un existen
 
 []{#MA-MSOL-ANM-01-004-065}
 
+[]{#MA-MIC-ANM-01-004-065}
+
 ### 65. Resume en dos o tres frases el mecanismo común de C04 sin enumerar definiciones. Tu resumen debe explicar qué papel cumplen la ventana, el cuantificador y el conjunto observado.
 
 C04 estudia un conjunto fijando un punto y observando qué puede o debe ocurrir dentro de las ventanas $B(x,r)$ al cambiar la escala. El cuantificador decide si basta encontrar una ventana favorable o si la condición debe cumplirse para todas, mientras que el conjunto observado —$A$, $A^c$, ambos lados o la bola perforada— determina qué rasgo local se está leyendo.
 
 Una misma infraestructura métrica produce así todo el diccionario local del capítulo.
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 4](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html) · [Ejercicios](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.html)

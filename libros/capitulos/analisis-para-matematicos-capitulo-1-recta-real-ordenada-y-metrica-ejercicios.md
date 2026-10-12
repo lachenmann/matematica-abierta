@@ -1,5 +1,5 @@
 ---
-title: "Ejercicios — Capítulo 1"
+title: Ejercicios — Capítulo 1
 content-id: MA-BCH-0087
 content-type: book-chapter
 collection: PM-ANA
@@ -9,27 +9,34 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: 2026-09-30
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, orden, topologia]
+topics:
+- analisis-real
+- orden
+- topologia
 prerequisites: []
-related: [MA-BOK-0010]
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "Manuscrito ANM C01; referencias de contraste en la portada del libro."
+  - ANM-C01_EJERCICIOS.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.md) · [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.md)
-
-# Ejercicios — Capítulo 1
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html)
 
 ## §1.1. La misma recta, varias estructuras
 
 []{#MA-EX-ANM-01-001-001}
+
+[]{#MA-SEC-ANM-01-001-001}
+
+[]{#MA-SOL-ANM-01-001-001}
 
 ### 1. Lo que el orden no dice
 
@@ -40,6 +47,8 @@ Un estudiante afirma:
 Decide si la afirmación es correcta. Si es falsa, da dos ternas numéricas con el mismo patrón de orden $x<y<z$: una en la que las dos separaciones sean iguales y otra en la que no lo sean. Explica qué información proporciona realmente el orden.
 
 []{#MA-EX-ANM-01-001-002}
+
+[]{#MA-SOL-ANM-01-001-002}
 
 ### 2. Reflejar no destruye toda la información
 
@@ -53,6 +62,8 @@ No basta con responder «la reflexión conserva distancias»: muestra la compara
 
 []{#MA-EX-ANM-01-001-003}
 
+[]{#MA-SOL-ANM-01-001-003}
+
 ### 3. Un orden fijo, separaciones variables
 
 Fija los extremos $0$ y $1$, y coloca entre ellos un punto $t$ con $0<t<1$.
@@ -64,6 +75,8 @@ Fija los extremos $0$ y $1$, y coloca entre ellos un punto $t$ con $0<t<1$.
 El objetivo no es resolver una desigualdad aislada, sino usar una familia completa para distinguir información de orden e información métrica.
 
 []{#MA-EX-ANM-01-001-004}
+
+[]{#MA-SOL-ANM-01-001-004}
 
 ### 4. Tres capas sobre los mismos números
 
@@ -90,6 +103,10 @@ Alguien sostiene que esos dos datos bastan para decidir cuál de $a$ o $b$ está
 
 []{#MA-EX-ANM-01-001-005}
 
+[]{#MA-SEC-ANM-01-001-002}
+
+[]{#MA-SOL-ANM-01-001-005}
+
 ### 5. Una condición, tres escrituras
 
 Sea
@@ -103,6 +120,8 @@ $$
 3. Decide si cada uno de los puntos $-4$, $0$ y $3$ pertenece al conjunto y justifica tu respuesta a partir de la desigualdad original, no sólo de la notación del intervalo.
 
 []{#MA-EX-ANM-01-001-006}
+
+[]{#MA-SOL-ANM-01-001-006}
 
 ### 6. Dos fronteras, cuatro regiones
 
@@ -132,6 +151,8 @@ No trates los cuatro casos como reglas independientes: organiza tu respuesta a p
 
 []{#MA-EX-ANM-01-001-007}
 
+[]{#MA-SOL-ANM-01-001-007}
+
 ### 7. ¿Puede incluirse el infinito?
 
 Un estudiante escribe
@@ -149,6 +170,8 @@ para representar todos los números reales $x$ tales que $x\ge2$, y explica: «U
 
 []{#MA-EX-ANM-01-001-008}
 
+[]{#MA-SOL-ANM-01-001-008}
+
 ### 8. El mismo tramo sin elegir orientación
 
 Sean $p,q\in\mathbb R$, sin suponer cuál de los dos es menor, y considera la condición
@@ -163,6 +186,8 @@ $$
 4. Explica por qué la formulación con mínimo y máximo permite hablar del tramo entre $p$ y $q$ sin decidir de antemano cuál está a la izquierda.
 
 []{#MA-EX-ANM-01-001-009}
+
+[]{#MA-SOL-ANM-01-001-009}
 
 ### 9. Dos formas equivalentes de «estar entre»
 
@@ -190,6 +215,10 @@ Tu demostración debe cubrir explícitamente los dos órdenes posibles entre $x$
 
 []{#MA-EX-ANM-01-001-010}
 
+[]{#MA-SEC-ANM-01-001-003}
+
+[]{#MA-SOL-ANM-01-001-010}
+
 ### 10. Una distancia con centro desplazado
 
 Interpreta geométricamente la ecuación
@@ -205,6 +234,8 @@ $$
 No empieces resolviendo por casos: comienza identificando qué está midiendo $|x-3|$.
 
 []{#MA-EX-ANM-01-001-011}
+
+[]{#MA-SOL-ANM-01-001-011}
 
 ### 11. Del valor absoluto a una región de la recta
 
@@ -223,6 +254,8 @@ La verificación final debe hacerse sustituyendo en $|x+2|<4$, no sólo mirando 
 
 []{#MA-EX-ANM-01-001-012}
 
+[]{#MA-SOL-ANM-01-001-012}
+
 ### 12. Desplazamiento no es lo mismo que distancia
 
 Un estudiante afirma:
@@ -235,6 +268,8 @@ Un estudiante afirma:
 4. Formula una condición precisa bajo la cual sí se cumple $|x-a|=x-a$.
 
 []{#MA-EX-ANM-01-001-013}
+
+[]{#MA-SOL-ANM-01-001-013}
 
 ### 13. Dos puntos simétricos respecto de un centro
 
@@ -254,6 +289,8 @@ $$
 Tu respuesta debe distinguir explícitamente **desplazamiento orientado** y **separación**.
 
 []{#MA-EX-ANM-01-001-014}
+
+[]{#MA-SOL-ANM-01-001-014}
 
 ### 14. Un centro común para dos puntos equidistantes
 
@@ -289,6 +326,10 @@ No uses resultados posteriores del capítulo: basta trabajar con la definición 
 
 []{#MA-EX-ANM-01-001-015}
 
+[]{#MA-SEC-ANM-01-001-004}
+
+[]{#MA-SOL-ANM-01-001-015}
+
 ### 15. Tres propiedades que salen de la definición
 
 Sea
@@ -306,6 +347,8 @@ Demuestra directamente, para cualesquiera $x,y\in\mathbb R$, las tres propiedade
 En cada caso indica qué propiedad elemental del valor absoluto estás usando. No cites estas afirmaciones como propiedades ya conocidas de una métrica: el objetivo es recuperarlas desde la definición concreta de $d$.
 
 []{#MA-EX-ANM-01-001-016}
+
+[]{#MA-SOL-ANM-01-001-016}
 
 ### 16. Reconstruir la desigualdad triangular
 
@@ -331,6 +374,8 @@ Tu argumento debe mostrar explícitamente:
 
 []{#MA-EX-ANM-01-001-017}
 
+[]{#MA-SOL-ANM-01-001-017}
+
 ### 17. De la desigualdad triangular a una cota inversa
 
 Demuestra que, para cualesquiera $x,y\in\mathbb R$,
@@ -342,6 +387,8 @@ $$
 No uses la desigualdad triangular inversa como un resultado ya disponible. Parte de la desigualdad triangular ordinaria y obtén primero dos desigualdades de una sola dirección. Después explica por qué ambas pueden condensarse en una sola expresión con valor absoluto.
 
 []{#MA-EX-ANM-01-001-018}
+
+[]{#MA-SOL-ANM-01-001-018}
 
 ### 18. Una igualdad demasiado fuerte
 
@@ -374,6 +421,8 @@ No intentes todavía caracterizar cuándo sí hay igualdad; esa pregunta pertene
 
 []{#MA-EX-ANM-01-001-019}
 
+[]{#MA-SOL-ANM-01-001-019}
+
 ### 19. Mover el punto de referencia en la desigualdad inversa
 
 Fija $x,y,a\in\mathbb R$.
@@ -391,6 +440,8 @@ $$
 El objetivo es ver que cambiar el punto de referencia modifica las dos distancias individuales, pero no la cota universal que controla cuánto pueden diferir.
 
 []{#MA-EX-ANM-01-001-020}
+
+[]{#MA-SOL-ANM-01-001-020}
 
 ### 20. Encadenar estimaciones de distancia
 
@@ -421,6 +472,8 @@ $$
 Explica qué enseña este resultado sobre la acumulación de varios errores o desplazamientos pequeños.
 
 []{#MA-EX-ANM-01-001-021}
+
+[]{#MA-SOL-ANM-01-001-021}
 
 ### 21. Transportar una cota a un punto cercano
 
@@ -456,6 +509,10 @@ Interpreta el resultado como una regla de propagación de error: conocer cuánto
 
 []{#MA-EX-ANM-01-001-022}
 
+[]{#MA-SEC-ANM-01-001-005}
+
+[]{#MA-SOL-ANM-01-001-022}
+
 ### 22. Igualdad sin retroceso
 
 Sean $x,y,z\in\mathbb R$. Demuestra directamente que, si $y$ está entre $x$ y $z$, entonces
@@ -480,6 +537,8 @@ incluyendo los casos en que $y$ coincide con uno de los extremos. Explica al fin
 
 []{#MA-EX-ANM-01-001-023}
 
+[]{#MA-SOL-ANM-01-001-023}
+
 ### 23. La igualdad obliga al punto intermedio
 
 Supón que $x,y,z\in\mathbb R$ satisfacen
@@ -498,6 +557,8 @@ Organiza la prueba suponiendo primero $x\le z$ y examinando las tres regiones po
 
 []{#MA-EX-ANM-01-001-024}
 
+[]{#MA-SOL-ANM-01-001-024}
+
 ### 24. Estar entre no significa ser el punto medio
 
 Un estudiante afirma:
@@ -510,6 +571,8 @@ Un estudiante afirma:
 4. Justifica esa afirmación sin usar resultados posteriores del capítulo.
 
 []{#MA-EX-ANM-01-001-025}
+
+[]{#MA-SOL-ANM-01-001-025}
 
 ### 25. Medir exactamente el retroceso
 
@@ -535,6 +598,8 @@ $$
 4. Interpreta geométricamente el factor $2$ que aparece cuando $y$ queda fuera del segmento $[x,z]$.
 
 []{#MA-EX-ANM-01-001-026}
+
+[]{#MA-SOL-ANM-01-001-026}
 
 ### 26. Cuatro puntos y una ruta sin retroceso
 
@@ -566,6 +631,8 @@ han de convertirse simultáneamente en igualdades. Interpreta el resultado como 
 
 []{#MA-EX-ANM-01-001-027}
 
+[]{#MA-SOL-ANM-01-001-027}
+
 ### 27. Lo que las distancias revelan —y lo que no
 
 Sean $a,b,c\in\mathbb R$ tres puntos distintos. Supón que sólo conocemos las tres distancias
@@ -591,6 +658,10 @@ El objetivo es precisar hasta dónde la información métrica permite recuperar 
 
 []{#MA-EX-ANM-01-001-028}
 
+[]{#MA-SEC-ANM-01-001-006}
+
+[]{#MA-SOL-ANM-01-001-028}
+
 ### 28. Leer una bola en cuatro lenguajes
 
 Considera la bola
@@ -608,6 +679,8 @@ $$
 El objetivo es seguir una misma región a través de varias representaciones, no memorizar el intervalo final.
 
 []{#MA-EX-ANM-01-001-029}
+
+[]{#MA-SOL-ANM-01-001-029}
 
 ### 29. Recuperar centro y radio desde un intervalo
 
@@ -635,6 +708,8 @@ No basta con sustituir en una fórmula: muestra que $a-r=u$ y $a+r=v$.
 
 []{#MA-EX-ANM-01-001-030}
 
+[]{#MA-SOL-ANM-01-001-030}
+
 ### 30. Mismo centro, radios distintos
 
 Fija $a\in\mathbb R$ y números $0<r<s$.
@@ -651,6 +726,8 @@ $$
 Tu prueba de la inclusión debe partir de la condición de distancia, no sólo de un dibujo.
 
 []{#MA-EX-ANM-01-001-031}
+
+[]{#MA-SOL-ANM-01-001-031}
 
 ### 31. Mover el centro: cuándo dos bolas se encuentran
 
@@ -686,6 +763,8 @@ Explica qué ocurre geométricamente con los dos intervalos cuando desplazamos u
 
 []{#MA-EX-ANM-01-001-032}
 
+[]{#MA-SOL-ANM-01-001-032}
+
 ### 32. Cuándo una bola cabe dentro de otra
 
 Sean $a,b\in\mathbb R$ y $r,s>0$. Demuestra que
@@ -716,6 +795,10 @@ No uses conceptos topológicos posteriores: trabaja sólo con distancia, valor a
 
 []{#MA-EX-ANM-01-001-033}
 
+[]{#MA-SEC-ANM-01-001-007}
+
+[]{#MA-SOL-ANM-01-001-033}
+
 ### 33. Una tolerancia escondida dentro de una expresión lineal
 
 Considera la condición
@@ -733,6 +816,8 @@ $$
 El objetivo es reconocer primero la estructura de tolerancia y sólo después resolver la desigualdad.
 
 []{#MA-EX-ANM-01-001-034}
+
+[]{#MA-SOL-ANM-01-001-034}
 
 ### 34. Estar lejos de un centro
 
@@ -752,6 +837,8 @@ Después decide si los puntos $-5$, $-2$ y $1$ pertenecen al conjunto solución,
 
 []{#MA-EX-ANM-01-001-035}
 
+[]{#MA-SOL-ANM-01-001-035}
+
 ### 35. Una rama desaparecida
 
 Un estudiante afirma que, para $r>0$,
@@ -770,6 +857,8 @@ $$
 
 []{#MA-EX-ANM-01-001-036}
 
+[]{#MA-SOL-ANM-01-001-036}
+
 ### 36. Entre dos umbrales de distancia
 
 Sean $a\in\mathbb R$ y $0<r<s$. Considera la condición
@@ -785,6 +874,8 @@ $$
 5. Explica por qué la región obtenida tiene dos componentes separadas por una zona central excluida.
 
 []{#MA-EX-ANM-01-001-037}
+
+[]{#MA-SOL-ANM-01-001-037}
 
 ### 37. Dos tolerancias simultáneas
 
@@ -814,6 +905,8 @@ $$
 
 []{#MA-EX-ANM-01-001-038}
 
+[]{#MA-SOL-ANM-01-001-038}
+
 ### 38. Una familia que no crece por inclusión
 
 Fija $a\in\mathbb R$ y, para cada $t>0$, define
@@ -833,6 +926,10 @@ $$
 ## §1.8. Qué ve el orden y qué ve la distancia
 
 []{#MA-EX-ANM-01-001-039}
+
+[]{#MA-SEC-ANM-01-001-008}
+
+[]{#MA-SOL-ANM-01-001-039}
 
 ### 39. Preservar distancias no significa preservar orientación
 
@@ -855,6 +952,8 @@ Un estudiante concluye:
 No supongas que $F$ es lineal o afín.
 
 []{#MA-EX-ANM-01-001-040}
+
+[]{#MA-SOL-ANM-01-001-040}
 
 ### 40. Trasladar y escalar en una sola transformación
 
@@ -882,6 +981,8 @@ $$
 *Pista conceptual.* Separa el efecto de sumar $c$ del efecto de multiplicar por $\lambda$.
 
 []{#MA-EX-ANM-01-001-041}
+
+[]{#MA-SOL-ANM-01-001-041}
 
 ### 41. Componer transformaciones: escala y orientación
 
@@ -916,6 +1017,8 @@ $$
 
 []{#MA-EX-ANM-01-001-042}
 
+[]{#MA-SOL-ANM-01-001-042}
+
 ### 42. Clasificar todas las isometrías de la recta
 
 Sea $F:\mathbb R\to\mathbb R$ una aplicación que preserva todas las distancias:
@@ -945,3 +1048,5 @@ En otras palabras: demuestra que **toda isometría de la recta es una traslació
 Después deduce que toda isometría de $\mathbb R$ o bien preserva todas las desigualdades estrictas, o bien las invierte todas.
 
 *Pista conceptual.* Empieza eliminando $F(0)$ mediante una traslación. Si consigues una isometría $G$ con $G(0)=0$, entonces $|G(x)|=|x|$ para todo $x$. El paso difícil es demostrar que la elección del signo no puede cambiar de un punto a otro.
+
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html)

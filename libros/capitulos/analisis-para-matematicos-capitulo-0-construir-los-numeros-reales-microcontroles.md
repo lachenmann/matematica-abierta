@@ -1,5 +1,5 @@
 ---
-title: "Soluciones de microcontroles — Capítulo 0"
+title: Soluciones de microcontroles — Capítulo 0
 content-id: MA-BCH-0178
 content-type: book-chapter
 collection: PM-ANA
@@ -9,21 +9,26 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-10-07
-date-modified: 2026-10-07
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, numeros-reales, completitud]
+topics:
+- analisis-real
+- numeros-reales
+- completitud
 prerequisites: []
-related: [MA-BOK-0010]
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "ANM-C00_MICROCONTROLES_SOLUCIONES.md, fuente canónica ANM; paquete C00 cerrado."
+  - ANM-C00_MICROCONTROLES_SOLUCIONES.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.md)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)
 
 ## §0.1. ¿Existen los números reales?
 
@@ -2216,7 +2221,7 @@ Por tanto ambas diferencias formales producen el mismo elemento de $F$, y la def
 $$
 \boxed{\jmath_{\mathbb Z}^F(m-n)=\nu_F(m)-\nu_F(n)}
 $$
-\nes independiente del representante escogido.
+es independiente del representante escogido.
 
 []{#MA-MSOL-ANM-01-000-064}
 
@@ -2230,12 +2235,12 @@ $$
 \frac ab=\frac cd,
 \qquad b,d\ne0,
 $$
-\nentonces
+entonces
 
 $$
 ad=bc
 $$
-\nen $\mathbb Z$. La multiplicatividad de $\jmath_{\mathbb Z}^F$ da
+en $\mathbb Z$. La multiplicatividad de $\jmath_{\mathbb Z}^F$ da
 
 $$
 \jmath(a)\jmath(d)=\jmath(b)\jmath(c).
@@ -2268,7 +2273,7 @@ El primer gasto de completitud ocurre al demostrar que $F$ es arquimediano. Se s
 $$
 N_F=\{\nu_F(n):n\in\mathbb N\}
 $$
-\nestá acotado superiormente. Entonces, y sólo entonces, la completitud permite formar
+está acotado superiormente. Entonces, y sólo entonces, la completitud permite formar
 
 $$
 \boxed{s=\sup N_F.}
@@ -2441,7 +2446,7 @@ El conjunto
 $$
 \iota_F(A_x)=\{\iota_F(q):q\in A_x\}
 $$
-\nes no vacío y está acotado superiormente por $x$. La completitud se usa por segunda vez para asegurar que existe
+es no vacío y está acotado superiormente por $x$. La completitud se usa por segunda vez para asegurar que existe
 
 $$
 s=\sup_F\iota_F(A_x).
@@ -2472,7 +2477,7 @@ Si
 $$
 A_x=A_y,
 $$
-\nentonces también
+entonces también
 
 $$
 \iota_F(A_x)=\iota_F(A_y).
@@ -2993,4 +2998,4 @@ $$
 
 Las cortaduras son una realización especialmente útil de esa estructura; no son una afirmación de que los reales deban ser, «por esencia», subconjuntos de $\mathbb Q$.
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.md)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)

@@ -1,5 +1,5 @@
 ---
-title: "Capítulo 5 — Sucesiones y comportamiento eventual"
+title: Capítulo 5 — Sucesiones y comportamiento eventual
 content-id: MA-BCH-0179
 content-type: book-chapter
 collection: PM-ANA
@@ -9,21 +9,29 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-10-07
-date-modified: 2026-10-07
-areas: [analisis]
+date-modified: '2026-10-11'
+areas:
+- analisis
 level: universitario
-topics: [analisis-real, sucesiones, eventualidad]
-prerequisites: [MA-BCH-0083]
-related: [MA-BOK-0010]
+topics:
+- analisis-real
+- sucesiones
+- eventualidad
+prerequisites:
+- MA-BCH-0083
+related:
+- MA-BOK-0010
 provenance:
   type: original
   sources:
-    - "ANM-C05.md, fuente canónica ANM; paquete C05 cerrado."
+  - ANM-C05.md, manuscrito canónico ANM auditado; ANM-FINAL_GLOBAL_QA_v01.
 license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Capítulo 5](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual.md) · [Ejercicios](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-microcontroles.md)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 5](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual.html) · [Ejercicios](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-microcontroles.html)
+
+[]{#MA-SEC-ANM-01-005-008}
 
 Con C05 comienza la Parte II — *El infinito bajo control*. Hasta ahora el objeto principal de estudio había sido, casi siempre, estático: la recta real, sus subconjuntos, sus cotas, sus regiones locales. A partir de aquí aparecerá una nueva clase de objeto. Ya no miraremos solamente **qué puntos hay**, sino también **en qué orden aparecen**.
 
@@ -420,9 +428,9 @@ Esa tercera pieza será la puerta de entrada a todo el lenguaje eventual.
 
 ### Leer la figura
 
-![Dominio natural, evaluación por 1/(n+1) y valores reales; índice 3 y valor 1/4 destacados.](../../assets/books/anm/C05-F01.svg)
+![Dominio natural, evaluación por 1/(n+1) y valores reales; índice 3 y valor 1/4 destacados.](../../assets/books/anm/C05-F01.svg){#fig-anm-c05-f01 fig-alt="Dominio natural, evaluación por 1/(n+1) y valores reales; índice 3 y valor 1/4 destacados."}
 
-**Figura C05-F01.** El índice 3 selecciona el término 1/4; índice, evaluación y valor pertenecen a niveles distintos.
+**Figura [C05-F01](#fig-anm-c05-f01).** El índice 3 selecciona el término 1/4; índice, evaluación y valor pertenecen a niveles distintos.
 
 La figura permite seguir un mismo término en tres niveles:
 
@@ -504,29 +512,13 @@ El siguiente paso será someter a prueba una intuición muy común: pensar que u
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-005-001}
-
 1. Sea $a_n=3n-2$. Identifica el dominio, el codominio, el índice y el término cuando $n=4$.
-[]{#MA-MIC-ANM-01-005-002}
-
 2. Escribe los primeros cinco términos de $a_n=1/(n+1)$ usando la convención $\mathbb N=\{0,1,2,\ldots\}$.
-[]{#MA-MIC-ANM-01-005-003}
-
 3. Explica por qué las expresiones $f(x)=x^2$ con $f:\mathbb R\to\mathbb R$ y $a_n=n^2$ con $a:\mathbb N\to\mathbb R$ no definen el mismo objeto matemático.
-[]{#MA-MIC-ANM-01-005-004}
-
 4. Decide si la frase «$a_3$ es el tercer índice de la sucesión» es correcta. Si no lo es, reescríbela con los tipos adecuados.
-[]{#MA-MIC-ANM-01-005-005}
-
 5. Sean $a,b:\mathbb N\to\mathbb R$ tales que $a_n=b_n$ para todo $n\in\mathbb N$. Justifica, usando la definición de igualdad de funciones, por qué $a=b$.
-[]{#MA-MIC-ANM-01-005-006}
-
 6. Construye una sucesión real en la que el mismo valor aparezca en infinitos índices distintos. Explica por qué esto no contradice que una sucesión sea una función.
-[]{#MA-MIC-ANM-01-005-007}
-
 7. En una gráfica de puntos $(n,a_n)$ alguien une todos los puntos con una curva y afirma que esa curva «es la sucesión». Localiza el error.
-[]{#MA-MIC-ANM-01-005-008}
-
 8. En la notación $\{a_n:n\in\mathbb N\}$ se ha olvidado parte de la información de la sucesión. Sin desarrollar todavía §5.2, indica qué clase de información sospechas que ya no puede recuperarse.
 
 La definición ya está en su sitio. En §5.2 veremos por qué conservar solamente los valores no basta: una sucesión también recuerda **en qué orden** fueron visitados.
@@ -782,9 +774,9 @@ $$
 
 ### Leer la figura
 
-![Dos sucesiones de ceros y unos con distinto orden y mismo conjunto; intercambio no periódico de 0 y 1.](../../assets/books/anm/C05-F02.svg)
+![Dos sucesiones de ceros y unos con distinto orden y mismo conjunto; intercambio no periódico de 0 y 1.](../../assets/books/anm/C05-F02.svg){#fig-anm-c05-f02 fig-alt="Dos sucesiones de ceros y unos con distinto orden y mismo conjunto; intercambio no periódico de 0 y 1."}
 
-**Figura C05-F02.** El conjunto {0,1} no distingue los dos patrones de visitas. También cambia el orden al intercambiar dos valores sin repeticiones.
+**Figura [C05-F02](#fig-anm-c05-f02).** El conjunto {0,1} no distingue los dos patrones de visitas. También cambia el orden al intercambiar dos valores sin repeticiones.
 
 La figura muestra, en carriles de índices paralelos, las sucesiones
 
@@ -816,29 +808,13 @@ Esa diferencia será precisamente la materia prima que las secciones siguientes 
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-005-009}
-
 1. Para $a_n=(-1)^n$, determina el conjunto de valores y explica qué información de la sucesión no queda registrada en ese conjunto.
-[]{#MA-MIC-ANM-01-005-010}
-
 2. Sean $a=(0,1,0,1,\ldots)$ y $b=(0,0,1,1,0,0,1,1,\ldots)$. Demuestra que tienen el mismo conjunto de valores pero que $a\ne b$.
-[]{#MA-MIC-ANM-01-005-011}
-
 3. Construye dos sucesiones distintas con conjunto de valores $\{0,1,2\}$ y con órdenes de aparición diferentes.
-[]{#MA-MIC-ANM-01-005-012}
-
 4. Construye dos sucesiones con el mismo conjunto de valores en las que el valor $0$ tenga patrones de repetición distintos. Describe la diferencia usando índices concretos.
-[]{#MA-MIC-ANM-01-005-013}
-
 5. Demuestra que si $a=b$ como sucesiones, entonces $\{a_n:n\in\mathbb N\}=\{b_n:n\in\mathbb N\}$. Explica por qué el recíproco falla.
-[]{#MA-MIC-ANM-01-005-014}
-
 6. Sea $p_n=n$ y define $q=(1,0,2,3,4,\ldots)$. Verifica que $p$ y $q$ tienen el mismo conjunto de valores y localiza un índice que pruebe que son distintas.
-[]{#MA-MIC-ANM-01-005-015}
-
 7. Si $\sigma:\mathbb N\to\mathbb N$ es biyectiva y $b_n=a_{\sigma(n)}$, demuestra directamente que $a$ y $b$ tienen el mismo conjunto de valores. ¿Por qué eso no prueba que $a=b$?
-[]{#MA-MIC-ANM-01-005-016}
-
 8. Explica con tus propias palabras qué información conserva la lista ordenada $(a_0,a_1,a_2,\ldots)$ que desaparece al pasar al conjunto $\{a_n:n\in\mathbb N\}$.
 
 Ya sabemos qué se pierde cuando borramos los índices. En §5.3 haremos lo contrario: compararemos varias representaciones de una sucesión y exigiremos que cada una conserve, de una forma u otra, la información indexada que ahora sabemos que es esencial.
@@ -1084,9 +1060,9 @@ Esta compatibilidad es una prueba práctica de que estamos mirando cuatro repres
 
 ### Leer la figura
 
-![Fórmula 2n−1, lista, tabla y puntos discretos; par (3,5) destacado.](../../assets/books/anm/C05-F03.svg)
+![Fórmula 2n−1, lista, tabla y puntos discretos; par (3,5) destacado.](../../assets/books/anm/C05-F03.svg){#fig-anm-c05-f03 fig-alt="Fórmula 2n−1, lista, tabla y puntos discretos; par (3,5) destacado."}
 
-**Figura C05-F03.** Fórmula, lista, tabla y puntos conservan el mismo par (3,5). No se añaden valores entre índices.
+**Figura [C05-F03](#fig-anm-c05-f03).** Fórmula, lista, tabla y puntos conservan el mismo par (3,5). No se añaden valores entre índices.
 
 La figura muestra pocos términos explícitos y destaca un mismo término. Su función no es añadir contenido matemático, sino permitir que el lector siga un mismo par
 
@@ -1122,29 +1098,13 @@ La siguiente pregunta ya no será cómo representar **toda** la sucesión. Pregu
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-005-017}
-
 1. Para $a_n=3-2n$, escribe los primeros cinco términos, una tabla con índices $0$ a $4$ y los cinco puntos correspondientes de la gráfica discreta.
-[]{#MA-MIC-ANM-01-005-018}
-
 2. En la sucesión $b_n=(-1)^n$, explica por qué los puntos $(0,1)$ y $(2,1)$ contienen más información que la sola marca $1$ sobre la recta real.
-[]{#MA-MIC-ANM-01-005-019}
-
 3. Un estudiante dibuja los puntos de $a_n=n^2$ y los une con la parábola $y=x^2$. Explica qué parte del dibujo representa la sucesión y qué parte es información adicional.
-[]{#MA-MIC-ANM-01-005-020}
-
 4. Decide si una lista ordenada puede representar correctamente una sucesión sin escribir explícitamente todos los índices. ¿Qué convención permite hacerlo?
-[]{#MA-MIC-ANM-01-005-021}
-
 5. Da un ejemplo de una representación sobre la recta real que pierda información de índice y explica cómo repararla mediante etiquetas.
-[]{#MA-MIC-ANM-01-005-022}
-
 6. Para $a_n=2n-1$, localiza la afirmación $a_3=5$ en la fórmula, la lista, la tabla y la gráfica discreta.
-[]{#MA-MIC-ANM-01-005-023}
-
 7. Explica por qué una fórmula cerrada no forma parte de la definición de sucesión, aunque muchas sucesiones de ejemplo se presenten mediante fórmulas.
-[]{#MA-MIC-ANM-01-005-024}
-
 8. Compara el conjunto $\{a_n:n\in\mathbb N\}$ con la gráfica $\{(n,a_n):n\in\mathbb N\}$. ¿Cuál de los dos conserva necesariamente el índice?
 
 Ya podemos cambiar de representación sin perder de vista el objeto. En §5.4 introduciremos la primera operación estructural nueva sobre una sucesión: conservar sólo los términos cuyos índices están desde cierto punto en adelante.
@@ -1579,9 +1539,9 @@ $$
 
 ### Leer la figura
 
-![Tres objetos de cola desde 2: dominio desde 2, nuevo dominio desde 0 y conjunto {0,1}.](../../assets/books/anm/C05-F04.svg)
+![Tres objetos de cola desde 2: dominio desde 2, nuevo dominio desde 0 y conjunto {0,1}.](../../assets/books/anm/C05-F04.svg){#fig-anm-c05-f04 fig-alt="Tres objetos de cola desde 2: dominio desde 2, nuevo dominio desde 0 y conjunto {0,1}."}
 
-**Figura C05-F04.** Con N=2, la restricción conserva los índices originales; la reindexación empieza en 0; el conjunto de valores elimina la indexación.
+**Figura [C05-F04](#fig-anm-c05-f04).** Con N=2, la restricción conserva los índices originales; la reindexación empieza en 0; el conjunto de valores elimina la indexación.
 
 La figura muestra tres carriles coordinados:
 
@@ -1629,29 +1589,13 @@ En §5.5 usaremos esta infraestructura para precisar qué significa que una prop
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-005-025}
-
 1. Para $a_n=2n+1$ y $N=3$, escribe la cola restringida desde $3$ indicando su dominio y calcula sus primeros cuatro valores.
-[]{#MA-MIC-ANM-01-005-026}
-
 2. Para la misma sucesión, escribe la cola reindexada $a^{\langle3\rangle}$ y verifica que $a^{\langle3\rangle}_2=a_5$.
-[]{#MA-MIC-ANM-01-005-027}
-
 3. Explica por qué $a|_{\mathbb N_{\ge3}}$ y $a^{\langle3\rangle}$ contienen la misma información ordenada pero no son la misma función.
-[]{#MA-MIC-ANM-01-005-028}
-
 4. Sea $a=(5,8,1,0,1,0,1,0,\ldots)$. Para $N=2$, determina la cola reindexada y el conjunto de valores tardíos. ¿Qué información pierde el segundo objeto?
-[]{#MA-MIC-ANM-01-005-029}
-
 5. Demuestra directamente que $\tau_N(k)=N+k$ es biyectiva de $\mathbb N$ sobre $\mathbb N_{\ge N}$.
-[]{#MA-MIC-ANM-01-005-030}
-
 6. Si $M\ge N$, demuestra que $\{a_n:n\ge M\}\subseteq\{a_n:n\ge N\}$.
-[]{#MA-MIC-ANM-01-005-031}
-
 7. Verifica la identidad $a^{\langle M\rangle}=(a^{\langle N\rangle})^{\langle M-N\rangle}$ cuando $M\ge N$.
-[]{#MA-MIC-ANM-01-005-032}
-
 8. Explica qué sucede cuando $N=0$: ¿cuál es el prefijo eliminado, qué es la cola restringida y qué es la cola reindexada?
 
 Ahora ya podemos hablar con precisión de «lo que ocurre después de cierto índice». En §5.5 convertiremos esa intuición en lenguaje lógico y definiremos qué significa que una propiedad sea **eventual**.
@@ -2065,9 +2009,9 @@ Este punto será visible también en la figura de la sección: una flecha hacia 
 
 ### Leer la figura
 
-![Éxitos desde 4 y fallos anteriores; corte en eje de índices y regla universal.](../../assets/books/anm/C05-F05.svg)
+![Éxitos desde 4 y fallos anteriores; corte en eje de índices y regla universal.](../../assets/books/anm/C05-F05.svg){#fig-anm-c05-f05 fig-alt="Éxitos desde 4 y fallos anteriores; corte en eje de índices y regla universal."}
 
-**Figura C05-F05.** Para P(n): n≥4, N=4 deja una cola sin excepciones. La regla universal justifica la continuación más allá del dibujo.
+**Figura [C05-F05](#fig-anm-c05-f05).** Para P(n): n≥4, N=4 deja una cola sin excepciones. La regla universal justifica la continuación más allá del dibujo.
 
 La figura muestra un prefijo en el que pueden aparecer aciertos y fallos y, después de un umbral $N$, una cola completa en la que todos los índices satisfacen $P$.
 
@@ -2106,29 +2050,13 @@ Todavía no hemos comparado esta estructura con otras formas de repetición tard
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-005-033}
-
 1. Sea $a_n=3n-10$. Encuentra un testigo $N$ de que $a_n>0$ eventualmente y verifica tu elección para todo $n\ge N$.
-[]{#MA-MIC-ANM-01-005-034}
-
 2. Explica por qué, si $N$ es un testigo de eventualidad, todo $M\ge N$ también lo es.
-[]{#MA-MIC-ANM-01-005-035}
-
 3. Construye una propiedad de una sucesión que sea eventual pero no verdadera para todos los índices.
-[]{#MA-MIC-ANM-01-005-036}
-
 4. Para $b_n=1/(n+1)$, demuestra que $b_n\in(0,1/5)$ eventualmente usando un intervalo fijo y un testigo explícito.
-[]{#MA-MIC-ANM-01-005-037}
-
 5. Reescribe $\exists N\,\forall n\ge N:P(n)$ usando la cola reindexada y la variable $k$.
-[]{#MA-MIC-ANM-01-005-038}
-
 6. Decide si comprobar $P(10),P(11),\ldots,P(1000)$ basta para demostrar que $P(n)$ ocurre eventualmente. Justifica.
-[]{#MA-MIC-ANM-01-005-039}
-
 7. Si una propiedad vale para todo $n\in\mathbb N$, ¿qué testigo de eventualidad puede elegirse inmediatamente?
-[]{#MA-MIC-ANM-01-005-040}
-
 8. En la afirmación «eventualmente $a_n\in I$», explica qué objeto debe estar fijado antes de elegir $N$ y qué variable continúa recorriendo la cola.
 
 Ya tenemos el operador lógico que expresa «desde algún punto en adelante». En §5.6 veremos por qué cambiar el orden de los cuantificadores produce una noción distinta.
@@ -2445,9 +2373,9 @@ $$
 
 ### Leer la figura
 
-![Eventualidad desde 4 frente a éxitos en cuadrados; cortes y testigos posteriores junto a fallos tardíos.](../../assets/books/anm/C05-F06.svg)
+![Eventualidad desde 4 frente a éxitos en cuadrados; cortes y testigos posteriores junto a fallos tardíos.](../../assets/books/anm/C05-F06.svg){#fig-anm-c05-f06 fig-alt="Eventualidad desde 4 frente a éxitos en cuadrados; cortes y testigos posteriores junto a fallos tardíos."}
 
-**Figura C05-F06.** Una cola de éxitos y ocurrencias posteriores a cada corte tienen cuantificadores distintos. Los cuadrados reaparecen sin llenar ninguna cola.
+**Figura [C05-F06](#fig-anm-c05-f06).** Una cola de éxitos y ocurrencias posteriores a cada corte tienen cuantificadores distintos. Los cuadrados reaparecen sin llenar ninguna cola.
 
 La figura tiene dos paneles. En el primero, un único corte $N$ deja a su derecha sólo marcas que satisfacen $P$. En el segundo, varios cortes muestran que después de cada uno aparece alguna nueva marca que satisface $P$, aunque entre esas apariciones puedan seguir existiendo fallos.
 
@@ -2485,29 +2413,13 @@ Una sola permutación de cuantificadores cambia el contenido matemático. Esta d
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-005-041}
-
 1. Para $a_n=(-1)^n$ y $P(n):a_n=1$, demuestra desde la definición que $P$ ocurre infinitas veces y que no ocurre eventualmente.
-[]{#MA-MIC-ANM-01-005-042}
-
 2. Escribe con palabras la afirmación $\forall N\in\mathbb N\,\exists n\ge N:P(n)$ sin usar la expresión «infinitas veces».
-[]{#MA-MIC-ANM-01-005-043}
-
 3. Demuestra directamente que si $P$ ocurre eventualmente, entonces ocurre infinitas veces, sin usar todavía el lema de sincronización de §5.7.
-[]{#MA-MIC-ANM-01-005-044}
-
 4. Niega paso a paso la afirmación $\exists N\,\forall n\ge N:P(n)$ y explica por qué el resultado significa que $\neg P$ ocurre infinitas veces.
-[]{#MA-MIC-ANM-01-005-045}
-
 5. Construye una propiedad $P$ tal que tanto $P$ como $\neg P$ ocurran infinitas veces.
-[]{#MA-MIC-ANM-01-005-046}
-
 6. Decide si «$P$ ocurre en cien mil índices distintos» basta para concluir que $P$ ocurre infinitas veces en el sentido de esta sección. Justifica.
-[]{#MA-MIC-ANM-01-005-047}
-
 7. Para $P(n):n$ es un cuadrado perfecto, demuestra que $P$ ocurre infinitas veces pero no eventualmente.
-[]{#MA-MIC-ANM-01-005-048}
-
 8. Completa y justifica las equivalencias: «$P$ no ocurre infinitas veces» $\iff$ ______ ocurre eventualmente; «$P$ no ocurre eventualmente» $\iff$ ______ ocurre infinitas veces.
 
 Ya distinguimos estabilización de reaparición arbitrariamente tardía. En §5.7 volveremos a las propiedades eventuales para aprender a combinar varios umbrales y para precisar qué aspectos del comportamiento tardío sobreviven a una modificación finita del comienzo.
@@ -2875,9 +2787,9 @@ Esta pareja de ejemplos fija exactamente el alcance de la invariancia.
 
 ### Leer la figura
 
-![Carriles P desde 4, Q desde 7 y conjunción desde 7; máximo y alcance de invariancia.](../../assets/books/anm/C05-F07.svg)
+![Carriles P desde 4, Q desde 7 y conjunción desde 7; máximo y alcance de invariancia.](../../assets/books/anm/C05-F07.svg){#fig-anm-c05-f07 fig-alt="Carriles P desde 4, Q desde 7 y conjunción desde 7; máximo y alcance de invariancia."}
 
-**Figura C05-F07.** Desde el máximo de los cortes ambas obligaciones están activas. La coincidencia de colas sólo permite transferir propiedades de cola.
+**Figura [C05-F07](#fig-anm-c05-f07).** Desde el máximo de los cortes ambas obligaciones están activas. La coincidencia de colas sólo permite transferir propiedades de cola.
 
 La figura principal tiene tres carriles alineados. Los dos primeros muestran las condiciones $P$ y $Q$ activas desde umbrales distintos; el tercero usa
 
@@ -2931,29 +2843,13 @@ En §5.8 la reutilizaremos por primera vez fuera de su construcción: dos captur
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-005-049}
-
 1. Supón que $P(n)$ vale para todo $n\ge5$ y $Q(n)$ para todo $n\ge9$. Encuentra un testigo común y demuestra que $P(n)\land Q(n)$ vale desde ese índice.
-[]{#MA-MIC-ANM-01-005-050}
-
 2. Sean $P_1,P_2,P_3$ propiedades eventuales con testigos $4$, $11$ y $7$. ¿Qué umbral común produce el lema de sincronización? Justifica por qué funciona.
-[]{#MA-MIC-ANM-01-005-051}
-
 3. Explica por qué el máximo de los umbrales no necesita ser el menor testigo posible para la conjunción.
-[]{#MA-MIC-ANM-01-005-052}
-
 4. Sean $a=(3,4,5,6,7,\ldots)$ y $b=(-100,4,5,6,7,\ldots)$. Determina desde qué índice coinciden eventualmente y explica por qué no son iguales como funciones.
-[]{#MA-MIC-ANM-01-005-053}
-
 5. Demuestra que si $a$ y $b$ coinciden eventualmente y $a_n>0$ eventualmente, entonces $b_n>0$ eventualmente. Haz visible el umbral común que utilizas.
-[]{#MA-MIC-ANM-01-005-054}
-
 6. Da un contraejemplo a la frase «toda propiedad de una sucesión es invariante al modificar finitos términos» y explica qué parte de la formulación correcta falta en esa frase.
-[]{#MA-MIC-ANM-01-005-055}
-
 7. Dos sucesiones difieren sólo en los índices $2$, $8$ y $13$. Encuentra un índice a partir del cual necesariamente coinciden y explica qué tipo de propiedades pueden transferirse desde allí.
-[]{#MA-MIC-ANM-01-005-056}
-
 8. Sin desarrollar todavía §5.8, explica por qué disponer de un único umbral común será útil cuando una misma cola deba satisfacer simultáneamente dos condiciones de pertenencia.
 
 Ya sabemos combinar obligaciones eventuales y separar con precisión lo que depende de una cola de lo que depende del comienzo. En §5.8 usaremos esta herramienta para expresar geométricamente que una cola completa queda capturada dentro de un conjunto fijo.
@@ -3278,9 +3174,9 @@ C05 se detiene aquí. La formalización completa de ese nuevo juego de cuantific
 
 ### Leer la figura
 
-![Puntos 7,−3,0,3/2,... con corte 2; recta con U={0,3/2}; sincronización para intersección.](../../assets/books/anm/C05-F08.svg)
+![Puntos 7,−3,0,3/2,... con corte 2; recta con U={0,3/2}; sincronización para intersección.](../../assets/books/anm/C05-F08.svg){#fig-anm-c05-f08 fig-alt="Puntos 7,−3,0,3/2,... con corte 2; recta con U={0,3/2}; sincronización para intersección."}
 
-**Figura C05-F08.** El conjunto fijo U={0,3/2} contiene toda la cola desde 2 y no es un intervalo. Dos capturas se sincronizan para U∩V.
+**Figura [C05-F08](#fig-anm-c05-f08).** El conjunto fijo U={0,3/2} contiene toda la cola desde 2 y no es un intervalo. Dos capturas se sincronizan para U∩V.
 
 La figura combina dos registros sincronizados. En la gráfica discreta $(n,a_n)$ aparece un corte vertical en $N$; en la recta real aparece el conjunto fijo $U$ con todos los términos tardíos dentro de él.
 
@@ -3333,31 +3229,17 @@ El capítulo entrega, por tanto, una sola pieza nueva y reutilizable al resto de
 
 ### Antes de seguir
 
-[]{#MA-MIC-ANM-01-005-057}
-
 1. Sea $a=(5,-2,1,1,1,\ldots)$ y $U=\{1\}$. Encuentra un testigo explícito de que $a$ está eventualmente en $U$.
-[]{#MA-MIC-ANM-01-005-058}
-
 2. Reescribe «$a$ está eventualmente en $U$» usando el conjunto de valores tardíos $\{a_n:n\ge N\}$.
-[]{#MA-MIC-ANM-01-005-059}
-
 3. Da un ejemplo de un conjunto fijo $U$ que no sea un intervalo y de una sucesión que esté eventualmente en él.
-[]{#MA-MIC-ANM-01-005-060}
-
 4. Explica por qué permitir $U_n=\{a_n\}$ para cada índice destruiría el contenido de la noción de captura eventual.
-[]{#MA-MIC-ANM-01-005-061}
-
 5. Supón que $a$ está eventualmente en $U$ desde $N_U=4$ y eventualmente en $V$ desde $N_V=9$. Demuestra que está eventualmente en $U\cap V$ e identifica un testigo.
-[]{#MA-MIC-ANM-01-005-062}
-
 6. Si $U\cap V=\varnothing$, explica por qué una sucesión no puede estar eventualmente en ambos conjuntos.
-[]{#MA-MIC-ANM-01-005-063}
-
 7. Fija $L\in\mathbb R$ y $r>0$. Explica por qué «eventualmente $a_n\in B(L,r)$» sigue siendo sólo una captura por un conjunto fijo y no constituye todavía la definición de convergencia.
-[]{#MA-MIC-ANM-01-005-064}
-
 8. Describe con palabras el cambio de arquitectura entre C05 y C06 usando el esquema «tolerancia → umbral → todos los índices posteriores», sin escribir aún la definición formal de convergencia.
 
 Con esto queda completa la preparación lógica de C05. Sabemos hablar de colas, propiedades eventuales, reapariciones arbitrariamente tardías, umbrales comunes y capturas por conjuntos fijos. C06 añadirá la exigencia que aquí hemos dejado deliberadamente fuera: permitir que la tolerancia se ajuste y pedir que la cola responda a cada elección.
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Capítulo 5](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual.md) · [Ejercicios](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-microcontroles.md)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 5](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual.html) · [Ejercicios](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-microcontroles.html)
+
+[← Capítulo 4](analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html) · [Capítulo 6 →](analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n.html)
