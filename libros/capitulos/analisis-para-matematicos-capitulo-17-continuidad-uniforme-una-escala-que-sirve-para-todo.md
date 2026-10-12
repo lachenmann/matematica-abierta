@@ -86,6 +86,8 @@ Así $|\sqrt{x}-\sqrt{y}|\le\sqrt{|x-y|}$ en $[0,\infty)$, y $\delta=\varepsilon
 
 Para cada tolerancia $\varepsilon>0$, un solo $\delta>0$ que sirva para todos los pares del dominio fijado.
 
+El radio responde a la precisión solicitada y puede depender de la función y del dominio fijados. Después de elegirlo se comprueba cualquier par de entradas que esté suficientemente próximo. Cambiarlo al conocer uno de los puntos destruiría el orden uniforme de cuantificadores. La misma escala debe controlar simultáneamente todas las regiones del dominio.
+
 </details>
 
 #### Microcontrol 2
@@ -100,6 +102,8 @@ Para cada tolerancia $\varepsilon>0$, un solo $\delta>0$ que sirva para todos lo
 <summary>Ver solución del microcontrol 2</summary>
 
 El radio se elige después del centro $a$, y puede depender de él además de la tolerancia, función y dominio.
+
+En un centro fijado, sólo se compara con su valor de salida y se puede adaptar la escala a ese lugar. Eso permite radios cada vez menores al cambiar de centro sin invalidar continuidad puntual. Para uniformidad hay que demostrar que una sola elección basta para todos los centros. No es una diferencia de fórmula de error, sino de dependencia del radio.
 
 </details>
 
@@ -116,6 +120,8 @@ El radio se elige después del centro $a$, y puede depender de él además de la
 
 Se fija el centro como uno de los dos argumentos y se conserva el mismo radio uniforme para todos los otros puntos del dominio.
 
+Dado $a\in D$, aplicamos el control uniforme al par $(x,a)$. Como el radio ya funciona para todos los pares, también funciona para todos los $x$ próximos a ese centro. La salida de comparación pasa a ser exactamente $f(a)$, como exige continuidad. El argumento acredita continuidad en cada punto sin volver a elegir la escala según él.
+
 </details>
 
 #### Microcontrol 4
@@ -130,6 +136,8 @@ Se fija el centro como uno de los dos argumentos y se conserva el mismo radio un
 <summary>Ver solución del microcontrol 4</summary>
 
 Una $\varepsilon_0>0$ para la que todo radio positivo admite un par de entradas próximas con diferencia de salida al menos $\varepsilon_0$.
+
+Se fija primero la tolerancia infringida y después se permite que el par dependa del radio propuesto. El error debe ser mayor o igual que esa tolerancia, negación del error estricto de la definición. Un único par distante no refuta todos los radios. Para negar uniformidad necesitamos infractores arbitrariamente próximos con una separación de salidas que no disminuya.
 
 </details>
 
@@ -146,6 +154,8 @@ Una $\varepsilon_0>0$ para la que todo radio positivo admite un par de entradas 
 
 No. Es una solución local, no una prueba de que todo candidato común falla. Hay que producir testigos para cada $\delta>0$.
 
+Una elección local es sólo un certificado posible de continuidad. Su dependencia del centro no demuestra que otra elección independiente sea imposible. Por ejemplo, la identidad admite también radios locales innecesariamente variables y sigue siendo uniforme. La negación exige comprobar el fracaso de todo candidato común con una tolerancia fija.
+
 </details>
 
 #### Microcontrol 6
@@ -160,6 +170,8 @@ No. Es una solución local, no una prueba de que todo candidato común falla. Ha
 <summary>Ver solución del microcontrol 6</summary>
 
 $\delta=\varepsilon/L$; la desigualdad $|f(x)-f(y)|\le L|x-y|$ convierte distancia estrictamente menor que ese radio en error menor que $\varepsilon$.
+
+La constante $L$ controla todas las parejas y no cambia con sus posiciones. Si la distancia es estrictamente menor que $\varepsilon/L$, la cota no estricta inicial se convierte en error estrictamente menor que $\varepsilon$. Si $L=0$, todas las salidas son iguales y cualquier radio positivo sirve; se trata por separado para no dividir por cero.
 
 </details>
 
@@ -176,6 +188,8 @@ $\delta=\varepsilon/L$; la desigualdad $|f(x)-f(y)|\le L|x-y|$ convierte distanc
 
 Su control es $|\sqrt{x}-\sqrt{y}|\le\sqrt{|x-y|}$, que da radio $\varepsilon^2$. En cero, los cocientes $1/\sqrt{x}$ no están acotados.
 
+El radio cuadrático responde a la tolerancia sin conocer las entradas y por ello sí es uniforme. Un control Lipschitz exigiría una constante lineal común para la relación entre error y distancia. Comparar una entrada positiva con cero hace crecer sin cota ese cociente. Fallar esa condición más fuerte no invalida el control no lineal ya probado.
+
 </details>
 
 #### Microcontrol 8
@@ -190,6 +204,8 @@ Su control es $|\sqrt{x}-\sqrt{y}|\le\sqrt{|x-y|}$, que da radio $\varepsilon^2$
 <summary>Ver solución del microcontrol 8</summary>
 
 La condición sobre pares es vacía y cualquier radio positivo sirve; no hay puntos que exigir controlar.
+
+Para una tolerancia cualquiera podemos elegir, por ejemplo, radio uno. No existen parejas del vacío que deban satisfacer la implicación ni que puedan refutarla. La conclusión no requiere un valor central o una muestra de salida. En un singleton sí existe un par diagonal, pero su error es cero y cualquier radio también sirve.
 
 </details>
 
@@ -210,6 +226,8 @@ Escribe continuidad puntual, uniformidad y negación de uniformidad para $f:D\to
 
 Puntual: $\forall a\in D\ \forall\varepsilon>0\ \exists\delta>0\ \forall x\in D$, distancia menor que $\delta$ implica error respecto de $a$ menor que $\varepsilon$. Uniforme: $\forall\varepsilon>0\ \exists\delta>0\ \forall x,y\in D$ con la implicación de R1. En la primera el radio puede depender del centro; en la segunda se fija antes de los dos puntos. Negación: existe $\varepsilon_0>0$ tal que todo $\delta>0$ admite un par con distancia menor que $\delta$ y error al menos $\varepsilon_0$. Función y dominio están fijados en los tres casos. En el vacío la uniformidad es vacía y su negación es falsa, porque no existen pares.
 
+La negación uniforme fija una sola precisión infringida y permite que las entradas cambien después de cada radio. En continuidad puntual se fija además el centro antes de diseñar la escala. Por eso no se niegan las dos propiedades con los mismos testigos. En el vacío, la existencia de una pareja infractora es imposible y toda escala positiva satisface el control.
+
 </details>
 
 #### Ejercicio 2. Un radio dependiente no refuta otro posible
@@ -227,6 +245,8 @@ Que una construcción dependa del centro no excluye otras construcciones indepen
 
 **Retorno visual.** Véase [C17-F01](analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo.html#fig-anm-c17-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+El par construido depende del candidato $\delta$, como permite la negación, mientras la tolerancia uno permanece fija. La pequeña separación $h$ se compensa con la entrada grande $1/h$ y mantiene el error mayor que uno. En el dominio acotado esa compensación ya no puede crecer sin límite, pues $|x+y|\le2M$. El caso $M=0$ debe tratarse antes de dividir por esa barrera.
+
 </details>
 
 #### Ejercicio 3. Una escala no lineal
@@ -241,6 +261,8 @@ Prueba uniformidad de $\sqrt{x}$ en $[0,\infty)$ sin derivadas y refuta que sea 
 <summary>Ver solución del ejercicio 3</summary>
 
 Para $x\ge y\ge0$, con $a=\sqrt{x}\ge b=\sqrt{y}$, $(a-b)^2\le(a-b)(a+b)=x-y$. Intercambiar los argumentos cubre el otro orden, así la diferencia de raíces es a lo sumo la raíz de la distancia. $\delta=\varepsilon^2$ sirve en todo el dominio. Si una constante $L>0$ diera control Lipschitz en $[0,1]$, tomar $x=1/(n+1)^2$, $y=0$ exigiría $1/(n+1)\le L/(n+1)^2$, es decir $n+1\le L$, falso para un índice grande. $L=0$ falla entre cero y uno.
+
+La desigualdad de raíces compara cualquier par no negativo y no presupone un centro positivo. Por ello el radio cuadrático incluye cero y vale en todo el semieje. Para refutar Lipschitz en el segmento basta examinar parejas con una entrada cero: la razón error/distancia supera cualquier constante al escoger un índice grande. El mismo ejemplo distingue control uniforme de control lineal.
 
 </details>
 
@@ -257,6 +279,8 @@ Prueba que uniformidad se hereda por restricción. Da una función cuya restricc
 
 El mismo radio uniforme sirve para todos los pares del subconjunto, porque también son pares del dominio original. La recíproca falla: $x^2$ en $\mathbb R$ no es uniforme por E002, pero en $[0,1]$ tiene constante Lipschitz dos. Incluso la restricción a un singleton sería uniforme sin informar sobre el resto.
 
+Restringir elimina parejas que había que controlar, sin crear otras nuevas. Por eso el certificado uniforme anterior sigue siendo válido. La vuelta agregaría parejas sobre las que no hay información. El cuadrado permite comprobar ambas afirmaciones concretamente: la barrera del dominio pequeño funciona allí y los pares que escapan en el mayor refutan uniformidad global.
+
 </details>
 
 #### Ejercicio 5. Uniformidad sin compacidad ni acotación
@@ -271,6 +295,8 @@ Para $f(x)=3x-2$ en $\mathbb R$, da un radio uniforme y determina si la imagen y
 <summary>Ver solución del ejercicio 5</summary>
 
 La diferencia de salidas es $3|x-y|$, por lo que $\delta=\varepsilon/3$ sirve. El dominio es toda la recta, no acotado ni compacto por C16. La imagen también es toda la recta: $y$ tiene entrada $(y+2)/3$, así tampoco es acotada ni compacta. No refuta Heine–Cantor: éste da compacidad como condición suficiente, no necesaria para una función particular.
+
+La traslación menos dos desaparece al restar valores y el factor tres determina la escala. La imagen se identifica por un despeje válido para cualquier salida real, no sólo observando que la función crece. La uniformidad puede coexistir con entrada y salida no acotadas. Heine–Cantor no declara que todo dominio de una uniforme deba ser compacto.
 
 </details>
 ## 17.2. Una cubierta y una escala de protección
@@ -328,6 +354,8 @@ Si una cubierta se da por abiertos **relativos** $A_i$ de un compacto $K$, C16 p
 
 Una escala $\lambda>0$ tal que, para cada $z\in K$, algún miembro de la cubierta contiene toda la bola relativa $K\cap B(z,\lambda)$.
 
+La escala se elige una vez para la cubierta completa, antes de fijar el centro. El miembro que contiene la bola puede cambiar con ese centro. La bola es relativa: sólo se exige contener entradas de $K$, no todos los reales cercanos. Esta distinción permite aplicar la propiedad en extremos y en compactos separados.
+
 </details>
 
 #### Microcontrol 10
@@ -342,6 +370,8 @@ Una escala $\lambda>0$ tal que, para cada $z\in K$, algún miembro de la cubiert
 <summary>Ver solución del microcontrol 10</summary>
 
 La familia queda determinada por una fórmula; la existencia local de un triple no se convierte en una elección simultánea por punto.
+
+La pertenencia al conjunto de triples se determina por una condición explícita sobre centro, índice y radio. Incluir todos los que la cumplen evita necesitar un triple preferido para cada centro. Los testigos locales acreditan que alguno de esos triples cubre el punto considerado. La compacidad reduce después esa familia ya definida a datos finitos.
 
 </details>
 
@@ -358,6 +388,8 @@ La familia queda determinada por una fórmula; la existencia local de un triple 
 
 Las bolas $B(a,r)$ cubren; las dobles $B(a,2r)$ están contenidas en los abiertos originales.
 
+La bola pequeña deja un margen libre dentro de la doble. Si otro punto está próximo a una entrada de la pequeña, la triangular lo coloca en la doble, donde sí se conserva la inclusión en el abierto original. Cubrir sólo con bolas del mismo tamaño que la región protegida no reservaría ese margen para desplazar el centro.
+
 </details>
 
 #### Microcontrol 12
@@ -372,6 +404,8 @@ Las bolas $B(a,r)$ cubren; las dobles $B(a,2r)$ están contenidas en los abierto
 <summary>Ver solución del microcontrol 12</summary>
 
 Compacidad produce un conjunto finito no vacío de triples cuyas bolas cubren $K$. Sólo sus radios concretos forman el mínimo positivo.
+
+Una familia infinita de radios positivos puede tener ínfimo cero. La reducción por compacidad entrega primero una lista finita que aún cubre todos los puntos. Si $K$ no es vacío, esa lista tampoco lo es y su mínimo es uno de sus radios positivos. Para el vacío se asigna una escala directamente y no se toma un mínimo inexistente.
 
 </details>
 
@@ -388,6 +422,8 @@ Compacidad produce un conjunto finito no vacío de triples cuyas bolas cubren $K
 
 Si $|z-a|<r$ y $|w-z|<\lambda\le r$, entonces $|w-a|<\lambda+r\le2r$.
 
+La desigualdad triangular compara $w$ con $a$ pasando por $z$. Las dos distancias estrictas dan $|w-a|<\lambda+r$, y el mínimo elegido asegura $\lambda\le r$. Así queda distancia estrictamente menor que $2r$, incluso cuando $\lambda=r$. La estrictitud final es la necesaria para pertenecer a la bola doble abierta.
+
 </details>
 
 #### Microcontrol 14
@@ -402,6 +438,8 @@ Si $|z-a|<r$ y $|w-z|<\lambda\le r$, entonces $|w-a|<\lambda+r\le2r$.
 <summary>Ver solución del microcontrol 14</summary>
 
 No. La escala es global, pero para un centro $z$ fijado basta el índice de uno de los triples de la lista que lo cubre.
+
+La lista finita ya cubre todo $K$. Para un centro concreto, pertenecer a la unión proporciona uno de sus triples. Su radio domina la escala global y su abierto protege la bola relativa de ese centro. No hace falta convertir esas existencias por centro en una función de índices elegidos para todos a la vez.
 
 </details>
 
@@ -418,6 +456,8 @@ No. La escala es global, pero para un centro $z$ fijado basta el índice de uno 
 
 Con $W_i=(\mathbb R\setminus K)\cup A_i$, abierto real por C16 y con $K\cap W_i=A_i$; se aplica R2 al levantamiento canónico.
 
+Un compacto real es cerrado, así el complemento de $K$ es abierto real. El levantamiento agrega esas entradas exteriores y conserva las interiores exactamente: $K\cap W_i=A_i$. La protección obtenida con el abierto ambiental se recorta después por $K$ y queda en el abierto relativo original. La fórmula evita reunir representantes ambientales seleccionados.
+
 </details>
 
 #### Microcontrol 16
@@ -432,6 +472,8 @@ Con $W_i=(\mathbb R\setminus K)\cup A_i$, abierto real por C16 y con $K\cap W_i=
 <summary>Ver solución del microcontrol 16</summary>
 
 $\lambda=1$, porque no hay centros que verificar, incluso si la familia de índices es vacía.
+
+La propiedad pide una comprobación para cada centro del compacto. Si no hay centros, esa afirmación universal se cumple sin elegir ningún miembro de la cubierta. El número uno es positivo y satisface la obligación completa. Esto evita exigir una lista finita no vacía o un mínimo de radios en el caso vacío.
 
 </details>
 
@@ -452,6 +494,8 @@ Para $z\le1/2$, $w\in K$ a distancia menor que $1/10$ satisface $w<z+1/10\le3/5$
 
 **Retorno visual.** Véase [C17-F02](analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo.html#fig-anm-c17-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+El corte de centros en $1/2$ permite decidir qué abierto protege la bola relativa completa. Los extremos del dominio no molestan porque las entradas de la bola siguen en $[0,1]$. Para el radio propuesto mayor, ambos testigos están estrictamente dentro de la bola de centro medio, pero cada uno refuta un miembro distinto de la cubierta. Así se descarta toda posibilidad de que alguno contenga esa bola.
+
 </details>
 
 #### Ejercicio 7. Familia de todos los triples
@@ -466,6 +510,8 @@ Reconstruye R2 mostrando por qué $T$ determina una familia abierta y cubre $K$ 
 <summary>Ver solución del ejercicio 7</summary>
 
 $T$ contiene exactamente los triples $(a,i,r)$ con $a\in K$, $i\in I$, $r>0$ y $B(a,2r)\subseteq U_i$. Cada triple tiene componentes únicas y determina el abierto $B(a,r)$; esto es una regla funcional, no una elección entre radios. Para un $a$ arbitrario, cobertura da un $i$ y apertura un $\rho>0$; el triple $(a,i,\rho/2)$ pertenece a $T$ y su bola contiene $a$. La prueba establece cobertura punto por punto, sin definir un mapa de triples elegidos por centro.
+
+La familia indexada por triples puede tener varias bolas con el mismo centro, y todas son admitidas si cumplen la protección doble. Para cobertura se necesita únicamente un triple para el centro fijado, obtenido de cobertura y apertura. La asignación de una bola a cada triple es una fórmula única. No es una selección de un triple preferido entre todas las posibilidades de cada centro.
 
 </details>
 
@@ -482,6 +528,8 @@ Un argumento toma el ínfimo de todos los radios locales positivos y lo declara 
 
 Positividad de todos los miembros no da ínfimo positivo: los recíprocos $1/(n+1)$ tienen ínfimo cero. Primero se aplica compacidad a las bolas pequeñas de todos los triples admisibles, obteniendo una lista finita no vacía $J$. El mínimo de sus radios es positivo por ser uno de los miembros. Si $z$ está a distancia menor que $r$ de un centro de la lista y $|w-z|<\lambda\le r$, entonces $|w-a|<2r$. La bola doble contenida en el abierto original reserva justamente ese margen; cobertura por bolas pequeñas sola no demuestra dicha inclusión.
 
+La familia completa incluye radios arbitrariamente pequeños en muchos ejemplos y su ínfimo puede no proteger nada. La subcubierta finita conserva cobertura y permite tomar un mínimo positivo. La doble bola se utiliza después para mover la protección al centro que se está examinando. Son dos pasos distintos: reducir los datos y reservar margen para las distancias.
+
 </details>
 
 #### Ejercicio 9. Levantar sin elegir ambientes
@@ -497,6 +545,8 @@ Una cubierta de compacto se da por abiertos relativos $(A_i)$. Explica cómo obt
 
 C16 prueba que $W_i=(\mathbb R\setminus K)\cup A_i$ es abierto real y que $K\cap W_i=A_i$. La regla determina toda la familia por fórmula, y ésta cubre $K$. R2 da $\lambda>0$ para $W$. Para cada $z\in K$, algún $W_i$ contiene la bola relativa; al intersectar con $K$ se obtiene inclusión en $A_i$. No se seleccionó una familia de representantes ambientales. El vacío se resuelve con $\lambda=1$.
 
+El levantamiento se define con la misma fórmula para todos los índices y no altera la selección de entradas dentro del compacto. Como $K$ es cerrado, esos levantamientos sí son abiertos reales. El número de Lebesgue ambiental protege bolas relativas en $K$, y la identidad de recorte las sitúa dentro de $A_i$. La prueba mantiene procedencia de índices y evita una familia de representantes elegidos.
+
 </details>
 
 #### Ejercicio 10. Una cubierta finita sin margen
@@ -511,6 +561,8 @@ Sea $D=\{p_n=1/(n+1):n\ge0\}$. Pon $r_n=1/[4(n+1)(n+2)]$ y divide las bolas $B(p
 <summary>Ver solución del ejercicio 10</summary>
 
 Cada bola es abierta y contiene su centro; sus uniones pares e impares son abiertos y cubren $D$. Ninguna bola contiene otro $p_m$: para $m>n$, $p_n-p_m\ge p_n-p_{n+1}=1/[(n+1)(n+2)]=4r_n$; para $m<n$, la distancia al vecino anterior, cuando existe, es $1/[n(n+1)]>4r_n$. Así cada $p_n$ pertenece sólo al abierto de su paridad. Dado $\lambda>0$, elegimos $n$ con $p_n-p_{n+1}<\lambda$. La bola relativa centrada en $p_n$ contiene ambos puntos, de paridades opuestas, y no está contenida en ninguno de los dos abiertos. No hay escala positiva. El dominio omitió cero y no es compacto; finitud de una cubierta particular no sustituye compacidad.
+
+Las bolas originales aíslan a sus propios puntos dentro de $D$. Eso hace que los dos abiertos asignen cada entrada exclusivamente según su paridad. Sin embargo, las distancias entre vecinos de distinta paridad tienden a cero. Cualquier escala positiva admite una bola relativa que contiene dos vecinos y no cabe en ninguno de los dos miembros. La cubierta es finita, pero el dominio no es compacto.
 
 </details>
 ## 17.3. Heine–Cantor: reducir antes de tomar el mínimo
@@ -569,6 +621,8 @@ Dado un radio cualquiera, arquimedianidad proporciona un índice con la distanci
 
 La restricción $h:K\to\mathbb R$, si $K$ es compacto y $f$ es continua en sus puntos relativamente a $D$. No uniformiza necesariamente todo $D$.
 
+La continuidad de la función original en los puntos de $K$ se conserva al restringir sus entradas. Heine–Cantor utiliza la compacidad de ese conjunto restringido para obtener un radio común allí. No controla pares que incluyan entradas de $D\setminus K$. La distinción de dominios impide extender la conclusión a regiones no cubiertas por la prueba.
+
 </details>
 
 #### Microcontrol 18
@@ -583,6 +637,8 @@ La restricción $h:K\to\mathbb R$, si $K$ es compacto y $f$ es continua en sus p
 <summary>Ver solución del microcontrol 18</summary>
 
 Que todo punto de $K$ a distancia menor que $2r$ de $a$ tiene salida a distancia menor que $\varepsilon/2$ de $h(a)$.
+
+El par registra un control ya válido para toda la bola doble relativa. Tanto la entrada inicialmente cubierta como otra suficientemente próxima podrán compararse con la salida central $h(a)$. Se reserva medio presupuesto para cada comparación. La condición de admisibilidad incluye el control de todos los puntos de esa bola, no sólo el del centro.
 
 </details>
 
@@ -599,6 +655,8 @@ Que todo punto de $K$ a distancia menor que $2r$ de $a$ tiene salida a distancia
 
 Para un $a$ fijado, continuidad entrega $\rho$ y el par $(a,\rho/2)$ pertenece a la familia ya definida; su bola contiene $a$.
 
+Para el punto que se examina, el radio de continuidad $\rho$ controla error menor que $\varepsilon/2$. Tomar $r=\rho/2$ hace que la bola doble tenga precisamente ese radio, y el centro está en la pequeña. Esto acredita cobertura por la familia de todos los pares admisibles. No se forma un mapa de radios seleccionados para todos los centros.
+
 </details>
 
 #### Microcontrol 20
@@ -613,6 +671,8 @@ Para un $a$ fijado, continuidad entrega $\rho$ y el par $(a,\rho/2)$ pertenece a
 <summary>Ver solución del microcontrol 20</summary>
 
 No. $|y-a|<\delta+r\le2r$ lo coloca en la bola doble, que conserva el control necesario.
+
+El punto $x$ determina una bola pequeña de la lista finita que lo contiene. Su cercanía a $y$ añade a la distancia al centro hasta otro radio, por lo que sólo se garantiza pertenencia de $y$ a la doble. Esa región fue protegida de antemano en la admisibilidad. Confundir ambas bolas omitiría el margen que hace funcionar la prueba.
 
 </details>
 
@@ -629,6 +689,8 @@ No. $|y-a|<\delta+r\le2r$ lo coloca en la bola doble, que conserva el control ne
 
 Ambas salidas se comparan con $h(a)$; la suma de los dos errores estrictos menores que $\varepsilon/2$ es menor que $\varepsilon$.
 
+La triangular escribe $|h(x)-h(y)|\le|h(x)-h(a)|+|h(a)-h(y)|$. Los dos términos se controlan con el mismo índice y cada uno es estrictamente menor que la mitad del desafío. La suma queda estrictamente menor que el total. Comparar directamente las salidas sin ese centro común gastaría un control que aún no se había acreditado.
+
 </details>
 
 #### Microcontrol 22
@@ -643,6 +705,8 @@ Ambas salidas se comparan con $h(a)$; la suma de los dos errores estrictos menor
 <summary>Ver solución del microcontrol 22</summary>
 
 No. La prueba reduce una familia explícita de bolas por compacidad y usa el mínimo de una lista finita.
+
+La familia de controles se define por una condición explícita y la compacidad proporciona su reducción finita. La elección del mínimo ocurre después de esa reducción. No se fabrican rutas de infractores ni se deduce continuidad de un criterio secuencial. Por ello la prueba de Heine–Cantor no depende de CC(R) usada en otra recíproca.
 
 </details>
 
@@ -659,6 +723,8 @@ No. La prueba reduce una familia explícita de bolas por compacidad y usa el mí
 
 No. Compactos con varias piezas o conjuntos finitos admiten el mismo argumento.
 
+El argumento sólo usa cobertura por controles locales, compacidad y una lista finita de radios positivos. No necesita todos los puntos entre dos entradas ni monotonía. Las bolas relativas ignoran las entradas ausentes entre piezas. Así un compacto desconexo puede recibir exactamente el mismo control uniforme.
+
 </details>
 
 #### Microcontrol 24
@@ -673,6 +739,8 @@ No. Compactos con varias piezas o conjuntos finitos admiten el mismo argumento.
 <summary>Ver solución del microcontrol 24</summary>
 
 No. La identidad en toda $\mathbb R$ es uniforme con $\delta=\varepsilon$, aunque su dominio no sea compacto.
+
+Heine–Cantor es una condición suficiente para toda continua en el compacto. Una función particular puede disponer de una estimación global que funcione en un dominio mayor. La identidad conserva exactamente la distancia de entrada y por eso usa radio $\varepsilon$ en toda la recta. No se invierte la implicación del teorema.
 
 </details>
 
@@ -693,6 +761,8 @@ La lista finita cubre $x$ con $B(a,r)$ y tiene $\delta\le r$. Entonces $|x-a|<r<
 
 **Retorno visual.** Véase [C17-F03](analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo.html#fig-anm-c17-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La distancia de $y$ al centro de la bola se controla pasando por $x$, que sí está en la bola pequeña. El mínimo de radios aporta el margen para que ambos queden en la doble. Allí la admisibilidad controla cada salida respecto del mismo valor central. La suma de los dos presupuestos medios completa el error del par sin una inclusión adicional no demostrada.
+
 </details>
 
 #### Ejercicio 12. Uniformizar sólo la restricción
@@ -707,6 +777,8 @@ Para $f(x)=x^2$ en $D=\mathbb R$ y $K=[-2,-1]\cup[1,2]$, aplica Heine–Cantor y
 <summary>Ver solución del ejercicio 12</summary>
 
 $K$ es cerrado/acotado, compacto por C16, y $f$ es continua en sus puntos relativamente a $D$. R3 hace uniforme la restricción sobre $K$, sin exigir que sea intervalo. Además $|x+y|\le4$ allí, por lo que $\delta=\varepsilon/4$ controla el error. Nada de esto uniformiza todo $D$; E002 ya refuta uniformidad del cuadrado en la recta.
+
+Las dos piezas son cerradas y acotadas, de modo que su unión es compacta aunque no sea intervalo. El radio explícito usa una cota de $|x+y|$ válida para cualquier par de $K$, incluso si sus puntos pertenecen a piezas diferentes. La conclusión corresponde a esa restricción. Los infractores que escapan en $D$ siguen siendo posibles fuera del compacto.
 
 </details>
 
@@ -723,6 +795,8 @@ Prueba Heine–Cantor usando los abiertos relativos $A_a=\{z\in K:|h(z)-h(a)|<\v
 
 Cada $A_a$ es preimagen relativa de un intervalo abierto y contiene $a$, así forman cubierta. Se levantan por $W_a=(\mathbb R\setminus K)\cup A_a$ y R2 da una escala $\lambda>0$ antes de los puntos $x,y$. Para $x\in K$, R2 proporciona un índice $a$ que contiene su bola relativa. Si $|x-y|<\lambda$, tanto $x$ como $y$ están en ella y por tanto en $A_a$. Ambos errores respecto de $h(a)$ son menores que $\varepsilon/2$, y su suma controla la diferencia. No se construye un selector $x\mapsto a_x$. Para $K$ vacío sirve cualquier radio.
 
+Las preimágenes se definen para todos los centros por una condición de salida y quedan abiertas relativas por continuidad. El número de Lebesgue se obtiene antes del par solicitado. Para ese par se fija sólo un miembro que proteja la bola de $x$, y ésta contiene también a $y$. El índice puede variar con $x$, pero el radio no, que es la conclusión uniforme.
+
 </details>
 
 #### Ejercicio 14. Acotación sin frontera incluida
@@ -738,6 +812,8 @@ Refuta uniformidad de $1/x$ en $(0,1]$ con pares dados válidos desde $n=0$. Exp
 
 Tomamos $x_n=1/(n+2)$ y $y_n=1/(n+3)$, ambos del dominio desde cero. La distancia es $1/[(n+2)(n+3)]$, tendente a cero, pero las salidas son $n+2,n+3$ y difieren uno. Para $\varepsilon_0=1$, todo radio positivo admite un índice con distancia menor, refutando uniformidad. El dominio es acotado pero no cerrado: cero es adherente y está omitido. Falta compacidad, no continuidad de la función en el dominio efectivo.
 
+Los pares están en el dominio efectivo desde el primer término y sus diferencias se calculan exactamente. Una precisión fija uno se infringe para entradas con distancia tan pequeña como se quiera. Acotación del dominio no basta para Heine–Cantor: también hace falta cerradura para compacidad. La discontinuidad no se afirma en cero, porque cero no es una entrada del recíproco dado.
+
 </details>
 
 #### Ejercicio 15. Vacuidad y prueba sin rutas
@@ -752,6 +828,8 @@ Explica dónde entra no vacuidad en el mínimo de R3 y por qué la prueba no nec
 <summary>Ver solución del ejercicio 15</summary>
 
 Para $K$ no vacío, una subcubierta no puede tener conjunto de índices vacío; por ello sus radios forman conjunto finito no vacío y poseen mínimo positivo. Para $K$ vacío no se toma mínimo: $\delta=1$ satisface la condición vacía. La prueba define todos los pares admisibles, verifica cobertura con testigos individuales y usa una aplicación de compacidad seguida de datos finitos; no fabrica rutas ni selecciona radios por todos los centros. Una prueba que fabrica pares malos para cada escala necesita justificar esa selección numerable, como en la recíproca condicional de R6.
+
+La no vacuidad de $K$ obliga a que una reducción que lo cubre contenga algún índice. Ese hecho permite el mínimo de radios positivos. Para el vacío se elige uno directamente y no se usa ese paso. La prueba por cubiertas usa existencias puntuales y un conjunto finito, mientras una ruta de pares malos exige reunir testigos para todas las escalas naturales.
 
 </details>
 ## 17.4. Medir la oscilación a cada escala
@@ -804,6 +882,8 @@ No exigimos que el supremo sea alcanzado para un dominio arbitrario, ni continui
 
 En el marco usado, $D$ no vacío y $|f|\le B$: las diferencias contienen cero y están acotadas por $2B$.
 
+Para cualquier escala no negativa, un par diagonal aporta error cero si el dominio no es vacío. La triangular y la barrera de valores dan error a lo sumo $2B$ para todos los pares. No vacuidad y acotación permiten aplicar completitud al conjunto de errores. En otros ejemplos una estimación directa por escala puede reemplazar la acotación global de valores.
+
 </details>
 
 #### Microcontrol 26
@@ -818,6 +898,8 @@ En el marco usado, $D$ no vacío y $|f|\le B$: las diferencias contienen cero y 
 <summary>Ver solución del microcontrol 26</summary>
 
 El supremo de todas las diferencias de salida de pares del dominio a distancia a lo sumo $t$. No exige que un par alcance ese supremo.
+
+La condición de distancia admite también parejas exactamente a escala $t$. El módulo domina a todos sus errores mediante una cota óptima, aunque ningún par produzca el mayor error. Para interpretarlo como máximo haría falta demostrar que se alcanza. Su definición como supremo evita asumir esa pertenencia.
 
 </details>
 
@@ -834,6 +916,8 @@ El supremo de todas las diferencias de salida de pares del dominio a distancia a
 
 La distancia cero implica $x=y$, así todas las diferencias del conjunto son cero. Para dominio vacío se fijó módulo cero por convención.
 
+Si $|x-y|\le0$, la no negatividad de la distancia obliga a igualdad de entradas. La diferencia de salidas es entonces cero. En un dominio no vacío el conjunto de errores es exactamente $\{0\}$ y su supremo vale cero. En el vacío se usa la convención declarada porque el conjunto vacío no tiene supremo real.
+
 </details>
 
 #### Microcontrol 28
@@ -848,6 +932,8 @@ La distancia cero implica $x=y$, así todas las diferencias del conjunto son cer
 <summary>Ver solución del microcontrol 28</summary>
 
 Al aumentar $t$ se admiten todos los pares anteriores y quizá otros; el supremo de un conjunto contenido no supera el del mayor.
+
+El conjunto de parejas de escala menor está incluido en el de escala mayor. Por ello todo error anterior también aparece entre los nuevos errores, y la menor cota superior del primero no supera la del segundo. La conclusión no dice que el crecimiento sea estricto: puede haber escalas en que no se agreguen errores mayores.
 
 </details>
 
@@ -864,6 +950,8 @@ Al aumentar $t$ se admiten todos los pares anteriores y quizá otros; el supremo
 
 Por ejemplo, todos los valores de $[0,1)$ son menores que uno pero su supremo es uno. Se usa presupuesto $\varepsilon/2$.
 
+El supremo puede estar en la frontera que ningún valor alcanza. De controles puntuales menores que $\varepsilon$ sólo deducimos una cota superior no estricta $\omega\le\varepsilon$. Pedir la mitad del presupuesto permite después concluir $\omega\le\varepsilon/2<\varepsilon$. Esta reserva recupera la estrictitud sin atribuir al supremo un par maximizador.
+
 </details>
 
 #### Microcontrol 30
@@ -878,6 +966,8 @@ Por ejemplo, todos los valores de $[0,1)$ son menores que uno pero su supremo es
 <summary>Ver solución del microcontrol 30</summary>
 
 Se toma una escala $t>0$ con $\omega_f(t)<\varepsilon$ y se fija $\delta=t$; los pares con distancia menor que ella tienen error a lo sumo ese módulo.
+
+Se fija primero una escala positiva en la que el módulo esté por debajo del desafío. Después todo par a distancia menor que ella también cumple la condición no estricta usada para definir los errores del módulo. Su error está dominado por éste y queda por debajo de la tolerancia. La escala no depende del par considerado.
 
 </details>
 
@@ -894,6 +984,8 @@ Se toma una escala $t>0$ con $\omega_f(t)<\varepsilon$ y se fija $\delta=t$; los
 
 El par $1,1-t$ tiene distancia $t$ y diferencia $2t-t^2$, igual a la cota probada para todos los pares.
 
+La primera entrada es el extremo superior uno y la segunda retrocede exactamente $t$, permaneciendo en $[0,1]$. Al restar sus cuadrados se obtiene $1-(1-t)^2=2t-t^2$. La cota global y este par que la alcanza prueban igualdad del módulo, no sólo una estimación superior. Para escalas mayores que uno, el par de extremos alcanza el valor máximo uno.
+
 </details>
 
 #### Microcontrol 32
@@ -908,6 +1000,8 @@ El par $1,1-t$ tiene distancia $t$ y diferencia $2t-t^2$, igual a la cota probad
 <summary>Ver solución del microcontrol 32</summary>
 
 No: la identidad uniforme en $\mathbb R$ es no acotada, aunque sí tiene módulo finito $\omega(t)=t$.
+
+La uniformidad limita cuánto cambia la salida entre entradas próximas, no qué tan grande puede ser una salida individual. La identidad en la recta tiene valores arbitrariamente grandes, pero cambios iguales a las distancias de entrada. Su módulo es finito a cada escala aunque no exista una barrera global de valores. Son obligaciones diferentes.
 
 </details>
 
@@ -926,6 +1020,8 @@ Para $f:D\to\mathbb R$ acotada en un dominio no vacío, justifica existencia de 
 
 Si $|f|\le B$, toda diferencia está entre cero y $2B$. Para cada $t\ge0$, los pares diagonales aportan cero, por lo que el conjunto es no vacío y tiene supremo. Si $s\le t$, todos los pares admitidos a escala $s$ también lo son a escala $t$, así $\omega(s)\le\omega(t)$. A escala cero sólo hay pares iguales y el módulo vale cero. Toda diferencia admitida es a lo sumo el supremo. Para vacío se define módulo cero por convención; no se atribuye un supremo real al conjunto vacío.
 
+La cota global produce una barrera uniforme $2B$ para errores, no sólo para un par. Los pares diagonales dan no vacuidad a cada escala. El supremo domina cada diferencia sin prometer un par maximizador. La convención para el vacío se declara aparte porque completitud real no entrega un supremo del conjunto vacío.
+
 </details>
 
 #### Ejercicio 17. Supremo y presupuesto estricto
@@ -940,6 +1036,8 @@ Una prueba dice: «todos los errores son menores que $\varepsilon$, luego su sup
 <summary>Ver solución del ejercicio 17</summary>
 
 El supremo de $[0,\varepsilon)$ es $\varepsilon$, así la estrictitud no pasa así al supremo. Se pide primero error $\varepsilon/2$ a uniformidad; para $0<t<\delta$, el supremo es a lo sumo $\varepsilon/2<\varepsilon$, lo que prueba el límite cero. Recíprocamente, dado $\varepsilon$, el límite da $\eta>0$ y $\omega(t)<\varepsilon$ para $0<t<\eta$. Fijamos $t=\eta/2$ y $\delta=t$. Todo par de distancia menor que $\delta$ tiene error a lo sumo $\omega(t)<\varepsilon$. Se conserva el orden de los cuantificadores.
+
+La definición del módulo admite distancias menores o iguales que $t$, mientras uniformidad controla distancias estrictamente menores que $\delta$. Por eso se toma $t<\delta$ al usarla. El presupuesto medio conserva margen cuando se pasa al supremo. En la recíproca se fija una escala positiva concreta con módulo pequeño antes de verificar cualquier pareja.
 
 </details>
 
@@ -958,6 +1056,8 @@ Si $0\le v\le u\le1$, $d=u-v\le t\le1$, la diferencia es $d(2u-d)\le d(2-d)\le t
 
 **Retorno visual.** Véase [C17-F04](analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo.html#fig-anm-c17-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La cota se demuestra primero para un par arbitrario ordenado, con separación $d\le t$. El factor algebraico $(t-d)(2-t-d)$ es no negativo en la escala hasta uno, lo que compara su error con el candidato exacto. Un par explícito alcanza después la cota y acredita igualdad. Más allá del diámetro del dominio ya se admiten todos los pares y el módulo queda constante en uno.
+
 </details>
 
 #### Ejercicio 19. Una raíz y su módulo
@@ -973,6 +1073,8 @@ Calcula el módulo exacto de $\sqrt{x}$ en $[0,1]$. Contrasta la dependencia en 
 
 R1 da diferencia a lo sumo $\sqrt{|x-y|}$, por tanto $\omega(t)\le\sqrt t$ para $0\le t\le1$. El par $t,0$ alcanza esa cota. Para $t\ge1$, todas las diferencias son a lo sumo uno y el par $1,0$ la alcanza. El módulo es $\sqrt t$ hasta uno y uno después. Tiende a cero, pero su cociente por $t$ es $1/\sqrt t$ cerca de cero y no admite cota lineal uniforme. El cuadrado sí tiene módulo a lo sumo $2t$.
 
+El par que alcanza $\sqrt t$ está dentro del segmento sólo para $t\le1$, y por eso se separa la escala mayor. Allí el par de extremos ya alcanza toda la variación de salida. El módulo de la raíz tiende a cero, lo que confirma uniformidad. Su crecimiento como raíz de la escala impide una barrera lineal común cerca de cero.
+
 </details>
 
 #### Ejercicio 20. Valores no acotados y módulo finito
@@ -987,6 +1089,8 @@ Explica por qué no se puede concluir que una uniforme en $\mathbb R$ tiene valo
 <summary>Ver solución del ejercicio 20</summary>
 
 La identidad tiene valores que recorren toda la recta y no están acotados. A escala $t\ge0$, las diferencias admitidas están entre cero y $t$, y el par $0,t$ alcanza $t$, así el módulo es finito e igual a $t$. Directamente, $\delta=\varepsilon$ da uniformidad. La hipótesis de acotación de R4 era suficiente para construir un módulo real global sin más análisis, no necesaria en todos los ejemplos.
+
+El módulo examina diferencias de salida a una distancia fijada, no el conjunto de salidas individuales. Para la identidad esas diferencias nunca superan $t$ y una pareja separada exactamente $t$ alcanza la cota. Así hay módulo finito a cada escala aunque las salidas no admitan cota global. El ejemplo precisa el carácter suficiente de la hipótesis de acotación en R4.
 
 </details>
 ## 17.5. Transportar tolerancias por operaciones
@@ -1040,6 +1144,8 @@ Finalmente, una inyección continua sobre un compacto $K$ tiene inversa continua
 
 Se pide error $\varepsilon/2$ a cada sumando y se toma el mínimo de los dos radios positivos.
 
+La distancia menor que el mínimo cumple simultáneamente los dos controles uniformes. La triangular de diferencias de la suma añade sus dos errores, cada uno menor que medio desafío. Los radios se diseñan antes del par y por ello su mínimo también es uniforme. El mismo procedimiento sirve para diferencias con un cambio de signo.
+
 </details>
 
 #### Microcontrol 34
@@ -1054,6 +1160,8 @@ Se pide error $\varepsilon/2$ a cada sumando y se toma el mínimo de los dos rad
 <summary>Ver solución del microcontrol 34</summary>
 
 Cotas globales $M_f,M_g$ de los valores; controlan los factores que multiplican las diferencias en la identidad de producto.
+
+En $f(x)g(x)-f(y)g(y)$ aparece una diferencia pequeña multiplicada por un valor de la otra función. Las cotas globales impiden que ese factor amplifique el error sin límite al cambiar las entradas. La regla ofrece condiciones suficientes, no necesarias para cada producto. En dominios compactos, continuidad de los factores puede proporcionar esas cotas mediante Weierstrass.
 
 </details>
 
@@ -1070,6 +1178,8 @@ Cotas globales $M_f,M_g$ de los valores; controlan los factores que multiplican 
 
 La identidad por sí misma en $\mathbb R$: ambos factores son uniformes, pero su producto $x^2$ no lo es.
 
+Ambas identidades conservan distancias y por ello tienen radios uniformes. Pero el producto compara cuadrados, cuyo factor $|x+y|$ puede hacerse arbitrariamente grande. Los pares próximos que escapan producen errores de cuadrado separados de cero. Así el ejemplo conserva uniformidad de los factores mientras refuta una regla general de producto sin más control.
+
 </details>
 
 #### Microcontrol 36
@@ -1084,6 +1194,8 @@ La identidad por sí misma en $\mathbb R$: ambos factores son uniformes, pero su
 <summary>Ver solución del microcontrol 36</summary>
 
 Un margen global $|g(x)|\ge m>0$; entonces la diferencia de recíprocos es a lo sumo la diferencia de $g$ dividida por $m^2$.
+
+La identidad exacta es $|1/g(x)-1/g(y)|=|g(x)-g(y)|/(|g(x)||g(y)|)$. Cada factor del denominador es al menos $m$, así el producto es al menos $m^2>0$. Pedir a $g$ error menor que $m^2\varepsilon$ permite usar su radio uniforme para el recíproco. El margen también asegura que todas sus evaluaciones estén definidas.
 
 </details>
 
@@ -1100,6 +1212,8 @@ Un margen global $|g(x)|\ge m>0$; entonces la diferencia de recíprocos es a lo 
 
 No. $g(x)=x$ en $(0,1]$ nunca vale cero pero tiene valores positivos arbitrariamente pequeños.
 
+No anularse es una afirmación separada para cada entrada y no asegura una distancia común de las salidas a cero. En la identidad positiva, los recíprocos de naturales infringen cualquier barrera positiva propuesta. Al invertir la función esas pequeñas salidas amplifican cambios de entrada. Compacidad y continuidad aportarían un margen, pero aquí el dominio omite su frontera cero.
+
 </details>
 
 #### Microcontrol 38
@@ -1114,6 +1228,8 @@ No. $g(x)=x$ en $(0,1]$ nunca vale cero pero tiene valores positivos arbitrariam
 <summary>Ver solución del microcontrol 38</summary>
 
 La tolerancia intermedia $\eta$ que produce error final $\varepsilon$ en la función exterior; después el radio de la interior que produce error menor que $\eta$.
+
+La función exterior traduce primero el desafío final a una precisión de entradas intermedias. La interior traduce después esa precisión a una distancia del dominio inicial. Al verificar un par, se recorren esas traducciones en el orden de evaluación de la composición. Diseñar la escala en orden inverso al cálculo garantiza el presupuesto final.
 
 </details>
 
@@ -1130,6 +1246,8 @@ La tolerancia intermedia $\eta$ que produce error final $\varepsilon$ en la func
 
 La imagen $f[D]$, porque sólo esos valores se usan al evaluar $g\circ f$.
 
+Toda evaluación intermedia pertenece a la imagen declarada, así sólo se comparan pares de esa imagen al aplicar la exterior. Su comportamiento fuera de ella no interviene en el error compuesto. Hay que conservar pertenencia al dominio exterior para definir la composición. La restricción uniforme a la imagen basta para las tolerancias que se utilizan.
+
 </details>
 
 #### Microcontrol 40
@@ -1144,6 +1262,8 @@ La imagen $f[D]$, porque sólo esos valores se usan al evaluar $g\circ f$.
 <summary>Ver solución del microcontrol 40</summary>
 
 La imagen $H$ es compacta por C16 y la inversa es continua allí; Heine–Cantor se aplica con dominio $H$.
+
+Primero la compacidad del dominio directo hace compacta su imagen por continuidad. Después la inversa continua tiene esa imagen como dominio y cumple las premisas de Heine–Cantor. La uniformidad obtenida compara pares de salidas intermedias antes de conocerlos. No se necesita que el dominio o la imagen sean intervalos.
 
 </details>
 
@@ -1162,6 +1282,8 @@ Prueba uniformidad de $af+bg$ si $f,g$ son uniformes en el mismo dominio y $a,b$
 
 Si $a\ne0$, pedimos a $f$ error menor que $\varepsilon/(2|a|)$ y obtenemos un radio; si $a=0$, el término tiene error cero y usamos radio uno para él. Hacemos lo mismo con $g,b$. El mínimo de ambos radios positivos sirve para todos los pares y la diferencia de $af+bg$ es a lo sumo la suma de los dos errores escalados, cada uno menor que $\varepsilon/2$ cuando no es cero. La suma es menor que $\varepsilon$.
 
+Las constantes no nulas multiplican los errores y requieren dividir el presupuesto por su magnitud. Una constante cero elimina su sumando y puede recibir cualquier radio auxiliar positivo. El mínimo garantiza ambos controles antes de conocer las entradas. La triangular permite combinar los errores escalados sin suponer cotas globales de los valores de $f$ y $g$.
+
 </details>
 
 #### Ejercicio 22. Factores que amplifican errores
@@ -1177,6 +1299,8 @@ Prueba la regla de producto bajo cotas $M_f,M_g$. Muestra que eliminar ambas cot
 
 Pedimos errores menores que $\eta=\varepsilon/(M_f+M_g+1)$ a ambas funciones y tomamos el mínimo de sus radios. La identidad de diferencias del producto da cota $(M_f+M_g)\eta<\varepsilon$, incluidos sumandos nulos. En $\mathbb R$, ambos factores identidad son uniformes y no acotados, pero su producto cuadrado falla uniformidad. En cambio, identidad por constante uno es uniforme aunque el primer factor sea no acotado. La regla declara condiciones suficientes y el ejemplo sólo refuta una regla universal sin ellas.
 
+La identidad de producto separa cada cambio de factor y deja un valor del otro como multiplicador. Las cotas globales y el presupuesto común impiden amplificación sin control. El uno añadido al denominador conserva positividad incluso si ambas barreras valen cero. Los dos ejemplos finales distinguen perder una garantía universal de afirmar que todo producto sin esas cotas debe fallar.
+
 </details>
 
 #### Ejercicio 23. Un cociente sobre dos piezas
@@ -1191,6 +1315,8 @@ En $K=[-2,-1]\cup[1,2]$, sean $f(x)=x+1$ y $g(x)=x^2$. Da un radio explícito un
 <summary>Ver solución del ejercicio 23</summary>
 
 En $K$, $|f|\le3$, $g\ge1$, $|f(x)-f(y)|=|x-y|$, y $|g(x)-g(y)|\le4|x-y|$. Sea $d=|x-y|$. La identidad $f(x)/g(x)-f(y)/g(y)=(f(x)-f(y))/g(x)+f(y)(1/g(x)-1/g(y))$ da error a lo sumo $d+3\cdot4d=13d$, porque los denominadores tienen magnitud al menos uno. Por tanto $\delta=\varepsilon/13$ sirve para todos los pares, incluso en piezas distintas. El cociente está definido en todo $K$.
+
+El margen del denominador vale uno en todas las entradas, incluidas las dos piezas. La identidad de recíprocos acota su diferencia por la del cuadrado, a lo sumo cuatro veces la distancia. El numerador tiene diferencia igual a la distancia y magnitud a lo sumo tres. Reunir ambos términos da el control trece, suficiente para un radio común sin exigir que sea óptimo.
 
 </details>
 
@@ -1209,6 +1335,8 @@ Primero uniformidad de $g$ para $\varepsilon$ da $\eta>0$. Después uniformidad 
 
 **Retorno visual.** Véase [C17-F05](analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo.html#fig-anm-c17-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La tolerancia intermedia debe servir para cualquier par de salidas de la interior. Continuidad puntual de la exterior permitiría que esa tolerancia cambiara al cambiar la salida central y no satisface ese requisito. La identidad seguida del cuadrado mantiene uniformidad de la interior y continuidad de la exterior, pero falla uniformidad de la composición. El ejemplo refuta exactamente la sustitución propuesta.
+
 </details>
 
 #### Ejercicio 25. Inversa uniforme sin control lineal
@@ -1223,6 +1351,8 @@ Justifica que una inyección continua $f:K\to\mathbb R$ sobre compacto tiene inv
 <summary>Ver solución del ejercicio 25</summary>
 
 C16 hace compacta $H=f[K]$ y prueba continuidad de la inversa $h:H\to K$. Retipar su salida a $\mathbb R$ conserva continuidad, por usar la misma distancia; Heine–Cantor la hace uniforme sobre $H$. El vacío también queda incluido. Para $f(x)=x^2$ sobre $[0,1]$, la inyectividad sigue del orden no negativo, su imagen es $[0,1]$ por raíces C10 y su inversa es $\sqrt y$. R1 prueba que ésta es uniforme y no Lipschitz en ese dominio.
+
+La continuidad inversa se obtiene primero por transporte de cerrados en C16, con dominio en la imagen. Esa imagen es compacta por continuidad de la directa. Heine–Cantor añade uniformidad de la inversa allí. La raíz sobre $[0,1]$ cumple esta conclusión con radio cuadrático aunque no disponga de una constante Lipschitz.
 
 </details>
 ## 17.6. Pares próximos y rutas dadas
@@ -1275,6 +1405,8 @@ Esta preservación sola no caracteriza uniformidad en dominios arbitrarios. El c
 
 No. Sólo se exige que su distancia mutua tienda a cero; pueden escaparse al infinito.
 
+Las rutas pueden alejarse conjuntamente sin converger a un centro real. La condición uniforme controla sus parejas por la distancia mutua, independientemente de su posición. Para cada precisión, esa distancia eventualmente entra en el radio común. Eso basta para hacer tender a cero la diferencia de salidas.
+
 </details>
 
 #### Microcontrol 42
@@ -1289,6 +1421,8 @@ No. Sólo se exige que su distancia mutua tienda a cero; pueden escaparse al inf
 <summary>Ver solución del microcontrol 42</summary>
 
 Primero al escoger $x_n\in A_n$ y después $y_n\in B_n$. Ambas familias reales no vacías se seleccionan bajo la premisa local CC(R).
+
+La negación proporciona parejas infractoras a cada escala, pero no todavía dos funciones de términos. Se selecciona primero una entrada que admita compañero y después un compañero de esa entrada ya fijada. Las dos selecciones son de familias de subconjuntos reales no vacíos. La premisa local CC(R) justifica ambas, mientras la dirección directa trabaja con rutas ya dadas.
 
 </details>
 
@@ -1305,6 +1439,8 @@ Primero al escoger $x_n\in A_n$ y después $y_n\in B_n$. Ambas familias reales n
 
 El menor índice de la primera entrada que tiene un compañero malo, y luego el menor índice de ese compañero. La sobreyección dada garantiza existencia.
 
+La sobreyección representa todas las posibles entradas y compañeros. Para cada escala, el conjunto de índices de primeras entradas admisibles es no vacío y tiene mínimo. Fijado ese índice, se toma el mínimo de los índices de compañeros. Las reglas únicas determinan ambos términos y evitan elección arbitraria, sin suponer que los índices fabricados sean crecientes.
+
 </details>
 
 #### Microcontrol 44
@@ -1319,6 +1455,8 @@ El menor índice de la primera entrada que tiene un compañero malo, y luego el 
 <summary>Ver solución del microcontrol 44</summary>
 
 Para $x_n=n+1$, $y_n=x_n+1/(n+1)$, es $2+1/(n+1)^2\ge2$, aunque la distancia de entrada tiende a cero.
+
+La diferencia se calcula como $2x_nh_n+h_n^2$ con $h_n=1/(n+1)$. El producto $x_nh_n$ vale uno, de modo que el error queda al menos en dos aunque $h_n$ tienda a cero. Este cálculo exhibe cómo una distancia pequeña puede amplificarse cuando las entradas crecen. Ambas fórmulas están definidas desde el índice cero.
 
 </details>
 
@@ -1335,6 +1473,8 @@ Para $x_n=n+1$, $y_n=x_n+1/(n+1)$, es $2+1/(n+1)^2\ge2$, aunque la distancia de 
 
 El radio uniforme para $\varepsilon$ se inserta en la condición de Cauchy de entrada, y desde un mismo índice controla todos los pares de términos de salida.
 
+La condición de Cauchy controla simultáneamente todos los pares tardíos de una ruta, no sólo términos consecutivos. El radio uniforme entrega una única precisión de entrada que esa condición puede satisfacer con un corte. Después todos los pares de salidas tardías cumplen el desafío. No es necesario que el límite de la ruta pertenezca al dominio.
+
 </details>
 
 #### Microcontrol 46
@@ -1349,6 +1489,8 @@ El radio uniforme para $\varepsilon$ se inserta en la condición de Cauchy de en
 <summary>Ver solución del microcontrol 46</summary>
 
 No. El cuadrado preserva rutas de Cauchy porque cada una está acotada y allí tiene constante Lipschitz, pero no es uniforme en toda la recta.
+
+Cada ruta de Cauchy particular tiene una barrera de valores y el cuadrado posee allí una constante lineal de control. Esa barrera puede cambiar al cambiar de ruta. Preservar cada ruta por separado no produce una escala para todos los pares de la recta. Los pares que escapan refutan precisamente esa conclusión global adicional.
 
 </details>
 
@@ -1365,6 +1507,8 @@ No. El cuadrado preserva rutas de Cauchy porque cada una está acotada y allí t
 
 Basta la implicación directa R6: si la función fuera uniforme, esos pares dados tendrían diferencias tendentes a cero, contradicción.
 
+Las rutas explícitas ya constituyen datos de la implicación directa. Si su distancia mutua tiende a cero y la diferencia de salidas mantiene una tolerancia positiva, la consecuencia necesaria de uniformidad falla. No hay que seleccionar parejas infractoras de una familia abstracta. Por ello este modo de refutar uniformidad no depende de la recíproca bajo CC(R).
+
 </details>
 
 #### Microcontrol 48
@@ -1379,6 +1523,8 @@ Basta la implicación directa R6: si la función fuera uniforme, esos pares dado
 <summary>Ver solución del microcontrol 48</summary>
 
 Las escalas son $1/(n+1)$ y los pares recíprocos usan $n+2,n+3$; no se divide por $n$ cuando $n=0$.
+
+Al empezar en $n=0$, las expresiones $n+1$, $n+2$ y $n+3$ son todas positivas. Esto garantiza definición de las escalas y pertenencia de las entradas recíprocas al dominio desde el primer término. Una fórmula con $1/n$ tendría que cambiar su índice inicial o repararse antes de usarla como sucesión del capítulo.
 
 </details>
 
@@ -1397,6 +1543,8 @@ Para $x_n=n+1$ y $y_n=n+1+1/(n+1)$, calcula las distancias de entrada y salida b
 
 La distancia de entrada es $1/(n+1)$, tendente a cero. La diferencia de cuadrados es $2+1/(n+1)^2$, que nunca baja de dos y por tanto no tiende a cero. Si el cuadrado fuera uniforme, la dirección directa R6 obligaría a que esas diferencias tendieran a cero, contradicción. Ninguna ruta de entrada converge o es acotada; la dirección directa no lo exigía. Los pares están dados por fórmula desde $n=0$, sin selección adicional.
 
+La pequeña separación compensa exactamente la entrada creciente en el término lineal de la diferencia de cuadrados. El error queda mayor o igual que dos para todos los índices. Esto infringe la consecuencia directa necesaria de uniformidad para las rutas dadas. No se necesita convergencia individual, acotación ni seleccionar testigos de conjuntos abstractos.
+
 </details>
 
 #### Ejercicio 27. Dos familias y dos selecciones
@@ -1411,6 +1559,8 @@ Reconstruye la recíproca secuencial de R6 bajo CC(R). Identifica las dos famili
 <summary>Ver solución del ejercicio 27</summary>
 
 El fallo de uniformidad fija $\varepsilon_0>0$. Para cada $n$, $A_n$ contiene entradas que tienen algún compañero a distancia menor que $1/(n+1)$ y error al menos $\varepsilon_0$; negación garantiza no vacuidad. CC(R) selecciona $x_n\in A_n$. Luego $B_n$ reúne los compañeros de ese $x_n$ con ambas propiedades y es no vacío; CC(R) selecciona $y_n\in B_n$. Estas rutas tienen distancia tendente a cero y salida separada, contradiciendo la propiedad de pares dada. Sólo esta recíproca usa las selecciones. Heine–Cantor fue demostrado directamente por una cubierta explícita y finitud, sin recurrir a la recíproca.
+
+La primera familia contiene entradas que admiten algún compañero infractor; su selección no determina todavía quién es ese compañero. La segunda familia se define a partir de la primera ruta ya seleccionada y permite completar los pares. CC(R) respalda ambas funciones de términos. La prueba por cubiertas de Heine–Cantor es independiente y conserva su conclusión sin adoptar esta premisa adicional.
 
 </details>
 
@@ -1427,6 +1577,8 @@ Supón dada una sobreyección $e:\mathbb N\to D$ no vacío. Construye los pares 
 
 Fijamos $\varepsilon_0$ de la negación. Para cada $n$, existe un par malo en $D$ y, por sobreyectividad, índices $j,k$ que lo representan. El conjunto de $j$ para los que existe algún $k$ malo a escala $1/(n+1)$ es no vacío; tomamos su mínimo $j_n$. Para ese índice, el conjunto de compañeros $k$ es no vacío y tiene mínimo $k_n$. Los mínimos únicos definen $x_n=e(j_n)$ y $y_n=e(k_n)$, que tienen distancia menor que $1/(n+1)$ y error al menos $\varepsilon_0$. Se usa la enumeración dada, sin inferirla para dominios arbitrarios.
 
+La negación asegura al menos un par a cada escala, y la sobreyección representa sus dos miembros por índices. El mínimo exterior fija una primera entrada que tenga compañero y el mínimo interior fija uno para ella. No se exige que los mínimos aumenten con la escala: construyen dos rutas, no una extracción. Las cotas de distancia y error son las propiedades que esas rutas deben conservar.
+
 </details>
 
 #### Ejercicio 29. Preservar una ruta de Cauchy
@@ -1441,6 +1593,8 @@ Prueba que una uniforme envía toda ruta de Cauchy dada a otra de Cauchy. Refuta
 <summary>Ver solución del ejercicio 29</summary>
 
 Para error $\varepsilon$ elegimos el radio uniforme $\delta$. La condición Cauchy de entrada da $N$ con todas las distancias entre términos posteriores menores que $\delta$; uniformidad hace todas las diferencias de salida posteriores menores que $\varepsilon$. Para el cuadrado, cada ruta Cauchy es acotada, digamos $|x_n|\le M$ con $M>0$. Entonces $|x_n^2-x_m^2|\le2M|x_n-x_m|$, que convierte su condición Cauchy de entrada en la de salida. Sin embargo el cuadrado falla uniformidad en toda la recta, por E002/E026. No se confundió una ruta acotada particular con control sobre todo el dominio.
+
+La condición Cauchy entrega un corte que vale para todos los pares tardíos, y el radio uniforme lo transforma en control Cauchy de salida. Para el cuadrado, la barrera $M$ pertenece a la ruta concreta y puede cambiar entre rutas diferentes. Ese control individual no ofrece un radio para toda la recta. Así preservación de rutas no equivale a uniformidad global en un dominio arbitrario.
 
 </details>
 
@@ -1458,6 +1612,8 @@ En $(0,1]$, usa $x_n=1/(n+2)$ y $y_n=1/(n+3)$ para comparar identidad y recípro
 La distancia de entrada es $1/[(n+2)(n+3)]\to0$. Bajo identidad la diferencia es la misma y tiende a cero, conforme a uniformidad. Bajo recíproco la diferencia vale uno para todo $n$, refutando uniformidad por R6 directo. Las dos rutas convergen a cero, que está fuera del dominio; no se evalúa el recíproco en ese punto exterior. El test controla pares dentro del dominio efectivo.
 
 **Retorno visual.** Véase [C17-F06](analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo.html#fig-anm-c17-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
+
+La identidad transporta la separación exactamente y su diferencia de salida tiende a cero. El recíproco transforma los mismos argumentos en naturales consecutivos con diferencia uno. El test muestra que proximidad de entradas no se transporta uniformemente para esa función. Ambas evaluaciones se realizan dentro de $(0,1]$, sin asignar un valor a la frontera ausente.
 
 </details>
 ## 17.7. Completar el dominio sin seleccionar aproximantes
@@ -1514,6 +1670,8 @@ La raíz en $(0,1]$ se extiende a cero con valor cero, y la identidad se extiend
 
 $p\in\overline D$: toda bola positiva centrada en $p$ toca $D$, por lo que su imagen tiene un valor.
 
+La imagen local reúne salidas de entradas de $D$ dentro de una bola de radio positivo. La adherencia de $p$ garantiza al menos una entrada allí, aunque $p$ mismo esté fuera de $D$. Por eso el conjunto de salidas no es vacío. Esta premisa debe comprobarse antes de usar sus ínfimos y supremos reales.
+
 </details>
 
 #### Microcontrol 50
@@ -1528,6 +1686,8 @@ $p\in\overline D$: toda bola positiva centrada en $p$ toca $D$, por lo que su im
 <summary>Ver solución del microcontrol 50</summary>
 
 Para un $p$ fijado se usa una entrada $a$ en la bola inicial; uniformidad con error uno acota todos sus valores por $f(a)\pm1$. No se forma una familia $a_p$.
+
+La primera bola se elige tan pequeña que dos de sus entradas estén dentro del radio uniforme para error uno. Fijar una de ellas como referencia acota las salidas de todas las demás. Las bolas menores heredan esa barrera y siguen siendo no vacías por adherencia. El testigo de referencia sólo acredita acotación para el punto examinado y no define la extensión.
 
 </details>
 
@@ -1544,6 +1704,8 @@ Para un $p$ fijado se usa una entrada $a$ en la bola inicial; uniformidad con er
 
 $F(p)=\sup\{L_{p,r}:0<r\le r_0\}$, con $L_{p,r}$ el ínfimo de la imagen local no vacía y acotada.
 
+Los ínfimos locales existen por no vacuidad y acotación. Su colección también es no vacía y está acotada por una cota superior local inicial. El supremo de esa colección define un real único mediante fórmula. La construcción no pide elegir una entrada aproximante a cada radio ni una ruta para cada punto de frontera.
+
 </details>
 
 #### Microcontrol 52
@@ -1558,6 +1720,8 @@ $F(p)=\sup\{L_{p,r}:0<r\le r_0\}$, con $L_{p,r}$ el ínfimo de la imagen local n
 <summary>Ver solución del microcontrol 52</summary>
 
 Para toda otra escala $s$, la imagen de la bola de radio $\min(r,s)$ es no vacía y está en ambas imágenes; así $L_{p,s}\le U_{p,r}$ y ese supremo acota todo el corte.
+
+La escala común $\min(r,s)$ tiene una imagen no vacía contenida en las dos imágenes mayores. Una de sus salidas está por encima del ínfimo a escala $s$ y por debajo del supremo a escala $r$. Así cada ínfimo que participa en el corte está dominado por $U_{p,r}$. La misma cota domina entonces al supremo de todos ellos.
 
 </details>
 
@@ -1574,6 +1738,8 @@ Para toda otra escala $s$, la imagen de la bola de radio $\min(r,s)$ es no vací
 
 Sus anchuras pueden ser menores que cualquier distancia positiva; dos valores distintos no cabrían en uno de esos intervalos suficientemente estrechos.
 
+Si dos candidatos distaran $d>0$, se pediría una escala con anchura menor que $d$. Ambos deben quedar entre los mismos extremos locales, así su distancia no puede superar esa anchura. La contradicción fuerza igualdad. El argumento no necesita que los ínfimos o supremos locales sean valores alcanzados.
+
 </details>
 
 #### Microcontrol 54
@@ -1588,6 +1754,8 @@ Sus anchuras pueden ser menores que cualquier distancia positiva; dos valores di
 <summary>Ver solución del microcontrol 54</summary>
 
 Si $p\in D$, $f(p)$ pertenece a toda imagen local y queda entre sus ínfimos/supremos. La unicidad identifica ese valor con $F(p)$.
+
+El centro $p$ pertenece a todas sus bolas positivas cuando ya está en $D$. Su salida está por ello en todas las imágenes locales y cumple sus cotas inferior y superior. El corte construido cumple las mismas cotas y la anchura decreciente fuerza igualdad de ambos reales. Así se prueba extensión sin modificar ningún valor original.
 
 </details>
 
@@ -1604,6 +1772,8 @@ Si $p\in D$, $f(p)$ pertenece a toda imagen local y queda entre sus ínfimos/sup
 
 Para un radio $\delta$ que controla $f$ con error $\varepsilon/3$, sirve $\Delta=\delta/3$; vecindades pequeñas de ambos puntos mantienen todos los pares cruzados dentro de $\delta$.
 
+La distancia entre entradas de dos vecindades se acota sumando sus distancias a los centros y la distancia entre éstos. El radio $\Delta$ y los radios locales menores dejan esa suma por debajo de $\delta$. El control cruzado de salidas pasa a ínfimos y supremos con desigualdades no estrictas. El presupuesto $\varepsilon/3$ deja margen para recuperar error final estricto.
+
 </details>
 
 #### Microcontrol 56
@@ -1618,6 +1788,8 @@ Para un radio $\delta$ que controla $f$ con error $\varepsilon/3$, sirve $\Delta
 <summary>Ver solución del microcontrol 56</summary>
 
 No. Se usan todas las imágenes locales, supremos/ínfimos y un valor único por fórmula; no se seleccionan rutas.
+
+La definición utiliza todos los valores locales disponibles y cotas reales, de modo que no requiere una entrada preferida para cada escala. La unicidad identifica el real que ocupa todas las bandas cada vez más estrechas. Las existencias puntuales usadas para no vacuidad o acotación no se reúnen como familias de elecciones. Así se separa este procedimiento de una construcción por rutas seleccionadas.
 
 </details>
 
@@ -1636,6 +1808,8 @@ Justifica no vacuidad/acotación de $E_{p,r}$ y que el corte $F(p)$ queda entre 
 
 Adherencia da entrada en cada bola. Fijamos el radio uniforme $\delta_0$ para error uno y $r_0=\delta_0/4$. Para este $p$, una entrada $a$ en la bola inicial acota todas las salidas allí por $f(a)\pm1$, porque la distancia entre dos entradas de ella es menor que $2r_0<\delta_0$. Todas las imágenes menores son no vacías/acotadas. Los ínfimos forman conjunto no vacío acotado superiormente por $U_{p,r_0}$, así su supremo $F(p)$ existe. Supera cada ínfimo. Para un $r$ fijado y cualquier $s$, una salida de la imagen a escala $\min(r,s)$ da $L_{p,s}\le U_{p,r}$. Por tanto ese supremo acota todo el corte y $F(p)\le U_{p,r}$. No se seleccionó entrada por todos los puntos o radios.
 
+La cota inicial se obtiene para un punto de frontera fijado y se conserva al reducir radios. Para comparar dos escalas se usa su mínimo, cuya imagen local no es vacía y pertenece a ambas imágenes. Eso hace que cualquier supremo local sea cota de todos los ínfimos del corte. La fórmula de $F$ se define con esas cotas, sin escoger una entrada o sucesión para cada radio.
+
 </details>
 
 #### Ejercicio 32. Anchuras que determinan un único real
@@ -1651,6 +1825,8 @@ Prueba que diferencias menores que $\eta$ entre todos los valores de una imagen 
 
 Para cada valor $v$, todos los valores son a lo sumo $v+\eta$, así $U\le v+\eta$. Entonces $U-\eta$ es cota inferior y no supera $L$, dando $U-L\le\eta$. Uniformidad hace arbitrariamente pequeñas estas anchuras al disminuir el radio. Dos candidatos distintos a distancia $d>0$ no caben en un intervalo de anchura a lo sumo $d/2$, por tanto el candidato es único. Si $p\in D$, $f(p)$ pertenece a cada imagen local y queda entre su ínfimo/supremo; por unicidad coincide con el corte $F(p)$.
 
+Las diferencias estrictamente menores que $\eta$ producen una anchura sólo menor o igual que $\eta$ al pasar a extremos. Esa conclusión basta porque la uniformidad permite pedir un presupuesto más pequeño que la distancia entre dos candidatos. La coincidencia con $f$ utiliza además que la salida central pertenece a todas las imágenes cuando el centro está en $D$. Se demuestra existencia por el corte y unicidad por anchuras, en pasos distintos.
+
 </details>
 
 #### Ejercicio 33. Uniformidad y unicidad de la extensión
@@ -1665,6 +1841,8 @@ Completa la prueba de uniformidad de $F$ sobre $\overline D$ y de unicidad entre
 <summary>Ver solución del ejercicio 33</summary>
 
 Para $\varepsilon>0$ tomamos radio $\delta$ de $f$ para error $\varepsilon/3$ y fijamos $\Delta=\delta/3$. Dados $p,q$ del cierre a distancia menor que $\Delta$, usamos $0<r\le\min(r_0,\delta/6)$. Todo par cruzado de entradas de sus bolas tiene distancia menor que $2r+\delta/3\le2\delta/3<\delta$. Las cotas de supremo/ínfimo dan $U_{p,r}-L_{q,r}\le\varepsilon/3$ y la desigualdad simétrica; los cortes entre esos extremos satisfacen error a lo sumo $\varepsilon/3<\varepsilon$. Para una extensión continua $G$, su radio en un $p$ para error $\varepsilon/2$ sitúa todas las salidas locales en la banda de $G(p)$. Sus ínfimos/supremos y el corte quedan en la banda cerrada, luego $|F(p)-G(p)|\le\varepsilon/2<\varepsilon$. Para todo $\varepsilon$ esto fuerza igualdad; no se usa uniformidad de $G$ para unicidad.
+
+El radio global $\Delta$ se fija antes de $p,q$ y el radio local $r$ asegura que cualquier par cruzado de sus bolas quede en la escala original. Las cotas de supremo e ínfimo conservan el error con desigualdades no estrictas, cubiertas por el presupuesto reservado. Para unicidad basta un control puntual de la otra extensión en cada $p$. Así no se exige que una extensión continua rival sea uniforme como hipótesis.
 
 </details>
 
@@ -1683,6 +1861,8 @@ Identidad y raíz son uniformes en $(0,1]$, por R1, y sus extensiones tienen val
 
 **Retorno visual.** Véase [C17-F07](analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo.html#fig-anm-c17-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+Las extensiones conocidas conservan los valores originales y son continuas también en cero, por lo que la unicidad determina su valor de frontera. El recíproco, en cambio, produce valores que superan cualquier banda alrededor de un valor real propuesto. Arquimedianidad permite una entrada positiva dentro del radio de continuidad y con salida demasiado grande. La contradicción muestra imposibilidad de una extensión real continua, no sólo fracaso de una fórmula candidata.
+
 </details>
 
 #### Ejercicio 35. Uniformidad en un dominio acotado
@@ -1697,6 +1877,8 @@ Para $D\subseteq\mathbb R$ acotado, prueba que $f:D\to\mathbb R$ es uniforme si 
 <summary>Ver solución del ejercicio 35</summary>
 
 La dirección uniforme a extensión continua es R7, incluso vacío. Recíprocamente, el cierre es cerrado y sigue acotado: si $D\subseteq[-M,M]$, su cierre está en ese cerrado. Heine–Borel lo hace compacto; una extensión continua $G$ sobre él es uniforme por R3, y su restricción $f$ lo es por R1. Para vacío sólo hay función vacía y extensión vacía. La compacidad se usa en esta recíproca sobre dominio acotado; existencia R7 no exigía acotación global del dominio.
+
+La existencia de extensión uniforme al cierre no necesita acotación del dominio. La acotación sí se usa al volver desde una extensión meramente continua: junto con cerradura del cierre produce compacidad y habilita Heine–Cantor. Después la restricción conserva el radio uniforme. En el vacío ambas funciones y sus dominios son vacíos y la equivalencia se resuelve directamente.
 
 </details>
 ## 17.8. Datos finitos y aproximaciones poligonales
@@ -1752,6 +1934,8 @@ El capítulo deja tres formas de leer la misma disciplina: elegir el radio antes
 
 $h=(b-a)/n<\delta$, donde $\delta$ es el radio uniforme para el presupuesto $\varepsilon/2$ y $n\ge1$.
 
+Como $a<b$, la longitud es positiva y arquimedianidad permite un entero suficientemente grande para que su división sea menor que el radio. La estrictitud $h<\delta$ controla también puntos a distancia exactamente $h$ de un nodo. El entero es al menos uno, por lo que hay celdas y la fórmula no divide por cero.
+
 </details>
 
 #### Microcontrol 58
@@ -1766,6 +1950,8 @@ $h=(b-a)/n<\delta$, donde $\delta$ es el radio uniforme para el presupuesto $\va
 <summary>Ver solución del microcontrol 58</summary>
 
 Una da peso uno al extremo derecho y la otra peso uno al extremo izquierdo; ambas dan el valor de $f$ en el nodo común.
+
+En el nodo compartido, la fórmula de la celda anterior evalúa su extremo derecho y la siguiente su extremo izquierdo. Los pesos nulos eliminan el otro valor en cada caso. Ambas asignaciones coinciden exactamente con la misma muestra. Esto acredita que el pegado define una única función antes de estudiar su continuidad.
 
 </details>
 
@@ -1782,6 +1968,8 @@ Una da peso uno al extremo derecho y la otra peso uno al extremo izquierdo; amba
 
 $x\in[t_j,t_{j+1}]$ y $h>0$, por lo que $0\le x-t_j\le h$ y $\theta=(x-t_j)/h\in[0,1]$.
 
+La pertenencia a la celda garantiza $0\le x-t_j\le h$. Dividir por la longitud positiva conserva las desigualdades y produce pesos $\theta$ y $1-\theta$ no negativos de suma uno. Esa condición permite acotar el error de interpolación como combinación de dos errores de muestra. Fuera de la celda no podríamos afirmar esos signos.
+
 </details>
 
 #### Microcontrol 60
@@ -1796,6 +1984,8 @@ $x\in[t_j,t_{j+1}]$ y $h>0$, por lo que $0\le x-t_j\le h$ y $\theta=(x-t_j)/h\in
 <summary>Ver solución del microcontrol 60</summary>
 
 Ambos extremos distan a lo sumo $h<\delta$ de $x$; sus errores son menores que $\varepsilon/2$ y la combinación convexa mantiene esa cota.
+
+La expresión $P(x)-f(x)$ es la combinación de las diferencias entre cada muestra y $f(x)$. La triangular introduce los dos pesos no negativos, que suman uno. Como ambos errores están bajo el mismo presupuesto, su combinación también lo está. En los nodos un peso vale cero y el otro uno; el argumento conserva esos casos sin excluirlos.
 
 </details>
 
@@ -1812,6 +2002,8 @@ Ambos extremos distan a lo sumo $h<\delta$ de $x$; sus errores son menores que $
 
 Cada rama afín lo es, sus valores coinciden en nodos y C14 permite el pegado finito sobre las celdas cerradas relativas.
 
+Cada celda es cerrada relativa al segmento y la lista es finita. Las ramas afines son continuas y sus valores coinciden en las intersecciones, los nodos. Estas son las hipótesis del pegado finito de C14. Una lista de fórmulas afines sin el acuerdo en nodos no definiría necesariamente una poligonal continua.
+
 </details>
 
 #### Microcontrol 62
@@ -1826,6 +2018,8 @@ Cada rama afín lo es, sus valores coinciden en nodos y C14 permite el pegado fi
 <summary>Ver solución del microcontrol 62</summary>
 
 $h=1/4$, por lo que $h^2/4=1/64$, alcanzado en los medios de cada celda.
+
+En una celda el error es $\theta(1-\theta)h^2$. La identidad $\theta(1-\theta)=1/4-(\theta-1/2)^2$ da su máximo $h^2/4$ y localiza la igualdad en el medio. Con cuatro celdas hay cuatro medios, y todos producen el mismo error $1/64$. Los nodos tienen error cero.
 
 </details>
 
@@ -1842,6 +2036,8 @@ $h=1/4$, por lo que $h^2/4=1/64$, alcanzado en los medios de cada celda.
 
 Entre dos nodos se puede insertar un pico triangular continuo de altura arbitraria que siga valiendo cero en todos los nodos.
 
+Las muestras determinan valores sólo en un conjunto finito de argumentos. Una función continua puede coincidir en todos ellos y variar mucho dentro de una celda. El pico triangular conserva continuidad y permite fijar una altura arbitraria sin alterar los datos de nodos. Para certificar error entre muestras hace falta una escala de control de la función, no sólo sus valores finitos.
+
 </details>
 
 #### Microcontrol 64
@@ -1856,6 +2052,8 @@ Entre dos nodos se puede insertar un pico triangular continuo de altura arbitrar
 <summary>Ver solución del microcontrol 64</summary>
 
 La constante con valor $f(a)$ en $[a,a]$ tiene error cero; no se divide por una longitud de malla cero.
+
+Si $a=b$, hay una sola entrada y la interpolación puede definirse directamente con su valor. La diferencia respecto de $f$ es cero en todo el dominio. La fórmula de pesos con longitud $h=0$ no está definida y no debe utilizarse. Separar este caso conserva la afirmación de aproximación sin introducir una división inválida.
 
 </details>
 
@@ -1874,6 +2072,8 @@ Para una continua $f:[a,b]\to\mathbb R$, $a<b$, construye $P$ y prueba existenci
 
 Heine–Cantor para error $\varepsilon/2$ da $\delta>0$. Arquimedianidad permite un entero $n\ge1$ con $(b-a)/n<\delta$. Con $h=(b-a)/n$ y $t_j=a+jh$, definimos en cada celda $P(x)=(1-\theta)f(t_j)+\theta f(t_{j+1})$, $\theta=(x-t_j)/h$. En el extremo derecho $\theta=1$ y en el izquierdo de la siguiente celda $\theta=0$, por lo que ambas ramas dan el valor del nodo compartido. Cada rama afín es continua; las celdas forman cubierta finita por cerrados relativos y C14 da continuidad del pegado. Se usaron sólo los valores finitos en los nodos y no una capacidad computable de evaluarlos.
 
+La escala uniforme se obtiene para un presupuesto común antes de construir nodos. Una malla suficientemente fina mantiene cada celda dentro de esa escala. Las fórmulas afines comparten valores en los nodos y por ello definen una sola función. El pegado finito sobre celdas cerradas acredita continuidad sin usar derivadas ni presuponer un algoritmo de evaluación de todas las muestras.
+
 </details>
 
 #### Ejercicio 37. Controlar todo lo que queda entre nodos
@@ -1888,6 +2088,8 @@ Prueba la cota uniforme de error de R8, incluidos pesos cero y la diferencia ent
 <summary>Ver solución del ejercicio 37</summary>
 
 Dentro de una celda, ambos extremos distan a lo sumo $h<\delta$ de $x$; los dos errores de $f$ son menores que $\varepsilon/2$. La triangular para su combinación con pesos no negativos de suma uno da error menor que $\varepsilon/2$, también si un peso es cero porque el otro es uno. Por tanto el supremo de errores es a lo sumo $\varepsilon/2<\varepsilon$. Además $|P-f|$ es continua en compacto no vacío y alcanza máximo por C16; como es uno de los errores puntuales, ese máximo es incluso menor que $\varepsilon/2$. En el degenerado se toma constante y no se divide por cero.
+
+Los pesos suman uno y no son negativos, así la interpolación combina dos errores bajo el mismo presupuesto. Los nodos, donde uno de los pesos es cero, siguen cumpliendo la estimación. Pasar al supremo sólo conserva una desigualdad no estricta, pero el presupuesto medio deja error global menor que $\varepsilon$. Si se usa que el error continuo alcanza máximo en el compacto, ese máximo también hereda la cota puntual estricta.
 
 </details>
 
@@ -1906,6 +2108,8 @@ Con $h=1/4$ y $x=t+\theta h$, expandir la interpolación de los cuadrados de los
 
 **Retorno visual.** Véase [C17-F08](analisis-para-matematicos-capitulo-17-continuidad-uniforme-una-escala-que-sirve-para-todo.html#fig-anm-c17-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+La fórmula exacta cancela los términos que dependen del extremo izquierdo de la celda. Queda el mismo error según el peso $\theta$ en todas las celdas. La identidad cuadrática de $\theta(1-\theta)$ localiza la igualdad únicamente en su medio. Así se obtienen el valor máximo y todos sus argumentos, mientras en cada nodo la poligonal coincide exactamente con el cuadrado.
+
 </details>
 
 #### Ejercicio 39. Muestras iguales y errores arbitrarios
@@ -1921,6 +2125,8 @@ Dada una malla finita en $[a,b]$ con $a<b$, construye una función continua que 
 
 Elegimos una celda de longitud positiva $[u,v]$ entre nodos consecutivos y su medio $m=(u+v)/2$. Fuera de ella ponemos cero; en $[u,m]$ ponemos $H(x-u)/(m-u)$ y en $[m,v]$ ponemos $H(v-x)/(v-m)$. Los denominadores son positivos y las ramas coinciden en valores cero en los extremos y $H$ en el medio. El pegado finito C14 da continuidad, y todos los nodos siguen teniendo valor cero. La poligonal interpolante es cero y su error en $m$ es $H$, arbitrario. Los datos de muestras sin una escala para la función entre ellas no certifican error; Heine–Cantor da escala para cada función dada, no para toda la clase con la misma malla.
 
+La celda de longitud positiva existe porque la malla recorre un segmento no degenerado. Sus dos mitades tienen denominadores positivos, y el acuerdo en el medio y extremos hace continua la función triangular. Ningún nodo interior de esa celda existe entre consecutivos, así todas las muestras siguen siendo cero. La altura demuestra que una malla fija no certifica el error de toda función continua que coincida en esos datos.
+
 </details>
 
 #### Ejercicio 40. Elegir una malla a partir de tolerancia
@@ -1935,6 +2141,8 @@ Para $x^2$ en $[0,1]$, da una condición en $n$ que asegure error poligonal estr
 <summary>Ver solución del ejercicio 40</summary>
 
 El certificado exacto da máximo $1/(4n^2)$, así basta $n>1/(2\sqrt\varepsilon)$ con $n\ge1$. La raíz de $\varepsilon$ es positiva; arquimedianidad garantiza tal entero. Si sólo usamos Lipschitz dos, para error local $\varepsilon/2$ podemos tomar $\delta=\varepsilon/4$, y R8 pide $1/n<\varepsilon/4$, es decir $n>4/\varepsilon$. Ambas condiciones son suficientes, pero la exacta aprovecha la regla algebraica del cuadrado y puede usar muchas menos celdas. No se concluye que esa mejora exista para una continua arbitraria.
+
+El error exacto de una malla de $n$ celdas es $h^2/4=1/(4n^2)$, y la desigualdad estricta pide un entero que supere el umbral indicado. La garantía Lipschitz sólo usa una cota lineal y el presupuesto medio, por eso impone una condición más conservadora. Son dos certificados suficientes basados en información diferente. La mejora cuadrática procede de la identidad algebraica de esta función particular.
 
 </details>
 
