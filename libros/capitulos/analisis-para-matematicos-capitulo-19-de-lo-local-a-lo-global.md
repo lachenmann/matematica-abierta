@@ -61,15 +61,9 @@ Una acumulación por ambos lados basta para el argumento de signos aunque el dom
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 1</summary>
 
-**Respuesta.**
-
 Un centro $a\in D$ y un radio donde todas las entradas del dominio tienen valores al menos $f(a)$; no se exige desigualdad fuera de ese radio.
 
-**Fundamento en la sección 19.1.**
-
-**Dónde se gastan las hipótesis.** En $[0,1]$, la identidad tiene mínimo en cero y máximo en uno, pero sus derivadas relativas valen uno: son extremos de frontera. $|x|$ tiene mínimo interior en cero, pero no derivada bilateral. El cubo tiene derivada cero en cero y ningún extremo local allí. Por tanto la condición de Fermat es necesaria bajo sus hipótesis, sin ser suficiente para clasificar un punto estacionario.
-
-Una acumulación por ambos lados basta para el argumento de signos aunque el dominio esté roto; la interioridad es una garantía simple de ella. Un centro aislado puede ser a la vez máximo y mínimo local por vacuidad, pero C18 no le asigna derivada. La gráfica ayuda a reconocer estas situaciones; la prueba se apoya en cocientes y entradas verificadas.
+El radio fija una región de comparación y se recorta por el dominio real de la función. El valor central existe y sirve de cota inferior en esa región. No se exige que sea único ni que todos los valores del dominio sean mayores; esas condiciones corresponderían a conclusiones distintas.
 
 </details>
 
@@ -84,15 +78,9 @@ Una acumulación por ambos lados basta para el argumento de signos aunque el dom
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 2</summary>
 
-**Respuesta.**
-
 Entradas admisibles a ambos lados del centro dentro de cualquier radio suficientemente pequeño.
 
-**Fundamento en la sección 19.1.**
-
-**Dónde se gastan las hipótesis.** En $[0,1]$, la identidad tiene mínimo en cero y máximo en uno, pero sus derivadas relativas valen uno: son extremos de frontera. $|x|$ tiene mínimo interior en cero, pero no derivada bilateral. El cubo tiene derivada cero en cero y ningún extremo local allí. Por tanto la condición de Fermat es necesaria bajo sus hipótesis, sin ser suficiente para clasificar un punto estacionario.
-
-Una acumulación por ambos lados basta para el argumento de signos aunque el dominio esté roto; la interioridad es una garantía simple de ella. Un centro aislado puede ser a la vez máximo y mínimo local por vacuidad, pero C18 no le asigna derivada. La gráfica ayuda a reconocer estas situaciones; la prueba se apoya en cocientes y entradas verificadas.
+Una bola real contenida en el dominio permite construir entradas a izquierda y derecha dentro del radio del extremo y del radio de derivabilidad. Sus incrementos tienen signos opuestos. Esa disponibilidad geométrica es el paso que fuerza a la pendiente límite a ser simultáneamente no negativa y no positiva.
 
 </details>
 
@@ -107,13 +95,9 @@ Una acumulación por ambos lados basta para el argumento de signos aunque el dom
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 3</summary>
 
-**Respuesta.**
-
 No positivo: el numerador es no negativo y el denominador negativo.
 
-**Fundamento en la sección 19.1.**
-
-**Estrategia y prueba para un mínimo.** En la vecindad del extremo, las pendientes secantes son no negativas a la derecha y no positivas a la izquierda. Sea $L=f'(a)$. Si $L>0$, tolerancia $L/2$ da $\delta$ con $q_{f,a}>L/2$ cerca. Tomamos $t=\min(r,\rho,\delta)/2>0$ y $x=a-t$. Este argumento pertenece al dominio, está a la izquierda y su cociente debería ser no positivo: contradicción. Si $L<0$, tolerancia $|L|/2$ fuerza $q_{f,a}<L/2<0$; el argumento explícito $x=a+t$ contradice el signo de la derecha. Sólo queda $L=0$. Para un máximo se aplica el resultado a $-f$, cuya derivada es $-L$ por C18. Se usaron dos lados y un testigo por caso, sin fabricar una sucesión.
+La condición de mínimo controla el numerador, mientras la posición de la entrada controla el denominador. Dividir un número no negativo por uno estrictamente negativo produce una secante no positiva. La conclusión incluye la posibilidad de numerador cero, importante en mínimos no estrictos.
 
 </details>
 
@@ -128,15 +112,9 @@ No positivo: el numerador es no negativo y el denominador negativo.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 4</summary>
 
-**Respuesta.**
-
 No negativo: tanto el numerador como el denominador son no negativos, y el segundo es positivo.
 
-**Fundamento en la sección 19.1.**
-
-**R1 — Fermat.** Sean $D\subseteq\mathbb R$, $f:D\to\mathbb R$ y $a$ interior a $D$. Si $f$ tiene un máximo o mínimo local en $a$ y es derivable allí, entonces $f'(a)=0$. Un mínimo local significa que existe $r>0$ tal que $f(x)\ge f(a)$ para $x\in D$ con $|x-a|<r$; un máximo invierte la desigualdad. La interioridad proporciona $\rho>0$ con $B(a,\rho)\subseteq D$, y por tanto acumulación desde ambos lados.
-
-**Estrategia y prueba para un mínimo.** En la vecindad del extremo, las pendientes secantes son no negativas a la derecha y no positivas a la izquierda. Sea $L=f'(a)$. Si $L>0$, tolerancia $L/2$ da $\delta$ con $q_{f,a}>L/2$ cerca. Tomamos $t=\min(r,\rho,\delta)/2>0$ y $x=a-t$. Este argumento pertenece al dominio, está a la izquierda y su cociente debería ser no positivo: contradicción. Si $L<0$, tolerancia $|L|/2$ fuerza $q_{f,a}<L/2<0$; el argumento explícito $x=a+t$ contradice el signo de la derecha. Sólo queda $L=0$. Para un máximo se aplica el resultado a $-f$, cuya derivada es $-L$ por C18. Se usaron dos lados y un testigo por caso, sin fabricar una sucesión.
+A la derecha el incremento es estrictamente positivo y la condición de mínimo hace no negativo el numerador. La secante es por ello no negativa. Junto al signo del lado izquierdo, este control obliga a la derivada a ser cero cuando ambas aproximaciones están disponibles.
 
 </details>
 
@@ -151,13 +129,9 @@ No negativo: tanto el numerador como el denominador son no negativos, y el segun
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 5</summary>
 
-**Respuesta.**
-
 Fuerza cocientes positivos cerca del centro, incluidos argumentos de la izquierda donde el mínimo exige cocientes no positivos.
 
-**Fundamento en la sección 19.1.**
-
-**Estrategia y prueba para un mínimo.** En la vecindad del extremo, las pendientes secantes son no negativas a la derecha y no positivas a la izquierda. Sea $L=f'(a)$. Si $L>0$, tolerancia $L/2$ da $\delta$ con $q_{f,a}>L/2$ cerca. Tomamos $t=\min(r,\rho,\delta)/2>0$ y $x=a-t$. Este argumento pertenece al dominio, está a la izquierda y su cociente debería ser no positivo: contradicción. Si $L<0$, tolerancia $|L|/2$ fuerza $q_{f,a}<L/2<0$; el argumento explícito $x=a+t$ contradice el signo de la derecha. Sólo queda $L=0$. Para un máximo se aplica el resultado a $-f$, cuya derivada es $-L$ por C18. Se usaron dos lados y un testigo por caso, sin fabricar una sucesión.
+La tolerancia igual a media pendiente mantiene todas las secantes suficientemente próximas por encima de cero. Interioridad aporta una entrada izquierda dentro del mínimo de los radios necesarios. Su secante debería ser a la vez positiva y no positiva, contradicción. Una derivada negativa se descarta usando el lado derecho.
 
 </details>
 
@@ -172,15 +146,9 @@ Fuerza cocientes positivos cerca del centro, incluidos argumentos de la izquierd
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 6</summary>
 
-**Respuesta.**
-
 Tiene extremos globales y derivadas relativas uno; los bordes no son interiores y no satisfacen la premisa geométrica de Fermat.
 
-**Fundamento en la sección 19.1.**
-
-**Dónde se gastan las hipótesis.** En $[0,1]$, la identidad tiene mínimo en cero y máximo en uno, pero sus derivadas relativas valen uno: son extremos de frontera. $|x|$ tiene mínimo interior en cero, pero no derivada bilateral. El cubo tiene derivada cero en cero y ningún extremo local allí. Por tanto la condición de Fermat es necesaria bajo sus hipótesis, sin ser suficiente para clasificar un punto estacionario.
-
-Una acumulación por ambos lados basta para el argumento de signos aunque el dominio esté roto; la interioridad es una garantía simple de ella. Un centro aislado puede ser a la vez máximo y mínimo local por vacuidad, pero C18 no le asigna derivada. La gráfica ayuda a reconocer estas situaciones; la prueba se apoya en cocientes y entradas verificadas.
+En los bordes la aproximación relativa sólo dispone de un lado. Sus secantes valen uno y no contradicen las comparaciones de extremo en ese único lado. Fermat necesita ambas clases de entradas para excluir los signos no nulos. El ejemplo conserva derivadas relativas válidas y muestra la función exacta de interioridad.
 
 </details>
 
@@ -195,15 +163,9 @@ Una acumulación por ambos lados basta para el argumento de signos aunque el dom
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 7</summary>
 
-**Respuesta.**
-
 No: el cubo tiene derivada cero en cero y valores de ambos signos arbitrariamente cerca.
 
-**Fundamento en la sección 19.1.**
-
-**Dónde se gastan las hipótesis.** En $[0,1]$, la identidad tiene mínimo en cero y máximo en uno, pero sus derivadas relativas valen uno: son extremos de frontera. $|x|$ tiene mínimo interior en cero, pero no derivada bilateral. El cubo tiene derivada cero en cero y ningún extremo local allí. Por tanto la condición de Fermat es necesaria bajo sus hipótesis, sin ser suficiente para clasificar un punto estacionario.
-
-Una acumulación por ambos lados basta para el argumento de signos aunque el dominio esté roto; la interioridad es una garantía simple de ella. Un centro aislado puede ser a la vez máximo y mínimo local por vacuidad, pero C18 no le asigna derivada. La gráfica ayuda a reconocer estas situaciones; la prueba se apoya en cocientes y entradas verificadas.
+La derivada describe el término lineal del comportamiento local. El cubo tiene un término lineal nulo, pero conserva valores positivos y negativos a ambos lados. Por eso no es ni mínimo ni máximo local. Fermat es una condición necesaria para un extremo interior derivable, no una equivalencia.
 
 </details>
 
@@ -218,15 +180,9 @@ Una acumulación por ambos lados basta para el argumento de signos aunque el dom
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 8</summary>
 
-**Respuesta.**
-
 No. Se emplean directamente signos de cocientes, radios de derivabilidad y entradas de ambos lados.
 
-**Fundamento en la sección 19.1.**
-
-**Dónde se gastan las hipótesis.** En $[0,1]$, la identidad tiene mínimo en cero y máximo en uno, pero sus derivadas relativas valen uno: son extremos de frontera. $|x|$ tiene mínimo interior en cero, pero no derivada bilateral. El cubo tiene derivada cero en cero y ningún extremo local allí. Por tanto la condición de Fermat es necesaria bajo sus hipótesis, sin ser suficiente para clasificar un punto estacionario.
-
-Una acumulación por ambos lados basta para el argumento de signos aunque el dominio esté roto; la interioridad es una garantía simple de ella. Un centro aislado puede ser a la vez máximo y mínimo local por vacuidad, pero C18 no le asigna derivada. La gráfica ayuda a reconocer estas situaciones; la prueba se apoya en cocientes y entradas verificadas.
+Los radios de derivabilidad controlan secantes centradas en el extremo. La condición de extremo les impone signos, y el dominio permite encontrar entradas de ambos lados. Estos datos bastan para excluir pendientes positivas y negativas. No se utiliza todavía una relación global entre puntos diferentes.
 
 </details>
 
@@ -245,13 +201,9 @@ Prueba Fermat para un mínimo interior usando signos de secantes y dos casos par
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 1</summary>
 
-**Respuesta.**
-
 En un radio del mínimo, $f(x)-f(a)\ge0$; las secantes izquierdas son no positivas y las derechas no negativas. Interioridad da una bola dentro del dominio. Si $L>0$, la tolerancia $L/2$ fuerza pendientes positivas en algún radio: elegir $x=a-\min(r,\rho,\delta)/2$ contradice el signo izquierdo. Si $L<0$, tolerancia $|L|/2$ fuerza pendientes negativas y la entrada derecha con ese mismo mínimo contradice el signo derecho. Los radios son positivos y las entradas distintas del centro. Por tricotomía sólo queda $L=0$.
 
-**Fundamento en la sección 19.1.**
-
-**Estrategia y prueba para un mínimo.** En la vecindad del extremo, las pendientes secantes son no negativas a la derecha y no positivas a la izquierda. Sea $L=f'(a)$. Si $L>0$, tolerancia $L/2$ da $\delta$ con $q_{f,a}>L/2$ cerca. Tomamos $t=\min(r,\rho,\delta)/2>0$ y $x=a-t$. Este argumento pertenece al dominio, está a la izquierda y su cociente debería ser no positivo: contradicción. Si $L<0$, tolerancia $|L|/2$ fuerza $q_{f,a}<L/2<0$; el argumento explícito $x=a+t$ contradice el signo de la derecha. Sólo queda $L=0$. Para un máximo se aplica el resultado a $-f$, cuya derivada es $-L$ por C18. Se usaron dos lados y un testigo por caso, sin fabricar una sucesión.
+Los tres radios cumplen obligaciones distintas: mantener el extremo local, permanecer dentro del dominio y controlar el error de pendiente. Su mínimo positivo proporciona una entrada válida en el lado que contradice cada signo propuesto. Así se descartan ambas posibilidades no nulas sin usar valor medio ni seleccionar una sucesión.
 
 </details>
 
@@ -270,6 +222,8 @@ El orden da mínimo global en cero y máximo global en uno. En cualquier centro 
 
 **Retorno visual.** Véase [C19-F01](analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.html#fig-anm-c19-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
+Los extremos globales también son locales relativos, pero sus centros no contienen una bola real del dominio. La derivada relativa sigue estando definida porque cada borde acumula desde su lado disponible. El ejemplo no invalida Fermat: muestra por qué su hipótesis de ambas direcciones debe mantenerse.
+
 </details>
 
 #### Ejercicio 3. Una esquina y un punto estacionario
@@ -283,15 +237,9 @@ Compara $|x|$, $x^2$ y $x^3$ en cero: extremo local, derivabilidad y suficiencia
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 3</summary>
 
-**Respuesta.**
-
 El valor absoluto tiene mínimo global cero, pero secantes de pendientes menos uno y uno, por lo que no es derivable allí. El cuadrado tiene mínimo global y cociente centrado en cero igual a $x$, así derivada cero. El cubo tiene cociente $x^2$ y derivada cero, pero entradas positivas y negativas arbitrariamente cercanas dan valores de signos opuestos: no hay extremo local. Por tanto un extremo interior no crea derivabilidad y una derivada nula no garantiza extremo.
 
-**Fundamento en la sección 19.1.**
-
-**Dónde se gastan las hipótesis.** En $[0,1]$, la identidad tiene mínimo en cero y máximo en uno, pero sus derivadas relativas valen uno: son extremos de frontera. $|x|$ tiene mínimo interior en cero, pero no derivada bilateral. El cubo tiene derivada cero en cero y ningún extremo local allí. Por tanto la condición de Fermat es necesaria bajo sus hipótesis, sin ser suficiente para clasificar un punto estacionario.
-
-Una acumulación por ambos lados basta para el argumento de signos aunque el dominio esté roto; la interioridad es una garantía simple de ella. Un centro aislado puede ser a la vez máximo y mínimo local por vacuidad, pero C18 no le asigna derivada. La gráfica ayuda a reconocer estas situaciones; la prueba se apoya en cocientes y entradas verificadas.
+Los tres objetos mantienen continuidad en cero, pero sus secantes y valores vecinos responden a preguntas distintas. La esquina no tiene derivada, el cuadrado tiene mínimo y pendiente nula, y el cubo sólo tiene pendiente nula. Estos casos separan necesidad de derivabilidad para aplicar Fermat y falta de suficiencia de su conclusión.
 
 </details>
 
@@ -308,6 +256,8 @@ Prueba que en Fermat puede reemplazarse interioridad por acumulación a ambos la
 
 Sea $L$ la derivada relativa. Para un mínimo, las pendientes de la izquierda son no positivas y las de la derecha no negativas dentro del radio del extremo. Si $L>0$, el radio de error $L/2$ obliga a pendientes positivas; acumulación izquierda entrega una entrada dentro del mínimo de ambos radios, contradicción. Si $L<0$, acumulación derecha y error $|L|/2$ dan la contradicción opuesta. No hace falta una bola completa del dominio, sino entradas de ambos lados en todo radio. Para máximo se aplica el resultado a $-f$. No se infiere esa acumulación sólo de que el centro sea de acumulación por uno de los lados.
 
+Para excluir el signo positivo basta un testigo izquierdo en cada ventana, y para excluir el negativo basta uno derecho. Esa disponibilidad es más débil que contener una bola real completa. La derivada relativa debe controlar también esas entradas y el extremo aportar sus signos. Acumulación de un único lado no alcanza para las dos contradicciones.
+
 </details>
 
 #### Ejercicio 5. Transformar el máximo
@@ -321,15 +271,9 @@ Deduce Fermat para un máximo a partir del caso mínimo y verifica las condicion
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 5</summary>
 
-**Respuesta.**
-
 Si $f$ alcanza un máximo local en $a$, la función $g=-f$ sobre el mismo dominio alcanza un mínimo local con el mismo radio. El centro sigue siendo interior y C18 da derivabilidad $g\prime(a)=-f\prime(a)$. El caso mínimo implica $g\prime(a)=0$, así $f\prime(a)=0$. La transformación conserva tipos y dominio y sólo invierte el orden de valores; no se utiliza un resultado global o valor medio.
 
-**Fundamento en la sección 19.1.**
-
-Una derivada describe el comportamiento cerca de un centro. Para obtener información en un intervalo completo necesitaremos que las condiciones valgan en todos sus puntos pertinentes. El primer puente es local: una función derivable no puede alcanzar un extremo interior con pendiente distinta de cero.
-
-**R1 — Fermat.** Sean $D\subseteq\mathbb R$, $f:D\to\mathbb R$ y $a$ interior a $D$. Si $f$ tiene un máximo o mínimo local en $a$ y es derivable allí, entonces $f'(a)=0$. Un mínimo local significa que existe $r>0$ tal que $f(x)\ge f(a)$ para $x\in D$ con $|x-a|<r$; un máximo invierte la desigualdad. La interioridad proporciona $\rho>0$ con $B(a,\rho)\subseteq D$, y por tanto acumulación desde ambos lados.
+Multiplicar por menos uno convierte la comparación superior del máximo en la inferior del mínimo. No cambia qué entradas están disponibles ni el radio del extremo. La regla de derivación conserva el signo opuesto de la pendiente y permite volver a la igualdad cero para la función original.
 
 </details>
 ## 19.2. Rolle: volver a la misma altura
@@ -361,15 +305,9 @@ Fermat convierte un extremo interior en una pendiente nula. Todavía falta garan
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 9</summary>
 
-**Respuesta.**
-
 En todo $[a,b]$, incluidos sus extremos con continuidad relativa al segmento.
 
-**Fundamento en la sección 19.2.**
-
-**R2 — Rolle.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en todo el segmento, derivable en cada punto de $(a,b)$, con $f(a)=f(b)$. Entonces existe $c\in(a,b)$ tal que $f'(c)=0$. La continuidad en los extremos es relativa al segmento; no se piden derivadas allí ni continuidad de la función derivada.
-
-**Metas y prueba.** Escribamos $k=f(a)=f(b)$. Si todos los valores son $k$, elegimos $c=(a+b)/2$ y sus cocientes son cero. Si no, existe $y$ con $f(y)\ne k$. Los extremos alcanzados de C16 son $m,M\in[a,b]$ con $f(m)\le f(x)\le f(M)$ para todo $x$ del segmento. Si $f(y)>k$, entonces $f(M)>k$ y $M$ no puede ser ninguno de los bordes; Fermat en $M$ da la conclusión. Si $f(y)<k$, el mínimo $m$ es interior y Fermat se aplica allí. La continuidad asegura extremos alcanzados; la igualdad de borde desplaza al menos uno al interior; la derivabilidad permite detener su pendiente. No se supone que los dos extremos sean interiores.
+La continuidad relativa en los extremos permite aplicar Weierstrass al segmento completo. Una discontinuidad de borde podría impedir que el valor que domina las salidas se alcance. La derivabilidad interior garantiza continuidad allí, pero no sustituye esa comprobación en los bordes incluidos.
 
 </details>
 
@@ -384,15 +322,9 @@ En todo $[a,b]$, incluidos sus extremos con continuidad relativa al segmento.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 10</summary>
 
-**Respuesta.**
-
 En todos los puntos de $(a,b)$; no se piden derivadas en los bordes.
 
-**Fundamento en la sección 19.2.**
-
-**R2 — Rolle.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en todo el segmento, derivable en cada punto de $(a,b)$, con $f(a)=f(b)$. Entonces existe $c\in(a,b)$ tal que $f'(c)=0$. La continuidad en los extremos es relativa al segmento; no se piden derivadas allí ni continuidad de la función derivada.
-
-**Metas y prueba.** Escribamos $k=f(a)=f(b)$. Si todos los valores son $k$, elegimos $c=(a+b)/2$ y sus cocientes son cero. Si no, existe $y$ con $f(y)\ne k$. Los extremos alcanzados de C16 son $m,M\in[a,b]$ con $f(m)\le f(x)\le f(M)$ para todo $x$ del segmento. Si $f(y)>k$, entonces $f(M)>k$ y $M$ no puede ser ninguno de los bordes; Fermat en $M$ da la conclusión. Si $f(y)<k$, el mínimo $m$ es interior y Fermat se aplica allí. La continuidad asegura extremos alcanzados; la igualdad de borde desplaza al menos uno al interior; la derivabilidad permite detener su pendiente. No se supone que los dos extremos sean interiores.
+Cada centro interior dispone de las dos direcciones necesarias para Fermat. En los bordes Rolle sólo necesita continuidad y la igualdad de valores, no una pendiente. Así el teorema puede utilizarse aunque no existan derivadas en esos dos puntos. Las regiones de sus dos premisas son diferentes y deben declararse.
 
 </details>
 
@@ -407,15 +339,9 @@ En todos los puntos de $(a,b)$; no se piden derivadas en los bordes.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 11</summary>
 
-**Respuesta.**
-
 El teorema de extremos sobre compactos de C16, aplicado al segmento cerrado no vacío y la función continua.
 
-**Fundamento en la sección 19.2.**
-
-Fermat convierte un extremo interior en una pendiente nula. Todavía falta garantizar un extremo que no esté en la frontera. Aquí entra una herramienta heredada: C16 asegura que una continua en un segmento cerrado no vacío alcanza máximo y mínimo.
-
-**R2 — Rolle.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en todo el segmento, derivable en cada punto de $(a,b)$, con $f(a)=f(b)$. Entonces existe $c\in(a,b)$ tal que $f'(c)=0$. La continuidad en los extremos es relativa al segmento; no se piden derivadas allí ni continuidad de la función derivada.
+El segmento cerrado es compacto y, como $a<b$, no es vacío. La continuidad de la función permite que su imagen tenga máximo y mínimo alcanzados. Después se localiza alguno de sus argumentos dentro del interior. Sólo en esa localización se aplica Fermat; acotación de valores sola no bastaría.
 
 </details>
 
@@ -430,15 +356,9 @@ Fermat convierte un extremo interior en una pendiente nula. Todavía falta garan
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 12</summary>
 
-**Respuesta.**
-
 El máximo alcanzado tiene valor mayor que ambos valores de borde, así su punto no puede ser ninguno de ellos.
 
-**Fundamento en la sección 19.2.**
-
-**R2 — Rolle.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en todo el segmento, derivable en cada punto de $(a,b)$, con $f(a)=f(b)$. Entonces existe $c\in(a,b)$ tal que $f'(c)=0$. La continuidad en los extremos es relativa al segmento; no se piden derivadas allí ni continuidad de la función derivada.
-
-**Metas y prueba.** Escribamos $k=f(a)=f(b)$. Si todos los valores son $k$, elegimos $c=(a+b)/2$ y sus cocientes son cero. Si no, existe $y$ con $f(y)\ne k$. Los extremos alcanzados de C16 son $m,M\in[a,b]$ con $f(m)\le f(x)\le f(M)$ para todo $x$ del segmento. Si $f(y)>k$, entonces $f(M)>k$ y $M$ no puede ser ninguno de los bordes; Fermat en $M$ da la conclusión. Si $f(y)<k$, el mínimo $m$ es interior y Fermat se aplica allí. La continuidad asegura extremos alcanzados; la igualdad de borde desplaza al menos uno al interior; la derivabilidad permite detener su pendiente. No se supone que los dos extremos sean interiores.
+Los extremos tienen el mismo valor $k$. Si algún valor supera $k$, el máximo global es también mayor que $k$ y no puede producirse en esos bordes. Su argumento interior es un extremo local y tiene derivada cero por Fermat. Si hay un valor menor, se usa el mínimo con la misma lógica.
 
 </details>
 
@@ -453,15 +373,9 @@ El máximo alcanzado tiene valor mayor que ambos valores de borde, así su punto
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 13</summary>
 
-**Respuesta.**
-
 El punto medio, que es interior para $a<b$; sus cocientes son cero.
 
-**Fundamento en la sección 19.2.**
-
-**R2 — Rolle.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en todo el segmento, derivable en cada punto de $(a,b)$, con $f(a)=f(b)$. Entonces existe $c\in(a,b)$ tal que $f'(c)=0$. La continuidad en los extremos es relativa al segmento; no se piden derivadas allí ni continuidad de la función derivada.
-
-**Metas y prueba.** Escribamos $k=f(a)=f(b)$. Si todos los valores son $k$, elegimos $c=(a+b)/2$ y sus cocientes son cero. Si no, existe $y$ con $f(y)\ne k$. Los extremos alcanzados de C16 son $m,M\in[a,b]$ con $f(m)\le f(x)\le f(M)$ para todo $x$ del segmento. Si $f(y)>k$, entonces $f(M)>k$ y $M$ no puede ser ninguno de los bordes; Fermat en $M$ da la conclusión. Si $f(y)<k$, el mínimo $m$ es interior y Fermat se aplica allí. La continuidad asegura extremos alcanzados; la igualdad de borde desplaza al menos uno al interior; la derivabilidad permite detener su pendiente. No se supone que los dos extremos sean interiores.
+Para $a<b$ el punto $(a+b)/2$ pertenece a $(a,b)$. Todas las secantes de una constante tienen numerador cero y pendiente cero. Esto resuelve el caso que no ofrece ningún valor diferente del de los bordes. La prueba general distingue ese caso antes de localizar un extremo de altura distinta.
 
 </details>
 
@@ -476,15 +390,9 @@ El punto medio, que es interior para $a<b$; sus cocientes son cero.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 14</summary>
 
-**Respuesta.**
-
 No. Basta uno interior en el caso no constante; el argumento distingue si hay valor superior o inferior al de los bordes.
 
-**Fundamento en la sección 19.2.**
-
-**R2 — Rolle.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en todo el segmento, derivable en cada punto de $(a,b)$, con $f(a)=f(b)$. Entonces existe $c\in(a,b)$ tal que $f'(c)=0$. La continuidad en los extremos es relativa al segmento; no se piden derivadas allí ni continuidad de la función derivada.
-
-**Metas y prueba.** Escribamos $k=f(a)=f(b)$. Si todos los valores son $k$, elegimos $c=(a+b)/2$ y sus cocientes son cero. Si no, existe $y$ con $f(y)\ne k$. Los extremos alcanzados de C16 son $m,M\in[a,b]$ con $f(m)\le f(x)\le f(M)$ para todo $x$ del segmento. Si $f(y)>k$, entonces $f(M)>k$ y $M$ no puede ser ninguno de los bordes; Fermat en $M$ da la conclusión. Si $f(y)<k$, el mínimo $m$ es interior y Fermat se aplica allí. La continuidad asegura extremos alcanzados; la igualdad de borde desplaza al menos uno al interior; la derivabilidad permite detener su pendiente. No se supone que los dos extremos sean interiores.
+Un único valor diferente de la altura de borde decide qué extremo global conviene utilizar. Si está por encima, sirve el máximo; si está por debajo, sirve el mínimo. El otro extremo puede permanecer en el borde sin afectar la prueba. Rolle sólo requiere encontrar al menos un centro interior de pendiente cero.
 
 </details>
 
@@ -499,13 +407,9 @@ No. Basta uno interior en el caso no constante; el argumento distingue si hay va
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 15</summary>
 
-**Respuesta.**
-
 No. Por ejemplo, $x(1-x)$ tiene ceros en cero y uno y derivada cero en un medio, donde su valor es un cuarto.
 
-**Fundamento en la sección 19.2.**
-
-**Auditar una hipótesis a la vez.** Sin continuidad de borde, $u(x)=x$ para $0\le x<1$ y $u(1)=0$ tiene valores de borde iguales, pero derivada uno en todo el interior. Sin derivabilidad interior, $v(x)=|x-1/2|$ en $[0,1]$ tiene bordes iguales y es continua, pero ninguna derivada interior existente vale cero. Sin igualdad de borde, la identidad continua y derivable tampoco se detiene. Estos ejemplos prueban que no puede eliminarse cada condición del enunciado universal; no que las condiciones sean necesarias para toda función particular que casualmente tenga una derivada nula.
+Rolle transforma igualdad de valores en una conclusión sobre la pendiente de algún punto interior. No exige que la altura de ese punto coincida con la de los bordes. En la parábola, resolver la ecuación de derivada da medio y evaluar allí da un cuarto. Son preguntas diferentes sobre el mismo testigo.
 
 </details>
 
@@ -520,13 +424,9 @@ No. Por ejemplo, $x(1-x)$ tiene ceros en cero y uno y derivada cero en un medio,
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 16</summary>
 
-**Respuesta.**
-
 No. Asegura al menos uno, y las constantes satisfacen la igualdad en todos los puntos interiores.
 
-**Fundamento en la sección 19.2.**
-
-**Existencia no es selección ni unicidad.** La función constante satisface la conclusión en todos los puntos interiores. Una curva puede tener varios puntos de derivada nula. Rolle entrega al menos uno, sin elegir un punto para todos los intervalos simultáneamente. Si dos ceros de $f$ delimitan un segmento con las hipótesis, existe entre ellos un cero de $f'$; no tiene por qué ser otro cero de $f$.
+La existencia permite varios centros válidos y no prescribe cuál debe tomarse. Para una constante todos los puntos interiores satisfacen la conclusión. El teorema tampoco produce una elección simultánea para una familia infinita de funciones o segmentos. En cada aplicación basta un testigo para los datos fijados.
 
 </details>
 
@@ -545,6 +445,8 @@ Si una continua en $[a,b]$ tiene bordes iguales $k$ y algún valor distinto, pru
 
 C16 entrega un máximo y un mínimo alcanzados en el segmento. Si el valor distinto es mayor que $k$, el máximo tiene valor al menos tan grande y por tanto mayor que ambos bordes; su punto no puede ser ninguno de ellos y queda en $(a,b)$. Si es menor que $k$, el mínimo queda estrictamente por debajo de ambos bordes y también es interior. Tricotomía cubre los dos casos. No se afirma que ambos extremos globales tengan esa posición ni que la función sea derivable, pues este paso sólo localiza un extremo desde continuidad.
 
+La continuidad y compacidad se usan para alcanzar el extremo, mientras el valor distinto de los bordes se usa para ubicarlo dentro. En este paso no se necesita todavía derivabilidad. Rolle la añadirá sólo cuando aplique Fermat al extremo interior ya localizado. Separar las dos tareas evita atribuir a continuidad una conclusión sobre pendientes.
+
 </details>
 
 #### Ejercicio 7. Una parábola que vuelve al borde
@@ -558,17 +460,11 @@ Aplica Rolle a $f(x)=x(1-x)$ en $[0,1]$. Halla todos los puntos de derivada cero
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 7</summary>
 
-**Respuesta.**
-
 El polinomio es continuo y derivable, con bordes cero. C18 da $f\prime(x)=1-2x$, que sólo se anula en $c=1/2$, interior al segmento. Su valor es $1/4$, no cero. Rolle predice existencia de un cero de la derivada entre los dos ceros de la función y en este ejemplo es único por la ecuación explícita; no predice un tercer cero de la función.
 
 **Retorno visual.** Véase [C19-F02](analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.html#fig-anm-c19-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
-**Fundamento en la sección 19.2.**
-
-**R2 — Rolle.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en todo el segmento, derivable en cada punto de $(a,b)$, con $f(a)=f(b)$. Entonces existe $c\in(a,b)$ tal que $f'(c)=0$. La continuidad en los extremos es relativa al segmento; no se piden derivadas allí ni continuidad de la función derivada.
-
-**Metas y prueba.** Escribamos $k=f(a)=f(b)$. Si todos los valores son $k$, elegimos $c=(a+b)/2$ y sus cocientes son cero. Si no, existe $y$ con $f(y)\ne k$. Los extremos alcanzados de C16 son $m,M\in[a,b]$ con $f(m)\le f(x)\le f(M)$ para todo $x$ del segmento. Si $f(y)>k$, entonces $f(M)>k$ y $M$ no puede ser ninguno de los bordes; Fermat en $M$ da la conclusión. Si $f(y)<k$, el mínimo $m$ es interior y Fermat se aplica allí. La continuidad asegura extremos alcanzados; la igualdad de borde desplaza al menos uno al interior; la derivabilidad permite detener su pendiente. No se supone que los dos extremos sean interiores.
+Resolver $1-2c=0$ prueba unicidad del punto estacionario en este ejemplo concreto. Evaluar la función allí responde a otra pregunta y da un cuarto. Rolle no asegura que el testigo tenga la misma altura que los bordes ni que siempre sea único. Ambas conclusiones aquí se investigan por la fórmula explícita.
 
 </details>
 
@@ -583,13 +479,9 @@ Para $u(x)=x$ si $0\le x<1$ y $u(1)=0$, audita Rolle en $[0,1]$ y prueba que la 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 8</summary>
 
-**Respuesta.**
-
 Los bordes valen cero. Cada punto interior tiene una vecindad donde $u$ es identidad, por lo que su derivada es uno y nunca cero. En uno, las entradas $1-1/(n+2)$ tienen salidas tendentes a uno, distintas del valor cero; no hay continuidad relativa. Se cumplen derivabilidad interior e igualdad de borde, pero falla precisamente continuidad del segmento cerrado. La hipótesis interior por sí sola no garantiza los extremos alcanzados necesarios para la prueba de Rolle.
 
-**Fundamento en la sección 19.2.**
-
-**Auditar una hipótesis a la vez.** Sin continuidad de borde, $u(x)=x$ para $0\le x<1$ y $u(1)=0$ tiene valores de borde iguales, pero derivada uno en todo el interior. Sin derivabilidad interior, $v(x)=|x-1/2|$ en $[0,1]$ tiene bordes iguales y es continua, pero ninguna derivada interior existente vale cero. Sin igualdad de borde, la identidad continua y derivable tampoco se detiene. Estos ejemplos prueban que no puede eliminarse cada condición del enunciado universal; no que las condiciones sean necesarias para toda función particular que casualmente tenga una derivada nula.
+La restricción interior coincide localmente con la identidad y sus pendientes permanecen en uno. El valor asignado al borde derecho hace coincidir los bordes, pero rompe continuidad relativa allí. Es una sola premisa ausente y la conclusión falla. La auditoría debe revisar todo el segmento cerrado antes de aplicar Rolle.
 
 </details>
 
@@ -606,6 +498,8 @@ Analiza Rolle para $|x-1/2|$ en $[0,1]$ y contrasta con eliminar igualdad de bor
 
 La función de valor absoluto trasladada es continua y tiene valores $1/2$ en ambos bordes. A la izquierda de un medio su derivada es menos uno y a la derecha uno; en un medio no existe. Así no hay ninguna derivada interior nula y falla derivabilidad en todo el interior. Para la identidad, continuidad y derivabilidad se cumplen pero los bordes cero y uno son diferentes y su derivada siempre vale uno. Los ejemplos eliminan una sola hipótesis cada vez y muestran que no puede omitirse del enunciado universal.
 
+La esquina interior conserva continuidad e igualdad de bordes, pero elimina la derivada exactamente en el centro que sería candidato. La identidad conserva continuidad y derivabilidad, pero pierde igualdad de bordes. Cada ejemplo conserva las demás premisas y muestra por qué la omitida es necesaria para la garantía universal.
+
 </details>
 
 #### Ejercicio 10. Muchos puntos posibles
@@ -619,13 +513,9 @@ Explica por qué Rolle no da unicidad ni una selección simultánea. Trata una f
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 10</summary>
 
-**Respuesta.**
-
 En una constante sobre un segmento no degenerado todas las pendientes interiores son cero, por lo que cualquier punto interior sirve. La conclusión existencial no designa uno de ellos; su uso fija una función y un segmento y toma un testigo para esa instancia. Para $a=b$, el interior es vacío y no podría existir tal punto, aunque la igualdad de borde sea automática. Por eso se exige $a<b$. Ninguna de estas conclusiones construye un selector para una familia infinita de intervalos.
 
-**Fundamento en la sección 19.2.**
-
-**Existencia no es selección ni unicidad.** La función constante satisface la conclusión en todos los puntos interiores. Una curva puede tener varios puntos de derivada nula. Rolle entrega al menos uno, sin elegir un punto para todos los intervalos simultáneamente. Si dos ceros de $f$ delimitan un segmento con las hipótesis, existe entre ellos un cero de $f'$; no tiene por qué ser otro cero de $f$.
+En un segmento no degenerado una constante tiene muchos testigos interiores. La afirmación existencial permite utilizar alguno en una aplicación, sin identificar una regla preferida global. En un singleton no hay interior y la conclusión de existencia es imposible. Eso justifica la desigualdad estricta de los extremos en el enunciado.
 
 </details>
 ## 19.3. Restar la secante para encontrar una tangente
@@ -659,17 +549,9 @@ Si $a=b$, la expresión secante divide por cero y el interior es vacío: ese cas
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 17</summary>
 
-**Respuesta.**
-
 La pendiente secante $m=[f(b)-f(a)]/(b-a)$, fijada antes del argumento variable.
 
-**Fundamento en la sección 19.3.**
-
-Una curva que termina a otra altura no cumple la igualdad de bordes de Rolle. Restar la recta secante transforma el problema en uno que sí vuelve a la misma altura.
-
-**R3 — Valor medio de Lagrange.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en el segmento y derivable en su interior. Existe $c\in(a,b)$ con
-$$f'(c)=\frac{f(b)-f(a)}{b-a},\qquad f(b)-f(a)=f'(c)(b-a).$$
-**Objeto auxiliar y prueba.** El incremento de entrada $b-a$ es positivo. Definimos el número $m=[f(b)-f(a)]/(b-a)$, la recta $\ell(x)=f(a)+m(x-a)$ y $H(x)=f(x)-\ell(x)$ sobre el mismo segmento. Por C14/C18, $H$ es continua en todo él, derivable dentro y $H'(x)=f'(x)-m$. Además $H(a)=H(b)=0$. Rolle aplicado a $H$ da $H'(c)=0$, por lo que $f'(c)=m$. La recta auxiliar tiene pendiente fijada por los dos bordes y su resta elimina exactamente el desnivel. Lo que se anula en los bordes es $H$, no necesariamente $f$.
+La condición $a<b$ asegura que el denominador es positivo y la secante está definida. Su pendiente es un número fijo en la construcción de la auxiliar. Restar la recta de esa pendiente hace coincidir las alturas de los bordes sin alterar continuidad ni derivabilidad interior. Esto permite aplicar Rolle.
 
 </details>
 
@@ -684,15 +566,9 @@ $$f'(c)=\frac{f(b)-f(a)}{b-a},\qquad f(b)-f(a)=f'(c)(b-a).$$
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 18</summary>
 
-**Respuesta.**
-
 $H(x)=f(x)-f(a)-m(x-a)$ en el mismo segmento.
 
-**Fundamento en la sección 19.3.**
-
-**R3 — Valor medio de Lagrange.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en el segmento y derivable en su interior. Existe $c\in(a,b)$ con
-$$f'(c)=\frac{f(b)-f(a)}{b-a},\qquad f(b)-f(a)=f'(c)(b-a).$$
-**Objeto auxiliar y prueba.** El incremento de entrada $b-a$ es positivo. Definimos el número $m=[f(b)-f(a)]/(b-a)$, la recta $\ell(x)=f(a)+m(x-a)$ y $H(x)=f(x)-\ell(x)$ sobre el mismo segmento. Por C14/C18, $H$ es continua en todo él, derivable dentro y $H'(x)=f'(x)-m$. Además $H(a)=H(b)=0$. Rolle aplicado a $H$ da $H'(c)=0$, por lo que $f'(c)=m$. La recta auxiliar tiene pendiente fijada por los dos bordes y su resta elimina exactamente el desnivel. Lo que se anula en los bordes es $H$, no necesariamente $f$.
+En $a$ se anulan directamente las dos diferencias. En $b$, el término $m(b-a)$ coincide con el incremento de salida por definición de $m$. Así ambos valores son cero. La identidad no se supone a partir del gráfico: se calcula usando los bordes y un denominador válido.
 
 </details>
 
@@ -707,15 +583,9 @@ $$f'(c)=\frac{f(b)-f(a)}{b-a},\qquad f(b)-f(a)=f'(c)(b-a).$$
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 19</summary>
 
-**Respuesta.**
-
 $f\prime-m$, por la regla algebraica de C18.
 
-**Fundamento en la sección 19.3.**
-
-**R3 — Valor medio de Lagrange.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en el segmento y derivable en su interior. Existe $c\in(a,b)$ con
-$$f'(c)=\frac{f(b)-f(a)}{b-a},\qquad f(b)-f(a)=f'(c)(b-a).$$
-**Objeto auxiliar y prueba.** El incremento de entrada $b-a$ es positivo. Definimos el número $m=[f(b)-f(a)]/(b-a)$, la recta $\ell(x)=f(a)+m(x-a)$ y $H(x)=f(x)-\ell(x)$ sobre el mismo segmento. Por C14/C18, $H$ es continua en todo él, derivable dentro y $H'(x)=f'(x)-m$. Además $H(a)=H(b)=0$. Rolle aplicado a $H$ da $H'(c)=0$, por lo que $f'(c)=m$. La recta auxiliar tiene pendiente fijada por los dos bordes y su resta elimina exactamente el desnivel. Lo que se anula en los bordes es $H$, no necesariamente $f$.
+La recta que se resta tiene pendiente constante $m$ y la función central $f(a)$ también es constante respecto del argumento. La regla de suma de C18 entrega la diferencia de derivadas en cada centro interior. No se supone continuidad de esas derivadas. La igualdad algebraica basta para traducir la conclusión de Rolle.
 
 </details>
 
@@ -730,15 +600,9 @@ $$f'(c)=\frac{f(b)-f(a)}{b-a},\qquad f(b)-f(a)=f'(c)(b-a).$$
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 20</summary>
 
-**Respuesta.**
-
 $H\prime(c)=0$ implica $f\prime(c)=m$ para algún centro interior.
 
-**Fundamento en la sección 19.3.**
-
-**El punto no es predeterminado.** Para $x^2$ en $[a,b]$, la pendiente secante es $a+b$, de modo que el único punto es $(a+b)/2$. Para $x^3$ en $[0,1]$, la pendiente es uno y la igualdad $3c^2=1$ da $c=1/\sqrt3$, que es interior y no el punto medio. Para una afín, cualquier punto interior sirve. El teorema no promete una receta para localizar el punto en una función arbitraria, ni que un mismo punto sirva para dos funciones distintas.
-
-Si $a=b$, la expresión secante divide por cero y el interior es vacío: ese caso no se incorpora al enunciado. Las hipótesis son las de Rolle salvo la igualdad de borde; se conservan los contraejemplos de continuidad o derivabilidad omitidas. La igualdad es exacta para algún punto, aunque no conozcamos cuál.
+Rolle se aplica a la auxiliar de bordes iguales y da un punto, sin fijar su posición exacta. Anular su derivada equivale a igualar la pendiente original con la secante. Como ese punto es interior, su derivada estaba incluida en las hipótesis. El teorema establece existencia y no una fórmula universal para el centro.
 
 </details>
 
@@ -753,13 +617,9 @@ Si $a=b$, la expresión secante divide por cero y el interior es vacío: ese cas
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 21</summary>
 
-**Respuesta.**
-
 La secante dividiría por cero y el interior sería vacío.
 
-**Fundamento en la sección 19.3.**
-
-Si $a=b$, la expresión secante divide por cero y el interior es vacío: ese caso no se incorpora al enunciado. Las hipótesis son las de Rolle salvo la igualdad de borde; se conservan los contraejemplos de continuidad o derivabilidad omitidas. La igualdad es exacta para algún punto, aunque no conozcamos cuál.
+Aunque una función esté definida en el singleton, no hay secante entre extremos distintos ni centro interior. La fórmula de pendiente requeriría un denominador no nulo y la conclusión un punto del interior. Ambas obligaciones fallan en el segmento degenerado. Por eso el enunciado conserva $a<b$.
 
 </details>
 
@@ -774,15 +634,9 @@ Si $a=b$, la expresión secante divide por cero y el interior es vacío: ese cas
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 22</summary>
 
-**Respuesta.**
-
 Que todo $[u,v]$ está en el dominio, con continuidad sobre él y derivabilidad en su interior.
 
-**Fundamento en la sección 19.3.**
-
-**Restricciones verificadas.** Para una función original $f:D\to\mathbb R$, sólo se aplica el resultado al par $u<v$ si $[u,v]\subseteq D$, con continuidad en ese segmento y derivabilidad dentro. La restricción a $[u,v]$ conserva continuidad por C14 y derivadas en puntos interiores por C18, porque todos ellos acumulan en el segmento. Así la conclusión usa las derivadas de la función original. Tener sólo los dos extremos en $D$ no basta si falta el segmento entre ellos.
-
-**El punto no es predeterminado.** Para $x^2$ en $[a,b]$, la pendiente secante es $a+b$, de modo que el único punto es $(a+b)/2$. Para $x^3$ en $[0,1]$, la pendiente es uno y la igualdad $3c^2=1$ da $c=1/\sqrt3$, que es interior y no el punto medio. Para una afín, cualquier punto interior sirve. El teorema no promete una receta para localizar el punto en una función arbitraria, ni que un mismo punto sirva para dos funciones distintas.
+Que los extremos sean entradas no obliga al dominio a incluir lo que hay entre ellos. La inclusión del segmento permite restringir y aplicar los teoremas de intervalos. Deben conservarse continuidad en los extremos y derivabilidad en todos los centros interiores. Una función en dos piezas separadas puede fallar precisamente esa inclusión.
 
 </details>
 
@@ -797,15 +651,9 @@ Que todo $[u,v]$ está en el dominio, con continuidad sobre él y derivabilidad 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 23</summary>
 
-**Respuesta.**
-
 No. Es $1/\sqrt3$, porque $3c^2=1$ y $c>0$.
 
-**Fundamento en la sección 19.3.**
-
-**El punto no es predeterminado.** Para $x^2$ en $[a,b]$, la pendiente secante es $a+b$, de modo que el único punto es $(a+b)/2$. Para $x^3$ en $[0,1]$, la pendiente es uno y la igualdad $3c^2=1$ da $c=1/\sqrt3$, que es interior y no el punto medio. Para una afín, cualquier punto interior sirve. El teorema no promete una receta para localizar el punto en una función arbitraria, ni que un mismo punto sirva para dos funciones distintas.
-
-Si $a=b$, la expresión secante divide por cero y el interior es vacío: ese caso no se incorpora al enunciado. Las hipótesis son las de Rolle salvo la igualdad de borde; se conservan los contraejemplos de continuidad o derivabilidad omitidas. La igualdad es exacta para algún punto, aunque no conozcamos cuál.
+La secante del cubo entre cero y uno tiene pendiente uno. Su derivada interior es $3c^2$, así la igualdad exige $c^2=1/3$. Interioridad selecciona la raíz positiva y excluye la negativa. En medio la derivada vale tres cuartos, por lo que esa ubicación no satisface el teorema.
 
 </details>
 
@@ -820,15 +668,9 @@ Si $a=b$, la expresión secante divide por cero y el interior es vacío: ese cas
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 24</summary>
 
-**Respuesta.**
-
 No. Las hipótesis requieren continuidad de $f$ y existencia de sus derivadas interiores.
 
-**Fundamento en la sección 19.3.**
-
-**Restricciones verificadas.** Para una función original $f:D\to\mathbb R$, sólo se aplica el resultado al par $u<v$ si $[u,v]\subseteq D$, con continuidad en ese segmento y derivabilidad dentro. La restricción a $[u,v]$ conserva continuidad por C14 y derivadas en puntos interiores por C18, porque todos ellos acumulan en el segmento. Así la conclusión usa las derivadas de la función original. Tener sólo los dos extremos en $D$ no basta si falta el segmento entre ellos.
-
-**El punto no es predeterminado.** Para $x^2$ en $[a,b]$, la pendiente secante es $a+b$, de modo que el único punto es $(a+b)/2$. Para $x^3$ en $[0,1]$, la pendiente es uno y la igualdad $3c^2=1$ da $c=1/\sqrt3$, que es interior y no el punto medio. Para una afín, cualquier punto interior sirve. El teorema no promete una receta para localizar el punto en una función arbitraria, ni que un mismo punto sirva para dos funciones distintas.
+La prueba utiliza continuidad de la función auxiliar para alcanzar un extremo y derivabilidad interior para aplicar Fermat. Ningún paso requiere que la función derivada sea continua. El ejemplo de bultos cumple todas esas premisas aunque su derivada sea discontinua. Diferenciar ambas funciones evita añadir una hipótesis innecesaria.
 
 </details>
 
@@ -845,15 +687,9 @@ Construye la función auxiliar de Lagrange y verifica todas las hipótesis de Ro
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 11</summary>
 
-**Respuesta.**
-
 Con $a<b$, $m=[f(b)-f(a)]/(b-a)$ es real. La recta $\ell(x)=f(a)+m(x-a)$ comparte los valores de borde y $H=f-\ell$ vive en $[a,b]$. Continuidad de $f$ y de la recta hace continua $H$ en todo el segmento; C18 da derivada $H\prime=f\prime-m$ en su interior. Ambos bordes de $H$ valen cero. Rolle entrega $c$ interior con $H\prime(c)=0$, y la identidad de derivadas implica $f\prime(c)=m$. No se ha aplicado Rolle directamente a $f$, cuyos bordes pueden ser distintos.
 
-**Fundamento en la sección 19.3.**
-
-**R3 — Valor medio de Lagrange.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en el segmento y derivable en su interior. Existe $c\in(a,b)$ con
-$$f'(c)=\frac{f(b)-f(a)}{b-a},\qquad f(b)-f(a)=f'(c)(b-a).$$
-**Objeto auxiliar y prueba.** El incremento de entrada $b-a$ es positivo. Definimos el número $m=[f(b)-f(a)]/(b-a)$, la recta $\ell(x)=f(a)+m(x-a)$ y $H(x)=f(x)-\ell(x)$ sobre el mismo segmento. Por C14/C18, $H$ es continua en todo él, derivable dentro y $H'(x)=f'(x)-m$. Además $H(a)=H(b)=0$. Rolle aplicado a $H$ da $H'(c)=0$, por lo que $f'(c)=m$. La recta auxiliar tiene pendiente fijada por los dos bordes y su resta elimina exactamente el desnivel. Lo que se anula en los bordes es $H$, no necesariamente $f$.
+La auxiliar conserva dominio, continuidad y derivabilidad mediante reglas ya probadas. La secante resta exactamente el incremento total y produce dos bordes iguales. Rolle se aplica sólo después de esas comprobaciones. Su conclusión se traduce por la identidad de derivadas, sin prescribir de antemano el centro obtenido.
 
 </details>
 
@@ -868,19 +704,11 @@ Halla el punto de Lagrange para $x^2$ en $[1,3]$ y calcula la función auxiliar 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 12</summary>
 
-**Respuesta.**
-
 La pendiente secante es $(9-1)/(3-1)=4$. La recta es $\ell(x)=1+4(x-1)=4x-3$. El residuo $H(x)=x^2-4x+3=(x-1)(x-3)$ tiene ambos bordes cero y derivada $2x-4$. Se anula sólo en $c=2$, interior al segmento; allí la derivada original vale cuatro. La igualdad de pendientes se verifica exactamente, sin localizar el punto leyendo una figura.
 
 **Retorno visual.** Véase [C19-F03](analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.html#fig-anm-c19-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
-**Fundamento en la sección 19.3.**
-
-Una curva que termina a otra altura no cumple la igualdad de bordes de Rolle. Restar la recta secante transforma el problema en uno que sí vuelve a la misma altura.
-
-**R3 — Valor medio de Lagrange.** Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en el segmento y derivable en su interior. Existe $c\in(a,b)$ con
-$$f'(c)=\frac{f(b)-f(a)}{b-a},\qquad f(b)-f(a)=f'(c)(b-a).$$
-**Objeto auxiliar y prueba.** El incremento de entrada $b-a$ es positivo. Definimos el número $m=[f(b)-f(a)]/(b-a)$, la recta $\ell(x)=f(a)+m(x-a)$ y $H(x)=f(x)-\ell(x)$ sobre el mismo segmento. Por C14/C18, $H$ es continua en todo él, derivable dentro y $H'(x)=f'(x)-m$. Además $H(a)=H(b)=0$. Rolle aplicado a $H$ da $H'(c)=0$, por lo que $f'(c)=m$. La recta auxiliar tiene pendiente fijada por los dos bordes y su resta elimina exactamente el desnivel. Lo que se anula en los bordes es $H$, no necesariamente $f$.
+El cuadrado produce una secante de pendiente cuatro en ese segmento y la recta correspondiente pasa por ambos bordes. Su resto factorizado verifica las dos anulaciones y su derivada lineal localiza un único centro interior. El punto medio funciona por esa expresión particular, no por una condición general de Lagrange.
 
 </details>
 
@@ -895,15 +723,9 @@ Una aplicación de Lagrange al cubo en $[0,1]$ usa automáticamente $c=1/2$. Cor
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 13</summary>
 
-**Respuesta.**
-
 El incremento de valores y el de entrada son uno, así la pendiente secante es uno. La derivada del cubo es $3c^2$; en un medio vale $3/4$, por lo que no cumple la igualdad. Resolver $3c^2=1$ y exigir $c\in(0,1)$ da $c=1/\sqrt3$. El punto medio funciona para el cuadrado por su fórmula específica, sin ser un dato del teorema. Lagrange asegura existencia interior, no una localización predeterminada.
 
-**Fundamento en la sección 19.3.**
-
-**Restricciones verificadas.** Para una función original $f:D\to\mathbb R$, sólo se aplica el resultado al par $u<v$ si $[u,v]\subseteq D$, con continuidad en ese segmento y derivabilidad dentro. La restricción a $[u,v]$ conserva continuidad por C14 y derivadas en puntos interiores por C18, porque todos ellos acumulan en el segmento. Así la conclusión usa las derivadas de la función original. Tener sólo los dos extremos en $D$ no basta si falta el segmento entre ellos.
-
-**El punto no es predeterminado.** Para $x^2$ en $[a,b]$, la pendiente secante es $a+b$, de modo que el único punto es $(a+b)/2$. Para $x^3$ en $[0,1]$, la pendiente es uno y la igualdad $3c^2=1$ da $c=1/\sqrt3$, que es interior y no el punto medio. Para una afín, cualquier punto interior sirve. El teorema no promete una receta para localizar el punto en una función arbitraria, ni que un mismo punto sirva para dos funciones distintas.
+El testigo de valor medio se identifica resolviendo una ecuación de pendientes y exigiendo pertenencia al interior. La raíz positiva cumple ambas obligaciones; medio no cumple la igualdad. Pasar de un ejemplo simétrico a una regla universal de ubicación omitiría la parte existencial del teorema.
 
 </details>
 
@@ -918,15 +740,9 @@ Explica qué se necesita para aplicar Lagrange a $f:D\to\mathbb R$ entre $u<v$. 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 14</summary>
 
-**Respuesta.**
-
 Hace falta $[u,v]\subseteq D$, continuidad en ese segmento y derivabilidad en su interior. La restricción conserva continuidad y, porque cada centro interior acumula en el segmento, también las derivadas originales. En $D=[0,1]\cup[2,3]$, tomar $u=1,v=2$ sólo da dos argumentos válidos y no una función definida en $(1,2)$. La función cero en la primera pieza y uno en la segunda tiene todas sus derivadas relativas cero, mientras la secante entre esos bordes tiene pendiente uno. Lagrange no se aplica: falta su dominio intervalar completo.
 
-**Fundamento en la sección 19.3.**
-
-**Restricciones verificadas.** Para una función original $f:D\to\mathbb R$, sólo se aplica el resultado al par $u<v$ si $[u,v]\subseteq D$, con continuidad en ese segmento y derivabilidad dentro. La restricción a $[u,v]$ conserva continuidad por C14 y derivadas en puntos interiores por C18, porque todos ellos acumulan en el segmento. Así la conclusión usa las derivadas de la función original. Tener sólo los dos extremos en $D$ no basta si falta el segmento entre ellos.
-
-**El punto no es predeterminado.** Para $x^2$ en $[a,b]$, la pendiente secante es $a+b$, de modo que el único punto es $(a+b)/2$. Para $x^3$ en $[0,1]$, la pendiente es uno y la igualdad $3c^2=1$ da $c=1/\sqrt3$, que es interior y no el punto medio. Para una afín, cualquier punto interior sirve. El teorema no promete una receta para localizar el punto en una función arbitraria, ni que un mismo punto sirva para dos funciones distintas.
+La inclusión de los extremos sólo acredita dos evaluaciones, no todas las entradas del segmento. La función por piezas tiene derivadas relativas cero, pero una secante entre sus piezas de pendiente uno. Ese contraste identifica el gasto de intervalaridad. Restringir conserva derivadas donde haya acumulación, pero no rellena un hueco ausente.
 
 </details>
 
@@ -942,6 +758,8 @@ Explica si Lagrange se aplica a la función de bultos de C18 en un segmento cerr
 <summary>Ver solución del ejercicio 15</summary>
 
 C18 demuestra que F es derivable en toda la recta y por tanto continua en cada punto. Su restricción al segmento es continua, y las derivadas de los centros interiores se conservan. Así Lagrange entrega un punto donde la derivada coincide con la pendiente secante. La discontinuidad de $F'$ en cero no elimina ninguna hipótesis del teorema, porque sólo se exige existencia de las derivadas interiores. No se afirma que el punto de valor medio sea cero o que pueda identificarse por una muestra de bultos.
+
+La derivabilidad global de los bultos aporta continuidad de la función y todas las derivadas interiores de cualquier segmento. Son exactamente las premisas de Lagrange. La discontinuidad de la nueva función derivada en cero no interviene en la prueba. No se deduce por ello una ubicación específica del testigo de valor medio.
 
 </details>
 ## 19.4. El intervalo convierte signos en orden
@@ -977,17 +795,9 @@ En $D=[0,1]\cup[2,3]$, la función que vale cero en la primera pieza y uno en la
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 25</summary>
 
-**Respuesta.**
-
 Ser un intervalo: todo el segmento entre las entradas pertenece al dominio.
 
-**Fundamento en la sección 19.4.**
-
-Ahora sí podemos transformar signos en comparaciones entre dos entradas cualesquiera. El segmento que une esas entradas es el lugar donde se transporta la información.
-
-**R4 — Monotonía en un intervalo.** Sea $I\subseteq\mathbb R$ un intervalo no degenerado y $f:I\to\mathbb R$ continua en $I$, derivable en $\operatorname{int}(I)$. Si $f'\ge0$ en el interior, $f$ es no decreciente. Si $f'>0$ en el interior, es estrictamente creciente. Las desigualdades opuestas dan los resultados decrecientes.
-
-**Prueba y gasto de la geometría.** Fijados $x<y$ de $I$, su carácter intervalar garantiza $[x,y]\subseteq I$. C18 conserva las derivadas interiores al restringir. R3 entrega algún $c\in(x,y)$ con $f(y)-f(x)=f'(c)(y-x)$. El segundo factor es positivo, así el signo del primero es el de $f'(c)$; si la cota era débil, la comparación es débil. Los puntos $c$ pueden depender del par: no se selecciona una familia de ellos. En intervalos abiertos, la continuidad ya sigue de la diferenciabilidad en cada punto por C18; en extremos incluidos debe conservarse explícitamente.
+Para un par ordenado del intervalo, el segmento que los une sigue dentro del dominio. Su interior dispone de derivadas y la restricción cumple continuidad de bordes. Lagrange relaciona entonces el incremento con una derivada interior. Los huecos de un dominio separado impedirían esa aplicación entre piezas distintas.
 
 </details>
 
@@ -1002,15 +812,9 @@ Ahora sí podemos transformar signos en comparaciones entre dos entradas cualesq
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 26</summary>
 
-**Respuesta.**
-
 Que $f$ es no decreciente, si también se verifican continuidad en el intervalo y derivabilidad interior.
 
-**Fundamento en la sección 19.4.**
-
-**R4 — Monotonía en un intervalo.** Sea $I\subseteq\mathbb R$ un intervalo no degenerado y $f:I\to\mathbb R$ continua en $I$, derivable en $\operatorname{int}(I)$. Si $f'\ge0$ en el interior, $f$ es no decreciente. Si $f'>0$ en el interior, es estrictamente creciente. Las desigualdades opuestas dan los resultados decrecientes.
-
-**Prueba y gasto de la geometría.** Fijados $x<y$ de $I$, su carácter intervalar garantiza $[x,y]\subseteq I$. C18 conserva las derivadas interiores al restringir. R3 entrega algún $c\in(x,y)$ con $f(y)-f(x)=f'(c)(y-x)$. El segundo factor es positivo, así el signo del primero es el de $f'(c)$; si la cota era débil, la comparación es débil. Los puntos $c$ pueden depender del par: no se selecciona una familia de ellos. En intervalos abiertos, la continuidad ya sigue de la diferenciabilidad en cada punto por C18; en extremos incluidos debe conservarse explícitamente.
+Fijado $x<y$, el valor medio expresa la diferencia como $f\prime(c)(y-x)$. La derivada es no negativa y el incremento positivo, así la diferencia es no negativa. Como el par era arbitrario, se obtiene orden global en el intervalo. No se afirma crecimiento estricto si la derivada puede anularse.
 
 </details>
 
@@ -1025,15 +829,9 @@ Que $f$ es no decreciente, si también se verifican continuidad en el intervalo 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 27</summary>
 
-**Respuesta.**
-
 $f\prime>0$ en todo el interior bajo las mismas hipótesis de intervalo y continuidad.
 
-**Fundamento en la sección 19.4.**
-
-**Derivada nula y constantes.** Si $f'=0$ en todo el interior, R3 aplicado a cada par prueba que $f$ es constante en $I$. La recíproca sigue de cocientes cero. Si $f'=g'$ bajo las mismas condiciones, $f-g$ tiene derivada cero y es constante: $f(x)-g(x)$ no depende de $x$. Un valor común en un centro fija esa constante en cero.
-
-En $D=[0,1]\cup[2,3]$, la función que vale cero en la primera pieza y uno en la segunda tiene derivada relativa cero en cada punto del dominio, pero no es constante en $D$. No se puede aplicar R3 entre uno y dos porque falta $(1,2)$. Similarmente, derivadas positivas en piezas separadas no ordenan automáticamente salidas a través del hueco. Si se incluye una frontera con salto de valor, derivabilidad en todo el interior tampoco basta para concluir constancia o monotonía en el dominio completo.
+En cada par ordenado, el punto de valor medio tiene derivada estrictamente positiva. Multiplicarla por el incremento positivo produce una diferencia de salida estrictamente positiva. Esta condición es suficiente para todos los pares, pero no necesaria en todos los centros de una función estrictamente creciente.
 
 </details>
 
@@ -1048,13 +846,9 @@ En $D=[0,1]\cup[2,3]$, la función que vale cero en la primera pieza y uno en la
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 28</summary>
 
-**Respuesta.**
-
 No: el cubo es estrictamente creciente y su derivada vale cero en el origen.
 
-**Fundamento en la sección 19.4.**
-
-En $D=[0,1]\cup[2,3]$, la función que vale cero en la primera pieza y uno en la segunda tiene derivada relativa cero en cada punto del dominio, pero no es constante en $D$. No se puede aplicar R3 entre uno y dos porque falta $(1,2)$. Similarmente, derivadas positivas en piezas separadas no ordenan automáticamente salidas a través del hueco. Si se incluye una frontera con salto de valor, derivabilidad en todo el interior tampoco basta para concluir constancia o monotonía en el dominio completo.
+El cubo aumenta entre cualquier par ordenado porque su diferencia factoriza en un incremento positivo y otro factor estrictamente positivo. Sin embargo, su derivada en cero es cero. El ejemplo refuta la recíproca de la condición suficiente de crecimiento estricto. Donde una creciente tiene derivada, la condición necesaria sólo es no negatividad.
 
 </details>
 
@@ -1069,13 +863,9 @@ En $D=[0,1]\cup[2,3]$, la función que vale cero en la primera pieza y uno en la
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 29</summary>
 
-**Respuesta.**
-
 Constancia, por aplicar valor medio a cada par; se conserva continuidad en extremos incluidos.
 
-**Fundamento en la sección 19.4.**
-
-**Prueba y gasto de la geometría.** Fijados $x<y$ de $I$, su carácter intervalar garantiza $[x,y]\subseteq I$. C18 conserva las derivadas interiores al restringir. R3 entrega algún $c\in(x,y)$ con $f(y)-f(x)=f'(c)(y-x)$. El segundo factor es positivo, así el signo del primero es el de $f'(c)$; si la cota era débil, la comparación es débil. Los puntos $c$ pueden depender del par: no se selecciona una familia de ellos. En intervalos abiertos, la continuidad ya sigue de la diferenciabilidad en cada punto por C18; en extremos incluidos debe conservarse explícitamente.
+Para dos entradas distintas, Lagrange multiplica el incremento por una derivada interior cero y fuerza igualdad de salidas. Los pares iguales no requieren el teorema. En extremos incluidos se conserva continuidad para aplicar la restricción correspondiente. En un dominio desconexo, las constantes pueden diferir entre piezas.
 
 </details>
 
@@ -1090,15 +880,9 @@ Constancia, por aplicar valor medio a cada par; se conserva continuidad en extre
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 30</summary>
 
-**Respuesta.**
-
 La diferencia de las funciones es constante sobre el intervalo, bajo sus condiciones de continuidad.
 
-**Fundamento en la sección 19.4.**
-
-**Derivada nula y constantes.** Si $f'=0$ en todo el interior, R3 aplicado a cada par prueba que $f$ es constante en $I$. La recíproca sigue de cocientes cero. Si $f'=g'$ bajo las mismas condiciones, $f-g$ tiene derivada cero y es constante: $f(x)-g(x)$ no depende de $x$. Un valor común en un centro fija esa constante en cero.
-
-En $D=[0,1]\cup[2,3]$, la función que vale cero en la primera pieza y uno en la segunda tiene derivada relativa cero en cada punto del dominio, pero no es constante en $D$. No se puede aplicar R3 entre uno y dos porque falta $(1,2)$. Similarmente, derivadas positivas en piezas separadas no ordenan automáticamente salidas a través del hueco. Si se incluye una frontera con salto de valor, derivabilidad en todo el interior tampoco basta para concluir constancia o monotonía en el dominio completo.
+La diferencia $f-g$ es continua y derivable donde corresponde, y su derivada interior vale cero. El resultado de constancia se aplica a esa función en el mismo intervalo. Si además ambas coinciden en una entrada, el valor de la constante se determina como cero. Igualar derivadas sin ese dato deja una diferencia constante posible.
 
 </details>
 
@@ -1113,13 +897,9 @@ En $D=[0,1]\cup[2,3]$, la función que vale cero en la primera pieza y uno en la
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 31</summary>
 
-**Respuesta.**
-
 No existe el segmento completo entre puntos de piezas distintas, así el valor medio no permite comparar sus constantes.
 
-**Fundamento en la sección 19.4.**
-
-En $D=[0,1]\cup[2,3]$, la función que vale cero en la primera pieza y uno en la segunda tiene derivada relativa cero en cada punto del dominio, pero no es constante en $D$. No se puede aplicar R3 entre uno y dos porque falta $(1,2)$. Similarmente, derivadas positivas en piezas separadas no ordenan automáticamente salidas a través del hueco. Si se incluye una frontera con salto de valor, derivabilidad en todo el interior tampoco basta para concluir constancia o monotonía en el dominio completo.
+Cada pieza permite secantes de numerador cero y derivada relativa cero. Una entrada de una pieza y otra de la segunda no tienen entre ellas un segmento de dominio completo. Por eso no puede aplicarse valor medio a ese par. La constancia local por piezas no obliga a igualdad de sus alturas.
 
 </details>
 
@@ -1134,15 +914,9 @@ En $D=[0,1]\cup[2,3]$, la función que vale cero en la primera pieza y uno en la
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 32</summary>
 
-**Respuesta.**
-
 No. Se fija un par arbitrario y se usa la existencia de un punto para esa instancia.
 
-**Fundamento en la sección 19.4.**
-
-**Derivada nula y constantes.** Si $f'=0$ en todo el interior, R3 aplicado a cada par prueba que $f$ es constante en $I$. La recíproca sigue de cocientes cero. Si $f'=g'$ bajo las mismas condiciones, $f-g$ tiene derivada cero y es constante: $f(x)-g(x)$ no depende de $x$. Un valor común en un centro fija esa constante en cero.
-
-En $D=[0,1]\cup[2,3]$, la función que vale cero en la primera pieza y uno en la segunda tiene derivada relativa cero en cada punto del dominio, pero no es constante en $D$. No se puede aplicar R3 entre uno y dos porque falta $(1,2)$. Similarmente, derivadas positivas en piezas separadas no ordenan automáticamente salidas a través del hueco. Si se incluye una frontera con salto de valor, derivabilidad en todo el interior tampoco basta para concluir constancia o monotonía en el dominio completo.
+La demostración de orden o de cota empieza fijando un par arbitrario. El teorema proporciona un testigo para ese segmento y las hipótesis globales controlan su derivada. Después se concluye la desigualdad para el par. No se construye una función que elija testigos para todas las parejas simultáneamente.
 
 </details>
 
@@ -1159,15 +933,7 @@ Prueba que $f\prime\ge0$ en el interior de un intervalo, con continuidad de $f$ 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 16</summary>
 
-**Respuesta.**
-
-Fijamos $x<y$ de I. El intervalo contiene todo $[x,y]$ y su interior está en el de I. La restricción es continua y derivable donde corresponde. Lagrange da algún $c\in(x,y)$ con $f(y)-f(x)=f\prime(c)(y-x)$. Como la derivada es no negativa y el incremento positivo, la diferencia es no negativa. Para todo par ordenado se obtiene $f(x)\le f(y)$, sin necesitar un mismo punto c para todos los pares o continuidad de la derivada.
-
-**Fundamento en la sección 19.4.**
-
-**R4 — Monotonía en un intervalo.** Sea $I\subseteq\mathbb R$ un intervalo no degenerado y $f:I\to\mathbb R$ continua en $I$, derivable en $\operatorname{int}(I)$. Si $f'\ge0$ en el interior, $f$ es no decreciente. Si $f'>0$ en el interior, es estrictamente creciente. Las desigualdades opuestas dan los resultados decrecientes.
-
-**Prueba y gasto de la geometría.** Fijados $x<y$ de $I$, su carácter intervalar garantiza $[x,y]\subseteq I$. C18 conserva las derivadas interiores al restringir. R3 entrega algún $c\in(x,y)$ con $f(y)-f(x)=f'(c)(y-x)$. El segundo factor es positivo, así el signo del primero es el de $f'(c)$; si la cota era débil, la comparación es débil. Los puntos $c$ pueden depender del par: no se selecciona una familia de ellos. En intervalos abiertos, la continuidad ya sigue de la diferenciabilidad en cada punto por C18; en extremos incluidos debe conservarse explícitamente.
+Fijemos $x<y$ en $I$. Intervalaridad da $[x,y]\subseteq I$, continuidad se conserva en la restricción y cada centro de $(x,y)$ pertenece al interior de $I$. Lagrange entrega $c\in(x,y)$ con $f(y)-f(x)=f\prime(c)(y-x)$. Como $f\prime(c)\ge0$ y $y-x>0$, resulta $f(x)\le f(y)$. El par era arbitrario, así la función es no decreciente. El testigo se usa sólo para ese par; no se requiere continuidad de la derivada ni seleccionarlo simultáneamente para todas las parejas.
 
 </details>
 
@@ -1182,15 +948,7 @@ Prueba que el cubo es estrictamente creciente y tiene derivada nula en cero. ¿Q
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 17</summary>
 
-**Respuesta.**
-
-Para $x<y$, la diferencia es $(y-x)(x^2+xy+y^2)$. El primer factor es positivo y el segundo es $(x+y/2)^2+3y^2/4$, no negativo y sólo cero si $x=y=0$, imposible aquí. La diferencia es positiva. C18 da derivada $3x^2$, cero en el origen. Se refuta que crecimiento estricto implique derivada estrictamente positiva en cada punto; la conclusión necesaria donde existe es sólo no negatividad.
-
-**Fundamento en la sección 19.4.**
-
-**Recíproca con alcance.** Si $f$ es no decreciente y tiene derivada en un punto interior $a$, todos sus cocientes centrados allí son no negativos: a la derecha ambos incrementos son no negativos, a la izquierda ambos son no positivos. Un límite negativo sería contradicho por tolerancia $|L|/2$ y un argumento suficientemente cercano. Por tanto $f'(a)\ge0$. La estricta monotonía no fuerza $f'(a)>0$: $x^3$ es estrictamente creciente y $f'(0)=0$. Para justificar su crecimiento directamente, si $x<y$,
-$$y^3-x^3=(y-x)(x^2+xy+y^2)>0,$$
-pues $x^2+xy+y^2=(x+y/2)^2+3y^2/4$ sólo se anula con $x=y=0$, imposible para ese par.
+Para $x<y$, $y^3-x^3=(y-x)(x^2+xy+y^2)$. El segundo factor es $(x+y/2)^2+3y^2/4$, no negativo y sólo cero si $x=y=0$, incompatible con $x<y$. Por tanto la diferencia es estrictamente positiva y el cubo es estrictamente creciente. Su derivada es $3x^2$ y vale cero en el origen. El ejemplo refuta que crecimiento estricto exija derivada positiva en cada centro; la condición necesaria donde existe derivada es sólo no negatividad.
 
 </details>
 
@@ -1205,17 +963,7 @@ Sean f,g continuas en un intervalo y derivables en su interior, con derivadas ig
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 18</summary>
 
-**Respuesta.**
-
-H=f-g es continua y derivable en el mismo dominio con $H'$=0. Para cualesquiera x<y, Lagrange en su segmento da H(y)-H(x)=$H'(c)$(y-x)=0. Los pares iguales son triviales y los inversos se intercambian, así H es constante. Si f(a)=g(a) en algún a del intervalo, H(a)=0 identifica esa constante y las funciones coinciden en todo el dominio. No se necesita integrar ni introducir una primitiva.
-
-**Fundamento en la sección 19.4.**
-
-Ahora sí podemos transformar signos en comparaciones entre dos entradas cualesquiera. El segmento que une esas entradas es el lugar donde se transporta la información.
-
-**R4 — Monotonía en un intervalo.** Sea $I\subseteq\mathbb R$ un intervalo no degenerado y $f:I\to\mathbb R$ continua en $I$, derivable en $\operatorname{int}(I)$. Si $f'\ge0$ en el interior, $f$ es no decreciente. Si $f'>0$ en el interior, es estrictamente creciente. Las desigualdades opuestas dan los resultados decrecientes.
-
-**Prueba y gasto de la geometría.** Fijados $x<y$ de $I$, su carácter intervalar garantiza $[x,y]\subseteq I$. C18 conserva las derivadas interiores al restringir. R3 entrega algún $c\in(x,y)$ con $f(y)-f(x)=f'(c)(y-x)$. El segundo factor es positivo, así el signo del primero es el de $f'(c)$; si la cota era débil, la comparación es débil. Los puntos $c$ pueden depender del par: no se selecciona una familia de ellos. En intervalos abiertos, la continuidad ya sigue de la diferenciabilidad en cada punto por C18; en extremos incluidos debe conservarse explícitamente.
+Sea $H=f-g$ en el mismo intervalo. Es continua y derivable interiormente, con $H\prime=0$. Para un par $x<y$, Lagrange da $H(y)-H(x)=H\prime(c)(y-x)=0$; los pares iguales son triviales y los inversos se intercambian. Así todas las salidas de $H$ son iguales. Si existe $a$ con $f(a)=g(a)$, esa salida común es $H(a)=0$ y $f=g$ en todo el dominio. El argumento usa sólo diferencias y valor medio, sin introducir integrales ni primitivas.
 
 </details>
 
@@ -1230,7 +978,7 @@ Construye una función con derivada relativa cero en todos los puntos de $[0,1]\
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 19</summary>
 
-Ponemos f=0 en la primera pieza y f=1 en la segunda. Cada punto tiene una vecindad relativa que sólo toca su pieza y allí todos los valores son iguales, así el cociente perforado es cero. Todos los puntos, incluidos los cuatro bordes, acumulan en el dominio por al menos un lado, por lo que las derivadas relativas existen y valen cero. Sin embargo f(0)=0 y f(2)=1. El segmento entre piezas falta; la conclusión de constancia requiere el intervalo, no sólo derivabilidad en todos los puntos válidos.
+Definimos $f=0$ en $[0,1]$ y $f=1$ en $[2,3]$. Una bola relativa de radio $1/2$ alrededor de cualquier entrada sólo toca su propia pieza, y allí las secantes perforadas valen cero. Todas las entradas, incluidos los cuatro bordes, acumulan en el dominio al menos desde un lado; por ello sus derivadas relativas existen y son cero. Sin embargo, $f(0)=0\ne1=f(2)$. El segmento entre piezas falta y no se puede aplicar Lagrange a ese par. La conclusión de constancia requiere intervalo completo, no sólo derivadas relativas nulas.
 
 **Retorno visual.** Véase [C19-F04](analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.html#fig-anm-c19-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1247,15 +995,7 @@ Si una función es no decreciente y tiene derivada en un punto interior a su int
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 20</summary>
 
-**Respuesta.**
-
-Todos los cocientes perforados centrados en a son no negativos: a la derecha numerador y denominador son no negativos; a la izquierda ambos son no positivos y el denominador es negativo. Si el límite L fuera negativo, tolerancia |L|/2 obligaría a cocientes menores que L/2<0 en un radio. Acumulación en el centro proporciona un argumento perforado dentro de él, contradicción. Sólo se usan orden y definición de derivada; no se deriva existencia de la pendiente desde monotonía.
-
-**Fundamento en la sección 19.4.**
-
-**Recíproca con alcance.** Si $f$ es no decreciente y tiene derivada en un punto interior $a$, todos sus cocientes centrados allí son no negativos: a la derecha ambos incrementos son no negativos, a la izquierda ambos son no positivos. Un límite negativo sería contradicho por tolerancia $|L|/2$ y un argumento suficientemente cercano. Por tanto $f'(a)\ge0$. La estricta monotonía no fuerza $f'(a)>0$: $x^3$ es estrictamente creciente y $f'(0)=0$. Para justificar su crecimiento directamente, si $x<y$,
-$$y^3-x^3=(y-x)(x^2+xy+y^2)>0,$$
-pues $x^2+xy+y^2=(x+y/2)^2+3y^2/4$ sólo se anula con $x=y=0$, imposible para ese par.
+En un centro interior $a$, toda secante de una función no decreciente es no negativa. A la derecha, numerador y denominador son no negativos y el denominador es positivo; a la izquierda, ambos son no positivos y el denominador es negativo. Si el límite $L$ fuera negativo, la tolerancia $|L|/2$ forzaría secantes menores que $L/2<0$ en algún radio. Acumulación aporta una entrada perforada allí y contradice el signo establecido. Por tanto $L\ge0$. No se deduce existencia de derivada a partir de monotonía: esa existencia era una premisa.
 
 </details>
 ## 19.5. De cotas de derivadas a cotas de incrementos
@@ -1293,17 +1033,9 @@ Hay que verificar continuidad en el segmento y derivabilidad en su interior. Una
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 33</summary>
 
-**Respuesta.**
-
 Para $x<y$, $m(y-x)\le f(y)-f(x)\le M(y-x)$ bajo las hipótesis del intervalo.
 
-**Fundamento en la sección 19.5.**
-
-**R5 — Cotas de incrementos.** Bajo las condiciones de R4, si $m\le f'(t)\le M$ en $\operatorname{int}(I)$, entonces, para $x<y$ en $I$,
-$$m(y-x)\le f(y)-f(x)\le M(y-x).$$
-R3 entrega el valor $f'(c)$ dentro de esas cotas y multiplicar por $y-x>0$ conserva el orden. No hace falta que $f'$ sea continua ni alcance un máximo. Si $|f'|\le L$, $L\ge0$, se obtiene para todos los pares
-$$|f(y)-f(x)|\le L|y-x|.$$
-Para $x=y$ ambos lados son cero; si $y<x$ se intercambian las entradas. Ésta es una cota Lipschitz de pares, más fuerte que el control con un único centro de C18. Para $L>0$, el radio $\varepsilon/L$ prueba continuidad uniforme; si $L=0$, la función es constante y cualquier radio sirve.
+El punto de valor medio pertenece al interior del segmento entre las entradas y cumple las dos cotas de derivada. Su pendiente multiplicada por el incremento reproduce la diferencia de salidas. Como el incremento es positivo, se conservan las desigualdades. La conclusión puede controlar todas las parejas sin conocer el testigo concreto.
 
 </details>
 
@@ -1318,17 +1050,9 @@ Para $x=y$ ambos lados son cero; si $y<x$ se intercambian las entradas. Ésta es
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 34</summary>
 
-**Respuesta.**
-
 El incremento de entrada $y-x$ es positivo.
 
-**Fundamento en la sección 19.5.**
-
-**R5 — Cotas de incrementos.** Bajo las condiciones de R4, si $m\le f'(t)\le M$ en $\operatorname{int}(I)$, entonces, para $x<y$ en $I$,
-$$m(y-x)\le f(y)-f(x)\le M(y-x).$$
-R3 entrega el valor $f'(c)$ dentro de esas cotas y multiplicar por $y-x>0$ conserva el orden. No hace falta que $f'$ sea continua ni alcance un máximo. Si $|f'|\le L$, $L\ge0$, se obtiene para todos los pares
-$$|f(y)-f(x)|\le L|y-x|.$$
-Para $x=y$ ambos lados son cero; si $y<x$ se intercambian las entradas. Ésta es una cota Lipschitz de pares, más fuerte que el control con un único centro de C18. Para $L>0$, el radio $\varepsilon/L$ prueba continuidad uniforme; si $L=0$, la función es constante y cualquier radio sirve.
+Para entradas ordenadas distintas, la distancia dirigida $y-x$ es estrictamente positiva. Multiplicar por ella conserva el sentido de las dos cotas. Si se invierte el par hay que ordenar primero o pasar a magnitudes con simetría. Si las entradas coinciden, el incremento de salidas es cero y no se aplica Lagrange.
 
 </details>
 
@@ -1343,19 +1067,9 @@ Para $x=y$ ambos lados son cero; si $y<x$ se intercambian las entradas. Ésta es
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 35</summary>
 
-**Respuesta.**
-
 Todos los pares: $|f(y)-f(x)|\le L|y-x|$, sin exigir continuidad de la derivada.
 
-**Fundamento en la sección 19.5.**
-
-Aunque el punto de valor medio sea desconocido, una cota válida para todas las derivadas pertinentes también vale para la derivada de ese punto. Esto convierte existencia en un certificado cuantitativo.
-
-**R5 — Cotas de incrementos.** Bajo las condiciones de R4, si $m\le f'(t)\le M$ en $\operatorname{int}(I)$, entonces, para $x<y$ en $I$,
-$$m(y-x)\le f(y)-f(x)\le M(y-x).$$
-R3 entrega el valor $f'(c)$ dentro de esas cotas y multiplicar por $y-x>0$ conserva el orden. No hace falta que $f'$ sea continua ni alcance un máximo. Si $|f'|\le L$, $L\ge0$, se obtiene para todos los pares
-$$|f(y)-f(x)|\le L|y-x|.$$
-Para $x=y$ ambos lados son cero; si $y<x$ se intercambian las entradas. Ésta es una cota Lipschitz de pares, más fuerte que el control con un único centro de C18. Para $L>0$, el radio $\varepsilon/L$ prueba continuidad uniforme; si $L=0$, la función es constante y cualquier radio sirve.
+La cota simétrica de derivada controla el valor de cualquier testigo interior que produzca Lagrange. Tomar magnitudes en la identidad da la cota de incremento. Así se obtiene una constante Lipschitz global en el intervalo. No se utiliza un máximo de la derivada ni se requiere su continuidad.
 
 </details>
 
@@ -1370,17 +1084,9 @@ Para $x=y$ ambos lados son cero; si $y<x$ se intercambian las entradas. Ésta es
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 36</summary>
 
-**Respuesta.**
-
 La función es constante y cualquier radio prueba uniformidad; no se divide por cero.
 
-**Fundamento en la sección 19.5.**
-
-**R5 — Cotas de incrementos.** Bajo las condiciones de R4, si $m\le f'(t)\le M$ en $\operatorname{int}(I)$, entonces, para $x<y$ en $I$,
-$$m(y-x)\le f(y)-f(x)\le M(y-x).$$
-R3 entrega el valor $f'(c)$ dentro de esas cotas y multiplicar por $y-x>0$ conserva el orden. No hace falta que $f'$ sea continua ni alcance un máximo. Si $|f'|\le L$, $L\ge0$, se obtiene para todos los pares
-$$|f(y)-f(x)|\le L|y-x|.$$
-Para $x=y$ ambos lados son cero; si $y<x$ se intercambian las entradas. Ésta es una cota Lipschitz de pares, más fuerte que el control con un único centro de C18. Para $L>0$, el radio $\varepsilon/L$ prueba continuidad uniforme; si $L=0$, la función es constante y cualquier radio sirve.
+La cota de pares se vuelve $|f(y)-f(x)|\le0$ y fuerza igualdad de todas las salidas. El error uniforme es entonces cero para cualquier tolerancia y cualquier radio positivo. Este caso debe separarse antes de usar la fórmula $\varepsilon/L$. La afirmación conserva las hipótesis de intervalo y continuidad.
 
 </details>
 
@@ -1395,17 +1101,9 @@ Para $x=y$ ambos lados son cero; si $y<x$ se intercambian las entradas. Ésta es
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 37</summary>
 
-**Respuesta.**
-
 $\varepsilon/L$, a partir del control Lipschitz de todos los pares.
 
-**Fundamento en la sección 19.5.**
-
-**R5 — Cotas de incrementos.** Bajo las condiciones de R4, si $m\le f'(t)\le M$ en $\operatorname{int}(I)$, entonces, para $x<y$ en $I$,
-$$m(y-x)\le f(y)-f(x)\le M(y-x).$$
-R3 entrega el valor $f'(c)$ dentro de esas cotas y multiplicar por $y-x>0$ conserva el orden. No hace falta que $f'$ sea continua ni alcance un máximo. Si $|f'|\le L$, $L\ge0$, se obtiene para todos los pares
-$$|f(y)-f(x)|\le L|y-x|.$$
-Para $x=y$ ambos lados son cero; si $y<x$ se intercambian las entradas. Ésta es una cota Lipschitz de pares, más fuerte que el control con un único centro de C18. Para $L>0$, el radio $\varepsilon/L$ prueba continuidad uniforme; si $L=0$, la función es constante y cualquier radio sirve.
+La barrera de derivadas se ha convertido primero en una cota de todos los pares mediante valor medio. A partir de ella, una distancia estrictamente menor que $\varepsilon/L$ produce error estrictamente menor que $\varepsilon$. El radio se fija antes de conocer los puntos. Esta es la conexión entre cotas de derivada y continuidad uniforme.
 
 </details>
 
@@ -1420,17 +1118,9 @@ Para $x=y$ ambos lados son cero; si $y<x$ se intercambian las entradas. Ésta es
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 38</summary>
 
-**Respuesta.**
-
 $L=3A^2$, pues su derivada es $3t^2$.
 
-**Fundamento en la sección 19.5.**
-
-**Primera reutilización.** Para el cubo en $[-A,A]$, $A>0$, su derivada $3t^2$ está entre cero y $3A^2$: cualquier par tiene error de salida a lo sumo $3A^2$ veces su distancia. Para la raíz en $[\alpha,\beta]$, $0<\alpha<\beta$, la derivada es $1/(2\sqrt t)$ y no supera $1/(2\sqrt\alpha)$. En $[0,1]$ no hay una constante Lipschitz finita para la raíz, como muestra el cociente $1/\sqrt y$ centrado en cero. Su continuidad uniforme de C17 permanece válida: la cota lineal es suficiente, sin ser necesaria.
-
-**Modelo con una cota de pendiente.** Si una recta tiene pendiente $A$ y se sabe $|f'(t)-A|\le\eta$ en los puntos interiores entre $a$ y $x$, aplicamos R5 a $H(t)=f(t)-f(a)-A(t-a)$ y obtenemos
-$$|f(x)-f(a)-A(x-a)|\le\eta|x-a|.$$
-Hay que verificar continuidad en el segmento y derivabilidad en su interior. Una derivada conocida sólo en $a$ no suministra por sí sola una cota para las derivadas de los otros centros. Esta herramienta no afirma una tasa cuadrática ni usa Taylor o una segunda derivada.
+La magnitud del centro interior no supera $A$, por lo que $3t^2\le3A^2$. Esa barrera vale en todos los interiores y da el control de pares. Para $A>0$ se puede dividir el presupuesto por ella. Para $A=0$ el dominio es singleton y se verifica uniformidad directamente.
 
 </details>
 
@@ -1445,17 +1135,9 @@ Hay que verificar continuidad en el segmento y derivabilidad en su interior. Una
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 39</summary>
 
-**Respuesta.**
-
 No. Sólo acota las derivadas donde existen; $|x|$ tiene cota Lipschitz uno y no es derivable en cero.
 
-**Fundamento en la sección 19.5.**
-
-**Modelo con una cota de pendiente.** Si una recta tiene pendiente $A$ y se sabe $|f'(t)-A|\le\eta$ en los puntos interiores entre $a$ y $x$, aplicamos R5 a $H(t)=f(t)-f(a)-A(t-a)$ y obtenemos
-$$|f(x)-f(a)-A(x-a)|\le\eta|x-a|.$$
-Hay que verificar continuidad en el segmento y derivabilidad en su interior. Una derivada conocida sólo en $a$ no suministra por sí sola una cota para las derivadas de los otros centros. Esta herramienta no afirma una tasa cuadrática ni usa Taylor o una segunda derivada.
-
-**Lo inverso.** Si $f$ satisface una cota Lipschitz $L$ y existe $f'(a)$ en un centro acumulante, cada cociente perforado tiene magnitud a lo sumo $L$. C13 conserva la cota en el límite, así $|f'(a)|\le L$. La existencia no se deduce: el valor absoluto es Lipschitz y falla derivabilidad en cero. Unas pocas pendientes muestreadas tampoco demuestran una cota que deba valer en todos los centros.
+Una cota Lipschitz limita las magnitudes de las secantes y de sus límites si existen. No obliga a que esas secantes tengan un único destino. La esquina del valor absoluto mantiene magnitud uno pero tiene valores laterales opuestos. Así el control global de pares no asegura derivabilidad en cada centro.
 
 </details>
 
@@ -1470,17 +1152,9 @@ Hay que verificar continuidad en el segmento y derivabilidad en su interior. Una
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 40</summary>
 
-**Respuesta.**
-
 No. La cota sobre otros centros es una hipótesis adicional, distinta del error normalizado de C18.
 
-**Fundamento en la sección 19.5.**
-
-**Primera reutilización.** Para el cubo en $[-A,A]$, $A>0$, su derivada $3t^2$ está entre cero y $3A^2$: cualquier par tiene error de salida a lo sumo $3A^2$ veces su distancia. Para la raíz en $[\alpha,\beta]$, $0<\alpha<\beta$, la derivada es $1/(2\sqrt t)$ y no supera $1/(2\sqrt\alpha)$. En $[0,1]$ no hay una constante Lipschitz finita para la raíz, como muestra el cociente $1/\sqrt y$ centrado en cero. Su continuidad uniforme de C17 permanece válida: la cota lineal es suficiente, sin ser necesaria.
-
-**Modelo con una cota de pendiente.** Si una recta tiene pendiente $A$ y se sabe $|f'(t)-A|\le\eta$ en los puntos interiores entre $a$ y $x$, aplicamos R5 a $H(t)=f(t)-f(a)-A(t-a)$ y obtenemos
-$$|f(x)-f(a)-A(x-a)|\le\eta|x-a|.$$
-Hay que verificar continuidad en el segmento y derivabilidad en su interior. Una derivada conocida sólo en $a$ no suministra por sí sola una cota para las derivadas de los otros centros. Esta herramienta no afirma una tasa cuadrática ni usa Taylor o una segunda derivada.
+La derivada en un centro controla secantes que conservan ese centro fijo. Acotar una familia de derivadas de otros centros es una obligación universal adicional. El capítulo aplica valor medio cuando esa familia ya está controlada. No se deduce esa barrera vecina únicamente de un modelo de primer orden puntual.
 
 </details>
 
@@ -1497,19 +1171,7 @@ Deriva las cotas $m(y-x)\le f(y)-f(x)\le M(y-x)$ desde cotas de derivada en un i
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 21</summary>
 
-**Respuesta.**
-
-Para x<y, Lagrange proporciona c interior con diferencia $f'(c)$(y-x). Sustituir m≤$f'(c)$≤M y multiplicar por y-x>0 preserva el orden. Si las cotas son -L,L, esto equivale a magnitud a lo sumo L(y-x). Para y<x se intercambian argumentos y se usa simetría de valores absolutos; para x=y ambos lados son cero. La cota final vale para todos los pares, y la continuidad en extremos incluidos permite restringir a segmentos que los contengan.
-
-**Fundamento en la sección 19.5.**
-
-Aunque el punto de valor medio sea desconocido, una cota válida para todas las derivadas pertinentes también vale para la derivada de ese punto. Esto convierte existencia en un certificado cuantitativo.
-
-**R5 — Cotas de incrementos.** Bajo las condiciones de R4, si $m\le f'(t)\le M$ en $\operatorname{int}(I)$, entonces, para $x<y$ en $I$,
-$$m(y-x)\le f(y)-f(x)\le M(y-x).$$
-R3 entrega el valor $f'(c)$ dentro de esas cotas y multiplicar por $y-x>0$ conserva el orden. No hace falta que $f'$ sea continua ni alcance un máximo. Si $|f'|\le L$, $L\ge0$, se obtiene para todos los pares
-$$|f(y)-f(x)|\le L|y-x|.$$
-Para $x=y$ ambos lados son cero; si $y<x$ se intercambian las entradas. Ésta es una cota Lipschitz de pares, más fuerte que el control con un único centro de C18. Para $L>0$, el radio $\varepsilon/L$ prueba continuidad uniforme; si $L=0$, la función es constante y cualquier radio sirve.
+Para $x<y$, Lagrange da $c\in(x,y)$ con $f(y)-f(x)=f\prime(c)(y-x)$. Sustituir $m\le f\prime(c)\le M$ y multiplicar por $y-x>0$ conserva el orden, obteniendo las dos cotas de incremento. Si $-L\le f\prime\le L$ con $L\ge0$, se concluye $|f(y)-f(x)|\le L(y-x)$. Para $y<x$ intercambiamos entradas y usamos simetría de magnitudes; para $x=y$ ambos lados son cero. Así la cota absoluta vale para todos los pares. Continuidad en bordes incluidos permite usar segmentos que los contengan.
 
 </details>
 
@@ -1524,7 +1186,7 @@ Da una constante Lipschitz y un radio uniforme para $x^3$ en $[-2,2]$ usando la 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 22</summary>
 
-La derivada es 3t², entre cero y doce para t interior. R5 da |y³-x³|≤12|y-x| para todos los pares del segmento, porque el polinomio es continuo y derivable. Para tolerancia ε>0, δ=ε/12 asegura que distancia de entrada menor que δ da error menor que ε. No se elige un radio según el centro; el mismo doce controla toda la familia de derivadas interiores. Esta prueba no afirma esa misma cota global en toda la recta.
+El cubo es continuo en $[-2,2]$ y derivable en su interior. Allí $f\prime(t)=3t^2$ satisface $0\le f\prime(t)\le12$, porque $|t|\le2$. La cota de incrementos da $|y^3-x^3|\le12|y-x|$ para cualquier par del segmento. Para $\varepsilon>0$, el radio $\delta=\varepsilon/12$ convierte distancia estrictamente menor que él en error menor que $\varepsilon$. La constante controla toda la región antes de conocer el par. No se afirma esa barrera global en la recta no acotada.
 
 **Retorno visual.** Véase [C19-F05](analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.html#fig-anm-c19-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1541,17 +1203,7 @@ Para la función de E008, prueba que la derivada interior acotada por uno no da 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 23</summary>
 
-**Respuesta.**
-
-En todo el interior $u'$=1. Si un L≥0 controlara todos los pares, elegir x=(L+1)/(L+2) y y=1 daría |u(y)-u(x)|=x y |y-x|=1/(L+2). Pero x=(L+1)/(L+2)>L/(L+2)=L|y-x|, contradicción. Los dos argumentos están en el dominio y x<1. La discontinuidad en el borde impide aplicar Lagrange a esos segmentos y explica por qué la cota interior por sí sola no basta.
-
-**Fundamento en la sección 19.5.**
-
-**Primera reutilización.** Para el cubo en $[-A,A]$, $A>0$, su derivada $3t^2$ está entre cero y $3A^2$: cualquier par tiene error de salida a lo sumo $3A^2$ veces su distancia. Para la raíz en $[\alpha,\beta]$, $0<\alpha<\beta$, la derivada es $1/(2\sqrt t)$ y no supera $1/(2\sqrt\alpha)$. En $[0,1]$ no hay una constante Lipschitz finita para la raíz, como muestra el cociente $1/\sqrt y$ centrado en cero. Su continuidad uniforme de C17 permanece válida: la cota lineal es suficiente, sin ser necesaria.
-
-**Modelo con una cota de pendiente.** Si una recta tiene pendiente $A$ y se sabe $|f'(t)-A|\le\eta$ en los puntos interiores entre $a$ y $x$, aplicamos R5 a $H(t)=f(t)-f(a)-A(t-a)$ y obtenemos
-$$|f(x)-f(a)-A(x-a)|\le\eta|x-a|.$$
-Hay que verificar continuidad en el segmento y derivabilidad en su interior. Una derivada conocida sólo en $a$ no suministra por sí sola una cota para las derivadas de los otros centros. Esta herramienta no afirma una tasa cuadrática ni usa Taylor o una segunda derivada.
+En cada centro interior la función $u$ coincide localmente con la identidad y $u\prime=1$. Supongamos una constante Lipschitz finita $L\ge0$ en todo $[0,1]$. Tomemos $x=(L+1)/(L+2)\in(0,1)$ y $y=1$. Como $u(y)=0$ y $u(x)=x$, tenemos $|u(y)-u(x)|=(L+1)/(L+2)>L/(L+2)=L|y-x|$, contradicción. La discontinuidad del borde invalida Lagrange en esos segmentos. Una cota interior de derivada no sustituye continuidad de la función en los bordes.
 
 </details>
 
@@ -1566,17 +1218,7 @@ Da una constante Lipschitz para la raíz en $[1/4,4]$ y explica por qué no pued
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 24</summary>
 
-**Respuesta.**
-
-En centros positivos la derivada es 1/(2√t), a lo sumo uno cuando t≥1/4. La función es continua en el segmento y R5 da |√y-√x|≤|y-x|. En [0,1], cualquier constante L>0 fallaría en el par cero e y positivo tan pequeño que y<min(1,1/(L+1)²), pues √y/y=1/√y>L. Para L=0 también falla cualquier y>0. La raíz sigue siendo uniforme con control no lineal de C17; falta una cota Lipschitz, sin perder continuidad uniforme.
-
-**Fundamento en la sección 19.5.**
-
-**Primera reutilización.** Para el cubo en $[-A,A]$, $A>0$, su derivada $3t^2$ está entre cero y $3A^2$: cualquier par tiene error de salida a lo sumo $3A^2$ veces su distancia. Para la raíz en $[\alpha,\beta]$, $0<\alpha<\beta$, la derivada es $1/(2\sqrt t)$ y no supera $1/(2\sqrt\alpha)$. En $[0,1]$ no hay una constante Lipschitz finita para la raíz, como muestra el cociente $1/\sqrt y$ centrado en cero. Su continuidad uniforme de C17 permanece válida: la cota lineal es suficiente, sin ser necesaria.
-
-**Modelo con una cota de pendiente.** Si una recta tiene pendiente $A$ y se sabe $|f'(t)-A|\le\eta$ en los puntos interiores entre $a$ y $x$, aplicamos R5 a $H(t)=f(t)-f(a)-A(t-a)$ y obtenemos
-$$|f(x)-f(a)-A(x-a)|\le\eta|x-a|.$$
-Hay que verificar continuidad en el segmento y derivabilidad en su interior. Una derivada conocida sólo en $a$ no suministra por sí sola una cota para las derivadas de los otros centros. Esta herramienta no afirma una tasa cuadrática ni usa Taylor o una segunda derivada.
+La raíz es continua en $[1/4,4]$ y tiene derivada $1/(2\sqrt t)$ en los centros interiores. Como $\sqrt t\ge1/2$, esa derivada tiene magnitud a lo sumo uno. Valor medio da $|\sqrt y-\sqrt x|\le|y-x|$, así sirve constante Lipschitz uno. En $[0,1]$, dado $L>0$, un $0<y<\min(1,1/(L+1)^2)$ cumple $\sqrt y/y=1/\sqrt y>L$, refutando la cota con el par $(0,y)$. Para $L=0$ también falla cualquier $y>0$. La raíz sigue siendo uniforme mediante el radio cuadrático de C17.
 
 </details>
 
@@ -1591,17 +1233,7 @@ Si $|f\prime(t)-A|\le\eta$ en el interior de un segmento con centro a y extremo 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 25</summary>
 
-**Respuesta.**
-
-La función H(t)=f(t)-f(a)-A(t-a) es continua sobre ese segmento, derivable dentro y satisface |$H'$|≤η. Aplicar la cota de pares entre a y x, con H(a)=0, da |H(x)|≤η|x-a|. Si x=a el error es cero sin aplicación de Lagrange. Saber sólo $f'(a)$=A no acota las derivadas de los otros centros ni proporciona esa premisa universal, aunque C18 garantice un resto menor que lineal alrededor de a. El certificado se apoya en la cota adicional y no usa Taylor.
-
-**Fundamento en la sección 19.5.**
-
-**Primera reutilización.** Para el cubo en $[-A,A]$, $A>0$, su derivada $3t^2$ está entre cero y $3A^2$: cualquier par tiene error de salida a lo sumo $3A^2$ veces su distancia. Para la raíz en $[\alpha,\beta]$, $0<\alpha<\beta$, la derivada es $1/(2\sqrt t)$ y no supera $1/(2\sqrt\alpha)$. En $[0,1]$ no hay una constante Lipschitz finita para la raíz, como muestra el cociente $1/\sqrt y$ centrado en cero. Su continuidad uniforme de C17 permanece válida: la cota lineal es suficiente, sin ser necesaria.
-
-**Modelo con una cota de pendiente.** Si una recta tiene pendiente $A$ y se sabe $|f'(t)-A|\le\eta$ en los puntos interiores entre $a$ y $x$, aplicamos R5 a $H(t)=f(t)-f(a)-A(t-a)$ y obtenemos
-$$|f(x)-f(a)-A(x-a)|\le\eta|x-a|.$$
-Hay que verificar continuidad en el segmento y derivabilidad en su interior. Una derivada conocida sólo en $a$ no suministra por sí sola una cota para las derivadas de los otros centros. Esta herramienta no afirma una tasa cuadrática ni usa Taylor o una segunda derivada.
+En el segmento entre $a$ y $x$, definimos $H(t)=f(t)-f(a)-A(t-a)$. Es continua y derivable donde corresponde, con $|H\prime(t)|=|f\prime(t)-A|\le\eta$ en todo el interior. La cota de pares da $|H(x)-H(a)|\le\eta|x-a|$, y $H(a)=0$ produce el error solicitado. Si $x=a$, la igualdad de valor se verifica directamente. Saber sólo $f\prime(a)=A$ no acredita la premisa sobre las otras derivadas. El certificado utiliza ese control adicional y no Taylor.
 
 </details>
 ## 19.6. Comparar dos variaciones en el mismo punto
@@ -1639,17 +1271,9 @@ Si $\Delta g\ne0$ pero la derivada de $g$ se anula en algunos centros, no se pue
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 41</summary>
 
-**Respuesta.**
-
 La igualdad de productos cruzados $\Delta f\,g\prime(c)=\Delta g\,f\prime(c)$.
 
-**Fundamento en la sección 19.6.**
-
-**Forma de cocientes con hipótesis añadida.** Si $g'(t)\ne0$ para todo $t\in(a,b)$, Rolle impide $g(b)=g(a)$, porque esa igualdad daría un punto interior de derivada nula. En el punto entregado por R6 también $g'(c)\ne0$, y ahora sí podemos dividir:
-$$\frac{f'(c)}{g'(c)}=\frac{\Delta f}{\Delta g}.$$
-Sin esa condición, la igualdad de productos sigue siendo válida y un cociente puede carecer de significado. Por ejemplo, si $g$ es constante, ambos lados del producto cruzado son cero, sin que exista un cociente por $\Delta g$.
-
-**Un mismo punto no sale de dos existencias.** En $[0,1]$, $f(x)=x^2$ y $g(x)=x^3$ tienen incrementos uno. Lagrange por separado da los puntos únicos $1/2$ y $1/\sqrt3$, diferentes. Cauchy da $3c^2=2c$; como $c>0$, resulta $c=2/3$. Allí la razón de las derivadas es uno, igual a la razón de incrementos. El dato geométrico puede representarse parametrizando el par $(g(x),f(x))$, con coordenadas intercambiadas respecto del argumento original; el teorema sigue siendo una prueba por Rolle, sin requerir teoría de curvas parametrizadas.
+Los productos cruzados están definidos incluso si una derivada o un incremento vale cero. La auxiliar de Rolle produce la igualdad antes de hacer cualquier división. Una forma de cocientes exige comprobar luego sus denominadores. Mantener la forma inicial permite tratar casos que esa segunda forma excluiría.
 
 </details>
 
@@ -1664,19 +1288,9 @@ Sin esa condición, la igualdad de productos sigue siendo válida y un cociente 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 42</summary>
 
-**Respuesta.**
-
 Los incrementos de borde de la otra función: $\Delta g$ multiplica $f-f(a)$ y $-\Delta f$ multiplica $g-g(a)$.
 
-**Fundamento en la sección 19.6.**
-
-Aplicar Lagrange por separado a dos funciones puede producir dos puntos diferentes. Para comparar sus variaciones en un mismo punto debemos construir una sola función auxiliar.
-
-**R6 — Valor medio de Cauchy, sin divisiones.** Sean $f,g:[a,b]\to\mathbb R$, $a<b$, continuas en el segmento y derivables en su interior. Existe $c\in(a,b)$ con
-$$[f(b)-f(a)]g'(c)=[g(b)-g(a)]f'(c).$$
-Escribamos los incrementos determinados por los bordes como $\Delta f,\Delta g$. Definimos
-$$H(x)=\Delta g\,[f(x)-f(a)]-\Delta f\,[g(x)-g(a)].$$
-Entonces $H(a)=H(b)=0$, es continua en todo el segmento y derivable dentro, con $H'(x)=\Delta g f'(x)-\Delta f g'(x)$ por C18. Los coeficientes son constantes, no funciones del argumento. Rolle aplicado a $H$ produce la igualdad. La construcción no divide por ningún incremento o derivada y admite los casos nulos.
+Los incrementos de borde son números fijos y no dependen del argumento de la auxiliar. Elegirlos cruzados hace que los valores de la auxiliar se anulen en ambos bordes. Las reglas algebraicas dan su derivada sin cambiar el dominio. Rolle relaciona después las dos derivadas en un mismo centro.
 
 </details>
 
@@ -1691,17 +1305,9 @@ Entonces $H(a)=H(b)=0$, es continua en todo el segmento y derivable dentro, con 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 43</summary>
 
-**Respuesta.**
-
 Ambos son cero: en el primer borde se anulan las diferencias y en el segundo se cancelan los productos cruzados.
 
-**Fundamento en la sección 19.6.**
-
-**Forma de cocientes con hipótesis añadida.** Si $g'(t)\ne0$ para todo $t\in(a,b)$, Rolle impide $g(b)=g(a)$, porque esa igualdad daría un punto interior de derivada nula. En el punto entregado por R6 también $g'(c)\ne0$, y ahora sí podemos dividir:
-$$\frac{f'(c)}{g'(c)}=\frac{\Delta f}{\Delta g}.$$
-Sin esa condición, la igualdad de productos sigue siendo válida y un cociente puede carecer de significado. Por ejemplo, si $g$ es constante, ambos lados del producto cruzado son cero, sin que exista un cociente por $\Delta g$.
-
-**Un mismo punto no sale de dos existencias.** En $[0,1]$, $f(x)=x^2$ y $g(x)=x^3$ tienen incrementos uno. Lagrange por separado da los puntos únicos $1/2$ y $1/\sqrt3$, diferentes. Cauchy da $3c^2=2c$; como $c>0$, resulta $c=2/3$. Allí la razón de las derivadas es uno, igual a la razón de incrementos. El dato geométrico puede representarse parametrizando el par $(g(x),f(x))$, con coordenadas intercambiadas respecto del argumento original; el teorema sigue siendo una prueba por Rolle, sin requerir teoría de curvas parametrizadas.
+En $a$ los factores $f(x)-f(a)$ y $g(x)-g(a)$ son cero. En $b$ se obtiene $\Delta g\,\Delta f-\Delta f\,\Delta g=0$. La cancelación no divide por ningún incremento y conserva el caso de incrementos nulos. Esa identidad verifica la premisa de igualdad de bordes para Rolle.
 
 </details>
 
@@ -1716,17 +1322,9 @@ Sin esa condición, la igualdad de productos sigue siendo válida y un cociente 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 44</summary>
 
-**Respuesta.**
-
 $g\prime(t)\ne0$ en todo el interior; Rolle también fuerza $\Delta g\ne0$.
 
-**Fundamento en la sección 19.6.**
-
-**Forma de cocientes con hipótesis añadida.** Si $g'(t)\ne0$ para todo $t\in(a,b)$, Rolle impide $g(b)=g(a)$, porque esa igualdad daría un punto interior de derivada nula. En el punto entregado por R6 también $g'(c)\ne0$, y ahora sí podemos dividir:
-$$\frac{f'(c)}{g'(c)}=\frac{\Delta f}{\Delta g}.$$
-Sin esa condición, la igualdad de productos sigue siendo válida y un cociente puede carecer de significado. Por ejemplo, si $g$ es constante, ambos lados del producto cruzado son cero, sin que exista un cociente por $\Delta g$.
-
-**Un mismo punto no sale de dos existencias.** En $[0,1]$, $f(x)=x^2$ y $g(x)=x^3$ tienen incrementos uno. Lagrange por separado da los puntos únicos $1/2$ y $1/\sqrt3$, diferentes. Cauchy da $3c^2=2c$; como $c>0$, resulta $c=2/3$. Allí la razón de las derivadas es uno, igual a la razón de incrementos. El dato geométrico puede representarse parametrizando el par $(g(x),f(x))$, con coordenadas intercambiadas respecto del argumento original; el teorema sigue siendo una prueba por Rolle, sin requerir teoría de curvas parametrizadas.
+Si los valores de borde de $g$ fueran iguales, Rolle produciría una derivada nula interior, contradiciendo la premisa. Así el incremento de $g$ es no nulo. El testigo de Cauchy también tiene derivada de $g$ no nula porque la premisa vale en todo el interior. Sólo entonces se dividen los productos cruzados.
 
 </details>
 
@@ -1741,19 +1339,9 @@ Sin esa condición, la igualdad de productos sigue siendo válida y un cociente 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 45</summary>
 
-**Respuesta.**
-
 Pueden producir puntos diferentes; Cauchy necesita relacionar ambas derivadas en un mismo centro.
 
-**Fundamento en la sección 19.6.**
-
-Aplicar Lagrange por separado a dos funciones puede producir dos puntos diferentes. Para comparar sus variaciones en un mismo punto debemos construir una sola función auxiliar.
-
-**R6 — Valor medio de Cauchy, sin divisiones.** Sean $f,g:[a,b]\to\mathbb R$, $a<b$, continuas en el segmento y derivables en su interior. Existe $c\in(a,b)$ con
-$$[f(b)-f(a)]g'(c)=[g(b)-g(a)]f'(c).$$
-Escribamos los incrementos determinados por los bordes como $\Delta f,\Delta g$. Definimos
-$$H(x)=\Delta g\,[f(x)-f(a)]-\Delta f\,[g(x)-g(a)].$$
-Entonces $H(a)=H(b)=0$, es continua en todo el segmento y derivable dentro, con $H'(x)=\Delta g f'(x)-\Delta f g'(x)$ por C18. Los coeficientes son constantes, no funciones del argumento. Rolle aplicado a $H$ produce la igualdad. La construcción no divide por ningún incremento o derivada y admite los casos nulos.
+Cada aplicación de Lagrange responde al incremento de una función y puede localizar una pendiente en un centro diferente. Dividir esas dos igualdades daría una razón de derivadas en centros distintos. La auxiliar de Cauchy combina ambas variaciones antes de aplicar Rolle. Así se obtiene un testigo compartido, que es la obligación nueva.
 
 </details>
 
@@ -1768,15 +1356,9 @@ Entonces $H(a)=H(b)=0$, es continua en todo el segmento y derivable dentro, con 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 46</summary>
 
-**Respuesta.**
-
 $c=2/3$, porque sus incrementos son uno y $3c^2=2c$ con $c>0$.
 
-**Fundamento en la sección 19.6.**
-
-**Un mismo punto no sale de dos existencias.** En $[0,1]$, $f(x)=x^2$ y $g(x)=x^3$ tienen incrementos uno. Lagrange por separado da los puntos únicos $1/2$ y $1/\sqrt3$, diferentes. Cauchy da $3c^2=2c$; como $c>0$, resulta $c=2/3$. Allí la razón de las derivadas es uno, igual a la razón de incrementos. El dato geométrico puede representarse parametrizando el par $(g(x),f(x))$, con coordenadas intercambiadas respecto del argumento original; el teorema sigue siendo una prueba por Rolle, sin requerir teoría de curvas parametrizadas.
-
-Si $\Delta g\ne0$ pero la derivada de $g$ se anula en algunos centros, no se puede dividir en un testigo arbitrario sin verificarlo. Con $f=g=x^3$ en $[-1,1]$, el producto cruzado vale en todos los puntos, incluido cero donde ambas derivadas son cero. Lagrange se recupera tomando $g(x)=x$, cuyo incremento $b-a$ y derivada uno son no nulos.
+Los dos incrementos son uno y la igualdad cruzada exige $3c^2=2c$. Factorizar da $c(3c-2)=0$ y la pertenencia a $(0,1)$ excluye cero. El valor restante es dos tercios. La ubicación no coincide con los puntos separados que proporcionarían las dos aplicaciones de Lagrange.
 
 </details>
 
@@ -1791,15 +1373,9 @@ Si $\Delta g\ne0$ pero la derivada de $g$ se anula en algunos centros, no se pue
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 47</summary>
 
-**Respuesta.**
-
 El producto cruzado sigue siendo válido como $0=0$, pero la razón por $\Delta g$ y $g\prime$ no existe.
 
-**Fundamento en la sección 19.6.**
-
-**Un mismo punto no sale de dos existencias.** En $[0,1]$, $f(x)=x^2$ y $g(x)=x^3$ tienen incrementos uno. Lagrange por separado da los puntos únicos $1/2$ y $1/\sqrt3$, diferentes. Cauchy da $3c^2=2c$; como $c>0$, resulta $c=2/3$. Allí la razón de las derivadas es uno, igual a la razón de incrementos. El dato geométrico puede representarse parametrizando el par $(g(x),f(x))$, con coordenadas intercambiadas respecto del argumento original; el teorema sigue siendo una prueba por Rolle, sin requerir teoría de curvas parametrizadas.
-
-Si $\Delta g\ne0$ pero la derivada de $g$ se anula en algunos centros, no se puede dividir en un testigo arbitrario sin verificarlo. Con $f=g=x^3$ en $[-1,1]$, el producto cruzado vale en todos los puntos, incluido cero donde ambas derivadas son cero. Lagrange se recupera tomando $g(x)=x$, cuyo incremento $b-a$ y derivada uno son no nulos.
+La derivada y el incremento de una constante son cero. La igualdad cruzada no se altera y no necesita información adicional sobre $f$. En cambio, ambas posibles razones tienen denominador cero. La forma cruzada es el enunciado general válido; la división es una consecuencia condicional.
 
 </details>
 
@@ -1814,13 +1390,9 @@ Si $\Delta g\ne0$ pero la derivada de $g$ se anula en algunos centros, no se pue
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 48</summary>
 
-**Respuesta.**
-
 Tomando $g(x)=x$, con incremento $b-a>0$ y derivada uno.
 
-**Fundamento en la sección 19.6.**
-
-Si $\Delta g\ne0$ pero la derivada de $g$ se anula en algunos centros, no se puede dividir en un testigo arbitrario sin verificarlo. Con $f=g=x^3$ en $[-1,1]$, el producto cruzado vale en todos los puntos, incluido cero donde ambas derivadas son cero. Lagrange se recupera tomando $g(x)=x$, cuyo incremento $b-a$ y derivada uno son no nulos.
+La identidad tiene incremento positivo $b-a$ y derivada uno en todo centro interior. Sustituirla en la igualdad cruzada da $\Delta f=(b-a)f\prime(c)$. Dividir por la longitud no nula recupera la pendiente secante. Así Lagrange es un caso particular de la comparación de dos variaciones.
 
 </details>
 
@@ -1837,19 +1409,7 @@ Construye la auxiliar de Cauchy y prueba la forma sin divisiones del valor medio
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 26</summary>
 
-**Respuesta.**
-
-Fijamos Δf=f(b)-f(a), Δg=g(b)-g(a), y H=Δg(f-f(a))-Δf(g-g(a)) sobre [a,b]. Sus dos bordes son cero, por cancelación de productos. Es continua y derivable donde corresponde, con $H'$=Δg $f'$-Δf $g'$, porque los coeficientes son números fijos. Rolle entrega c interior con $H'(c)$=0, que equivale a Δf $g'(c)$=Δg $f'(c)$. Cada expresión existe aunque algún incremento o derivada se anule; ningún paso dividió por ellos.
-
-**Fundamento en la sección 19.6.**
-
-Aplicar Lagrange por separado a dos funciones puede producir dos puntos diferentes. Para comparar sus variaciones en un mismo punto debemos construir una sola función auxiliar.
-
-**R6 — Valor medio de Cauchy, sin divisiones.** Sean $f,g:[a,b]\to\mathbb R$, $a<b$, continuas en el segmento y derivables en su interior. Existe $c\in(a,b)$ con
-$$[f(b)-f(a)]g'(c)=[g(b)-g(a)]f'(c).$$
-Escribamos los incrementos determinados por los bordes como $\Delta f,\Delta g$. Definimos
-$$H(x)=\Delta g\,[f(x)-f(a)]-\Delta f\,[g(x)-g(a)].$$
-Entonces $H(a)=H(b)=0$, es continua en todo el segmento y derivable dentro, con $H'(x)=\Delta g f'(x)-\Delta f g'(x)$ por C18. Los coeficientes son constantes, no funciones del argumento. Rolle aplicado a $H$ produce la igualdad. La construcción no divide por ningún incremento o derivada y admite los casos nulos.
+Fijemos $\Delta f=f(b)-f(a)$ y $\Delta g=g(b)-g(a)$. La auxiliar $H(x)=\Delta g(f(x)-f(a))-\Delta f(g(x)-g(a))$ es continua en $[a,b]$ y derivable en $(a,b)$. Sus bordes son cero y su derivada es $H\prime=\Delta g\,f\prime-\Delta f\,g\prime$, pues los coeficientes están fijados. Rolle proporciona $c$ interior con $H\prime(c)=0$, equivalente a $\Delta f\,g\prime(c)=\Delta g\,f\prime(c)$. No se divide por incrementos ni derivadas, por lo que la identidad incluye sus posibles anulaciones.
 
 </details>
 
@@ -1864,19 +1424,9 @@ Para $f=x^2,g=x^3$ en $[0,1]$, compara sus dos puntos de Lagrange con el punto d
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 27</summary>
 
-**Respuesta.**
-
-Ambos incrementos son uno. Lagrange para f resuelve 2c=1 y da 1/2; para g resuelve 3c²=1 y da 1/√3. Son distintos porque el cuadrado de 1/2 no es 1/3. Cauchy exige 3c²=2c; la interioridad c>0 elimina la solución cero y da c=2/3. En ese punto las dos derivadas valen 4/3 y su razón es uno. Aplicar dos existencias separadas no había garantizado un centro común.
+Para $f=x^2$ y $g=x^3$ en $[0,1]$, ambos incrementos son uno. Lagrange para la primera resuelve $2c=1$ y da $c=1/2$; para la segunda resuelve $3c^2=1$ y da $c=1/\sqrt3$. Son distintos porque $1/4\ne1/3$. Cauchy exige $3c^2=2c$ y la interioridad excluye cero, dejando $c=2/3$. Allí las dos derivadas valen $4/3$. Dos existencias separadas no garantizaban un centro compartido; la auxiliar cruzada sí lo proporciona.
 
 **Retorno visual.** Véase [C19-F06](analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.html#fig-anm-c19-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
-
-**Fundamento en la sección 19.6.**
-
-**Forma de cocientes con hipótesis añadida.** Si $g'(t)\ne0$ para todo $t\in(a,b)$, Rolle impide $g(b)=g(a)$, porque esa igualdad daría un punto interior de derivada nula. En el punto entregado por R6 también $g'(c)\ne0$, y ahora sí podemos dividir:
-$$\frac{f'(c)}{g'(c)}=\frac{\Delta f}{\Delta g}.$$
-Sin esa condición, la igualdad de productos sigue siendo válida y un cociente puede carecer de significado. Por ejemplo, si $g$ es constante, ambos lados del producto cruzado son cero, sin que exista un cociente por $\Delta g$.
-
-**Un mismo punto no sale de dos existencias.** En $[0,1]$, $f(x)=x^2$ y $g(x)=x^3$ tienen incrementos uno. Lagrange por separado da los puntos únicos $1/2$ y $1/\sqrt3$, diferentes. Cauchy da $3c^2=2c$; como $c>0$, resulta $c=2/3$. Allí la razón de las derivadas es uno, igual a la razón de incrementos. El dato geométrico puede representarse parametrizando el par $(g(x),f(x))$, con coordenadas intercambiadas respecto del argumento original; el teorema sigue siendo una prueba por Rolle, sin requerir teoría de curvas parametrizadas.
 
 </details>
 
@@ -1891,17 +1441,7 @@ Bajo $g\prime(t)\ne0$ en todo $(a,b)$, prueba que la forma de cocientes de Cauch
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 28</summary>
 
-**Respuesta.**
-
-Si Δg=0, g tendría valores de borde iguales, continuidad en el segmento y derivabilidad dentro; Rolle daría un punto con $g'$=0, contradicción. Por tanto Δg≠0. El testigo c de Cauchy también cumple $g'(c)$≠0 por la premisa universal. Dividir la igualdad cruzada por Δg $g'(c)$, no nulo, da $f'(c)$/$g'(c)$=Δf/Δg. Se verifican las dos divisiones después de sus condiciones, sin asumir que un incremento no nulo haga no nula toda derivada.
-
-**Fundamento en la sección 19.6.**
-
-**Forma de cocientes con hipótesis añadida.** Si $g'(t)\ne0$ para todo $t\in(a,b)$, Rolle impide $g(b)=g(a)$, porque esa igualdad daría un punto interior de derivada nula. En el punto entregado por R6 también $g'(c)\ne0$, y ahora sí podemos dividir:
-$$\frac{f'(c)}{g'(c)}=\frac{\Delta f}{\Delta g}.$$
-Sin esa condición, la igualdad de productos sigue siendo válida y un cociente puede carecer de significado. Por ejemplo, si $g$ es constante, ambos lados del producto cruzado son cero, sin que exista un cociente por $\Delta g$.
-
-**Un mismo punto no sale de dos existencias.** En $[0,1]$, $f(x)=x^2$ y $g(x)=x^3$ tienen incrementos uno. Lagrange por separado da los puntos únicos $1/2$ y $1/\sqrt3$, diferentes. Cauchy da $3c^2=2c$; como $c>0$, resulta $c=2/3$. Allí la razón de las derivadas es uno, igual a la razón de incrementos. El dato geométrico puede representarse parametrizando el par $(g(x),f(x))$, con coordenadas intercambiadas respecto del argumento original; el teorema sigue siendo una prueba por Rolle, sin requerir teoría de curvas parametrizadas.
+Si $\Delta g=0$, la igualdad de bordes y las demás premisas permitirían aplicar Rolle a $g$, produciendo una derivada nula interior. Eso contradice $g\prime(t)\ne0$ para todo $t\in(a,b)$, así $\Delta g\ne0$. El testigo $c$ de Cauchy también cumple $g\prime(c)\ne0$. Ahora se divide la igualdad cruzada por $\Delta g\,g\prime(c)$ y se obtiene $f\prime(c)/g\prime(c)=\Delta f/\Delta g$. Las dos divisiones se justifican por separado: un incremento no nulo por sí solo no protege toda derivada.
 
 </details>
 
@@ -1916,17 +1456,7 @@ Aplica la forma cruzada a $f(x)=x$, $g(x)=x(1-x)$ en $[0,1]$. Localiza el punto 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 29</summary>
 
-**Respuesta.**
-
-Δf=1 y Δg=0. La identidad exige $g'(c)$=0; su derivada es 1-2c y el único punto interior es c=1/2. Allí $f'$=1 y $g'$=0, de modo que la igualdad cruzada es cero igual a cero. Las razones Δf/Δg y $f'$/$g'$ no existen. La forma cruzada contiene información correcta sobre la anulación, mientras la formulación por cocientes sería ilegítima en este ejemplo.
-
-**Fundamento en la sección 19.6.**
-
-**Forma de cocientes con hipótesis añadida.** Si $g'(t)\ne0$ para todo $t\in(a,b)$, Rolle impide $g(b)=g(a)$, porque esa igualdad daría un punto interior de derivada nula. En el punto entregado por R6 también $g'(c)\ne0$, y ahora sí podemos dividir:
-$$\frac{f'(c)}{g'(c)}=\frac{\Delta f}{\Delta g}.$$
-Sin esa condición, la igualdad de productos sigue siendo válida y un cociente puede carecer de significado. Por ejemplo, si $g$ es constante, ambos lados del producto cruzado son cero, sin que exista un cociente por $\Delta g$.
-
-**Un mismo punto no sale de dos existencias.** En $[0,1]$, $f(x)=x^2$ y $g(x)=x^3$ tienen incrementos uno. Lagrange por separado da los puntos únicos $1/2$ y $1/\sqrt3$, diferentes. Cauchy da $3c^2=2c$; como $c>0$, resulta $c=2/3$. Allí la razón de las derivadas es uno, igual a la razón de incrementos. El dato geométrico puede representarse parametrizando el par $(g(x),f(x))$, con coordenadas intercambiadas respecto del argumento original; el teorema sigue siendo una prueba por Rolle, sin requerir teoría de curvas parametrizadas.
+Para $f(x)=x$ y $g(x)=x(1-x)$, se tiene $\Delta f=1$ y $\Delta g=0$. La igualdad cruzada exige $g\prime(c)=0$. Como $g\prime(c)=1-2c$, el único centro interior válido es $c=1/2$. Allí $f\prime(c)=1$ y $g\prime(c)=0$, de modo que los productos cruzados son ambos cero. Las razones por $\Delta g$ o por $g\prime(c)$ no están definidas. La forma general conserva una conclusión correcta que la división no puede expresar aquí.
 
 </details>
 
@@ -1941,7 +1471,7 @@ Para $f=g=x^3$ en $[-1,1]$, explica por qué $\Delta g\ne0$ no autoriza dividir 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 30</summary>
 
-Los dos incrementos son dos y las derivadas iguales, así la igualdad cruzada es cierta para todo punto interior. En c=0 ambas derivadas valen cero. Aunque Δg=2≠0, la razón de derivadas sería 0/0 allí y no está definida. Se puede escoger otro punto no nulo en este ejemplo y obtener la razón uno, pero la sola identidad cruzada con un testigo arbitrario no garantiza esa división. Para una garantía universal se usa $g'$≠0 en todo el interior o se verifica expresamente la derivada en el testigo concreto.
+Si $f=g=x^3$ en $[-1,1]$, ambos incrementos valen dos y ambas derivadas son $3c^2$. Por ello la igualdad cruzada se satisface en cualquier centro interior. En $c=0$, las dos derivadas valen cero y su razón sería $0/0$, indefinida, aunque $\Delta g=2\ne0$. Un centro interior no nulo sí permite dividir en este ejemplo, pero un testigo arbitrario no ofrece esa garantía. Para hacerlo se verifica su derivada concreta o se usa la premisa universal de no anulación.
 
 </details>
 ## 19.7. Darboux: discontinuidad sin saltar valores
@@ -1976,18 +1506,9 @@ C18 da continuidad de $H$ en cada punto del segmento; su restricción es continu
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 49</summary>
 
-**Respuesta.**
-
 No. Prueba sus valores intermedios usando continuidad de la función auxiliar, extremos y Fermat.
 
-**Fundamento en la sección 19.7.**
-
-C18 mostró una función derivable cuya derivada no es continua. Sin embargo, una derivada en un intervalo no puede omitir un valor situado entre dos de sus valores. No lo demostraremos suponiendo continuidad de $f'$.
-
-**R7 — Darboux.** Sea $f:I\to\mathbb R$ derivable en todos los puntos de un intervalo abierto $I$. Para $u<v$ en $I$ y un real $\lambda$ estrictamente entre $f'(u)$ y $f'(v)$, existe $c\in(u,v)$ con $f'(c)=\lambda$.
-
-**Objeto auxiliar y prueba.** Supongamos primero $f'(u)<\lambda<f'(v)$ y pongamos $H(x)=f(x)-\lambda x$. Entonces $H'(u)<0<H'(v)$. El signo de las pendientes centradas en $u$ da un radio $\delta_u$ donde los cocientes son negativos. Para
-$t=u+\min(\delta_u,v-u)/2\in(u,v)$ resulta $H(t)<H(u)$. En $v$, los cocientes son positivos en algún radio $\delta_v$; el argumento $s=v-\min(\delta_v,v-u)/2$ tiene incremento negativo y produce $H(s)<H(v)$. Así ninguno de los bordes minimiza $H$ sobre $[u,v]$.
+La auxiliar $f-\lambda x$ es continua porque la función original es derivable. Los signos de sus derivadas de borde excluyen un mínimo allí y Weierstrass lo coloca dentro. Fermat anula su derivada y entrega el nivel solicitado. La continuidad utilizada corresponde a la auxiliar, no a la función derivada.
 
 </details>
 
@@ -2002,18 +1523,9 @@ $t=u+\min(\delta_u,v-u)/2\in(u,v)$ resulta $H(t)<H(u)$. En $v$, los cocientes so
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 50</summary>
 
-**Respuesta.**
-
 $H(x)=f(x)-\lambda x$, cuya derivada es $f\prime(x)-\lambda$.
 
-**Fundamento en la sección 19.7.**
-
-C18 mostró una función derivable cuya derivada no es continua. Sin embargo, una derivada en un intervalo no puede omitir un valor situado entre dos de sus valores. No lo demostraremos suponiendo continuidad de $f'$.
-
-**R7 — Darboux.** Sea $f:I\to\mathbb R$ derivable en todos los puntos de un intervalo abierto $I$. Para $u<v$ en $I$ y un real $\lambda$ estrictamente entre $f'(u)$ y $f'(v)$, existe $c\in(u,v)$ con $f'(c)=\lambda$.
-
-**Objeto auxiliar y prueba.** Supongamos primero $f'(u)<\lambda<f'(v)$ y pongamos $H(x)=f(x)-\lambda x$. Entonces $H'(u)<0<H'(v)$. El signo de las pendientes centradas en $u$ da un radio $\delta_u$ donde los cocientes son negativos. Para
-$t=u+\min(\delta_u,v-u)/2\in(u,v)$ resulta $H(t)<H(u)$. En $v$, los cocientes son positivos en algún radio $\delta_v$; el argumento $s=v-\min(\delta_v,v-u)/2$ tiene incremento negativo y produce $H(s)<H(v)$. Así ninguno de los bordes minimiza $H$ sobre $[u,v]$.
+Restar la recta de pendiente $\lambda$ convierte la ecuación buscada en derivada cero de la auxiliar. Sus pendientes de borde tienen signos opuestos cuando $\lambda$ es intermedio. Eso permite localizar un extremo interior y aplicar Fermat. El dominio intervalar conserva el segmento y los centros donde se desarrolla el argumento.
 
 </details>
 
@@ -2028,16 +1540,9 @@ $t=u+\min(\delta_u,v-u)/2\in(u,v)$ resulta $H(t)<H(u)$. En $v$, los cocientes so
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 51</summary>
 
-**Respuesta.**
-
 Una entrada próxima a la derecha tiene cociente negativo y por tanto valor menor que $H(u)$.
 
-**Fundamento en la sección 19.7.**
-
-**Objeto auxiliar y prueba.** Supongamos primero $f'(u)<\lambda<f'(v)$ y pongamos $H(x)=f(x)-\lambda x$. Entonces $H'(u)<0<H'(v)$. El signo de las pendientes centradas en $u$ da un radio $\delta_u$ donde los cocientes son negativos. Para
-$t=u+\min(\delta_u,v-u)/2\in(u,v)$ resulta $H(t)<H(u)$. En $v$, los cocientes son positivos en algún radio $\delta_v$; el argumento $s=v-\min(\delta_v,v-u)/2$ tiene incremento negativo y produce $H(s)<H(v)$. Así ninguno de los bordes minimiza $H$ sobre $[u,v]$.
-
-C18 da continuidad de $H$ en cada punto del segmento; su restricción es continua allí. C16 entrega un mínimo alcanzado, que las dos comparaciones sitúan en algún $c\in(u,v)$. Ese mínimo es local para la función original: una bola suficientemente pequeña de $c$ queda en $(u,v)$. Fermat da $H'(c)=0$, luego $f'(c)=\lambda$. Si $f'(u)>\lambda>f'(v)$, se aplica el caso anterior a $-f$ y $-\lambda$, o se usa un máximo para la misma función auxiliar. No se elige una familia de minimizadores.
+El límite negativo de secantes permite un radio donde éstas siguen siendo negativas. Una entrada derecha dentro de ese radio y del segmento tiene incremento positivo y diferencia de valor negativa. Su altura es menor que la del borde izquierdo. Ese borde no puede ser minimizador global del segmento.
 
 </details>
 
@@ -2052,16 +1557,9 @@ C18 da continuidad de $H$ en cada punto del segmento; su restricción es continu
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 52</summary>
 
-**Respuesta.**
-
 Una entrada próxima a la izquierda tiene incremento negativo y cociente positivo, así su valor es menor que $H(v)$.
 
-**Fundamento en la sección 19.7.**
-
-**Objeto auxiliar y prueba.** Supongamos primero $f'(u)<\lambda<f'(v)$ y pongamos $H(x)=f(x)-\lambda x$. Entonces $H'(u)<0<H'(v)$. El signo de las pendientes centradas en $u$ da un radio $\delta_u$ donde los cocientes son negativos. Para
-$t=u+\min(\delta_u,v-u)/2\in(u,v)$ resulta $H(t)<H(u)$. En $v$, los cocientes son positivos en algún radio $\delta_v$; el argumento $s=v-\min(\delta_v,v-u)/2$ tiene incremento negativo y produce $H(s)<H(v)$. Así ninguno de los bordes minimiza $H$ sobre $[u,v]$.
-
-C18 da continuidad de $H$ en cada punto del segmento; su restricción es continua allí. C16 entrega un mínimo alcanzado, que las dos comparaciones sitúan en algún $c\in(u,v)$. Ese mínimo es local para la función original: una bola suficientemente pequeña de $c$ queda en $(u,v)$. Fermat da $H'(c)=0$, luego $f'(c)=\lambda$. Si $f'(u)>\lambda>f'(v)$, se aplica el caso anterior a $-f$ y $-\lambda$, o se usa un máximo para la misma función auxiliar. No se elige una familia de minimizadores.
+La secante izquierda es positiva y su incremento negativo. Multiplicar ambos da una diferencia de valor negativa respecto del borde derecho. Una entrada izquierda suficientemente cercana está dentro del segmento y alcanza una altura menor. Así tampoco ese borde puede minimizar, dejando un minimizador interior.
 
 </details>
 
@@ -2076,16 +1574,9 @@ C18 da continuidad de $H$ en cada punto del segmento; su restricción es continu
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 53</summary>
 
-**Respuesta.**
-
 Se aplica el mismo argumento a $-f$ y $-\lambda$, o se busca un máximo de la función auxiliar.
 
-**Fundamento en la sección 19.7.**
-
-**Objeto auxiliar y prueba.** Supongamos primero $f'(u)<\lambda<f'(v)$ y pongamos $H(x)=f(x)-\lambda x$. Entonces $H'(u)<0<H'(v)$. El signo de las pendientes centradas en $u$ da un radio $\delta_u$ donde los cocientes son negativos. Para
-$t=u+\min(\delta_u,v-u)/2\in(u,v)$ resulta $H(t)<H(u)$. En $v$, los cocientes son positivos en algún radio $\delta_v$; el argumento $s=v-\min(\delta_v,v-u)/2$ tiene incremento negativo y produce $H(s)<H(v)$. Así ninguno de los bordes minimiza $H$ sobre $[u,v]$.
-
-C18 da continuidad de $H$ en cada punto del segmento; su restricción es continua allí. C16 entrega un mínimo alcanzado, que las dos comparaciones sitúan en algún $c\in(u,v)$. Ese mínimo es local para la función original: una bola suficientemente pequeña de $c$ queda en $(u,v)$. Fermat da $H'(c)=0$, luego $f'(c)=\lambda$. Si $f'(u)>\lambda>f'(v)$, se aplica el caso anterior a $-f$ y $-\lambda$, o se usa un máximo para la misma función auxiliar. No se elige una familia de minimizadores.
+Cambiar $f$ por $-f$ invierte las dos alturas de derivada y cambia el nivel buscado a $-\lambda$. La regla de signo de C18 conserva derivabilidad. Aplicar el caso ya probado y volver a multiplicar por menos uno entrega el nivel original. No se necesita un nuevo supuesto de continuidad de la derivada.
 
 </details>
 
@@ -2100,15 +1591,9 @@ C18 da continuidad de $H$ en cada punto del segmento; su restricción es continu
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 54</summary>
 
-**Respuesta.**
-
 Su signo es constante; dos signos opuestos obligarían por Darboux a alcanzar cero entre ellos.
 
-**Fundamento en la sección 19.7.**
-
-**Consecuencia de signo.** Si $f'$ no se anula en $I$, no puede tener un valor positivo y otro negativo: Darboux con $\lambda=0$ daría una anulación entre ellos. Su signo es constante; si el intervalo es no vacío, fijar un punto y su signo determina cuál. R4 convierte ese signo en monotonía estricta. La premisa $f'\ne0$ no significa una cota positiva uniforme de $|f'|$.
-
-**Discontinuidad y valores intermedios son compatibles.** La familia de bultos de C18 es derivable en toda la recta, tiene $F'(0)=0$ y puntos $x_n\to0$ con $F'(x_n)=-3/2$. R7 obliga a alcanzar cada valor de $(-3/2,0)$ entre cero y cada $x_n$, aunque las derivadas no converjan al valor central. En el perfil de cada bulto, la fórmula $-4u(1-u^2)$ también muestra variación continua dentro de esa pieza. Representar sólo una pieza no prueba toda la propiedad; ésta sigue de R7 aplicado a la función completa. Una función escalón que pase directamente de $-1$ a $1$ y omita cero no puede ser la derivada de una función derivable en un intervalo que contenga ambos lados.
+En un intervalo no vacío se fija una entrada y su derivada tiene un signo porque no es cero. Si otra entrada tuviera el signo opuesto, cero sería un nivel estrictamente intermedio. Darboux lo produciría entre ambas, contradicción. El argumento prueba signo común, pero no un margen uniforme positivo de magnitudes.
 
 </details>
 
@@ -2123,13 +1608,9 @@ Su signo es constante; dos signos opuestos obligarían por Darboux a alcanzar ce
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 55</summary>
 
-**Respuesta.**
-
 No. La derivada discontinua de los bultos de C18 satisface Darboux aunque sus valores no converjan al central.
 
-**Fundamento en la sección 19.7.**
-
-**Discontinuidad y valores intermedios son compatibles.** La familia de bultos de C18 es derivable en toda la recta, tiene $F'(0)=0$ y puntos $x_n\to0$ con $F'(x_n)=-3/2$. R7 obliga a alcanzar cada valor de $(-3/2,0)$ entre cero y cada $x_n$, aunque las derivadas no converjan al valor central. En el perfil de cada bulto, la fórmula $-4u(1-u^2)$ también muestra variación continua dentro de esa pieza. Representar sólo una pieza no prueba toda la propiedad; ésta sigue de R7 aplicado a la función completa. Una función escalón que pase directamente de $-1$ a $1$ y omita cero no puede ser la derivada de una función derivable en un intervalo que contenga ambos lados.
+Darboux garantiza que entre dos valores se alcanzan los niveles intermedios. Continuidad exige además que salidas próximas al centro se aproximen a su valor central. La ruta de bultos mantiene derivadas menos tres medios frente al valor cero, aunque entre esos centros también aparezcan los demás niveles. Las dos propiedades pueden separarse.
 
 </details>
 
@@ -2144,13 +1625,9 @@ No. La derivada discontinua de los bultos de C18 satisface Darboux aunque sus va
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 56</summary>
 
-**Respuesta.**
-
 No en un intervalo donde sea la derivada de una función derivable en todos sus puntos; Darboux fuerza ese valor intermedio.
 
-**Fundamento en la sección 19.7.**
-
-**Discontinuidad y valores intermedios son compatibles.** La familia de bultos de C18 es derivable en toda la recta, tiene $F'(0)=0$ y puntos $x_n\to0$ con $F'(x_n)=-3/2$. R7 obliga a alcanzar cada valor de $(-3/2,0)$ entre cero y cada $x_n$, aunque las derivadas no converjan al valor central. En el perfil de cada bulto, la fórmula $-4u(1-u^2)$ también muestra variación continua dentro de esa pieza. Representar sólo una pieza no prueba toda la propiedad; ésta sigue de R7 aplicado a la función completa. Una función escalón que pase directamente de $-1$ a $1$ y omita cero no puede ser la derivada de una función derivable en un intervalo que contenga ambos lados.
+Si ambos signos aparecen en dos centros del intervalo, el nivel cero debe alcanzarse en el segmento intermedio por Darboux. Omitirlo contradice que la función propuesta sea una derivada existente en todo el intervalo. Esto descarta un escalón directo, sin afirmar que todas las derivadas sean continuas.
 
 </details>
 
@@ -2167,16 +1644,7 @@ Si $H\prime(u)<0<H\prime(v)$ y H es derivable en un intervalo abierto que contie
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 31</summary>
 
-**Respuesta.**
-
-La pendiente negativa en u fuerza cocientes negativos cerca y una entrada explícita t=u+min(δu,v-u)/2 produce H(t)<H(u). La pendiente positiva en v fuerza cocientes positivos, y s=v-min(δv,v-u)/2 tiene incremento negativo, dando H(s)<H(v). Derivabilidad da continuidad de H en todo el segmento; C16 asegura un mínimo alcanzado. Ninguno de sus bordes puede minimizar por las comparaciones, así un minimizador c está en (u,v). Una bola pequeña de c queda en el segmento y convierte ese mínimo global restringido en mínimo local de la función original.
-
-**Fundamento en la sección 19.7.**
-
-**Objeto auxiliar y prueba.** Supongamos primero $f'(u)<\lambda<f'(v)$ y pongamos $H(x)=f(x)-\lambda x$. Entonces $H'(u)<0<H'(v)$. El signo de las pendientes centradas en $u$ da un radio $\delta_u$ donde los cocientes son negativos. Para
-$t=u+\min(\delta_u,v-u)/2\in(u,v)$ resulta $H(t)<H(u)$. En $v$, los cocientes son positivos en algún radio $\delta_v$; el argumento $s=v-\min(\delta_v,v-u)/2$ tiene incremento negativo y produce $H(s)<H(v)$. Así ninguno de los bordes minimiza $H$ sobre $[u,v]$.
-
-C18 da continuidad de $H$ en cada punto del segmento; su restricción es continua allí. C16 entrega un mínimo alcanzado, que las dos comparaciones sitúan en algún $c\in(u,v)$. Ese mínimo es local para la función original: una bola suficientemente pequeña de $c$ queda en $(u,v)$. Fermat da $H'(c)=0$, luego $f'(c)=\lambda$. Si $f'(u)>\lambda>f'(v)$, se aplica el caso anterior a $-f$ y $-\lambda$, o se usa un máximo para la misma función auxiliar. No se elige una familia de minimizadores.
+El límite negativo de secantes en $u$ entrega $\delta_u>0$ con cocientes negativos. La entrada $t=u+\min(\delta_u,v-u)/2$ está dentro del segmento y cumple $H(t)<H(u)$. En $v$, el límite positivo entrega $\delta_v>0$; la entrada $s=v-\min(\delta_v,v-u)/2$ tiene incremento negativo y secante positiva, así $H(s)<H(v)$. Derivabilidad implica continuidad y Weierstrass da un mínimo alcanzado en $[u,v]$. Ningún borde puede alcanzarlo, de modo que un minimizador $c$ es interior y también un mínimo local de la función original.
 
 </details>
 
@@ -2191,18 +1659,7 @@ Prueba Darboux para $f\prime(u)<\lambda<f\prime(v)$ y explica cómo tratar el or
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 32</summary>
 
-**Respuesta.**
-
-H=f-λx tiene derivadas negativas y positivas en los dos bordes, respectivamente. E031 localiza un mínimo interior; Fermat implica $H'(c)$=0 y por tanto $f'(c)$=λ. La continuidad empleada es la de H, deducida de derivabilidad de f y de la recta, no la de $f'$. Si los valores derivados aparecen en orden opuesto, la función -f y el número -λ tienen el orden ya probado, y su conclusión se traduce de nuevo a $f'(c)$=λ. El punto está estrictamente entre u y v.
-
-**Fundamento en la sección 19.7.**
-
-C18 mostró una función derivable cuya derivada no es continua. Sin embargo, una derivada en un intervalo no puede omitir un valor situado entre dos de sus valores. No lo demostraremos suponiendo continuidad de $f'$.
-
-**R7 — Darboux.** Sea $f:I\to\mathbb R$ derivable en todos los puntos de un intervalo abierto $I$. Para $u<v$ en $I$ y un real $\lambda$ estrictamente entre $f'(u)$ y $f'(v)$, existe $c\in(u,v)$ con $f'(c)=\lambda$.
-
-**Objeto auxiliar y prueba.** Supongamos primero $f'(u)<\lambda<f'(v)$ y pongamos $H(x)=f(x)-\lambda x$. Entonces $H'(u)<0<H'(v)$. El signo de las pendientes centradas en $u$ da un radio $\delta_u$ donde los cocientes son negativos. Para
-$t=u+\min(\delta_u,v-u)/2\in(u,v)$ resulta $H(t)<H(u)$. En $v$, los cocientes son positivos en algún radio $\delta_v$; el argumento $s=v-\min(\delta_v,v-u)/2$ tiene incremento negativo y produce $H(s)<H(v)$. Así ninguno de los bordes minimiza $H$ sobre $[u,v]$.
+Sea $H(x)=f(x)-\lambda x$. Cuando $f\prime(u)<\lambda<f\prime(v)$, sus derivadas de borde cumplen $H\prime(u)<0<H\prime(v)$. El argumento anterior localiza un mínimo interior de $H$ en $[u,v]$; Fermat da $H\prime(c)=0$ y por ello $f\prime(c)=\lambda$. La continuidad usada es la de $H$, consecuencia de derivabilidad de $f$, sin suponer continuidad de $f\prime$. Si las derivadas están en orden opuesto, aplicamos el caso probado a $-f$ y $-\lambda$ y traducimos la igualdad al signo original.
 
 </details>
 
@@ -2217,7 +1674,7 @@ Usa la familia de bultos de C18 para distinguir continuidad de derivada y propie
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 33</summary>
 
-C18 prueba derivabilidad de F en toda la recta, $F'$(0)=0 y $F'$(x_n)=-3/2 con x_n→0. Por tanto $F'$ no es continua en cero. Darboux se aplica entre cero y cada x_n>0 y obliga a que cualquier λ de (-3/2,0) aparezca en algún centro interior a ese segmento. No se necesita un mismo centro para diferentes n o λ. Los valores intermedios son compatibles con las pendientes persistentes de la ruta, pues no implican convergencia al valor central.
+La función de bultos es derivable en toda la recta, con $F\prime(0)=0$ y $F\prime(x_n)=-3/2$ para una ruta $x_n\to0$. Esta ruta refuta continuidad de $F\prime$ en cero. Sin embargo, Darboux se aplica entre cero y cada $x_n>0$: para cualquier $\lambda\in(-3/2,0)$ existe un centro estrictamente entre ambos con $F\prime=\lambda$. El testigo puede depender del nivel y del índice. Alcanzar esos valores intermedios no obliga a que las derivadas de la ruta converjan al valor central.
 
 **Retorno visual.** Véase [C19-F07](analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.html#fig-anm-c19-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -2234,15 +1691,7 @@ Prueba que una derivada no nula en un intervalo abierto tiene signo constante, s
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 34</summary>
 
-**Respuesta.**
-
-Si hubiera un valor positivo y otro negativo, se ordenan sus centros como u<v. El cero queda estrictamente entre las dos derivadas y Darboux da un c intermedio con $f'(c)$=0, contradicción. En un intervalo no vacío se fija un centro; tricotomía y ausencia de ceros determinan su signo y excluyen el opuesto en todos los demás. R4 hace a f estrictamente creciente o decreciente según ese signo. No se deduce una separación uniforme de la derivada respecto de cero.
-
-**Fundamento en la sección 19.7.**
-
-**Consecuencia de signo.** Si $f'$ no se anula en $I$, no puede tener un valor positivo y otro negativo: Darboux con $\lambda=0$ daría una anulación entre ellos. Su signo es constante; si el intervalo es no vacío, fijar un punto y su signo determina cuál. R4 convierte ese signo en monotonía estricta. La premisa $f'\ne0$ no significa una cota positiva uniforme de $|f'|$.
-
-**Discontinuidad y valores intermedios son compatibles.** La familia de bultos de C18 es derivable en toda la recta, tiene $F'(0)=0$ y puntos $x_n\to0$ con $F'(x_n)=-3/2$. R7 obliga a alcanzar cada valor de $(-3/2,0)$ entre cero y cada $x_n$, aunque las derivadas no converjan al valor central. En el perfil de cada bulto, la fórmula $-4u(1-u^2)$ también muestra variación continua dentro de esa pieza. Representar sólo una pieza no prueba toda la propiedad; ésta sigue de R7 aplicado a la función completa. Una función escalón que pase directamente de $-1$ a $1$ y omita cero no puede ser la derivada de una función derivable en un intervalo que contenga ambos lados.
+Si hubiera una derivada positiva y otra negativa en el intervalo abierto, cero estaría estrictamente entre sus valores. Darboux produciría un centro intermedio de derivada cero, contradiciendo la premisa. Para el intervalo no vacío fijamos un centro y su signo no nulo; el opuesto queda excluido en todos los demás. Por las reglas de signo, la función es estrictamente creciente o decreciente según ese signo. No se obtiene automáticamente una separación uniforme de las magnitudes de la derivada respecto de cero.
 
 </details>
 
@@ -2257,18 +1706,7 @@ En $(-1,1)$, sea h menos uno para $x<0$ y uno para $x\ge0$. Prueba que no existe
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 35</summary>
 
-**Respuesta.**
-
-Si existiera f, los centros u=-1/2 y v=1/2 tendrían derivadas menos uno y uno. Darboux con λ=0 entregaría un c∈(-1/2,1/2) donde $f'(c)$=0. Pero h sólo toma los valores -1 y 1 en todo el dominio, contradicción. El argumento usa el valor intermedio de derivadas existentes, sin asumir que h sea continua y sin discutir únicamente la apariencia de su salto en un gráfico.
-
-**Fundamento en la sección 19.7.**
-
-C18 mostró una función derivable cuya derivada no es continua. Sin embargo, una derivada en un intervalo no puede omitir un valor situado entre dos de sus valores. No lo demostraremos suponiendo continuidad de $f'$.
-
-**R7 — Darboux.** Sea $f:I\to\mathbb R$ derivable en todos los puntos de un intervalo abierto $I$. Para $u<v$ en $I$ y un real $\lambda$ estrictamente entre $f'(u)$ y $f'(v)$, existe $c\in(u,v)$ con $f'(c)=\lambda$.
-
-**Objeto auxiliar y prueba.** Supongamos primero $f'(u)<\lambda<f'(v)$ y pongamos $H(x)=f(x)-\lambda x$. Entonces $H'(u)<0<H'(v)$. El signo de las pendientes centradas en $u$ da un radio $\delta_u$ donde los cocientes son negativos. Para
-$t=u+\min(\delta_u,v-u)/2\in(u,v)$ resulta $H(t)<H(u)$. En $v$, los cocientes son positivos en algún radio $\delta_v$; el argumento $s=v-\min(\delta_v,v-u)/2$ tiene incremento negativo y produce $H(s)<H(v)$. Así ninguno de los bordes minimiza $H$ sobre $[u,v]$.
+Supongamos una función derivable en $(-1,1)$ con derivada $h$. En $u=-1/2$ su derivada sería menos uno y en $v=1/2$ sería uno. Darboux aplicado al nivel cero entregaría $c\in(-1/2,1/2)$ con derivada cero. Pero $h$ sólo toma menos uno y uno, contradicción. No se ha supuesto continuidad de $h$ ni se ha utilizado el gráfico de su salto; se infringe una propiedad necesaria de toda derivada en un intervalo.
 
 </details>
 ## 19.8. Certificar ceros y soluciones únicas
@@ -2308,13 +1746,9 @@ Estas son cotas racionales demostradas, no cifras leídas de un gráfico. En gen
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 57</summary>
 
-**Respuesta.**
-
 Un punto interior de derivada cero, siempre que su segmento esté en el dominio y se verifiquen continuidad y derivabilidad.
 
-**Fundamento en la sección 19.8.**
-
-**R8 — Ceros separados y unicidad.** Bajo las hipótesis de continuidad y derivabilidad sobre los segmentos de un intervalo $I$, si $f'$ nunca vale cero en su interior, $f$ es inyectiva. En efecto, $f(x)=f(y)$ con $x<y$ permitiría aplicar Rolle a $[x,y]$ y daría un cero de $f'$ entre ellos. Si $f'$ tiene a lo sumo $k$ ceros distintos, $k\ge0$ entero, $f$ tiene a lo sumo $k+1$ ceros distintos. Si hubiera $k+2$, ordenamos esa lista finita; Rolle en cada uno de sus $k+1$ segmentos vecinos entrega un cero de $f'$ en el respectivo interior. Son distintos porque esos interiores son disjuntos, contradicción. Sólo se instancian finitas existencias, sin una selección numerable.
+El teorema se aplica a igualdad de dos valores cualesquiera, no sólo a ceros de la función. El segmento completo y sus condiciones de continuidad y derivabilidad son premisas necesarias. Si la derivada nunca se anula, esa igualdad resulta imposible para entradas distintas. Se obtiene inyectividad, pero aún no existencia de una solución para un nivel dado.
 
 </details>
 
@@ -2329,13 +1763,9 @@ Un punto interior de derivada cero, siempre que su segmento esté en el dominio 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 58</summary>
 
-**Respuesta.**
-
 A lo sumo $k+1$ ceros distintos de $f$, usando los segmentos entre una lista finita de ceros ordenados.
 
-**Fundamento en la sección 19.8.**
-
-**R8 — Ceros separados y unicidad.** Bajo las hipótesis de continuidad y derivabilidad sobre los segmentos de un intervalo $I$, si $f'$ nunca vale cero en su interior, $f$ es inyectiva. En efecto, $f(x)=f(y)$ con $x<y$ permitiría aplicar Rolle a $[x,y]$ y daría un cero de $f'$ entre ellos. Si $f'$ tiene a lo sumo $k$ ceros distintos, $k\ge0$ entero, $f$ tiene a lo sumo $k+1$ ceros distintos. Si hubiera $k+2$, ordenamos esa lista finita; Rolle en cada uno de sus $k+1$ segmentos vecinos entrega un cero de $f'$ en el respectivo interior. Son distintos porque esos interiores son disjuntos, contradicción. Sólo se instancian finitas existencias, sin una selección numerable.
+Si hubiera $k+2$ ceros distintos, se ordenaría esa lista finita. Los $k+1$ segmentos vecinos aportarían por Rolle otros tantos ceros de derivada en interiores separados. Eso infringiría la cota $k$. El argumento cuenta raíces distintas y no sus multiplicidades.
 
 </details>
 
@@ -2350,13 +1780,9 @@ A lo sumo $k+1$ ceros distintos de $f$, usando los segmentos entre una lista fin
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 59</summary>
 
-**Respuesta.**
-
 Cada uno está en un interior diferente, y esos interiores no se solapan.
 
-**Fundamento en la sección 19.8.**
-
-**R8 — Ceros separados y unicidad.** Bajo las hipótesis de continuidad y derivabilidad sobre los segmentos de un intervalo $I$, si $f'$ nunca vale cero en su interior, $f$ es inyectiva. En efecto, $f(x)=f(y)$ con $x<y$ permitiría aplicar Rolle a $[x,y]$ y daría un cero de $f'$ entre ellos. Si $f'$ tiene a lo sumo $k$ ceros distintos, $k\ge0$ entero, $f$ tiene a lo sumo $k+1$ ceros distintos. Si hubiera $k+2$, ordenamos esa lista finita; Rolle en cada uno de sus $k+1$ segmentos vecinos entrega un cero de $f'$ en el respectivo interior. Son distintos porque esos interiores son disjuntos, contradicción. Sólo se instancian finitas existencias, sin una selección numerable.
+Cada testigo queda estrictamente entre los extremos de su propio segmento. Los interiores de segmentos consecutivos no se intersectan, aunque compartan un extremo de borde. Por ello sus testigos no pueden coincidir. Esa localización permite convertir aplicaciones de Rolle en un recuento de ceros distintos.
 
 </details>
 
@@ -2371,21 +1797,9 @@ Cada uno está en un interior diferente, y esos interiores no se solapan.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 60</summary>
 
-**Respuesta.**
-
 Continuidad y valor intermedio de C15, con signos opuestos en cero y uno; Rolle sólo prueba unicidad.
 
-**Fundamento en la sección 19.8.**
-
-**Existencia por una herramienta diferente.** Para $p(x)=x^3+x-1$ en $[0,1]$, $p(0)=-1$ y $p(1)=1$. La continuidad y el valor intermedio de C15 dan un cero $r\in(0,1)$. Su derivada $3x^2+1\ge1$ hace imposible otro cero por R8, y también prueba crecimiento estricto por R4. El valor medio no creó la raíz: asegura su unicidad y cuantifica cambios una vez que C15 la garantiza.
-
-**Certificado de posición y error.** Los valores $p(1/2)=-3/8$ y $p(3/4)=11/64$ encierran la única raíz en $(1/2,3/4)$. En $x=2/3$, $p(x)=-1/27$, así el crecimiento la sitúa a la derecha. Dentro de $[1/2,3/4]$,
-$$\frac74\le p'(t)\le\frac{43}{16}.$$
-Aplicar R5 al par $x,r$ da
-$$\frac74(r-x)\le p(r)-p(x)=\frac1{27}\le\frac{43}{16}(r-x),$$
-por lo que
-$$\frac{16}{1161}\le r-\frac23\le\frac4{189}.$$
-Estas son cotas racionales demostradas, no cifras leídas de un gráfico. En general, una cota $f'\ge m>0$ sobre el segmento entre un aproximante $x$ y un cero $r$ da $|x-r|\le|f(x)|/m$, siempre que el cero y el segmento satisfagan las hipótesis.
+El valor intermedio convierte signos opuestos de una continua en existencia de raíz. La derivada positiva permite después descartar una segunda mediante Rolle o crecimiento. Son pasos lógicamente diferentes. Ausencia de derivadas nulas por sí sola no asegura que el nivel cero se alcance.
 
 </details>
 
@@ -2400,15 +1814,9 @@ Estas son cotas racionales demostradas, no cifras leídas de un gráfico. En gen
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 61</summary>
 
-**Respuesta.**
-
 Uno, porque $p\prime(t)=3t^2+1\ge1$.
 
-**Fundamento en la sección 19.8.**
-
-**Un número máximo puede alcanzarse.** Para $q(x)=x^3-3x$ sobre la recta, $q'(x)=3x^2-3$ tiene exactamente dos ceros, $-1,1$. R8 permite a lo sumo tres ceros de $q$. La factorización $q(x)=x(x^2-3)$ y las raíces de C10 muestran tres: $-\sqrt3,0,\sqrt3$. El conteo es finito y no usa un teorema sobre derivadas de orden superior.
-
-**Lo que debe quedar certificado.** Una cota de derivada tiene que valer en todos los puntos interiores pertinentes, no sólo en una tabla de pendientes. Un par de valores iguales no autoriza Rolle sobre un dominio con huecos, ni una raíz garantiza otras entre cada par de puntos estacionarios. Disponemos ya de los puentes entre pendientes locales y orden, incrementos, valores intermedios de la derivada y soluciones sobre intervalos. Convexidad y modelos de orden superior tendrán sus propias hipótesis en los capítulos siguientes.
+El cuadrado es no negativo en todo centro y por ello $3t^2+1$ es al menos uno. La barrera es global en el segmento, no una estimación basada en muestras. Valor medio la convierte en una cota inferior de incrementos. Esa cota permite traducir un residual conocido en distancia a la raíz.
 
 </details>
 
@@ -2423,21 +1831,9 @@ Uno, porque $p\prime(t)=3t^2+1\ge1$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 62</summary>
 
-**Respuesta.**
-
 $p(2/3)=-1/27$; la raíz única queda a su derecha por crecimiento estricto.
 
-**Fundamento en la sección 19.8.**
-
-**Existencia por una herramienta diferente.** Para $p(x)=x^3+x-1$ en $[0,1]$, $p(0)=-1$ y $p(1)=1$. La continuidad y el valor intermedio de C15 dan un cero $r\in(0,1)$. Su derivada $3x^2+1\ge1$ hace imposible otro cero por R8, y también prueba crecimiento estricto por R4. El valor medio no creó la raíz: asegura su unicidad y cuantifica cambios una vez que C15 la garantiza.
-
-**Certificado de posición y error.** Los valores $p(1/2)=-3/8$ y $p(3/4)=11/64$ encierran la única raíz en $(1/2,3/4)$. En $x=2/3$, $p(x)=-1/27$, así el crecimiento la sitúa a la derecha. Dentro de $[1/2,3/4]$,
-$$\frac74\le p'(t)\le\frac{43}{16}.$$
-Aplicar R5 al par $x,r$ da
-$$\frac74(r-x)\le p(r)-p(x)=\frac1{27}\le\frac{43}{16}(r-x),$$
-por lo que
-$$\frac{16}{1161}\le r-\frac23\le\frac4{189}.$$
-Estas son cotas racionales demostradas, no cifras leídas de un gráfico. En general, una cota $f'\ge m>0$ sobre el segmento entre un aproximante $x$ y un cero $r$ da $|x-r|\le|f(x)|/m$, siempre que el cero y el segmento satisfagan las hipótesis.
+Sustituir dos tercios produce $8/27+18/27-27/27=-1/27$. Como el polinomio es estrictamente creciente y en la raíz vale cero, la entrada de valor negativo queda a su izquierda. El signo del residual determina así el sentido del error. Su magnitud y una cota inferior de derivada controlarán después su tamaño.
 
 </details>
 
@@ -2452,19 +1848,9 @@ Estas son cotas racionales demostradas, no cifras leídas de un gráfico. En gen
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 63</summary>
 
-**Respuesta.**
-
 $|x-r|\le|f(x)|/m$, obtenido de la cota de incrementos en ese segmento.
 
-**Fundamento en la sección 19.8.**
-
-**Certificado de posición y error.** Los valores $p(1/2)=-3/8$ y $p(3/4)=11/64$ encierran la única raíz en $(1/2,3/4)$. En $x=2/3$, $p(x)=-1/27$, así el crecimiento la sitúa a la derecha. Dentro de $[1/2,3/4]$,
-$$\frac74\le p'(t)\le\frac{43}{16}.$$
-Aplicar R5 al par $x,r$ da
-$$\frac74(r-x)\le p(r)-p(x)=\frac1{27}\le\frac{43}{16}(r-x),$$
-por lo que
-$$\frac{16}{1161}\le r-\frac23\le\frac4{189}.$$
-Estas son cotas racionales demostradas, no cifras leídas de un gráfico. En general, una cota $f'\ge m>0$ sobre el segmento entre un aproximante $x$ y un cero $r$ da $|x-r|\le|f(x)|/m$, siempre que el cero y el segmento satisfagan las hipótesis.
+La raíz tiene valor cero, así la magnitud del incremento de salida entre ella y $x$ es $|f(x)|$. La barrera positiva da al menos $m|x-r|$ para ese incremento. Dividir por $m>0$ produce la cota posicional. Se necesitan las hipótesis en todo el segmento entre ambos, no sólo en el aproximante.
 
 </details>
 
@@ -2479,13 +1865,9 @@ Estas son cotas racionales demostradas, no cifras leídas de un gráfico. En gen
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 64</summary>
 
-**Respuesta.**
-
 Una cota válida para todos los puntos interiores pertinentes; la tabla finita no certifica esa premisa universal.
 
-**Fundamento en la sección 19.8.**
-
-**Lo que debe quedar certificado.** Una cota de derivada tiene que valer en todos los puntos interiores pertinentes, no sólo en una tabla de pendientes. Un par de valores iguales no autoriza Rolle sobre un dominio con huecos, ni una raíz garantiza otras entre cada par de puntos estacionarios. Disponemos ya de los puentes entre pendientes locales y orden, incrementos, valores intermedios de la derivada y soluciones sobre intervalos. Convexidad y modelos de orden superior tendrán sus propias hipótesis en los capítulos siguientes.
+Los valores muestreados no excluyen una pendiente menor, mayor o nula entre las muestras. El certificado de valor medio utiliza una cota válida para cualquier testigo interior posible. Esa obligación debe demostrarse mediante fórmulas o estimaciones sobre toda la región. La tabla finita por sí sola no justifica el paso de residual a distancia.
 
 </details>
 
@@ -2502,15 +1884,7 @@ Prueba inyectividad de una función continua y derivable interiormente en un int
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 36</summary>
 
-**Respuesta.**
-
-Si f(x)=f(y) para x<y, el segmento está en el intervalo y su restricción cumple Rolle, que produce c∈(x,y) con $f'(c)$=0, contradicción. Por tanto dos entradas distintas no tienen el mismo valor y f es inyectiva. No es necesario que esos valores comunes sean cero: Rolle sólo requiere igualdad de borde. La ausencia de derivadas nulas no prueba existencia de ninguna solución f(x)=b; únicamente permite a lo sumo una por valor de salida.
-
-**Fundamento en la sección 19.8.**
-
-Rolle y las cotas de incrementos producen certificados de número de soluciones y de error. Es necesario distinguir la existencia de una raíz, su unicidad y la precisión de un aproximante.
-
-**R8 — Ceros separados y unicidad.** Bajo las hipótesis de continuidad y derivabilidad sobre los segmentos de un intervalo $I$, si $f'$ nunca vale cero en su interior, $f$ es inyectiva. En efecto, $f(x)=f(y)$ con $x<y$ permitiría aplicar Rolle a $[x,y]$ y daría un cero de $f'$ entre ellos. Si $f'$ tiene a lo sumo $k$ ceros distintos, $k\ge0$ entero, $f$ tiene a lo sumo $k+1$ ceros distintos. Si hubiera $k+2$, ordenamos esa lista finita; Rolle en cada uno de sus $k+1$ segmentos vecinos entrega un cero de $f'$ en el respectivo interior. Son distintos porque esos interiores son disjuntos, contradicción. Sólo se instancian finitas existencias, sin una selección numerable.
+Supongamos $f(x)=f(y)$ con $x<y$. Intervalaridad conserva todo $[x,y]$ en el dominio, continuidad se hereda y su interior dispone de derivadas. Rolle produce $c\in(x,y)$ con $f\prime(c)=0$, contradicción. Así entradas distintas no tienen la misma salida y la función es inyectiva. El valor repetido no necesitaba ser cero. La conclusión sólo garantiza a lo sumo una solución por nivel; existencia de una solución requiere otro dato.
 
 </details>
 
@@ -2525,13 +1899,7 @@ Si $f'$ tiene a lo sumo k ceros en el interior de un intervalo, prueba que f tie
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 37</summary>
 
-**Respuesta.**
-
-Supongamos k+2 ceros distintos y ordenemos esa lista finita x0<…<x(k+1). En cada segmento vecino [xj,x(j+1)], continuidad, derivabilidad e igualdad de bordes cero permiten Rolle. Se obtienen k+1 puntos c_j en sus interiores con derivada cero; son distintos porque los interiores no se solapan. Esto contradice la cota k. Las aplicaciones son finitas, no una selección numerable de testigos. La prueba se refiere a ceros distintos, sin contar multiplicidad.
-
-**Fundamento en la sección 19.8.**
-
-**R8 — Ceros separados y unicidad.** Bajo las hipótesis de continuidad y derivabilidad sobre los segmentos de un intervalo $I$, si $f'$ nunca vale cero en su interior, $f$ es inyectiva. En efecto, $f(x)=f(y)$ con $x<y$ permitiría aplicar Rolle a $[x,y]$ y daría un cero de $f'$ entre ellos. Si $f'$ tiene a lo sumo $k$ ceros distintos, $k\ge0$ entero, $f$ tiene a lo sumo $k+1$ ceros distintos. Si hubiera $k+2$, ordenamos esa lista finita; Rolle en cada uno de sus $k+1$ segmentos vecinos entrega un cero de $f'$ en el respectivo interior. Son distintos porque esos interiores son disjuntos, contradicción. Sólo se instancian finitas existencias, sin una selección numerable.
+Si hubiera $k+2$ ceros distintos, ordenamos esa lista finita como $x_0<\cdots<x_{k+1}$. Cada segmento vecino cumple Rolle y entrega $c_j\in(x_j,x_{j+1})$ con $f\prime(c_j)=0$, para $j=0,\ldots,k$. Sus interiores son disjuntos, así los $k+1$ testigos son distintos y contradicen la cota $k$. Sólo se usan finitas aplicaciones, no una selección numerable de puntos. El recuento corresponde a raíces distintas y no a multiplicidades.
 
 </details>
 
@@ -2546,7 +1914,7 @@ Para $p(x)=x^3+x-1$ en $[0,1]$, prueba existencia y unicidad de un cero y encié
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 38</summary>
 
-El polinomio es continuo y tiene valores -1 y 1 en los bordes; C15 da al menos un cero interior. Su derivada 3x²+1≥1 nunca se anula, así E036 prueba inyectividad y a lo sumo un cero. Se combinan ambos resultados para una raíz única r. Los valores exactos p(1/2)=-3/8 y p(3/4)=11/64 tienen signos opuestos y el mismo argumento de continuidad en ese subsegmento sitúa el cero en (1/2,3/4); la unicidad identifica ese cero con r. Rolle no reemplaza al valor intermedio en la parte de existencia.
+El polinomio $p=x^3+x-1$ es continuo, con $p(0)=-1$ y $p(1)=1$. Valor intermedio da una raíz interior. Su derivada $p\prime(x)=3x^2+1\ge1$ no se anula, así Rolle descarta dos raíces distintas y la raíz $r$ es única. Además $p(1/2)=-3/8<0$ y $p(3/4)=11/64>0$. Valor intermedio en ese subsegmento da una raíz en $(1/2,3/4)$, que por unicidad es $r$. Existencia y localización proceden de continuidad; Rolle aporta la parte de unicidad.
 
 </details>
 
@@ -2561,15 +1929,7 @@ Usa la derivada de $q(x)=x^3-3x$ para acotar sus ceros y comprueba cuántos tien
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 39</summary>
 
-**Respuesta.**
-
-$q'$=3x²-3 se anula exactamente en -1 y 1, así R8 limita q a tres ceros distintos. Factorizar q=x(x²-3) muestra los tres valores -√3,0,√3, que efectivamente anulan q. La cota se alcanza en este ejemplo. La recíproca general es falsa: para Q=q+10 sobre [-2,2], la derivada conserva esos dos ceros interiores, pero sus valores se controlan por R4 en las piezas: Q(-2)=8,Q(-1)=12,Q(1)=8,Q(2)=12 y los signos de 3x²-3 dan mínimos al menos ocho, sin ceros. Dos puntos estacionarios no obligan a tres raíces.
-
-**Fundamento en la sección 19.8.**
-
-**Un número máximo puede alcanzarse.** Para $q(x)=x^3-3x$ sobre la recta, $q'(x)=3x^2-3$ tiene exactamente dos ceros, $-1,1$. R8 permite a lo sumo tres ceros de $q$. La factorización $q(x)=x(x^2-3)$ y las raíces de C10 muestran tres: $-\sqrt3,0,\sqrt3$. El conteo es finito y no usa un teorema sobre derivadas de orden superior.
-
-**Lo que debe quedar certificado.** Una cota de derivada tiene que valer en todos los puntos interiores pertinentes, no sólo en una tabla de pendientes. Un par de valores iguales no autoriza Rolle sobre un dominio con huecos, ni una raíz garantiza otras entre cada par de puntos estacionarios. Disponemos ya de los puentes entre pendientes locales y orden, incrementos, valores intermedios de la derivada y soluciones sobre intervalos. Convexidad y modelos de orden superior tendrán sus propias hipótesis en los capítulos siguientes.
+Para $q=x^3-3x$, la derivada $q\prime=3x^2-3$ se anula exactamente en menos uno y uno. El recuento por Rolle limita a tres los ceros distintos de $q$. La factorización $q=x(x^2-3)$ muestra que $-\sqrt3,0,\sqrt3$ son esos tres ceros. La recíproca no vale: $Q=q+10$ en $[-2,2]$ conserva dos ceros interiores de derivada, pero $Q(-2)=8$, $Q(-1)=12$, $Q(1)=8$, $Q(2)=12$. Los signos de $Q\prime$ en las tres piezas y las reglas de orden aseguran $Q\ge8$ en todo ese dominio, sin ninguna raíz.
 
 </details>
 
@@ -2584,7 +1944,7 @@ Para la raíz única r de E038 y el aproximante $x=2/3$, demuestra las cotas rac
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 40</summary>
 
-Por E038, r∈(1/2,3/4). El aproximante también está ahí y p(x)=8/27+2/3-1=-1/27. El crecimiento estricto de p da r>x. En el segmento que contiene ambos, 1/4≤t²≤9/16, así 7/4≤$p'(t)$≤43/16. R5 produce (7/4)(r-x)≤p(r)-p(x)=1/27≤(43/16)(r-x). Dividir por las constantes positivas da r-x≤4/189 y r-x≥16/1161. Se acota el error sin conocer el punto de valor medio ni tomar una cifra decimal de la gráfica. Las cotas de derivada se probaron en todos los centros del segmento.
+La raíz $r$ y $x=2/3$ están en $(1/2,3/4)$. Sustituir da $p(x)=-1/27$; el crecimiento estricto y $p(r)=0$ implican $r>x$. En el segmento entre ambos, $1/4\le t^2\le9/16$, así $7/4\le p\prime(t)\le43/16$. La cota de incrementos entrega $(7/4)(r-x)\le1/27\le(43/16)(r-x)$. Dividir por las constantes positivas produce $16/1161\le r-x\le4/189$. Las barreras de derivada se probaron para todos los centros pertinentes, sin identificar el testigo de valor medio ni usar cifras de un gráfico.
 
 **Retorno visual.** Véase [C19-F08](analisis-para-matematicos-capitulo-19-de-lo-local-a-lo-global.html#fig-anm-c19-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
