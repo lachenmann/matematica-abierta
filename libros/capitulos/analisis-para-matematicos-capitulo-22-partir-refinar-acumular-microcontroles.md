@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Soluciones de microcontroles — Capítulo 22
-date-modified: '2226-10-12'
+date-modified: '2026-10-12'
 provenance:
   type: original
   sources:
@@ -831,3 +831,4 @@ El error de puntos medios mantiene un término positivo que sólo desaparece al 
 La condición estricta $2\|P\|<1/100$ se satisface con malla menor que $1/200$. En una uniforme de $[0,1]$ la malla es $1/n$, así se toma un natural mayor que doscientos. Esa elección protege todas las etiquetas, no sólo las medias.
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 22](analisis-para-matematicos-capitulo-22-partir-refinar-acumular.html) · [Ejercicios](analisis-para-matematicos-capitulo-22-partir-refinar-acumular-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-22-partir-refinar-acumular-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-22-partir-refinar-acumular-microcontroles.html)
+

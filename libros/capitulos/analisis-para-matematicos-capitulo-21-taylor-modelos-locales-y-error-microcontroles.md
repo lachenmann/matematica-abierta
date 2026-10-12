@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Soluciones de microcontroles — Capítulo 21
-date-modified: '2126-10-12'
+date-modified: '2026-10-12'
 provenance:
   type: original
   sources:
@@ -831,3 +831,4 @@ El factor central anula todos los datos hasta el orden fijado y los factores de 
 El orden y todas las sumas del capítulo son finitos. Los controles describen sus residuos con dominios y tolerancias específicos. Para una representación infinita habría que justificar un nuevo límite y que el resto tienda a cero en el régimen correspondiente.
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 21](analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error.html) · [Ejercicios](analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-21-taylor-modelos-locales-y-error-microcontroles.html)
+
