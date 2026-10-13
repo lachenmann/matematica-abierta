@@ -15,6 +15,7 @@ topics:
   - calculo-de-una-variable
   - historia-de-las-matematicas
 number-sections: false
+css: /assets/books/elementos-del-calculo/edc-source-notes.css
 provenance:
   type: original
   sources:

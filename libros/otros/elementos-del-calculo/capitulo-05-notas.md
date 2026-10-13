@@ -15,6 +15,7 @@ topics:
   - calculo-de-una-variable
   - historia-de-las-matematicas
 number-sections: false
+css: /assets/books/elementos-del-calculo/edc-source-notes.css
 provenance:
   type: original
   sources:
@@ -79,7 +80,7 @@ Ni la progresión de sumas de Cauchy ni la obra de Riemann ni el memorando de Da
 
 ## H6. Lecturas disponibles y por verificar
 
-En la biblioteca más amplia de Drive, el inventario canónico [INVENTARIO_EDC_v1.0](bibliografia.html) documenta nominalmente, entre otros, a Spivak, Apostol, Courant–John, Bressoud y la obra de Gabor Toth. Se trata de disponibilidad comprobada en M00, no de un nuevo cotejo de esos libros aquí. En particular, referencias de página concretas a dichas ediciones **no** se inventan.
+La [bibliografía del proyecto](bibliografia.html) registra también obras de Spivak, Apostol, Courant–John, Bressoud y Gabor Toth. Su disponibilidad fue comprobada al organizar las fuentes; esas obras no se presentan como cotejadas en estas notas ni se les atribuyen páginas que no se hayan consultado.
 
 **Prioridades de una futura colación historiográfica:** Cauchy 1823, lecciones XXI–XXIII; Riemann 1854, apartado original sobre integral; Darboux 1875, texto publicado pp. 57–112, especialmente su formulación y pruebas del límite de sumas. La preparación matemática de C06 no depende de que esas tareas filológicas estén cerradas, porque las pruebas de C05 son autosuficientes.
 
