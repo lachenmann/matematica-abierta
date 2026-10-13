@@ -1,0 +1,487 @@
+---
+title: "¿Qué tan bien podemos aproximar π con fracciones?"
+subtitle: "El exponente de irracionalidad y una lectura guiada del argumento anunciado por OpenAI en 2026"
+description: "Una explicación pedagógica de las aproximaciones racionales de π, los exponentes de irracionalidad, las sucesiones de Cauchy, los números de Liouville y los determinantes de una demostración anunciada en 2026, con advertencia sobre la verificación pendiente."
+content-id: MA-ART-0019
+content-type: article
+status: published
+draft: false
+date-created: '2026-10-13'
+date-modified: '2026-10-13'
+areas:
+  - teoria-de-numeros
+  - analisis
+topics:
+  - pi
+  - irracionalidad
+  - aproximacion-diofantica
+  - exponentes-de-irracionalidad
+  - sucesiones-de-cauchy
+  - numeros-de-liouville
+  - flint-hills
+level: intermedio
+style-standard: MA_STYLE_v1.8
+pedagogical-standard: MA-PED_v1.0
+source-canonical: "MA-ART-0019 Obsidian v0.4.0"
+publication-state: "publicado como exposicion de resultado anunciado; verificacion independiente del teorema principal pendiente"
+provenance:
+  type: original-pedagogical-synthesis
+  note: "Texto original de Matemática Abierta derivado de MA-ART-0019, Obsidian/Markdown. La prueba discutida procede de un preprint de OpenAI (2026); no se reproduce como resultado certificado por MA."
+license: GFDL-1.3-or-later
+rights: "Publicación original de MA autorizada por el autor el 13-10-2026; los materiales de terceros mantienen sus respectivos derechos."
+related-content:
+  - "blog/hemos-construido-realmente-los-numeros-reales.md"
+---
+
+# ¿Qué tan bien podemos aproximar π con fracciones?
+
+*El exponente de irracionalidad y una lectura guiada del argumento presentado por OpenAI en 2026*
+
+La fracción $22/7$ ofrece una aproximación sorprendentemente buena de $\pi$ para un denominador tan pequeño: el error es de unos $0{,}00126449$. Mucho más llamativa es $355/113$, cuya diferencia respecto de $\pi$ apenas supera $0{,}000000266764$. Se pueden encontrar aproximaciones mejores, pero estas dos ya bastan para plantear un problema. Una fracción puede acertar por casualidad muchos decimales; lo difícil es averiguar si, a medida que crecen los denominadores, podemos seguir encontrando fracciones de precisión excepcional, una y otra vez, sin que ese proceso tenga fin.
+
+Un manuscrito de OpenAI fechado el 24 de septiembre de 2026, *The irrationality exponent of $\pi$ is $2$*, anuncia una respuesta extraordinariamente precisa y deduce de ella la convergencia de una serie trigonométrica que durante décadas ha planteado dificultades. La prueba propuesta utiliza técnicas de interpolación y determinantes muy avanzadas. La escala del problema, sin embargo, procede de un hecho elemental: todos los irracionales admiten aproximaciones racionales de error inferior a $1/q^2$ una infinidad de veces. La dificultad consiste en demostrar que, para $\pi$, ningún exponente mayor puede mantenerse indefinidamente. Los lemas técnicos del nuevo argumento requieren todavía una verificación independiente integral.
+
+::: {.callout-warning title="Estado de verificación — 13 de octubre de 2026"}
+OpenAI presentó en septiembre de 2026 un manuscrito que afirma $\mu(\pi)=2$ y publicó código Lean relacionado con la demostración. **Matemática Abierta no ha realizado una auditoría independiente integral del argumento ni de esa formalización**, y aquí no certificamos el resultado principal. El propósito de este artículo es explicar el problema, las ideas de la prueba propuesta y sus posibles consecuencias. Los resultados clásicos y los argumentos desarrollados por separado conservan su propio fundamento; la convergencia de la serie de Flint–Hills, en particular, se estudia **condicionada** a la validez de $\mu(\pi)=2$. Actualizaremos el texto si aparecen verificaciones o correcciones documentadas.
+:::
+
+## 1. La diferencia entre una buena fracción y una aproximación excepcional
+
+Si $p$ y $q$ son enteros con $q>0$, medimos el error de la fracción $p/q$ mediante la distancia ordinaria
+
+$$
+\left|\pi-\frac pq\right|.
+$$
+
+Para $q=113$, la cantidad $1/q^2$ es aproximadamente $0{,}0000783147$, casi trescientas veces mayor que el error real de $355/113$. Resulta tentador buscar otras fracciones con errores comparables a $1/q^3$, $1/q^4$ o potencias todavía mayores. Incluso si las encontráramos, su existencia aislada no decidiría el problema: siempre es posible que, después de unas cuantas aproximaciones excepcionales, el fenómeno desaparezca. Necesitamos una definición que registre los exponentes capaces de repetirse para **infinitas fracciones distintas**, con denominadores cada vez mayores.
+
+Para un número irracional $x$ definimos su *exponente de irracionalidad* como
+
+$$
+\mu(x)=\sup\left\{\nu>0:\;0<\left|x-\frac pq\right|<\frac1{q^\nu}\ \text{para infinitas fracciones reducidas }\frac pq,\ q\ge2\right\}.
+$$
+
+El supremo $\sup$ es la menor cota superior del conjunto de exponentes que cumplen esa condición. Para que $\nu$ pertenezca al conjunto, debemos encontrar infinitas fracciones reducidas con un error inferior a $q^{-\nu}$; un millón de casos favorables, si son todos los que existen, seguiría siendo insuficiente. Además, cuanto mayor es $\nu$, más estricta resulta la condición, pues $q^{-\nu}$ disminuye al aumentar el exponente cuando $q>1$. Así, $\mu(x)$ señala la frontera de las potencias de aproximación que pueden alcanzarse indefinidamente.
+
+## 2. Por qué aparece el número 2
+
+Antes de pensar en $\pi$, hay un hecho que afecta a **todos** los irracionales. Dado un irracional $x$, siempre existen infinitas fracciones $p/q$ tales que
+
+$$
+\left|x-\frac pq\right|<\frac1{q^{\nu}}
+$$
+
+para cualquier exponente fijo $\nu<2$. Esta afirmación proviene de una idea elemental: el principio del palomar.
+
+Tomemos un entero positivo $N$ y coloquemos sobre el intervalo $[0,1)$ las partes fraccionarias de
+
+$$
+0,x,2x,\ldots,Nx.
+$$
+
+Son $N+1$ puntos. Dividamos el intervalo en $N$ partes de longitud $1/N$. Dos de los puntos pertenecen necesariamente a una misma parte; por tanto, la diferencia de sus índices es un entero $q$ con $1\le q\le N$, y podemos encontrar un entero $p$ tal que
+
+$$
+|qx-p|<\frac1N.
+$$
+
+Al dividir por $q$ obtenemos
+
+$$
+\left|x-\frac pq\right|<\frac1{qN}\le\frac1{q^2}.
+$$
+
+A medida que $N$ crece, los errores de las fracciones producidas tienden a cero. Como $x$ es irracional, ninguna de esas fracciones puede coincidir con él. Si apareciesen solamente un número finito de fracciones distintas, sus distancias positivas a $x$ tendrían un mínimo positivo y no podrían acercarse indefinidamente a cero. Por consiguiente, encontramos infinitas fracciones distintas, cuyos denominadores reducidos son necesariamente ilimitados. La desigualdad sigue siendo válida al reducir cada fracción, ya que la reducción disminuye el denominador sin alterar el error.
+
+El argumento del palomar establece la forma del teorema de aproximación de Dirichlet que necesitamos:
+
+$$
+\boxed{\mu(x)\ge2\qquad\text{para todo irracional }x.}
+$$
+
+El número $2$ es el menor exponente de irracionalidad posible. Probar que $\mu(\pi)=2$ exige mostrar que las buenas aproximaciones a $\pi$, por extraordinarias que algunas resulten, nunca pueden repetirse infinitamente a un ritmo propio de un exponente fijo mayor que $2$.
+
+## 3. Por qué el caso de $\sqrt2$ es más sencillo
+
+El resultado es fácil de comprender en el caso de $\sqrt2$. Si $p/q$ está cerca de $\sqrt2$, basta aprovechar la identidad algebraica
+
+$$
+\left|\sqrt2-\frac pq\right|
+=\frac{|2q^2-p^2|}{q^2\left(\sqrt2+\frac pq\right)}.
+$$
+
+El entero $2q^2-p^2$ nunca es cero: de lo contrario, $p/q=\sqrt2$, lo que contradiría la irracionalidad de $\sqrt2$. Su valor absoluto es, por tanto, al menos $1$. Si, por ejemplo, $1\le p/q\le2$, el factor $\sqrt2+p/q$ es menor que $4$, de donde
+
+$$
+\left|\sqrt2-\frac pq\right|>\frac1{4q^2}.
+$$
+
+Las fracciones fuera de $[1,2]$ quedan a una distancia de $\sqrt2$ al menos igual al menor de los dos números $\sqrt2-1$ y $2-\sqrt2$, de modo que tampoco pueden proporcionar aproximaciones arbitrariamente buenas. Tenemos una cota cuadrática en el intervalo relevante y una distancia positiva fuera de él. Junto con Dirichlet, esto demuestra que $\mu(\sqrt2)=2$.
+
+El argumento funciona porque $\sqrt2$ satisface una ecuación polinómica con coeficientes enteros, $x^2-2=0$. De hecho, el teorema de Roth, mucho más profundo, establece que **todo número algebraico irracional** tiene exponente $2$.
+
+La trascendencia de $\pi$ significa que ninguna ecuación polinómica no nula con coeficientes enteros lo tiene por raíz. Desaparece, por tanto, el recurso aritmético que permitió controlar $\sqrt2$, y el teorema de Roth deja de ser aplicable. Aunque la irracionalidad de $\pi$ se conoce desde hace siglos, una cota de aproximación tan fina requiere una idea de otra naturaleza.
+
+::: {.callout-note title="Una nota de historia matemática"}
+Saber que $\pi$ es irracional no nos dice cuánto puede acercársele una fracción. Durante mucho tiempo ni siquiera se conoció una cota superior finita para su exponente de irracionalidad. Kurt Mahler consiguió una en 1953, y los trabajos posteriores de Mignotte, Hata, Salikhov y otros fueron reduciendo el margen que quedaba abierto. En 2020, Doron Zeilberger y Wadim Zudilin llegaron a $\mu(\pi)\le7{,}103205334137\ldots$. Cada mejora excluía familias de aproximaciones que antes no se sabía descartar; ninguna llegaba a la frontera de $2$. El anuncio de 2026 propone alcanzar esa frontera. Para la historia mucho más antigua de las aproximaciones a $\pi$, véase también *Cómo Arquímedes acotó π* (artículo histórico de MA en preparación).
+:::
+
+## 4. El enunciado y sus cuantificadores
+
+En el preprint aparece la siguiente afirmación:
+
+> **Teorema anunciado (OpenAI, 2026).** Para cada número real $\varepsilon>0$ existe un entero positivo $Q(\varepsilon)$ tal que, para todo entero $p$ y todo entero $q\ge Q(\varepsilon)$,
+>
+> $$
+> \left|\pi-\frac pq\right|\ge\frac1{q^{2+\varepsilon}}.
+> $$
+
+El orden de los cuantificadores importa. Elegimos primero $\varepsilon>0$ y solo entonces aparece un umbral $Q(\varepsilon)$, a partir del cual la desigualdad debe cumplirse para todos los numeradores y denominadores. La exigencia con $\varepsilon=0{,}1$ puede comenzar a ser válida desde un punto muy diferente de la exigencia con $\varepsilon=0{,}001$; además, el manuscrito no ofrece un procedimiento efectivo para calcular esos umbrales.
+
+No debemos sustituir este resultado por la desigualdad más fuerte
+
+$$
+\left|\pi-\frac pq\right|\ge\frac c{q^2}\qquad\text{con un único }c>0
+$$
+
+para todos los racionales. Esta segunda afirmación equivaldría, para un irracional, a la acotación de los cocientes parciales de su fracción continua, y queda fuera del alcance declarado del preprint. El exponente $2$ tolera factores que varían con el denominador, siempre que no produzcan infinitas aproximaciones de orden $q^{-2-\varepsilon}$ para un $\varepsilon$ fijo.
+
+La formulación con cuantificadores también explica por qué la fracción $355/113$ no plantea ninguna objeción: por magnífica que sea, tiene un denominador concreto. Una afirmación sobre **todos los denominadores suficientemente grandes** no necesita prohibir excepciones finitas.
+
+## 5. Sucesiones de Cauchy: existir como límite y poder ser aproximado
+
+La construcción de los números reales mediante sucesiones de Cauchy invita a formular una objeción natural. Si un número real puede representarse por una sucesión de racionales que se aproximan indefinidamente a él, ¿cómo podría existir una limitación para las aproximaciones de $\pi$? Parece que bastaría con continuar la sucesión para superar cualquier barrera. La dificultad desaparece cuando distinguimos lo que significa *converger* de la precisión que una fracción puede alcanzar **en relación con su denominador**.
+
+Una sucesión de racionales $(r_n)$ es de Cauchy cuando, para cada $\eta>0$, existe un índice $N$ a partir del cual
+
+$$
+|r_n-r_m|<\eta\qquad(n,m\ge N).
+$$
+
+Dos sucesiones de Cauchy $(r_n)$ y $(s_n)$ representan el mismo número real cuando $|r_n-s_n|\to0$. La construcción identifica cada clase de sucesiones equivalentes con un único real. Nada en esa definición impone que los términos se acerquen a su límite como una potencia determinada de sus denominadores; ni siquiera fija un ritmo de aproximación respecto del índice $n$. Podemos repetir muchos términos de una sucesión convergente, cada uno un número finito de veces, sin cambiar el límite y alterando considerablemente la rapidez con que avanzan los índices.
+
+Pensemos en los truncamientos decimales de $\pi$:
+
+$$
+r_n=\frac{\lfloor10^n\pi\rfloor}{10^n}
+\qquad(n=0,1,2,\ldots).
+$$
+
+La parte entera asegura que
+
+$$
+0<\pi-r_n<10^{-n}.
+$$
+
+La desigualdad triangular prueba que, para cualesquiera índices $m,n$,
+
+$$
+|r_n-r_m|\le|r_n-\pi|+|\pi-r_m|
+<10^{-n}+10^{-m}.
+$$
+
+La sucesión es de Cauchy y representa a $\pi$. Empleamos aquí un $\pi$ definido previamente para ilustrar cómo se representa un real mediante racionales; los truncamientos por sí solos, expresados de esta manera, no constituyen una definición independiente de $\pi$.
+
+Supongamos que la cota anunciada por OpenAI es válida. Fijado $\varepsilon>0$, para los índices suficientemente grandes podemos aplicarla a la fracción escrita con denominador $q=10^n$, aunque pudiera simplificarse. Las dos estimaciones dan simultáneamente
+
+$$
+10^{-n(2+\varepsilon)}
+\le\left|\pi-r_n\right|<10^{-n}.
+$$
+
+Los dos extremos tienden a cero. La cota inferior indica hasta dónde no puede llegar la precisión de una fracción con ese denominador; la cota superior asegura que los truncamientos se acercan a $\pi$. Es perfectamente posible que ambas se cumplan a la vez. El supuesto umbral a partir del cual las fracciones «dejarían de converger» nunca aparece en el enunciado: para cada exponente mayor que $2$ se prohíbe un tipo de error *excesivamente pequeño*, mientras la convergencia ordinaria continúa.
+
+### 5.1. La información aritmética que falta en la condición de Cauchy
+
+Hay una desigualdad elemental que comienza a relacionar los errores con los denominadores. Sean $a/b$ y $p/q$ dos racionales distintos, con $b,q$ positivos. Su diferencia es
+
+$$
+\left|\frac ab-\frac pq\right|
+=\frac{|aq-bp|}{bq}\ge\frac1{bq},
+$$
+
+porque $aq-bp$ es un entero no nulo. Si $(a_n/b_n)$ representa un irracional $x$ y $p/q\ne a_n/b_n$, la desigualdad triangular permite escribir
+
+$$
+\boxed{\left|x-\frac pq\right|
+\ge\frac1{qb_n}-\left|x-\frac{a_n}{b_n}\right|.}
+$$
+
+Esta estimación puede ser útil, pero también muestra dónde se atasca un argumento basado únicamente en la completitud. Cuando hacemos crecer $n$ para mejorar la aproximación $a_n/b_n$, el denominador $b_n$ puede crecer tanto que la cantidad $1/(qb_n)$ se vuelva todavía más pequeña; incluso puede ocurrir que el miembro derecho sea negativo y no proporcione ninguna cota informativa. Para obtener una desigualdad uniforme sobre *todas* las fracciones $p/q$ hay que conocer de qué modo se relacionan el error de la sucesión, sus denominadores y las escalas de los racionales que queremos excluir.
+
+### 5.2. Un número real que permite aproximaciones extraordinarias
+
+La amplitud de comportamientos que admite la construcción por sucesiones de Cauchy se aprecia en un ejemplo clásico. Consideremos las sumas racionales
+
+$$
+L_n=\sum_{k=1}^{n}10^{-k!}
+=\frac{p_n}{q_n},\qquad q_n=10^{n!},
+$$
+
+y el número real que representan,
+
+$$
+L=\sum_{k=1}^{\infty}10^{-k!}.
+$$
+
+El numerador $p_n$ es entero y termina en $1$, de modo que $p_n/q_n$ ya está reducida. Como los exponentes factoriales crecen rápidamente, la parte de la serie que queda después del término $n$ satisface
+
+$$
+\begin{aligned}
+0<L-L_n
+&=\sum_{k=n+1}^{\infty}10^{-k!}\\
+&\le\sum_{j=(n+1)!}^{\infty}10^{-j}\\
+&<\frac{2}{10^{(n+1)!}}
+=\frac2{q_n^{n+1}}.
+\end{aligned}
+$$
+
+Este cálculo prueba que las sumas parciales forman una sucesión de Cauchy: la distancia entre dos términos suficientemente avanzados queda controlada por las pequeñas colas de la serie. Pero también ofrece una información mucho más fuerte. La potencia $n+1$ que aparece en el denominador **crece sin límite**; por consiguiente, una vez fijado cualquier exponente $\nu>0$, para todos los $n$ suficientemente grandes se cumple
+
+$$
+0<L-\frac{p_n}{q_n}<\frac1{q_n^{\nu}}.
+$$
+
+Antes de aplicar la definición de exponente de irracionalidad debemos comprobar que $L$ es irracional. Supongamos, por el contrario, que $L=A/B$, con $A\in\mathbb Z$ y $B$ entero positivo. Como cada cola de la serie es estrictamente positiva, $L\ne p_n/q_n$; la separación entre racionales demostrada más arriba daría
+
+$$
+\frac1{Bq_n}\le\left|L-\frac{p_n}{q_n}\right|
+<\frac2{q_n^{n+1}}.
+$$
+
+Multiplicando por $Bq_n^{n+1}$ tendríamos $q_n^n<2B$ para todo $n$, algo imposible porque $q_n=10^{n!}$ crece sin límite. Por tanto, $L$ es irracional. Sus fracciones $p_n/q_n$ son distintas, tienen denominadores reducidos ilimitados y satisfacen las desigualdades anteriores para cualquier exponente prefijado. Hemos probado que
+
+$$
+\boxed{\mu(L)=\infty.}
+$$
+
+Así, tanto $L$ como $\pi$ pueden representarse por clases de sucesiones racionales de Cauchy, aunque el primero admite aproximaciones de exponente arbitrariamente alto y el preprint sostiene que el segundo tiene exponente $2$. La construcción de los reales explica la existencia del límite; el exponente de irracionalidad describe una propiedad aritmética adicional de ese límite. La desigualdad de separación que utilizamos para estudiar $L$ proporciona, además, el primer modelo del método de determinantes al que recurriremos enseguida.
+
+Para el desarrollo fundacional de las clases de equivalencia de sucesiones de Cauchy, puede consultarse también [¿Hemos construido realmente los números reales?](hemos-construido-realmente-los-numeros-reales.md).
+
+## 6. Lo que nos enseña un determinante de dos filas
+
+La separación entre racionales que acabamos de utilizar para estudiar $L$ puede expresarse mediante un determinante de dos filas. Esta manera de escribir el mismo argumento prepara el paso a matrices de mayor dimensión. Consideremos
+
+$$
+\Delta=\begin{vmatrix}1&p_1/q_1\\1&p_2/q_2\end{vmatrix}
+=\frac{p_2q_1-p_1q_2}{q_1q_2}.
+$$
+
+Si las dos fracciones son distintas, el numerador es un entero no nulo y satisface $|p_2q_1-p_1q_2|\ge1$. Tenemos, por consiguiente,
+
+$$
+|\Delta|\ge\frac1{q_1q_2}.
+$$
+
+Es una restricción puramente aritmética: un racional no nulo cuyo denominador divide $q_1q_2$ no puede quedar más cerca de cero que $1/(q_1q_2)$. Al mismo tiempo, si ambas fracciones se aproximan a un número $x$, la desigualdad triangular nos da
+
+$$
+|\Delta|=\left|\frac{p_2}{q_2}-\frac{p_1}{q_1}\right|
+\le\left|x-\frac{p_1}{q_1}\right|+\left|x-\frac{p_2}{q_2}\right|.
+$$
+
+La fracción que aparece en el determinante debe guardar una separación aritmética mínima respecto de cero, porque su numerador es un entero no nulo. Pero la desigualdad triangular la obliga también a ser pequeña cuando las dos fracciones están muy cerca de $x$. Una contradicción surgirá si conseguimos que esta segunda estimación quede por debajo de la primera. Este será el mecanismo que intentaremos reconocer en una construcción mucho más compleja.
+
+Este ejemplo de dos filas tiene una limitación importante. Permite separar fracciones distintas, pero por sí solo no demuestra $\mu(x)=2$ para un irracional arbitrario. Las fracciones excepcionalmente buenas pueden aparecer con denominadores cada vez más alejados unos de otros, y entonces las dos desigualdades dejan un margen demasiado amplio. Para $\pi$ se necesita una construcción de mayor dimensión, capaz de aprovechar simultáneamente varias aproximaciones y varias condiciones analíticas. Esa es la finalidad del determinante del manuscrito.
+
+## 7. De las aproximaciones a $\pi$ a un determinante de muchas variables
+
+El método presentado en el preprint combina interpolación de polinomios, análisis de funciones enteras y estimaciones aritméticas. Su punto de partida es una suposición destinada a producir una contradicción: fijemos $\nu>2$ e imaginemos que existen infinitas fracciones $p/q$ con
+
+$$
+\left|\pi-\frac pq\right|<q^{-\nu}.
+$$
+
+Se eligen varias de ellas con denominadores sucesivamente muy separados. La construcción puede parecer extraña hasta recordar una identidad de análisis complejo: para cualquier entero $j$,
+
+$$
+e^{2\pi i j}=1.
+$$
+
+Los valores $2\pi i j$ son períodos de la función exponencial. Si $p_i/q_i$ aproxima bien a $\pi$, el número
+
+$$
+c_{ji}=\frac{2ij p_i}{q_i}
+$$
+
+queda cerca del período $2\pi i j$, con un error exactamente igual a $2|j|\,|\pi-p_i/q_i|$. Se han transformado las aproximaciones racionales de $\pi$ en puntos racionales complejos cercanos a lugares donde la exponencial adopta un valor especialmente sencillo. Esta conversión es una de las puertas de entrada al método.
+
+El preprint considera polinomios en las variables $Y,X_1,\ldots,X_m$ y estudia sus desarrollos locales cerca de centros como $(1,c_{j1},\ldots,c_{jm})$. Para ordenar los términos, introduce pesos positivos y se queda con los monomios cuyos exponentes satisfacen una desigualdad del tipo
+
+$$
+w_0a_0+w_1a_1+\cdots+w_ma_m\le H.
+$$
+
+Los exponentes $a_0,\ldots,a_m$ pueden verse como puntos de una retícula recortada por un simplex. Al crecer $H$ aparecen más coeficientes libres, pero hace falta saber si podemos utilizarlos para imponer valores y derivadas en varios puntos sin que las condiciones entren en conflicto. Los valores de una función y de algunas de sus derivadas en un punto forman lo que se llama su *jet* de orden finito.
+
+En una sola variable, una exigencia como $P(0)=1$, $P'(0)=0$ y $P(1)=0$ se resuelve con el polinomio $P(t)=1-t^2$. El ejemplo muestra qué significa interpolar simultáneamente valores y derivadas; es una analogía elemental, no un caso que demuestre el teorema del manuscrito. La dificultad de OpenAI aparece al imponer numerosas condiciones de ese tipo en espacios de polinomios de varias variables y con centros que cambian durante la construcción. El teorema de interpolación del preprint debe garantizar que esas condiciones tienen la independencia requerida.
+
+Una vez establecida esa independencia, se construye una matriz de valores de formas lineales sobre los coeficientes de los polinomios y se elige un menor cuadrado no nulo. Al limpiar denominadores se obtiene una cota inferior aritmética para el valor absoluto del determinante.
+
+La cota superior exige estudiar funciones enteras asociadas a las columnas polinómicas, por ejemplo
+
+$$
+F_P(z,\mathbf u)=P(e^z,z+u_1,\ldots,z+u_m).
+$$
+
+Cuando $z$ recorre los períodos $2\pi i j$, la primera coordenada vale $1$ y las demás se relacionan con los centros racionales aproximados. Al desarrollar estas funciones en series de Taylor, algunas contribuciones al determinante desaparecen. Recordemos la razón algebraica: si dos filas de una matriz son iguales, su determinante se anula, porque intercambiarlas debe cambiar su signo sin alterar la matriz. En el desarrollo del manuscrito, la repetición de ciertos grados de Taylor provoca anulaciones de esa clase. Los términos que sobreviven contienen potencias de los errores de aproximación; la disposición de las filas y la elección de los pesos determinan cuánto se gana al reunir esos factores.
+
+El manuscrito dedica secciones enteras a probar que las condiciones de interpolación, la separación de escalas y las dos estimaciones pueden satisfacerse **en un orden que no sea circular**. Esta parte combina resultados de geometría algebraica sobre multiplicidades y divisores con estimaciones analíticas de determinantes. No es una consecuencia elemental de la identidad $e^{2\pi i}=1$, ni puede sustituirse por la intuición del determinante de dos filas. La lectura pedagógica establece qué obligaciones matemáticas cumple cada pieza; la verificación de todos los lemas sigue exigiendo el original y su formalización.
+
+Si las cotas efectivamente construidas producen
+
+$$
+0<|\Delta|\le U<L\le|\Delta|,
+$$
+
+las aproximaciones hipotéticas con exponente $\nu>2$ quedan descartadas. Repetido el razonamiento para cualquier $\nu>2$, se obtiene la cota superior $\mu(\pi)\le2$. La aproximación de Dirichlet, ya demostrada en la sección 2, proporciona la cota contraria. Ambas dan la igualdad anunciada.
+
+## 8. De la aproximación de $\pi$ a la serie de Flint–Hills
+
+La otra protagonista del preprint es la serie
+
+$$
+S=\sum_{n=1}^{\infty}\frac1{n^3\sin^2 n},
+$$
+
+con los ángulos medidos en radianes. A primera vista, el factor $n^{-3}$ parece suficientemente pequeño para favorecer la convergencia. Sin embargo, $\sin n$ puede acercarse extraordinariamente a cero cuando un entero $n$ está próximo a algún múltiplo entero de $\pi$. Si ese acercamiento es excepcional, el denominador $\sin^2 n$ amplifica el término de la serie.
+
+Para estudiar cuándo un entero se aproxima a un múltiplo de $\pi$, necesitaremos medir la cercanía de los números $q\pi$ a los enteros. Utilizaremos la notación
+
+$$
+\|x\|=\min_{k\in\mathbb Z}|x-k|,
+$$
+
+es decir, la distancia de $x$ al entero más cercano. **Si aceptamos el teorema anunciado de OpenAI**, podemos elegir un $\nu$ con
+
+$$
+2<\nu<\frac52.
+$$
+
+Su desigualdad, multiplicada por $q$, asegura que $\|q\pi\|\ge q^{1-\nu}$ para todos los $q$ suficientemente grandes. Los pocos denominadores anteriores también tienen distancia positiva a los enteros, porque $\pi$ es irracional. Reduciendo si hace falta una constante positiva $c$, tenemos
+
+$$
+\boxed{\|q\pi\|\ge c\,q^{1-\nu}\qquad(q=1,2,3,\ldots).}
+$$
+
+La cota sobre cada $\|q\pi\|$ puede utilizarse término a término, pero ese camino fracasa: de ella obtenemos
+
+$$
+\frac1{q^3\|q\pi\|^2}\le\frac1{c^2}q^{2\nu-5}.
+$$
+
+Como $2<\nu<5/2$, el exponente $2\nu-5$ está entre $-1$ y $0$. La serie de las cotas de la derecha diverge, y esta estimación aislada no decide nada sobre la convergencia que buscamos. La información adicional proviene de una propiedad colectiva: los números $q\pi$, mirados módulo los enteros, no pueden concentrarse todos cerca del origen.
+
+### 8.1. Por qué funciona el agrupamiento de denominadores
+
+Agrupemos denominadores de tamaño comparable, $K\le q<2K$, y representemos cada número $q\pi$ mediante su posición en un círculo de longitud uno, donde los números que difieren en un entero ocupan el mismo lugar. Entre dos puntos con índices distintos $q$ y $r$ hay una distancia circular $\|(q-r)\pi\|$. Puesto que $1\le|q-r|<2K$, la desigualdad anterior proporciona una separación uniforme
+
+$$
+\|(q-r)\pi\|\ge d,
+\qquad d=c(2K)^{1-\nu}.
+$$
+
+La distancia de cualquiera de esos puntos al origen también es al menos $d$. En cada uno de los dos semicírculos que parten del origen, el primer punto está a una distancia no menor que $d$, el segundo a una distancia no menor que $2d$, el tercero a una distancia no menor que $3d$, y así sucesivamente. De aquí procede una estimación que perderíamos si tratáramos todos los términos mediante la misma cota individual:
+
+$$
+\begin{aligned}
+\sum_{K\le q<2K}\frac1{q^3\|q\pi\|^2}
+&\le\frac2{K^3d^2}\sum_{j=1}^{\infty}\frac1{j^2}\\[3pt]
+&=C_{c,\nu}\,K^{2\nu-5}.
+\end{aligned}
+$$
+
+La suma de los recíprocos de los cuadrados es finita, y por eso toda la contribución del bloque queda controlada por una sola potencia de $K$. La misma potencia $K^{2\nu-5}$ que no bastaba para acotar término a término la serie original sí será sumable cuando corresponda a un bloque diádico entero, pues $2\nu-5<0$.
+
+Apliquemos la estimación a los bloques $K=1,2,4,8,\ldots$. Las cotas forman una progresión geométrica convergente:
+
+$$
+\sum_{h=0}^{\infty}C_{c,\nu}\,2^{h(2\nu-5)}<\infty.
+$$
+
+Por lo tanto,
+
+$$
+\boxed{\sum_{q=1}^{\infty}\frac1{q^3\|q\pi\|^2}<\infty.}
+$$
+
+### 8.2. De las distancias a $\sin n$
+
+Para cada entero positivo $n$, escojamos un entero no negativo $q$ que sea el más cercano a $n/\pi$. Entonces $|n-q\pi|\le\pi/2$. Como $q$ es entero, $|\sin n|=|\sin(n-q\pi)|$. La desigualdad elemental
+
+$$
+|\sin t|\ge\frac2\pi|t|\qquad\left(|t|\le\frac\pi2\right)
+$$
+
+nos permite obtener
+
+$$
+|\sin n|\ge\frac2\pi|n-q\pi|\ge\frac2\pi\|q\pi\|.
+$$
+
+Para un $q$ fijo, los posibles enteros $n$ pertenecen a un intervalo de longitud $\pi$, que contiene a lo sumo cuatro enteros. Además, para $q\ge1$, $n\ge\pi(q-1/2)\ge(\pi/2)q$, así que $n^{-3}\le Cq^{-3}$ con una constante absoluta. Sumando los términos correspondientes a un mismo $q$, obtenemos una cota de la forma
+
+$$
+\sum_{\substack{n\ge1:\ q\text{ es el entero}\\\text{más cercano a }n/\pi}}\frac1{n^3\sin^2 n}
+\le\frac{C'}{q^3\|q\pi\|^2}.
+$$
+
+Los pocos valores de $n$ cuyo entero asociado es $q=0$ no afectan la convergencia, y tampoco hay términos infinitos porque $\pi$ es irracional. La serie del miembro derecho ya ha resultado convergente. Sumando sobre todos los valores de $q$, concluimos que **la convergencia de Flint–Hills se sigue rigurosamente del resultado $\mu(\pi)=2$ anunciado en el preprint**.
+
+La demostración de esta implicación, que utiliza el *agrupamiento diádico* de los denominadores, puede estudiarse de forma independiente. También explica por qué el umbral $5/2$ aparece en los trabajos anteriores de Alekseyev y Meiburg.
+
+## 9. Alcance de la demostración y cuestiones pendientes
+
+El principio del palomar demuestra, sin recurrir al preprint, que $\mu(x)\ge2$ para todo irracional; el cálculo con $\sqrt2$ muestra cómo puede alcanzarse esa frontera mediante una identidad algebraica. El ejemplo de Liouville aclara por qué la sola convergencia de una sucesión de Cauchy deja abierto el problema: un límite irracional puede admitir aproximaciones de exponente arbitrariamente alto. En la última parte hemos probado otra afirmación que tiene un estatuto distinto: **si** se cumple para $\pi$ la cota anunciada con cada exponente $2+\varepsilon$, **entonces** converge la serie de Flint–Hills. Esa implicación está demostrada aquí, pero su premisa sigue siendo el resultado central del manuscrito.
+
+La afirmación verdaderamente nueva es que $\pi$ satisface esa cota para *cada* $\varepsilon>0$. Los períodos de la exponencial, la interpolación de jets y las estimaciones contradictorias de un determinante permiten entender la arquitectura propuesta, pero los lemas geométricos y asintóticos que la sostienen exigen un examen técnico por separado. La explicación de su función dentro del argumento no verifica por sí misma su validez.
+
+La publicación de archivos de Lean es un recurso relevante para el examen técnico. La nota oficial de la familia 017 describe una formalización del exponente de irracionalidad igual a $2$; el archivo principal de código también declara un resultado sobre Flint–Hills, aunque la nota de alcance no lo incluye entre las sentencias seleccionadas. Antes de presentar el resultado como definitivamente establecido para MA, corresponde comprobar la compilación independiente, las dependencias y axiomas importados, y la correspondencia entre el enunciado formal y el razonamiento impreso. Esa tarea pertenece a una auditoría matemática distinta de esta exposición pedagógica.
+
+Si la demostración anunciada supera ese examen, sabremos que $\pi$ comparte con todos los irracionales algebraicos la frontera de exponente $2$. Las fracciones $22/7$ y $355/113$ conservarán, por supuesto, su admirable precisión; la nueva información consistirá en haber establecido un límite para la calidad de las aproximaciones que pueden repetirse *infinitamente a menudo*.
+
+## Para trabajar con las ideas
+
+**Microcontrol 1.** Explica por qué la fracción $355/113$ no contradice el enunciado $\mu(\pi)=2$ aunque su error sea menor que $113^{-3}$.
+
+::: {.callout-note collapse="true" title="Solución razonada"}
+El exponente de irracionalidad registra la existencia de *infinitas* fracciones con errores inferiores a una potencia dada. Una sola fracción puede mejorar muchísimo la cota $q^{-3}$ y, sin embargo, no decir nada sobre lo que sucede para denominadores arbitrariamente grandes. Además, el enunciado del teorema permite elegir para cada $\varepsilon>0$ un umbral $Q(\varepsilon)$: no exige la desigualdad para todos los denominadores, y mucho menos para $q=113$. La comprobación numérica de la fracción ilustra una excepción finita, no una familia infinita.
+:::
+
+**Microcontrol 2.** En la demostración de Dirichlet, ¿por qué hay que justificar que las fracciones obtenidas para valores crecientes de $N$ son infinitas y distintas?
+
+::: {.callout-note collapse="true" title="Solución razonada"}
+El principio del palomar garantiza una fracción buena para cada $N$, pero podría parecer que siempre entrega la misma. Si así ocurriera y hubiese solamente una cantidad finita de fracciones diferentes, sus distancias a $x$ tendrían un mínimo positivo $\delta$, ya que $x$ es irracional. No obstante, el procedimiento produce errores menores que $1/(qN)\le1/N$, que tienden a cero. Para $N>1/\delta$ tendríamos una contradicción. Por eso la colección de fracciones debe ser infinita; tras reducirlas sus denominadores también deben crecer sin cota.
+:::
+
+**Microcontrol 3.** ¿Por qué es esencial que se cumpla $\nu<5/2$ en la estimación por bloques de Flint–Hills?
+
+::: {.callout-note collapse="true" title="Solución razonada"}
+La suma de los términos con $K\le q<2K$ resulta acotada por $CK^{2\nu-5}$. Al agrupar con $K=2^h$, la cota de cada bloque se convierte en $C2^{h(2\nu-5)}$. Es una serie geométrica que converge exactamente cuando $2^{2\nu-5}<1$, lo que equivale a $2\nu-5<0$ y, por tanto, a $\nu<5/2$. En el extremo $\nu=5/2$, las estimaciones solo dan una cota uniforme para cada bloque y no bastan para demostrar la convergencia global. Esto no demuestra divergencia en el caso límite: simplemente muestra que el argumento deja de decidirlo.
+:::
+
+**Microcontrol 4.** Si $p_1/q_1\ne p_2/q_2$, demuestra que $|p_1/q_1-p_2/q_2|\ge1/(q_1q_2)$ y explica por qué este cálculo no resuelve por sí solo la aproximación diofántica de $\pi$.
+
+::: {.callout-note collapse="true" title="Solución razonada"}
+La diferencia se escribe $|(p_1q_2-p_2q_1)/(q_1q_2)|$. El numerador es un entero no nulo, luego su valor absoluto es al menos uno. La desigualdad se sigue al dividir por $q_1q_2>0$. Pero una sucesión de aproximaciones a $\pi$ puede presentar denominadores $q_1\ll q_2$ extremadamente separados. En ese caso, $1/(q_1q_2)$ es mucho menor que $1/q_1^2$, y la estimación elemental no impide errores especiales en el segundo denominador. El determinante multivariable intenta controlar simultáneamente varias escalas y producir un ahorro que esta comparación de dos fracciones no ofrece.
+:::
+
+**Microcontrol 5.** Considera los truncamientos $r_n=\lfloor10^n\pi\rfloor/10^n$. Supón que la afirmación $\mu(\pi)=2$ del preprint es correcta. ¿Por qué podemos asegurar a la vez que $r_n\to\pi$ y, para cada $\varepsilon>0$ fijo, que $|\pi-r_n|\ge10^{-n(2+\varepsilon)}$ cuando $n$ es suficientemente grande?
+
+::: {.callout-note collapse="true" title="Solución razonada"}
+La definición de la parte entera da $0<\pi-r_n<10^{-n}$; por ello $r_n\to\pi$ y, mediante la desigualdad triangular, la sucesión es de Cauchy. En cambio, la afirmación del preprint establece que para cada $\varepsilon>0$ existe $Q(\varepsilon)$ tal que $|\pi-p/q|\ge q^{-2-\varepsilon}$ siempre que $q\ge Q(\varepsilon)$. Podemos aplicarla a $p=\lfloor10^n\pi\rfloor$ y $q=10^n$, en cuanto $10^n\ge Q(\varepsilon)$. La cota inferior resultante tiende a cero; por tanto, no impide que el error también tienda a cero. La propiedad de Cauchy se refiere al acercamiento mutuo de los términos, mientras que la cota diofántica relaciona el error con el denominador de cada fracción.
+:::
+
+**Microcontrol 6.** Para $L_n=p_n/q_n=\sum_{k=1}^n10^{-k!}$ se sabe que $q_n=10^{n!}$ y que $0<L-L_n<2/q_n^{n+1}$. Reconstruye el argumento que descarta que $L$ sea racional y explica por qué $\mu(L)=\infty$.
+
+::: {.callout-note collapse="true" title="Solución razonada"}
+Si $L=A/B$ con $B>0$, la cola positiva garantiza que $L\ne p_n/q_n$. Los enteros $Aq_n-Bp_n$ son, por tanto, no nulos y satisfacen $|Aq_n-Bp_n|\ge1$. Así, $1/(Bq_n)\le|L-p_n/q_n|<2/q_n^{n+1}$, lo que obliga a $q_n^n<2B$ para todo $n$. Como $q_n=10^{n!}$, esta desigualdad es imposible para $n$ grande y $L$ es irracional. Para cualquier $\nu>0$ podemos elegir $n$ tan grande que $n+1>\nu$ y $2q_n^{-(n+1)}<q_n^{-\nu}$. Los números $L_n$ son distintos y las fracciones $p_n/q_n$ están reducidas porque sus numeradores terminan en $1$. Existen, por tanto, infinitas aproximaciones con el exponente $\nu$ elegido. Como $\nu$ era arbitrario, el supremo de esos exponentes es infinito.
+:::
+
+## Fuentes y lecturas
+
+1. **OpenAI** (24 de septiembre de 2026), *The irrationality exponent of $\pi$ is $2$*, [manuscrito PDF](https://github.com/openai/math/blob/main/preprints/The-irrationality-exponent-of-pi-is-2-September-24-2026/paper.pdf), [fuente LaTeX](https://github.com/openai/math/blob/main/preprints/The-irrationality-exponent-of-pi-is-2-September-24-2026/build/main.tex), [nota oficial de alcance en Lean](https://github.com/openai/math/blob/main/lean/docs/017.md) y [entrada principal de formalización](https://github.com/openai/math/blob/main/lean/OAI/NumberTheory/PiExponent/Main.lean). **Estado editorial en este artículo:** resultado anunciado; auditoría independiente integral pendiente.
+2. **D. Zeilberger y W. Zudilin** (2020), «The irrationality measure of $\pi$ is at most $7.103205334137\ldots$», *Moscow Journal of Combinatorics and Number Theory*, 9(4), 407–419. [DOI](https://doi.org/10.2140/moscow.2020.9.407); [preprint](https://arxiv.org/abs/1912.06345).
+3. **A. Meiburg** (2022), «Bounds on Irrationality Measures and the Flint-Hills Series», [arXiv:2208.13356](https://arxiv.org/abs/2208.13356). Contiene el criterio suficiente $\mu(\pi)<5/2$ para la convergencia.
+4. **K. F. Roth** (1955), «Rational approximations to algebraic numbers», *Mathematika*, 2, 1–20. Teorema de aproximación para irracionales algebraicos.
