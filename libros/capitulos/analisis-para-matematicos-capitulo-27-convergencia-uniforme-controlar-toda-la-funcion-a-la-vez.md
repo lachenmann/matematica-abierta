@@ -84,7 +84,7 @@ No hace falta elegir infinitamente muchos puntos de conjuntos arbitrarios para e
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 1</summary>
 
-Una tolerancia positiva; después se elige un corte que debe funcionar para toda entrada y toda la cola.
+El contrato recibe $\varepsilon>0$ y proporciona después un natural $N$. Ese corte debe garantizar $|f_n(x)-f(x)|<\varepsilon$ para todo $n\ge N$ y toda $x\in X$. La entrada se examina cuando el corte ya está fijado, de modo que una misma cola responde a todas las columnas.
 
 </details>
 
@@ -99,7 +99,7 @@ Una tolerancia positiva; después se elige un corte que debe funcionar para toda
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 2</summary>
 
-No. Debe elegirse antes de la entrada que habrá que controlar.
+El corte puede depender de la tolerancia, pero debe funcionar para cualquier entrada del dominio común. Si la elección dependiera de $x$, sólo se tendría el contrato puntual de C26. El cambio de orden entre elegir el corte y recibir la entrada es lo que añade la uniformidad.
 
 </details>
 
@@ -114,7 +114,7 @@ No. Debe elegirse antes de la entrada que habrá que controlar.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 3</summary>
 
-Anchura vertical2ε, entre f(x)−ε y f(x)+ε, con fronteras excluidas.
+En cada entrada, la banda abierta va de $f(x)-\varepsilon$ a $f(x)+\varepsilon$, con anchura vertical $2\varepsilon$. El error permitido es estrictamente menor que $\varepsilon$, así las dos fronteras quedan excluidas. Desde el corte, todas las gráficas posteriores deben quedar dentro de esa banda en el dominio completo.
 
 </details>
 
@@ -129,7 +129,7 @@ Anchura vertical2ε, entre f(x)−ε y f(x)+ε, con fronteras excluidas.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 4</summary>
 
-Sí; el mismo corte simultáneo sirve en cualquier entrada que fijemos.
+Fijada una entrada $x$, el corte uniforme ya asegura el error pedido para ella en toda la cola. Por tanto cada columna converge al valor $f(x)$. La definición puntual admite ese mismo corte aunque no dependa de la entrada.
 
 </details>
 
@@ -144,7 +144,7 @@ Sí; el mismo corte simultáneo sirve en cualquier entrada que fijemos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 5</summary>
 
-La entrada infractora puede depender del corte y del índice tardío elegido.
+Para refutar uniformidad se fija una tolerancia $\varepsilon_0>0$ y, ante cada corte $N$, se producen algún $n\ge N$ y alguna $x\in X$ con error al menos $\varepsilon_0$. La entrada puede cambiar con el corte. Esta libertad permite seguir picos móviles que cada columna fija termina perdiendo.
 
 </details>
 
@@ -159,7 +159,7 @@ La entrada infractora puede depender del corte y del índice tardío elegido.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 6</summary>
 
-Exactamente1/(n+1) en toda la recta, aunque los valores de ambas funciones sean no acotados.
+La diferencia $(x+1/(n+1))-x$ es la constante $1/(n+1)$, independiente de la entrada. Esa cota tiende a cero y prueba uniformidad sobre toda la recta. Las funciones mismas son no acotadas; el contrato limita sus discrepancias, que aquí sí son acotadas.
 
 </details>
 
@@ -174,7 +174,7 @@ Exactamente1/(n+1) en toda la recta, aunque los valores de ambas funciones sean 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 7</summary>
 
-En la fila n se toma x=n+1, con error1 respecto de cero.
+En la etapa $n$, tomamos $x=n+1$ y obtenemos $|x/(n+1)|=1$. Con tolerancia $1/2$, ante cualquier corte sirve el infractor de esa misma etapa. La entrada móvil refuta uniformidad en la recta, mientras cada entrada fija mantiene su límite cero.
 
 </details>
 
@@ -189,7 +189,7 @@ En la fila n se toma x=n+1, con error1 respecto de cero.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 8</summary>
 
-Hay una única función y el contrato uniforme se satisface vacuamente.
+En el dominio vacío sólo existe la función vacía. Para cualquier tolerancia se puede tomar $N=0$, porque no hay entradas que deban satisfacer una desigualdad. El contrato es vacuo y no exige producir un punto del dominio.
 
 </details>
 
@@ -208,7 +208,7 @@ Prueba uniformidad de $f_n(x)=x+1/(n+1)$ hacia $x$ en $\mathbb R$ y explica qué
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 1</summary>
 
-Fijada $\varepsilon>0$, elegimos un natural $N>1/\varepsilon$. Para todos $n\ge N$ y $x\in\mathbb R$, el error es1/(n+1)≤1/(N+1)<ε. El corte no depende de la entrada, así la convergencia es uniforme. Los valores de cada fila y del límite son no acotados en la recta, pero sus diferencias tienen magnitud constante1/(n+1). La cota relevante para el contrato es la del error.
+La diferencia entre $f_n(x)=x+1/(n+1)$ y la candidata $f(x)=x$ es $1/(n+1)$ para todas las entradas de la recta. Dada $\varepsilon>0$, elegimos un natural $N>1/\varepsilon$. Para todo $n\ge N$ y todo $x\in\mathbb R$, $|f_n(x)-f(x)|=1/(n+1)\le1/(N+1)<\varepsilon$. El corte se eligió antes de examinar la entrada, así la convergencia es uniforme. Ninguna de esas funciones es acotada en la recta. Sus diferencias sí son funciones constantes acotadas, que es el control utilizado por el contrato.
 
 **Retorno visual.** Véase [C27-F01](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -225,7 +225,7 @@ Refuta uniformidad hacia cero de $g_n(x)=x/(n+1)$ en $\mathbb R$, sin refutar su
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 2</summary>
 
-Usamos tolerancia $\varepsilon_0=1/2$. Dado cualquier corte $N$, tomamos $n=N$ y $x=N+1$. El error es1≥ε0. Se cumple la negación uniforme con entrada dependiente del corte. Para una entrada fija, en cambio, un natural mayor que |x|/ε controla toda la cola y prueba límite puntual cero. Los dos alcances son distintos.
+Cada entrada fija tiene $|g_n(x)|=|x|/(n+1)\to0$, con un corte $N>|x|/\varepsilon$, así hay convergencia puntual a cero. Para refutar uniformidad, fijamos $\varepsilon_0=1/2$. Ante cualquier corte $N$, elegimos $n=N$ y $x=N+1$. El error es entonces $|g_N(x)|=1\ge\varepsilon_0$. Se obtiene una infracción en cada cola con una entrada que puede depender del corte. Ésta es la negación uniforme y es compatible con el control de cada columna fija.
 
 </details>
 
@@ -240,7 +240,7 @@ Demuestra que una familia tiene a lo sumo un límite uniforme en un dominio com�
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 3</summary>
 
-Dos límites uniformes son también límites puntuales: cada corte simultáneo funciona en una entrada fija. Por unicidad numérica de C26, ambos valores coinciden en toda entrada; igualdad de funciones da un solo límite. Si el dominio es vacío, existe una única función vacía, así la conclusión también vale sin producir ninguna entrada. No se selecciona un punto de una colección vacía.
+Si $f$ y $g$ son límites uniformes, también son límites puntuales, porque cada corte simultáneo sirve para una entrada fijada. Para $x\in X$, si $d=|f(x)-g(x)|>0$, los cortes de ambos contratos con error $d/3$ tienen un máximo $N$. En ese índice, $d\le|f(x)-f_N(x)|+|f_N(x)-g(x)|<2d/3$, contradicción. Así coinciden en cada entrada y son la misma función. Si $X$ es vacío, hay una única función vacía y la conclusión vale directamente, sin elegir una entrada inexistente.
 
 </details>
 
@@ -255,7 +255,7 @@ En un dominio no vacío, toma filas constantes $f_n=(-1)^n$. Explica por qué la
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 4</summary>
 
-Las filas pares son exactamente1, así esa subsucesión converge uniformemente a1. Las impares son exactamente−1. Si toda la familia tuviera límite uniforme, lo tendría puntual en cualquier entrada y las subsecuencias numéricas constantes compartirían ese destino, contradiciendo unicidad. Una fila favorable o infinitas filas favorables no controlan todas las filas de una cola.
+Las filas de índice par son la función constante uno, así esa subsucesión converge uniformemente a uno con error cero. Las de índice impar son la función constante menos uno. Si toda la familia convergiera uniformemente, sería puntualmente convergente en cualquier entrada del dominio no vacío. Sus dos subsucesiones numéricas constantes deberían compartir el mismo límite, pero sus valores son distintos. Por tanto no hay límite uniforme de la familia completa. Un número infinito de filas favorables no asegura que todas las etapas posteriores al corte sean favorables.
 
 </details>
 
@@ -270,7 +270,7 @@ Prueba que modificar un número finito de filas no altera una convergencia unifo
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 5</summary>
 
-Supongamos que la nueva familia coincide con la anterior para todo índice n≥M. Para una tolerancia, la familia original entrega un corte N independiente de la entrada. El corte máximo(N,M) controla todas las filas nuevas posteriores, pues coinciden con las antiguas y tienen error menor que ε en todas las entradas. Los valores del prefijo modificado no intervienen, aunque sean no acotados.
+Sean $f_n\to f$ uniformemente y $g_n=f_n$ para todo $n\ge M$. Ante $\varepsilon>0$, el contrato original proporciona un corte $N$ independiente de la entrada. Tomamos $K=\max(N,M)$. Para $n\ge K$ y toda entrada, $|g_n(x)-f(x)|=|f_n(x)-f(x)|<\varepsilon$. Así la familia modificada tiene el mismo límite uniforme. Las filas del prefijo pueden cambiar de modo arbitrario, incluso perder acotación, siempre que sigan siendo funciones sobre el dominio común declarado.
 
 </details>
 ## 27.2. La envolvente de error y sus fronteras
@@ -334,7 +334,7 @@ La convergencia uniforme dice que para cada $\eta$ esos conjuntos son vacíos en
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 9</summary>
 
-Que la imagen de errores sea no vacía y acotada; el vacío se trata por una convención aparte.
+Para $X\ne\varnothing$, la imagen $\{|f_n(x)-f(x)|:x\in X\}$ es no vacía. Antes de tomar su supremo real hay que demostrar una cota superior finita. Entonces completitud define $E_n$; si el error es no acotado, esa envolvente real no existe.
 
 </details>
 
@@ -349,7 +349,7 @@ Que la imagen de errores sea no vacía y acotada; el vacío se trata por una con
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 10</summary>
 
-No. Basta una cola con errores acotados y supremos tendentes a cero.
+La convergencia uniforme ignora cualquier prefijo finito. Basta que desde algún índice las imágenes de error estén acotadas y sus supremos tiendan a cero. Una primera fila no acotada, seguida por filas idénticas al límite, no impide uniformidad.
 
 </details>
 
@@ -364,7 +364,7 @@ No. Basta una cola con errores acotados y supremos tendentes a cero.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 11</summary>
 
-Usar toleranciaε/2: el supremo es≤ε/2<ε.
+Si todos los errores son menores que $\varepsilon$, su supremo puede ser exactamente $\varepsilon$. Aplicar primero el contrato con $\varepsilon/2$ da $E_n\le\varepsilon/2<\varepsilon$. El margen convierte la cota no estricta del supremo en el error estricto requerido para su límite numérico.
 
 </details>
 
@@ -379,7 +379,7 @@ Usar toleranciaε/2: el supremo es≤ε/2<ε.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 12</summary>
 
-Sí; e(x)=x en(0,1) lo muestra sin que haya máximo.
+Para $e(x)=x$ en $(0,1)$, cada error es menor que uno. Sin embargo, cualquier $c<1$ queda superado por alguna entrada suficientemente próxima a uno, así el supremo es uno. Ese valor no se alcanza: la imagen no contiene su extremo superior.
 
 </details>
 
@@ -394,7 +394,7 @@ Sí; e(x)=x en(0,1) lo muestra sin que haya máximo.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 13</summary>
 
-El error de la función vacía se define0; no se afirma que el conjunto vacío tenga supremo real0.
+La imagen de errores sobre el dominio vacío es vacía y carece de supremo real. Se define aparte su envolvente como cero para la única función. Esa convención permite incluir el caso vacío sin atribuirle una propiedad de completitud que no posee.
 
 </details>
 
@@ -409,7 +409,7 @@ El error de la función vacía se define0; no se afirma que el conjunto vacío t
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 14</summary>
 
-Las entradas cuyo error en la fila n es al menosη.
+Para $\eta>0$, ponemos $B_n(\eta)=\{x\in X:|f_n(x)-f(x)|\ge\eta\}$. Contiene las entradas que incumplen en la fila $n$ el error estricto menor que $\eta$. Puede incluir puntos distintos en etapas distintas.
 
 </details>
 
@@ -424,7 +424,7 @@ Las entradas cuyo error en la fila n es al menosη.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 15</summary>
 
-Para cadaη>0, todos son vacíos desde un único corte en adelante.
+La uniformidad equivale a que, para cada $\eta>0$, exista $N$ tal que $B_n(\eta)=\varnothing$ para todo $n\ge N$. El mismo corte hace desaparecer todas las entradas infractoras de todas las filas posteriores.
 
 </details>
 
@@ -439,7 +439,7 @@ Para cadaη>0, todos son vacíos desde un único corte en adelante.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 16</summary>
 
-Que esa entrada deja de pertenecer a ellos eventualmente, con un corte que puede depender de ella.
+La convergencia puntual exige que, fijadas $x$ y $\eta$, desde algún corte esa entrada no pertenezca a $B_n(\eta)$. El corte puede depender de $x$. Los conjuntos completos pueden seguir siendo no vacíos porque otros puntos ocupan el lugar de los que dejaron de infringir.
 
 </details>
 
@@ -456,7 +456,7 @@ En $X=(0,1)$ demuestra que todos los errores $e(x)=x$ son menores que1 pero su s
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 6</summary>
 
-El número1 acota la imagen. Si c<1, el punto y=(1+máx(c,0))/2 pertenece a(0,1) y es mayor que c, por lo que c no acota todos los errores. Así el supremo es1. Ningún punto lo alcanza porque todas las entradas son menores que1. El error estricto en cada punto sólo da supremo≤1; para obtener supremo<ε se requiere usar un margen como ε/2.
+En $(0,1)$, todas las alturas $e(x)=x$ satisfacen $e(x)<1$, así uno es cota superior. Si $c<1$, ponemos $y=(1+\max(c,0))/2$. Esta entrada pertenece a $(0,1)$ y cumple $y>c$, de modo que $c$ no es cota superior. Por tanto $\sup e(X)=1$. Como uno no pertenece al dominio, ningún valor alcanza ese supremo. La conclusión muestra que desigualdades estrictas en todas las entradas pueden producir sólo una desigualdad no estricta al tomar supremo.
 
 **Retorno visual.** Véase [C27-F02](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -473,7 +473,7 @@ En $(0,1]$, define $f_0(x)=1/x$ y $f_n=0$ para $n\ge1$. Analiza uniformidad y ex
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 7</summary>
 
-La candidata es cero. Para toda ε>0 sirve N=1, pues cada fila posterior coincide con ella, de modo que hay uniformidad. En la primera fila, dado B≥0, x=1/(B+1) pertenece al dominio y da errorB+1>B. No existe supremo real de ese conjunto de errores. Las envolventes existen desde el índice1 y valen0; la caracterización se formula sobre esa cola.
+La candidata es cero. Para cualquier tolerancia sirve $N=1$, pues todas las filas posteriores son idénticamente cero en $(0,1]$. Hay por tanto convergencia uniforme. En la primera fila, dado $B\ge0$, la entrada $x=1/(B+1)$ pertenece al dominio y tiene error $B+1>B$. Esa imagen de errores es no acotada y no tiene supremo real. Desde el índice uno las envolventes existen y valen cero. La caracterización de uniformidad utiliza envolventes reales de una cola y no exige que el prefijo también las posea.
 
 </details>
 
@@ -488,7 +488,7 @@ Demuestra que si las envolventes reales de una cola satisfacen $E_n\to0$, hay co
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 8</summary>
 
-Para ε>0, el límite numérico entrega un corte N dentro de la cola con E_n<ε para todos n≥N. Por definición de supremo, para cualquier entrada |f_n(x)−f(x)|≤E_n<ε. El mismo N sirve para todos x y todos los índices posteriores. En el vacío se usa la convención de error0 y el contrato es vacuo.
+Supongamos que desde un índice $M$ existen envolventes reales $E_n$ y que $E_n\to0$. Para $\varepsilon>0$, el límite numérico da un corte $N\ge M$ con $E_n<\varepsilon$ para todo $n\ge N$. Como el supremo acota cada error, para toda entrada $|f_n(x)-f(x)|\le E_n<\varepsilon$. El mismo corte controla todas las entradas y toda la cola, probando uniformidad. En el dominio vacío se usa la convención $E_n=0$ y el contrato se satisface vacuamente.
 
 </details>
 
@@ -503,7 +503,7 @@ Prueba la dirección uniforme⇒envolventes de cola tendentes a cero, cuidando l
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 9</summary>
 
-Uniformidad con tolerancia1 da una cola de conjuntos de error no vacíos acotados cuando X no es vacío, por lo que C03 produce sus supremos. Para ε>0, recibimos un corte uniforme para ε/2 y lo reunimos con el de existencia. Cada supremo de esa cola es≤ε/2<ε. Esto prueba el límite0. No se cambia una desigualdad estricta punto a punto por una estricta del supremo sin el margen.
+Si $X\ne\varnothing$, la uniformidad con tolerancia uno entrega una cola cuyas imágenes de error son no vacías y acotadas. Completitud define allí los supremos reales $E_n$. Para $\varepsilon>0$, usamos el contrato con tolerancia $\varepsilon/2$ y reunimos su corte con el de existencia de las envolventes. Cada error posterior es menor que $\varepsilon/2$, por lo que cada supremo es a lo sumo $\varepsilon/2<\varepsilon$. Así $E_n\to0$. El factor dos conserva un margen tras el paso al supremo. Para el vacío, las envolventes se declaran cero y cumplen directamente el límite.
 
 </details>
 
@@ -518,7 +518,7 @@ Para las tiendas $t_n$ de C26, analiza $B_n(1/2)=\{x:t_n(x)\ge1/2\}$ y sus colum
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 10</summary>
 
-Con k=n+3, la condición es |kx−2|≤1/2, luego B_n(1/2)=[3/(2k),5/(2k)], no vacío para toda etapa y dentro de[0,1]. La entrada0 no pertenece a ninguno. Para x>0 fijo, desde k>3/x queda fuera del soporte y también de B_n. Así cada entrada sale eventualmente, pero ningún conjunto de infracción queda vacío. Esto distingue puntualidad de uniformidad.
+Con $k=n+3$, la condición $t_n(x)\ge1/2$ equivale a $1-|kx-2|\ge1/2$, es decir $|kx-2|\le1/2$. Por tanto $B_n(1/2)=[3/(2k),5/(2k)]$, un segmento no vacío contenido en $[0,1]$. Los extremos pertenecen porque la infracción incluye igualdad. La entrada cero queda fuera siempre. Para $x>0$ fijo, desde un corte con $n+3>3/x$ queda a la derecha de todo el soporte y no vuelve a pertenecer al conjunto infractor. Cada entrada sale eventualmente, pero ningún conjunto completo queda vacío. Ésa es la diferencia entre el contrato puntual y el uniforme en este ejemplo.
 
 </details>
 ## 27.3. Calcular la peor discrepancia
@@ -572,7 +572,7 @@ Una ventana de dibujo finita no decide el supremo sobre toda $\mathbb R$. El cua
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 17</summary>
 
-Uno; el error no lo alcanza porque en1 vale0 y antes de1 es menor que1.
+El límite de las potencias vale cero antes de uno y uno en el extremo. Para $n\ge1$, su error es $x^n<1$ si $x<1$ y cero en uno. Entradas próximas al extremo hacen el error arbitrariamente cercano a uno, así $E_n=1$ sin máximo. La envolvente no tiende a cero.
 
 </details>
 
@@ -587,7 +587,7 @@ Uno; el error no lo alcanza porque en1 vale0 y antes de1 es menor que1.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 18</summary>
 
-La cota y máximo c^n, que tiende a cero por Bernoulli.
+En $[0,c]$, con $0<c<1$, el límite es cero y para $n\ge1$ se cumple $x^n\le c^n$, con igualdad en $c$. Por tanto $E_n=c^n$. La prueba geométrica por Bernoulli da un corte independiente de la entrada y demuestra uniformidad en ese segmento.
 
 </details>
 
@@ -602,7 +602,7 @@ La cota y máximo c^n, que tiende a cero por Bernoulli.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 19</summary>
 
-La única entrada es cero y el error de las potencias vale0 desde n=1.
+El dominio $[0,0]$ contiene sólo cero. La fila inicial declarada vale uno, pero desde $n=1$ todas las potencias allí son cero. Sus errores posteriores respecto del límite cero tienen envolvente cero y la convergencia es uniforme.
 
 </details>
 
@@ -617,7 +617,7 @@ La única entrada es cero y el error de las potencias vale0 desde n=1.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 20</summary>
 
-En x=2/(n+3), donde vale1.
+La tienda $t_n$ está entre cero y uno y en su centro $2/(n+3)$ alcanza uno. Su límite puntual es cero, así el máximo de error es uno en cada etapa. El centro móvil proporciona una infracción para cualquier cola candidata a ser uniforme.
 
 </details>
 
@@ -632,7 +632,7 @@ En x=2/(n+3), donde vale1.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 21</summary>
 
-k=n+3, alcanzada en el mismo centro móvil.
+Si $b_n=kt_n$ con $k=n+3$, sus alturas están entre cero y $k$ y alcanzan $k$ en $2/k$. Respecto del límite nulo, $E_n=k$. La envolvente crece aunque cada columna sea eventualmente cero.
 
 </details>
 
@@ -647,7 +647,7 @@ k=n+3, alcanzada en el mismo centro móvil.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 22</summary>
 
-(√k|x|−1)^2≥0, con k=n+1.
+Para $k=n+1$, el cuadrado $(\sqrt{k}|x|-1)^2\ge0$ produce $1+kx^2\ge2\sqrt{k}|x|$. Al dividir para $x\ne0$ se obtiene $|h_n(x)|\le1/(2\sqrt{k})$; en cero se verifica directamente. La desigualdad controla todas las entradas de la recta.
 
 </details>
 
@@ -662,7 +662,7 @@ k=n+3, alcanzada en el mismo centro móvil.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 23</summary>
 
-En x=±1/√k, con valor1/(2√k).
+En $x=\pm1/\sqrt{k}$, el denominador de $h_n$ vale dos y su magnitud es $1/(2\sqrt{k})$. Estos puntos alcanzan la cota global, así dan el máximo exacto. Con $k=n+1$, los máximos tienden a cero y certifican uniformidad.
 
 </details>
 
@@ -677,7 +677,7 @@ En x=±1/√k, con valor1/(2√k).
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 24</summary>
 
-No. h_n converge uniformemente a cero en toda la recta mediante una cota global.
+El tamaño del dominio no decide por sí solo la uniformidad. En toda la recta, $h_n(x)=x/[1+(n+1)x^2]$ tiene error máximo $1/(2\sqrt{n+1})\to0$. En cambio $x/(n+1)$ tiene errores no acotados en cada fila. Lo decisivo es el control global de discrepancias.
 
 </details>
 
@@ -694,7 +694,7 @@ Calcula la envolvente del error respecto del límite puntual de las potencias en
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 11</summary>
 
-En1 el error es0 y para x<1 es x^n<1, así1 es cota y no se alcanza. Dada cualquier cota propuesta0≤c<1, tomamos0<s<(1−c)/(n+1) y x=1−s. Bernoulli da x^n≥1−ns>c, así c falla. Cotas negativas fallan ante el error0. Por tanto E_n=1 sin máximo; no hay uniformidad.
+Para $n\ge1$, el error respecto del límite puntual es $x^n$ si $0\le x<1$ y cero en $x=1$. Todos los errores son menores que uno, así uno es una cota superior que no se alcanza. Para probar optimalidad, si $0\le c<1$ ponemos $s=(1-c)/[2(n+1)]>0$ y $x=1-s\in[0,1)$. Bernoulli da $x^n\ge1-ns>c$, porque $ns<(1-c)$. Una cota negativa ya falla ante un error cero. Por tanto $E_n=1$ para cada $n\ge1$, sin máximo, y esas envolventes refutan uniformidad.
 
 </details>
 
@@ -709,7 +709,7 @@ Para $0<c<1$, calcula la envolvente de las potencias hacia cero en $[0,c]$ y un 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 12</summary>
 
-Para n≥1 y0≤x≤c se tiene x^n≤c^n, y la igualdad se alcanza en c. Así E_n=c^n. Poniendo t=1/c−1>0, Bernoulli produce c^n≤1/(1+nt). Un natural N>1/(εt), reunido con1, da E_n<ε en toda la cola. Para c=0 la familia tiene error0 desde la etapa1.
+En $[0,c]$, con $0<c<1$, el límite es cero y para $n\ge1$ el orden de potencias no negativas da $0\le x^n\le c^n$. La entrada $c$ alcanza el último valor, así $E_n=c^n$ es un máximo. Escribiendo $t=1/c-1>0$, Bernoulli da $c^n\le1/(1+nt)$. Un natural $N>1/(\varepsilon t)$, reunido con el índice uno, garantiza error menor que $\varepsilon$ en toda entrada y toda la cola. La convergencia es uniforme. Si se permite $c=0$, la única columna es cero desde la etapa uno y se trata directamente.
 
 </details>
 
@@ -724,7 +724,7 @@ Calcula las envolventes de $t_n$ y $(n+3)t_n$ en $[0,1]$ y refuta sus convergenc
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 13</summary>
 
-Con k=n+3, las tiendas tienen cota1 y alcanzan1 en2/k, así E_n(t)=1. Las normalizadas tienen cota k y alcanzan k en el mismo centro, así E_n(b)=k. Para tolerancia1/2, en cualquier índice posterior al corte ese centro es infractor. Los centros están en el dominio. Ninguna envolvente tiende a cero aunque los límites puntuales sean cero.
+Las tiendas satisfacen $0\le t_n\le1$ y alcanzan uno en $z_n=2/(n+3)$. Como su límite puntual es cero, su envolvente de error es $E_n(t)=1$. Con $k=n+3$, la tienda normalizada $b_n=kt_n$ está entre cero y $k$ y alcanza $k$ en el mismo centro, así $E_n(b)=k$. Para tolerancia $1/2$, ante cualquier corte tomamos una etapa posterior y su centro, que sigue en $[0,1]$. Ambas familias infringen allí la tolerancia. Ninguna converge uniformemente hacia cero, aunque cada columna termine siendo exactamente cero.
 
 </details>
 
@@ -739,7 +739,7 @@ Para $h_n=x/[1+(n+1)x^2]$ en $\mathbb R$, prueba el máximo exacto del error y u
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 14</summary>
 
-Con k=n+1, el cuadrado(√k|x|−1)^2≥0 da1+kx²≥2√k|x|. Para x≠0, dividir por factores positivos implica |h_n(x)|≤1/(2√k), y en0 el error es0. En x=±1/√k se alcanza la cota, por lo que es el máximo exacto. Un natural N>1/(4ε²) hace ese máximo menor que ε en toda la cola. No se necesita acotar el dominio.
+Escribimos $k=n+1>0$. La desigualdad $(\sqrt{k}|x|-1)^2\ge0$ da $1+kx^2\ge2\sqrt{k}|x|$. Para $x\ne0$, dividir permite concluir $|h_n(x)|\le1/(2\sqrt{k})$; en cero la magnitud es cero. En $x=\pm1/\sqrt{k}$ el denominador vale dos y se alcanza esa cota, así $E_n=1/(2\sqrt{n+1})$ es el máximo exacto en toda la recta. Para $\varepsilon>0$, un natural $N>1/(4\varepsilon^2)$ garantiza $n+1>1/(4\varepsilon^2)$ cuando $n\ge N$, y por tanto $E_n<\varepsilon$. Queda probada uniformidad hacia cero sin restringir el dominio.
 
 **Retorno visual.** Véase [C27-F03](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -756,7 +756,7 @@ Define $v_n(x)=x^{n+1}/(n+1)$ en $[0,1]$. Calcula el máximo y demuestra uniform
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 15</summary>
 
-En el dominio,0≤x^(n+1)≤1, así el error es≤1/(n+1). En x=1 se alcanza esa cota; es el máximo y la envolvente. Un natural N>1/ε da error menor que ε para todos n≥N y x del segmento. A diferencia de x^n, la amplitud1/(n+1) reduce también la peor discrepancia del extremo, no sólo las columnas interiores.
+Para $0\le x\le1$, se tiene $0\le x^{n+1}\le1$. Así $|v_n(x)|\le1/(n+1)$ y la entrada uno alcanza la cota. Es el máximo y la envolvente de error respecto de cero. Un natural $N>1/\varepsilon$ da $1/(n+1)<\varepsilon$ para todos los índices posteriores, uniformemente en la entrada. En las potencias sin ese divisor el peor error permanece cerca de uno; aquí la amplitud decreciente controla también las entradas próximas al extremo.
 
 </details>
 ## 27.4. Restringir el dominio y seguir rutas
@@ -815,7 +815,7 @@ La conversa no vale con una sola subsucesión. Filas constantes $f_n(x)=(-1)^n$ 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 25</summary>
 
-El mismo corte de uniformidad en el dominio mayor.
+Si $Y\subseteq X$, el corte uniforme en $X$ ya controla todas las entradas de $Y$. Por tanto se conserva sin cambios al restringir. Cuando existen las envolventes reales y los dominios no son vacíos, la imagen de errores menor está contenida en la mayor, así $E_n(Y)\le E_n(X)$.
 
 </details>
 
@@ -830,7 +830,7 @@ El mismo corte de uniformidad en el dominio mayor.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 26</summary>
 
-Con su máximo, que domina todas las obligaciones para la tolerancia fijada.
+Para una tolerancia dada, cada una de las finitísimas piezas proporciona un corte. Su máximo natural sirve en la unión, porque cada entrada pertenece a alguna pieza y todo índice posterior supera su corte. El argumento exige una candidata compatible en las intersecciones.
 
 </details>
 
@@ -845,7 +845,7 @@ Con su máximo, que domina todas las obligaciones para la tolerancia fijada.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 27</summary>
 
-No; el argumento de reunión finita sólo usa pertenencia a alguna pieza.
+La reunión finita sólo utiliza que cada entrada del dominio pertenece a alguna pieza. No depende de que las piezas sean abiertas, cerradas o de otra clase topológica. El control proviene del máximo finito de cortes ya válidos en ellas.
 
 </details>
 
@@ -860,7 +860,7 @@ No; el argumento de reunión finita sólo usa pertenencia a alguna pieza.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 28</summary>
 
-Los cortes de las piezas pueden no tener una barrera común.
+En una unión infinita, los cortes válidos en cada pieza pueden crecer sin una barrera natural común. Las potencias convergen uniformemente en cada $[0,c]$ con $c<1$, pero no en la unión $[0,1)$. No puede sustituirse el máximo finito por un máximo infinito sin justificar su existencia.
 
 </details>
 
@@ -875,7 +875,7 @@ Los cortes de las piezas pueden no tener una barrera común.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 29</summary>
 
-|f_n(x_n)−f(x_n)|, sin exigir que las entradas converjan.
+Para cualquier ruta dada $x_n\in X$, el corte uniforme controla la entrada $x_n$ de cada fila posterior. Así $|f_n(x_n)-f(x_n)|\to0$. No hace falta que la ruta converja; la comparación usa el límite evaluado en la misma entrada móvil.
 
 </details>
 
@@ -890,7 +890,7 @@ Los cortes de las piezas pueden no tener una barrera común.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 30</summary>
 
-Que x_n→x∈X y que f sea continua en x.
+Si además $x_n\to x\in X$ y $f$ es continua en $x$, entonces $f(x_n)\to f(x)$. La triangular suma ese error de cambio de entrada con $|f_n(x_n)-f(x_n)|$. Se obtiene $f_n(x_n)\to f(x)$.
 
 </details>
 
@@ -905,7 +905,7 @@ Que x_n→x∈X y que f sea continua en x.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 31</summary>
 
-n_j≥j, por inducción en naturales; permite heredar el corte uniforme.
+Una sucesión estrictamente creciente de índices naturales cumple $n_0\ge0$ y $n_{j+1}\ge n_j+1$, así por inducción $n_j\ge j$. Si $j\ge N$, entonces $n_j\ge N$ y el corte uniforme original controla la fila de la subsucesión.
 
 </details>
 
@@ -920,7 +920,7 @@ n_j≥j, por inducción en naturales; permite heredar el corte uniforme.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 32</summary>
 
-No; las filas constantes alternantes tienen una subsucesión par constante y la familia no converge.
+Las filas constantes $(-1)^n$ sobre un dominio no vacío tienen subsucesión par idénticamente uno, que converge uniformemente. La familia completa conserva también filas menos uno en cualquier cola, así no converge ni puntualmente. Una subsucesión favorable no controla las etapas omitidas.
 
 </details>
 
@@ -937,7 +937,7 @@ Si hay convergencia uniforme en $X$, demuestra uniformidad en cualquier $Y\subse
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 16</summary>
 
-El corte uniforme en X ya controla todas las entradas de Y, así funciona sin cambios. Para conjuntos no vacíos, la imagen de errores de Y es subconjunto de la de X; cada cota de la mayor acota la menor y C02 da E_n(Y)≤E_n(X). En una pieza vacía se adopta error0 y no hay obligaciones. No se deduce igualdad de envolventes.
+Si $Y\subseteq X$, el corte uniforme elegido en $X$ sigue siendo válido para toda entrada de $Y$, así las restricciones convergen uniformemente. Si ambos conjuntos son no vacíos y existen las envolventes de la fila examinada, la imagen de errores sobre $Y$ está contenida en la de $X$. Todo número que acote la segunda acota la primera, y la minimalidad del supremo da $E_n(Y)\le E_n(X)$. Si $Y$ es vacío, su error se declara cero y no hay obligaciones de entrada. La restricción puede reducir la envolvente y no obliga a conservarla exactamente.
 
 </details>
 
@@ -952,7 +952,7 @@ Si $X=A\cup B$ y las restricciones convergen uniformemente a la misma candidata,
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 17</summary>
 
-Para ε>0, tomamos los cortes N_A y N_B y su máximo N. Si n≥N y x∈X, pertenece a A o B y el contrato de esa pieza entrega error<ε. Los cortes son independientes de la entrada. Si alguna pieza es vacía basta el corte de la otra. El argumento no necesita topología de las piezas, sólo una unión finita.
+Para $\varepsilon>0$, las restricciones a $A$ y $B$ proporcionan cortes $N_A,N_B$. Tomamos $N=\max(N_A,N_B)$. Si $n\ge N$ y $x\in X=A\cup B$, la entrada pertenece al menos a una de las piezas y el contrato de esa pieza da $|f_n(x)-f(x)|<\varepsilon$. La misma candidata se usa en las dos restricciones, así no hay discrepancias en su intersección. El argumento incluye piezas vacías y no requiere condiciones topológicas: el máximo finito de cortes es el dato que une los contratos.
 
 </details>
 
@@ -967,7 +967,7 @@ Usa $X_j=[0,1-1/(j+2)]$ para mostrar que uniformidad en cada pieza no implica un
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 18</summary>
 
-La unión es[0,1): para cualquier x<1, la arquimedianidad permite1/(j+2)≤1−x. En cada pieza la envolvente de las potencias es c_j^n→0, así hay uniformidad hacia cero. En la unión el supremo del error es1 para todo n≥1, como en §27.3, y no hay uniformidad. Los cortes dependientes de j no tienen una barrera común que permita tomar un máximo infinito.
+La pieza $X_j$ tiene extremo $c_j=1-1/(j+2)<1$, así las potencias convergen uniformemente a cero en ella con envolvente $c_j^n$. Su unión es $[0,1)$: cada entrada $x<1$ pertenece a alguna pieza porque puede elegirse $j$ con $1/(j+2)\le1-x$. Sobre la unión, para cada $n\ge1$ el supremo del error es uno, mediante entradas arbitrariamente próximas al extremo ausente. Por tanto allí la convergencia no es uniforme. Los cortes de las piezas dependen de $j$ y no tienen una barrera común que permita repetir el argumento de unión finita.
 
 **Retorno visual.** Véase [C27-F04](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -984,7 +984,7 @@ Si $f_n\to f$ uniformemente y está dada una ruta $x_n\in X$, prueba $|f_n(x_n)-
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 19</summary>
 
-Para una tolerancia, el contrato entrega un corte que controla toda entrada en toda fila posterior. En particular, controla la entrada x_n de la fila n. Por ello el error diagonal respecto del valor f(x_n) es menor que ε para n≥N. No se exige convergencia de x_n. Para cambiar el destino a f(x), se necesitarían además x_n→x y un dato como continuidad de f en x.
+La ruta $x_n\in X$ está dada. Para $\varepsilon>0$, el contrato uniforme proporciona $N$ que sirve a todas las entradas de todas las filas posteriores. En particular, si $n\ge N$ sirve en la entrada $x_n$, y $|f_n(x_n)-f(x_n)|<\varepsilon$. Esto prueba que el error diagonal tiende a cero sin exigir convergencia de la ruta. Para reemplazar el valor móvil $f(x_n)$ por $f(x)$ haría falta, por ejemplo, $x_n\to x\in X$ y continuidad de $f$ en ese destino; entonces una segunda aplicación de la triangular completa la comparación.
 
 </details>
 
@@ -999,7 +999,7 @@ Prueba transferencia uniforme a una subsucesión estrictamente creciente de índ
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 20</summary>
 
-Por inducción, índices naturales estrictamente crecientes n_j cumplen n_j≥j. El corte uniforme N de la familia completa sirve desde j≥N, pues n_j≥N y controla todas las entradas. La conversa falla para filas constantes(−1)^n: la subsucesión par es igual a1 en todo el dominio pero la completa alterna dos destinos distintos en cada entrada. Una cola completa tiene más obligaciones que una subsucesión.
+Sea $(n_j)$ una sucesión estrictamente creciente de naturales. La inducción da $n_j\ge j$: el primer término es no negativo y cada siguiente es al menos una unidad mayor. Si $N$ es un corte uniforme de la familia, entonces para $j\ge N$ se tiene $n_j\ge N$ y $|f_{n_j}(x)-f(x)|<\varepsilon$ para toda entrada. Así la subsucesión hereda el límite uniforme. La conversa falla en las filas constantes $(-1)^n$ sobre un dominio no vacío: la subsucesión par es idénticamente uno, mientras la completa alterna y no tiene límite puntual ni uniforme.
 
 </details>
 ## 27.5. Operar bajo un presupuesto común
@@ -1066,7 +1066,7 @@ La estimación prueba uniformidad de la cola de recíprocos. Para una familia de
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 33</summary>
 
-Repartir la tolerancia y tomar el máximo de dos cortes independientes de la entrada.
+Para una combinación lineal, el error está acotado por la suma de los errores de cada familia multiplicados por los coeficientes absolutos. Se asigna una parte de la tolerancia a cada uno y se toma el máximo de sus dos cortes. Como ambos cortes preceden a las entradas, la conclusión es uniforme.
 
 </details>
 
@@ -1081,7 +1081,7 @@ Repartir la tolerancia y tomar el máximo de dos cortes independientes de la ent
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 34</summary>
 
-La triangular inversa: ||u|−|v||≤|u−v|.
+La triangular inversa da $\big||f_n(x)|-|f(x)|\big|\le|f_n(x)-f(x)|$. El mismo corte que controla la familia original controla sus valores absolutos para todas las entradas. No requiere cotas de magnitud de las funciones.
 
 </details>
 
@@ -1096,7 +1096,7 @@ La triangular inversa: ||u|−|v||≤|u−v|.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 35</summary>
 
-Una constante Lipschitz común en un dominio que contenga todos los valores utilizados.
+Una condición suficiente es que la función exterior sea Lipschitz con una misma constante $L$ en un dominio que contenga todos los valores de filas y límite utilizados. Entonces el error compuesto no supera $L|f_n-f|$. Pedir el error original menor que $\varepsilon/(L+1)$ proporciona uniformidad, también si $L=0$.
 
 </details>
 
@@ -1111,7 +1111,7 @@ Una constante Lipschitz común en un dominio que contenga todos los valores util
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 36</summary>
 
-|f_n|≤A+1 en una cola, desde |f|≤A y error uniforme menor que1.
+Si $|f|\le A$, el contrato uniforme con tolerancia uno proporciona una cola con $|f_n-f|<1$ en toda entrada. La triangular da allí $|f_n|\le A+1$. Esta barrera independiente de la entrada permite controlar el producto con otra familia.
 
 </details>
 
@@ -1126,7 +1126,7 @@ Una constante Lipschitz común en un dominio que contenga todos los valores util
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 37</summary>
 
-No hay una barrera de |x| en la recta que permita convertir el pequeño error del otro factor en uno global.
+En la recta, la familia constante en etapa $f_n(x)=x$ tiene error cero y $g_n(x)=1/(n+1)$ converge uniformemente a cero. Su producto es $x/(n+1)$, cuyos errores crecen sin cota con la entrada. Falta una barrera de magnitud del factor $x$ que proteja todo el dominio.
 
 </details>
 
@@ -1141,7 +1141,7 @@ No hay una barrera de |x| en la recta que permita convertir el pequeño error de
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 38</summary>
 
-No; el error de cuadrar x+1/(n+1) crece sin cota al variar x.
+Para $f_n(x)=x+1/(n+1)$, el error original es uniforme, pero el de los cuadrados es $|2x/(n+1)+1/(n+1)^2|$, no acotado en la recta. En una franja de valores $[-M,M]$, el cuadrado sí tiene cota Lipschitz $2M$, que permitiría transportar la aproximación.
 
 </details>
 
@@ -1156,7 +1156,7 @@ No; el error de cuadrar x+1/(n+1) crece sin cota al variar x.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 39</summary>
 
-|g|≥m>0 y error|g_n−g|<m/2 garantizan |g_n|>m/2 en toda la cola.
+Si $|g(x)|\ge m>0$ y el error uniforme es menor que $m/2$ en una cola, la triangular inversa da $|g_n(x)|>m/2$ para toda entrada de ella. Por tanto todos esos recíprocos están definidos y sus errores no superan $2|g_n-g|/m^2$. El margen debe ser común al dominio completo.
 
 </details>
 
@@ -1171,7 +1171,7 @@ No; el error de cuadrar x+1/(n+1) crece sin cota al variar x.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 40</summary>
 
-Que las filas iniciales no tengan ceros en el dominio, o que se declare su reparación.
+El límite separado de cero garantiza recíprocos sobre el dominio común desde un corte uniforme, pero no elimina ceros de filas anteriores. Para definir una familia de recíprocos desde $n=0$ hay que comprobar esas filas o declarar sus reemplazos iniciales por funciones definidas. Un prefijo finito reparado no altera la convergencia.
 
 </details>
 
@@ -1188,7 +1188,7 @@ Prueba convergencia uniforme de $\alpha f_n+\beta g_n$ cuando ambas familias con
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 21</summary>
 
-Para ε>0 pedimos los errores de f_n y g_n menores que ε/[2(|α|+1)] y ε/[2(|β|+1)], respectivamente. Sus cortes no dependen de la entrada; tomamos el máximo. En cualquier fila posterior y entrada, la triangular da error≤|α||f_n−f|+|β||g_n−g|<ε. Los denominadores positivos incluyen coeficientes cero sin dividir por ellos.
+Dada $\varepsilon>0$, pedimos a las dos familias errores menores que $\varepsilon/[2(|\alpha|+1)]$ y $\varepsilon/[2(|\beta|+1)]$, respectivamente. Sus cortes uniformes tienen un máximo $N$. En toda entrada de cualquier fila posterior, el error de la combinación es a lo sumo $|\alpha||f_n-f|+|\beta||g_n-g|\le(\varepsilon/2)\big(|\alpha|/(|\alpha|+1)+|\beta|/(|\beta|+1)\big)<\varepsilon$. Los coeficientes nulos están incluidos porque los denominadores siguen positivos. Por tanto $\alpha f_n+\beta g_n$ converge uniformemente a $\alpha f+\beta g$.
 
 </details>
 
@@ -1203,7 +1203,7 @@ Demuestra uniformidad del producto cuando $|f|\le A$, $|g|\le B$ y hay uniformid
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 22</summary>
 
-El corte para |f_n−f|<1 produce |f_n|≤A+1 en toda entrada de la cola. Allí el error de producto es≤(A+1)|g_n−g|+B|f_n−f|. Pedimos los dos errores menores que ε/[2(A+2)] y ε/[2(B+1)] y reunimos ambos cortes con el de la barrera. La suma es<ε. Las constantes A,B son globales, por lo que el corte no depende de x.
+Suponemos $|f|\le A$ y $|g|\le B$, con $A,B\ge0$ globales. El corte uniforme para $|f_n-f|<1$ da $|f_n|\le A+1$ en toda entrada de la cola. La identidad $f_ng_n-fg=f_n(g_n-g)+g(f_n-f)$ proporciona error a lo sumo $(A+1)|g_n-g|+B|f_n-f|$. Pedimos al error de $g_n$ una cota $\varepsilon/[2(A+2)]$ y al de $f_n$ una cota $\varepsilon/[2(B+1)]$, reuniendo sus cortes con el de la barrera. La suma resultante es menor que $\varepsilon$. Todas las constantes son independientes de la entrada, así el producto converge uniformemente a $fg$.
 
 </details>
 
@@ -1218,7 +1218,7 @@ Construye dos familias uniformemente convergentes en $\mathbb R$ cuyo producto n
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 23</summary>
 
-Tomamos f_n(x)=x, con error0 hacia x, y g_n(x)=1/(n+1), con error independiente de x tendente a cero. El producto de límites es0 y el producto de filas es x/(n+1). Para cada N, la entrada x=N+1 en la fila n=N da error1; tolerancia1/2 refuta uniformidad. La barrera de f(x)=x falta en todo el dominio.
+En la recta, tomamos $f_n(x)=x$ en toda etapa y $g_n(x)=1/(n+1)$. La primera familia converge uniformemente a $f(x)=x$ con error cero; la segunda converge uniformemente a $g=0$ con error constante $1/(n+1)$. El producto de filas es $x/(n+1)$ y el producto de límites es cero. Ante cualquier corte $N$, la entrada $x=N+1$ de la fila $n=N$ da error uno, refutando uniformidad con tolerancia $1/2$. La magnitud del límite $f(x)=x$ no tiene barrera global y el factor creciente amplifica el error pequeño del segundo.
 
 **Retorno visual.** Véase [C27-F05](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1235,7 +1235,7 @@ Analiza el cuadrado de $f_n(x)=x+1/(n+1)$ en $\mathbb R$ y explica qué control 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 24</summary>
 
-La familia original converge uniformemente a x. El error de los cuadrados es |2x/(n+1)+1/(n+1)^2|, no acotado para ningún n, así no hay uniformidad hacia x². Para una refutación explícita basta x=n+1: el error es2+1/(n+1)²>1. Si todos los valores de filas y límite estuvieran en[−M,M], el cuadrado tendría cota Lipschitz2M por |u²−v²|=|u−v||u+v|, que sí transportaría el contrato.
+La familia original tiene error global $1/(n+1)$ respecto de la identidad. Al cuadrar, la diferencia es $(x+1/(n+1))^2-x^2=2x/(n+1)+1/(n+1)^2$. Para cada índice crece sin cota en magnitud al variar $x$ por la recta. Un testigo explícito es $x=n+1$, donde el error vale $2+1/(n+1)^2>1$; por tanto no hay uniformidad hacia $x^2$. Si los valores de filas y límite utilizados estuvieran todos en $[-M,M]$, se tendría $|u^2-v^2|=|u-v||u+v|\le2M|u-v|$. Esa barrera convierte el cuadrado en una operación Lipschitz sobre el rango común y sí permite transportar uniformidad.
 
 </details>
 
@@ -1250,7 +1250,7 @@ Si $|g(x)|\ge m>0$ y $g_n\to g$ uniformemente, prueba uniformidad de los recípr
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 25</summary>
 
-Un corte uniforme para error<m/2 da |g_n(x)|>m/2 en todas las entradas de la cola. Así esa cola de recíprocos está definida en X. El error es |g_n−g|/(|g_n||g|)≤2|g_n−g|/m². Un corte para error de g_n menor que εm²/2, reunido con el de dominio, hace el error recíproco<ε. Las primeras filas pueden tener ceros; para una familia desde cero deben revisarse o repararse explícitamente.
+El contrato uniforme para error $m/2$ proporciona una cola en la que $|g_n(x)|\ge|g(x)|-|g_n(x)-g(x)|>m/2$ para todas las entradas. Así los recíprocos de esa cola son funciones reales sobre el mismo $X$. Allí $|1/g_n-1/g|=|g_n-g|/(|g_n||g|)\le2|g_n-g|/m^2$. Para $\varepsilon>0$, reunimos el corte de dominio con el corte uniforme para error original menor que $\varepsilon m^2/2$. El error recíproco es entonces menor que $\varepsilon$. Las filas iniciales pueden tener ceros; para hablar de una familia desde el índice cero deben revisarse o reemplazarse explícitamente por funciones definidas, sin alterar esta cola.
 
 </details>
 ## 27.6. Una distancia entre funciones acotadas
@@ -1329,7 +1329,7 @@ sí tiene diferencias acotadas: entre dos miembros se cancela $f_0$. La misma f�
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 41</summary>
 
-Las funciones reales sobre X cuyos valores tienen una barrera de magnitud válida para toda entrada.
+Una función $u:X\to\mathbb R$ pertenece a $\mathcal B(X)$ si existe un real $B\ge0$ con $|u(x)|\le B$ para toda entrada. La barrera limita la función completa. Sumas, diferencias y múltiplos de dos funciones de esta clase siguen acotados.
 
 </details>
 
@@ -1344,7 +1344,7 @@ Las funciones reales sobre X cuyos valores tienen una barrera de magnitud válid
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 42</summary>
 
-Completitud de C03 aplicada a la imagen no vacía acotada de |u|.
+Si $X$ es no vacío, la imagen $\{|u(x)|:x\in X\}$ es no vacía y acotada porque $u\in\mathcal B(X)$. Completitud de los reales proporciona su supremo $\|u\|_\infty$. No se requiere que ninguna entrada alcance esa altura máxima.
 
 </details>
 
@@ -1359,7 +1359,7 @@ Completitud de C03 aplicada a la imagen no vacía acotada de |u|.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 43</summary>
 
-Cero, por convención para la función única, no por un supremo real del vacío.
+Para la única función de dominio vacío se define $\|u\|_\infty=0$. Su imagen de magnitudes es vacía, así no se obtiene ese valor tomando un supremo real. La convención incluye el caso vacío en las identidades de norma y distancia.
 
 </details>
 
@@ -1374,7 +1374,7 @@ Cero, por convención para la función única, no por un supremo real del vacío
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 44</summary>
 
-Que todos sus valores son0 y por tanto es la función cero.
+Cada magnitud $|u(x)|$ está entre cero y la norma. Si ésta es cero, todos los valores de $u$ son cero y la función coincide con la función nula. Recíprocamente, la función nula tiene norma cero; la misma equivalencia vale en el dominio vacío por su convención.
 
 </details>
 
@@ -1389,7 +1389,7 @@ Que todos sus valores son0 y por tanto es la función cero.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 45</summary>
 
-Por verificación directa; no se divide por su magnitud.
+Si $\alpha=0$, la función $\alpha u$ es nula y su norma es cero, igual a $|\alpha|\|u\|_\infty$. El caso se verifica directamente. Para $\alpha\ne0$ se puede dividir por $|\alpha|$ al demostrar la optimalidad de la cota escalada.
 
 </details>
 
@@ -1404,7 +1404,7 @@ Por verificación directa; no se divide por su magnitud.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 46</summary>
 
-u−w=(u−v)+(v−w), junto con la desigualdad triangular de la norma.
+La identidad $u-w=(u-v)+(v-w)$ y la triangular de valores dan $|u(x)-w(x)|\le d_\infty(u,v)+d_\infty(v,w)$ en cada entrada. El miembro derecho acota toda la imagen de magnitudes de $u-w$. Tomar supremo prueba la triangular de la distancia.
 
 </details>
 
@@ -1419,7 +1419,7 @@ u−w=(u−v)+(v−w), junto con la desigualdad triangular de la norma.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 47</summary>
 
-Sí; los errores pueden ser menores que el radio y tener supremo exactamente igual a él.
+En $(0,1)$, la función $u(x)=x$ tiene $|u(x)|<1$ en toda entrada, así su gráfica está en la banda abierta alrededor de cero. Pero su norma es uno, de modo que no pertenece a la bola estricta $d_\infty(u,0)<1$. El supremo puede caer en la frontera que ninguna altura alcanza.
 
 </details>
 
@@ -1434,7 +1434,7 @@ Sí; los errores pueden ser menores que el radio y tener supremo exactamente igu
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 48</summary>
 
-Medir diferencias acotadas aunque la base y sus traslaciones sean no acotadas.
+En la clase $f_0+\mathcal B(X)$, dos funciones se escriben $f_0+u$ y $f_0+v$ con $u,v$ acotadas. Su diferencia es $u-v$, también acotada, así tiene norma real y define una distancia. La parte común $f_0$ puede ser no acotada y se cancela al medir discrepancias.
 
 </details>
 
@@ -1451,7 +1451,7 @@ Prueba que $\|u\|_\infty=0$ en $\mathcal B(X)$ si y sólo si $u$ es la función 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 26</summary>
 
-Para X no vacío, cada |u(x)| está entre0 y su supremo. Si el supremo es0, todos los valores son0, así u es la función cero. Si u es cero, la imagen de magnitudes es{0} y tiene supremo0. Para el vacío se declaró norma0; la única función es la función cero vacía, por lo que la equivalencia también vale sin fingir un supremo del conjunto vacío.
+Si $X\ne\varnothing$, cada $|u(x)|$ está entre cero y su supremo $\|u\|_\infty$. Si la norma es cero, todas esas magnitudes son cero, así $u$ coincide con la función nula. Recíprocamente, para la función nula la imagen de magnitudes es $\{0\}$ y su supremo es cero. En el dominio vacío se declaró norma cero para la única función, que también es la función nula vacía. Así la equivalencia vale en ambos casos, manteniendo separada la convención del vacío de la existencia de un supremo real.
 
 </details>
 
@@ -1466,7 +1466,7 @@ Demuestra $\|\alpha u\|_\infty=|\alpha|\|u\|_\infty$ sin suponer que la norma se
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 27</summary>
 
-Para α≠0, el número |α|‖u‖∞ acota todas las magnitudes de αu. Si C es cualquier cota de éstas, C/|α| acota las magnitudes de u; la minimalidad del supremo da |α|‖u‖∞≤C. Por tanto ese número es el supremo buscado. Para α=0 se verifican directamente ambos lados0. En el dominio vacío ambas normas fueron definidas0 y la igualdad es inmediata.
+Supongamos $X\ne\varnothing$ y $\alpha\ne0$. El número $|\alpha|\|u\|_\infty$ acota todas las magnitudes $|\alpha u(x)|$. Si $C$ es cualquier cota superior de éstas, dividir por $|\alpha|>0$ da una cota $C/|\alpha|$ para todas las magnitudes de $u$. La minimalidad de su supremo implica $|\alpha|\|u\|_\infty\le C$. Por tanto ese número es exactamente $\|\alpha u\|_\infty$. Si $\alpha=0$, ambos lados valen cero directamente. Si $X$ es vacío, ambas normas se definieron cero y la igualdad también es inmediata. No se usó un punto que alcanzara la norma.
 
 </details>
 
@@ -1481,7 +1481,7 @@ Verifica la desigualdad triangular de $d_\infty(u,v)=\|u-v\|_\infty$ para funcio
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 28</summary>
 
-Para cualquier entrada, |u(x)−w(x)|≤|u(x)−v(x)|+|v(x)−w(x)|≤d∞(u,v)+d∞(v,w). El miembro derecho es una cota superior real de todas las diferencias u−w. Tomando su supremo obtenemos d∞(u,w)≤d∞(u,v)+d∞(v,w). Las tres diferencias están acotadas porque las funciones lo están. En el vacío todas las distancias son0.
+Las diferencias de funciones acotadas siguen acotadas, así las tres distancias existen. Para cada entrada, $|u(x)-w(x)|\le|u(x)-v(x)|+|v(x)-w(x)|\le d_\infty(u,v)+d_\infty(v,w)$. El último real es por tanto una cota superior de toda la imagen de magnitudes de $u-w$. Tomar su supremo da $d_\infty(u,w)\le d_\infty(u,v)+d_\infty(v,w)$. La conclusión usa cotas universales y no necesita máximos alcanzados. En el vacío, todas las distancias son cero por convención.
 
 </details>
 
@@ -1496,7 +1496,7 @@ En $X=(0,1)$, compara la banda de radio1 entre $u(x)=x$ y cero con la bola $d_\i
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 29</summary>
 
-Para todas las entradas, |u(x)|=x<1, así la gráfica queda en la banda abierta de radio1 alrededor de cero. Pero d∞(u,0)=sup(0,1)=1, y u no pertenece a la bola estricta de radio1. No hay contradicción: pertenencia punto a punto a una banda abierta permite supremo en la frontera. Al usar radios menores en un contrato de convergencia, esa diferencia se resuelve con ε/2.
+Para $u(x)=x$ en $(0,1)$, cada entrada satisface $|u(x)-0|=x<1$. Por tanto la gráfica queda dentro de la banda abierta entre menos uno y uno alrededor de la función cero. Sin embargo el supremo de las magnitudes es uno, así $d_\infty(u,0)=1$. La condición de bola estricta pide una distancia menor que uno y no se cumple. El error nunca alcanza la frontera, pero se aproxima a ella sin un margen común positivo. Al probar equivalencias de convergencia, usar tolerancia $\varepsilon/2$ evita este problema de frontera.
 
 **Retorno visual.** Véase [C27-F06](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1513,7 +1513,7 @@ En $\mathbb R$ explica por qué la distancia suprema no es real entre $x$ y0, pe
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 30</summary>
 
-La magnitud |x| no tiene cota real en toda la recta, de modo que no hay supremo real para la diferencia entre x y0. En cambio,(x+u)−(x+v)=u−v es acotada por la suma de barreras de u y v. Su supremo real existe por C03 y define una distancia en la clase x+$\mathcal B(\mathbb R)$. La parte no acotada común se cancela; no se extiende la distancia real a pares arbitrarios de funciones.
+La diferencia entre la identidad $r(x)=x$ y cero tiene magnitud $|x|$, no acotada en la recta. Por tanto no tiene supremo real y $d_\infty(r,0)$ no es una distancia real definida en esta teoría. Si $u,v$ son acotadas, en cambio, $(r+u)-(r+v)=u-v$ tiene una barrera global dada por la suma de sus cotas. Su norma existe y define la distancia entre esas dos traslaciones. La clase $r+\mathcal B(\mathbb R)$ permite medir diferencias acotadas con una base común no acotada; no extiende la distancia real a todos los pares arbitrarios de funciones.
 
 </details>
 ## 27.7. Cauchy uniforme y completitud
@@ -1589,7 +1589,7 @@ Para un dominio no vacío, ante cualquier corte elegimos un entero $m\ge\max(N,1
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 49</summary>
 
-Dos, m y n, ambos posteriores a un único corte que también sirve en toda entrada.
+El contrato uniforme de Cauchy pide, para cada $\varepsilon>0$, un corte $N$ con $|f_n(x)-f_m(x)|<\varepsilon$ para todo $m,n\ge N$ y todo $x\in X$. Una misma cola controla cualquier pareja tardía de filas en cualquier entrada.
 
 </details>
 
@@ -1604,7 +1604,7 @@ Dos, m y n, ambos posteriores a un único corte que también sirve en toda entra
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 50</summary>
 
-Uniformemente convergente⇒uniformemente de Cauchy, mediante la triangular y dos errores.
+Si existe un límite uniforme $f$, un corte para error $\varepsilon/3$ controla simultáneamente ambas filas respecto de él. La triangular da $|f_n-f_m|<2\varepsilon/3<\varepsilon$. Esta dirección utiliza el destino ya existente y no necesita construir límites por completitud.
 
 </details>
 
@@ -1619,7 +1619,7 @@ Uniformemente convergente⇒uniformemente de Cauchy, mediante la triangular y do
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 51</summary>
 
-En C10, al dar un límite real a cada columna de Cauchy.
+Una familia uniformemente de Cauchy hace de Cauchy a cada columna numérica. La completitud de $\mathbb R$, en el criterio de C10, proporciona su límite real. La unicidad permite reunir esas salidas en una función y después comprobar el control uniforme hacia ella.
 
 </details>
 
@@ -1634,7 +1634,7 @@ En C10, al dar un límite real a cada columna de Cauchy.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 52</summary>
 
-El índice n≥N y la entrada x; el corte común ya se eligió antes de ambos.
+Elegido el corte común, se fijan una entrada $x$ y un índice $n\ge N$. Sólo varía $m$ en $|f_n(x)-f_m(x)|$ mientras su columna converge. El corte no dependía de $n$ ni de $x$, así la cota obtenida al pasar al límite vale para ambos universalmente.
 
 </details>
 
@@ -1649,7 +1649,7 @@ El índice n≥N y la entrada x; el corte común ya se eligió antes de ambos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 53</summary>
 
-|f_n(x)−f(x)|≤ε/3; el límite conserva la cota superior, sin invertirla.
+Si los errores entre filas son menores que $\varepsilon/3$, al llevar una columna al límite se conserva la cota no estricta $|f_n(x)-f(x)|\le\varepsilon/3$. Ese número sigue siendo menor que $\varepsilon$. El paso al límite conserva una cota superior; no invierte el sentido de la desigualdad.
 
 </details>
 
@@ -1664,7 +1664,7 @@ El índice n≥N y la entrada x; el corte común ya se eligió antes de ambos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 54</summary>
 
-Una fila de referencia f_N, con barrera final‖f_N‖∞+1 para todas las entradas.
+Con el contrato de Cauchy para tolerancia uno se fija una fila de referencia $f_N$. Pasar al límite en las demás da $|f-f_N|\le1$ en toda entrada. Si $f_N$ es acotada, entonces $|f(x)|\le\|f_N\|_\infty+1$ y el límite sigue en $\mathcal B(X)$.
 
 </details>
 
@@ -1679,7 +1679,7 @@ Una fila de referencia f_N, con barrera final‖f_N‖∞+1 para todas las entra
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 55</summary>
 
-Que toda sucesión de Cauchy tiene límite dentro de$\mathcal B(X)$ en distancia suprema.
+La completitud secuencial afirma que cualquier sucesión de Cauchy para $d_\infty$ converge en esa distancia a una función de la misma clase $\mathcal B(X)$. Se construye el destino por columnas y se prueba que es acotado usando una fila de referencia. El criterio de envolventes identifica después el contrato uniforme con convergencia en distancia.
 
 </details>
 
@@ -1694,7 +1694,7 @@ Que toda sucesión de Cauchy tiene límite dentro de$\mathcal B(X)$ en distancia
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 56</summary>
 
-Los pares lejanos de una cola pueden seguir separados, como H_(2m)−H_m≥1/2.
+En las filas constantes de sumas armónicas, los incrementos vecinos son $1/(n+1)\to0$. Sin embargo $H_{2m}-H_m$ suma $m$ términos de tamaño al menos $1/(2m)$, así es al menos $1/2$. Pares lejanos de cualquier cola conservan esa separación y refutan Cauchy.
 
 </details>
 
@@ -1711,11 +1711,7 @@ Prueba que convergencia uniforme implica el contrato uniforme de Cauchy e identi
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 31</summary>
 
-Para $\varepsilon>0$ recibimos un corte uniforme para $\varepsilon/3$. Si $m,n\ge N$ y $x\in X$, la triangular da
-
-$$|f_n(x)-f_m(x)|\le |f_n(x)-f(x)|+|f(x)-f_m(x)|<2\varepsilon/3<\varepsilon.$$
-
-El mismo corte controla los dos índices y toda entrada. Esta dirección sólo usa el destino ya dado y la triangular; no necesita completitud.
+Dada $\varepsilon>0$, la convergencia uniforme a $f$ entrega un corte $N$ para error $\varepsilon/3$. Para todo $m,n\ge N$ y toda entrada, la triangular da $|f_n(x)-f_m(x)|\le|f_n(x)-f(x)|+|f(x)-f_m(x)|<2\varepsilon/3<\varepsilon$. Éste es el contrato uniforme de Cauchy, con dos índices posteriores al mismo corte. La función destino ya existe por hipótesis. La prueba sólo reúne errores mediante la triangular y no usa completitud para construir ningún valor nuevo.
 
 </details>
 
@@ -1730,7 +1726,7 @@ Desde Cauchy uniforme, demuestra existencia de un límite uniforme sin conocer s
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 32</summary>
 
-Cada columna es de Cauchy real, así C10 da un límite único y C26 reúne los límites en una función f. Para ε>0 elegimos un corte común de Cauchy con ε/3. Fijados n≥N y x, todos m≥N satisfacen |f_n(x)−f_m(x)|<ε/3. Al llevar m al límite, álgebra y orden dan |f_n(x)−f(x)|≤ε/3<ε. El corte se eligió antes de n y x, así controla toda la función. La desigualdad tras el límite es≤, no≥.
+Cauchy uniforme implica Cauchy numérico en cada entrada fija. C10 proporciona un límite real único por columna y esas salidas forman una función $f:X\to\mathbb R$. Para demostrar uniformidad, fijamos $\varepsilon>0$ y elegimos un corte común $N$ de Cauchy para error $\varepsilon/3$. Fijados $n\ge N$ y $x$, para todo $m\ge N$ tenemos $|f_n(x)-f_m(x)|<\varepsilon/3$. Al llevar $m$ al límite, la continuidad del absoluto y la preservación del orden dan $|f_n(x)-f(x)|\le\varepsilon/3<\varepsilon$. El corte precedía a $n$ y a $x$, así controla todas las filas y entradas requeridas. En el vacío se obtiene directamente la función vacía.
 
 </details>
 
@@ -1745,7 +1741,7 @@ Prueba completitud secuencial de $\mathcal B(X)$ para la distancia suprema.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 33</summary>
 
-Una sucesión de Cauchy en d∞ cumple el contrato uniforme de Cauchy y tiene límite uniforme real f por el criterio. Con tolerancia1 tomamos una fila de referencia f_N; pasar m al límite en |f_m(x)−f_N(x)|<1 da |f(x)|≤‖f_N‖∞+1 para toda entrada. Así f pertenece a$\mathcal B(X)$. El criterio de envolventes identifica la convergencia uniforme con d∞(f_n,f)→0. La existencia numérica usa C10; la barrera común conserva el espacio.
+Una sucesión de Cauchy en $d_\infty$ cumple el contrato uniforme de Cauchy porque cada error de entrada está acotado por esa distancia. El criterio anterior construye un límite uniforme real $f$. Falta comprobar que permanece en $\mathcal B(X)$. Usamos Cauchy con tolerancia uno y fijamos la fila de referencia $f_N$. Para todos los índices $m\ge N$ y todas las entradas, $|f_m(x)-f_N(x)|<1$. Pasar $m$ al límite da $|f(x)-f_N(x)|\le1$, luego $|f(x)|\le\|f_N\|_\infty+1$. Así $f$ es acotada. La caracterización por envolventes convierte después el contrato uniforme en $d_\infty(f_n,f)\to0$. Queda probada completitud secuencial, con el vacío incluido por sus convenciones.
 
 </details>
 
@@ -1760,7 +1756,7 @@ Para filas constantes $H_n=\sum_{j=1}^n1/j$, $H_0=0$, prueba que diferencias de 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 34</summary>
 
-En un dominio no vacío, d∞(H_(n+1),H_n)=1/(n+1)→0. Pero para m≥1, H_(2m)−H_m suma m términos, cada uno≥1/(2m), así la diferencia es≥1/2. Ante un corte N elegimos m≥máx(N,1); ambos índices son posteriores y cualquier entrada muestra separación≥1/2. Tolerancia1/2 refuta Cauchy uniforme. El contrato controla todos los pares tardíos, no sólo vecinos.
+Sobre un dominio no vacío, cada $H_n$ es una función constante y $d_\infty(H_{n+1},H_n)=1/(n+1)\to0$. Pero para $m\ge1$, $H_{2m}-H_m=\sum_{j=m+1}^{2m}1/j\ge m/(2m)=1/2$. Ante cualquier corte $N$, tomamos $m\ge\max(N,1)$; ambos índices $m,2m$ quedan en la cola y en cualquier entrada su diferencia es al menos $1/2$. La tolerancia $1/2$ refuta el error estricto pedido por Cauchy uniforme. Los incrementos vecinos pequeños no controlan la acumulación de muchos incrementos entre etapas lejanas. En un dominio vacío todas las filas serían la misma función, así ese caso no sería un contraejemplo.
 
 **Retorno visual.** Véase [C27-F07](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1777,7 +1773,7 @@ Explica qué pasos del criterio uniforme de Cauchy gastan completitud y cuáles 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 35</summary>
 
-Convergencia uniforme⇒Cauchy usa únicamente triangular y un corte común. En la vuelta, C10 usa completitud de ℝ para obtener el destino de cada columna; unicidad construye el grafo. Una vez existente la función límite, el paso de m→∞ conserva la cota no estricta por orden, y el margen ε/3 entrega el contrato uniforme. La permanencia en$\mathcal B(X)$ usa una fila acotada de referencia. No se supone compacidad ni continuidad de las filas.
+La dirección de convergencia uniforme a Cauchy sólo usa el destino dado, la triangular y un corte común. En la dirección inversa, la completitud de los reales interviene al aplicar C10 para obtener el límite de cada columna de Cauchy. La unicidad de esas salidas construye el grafo de una función. Para recuperar uniformidad se mantiene fijo un índice y una entrada y se lleva la otra columna al límite: continuidad del absoluto y orden conservan una cota no estricta, cuyo margen $\varepsilon/3$ basta para el contrato. Si se trabaja en $\mathcal B(X)$, una fila acotada de referencia aporta después la barrera del destino. Ningún paso exige compacidad del dominio ni continuidad de las filas.
 
 </details>
 ## 27.8. Certificar una aproximación completa
@@ -1848,7 +1844,7 @@ El próximo capítulo preguntará qué operaciones pueden atravesar este nuevo c
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 57</summary>
 
-Una suma finita entre las etapas m y n−1; no se presupone una serie de funciones.
+Para comparar $f_n$ con $f_m$ se escribe $f_n-f_m=\sum_{j=m}^{n-1}(f_{j+1}-f_j)$ cuando $n>m$. Es una telescopía finita. La cota geométrica de cada incremento se suma en esa lista, sin presuponer la existencia de una serie de funciones.
 
 </details>
 
@@ -1863,7 +1859,7 @@ Una suma finita entre las etapas m y n−1; no se presupone una serie de funcion
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 58</summary>
 
-Cq^m/(1−q), válida para toda entrada.
+Si $|f_{j+1}-f_j|\le Cq^j$ con $C\ge0$ y $0<q<1$, la suma finita da $|f_n-f_m|\le Cq^m(1-q^{n-m})/(1-q)\le Cq^m/(1-q)$ para $n>m$. La cota vale para toda entrada y tiende a cero con el menor índice.
 
 </details>
 
@@ -1878,7 +1874,7 @@ Cq^m/(1−q), válida para toda entrada.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 59</summary>
 
-|f−f_m|≤Cq^m/(1−q) en todo el dominio.
+El presupuesto geométrico prueba Cauchy uniforme y construye un límite $f$. Fijar $m,x$ y llevar $n$ al límite conserva $|f(x)-f_m(x)|\le Cq^m/(1-q)$. Por tanto la misma barrera certifica el error de la aproximación completa, también cuando el supremo no se alcance.
 
 </details>
 
@@ -1893,7 +1889,7 @@ Cq^m/(1−q), válida para toda entrada.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 60</summary>
 
-Todos los incrementos son0 y todas las filas coinciden.
+Si $C=0$, la cota de incrementos obliga a $|f_{j+1}(x)-f_j(x)|=0$ para todo índice y entrada. Todas las filas coinciden con $f_0$ y la convergencia es inmediata. No hace falta dividir por $C$ para elegir un corte.
 
 </details>
 
@@ -1908,7 +1904,7 @@ Todos los incrementos son0 y todas las filas coinciden.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 61</summary>
 
-Se declara cota inicialC y cotas posteriores0; desde la etapa1 la familia es constante.
+Para admitir $q=0$, se especifica una cota inicial $C$ para $f_1-f_0$ y cotas cero para todos los incrementos posteriores. Así $f_n=f_1$ desde $n=1$. Esta declaración evita utilizar una potencia inicial ambigua y prueba uniformidad por constancia de la cola.
 
 </details>
 
@@ -1923,7 +1919,7 @@ Se declara cota inicialC y cotas posteriores0; desde la etapa1 la familia es con
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 62</summary>
 
-Cuando una fila de referencia está acotada; el presupuesto sólo acota diferencias si la base es arbitraria.
+El presupuesto controla $|f-f_0|\le C/(1-q)$. Si la base está acotada, sumar sus dos barreras acota al límite. Con base arbitraria sólo se garantiza una diferencia acotada y pertenencia a $f_0+\mathcal B(X)$; el límite puede conservar la parte no acotada de la base.
 
 </details>
 
@@ -1938,7 +1934,7 @@ Cuando una fila de referencia está acotada; el presupuesto sólo acota diferenc
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 63</summary>
 
-Que monotonía por columnas y límite continuo basten sin otros datos: el error máximo sigue siendo1.
+Los intervalos $(0,1/(n+1))$ se encogen y las columnas de $s_n$ decrecen a cero. Ese límite es continuo. Pero en $x_n=1/[2(n+1)]$ el error vale uno para toda etapa, así la convergencia no es uniforme. Las filas son discontinuas, dato que debe conservarse al comparar el ejemplo con resultados de monotonía.
 
 </details>
 
@@ -1953,7 +1949,7 @@ Que monotonía por columnas y límite continuo basten sin otros datos: el error 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 64</summary>
 
-C28: demostrar con sus hipótesis cuándo continuidad, integración y diferenciación pueden atravesar los límites.
+C28 estudia las hipótesis que permiten conservar continuidad y pasar límites a través de integración y diferenciación. La convergencia uniforme y sus certificados quedan disponibles para esas pruebas. Cada intercambio deberá verificar también la existencia de las operaciones que compara.
 
 </details>
 
@@ -1970,11 +1966,7 @@ Si $|f_{j+1}(x)-f_j(x)|\le Cq^j$ con $0<q<1$, prueba Cauchy uniforme y una cota 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 36</summary>
 
-Para $n>m$, telescopar y sumar una cantidad finita de errores da, para toda entrada,
-
-$$|f_n(x)-f_m(x)|\le C\sum_{j=m}^{n-1}q^j=Cq^m\frac{1-q^{n-m}}{1-q}\le\frac{Cq^m}{1-q}.$$
-
-Intercambiamos índices si $m>n$; si coinciden, el error es cero. Como $q^m\to0$, hay un corte común para todos los pares, y el criterio produce $f$. Fijando $m$ y pasando $n$ al límite, obtenemos $|f(x)-f_m(x)|\le Cq^m/(1-q)$ en todo $X$.
+Suponemos $C\ge0$ y $0<q<1$. Para $n>m$, telescopía y triangular dan $|f_n(x)-f_m(x)|\le\sum_{j=m}^{n-1}|f_{j+1}(x)-f_j(x)|\le C\sum_{j=m}^{n-1}q^j=Cq^m(1-q^{n-m})/(1-q)\le Cq^m/(1-q)$. La suma utilizada es finita. Para $m>n$ se intercambian los índices, y para igualdad el error es cero. Como $q^j\to0$, un corte común del menor índice hace la cota menor que cualquier tolerancia, demostrando Cauchy uniforme. Su criterio produce $f$. Fijados $m,x$, pasar $n$ al límite conserva $|f(x)-f_m(x)|\le Cq^m/(1-q)$, un certificado válido en todo el dominio. Si $C=0$, las filas coinciden y se verifica directamente.
 
 </details>
 
@@ -1989,7 +1981,7 @@ Bajo el presupuesto geométrico, compara el caso de una fila inicial acotada con
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 37</summary>
 
-Telescopar desde0 da |f_n(x)−f_0(x)|≤C/(1−q). Al pasar al límite se conserva la misma barrera para f−f_0. Si f_0 está acotada, entonces |f_n| y |f| están acotados por ‖f_0‖∞+C/(1−q), y todos viven en$\mathcal B(X)$. Si f_0 no está acotada, sólo se garantiza pertenencia a f_0+$\mathcal B(X)$. No se concluye acotación de f sin esa premisa.
+El presupuesto telescópico desde la etapa cero da $|f_n(x)-f_0(x)|\le C/(1-q)$ para todos los índices y entradas. Tras construir el límite, el mismo paso numérico conserva $|f(x)-f_0(x)|\le C/(1-q)$. Si $f_0$ es acotada, sumar su barrera da $|f_n|,|f|\le\|f_0\|_\infty+C/(1-q)$ y todos pertenecen a $\mathcal B(X)$. Si la base es arbitraria, sólo se garantiza que cada diferencia respecto de ella es acotada, así las funciones viven en $f_0+\mathcal B(X)$. Por ejemplo una base identidad en la recta puede conservar su crecimiento no acotado aunque las correcciones converjan uniformemente.
 
 </details>
 
@@ -2004,7 +1996,7 @@ Con $|a|\le1$ y base arbitraria $r$, estudia $f_n=r+(1-2^{-n})a$ y calcula una c
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 38</summary>
 
-El incremento es2^(−n−1)a, de magnitud≤(1/2)(1/2)^n. El presupuesto geométrico sirve con C=1/2,q=1/2 y da cota2^(−n). Directamente f_n−(r+a)=−2^(−n)a, cuya magnitud es≤2^(−n); por ello el límite uniforme es r+a. Si |a| alcanza1, la cota es el máximo exacto. Si sólo tiene supremo1, es la envolvente exacta sin exigir máximo. La base r puede ser no acotada.
+La familia está definida sobre un dominio común, con $|a(x)|\le1$ y base $r$ arbitraria. Su incremento es $f_{n+1}-f_n=2^{-n-1}a$, de magnitud a lo sumo $(1/2)(1/2)^n$. El presupuesto geométrico tiene por tanto $C=q=1/2$ y certifica error a lo sumo $2^{-n}$. La cuenta directa identifica el destino $f=r+a$, pues $f_n-f=-2^{-n}a$. Así la convergencia es uniforme con la misma cota. En dominio no vacío la envolvente exacta es $2^{-n}\sup|a|$; si ese supremo es uno, la barrera $2^{-n}$ es exacta, alcanzada sólo cuando alguna magnitud de $a$ alcance uno. La base puede ser no acotada porque se cancela en la diferencia.
 
 **Retorno visual.** Véase [C27-F08](analisis-para-matematicos-capitulo-27-convergencia-uniforme-controlar-toda-la-funcion-a-la-vez.html#fig-anm-c27-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -2021,7 +2013,7 @@ En $[0,1]$, analiza $s_n=\mathbf1_{(0,1/(n+1))}$: monotonía, límite, continuid
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 39</summary>
 
-Los intervalos positivos se encogen, así s_(n+1)≤s_n entrada por entrada. En0 todas las filas valen0. Para x>0 fijo, desde n+1>1/x queda fuera y la columna vale0. El límite puntual es cero, continuo. Sin embargo x_n=1/[2(n+1)] pertenece al intervalo positivo y da error1 en toda etapa; no hay uniformidad. Las filas son discontinuas, por lo que no se puede usar un resultado que requiera continuidad de ellas omitiendo esa hipótesis.
+Los intervalos $(0,1/(n+1))$ se encogen, así $s_{n+1}(x)\le s_n(x)$ para toda entrada. En cero todas las alturas son cero. Para $x>0$ fijo, desde un corte con $n+1>1/x$ la entrada queda fuera del intervalo positivo y la columna es cero. El límite puntual es la función cero, continua. Sin embargo $x_n=1/[2(n+1)]$ pertenece al intervalo de la fila $n$ y tiene error uno respecto de ese límite. Con tolerancia $1/2$ ninguna cola es uniforme. Las filas tienen discontinuidades en sus bordes de salto, incluida la discontinuidad relativa en cero; ese dato impide omitir la regularidad de las filas en cualquier comparación con teoremas adicionales.
 
 </details>
 
@@ -2036,7 +2028,7 @@ Reúne los datos que se necesitan para afirmar uniformidad, usar la distancia su
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 40</summary>
 
-Uniformidad requiere un corte por tolerancia que controle todas las entradas y todas las filas posteriores; una barrera universal tendente a cero basta. La distancia suprema real requiere diferencias acotadas en la clase utilizada, con convención explícita para el vacío; no vale sobre todas las funciones arbitrarias. Para una ruta dada, uniformidad controla f_n(x_n)−f(x_n). Si x_n→x y f es continua en x, C14 y la triangular permiten compararla con f(x). La continuidad del límite no se deduce aquí sin prueba: su preservación se trata en C28.
+Para afirmar uniformidad se necesitan un dominio común, una candidata y, para cada tolerancia, un corte que controle toda entrada en toda fila posterior. Una barrera universal de error que tienda a cero proporciona ese certificado. Para usar una distancia suprema real hay que demostrar que las diferencias medidas están acotadas y tratar el vacío por su convención; esto vale en $\mathcal B(X)$ o en una clase trasladada con base común. Para una ruta dada, uniformidad controla $f_n(x_n)-f(x_n)$ sin pedir convergencia de las entradas. Si se quiere comparar con $f(x)$, se añade $x_n\to x\in X$ y continuidad del límite en ese centro, o un control equivalente que justifique $f(x_n)\to f(x)$. Estos datos identifican exactamente qué error queda protegido en cada conclusión.
 
 </details>
 
