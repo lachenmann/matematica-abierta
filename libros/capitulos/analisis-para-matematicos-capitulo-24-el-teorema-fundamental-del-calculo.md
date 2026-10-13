@@ -70,7 +70,7 @@ Para $f(t)=2t-1$ en $[0,1]$, C22 evaluó integrales afines por sumas finitas. Ap
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 1</summary>
 
-La integral de cada restricción $f|_{[a,x]}$, garantizada por integrabilidad y restricción de C23.
+Si $f$ es integrable en $[a,b]$, C23 prueba que su restricción a cada $[a,x]$, con $a<x\le b$, también lo es. Podemos entonces asignar $A_f(x)=\int_a^x f$. En $x=a$ se usa la convención de integral degenerada. La existencia de estas integrales precede a cualquier pregunta sobre la derivada de la nueva función.
 
 </details>
 
@@ -85,7 +85,7 @@ La integral de cada restricción $f|_{[a,x]}$, garantizada por integrabilidad y 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 2</summary>
 
-Cero por la convención degenerada; no se usa una partición estricta del singleton.
+Se define $A_f(a)=\int_a^a f=0$. Esta normalización fija el valor inicial de la acumulación. La construcción por particiones estrictamente crecientes se aplica a intervalos de longitud positiva; el caso de extremos iguales tiene su convención propia.
 
 </details>
 
@@ -100,7 +100,7 @@ Cero por la convención degenerada; no se usa una partición estricta del single
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 3</summary>
 
-Cada entrada tiene una integral existente y única; su grafo se separa en $[a,b]\times\mathbb R$.
+Para cada $x>a$, la restricción tiene una integral existente y única; para $x=a$, la convención determina cero. Por tanto la relación de pares $(x,r)$ con $r=\int_a^x f$ es total y univaluada sobre $[a,b]$. Su separación dentro de $[a,b]\times\mathbb R$ da un grafo sin tener que elegir entre posibles salidas.
 
 </details>
 
@@ -115,7 +115,7 @@ Cada entrada tiene una integral existente y única; su grafo se separa en $[a,b]
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 4</summary>
 
-La integral orientada sobre el tramo de $x$ a $y$, por aditividad.
+Si $x<y$, aditividad da $A_f(y)=A_f(x)+\int_x^y f$. Si $y<x$, la misma identidad aplicada al orden inverso y la convención de orientación dan $A_f(y)-A_f(x)=-\int_y^x f=\int_x^y f$. El incremento depende del tramo recorrido entre las entradas.
 
 </details>
 
@@ -130,7 +130,7 @@ La integral orientada sobre el tramo de $x$ a $y$, por aditividad.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 5</summary>
 
-Ambos miembros del incremento son cero; no se divide por esa anchura.
+Con $x=y$, la diferencia $A_f(y)-A_f(x)$ es cero y la integral $\int_x^x f$ también. La fórmula de incrementos sigue siendo válida. El cociente incremental sólo se considera después, bajo la condición $y\ne x$.
 
 </details>
 
@@ -145,7 +145,7 @@ Ambos miembros del incremento son cero; no se divide por esa anchura.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 6</summary>
 
-Se resta la constante $A_f(c)$; todos los incrementos se conservan.
+La acumulación desde $c$ es $A_{f,c}(x)=\int_c^x f=A_f(x)-A_f(c)$, por aditividad orientada. Al restar los valores en dos entradas, la constante $A_f(c)$ se cancela. Cambiar el origen desplaza la función verticalmente y conserva sus incrementos y sus derivadas donde existan.
 
 </details>
 
@@ -160,7 +160,7 @@ Se resta la constante $A_f(c)$; todos los incrementos se conservan.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 7</summary>
 
-No. La integral es firmada; para $2t-1$, $A_f(x)=x^2-x$ es negativa dentro de $[0,1]$.
+Una tasa negativa aporta acumulación negativa. Para $f(t)=2t-1$ en $[0,1]$, la fórmula afín por sumas da $A_f(x)=x^2-x=x(x-1)$. Vale cero en los extremos y es negativa cuando $0<x<1$. La parte positiva final compensa la contribución negativa inicial.
 
 </details>
 
@@ -175,7 +175,7 @@ No. La integral es firmada; para $2t-1$, $A_f(x)=x^2-x$ es negativa dentro de $[
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 8</summary>
 
-No. La fórmula afín proviene del cálculo por sumas de C22 y la construcción de C23.
+La integral de una tasa afín ya se calculó mediante sumas en C22. Para $f(t)=2t-1$, sobre $[0,x]$ esa cuenta da $x^2-x$. Usarla aquí construye la acumulada antes de demostrar el teorema fundamental; por tanto la prueba no presupone la regla de evaluar una primitiva.
 
 </details>
 
@@ -194,7 +194,7 @@ En $[0,1]$, calcula $A_f(x)$ para $f(t)=2t-1$ usando la fórmula por sumas de C2
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 1</summary>
 
-La restricción es integrable por C23. La integral afín da $A_f(x)=x^2-x$ para $x>0$, y en cero vale cero por convención. Los valores son $0,-1/4,0$. La tasa empieza negativa y termina positiva, por lo que la acumulación firmada vuelve a su origen sin ser nula dentro.
+La tasa afín es integrable y sus restricciones también. Para $x>0$, la fórmula de C22 calcula la integral de una afín como la longitud por el promedio de sus alturas extremas. Por tanto $A_f(x)=x\big((-1)+(2x-1)\big)/2=x^2-x$. En $x=0$, la convención degenerada da cero y coincide con la fórmula. Así $A_f(0)=0$, $A_f(1/2)=-1/4$ y $A_f(1)=0$. En el interior, $x(x-1)<0$. La acumulación baja mientras la tasa es negativa y vuelve al valor inicial cuando la contribución positiva completa la compensación.
 
 **Retorno visual.** Véase [C24-F01](analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html#fig-anm-c24-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -211,7 +211,7 @@ Demuestra para una integrable que $A_{f,c}(x)=A_f(x)-A_f(c)$ para toda entrada, 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 2</summary>
 
-Aditividad orientada da $\int_a^x f=\int_a^c f+\int_c^x f$, cualquiera sea el orden de las entradas. Restar identifica los números; las integrales existen por restricción y orientación. Para $f=1$, $A_f(x)=x$, y la nueva función es $x-3/4$, negativa si $x<c$.
+Definimos $A_{f,c}(x)=\int_c^x f$ mediante restricción y orientación. Si $c\le x$, aditividad da $A_f(x)=A_f(c)+\int_c^x f$. Si $x<c$, da $A_f(c)=A_f(x)+\int_x^c f$; al restar y negar la integral se obtiene la misma igualdad $A_{f,c}(x)=A_f(x)-A_f(c)$. Para $x=c$ ambos lados son cero. Con $f=1$ en $[0,1]$, $A_f(x)=x$ y el nuevo origen $c=3/4$ da $A_{f,c}(x)=x-3/4$. Sus valores negativos antes de $c$ reflejan la orientación de esos tramos.
 
 </details>
 
@@ -226,7 +226,7 @@ Justifica que la relación que define $A_f$ tiene dominio exacto $[a,b]$ y codom
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 3</summary>
 
-Para cada $x>a$ existe un único real por integrabilidad de la restricción; en $x=a$ el único valor declarado es cero. Separar los pares que cumplen cada caso en el producto $[a,b]\times\mathbb R$ forma un grafo total y univaluado. No se escoge simultáneamente una integral por entrada: la unicidad determina cada salida.
+Para $a<x\le b$, C23 garantiza la integrabilidad de $f|_{[a,x]}$ y la unicidad de su valor integral. En $x=a$ declaramos la única salida cero. Dentro de $[a,b]\times\mathbb R$, consideramos la relación que contiene $(a,0)$ y los pares $(x,r)$ con $a<x\le b$ y $r=\int_a^x f$. Cada entrada del intervalo tiene exactamente una salida real, y ninguna entrada exterior pertenece al producto. La relación es por tanto el grafo de una función con dominio exacto $[a,b]$. La unicidad determina las salidas, sin una selección simultánea de testigos de integración.
 
 </details>
 
@@ -241,7 +241,7 @@ Prueba $A_f(y)-A_f(x)=\int_x^y f$ también cuando $y<x$ y cuando son iguales.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 4</summary>
 
-Con $y<x$, aditividad ordenada da $A_f(x)=A_f(y)+\int_y^x f$. Restar y aplicar orientación produce $A_f(y)-A_f(x)=-\int_y^x f=\int_x^y f$. Si coinciden, la resta y la integral degenerada son cero. No se divide por anchuras nulas.
+Si $x<y$, aditividad sobre los intervalos contiguos da $\int_a^y f=\int_a^x f+\int_x^y f$, incluyendo el caso $x=a$ por la convención degenerada. Así $A_f(y)-A_f(x)=\int_x^y f$. Si $y<x$, la identidad ordenada da $A_f(x)-A_f(y)=\int_y^x f$. Al negar se obtiene $A_f(y)-A_f(x)=-\int_y^x f=\int_x^y f$. Con $x=y$, tanto la diferencia como la integral degenerada valen cero. Las integrales existen por restricción; la inversión de extremos modifica su signo.
 
 </details>
 
@@ -256,7 +256,7 @@ Para el escalón de corte $1/2$, deduce la acumulada, incluido el valor en el co
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 5</summary>
 
-En $[0,x]$ con $x<1/2$ la tasa es cero. Con $x=1/2$, sólo el último punto tiene valor uno; cambios finitos conservan integral cero. Si $x>1/2$, aditividad en el corte suma cero y la integral de constante uno sobre $[1/2,x]$, de valor $x-1/2$. Las fórmulas coinciden en el corte.
+Sea $h(t)=0$ para $t<1/2$ y $h(t)=1$ para $t\ge1/2$. Si $0<x<1/2$, la restricción a $[0,x]$ es cero y su integral vale cero. Si $x=1/2$, difiere de la función cero sólo en su último punto; C23 conserva la integral cero. Si $x>1/2$, aditividad da $A_h(x)=\int_0^{1/2}h+\int_{1/2}^x h=0+(x-1/2)$. Junto con $A_h(0)=0$, queda $A_h(x)=0$ para $x\le1/2$ y $A_h(x)=x-1/2$ para $x\ge1/2$. Las dos fórmulas tienen el mismo valor en el corte, por lo que no hay salto en la acumulada.
 
 </details>
 ## 24.2. Incrementos, cotas y continuidad
@@ -292,7 +292,7 @@ Para el escalón $s(t)=0$ si $t<1/2$ y $s(t)=1$ si $t\ge1/2$ en $[0,1]$, la acum
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 9</summary>
 
-Cotas de todos los valores de la integranda en el segmento entre las entradas.
+Si $m\le f(t)\le M$ en el segmento entre $x$ e $y$, con $x<y$, el orden integral da $m(y-x)\le A_f(y)-A_f(x)\le M(y-x)$. Dividir por la longitud positiva encierra el cociente entre $m$ y $M$. Para $y<x$ se ordena el segmento y se cambian ambos signos del cociente.
 
 </details>
 
@@ -307,7 +307,7 @@ Cotas de todos los valores de la integranda en el segmento entre las entradas.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 10</summary>
 
-No. Ínfimo y supremo existen por imagen no vacía acotada.
+La imagen de $f$ sobre el segmento es no vacía y acotada, así tiene ínfimo y supremo reales. Sus desigualdades valen en todas las entradas aunque esos extremos no se alcancen. El orden de integrales sólo usa las cotas universales, de modo que no necesita puntos de máximo o mínimo.
 
 </details>
 
@@ -322,7 +322,7 @@ No. Ínfimo y supremo existen por imagen no vacía acotada.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 11</summary>
 
-$|A_f(y)-A_f(x)|\le B|y-x|$ para todos los pares.
+Para $x<y$, integrar $-B\le f\le B$ da $-B(y-x)\le A_f(y)-A_f(x)\le B(y-x)$. Por tanto $|A_f(y)-A_f(x)|\le B(y-x)$. Intercambiar entradas cubre el otro orden y la igualdad es inmediata, obteniendo la cota Lipschitz $B|y-x|$ para todos los pares.
 
 </details>
 
@@ -337,7 +337,7 @@ $|A_f(y)-A_f(x)|\le B|y-x|$ para todos los pares.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 12</summary>
 
-$\delta=\varepsilon/(B+1)>0$; si $B=0$, el incremento es exactamente cero.
+Tomamos $\delta=\varepsilon/(B+1)>0$, con $B\ge0$. Si $B>0$ y $|y-x|<\delta$, la cota Lipschitz da error menor que $B\varepsilon/(B+1)<\varepsilon$. Si $B=0$, todos los incrementos son cero. El mismo radio demuestra continuidad uniforme sin una división por cero.
 
 </details>
 
@@ -352,7 +352,7 @@ $\delta=\varepsilon/(B+1)>0$; si $B=0$, el incremento es exactamente cero.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 13</summary>
 
-No. Integrabilidad y acotación bastan para Lipschitz.
+La integrabilidad de $f$ garantiza su acotación y la existencia de las integrales sobre restricciones. Esas dos propiedades bastan para $|A_f(y)-A_f(x)|\le B|y-x|$, que implica continuidad uniforme. El escalón con salto es un ejemplo de tasa discontinua cuya acumulada es continua.
 
 </details>
 
@@ -367,7 +367,7 @@ No. Integrabilidad y acotación bastan para Lipschitz.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 14</summary>
 
-$f\ge0$ en todo el intervalo, por orden de integrales.
+Para $x<y$, la no negatividad de la tasa implica $\int_x^y f\ge0$. La identidad de incrementos da $A_f(y)\ge A_f(x)$, así la acumulada es no decreciente. Para asegurar incremento estrictamente positivo basta una cota $f\ge m>0$ sobre ese tramo.
 
 </details>
 
@@ -382,7 +382,7 @@ $f\ge0$ en todo el intervalo, por orden de integrales.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 15</summary>
 
-No. Un valor aislado puede tener todas las integrales cero.
+La tasa que vale uno sólo en $1/2$ y cero en el resto es no negativa y positiva en ese punto. Cada restricción difiere de la función cero en a lo sumo una entrada, así sus integrales son cero por C23. Su acumulada es constante. La positividad aislada no fuerza un incremento positivo de la integral.
 
 </details>
 
@@ -397,7 +397,7 @@ No. Un valor aislado puede tener todas las integrales cero.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 16</summary>
 
-Cero para $x\le1/2$ y $x-1/2$ para $x\ge1/2$.
+Para el escalón $f(t)=0$ si $t<1/2$ y $f(t)=1$ si $t\ge1/2$, las restricciones hasta el corte integran cero, incluido el valor excepcional del extremo. Para $x>1/2$, aditividad suma esa contribución nula y la constante uno sobre $[1/2,x]$. Por tanto $A_f(x)=0$ para $x\le1/2$ y $A_f(x)=x-1/2$ para $x\ge1/2$.
 
 </details>
 
@@ -414,7 +414,7 @@ Si $|f|\le3$ en $[-1,2]$, prueba continuidad uniforme de $A_f$ con radio explíc
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 6</summary>
 
-Orden integral da $|A_f(y)-A_f(x)|\le3|y-x|$ para entradas ordenadas; intercambio cubre el otro orden. Para $\varepsilon>0$, $\delta=\varepsilon/4$ produce diferencia menor que $3\varepsilon/4<\varepsilon$, uniforme en ambos centros. Comparar con $-1$ da $|A_f(x)|\le3(x+1)\le9$.
+El origen es $a=-1$. Para $x<y$, el orden integral aplicado a $-3\le f\le3$ da $-3(y-x)\le\int_x^y f\le3(y-x)$. La identidad de incrementos implica $|A_f(y)-A_f(x)|\le3|y-x|$; intercambiar entradas prueba el mismo resultado si $y<x$, y la igualdad es inmediata. Dada $\varepsilon>0$, el radio $\delta=\varepsilon/4$ sirve para todos los centros: si $|y-x|<\delta$, el incremento tiene magnitud menor que $3\varepsilon/4<\varepsilon$. Esto prueba continuidad uniforme. Como $A_f(-1)=0$, también $|A_f(x)|\le3(x+1)\le9$ en todo el intervalo.
 
 **Retorno visual.** Véase [C24-F02](analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html#fig-anm-c24-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -431,7 +431,7 @@ Explica por qué el radio $\varepsilon/(B+1)$ prueba continuidad uniforme inclus
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 7</summary>
 
-Su denominador siempre es positivo. Si $B=0$, la cota Lipschitz implica incrementos cero, menores que cualquier tolerancia positiva. Si $B>0$, con distancia menor que el radio la diferencia es menor que $B\varepsilon/(B+1)<\varepsilon$. No se divide por una cota nula.
+La cota absoluta tiene $B\ge0$, así $B+1>0$ y $\delta=\varepsilon/(B+1)$ es un radio positivo para toda tolerancia positiva. Si $B>0$ y $|y-x|<\delta$, se obtiene $|A_f(y)-A_f(x)|\le B|y-x|<B\varepsilon/(B+1)<\varepsilon$. Si $B=0$, la desigualdad $|f|\le0$ hace la tasa idénticamente cero y todos los incrementos de la acumulada son cero. El mismo radio sirve en ese caso. Como no depende del centro, demuestra continuidad uniforme.
 
 </details>
 
@@ -446,7 +446,7 @@ Demuestra que $f\ge m>0$ implica crecimiento estricto de su acumulada y una cota
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 8</summary>
 
-Para $x<y$, orden de integrales aplicado a la constante $m$ da $A_f(y)-A_f(x)=\int_x^y f\ge m(y-x)>0$. Ambos factores finales son positivos. Si sólo $m=0$, la conclusión es débil y no prueba crecimiento estricto.
+Sean $x<y$. La restricción de $f$ es integrable y la constante $m$ tiene integral $m(y-x)$. El orden $f\ge m$ implica $A_f(y)-A_f(x)=\int_x^y f\ge m(y-x)$. Tanto $m$ como $y-x$ son positivos, así el incremento es estrictamente positivo. Por tanto $A_f$ es estrictamente creciente y satisface la cota cuantitativa $A_f(y)-A_f(x)\ge m(y-x)$ en todo par ordenado. Esta cota también impide que un tramo de longitud positiva tenga acumulación nula.
 
 </details>
 
@@ -461,7 +461,7 @@ Refuta que una tasa integrable no negativa, positiva en algún punto, tenga acum
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 9</summary>
 
-Tome el pico de C23: altura uno en $1/2$ y cero fuera. Es no negativo y positivo allí. Todas las restricciones difieren de la función cero en a lo sumo un punto, luego su integral es cero. La acumulada es constante y no estrictamente creciente.
+Definimos $p(1/2)=1$ y $p(t)=0$ para las demás entradas de $[0,1]$. Es integrable por el argumento del pico de C23, no negativa y positiva en $1/2$. En cada $[0,x]$ difiere de la función cero en a lo sumo un punto, por lo que $\int_0^x p=0$. Su acumulada es idénticamente cero y tiene iguales valores en cualesquiera dos entradas. Esto refuta el crecimiento estricto bajo la sola hipótesis de positividad en algún punto.
 
 </details>
 
@@ -476,7 +476,7 @@ Si $-2\le f\le5$ sobre $[x,y]$, $x<y$, encierra el incremento y el cociente de s
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 10</summary>
 
-Orden y constante dan $-2(y-x)\le A_f(y)-A_f(x)\le5(y-x)$. La anchura es positiva, por lo que dividir da cociente entre $-2$ y $5$. Las cotas son universales suficientes; no hace falta que ningún valor de $f$ sea exactamente alguna de ellas.
+La integral de las constantes en $[x,y]$ vale, respectivamente, $-2(y-x)$ y $5(y-x)$. Al integrar las cotas universales resulta $-2(y-x)\le\int_x^y f=A_f(y)-A_f(x)\le5(y-x)$. Como $y-x>0$, dividir conserva el orden y da $-2\le(A_f(y)-A_f(x))/(y-x)\le5$. La conclusión sólo requiere que las cotas valgan para todas las entradas del tramo. No necesita que alguna altura sea exactamente menos dos o cinco, ni que esas cotas sean los extremos óptimos de la imagen.
 
 </details>
 ## 24.3. La tasa reaparece en un punto
@@ -518,7 +518,7 @@ Con $f(t)=t^2$ y $x=1/2$ en $[0,1]$, la acumulada ya calculada por sumas es $x^3
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 17</summary>
 
-Si $|f(t)-f(x)|\le\eta$ en todo el tramo, el error del cociente respecto de $f(x)$ es a lo sumo $\eta$.
+La hipótesis $|f(t)-f(x)|\le\eta$ en todo el tramo equivale a $f(x)-\eta\le f(t)\le f(x)+\eta$. Integrar y dividir por la longitud positiva encierra el promedio entre esas dos constantes. Así $\left|(A_f(y)-A_f(x))/(y-x)-f(x)\right|\le\eta$ para $y\ne x$.
 
 </details>
 
@@ -533,7 +533,7 @@ Si $|f(t)-f(x)|\le\eta$ en todo el tramo, el error del cociente respecto de $f(x
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 18</summary>
 
-Se usa el tramo ordenado inverso y se cambian ambos signos del cociente.
+Para $y<x$, trabajamos sobre $[y,x]$, cuya longitud $x-y$ es positiva. Las cotas integradas controlan $(A_f(x)-A_f(y))/(x-y)$. Este número es igual a $(A_f(y)-A_f(x))/(y-x)$ porque se niegan numerador y denominador. Así se obtiene el mismo encierro en ambos lados del centro.
 
 </details>
 
@@ -548,7 +548,7 @@ Se usa el tramo ordenado inverso y se cambian ambos signos del cociente.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 19</summary>
 
-Sólo continuidad de la integranda en el centro interior donde se deriva.
+Para derivar $A_f$ en un punto interior $x$ basta la continuidad de $f$ en ese punto, además de la integrabilidad global. El radio de continuidad controla todas las alturas entre $x$ y una entrada próxima $y$. El promedio de esas alturas se aproxima a $f(x)$, dando la derivada.
 
 </details>
 
@@ -563,7 +563,7 @@ Sólo continuidad de la integranda en el centro interior donde se deriva.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 20</summary>
 
-Al pasar a una cota no estricta del integral se conserva error $\le\varepsilon/2<\varepsilon$.
+El paso de cotas de valores a cotas integrales produce una desigualdad no estricta. Pedir inicialmente $|f(t)-f(x)|<\varepsilon/2$ permite concluir que el error del cociente es a lo sumo $\varepsilon/2$, todavía menor que $\varepsilon$. Ese margen protege el límite requerido.
 
 </details>
 
@@ -578,7 +578,7 @@ Al pasar a una cota no estricta del integral se conserva error $\le\varepsilon/2
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 21</summary>
 
-El radio $\delta$, elegido después de la tolerancia y antes de cualquier $y$.
+Dada $\varepsilon>0$, la continuidad en $x$ proporciona un radio que se fija antes de considerar las entradas $y$. Para toda $y$ del dominio con $0<|y-x|<\delta$, el segmento completo queda en esa vecindad y el cociente cumple el mismo error. Este orden de cuantificadores constituye la prueba de derivada.
 
 </details>
 
@@ -593,7 +593,7 @@ El radio $\delta$, elegido después de la tolerancia y antes de cualquier $y$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 22</summary>
 
-No. El encierro controla todos los valores de cada segmento corto.
+La prueba usa que todas las alturas del segmento corto están entre $f(x)-\eta$ y $f(x)+\eta$. Por orden integral, su promedio también queda entre esas cotas. No necesita que alguna entrada alcance el promedio ni construir un testigo que dependa del segmento.
 
 </details>
 
@@ -608,7 +608,7 @@ No. El encierro controla todos los valores de cada segmento corto.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 23</summary>
 
-A lo sumo $L|y-x|^2/2$, al integrar la cota afín del error de la tasa.
+El residuo es la integral orientada de $f(t)-f(x)$. Lipschitz da $|f(t)-f(x)|\le L|t-x|$, cuya integral sobre el segmento ordenado es $L|y-x|^2/2$ por la fórmula afín. La desigualdad de valor absoluto integral da entonces $|A_f(y)-A_f(x)-f(x)(y-x)|\le L|y-x|^2/2$.
 
 </details>
 
@@ -623,7 +623,7 @@ A lo sumo $L|y-x|^2/2$, al integrar la cota afín del error de la tasa.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 24</summary>
 
-$1/4$, porque la integranda es continua allí.
+El cuadrado es continuo en $1/2$ y es integrable en $[0,1]$. La primera parte del fundamental da $A_f'(1/2)=f(1/2)=(1/2)^2=1/4$. También puede comprobarse con $A_f(x)=x^3/3$: su cociente es $1/4+h/2+h^2/3$, que tiende a $1/4$.
 
 </details>
 
@@ -640,7 +640,7 @@ Prueba el lema del promedio local cuando $y<x$, sin dividir una desigualdad por 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 11</summary>
 
-Integre las cotas $f(x)-\eta\le f(t)\le f(x)+\eta$ en $[y,x]$. Dividir por $x-y>0$ encierra $[A_f(x)-A_f(y)]/(x-y)$. Cambiar ambos signos deja idéntico el cociente $[A_f(y)-A_f(x)]/(y-x)$. Restar $f(x)$ y usar el encierro equivalente al valor absoluto da error $\le\eta$.
+Suponemos $y<x$ y $|f(t)-f(x)|\le\eta$ para todo $t\in[y,x]$. Integramos $f(x)-\eta\le f(t)\le f(x)+\eta$ sobre ese segmento ordenado. Su longitud positiva permite dividir y obtener $f(x)-\eta\le\big(\int_y^x f\big)/(x-y)\le f(x)+\eta$. Por aditividad, el cociente central es $(A_f(x)-A_f(y))/(x-y)$, igual a $(A_f(y)-A_f(x))/(y-x)$ al cambiar los dos signos. Restar $f(x)$ da un error entre $-\eta$ y $\eta$, equivalente a magnitud a lo sumo $\eta$. Así el lado negativo queda cubierto sin dividir una desigualdad por un número negativo.
 
 </details>
 
@@ -655,7 +655,7 @@ Escribe la prueba $\varepsilon$–$\delta$ de $A_f'(x)=f(x)$ para una integrable
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 12</summary>
 
-Continuidad con $\varepsilon/2$ entrega $\rho>0$. Tome $\delta=\min\{\rho,(x-a)/2,(b-x)/2\}$. Cada $y$ admisible con distancia positiva menor que ese radio encierra un tramo cuyos puntos están a distancia menor que $\rho$ del centro. Allí el error de la tasa es menor que $\varepsilon/2$, luego a lo sumo ese número. El lema encierra el error de cualquier cociente por $\varepsilon/2<\varepsilon$. Los dos lados acumulan por ser centro interior y la unicidad de C18 da la derivada.
+Sea $x\in(a,b)$ y $\varepsilon>0$. La continuidad de $f$ en $x$ proporciona $\rho>0$ tal que $|f(t)-f(x)|<\varepsilon/2$ para toda entrada del dominio con $|t-x|<\rho$. Tomamos $\delta=\min\{\rho,(x-a)/2,(b-x)/2\}>0$. Para cualquier $y$ con $0<|y-x|<\delta$, todo punto del segmento entre $x$ e $y$ dista de $x$ a lo sumo $|y-x|<\rho$. El error de la tasa en todo ese tramo está acotado por $\varepsilon/2$. El lema del promedio, válido para los dos órdenes, da $\left|(A_f(y)-A_f(x))/(y-x)-f(x)\right|\le\varepsilon/2<\varepsilon$. El radio precede a toda $y$ y ambos lados contienen entradas cercanas al centro, así esta es la prueba completa de $A_f'(x)=f(x)$.
 
 </details>
 
@@ -670,7 +670,7 @@ Para $f(t)=t^2$ en $[0,1]$ y centro $1/2$, calcula el cociente con incremento $h
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 13</summary>
 
-Expandir $[(1/2+h)^3-(1/2)^3]/(3h)$ da $1/4+h/2+h^2/3$. El residuo respecto de $1/4$ tiende a cero por álgebra de límites. La fórmula vale para ambos signos si la entrada está en el dominio, y confirma el valor puntual sin tomar una muestra como prueba general.
+Los incrementos admisibles satisfacen $-1/2\le h\le1/2$ y $h\ne0$. La fórmula por sumas de C22 da $A_f(x)=x^3/3$. Por tanto el cociente en $1/2$ es $\big((1/2+h)^3-(1/2)^3\big)/(3h)$. Expandir el cubo produce numerador $3h/4+3h^2/2+h^3$ y dividir da $1/4+h/2+h^2/3$. Su diferencia respecto de $1/4$ tiene magnitud a lo sumo $|h|/2+h^2/3$. Para $|h|\le1/2$, esto no supera $2|h|/3$, que tiende a cero. La misma cuenta cubre ambos signos y confirma la derivada $1/4$.
 
 **Retorno visual.** Véase [C24-F03](analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html#fig-anm-c24-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -687,7 +687,7 @@ Si $f$ es Lipschitz de constante $L$, demuestra la cota $|A_f(y)-A_f(x)-f(x)(y-x
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 14</summary>
 
-Para $y>x$, la resta es $\int_x^y(f(t)-f(x))\,dt$ por linealidad. Su absoluto está acotado por la integral de $L(t-x)$, igual a $L(y-x)^2/2$ por la fórmula afín. Para $y<x$, invertir orientación y usar $L(x-t)$ en $[y,x]$ da $L(x-y)^2/2$. En igualdad ambos miembros son cero; con $L=0$, el residuo es cero. No se aplicó un resto de Taylor.
+Por linealidad e incrementos, el residuo $R=A_f(y)-A_f(x)-f(x)(y-x)$ es $\int_x^y(f(t)-f(x))\,dt$. Si $x<y$, la triangular integral y Lipschitz dan $|R|\le\int_x^y|f(t)-f(x)|\,dt\le\int_x^y L(t-x)\,dt=L(y-x)^2/2$. La última evaluación es la fórmula afín de C22. Si $y<x$, invertimos orientación para trabajar en $[y,x]$, donde $|f(t)-f(x)|\le L(x-t)$; su integral vale $L(x-y)^2/2$. Si $x=y$, el residuo es cero. Así $|R|\le L|y-x|^2/2$ en todos los casos, también con $L=0$, sin usar Taylor.
 
 </details>
 
@@ -702,7 +702,7 @@ Explica qué hipótesis locales y globales se gastan al derivar la acumulada en 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 15</summary>
 
-Integrabilidad global permite definir todas las restricciones y la acumulada. Continuidad sólo en el centro controla todos los valores del tramo corto para fabricar el radio de derivación. No se requiere continuidad en otros puntos; en ellos la acumulada sigue existiendo y siendo continua por R2. La acumulación del dominio en el centro evita una condición vacía.
+La integrabilidad en todo $[a,b]$ permite restringir la tasa, construir cada valor de $A_f$ y escribir los incrementos como integrales. Además aporta una cota absoluta que demuestra continuidad de la acumulada. Para derivarla en una entrada interior fija $x$, sólo se necesita continuidad de $f$ en $x$: el radio puntual controla todas las alturas del segmento entre $x$ y una entrada cercana. El promedio local fuerza entonces el límite del cociente a $f(x)$. No interviene continuidad de la tasa en el resto del intervalo. El carácter interior del centro permite acercamientos por ambos lados; en los bordes la misma prueba produce derivadas relativas.
 
 </details>
 ## 24.4. Bordes, saltos y valores aislados
@@ -738,7 +738,7 @@ Modificar un valor de borde también deja todas las integrales intactas. La func
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 25</summary>
 
-La relativa desde la derecha, de valor $f(a)$ si hay continuidad relativa.
+Si $f$ es continua relativamente en $a$, sus alturas sobre $[a,y]$ se aproximan uniformemente a $f(a)$ cuando $y$ se acerca desde la derecha. El encierro del promedio da $(A_f(y)-A_f(a))/(y-a)\to f(a)$. Es la derivada relativa al dominio $[a,b]$ en su extremo izquierdo.
 
 </details>
 
@@ -753,7 +753,7 @@ La relativa desde la derecha, de valor $f(a)$ si hay continuidad relativa.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 26</summary>
 
-La relativa desde la izquierda, de valor $f(b)$ bajo la misma hipótesis local.
+En el extremo $b$, las entradas admisibles cercanas satisfacen $y<b$. Se aplica el encierro sobre $[y,b]$ y se cambian ambos signos del cociente para obtener $(A_f(y)-A_f(b))/(y-b)\to f(b)$. La continuidad relativa de la tasa en $b$ basta para esta derivada izquierda.
 
 </details>
 
@@ -768,7 +768,7 @@ La relativa desde la izquierda, de valor $f(b)$ bajo la misma hipótesis local.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 27</summary>
 
-No. No se han dado valores fuera de $[a,b]$.
+La acumulada se ha definido sólo en $[a,b]$. Sus cocientes de borde utilizan las entradas de ese dominio, que llegan desde un único lado. Para hablar de una derivada bilateral habría que especificar una prolongación fuera del intervalo y comprobar su comportamiento adicional.
 
 </details>
 
@@ -783,7 +783,7 @@ No. No se han dado valores fuera de $[a,b]$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 28</summary>
 
-Es continua, pero puede tener una esquina sin derivada en el corte.
+La acotación del escalón asegura una acumulada Lipschitz, por tanto continua incluso en el corte. Su fórmula tiene pendiente cero antes de $1/2$ y pendiente uno después. Las dos ramas se unen en altura cero, pero sus cocientes en el punto de unión tienen límites distintos.
 
 </details>
 
@@ -798,7 +798,7 @@ Es continua, pero puede tener una esquina sin derivada en el corte.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 29</summary>
 
-Cero a la izquierda y uno a la derecha.
+En $c=1/2$, $A_f(c)=0$. Si $h<0$, $A_f(c+h)=0$ y el cociente vale cero. Si $h>0$, $A_f(c+h)=h$ y el cociente vale uno. Como los dos lados no comparten límite, la acumulada carece de derivada en el corte.
 
 </details>
 
@@ -813,7 +813,7 @@ Cero a la izquierda y uno a la derecha.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 30</summary>
 
-La función cero, por invariancia de todas las integrales ante cambios finitos.
+El pico difiere de la función cero en un punto. C23 conserva las integrales de todas sus restricciones, incluso cuando ese punto es un extremo de la restricción. Cada valor de la acumulada es por tanto cero. El efecto nodal desaparece al integrar sobre cualquier tramo.
 
 </details>
 
@@ -828,7 +828,7 @@ La función cero, por invariancia de todas las integrales ante cambios finitos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 31</summary>
 
-Sí, vale cero; no recupera el valor excepcional uno de la integranda.
+La acumulada del pico es idénticamente cero, así todos sus cocientes incrementales son cero y su derivada existe en el pico con valor cero. Allí la integranda vale uno. La tasa es discontinua en esa entrada y no cumple la hipótesis de la primera parte del fundamental.
 
 </details>
 
@@ -843,7 +843,7 @@ Sí, vale cero; no recupera el valor excepcional uno de la integranda.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 32</summary>
 
-No. Se probó suficiente para recuperar el valor; el pico diferencia ambas afirmaciones.
+El teorema demuestra que la continuidad de la tasa en el centro basta para recuperar su valor al derivar. El pico tiene una acumulada derivable en su punto excepcional aunque la tasa sea discontinua allí. Por tanto esa continuidad no es necesaria para la mera existencia de la derivada de la acumulada.
 
 </details>
 
@@ -860,7 +860,7 @@ Para una integrable continua relativamente en $a$, demuestra que la derivada der
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 16</summary>
 
-El borde acumula desde la derecha porque $a<b$. Continuidad para $\varepsilon/2$ da $\rho$; reduzca el radio a $\min\{\rho,(b-a)/2\}$. Si $a<y$ y $y-a$ es menor, cada $t\in[a,y]$ está dentro de la vecindad. El lema da error del cociente $\le\varepsilon/2<\varepsilon$. No se afirma ningún valor para entradas menores que $a$.
+Sea $\varepsilon>0$. La continuidad relativa de $f$ en $a$ proporciona $\rho>0$ con $|f(t)-f(a)|<\varepsilon/2$ para las entradas del dominio a distancia menor que $\rho$ de $a$. Ponemos $\delta=\min\{\rho,(b-a)/2\}>0$. Si $a<y\le b$ y $y-a<\delta$, todos los puntos de $[a,y]$ están en esa vecindad. Integrar las cotas y dividir por $y-a>0$ da $\left|(A_f(y)-A_f(a))/(y-a)-f(a)\right|\le\varepsilon/2<\varepsilon$. Como $a<b$, existen entradas derechas arbitrariamente próximas. El límite derecho, que es la derivada relativa al cerrado en $a$, vale $f(a)$.
 
 </details>
 
@@ -875,7 +875,7 @@ Prueba por contradicción cuantificada que la acumulada del escalón no tiene de
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 17</summary>
 
-Sus cocientes son cero a la izquierda y uno a la derecha. Si un límite $D$ existiera, tolerancia $1/3$ daría un radio común. Tome $r=\frac12\min\{\delta,1/2\}>0$; las dos entradas $1/2\pm r$ son admisibles y producirían $|D|<1/3$ y $|1-D|<1/3$. Triangular da $1<2/3$, imposible.
+La acumulada del escalón es cero hasta $c=1/2$ y $x-c$ después. Sus cocientes en $c$ valen cero para incrementos negativos y uno para positivos. Supongamos que tuviera derivada $D$. Con tolerancia $1/3$ existiría $\delta>0$ tal que todos los cocientes de entradas a distancia positiva menor que $\delta$ estuvieran a distancia menor que $1/3$ de $D$. Elegimos $r=\frac12\min\{\delta,1/2\}>0$. Las entradas $c-r,c+r$ pertenecen al dominio y cumplen la escala pedida. Sus cocientes dan $|D|<1/3$ y $|1-D|<1/3$. La triangular implicaría $1\le|D|+|1-D|<2/3$, contradicción. La acumulada es continua en el corte y carece de derivada allí.
 
 </details>
 
@@ -890,7 +890,7 @@ Para el pico aislado de altura uno, calcula su acumulada y su derivada en el pic
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 18</summary>
 
-Cambios finitos conservan integral cero sobre todo $[0,x]$, incluso cuando el pico es un borde de la restricción. La acumulada es la función cero y todos sus cocientes son cero, de modo que su derivada vale cero. En el pico la tasa vale uno y no es continua. Existencia de la derivada de la acumulada no basta para igualdad con la tasa.
+Para el pico $p(1/2)=1$, $p=0$ fuera, cada restricción a $[0,x]$ difiere de la tasa cero en a lo sumo una entrada. C23 conserva sus integrales, incluso si el punto excepcional coincide con el extremo $x$. Por ello $A_p(x)=0$ para toda entrada. En el centro $c=1/2$, todos sus cocientes son cero y $A_p'(c)=0$. En cambio $p(c)=1$. La tasa no es continua en $c$: cualquier vecindad contiene entradas distintas donde vale cero. Falla precisamente la hipótesis que permite recuperar el valor puntual de la tasa.
 
 **Retorno visual.** Véase [C24-F04](analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html#fig-anm-c24-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -907,7 +907,7 @@ En $[0,1]$, toma $f(0)=1$ y $f(t)=0$ para $t>0$. Evalúa $A_f$ y su derivada der
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 19</summary>
 
-Cada restricción difiere de cero en un punto, luego todas las integrales y la acumulada son cero. El cociente derecho también es cero y su límite es cero, distinto de $f(0)=1$. La continuidad relativa de la integranda en el borde falla: sus valores cercanos son cero.
+La función dada difiere de cero sólo en el extremo izquierdo. Sobre cada $[0,x]$ de longitud positiva, el cambio finito conserva la integral cero; en $x=0$ la convención da también cero. Así $A_f$ es la función cero. Para $y>0$, $(A_f(y)-A_f(0))/y=0$, por lo que su derivada derecha en cero vale cero. Este valor difiere de $f(0)=1$. La continuidad relativa de la tasa falla allí, pues todas las entradas positivas próximas tienen altura cero. El ejemplo muestra que también en un borde un valor aislado puede perderse al acumular.
 
 </details>
 
@@ -922,7 +922,7 @@ Justifica que una continua sobre todo $[a,b]$ produce una acumulada continua y d
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 20</summary>
 
-C23 da integrabilidad, que legitima R1. R2 da continuidad uniforme de la acumulada en todo el dominio. En cada centro interior se aplica R3; en los dos bordes, el argumento unilateral de R4. Son derivadas relativas al dominio original, no derivadas bilaterales de una prolongación no especificada.
+Una función continua sobre $[a,b]$, con $a<b$, está acotada y es integrable por C23. Sus restricciones construyen $A_f$, y la cota absoluta prueba que esa acumulada es Lipschitz y continua en todo el cerrado. En cada punto de $(a,b)$, la continuidad puntual de la tasa permite aplicar la primera parte del fundamental y obtener $A_f'=f$. En $a$ se usa el argumento derecho; en $b$, el izquierdo. Ambos recuperan los valores de la tasa por continuidad relativa. Se obtiene una primitiva normalizada, con derivadas de borde referidas al dominio original.
 
 </details>
 ## 24.5. De una primitiva a la integral
@@ -962,7 +962,7 @@ La restricción a cualquier $[u,v]\subseteq[a,b]$, con $u<v$, conserva todas las
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 33</summary>
 
-Continuidad en todo $[a,b]$, derivabilidad interior e igualdad $H'=f$ allí.
+En este capítulo una primitiva admisible $H$ es continua en $[a,b]$, derivable en $(a,b)$ y satisface $H'(x)=f(x)$ para todo punto interior. La continuidad en los dos extremos permite aplicar Lagrange también a las piezas que los tocan. Las igualdades de derivadas se exigen sólo donde hay derivabilidad interior.
 
 </details>
 
@@ -977,7 +977,7 @@ Continuidad en todo $[a,b]$, derivabilidad interior e igualdad $H'=f$ allí.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 34</summary>
 
-No. Es una hipótesis separada para Newton–Leibniz.
+La definición de primitiva expresa regularidad de $H$ y una igualdad de derivadas. Para Newton–Leibniz se añade que $f$ sea integrable en el cerrado, asegurando la existencia del valor que se quiere evaluar. La existencia de derivadas por sí sola no proporciona aquí esa integrabilidad.
 
 </details>
 
@@ -992,7 +992,7 @@ No. Es una hipótesis separada para Newton–Leibniz.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 35</summary>
 
-Lagrange de C19, con continuidad en la pieza cerrada y derivabilidad dentro.
+Sobre una pieza $[x_{i-1},x_i]$, la restricción de $H$ es continua y derivable en su interior. Lagrange proporciona $c_i$ interior con $H(x_i)-H(x_{i-1})=H'(c_i)\Delta_i=f(c_i)\Delta_i$. Las cotas locales de $f$ convierten esa identidad en dos desigualdades de incrementos.
 
 </details>
 
@@ -1007,7 +1007,7 @@ Lagrange de C19, con continuidad en la pieza cerrada y derivabilidad dentro.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 36</summary>
 
-Las desigualdades $m_i\Delta_i\le H(x_i)-H(x_{i-1})\le M_i\Delta_i$.
+Cada testigo de Lagrange tiene altura entre $m_i$ y $M_i$, así $m_i\Delta_i\le H(x_i)-H(x_{i-1})\le M_i\Delta_i$. Una vez obtenida esta desigualdad para un índice arbitrario, se suma sobre todos los índices. Los testigos dejan de aparecer en la conclusión y no hace falta formar una familia de etiquetas.
 
 </details>
 
@@ -1022,7 +1022,7 @@ Las desigualdades $m_i\Delta_i\le H(x_i)-H(x_{i-1})\le M_i\Delta_i$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 37</summary>
 
-Los valores en nodos interiores aparecen una vez con cada signo y se cancelan finitamente.
+La suma central es $H(x_1)-H(x_0)+H(x_2)-H(x_1)+\cdots+H(x_n)-H(x_{n-1})$. Cada valor de nodo interior aparece con ambos signos, así se cancela. Queda $H(b)-H(a)$, encerrado entre $L(f,P)$ y $U(f,P)$.
 
 </details>
 
@@ -1037,7 +1037,7 @@ Los valores en nodos interiores aparecen una vez con cada signo y se cancelan fi
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 38</summary>
 
-El criterio de Darboux: brechas arbitrariamente pequeñas encierran ambos números.
+Para cualquier partición, la integral y $H(b)-H(a)$ quedan en $[L(f,P),U(f,P)]$. Su distancia no supera la brecha. La integrabilidad proporciona brechas menores que cada tolerancia positiva, obligando a que esa distancia sea cero. Así $\int_a^b f=H(b)-H(a)$.
 
 </details>
 
@@ -1052,7 +1052,7 @@ El criterio de Darboux: brechas arbitrariamente pequeñas encierran ambos númer
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 39</summary>
 
-No. Basta integrabilidad y una primitiva con las condiciones declaradas.
+La segunda parte emplea integrabilidad de $f$ y una primitiva continua en el cerrado y derivable dentro. Lagrange controla sus incrementos y Darboux identifica el valor. La continuidad de la tasa no interviene en esos dos pasos y puede omitirse en esta dirección.
 
 </details>
 
@@ -1067,7 +1067,7 @@ No. Basta integrabilidad y una primitiva con las condiciones declaradas.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 40</summary>
 
-Sin ella falla Lagrange en las piezas de borde y puede fallar la evaluación.
+Si $H(0)=1$ y $H(x)=0$ para $x>0$, su derivada interior es cero. Sin embargo $H(1)-H(0)=-1$, mientras la integral de la tasa cero es cero. La discontinuidad del borde impide aplicar Lagrange en la primera pieza. Conservar la continuidad de $H$ evita ese fallo de evaluación.
 
 </details>
 
@@ -1084,7 +1084,7 @@ Para una acotada $f$ y primitiva $H$, prueba el encierro de $H(b)-H(a)$ por $L(f
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 21</summary>
 
-Fije un índice de pieza. La restricción de $H$ cumple las hipótesis de Lagrange, por lo que un testigo interior identifica el incremento con $f(c)\Delta$. Acotarlo por $m\Delta,M\Delta$ elimina el testigo. Esa desigualdad vale para todo índice; sumar finitamente cancela los nodos interiores y deja $H(b)-H(a)$. Las sumas extremas son las de Darboux; no se ha asumido integrabilidad ni se ha formado una familia de testigos.
+Fijemos una pieza $[x_{i-1},x_i]$ de $P$. La continuidad de $H$ en el cerrado y su derivabilidad interior permiten aplicar Lagrange en esa pieza. Existe $c$ en su interior con $H(x_i)-H(x_{i-1})=H'(c)\Delta_i=f(c)\Delta_i$. Como $m_i\le f(c)\le M_i$ y $\Delta_i>0$, queda $m_i\Delta_i\le H(x_i)-H(x_{i-1})\le M_i\Delta_i$. El testigo ha desaparecido de esta conclusión, que vale para cualquier índice. Sumamos las desigualdades finitas; los valores de $H$ en nodos interiores se cancelan y obtenemos $L(f,P)\le H(b)-H(a)\le U(f,P)$. La acotación de $f$ garantiza extremos reales, y no se necesitó formar una familia de etiquetas ni suponer integrabilidad.
 
 **Retorno visual.** Véase [C24-F05](analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html#fig-anm-c24-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1101,7 +1101,7 @@ Añade integrabilidad a la tarea anterior y deriva Newton–Leibniz mediante una
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 22</summary>
 
-La integral y el incremento están en el mismo intervalo de cotas para toda partición. Dado $\varepsilon>0$, el criterio entrega una brecha menor que ella, así la distancia entre ambos números es menor que $\varepsilon$. Si la distancia fuera $d>0$, elegir $d/2$ da contradicción; por ello coinciden. No se usa continuidad de la tasa ni la primera parte del fundamental.
+Sea $I=\int_a^b f$, cuya existencia se añade como hipótesis. Para toda partición, el encierro del ejercicio anterior y el de la integral sitúan $H(b)-H(a)$ e $I$ en el mismo intervalo $[L(f,P),U(f,P)]$. Por tanto $|H(b)-H(a)-I|\le G(f,P)$. Dada $\varepsilon>0$, el criterio de Darboux produce una partición de brecha menor que $\varepsilon$, dando distancia menor que ella. Si la distancia fuera $d>0$, aplicar el criterio con $d/2$ produciría $d<d/2$, imposible. Luego $I=H(b)-H(a)$. La prueba usa Lagrange e integrabilidad; no requiere continuidad de $f$.
 
 </details>
 
@@ -1116,7 +1116,7 @@ En $[0,1]$, $f=0$, $H(0)=1$ y $H(x)=0$ para $x>0$. ¿Basta $H'=f$ interior para 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 23</summary>
 
-No. La derivada interior es cero, pero la integral vale cero y el incremento de borde es $-1$. Falta continuidad de $H$ en cero y Lagrange no se aplica al primer segmento. Por la definición del capítulo, esa $H$ no es una primitiva admisible en el cerrado.
+Para $x\in(0,1)$, la función $H$ es localmente constante cero, así $H'(x)=0=f(x)$. La tasa cero es integrable y $\int_0^1f=0$. Sin embargo, $H(1)-H(0)=0-1=-1$, así la igualdad de evaluación falla. La candidata es discontinua en cero, porque sus valores derechos son cero y su valor inicial es uno. Por tanto no es una primitiva admisible según la definición del capítulo. En cualquier primera pieza que empiece en cero, falta la continuidad requerida por Lagrange, que era el paso que conectaba la derivada interior con el incremento nodal.
 
 </details>
 
@@ -1131,7 +1131,7 @@ Si $H$ es una primitiva de una integrable, demuestra la fórmula de evaluación 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 24</summary>
 
-Si $u<v$, restrinja ambas funciones a $[u,v]$: integrabilidad, continuidad y derivabilidad interior se conservan. R5 da $\int_u^v f=H(v)-H(u)$. Para igualdad, ambos miembros cero. Si $v<u$, aplicar la fórmula ordenada a $[v,u]$ y negar ambos lados usa orientación de C23 y da la misma identidad.
+Si $u<v$, la tasa restringida a $[u,v]$ es integrable. La restricción de $H$ es continua en ese cerrado y derivable en su interior, con derivada igual a la tasa allí. Newton–Leibniz da $\int_u^v f=H(v)-H(u)$. Si $u=v$, la integral degenerada y la diferencia valen cero. Si $v<u$, aplicamos la fórmula ordenada sobre $[v,u]$ y negamos: $\int_u^v f=-\int_v^u f=-(H(u)-H(v))=H(v)-H(u)$. Así la evaluación vale para todos los pares del dominio, con la orientación correspondiente.
 
 </details>
 
@@ -1146,7 +1146,7 @@ Distingue las premisas de la primera y la segunda parte del teorema.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 25</summary>
 
-La primera requiere integrabilidad global y continuidad en el centro para recuperar la tasa al derivar la acumulada. La segunda exige integrabilidad y una primitiva continua en el cerrado con igualdad de derivadas interiores; no exige continuidad de la integranda. Mera integrabilidad no construye aquí una primitiva, y mera existencia de derivadas no certifica integrabilidad.
+La primera parte empieza con una tasa integrable y construye su acumulada. Para recuperar la tasa al derivar en una entrada se añade continuidad en esa entrada; si es un borde, la continuidad y la derivada son relativas. La segunda parte empieza con una tasa integrable y una primitiva $H$ ya dada, continua en el cerrado y derivable dentro, con $H'=f$ en el interior. Evalúa la integral por incrementos de $H$ sin exigir continuidad de $f$. La primera dirección construye una primitiva cuando la tasa es continua; la segunda evalúa mediante una primitiva admisible existente. Ambas conservan la hipótesis de integrabilidad que legitima sus valores integrales.
 
 </details>
 ## 24.6. Normalización, cálculo y signo
@@ -1185,7 +1185,7 @@ La acumulación de una continua positiva crece, por R3/C19 o directamente por R2
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 41</summary>
 
-En una constante, por derivada cero de la diferencia y C19.
+Para primitivas $H,K$ de la misma tasa, $D=H-K$ es continua en el cerrado y derivable dentro, con $D'=H'-K'=0$. Lagrange en cualquier segmento $[u,v]$ del dominio da $D(v)-D(u)=0$. Por tanto $D$ toma una sola constante en todo el intervalo.
 
 </details>
 
@@ -1200,7 +1200,7 @@ En una constante, por derivada cero de la diferencia y C19.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 42</summary>
 
-Evaluando la diferencia en una entrada, por ejemplo en $a$.
+Si $H-K=C$, evaluar en cualquier entrada $c$ da $C=H(c)-K(c)$. En particular, el dato inicial en $a$ fija esa diferencia. Si ambas primitivas tienen el mismo valor inicial, la constante es cero y coinciden en todo el dominio.
 
 </details>
 
@@ -1215,7 +1215,7 @@ Evaluando la diferencia en una entrada, por ejemplo en $a$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 43</summary>
 
-$A_f$, única entre las primitivas con valor cero en $a$.
+Una tasa continua es integrable por C23 y su acumulada $A_f$ es continua en el cerrado, con derivada $f$ dentro por la primera parte. Además $A_f(a)=0$. Cualquier otra primitiva con ese valor inicial difiere de $A_f$ en una constante que vale cero al evaluar en $a$, así coincide con ella.
 
 </details>
 
@@ -1230,7 +1230,7 @@ $A_f$, única entre las primitivas con valor cero en $a$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 44</summary>
 
-$H(x)=c_0+A_f(x)$, para tasa continua dada.
+Para una tasa continua, $H(x)=c_0+A_f(x)$ cumple $H(a)=c_0$ y $H'=f$ en el interior. Sumar una constante conserva continuidad y derivada. Si otra primitiva cumple el mismo dato, la diferencia tiene derivada cero y valor inicial cero, luego es idénticamente cero.
 
 </details>
 
@@ -1245,7 +1245,7 @@ $H(x)=c_0+A_f(x)$, para tasa continua dada.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 45</summary>
 
-$t^{n+1}/(n+1)$, usando la regla de potencias enteras de C18.
+Para un entero $n\ge0$, la regla de potencias de C18 da $\big(t^{n+1}/(n+1)\big)'=t^n$. El divisor es positivo porque $n+1\ge1$. Esa función es continua en cualquier cerrado y constituye una primitiva admisible; para $n=0$ se obtiene simplemente $t$.
 
 </details>
 
@@ -1260,7 +1260,7 @@ $t^{n+1}/(n+1)$, usando la regla de potencias enteras de C18.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 46</summary>
 
-No. $2t-1$ tiene integral cero en $[0,1]$ y no es la función cero.
+Para $f(t)=2t-1$ en $[0,1]$, una primitiva es $t^2-t$. Su diferencia de valores extremos es cero, así la integral vale cero. La tasa toma valores negativos y positivos y no es la función cero: las dos contribuciones se compensan.
 
 </details>
 
@@ -1275,7 +1275,7 @@ No. $2t-1$ tiene integral cero en $[0,1]$ y no es la función cero.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 47</summary>
 
-$1/2$, suma de dos contribuciones $1/4$.
+Antes de $1/2$, el absoluto es $1-2t$ y su integral es $[t-t^2]_0^{1/2}=1/4$. Después es $2t-1$ y su integral es $[t^2-t]_{1/2}^1=1/4$. La aditividad da $\int_0^1|2t-1|=1/2$.
 
 </details>
 
@@ -1290,7 +1290,7 @@ $1/2$, suma de dos contribuciones $1/4$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 48</summary>
 
-No. Para tasa $3t^2$, la acumulada $t^3+1$ crece atravesando el centro cero.
+En $[-1,1]$, la tasa $3t^2$ tiene acumulada $A_f(x)=x^3+1$. Su derivada en cero es cero, pero para entradas negativas próximas su altura es menor que uno y para entradas positivas es mayor. Así cero es estacionario y la función lo atraviesa creciendo, sin máximo ni mínimo allí.
 
 </details>
 
@@ -1307,7 +1307,7 @@ Prueba unicidad salvo constante y determina la constante si $H(a)=3$ y $K(a)=-2$
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 26</summary>
 
-La diferencia es continua en el cerrado, derivable dentro y de derivada cero por C18. C19 sobre cada par de entradas prueba constancia. Evaluar en $a$ da $H-K=3-(-2)=5$. Si otra constante cumpliera lo mismo, evaluar allí forzaría el mismo valor.
+La diferencia $D=H-K$ es continua en $[a,b]$, derivable en $(a,b)$ y tiene derivada $D'=H'-K'=0$. Para cualesquiera $u<v$ del dominio, Lagrange sobre $[u,v]$ da $D(v)-D(u)=D'(c)(v-u)=0$. Por tanto $D$ es constante en todo el intervalo, incluidos los bordes. Evaluar en $a$ fija $D(a)=3-(-2)=5$, así $H(x)=K(x)+5$ para toda entrada. La misma evaluación muestra que ninguna otra constante podría satisfacer esos datos.
 
 </details>
 
@@ -1322,7 +1322,7 @@ Para $f(t)=2t-1$ en $[0,1]$ y $H(0)=2$, encuentra y justifica la solución únic
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 27</summary>
 
-R1/R4 construyen $A_f(x)=x^2-x$. La función $H(x)=2+x^2-x$ es continua en el cerrado, derivable dentro y tiene derivada $2x-1$ por C18; cumple el dato. Dos soluciones difieren en una constante por R6, que el dato fija en cero, de modo que ésta es única.
+La acumulada de la tasa afín es $A_f(x)=x^2-x$. Por tanto proponemos $H(x)=2+x^2-x$. Es continua en $[0,1]$, derivable dentro, tiene $H'(x)=2x-1$ por las reglas de C18 y cumple $H(0)=2$. Si $K$ es otra solución admisible, $K-H$ es continua en el cerrado y tiene derivada cero en el interior. Lagrange la hace constante, y el dato inicial da $K(0)-H(0)=0$. Así $K=H$ y la solución es única entre las primitivas con la regularidad declarada.
 
 </details>
 
@@ -1337,7 +1337,7 @@ Calcula $\int_{-1}^2 t^3\,dt$ y justifica la primitiva con herramientas anterior
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 28</summary>
 
-C18 da derivada de $t^4/4$ igual a $t^3$, por regla de potencias enteras. Ambas funciones son continuas en el cerrado; la tasa es integrable por C23. R5 evalúa $(2^4-(-1)^4)/4=(16-1)/4=15/4$. El valor conserva signo y no se obtuvo suponiendo la integral igual a una primitiva por definición.
+La tasa $t^3$ es continua en $[-1,2]$ y por tanto integrable. La regla de potencias enteras de C18 da $\big(t^4/4\big)'=t^3$, y la función $H(t)=t^4/4$ es continua en el cerrado y derivable dentro. Es una primitiva admisible. Newton–Leibniz permite evaluar $\int_{-1}^2t^3\,dt=H(2)-H(-1)=(16-1)/4=15/4$. Por aditividad, el tramo negativo aporta $-1/4$ y el positivo aporta cuatro, dando la misma suma firmada.
 
 </details>
 
@@ -1352,7 +1352,7 @@ Calcula las integrales de $2t-1$ y de su absoluto en $[0,1]$, sin confundirlas.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 29</summary>
 
-La primitiva $t^2-t$ da valor total cero. Para el absoluto, parta en $1/2$: antes vale $1-2t$, con integral $1/4$; después vale $2t-1$, con integral $1/4$. Aditividad suma $1/2$. Por tanto integral cero de una tasa firmada no implica tasa cero ni absoluto integral cero.
+Para $2t-1$, la primitiva $H(t)=t^2-t$ da $\int_0^1(2t-1)\,dt=H(1)-H(0)=0$. Para el absoluto, partimos en $1/2$. Sobre $[0,1/2]$ vale $1-2t$ y la primitiva $t-t^2$ da $1/2-1/4=1/4$. Sobre $[1/2,1]$ vale $2t-1$ y su integral es $0-(-1/4)=1/4$. Las funciones son continuas e integrables en los segmentos usados. Aditividad produce $\int_0^1|2t-1|\,dt=1/2$. En la integral firmada los aportes son $-1/4$ y $1/4$; al tomar el absoluto se suman sus magnitudes.
 
 **Retorno visual.** Véase [C24-F06](analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html#fig-anm-c24-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1369,7 +1369,7 @@ En $[-1,1]$, toma $f(t)=3t^2$. Calcula su acumulada y demuestra que cero es esta
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 30</summary>
 
-La primitiva $t^3$ y el origen $-1$ dan $A_f(x)=x^3+1$. Su derivada en cero es $f(0)=0$. El cubo es estrictamente creciente por C19 o su identidad de diferencias; las entradas negativas tienen valor menor que uno y las positivas mayor. Por ello cero no es máximo ni mínimo.
+La tasa continua $3t^2$ tiene primitiva $t^3$. Con origen en menos uno, Newton–Leibniz da $A_f(x)=x^3-(-1)^3=x^3+1$. Su derivada en cero es $3\cdot0^2=0$, así el punto es estacionario. Sin embargo, $A_f(x)<1=A_f(0)$ para $x<0$ y $A_f(x)>1$ para $x>0$, con entradas de ambos tipos en toda vecindad de cero. Esto excluye tanto un máximo como un mínimo local. Además el cubo es estrictamente creciente: si $u<v$, $v^3-u^3=(v-u)(v^2+uv+u^2)>0$, pues el segundo factor sólo podría ser cero con $u=v=0$.
 
 </details>
 ## 24.7. Partes y cambio de variable
@@ -1406,7 +1406,7 @@ No se exige monotonía de $g$: los recorridos de ida y vuelta se cancelan con el
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 49</summary>
 
-La regla del producto, seguida de Newton–Leibniz y linealidad.
+La regla del producto da $(pq)'=p'q+pq'$ en el interior. Con extensiones integrables $v=p'$ y $w=q'$, el producto $pq$ es una primitiva admisible de $vq+pw$. Newton–Leibniz y linealidad dan $\int_a^b pw=[pq]_a^b-\int_a^b vq$.
 
 </details>
 
@@ -1421,7 +1421,7 @@ La regla del producto, seguida de Newton–Leibniz y linealidad.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 50</summary>
 
-Extensiones integrables al cerrado; existencia puntual sola no certifica los integrales.
+Se piden funciones $v,w$ integrables en $[a,b]$ que coincidan con las derivadas interiores de $p,q$. Como $p,q$ son continuas, también son integrables, y C23 garantiza la integrabilidad de $pw$ y $vq$. Así las dos integrales de la fórmula existen antes de evaluarlas.
 
 </details>
 
@@ -1436,7 +1436,7 @@ Extensiones integrables al cerrado; existencia puntual sola no certifica los int
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 51</summary>
 
-Cambios finitos no modifican las integrales; las igualdades de derivadas se exigen dentro.
+Las extensiones de las derivadas pueden asignar cualquier valor real en los dos extremos. Cambiar esas alturas modifica sus productos con $p,q$ sólo en un conjunto finito, por lo que las integrales se conservan. La identidad diferencial del producto se usa en el interior y no exige igualdades de derivadas bilaterales en los bordes.
 
 </details>
 
@@ -1451,7 +1451,7 @@ Cambios finitos no modifican las integrales; las igualdades de derivadas se exig
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 52</summary>
 
-$A_f\circ g$, cuya derivada es $f(g(t))g'(t)$ por la cadena relativa.
+Ponemos $F=A_f$ para la tasa continua $f$. Las derivadas relativas de $F$ tienen valor $f$ en todo su dominio. La cadena aplicada a $F\circ g$ da $(F\circ g)'(t)=f(g(t))g'(t)$ en el interior del intervalo de $g$. Esa composición, continua en el cerrado, es la primitiva que permite evaluar la integral transformada.
 
 </details>
 
@@ -1466,7 +1466,7 @@ $A_f\circ g$, cuya derivada es $f(g(t))g'(t)$ por la cadena relativa.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 53</summary>
 
-No. Los recorridos se cancelan con el signo de la derivada.
+El cambio de variable probado usa el signo de $g'$ y no requiere monotonía de $g$. Para $g(t)=t^2$ en $[-1,1]$, el recorrido baja de uno a cero y vuelve a uno. Con $f(s)=s$, la integranda es $2t^3$ y las contribuciones de los dos lados se cancelan.
 
 </details>
 
@@ -1481,7 +1481,7 @@ No. Los recorridos se cancelan con el signo de la derivada.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 54</summary>
 
-La integral transformada vale cero bajo todas las hipótesis de la fórmula.
+Bajo las hipótesis de continuidad y de extensión integrable de $g'$, la integral transformada vale $F(g(\beta))-F(g(\alpha))$. Si las dos imágenes extremas coinciden, esta diferencia es cero. El recorrido interior puede ser no constante y aun así volver al mismo valor acumulado.
 
 </details>
 
@@ -1496,7 +1496,7 @@ La integral transformada vale cero bajo todas las hipótesis de la fórmula.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 55</summary>
 
-No. C18 usa una versión que admite incrementos interiores nulos.
+Puede ocurrir $g(t+h)=g(t)$ con $h\ne0$, y el cociente exterior dividido por ese incremento no estaría definido. La cadena de C18 escribe el incremento de $F$ como su término lineal más un residuo, que se define cero cuando el incremento interior es cero. Esto mantiene la prueba válida en esas entradas.
 
 </details>
 
@@ -1511,7 +1511,7 @@ No. C18 usa una versión que admite incrementos interiores nulos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 56</summary>
 
-No. Elimina la orientación que permite cancelación y define otra expresión.
+El signo de $g'$ registra el sentido del recorrido. Para $g(t)=t^2$ y $f(s)=s$, usar $g'$ da integranda $2t^3$ e integral cero en $[-1,1]$. Usar $|g'|$ da $2|t|^3$, cuya integral es uno. Se pierde la cancelación entre la ida y la vuelta.
 
 </details>
 
@@ -1528,7 +1528,7 @@ Demuestra integración por partes bajo las hipótesis de R7a, explicando por qu�
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 31</summary>
 
-Las continuas $p,q$ son integrables; $v,w$ lo son por hipótesis. C23 garantiza productos $pw,vq$ y suma integrables. El producto $pq$ es continuo en el cerrado y de derivada $vq+pw$ interior por C18. Es primitiva admisible de esa suma. R5 y linealidad dan $\int(vq+pw)=p(b)q(b)-p(a)q(a)$; restar $\int vq$ obtiene la identidad.
+Suponemos $p,q$ continuas en $[a,b]$ y derivables dentro, con extensiones integrables $v,w$ de sus derivadas interiores. C23 hace integrables a $p,q$ por continuidad y a los productos $pw,vq$ y su suma por el álgebra de integrables. La función $H=pq$ es continua en el cerrado y la regla del producto da $H'=vq+pw$ en el interior. Es una primitiva admisible de esa suma. Newton–Leibniz da $\int_a^b(vq+pw)=p(b)q(b)-p(a)q(a)$. Por linealidad y existencia de ambas integrales, podemos restar $\int_a^b vq$ y obtener $\int_a^b pw=p(b)q(b)-p(a)q(a)-\int_a^b vq$. Los valores escogidos para $v,w$ en los bordes no cambian los valores integrales, por invariancia ante modificaciones finitas.
 
 </details>
 
@@ -1543,7 +1543,7 @@ Con $p(t)=t$, $q(t)=t^2/2$ en $[0,1]$, verifica la fórmula y sus hipótesis.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 32</summary>
 
-Las funciones y derivadas $v=1,w=t$ son continuas, luego integrables. La frontera del producto es $1/2$ y $\int_0^1vq=\int_0^1t^2/2=1/6$ por R6 y escalar. Partes da $\int_0^1pw=1/2-1/6=1/3$, coincidente con la potencia calculada antes.
+Para $p(t)=t$ y $q(t)=t^2/2$, las extensiones de derivadas $v(t)=1$ y $w(t)=t$ son continuas en $[0,1]$, por tanto integrables. Los productos también lo son. La contribución de borde es $p(1)q(1)-p(0)q(0)=1/2$. La regla de potencias ya permite evaluar $\int_0^1vq=\int_0^1t^2/2=1/6$ mediante la primitiva $t^3/6$. La fórmula de partes da $\int_0^1pw=1/2-1/6=1/3$. Como $pw=t^2$, coincide con la evaluación directa por $t^3/3$. Esta comprobación utiliza valores de potencias previamente justificados.
 
 </details>
 
@@ -1558,7 +1558,7 @@ Aplica R7b a $f(s)=s$, $g(t)=1-t$ en $[0,1]$ y explica el signo.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 33</summary>
 
-La tasa es continua, $g$ continuo y derivable con extensión constante $v=-1$, integrable. El integrando es $-(1-t)$, cuya integral es $-1/2$ por la fórmula afín. Los extremos transformados son uno y cero; $\int_1^0s\,ds=-1/2$. La derivada negativa y la orientación representan el mismo cambio de sentido.
+La tasa $f(s)=s$ es continua en $[0,1]$. La función $g(t)=1-t$ lleva $[0,1]$ a ese intervalo, es continua y tiene derivada extendida $v(t)=-1$, integrable. Así la integranda transformada es $f(g(t))v(t)=-(1-t)=t-1$. Su integral vale $[t^2/2-t]_0^1=-1/2$. Las imágenes extremas son $g(0)=1$ y $g(1)=0$, por lo que el lado derecho es $\int_1^0s\,ds=-\int_0^1s\,ds=-1/2$. El signo negativo de la derivada registra el recorrido decreciente y coincide con la orientación de los extremos transformados.
 
 </details>
 
@@ -1573,7 +1573,7 @@ Usa $f(s)=s$ en $[0,1]$ y $g(t)=t^2$ en $[-1,1]$ para verificar el cambio de var
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 34</summary>
 
-La derivada extendida $v(t)=2t$ es continua, y la composición es $t^2$. La fórmula integra $2t^3$ y da cero porque $g(-1)=g(1)=1$. Si se usa el absoluto, el integrando es $2|t|^3$ y las dos mitades dan $1/2$ cada una, total uno. Se ha quitado la cancelación, por lo que no es la misma identidad.
+La función $g(t)=t^2$ lleva $[-1,1]$ a $[0,1]$ y tiene extensión continua de derivada $v(t)=2t$. Para la tasa continua $f(s)=s$, la integranda $f(g(t))v(t)=2t^3$ es integrable. Su primitiva $t^4/2$ da integral cero, igual a $\int_{g(-1)}^{g(1)}s\,ds=\int_1^1s\,ds=0$. Por separado, los aportes son $-1/2$ en $[-1,0]$ y $1/2$ en $[0,1]$. Si se sustituye $v$ por $|v|$, la integranda pasa a $2|t|^3$. En cada mitad su integral es $1/2$, así el total es uno. El recorrido de ida y vuelta, sin monotonía global, se cancela sólo en la fórmula con signo.
 
 **Retorno visual.** Véase [C24-F07](analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html#fig-anm-c24-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1590,7 +1590,7 @@ Explica por qué la prueba con $A_f\circ g$ sigue válida si una entrada interio
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 35</summary>
 
-R4 dio derivadas relativas de $A_f$ en ambos bordes, con la tasa continua allí. Todos los centros del segmento acumulan en ese dominio. La cadena relativa de C18 admite esos centros y no divide por incrementos de $g$, que pueden ser nulos. La composición sigue siendo continua en el cerrado y su derivada interior es $f(g(t))g'(t)$; R5 se aplica con la extensión integrable declarada.
+Sea $F=A_f$, con $f$ continua en $[a,b]$. La primera parte del fundamental da a $F$ derivadas relativas también en los extremos, con valores $f(a),f(b)$. Por tanto, si un centro interior $t$ de $g$ tiene imagen $c=g(t)$ en un borde, la aproximación de $F$ sigue siendo válida para los incrementos de imagen que permanecen en $[a,b]$. Escribimos $F(c+k)-F(c)=f(c)k+r(k)$, con $r(k)/|k|\to0$ para incrementos admisibles no nulos y $r(0)=0$. Tomando $k=g(t+h)-g(t)$, la derivabilidad de $g$ limita $|k|/|h|$ cerca de cero. Así $r(k)/h\to0$, y para $k=0$ el residuo es exactamente cero. Queda $(F\circ g)'(t)=f(g(t))g'(t)$ sin dividir por $k$. La composición es continua en el cerrado; la extensión integrable de $g'$ y el álgebra de C23 hacen integrable su tasa transformada, permitiendo Newton–Leibniz.
 
 </details>
 ## 24.8. Qué invierte el teorema y qué conserva
@@ -1628,7 +1628,7 @@ En el libro de cálculo podíamos usar estos puentes como reglas. Aquí cada dir
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 57</summary>
 
-Sus valores interiores y sus valores de borde mediante derivadas relativas.
+Si $f$ es continua en todo $[a,b]$, la derivada interior de $A_f$ vale $f$ en cada punto. En $a$ y $b$ se recuperan los valores mediante derivadas relativas derecha e izquierda. Los tres casos emplean el mismo encierro de promedios sobre segmentos cortos admisibles.
 
 </details>
 
@@ -1643,7 +1643,7 @@ Sus valores interiores y sus valores de borde mediante derivadas relativas.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 58</summary>
 
-$H(x)-H(a)$; hace falta reponer el dato inicial para recuperar $H$.
+Si $H$ es una primitiva admisible y su tasa $f$ es integrable, Newton–Leibniz sobre cada restricción da $A_f(x)=H(x)-H(a)$. La derivación había eliminado la constante inicial. Para reconstruir $H$ se vuelve a sumar el valor $H(a)$.
 
 </details>
 
@@ -1658,7 +1658,7 @@ $H(x)-H(a)$; hace falta reponer el dato inicial para recuperar $H$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 59</summary>
 
-$|A_f(x)-A_g(x)|\le\eta(x-a)$, y por tanto cota global $\eta(b-a)$.
+Para dos tasas integrables con $|f-g|\le\eta$, linealidad da $A_f(x)-A_g(x)=\int_a^x(f-g)$. Integrar la cota absoluta produce $|A_f(x)-A_g(x)|\le\eta(x-a)\le\eta(b-a)$. El certificado vale para toda entrada y usa la cota de la tasa sobre el intervalo completo.
 
 </details>
 
@@ -1673,7 +1673,7 @@ $|A_f(x)-A_g(x)|\le\eta(x-a)$, y por tanto cota global $\eta(b-a)$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 60</summary>
 
-La distancia $|c_0-d_0|$ se suma al certificado acumulado de la tasa.
+Si $H(x)=c_0+A_f(x)$ y $K(x)=d_0+A_g(x)$, la triangular da $|H(x)-K(x)|\le|c_0-d_0|+|A_f(x)-A_g(x)|$. Con error de tasas a lo sumo $\eta$, queda $|c_0-d_0|+\eta(x-a)$. El error inicial actúa como un desplazamiento fijo y el de la tasa se acumula con la longitud.
 
 </details>
 
@@ -1688,7 +1688,7 @@ La distancia $|c_0-d_0|$ se suma al certificado acumulado de la tasa.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 61</summary>
 
-No. Todas las restricciones conservan sus integrales por C23.
+Cada restricción de dos tasas que difieren en un conjunto finito sigue difiriendo sólo en un conjunto finito. C23 conserva sus integrales, así $A_f(x)=A_g(x)$ para toda entrada. Por ello la acumulada puede olvidar valores excepcionales de la tasa.
 
 </details>
 
@@ -1703,7 +1703,7 @@ No. Todas las restricciones conservan sus integrales por C23.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 62</summary>
 
-Continuidad en un cerrado, extremos de C16 y valor intermedio de C15; no mera integrabilidad.
+Para una continua en $[u,v]$, con $u<v$, compacidad da mínimo $m$ y máximo $M$ alcanzados. El promedio $\mu=(v-u)^{-1}\int_u^v f$ está entre ellos por orden integral. El valor intermedio sobre el segmento entre puntos de esos extremos proporciona $c$ con $f(c)=\mu$.
 
 </details>
 
@@ -1718,7 +1718,7 @@ Continuidad en un cerrado, extremos de C16 y valor intermedio de C15; no mera in
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 63</summary>
 
-No. Su promedio en $[0,1]$ es $1/2$ y sus únicos valores son cero y uno.
+El escalón de corte $1/2$ tiene integral $1/2$ en un intervalo de longitud uno, así su promedio es $1/2$. Sus únicas alturas son cero y uno, y ninguna entrada tiene esa altura promedio. Es integrable, pero la continuidad necesaria para aplicar valor intermedio falla en el corte.
 
 </details>
 
@@ -1733,7 +1733,7 @@ No. Su promedio en $[0,1]$ es $1/2$ y sus únicos valores son cero y uno.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 64</summary>
 
-No. La integrabilidad de la extensión sigue siendo una hipótesis explícita.
+En Newton–Leibniz, partes y cambio de variable se declara explícitamente la integrabilidad de la tasa o de la extensión de la derivada. La existencia puntual de las derivadas no ha sido usada para probarla en general. Las conclusiones del capítulo conservan esa premisa.
 
 </details>
 
@@ -1750,7 +1750,7 @@ Si $|f-g|\le1/100$ en $[0,3]$ y ambas son integrables, certifica el error entre 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 36</summary>
 
-Linealidad da $A_f(x)-A_g(x)=\int_0^x(f-g)$. La cota universal y orden integral implican absoluto $\le x/100\le3/100$. En $3$ queda la cota $3/100$; no se asegura igualdad ni un error menor sin más información.
+La diferencia $f-g$ es integrable por el álgebra de C23. Para $0<x\le3$, linealidad da $A_f(x)-A_g(x)=\int_0^x(f-g)$. La cota universal $|f-g|\le1/100$ y el orden integral implican $|A_f(x)-A_g(x)|\le x/100\le3/100$. En $x=0$ la diferencia es cero y cumple la fórmula. En $x=3$ el error certificado es a lo sumo $3/100$. La cota es alcanzable, por ejemplo si $f-g$ es constantemente $1/100$, pero para tasas generales no afirma que el error efectivo alcance ese máximo.
 
 **Retorno visual.** Véase [C24-F08](analisis-para-matematicos-capitulo-24-el-teorema-fundamental-del-calculo.html#fig-anm-c24-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1767,7 +1767,7 @@ Si primitivas admisibles $H,K$ tienen datos iniciales con distancia $1/10$ en $0
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 37</summary>
 
-R5 sobre cada restricción expresa las salidas como dato inicial más acumulada. Triangular y la cota integral dan $|H(x)-K(x)|\le1/10+x/100\le3/25$. En $2$, $1/10+2/100=3/25$. Ambas cotas deben ser universales o datos exactos; una tabla finita no certifica el error de la tasa.
+Sean $c_0=H(0)$ y $d_0=K(0)$, con $|c_0-d_0|=1/10$. Newton–Leibniz sobre cada restricción da $H(x)=c_0+\int_0^x f$ y $K(x)=d_0+\int_0^x g$, donde las tasas integrables satisfacen $|f-g|\le1/100$. La triangular y la cota integral producen $|H(x)-K(x)|\le1/10+x/100$ para $0\le x\le2$. En todo el dominio esto no supera $1/10+2/100=3/25$. El dato inicial aporta una diferencia fija y la discrepancia de las tasas aporta una cantidad proporcional a la longitud recorrida. Si ambas tienen el mismo signo, la cota puede alcanzarse.
 
 </details>
 
@@ -1782,7 +1782,7 @@ Construye dos integrables diferentes con acumuladas iguales y explica por qué n
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 38</summary>
 
-La función cero y el pico de altura uno en $1/2$ son integrables y diferentes. Todas las restricciones tienen integral cero por cambios finitos, así sus acumuladas coinciden. En el pico, la segunda tasa no es continua; allí no se cumple la hipótesis de recuperación. En los demás puntos ambas tasas y la derivada de la acumulada valen cero.
+Tomamos $f(t)=0$ en $[0,1]$ y $g(1/2)=1$, $g(t)=0$ en las demás entradas. La segunda tasa es integrable por modificación finita de la primera, y ambas son diferentes en $1/2$. Sobre cada $[0,x]$ sus integrales coinciden, así $A_f=A_g=0$ en todo el dominio. En el punto excepcional, $g$ es discontinua y la primera parte del fundamental no afirma recuperar su altura. En las demás entradas ambas tasas valen cero y son continuas relativamente, por lo que la derivada de la acumulada sí coincide con ellas. El ejemplo muestra por qué el requisito de continuidad puntual importa para identificar la tasa a partir de su acumulada.
 
 </details>
 
@@ -1797,7 +1797,7 @@ Demuestra el valor medio integral para una continua en un cerrado y refuta su ex
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 39</summary>
 
-C16 da mínimo y máximo alcanzados; orden integral encierra el promedio entre ambos. C15 sobre el segmento entre entradas de esos extremos entrega un valor igual al promedio. Para el escalón con corte $1/2$, la integral es $1/2$ y la longitud uno, pero sus valores son sólo cero y uno. Es integrable y no alcanza su promedio; la continuidad es una hipótesis real de esa consecuencia.
+Sea $f$ continua en $[u,v]$, con $u<v$. Por C16, tiene mínimo $m$ y máximo $M$ alcanzados en entradas $s,t$. Integrar $m\le f\le M$ y dividir por $v-u>0$ da $m\le\mu\le M$, donde $\mu=(v-u)^{-1}\int_u^v f$. Si $m=M$, la función es constante y todas las entradas realizan el promedio. Si $m<M$, los puntos de los extremos son distintos; el valor intermedio en el segmento ordenado que los une entrega $c$ con $f(c)=\mu$, incluyendo los casos en que el promedio sea uno de los extremos. Para el escalón de corte $1/2$ en $[0,1]$, la integral y el promedio valen $1/2$, pero la imagen es $\{0,1\}$. Es una tasa integrable que no alcanza su promedio, así la conclusión no se extiende a toda integrable.
 
 </details>
 
@@ -1812,7 +1812,7 @@ Formula qué recupera cada composición de derivar e integrar, e identifica una 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 40</summary>
 
-Para continua $f$, derivar su acumulada recupera $f$ interior y relativamente en bordes. Para $H$ continua en el cerrado y derivable dentro con extensión integrable de derivada $f$, integrar recupera $H(x)-H(a)$. La constante debe reponerse como dato inicial. No se ha probado que toda derivada sea integrable ni que toda integrable tenga primitiva; los requisitos no pueden suprimirse.
+Para una tasa continua $f$ en $[a,b]$, integrar desde $a$ produce $A_f$ y derivarla recupera $f$ en los puntos interiores y mediante derivadas relativas en los bordes. Para una función $H$ continua en el cerrado, derivable dentro y con extensión integrable $f$ de su derivada, integrar esa tasa produce $A_f(x)=H(x)-H(a)$. El valor inicial debe reponerse para reconstruir $H$. En la primera composición se conserva cada altura por continuidad; en la segunda se pierde una constante al derivar. El capítulo no demuestra que toda derivada sea integrable ni que toda tasa integrable tenga una primitiva: las hipótesis de los dos contratos siguen siendo necesarias para aplicar las fórmulas aquí probadas.
 
 </details>
 
