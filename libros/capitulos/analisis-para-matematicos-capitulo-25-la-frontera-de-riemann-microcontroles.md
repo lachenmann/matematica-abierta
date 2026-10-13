@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Soluciones de microcontroles — Capítulo 25
-date-modified: '2026-10-11'
+date-modified: '2026-10-12'
 provenance:
   type: original
   sources:
@@ -42,7 +42,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué presupuesto define la brecha?
 
-**Solución.** $G=\sum_i\omega_i\Delta_i$, oscilación ponderada por anchura de todas las piezas.
+**Solución.** La brecha es $G(f,P)=\sum_i\omega(f,I_i)\Delta_i$, con $\Delta_i>0$. Cada pieza aporta su amplitud de alturas multiplicada por su anchura. Una oscilación grande puede aportar poco si está confinada en piezas cortas; una amplitud pequeña extendida sobre todo el intervalo también necesita control.
 
 ### Microcontrol 002
 
@@ -52,7 +52,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cómo se define una pieza mala para nivel $\eta>0$?
 
-**Solución.** Su oscilación es al menos $\eta$.
+**Solución.** Para un nivel fijo $\eta>0$, llamamos mala a una pieza con $\omega(f,I_i)\ge\eta$ y buena a una con oscilación menor. El caso de igualdad pertenece al grupo malo. La cantidad $\lambda_P(\eta)$ suma las anchuras de ese grupo y permite estimar su contribución total.
 
 ### Microcontrol 003
 
@@ -62,7 +62,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué cota inferior usa las piezas malas?
 
-**Solución.** $\eta\lambda_P(\eta)\le G(f,P)$.
+**Solución.** En cada pieza mala, $\omega_i\Delta_i\ge\eta\Delta_i$. Al sumar esos términos y conservar la no negatividad de los demás, queda $G(f,P)\ge\eta\sum_{i\text{ mala}}\Delta_i=\eta\lambda_P(\eta)$. Una brecha pequeña obliga a que la longitud mala sea pequeña para el nivel fijado.
 
 ### Microcontrol 004
 
@@ -72,7 +72,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué cota superior da $|f|\le B$?
 
-**Solución.** $G(f,P)\le\eta(b-a)+2B\lambda_P(\eta)$.
+**Solución.** La cota absoluta da $\omega_i\le2B$ en todas las piezas. Las buenas aportan a lo sumo $\eta$ por su longitud total; las malas, a lo sumo $2B\lambda_P(\eta)$. Por tanto $G\le\eta(b-a)+2B\lambda_P(\eta)$. Controlar nivel y longitud mala controla la brecha.
 
 ### Microcontrol 005
 
@@ -82,7 +82,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿La oscilación puntual exige un radio mínimo?
 
-**Solución.** No. Es el ínfimo de las oscilaciones de todas las vecindades relativas de radio positivo.
+**Solución.** Ponemos $V_r(x)=[a,b]\cap(x-r,x+r)$ y $\Omega_f(x)=\inf_{r>0}\omega(f,V_r(x))$. Cada vecindad contiene el centro y su imagen es acotada, así las oscilaciones forman un conjunto no vacío de reales no negativos. El ínfimo existe por completitud, aunque ningún radio lo realice exactamente.
 
 ### Microcontrol 006
 
@@ -92,7 +92,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué equivale a continuidad en un punto?
 
-**Solución.** $\Omega_f(x)=0$, bajo la acotación declarada.
+**Solución.** Si $f$ es continua en $x$, una vecindad con errores de altura menores que $\varepsilon/3$ respecto del centro tiene oscilación a lo sumo $2\varepsilon/3$, forzando $\Omega_f(x)=0$. Recíprocamente, un ínfimo cero proporciona para cada $\varepsilon>0$ una vecindad de oscilación menor que ella. Como contiene el centro, todos sus valores están a distancia menor que $\varepsilon$ de $f(x)$.
 
 ### Microcontrol 007
 
@@ -102,7 +102,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Por qué $D_\eta$ es cerrado relativo?
 
-**Solución.** Si la oscilación puntual es menor que el nivel, una vecindad buena transmite esa desigualdad a centros próximos.
+**Solución.** Si $\Omega_f(x)<\eta$, algún $r>0$ tiene $\omega(f,V_r(x))<\eta$. Para $|y-x|<r/2$, la vecindad $V_{r/2}(y)$ está dentro de $V_r(x)$ y su oscilación no supera la de ésta. Luego $\Omega_f(y)<\eta$. El complemento de $D_\eta$ es abierto relativo y el nivel es cerrado relativo.
 
 ### Microcontrol 008
 
@@ -112,7 +112,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué hace compacto a $D_\eta$?
 
-**Solución.** Su cerradura relativa dentro del segmento compacto, por C16.
+**Solución.** El intervalo $[a,b]$ es compacto y $D_\eta$ es cerrado en él. La herencia de compacidad de C16 permite reducir cualquier cobertura abierta del nivel a una subcobertura finita. Esto incluye el nivel vacío, que admite la subcobertura vacía.
 
 ## §25.2 — Discontinuidades que caben en collares
 
@@ -126,7 +126,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Basta un número finito de discontinuidades para integrar?
 
-**Solución.** Sí si la función está acotada; esa hipótesis no puede omitirse.
+**Solución.** Una función acotada y continua fuera de un conjunto finito es integrable: cubrimos las entradas excepcionales con collares cortos y controlamos la oscilación en el resto por compacidad. La acotación limita la amplitud dentro de los collares. Sin ella, $1/x$ para $x>0$, completada por cero en $x=0$, falla integrabilidad propia aunque sólo sea discontinua en ese punto.
 
 ### Microcontrol 010
 
@@ -136,7 +136,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué se controla con los collares?
 
-**Solución.** La longitud total de piezas donde puede persistir oscilación grande.
+**Solución.** Dentro de los collares puede persistir una oscilación de hasta $2B$. Su contribución se limita mediante la longitud total de las piezas contenidas allí. Fuera de ellos se fabrica una escala que hace pequeña la oscilación. La brecha resulta de sumar esos dos presupuestos.
 
 ### Microcontrol 011
 
@@ -146,7 +146,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Dónde se obtiene la escala común de las piezas buenas?
 
-**Solución.** De un subcubrimiento finito de vecindades de radio medio, por compacidad de C16.
+**Solución.** Para los centros fuera de los collares, la continuidad da vecindades de oscilación menor que el nivel. Para los centros dentro, la apertura da vecindades contenidas en ellos. Las vecindades de radios medios forman una cubierta del cerrado; un subcubrimiento finito permite tomar un mínimo positivo de radios y controlar todas las piezas de una partición fina.
 
 ### Microcontrol 012
 
@@ -156,7 +156,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Por qué usar todos los pares centro/radio válidos?
 
-**Solución.** Para formar una cubierta sin elegir previamente un radio para cada centro de una familia infinita.
+**Solución.** En cada centro existe al menos un radio válido. Tomar el conjunto de todos los pares $(x,r)$ válidos produce directamente una cobertura, sin asignar un radio particular a cada entrada. Compacidad extrae después una lista finita de pares, que basta para construir la escala común.
 
 ### Microcontrol 013
 
@@ -166,7 +166,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué garantiza malla menor que el mínimo radio medio?
 
-**Solución.** Cada pieza cabe en una vecindad grande de la cubierta y es buena o está dentro de los collares.
+**Solución.** Si una pieza de malla menor que $\delta$ tiene un punto $t$ en una vecindad de radio $r/2$, cualquier punto $s$ de la pieza satisface $|s-c|\le|s-t|+|t-c|<\delta+r/2\le r$. La pieza entera queda en la vecindad grande. Ésta tiene oscilación pequeña o está contenida en los collares.
 
 ### Microcontrol 014
 
@@ -176,7 +176,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué justifica sumar longitudes dentro de una unión?
 
-**Solución.** Cortar en los finitísimos extremos y usar subaditividad finita de anchuras.
+**Solución.** Se corta la unión en los extremos de los finitísimos intervalos que la cubren y en los extremos de las piezas. Cada celda de longitud positiva ocupada por una pieza queda en al menos un intervalo de cobertura. Las piezas tienen interiores disjuntos, así su longitud se cuenta una vez y queda acotada por la suma de longitudes de la cobertura.
 
 ### Microcontrol 015
 
@@ -186,7 +186,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué cota de brecha da el collar del escalón con cortes $c-r,c,c+r$?
 
-**Solución.** A lo sumo $2r$; con valor nodal uno, la brecha exacta es $r$ porque la pieza derecha es constante.
+**Solución.** Con valor nodal uno, sólo la pieza $[c-r,c]$ tiene alturas cero y uno; su contribución a la brecha es $r$. La pieza $[c,c+r]$ es constante uno. Por tanto la brecha exacta es $r$, aunque la longitud total de las dos piezas que tocan el corte sea $2r$ y dé una cota válida.
 
 ### Microcontrol 016
 
@@ -196,7 +196,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿El nodo compartido afecta una sola pieza?
 
-**Solución.** Puede afectar ambas piezas cerradas vecinas; no agrega anchura propia.
+**Solución.** El nodo $x_i$ pertenece a las dos piezas cerradas adyacentes. Un valor excepcional puede cambiar sus dos supremos o ínfimos. Las anchuras siguen siendo $x_i-x_{i-1}$ y $x_{i+1}-x_i$; el nodo compartido no añade un término de longitud a la suma.
 
 ## §25.3 — La obstrucción densa de Dirichlet
 
@@ -210,7 +210,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué debe probarse para las cotas de Dirichlet?
 
-**Solución.** Que toda pieza no degenerada contiene un racional y un irracional.
+**Solución.** La función de Dirichlet vale uno en racionales y cero en irracionales. Para concluir que el ínfimo de cada pieza es cero y el supremo uno, hay que probar que ambos tipos de entradas existen en toda pieza de longitud positiva. Las dos pruebas de densidad proporcionan esos testigos.
 
 ### Microcontrol 018
 
@@ -220,7 +220,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cómo se obtiene un racional entre $u<v$?
 
-**Solución.** Arquimedianidad y un entero $k$ con $nu<k<nv$ permiten tomar $k/n$.
+**Solución.** Elegimos $n\ge1$ con $n(v-u)>1$. Tras trasladar $nu$ por un natural $M$ para hacerlo no negativo, el mínimo natural $j>nu+M$ cumple $j-1\le nu+M$. El entero $k=j-M$ satisface $nu<k\le nu+1<nv$, y por tanto $u<k/n<v$.
 
 ### Microcontrol 019
 
@@ -230,7 +230,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cómo se obtiene un irracional después de un racional interior?
 
-**Solución.** Añadir $\sqrt2/n$ con n grande conserva la entrada en el intervalo y no puede volverla racional.
+**Solución.** Sea $r$ un racional interior de $(u,v)$. Arquimedianidad permite elegir $n\ge1$ con $\sqrt2/n<v-r$. Entonces $z=r+\sqrt2/n$ sigue en el intervalo. Si $z$ fuera racional, $n(z-r)=\sqrt2$ también lo sería, contradiciendo su irracionalidad.
 
 ### Microcontrol 020
 
@@ -240,7 +240,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cuál es la suma inferior de Dirichlet?
 
-**Solución.** Cero para cualquier partición.
+**Solución.** Cada pieza contiene una entrada irracional de altura cero y todas las alturas son no negativas. Su ínfimo es entonces cero. La suma inferior pondera esos ceros por las anchuras y vale $L(d,P)=0$ para cualquier partición.
 
 ### Microcontrol 021
 
@@ -250,7 +250,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cuál es su suma superior en $[a,b]$?
 
-**Solución.** $b-a$, no uno salvo longitud uno.
+**Solución.** En cada pieza hay una entrada racional de altura uno y ninguna altura mayor, así el supremo es uno. Por tanto $U(d,P)=\sum_i\Delta_i=b-a$. El valor depende de la longitud del intervalo y no del número de piezas.
 
 ### Microcontrol 022
 
@@ -260,7 +260,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué nivel puntual de oscilación tiene Dirichlet?
 
-**Solución.** Uno en todos los puntos, incluidos bordes relativos.
+**Solución.** Toda vecindad relativa de radio positivo contiene un segmento de longitud positiva, también en los bordes porque $a<b$. La densidad racional e irracional da ambas alturas cero y uno. Su oscilación es uno para todos los radios, así $\Omega_d(x)=1$ en todo el dominio.
 
 ### Microcontrol 023
 
@@ -270,7 +270,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Refinar reduce su brecha?
 
-**Solución.** No. Todas las piezas siguen teniendo oscilación uno y sus anchuras suman $b-a$.
+**Solución.** Cada nueva pieza de un refinamiento mantiene ambas alturas por densidad y tiene oscilación uno. Por ello $G(d,P)=\sum_i\Delta_i=b-a$ para todas las particiones. La brecha fija positiva no puede satisfacer el criterio de Darboux.
 
 ### Microcontrol 024
 
@@ -280,7 +280,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Un dibujo de racionales certifica densidad?
 
-**Solución.** No. Es una muestra finita; la prueba aritmética certifica todos los intervalos.
+**Solución.** Una figura contiene una colección finita de puntos y deja intervalos pequeños sin entradas representadas. Las cotas de Dirichlet requieren testigos en un intervalo arbitrario, por pequeño que sea. Las construcciones aritméticas de racionales e irracionales cubren ese cuantificador; el dibujo sólo ilustra el resultado.
 
 ## §25.4 — Thomae: alturas pequeñas y picos finitos
 
@@ -294,7 +294,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué valor tiene Thomae en una fracción reducida $p/q$?
 
-**Solución.** $1/q$, con denominador positivo y normalización única.
+**Solución.** Para $x=p/q\in[0,1]$ en forma reducida y con $q>0$, se define $T(x)=1/q$. La forma reducida tiene denominador único, así la definición no cambia con otra escritura de la misma fracción. En las entradas irracionales se define $T(x)=0$.
 
 ### Microcontrol 026
 
@@ -304,7 +304,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cuánto vale en cero?
 
-**Solución.** Uno, porque la forma reducida es $0/1$.
+**Solución.** La representación reducida de cero es $0/1$, así $T(0)=1$. Escribir cero como $0/q$ con $q>1$ no cambia ese valor, porque primero se reduce la fracción. De igual forma $T(1)=1$ por la forma $1/1$.
 
 ### Microcontrol 027
 
@@ -314,7 +314,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Por qué es finito $E_N$?
 
-**Solución.** Está contenido en los candidatos $p/q$ con $1\le q\le N$, $0\le p\le q$, una familia finita.
+**Solución.** Para $1\le q\le N$, una fracción de $[0,1]$ tiene numerador entero $0\le p\le q$, dando a lo sumo $q+1$ candidatos. La suma finita es $\sum_{q=1}^N(q+1)=N(N+3)/2$. Reducir y quitar repeticiones sólo disminuye el número, de modo que $E_N$ es finito.
 
 ### Microcontrol 028
 
@@ -324,7 +324,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué cota vale fuera de $E_N$?
 
-**Solución.** $T\le1/(N+1)$.
+**Solución.** Una entrada racional fuera de $E_N$ tiene denominador reducido entero $q>N$, luego $q\ge N+1$ y $T(x)=1/q\le1/(N+1)$. En una entrada irracional el valor cero cumple la misma cota. Así el control vale para todas las entradas omitidas.
 
 ### Microcontrol 029
 
@@ -334,7 +334,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Por qué es continua en un irracional?
 
-**Solución.** Un radio positivo evita los finitísimos picos grandes, y todos los restantes son pequeños.
+**Solución.** Para un irracional $x$ y $\varepsilon>0$, elegimos $N$ con $1/(N+1)<\varepsilon$. Las distancias de $x$ al conjunto finito $E_N$ tienen mínimo positivo. Un radio menor que ese mínimo evita todos los picos grandes y deja $|T(t)-T(x)|=T(t)\le1/(N+1)<\varepsilon$.
 
 ### Microcontrol 030
 
@@ -344,7 +344,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Por qué falla continuidad en un racional?
 
-**Solución.** Toda vecindad contiene un irracional de valor cero, separado del valor central positivo.
+**Solución.** Si $x=p/q$ está reducido, su altura es $1/q>0$. Cada vecindad relativa contiene un irracional $t$ con altura cero, por lo que $|T(t)-T(x)|=1/q$. Con tolerancia $1/(2q)$ ningún radio cumple continuidad. El argumento cubre también cero y uno relativamente.
 
 ### Microcontrol 031
 
@@ -354,7 +354,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cuál es la oscilación puntual en $p/q$?
 
-**Solución.** $1/q$; una vecindad evita otros picos de denominador≤q y contiene tanto el centro como un irracional.
+**Solución.** Toda vecindad del racional contiene su altura $1/q$ y una altura irracional cero, así oscila al menos $1/q$. Un radio que evite el conjunto finito $E_q\setminus\{x\}$ deja las demás alturas a lo sumo $1/(q+1)$. En esa vecindad el supremo es $1/q$ y el ínfimo cero, así el ínfimo de oscilaciones es exactamente $1/q$.
 
 ### Microcontrol 032
 
@@ -364,7 +364,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué integral tiene Thomae?
 
-**Solución.** Cero, por cotas superiores arbitrariamente pequeñas y sumas inferiores cero.
+**Solución.** Los irracionales de cada pieza hacen que todas las sumas inferiores de $T$ sean cero. Para controlar las superiores, se cubren los finitísimos picos grandes con piezas de longitud total pequeña y se limita el resto por $1/(N+1)$. Esto da superiores arbitrariamente pequeñas, prueba Darboux y fija integral cero.
 
 ## §25.5 — Un criterio exacto por niveles
 
@@ -378,7 +378,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué significa contenido finito nulo?
 
-**Solución.** Toda tolerancia de longitud admite una cobertura por finitísimos intervalos abiertos de longitud total menor que ella.
+**Solución.** Un conjunto $E$ tiene contenido finito nulo si para cada $\sigma>0$ hay una familia finita de intervalos abiertos reales que lo cubre y cuya suma de longitudes es menor que $\sigma$. La familia y su tamaño pueden depender de la tolerancia. El vacío usa la familia vacía.
 
 ### Microcontrol 034
 
@@ -388,7 +388,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Se ha definido una medida?
 
-**Solución.** No. Sólo una propiedad de coberturas finitas; no aditividad numerable.
+**Solución.** Se ha definido una propiedad de coberturas finitas que permite comparar sumas de anchuras. No se ha construido una función de medida ni probado reglas para uniones numerables. Por eso los argumentos del capítulo mantienen coberturas finitas en cada tolerancia.
 
 ### Microcontrol 035
 
@@ -398,7 +398,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué caracteriza R5?
 
-**Solución.** Integrabilidad de una acotada equivale a contenido finito nulo de cada $D_\eta$ con $\eta>0$.
+**Solución.** Para una función acotada en $[a,b]$, con $a<b$, R5 afirma que la integrabilidad equivale a que $D_\eta=\{x:\Omega_f(x)\ge\eta\}$ tenga contenido finito nulo para cada $\eta>0$. Cada nivel controla discontinuidades de amplitud al menos igual a esa cantidad.
 
 ### Microcontrol 036
 
@@ -408,7 +408,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Por qué cubrir también los nodos en la necesidad?
 
-**Solución.** Un punto con oscilación puntual grande puede quedar en el borde de piezas y no en sus interiores.
+**Solución.** Si un punto del nivel queda en el interior de una pieza buena, una vecindad contenida allí contradice su oscilación puntual grande. En un nodo no hay necesariamente una vecindad que quepa en una sola pieza. Cubrir los finitísimos nodos por intervalos cortos completa la inclusión del nivel en la cobertura.
 
 ### Microcontrol 037
 
@@ -418,7 +418,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué da $G<\eta\sigma/4$?
 
-**Solución.** Las piezas de oscilación≥η suman longitud menor que $\sigma/4$.
+**Solución.** La cota $\eta\lambda_P(\eta)\le G$ y $\eta>0$ dan $\lambda_P(\eta)\le G/\eta<\sigma/4$. Éste es el presupuesto de longitud de las piezas malas. Queda margen para abrir sus extremos y añadir pequeños intervalos alrededor de los nodos.
 
 ### Microcontrol 038
 
@@ -428,7 +428,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué se cubre en la suficiencia?
 
-**Solución.** El nivel compacto $D_\eta$ con abiertos de longitud total pequeña; fuera de ellos hay vecindades buenas.
+**Solución.** Se cubre el nivel $D_\eta$ por abiertos de longitud total menor que $\sigma$. Dentro de su unión hay vecindades contenidas en ella; fuera, $\Omega_f(x)<\eta$ proporciona vecindades de oscilación pequeña. Compacidad convierte sus radios medios en una escala común que clasifica todas las piezas finas.
 
 ### Microcontrol 039
 
@@ -438,7 +438,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Se exige una cobertura pequeña de todas las discontinuidades juntas?
 
-**Solución.** No. Se exige por cada nivel positivo; la unión puede ser densa.
+**Solución.** La cobertura pequeña se exige para cada nivel positivo por separado. En Thomae, cada nivel contiene sólo finitísimos denominadores reducidos, pero la unión de los niveles contiene todos los racionales del intervalo. Esa unión es densa y no tiene contenido finito nulo, aunque la tasa sea integrable.
 
 ### Microcontrol 040
 
@@ -448,7 +448,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué falla en Dirichlet según R5?
 
-**Solución.** Su nivel $D_\eta$ es el segmento completo si $0<\eta\le1$, sin cobertura finita arbitrariamente corta.
+**Solución.** Como $\Omega_d(x)=1$, para $0<\eta\le1$ el nivel es $D_\eta=[a,b]$. Toda cobertura finita por intervalos de ese segmento tiene suma de longitudes al menos $b-a>0$. Por tanto ese nivel no admite coberturas arbitrariamente cortas y falla R5.
 
 ## §25.6 — Un soporte infinito de longitud evanescente
 
@@ -462,7 +462,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué hipótesis usa el lema de soporte?
 
-**Solución.** Soporte contenido en un compacto de contenido finito nulo, función acotada no negativa y cero fuera.
+**Solución.** Se supone un conjunto compacto $E$ de contenido finito nulo y una función $0\le f\le B$ que vale cero fuera de $E$. La compacidad permite controlar a la vez todas las piezas que toquen $E$, y la cobertura corta limita su contribución superior. La conclusión es integrabilidad con valor cero.
 
 ### Microcontrol 042
 
@@ -472,7 +472,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué controla la malla en ese lema?
 
-**Solución.** Toda pieza que toque el soporte queda dentro de su cubierta abierta pequeña.
+**Solución.** Una cobertura abierta pequeña de $E$ admite un subcubrimiento finito de vecindades de radio medio. Si la malla es menor que el mínimo de esos radios, toda pieza que toca $E$ cabe en una vecindad grande dentro de la cobertura. Se incluyen las piezas que sólo tocan el soporte por un extremo.
 
 ### Microcontrol 043
 
@@ -482,7 +482,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cuántas componentes tiene $C_n$?
 
-**Solución.** $2^n$ segmentos cerrados.
+**Solución.** En $C_0$ hay una componente. Cada paso reemplaza cada segmento por sus dos tercios extremos, separados por un hueco abierto. Así el número se duplica y la etapa $n\ge0$ tiene exactamente $2^n$ componentes cerradas.
 
 ### Microcontrol 044
 
@@ -492,7 +492,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cuál es la anchura de cada componente?
 
-**Solución.** $3^{-n}$.
+**Solución.** La longitud inicial es uno y cada nueva componente mide un tercio de su padre. Tras $n$ pasos la longitud de cada segmento es $3^{-n}$. Los huecos separan las componentes, por lo que ninguna suma de etapas vuelve a unirlas.
 
 ### Microcontrol 045
 
@@ -502,7 +502,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cuál es la longitud total de una etapa?
 
-**Solución.** $(2/3)^n$.
+**Solución.** La etapa $C_n$ tiene $2^n$ componentes de longitud $3^{-n}$. Sumar sus anchuras da $2^n3^{-n}=(2/3)^n$, que tiende a cero. Es una suma finita de longitudes de la etapa, utilizada para construir coberturas del conjunto final.
 
 ### Microcontrol 046
 
@@ -512,7 +512,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Por qué el conjunto final es compacto?
 
-**Solución.** Es cerrado por intersección de cerrados y está contenido en el segmento compacto.
+**Solución.** Cada etapa es una unión finita de cerrados y por tanto cerrada. La intersección $C=\bigcap_{n\ge0}C_n$ también es cerrada y está contenida en el compacto $[0,1]$. La herencia de C16 la hace compacta. Los extremos cero y uno sobreviven en todas las etapas, así la intersección es no vacía.
 
 ### Microcontrol 047
 
@@ -522,7 +522,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Dónde es discontinua $\mathbf1_C$?
 
-**Solución.** Exactamente en C: el complemento es abierto y C tiene interior vacío.
+**Solución.** Fuera de $C$, su complemento abierto da una vecindad donde la indicadora vale cero. En $C$, el centro tiene valor uno y toda vecindad contiene alguna entrada del complemento, porque $C$ no contiene intervalos de longitud positiva. El error uno refuta continuidad allí, incluidos los bordes con vecindades relativas.
 
 ### Microcontrol 048
 
@@ -532,7 +532,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué integral tiene esa indicadora?
 
-**Solución.** Cero, por el lema de soporte compacto y las coberturas de longitud pequeña.
+**Solución.** El conjunto $C$ es compacto y admite coberturas abiertas finitas de longitud arbitrariamente pequeña. Su indicadora está entre cero y uno y vale cero fuera de $C$. El lema de soporte da sumas superiores arbitrariamente pequeñas y prueba integral cero.
 
 ## §25.7 — Cambiar muchos valores y aproximar
 
@@ -546,7 +546,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué cota global compara oscilaciones de $f$ y $g$?
 
-**Solución.** Si $|f-g|\le\delta$, entonces $\omega(f,I)\le\omega(g,I)+2\delta$.
+**Solución.** Si $|f-g|\le\delta$, para dos entradas $s,t$ de $I$ se tiene $f(s)-f(t)\le g(s)-g(t)+2\delta\le\omega(g,I)+2\delta$. Tomar supremo en $s$ e ínfimo en $t$ da $\omega(f,I)\le\omega(g,I)+2\delta$. Los extremos no necesitan alcanzarse.
 
 ### Microcontrol 050
 
@@ -556,7 +556,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué cota compara sus brechas?
 
-**Solución.** $G(f,P)\le G(g,P)+2\delta(b-a)$.
+**Solución.** Multiplicamos la comparación local por cada anchura positiva y sumamos: $G(f,P)\le G(g,P)+2\delta\sum_i\Delta_i=G(g,P)+2\delta(b-a)$. La misma cota de error debe valer en todas las entradas del intervalo para justificar cada término.
 
 ### Microcontrol 051
 
@@ -566,7 +566,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cuándo se puede comparar los valores de sus integrales?
 
-**Solución.** Después de demostrar que ambos existen, no como prueba circular de existencia.
+**Solución.** Primero se demuestra integrabilidad de $f$ mediante brechas pequeñas de sus aproximantes y la cota de oscilación. Con ambas integrales existentes, linealidad y orden dan $|\int f-\int g|\le\delta(b-a)$. Esa desigualdad compara valores ya definidos.
 
 ### Microcontrol 052
 
@@ -576,7 +576,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué soporte tiene $T_N$?
 
-**Solución.** El conjunto finito $E_N$; por tanto su integral es cero.
+**Solución.** Definimos $T_N=T$ en $E_N$ y cero fuera. Como $T$ es positiva en cada racional de $E_N$, ése es exactamente su conjunto de entradas no nulas. Es finito, así $T_N$ es una modificación finita de la función cero y tiene integral cero por C23.
 
 ### Microcontrol 053
 
@@ -586,7 +586,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué error global aproxima Thomae?
 
-**Solución.** $|T-T_N|\le1/(N+1)$ para todas las entradas.
+**Solución.** En $E_N$, $T-T_N=0$. Fuera, $T_N=0$ y todas las alturas de $T$ están entre cero y $1/(N+1)$. Así $|T-T_N|\le1/(N+1)$ para todas las entradas. Un único $N$ suficientemente grande controla la familia completa para una tolerancia dada.
 
 ### Microcontrol 054
 
@@ -596,7 +596,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué límite entrada por entrada tienen $d_N=\mathbf1_{E_N}$?
 
-**Solución.** La función de Dirichlet, porque cada racional acaba incluido y ningún irracional lo está.
+**Solución.** En un racional reducido de denominador $q$, se tiene $d_N(x)=1$ desde que $N\ge q$. En un irracional, siempre vale cero. Así los valores en cada entrada se estabilizan en Dirichlet, aunque el índice a partir del que ocurre depende de la entrada.
 
 ### Microcontrol 055
 
@@ -606,7 +606,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué error global conservan esos indicadores?
 
-**Solución.** Uno para cada N: quedan racionales fuera del conjunto finito.
+**Solución.** Para cada $N\ge1$, la fracción reducida $1/(N+1)$ queda fuera de $E_N$. Allí Dirichlet vale uno y $d_N$ vale cero. Como ambas funciones sólo toman cero y uno, su error global máximo es exactamente uno para todo $N$. La estabilización de cada entrada no da control simultáneo.
 
 ### Microcontrol 056
 
@@ -616,7 +616,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cambiar numerablemente muchos valores es la regla de cambios finitos?
 
-**Solución.** No. Puede conservar integral en un ejemplo o destruir integrabilidad en otro.
+**Solución.** Thomae y Dirichlet son dos modificaciones de la tasa cero en todos los racionales. La primera es integrable con valor cero; la segunda no es integrable. Por tanto el resultado de cambios finitos no se extiende automáticamente a un conjunto numerable de entradas modificadas.
 
 ## §25.8 — La frontera y el paso que todavía falta
 
@@ -630,7 +630,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cuál es la primera exigencia para Riemann propia?
 
-**Solución.** Acotación en el cerrado no degenerado, forzada por el contrato de C23.
+**Solución.** El contrato propio de Riemann sobre un cerrado no degenerado obliga a que la tasa esté acotada, como probó C23 variando una etiqueta. Sin esa cota no se obtiene un valor real común para todas las sumas suficientemente finas. El criterio de niveles se aplica bajo esta premisa.
 
 ### Microcontrol 058
 
@@ -640,7 +640,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿El conjunto completo de discontinuidades debe ser de contenido finito nulo?
 
-**Solución.** No necesariamente; Thomae tiene discontinuidades racionales densas y niveles positivos finitos.
+**Solución.** La integrabilidad sólo exige contenido finito nulo de cada $D_\eta$, para $\eta>0$. Thomae tiene niveles positivos finitos y discontinuidades en todos los racionales. Esa colección completa es densa y no tiene contenido finito nulo, mostrando que la exigencia sobre toda la unión sería más fuerte.
 
 ### Microcontrol 059
 
@@ -650,7 +650,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Los racionales de $[0,1]$ tienen contenido finito nulo?
 
-**Solución.** No. La clausura de cualquier cobertura abierta finita los extiende al segmento y obliga longitud total≥1.
+**Solución.** Si una unión finita $O$ de intervalos abiertos cubre $\mathbb Q\cap[0,1]$, su clausura contiene todo el segmento por densidad. Como la unión es finita, su clausura es la unión de los intervalos cerrados correspondientes. Sus longitudes son las mismas y suman al menos uno por la comparación finita de longitudes. Así la cobertura original no puede ser arbitrariamente corta.
 
 ### Microcontrol 060
 
@@ -660,7 +660,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Basta continuidad salvo un punto sin acotación?
 
-**Solución.** No. $h(x)=1/x$ para x>0 y h(0)=0 falla acotación e integrabilidad propia.
+**Solución.** La función $h(0)=0$, $h(x)=1/x$ para $x>0$, es continua salvo en cero. Para cualquier $B>0$, la entrada $x=1/(B+1)$ tiene altura $B+1>B$. No existe cota global y el contrato propio de Riemann falla. El número de discontinuidades no sustituye la acotación.
 
 ### Microcontrol 061
 
@@ -670,7 +670,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Una etapa finita de Cantor es su intersección?
 
-**Solución.** No. Es una envolvente que contiene al conjunto final.
+**Solución.** Cada $C_n$ contiene a $C$, pero conserva puntos que serán eliminados más adelante. Por ejemplo $1/(2\cdot3^n)$ está en la componente izquierda de $C_n$ y desaparece en el paso siguiente. La etapa ofrece una envolvente finita para cubrir la intersección.
 
 ### Microcontrol 062
 
@@ -680,7 +680,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Una tabla de alturas certifica todos los picos omitidos?
 
-**Solución.** No. La cota aritmética universal de denominadores sí los controla.
+**Solución.** Una tabla sólo registra las alturas evaluadas. En Thomae, la reducción aritmética muestra que cualquier racional omitido de $E_N$ tiene denominador al menos $N+1$. De ahí la cota universal $T\le1/(N+1)$ fuera del conjunto, que protege todos los picos restantes sin muestrearlos.
 
 ### Microcontrol 063
 
@@ -690,7 +690,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Se asignó una integral de Lebesgue a Dirichlet?
 
-**Solución.** No. La teoría más amplia sólo se motiva; no se construyó ni usó aquí.
+**Solución.** Dirichlet queda descartada para la integral propia de Riemann por su brecha fija. El capítulo no construye una medida ni una integral de Lebesgue y no le asigna un valor mediante esa teoría. La comparación sólo motiva por qué una teoría más amplia requeriría herramientas nuevas.
 
 ### Microcontrol 064
 
@@ -700,6 +700,6 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué puerta sigue después del cierre?
 
-**Solución.** C26: sucesiones de funciones y convergencia punto por punto, sin abrirla durante C25.
+**Solución.** El capítulo siguiente estudia sucesiones de funciones y convergencia punto por punto. El contraste entre truncaciones de Thomae e indicadores de $E_N$ muestra la dificultad que lo motiva: cada entrada puede estabilizarse sin que una sola escala controle simultáneamente todas las entradas.
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 25](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html) · [Ejercicios](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann-microcontroles.html)

@@ -68,7 +68,7 @@ Para cada $\eta>0$ ponemos $D_\eta=\{x:\Omega_f(x)\ge\eta\}$. Es cerrado relativ
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 1</summary>
 
-$G=\sum_i\omega_i\Delta_i$, oscilación ponderada por anchura de todas las piezas.
+La brecha es $G(f,P)=\sum_i\omega(f,I_i)\Delta_i$, con $\Delta_i>0$. Cada pieza aporta su amplitud de alturas multiplicada por su anchura. Una oscilación grande puede aportar poco si está confinada en piezas cortas; una amplitud pequeña extendida sobre todo el intervalo también necesita control.
 
 </details>
 
@@ -83,7 +83,7 @@ $G=\sum_i\omega_i\Delta_i$, oscilación ponderada por anchura de todas las pieza
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 2</summary>
 
-Su oscilación es al menos $\eta$.
+Para un nivel fijo $\eta>0$, llamamos mala a una pieza con $\omega(f,I_i)\ge\eta$ y buena a una con oscilación menor. El caso de igualdad pertenece al grupo malo. La cantidad $\lambda_P(\eta)$ suma las anchuras de ese grupo y permite estimar su contribución total.
 
 </details>
 
@@ -98,7 +98,7 @@ Su oscilación es al menos $\eta$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 3</summary>
 
-$\eta\lambda_P(\eta)\le G(f,P)$.
+En cada pieza mala, $\omega_i\Delta_i\ge\eta\Delta_i$. Al sumar esos términos y conservar la no negatividad de los demás, queda $G(f,P)\ge\eta\sum_{i\text{ mala}}\Delta_i=\eta\lambda_P(\eta)$. Una brecha pequeña obliga a que la longitud mala sea pequeña para el nivel fijado.
 
 </details>
 
@@ -113,7 +113,7 @@ $\eta\lambda_P(\eta)\le G(f,P)$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 4</summary>
 
-$G(f,P)\le\eta(b-a)+2B\lambda_P(\eta)$.
+La cota absoluta da $\omega_i\le2B$ en todas las piezas. Las buenas aportan a lo sumo $\eta$ por su longitud total; las malas, a lo sumo $2B\lambda_P(\eta)$. Por tanto $G\le\eta(b-a)+2B\lambda_P(\eta)$. Controlar nivel y longitud mala controla la brecha.
 
 </details>
 
@@ -128,7 +128,7 @@ $G(f,P)\le\eta(b-a)+2B\lambda_P(\eta)$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 5</summary>
 
-No. Es el ínfimo de las oscilaciones de todas las vecindades relativas de radio positivo.
+Ponemos $V_r(x)=[a,b]\cap(x-r,x+r)$ y $\Omega_f(x)=\inf_{r>0}\omega(f,V_r(x))$. Cada vecindad contiene el centro y su imagen es acotada, así las oscilaciones forman un conjunto no vacío de reales no negativos. El ínfimo existe por completitud, aunque ningún radio lo realice exactamente.
 
 </details>
 
@@ -143,7 +143,7 @@ No. Es el ínfimo de las oscilaciones de todas las vecindades relativas de radio
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 6</summary>
 
-$\Omega_f(x)=0$, bajo la acotación declarada.
+Si $f$ es continua en $x$, una vecindad con errores de altura menores que $\varepsilon/3$ respecto del centro tiene oscilación a lo sumo $2\varepsilon/3$, forzando $\Omega_f(x)=0$. Recíprocamente, un ínfimo cero proporciona para cada $\varepsilon>0$ una vecindad de oscilación menor que ella. Como contiene el centro, todos sus valores están a distancia menor que $\varepsilon$ de $f(x)$.
 
 </details>
 
@@ -158,7 +158,7 @@ $\Omega_f(x)=0$, bajo la acotación declarada.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 7</summary>
 
-Si la oscilación puntual es menor que el nivel, una vecindad buena transmite esa desigualdad a centros próximos.
+Si $\Omega_f(x)<\eta$, algún $r>0$ tiene $\omega(f,V_r(x))<\eta$. Para $|y-x|<r/2$, la vecindad $V_{r/2}(y)$ está dentro de $V_r(x)$ y su oscilación no supera la de ésta. Luego $\Omega_f(y)<\eta$. El complemento de $D_\eta$ es abierto relativo y el nivel es cerrado relativo.
 
 </details>
 
@@ -173,7 +173,7 @@ Si la oscilación puntual es menor que el nivel, una vecindad buena transmite es
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 8</summary>
 
-Su cerradura relativa dentro del segmento compacto, por C16.
+El intervalo $[a,b]$ es compacto y $D_\eta$ es cerrado en él. La herencia de compacidad de C16 permite reducir cualquier cobertura abierta del nivel a una subcobertura finita. Esto incluye el nivel vacío, que admite la subcobertura vacía.
 
 </details>
 
@@ -192,7 +192,7 @@ Prueba las dos desigualdades de R1 usando sólo orden y sumas finitas.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 1</summary>
 
-En las malas, $\omega_i\Delta_i\ge\eta\Delta_i$; sumar esos términos y conservar los restantes no negativos da $\eta\lambda\le G$. En las buenas, cada término es menor que $\eta\Delta_i$, luego a lo sumo esa cota. En las malas la cota global es $2B\Delta_i$. Sumar y usar que todas las anchuras suman $b-a$ da $G\le\eta(b-a)+2B\lambda$.
+Sea $\mathcal B=\{i:\omega_i\ge\eta\}$ y $\lambda=\sum_{i\in\mathcal B}\Delta_i$. En el grupo malo, $\omega_i\Delta_i\ge\eta\Delta_i$. Los restantes productos son no negativos, por lo que $G=\sum_i\omega_i\Delta_i\ge\eta\lambda$. Para la cota superior, las piezas buenas cumplen $\omega_i<\eta$ y las malas $\omega_i\le2B$, deducido de $-B\le f\le B$. Así $G\le\eta\sum_{i\notin\mathcal B}\Delta_i+2B\sum_{i\in\mathcal B}\Delta_i=\eta((b-a)-\lambda)+2B\lambda\le\eta(b-a)+2B\lambda$. Sólo se han usado orden, anchuras positivas y la suma finita de longitudes.
 
 **Retorno visual.** Véase [C25-F01](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html#fig-anm-c25-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -209,7 +209,7 @@ Demuestra ambas direcciones de la equivalencia, sin suponer un radio que alcance
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 2</summary>
 
-Si f es continua, para cualquier ε>0 una vecindad tiene errores de centro menores que ε/3. Dos valores difieren menos que 2ε/3, y la oscilación es a lo sumo esa cantidad; el ínfimo no negativo es cero. Si el ínfimo es cero, para cada ε>0 existe una oscilación de vecindad menor que ε por la propiedad del ínfimo. El valor central está entre sus cotas, así todas las diferencias de salida respecto de él son menores que ε. Esto da continuidad con ese radio testigo.
+Si $f$ es continua relativamente en $x$, dado $\varepsilon>0$ existe $r>0$ con $|f(t)-f(x)|<\varepsilon/3$ para todas las entradas de $V_r(x)$. Dos alturas de esa vecindad difieren en magnitud menos que $2\varepsilon/3$, así su oscilación es a lo sumo esa cantidad. Luego $0\le\Omega_f(x)\le2\varepsilon/3$ para toda tolerancia, obligando a $\Omega_f(x)=0$. Recíprocamente, si el ínfimo es cero, su propiedad de aproximación proporciona para cada $\varepsilon>0$ un radio con $\omega(f,V_r(x))<\varepsilon$. El centro pertenece a la vecindad, así $|f(t)-f(x)|\le\omega(f,V_r(x))<\varepsilon$ para todas sus entradas. Ésta es continuidad con ese radio; no se necesita que el ínfimo se alcance.
 
 </details>
 
@@ -224,7 +224,7 @@ Prueba que $D_\eta$ es cerrado relativo y compacto.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 3</summary>
 
-Para un centro fuera del nivel, una vecindad tiene oscilación menor que η por la propiedad del ínfimo. Si su radio es r, un centro a distancia menor que r/2 admite una vecindad de radio pequeño contenida en la primera. Su oscilación puntual es menor que η, por restricción. El complemento del nivel es abierto relativo. Cerrado relativo de un compacto es compacto por C16, incluyendo el caso vacío.
+Si $x\notin D_\eta$, se tiene $\Omega_f(x)<\eta$ y algún radio $r>0$ cumple $\omega(f,V_r(x))<\eta$. Para $y$ del dominio con $|y-x|<r/2$, la triangular muestra $V_{r/2}(y)\subseteq V_r(x)$. La oscilación disminuye al restringir, así $\Omega_f(y)\le\omega(f,V_{r/2}(y))\le\omega(f,V_r(x))<\eta$. Toda esa vecindad relativa de centros queda fuera del nivel. Por tanto su complemento es abierto relativo y $D_\eta$ es cerrado en $[a,b]$. Como el segmento es compacto, C16 hace compacto al nivel, incluido el caso vacío.
 
 </details>
 
@@ -239,7 +239,7 @@ En un intervalo de longitud3 con B=2, nivelη=1/10 y longitud malaλ=1/100, cert
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 4</summary>
 
-R1 da $G\le(1/10)3+2\cdot2\cdot(1/100)=3/10+1/25=17/50$. No es necesariamente exacta: las oscilaciones buenas pueden ser mucho menores y las malas no alcanzar4. La cota requiere control de todas las piezas, no una tabla de muestras.
+Sustituimos los datos en la cota $G\le\eta(b-a)+2B\lambda$. Resulta $G\le(1/10)\cdot3+2\cdot2\cdot(1/100)=3/10+1/25=17/50$. Es un certificado superior de $0,34$. No determina la brecha exacta, porque las amplitudes reales de las piezas pueden ser menores que los límites usados. En particular, la suma de anchuras malas no informa por sí sola de cuánto supera cada oscilación el nivel.
 
 </details>
 
@@ -254,7 +254,7 @@ Explica por qué un valor excepcional en un nodo puede afectar dos piezas, aunqu
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 5</summary>
 
-Las piezas son cerradas y ambos vecinos contienen el nodo. Si el valor allí difiere de los demás, ambas imágenes pueden tener una nueva altura extrema y mayor oscilación. La longitud sigue siendo suma de anchuras de piezas, sin término del singleton. Por cambios finitos de C23 el valor integral, cuando existe, no cambia.
+Las piezas $[x_{i-1},x_i]$ y $[x_i,x_{i+1}]$ contienen el nodo compartido $x_i$. Si la tasa es cero salvo por altura uno en ese nodo, las dos piezas tienen ínfimo cero y supremo uno. Su contribución a la brecha es la suma de sus dos anchuras. No aparece un término separado por el punto: su efecto está en las imágenes de las piezas que lo incluyen. Al afinar alrededor del nodo esas anchuras pueden hacerse pequeñas, y la invariancia ante cambios finitos de C23 conserva el valor integral.
 
 </details>
 ## 25.2. Discontinuidades que caben en collares
@@ -293,7 +293,7 @@ En $[0,1]$, el escalón de corte $c=1/2$ tiene brecha a lo sumo igual a la anchu
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 9</summary>
 
-Sí si la función está acotada; esa hipótesis no puede omitirse.
+Una función acotada y continua fuera de un conjunto finito es integrable: cubrimos las entradas excepcionales con collares cortos y controlamos la oscilación en el resto por compacidad. La acotación limita la amplitud dentro de los collares. Sin ella, $1/x$ para $x>0$, completada por cero en $x=0$, falla integrabilidad propia aunque sólo sea discontinua en ese punto.
 
 </details>
 
@@ -308,7 +308,7 @@ Sí si la función está acotada; esa hipótesis no puede omitirse.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 10</summary>
 
-La longitud total de piezas donde puede persistir oscilación grande.
+Dentro de los collares puede persistir una oscilación de hasta $2B$. Su contribución se limita mediante la longitud total de las piezas contenidas allí. Fuera de ellos se fabrica una escala que hace pequeña la oscilación. La brecha resulta de sumar esos dos presupuestos.
 
 </details>
 
@@ -323,7 +323,7 @@ La longitud total de piezas donde puede persistir oscilación grande.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 11</summary>
 
-De un subcubrimiento finito de vecindades de radio medio, por compacidad de C16.
+Para los centros fuera de los collares, la continuidad da vecindades de oscilación menor que el nivel. Para los centros dentro, la apertura da vecindades contenidas en ellos. Las vecindades de radios medios forman una cubierta del cerrado; un subcubrimiento finito permite tomar un mínimo positivo de radios y controlar todas las piezas de una partición fina.
 
 </details>
 
@@ -338,7 +338,7 @@ De un subcubrimiento finito de vecindades de radio medio, por compacidad de C16.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 12</summary>
 
-Para formar una cubierta sin elegir previamente un radio para cada centro de una familia infinita.
+En cada centro existe al menos un radio válido. Tomar el conjunto de todos los pares $(x,r)$ válidos produce directamente una cobertura, sin asignar un radio particular a cada entrada. Compacidad extrae después una lista finita de pares, que basta para construir la escala común.
 
 </details>
 
@@ -353,7 +353,7 @@ Para formar una cubierta sin elegir previamente un radio para cada centro de una
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 13</summary>
 
-Cada pieza cabe en una vecindad grande de la cubierta y es buena o está dentro de los collares.
+Si una pieza de malla menor que $\delta$ tiene un punto $t$ en una vecindad de radio $r/2$, cualquier punto $s$ de la pieza satisface $|s-c|\le|s-t|+|t-c|<\delta+r/2\le r$. La pieza entera queda en la vecindad grande. Ésta tiene oscilación pequeña o está contenida en los collares.
 
 </details>
 
@@ -368,7 +368,7 @@ Cada pieza cabe en una vecindad grande de la cubierta y es buena o está dentro 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 14</summary>
 
-Cortar en los finitísimos extremos y usar subaditividad finita de anchuras.
+Se corta la unión en los extremos de los finitísimos intervalos que la cubren y en los extremos de las piezas. Cada celda de longitud positiva ocupada por una pieza queda en al menos un intervalo de cobertura. Las piezas tienen interiores disjuntos, así su longitud se cuenta una vez y queda acotada por la suma de longitudes de la cobertura.
 
 </details>
 
@@ -383,7 +383,7 @@ Cortar en los finitísimos extremos y usar subaditividad finita de anchuras.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 15</summary>
 
-A lo sumo $2r$; con valor nodal uno, la brecha exacta es $r$ porque la pieza derecha es constante.
+Con valor nodal uno, sólo la pieza $[c-r,c]$ tiene alturas cero y uno; su contribución a la brecha es $r$. La pieza $[c,c+r]$ es constante uno. Por tanto la brecha exacta es $r$, aunque la longitud total de las dos piezas que tocan el corte sea $2r$ y dé una cota válida.
 
 </details>
 
@@ -398,7 +398,7 @@ A lo sumo $2r$; con valor nodal uno, la brecha exacta es $r$ porque la pieza der
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 16</summary>
 
-Puede afectar ambas piezas cerradas vecinas; no agrega anchura propia.
+El nodo $x_i$ pertenece a las dos piezas cerradas adyacentes. Un valor excepcional puede cambiar sus dos supremos o ínfimos. Las anchuras siguen siendo $x_i-x_{i-1}$ y $x_{i+1}-x_i$; el nodo compartido no añade un término de longitud a la suma.
 
 </details>
 
@@ -415,7 +415,7 @@ Si E tiene k puntos, construye una cobertura abierta de longitud total menor que
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 6</summary>
 
-Con k>0, centre un intervalo de radio $r=\sigma/[4(k+1)]$ en cada punto. La suma de longitudes es $2kr=\sigma k/[2(k+1)]<\sigma$. Con k0 use la cobertura vacía, de longitud cero. Positividad del denominador evita excepciones o división por k.
+Sea $E=\{e_1,\ldots,e_k\}$ y $\sigma>0$. Si $k>0$, tomamos $r=\sigma/[4(k+1)]>0$ y los intervalos abiertos $(e_j-r,e_j+r)$. Cubren todos los puntos, incluidos los extremos del dominio, aunque parte del collar quede fuera del segmento. La suma de longitudes es $2kr=\sigma k/[2(k+1)]<\sigma$. Si $k=0$, la cobertura vacía tiene longitud total cero y cumple el pedido. El denominador $k+1$ mantiene la fórmula definida sin dividir por el número de puntos.
 
 </details>
 
@@ -430,7 +430,7 @@ Explica la cubierta de radios medios que prueba R2, sin seleccionar un radio par
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 7</summary>
 
-Forme el conjunto de todos los pares centro/radio que cumplen una de dos propiedades: vecindad grande dentro de los collares, o de oscilación menor que η. Cada centro admite alguno por apertura o continuidad, así sus vecindades medias cubren el segmento. C16 extrae finitísimos pares; mínimo de sus radios medios es positivo. Una pieza de malla menor queda entera dentro de una vecindad grande que contiene alguno de sus puntos.
+Sea $O$ la unión de los collares que cubren las excepciones. Consideramos todos los pares $(x,r)$ de dos tipos: si $x\in O$, se pide $V_r(x)\subseteq O$; si $x\notin O$, se pide $\omega(f,V_r(x))<\eta$. La apertura da pares del primer tipo y la continuidad fuera de las excepciones da pares del segundo. Las vecindades $V_{r/2}(x)$ de todos esos pares cubren $[a,b]$. Compacidad extrae finitísimos y permite tomar $\delta$ como el mínimo positivo de sus radios medios. Para una pieza de malla menor que $\delta$, escogemos un punto suyo en una de las vecindades medias. La triangular coloca todos los demás puntos en la vecindad grande. Así cada pieza está dentro de $O$ o tiene oscilación menor que $\eta$. La construcción sólo selecciona una lista finita de pares después de formar la cubierta completa.
 
 </details>
 
@@ -445,7 +445,7 @@ Para el escalón con corte1/2 y P=(0,1/2−r,1/2,1/2+r,1), 0<r<1/2, calcula L,U 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 8</summary>
 
-La pieza anterior al corte de anchura r tiene ínfimo0 y supremo1 porque incluye el nodo de valor1. La posterior es constante1; las otras son constantes en su lado. Así $L=1/2$, $U=1/2+r$ y $G=r$ para el valor nodal1. La cota general2r de R2 sigue siendo válida, pero aquí no es igualdad. Si el nodo tuviera otro valor, hay que recalcular las dos piezas cerradas. La integral vale1/2 por C23.
+Las anchuras de la partición son $1/2-r,r,r,1/2-r$. En las dos primeras piezas los ínfimos son cero; la segunda tiene supremo uno por incluir el corte de valor uno. Las dos últimas son constantes uno. Por tanto $L=r+(1/2-r)=1/2$ y $U=r+r+(1/2-r)=1/2+r$. La brecha exacta es $r$. Las dos piezas adyacentes al corte tienen longitud total $2r$, que proporciona una cota más amplia: sólo la izquierda oscila con la convención nodal dada. La cuenta conserva la altura del corte en las dos imágenes cerradas.
 
 **Retorno visual.** Véase [C25-F02](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html#fig-anm-c25-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -462,7 +462,7 @@ Refuta la afirmación «continua salvo finitísimos puntos implica integrable»,
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 9</summary>
 
-En[0,1], tome h(0)=0 y h(x)=1/x para x>0. Es continua fuera del punto0. Para cualquier B>0, una entrada positiva menor que1/(B+1) da h(x)>B. No es acotada, mientras C23 probó que integrabilidad propia fuerza acotación. La afirmación sin esa premisa es falsa.
+En $[0,1]$, definimos $h(0)=0$ y $h(x)=1/x$ para $x>0$. Es continua en todas las entradas positivas y sólo falla en cero. Para cualquier $B>0$, la entrada $x=1/(B+1)\in(0,1]$ tiene altura $h(x)=B+1>B$. Por tanto no es acotada. C23 probó que el contrato propio de Riemann obliga acotación, así esta tasa no es integrable en ese sentido. Tener sólo un punto de discontinuidad no permite omitir la hipótesis de amplitud global finita.
 
 </details>
 
@@ -477,7 +477,7 @@ Verifica que η=ε/[2(b−a)] y σ=ε/[4(B+1)] aseguran G<ε bajo la clasificaci
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 10</summary>
 
-La longitud mala es menor que σ y las oscilaciones buenas menores que η. Usando la cota no estricta de R1 queda $G\le\eta(b-a)+2B\sigma=\varepsilon/2+B\varepsilon/[2(B+1)]<\varepsilon$ porque B/(B+1)<1. Si B0, ya G0 y la misma cota es menor que ε. El argumento no divide por B.
+Sean $a<b$, $|f|\le B$ y $\varepsilon>0$. Con $\eta=\varepsilon/[2(b-a)]$ y $\sigma=\varepsilon/[4(B+1)]$, la clasificación de R2 da longitud mala menor que $\sigma$. La cota de R1 implica $G\le\eta(b-a)+2B\sigma=\varepsilon/2+B\varepsilon/[2(B+1)]$. Como $B/(B+1)<1$, el último número es estrictamente menor que $\varepsilon$. Las desigualdades no estrictas obtenidas al sumar no agotan el margen. Si $B=0$, la función y la brecha son cero; los mismos parámetros permanecen definidos.
 
 </details>
 ## 25.3. La obstrucción densa de Dirichlet
@@ -515,7 +515,7 @@ Un dibujo con puntos racionales es una muestra finita de valores; no puede repre
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 17</summary>
 
-Que toda pieza no degenerada contiene un racional y un irracional.
+La función de Dirichlet vale uno en racionales y cero en irracionales. Para concluir que el ínfimo de cada pieza es cero y el supremo uno, hay que probar que ambos tipos de entradas existen en toda pieza de longitud positiva. Las dos pruebas de densidad proporcionan esos testigos.
 
 </details>
 
@@ -530,7 +530,7 @@ Que toda pieza no degenerada contiene un racional y un irracional.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 18</summary>
 
-Arquimedianidad y un entero $k$ con $nu<k<nv$ permiten tomar $k/n$.
+Elegimos $n\ge1$ con $n(v-u)>1$. Tras trasladar $nu$ por un natural $M$ para hacerlo no negativo, el mínimo natural $j>nu+M$ cumple $j-1\le nu+M$. El entero $k=j-M$ satisface $nu<k\le nu+1<nv$, y por tanto $u<k/n<v$.
 
 </details>
 
@@ -545,7 +545,7 @@ Arquimedianidad y un entero $k$ con $nu<k<nv$ permiten tomar $k/n$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 19</summary>
 
-Añadir $\sqrt2/n$ con n grande conserva la entrada en el intervalo y no puede volverla racional.
+Sea $r$ un racional interior de $(u,v)$. Arquimedianidad permite elegir $n\ge1$ con $\sqrt2/n<v-r$. Entonces $z=r+\sqrt2/n$ sigue en el intervalo. Si $z$ fuera racional, $n(z-r)=\sqrt2$ también lo sería, contradiciendo su irracionalidad.
 
 </details>
 
@@ -560,7 +560,7 @@ Añadir $\sqrt2/n$ con n grande conserva la entrada en el intervalo y no puede v
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 20</summary>
 
-Cero para cualquier partición.
+Cada pieza contiene una entrada irracional de altura cero y todas las alturas son no negativas. Su ínfimo es entonces cero. La suma inferior pondera esos ceros por las anchuras y vale $L(d,P)=0$ para cualquier partición.
 
 </details>
 
@@ -575,7 +575,7 @@ Cero para cualquier partición.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 21</summary>
 
-$b-a$, no uno salvo longitud uno.
+En cada pieza hay una entrada racional de altura uno y ninguna altura mayor, así el supremo es uno. Por tanto $U(d,P)=\sum_i\Delta_i=b-a$. El valor depende de la longitud del intervalo y no del número de piezas.
 
 </details>
 
@@ -590,7 +590,7 @@ $b-a$, no uno salvo longitud uno.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 22</summary>
 
-Uno en todos los puntos, incluidos bordes relativos.
+Toda vecindad relativa de radio positivo contiene un segmento de longitud positiva, también en los bordes porque $a<b$. La densidad racional e irracional da ambas alturas cero y uno. Su oscilación es uno para todos los radios, así $\Omega_d(x)=1$ en todo el dominio.
 
 </details>
 
@@ -605,7 +605,7 @@ Uno en todos los puntos, incluidos bordes relativos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 23</summary>
 
-No. Todas las piezas siguen teniendo oscilación uno y sus anchuras suman $b-a$.
+Cada nueva pieza de un refinamiento mantiene ambas alturas por densidad y tiene oscilación uno. Por ello $G(d,P)=\sum_i\Delta_i=b-a$ para todas las particiones. La brecha fija positiva no puede satisfacer el criterio de Darboux.
 
 </details>
 
@@ -620,7 +620,7 @@ No. Todas las piezas siguen teniendo oscilación uno y sus anchuras suman $b-a$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 24</summary>
 
-No. Es una muestra finita; la prueba aritmética certifica todos los intervalos.
+Una figura contiene una colección finita de puntos y deja intervalos pequeños sin entradas representadas. Las cotas de Dirichlet requieren testigos en un intervalo arbitrario, por pequeño que sea. Las construcciones aritméticas de racionales e irracionales cubren ese cuantificador; el dibujo sólo ilustra el resultado.
 
 </details>
 
@@ -637,7 +637,7 @@ Reconstruye la densidad racional mediante arquimedianidad y mínimo natural, ind
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 11</summary>
 
-Elija n positivo con n(v−u)>1. Elija M natural con nu+M≥0. Sea j el menor natural estrictamente mayor que nu+M; existe por arquimedianidad, j>0 y j−1≤nu+M por minimalidad. Entonces nu<j−M≤nu+1<nv. El entero k=j−M produce el racional k/n interior. Se ha construido un testigo para el intervalo fijado.
+Fijemos $u<v$. Arquimedianidad da un natural $n\ge1$ con $n(v-u)>1$. Para admitir cualquier signo de $u$, elegimos un natural $M$ con $nu+M\ge0$. El conjunto de naturales estrictamente mayores que $nu+M$ es no vacío, así tiene mínimo $j$. Como $j>0$, la minimalidad da $j-1\le nu+M$. Ponemos el entero $k=j-M$. Entonces $nu<k\le nu+1<nv$. Dividir por $n>0$ da $u<k/n<v$. El traslado por $M$ sólo permitió usar el mínimo natural; al restarlo queda un numerador entero, quizá negativo, y una fracción racional interior.
 
 </details>
 
@@ -652,7 +652,7 @@ Partiendo de un racional interior y de raíz2 irracional, construye un irraciona
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 12</summary>
 
-Si q∈(u,v) es racional, elija n positivo con raíz2/n<v−q. La entrada z=q+raíz2/n satisface u<z<v. Si fuera racional, n(z−q) sería racional e igual a raíz2, contradicción. La existencia de la raíz y la prueba por paridad se declaran herramientas aritméticas heredadas.
+Por densidad racional, tomamos $r\in\mathbb Q$ con $u<r<v$. El número $v-r$ es positivo, así arquimedianidad proporciona $n\ge1$ con $\sqrt2/n<v-r$. Definimos $z=r+\sqrt2/n$. Entonces $u<r<z<v$. Si $z$ fuera racional, la diferencia $z-r$ y su múltiplo entero $n(z-r)$ serían racionales. Pero ese múltiplo es $\sqrt2$, cuya irracionalidad se probó mediante reducción de una fracción y paridad. La contradicción hace a $z$ un testigo irracional dentro del intervalo.
 
 </details>
 
@@ -667,7 +667,7 @@ Calcula las sumas de Darboux de Dirichlet en[−1,2] y refuta integrabilidad con
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 13</summary>
 
-Todas las piezas no degeneradas contienen valores0 y1 por densidad; m0,M1. Por tanto L0,UΣΔ=3,G3 para toda partición. El criterio falla con ε=3/2: ninguna brecha es menor que ella. La suma superior no es1 en ese intervalo.
+Cada pieza de una partición de $[-1,2]$ tiene longitud positiva y contiene racionales e irracionales. Para Dirichlet, su imagen es por tanto $\{0,1\}$, con ínfimo cero, supremo uno y oscilación uno. Resulta $L(d,P)=0$, $U(d,P)=\sum_i\Delta_i=2-(-1)=3$ y $G(d,P)=3$ para todas las particiones. Con tolerancia $\varepsilon=3/2$, ninguna brecha es menor que ella, así falla Darboux. La suma superior es la longitud tres, no uno.
 
 **Retorno visual.** Véase [C25-F03](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html#fig-anm-c25-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -684,7 +684,7 @@ Prueba directamente que el contrato universal de Riemann falla para Dirichlet so
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 14</summary>
 
-Para cualquier radio de malla, construya una partición uniforme más fina por C22. Finitas elecciones de racionales e irracionales en cada pieza dan dos familias de etiquetas con sumas b−a y0. Si un candidato I cumpliera error menor que ε=(b−a)/3 para ambas, triangular daría b−a<2(b−a)/3, contradicción. Ninguna malla resuelve el problema.
+Supongamos que existe un candidato integral $I$ sobre $[a,b]$, con $a<b$. Pedimos al contrato error $\varepsilon=(b-a)/3$ y obtenemos un radio $\delta>0$. C22 permite construir una uniforme de malla menor que $\delta$. En cada pieza, densidad da una etiqueta racional y una irracional; inducción finita forma las dos familias. La primera suma vale $b-a$ y la segunda cero. Ambas deberían estar a distancia menor que $\varepsilon$ de $I$. La triangular daría $b-a\le|b-a-I|+|I|<2(b-a)/3$, imposible. El problema persiste por fina que sea la malla.
 
 </details>
 
@@ -699,7 +699,7 @@ Explica por qué los puntos dibujados de Dirichlet no justifican sus cotas local
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 15</summary>
 
-Una figura tiene finitísimos puntos y puede dejar una pieza sin ningún punto representado de uno de los tipos. Las cotas requieren existencia de racional e irracional en toda pieza real no degenerada. Eso se prueba aritméticamente para un intervalo arbitrario, no se deduce de densidad aparente de un gráfico.
+Una representación de Dirichlet dibuja finitísimas entradas de cada tipo. Siempre puede elegirse un intervalo pequeño que evite todas las entradas dibujadas. El cálculo de los extremos requiere, sin embargo, una altura cero y una altura uno en cada pieza no degenerada real. Las pruebas aritméticas construyen esos testigos para un intervalo arbitrario, sin depender de una resolución gráfica. Sólo después de establecer esa densidad puede concluirse que todas las oscilaciones valen uno.
 
 </details>
 ## 25.4. Thomae: alturas pequeñas y picos finitos
@@ -737,7 +737,7 @@ Para $N=4$, los picos que deben aislarse están en $0,1/4,1/3,1/2,2/3,3/4,1$; fu
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 25</summary>
 
-$1/q$, con denominador positivo y normalización única.
+Para $x=p/q\in[0,1]$ en forma reducida y con $q>0$, se define $T(x)=1/q$. La forma reducida tiene denominador único, así la definición no cambia con otra escritura de la misma fracción. En las entradas irracionales se define $T(x)=0$.
 
 </details>
 
@@ -752,7 +752,7 @@ $1/q$, con denominador positivo y normalización única.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 26</summary>
 
-Uno, porque la forma reducida es $0/1$.
+La representación reducida de cero es $0/1$, así $T(0)=1$. Escribir cero como $0/q$ con $q>1$ no cambia ese valor, porque primero se reduce la fracción. De igual forma $T(1)=1$ por la forma $1/1$.
 
 </details>
 
@@ -767,7 +767,7 @@ Uno, porque la forma reducida es $0/1$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 27</summary>
 
-Está contenido en los candidatos $p/q$ con $1\le q\le N$, $0\le p\le q$, una familia finita.
+Para $1\le q\le N$, una fracción de $[0,1]$ tiene numerador entero $0\le p\le q$, dando a lo sumo $q+1$ candidatos. La suma finita es $\sum_{q=1}^N(q+1)=N(N+3)/2$. Reducir y quitar repeticiones sólo disminuye el número, de modo que $E_N$ es finito.
 
 </details>
 
@@ -782,7 +782,7 @@ Está contenido en los candidatos $p/q$ con $1\le q\le N$, $0\le p\le q$, una fa
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 28</summary>
 
-$T\le1/(N+1)$.
+Una entrada racional fuera de $E_N$ tiene denominador reducido entero $q>N$, luego $q\ge N+1$ y $T(x)=1/q\le1/(N+1)$. En una entrada irracional el valor cero cumple la misma cota. Así el control vale para todas las entradas omitidas.
 
 </details>
 
@@ -797,7 +797,7 @@ $T\le1/(N+1)$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 29</summary>
 
-Un radio positivo evita los finitísimos picos grandes, y todos los restantes son pequeños.
+Para un irracional $x$ y $\varepsilon>0$, elegimos $N$ con $1/(N+1)<\varepsilon$. Las distancias de $x$ al conjunto finito $E_N$ tienen mínimo positivo. Un radio menor que ese mínimo evita todos los picos grandes y deja $|T(t)-T(x)|=T(t)\le1/(N+1)<\varepsilon$.
 
 </details>
 
@@ -812,7 +812,7 @@ Un radio positivo evita los finitísimos picos grandes, y todos los restantes so
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 30</summary>
 
-Toda vecindad contiene un irracional de valor cero, separado del valor central positivo.
+Si $x=p/q$ está reducido, su altura es $1/q>0$. Cada vecindad relativa contiene un irracional $t$ con altura cero, por lo que $|T(t)-T(x)|=1/q$. Con tolerancia $1/(2q)$ ningún radio cumple continuidad. El argumento cubre también cero y uno relativamente.
 
 </details>
 
@@ -827,7 +827,7 @@ Toda vecindad contiene un irracional de valor cero, separado del valor central p
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 31</summary>
 
-$1/q$; una vecindad evita otros picos de denominador≤q y contiene tanto el centro como un irracional.
+Toda vecindad del racional contiene su altura $1/q$ y una altura irracional cero, así oscila al menos $1/q$. Un radio que evite el conjunto finito $E_q\setminus\{x\}$ deja las demás alturas a lo sumo $1/(q+1)$. En esa vecindad el supremo es $1/q$ y el ínfimo cero, así el ínfimo de oscilaciones es exactamente $1/q$.
 
 </details>
 
@@ -842,7 +842,7 @@ $1/q$; una vecindad evita otros picos de denominador≤q y contiene tanto el cen
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 32</summary>
 
-Cero, por cotas superiores arbitrariamente pequeñas y sumas inferiores cero.
+Los irracionales de cada pieza hacen que todas las sumas inferiores de $T$ sean cero. Para controlar las superiores, se cubren los finitísimos picos grandes con piezas de longitud total pequeña y se limita el resto por $1/(N+1)$. Esto da superiores arbitrariamente pequeñas, prueba Darboux y fija integral cero.
 
 </details>
 
@@ -859,7 +859,7 @@ Prueba la cota cardinal N(N+3)/2 para E_N y lista E_4 en orden.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 16</summary>
 
-Cada denominador q entre1 yN admite a lo sumo q+1 numeradores0≤p≤q; la suma es N(N+1)/2+N=N(N+3)/2. Reducir fracciones y eliminar duplicados sólo baja el número. E4=(0,1/4,1/3,1/2,2/3,3/4,1), con7 entradas, menor que la cota14.
+Para un denominador $q$ con $1\le q\le N$, hay $q+1$ posibles numeradores enteros de cero a $q$. Antes de reducir y quitar duplicados hay por tanto $\sum_{q=1}^N(q+1)=N(N+1)/2+N=N(N+3)/2$ candidatos. Cada entrada de $E_N$ aparece entre ellos, así ésa es una cota cardinal. Para $N=4$, las fracciones reducidas distintas dan, en orden, $E_4=\{0,1/4,1/3,1/2,2/3,3/4,1\}$. Tiene siete entradas; la cota general es catorce, mayor porque cuenta también representaciones repetidas y no reducidas.
 
 **Retorno visual.** Véase [C25-F04](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html#fig-anm-c25-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -876,7 +876,7 @@ Demuestra continuidad de Thomae en un irracional, con radio positivo justificado
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 17</summary>
 
-Dado ε>0, elija N con1/(N+1)<ε. Todas las distancias entre el irracional x y el conjunto finito E_N son positivas; su mínimo d es positivo. El radio d/2 evita esos puntos. Fuera de ellos T≤1/(N+1), y T(x)=0, por lo que el error de salida es menor que ε. Si el conjunto fuera vacío, cualquier radio positivo serviría.
+Sea $x\in[0,1]$ irracional y $\varepsilon>0$. Elegimos $N\ge1$ con $1/(N+1)<\varepsilon$. El conjunto finito $E_N$ no contiene a $x$, así las distancias $|x-e|$, con $e\in E_N$, son positivas y tienen mínimo $d>0$. Si $|t-x|<d/2$, la entrada $t$ no pertenece a $E_N$. Allí la altura es cero si es irracional y a lo sumo $1/(N+1)$ si es racional. Como $T(x)=0$, queda $|T(t)-T(x)|\le1/(N+1)<\varepsilon$. El radio $d/2$ demuestra continuidad en $x$ con control de todos los picos omitidos.
 
 </details>
 
@@ -891,7 +891,7 @@ Para x=p/q reducido, prueba Ω_T(x)=1/q y discontinuidad.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 18</summary>
 
-Toda vecindad contiene el centro de valor1/q y un irracional de valor0, así su oscilación es al menos1/q. Un radio que evite E_q salvo el centro deja todos los demás valores≤1/(q+1), de modo que la oscilación de esa vecindad es exactamente1/q. El ínfimo es ese valor. Además, los irracionales arbitrariamente cercanos violan continuidad con tolerancia1/(2q).
+Sea $x=p/q$ en forma reducida. Cada vecindad relativa contiene al centro, con altura $1/q$, y a un irracional, con altura cero. Por tanto todas sus oscilaciones son al menos $1/q$. El conjunto $E_q\setminus\{x\}$ es finito y no contiene el centro; elegimos un radio que lo evite, mediante el mínimo de distancias positivas, o cualquier radio si es vacío. En esa vecindad las demás alturas racionales son a lo sumo $1/(q+1)$, mientras el centro conserva la mayor altura $1/q$. El ínfimo es cero por densidad irracional y el supremo $1/q$, así una oscilación vale exactamente ese número. Se concluye $\Omega_T(x)=1/q$. Los irracionales cercanos, con error $1/q$, refutan continuidad usando tolerancia $1/(2q)$.
 
 </details>
 
@@ -906,7 +906,7 @@ Si fuera de E_N la altura es≤1/(N+1), y las piezas que tocan E_N suman anchura
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 19</summary>
 
-Las piezas del primer grupo tienen supremo≤1 y contribuyen≤α. Las demás tienen supremo≤1/(N+1), y su anchura total≤1. Sumar da la cota. Por densidad irracional L0. Si los dos términos se hacen menores que ε/2 mediante N y collares, la brecha es menor que ε y la integral es cero.
+Separamos las piezas que tocan $E_N$ de las restantes. En las primeras el supremo de $T$ es a lo sumo uno, así su suma superior aporta a lo sumo su longitud total, que no supera $\alpha$. Ninguna entrada de las otras pertenece a $E_N$, por lo que sus supremos son a lo sumo $1/(N+1)$. Sus anchuras suman a lo sumo uno, y su contribución no supera $1/(N+1)$. Así $U(T,P)\le\alpha+1/(N+1)$. Todos los ínfimos son cero por densidad irracional. Para una tolerancia elegimos primero $N$ con el segundo término menor que $\varepsilon/2$ y después collares y malla que hagan $\alpha<\varepsilon/2$. Esto prueba brechas arbitrariamente pequeñas e integral cero.
 
 </details>
 
@@ -921,7 +921,7 @@ Compara Thomae y Dirichlet sin usar un criterio de medida.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 20</summary>
 
-Ambas son discontinuas en racionales; Dirichlet también lo es en irracionales porque toda vecindad tiene ambos valores0/1. En Thomae los irracionales son continuos y los picos de cada altura positiva están entre finitísimos denominadores. Collares de esos picos y cota del resto hacen U arbitrariamente pequeña. Dirichlet mantiene amplitud1 en todas las piezas y brecha fija1.
+Dirichlet mantiene las alturas cero y uno en toda vecindad; su oscilación puntual es uno y su brecha en $[0,1]$ es siempre uno. Thomae vale cero en los irracionales y en los racionales tiene altura inversa al denominador reducido. Para cada nivel positivo sólo finitísimos picos lo alcanzan. Una cobertura corta de esos picos limita su aporte superior, y la cota universal de los demás limita el resto. Se obtienen sumas superiores arbitrariamente pequeñas y sumas inferiores cero, de modo que Thomae integra cero. Aunque ambas tienen discontinuidades en todos los racionales, sus amplitudes en vecindades pequeñas son diferentes. El argumento utiliza denominadores y coberturas finitas, sin un criterio de medida.
 
 </details>
 ## 25.5. Un criterio exacto por niveles
@@ -963,7 +963,7 @@ Los niveles compactos, no la unión de todas las discontinuidades, reciben el ce
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 33</summary>
 
-Toda tolerancia de longitud admite una cobertura por finitísimos intervalos abiertos de longitud total menor que ella.
+Un conjunto $E$ tiene contenido finito nulo si para cada $\sigma>0$ hay una familia finita de intervalos abiertos reales que lo cubre y cuya suma de longitudes es menor que $\sigma$. La familia y su tamaño pueden depender de la tolerancia. El vacío usa la familia vacía.
 
 </details>
 
@@ -978,7 +978,7 @@ Toda tolerancia de longitud admite una cobertura por finitísimos intervalos abi
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 34</summary>
 
-No. Sólo una propiedad de coberturas finitas; no aditividad numerable.
+Se ha definido una propiedad de coberturas finitas que permite comparar sumas de anchuras. No se ha construido una función de medida ni probado reglas para uniones numerables. Por eso los argumentos del capítulo mantienen coberturas finitas en cada tolerancia.
 
 </details>
 
@@ -993,7 +993,7 @@ No. Sólo una propiedad de coberturas finitas; no aditividad numerable.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 35</summary>
 
-Integrabilidad de una acotada equivale a contenido finito nulo de cada $D_\eta$ con $\eta>0$.
+Para una función acotada en $[a,b]$, con $a<b$, R5 afirma que la integrabilidad equivale a que $D_\eta=\{x:\Omega_f(x)\ge\eta\}$ tenga contenido finito nulo para cada $\eta>0$. Cada nivel controla discontinuidades de amplitud al menos igual a esa cantidad.
 
 </details>
 
@@ -1008,7 +1008,7 @@ Integrabilidad de una acotada equivale a contenido finito nulo de cada $D_\eta$ 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 36</summary>
 
-Un punto con oscilación puntual grande puede quedar en el borde de piezas y no en sus interiores.
+Si un punto del nivel queda en el interior de una pieza buena, una vecindad contenida allí contradice su oscilación puntual grande. En un nodo no hay necesariamente una vecindad que quepa en una sola pieza. Cubrir los finitísimos nodos por intervalos cortos completa la inclusión del nivel en la cobertura.
 
 </details>
 
@@ -1023,7 +1023,7 @@ Un punto con oscilación puntual grande puede quedar en el borde de piezas y no 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 37</summary>
 
-Las piezas de oscilación≥η suman longitud menor que $\sigma/4$.
+La cota $\eta\lambda_P(\eta)\le G$ y $\eta>0$ dan $\lambda_P(\eta)\le G/\eta<\sigma/4$. Éste es el presupuesto de longitud de las piezas malas. Queda margen para abrir sus extremos y añadir pequeños intervalos alrededor de los nodos.
 
 </details>
 
@@ -1038,7 +1038,7 @@ Las piezas de oscilación≥η suman longitud menor que $\sigma/4$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 38</summary>
 
-El nivel compacto $D_\eta$ con abiertos de longitud total pequeña; fuera de ellos hay vecindades buenas.
+Se cubre el nivel $D_\eta$ por abiertos de longitud total menor que $\sigma$. Dentro de su unión hay vecindades contenidas en ella; fuera, $\Omega_f(x)<\eta$ proporciona vecindades de oscilación pequeña. Compacidad convierte sus radios medios en una escala común que clasifica todas las piezas finas.
 
 </details>
 
@@ -1053,7 +1053,7 @@ El nivel compacto $D_\eta$ con abiertos de longitud total pequeña; fuera de ell
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 39</summary>
 
-No. Se exige por cada nivel positivo; la unión puede ser densa.
+La cobertura pequeña se exige para cada nivel positivo por separado. En Thomae, cada nivel contiene sólo finitísimos denominadores reducidos, pero la unión de los niveles contiene todos los racionales del intervalo. Esa unión es densa y no tiene contenido finito nulo, aunque la tasa sea integrable.
 
 </details>
 
@@ -1068,7 +1068,7 @@ No. Se exige por cada nivel positivo; la unión puede ser densa.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 40</summary>
 
-Su nivel $D_\eta$ es el segmento completo si $0<\eta\le1$, sin cobertura finita arbitrariamente corta.
+Como $\Omega_d(x)=1$, para $0<\eta\le1$ el nivel es $D_\eta=[a,b]$. Toda cobertura finita por intervalos de ese segmento tiene suma de longitudes al menos $b-a>0$. Por tanto ese nivel no admite coberturas arbitrariamente cortas y falla R5.
 
 </details>
 
@@ -1085,7 +1085,7 @@ Prueba la necesidad de R5, incluyendo los nodos de partición.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 21</summary>
 
-Elija P con G<ησ/4. Las piezas con ω≥η suman anchura<σ/4 por R1. Un punto de Dη que no sea nodo está interior a una pieza; si fuera buena, una vecindad contenida allí daría Ω<η. Por tanto el nivel queda en malas y nodos. Si hay n piezas, expandir malas y cubrir los n+1 nodos con radio σ/[8(n+1)] agrega menos que σ/2 de longitud. La cobertura total es menor que3σ/4<σ.
+Fijemos $\eta,\sigma>0$. La integrabilidad proporciona $P$ con $G(f,P)<\eta\sigma/4$. Por R1, las piezas malas de oscilación al menos $\eta$ suman longitud $\lambda<\sigma/4$. Si un punto de $D_\eta$ no es nodo, está en el interior de una pieza; una pieza buena admitiría allí una vecindad de oscilación menor que $\eta$, contradicción. Así el nivel queda cubierto por las piezas malas y los nodos. Si hay $n$ piezas, ponemos $r=\sigma/[8(n+1)]$. Ampliamos cada pieza mala en $r$ por ambos lados y cubrimos cada uno de los $n+1$ nodos con un intervalo abierto de radio $r$. Hay a lo sumo $n$ malas y la longitud total de la cobertura es a lo sumo $\lambda+2r(2n+1)<\sigma/4+\sigma/2=3\sigma/4<\sigma$. Los intervalos reales también cubren los nodos de borde. Queda probado el contenido finito nulo de cada nivel.
 
 </details>
 
@@ -1100,7 +1100,7 @@ Prueba la suficiencia de R5 con los parámetros de tolerancia.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 22</summary>
 
-Tome η=ε/[2(b−a)], σ=ε/[4(B+1)] y cobertura finita de Dη de longitud<σ. Fuera de su unión O, Ω<η da vecindades buenas; dentro, apertura da vecindades contenidas en O. Todos los pares válidos y radios medios cubren el segmento; C16 da subcubrimiento finito y δ mínimo. Una partición de malla<δ queda pieza a pieza en O o buena. Longitud mala<σ y R1 dan G≤ε/2+Bε/[2(B+1)]<ε; C23 concluye.
+Supongamos $|f|\le B$ y contenido finito nulo de cada nivel positivo. Para $\varepsilon>0$, fijamos $\eta=\varepsilon/[2(b-a)]$ y $\sigma=\varepsilon/[4(B+1)]$. Cubrimos $D_\eta$ por finitísimos abiertos de longitud total menor que $\sigma$, cuya unión llamamos $O$. Fuera de $O$ se tiene $\Omega_f(x)<\eta$, así algún radio da oscilación menor que $\eta$; dentro, la apertura da un radio cuya vecindad cabe en $O$. Los radios medios de todos los pares válidos cubren el segmento. Compacidad extrae una lista finita y su mínimo radio medio $\delta>0$. Una uniforme de malla menor que $\delta$ tiene cada pieza dentro de $O$ o en una vecindad buena. Las piezas malas deben ser del primer tipo, y la comparación finita de longitudes da $\lambda<\sigma$. R1 implica $G\le\varepsilon/2+B\varepsilon/[2(B+1)]<\varepsilon$. Darboux prueba integrabilidad; para $B=0$ la tasa es cero y la conclusión es inmediata.
 
 </details>
 
@@ -1115,7 +1115,7 @@ Explica por qué el criterio exige Dη para cada η>0 y no contenido finito nulo
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 23</summary>
 
-En Thomae, cada nivel de oscilación≥η contiene sólo finitísimos racionales de denominador≤1/η. Admite collares arbitrariamente cortos. La unión de todos esos niveles positivos es el conjunto racional, denso, que no admite coberturas abiertas finitas de longitud total<1. El criterio por niveles conserva la integrabilidad demostrada; exigir la propiedad a toda la unión sería más fuerte.
+En Thomae, $\Omega_T(p/q)=1/q$ para racionales y cero para irracionales. Para un $\eta>0$ fijo, el nivel $D_\eta$ sólo puede contener denominadores $q\le1/\eta$, así es finito y admite collares arbitrariamente cortos. La unión de esos niveles sobre todos los valores positivos de $\eta$ es $\mathbb Q\cap[0,1]$, porque cada racional tiene una amplitud positiva. Esa unión es densa y cualquier cobertura abierta finita suya tiene longitud total al menos uno, como se demuestra cerrando los intervalos y usando densidad. Por tanto una tasa integrable puede tener todos los niveles con contenido finito nulo y no tener esa propiedad en el conjunto completo de discontinuidades.
 
 **Retorno visual.** Véase [C25-F05](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html#fig-anm-c25-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1132,7 +1132,7 @@ Justifica que una cobertura finita por intervalos abiertos de[a,b] tiene suma de
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 24</summary>
 
-Corte en todos los extremos y en a,b. Las celdas interiores del segmento están cubiertas; cada una contribuye una vez a longitud b−a y al menos una a la suma de longitudes de los intervalos de cobertura que la contienen. Sumar finitamente da la desigualdad. Las fronteras de celdas no agregan anchura. Intervalos redundantes sólo aumentan la suma.
+Cortamos $[a,b]$ en los finitísimos extremos de los intervalos de cobertura que queden dentro del segmento, añadiendo $a,b$. En cada celda abierta entre cortes consecutivos, la pertenencia a cada intervalo de cobertura es constante, porque no hay un extremo interior que la cambie. Como la cobertura contiene todo el segmento, cada celda está en al menos uno de los intervalos. Las longitudes de las celdas suman $b-a$. Si se suman las longitudes de los intervalos, cada celda cubierta se cuenta al menos una vez, quizá más, y las partes exteriores sólo agregan longitud. Así la suma total es al menos $b-a$. Los finitísimos cortes no aportan anchura propia.
 
 </details>
 
@@ -1147,7 +1147,7 @@ Verifica el contenido finito nulo del vacío y de conjuntos finitos; explica el 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 25</summary>
 
-El vacío usa cobertura vacía. Para k puntos use radios σ/[4(k+1)], cuya suma es menor que σ. Si B0, f0, todas las oscilaciones y niveles positivos son vacíos y G0. Los parámetros con B+1 permanecen positivos y no requieren dividir por una cota nula.
+El vacío tiene una cobertura vacía cuya suma de longitudes es cero para cualquier tolerancia positiva. Para un conjunto de $k>0$ puntos, los collares de radio $\sigma/[4(k+1)]$ dan suma $\sigma k/[2(k+1)]<\sigma$. Así los conjuntos finitos tienen contenido finito nulo. Si la cota absoluta es $B=0$, entonces $f=0$, todas las oscilaciones puntuales son cero y todos los niveles positivos son vacíos. La brecha también es cero. En la suficiencia, el parámetro $\sigma=\varepsilon/[4(B+1)]$ sigue definido y positivo; no se requiere dividir por $B$.
 
 </details>
 ## 25.6. Un soporte infinito de longitud evanescente
@@ -1183,7 +1183,7 @@ El conjunto es infinito: por ejemplo todos los extremos $3^{-n}$, $n\ge1$, sobre
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 41</summary>
 
-Soporte contenido en un compacto de contenido finito nulo, función acotada no negativa y cero fuera.
+Se supone un conjunto compacto $E$ de contenido finito nulo y una función $0\le f\le B$ que vale cero fuera de $E$. La compacidad permite controlar a la vez todas las piezas que toquen $E$, y la cobertura corta limita su contribución superior. La conclusión es integrabilidad con valor cero.
 
 </details>
 
@@ -1198,7 +1198,7 @@ Soporte contenido en un compacto de contenido finito nulo, función acotada no n
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 42</summary>
 
-Toda pieza que toque el soporte queda dentro de su cubierta abierta pequeña.
+Una cobertura abierta pequeña de $E$ admite un subcubrimiento finito de vecindades de radio medio. Si la malla es menor que el mínimo de esos radios, toda pieza que toca $E$ cabe en una vecindad grande dentro de la cobertura. Se incluyen las piezas que sólo tocan el soporte por un extremo.
 
 </details>
 
@@ -1213,7 +1213,7 @@ Toda pieza que toque el soporte queda dentro de su cubierta abierta pequeña.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 43</summary>
 
-$2^n$ segmentos cerrados.
+En $C_0$ hay una componente. Cada paso reemplaza cada segmento por sus dos tercios extremos, separados por un hueco abierto. Así el número se duplica y la etapa $n\ge0$ tiene exactamente $2^n$ componentes cerradas.
 
 </details>
 
@@ -1228,7 +1228,7 @@ $2^n$ segmentos cerrados.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 44</summary>
 
-$3^{-n}$.
+La longitud inicial es uno y cada nueva componente mide un tercio de su padre. Tras $n$ pasos la longitud de cada segmento es $3^{-n}$. Los huecos separan las componentes, por lo que ninguna suma de etapas vuelve a unirlas.
 
 </details>
 
@@ -1243,7 +1243,7 @@ $3^{-n}$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 45</summary>
 
-$(2/3)^n$.
+La etapa $C_n$ tiene $2^n$ componentes de longitud $3^{-n}$. Sumar sus anchuras da $2^n3^{-n}=(2/3)^n$, que tiende a cero. Es una suma finita de longitudes de la etapa, utilizada para construir coberturas del conjunto final.
 
 </details>
 
@@ -1258,7 +1258,7 @@ $(2/3)^n$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 46</summary>
 
-Es cerrado por intersección de cerrados y está contenido en el segmento compacto.
+Cada etapa es una unión finita de cerrados y por tanto cerrada. La intersección $C=\bigcap_{n\ge0}C_n$ también es cerrada y está contenida en el compacto $[0,1]$. La herencia de C16 la hace compacta. Los extremos cero y uno sobreviven en todas las etapas, así la intersección es no vacía.
 
 </details>
 
@@ -1273,7 +1273,7 @@ Es cerrado por intersección de cerrados y está contenido en el segmento compac
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 47</summary>
 
-Exactamente en C: el complemento es abierto y C tiene interior vacío.
+Fuera de $C$, su complemento abierto da una vecindad donde la indicadora vale cero. En $C$, el centro tiene valor uno y toda vecindad contiene alguna entrada del complemento, porque $C$ no contiene intervalos de longitud positiva. El error uno refuta continuidad allí, incluidos los bordes con vecindades relativas.
 
 </details>
 
@@ -1288,7 +1288,7 @@ Exactamente en C: el complemento es abierto y C tiene interior vacío.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 48</summary>
 
-Cero, por el lema de soporte compacto y las coberturas de longitud pequeña.
+El conjunto $C$ es compacto y admite coberturas abiertas finitas de longitud arbitrariamente pequeña. Su indicadora está entre cero y uno y vale cero fuera de $C$. El lema de soporte da sumas superiores arbitrariamente pequeñas y prueba integral cero.
 
 </details>
 
@@ -1305,7 +1305,7 @@ Prueba por inducción el número de componentes, su longitud y la longitud total
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 26</summary>
 
-En etapa0 hay un segmento de longitud1. Cada componente se sustituye por dos tercios extremos cerrados, cada uno de un tercio de su longitud. Si la etapa n tiene2^n componentes de3^−n, la siguiente tiene2^(n+1) de3^(−n−1). Las componentes no se solapan en interiores. La suma total es2^n3^−n=(2/3)^n.
+La etapa cero consta de $[0,1]$, con una componente de longitud uno. Supongamos que $C_n$ tiene $2^n$ componentes de longitud $3^{-n}$. Quitar el tercio medio abierto de cada una deja dos segmentos cerrados de longitud $3^{-n}/3=3^{-(n+1)}$. Los huecos nuevos y los antiguos mantienen separadas las componentes, así hay $2\cdot2^n=2^{n+1}$. Esto prueba por inducción ambas fórmulas. La suma de longitudes en la etapa $n$ es $2^n3^{-n}=(2/3)^n$, porque las componentes no se solapan.
 
 **Retorno visual.** Véase [C25-F06](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html#fig-anm-c25-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1322,7 +1322,7 @@ A partir de C_n, construye cobertura de C con longitud total<σ y demuestra comp
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 27</summary>
 
-Cada C_n es cerrado, luego la intersección C es cerrada por C04 y está en[0,1], compacto por C16. Elija n con(2/3)^n<σ/2. Expanda cada una de sus2^n componentes por radio r<σ/[4·2^n]. La suma ampliada es(2/3)^n+2·2^n r<σ. Todos los puntos de C están en C_n y quedan cubiertos.
+Cada $C_n$ es una unión finita de cerrados y $C=\bigcap_{n\ge0}C_n$ es cerrado. Está contenido en el compacto $[0,1]$, así es compacto por C16. Para $\sigma>0$, la convergencia geométrica permite elegir $n$ con $(2/3)^n<\sigma/2$. Cada una de las $2^n$ componentes $[u_j,v_j]$ se amplía al abierto $(u_j-r,v_j+r)$ con $r=\sigma/[8\cdot2^n]>0$. Cubren a $C$ porque $C\subseteq C_n$. La suma de longitudes es $(2/3)^n+2\cdot2^n r<\sigma/2+\sigma/4<\sigma$. Se obtiene contenido finito nulo mediante coberturas reales abiertas, también alrededor de cero y uno.
 
 </details>
 
@@ -1337,7 +1337,7 @@ Prueba que C no contiene un intervalo abierto no degenerado.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 28</summary>
 
-Si lo contuviera, tendría dentro un segmento de anchura $\ell$>0. Elija n con3^−n<$\ell$. Ese segmento debería estar en C_n. No cabe en una componente y no puede cruzar un hueco abierto entre componentes sin salir de C_n. Contradicción. La prueba vale independientemente de las primeras etapas dibujadas.
+Supongamos que $C$ contiene un intervalo abierto no degenerado. Elegimos dentro de él un segmento cerrado $[u,v]$ de longitud $\ell=v-u>0$. Para $n$ suficientemente grande, $3^{-n}<\ell$. Como $C\subseteq C_n$, ese segmento debería quedar en la unión de las componentes de $C_n$. Si estuviera dentro de una sola, su longitud no podría exceder $3^{-n}$. Si tocara dos componentes distintas, contendría el hueco abierto que las separa, y por tanto algún punto fuera de $C_n$. Ambas posibilidades contradicen la inclusión. Luego $C$ tiene interior vacío. En sus bordes del dominio, una vecindad relativa completamente contenida en $C$ también contendría un intervalo abierto interior, así queda excluida.
 
 </details>
 
@@ -1352,7 +1352,7 @@ Determina los puntos de discontinuidad y la integral de la indicadora de C.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 29</summary>
 
-Fuera de C, su complemento abierto proporciona vecindad constante0. En un punto de C, toda vecindad relativa contiene un punto fuera, por interior vacío, mientras el centro vale1; tolerancia1/2 refuta continuidad. C es compacto de contenido finito nulo, por lo que el lema de soporte prueba integrabilidad y valor0. Los bordes0 y1 se tratan relativamente.
+Si $x\notin C$, la cerradura de $C$ da una vecindad relativa del centro disjunta de él. Allí la indicadora vale cero y es continua. Si $x\in C$, su valor es uno, pero toda vecindad relativa contiene alguna entrada fuera de $C$ por interior vacío; allí vale cero. El error uno impide continuidad con tolerancia $1/2$. Por tanto las discontinuidades son exactamente $C$, incluidos cero y uno relativamente. La función está entre cero y uno y es cero fuera del compacto $C$ de contenido finito nulo. El lema de soporte hace su integral existente y de valor cero.
 
 </details>
 
@@ -1367,7 +1367,7 @@ Demuestra el paso de malla del lema de soporte compacto sin ignorar nodos.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 30</summary>
 
-La cubierta abierta O contiene E. Todos los radios con vecindad grande dentro de O dan vecindades medias que cubren E; un subcubrimiento finito proporciona δ mínimo radio medio. Si una pieza de malla<δ toca E en t, un centro de la cubierta está a distancia<r/2 de t; cualquier otro punto de la pieza queda a distancia<δ+r/2≤r. Toda la pieza está en O, aun si t era un extremo compartido. Su suma de anchuras se controla por la longitud de la cobertura.
+Sea $E$ no vacío compacto y $O$ una unión abierta que lo cubre. Para todos los pares $(c,r)$ con $c\in E$, $r>0$ y $V_r(c)\subseteq O$, las vecindades $V_{r/2}(c)$ cubren $E$. Compacidad extrae finitísimos pares y da $\delta=\min_j r_j/2>0$. Si una pieza de malla menor que $\delta$ toca $E$ en $t$, elegimos una vecindad media que contenga a $t$. Para cualquier entrada $s$ de esa pieza, $|s-c_j|\le|s-t|+|t-c_j|<\delta+r_j/2\le r_j$, así toda la pieza está en $O$. El razonamiento funciona también cuando $t$ es un nodo de borde o compartido, y entonces controla ambas piezas que lo toquen. Sus interiores disjuntos permiten acotar la suma de anchuras por la longitud total de la cobertura. Si $E$ es vacío, no hay piezas afectadas.
 
 </details>
 ## 25.7. Cambiar muchos valores y aproximar
@@ -1406,7 +1406,7 @@ Thomae y cero difieren en todos los racionales, aunque sus integrales coinciden;
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 49</summary>
 
-Si $|f-g|\le\delta$, entonces $\omega(f,I)\le\omega(g,I)+2\delta$.
+Si $|f-g|\le\delta$, para dos entradas $s,t$ de $I$ se tiene $f(s)-f(t)\le g(s)-g(t)+2\delta\le\omega(g,I)+2\delta$. Tomar supremo en $s$ e ínfimo en $t$ da $\omega(f,I)\le\omega(g,I)+2\delta$. Los extremos no necesitan alcanzarse.
 
 </details>
 
@@ -1421,7 +1421,7 @@ Si $|f-g|\le\delta$, entonces $\omega(f,I)\le\omega(g,I)+2\delta$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 50</summary>
 
-$G(f,P)\le G(g,P)+2\delta(b-a)$.
+Multiplicamos la comparación local por cada anchura positiva y sumamos: $G(f,P)\le G(g,P)+2\delta\sum_i\Delta_i=G(g,P)+2\delta(b-a)$. La misma cota de error debe valer en todas las entradas del intervalo para justificar cada término.
 
 </details>
 
@@ -1436,7 +1436,7 @@ $G(f,P)\le G(g,P)+2\delta(b-a)$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 51</summary>
 
-Después de demostrar que ambos existen, no como prueba circular de existencia.
+Primero se demuestra integrabilidad de $f$ mediante brechas pequeñas de sus aproximantes y la cota de oscilación. Con ambas integrales existentes, linealidad y orden dan $|\int f-\int g|\le\delta(b-a)$. Esa desigualdad compara valores ya definidos.
 
 </details>
 
@@ -1451,7 +1451,7 @@ Después de demostrar que ambos existen, no como prueba circular de existencia.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 52</summary>
 
-El conjunto finito $E_N$; por tanto su integral es cero.
+Definimos $T_N=T$ en $E_N$ y cero fuera. Como $T$ es positiva en cada racional de $E_N$, ése es exactamente su conjunto de entradas no nulas. Es finito, así $T_N$ es una modificación finita de la función cero y tiene integral cero por C23.
 
 </details>
 
@@ -1466,7 +1466,7 @@ El conjunto finito $E_N$; por tanto su integral es cero.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 53</summary>
 
-$|T-T_N|\le1/(N+1)$ para todas las entradas.
+En $E_N$, $T-T_N=0$. Fuera, $T_N=0$ y todas las alturas de $T$ están entre cero y $1/(N+1)$. Así $|T-T_N|\le1/(N+1)$ para todas las entradas. Un único $N$ suficientemente grande controla la familia completa para una tolerancia dada.
 
 </details>
 
@@ -1481,7 +1481,7 @@ $|T-T_N|\le1/(N+1)$ para todas las entradas.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 54</summary>
 
-La función de Dirichlet, porque cada racional acaba incluido y ningún irracional lo está.
+En un racional reducido de denominador $q$, se tiene $d_N(x)=1$ desde que $N\ge q$. En un irracional, siempre vale cero. Así los valores en cada entrada se estabilizan en Dirichlet, aunque el índice a partir del que ocurre depende de la entrada.
 
 </details>
 
@@ -1496,7 +1496,7 @@ La función de Dirichlet, porque cada racional acaba incluido y ningún irracion
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 55</summary>
 
-Uno para cada N: quedan racionales fuera del conjunto finito.
+Para cada $N\ge1$, la fracción reducida $1/(N+1)$ queda fuera de $E_N$. Allí Dirichlet vale uno y $d_N$ vale cero. Como ambas funciones sólo toman cero y uno, su error global máximo es exactamente uno para todo $N$. La estabilización de cada entrada no da control simultáneo.
 
 </details>
 
@@ -1511,7 +1511,7 @@ Uno para cada N: quedan racionales fuera del conjunto finito.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 56</summary>
 
-No. Puede conservar integral en un ejemplo o destruir integrabilidad en otro.
+Thomae y Dirichlet son dos modificaciones de la tasa cero en todos los racionales. La primera es integrable con valor cero; la segunda no es integrable. Por tanto el resultado de cambios finitos no se extiende automáticamente a un conjunto numerable de entradas modificadas.
 
 </details>
 
@@ -1528,7 +1528,7 @@ Demuestra ω(f,I)≤ω(g,I)+2δ si |f−g|≤δ universalmente.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 31</summary>
 
-Para cualesquiera s,t de I, $f(s)-f(t)\le g(s)-g(t)+2\delta\le\omega(g,I)+2\delta$. Fijando t y tomando supremo de f(s), después tomando ínfimo de f(t), resulta la cota de oscilación. Las imágenes son no vacías acotadas. No se supone que los extremos estén alcanzados.
+Supongamos imágenes no vacías y acotadas y $|f(t)-g(t)|\le\delta$ para toda entrada de $I$. Para $s,t\in I$, escribimos $f(s)-f(t)=(f(s)-g(s))+(g(s)-g(t))+(g(t)-f(t))\le\omega(g,I)+2\delta$. Fijado $t$, tomar supremo en $s$ da $M_f-f(t)\le\omega(g,I)+2\delta$. Luego $M_f\le f(t)+\omega(g,I)+2\delta$ para toda $t$, y tomar ínfimo en $t$ produce $M_f\le m_f+\omega(g,I)+2\delta$. Restar $m_f$ prueba $\omega(f,I)\le\omega(g,I)+2\delta$. La optimalidad de las cotas sustituye a cualquier supuesto de extremos alcanzados.
 
 </details>
 
@@ -1543,7 +1543,7 @@ Prueba la conclusión de R7 y después la cota de diferencia de integrales.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 32</summary>
 
-Para ε>0, elija integrable g con error global δ=ε/[4(b−a)]. Elija P de g con brecha<ε/2. La comparación da Gf(P)≤Gg(P)+2δ(b−a)<ε; f es integrable por C23. Ahora, y sólo ahora, linealidad y orden aplicados a f−g dan distancia de integrales≤δ(b−a).
+Sea $f$ acotada y supongamos que para toda $\delta>0$ existe una integrable $g$ con error global a lo sumo $\delta$. Dada $\varepsilon>0$, elegimos $\delta=\varepsilon/[4(b-a)]$ y una $g$ correspondiente. Darboux proporciona una partición con $G(g,P)<\varepsilon/2$. La comparación de oscilaciones ponderadas da $G(f,P)\le G(g,P)+2\delta(b-a)<\varepsilon$. Por tanto $f$ es integrable. Con su integral ya existente, para cualquier aproximante integrable de error global $\delta$, la diferencia $f-g$ es integrable y satisface $-\delta\le f-g\le\delta$. Orden y linealidad dan $|\int_a^b f-\int_a^b g|\le\delta(b-a)$. La prueba de existencia precede a esta comparación de valores.
 
 </details>
 
@@ -1558,7 +1558,7 @@ Define T_N y demuestra error global≤1/(N+1), integrabilidad y valor integral d
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 33</summary>
 
-T_N coincide con T en E_N y vale0 fuera. Tiene soporte finito, así es integrable con integral0 por C23. En E_N el error es0; fuera de allí T≤1/(N+1), por lo que la cota sirve para todas las entradas. R7 prueba existencia de la integral de T y distancia a0≤1/(N+1) para todo N. Arquimedianidad fuerza valor0.
+Para $N\ge1$, definimos $T_N(x)=T(x)$ si $x\in E_N$ y cero en las demás entradas. Tiene soporte finito, por lo que es integrable con valor cero por cambios finitos de la tasa nula. En $E_N$ el error es cero; fuera, la altura de $T$ no supera $1/(N+1)$. Así $|T-T_N|\le1/(N+1)$ universalmente. Como esas cotas tienden a cero y $T$ está acotada, R7 prueba su integrabilidad. Después, la cota de diferencia de integrales en longitud uno da $|I_T|\le1/(N+1)$ para todo $N\ge1$. Una distancia positiva quedaría contradicha por un $N$ suficientemente grande, así $I_T=0$.
 
 </details>
 
@@ -1573,7 +1573,7 @@ Prueba que d_N=1 en E_N y0 fuera se estabiliza en Dirichlet entrada por entrada,
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 34</summary>
 
-En un racional reducido de denominador q, para N≥q el valor es1; en un irracional siempre0. Ésa es la estabilización requerida para cada entrada. Para cualquier N, hay racionales fuera del conjunto finito E_N, porque todo intervalo contiene infinitos racionales por densidad repetida. En uno de ellos d1 y d_N0, error1. No existe un índice que controle todas las entradas con tolerancia1/2.
+Para un racional $x=p/q$ reducido, se tiene $x\in E_N$ desde $N\ge q$, así $d_N(x)=1$ a partir de ese índice. Para un irracional, $d_N(x)=0$ para todo $N$. Cada entrada se estabiliza en su altura de Dirichlet. Sin embargo, para cada $N\ge1$ la entrada $x_N=1/(N+1)$ tiene denominador reducido $N+1$ y queda fuera de $E_N$. Allí $d_N(x_N)=0$ y $d(x_N)=1$. El error global es por tanto al menos uno y, como ambas alturas están entre cero y uno, exactamente uno. Ningún índice controla todas las entradas con error menor que $1/2$, aunque cada entrada fija acabe estabilizada.
 
 **Retorno visual.** Véase [C25-F07](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html#fig-anm-c25-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1590,7 +1590,7 @@ Compara dos modificaciones de la función cero en los racionales y precisa sus r
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 35</summary>
 
-Thomae y cero difieren sólo en los racionales; la primera es integrable con valor0 por R4/R7. Dirichlet y cero también difieren sólo allí, pero Dirichlet no es integrable por R3. Por tanto la regla de cambios finitos no puede ampliarse a una familia numerable dada sin nueva prueba. No se escribe una integral de Dirichlet inexistente.
+Sobre $[0,1]$, sustituimos las alturas de la tasa cero en los racionales de dos maneras. Si ponemos en cada fracción reducida $p/q$ la altura $1/q$, obtenemos Thomae, integrable con valor cero por la separación de picos grandes y alturas pequeñas. Si ponemos altura uno en todos los racionales, obtenemos Dirichlet, no integrable por su brecha fija. En ambos casos el conjunto modificado es la misma colección numerable de racionales. El resultado de cambios finitos de C23 no decide ninguna modificación infinita por sí solo; las amplitudes y su distribución requieren una prueba nueva.
 
 </details>
 ## 25.8. La frontera y el paso que todavía falta
@@ -1628,7 +1628,7 @@ El siguiente problema del libro será un objeto distinto: cuando la entrada sigu
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 57</summary>
 
-Acotación en el cerrado no degenerado, forzada por el contrato de C23.
+El contrato propio de Riemann sobre un cerrado no degenerado obliga a que la tasa esté acotada, como probó C23 variando una etiqueta. Sin esa cota no se obtiene un valor real común para todas las sumas suficientemente finas. El criterio de niveles se aplica bajo esta premisa.
 
 </details>
 
@@ -1643,7 +1643,7 @@ Acotación en el cerrado no degenerado, forzada por el contrato de C23.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 58</summary>
 
-No necesariamente; Thomae tiene discontinuidades racionales densas y niveles positivos finitos.
+La integrabilidad sólo exige contenido finito nulo de cada $D_\eta$, para $\eta>0$. Thomae tiene niveles positivos finitos y discontinuidades en todos los racionales. Esa colección completa es densa y no tiene contenido finito nulo, mostrando que la exigencia sobre toda la unión sería más fuerte.
 
 </details>
 
@@ -1658,7 +1658,7 @@ No necesariamente; Thomae tiene discontinuidades racionales densas y niveles pos
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 59</summary>
 
-No. La clausura de cualquier cobertura abierta finita los extiende al segmento y obliga longitud total≥1.
+Si una unión finita $O$ de intervalos abiertos cubre $\mathbb Q\cap[0,1]$, su clausura contiene todo el segmento por densidad. Como la unión es finita, su clausura es la unión de los intervalos cerrados correspondientes. Sus longitudes son las mismas y suman al menos uno por la comparación finita de longitudes. Así la cobertura original no puede ser arbitrariamente corta.
 
 </details>
 
@@ -1673,7 +1673,7 @@ No. La clausura de cualquier cobertura abierta finita los extiende al segmento y
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 60</summary>
 
-No. $h(x)=1/x$ para x>0 y h(0)=0 falla acotación e integrabilidad propia.
+La función $h(0)=0$, $h(x)=1/x$ para $x>0$, es continua salvo en cero. Para cualquier $B>0$, la entrada $x=1/(B+1)$ tiene altura $B+1>B$. No existe cota global y el contrato propio de Riemann falla. El número de discontinuidades no sustituye la acotación.
 
 </details>
 
@@ -1688,7 +1688,7 @@ No. $h(x)=1/x$ para x>0 y h(0)=0 falla acotación e integrabilidad propia.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 61</summary>
 
-No. Es una envolvente que contiene al conjunto final.
+Cada $C_n$ contiene a $C$, pero conserva puntos que serán eliminados más adelante. Por ejemplo $1/(2\cdot3^n)$ está en la componente izquierda de $C_n$ y desaparece en el paso siguiente. La etapa ofrece una envolvente finita para cubrir la intersección.
 
 </details>
 
@@ -1703,7 +1703,7 @@ No. Es una envolvente que contiene al conjunto final.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 62</summary>
 
-No. La cota aritmética universal de denominadores sí los controla.
+Una tabla sólo registra las alturas evaluadas. En Thomae, la reducción aritmética muestra que cualquier racional omitido de $E_N$ tiene denominador al menos $N+1$. De ahí la cota universal $T\le1/(N+1)$ fuera del conjunto, que protege todos los picos restantes sin muestrearlos.
 
 </details>
 
@@ -1718,7 +1718,7 @@ No. La cota aritmética universal de denominadores sí los controla.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 63</summary>
 
-No. La teoría más amplia sólo se motiva; no se construyó ni usó aquí.
+Dirichlet queda descartada para la integral propia de Riemann por su brecha fija. El capítulo no construye una medida ni una integral de Lebesgue y no le asigna un valor mediante esa teoría. La comparación sólo motiva por qué una teoría más amplia requeriría herramientas nuevas.
 
 </details>
 
@@ -1733,7 +1733,7 @@ No. La teoría más amplia sólo se motiva; no se construyó ni usó aquí.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 64</summary>
 
-C26: sucesiones de funciones y convergencia punto por punto, sin abrirla durante C25.
+El capítulo siguiente estudia sucesiones de funciones y convergencia punto por punto. El contraste entre truncaciones de Thomae e indicadores de $E_N$ muestra la dificultad que lo motiva: cada entrada puede estabilizarse sin que una sola escala controle simultáneamente todas las entradas.
 
 </details>
 
@@ -1750,7 +1750,7 @@ Prueba que Q∩[0,1] no tiene contenido finito nulo.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 36</summary>
 
-Sea una unión finita de abiertos que cubre los racionales del segmento. Su clausura, unión finita de los correspondientes intervalos cerrados, contiene[0,1] por densidad. Cerrar intervalos no cambia sus longitudes. La longitud del segmento es a lo sumo la suma de longitudes de esa cobertura cerrada, por la prueba finita de cortes. La suma original es por tanto≥1 y no puede ser arbitrariamente pequeña.
+Supongamos una cobertura de $\mathbb Q\cap[0,1]$ por los abiertos $(u_j,v_j)$, $1\le j\le k$. Su unión $O$ contiene un conjunto denso en $[0,1]$, así $[0,1]\subseteq\overline O$. Como la unión es finita, $\overline O=\bigcup_{j=1}^k[u_j,v_j]$. Los intervalos cerrados conservan las longitudes $v_j-u_j$. Cortar en sus finitísimos extremos demuestra que una cobertura del segmento tiene suma de longitudes al menos uno. Por tanto $\sum_j(v_j-u_j)\ge1$ para la cobertura abierta original. La tolerancia $\sigma=1/2$ no admite una cobertura de ese tipo, refutando el contenido finito nulo.
 
 </details>
 
@@ -1765,7 +1765,7 @@ Para h0 en cero y h(x)=1/x en(0,1], refuta integral propia sin analizar integral
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 37</summary>
 
-Si integrara propiamente, C23 forzaría una cota finita. Dado B>0, tome x positivo menor que min{1,1/(B+1)}; entonces h(x)>B. Si una cota inicial fuera cero o negativa, basta sustituirla por un número positivo mayor. No existe cota finita, luego no existe esa integral. No se ha afirmado nada sobre otro tipo de integral.
+La tasa $h(0)=0$, $h(x)=1/x$ para $x>0$, toma valores reales en todo $[0,1]$. Si fuera integrable propiamente, C23 daría una cota absoluta finita $B\ge0$. Elegimos $x=1/(B+2)$, que está en $(0,1]$, y obtenemos $h(x)=B+2>B$, contradicción. La tasa es continua en las entradas positivas, pero la pérdida de acotación al acercarse a cero impide el contrato propio. No se necesita investigar otro tipo de integral para esta conclusión.
 
 </details>
 
@@ -1780,7 +1780,7 @@ Distingue el significado de (2/3)^n y el del conjunto C, sin identificar una eta
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 38</summary>
 
-La etapa C_n es una unión finita de intervalos con esa longitud total. C está contenido en todas esas etapas, pero muchos puntos de cada una serán eliminados después. Por ello la etapa permite cubrir C con longitud pequeña; no certifica que sus intervalos completos pertenezcan a C ni da una medida construida de la intersección.
+La cantidad $(2/3)^n$ es la suma de longitudes de los finitísimos componentes de $C_n$. Como $C\subseteq C_n$, ampliar esos componentes proporciona una cobertura abierta del conjunto final con longitud próxima a esa suma. El conjunto $C$ es la intersección de todas las etapas, no una de ellas. Por ejemplo $1/(2\cdot3^n)$ está en la componente izquierda de $C_n$ y se elimina al quitar su tercio medio en el paso siguiente. La etapa certifica una envolvente útil para cubrir $C$; no afirma que todos sus intervalos sobrevivan ni construye una medida de la intersección.
 
 </details>
 
@@ -1795,7 +1795,7 @@ Formula R5 y explica por qué exigir que todas las discontinuidades juntas tenga
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 39</summary>
 
-R5 exige acotación y propiedad de cobertura finita para cada nivel Dη positivo. Si todas las discontinuidades tuvieran la propiedad, también cada Dη, por inclusión, y R5 daría integrabilidad. La recíproca falla en Thomae: niveles finitos y función integrable, pero todas las discontinuidades son racionales, sin contenido finito nulo.
+Para una función acotada en un cerrado no degenerado, R5 afirma $f$ integrable si y sólo si cada $D_\eta=\{x:\Omega_f(x)\ge\eta\}$, con $\eta>0$, tiene contenido finito nulo. Si el conjunto completo de discontinuidades tuviera esa propiedad, cada nivel, al estar contenido en él, la heredaría y R5 daría integrabilidad. Es una condición suficiente más fuerte. Thomae muestra que no es necesaria: sus niveles positivos son finitos y la tasa integra cero, mientras sus discontinuidades son todos los racionales del segmento y no tienen contenido finito nulo.
 
 </details>
 
@@ -1810,7 +1810,7 @@ Resume qué mecanismos deciden Dirichlet, Thomae y la indicadora de C, y qué te
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 40</summary>
 
-Dirichlet tiene brecha fija porque cada pieza contiene valores0 y1. Thomae separa finitísimos picos grandes de una cota pequeña universal del resto. La indicadora de C confina su soporte compacto con coberturas finitas cortas. No se definió una medida ni una integral de Lebesgue, ni se asignó por otro método un valor a Dirichlet. C26 abrirá la teoría de familias de funciones.
+Dirichlet mantiene amplitud uno en toda pieza, así su brecha positiva fija impide integrabilidad. Thomae permite separar una colección finita de picos grandes y cubrirla con longitud pequeña, mientras una cota aritmética controla todos los picos restantes; integra cero. La indicadora de Cantor confina sus alturas no nulas en un compacto con coberturas finitas arbitrariamente cortas y también integra cero. Estas decisiones usan oscilación, compacidad y sumas finitas de longitudes. El capítulo no construye una medida ni una integral de Lebesgue y no asigna con ellas un valor a Dirichlet. El contraste de aproximantes deja preparada la cuestión del control de sucesiones de funciones.
 
 **Retorno visual.** Véase [C25-F08](analisis-para-matematicos-capitulo-25-la-frontera-de-riemann.html#fig-anm-c25-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
