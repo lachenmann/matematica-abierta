@@ -83,7 +83,7 @@ Si $X$ es vacío, existe una única función $X\to\mathbb R$ y toda afirmación 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 1</summary>
 
-La entrada $x\in X$; sólo varía el índice $n$, y los valores forman una sucesión real.
+Una columna fija la entrada $x\in X$ y deja variar $n\in\mathbb N$. Se obtiene la sucesión numérica $f_0(x),f_1(x),\ldots$, a la que se aplican los criterios de convergencia de C06. El punto $x$ permanece igual durante toda esa prueba.
 
 </details>
 
@@ -98,7 +98,7 @@ La entrada $x\in X$; sólo varía el índice $n$, y los valores forman una suces
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 2</summary>
 
-Una función $f_n:X\to\mathbb R$, obtenida al fijar el índice y dejar variar la entrada.
+Al fijar $n$ queda la función $f_n:X\to\mathbb R$. Su gráfica contiene los pares $(x,f_n(x))$ cuando $x$ recorre el dominio. Así una fila conserva el índice de etapa y permite comparar distintas entradas dentro de una misma función.
 
 </details>
 
@@ -113,7 +113,7 @@ Una función $f_n:X\to\mathbb R$, obtenida al fijar el índice y dejar variar la
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 3</summary>
 
-Para que toda columna esté definida en cada etapa y las comparaciones entre filas tengan el mismo tipo.
+Un dominio común $X$ garantiza que $f_n(x)$ existe para cada par $(n,x)\in\mathbb N\times X$. Entonces cada columna tiene todos sus términos y dos filas pueden compararse en la misma entrada. Si las fórmulas tienen dominios diferentes, primero se declara una restricción común o una extensión que complete los valores faltantes.
 
 </details>
 
@@ -128,7 +128,7 @@ Para que toda columna esté definida en cada etapa y las comparaciones entre fil
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 4</summary>
 
-En $X\times\mathbb R$. El índice ordena las filas, pero no es la variable horizontal de esa gráfica.
+El grafo de $f_n$ es $\{(x,f_n(x)):x\in X\}\subseteq X\times\mathbb R$. El índice $n$ etiqueta la función que se está representando. En esa gráfica la coordenada de entrada sigue siendo $x$, no el número de etapa.
 
 </details>
 
@@ -143,7 +143,7 @@ En $X\times\mathbb R$. El índice ordena las filas, pero no es la variable horiz
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 5</summary>
 
-La unicidad del límite numérico de C06 para cada entrada donde converge la columna.
+Si una columna converge a dos números reales, la unicidad de C06 obliga a que sean iguales. Por tanto, donde existe límite, la relación $(x,y)$ con $f_n(x)\to y$ tiene exactamente una salida por entrada. Esas fibras únicas forman el grafo de la función límite.
 
 </details>
 
@@ -158,7 +158,7 @@ La unicidad del límite numérico de C06 para cada entrada donde converge la col
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 6</summary>
 
-No. En $(-1)^n x$, sólo la entrada0 tiene columna convergente.
+Para $f_n(x)=(-1)^n x$, la columna de cero es constante cero. Si $x\ne0$, los índices pares tienen altura $x$ y los impares altura $-x$. Las dos subsucesiones constantes tienen destinos distintos, así la columna completa no converge. La familia sólo define un límite real sobre su conjunto de convergencia $\{0\}$.
 
 </details>
 
@@ -173,7 +173,7 @@ No. En $(-1)^n x$, sólo la entrada0 tiene columna convergente.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 7</summary>
 
-Existe una única función vacía y el contrato para todas las entradas es vacuo.
+En $X=\varnothing$ hay una única función con ese dominio: el grafo vacío. Todas las filas y cualquier candidata real con dominio vacío son esa función. La condición de convergencia para cada entrada se satisface vacuamente, porque no hay columnas que comprobar.
 
 </details>
 
@@ -188,7 +188,7 @@ Existe una única función vacía y el contrato para todas las entradas es vacuo
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 8</summary>
 
-No; hay que responder al contrato para una entrada arbitraria del intervalo.
+Tres columnas verifican sólo tres sucesiones numéricas. La convergencia puntual en un intervalo exige una prueba para cualquier entrada de él y cualquier tolerancia positiva. Una fórmula de corte dependiente de una entrada arbitraria puede responder a ese contrato completo; una tabla finita no lo hace.
 
 </details>
 
@@ -207,7 +207,7 @@ Para $F(n,x)=(n+1)x$ en $\mathbb N\times\mathbb R$, identifica filas, columnas y
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 1</summary>
 
-La fila de índice $n$ es la aplicación $x\mapsto(n+1)x$; la columna de entrada $x$ es $n\mapsto(n+1)x$. En cero la columna es constante0. Para $x>0$, dado $M>0$ basta $n+1>M/x$ para superar $M$; para $x<0$ los valores son menores que $-M$ cuando $n+1>M/|x|$. Una sucesión convergente sería acotada por C06, de modo que sólo converge la columna de cero. El conjunto de convergencia es $\{0\}$ y su función límite vale0.
+La fila $n$ es $f_n:x\mapsto(n+1)x$ sobre $\mathbb R$; la columna $x$ es la sucesión $((n+1)x)_{n\ge0}$. En $x=0$ todos los valores son cero. Si $x\ne0$, sus magnitudes $(n+1)|x|$ exceden cualquier $M>0$ desde un índice con $n+1>M/|x|$. La columna es entonces no acotada y no puede converger a un real, pues C06 hace acotada toda sucesión convergente. Para $x>0$ crece sin cota superior y para $x<0$ decrece sin cota inferior. El conjunto de convergencia real es exactamente $\{0\}$ y la función límite sobre él vale cero.
 
 **Retorno visual.** Véase [C26-F01](analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html#fig-anm-c26-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -224,7 +224,7 @@ Las fórmulas $f_n(x)=1/(x-n)$ tienen dominio $\mathbb R\setminus\{n\}$. Encuent
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 2</summary>
 
-La intersección de los dominios es $X=\mathbb R\setminus\mathbb N$. Restringidas a $X$, todas las filas están definidas. Fijado $x\in X$, elegimos $N>|x|+1/\varepsilon$. Si $n\ge N$, $|x-n|\ge n-|x|>1/\varepsilon$, luego $|1/(x-n)|<\varepsilon$. Así convergen puntualmente a cero en $X$. Los ceros de denominador excluidos no pueden recuperarse sólo porque el error sea pequeño para índices posteriores.
+Como los índices son $\mathbb N=\{0,1,2,\ldots\}$, la intersección de los dominios es $X=\mathbb R\setminus\mathbb N$. En ese conjunto cada denominador $x-n$ es no nulo para todo índice. Fijados $x\in X$ y $\varepsilon>0$, elegimos un natural $N>|x|+1/\varepsilon$. Para $n\ge N$, la triangular inversa da $|x-n|\ge n-|x|>1/\varepsilon$, así $|1/(x-n)|<\varepsilon$. Las restricciones convergen puntualmente a cero en $X$. Éste es el mayor dominio común de las fórmulas dadas; podrían elegirse subconjuntos suyos, pero incluir un natural exigiría declarar cómo se repara su fila singular.
 
 </details>
 
@@ -239,7 +239,7 @@ Calcula el conjunto de convergencia de $f_n(x)=(-1)^n(x-2)$ en $\mathbb R$.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 3</summary>
 
-En $x=2$ todos los valores son0. Para otra entrada, las subsecuencias pares e impares tienen valores constantes $x-2$ y $2-x$, distintos. Si existiese límite de la columna, C06 lo transferiría a ambas y la unicidad lo identificaría con dos números distintos. Por tanto el conjunto de convergencia es $\{2\}$ y la función límite allí vale0. No se afirma convergencia en todo $\mathbb R$.
+En $x=2$ todos los valores de la columna son cero. Para $x\ne2$, los índices pares tienen altura $x-2$ y los impares altura $2-x$. Si hubiera un límite real, ambas subsucesiones deberían converger a él por C06. Son constantes y sus valores son distintos, de modo que la unicidad lo hace imposible. El conjunto de convergencia es $\{2\}$ y la función límite allí vale cero. La alternancia no depende de una etapa inicial excepcional: sigue produciendo ambos valores en índices arbitrariamente tardíos.
 
 </details>
 
@@ -254,7 +254,7 @@ Explica por qué la existencia de límite real en cada columna de $X$ define una
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 4</summary>
 
-Formamos el subconjunto $G=\{(x,y)\in X\times\mathbb R:f_n(x)\to y\}$. La hipótesis da al menos una salida en cada fibra y C06 da a lo sumo una. Por la definición de función de C12, $G$ es el grafo de una función $X\to\mathbb R$. Es una regla de salida única, no una aplicación del principio de selección entre varias salidas. Para $X$ vacío se obtiene el grafo vacío.
+Definimos $G=\{(x,y)\in X\times\mathbb R:f_n(x)\to y\}$. La hipótesis de convergencia de cada columna proporciona al menos un $y$ para cada entrada. La unicidad del límite numérico proporciona a lo sumo uno. Por tanto $G$ es total y univaluada sobre $X$, y define una función $f:X\to\mathbb R$. La salida está determinada por una propiedad que tiene un único valor, sin elegir entre alternativas por entrada. Si $X$ es vacío, el mismo procedimiento produce el único grafo vacío.
 
 </details>
 
@@ -269,7 +269,7 @@ Define $f_n(x)=1$ si $x=n$ y $0$ en otro caso, en $\mathbb R$. Determina su lím
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 5</summary>
 
-Para $x\notin\mathbb N$ la columna es siempre0. Si $x=m\in\mathbb N$, sólo el índice $m$ vale1; desde $N=m+1$ todos los términos son0. Por tanto el límite puntual es cero en toda la recta. Cada fila tiene un punto de altura1, pero una entrada fija encuentra como máximo uno. Una cantidad finita de gráficas no acredita las colas de todas las entradas; la clasificación anterior sí.
+Si $x\notin\mathbb N$, ninguna fila tiene su pico en esa entrada y la columna es cero desde el inicio. Si $x=m\in\mathbb N$, el único término de altura uno es el de índice $m$; desde $N=m+1$ toda la cola es cero. Así $f_n(x)\to0$ para cada $x\in\mathbb R$. Cada fila contiene un pico de altura uno, pero éste aparece en una entrada diferente al aumentar el índice. El argumento clasifica una entrada arbitraria y controla su cola completa; unas pocas gráficas no certificarían esa afirmación universal.
 
 </details>
 ## 26.2. Una cola para cada entrada
@@ -335,7 +335,7 @@ es no vacío cuando hay convergencia puntual. El buen orden de los naturales da 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 9</summary>
 
-De la entrada fija $x$ y la tolerancia positiva $\varepsilon$, recibidas antes de construirlo.
+En el contrato puntual se reciben primero $x\in X$ y $\varepsilon>0$, y después se construye $N$. Por eso el corte puede depender de ambos. Para $x/(n+1)\to0$, por ejemplo, un natural $N>|x|/\varepsilon$ controla toda la cola de esa entrada.
 
 </details>
 
@@ -350,7 +350,7 @@ De la entrada fija $x$ y la tolerancia positiva $\varepsilon$, recibidas antes d
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 10</summary>
 
-El de todos los índices $n\ge N$; el error debe ser menor que la tolerancia en toda esa cola.
+Después de escoger $N$ se exige la desigualdad para todos los índices $n\ge N$. Encontrar un término próximo a la candidata, o una subsucesión de términos próximos, no controla necesariamente esa cola completa. La prueba debe conservar el error menor que la tolerancia desde el corte en adelante.
 
 </details>
 
@@ -365,7 +365,7 @@ El de todos los índices $n\ge N$; el error debe ser menor que la tolerancia en 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 11</summary>
 
-Una entrada y una tolerancia; para cada corte se produce un índice tardío infractor.
+Para refutar convergencia puntual hacia $f$, se fijan una entrada $x$ y un error $\varepsilon_0>0$ tales que cada corte $N$ admita algún $n\ge N$ con $|f_n(x)-f(x)|\ge\varepsilon_0$. La entrada y el error se eligen antes de recibir los cortes y permanecen iguales en todas las infracciones.
 
 </details>
 
@@ -380,7 +380,7 @@ Una entrada y una tolerancia; para cada corte se produce un índice tardío infr
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 12</summary>
 
-Puede refutar un corte simultáneo para todas las entradas; por sí sola no refuta convergencia puntual.
+Si la entrada infractora se elige después del corte, puede mostrar que ninguna cola controla todas las entradas a la vez. Para $x/(n+1)$, escoger $x_n=n+1$ da error uno en cada etapa, mientras toda columna fija converge a cero. Esa ruta móvil no contradice el contrato puntual.
 
 </details>
 
@@ -395,7 +395,7 @@ Puede refutar un corte simultáneo para todas las entradas; por sí sola no refu
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 13</summary>
 
-En cada entrada, dos cortes para un tercio de la distancia entre supuestos destinos contradicen la desigualdad triangular.
+Fijada $x$, si dos destinos $f(x),g(x)$ tuvieran distancia $d>0$, sus cortes para error $d/3$ tendrían un máximo $N$. En ese índice, la triangular daría $d\le|f(x)-f_N(x)|+|f_N(x)-g(x)|<2d/3$, imposible. Coinciden en cada entrada y por tanto son la misma función.
 
 </details>
 
@@ -410,7 +410,7 @@ En cada entrada, dos cortes para un tercio de la distancia entre supuestos desti
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 14</summary>
 
-Tomando su máximo finito, que domina todas las obligaciones de cola para la tolerancia fijada.
+Para la misma tolerancia, cada una de las finitísimas entradas aporta un corte válido. El máximo de esos naturales domina a todos y garantiza sus desigualdades para cualquier índice posterior. En el conjunto vacío sirve cero. Una colección infinita de cortes puede no tener un máximo natural.
 
 </details>
 
@@ -425,7 +425,7 @@ Tomando su máximo finito, que domina todas las obligaciones de cola para la tol
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 15</summary>
 
-Como el mínimo natural del conjunto no vacío de cortes que controlan toda la cola en esa entrada y tolerancia.
+Consideramos $H(x,\varepsilon)=\{N\in\mathbb N:\forall n\ge N,\ |f_n(x)-f(x)|<\varepsilon\}$. La convergencia puntual hace no vacío este conjunto. Su mínimo por buen orden es $\tau(x,\varepsilon)$, un corte válido y único; una fórmula suficiente de corte puede ser mayor que él.
 
 </details>
 
@@ -440,7 +440,7 @@ Como el mínimo natural del conjunto no vacío de cortes que controlan toda la c
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 16</summary>
 
-No puede disminuir: cada corte válido para el desafío más exigente es válido para el menos exigente.
+Si $0<\varepsilon_1\le\varepsilon_2$, cualquier corte que controle el error por $\varepsilon_1$ también lo controla por $\varepsilon_2$. Así $H(x,\varepsilon_1)\subseteq H(x,\varepsilon_2)$ y sus mínimos satisfacen $\tau(x,\varepsilon_1)\ge\tau(x,\varepsilon_2)$. El desafío más preciso puede exigir esperar más.
 
 </details>
 
@@ -457,7 +457,7 @@ Da un corte para $f_n(x)=(x^2+1)/(n+1)\to0$ en $\mathbb R$ con error estricto me
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 6</summary>
 
-Fijamos $x$ y $\varepsilon>0$ y elegimos un natural $N>(x^2+1)/\varepsilon$, por arquimedianidad. Para cualquier $n\ge N$, $(x^2+1)/(n+1)\le(x^2+1)/(N+1)<\varepsilon$. El numerador es positivo y el denominador también. El corte depende legítimamente de ambos desafíos y controla toda la cola.
+Fijamos $x\in\mathbb R$ y $\varepsilon>0$. El numerador $x^2+1$ es positivo. Por arquimedianidad elegimos un natural $N>(x^2+1)/\varepsilon$. Para cualquier $n\ge N$, se tiene $0<(x^2+1)/(n+1)\le(x^2+1)/(N+1)<\varepsilon$. El corte sirve para toda la cola y depende sólo de los desafíos recibidos, la entrada y la tolerancia. Se obtiene convergencia puntual a cero en toda la recta.
 
 </details>
 
@@ -472,7 +472,7 @@ Escribe la negación de convergencia puntual hacia una candidata $f$ y úsala pa
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 7</summary>
 
-La negación es $\exists x\in X\,\exists\varepsilon_0>0\,\forall N\,\exists n\ge N:\ |f_n(x)-f(x)|\ge\varepsilon_0$. Tomamos cualquier entrada del dominio no vacío y $\varepsilon_0=1/2$. Para cada $N$ sirve $n=N$, pues el error es1. Esa entrada no cambia con el corte. Además no hay otro límite real: las subsecuencias constantes1 y−1 lo refutarían por unicidad.
+La negación hacia una candidata fija $f$ es $\exists x\in X\ \exists\varepsilon_0>0\ \forall N\in\mathbb N\ \exists n\ge N:\ |f_n(x)-f(x)|\ge\varepsilon_0$. Para la candidata cero y $f_n(x)=(-1)^n$, fijamos cualquier entrada del dominio no vacío y $\varepsilon_0=1/2$. Ante cada corte $N$, el índice $n=N$ tiene error uno, así infringe la obligación. La entrada permanece fija y la refutación sí es puntual. La familia tampoco converge a otra candidata real en esa entrada, porque las subsucesiones constantes uno y menos uno no podrían compartir un límite.
 
 </details>
 
@@ -487,7 +487,7 @@ Para $f_n(x)=x/(n+1)$ en $\mathbb R$, elige ante cada corte una entrada con erro
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 8</summary>
 
-Dado $N$, usamos el índice $n=N$ y la entrada $x=N+1$. Entonces $f_N(x)=1$ y el error respecto del límite cero es1. Con tolerancia1/2 se refuta que exista un corte que controle simultáneamente todas las entradas. La entrada depende del corte, por lo que no se refuta la convergencia puntual, ya demostrada mediante $N(x,\varepsilon)>|x|/\varepsilon$.
+El límite puntual es cero: para cada entrada fija, un corte $N>|x|/\varepsilon$ controla $|x|/(n+1)$ en toda la cola. Para refutar un corte simultáneo, fijamos tolerancia $1/2$. Ante cualquier $N$, tomamos $n=N$ y $x=N+1$, obteniendo $|f_N(x)|=1$. Se demuestra $\forall N\ \exists x\ \exists n\ge N$ con error grande. La entrada se elige después del corte, de modo que esa afirmación no es la negación del contrato puntual, cuyo infractor tendría que ser una misma entrada para todos los cortes.
 
 **Retorno visual.** Véase [C26-F02](analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html#fig-anm-c26-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -504,7 +504,7 @@ Para $f_n(x)=x/(n+1)$ y $A=\{-3,0,5\}$, produce un corte simultáneo y justifica
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 9</summary>
 
-Un natural $N>5/\varepsilon$ funciona porque $|x|\le5$ en $A$ y $|f_n(x)|\le5/(N+1)<\varepsilon$. Para una familia puntual arbitraria en un conjunto finito, se toman los cortes de cada una de sus entradas para la misma tolerancia y su máximo finito. Ese máximo domina todas las obligaciones de cola. En el vacío sirve0. No se generaliza tomando un máximo infinito sin demostrar que existe.
+En $A=\{-3,0,5\}$, todas las magnitudes de entrada están acotadas por cinco. Un natural $N>5/\varepsilon$ da, para todo $n\ge N$ y todo $x\in A$, $|f_n(x)|\le5/(N+1)<\varepsilon$. Para una familia puntualmente convergente cualquiera sobre un conjunto finito, la tolerancia fija proporciona un corte por cada entrada. Se construye esa lista finita de cortes y se toma su máximo; cualquier índice posterior cumple todas las obligaciones. En el vacío sirve cero. La extensión a infinitas entradas necesitaría demostrar que sus umbrales tienen una barrera natural común.
 
 </details>
 
@@ -519,7 +519,7 @@ Para $f_n(x)=x/(n+1)$ calcula $\tau(x,\varepsilon)$ y comprueba la frontera estr
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 10</summary>
 
-Pongamos $r=|x|/\varepsilon\ge0$. Como los errores decrecen, un índice $N$ es válido exactamente cuando $N+1>r$. Si $r=0$, el mínimo es0. Para $r>0$, el piso de C06 satisface $\lfloor r\rfloor\le r<\lfloor r\rfloor+1$, y $N=\lfloor r\rfloor$ es válido. Un natural menor tiene $N+1\le\lfloor r\rfloor\le r$ y falla. Así $\tau=\lfloor r\rfloor$ también para $r=0$ con piso0. Cuando $r$ es entero positivo, bajar un índice deja error exactamente $\varepsilon$, que no basta.
+Sea $r=|x|/\varepsilon\ge0$. Como el error $|x|/(n+1)$ no aumenta con $n$, un corte $N$ es válido exactamente cuando $N+1>r$. Ponemos $m=\lfloor r\rfloor$, caracterizado por $m\le r<m+1$. El corte $N=m$ cumple la desigualdad estricta. Si un natural $N<m$, entonces $N+1\le m\le r$, de modo que ya el error en ese índice es al menos $\varepsilon$ y falla. Por tanto $\tau(x,\varepsilon)=\lfloor|x|/\varepsilon\rfloor$, incluido $x=0$, donde el mínimo es cero. Cuando $r$ es un entero positivo, el índice anterior da error exactamente igual a $\varepsilon$, que no satisface el contrato estricto.
 
 </details>
 ## 26.3. Lo que se transporta columna por columna
@@ -573,7 +573,7 @@ En $[0,\infty)$, $u_n(x)=\min(n,x)$ converge a $u(x)=x$: para $n\ge x$ ya coinci
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 17</summary>
 
-Una cota eventual $|f_n(x)|\le|f(x)|+1$ en la entrada fijada; puede depender de ella.
+La convergencia en la entrada fija $x$ proporciona una cola con $|f_n(x)-f(x)|<1$, luego $|f_n(x)|\le|f(x)|+1$. Esta barrera permite estimar el producto con otra columna convergente. Su dependencia de $x$ es admisible porque la prueba continúa siendo puntual.
 
 </details>
 
@@ -588,7 +588,7 @@ Una cota eventual $|f_n(x)|\le|f(x)|+1$ en la entrada fijada; puede depender de 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 18</summary>
 
-$|g_n(x)|>|g(x)|/2$ en una cola, después de declarar $g(x)\ne0$.
+Si $g(x)\ne0$, pedimos $|g_n(x)-g(x)|<|g(x)|/2$ en una cola. La triangular inversa da $|g_n(x)|>|g(x)|/2>0$. Esta separación de cero permite dividir y controlar $|1/g_n(x)-1/g(x)|$ mediante el error de la columna.
 
 </details>
 
@@ -603,7 +603,7 @@ $|g_n(x)|>|g(x)|/2$ en una cola, después de declarar $g(x)\ne0$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 19</summary>
 
-No. Pueden tener ceros en índices iniciales distintos según la entrada; hace falta dominio común o reparación declarada.
+Un límite $g(x)\ne0$ garantiza sólo que los denominadores posteriores de esa columna no se anulan. Puede haber ceros en etapas iniciales distintas para entradas distintas. Por ejemplo $g_n(x)=x-1/(n+1)$ se anula en una entrada de $(0,1]$ en cada fila, así sus recíprocos no están definidos en todo ese dominio común.
 
 </details>
 
@@ -618,7 +618,7 @@ No. Pueden tener ceros en índices iniciales distintos según la entrada; hace f
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 20</summary>
 
-No necesariamente: números positivos pueden tender a cero. El orden débil sí pasa al límite.
+El orden débil eventual pasa al límite: si $f_n(x)\le g_n(x)$ desde algún corte, entonces $f(x)\le g(x)$. La estrictitud puede desaparecer, como en $1/(n+1)>0$ con límite cero. Para conservar un margen positivo hace falta una hipótesis cuantitativa adicional.
 
 </details>
 
@@ -633,7 +633,7 @@ No necesariamente: números positivos pueden tender a cero. El orden débil sí 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 21</summary>
 
-Que los valores de cada fila y el límite pertenezcan a su dominio, y continuidad en cada valor límite utilizado.
+Si la función exterior $\phi$ tiene dominio $Y$, deben pertenecer a $Y$ todos los valores $f_n(x)$ y $f(x)$ usados. La continuidad relativa de $\phi$ en $f(x)$ convierte un radio de salida en uno de entrada; el corte puntual coloca la cola dentro de ese radio. Entonces $\phi(f_n(x))\to\phi(f(x))$.
 
 </details>
 
@@ -648,7 +648,7 @@ Que los valores de cada fila y el límite pertenezcan a su dominio, y continuida
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 22</summary>
 
-Una barrera para todos sus términos, formada por una cola acotada y el máximo de su prefijo finito.
+Una columna convergente tiene una cola limitada por $|f(x)|+1$. El prefijo restante contiene sólo finitísimos términos, cuyas magnitudes tienen máximo. El máximo de esa cantidad y la barrera de la cola acota todos los términos de la columna, aunque pueda variar de una entrada a otra.
 
 </details>
 
@@ -663,7 +663,7 @@ Una barrera para todos sus términos, formada por una cola acotada y el máximo 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 23</summary>
 
-Sí: $\min(n,x)$ en $[0,\infty)$ converge a $x$, sin cota global.
+En $[0,\infty)$, cada fila $u_n(x)=\min(n,x)$ está entre cero y $n$, así está acotada. Para $x$ fijo, desde $n\ge x$ vale exactamente $x$. Su límite puntual es la función $u(x)=x$, que no está acotada en todo el dominio.
 
 </details>
 
@@ -678,7 +678,7 @@ Sí: $\min(n,x)$ en $[0,\infty)$ converge a $x$, sin cota global.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 24</summary>
 
-El límite la hereda entrada por entrada mediante preservación del orden.
+Si $|f_n(x)|\le B$ con la misma constante para todos los índices y entradas, fijar $x$ y pasar al límite numérico da $|f(x)|\le B$. La arbitrariedad de la entrada proporciona una cota global del límite. Esta conclusión usa una barrera común, más fuerte que la acotación separada de cada fila.
 
 </details>
 
@@ -695,7 +695,7 @@ Prueba directamente que el producto de dos familias puntualmente convergentes co
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 11</summary>
 
-Fijamos $x$. La convergencia de $f_n(x)$ entrega una cola con $|f_n(x)|\le B=|f(x)|+1$. En ella el error del producto es como máximo $B|g_n(x)-g(x)|+|g(x)||f_n(x)-f(x)|$. Pedimos errores menores que $\varepsilon/[2(B+1)]$ y $\varepsilon/[2(|g(x)|+1)]$ y tomamos el máximo de esos dos cortes y el corte de acotación. La suma resultante es menor que $\varepsilon$. Cada constante fue fijada después de recibir $x$.
+Fijamos una entrada $x$ y abreviamos $f(x)=a$, $g(x)=b$. La convergencia de la primera columna da un corte de acotación con $|f_n(x)|\le B=|a|+1$. Usamos la identidad $f_ng_n-ab=f_n(g_n-b)+b(f_n-a)$. Su magnitud no supera $B|g_n-b|+|b||f_n-a|$. Pedimos a la segunda columna error menor que $\varepsilon/[2(B+1)]$ y a la primera menor que $\varepsilon/[2(|b|+1)]$. El máximo de esos dos cortes y el de acotación garantiza que la suma anterior es menor que $\varepsilon$, pues cada coeficiente sobre su denominador más uno es menor que uno. La entrada era arbitraria, así el producto converge puntualmente a $fg$. No se necesitó una cota global de las familias.
 
 </details>
 
@@ -710,7 +710,7 @@ En $X=(0,1]$ sea $g_n(x)=x-1/(n+1)$. Prueba convergencia puntual y explica por q
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 12</summary>
 
-El error respecto de $g(x)=x$ es $1/(n+1)$, que tiende a cero por C06. Cada columna tiene límite positivo y, desde algún corte dependiente de $x$, denominador positivo. Sin embargo, la fila $n$ se anula en $x=1/(n+1)\in X$. Por ello $1/g_n$ no es una función real sobre todo $X$. En $Y=X\setminus\{1/(n+1):n\in\mathbb N\}$ sí están definidas todas las filas y el recíproco converge a $1/x$ por la barrera $|g_n(x)|>x/2$ eventual.
+Para $x\in(0,1]$, $|g_n(x)-x|=1/(n+1)\to0$, así el límite puntual es $g(x)=x>0$. Sin embargo, cada fila se anula en $x_n=1/(n+1)$, que pertenece al dominio. Por eso $1/g_n$ no define una función real en todo $X$ en ninguna etapa. Un dominio común posible para los recíprocos es $Y=X\setminus\{1/(n+1):n\in\mathbb N\}$. En una entrada fija de $Y$, desde un corte con $1/(n+1)<x/2$ tenemos $g_n(x)>x/2$. Entonces $|1/g_n(x)-1/x|=|x-g_n(x)|/(x|g_n(x)|)\le2/[x^2(n+1)]\to0$. La barrera eventual justifica el límite, mientras la restricción común justifica la existencia de todas las filas.
 
 </details>
 
@@ -725,7 +725,7 @@ Si $f_n\to f$, $g_n\to g$ puntualmente y para cada $x$ hay un corte con $f_n(x)\
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 13</summary>
 
-Fijamos $x$. Si $d=f(x)-g(x)>0$, elegimos cortes para ambos errores menores que $d/3$ y los reunimos con el corte de orden. En una etapa posterior, $f_n(x)>f(x)-d/3$ y $g_n(x)<g(x)+d/3$, luego $f_n(x)-g_n(x)>d/3>0$, contradicción. Por tanto $f(x)\le g(x)$; la arbitrariedad de $x$ da el orden de funciones. La desigualdad estricta no se hereda necesariamente: $1/(n+1)>0$ converge a0.
+Fijemos $x$ y supongamos por contradicción que $d=f(x)-g(x)>0$. Reunimos los cortes para errores menores que $d/3$ de ambas columnas y el corte a partir del que se cumple su orden. En cualquier índice posterior, $f_n(x)>f(x)-d/3$ y $g_n(x)<g(x)+d/3$, así $f_n(x)-g_n(x)>d-2d/3=d/3>0$. Esto contradice $f_n(x)\le g_n(x)$. Por tanto $f(x)\le g(x)$ para toda entrada. La estrictitud no pasa automáticamente: las columnas $1/(n+1)>0$ y cero tienen el mismo límite cero.
 
 </details>
 
@@ -740,7 +740,7 @@ Analiza $u_n(x)=\min(n,x)$ en $[0,\infty)$ respecto de acotación de filas, colu
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 14</summary>
 
-Cada fila cumple $0\le u_n(x)\le n$. Para $x$ fijo, $0\le u_n(x)\le x$ y coincide con $x$ desde cualquier natural mayor que $x$. Así el límite es $u(x)=x$, sin cota superior en el dominio. No hay una barrera común para toda la familia: dado $B$, elegimos un natural $n>B$ y la entrada $x=n$, que da $u_n(n)=n>B$. Acotación fila por fila y columna por columna no producen una constante común.
+Para cada $n$, la fila $u_n$ satisface $0\le u_n(x)\le n$ en todo $[0,\infty)$, así está acotada. Para cada entrada fija $x$, su columna satisface $0\le u_n(x)\le x$ y desde cualquier natural $N>x$ coincide con $x$. Por tanto su límite es $u(x)=x$. Esta función no tiene cota superior en todo el dominio. Tampoco hay una barrera común para toda la familia: dado $B\ge0$, elegimos un natural $n>B$ y tomamos $x=n$, obteniendo $u_n(n)=n>B$. Las cotas por filas y por columnas son válidas, pero dependen de argumentos diferentes y ninguna proporciona esa barrera global.
 
 **Retorno visual.** Véase [C26-F03](analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html#fig-anm-c26-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -757,7 +757,7 @@ Si $f_n\to f$ puntualmente y todos sus valores y los de $f$ son no negativos, de
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 15</summary>
 
-Fijamos $x$. La raíz está definida para $f_n(x)$ y $f(x)$ por no negatividad; C14 demuestra continuidad relativa de la raíz en $[0,\infty)$, incluido0. Para una tolerancia recibimos su radio en el valor $f(x)$; la convergencia puntual da un corte que coloca todos los valores posteriores dentro de ese radio. La continuidad entrega error menor que la tolerancia. Sólo se usó continuidad de la operación exterior, no la de cada fila.
+Para una entrada fija, escribimos $u_n=f_n(x)\ge0$ y $u=f(x)\ge0$. Sus raíces reales están definidas. Si $u_n\ge u$, la diferencia de raíces es no negativa y $u_n-u=(\sqrt{u_n}-\sqrt u)(\sqrt{u_n}+\sqrt u)\ge(\sqrt{u_n}-\sqrt u)^2$. Intercambiar los dos valores cubre el orden inverso, así $|\sqrt{u_n}-\sqrt u|^2\le|u_n-u|$. Para $\varepsilon>0$, la convergencia de la columna da una cola con $|u_n-u|<\varepsilon^2$, luego el error de raíces es menor que $\varepsilon$. Esto también cubre $u=0$. Sólo se usa el control de la columna y la operación raíz, sin continuidad de las filas.
 
 </details>
 ## 26.4. Potencias y una discontinuidad nueva
@@ -817,7 +817,7 @@ Restringir a $[0,c]$ con $0<c<1$ permite usar el mismo $t_c=1/c-1$ para todas la
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 25</summary>
 
-Se declara $p_0=1$ en todo el dominio y se usa la recurrencia $p_{n+1}(x)=xp_n(x)$; no queda un símbolo ambiguo.
+Se declara $p_0(x)=1$ para toda entrada, incluido cero, y se define $p_{n+1}(x)=xp_n(x)$. Así $p_n(x)=x^n$ para $n\ge1$ y $p_n(0)=0$ en esas etapas. La recurrencia especifica la fila inicial y evita depender de una interpretación de $0^0$.
 
 </details>
 
@@ -832,7 +832,7 @@ Se declara $p_0=1$ en todo el dominio y se usa la recurrencia $p_{n+1}(x)=xp_n(x
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 26</summary>
 
-Cero, pues con $t=1/x-1>0$ se tiene $x^n\le1/(1+nt)$.
+Para $0<x<1$, ponemos $t=1/x-1>0$. Bernoulli da $(1+t)^n\ge1+nt$ y, al tomar recíprocos positivos, $x^n\le1/(1+nt)$. Un corte $N>1/(\varepsilon t)$ hace esta cota menor que $\varepsilon$ para toda la cola. La columna tiende a cero sin usar logaritmos.
 
 </details>
 
@@ -847,7 +847,7 @@ Cero, pues con $t=1/x-1>0$ se tiene $x^n\le1/(1+nt)$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 27</summary>
 
-Toda etapa vale1, por lo que el límite allí es1.
+La recurrencia parte de $p_0(1)=1$ y multiplica en cada paso por uno, así $p_n(1)=1$ para todo $n$. La columna es constante y su límite es uno. Debe conservarse ese valor de borde al definir la candidata sobre $[0,1]$.
 
 </details>
 
@@ -862,7 +862,7 @@ Toda etapa vale1, por lo que el límite allí es1.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 28</summary>
 
-En1: cualquier ventana relativa contiene entradas menores que1 con valor límite0, frente al valor central1.
+El límite vale cero en $[0,1)$ y uno en el extremo uno. Toda vecindad relativa de uno contiene entradas menores que él, donde el error de altura es uno. Con tolerancia $1/2$ no hay radio de continuidad. En cada centro menor que uno, un radio que evite ese extremo deja la candidata constante cero.
 
 </details>
 
@@ -877,7 +877,7 @@ En1: cualquier ventana relativa contiene entradas menores que1 con valor límite
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 29</summary>
 
-Que $x_n^n\ge1-n/[2(n+1)]>1/2$, con error grande respecto del límite en esa entrada.
+Para $s=1/[2(n+1)]$, Bernoulli en la forma $(1-s)^n\ge1-ns$ da $p_n(x_n)\ge1-n/[2(n+1)]=(n+2)/[2(n+1)]>1/2$. En $n=0$ vale por la fila inicial declarada. Como $x_n<1$, el límite en esa entrada vale cero y el error sigue grande.
 
 </details>
 
@@ -892,7 +892,7 @@ Que $x_n^n\ge1-n/[2(n+1)]>1/2$, con error grande respecto del límite en esa ent
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 30</summary>
 
-Porque la entrada cambia con el índice; cada entrada fija menor que1 sí tiene error tendente a cero.
+La prueba puntual fija primero una entrada y después hace crecer el índice. En la ruta $x_n$, la entrada cambia con cada etapa y se aproxima al borde uno. Sus errores muestran que no existe una cola común para todas las entradas; cada columna fija menor que uno conserva su convergencia a cero.
 
 </details>
 
@@ -907,7 +907,7 @@ Porque la entrada cambia con el índice; cada entrada fija menor que1 sí tiene 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 31</summary>
 
-Una barrera $x^n\le c^n$ que entrega un corte para todas las entradas mediante el mismo $t_c>0$.
+Si $0<c<1$, para $n\ge1$ y $0\le x\le c$ tenemos $0\le p_n(x)\le c^n$. La prueba geométrica para $c$ entrega un corte que sirve a todas esas entradas. La separación del dominio respecto del borde uno hace posible esa barrera simultánea.
 
 </details>
 
@@ -922,7 +922,7 @@ Una barrera $x^n\le c^n$ que entrega un corte para todas las entradas mediante e
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 32</summary>
 
-La de−1: alterna1 y−1, así no tiene límite real.
+En el nuevo extremo menos uno, la recurrencia produce $p_n(-1)=(-1)^n$. Las subsucesiones pares e impares son constantes uno y menos uno, así no comparten límite. Para $|x|<1$ las magnitudes tienden a cero y en uno permanecen iguales a uno.
 
 </details>
 
@@ -939,7 +939,7 @@ Demuestra el límite puntual de $p_0=1$, $p_n(x)=x^n$ para $n\ge1$, en $[0,1]$, 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 16</summary>
 
-En cero todos los términos posteriores al inicial son0; en uno todos son1. Si $0<x<1$, ponemos $t=1/x-1>0$ y la inducción de Bernoulli da $(1+t)^n\ge1+nt$. Por reciprocidad positiva, $x^n\le1/(1+nt)$. Un natural $N>1/(\varepsilon t)$ hace esa cota menor que $\varepsilon$ para todo $n\ge N$. El límite vale0 en $[0,1)$ y1 en el extremo1.
+La recurrencia declara $p_0=1$. En cero, $p_n(0)=0$ para $n\ge1$, así el límite es cero; en uno, todos los términos son uno. Si $0<x<1$, ponemos $t=1/x-1>0$. Bernoulli, probado por inducción, da $(1+t)^n\ge1+nt$, luego $0<p_n(x)=x^n\le1/(1+nt)$. Para $\varepsilon>0$, un natural $N>1/(\varepsilon t)$ hace esta cota menor que $\varepsilon$ para todos los índices posteriores. Por tanto el límite puntual vale cero en $[0,1)$ y uno en el extremo uno. La prueba mantiene la entrada fija y no usa logaritmos.
 
 </details>
 
@@ -954,7 +954,7 @@ Refuta continuidad del límite de las potencias en1 con un testigo para cada rad
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 17</summary>
 
-Fijamos tolerancia1/2. Dado $\delta>0$, definimos $d=\min(\delta/2,1/2)>0$ y $y=1-d$. Entonces $y\in[0,1)$, $0<|y-1|=d<\delta$, pero el límite toma valores0 en $y$ y1 en1. El error1 contradice cualquier radio de continuidad relativa. En cualquier centro menor que1, un radio menor que su distancia a1 deja el límite constante0, así que allí sí es continuo.
+Sea $p$ el límite, con $p(1)=1$ y $p(y)=0$ para $y<1$. Fijamos tolerancia $1/2$. Para cualquier $\delta>0$, tomamos $d=\min(\delta/2,1/2)>0$ y $y=1-d$. Entonces $y\in[0,1)$ y $0<|y-1|=d<\delta$, pero $|p(y)-p(1)|=1$. Ningún radio cumple continuidad relativa en uno. En un centro $x<1$, en cambio, un radio menor que $1-x$ evita el punto excepcional y deja la función constante cero. La discontinuidad nueva está exactamente en el extremo uno.
 
 </details>
 
@@ -969,7 +969,7 @@ Con $x_n=1-1/[2(n+1)]$, prueba $p_n(x_n)>1/2$ y determina el alcance de la concl
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 18</summary>
 
-Para $s=1/[2(n+1)]\in(0,1)$, la versión de Bernoulli $(1-s)^n\ge1-ns$ da $p_n(x_n)\ge1-n/[2(n+1)]>1/2$. En cada $x_n<1$ el límite vale0, luego hay error mayor que1/2 en todas las etapas, incluso en $n=0$ por $p_0=1$. Ante cualquier corte común, una de esas etapas lo viola. Las entradas varían con $n$; no se viola el contrato puntual.
+Para cada $n\ge0$, la entrada $x_n=1-1/[2(n+1)]$ está entre cero y uno. La versión de Bernoulli $(1-s)^n\ge1-ns$ para $0\le s\le1$ da $p_n(x_n)\ge1-n/[2(n+1)]=(n+2)/[2(n+1)]>1/2$; para $n=0$ la fila inicial vale uno. Como el límite en $x_n<1$ es cero, el error supera $1/2$ en cada etapa. Ante cualquier corte común sirve la infracción de esa misma etapa. Sin embargo, las entradas varían con el índice y se aproximan a uno. El resultado refuta control simultáneo en todo el dominio, conservando la convergencia de cada columna fija.
 
 **Retorno visual.** Véase [C26-F04](analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html#fig-anm-c26-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -986,7 +986,7 @@ Compara las potencias en $[0,c]$, $0<c<1$, y en $[0,1)$.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 19</summary>
 
-En el primer dominio el límite es cero y $x^n\le c^n\le1/[1+n(1/c-1)]$. Un natural $N>1/[\varepsilon(1/c-1)]$ controla todas las entradas. En $[0,1)$ el límite también es cero y continuo, pero la ruta $x_n=1-1/[2(n+1)]$ permanece dentro del dominio y mantiene error mayor que1/2. Así no hay un corte simultáneo para esa tolerancia. El límite continuo no decide el control sobre todo un dominio infinito.
+En $[0,c]$, con $0<c<1$, el límite puntual es cero. Para $n\ge1$ y todas las entradas de ese segmento, $p_n(x)\le c^n\le1/[1+n(1/c-1)]$. Un natural $N>1/[\varepsilon(1/c-1)]$, también positivo, controla toda la cola y todas las entradas a la vez. En $[0,1)$, el límite sigue siendo cero, pero las entradas $x_n=1-1/[2(n+1)]$ pertenecen al dominio y tienen error mayor que $1/2$ en cada etapa. Allí no existe un corte simultáneo para esa tolerancia. La candidata es continua en ambos dominios; la pérdida de separación respecto del borde uno cambia el control global.
 
 </details>
 
@@ -1001,7 +1001,7 @@ Calcula el conjunto de convergencia real de la misma familia de potencias en $[-
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 20</summary>
 
-Para $|x|<1$, la prueba de Bernoulli aplicada a $|x|$ muestra $|x^n|\to0$, incluido el prefijo $p_0=1$. En1 el valor es siempre1. En−1 los valores alternan1 y−1, con subsecuencias constantes distintas; por unicidad no hay límite real. El conjunto de convergencia es $(-1,1]$, con límite0 en $(-1,1)$ y1 en1. Es indispensable revisar el nuevo extremo en lugar de reutilizar sin cambios la conclusión de $[0,1]$.
+Si $|x|<1$, para $n\ge1$ tenemos $|p_n(x)|=|x|^n$. La prueba geométrica anterior aplicada a $|x|$ da límite cero, con el caso $x=0$ tratado por la recurrencia. En $x=1$, todos los valores son uno. En $x=-1$, las subsucesiones pares e impares son constantes uno y menos uno, así la columna no tiene límite real. Por tanto el conjunto de convergencia en $[-1,1]$ es $(-1,1]$. La función límite sobre él vale cero en $(-1,1)$ y uno en el extremo uno. La familia no converge puntualmente en todo el dominio ampliado porque falla la nueva columna de menos uno.
 
 </details>
 ## 26.5. Cambiar la entrada mientras cambia el índice
@@ -1065,7 +1065,7 @@ La diagonal tampoco queda resuelta sólo por la continuidad del límite. En la s
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 33</summary>
 
-En $[0,1]$, su denominador $1+(n+1)x$ es al menos1.
+En $[0,1]$, con $n\ge0$, el denominador $1+(n+1)x$ es al menos uno. Por tanto $a_n(x)=(n+1)x/[1+(n+1)x]$ tiene un valor real en cada entrada desde la etapa inicial. Todas las filas comparten el dominio sin ceros de denominador.
 
 </details>
 
@@ -1080,7 +1080,7 @@ En $[0,1]$, su denominador $1+(n+1)x$ es al menos1.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 34</summary>
 
-$1/[1+(n+1)x]$, que es como máximo $1/[(n+1)x]$ y tiende a cero para $x$ fijo.
+Para $x>0$ fijo, $1-a_n(x)=1/[1+(n+1)x]\le1/[(n+1)x]$. Un natural $N>1/(\varepsilon x)$ garantiza error menor que $\varepsilon$ para $n\ge N$. El corte puede crecer cuando la entrada se acerca a cero, pero en cada entrada positiva sigue siendo finito.
 
 </details>
 
@@ -1095,7 +1095,7 @@ $1/[1+(n+1)x]$, que es como máximo $1/[(n+1)x]$ y tiende a cero para $x$ fijo.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 35</summary>
 
-Exactamente1/2 en toda etapa, porque el producto $(n+1)x$ vale1.
+Al sustituir $x=1/(n+1)$, el producto $(n+1)x$ vale uno. Así $a_n(1/(n+1))=1/(1+1)=1/2$ para todo índice. La ruta pertenece al dominio y tiende a cero, mientras sus salidas permanecen en esa altura intermedia.
 
 </details>
 
@@ -1110,7 +1110,7 @@ Exactamente1/2 en toda etapa, porque el producto $(n+1)x$ vale1.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 36</summary>
 
-$1/(n+2)$, que converge a cero.
+Para $x=1/(n+1)^2$, el producto $(n+1)x$ es $1/(n+1)$. Sustituir y simplificar da $a_n(x)=1/(n+2)$, que tiende a cero. Es una ruta distinta hacia el mismo extremo de entrada y tiene un destino de salida distinto de la ruta anterior.
 
 </details>
 
@@ -1125,7 +1125,7 @@ $1/(n+2)$, que converge a cero.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 37</summary>
 
-A1, pues la salida es $\sqrt{n+1}/(1+\sqrt{n+1})$.
+La ruta $w_n=1/\sqrt{n+1}$ permanece en $(0,1]$ y tiende a cero. Como $(n+1)w_n=\sqrt{n+1}$, su salida es $\sqrt{n+1}/(1+\sqrt{n+1})$. El error respecto de uno es $1/(1+\sqrt{n+1})$, que tiende a cero.
 
 </details>
 
@@ -1140,7 +1140,7 @@ A1, pues la salida es $\sqrt{n+1}/(1+\sqrt{n+1})$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 38</summary>
 
-Reparar su prefijo para permanecer en $[0,1]$, por ejemplo tomando el mínimo con1.
+Si $c>1$, las primeras entradas $c/(n+1)$ pueden exceder uno. Definimos en su lugar $x_n=\min(1,c/(n+1))$, que pertenece a $[0,1]$ desde el comienzo. Desde un índice suficientemente grande coincide con la fórmula original, por lo que conserva su límite y el de las salidas posteriores.
 
 </details>
 
@@ -1155,7 +1155,7 @@ Reparar su prefijo para permanecer en $[0,1]$, por ejemplo tomando el mínimo co
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 39</summary>
 
-Cero en cada fila y después cero al llevar el índice a infinito.
+Fijado $n$, la fila $a_n$ es continua en cero y vale cero allí, así $\lim_{x\to0^+}a_n(x)=0$. El límite en $n$ de esos resultados es también cero. Cada límite interior se calcula antes de la operación exterior.
 
 </details>
 
@@ -1170,7 +1170,7 @@ Cero en cada fila y después cero al llevar el índice a infinito.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 40</summary>
 
-Uno en cada entrada positiva y después uno al acercarla al origen.
+Fijada una entrada positiva, $\lim_{n\to\infty}a_n(x)=1$. Sobre el dominio perforado $(0,1]$, esa función de valores límite es constante uno. Su límite cuando $x\to0^+$ es uno, distinto del resultado obtenido al invertir el orden de las dos operaciones.
 
 </details>
 
@@ -1187,7 +1187,7 @@ Para $a_n(x)=(n+1)x/[1+(n+1)x]$ en $[0,1]$, prueba el límite y su fallo de cont
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 21</summary>
 
-En0 los valores son0. Para $x>0$, el error respecto de1 es $1/[1+(n+1)x]\le1/[(n+1)x]$. Un corte mayor que $1/(\varepsilon x)$ lo controla. El límite es1 para toda entrada positiva y0 en0. Dado cualquier radio $\delta>0$, $y=\min(\delta/2,1/2)>0$ queda a distancia menor que $\delta$ de0 y tiene error1 respecto del valor central. Tolerancia1/2 refuta continuidad.
+Los denominadores son al menos uno en $[0,1]$, así cada fila está definida y es continua. En cero, $a_n(0)=0$ para todo $n$. Para una entrada fija $x>0$, $|a_n(x)-1|=1/[1+(n+1)x]\le1/[(n+1)x]$. Un natural $N>1/(\varepsilon x)$ controla este error en toda la cola. El límite $a$ vale cero en cero y uno en las entradas positivas. Con tolerancia $1/2$, ante cualquier $\delta>0$ tomamos $y=\min(\delta/2,1/2)>0$; pertenece al dominio, queda a distancia menor que $\delta$ del origen y tiene $|a(y)-a(0)|=1$. Así el límite no es continuo relativamente en cero.
 
 </details>
 
@@ -1202,7 +1202,7 @@ Calcula $a_n(1/(n+1))$ y $a_n(1/(n+1)^2)$ y explica por qué no contradicen el l
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 22</summary>
 
-La primera ruta hace $(n+1)x=1$ y la salida es1/2. La segunda hace $(n+1)x=1/(n+1)$ y la salida es1/(n+2), que tiende a0. Ambas entradas tienden a0 y pertenecen a $[0,1]$. No son una columna fija: el contrato puntual sólo controla $a_n(x)$ cuando $x$ permanece fijo al variar $n$. Por ello sus destinos diferentes son compatibles con el límite puntual obtenido.
+Ambas rutas permanecen en $[0,1]$ y tienden a cero. En la primera, $(n+1)/(n+1)=1$, así $a_n(1/(n+1))=1/2$ para todo índice. En la segunda, el producto de escala es $1/(n+1)$ y $a_n(1/(n+1)^2)=[1/(n+1)]/[1+1/(n+1)]=1/(n+2)\to0$. Sus destinos de salida son, por tanto, distintos. El límite puntual fija $x$ antes de variar $n$; ninguna de estas rutas es una columna fija. Sus resultados muestran cómo la elección simultánea de entrada e índice puede retener comportamientos que el contrato puntual no controla.
 
 **Retorno visual.** Véase [C26-F05](analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html#fig-anm-c26-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1219,7 +1219,7 @@ Para $w_n=1/\sqrt{n+1}$ calcula el destino de $a_n(w_n)$ y justifica las raíces
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 23</summary>
 
-La raíz positiva de $n+1$ existe y es al menos1, así $w_n\in[0,1]$. Para cualquier $M>0$, elegir $n+1>M^2$ da $\sqrt{n+1}>M$; por ello $w_n\to0$. La salida es $\sqrt{n+1}/[1+\sqrt{n+1}]$, cuyo error respecto de1 es $1/[1+\sqrt{n+1}]$. Esta diferencia tiende a0 por la misma comparación. El destino es1, distinto de los de las dos rutas del ejercicio anterior.
+Como $n+1\ge1$, existe su raíz positiva y satisface $\sqrt{n+1}\ge1$, así $w_n=1/\sqrt{n+1}\in(0,1]$. Para cualquier $\varepsilon>0$, desde $n+1>1/\varepsilon^2$ se tiene $w_n<\varepsilon$, por lo que la ruta tiende a cero. Usando $n+1=(\sqrt{n+1})^2$, el producto $(n+1)w_n$ es $\sqrt{n+1}$. Entonces $a_n(w_n)=\sqrt{n+1}/(1+\sqrt{n+1})$ y su error respecto de uno es $1/(1+\sqrt{n+1})\le w_n\to0$. El destino de esta escala intermedia es uno.
 
 </details>
 
@@ -1234,7 +1234,7 @@ Calcula las dos operaciones iteradas en $n\to\infty$ y $x\to0^+$ para $a_n$.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 24</summary>
 
-Para una fila fija, continuidad en0 y valor0 dan $\lim_{x\to0^+}a_n(x)=0$; el límite en $n$ de esos números es0. Para una entrada positiva fija, el límite en $n$ es1; el límite por $x\to0^+$ de la función constante1 es1. Ambas operaciones iteradas existen y dan valores diferentes. La comparación es legítima porque antes se calculó la existencia de cada límite interior y exterior.
+Fijado $n$, la fila es continua en cero y su valor allí es cero. Por tanto $\lim_{x\to0^+}a_n(x)=0$, y el límite en $n$ de esa sucesión constante es cero. En el orden contrario, para cada entrada positiva fija ya se probó $\lim_{n\to\infty}a_n(x)=1$. La función resultante sobre $(0,1]$ es constante uno, así su límite por $x\to0^+$ es uno. Las dos operaciones iteradas existen y dan $\lim_n\lim_{x\to0^+}a_n(x)=0$ y $\lim_{x\to0^+}\lim_n a_n(x)=1$. Su diferencia muestra que el orden de operaciones no puede intercambiarse con la sola convergencia puntual.
 
 </details>
 
@@ -1249,7 +1249,7 @@ Para $c>0$ construye una ruta en $[0,1]$ que coincida eventualmente con $c/(n+1)
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 25</summary>
 
-Definimos $x_n=\min(1,c/(n+1))$. Está en $[0,1]$ para todo índice y, desde un natural mayor que $c$, coincide con $c/(n+1)$. La ruta converge a0 por coincidencia eventual con esa sucesión numérica. En la cola, $(n+1)x_n=c$ y $a_n(x_n)=c/(1+c)$. Por transferencia de prefijos finitos, toda la sucesión de salidas converge a ese número. Si se usara la fórmula sin reparación y $c>1$, las primeras entradas podrían estar fuera del dominio.
+Para $c>0$, definimos $x_n=\min(1,c/(n+1))$. Cada entrada pertenece a $(0,1]$. Elegimos un natural $N>c$; para $n\ge N$, se tiene $c/(n+1)<1$ y la ruta coincide con la fórmula requerida. Esa cola tiende a cero, así toda la ruta también. En ella $(n+1)x_n=c$ y $a_n(x_n)=c/(1+c)$ exactamente. Las salidas iniciales pueden ser distintas, pero su prefijo finito no cambia el límite $c/(1+c)$. La reparación permite evaluar todas las etapas aunque $c>1$.
 
 </details>
 ## 26.6. Picos que ninguna entrada fija retiene
@@ -1308,7 +1308,7 @@ En $t_n$ había altura común y áreas decrecientes; en $b_n$ cada columna sigue
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 41</summary>
 
-$(1/k,3/k)$ con $k=n+3$; en los extremos vale0 y en el centro $2/k$ vale1.
+Con $k=n+3$, $t_n(x)=\max(0,1-|kx-2|)$ es positiva exactamente cuando $|kx-2|<1$, es decir $1/k<x<3/k$. Vale cero en ambos extremos y uno en $x=2/k$. Su soporte cerrado dentro del dominio es $[1/k,3/k]$.
 
 </details>
 
@@ -1323,7 +1323,7 @@ $(1/k,3/k)$ con $k=n+3$; en los extremos vale0 y en el centro $2/k$ vale1.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 42</summary>
 
-Para que el soporte $[1/k,3/k]$ permanezca en $[0,1]$ desde la etapa inicial.
+La elección $k=n+3\ge3$ garantiza $0<1/k<3/k\le1$ incluso en $n=0$. Así todas las tiendas están definidas sobre el mismo dominio y sus dos ramas caben en él. El desplazamiento del índice organiza el prefijo sin cambiar el fenómeno de concentración hacia cero.
 
 </details>
 
@@ -1338,7 +1338,7 @@ Para que el soporte $[1/k,3/k]$ permanezca en $[0,1]$ desde la etapa inicial.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 43</summary>
 
-Desde un corte con $n+3>3/x$, queda a la derecha del soporte y todos sus valores posteriores son0.
+Para $x>0$ fijo, elegimos $N$ con $N+3>3/x$. Si $n\ge N$, entonces $(n+3)x>3$ y la entrada queda fuera de la región positiva, a la derecha del soporte. Todos los valores de esa cola son cero. En $x=0$ ya lo son desde la primera etapa.
 
 </details>
 
@@ -1353,7 +1353,7 @@ Desde un corte con $n+3>3/x$, queda a la derecha del soporte y todos sus valores
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 44</summary>
 
-$z_n=2/(n+3)$, que converge al origen y produce salidas1.
+El centro $z_n=2/(n+3)$ pertenece a $[0,1]$ y tiende a cero. Como $(n+3)z_n=2$, se obtiene $t_n(z_n)=1$ para todo índice. Una entrada móvil puede seguir el pico que cada columna fija termina perdiendo.
 
 </details>
 
@@ -1368,7 +1368,7 @@ $z_n=2/(n+3)$, que converge al origen y produce salidas1.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 45</summary>
 
-$1/k$: dos ramas afines de anchura1/k tienen integral1/(2k) cada una.
+La tienda es continua e integrable. Sus ramas son $kx-1$ en $[1/k,2/k]$ y $3-kx$ en $[2/k,3/k]$. Cada rama tiene anchura $1/k$ y promedio de alturas extremas $1/2$, así integra $1/(2k)$. Aditividad da integral total $1/k$.
 
 </details>
 
@@ -1383,7 +1383,7 @@ $1/k$: dos ramas afines de anchura1/k tienen integral1/(2k) cada una.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 46</summary>
 
-La integral pasa a1, mientras cada columna sigue quedando eventualmente en cero.
+Para $b_n=kt_n$, cada columna sigue siendo eventualmente cero, así el límite puntual permanece nulo. Pero la linealidad integral multiplica el valor $1/k$ por $k$, dando $\int_0^1b_n=1$. La altura creciente compensa exactamente la anchura decreciente del soporte.
 
 </details>
 
@@ -1398,7 +1398,7 @@ La integral pasa a1, mientras cada columna sigue quedando eventualmente en cero.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 47</summary>
 
-No: su valor en el centro es $k=n+3$, arbitrariamente grande.
+En el centro $z_n=2/(n+3)$ se tiene $b_n(z_n)=n+3$. Dada cualquier barrera $B$, hay un índice con $n+3>B$. Esa fila y esa entrada exceden la barrera, así no existe una cota común para toda la familia, aunque cada fila individual sea acotada.
 
 </details>
 
@@ -1413,7 +1413,7 @@ No: su valor en el centro es $k=n+3$, arbitrariamente grande.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 48</summary>
 
-Entre $1/k$ y $2/k$ la salida cambia1 en distancia1/k; toda constante válida debe ser al menos $k$.
+Entre $u_n=1/k$ y $v_n=2/k$, la salida de $t_n$ cambia de cero a uno y la entrada cambia en $1/k$. Una constante Lipschitz válida para esa fila debe satisfacer $1\le L/k$, luego $L\ge k$. Como $k=n+3$ crece sin cota, ninguna constante sirve para todas las filas.
 
 </details>
 
@@ -1430,7 +1430,7 @@ Para $k=n+3$ demuestra continuidad, soporte y convergencia puntual a cero de $t_
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 26</summary>
 
-La función afín, el valor absoluto y el máximo mediante $(u+v+|u-v|)/2$ son continuos por C14. La condición positiva equivale a $1<kx<3$, por lo que su región positiva es $(1/k,3/k)$ y en los extremos vale0. En0 es siempre0. Para $x>0$, un corte $N+3>3/x$ hace $kx>3$ en toda la cola y todos sus valores son0. Así el límite puntual es la función cero; el soporte cerrado es $[1/k,3/k]$.
+Con $k=n+3\ge3$, la composición afín $kx-2$, su valor absoluto y el máximo con cero son continuos, por las reglas de C14. Por tanto $t_n$ es continua en $[0,1]$. Su altura es positiva si y sólo si $|kx-2|<1$, equivalente a $1/k<x<3/k$; en los dos extremos vale cero y fuera también. El soporte cerrado es $[1/k,3/k]\subseteq[0,1]$. En cero toda columna vale cero. Para $x>0$ fijo, elegimos $N$ con $N+3>3/x$; desde ese corte $(n+3)x>3$ y todos los términos son cero. Así $t_n\to0$ puntualmente, por coincidencia eventual exacta en cada entrada.
 
 </details>
 
@@ -1445,7 +1445,7 @@ Encuentra una ruta convergente al origen que produzca salidas constantes1 en las
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 27</summary>
 
-La ruta $z_n=2/(n+3)$ está en $[0,1]$ y tiende a0. En ella $kz_n=2$, por lo que $t_n(z_n)=1$. Sin embargo el límite puntual es cero, continuo, y toda fila satisface $0\le t_n\le1$. Las dos condiciones mencionadas no bastan, ni siquiera junto con continuidad de todas las filas y compactitud del dominio. El testigo es explícito para todos los índices.
+Tomamos $z_n=2/(n+3)$, que pertenece a $[0,1]$ y tiende al origen. En esa entrada, $(n+3)z_n=2$, así $t_n(z_n)=\max(0,1-0)=1$ para toda etapa. El límite puntual es la función cero y es continuo; todas las filas son continuas y comparten la cota $0\le t_n\le1$ en el dominio compacto. Aun así, la ruta central mantiene salidas uno, distintas de la salida cero del límite en su destino de entrada. Las condiciones mencionadas no aportan un control común de cómo varían las filas con la entrada.
 
 </details>
 
@@ -1460,7 +1460,7 @@ Calcula $\int_0^1t_n$ por ramas, acreditando existencia antes del valor.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 28</summary>
 
-La continuidad da integrabilidad por C23. El valor fuera de $[1/k,3/k]$ es0. En la primera rama la función es $kx-1$ y en la segunda $3-kx$; ambas tienen anchura $1/k$ y valores extremos0,1 o1,0. Una primitiva cuadrática, o la fórmula afín probada desde C24, da área $1/(2k)$ a cada rama. Restricción y aditividad producen integral $1/k$. Con $k=n+3$, los valores tienden a0, igual a la integral del límite.
+La continuidad de $t_n$ en el cerrado prueba primero su integrabilidad por C23. Fuera del soporte su integral es cero. En $[1/k,2/k]$ vale $kx-1$, y en $[2/k,3/k]$ vale $3-kx$. Ambas ramas tienen anchura $1/k$ y alturas extremas cero y uno en orden inverso. La fórmula afín por sumas de C22 da integral $1/(2k)$ en cada rama. Restricción y aditividad producen $\int_0^1t_n=1/k=1/(n+3)$. Estos valores tienden a cero, coincidiendo en este ejemplo con la integral del límite puntual nulo. La igualdad se ha calculado para la familia dada, sin asumir un teorema general de intercambio.
 
 </details>
 
@@ -1475,7 +1475,7 @@ Para $b_n=(n+3)t_n$ demuestra convergencia puntual y compara límite de integral
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 29</summary>
 
-Cada columna positiva queda exactamente en cero desde el mismo corte de $t_n$ y la columna de0 siempre vale0. Multiplicar por $n+3$ no cambia esa coincidencia eventual, así $b_n\to0$ puntualmente. Cada fila es continua e integrable. Por linealidad de C23 y el área anterior, $\int_0^1b_n=(n+3)/(n+3)=1$. El límite de esas integrales es1, mientras el límite puntual cero tiene integral0. Ambas integrales comparadas existen y difieren.
+Definimos $b_n=(n+3)t_n=kt_n$. Cada columna de $t_n$ es exactamente cero en una cola; multiplicar su altura por $k$ conserva ese hecho, así $b_n\to0$ puntualmente. Cada fila es continua e integrable. Por linealidad y la cuenta anterior, $\int_0^1b_n=k\int_0^1t_n=k/k=1$. La sucesión de integrales tiene límite uno, mientras la función límite cero es integrable con valor cero. Existen las dos operaciones comparadas y dan valores distintos. Aquí el aumento de altura compensa la contracción del soporte.
 
 **Retorno visual.** Véase [C26-F06](analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html#fig-anm-c26-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1492,7 +1492,7 @@ Demuestra que las tiendas $t_n$ no satisfacen una cota Lipschitz con la misma co
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 30</summary>
 
-En los puntos $u_n=1/k$ y $v_n=2/k$ tenemos salidas0 y1, mientras la distancia de entrada es1/k. Una cota común $|t_n(u)-t_n(v)|\le L|u-v|$ obligaría a $1\le L/k$, esto es $k\le L$, para todos $k=n+3$. La arquimedianidad permite elegir uno mayor que $L$, contradicción. Cada fila sí tiene constante $k$, pero esa dependencia del índice es exactamente la obstrucción.
+Para cualquier índice, ponemos $u_n=1/k$ y $v_n=2/k$, con $k=n+3$. Ambas entradas pertenecen al dominio y sus alturas son $t_n(u_n)=0$ y $t_n(v_n)=1$. Si existiera una constante Lipschitz común $L\ge0$, tendría que cumplirse $1=|t_n(v_n)-t_n(u_n)|\le L|v_n-u_n|=L/k$, luego $k\le L$ para todo índice. Arquimedianidad proporciona $n$ con $n+3>L$, contradicción. Cada fila sí tiene constante $k$, pues el absoluto y el máximo con cero no aumentan diferencias y la función afín tiene pendiente $k$. Lo que falta es una barrera independiente de la etapa.
 
 </details>
 ## 26.7. Tres intercambios que pueden fallar
@@ -1562,7 +1562,7 @@ El control puntual en $x$ elige un $n$ grande para el último término; la conti
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 49</summary>
 
-Dirichlet: cada racional de denominadorq aparece desde $n+1\ge q$, mientras los irracionales nunca aparecen.
+Un irracional nunca pertenece a $E_{n+1}$ y su columna vale cero. Un racional reducido de denominador $q$ pertenece desde $n+1\ge q$ y su columna pasa a valer uno definitivamente. Por tanto el límite puntual de esas indicadoras es Dirichlet.
 
 </details>
 
@@ -1577,7 +1577,7 @@ Dirichlet: cada racional de denominadorq aparece desde $n+1\ge q$, mientras los 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 50</summary>
 
-No; C25 demostró la obstrucción de oscilación persistente en todo intervalo.
+El límite Dirichlet tiene oscilación uno en cada pieza no degenerada y brecha fija igual a la longitud del intervalo. C25 probó que no posee integral propia de Riemann. Aunque las integrales de los aproximantes existan, aquí falta la integral del límite para formar una igualdad de valores.
 
 </details>
 
@@ -1592,7 +1592,7 @@ No; C25 demostró la obstrucción de oscilación persistente en todo intervalo.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 51</summary>
 
-Cero, por los resultados de C25 para modificaciones y soportes finitos.
+Cada $E_{n+1}$ es finito. Su indicadora difiere de la función cero sólo en esas finitísimas entradas, así C23 conserva la integrabilidad y el valor cero. La sucesión de valores integrales es por tanto constante cero.
 
 </details>
 
@@ -1607,7 +1607,7 @@ Cero, por los resultados de C25 para modificaciones y soportes finitos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 52</summary>
 
-Uno para toda etapa; el límite de los valores $h_n$ es cero y su derivada en0 vale0.
+Para $h_n(x)=x/[1+(n+1)x^2]$, la regla del cociente da $h_n'(0)=1$. La función límite de los valores es idénticamente cero y su derivada en cero vale cero. Así en ese centro existen el límite de las derivadas y la derivada del límite, pero sus valores son distintos.
 
 </details>
 
@@ -1622,7 +1622,7 @@ Uno para toda etapa; el límite de los valores $h_n$ es cero y su derivada en0 v
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 53</summary>
 
-Su magnitud es como máximo $1/[1+(n+1)x^2]$, que tiende a cero.
+Con $k=n+1$ y $x\ne0$, la fórmula $h_n'(x)=(1-kx^2)/(1+kx^2)^2$ da $|h_n'(x)|\le(1+kx^2)/(1+kx^2)^2=1/(1+kx^2)$. Como $x^2>0$, esta cota tiende a cero con $n$. El corte depende de la entrada fija.
 
 </details>
 
@@ -1637,7 +1637,7 @@ Su magnitud es como máximo $1/[1+(n+1)x^2]$, que tiende a cero.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 54</summary>
 
-En $x=\pm1/\sqrt{n+1}$; el valor máximo es $1/[2\sqrt{n+1}]$.
+El cuadrado $(\sqrt{k}|x|-1)^2\ge0$ da $1+kx^2\ge2\sqrt{k}|x|$, de donde $|h_n(x)|\le1/(2\sqrt{k})$; en cero la cota es inmediata. Se alcanza cuando $|x|=1/\sqrt{k}$, es decir en los dos puntos indicados, con $k=n+1$.
 
 </details>
 
@@ -1652,7 +1652,7 @@ En $x=\pm1/\sqrt{n+1}$; el valor máximo es $1/[2\sqrt{n+1}]$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 55</summary>
 
-$|f(y)-f_n(y)|$ para entradas variables $y$ de una ventana con una sola fila ya escogida.
+Después de elegir una fila por el error en $x$ y un radio por la continuidad de esa fila, queda $|f(y)-f_n(y)|$ en entradas variables de esa vecindad. El corte puntual que controla ese término puede depender de $y$ y superar el índice ya fijado. La triangular es válida, pero falta una cota simultánea para el primer término.
 
 </details>
 
@@ -1667,7 +1667,7 @@ $|f(y)-f_n(y)|$ para entradas variables $y$ de una ventana con una sola fila ya 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 56</summary>
 
-La existencia y el dominio de cada operación interior y exterior, o de cada integral y derivada utilizadas.
+Se comprueban primero los dominios y la existencia de cada límite interior y exterior. Para un intercambio con integración o derivación también se acredita la existencia de las dos operaciones comparadas. El ejemplo de Dirichlet tiene integral del límite inexistente; el de las tiendas normalizadas tiene dos valores existentes pero diferentes.
 
 </details>
 
@@ -1684,7 +1684,7 @@ Con $d_n=\mathbf1_{E_{n+1}}$ de C25, prueba límite puntual y explica qué compa
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 31</summary>
 
-Cada $E_{n+1}$ es finito; su indicadora es integrable con integral0. En un irracional, toda la columna vale0. En un racional irreducible $p/q$, vale1 desde $n+1\ge q$. El límite es Dirichlet, no integrable por C25. Por tanto el límite de las integrales sí existe y vale0, pero no se puede igualar con una integral de Riemann del límite: esa integral no existe. La acotación común0≤d_n≤1 no repara la falta de existencia.
+El conjunto $E_{n+1}$ es finito y su indicadora es una modificación finita de la tasa cero. Por tanto cada $d_n$ es integrable con valor cero. En los irracionales todas sus columnas son cero; en un racional reducido de denominador $q$ la columna vale uno desde $n+1\ge q$. El límite puntual es Dirichlet, que C25 probó no integrable. Así $\lim_n\int_0^1d_n=0$ existe, pero $\int_0^1\lim_n d_n$ no es un valor real definido como integral propia de Riemann. No hay dos valores integrales que comparar en ese caso. La cota común entre cero y uno no asegura la integrabilidad del límite.
 
 </details>
 
@@ -1699,7 +1699,7 @@ Para $h_n(x)=x/[1+(n+1)x^2]$ en $\mathbb R$, calcula derivadas y demuestra conve
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 32</summary>
 
-Pongamos $k=n+1>0$. Cociente y potencia de C18 dan $h_n^{\prime}=(1-kx^2)/(1+kx^2)^2$. En0 los valores son0 y las derivadas1. Para $x\ne0$, $|h_n(x)|\le1/(k|x|)\to0$ y $|h_n^{\prime}(x)|\le1/(1+kx^2)\to0$. Los cortes arquimedianos para esos denominadores controlan cada cola. Así $h_n\to0$ y $h_n^{\prime}\to\mathbf1_{\{0\}}$ puntualmente. La derivada del límite cero es0 y difiere del límite de derivadas en0.
+Escribimos $k=n+1>0$. El denominador $1+kx^2$ es positivo en toda la recta, y la regla del cociente da $h_n'(x)=[(1+kx^2)-x(2kx)]/(1+kx^2)^2=(1-kx^2)/(1+kx^2)^2$. En cero, $h_n(0)=0$ y $h_n'(0)=1$. Si $x\ne0$, $|h_n(x)|\le1/(k|x|)\to0$. Además $|1-kx^2|\le1+kx^2$, así $|h_n'(x)|\le1/(1+kx^2)\to0$. Cada cota ofrece un corte arquimediano para la entrada fija. Por tanto $h_n\to h=0$ y $h_n'\to g=\mathbf1_{\{0\}}$ puntualmente. La derivada de $h$ es cero y difiere de $g$ en el origen, donde ambas operaciones existen.
 
 </details>
 
@@ -1714,7 +1714,7 @@ Prueba la cota global $|h_n(x)|\le1/[2\sqrt{n+1}]$ y que se alcanza.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 33</summary>
 
-Con $k=n+1$, el cuadrado $(\sqrt{k}|x|-1)^2\ge0$ equivale a $1+kx^2\ge2\sqrt{k}|x|$. Si $x\ne0$, dividir por los factores positivos da la cota; en0 se verifica directamente. Para $x=1/\sqrt{k}$, el denominador es2 y el valor absoluto es1/(2√k), por lo que es el máximo. La cota tiende a0, pero las derivadas en0 siguen valiendo1. El control global de valores por sí solo no autoriza el intercambio de derivadas.
+Sea $k=n+1$ y $r=\sqrt{k}>0$. El cuadrado $(r|x|-1)^2\ge0$ equivale a $1+kx^2\ge2r|x|$. Para $x\ne0$, dividir por los denominadores positivos da $|h_n(x)|=|x|/(1+kx^2)\le1/(2r)$. En cero el valor es cero y cumple la misma cota. En $x=\pm1/r$, el denominador es dos y la magnitud $1/(2r)$, así la cota se alcanza y es el máximo exacto. Tiende a cero al aumentar el índice y controla todos los valores simultáneamente. Sin embargo $h_n'(0)=1$ para toda etapa, por lo que esa cota global de valores no basta para intercambiar derivadas.
 
 **Retorno visual.** Véase [C26-F07](analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html#fig-anm-c26-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1731,7 +1731,7 @@ En el intento de deducir continuidad del límite puntual de funciones continuas,
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 34</summary>
 
-La desigualdad $|f(y)-f(x)|\le|f(y)-f_n(y)|+|f_n(y)-f_n(x)|+|f_n(x)-f(x)|$ es válida. El corte puntual en $x$ controla el último término y continuidad de la fila escogida controla el central en una ventana. Falta controlar el primero para todos los $y$ de esa ventana usando la misma fila: el corte puntual en $y$ puede depender de $y$ y ser mayor que el ya escogido. Las potencias demuestran que esa omisión puede llevar a una conclusión falsa.
+La triangular $|f(y)-f(x)|\le|f(y)-f_n(y)|+|f_n(y)-f_n(x)|+|f_n(x)-f(x)|$ es válida. El error puntual en $x$ permite escoger un índice para el último término. La continuidad de esa fila permite elegir un radio que controle el término central para entradas cercanas. El primer término requiere ahora controlar $|f(y)-f_n(y)|$ para todas esas entradas con el mismo índice ya escogido. La convergencia puntual sólo da cortes que pueden depender de $y$ y no proporciona ese control de ventana. Las potencias en $[0,1]$, con filas continuas y límite discontinuo en uno, prueban que la conclusión pretendida puede ser falsa.
 
 </details>
 
@@ -1746,7 +1746,7 @@ Compara potencias, tiendas normalizadas y $d_n$ según qué propiedad falla y qu
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 35</summary>
 
-Las potencias tienen filas continuas y límite puntual existente pero discontinuo. Las tiendas normalizadas tienen filas continuas integrables y límite cero integrable; el límite de integrales1 difiere de la integral del límite0. En $d_n$, las filas son integrables con integral0, pero el límite Dirichlet no tiene integral propia; no hay dos valores integrales que comparar. El ejemplo $h_n$ aporta además derivadas puntualmente convergentes que no coinciden con la derivada del límite. Cada afirmación conserva sus hipótesis y su alcance.
+En las potencias sobre $[0,1]$ todas las filas son continuas y el límite puntual existe, pero es discontinuo en uno. En las tiendas normalizadas $b_n$ existen las integrales de todas las filas y del límite nulo; el límite de las primeras es uno y la segunda vale cero. En $d_n=\mathbf1_{E_{n+1}}$, las filas tienen integral cero y límite puntual Dirichlet, pero éste carece de integral propia. Los dos ejemplos integrales fallan de formas distintas: uno da valores desiguales y el otro deja inexistente una operación. Cada afirmación debe conservar esa diferencia de alcance.
 
 </details>
 ## 26.8. Certificados que recuperan control
@@ -1812,7 +1812,7 @@ La siguiente pregunta queda bien formulada: ¿qué significa exigir una sola col
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 57</summary>
 
-$|f_n(x)-f_n(y)|\le L|x-y|$ con el mismo $L\ge0$ para todas las filas y pares.
+Se exige $|f_n(x)-f_n(y)|\le L|x-y|$ con un mismo $L\ge0$ para todos los índices y pares. Fijar $x,y$ permite pasar al límite numérico en la diferencia y su magnitud. La preservación del orden da $|f(x)-f(y)|\le L|x-y|$ para la candidata límite.
 
 </details>
 
@@ -1827,7 +1827,7 @@ $|f_n(x)-f_n(y)|\le L|x-y|$ con el mismo $L\ge0$ para todas las filas y pares.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 58</summary>
 
-$\delta=\varepsilon/(L+1)>0$, que incluye el caso $L=0$.
+Con $\delta=\varepsilon/(L+1)$, la cota heredada da un error menor que $L\varepsilon/(L+1)<\varepsilon$ si $L>0$ y la distancia de entradas es menor que $\delta$. Para $L=0$ todos los incrementos son cero. El radio funciona en todo centro sin dividir por $L$.
 
 </details>
 
@@ -1842,7 +1842,7 @@ $\delta=\varepsilon/(L+1)>0$, que incluye el caso $L=0$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 59</summary>
 
-$L|x_n-x|$ y el error puntual $|f_n(x)-f(x)|$ en la entrada fija de destino.
+La triangular separa $|f_n(x_n)-f(x)|$ en un cambio de entrada y un error de etapa: es a lo sumo $L|x_n-x|+|f_n(x)-f(x)|$. El primero tiende a cero por la ruta dada y el segundo por convergencia puntual en la entrada fija $x$. Reunir sus cortes prueba el destino de la diagonal.
 
 </details>
 
@@ -1857,7 +1857,7 @@ $L|x_n-x|$ y el error puntual $|f_n(x)-f(x)|$ en la entrada fija de destino.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 60</summary>
 
-$f_n(x)\le f_{n+1}(x)$ para cada entrada fija; no describe el orden de una fila respecto de $x$.
+La monotonía por índice significa $f_n(x)\le f_{n+1}(x)$ para cada $x$ fijo. Compara dos filas en una misma entrada. La monotonía de una fila respecto de su variable compararía, en cambio, $f_n(x)$ con $f_n(y)$ para entradas ordenadas.
 
 </details>
 
@@ -1872,7 +1872,7 @@ $f_n(x)\le f_{n+1}(x)$ para cada entrada fija; no describe el orden de una fila 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 61</summary>
 
-El supremo de su imagen no vacía acotada, existente por completitud de C03.
+La imagen $\{f_n(x):n\in\mathbb N\}$ contiene al menos $f_0(x)$ y tiene una cota superior por hipótesis. Completitud proporciona su supremo real. La monotonía de la columna permite aproximarlo desde abajo y conservar esa proximidad en toda la cola.
 
 </details>
 
@@ -1887,7 +1887,7 @@ El supremo de su imagen no vacía acotada, existente por completitud de C03.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 62</summary>
 
-Si no lo hubiera, ese número menor sería una cota superior, contradiciendo la minimalidad del supremo.
+Si ningún término superara $s-\varepsilon$, ese real sería una cota superior de la imagen de la columna. Como $s-\varepsilon<s$, contradiría la minimalidad del supremo $s$. Existe por tanto algún índice $j$ con $f_j(x)>s-\varepsilon$, que inicia la cola de precisión pedida.
 
 </details>
 
@@ -1902,7 +1902,7 @@ Si no lo hubiera, ese número menor sería una cota superior, contradiciendo la 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 63</summary>
 
-Debe ser $f_{n+1}(x)\le f_n(x)$; invertirla describiría columnas crecientes.
+Para una columna decreciente se exige $f_{n+1}(x)\le f_n(x)$ y una cota inferior. Su límite se construye mediante el ínfimo: un término menor que él más $\varepsilon$ conserva esa cota en toda la cola por monotonía. La desigualdad inversa describiría una columna creciente.
 
 </details>
 
@@ -1917,7 +1917,7 @@ Debe ser $f_{n+1}(x)\le f_n(x)$; invertirla describiría columnas crecientes.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 64</summary>
 
-Cómo formular y medir una sola cola que controle todas las entradas, y qué consecuencias permite ese contrato.
+Los ejemplos dejan pendiente el contrato que exige un único corte para todas las entradas y una tolerancia dada. C27 formulará ese control simultáneo y cómo medir el error entre funciones. La convergencia puntual permite cortes dependientes de la entrada, que es la diferencia que este capítulo ha examinado.
 
 </details>
 
@@ -1934,7 +1934,7 @@ Si $f_n\to f$ puntualmente y todas las filas son Lipschitz con la misma constant
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 36</summary>
 
-Fijamos $x,y$. Las diferencias numéricas convergen a $f(x)-f(y)$ y sus magnitudes convergen por continuidad del absoluto. El orden eventual aplicado a $|f_n(x)-f_n(y)|\le L|x-y|$ da la misma desigualdad para $f$. Para una tolerancia, $\delta=\varepsilon/(L+1)>0$ hace $L|x-y|<\varepsilon$ si $|x-y|<\delta$. En $L=0$ el error es0 para todos los pares; no se divide por $L$.
+Fijamos $x,y\in X$. La convergencia de sus dos columnas y el álgebra numérica dan $f_n(x)-f_n(y)\to f(x)-f(y)$. La continuidad del absoluto da convergencia de sus magnitudes. Como todas están acotadas por el mismo $L|x-y|$, la preservación del orden produce $|f(x)-f(y)|\le L|x-y|$. Esto vale para todo par, así $f$ es Lipschitz con la misma constante. Para $\varepsilon>0$, tomamos $\delta=\varepsilon/(L+1)>0$. Si $L>0$ y la distancia es menor que $\delta$, el error es menor que $L\varepsilon/(L+1)<\varepsilon$; si $L=0$, es cero. Se obtiene continuidad relativa, incluso uniforme en el dominio.
 
 </details>
 
@@ -1949,7 +1949,7 @@ Bajo la hipótesis del ejercicio anterior, si una ruta dada $x_n\to x\in X$ perm
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 37</summary>
 
-La desigualdad triangular y la cota común dan $|f_n(x_n)-f(x)|\le L|x_n-x|+|f_n(x)-f(x)|$. Para $\varepsilon>0$ reunimos el corte de la ruta con error menor que $\varepsilon/[2(L+1)]$ y el corte puntual en $x$ con error menor que $\varepsilon/2$. Todo índice posterior da error menor que $\varepsilon$. La constante fue común antes de recibir los índices; la ruta está dada y no requiere selección.
+La ruta está dada con $x_n\in X$ y $x_n\to x\in X$. La triangular y la cota común dan $|f_n(x_n)-f(x)|\le|f_n(x_n)-f_n(x)|+|f_n(x)-f(x)|\le L|x_n-x|+|f_n(x)-f(x)|$. Dada $\varepsilon>0$, tomamos el corte de la ruta para error menor que $\varepsilon/[2(L+1)]$ y el corte puntual en $x$ para error menor que $\varepsilon/2$. Su máximo garantiza que la expresión anterior es menor que $\varepsilon$. Para $L=0$ el primer término es cero y el mismo argumento sirve. La constante común controla el cambio de entrada que la convergencia puntual sola dejaba sin resolver.
 
 </details>
 
@@ -1964,7 +1964,7 @@ Prueba existencia de límite puntual para columnas crecientes acotadas por una b
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 38</summary>
 
-Para cada $x$, la imagen $\{f_n(x):n\in\mathbb N\}$ es no vacía y tiene cota superior real por hipótesis. C03 da su supremo $s_x$, único. Dada $\varepsilon>0$, algún $j$ cumple $f_j(x)>s_x-\varepsilon$, pues de otro modo ese número sería cota superior. Para $n\ge j$, monotonía da $s_x-\varepsilon<f_n(x)\le s_x$. Esto prueba convergencia. El grafo de los supremos únicos define la función sin elegir arbitrariamente una cota para cada entrada. No se obtiene acotación global del límite.
+Para cada entrada fija $x$, la imagen de su columna es no vacía y tiene una cota superior real por hipótesis. Completitud proporciona el supremo único $s_x$. Para $\varepsilon>0$, algún índice $j$ satisface $f_j(x)>s_x-\varepsilon$; de otro modo ese número menor sería cota superior. La monotonía por índice mantiene, para $n\ge j$, $s_x-\varepsilon<f_j(x)\le f_n(x)\le s_x$. Por tanto $|f_n(x)-s_x|<\varepsilon$ en toda la cola. Los supremos únicos forman el grafo de la función límite sin seleccionar una cota arbitraria por entrada. No se requiere una barrera común sobre todo $X$, ni se concluye que el límite esté globalmente acotado.
 
 </details>
 
@@ -1979,7 +1979,7 @@ Construye una familia creciente por columnas cuyas filas no sean crecientes ni d
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 39</summary>
 
-En $X=[-1,1]$ usamos $f_n(x)=x^2-1/(n+1)$. Para toda entrada fija, el término sustraído disminuye al aumentar el índice, luego la columna aumenta y converge a $x^2$. Cada fila toma el mismo valor en−1 y1 y un valor estrictamente menor en0; por ello no es creciente ni decreciente respecto de $x$ en todo el dominio. La cota superior por columna es $x^2$ y existe además una barrera común de magnitud1. Los dos argumentos ordenados no se pueden intercambiar.
+En $X=[-1,1]$, definimos $f_n(x)=x^2-1/(n+1)$. Para cada entrada, $f_{n+1}(x)-f_n(x)=1/[(n+1)(n+2)]>0$, así las columnas son estrictamente crecientes y convergen a $x^2$. Sin embargo, en una fila fija se tiene $f_n(-1)=f_n(1)=1-1/(n+1)$ y $f_n(0)=-1/(n+1)$, estrictamente menor. El orden $-1<0$ refuta que esa fila sea no decreciente, y $0<1$ refuta que sea no creciente. La monotonía por columnas compara etapas distintas; la monotonía respecto de la variable compara entradas distintas de una misma etapa.
 
 </details>
 
@@ -1994,7 +1994,7 @@ Para $f_n(x)=x+1/(n+1)$ en $\mathbb R$, verifica límite puntual, cota Lipschitz
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 40</summary>
 
-El error respecto de $f(x)=x$ es $1/(n+1)$; el corte de C06 sirve para cualquier entrada. Para todo par, $|f_n(u)-f_n(v)|=|u-v|$, así $L=1$ común. Una ruta dada $x_n\to x$ cumple $|f_n(x_n)-x|\le|x_n-x|+1/(n+1)\to0$. Las tiendas también tienen límite continuo y filas continuas, pero sus pendientes exigen constantes $n+3$ sin barrera común; su ruta central mantiene salida1. La prueba positiva identifica una hipótesis concreta que el contraejemplo no satisface.
+Para cualquier entrada $x$, $|f_n(x)-x|=1/(n+1)\to0$, así el límite puntual es la identidad. Para todo par $u,v$, $|f_n(u)-f_n(v)|=|u-v|$, dando constante Lipschitz común uno. Si $x_n\to x$ es una ruta dada, la triangular ofrece $|f_n(x_n)-x|\le|x_n-x|+1/(n+1)\to0$, reuniendo sus dos cortes. En las tiendas, las filas y el límite también son continuos, pero sus constantes Lipschitz crecen como $n+3$. La ruta central mantiene salida uno, así esas condiciones de continuidad no reemplazan la cota común que hace funcionar la prueba positiva.
 
 **Retorno visual.** Véase [C26-F08](analisis-para-matematicos-capitulo-26-sucesiones-de-funciones-converger-punto-por-punto.html#fig-anm-c26-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
