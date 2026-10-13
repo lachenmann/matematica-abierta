@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C06-SOLUCIONES
-source-sha256: a4dc40049e566a7ff61622a6ae2d3c6da8901dd8f2b0fcf8e21b7b3285b494d7
+source-sha256: 448566ff69cf960643439832b4c7c86e453df32b7adf48e5b0f248ead3588d66
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -34,7 +34,9 @@ Se emplean exclusivamente las construcciones de C00–C06; los teoremas de integ
 
 ### Solución 6.1 (`EDC-C06-SOL-001`)
 
-La **primera parte** supone $f:[a,b]\to\mathbb R$ continua y construye $F(x)=\int_a^x f(t)\,dt$. C05 garantiza que las subintegrales existen, y C05 también aporta orden y aditividad. La continuidad de $f$ permite demostrar mediante el encaje de los incrementos que $F'(x)=f(x)$ para cada $x\in(a,b)$, con versiones laterales en los extremos. La **segunda parte** supone, además, una función $G$ continua en $[a,b]$, derivable en $(a,b)$, con $G'=f$ allí; afirma $\int_a^b f=G(b)-G(a)$. Se deduce de la primera parte y del valor medio de C03, porque $G-F$ tiene derivada nula. Así, la existencia de la integral no procede de la fórmula con primitiva, sino de la construcción autónoma de C05.
+La primera parte construye la acumulación $F(x)=\int_a^x f(t)\,dt$ de una función continua $f:[a,b]\to\mathbb R$. La integrabilidad de continuas y de sus restricciones, demostrada en C05, asegura cada valor de $F$. Su incremento entre $x$ y $x+h$ es la integral sobre ese tramo, por aditividad. El orden coloca el cociente incremental entre las alturas locales de $f$, y la continuidad las acerca a $f(x)$ cuando la anchura tiende a cero. Así se obtiene $F'=f$ en el interior, con versiones relativas en los extremos.
+
+La segunda parte parte de una primitiva $G$: continua en $[a,b]$, derivable en $(a,b)$ y con $G'=f$ allí. Afirma que $\int_a^b f=G(b)-G(a)$. La primera parte proporciona otra primitiva, $F$, y el valor medio de C03 demuestra que $G-F$ es constante. Esa constante desaparece al restar los valores en los extremos. La construcción de la integral precede a ambas afirmaciones; la primera identifica una derivada y la segunda permite evaluar un valor integral ya definido.
 
 ### Solución 6.2 (`EDC-C06-SOL-002`)
 
@@ -42,13 +44,15 @@ La función $f(t)=t^2$ es continua en $[0,2]$. El Teorema 6.2 da $F'_+(0)=f(0)=0
 
 ### Solución 6.3 (`EDC-C06-SOL-003`)
 
-Para $a\le x<y\le b$ la aditividad proporciona $F(y)-F(x)=\int_x^y f(t)\,dt\ge0$ porque $f\ge0$ y el orden de C05 compara con la función cero. Si $f$ es continua y positiva en **todo** $[a,b]$, entonces sobre cualquier $[x,y]$ alcanza un mínimo $m_{x,y}>0$ (C00). De ahí
+Fijamos $a\le x<y\le b$. Por aditividad, $F(y)-F(x)=\int_x^y f(t)\,dt$. La restricción es integrable y no negativa, así que el orden de C05 compara su integral con la de la función cero. Resulta $F(y)\ge F(x)$ para cualquier par, que demuestra monotonía no decreciente sin derivar $F$.
+
+Si $f$ es además continua y positiva en cada punto, el teorema de extremos de C00 proporciona un mínimo en el tramo cerrado $[x,y]$. Ese mínimo $m_{x,y}$ es un valor de la función y, por positividad, es estrictamente mayor que cero. La comparación con esa constante da
 
 $$
 F(y)-F(x)=\int_x^y f(t)\,dt\ge m_{x,y}(y-x)>0.
 $$
 
-Queda probada la estricta monotonía. Si se conociera únicamente $f\ge0$, sin positividad estricta, $f\equiv0$ muestra que la conclusión estricta no es válida.
+La longitud $y-x$ también es positiva. Por tanto cada par ordenado produce una diferencia estricta y $F$ es estrictamente creciente. La mera condición $f\ge0$ permitiría, por ejemplo, $f\equiv0$ y una acumulación constante.
 
 ### Solución 6.4 (`EDC-C06-SOL-004`)
 
@@ -95,20 +99,20 @@ Su derivada es $F'(x)=x-3$. Por el criterio de monotonía de C03, $F$ decrece en
 
 ### Solución 6.8 (`EDC-C06-SOL-008`)
 
-En $[-1,0]$, $|t|=-t$, de modo que
+El módulo tiene una expresión distinta a cada lado del origen. Para $x\in[-1,0]$, todo el tramo de integración está donde $|t|=-t$, y la segunda parte, aplicada a esa función continua, da
 
 $$
 F(x)=\int_{-1}^x(-t)\,dt=\frac{1-x^2}{2}.
 $$
 
-Para $x\in[0,2]$, por aditividad,
+Si $x\in[0,2]$, cortamos en cero por aditividad. Conservamos la acumulación hasta el corte y añadimos el tramo donde $|t|=t$:
 
 $$
 F(x)=\int_{-1}^0(-t)\,dt+\int_0^x t\,dt
 =\frac12+\frac{x^2}{2}.
 $$
 
-Las ramas coinciden en $x=0$, donde ambas valen $1/2$. Sus derivadas laterales son $-0=0$ y $+0=0$; por el criterio de C01, $F'(0)=0=|0|$. Finalmente $F(2)=1/2+4/2=5/2$.
+Las ramas valen $1/2$ en el corte. Para comprobar derivabilidad allí usamos ese valor en el cociente: si $h<0$, $[F(h)-F(0)]/h=-h/2$; si $h>0$, el cociente vale $h/2$. Ambos tienden a cero, de modo que $F'(0)=0=|0|$, tal como garantiza la continuidad del integrando. Finalmente $F(2)=1/2+4/2=5/2$.
 
 ### Solución 6.9 (`EDC-C06-SOL-009`)
 
@@ -138,13 +142,13 @@ No hemos necesitado expresar $F$ mediante un repertorio cerrado de funciones ele
 
 ### Solución 6.11 (`EDC-C06-SOL-011`)
 
-La función $s$ es monótona, acotada y por C05 integrable, incluso si la definimos con $s(0)=1$. Para $x\le0$, la integral de $s$ vale cero porque $s=0$ salvo, a lo sumo, el punto $0$, cuya modificación no afecta la integral. Para $x\ge0$, queda un tramo de longitud $x$ en el que $s=1$. Así,
+La función $s$ es monótona y acotada, por lo que es integrable. Para $x<0$ vale cero en todo el tramo $[-1,x]$. En $x=0$ puede tomar el valor uno en el extremo, pero el Lema 5.3 garantiza que una contribución concentrada en un solo punto tiene integral cero. Para $x>0$, la aditividad separa ese tramo de integral nula y la función constante uno en $[0,x]$. Obtenemos
 
 $$
 S(x)=\begin{cases}0,&-1\le x\le0,\\x,&0\le x\le1.\end{cases}
 $$
 
-Las derivadas laterales en $0$ son $S'_-(0)=0$ y $S'_+(0)=1$, por lo que no existe derivada bilateral. Sin embargo, $S$ es continua y $S(1)=1$. La integrabilidad del integrando **no** es la continuidad necesaria para la identidad puntual $S'(0)=s(0)$.
+Como $S(0)=0$, su cociente incremental es cero para $h<0$ y uno para $h>0$. Por tanto $S'_-(0)=0$ y $S'_+(0)=1$: el límite bilateral no existe. Las dos ramas sí se unen continuamente y $S(1)=1$. El salto del integrando conserva continuidad de la acumulación, pero hace que las franjas de cada lado produzcan pendientes diferentes.
 
 ## C. Evaluación de integrales definidas
 
@@ -199,13 +203,15 @@ $$
 
 ### Solución 6.17 (`EDC-C06-SOL-017`)
 
-La función $G(t)=t^4/4$ es una primitiva de $t^3$ en toda la recta. Por tanto,
+Por la regla de potencias, $G(t)=t^4/4$ es una primitiva de $t^3$. El integrando es continuo en todo el intervalo y la segunda parte da
 
 $$
 \int_{-2}^{2}t^3\,dt=\frac{2^4}{4}-\frac{(-2)^4}{4}=0.
 $$
 
-La prueba por simetría no requiere anticipar una fórmula general de cambio de variable. Reflejamos las particiones de $[-2,0]$ en particiones de $[0,2]$ y las muestras $\xi$ en $-\xi$. Como la función es impar, las sumas etiquetadas reflejadas son las opuestas. El criterio de convergencia de sumas de Riemann de C05 implica $\int_{-2}^0t^3\,dt=-\int_0^2t^3\,dt$. Su suma por aditividad vale cero.
+Para probarlo por simetría, tomamos una partición $-2=t_0<\cdots<t_n=0$ de la mitad izquierda, con cualquier etiqueta en cada pieza. Reflejamos sus cortes y los ordenamos desde cero hasta dos. La pieza $[t_{i-1},t_i]$ se convierte en $[-t_i,-t_{i-1}]$ con la misma anchura; si su etiqueta era $\xi_i$, la reflejada es $-\xi_i$. La imparidad da $(-\xi_i)^3=-\xi_i^3$, por lo que las dos sumas son opuestas.
+
+Al tomar particiones de finura tendente a cero, las reflejadas tienen la misma finura. La continuidad asegura integrabilidad en ambas mitades y el Teorema 5.3 identifica sus límites. Así $\int_{-2}^0t^3\,dt=-\int_0^2t^3\,dt$. La aditividad reúne ambas contribuciones y da cero. La reflexión se efectuó en sumas finitas, sin usar una regla general de sustitución.
 
 ### Solución 6.18 (`EDC-C06-SOL-018`)
 
@@ -238,13 +244,13 @@ El integrando es positivo sobre $[0,2]$; el signo negativo procede exclusivament
 
 ### Solución 6.20 (`EDC-C06-SOL-020`)
 
-Sea $A(u)=\int_0^u e^{t^2}\,dt$ para $0\le u\le1$. Por la primera parte, $A'(u)=e^{u^2}$ en el interior y la extensión lateral sirve en el extremo $u=0$. Como $x^2$ toma valores en $[0,1]$, la Proposición 6.2 con límite inferior constante produce
+Definimos $A(u)=\int_0^u e^{t^2}\,dt$ para $u\in[0,1]$. El integrando es continuo y la primera parte da $A'(u)=e^{u^2}$ en el interior. Como $H(x)=A(x^2)$ y $x^2\in[0,1)$ para $-1<x<1$, la Proposición 6.2 con extremo inferior constante proporciona
 
 $$
 H'(x)=e^{(x^2)^2}(2x)=2x e^{x^4}.
 $$
 
-La fórmula vale también en $x=0$ porque allí el extremo interior $x^2$ tiene derivada cero. No se ha hallado ni requerido una primitiva elemental de $e^{t^2}$.
+En $x=0$ el argumento de $A$ toca el borde de su dominio. Podemos comprobar directamente la derivada: para $0\le t\le1$, $e^{t^2}\le e$, luego el orden de la integral da $|H(h)-H(0)|\le e h^2$. Al dividir por $|h|$ obtenemos una cota $e|h|$ que tiende a cero. Así $H'(0)=0$, en acuerdo con la fórmula. La estimación justifica el punto de borde sin extender artificialmente el dominio de $A$ ni buscar una primitiva elemental.
 
 ### Solución 6.21 (`EDC-C06-SOL-021`)
 
@@ -297,13 +303,13 @@ Es constante, luego $N'(x)=0$. Directamente desde la regla de extremos variables
 
 ### Solución 6.25 (`EDC-C06-SOL-025`)
 
-Sea $h=r-1$. La función $h$ vale $-1$ sólo en $t=0$ y cero en el resto; el Lema 5.3 muestra que es integrable y su integral sobre cualquier subintervalo es cero. Por linealidad,
+Escribimos $r=1+h$, donde $h$ vale $-1$ en cero y se anula en el resto. Por el Lema 5.3, $h$ es integrable y su integral sobre cualquier subintervalo no degenerado es cero; en un intervalo degenerado la convención da también cero. La función constante uno es integrable, así que la linealidad asegura integrabilidad de $r$ y
 
 $$
 R(x)=\int_{-1}^x r(t)\,dt=\int_{-1}^x1\,dt=x+1.
 $$
 
-Por tanto $R'(0)=1$ mientras $r(0)=0$. La primera parte requiere **continuidad del integrando en el punto** para garantizar igualdad puntual; $r$ no es continua en $0$. Su integrabilidad sola basta para la continuidad de $R$ pero no para la igualdad $R'(0)=r(0)$.
+La acumulación es afín y $R'(0)=1$, mientras el valor aislado del integrando es $r(0)=0$. Para puntos no nulos cercanos a cero, $r(t)=1$, de modo que no converge a $r(0)$. Falla exactamente la continuidad del integrando en el punto donde se quiere aplicar la primera parte. La integral conserva la acumulación al cambiar una sola altura, y por eso su derivada no puede registrar esa modificación puntual.
 
 ### Solución 6.26 (`EDC-C06-SOL-026`)
 
@@ -311,13 +317,13 @@ La derivada $G'(x)=1/(2\sqrt{x})$ existe para $x\in(0,1)$, pero crece sin cota c
 
 ### Solución 6.27 (`EDC-C06-SOL-027`)
 
-La función $f(x)=x$ es continua e integrable en $[0,1]$, con $\int_0^1x\,dx=1/2$. En cambio,
+La función $f(x)=x$ es continua y su integral en $[0,1]$ vale $1/2$, por C05 o por la primitiva continua $x^2/2$. En cambio, la función propuesta tiene $G(0)=100$, y
 
 $$
 G(1)-G(0)=\frac12-100\ne\frac12.
 $$
 
-La igualdad $G'(x)=x$ para $0<x<1$ no basta para aplicar el Teorema 6.5, porque $G$ **no es continua en $x=0$**: su límite desde la derecha vale $0$, mientras $G(0)=100$. Esta hipótesis impide modificar arbitrariamente los valores terminales de una primitiva.
+Aunque $G'=f$ en el interior, $G$ no cumple la definición de primitiva sobre el intervalo cerrado: su límite derecho en cero es cero y difiere de $G(0)$. La continuidad terminal es una hipótesis del Teorema 6.5. También aparece en sus pruebas: sin ella no podemos aplicar el valor medio en una pieza que empiece en cero, ni concluir que la diferencia de primitivas mantiene su constante en el borde. El ejemplo cambia el valor terminal sin cambiar ninguna derivada interior y muestra por qué esa continuidad es necesaria para la fórmula declarada.
 
 ## F. Pruebas y síntesis
 
@@ -333,50 +339,52 @@ Por tanto $K$ toma un valor constante en todo el intervalo. Sobre un dominio dis
 
 ### Solución 6.29 (`EDC-C06-SOL-029`)
 
-Tomemos una partición cualquiera $a=x_0<\cdots<x_n=b$. La función $G$ satisface las hipótesis del teorema del valor medio en cada $[x_{i-1},x_i]$, incluso cuando esos extremos coinciden con $a$ o $b$, porque sólo se exige derivabilidad interior. Por tanto existen $\xi_i\in(x_{i-1},x_i)$ con
+Elegimos una partición $a=x_0<\cdots<x_n=b$. En cada pieza, $G$ es continua hasta los extremos y derivable en el interior, incluso si la pieza toca $a$ o $b$. El teorema del valor medio proporciona una etiqueta estrictamente interior $\xi_i$ con
 
 $$
 G(x_i)-G(x_{i-1})=G'(\xi_i)\Delta_i=f(\xi_i)\Delta_i.
 $$
 
-Sumando, los términos del lado izquierdo telescopan:
+La igualdad con $f$ es válida en esas etiquetas porque todas pertenecen a $(a,b)$. Al sumar, cada valor de $G$ en un corte interior se cancela con el de la pieza vecina:
 
 $$
 G(b)-G(a)=\sum_{i=1}^n f(\xi_i)\Delta_i.
 $$
 
-El **valor medio** produjo los puntos $\xi_i$ que realizan cada cociente de incrementos; la **equivalencia Riemann–Darboux** de C05 asegura que, porque $f$ es integrable, estas sumas convergen a $\int_a^b f$ siempre que la finura de las particiones tienda a cero, independientemente de las muestras. Como todas las sumas de la fórmula valen ya $G(b)-G(a)$, ese número debe ser la integral. No se ha invocado la primera parte del Teorema Fundamental ni se ha exigido continuidad de $f$.
+Hasta aquí el valor medio ha producido una suma etiquetada exacta, para cualquier partición. Para identificarla con la integral usamos ahora la integrabilidad de $f$. Dado $\varepsilon>0$, el Teorema 5.3 da un umbral que controla todas las sumas de finura menor que él. Elegimos una partición así y sus etiquetas del valor medio: la suma vale $G(b)-G(a)$ y difiere de la integral en menos que $\varepsilon$. Esos dos números son fijos y quedan separados por menos que cualquier tolerancia, luego coinciden.
+
+El valor medio elige las alturas y la equivalencia Riemann–Darboux determina el valor límite. No se requiere continuidad de $f$, pues su integrabilidad es hipótesis, ni se utiliza la primera parte del Teorema Fundamental. Los valores de $f$ en los extremos tampoco intervienen en la elección de etiquetas interiores.
 
 ### Solución 6.30 (`EDC-C06-SOL-030`)
 
-Sea $V(s;P)=\sum_{i=1}^n|s(t_i)-s(t_{i-1})|$ para una partición $P$. Como $s'$ es continua, $|s'|$ es integrable por C05. La segunda parte del Teorema Fundamental aplicada en cada subintervalo a la primitiva $s$ da
+Sea $V(s;P)=\sum_{i=1}^n|s(t_i)-s(t_{i-1})|$. Usamos la prolongación continua de $s'$ a $[a,b]$ que exige el enunciado; sus valores en los bordes no necesitan ser derivadas bilaterales de $s$. La función $|s'|$ es continua e integrable. Para comparar una variación finita con su integral, la segunda parte aplicada a $s$ en cada pieza da
 
 $$
 |s(t_i)-s(t_{i-1})|=\left|\int_{t_{i-1}}^{t_i}s'(t)\,dt\right|
 \le\int_{t_{i-1}}^{t_i}|s'(t)|\,dt.
 $$
 
-Sumando por aditividad,
+La desigualdad triangular integral elimina las cancelaciones dentro de cada pieza. Sumamos por aditividad:
 
 $$
 V(s;P)\le\int_a^b|s'(t)|\,dt
 $$
 
-para **toda** partición. Luego el supremo $V(s)=\sup_PV(s;P)$ existe y es a lo sumo esa integral.
+para cualquier partición. El conjunto de esas variaciones es no vacío, no negativo y acotado superiormente por una integral finita. La completitud de C00 proporciona su supremo $V(s)$, y la misma cota da $V(s)\le\int_a^b|s'|$.
 
-Para la desigualdad opuesta, escojamos las particiones uniformes $P_n$ con finura $(b-a)/n\to0$. El teorema del valor medio, en cada $[t_{i-1},t_i]$, proporciona un $\xi_i$ con
+Falta mostrar que las variaciones finitas se acercan a esa cota tanto como queramos. Elegimos particiones uniformes $P_n$ con finura $(b-a)/n\to0$. En cada pieza, el valor medio proporciona un punto interior $\xi_i$ tal que
 
 $$
 |s(t_i)-s(t_{i-1})|=|s'(\xi_i)|\Delta_i.
 $$
 
-Así, $V(s;P_n)$ es una suma de Riemann de la función continua $|s'|$. Por el Teorema 5.3, sus valores convergen a $\int_a^b|s'|$. Como $V(s;P_n)\le V(s)$ para todo $n$, obtenemos $\int_a^b|s'|\le V(s)$. Las dos cotas prueban
+Por tanto $V(s;P_n)$ es una suma etiquetada de $|s'|$. La continuidad hace integrable esta función, y el Teorema 5.3 obliga a que esas sumas converjan a su integral, aunque las etiquetas cambien con $n$. Cada suma está acotada por $V(s)$; el límite también lo está. Si la integral fuera mayor, una tolerancia menor que su separación respecto del supremo haría que alguna suma superase $V(s)$, contradicción. Obtenemos $\int_a^b|s'|\le V(s)$ y, junto con la primera cota,
 
 $$
 \boxed{V(s)=\int_a^b|s'(t)|\,dt.}
 $$
 
-En una trayectoria unidimensional con posición $s(t)$, la variación total representa la **distancia recorrida**, mientras $\int_a^b s'(t)dt=s(b)-s(a)$ es el desplazamiento neto. La igualdad ha sido demostrada aquí, bajo regularidad $C^1$, y no se extrapola a movimientos sin esas hipótesis.
+Para una posición unidimensional $s(t)$, cada diferencia absoluta mide el desplazamiento entre dos cortes sin conservar su signo. Una partición puede ocultar cambios de sentido dentro de sus piezas; al refinarla, la desigualdad triangular asegura que la suma no disminuye. El supremo recoge la variación total y representa la distancia recorrida en este modelo de regularidad $C^1$. El desplazamiento $s(b)-s(a)=\int_a^b s'$ conserva las cancelaciones entre sentidos opuestos. La prueba da la interpretación de ambas integrales bajo las hipótesis declaradas.
 
 ---
 

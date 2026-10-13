@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -15,13 +15,14 @@ topics:
   - calculo-de-una-variable
   - historia-de-las-matematicas
 number-sections: false
+css: /assets/books/elementos-del-calculo/edc-source-notes.css
 provenance:
   type: original
   sources:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C08-NOTAS-HISTORICAS
-source-sha256: 75364a48700e6cc941bcadbe6359912baa6ab23ffcb468fab7ac40040d92ad7c
+source-sha256: 4dd3d731060fad7eef73b923144575011aa318f926d67c6e09696ed63094ea1c
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -36,8 +37,7 @@ La demostración por agrupaciones sucesivas en bloques crecientes proporciona un
 
 **Fuente historiográfica y pedagógica localizada y con texto accesible:** Jeff Babb, «Mathematical Concepts and Proofs from Nicole Oresme: Using the History of Calculus to Teach Mathematics», *Science & Education* **14** (2005), 443–456, DOI [10.1007/s11191-004-7937-y](https://doi.org/10.1007/s11191-004-7937-y). El registro abierto en [ResearchGate](https://www.researchgate.net/publication/260263038_Mathematical_Concepts_and_Proofs_from_Nicole_Oresme_Using_the_History_of_Calculus_to_Teach_Mathematics) incluye título, resumen y un pasaje sobre la divergencia de la armónica, con reconstrucción pedagógica por bloques. La edición primaria de Oresme no fue cotejada.
 
-
-El argumento de la Proposición 8.1 es una prueba moderna autónoma.
+**Estado:** `SECONDARY_ARTICLE_ACCESSIBLE / ORESME_PRIMARY_NOT_COLLATED`. El argumento de la Proposición 8.1 es una prueba moderna autónoma.
 
 ## H2. Series en el cálculo de Newton y Leibniz
 
@@ -47,6 +47,7 @@ Durante los siglos XVII y XVIII, las expansiones infinitas se utilizaron para ob
 
 **Reserva:** los manuscritos de Newton y Leibniz y sus ediciones críticas no se han colacionado para este capítulo; no se inventan páginas ni se transcriben fórmulas como testimonios del original.
 
+**Estado:** `SECONDARY_WEB_READ / NEWTON_LEIBNIZ_PRIMARY_NOT_COLLATED`.
 
 ## H3. La arctangente y la llamada fórmula de Gregory–Leibniz
 
@@ -54,6 +55,7 @@ La identidad $\pi/4=1-1/3+1/5-\cdots$ se suele asociar a la tradición de Gregor
 
 **Contexto:** MacTutor, [«A history of the calculus»](https://mathshistory.st-andrews.ac.uk/HistTopics/The_rise_of_calculus/), síntesis general sobre el surgimiento de métodos de series. Para atribuciones exactas de manuscritos, cronologías y primeras apariciones de la expansión de arctangente se necesitaría una investigación especializada adicional; la fuente consultada aquí no basta para resolver por sí sola ese problema de prioridad.
 
+**Estado:** `SECONDARY_CONTEXT / PRIORITY_NOT_CLAIMED / MODERN_REMAINDER_PROOF_EDC`.
 
 ## H4. Cauchy: la convergencia exige condiciones
 
@@ -61,6 +63,7 @@ Una diferencia importante entre manipular una fórmula y demostrar una identidad
 
 **Historiografía y extractos traducidos efectivamente leídos:** MacTutor, [«Cauchy's Calculus»](https://mathshistory.st-andrews.ac.uk/Extras/Cauchy_Calculus/), párrafos «Cauchy's definition of convergence and sum of a series» y «Cauchy's errors». No se ha cotejado el francés del *Cours d'analyse* en la edición original. Las citas de MacTutor se utilizan para caracterizar una tradición histórica, **no** para sustituir la prueba de nuestro Teorema 8.1.
 
+**Estado:** `SECONDARY_WITH_TRANSLATED_EXCERPTS_READ / FRENCH_1821_NOT_COLLATED`.
 
 ## H5. Abel, el problema de las fronteras y la continuidad
 
@@ -70,6 +73,7 @@ El comportamiento de una serie de potencias en los puntos $c\pm R$ no queda deci
 
 **Fuente historiográfica de contexto localizada:** [MacTutor, «Konrad Knopp: Texts»](https://mathshistory.st-andrews.ac.uk/Extras/Knopp_texts/), índice descriptivo de capítulos sobre el desarrollo de la teoría de convergencia y teoremas de Abel; esto **no** equivale a leer una demostración primaria de Abel. La memoria original de Abel de 1826 y su correspondencia se reservan para eventual cotejo en el capítulo C09.
 
+**Estado:** `MODERN_MATH_REFERENCE_READ / HISTORICAL_SECONDARY_INDEX / ABEL_PRIMARY_NOT_COLLATED`.
 
 ## H6. Convergencia absoluta, reordenaciones y operaciones legítimas
 
@@ -77,6 +81,7 @@ La regla de que una serie de números absolutamente convergente conserva su valo
 
 **Control matemático consultado:** *Encyclopedia of Mathematics*, [«Absolutely convergent series»](https://encyclopediaofmath.org/wiki/Absolutely_convergent_series) — resultados de convergencia absoluta, reordenación y producto. [«Conditional convergence»](https://encyclopediaofmath.org/wiki/Conditional_convergence) — distinción con series no absolutamente convergentes. Ambas son fuentes modernas, no evidencia primaria acerca de fechas de descubrimiento.
 
+**Estado:** `MODERN_REFERENCE_READ / ED_C08_PROOFS_INDEPENDENT`.
 
 ## H7. La convergencia local y Weierstrass
 
@@ -84,6 +89,7 @@ El uso de una cota que sirva simultáneamente para todos los puntos de un interv
 
 **Fuente secundaria localizada:** MacTutor, [«Karl Weierstrass»](https://mathshistory.st-andrews.ac.uk/Biographies/Weierstrass/), semblanza que recoge sus aportes a convergencia uniforme y funciones definidas por productos infinitos. **Fuente matemática leída:** *Encyclopedia of Mathematics*, [«Power series»](https://encyclopediaofmath.org/wiki/Power_series), convergencia local interior y operaciones. Ninguna de estas fuentes autoriza afirmar que Weierstrass utilizara exactamente nuestra demostración de C08.
 
+**Estado:** `SECONDARY_CONTEXT / MODERN_POWER_SERIES_REFERENCE / NO_PRIMARY_COLLATION`.
 
 ## Registro consolidado de procedencia
 
@@ -99,3 +105,12 @@ El uso de una cota que sirva simultáneamente para todos los puntos de un interv
 | Cauchy 1821; Abel 1826; manuscritos de Newton y Leibniz | Referencias históricas, originales no colacionados | Pendiente para revisión crítica del volumen |
 
 **Dictamen historiográfico:** ningún teorema del capítulo se atribuye a un documento primario no examinado. El uso del nombre de un autor en una identidad o criterio no reemplaza una investigación de su formulación original. Las demostraciones de `EDC-C08` son contemporáneas y están conectadas exclusivamente con los resultados ya disponibles en el libro.
+
+
+## Complemento documental — revisión literaria R09 (13 de octubre de 2026)
+
+Se abrió el [PDF de William Dunham, *The Bernoullis and the Harmonic Series*, College Mathematics Journal 18(1), 18–23 (1987)](https://www.ms.uky.edu/~dhje223/Bernoullis.pdf). Se leyó su texto extraído, especialmente pp. 19–23: reconstrucción y reproducción de § XVI del Tractatus, atribución a Johann y problema posterior de los cuadrados recíprocos. La extracción del facsímil latino contiene errores y no se colacionó. Las peticiones de captura no entregaron una imagen inspeccionable en la interfaz de trabajo; no se declara cotejo visual. El recuadro se apoya en la reconstrucción historiográfica, con una ilustración matemática propia por sumas finitas. Estado: SECONDARY_ARTICLE_SELECTED_PASSAGES_READ / LATIN_FACSIMILE_NOT_COLLATED.
+
+Se leyó la [transcripción francesa del Cours d’analyse en Wikisource](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier): introducción; capítulo VI § I, definición de suma, geométrica y colas; § II, teoremas I–II sobre raíces y cocientes y sus comparaciones geométricas. Esta lectura complementa H4: el francés transcrito ya se examinó en pasajes seleccionados, pero no se cotejó con páginas de la edición impresa. El recuadro remite a § II, localizador donde aparecen esos criterios para series positivas. Estado: PRIMARY_FRENCH_TRANSCRIPTION_SELECTED_PASSAGES_READ / PRINTED_EDITION_NOT_COLLATED.
+
+No se adopta como premisa ninguna afirmación general de Cauchy sobre continuidad de sumas de funciones. Las pruebas de EDC conservan su propio control interior explícito. No se amplía en este tramo la colación de Oresme, Newton, Leibniz, Abel o Weierstrass. H1–H7 y el registro anterior se mantienen como historial de lecturas.

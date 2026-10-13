@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C08
-source-sha256: d1a4f8b81c85fe8d17f7b518756151efaeb29348641173a9f473f851a66eb07d
+source-sha256: b2276d69efa503d0ca16cd557eb3899ba1d4b290045a85b539f59be6a47d0c0c
 content-id: MA-BCH-0339
 content-type: book-chapter
 related:
@@ -36,19 +36,19 @@ related:
 
 > **Pregunta generadora.** Una suma finita se obtiene realizando cierto número de adiciones. ¿Qué condiciones autorizan a escribir una suma con infinitos términos y, todavía más, a derivar o integrar una función presentada mediante esa suma?
 
-El cálculo ha puesto en relación dos operaciones definidas mediante límites: la derivada y la integral. Pero la historia de la matemática nos propone un tercer modo de aproximación: representar números y funciones por **sumas cada vez más largas**. La cuadratura de una parábola en C04 utilizó una progresión geométrica finita con resto controlado; la exponencial de C02 fue construida mediante una serie específica, cuyo tratamiento no suponía una teoría general de todas las series. Es el momento de establecer esta teoría, sin asumir de antemano que toda expresión infinita tiene valor o que se puede operar con ella como con un polinomio.
+En C04 una suma geométrica permitió controlar lo que faltaba después de cada aproximación; en C02 una serie concreta dio una construcción de la exponencial. En ambos casos realizábamos operaciones finitas y estudiábamos qué ocurría al prolongarlas. Una expresión con puntos suspensivos plantea esa misma pregunta: los primeros términos pueden calcularse, pero necesitamos saber si las sumas cada vez más largas se acercan a un número.
 
-El resultado más importante del capítulo será **local**: dentro del radio de convergencia de una serie de potencias, sus términos podrán sumarse, derivarse e integrarse con justificaciones precisas. El teorema no será una autorización universal para intercambiar infinitas sumas y límites. Así prepararemos el estudio de Newton y Taylor en C09, donde todavía quedará otra pregunta: ¿cuándo representa una serie concreta a una función dada?
+La dificultad crece cuando los términos dependen de una variable. La suma puede existir para unos valores y divergir para otros; incluso donde exista, derivar cada término todavía no demuestra que hayamos derivado la función resultante. Las series de potencias ofrecen un control que permitirá resolver ambas cuestiones en el interior de un intervalo. Allí podremos estimar las colas con una misma cota para todos los puntos y justificar después la integración y la derivación. En C09 utilizaremos esos resultados para investigar qué función representa una serie concreta.
 
 ## 8.1. El infinito como límite de operaciones finitas
 
 **Definición 8.1 (serie numérica; `EDC-C08-DEF-001`).** Para una sucesión real $(a_n)_{n\ge0}$ definimos sus *sumas parciales* por $S_N=\sum_{n=0}^{N}a_n$. La serie $\sum_{n=0}^{\infty}a_n$ **converge** a $S\in\mathbb R$ si $S_N\to S$ cuando $N\to\infty$. En otro caso **diverge**. El símbolo $\sum_{n=0}^{\infty}a_n$ designa un número sólo cuando se ha demostrado ese límite, salvo que se indique explícitamente un procedimiento distinto de sumación, que no adoptaremos aquí.
 
-Por ejemplo, $1-1+1-1+\cdots$ no converge: sus sumas parciales alternan entre $1$ y $0$. La escritura $1/(1+1)=1/2$ no ofrece una prueba de convergencia para la serie geométrica con razón $-1$; la fórmula geométrica infinita exigirá $|q|<1$.
+La expresión $1-1+1-1+\cdots$ tiene sumas parciales iguales a uno o a cero según dónde nos detengamos. Esas dos respuestas siguen alternándose por lejos que avancemos, de modo que no aparece un límite común. Para que una identidad finita proporcione una suma infinita tendremos que examinar el término que permanece al final, antes de suprimirlo.
 
 **Lema 8.1 (condición necesaria; `EDC-C08-LEM-001`).** Si $\sum_{n=0}^{\infty}a_n$ converge, entonces $a_n\to0$. **Demostración.** Para $n\ge1$, $a_n=S_n-S_{n-1}$; ambas sumas parciales tienen el mismo límite, de donde $a_n\to0$. $\square$
 
-La implicación inversa es falsa. El hecho de que las piezas individuales sean pequeñas no impide que su acumulación crezca sin límite. Lo veremos con la serie armónica.
+Si la suma tiene un límite, cada nuevo aporte debe tender a cero. Queda averiguar si esa condición controla también lo que aportan muchos términos juntos. La serie armónica mostrará que una cola puede conservar un tamaño apreciable aunque cada una de sus piezas sea pequeña.
 
 ## 8.2. La completitud y el criterio de Cauchy
 
@@ -59,9 +59,15 @@ $$
 \qquad\text{para cualesquiera enteros }q\ge p>N.
 $$
 
-**Demostración.** La expresión de la desigualdad es $|S_q-S_{p-1}|$; por tanto equivale a que la sucesión $(S_N)$ sea de Cauchy, considerando índices suficientemente grandes. Si $S_N$ converge, cumple la condición por desigualdad triangular. Inversamente, una sucesión de Cauchy real es acotada: fijando $\varepsilon=1$ se acotan los términos de la cola respecto de un mismo $S_N$, y los primeros términos son finitos. Por Bolzano–Weierstrass de C00 existe una subsucesión $S_{n_k}\to S$. Dado $\varepsilon>0$, elegimos $N$ para la condición de Cauchy con tolerancia $\varepsilon/2$ y luego $k$ con $n_k\ge N$ y $|S_{n_k}-S|<\varepsilon/2$. Para todo $n\ge N$, $|S_n-S|\le|S_n-S_{n_k}|+|S_{n_k}-S|<\varepsilon$, ajustando $k$ para que ambos índices estén en la cola. Así $S_n\to S$. $\square$
+**Demostración.** Una cola finita es la diferencia de dos sumas parciales: $\sum_{n=p}^{q}a_n=S_q-S_{p-1}$. Por tanto la condición del enunciado equivale a que dos sumas parciales suficientemente alejadas tengan una separación menor que cualquier tolerancia. Es la condición de Cauchy para la sucesión $(S_N)$; el desplazamiento del índice de $p$ a $p-1$ sólo modifica dónde comienza la cola.
 
-No utilizamos aquí ninguna suma infinita como premisa: se trata de un resultado sobre **sucesiones reales**, cuya completitud fue establecida en C00. El criterio permite trabajar directamente con *colas*, es decir, con la parte todavía no sumada tras un número finito de pasos.
+Si $S_N\to S$, elegimos un índice a partir del cual cada suma diste de $S$ en menos que $\varepsilon/2$. La desigualdad triangular da entonces $|S_q-S_{p-1}|<\varepsilon$ para las colas correspondientes.
+
+En sentido inverso, supongamos la condición de Cauchy. Primero obtenemos acotación: con tolerancia uno, todos los términos de una cola están a distancia menor que uno de un término fijo de ella. Los términos anteriores son una cantidad finita y también pueden acotarse. Bolzano–Weierstrass de C00 proporciona una subsucesión $S_{n_k}$ que converge a un número real $S$.
+
+La condición de Cauchy permite extender ese límite a la sucesión entera. Dado $\varepsilon>0$, escogemos una cola donde dos términos cualesquiera disten en menos que $\varepsilon/2$. Elegimos después un término de la subsucesión que esté en esa cola y satisfaga $|S_{n_k}-S|<\varepsilon/2$. Para todo $S_n$ de la misma cola, $|S_n-S|\le|S_n-S_{n_k}|+|S_{n_k}-S|<\varepsilon$. Así todas las sumas parciales convergen a $S$. $\square$
+
+El criterio permite buscar una suma sin conocerla de antemano: controla cuánto cambia cualquier suma parcial al añadir una cantidad finita de términos posteriores. La completitud de los reales, a través del resultado de C00, convierte ese control en existencia de un límite.
 
 **Lema 8.2 (sumas de términos no negativos; `EDC-C08-LEM-002`).** Si $a_n\ge0$, la serie converge si y sólo si sus sumas parciales están acotadas superiormente. **Demostración.** Como $S_{N+1}-S_N=a_{N+1}\ge0$, las sumas parciales son no decrecientes. Si están acotadas, el teorema de convergencia monótona de C00 da su límite real. Una sucesión convergente está acotada. $\square$
 
@@ -78,9 +84,11 @@ $$
 
 Si $|q|\ge1$, la serie no converge.
 
-**Demostración.** La identidad **finita** $(1-q)\sum_{n=0}^{N}q^n=1-q^{N+1}$ vale para $q\ne1$. Si $|q|<1$, $q^{N+1}\to0$ por el principio arquimediano, como en C04, y de la identidad se deducen el límite y el resto exacto. Si $|q|\ge1$, el término $q^n$ no tiende a cero, con lo que el Lema 8.1 excluye convergencia. $\square$
+**Demostración.** Al multiplicar la suma finita por $1-q$, cada potencia intermedia se cancela con la siguiente. Para $q\ne1$ queda $(1-q)\sum_{n=0}^{N}q^n=1-q^{N+1}$. Si $|q|<1$, el resultado arquimediano usado en C04 asegura $q^{N+1}\to0$. Dividimos por $1-q$ y la identidad finita proporciona el límite $1/(1-q)$.
 
-No se ha cancelado el factor $1-q$ cuando $q=1$. Tampoco se ha deducido arbitrariamente $1-1+\cdots=1/2$. Una expresión algebraica finita autoriza el paso al infinito **únicamente porque se ha demostrado que el resto desaparece**.
+La misma identidad conserva el error: la diferencia entre el candidato y la suma parcial es $q^{N+1}/(1-q)$. Tomar módulos da el resto exacto del enunciado. Si $|q|\ge1$, los módulos de $q^n$ no tienden a cero, y el Lema 8.1 excluye convergencia, incluido $q=1$. $\square$
+
+El resto decide hasta dónde puede usarse la fórmula infinita. Para una razón de módulo menor que uno, ese término desaparece; para las razones uno y menos uno, la sucesión de sumas parciales conserva el crecimiento o la alternancia que impiden un límite.
 
 Como laboratorio numérico, con $q=1/2$ la suma parcial $1+1/2+\cdots+2^{-N}$ queda a distancia exacta $2^{-N}$ de $2$. En las aproximaciones de C04 el principio era el mismo, aunque allí había además que justificar que el área geométrica quedara encerrada entre figuras explícitas.
 
@@ -88,7 +96,9 @@ Como laboratorio numérico, con $q=1/2$ la suma parcial $1+1/2+\cdots+2^{-N}$ qu
 
 **Teorema 8.3 (comparación de series positivas; `EDC-C08-THM-003`).** Sean $a_n,b_n\ge0$ para $n$ suficientemente grande. Si $a_n\le b_n$ eventualmente y $\sum b_n$ converge, entonces $\sum a_n$ converge. Si $a_n\le b_n$ eventualmente y $\sum a_n$ diverge, entonces $\sum b_n$ diverge.
 
-**Demostración.** Tras descartar un prefijo finito, las sumas parciales de $a_n$ quedan acotadas por las correspondientes de $b_n$, que están acotadas si la serie mayor converge. El Lema 8.2 concluye. La segunda implicación es la contraposición de la primera. Los prefijos finitos no modifican convergencia. $\square$
+**Demostración.** Elegimos un índice después del cual los términos sean no negativos y se cumpla la comparación. Las sumas parciales de esa cola de $a_n$ son no decrecientes y no superan las correspondientes de $b_n$. Si la serie de $b_n$ converge, estas últimas están acotadas, y el Lema 8.2 da un límite para la cola de $a_n$. Volver a añadir el prefijo finito sólo suma una constante y conserva convergencia.
+
+La segunda afirmación se sigue por contraposición: si la serie mayor convergiera, la primera parte obligaría a converger a la menor. $\square$
 
 **Proposición 8.1 (series $p$; `EDC-C08-PRP-001`).** Para $p>0$,
 
@@ -99,22 +109,24 @@ $$
 \end{cases}
 $$
 
-**Demostración.** Para $p>1$, agrupemos los índices en bloques $2^k\le n<2^{k+1}$, cada uno con $2^k$ términos. La suma en el bloque no supera $2^k(2^k)^{-p}=2^{-k(p-1)}$. Al sumar los primeros bloques obtenemos una cota por sumas parciales de una serie geométrica de razón $2^{1-p}<1$. El Lema 8.2 asegura convergencia. Para $p=1$, en el bloque $2^k\le n<2^{k+1}$ cada término es mayor que $2^{-(k+1)}$ y la suma del bloque es al menos $1/2$; por tanto las sumas parciales de la armónica no están acotadas. Si $0<p<1$, $n^{-p}\ge n^{-1}$ para $n\ge1$ y aplicamos comparación. $\square$
+**Demostración.** Agrupamos los índices por potencias de dos para comparar el número de términos de cada bloque con el tamaño de cada uno. Entre $2^k$ y $2^{k+1}-1$ hay $2^k$ índices. Si $p>1$, cada término es a lo sumo $(2^k)^{-p}$, y el bloque completo no supera $2^{-k(p-1)}$.
+
+Esas cotas forman una serie geométrica de razón $2^{1-p}<1$. Cualquier suma parcial, aunque se detenga dentro de un bloque, no supera la suma de las cotas de los bloques completos que la contienen, porque todos los términos son positivos. Las sumas parciales quedan acotadas y el Lema 8.2 demuestra convergencia.
+
+Para $p=1$, usamos una cota inferior en los mismos bloques. Cada uno de sus $2^k$ términos es mayor que $2^{-(k+1)}$, por lo que cada bloque aporta al menos $1/2$. Podemos reunir tantos bloques como queramos y hacer que las sumas parciales superen cualquier número fijado; la armónica diverge. Si $0<p<1$, tenemos $n^{-p}\ge n^{-1}$ para $n\ge1$, y la comparación con la armónica concluye. $\square$
 
 La función $1/n$ **tiende a cero**, pero su serie diverge. Éste es el contraejemplo preciso que faltaba al Lema 8.1. La agrupación por potencias de dos también permite explicar históricamente algunos argumentos medievales sobre la armónica, sin identificar automáticamente la prueba moderna con un manuscrito particular; véanse las [notas H1](capitulo-08-notas.html).
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Los hermanos Bernoulli y una suma que nunca termina de crecer"}
-
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Los Bernoulli: una pregunta conduce a otra"}
 *Lectura opcional.*
 
-Sumemos uno, después un medio, después un tercio, un cuarto… Cada nuevo término es menor que el anterior. Parece razonable esperar que, tarde o temprano, la suma deje de crecer de manera apreciable. La serie armónica guarda una sorpresa: puede superar cualquier cantidad que fijemos.
+En la sección XVI del *Tractatus de seriebus infinitis*, Jakob Bernoulli presentó un argumento sobre la divergencia de la armónica y atribuyó el hallazgo a su hermano Johann. William Dunham reconstruye ese razonamiento y reproduce el pasaje: el argumento aprovechaba otra serie, la formada por $1/[n(n+1)]$, cuya suma podía calcularse. Una suma conocida ayudaba a investigar una que crecía sin límite.
 
-Los hermanos Jakob y Johann Bernoulli se interesaron por este fenómeno. En la sección XVI de su Tractatus de seriebus infinitis, Jakob presentó un argumento de divergencia y atribuyó el hallazgo a Johann. La pregunta viajaba incluso de un hermano a otro.
+La pregunta siguiente resultó distinta. En la sección XVII, Jakob estudió $1+1/4+1/9+\cdots$. Pudo establecer que convergía, pero encontrar su suma seguía resistiéndose. Invitó a quien la hallara a comunicársela. El contraste es cercano al que acabamos de encontrar: una comparación puede demostrar que hay un número finito sin decirnos todavía cuál es.
 
-Podemos recordar la sorpresa agrupando los términos. Aunque cada sumando se haga pequeño, hay cada vez más sumandos disponibles para formar nuevos bloques. La disminución de las piezas y el crecimiento del conjunto compiten entre sí. Esa competencia es una de las preguntas más interesantes de toda la teoría de series.
+Podemos ver la utilidad de la serie auxiliar con operaciones finitas: $1/[n(n+1)]=1/n-1/(n+1)$, de modo que sus sumas parciales se cancelan hasta dejar $1-1/(N+1)$. El límite vale uno. La estructura de las piezas ofrece información que su simple tamaño no revelaba.
 
-**Para seguir leyendo:** [Jakob Bernoulli, Tractatus, § XVI, facsímil reproducido por William Dunham, The Bernoullis and the Harmonic Series (1987), pp. 21–22](https://www.ms.uky.edu/~dhje223/Bernoullis.pdf).
-
+**Para seguir leyendo:** [William Dunham, *The Bernoullis and the Harmonic Series* (1987), pp. 19–23, con reproducción del *Tractatus*, § XVI](https://www.ms.uky.edu/~dhje223/Bernoullis.pdf).
 :::
 
 ## 8.5. Convergencia absoluta, alternancia y reordenación
@@ -128,19 +140,31 @@ $$
 \le\sum_{n=N+1}^{\infty}|a_n|.
 $$
 
-**Demostración.** El criterio de Cauchy para $\sum|a_n|$ dice que sus colas tienen suma tan pequeña como queramos. La desigualdad triangular finita da $|\sum_{n=p}^{q}a_n|\le\sum_{n=p}^{q}|a_n|$, de modo que también las colas de la serie original cumplen Cauchy. Aplicamos el Teorema 8.1. La desigualdad de restos se obtiene pasando al límite en $q$ en la desigualdad finita, tras fijar $p=N+1$. $\square$
+**Demostración.** La convergencia de la serie de módulos permite hacer pequeñas todas sus colas finitas por el criterio de Cauchy. Para cada una, la desigualdad triangular da $|\sum_{n=p}^{q}a_n|\le\sum_{n=p}^{q}|a_n|$. La misma elección de índice controla entonces las colas de la serie original y el Teorema 8.1 demuestra su convergencia.
+
+Para estimar el resto fijamos $p=N+1$ y dejamos crecer $q$ en esa desigualdad finita. La primera suma converge al resto de la serie original y la segunda al resto de la serie de módulos, ambos ya existentes. La continuidad del módulo y la conservación del orden al pasar al límite dan la cota anunciada. $\square$
 
 **Teorema 8.5 (criterio alternante; `EDC-C08-THM-005`).** Sean $b_n\ge0$, $b_{n+1}\le b_n$ y $b_n\to0$. Entonces $\sum_{n=1}^{\infty}(-1)^{n-1}b_n$ converge. Su suma $S$ queda entre dos sumas parciales consecutivas y el error tras $N$ términos satisface $|S-S_N|\le b_{N+1}$.
 
-**Demostración.** Las sumas parciales pares $S_{2k}$ crecen porque $S_{2k+2}-S_{2k}=b_{2k+1}-b_{2k+2}\ge0$, mientras las impares $S_{2k+1}$ decrecen porque $S_{2k+3}-S_{2k+1}=-b_{2k+2}+b_{2k+3}\le0$. Cada suma par es menor o igual que la impar inmediata y las dos subsucesiones están acotadas entre sí. Por convergencia monótona de C00 tienen límites, y $S_{2k+1}-S_{2k}=b_{2k+1}\to0$ hace que coincidan. Para cada $N$, el límite queda entre $S_N$ y $S_{N+1}$, cuya distancia es $b_{N+1}$. $\square$
+**Demostración.** Separamos las sumas parciales según su paridad. Añadir una pareja de términos a una suma par produce $S_{2k+2}-S_{2k}=b_{2k+1}-b_{2k+2}\ge0$, porque los tamaños no aumentan. Las sumas pares crecen. Para las impares, $S_{2k+3}-S_{2k+1}=-b_{2k+2}+b_{2k+3}\le0$, de modo que decrecen.
+
+Cada suma par queda por debajo de la impar siguiente, cuya diferencia es $b_{2k+1}$. Las pares están acotadas superiormente por la primera suma impar y las impares inferiormente por las pares. La convergencia monótona de C00 da un límite para cada subsucesión; como su separación $b_{2k+1}$ tiende a cero, esos límites coinciden. Tanto los términos pares como los impares de $(S_N)$ se acercan al mismo número, luego la sucesión completa converge a él.
+
+Los dos recorridos encierran el límite. Para cualquier $N$, éste queda entre $S_N$ y $S_{N+1}$, cuya distancia es $b_{N+1}$. La distancia de $S_N$ al límite no supera esa anchura y obtenemos la estimación de error. $\square$
 
 La serie armónica alternante $1-1/2+1/3-\cdots$ converge por este teorema, pero **no absolutamente**, porque su serie de valores absolutos es la armónica. El orden de sumación exige entonces más cuidado que en el caso absoluto.
 
 **Proposición 8.2 (reordenaciones absolutas; `EDC-C08-PRP-002`).** Si $\sum a_n$ converge absolutamente y $\pi:\mathbb N_0\to\mathbb N_0$ es biyectiva, entonces $\sum_{j=0}^{\infty}a_{\pi(j)}$ converge a la misma suma.
 
-**Demostración.** Dado $\varepsilon>0$, elegimos $N$ tal que $\sum_{n>N}|a_n|<\varepsilon/2$. Como $\pi$ es una permutación, hay un $M$ para el cual $\{0,\ldots,N\}\subseteq\{\pi(0),\ldots,\pi(M)\}$. Para todo $m\ge M$, la suma de los primeros $m+1$ términos reordenados contiene el prefijo original completo hasta $N$ y una selección finita de índices mayores. Su distancia a la suma original está acotada por dos colas de valores absolutos y es menor que $\varepsilon$. $\square$
+**Demostración.** Escribamos $S$ para la suma original. Dado $\varepsilon>0$, escogemos $N$ con $\sum_{n>N}|a_n|<\varepsilon/2$. Los términos hasta $N$ forman un conjunto finito; como $\pi$ es biyectiva, todos aparecen después de una cantidad finita de pasos en el nuevo orden. Existe por ello $M$ tal que $\{0,\ldots,N\}\subseteq\{\pi(0),\ldots,\pi(M)\}$.
 
-**Advertencia sobre convergencia condicional.** Para la armónica alternante, las sumas de términos positivos de índices impares y los valores absolutos de los términos negativos de índices pares divergen por comparación con la armónica. Si se suman tantos términos positivos como haga falta para superar un número real $L$ y luego tantos negativos como haga falta para quedar por debajo de $L$, repitiendo indefinidamente y consumiendo los términos de cada signo en su orden, se obtiene una **reordenación** con límite $L$: cada sobrepaso es menor que el último término añadido, que tiende a cero. Es un argumento concreto que muestra por qué no podemos trasladar la libertad de reordenación de la Proposición 8.2 a una serie meramente condicional.
+Para $m\ge M$, la suma reordenada contiene el prefijo original completo y algunos términos de índices mayores. La diferencia entre esa suma y el prefijo tiene módulo menor que $\varepsilon/2$, porque es una selección finita de la cola de módulos. La diferencia entre $S$ y el mismo prefijo también tiene módulo menor que $\varepsilon/2$, por el Teorema 8.4. La desigualdad triangular hace que la suma reordenada diste de $S$ en menos que $\varepsilon$. $\square$
+
+**Advertencia sobre convergencia condicional.** En la armónica alternante, los términos positivos $1/(2k-1)$ forman una serie divergente, pues superan $1/(2k)$; las magnitudes de los negativos suman también una serie divergente, la mitad de la armónica. Podemos usar esa disponibilidad para dirigir las sumas hacia un número real $L$.
+
+Tomamos los positivos no usados, en su orden, hasta quedar por encima de $L$; después añadimos los negativos no usados hasta quedar por debajo. Cada paso termina en un número finito de adiciones porque la subserie correspondiente diverge. Repetimos indefinidamente. Tras el primer cruce, cada etapa consume al menos un término nuevo de su signo, así que los índices avanzan sin límite y todos los términos se usan exactamente una vez.
+
+Al cruzar $L$, la distancia final no supera el módulo del último término añadido, porque justo antes del cruce estábamos del otro lado. Esos módulos tienden a cero. Las sumas intermedias se mueven monótonamente entre el cruce anterior y el siguiente, por lo que sus distancias también quedan controladas por ambos márgenes. Toda la sucesión converge a $L$. La libertad que la convergencia absoluta concedía al orden deja de estar disponible en este ejemplo condicional.
 
 ## 8.6. Tests de razón y de raíz: qué concluyen y qué no
 
@@ -150,22 +174,26 @@ La serie armónica alternante $1-1/2+1/3-\cdots$ converge por este teorema, pero
 2. Si existe $\lim_{n\to\infty}|a_n|^{1/n}=L<1$, entonces $\sum_{n\ge1}a_n$ converge absolutamente. Si $L>1$, diverge.
 3. Para $L=1$ ninguno de estos criterios decide, sin hipótesis nuevas, si la serie converge.
 
-**Demostración.** En el primer caso con $L<1$, elegimos $q$ con $L<q<1$; a partir de un índice $N$ se cumple $|a_{n+1}|\le q|a_n|$, por lo que $|a_{N+k}|\le|a_N|q^k$. Convergencia absoluta resulta por comparación geométrica. Si $L>1$, hay $q>1$ con $|a_{n+1}|\ge q|a_n|$ en una cola y el término no tiende a cero. Para la raíz, si $L<1$ tomamos $L<q<1$, de modo que $|a_n|\le q^n$ eventualmente; si $L>1$, $|a_n|\ge q^n$ para algún $q>1$ eventualmente. Cuando $L=1$, las series $\sum 1/n$ y $\sum1/n^2$ poseen ambas razones consecutivas y raíces en el límite iguales a uno, pero divergen y convergen respectivamente. $\square$
+**Demostración.** Si el límite de los cocientes es $L<1$, elegimos una razón $q$ estrictamente entre $L$ y uno. La convergencia del cociente asegura un índice $N$ después del cual $|a_{n+1}|\le q|a_n|$. Repetir esta desigualdad da $|a_{N+k}|\le|a_N|q^k$. La cola de módulos queda dominada por una geométrica convergente, y la comparación demuestra convergencia absoluta.
 
-La comparación geométrica es el motor de ambos criterios. Un cociente con límite uno **no** debe confundirse con prueba de convergencia; la información disponible resulta demasiado gruesa para distinguir las potencias $n^{-1}$ y $n^{-2}$.
+Si $L>1$, escogemos $q$ entre uno y $L$. En una cola se cumple $|a_{n+1}|\ge q|a_n|$; como sus términos son no nulos, la repetición hace crecer sus módulos al menos geométricamente. No pueden tender a cero, y la condición necesaria excluye convergencia.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cauchy: averiguar si las piezas alcanzan a formar una suma"}
+Para la raíz usamos la misma idea sin repetir cocientes. Si $L<1$, elegir $L<q<1$ da eventualmente $|a_n|^{1/n}\le q$ y por tanto $|a_n|\le q^n$. Si $L>1$, con $1<q<L$ obtenemos $|a_n|\ge q^n$ en una cola. La comparación o la condición necesaria concluyen según el caso.
 
+Para $L=1$, ninguna elección estricta de una razón a un lado de uno queda asegurada por ese límite. Las series $\sum1/n$ y $\sum1/n^2$ tienen límites de cociente y de raíz iguales a uno, pero la primera diverge y la segunda converge. Para comprobar las raíces, usamos $0\le\ln n=\int_1^n dt/t\le\int_1^n dt/\sqrt t=2(\sqrt n-1)$, por C05–C07. Así $\ln n/n\to0$; la definición de potencia y la continuidad de la exponencial de C02 dan $(n^{-p})^{1/n}=\exp(-p\ln n/n)\to1$ para $p=1,2$. Estos ejemplos prueban que el valor uno no decide. $\square$
+
+En ambos criterios, elegir $q$ permite pasar de un límite a una desigualdad que vale para todos los términos de una cola. La serie geométrica convierte esa desigualdad en un control de la suma.
+
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cauchy: preguntar por la suma antes de calcularla"}
 *Lectura opcional.*
 
-Hay series en las que las piezas se hacen pequeñas con mucha rapidez, y otras en las que disminuyen despacio. ¿Cómo reconocer, sin sumar una por una, cuáles se reunirán en una cantidad finita?
+En la introducción de su *Cours d’analyse* de 1821, Cauchy explica que, antes de sumar una serie, necesita examinar en qué casos puede ser sumada. Esa decisión guía el capítulo VI: empieza con las sumas de un número finito de términos y llama suma al límite al que se acercan. La geométrica aparece enseguida como un ejemplo donde el término restante permite decidir la convergencia.
 
-En el capítulo VI de su Cours d’analyse de 1821, Cauchy estudió procedimientos para responder a esa pregunta. Entre ellos aparecen criterios basados en raíces y en cocientes de términos consecutivos. La convergencia se convirtió así en algo que podíamos investigar con herramientas concretas.
+Para estudiar otras series, en el § II compara raíces y cocientes de términos consecutivos con uno. En la prueba del criterio de la raíz elige un número intermedio entre el límite y la unidad, y así encuentra una progresión geométrica con la que comparar los términos.
 
-El criterio del cociente tiene una intuición especialmente sencilla: comparar cada pieza con la anterior. Si, a partir de cierto punto, las piezas se reducen al menos con la rapidez de una progresión geométrica convergente, ya conocemos una buena forma de estimar lo que falta. Una familia de sumas que entendemos bien nos ayuda a comprender otras más complicadas.
+Hemos usado la misma maniobra: el límite del cociente o de la raíz permite escoger una razón fija $q<1$, y esa razón convierte la información sobre términos individuales en una cota para las colas. El número intermedio tiene un trabajo preciso: deja el margen necesario para que la comparación siga valiendo después de cierto índice.
 
-**Para seguir leyendo:** [Cauchy, Cours d’analyse (1821), capítulo VI, § III](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier).
-
+**Para seguir leyendo:** [Cauchy, *Cours d’analyse* (1821), introducción y capítulo VI, §§ I–II; transcripción francesa en Wikisource](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier).
 :::
 
 ## 8.7. Una serie cuyos términos dependen de $x$
@@ -190,7 +218,13 @@ con la convención $R=\infty$ si $\mathcal D$ no está acotado y $R=\sup\mathcal
 
 **Teorema 8.7 (intervalo de convergencia; `EDC-C08-THM-007`).** La serie de potencias converge absolutamente cuando $|x-c|<R$ y diverge cuando $|x-c|>R$. Para $R=0$ sólo se garantiza la convergencia en $x=c$; para $R=\infty$ converge absolutamente para todo real. Si $0<R<\infty$, las dos fronteras $x=c\pm R$ se investigan **por separado**.
 
-**Demostración.** La convergencia absoluta en una distancia $s>0$ implica, por comparación término a término, la convergencia a cualquier distancia $0\le r<s$. Por la definición de supremo, si $r<R$, existe $s\in\mathcal D$ con $r<s$, y entonces $r\in\mathcal D$. Para la divergencia exterior, supongamos que la serie converge en un punto $x$ con $t=|x-c|>R$. Su término general $a_n(x-c)^n$ tiende a cero y por tanto está acotado: $|a_n|t^n\le B$. Para cualquier $0\le s<t$ obtenemos $|a_n|s^n\le B(s/t)^n$, por lo que $s\in\mathcal D$ mediante comparación geométrica. Tomando $s$ tal que $R<s<t$ llegamos a una contradicción. El argumento no dice nada sobre los puntos de distancia exactamente $R$. $\square$
+**Demostración.** Si la serie de módulos converge a una distancia $s>0$, converge también a cualquier distancia $0\le r<s$: cada término $|a_n|r^n$ no supera a $|a_n|s^n$. Por tanto $\mathcal D$ contiene todas las distancias menores que cualquiera de sus elementos.
+
+Supongamos $r<R$. Si $R$ es finito, la propiedad del supremo proporciona $s\in\mathcal D$ con $r<s$; si $R=\infty$, lo proporciona la falta de cota superior. La comparación anterior da $r\in\mathcal D$, es decir, convergencia absoluta en toda distancia interior. El centro ya converge por definición, también cuando $R=0$.
+
+Para excluir un punto exterior, supongamos que la serie converge con $t=|x-c|>R$. Sus términos tienden a cero y están acotados, así que existe $B$ con $|a_n|t^n\le B$. Si elegimos cualquier $0\le s<t$, obtenemos $|a_n|s^n\le B(s/t)^n$. La comparación geométrica coloca entonces $s$ en $\mathcal D$. Como podemos escoger $R<s<t$, contradice que $R$ sea una cota superior de ese conjunto. La convergencia exterior es imposible.
+
+Cuando la distancia es exactamente $R$, no queda una razón $s/t<1$ que dé esta contradicción. Los dos puntos fronterizos conservan una pregunta propia. $\square$
 
 **Ejemplo de extremos distintos.** La serie $\sum_{n=1}^{\infty}x^n/n$ tiene radio $1$: para $|x|<1$ converge por comparación geométrica; en $x=1$ es la armónica divergente, pero en $x=-1$ converge condicionalmente por alternancia. En contraste, $\sum_{n=1}^{\infty}x^n/n^2$ converge absolutamente en ambos extremos, mientras la geométrica $\sum_{n\ge0}x^n$ diverge en ambos. La expresión «radio uno» no codifica la respuesta en la frontera.
 
@@ -205,7 +239,7 @@ $$
 
 En particular, los polinomios parciales aproximan $F$ **con el mismo error controlado** en $[c-r,c+r]$, y $F$ es continua en $|x-c|<R$.
 
-**Demostración.** Por ser $B_s$ una suma de términos no negativos, $|a_n|s^n\le B_s$. Luego para $|x-c|\le r$,
+**Demostración.** Elegir $s$ mayor que $r$ nos deja una razón $q=r/s<1$. Como $B_s$ suma términos no negativos, cada uno satisface $|a_n|s^n\le B_s$. Para $|x-c|\le r$, podemos separar esa cota del factor que depende de la distancia y obtener
 
 $$
 \sum_{n=N+1}^{\infty}|a_n||x-c|^n
@@ -213,21 +247,23 @@ $$
 =\frac{B_sq^{N+1}}{1-q}.
 $$
 
-La cota proviene del Teorema 8.2. Para demostrar continuidad de $F$ en un punto interior $x_0$, elegimos $r$ y $s$ con $|x_0-c|<r<s<R$. Dado $\varepsilon>0$, escogemos una suma parcial $P_N$ cuyo error sea menor que $\varepsilon/3$ en todo $[c-r,c+r]$. Como el polinomio $P_N$ es continuo, para $x$ suficientemente próximo a $x_0$ se tiene $|P_N(x)-P_N(x_0)|<\varepsilon/3$. Sumando los tres errores se obtiene $|F(x)-F(x_0)|<\varepsilon$. $\square$
+La primera suma acota el módulo del resto por convergencia absoluta, y la última igualdad es el resto geométrico del Teorema 8.2. El miembro final tiende a cero y no depende de $x$. Si $r=0$, sólo consideramos el centro y el resto tras el término constante es cero.
 
-La expresión «uniformemente sobre un intervalo interior» describe exactamente la desigualdad cuantificada que acabamos de probar. **No** estamos introduciendo una teoría general de convergencia uniforme para sucesiones arbitrarias de funciones, ni afirmando esta cota hasta $|x-c|=R$.
+Para demostrar continuidad en $x_0$ escogemos $|x_0-c|<r<s<R$. Dado $\varepsilon>0$, tomamos un polinomio parcial $P_N$ cuyo error sea menor que $\varepsilon/3$ en todo $[c-r,c+r]$. Por continuidad del polinomio, podemos exigir $|P_N(x)-P_N(x_0)|<\varepsilon/3$ al acercar $x$ a $x_0$, manteniéndolo dentro de ese intervalo. Comparar $F(x)$ con $P_N(x)$, los dos valores de $P_N$, y $P_N(x_0)$ con $F(x_0)$ da tres errores cuya suma es menor que $\varepsilon$. Así $F$ es continua. $\square$
+
+Un mismo índice de truncamiento controla todos los puntos del intervalo menor. Éste es el sentido concreto de la convergencia uniforme que usaremos: deja escoger el polinomio antes de escoger el punto. La estimación necesita espacio entre $r$ y el radio y sólo se ha probado en intervalos interiores.
 
 ## 8.9. Por qué podemos integrar y derivar una serie de potencias
 
 **Lema 8.3 (límite de integrales con error controlado; `EDC-C08-LEM-003`).** Si $f_N,f$ son continuas en $[u,v]$ y $|f_N(t)-f(t)|\le\varepsilon_N$ allí para todo $t$, con $\varepsilon_N\to0$, entonces $\int_u^v f_N\to\int_u^v f$.
 
-**Demostración.** Ambas integrales existen por C05 y, mediante linealidad y orden,
+**Demostración.** La continuidad da existencia de ambas integrales. Para $u\le v$, la diferencia $f_N-f$ queda entre las constantes $-\varepsilon_N$ y $\varepsilon_N$. La linealidad y el orden de C05 producen
 
 $$
 \left|\int_u^v(f_N-f)\right|\le(v-u)\varepsilon_N
 $$
 
-para $u\le v$. El caso de orientación inversa se reduce a éste cambiando el signo. $\square$
+y la linealidad identifica el miembro izquierdo con la diferencia absoluta de las dos integrales. La longitud está fija y $\varepsilon_N\to0$, luego esa diferencia tiende a cero. Si $v<u$, invertimos los extremos y usamos orientación; si coinciden, ambas integrales son cero. $\square$
 
 **Teorema 8.9 (integración y derivación término a término; `EDC-C08-THM-009`).** Sea $R>0$, $F(x)=\sum_{n=0}^{\infty}a_n(x-c)^n$ para $|x-c|<R$. Entonces, para cada $x$ interior,
 
@@ -245,41 +281,51 @@ $$
 
 Ambas series de la derecha convergen en los puntos interiores indicados.
 
-**Demostración.** Fijemos $0<r<s<R$ y pongamos $q=r/s$. Con $B_s$ como en el Teorema 8.8, para $n\ge1$ y $|x-c|\le r$,
+**Demostración.** Trabajamos primero en un intervalo cerrado interior $[c-r,c+r]$, con $0<r<s<R$. La distancia mayor $s$ permite acotar los coeficientes por $|a_n|s^n\le B_s$. Al derivar un monomio aparece un factor $n$, pero conserva una potencia de la razón $q=r/s<1$:
 
 $$
 |n a_n(x-c)^{n-1}|\le\frac{B_s}{s}\,n q^{n-1}.
 $$
 
-La serie numérica $\sum_{n=1}^{\infty}nq^{n-1}$ converge para $0\le q<1$, pues si $q>0$ sus términos tienen razón que tiende a $q<1$ (Teorema 8.6), y para $q=0$ sólo queda el primero. Así las sumas parciales de las **derivadas polinómicas** tienen colas arbitrariamente pequeñas con una cota independiente de $x$ en $[c-r,c+r]$. Llamemos $G(x)$ al límite de esa serie; el mismo argumento de tres errores de la prueba anterior, aplicado a sumas parciales de derivadas, demuestra que $G$ es continua sobre el intervalo interior.
+La serie de cotas $\sum_{n\ge1}nq^{n-1}$ converge: para $q>0$, el cociente de términos consecutivos tiende a $q<1$ y el Teorema 8.6 concluye; para $q=0$ sólo queda el primero. Así cualquier cola finita de la serie de derivadas se controla por una cola de esa serie numérica, independientemente de $x$. El criterio de Cauchy proporciona un límite $G(x)$ para cada punto, y las mismas colas acotan la diferencia entre $G$ y cualquier suma parcial de derivadas.
 
-Sean $P_N(x)=\sum_{n=0}^{N}a_n(x-c)^n$. Para cada $x\in[c-r,c+r]$, el Teorema Fundamental C06 aplicado al polinomio $P_N$ da
+Esto también demuestra continuidad de $G$. Una suma parcial de derivadas es un polinomio continuo. Escogemos una cuya distancia a $G$ sea menor que $\varepsilon/3$ en todo el intervalo y usamos su continuidad para el error central entre dos puntos, igual que en el Teorema 8.8.
+
+Ya existe una función continua $G$, pero falta identificarla como derivada de $F$. Para ello usamos una identidad que sí conocemos para cada polinomio parcial $P_N(x)=\sum_{n=0}^{N}a_n(x-c)^n$. El Teorema Fundamental de C06 da
 
 $$
 P_N(x)-P_N(c)=\int_c^x P_N'(t)\,dt.
 $$
 
-Pasamos al límite: a la izquierda, $P_N(x)\to F(x)$ y $P_N(c)=a_0$; a la derecha, las integrales convergen a $\int_c^xG(t)\,dt$ por el Lema 8.3 y la cota uniforme de colas. Por tanto $F(x)=a_0+\int_c^xG(t)\,dt$. La primera parte del Teorema Fundamental C06 implica $F'(x)=G(x)$ en el interior. Como $r<R$ es arbitrario, la igualdad vale donde se anunció.
+En la izquierda, $P_N(x)$ tiende a $F(x)$ y $P_N(c)=a_0$. En la derecha, el error común entre $P_N'$ y $G$ tiende a cero sobre todo el segmento que une $c$ con $x$. El Lema 8.3 permite pasar al límite en esas integrales. Obtenemos $F(x)=a_0+\int_c^xG(t)\,dt$.
 
-Para integrar, la cota uniforme del Teorema 8.8 en un intervalo interior que contenga $u$ y $v$ y el Lema 8.3 permiten tomar el límite en $\int_u^vP_N$. Cada integral de polinomio es una suma **finita** de potencias y vale la expresión parcial correspondiente de la fórmula anunciada. El límite prueba la identidad, también si $v<u$ por orientación. $\square$
+La primera parte del Teorema Fundamental identifica ahora $F'=G$ en el interior de ese intervalo. Para cualquier punto con $|x-c|<R$ podemos escoger $r$ mayor que su distancia al centro y después $s$ mayor que $r$, todavía menor que $R$. La fórmula de derivación vale por ello en todos los puntos anunciados.
 
-El núcleo de la prueba es una doble estimación local que **autoriza concretamente** las operaciones. La igualdad $F'=\sum n a_n(x-c)^{n-1}$ no se ha obtenido «pasando» una derivada por un símbolo $\sum$ sin prueba. Tampoco se ha supuesto que la serie provenga de un desarrollo de Taylor de una función externa: **esa pregunta pertenece a C09**.
+Para integrar elegimos del mismo modo un intervalo interior que contenga el segmento entre $u$ y $v$. El Teorema 8.8 controla en él el error entre $P_N$ y $F$, y el Lema 8.3 hace que $\int_u^vP_N$ converja a $\int_u^vF$. Cada integral polinómica se calcula por una suma finita de integrales de potencias y da exactamente la suma parcial de la fórmula del enunciado. Su límite demuestra la identidad y la convergencia de la serie derecha, también con extremos invertidos. $\square$
 
-**Proposición 8.3 (unicidad de coeficientes; `EDC-C08-PRP-003`).** Si dos series de potencias con radio positivo y el mismo centro representan una misma función en un intervalo abierto alrededor del centro, entonces sus coeficientes coinciden. **Demostración.** Podemos derivar sucesivamente en cualquier intervalo interior. En efecto, para un orden fijo $m\ge1$, la derivada $m$-ésima del monomio $a_n(x-c)^n$ (cuando $n\ge m$) tiene módulo, en $|x-c|\le r<s<R$, acotado por
+La integración permite identificar la derivada sin suponer de antemano que derivar conmute con un límite. Primero construimos el límite continuo de las derivadas polinómicas; después lo integramos y reconocemos a $F$ como su acumulación. El control común de las colas es lo que une esos pasos.
+
+**Proposición 8.3 (unicidad de coeficientes; `EDC-C08-PRP-003`).** Si dos series de potencias con radio positivo y el mismo centro representan una misma función en un intervalo abierto alrededor del centro, entonces sus coeficientes coinciden. **Demostración.** Para determinar el coeficiente de grado $k$ queremos derivar $k$ veces y evaluar en el centro. Debemos justificar esas derivaciones: aunque los factores que aparecen crecen con $n$, para cada orden fijo podemos compararlos con una potencia geométrica en un intervalo menor.
+
+Si $m\ge1$ y $|x-c|\le r<s<R$, la derivada de orden $m$ del monomio de grado $n\ge m$ queda acotada por
 
 $$
 \frac{B_s}{s^m}\,n(n-1)\cdots(n-m+1)\left(\frac rs\right)^{n-m}.
 $$
 
-La serie de estas cotas converge por el criterio de razón, cuyo límite para los términos sucesivos es $r/s<1$ (si $r=0$, sólo importa el término de grado $m$). El razonamiento del Teorema 8.9 puede repetirse inductivamente para cada orden $m$. Evaluando $k$ derivadas en $x=c$ queda $F^{(k)}(c)=k!a_k$, ya que las potencias de orden mayor contienen un factor $(x-c)$ y las de orden menor desaparecen al derivar suficientes veces. De ese modo cada coeficiente queda determinado por la función, y dos representaciones iguales deben tener los mismos coeficientes. $\square$
+Para $r>0$, el cociente de cotas consecutivas tiende a $r/s<1$, de modo que la serie de cotas converge. Podemos repetir el razonamiento del Teorema 8.9 por inducción: el límite de las derivadas de orden $m$ es continuo por el control común de colas, y su integral identifica el límite de orden $m-1$ como una acumulación. Esto autoriza la derivación de cada orden fijo. Si sólo evaluamos en $r=0$, queda el término de grado $m$.
 
-La proposición dice qué coeficientes **debe** tener una representación por serie de potencias **cuando esa representación existe**. No demuestra que cualquier función con derivadas de todos los órdenes coincida con la serie formada a partir de ellas; esta distinción será central en C09.
+Al evaluar en $c$ después de $k$ derivaciones, los monomios de grado menor han desaparecido y los de grado mayor todavía contienen una potencia positiva de $x-c$. Sólo el de grado $k$ aporta $k!a_k$. Para $k=0$ la evaluación original da $F(c)=a_0$. Así cada coeficiente está determinado por $F^{(k)}(c)/k!$.
+
+Si las dos series representan la misma función cerca del centro, elegimos un intervalo menor dentro de ambos radios y dentro de esa región de igualdad. Sus derivadas de todos los órdenes coinciden allí, en particular en el centro, y por tanto coinciden todos sus coeficientes. $\square$
+
+Cuando una representación por serie de potencias existe, sus coeficientes están obligados por las derivadas en el centro. Para una función dada, formar esos coeficientes deja todavía por comprobar que la serie converja y que su suma recupere la función. Esas serán dos preguntas distintas en C09.
 
 ## 8.10. Multiplicar series sin reordenar a ciegas
 
 **Teorema 8.10 (producto de Cauchy; `EDC-C08-THM-010`).** Si $\sum_{n=0}^{\infty}a_n=A$ y $\sum_{n=0}^{\infty}b_n=B$ convergen absolutamente, definimos $c_k=\sum_{j=0}^{k}a_jb_{k-j}$. Entonces $\sum_{k=0}^{\infty}c_k$ converge absolutamente y vale $AB$.
 
-**Demostración.** Sean $A_*=\sum|a_n|$ y $B_*=\sum|b_n|$, finitos. Para todo $N$,
+**Demostración.** Llamemos $A_*=\sum|a_n|$ y $B_*=\sum|b_n|$, ambos finitos. Cada coeficiente $c_k$ reúne una cantidad finita de productos con índices que suman $k$. La desigualdad triangular da
 
 $$
 \sum_{k=0}^{N}|c_k|
@@ -287,14 +333,18 @@ $$
 \le A_*B_*.
 $$
 
-Las sumas parciales de $\sum|c_k|$ son crecientes y acotadas, luego convergen. Para identificar el valor, escribamos $T_N=\sum_{k=0}^{N}c_k=\sum_{i+j\le N}a_ib_j$. El producto de las sumas parciales $A_NB_N=\sum_{0\le i,j\le N}a_ib_j$ difiere de $T_N$ solamente en pares $0\le i,j\le N$ con $i+j>N$. En esos pares, por lo menos uno de los índices supera $\lfloor N/2\rfloor$. Por tanto
+Para la última cota, los pares usados tienen ambos índices entre cero y $N$; sus productos de módulos forman una parte del producto de dos sumas finitas, cada una acotada por $A_*$ o $B_*$. Las sumas parciales de módulos de $c_k$ son no decrecientes y acotadas, de modo que el Lema 8.2 da convergencia absoluta.
+
+Para identificar el valor comparamos dos sumas finitas. La suma $T_N=\sum_{k=0}^{N}c_k$ reúne los pares $i+j\le N$, mientras $A_NB_N$ reúne todos los pares $0\le i,j\le N$. Los pares adicionales están fuera del triángulo de índices del primer conjunto. Si ambos índices fueran a lo sumo $\lfloor N/2\rfloor$, su suma no superaría $N$; por tanto al menos uno supera ese umbral en todo par adicional.
+
+Separamos las contribuciones según cuál índice lo supera. Las regiones pueden solaparse, pero al estimar con módulos contar dos veces sólo amplía la cota:
 
 $$
 |A_NB_N-T_N|\le B_*\sum_{i>\lfloor N/2\rfloor}|a_i|
 +A_*\sum_{j>\lfloor N/2\rfloor}|b_j|\longrightarrow0.
 $$
 
-Como $A_N\to A$ y $B_N\to B$, el producto finito tiende a $AB$, y necesariamente $T_N\to AB$. $\square$
+Las colas tienden a cero porque las dos series de módulos convergen. Por las reglas de límites de C00, $A_NB_N\to AB$. La diferencia recién controlada obliga entonces a que $T_N$ tenga ese mismo límite. $\square$
 
 **Corolario 8.1 (producto de series de potencias; `EDC-C08-COR-001`).** Si $F(x)=\sum a_n(x-c)^n$ y $G(x)=\sum b_n(x-c)^n$ tienen radios positivos $R_F,R_G$, para $|x-c|<\min(R_F,R_G)$,
 
@@ -303,9 +353,9 @@ F(x)G(x)=\sum_{k=0}^{\infty}
 \left(\sum_{j=0}^{k}a_jb_{k-j}\right)(x-c)^k.
 $$
 
-**Demostración.** En ese punto las dos series numéricas convergen absolutamente por el Teorema 8.7; aplíquese el Teorema 8.10, observando la identidad finita $(x-c)^j(x-c)^{k-j}=(x-c)^k$. $\square$
+**Demostración.** Fijamos un punto con $|x-c|<\min(R_F,R_G)$. El Teorema 8.7 da convergencia absoluta de ambas series numéricas en ese punto, y el Teorema 8.10 permite multiplicarlas. En cada coeficiente del producto, todos los monomios tienen grado total $k$, porque $(x-c)^j(x-c)^{k-j}=(x-c)^k$. La suma finita de sus coeficientes da la expresión anunciada. $\square$
 
-No se aplica este corolario sin estudiar primero el intervalo común de convergencia. El producto de dos series condicionadamente convergentes puede exigir condiciones diferentes; no queda legitimado por la simple semejanza de sus símbolos.
+La elección del punto dentro de ambos radios asegura la convergencia absoluta que la prueba necesita. Fuera de ese intervalo común tendremos que estudiar primero qué representan los factores y qué operaciones siguen justificadas.
 
 ## 8.11. Un ejemplo integrador: logaritmo y arctangente
 
@@ -322,7 +372,7 @@ $$
 \frac{(-1)^{n-1}}{n}x^n\qquad(|x|<1).}
 $$
 
-En particular, esta igualdad no incluye automáticamente $x=1$, aunque el lado derecho **sí** converge allí por alternancia; para identificar un límite de frontera con $\ln2$ necesitaríamos una prueba adicional, no simplemente sustituir $x=1$ en una identidad demostrada para $|x|<1$.
+En $x=1$ la serie de la derecha converge por alternancia, pero el intervalo de integración tocaría el borde del radio. La prueba interior no identifica por sí sola esa suma con $\ln2$. Para hacerlo habría que controlar el resto hasta el borde o dar otro argumento que cubra ese punto.
 
 Análogamente, $1/(1+x^2)=\sum_{n=0}^{\infty}(-1)^n x^{2n}$ si $|x|<1$. Integrar desde cero y usar $\arctan0=0$ produce
 
@@ -331,26 +381,28 @@ $$
 \frac{(-1)^n}{2n+1}x^{2n+1}\qquad(|x|<1).
 $$
 
-Existe una demostración **separada** de su identidad en $x=1$ sin suponer un teorema general de continuidad en el borde: la identidad geométrica finita
+Para llegar a $x=1$ podemos usar un resto finito explícito. Para cada $N$ y $0\le t\le1$, la identidad geométrica da
 
 $$
 \frac1{1+t^2}=\sum_{n=0}^{N}(-1)^nt^{2n}
 +\frac{(-1)^{N+1}t^{2N+2}}{1+t^2}
 $$
 
-vale para $0\le t\le1$. Integrando sobre $[0,1]$ mediante C05–C06, el módulo de la integral del resto queda acotado por $\int_0^1 t^{2N+2}dt=1/(2N+3)\to0$. Por tanto
+Todos los términos de esta igualdad son continuos en el intervalo cerrado. Integramos la suma finita y dejamos el resto como una integral. Su módulo no supera la integral de $t^{2N+2}$, porque $1+t^2\ge1$, y ésta vale $1/(2N+3)$ por C06. Esa cota tiende a cero.
+
+La integral de la izquierda es $\arctan1-\arctan0=\pi/4$. La de cada monomio de la suma finita es $(-1)^n/(2n+1)$. Así sus sumas parciales se aproximan a $\pi/4$ con el error indicado y obtenemos
 
 $$
 \boxed{\frac\pi4=\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}.}
 $$
 
-Esta última igualdad combina una identidad **finita**, integrabilidad propia y una estimación del resto; no extrapola ilegalmente el Teorema 8.9 hasta la frontera. El desarrollo histórico de fórmulas similares no debe confundirse con la prueba que aquí acabamos de construir; véanse las [notas H3–H5](capitulo-08-notas.html).
+La estimación cubre directamente el segmento cerrado hasta uno. A diferencia del control interior general, aquí el resto particular de la función racional permite alcanzar el punto fronterizo. Los antecedentes de la fórmula y sus distintos niveles de lectura se registran en las [notas H3–H5](capitulo-08-notas.html).
 
 ## 8.12. Qué queda demostrado y qué permanece abierto
 
-Una serie numérica existe como suma sólo si su sucesión de sumas parciales converge. El criterio de Cauchy traduce esa exigencia a colas finitas; la convergencia absoluta controla reordenaciones y productos; la convergencia condicional obliga a conservar el orden; y el radio de una serie de potencias delimita dónde existe la función representada. Las cotas del Teorema 8.8 y la prueba del Teorema 8.9 son el puente crucial: dentro del radio, **la función resultante se puede derivar e integrar término a término**, sin invocar una teoría general de familias de funciones ni asumir convergencia en los extremos.
+Las sumas parciales permiten estudiar una expresión infinita con operaciones finitas y límites de C00. En las series de potencias, el control en un intervalo menor que el radio hizo posible construir una función continua y justificar sus derivadas e integrales. La convergencia absoluta permitió además comparar órdenes de sumación y productos mediante colas de módulos.
 
-Históricamente, las series estuvieron ligadas a aproximaciones numéricas, cuadraturas y expansión de funciones antes de la formulación moderna de criterios de convergencia. El trabajo de Newton, Euler, Cauchy y otros autores no constituye una sola teoría invariable: los requisitos de justificación se transformaron. Las notas separadas documentan lo leído efectivamente, las interpretaciones retrospectivas y las fuentes primarias todavía pendientes de colación.
+La cuestión de representar una función dada sigue abierta. Una serie puede converger y definir una función sin que hayamos probado que sea la que buscábamos; disponer de sus derivadas en un punto tampoco demuestra esa identificación. En C09 estudiaremos cómo reconocer la suma del binomio de Newton y cómo el resto de Taylor permite comparar una función con sus aproximaciones polinómicas. Las fuentes históricas de las series y de sus condiciones de uso se conservan en las notas separadas.
 
 ### Mapa de dependencias
 

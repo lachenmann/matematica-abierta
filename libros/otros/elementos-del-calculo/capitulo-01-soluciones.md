@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C01-SOLUCIONES
-source-sha256: 1637f02b26eab9009ddaa86e06c7aff943ab390502c8208eea9fac29b51abacb
+source-sha256: 7db738e2eaa047469cfe5a322cefe9f1c256b3ba0506307fbc76abbd6a3c2b5e
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -82,24 +82,24 @@ $$
 Q_f(a,h)=\frac{(a+h)^3-a^3}{h}=3a^2+3ah+h^2.
 $$
 
-Los términos $3ah$ y $h^2$ tienden a cero. Resulta $f'(a)=3a^2$. El modelo lineal es $\ell_a(a+h)=a^3+3a^2h$, y su error exacto es $R_a(h)=3ah^2+h^3$. Como
+Los términos $3ah$ y $h^2$ tienden a cero, porque $a$ permanece fijo mientras varía el incremento. Resulta $f'(a)=3a^2$. Para obtener el error del modelo lineal $\ell_a(a+h)=a^3+3a^2h$, restamos al desarrollo de la cúbica su valor inicial y el término de primer grado en $h$; queda $R_a(h)=3ah^2+h^3$. Cada término contiene al menos dos factores del incremento, y al compararlo con $|h|$ obtenemos
 
 $$
 \frac{|R_a(h)|}{|h|}=|3ah+h^2|\to0,
 $$
 
-la aproximación es de primer orden.
+lo que demuestra que la aproximación es de primer orden.
 
 ### Solución 1.6 (`EDC-C01-SOL-006`)
 
-Para $|h|<1$, $2+h>1$, de modo que la división es lícita. Entonces
+Para $|h|<1$, $2+h>1$, de modo que podemos calcular el valor de la función. Tomando además $h\ne0$,
 
 $$
 Q_f(2,h)=\frac{\frac1{2+h}-\frac12}{h}
 =-\frac1{2(2+h)}\longrightarrow-\frac14.
 $$
 
-La tangente por $(2,1/2)$ es $y=1/2-(x-2)/4$. La elección $|h|<1$ asegura tanto $h\ne0$ (impuesto en el cociente) como $2+h\ne0$.
+La tangente por $(2,1/2)$ es $y=1/2-(x-2)/4$. La condición $|h|<1$ mantiene $2+h\ne0$; además imponemos $h\ne0$ al formar el cociente incremental. Son condiciones distintas: la primera protege el denominador de la función y la segunda permite dividir por el incremento.
 
 ### Solución 1.7 (`EDC-C01-SOL-007`)
 
@@ -117,13 +117,17 @@ Luego $f'(0)=0$. Que una función utilice fórmulas distintas en $x<0$ y en $x>0
 
 ### Solución 1.9 (`EDC-C01-SOL-009`)
 
-El cociente de $f$ en cero es $Q_f(0,h)=h\sin(1/h)$. De $|\sin(1/h)|\le1$ obtenemos $|Q_f(0,h)|\le|h|$, y el encajonamiento de C00 demuestra $f'(0)=0$. Para $g$ el cociente sería $\sin(1/h)$. Con $h_n=(\pi/2+2\pi n)^{-1}$ y $k_n=(3\pi/2+2\pi n)^{-1}$ se obtienen límites parciales $1$ y $-1$ al aproximarse $h_n,k_n\to0$. Por el criterio secuencial de C00 el límite bilateral de $\sin(1/h)$ no existe; por tanto, $g'(0)$ no existe.
+El cociente de $f$ en cero es $Q_f(0,h)=h\sin(1/h)$. Aunque el seno siga oscilando cuando $h$ se acerca a cero, su magnitud permanece acotada: de $|\sin(1/h)|\le1$ obtenemos $|Q_f(0,h)|\le|h|$. El encajonamiento de C00 demuestra por tanto $f'(0)=0$.
+
+Para $g$ se cancela el único factor $h$ y el cociente queda igual a $\sin(1/h)$. Podemos escoger incrementos que obliguen al argumento del seno a tomar siempre uno de dos tipos de ángulos: con $h_n=(\pi/2+2\pi n)^{-1}$ y $k_n=(3\pi/2+2\pi n)^{-1}$ obtenemos valores $1$ y $-1$, respectivamente, mientras $h_n,k_n\to0$. Si el límite del cociente existiera, las dos sucesiones de valores tendrían que converger al mismo número por el criterio secuencial de C00. Como eso es imposible, $g'(0)$ no existe.
 
 ## C. Examinar el dominio y las uniones
 
 ### Solución 1.10 (`EDC-C01-SOL-010`)
 
-Tenemos $f(0)=c$, mientras el límite por la izquierda vale $a$. La continuidad en cero equivale a $a=c$. Bajo esta igualdad, si $h<0$, $Q_f(0,h)=2$, y si $h>0$, $Q_f(0,h)=b$. La derivabilidad exige y basta que los límites laterales coincidan, esto es, $a=c$ y $b=2$. Entonces $f'(0)=2$. Si $a\ne c$, el cociente izquierdo es $2+(a-c)/h$ y no admite un límite finito; no puede salvarse imponiendo sólo $b=2$.
+El valor del empalme lo determina la rama derecha: $f(0)=c$. Desde la izquierda los valores se aproximan a $a$, y desde la derecha a $c$, de modo que la continuidad equivale a $a=c$. Esa igualdad elimina el salto al calcular las diferencias: para $h<0$, $Q_f(0,h)=2$, y para $h>0$, $Q_f(0,h)=b$. Los dos límites coinciden si y sólo si $b=2$; junto con $a=c$, son las condiciones de derivabilidad, y entonces $f'(0)=2$.
+
+Si $a\ne c$, el cociente izquierdo conserva el término $2+(a-c)/h$. La parte $(a-c)/h$ no tiene límite finito, porque su numerador es fijo y no nulo mientras el denominador se aproxima a cero. Igualar las pendientes de las dos fórmulas no elimina ese salto.
 
 ### Solución 1.11 (`EDC-C01-SOL-011`)
 
@@ -143,7 +147,7 @@ $$
 \frac{f(1+h)-f(1)-2h}{h^2}=\frac{h^2}{h^2}=1,
 $$
 
-mientras si $h>0$ el mismo cociente es $0$. Tener una misma aproximación **lineal** no asegura una aproximación cuadrática bilateral con el mismo coeficiente.
+mientras si $h>0$ el mismo cociente es $0$. Los errores de ambos lados son pequeños frente a $|h|$, y por eso producen la misma aproximación **lineal**. Al dividir en cambio por $h^2$, el lado izquierdo conserva un error relativo igual a uno y el derecho da cero. La comparación en una escala más fina revela una diferencia que la aproximación de primer orden no tenía que controlar.
 
 ### Solución 1.13 (`EDC-C01-SOL-013`)
 
@@ -163,7 +167,9 @@ Como $f(0)=0$, el cociente derecho es $\sqrt h/h=1/\sqrt h$ para $h>0$. Elijamos
 
 ### Solución 1.15 (`EDC-C01-SOL-015`)
 
-Para $f(x)=x^3$ se tiene $f'(0)=0$, así que $y=0$ es tangente en el origen aunque la gráfica la **atraviese**. Además, la recta $y=-x$ comparte **sólo** el origen con la cúbica real: la igualdad $x^3=-x$ implica $x(x^2+1)=0$, cuya única solución real es $x=0$. Esa recta no es tangente diferencial, pues su pendiente es $-1$ y la derivada de la cúbica en cero es $0$. Por tanto, ni «no cruzar» ni «una sola intersección» sirve como criterio general.
+Para $f(x)=x^3$ se tiene $f'(0)=0$, así que $y=0$ es tangente en el origen aunque la gráfica la **atraviese**. Además, la recta $y=-x$ comparte **sólo** el origen con la cúbica real: la igualdad $x^3=-x$ implica $x(x^2+1)=0$, cuya única solución real es $x=0$. Esa recta no es tangente diferencial, pues su pendiente es $-1$ y la derivada de la cúbica en cero es $0$. La recta con una sola intersección puede por tanto tener una pendiente equivocada.
+
+También una tangente correcta puede encontrar la curva en otro punto: para $q(x)=x^2(x-1)$, el cociente en cero es $q(h)/h=h(h-1)\to0$, así que $y=0$ es tangente allí, aunque la gráfica vuelve a encontrarla en $x=1$. La pendiente y el error cerca del punto de tangencia se deciden localmente, con independencia de esas otras intersecciones.
 
 ### Solución 1.16 (`EDC-C01-SOL-016`)
 
@@ -194,7 +200,7 @@ $$
 =\left|\frac{f(a+h)-f(a)}h-m\right|.
 $$
 
-La expresión de la derecha tiende a cero si y sólo si el cociente incremental tiende a $m$, que es exactamente $f'(a)=m$. Si dos pendientes $m,n$ satisficieran la condición, entonces por la desigualdad triangular
+El numerador es el error de la recta de pendiente $m$ que pasa por $(a,f(a))$. Dividir su magnitud por $|h|$ equivale, como muestra la igualdad, a medir la distancia entre la pendiente secante y $m$. La expresión de la derecha tiende a cero si y sólo si el cociente incremental tiende a $m$, es decir, si $f'(a)=m$. Para comprobar la unicidad directamente, supongamos que dos pendientes $m,n$ satisfacen la condición. La distancia entre ellas puede controlarse usando una misma pendiente secante como valor intermedio:
 
 $$
 |m-n|\le |m-Q_f(a,h)|+|Q_f(a,h)-n|\longrightarrow0,
@@ -204,7 +210,9 @@ así que $m=n$.
 
 ### Solución 1.20 (`EDC-C01-SOL-020`)
 
-Sea $m=f'(a)$. Por definición existe $\delta>0$ tal que, si $0<|h|<\delta$, entonces $|Q_f(a,h)-m|<1$. En consecuencia, $|Q_f(a,h)|\le|m|+1=:K$. Multiplicando por $|h|$, resulta $|f(a+h)-f(a)|\le K|h|$. La desigualdad también se cumple para $h=0$. La recíproca es falsa: $f(x)=|x|$ satisface $|f(h)-f(0)|=|h|$ con $K=1$, pero no es derivable en cero. La estimación es una propiedad de control puntual, no un criterio suficiente para que converjan las pendientes.
+Sea $m=f'(a)$. Las pendientes que se aproximan a un número finito tienen que permanecer acotadas cerca del punto; podemos obtener una cota concreta pidiendo tolerancia uno en la definición. Existe así $\delta>0$, elegida dentro del radio permitido por el dominio, tal que $0<|h|<\delta$ implica $|Q_f(a,h)-m|<1$. La desigualdad triangular da $|Q_f(a,h)|\le|m|+1=:K$. Multiplicamos por $|h|$ y obtenemos $|f(a+h)-f(a)|\le K|h|$, que también vale en $h=0$ porque ambos miembros se anulan.
+
+La cota controla cuánto se separan los valores de $f(a)$, pero sólo exige que las pendientes estén acotadas. La función $f(x)=|x|$ satisface $|f(h)-f(0)|=|h|$ con $K=1$, mientras que sus cocientes toman los valores $1$ y $-1$ a cada lado del origen. Esas pendientes acotadas no convergen a un número común, de modo que la recíproca es falsa.
 
 ### Solución 1.21 (`EDC-C01-SOL-021`)
 
@@ -243,7 +251,7 @@ $$
 - Si $c=b^2$, sólo existe $a=b$, y hay exactamente una tangente, la que pasa por el propio punto de la parábola.
 - Si $c<b^2$, hay dos soluciones reales distintas $a=b\pm\sqrt{b^2-c}$ y, por tener pendientes distintas $2a$, dos rectas tangentes diferentes.
 
-Esta clasificación pertenece a la parábola y a la definición local utilizada. No prueba que las tangentes a cualquier curva tengan una sola intersección con ella; ya vimos que una tangente a la cúbica atraviesa su curva.
+El parámetro que buscamos era la abscisa de tangencia, y cada solución determina una recta por su pendiente $2a$. Completar el cuadrado convirtió el número de posibles tangentes en el problema de contar números cuyo cuadrado es $b^2-c$. La clasificación depende de la parábola: la distancia vertical entre su gráfica y la tangente en $a$ es $(x-a)^2$, que sólo se anula en ese punto. Otras curvas pueden atravesar su tangente o volver a encontrarla lejos del punto, como muestran los ejemplos de la solución 1.15.
 
 ---
 

@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C05-SOLUCIONES
-source-sha256: 52ab27aa9ff5f048e72af38a50de7b337a7f5f078f96be33542909a1b98ea7eb
+source-sha256: 9e62ea655db771b3b36b586d56b9b2a4979132a6ebe130f07b79df570a8858ef
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -34,7 +34,11 @@ Las soluciones distinguen los problemas de existencia de los de evaluación; tod
 
 ### Solución 5.1 (`EDC-C05-SOL-001`)
 
-Para una partición $P=\{a=x_0<\cdots<x_n=b\}$, ponemos $m_i=\inf_{[x_{i-1},x_i]}f$ y $M_i=\sup_{[x_{i-1},x_i]}f$. Entonces $L(f,P)=\sum_im_i\Delta_i$, $U(f,P)=\sum_iM_i\Delta_i$; sus extremos globales son $\underline{\mathcal I}(f)=\sup_P L(f,P)$ y $\overline{\mathcal I}(f)=\inf_P U(f,P)$. La acotación de $f$ garantiza que los $m_i,M_i$ sean números reales finitos y que los conjuntos de sumas estén acotados. El supremo no necesita pertenecer al conjunto; por ejemplo, el conjunto $(0,1)$ tiene supremo $1$ pero no máximo. Si ambos valores globales coinciden, la función es integrable; la mera existencia por separado de las integrales superior e inferior no basta.
+La construcción utiliza dos niveles de cotas. En una partición $P=\{a=x_0<\cdots<x_n=b\}$ tomamos $m_i=\inf_{[x_{i-1},x_i]}f$ y $M_i=\sup_{[x_{i-1},x_i]}f$. Al ponderarlas por las anchuras obtenemos $L(f,P)=\sum_im_i\Delta_i$ y $U(f,P)=\sum_iM_i\Delta_i$. Después reunimos todas las particiones mediante $\underline{\mathcal I}(f)=\sup_P L(f,P)$ y $\overline{\mathcal I}(f)=\inf_P U(f,P)$.
+
+La acotación garantiza cotas reales finitas en cada tramo. Si $|f|\le B$, cada suma tiene módulo a lo sumo $B(b-a)$, por lo que también los conjuntos de sumas están acotados y la completitud permite tomar sus extremos globales. No exigimos que cada cota sea alcanzada. El conjunto $(0,1)$, por ejemplo, tiene supremo $1$ e ínfimo $0$, pero carece de máximo y mínimo. Máximo y mínimo son valores que pertenecen al conjunto; supremo e ínfimo sólo han de ser sus mejores cotas.
+
+La integral existe cuando las dos cotas globales coinciden. Que cada una exista por separado es parte de la construcción para cualquier función acotada, y deja abierta la posibilidad de que haya una distancia positiva entre ellas.
 
 ### Solución 5.2 (`EDC-C05-SOL-002`)
 
@@ -92,13 +96,15 @@ El incremento de la suma inferior y la disminución de la superior son consecuen
 
 ### Solución 5.6 (`EDC-C05-SOL-006`)
 
-El refinamiento común es
+Reunimos y ordenamos los puntos de las dos particiones; el refinamiento común es
 
 $$
 R=P\cup Q=\left\{0,\frac13,\frac12,\frac23,1\right\}.
 $$
 
-Como $R$ contiene todos los puntos de ambas particiones, el Lema 5.1 implica $L(f,P)\le L(f,R)$ y $U(f,R)\le U(f,Q)$. Como $L(f,R)\le U(f,R)$ para cualquier función acotada, se sigue $L(f,P)\le U(f,Q)$. La prueba no exige que $f$ sea monótona, positiva o continua.
+Las piezas originales no tienen por qué corresponderse, por lo que comparamos a través de $R$. Al refinar $P$, la suma inferior sólo puede aumentar: $L(f,P)\le L(f,R)$. Al refinar $Q$, la superior sólo puede disminuir: $U(f,R)\le U(f,Q)$. En la partición común, cada ínfimo no supera a su supremo y las anchuras son positivas, luego $L(f,R)\le U(f,R)$. Encadenar las tres comparaciones da $L(f,P)\le U(f,Q)$.
+
+El argumento utiliza acotación para que las cotas existan, y restricciones de conjuntos para compararlas. No necesita monotonía, positividad ni continuidad de la función.
 
 ### Solución 5.7 (`EDC-C05-SOL-007`)
 
@@ -113,13 +119,15 @@ Por tanto $\underline{\mathcal I}(d)=0$, $\overline{\mathcal I}(d)=1$. Como no c
 
 ### Solución 5.8 (`EDC-C05-SOL-008`)
 
-La función es no negativa y sólo difiere de cero en un punto. Por el Lema 5.3 es integrable y su integral es $0$. Para obtener una cota concreta, una partición $P$ puede tener como máximo dos subintervalos cerrados que contienen $1/2$. Sólo en esos intervalos el supremo puede ser $5$; el ínfimo es $0$ en todos. La longitud total de esos subintervalos no supera $2\|P\|$, así que
+El único valor no nulo está en $1/2$, así que el Lema 5.3 da integrabilidad e integral cero. Para reconstruir la cota, cada subintervalo cerrado de anchura positiva contiene puntos distintos de $1/2$, donde la función vale cero. Como es no negativa, su ínfimo es siempre cero.
+
+El supremo sólo puede ser $5$ en un subintervalo que contenga $1/2$. Si el punto cae en el interior de una pieza, sólo esa pieza contribuye; si es un corte de la partición, puede pertenecer a las dos piezas adyacentes. Su longitud total es a lo sumo $2\|P\|$, y obtenemos
 
 $$
 0\le U(h,P)-L(h,P)=U(h,P)\le10\|P\|.
 $$
 
-La cota no requiere que el punto $1/2$ sea un vértice de $P$: funciona también cuando cae en el interior de un solo subintervalo.
+La cota funciona sin adaptar los cortes al punto excepcional. Al hacer pequeña la finura, su altura fija queda multiplicada por una longitud total que tiende a cero.
 
 ## C. Criterios de existencia y ejemplos
 
@@ -152,20 +160,20 @@ La función seno es continua en toda la recta: en particular en el intervalo cer
 
 ### Solución 5.12 (`EDC-C05-SOL-012`)
 
-El teorema del valor medio de C03 da, para $x,y\in[0,2]$,
+Para comparar dos valores, aplicamos el valor medio al segmento que los une dentro de $[0,2]$. La continuidad hasta los extremos garantiza sus hipótesis aunque alguno de los puntos sea $0$ o $2$; en el interior tenemos derivabilidad y la cota $|f'|\le3$. Si los puntos coinciden, la desigualdad es inmediata. En todos los casos,
 
 $$
 |f(x)-f(y)|\le3|x-y|.
 $$
 
-Por tanto la oscilación en cada $[x_{i-1},x_i]$ está acotada por $3\Delta_i$, y
+La función es continua y alcanza sus extremos en cada subintervalo. Los puntos de máximo y mínimo distan a lo sumo su anchura, por lo que $M_i-m_i\le3\Delta_i$. Multiplicamos por esa misma anchura y sumamos:
 
 $$
 U(f,P)-L(f,P)\le3\sum_i\Delta_i^2
 \le3\|P\|\sum_i\Delta_i=6\|P\|.
 $$
 
-Para asegurar una diferencia estrictamente menor que $10^{-3}$ basta exigir $\|P\|<1/6000$. Hemos usado $|f'|\le3$ y el valor medio, no una regla de integración.
+La segunda comparación usa $\Delta_i\le\|P\|$, y las anchuras suman la longitud total $2$. Basta exigir $\|P\|<1/6000$ para obtener una diferencia estrictamente menor que $10^{-3}$. La elección depende del control de variación y de la longitud del intervalo, sin calcular la integral.
 
 ### Solución 5.13 (`EDC-C05-SOL-013`)
 
@@ -185,18 +193,26 @@ No es una familia cuya finura tienda a cero. El Teorema 5.3 demanda un $\delta$ 
 
 ### Solución 5.15 (`EDC-C05-SOL-015`)
 
-Si los valores globales coinciden en $I$, entonces por la propiedad de ínfimo existe $P_1$ con $U(f,P_1)<I+\varepsilon/2$. Por la propiedad de supremo existe $P_2$ con $L(f,P_2)>I-\varepsilon/2$. Esas particiones pueden ser incompatibles. Al tomar $R=P_1\cup P_2$, el lema de refinamiento asegura
+La igualdad de las cotas globales proporciona dos aproximaciones al mismo número $I$, aunque cada una pueda requerir una partición distinta. Por la propiedad del ínfimo elegimos $P_1$ con $U(f,P_1)<I+\varepsilon/2$. Por la del supremo elegimos $P_2$ con $L(f,P_2)>I-\varepsilon/2$.
+
+La tolerancia se reparte en dos mitades para que la distancia entre esas cotas sea menor que $\varepsilon$. Para convertirlas en las dos sumas de una misma partición tomamos $R=P_1\cup P_2$. El refinamiento disminuye la superior de $P_1$ y aumenta la inferior de $P_2$, por lo que
 
 $$
 U(f,R)-L(f,R)
 \le U(f,P_1)-L(f,P_2)<\varepsilon.
 $$
 
-La prueba usa la completitud real para garantizar el valor global y la compatibilidad entre particiones para poner juntas las dos estimaciones; ninguna de esas partes puede reemplazarse por la afirmación no demostrada de que «se afina la malla».
+La completitud asegura los números globales; las propiedades de supremo e ínfimo permiten aproximarlos; el refinamiento reúne ambas elecciones sin perder precisión. Así se obtiene la única partición requerida por el criterio, sin suponer que las elecciones iniciales fueran iguales.
 
 ### Solución 5.16 (`EDC-C05-SOL-016`)
 
-Fuera de los intervalos que contienen el punto de salto $c$, la función es constante, así que cada contribución es exactamente la constante correspondiente multiplicada por la anchura del subintervalo. Si $c$ cae en el interior de un intervalo de la partición, ese intervalo tiene longitud a lo sumo $\delta$ y sólo allí difieren la suma etiquetada y la longitud $b-c$, en valor absoluto a lo sumo $\delta$. Si $c$ es un vértice, puede aparecer un efecto de la etiqueta del intervalo a la izquierda, porque éste incluye el extremo $c$ donde $s_c(c)=1$, de nuevo con error a lo sumo $\delta$. Por tanto vale la cota pedida $|S(s_c;P,\xi)-(b-c)|\le2\delta$ en ambos casos (de hecho puede mejorarse a $\delta$). La estimación cubre **cualquier** etiqueta, no sólo las muestras de extremos convenientes.
+Fuera del salto, la función es constante en cada pieza situada completamente a un lado de $c$. Allí la suma etiquetada coincide exactamente con la constante por la anchura. Sólo debemos controlar la pieza que atraviesa el salto o el efecto del valor en $c$ cuando es un corte.
+
+Si $c$ está en el interior de $[u,v]$, su contribución ideal al número $b-c$ es la longitud $v-c$. La etiqueta da altura cero o uno, y su contribución es entonces cero o $v-u$. Las diferencias posibles son $v-c$ y $c-u$, ambas no mayores que $v-u\le\delta$. Las demás piezas suman exactamente la longitud restante donde la función vale uno.
+
+Si $c$ es un vértice de la partición, las piezas a su derecha tienen altura uno en todo punto y las de la izquierda tienen altura cero, salvo que la pieza que termina en $c$ elija justamente ese punto como etiqueta. Esa elección añade a lo sumo su anchura, también menor o igual que $\delta$.
+
+En ambos casos el error está acotado por $\delta$ y, en particular, satisface la cota pedida $|S(s_c;P,\xi)-(b-c)|\le2\delta$. La estimación cubre cualquier etiqueta; no depende de que elijamos una muestra conveniente a cada lado del salto.
 
 ### Solución 5.17 (`EDC-C05-SOL-017`)
 
@@ -225,13 +241,17 @@ Que el producto de dos funciones integrables sea integrable no significa que la 
 
 ### Solución 5.19 (`EDC-C05-SOL-019`)
 
-La función $|2x-1|$ es continua en $[0,1]$ y por tanto integrable. Su gráfica consta de dos segmentos lineales que forman triángulos de base $1/2$ y altura $1$, uno a cada lado de $x=1/2$. Cada triángulo tiene área $(1/2)\cdot1/2=1/4$. Como las áreas de estas funciones afines se justifican por sumas de trapecios exactas —y el Teorema 5.8 permite dividir en $1/2$—,
+La función $|2x-1|$ es continua en $[0,1]$, así que su integral existe. Cortamos en $x=1/2$, donde cambia la expresión del módulo: a la izquierda vale $1-2x$ y a la derecha $2x-1$. En cada mitad la gráfica es un segmento recto y forma con el eje un triángulo de base $1/2$ y altura $1$.
+
+Para una función afín no negativa, los trapecios de cualquier partición cubren exactamente esa región. Cada área trapezoidal es el promedio de los dos valores extremos por la anchura, por lo que queda entre las sumas inferior y superior. Esas cotas se aproximan a la integral al refinar, y su encaje identifica el área exacta con ella. Cada triángulo aporta por tanto $(1/2)\cdot1/2=1/4$.
+
+El Teorema 5.8 permite reunir los dos intervalos y obtenemos
 
 $$
 \int_0^1|2x-1|\,dx=\frac14+\frac14=\frac12.
 $$
 
-No se ha derivado ninguna primitiva; el cálculo usa la integral ya definida y sumas de funciones afines.
+El corte fue elegido para disponer de una expresión afín en cada lado. El cálculo combina áreas poligonales y la integral ya definida, sin recurrir a primitivas.
 
 ### Solución 5.20 (`EDC-C05-SOL-020`)
 
@@ -258,7 +278,11 @@ El punto de salto puede ser extremo de las dos restricciones sin duplicar una co
 
 ### Solución 5.22 (`EDC-C05-SOL-022`)
 
-Para $a<u<v<b$, aplicamos primero el Teorema 5.8 en $u$ al intervalo $[a,b]$, obteniendo integrabilidad en $[u,b]$, y luego lo aplicamos a este último intervalo cortando en $v$: se obtiene integrabilidad en $[u,v]$. Si $u=a$, omitimos el primer corte; si $v=b$, omitimos el segundo. También puede demostrarse refinando directamente cualquier partición suficientemente buena de $[a,b]$ por los puntos $u,v$, porque la diferencia global se descompone en diferencias no negativas de cada pieza. Los intervalos degenerados $u=v$ tienen integral cero por definición.
+Si $a<u<v<b$, el Teorema 5.8 aplicado con el corte $u$ asegura integrabilidad de la restricción a $[u,b]$. Lo aplicamos otra vez a ese intervalo, ahora con el corte $v$, y obtenemos integrabilidad en $[u,v]$. Cada restricción continúa siendo acotada porque la función original lo es.
+
+Si $u=a$, no necesitamos el primer corte; si $v=b$, no necesitamos el segundo. Si ambos coinciden con los extremos originales, la hipótesis ya da el resultado. En el caso degenerado $u=v$, la integral se fija en cero por definición.
+
+También podemos ver el mecanismo directamente: añadimos los puntos $u,v$ a una partición buena del intervalo completo. Su diferencia superior–inferior no aumenta y se descompone en diferencias no negativas de las piezas. La correspondiente a $[u,v]$ no puede superar el total, de modo que queda menor que la tolerancia elegida. Esto explica por qué la integrabilidad se conserva al restringir el intervalo.
 
 ### Solución 5.23 (`EDC-C05-SOL-023`)
 
@@ -310,14 +334,16 @@ La modificación no es pequeña en altura, pero afecta sólo una posición: toda
 
 ### Solución 5.28 (`EDC-C05-SOL-028`)
 
-Para $|f|\le A$, $|g|\le B$ y $x,y$ en el mismo intervalo cerrado $I$,
+Para controlar el producto necesitamos separar el cambio de cada factor. Añadimos y restamos $f(x)g(y)$ y aplicamos la desigualdad triangular; con $|f|\le A$, $|g|\le B$ obtenemos, para $x,y$ de un mismo intervalo cerrado $I$,
 
 $$
 |f(x)g(x)-f(y)g(y)|
 \le|f(x)|\,|g(x)-g(y)|+|g(y)|\,|f(x)-f(y)|.
 $$
 
-Los supremos sobre pares dan $\operatorname{osc}_I(fg)\le A\operatorname{osc}_I(g)+B\operatorname{osc}_I(f)$. Multiplicamos por la longitud de cada subintervalo y sumamos. Como la integrabilidad de $f$ y de $g$ podría proporcionar **particiones distintas**, su refinamiento común permite hacer simultáneamente pequeñas ambas oscilaciones ponderadas; el refinamiento nunca aumenta $U-L$. Así el producto satisface el criterio de Darboux. La cota $A,B$ es uniforme porque $f,g$ son acotadas en todo $[a,b]$.
+Las cotas globales limitan los multiplicadores por $A$ y $B$. Al tomar supremos sobre parejas resulta $\operatorname{osc}_I(fg)\le A\operatorname{osc}_I(g)+B\operatorname{osc}_I(f)$. La identidad entre oscilación y supremo de separaciones no exige valores máximos o mínimos alcanzados: se pueden aproximar las cotas locales cuanto se quiera.
+
+Multiplicamos por la longitud de cada pieza y sumamos. Para conseguir un error menor que $\varepsilon$, elegimos mediante Darboux una partición para $f$ y otra para $g$, cada una con diferencia menor que $\varepsilon/(1+A+B)$. Tomamos su refinamiento común, que conserva o mejora ambas diferencias. La cota del producto queda entonces menor que $\varepsilon$, y el criterio demuestra integrabilidad. El denominador elegido funciona también cuando alguna cota es cero; $A$ y $B$ no dependen de la pieza porque controlan todo $[a,b]$.
 
 ### Solución 5.29 (`EDC-C05-SOL-029`)
 
@@ -327,19 +353,19 @@ La función constante $-2$ tiene todas sus sumas etiquetadas iguales a $-2(3-0)=
 
 ### Solución 5.30 (`EDC-C05-SOL-030`)
 
-La función $x^2$ es continua y, por tanto, integrable. La función $s(x)=\mathbf1_{[1/2,1]}(x)$ es monótona, y la solución de la función escalón demuestra $\int_0^1s=1/2$. Por linealidad, para todo $\lambda\ge0$,
+Separamos la función en una parte continua y una función escalón. La función $x^2$ es integrable por continuidad; $s(x)=\mathbf1_{[1/2,1]}(x)$ lo es por monotonía y tiene integral $1/2$, según el cálculo de particiones adaptadas al salto. Por linealidad, para cada $\lambda\ge0$,
 
 $$
 \boxed{\int_0^1f_\lambda(x)\,dx=\frac13+\frac\lambda2.}
 $$
 
-Para cualquier partición $P$ con etiquetas $\xi$, el control de C04 para $x^2$ encierra tanto $S(x^2;P,\xi)$ como $1/3$ entre las sumas extremas, cuya diferencia no supera $\|P\|$. Así,
+Para estimar una suma con muestras arbitrarias, el control de C04 sitúa tanto $S(x^2;P,\xi)$ como el candidato $1/3$ entre las sumas extremas. Su distancia no supera la anchura del encaje, y por tanto
 
 $$
 \left|S(x^2;P,\xi)-\frac13\right|\le\|P\|.
 $$
 
-La solución 5.16, aplicada a $s$ con $c=1/2$, da $|S(s;P,\xi)-1/2|\le2\|P\|$. Usando la linealidad **finita** de las sumas y la desigualdad triangular concluimos
+Para el escalón usamos la solución 5.16, que controla el único tramo afectado por el salto y sirve también si éste es un vértice: $|S(s;P,\xi)-1/2|\le2\|P\|$. La linealidad de las sumas es una identidad finita para la misma partición y las mismas etiquetas. Al restar el valor integral y aplicar la desigualdad triangular, con $\lambda\ge0$, obtenemos
 
 $$
 \begin{aligned}
@@ -350,7 +376,7 @@ $$
 \end{aligned}
 $$
 
-La cota depende de $\lambda$ y de la finura, **no** del número de subintervalos ni de la elección de etiquetas. Esto muestra concretamente el sentido cuantificado de la equivalencia Riemann–Darboux. No se ha empleado el Teorema Fundamental.
+Para un parámetro fijo y una tolerancia $\varepsilon>0$, basta exigir $\|P\|<\varepsilon/(1+2\lambda)$. La elección se hace antes de escoger la partición y las etiquetas, y garantiza la precisión para todas ellas. La constante depende de $\lambda$; la afirmación no exige uniformidad para un parámetro que crezca sin límite. El Teorema Fundamental no interviene.
 
 ---
 

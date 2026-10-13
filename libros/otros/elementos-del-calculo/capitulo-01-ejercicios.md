@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,14 +21,14 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C01-EJERCICIOS
-source-sha256: 0b197987c9a0ca5fbbe29144dd100a4dccc45079eeffce06756c8b603ad537d0
+source-sha256: 037c8444e589768ba4ec1c512afa77439b1334b4493316b78da1bbcd88ee725d
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
 [Exposición](capitulo-01.html) · [Ejercicios](capitulo-01-ejercicios.html) · [Soluciones](capitulo-01-soluciones.html) · [Notas históricas](capitulo-01-notas.html)
 
-Los enunciados son independientes de sus desarrollos, reunidos en [Soluciones del capítulo 1](capitulo-01-soluciones.html). En todos los ejercicios se pide justificar el límite correspondiente, no limitarse a citar una tabla de derivadas. Los identificadores `EXR` y `SOL` se corresponden por los tres dígitos finales.
+Los enunciados son independientes de sus desarrollos, reunidos en [Soluciones del capítulo 1](capitulo-01-soluciones.html). Los cálculos se resuelven desde los cocientes incrementales: se pide justificar cada límite y comprobar el dominio en el que las operaciones están permitidas. Los identificadores `EXR` y `SOL` se corresponden por los tres dígitos finales.
 
 ## A. Comprender la pregunta
 

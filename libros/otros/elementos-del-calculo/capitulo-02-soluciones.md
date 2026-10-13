@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C02-SOLUCIONES
-source-sha256: ba6108f6373afb126fd21ba088c8b500327cd6ab9d939c32ef6589d0f2d5c8f1
+source-sha256: 41043934313aca6bb009386bc92832d5d00fde6b6529e883dbedbd67c01e8ee1
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -100,7 +100,7 @@ En $x=3$ obtenemos $q'(3)=9-12-1=-4$.
 
 ### Solución 2.7 (`EDC-C02-SOL-007`)
 
-Tomamos $g(x)=x^2+1$ y $f(t)=t^5$. La regla de la cadena produce
+La quinta potencia se aplica al valor de $x^2+1$, de modo que elegimos $g(x)=x^2+1$ como función interior y $f(t)=t^5$ como exterior. Al derivar la exterior, la cuarta potencia sigue evaluándose en $g(x)$; después multiplicamos por el cambio de la interior, $g'(x)=2x$. La regla de la cadena produce
 
 $$
 u'(x)=f'(g(x))g'(x)=5(x^2+1)^4(2x)=10x(x^2+1)^4.
@@ -110,7 +110,7 @@ El dominio es todo $\mathbb R$.
 
 ### Solución 2.8 (`EDC-C02-SOL-008`)
 
-La función interior $1+3x^2$ es estrictamente positiva para todo $x\in\mathbb R$. La función raíz es derivable sobre $(0,\infty)$, por el teorema de la inversa; por cadena,
+Antes de aplicar la cadena, comprobamos dónde se evalúa la raíz: la función interior $1+3x^2$ es estrictamente positiva para todo $x\in\mathbb R$. Por ello sus valores pertenecen al intervalo $(0,\infty)$ en el que la raíz es derivable, como demostró el teorema de la inversa. Multiplicamos entonces la derivada de la raíz, evaluada en $1+3x^2$, por la derivada interior $6x$:
 
 $$
 v'(x)=\frac{6x}{2\sqrt{1+3x^2}}
@@ -197,20 +197,20 @@ En $x=\pm1$ la función existe pero el dominio no contiene un entorno bilateral,
 
 ### Solución 2.16 (`EDC-C02-SOL-016`)
 
-La base $1+x^2$ es siempre positiva, de modo que
+En esta función cambian tanto la base como el exponente. La regla para $x^r$ supone que $r$ permanece fijo, así que necesitamos expresar esa doble dependencia con operaciones cuyas derivadas conocemos. La base $1+x^2$ es siempre positiva y permite usar su logaritmo; por definición de potencia real,
 
 $$
 k(x)=\exp\bigl(\sin x\,\ln(1+x^2)\bigr)
 $$
 
-está definida para todo real. Producto y cadena dan
+está definida para todo real. Dentro de la exponencial aparece el producto de $\sin x$ y $\ln(1+x^2)$: su derivada recoge por separado el cambio de ambos factores. La cadena añade después la exponencial de ese producto, que es la función original. Obtenemos
 
 $$
 k'(x)=(1+x^2)^{\sin x}
 \left[\cos x\,\ln(1+x^2)+\sin x\,\frac{2x}{1+x^2}\right].
 $$
 
-No hemos supuesto una regla informal para derivar una base y un exponente variables: la reducción a $E\circ(\sin\cdot\ln)$ la justifica.
+El término con $\cos x$ recoge la variación del exponente; el término con $2x/(1+x^2)$, la de la base. Ambos proceden de la reducción a $E\circ(\sin\cdot\ln)$ y conservan el dominio positivo exigido por el logaritmo.
 
 ## D. Diagnóstico de inferencias inválidas
 
@@ -226,7 +226,7 @@ $$
 (f\circ g)(x)=|x^2|=x^2
 $$
 
-es derivable en $x=0$, con derivada cero. El recíproco de la regla de la cadena no vale: la composición puede suavizar una singularidad porque la función interior sólo recorre una parte del dominio exterior.
+es derivable en $x=0$, con derivada cero. La falta de derivada de $|t|$ en cero se debe a que sus pendientes desde los dos lados difieren. Aquí la función interior sólo toma valores no negativos: al sustituir $t=x^2$, ambas aproximaciones al origen desde el dominio de $x$ llegan al mismo lado del dominio exterior. La composición coincide así con un polinomio. El ejemplo muestra por qué las hipótesis de la cadena son suficientes y por qué su recíproco no vale.
 
 ### Solución 2.19 (`EDC-C02-SOL-019`)
 
@@ -252,7 +252,7 @@ para $h<0$ el cociente vale $2$. Así $f'_+(0)=0$ y $f'_-(0)=2$. Como difieren, 
 
 ### Solución 2.21 (`EDC-C02-SOL-021`)
 
-La continuidad de $f$ en $a$ permite elegir $\delta>0$ tal que $|f(a+h)-f(a)|<|f(a)|/2$ cuando $|h|<\delta$; por ello $|f(a+h)|>|f(a)|/2>0$. Para $h\ne0$ suficientemente pequeño,
+Para derivar el recíproco, primero debemos asegurar que existe cerca de $a$. Como $f$ es derivable, es continua en $a$; la condición $f(a)\ne0$ deja una distancia positiva entre ese valor y cero. La continuidad de $f$ en $a$ permite elegir $\delta>0$ tal que $|f(a+h)-f(a)|<|f(a)|/2$ cuando $|h|<\delta$; por ello $|f(a+h)|>|f(a)|/2>0$. Para $h\ne0$ suficientemente pequeño,
 
 $$
 \frac{1/f(a+h)-1/f(a)}h
@@ -278,7 +278,11 @@ Si $g(x)>0$, la expresión es $\ln g(x)$ y su derivada vale $g'(x)/g(x)$ por cad
 
 ### Solución 2.24 (`EDC-C02-SOL-024`)
 
-Al poner $y=-x$ en $E(x+y)=E(x)E(y)$, queda $E(0)=E(x)E(-x)=1$. Como $E(x)>0$, $E(-x)=1/E(x)$. Si $u<v$, entonces $E(v)=E(u)E(v-u)>E(u)$ porque $v-u>0$; por tanto, $E$ es estrictamente creciente, sin usar derivadas ni valor medio. De la serie para $x>0$ obtenemos $E(x)\ge1+x\to\infty$ al crecer $x$, y $E(-x)=1/E(x)\to0$. Por continuidad y valor intermedio, se alcanzan todos y sólo los valores positivos.
+La identidad multiplicativa relaciona argumentos opuestos: al poner $y=-x$ en $E(x+y)=E(x)E(y)$, queda $E(0)=E(x)E(-x)=1$. Como $E(x)>0$, podemos dividir y obtener $E(-x)=1/E(x)$.
+
+Para comparar dos argumentos $u<v$, separamos la distancia positiva $v-u$: la identidad da $E(v)=E(u)E(v-u)>E(u)$ porque $v-u>0$ y la serie implica $E(v-u)>1$. Así se demuestra el crecimiento estricto sin usar derivadas ni valor medio.
+
+Falta comprobar que ningún valor positivo queda fuera de la imagen. De la serie para $x>0$ obtenemos $E(x)\ge1+x\to\infty$ al crecer $x$, y la relación de argumentos opuestos da $E(-x)=1/E(x)\to0$. Para un valor positivo fijado, elegimos un argumento negativo cuya imagen sea menor y otro positivo cuya imagen sea mayor. La continuidad y el valor intermedio aseguran que el valor se alcanza entre ellos. La positividad de $E$ excluye los valores restantes.
 
 ## F. Descubrimiento guiado
 
@@ -305,7 +309,7 @@ Por definición de derivada, el límite es $r$. No hemos supuesto previamente un
 
 ### Solución 2.27 (`EDC-C02-SOL-027`)
 
-Para $-a<x<a$, la rama superior es
+La derivación de la ecuación de la elipse presupone una rama derivable. Podemos justificarla aquí sin un teorema general de existencia: al despejar la ordenada positiva, para $-a<x<a$ la rama superior es
 
 $$
 y(x)=b\sqrt{1-\frac{x^2}{a^2}}>0,
@@ -325,7 +329,7 @@ En el punto indicado, la pendiente es $-b/a$. El método no permite dividir por 
 
 ### Solución 2.28 (`EDC-C02-SOL-028`)
 
-Por producto y cadena,
+En $y(x)$, el factor exponencial y el coseno dependen ambos de $x$. Derivamos cada uno manteniendo el otro y sumamos sus contribuciones; la cadena aporta los factores constantes $\alpha$ y $\beta$. Por producto y cadena,
 
 $$
 y'(x)=e^{\alpha x}\bigl(\alpha\cos(\beta x)-\beta\sin(\beta x)\bigr).

@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC_ITINERARIOS_DE_LECTURA
-source-sha256: 93cf2f3b70f6f032092cc0c58321f09e0cf87da7a848be229eea5a5885a75502
+source-sha256: 3f6be10ac07543428d77fadf14a5d5331f984ec35562056236757dd7fda9566a
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-*Elementos del cálculo — Un enfoque histórico, problemático y fundacional* puede estudiarse íntegramente o mediante recorridos seleccionados. Esta guía hace visible una diferencia pedagógica: **la obra tiene un solo corpus de demostraciones, pero no todos los lectores tienen las mismas preguntas ni necesitan el mismo ritmo**. Los recorridos reconocen, sin reproducir literalmente, el énfasis que Gabor Toth concede a los estudiantes inquisitivos, los seminarios universitarios y los círculos matemáticos. [Los catorce problemas de investigación](laboratorio.html) y [sus soluciones razonadas](laboratorio-soluciones.html) son material adicional propio.
+*Elementos del cálculo — Un enfoque histórico, problemático y fundacional* puede estudiarse íntegramente o mediante recorridos seleccionados. Un lector que se acerca por primera vez al cálculo necesitará detenerse en los límites y ensayar los ejemplos; quien ya domina las técnicas podrá dedicar más tiempo a las pruebas y a sus hipótesis. Los recorridos siguientes permiten ajustar ese ritmo sobre un mismo corpus de demostraciones. Los recorridos reconocen, sin reproducir literalmente, el énfasis que Gabor Toth concede a los estudiantes inquisitivos, los seminarios universitarios y los círculos matemáticos. [Los catorce problemas de investigación](laboratorio.html) y [sus soluciones razonadas](laboratorio-soluciones.html) son material adicional propio.
 
 ## A. Primera lectura razonada — 12 semanas
 
@@ -51,7 +51,7 @@ source-sha256: 93cf2f3b70f6f032092cc0c58321f09e0cf87da7a848be229eea5a5885a75502
 
 ## B. Lectura universitaria rigurosa — 14 semanas
 
-**Perfil:** lectores de matemáticas, física o áreas afines que buscan justificar los teoremas centrales de una variable y trabajar con pruebas. Cada sesión exige lectura, una pizarra demostrativa y examen adversarial de las hipótesis.
+**Perfil:** lectores de matemáticas, física o áreas afines que buscan justificar los teoremas centrales de una variable y trabajar con pruebas. En cada sesión se prepara una demostración para exponerla en la pizarra y se examina qué cambia al retirar alguna de sus hipótesis.
 
 | Semana | Núcleo y objetivo |
 |---:|---|
@@ -93,7 +93,7 @@ source-sha256: 93cf2f3b70f6f032092cc0c58321f09e0cf87da7a848be229eea5a5885a75502
 | 13 | ¿Cuándo una ley determina una trayectoria? INV-C10-01 y C10-02 | Equilibrios y unicidad por energía |
 | 14 | Dos certificados del mismo resultado, INV-C11-01 | Síntesis: error, dominio, cuantificadores e historia |
 
-**Norma del coordinador:** los dibujos sugieren, pero no prueban; la evidencia histórica no equivale a reconstrucción moderna; una respuesta numérica no reemplaza una demostración.
+**Trabajo del coordinador:** invitar al grupo a usar los dibujos para proponer una conjetura y después buscar el argumento que la sostiene. Cuando aparezca una respuesta numérica, pedir una cota o una prueba que permita decidir su alcance. Las conexiones históricas se apoyarán en las fuentes indicadas y se distinguirán de las reconstrucciones hechas por el grupo.
 
 ## Correspondencia con el Prefacio de Toth
 

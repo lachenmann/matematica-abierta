@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -15,13 +15,14 @@ topics:
   - calculo-de-una-variable
   - historia-de-las-matematicas
 number-sections: false
+css: /assets/books/elementos-del-calculo/edc-source-notes.css
 provenance:
   type: original
   sources:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C11-NOTAS-HISTORICAS
-source-sha256: 0056a027bc9f777915a659f05d8e173e0dd5e9395fb8146f55a334a869d6b1db
+source-sha256: 31b178db67922fb111b0d9f348bf8f9a22aa3712f1fb4c920aab81484a6cb92f
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -36,6 +37,7 @@ El problema griego del agotamiento y de las cuadraturas no debe reducirse al sí
 
 **Fuente secundaria consultada (A):** J. J. O'Connor y E. F. Robertson, [«A history of the calculus»](https://mathshistory.st-andrews.ac.uk/HistTopics/The_rise_of_calculus/), *MacTutor History of Mathematics*, apartados iniciales sobre Eudoxo, Arquímedes, el segmento parabólico y las áreas del círculo. La sección ofrece una panorámica, no edición crítica de los *Elementos* ni de las obras de Arquímedes.
 
+**Estado:** `SECONDARY_WEB_READ / GREEK_PRIMARY_NOT_COLLATED / MODERN_PROOF_EDC_C04`.
 
 ## H2. Los *Nueve capítulos* y Liu Hui en China
 
@@ -43,6 +45,7 @@ El comentario de Liu Hui a los *Nueve capítulos sobre el arte matemático* se f
 
 **Fuente secundaria consultada (A):** O'Connor y Robertson, [«Nine chapters»](https://mathshistory.st-andrews.ac.uk/HistTopics/Nine_chapters/), *MacTutor History of Mathematics*, descripción del comentario de Liu Hui y de procedimientos geométricos relacionados con sólidos y agotamiento. **Otro recurso localizado con transcripción HTML (B, sin colación sinológica propia):** [*Nine Chapters*, juan 1, comentario de Liu Hui, reproducción de fuente Wikisource](https://arivero.github.io/navstokgap/sources/NineChapters_juan1_LiuHui_circle_cutting_zh_wikisource.html). La existencia de una reproducción textual no equivale a haber cotejado sus caracteres, versiones e historia textual.
 
+**Estado:** `SECONDARY_WEB_READ / DIGITIZED_TRANSCRIPTION_LOCATED_NOT_TEXT_CRITICALLY_COLLATED`.
 
 ## H3. Kerala, Madhava y las series antes de su denominación europea
 
@@ -52,6 +55,7 @@ La historiografía moderna atribuye a **Madhava de Sangamagrama** (siglos XIV–
 
 **Reserva historiográfica:** estas fuentes respaldan antecedentes asiáticos de resultados que hoy aparecen en textos de series de potencias. No se afirma ni niega una transmisión histórica directa hacia Leibniz o Newton sin un estudio especializado de rutas, testimonios y cronologías.
 
+**Estado:** `SECONDARY_BIOGRAPHY_AND_TOPIC_READ / SCHOLARLY_CHAPTER_ABSTRACT_ONLY / KERALA_PRIMARY_NOT_COLLATED`.
 
 ## H4. De los indivisibles a tangentes y cuadraturas en Europa temprana
 
@@ -59,6 +63,7 @@ En los siglos XVI–XVII, los problemas de áreas, movimientos, tangentes y máx
 
 **Fuente secundaria consultada (A):** O'Connor y Robertson, [«A history of the calculus»](https://mathshistory.st-andrews.ac.uk/HistTopics/The_rise_of_calculus/), apartados sobre Cavalieri, Fermat, Barrow y problemas de tangentes. **Precaución:** este panorama incluye juicios generales sobre el grado de rigor; no los tratamos como veredictos definitivos sobre todos los manuscritos. Las pruebas de Rolle, valor medio y cuantificación de extremos de C03 son reconstrucciones actuales de EDC.
 
+**Estado:** `SECONDARY_SYNTHESIS_READ / ORIGINALS_NOT_SYSTEMATICALLY_COLLATED / ED_C03_PROOFS_MODERN`.
 
 ## H5. Newton y Leibniz: diferencia entre métodos, notaciones y publicaciones
 
@@ -68,6 +73,7 @@ La tradición de Newton incluye el lenguaje de cantidades fluyentes y **fluxione
 
 **Frontera:** el Teorema Fundamental de C06 se demuestra a partir de la integral propia construida en C05. Ese encadenamiento exacto no es una atribución de autoría textual a Newton ni a Leibniz.
 
+**Estado:** `SECONDARY_WEB_READ / NEWTON_DIGITAL_DIPLOMATIC_PARTIAL_ONLY / LEIBNIZ_ORIGINALS_NOT_COLLATED`.
 
 ## H6. Taylor, series de potencias y el problema del error
 
@@ -75,6 +81,7 @@ El nombre moderno «polinomio de Taylor» reúne procedimientos de expansión cu
 
 **Fuentes secundarias y ficha previamente contrastadas en C09 (A/B):** [MacTutor, «Brook Taylor»](https://mathshistory.st-andrews.ac.uk/Biographies/Taylor/), y [Folger Shakespeare Library, catálogo de *Methodus incrementorum*](https://catalog.folger.edu/record/749251), con fecha y descripción editorial. **Fuente matemática de contraste (A):** [*Encyclopedia of Mathematics*, «Taylor formula»](https://encyclopediaofmath.org/wiki/Taylor_formula), para diferenciar formas del resto. **Original latino:** no colacionado integralmente.
 
+**Estado:** `SECONDARY_AND_CATALOG_VERIFIED_PREVIOUS_CHAPTER / MODERN_FORMULAE_CONTRAST / TAYLOR_1715_ORIGINAL_NOT_COLLATED`.
 
 ## H7. Cauchy y la crítica de operaciones infinitas
 
@@ -82,15 +89,17 @@ El *Cours d'analyse* de **1821** de Augustin-Louis Cauchy corresponde a un proye
 
 **Fuente secundaria con extractos traducidos (A):** [MacTutor, «Cauchy's Calculus»](https://mathshistory.st-andrews.ac.uk/Extras/Cauchy_Calculus/), apartados sobre la edición de 1821, definiciones de límite e infinitésimo, convergencia de series y errores históricos; accesible como presentación secundaria, no como facsímil francés. **Referencia de investigación histórica localizada, resumen examinado (B):** Detlef Laugwitz, [«Infinitely small quantities in Cauchy's textbooks»](https://www.sciencedirect.com/science/article/pii/0315086087900450), *Historia Mathematica* **14** (1987), 258–274. El resumen presenta matices frente a lecturas simplificadas de los «errores» de Cauchy; la discusión completa no fue cotejada.
 
+**Estado:** `SECONDARY_WITH_TRANSLATED_EXCERPTS_READ / SPECIALIST_ARTICLE_ABSTRACT_ONLY / FRENCH_1821_NOT_COLLATED`.
 
 ## H8. Riemann, Darboux y la extensión de la integración
 
 Una formulación en términos de sumas de Riemann y otra por supremos e ínfimos de sumas de Darboux exigen un argumento de equivalencia, demostrado en C05. La entrada moderna *Encyclopedia of Mathematics* sobre la integral de Riemann sitúa su introducción en torno a **1853**; el calendario exacto de conferencias, escritos y publicación no se reduce a ese único número sin un control bibliográfico específico. Por su parte, la publicación de Darboux de 1875 tiene un registro documental verificable:
 
-**Original primario identificado por catálogo (B/C, no colación completa):** Gaston Darboux, «Mémoire sur les fonctions discontinues», *Annales scientifiques de l'École Normale Supérieure*, 2.ª serie, tomo 4 (**1875**), pp. **57–112**, DOI [10.24033/asens.122](https://doi.org/10.24033/asens.122). [Numdam, ficha del artículo](https://www.numdam.org/item/ASENS_1875_2_4__57_0/), y [EuDML](https://eudml.org/doc/80798) corroboran título, fecha y paginación. **Referencia matemática moderna consultada (A):** [*Encyclopedia of Mathematics*, «Riemann integral»](https://encyclopediaofmath.org/wiki/Riemann_integral), definición por sumas y resultados de integración. La obra primaria de Riemann no se cotejó página a página para esta edición.
+**Original primario identificado por catálogo (B/C, no colación completa):** Gaston Darboux, «Mémoire sur les fonctions discontinues», *Annales scientifiques de l'École Normale Supérieure*, 2.ª serie, tomo 4 (**1875**), pp. **57–112**, DOI [10.24033/asens.122](https://doi.org/10.24033/asens.122). [Numdam, ficha del artículo](https://www.numdam.org/item/ASENS_1875_2_4__57_0/), y [EuDML](https://eudml.org/doc/80798) corroboran título, fecha y paginación. **Referencia matemática moderna consultada (A):** [*Encyclopedia of Mathematics*, «Riemann integral»](https://encyclopediaofmath.org/wiki/Riemann_integral), definición por sumas y resultados de integración. La obra primaria de Riemann no se cotejó página a página en este macrotramo.
 
 **Alcance:** no confundimos la integral de Riemann–Darboux demostrada en el libro con la integral de Lebesgue o su teoría de conjuntos medibles, ni declaramos demostrado el criterio «discontinuidades de medida cero» que esta última permite formular.
 
+**Estado:** `DARBOUX_PRIMARY_PUBLICATION_METADATA_VERIFIED / ARTICLE_FULL_TEXT_NOT_COLLATED / MODERN_RIEMANN_REFERENCE_READ`.
 
 ## H9. Fundamentos modernos, límites de los modelos y la auditoría del libro
 
@@ -100,6 +109,7 @@ Los modelos de enfriamiento y población de C10 ilustran otro límite: comprobar
 
 **Fuentes secundarias y primarias tratadas en C10:** consultar [notas H1–H8 de C10](capitulo-10-notas.html), con el registro de [Verhulst (1845) en Persée](https://www.persee.fr/doc/marb_0770-8157_1845_num_18_1_3438), [MacTutor, Euler](https://mathshistory.st-andrews.ac.uk/Biographies/Euler/) y el estudio histórico acerca de la *Scala graduum caloris* de Newton (referencias allí diferenciadas). No se han reabierto esos originales para introducir nuevas citas en C11.
 
+**Estado:** `EDC_MATHEMATICAL_SYNTHESIS / PRIOR_SOURCE_AUDITS_REUSED_WITH_DISCLOSED_SCOPE / TRANSVERSAL_AUDIT_PENDING`.
 
 ## Registro consolidado de procedencia
 
@@ -137,3 +147,12 @@ Los modelos de enfriamiento y población de C10 ilustran otro límite: comprobar
 **Riemann.** La habilitación escrita en **1854**, localizada como manuscrito en [Kalliope](https://kalliope.staatsbibliothek-berlin.de/de/ead?ead.id=DE-611-HS-3204968), no debe confundirse con su edición impresa póstuma en **1867**, descrita por [ETH-Bibliothek](https://www.e-rara.ch/zut/content/titleinfo/13665454). El catálogo editorial contiene un apartado propio sobre el concepto de integral definida; no se confunde con la teoría moderna de Lebesgue ni con una prueba de C05 literalmente original de Riemann. **Estado:** `MANUSCRIPT_AND_1867_PRINT_CATALOG_VERIFIED / ORIGINAL_§4_NOT_COLLATED`.
 
 **Límite de la revisión:** son **refuerzos documentales y advertencias de atribución**, no una colación general de los originales históricos. Cualquier cita textual en la edición pública exigirá examinar la página original y registrar su localizador; ninguna imagen ajena ha sido incorporada.
+
+
+## Complemento documental — revisión literaria R12 (13 de octubre de 2026)
+
+Para el recuadro «Hasta dónde llega una fórmula» se reabrió la [transcripción francesa del *Cours d’analyse* de Cauchy en Wikisource](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier). Se leyó la introducción, en particular los párrafos que comienzan «Quant aux méthodes», «On doit même observer» y «Ainsi, avant d’effectuer la sommation». Son el apoyo del breve pasaje sobre condiciones, valores y convergencia; el ejemplo geométrico y su conexión con C11 son desarrollo pedagógico de EDC.
+
+La consulta es del francés transcrito; no hubo cotejo con el facsímil de 1821 ni lectura completa del volumen. El estado documental se amplía a PRIMARY_FRENCH_TRANSCRIPTION_SELECTED_PASSAGES_READ / PRINTED_EDITION_NOT_COLLATED. Las fichas H1–H9 y el complemento EDC-M13-A03 se conservan como registros previos. No se adjudica nueva colación de Arquímedes, Liu Hui, textos de Kerala, Newton, Leibniz, Taylor, Riemann o Darboux.
+
+Los cierres literarios de C08 y C09 ya registran, respectivamente, lectura de pasajes franceses de Cauchy y de la traducción anotada de Taylor por Ian Bruce. Este complemento distingue esas lecturas del estado histórico consignado en las fichas originales; no transforma una lectura parcial en colación completa. La auditoría transversal de la obra sigue pendiente tras el cierre local de C11.

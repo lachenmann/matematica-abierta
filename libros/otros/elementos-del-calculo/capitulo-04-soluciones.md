@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C04-SOLUCIONES
-source-sha256: 3df6d09658e21de7497d40cf502c1992b520d9685b28582ecf660383ed71ac15
+source-sha256: de122b8f0f58a41ae6973d4f0aa72c54c090ee99478cc6dda5b609699939ef71
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -34,7 +34,11 @@ Las soluciones son demostraciones y cálculos propios correspondientes a los tre
 
 ### Solución 4.1 (`EDC-C04-SOL-001`)
 
-Si $P_n$ está contenido en la región y ésta en $Q_n$, un área compatible, **si existe**, debe pertenecer al intervalo $[A(P_n),A(Q_n)]$. La anchura de esos intervalos puede tender a cero; la Proposición 4.1 asegura entonces que no caben dos valores distintos presentes en **todos** los intervalos. Pero esta condición aislada no garantiza existencia. Por ejemplo, tomando $L_n=n$ y $U_n=n+1/n$, tenemos $L_n\le U_n$ y $U_n-L_n\to0$, pero ningún número real puede pertenecer a $[L_n,U_n]$ para todo $n$. En un problema geométrico es necesario construir un candidato y comprobar que las cotas interiores y exteriores lo encierran, o demostrar mediante una estructura adicional la existencia de un punto común.
+La inclusión de $P_n$ en la región y de ésta en $Q_n$ exige que cualquier área compatible, si existe, pertenezca a $[A(P_n),A(Q_n)]$. Una aproximación interior no puede superar ese valor, y una cubierta exterior no puede quedar por debajo de él.
+
+Si las anchuras tienden a cero, la Proposición 4.1 demuestra que dos números presentes en todos esos intervalos deben coincidir: su distancia fija no podría ser menor que anchuras arbitrariamente pequeñas. Eso asegura unicidad, pero todavía no proporciona un número común. Para ver la diferencia, tomemos $L_n=n$ y $U_n=n+1/n$. Aunque $L_n\le U_n$ y $U_n-L_n\to0$, cualquier número real fijado queda por debajo de $L_n$ para $n$ suficientemente grande. No pertenece a todos los intervalos.
+
+En el problema geométrico debemos comprobar además que las cotas retienen algún candidato, o demostrar la existencia mediante otra propiedad de la construcción. En el segmento parabólico se hace lo primero: el número $4T/3$ se compara expresamente con los dos extremos de cada encaje.
 
 ### Solución 4.2 (`EDC-C04-SOL-002`)
 
@@ -52,7 +56,11 @@ Por monotonía de área, un polígono interior sólo ofrece una **cota inferior*
 
 ### Solución 4.4 (`EDC-C04-SOL-004`)
 
-Agotar significa probar: *dada cualquier* tolerancia positiva, un número **finito** de operaciones deja un error inferior a ella. Por ejemplo, si después de $n$ pasos $R_n\le R_0(1/2)^n$, el principio arquimediano y el Lema 4.1 permiten escoger un $n$ adecuado. Decir que se han agregado «todas» las piezas de una partición infinita no especifica qué operación suma las áreas ni por qué el resultado existe. La diferencia es lógica: una es una afirmación cuantificada sobre pasos finitos y tolerancias, mientras la otra demanda una teoría adicional del infinito.
+Agotar significa que, para cada tolerancia positiva fijada, podemos elegir un número finito de etapas cuyo error sea menor. Las etapas necesarias pueden crecer al pedir más precisión; la afirmación no exige que una única etapa deje resto cero.
+
+Si $R_n\le R_0(1/2)^n$, el Lema 4.1 compara las potencias con una cota que tiende a cero por el principio arquimediano de C00. Para una tolerancia $\varepsilon>0$ podemos elegir un entero que haga la cota menor que $\varepsilon$, y así controlar todas las etapas posteriores. La prueba se refiere a errores de construcciones finitas.
+
+La expresión «agregar todas las piezas» de una descomposición infinita deja sin precisar cómo se realiza esa suma y qué garantiza su existencia. Para utilizarla como una operación matemática necesitaríamos definirla y justificarla; el agotamiento obtiene la precisión solicitada mediante una etapa y una cota concretas.
 
 ## B. Triángulos parabólicos y agotamiento
 
@@ -72,34 +80,36 @@ La anchura es $\ell=2$, la altura máxima $H=3(2^2)/4=3$, y el triángulo tiene 
 
 ### Solución 4.7 (`EDC-C04-SOL-007`)
 
-Después de las generaciones $0$ y $1$ contamos $n=2$, de modo que
+Se han incluido dos generaciones, las de índices $0$ y $1$, así que en las fórmulas del capítulo corresponde usar $n=2$. La primera aporta $T$ y la segunda $T/4$:
 
 $$
 P_2=T+\frac T4=\frac{5T}{4},
 \qquad B_2=\frac{2T}{4^2}=\frac T8.
 $$
 
-El intervalo de encaje es
+El extremo inferior es el área ya cubierta, $P_2$. Para obtener una cota superior añadimos la cobertura de todo el resto, $B_2$, y queda
 
 $$
 \left[\frac{5T}{4},\frac{11T}{8}\right].
 $$
 
-En efecto $5T/4=10T/8$, y el valor $4T/3$ queda entre sus extremos: $1.25T<1.333\ldots T<1.375T$. Su anchura es $T/8$, no el error exacto del polígono interior frente al valor final.
+El candidato $4T/3$ está dentro: supera al extremo inferior en $T/12$ y queda por debajo del superior en $T/24$. Esas dos distancias suman $T/8$, la anchura del intervalo. Por tanto, la cota $B_2$ controla el resto completo sin ser igual al error exacto del polígono interior, que aquí es $T/12$.
 
 ### Solución 4.8 (`EDC-C04-SOL-008`)
 
-Con $T=3/2$, el error interior es
+Con $T=3/2$, el error del polígono interior frente al valor final se reduce a
 
 $$
 \frac{4T}{3\cdot4^n}=\frac2{4^n}.
 $$
 
-Exigimos $2/4^n<1/1000$, esto es $4^n>2000$. Se cumple por primera vez para $n=6$, pues $4^5=1024<2000<4096=4^6$. No hay que calcular 4096 triángulos: basta aplicar la razón de áreas ya demostrada.
+Queremos que sea estrictamente menor que $1/1000$. Como $4^n>0$, podemos multiplicar sin cambiar el sentido: la condición equivale a $4^n>2000$. Las potencias crecen estrictamente y $4^5=1024<2000<4096=4^6$, así que el menor entero admisible es $n=6$. No necesitamos dibujar ni sumar individualmente los triángulos; la fórmula de la recurrencia ya reúne sus áreas y permite escoger la etapa por su error.
 
 ### Solución 4.9 (`EDC-C04-SOL-009`)
 
-Si el intervalo horizontal original tiene anchura $d$, su triángulo tiene área $kd^3/8$. Cada intervalo hijo tiene anchura $d/2$ y el área del triángulo asociado es $k(d/2)^3/8=(kd^3/8)/8$, exactamente un octavo. Dos triángulos sin superposición interior agregan $2(1/8)=1/4$ del área del padre. Se trata de una razón de áreas **finitas** y no de una suma infinita.
+La fórmula del Lema 4.2 es válida también para cuerdas oblicuas: con anchura horizontal $d$ y coeficiente cuadrático $-k$, el área triangular es $kd^3/8$. Cada intervalo hijo tiene anchura $d/2$, y el coeficiente $k$ permanece igual al restar su nueva cuerda. Por eso su triángulo tiene área $k(d/2)^3/8=(kd^3/8)/8$.
+
+Al partir la anchura por dos, la separación vertical máxima se divide por cuatro; los dos cambios juntos dividen el área por ocho. Hay dos triángulos nuevos, con interiores en mitades horizontales distintas, y sus áreas se suman: la pareja aporta $2(1/8)=1/4$ del área del padre. Toda la comparación utiliza tres triángulos y la aditividad finita.
 
 ### Solución 4.10 (`EDC-C04-SOL-010`)
 
@@ -213,11 +223,15 @@ La aditividad geométrica conocida se aplica a una **unión finita** de polígon
 
 ### Solución 4.19 (`EDC-C04-SOL-019`)
 
-La identidad $P_n\to4T/3$ establece el límite de las **áreas de polígonos interiores**, no de manera automática el área del segmento parabólico. Podría quedar una parte cuya área no estuviera controlada. El Lema 4.3 cubre esa parte mediante paralelogramos de área total $B_n=2T/4^n\to0$. Sólo entonces el Teorema 4.2 demuestra que cualquier valor geométricamente compatible queda obligado a ser $4T/3$.
+La identidad $P_n\to4T/3$ controla las áreas de los polígonos interiores. Para relacionarlas con la región completa hay que estudiar lo que aún queda entre el polígono y el arco: el límite de lo cubierto no estima por sí solo ese resto.
+
+El Lema 4.3 lo incluye en franjas poligonales cuya área total es $B_n=2T/4^n\to0$. Así cualquier valor compatible debe quedar entre $P_n$ y $P_n+B_n$ para cada $n$. El Teorema 4.2 comprueba que $4T/3$ pertenece efectivamente a cada intervalo, lo que establece existencia, y utiliza después la anchura tendiendo a cero para establecer unicidad. La cobertura exterior proporciona la comparación que faltaba en el argumento de la alumna.
 
 ### Solución 4.20 (`EDC-C04-SOL-020`)
 
-Fijemos el primer subintervalo $[0,1/2]$ para todas las particiones. Para el restante $[1/2,1]$ hagamos $n$ subdivisiones iguales, de longitud $1/(2n)$. El número total de subintervalos es $n+1\to\infty$, pero la finura sigue siendo $1/2$. No podemos aplicar teoremas cuyo supuesto es $\|P\|\to0$; subsisten intervalos de anchura macroscópica.
+Podemos aumentar el número de subintervalos sin tocar uno que siga siendo ancho. Conservemos $[0,1/2]$ como primer subintervalo en todas las particiones y dividamos sólo $[1/2,1]$ en $n$ partes iguales, cada una de longitud $1/(2n)$. El número total es $n+1\to\infty$, pero la anchura máxima sigue siendo $1/2$.
+
+Los tramos del segundo bloque se hacen pequeños y el primero permanece igual. Una garantía que dependa de la finura no puede aplicarse sólo porque haya muchas piezas: hay que controlar también la más ancha.
 
 ### Solución 4.21 (`EDC-C04-SOL-021`)
 
@@ -243,18 +257,22 @@ que tiende a cero para $0<q<1$ por el Lema 4.1. No ha sido necesario definir el 
 
 ### Solución 4.23 (`EDC-C04-SOL-023`)
 
-Como $f$ es no decreciente, $f(x_i)-f(x_{i-1})\ge0$. Así,
+La monotonía asegura que $f(x_i)-f(x_{i-1})\ge0$. El término correspondiente de la diferencia de sumas es esa variación multiplicada por $\Delta_i$; podemos reemplazar la anchura por $\|P\|$ para obtener una cota superior, porque el otro factor es no negativo. Resulta
 
 $$
 U(P)-L(P)=\sum_i[f(x_i)-f(x_{i-1})]\Delta_i
 \le\|P\|\sum_i[f(x_i)-f(x_{i-1})].
 $$
 
-La suma derecha telescopa a $f(b)-f(a)\ge0$, y por tanto se obtiene la cota requerida. No se presupone continuidad; el argumento sólo usa monotonía y suma finita.
+En la suma derecha, el valor en cada punto interior aparece una vez sumado y una vez restado. Sólo quedan $f(b)-f(a)\ge0$, que da la cota pedida. Cada sumando de la diferencia original es no negativo, por lo que también se cumple la cota inferior cero. La continuidad no interviene: la monotonía y la cancelación finita bastan.
 
 ### Solución 4.24 (`EDC-C04-SOL-024`)
 
-El teorema de valores extremos asegura que $m_i$ y $M_i$ existen **como números alcanzados** sobre cada intervalo cerrado $[x_{i-1},x_i]$. La continuidad uniforme proporciona, para $\eta=\varepsilon/[2(b-a)]$, un $\delta>0$ común a todas las posiciones, tal que $|f(x)-f(y)|<\eta$ si $|x-y|<\delta$. Con $\|P\|<\delta$, los puntos de mínimo y máximo de cada subintervalo distan menos que $\delta$, luego $M_i-m_i<\eta$. Sumando,
+Usamos dos consecuencias diferentes de la continuidad en un intervalo cerrado. El teorema de valores extremos garantiza que en cada $[x_{i-1},x_i]$ hay puntos donde se alcanzan el mínimo $m_i$ y el máximo $M_i$. La continuidad uniforme permite comparar esos dos valores con una misma tolerancia cualquiera que sea el lugar del subintervalo.
+
+Para escoger esa tolerancia, observamos que la diferencia total es la suma de $(M_i-m_i)\Delta_i$. Si cada oscilación es menor que $\eta$, el total será menor que $\eta(b-a)$, pues las anchuras suman $b-a$. Elegimos $\eta=\varepsilon/[2(b-a)]$ y obtenemos por continuidad uniforme un $\delta>0$ tal que $|f(x)-f(y)|<\eta$ cuando $|x-y|<\delta$.
+
+Con $\|P\|<\delta$, los puntos de mínimo y máximo de cada subintervalo distan menos que $\delta$, luego $M_i-m_i<\eta$. Al multiplicar por las anchuras y sumar,
 
 $$
 0\le A_+(P)-A_-(P)
@@ -262,7 +280,7 @@ $$
 =\varepsilon/2<\varepsilon.
 $$
 
-No bastaría una continuidad expresada mediante un $\delta$ que variara sin control de un subintervalo a otro.
+El mismo $\delta$ sirve para todas las particiones suficientemente finas. Una elección que dependiera sin control de cada punto no daría por sí sola esa garantía común.
 
 ### Solución 4.25 (`EDC-C04-SOL-025`)
 
@@ -276,26 +294,26 @@ Dado $\varepsilon>0$, basta escoger $n>2(R_0/\varepsilon-1)$, o cualquier entero
 
 ### Solución 4.26 (`EDC-C04-SOL-026`)
 
-Tomemos $F(x)=x^{p+1}/(p+1)$. En cada intervalo $[x_{i-1},x_i]$ el valor medio proporciona $\xi_i$ con
+Queremos encontrar un número encerrado entre las sumas por extremos de cualquier partición. Elegimos $F(x)=x^{p+1}/(p+1)$ porque $F'(x)=x^p$, y sus incrementos consecutivos se cancelarán al sumarlos. El polinomio es continuo en cada $[x_{i-1},x_i]$ y derivable en su interior; el valor medio proporciona un $\xi_i$ interior con
 
 $$
 F(x_i)-F(x_{i-1})=\xi_i^p\Delta_i.
 $$
 
-Como $x^p$ es creciente sobre $[0,1]$,
+La potencia $x^p$ es creciente sobre $[0,1]$, así que el valor intermedio queda entre las potencias de los dos extremos. Multiplicando por $\Delta_i>0$ obtenemos
 
 $$
 x_{i-1}^p\Delta_i\le F(x_i)-F(x_{i-1})\le x_i^p\Delta_i.
 $$
 
-Al sumar, la expresión central telescopa a $1/(p+1)$; por tanto $L(P)\le1/(p+1)\le U(P)$. Además,
+Al sumar, los incrementos de $F$ dan $F(1)-F(0)=1/(p+1)$. La suma inferior es $L(P)$ y la superior $U(P)$; por tanto $L(P)\le1/(p+1)\le U(P)$. Para conocer la precisión, aplicamos la cota de finura a las variaciones no negativas de la potencia:
 
 $$
 U(P)-L(P)=\sum_i(x_i^p-x_{i-1}^p)\Delta_i
 \le\|P\|\sum_i(x_i^p-x_{i-1}^p)=\|P\|.
 $$
 
-Esto prueba la aproximación independiente del reparto particular de anchuras, sin definir una integral general.
+La última suma vale uno por cancelación de sus términos interiores. Así el candidato queda encerrado con una anchura a lo sumo $\|P\|$, aunque las anchuras individuales no sean iguales. Cualquier suma con muestras en esos subintervalos pertenece también al encaje, por la monotonía de la potencia.
 
 ## F. Descubrimiento y síntesis
 
@@ -311,19 +329,19 @@ Nueve duplicaciones no bastan, pues $1/512>1/1000$. La elección depende de la p
 
 ### Solución 4.28 (`EDC-C04-SOL-028`)
 
-Sea $f(x)=-2x^2+5x+1$ y $\ell(x)$ la cuerda interpolante en $x=1$ y $x=3$. La diferencia $f-\ell$ es cuadrática, tiene ceros $1$ y $3$ y coeficiente principal $-2$. Luego
+Para calcular el área entre la parábola y su cuerda, necesitamos la separación entre ambas, que puede ser positiva incluso si alguna ordenada de la parábola es negativa. Sea $f(x)=-2x^2+5x+1$ y $\ell(x)$ la recta que interpola sus valores en $1$ y $3$. Restarla conserva el coeficiente cuadrático $-2$ y crea ceros en los dos extremos, por lo que
 
 $$
 f(x)-\ell(x)=-2(x-1)(x-3)=2(x-1)(3-x).
 $$
 
-La anchura horizontal es $2$, así que el triángulo principal entre arco y cuerda tiene
+Esta diferencia tiene la forma del segmento estudiado, con $k=2$ y anchura horizontal $2$. El triángulo principal tiene área
 
 $$
 T=\frac{2\cdot2^3}{8}=2.
 $$
 
-El área del segmento parabólico es $4T/3=8/3$. La cuerda puede ser oblicua y parte de la gráfica puede tener valores negativos sin afectar el área **entre** la parábola y su cuerda.
+La cuadratura por agotamiento da $4T/3=8/3$. La cuerda oblicua se trata con el Lema 4.2: el área depende de la anchura horizontal y de la separación vertical, sin exigir que la base esté sobre el eje horizontal.
 
 ### Solución 4.29 (`EDC-C04-SOL-029`)
 
@@ -346,26 +364,26 @@ Las diferencias son $4/3-21/16=1/48$ y $43/32-4/3=1/96$; suman $1/32$, exactamen
 
 ### Solución 4.30 (`EDC-C04-SOL-030`)
 
-Para cualquier partición y muestras $\xi_i$, por linealidad **finita** de la suma,
+Para controlar todas las muestras aprovechamos primero dos funciones cuyos encajes ya conocemos, $x^2$ y $x$. La expresión dada se escribe $f_\lambda(x)=(1-\lambda)x^2+\lambda x$. En cualquier partición con muestras $\xi_i$, la distributividad y la linealidad de una suma finita dan
 
 $$
 S(P,\xi;f_\lambda)
 =(1-\lambda)S(P,\xi;x^2)+\lambda S(P,\xi;x).
 $$
 
-El Ejercicio 4.26 con $p=2$ muestra que cualquier suma etiquetada de $x^2$ queda entre sus sumas extremas, y que $1/3$ pertenece al mismo intervalo de anchura a lo sumo $\|P\|$. Por tanto,
+El Ejercicio 4.26, con $p=2$, sitúa cualquier suma etiquetada de $x^2$ entre sus sumas extremas. El número $1/3$ pertenece al mismo intervalo, cuya anchura no supera $\|P\|$; la distancia entre dos números de ese intervalo tampoco puede superarla. Por tanto,
 
 $$
 \left|S(P,\xi;x^2)-\frac13\right|\le\|P\|.
 $$
 
-Aplicando el mismo argumento a $p=1$, obtenemos
+Para $p=1$ obtenemos de la misma manera
 
 $$
 \left|S(P,\xi;x)-\frac12\right|\le\|P\|.
 $$
 
-Así, para todo $\lambda\ge0$,
+El coeficiente $1-\lambda$ puede ser negativo cuando $\lambda>1$, así que no multiplicamos los encajes manteniendo siempre su sentido. Restamos en cambio la combinación de los dos candidatos y usamos la desigualdad triangular con el valor absoluto de ese coeficiente. Como $\lambda\ge0$,
 
 $$
 \begin{aligned}
@@ -376,7 +394,7 @@ $$
 \end{aligned}
 $$
 
-El candidato se simplifica a $1/3+\lambda/6$. La cota es independiente del número de subintervalos y de las muestras particulares; si la finura tiende a cero, el error también. Hemos probado este caso especial de cuadratura por combinaciones finitas de dos funciones controladas, sin recurrir al teorema de linealidad de una integral que todavía no se ha construido.
+El candidato es $1/3+\lambda/6$. Para cada $\lambda$ fijo, la constante $|1-\lambda|+\lambda$ es finita y la cota tiende a cero cuando la finura tiende a cero. No depende del número de subintervalos ni de las muestras, por lo que todas las elecciones convergen al mismo candidato. La afirmación es para cada parámetro fijo; no exige una cota común a todos los valores ilimitados de $\lambda$.
 
 ---
 

@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -15,13 +15,14 @@ topics:
   - calculo-de-una-variable
   - historia-de-las-matematicas
 number-sections: false
+css: /assets/books/elementos-del-calculo/edc-source-notes.css
 provenance:
   type: original
   sources:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C01-NOTAS-HISTORICAS
-source-sha256: c783fe3fb6325c9055e482ca0e4536bfc0ca3de265719d1df5c7314eb9c24a9a
+source-sha256: f32d0eab3cbf76e5b3e4142e2cf67236a8e20a665c4d1b7e8c93b17baa7b3834
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -77,6 +78,12 @@ Estas notas acompañan [el capítulo 1](capitulo-01.html) sin incorporarse a sus
 2. *The Newton Project*, «[History of the Method of Fluxions (Normalized)](https://newtonproject.ox.ac.uk/view/texts/normalized/NATP00356)», documento `NATP00356`, en especial los pasajes sobre el método de las fluxiones, las cartas de 1672–1676 y la publicación diferencial de 1684. Es **fuente primaria en contexto de disputa**, no reconstrucción neutral; se utilizó para confirmar que Newton argumentaba retrospectivamente sobre la cronología y la prioridad, no para dar por probadas todas sus imputaciones a Leibniz.
 
 **Precaución.** El hecho de que el Newton Project transcriba una afirmación de Newton sólo demuestra que esa afirmación consta en el documento. C01 no reproduce sus acusaciones como hechos históricos independientes.
+
+### Control adicional del recuadro Newton — EDC-RLI-R02
+
+Se releyó la fuente primaria normalizada NATP00356 el 13-10-2026. Localizadores: f. 146v, párrafo que comienza «In the above mentiond Analysis», sobre áreas como fluentes, ordenadas como fluxiones y abscisa común que aumenta uniformemente como tiempo; f. 154v, párrafo sobre el uso del símbolo de fluxión para representar un momento, que distingue fluxiones o velocidades finitas de momentos infinitamente pequeños. Estos dos pasajes sostienen la conexión concreta entre geometría y movimiento en el recuadro revisado. La imagen inicial del punto que recorre una curva es una explicación pedagógica actual, no una cita del documento.
+
+El recuadro conserva la diferencia entre este vocabulario y nuestro cociente incremental. No se introducen fechas nuevas de descubrimiento ni un veredicto de prioridad. La naturaleza polémica del manuscrito permanece registrada en H4. Se leyó la transcripción normalizada de pasajes concretos; no se colacionaron todas las imágenes del manuscrito. Fuente y folios verificados: https://newtonproject.ox.ac.uk/view/texts/normalized/NATP00356.
 
 ## H5. Leibniz: diferencias, cálculo y publicación
 

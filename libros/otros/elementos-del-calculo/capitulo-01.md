@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C01
-source-sha256: f96ddd0913eed76cdb380c65be21965e755d7f781bfb50ccff3f9991e6dda06b
+source-sha256: c7d9f7ea3c185275b71695c3a3c1c12a36e5fd3cc11a6b0a414ea1848b4f1810
 content-id: MA-BCH-0332
 content-type: book-chapter
 related:
@@ -36,9 +36,9 @@ related:
 
 > **Pregunta generadora.** ¿Cómo asignar a una curva una inclinación en un punto y a un móvil una velocidad en un instante, sin dividir por un incremento que ya se ha hecho cero?
 
-Hay una diferencia entre conocer dos valores y conocer cómo cambia una magnitud en un lugar preciso. El álgebra permite calcular $f(a)$ y $f(a+h)$; la geometría permite unir los correspondientes puntos de una gráfica por una recta. Pero el problema de la tangente exige una inclinación **local**, y el problema de la velocidad exige una razón de cambio **instantánea**. Ninguno se resuelve simplemente sustituyendo $h=0$ en una división por $h$.
+Si conocemos una posición en dos instantes, el desplazamiento y el tiempo transcurrido permiten calcular una velocidad media. Podemos acortar el intervalo para estudiar el movimiento más de cerca, pero la velocidad en un instante exige decidir qué información conservan esas medias cuando sus extremos se aproximan al mismo tiempo. En una curva, los valores $f(a)$ y $f(a+h)$ permiten calcular del mismo modo la inclinación de una secante; al acercar sus puntos tendremos que averiguar si las pendientes llegan a determinar una inclinación **local**.
 
-En el capítulo anterior aprendimos a trabajar con límites reales, a distinguirlos del valor de una función y a justificar las consecuencias de la continuidad. Ahora podremos dar el paso decisivo: reconocer cuándo las razones de cambio calculadas sobre intervalos cada vez más cortos convergen a un número. Ese número será la **derivada**. No presentaremos todavía un catálogo de fórmulas; primero estudiaremos qué significa que la derivada exista, qué información proporciona y qué no autoriza a concluir.
+Los límites de C00 ofrecen el lenguaje para responder: mantenemos $h\ne0$ en cada cociente y examinamos su comportamiento cuando $h\to0$, en lugar de efectuar una división con $h=0$. Si las pendientes se acercan a un mismo número finito, ese número será la **derivada**. Lo que puede parecer al principio una forma de prolongar un cálculo tendrá una consecuencia geométrica más precisa: permitirá elegir una recta cuya aproximación a la curva mejore en proporción al desplazamiento desde el punto.
 
 ## 1.1. Una secante que se aproxima, pero no se anula
 
@@ -48,7 +48,7 @@ $$
 \frac{(a+h)^2-a^2}{(a+h)-a}=2a+h.
 $$
 
-Mientras $h\ne0$, **la recta es secante**, no la recta que todavía buscamos. Al hacer que $h$ tienda a cero, la pendiente se acerca a $2a$. El numerador y el denominador originales tienden a cero, pero el **cociente** ya simplificado tiene un límite finito. Esto no es el cálculo ilegítimo $0/0$: es el estudio de una función definida para incrementos no nulos.
+La pendiente $2a+h$ permite seguir el acercamiento: mientras $h\ne0$, tenemos una secante por dos puntos distintos, y al reducir el incremento sus pendientes se aproximan a $2a$. El numerador y el denominador originales tienden ambos a cero, aunque su cociente converge a un valor finito. La simplificación realizada para incrementos no nulos explica esa convergencia sin asignar significado a $0/0$.
 
 La ecuación de esas secantes, escrita tomando siempre como punto de paso $P$, es
 
@@ -62,18 +62,16 @@ $$
 y=a^2+2a(x-a).
 $$
 
-¿Podemos llamar «tangente» a esta recta? Sí, cuando precisemos qué significa aproximar la gráfica **hasta el primer orden**. Pero ni todos los cocientes incrementales tienen límite, ni una definición basada exclusivamente en «tocar una sola vez» funciona para cualquier curva.
+Esta elección de pendiente responde al comportamiento de las secantes, pero aún podemos pedir una justificación geométrica: cuánto se separa la curva de la recta cuando nos alejamos un poco del punto. En §1.6 comprobaremos que la separación resulta pequeña incluso en comparación con el desplazamiento horizontal, propiedad que precisará el sentido de aproximar la gráfica **hasta el primer orden**. También habrá funciones para las que ninguna pendiente real consiga esa aproximación.
 
 <figure id="fig-edc-c01-01" class="quarto-float-fig">
 <img src="/assets/books/elementos-del-calculo/EDC-C01-F01_SECANTE_TANGENTE.svg" alt="Parábola negra y=x²; secante roja discontinua por los puntos P y Qh; tangente azul en P. La pendiente secante vale 2a+h y converge a 2a.">
 <figcaption>Figura 1.1. La secante y la tangente cumplen ecuaciones diferentes; su coincidencia en el límite exige el cociente incremental.</figcaption>
 </figure>
 
-
-
 ## 1.2. De la geometría al movimiento: dos problemas distintos
 
-La recta tangente a una circunferencia sugiere una línea que tiene con ella un contacto singular. No es una definición que se traslade sin más a las gráficas de funciones. Por ejemplo, la recta $y=0$ atraviesa la curva $y=x^3$ en el origen: a pesar de cruzarla, será su tangente en el sentido diferencial. Tampoco basta pedir que una recta comparta un único punto con la gráfica: esa condición depende de toda la gráfica y no de lo que sucede cerca del punto.
+La tangente a una circunferencia suele ser nuestra primera imagen de tangencia: la recta toca la figura en un punto y la deja entera de un mismo lado. En una gráfica pueden separarse esas propiedades. La recta $y=0$, por ejemplo, atraviesa la curva $y=x^3$ en el origen y será allí su tangente diferencial, porque la aproximación que ofrece cerca del origen tiene el error requerido. Contar las intersecciones con toda la curva responde a una pregunta global, mientras que la inclinación buscada se decide por lo que sucede en las proximidades del punto.
 
 Por otra parte, una posición $s(t)$ se mide en unidades de longitud y el tiempo $t$ en unidades temporales. Para $t$ y $t+h$ del dominio físico, la razón
 
@@ -81,7 +79,7 @@ $$
 \frac{s(t+h)-s(t)}{h},\qquad h\ne0,
 $$
 
-mide **desplazamiento dividido por tiempo transcurrido**. Es una velocidad media *con signo* en el intervalo. No equivale necesariamente a la rapidez media: un movimiento puede avanzar y retroceder, de modo que el desplazamiento neto sea cero sin que la distancia recorrida lo sea.
+mide **desplazamiento dividido por tiempo transcurrido**. Esa velocidad media tiene signo, pues la diferencia de posiciones puede ser positiva o negativa según el sentido del movimiento. La rapidez media requiere otra información, la distancia total recorrida: si un móvil avanza y regresa al punto de partida, su desplazamiento neto es cero, aunque haya recorrido una distancia positiva.
 
 Consideremos el modelo algebraico $s(t)=s_0+v_0t+ct^2$, con $t\ge0$. Para $h\ne0$ permitido por el dominio,
 
@@ -89,9 +87,9 @@ $$
 \frac{s(t+h)-s(t)}h=v_0+2ct+ch.
 $$
 
-Por tanto, las velocidades medias se aproximan a $v_0+2ct$ cuando $h\to0$. Si $c$ tiene dimensiones de longitud/tiempo$^2$, la expresión resultante tiene dimensiones de longitud/tiempo, como corresponde. **El límite es una afirmación matemática** acerca del modelo; su interpretación como una ley del movimiento exige, adicionalmente, que el modelo sea adecuado a la situación física.
+Por tanto, las velocidades medias se aproximan a $v_0+2ct$ cuando $h\to0$. Si $c$ tiene dimensiones de longitud/tiempo$^2$, la expresión resultante tiene dimensiones de longitud/tiempo, como corresponde. El límite describe el cambio previsto por la función elegida. Su interpretación física conserva las unidades del cociente y requiere que el modelo represente adecuadamente el movimiento que estudiamos.
 
-**Nota histórica H1.** El estudio galileano de la caída uniformemente acelerada proporciona una motivación histórica para la relación entre distancia y cuadrado del tiempo. No afirmamos que Galileo formulara una derivada mediante límites modernos: véanse [notas históricas H1–H5](capitulo-01-notas.html).
+**Nota histórica H1.** La relación entre distancia y cuadrado del tiempo aparece en el estudio galileano de la caída uniformemente acelerada. La función anterior permite explorar esa dependencia con nuestro lenguaje de límites; los argumentos geométricos de Galileo y sus condiciones de movimiento se documentan en las [notas históricas H1–H5](capitulo-01-notas.html).
 
 ## 1.3. La razón de cambio media
 
@@ -108,9 +106,9 @@ Q_f(a,h)=\frac{f(a+h)-f(a)}h,
 \qquad h\ne0,\quad a,a+h\in D.
 $$
 
-Las dos variables de $M_f$ son puntos del dominio; la segunda variable de $Q_f$ es un **incremento**. Conviene no confundir estos papeles. Si $f$ representa una posición, $Q_f$ es una velocidad media con signo; si $f$ representa temperatura en función del tiempo, sus unidades serán grados por unidad temporal. Si $f$ representa una magnitud sin unidad, la razón puede llevar las unidades inversas de la variable.
+Las dos variables de $M_f$ representan puntos del dominio, mientras que en $Q_f$ conservamos el punto inicial y expresamos el segundo mediante un **incremento**. Esa escritura permite variar la separación sin cambiar el lugar alrededor del cual investigamos. Si $f$ representa una posición, $Q_f$ es una velocidad media con signo; si $f$ representa temperatura en función del tiempo, sus unidades serán grados por unidad temporal. Si $f$ representa una magnitud sin unidad, la razón puede llevar las unidades inversas de la variable.
 
-Una razón de cambio puede ser positiva, negativa o cero. Sin embargo, el signo de una sola secante no determina lo que sucederá al acercar los extremos: para conocer una tasa instantánea necesitamos un límite de todas las secantes suficientemente próximas y admisibles, no una muestra favorable.
+Una razón de cambio puede ser positiva, negativa o cero. Al estudiar una tasa instantánea tendremos que controlar todas las secantes admisibles suficientemente próximas: una secante particular, o incluso una sucesión bien elegida, puede sugerir una pendiente que otras aproximaciones desmientan. La condición de límite recoge esa exigencia.
 
 ## 1.4. La derivada en un punto interior
 
@@ -133,26 +131,24 @@ $$
 \end{gathered}
 $$
 
-con $\delta\le r$ si es necesario. El orden de los cuantificadores impide escoger una pendiente distinta para cada tolerancia. Por la unicidad de límites probada en C00, **no puede haber dos números** que satisfagan esta condición.
+con $\delta\le r$ si es necesario, para que todos los argumentos permanezcan en el dominio. Primero tiene que haber un único candidato $L$, y después, para cada tolerancia $\varepsilon$, debemos encontrar una distancia $\delta$ que mantenga próximos a él todos los cocientes admitidos. La distancia puede cambiar cuando pedimos mayor precisión; la pendiente candidata permanece fija. La unicidad de límites probada en C00 asegura además que dos candidatos distintos no pueden satisfacer esa condición.
 
 **Teorema 1.1 (unicidad de la derivada; `EDC-C01-THM-001`).** Si $f$ es derivable en el punto interior $a$, su derivada $f'(a)$ está determinada de manera única.
 
 **Demostración.** Si $L$ y $M$ satisfacen la definición, ambos son límites finitos de la misma función $h\mapsto Q_f(a,h)$ en $h=0$, que es un punto de acumulación de su dominio perforado. La unicidad del límite funcional de C00 obliga a $L=M$. $\square$
 
-Al escribir $f'(a)$ no debe confundirse el número obtenido en $a$ con la **función derivada** $f'$ que eventualmente se obtiene cuando repetimos el procedimiento en distintos puntos. Es perfectamente posible que una función sea derivable sólo en una parte de su dominio.
+El símbolo $f'(a)$ representa un número obtenido al fijar el punto $a$. Si repetimos la investigación en distintos puntos y los límites existen, esos números pueden reunirse en una **función derivada** $f'$. Su dominio depende de dónde hayamos conseguido demostrar la existencia del límite, de modo que una función puede ser derivable sólo en una parte del suyo.
 
 ::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Newton: seguir el movimiento de una curva"}
-
 *Lectura opcional.*
 
-Imaginemos un punto que recorre una curva. Mientras avanza hacia la derecha, su altura cambia: a veces crece con rapidez, a veces lentamente, a veces empieza a bajar. Podemos mirar el dibujo como una figura quieta, pero también como la huella de un movimiento.
+Una curva puede entenderse como una figura ya trazada o como el recorrido de un punto cuyas coordenadas cambian. La segunda mirada permite comparar el movimiento horizontal con el vertical: una altura que crece mucho mientras la abscisa cambia poco produce una inclinación grande.
 
-Esta segunda mirada fue muy importante para Newton. Llamaba fluentes a las magnitudes que cambian y fluxiones a sus velocidades de cambio. Los nombres evocan justamente algo que fluye. Encontrar la inclinación de una curva y estudiar una velocidad quedaban así estrechamente relacionados.
+Newton desarrolló esa manera de relacionar geometría y movimiento mediante cantidades *fluentes* y sus *fluxiones*. En el manuscrito histórico conservado por el Newton Project describe representaciones en las que una abscisa que aumenta uniformemente hace de tiempo, las áreas hacen de fluentes y las ordenadas de fluxiones. También llama velocidades a las fluxiones y las distingue de los pequeños momentos de cambio.
 
-La derivada que acabamos de definir recoge esa intuición: nos dice cómo está cambiando una magnitud en un instante. Cuando calculamos la pendiente de una tangente, también podemos pensar que estamos siguiendo un movimiento y preguntando qué está ocurriendo justo ahora.
+Esa escritura reúne problemas que podían parecer separados: seguir una magnitud que varía y hallar una tangente. Nuestro cociente incremental permite estudiar la relación con límites actuales; el vocabulario de Newton conserva la imagen de cantidades que fluyen y de velocidades con las que se generan.
 
-**Para seguir leyendo:** [Newton, History of the Method of Fluxions, transcripción del Newton Project](https://newtonproject.ox.ac.uk/view/texts/normalized/NATP00356).
-
+**Para seguir leyendo:** [Newton, *History of the Method of Fluxions*, transcripción del Newton Project, ff. 146v y 154v](https://newtonproject.ox.ac.uk/view/texts/normalized/NATP00356).
 :::
 
 ## 1.5. Primeras derivadas obtenidas sin reglas memorizadas
@@ -170,20 +166,20 @@ $$
 
 El límite es $3a^2$. En ambos casos el cálculo se hizo únicamente para $h\ne0$ y el paso al límite utiliza operaciones sobre funciones polinómicas, justificadas en C00. $\square$
 
-En el origen, la cúbica tiene derivada cero; su recta tangente es horizontal. Pero la curva pasa de valores negativos a positivos y **cruza** esa recta: un buen contraejemplo a una imagen geométrica demasiado estrecha.
+En el origen, la cúbica tiene derivada cero y su tangente es horizontal, aunque la curva pasa de valores negativos a positivos y **cruza** la recta. La pendiente límite describe la aproximación local sin exigir que la gráfica permanezca de un solo lado.
 
 ### 1.5.2. Una función racional
 
 **Proposición 1.2 (`EDC-C01-PRP-002`).** Si $f(x)=1/x$ con dominio $D=\mathbb R\setminus\{0\}$, entonces $f'(a)=-1/a^2$ para cada $a\ne0$.
 
-**Demostración.** Elegimos $|h|<|a|/2$ para asegurar $a+h\ne0$. Entonces
+**Demostración.** Antes de restar las fracciones tenemos que mantener tanto $a$ como $a+h$ distintos de cero. Sabemos que $a\ne0$ y elegimos $|h|<|a|/2$; entonces $|a+h|\ge|a|-|h|>|a|/2$, de modo que $a+h\ne0$ y la segunda división también es lícita. Para $h\ne0$,
 
 $$
 \frac{\dfrac1{a+h}-\dfrac1a}{h}
 =-\frac{1}{a(a+h)}\longrightarrow-\frac1{a^2}.
 $$
 
-El último paso usa continuidad de cocientes racionales en puntos con denominador no nulo, demostrada en C00. No hemos usado una regla general de derivación de recíprocos: esa regla se obtendrá en C02. $\square$
+Al llevar las fracciones al mismo denominador, el numerador es $a-(a+h)=-h$, y la cancelación del incremento deja la expresión indicada. Como $a+h\to a$ y $a^2\ne0$, la continuidad de los cocientes racionales demostrada en C00 permite tomar el límite. $\square$
 
 ### 1.5.3. La función valor absoluto
 
@@ -198,13 +194,13 @@ No existe límite bilateral. Se trata de un obstáculo conceptual: una gráfica 
 
 ## 1.6. Lo que significa aproximar por una recta
 
-Las cuentas anteriores permiten proponer un criterio más informativo que «pendiente límite». Supongamos que una recta pasa por $(a,f(a))$ y tiene pendiente $m$. Su función afín es
+Una pendiente límite elige una recta, pero también podemos examinar qué gana esa recta frente a cualquier otra que pase por el mismo punto. Supongamos que la pendiente elegida provisionalmente es $m$. La recta por $(a,f(a))$ queda representada por la función afín
 
 $$
 \ell_{a,m}(x)=f(a)+m(x-a).
 $$
 
-Lo relevante no es sólo que $f(a+h)-\ell_{a,m}(a+h)$ tienda a cero: eso sucede con **cualquier** pendiente $m$ cuando $f$ es continua en $a$. Exigiremos algo más fuerte: que el error sea pequeño **en comparación con $|h|$**.
+Si $f$ es continua en $a$, el error $f(a+h)-\ell_{a,m}(a+h)$ tiende a cero con **cualquier** pendiente $m$: la curva se acerca a $f(a)$ y la recta también. Esa condición por sí sola no distingue una buena aproximación. En la parábola podemos medir la diferencia con mayor precisión: el error es $(2a-m)h+h^2$, y su magnitud dividida por $|h|$ es $|2a-m+h|$. Sólo la elección $m=2a$ hace que este último error relativo tienda a cero; cualquier otra pendiente conserva una separación proporcional al desplazamiento. Pediremos por eso que el error sea pequeño **en comparación con $|h|$**, condición que el siguiente teorema relaciona con la derivada.
 
 **Teorema 1.2 (caracterización por aproximación lineal; `EDC-C01-THM-002`).** Sean $D\subseteq\mathbb R$, $a$ interior de $D$ y $f:D\to\mathbb R$. Las siguientes afirmaciones son equivalentes:
 
@@ -217,19 +213,21 @@ $$
 
 En tal caso $m=f'(a)$, y este número es único.
 
-**Demostración.** Si existe $f'(a)=m$, para $h\ne0$ pequeño definimos
+**Demostración.** Supongamos que existe $f'(a)=m$. Queremos separar el incremento de la función en la parte $mh$ que aporta la recta y un error menor en proporción a $h$. El cociente incremental ya describe el cambio por unidad de incremento; si le restamos su límite $m$, obtenemos una cantidad que tiende a cero. Para $h\ne0$ suficientemente pequeño definimos
 
 $$
 \eta(h)=\frac{f(a+h)-f(a)}h-m
 $$
 
-y ponemos $\eta(0)=0$. Por definición de derivada, $\eta(h)\to0$, y la identidad deseada resulta multiplicando por $h$. Recíprocamente, si se cumple la identidad, para $h\ne0$ obtenemos
+y ponemos $\eta(0)=0$. Por definición de derivada, $\eta(h)\to0$. Al multiplicar por $h$ y despejar el valor de la función obtenemos la identidad del enunciado: el término $h\eta(h)$ recoge el error del modelo lineal. Para $h=0$ la identidad también vale, pues ambos términos que contienen el incremento se anulan.
+
+Recíprocamente, supongamos que tenemos esa identidad con $\eta(h)\to0$. Para recuperar la tasa de cambio restamos $f(a)$ y dividimos por el incremento no nulo:
 
 $$
 \frac{f(a+h)-f(a)}h=m+\eta(h)\longrightarrow m.
 $$
 
-Luego existe $f'(a)=m$, que es único por el Teorema 1.1. $\square$
+Los cocientes convergen por tanto al número real $m$, que es $f'(a)$ por definición y es único por el Teorema 1.1. $\square$
 
 También podemos expresar la condición mediante el **resto** $R_a(h)=f(a+h)-f(a)-f'(a)h$:
 
@@ -237,7 +235,7 @@ $$
 \lim_{h\to0}\frac{R_a(h)}{|h|}=0.
 $$
 
-En efecto, $R_a(h)=h\eta(h)$ y $|R_a(h)|/|h|=|\eta(h)|\to0$. En esta obra escribiremos $R_a(h)=o(|h|)$ como abreviatura de la condición anterior. No significa que $R_a(h)$ sea literalmente cero, ni que el cociente se calcule en $h=0$.
+En efecto, $R_a(h)=h\eta(h)$ y $|R_a(h)|/|h|=|\eta(h)|\to0$. El error puede ser distinto de cero para cada incremento y, aun así, hacerse tan pequeño en proporción a su magnitud como pidamos al aproximarnos al punto. Escribiremos $R_a(h)=o(|h|)$ para abreviar esa condición. La notación describe el comportamiento del resto; la división sigue realizándose únicamente para $h\ne0$.
 
 **Definición 1.3 (recta tangente diferencial; `EDC-C01-DEF-003`).** Si $f$ es derivable en el punto interior $a$, la **recta tangente a la gráfica de $f$ en $(a,f(a))$** es
 
@@ -260,13 +258,13 @@ La recta candidata de §1.1 queda así justificada. En la cúbica, la tangente e
 
 **Teorema 1.3 (`EDC-C01-THM-003`).** Si $f:D\to\mathbb R$ es derivable en un punto interior $a$ de $D$, entonces $f$ es continua en $a$.
 
-**Demostración.** Por el Teorema 1.2,
+**Demostración.** La aproximación lineal del Teorema 1.2 expresa la diferencia de valores como
 
 $$
 f(a+h)-f(a)=h\bigl(f'(a)+\eta(h)\bigr),
 $$
 
-con $\eta(h)\to0$. El factor entre paréntesis converge al número finito $f'(a)$ y, por tanto, permanece acotado cerca de cero. Como $h\to0$, el producto converge a cero. Es decir, $f(a+h)\to f(a)$ cuando $h\to0$ en el dominio, que es continuidad en $a$ según C00. $\square$
+con $\eta(h)\to0$. El factor entre paréntesis converge al número finito $f'(a)$ y permanece acotado cerca de cero. Al multiplicarlo por $h\to0$, el producto tiende a cero, luego $f(a+h)\to f(a)$ cuando $h\to0$ en el dominio. Puesto que $a$ es interior, escribir los puntos próximos como $a+h$ cubre todos los argumentos del entorno; hemos obtenido la continuidad en $a$ según la definición de C00. $\square$
 
 La recíproca es falsa: $|x|$ es continua en cero pero no derivable allí. También es instructiva una función cuyo problema no sea una esquina visible. Definamos
 
@@ -283,7 +281,7 @@ $$
 
 ambas sucesiones tienden a cero, pero $\sin(1/h_n)=1$ y $\sin(1/k_n)=-1$. Por el criterio secuencial de límite de C00, $u'(0)$ no existe.
 
-Este contraejemplo no depende de disponer de una fórmula para la derivada de $\sin x$; sólo utiliza sus valores trigonométricos elementales y el criterio de límite. **La continuidad asegura proximidad de valores, pero no controla cómo se divide su diferencia por un incremento pequeño.**
+El factor $x$ mantiene los valores de $u$ próximos a cero, pero desaparece al dividir el incremento por $h$ y deja expuesta la oscilación del seno. Ésa es la dificultad que la continuidad no controla. El argumento sólo necesita los valores trigonométricos elementales de $\sin x$, su acotación y el criterio secuencial de límite; no usa una fórmula para derivar el seno.
 
 ## 1.8. Derivadas laterales y extremos de un dominio
 
@@ -303,7 +301,9 @@ $$
 
 **Teorema 1.4 (unión de los dos lados; `EDC-C01-THM-004`).** Si $a$ es interior al dominio $D$, entonces $f'(a)$ existe si y sólo si existen $f'_+(a)$ y $f'_-(a)$ como números reales y son iguales. En ese caso los tres valores coinciden.
 
-**Demostración.** Si existe el límite bilateral, sus restricciones derecha e izquierda tienen el mismo valor por la definición $\varepsilon$–$\delta$. Recíprocamente, supongamos que los dos límites laterales valen $L$. Dado $\varepsilon>0$, obtenemos $\delta_+>0$ y $\delta_->0$ que controlan los cocientes desde el lado correspondiente. Para $0<|h|<\min(\delta_+,\delta_-,r)$, $h$ pertenece a uno de los dos lados y $|Q_f(a,h)-L|<\varepsilon$. Ésta es la definición del límite bilateral. $\square$
+**Demostración.** Si existe el límite bilateral, la distancia que proporciona su definición controla simultáneamente los incrementos positivos y los negativos. Al restringirnos a cualquiera de los dos lados obtenemos el mismo límite.
+
+Recíprocamente, supongamos que los dos límites laterales valen $L$. Para una tolerancia $\varepsilon>0$, cada lado proporciona su propia distancia, $\delta_+>0$ y $\delta_->0$. Para controlar todos los incrementos basta usar una distancia que respete ambas exigencias y que mantenga los argumentos en el dominio. Tomemos $r>0$ con $(a-r,a+r)\subseteq D$, lo que permite la interioridad. Si $0<|h|<\min(\delta_+,\delta_-,r)$, entonces $h$ es positivo o negativo, y en el lado correspondiente se cumple $|Q_f(a,h)-L|<\varepsilon$. Hemos establecido el límite bilateral. $\square$
 
 **Ejemplo 1.2.** Para $f(x)=|x|$, las derivadas laterales en cero son $f'_-(0)=-1$ y $f'_+(0)=1$; no hay derivada bilateral. Para $f:[0,\infty)\to\mathbb R$, $f(x)=x^2$, existe $f'_+(0)=0$, pero la **definición interior** no atribuye derivada bilateral a ese extremo, pues no hay valores del dominio para $h<0$. La expresión «derivable en el extremo» sólo es aceptable cuando se declare explícitamente la convención unilateral.
 
@@ -311,7 +311,7 @@ La existencia de una derivada **infinita** es una manera informal de describir c
 
 ## 1.9. Cuando una función está definida por tramos
 
-Los puntos donde cambia una fórmula obligan a separar dos preguntas: ¿la función es continua allí?, y ¿sus razones de cambio laterales se aproximan a una misma pendiente? La primera es necesaria, pero no suficiente, para la segunda.
+En una función definida por tramos, cada fórmula describe un lado del punto de unión, pero ambas tienen que compararse con el valor que la función toma en ese punto. La continuidad comprueba que los valores se aproximan al mismo valor central; después podemos examinar si las diferencias, divididas por sus incrementos, se aproximan también a una misma pendiente. La primera comprobación es necesaria para la derivabilidad, aunque no la garantiza.
 
 **Ejemplo 1.3.** Sean $p,q,r,s\in\mathbb R$ y
 
@@ -367,17 +367,19 @@ $$
 
 Si $f'(a)<0$, las dos desigualdades se invierten.
 
-**Demostración.** Si $L=f'(a)>0$, aplicamos la definición de derivada con tolerancia $\varepsilon=L/2$. Para $0<|h|<\delta$ se obtiene $Q_f(a,h)>L/2>0$. Como $f(a+h)-f(a)=hQ_f(a,h)$, la señal de la diferencia coincide con la de $h$. Si $L<0$, el cociente es negativo suficientemente cerca de cero, usando $\varepsilon=|L|/2$, y se invierten los signos. $\square$
+**Demostración.** Si $L=f'(a)>0$, queremos asegurar que los cocientes próximos conserven ese signo. Aplicamos la definición de derivada con tolerancia $\varepsilon=L/2$, que deja un margen positivo entre el cociente y cero. Para $0<|h|<\delta$ se obtiene $Q_f(a,h)>L/2>0$. La identidad $f(a+h)-f(a)=hQ_f(a,h)$ muestra entonces que el signo de la diferencia coincide con el de $h$: a la derecha el valor supera a $f(a)$ y a la izquierda queda por debajo.
 
-La proposición compara $f(a)$ con valores cercanos, pero no demuestra que **todos los pares** de puntos próximos conserven un orden. Por eso no sustituye al teorema del valor medio ni a un criterio de monotonía. Confundir esas conclusiones sería cambiar un cuantificador: «cada punto con $a$» no es «cada par de puntos». En C03 estudiaremos la diferencia.
+Si $L<0$, la tolerancia $\varepsilon=|L|/2$ mantiene negativo el cociente para incrementos suficientemente pequeños. Al multiplicarlo por $h$, los signos se invierten respecto del caso anterior y obtenemos las dos desigualdades indicadas. $\square$
+
+Todos los cocientes de la prueba parten del punto fijo $a$, de modo que la conclusión compara $f(a)$ con cada valor cercano. La monotonía pediría comparar **todos los pares** de puntos próximos, incluso dos situados al mismo lado de $a$; para esa comparación la información sobre una sola derivada puede ser insuficiente. En C03 el teorema del valor medio permitirá usar hipótesis sobre un intervalo para obtener ese control más amplio.
 
 ## 1.11. Cinco momentos de una historia no lineal
 
-Los problemas que ahora unificamos en la noción de derivada tuvieron recorridos históricos variados. Fermat investigó en el siglo XVII problemas de extremos y tangentes mediante procedimientos algebraicos que hoy se comparan con técnicas diferenciales; **no debe atribuirse a esos procedimientos la definición $\varepsilon$–$\delta$ que acabamos de dar** [H2]. Galileo estudió las relaciones geométricas entre distancia, tiempo y aceleración, incluida la ley cuadrática del tiempo para la caída uniformemente acelerada [H1]. Barrow desarrolló procedimientos geométricos para tangentes y cuadraturas y reconoció relaciones entre esos problemas [H3].
+La derivada reúne preguntas que tuvieron recorridos históricos diferentes. Galileo estudió la relación entre distancia y tiempo en movimientos acelerados [H1]; Fermat investigó extremos y tangentes mediante procedimientos algebraicos [H2]; Barrow desarrolló construcciones geométricas para tangencia y cuadratura y reconoció relaciones entre ambas [H3]. Cada trabajo planteaba el problema con sus propios objetos y criterios de justificación.
 
-Newton trabajó con cantidades variables y sus *fluxiones*; Leibniz articuló el cálculo diferencial mediante otros conceptos y una notación de enorme influencia. La historia de sus contribuciones y de su disputa de prioridad no puede reducirse limpiamente a una sola fecha de invención. Para el problema de este capítulo importa reconocer que esas tradiciones acercaron preguntas de geometría y movimiento, aunque no las formularon del modo moderno utilizado en nuestras demostraciones [H4–H5].
+La perspectiva de Newton sobre cantidades que varían y sus *fluxiones* puso en relación la geometría y el movimiento; Leibniz elaboró el cálculo diferencial con otros conceptos y una notación que permitió operar con gran eficacia [H4–H5]. La definición $\varepsilon$–$\delta$ que utilizamos da una forma actual de justificar los cocientes, y puede ayudarnos a comprender la dificultad de aquellos problemas, siempre que conservemos la diferencia entre nuestra reconstrucción y los argumentos históricos.
 
-Las [notas históricas de C01](capitulo-01-notas.html) identifican las obras de contraste, sus localizadores textuales y sus límites documentales. El álgebra de $x^2$ o $x^3$ que hemos realizado **es una reconstrucción matemática nuestra**, no una transcripción ficticia de una demostración histórica.
+Las [notas históricas de C01](capitulo-01-notas.html) identifican las fuentes y los pasajes que sostienen esas conexiones. Los cálculos con $x^2$ o $x^3$ de estas páginas pertenecen a nuestra exposición; conocer los métodos de esos autores exige leer también cómo eligieron sus cantidades, qué operaciones admitieron y qué pretendían demostrar.
 
 ## 1.12. Síntesis: qué hemos demostrado y qué falta
 
@@ -389,9 +391,7 @@ $$
 
 cuando $a$ es interior al dominio y ese límite es real y finito. Si existe, determina una única mejor aproximación afín de primer orden y garantiza continuidad; si no existe, la función puede seguir siendo continua, pero la pendiente local única no está justificada. En un extremo del dominio debe declararse el lado desde el cual se aproxima. Para movimientos, la misma operación produce una velocidad instantánea **con signo** y con unidades propias.
 
-Hemos demostrado con los resultados de C00, y sin utilizar reglas futuras, la unicidad de la derivada, los casos concretos de $x^2$, $x^3$ y $1/x$, la equivalencia con una aproximación lineal de error $o(|h|)$, la implicación derivabilidad $\Rightarrow$ continuidad, la combinación de derivadas laterales y una comparación estrictamente local cuando el signo de $f'(a)$ es conocido. Los contraejemplos han mostrado los límites de cada afirmación.
-
-**Próximos capítulos.** En C02 obtendremos reglas generales para derivar sumas, productos, cocientes, composiciones, funciones inversas y funciones elementales. En C03 usaremos Rolle y el valor medio para convertir información sobre derivadas en conclusiones sobre toda una región. La trayectoria de la acumulación comenzará en C04; sólo tras la construcción de la integral en C05 se probará su vínculo con la derivada en C06.
+La parábola, la cúbica y la función $1/x$ nos permitieron calcular pendientes por definición. El valor absoluto y las funciones oscilatorias mostraron por qué ni la continuidad ni el aspecto de una curva bastan para decidir su derivabilidad. La equivalencia entre el límite del cociente y el error $o(|h|)$ permite leer ambas experiencias como un mismo problema: qué parte del cambio puede recoger una recta y qué resto deja esa elección. La implicación derivabilidad $\Rightarrow$ continuidad conserva una dirección precisa, y las derivadas laterales permiten reconocer dónde la aproximación sólo tiene sentido desde un lado.
 
 ### Mapa de dependencias
 

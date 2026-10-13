@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C05
-source-sha256: 1e46c01730c67ece0aef0b69d59574c78664e70b1568ea0fefdb1d69ff691a5e
+source-sha256: 1d302c080738bbcdbc840ef03fb7c28a863e91d2f25abfbb66826c41bb88e3f5
 content-id: MA-BCH-0336
 content-type: book-chapter
 related:
@@ -36,11 +36,11 @@ related:
 
 > **Pregunta generadora.** ¿Qué garantiza que todas las aproximaciones razonables de una acumulación —con particiones desiguales y muestras distintas— determinan un único número real? ¿Qué sucede cuando no lo hacen?
 
-El problema de la cuadratura, examinado en el capítulo 4, nos enseñó a desconfiar de una operación que aparece como evidente en un dibujo. Los triángulos inscritos en una parábola producían cotas cada vez mejores; la función que toma el valor uno en los racionales y cero en los irracionales, en cambio, permitía fabricar sumas rectangulares de valores incompatibles. El paso decisivo no consiste simplemente en aumentar el número de rectángulos: consiste en definir qué debe permanecer estable cuando la elección de los rectángulos deja de estar fijada.
+En C04 conseguimos encerrar un valor entre aproximaciones cada vez más próximas, pero cada construcción tenía sus propias elecciones. Para los rectángulos bajo una gráfica podemos cambiar los puntos de corte y la altura elegida en cada tramo; si el resultado pretende representar una acumulación de la función, tendrá que resistir esos cambios. La función de Dirichlet mostró el obstáculo: incluso sobre una misma partición muy fina, las muestras racionales y las irracionales producen sumas distintas.
 
-Ahora transformaremos ese problema geométrico en una construcción aritmética y analítica sobre $\mathbb R$. Primero compararemos **todas** las particiones mediante sus sumas inferiores y superiores; después definiremos la integral por un encaje cuyo valor existe gracias a la completitud. Finalmente demostraremos que esa noción coincide con el límite de sumas de Riemann bajo una condición explícita de independencia respecto de las muestras y de la finura. Sólo entonces estaremos autorizados a usar el símbolo $\int_a^b f(x)\,dx$ como un número demostrado, no como una conjetura pictórica.
+Las cotas inferiores y superiores permiten estudiar todas esas elecciones sin escoger una por adelantado. Primero tendremos que comparar cotas construidas con particiones diferentes. Reunir sus puntos de corte proporcionará esa comparación, y la completitud de los reales permitirá reunir después todas las cotas en dos números. Cuando esos números coincidan, tendremos una integral; quedará demostrar que cualquier partición suficientemente fina y cualquier selección de alturas aproximan ese mismo valor.
 
-Aquí la integral será construida **sin buscar primitivas**. La conexión entre esta operación y la derivación necesitará un argumento nuevo y ocupará el capítulo 6.
+La construcción se apoyará en funciones acotadas, que pueden cambiar de signo y ser discontinuas. Las primitivas no intervienen en su definición: la relación con las derivadas será una pregunta posterior, cuando ya sepamos qué número hemos construido.
 
 ## 5.1. Qué estamos tratando de definir
 
@@ -59,7 +59,7 @@ $$
 S(f;P,\xi)=\sum_{i=1}^nf(\xi_i)\Delta_i.
 $$
 
-Una suma aislada depende de $P$ y, en general, también de $\xi$. No diremos que una función es integrable sólo porque alguna sucesión especialmente elegida de sumas converja. El concepto deberá controlar la diversidad de elecciones.
+Al fijar $P$ y $\xi$ obtenemos un número, pero otra selección de alturas puede dar otro. Para estudiar cuánto pueden diferir las sumas de una misma partición, buscamos en cada tramo una cota inferior y una superior de la función. La acotación asegura que son finitas, aun cuando no haya un punto donde se alcance la altura extrema.
 
 **Definición 5.1 (`EDC-C05-DEF-001`; cotas locales y sumas de Darboux).** Para cada intervalo cerrado $I_i=[x_{i-1},x_i]$ definimos
 
@@ -93,13 +93,15 @@ $$
 L(f,P)\le L(f,R)\le U(f,R)\le U(f,P).
 $$
 
-**Demostración.** Basta examinar la inserción de un punto $z$ entre dos puntos consecutivos $u<v$ de $P$. Si $m$ es el ínfimo de $f$ en $[u,v]$ y $m_1,m_2$ los ínfimos en $[u,z]$, $[z,v]$, entonces $m\le m_1,m_2$; por tanto
+**Demostración.** Una partición refinada se obtiene añadiendo un número finito de puntos. Podemos por ello estudiar primero un solo corte $z$ entre dos puntos consecutivos $u<v$ de $P$. Al restringir la función a $[u,z]$ o a $[z,v]$, sus cotas inferiores pueden mejorar: si $m$ es el ínfimo en $[u,v]$ y $m_1,m_2$ los de las dos partes, tenemos $m\le m_1,m_2$.
+
+Las anchuras son positivas y suman $v-u$, así que
 
 $$
 m(v-u)\le m_1(z-u)+m_2(v-z).
 $$
 
-De forma dual, los supremos $M_1,M_2$ sobre las partes no superan el supremo $M$ del intervalo original, así que la suma superior no aumenta. Repetimos el argumento un número finito de veces. La desigualdad intermedia se sigue directamente de $m_i\le M_i$. $\square$
+El término inferior que correspondía a todo el tramo no supera la suma de los dos términos nuevos. Para los supremos sucede lo contrario: $M_1,M_2\le M$, y la suma superior de las partes no supera $M(v-u)$. Los demás tramos permanecen iguales. Repetimos la comparación al insertar cada punto nuevo y obtenemos las dos desigualdades exteriores del lema; la intermedia vale porque en cada subintervalo el ínfimo no supera al supremo. $\square$
 
 **Teorema 5.1 (`EDC-C05-THM-001`; compatibilidad entre particiones).** Para cualesquiera particiones $P,Q$ de $[a,b]$ se tiene
 
@@ -107,26 +109,24 @@ $$
 L(f,P)\le U(f,Q).
 $$
 
-**Demostración.** El refinamiento común $R=P\cup Q$ cumple, por el Lema 5.1,
+**Demostración.** Las particiones $P$ y $Q$ pueden cortar el intervalo en lugares distintos, de modo que no intentamos emparejar directamente sus piezas. Reunimos sus puntos en $R=P\cup Q$, una partición que refina a ambas. El Lema 5.1 permite pasar de la suma inferior de $P$ a la inferior de $R$, y de la superior de $R$ a la superior de $Q$:
 
 $$
 L(f,P)\le L(f,R)\le U(f,R)\le U(f,Q).
 $$
 
-No es necesario que $P$ y $Q$ tengan igual número de subintervalos ni puntos de corte comparables. $\square$
+La comparación central se realiza sobre una misma partición, donde cada cota inferior queda por debajo de la superior correspondiente. Así obtenemos la desigualdad entre las particiones originales, cualquiera que sea la distribución de sus puntos. $\square$
 
-La conclusión permite tomar supremos e ínfimos **sobre todas las particiones** sin temor a que una cota inferior quede por encima de una superior. Ésa es la compatibilidad global que faltaba en los encajes aislados del capítulo anterior.
+Cada suma superior acota por arriba todas las sumas inferiores, incluso las obtenidas con otras particiones. Por eso podemos buscar el mayor límite inferior y el menor límite superior sin que se crucen. Esa compatibilidad responde a la dificultad que quedó abierta al final de C04.
 
 <figure id="fig-edc-c05-01" class="quarto-float-fig">
 <img src="/assets/books/elementos-del-calculo/EDC-C05-F01_SUMAS_DARBOUX.svg" alt="Dos paneles con la misma partición no uniforme para f(x)=x²: a la izquierda rectángulos inferiores, a la derecha superiores, encerrando la curva.">
 <figcaption>Figura 5.1. Los valores inferiores y superiores dependen de los supremos e ínfimos de la misma partición; el argumento general exige además refinamientos comunes.</figcaption>
 </figure>
 
-
-
 ## 5.3. Construcción por completitud
 
-El conjunto de sumas inferiores no es vacío: por ejemplo, la partición $P=\{a,b\}$ produce una. Además, como $|f|\le B$, todas las sumas inferiores y superiores pertenecen al intervalo $[-B(b-a),B(b-a)]$. Por tanto, la completitud real garantiza los siguientes números.
+Una sola partición da un encaje, y al refinarlas podemos mejorar sus cotas. Para reunir todas las aproximaciones, consideremos el conjunto de sumas inferiores y el de sumas superiores. Ninguno está vacío, pues la partición $P=\{a,b\}$ produce un elemento de cada uno. Además, cada altura usada como cota local pertenece a $[-B,B]$ y las anchuras suman $b-a$, de modo que todas las sumas pertenecen a $[-B(b-a),B(b-a)]$. La completitud garantiza entonces un supremo de las inferiores y un ínfimo de las superiores, ambos finitos.
 
 **Definición 5.3 (`EDC-C05-DEF-003`; integrales inferior y superior).** Para $f$ acotada en $[a,b]$, llamamos
 
@@ -163,29 +163,29 @@ $$
 \forall\varepsilon>0\ \exists P:\quad U(f,P)-L(f,P)<\varepsilon.
 $$
 
-**Demostración.** Si hay particiones con diferencias arbitrariamente pequeñas, para cada una tenemos
+**Demostración.** Supongamos que podemos hacer la diferencia de sumas menor que cualquier tolerancia. Para cada partición, la integral inferior es al menos $L(f,P)$ y la superior es a lo sumo $U(f,P)$, pues se definieron tomando el supremo de las primeras sumas y el ínfimo de las segundas. Por tanto,
 
 $$
 0\le\overline{\mathcal I}_a^b(f)-\underline{\mathcal I}_a^b(f)
 \le U(f,P)-L(f,P)<\varepsilon,
 $$
 
-pues las integrales inferior y superior quedan, respectivamente, por encima de $L(f,P)$ y por debajo de $U(f,P)$. La diferencia no negativa tiene que ser cero.
+cuando elegimos una partición suficientemente buena. La diferencia entre las dos integrales es un número no negativo fijo; si fuera positivo, podríamos escoger una tolerancia menor y contradecir la desigualdad. Es cero, luego hay integrabilidad.
 
-Recíprocamente, sea $I$ el valor común de las integrales. Por la definición de ínfimo existe una partición $P_1$ con $U(f,P_1)<I+\varepsilon/2$, y por la definición de supremo hay otra $P_2$ con $L(f,P_2)>I-\varepsilon/2$. Para $R=P_1\cup P_2$, el Lema 5.1 da
+En sentido inverso, sea $I$ el valor común. Su definición como ínfimo de las sumas superiores permite elegir $P_1$ con $U(f,P_1)<I+\varepsilon/2$; su definición como supremo de las inferiores permite elegir $P_2$ con $L(f,P_2)>I-\varepsilon/2$. Cada elección resuelve una mitad del encaje, y no hay razón para que produzcan los mismos cortes. Para reunirlas tomamos $R=P_1\cup P_2$. El refinamiento mejora ambas cotas y da
 
 $$
 0\le U(f,R)-L(f,R)
 \le U(f,P_1)-L(f,P_2)<\varepsilon.
 $$
 
-El refinamiento común es indispensable: no hemos supuesto que las dos particiones elegidas sean iguales. $\square$
+Hemos obtenido una sola partición cuyo error satisface la tolerancia, a partir de dos aproximaciones que podían ser distintas. $\square$
 
-La fórmula del criterio muestra qué significa que la función «admita área por rectángulos»: podemos encerrar todas las sumas etiquetadas de una partición entre dos números cuya diferencia es menor que cualquier tolerancia. Aún falta distinguir este criterio de una afirmación sobre **todas** las particiones suficientemente finas.
+El criterio nos permite elegir una partición buena para cada tolerancia. Todas sus sumas etiquetadas quedan entonces próximas, porque comparten un encaje estrecho. Para que otro lector pueda elegir sus propios cortes, necesitamos demostrar algo más: que cualquier partición suficientemente fina proporciona también un encaje pequeño.
 
 ## 5.4. El desafío de las muestras arbitrarias
 
-Hay una sutileza. El criterio anterior sólo exige **alguna** partición con pequeña diferencia superior–inferior. La definición usual mediante sumas de Riemann exige que **cada** partición suficientemente fina, con **cualquier** elección de muestras, produzca una suma próxima al mismo número. La equivalencia requiere una prueba adicional; no basta confundir esos dos cuantificadores.
+Una partición fina puede no contener ninguno de los cortes que hicieron buena a la partición anterior. Al reunirlas tendremos que añadir esos cortes, y algunos subintervalos de la nueva partición se dividirán. El efecto de esas divisiones se puede controlar porque hay un número fijo de cortes que añadir y cada uno afecta a un tramo corto. Esta observación permite pasar de una partición elegida a todas las particiones suficientemente finas.
 
 **Lema 5.2 (`EDC-C05-LEM-002`; estabilidad para particiones finas).** Supongamos $|f(x)|\le B$ en $[a,b]$ y fijemos una partición $P_0$ con $r$ puntos interiores. Entonces toda partición $Q$ satisface
 
@@ -202,7 +202,15 @@ $$
 U(f,Q)-L(f,Q)\le U(f,P_0)-L(f,P_0)+4Br\,\|Q\|.
 $$
 
-**Demostración.** Llamemos *intervalo conflictivo* de $Q$ al que contiene en su interior al menos un punto interior de $P_0$. Hay a lo sumo $r$ intervalos conflictivos, porque los intervalos de $Q$ tienen interiores disjuntos; la suma de sus longitudes no supera $r\|Q\|$. Cada intervalo no conflictivo está contenido en algún subintervalo de $P_0$, de modo que su aporte a $U(f,Q)$ no supera el que se obtendría empleando el supremo de $f$ sobre ese subintervalo de $P_0$. En los intervalos conflictivos, el aporte de la suma superior puede exceder esta comparación por, a lo sumo, $2B$ veces la longitud total conflictiva: tanto el supremo local como cualquier valor de comparación pertenecen a $[-B,B]$. Esto demuestra la primera desigualdad. El argumento para las sumas inferiores es dual. Restarlas produce la tercera. Si $r=0$ las desigualdades son exactas, y si $B=0$ todas las sumas son cero. $\square$
+**Demostración.** Comparemos $Q$ con el refinamiento $R=P_0\cup Q$. Llamemos *intervalo conflictivo* de $Q$ al que contiene en su interior algún punto interior de $P_0$. Sólo esos intervalos se dividen al pasar a $R$; un punto de $P_0$ que ya sea extremo de un intervalo de $Q$ no añade un corte.
+
+Hay a lo sumo $r$ intervalos conflictivos, porque cada uno contiene al menos un punto distinto de $P_0$ y sus interiores son disjuntos. Cada longitud es a lo sumo $\|Q\|$, luego la longitud total afectada no supera $r\|Q\|$.
+
+En un intervalo conflictivo de longitud $d$, sea $M$ su supremo y sean $M_j$ los supremos de las partes que aparecen en $R$, con longitudes $d_j$. El descenso de la suma superior es $Md-\sum_jM_jd_j=\sum_j(M-M_j)d_j$, pues $\sum_jd_j=d$. Cada diferencia es no negativa y no supera $2B$, porque las cotas de la función pertenecen a $[-B,B]$. Así el descenso en ese intervalo no supera $2Bd$, y en todos ellos no supera $2Br\|Q\|$. En los intervalos restantes la contribución no cambia.
+
+Obtenemos $U(f,Q)\le U(f,R)+2Br\|Q\|$. Como $R$ refina a $P_0$, también $U(f,R)\le U(f,P_0)$, y resulta la primera desigualdad. Para las sumas inferiores, el refinamiento aumenta las cotas: el aumento en cada intervalo conflictivo tampoco supera $2Bd$. De $L(f,R)\ge L(f,P_0)$ deducimos la segunda desigualdad. Al restarlas, los dos márgenes de error se suman y dan el factor $4Br\|Q\|$.
+
+Si $r=0$, $P_0$ sólo contiene los extremos y $Q$ ya la refina, de modo que no hay intervalos conflictivos. Si $B=0$, la función es nula y todas las sumas son cero. $\square$
 
 **Teorema 5.3 (`EDC-C05-THM-003`; equivalencia con sumas de Riemann).** Para una función acotada $f:[a,b]\to\mathbb R$ son equivalentes:
 
@@ -215,9 +223,17 @@ $$
 
 El número $I$ de ambas formulaciones es el mismo.
 
-**Demostración.** Supongamos integrabilidad y fijemos $\varepsilon>0$. El Teorema 5.2 da una partición $P_0$ con $U(f,P_0)-L(f,P_0)<\varepsilon/2$. Por el Lema 5.2, si $Q$ es suficientemente fina, $U(f,Q)-L(f,Q)<\varepsilon$. Tanto la suma etiquetada $S(f;Q,\xi)$ como el valor integral $I$ pertenecen al intervalo $[L(f,Q),U(f,Q)]$; de ahí $|S-I|<\varepsilon$ para **toda** elección de etiquetas.
+**Demostración.** Supongamos primero que $f$ es integrable y fijemos $\varepsilon>0$. El criterio de Darboux proporciona una partición $P_0$ con $U(f,P_0)-L(f,P_0)<\varepsilon/2$. El Lema 5.2 compara cualquier otra partición $Q$ con ella: a esa diferencia añade un margen de a lo sumo $4Br\|Q\|$. Si $Br>0$, escogemos $\delta=\varepsilon/(8Br)$ para que $\|Q\|<\delta$ haga ese margen menor que $\varepsilon/2$; si $Br=0$, el margen es cero y podemos tomar cualquier $\delta>0$. En ambos casos $U(f,Q)-L(f,Q)<\varepsilon$.
 
-Recíprocamente, supongamos la condición 2. Dado $\varepsilon>0$, elijamos una partición de finura menor que el $\delta$ correspondiente a tolerancia $\varepsilon/4$. Todas sus sumas etiquetadas están entre $I-\varepsilon/4$ e $I+\varepsilon/4$. La suma inferior es el ínfimo de tales sumas cuando se varían independientemente las etiquetas en cada subintervalo, y la suma superior es su supremo; esta afirmación se obtiene aproximando cada ínfimo o supremo local con error menor que $\eta/[n\max\{1,b-a\}]$ y sumando los $n$ errores ponderados. Por tanto $L(f,P)\ge I-\varepsilon/4$ y $U(f,P)\le I+\varepsilon/4$, así que $U-L\le\varepsilon/2<\varepsilon$. El criterio de Darboux demuestra integrabilidad. Por la primera mitad, las sumas etiquetadas de una función integrable convergen al valor Darboux; su límite es único por los resultados de C00, luego éste tiene que ser $I$. $\square$
+Toda suma $S(f;Q,\xi)$ pertenece a $[L(f,Q),U(f,Q)]$. El valor integral $I$ pertenece también a ese intervalo, por su definición como supremo e ínfimo globales. La distancia entre ambos números no supera esa anchura, que es menor que la tolerancia, y obtenemos $|S-I|<\varepsilon$ para todas las etiquetas. La elección de $\delta$ precede a la de $Q$ y a la de sus muestras.
+
+Supongamos ahora la condición 2. Dado $\varepsilon>0$, elegimos una partición de finura menor que el $\delta$ que corresponde a la tolerancia $\varepsilon/4$; por ejemplo, podemos dividir uniformemente el intervalo en un número suficientemente grande de piezas. Todas sus sumas etiquetadas están entre $I-\varepsilon/4$ e $I+\varepsilon/4$.
+
+Necesitamos pasar de esas sumas a las cotas de Darboux, aunque los ínfimos o supremos locales no sean alcanzados. La suma inferior es el ínfimo de todas las sumas etiquetadas de la partición: ya sabemos que es cota inferior, y podemos acercarnos a ella tanto como queramos eligiendo en cada subintervalo un valor de $f$ próximo a su ínfimo. Para una tolerancia auxiliar $\eta>0$, escogemos cada muestra con error menor que $\eta/[n\max\{1,b-a\}]$ en la altura. Al multiplicar por las anchuras y sumar, el error total es menor que esa cantidad por $b-a$, y por tanto menor que $\eta$. Las muestras de cada tramo se eligen independientemente y la suma es finita. El mismo argumento, aproximando los supremos locales desde abajo, muestra que la suma superior es el supremo de las sumas etiquetadas.
+
+Como todas esas sumas están en el intervalo indicado, sus extremos satisfacen $L(f,P)\ge I-\varepsilon/4$ y $U(f,P)\le I+\varepsilon/4$. Tenemos $U-L\le\varepsilon/2<\varepsilon$, y el criterio de Darboux prueba integrabilidad.
+
+Falta identificar el valor integral con $I$. La primera parte asegura que las sumas de una función integrable se aproximan a su valor Darboux para todas las particiones finas. Las mismas sumas se aproximan a $I$ por la hipótesis 2. Si esos dos números fueran distintos, elegir para ambas aproximaciones una tolerancia menor que un tercio de su distancia y una partición de finura menor que los dos umbrales daría, por desigualdad triangular, una distancia menor que dos tercios de sí misma. Deben coincidir. $\square$
 
 **Advertencia de interpretación.** «La malla se hace fina» no significa meramente que el número de subintervalos crece. Una partición puede contener miles de segmentos diminutos y conservar uno de longitud $1/2$. El cuantificador de finura controla **el mayor** subintervalo y, a diferencia de una sola sucesión elegida a conveniencia, controla todas las etiquetas.
 
@@ -225,7 +241,9 @@ Recíprocamente, supongamos la condición 2. Dado $\varepsilon>0$, elijamos una 
 
 **Teorema 5.4 (`EDC-C05-THM-004`; continuidad e integrabilidad).** Si $f:[a,b]\to\mathbb R$ es continua, con $a<b$, entonces es integrable.
 
-**Demostración.** La continuidad en el intervalo cerrado garantiza acotación (`EDC-C00-THM-007`) y continuidad uniforme (`EDC-C00-THM-008`). Dado $\varepsilon>0$, elegimos $\eta=\varepsilon/[2(b-a)]$. Existe $\delta>0$ tal que $|f(x)-f(y)|<\eta$ cuando $x,y\in[a,b]$ y $|x-y|<\delta$. Tomemos una partición con $\|P\|<\delta$. En cada subintervalo, el máximo y el mínimo existen, y su diferencia es menor que $\eta$. Por ello
+**Demostración.** La continuidad en el intervalo cerrado garantiza acotación (`EDC-C00-THM-007`), así que las sumas de Darboux están definidas. También proporciona continuidad uniforme (`EDC-C00-THM-008`), que permite hacer pequeñas todas las oscilaciones con un único umbral de anchura.
+
+Dado $\varepsilon>0$, elegimos $\eta=\varepsilon/[2(b-a)]$ y un $\delta>0$ tal que $|f(x)-f(y)|<\eta$ cuando $|x-y|<\delta$. Tomamos una partición con $\|P\|<\delta$. En cada subintervalo el máximo y el mínimo son alcanzados, y los puntos donde se alcanzan distan menos que $\delta$; por ello $M_i-m_i<\eta$. Sumando las oscilaciones por sus anchuras,
 
 $$
 0\le U(f,P)-L(f,P)
@@ -233,11 +251,11 @@ $$
 <\eta(b-a)=\varepsilon/2<\varepsilon.
 $$
 
-El Teorema 5.2 concluye la prueba. Es exactamente el control preparatorio demostrado en C04, ahora empleado dentro de la definición formal de integral. $\square$
+Esta es la estimación preparada en C04. El criterio de Darboux la convierte en integrabilidad, porque encontramos una partición con diferencia menor que cualquier tolerancia. $\square$
 
 **Teorema 5.5 (`EDC-C05-THM-005`; monotonía e integrabilidad).** Si $f:[a,b]\to\mathbb R$ es monótona, es integrable, aunque pueda tener discontinuidades.
 
-**Demostración.** Supongamos que $f$ es no decreciente. En cada subintervalo el ínfimo y el supremo son sus valores en los extremos. Así,
+**Demostración.** Supongamos que $f$ es no decreciente. Todos sus valores quedan entre $f(a)$ y $f(b)$, por lo que es acotada. En cada subintervalo el ínfimo y el supremo son los valores de sus extremos: $m_i=f(x_{i-1})$ y $M_i=f(x_i)$. Las diferencias son no negativas, de modo que reemplazar cada anchura por la mayor da
 
 $$
 \begin{aligned}
@@ -248,32 +266,36 @@ U(f,P)-L(f,P)
 \end{aligned}
 $$
 
-La suma final telescopa. Si $f(b)=f(a)$, la función es constante; si no, basta escoger una partición de finura tan pequeña que el producto sea menor que $\varepsilon$. Para una función no creciente aplicamos el mismo argumento a $-f$. La continuidad no se ha supuesto. $\square$
+La suma de variaciones telescopa a la diferencia entre los valores finales. Si éstos coinciden, la monotonía obliga a que la función sea constante y la diferencia de sumas es cero. Si $f(b)>f(a)$, elegimos una partición con $\|P\|<\varepsilon/[f(b)-f(a)]$ y el criterio de Darboux concluye.
+
+Si $f$ es no creciente, $-f$ es no decreciente y admite particiones con diferencias arbitrariamente pequeñas. Cambiar el signo intercambia las cotas locales: $U(-f,P)=-L(f,P)$ y $L(-f,P)=-U(f,P)$. Las diferencias de sumas son iguales para $f$ y $-f$, de modo que el mismo criterio prueba integrabilidad de $f$. No hemos supuesto continuidad. $\square$
 
 **Lema 5.3 (`EDC-C05-LEM-003`; funciones concentradas en pocos puntos).** Si $h:[a,b]\to\mathbb R$ es acotada y vale cero salvo en un conjunto **finito** $F$, entonces es integrable y $\int_a^b h=0$.
 
-**Demostración.** Sea $|h|\le B$ y $|F|=N$. En una partición $P$, sólo pueden contribuir a $U(h,P)-L(h,P)$ los subintervalos que contienen algún punto de $F$; un punto de la partición puede pertenecer a dos intervalos adyacentes. En consecuencia hay a lo sumo $2N$ intervalos que contribuyen, cuya longitud total no supera $2N\|P\|$. En cada uno la oscilación de $h$ es, a lo sumo, $2B$. Resulta
+**Demostración.** Sea $|h|\le B$ y $|F|=N$. Si un subintervalo no contiene ningún punto de $F$, la función es cero en todo él y su contribución a la diferencia de sumas es nula. Un punto de $F$ puede estar en el interior de una pieza o ser un extremo compartido por dos piezas cerradas. Por eso el número de intervalos que pueden contribuir es a lo sumo $2N$, y su longitud total no supera $2N\|P\|$.
+
+En cada uno, los valores están en $[-B,B]$ y la oscilación no supera $2B$. Resulta
 
 $$
 0\le U(h,P)-L(h,P)\le4BN\|P\|.
 $$
 
-Así $h$ es integrable. Además, dado $\varepsilon>0$ y particiones cada vez más finas, toda suma etiquetada satisface $|S(h;P,\xi)|\le2BN\|P\|\to0$ porque sólo los intervalos que contienen $F$ pueden aportar un valor distinto de cero. Por el Teorema 5.3, su integral es cero. $\square$
+Si $B=0$ o $N=0$, la función es nula. En los demás casos, una partición suficientemente fina hace la cota menor que cualquier tolerancia, y el criterio de Darboux da integrabilidad.
 
-La última afirmación es **finita**, no una autorización para modificar una función en un conjunto numerable arbitrario. Que algo sea verdadero para cinco puntos no demuestra que lo sea para infinitos puntos, por dispersos que parezcan.
+Para identificar el valor, las sumas etiquetadas sólo pueden recibir aportes no nulos de esos mismos intervalos. La altura de cada aporte tiene módulo a lo sumo $B$, de modo que $|S(h;P,\xi)|\le2BN\|P\|\to0$ cuando la finura tiende a cero, para cualquier etiqueta. El Teorema 5.3 identifica la integral con ese valor cero. $\square$
+
+El control depende de que el número de puntos excepcionales sea fijo y finito. En un conjunto numerable arbitrario ya no tendríamos el mismo límite para el número de piezas afectadas; la función indicatriz de los racionales mostrará cuánto puede cambiar el problema.
 
 ::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Riemann y Darboux: medir desde abajo y desde arriba"}
-
 *Lectura opcional.*
 
-Queremos medir una región bajo una curva, pero la curva nos complica el dibujo. Podemos colocar rectángulos que queden enteramente debajo y otros que cubran todo el borde superior. Obtenemos dos cuentas: una que se queda corta y otra que se pasa.
+En su *Mémoire sur les fonctions discontinues* de 1875, Darboux comienza explicando que volverá sobre la definición de integral de Riemann con los desarrollos necesarios para estudiar funciones más generales. La pregunta ya no se limita a las curvas suaves: también interesa saber qué discontinuidades permiten integrar.
 
-La idea ofrece una forma muy intuitiva de reconocer un área: refinar los rectángulos hasta que ambas cuentas se aproximen tanto como queramos. Éste es el corazón de las sumas inferiores y superiores que acabamos de estudiar.
+En la sección II forma dos sumas, una con las cotas superiores de la función en cada tramo y otra con las inferiores. Al subdividir, la primera disminuye o permanece igual y la segunda aumenta o permanece igual. La distancia entre ambas recoge las oscilaciones de la función multiplicadas por las longitudes de los intervalos.
 
-En el siglo XIX, Riemann y Darboux exploraron la integración cuando las funciones podían tener comportamientos mucho más variados que una curva suave. La memoria de Darboux de 1875 pertenece a esa historia. Su encuentro con este capítulo es fácil de recordar: medir también puede consistir en encerrar una cantidad entre dos estimaciones y hacer cada vez más estrecho el espacio que las separa.
+La sección III examina después las alturas elegidas dentro de cada tramo. Esa elección puede cambiar la suma, y hay que averiguar cuándo deja de importar al hacer pequeños los intervalos. Es la dificultad que acabamos de resolver con el refinamiento y el control de todas las etiquetas.
 
-**Para seguir leyendo:** [Darboux, Mémoire sur les fonctions discontinues (1875); notas históricas del capítulo 5](https://www.numdam.org/articles/10.24033/asens.122/).
-
+**Para seguir leyendo:** [Darboux, *Mémoire* (1875), pp. 58, 65–66 y 72, secciones II–III](https://www.numdam.org/item/ASENS_1875_2_4__57_0.pdf); notas históricas del capítulo 5.
 :::
 
 ## 5.6. Dos funciones que revelan los límites del concepto
@@ -290,9 +312,9 @@ $$
 L(d,P)=0,\qquad U(d,P)=1.
 $$
 
-Así $\underline{\mathcal I}_0^1(d)=0$ y $\overline{\mathcal I}_0^1(d)=1$: **no existe integral de Riemann–Darboux** para $d$. El problema no procede de falta de acotación ni de un dibujo mal construido: procede de que las oscilaciones persisten en todo subintervalo.
+Así $\underline{\mathcal I}_0^1(d)=0$ y $\overline{\mathcal I}_0^1(d)=1$: **no existe integral de Riemann–Darboux** para $d$. La oscilación permanece igual a uno en cada pieza y la suma de anchuras es uno, de modo que ningún refinamiento reduce la distancia entre las dos cotas globales.
 
-Ahora definamos $s_c(x)=0$ para $x<c$ y $s_c(x)=1$ para $x\ge c$, con $a<c<b$. La función tiene un salto, pero es monótona, luego integrable por el Teorema 5.5. Su valor puede determinarse sin primitivas: para cualquier $\eta>0$ suficientemente pequeño, tomemos una partición que incluya $c-\eta$ y $c$. Fuera del intervalo $[c-\eta,c]$, las sumas inferiores y superiores coinciden con la longitud total de la parte situada a la derecha de $c$, a saber, $b-c$. El subintervalo de longitud $\eta$ tiene ínfimo $0$ y supremo $1$, por lo que
+Comparemos ese comportamiento con un único salto. Definamos $s_c(x)=0$ para $x<c$ y $s_c(x)=1$ para $x\ge c$, con $a<c<b$. La función tiene un salto, pero es monótona, luego integrable por el Teorema 5.5. Su valor puede determinarse sin primitivas: para cualquier $\eta>0$ suficientemente pequeño, tomemos una partición que incluya $c-\eta$ y $c$. Fuera del intervalo $[c-\eta,c]$, las sumas inferiores y superiores coinciden con la longitud total de la parte situada a la derecha de $c$, a saber, $b-c$. El subintervalo de longitud $\eta$ tiene ínfimo $0$ y supremo $1$, por lo que
 
 $$
 L(s_c,P)=b-c,\qquad U(s_c,P)=b-c+\eta.
@@ -315,14 +337,16 @@ $$
 =\alpha\int_a^b f(x)\,dx+\beta\int_a^b g(x)\,dx.
 $$
 
-**Demostración.** Para cada partición y etiquetas, la identidad finita
+**Demostración.** La combinación es acotada porque lo son $f$ y $g$. Para cualquier partición y etiquetas, la distributividad de una suma finita da
 
 $$
 S(\alpha f+\beta g;P,\xi)
 =\alpha S(f;P,\xi)+\beta S(g;P,\xi)
 $$
 
-es algebraicamente exacta. Por el Teorema 5.3, todas las sumas de $f$ y de $g$ convergen a sus respectivas integrales cuando $\|P\|\to0$, uniformemente respecto de las etiquetas. La desigualdad triangular da, para la combinación, un error a lo sumo $|\alpha|$ veces el error de $f$ más $|\beta|$ veces el de $g$. Elegimos un mismo umbral de finura que haga esa suma menor que cualquier tolerancia. La caracterización por sumas de Riemann concluye la integrabilidad y la fórmula. $\square$
+Queremos que su error respecto de la combinación de integrales sea menor que $\varepsilon$. Elegimos para las sumas de cada función una tolerancia $\tau=\varepsilon/[1+|\alpha|+|\beta|]$. El Teorema 5.3 proporciona umbrales $\delta_f$ y $\delta_g$ que aseguran esos errores para todas las etiquetas. Con $\delta=\min\{\delta_f,\delta_g\}$, ambos controles valen en una misma partición de finura menor que $\delta$.
+
+La desigualdad triangular acota el error de la combinación por $|\alpha|$ veces el de $f$ más $|\beta|$ veces el de $g$, y resulta menor que $\varepsilon$. El denominador elegido funciona también si uno o ambos coeficientes son cero. La caracterización por sumas de Riemann prueba integrabilidad y da la fórmula. $\square$
 
 **Teorema 5.7 (`EDC-C05-THM-007`; orden y estimaciones).** Si $f,g$ son integrables en $[a,b]$ y $f(x)\le g(x)$ para todo $x$, entonces
 
@@ -338,32 +362,34 @@ $$
 
 En particular, si $|f(x)|\le B$, entonces $\left|\int_a^b f\right|\le B(b-a)$.
 
-**Demostración.** Para toda partición etiquetada, $S(f;P,\xi)\le S(g;P,\xi)$. El Teorema 5.3 permite pasar al límite con las mismas etiquetas, conservando el orden; si fallara en los límites, una tolerancia igual a la mitad de su separación produciría una contradicción. Las cotas por constantes se obtienen comparando con las funciones constantes $m$ y $M$, cuyas sumas valen exactamente $m(b-a)$ y $M(b-a)$. $\square$
+**Demostración.** La desigualdad puntual y la positividad de las anchuras aseguran $S(f;P,\xi)\le S(g;P,\xi)$ para cualquier partición con las mismas etiquetas. Por el Teorema 5.3 esas sumas aproximan sus integrales. Si la integral de $f$ fuera mayor que la de $g$, podríamos exigir a ambas aproximaciones errores menores que un tercio de esa separación y elegir una partición de finura menor que los dos umbrales. Las sumas tendrían entonces el orden contrario al que acabamos de demostrar. Esto prueba el orden entre las integrales.
+
+Para una constante $k$, todas las sumas valen exactamente $k(b-a)$ y por tanto ése es su valor integral. Comparamos $f$ con las constantes $m$ y $M$ para obtener las cotas del enunciado. Si $|f|\le B$, tomamos $m=-B$ y $M=B$; la integral queda entre $-B(b-a)$ y $B(b-a)$, que da la cota absoluta. $\square$
 
 **Proposición 5.1 (`EDC-C05-PRP-001`; producto).** Si $f,g$ son integrables y acotadas en $[a,b]$, también lo es $fg$.
 
-**Demostración.** Tomemos $|f|\le A$, $|g|\le B$. Para $x,y$ de cualquier subintervalo $I$,
+**Demostración.** Tomemos $|f|\le A$, $|g|\le B$, con $A,B\ge0$. El producto es acotado. Para controlar su oscilación, separamos el cambio de los dos factores añadiendo y restando $f(x)g(y)$. Para $x,y$ en un mismo subintervalo $I$, obtenemos
 
 $$
 |f(x)g(x)-f(y)g(y)|
 \le A|g(x)-g(y)|+B|f(x)-f(y)|.
 $$
 
-Al tomar supremos sobre parejas $x,y\in I$, se obtiene
+La oscilación de una función acotada es el supremo de las diferencias absolutas entre parejas de sus valores: éstos están entre el ínfimo y el supremo, y podemos acercarnos a ambas cotas cuanto queramos. Al tomar ese supremo en la desigualdad anterior resulta
 
 $$
 \operatorname{osc}_I(fg)
 \le A\operatorname{osc}_I(g)+B\operatorname{osc}_I(f).
 $$
 
-El criterio de Darboux proporciona una partición con oscilación ponderada pequeña para $f$ y otra para $g$; tomamos su refinamiento común, que no aumenta las diferencias de sumas. En éste,
+El criterio de Darboux permite elegir una partición buena para $f$ y otra para $g$. Para usarlas a la vez tomamos el refinamiento común, que no aumenta ninguna diferencia de sumas. Multiplicamos la cota de oscilación por la anchura de cada pieza y sumamos:
 
 $$
 U(fg,P)-L(fg,P)
 \le A\bigl[U(g,P)-L(g,P)\bigr]+B\bigl[U(f,P)-L(f,P)\bigr],
 $$
 
-y el lado derecho puede hacerse arbitrariamente pequeño. $\square$
+Elegir inicialmente cada diferencia menor que $\varepsilon/(1+A+B)$ hace el resultado menor que $\varepsilon$, también si alguna cota es cero. El producto satisface así el criterio de integrabilidad. $\square$
 
 El resultado no autoriza a afirmar que $\int fg=(\int f)(\int g)$: esa identidad es generalmente falsa. Por ejemplo, para $f(x)=g(x)=x$ en $[0,1]$ la integral del producto es $1/3$, mientras el producto de integrales vale $1/4$.
 
@@ -380,7 +406,11 @@ $$
 \le (b-a)\sup_{x\in[a,b]}|f(x)-g(x)|.
 $$
 
-**Demostración.** La desigualdad $||u|-|v||\le|u-v|$ implica que la oscilación de $|f|$ en cualquier subintervalo no supera la de $f$; por Darboux, $|f|$ es integrable. La primera desigualdad sigue de $-|f|\le f\le|f|$ y del orden. Para la segunda, aplicar la linealidad a $h=f-g$, cuya cota en valor absoluto es el supremo indicado, y luego el Teorema 5.7. $\square$
+**Demostración.** La desigualdad $||u|-|v||\le|u-v|$ dice que tomar módulos no aumenta la separación entre dos valores. Por tanto, la oscilación de $|f|$ en cualquier subintervalo no supera la de $f$. Sus diferencias de sumas tampoco la superan, y las particiones buenas para $f$ demuestran por Darboux la integrabilidad de $|f|$.
+
+La comparación puntual $-|f|\le f\le|f|$, junto con el orden y la linealidad ya probados, coloca la integral de $f$ entre la integral de $|f|$ y su opuesta. Esto da la primera desigualdad.
+
+Para la segunda, la diferencia $h=f-g$ es integrable por linealidad. Su módulo está acotado en todo el intervalo por el supremo indicado, que es finito porque ambas funciones son acotadas. Aplicamos la cota del Teorema 5.7 a $h$ y reemplazamos su integral por la diferencia de las integrales. $\square$
 
 Ésta es una estimación del error particularmente útil en aproximación: si dos funciones integrables son cercanas en todos los puntos, sus acumulaciones también lo son, con un factor de escala igual a la longitud del intervalo.
 
@@ -393,11 +423,13 @@ $$
 =\int_a^c f(x)\,dx+\int_c^b f(x)\,dx.
 $$
 
-**Demostración.** Supongamos que $f$ es integrable en $[a,b]$. Dado $\varepsilon>0$, elegimos por el Teorema 5.2 una partición $P$ con $U(f,P)-L(f,P)<\varepsilon$. Refinamos con el punto $c$. La nueva diferencia sigue siendo menor que $\varepsilon$ y se descompone exactamente como suma de las diferencias (no negativas) de las dos particiones restringidas. Por tanto cada diferencia parcial es menor que $\varepsilon$; el criterio demuestra la integrabilidad de ambas restricciones.
+**Demostración.** Supongamos primero integrabilidad en $[a,b]$. Para una tolerancia $\varepsilon>0$, elegimos una partición $P$ con $U(f,P)-L(f,P)<\varepsilon$ y añadimos el punto $c$. El refinamiento no aumenta esa diferencia. Sus sumas se separan en las contribuciones de $[a,c]$ y de $[c,b]$, de modo que la diferencia global es la suma de las dos diferencias parciales.
 
-Recíprocamente, si las dos restricciones son integrables, para cualquier $\varepsilon>0$ elegimos una partición del primer intervalo cuya diferencia superior–inferior sea menor que $\varepsilon/2$ y otra del segundo con la misma propiedad. Uniéndolas obtenemos una partición de $[a,b]$ con diferencia menor que $\varepsilon$. Esto demuestra la integrabilidad global.
+Cada diferencia parcial es no negativa y no puede superar el total, que es menor que $\varepsilon$. Las restricciones son acotadas y, para cada tolerancia, hemos obtenido una partición buena en cada una. El criterio de Darboux demuestra su integrabilidad.
 
-Finalmente, las sumas etiquetadas para particiones que contienen a $c$ se descomponen **exactamente** en las sumas de cada lado. Refinando ambas zonas hasta hacer su finura arbitrariamente pequeña, el Teorema 5.3 permite pasar al límite y obtener la identidad de integrales. $\square$
+En sentido inverso, supongamos integrabilidad en los dos lados. Elegimos una partición de $[a,c]$ con diferencia menor que $\varepsilon/2$ y una de $[c,b]$ con la misma propiedad. Al reunirlas obtenemos una partición de $[a,b]$; las contribuciones siguen separadas por $c$ y su diferencia total es menor que $\varepsilon$. Así hay integrabilidad global.
+
+Para identificar el valor, las sumas etiquetadas de cualquier partición que contenga $c$ se descomponen exactamente en las de las dos restricciones. Podemos hacer pequeñas las finuras a ambos lados simultáneamente, y el Teorema 5.3 aproxima cada suma por su integral. La suma total aproxima a la vez la integral global y la suma de las dos integrales parciales; la unicidad del valor límite da la igualdad. El punto $c$ es extremo de dos subintervalos, pero los términos siempre están multiplicados por las anchuras de las piezas, y no se añade una contribución separada del punto compartido. $\square$
 
 **Definición 5.5 (`EDC-C05-DEF-005`; intervalo degenerado y orientación).** Para una función definida en un intervalo que contiene $a$ y $b$, fijamos
 
@@ -416,13 +448,13 @@ $$
 \boxed{\int_a^b f(x)\,dx=f(c)(b-a).}
 $$
 
-**Demostración.** Por continuidad, $f$ es integrable (Teorema 5.4) y alcanza un mínimo $m$ y un máximo $M$ (C00). El Teorema 5.7 asegura
+**Demostración.** La continuidad asegura que la integral existe, por el Teorema 5.4, y que $f$ alcanza un mínimo $m$ y un máximo $M$, por C00. El orden permite comparar su integral con las de esas dos constantes. Al dividir por la longitud positiva del intervalo obtenemos
 
 $$
 m\le\frac1{b-a}\int_a^b f(x)\,dx\le M.
 $$
 
-Como la imagen de una función continua en un intervalo contiene todos los valores entre $m$ y $M$ (`EDC-C00-THM-006`), existe un punto $c$ donde el valor de $f$ es exactamente ese promedio. $\square$
+El número central es la altura constante que produciría la misma acumulación sobre todo el intervalo. Para que esa altura se alcance en la función necesitamos continuidad: entre un punto de mínimo y uno de máximo, el valor intermedio (`EDC-C00-THM-006`) proporciona cada altura comprendida entre $m$ y $M$. Existe por tanto un $c\in[a,b]$ con $f(c)$ igual al promedio. Si $m=M$, la función es constante y cualquier punto sirve. $\square$
 
 Para $f$ meramente integrable no podemos asegurar que el promedio sea alcanzado como valor puntual. Consideremos en $[0,1]$ la función $f(x)=0$ si $x\le1/2$ y $f(x)=1$ si $x>1/2$. Es monótona e integrable, y su integral vale $1/2$; sin embargo, su imagen es $\{0,1\}$ y no contiene el valor promedio $1/2$. La continuidad es la hipótesis que garantiza que el promedio pertenezca a la imagen.
 
@@ -459,7 +491,7 @@ $$
 \int_a^b k(x-a)(b-x)\,dx=\frac{k(b-a)^3}{6}=\frac43T,
 $$
 
-reproduciendo desde la teoría integral el valor geométrico **ya demostrado** en `EDC-C04-THM-002`. No hemos tomado el resultado geométrico como axioma para definir la integral ni utilizado una sustitución integral todavía no probada.
+El resultado coincide con la cuadratura de `EDC-C04-THM-002`. Aquí las coordenadas de la partición se sustituyeron directamente en una suma finita; la continuidad garantiza después que su límite es la integral. Así podemos comparar la construcción geométrica y la analítica sin usar un teorema de cambio de variable.
 
 En un intervalo $[a,b]$ la integral de una constante $k$ es $k(b-a)$; esto se sigue porque todas sus sumas finitas son iguales a ese número. Combinando tales resultados con la linealidad podemos evaluar diversos polinomios de forma independiente del Teorema Fundamental.
 
@@ -469,9 +501,9 @@ $$
 \int_0^1p(x)\,dx=\sum_{j=0}^N\frac{c_j}{j+1}.
 $$
 
-**Demostración.** El término $j=0$ es constante y los demás tienen integral conocida por la cuadratura numérica de C04. La linealidad, aplicada un número finito de veces, produce la identidad. $\square$
+**Demostración.** El término $j=0$ es constante y su integral en $[0,1]$ es $c_0$. Cada potencia de exponente positivo tiene la integral $1/(j+1)$ ya identificada mediante las sumas de C04. Multiplicamos por su coeficiente y aplicamos la linealidad a los $N+1$ términos, una cantidad finita. La contribución constante se escribe también como $c_0/(0+1)$, y obtenemos la fórmula en una sola suma. $\square$
 
-Esta fórmula coincide con la que en el capítulo 6 obtendremos mediante el vínculo entre derivada e integral. El hecho de reconocer hoy un patrón no permite utilizar retrospectivamente el Teorema Fundamental como premisa para construirlo.
+El cálculo de estos polinomios reúne valores que ya conocíamos por sus sumas. Una regla general que permita hallar integrales mediante derivadas necesitará justificar por qué ese procedimiento recupera el número definido aquí.
 
 ## 5.11. Qué representa el número obtenido
 
@@ -483,7 +515,7 @@ La integral de una densidad lineal $\rho(x)$ tiene unidades de masa; la integral
 
 ## 5.12. Una definición conquistada, un vínculo todavía pendiente
 
-El resultado de este capítulo puede resumirse mediante una cadena de afirmaciones **demostradas**:
+El refinamiento común permitió pasar de aproximaciones individuales a cotas compatibles sobre todas las particiones. La completitud hizo posible reunir esas cotas, y el control de las oscilaciones decidió cuándo coincidían. La relación entre las dos maneras de describir la integral queda expresada así:
 
 $$
 \begin{gathered}
@@ -499,9 +531,9 @@ $$
 \end{gathered}
 $$
 
-La continuidad y la monotonía resultaron condiciones suficientes de integrabilidad; la función de Dirichlet mostró por qué la acotación no basta. Probamos linealidad, orden, productos, aditividad por intervalos y la interpretación del valor medio continuo. Estas propiedades hacen de la integral una teoría matemática autónoma.
+La integral puede existir aunque haya saltos o valores excepcionales en unos pocos puntos, pero las oscilaciones persistentes de la función de Dirichlet impiden cerrar el encaje. La prueba de equivalencia muestra por qué la precisión debe controlar todas las etiquetas y la anchura de cada pieza; aumentar simplemente el número de rectángulos no resuelve esa exigencia.
 
-**Todavía no** sabemos, como teorema general, cómo encontrar el valor de una integral buscando una función cuya derivada coincida con el integrando. Tal operación no fue empleada para definir ni justificar los resultados de C05. En `EDC-C06` veremos que dos desarrollos antes independientes —variación y acumulación— se encuentran en el Teorema Fundamental del Cálculo.
+Tenemos ya una acumulación definida y reglas para combinarla, compararla y repartirla entre intervalos. Queda estudiar qué ocurre al mover uno de sus extremos: el cociente entre el cambio de la acumulación y el incremento del extremo ofrecerá en C06 una nueva relación con la derivada.
 
 ### Mapa de dependencias
 

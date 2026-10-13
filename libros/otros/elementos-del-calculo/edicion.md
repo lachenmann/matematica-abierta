@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -26,7 +26,7 @@ provenance:
 
 ## Identidad y alcance
 
-**Elementos del cálculo — Un enfoque histórico, problemático y fundacional.** Autor: A. Peña. Matemática Abierta. Edición web 1.0, 12 de octubre de 2026.
+**Elementos del cálculo — Un enfoque histórico, problemático y fundacional.** Autor: A. Peña. Matemática Abierta. Edición web 1.1, 13 de octubre de 2026.
 
 Obra original e independiente inspirada en el enfoque de Gabor Toth. No es una continuación oficial ni implica afiliación o aval de Toth o Springer. *Cálculo para matemáticos* es una obra diferente de MA.
 
@@ -46,6 +46,11 @@ La licencia comprende el texto original y las figuras originales de esta edició
 
 ## Citación y erratas
 
-Peña, A. (2026). *Elementos del cálculo: Un enfoque histórico, problemático y fundacional*. Matemática Abierta, edición web 1.0. [Edición web en Matemática Abierta](https://matematicaabierta.cl/libros/otros/elementos-del-calculo/index.html)
+Peña, A. (2026). *Elementos del cálculo: Un enfoque histórico, problemático y fundacional*. Matemática Abierta, edición web 1.1. [Edición web en Matemática Abierta](https://matematicaabierta.cl/libros/otros/elementos-del-calculo/index.html)
 
 Para comunicar una errata, [abrir una incidencia en el repositorio de Matemática Abierta](https://github.com/lachenmann/matematica-abierta/issues/new) e indicar el capítulo, el identificador EDC del resultado o ejercicio y el pasaje afectado.
+
+
+## Revisión literaria integral de octubre de 2026
+
+El prefacio y los doce capítulos recibieron una revisión literaria sustantiva, seguida de un cotejo transversal de continuidad, referencias e integridad formal. Se preservan los 338 pares de ejercicios y soluciones, catorce investigaciones y siete figuras; se incorporó la corrección de dominio de continuidad en los bordes de un ejercicio del capítulo 3. La prueba ampliada del binomio generalizado y el prefacio corresponden a muestras aprobadas por el autor. El alcance sigue sin constituir certificación Lean, arbitraje matemático independiente exhaustivo ni colación completa de fuentes históricas.

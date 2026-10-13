@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -15,13 +15,14 @@ topics:
   - calculo-de-una-variable
   - historia-de-las-matematicas
 number-sections: false
+css: /assets/books/elementos-del-calculo/edc-source-notes.css
 provenance:
   type: original
   sources:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C10-NOTAS-HISTORICAS
-source-sha256: 17a08c517cdfc3b70393d57fb5a09eef8f2d3662b9d749d6a2c107c295b5d01b
+source-sha256: cdfb5d8a8628783dd8bb34c8daa0f00b1e05dc0de3b9490522168236a1cebe35
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -64,6 +65,7 @@ La llamada «ley del enfriamiento de Newton» tiene una genealogía histórica v
 
 **Investigación histórica leída en resumen y extractos:** J. Simón Calero (2021), [«La *Scala graduum caloris* de Newton. Una simulación numérica»](https://doi.org/10.3989/asclepio.2021.16), *Asclepio* **73** (1), p350. El artículo sitúa *Scala graduum caloris* en *Philosophical Transactions* **22** (1700–1701), pp. 824–829, como publicación anónima de 1701. **Corroboración histórico-documental:** [The Newton Project, capítulo XXV](https://newtonproject.ox.ac.uk/view/texts/normalized/OTHE00086), texto normalizado de una biografía posterior que describe la comunicación de mayo de 1701 y la publicación. **Reserva:** ese capítulo biográfico no es la reproducción diplomática del artículo científico original; el latín de 1701 no fue colacionado íntegramente para EDC-C10.
 
+**Estado:** `MODERN_HISTORICAL_STUDY_ABSTRACT_AND_EXCERPTS_READ / NEWTON_PROJECT_NORMALIZED_LATER_BIOGRAPHY_READ / ORIGINAL_1701_NOT_COLLATED`.
 
 ## H6. Mecánica, vibración y el oscilador armónico
 
@@ -96,3 +98,10 @@ El paso explícito $y_{n+1}=y_n+hF(t_n,y_n)$ recibe hoy el nombre «método de E
 | Originales de Newton, Bernoulli, Euler, Verhulst y los historiadores de existencia | Algunos localizados; sin cotejo sistemático | Pendientes para la auditoría histórica transversal de C11 |
 
 **Dictamen:** los modelos y demostraciones son parte de *Elementos del cálculo*, no reproducciones de escritos históricos. Las notas exponen los límites reales de lectura y colación. Los originales no examinados no se citan con páginas de contenido inventadas ni se les atribuyen nuestras condiciones de regularidad actuales.
+
+
+## Complemento documental — revisión literaria R11 (13 de octubre de 2026)
+
+Se abrió y descargó el [PDF de *Analyse des infiniment petits* (1696)](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf), 225 páginas digitales. Se leyó texto extraído del prefacio, en particular páginas digitales 15–17 (índices 14–16), donde se distingue el cálculo diferencial del integral y se menciona la «Méthode inverse des Tangentes», seguida de rectificaciones, cuadraturas y centros de gravedad. El recuadro parafrasea ese pasaje y desarrolla por separado su conexión con el problema del capítulo. No se transcriben literalmente fórmulas ni pruebas antiguas.
+
+La lectura se hizo sobre el texto extraído del francés del PDF; no se declara cotejo visual, colación diplomática ni lectura completa del volumen. El extracto y la huella del PDF están en el expediente R11. Las fichas H1–H8 anteriores se conservan; este complemento amplía el control documental del recuadro sobre L’Hôpital, sin adjudicar nueva colación a los originales de Newton, Bernoulli, Euler o Verhulst. Estado: PRIMARY_FRENCH_EXTRACTED_PASSAGES_READ / FACSIMILE_NOT_VISUALLY_COLLATED.

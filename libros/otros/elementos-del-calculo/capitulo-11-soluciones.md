@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C11-SOLUCIONES
-source-sha256: 14985e88962a1e3eb3cfa43ea2899d38a1bdd72d555ed99afc250fd4c8167f48
+source-sha256: 9cbc478e8b01bd027b3b26a131b82a9c204bfca3b59aade6d1fc28476345e8ba
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -40,11 +40,11 @@ $$
 |A_n-2|=2^{-n}.
 $$
 
-La sucesión $\varepsilon_n=2^{-n}$ tiende a cero por la convergencia de potencias geométricas con razón $1/2$ (C00/C08). La Proposición 11.1 prueba $A_n\to2$. No es lícito confundir el número finito $A_n$ con su límite $2$ para un $n$ particular.
+La sucesión $\varepsilon_n=2^{-n}$ tiende a cero por la convergencia de potencias geométricas con razón $1/2$ (C00/C08). La Proposición 11.1 prueba $A_n\to2$. Para una tolerancia $\varepsilon>0$, podemos escoger $N$ con $2^{-N}<\varepsilon$; como las potencias decrecen, la misma desigualdad vale para todos los $n\ge N$. Ésta es la información que convierte los valores calculados en una aproximación certificada. Para cada $n$ finito queda todavía una diferencia positiva $2^{-n}$ respecto de dos.
 
 ### Solución 11.2 (`EDC-C11-SOL-002`)
 
-(a) Falta controlar las **sumas de todas las colas**, no sólo el término general: $a_n=1/n\to0$, pero $\sum1/n$ diverge por agrupación diádica (C08). (b) Falta que, **para cada $x$ considerado**, los restos $R_n(x)$ tiendan a cero cuando $n\to\infty$: la función plana $g(x)=e^{-1/x^2}$ fuera de cero y $g(0)=0$ tiene derivadas de todo orden y Taylor nula, aunque $g(x)>0$ si $x\ne0$ (C09). (c) La cota local corresponde a un paso **que parte del dato exacto**; un segundo paso parte de un valor numérico ya perturbado. Falta estimar la transmisión del error mediante hipótesis sobre $F(t,u)-F(t,v)$, por ejemplo una cota Lipschitz, y resolver la recurrencia resultante. De $O(h^2)$ local no se deduce $O(h^2)$ global, ni siquiera sin imponer hipótesis suplementarias.
+(a) Falta controlar las **sumas de todas las colas**, no sólo el término general: $a_n=1/n\to0$, pero $\sum1/n$ diverge por agrupación diádica (C08). (b) Falta que, **para cada $x$ considerado**, los restos $R_n(x)$ tiendan a cero cuando $n\to\infty$: la función plana $g(x)=e^{-1/x^2}$ fuera de cero y $g(0)=0$ tiene derivadas de todo orden y Taylor nula, aunque $g(x)>0$ si $x\ne0$ (C09). (c) La cota local corresponde a un paso **que parte del dato exacto**; un segundo paso parte de un valor numérico ya perturbado. Falta estimar la transmisión del error mediante hipótesis sobre $F(t,u)-F(t,v)$, por ejemplo una cota Lipschitz, y resolver la recurrencia resultante. Hay dos cuestiones por resolver: cómo cambia la pendiente al perturbar el valor de partida y cómo se suman las perturbaciones a lo largo de los pasos. Una cota Lipschitz puede ayudar con la primera, pero todavía hay que desarrollar la recurrencia para la segunda. El símbolo $O(h^2)$ del resto local no contiene esas estimaciones globales.
 
 ### Solución 11.3 (`EDC-C11-SOL-003`)
 
@@ -83,7 +83,7 @@ La derivada de $4+t^3$ es $3t^2$, y el valor en cero es cuatro. Si $z$ fuese otr
 
 ### Solución 11.8 (`EDC-C11-SOL-008`)
 
-Para cualquier $\varepsilon>0$, escogemos $\delta>0$ con $14\delta<\varepsilon$, $0<\delta<1/2$, e incluimos en la partición $0,1/2-\delta,1/2,1/2+\delta,1$. Los únicos subintervalos con oscilación no nula son los dos adyacentes a $1/2$, con longitud total $2\delta$ y oscilación a lo sumo $7$. Por tanto
+Para cualquier $\varepsilon>0$, escogemos $\delta>0$ con $14\delta<\varepsilon$, $0<\delta<1/2$, e incluimos en la partición $0,1/2-\delta,1/2,1/2+\delta,1$. El punto $1/2$ pertenece a los dos subintervalos cerrados adyacentes. En cada uno hay valores cero y el valor excepcional siete, de modo que su ínfimo es cero y su supremo siete. Fuera de ellos la función es nula. La longitud afectada es $2\delta$, y por ello la diferencia entre las sumas sólo recibe esos dos aportes. Por tanto
 
 $$
 U(f,P)-L(f,P)\le14\delta<\varepsilon.
@@ -112,7 +112,7 @@ $$
 \le\frac{2}{2n}=\frac1n.
 $$
 
-Para que esta cota garantice un error **estrictamente** menor que $10^{-3}$, necesitamos $n>1000$; el menor entero que satisface la condición suficiente es $n=1001$. El error real para una muestra concreta puede ser menor: la estimación garantiza una tolerancia **para todas** las muestras.
+Para que esta cota garantice un error **estrictamente** menor que $10^{-3}$, necesitamos $n>1000$; el menor entero que satisface la condición suficiente es $n=1001$. Para $n=1000$ sólo obtenemos la garantía $\text{error}\le10^{-3}$, que no es la desigualdad estricta pedida. Elegir $n=1001$ la asegura para todas las muestras, aunque una elección concreta podría alcanzar la tolerancia con menos rectángulos. El número calculado es el mínimo para esta condición suficiente, no una afirmación de que cualquier método necesite al menos tantos.
 
 ### Solución 11.11 (`EDC-C11-SOL-011`)
 
@@ -123,7 +123,7 @@ S_n=\sum_{i=1}^n\frac{2i}{n}\frac1n
 =\frac{2}{n^2}\frac{n(n+1)}2=1+\frac1n.
 $$
 
-La integral exacta $\int_0^1 2x\,dx=1$ se obtiene mediante C06, así que $|S_n-1|=1/n$. En el Teorema 11.3 podemos tomar $M=2$ porque $f'=2$, y la cota da también $M/(2n)=1/n$: **hay igualdad** para las muestras de extremo derecho de esta función lineal. Esto demuestra que la cota general no es meramente decorativa.
+La integral exacta $\int_0^1 2x\,dx=1$ se obtiene mediante C06, así que $|S_n-1|=1/n$. En el Teorema 11.3 podemos tomar $M=2$ porque $f'=2$, y la cota da también $M/(2n)=1/n$: **hay igualdad** para las muestras de extremo derecho de esta función lineal. Podemos reconocer la igualdad en la prueba del teorema: la muestra está en un extremo, así que una de las longitudes $u,v$ es cero y $u^2+v^2=(u+v)^2$. Además, $2x$ es creciente y cada rectángulo derecho sobrestima su integral; al sumar, los errores tienen el mismo signo y la desigualdad triangular no pierde precisión. Por eso la cota se alcanza en este caso.
 
 ### Solución 11.12 (`EDC-C11-SOL-012`)
 
@@ -155,7 +155,7 @@ $$
 \sum_{n=1}^{\infty}nx^{n-1}=F'(x)=\frac1{(1-x)^2}.
 $$
 
-En $x=-1$, el término general de la serie derivada es $n(-1)^{n-1}$, que no tiende a cero; por tanto la serie **diverge** allí. No existe extensión por sustitución directa del resultado interior.
+En $x=-1$, el término general de la serie derivada es $n(-1)^{n-1}$, que no tiende a cero; por tanto la serie **diverge** allí. El miembro racional vale $1/4$ en $x=-1$, pero la serie derivada no posee suma allí. La diferenciación término a término se justificó en puntos interiores y no convierte una expresión racional definida en el borde en una suma convergente. El examen del término general basta para decidir este caso fronterizo.
 
 ### Solución 11.16 (`EDC-C11-SOL-016`)
 
@@ -170,11 +170,11 @@ En el centro $x=0$ el resto es cero. La cota es una **afirmación finita**, inde
 
 ### Solución 11.17 (`EDC-C11-SOL-017`)
 
-Definimos $g(0)=0$ y $g(x)=e^{-1/x^2}$ para $x\ne0$. El Lema 9.1 probó que $|x|^{-m}e^{-1/x^2}\to0$ para todo entero $m\ge0$. Las derivadas fuera de cero tienen la forma $P_k(1/x)e^{-1/x^2}$, con $P_k$ polinómico. Su límite en cero y el límite de su cociente incremental son cero por la cota anterior; una inducción da $g\in C^\infty$ y $g^{(k)}(0)=0$ para todo $k$. Por ello la serie de Taylor en cero es $\sum_{k\ge0}0\cdot x^k=0$, convergente para **todos** los reales. Pero $g(x)>0$ si $x\ne0$: ninguna vecindad abierta de cero tiene igualdad entre la suma y $g$, por lo que $g$ no es analítica en cero.
+Definimos $g(0)=0$ y $g(x)=e^{-1/x^2}$ para $x\ne0$. El Lema 9.1 probó que $|x|^{-m}e^{-1/x^2}\to0$ para todo entero $m\ge0$. Las derivadas fuera de cero tienen la forma $P_k(1/x)e^{-1/x^2}$, con $P_k$ polinómico. Para realizar la inducción, extendemos esa expresión por el valor cero en el centro. Su continuidad se obtiene término a término, pues cada monomio en $1/x$ queda dominado por una potencia que la exponencial vence según el Lema 9.1. Para demostrar la siguiente derivada en cero, dividimos $P_k(1/h)e^{-1/h^2}$ por $h$; aparece una potencia adicional de $1/h$, también cubierta por el mismo lema. El cociente incremental tiende a cero y la derivada siguiente se une continuamente. Así obtenemos $g\in C^\infty$ y $g^{(k)}(0)=0$ para todo $k$. Por ello la serie de Taylor en cero es $\sum_{k\ge0}0\cdot x^k=0$, convergente para **todos** los reales. Pero $g(x)>0$ si $x\ne0$: ninguna vecindad abierta de cero tiene igualdad entre la suma y $g$, por lo que $g$ no es analítica en cero.
 
 ### Solución 11.18 (`EDC-C11-SOL-018`)
 
-La afirmación (i) exige: **para todo entero fijo $n$** y cada $\varepsilon>0$ existe $\delta=\delta(n,\varepsilon)>0$ tal que $0<|x-a|<\delta$ implica $|f(x)-T_{n,a}f(x)|/|x-a|^n<\varepsilon$. El límite se toma haciendo $x\to a$ **después de fijar $n$**. La afirmación (ii) exige: **para cada $x$ fijo del dominio** y cada $\varepsilon>0$ existe $N=N(x,\varepsilon)$ tal que todo $n\ge N$ cumple $|f(x)-T_{n,a}f(x)|<\varepsilon$. Ésta hace crecer $n$ con $x$ fijo. El ejemplo plano de la solución 11.17 satisface la primera para cada orden, pero viola la segunda para todos los $x\ne0$.
+La afirmación (i) exige: **para todo entero fijo $n$** y cada $\varepsilon>0$ existe $\delta=\delta(n,\varepsilon)>0$ tal que $0<|x-a|<\delta$ implica $|f(x)-T_{n,a}f(x)|/|x-a|^n<\varepsilon$. El límite se toma haciendo $x\to a$ **después de fijar $n$**. La afirmación (ii) exige: **para cada $x$ fijo del dominio** y cada $\varepsilon>0$ existe $N=N(x,\varepsilon)$ tal que todo $n\ge N$ cumple $|f(x)-T_{n,a}f(x)|<\varepsilon$. Ésta hace crecer $n$ con $x$ fijo. En la primera afirmación, el entorno permitido puede cambiar con el orden, porque $\delta$ depende de $n$. En la segunda, el índice necesario puede cambiar con el punto, porque $N$ depende de $x$; tampoco se afirma una cota común para todos los puntos. El ejemplo plano de la solución 11.17 satisface la primera para cada orden, pero en un $x\ne0$ fijo todos sus restos son el mismo valor positivo $g(x)$, por lo que viola la segunda.
 
 ## D. De las leyes diferenciales a las trayectorias
 
@@ -191,7 +191,7 @@ Por tanto $y(t)=2-e^{-2t}$. La derivada es $y'=2e^{-2t}$, por lo que $y'+2y=2e^{
 
 ### Solución 11.20 (`EDC-C11-SOL-020`)
 
-Para $c\ge0$ la función $y_c(t)=0$ si $t\le c$ y $y_c(t)=(t-c)^2/4$ si $t>c$ cumple $y_c(0)=0$. Para $t>c$, su derivada es $(t-c)/2=\sqrt{y_c(t)}$; para $t<c$, ambos lados son cero. En $c$ la derivada lateral derecha tiende a cero, igual a la izquierda, y también la derivada es continua. Elija $c=0$ y $c=1$ para dos soluciones diferentes; por ejemplo $y_0(1)=1/4$ y $y_1(1)=0$. El campo $F(y)=\sqrt{|y|}$ no es localmente Lipschitz en cero, pues $|F(h)-F(0)|/h=1/\sqrt h\to\infty$ para $h>0$. Por tanto falla una hipótesis de 10.6 y no aparece contradicción alguna.
+Para $c\ge0$ la función $y_c(t)=0$ si $t\le c$ y $y_c(t)=(t-c)^2/4$ si $t>c$ cumple $y_c(0)=0$. Para $t>c$, su derivada es $(t-c)/2=\sqrt{y_c(t)}$; para $t<c$, ambos lados son cero. En el punto de unión, el cociente incremental es cero para $h<0$ y $h/4$ para $h>0$. Sus límites coinciden en cero, por lo que la derivada existe en $c$. Fuera de ese punto, la derivada es cero a la izquierda y $(t-c)/2$ a la derecha; estas expresiones tienden a cero al acercarse a $c$, verificando también su continuidad. Elija $c=0$ y $c=1$ para dos soluciones diferentes; por ejemplo $y_0(1)=1/4$ y $y_1(1)=0$. El campo $F(y)=\sqrt{|y|}$ no es localmente Lipschitz en cero, pues $|F(h)-F(0)|/h=1/\sqrt h\to\infty$ para $h>0$. Por tanto falla una hipótesis de 10.6 y no aparece contradicción alguna.
 
 ### Solución 11.21 (`EDC-C11-SOL-021`)
 
@@ -201,7 +201,7 @@ $$
 y(t)=\frac1{1-t},\qquad t<1.
 $$
 
-La fórmula verifica $y'=1/(1-t)^2=y^2$ y $y(0)=1$. El Teorema 10.5 proporciona unicidad en la rama positiva sobre el intervalo conectado que contiene el dato. Al acercarse $t\uparrow1$, $y(t)\to+\infty$; una función real continua definida en un intervalo que atravesara uno no podría tener ese comportamiento, de modo que **no existe prolongación clásica finita** a través de $t=1$.
+La fórmula verifica $y'=1/(1-t)^2=y^2$ y $y(0)=1$. La primitiva $B(u)=1-1/u$ lleva $(0,\infty)$ sobre $(-\infty,1)$: tiende a $-\infty$ en el extremo cero y a uno al crecer $u$. Como aquí $A(t)=t$, la inversa está disponible exactamente para $t<1$. El Teorema 10.5 proporciona unicidad en la rama positiva sobre ese intervalo conectado que contiene el dato. Al acercarse $t\uparrow1$, $y(t)\to+\infty$; una función real continua definida en un intervalo que atravesara uno no podría tener ese comportamiento, de modo que **no existe prolongación clásica finita** a través de $t=1$.
 
 ### Solución 11.22 (`EDC-C11-SOL-022`)
 
@@ -256,7 +256,7 @@ $$
 f(x)=\begin{cases}0,&0\le x<1,\\1,&x=1.\end{cases}
 $$
 
-Para cada $n\ge1$, el error $|f_n(x)-f(x)|$ es $x^n$ si $x<1$ y cero si $x=1$. Como se pueden elegir $x<1$ tan próximos a uno como se quiera, $\sup_{x\in[0,1]}|f_n(x)-f(x)|=1$ para **todo** $n$. Si existiesen $\varepsilon_n\to0$ que dominaran el error en todos los puntos, tendríamos $\varepsilon_n\ge1$, contradicción. C08 obtuvo en cambio una cota común en segmentos $|x-c|\le r<s<R$ **estrictamente interiores**; éste es precisamente el tipo de control que aquí no existe en todo el intervalo hasta la frontera.
+Para cada $n\ge1$, el error $|f_n(x)-f(x)|$ es $x^n$ si $x<1$ y cero si $x=1$. Como se pueden elegir $x<1$ tan próximos a uno como se quiera, $\sup_{x\in[0,1]}|f_n(x)-f(x)|=1$ para **todo** $n$. También podemos elegir un punto explícito para cada índice: $x_n=2^{-1/n}$ pertenece a $(0,1)$ y cumple $x_n^n=1/2$. Así el error sigue valiendo $1/2$ en esos puntos aunque $n$ crezca. Este punto cambia con el índice, por lo que el argumento es compatible con la convergencia para cada $x$ fijo. Si existiesen $\varepsilon_n\to0$ que dominaran el error en todos los puntos, tendríamos además $\varepsilon_n\ge1$ por el supremo calculado, contradicción. C08 obtuvo en cambio una cota común en segmentos $|x-c|\le r<s<R$ **estrictamente interiores**; éste es precisamente el tipo de control que aquí no existe en todo el intervalo hasta la frontera.
 
 ### Solución 11.30 (`EDC-C11-SOL-030`)
 
@@ -274,7 +274,7 @@ $$
 \left|\int_0^1 e^{-t}dt-\frac1n\sum_{i=1}^n e^{-\xi_i}\right|\le\frac1{2n}.
 $$
 
-(c) Como $A(x)=\int_0^x y(t)dt$, $y(0)=1$ y $|y'|\le1$, el Teorema 11.4 da $|A(x)-x|\le x^2/2$ para $0\le x\le1$. Alternativamente, $1-e^{-x}-x$ se controla por Taylor–Lagrange.
+(c) Como $A(x)=\int_0^x y(t)dt$, $y(0)=1$ y $|y'|\le1$, el Teorema 11.4 da $|A(x)-x|\le x^2/2$ para $0\le x\le1$. La desigualdad puede verse directamente en la diferencia de tasas: $|A(x)-x|\le\int_0^x|e^{-t}-1|dt$, y el valor medio aplicado a $e^{-t}$ da $|e^{-t}-1|\le t$ en ese segmento. Integrar produce $x^2/2$. Alternativamente, Taylor–Lagrange controla $1-e^{-x}-x$ con el mismo mayorante.
 
 (d) La derivada $y'=-e^{-t}=-y$ y $y(0)=1$, por lo que existe una solución. El Teorema 10.2, aplicado al coeficiente continuo $a(t)=-1$, demuestra que es la **única** sobre $\mathbb R$ para ese dato.
 
