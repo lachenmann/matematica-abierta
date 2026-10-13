@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C03-SOLUCIONES
-source-sha256: 4783cba0441629cfcf220f136d145c0afad256f8f2d67b0f9691281ab5960463
+source-sha256: 53506b4e77d814b0d72ded960267408c937e4e89e82345b95065fe9766dac092
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -62,23 +62,23 @@ Como $f'(x)=2x$, la ecuación $2c=1$ tiene la solución $c=1/2\in(-1,2)$. El val
 
 ### Solución 3.6 (`EDC-C03-SOL-006`)
 
-La función $\ln$ es continua y derivable en un intervalo que contiene $[1,e]$, y $e>1$. La pendiente media es
+La función $\ln$ es continua y derivable en un intervalo que contiene $[1,e]$, y $e>1$, de modo que podemos aplicar el valor medio. La pendiente media es
 
 $$
 \frac{\ln e-\ln1}{e-1}=\frac1{e-1}.
 $$
 
-Como $(\ln x)'=1/x$, debe cumplirse $1/c=1/(e-1)$, luego $c=e-1$. Justificamos su pertenencia al interior sin decimales: $e>2$ porque $e=\sum_{n\ge0}1/n!>1+1=2$, y $e-1<e$. Por tanto $1<e-1<e$.
+Como $(\ln x)'=1/x$, el punto buscado debe satisfacer $1/c=1/(e-1)$, y la ecuación da $c=e-1$. Resolverla todavía exige comprobar que ese número está en el interior del intervalo. La construcción de $e$ en C02 permite hacerlo sin aproximaciones: $e=\sum_{n\ge0}1/n!>1+1=2$, porque después de los dos primeros términos quedan términos positivos. Así $e-1>1$, mientras que $e-1<e$ es inmediato. El valor encontrado pertenece a $(1,e)$ y satisface la conclusión.
 
 ### Solución 3.7 (`EDC-C03-SOL-007`)
 
-Tenemos $f'(x)=2x-4$, así que el único candidato estacionario interior es $x=2$. Los valores en los candidatos son
+La función es un polinomio, por lo que es continua en el intervalo compacto y tiene máximo y mínimo absolutos. Para localizar los candidatos interiores calculamos $f'(x)=2x-4$: el único punto estacionario es $x=2$, y no hay puntos de no derivabilidad. La proposición de optimización obliga a que cualquier extremo esté en ese punto o en uno de los dos bordes. Comparamos
 
 $$
 f(-1)=6,\qquad f(2)=-3,\qquad f(5)=6.
 $$
 
-La función es continua en el intervalo compacto, por lo que alcanza extremos. Su mínimo absoluto es $-3$ en $2$; su máximo absoluto es $6$, alcanzado en ambos extremos $-1$ y $5$. Resolver $f'=0$ y olvidar los bordes habría omitido el máximo.
+El mínimo absoluto es $-3$ y se alcanza en $2$; el máximo absoluto es $6$ y se alcanza en ambos extremos $-1$ y $5$. La lista es exhaustiva porque la existencia y Fermat redujeron primero la búsqueda a esos tres puntos. Si hubiéramos comparado sólo las soluciones de $f'=0$, habríamos encontrado el mínimo y omitido los dos lugares del máximo.
 
 ### Solución 3.8 (`EDC-C03-SOL-008`)
 
@@ -108,13 +108,17 @@ La exponencial es estrictamente creciente, luego $1=e^0<e^c<e^1=e$. Obtenemos $1
 
 ### Solución 3.11 (`EDC-C03-SOL-011`)
 
-Tomemos $x<y$ en el intervalo. Por continuidad de una función derivable y por el valor medio aplicado al segmento $[x,y]$ existe $c\in(x,y)$ con
+Si $I$ consta de un único punto, la función tiene un único valor y es constante. En los demás casos, tomemos cualesquiera $x<y$ en $I$. La condición de intervalo asegura que todo el segmento $[x,y]$ pertenece al dominio. La continuidad de $f$ en todo $I$, entendida relativamente, garantiza su continuidad al restringirla a $[x,y]$, incluso cuando $x$ o $y$ sea un borde incluido de $I$. Cada punto de $(x,y)$ es interior de $I$, de modo que allí existe la derivada y vale cero.
+
+El teorema del valor medio se aplica por tanto sobre $[x,y]$ y proporciona un $c\in(x,y)$ con
 
 $$
 f(y)-f(x)=f'(c)(y-x)=0.
 $$
 
-Así $f(x)=f(y)$ para cualquier pareja, y $f$ es constante. La condición de intervalo permite unir **cualquier par de puntos** mediante un segmento contenido en el dominio. En un conjunto desconectado una función puede ser constante en cada componente con valores distintos y tener derivada cero en todos los puntos interiores.
+Así $f(x)=f(y)$ para cualquier par de puntos del dominio, incluidos sus bordes. Esta es la constancia en todo $I$ que queremos demostrar y coincide con el Corolario 3.1 aplicado a $f$ y a la función nula.
+
+Las dos condiciones de dominio cumplen tareas distintas. Ser intervalo permite unir cualquier par por un segmento contenido en él; en un dominio formado por dos intervalos separados podemos tomar una constante distinta en cada uno y obtener derivada cero sin constancia global. La continuidad en los bordes permite comparar también con sus valores: en $[0,1]$, la función que vale cero para $0<x<1$ y uno en $x=0$ y $x=1$ tiene derivada cero en el interior, pero no es constante en todo el dominio. Falla precisamente la continuidad exigida en los extremos. La hipótesis del ejercicio excluye ese caso.
 
 ### Solución 3.12 (`EDC-C03-SOL-012`)
 
@@ -132,23 +136,23 @@ El segundo miembro es el valor de la recta tangente a la gráfica en $(x,f(x))$,
 
 ### Solución 3.14 (`EDC-C03-SOL-014`)
 
-En $(0,\infty)$, $(\ln x)'=1/x$ y $(\ln x)''=-1/x^2<0$. Así $\ln$ es estrictamente cóncava. Para una función cóncava derivable, la recta tangente queda por encima de la gráfica. Tomando el punto de contacto $x=1$ obtenemos
+En $(0,\infty)$, las reglas de C02 dan $(\ln x)'=1/x$ y $(\ln x)''=-1/x^2<0$. La primera derivada es por tanto estrictamente decreciente, y el criterio de concavidad coloca la gráfica por debajo de sus tangentes. Para obtener la expresión $y-1$, elegimos el punto de contacto $x=1$: allí la altura es cero y la pendiente es uno. Resulta
 
 $$
 \ln y\le\ln1+(\ln1)'(y-1)=y-1\qquad(y>0).
 $$
 
-Como $\ln$ es estrictamente cóncava, la igualdad sólo ocurre cuando $y=1$.
+Para justificar la igualdad única podemos mirar la comparación que produce el valor medio. Si $y>1$, la pendiente intermedia $1/c$ es menor que uno, así que $\ln y<y-1$. Si $0<y<1$, tenemos $y<c<1$ y $1/c>1$; al multiplicar por $y-1<0$ obtenemos de nuevo $\ln y<y-1$. En $y=1$ ambos miembros son cero.
 
 ### Solución 3.15 (`EDC-C03-SOL-015`)
 
-Dado que $f'(x)\ge m>0$, el valor medio muestra que $f$ es estrictamente creciente e inyectiva, por lo cual existe inversa sobre $f(I)$. Sean $u=f(x)$ y $v=f(y)$; si $x<y$, el valor medio aplicado a $[x,y]$ da
+La cota $f'(x)\ge m>0$ asegura crecimiento estricto mediante el valor medio. La función es entonces inyectiva y tiene inversa sobre $f(I)$. Para estudiar cuánto cambia esa inversa, expresamos primero dos valores de su dominio como $u=f(x)$ y $v=f(y)$. Si $x<y$, la continuidad y derivabilidad de $f$ permiten aplicar el valor medio en $[x,y]$ y obtener
 
 $$
 v-u=f'(c)(y-x)\ge m(y-x).
 $$
 
-Por tanto $0<y-x\le(v-u)/m$. Intercambiando los argumentos cuando sea necesario resulta $|f^{-1}(v)-f^{-1}(u)|\le|v-u|/m$. Este argumento no necesita que exista una fórmula explícita de la inversa.
+La separación entre imágenes es al menos $m$ veces la separación entre argumentos. Como $m>0$, podemos dividir y obtener $0<y-x\le(v-u)/m$. Reemplazando $x$ e $y$ por $f^{-1}(u)$ y $f^{-1}(v)$ resulta la desigualdad buscada para ese orden; al intercambiar los argumentos cubrimos el orden opuesto, y si coinciden ambos miembros son cero. Así $|f^{-1}(v)-f^{-1}(u)|\le|v-u|/m$, sin necesitar una fórmula explícita de la inversa.
 
 ## D. Contraejemplos y diagnóstico de errores
 
@@ -191,25 +195,25 @@ que no tiene límite real finito al acercarse a cero (tiende a $+\infty$ por la 
 
 ### Solución 3.21 (`EDC-C03-SOL-021`)
 
-Definamos
+Buscamos relacionar los incrementos de dos funciones en los extremos con sus derivadas en un mismo punto. Aplicar el valor medio por separado podría dar dos puntos distintos, por lo que construimos una sola función a la que podamos aplicar Rolle. Los incrementos extremos de $f$ y $g$ serán coeficientes constantes, elegidos para que los valores en $a$ y $b$ se cancelen:
 
 $$
 H(x)=(f(b)-f(a))(g(x)-g(a))-(g(b)-g(a))(f(x)-f(a)).
 $$
 
-Por las hipótesis, $H$ es continua en $[a,b]$ y derivable en $(a,b)$. Claramente $H(a)=0$; además,
+Por las hipótesis y las reglas de combinaciones lineales, $H$ es continua en $[a,b]$ y derivable en $(a,b)$. En $a$ se anulan las dos diferencias interiores, luego $H(a)=0$. En $b$ los dos productos coinciden:
 
 $$
 H(b)=(f(b)-f(a))(g(b)-g(a))-(g(b)-g(a))(f(b)-f(a))=0.
 $$
 
-Rolle da $c\in(a,b)$ tal que $H'(c)=0$. Derivando con los incrementos extremos como constantes,
+Rolle proporciona un $c\in(a,b)$ con $H'(c)=0$. Al derivar, los incrementos extremos permanecen constantes y las diferencias interiores producen $g'(c)$ y $f'(c)$, respectivamente:
 
 $$
 (f(b)-f(a))g'(c)-(g(b)-g(a))f'(c)=0,
 $$
 
-que es la igualdad pedida. No hemos dividido por $g'(c)$ ni por $g(b)-g(a)$; la formulación conserva sentido aunque alguno sea cero.
+que es la igualdad pedida. La elección de una función común aseguró que ambas derivadas se evaluaran en el mismo punto. No dividimos por $g'(c)$ ni por $g(b)-g(a)$, así que la igualdad sigue teniendo sentido cuando alguno de esos números es cero.
 
 ### Solución 3.22 (`EDC-C03-SOL-022`)
 
@@ -233,20 +237,22 @@ por lo que $|f^{-1}(u)-f^{-1}(v)|\le|u-v|/m$. No importa que $f'$ no sea continu
 
 ### Solución 3.24 (`EDC-C03-SOL-024`)
 
-Si $y>x$, el valor medio da $f(y)-f(x)=f'(c)(y-x)$ con $x<c<y$. Puesto que $f'$ es no decreciente, $f'(c)\ge f'(x)$, y se obtiene la desigualdad de soporte. Si $y<x$, el valor medio da $y<c<x$, con $f'(c)\le f'(x)$; al multiplicar por $y-x<0$, vuelve a salir $f(y)-f(x)\ge f'(x)(y-x)$.
+Si $y>x$, aplicamos el valor medio en $[x,y]$; la continuidad necesaria se sigue de la derivabilidad. Obtenemos $f(y)-f(x)=f'(c)(y-x)$ con $x<c<y$. Como $f'$ es no decreciente, $f'(c)\ge f'(x)$, y la multiplicación por el incremento positivo da la desigualdad de soporte. Si $y<x$, aplicamos el teorema en $[y,x]$ y reordenamos la igualdad: $y<c<x$ y $f'(c)\le f'(x)$, pero el factor $y-x$ es negativo. Su signo invierte la comparación y vuelve a dar $f(y)-f(x)\ge f'(x)(y-x)$. En $y=x$ hay igualdad.
 
-Para $x,y\in I$ y $t\in[0,1]$, fijemos $z=(1-t)x+ty$. Aplicando la desigualdad de soporte desde $z$ hacia ambos extremos,
+Para deducir convexidad queremos comparar $f$ en un punto intermedio con la secante que une los dos extremos. Fijemos $z=(1-t)x+ty$ para $x,y\in I$ y $t\in[0,1]$. La condición de intervalo asegura $z\in I$. Usamos como base de las dos rectas de soporte el mismo punto $z$:
 
 $$
 f(x)\ge f(z)+f'(z)(x-z),\quad
 f(y)\ge f(z)+f'(z)(y-z).
 $$
 
-Al ponderar la primera por $1-t$ y la segunda por $t$ y sumar, el término lineal desaparece porque $(1-t)(x-z)+t(y-z)=0$. Queda $(1-t)f(x)+tf(y)\ge f(z)$, la convexidad requerida.
+Multiplicamos la primera desigualdad por $1-t$ y la segunda por $t$, ambas cantidades no negativas. Al sumar, los desplazamientos desde $z$ se compensan: $(1-t)(x-z)+t(y-z)=0$. El término con $f'(z)$ desaparece y queda $(1-t)f(x)+tf(y)\ge f(z)$, precisamente la definición de convexidad. Para $t=0$ o $t=1$ la comparación es una igualdad.
 
 ### Solución 3.25 (`EDC-C03-SOL-025`)
 
-Por continuidad de $f$ y signos opuestos de $f(a),f(b)$, el teorema del valor intermedio de C00 produce $c\in(a,b)$ con $f(c)=0$. Para $x<y$ en $[a,b]$, el valor medio da $f(y)-f(x)=f'(\xi)(y-x)\le-m(y-x)<0$. La función es estrictamente decreciente y, por ello, inyectiva: dos ceros distintos serían imposibles. Existe **exactamente uno**.
+La existencia y la unicidad requieren razones distintas. Para la existencia, $f$ es continua en $[a,b]$ y sus valores extremos tienen signos opuestos; el valor intermedio de C00 proporciona un $c\in(a,b)$ con $f(c)=0$. Los signos estrictos impiden que ese cero sea uno de los bordes.
+
+Para la unicidad, tomemos cualquier par $x<y$ en $[a,b]$. La continuidad en los extremos de ese segmento y la derivabilidad entre ellos permiten aplicar el valor medio, que da $f(y)-f(x)=f'(\xi)(y-x)\le-m(y-x)<0$. Así la función es estrictamente decreciente en todo el intervalo. Dos ceros distintos tendrían el mismo valor y contradirían esa comparación. Existe, por tanto, exactamente un cero interior.
 
 ## F. Descubrimiento y optimización
 
@@ -256,26 +262,28 @@ Si los lados son $x,y>0$ y el perímetro $P$, entonces $x+y=P/2$ y $y=P/2-x$ exi
 
 ### Solución 3.27 (`EDC-C03-SOL-027`)
 
-Para un cilindro cerrado de radio $r>0$ y altura $h>0$,
+Para un cilindro cerrado de radio $r>0$ y altura $h>0$, el área incluye las dos tapas circulares y la superficie lateral:
 
 $$
 S=2\pi r^2+2\pi rh,\qquad V=\pi r^2h.
 $$
 
-Despejando $h$ obtenemos $h=S/(2\pi r)-r$. La restricción $h>0$ equivale a $0<r<\sqrt{S/(2\pi)}$. Sustituyendo en el volumen,
+La restricción permite expresar la altura mediante el radio, $h=S/(2\pi r)-r$. Necesitamos conservar $h>0$: al multiplicar por $r>0$, esa condición equivale a $0<r<\sqrt{S/(2\pi)}$. Sustituimos la altura en el volumen y obtenemos una función de una sola variable,
 
 $$
 V(r)=\frac S2r-\pi r^3,
 \qquad V'(r)=\frac S2-3\pi r^2.
 $$
 
-La derivada cambia de positiva a negativa en $r_*=\sqrt{S/(6\pi)}$, único punto estacionario del dominio. Cuando $r\to0^+$, $V(r)\to0$; cuando $r\to\sqrt{S/(2\pi)}^-$, $V(r)\to0$ porque $h\to0$. El criterio de monotonía demuestra que $r_*$ es el máximo global. Como $S=6\pi r_*^2$,
+La ecuación de pendiente nula da $r_*=\sqrt{S/(6\pi)}$, que pertenece al dominio y es su único punto estacionario. La derivada es positiva antes de él y negativa después, por lo que el valor medio justifica crecimiento y decrecimiento en esos intervalos. Cada radio admisible distinto de $r_*$ tiene entonces un volumen menor que $V(r_*)$: el máximo es global.
+
+En los bordes del dominio los límites son cero. Cuando $r\to0^+$, se ve directamente en el polinomio $V(r)\to0$, aunque la altura crezca sin límite. Cuando $r\to\sqrt{S/(2\pi)}^-$, la fórmula de la altura da $h\to0$ y el volumen vuelve a tender a cero. Para el radio óptimo, $S=6\pi r_*^2$ y
 
 $$
 h_* =\frac S{2\pi r_*}-r_*=3r_*-r_*=2r_*.
 $$
 
-La altura óptima es, por tanto, igual al diámetro. El razonamiento utiliza área **total** con las dos tapas; sin tapas, la restricción y la solución serían diferentes.
+La altura óptima es igual al diámetro. El cálculo utiliza el área total de un cilindro cerrado; quitar una tapa modificaría la restricción inicial y requeriría otro problema.
 
 ### Solución 3.28 (`EDC-C03-SOL-028`)
 
@@ -296,19 +304,21 @@ No es necesario derivar un límite en infinito para garantizar el máximo: la co
 
 ### Solución 3.29 (`EDC-C03-SOL-029`)
 
-El cuadrado de la distancia entre $(0,1)$ y $(x,x^2)$ es
+La raíz cuadrada es estrictamente creciente sobre los valores positivos, así que podemos minimizar el cuadrado de la distancia y evitar su derivación. Para el punto $(x,x^2)$ de la parábola obtenemos
 
 $$
 D(x)^2=x^2+(x^2-1)^2=x^4-x^2+1=:G(x).
 $$
 
-Minimizar distancia positiva equivale a minimizar $G$. Como $G(x)\to+\infty$ cuando $|x|\to\infty$, existe un mínimo global (por ejemplo, fuera de un intervalo cerrado grande $G(x)>G(0)$, y dentro se aplica valores extremos). Derivando,
+Antes de buscar candidatos conviene asegurar que hay un mínimo global, pues el dominio es toda la recta. El término de grado cuatro domina al de grado dos cuando $|x|$ crece, de modo que $G(x)\to+\infty$. Podemos elegir un intervalo cerrado grande, con cero en su interior, fuera del cual $G(x)>G(0)$. Dentro, la continuidad garantiza un mínimo; su valor no supera $G(0)$, así que ningún punto exterior puede mejorarlo. Ese mínimo es global.
+
+La función es derivable en toda la recta, luego cada punto donde se alcance ese mínimo satisface Fermat. Calculamos
 
 $$
 G'(x)=4x^3-2x=2x(2x^2-1).
 $$
 
-Los puntos estacionarios son $x=0$ y $x=\pm1/\sqrt2$. Sus valores son $G(0)=1$ y $G(\pm1/\sqrt2)=1/4-1/2+1=3/4$. Por tanto la distancia mínima es $\sqrt3/2$, alcanzada exactamente en los puntos
+Los únicos candidatos son $x=0$ y $x=\pm1/\sqrt2$. Sus valores son $G(0)=1$ y $G(\pm1/\sqrt2)=1/4-1/2+1=3/4$. La existencia ya asegurada y esta lista exhaustiva permiten concluir que el mínimo es $3/4$, alcanzado exactamente en los dos últimos candidatos. La distancia mínima es por tanto $\sqrt3/2$, y los puntos buscados son
 
 $$
 \left(\frac1{\sqrt2},\frac12\right)
@@ -316,31 +326,35 @@ $$
 \left(-\frac1{\sqrt2},\frac12\right).
 $$
 
-El punto estacionario $x=0$ no es mínimo global (de hecho, $G''(0)=-2<0$): una ecuación $G'=0$ no clasifica por sí sola sus raíces.
+El punto estacionario $x=0$ tiene un valor mayor y no es mínimo global; además, $G''(0)=-2<0$ lo identifica como máximo local. La ecuación $G'=0$ había seleccionado los tres puntos sin clasificarlos.
 
 ## G. Desafío de síntesis
 
 ### Solución 3.30 (`EDC-C03-SOL-030`)
 
-Si $a=b$, ambos miembros de la desigualdad valen cero. Supongamos $a\ne b$ y, sin perder generalidad en el argumento de valor absoluto, consideremos el segmento con extremos $a$ y $b$. La primera aplicación del valor medio a $f$ da un $c$ estrictamente entre ambos con
+Si $a=b$, ambos miembros son cero. Para $a\ne b$, trabajamos sobre el segmento que los une, cualquiera que sea su orden. Como $f$ es dos veces derivable en un intervalo abierto que contiene ese segmento, $f$ y $f'$ son continuas en los segmentos cerrados donde las aplicaremos, y ambas son derivables en sus interiores.
+
+La primera aplicación del valor medio, a $f$, produce un punto $c$ estrictamente entre $a$ y $b$ con
 
 $$
 f(b)-f(a)=f'(c)(b-a).
 $$
 
-Restando $f'(a)(b-a)$ y tomando valores absolutos,
+El error frente a la recta tangente en $a$ depende entonces de la diferencia entre la pendiente en $c$ y la pendiente inicial. Restando $f'(a)(b-a)$ y tomando valores absolutos,
 
 $$
 |f(b)-f(a)-f'(a)(b-a)|=|f'(c)-f'(a)|\,|b-a|.
 $$
 
-La segunda aplicación del valor medio, esta vez a $f'$ entre $a$ y $c$, da $d$ entre ambos con
+La segunda aplicación del valor medio, a $f'$ entre $a$ y $c$, proporciona un $d$ entre esos puntos. Este segmento está contenido en el primero y la cota de $f''$ vale en él:
 
 $$
 |f'(c)-f'(a)|=|f''(d)|\,|c-a|\le M|b-a|.
 $$
 
-Al combinar las cotas queda $|f(b)-f(a)-f'(a)(b-a)|\le M|b-a|^2$. No afirmamos que la constante $M$ sea óptima: para $f(x)=x^2$ se tiene $|f''|=2$, pero el error exacto en torno a $a$ es $(b-a)^2$, igual a $M(b-a)^2/2$, estrictamente menor que la cota del ejercicio cuando $a\ne b$. Una estimación óptima sistemática aparecerá al estudiar el resto de Taylor en C09.
+Usamos aquí $|c-a|\le|b-a|$, porque $c$ es intermedio. Al sustituir la cota en la igualdad anterior obtenemos $|f(b)-f(a)-f'(a)(b-a)|\le M|b-a|^2$.
+
+La constante no tiene que ser óptima. Para $f(x)=x^2$ tenemos $|f''|=2$, pero el error exacto en torno a $a$ es $(b-a)^2$, igual a $M(b-a)^2/2$ si elegimos $M=2$. Cuando $a\ne b$, resulta estrictamente menor que la cota obtenida por las dos aplicaciones del valor medio. El resto de Taylor de C09 permitirá estudiar cotas más precisas.
 
 ---
 

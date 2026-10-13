@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C04
-source-sha256: 6565070ce85499b4e733be09e165f378c81caf1540b6286b79c06bff6cb4f832
+source-sha256: 0752dc4998f65359947a7118912ef960b89c4d4beb3576ec1578209dceef0e3d
 content-id: MA-BCH-0335
 content-type: book-chapter
 related:
@@ -36,9 +36,9 @@ related:
 
 > **Pregunta generadora.** Sabemos calcular exactamente el área de un triángulo y de un rectángulo. ¿Cómo asignar un valor justificado a una región de contorno curvo, de tal manera que distintas aproximaciones geométricas no produzcan respuestas incompatibles?
 
-El capítulo anterior examinó cómo un cálculo local de pendientes adquiere fuerza global mediante el teorema del valor medio. Ahora seguimos otro camino. Antes de poder relacionar áreas y derivadas hay que plantear el problema del área en sus propios términos. Un polígono se descompone en triángulos; una región limitada por una parábola no queda, en general, dividida exactamente por una cantidad finita de figuras rectilíneas. El trabajo decisivo consistirá en **construir cotas que se acerquen tanto como queramos** y explicar qué propiedad de los números reales vuelve inteligible esa aproximación.
+Una región de contorno curvo ofrece una dificultad que no aparece al medir un rectángulo. Podemos inscribir en ella un triángulo y calcular exactamente su área, pero quedarán partes sin cubrir; si añadimos más triángulos, el cálculo seguirá siendo exacto para el polígono construido y todavía tendremos que averiguar cuánto dejamos fuera. La pregunta por el área se convierte así en una pregunta por el resto: necesitamos aproximaciones que permitan hacerlo menor que cualquier tolerancia y demostrar que el valor buscado queda determinado por ellas.
 
-El ejemplo central será la cuadratura de un segmento parabólico: una reconstrucción algebraico-geométrica moderna de un resultado documentado en *La cuadratura de la parábola* de Arquímedes. No fingiremos que Arquímedes escribía nuestras ecuaciones ni que nuestro argumento es una transcripción de su demostración. Después compararemos polígonos, rectángulos y sumas finitas, hasta llegar al problema que resolverá el capítulo 5: cómo definir **la integral de una función general** y comprobar que las distintas elecciones de aproximaciones determinan un mismo valor.
+El segmento parabólico ofrecerá una construcción especialmente clara. Un primer triángulo deja dos segmentos menores; al repetir el procedimiento, las áreas añadidas siguen una regla sencilla, y las partes aún descubiertas admiten una cota que podemos calcular. Después estudiaremos rectángulos bajo una gráfica: su altura depende del punto elegido en cada subintervalo, por lo que el control del error tendrá que servir también para elecciones distintas. La geometría de polígonos, los límites de C00 y algunos resultados de C02–C03 bastarán para recorrer estos problemas antes de definir la integral general.
 
 ## 4.1. Cuadrar una región: qué se busca exactamente
 
@@ -52,31 +52,31 @@ $$
 A(P)\le A(\mathcal R)\le A(Q).
 $$
 
-Esta desigualdad es una condición sobre un eventual valor de área, no una prueba de que dicho valor exista. Confundir ambas afirmaciones supondría introducir silenciosamente lo que todavía queremos construir. De hecho, para una función arbitraria, diferentes familias de rectángulos pueden resistirse a determinar un valor común.
+Cualquier valor compatible tendría que quedar entre esas dos áreas conocidas. La condición permite descartar candidatos, aunque para demostrar que existe alguno debemos encontrar un número que satisfaga todas las comparaciones requeridas. La construcción de los polígonos tendrá por ello dos tareas: estrechar las cotas y asegurar que mantienen encerrado un mismo valor.
 
 **Observación de unidades.** Una longitud tiene unidades de $L$; una superficie, de $L^2$. Si multiplicamos ambas coordenadas por un factor $c>0$, el área de un polígono se multiplica por $c^2$. En cambio, una transformación que sólo estire la coordenada horizontal por $c$ multiplica áreas por $c$. La dimensionalidad será una comprobación rápida de nuestras fórmulas.
 
 ## 4.2. El agotamiento: una dificultad siempre menor que otra
 
-En lugar de esperar que una descomposición termine después de un número fijo de pasos, podemos pedir que **el resto sea menor que cualquier tolerancia positiva**. El principio es aritmético antes que geométrico.
+Un procedimiento de aproximación puede seguir dejando un resto después de cada etapa y, aun así, determinar una magnitud con la precisión que pidamos. Lo que necesitamos probar es que para cada tolerancia positiva hay una etapa finita a partir de la cual el resto resulta menor. Una reducción por el mismo factor en todos los pasos proporciona ese control.
 
 **Lema 4.1 (`EDC-C04-LEM-001`; agotamiento geométrico).** Sean $R_0>0$ y $0<q<1$. Si una sucesión de restos no negativos satisface $R_n\le R_0q^n$ para todo $n\ge0$, entonces, para cada $\varepsilon>0$, existe $N$ tal que $R_n<\varepsilon$ para $n\ge N$.
 
-**Demostración.** Pongamos $t=q^{-1}>1$. Por la desigualdad binomial, $t^n=(1+(t-1))^n\ge1+n(t-1)$ para $n\ge1$. Así,
+**Demostración.** La hipótesis reduce el problema a mostrar que las potencias de $q$ se hacen pequeñas. Para compararlas con una expresión más fácil de controlar, tomemos su recíproco $t=q^{-1}>1$. La desigualdad binomial da $t^n=(1+(t-1))^n\ge1+n(t-1)$ para $n\ge1$: a los dos primeros términos del desarrollo se añaden términos no negativos. Al tomar recíprocos de números positivos obtenemos
 
 $$
 0\le R_n\le\frac{R_0}{1+n(t-1)}\longrightarrow0
 $$
 
-por el principio arquimediano (`EDC-C00-THM-001`). La definición de límite proporciona $N$. $\square$
+por el principio arquimediano (`EDC-C00-THM-001`). En efecto, el denominador supera cualquier cantidad fijada al elegir $n$ suficientemente grande, y por tanto podemos hacer que la fracción sea menor que una tolerancia $\varepsilon>0$. Ese mismo control vale para todos los índices posteriores y proporciona el $N$ requerido. $\square$
 
-En geometría antigua, una reducción reiterada del resto a una parte suficientemente pequeña permitió fundamentar comparaciones de magnitudes sin recurrir a una suma infinita como operación previamente definida. **No afirmamos** que el lema anterior sea la escritura literal de Euclides o Arquímedes: expresa en lenguaje de sucesiones una lógica afín a la del agotamiento. La Proposición X.1 de los *Elementos* de Euclides formula una disminución repetida de una magnitud hasta que el residuo resulta menor que otra magnitud dada; véanse las [notas históricas H1](capitulo-04-notas.html).
+En la Proposición X.1 de los *Elementos*, Euclides compara dos magnitudes y disminuye reiteradamente la mayor, retirando más de la mitad de lo que queda hasta dejar un residuo menor que la magnitud dada. Nuestro lema expresa en sucesiones de números reales una forma de control que permite comprender esa lógica de agotamiento. El texto histórico y el alcance de la comparación se recogen en las [notas históricas H1](capitulo-04-notas.html).
 
 **Proposición 4.1 (`EDC-C04-PRP-001`; unicidad por encaje).** Sean $L_n\le U_n$ números reales para cada $n\ge1$, y supongamos que $U_n-L_n\to0$. Si dos números $A,B$ satisfacen $L_n\le A,B\le U_n$ para todo $n$, entonces $A=B$.
 
-**Demostración.** Para cada $n$, $|A-B|\le U_n-L_n$. Si $|A-B|>0$, el límite nulo de la derecha contradice la desigualdad para $n$ suficientemente grande. $\square$
+**Demostración.** Como $A$ y $B$ pertenecen al mismo intervalo $[L_n,U_n]$, la distancia entre ellos no puede superar su anchura: $|A-B|\le U_n-L_n$ para cada $n$. Si fueran distintos, esa distancia sería un número positivo fijo. Podemos entonces elegir $n$ tan grande que $U_n-L_n<|A-B|$, porque las anchuras tienden a cero, y obtendríamos dos desigualdades incompatibles. Por tanto $A=B$. $\square$
 
-El enunciado sólo demuestra **unicidad condicional**. Una sucesión de intervalos de extremos cualesquiera y anchura decreciente podría desplazarse sin contener un punto fijo. Para probar existencia de un candidato se necesita información adicional (por ejemplo, intervalos encajados, como en C00, o compatibilidad de refinamientos, que examinaremos en C05).
+El argumento comienza con dos números presentes en todos los intervalos y demuestra que deben coincidir. No asegura que haya alguno: los intervalos podrían hacerse cada vez más estrechos mientras se desplazan por la recta. En la cuadratura parabólica comprobaremos directamente que un candidato permanece dentro de cada encaje; para aproximaciones más generales necesitaremos estudiar cómo se relacionan unas particiones con otras.
 
 ## 4.3. El segmento parabólico y el triángulo fundamental
 
@@ -98,7 +98,7 @@ $$
 T=\frac{\ell H}{2}=\frac{k\ell^3}{8}.
 $$
 
-Esta figura no agota el segmento: a la izquierda y a la derecha del vértice quedan dos regiones curvilíneas menores. Cada una vuelve a ser un segmento parabólico, esta vez situado **entre su arco y la cuerda oblicua** que une dos vértices consecutivos del primer triángulo.
+El triángulo deja a ambos lados del vértice una región entre el arco y uno de sus lados oblicuos. Para repetir la construcción necesitamos saber qué ocurre al medir la separación respecto de esas nuevas cuerdas: la fórmula inicial utilizaba una base horizontal, y ahora las bases están inclinadas. El lema siguiente muestra que la diferencia con una cuerda sigue siendo una cuadrática de la misma forma, con la anchura del nuevo subintervalo en lugar de la original.
 
 **Lema 4.2 (`EDC-C04-LEM-002`; diferencia con la cuerda).** Sea $f(x)=Ax^2+Bx+C$ con $A<0$, y sea $\ell_{u,v}(x)$ la recta secante que interpola $f$ en $u<v$. Entonces
 
@@ -108,20 +108,22 @@ $$
 
 El triángulo con base sobre la cuerda $[(u,f(u)),(v,f(v))]$ y vértice en la gráfica sobre el punto medio tiene área $(-A)(v-u)^3/8$, calculada como base horizontal por altura vertical dividida por dos.
 
-**Demostración.** La diferencia $f-\ell_{u,v}$ es un polinomio de grado dos con coeficiente principal $A$ y ceros $u,v$. Luego vale $A(x-u)(x-v)=(-A)(x-u)(v-x)$. La separación vertical máxima respecto de la cuerda se encuentra en el punto medio y vale $(-A)(v-u)^2/4$. La fórmula del triángulo sigue porque el determinante que calcula su área es anchura horizontal por separación vertical, incluso si la cuerda es oblicua. $\square$
+**Demostración.** Al restar una recta de un polinomio cuadrático, conservamos su coeficiente de grado dos, $A$. Además, la recta secante coincide con $f$ en $u$ y $v$, así que la diferencia tiene esos dos ceros. Queda determinada por ellos y por su coeficiente principal: $f-\ell_{u,v}=A(x-u)(x-v)=(-A)(x-u)(v-x)$.
+
+La separación vertical respecto de la cuerda es positiva en el interior y alcanza su máximo en el punto medio, con valor $(-A)(v-u)^2/4$. Aunque la cuerda sea oblicua, el área triangular se puede calcular con la anchura horizontal y esa separación vertical. Para verlo, los dos vectores desde el extremo izquierdo tienen componentes $(v-u,f(v)-f(u))$ y $((v-u)/2,f((u+v)/2)-f(u))$. Su determinante es $(v-u)$ veces la diferencia entre la ordenada del vértice y la ordenada de la cuerda en el punto medio. Al dividir por dos, obtenemos $(-A)(v-u)^3/8$. $\square$
 
 **Teorema 4.1 (`EDC-C04-THM-001`; disminución de triángulos parabólicos).** Cuando una cuerda de longitud horizontal $d$ se divide en sus dos mitades y en cada subsegmento se inscribe el triángulo correspondiente, el área de **cada** nuevo triángulo es $1/8$ del área del triángulo construido sobre la cuerda original; el área total añadida por la pareja es $1/4$ de la anterior.
 
-**Demostración.** Por el Lema 4.2, el área del triángulo sobre una subcuerda de anchura horizontal $d/2$ es $k(d/2)^3/8=(1/8)(kd^3/8)$, donde $k=-A>0$. Hay dos subcuerdas y sus interiores no se solapan, de modo que el total es dos veces esa área. $\square$
+**Demostración.** El Lema 4.2 expresa el área de cada triángulo en función del cubo de la anchura horizontal. En las dos cuerdas nuevas el coeficiente cuadrático sigue siendo el mismo, $k=-A>0$, mientras que la anchura pasa de $d$ a $d/2$. Por eso el área de cada triángulo nuevo es $k(d/2)^3/8=(1/8)(kd^3/8)$: dividir la anchura por dos divide esa área por ocho.
 
-La recurrencia explica por qué **aparece la razón $1/4$**; no es un número adivinado por la suma de una serie. A cada generación se agregan $2^n$ triángulos, cada uno de área $T/8^n$, por lo que el área total de la generación $n$ es $T/4^n$.
+Hay dos subcuerdas, una en cada mitad horizontal, y los interiores de los triángulos no se solapan. Sus áreas se suman y el total añadido es dos octavos, es decir, un cuarto del área del triángulo original. $\square$
+
+Cada triángulo deja dos segmentos donde podemos repetir el mismo procedimiento. En la generación $n$ se agregan $2^n$ triángulos, pero el área individual se ha dividido por ocho en cada paso y vale $T/8^n$. El número de piezas crece más despacio que disminuye su tamaño: al reunirlas obtenemos un área total $T/4^n$ para esa generación.
 
 <figure id="fig-edc-c04-01" class="quarto-float-fig">
 <img src="/assets/books/elementos-del-calculo/EDC-C04-F01_AGOTAMIENTO_PARABOLA.svg" alt="Parábola cóncava y=4x(1−x) entre cero y uno, triángulo inscrito inicial T y dos triángulos añadidos de área T/8 cada uno.">
 <figcaption>Figura 4.1. Dos nuevas piezas suman T/4. El agotamiento se completa con una cota poligonal del resto, no solamente mediante el dibujo.</figcaption>
 </figure>
-
-
 
 ## 4.4. Una suma finita y un resto geométrico explícito
 
@@ -132,13 +134,13 @@ P_n=T\sum_{j=0}^{n-1}4^{-j}
 =\frac{4T}{3}\bigl(1-4^{-n}\bigr).
 $$
 
-La última identidad es **finita** y se verifica multiplicando por $1-1/4$: la mayoría de los términos se cancelan. Por tanto,
+Para obtener la última expresión basta multiplicar la suma finita por $1/4$ y restarla de la suma original. Los términos intermedios aparecen una vez con cada signo y se cancelan; quedan el primero y el término que el desplazamiento añadió al final. Así conocemos exactamente la distancia entre $P_n$ y el candidato $4T/3$:
 
 $$
 \frac{4T}{3}-P_n=\frac{4T}{3\cdot4^n}>0.
 $$
 
-Este cálculo todavía no identifica el área curvilínea. Para ello debemos demostrar que lo que permanece fuera del polígono se puede **dominar por figuras de área explícita**.
+La sucesión de áreas interiores se aproxima a $4T/3$, pero aún falta relacionar ese límite con la región completa. Necesitamos cubrir las partes que quedan entre el polígono y el arco mediante figuras de área conocida, y conseguir que la suma de esas áreas tienda a cero.
 
 **Lema 4.3 (`EDC-C04-LEM-003`; cobertura del resto).** En la configuración del §4.3, después de $n$ generaciones el conjunto que queda entre el arco parabólico y el polígono inscrito puede cubrirse con un número finito de franjas de lados verticales, cada una situada entre una cuerda y una paralela superior, cuya suma de áreas es
 
@@ -146,14 +148,18 @@ $$
 B_n=\frac{k\ell^3}{4^{n+1}}=\frac{2T}{4^n}.
 $$
 
-**Demostración.** Las cuerdas no cubiertas corresponden a los $2^n$ subintervalos horizontales de igual longitud $d=\ell/2^n$. En cada uno, el Lema 4.2 limita la separación vertical entre curva y cuerda por $kd^2/4$. La franja correspondiente es un paralelogramo de base horizontal $d$ y altura vertical $kd^2/4$; tiene área $kd^3/4$. Sus proyecciones horizontales son disjuntas salvo extremos, por lo que la suma de sus áreas es
+**Demostración.** Después de $n$ generaciones, la frontera superior del polígono está formada por cuerdas sobre $2^n$ subintervalos de igual anchura $d=\ell/2^n$. En cada subintervalo queda un segmento entre la cuerda y el arco. El Lema 4.2 nos dice que la separación vertical no supera $kd^2/4$.
+
+Para cubrir ese segmento, desplazamos la cuerda hacia arriba en una distancia vertical $kd^2/4$ y cerramos los dos extremos con lados verticales. La franja resultante es un paralelogramo que contiene todos los puntos del segmento: en cada posición horizontal, la curva está entre la cuerda inferior y su paralela superior. Su área es anchura horizontal por separación vertical, $kd^3/4$, como se comprueba por la misma fórmula de determinantes utilizada para el triángulo.
+
+Las proyecciones horizontales de las franjas no se solapan salvo en los extremos. Podemos sumar sus áreas y obtenemos
 
 $$
 2^n\frac{k(\ell/2^n)^3}{4}
 =\frac{k\ell^3}{4\cdot4^n}=\frac{2T}{4^n}.
 $$
 
-Los restos curvos están contenidos en estas franjas; no hemos necesitado asignarles un área previa. $\square$
+La inclusión de los restos curvos en estas cubiertas es una afirmación geométrica que podemos comprobar sin asignar todavía un área a cada resto. Sus cubiertas tienen áreas poligonales finitas, y ésas son las que acabamos de sumar. $\square$
 
 **Contrato de área por agotamiento (MAT-03).** Para **este segmento parabólico particular**, un *valor de área compatible* significa un número real $A$ que satisface $P_n\le A\le P_n+B_n$ **para cada entero $n\ge1$**, donde $P_n$ es el área del polígono interior de la generación correspondiente y $B_n$ la suma de áreas de las cubiertas exteriores del Lema 4.3. La comparación se funda en inclusiones de regiones y áreas poligonales finitas. No hemos definido todavía un funcional de área para **todas** las regiones curvas. El objetivo inmediato es demostrar que estos encerramientos concretos poseen **un único número compatible**; si una noción geométrica previa de área respeta la inclusión y coincide con las áreas poligonales, tendrá forzosamente ese valor para el segmento. La integral general será construida independientemente en C05 mediante todas las particiones y las sumas de Darboux.
 
@@ -163,7 +169,7 @@ $$
 \boxed{A=\frac43T=\frac{k(b-a)^3}{6}.}
 $$
 
-**Demostración.** El polígono inscrito tiene área $P_n$ y el polígono obtenido añadiendo las franjas superiores tiene área a lo sumo $P_n+B_n$. Es decir, cualquier valor compatible debe quedar, para todo $n\ge1$, entre
+**Demostración.** El área interior conocida es $P_n$, y al añadir las franjas del Lema 4.3 obtenemos una cubierta poligonal de la región con área a lo sumo $P_n+B_n$. Según el contrato de compatibilidad, el valor buscado debe pertenecer, para todo $n\ge1$, al intervalo cuyos extremos son
 
 $$
 L_n=\frac{4T}{3}\bigl(1-4^{-n}\bigr)
@@ -171,32 +177,30 @@ L_n=\frac{4T}{3}\bigl(1-4^{-n}\bigr)
 U_n=L_n+\frac{2T}{4^n}.
 $$
 
-El número $A_0=4T/3$ pertenece realmente a cada intervalo: $A_0-L_n=4T/(3\cdot4^n)$ y $U_n-A_0=2T/(3\cdot4^n)$, ambos no negativos. Con ello queda demostrada **la existencia** de un valor compatible para los encerramientos explícitos. Además $U_n-L_n=2T/4^n\to0$ por el Lema 4.1. La Proposición 4.1 obliga a que **todo** valor compatible sea $A_0$, demostrando **la unicidad**. Estos dos pasos determinan el valor de cuadratura **de este segmento**; no pretenden construir todavía el área de todas las regiones curvas ni una integral general. $\square$
+Comprobemos primero que esos requisitos admiten un número. El cálculo de las sumas interiores sugiere $A_0=4T/3$; al compararlo con cada extremo obtenemos $A_0-L_n=4T/(3\cdot4^n)$ y $U_n-A_0=2T/(3\cdot4^n)$. Ambas diferencias son no negativas, luego $A_0$ está en todos los intervalos. Esto prueba la existencia de un valor compatible con los encerramientos.
 
-No hemos inferido el resultado por la sola igualdad de una serie infinita. Hemos identificado un candidato, construido una sucesión de polígonos y dado una cota explícita de la región no cubierta. En lenguaje actual esto es un **argumento de agotamiento con control del error**. Las bases oblicuas de las generaciones intermedias no alteran la demostración, porque el Lema 4.2 mide la separación vertical entre la parábola y cada cuerda y las áreas se calculan mediante determinantes de triángulos y paralelogramos.
+Para la unicidad, la distancia entre sus extremos es $U_n-L_n=2T/4^n$, que tiende a cero por el Lema 4.1. Cualquier otro valor compatible compartiría cada intervalo con $A_0$, y la Proposición 4.1 obliga a que coincidan. El único valor es por tanto $4T/3$; al sustituir $T=k(b-a)^3/8$ obtenemos también $k(b-a)^3/6$. $\square$
+
+Los dos lados del encaje cumplen funciones diferentes: el polígono muestra lo que ya cubrimos y las franjas limitan lo que todavía falta. La construcción da además una medida de precisión después de cualquier número finito de generaciones. Las cuerdas oblicuas intermedias conservan ese control porque las separaciones se miden verticalmente y las áreas se calculan con sus anchuras horizontales.
 
 La fórmula se extiende a todo arco de parábola que sea la gráfica de un polinomio cuadrático estrictamente cóncavo sobre $[a,b]$, tomando como base la cuerda que une sus extremos. La diferencia entre arco y cuerda es precisamente la función cuadrática positiva del Lema 4.2.
 
 ## 4.5. Arquímedes: descubrimiento, prueba y reconstrucción
 
-La *Cuadratura de la parábola* reúne procedimientos mecánicos y geométricos y culmina, en su Proposición 24, con el resultado de los cuatro tercios del triángulo inscrito. La versión que acabamos de demostrar utiliza coordenadas cartesianas, polinomios, índices $n$ y límites; no es una reconstrucción literal de los argumentos del siglo III a. C. Su valor didáctico reside en hacer visibles la recurrencia de las áreas, la fórmula finita y el error que puede hacerse arbitrariamente pequeño.
+La *Cuadratura de la parábola* combina una investigación mecánica con una demostración geométrica y culmina en el resultado de los cuatro tercios. Nuestro argumento conserva ese problema como centro, pero trabaja con coordenadas, diferencias de polinomios y límites de sucesiones. La recurrencia permite calcular lo añadido, y las cubiertas exteriores justifican el paso desde los polígonos a un valor de área para este segmento.
 
-La introducción de la obra, conservada en traducción inglesa reproducida por MacTutor, presenta a Arquímedes describiendo una búsqueda inicialmente motivada por medios mecánicos y posteriormente justificada geométricamente. El contexto está documentado en [H2](capitulo-04-notas.html), sin convertir esa traducción accesible en una colación del texto griego.
-
-Es importante no confundir **justificación de una cuadratura particular** con una teoría de área aplicable a cualquier función. El éxito con la parábola no garantiza que las aproximaciones de todas las regiones curvilíneas sean convergentes o que el valor obtenido sea independiente del procedimiento de muestreo.
+La carta a Dositeo que precede al tratado permite acercarse al modo en que Arquímedes presentó su trabajo. El testimonio traducido y los límites del cotejo se registran en [H2](capitulo-04-notas.html). La definición de un área para funciones más generales requerirá otra construcción, capaz de comparar todas las particiones relevantes.
 
 ::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Arquímedes: el área que faltaba"}
-
 *Lectura opcional.*
 
-Dibujar un triángulo dentro de una parábola es fácil. Lo fascinante comienza cuando nos preguntamos cuánto del área queda afuera y si podemos recuperar ese resto añadiendo nuevos triángulos.
+Arquímedes abre su carta a Dositeo recordando a Conón, un amigo y geómetra que había muerto. Había pensado comunicarle el resultado que ahora enviaba a su nuevo destinatario: el área de un segmento parabólico equivale a cuatro tercios de la del triángulo de la misma base y altura.
 
-Arquímedes encontró una respuesta extraordinaria: el segmento parabólico tiene un área igual a cuatro tercios de la del triángulo con la misma base y altura. En la carta a Dositeo que acompaña la Cuadratura de la parábola cuenta que llegó al resultado mediante consideraciones mecánicas y después lo demostró geométricamente. La imaginación y la prueba participaron en el descubrimiento.
+En la carta cuenta también el camino seguido: encontró el resultado mediante consideraciones mecánicas y después lo justificó geométricamente. Esa distinción deja ver dos momentos de una investigación: encontrar una relación prometedora y construir una prueba que permita sostenerla.
 
-La construcción de este capítulo permite sentir la fuerza de esa idea. Cada nueva generación de triángulos ocupa parte de lo que faltaba; el hueco disminuye siguiendo una pauta. Podemos acercarnos al área exacta y, además, saber cuánto queda por recuperar. Un problema antiguo se vuelve así una lección muy viva sobre aproximación.
+La construcción de triángulos que acabamos de estudiar ofrece una manera actual de seguir el problema. Cada generación ocupa parte de lo descubierto y deja un resto que podemos cubrir y acotar. La precisión depende de conocer ambas cosas, lo que ya añadimos y lo que todavía falta.
 
 **Para seguir leyendo:** [Arquímedes, carta a Dositeo, traducción reproducida en MacTutor](https://mathshistory.st-andrews.ac.uk/Extras/Archimedes_parabola/).
-
 :::
 
 ## 4.6. De los triángulos a las sumas de rectángulos
@@ -228,7 +232,7 @@ R_n=\frac1n\sum_{k=1}^{n}\left(\frac{k}{n}\right)^2
 =\frac13+\frac1{2n}+\frac1{6n^2}.
 $$
 
-Ambos se acercan a $1/3$, y $R_n-L_n=1/n$. Desde el punto de vista de la cuadratura, tenemos una **horquilla numérica** cuyas dos ramas se aproximan. Pero un razonamiento de este tipo, construido sólo con extremos de subintervalos, es específico de una función monótona.
+El número $1/3$ queda encerrado entre ambas sumas, cuya diferencia es $R_n-L_n=1/n$. La monotonía de $x^2$ garantiza que el valor de cualquier muestra interior queda entre los valores de los extremos del subintervalo. Esa garantía es la que permite interpretar las dos sumas como cotas; para una función que suba y baje habrá que buscar sus mínimos y máximos en cada tramo.
 
 **Proposición 4.2 (`EDC-C04-PRP-002`; control para $x^2$ sin partición uniforme).** Sea $P$ cualquier partición de $[0,1]$ con finura $\|P\|$. Las sumas rectangulares con extremos izquierdos y derechos, respectivamente $L(P)$ y $U(P)$, cumplen
 
@@ -236,7 +240,7 @@ $$
 0\le U(P)-L(P)\le\|P\|.
 $$
 
-**Demostración.** Como $x^2$ es creciente en $[0,1]$,
+**Demostración.** Como $x^2$ es creciente en $[0,1]$, cada diferencia $x_i^2-x_{i-1}^2$ es no negativa. Podemos por ello sustituir su multiplicador $\Delta_i$ por la anchura mayor $\|P\|$ sin disminuir el término. Al sumar obtenemos
 
 $$
 U(P)-L(P)
@@ -245,13 +249,13 @@ U(P)-L(P)
 =\|P\|.
 $$
 
-No se ha utilizado una fórmula integral; el último paso es una suma telescópica finita. $\square$
+En la última suma se cancelan las contribuciones de todos los puntos interiores de la partición y sólo queda $x_n^2-x_0^2=1$. El error depende así de la anchura del mayor subintervalo, cualquiera que sea el reparto de las demás anchuras. $\square$
 
-La proposición elimina una dependencia artificial de particiones uniformes. Si la finura tiende a cero, la diferencia de las dos sumas tiende a cero, aunque haya muchas longitudes distintas. La existencia e independencia del valor límite para **todas** las selecciones de muestras se formalizará en C05.
+Podemos hacer que algunos subintervalos sean mucho más cortos que otros; mientras el más ancho se haga pequeño, la diferencia de las cotas se hará pequeña también. Este control será útil para comparar métodos de aproximación que eligen sus puntos de maneras distintas.
 
 ## 4.7. Un laboratorio finito para las potencias
 
-La relación entre cuadrados, cubos y sumas rectangulares permite un resultado sorprendente sin emplear integral. Está disponible el teorema del valor medio de C03; lo aplicaremos a una función algebraica sobre intervalos pequeños.
+Las sumas de cuadrados se pudieron evaluar con una identidad finita conocida. Para potencias de cualquier exponente entero positivo podemos encontrar el candidato sin disponer de una fórmula explícita de la suma: la derivada de $x^{p+1}/(p+1)$ es $x^p$, y el valor medio permite situar cada incremento de la primera función entre dos términos de las sumas que queremos controlar.
 
 **Teorema 4.3 (`EDC-C04-THM-003`; cuadratura numérica de potencias enteras).** Para cada entero $p\ge1$, definamos las sumas uniformes
 
@@ -270,13 +274,15 @@ $$
 
 así que ambas sucesiones convergen a $1/(p+1)$.
 
-**Demostración.** Tomemos $F(x)=x^{p+1}/(p+1)$; por C02, $F'(x)=x^p$. En cada subintervalo $[(k-1)/n,k/n]$, el teorema del valor medio (`EDC-C03-THM-003`) proporciona $\xi_k$ interior con
+**Demostración.** Elegimos $F(x)=x^{p+1}/(p+1)$ porque su derivada es la potencia que aparece en los rectángulos: por C02, $F'(x)=x^p$. Como es un polinomio, es continua y derivable en los intervalos que utilizaremos. En cada $[(k-1)/n,k/n]$, el valor medio (`EDC-C03-THM-003`) proporciona un $\xi_k$ interior con
 
 $$
 F(k/n)-F((k-1)/n)=\frac1n\xi_k^p.
 $$
 
-La función $x^p$ es creciente en $[0,1]$, de modo que el término de la derecha está entre $((k-1)/n)^p/n$ y $(k/n)^p/n$. Sumamos para $k=1,\ldots,n$: el lado izquierdo telescopa a $F(1)-F(0)=1/(p+1)$. Finalmente,
+La monotonía de $x^p$ en $[0,1]$ sitúa $\xi_k^p$ entre las potencias de los extremos. Al multiplicar por $1/n$ y sumar para $k=1,\ldots,n$, la suma izquierda de rectángulos queda por debajo de la suma de incrementos de $F$, y la derecha queda por encima. Los incrementos consecutivos se cancelan salvo el primero y el último: la suma central es $F(1)-F(0)=1/(p+1)$.
+
+Además, las dos sumas de extremos tienen casi todos sus términos en común. Al restarlas sólo sobreviven el valor final y el inicial:
 
 $$
 U_{n,p}-L_{n,p}
@@ -284,11 +290,11 @@ U_{n,p}-L_{n,p}
 =\frac1n.
 $$
 
-Por encajonamiento, ambas sucesiones convergen al valor anunciado. $\square$
+El candidato queda entre ambas sumas y su distancia a cualquiera de ellas no supera $1/n$. Como esta anchura tiende a cero, las dos sucesiones convergen a $1/(p+1)$. $\square$
 
-Éste es un **resultado especial sobre sumas finitas**, obtenido del valor medio y de la fórmula de derivación de potencias ya demostradas. No es todavía el Teorema Fundamental del Cálculo: no se ha introducido la integral general, ni probado que toda derivada determine de este modo un área, ni decidido qué funciones admiten cuadratura por sumas.
+La prueba encontró el candidato sumando incrementos de una función cuya derivada conocemos. Todas las comparaciones se hicieron sobre intervalos finitos y el límite final corresponde a estas sumas particulares. Queda por definir una integral para funciones generales y demostrar bajo qué condiciones existe; en esa teoría reaparecerá la relación entre incrementos y derivadas.
 
-La conexión entre potencias y cuadraturas reapareció históricamente en el siglo XVII mediante procedimientos diferentes, entre ellos los indivisibles de Cavalieri. No atribuyamos al matemático italiano la demostración moderna que acabamos de escribir.
+Las potencias y sus cuadraturas interesaron también a los matemáticos del siglo XVII. Los indivisibles de Cavalieri ofrecieron otra manera de abordar esas comparaciones, con procedimientos históricos distintos de nuestra prueba por el valor medio.
 
 ## 4.8. Rectángulos, trapecios y precisión
 
@@ -304,19 +310,19 @@ M_n=\frac1n\sum_{k=1}^{n}
 =\frac13-\frac1{12n^2}.
 $$
 
-Las identidades son sumas finitas: al expandir $(k-1/2)^2$ usamos las fórmulas de $\sum k$ y $\sum k^2$. Ambas aproximaciones comparten el valor $1/3$, pero sus errores frente a ese candidato son de orden $1/n^2$, más pequeños que los errores $1/n$ que se obtienen, como cotas generales, al comparar sumas por extremos.
+Las fórmulas se obtienen con sumas finitas: al expandir $(k-1/2)^2$, basta reunir las sumas de cuadrados, de enteros y de términos constantes. El trapecio queda por encima del candidato $1/3$ y el punto medio por debajo, con errores $1/(6n^2)$ y $1/(12n^2)$ respectivamente. Al duplicar $n$, esos errores se dividen por cuatro. Las sumas por extremos tienen en cambio una separación $1/n$, que al duplicar el número de subintervalos sólo se divide por dos.
 
 **Proposición 4.3 (`EDC-C04-PRP-003`; trapecios y convexidad).** Si $f:[a,b]\to\mathbb R$ es convexa, entonces en cada subintervalo $[u,v]\subset[a,b]$ el segmento recto que une $(u,f(u))$ y $(v,f(v))$ queda por encima de la gráfica. Si $f$ es cóncava, ocurre la desigualdad inversa.
 
-**Demostración.** Para $x=(1-t)u+tv$ con $0\le t\le1$, la definición de convexidad (`EDC-C03`) da
+**Demostración.** Cada punto $x$ de $[u,v]$ tiene la forma $x=(1-t)u+tv$ con $0\le t\le1$. La altura de la cuerda en ese punto es la misma combinación de las alturas finales, $(1-t)f(u)+tf(v)$. Por definición de convexidad (`EDC-C03`),
 
 $$
 f(x)\le(1-t)f(u)+tf(v),
 $$
 
-que es precisamente la ordenada de la cuerda en $x$. La concavidad invierte la desigualdad. $\square$
+que compara exactamente la ordenada de la gráfica con la de la cuerda. Si $f$ es cóncava, aplicamos esta desigualdad a $-f$ y al cambiar de signo se invierte el sentido. $\square$
 
-La comparación no autoriza a sustituir sin más una suma de trapecios por un área exacta para toda función convexa. Las cuerdas construyen una aproximación geométrica determinada y el control del error requiere todavía argumentar sobre su diferencia con la curva. El caso cuadrático, donde la diferencia con la cuerda se calcula exactamente, es un ejemplo especialmente transparente.
+La posición de las cuerdas explica por qué los trapecios cubren por exceso una región bajo una gráfica convexa no negativa. Para conocer su precisión todavía hay que estimar la separación entre cuerda y curva. En el caso cuadrático disponemos de una fórmula exacta para esa diferencia, lo que permite ver tanto el sentido como la magnitud del error.
 
 ## 4.9. La continuidad y un error común a todas las subdivisiones
 
@@ -336,7 +342,11 @@ $$
 0\le A_+(P)-A_-(P)<\varepsilon.
 $$
 
-**Demostración.** Por continuidad uniforme de $f$ en $[a,b]$ (`EDC-C00-THM-008`), para la tolerancia $\eta=\varepsilon/[2(b-a)]$ existe $\delta>0$ tal que $|f(x)-f(y)|<\eta$ si $|x-y|<\delta$. Si $\|P\|<\delta$, los puntos donde se alcanzan $m_i$ y $M_i$ pertenecen a un mismo subintervalo de longitud menor que $\delta$. Por tanto $0\le M_i-m_i<\eta$ y
+**Demostración.** La diferencia de las sumas es la acumulación finita de las oscilaciones $M_i-m_i$, cada una multiplicada por la anchura $\Delta_i$. Queremos que su total sea menor que $\varepsilon$. Como las anchuras suman $b-a$, elegimos una tolerancia común $\eta=\varepsilon/[2(b-a)]$ para las oscilaciones.
+
+La continuidad uniforme de $f$ en $[a,b]$ (`EDC-C00-THM-008`) proporciona un único $\delta>0$ tal que $|f(x)-f(y)|<\eta$ cuando $|x-y|<\delta$, cualquiera que sea la posición de los dos puntos. Si $\|P\|<\delta$, los lugares donde se alcanzan el mínimo y el máximo de cada subintervalo distan menos que $\delta$. Su existencia se sigue del teorema de valores extremos, y obtenemos $0\le M_i-m_i<\eta$.
+
+Multiplicamos por las anchuras positivas y sumamos:
 
 $$
 0\le A_+(P)-A_-(P)
@@ -345,49 +355,39 @@ $$
 =\frac{\varepsilon}{2}<\varepsilon.
 $$
 
-$\square$
+La elección de $\delta$ dependió de la función y de la tolerancia, sin depender de una partición concreta. Por eso la misma estimación vale para todas las particiones que cumplan la condición de finura. $\square$
 
-Hemos obtenido una cota que funciona **para todas las particiones suficientemente finas**, no sólo para subdivisiones uniformes. Sin embargo, todavía no hemos definido las integrales inferior y superior, ni demostrado la compatibilidad de sumas correspondientes a **dos particiones distintas**, ni formulado una teoría completa de integrabilidad. Hacer esos tres trabajos explícitos será la misión de C05. El teorema anterior constituye la preparación matemática central.
+Cada partición fina produce dos sumas muy próximas, y cualquier elección de muestras de esa partición queda entre ellas. Para obtener un valor común a todas las aproximaciones necesitamos relacionar también las sumas de particiones distintas. El refinamiento de particiones proporcionará esa relación en C05 y permitirá convertir este control local de oscilaciones en una definición general.
 
 ## 4.10. Cavalieri y el problema de los indivisibles
 
-En el siglo XVII, los procedimientos de *indivisibles* permitieron comparar figuras por colecciones de secciones paralelas y formular cuadraturas que podían resultar difíciles de obtener por agotamiento geométrico. La obra *Geometria indivisibilibus continuorum nova quadam ratione promota* de Bonaventura Cavalieri apareció publicada en 1635. La historiografía registra tanto su fecundidad como objeciones acerca de qué significaba considerar una superficie en términos de «todas sus líneas».
+Podemos comparar dos figuras mirando las secciones que producen líneas o planos paralelos. Una superficie se examina entonces mediante longitudes de cortes; un sólido, mediante áreas de secciones. Los procedimientos de indivisibles de Cavalieri dirigieron la atención a esas familias de cortes y permitieron abordar problemas de cuadratura desde otra perspectiva. Su *Geometria indivisibilibus continuorum nova quadam ratione promota* apareció en 1635; la recepción de sus métodos y las fuentes consultadas se registran en [H4](capitulo-04-notas.html).
 
-Hay que distinguir tres afirmaciones:
-
-1. Es correcto calcular el área de un rectángulo con base por altura.
-2. Es tentador imaginar una superficie como una colección de líneas paralelas de espesor nulo.
-3. **No se deduce** de lo anterior que cualquier colección arbitraria de líneas tenga, por simple suma informal, un área bien definida.
-
-En la geometría elemental, los polígonos pueden seccionarse y sus áreas compararse por descomposiciones finitas. Para regiones curvas, la comparación entre secciones exige reglas adicionales y una teoría de aproximación. Cavalieri no puede reducirse a una simple aplicación del teorema de Fubini, que aún no existe dentro de nuestra obra. La relación histórica y los límites de nuestra reconstrucción se documentan en [H4](capitulo-04-notas.html).
+La imagen de las secciones sugiere cómo una información distribuida por toda la figura puede determinar su magnitud. Para convertirla en una prueba hacen falta reglas que permitan reunir esa información: la aditividad finita de polígonos que hemos utilizado no define por sí sola una suma de todas las líneas de una superficie. Nuestras aproximaciones usan piezas de anchura positiva y controlan el resto al hacer pequeñas esas anchuras.
 
 ::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Cavalieri: mirar un sólido rebanada por rebanada"}
-
 *Lectura opcional.*
 
-Imaginemos dos panes de formas distintas. Los cortamos a la misma altura y comparamos sus rebanadas. Si en cada nivel las secciones tienen la misma área, resulta tentador pensar que los panes contienen el mismo volumen.
+Una pila de tarjetas conserva su volumen cuando desplazamos unas respecto de otras: cambia el contorno de la pila, pero cada tarjeta sigue aportando la misma cantidad. La imagen ayuda a pensar una comparación por secciones paralelas, donde importa lo que encontramos en cada nivel además de la forma exterior.
 
-Esta manera de mirar las figuras nos acerca a Cavalieri y a su Geometria indivisibilibus, publicada en 1635. En lugar de examinar sólo el contorno de una región o de un sólido, sus métodos dirigían la atención hacia las secciones que lo atraviesan.
+Los indivisibles de Cavalieri, expuestos en su *Geometria* de 1635, llevaron esa mirada a regiones planas y sólidos. Las longitudes de cortes o las áreas de secciones ofrecían una manera de comparar figuras completas. La pila de tarjetas es una ilustración moderna de esa idea, no un ejemplo atribuido a su libro.
 
-La imagen es muy fecunda para aprender a integrar. Un corte nos informa sobre un nivel; reunir la información de muchos niveles permite estudiar el conjunto. Los rectángulos de nuestras sumas desempeñan un papel parecido: cada uno representa una pequeña contribución. Al comparar y reunir esas contribuciones, vamos pasando del perfil de una figura a la magnitud que encierra.
+En nuestras sumas, cada rectángulo conserva una anchura y aporta un área finita. Al refinar la partición podemos estudiar cómo se reúne la información de muchos tramos y cuánto depende el resultado de las alturas elegidas. Esa pregunta da contenido matemático a la imagen de las rebanadas.
 
-**Para seguir leyendo:** [Notas históricas del capítulo 4, apartado H4](capitulo-04-notas.html).
-
+**Para seguir leyendo:** [MacTutor, «Bonaventura Francesco Cavalieri», pasajes sobre indivisibles y secciones](https://mathshistory.st-andrews.ac.uk/Biographies/Cavalieri/); notas históricas del capítulo 4, H4.
 :::
 
 ## 4.11. El obstáculo: dos familias de rectángulos incompatibles
 
 La función de Dirichlet, ya usada en C00, vale $1$ en los racionales y $0$ en los irracionales de $[0,1]$. Cada subintervalo no degenerado contiene tanto unos como otros. Por consiguiente, dada **cualquier** partición finita, podemos escoger las muestras de manera que la suma rectangular sea siempre $1$ o siempre $0$.
 
-Que las particiones sean cada vez más finas no remedia la ambigüedad. Este ejemplo muestra que no basta escribir $S(P,\xi;f)$ y hacer tender $\|P\|$ a cero sin especificar qué significa convergencia **independiente de particiones y muestras**. El teorema preparatorio del §4.9 revela por qué las funciones continuas no presentan la misma dificultad; el contraejemplo explica por qué esa hipótesis no puede reemplazarse por «estar acotada» sin más.
+Podemos repetir ambas elecciones en particiones tan finas como queramos: todas las muestras racionales producen suma $1$, y todas las irracionales producen suma $0$. La oscilación de la función en cualquier subintervalo sigue siendo uno, por pequeña que sea su anchura. Allí falla precisamente el control que la continuidad uniforme proporcionó en §4.9. Estar acotada no basta para impedir que las muestras conduzcan a resultados incompatibles.
 
 ## 4.12. Dos tradiciones y una pregunta que queda abierta
 
-La cuadratura por triángulos y agotamiento, ejemplificada por Arquímedes, y los procedimientos de rectángulos y secciones, que pueden reconstruirse mediante sumas finitas, comparten una preocupación: calcular áreas curvilíneas controlando aproximaciones. Pero no son idénticos como prácticas históricas ni implican automáticamente una única definición moderna.
+En el segmento parabólico, las cubiertas del resto cerraron la distancia entre una sucesión de polígonos y el área que queríamos determinar. Al pasar a rectángulos bajo una función continua encontramos otro mecanismo de control: la oscilación se hace pequeña en todos los subintervalos suficientemente cortos. Ambos problemas exigen aproximaciones que mantengan un valor y permitan acotar el error, aunque sus construcciones sean distintas.
 
-Hemos demostrado resultados particulares: el valor de cuatro tercios en un segmento parabólico, varias fórmulas de sumas rectangulares, una cota independiente de la subdivisión para $x^2$ y un control uniforme del error entre rectángulos extremos cuando $f$ es continua. Lo pendiente es elevar esas observaciones a un concepto general que tenga un dominio de aplicación, un criterio de existencia y propiedades demostradas.
-
-En el capítulo 5 estableceremos el significado preciso de *integrabilidad de Riemann–Darboux*. Sólo después, en el capítulo 6, estudiaremos por qué el problema de la acumulación y el problema de la derivada se unen en el Teorema Fundamental del Cálculo. No hemos invocado ninguno de esos teoremas para resolver la cuadratura de hoy.
+La función de Dirichlet muestra por qué una definición general deberá pedir que el resultado resista las distintas elecciones de particiones y muestras. En C05 compararemos las sumas mediante refinamientos y utilizaremos los extremos superiores e inferiores que permite construir la completitud de los reales. Así podremos decidir qué funciones admiten una integral y demostrar sus propiedades antes de relacionarla con la derivación.
 
 ### Mapa de dependencias
 

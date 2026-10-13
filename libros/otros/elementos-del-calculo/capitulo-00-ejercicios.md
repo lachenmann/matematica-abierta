@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,14 +21,14 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C00-EJERCICIOS
-source-sha256: 07495bcbe4a35f40ba3b24cfac56e276192abe8467fa7ca5e17512d0b52b9c8c
+source-sha256: ef7d075ad08492bbb0e0def39d9d54f966b666aa8668f64300a525d4e411c3bf
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
 [Exposición](capitulo-00.html) · [Ejercicios](capitulo-00-ejercicios.html) · [Soluciones](capitulo-00-soluciones.html) · [Notas históricas](capitulo-00-notas.html)
 
-Estos problemas acompañan [Del límite a la pregunta por el cálculo](capitulo-00.html). Se han distribuido por intención matemática y no sólo por dificultad computacional. En todos los casos se pide justificar las afirmaciones; ninguna gráfica o aproximación decimal reemplaza una prueba. Las respuestas desarrolladas figuran, por los mismos números, en [Soluciones del capítulo 0](capitulo-00-soluciones.html).
+Los problemas de [Del límite a la pregunta por el cálculo](capitulo-00.html) permiten trabajar con las decisiones que sostienen sus argumentos: elegir una tolerancia, construir una sucesión, encontrar una cota o comprobar qué ocurre al suprimir una hipótesis. En todos los casos se pide justificar las afirmaciones; una gráfica o una aproximación decimal puede orientar la búsqueda, pero la respuesta necesita un argumento. Las respuestas desarrolladas figuran, por los mismos números, en [Soluciones del capítulo 0](capitulo-00-soluciones.html).
 
 ## A. Lenguaje y lectura conceptual
 

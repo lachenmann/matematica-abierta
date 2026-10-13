@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C09-NOTAS-HISTORICAS
-source-sha256: c29a610e13cb9e406817af000899061148a82d98916fb2ee5daa03c2f39ef629
+source-sha256: 762ec3c701e79296623196e956c62e674e4f6883699c88368c147867784afd28
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -38,6 +38,7 @@ La identidad finita para potencias enteras no debe confundirse con el problema d
 
 **Testimonio primario en edición digital localizado y parcialmente leído:** [The Newton Project, «History of the Method of Fluxions»](https://www.newtonproject.ox.ac.uk/view/texts/diplomatic/NATP00356), transcripción diplomática del manuscrito Cambridge University Library MS Add. 3968, ff. 146r–171r. La página permite constatar que Newton revisó retrospectivamente la cronología de su método y citó sus cartas de 1676. **Reserva:** no se ha colacionado el manuscrito completo ni demostrado que este pasaje específico corresponda al primer enunciado del binomio. No se emplea como prueba de una prioridad exclusiva.
 
+**Estado:** `MODERN_MATH_SOURCE_READ / NEWTON_PROJECT_PARTIAL_DIPLOMATIC_READ / ORIGINAL_BINOMIAL_MANUSCRIPTS_NOT_COLLATED`.
 
 ## H2. Brook Taylor y la obra impresa de 1715
 
@@ -47,6 +48,7 @@ La identidad finita para potencias enteras no debe confundirse con el problema d
 
 **Verificación bibliográfica de la edición:** [Folger Shakespeare Library, registro de *Methodus incrementorum directa & inversa*](https://catalog.folger.edu/record/749251), con impresor, Londres, 1715 y colación [6], 118, [2] páginas. [Google Books, ficha de la edición de 1715](https://books.google.com/books/about/Methodus_incrementorum_directa_inversa.html?id=wjYO0gEACAAJ) consigna también el año y una extensión de 118 páginas. **Ninguna de estas fichas equivale a lectura completa del texto latino**.
 
+**Estado:** `SECONDARY_BIOGRAPHY_READ / EDITION_CATALOG_VERIFIED / LATIN_ORIGINAL_NOT_COLLATED`.
 
 ## H3. La diferencia entre una regla antigua y el resto moderno
 
@@ -56,6 +58,7 @@ El nombre «Taylor» designa en la enseñanza contemporánea tanto un polinomio 
 
 **Referencia secundaria verificada de terminología:** [*Encyclopedia of Mathematics*, «Taylor series»](https://encyclopediaofmath.org/wiki/Taylor_series), definición por derivadas y discusión de representabilidad; ficha y contenido accesibles en los resultados consultados. **Reserva:** las fórmulas matemáticas en estas fuentes no permiten inferir que Taylor demostrara exactamente el Teorema 9.4 que usamos.
 
+**Estado:** `MODERN_FORMULAE_READ / ANACHRONISM_AVOIDED / PRIMARY_PROVENANCE_OF_REMAINDERS_UNVERIFIED`.
 
 ## H4. Gregory, Bernoulli y la dificultad de una historia por «primeros»
 
@@ -63,6 +66,7 @@ La atribución de un desarrollo general a un solo autor oscurece que **series pa
 
 **Fuente historiográfica efectivamente leída:** [MacTutor, «Brook Taylor»](https://mathshistory.st-andrews.ac.uk/Biographies/Taylor/), apartados sobre Gregory, Newton, Bernoulli y la denominación tardía de la serie. El mismo artículo enumera como estudio especializado: A. Malet, «James Gregorie on tangents and the 'Taylor' rule for series expansions», *Archive for History of Exact Sciences* **46** (1993), 97–137. Esta referencia es **bibliografía localizada**, no un artículo leído integralmente en EDC-M10.
 
+**Estado:** `SECONDARY_HISTORIOGRAPHY_READ / MALET_STUDY_INDEX_ONLY / NO_PRIORITY_VERDICT`.
 
 ## H5. Maclaurin y Lagrange: nombres, programas y fechas
 
@@ -72,6 +76,7 @@ El desarrollo centrado en cero se denomina «de Maclaurin» en la terminología 
 
 **Reserva:** no se ha cotejado el libro de Maclaurin de 1742 ni el francés de la edición de Lagrange de 1797; la lectura del resumen de Fraser **no** equivale a verificar todo su argumento historiográfico. No se asigna automáticamente a Lagrange nuestra demostración con $\Phi(t)$ y Rolle ni a Maclaurin la primera idea de expansión en cero.
 
+**Estado:** `MODERN_ENCYCLOPEDIA_READ / MACTUTOR_TRANSCRIPTION_READ_WITH_EDITORIAL_NORMALIZATION / HISTORICAL_ARTICLE_ABSTRACT_ONLY`.
 
 ## H6. El siglo XIX y el problema de las series representativas
 
@@ -81,6 +86,7 @@ La transformación del cálculo en análisis riguroso exigió separar la manipul
 
 El contraejemplo matemático $e^{-1/x^2}$ prolongado por cero **no es una cita histórica de Cauchy ni una reconstrucción de un texto de Taylor**: se incluye como prueba moderna autónoma. El control moderno de esta distinción aparece, por ejemplo, en material docente de Stony Brook, [«Foundations of Numerical Methods — Taylor Series and Taylor Polynomials»](https://www.ams.stonybrook.edu/~jiao/teaching/ams527/lectures/04_TaylorSeries.pdf), **localizado mediante índice web, no inspeccionado por páginas**; por tanto no se presenta como facsímil analizado ni se reproducen sus ilustraciones.
 
+**Estado:** `SECONDARY_CONTEXT / MATHEMATICAL_COUNTEREXAMPLE_INDEPENDENT / UNOPENED_PDF_NOT_COLLATED`.
 
 ## H7. Newton–Raphson: una misma etiqueta para tradiciones distintas
 
@@ -88,6 +94,7 @@ El §9.11 aprovecha una **fórmula moderna de error cuadrático** deducida del r
 
 **Fuente secundaria abierta por resultados de consulta:** [MacTutor, «Joseph Raphson»](https://mathshistory.st-andrews.ac.uk/Biographies/Raphson/), relato sobre *Analysis aequationum universalis* (1690), su recepción en la Royal Society y la cronología de Newton. [MacTutor, «Raphson books»](https://mathshistory.st-andrews.ac.uk/Extras/Raphson_books/), ficha con reproducciones editadas de reseñas inglesas de época. Los textos latinos originales no se han colacionado para C09.
 
+**Estado:** `SECONDARY_BIOGRAPHY_READ_FROM_WEB_RESULT / PERIOD_REVIEWS_LOCATED / ORIGINAL_RAPHSON_1690_NOT_COLLATED`.
 
 ## Registro historiográfico consolidado
 
@@ -110,3 +117,10 @@ El §9.11 aprovecha una **fórmula moderna de error cuadrático** deducida del r
 **Dos testimonios editoriales, una obra.** La ficha de la [Folger Shakespeare Library](https://catalog.folger.edu/record/749251) registra *Methodus incrementorum directa & inversa* de Brook Taylor, impresa en Londres en **1715**, con paginación `[6],118,[2]` y hoja final de correcciones. La [National Library of Australia](https://catalogue.nla.gov.au/catalog/3275233) registra una emisión de **1717** y la describe con cautela como **probable reedición de los pliegos de 1715**, con las primeras hojas preliminares recompuestas. Esta distinción impide identificar indiscriminadamente cualquier ejemplar de 1717 con una primera edición nueva o tomar la fecha de un catálogo como certificación de una fórmula concreta.
 
 **Estado de evidencia:** `1715_AND_1717_LIBRARY_CATALOGS_READ / EXPLICIT_PROBABLE_REISSUE / LATIN_TEXT_NOT_COLLATED`. La denominación contemporánea «serie de Taylor» conserva el carácter de epónimo histórico, **no** una tesis de prioridad exclusiva ni una transcripción de la notación de nuestro Teorema 9.
+
+
+## Complemento documental — revisión literaria R10 (13 de octubre de 2026)
+
+Se abrió el [PDF de Ian Bruce, *Methodus incrementorum directa & inversa*, Part 1A, traducción con notas](https://www.17centurymaths.com/contents/brooktaylor/methodofincrementspartone.pdf). Se leyeron pasajes de texto extraído: «To the Reader» y comienzo de la introducción, pp. 1–4 del PDF (índices 0–3). El recuadro usa las tareas directa e inversa y la distinción de incrementos sucesivos. Las notas entre corchetes de Bruce se distinguen del cuerpo traducido; no se atribuyen a Taylor comentarios modernos del traductor. No se declara lectura completa de las 36 páginas, cotejo visual ni colación del latín. Estado: PRIMARY_IN_ENGLISH_TRANSLATION_SELECTED_EXTRACTED_PASSAGES_READ / LATIN_TEXT_NOT_COLLATED.
+
+Esta lectura complementa H2 y los registros anteriores. No identifica el teorema de Lagrange actual con una proposición original de Taylor ni amplía un dictamen de prioridad. La demostración matemática del binomio v2.2 es un testigo editorial original de EDC expresamente aprobado, no una traducción de Newton. Se conservan H1–H7 y el complemento M13-A03. No se hizo una nueva colación de los manuscritos de Newton, Maclaurin, Lagrange o Raphson en R10.

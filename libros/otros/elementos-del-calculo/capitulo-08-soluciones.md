@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C08-SOLUCIONES
-source-sha256: a25f07acf1cf72b695fa5f8cf8acdd908841d86e69cb438f6d994ae8a1f08e26
+source-sha256: c6a2fd716aabd6bca4ad3fb058682e0de6703af0250d4ba27362d5bcce666a07
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -38,7 +38,9 @@ Las sumas parciales son $S_0=1$, $S_1=1-1=0$, $S_2=1-1+1=1$ y $S_3=1-1+1-1=0$. P
 
 ### Solución 8.2 (`EDC-C08-SOL-002`)
 
-La condición es: para todo $\varepsilon>0$ existe $N$ tal que $|\sum_{k=p}^{q}a_k|<\varepsilon$ siempre que $q\ge p>N$. Exige que una suma de **cualquier cantidad finita** de términos suficientemente alejados sea pequeña. El requisito aislado $|a_n|<\varepsilon$ sólo controla colas de **un término**. Por ejemplo, $a_n=1/n\to0$; pero las colas desde $p$ hasta $2p-1$ contienen $p$ términos de tamaño al menos $1/(2p)$ y suman al menos $1/2$, por lo que violan Cauchy para cualquier $\varepsilon<1/2$ y todo $p$.
+La condición es: para todo $\varepsilon>0$ existe $N$ tal que $|\sum_{k=p}^{q}a_k|<\varepsilon$ para cualesquiera $q\ge p>N$. La elección de $N$ debe servir para todas las cantidades finitas de términos que podamos añadir desde un índice posterior. Si tomamos $p=q$, obtenemos el control de un solo término, pero la condición pide además todas las colas más largas.
+
+Para $a_n=1/n$ los términos tienden a cero. Sin embargo, entre $p$ y $2p-1$ hay $p$ términos, cada uno mayor que $1/(2p)$. Esa cola suma al menos $1/2$. Podemos escoger $p>N$ para cualquier índice propuesto, y la cola viola la condición con una tolerancia menor que $1/2$. Aumentar el número de términos compensó la disminución de cada pieza, que es lo que el control aislado de $a_n$ no podía detectar.
 
 ### Solución 8.3 (`EDC-C08-SOL-003`)
 
@@ -80,7 +82,9 @@ Pedimos $E_N<1/1000$, equivalente a $3^N>500$. Como $3^5=243<500<729=3^6$, el **
 
 ### Solución 8.7 (`EDC-C08-SOL-007`)
 
-En el bloque $2^k\le n<2^{k+1}$ hay $2^k$ términos y $1/n^2\le 2^{-2k}$. Por consiguiente, la suma del bloque es a lo sumo $2^k2^{-2k}=2^{-k}$. Los bloques sucesivos están dominados por $1+1/2+1/4+\cdots$, cuya suma es $2$. Todas las sumas parciales de $\sum_{n\ge1}1/n^2$ son no decrecientes y están acotadas; convergen por el Lema 8.2. No necesitamos calcular su suma exacta.
+Agrupamos los índices en bloques $2^k\le n<2^{k+1}$. Cada bloque tiene $2^k$ términos y cada uno cumple $1/n^2\le2^{-2k}$. La suma del bloque no supera $2^k2^{-2k}=2^{-k}$. Las cotas sucesivas forman la geométrica $1+1/2+1/4+\cdots$, de suma dos.
+
+Una suma parcial que termine dentro de un bloque tampoco puede superar la suma de las cotas de todos los bloques que la contienen: completar el último bloque sólo añade términos positivos. Por tanto todas las sumas parciales son no decrecientes y están acotadas por dos. El Lema 8.2 demuestra convergencia. La cota obtenida decide existencia de la suma sin identificar su valor exacto.
 
 ### Solución 8.8 (`EDC-C08-SOL-008`)
 
@@ -116,44 +120,56 @@ La cota no presupone el valor exacto de la suma.
 
 ### Solución 8.13 (`EDC-C08-SOL-013`)
 
-Para cada $t\in[0,1]$ y entero $N\ge0$ vale la **identidad finita**
+Comenzamos con una igualdad válida para cada entero $N\ge0$ y para cada $t\in[0,1]$:
 
 $$
 \frac1{1+t^2}=\sum_{n=0}^{N}(-1)^nt^{2n}
 +\frac{(-1)^{N+1}t^{2N+2}}{1+t^2}.
 $$
 
-Integrando mediante el Teorema Fundamental en $[0,1]$ (todos los integrandos son continuos), el lado izquierdo vale $\arctan1-\arctan0=\pi/4$ y el primer sumando aporta $\sum_{n=0}^{N}(-1)^n/(2n+1)$. El resto satisface
+Es una identidad geométrica finita, con el último término todavía presente. Todas sus funciones son continuas en el segmento cerrado, así que podemos integrarla usando C05–C06. La izquierda da $\arctan1-\arctan0=\pi/4$ y la suma polinómica aporta $\sum_{n=0}^{N}(-1)^n/(2n+1)$.
+
+La diferencia entre esos dos números es exactamente la integral del resto. Por la desigualdad triangular integral y $1+t^2\ge1$,
 
 $$
 \left|\int_0^1\frac{(-1)^{N+1}t^{2N+2}}{1+t^2}\,dt\right|
 \le\int_0^1t^{2N+2}\,dt=\frac1{2N+3}.
 $$
 
-Éste tiende a cero, de modo que la serie converge a $\pi/4$. La prueba no extrapola un teorema de diferenciación interior hasta $x=1$.
+La cota tiende a cero, por lo que las sumas parciales convergen a $\pi/4$. Después de $N+1$ términos su error no supera $1/(2N+3)$. El paso al límite está justificado en todo el segmento por ese resto particular; no requiere aplicar el teorema interior de series de potencias en la frontera.
 
 ### Solución 8.14 (`EDC-C08-SOL-014`)
 
-Agrupemos los sumandos positivos $p_k=1/(2k-1)$ y magnitudes negativas $q_k=1/(2k)$. Ambas series positivas divergen: $p_k\ge1/(2k)$ y $\sum q_k=(1/2)\sum1/k$. Para buscar $L=1$, empezamos con los términos positivos no usados hasta que la suma parcial sea mayor que $1$; luego añadimos términos negativos no usados hasta que sea menor que $1$; repetimos la operación. La divergencia de ambas subseries garantiza que **cada etapa termina después de un número finito de adiciones**. Cada etapa añade por lo menos un término nuevo de un signo, así que después de infinitas etapas se han consumido todos los positivos y todos los negativos, sin repetición.
+Separamos los positivos $p_k=1/(2k-1)$ y los módulos de los negativos $q_k=1/(2k)$. La serie de $q_k$ es la mitad de la armónica y diverge; la de $p_k$ también diverge porque $p_k\ge q_k$.
 
-Los sobrepasos al terminar las etapas positivas son a lo sumo el último $p_k$ añadido; los defectos después de las etapas negativas son a lo sumo el último $q_k$. Como los índices consumidos crecen, ambos márgenes tienden a cero. Las sumas parciales intermedias entre dos cruces también quedan atrapadas en esos márgenes, pues avanzan monótonamente dentro de cada bloque. La serie reordenada converge a $1$, distinto del valor de la ordenación original (que se encuentra estrictamente entre $1/2$ y $1$ por las sumas parciales $S_2=1/2$, $S_3=5/6$, $S_4=7/12$ y el encaje alternante). Esto muestra por qué la propiedad de reordenación necesita convergencia absoluta.
+Para alcanzar el objetivo uno, empezamos sumando positivos no usados hasta quedar estrictamente por encima. El primer término da exactamente uno, así que añadimos otro positivo para realizar el cruce. Luego tomamos negativos no usados hasta quedar por debajo. Repetimos, conservando dentro de cada signo el orden original. La divergencia de ambas subseries asegura que cada etapa termina después de un número finito de adiciones.
+
+Cada etapa positiva posterior comienza por debajo del objetivo y cada negativa por encima, de modo que consume al menos un término nuevo. Los índices de ambos signos aumentan sin límite. Como nunca saltamos un término de un signo ni repetimos ninguno, el procedimiento usa todos los términos y define una reordenación.
+
+Justo antes de un cruce la suma todavía está del otro lado de uno. Su exceso o defecto final no supera el último término añadido. Los índices consumidos crecen y esos términos tienden a cero. Durante cada etapa, las sumas se mueven monótonamente entre el cruce anterior y el siguiente; sus distancias a uno quedan acotadas por el mayor de los dos márgenes. Así convergen todas las sumas parciales, incluidas las intermedias, a uno.
+
+La ordenación original tiene su límite entre $S_4=7/12$ y $S_3=5/6$, por el criterio alternante, y por tanto es distinto de uno. La reordenación cambia la suma sin modificar los términos, que demuestra la diferencia respecto de la convergencia absoluta.
 
 ## C. Tests de razón y raíz
 
 ### Solución 8.15 (`EDC-C08-SOL-015`)
 
-Para $a_n=n/2^n$ y $n\ge1$,
+Los términos $a_n=n/2^n$ son positivos y no nulos. Sus cocientes cumplen
 
 $$
 \frac{a_{n+1}}{a_n}=\frac{n+1}{2n}\longrightarrow\frac12<1.
 $$
 
-La serie converge absolutamente por el Teorema 8.6. Para hallar su suma, dentro del radio uno se tiene $\sum_{n\ge0}x^n=1/(1-x)$. El Teorema 8.9 permite derivar término a término: $\sum_{n\ge1}n x^{n-1}=(1-x)^{-2}$. Multiplicamos por $x$ y tomamos $x=1/2$, que es **interior**, obteniendo
+El Teorema 8.6 demuestra convergencia absoluta. Para evaluar la suma, observamos que el factor $n$ aparece al derivar el monomio $x^n$. La geométrica representa $(1-x)^{-1}$ para $|x|<1$, y el Teorema 8.9 permite derivar esa representación: $\sum_{n\ge1}nx^{n-1}=(1-x)^{-2}$.
+
+Multiplicamos por $x$ para recuperar la potencia $x^n$. La igualdad sigue siendo válida en el interior, donde podemos escoger $x=1/2$, y obtenemos
 
 $$
 \sum_{n=1}^{\infty}\frac{n}{2^n}
 =\frac{1/2}{(1-1/2)^2}=2.
 $$
+
+La razón decidió primero la convergencia; la derivación justificada de otra representación permitió después reconocer el valor.
 
 ### Solución 8.16 (`EDC-C08-SOL-016`)
 
@@ -177,7 +193,9 @@ En $x=1/2$, los términos valen $1$, y en $x=-1/2$ alternan $1,-1,\ldots$, por l
 
 ### Solución 8.19 (`EDC-C08-SOL-019`)
 
-Para $x\ne0$, los términos $a_n=n!x^n$ tienen módulos con cociente $|a_{n+1}/a_n|=(n+1)|x|\to+\infty$, de modo que no tienden a cero y la serie diverge. En $x=0$, todos los términos con $n\ge1$ se anulan y queda $0!0^0=1$ por la convención de serie de potencias. Así la serie sólo converge en el centro y su radio es $R=0$. No estamos aplicando el teorema de derivación término a término, que exige radio positivo.
+Fijamos $x\ne0$. Los módulos de los términos $a_n=n!x^n$ tienen cociente $(n+1)|x|$, que crece sin límite. A partir de cierto índice supera, por ejemplo, dos; entonces los módulos posteriores crecen al menos por factores de dos y no pueden tender a cero. El Lema 8.1 excluye convergencia para todo punto distinto del centro.
+
+En $x=0$ los términos de grado positivo se anulan y el constante es $0!0^0=1$, con la convención de serie de potencias. Por tanto $\mathcal D=\{0\}$ y el radio es cero. Hay un valor de la serie en el centro, pero no un intervalo interior donde podamos aplicar el Teorema 8.9, que exige radio positivo.
 
 ### Solución 8.20 (`EDC-C08-SOL-020`)
 
@@ -195,20 +213,22 @@ Si $|x|<1$, la serie de módulos está dominada por $\sum_{n=1}^{\infty}|x|^n$, 
 
 ### Solución 8.22 (`EDC-C08-SOL-022`)
 
-Para $|x|\le1$ se cumple $|x^n/n^2|\le1/n^2$, y la serie mayor converge. Luego la serie de potencias converge **absolutamente** en todo $[-1,1]$, incluidas ambas fronteras. Si $|x|>1$, el cociente de módulos $|x|n^2/(n+1)^2\to|x|>1$, por lo que los términos no tienden a cero y la serie diverge. El radio es uno y el intervalo completo es $[-1,1]$. El comportamiento de la frontera no se dedujo del radio, sino de la comparación concreta con $1/n^2$.
+Para $|x|\le1$, cada módulo cumple $|x^n/n^2|\le1/n^2$. La Proposición 8.1 da convergencia de la serie mayor, por lo que la comparación demuestra convergencia absoluta en todo $[-1,1]$. Incluye las dos fronteras mediante la misma desigualdad.
+
+Si $|x|>1$, el cociente de módulos es $|x|n^2/(n+1)^2$ y tiende a $|x|>1$. Elegir una razón fija entre uno y ese límite hace que los módulos crezcan geométricamente desde un índice y, por tanto, no tiendan a cero. La serie diverge fuera del segmento. Así el radio es uno y el intervalo completo de convergencia es $[-1,1]$; la respuesta en los bordes procede de una comparación concreta, no sólo del valor del radio.
 
 ## E. Operar correctamente dentro del radio
 
 ### Solución 8.23 (`EDC-C08-SOL-023`)
 
-La serie geométrica tiene radio uno. Para $s=3/4$,
+La geométrica tiene radio uno. Escogemos $s=3/4$, mayor que el radio del segmento donde queremos controlar el error, $r=1/2$. La serie de módulos en la distancia mayor da
 
 $$
 B_s=\sum_{n=0}^{\infty}\left(\frac34\right)^n=4,
 \qquad q=\frac{r}{s}=\frac{1/2}{3/4}=\frac23.
 $$
 
-Por el Teorema 8.8, para **todo** $|x|\le1/2$,
+El Teorema 8.8 ofrece una cota que sirve simultáneamente para todo $|x|\le1/2$:
 
 $$
 \left|F(x)-\sum_{n=0}^{N}x^n\right|
@@ -216,17 +236,19 @@ $$
 =12\left(\frac23\right)^{N+1}.
 $$
 
-La identidad geométrica da una cota más fuerte: $|x|^{N+1}/|1-x|\le(1/2)^{N+1}/(1/2)=2^{-N}$; el máximo se alcanza en $x=1/2$. La primera estimación es generalizable a cualquier serie de potencias y la segunda utiliza una fórmula especial para ésta.
+Para esta serie conocemos además el resto exacto $|x|^{N+1}/|1-x|$. En el segmento, el numerador no supera $(1/2)^{N+1}$ y el denominador es al menos $1/2$, por lo que el error no supera $2^{-N}$. Las cotas del numerador y del denominador se alcanzan simultáneamente al tomar $x=1/2$, de modo que $2^{-N}$ es el máximo exacto del error en el segmento. La primera estimación controla series de potencias sin fórmula cerrada; la segunda aprovecha la identidad particular de la geométrica.
 
 ### Solución 8.24 (`EDC-C08-SOL-024`)
 
-La serie geométrica representa $F(x)=(1-x)^{-1}$ para $|x|<1$. Tiene radio positivo; por el Teorema 8.9, en cada intervalo cerrado estrictamente interior las series de derivadas polinómicas convergen con una cota que permite pasar al límite en las integrales, y la derivada de la suma coincide con su serie de derivadas. Por otra parte, el cálculo diferencial de C02 da $F'(x)=(1-x)^{-2}$. Comparando ambas expresiones **ya justificadas**,
+La geométrica define $F(x)=\sum_{n\ge0}x^n=(1-x)^{-1}$ para $|x|<1$. En un segmento cerrado interior, el Teorema 8.9 controla las colas de las derivadas polinómicas, obtiene su límite continuo $G$ y pasa al límite en la igualdad $P_N(x)-P_N(0)=\int_0^xP_N'$. La primera parte del Teorema Fundamental identifica entonces $G$ como $F'$.
+
+Por C02, derivar la expresión racional de $F$ da $(1-x)^{-2}$. Podemos comparar esta derivada con la serie de derivadas ya justificada:
 
 $$
 \sum_{n=1}^{\infty}nx^{n-1}=\frac1{(1-x)^2},\quad |x|<1.
 $$
 
-La igualdad no se extiende a $x=1$ ni a $x=-1$.
+La igualdad vale en cualquier punto interior porque podemos rodearlo con un segmento de ese tipo. En $x=1$ o $x=-1$, los términos de la serie derecha de derivación ni siquiera tienden a cero, de modo que esta representación no se extiende allí.
 
 ### Solución 8.25 (`EDC-C08-SOL-025`)
 
@@ -241,20 +263,20 @@ El miembro izquierdo vale $\ln(1+x)-\ln1=\ln(1+x)$ porque $1+t>0$ a lo largo del
 
 ### Solución 8.26 (`EDC-C08-SOL-026`)
 
-Para $|x|<1$, la serie geométrica de razón $-t^2$ da $1/(1+t^2)=\sum_{n\ge0}(-1)^nt^{2n}$. La integración término a término en el segmento interior entre $0$ y $x$ da
+La geométrica de razón $-t^2$ representa $1/(1+t^2)$ cuando $|t|<1$. Para un $x$ interior, el segmento entre cero y $x$ cabe dentro de otro segmento cerrado estrictamente menor que el radio. El Teorema 8.9 permite integrar término a término, y la primitiva $\arctan$ de C02–C06 identifica
 
 $$
 \arctan x=\sum_{n=0}^{\infty}\frac{(-1)^nx^{2n+1}}{2n+1}.
 $$
 
-Para $x=1$ procedemos de nuevo desde el resto **finito**, no desde la fórmula interior:
+Para llegar al borde $x=1$ volvemos a una identidad finita, conservando su resto:
 
 $$
 \frac1{1+t^2}-\sum_{n=0}^{N}(-1)^nt^{2n}
 =\frac{(-1)^{N+1}t^{2N+2}}{1+t^2}.
 $$
 
-Al integrar en $[0,1]$ su valor absoluto está acotado por $1/(2N+3)$. Como el valor integral izquierdo es $\pi/4$ y la suma finita se integra en $\sum_{n=0}^{N}(-1)^n/(2n+1)$, el límite demuestra la fórmula de Gregory–Leibniz para $\pi/4$ con el error indicado. No se invocó C09.
+Integramos sobre $[0,1]$. El módulo del resto integrado no supera $\int_0^1t^{2N+2}dt=1/(2N+3)$, porque el denominador es al menos uno. Esa cota tiende a cero y las sumas de integrales polinómicas convergen a la integral de $1/(1+t^2)$, que vale $\pi/4$. La prueba de la fórmula de Gregory–Leibniz en el borde es distinta de la que dio el desarrollo interior y aporta además un error explícito.
 
 ### Solución 8.27 (`EDC-C08-SOL-027`)
 
@@ -270,13 +292,15 @@ La convergencia absoluta de ambos factores es la hipótesis decisiva, y cada coe
 
 ### Solución 8.28 (`EDC-C08-SOL-028`)
 
-La identidad geométrica da, para $|x|<1$,
+Multiplicar la geométrica por $x$ desplaza sus exponentes y da, para $|x|<1$,
 
 $$
 \frac{x}{1-x}=\sum_{n=1}^{\infty}x^n.
 $$
 
-Por tanto, una representación tiene $a_0=0$ y $a_n=1$ para $n\ge1$. Si otra serie con radio positivo coincidiera con esa función en un intervalo alrededor de cero, la Proposición 8.3 permitiría derivar ambas expresiones en cero cuantas veces fuese necesario y determinaría $a_n=F^{(n)}(0)/n!$ para cada $n$. Los coeficientes son únicos. No se ha afirmado que toda función suave admita semejante representación.
+En esta representación el coeficiente constante es $a_0=0$ y todos los demás son $a_n=1$. Para comprobar que no puede haber otra elección, tomamos un intervalo pequeño alrededor de cero dentro del radio positivo de la serie propuesta y del radio uno de la geométrica, donde ambas representen la función indicada. La Proposición 8.3 determina cada coeficiente mediante $F^{(n)}(0)/n!$, usando las derivaciones que su prueba justifica. Las dos representaciones deben tener por tanto los mismos coeficientes.
+
+Aquí disponemos de una representación porque la construimos desde la geométrica. La unicidad la compara con cualquier otra que exista; no postula una serie para todas las funciones suaves.
 
 ### Solución 8.29 (`EDC-C08-SOL-029`)
 
@@ -297,18 +321,18 @@ Al poner $k=n+1$ obtenemos la identidad solicitada. El intervalo $[0,1/2]$ es es
 
 ### Solución 8.30 (`EDC-C08-SOL-030`)
 
-(a) La serie $H$ tiene radio uno por comparación geométrica en el interior y por los extremos estudiados en 8.21. El Teorema 8.9 justifica derivar término a término para $|x|<1$:
+(a) Para $|x|<1$, la serie de módulos de $H$ queda dominada por la geométrica $\sum|x|^n$. Para $|x|>1$, el cociente de módulos de sus términos tiende a $|x|>1$ y éstos no tienden a cero. El radio es uno. El Teorema 8.9 permite derivar en el interior, y el factor $n$ cancela el denominador de cada término:
 
 $$
 H'(x)=\sum_{n=1}^{\infty}(-1)^{n-1}x^{n-1}
 =\frac1{1+x}.
 $$
 
-Asimismo $H(0)=0$ porque todos sus términos contienen al menos un factor $x$.
+La última suma es una geométrica. En cero, todos los términos originales son nulos y $H(0)=0$.
 
-(b) Por C02, la función $L(x)=\ln(1+x)$ está definida y tiene derivada $1/(1+x)$ en $(-1,1)$; además $L(0)=0$. El teorema del valor medio de C03 afirma que $H-L$ es constante sobre ese intervalo, y como en cero vale cero, necesariamente $H(x)=\ln(1+x)$. Esto identifica la suma desde **derivadas previamente justificadas**, no desde un teorema de Taylor de C09.
+(b) La función $L(x)=\ln(1+x)$ tiene la misma derivada en $(-1,1)$ por C02 y también vale cero en el centro. La diferencia $H-L$ es derivable y su derivada es cero. Aplicar el valor medio de C03 entre cualesquiera dos puntos del intervalo la hace constante; su valor en cero fija esa constante en cero. Por tanto $H=\ln(1+x)$, identificado después de justificar la derivada de la serie.
 
-(c) El intervalo $[0,1/2]$ está contenido en $(-1,1)$. La cota del Teorema 8.8 para cualquier $r=1/2<s<1$ permite integrar los polinomios parciales con un error que tiende a cero, y por tanto
+(c) Escogemos $r=1/2$ y $s=3/4$. Para los coeficientes de $H$, la suma $B_s=\sum_{n\ge1}s^n/n$ es finita y no supera $\sum_{n\ge1}s^n=3$. El Teorema 8.8 acota el error de sus polinomios parciales en todo $[0,1/2]$ por $9(2/3)^{N+1}$. El error de sus integrales no supera la mitad de esa cantidad, por el Lema 8.3, y tiende a cero. Así es legítimo integrar el desarrollo:
 
 $$
 \begin{aligned}
@@ -320,7 +344,7 @@ $$
 \end{aligned}
 $$
 
-La primitiva final se verifica derivando por la regla del producto de C02. Se ha utilizado sólo el radio interior y la segunda parte del Teorema Fundamental, no la existencia supuesta de un desarrollo de Taylor.
+El factor $1/(n+1)$ aparece al integrar el monomio de grado $n$, y su valor en $1/2$ aporta $2^{-(n+1)}$. La primitiva final se comprueba mediante producto y cadena. Todo el segmento queda dentro del radio y la identificación usa derivadas y una condición inicial, sin anticipar Taylor.
 
 ---
 

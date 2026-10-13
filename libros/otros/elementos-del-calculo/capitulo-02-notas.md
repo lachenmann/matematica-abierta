@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C02-NOTAS-HISTORICAS
-source-sha256: a79f9b61236c24bc2d72ab8f1b2619f989a742bf7a0459755e8dac63468e6145
+source-sha256: 5678fcb9a6085758b8ead3b1c61695039df409ed69f0423ab45ca318dfca491f
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -38,8 +38,7 @@ Este expediente acompaña [el capítulo 2](capitulo-02.html), pero no sustituye 
 
 **Fuente contextual leída:** MacTutor, [«Calculus history — The rise of calculus»](https://mathshistory.st-andrews.ac.uk/HistTopics/The_rise_of_calculus/), pasajes dedicados a las maneras distintas en que Newton y Leibniz concibieron sus procedimientos. Este contexto no certifica que una expresión puntual de nuestro capítulo fuera escrita originalmente por ninguno de ellos.
 
-
-Cualquier análisis filológico de la formulación original de la regla de la cadena necesitará fuente primaria y localizador. La prueba de §2.3 es enteramente moderna y propia.
+**Estado:** `SECONDARY_WEB_READ / PRIMARY_NOT_COLLATED`. Cualquier análisis filológico de la formulación original de la regla de la cadena necesitará fuente primaria y localizador. La prueba de §2.3 es enteramente moderna y propia.
 
 ## H2. La marca de prima y la diferenciación de funciones
 
@@ -49,6 +48,7 @@ La notación $f'(x)$, particularmente útil para ver a la derivada como **funci�
 
 **Consecuencia editorial:** en C02 empleamos $f'$, $D$ y $d/dx$ por su utilidad matemática actual; no presentamos un único inventor de la notación operativa. La designación $D$ tiene asimismo otras trayectorias históricas posteriores, registradas en el mismo apartado.
 
+**Estado:** `SECONDARY_WEB_READ / PRIMARY_NOT_COLLATED`.
 
 ## H3. Logaritmos antes de su definición moderna
 
@@ -58,7 +58,7 @@ Los logaritmos surgieron históricamente en contextos de cálculo numérico, tab
 
 **Complemento leído:** [«Logarithms: A 'Great Tale' for Use in the Classroom»](https://old.maa.org/press/periodicals/convergence/logarithms-the-early-history-of-a-familiar-function-logarithms-a-great-tale-for-use-in-the-classroom), de las mismas autoras, sección sobre el vínculo entre relaciones logarítmicas, tablas y cálculo astronómico.
 
-No se atribuye a Napier ni a Bürgi la igualdad moderna $(\ln x)'=1/x$ como si fuera una ecuación escrita en su propia notación.
+**Estado:** `HISTORIOGRAPHY_WEB_READ / PRIMARY_NOT_COLLATED`. No se atribuye a Napier ni a Bürgi la igualdad moderna $(\ln x)'=1/x$ como si fuera una ecuación escrita en su propia notación.
 
 ## H4. La base natural y la letra e
 
@@ -66,8 +66,7 @@ Nuestro símbolo $e=\sum_{n\ge0}1/n!$ representa una definición matemáticament
 
 **Fuente secundaria leída:** MacTutor, [«Earliest Uses of Symbols for Constants»](https://mathshistory.st-andrews.ac.uk/Miller/mathsym/constants/), apartado **The base of natural logarithms**. La ficha documenta el uso de la letra $e$ por Euler en un manuscrito situado hacia 1727–1728 y distingue el conocimiento anterior de la constante de la elección posterior de la letra.
 
-
-No extrapolamos la fecha de una grafía a la invención de todas las propiedades de la función exponencial.
+**Estado:** `SECONDARY_WEB_READ / PRIMARY_NOT_COLLATED`. No extrapolamos la fecha de una grafía a la invención de todas las propiedades de la función exponencial.
 
 ## H5. Funciones trigonométricas, radianes y estabilización de símbolos
 
@@ -77,12 +76,13 @@ En §2.8 la igualdad $(\sin x)'=\cos x$ exige medir $x$ en radianes. Esta necesi
 
 **Nota fundacional sobre el lema geométrico.** La comparación sectorial de §2.8 se interpreta en la geometría euclídea clásica, en que la medida angular de un sector y su área se obtienen mediante agotamiento poligonal. La demostración allí reproducida es la prueba geométrica estándar del límite $\sin h/h\to1$ bajo esa normalización. No se presenta como derivación a partir de la futura integral de Riemann. Una construcción axiomática de todas las magnitudes circulares excedería el alcance del capítulo y debe reconocerse como premisa geométrica, no como un resultado probado desde el axioma del supremo solamente.
 
+**Estado:** `SECONDARY_WEB_READ / GEOMETRIC_FOUNDATION_SPECIFIED`.
 
 ## H6. Genealogía Toth y frontera con CPM
 
-Gabor Toth, *Elements of Mathematics: A Problem-Centered Approach to History and Foundations* (Springer, 2021), contiene ya derivabilidad, principio de Fermat y reglas elementales en el capítulo 4, y desarrolla temas exponenciales y trigonométricos en capítulos posteriores. Por ello EDC no anuncia las reglas de §2.2 como una primera novedad frente a Toth: las presenta con demostraciones nuevas para su autonomía lógica y con otra estructura problemática.
+Gabor Toth, *Elements of Mathematics: A Problem-Centered Approach to History and Foundations* (Springer, 2021), contiene ya derivabilidad, principio de Fermat y reglas elementales en el capítulo 4, y desarrolla temas exponenciales y trigonométricos en capítulos posteriores. La comparación está documentada en [la auditoría M00](edicion.html). Por ello EDC no anuncia las reglas de §2.2 como una primera novedad frente a Toth: las presenta con demostraciones nuevas para su autonomía lógica y con otra estructura problemática.
 
-En *Cálculo para matemáticos* (CPM) existen tratamientos más amplios de las mismas funciones. No se han importado párrafos, figuras ni bancos de ejercicios de ese proyecto. Sus archivos quedan intactos; cada ejercicio de C02 tiene un identificador propio. Esta nota registra una decisión editorial, no una «lectura del PDF» o una colación completa de ambas obras efectuada para esta edición.
+En *Cálculo para matemáticos* (CPM) existen tratamientos más amplios de las mismas funciones. No se han importado párrafos, figuras ni bancos de ejercicios de ese proyecto. Sus archivos quedan intactos; cada ejercicio de C02 tiene un identificador propio. Esta nota registra una decisión editorial, no una «lectura del PDF» o una colación completa de ambas obras efectuada en M03.
 
 ## Registro de uso efectivo y límites
 
@@ -93,5 +93,17 @@ En *Cálculo para matemáticos* (CPM) existen tratamientos más amplios de las m
 | Clark–Montelle, MAA *Convergence* | URL pública | Introducción y sección contextual consultadas | Desarrollo temprano de logaritmos |
 | MacTutor, símbolos de constantes | URL pública | Apartado de la base natural consultado | Uso histórico de $e$ |
 | MacTutor, símbolos trigonométricos | URL pública | Ficha y apartados relevantes consultados | Historia de grafías |
+| Toth 2021 en Drive | Localizado y precedente auditado | Registros EDC-M00; no nuevo cotejo línea a línea | Genealogía y control de frontera, no copia |
+| CPM en bóveda | Documentado en EDC-M00 | No edición ni importación | Contraste conceptual bajo autorización específica |
 
 **Control abierto no bloqueante:** si una futura edición de imprenta desarrolla narraciones históricas extensas sobre la invención de las reglas, la datación de manuscritos o la construcción original de exponenciales, deberá confrontar facsímiles o ediciones críticas con localizadores exactos. La matemática del capítulo no depende de tales atribuciones.
+
+
+## H7. Lecturas incorporadas en la revisión literaria R03
+
+Los dos recuadros de Leibniz se han cotejado con los pilotos editoriales v2.1 y con pasajes identificados de las siguientes fuentes. Las comparaciones con rectángulos y la explicación de la cadena pertenecen a nuestra exposición moderna; no se presentan como traducciones de una demostración histórica.
+
+- **Leibniz, *Nova methodus* (1684), en la traducción de Thiago Augusto Silva Dourado (2022):** [artículo de *Revista Brasileira de História da Matemática*](https://www.rbhm.org.br/index.php/RBHM/article/download/377/340), pp. 47–49. Se leyeron el título, las reglas de diferencias y el pasaje sobre tangentes. La introducción de p. 46 identifica la publicación de octubre de 1684 en *Acta Eruditorum*, pp. 467–473. El artículo reproduce el original latino al final, pero esta revisión **no efectuó una colación filológica ni una lectura visual completa del facsímil latino**. Estado: `PRIMARY_TEXT_IN_MODERN_TRANSLATION_READ / LATIN_NOT_COLLATED`.
+- **L’Hôpital, *Analyse des infiniment petits* (1696):** [digitalización del tratado](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf), sección I, p. 2, «Avertissement», y pp. 1–4 como contexto inmediato. Se leyó el texto extraído de la digitalización sobre la marca reservada $d$ y las letras asignadas a las magnitudes de la figura; también la regla de producto en p. 4. No se declara colación visual exhaustiva del ejemplar. Estado: `PRIMARY_DIGITIZATION_EXTRACTED_TEXT_READ / VISUAL_COLLATION_NOT_DONE`.
+
+La página antigua de MAA sobre el artículo de Leibniz no respondió en esta sesión; no se registra como lectura nueva. Los estados de H1–H6 describen el expediente anterior y permanecen vigentes con sus límites. No se atribuyen primeras apariciones absolutas ni se trasladan al siglo XVII nuestras definiciones modernas por límites.

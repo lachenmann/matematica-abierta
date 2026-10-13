@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C00-SOLUCIONES
-source-sha256: 73b76aac3fabe46bf9e5ab66c84c7fd405dbe5bd242072efed6b276f3475ed78
+source-sha256: 820be3a37a33fdb155af45d42170f7602bb8f2f8483fd869de71e33c649dbf1b
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -48,7 +48,7 @@ $$
 \ |x_n-L|\ge\varepsilon_0.
 $$
 
-La última fórmula exige que haya desviaciones de magnitud al menos $\varepsilon_0$ **arbitrariamente tarde** en la sucesión. Uno o varios términos iniciales lejos de $L$ son compatibles con la convergencia, porque la definición sólo impone un comportamiento a partir de cierto índice.
+Para negar la convergencia, primero negamos que toda tolerancia pueda asegurarse: debe existir una tolerancia $\varepsilon_0>0$ que falle. Después negamos que haya un índice a partir del cual todos los errores sean menores que ella: cualquiera que sea $N$, algún $n\ge N$ conserva un error de magnitud al menos $\varepsilon_0$. Las desviaciones aparecen por tanto **arbitrariamente tarde**; uno o varios términos iniciales lejos de $L$ no bastan, porque pueden quedar antes del índice a partir del cual se cumple la definición.
 
 ### Solución 0.2 (`EDC-C00-SOL-002`)
 
@@ -72,7 +72,7 @@ El límite cuando $h\to0$ es $2a+3$ por las reglas elementales de límites. La c
 
 ### Solución 0.4 (`EDC-C00-SOL-004`)
 
-La anchura común es $1/n$. Para alturas izquierdas $k/n$, $k=0,\ldots,n-1$,
+Cada rectángulo tiene anchura $1/n$, y la función $f(x)=x$ hace que su altura coincida con la coordenada de la muestra. Por eso aparecen dos factores $1/n$ al calcular su área: uno en la anchura y otro en la altura. Para alturas izquierdas $k/n$, $k=0,\ldots,n-1$,
 
 $$
 L_n=\frac1{n^2}\sum_{k=0}^{n-1}k
@@ -86,7 +86,7 @@ R_n=\frac1{n^2}\sum_{k=1}^{n}k
 =\frac{n(n+1)}{2n^2}=\frac{n+1}{2n}.
 $$
 
-Su diferencia es $R_n-L_n=1/n$ y, dado que $1/n\to0$, ambos límites son $1/2$. No fue necesario definir ni calcular una integral.
+La fórmula de suma de enteros puede verse emparejando los términos de la lista con los de la misma lista escrita al revés: cada par suma una misma cantidad, y al sumar todos los pares hemos contado dos veces la suma buscada. Las expresiones obtenidas dan $R_n-L_n=1/n$; además, cada suma difiere de $1/2$ en $1/(2n)$, de modo que ambas convergen a $1/2$ porque $1/n\to0$. Los rectángulos de extremos izquierdos y derechos proporcionan así el mismo límite mediante cálculos finitos.
 
 ## B. Límites, continuidad y cálculos justificados
 
@@ -122,7 +122,7 @@ La función polinómica del último miembro es continua en $1$, por lo que $\lim
 
 ### Solución 0.9 (`EDC-C00-SOL-009`)
 
-Tomemos $\varepsilon=f(a)/2>0$. Por continuidad existe $\delta>0$ tal que, si $x\in D$ y $|x-a|<\delta$, entonces $|f(x)-f(a)|<f(a)/2$. En particular,
+Para conservar el signo positivo queremos impedir que el valor de la función se aleje de $f(a)$ tanto como para llegar a cero. Tomemos $\varepsilon=f(a)/2>0$, dejando la mitad de ese margen. Por continuidad existe $\delta>0$ tal que, si $x\in D$ y $|x-a|<\delta$, entonces $|f(x)-f(a)|<f(a)/2$. En particular,
 
 $$
 f(x)>f(a)-\frac{f(a)}2=\frac{f(a)}2>0.
@@ -134,9 +134,9 @@ No se necesita que $a$ sea punto de acumulación. Si es aislado, elegimos un ent
 
 ### Solución 0.10 (`EDC-C00-SOL-010`)
 
-Sea $c>0$ y pongamos $A=\{x\in[0,c+1]:x^2<c\}$. Como $0\in A$, no es vacío; por definición está acotado superiormente por $c+1$. Además contiene un número positivo: por ejemplo $t=\min(1,c/2)>0$ satisface $t^2<c$. Existe, pues, $r=\sup A\ge t>0$.
+Sea $c>0$. Siguiendo la construcción de $\sqrt2$, buscamos la frontera de los números no negativos cuyo cuadrado es menor que $c$. Pongamos $A=\{x\in[0,c+1]:x^2<c\}$: se cumple $0\in A$ y el conjunto está acotado superiormente por $c+1$, de modo que podemos aplicar la completitud. Para que su supremo sea positivo necesitamos además un elemento positivo. El número $t=\min(1,c/2)>0$ sirve: si $c<2$, su cuadrado es $c^2/4<c$; si $c\ge2$, su cuadrado es $1<c$. En ambos casos $t^2<c$, de modo que existe $r=\sup A\ge t>0$.
 
-Si $r^2<c$, elegimos
+Si $r^2<c$, podemos intentar aumentar $r$ sin que el cuadrado llegue a $c$. El aumento es $h(2r+h)$, y al imponer $h<1$ queda acotado por $h(2r+1)$. Para que ese aumento sea menor que la diferencia $c-r^2$, elegimos
 
 $$
 0<h<\min\left(1,\frac{c-r^2}{2r+1}\right).
@@ -144,7 +144,7 @@ $$
 
 Así $(r+h)^2=r^2+2rh+h^2<c$. Como $(c+1)^2>c$ y $r+h>0$, necesariamente $r+h<c+1$; de ese modo $r+h\in A$, contradicción con la cota superior $r$.
 
-Si $r^2>c$, elegimos
+Si $r^2>c$, buscamos un número positivo menor que $r$ cuyo cuadrado siga superando a $c$. Al disminuir $r$ en $h$, el término $-2rh$ es el que puede hacer perder esa desigualdad, mientras que $h^2$ sólo la favorece. Conservamos por tanto $r-h>0$ y hacemos $2rh<r^2-c$ eligiendo
 
 $$
 0<h<\min\left(r,\frac{r^2-c}{2r}\right).
@@ -180,9 +180,9 @@ Dado $a\in\mathbb R$ y $\varepsilon>0$, elegimos $\delta=\varepsilon$. Si $|x-a|
 
 ### Solución 0.13 (`EDC-C00-SOL-013`)
 
-Sea $p(x)=x^3+x-1$. Como es polinómica, es continua en $[0,1]$. Tenemos $p(0)=-1<0$ y $p(1)=1>0$; por el Teorema 0.6 existe $c\in(0,1)$ con $p(c)=0$.
+El problema exige dos argumentos: encontrar una raíz y demostrar que no puede haber otra en $(0,1)$. Para la existencia, sea $p(x)=x^3+x-1$. Es un polinomio y por tanto es continuo en $[0,1]$; además $p(0)=-1<0$ y $p(1)=1>0$, de modo que el Teorema 0.6 proporciona $c\in(0,1)$ con $p(c)=0$.
 
-Si $0\le x<y\le1$, entonces
+Para la unicidad podemos comparar directamente los valores en dos puntos. Si $0\le x<y\le1$, la diferencia tiene un factor $y-x$ que recoge su orden:
 
 $$
 p(y)-p(x)=y^3-x^3+y-x
@@ -221,9 +221,9 @@ La Proposición 0.2 dice **«para toda sucesión»** del dominio que tienda al p
 
 ### Solución 0.17 (`EDC-C00-SOL-017`)
 
-En $I_0=[1,2]$, $p(1)=-1\le0$ y $p(2)=2\ge0$. Supongamos definido $I_n=[a_n,b_n]$ con esta propiedad. Sea $m_n=(a_n+b_n)/2$. Si $p(m_n)\ge0$, definimos $I_{n+1}=[a_n,m_n]$; si $p(m_n)<0$, ponemos $I_{n+1}=[m_n,b_n]$. En ambos casos se conservan los signos extremos, el nuevo intervalo está contenido en el anterior y su longitud es la mitad.
+En $I_0=[1,2]$, $p(1)=-1\le0$ y $p(2)=2\ge0$. Queremos reducir la longitud sin perder el cambio de signo, y el valor del punto medio decide qué mitad conservar. Supongamos definido $I_n=[a_n,b_n]$ con esta propiedad y sea $m_n=(a_n+b_n)/2$. Si $p(m_n)\ge0$, definimos $I_{n+1}=[a_n,m_n]$, porque en sus extremos permanecen un valor no positivo y otro no negativo; si $p(m_n)<0$, ponemos $I_{n+1}=[m_n,b_n]$ por la misma razón. Incluso si $p(m_n)=0$, la primera elección conserva la propiedad, sin necesidad de interrumpir la construcción. En ambos casos el nuevo intervalo está contenido en el anterior y su longitud es la mitad.
 
-Por inducción, $b_n-a_n=2^{-n}$. Los intervalos son cerrados, no vacíos y encajados; el Teorema 0.3 produce un único $r\in\bigcap_n I_n$. Además
+Por inducción, $b_n-a_n=2^{-n}$. Los intervalos son cerrados, no vacíos y encajados, y sus longitudes tienden a cero; el Teorema 0.3 produce un único $r\in\bigcap_n I_n$. La pertenencia a cada intervalo da inmediatamente un control del error, pues ambos extremos están a distancia de $r$ menor o igual que su longitud:
 
 $$
 0\le r-a_n\le2^{-n},\qquad0\le b_n-r\le2^{-n}.
@@ -235,7 +235,7 @@ $$
 p(a_n)\to p(r),\qquad p(b_n)\to p(r).
 $$
 
-Pero siempre $p(a_n)\le0\le p(b_n)$; al tomar los límites, $p(r)\le0\le p(r)$, de donde $p(r)=0$, es decir, $r^2=2$. La convergencia procede de completitud y de la cota cuantitativa, no de una imagen gráfica.
+Pero siempre $p(a_n)\le0\le p(b_n)$; al tomar los límites, $p(r)\le0\le p(r)$, de donde $p(r)=0$, es decir, $r^2=2$. La construcción conserva el cambio de signo en cada paso, la completitud proporciona el punto común y la continuidad identifica ese punto como raíz. La cota $2^{-n}$ permite además saber cuántas bisecciones bastan para alcanzar una precisión dada.
 
 ### Solución 0.18 (`EDC-C00-SOL-018`)
 
@@ -260,7 +260,7 @@ $$
 =x^2+xh+\frac{h^2}3\longrightarrow x^2
 $$
 
-cuando $h\to0$, $h\ne0$. La afinidad entre $F(r)-F(0)=r^3/3$ y el límite de las sumas es una observación exacta sobre esta función particular. Aún faltan una definición de integral que no dependa de la elección de muestras, las hipótesis generales y una demostración de la relación de reciprocidad. Eso corresponde a los capítulos 5 y 6, no a este ejercicio.
+cuando $h\to0$, $h\ne0$. El cambio $F(r)-F(0)=r^3/3$ coincide con el límite de las sumas, y el cociente incremental de $F$ recupera las alturas que utilizamos en los rectángulos. Hemos comprobado así las dos partes de una relación sugerente para esta función particular. La afirmación general requiere todavía definir la integral, controlar la independencia respecto de las muestras y demostrar bajo qué hipótesis se recupera la función mediante una tasa de cambio. Ésa será la tarea de los capítulos 5 y 6.
 
 ---
 

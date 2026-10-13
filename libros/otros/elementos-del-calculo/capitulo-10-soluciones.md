@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C10-SOLUCIONES
-source-sha256: 95311ac1dfa319185f32f94e9aa28edb447480bfebdbe77941d19cccb535a1f9
+source-sha256: 5737732e2675535787a4e50115b91b414d4c178084cdd65526b26f5a3ae6e60c
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -38,7 +38,7 @@ $y'=2t$ es de primer orden, lineal (coeficientes $p=0$, $q=2t$) y no autónoma p
 
 ### Solución 10.2 (`EDC-C10-SOL-002`)
 
-Derivamos $y'=-6e^{-3t}$. Entonces $y'+3y=-6e^{-3t}+3(2e^{-3t}+1)=3$. El dato inicial es $y(0)=2+1=3$. Esta sustitución acredita que tenemos **una** solución. Para afirmar unicidad utilizamos el Teorema 10.3 con $p=3$, $q=3$ continuas en $\mathbb R$, o restamos dos soluciones y aplicamos el Teorema 10.2 a $w'=-3w$, $w(0)=0$. Sólo el segundo argumento excluye otras soluciones con el mismo dato.
+Derivamos $y'=-6e^{-3t}$. Entonces $y'+3y=-6e^{-3t}+3(2e^{-3t}+1)=3$. El dato inicial es $y(0)=2+1=3$. Esta sustitución acredita que tenemos **una** solución. Para afirmar unicidad utilizamos el Teorema 10.3 con $p=3$, $q=3$ continuas en $\mathbb R$, o restamos dos soluciones y aplicamos el Teorema 10.2 a $w'=-3w$, $w(0)=0$. Ambos procedimientos de unicidad excluyen otras soluciones con el mismo dato: el teorema lo hace mediante la fórmula forzada por el factor integrante, y la comparación reduce la diferencia a una solución homogénea con valor inicial cero.
 
 ### Solución 10.3 (`EDC-C10-SOL-003`)
 
@@ -46,7 +46,7 @@ La derivada de $t^2$ es $2t$; por el valor medio, si $y'=2t$, la diferencia $y-t
 
 ### Solución 10.4 (`EDC-C10-SOL-004`)
 
-Si $y$ **ya** es una solución $C^1$ y $F$ es continua a lo largo de su gráfica, la regla de Newton–Leibniz produce $y(t)-y(t_0)=\int_{t_0}^t y'(s)ds=\int_{t_0}^tF(s,y(s))ds$. Si una función $C^1$ satisface la identidad, derivar mediante C06 recupera la ecuación. En ambos razonamientos se comienza **suponiendo la disponibilidad de $y$**. No hemos construido $y$ para una función $F(t,y)$ arbitraria; por ello no se obtiene existencia general a partir de reescribir una ecuación en forma integral.
+Si $y$ **ya** es una solución $C^1$ y $F$ es continua a lo largo de su gráfica, la regla de Newton–Leibniz produce $y(t)-y(t_0)=\int_{t_0}^t y'(s)ds=\int_{t_0}^tF(s,y(s))ds$. Si una función $C^1$ satisface la identidad, derivar mediante C06 recupera la ecuación. En ambos razonamientos se comienza **suponiendo la disponibilidad de $y$**. El integrando contiene todavía a $y$, por lo que la identidad no permite calcular el miembro derecho sin conocer la función buscada. En $y'=g(t)$ la dificultad desaparece, pues el integrando ya está dado. Para un campo general $F(t,y)$ haría falta un argumento que construyese una función y demostrase que satisface la identidad. La equivalencia sólo asegura que tal función, si se obtiene, resuelve también la ecuación diferencial.
 
 ## B. Reconstrucción, crecimiento y coeficientes variables
 
@@ -102,7 +102,7 @@ Como $y(0)=1$, resulta $y(t)=\frac32-\frac12e^{-2t}$. Derivando, $y'=e^{-2t}$ y 
 
 ### Solución 10.11 (`EDC-C10-SOL-011`)
 
-El factor es $e^t$. La identidad $(e^ty)'=te^t$ da
+El factor $e^t$ convierte $y'+y$ en la derivada de $e^ty$ al multiplicar la ecuación. Como el producto vale cero en el instante inicial, su valor en $t$ es la integral desde cero. Para calcularla usamos integración por partes: una primitiva de $se^s$ es $(s-1)e^s$, cuya derivada vuelve a ser $se^s$. Así
 
 $$
 e^t y(t)=\int_0^t s e^s ds=[(s-1)e^s]_0^t=(t-1)e^t+1.
@@ -124,7 +124,7 @@ $$
 \boxed{y(t)=\frac{t^2}{3}+\frac{5}{3t}\qquad(t>0).}
 $$
 
-La derivada es $2t/3-5/(3t^2)$, y $y'+y/t=t$. Se verifica $y(1)=1/3+5/3=2$. El coeficiente $1/t$ y la solución obtenida no están definidos en cero; el teorema garantiza unicidad **en $(0,\infty)$**, no en toda la recta.
+La derivada es $2t/3-5/(3t^2)$, y $y'+y/t=t$. Se verifica $y(1)=1/3+5/3=2$. El coeficiente $1/t$ y la solución obtenida no están definidos en cero; el teorema garantiza unicidad **en $(0,\infty)$**, no en toda la recta. Además, el término $5/(3t)$ tiende a $+\infty$ cuando $t\downarrow0$, por lo que esta trayectoria ni siquiera admite una prolongación continua con valor real finito en cero. La misma expresión puede evaluarse para $t<0$, pero esa rama separada no une la solución del PVI a través del punto singular.
 
 ### Solución 10.13 (`EDC-C10-SOL-013`)
 
@@ -138,7 +138,7 @@ $$
 |y_1(2)-y_2(2)|\le e^2\left(\frac15+\frac1{10}\cdot2\right)=\frac{2e^2}{5}.
 $$
 
-Es una **cota válida**, no necesariamente óptima. En este caso, como $p=1>0$, el factor exacto también permite una estimación más fina; el ejercicio pide utilizar el teorema general con $|p|\le1$ y por eso basta la expresión anterior.
+La cota utiliza sólo $|p|\le1$ y por ello permite el factor de crecimiento $e^2$. Aquí conocemos además que $p=1$ es positivo: en la fórmula de la diferencia, el dato se multiplica por $e^{-t}$ y la fuente se integra con el peso $e^{-(t-s)}$. Usando directamente esos pesos obtenemos, en $t=2$, la cota $e^{-2}/5+(1-e^{-2})/10=(1+e^{-2})/10$. Esta estimación más fina aprovecha información que la cota general descartó al tomar $|p|$; la expresión solicitada por el ejercicio sigue siendo $2e^2/5$.
 
 ### Solución 10.15 (`EDC-C10-SOL-015`)
 
@@ -154,7 +154,7 @@ Derivamos $y'=2t e^{-t^2}$, mientras $2t y=2t(1-e^{-t^2})$. La suma es $2t$, y $
 
 ### Solución 10.16 (`EDC-C10-SOL-016`)
 
-En la rama $K=(0,\infty)$ tenemos $b(y)=y^2>0$. Integrar la ecuación dividida por $y^2$ **sólo sobre esa rama** equivale a aplicar $B(y)=\int_1^y dv/v^2=1-1/y$, de modo que
+En la rama $K=(0,\infty)$ tenemos $b(y)=y^2>0$. La función $B(y)=1-1/y$ es estrictamente creciente, tiende a $-\infty$ cuando $y\downarrow0$ y a $1$ cuando $y\to\infty$. Su imagen es, por tanto, $(-\infty,1)$. La condición que permite invertirla es $A(t)=t^2/2<1$, que ya anticipa los dos extremos $\pm\sqrt2$ del intervalo buscado. Integrar la ecuación dividida por $y^2$ **sólo sobre esa rama** equivale a aplicar $B(y)=\int_1^y dv/v^2=1-1/y$, de modo que
 
 $$
 1-\frac1{y(t)}=\int_0^t s\,ds=\frac{t^2}{2}.
@@ -203,7 +203,7 @@ y_0(t)=\begin{cases}0,&t\le0,\\t^2/4,&t>0,\end{cases}\qquad
  y_1(t)=\begin{cases}0,&t\le1,\\(t-1)^2/4,&t>1.\end{cases}
 $$
 
-En el tiempo de partida $c$, la derivada por la izquierda vale cero y la derivada por la derecha $(t-c)/2\to0$, de modo que existe derivada continua igual a cero. Antes de $c$, $y'=\sqrt{|y|}=0$; después, ambas expresiones valen $(t-c)/2$. Ambas cumplen $y(0)=0$, pero por ejemplo $y_0(1)=1/4$ y $y_1(1)=0$; son distintas entre sí y de la trayectoria nula.
+Para comprobar la derivada en el tiempo de partida $c$, calculamos el cociente incremental: para $h<0$ es cero y para $h>0$ vale $[(h^2/4)-0]/h=h/4$. Ambos límites son cero, de modo que la derivada existe en $c$. Fuera de ese punto es cero a la izquierda y $(t-c)/2$ a la derecha; al acercarse a $c$, sus dos límites coinciden con la derivada recién calculada. Así la función es $C^1$, incluido el empalme. Antes de $c$, $y'=\sqrt{|y|}=0$; después, ambas expresiones valen $(t-c)/2$. Ambas cumplen $y(0)=0$, pero por ejemplo $y_0(1)=1/4$ y $y_1(1)=0$; son distintas entre sí y de la trayectoria nula.
 
 ### Solución 10.20 (`EDC-C10-SOL-020`)
 
@@ -214,7 +214,7 @@ $$
 =(u-v)\left(1-\frac{u+v}{K}\right).
 $$
 
-Si $|u|,|v|\le M$, entonces $|u+v|\le2M$, y la desigualdad triangular da la cota solicitada. Multiplicando por $r>0$ obtenemos un coeficiente Lipschitz $L=r(1+2M/K)$ para $F(y)=ry(1-y/K)$ en la banda acotada. Como las imágenes de dos soluciones continuas sobre un compacto están acotadas, podemos escoger un $M$ común y aplicar el Teorema 10.6. Esto prueba **unicidad si ambas soluciones ya existen**, no existencia a partir de cualquier campo abstracto.
+Si $|u|,|v|\le M$, entonces $|u+v|\le2M$, y la desigualdad triangular da la cota solicitada. Multiplicando por $r>0$ obtenemos un coeficiente Lipschitz $L=r(1+2M/K)$ para $F(y)=ry(1-y/K)$ en la banda acotada. Para dos soluciones con el mismo dato inicial, fijamos un intervalo temporal compacto común que contenga ese instante. Sus imágenes son acotadas por continuidad; tomando el mayor de los dos módulos máximos elegimos un $M$ que encierra a ambas en la banda $[-M,M]$. El campo es continuo en el rectángulo temporal correspondiente y la desigualdad recién obtenida vale para todos los valores de esa banda. Se cumplen así las hipótesis del Teorema 10.6, que identifica las dos trayectorias en el compacto. Esto prueba **unicidad si ambas soluciones ya existen**, no existencia a partir de cualquier campo abstracto.
 
 ### Solución 10.21 (`EDC-C10-SOL-021`)
 
@@ -242,7 +242,7 @@ $$
 y(t)=\frac{10}{1-3e^{-2t}}.
 $$
 
-El denominador se anula cuando $e^{-2t}=1/3$, es decir, en $t_*=(\ln3)/2>0$. Sobre $[0,t_*)$ es negativo y la función satisface la ecuación y el dato $y(0)=10/(1-3)=-5$. Al aproximarse $t\uparrow t_*$, el denominador tiende a cero por valores negativos y $y(t)\to-\infty$. Una función real continua no puede tener ese límite en un tiempo interior de su dominio; no existe prolongación clásica de esa trayectoria a través de $t_*$. El Teorema 10.7 **exigía dato inicial positivo** y no debe aplicarse sin revisar la hipótesis.
+El denominador se anula cuando $e^{-2t}=1/3$, es decir, en $t_*=(\ln3)/2>0$. Sobre $[0,t_*)$ es negativo y la función satisface la ecuación y el dato $y(0)=10/(1-3)=-5$. Al aproximarse $t\uparrow t_*$, el denominador tiende a cero por valores negativos y $y(t)\to-\infty$. Una función real continua no puede tener ese límite en un tiempo interior de su dominio; no existe prolongación clásica de esa trayectoria a través de $t_*$. Si existiese una solución del mismo PVI que atravesase ese tiempo con valor finito, la unicidad del campo polinómico en compactos la haría coincidir con la fórmula en cada intervalo anterior a $t_*$. Tendría entonces que compartir el límite $-\infty$, incompatible con su continuidad en $t_*$. La divergencia de esta trayectoria impide, pues, una prolongación clásica. El Teorema 10.7 **exigía dato inicial positivo**; para el dato negativo hemos usado la comprobación directa y la unicidad, sin trasladar aquella conclusión de existencia futura global.
 
 ## E. Modelos y segundo orden
 
@@ -258,7 +258,7 @@ $T=35$ equivale a $15=60e^{-t/2}$, de donde $e^{-t/2}=1/4$ y $t=2\ln4$ horas. El
 
 ### Solución 10.24 (`EDC-C10-SOL-024`)
 
-La ecuación es $T'+T=10+\sin t$, con factor $\mu=e^t$. De $T(0)=0$,
+La ecuación es $T'+T=10+\sin t$, con factor $\mu=e^t$. Para integrar $e^s\sin s$, integración por partes relaciona su primitiva con la de $e^s\cos s$; aplicándola una segunda vez se recupera la primera integral y se puede despejar. El resultado es $e^s(\sin s-\cos s)/2$, cuya derivada es $e^s\sin s$. Su valor en cero es $-1/2$, origen del término positivo $1/2$ al evaluar la integral definida. De $T(0)=0$,
 
 $$
 e^tT(t)=\int_0^t e^s(10+\sin s)ds
@@ -291,7 +291,7 @@ $$
 x(t)=2\cos(3t)-\sin(3t).
 $$
 
-Su derivada es $x'=-6\sin(3t)-3\cos(3t)$ y $x''=-18\cos(3t)+9\sin(3t)=-9x$. En cero: $x(0)=2$, $x'(0)=-3$. Para unicidad, si $w$ es diferencia de dos soluciones, $w''+9w=0$ y los datos de $w,w'$ en cero son nulos. La energía $E=(w')^2+9w^2$ cumple $E'=2w'(w''+9w)=0$ y $E(0)=0$; la no negatividad fuerza $w\equiv0$.
+Su derivada es $x'=-6\sin(3t)-3\cos(3t)$ y $x''=-18\cos(3t)+9\sin(3t)=-9x$. En cero: $x(0)=2$, $x'(0)=-3$. Para unicidad, si $w$ es diferencia de dos soluciones, $w''+9w=0$ y los datos de $w,w'$ en cero son nulos. La energía $E=(w')^2+9w^2$ cumple $E'=2w'(w''+9w)=0$. Por el valor medio es constante, y los dos datos iniciales nulos dan $E(0)=0$. En cada instante, la suma de los dos cuadrados debe ser cero: ninguno puede compensar al otro con un valor negativo. Así $w=w'=0$ en toda la recta, lo que demuestra unicidad.
 
 ### Solución 10.27 (`EDC-C10-SOL-027`)
 
@@ -317,7 +317,7 @@ $$
 0\le e^h-(1+h)\le\frac12e^h h^2.
 $$
 
-El Lema 10.2 también asegura esta cota con $M=e^h$. Pero en un segundo paso el método numérico arranca desde $1+h$, **no** desde el verdadero $e^h$; el error anterior se transmite. Para $N$ pasos sería necesaria una estimación adicional de propagación de errores, ausente de la mera cota local.
+El Lema 10.2 también asegura esta cota con $M=e^h$. Pero en un segundo paso el método numérico arranca desde $1+h$, **no** desde el verdadero $e^h$; el error anterior se transmite. Incluso para esta ecuación podemos ver la transmisión: con pasos de tamaño $h$, dos pasos de Euler dan $(1+h)^2$, mientras la solución exacta vale $e^{2h}$. La diferencia se descompone como $e^{2h}-(1+h)^2=(1+h)[e^h-(1+h)]+e^h[e^h-1-h]$. El primer sumando transporta el error del paso anterior y el segundo es el error local de un paso iniciado en el valor exacto $e^h$. Para $N$ pasos tendríamos que controlar la suma de esas contribuciones propagadas; la cota de un paso aislado no realiza ese trabajo.
 
 ### Solución 10.30 (`EDC-C10-SOL-030`)
 
@@ -338,7 +338,7 @@ $$
 
 (b) En cero, $y(0)=1/4+3/4=1$. Además $y'=1/2-(3/2)e^{-2t}$ y $y'+2y=[1/2-(3/2)e^{-2t}]+[t+1/2+(3/2)e^{-2t}]=1+t$. Los coeficientes de la EDO son continuos en $\mathbb R$; el Teorema 10.3 da **unicidad global**, no sólo verificación algebraica.
 
-(c) De la expresión exacta, $y'(0)=1/2-3/2=-1$, $y''(t)=3e^{-2t}$ y $y''(0)=3$. Por ello
+(c) También podemos obtener las primeras derivadas sin volver a derivar la fórmula completa. La ecuación da $y'=1+t-2y$, de modo que $y'(0)=1-2=-1$; al derivarla, $y''=1-2y'$ y por tanto $y''(0)=3$. La fórmula explícita justifica la regularidad necesaria y permite comprobar estos valores. De la expresión exacta, $y'(0)=1/2-3/2=-1$, $y''(t)=3e^{-2t}$ y $y''(0)=3$. Por ello
 
 $$
 T_{2,0}y(t)=1-t+\frac32t^2.

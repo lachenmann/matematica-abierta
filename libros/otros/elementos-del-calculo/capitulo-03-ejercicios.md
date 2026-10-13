@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C03-EJERCICIOS
-source-sha256: 51f380c03e85d639e4cafc74df72d2f51a599dc024f60fdd45853ef4c870eb76
+source-sha256: 467d63f336c05e7e88a4e440f2ef3173a50ed828905377af3ed761524d02e5e3
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -56,7 +56,7 @@ Los ejercicios se resuelven a partir de C00–C03. En cada caso se deben justifi
 
 ## C. Criterios globales y convexidad
 
-**Ejercicio 3.11 (`EDC-C03-EXR-011`).** Demuestre que si $f$ es derivable en un intervalo y $f'=0$ en todos sus puntos interiores, entonces $f$ es constante. Explique dónde se utiliza la condición de intervalo.
+**Ejercicio 3.11 (`EDC-C03-EXR-011`).** Sea $I\subseteq\mathbb R$ un intervalo no vacío, de cualquier tipo, y sea $f:I\to\mathbb R$ continua en todo $I$ en el sentido relativo al dominio, incluidos los extremos que pertenezcan a $I$, y derivable en su interior $I^\circ$. Si $f'(x)=0$ para todo $x\in I^\circ$, demuestre que $f$ es constante en todo $I$. Explique dónde se utiliza la condición de intervalo y por qué se necesita la continuidad en los bordes incluidos.
 
 **Ejercicio 3.12 (`EDC-C03-EXR-012`).** Si $f'(x)>0$ sobre un intervalo abierto $I$, demuestre que $f$ es estrictamente creciente. ¿Es necesario que la derivada tenga límite o sea continua?
 

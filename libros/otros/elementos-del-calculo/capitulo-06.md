@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C06
-source-sha256: 5eda5a5715f13fdf621defe0ff02a6220595ddd1de3ec62ee21ec6c9b38ee8b4
+source-sha256: 47af40178c9380ac88de149cf409eabcca66b57f59d1f9c19e7b90610b9c4869
 content-id: MA-BCH-0337
 content-type: book-chapter
 related:
@@ -36,9 +36,11 @@ related:
 
 > **Pregunta generadora.** ¿Por qué la acumulación de una magnitud variable puede recuperarse mediante una derivada, y por qué conocer una primitiva permite calcular una integral sin volver a sumar rectángulos?
 
-Durante los capítulos anteriores hemos seguido dos caminos. En el primero, las pendientes de secantes y las velocidades medias dieron lugar a la derivada: una razón de cambio local definida por un límite. En el segundo, las cuadraturas y las sumas de rectángulos condujeron a la integral de Riemann–Darboux: un número definido cuando todas las aproximaciones suficientemente finas son compatibles. Ninguna de estas construcciones necesitó suponer que derivar e integrar fueran operaciones inversas. De hecho, demostrar su relación sería imposible si hubiéramos definido la integral como «la diferencia entre los valores de una primitiva»: tal definición **supondría la conclusión** que queremos obtener.
+Al mover el extremo de una región bajo una gráfica, cambiamos el número que representa su acumulación. Podemos preguntar cuánto cambia ese número y dividir el incremento por la distancia recorrida por el extremo. El cociente tiene las mismas unidades que la altura de la gráfica; en una franja estrecha, parece razonable que se aproxime a la altura en el punto de partida. Si conseguimos demostrarlo, la función que habíamos integrado reaparecerá como derivada de su acumulación.
 
-Ahora contamos con ambas teorías y con el teorema del valor medio. Podemos formular, por primera vez y sin circularidad, su conexión central. La primera parte afirma que la integral acumulada de una función continua es derivable y que su derivada recupera la función. La segunda parte permite evaluar la integral a partir de **cualquier** primitiva apropiada. Veremos por qué son afirmaciones relacionadas, pero lógicamente diferentes, y por qué sus condiciones de aplicación deben permanecer visibles.
+Contamos ya con las dos construcciones necesarias para estudiar esa relación. La derivada surgió de las pendientes de secantes y las velocidades medias; la integral, de cotas y sumas que permiten reunir todas las aproximaciones suficientemente finas. El problema pendiente de C05 consiste en comparar sus límites. La aditividad de la integral aislará la franja recién añadida y el orden permitirá acotar su contribución, de modo que podremos trabajar incluso cuando no conozcamos una fórmula para el valor acumulado.
+
+Después estudiaremos qué ocurre si otra función tiene esa misma derivada. El teorema del valor medio permitirá compararla con la acumulación y determinar cuánto pueden diferir. De esa comparación obtendremos una manera de calcular integrales mediante primitivas, apoyada en el número que las sumas de C05 ya habían definido.
 
 ## 6.1. El problema de sumar mientras el extremo se mueve
 
@@ -50,7 +52,9 @@ $$
 
 La letra $t$ es una **variable muda de integración**: sustituirla por $u$ no modifica el número. En cambio, $x$ es el **extremo variable**; cambiarlo sí modifica la acumulación. Si $f\ge0$, $F(x)$ puede interpretarse como área bajo la gráfica desde $a$ hasta $x$. Si $f$ toma valores negativos, $F$ representa una acumulación *con signo*, no la suma de áreas geométricas sin orientación.
 
-En la parábola $f(t)=t^2$ sobre $[0,1]$, las sumas y sus cotas ya mostraron que $\int_0^x t^2\,dt=x^3/3$ para $0\le x\le1$ (el cambio de escala en las sumas es suficiente). La derivada de $x^3/3$ vale $x^2$. Esta coincidencia es un indicio, **no** una prueba general: debemos explicar por qué sucede para toda función continua, aunque no conozcamos ninguna expresión algebraica para su integral.
+Para $f(t)=t^2$ en $[0,1]$ conocemos las sumas y su valor límite. Si el extremo se sitúa en $x>0$, una partición de $[0,1]$ se convierte, al multiplicar sus puntos y etiquetas por $x$, en una partición de $[0,x]$. Las alturas cuadráticas se multiplican por $x^2$ y las anchuras por $x$, por lo que toda suma se multiplica por $x^3$. Su límite es $x^3/3$; en $x=0$ la integral es cero por definición. Así tenemos $F(x)=x^3/3$, cuya derivada es $x^2$.
+
+En este ejemplo pudimos reconocer la función de acumulación antes de derivarla. Para un integrando continuo cualquiera, la misma relación tendrá que surgir del incremento de la integral, sin depender de una expresión algebraica que quizá no sepamos encontrar.
 
 ## 6.2. Las herramientas: aditividad, orden y orientación
 
@@ -74,9 +78,11 @@ $$
 
 queda entre el ínfimo y el supremo de $f$ en el intervalo cerrado comprendido entre $x$ y $x+h$, **tanto si $h>0$ como si $h<0$**.
 
-**Demostración.** Las constantes $m_{u,v}\le f\le M_{u,v}$ son integrables. Aplicamos la monotonía y la integral de una constante demostradas en C05. Si $h>0$, dividimos la desigualdad resultante por $h>0$. Si $h<0$, escribimos $\int_x^{x+h}f=-\int_{x+h}^x f$ y dividimos por $h<0$; ambos cambios de signo se compensan. $\square$
+**Demostración.** La integrabilidad en $[a,b]$ se conserva al restringir a $[u,v]$, por el Teorema 5.8. En ese intervalo, las constantes $m_{u,v}$ y $M_{u,v}$ acotan a $f$. El orden de la integral y el valor de una constante, demostrados en C05, dan las dos cotas del enunciado. Si $f$ es continua, el teorema de valores extremos asegura además que esas cotas locales son valores de la función.
 
-Este lema concentra el argumento sin pedir un teorema de derivación: **se apoya exclusivamente en la integral previamente construida**. Es la versión exacta de encerrar una franja de acumulación entre dos rectángulos.
+Para $h>0$, el intervalo es $[x,x+h]$ y su longitud es $h$; dividir por ella coloca el cociente entre las dos alturas. Si $h<0$, el intervalo no orientado es $[x+h,x]$, cuya longitud es $-h>0$. La orientación permite escribir $h^{-1}\int_x^{x+h}f=(-h)^{-1}\int_{x+h}^x f$. Por tanto estamos dividiendo de nuevo una integral sobre un intervalo ordenado por su longitud positiva, y obtenemos las mismas cotas. El cociente representa en ambos casos una altura promedio sobre el tramo. $\square$
+
+Las cotas permiten comparar el incremento de una acumulación con las alturas del tramo que lo produce. Si esas alturas están próximas a un mismo valor, su promedio queda próximo a él, aunque la función varíe dentro del intervalo.
 
 **Lema 6.2 (oscilación local; `EDC-C06-LEM-002`).** Si $f$ es continua en $c\in[a,b]$, entonces, para todo $\varepsilon>0$, existe $\delta>0$ tal que cualquier intervalo $J\subseteq[a,b]$ que contenga a $c$ y esté contenido en $(c-\delta,c+\delta)$ satisface
 
@@ -84,14 +90,14 @@ $$
 \sup_{t\in J}|f(t)-f(c)|<\varepsilon.
 $$
 
-**Demostración.** Por continuidad relativa en $c$, elegimos $\delta$ de manera que $|f(t)-f(c)|<\varepsilon/2$ para todos los $t\in[a,b]$ con $|t-c|<\delta$. Entonces el supremo sobre $J$ no excede $\varepsilon/2<\varepsilon$. $\square$
+**Demostración.** La continuidad relativa en $c$ permite exigir $|f(t)-f(c)|<\varepsilon/2$ para todo $t\in[a,b]$ con $|t-c|<\delta$, escogiendo un único $\delta>0$. Cada punto de $J$ satisface esa condición, así que todas las diferencias quedan acotadas por $\varepsilon/2$. Su supremo no supera esa cantidad y, por ello, es estrictamente menor que $\varepsilon$.
+
+Elegimos la mitad de la tolerancia porque tomar un supremo puede convertir una cota estricta puntual en una cota no estricta. El margen restante conserva la desigualdad que pide el lema. La continuidad relativa también cubre los extremos de $[a,b]$, donde sólo consideramos los puntos del dominio. $\square$
 
 <figure id="fig-edc-c06-01" class="quarto-float-fig">
 <img src="/assets/books/elementos-del-calculo/EDC-C06-F01_ACUMULACION_ORIENTADA.svg" alt="Gráfica de f(x)=x−1/2 entre cero y uno, área negativa de −1/8 bajo el eje a la izquierda y área positiva de +1/8 a la derecha.">
 <figcaption>Figura 6.1. La integral con signo suma las contribuciones orientadas y puede anularse sin que desaparezca el área geométrica total.</figcaption>
 </figure>
-
-
 
 ## 6.3. La función de acumulación es continua, aun antes de derivarla
 
@@ -111,19 +117,21 @@ $$
 
 En consecuencia, $F$ es continua en $[a,b]$, incluso cuando $f$ no lo sea.
 
-**Demostración.** Por aditividad orientada de la integral en C05,
+**Demostración.** Al restar las acumulaciones hasta $y$ y hasta $x$, la parte común se cancela por la aditividad orientada de C05:
 
 $$
 F(y)-F(x)=\int_x^y f(t)\,dt.
 $$
 
-Si $x<y$, la monotonía de la integral aplicada a $-M\le f\le M$ produce
+Si $x<y$, la comparación $-M\le f\le M$ y el valor integral de una constante dan
 
 $$
 -M(y-x)\le F(y)-F(x)\le M(y-x).
 $$
 
-Para $y<x$ intercambiamos los puntos y usamos la orientación; para $x=y$ la diferencia es cero. Tomando valores absolutos resulta la estimación. Dado $\varepsilon>0$, si $M>0$ basta imponer $|x-y|<\varepsilon/M$; si $M=0$, $F$ es constante. $\square$
+La diferencia queda entre un número y su opuesto, así que su módulo no supera $M(y-x)$. Si $y<x$, intercambiamos los puntos; ambos módulos permanecen iguales y la longitud positiva pasa a ser $x-y$. Si coinciden, la diferencia es cero. Esto demuestra la estimación para todos los pares.
+
+Para verificar continuidad, fijamos $\varepsilon>0$. Cuando $M>0$, exigir $|x-y|<\varepsilon/M$ hace el cambio de $F$ menor que $\varepsilon$. Si $M=0$, la cota obliga a que $f$ sea nula y $F$ sea constantemente cero. El control funciona en todo el intervalo, incluidos sus extremos. $\square$
 
 **Proposición 6.1 (monotonía de la acumulación; `EDC-C06-PRP-001`).** Si $f\ge0$, la función $F$ es no decreciente. Si $f\le0$, es no creciente. Más generalmente, si $m\le f\le M$, para $x<y$ se cumple
 
@@ -131,9 +139,9 @@ $$
 m(y-x)\le F(y)-F(x)\le M(y-x).
 $$
 
-**Demostración.** Aplíquese el Lema 6.1 y la aditividad, sin derivar ninguna expresión. $\square$
+**Demostración.** Para $x<y$, la aditividad identifica $F(y)-F(x)$ con $\int_x^y f$. El Lema 6.1 coloca esa integral entre $m(y-x)$ y $M(y-x)$, pues las cotas globales también valen en el intervalo menor. Si $f\ge0$, podemos tomar la cota inferior cero y resulta $F(y)\ge F(x)$. Si $f\le0$, la cota superior cero da $F(y)\le F(x)$. $\square$
 
-Esta conclusión distingue **acumulación** de **derivación**: ya conocemos continuidad y variación global de $F$ sin haber probado que su derivada exista en un punto dado.
+La acumulación conserva continuidad incluso si el integrando salta. Una altura acotada sólo puede aportar, sobre un tramo corto, una cantidad cuyo módulo sea pequeño. Para obtener su derivada necesitaremos precisar además qué altura describe el comportamiento cerca de cada punto.
 
 ## 6.4. Primera parte: derivar una acumulación continua
 
@@ -151,55 +159,59 @@ $$
 
 En los extremos existen las derivadas **relativas al intervalo**, $F'_+(a)=f(a)$ y $F'_-(b)=f(b)$; no se afirma una derivada bilateral en $a$ o en $b$ si $F$ sólo está definida sobre $[a,b]$.
 
-**Demostración.** La continuidad se sigue del Teorema 6.1, pues $f$ es acotada por el teorema de valores extremos de C00. Fijemos $x\in(a,b)$ y tomemos $h\ne0$ tan pequeño que $x+h\in[a,b]$. La aditividad da
+**Demostración.** La continuidad de $f$ en el intervalo cerrado asegura acotación por el teorema de valores extremos de C00. El Teorema 6.1 garantiza entonces la continuidad de $F$. Fijemos $x\in(a,b)$ y estudiemos su cociente incremental para $h\ne0$ con $x+h\in[a,b]$.
+
+La aditividad permite cancelar la acumulación común desde $a$ hasta $x$, dejando sólo el aporte entre $x$ y $x+h$:
 
 $$
 \frac{F(x+h)-F(x)}h
 =\frac1h\int_x^{x+h}f(t)\,dt.
 $$
 
-Por el Lema 6.1, este cociente está entre el menor y el mayor valor de $f$ en el intervalo $J_h$ determinado por $x$ y $x+h$. En particular,
+El Lema 6.1 sitúa este cociente entre el mínimo y el máximo de $f$ en el intervalo cerrado $J_h$ que une los dos extremos. Esas alturas pueden cambiar con $h$, pero todos los puntos del tramo distan de $x$ a lo sumo $|h|$. Para compararlas con la altura fija $f(x)$, acotamos las separaciones de cada valor y obtenemos
 
 $$
 \left|\frac{F(x+h)-F(x)}h-f(x)\right|
 \le\sup_{t\in J_h}|f(t)-f(x)|.
 $$
 
-Como $f$ es continua en $x$, el Lema 6.2 hace el miembro derecho menor que cualquier $\varepsilon>0$ cuando $|h|$ es suficientemente pequeño. Por definición de derivada (`EDC-C01-DEF-002`), $F'(x)=f(x)$. La misma estimación con $h>0$ en $a$ y con $h<0$ en $b$ prueba las derivadas laterales declaradas. $\square$
+Dado $\varepsilon>0$, el Lema 6.2 proporciona un entorno donde ese supremo es menor que $\varepsilon$. Escogemos $|h|$ menor que su radio y que las distancias de $x$ a los extremos del dominio. Entonces $J_h$ está entero en el entorno y el cociente difiere de $f(x)$ en menos que la tolerancia, tanto para incrementos positivos como negativos. Por la definición de derivada (`EDC-C01-DEF-002`), $F'(x)=f(x)$.
 
-El teorema establece un vínculo **local**: una acumulación globalmente definida recupera la altura de la función justamente porque, en una franja muy estrecha, sus valores son cercanos a la altura en el punto considerado. La geometría sugiere el argumento; las desigualdades de Darboux lo demuestran.
+En $a$ sólo admitimos $h>0$; en $b$, $h<0$. La continuidad relativa de $f$ y la misma estimación dan $F'_+(a)=f(a)$ y $F'_-(b)=f(b)$. Son límites dentro del dominio. $\square$
+
+El cociente incremental convierte la contribución de una franja en su altura promedio. La continuidad hace que, al estrecharla alrededor del punto, todas sus alturas se acerquen a $f(x)$. Esa es la información que permite recuperar el integrando al derivar, y explica por qué la demostración funciona sin conocer una fórmula para $F$.
 
 ### 6.4.1. Dos controles inmediatos
 
-Para $f(t)=1$ en $[a,b]$, $F(x)=x-a$ y $F'(x)=1$. Si $f(t)=t^2$ sobre $[0,1]$, el cálculo por sumas establecido en C04–C05 da $F(x)=x^3/3$ y el teorema garantiza $F'(x)=x^2$. Pero su alcance es mucho mayor: para $f(t)=e^{-t^2}$ sobre $[0,1]$, la función
+Para $f(t)=1$ en $[a,b]$, $F(x)=x-a$ y su derivada vale uno. Para $f(t)=t^2$ en $[0,1]$, las sumas de C04–C05 y su cambio de escala dan $F(x)=x^3/3$, de acuerdo con $F'(x)=x^2$. En ambos casos conocíamos ya una fórmula que permite comprobar el resultado.
+
+Consideremos en cambio el integrando continuo $e^{-t^2}$ en $[0,1]$. Podemos definir
 
 $$
 H(x)=\int_0^x e^{-t^2}\,dt
 $$
 
-es derivable y $H'(x)=e^{-x^2}$, aunque **no hayamos hallado una expresión cerrada** para $H$. No hace falta demostrar aquí si esa primitiva admite o no una expresión mediante funciones elementales: la existencia y su derivada ya son consecuencias rigurosas del teorema.
+y el teorema demuestra que $H'(x)=e^{-x^2}$ en el interior. La integral proporciona una función concreta, con $H(0)=0$ y esa derivada, aunque no hayamos hallado una expresión cerrada para ella. Su existencia descansa en las sumas y su derivabilidad en la estimación local que acabamos de probar; decidir si admite una expresión mediante funciones elementales sería otro problema.
 
 ::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — El encuentro entre tangentes y áreas"}
-
 *Lectura opcional.*
 
-Durante mucho tiempo, hallar una tangente y hallar un área parecían tareas de familias distintas. Una preguntaba por la inclinación en un punto; la otra, por toda una región. ¿Qué podía unir algo tan local con algo tan extenso?
+En junio de 1686, Leibniz publicó en *Acta Eruditorum* un artículo que retomaba problemas de tangentes y cuadraturas. Entre sus interlocutores estaba John Craig, cuyo tratado había recibido y cuyas explicaciones quería aclarar. La discusión conduce a una idea fecunda: buscar una curva a partir de una propiedad de sus tangentes puede servir también para encontrar áreas.
 
-Barrow estudió vínculos geométricos entre ambos problemas. Newton los relacionó mediante magnitudes que fluyen y sus velocidades; Leibniz reunió diferenciación y sumación en un lenguaje de operaciones recíprocas. La conexión abrió una puerta enorme para el cálculo.
+En un pasaje del artículo, Leibniz pasa de una igualdad de diferenciales a una igualdad de sumas. Usa como ejemplo que la diferencial de $x^2/2$ es $x\,dx$ y obtiene, en sentido inverso, su sumación. Presenta diferencias y sumas como operaciones recíprocas; la escritura reúne en unas pocas líneas dos problemas que podían exigir construcciones geométricas laboriosas.
 
-Podemos verla funcionar con una imagen sencilla: dejamos avanzar el extremo de una región y observamos cuánto aumenta su área. La franja recién añadida es estrecha; su altura nos informa sobre el ritmo al que crece la acumulación. El Teorema Fundamental expresa esa relación. La función que parecía describir sólo la altura de una curva también describe cómo cambia el área que vamos reuniendo.
+La relación se puede reconocer en nuestro ejemplo de la parábola: una vez que la acumulación tiene derivada $x^2$, compararla con $x^3/3$ permite identificar su valor. Aquí justificamos esa comparación mediante límites y el valor medio. El pasaje de Leibniz deja ver el alcance que podía tener la conexión para el cálculo de curvas y áreas.
 
-**Para seguir leyendo:** [Leibniz, De geometria recondita (1686), traducción de Thiago Dourado; notas históricas del capítulo 6](https://www.rbhm.org.br/index.php/RBHM/article/view/379).
-
+**Para seguir leyendo:** [Leibniz, *De geometria recondita* (1686), traducción de Thiago Dourado, pp. 5–6 (2022)](https://www.rbhm.org.br/index.php/RBHM/article/view/379); notas históricas del capítulo 6.
 :::
 
 ## 6.5. Qué sucede si la función no es continua
 
 **Teorema 6.3 (primera parte, versión puntual; `EDC-C06-THM-003`).** Sea $f:[a,b]\to\mathbb R$ integrable, y sea $c\in(a,b)$ un punto donde $f$ es continua. Entonces $F=\mathcal A_af$ es derivable en $c$ y $F'(c)=f(c)$.
 
-**Demostración.** El Lema 6.1 sólo necesitó integrabilidad, no continuidad. Aplicamos a $c$ exactamente la estimación de la prueba anterior; la continuidad **en ese único punto** hace tender a cero la oscilación de $f$ sobre $J_h$. $\square$
+**Demostración.** La integrabilidad define $F$ y sus incrementos por aditividad. El Lema 6.1, que no exige continuidad, coloca cada cociente entre las cotas locales de $f$ en el tramo $J_h$ que une $c$ y $c+h$. Al compararlo con $f(c)$ obtenemos la misma cota por $\sup_{t\in J_h}|f(t)-f(c)|$ de la prueba anterior. La continuidad en $c$ hace esa cota menor que cualquier tolerancia cuando $|h|$ es pequeño. Por tanto el cociente converge a $f(c)$ y $F'(c)=f(c)$. $\square$
 
-La continuidad global es, pues, una condición suficiente cómoda para obtener derivabilidad **en todos** los puntos interiores, pero no es una condición necesaria para que exista la integral ni para derivar la acumulación en un punto particular.
+Para derivar en $c$ sólo necesitamos controlar las alturas cerca de $c$. La función puede ser discontinua en otros puntos y seguir satisfaciendo allí la conclusión puntual. En un punto donde falle la continuidad, el comportamiento de la acumulación tendrá que examinarse directamente.
 
 **Contraejemplo A (una discontinuidad removible).** En $[-1,1]$ fijemos
 
@@ -218,7 +230,7 @@ $$
 
 En $x=0$, las derivadas laterales de $S$ son $0$ y $1$. No existe derivada bilateral allí. La continuidad de $S$ no está en duda: fue demostrada para todas las acumulaciones de funciones acotadas integrables.
 
-No debe confundirse el significado de estos ejemplos: un integrando discontinuo puede producir una acumulación derivable o no derivable en el punto conflictivo. La hipótesis de continuidad **asegura** el resultado general; su falta obliga a examinar cada caso.
+En el primer ejemplo, cambiar una altura aislada conserva todas las integrales y deja intacta una acumulación derivable; en el segundo, las alturas de ambos lados del salto producen dos pendientes diferentes. La integrabilidad asegura continuidad de las dos acumulaciones. Su derivabilidad y la coincidencia de la derivada con el valor puntual del integrando son preguntas adicionales que los ejemplos resuelven de maneras distintas.
 
 ## 6.6. Primitivas y constantes de integración
 
@@ -230,19 +242,21 @@ $$
 G(x)=H(x)+C\qquad (a\le x\le b).
 $$
 
-**Demostración.** La diferencia $K=G-H$ es continua en el intervalo cerrado, derivable en su interior y tiene $K'(x)=0$. Para cualesquiera $u<v$ de $[a,b]$, el teorema del valor medio de C03 da un $c\in(u,v)$ con
+**Demostración.** Para comparar dos primitivas miramos su diferencia $K=G-H$. Es continua en $[a,b]$, derivable en $(a,b)$ y su derivada es cero, porque las dos derivadas coinciden con $f$ en cada punto interior.
+
+Tomemos cualesquiera $u<v$ de $[a,b]$. La restricción de $K$ a $[u,v]$ conserva continuidad en los extremos y derivabilidad en el interior, incluso si $u=a$ o $v=b$. El teorema del valor medio de C03 proporciona un $c\in(u,v)$ tal que
 
 $$
 K(v)-K(u)=K'(c)(v-u)=0.
 $$
 
-Por tanto, $K$ es constante, incluso en los extremos por el mismo argumento. $\square$
+Así cualquier par de valores de $K$ coincide. Podemos fijar $C=K(a)$ y obtenemos $K(x)=C$ para todo $x\in[a,b]$, que equivale a la igualdad del enunciado. La continuidad de las primitivas en los bordes permite incluirlos en la comparación. $\square$
 
 **Corolario 6.1 (existencia para integrandos continuos; `EDC-C06-COR-001`).** Toda función continua $f:[a,b]\to\mathbb R$ posee una primitiva en el sentido anterior, a saber, $F(x)=\int_a^x f(t)\,dt$. Todas las demás tienen la forma $F+C$.
 
-**Demostración.** La primera afirmación es la primera parte del Teorema Fundamental, que incluye continuidad en el intervalo cerrado; la segunda procede del Teorema 6.4. $\square$
+**Demostración.** El Teorema 6.2 construye $F$ a partir de la integral y prueba tanto su continuidad en $[a,b]$ como la igualdad $F'=f$ en el interior. Satisface por ello la definición de primitiva. El Teorema 6.4 obliga a que cualquier otra primitiva difiera de $F$ en una constante; recíprocamente, añadir una constante conserva continuidad y derivada. $\square$
 
-La expresión «más una constante» no es una convención sin fundamento: es una **afirmación matemática sobre la diferencia de dos funciones**. Además, depende de que el dominio sea un intervalo; sobre dos intervalos separados podrían aparecer constantes diferentes.
+La constante recoge la libertad de elegir un valor inicial: la acumulación con origen $a$ vale cero allí, mientras otra primitiva puede tomar cualquier valor. Una vez fijada esa diferencia, el valor medio obliga a conservarla a lo largo de todo el intervalo. Sobre dos intervalos separados, esa comparación sólo funciona dentro de cada uno y permite constantes distintas.
 
 ## 6.7. Segunda parte: calcular una integral por una primitiva
 
@@ -252,31 +266,37 @@ $$
 \boxed{\int_a^b f(t)\,dt=G(b)-G(a).}
 $$
 
-**Demostración.** La primera parte construyó, sin emplear previamente esta fórmula, una primitiva $F(x)=\int_a^x f(t)\,dt$. Por el Teorema 6.4, $G(x)=F(x)+C$ en todo $[a,b]$. En particular,
+**Demostración.** La primera parte proporciona la primitiva $F(x)=\int_a^x f(t)\,dt$, construida mediante las integrales de C05. La primitiva $G$ puede tener otra expresión y otro valor inicial, pero el Teorema 6.4 asegura $G(x)=F(x)+C$ en todo $[a,b]$.
+
+Al restar los valores en los extremos, la constante desaparece:
 
 $$
 G(b)-G(a)=F(b)-F(a).
 $$
 
-Pero $F(a)=\int_a^a f=0$ por la convención de intervalo degenerado de C05, y $F(b)=\int_a^b f$. Se obtiene la identidad. $\square$
+La acumulación de origen $a$ satisface $F(a)=\int_a^a f=0$ y $F(b)=\int_a^b f$. Reemplazamos ambos valores y obtenemos la fórmula. $\square$
 
-**Orden lógico de la demostración:** primero construimos la integral por Darboux (C05); después demostramos que la acumulación de un integrando continuo tiene derivada igual al integrando (Teorema 6.2); por último aplicamos el valor medio para establecer que dos primitivas difieren en una constante. No hemos utilizado la segunda parte para fundamentar la primera.
+Para evaluar una integral podemos buscar una primitiva que resulte fácil de calcular en los extremos. La comparación con $F$ demuestra que cualquier elección válida dará el mismo resultado: todas conservan la diferencia entre los valores terminales. La existencia de la integral se estableció en C05, y la primera parte permitió después reconocer su acumulación como primitiva.
 
 ### 6.7.1. Una demostración directa por sumas
 
-Existe otra vía instructiva que tampoco utiliza la primera parte. Sea $G$ continua en $[a,b]$, derivable en $(a,b)$, y $G'=f$ allí, con $f$ continua en $[a,b]$. Para **cada** partición $P:a=x_0<\cdots<x_n=b$, el teorema del valor medio aplicado a $G$ en cada subintervalo proporciona $\xi_i\in(x_{i-1},x_i)$ tal que
+También podemos comparar directamente la diferencia $G(b)-G(a)$ con las sumas que definen la integral. Sea $G$ continua en $[a,b]$, derivable en $(a,b)$, con $G'=f$ allí y $f$ continua en el intervalo cerrado. Elegimos una partición $P:a=x_0<\cdots<x_n=b$ y repartimos la variación total de $G$ entre sus piezas.
+
+En cada $[x_{i-1},x_i]$, el teorema del valor medio convierte el incremento de $G$ en una derivada interior multiplicada por la anchura. Sus hipótesis se cumplen también en las piezas que tocan $a$ o $b$, donde basta continuidad. Así encontramos $\xi_i\in(x_{i-1},x_i)$ con
 
 $$
 G(x_i)-G(x_{i-1})=G'(\xi_i)(x_i-x_{i-1})=f(\xi_i)\Delta_i.
 $$
 
-Sumando las igualdades finitas se obtiene
+Sumamos las igualdades. Cada valor de $G$ en un corte interior aparece una vez con signo positivo y otra con negativo, por lo que sólo quedan los extremos:
 
 $$
 G(b)-G(a)=\sum_{i=1}^n f(\xi_i)\Delta_i.
 $$
 
-Como $f$ es integrable por continuidad, la equivalencia Darboux–Riemann del Teorema 5.3 garantiza que **cualquier** sucesión de tales sumas con finura tendente a cero converge a $\int_a^b f$. El lado izquierdo es el mismo para todas las particiones, así que coincide con la integral. Es una demostración independiente de la primera parte, y hace explícito el papel de las *sumas de Riemann* y del *teorema del valor medio*.
+El miembro derecho es una suma de Riemann con etiquetas escogidas por el valor medio. Cada partición puede producir etiquetas diferentes, pero $f$ es integrable por continuidad y el Teorema 5.3 controla todas las elecciones. Para una tolerancia $\varepsilon>0$, tomamos una partición de finura menor que el umbral de ese teorema. Su suma difiere de la integral en menos que $\varepsilon$ y vale exactamente $G(b)-G(a)$. Como esto puede hacerse para cualquier tolerancia, la diferencia terminal y la integral deben coincidir.
+
+Esta prueba no utiliza la primera parte: el valor medio fabrica una suma exacta para cada partición, y la convergencia de las sumas la identifica con la integral. La continuidad de $f$ sólo ha intervenido para garantizar integrabilidad, observación que permite ampliar el resultado.
 
 ## 6.8. Una ampliación controlada: derivadas integrables
 
@@ -288,9 +308,11 @@ $$
 
 No se exige continuidad de $f$; sus valores en $a$ y $b$ pueden elegirse arbitrariamente, siempre que la función resultante sea integrable.
 
-**Demostración.** La demostración directa del §6.7.1 utilizó la continuidad de $f$ sólo para asegurar su integrabilidad. Aquí esta última es una hipótesis explícita. El teorema del valor medio proporciona de nuevo, en toda partición, una suma etiquetada que vale exactamente $G(b)-G(a)$, y el Teorema 5.3 obliga a su convergencia a la integral cuando la finura tiende a cero. $\square$
+**Demostración.** En cada pieza de cualquier partición, $G$ satisface las hipótesis del valor medio. Obtenemos etiquetas estrictamente interiores con $G(x_i)-G(x_{i-1})=G'(\xi_i)\Delta_i=f(\xi_i)\Delta_i$. La igualdad con $f$ sólo se usa en esos puntos interiores, así que sus valores terminales no intervienen.
 
-No afirmamos que la derivada de **toda** función derivable sea Riemann-integrable: semejante conclusión no se ha demostrado y, en general, es falsa. El teorema anterior vale precisamente cuando la integrabilidad está acreditada. La distinción importa porque una derivada puede ser discontinua, incluso en un punto donde la función original sí es derivable (ejemplo de C02).
+Al sumar, los incrementos telescopan y la suma etiquetada vale exactamente $G(b)-G(a)$. Como $f$ es integrable por hipótesis, el Teorema 5.3 asegura que, para toda tolerancia, cualquier suma suficientemente fina está próxima a su integral. Elegimos una de esas particiones y las etiquetas producidas por el valor medio. La diferencia entre $G(b)-G(a)$ y la integral es menor que toda tolerancia, luego es cero. $\square$
+
+La prueba necesita que $f$ sea integrable para identificar el límite de sus sumas. La existencia de $G'$ en el interior no garantiza por sí sola esa propiedad: una derivada puede ser discontinua, como vimos en C02, e incluso quedar sin cota cerca de un extremo. En los ejercicios examinaremos $G(x)=\sqrt{x}$ sobre $[0,1]$, donde existe la diferencia $G(1)-G(0)$ pero la derivada no permite formar una integral propia de Darboux en ese intervalo.
 
 ## 6.9. Ejemplos: áreas, desplazamientos y acumulación
 
@@ -349,13 +371,19 @@ $$
 \boxed{H'(x)=f(\beta(x))\beta'(x)-f(\alpha(x))\alpha'(x).}
 $$
 
-**Demostración.** Fijemos $F(u)=\int_a^u f(t)\,dt$. En el interior de $[a,b]$ conocemos $F'=f$; en los extremos conocemos las derivadas laterales. Por aditividad,
+**Demostración.** Definimos $F(u)=\int_a^u f(t)\,dt$. La primera parte da $F'=f$ en $(a,b)$ y las derivadas relativas en los extremos. La aditividad orientada permite reunir las dos integrales con un origen fijo:
 
 $$
 H(x)=F(\beta(x))-F(\alpha(x)).
 $$
 
-Cuando $\alpha(x),\beta(x)$ son interiores, la regla de la cadena de C02 prueba inmediatamente la fórmula. Si, por ejemplo, $\beta(x)=a$ en un punto interior de $J$, como $\beta(J)\subset[a,b]$, la función derivable $\beta$ tiene allí un mínimo local, de modo que $\beta'(x)=0$ por Fermat (C03). Por continuidad de $f$ y la versión lateral del Teorema 6.2, la expansión $F(a+u)-F(a)=f(a)u+o(|u|)$ para $u\ge0$ muestra que $(F\circ\beta)'(x)=f(a)\beta'(x)=0$. Se razona igual en $b$ y para $\alpha$. Así se justifican también los valores de frontera, en lugar de aplicar a ciegas una regla de la cadena bilateral fuera de su dominio. $\square$
+Si en un punto $x_0\in J$ el valor de $\beta$ pertenece a $(a,b)$, la continuidad de $\beta$ mantiene sus valores cercanos dentro de ese intervalo. La regla de la cadena de C02 da entonces $(F\circ\beta)'(x_0)=f(\beta(x_0))\beta'(x_0)$.
+
+Supongamos que $\beta(x_0)=a$. Como todos los valores de $\beta$ están en $[a,b]$, $x_0$ es un mínimo local de $\beta$ y Fermat da $\beta'(x_0)=0$. Falta comprobar que la composición sea derivable, pues sólo conocemos una derivada lateral de $F$ en $a$. Podemos usar directamente la estimación del Teorema 6.1: si $|f|\le M$, para $h\ne0$ pequeño,
+
+$|F(\beta(x_0+h))-F(\beta(x_0))|/|h|\le M|\beta(x_0+h)-\beta(x_0)|/|h|$.
+
+El último cociente tiende a $|\beta'(x_0)|=0$. Por encaje, el cociente incremental de la composición tiende a cero, que es $f(a)\beta'(x_0)$. Si $\beta(x_0)=b$, Fermat se aplica al máximo y la misma estimación da el resultado. Todos los casos de $\alpha$ se prueban del mismo modo. Restamos las derivadas de ambas composiciones y obtenemos la fórmula, incluso cuando alguno de sus valores está en el borde. $\square$
 
 **Ejemplo.** Para $-1<x<1$,
 
@@ -367,19 +395,19 @@ No hemos encontrado una primitiva elemental de $e^{t^2}$; la fórmula se debe a 
 
 ## 6.11. Condiciones y fronteras: qué permite y qué no permite el teorema
 
-Las dos partes del Teorema Fundamental **no** dicen «toda integral se obtiene derivando» ni «toda derivada se integra sin condiciones».
+Para usar la primera parte comenzamos comprobando que las integrales que forman la acumulación existen. La función de Dirichlet de C05 queda fuera: sus sumas inferiores y superiores mantienen una separación positiva, de modo que no disponemos de $F(x)=\int_0^x f$ como una acumulación de Darboux sobre todo $[0,1]$. Si la integrabilidad está asegurada, el Teorema 6.1 da continuidad de $F$; la continuidad del integrando en un punto permite además identificar allí su derivada. Los ejemplos de §6.5 muestran las dos dificultades que pueden aparecer en una discontinuidad.
 
-Primero, la integral debe existir en el sentido desarrollado en C05. La función de Dirichlet, que vale $1$ sobre racionales y $0$ sobre irracionales, no es Riemann-integrable en $[0,1]$: no puede utilizarse para definir $F(x)=\int_0^x f$ mediante esa teoría. Segundo, aunque una función sí sea integrable, la identidad $F'(c)=f(c)$ requiere continuidad en $c$ para nuestro teorema puntual, y puede fallar en una discontinuidad (como en §6.5). Tercero, tener una primitiva derivable no basta *por sí solo* para afirmar la fórmula integral si no se ha justificado la integrabilidad de su derivada; el Teorema 6.6 explicita el requisito.
+Para evaluar mediante una primitiva, comprobamos su continuidad hasta los extremos y la igualdad de derivadas en el interior. El Teorema 6.5 garantiza la fórmula para un integrando continuo, y el Teorema 6.6 permite usarla cuando acreditamos integrabilidad de la derivada sin exigir continuidad. El valor de una primitiva en el borde no puede modificarse arbitrariamente: esa modificación podría cambiar la diferencia terminal aunque dejara intactas todas las derivadas interiores.
 
-Hay una distinción geométrica igualmente decisiva. Para $f\ge0$, la integral mide el área bajo la gráfica sobre un intervalo; para $f$ con signos diferentes, mide una acumulación orientada. Además, las fórmulas valen en intervalos compactos donde las funciones cumplen sus hipótesis. Los límites infinitos y las singularidades internas se estudian mediante **integrales impropias**, que no se definen en este capítulo. Por ejemplo, $1/x$ no es una función acotada en $[0,1]$ y el teorema de hoy no autoriza escribir directamente $\int_0^1(1/x)\,dx$ como una integral propia.
+El dominio también decide qué integral estamos calculando. Todas las integrales propias de este capítulo se forman con funciones acotadas en intervalos compactos. La expresión $1/x$ no es acotada en $[0,1]$, por lo que el cálculo con $\ln x$ no autoriza a evaluar allí una integral propia. Las singularidades y los extremos infinitos necesitarán otra construcción mediante límites, la de las integrales impropias.
 
-La idea del Teorema Fundamental no es que ambos operadores se cancelen como símbolos formales en cualquier contexto; es que **dos construcciones matemáticas independientes se vuelven recíprocas bajo hipótesis verificables**.
+Cuando el integrando es no negativo, el valor coincide con la interpretación geométrica de área. Con alturas de ambos signos, las contribuciones pueden cancelarse. La fórmula por primitivas conserva esa orientación, como corresponde al número definido por las sumas.
 
 ## 6.12. Del parentesco histórico a la unidad demostrada
 
-El problema de la relación entre tangentes y cuadraturas antecede a nuestras definiciones del siglo XIX. En el siglo XVII se discutieron curvas asociadas a áreas, métodos de tangentes, magnitudes fluyentes y sumaciones infinitesimales. Isaac Barrow articuló relaciones geométricas entre curvas y sus tangentes; Newton formuló métodos de fluxiones y cuadraturas; Leibniz elaboró una notación diferencial e integral de gran alcance. También James Gregory aparece en estudios especializados de la genealogía del teorema. **No** identificaremos sin más esas construcciones con las dos afirmaciones modernas en lenguaje de funciones continuas e integrales de Riemann–Darboux.
+La pregunta por la relación entre tangentes y cuadraturas circuló mucho antes de nuestra definición de integral. Las curvas asociadas a áreas ofrecían una manera geométrica de examinarla; las magnitudes fluyentes de Newton y el lenguaje de diferencias y sumaciones de Leibniz permitieron formularla con otros recursos. Barrow y James Gregory aparecen también en esa historia, cuyos testimonios y distintas interpretaciones se reúnen en [las notas históricas y de fuentes](capitulo-06-notas.html).
 
-Esta cautela no debilita el interés histórico: muestra precisamente la transformación. Un vínculo que surgió de problemas geométricos y mecánicos encuentra ahora una demostración dentro de un sistema de definiciones explícitas. Los testimonios y las interpretaciones de la historiografía, incluidos desacuerdos en la manera de atribuir las primeras formulaciones, se consignan en [las notas históricas y de fuentes](capitulo-06-notas.html).
+La relación matemática que hemos demostrado parte de las sumas de C05. Una estimación de alturas locales permite derivar la acumulación, y el valor medio reúne después las primitivas que comparten una misma derivada. También pudimos llegar a la fórmula de evaluación directamente, convirtiendo cada incremento de una primitiva en un término de una suma etiquetada.
 
 La identidad que reúne ambos caminos puede escribirse con toda su carga lógica:
 
@@ -391,7 +419,7 @@ G'=f\ \Longrightarrow\ \int_a^b f(t)\,dt=G(b)-G(a).
 \end{gathered}}
 $$
 
-Aquí $C([a,b])$ significa simplemente «funciones continuas sobre $[a,b]$», sin introducir espacios funcionales abstractos. La segunda implicación presupone que $G$ es continua en $[a,b]$ y derivable en $(a,b)$, como se precisó en el teorema.
+Aquí $C([a,b])$ significa «funciones continuas sobre $[a,b]$». La segunda implicación usa una primitiva continua en el intervalo cerrado y derivable en su interior, según la definición y el teorema. La identidad permite calcular una acumulación a partir de otra función cuya derivada conocemos. En C07 aprovecharemos esa posibilidad para obtener reglas de integración a partir de las reglas de derivación del producto y de la composición.
 
 ### Mapa de dependencias
 

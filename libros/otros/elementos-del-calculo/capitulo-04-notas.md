@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C04-NOTAS-HISTORICAS
-source-sha256: a88924171be4f985e750e90086b0a1d0eba0b2f1b428657956c76d7873e6af2b
+source-sha256: 799c2f759eb10ffddca77eedec4c2b993010361249daf7f1fa3f477e7cc5d872
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -38,6 +38,7 @@ La proposición 1 del libro X de los *Elementos* explica, en forma de relaciones
 
 **Historiografía leída:** O'Connor y Robertson, [«A history of the calculus»](https://mathshistory.st-andrews.ac.uk/HistTopics/The_rise_of_calculus/), MacTutor, líneas/primeros párrafos dedicados a Eudoxo, agotamiento y Arquímedes. Su atribución a Eudoxo hacia 370 a. C. se registra como información de síntesis, no como descubrimiento de un manuscrito suyo cotejado aquí.
 
+**Estado:** `TRANSLATED_PROPOSITION_WEB_READ / EUDOXUS_SECONDARY_CONTEXT / ORIGINAL_GREEK_NOT_COLLATED`.
 
 ## H2. Arquímedes, la cuadratura parabólica y la Proposición 24
 
@@ -49,8 +50,9 @@ El resultado de un segmento parabólico equivalente a **cuatro tercios** de un t
 
 **Referencia adicional localizada pero no íntegramente leída por indisponibilidad del sitio al abrirlo:** Andrew Leahy, «A Translation of Evangelista Torricelli's Quadratura Parabolae — Archimedes' Quadrature of the Parabola», *MAA Convergence*, [ficha enlazada](https://old.maa.org/press/periodicals/convergence/a-translation-of-evangelista-torricellis-quadratura-parabolae-archimedes-quadrature-of-the-parabola). El resultado indexado del buscador identifica la **Proposición 24**, la formulación $4/3$ y una remisión a Heath, p. 251; la página completa devolvió error de acceso. **No** se atribuye consulta integral ni se cita Heath por página como si hubiéramos examinado ese libro en M05.
 
-**Referencia complementaria identificada, no colacionada:** Thomas L. Heath, *The Works of Archimedes*, reproducción Cambridge Library Collection. Figura como candidato a cotejo filológico si se prepara una edición de imprenta.
+**Referencia bibliográfica localizada, no leída íntegramente:** Thomas L. Heath, *The Works of Archimedes*, reproducción Cambridge Library Collection; candidato a cotejo filológico. La localización no acredita lectura del original.
 
+**Estado:** `TRANSLATED_PREFACE_WEB_READ / SECONDARY_WEB_READ / QP_PROP_24_INDEXED_NOT_FULLY_OPENED / HEATH_DRIVE_LOCATED_NOT_READ`.
 
 ## H3. La singularidad del método de agotamiento
 
@@ -60,6 +62,7 @@ El agotamiento no se reduce a «sumar infinitos triángulos» como si existiera 
 
 La reconstrucción de §4.4 no tiene como misión decidir cómo concebía Arquímedes el infinito ni reconstruir palabra por palabra su demostración. La afirmación matemática y la interpretación histórica reciben controles separados.
 
+**Estado:** `SECONDARY_READ / MODERN_RECONSTRUCTION_DECLARED`.
 
 ## H4. Cavalieri, la geometría de indivisibles y su recepción
 
@@ -69,6 +72,7 @@ Bonaventura Cavalieri publicó la *Geometria indivisibilibus continuorum nova qu
 
 **Contexto secundario adicional leído:** MacTutor, [«A history of the calculus»](https://mathshistory.st-andrews.ac.uk/HistTopics/The_rise_of_calculus/), párrafos sobre Cavalieri, Roberval y el desarrollo de cuadraturas mediante potencias. El nombre «fórmula de Cavalieri» para integrales de potencias debe tratarse como una etiqueta retrospectiva: el argumento de C04 por el teorema del valor medio no se presenta como obra de Cavalieri.
 
+**Estado:** `SECONDARY_WEB_READ / CAVALIERI_PRIMARY_NOT_COLLATED`.
 
 ## H5. Torricelli y la continuidad del problema parabólico
 
@@ -76,6 +80,7 @@ La cuadratura de la parábola fue objeto de nuevas demostraciones en el siglo XV
 
 **Referencia localizada mediante índice de búsqueda (texto completo no abierto):** Andrew Leahy, «A Translation of Evangelista Torricelli's Quadratura Parabolae — Torricelli's Quadrature of the Parabola (One Version)», [MAA Convergence](https://old.maa.org/press/periodicals/convergence/a-translation-of-evangelista-torricellis-quadratura-parabolae-torricellis-quadrature-of-the-parabola). El resultado indexado describe procedimientos de indivisibles y una comparación con Arquímedes; el sitio devolvió error al solicitar la página completa. No se cita una página ni una proposición particular del tratado de Torricelli como si hubiese sido examinada directamente.
 
+**Estado:** `WEB_INDEX_ONLY / PRIMARY_NOT_COLLATED`.
 
 ## H6. La diferencia entre sumas finitas y una integral moderna
 
@@ -83,6 +88,7 @@ El estudio de sumas de cuadrados y potencias ilustra un puente conceptual que es
 
 **Fuentes de contraste leídas:** MacTutor, [«A history of the calculus»](https://mathshistory.st-andrews.ac.uk/HistTopics/The_rise_of_calculus/), párrafos sobre Roberval, Cavalieri y Newton/Leibniz. Las fórmulas de C04 pertenecen al sistema moderno del libro y se prueban desde C00–C03; no se importó una exposición del proyecto independiente *Cálculo para matemáticos* ni de la traducción de Toth.
 
+**Estado:** `MODERN_EDC_PROOF / SECONDARY_HISTORIOGRAPHIC_CONTEXT`.
 
 ## Inventario de control para uso editorial
 
@@ -99,3 +105,12 @@ El estudio de sumas de cuadrados y potencias ilustra un puente conceptual que es
 ## Dictamen historiográfico
 
 Las proposiciones cronológicas e históricas del capítulo son deliberadamente limitadas, y sus fuentes se enumeran arriba. No se atribuyen a los autores antiguos razonamientos $\varepsilon$–$\delta$, integrales de Riemann, funciones en notación actual ni series infinitas en el sentido moderno. La historia se mantiene separada de las pruebas publicables y quedan marcadas las necesidades de colación primaria de una eventual edición crítica.
+
+
+## H7. Lecturas de control en la revisión literaria R05
+
+- **Arquímedes:** se releyó la [carta a Dositeo reproducida en MacTutor](https://mathshistory.st-andrews.ac.uk/Extras/Archimedes_parabola/), especialmente su comienzo (recuerdo de Conón), el pasaje sobre el descubrimiento mecánico y la prueba geométrica y la formulación de cuatro tercios. El recuadro se refiere a esos pasajes de una traducción inglesa reproducida; no se declara cotejo con el griego ni lectura de la Proposición 24 en Heath. Estado: TRANSLATED_PRIMARY_PREFACE_RE_READ.
+- **Euclides:** se releyó la [traducción digital de X.1](https://www.euclids-elements.org/elements/books/bookX/propositions/propX1/), enunciado y argumento que utiliza un múltiplo de la magnitud menor. El lema moderno conserva su prueba propia sobre números reales; no traslada sin examen el universo de magnitudes antiguo a esta construcción. Estado: TRANSLATED_PRIMARY_PROPOSITION_RE_READ.
+- **Cavalieri:** se releyeron en la [biografía de MacTutor](https://mathshistory.st-andrews.ac.uk/Biographies/Cavalieri/) los párrafos sobre la publicación de 1635, cortes paralelos y la ilustración de tarjetas. El recuadro conserva el estatuto de ilustración moderna; no la atribuye al tratado. No se añadieron atribuciones de prioridad ni citas del original latino. El enlace a la imagen de un extracto del tratado devolvió un error de formato GIF; no se registra esa imagen como cotejada. Estado: SECONDARY_CONTEXT_RE_READ / PRIMARY_NOT_COLLATED.
+
+Las nuevas lecturas complementan H1–H6 sin borrar sus reservas. El PDF de Heath en Drive continúa localizado y no leído en esta revisión. Las demostraciones geométricas y las comparaciones de muestras son elaboración moderna propia de EDC.

@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC_LABORATORIO_SOLUCIONES
-source-sha256: 311ba577097cf177fe7b486d1a8ef259d19017fa1f520afb7c8c69413428ce62
+source-sha256: 02fb8d747e0b5b024f76799432a668b4c7a38001edd836583e138fa24a37c3ef
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -36,7 +36,7 @@ $$
 \frac{x+2/x}{2}-s=\frac{x^2-2sx+s^2}{2x}=\frac{(x-s)^2}{2x}\ge0.
 $$
 
-Asimismo $\frac12(x+2/x)-x=(2-x^2)/(2x)<0$. El dato $x_0=2>s$ y la inducción muestran $s\le x_{n+1}<x_n$. La sucesión es monótona, acotada inferiormente y, por C00, converge a algún $\ell\ge s>0$. Pasar al límite en la identidad recursiva (denominadores no nulos) da $\ell=(\ell+2/\ell)/2$, de donde $\ell^2=2$ y $\ell=s$. La igualdad exacta del error demuestra además
+Asimismo $\frac12(x+2/x)-x=(2-x^2)/(2x)<0$. El dato $x_0=2>s$ inicia la inducción. Si $x_n>s$, el error exacto de la primera identidad es estrictamente positivo y asegura $x_{n+1}>s$; la segunda identidad, cuyo numerador es negativo, da $x_{n+1}<x_n$. De este modo obtenemos $s<x_{n+1}<x_n$ en cada paso, que incluye la cota $s\le x_{n+1}$. La sucesión es monótona, acotada inferiormente y, por C00, converge a algún $\ell\ge s>0$. Pasar al límite en la identidad recursiva (denominadores no nulos) da $\ell=(\ell+2/\ell)/2$, de donde $\ell^2=2$ y $\ell=s$. La igualdad exacta del error demuestra además
 
 $$
 0\le x_{n+1}-s\le\frac{(x_n-s)^2}{2s}.
@@ -52,7 +52,7 @@ $$
 y=a^3+3a^2(x-a)=3a^2x-2a^3.
 $$
 
-Pasa por $(0,b)$ si y sólo si $-2a^3=b$. La ecuación cúbica posee exactamente una raíz real $a=\sqrt[3]{-b/2}$, por monotonía algebraica del cubo, por lo que existe **una sola tangente diferencial** por cada punto del eje vertical. En cambio, el problema análogo para $y=x^2$ conduce a una ecuación cuadrática y puede tener 0, 1 o 2 tangentes según la posición del punto. Contar intersecciones globales no determina una tangente: en la propia cúbica, la horizontal en cero atraviesa su curva.
+Pasa por $(0,b)$ si y sólo si $-2a^3=b$. El cubo es continuo y estrictamente creciente: para $u<v$, la diferencia $v^3-u^3=(v-u)(v^2+uv+u^2)$ es positiva. Para cualquier valor $-b/2$ podemos elegir un $M>0$ con $M^3>|b|/2$; los valores del cubo en $-M$ y $M$ encierran ese número. El valor intermedio de C00 da una raíz y la monotonía la hace única. Así $a=\sqrt[3]{-b/2}$ determina **una sola tangente diferencial** por cada punto del eje vertical. En cambio, el problema análogo para $y=x^2$ conduce a una ecuación cuadrática y puede tener 0, 1 o 2 tangentes según la posición del punto. Contar intersecciones globales no determina una tangente: en la propia cúbica, la horizontal en cero atraviesa su curva.
 
 ## SOL-INV-C02-01 — Identidad de arcotangentes
 
@@ -89,7 +89,7 @@ Por el valor compatible que construye C04, $A=4T/3$ y $P_n=A(1-4^{-n})$, de modo
 
 La función $\tau$ está acotada entre cero y uno. Cada subintervalo no degenerado contiene irracionales, así que **todas** las sumas inferiores son cero. Dado $\varepsilon>0$, elegimos un entero $N$ tal que $1/(N+1)<\varepsilon/2$. El conjunto $F_N$ de racionales de $[0,1]$ cuya fracción irreducible tiene denominador $\le N$ es **finito**: por cada $1\le q\le N$ sólo hay un número finito de numeradores $0\le p\le q$.
 
-Rodeamos cada punto de $F_N$ mediante intervalos muy cortos, eligiendo una partición que tenga como cortes sus extremos, con **longitud total afectada menor que $\varepsilon/2$**. En los subintervalos que no contienen puntos de $F_N$, todo valor racional de $\tau$ es $\le1/(N+1)$ y en los irracionales vale cero; en los afectados, la oscilación no supera uno. Los extremos de corte compartidos que pertenezcan a $F_N$ deben incluirse entre los subintervalos afectados, lo cual se asegura escogiendo los cortes fuera de $F_N$. Por tanto
+Rodeamos cada punto de $F_N$ mediante intervalos muy cortos, eligiendo una partición que tenga como cortes sus extremos, con **longitud total afectada menor que $\varepsilon/2$**. En los subintervalos que no contienen puntos de $F_N$, todo valor racional de $\tau$ es $\le1/(N+1)$ y en los irracionales vale cero; en los afectados, la oscilación no supera uno. Elegimos los cortes interiores fuera de $F_N$, para que un punto excepcional no quede compartido por un intervalo considerado libre de ellos. Los extremos cero y uno pertenecen a $F_N$ y se encierran mediante un intervalo corto junto a cada borde; los demás puntos se rodean con cortes próximos. Como $F_N$ es finito, las longitudes pueden elegirse con suma menor que $\varepsilon/2$, incluso si algunos intervalos se unen al refinar la partición. Por tanto
 
 $$
 U(\tau,P)-L(\tau,P)<\varepsilon/2+(b-a)\frac1{N+1}<\varepsilon,

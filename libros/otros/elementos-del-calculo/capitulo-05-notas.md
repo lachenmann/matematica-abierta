@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C05-NOTAS-HISTORICAS
-source-sha256: 6ba7c163ea97a807b6fd6ac706bbb88bb7c45066a00e9640db195d3c9d331c8d
+source-sha256: 74b0700eb9a2cf0ca4fa64ca1b0b73034d1c9c8c3f9a39a6e125f72ceba81568
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -36,13 +36,15 @@ El capítulo 4 partió de áreas geométricas, triángulos y aproximaciones por 
 
 **Historiografía secundaria efectivamente leída:** *Grande Encyclopédie Larousse*, voz «analyse», subsección «Intégrales définies» (<https://www.larousse.fr/archives/grande-encyclopedie/page/683>, líneas textuales bajo ese encabezado). Distingue las aproximaciones por sumas asociadas a Cauchy desde 1823 y las ampliaciones atribuidas a Riemann y Darboux. La periodización constituye una síntesis editorial de la enciclopedia, no una colación por nosotros de cada obra original.
 
+**Estado:** `SECONDARY_FRENCH_HTML_READ / HISTORICAL_RECONSTRUCTION_DECLARED`.
 
 ## H2. Augustin-Louis Cauchy y el papel de las sumas finitas (1823)
 
 En el *Résumé des leçons données à l'École royale polytechnique sur le calcul infinitésimal* (1823), Cauchy dedicó una parte de sus lecciones a las integrales definidas. La fuente historiográfica de H1 describe su uso de sumas ponderadas por longitudes de subintervalo para funciones continuas; no debe identificarse esta formulación sin examen con nuestra definición por supremos/ínfimos de Darboux para toda función acotada.
 
-**Referencia primaria localizada con identificación editorial, pero no colacionada frase por frase:** Augustin-Louis Cauchy, *Résumé des leçons données à l'École royale polytechnique sur le calcul infinitésimal*, París, Imprimerie royale, 1823. Ficha de edición digital en [Google Books](https://books.google.com/books/about/R%C3%A9sum%C3%A9_des_le%C3%A7ons_donn%C3%A9es_%C3%A0_l_Ecole.html?id=hABDXdTdEvoC) y [tabla de contenido en Wikisource](https://fr.wikisource.org/wiki/R%C3%A9sum%C3%A9_des_le%C3%A7ons_donn%C3%A9es_%C3%A0_l%E2%80%99%C3%A9cole_polytechnique_sur_le_calcul_infinit%C3%A9simal), donde se identifican las lecciones XXI–XXIII dedicadas a integrales definidas y su descomposición. Estos índices permiten localizar la materia, pero no acreditan que para esta edición se haya leído el desarrollo original completo.
+**Referencia primaria localizada con identificación editorial, pero no colacionada frase por frase:** Augustin-Louis Cauchy, *Résumé des leçons données à l'École royale polytechnique sur le calcul infinitésimal*, París, Imprimerie royale, 1823. Ficha de edición digital en [Google Books](https://books.google.com/books/about/R%C3%A9sum%C3%A9_des_le%C3%A7ons_donn%C3%A9es_%C3%A0_l_Ecole.html?id=hABDXdTdEvoC) y [tabla de contenido en Wikisource](https://fr.wikisource.org/wiki/R%C3%A9sum%C3%A9_des_le%C3%A7ons_donn%C3%A9es_%C3%A0_l%E2%80%99%C3%A9cole_polytechnique_sur_le_calcul_infinit%C3%A9simal), donde se identifican las lecciones XXI–XXIII dedicadas a integrales definidas y su descomposición. Estos índices permiten localizar la materia, pero no acreditan que en este macrotramo se haya leído el desarrollo original completo.
 
+**Estado:** `1823_EDITIONS_BIBLIOGRAPHICALLY_IDENTIFIED / ORIGINAL_DEMONSTRATIONS_NOT_COLLATED / LAROUSSE_READ`.
 
 ## H3. Bernhard Riemann y el problema de las funciones discontinuas
 
@@ -55,8 +57,7 @@ El trabajo de habilitación de Riemann sobre la representación de funciones med
 - Xavier University, [ficha de la traducción inglesa](https://www.exhibit.xavier.edu/oresme_2014Feb/2/), con traducción publicada en *Collected Papers* (2004), cap. XII, pp. 219–256; el acceso al documento derivó a otra página, por lo que no se afirma lectura íntegra.
 - *MAA Reviews*, [reseña de *Bernhard Riemann, 1826–1866*](https://old.maa.org/node/107984), pasaje sobre la habilitación de 1854 y publicación póstuma.
 
-
-La teoría de C05 es una demostración matemática nueva en notación actual, no una traducción de su habilitación.
+**Estado:** `ARCHIVAL_AND_EDITION_CATALOGUES_LOCATED / SECONDARY_DESCRIPTION_RETRIEVED / PRIMARY_TEXT_NOT_COLLATED`. La teoría de C05 es una demostración matemática nueva en notación actual, no una traducción de su habilitación.
 
 ## H4. Gaston Darboux, 1875: sumas superiores e inferiores
 
@@ -66,6 +67,7 @@ La conexión histórica más directa con la estructura del capítulo es el traba
 
 **Evidencia secundaria:** MacTutor, [«Gaston Darboux»](https://mathshistory.st-andrews.ac.uk/Biographies/Darboux/), resultado de índice consultado que atribuye a su trabajo de 1875 la presentación mediante sumas superior e inferior. **Fuente retrospectiva efectivamente leída:** William Henry Young, [«Twentieth Century Pure Mathematical Research»](https://mathshistory.st-andrews.ac.uk/Extras/Young_research/), discurso de 1924, sección 12: Young caracteriza las aproximaciones superior e inferior de Darboux como una clarificación del trabajo de Riemann. Este testimonio secundario, procedente de otro matemático y momento, no sustituye la lectura del texto francés de 1875.
 
+**Estado:** `PRIMARY_ARTICLE_METADATA_VERIFIED / SECONDARY_RETROSPECTIVE_READ / ORIGINAL_FR_1875_NOT_COLLATED`.
 
 ## H5. Por qué la prueba matemática actual no es un calco de la historia
 
@@ -73,11 +75,11 @@ La versión desarrollada en C05 introduce explícitamente: (a) supremos e ínfim
 
 Ni la progresión de sumas de Cauchy ni la obra de Riemann ni el memorando de Darboux deben tratarse como si hubiesen sido escritos con nuestras definiciones de formalismo de libro de texto. Tampoco debe presentarse esta integral como la más general posible. Ejemplos de funciones fuera de su dominio de integrabilidad, junto con desarrollos posteriores de integración, llevaron a otras teorías.
 
-**Fuentes de contraste realmente consultadas:** *Larousse*, «analyse», «Intégrales définies», y W. H. Young (1924), sección 12. **No se ha realizado colación literal de facsímiles de Cauchy, Riemann o Darboux** para esta edición.
+**Fuentes de contraste realmente consultadas:** *Larousse*, «analyse», «Intégrales définies», y W. H. Young (1924), sección 12. **No se ha realizado colación literal de facsímiles de Cauchy, Riemann o Darboux** durante este macrotramo.
 
 ## H6. Lecturas disponibles y por verificar
 
-Entre las referencias complementarias se encuentran Spivak, Apostol, Courant–John, Bressoud y Gabor Toth. Su mención bibliográfica no equivale a un cotejo de esas obras; sólo se proporcionan localizadores específicos cuando han sido comprobados.
+En la biblioteca más amplia de Drive, el inventario canónico [INVENTARIO_EDC_v1.0](bibliografia.html) documenta nominalmente, entre otros, a Spivak, Apostol, Courant–John, Bressoud y la obra de Gabor Toth. Se trata de disponibilidad comprobada en M00, no de un nuevo cotejo de esos libros aquí. En particular, referencias de página concretas a dichas ediciones **no** se inventan.
 
 **Prioridades de una futura colación historiográfica:** Cauchy 1823, lecciones XXI–XXIII; Riemann 1854, apartado original sobre integral; Darboux 1875, texto publicado pp. 57–112, especialmente su formulación y pruebas del límite de sumas. La preparación matemática de C06 no depende de que esas tareas filológicas estén cerradas, porque las pruebas de C05 son autosuficientes.
 
@@ -105,3 +107,12 @@ Entre las referencias complementarias se encuentran Spivak, Apostol, Courant–J
 **Darboux 1875.** El registro de [Numdam](https://www.numdam.org/item/ASENS_1875_2_4__57_0/) confirma *Mémoire sur les fonctions discontinues*, *Annales scientifiques de l’École Normale Supérieure*, segunda serie, tomo 4 (**1875**), 57–112, DOI `10.24033/asens.122`. Verificar esos metadatos no equivale a demostrar qué formulación empleó Darboux en cada página ni a haber colacionado íntegramente el artículo. **Estado:** `PRIMARY_JOURNAL_METADATA_VERIFIED / FULL_ARTICLE_UNCOLLATED`.
 
 **Control de método:** esta actualización aporta trazabilidad documental puntual; **no** modifica las pruebas de Riemann–Darboux que hemos reconstruido matemáticamente en C05.
+
+
+## Complemento textual — revisión literaria R06 (13 de octubre de 2026)
+
+Se abrió el [PDF de Darboux de 1875](https://www.numdam.org/item/ASENS_1875_2_4__57_0.pdf). Se leyeron pasajes del texto extraído: introducción, p. 58; cotas locales y oscilación, p. 61; sumas y refinamientos, pp. 65–66; y comienzo de la sección III, p. 72. Se cotejaron visualmente las pp. impresas 65 y 72 (índices PDF 9 y 16). Las dos sumas y la relación de su diferencia con las oscilaciones aparecen en la primera; la dependencia de muestras y su encaje entre dos sumas en la segunda. El recuadro se apoya en esos pasajes. Estado: PRIMARY_SELECTED_FRENCH_PASSAGES_READ / TWO_PAGES_VISUALLY_CHECKED.
+
+Esta lectura complementa los estados anteriores de H4 y del control M13: el artículo ya no está sólo localizado por sus metadatos en esta revisión, aunque sigue sin colación íntegra. No se corrigió ni transcribió todo su OCR, ni se identificó literalmente su formulación con nuestras definiciones y pruebas. Las entradas anteriores conservan su valor histórico como registro de lo leído entonces.
+
+Se reabrió también el [índice de la edición digital de Riemann en Trinity College Dublin](https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Trig/). Se confirmó su condición de catálogo y sus enlaces; no se leyó en esta revisión el cuerpo de la habilitación. No se añade una atribución de descubrimiento ni se confunde 1854 con la publicación posterior. Cauchy continúa con los límites de cotejo ya registrados.

@@ -4,7 +4,7 @@ status: published
 draft: false
 book-id: MA-BOK-0015
 editorial-project: EDC
-date-modified: '2026-10-12'
+date-modified: '2026-10-13'
 license: GFDL-1.3-or-later
 areas:
   - calculo
@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C07
-source-sha256: 6c86beff05d29601e1bee91ffd38e60744e8aa936268d82699b0889ec48f33de
+source-sha256: f8c191ddeb56fc7db933121a026c9b1a843fd48115c39cefe106d192cd39e36d
 content-id: MA-BCH-0338
 content-type: book-chapter
 related:
@@ -36,9 +36,9 @@ related:
 
 > **Pregunta generadora.** Conocemos la definición rigurosa de integral y sabemos calcularla mediante primitivas. ¿Cómo reconocer una primitiva cuando el integrando es una composición, un producto o una función racional que no aparece en una tabla elemental?
 
-Una definición no es por sí sola un procedimiento de cálculo. La integral de Riemann–Darboux, construida en el capítulo 5, determina un valor mediante cotas inferiores y superiores; el Teorema Fundamental, demostrado en el capítulo 6, permite reemplazar esa tarea por otra: buscar una función cuya derivada sea el integrando. Surge entonces un problema nuevo. La derivada de $e^{x^2}$ se obtiene en una línea, pero la función $e^{x^2}$ no entrega de inmediato una primitiva reconocible. La derivada de $x e^x$ obedece una regla sencilla, pero integrar $xe^x$ parece pedir una operación inversa.
+El Teorema Fundamental nos permite calcular una integral si encontramos una función cuya derivada sea el integrando. Para algunas expresiones basta reconocer una potencia o una exponencial, pero una composición o un producto puede ocultar la derivada que buscamos. La diferencia se aprecia en $e^{x^2}$: derivarla da $2xe^{x^2}$ de inmediato, mientras que buscar una primitiva de $e^{x^2}$ nos deja ante otro problema. El factor $2x$ convierte una de esas expresiones en una derivada reconocible.
 
-En este capítulo no aprenderemos «trucos» aislados. **Reconstruiremos tres procedimientos a partir de identidades ya demostradas:** la sustitución desde la regla de la cadena, la integración por partes desde la regla del producto y las fracciones parciales desde el álgebra de polinomios. Cada operación se formulará en un intervalo en el que los objetos estén definidos, y cada integral definida conservará sus extremos y su orientación. Veremos, además, cómo decidir entre métodos, cómo medir acumulaciones físicas y qué límites tiene la búsqueda de expresiones elementales.
+Las reglas de derivación ofrecen varias maneras de buscar. La cadena explica qué factor debe acompañar a una composición; el producto permite intercambiar la derivación de dos factores, a veces simplificando uno de ellos. Para las funciones racionales, el trabajo comienza antes, en el álgebra: descomponer un cociente puede revelar términos cuyas primitivas ya conocemos. Estudiaremos cómo se justifican estos procedimientos y qué dificultades resuelve cada uno, manteniendo los intervalos y extremos de la integral que queremos calcular.
 
 ## 7.1. De una integral existente a una estrategia de cálculo
 
@@ -54,7 +54,7 @@ $$
 I=[e^{x^2}]_0^1=e-1.
 $$
 
-La observación fundamental es que la expresión $2x$ no es un factor decorativo: es la derivada de la expresión $x^2$ que aparece dentro de la exponencial. La *estructura* del integrando nos conduce a su primitiva.
+El factor $2x$ permite reconocer la cadena: es la derivada de $x^2$, el argumento de la exponencial. Si cambiásemos esa expresión interior, cambiaría también el factor necesario para recuperar la derivada compuesta. Una técnica de integración útil tendrá que conservar esa relación, además de identificar la función que aparece por fuera.
 
 **Definición 7.1 (`EDC-C07-DEF-001`; primitiva sobre un intervalo).** Si $I\subseteq\mathbb R$ es un intervalo abierto y $f:I\to\mathbb R$, una primitiva de $f$ sobre $I$ es una función derivable $F:I\to\mathbb R$ tal que $F'=f$ en todos los puntos de $I$. Denotamos informalmente la familia de primitivas por
 
@@ -64,7 +64,7 @@ $$
 
 cuando se sabe que $F$ existe. Esta notación **no define una segunda integral**: resume la afirmación sobre una familia de funciones cuya diferencia es constante, demostrada en C06 por el valor medio. En cada componente separada del dominio, la constante puede elegirse independientemente.
 
-No toda expresión admite evaluación aplicando una única fórmula de potencias. Antes de transformar una integral conviene responder tres preguntas: ¿existe como integral propia sobre los extremos indicados?, ¿qué derivada conocida se oculta en el integrando?, ¿en qué intervalo puede realizarse el cálculo sin atravesar una singularidad? El orden importa. La identidad algebraica correcta no convierte en integrable una función no acotada en el intervalo cerrado.
+La familia de primitivas describe funciones, mientras una integral definida tiene un valor y unos extremos. Antes de usar una primitiva para evaluarla comprobamos que el integrando esté definido y sea integrable en todo el tramo. Esa comprobación puede decidir el problema antes de cualquier cálculo: $1/x$ tiene primitivas en cada semieje, pero ninguna de ellas convierte una expresión que atraviesa cero en una integral propia de C05.
 
 ## 7.2. El teorema de sustitución: deshacer la regla de la cadena
 
@@ -77,13 +77,17 @@ $$
 
 La función $\phi$ **no tiene que ser inyectiva ni monótona**. Los extremos de la derecha pueden coincidir o estar en orden inverso. En la izquierda y en la derecha las integrales existen en sentido propio.
 
-**Demostración.** El recorrido compacto de $\phi$ está contenido en $J$. Elegimos $u_0\in J$ y definimos, para $u\in J$, $F(u)=\int_{u_0}^{u}f(s)\,ds$; la integral orientada existe porque el segmento entre $u_0$ y $u$ es compacto y está contenido en $J$. La primera parte del Teorema Fundamental (`EDC-C06-THM-002`) prueba que $F'(u)=f(u)$ para todo $u\in J$. Por la regla de la cadena (`EDC-C02-THM-002`),
+**Demostración.** Buscamos una primitiva de $f$ que podamos componer con $\phi$. Elegimos $u_0\in J$ y definimos $F(u)=\int_{u_0}^{u}f(s)\,ds$ para todo $u\in J$. Como $J$ es un intervalo, contiene el segmento entre $u_0$ y $u$; ese segmento es compacto y $f$ es continua en él, así que la integral orientada existe.
+
+Para derivar $F$ en un punto de $J$, podemos rodear ese punto por un intervalo cerrado contenido en $J$. La aditividad expresa allí $F$ como una constante más una acumulación local, y la primera parte del Teorema Fundamental (`EDC-C06-THM-002`) da $F'=f$. Por tanto tenemos la primitiva sobre todo $J$, incluso si no conocemos una fórmula para ella.
+
+La regla de la cadena (`EDC-C02-THM-002`) proporciona
 
 $$
 (F\circ\phi)'(t)=f(\phi(t))\phi'(t),\qquad \alpha<t<\beta.
 $$
 
-El producto de funciones continuas $f\circ\phi$ y $\phi'$ es continuo en $[\alpha,\beta]$; además, $F\circ\phi$ es continuo hasta los extremos. La segunda parte del Teorema Fundamental (`EDC-C06-THM-005`) da
+El recorrido de $\phi$ es compacto y permanece en $J$. El integrando izquierdo es continuo en $[\alpha,\beta]$, porque lo son $f\circ\phi$ y la prolongación de $\phi'$. La composición $F\circ\phi$ es continua hasta los extremos y es una primitiva de ese integrando en el interior. La segunda parte del Teorema Fundamental (`EDC-C06-THM-005`) permite evaluar:
 
 $$
 \int_\alpha^\beta f(\phi(t))\phi'(t)\,dt
@@ -91,7 +95,7 @@ $$
 =\int_{\phi(\alpha)}^{\phi(\beta)}f(u)\,du.
 $$
 
-La última igualdad usa la aditividad orientada demostrada en C05. No hubo sustitución formal de símbolos diferenciales sin justificación. $\square$
+La última igualdad usa aditividad orientada de C05, que cubre también extremos invertidos o coincidentes. La prueba sólo necesitó componer y derivar $F$; no buscó una inversa de $\phi$. Por eso el resultado conserva su validez si el cambio retrocede o recorre varias veces un mismo valor. $\square$
 
 **Corolario 7.1 (sustitución en una primitiva; `EDC-C07-COR-001`).** Bajo las hipótesis locales de la regla de la cadena, si $F'=f$ en un intervalo que contiene $\phi(I)$, entonces
 
@@ -101,18 +105,18 @@ $$
 
 sobre cada intervalo abierto $I$ donde la expresión esté definida. **Demostración.** Derivamos $F\circ\phi$ mediante la cadena; la descripción de todas las primitivas sigue del valor medio de C03. $\square$
 
-La regla incluye cambios de variable que invierten la orientación. Si $\phi(t)=1-t$ para $t\in[0,1]$, entonces $\phi'(t)=-1$ y
+Si $\phi(t)=1-t$ en $[0,1]$, el nuevo extremo pasa de uno a cero mientras el antiguo pasa de cero a uno. La derivada $\phi'=-1$ registra esa inversión:
 
 $$
 \int_0^1 -f(1-t)\,dt=\int_1^0 f(u)\,du
 =-\int_0^1 f(u)\,du.
 $$
 
-La función compuesta se integra aquí con su derivada, **no con el valor absoluto** de ella. El valor absoluto aparece en otros problemas de medida geométrica, no en la fórmula orientada del teorema.
+El signo de la derivada y el orden de los extremos pertenecen a una misma fórmula. Reemplazar la derivada por su módulo quitaría la orientación de las contribuciones y cambiaría la integral.
 
 ## 7.3. Transformar correctamente los extremos
 
-El procedimiento operativo es útil precisamente porque deja ver qué se conserva. Si $u=\phi(x)$ en una integral **definida**, se convierten *ambos* extremos y se integra con respecto a $u$. Por ejemplo,
+En una integral definida, el cambio $u=\phi(x)$ convierte cada extremo en su imagen. Podemos verlo con $u=1+x^2$: para $x\in[0,1]$ los valores de $u$ están entre uno y dos, y la derivada $2x$ permite escribir $x\sqrt{1+x^2}$ como la mitad de la composición acompañada por el factor de la cadena. Así,
 
 $$
 \begin{aligned}
@@ -123,15 +127,15 @@ $$
 \end{aligned}
 $$
 
-Se usó $u=1+x^2$, $du/dx=2x$ y $u(0)=1$, $u(1)=2$. La potencia $u^{1/2}$ es continua para $u>0$, de modo que todas las integrales escritas son propias.
+Los extremos uno y dos corresponden a $u(0)$ y $u(1)$. La función $u^{1/2}$ es continua en un intervalo abierto positivo que contiene todo el recorrido, por lo que el Teorema 7.1 justifica la transformación. La evaluación final usa una primitiva de esa potencia.
 
-Un cambio no monótono tampoco rompe el teorema. Tomemos $\phi(t)=t^2$ para $-1\le t\le1$. Entonces
+Para $\phi(t)=t^2$ en $[-1,1]$, el nuevo argumento comienza en uno, baja hasta cero y vuelve a uno. Su derivada es negativa en la primera mitad y positiva en la segunda. El teorema da
 
 $$
 \int_{-1}^1 2t\,e^{t^2}\,dt=\int_1^1e^u\,du=0.
 $$
 
-Este resultado se entiende porque las contribuciones para $t<0$ y $t>0$ tienen signos opuestos. **No** describe el área sin signo bajo $2t e^{t^2}$. Si se hubiera reemplazado $2t$ por $|2t|$, se habría cambiado el problema.
+Las contribuciones de los dos recorridos se cancelan. Si quisiéramos sumar sus magnitudes, tendríamos que integrar otro integrando, con $|2t|$ en lugar de $2t$. El teorema orientado permite retrocesos precisamente porque conserva sus signos.
 
 **Proposición 7.1 (invariancia por traslación y escala afín; `EDC-C07-PRP-001`).** Sean $f$ continua en un intervalo abierto $J$ y $\phi(t)=ct+d$ con $c\ne0$. Para $\alpha<\beta$ tales que $\phi([\alpha,\beta])\subset J$,
 
@@ -140,9 +144,9 @@ $$
 =\frac1c\int_{c\alpha+d}^{c\beta+d}f(u)\,du.
 $$
 
-**Demostración.** En el Teorema 7.1 sustituimos $\phi'(t)=c$ y dividimos por $c\ne0$. Cuando $c<0$, la orientación de los nuevos extremos explica el signo final. $\square$
+**Demostración.** La función afín es continuamente derivable y tiene derivada constante $c$. El Teorema 7.1 identifica la integral de $c f(ct+d)$ con la integral de $f$ entre las imágenes de los extremos. La linealidad permite sacar $c$ como factor y, puesto que no es cero, dividir ambos lados por él. Si $c<0$, las imágenes quedan en orden inverso y la orientación conserva la igualdad. $\square$
 
-**Error a evitar.** No es correcto cambiar el integrando a $f(u)$ y conservar simultáneamente los viejos extremos de $x$; tampoco es correcto poner $du=\phi'(x)dx$ como una ecuación entre números independientes de la demostración. Esa abreviatura se admite sólo como memoria del teorema ya probado.
+La escritura $du=\phi'(x)\,dx$ sirve para recordar el factor de la cadena. Al usarla en una integral definida anotamos también de dónde viene y a dónde va $u$: mantener los extremos antiguos después de transformar el integrando conduciría a evaluar otra integral.
 
 ## 7.4. La regla del producto conduce a integración por partes
 
@@ -153,14 +157,16 @@ $$
 =\bigl[u(x)v(x)\bigr]_a^b-\int_a^b u'(x)v(x)\,dx.}
 $$
 
-**Demostración.** La regla del producto de C02 produce $(uv)'=u'v+uv'$ en el interior. Los tres términos del lado derecho son continuos en $[a,b]$ según las prolongaciones indicadas; en particular, ambas integrales existen por C05. Como $uv$ es continua hasta los extremos, la segunda parte del Teorema Fundamental de C06 da
+**Demostración.** La regla del producto de C02 da $(uv)'=u'v+uv'$ en el interior. Las prolongaciones continuas de $u'$ y $v'$, junto con la continuidad de $u$ y $v$, hacen continuos ambos productos y su suma en $[a,b]$. Sus integrales existen por C05.
+
+La función $uv$ es continua hasta los extremos y su derivada interior coincide con la suma indicada. La segunda parte del Teorema Fundamental de C06 y la linealidad de la integral dan
 
 $$
 [uv]_a^b=\int_a^b(u'v+uv')\,dx
 =\int_a^b u'v\,dx+\int_a^b uv'\,dx.
 $$
 
-La fórmula sigue despejando el último término. $\square$
+Restamos la integral de $u'v$ y queda la fórmula. Los valores terminales del producto conservan la parte que se separa al intercambiar la derivación entre los factores. $\square$
 
 **Corolario 7.2 (forma indefinida; `EDC-C07-COR-002`).** En un intervalo abierto en el que $u,v$ sean derivables y los productos estén definidos, $uv$ es una primitiva de $u'v+uv'$. Siempre que alguno de los sumandos tenga primitiva, se puede escribir
 
@@ -168,79 +174,79 @@ $$
 \int uv'\,dx=uv-\int u'v\,dx+C.
 $$
 
-**Demostración.** Es la igualdad de derivadas $(uv)'=u'v+uv'$ junto con la unicidad de primitivas salvo constante en intervalos. $\square$
+**Demostración.** La regla del producto da $(uv)'=u'v+uv'$. Si $A$ es una primitiva de $u'v$, entonces $(uv-A)'=uv'$. Si comenzamos con una primitiva $B$ de $uv'$, la diferencia $uv-B$ es a su vez una primitiva de $u'v$. En cualquiera de los casos la fórmula describe las primitivas, y el valor medio asegura que todas difieren en una constante sobre el intervalo. $\square$
 
-La aplicación no consiste en «pasar una derivada al otro factor» sin costo: intercambia un integral por otro. Su valor depende de que el segundo sea más fácil, o de que el mismo integral aparezca otra vez y se pueda despejar algebraicamente.
+La elección de factores decide si el intercambio ayuda. Derivar un polinomio disminuye su grado, mientras que integrar una exponencial conserva una forma sencilla. Otras veces el intercambio trae de vuelta la integral inicial y permite resolver una igualdad algebraica. Conviene examinar la integral que aparecerá antes de escoger $u$ y $v'$.
 
-::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Leibniz: recorrer una regla en sentido contrario"}
-
+::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Leibniz: una notación que acompaña al cambio"}
 *Lectura opcional.*
 
-Una buena regla puede servir para algo más que la tarea para la cual la aprendimos. La regla del producto, por ejemplo, explica cómo derivar dos factores multiplicados. Si la recorremos en sentido contrario, se transforma en una herramienta para integrar: la integración por partes.
+Al final de su artículo de 1686, Leibniz advierte que retirar demasiado pronto una cantidad diferencial puede quitar generalidad al cálculo. Le interesa conservar la posibilidad de que la variable avance de distintas maneras. Unas páginas antes explica también su preferencia por una escritura como $dx$, vinculada a la propia letra $x$, y presenta diferencias y sumaciones como operaciones recíprocas.
 
-Esta posibilidad de ir y volver ocupa un lugar importante en el cálculo de Leibniz. En su artículo de 1686 presentó diferenciación y sumación como operaciones recíprocas. Su escritura ayudaba a reconocer esos viajes de ida y vuelta.
+Esa atención a la escritura ayuda a entender por qué un cambio de variable debe registrar algo más que el nombre nuevo del argumento. Si $u=3x+1$, una variación de $x$ produce una variación triple de $u$. La integral de $e^{3x+1}$ se convierte en la de $e^u$ con un factor $1/3$; olvidar ese factor cambiaría el valor. Cuando el cambio retrocede, su derivada conserva además el signo que vimos en la sustitución orientada.
 
-Por eso los métodos de integración guardan tantos parecidos con las reglas de derivación. La sustitución vuelve sobre la cadena; la integración por partes vuelve sobre el producto. Cuando una integral parece difícil, vale la pena preguntarse qué regla conocida podría estar escondida en ella. Aprender a integrar también consiste en aprender a reconocer caminos que ya hemos recorrido.
+La fórmula de nuestro teorema justifica estos cambios mediante la cadena y una primitiva. La escritura diferencial permite recordar qué expresión cambia y cómo cambia, una ayuda especialmente valiosa cuando el cálculo reúne varias composiciones. Conservar esa información fue parte del interés de Leibniz por una notación que pudiera acompañar el razonamiento.
 
-**Para seguir leyendo:** [Leibniz, De geometria recondita (1686), traducción de Thiago Dourado](https://www.rbhm.org.br/index.php/RBHM/article/view/379).
-
+**Para seguir leyendo:** [Leibniz, *De geometria recondita* (1686), traducción de Thiago Dourado, pp. 6–7 y 9 (2022)](https://www.rbhm.org.br/index.php/RBHM/article/view/379).
 :::
 
 ## 7.5. Dos integraciones por partes reveladoras
 
-**Primera: un polinomio por una exponencial.** Poniendo $u=x$, $v'=e^x$, $v=e^x$ en $[0,1]$,
+**Primera: un polinomio por una exponencial.** En $xe^x$ elegimos derivar $x$, que se convierte en uno, e integrar $e^x$, que permanece igual. Con $u=x$, $v'=e^x$ y $v=e^x$ en $[0,1]$,
 
 $$
 \int_0^1 xe^x\,dx=[xe^x]_0^1-\int_0^1e^x\,dx=e-(e-1)=1.
 $$
 
-La fórmula indefinida correspondiente es $\int xe^x\,dx=(x-1)e^x+C$; derivarla confirma el resultado. Si el factor polinómico tiene grado dos o mayor, repetir el procedimiento disminuye su grado:
+La integral restante se evalúa directamente. La forma indefinida es $(x-1)e^x+C$, cuya derivada recupera $xe^x$. Si comenzamos con $x^2e^x$, el mismo intercambio deja una integral con $2xe^x$; repetirlo elimina finalmente el factor polinómico. Obtenemos
 
 $$
 \int x^2e^x\,dx=e^x(x^2-2x+2)+C.
 $$
 
-**Segunda: un logaritmo que no presenta producto.** En $[1,e]$ escribimos $\ln x=(\ln x)\cdot1$ y elegimos $u=\ln x$, $v'=1$, de donde $u'=1/x$, $v=x$. Resulta
+**Segunda: un logaritmo que no presenta producto.** Podemos escribir $\ln x=(\ln x)\cdot1$. Elegimos $u=\ln x$ y $v'=1$ porque $u'=1/x$ se simplifica al multiplicarse por $v=x$. En el intervalo positivo $[1,e]$,
 
 $$
 \int_1^e\ln x\,dx=[x\ln x]_1^e-\int_1^e1\,dx=e-(e-1)=1.
 $$
 
-Aquí la restricción $x>0$ es indispensable; no existe un $\ln x$ real para $x\le0$ en nuestra definición de C02. Por la misma idea, una primitiva de $\ln x$ sobre $(0,\infty)$ es $x\ln x-x$.
+La elección convierte la integral restante en la de una constante. La misma cuenta proporciona $x\ln x-x$ como primitiva sobre $(0,\infty)$; el intervalo conserva el dominio del logaritmo real definido en C02.
 
 **Proposición 7.2 (reducción polinomio–exponencial; `EDC-C07-PRP-002`).** Si $p$ es un polinomio de grado $n\ge0$, la función $p(x)e^x$ tiene sobre $\mathbb R$ una primitiva de la forma $e^x q(x)$ con $q$ polinomio de grado a lo sumo $n$. En particular se obtiene mediante un número finito de integraciones por partes.
 
-**Demostración.** Escribimos $q=p-p'+p''-\cdots+(-1)^np^{(n)}$. La suma es finita porque $p^{(n+1)}=0$. De la regla del producto,
+**Demostración.** Una candidata $e^xq(x)$ tiene derivada $e^x(q+q')$. Para obtener $e^xp$ necesitamos por tanto un polinomio $q$ que satisfaga $q+q'=p$. Comenzar con $q=p$ deja el término adicional $p'$; restarlo de $q$ lo cancela, pero aparece entonces $-p''$. La alternancia continúa hasta que las derivadas se anulan.
+
+Esto lleva a elegir $q=p-p'+p''-\cdots+(-1)^np^{(n)}$. Cada término tiene grado a lo sumo $n$ y la suma termina porque $p^{(n+1)}=0$. Al sumar $q'$ a $q$, cada derivada de orden positivo aparece con signos opuestos y sólo queda $p$. Por la regla del producto,
 
 $$
 \frac{d}{dx}(e^xq)=e^x(q+q')=e^xp,
 $$
 
-ya que todos los términos intermedios se cancelan. La integración por partes reproduce la misma cancelación paso a paso. $\square$
+que demuestra que es una primitiva sobre toda la recta. Integrar por partes primero $p e^x$, después $p'e^x$ y así sucesivamente produce la misma suma alternada, con un número finito de pasos. Para un polinomio constante, la elección se reduce a $q=p$. $\square$
 
 ## 7.6. Cuando la integral reaparece: el método cíclico
 
-Consideremos $I=\int e^x\cos x\,dx$ sobre $\mathbb R$. Aplicamos partes con $u=\cos x$, $v'=e^x$:
+En $e^x\cos x$, derivar el coseno lo convierte en un seno; repetir el proceso devuelve el coseno con otro signo. Las integraciones por partes pueden aprovechar ese ciclo. Si escribimos $I=\int e^x\cos x\,dx$, la primera aplicación con $u=\cos x$ y $v'=e^x$ da
 
 $$
 I=e^x\cos x+\int e^x\sin x\,dx.
 $$
 
-A la integral nueva $J=\int e^x\sin x\,dx$ aplicamos partes con $u=\sin x$, $v'=e^x$:
+La integral nueva $J=\int e^x\sin x\,dx$, con $u=\sin x$ y $v'=e^x$, satisface
 
 $$
 J=e^x\sin x-\int e^x\cos x\,dx.
 $$
 
-Para evitar ambigüedades entre familias que difieren en una constante, puede hacerse primero con integrales de $0$ a $x$. Sus identidades dan $2I(x)=e^x(\sin x+\cos x)-1$ para $I(x)=\int_0^xe^t\cos t\,dt$. De aquí resulta la familia de primitivas
+Estas escrituras de primitivas incluyen elecciones de constantes. Para efectuar el despeje sin ambigüedad, tomemos $I(x)=\int_0^xe^t\cos t\,dt$ y $J(x)=\int_0^xe^t\sin t\,dt$. La primera igualdad se vuelve $I(x)=e^x\cos x-1+J(x)$; la segunda, $J(x)=e^x\sin x-I(x)$. Los términos en cero son respectivamente uno y cero. Sustituimos la segunda relación en la primera y reunimos las dos apariciones de $I(x)$: $2I(x)=e^x(\sin x+\cos x)-1$.
+
+La acumulación difiere en una constante de la función que aparece a continuación, por lo que la familia de primitivas es
 
 $$
 \boxed{\int e^x\cos x\,dx=\frac{e^x}{2}(\sin x+\cos x)+C.}
 $$
 
-Un control por derivación directa confirma el factor $1/2$. La repetición aquí **no** reduce el grado de una función: cierra un sistema de dos integrales y permite despejar una de ellas.
-
-La decisión sobre el método es estructural: si aparece $f(g(x))g'(x)$ pensamos en cadena; si aparece $u(x)v'(x)$ cuyo intercambio simplifica, pensamos en producto. No hay un algoritmo universal que garantice una expresión elemental para cualquier integrando continuo.
+Al derivar, los términos con seno se cancelan y los dos términos con coseno compensan el factor $1/2$. El procedimiento cerró un sistema de dos integrales. En el caso polinómico reducía un grado; aquí aprovechó que la repetición regresaba al punto inicial con un coeficiente que permitía despejar.
 
 ## 7.7. Fracciones racionales y el trabajo algebraico previo
 
@@ -261,13 +267,19 @@ $$
 \qquad A_j=\frac{P(r_j)}{Q'(r_j)}.
 $$
 
-**Demostración.** Como las raíces son simples, $Q'(r_j)=c\prod_{k\ne j}(r_j-r_k)\ne0$. Multipliquemos la identidad propuesta por $Q(x)$ y definamos
+**Demostración.** Multiplicar una descomposición por $Q$ convierte el problema racional en una identidad de polinomios. Al evaluar esa identidad en una raíz $r_i$, todos los factores que aún contienen $x-r_i$ desaparecen. Sólo sobrevive el sumando cuyo denominador era $x-r_i$, lo que permite determinar su coeficiente por separado.
+
+Como las raíces son distintas, $Q'(r_j)=c\prod_{k\ne j}(r_j-r_k)\ne0$. Con los coeficientes del enunciado, definimos
 
 $$
 H(x)=P(x)-\sum_{j=1}^m A_j\frac{Q(x)}{x-r_j}.
 $$
 
-Cada cociente $Q(x)/(x-r_j)$ es un polinomio de grado $m-1$. Por tanto, $H$ es un polinomio de grado menor que $m$. Al evaluar en $x=r_i$, todos los términos con $j\ne i$ se anulan; el término restante es $A_iQ'(r_i)=P(r_i)$. Así $H(r_i)=0$ para las $m$ raíces distintas. Un polinomio de grado menor que $m$ no puede tener $m$ raíces distintas salvo que sea idénticamente cero, como se prueba reiterando la factorización por $(x-r_i)$. Queda demostrada la identidad. $\square$
+Aquí $Q(x)/(x-r_j)$ designa el polinomio obtenido al retirar ese factor, de grado $m-1$; podemos evaluarlo incluso en $r_j$. Su valor allí es $Q'(r_j)$. Así $H$ es un polinomio de grado menor que $m$, y al evaluar en $r_i$ los términos con $j\ne i$ son cero, mientras el restante vale $A_iQ'(r_i)=P(r_i)$. Tenemos $H(r_i)=0$ para todas las raíces.
+
+Queda comprobar que esas evaluaciones determinan la identidad entera. Si un polinomio se anula en $r_1$, es divisible por $x-r_1$. Al evaluar el cociente en otra raíz distinta, el factor retirado no es cero, por lo que también ese cociente se anula allí. Repetimos para las $m$ raíces: un polinomio no nulo con esas raíces tendría grado al menos $m$, pero $H$ tiene grado menor. Debe ser el polinomio cero.
+
+La identidad polinómica queda probada. Dividimos por $Q(x)$ sólo donde no se anula y obtenemos la descomposición racional en el dominio declarado. $\square$
 
 **Corolario 7.3 (primitiva racional en raíces simples; `EDC-C07-COR-003`).** Bajo las hipótesis del Teorema 7.3, en **cada intervalo abierto** que no contenga raíces de $Q$,
 
@@ -276,7 +288,7 @@ $$
 =\sum_{j=1}^m A_j\ln|x-r_j|+C.
 $$
 
-**Demostración.** En ese intervalo, $\frac{d}{dx}\ln|x-r_j|=1/(x-r_j)$ por C02. Derivamos la suma y usamos la identidad anterior. $\square$
+**Demostración.** En un intervalo que no contiene $r_j$, la diferencia $x-r_j$ mantiene su signo. Si es positiva, la cadena da la derivada de $\ln(x-r_j)$; si es negativa, derivamos $\ln(r_j-x)$. En ambos casos $\frac{d}{dx}\ln|x-r_j|=1/(x-r_j)$, según C02. Derivamos la suma finita del enunciado y la identidad del Teorema 7.3 recupera $P/Q$. El valor medio describe todas las demás primitivas mediante una constante en ese intervalo. $\square$
 
 **Ejemplo.** Para $x\ne0,1$,
 
@@ -290,11 +302,11 @@ $$
 \int\frac{dx}{x(x-1)}=\ln|x-1|-\ln|x|+C.
 $$
 
-No existe una constante de integración que, por arte de notación, obligue a enlazar primitivas a través de una singularidad.
+Cada uno de esos intervalos es un componente del dominio. Dentro de él, el valor medio obliga a que dos primitivas difieran en una constante; entre componentes separados por los polos, las constantes pueden elegirse independientemente.
 
 ## 7.8. Factores repetidos, cuadráticos y dominio original
 
-La presencia de raíces repetidas o factores cuadráticos irreducibles exige más álgebra que el Teorema 7.3. En lugar de introducir sin prueba un teorema general de factorización y descomposición para todo polinomio real, estudiaremos identidades **comprobadas multiplicando denominadores**.
+En el Teorema 7.3 fue esencial que $Q'(r_j)$ no se anulara. Una raíz repetida hace cero esa derivada y requiere otros términos en la descomposición. Un factor cuadrático sin raíces reales tampoco proporciona puntos reales donde aislar coeficientes de la misma manera. Estudiaremos ambos casos mediante identidades que pueden comprobarse por denominador común, sin necesitar un teorema general de descomposición.
 
 **Raíz repetida.** Para $x\notin\{0,1\}$,
 
@@ -333,9 +345,9 @@ Su primitiva en cada componente del **dominio original** es $x^2/2+\ln|x-1|+C$. 
 
 **Proposición 7.3 (diferenciación como control; `EDC-C07-PRP-003`).** En un intervalo abierto $I$ sobre el que una identidad racional $R=S$ sea válida y una expresión candidata $G$ satisfaga $G'=S$, la misma $G$ es primitiva de $R$ sobre $I$.
 
-**Demostración.** Para cada $x\in I$, las identidades evaluadas en $x$ dan $G'(x)=S(x)=R(x)$. La hipótesis sobre el intervalo evita singularidades. $\square$
+**Demostración.** Fijamos $x\in I$. La identidad racional es válida allí y la candidata tiene la derivada indicada, de modo que $G'(x)=S(x)=R(x)$. Como el argumento vale en todos los puntos del intervalo, $G$ satisface la definición de primitiva de $R$ sobre él. $\square$
 
-Esta proposición aparentemente modesta fija una regla de auditoría: **una antiderivada se verifica derivándola sobre el dominio declarado**, no por semejanza superficial con una fórmula de tabla.
+El control final conserva el dominio donde se efectuó el cálculo. Una simplificación puede dejar una expresión que admita valores en puntos antes excluidos; derivarla allí no convierte esos puntos en parte del dominio de la función original.
 
 ## 7.9. Un repertorio derivado, no memorizado
 
@@ -362,7 +374,7 @@ $$
 \int\sin^2x\,dx=\frac x2-\frac{\sin2x}{4}+C.
 $$
 
-Es esencial reconocer que una *tabla* sólo condensa pruebas disponibles: no reemplaza la verificación de dominio, regularidad o singularidades en la integral concreta.
+El repertorio ayuda a reconocer una derivada, pero cada uso conserva sus condiciones. El denominador de una fórmula, el argumento de un logaritmo y el intervalo elegido pueden decidir si la candidata es una primitiva válida para la integral concreta.
 
 ## 7.10. Acumulaciones geométricas: área entre curvas
 
@@ -378,7 +390,7 @@ $$
 A=\int_a^b|f(x)-g(x)|\,dx.
 $$
 
-La continuidad hace que el integrando sea Riemann-integrable, pero **para calcular** la expresión habitualmente conviene localizar los cruces y separar los intervalos. No se puede sustituir el área entre curvas por el valor absoluto de la integral orientada en general.
+La continuidad de $|f-g|$ garantiza integrabilidad incluso si hay cruces. Para calcular el módulo podemos localizar los puntos donde cambia el orden de las gráficas y usar en cada tramo la diferencia entre la superior y la inferior. Integrar primero $f-g$ y tomar después el módulo del resultado permitiría cancelaciones entre tramos; el área total suma sus alturas no negativas.
 
 **Ejemplo.** En $[0,2]$, $2x\ge x^2$ y
 
@@ -395,7 +407,7 @@ $$
 0\le\int_a^b|f-g|\,dx\le M(b-a).
 $$
 
-**Demostración.** La continuidad de $|f-g|$ asegura integrabilidad, y el orden de C05 aplicado a $0\le|f-g|\le M$ da la desigualdad. $\square$
+**Demostración.** La diferencia de dos funciones continuas y su módulo son continuos, luego integrables en $[a,b]$. El orden de C05 aplicado a $0\le|f-g|\le M$ compara su integral con las de las constantes cero y $M$. Éstas valen cero y $M(b-a)$, respectivamente, y dan la cota. $\square$
 
 ## 7.11. Acumulaciones físicas: trabajo y balance
 
@@ -421,21 +433,21 @@ $$
 Q(t_1)-Q(t_0)=\int_{t_0}^{t_1}r(t)\,dt.
 $$
 
-Esto no es una nueva ley física: es el Teorema Fundamental aplicado a la relación diferencial postulada por el modelo. El cálculo no determina por sí solo qué tasa describe correctamente un fenómeno; ésa es una hipótesis empírica que debe contrastarse por separado.
+La relación $Q'=r$ procede del modelo: expresa qué tasa representa el cambio de la magnitud. Bajo las condiciones del Teorema Fundamental, integrar esa tasa recupera la diferencia entre los valores terminales. Para determinar además el valor final de $Q$, necesitamos conocer su valor inicial; la integral aporta el cambio ocurrido durante el intervalo.
 
 ## 7.12. Estrategia, límites e historia de un oficio matemático
 
-En el cálculo elemental es tentador interpretar $\int f$ como un problema de reconocimiento visual: «si veo un polinomio, pruebo potencia; si veo un producto, pruebo partes». Pero la elección racional se hace **después** de verificar integrabilidad, dominio y orientación. Se empieza por simplificar álgebra o trigonometría, comprobar si la función es una composición con su derivada, y sólo entonces escoger un método que reduzca de verdad el problema. En integrales definidas hay que transformar los extremos y respetar el signo de la derivada del cambio de variable; en funciones racionales hay que examinar polos, factores repetidos y posibles agujeros del dominio original.
+Una elección de método responde a la estructura del integrando. En una composición buscamos el factor de la cadena; en un producto examinamos qué factor se simplifica al derivarlo y qué primitiva podemos hallar para el otro. El ciclo exponencial–trigonométrico mostró que también puede ayudar una integral que reaparece. En un cociente racional, la división y la factorización preparan el trabajo analítico, siempre conservando los puntos excluidos del dominio.
 
-El límite conceptual es tan importante como el método. Toda función continua sobre un intervalo compacto tiene una integral de Riemann y, por C06, una primitiva obtenida como función de acumulación. Sin embargo, **no hemos demostrado que cada primitiva pueda expresarse mediante un número finito de potencias, logaritmos, exponenciales, funciones trigonométricas y operaciones algebraicas**. La función
+Estos procedimientos permiten calcular muchas acumulaciones, pero no determinan por sí solos una expresión elemental para cualquier primitiva. La primera parte del Teorema Fundamental ya nos da, para el integrando continuo $e^{-t^2}$, la función
 
 $$
 H(x)=\int_0^xe^{-t^2}\,dt
 $$
 
-está perfectamente definida para todo $x$, es derivable y satisface $H'=e^{-x^2}$. No necesitamos decidir aquí qué expresiones elementales existen o no para $H$: el Teorema Fundamental ya asegura lo que importa para su existencia y variación. Tampoco introducimos integrales impropias, integrales múltiples, teoría de medida o técnicas avanzadas de fracciones racionales con raíces complejas.
+definida para cada $x$ mediante una integral sobre un segmento finito, con $H'(x)=e^{-x^2}$. La pregunta por una expresión finita en términos de un repertorio previo de funciones queda abierta aquí. La existencia y la variación de $H$ están determinadas aunque nuestros métodos no hayan producido esa expresión.
 
-Históricamente, las cuadraturas, sumaciones y reglas operatorias no surgieron todas con las mismas definiciones actuales. Los problemas geométricos antiguos y las transformaciones de los siglos XVII–XIX dieron lugar a familias de procedimientos que hoy pueden unificarse mediante producto, cadena y Teorema Fundamental. La notación de Leibniz conserva esa genealogía, pero el símbolo $du$ no sustituye la prueba analítica que hemos realizado. La [documentación histórica](capitulo-07-notas.html) distingue las síntesis efectivamente consultadas de las fuentes primarias y libros sólo localizados, sin atribuir a Newton o Leibniz enunciados modernos de Riemann–Darboux.
+La [documentación histórica](capitulo-07-notas.html) recoge los antecedentes de cuadraturas, sumaciones y reglas de cálculo. En el capítulo, el Teorema Fundamental permite reunir esos procedimientos mediante identidades de derivación y de polinomios. Para estudiar después aproximaciones dadas por sumas con un número creciente de términos, necesitaremos averiguar qué condiciones permiten pasar de esas sumas a un límite; ésa será la nueva dificultad de C08.
 
 ### Mapa de dependencias y alcance
 
