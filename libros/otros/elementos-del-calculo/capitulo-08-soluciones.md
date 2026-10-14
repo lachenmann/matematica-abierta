@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C08-SOLUCIONES
-source-sha256: c6a2fd716aabd6bca4ad3fb058682e0de6703af0250d4ba27362d5bcce666a07
+source-sha256: f053c765093c779bba8a93fc86dad4c8961e8400cf08f10ff1ffd69d8b09b1d3
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-08.html) · [Ejercicios](capitulo-08-ejercicios.html) · [Soluciones](capitulo-08-soluciones.html) · [Notas históricas](capitulo-08-notas.html)
+[Exposición](capitulo-08.html) · [Ejercicios](capitulo-08-ejercicios.html) · [Soluciones](capitulo-08-soluciones.html)
 
 Cada resolución corresponde a un único ejercicio de [C08](capitulo-08-ejercicios.html) e identifica la hipótesis decisiva. Todas las operaciones infinitas quedan respaldadas por resultados de C00–C08; las fórmulas de Taylor de C09 no se utilizan.
 
@@ -345,7 +345,3 @@ $$
 $$
 
 El factor $1/(n+1)$ aparece al integrar el monomio de grado $n$, y su valor en $1/2$ aporta $2^{-(n+1)}$. La primitiva final se comprueba mediante producto y cadena. Todo el segmento queda dentro del radio y la identificación usa derivadas y una condición inicial, sin anticipar Taylor.
-
----
-
-**Control de cobertura:** los treinta identificadores `EDC-C08-SOL-001--030` responden a los treinta `EDC-C08-EXR-001--030` sin requerir C09, C10 o C11.

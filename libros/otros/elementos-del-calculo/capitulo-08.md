@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C08
-source-sha256: b2276d69efa503d0ca16cd557eb3899ba1d4b290045a85b539f59be6a47d0c0c
+source-sha256: f33f586ce961f43c35641eb05971eee93f26a5a80e31b71b991685850c7e2f5a
 content-id: MA-BCH-0339
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-08.html) · [Ejercicios](capitulo-08-ejercicios.html) · [Soluciones](capitulo-08-soluciones.html) · [Notas históricas](capitulo-08-notas.html)
+[Exposición](capitulo-08.html) · [Ejercicios](capitulo-08-ejercicios.html) · [Soluciones](capitulo-08-soluciones.html)
 
 [← Capítulo 7](capitulo-07.html) · [Capítulo 9 →](capitulo-09.html)
 
@@ -115,7 +115,7 @@ Esas cotas forman una serie geométrica de razón $2^{1-p}<1$. Cualquier suma pa
 
 Para $p=1$, usamos una cota inferior en los mismos bloques. Cada uno de sus $2^k$ términos es mayor que $2^{-(k+1)}$, por lo que cada bloque aporta al menos $1/2$. Podemos reunir tantos bloques como queramos y hacer que las sumas parciales superen cualquier número fijado; la armónica diverge. Si $0<p<1$, tenemos $n^{-p}\ge n^{-1}$ para $n\ge1$, y la comparación con la armónica concluye. $\square$
 
-La función $1/n$ **tiende a cero**, pero su serie diverge. Éste es el contraejemplo preciso que faltaba al Lema 8.1. La agrupación por potencias de dos también permite explicar históricamente algunos argumentos medievales sobre la armónica, sin identificar automáticamente la prueba moderna con un manuscrito particular; véanse las [notas H1](capitulo-08-notas.html).
+La función $1/n$ **tiende a cero**, pero su serie diverge. Éste es el contraejemplo preciso que faltaba al Lema 8.1. La agrupación por potencias de dos también permite explicar históricamente algunos argumentos medievales sobre la armónica, sin identificar automáticamente la prueba moderna con un manuscrito particular.
 
 ::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Los Bernoulli: una pregunta conduce a otra"}
 *Lectura opcional.*
@@ -396,7 +396,7 @@ $$
 \boxed{\frac\pi4=\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}.}
 $$
 
-La estimación cubre directamente el segmento cerrado hasta uno. A diferencia del control interior general, aquí el resto particular de la función racional permite alcanzar el punto fronterizo. Los antecedentes de la fórmula y sus distintos niveles de lectura se registran en las [notas H3–H5](capitulo-08-notas.html).
+La estimación cubre directamente el segmento cerrado hasta uno. A diferencia del control interior general, aquí el resto particular de la función racional permite alcanzar el punto fronterizo.
 
 ## 8.12. Qué queda demostrado y qué permanece abierto
 
@@ -415,4 +415,4 @@ La cuestión de representar una función dada sigue abierta. Una serie puede con
 
 ### Trabajo del lector
 
-Los [treinta ejercicios](capitulo-08-ejercicios.html) distinguen pruebas de convergencia, estimación de errores, reordenación, fronteras, productos y operaciones interiores con series de potencias. Las [soluciones completas](capitulo-08-soluciones.html) se presentan por separado, con dominio, hipótesis y cálculos razonados; la [documentación histórica](capitulo-08-notas.html) conserva el estado de verificación de cada referencia.
+Los [treinta ejercicios](capitulo-08-ejercicios.html) distinguen pruebas de convergencia, estimación de errores, reordenación, fronteras, productos y operaciones interiores con series de potencias. Las [soluciones completas](capitulo-08-soluciones.html) se presentan por separado, con dominio, hipótesis y cálculos razonados.

@@ -26,7 +26,7 @@ source-sha256: 037c8444e589768ba4ec1c512afa77439b1334b4493316b78da1bbcd88ee725d
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-01.html) · [Ejercicios](capitulo-01-ejercicios.html) · [Soluciones](capitulo-01-soluciones.html) · [Notas históricas](capitulo-01-notas.html)
+[Exposición](capitulo-01.html) · [Ejercicios](capitulo-01-ejercicios.html) · [Soluciones](capitulo-01-soluciones.html)
 
 Los enunciados son independientes de sus desarrollos, reunidos en [Soluciones del capítulo 1](capitulo-01-soluciones.html). Los cálculos se resuelven desde los cocientes incrementales: se pide justificar cada límite y comprobar el dominio en el que las operaciones están permitidas. Los identificadores `EXR` y `SOL` se corresponden por los tres dígitos finales.
 

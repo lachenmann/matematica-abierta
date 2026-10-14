@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C05
-source-sha256: 1d302c080738bbcdbc840ef03fb7c28a863e91d2f25abfbb66826c41bb88e3f5
+source-sha256: a1beafe648aecd1e98f92946e1ac518c346568a05c9ae06b798a08f66eca84fd
 content-id: MA-BCH-0336
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-05.html) · [Ejercicios](capitulo-05-ejercicios.html) · [Soluciones](capitulo-05-soluciones.html) · [Notas históricas](capitulo-05-notas.html)
+[Exposición](capitulo-05.html) · [Ejercicios](capitulo-05-ejercicios.html) · [Soluciones](capitulo-05-soluciones.html)
 
 [← Capítulo 4](capitulo-04.html) · [Capítulo 6 →](capitulo-06.html)
 
@@ -295,7 +295,7 @@ En la sección II forma dos sumas, una con las cotas superiores de la función e
 
 La sección III examina después las alturas elegidas dentro de cada tramo. Esa elección puede cambiar la suma, y hay que averiguar cuándo deja de importar al hacer pequeños los intervalos. Es la dificultad que acabamos de resolver con el refinamiento y el control de todas las etiquetas.
 
-**Para seguir leyendo:** [Darboux, *Mémoire* (1875), pp. 58, 65–66 y 72, secciones II–III](https://www.numdam.org/item/ASENS_1875_2_4__57_0.pdf); notas históricas del capítulo 5.
+**Para seguir leyendo:** [Darboux, *Mémoire* (1875), pp. 58, 65–66 y 72, secciones II–III](https://www.numdam.org/item/ASENS_1875_2_4__57_0.pdf).
 :::
 
 ## 5.6. Dos funciones que revelan los límites del concepto
@@ -542,7 +542,6 @@ Tenemos ya una acumulación definida y reglas para combinarla, compararla y repa
 - **C01–C03:** ninguno de sus teoremas de derivación se usa para **definir** la integral; algunos cálculos especiales de C04 ya contenían el teorema del valor medio de C03.
 - **C05:** `EDC-C05-THM-001--009`, tres lemas, tres proposiciones y cinco definiciones, con independencia de C06.
 - **Excluidos:** integrales impropias, Lebesgue, teoremas de medida, convergencia uniforme sistemática y Teorema Fundamental del Cálculo.
-- **Historia:** [notas históricas y procedencia de fuentes](capitulo-05-notas.html).
 
 ### Trabajo del lector
 

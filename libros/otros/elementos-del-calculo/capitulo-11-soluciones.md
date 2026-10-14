@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C11-SOLUCIONES
-source-sha256: 9cbc478e8b01bd027b3b26a131b82a9c204bfca3b59aade6d1fc28476345e8ba
+source-sha256: 91ccf002aff3287c5f514b909fffe11da2927467f6666133afe88741706da1f2
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-11.html) · [Ejercicios](capitulo-11-ejercicios.html) · [Soluciones](capitulo-11-soluciones.html) · [Notas históricas](capitulo-11-notas.html)
+[Exposición](capitulo-11.html) · [Ejercicios](capitulo-11-ejercicios.html) · [Soluciones](capitulo-11-soluciones.html)
 
 Cada solución responde exactamente a un problema de [C11](capitulo-11-ejercicios.html). No se añaden teoremas de análisis real o de EDO que el libro no haya demostrado. En las preguntas históricas se diferencia una conclusión documentada de la reconstrucción matemática moderna.
 
@@ -228,7 +228,7 @@ La derivada $y'=1-e^{-t}$ verifica $y'+y=(1-e^{-t})+(t-1+e^{-t})=t$. El teorema 
 
 ### Solución 11.24 (`EDC-C11-SOL-024`)
 
-Un parecido **matemático retrospectivo** es que ambos contextos utilizan aproximaciones geométricas cada vez más refinadas para controlar áreas o volúmenes: el agotamiento asociado a Arquímedes y los procedimientos comentados por Liu Hui sobre subdivisión de figuras. Se puede describir esa analogía sin afirmar que compartían un tratado, un mismo algoritmo o una transmisión directa. Sería anacrónico atribuirles la definición moderna de integral mediante $\sup_P L(f,P)=\inf_P U(f,P)$ o el lenguaje de límites $\varepsilon$–$\delta$. Las notas H1–H2 distinguen la historiografía consultada de los originales no colacionados.
+Un parecido **matemático retrospectivo** es que ambos contextos utilizan aproximaciones geométricas cada vez más refinadas para controlar áreas o volúmenes: el agotamiento asociado a Arquímedes y los procedimientos comentados por Liu Hui sobre subdivisión de figuras. Se puede describir esa analogía sin afirmar que compartían un tratado, un mismo algoritmo o una transmisión directa. Sería anacrónico atribuirles la definición moderna de integral mediante $\sup_P L(f,P)=\inf_P U(f,P)$ o el lenguaje de límites $\varepsilon$–$\delta$.
 
 ### Solución 11.25 (`EDC-C11-SOL-025`)
 
@@ -279,7 +279,3 @@ $$
 (d) La derivada $y'=-e^{-t}=-y$ y $y(0)=1$, por lo que existe una solución. El Teorema 10.2, aplicado al coeficiente continuo $a(t)=-1$, demuestra que es la **única** sobre $\mathbb R$ para ese dato.
 
 (e) Las cuatro pruebas contestan preguntas distintas: (a) reconstruye una acumulación, (b) certifica un error de cuadratura, (c) cuantifica un error local de aproximación y (d) afirma existencia y unicidad para un PVI lineal. Ninguna de ellas acredita que un sistema físico real decaiga exactamente según $e^{-t}$: la elección de la ley sigue siendo una hipótesis de modelización que exige contraste experimental externo.
-
----
-
-**Cobertura:** `EDC-C11-SOL-001--030` corresponde uno a uno a `EDC-C11-EXR-001--030`, sin usar teoría matemática posterior al cierre de C10.

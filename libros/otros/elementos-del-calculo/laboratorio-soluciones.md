@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC_LABORATORIO_SOLUCIONES
-source-sha256: 02fb8d747e0b5b024f76799432a668b4c7a38001edd836583e138fa24a37c3ef
+source-sha256: 494db8974bb5e14b5deaf27468760e44941b8d55319b9b0bd69c0c8a6a7dd457
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -181,7 +181,3 @@ $$
 $$
 
 La comparación no utiliza evaluaciones decimales ni supone que dos aproximaciones convergen sólo porque visualmente parecen acercarse.
-
----
-
-**Correspondencia:** catorce problemas `INV-Cxx-nn` ↔ catorce soluciones `SOL-INV-Cxx-nn`, con pruebas por las herramientas anteriores a cada problema.

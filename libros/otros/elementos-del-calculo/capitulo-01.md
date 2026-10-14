@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C01
-source-sha256: c7d9f7ea3c185275b71695c3a3c1c12a36e5fd3cc11a6b0a414ea1848b4f1810
+source-sha256: 84d777c0ca8583dc83441bfe5e33badbe4a4777e88a398e9063b10714db938e5
 content-id: MA-BCH-0332
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-01.html) · [Ejercicios](capitulo-01-ejercicios.html) · [Soluciones](capitulo-01-soluciones.html) · [Notas históricas](capitulo-01-notas.html)
+[Exposición](capitulo-01.html) · [Ejercicios](capitulo-01-ejercicios.html) · [Soluciones](capitulo-01-soluciones.html)
 
 [← Capítulo 0](capitulo-00.html) · [Capítulo 2 →](capitulo-02.html)
 
@@ -89,7 +89,7 @@ $$
 
 Por tanto, las velocidades medias se aproximan a $v_0+2ct$ cuando $h\to0$. Si $c$ tiene dimensiones de longitud/tiempo$^2$, la expresión resultante tiene dimensiones de longitud/tiempo, como corresponde. El límite describe el cambio previsto por la función elegida. Su interpretación física conserva las unidades del cociente y requiere que el modelo represente adecuadamente el movimiento que estudiamos.
 
-**Nota histórica H1.** La relación entre distancia y cuadrado del tiempo aparece en el estudio galileano de la caída uniformemente acelerada. La función anterior permite explorar esa dependencia con nuestro lenguaje de límites; los argumentos geométricos de Galileo y sus condiciones de movimiento se documentan en las [notas históricas H1–H5](capitulo-01-notas.html).
+**Nota histórica H1.** La relación entre distancia y cuadrado del tiempo aparece en el estudio galileano de la caída uniformemente acelerada. La función anterior permite explorar esa dependencia con nuestro lenguaje de límites.
 
 ## 1.3. La razón de cambio media
 
@@ -379,7 +379,7 @@ La derivada reúne preguntas que tuvieron recorridos históricos diferentes. Gal
 
 La perspectiva de Newton sobre cantidades que varían y sus *fluxiones* puso en relación la geometría y el movimiento; Leibniz elaboró el cálculo diferencial con otros conceptos y una notación que permitió operar con gran eficacia [H4–H5]. La definición $\varepsilon$–$\delta$ que utilizamos da una forma actual de justificar los cocientes, y puede ayudarnos a comprender la dificultad de aquellos problemas, siempre que conservemos la diferencia entre nuestra reconstrucción y los argumentos históricos.
 
-Las [notas históricas de C01](capitulo-01-notas.html) identifican las fuentes y los pasajes que sostienen esas conexiones. Los cálculos con $x^2$ o $x^3$ de estas páginas pertenecen a nuestra exposición; conocer los métodos de esos autores exige leer también cómo eligieron sus cantidades, qué operaciones admitieron y qué pretendían demostrar.
+Los cálculos con $x^2$ o $x^3$ de estas páginas pertenecen a nuestra exposición; conocer los métodos de esos autores exige leer también cómo eligieron sus cantidades, qué operaciones admitieron y qué pretendían demostrar.
 
 ## 1.12. Síntesis: qué hemos demostrado y qué falta
 
@@ -401,4 +401,4 @@ La parábola, la cúbica y la función $1/x$ nos permitieron calcular pendientes
 
 ### Trabajo del lector
 
-Los [ejercicios del capítulo 1](capitulo-01-ejercicios.html) proponen cálculos por definición, diagnósticos de dominio y derivadas laterales, contraejemplos y argumentos breves de demostración. Las [soluciones desarrolladas](capitulo-01-soluciones.html) se presentan aparte, con correspondencia exacta de identificadores. Se conservan también las [notas históricas](capitulo-01-notas.html), separadas del discurso demostrativo.
+Los [ejercicios del capítulo 1](capitulo-01-ejercicios.html) proponen cálculos por definición, diagnósticos de dominio y derivadas laterales, contraejemplos y argumentos breves de demostración. Las [soluciones desarrolladas](capitulo-01-soluciones.html) se presentan aparte.

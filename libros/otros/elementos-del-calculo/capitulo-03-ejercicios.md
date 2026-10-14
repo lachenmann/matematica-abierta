@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C03-EJERCICIOS
-source-sha256: 467d63f336c05e7e88a4e440f2ef3173a50ed828905377af3ed761524d02e5e3
+source-sha256: 5e179cc4541ccc47ab2acecc258dac4ea691d228e4c871ed47bdd2c7ea9a172f
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-03.html) · [Ejercicios](capitulo-03-ejercicios.html) · [Soluciones](capitulo-03-soluciones.html) · [Notas históricas](capitulo-03-notas.html)
+[Exposición](capitulo-03.html) · [Ejercicios](capitulo-03-ejercicios.html) · [Soluciones](capitulo-03-soluciones.html)
 
 Los ejercicios se resuelven a partir de C00–C03. En cada caso se deben justificar dominios, hipótesis y resultados, no limitarse a una fórmula. Las referencias `EDC-C03-EXR-nnn` corresponden uno a uno a las soluciones del archivo independiente.
 
@@ -115,7 +115,3 @@ $$
 $$
 
 Indique si la cota tiene que ser la mejor posible y proporcione un ejemplo donde no sea óptima.
-
----
-
-**Correspondencia editorial:** `EDC-C03-EXR-001--030` ↔ `EDC-C03-SOL-001--030`. Todos los enunciados serán resueltos en [el archivo independiente de soluciones](capitulo-03-soluciones.html).

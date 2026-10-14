@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C10-EJERCICIOS
-source-sha256: 9a1cc8650b0a808b186e383487ff73ff99760be67c9a980f4e6c4a1b57ad2d69
+source-sha256: 532289c8a262f313a96bd67fb30db6da16502aa7bcfa159a580d9476ee059600
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-10.html) · [Ejercicios](capitulo-10-ejercicios.html) · [Soluciones](capitulo-10-soluciones.html) · [Notas históricas](capitulo-10-notas.html)
+[Exposición](capitulo-10.html) · [Ejercicios](capitulo-10-ejercicios.html) · [Soluciones](capitulo-10-soluciones.html)
 
 Cada problema debe resolverse con los resultados disponibles hasta C10. Distinga la existencia de una solución, la verificación por sustitución, la demostración de unicidad y el intervalo donde se afirma cada resultado. Las soluciones están en [un archivo independiente](capitulo-10-soluciones.html); la numeración `EDC-C10-EXR-nnn` se corresponde exactamente con `EDC-C10-SOL-nnn`.
 
@@ -101,7 +101,3 @@ Cada problema debe resolverse con los resultados disponibles hasta C10. Distinga
 **Ejercicio 10.29 (`EDC-C10-EXR-029`).** Sea $y'=y$, $y(0)=1$. Compare el paso de Euler desde $t=0$ hasta $h>0$ con la solución exacta y demuestre mediante Taylor que el error local es a lo sumo $e^h h^2/2$. Explique por qué no se trata de un control automático del error tras $N$ pasos.
 
 **Ejercicio 10.30 (`EDC-C10-EXR-030`).** **Síntesis.** Considere la EDO lineal $y'+2y=1+t$, $y(0)=1$. (a) Construya una solución exacta por factor integrante. (b) Compruebe la ecuación y la unicidad. (c) Calcule $y'(0)$ y $y''(0)$, construya $T_{2,0}y$. (d) Deduzca una cota explícita del error de Taylor en $0\le t\le1$ usando Lagrange y una cota de la tercera derivada. Identifique los resultados previos que legitiman cada paso.
-
----
-
-**Correspondencia:** los treinta problemas `EDC-C10-EXR-001--030` poseen las treinta soluciones `EDC-C10-SOL-001--030` en [el archivo de resoluciones](capitulo-10-soluciones.html), sin exigir C11.

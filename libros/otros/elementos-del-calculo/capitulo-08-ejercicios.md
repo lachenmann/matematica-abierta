@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C08-EJERCICIOS
-source-sha256: 06a5403f08f94fd265886f3197ccaafc601f29e0cddfa34246d6941d3d246018
+source-sha256: 6a6fce23f86e502b9b5d99b95ba9d7d3b1761035c2519f9658864d504a26de73
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-08.html) · [Ejercicios](capitulo-08-ejercicios.html) · [Soluciones](capitulo-08-soluciones.html) · [Notas históricas](capitulo-08-notas.html)
+[Exposición](capitulo-08.html) · [Ejercicios](capitulo-08-ejercicios.html) · [Soluciones](capitulo-08-soluciones.html)
 
 Se utilizarán únicamente C00–C08. No se invocará un desarrollo de Taylor aún no probado (C09), ni se extrapolarán identidades válidas para $|x|<R$ a los puntos fronterizos sin una prueba adicional. Cada ejercicio posee una solución razonada independiente con idéntico número.
 
@@ -108,7 +108,3 @@ $$
 $$
 
 Indique qué estimación asegura la legalidad de integrar el desarrollo en el intervalo $[0,1/2]$.
-
----
-
-**Correspondencia:** los identificadores `EDC-C08-EXR-001--030` remiten a las resoluciones independientes `EDC-C08-SOL-001--030` en [EDC-C08-SOLUCIONES](capitulo-08-soluciones.html).

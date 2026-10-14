@@ -26,7 +26,7 @@ source-sha256: ef7d075ad08492bbb0e0def39d9d54f966b666aa8668f64300a525d4e411c3bf
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-00.html) · [Ejercicios](capitulo-00-ejercicios.html) · [Soluciones](capitulo-00-soluciones.html) · [Notas históricas](capitulo-00-notas.html)
+[Exposición](capitulo-00.html) · [Ejercicios](capitulo-00-ejercicios.html) · [Soluciones](capitulo-00-soluciones.html)
 
 Los problemas de [Del límite a la pregunta por el cálculo](capitulo-00.html) permiten trabajar con las decisiones que sostienen sus argumentos: elegir una tolerancia, construir una sucesión, encontrar una cota o comprobar qué ocurre al suprimir una hipótesis. En todos los casos se pide justificar las afirmaciones; una gráfica o una aproximación decimal puede orientar la búsqueda, pero la respuesta necesita un argumento. Las respuestas desarrolladas figuran, por los mismos números, en [Soluciones del capítulo 0](capitulo-00-soluciones.html).
 
