@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 areas:
 - analisis
 level: universitario
@@ -174,7 +174,7 @@ Este ejemplo muestra por qué no debemos leer una relación de orden como si con
 
 ### 4. Tres capas sobre los mismos números
 
-**Estrategia.** Necesitamos conservar simultáneamente las dos condiciones
+Necesitamos conservar simultáneamente las dos condiciones
 
 $$
 a+b=c,\qquad a<b,
@@ -432,7 +432,7 @@ Por tanto, la formulación con mínimo y máximo encapsula en una sola expresió
 
 ### 9. Dos formas equivalentes de «estar entre»
 
-**Estrategia.** La expresión con mínimo y máximo está diseñada precisamente para evitar elegir una orientación. Para demostrar la equivalencia, basta separar los dos órdenes posibles entre los extremos $x$ y $z$.
+La expresión con mínimo y máximo está diseñada precisamente para evitar elegir una orientación. Para demostrar la equivalencia, basta separar los dos órdenes posibles entre los extremos $x$ y $z$.
 
 Supongamos primero que
 
@@ -760,7 +760,7 @@ no permite decidir de qué lado del centro está $x$. La distancia conserva el t
 
 ### 14. Un centro común para dos puntos equidistantes
 
-**Estrategia.** La igualdad de valores absolutos puede ocurrir porque las cantidades interiores son iguales o porque son opuestas. Eso corresponde exactamente a las dos posibilidades geométricas: los puntos coinciden o quedan a lados opuestos del centro con la misma separación.
+La igualdad de valores absolutos puede ocurrir porque las cantidades interiores son iguales o porque son opuestas. Eso corresponde exactamente a las dos posibilidades geométricas: los puntos coinciden o quedan a lados opuestos del centro con la misma separación.
 
 Partimos de
 
@@ -907,7 +907,7 @@ Las tres propiedades no se han supuesto a partir de una teoría abstracta de mé
 
 ### 16. Reconstruir la desigualdad triangular
 
-**Estrategia.** Queremos controlar $|x-z|$. La identidad
+Queremos controlar $|x-z|$. La identidad
 
 $$
 x-z=(x-y)+(y-z)
@@ -1235,7 +1235,7 @@ La idea importante es que los errores parciales pueden **acumularse por suma**. 
 
 ### 21. Transportar una cota a un punto cercano
 
-**Cómo pensar este problema.** Sabemos dos cosas diferentes: $|x|$ está controlado entre $m$ y $M$, y $y$ está a distancia a lo sumo $\varepsilon$ de $x$. La desigualdad triangular permitirá obtener la cota superior para $|y|$; la triangular inversa permitirá obtener la inferior.
+Sabemos dos cosas diferentes: $|x|$ está controlado entre $m$ y $M$, y $y$ está a distancia a lo sumo $\varepsilon$ de $x$. La desigualdad triangular permitirá obtener la cota superior para $|y|$; la triangular inversa permitirá obtener la inferior.
 
 Como
 
@@ -1711,7 +1711,7 @@ La figura [C01-F11](#fig-anm-c01-f11) concentra esta lectura en una sola compara
 
 ### 26. Cuatro puntos y una ruta sin retroceso
 
-**Cómo pensar este problema.** La igualdad total compara la ruta directa $x\to z$ con una ruta que visita dos puntos intermedios. Conviene insertar primero una ruta menos refinada y formar una cadena de desigualdades. Si el primer y el último término terminan siendo iguales, ninguna desigualdad intermedia puede haber sido estricta.
+La igualdad total compara la ruta directa $x\to z$ con una ruta que visita dos puntos intermedios. Conviene insertar primero una ruta menos refinada y formar una cadena de desigualdades. Si el primer y el último término terminan siendo iguales, ninguna desigualdad intermedia puede haber sido estricta.
 
 Supongamos primero que
 
@@ -1808,7 +1808,7 @@ La igualdad total caracteriza exactamente una ruta cuyos puntos visitados aparec
 
 ### 27. Lo que las distancias revelan —y lo que no
 
-**Cómo pensar este problema.** En una recta, entre tres puntos distintos uno y sólo uno queda entre los otros dos. La igualdad triangular permite reconocer ese punto usando únicamente distancias. Pero las distancias son insensibles a una reflexión, de modo que no pueden decidir la orientación izquierda–derecha completa.
+En una recta, entre tres puntos distintos uno y sólo uno queda entre los otros dos. La igualdad triangular permite reconocer ese punto usando únicamente distancias. Pero las distancias son insensibles a una reflexión, de modo que no pueden decidir la orientación izquierda–derecha completa.
 
 Ordenemos temporalmente los tres valores reales. Como son distintos, existe un orden estricto de la forma
 
@@ -1916,7 +1916,7 @@ $$
 
 de modo que la orientación se invierte.
 
-La conclusión es doble. Las distancias sí permiten recuperar **qué punto está entre los otros dos**; pero no permiten decidir **qué extremo está a la izquierda y cuál a la derecha**. La métrica recupera betweenness, no orientación.
+La conclusión es doble. Las distancias sí permiten recuperar **qué punto está entre los otros dos**; pero no permiten decidir **qué extremo está a la izquierda y cuál a la derecha**. La métrica permite recuperar la relación de estar entre; la elección de izquierda y derecha sigue abierta.
 
 ## §1.6. Bolas métricas: ventanas alrededor de un punto
 
@@ -2234,7 +2234,7 @@ La figura [C01-F12](#fig-anm-c01-f12) concentra esta lectura en una sola compara
 
 ### 32. Cuándo una bola cabe dentro de otra
 
-**Cómo pensar este problema.** La inclusión de dos bolas en la recta puede leerse primero como inclusión de intervalos. Eso convierte una afirmación sobre todos los puntos de una bola en dos comparaciones entre extremos. Después esas dos comparaciones se condensan en una sola condición sobre la distancia entre los centros.
+La inclusión de dos bolas en la recta puede leerse primero como inclusión de intervalos. Eso convierte una afirmación sobre todos los puntos de una bola en dos comparaciones entre extremos. Después esas dos comparaciones se condensan en una sola condición sobre la distancia entre los centros.
 
 Tenemos
 
@@ -2265,6 +2265,8 @@ y
 $$
 a+r\le b+s.
 $$
+
+Para justificar la necesidad sin incluir los extremos en la bola, supongamos que $a-r<b-s$. El punto medio entre $a-r$ y $\min\{b-s,a+r\}$ queda dentro de $(a-r,a+r)$ y estrictamente a la izquierda de $b-s$, contradiciendo la inclusión. Si $a+r>b+s$, el punto medio entre $\max\{a-r,b+s\}$ y $a+r$ produce la contradicción a la derecha. Recíprocamente, las dos comparaciones de extremos dan $b-s\le a-r<x<a+r\le b+s$ para todo punto de la bola pequeña. También se permite que las fronteras coincidan, pues el punto $x$ queda estrictamente entre ellas.
 
 Reescribimos la primera desigualdad como
 
@@ -2360,7 +2362,7 @@ $$
 d(a,b)+r\le s}.
 $$
 
-La fórmula tiene una lectura geométrica directa. Desde el centro $b$ debemos recorrer primero la separación $d(a,b)$ hasta llegar al centro de la bola pequeña y disponer todavía de un margen $r$ para alcanzar cualquiera de sus puntos. La suma $d(a,b)+r$ representa exactamente ese alcance máximo; para que toda la bola pequeña quepa dentro de la grande, dicho alcance no puede superar $s$.
+La suma $d(a,b)+r$ es la distancia desde $b$ hasta la frontera más lejana de la bola pequeña. Esa frontera está excluida: las distancias de los puntos interiores se aproximan a ese valor, pero ninguno lo alcanza. Por eso la inclusión admite $d(a,b)+r=s$: cada punto interior sigue estando a distancia estrictamente menor que $s$ de $b$.
 
 El panel de inclusión de la figura [C01-F12](#fig-anm-c01-f12) muestra esta misma condición como comparación de fronteras: el alcance total desde $b$ hasta el extremo más lejano de la bola pequeña no puede sobrepasar el radio $s$.
 
@@ -2663,7 +2665,7 @@ queda excluida porque allí la distancia al centro no supera $r$. Por eso el con
 
 ### 37. Dos tolerancias simultáneas
 
-**Cómo pensar este problema.** Cada desigualdad de distancia describe un intervalo cerrado. Pedir que ambas se cumplan a la vez significa tomar la intersección de esos dos intervalos. La cuestión de existencia se convierte entonces en preguntar cuándo esos intervalos alcanzan a tocarse.
+Cada desigualdad de distancia describe un intervalo cerrado. Pedir que ambas se cumplan a la vez significa tomar la intersección de esos dos intervalos. La cuestión de existencia se convierte entonces en preguntar cuándo esos intervalos alcanzan a tocarse.
 
 Las dos condiciones equivalen a
 
@@ -2758,7 +2760,7 @@ El panel de contacto cerrado de la figura [C01-F12](#fig-anm-c01-f12) contrasta 
 
 ### 38. Una familia que no crece por inclusión
 
-**Cómo pensar este problema.** La condición no selecciona todos los puntos hasta una distancia máxima, como una bola. Selecciona una **banda de distancias**: demasiado cerca queda fuera y demasiado lejos también. Por eso mover $t$ desplaza simultáneamente los dos umbrales y destruye la monotonía por inclusión.
+La condición no selecciona todos los puntos hasta una distancia máxima, como una bola. Selecciona una **banda de distancias**: demasiado cerca queda fuera y demasiado lejos también. Por eso mover $t$ desplaza simultáneamente los dos umbrales y destruye la monotonía por inclusión.
 
 Por definición,
 
@@ -2782,7 +2784,7 @@ $$
 t<q<\min\{s,2t\}.
 $$
 
-Tal $q$ existe porque tanto $s$ como $2t$ son mayores que $t$. Tomemos, por ejemplo,
+Podemos elegir explícitamente $q=(t+\min\{s,2t\})/2$, porque tanto $s$ como $2t$ son mayores que $t$. Tomemos
 
 $$
 x=a+q.
@@ -2940,7 +2942,7 @@ $$
 
 está entre $F(x)$ y $F(z)$.
 
-Por tanto, una isometría conserva separaciones y también la relación no orientada de estar entre. Lo que las distancias no determinan es **qué dirección llamamos izquierda y cuál derecha**. Una reflexión conserva toda la información métrica y de betweenness, pero cambia globalmente la orientación.
+Por tanto, una isometría conserva separaciones y también la relación no orientada de estar entre. Lo que las distancias no determinan es **qué dirección llamamos izquierda y cuál derecha**. Una reflexión conserva toda la información métrica y la relación de estar entre, pero cambia globalmente la orientación.
 
 []{#MA-SOL-ANM-01-001-040}
 
@@ -2948,7 +2950,7 @@ Por tanto, una isometría conserva separaciones y también la relación no orien
 
 ### 40. Trasladar y escalar en una sola transformación
 
-**Cómo pensar este problema.** La transformación combina dos operaciones ya conocidas: primero multiplicamos por $\lambda$ y después trasladamos por $c$. La traslación no altera ni las distancias ni el sentido del orden; toda la clasificación dependerá, por tanto, de $\lambda$.
+La transformación combina dos operaciones ya conocidas: primero multiplicamos por $\lambda$ y después trasladamos por $c$. La traslación no altera ni las distancias ni el sentido del orden; toda la clasificación dependerá, por tanto, de $\lambda$.
 
 Para cualesquiera $x,y\in\mathbb R$,
 
@@ -2962,7 +2964,7 @@ d(T_{\lambda,c}(x),T_{\lambda,c}(y))
 \end{aligned}
 $$
 
-Por tanto, las distancias se preservan exactamente si y sólo si
+Si se preservan todas las distancias, aplicar la fórmula a $x=0$ e $y=1$ obliga a $|\lambda|=1$. Recíprocamente, ese valor hace que el factor de escala sea uno para cualquier par. Por tanto, las distancias se preservan exactamente si y sólo si
 
 $$
 |\lambda|=1,
@@ -3066,7 +3068,7 @@ Por eso no modifica la separación relativa ni el sentido de la orientación: s�
 
 ### 41. Componer transformaciones: escala y orientación
 
-**Cómo pensar este problema.** Cada transformación lleva dos datos estructurales: un factor métrico positivo, $|\lambda|$ o $|\mu|$, y un signo que decide la orientación. Al componer, ambos datos se multiplican.
+Cada transformación lleva dos datos estructurales: un factor métrico positivo, $|\lambda|$ o $|\mu|$, y un signo que decide la orientación. Al componer, ambos datos se multiplican.
 
 Calculamos primero:
 
@@ -3170,7 +3172,7 @@ La conclusión transferible es que la orientación se comporta multiplicativamen
 
 ### 42. Clasificar todas las isometrías de la recta
 
-**Cómo pensar este problema.** No sabemos que $F$ sea lineal, afín, continua ni monótona. Sólo conocemos todas sus distancias. El primer paso es normalizarla para que fije el origen; después veremos que cada punto sólo puede ir a una de dos posiciones, y finalmente habrá que demostrar que esas elecciones no pueden hacerse de manera independiente.
+No sabemos que $F$ sea lineal, afín, continua ni monótona. Sólo conocemos todas sus distancias. El primer paso es normalizarla para que fije el origen; después veremos que cada punto sólo puede ir a una de dos posiciones, y finalmente habrá que demostrar que esas elecciones no pueden hacerse de manera independiente.
 
 Sea
 
@@ -3224,7 +3226,7 @@ $$
 =x+a.
 $$
 
-Pero para $x,a>0$ se tiene
+Como $x,a>0$, tenemos $x+a-|x-a|=2\min\{x,a\}>0$. En particular,
 
 $$
 |x-a|<x+a,
@@ -3334,7 +3336,7 @@ $$
 F(x)=-x+c.
 $$
 
-Hemos demostrado la clasificación completa:
+Las dos formas obtenidas preservan todas las distancias, como muestra $|(x+c)-(y+c)|=|x-y|$ y $|(-x+c)-(-y+c)|=|x-y|$. Son familias excluyentes: si una aplicación tuviera ambas formas, evaluar en cero igualaría las constantes y evaluar en uno exigiría $1=-1$. Hemos demostrado la clasificación completa:
 
 $$
 \boxed{

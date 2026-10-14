@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 areas:
 - analisis
 level: universitario
@@ -92,7 +92,7 @@ La estructura que aparece en primer plano es la **algebraica**. La igualdad rela
 
 En esta afirmación intervienen conjuntamente **orden** y **métrica**. La reflexión intercambia la orientación: lo que estaba a la izquierda pasa a la derecha y el orden se invierte. Al mismo tiempo, las separaciones permanecen iguales, de modo que la información métrica se conserva.
 
-La propia reflexión puede describirse algebraicamente mediante $x\mapsto -x$, pero la afirmación que estamos leyendo compara dos efectos distintos: **cambio de orientación** y **conservación de distancias**. Ésa es precisamente la distinción estructural que §1.1 quería hacer visible.
+La propia reflexión puede describirse algebraicamente mediante $x\mapsto -x$, pero la afirmación que estamos leyendo compara dos efectos distintos: **cambio de orientación** y **conservación de distancias**. Ambos efectos se comprueban en las fórmulas $x<y\Rightarrow -x>-y$ y $|-x-(-y)|=|x-y|$.
 
 ## §1.2. Orden: izquierda, derecha y estar entre
 
@@ -558,7 +558,7 @@ $$
 
 si se extiende formalmente la fórmula a $r=0$.
 
-Lo que falla no es la lógica de la desigualdad, sino la interpretación que buscamos: un radio nulo no produce una región abierta de cercanía alrededor de $a$. Por eso en C01 exigimos siempre $r>0$.
+El conjunto vacío no contiene al centro y, por tanto, no proporciona una ventana de cercanía alrededor de él. La definición de bola usada en el capítulo exige $r>0$.
 
 ## §1.7. Traducir entre orden, distancia y tolerancia
 
@@ -712,7 +712,7 @@ $$
 
 Al aumentar el umbral, la región exterior **se contrae**: para permanecer fuera hay que estar todavía más lejos de $a$.
 
-Las dos familias responden de manera opuesta al mismo cambio de parámetro: aumentar $r$ ensancha la región «más cerca que $r$» y reduce la región «más lejos que $r$».
+Las dos inclusiones son estrictas. El punto $x=a+(r+s)/2$ satisface $r<d(x,a)<s$: pertenece al interior de radio $s$ y al exterior de umbral $r$, pero queda fuera del interior de radio $r$ y del exterior de umbral $s$.
 
 ## §1.8. Qué ve el orden y qué ve la distancia
 
@@ -856,6 +856,6 @@ $$
 x<y\iff -x>-y.
 $$
 
-Así, conocer todas las separaciones permite recuperar mucha información métrica —por ejemplo, qué puntos están entre otros mediante igualdades de distancias—, pero no permite distinguir una configuración de su imagen reflejada. **La métrica no determina por sí sola una orientación de la recta.**
+Las igualdades de distancias permiten reconocer qué puntos están entre otros. La orientación queda indeterminada, y también la posición absoluta: trasladar todos los puntos por una misma constante conserva sus separaciones. Por eso los datos métricos admiten tanto traslaciones como reflexiones de una configuración.
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html)
