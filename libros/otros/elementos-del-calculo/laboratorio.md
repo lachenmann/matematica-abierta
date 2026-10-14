@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC_LABORATORIO_PROBLEMAS
-source-sha256: affd10532091228d9821a7d612f0a565ba6377007936b79b4a0584588ab866d6
+source-sha256: 0ced552244c2a8a707e39873ad316d4715a52e64f360ef91a5a45045c662ec0a
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -121,5 +121,3 @@ $$
 ¿Por qué las dos cotas pueden contrastarse sin depender de observaciones decimales?
 
 ---
-
-**Regla editorial:** 14 problemas `INV-C00-01` a `INV-C11-01` (con dos de C07 y C10), originales y adicionales a los 338 pares de ejercicios existentes. La elección de problemas clásicos como Herón, AM–GM o la función de Thomae no constituye reclamación de originalidad histórica de tales objetos; son **nuevos enunciados y desarrollos didácticos de EDC**.

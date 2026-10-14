@@ -1,5 +1,5 @@
 ---
-title: Bibliografía y control de fuentes
+title: Bibliografía
 status: published
 draft: false
 book-id: MA-BOK-0015
@@ -26,21 +26,22 @@ provenance:
 
 ## Antecedente metodológico
 
-Gabor Toth, *Elements of Mathematics: A Problem-Centered Approach to History and Foundations*, Springer, 2021. Lectura recomendada como antecedente de enfoque; EDC no reproduce su traducción ni su prefacio.
+Gabor Toth, *Elements of Mathematics: A Problem-Centered Approach to History and Foundations*, Springer, 2021.
 
-## Fuentes por capítulo
+## Lecturas históricas
 
-Las notas históricas distinguen fuentes consultadas, referencias localizadas por catálogo y originales pendientes de colación. Incluyen enlaces, localizadores y reservas junto a cada afirmación. Una referencia localizada no se presenta como lectura íntegra.
-
-- [Capítulo 0. Del límite a la pregunta por el cálculo: fuentes y notas](capitulo-00-notas.html).
-- [Capítulo 1. Tangentes, velocidades y variación: fuentes y notas](capitulo-01-notas.html).
-- [Capítulo 2. La derivada como operación: fuentes y notas](capitulo-02-notas.html).
-- [Capítulo 3. Extremos, crecimiento y aproximación local: fuentes y notas](capitulo-03-notas.html).
-- [Capítulo 4. Cuadraturas y el desafío del área: fuentes y notas](capitulo-04-notas.html).
-- [Capítulo 5. De las sumas a la integral: fuentes y notas](capitulo-05-notas.html).
-- [Capítulo 6. El Teorema Fundamental del Cálculo: fuentes y notas](capitulo-06-notas.html).
-- [Capítulo 7. Integrar como método: fuentes y notas](capitulo-07-notas.html).
-- [Capítulo 8. Sumas infinitas y series de potencias: fuentes y notas](capitulo-08-notas.html).
-- [Capítulo 9. Newton, Taylor y el problema del error: fuentes y notas](capitulo-09-notas.html).
-- [Capítulo 10. De las leyes de cambio a las ecuaciones diferenciales: fuentes y notas](capitulo-10-notas.html).
-- [Capítulo 11. El cálculo como teoría: alcance, historia y fundamentos: fuentes y notas](capitulo-11-notas.html).
+- [Cauchy, *Cours d’analyse* (1821), introducción, preliminares y capítulo II, §II](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier).
+- [Newton, *History of the Method of Fluxions*, transcripción del Newton Project, ff. 146v y 154v](https://newtonproject.ox.ac.uk/view/texts/normalized/NATP00356).
+- [Leibniz, *Nova methodus* (1684), traducción de Thiago Dourado (2022), pp. 47–49; reproducción del original latino de pp. 467–473 al final del artículo](https://www.rbhm.org.br/index.php/RBHM/article/download/377/340).
+- [L’Hôpital, *Analyse des infiniment petits* (1696), sección I, p. 2, «Avertissement» sobre la característica `d`](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf).
+- [Fermat, *Œuvres*, tomo I (1891), pp. 133–134, *Methodus ad disquirendam maximam et minimam*](https://fr.wikisource.org/wiki/Œuvres_de_Fermat/I/Maxima_et_Minima).
+- [L’Hôpital, *Analyse des infiniment petits* (1696), final del prefacio, tabla y sección III](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf); [Bradley, Petrilli y Sandifer, edición anotada (2015)](https://link.springer.com/book/10.1007/978-3-319-17115-9).
+- [Arquímedes, carta a Dositeo, traducción reproducida en MacTutor](https://mathshistory.st-andrews.ac.uk/Extras/Archimedes_parabola/).
+- [MacTutor, «Bonaventura Francesco Cavalieri», pasajes sobre indivisibles y secciones](https://mathshistory.st-andrews.ac.uk/Biographies/Cavalieri/).
+- [Darboux, *Mémoire* (1875), pp. 58, 65–66 y 72, secciones II–III](https://www.numdam.org/item/ASENS_1875_2_4__57_0.pdf).
+- [Leibniz, *De geometria recondita* (1686), traducción de Thiago Dourado, pp. 5–6 (2022)](https://www.rbhm.org.br/index.php/RBHM/article/view/379).
+- [Leibniz, *De geometria recondita* (1686), traducción de Thiago Dourado, pp. 6–7 y 9 (2022)](https://www.rbhm.org.br/index.php/RBHM/article/view/379).
+- [William Dunham, *The Bernoullis and the Harmonic Series* (1987), pp. 19–23, con reproducción del *Tractatus*, § XVI](https://www.ms.uky.edu/~dhje223/Bernoullis.pdf).
+- [Cauchy, *Cours d’analyse* (1821), introducción y capítulo VI, §§ I–II; transcripción francesa en Wikisource](https://fr.wikisource.org/wiki/Cours_d’analyse_de_l’école_royale_polytechnique/Texte_entier).
+- [Taylor, *Methodus incrementorum* (1715), «To the Reader» e introducción, traducción anotada de Ian Bruce, pp. 1–4 del PDF](https://www.17centurymaths.com/contents/brooktaylor/methodofincrementspartone.pdf).
+- [L’Hôpital, *Analyse des infiniment petits* (1696), prefacio, pasaje sobre el cálculo integral](https://www.hist-math.fr/textes/lHopital1696_InfinimentPetits.pdf).

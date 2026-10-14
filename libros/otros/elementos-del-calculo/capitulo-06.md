@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C06
-source-sha256: 47af40178c9380ac88de149cf409eabcca66b57f59d1f9c19e7b90610b9c4869
+source-sha256: 09ef9dee0446b62b35fd01cb2fab3d7f3fe2178fb0ce5dc81eaf46592868fc3f
 content-id: MA-BCH-0337
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-06.html) · [Ejercicios](capitulo-06-ejercicios.html) · [Soluciones](capitulo-06-soluciones.html) · [Notas históricas](capitulo-06-notas.html)
+[Exposición](capitulo-06.html) · [Ejercicios](capitulo-06-ejercicios.html) · [Soluciones](capitulo-06-soluciones.html)
 
 [← Capítulo 5](capitulo-05.html) · [Capítulo 7 →](capitulo-07.html)
 
@@ -202,7 +202,7 @@ En un pasaje del artículo, Leibniz pasa de una igualdad de diferenciales a una 
 
 La relación se puede reconocer en nuestro ejemplo de la parábola: una vez que la acumulación tiene derivada $x^2$, compararla con $x^3/3$ permite identificar su valor. Aquí justificamos esa comparación mediante límites y el valor medio. El pasaje de Leibniz deja ver el alcance que podía tener la conexión para el cálculo de curvas y áreas.
 
-**Para seguir leyendo:** [Leibniz, *De geometria recondita* (1686), traducción de Thiago Dourado, pp. 5–6 (2022)](https://www.rbhm.org.br/index.php/RBHM/article/view/379); notas históricas del capítulo 6.
+**Para seguir leyendo:** [Leibniz, *De geometria recondita* (1686), traducción de Thiago Dourado, pp. 5–6 (2022)](https://www.rbhm.org.br/index.php/RBHM/article/view/379).
 :::
 
 ## 6.5. Qué sucede si la función no es continua
@@ -405,7 +405,7 @@ Cuando el integrando es no negativo, el valor coincide con la interpretación ge
 
 ## 6.12. Del parentesco histórico a la unidad demostrada
 
-La pregunta por la relación entre tangentes y cuadraturas circuló mucho antes de nuestra definición de integral. Las curvas asociadas a áreas ofrecían una manera geométrica de examinarla; las magnitudes fluyentes de Newton y el lenguaje de diferencias y sumaciones de Leibniz permitieron formularla con otros recursos. Barrow y James Gregory aparecen también en esa historia, cuyos testimonios y distintas interpretaciones se reúnen en [las notas históricas y de fuentes](capitulo-06-notas.html).
+La pregunta por la relación entre tangentes y cuadraturas circuló mucho antes de nuestra definición de integral. Las curvas asociadas a áreas ofrecían una manera geométrica de examinarla; las magnitudes fluyentes de Newton y el lenguaje de diferencias y sumaciones de Leibniz permitieron formularla con otros recursos. Barrow y James Gregory aparecen también en esa historia.
 
 La relación matemática que hemos demostrado parte de las sumas de C05. Una estimación de alturas locales permite derivar la acumulación, y el valor medio reúne después las primitivas que comparten una misma derivada. También pudimos llegar a la fórmula de evaluación directamente, convirtiendo cada incremento de una primitiva en un término de una suma etiquetada.
 
@@ -432,4 +432,4 @@ Aquí $C([a,b])$ significa «funciones continuas sobre $[a,b]$». La segunda imp
 
 ### Trabajo del lector
 
-Los [ejercicios](capitulo-06-ejercicios.html) trabajan separadamente las dos direcciones del teorema, el control de hipótesis, las orientaciones, los extremos variables y la crítica de inferencias inválidas. Se entregan [soluciones completas](capitulo-06-soluciones.html) con la misma numeración. Las fuentes históricas y sus distintos niveles de verificación aparecen en [las notas](capitulo-06-notas.html).
+Los [ejercicios](capitulo-06-ejercicios.html) trabajan separadamente las dos direcciones del teorema, el control de hipótesis, las orientaciones, los extremos variables y la crítica de inferencias inválidas. Se entregan [soluciones completas](capitulo-06-soluciones.html) con la misma numeración.

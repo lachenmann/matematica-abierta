@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C09
-source-sha256: db8cd76bb17e97e580603cc87d73425725960370b4c27ed4cc572644f32e1c31
+source-sha256: e8d59eda41a242af7255cd0b4fb8fa29a465fadda4d79bf4ef86d4b39ee81f1f
 content-id: MA-BCH-0340
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-09.html) · [Ejercicios](capitulo-09-ejercicios.html) · [Soluciones](capitulo-09-soluciones.html) · [Notas históricas](capitulo-09-notas.html)
+[Exposición](capitulo-09.html) · [Ejercicios](capitulo-09-ejercicios.html) · [Soluciones](capitulo-09-soluciones.html)
 
 [← Capítulo 8](capitulo-08.html) · [Capítulo 10 →](capitulo-10.html)
 
@@ -378,7 +378,7 @@ La introducción prolonga la idea a cambios sucesivos: un incremento puede tener
 
 Esa pregunta por el regreso aparece también en nuestro problema: las derivadas en un punto permiten construir un polinomio, pero todavía necesitamos medir lo que falta para recuperar la función en otro punto. El resto conserva esa diferencia. Si conseguimos hacerlo pequeño, los datos locales se convierten en una aproximación útil; si además tiende a cero al aumentar el orden, obtenemos una representación por serie.
 
-**Para seguir leyendo:** [Taylor, *Methodus incrementorum* (1715), «To the Reader» e introducción, traducción anotada de Ian Bruce, pp. 1–4 del PDF](https://www.17centurymaths.com/contents/brooktaylor/methodofincrementspartone.pdf); notas históricas del capítulo 9.
+**Para seguir leyendo:** [Taylor, *Methodus incrementorum* (1715), «To the Reader» e introducción, traducción anotada de Ian Bruce, pp. 1–4 del PDF](https://www.17centurymaths.com/contents/brooktaylor/methodofincrementspartone.pdf).
 :::
 
 ## 9.10. Una función infinitamente derivable cuya serie no la representa
@@ -464,7 +464,7 @@ La estimación necesita un entorno donde la derivada esté separada de cero y la
 
 ## 9.12. La genealogía histórica y el balance fundacional
 
-El binomio y las aproximaciones de Taylor reúnen preguntas que surgieron en estudios de cuadraturas, tangentes e incrementos. El libro de Taylor de 1715 deja ver ese interés por pasar de magnitudes a cambios y regresar desde los cambios a las magnitudes; las distintas tradiciones y los localizadores efectivamente consultados se registran en [las notas históricas](capitulo-09-notas.html).
+El binomio y las aproximaciones de Taylor reúnen preguntas que surgieron en estudios de cuadraturas, tangentes e incrementos. El libro de Taylor de 1715 deja ver ese interés por pasar de magnitudes a cambios y regresar desde los cambios a las magnitudes.
 
 En la construcción del capítulo, las derivadas en un punto determinan un polinomio finito. Las fórmulas de Lagrange, integral y Peano explican cómo compararlo con la función, cada una bajo sus hipótesis y con su alcance. La relación puede resumirse así:
 
@@ -490,4 +490,4 @@ También usamos una relación de derivadas para medir el error de Newton. En C10
 
 ### Trabajo del lector
 
-Los [treinta problemas originales](capitulo-09-ejercicios.html) examinan por separado el binomio finito y generalizado, datos de derivadas, tres formas del resto, tolerancias numéricas, representación por series, ejemplos no analíticos y la iteración de Newton. Las [soluciones desarrolladas](capitulo-09-soluciones.html) conservan la misma numeración y las [notas](capitulo-09-notas.html) distinguen fuentes efectivamente consultadas, testimonios primarios localizados y reconstrucción matemática moderna.
+Los [treinta problemas originales](capitulo-09-ejercicios.html) examinan por separado el binomio finito y generalizado, datos de derivadas, tres formas del resto, tolerancias numéricas, representación por series, ejemplos no analíticos y la iteración de Newton. Las [soluciones desarrolladas](capitulo-09-soluciones.html) conservan la misma numeración.

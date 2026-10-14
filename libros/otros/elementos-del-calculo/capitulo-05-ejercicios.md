@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C05-EJERCICIOS
-source-sha256: f1b753e17b2e842ed7694c0b37d67a3fa9b687dcb657fc09ce8c5537e5986f3d
+source-sha256: 6cd65877f6254c5e02ea94a2a822add1688b5130608c595a8b2340b907f41f9b
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-05.html) · [Ejercicios](capitulo-05-ejercicios.html) · [Soluciones](capitulo-05-soluciones.html) · [Notas históricas](capitulo-05-notas.html)
+[Exposición](capitulo-05.html) · [Ejercicios](capitulo-05-ejercicios.html) · [Soluciones](capitulo-05-soluciones.html)
 
 Cada ejercicio se resuelve con los resultados de C00–C05, **sin invocar el Teorema Fundamental del Cálculo**, que aparecerá en C06. Es necesario distinguir particiones, etiquetas, integrabilidad, signo de la función y existencia de primitivas. Toda respuesta tiene un desarrollo independiente con ID correspondiente en [el solucionario](capitulo-05-soluciones.html).
 
@@ -103,7 +103,3 @@ Cada ejercicio se resuelve con los resultados de C00–C05, **sin invocar el Teo
 ## G. Síntesis rigurosa
 
 **Ejercicio 5.30 (`EDC-C05-EXR-030`).** Para $\lambda\ge0$ defina en $[0,1]$ la función $f_\lambda(x)=x^2+\lambda\mathbf1_{[1/2,1]}(x)$. Pruebe su integrabilidad, calcule su integral **sin primitivas** y obtenga una cota del error de una suma etiquetada que dependa de $\lambda$ y $\|P\|$ y tienda a cero para toda familia de particiones finas.
-
----
-
-**Correspondencia canónica:** `EDC-C05-EXR-001--030` con `EDC-C05-SOL-001--030`. El banco no incrementa el contador de capítulos; sus soluciones se publican en archivo independiente.

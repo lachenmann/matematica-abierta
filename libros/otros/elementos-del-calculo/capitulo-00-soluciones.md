@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C00-SOLUCIONES
-source-sha256: 820be3a37a33fdb155af45d42170f7602bb8f2f8483fd869de71e33c649dbf1b
+source-sha256: 3321bbe06ec3b223760f3d71b94a017cbc6d8c0d414fa064ec558419b96fa335
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-00.html) · [Ejercicios](capitulo-00-ejercicios.html) · [Soluciones](capitulo-00-soluciones.html) · [Notas históricas](capitulo-00-notas.html)
+[Exposición](capitulo-00.html) · [Ejercicios](capitulo-00-ejercicios.html) · [Soluciones](capitulo-00-soluciones.html)
 
 Este archivo desarrolla las respuestas a [los 18 ejercicios del capítulo 0](capitulo-00-ejercicios.html). El identificador de una solución `EDC-C00-SOL-nnn` corresponde exactamente al del ejercicio `EDC-C00-EXR-nnn`. Las soluciones son elaboraciones propias; no se atribuyen a Toth ni a un manual externo.
 
@@ -261,7 +261,3 @@ $$
 $$
 
 cuando $h\to0$, $h\ne0$. El cambio $F(r)-F(0)=r^3/3$ coincide con el límite de las sumas, y el cociente incremental de $F$ recupera las alturas que utilizamos en los rectángulos. Hemos comprobado así las dos partes de una relación sugerente para esta función particular. La afirmación general requiere todavía definir la integral, controlar la independencia respecto de las muestras y demostrar bajo qué hipótesis se recupera la función mediante una tasa de cambio. Ésa será la tarea de los capítulos 5 y 6.
-
----
-
-**Cierre de correspondencias:** `EDC-C00-SOL-001` a `EDC-C00-SOL-018` cubren exactamente `EDC-C00-EXR-001` a `EDC-C00-EXR-018`, incluidos los incisos de los ejercicios 0.14 y 0.18. La validez de estas soluciones es objeto de auditoría matemática propia y no se deriva del cierre de Toth o de CPM.

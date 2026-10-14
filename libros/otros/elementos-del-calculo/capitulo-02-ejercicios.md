@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C02-EJERCICIOS
-source-sha256: 606765197763fb7a611d831b1e4c7b9211de58bfbf8e41e06bc2efd7989c0c70
+source-sha256: e837ec85376d0ba643bb492fbfa7d9d3a0a5385730a2736c15acfd00c208c97c
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-02.html) · [Ejercicios](capitulo-02-ejercicios.html) · [Soluciones](capitulo-02-soluciones.html) · [Notas históricas](capitulo-02-notas.html)
+[Exposición](capitulo-02.html) · [Ejercicios](capitulo-02-ejercicios.html) · [Soluciones](capitulo-02-soluciones.html)
 
 Todos los ejercicios están concebidos para resolverse usando únicamente los capítulos 0–2. Las reglas deben emplearse **sobre sus dominios**. Salvo indicación contraria, se pide justificar los pasos esenciales y no limitarse a escribir una fórmula.
 
@@ -105,7 +105,3 @@ y''-2\alpha y'+(\alpha^2+\beta^2)y=0.
 $$
 
 No se pide una teoría de ecuaciones diferenciales ni una afirmación de unicidad: sólo la verificación de esta identidad para la función indicada.
-
----
-
-**Correspondencia editorial:** los ejercicios `EDC-C02-EXR-001--028` se desarrollan, con la misma numeración, en [las soluciones del capítulo](capitulo-02-soluciones.html).

@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C06-SOLUCIONES
-source-sha256: 448566ff69cf960643439832b4c7c86e453df32b7adf48e5b0f248ead3588d66
+source-sha256: 1a0a72c2cf4e8387bcb2511fa7d02a373b8fe94e954c23b40eb2da59d4761aad
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-06.html) · [Ejercicios](capitulo-06-ejercicios.html) · [Soluciones](capitulo-06-soluciones.html) · [Notas históricas](capitulo-06-notas.html)
+[Exposición](capitulo-06.html) · [Ejercicios](capitulo-06-ejercicios.html) · [Soluciones](capitulo-06-soluciones.html)
 
 Se emplean exclusivamente las construcciones de C00–C06; los teoremas de integral ya demostrados en C05 y el Teorema Fundamental de C06 se invocan con sus condiciones de continuidad, integrabilidad, orientación y dominio. El identificador `EDC-C06-SOL-nnn` corresponde exactamente al problema `EDC-C06-EXR-nnn`.
 
@@ -385,7 +385,3 @@ $$
 $$
 
 Para una posición unidimensional $s(t)$, cada diferencia absoluta mide el desplazamiento entre dos cortes sin conservar su signo. Una partición puede ocultar cambios de sentido dentro de sus piezas; al refinarla, la desigualdad triangular asegura que la suma no disminuye. El supremo recoge la variación total y representa la distancia recorrida en este modelo de regularidad $C^1$. El desplazamiento $s(b)-s(a)=\int_a^b s'$ conserva las cancelaciones entre sentidos opuestos. La prueba da la interpretación de ambas integrales bajo las hipótesis declaradas.
-
----
-
-**Control de cobertura:** `EDC-C06-SOL-001--030` corresponde uno a uno a `EDC-C06-EXR-001--030`. Los desarrollos comprueban dominios, orientación, límites del intervalo e hipótesis de continuidad/integrabilidad, sin usar sustitución o integración por partes de C07.

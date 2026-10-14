@@ -26,7 +26,7 @@ source-sha256: 22ca43a5a0b071e6603f672df24e6d4fbb8ff72f9aa2683422d731eed798b2ec
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-06.html) · [Ejercicios](capitulo-06-ejercicios.html) · [Soluciones](capitulo-06-soluciones.html) · [Notas históricas](capitulo-06-notas.html)
+[Exposición](capitulo-06.html) · [Ejercicios](capitulo-06-ejercicios.html) · [Soluciones](capitulo-06-soluciones.html)
 
 El propósito es utilizar el Teorema Fundamental como una afirmación **demostrada y condicionada**, no como una regla de cancelación formal. En cada cálculo, indique continuidad, intervalo y primitiva empleada cuando corresponda. Los ejercicios dependen de C00–C06; ninguno requiere técnicas de sustitución o integración por partes del capítulo 7.
 

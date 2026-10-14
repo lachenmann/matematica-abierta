@@ -26,7 +26,7 @@ source-sha256: 6dc787319ded4c1f8d24408b3ef843c8bef2d75c2444103f53cba10c060612c7
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-04.html) · [Ejercicios](capitulo-04-ejercicios.html) · [Soluciones](capitulo-04-soluciones.html) · [Notas históricas](capitulo-04-notas.html)
+[Exposición](capitulo-04.html) · [Ejercicios](capitulo-04-ejercicios.html) · [Soluciones](capitulo-04-soluciones.html)
 
 El objetivo de estos problemas es justificar aproximaciones geométricas mediante cálculos finitos, estimaciones del resto y argumentos de límite. **No** se debe emplear la definición de integral de Riemann–Darboux ni el Teorema Fundamental del Cálculo. Pueden utilizarse los resultados demostrados en C00–C04. Cada ejercicio tiene una solución independiente identificada con el mismo número.
 

@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C10-SOLUCIONES
-source-sha256: 5737732e2675535787a4e50115b91b414d4c178084cdd65526b26f5a3ae6e60c
+source-sha256: 6135220ee9e9f609086bc7887ce7dcd9e89d3686c5e3fde22bfca2f4b8e9e2f5
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-10.html) · [Ejercicios](capitulo-10-ejercicios.html) · [Soluciones](capitulo-10-soluciones.html) · [Notas históricas](capitulo-10-notas.html)
+[Exposición](capitulo-10.html) · [Ejercicios](capitulo-10-ejercicios.html) · [Soluciones](capitulo-10-soluciones.html)
 
 Las respuestas corresponden biunívocamente a [los treinta ejercicios de C10](capitulo-10-ejercicios.html). En cada resultado se explicita el intervalo o rama y se diferencia la comprobación de una fórmula de su existencia y unicidad. No se invocan C11 ni teoremas generales de existencia de EDO que no se hayan demostrado.
 
@@ -352,7 +352,3 @@ $$
 $$
 
 La reconstrucción viene del factor integrante (10.3), la antiderivada y la comprobación de C07 y C02, la unicidad de 10.3, y la cota de C09. No se ha supuesto ninguna teoría general de existencia o unicidad fuera de esta clase lineal.
-
----
-
-**Control de cobertura:** `EDC-C10-SOL-001--030` corresponde exactamente a `EDC-C10-EXR-001--030`, con intervalos, ramas y pruebas de sustitución cuando proceden.

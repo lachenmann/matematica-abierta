@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C09-EJERCICIOS
-source-sha256: b1b571475bc798933ec631d1298f0a92fd210b2997ff798e79d438c30e512578
+source-sha256: 6192e3093037ae067c58f0a3eab7545580fa5b4e4f4d471e9a3b3c7b1363f4e3
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-09.html) · [Ejercicios](capitulo-09-ejercicios.html) · [Soluciones](capitulo-09-soluciones.html) · [Notas históricas](capitulo-09-notas.html)
+[Exposición](capitulo-09.html) · [Ejercicios](capitulo-09-ejercicios.html) · [Soluciones](capitulo-09-soluciones.html)
 
 El propósito de los ejercicios no es memorizar desarrollos: se debe distinguir una identidad polinómica, un polinomio local, una estimación finita y una serie infinita. Justifique en cada caso el intervalo, las hipótesis de derivabilidad y, si corresponde, el paso al límite. Las soluciones independientes aparecen en [el archivo correspondiente](capitulo-09-soluciones.html). Sólo se utilizan C00–C09.
 
@@ -101,7 +101,3 @@ El propósito de los ejercicios no es memorizar desarrollos: se debe distinguir 
 **Ejercicio 9.29 (`EDC-C09-EXR-029`).** Para $f(x)=\sqrt{1+x}$, calcule $T_{2,0}f(1/4)$, pruebe con Lagrange que el error es a lo sumo $1/1024$ y explique cómo la igualdad binomial de Newton garantiza también representación por la serie completa en ese punto.
 
 **Ejercicio 9.30 (`EDC-C09-EXR-030`).** **Síntesis:** sea $f(x)=e^x\cos x$. (a) Calcule $T_{3,0}f$. (b) Demuestre para $0\le x\le1/2$ que $|f(x)-T_{3,0}f(x)|\le e^{1/2}x^4/6$. (c) Explique por qué esta **cota finita** no afirma automáticamente que la serie de Taylor de una función arbitraria converja a ella; indique cuál de los teoremas de C09 aporta el paso lógico faltante.
-
----
-
-**Correspondencia editorial:** Los IDs `EDC-C09-EXR-001--030` se resuelven uno por uno en [EDC-C09-SOLUCIONES](capitulo-09-soluciones.html), sin utilizar C10 ni C11.

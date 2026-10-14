@@ -26,7 +26,7 @@ source-sha256: 9e62ea655db771b3b36b586d56b9b2a4979132a6ebe130f07b79df570a8858ef
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-05.html) · [Ejercicios](capitulo-05-ejercicios.html) · [Soluciones](capitulo-05-soluciones.html) · [Notas históricas](capitulo-05-notas.html)
+[Exposición](capitulo-05.html) · [Ejercicios](capitulo-05-ejercicios.html) · [Soluciones](capitulo-05-soluciones.html)
 
 Las soluciones distinguen los problemas de existencia de los de evaluación; todas utilizan únicamente C00–C05. Cada demostración se ofrece en el dominio indicado y no usa el Teorema Fundamental del Cálculo. Las identidades de valores de integrales de potencias se apoyan en el agotamiento numérico de C04, no en una primitiva general.
 

@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C02-SOLUCIONES
-source-sha256: 41043934313aca6bb009386bc92832d5d00fde6b6529e883dbedbd67c01e8ee1
+source-sha256: 84f33ed051d250450a75a67a8c278440c554546cf9adc716247b668de4371833
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-02.html) · [Ejercicios](capitulo-02-ejercicios.html) · [Soluciones](capitulo-02-soluciones.html) · [Notas históricas](capitulo-02-notas.html)
+[Exposición](capitulo-02.html) · [Ejercicios](capitulo-02-ejercicios.html) · [Soluciones](capitulo-02-soluciones.html)
 
 Estas soluciones son elaboraciones matemáticas propias. La referencia `EDC-C02-SOL-nnn` corresponde exactamente al enunciado `EDC-C02-EXR-nnn`; todos los argumentos se apoyan en C00–C02. Cada hipótesis de dominio se conserva a lo largo del cálculo.
 
@@ -348,7 +348,3 @@ $$
 $$
 
 El coeficiente total de $\sin(\beta x)$ es $-2\alpha\beta+2\alpha\beta=0$. Por lo tanto, la identidad se cumple para todo $x\in\mathbb R$, también en los casos $\alpha=0$ o $\beta=0$. No se ha demostrado que sean éstas todas las soluciones de tal ecuación.
-
----
-
-**Control de cobertura:** se han resuelto los 28 ejercicios `EDC-C02-EXR-001--028` mediante entradas `EDC-C02-SOL-001--028`, sin incisos omitidos ni uso de capítulos futuros como premisas.

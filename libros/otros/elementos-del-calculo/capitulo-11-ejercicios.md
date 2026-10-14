@@ -21,14 +21,14 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C11-EJERCICIOS
-source-sha256: c87b4d9acdfdab1f9b166f22bd331db8f4f12d7cf61f34adb1c66b575ec43733
+source-sha256: 1f685d1728cde17f3e6c58d2c3ba36e8c76b6b2854dc08f8073fe8ba71686c3f
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-11.html) · [Ejercicios](capitulo-11-ejercicios.html) · [Soluciones](capitulo-11-soluciones.html) · [Notas históricas](capitulo-11-notas.html)
+[Exposición](capitulo-11.html) · [Ejercicios](capitulo-11-ejercicios.html) · [Soluciones](capitulo-11-soluciones.html)
 
-Los treinta problemas recorren las cinco convergencias conceptuales del libro y exigen **demostrar**, no sólo recordar fórmulas. Las preguntas históricas se responden desde [las notas documentadas](capitulo-11-notas.html): no se atribuirán originales que no hayan sido cotejados. Los problemas `EDC-C11-EXR-001--030` corresponden uno por uno a [EDC-C11-SOLUCIONES](capitulo-11-soluciones.html).
+Los treinta problemas recorren las cinco convergencias conceptuales del libro y exigen **demostrar**, no sólo recordar fórmulas. Los problemas `EDC-C11-EXR-001--030` corresponden uno por uno a [EDC-C11-SOLUCIONES](capitulo-11-soluciones.html).
 
 ## A. Qué constituye una prueba en cálculo
 
@@ -101,7 +101,3 @@ Los treinta problemas recorren las cinco convergencias conceptuales del libro y 
 **Ejercicio 11.29 (`EDC-C11-EXR-029`).** Una sucesión de funciones continuas $f_n(x)=x^n$ en $[0,1]$ converge puntualmente a $f$. Halle $f$ y pruebe que no existe una sucesión $\varepsilon_n\to0$ con $|f_n(x)-f(x)|\le\varepsilon_n$ para todo $x\in[0,1]$. Relaciónelo con la cota interior de C08.
 
 **Ejercicio 11.30 (`EDC-C11-EXR-030`).** **Síntesis final.** Sea $y(t)=e^{-t}$, $t\in[0,1]$, y $A(x)=\int_0^x y(t)dt$. (a) Determine $A$ mediante C06 y compruebe $A'=y$. (b) Obtenga una cota de error para cualquier suma de $n$ rectángulos uniformes de $\int_0^1y$. (c) Demuestre $|A(x)-x|\le x^2/2$ para $0\le x\le1$. (d) Verifique que $y$ es la única solución del PVI $y'=-y$, $y(0)=1$. (e) Explique el significado y los límites de las cuatro pruebas; no confunda ninguna de ellas con evidencia empírica de un modelo de decaimiento.
-
----
-
-**Correspondencia editorial:** los treinta IDs `EDC-C11-EXR-001--030` se emparejan exactamente con `EDC-C11-SOL-001--030` en [las soluciones desarrolladas](capitulo-11-soluciones.html).

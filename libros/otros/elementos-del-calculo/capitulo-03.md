@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C03
-source-sha256: eb15cce0fdbfe5486083e385d90636d0812a6b370553955c03b25b42d0615cf8
+source-sha256: 2e2ec9420e80cd4534e9f7c4e4599846c5b37894dfbb2a3672b5bee49ffb16d0
 content-id: MA-BCH-0334
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-03.html) · [Ejercicios](capitulo-03-ejercicios.html) · [Soluciones](capitulo-03-soluciones.html) · [Notas históricas](capitulo-03-notas.html)
+[Exposición](capitulo-03.html) · [Ejercicios](capitulo-03-ejercicios.html) · [Soluciones](capitulo-03-soluciones.html)
 
 [← Capítulo 2](capitulo-02.html) · [Capítulo 4 →](capitulo-04.html)
 
@@ -158,7 +158,7 @@ Al derivar hoy la misma expresión obtenemos $B-2A$, y reconocemos en su anulaci
 
 Rolle y el valor medio amplían la utilidad de esa búsqueda de pendientes nulas. Restar la secante transforma una curva con alturas finales distintas en otra con extremos a la misma altura; el extremo interior de la diferencia encuentra entonces una tangente paralela a la secante de la curva original.
 
-**Para seguir leyendo:** [Fermat, *Œuvres*, tomo I (1891), pp. 133–134, *Methodus ad disquirendam maximam et minimam*](https://fr.wikisource.org/wiki/Œuvres_de_Fermat/I/Maxima_et_Minima); contexto de Rolle y del valor medio en las notas históricas del capítulo 3, H2–H3.
+**Para seguir leyendo:** [Fermat, *Œuvres*, tomo I (1891), pp. 133–134, *Methodus ad disquirendam maximam et minimam*](https://fr.wikisource.org/wiki/Œuvres_de_Fermat/I/Maxima_et_Minima).
 :::
 
 ## 3.5. Monotonía, constancia y unicidad
@@ -396,7 +396,7 @@ Los dos primeros factores son positivos, de modo que $F$ crece para $0<x<\alpha/
 
 ## 3.12. Historia, alcance y tránsito a las cuadraturas
 
-El problema de partir un segmento que encontramos en Fermat relaciona esta búsqueda de extremos con una tradición algebraica anterior a la derivada moderna. El resultado asociado a Rolle procede también de un contexto de ecuaciones; las formulaciones posteriores del valor medio dieron a la relación entre pendientes e incrementos el alcance que utilizamos aquí. Los testimonios leídos y los límites del cotejo se distinguen en las [notas históricas](capitulo-03-notas.html).
+El problema de partir un segmento que encontramos en Fermat relaciona esta búsqueda de extremos con una tradición algebraica anterior a la derivada moderna. El resultado asociado a Rolle procede también de un contexto de ecuaciones; las formulaciones posteriores del valor medio dieron a la relación entre pendientes e incrementos el alcance que utilizamos aquí.
 
 La comparación que hizo posibles estas aplicaciones se expresa en la relación
 

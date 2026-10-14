@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C07
-source-sha256: f8c191ddeb56fc7db933121a026c9b1a843fd48115c39cefe106d192cd39e36d
+source-sha256: c06e3900d3c664ad80382e9538ebc43985874499786556080e4e3e3e1d44ea50
 content-id: MA-BCH-0338
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-07.html) · [Ejercicios](capitulo-07-ejercicios.html) · [Soluciones](capitulo-07-soluciones.html) · [Notas históricas](capitulo-07-notas.html)
+[Exposición](capitulo-07.html) · [Ejercicios](capitulo-07-ejercicios.html) · [Soluciones](capitulo-07-soluciones.html)
 
 [← Capítulo 6](capitulo-06.html) · [Capítulo 8 →](capitulo-08.html)
 
@@ -447,7 +447,7 @@ $$
 
 definida para cada $x$ mediante una integral sobre un segmento finito, con $H'(x)=e^{-x^2}$. La pregunta por una expresión finita en términos de un repertorio previo de funciones queda abierta aquí. La existencia y la variación de $H$ están determinadas aunque nuestros métodos no hayan producido esa expresión.
 
-La [documentación histórica](capitulo-07-notas.html) recoge los antecedentes de cuadraturas, sumaciones y reglas de cálculo. En el capítulo, el Teorema Fundamental permite reunir esos procedimientos mediante identidades de derivación y de polinomios. Para estudiar después aproximaciones dadas por sumas con un número creciente de términos, necesitaremos averiguar qué condiciones permiten pasar de esas sumas a un límite; ésa será la nueva dificultad de C08.
+En el capítulo, el Teorema Fundamental permite reunir esos procedimientos mediante identidades de derivación y de polinomios. Para estudiar después aproximaciones dadas por sumas con un número creciente de términos, necesitaremos averiguar qué condiciones permiten pasar de esas sumas a un límite; ésa será la nueva dificultad de C08.
 
 ### Mapa de dependencias y alcance
 
@@ -461,4 +461,4 @@ La [documentación histórica](capitulo-07-notas.html) recoge los antecedentes d
 
 ### Trabajo del lector
 
-Los [ejercicios de C07](capitulo-07-ejercicios.html) incluyen diagnóstico de hipótesis, cálculo mediante distintos métodos, pruebas de las reglas, aplicaciones y un desafío de síntesis. Sus [soluciones](capitulo-07-soluciones.html) se entregan separadas de la exposición; cada resolución especifica el intervalo real y la técnica empleada. El marco histórico y los niveles efectivos de consulta están en [notas de fuentes](capitulo-07-notas.html).
+Los [ejercicios de C07](capitulo-07-ejercicios.html) incluyen diagnóstico de hipótesis, cálculo mediante distintos métodos, pruebas de las reglas, aplicaciones y un desafío de síntesis. Sus [soluciones](capitulo-07-soluciones.html) se entregan separadas de la exposición; cada resolución especifica el intervalo real y la técnica empleada.
