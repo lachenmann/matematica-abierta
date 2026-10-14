@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 areas:
 - analisis
 level: universitario
@@ -71,7 +71,7 @@ $$
 \text{garantizar que }\sup A\text{ exista}.
 $$
 
-**Uso de completitud:** ninguno. Precisamente se está distinguiendo la definición del futuro principio de existencia.
+Precisamente se está distinguiendo la definición del futuro principio de existencia.
 
 []{#MA-MSOL-ANM-01-003-002}
 
@@ -110,8 +110,6 @@ U(A)\ne\varnothing
 \quad\not\Rightarrow\quad
 \exists\min U(A).
 $$
-
-**Uso de completitud:** ninguno.
 
 []{#MA-MSOL-ANM-01-003-003}
 
@@ -163,8 +161,6 @@ $$
 
 Así quedan verificadas simultáneamente la no vaciedad de $S_2$ y la existencia de al menos una cota superior racional.
 
-**Uso de completitud:** ninguno.
-
 []{#MA-MSOL-ANM-01-003-004}
 
 []{#MA-MIC-ANM-01-003-004}
@@ -193,8 +189,6 @@ Equivalentemente, $S_2$ no posee supremo **dentro de $\mathbb Q$**.
 
 Ésta es la distinción que interesa al capítulo: tener barreras superiores no implica que el sistema contenga una barrera extremal que sea la mejor de todas.
 
-**Uso de completitud:** ninguno; estamos describiendo precisamente el defecto de existencia que una propiedad de completitud deberá reparar en $\mathbb R$.
-
 []{#MA-MSOL-ANM-01-003-005}
 
 []{#MA-MIC-ANM-01-003-005}
@@ -222,8 +216,6 @@ $$
 $$
 
 La densidad permite **refinar entre puntos existentes**; no garantiza que el sistema contenga la frontera extremal exigida por una familia global de restricciones.
-
-**Uso de completitud:** ninguno.
 
 []{#MA-MSOL-ANM-01-003-006}
 
@@ -268,8 +260,6 @@ A\text{ acotado superiormente}
 $$
 
 En §3.1 esto es todavía la **forma de la garantía que necesitamos**, no un principio ya usado para demostrar otros resultados. §3.2 será la sección encargada de formularla como propiedad estructural de $\mathbb R$.
-
-**Uso de completitud:** anticipatorio. El microcontrol identifica qué garantía debe aportar; no la emplea todavía como resultado disponible.
 
 ## §3.2. El principio del supremo
 
@@ -324,8 +314,6 @@ $$
 
 Por tanto, el principio transforma las tres condiciones de entrada en la existencia de una menor cota superior real.
 
-**Uso de completitud:** directo, exactamente en el paso que afirma que tal $s$ existe.
-
 []{#MA-MSOL-ANM-01-003-008}
 
 []{#MA-MIC-ANM-01-003-008}
@@ -371,8 +359,6 @@ $$
 
 La existencia requiere una propiedad estructural adicional; en $\mathbb R$, esa propiedad es el principio del supremo.
 
-**Uso de completitud:** la explicación identifica por qué hace falta, pero no la usa para derivar nada más.
-
 []{#MA-MSOL-ANM-01-003-009}
 
 []{#MA-MIC-ANM-01-003-009}
@@ -402,8 +388,6 @@ Más precisamente,
 $$
 \boxed{\min U(A)=\sup A.}
 $$
-
-**Uso de completitud:** directo, al pasar de $A\ne\varnothing$ y $U(A)\ne\varnothing$ a la existencia de $\min U(A)$.
 
 []{#MA-MSOL-ANM-01-003-010}
 
@@ -453,8 +437,6 @@ $$
 
 es justamente la que permite identificar al supremo con un máximo.
 
-**Uso de completitud:** sólo para garantizar que el supremo existe; la cuestión de pertenencia se decide por la estructura concreta de $A$.
-
 []{#MA-MSOL-ANM-01-003-011}
 
 []{#MA-MIC-ANM-01-003-011}
@@ -490,8 +472,6 @@ $$
 $$
 
 La diferencia no está en la no vaciedad, la acotación o la densidad, sino en la garantía estructural de existencia disponible en $\mathbb R$.
-
-**Uso de completitud:** exactamente en la existencia de $\sup_{\mathbb R}S_2$; no se identifica ese real con ningún número concreto.
 
 []{#MA-MSOL-ANM-01-003-012}
 
@@ -543,8 +523,6 @@ $$
 }
 $$
 
-**Uso de completitud:** sólo en la primera flecha.
-
 []{#MA-MSOL-ANM-01-003-013}
 
 []{#MA-MIC-ANM-01-003-013}
@@ -580,8 +558,6 @@ U(\mathbb R)=\varnothing.
 $$
 
 Como falta la hipótesis de acotación superior, el principio del supremo no autoriza ninguna conclusión de existencia para $\sup\mathbb R$ como número real.
-
-**Uso de completitud:** ninguno, porque el principio ni siquiera es aplicable; primero deben verificarse sus hipótesis.
 
 []{#MA-MSOL-ANM-01-003-014}
 
@@ -631,8 +607,6 @@ $$
 
 seguida únicamente de minimalidad del supremo y negación de la definición de cota superior.
 
-**Uso de completitud:** una sola vez, en la existencia de $s=\sup A$.
-
 ## §3.3. La cara dual: el principio del ínfimo
 
 []{#MA-MSOL-ANM-01-003-015}
@@ -665,7 +639,7 @@ $$
 
 Así, $-A$ está acotado superiormente. Además, como $A\ne\varnothing$, si $a_0\in A$ entonces $-a_0\in -A$, de modo que $-A\ne\varnothing$.
 
-**Uso de completitud:** ninguno. Sólo se usan la hipótesis de acotación inferior y la inversión del orden bajo la reflexión.
+Sólo se usan la hipótesis de acotación inferior y la inversión del orden bajo la reflexión.
 
 []{#MA-MSOL-ANM-01-003-016}
 
@@ -751,7 +725,7 @@ $$
 
 Por definición, $-s$ es una cota inferior de $A$.
 
-**Uso de completitud:** ninguno nuevo. Se usa solamente que el supremo $s$ ya existe y que es cota superior de $-A$.
+Se usa solamente que el supremo $s$ ya existe y que es cota superior de $-A$.
 
 []{#MA-MSOL-ANM-01-003-018}
 
@@ -799,45 +773,21 @@ $$
 
 Así, toda cota inferior $l$ de $A$ queda por debajo de $-s$. Junto con el microcontrol anterior, esto muestra que $-s$ es la **mayor** cota inferior.
 
-**Uso de completitud:** ninguno nuevo; la desigualdad usa sólo la minimalidad del supremo ya existente.
-
 []{#MA-MSOL-ANM-01-003-019}
 
 []{#MA-MIC-ANM-01-003-019}
 
 ### 19. Explica por qué la identidad $\inf A=-\sup(-A)$ cumple ahora una función de existencia que no tenía en C02.
 
-En C02 la identidad
+C02 ya demostró que, si existe $s=\sup(-A)$, entonces $-s$ es el ínfimo de $A$. No era necesario suponer previamente la existencia de ambos extremos: la reflexión transportaba la existencia de uno al otro.
 
-$$
-\inf A=-\sup(-A)
-$$
-
-era **condicional**: describía la relación entre dos extremos suponiendo que los extremos pertinentes ya existían.
-
-En C03 disponemos de una garantía adicional. Si $A$ es no vacío y está acotado inferiormente, entonces $-A$ es no vacío y está acotado superiormente. Por completitud existe
+Lo que faltaba era garantizar el punto de partida para cualquier conjunto no vacío acotado inferiormente. Si $l$ es una cota inferior de $A$, entonces $-l$ es cota superior de $-A$, y la no vaciedad también se conserva. El principio del supremo proporciona ahora
 
 $$
 s=\sup(-A).
 $$
 
-A partir de ese objeto ya existente definimos
-
-$$
-i=-s
-$$
-
-y la reflexión demuestra que $i$ es la mayor cota inferior de $A$. Por tanto,
-
-$$
-\boxed{\inf A=-\sup(-A)}
-$$
-
-no sólo compara dos objetos previamente disponibles: ahora **produce la existencia del ínfimo** a partir de la existencia garantizada del supremo reflejado.
-
-La fórmula pasa, pues, de identidad condicional a mecanismo de transporte de existencia.
-
-**Uso de completitud:** directo en la existencia de $\sup(-A)$; la reflexión posterior no añade otra aplicación.
+La prueba de C02 se aplica a ese número y da $\inf A=-s$. Así, C03 añade la garantía general que permite iniciar el transporte; las inversiones de desigualdad y la identificación del ínfimo ya eran válidas en C02.
 
 []{#MA-MSOL-ANM-01-003-020}
 
@@ -997,8 +947,6 @@ $$
 
 Obsérvese que $2\notin A$: el ínfimo existe aunque no sea mínimo.
 
-**Uso de completitud:** en la garantía general de existencia del supremo de $-A$ —o, equivalentemente, del ínfimo de $A$—; la identificación concreta del valor usa la teoría elemental de C02.
-
 []{#MA-MSOL-ANM-01-003-023}
 
 []{#MA-MIC-ANM-01-003-023}
@@ -1087,8 +1035,6 @@ $$
 s=\sup\mathbb N.
 $$
 
-**Uso de completitud:** directo únicamente en esta conclusión de existencia. La no vaciedad y la acotación supuesta son las hipótesis que permiten aplicar el principio.
-
 []{#MA-MSOL-ANM-01-003-025}
 
 []{#MA-MIC-ANM-01-003-025}
@@ -1120,8 +1066,6 @@ $$
 \Longrightarrow_{\text{orden + aritmética}}
 \text{contradicción}.
 $$
-
-**Uso de completitud:** una sola vez, en la existencia de $s$.
 
 []{#MA-MSOL-ANM-01-003-026}
 
@@ -1157,7 +1101,7 @@ $$
 \boxed{s-1\text{ no es una cota superior de }\mathbb N.}
 $$
 
-**Uso de completitud:** ninguno nuevo. Sólo se usa la minimalidad del supremo cuya existencia ya fue obtenida.
+Sólo se usa la minimalidad del supremo cuya existencia ya fue obtenida.
 
 []{#MA-MSOL-ANM-01-003-027}
 
@@ -1227,8 +1171,6 @@ $$
 
 Como $s$ es cota superior de $\mathbb N$, todo elemento de $\mathbb N$ debería satisfacer $m\le s$. Pero $m=n+1\in\mathbb N$ satisface $n+1>s$. Ésa es la contradicción.
 
-**Uso de completitud:** ninguno nuevo; este paso es puramente aritmético y de pertenencia.
-
 []{#MA-MSOL-ANM-01-003-029}
 
 []{#MA-MIC-ANM-01-003-029}
@@ -1275,7 +1217,7 @@ $$
 }
 $$
 
-**Uso de completitud:** ninguno en esta equivalencia. La completitud fue necesaria antes para demostrar que la primera formulación es verdadera en $\mathbb R$.
+La completitud fue necesaria antes para demostrar que la primera formulación es verdadera en $\mathbb R$.
 
 []{#MA-MSOL-ANM-01-003-030}
 
@@ -1493,7 +1435,7 @@ $$
 
 La inclusión de intervalos fuerza, pues, que los extremos izquierdos avancen hacia la derecha y los derechos retrocedan hacia la izquierda.
 
-**Uso de completitud:** ninguno. Sólo se usa pertenencia a intervalos cerrados e inclusión.
+Sólo se usa pertenencia a intervalos cerrados e inclusión.
 
 []{#MA-MSOL-ANM-01-003-035}
 
@@ -1551,7 +1493,7 @@ $$
 \boxed{a_m\le b_n\qquad\text{para todos }m,n\ge1.}
 $$
 
-**Uso de completitud:** ninguno. La compatibilidad cruzada procede sólo del encajamiento y del orden.
+La compatibilidad cruzada procede sólo del encajamiento y del orden.
 
 []{#MA-MSOL-ANM-01-003-036}
 
@@ -1579,7 +1521,7 @@ $$
 
 Esta verificación es necesaria antes de invocar el principio del supremo.
 
-**Uso de completitud:** ninguno. Sólo se exhibe un elemento de $A$.
+Sólo se exhibe un elemento de $A$.
 
 []{#MA-MSOL-ANM-01-003-037}
 
@@ -1617,7 +1559,7 @@ $$
 
 Como $n$ era arbitrario, esto vale para **cada** extremo derecho $b_n$.
 
-**Uso de completitud:** ninguno. Esta acotación se deduce de la compatibilidad cruzada.
+Esta acotación se deduce de la compatibilidad cruzada.
 
 []{#MA-MSOL-ANM-01-003-038}
 
@@ -1707,7 +1649,7 @@ $$
 \boxed{a_n\le x.}
 $$
 
-**Uso de completitud:** ninguno nuevo. La completitud garantizó previamente que $x$ existe; esta desigualdad usa sólo la propiedad de cota superior del supremo.
+La completitud garantizó previamente que $x$ existe; esta desigualdad usa sólo la propiedad de cota superior del supremo.
 
 []{#MA-MSOL-ANM-01-003-040}
 
@@ -1735,7 +1677,7 @@ $$
 \boxed{x\le b_n.}
 $$
 
-**Uso de completitud:** ninguno nuevo. Se usa únicamente la minimalidad del supremo ya existente.
+Se usa únicamente la minimalidad del supremo ya existente.
 
 []{#MA-MSOL-ANM-01-003-041}
 
@@ -1784,8 +1726,6 @@ $$
 todavía podría ocurrir que $x=a_n$ o $x=b_n$, casos en los que $x$ no pertenecería al intervalo.
 
 Así, las desigualdades no bastan para un intervalo abierto, pero sí bastan exactamente para $[a_n,b_n]$.
-
-**Uso de completitud:** ninguno nuevo.
 
 []{#MA-MSOL-ANM-01-003-042}
 
@@ -2049,7 +1989,7 @@ $$
 \bigcap_n I_n\ne\varnothing.
 $$
 
-**Uso de completitud:** ninguno. Esta respuesta describe sólo el mecanismo de unicidad.
+Esta respuesta describe sólo el mecanismo de unicidad.
 
 []{#MA-MSOL-ANM-01-003-047}
 
@@ -2099,8 +2039,6 @@ $$
 $$
 
 No se ha elegido una tolerancia especial desde fuera del problema: la propia separación positiva entre los dos candidatos proporciona la escala que el estrechamiento debe superar.
-
-**Uso de completitud:** ninguno.
 
 []{#MA-MSOL-ANM-01-003-048}
 
@@ -2178,8 +2116,6 @@ $$
 \boxed{|x-y|\le b_n-a_n.}
 $$
 
-**Uso de completitud:** ninguno; es una propiedad métrica elemental de un intervalo cerrado.
-
 []{#MA-MSOL-ANM-01-003-049}
 
 []{#MA-MIC-ANM-01-003-049}
@@ -2220,7 +2156,7 @@ $$
 x=y.
 $$
 
-**Uso de completitud:** ninguno nuevo. La contradicción usa sólo pertenencia al intervalo, distancia y estrechamiento.
+La contradicción usa sólo pertenencia al intervalo, distancia y estrechamiento.
 
 []{#MA-MSOL-ANM-01-003-050}
 
@@ -2424,7 +2360,7 @@ $$
 
 La existencia y la unicidad son capas lógicas distintas.
 
-**Dependencia estructural:** la finura $1/n<\varepsilon$ usa indirectamente la completitud a través de la propiedad arquimediana, pero eso no repara la falta de la hipótesis cerrada de existencia.
+En este argumento, la finura $1/n<\varepsilon$ usa indirectamente la completitud a través de la propiedad arquimediana, pero eso no repara la falta de la hipótesis cerrada de existencia.
 
 []{#MA-MSOL-ANM-01-003-054}
 
@@ -2471,8 +2407,6 @@ $$
 \quad\text{para todo }k\ge0.
 }
 $$
-
-**Uso de completitud:** ninguno; es una identidad finita obtenida por inducción.
 
 []{#MA-MSOL-ANM-01-003-055}
 
@@ -2527,8 +2461,6 @@ Concluimos por inducción que
 $$
 \boxed{2^r\ge r+1\quad\text{para todo }r\ge1.}
 $$
-
-**Uso de completitud:** ninguno.
 
 []{#MA-MSOL-ANM-01-003-056}
 
@@ -2588,7 +2520,7 @@ $$
 
 El argumento es enteramente finito: dada una tolerancia concreta, produce un entero concreto $k$ cuya existencia queda garantizada por arquimedianidad. No se ha escrito ni utilizado ninguna afirmación de límite.
 
-**Dependencia estructural:** la elección de $m$ usa arquimedianidad; ésta fue derivada previamente de completitud, de modo que aquí la dependencia de completitud es indirecta.
+En este argumento, la elección de $m$ usa arquimedianidad; ésta fue derivada previamente de completitud, de modo que aquí la dependencia de completitud es indirecta.
 
 []{#MA-MSOL-ANM-01-003-057}
 
@@ -2707,7 +2639,7 @@ $$
 
 Así, la no vaciedad de $B$ no es decorativa: proporciona el elemento que certifica la acotación superior de $A$, una de las hipótesis necesarias para aplicar **SUP**.
 
-**Uso de completitud:** ninguno todavía. Aquí sólo se verifica la hipótesis de acotación superior.
+Aquí sólo se verifica la hipótesis de acotación superior.
 
 []{#MA-MSOL-ANM-01-003-059}
 
@@ -2751,7 +2683,7 @@ $$
 
 Junto con $a\le s$ para todo $a\in A$, esto demuestra que $s$ separa ambas clases.
 
-**Uso de completitud:** ninguno nuevo. La completitud ya se gastó al producir $s=\sup A$; este paso usa sólo la minimalidad del supremo.
+La completitud proporcionó $s=\sup A$; la desigualdad posterior usa su minimalidad.
 
 []{#MA-MSOL-ANM-01-003-060}
 
@@ -2790,8 +2722,6 @@ $$
 $$
 
 No hace falta ninguna inferencia adicional: la propiedad de separación ya entrega universalmente que $c$ domina a todos los elementos de $A$.
-
-**Uso de completitud:** si SEP se toma como principio en esta dirección, no se invoca SUP; se está reconstruyendo SUP a partir de SEP.
 
 []{#MA-MSOL-ANM-01-003-061}
 
@@ -3560,7 +3490,7 @@ Un ejemplo es la afirmación siguiente:
 
 > Si $s=\sup A$ y $u$ es una cota superior de $A$, entonces $s\le u$.
 
-Aquí partimos de la hipótesis de que el supremo **ya existe** y vale $s$. Por definición, ser supremo significa precisamente dos cosas:
+Aquí suponemos que el supremo ya existe y vale $s$. Por definición, ser supremo significa precisamente dos cosas:
 
 1. $s$ es cota superior de $A$;
 2. $s$ es menor o igual que toda cota superior de $A$.
@@ -3935,49 +3865,18 @@ Clasificar la demostración completa con una única etiqueta ocultaría esta est
 
 ### 80. ¿Por qué `SUP`, `INF`, `SEP` y `GCI` deben entenderse como interfaces equivalentes y no como cuatro axiomas acumulativos?
 
-Porque en §3.3 y §3.7 se demostraron implicaciones suficientes para obtener
+El principio del supremo permite obtener el del ínfimo por reflexión. También permite separar dos clases no vacías $A,B$ con $a\le b$ para todo $a\in A$, $b\in B$: basta tomar $\sup A$, pues cada miembro de $B$ es cota superior de $A$.
+
+Recíprocamente, separar $A$ de $U(A)$ produce un número que domina a todo $A$ y queda por debajo de toda cota superior: es el supremo. La separación se traduce a intersecciones al reunir los extremos izquierdos y derechos; en la dirección inversa se utilizan los intervalos $[a,b]$ para $(a,b)\in A\times B$.
+
+Estas demostraciones justifican
 
 $$
-\boxed{
-\mathrm{SUP}
-\Longleftrightarrow
-\mathrm{INF}
-\Longleftrightarrow
-\mathrm{SEP}
-\Longleftrightarrow
-\mathrm{GCI}.
-}
+\mathrm{SUP}\Longleftrightarrow\mathrm{INF}
+\Longleftrightarrow\mathrm{SEP}\Longleftrightarrow\mathrm{GCI}.
 $$
 
-Una equivalencia lógica significa que cualquiera de esas formulaciones permite recuperar las demás.
-
-En la arquitectura adoptada aquí se escogió **SUP** como punto de partida. Entonces:
-
-- **INF** se obtiene por reflexión;
-- **SEP** se obtiene usando el supremo de la clase izquierda;
-- **GCI** se obtiene a partir de separación de los extremos izquierdos y derechos.
-
-Las conversas muestran que no hemos perdido información al cambiar de lenguaje.
-
-Por eso no debemos leer la cadena como
-
-$$
-\text{SUP} + \text{INF} + \text{SEP} + \text{GCI}
-$$
-
-ni añadir cuatro hipótesis independientes a una prueba.
-
-La lectura correcta es
-
-$$
-\boxed{
-\text{una misma infraestructura de completitud}
-\longleftrightarrow
-\text{cuatro interfaces equivalentes}.
-}
-$$
-
-Una prueba futura puede elegir la interfaz más natural para su problema sin multiplicar los supuestos estructurales.
+Por tanto, basta adoptar una de las cuatro propiedades y demostrar las otras. Al usar separación o intersección general estamos aplicando una formulación equivalente de la misma propiedad de existencia.
 
 []{#MA-MSOL-ANM-01-003-081}
 
@@ -4052,7 +3951,7 @@ Es decir, dados **dos puntos ya existentes**, podemos insertar otro racional ent
 
 La completitud responde a una pregunta diferente: dada una familia global de restricciones compatibles, ¿existe dentro del sistema la frontera extremal o el separador requerido?
 
-El conjunto $S_2$ muestra que ambas propiedades son independientes en este sentido. Aunque $\mathbb Q$ es denso, la familia de sus cotas superiores racionales para $S_2$ no posee mínimo racional.
+El conjunto $S_2$ muestra que la densidad no implica completitud. Aunque $\mathbb Q$ es denso, la familia de sus cotas superiores racionales para $S_2$ no posee mínimo racional.
 
 Por tanto,
 
@@ -4072,33 +3971,13 @@ La densidad permite refinar entre racionales existentes, pero no crea el objeto 
 
 ### 83. Distingue el papel futuro de C07, C10 y C23 respecto de C03 sin demostrar todavía ninguno de sus resultados.
 
-Los tres capítulos consumirán la infraestructura de C03 de maneras distintas, pero ninguno de sus resultados debe considerarse demostrado aquí.
+En C07, una sucesión monótona acotada tendrá un supremo o un ínfimo en su conjunto de valores. Ese extremo será el candidato a límite; probar que satisface la definición de límite requerirá el argumento propio de C07.
 
-**C07 — sucesiones monótonas acotadas.**
+C10 estudiará sucesiones de Cauchy y relacionará la existencia de sus límites con la completitud de orden. Esa relación necesita demostración: las dos formulaciones no se identifican por definición.
 
-C03 entrega la garantía de existencia de barreras extremales. Cuando C07 estudie una sucesión monótona y acotada, podrá aplicar esa infraestructura al conjunto de valores para obtener un candidato extremal. La demostración de que ese candidato es efectivamente el límite pertenece a C07 y no se adelanta aquí.
+C23 usará supremos e ínfimos para las construcciones de Darboux. La completitud garantiza los extremos bajo las hipótesis de acotación correspondientes, mientras que las propiedades de la integral dependerán de las definiciones y pruebas de ese capítulo.
 
-**C10 — Cauchy y convergencia en $\mathbb R$.**
-
-C03 trabaja con completitud de orden. C10 introducirá una formulación expresada mediante sucesiones de Cauchy y convergencia. Su tarea será comparar o relacionar esa nueva noción con la infraestructura de orden ya disponible; no se identifican ambas por definición en C03.
-
-**C23 — supremos, ínfimos y Darboux.**
-
-Las construcciones inferiores y superiores de Darboux necesitarán usar supremos e ínfimos de manera sistemática. C03 proporciona la garantía de existencia que impide que esas construcciones queden en un nivel meramente condicional. La teoría de integración y sus demostraciones pertenecen a C23.
-
-Así, los papeles pueden resumirse como
-
-$$
-\boxed{
-\begin{array}{ll}
-\text{C07:} & \text{consumir una barrera extremal como candidato futuro},\\
-\text{C10:} & \text{comparar/reformular nociones de completitud},\\
-\text{C23:} & \text{consumir supremos e ínfimos en construcciones de integración}.
-\end{array}
-}
-$$
-
-Éste es sólo un mapa de dependencias futuras, no una demostración anticipada de esos capítulos.
+Así, C07 y C23 aplicarán garantías de existencia; C10 comparará formulaciones de completitud. Aquí sólo se precisan esas dependencias.
 
 []{#MA-MSOL-ANM-01-003-084}
 
@@ -4106,32 +3985,10 @@ $$
 
 ### 84. Formula con tus propias palabras la idea de «recta sin huecos» sin usar como definición ni «recta continua» ni «tener muchísimos puntos».
 
-Una formulación compatible con lo demostrado en C03 es ésta:
+Un conjunto no vacío de reales puede tener cotas superiores sin contener su supremo. La completitud asegura que, si está acotado superiormente, la menor de sus cotas superiores existe en $\mathbb R$, aunque quede fuera del conjunto.
 
-> La recta real es «sin huecos» en el sentido relevante para este capítulo porque ciertas familias compatibles de restricciones de orden no obligan a salir de $\mathbb R$ para encontrar el objeto que esas restricciones requieren.
+La misma propiedad se expresa mediante separación: dos clases no vacías que satisfacen $a\le b$ para todos sus pares admiten un real $c$ con $a\le c\le b$. También se expresa mediante intervalos cerrados: una familia no vacía con $a_i\le b_j$ para todos los índices tiene un punto común.
 
-Ese objeto puede aparecer bajo distintos lenguajes:
-
-- como una mejor barrera superior o inferior;
-- como un separador entre dos clases globalmente ordenadas;
-- como un punto común a una familia compatible de intervalos cerrados.
-
-Por eso la idea puede condensarse en
-
-$$
-\boxed{
-\text{restricciones compatibles}
-\Longrightarrow_{\text{completitud}}
-\text{objeto requerido dentro de }\mathbb R.
-}
-$$
-
-Esta formulación no depende de imaginar una línea dibujada ni de contar cuántos puntos hay entre dos reales. De hecho, $\mathbb Q$ es denso y contiene infinitos racionales entre racionales distintos, pero sigue fallando la garantía general de existencia.
-
-La síntesis conceptual de C03 es, por tanto:
-
-$$
-\boxed{\text{la completitud es infraestructura de existencia}.}
-$$
+Éste es el sentido preciso de «sin huecos»: las restricciones de orden descritas por esos principios se realizan dentro del sistema real. La densidad sólo permite insertar un punto entre dos ya dados; $\mathbb Q$ muestra que esa posibilidad puede coexistir con la ausencia de la menor cota superior requerida.
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)
