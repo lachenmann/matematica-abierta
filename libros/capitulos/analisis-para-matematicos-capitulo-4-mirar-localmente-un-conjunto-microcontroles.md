@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 areas:
 - analisis
 level: universitario
@@ -1571,7 +1571,7 @@ $$
 
 de modo que $x$ no es fronterizo.
 
-Si $x<-1$ o $x>2$, existe una bola suficientemente pequeña completamente contenida en $A^c$, por lo que tampoco es fronterizo.
+Si $x<-1$, el radio $(-1-x)/2$ produce una bola contenida en $(-\infty,-1)$; si $x>2$, sirve $(x-2)/2$ y la bola queda en $(2,\infty)$. Ambas regiones están en $A^c$, por lo que esos puntos tampoco son fronterizos.
 
 Concluimos
 
@@ -2179,7 +2179,7 @@ $$
 0\in\operatorname{Acc}(A).
 $$
 
-Así, $0$ es un punto de acumulación exterior al conjunto.
+Así, $0$ es un punto de acumulación que no pertenece al conjunto. Tampoco es un punto exterior en el sentido técnico: toda bola centrada en él toca a $A$.
 
 Por otro lado,
 
@@ -3872,7 +3872,7 @@ $$
 B(x,r)\subseteq A.
 $$
 
-La bola $B(x,r)$ es abierta, de modo que todos sus puntos son interiores a $A$:
+Para cada $y\in B(x,r)$, el margen $\delta_y=r-|y-x|$ es positivo. Si $z\in B(y,\delta_y)$, la desigualdad triangular da $|z-x|\le|z-y|+|y-x|<r$. Por tanto $B(y,\delta_y)\subseteq B(x,r)\subseteq A$, lo que demuestra que $y$ es interior a $A$. Así,
 
 $$
 B(x,r)\subseteq\operatorname{int}(A).
@@ -3894,7 +3894,7 @@ $$
 }
 $$
 
-El mecanismo es dual al de la idempotencia de la clausura: una vez aplicada la operación, repetirla no descubre una capa local nueva.
+En la prueba de clausura se elige primero un punto adherente intermedio y después un punto de $A$, reservando $r/2$ para cada desplazamiento. Aquí se conserva una bola completa dentro de $A$ y se construye alrededor de cada uno de sus puntos una bola menor que sigue dentro de ella. En ambas pruebas, la desigualdad triangular permite mantener el margen necesario.
 
 []{#MA-MSOL-ANM-01-004-061}
 
@@ -3931,6 +3931,10 @@ La diferencia está en la pertenencia de los extremos, mientras que la clausura 
 []{#MA-MIC-ANM-01-004-062}
 
 ### 62. Para $A=(0,1)\cup\{2\}$, determina $\operatorname{int}(A)$, $\overline A$, $\partial A$ y $\operatorname{Acc}(A)$, y explica qué propiedad local distingue al punto $2$.
+
+Para justificar los cuatro conjuntos, cada punto $x\in(0,1)$ tiene una bola contenida en ese intervalo, con radio $\min\{x,1-x\}/2$. Dentro de cualquier bola de radio $r>0$ también encontramos otro punto del intervalo: sirve $x+\min\{r/2,(1-x)/2\}$. En $0$ y $1$ sirven, respectivamente, $\min\{r/2,1/2\}$ y $1-\min\{r/2,1/2\}$, de modo que ambos extremos son de acumulación y adherentes.
+
+Si $x\notin[0,1]\cup\{2\}$, su distancia $d_0$ al intervalo $[0,1]$ es positiva: $d_0=-x$ cuando $x<0$ y $d_0=x-1$ cuando $x>1$. El radio $\min\{d_0,|x-2|\}/2$ produce una bola disjunta de $A$. No hay otros puntos adherentes ni de acumulación. El punto $2$ sí es adherente por pertenencia, pero está aislado como se comprueba abajo. Además, toda bola centrada en $2$ contiene $2+r/2\in A^c$, por lo que es fronterizo y no interior. Las identidades de clausura y frontera dan entonces los valores siguientes.
 
 Tenemos
 
