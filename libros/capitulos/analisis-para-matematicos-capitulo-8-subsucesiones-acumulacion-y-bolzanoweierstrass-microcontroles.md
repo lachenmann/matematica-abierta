@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Soluciones de microcontroles — Capítulo 8
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 provenance:
   type: original
   sources:
@@ -304,7 +304,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** Para $c_n=0$, distingue acumulación secuencial de acumulación de su imagen.
 
-**Solución.** Cero es punto secuencial porque aparece después de todo corte. La imagen $\{0\}$ no tiene puntos de acumulación: una bola perforada en cero no contiene ninguno, y los demás centros pueden separarse de cero.
+**Solución.** Cero es punto secuencial porque aparece después de todo corte. La imagen $\{0\}$ no tiene puntos de acumulación. En el centro $0$, cualquier bola perforada queda sin puntos de la imagen. Si $x\ne0$, el radio $|x|/2>0$ produce una bola que no contiene $0$, porque su distancia al centro es $|x|$. Así se excluyen todos los centros reales.
 
 ### Microcontrol 027
 
@@ -448,7 +448,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Cómo excluye la anchura arbitrariamente pequeña dos puntos comunes distintos?
 
-**Solución.** Si su distancia es $d>0$, elige $K$ con $w_K<d$. Ambos puntos en $I_K$ tendrían distancia a lo sumo $w_K$, dando $d\le w_K<d$.
+**Solución.** Si su distancia es $d>0$ y $M>0$, toma $K=\lfloor2M/d\rfloor+1$. La desigualdad $2^K\ge K+1$ da $w_K=2M/2^K\le2M/(K+1)<d$. Si $M=0$, el intervalo inicial ya es el singleton $\{0\}$. En el caso $M>0$, los dos puntos pertenecen a $I_K$ y tendrían distancia a lo sumo $w_K$, dando $d\le w_K<d$.
 
 ## §8.6 — Bolzano–Weierstrass: construir la extracción
 
@@ -472,7 +472,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Por qué existe un elemento de $E_{k+1}$ mayor que $n_k$?
 
-**Solución.** $E_{k+1}$ es infinito y el prefijo hasta $n_k$ es finito; por tanto no puede contenerlo entero.
+**Solución.** El conjunto $E_{k+1}\setminus\{0,\ldots,n_k\}$ es no vacío: si fuera vacío, $E_{k+1}$ estaría contenido en un conjunto finito y sería finito. Cualquier elemento de esa diferencia es mayor que $n_k$.
 
 ### Microcontrol 043
 
@@ -616,7 +616,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** Da un conjunto infinito sin punto de acumulación real y señala la hipótesis que falta.
 
-**Solución.** $\mathbb N\subset\mathbb R$ carece de puntos de acumulación: es localmente finito y cada centro puede aislarse de sus puntos diferentes. Falta acotación.
+**Solución.** $\mathbb N\subset\mathbb R$ es infinito y no acotado. Para un centro $x<0$, el radio $-x/2$ da una bola contenida en los negativos, sin naturales. Si $x\in\mathbb N$, el radio $1/2$ excluye todos los naturales distintos de $x$. En el caso restante, $x>0$ no es natural: con $q=\lfloor x\rfloor$ tenemos $q<x<q+1$, y el radio $\min\{x-q,q+1-x\}/2>0$ produce una bola contenida en $(q,q+1)$, sin naturales. Todos los centros quedan excluidos como puntos de acumulación. La hipótesis que falta es acotación.
 
 ## §8.8 — Cuándo las extracciones determinan la sucesión
 
@@ -690,7 +690,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Por qué ese ejemplo no converge a pesar de tener un único punto secuencial?
 
-**Solución.** No es acotado: sus términos impares superan cualquier cota. Toda sucesión convergente es acotada. La ausencia de otros puntos secuenciales se prueba excluyendo primero cero de una bola y luego los impares mediante un corte.
+**Solución.** No es acotado: sus términos impares superan cualquier cota. Toda sucesión convergente es acotada. Para comprobar que $0$ es el único punto secuencial, sea $H\ne0$ y fija $r=\min\{|H|/2,1\}>0$. Elige un natural $K>\max\{0,H+1\}$ y toma el corte $N=2K$. Todo término par tiene valor $0$ y error $|H|>r$. Si $n=2j+1\ge N$, entonces $j\ge K$ y $c_n=j+1\ge K+1>H+r$, por lo que también queda fuera de $B(H,r)$. Esa bola no recibe visitas después de $N$, y $H$ no es punto secuencial. El destino $0$ sí lo es por la selección par.
 
 ### Microcontrol 064
 

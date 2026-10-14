@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Soluciones — Capítulo 8
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 provenance:
   type: original
   sources:
@@ -38,7 +38,7 @@ css: ../../assets/books/anm/reader.css
 
 Los mapas $\varphi$ y $\theta$ tienen incrementos dos y uno, respectivamente; son estrictamente crecientes. $\psi(k+1)-\psi(k)=2k+1>0$, también desde cero. Sus primeros valores seleccionados son, respectivamente, $(1,1/3,1/5)$, $(1,1/2,1/5)$ y $(1/6,1/7,1/8)$. En cambio, $\eta(0)=\eta(1)=0$, por lo que no es estrictamente creciente. El hecho de que $\eta$ sea no decreciente no satisface la definición: permite reutilizar un índice.
 
-Tras resolver el problema, puede retomarse la [figura 8.1](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f01) para comparar el mecanismo con el ejemplo del capítulo.
+La distinción entre índices y alturas también se aprecia en la [figura 8.1](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f01).
 
 ## 8.2. Enumerar índices sin saltos ocultos
 
@@ -74,7 +74,7 @@ Toma $a_n=(-1)^n$, la identidad $\varphi(k)=k$ y el selector $\psi(k)=k+1$. Resu
 
 En $a$ se requiere $1/(n+1)<1/10$, equivalente a $n>9$; el menor umbral es $N=10$, pues en nueve hay igualdad. Para $b_k=3+1/(2k+2)$, la condición equivale a $k>4$, así que el menor umbral es $K=5$. El transporte general $K=N=10$ también sirve, pero no es mínimo. La estrictitud de la tolerancia explica ambos casos de frontera.
 
-Tras resolver el problema, puede retomarse la [figura 8.2](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f02) para comparar el mecanismo con el ejemplo del capítulo.
+La [figura 8.2](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f02) permite comprobar por qué un punto de frontera obliga a retrasar el corte.
 
 ## 8.6. Intercalar dos límites iguales
 
@@ -100,7 +100,7 @@ La dirección directa aplica §8.2 a cada selector $k\mapsto mk+r$. Para la rec�
 
 Infinitud de índices seleccionados no implica control de todos los posteriores. El ejemplo $a_{2k}=0$, $a_{2k+1}=1$ refuta la afirmación: las dos paridades tienen límites diferentes. Para la reparación, supón $a_{\varphi(k)}\to0$ y que $E=\varphi(\mathbb N)$ tiene complemento finito. Dado $\varepsilon>0$, toma $K$ para la selección. El conjunto de índices omitidos junto con $\{\varphi(0),\ldots,\varphi(K-1)\}$ es finito. Escoge $N$ mayor que todos ellos, o cero si está vacío. Todo $n\ge N$ es $\varphi(k)$ con $k\ge K$; por tanto $|a_n|<\varepsilon$. Lo decisivo es que las excepciones sean finitas.
 
-Tras resolver el problema, puede retomarse la [figura 8.2](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f02) para comparar el mecanismo con el ejemplo del capítulo.
+La [figura 8.2](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f02) recuerda qué términos quedan fuera del control de una selección.
 
 ## 8.9. Selección convergente de una monótona
 
@@ -160,9 +160,15 @@ Un punto secuencial de alguna $b^{(r)}$ es límite de una extracción de ella; c
 
 []{#MA-SEC-ANM-01-008-004}
 
-La imagen es $A=\{3\}\cup\{1,1/2,1/3,\ldots\}$. La sucesión converge a cero, pues el prefijo no afecta el límite, así que su único punto secuencial es cero. Cero es punto de acumulación de $A$ por los recíprocos. Para cualquier $x\ne0$, una bola suficientemente pequeña alrededor de $x$ evita una vecindad de cero; sólo finitísimos puntos de $A$ quedan en esa bola porque $1/n\to0$. Reduciendo el radio se excluyen los puntos distintos de $x$. Por tanto no hay otra acumulación de conjunto. Los puntos de $A$ son adherentes y cero también; si $x\notin A\cup\{0\}$, el mismo argumento de finitud local permite una bola sin puntos de $A$. En consecuencia $\overline A=A\cup\{0\}$ y $\operatorname{Acc}(A)=\{0\}$.
+La imagen es $A=\{3\}\cup\{1,1/2,1/3,\ldots\}$. La sucesión converge a cero, pues el prefijo no afecta el límite, así que su único punto secuencial es cero. Cero es punto de acumulación de $A$ por los recíprocos. Para excluir cualquier $x\ne0$ como punto de acumulación, elige $J\ge1$ natural con $1/J<|x|/2$. Para $n\ge J$, la triangular inversa da $|x-1/n|\ge|x|-1/n>|x|/2$. Sólo queda el conjunto finito $F=\{3\}\cup\{1/n:1\le n<J\}$. Si $F\setminus\{x\}$ es no vacío, toma
 
-Tras resolver el problema, puede retomarse la [figura 8.4](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f03) para comparar el mecanismo con el ejemplo del capítulo.
+$$
+r=\min\left\{\frac{|x|}{2},\frac12\min_{y\in F\setminus\{x\}}|x-y|\right\}>0.
+$$
+
+Si es vacío, toma $r=|x|/2$. Esta bola excluye todos los puntos de $A$ distintos de $x$: los recíprocos tardíos quedan fuera por la primera estimación y los puntos finitos restantes por la elección del radio. Por tanto $x$ no es de acumulación. Si además $x\notin A$, la misma bola no contiene ningún punto de $A$ y excluye adherencia. Los puntos de $A$ sí son adherentes por pertenencia, y $0$ por los recíprocos. En consecuencia $\overline A=A\cup\{0\}$ y $\operatorname{Acc}(A)=\{0\}$.
+
+La [figura 8.4](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f03) ayuda a distinguir los tres conjuntos que se han calculado.
 
 ## 8.16. Cambios finitos del conjunto
 
@@ -186,7 +192,9 @@ Si $L$ es punto secuencial, cada bola alrededor de $L$ recibe infinitos índices
 
 []{#MA-SOL-ANM-01-008-018}
 
-La primera es $a_n=1/(n+1)$; converge a cero y sus puntos secuenciales son exactamente $\{0\}$. Para la segunda concatena los bloques $(1)$, $(1,1/2)$, $(1,1/2,1/3)$ y así sucesivamente. Esta regla define una sucesión porque las longitudes parciales de bloques crecen sin cota, de modo que cada índice cae en un bloque finito determinado. Cada $1/j$ aparece en todos los bloques de longitud al menos $j$, por tanto es punto secuencial. También cero lo es: dados radio y corte, elige un bloque suficientemente tardío y largo para contener un recíproco menor que el radio. No hay otros, pues todo punto secuencial es adherente a la imagen y la clausura de $A$ es $A\cup\{0\}$, demostrada mediante finitud local fuera de cero como en el ejercicio 8.15. La imagen por sí sola no fija las multiplicidades temporales.
+La primera es $a_n=1/(n+1)$; converge a cero y sus puntos secuenciales son exactamente $\{0\}$. Para la segunda, sea $B_m=m(m-1)/2$ el índice inicial del bloque de longitud $m\ge1$. Los naturales $B_m$ crecen estrictamente y sin cota, así que cada $n$ pertenece a un único bloque $B_m\le n<B_{m+1}$. Definimos $b_n=1/(n-B_m+1)$. Se obtienen los bloques $(1)$, $(1,1/2)$, $(1,1/2,1/3)$ y así sucesivamente; todos sus valores están en $A$, y cada $1/j$ aparece en el bloque $m=j$.
+
+Para un $j\ge1$ fijo y cualquier corte $N$, toma $m\ge\max\{j,N+2\}$. El índice $n=B_m+j-1\ge N$ tiene $b_n=1/j$, por lo que ese valor es punto secuencial. Para $0$, recibidos $\varepsilon>0$ y $N$, toma $m\ge N+2$ con $m>1/\varepsilon$. El último índice del bloque, $n=B_m+m-1\ge N$, tiene $0<b_n=1/m<\varepsilon$. Así también $0$ es punto secuencial. No hay otros, pues todo punto secuencial es adherente a la imagen y la clausura de $A$ es $A\cup\{0\}$, demostrada mediante finitud local fuera de cero como en el ejercicio 8.15. La imagen por sí sola no fija las multiplicidades temporales.
 
 ## 8.19. Una elección mal justificada
 
@@ -196,7 +204,7 @@ La primera es $a_n=1/(n+1)$; converge a cero y sus puntos secuenciales son exact
 
 Toma $A=(0,1)$, $L=0$ y $k=0$. La intersección es $(0,1)$ y no tiene menor elemento: si $x$ pertenece, $x/2$ es menor y también pertenece. La adherencia sólo garantiza no vacuidad. La reparación usa la función de elección $c$ sobre los subconjuntos no vacíos de $A$: $x_k=c(A\cap B(L,1/(k+1)))$. Entonces $|x_k-L|<1/(k+1)$ y el argumento arquimediano da convergencia. No hay que imponer a $A$ un orden con mínimos que el enunciado no ofrece.
 
-Tras resolver el problema, puede retomarse la [figura 8.4](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f03) para comparar el mecanismo con el ejemplo del capítulo.
+Los testigos elegidos se interpretan como aproximaciones al centro, como en la [figura 8.4](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f03); su existencia procede de adherencia y de la elección fijada.
 
 ## 8.20. Caracterizar los cerrados por límites
 
@@ -216,7 +224,7 @@ Si $F$ es cerrado y $x_n\in F$ converge a $L$, cada bola alrededor de $L$ contie
 
 Se obtiene $I_1=[-1,0]$, $I_2=[-1/2,0]$ e $I_3=[-1/4,0]$. En el primer paso la mitad izquierda contiene todos los índices impares. Para $I_2$, la otra mitad $[-1,-1/2]$ recibe sólo el índice uno; la mitad que llega a cero recibe todos los impares. Para $I_3$, $[-1/2,-1/4]$ recibe sólo los índices uno y tres, mientras que $[-1/4,0]$ recibe todos los impares desde tres. Compartir el extremo $-1/4$ no afecta la infinitud. La justificación general usa $1/(n+1)\to0$, no el recuento de los primeros puntos dibujados.
 
-Tras resolver el problema, puede retomarse la [figura 8.5](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f05) para comparar el mecanismo con el ejemplo del capítulo.
+La [figura 8.5](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f05) permite seguir el encajamiento; la reserva infinita se acredita con las desigualdades sobre los recíprocos.
 
 ## 8.22. Un invariante demasiado débil
 
@@ -226,7 +234,7 @@ Tras resolver el problema, puede retomarse la [figura 8.5](analisis-para-matemat
 
 Para $k\ge1$, $I_k\subseteq[-1/2,1/2]$ y sólo recibe el índice original cero. Por ello la pertenencia exigiría $n_k=0$ para todos los $k\ge1$, incompatible con crecimiento estricto. El punto común existe y es cero, pero no hay reserva infinita de índices alrededor de él. De hecho la sucesión converge a uno y cero no es punto secuencial. La condición «contiene algún término» no permite la extracción temporal.
 
-Tras resolver el problema, puede retomarse la [figura 8.5](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f05) para comparar el mecanismo con el ejemplo del capítulo.
+La condición de reserva de la [figura 8.5](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f05) excluye precisamente la reutilización de un único índice que haría fallar esta extracción.
 
 ## 8.23. Dividir en más partes
 
@@ -244,7 +252,7 @@ Los $m$ subintervalos cubren al anterior, aunque compartan extremos. Si cada con
 
 Toma $I_k=(0,1/(k+1))$. Son abiertos, no vacíos y encajados, y su anchura puede hacerse tan pequeña como se quiera por arquimedianidad. Un punto común tendría que ser positivo; para un $x>0$ fijado existe $k$ con $1/(k+1)<x$, por lo que $x\notin I_k$. Cero tampoco pertenece a ninguno. La intersección es vacía. Falla la hipótesis de intervalos cerrados en la interfaz de C03; la disminución de anchuras no reemplaza esa hipótesis.
 
-Tras resolver el problema, puede retomarse la [figura 8.5](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f05) para comparar el mecanismo con el ejemplo del capítulo.
+El carácter cerrado de los intervalos de la [figura 8.5](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f05) es esencial para garantizar el punto común.
 
 ## 8.25. El punto común como supremo
 
@@ -264,7 +272,7 @@ El conjunto de extremos izquierdos es no vacío y está acotado superiormente po
 
 Como $E_0=\mathbb N$, $n_0=0$. En $I_1=[-1,0]$ el primer índice posterior es uno; en $I_2=[-1/2,0]$ el primero posterior a uno es tres; en $I_3=[-1/4,0]$ el primero posterior a tres es cinco. Para $k\ge1$, la pertenencia de un término exige índice impar y $1/(n+1)\le2^{1-k}$, equivalente a $n\ge2^{k-1}-1$. Para $k=4$ ese primer impar admisible es siete, mayor que cinco; para $k=5$ es quince. Si la fórmula vale en algún $k\ge4$, el primer impar admisible en $I_{k+1}$ es $2^k-1$, mayor que $n_k$. La recursión de mínimos da la fórmula por inducción. Se obtiene $0,1,3,5,7,15$; la fórmula no debe extenderse a los primeros pasos, donde la condición de ser posterior puede dominar a la cota espacial.
 
-Tras resolver el problema, puede retomarse la [figura 8.6](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f06) para comparar el mecanismo con el ejemplo del capítulo.
+En la [figura 8.6](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f06) se separan la pertenencia al intervalo y la obligación de avanzar en los índices; ambas intervienen en estos mínimos.
 
 ## 8.27. Una extracción todavía más tardía
 
@@ -274,7 +282,7 @@ Tras resolver el problema, puede retomarse la [figura 8.6](analisis-para-matemat
 
 Cada conjunto admisible es no vacío porque $E_k$ es infinito y la nueva exigencia sólo excluye un prefijo finito. El mínimo existe por buen orden. Las elecciones mantienen $n_{k+1}>n_k$ y $a_{n_k}\in I_k$, así que forman una subsucesión. Dado $\varepsilon>0$, elige $K$ con $w_K<\varepsilon$. Para $k\ge K$, los puntos $a_{n_k}$ y $L$ siguen estando en $I_K$, de donde $|a_{n_k}-L|\le w_K<\varepsilon$. El tamaño de los saltos temporales no interviene en la estimación espacial.
 
-Tras resolver el problema, puede retomarse la [figura 8.6](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f06) para comparar el mecanismo con el ejemplo del capítulo.
+La estimación por anchura de la [figura 8.6](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f06) sigue funcionando al retrasar las elecciones de índices.
 
 ## 8.28. Lo que no promete la existencia
 
@@ -284,7 +292,7 @@ Tras resolver el problema, puede retomarse la [figura 8.6](analisis-para-matemat
 
 Toma $a_n=(-1)^n$. El selector $\varphi(k)=2k$ produce la constante uno. El selector $\psi(k)=k+1$ produce $b_k=(-1)^{k+1}$, cuyas selecciones par e impar son constantes menos uno y uno; por §8.2 y unicidad no converge. La primera sucesión difiere de $a$ en el índice uno y la segunda difiere ya en cero. Ambas son subsucesiones porque sus selectores crecen estrictamente. La existencia garantizada por el teorema no convierte toda elección en convergente.
 
-Tras resolver el problema, puede retomarse la [figura 8.2](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f02) para comparar el mecanismo con el ejemplo del capítulo.
+La [figura 8.2](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f02) permite contrastar lo que controla una selección con lo que permanece en la sucesión original.
 
 ## 8.29. Extracciones simultáneas
 
@@ -322,7 +330,7 @@ El conjunto $\{0,2\}$ es acotado y finito. En cada centro real una bola suficien
 
 La cota $|a_n|\le\max\{|u|,|v|\}$ permite aplicar Bolzano–Weierstrass. Si una extracción converge a $L$, el orden de límites da $u\le L\le v$; también puede usarse que el intervalo es cerrado. Esto incluye $u=v$, caso constante. Para $u<v$, define $a_n=u+(v-u)/(n+2)$. Sus valores están estrictamente entre $u$ y $v$ y converge a $u$, por las reglas de C06. Toda subsucesión tiene el mismo límite $u$ y por unicidad ninguna converge a un punto del intervalo abierto. El carácter cerrado decide si el destino permanece dentro.
 
-Tras resolver el problema, puede retomarse la [figura 8.7](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f07) para comparar el mecanismo con el ejemplo del capítulo.
+La [figura 8.7](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f07) distingue que exista un destino real de que pertenezca al conjunto que contiene los términos.
 
 ## 8.33. Conjunto cerrado acotado sin acumulación
 
@@ -353,7 +361,7 @@ $$
 <\frac1{\varphi(k)+1}+|x_{\varphi(k)}-L|.
 $$
 
-El primer sumando está acotado por $1/(k+1)$ y el segundo tiende a cero. Para cualquier tolerancia se hacen ambos menores que su mitad reuniendo los umbrales. Así $y_{\varphi(k)}\to L$; como $B$ es cerrado, $L\in B$, contradiciendo disjunción. No necesitábamos acotación global de $B$: la proximidad a la extracción de $A$ produjo la convergencia necesaria.
+El primer sumando está acotado por $1/(k+1)$ y el segundo tiende a cero. Para cualquier tolerancia se hacen ambos menores que su mitad reuniendo los umbrales. Así $y_{\varphi(k)}\to L$; como $B$ es cerrado, $L\in B$, contradiciendo $A\cap B=\varnothing$. No necesitábamos acotación global de $B$: la proximidad a la extracción de $A$ produjo la convergencia necesaria.
 
 ## 8.36. Toda extracción puede refinarse
 
@@ -373,7 +381,7 @@ Si $a_n\to L$, toda subsucesión ya converge a $L$ por §8.2 y la identidad sirv
 
 La selección par converge a $p$ y la impar a $q$, así que ambos son puntos secuenciales, posiblemente iguales. No hay otros: por el resultado de partición finita del ejercicio 8.14, cada punto secuencial proviene de una de esas dos selecciones, y una sucesión convergente sólo tiene su límite como punto secuencial. Por tanto el conjunto es $\{p,q\}$. La sucesión es acotada por $\max\{|p|,|q|\}+1$. Si $p=q$, el criterio de §8.8 da convergencia a ese valor; también sirve intercalar dos límites iguales. Si $p\ne q$, los dos destinos diferentes impiden convergencia.
 
-Tras resolver el problema, puede retomarse la [figura 8.8](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f08) para comparar el mecanismo con el ejemplo del capítulo.
+La [figura 8.8](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f08) sitúa el papel de acotación y unicidad del destino; aquí los dos límites se han identificado por paridades.
 
 ## 8.38. Un radio que depende del corte
 
@@ -383,7 +391,7 @@ Tras resolver el problema, puede retomarse la [figura 8.8](analisis-para-matemat
 
 Toma $a_n=1/(n+1)$ y $L=0$. Para cada $N$, el índice $n=N$ y el radio $\varepsilon_N=1/(N+1)$ cumplen la condición, aunque $a_n\to0$. Los radios pueden disminuir y no establecen un margen de error persistente. La negación correcta fija primero $\varepsilon_0>0$: para todo $N$ existe $n\ge N$ con $|a_n-L|\ge\varepsilon_0$. Con ese orden sí se construye una extracción cuyos términos nunca entran en una misma ventana, lo que refuta convergencia.
 
-Tras resolver el problema, puede retomarse la [figura 8.8](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f08) para comparar el mecanismo con el ejemplo del capítulo.
+La [figura 8.8](analisis-para-matematicos-capitulo-8-subsucesiones-acumulacion-y-bolzanoweierstrass.html#fig-anm-c08-f08) permite leer la refutación con una sola ventana fijada antes de todos los cortes.
 
 ## 8.39. Acercarse a un conjunto finito de destinos
 
@@ -399,7 +407,7 @@ Si falla para algún $\varepsilon_0>0$, hay términos después de todo corte fue
 
 []{#MA-SOL-ANM-01-008-040}
 
-Fija $t\in(p,q)$, una tolerancia $\varepsilon>0$ y un corte $N$. Elige $\eta>0$ menor que $\varepsilon$, $t-p$ y $q-t$. Existe $N_0\ge N$ tal que $|a_{n+1}-a_n|<\eta$ para $n\ge N_0$. Como $p$ es punto secuencial, hay $i\ge N_0$ con $|a_i-p|<\eta$, luego $a_i<t$. Como $q$ es punto secuencial, hay $j>i$ con $|a_j-q|<\eta$, luego $a_j>t$.
+Fija $t\in(p,q)$, una tolerancia $\varepsilon>0$ y un corte $N$. Toma $\eta=\min\{\varepsilon,t-p,q-t\}/2>0$; es menor que las tres cantidades. Existe $N_0\ge N$ tal que $|a_{n+1}-a_n|<\eta$ para $n\ge N_0$. Como $p$ es punto secuencial, hay $i\ge N_0$ con $|a_i-p|<\eta$, luego $a_i<t$. Como $q$ es punto secuencial, hay $j>i$ con $|a_j-q|<\eta$, luego $a_j>t$.
 
 En el conjunto finito de índices entre $i+1$ y $j$ existe un primer $r$ con $a_r\ge t$. Entonces $a_{r-1}<t\le a_r$ y $r-1\ge N_0$, por lo que $0\le a_r-t\le a_r-a_{r-1}<\eta<\varepsilon$. Además $r\ge N$. Hemos encontrado una visita a la bola de $t$ después de cualquier corte, así que $t$ es punto secuencial. El paso transferible es localizar el primer cruce: saltos pequeños impiden atravesar una altura sin acercarse a ella. La acotación pertenece al contexto de destinos de la sucesión, pero este argumento concreto sólo necesita los dos destinos y la condición sobre saltos.
 
