@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C02
-source-sha256: 754fc9dd8bca846764d6101dbaaa0949dd42c6fe334fc67eb5dc33d6a995c193
+source-sha256: 08461a8ae5eec754c1c0d61f2b6c7606ee58c26443dbb8551a05ca04a26a28e2
 content-id: MA-BCH-0333
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-02.html) · [Ejercicios](capitulo-02-ejercicios.html) · [Soluciones](capitulo-02-soluciones.html) · [Notas históricas](capitulo-02-notas.html)
+[Exposición](capitulo-02.html) · [Ejercicios](capitulo-02-ejercicios.html) · [Soluciones](capitulo-02-soluciones.html)
 
 [← Capítulo 1](capitulo-01.html) · [Capítulo 3 →](capitulo-03.html)
 
@@ -542,7 +542,6 @@ Hemos calculado cómo cambia una función cerca de un punto. Para relacionar esa
 - **De C01:** definición de derivada en punto interior, derivabilidad implica continuidad y caracterización por aproximación afín.
 - **Aportaciones de C02:** `EDC-C02-THM-001--007`, reglas y construcciones aquí demostradas; medida de ángulo en radianes como herramienta de geometría previa.
 - **No utilizado:** Rolle, teorema del valor medio, integración de Riemann, Teorema Fundamental, Taylor ni resultados generales de análisis funcional.
-- **Origen historiográfico de las notaciones y de las funciones:** [notas históricas y control de fuentes](capitulo-02-notas.html).
 
 ### Trabajo del lector
 

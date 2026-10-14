@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C03-SOLUCIONES
-source-sha256: 53506b4e77d814b0d72ded960267408c937e4e89e82345b95065fe9766dac092
+source-sha256: b74212144dcb6a3d1396e66f5638283cb51e8fb3428720408c24195fd56ac833
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-03.html) · [Ejercicios](capitulo-03-ejercicios.html) · [Soluciones](capitulo-03-soluciones.html) · [Notas históricas](capitulo-03-notas.html)
+[Exposición](capitulo-03.html) · [Ejercicios](capitulo-03-ejercicios.html) · [Soluciones](capitulo-03-soluciones.html)
 
 Cada entrada `EDC-C03-SOL-nnn` corresponde al ejercicio `EDC-C03-EXR-nnn`. Las soluciones se apoyan exclusivamente en los capítulos 0–3. Cuando una demostración emplea el teorema del valor medio, se comprueban su continuidad y derivabilidad sobre el intervalo pertinente.
 
@@ -355,7 +355,3 @@ $$
 Usamos aquí $|c-a|\le|b-a|$, porque $c$ es intermedio. Al sustituir la cota en la igualdad anterior obtenemos $|f(b)-f(a)-f'(a)(b-a)|\le M|b-a|^2$.
 
 La constante no tiene que ser óptima. Para $f(x)=x^2$ tenemos $|f''|=2$, pero el error exacto en torno a $a$ es $(b-a)^2$, igual a $M(b-a)^2/2$ si elegimos $M=2$. Cuando $a\ne b$, resulta estrictamente menor que la cota obtenida por las dos aplicaciones del valor medio. El resto de Taylor de C09 permitirá estudiar cotas más precisas.
-
----
-
-**Control de cobertura:** treinta ejercicios `EDC-C03-EXR-001--030` desarrollados con sus treinta entradas `EDC-C03-SOL-001--030`. Los problemas se apoyan en C00–C03, sin usar integrales, el Teorema Fundamental del Cálculo ni Taylor.

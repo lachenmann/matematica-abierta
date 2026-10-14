@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C00
-source-sha256: a54622b99f361de73875a337e017d6991d11a608ad939c7f69cf237d6fa844a4
+source-sha256: 3be078b456aa44a3b298219376e2e9cf10153a60d2093ca179cb74887113589b
 content-id: MA-BCH-0331
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-00.html) · [Ejercicios](capitulo-00-ejercicios.html) · [Soluciones](capitulo-00-soluciones.html) · [Notas históricas](capitulo-00-notas.html)
+[Exposición](capitulo-00.html) · [Ejercicios](capitulo-00-ejercicios.html) · [Soluciones](capitulo-00-soluciones.html)
 
 [Capítulo 1 →](capitulo-01.html)
 
@@ -438,7 +438,7 @@ El cociente incremental de $F$ reproduce, al pasar al límite, las alturas $x^2$
 
 ## 0.8. Un puente histórico y el camino que sigue
 
-Los problemas de cuadratura y los de tangentes no son invenciones de un curso moderno de cálculo. La cuadratura de regiones curvilíneas cuenta con antecedentes antiguos, entre ellos el estudio de Arquímedes del segmento parabólico. En la matemática europea de los siglos XVI y XVII se desarrollaron asimismo procedimientos para tangentes, cuadraturas y magnitudes variables; Newton y Leibniz fueron decisivos para articular parte de esas investigaciones en métodos generales, aunque con conceptos y lenguajes distintos de los actuales. Las [notas históricas](capitulo-00-notas.html) documentan los testimonios y las diferencias entre esos métodos. Los cálculos de este capítulo permiten comprender problemas que también interesaron a esos matemáticos, aunque para conocer sus respuestas tenemos que acudir a sus textos y examinar los recursos con los que trabajaban.
+Los problemas de cuadratura y los de tangentes no son invenciones de un curso moderno de cálculo. La cuadratura de regiones curvilíneas cuenta con antecedentes antiguos, entre ellos el estudio de Arquímedes del segmento parabólico. En la matemática europea de los siglos XVI y XVII se desarrollaron asimismo procedimientos para tangentes, cuadraturas y magnitudes variables; Newton y Leibniz fueron decisivos para articular parte de esas investigaciones en métodos generales, aunque con conceptos y lenguajes distintos de los actuales. Los cálculos de este capítulo permiten comprender problemas que también interesaron a esos matemáticos, aunque para conocer sus respuestas tenemos que acudir a sus textos y examinar los recursos con los que trabajaban.
 
 Nuestro orden de estudio responde a las dependencias de las demostraciones: comenzamos por el límite porque permite justificar los procedimientos que construiremos después. La historia recorrió otros caminos, y muchas cuadraturas, técnicas de tangentes y expansiones en serie precedieron a las definiciones con las que hoy las examinamos. Podemos aprender de esas investigaciones sin hacerlas hablar con nuestras palabras: el agotamiento geométrico, los indivisibles y las fluxiones merecen entenderse dentro de sus propios argumentos, mientras que las pruebas con $\varepsilon$ y $\delta$ que ofrecemos aquí pertenecen a la exposición moderna.
 
@@ -466,6 +466,6 @@ En los dos cálculos con la parábola ya podemos justificar qué significa el va
 - **Fundamento adoptado:** axiomas de cuerpo ordenado y completitud de $\mathbb R$, aritmética de $\mathbb N$ e identidades algebraicas finitas. No se utiliza derivación, integración, Taylor, teorema de Rolle ni Teorema Fundamental.
 - **Resultados derivados:** `EDC-C00-THM-001` → `EDC-C00-THM-002` y `EDC-C00-THM-003` → `EDC-C00-THM-004`; `EDC-C00-THM-005` y `EDC-C00-PRP-002` permiten transportar límites/continuidad; `EDC-C00-THM-006--008` requieren continuidad y completitud en intervalos cerrados de la recta.
 - **Uso posterior:** C01 y C02 usarán límites y continuidad; C03, valores extremos; C04–C05, completitud, extremos y continuidad uniforme; C06, lo anterior junto con la teoría diferencial e integral ya construida.
-- **Lecturas complementarias:** Gabor Toth, *Elements of Mathematics* (2021), lectura previa o paralela recomendada; otras fuentes históricas documentadas en [Notas históricas del capítulo 0](capitulo-00-notas.html). Ninguna de estas lecturas es requisito para validar las demostraciones presentes.
+- **Lecturas complementarias:** Gabor Toth, *Elements of Mathematics* (2021), lectura previa o paralela recomendada. Ninguna de estas lecturas es requisito para validar las demostraciones presentes.
 
 **Trabajo del lector.** Los [ejercicios de este capítulo](capitulo-00-ejercicios.html) desarrollan la lectura precisa de cuantificadores, la búsqueda de contraejemplos, el uso de completitud y la interpretación de sumas y cocientes. Sus desarrollos completos están separados en [soluciones](capitulo-00-soluciones.html) para no interrumpir la exposición.

@@ -6,7 +6,7 @@ import argparse,re,json,collections,xml.etree.ElementTree as ET
 root=Path(__file__).resolve().parents[1]
 folder=root/'libros/otros/elementos-del-calculo'
 parser=argparse.ArgumentParser();parser.add_argument('--site-dir',type=Path);args=parser.parse_args()
-files=list(folder.glob('*.md'))+list(folder.glob('*.qmd'));assert len(files)==56
+files=list(folder.glob('*.md'))+list(folder.glob('*.qmd'));assert len(files)==44
 exc=sol=0;ids=[]
 for f in files:
  text=f.read_text();assert '[[' not in text and 'drive.google.com' not in text
@@ -75,4 +75,4 @@ if args.site_dir:
   errors=verify_html_figure(site,root,json.loads(manifest.read_text()))
   assert not errors,errors
  print('EDC C9: 14 figure placements, captions, alt and SHA-256 PASS')
-print('EDC structure: 56 pages, 12 chapters, 338 exercise/solution pairs, 7 SVG, 13 IDs PASS')
+print('EDC structure: 44 pages, 12 chapters, 338 exercise/solution pairs, 7 SVG, 13 IDs PASS')

@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC_ITINERARIOS_DE_LECTURA
-source-sha256: 3f6be10ac07543428d77fadf14a5d5331f984ec35562056236757dd7fda9566a
+source-sha256: 37c8ccff1049e36cb6445c7418ca778fba226518aa7e6f89a3951ab9e39866f4
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
@@ -94,11 +94,3 @@ source-sha256: 3f6be10ac07543428d77fadf14a5d5331f984ec35562056236757dd7fda9566a
 | 14 | Dos certificados del mismo resultado, INV-C11-01 | Síntesis: error, dominio, cuantificadores e historia |
 
 **Trabajo del coordinador:** invitar al grupo a usar los dibujos para proponer una conjetura y después buscar el argumento que la sostiene. Cuando aparezca una respuesta numérica, pedir una cota o una prueba que permita decidir su alcance. Las conexiones históricas se apoyarán en las fuentes indicadas y se distinguirán de las reconstrucciones hechas por el grupo.
-
-## Correspondencia con el Prefacio de Toth
-
-Esta guía refuerza cuatro propósitos identificados en las pp. vii–xi del prefacio de *Elements of Mathematics*: preguntas exigentes; claridad sin artificios; conexiones entre campos; y la posibilidad de usar ciertos problemas en círculos o cursos avanzados. Los recorridos son **propuestas propias de Matemática Abierta**, no planes atribuidos a Toth ni actividades aprobadas por su autor.
-
----
-
-**Estado editorial:** guía complementaria para la futura edición pública; no altera los doce capítulos ni sus 338 parejas originales. No constituye por sí sola prueba de adecuación didáctica a lectores reales: esa validación requerirá sesiones piloto.

@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C01-SOLUCIONES
-source-sha256: 7db738e2eaa047469cfe5a322cefe9f1c256b3ba0506307fbc76abbd6a3c2b5e
+source-sha256: db989437bca1d551385c42e9b38df4829144b1f6bf1241526effad22afa96235
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-01.html) · [Ejercicios](capitulo-01-ejercicios.html) · [Soluciones](capitulo-01-soluciones.html) · [Notas históricas](capitulo-01-notas.html)
+[Exposición](capitulo-01.html) · [Ejercicios](capitulo-01-ejercicios.html) · [Soluciones](capitulo-01-soluciones.html)
 
 Estas resoluciones corresponden uno a uno a los [22 enunciados del capítulo](capitulo-01-ejercicios.html). Se usa el criterio de límite, continuidad y operaciones algebraicas de C00; no se emplean como caja negra las reglas generales de derivación de C02.
 
@@ -252,7 +252,3 @@ $$
 - Si $c<b^2$, hay dos soluciones reales distintas $a=b\pm\sqrt{b^2-c}$ y, por tener pendientes distintas $2a$, dos rectas tangentes diferentes.
 
 El parámetro que buscamos era la abscisa de tangencia, y cada solución determina una recta por su pendiente $2a$. Completar el cuadrado convirtió el número de posibles tangentes en el problema de contar números cuyo cuadrado es $b^2-c$. La clasificación depende de la parábola: la distancia vertical entre su gráfica y la tangente en $a$ es $(x-a)^2$, que sólo se anula en ese punto. Otras curvas pueden atravesar su tangente o volver a encontrarla lejos del punto, como muestran los ejemplos de la solución 1.15.
-
----
-
-**Control de dependencias.** Las soluciones se apoyan exclusivamente en límites y continuidad de C00 y en las definiciones y propiedades probadas dentro de C01. Cada inciso planteado recibe una respuesta, y los 22 IDs `EDC-C01-SOL-001--022` corresponden a los 22 `EXR-001--022`.

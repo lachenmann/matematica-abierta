@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C04
-source-sha256: 0752dc4998f65359947a7118912ef960b89c4d4beb3576ec1578209dceef0e3d
+source-sha256: 4c9a2b25122a2a29afd7131ca9d63ef853ce686da84c10ec52c0a72e5740215b
 content-id: MA-BCH-0335
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-04.html) · [Ejercicios](capitulo-04-ejercicios.html) · [Soluciones](capitulo-04-soluciones.html) · [Notas históricas](capitulo-04-notas.html)
+[Exposición](capitulo-04.html) · [Ejercicios](capitulo-04-ejercicios.html) · [Soluciones](capitulo-04-soluciones.html)
 
 [← Capítulo 3](capitulo-03.html) · [Capítulo 5 →](capitulo-05.html)
 
@@ -70,7 +70,7 @@ $$
 
 por el principio arquimediano (`EDC-C00-THM-001`). En efecto, el denominador supera cualquier cantidad fijada al elegir $n$ suficientemente grande, y por tanto podemos hacer que la fracción sea menor que una tolerancia $\varepsilon>0$. Ese mismo control vale para todos los índices posteriores y proporciona el $N$ requerido. $\square$
 
-En la Proposición X.1 de los *Elementos*, Euclides compara dos magnitudes y disminuye reiteradamente la mayor, retirando más de la mitad de lo que queda hasta dejar un residuo menor que la magnitud dada. Nuestro lema expresa en sucesiones de números reales una forma de control que permite comprender esa lógica de agotamiento. El texto histórico y el alcance de la comparación se recogen en las [notas históricas H1](capitulo-04-notas.html).
+En la Proposición X.1 de los *Elementos*, Euclides compara dos magnitudes y disminuye reiteradamente la mayor, retirando más de la mitad de lo que queda hasta dejar un residuo menor que la magnitud dada. Nuestro lema expresa en sucesiones de números reales una forma de control que permite comprender esa lógica de agotamiento.
 
 **Proposición 4.1 (`EDC-C04-PRP-001`; unicidad por encaje).** Sean $L_n\le U_n$ números reales para cada $n\ge1$, y supongamos que $U_n-L_n\to0$. Si dos números $A,B$ satisfacen $L_n\le A,B\le U_n$ para todo $n$, entonces $A=B$.
 
@@ -189,7 +189,7 @@ La fórmula se extiende a todo arco de parábola que sea la gráfica de un polin
 
 La *Cuadratura de la parábola* combina una investigación mecánica con una demostración geométrica y culmina en el resultado de los cuatro tercios. Nuestro argumento conserva ese problema como centro, pero trabaja con coordenadas, diferencias de polinomios y límites de sucesiones. La recurrencia permite calcular lo añadido, y las cubiertas exteriores justifican el paso desde los polígonos a un valor de área para este segmento.
 
-La carta a Dositeo que precede al tratado permite acercarse al modo en que Arquímedes presentó su trabajo. El testimonio traducido y los límites del cotejo se registran en [H2](capitulo-04-notas.html). La definición de un área para funciones más generales requerirá otra construcción, capaz de comparar todas las particiones relevantes.
+La carta a Dositeo que precede al tratado permite acercarse al modo en que Arquímedes presentó su trabajo. La definición de un área para funciones más generales requerirá otra construcción, capaz de comparar todas las particiones relevantes.
 
 ::: {.callout-note appearance="simple" icon="false" collapse="false" title="Historia — Arquímedes: el área que faltaba"}
 *Lectura opcional.*
@@ -361,7 +361,7 @@ Cada partición fina produce dos sumas muy próximas, y cualquier elección de m
 
 ## 4.10. Cavalieri y el problema de los indivisibles
 
-Podemos comparar dos figuras mirando las secciones que producen líneas o planos paralelos. Una superficie se examina entonces mediante longitudes de cortes; un sólido, mediante áreas de secciones. Los procedimientos de indivisibles de Cavalieri dirigieron la atención a esas familias de cortes y permitieron abordar problemas de cuadratura desde otra perspectiva. Su *Geometria indivisibilibus continuorum nova quadam ratione promota* apareció en 1635; la recepción de sus métodos y las fuentes consultadas se registran en [H4](capitulo-04-notas.html).
+Podemos comparar dos figuras mirando las secciones que producen líneas o planos paralelos. Una superficie se examina entonces mediante longitudes de cortes; un sólido, mediante áreas de secciones. Los procedimientos de indivisibles de Cavalieri dirigieron la atención a esas familias de cortes y permitieron abordar problemas de cuadratura desde otra perspectiva. Su *Geometria indivisibilibus continuorum nova quadam ratione promota* apareció en 1635.
 
 La imagen de las secciones sugiere cómo una información distribuida por toda la figura puede determinar su magnitud. Para convertirla en una prueba hacen falta reglas que permitan reunir esa información: la aditividad finita de polígonos que hemos utilizado no define por sí sola una suma de todas las líneas de una superficie. Nuestras aproximaciones usan piezas de anchura positiva y controlan el resto al hacer pequeñas esas anchuras.
 
@@ -374,7 +374,7 @@ Los indivisibles de Cavalieri, expuestos en su *Geometria* de 1635, llevaron esa
 
 En nuestras sumas, cada rectángulo conserva una anchura y aporta un área finita. Al refinar la partición podemos estudiar cómo se reúne la información de muchos tramos y cuánto depende el resultado de las alturas elegidas. Esa pregunta da contenido matemático a la imagen de las rebanadas.
 
-**Para seguir leyendo:** [MacTutor, «Bonaventura Francesco Cavalieri», pasajes sobre indivisibles y secciones](https://mathshistory.st-andrews.ac.uk/Biographies/Cavalieri/); notas históricas del capítulo 4, H4.
+**Para seguir leyendo:** [MacTutor, «Bonaventura Francesco Cavalieri», pasajes sobre indivisibles y secciones](https://mathshistory.st-andrews.ac.uk/Biographies/Cavalieri/).
 :::
 
 ## 4.11. El obstáculo: dos familias de rectángulos incompatibles
@@ -395,7 +395,6 @@ La función de Dirichlet muestra por qué una definición general deberá pedir 
 - **De C01–C03:** la derivada de polinomios y el teorema del valor medio se emplean sólo en el laboratorio especial de potencias (§4.7); la convexidad caracteriza la posición de una curva respecto de su cuerda (§4.8). Los argumentos de agotamiento parabólico no precisan cálculo diferencial.
 - **Aportaciones de C04:** `EDC-C04-THM-001--004`, `EDC-C04-LEM-001--003` y `EDC-C04-PRP-001--003`, más las aproximaciones rectangulares y su interpretación geométrica.
 - **Expresamente no utilizado:** definición general de integral de Riemann–Darboux, Teorema Fundamental, cálculo de primitivas como cuadratura general, series de funciones o teoría de medida.
-- **Fuentes históricas:** [Notas del capítulo 4](capitulo-04-notas.html), distinguiendo testimonio antiguo traducido, historiografía leída y libros localizados sin lectura directa.
 
 ### Trabajo del lector
 

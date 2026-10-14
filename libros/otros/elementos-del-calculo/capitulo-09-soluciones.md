@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C09-SOLUCIONES
-source-sha256: 4dc909ee2b8d9ea34bd9e078f537dcab7c2ebd59d86babc057237dc7442174c3
+source-sha256: 29b43b6719e9d958887a91749512918bddb247db51196b61259671003bdcefdf
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-09.html) · [Ejercicios](capitulo-09-ejercicios.html) · [Soluciones](capitulo-09-soluciones.html) · [Notas históricas](capitulo-09-notas.html)
+[Exposición](capitulo-09.html) · [Ejercicios](capitulo-09-ejercicios.html) · [Soluciones](capitulo-09-soluciones.html)
 
 Las soluciones se escriben en correspondencia biunívoca con [los ejercicios de C09](capitulo-09-ejercicios.html). Se distingue el **resto finito** de un límite de restos cuando el orden crece. Se invocan únicamente C00–C09; el Teorema Fundamental, la integral de Darboux y las operaciones locales con series de potencias ya han sido establecidos.
 
@@ -433,7 +433,3 @@ $$
 $$
 
 (c) La estimación controla el orden tres en todo el segmento. Para representar una función mediante su serie necesitamos controlar la sucesión de restos al aumentar el orden en cada punto fijado. El Teorema 9.7 aporta esa condición: $R_n(x)\to0$ cuando $n\to\infty$. La existencia de una sola cota finita no decide el límite, y la función plana muestra que incluso tener todas las derivadas y buenas aproximaciones cerca del centro para cada orden puede dejar un resto fijo positivo fuera de él.
-
----
-
-**Cobertura:** `EDC-C09-SOL-001--030` responde uno a uno a `EDC-C09-EXR-001--030`. Se verifican dominios, justificación de series, hipótesis del resto y orientación de las integrales, sin invocar resultados de C10 ni C11.

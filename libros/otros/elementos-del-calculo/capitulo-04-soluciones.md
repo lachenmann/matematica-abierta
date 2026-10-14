@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C04-SOLUCIONES
-source-sha256: de122b8f0f58a41ae6973d4f0aa72c54c090ee99478cc6dda5b609699939ef71
+source-sha256: 4942b0726b59436bf980389ab624142a721355a507ef1b0f6045359b64dd9cbb
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-04.html) · [Ejercicios](capitulo-04-ejercicios.html) · [Soluciones](capitulo-04-soluciones.html) · [Notas históricas](capitulo-04-notas.html)
+[Exposición](capitulo-04.html) · [Ejercicios](capitulo-04-ejercicios.html) · [Soluciones](capitulo-04-soluciones.html)
 
 Las soluciones son demostraciones y cálculos propios correspondientes a los treinta ejercicios del capítulo. Se usan únicamente resultados de C00–C04 y geometría elemental de polígonos. La noción general de integral todavía no interviene.
 
@@ -395,7 +395,3 @@ $$
 $$
 
 El candidato es $1/3+\lambda/6$. Para cada $\lambda$ fijo, la constante $|1-\lambda|+\lambda$ es finita y la cota tiende a cero cuando la finura tiende a cero. No depende del número de subintervalos ni de las muestras, por lo que todas las elecciones convergen al mismo candidato. La afirmación es para cada parámetro fijo; no exige una cota común a todos los valores ilimitados de $\lambda$.
-
----
-
-**Control de cobertura:** `EDC-C04-SOL-001--030` corresponde biunívocamente a `EDC-C04-EXR-001--030`. Las pruebas geométricas usan sólo propiedades de áreas poligonales; los resultados de derivadas y valor medio se emplean únicamente allí donde el enunciado lo indica expresamente. Ninguna respuesta se obtiene invocando C05 o C06.

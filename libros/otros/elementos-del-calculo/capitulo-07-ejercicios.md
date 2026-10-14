@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C07-EJERCICIOS
-source-sha256: cf173c11db642879f7eeb6c60fa641de5bb1351ad0edd425b7c367fd8e1255da
+source-sha256: d00820b49148f101edf5013a29ce3e31ef8b6819129983d9b9568b82dad38ff9
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-07.html) · [Ejercicios](capitulo-07-ejercicios.html) · [Soluciones](capitulo-07-soluciones.html) · [Notas históricas](capitulo-07-notas.html)
+[Exposición](capitulo-07.html) · [Ejercicios](capitulo-07-ejercicios.html) · [Soluciones](capitulo-07-soluciones.html)
 
 Cada enunciado se resuelve utilizando sólo los capítulos C00–C07. Salvo indicación expresa, las integrales son propias, sobre intervalos cerrados donde el integrando está definido. Para las primitivas indefinidas deben identificarse los componentes del dominio y la constante; para las integrales definidas, comprobarse la orientación y los extremos. Las soluciones completas están en [un archivo independiente](capitulo-07-soluciones.html).
 
@@ -107,7 +107,3 @@ $$
 $$
 
 Utilice sustitución, integración por partes y fracciones parciales, respectivamente, para los tres sumandos; controle continuidad, positividad de los argumentos logarítmicos y extremos. Verifique el resultado final por diferenciación de una primitiva explícita.
-
----
-
-**Correspondencia editorial:** Los treinta identificadores `EDC-C07-EXR-001--030` tienen desarrollos únicos `EDC-C07-SOL-001--030` en [las soluciones del capítulo 7](capitulo-07-soluciones.html).

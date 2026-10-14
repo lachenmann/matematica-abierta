@@ -21,12 +21,12 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C07-SOLUCIONES
-source-sha256: fc652662bd3708cb2183dc6bb4285f0a786faac59bdc686ff7fb81dc922d9ed6
+source-sha256: 005cb3834c69d4308ed234c4ed3056a3a3f935a43cb320728e2641185707e1bd
 ---
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-07.html) · [Ejercicios](capitulo-07-ejercicios.html) · [Soluciones](capitulo-07-soluciones.html) · [Notas históricas](capitulo-07-notas.html)
+[Exposición](capitulo-07.html) · [Ejercicios](capitulo-07-ejercicios.html) · [Soluciones](capitulo-07-soluciones.html)
 
 Las siguientes soluciones corresponden, una por una, a [los treinta ejercicios del capítulo](capitulo-07-ejercicios.html). Se han utilizado únicamente resultados demostrados en C00–C07. Los cálculos no se separan de sus hipótesis: las funciones racionales se integran sobre intervalos que evitan sus polos, las fórmulas de sustitución conservan extremos orientados y las integrales definidas son propias.
 
@@ -510,7 +510,3 @@ G(x)=e^{x^2}+\frac12\bigl[(1+x^2)\ln(1+x^2)-(1+x^2)\bigr]
 $$
 
 La cadena da $2xe^{x^2}$ en el primer término. Si $u=1+x^2$, derivar $[u\ln u-u]/2$ deja $u'\ln u/2=x\ln(1+x^2)$: los términos $u'/2$ se cancelan. Los logaritmos finales aportan $1/(x+1)-1/(x+2)$, que es la fracción original. Así $G'$ coincide con todo el integrando sobre un intervalo abierto que contiene $[0,1]$, y $G(1)-G(0)$ confirma la evaluación anterior.
-
----
-
-**Control de cobertura:** `EDC-C07-SOL-001--030` responde uno a uno a `EDC-C07-EXR-001--030`, incluidos los incisos conceptuales, los dominios, la orientación y las demostraciones. Los tres procedimientos se justifican desde C00–C07, sin apelar a series de potencias, Taylor o integrales impropias.

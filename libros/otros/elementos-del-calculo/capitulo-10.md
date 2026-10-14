@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C10
-source-sha256: 7ed6e4a8df76643a07880f88027d114d9dd4f7e5dbc4ea1c37da8497e2d48552
+source-sha256: 46bec6735e22422b5bdf25229961a68d07515fd3dcce067fe816abee29bcf6c0
 content-id: MA-BCH-0341
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-10.html) · [Ejercicios](capitulo-10-ejercicios.html) · [Soluciones](capitulo-10-soluciones.html) · [Notas históricas](capitulo-10-notas.html)
+[Exposición](capitulo-10.html) · [Ejercicios](capitulo-10-ejercicios.html) · [Soluciones](capitulo-10-soluciones.html)
 
 [← Capítulo 9](capitulo-09.html) · [Capítulo 11 →](capitulo-11.html)
 
@@ -288,7 +288,7 @@ Cuando $t\to\infty$, el factor exponencial tiende a cero y el denominador a uno,
 
 **Demostración.** Los valores constantes anulan el campo. Para $y_0<0$, $A=K/y_0-1<-1$ y $1+A e^{-r(t-t_0)}=0$ cuando $t=t_0+(\ln(-A))/r>t_0$. En el intervalo desde $t_0$ hasta ese tiempo sin incluirlo la fórmula satisface la EDO; no puede prolongarse por ella a través del denominador nulo. $\square$
 
-Los parámetros $r$ y $K$ no son conclusiones matemáticas extraídas de un censo: son hipótesis de un modelo que debe verificarse por otros medios. La curva logística está asociada a los estudios poblacionales decimonónicos de Verhulst; las fechas y el alcance histórico se precisan en [las notas](capitulo-10-notas.html).
+Los parámetros $r$ y $K$ no son conclusiones matemáticas extraídas de un censo: son hipótesis de un modelo que debe verificarse por otros medios. La curva logística está asociada a los estudios poblacionales decimonónicos de Verhulst.
 
 <figure id="fig-edc-c10-01" class="quarto-float-fig">
 <img src="/assets/books/elementos-del-calculo/EDC-C10-F01_TRAYECTORIAS_LOGISTICAS.svg" alt="Dos soluciones logísticas positivas con K=1,2: una crece desde y0=0,23 y otra decrece desde y0=1,85 hacia la recta de equilibrio y=K.">
@@ -383,7 +383,7 @@ Tras un paso, el punto calculado puede estar fuera de la trayectoria exacta. En 
 
 ## 10.12. Del problema inverso de tangentes a la teoría de las trayectorias
 
-El problema inverso de tangentes reúne geométricamente lo que hemos estudiado: una ley prescribe la pendiente que debe tener una curva, y un punto inicial debe ayudarnos a reconstruirla. Los trabajos de Newton, Leibniz, los Bernoulli y Euler enlazaron estas preguntas con la mecánica y el cálculo. Las [notas históricas](capitulo-10-notas.html) documentan los testimonios consultados y distinguen esos problemas de las demostraciones modernas usadas aquí.
+El problema inverso de tangentes reúne geométricamente lo que hemos estudiado: una ley prescribe la pendiente que debe tener una curva, y un punto inicial debe ayudarnos a reconstruirla. Los trabajos de Newton, Leibniz, los Bernoulli y Euler enlazaron estas preguntas con la mecánica y el cálculo.
 
 La elección de una curva resulta tan importante como el cálculo que permite escribirla. Para las ecuaciones lineales, el factor integrante mostró que cualquier solución está obligada a satisfacer una misma fórmula una vez fijado el dato. En la separación de variables hubo que escoger una rama donde existiese la inversa. La raíz cuadrada permitió tiempos de espera distintos en un equilibrio, mientras la logística mostró que una fórmula puede divergir en tiempo finito para ciertos datos. Estos ejemplos dan contenido preciso a las preguntas por existencia, unicidad e intervalo de definición.
 
@@ -398,4 +398,4 @@ El oscilador añadió otra forma de comparar trayectorias: una cantidad conserva
 - **Resultados originales de C10:** `EDC-C10-THM-001--010`, `LEM-001--002`, `PRP-001--004`, `DEF-001--003`, `COR-001--002`.
 - **Fuera del alcance:** teorema general de existencia de Peano, Picard–Lindelöf como teorema demostrado, problemas de frontera de orden alto, sistemas y EDP, teoría de control, estabilidad no lineal global y análisis funcional.
 
-Los [treinta ejercicios](capitulo-10-ejercicios.html) desarrollan el diagnóstico de hipótesis, la construcción explícita de trayectorias, la unicidad, los equilibrios, los modelos y el error de aproximación. Las [soluciones](capitulo-10-soluciones.html) se presentan de forma separada, cada una con su identificador propio y comprobación por sustitución cuando corresponde. La [documentación histórica](capitulo-10-notas.html) conserva referencias, niveles de acceso y límites de atribución.
+Los [treinta ejercicios](capitulo-10-ejercicios.html) desarrollan el diagnóstico de hipótesis, la construcción explícita de trayectorias, la unicidad, los equilibrios, los modelos y el error de aproximación. Las [soluciones](capitulo-10-soluciones.html) se presentan de forma separada, cada una con su identificador propio y comprobación por sustitución cuando corresponde.

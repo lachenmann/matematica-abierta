@@ -21,7 +21,7 @@ provenance:
     - role: idea
       note: 'Inspiración metodológica: Gabor Toth, Elements of Mathematics (2021); obra independiente.'
 source-id: EDC-C11
-source-sha256: ca6e7894c7cafdce5191fb0cd8f3c46a592e44b756a77bd4ca5886855bf47006
+source-sha256: fb62829c0a404c304c331bba7d9bd9ce5698e225d69867dc60ded5b8bcd58c29
 content-id: MA-BCH-0342
 content-type: book-chapter
 related:
@@ -30,7 +30,7 @@ related:
 
 [Índice del libro](index.html) · [Prefacio](prefacio.html) · [Itinerarios](itinerarios.html)
 
-[Exposición](capitulo-11.html) · [Ejercicios](capitulo-11-ejercicios.html) · [Soluciones](capitulo-11-soluciones.html) · [Notas históricas](capitulo-11-notas.html)
+[Exposición](capitulo-11.html) · [Ejercicios](capitulo-11-ejercicios.html) · [Soluciones](capitulo-11-soluciones.html)
 
 [← Capítulo 10](capitulo-10.html)
 
@@ -209,7 +209,7 @@ Los comentarios de Liu Hui a los *Nueve capítulos sobre el arte matemático*, f
 
 En Kerala, al sur de la India, la historia de las series presenta además una dificultad textual. Resultados trigonométricos atribuidos a Madhava, de fines del siglo XIV y comienzos del XV, se conocen mediante obras posteriores de su escuela. Al expresarlos en nuestra notación reconocemos identidades relacionadas con las que hemos estudiado para la arctangente y otras funciones. Para comprender cómo se obtenían y justificaban, necesitamos atender a los textos transmitidos y a las explicaciones de los autores posteriores, en lugar de tomar una fórmula moderna como reproducción de un manuscrito de Madhava.
 
-La acumulación y el refinamiento de aproximaciones dieron lugar a investigaciones en tradiciones distintas. Comparar sus problemas permite ampliar la lectura del cálculo; establecer relaciones históricas entre ellas requiere examinar testimonios y cronologías. Las [las notas históricas H1–H3](capitulo-11-notas.html) registran las fuentes de estas aproximaciones y el alcance documental de la comparación.
+La acumulación y el refinamiento de aproximaciones dieron lugar a investigaciones en tradiciones distintas. Comparar sus problemas permite ampliar la lectura del cálculo; establecer relaciones históricas entre ellas requiere examinar testimonios y cronologías.
 
 ## 11.9. La síntesis moderna: tangente, cuadratura y movimiento
 
@@ -271,11 +271,10 @@ Podemos reunir las conexiones demostradas a lo largo del libro junto con las con
 
 Cada paso de este recorrido hace posible una nueva pregunta. La derivada describe un cambio local; el valor medio lo extiende a una comparación entre puntos; la integral acumula una tasa, y el Teorema Fundamental permite recuperar la función. Las series y los restos introducen aproximaciones que podemos controlar, mientras las ecuaciones diferenciales muestran cómo una relación de cambio puede determinar una trayectoria. La unidad del cálculo vive en esas relaciones demostradas.
 
-Los [treinta ejercicios de síntesis](capitulo-11-ejercicios.html) y sus [treinta soluciones separadas](capitulo-11-soluciones.html) vuelven sobre los puntos donde una inferencia puede perder su justificación: el dominio de una fórmula, la condición que permite derivarla o integrarla, el límite que debe alcanzarse y el dato que selecciona una función. Las [notas H1–H9](capitulo-11-notas.html) acompañan el recorrido histórico con sus fuentes y límites de lectura. La auditoría transversal posterior revisará la coherencia editorial de los doce capítulos como conjunto.
+Los [treinta ejercicios de síntesis](capitulo-11-ejercicios.html) y sus [treinta soluciones separadas](capitulo-11-soluciones.html) vuelven sobre los puntos donde una inferencia puede perder su justificación: el dominio de una fórmula, la condición que permite derivarla o integrarla, el límite que debe alcanzarse y el dato que selecciona una función.
 
 ### Dependencias y límites editoriales
 
 - **Resultados usados:** C00–C10, en particular C03 (valor medio), C05 (Darboux), C06 (Teorema Fundamental), C08 (series), C09 (Taylor) y C10 (EDO).
 - **Aportaciones demostradas de C11:** cinco teoremas `EDC-C11-THM-001--005`, cinco proposiciones `PRP-001--005`, dos lemas `LEM-001--002`, dos corolarios `COR-001--002` y una definición `DEF-001`.
 - **Resultados no reivindicados:** teoría de medida, convergencia uniforme general, Picard–Lindelöf completo, integración de Lebesgue, EDP, cálculo multivariable y análisis funcional.
-- **Frontera editorial:** el cierre sustantivo de C11 no equivale por sí solo a auditoría transversal completa, edición web ni pruebas tipográficas de un volumen integral.
