@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0017 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0343 |
+| Capítulo | MA-BCH-0347 |
 | Curso | MA-CRS-0002 |
 | Libro | MA-BOK-0016 |
 
@@ -535,3 +535,7 @@ Se conservan los IDs y URLs publicados de C00–C05. Se incorporan C06–C31, su
 | MA-BCH-0340 | book-chapter | Capítulo 9. Newton, Taylor y el problema del error | libros/otros/elementos-del-calculo/capitulo-09.md | published; EDC-C09 |
 | MA-BCH-0341 | book-chapter | Capítulo 10. De las leyes de cambio a las ecuaciones diferenciales | libros/otros/elementos-del-calculo/capitulo-10.md | published; EDC-C10 |
 | MA-BCH-0342 | book-chapter | Capítulo 11. El cálculo como teoría: alcance, historia y fundamentos | libros/otros/elementos-del-calculo/capitulo-11.md | published; EDC-C11 |
+| MA-BCH-0343 | book-chapter | Capítulo 12. ¿Cómo puede una colección convertirse en un número? | libros/capitulos/fundamentos-para-matematicos-capitulo-12-construccion-de-los-naturales.qmd | published; FND-C12 |
+| MA-BCH-0344 | book-chapter | Capítulo 13. ¿De dónde salen los enteros? | libros/capitulos/fundamentos-para-matematicos-capitulo-13-construccion-de-los-enteros.qmd | published; FND-C13 |
+| MA-BCH-0345 | book-chapter | Capítulo 14. ¿Por qué las fracciones forman un cuerpo ordenado? | libros/capitulos/fundamentos-para-matematicos-capitulo-14-construccion-de-los-racionales.qmd | published; FND-C14 |
+| MA-BCH-0346 | book-chapter | Epílogo de Fundamentos para matemáticos: Cuando la aproximación pide nuevos números | libros/capitulos/fundamentos-para-matematicos-epilogo-reales.qmd | published; FND-EPILOGUE |
