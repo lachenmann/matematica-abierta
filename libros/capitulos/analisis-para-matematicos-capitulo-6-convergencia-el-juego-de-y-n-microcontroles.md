@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Soluciones de microcontroles — Capítulo 6
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 provenance:
   type: original
   sources:
@@ -94,7 +94,7 @@ Con la convención de índice inicial 0, tenemos $b_0=9$, $b_1=-4$ y $b_n=1$ des
 
 []{#MA-MSOL-ANM-01-006-007}
 
-La tabla sólo muestra finitos índices, mientras que una captura exige controlar todos los índices posteriores al corte. Además, sólo comprueba las tolerancias que aparecen en ella, mientras que la definición exige responder a cualquier real positivo. Una fórmula de error y una estimación general pueden cerrar ambas obligaciones; la inspección de esas filas no las cierra.
+La tabla sólo muestra un número finito de índices, mientras que una captura exige controlar todos los índices posteriores al corte. Además, sólo comprueba las tolerancias que aparecen en ella, mientras que la definición exige responder a cualquier real positivo. Una fórmula de error y una estimación general pueden cerrar ambas obligaciones; la inspección de esas filas no las cierra.
 
 ### 008. Pregunta 8
 
@@ -468,7 +468,7 @@ Si $a_n\to A$, $b_n\to B$ y $a_n\le b_n$ desde $T$, suponemos $A>B$ y ponemos $d
 
 []{#MA-MSOL-ANM-01-006-050}
 
-La sucesión constante cero converge a 0 y satisface $0\le x_n$ en la cola indicada. El paso al límite en el orden, aplicado a esa constante y a $x_n\to X$, da $0\le X$. La sola positividad eventual no construye un límite: por ejemplo, $x_n=2+(-1)^n$ es positiva y toma 1 y 3 arbitrariamente tarde, por lo que ningún candidato puede capturar todas sus colas en ventanas pequeñas.
+La sucesión constante cero converge a 0 y satisface $0\le x_n$ en la cola indicada. El paso al límite en el orden, aplicado a esa constante y a $x_n\to X$, da $0\le X$. La sola positividad eventual no construye un límite: por ejemplo, $x_n=2+(-1)^n$ es positiva y toma los valores $3$ en los pares y $1$ en los impares. Para cualquier candidato $X$, la triangular da $2\le|3-X|+|1-X|$, de modo que uno de esos errores es al menos $1$. Elegido ese valor, después de cada corte $N$ aparece en $2N$ o en $2N+1$. La tolerancia $1$ refuta así todo candidato, aunque todos los términos sean positivos.
 
 ### 051. Pregunta 3
 
