@@ -69,7 +69,7 @@ En todo $(-1,1)$ falta uniformidad: cada resto $x^{n+1}/(1-x)$ es no acotado cua
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 1</summary>
 
-Cada parcial finito $S_n=\sum_{j=0}^n u_j$, con dominio común $X$.
+Existen los parciales $S_n(x)=\sum_{j=0}^n u_j(x)$, funciones definidas en el dominio común $X$. Cada uno suma sólo un número finito de valores. La función suma se definirá después, en las entradas donde esta sucesión tenga límite real.
 
 </details>
 
@@ -84,7 +84,7 @@ Cada parcial finito $S_n=\sum_{j=0}^n u_j$, con dominio común $X$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 2</summary>
 
-La existencia de un límite real finito de $S_n(x)$ en esa entrada.
+Es $D=\{x\in X:(S_n(x))\text{ converge en }\mathbb R\}$. Para $x\in D$ se define $S(x)=\lim_n S_n(x)$. Una entrada donde los parciales divergen o tienden a infinito queda fuera de $D$; que todos los términos estén definidos allí no basta.
 
 </details>
 
@@ -99,7 +99,7 @@ La existencia de un límite real finito de $S_n(x)$ en esa entrada.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 3</summary>
 
-Desde $n+1$, pues el parcial incluye el término de índice $n$.
+El resto $R_n(x)=S(x)-S_n(x)$ omite los términos de índices $0,\ldots,n$, de modo que empieza en $n+1$: $R_n(x)=\sum_{j=n+1}^{\infty}u_j(x)$, para $x\in D$. Este desplazamiento determina el primer término de cualquier cota de cola.
 
 </details>
 
@@ -114,7 +114,7 @@ Desde $n+1$, pues el parcial incluye el término de índice $n$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 4</summary>
 
-$\forall\varepsilon>0\exists N\forall n\ge N\forall x\in Y$ para el error menor que $\varepsilon$.
+En $Y\subseteq D$, el orden es $\forall\varepsilon>0\;\exists N\;\forall n\ge N\;\forall x\in Y:\ |S_n(x)-S(x)|<\varepsilon$. El corte puede depender de $\varepsilon$ y de la ventana $Y$, pero debe servir para todas sus entradas.
 
 </details>
 
@@ -129,7 +129,7 @@ $\forall\varepsilon>0\exists N\forall n\ge N\forall x\in Y$ para el error menor 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 5</summary>
 
-No. Construye cada destino por completitud real y luego acredita un corte común.
+El criterio usa únicamente diferencias de parciales: para cada $\varepsilon>0$ existe $N$ tal que $|\sum_{j=n+1}^m u_j(x)|<\varepsilon$ para todos $m>n\ge N$ y $x\in Y$. En cada entrada, completitud de $\mathbb R$ construye el límite; pasar $m\to\infty$ con un presupuesto menor que $\varepsilon$ prueba después la uniformidad.
 
 </details>
 
@@ -144,7 +144,7 @@ No. Construye cada destino por completitud real y luego acredita un corte común
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 6</summary>
 
-Que tienden uniformemente a cero, comparando dos parciales consecutivos.
+Para $j\ge1$, $u_j=S_j-S_{j-1}$. Por la desigualdad triangular, $|u_j(x)|\le|S_j(x)-S(x)|+|S_{j-1}(x)-S(x)|$. Si ambos errores son uniformemente menores que $\varepsilon/2$, resulta $|u_j(x)|<\varepsilon$ en toda la ventana. La desaparición uniforme de los términos es necesaria; no garantiza la convergencia de la serie.
 
 </details>
 
@@ -159,7 +159,7 @@ Que tienden uniformemente a cero, comparando dos parciales consecutivos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 7</summary>
 
-Porque se cancela en diferencias de parciales posteriores y en el resto frente al destino.
+En $S_m-S_n$, con $m>n$ posteriores al prefijo, éste se cancela exactamente. Por ejemplo, $u_0(x)=x^2$ y $u_j(x)=2^{-j}$ para $j\ge1$ dan $S_n=x^2+1-2^{-n}$ y error $2^{-n}$ en toda $\mathbb R$. El primer término y la suma son no acotados, aunque la convergencia sea uniforme.
 
 </details>
 
@@ -174,7 +174,7 @@ Porque se cancela en diferencias de parciales posteriores y en el resto frente a
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 8</summary>
 
-No. Cada resto es no acotado cerca de $1$, aunque haya uniformidad en ventanas cerradas interiores.
+Para $|x|<1$, el resto geométrico es $x^{n+1}/(1-x)$. Fijado $n$, su magnitud crece sin límite cuando $x\to1^-$, por lo que ningún corte controla todo $(-1,1)$. En cada ventana $[-r,r]$, $r<1$, sí vale la cota común $r^{n+1}/(1-r)\to0$.
 
 </details>
 
@@ -193,7 +193,11 @@ Para $u_j(x)=x^j$, encuentre dominio, suma y una envolvente en $[-r,r]$, $0<r<1$
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 1</summary>
 
-La identidad finita da $S_n=(1-x^{n+1})/(1-x)$ cuando $x\ne1$. Para $|x|<1$ su límite es $1/(1-x)$ y el resto $x^{n+1}/(1-x)$ tiene magnitud a lo sumo $r^{n+1}/(1-r)$ en la ventana. Si $|x|\ge1$, los términos no tienden a cero, así que el dominio es exactamente $(-1,1)$. Para cada $n$, el resto crece sin cota al aproximarse $x$ a $1$ desde la izquierda; no puede existir un corte uniforme en todo el dominio.
+Para $x\ne1$, multiplicar el parcial por $1-x$ y cancelar términos da $S_n(x)=(1-x^{n+1})/(1-x)$. Si $|x|<1$, $x^{n+1}\to0$ y la suma es $S(x)=1/(1-x)$. Para $|x|\ge1$, los términos $x^j$ no tienden a cero, incluidos $x=\pm1$; por tanto $D=(-1,1)$.
+
+La resta exacta es $R_n(x)=x^{n+1}/(1-x)$. En $[-r,r]$, $0<r<1$, $|R_n(x)|\le r^{n+1}/(1-r)\to0$. La igualdad se alcanza en $x=r$, de modo que ésta es también la envolvente exacta. Un corte con $r^{n+1}<(1-r)\varepsilon$ sirve para toda la ventana.
+
+En todo $(-1,1)$, para cada $n$ el resto crece sin límite al acercarse a $1$ por la izquierda. La convergencia es puntual allí, pero no uniforme.
 
 **Retorno visual.** Véase [C29-F01](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -210,7 +214,9 @@ Pruebe que la convergencia uniforme de una serie implica que sus términos tiend
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 2</summary>
 
-Dado $\varepsilon>0$, escoja $N$ con $|S_n-S|<\varepsilon/2$ para $n\ge N$ y toda entrada. Si $j\ge N+1$, ambos $j,j-1$ superan el corte; la triangular da $|u_j|=|S_j-S_{j-1}|<\varepsilon$. La serie de funciones constantes $1/(j+1)$ tiene términos uniformemente nulos pero sumas parciales armónicas divergentes. El control de un término no controla bloques de longitud arbitraria.
+Suponga $S_n\to S$ uniformemente. Dado $\varepsilon>0$, elija $N$ para que $|S_k(x)-S(x)|<\varepsilon/2$ para todo $k\ge N$ y toda entrada. Para $j\ge N+1$, $u_j=S_j-S_{j-1}$, luego $|u_j(x)|<\varepsilon$. Así los términos tienden uniformemente a cero.
+
+El recíproco falla incluso para funciones constantes: en un conjunto no vacío, tome $u_j(x)=1/(j+1)$. Su supremo de magnitud tiende a cero, pero la serie de valores es armónica en cada entrada y diverge. La condición sobre términos aislados no controla bloques de muchos términos.
 
 </details>
 
@@ -225,7 +231,11 @@ Diagnostique: «para todo $x$ existe un corte geométrico, así que hay un corte
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 3</summary>
 
-Se ha intercambiado $\forall x\exists N_x$ por $\exists N\forall x$. Para un índice dado $n$, tome $x_n=1-1/(2(n+1))$. Por la desigualdad finita de Bernoulli, $x_n^{n+1}\ge1/2$. Por tanto el resto geométrico es al menos $(n+1)$; en particular no es menor que $1$. Cada columna converge, pero estas entradas cambiantes impiden cualquier corte común.
+La convergencia puntual permite elegir un corte distinto para cada $x$: $\forall x\;\forall\varepsilon>0\;\exists N(x,\varepsilon)$. La uniforme pide $\forall\varepsilon>0\;\exists N(\varepsilon)\;\forall x$. Ningún intercambio de esos cuantificadores se deduce de la primera afirmación.
+
+En la geométrica sobre $(-1,1)$, tome $x_n=1-1/[2(n+1)]$. Es una entrada admisible para cada corte $n$. La desigualdad de Bernoulli da $x_n^{n+1}\ge1-(n+1)/[2(n+1)]=1/2$. Por ello $R_n(x_n)=x_n^{n+1}/(1-x_n)\ge n+1$.
+
+Por ejemplo, la tolerancia $1/2$ queda incumplida en una entrada $x_n$ para todo corte. Cada entrada fija converge, pero los infractores pueden desplazarse hacia la frontera a medida que cambia el corte.
 
 </details>
 
@@ -240,7 +250,9 @@ En $\mathbb R$ tome $u_0(x)=x^2$ y $u_j(x)=2^{-j}$ para $j\ge1$. Pruebe uniformi
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 4</summary>
 
-Para $n\ge0$, $S_n(x)=x^2+1-2^{-n}$ y $S=x^2+1$, de modo que el error es exactamente $2^{-n}$ en toda la recta. Sin embargo $x^2$ no está acotado globalmente y ningún $M_0$ finito lo domina. La cola uniforme no exige una barrera de valores para el prefijo común.
+Para $n\ge0$, $\sum_{j=1}^n2^{-j}=1-2^{-n}$, también con suma vacía cuando $n=0$. Así $S_n(x)=x^2+1-2^{-n}$ y $S(x)=x^2+1$ en toda $\mathbb R$. El resto es la constante $2^{-n}$, por lo que la convergencia es uniforme en toda la recta.
+
+No existe un mayorante finito $M_0$ para $|u_0(x)|=x^2$ en $\mathbb R$. Esto impide aplicar el criterio M a la serie completa en esa ventana, aunque la uniformidad ya esté demostrada. En diferencias de parciales posteriores a cero el término $x^2$ se cancela; sólo importa la cola sumable.
 
 </details>
 
@@ -255,7 +267,9 @@ Suponga $|\sum_{j=n+1}^m u_j(x)|\le\eta_n$ para todos $m>n$ y $x\in X$, con $\et
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 5</summary>
 
-Fijada cada entrada, la cota y la simetría de diferencias hacen Cauchy la sucesión $S_n(x)$; completitud real entrega $S(x)$. Para $n,x$ fijos, pasar $m$ al límite conserva $|S-S_n|\le\eta_n$. Dado $\varepsilon>0$, un corte con toda la cola de $\eta_n$ menor que $\varepsilon$ funciona para todas las entradas. La existencia del destino procede de Cauchy, y la uniformidad del mismo presupuesto.
+Fije una entrada $x$. Para $m>n$, la hipótesis da $|S_m(x)-S_n(x)|\le\eta_n$, y $\eta_n\to0$. Para cada tolerancia hay un corte que controla todos los pares de índices posteriores; invertirlos no cambia la magnitud de la diferencia. Por completitud, existe $S(x)=\lim_m S_m(x)$ en cada entrada de $X$.
+
+Mantenga fijos $n$ y $x$ y haga $m\to\infty$. Se obtiene $|S(x)-S_n(x)|\le\eta_n$. Como la misma sucesión de barreras sirve para todas las entradas, basta elegir $N$ con $\eta_n<\varepsilon$ para $n\ge N$. Queda construida la suma y acreditada su convergencia uniforme, sin presuponerla al estimar los bloques.
 
 </details>
 ## 29.2. El criterio M y lo que no afirma
@@ -295,7 +309,7 @@ Si la comparación M sólo vale desde un índice fijo, se aplica al tramo final.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 9</summary>
 
-$|u_j(x)|$ para todas las entradas del dominio elegido, con el mismo número $M_j\ge0$.
+Debe cumplirse $|u_j(x)|\le M_j$ para todas las entradas $x$ de la ventana y cada índice $j$, con $M_j\ge0$ independiente de $x$. Una cota elegida separadamente para cada entrada no es el mayorante común requerido por el criterio M.
 
 </details>
 
@@ -310,7 +324,7 @@ $|u_j(x)|$ para todas las entradas del dominio elegido, con el mismo número $M_
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 10</summary>
 
-Que la serie $\sum M_j$ converja; tener cada mayorante finito no basta.
+Falta la convergencia de la serie numérica $\sum_j M_j$. Tener cotas finitas por término no asegura que sus colas desaparezcan: $M_j=1$ domina muchos términos, pero sus bloques pueden crecer arbitrariamente. La sumabilidad proporciona un corte común a toda la ventana.
 
 </details>
 
@@ -325,7 +339,7 @@ Que la serie $\sum M_j$ converja; tener cada mayorante finito no basta.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 11</summary>
 
-Por $|\sum_{j=n+1}^m u_j|\le\sum_{j=n+1}^m M_j$, una cola numérica común.
+Para $m>n$, $|S_m(x)-S_n(x)|\le\sum_{j=n+1}^m|u_j(x)|\le\sum_{j=n+1}^m M_j\le T_n$, donde $T_n=\sum_{j>n}M_j\to0$. Elegir $N$ con $T_n<\varepsilon$ para $n\ge N$ acredita Cauchy uniforme sin haber supuesto una función suma.
 
 </details>
 
@@ -340,7 +354,7 @@ Por $|\sum_{j=n+1}^m u_j|\le\sum_{j=n+1}^m M_j$, una cola numérica común.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 12</summary>
 
-$|S-S_n|\le T_n$. Se conserva la desigualdad débil y se añade margen para tolerancia estricta.
+Con $x$ y $n$ fijos, hacer $m\to\infty$ en la cota del bloque da $|S(x)-S_n(x)|\le T_n$. El límite conserva una desigualdad no estricta. Para certificar error estrictamente menor que $\varepsilon$, se elige un corte con $T_n<\varepsilon$.
 
 </details>
 
@@ -355,7 +369,7 @@ $|S-S_n|\le T_n$. Se conserva la desigualdad débil y se añade margen para tole
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 13</summary>
 
-Sí. Sus bloques positivos tienen los mismos mayorantes numéricos sumables.
+También $\sum|u_j(x)|$ tiene sus bloques dominados por los mismos bloques de $\sum M_j$. Converge uniformemente y su cola satisface $\sum_{j>n}|u_j(x)|\le T_n$. Se obtiene así convergencia absoluta en cada entrada, además de uniformidad de ambas series.
 
 </details>
 
@@ -370,7 +384,7 @@ Sí. Sus bloques positivos tienen los mismos mayorantes numéricos sumables.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 14</summary>
 
-No. Los términos con soportes puntuales disjuntos tienen cola uniforme $1/(n+2)$ y normas armónicas no sumables.
+En $X=\mathbb N_0$, tome $u_j(x)=\mathbf1_{\{j\}}(x)/(j+1)$. En cada entrada sólo hay un término distinto de cero; la cola tiene supremo $1/(n+2)$ y desaparece uniformemente. Sin embargo, cualquier mayorante común satisface $M_j\ge|u_j(j)|=1/(j+1)$, cuya serie diverge. El criterio M es suficiente.
 
 </details>
 
@@ -385,7 +399,7 @@ No. Los términos con soportes puntuales disjuntos tienen cola uniforme $1/(n+2)
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 15</summary>
 
-No. La geométrica en todo $(-1,1)$ es absoluta puntual y no uniforme.
+La geométrica $\sum x^j$ converge absolutamente en cada $x\in(-1,1)$, porque $\sum|x|^j$ es geométrica de razón menor que uno. Su resto no admite un corte uniforme en todo ese intervalo. La convergencia absoluta puntual deja que el control de la cola dependa de la entrada.
 
 </details>
 
@@ -400,7 +414,7 @@ Con $E_n\le2^{-n}$, ¿qué corte certifica error menor que $1/8$?
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 16</summary>
 
-$n\ge4$. En $n=3$ la cota sólo es igual a la tolerancia.
+Hay que pedir $2^{-n}<1/8=2^{-3}$. El primer corte certificado por esta barrera es $n=4$, para el cual $E_n\le1/16<1/8$; también sirven todos los posteriores. En $n=3$ la cota sólo garantiza $E_3\le1/8$ y no acredita la desigualdad estricta solicitada.
 
 </details>
 
@@ -417,7 +431,9 @@ Si $|u_j(x)|\le3\,2^{-j}$, dé cota de suma y cola y el primer índice garantiza
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 6</summary>
 
-La suma del mayorante es $6$, así que $|S(x)|\le6$. La cola desde $n+1$ es $3\,2^{-n}$. La desigualdad $3\,2^{-n}<3/8$ equivale a $n>3$, luego el primer índice garantizado es $4$. En $n=3$ la cota iguala la tolerancia; no acredita una desigualdad estricta.
+Los mayorantes suman $\sum_{j=0}^{\infty}3\,2^{-j}=6$, y su cola después del grado $n$ es $T_n=\sum_{j=n+1}^{\infty}3\,2^{-j}=3\,2^{-n}$. El criterio M construye una suma uniforme, con $|S(x)|\le6$, y da $|S-S_n|\le3\,2^{-n}$ en toda la ventana.
+
+Para garantizar error estrictamente menor que $3/8$, se necesita $2^{-n}<1/8$. El primer corte acreditado es $n=4$, con cota $3/16$; en $n=3$ sólo se garantiza $\le3/8$. Es el primer corte que garantiza esta información: la serie positiva de términos constantes $u_j=3\,2^{-j}$ alcanza la cota y muestra por qué el corte tres no puede garantizar la desigualdad estricta.
 
 </details>
 
@@ -432,7 +448,9 @@ Pruebe directamente que las hipótesis M hacen uniforme $\sum|u_j|$ y acotan su 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 7</summary>
 
-Para parciales positivos $A_n(x)=\sum_{j=0}^n|u_j(x)|$, la diferencia $A_m-A_n$ es una cola positiva dominada por la cola del mayorante, común a todas las entradas. Cauchy uniforme produce $A(x)$ y el error a lo sumo $T_n$. Las desigualdades finitas $A_n\le\sum_{j=0}^n M_j$ pasan al límite y dan $A\le\sum M_j$. Ésta es una prueba sobre otra serie, no una identificación de $A$ con $|S|$.
+Sean $|u_j(x)|\le M_j$ y $\sum M_j=M_*<\infty$. Los parciales de magnitudes $A_n(x)=\sum_{j=0}^n|u_j(x)|$ son crecientes y están acotados por $M_*$. En cada entrada tienen un límite $A(x)$.
+
+Para $m>n$, $0\le A_m(x)-A_n(x)\le\sum_{j=n+1}^mM_j$. Al pasar $m\to\infty$ queda $0\le A(x)-A_n(x)\le T_n$, donde $T_n=\sum_{j>n}M_j\to0$ independientemente de $x$. Por tanto la serie de magnitudes converge uniformemente y $A(x)\le M_*$ en toda la ventana. La serie original converge absolutamente y su resto también está dominado por $T_n$.
 
 </details>
 
@@ -447,7 +465,9 @@ Use $u_j(x)=\mathbf1_{\{j\}}(x)/(j+1)$ en $X=\mathbb N_0$ para refutar que el cr
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 8</summary>
 
-En $x=k$ hay exactamente un término no nulo y la suma vale $1/(k+1)$. El resto es cero si $k\le n$ y $1/(k+1)$ si $k>n$; su máximo es $1/(n+2)$, alcanzado en $k=n+1$. Las magnitudes son las mismas funciones, así que su serie también es uniforme. Cualquier $M_j$ común debe dominar la entrada $x=j$ y satisface $M_j\ge1/(j+1)$; comparación con la armónica impide sumabilidad.
+En la entrada $x=k\in\mathbb N_0$, sólo el término $u_k(k)=1/(k+1)$ es distinto de cero. La suma, tanto de valores como de magnitudes, es $S(k)=1/(k+1)$. Si $k\le n$ el resto es cero; si $k>n$ vale $1/(k+1)$. Luego $\sup_k|S(k)-S_n(k)|=1/(n+2)$, alcanzado en $k=n+1$.
+
+Esto prueba convergencia uniforme absoluta directamente. Por otra parte, evaluar un supuesto mayorante en $x=j$ obliga a $M_j\ge1/(j+1)$. Su serie no puede converger, por comparación con la armónica. La uniformidad procede aquí de que las entradas activan términos distintos, aunque las máximas magnitudes individuales no sean sumables.
 
 **Retorno visual.** Véase [C29-F02](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -464,7 +484,9 @@ Considere $u_j(x)=(-1)^j/(j+1)$ en cualquier conjunto no vacío $X$. Decida unif
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 9</summary>
 
-Todos los parciales son constantes. C11 da un destino numérico y resto de magnitud a lo sumo $1/(n+2)$; la misma cota vale para todo $X$, luego hay uniformidad. Las magnitudes forman la armónica divergente en cada entrada. Por tanto no hay convergencia absoluta ni mayorante M sumable, pues éste tendría que dominar cada magnitud armónica.
+Todos los términos son constantes respecto de $x$. La serie alternada $\sum_{j\ge0}(-1)^j/(j+1)$ converge porque sus magnitudes decrecen a cero. Su estimación de resto da $|S-S_n|\le1/(n+2)$; al ser independiente de la entrada, acredita convergencia uniforme en cualquier conjunto no vacío.
+
+La serie de magnitudes es armónica y diverge en cada entrada. Además, cualquier mayorante debe cumplir $M_j\ge1/(j+1)$, por lo que no puede ser sumable. Se obtiene uniformidad condicional gracias a la alternancia, que el criterio M no registra.
 
 </details>
 
@@ -479,7 +501,9 @@ En $Y=[0,1]$ sea $u_j(x)=x^j/3^j$. Encuentre una suma explícita y compare el re
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 10</summary>
 
-Es geométrica de razón $x/3$, así que $S=1/(1-x/3)$ y $R_n=(x/3)^{n+1}/(1-x/3)$. M usa $M_j=3^{-j}$ y cola $3^{-n}/2$. Para $0\le x\le1$, el resto no negativo crece con $x$ porque crecen numerador y recíproco del denominador; en $x=1$ vale precisamente $3^{-n}/2$. Aquí el certificado M es la envolvente exacta, no sólo una cota suficiente.
+La razón $x/3$ está entre cero y $1/3$ en $[0,1]$. La identidad geométrica da $S(x)=1/(1-x/3)$ y $R_n(x)=(x/3)^{n+1}/(1-x/3)$. En ese intervalo, $R_n(x)\le(1/3)^{n+1}/(1-1/3)=3^{-n}/2$, con igualdad en $x=1$.
+
+El criterio M usa $M_j=3^{-j}$. Su cola es precisamente $3^{-n}/2$, de modo que coincide con la envolvente exacta y prueba convergencia absoluta y uniforme. La coincidencia se explica porque en $x=1$ todos los términos alcanzan simultáneamente su mayorante y tienen signo positivo.
 
 </details>
 ## 29.3. Operaciones sobre sumas infinitas
@@ -519,7 +543,7 @@ El ancla paga las constantes que las derivadas no ven. La prueba de C28 usa valo
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 17</summary>
 
-Por cierre de continuidad bajo sumas finitas; después C28 usa uniformidad para el destino.
+Cada $S_n$ es una suma finita de funciones continuas, y por ello es continua. Si $S_n\to S$ uniformemente, fijar un parcial con error pequeño permite trasladar su continuidad al límite mediante $|S(x)-S(x_0)|\le|S-S_n|(x)+|S_n(x)-S_n(x_0)|+|S_n-S|(x_0)$.
 
 </details>
 
@@ -534,7 +558,7 @@ Por cierre de continuidad bajo sumas finitas; después C28 usa uniformidad para 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 18</summary>
 
-Un intervalo cerrado fijo de longitud finita, términos integrables y convergencia uniforme de parciales.
+Se trabaja en un intervalo cerrado y acotado $[a,b]$, con términos Riemann integrables y parciales que convergen uniformemente. Los parciales son integrables por aditividad finita. El teorema de límites uniformes integrables acredita la integrabilidad de la suma y el paso al límite en las integrales.
 
 </details>
 
@@ -549,7 +573,7 @@ Un intervalo cerrado fijo de longitud finita, términos integrables y convergenc
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 19</summary>
 
-Su integrabilidad. C28 la construye por Darboux a partir de las aproximaciones uniformes.
+Debe acreditarse que la función suma es Riemann integrable. Ésa es una conclusión del teorema de convergencia uniforme, aplicado a los parciales integrables; no se puede comenzar escribiendo una integral del límite como si ya existiera. Después se estima su diferencia con la integral de un parcial.
 
 </details>
 
@@ -564,7 +588,7 @@ Su integrabilidad. C28 la construye por Darboux a partir de las aproximaciones u
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 20</summary>
 
-$(b-a)E_n$ en $[a,b]$; desde un ancla $c$, $|x-c|E_n$.
+Si $|S-S_n|\le E_n$ en $[a,b]$, entonces $|\int_a^b S-\int_a^b S_n|\le(b-a)E_n$. Para acumuladas desde $c\in[a,b]$, vale $|\int_c^x(S-S_n)|\le|x-c|E_n$. La longitud aparece por integrar la barrera constante, y la orientación queda absorbida por el valor absoluto.
 
 </details>
 
@@ -579,7 +603,7 @@ $(b-a)E_n$ en $[a,b]$; desde un ancla $c$, $|x-c|E_n$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 21</summary>
 
-La serie de derivadas, además de convergencia numérica de los valores en una ancla.
+Debe converger uniformemente la serie de derivadas $\sum_j u_j'$ en el intervalo considerado, junto con convergencia de $\sum_j u_j(c)$ en una ancla. Aplicado a los parciales, el teorema derivativo da $S'=\sum_j u_j'$. La uniformidad de la serie de valores por sí sola no acredita esa fórmula.
 
 </details>
 
@@ -594,7 +618,7 @@ La serie de derivadas, además de convergencia numérica de los valores en una a
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 22</summary>
 
-Las derivadas no ven constantes; los niveles de los parciales pueden divergir aun con derivadas cero.
+La derivación elimina las constantes: sumar una constante distinta a cada parcial no altera sus derivadas. El ancla fija esos niveles mediante convergencia de $S_n(c)$. Por ejemplo, $u_j\equiv1$ tiene serie de derivadas idénticamente cero, pero $S_n(c)=n+1$ diverge.
 
 </details>
 
@@ -609,7 +633,7 @@ Las derivadas no ven constantes; los niveles de los parciales pueden divergir au
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 23</summary>
 
-No. C28 utiliza valor medio e incrementos de filas derivables.
+Basta que los términos sean derivables y que las derivadas de sus parciales converjan uniformemente, con el ancla convergente. La prueba del teorema usa el valor medio para controlar incrementos de diferencias de parciales. No exige continuidad de cada derivada ni necesita integrar una derivada potencialmente no integrable.
 
 </details>
 
@@ -624,7 +648,7 @@ No. C28 utiliza valor medio e incrementos de filas derivables.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 24</summary>
 
-Una serie de términos suaves con suma uniforme $|x|$ que no es derivable en cero.
+Con $h_n(x)=\sqrt{x^2+(n+1)^{-2}}$, tome $u_0=h_0$ y $u_j=h_j-h_{j-1}$. Entonces $S_n=h_n$ y $0\le h_n-|x|\le1/(n+1)$: la serie de términos derivables converge uniformemente a $|x|$. La suma no es derivable en cero, lo que impide deducir derivabilidad sólo a partir de esa uniformidad.
 
 </details>
 
@@ -641,7 +665,9 @@ Si una serie integrable en $[-2,3]$ tiene $|R_n|\le2^{-n}$, acote error de su in
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 11</summary>
 
-La uniformidad acredita integrabilidad del destino por C28. La longitud completa es $5$, por lo que el error de integral es a lo sumo $5\,2^{-n}$. Para cada $x$, la acumulada orientada desde $1$ tiene error a lo sumo $|x-1|2^{-n}$, y sobre todo el marco $|x-1|\le3$. El error uniforme de acumuladas es a lo sumo $3\,2^{-n}$, tanto a la izquierda como a la derecha del ancla.
+Los parciales son Riemann integrables como sumas finitas de términos integrables. La cota uniforme $|S-S_n|\le2^{-n}$, que tiende a cero, permite aplicar el teorema de límites uniformes integrables: la suma $S$ también es integrable en $[-2,3]$.
+
+La longitud del intervalo es cinco, por lo que $|\int_{-2}^3 S-\sum_{j=0}^n\int_{-2}^3u_j|\le5\,2^{-n}$. Para la acumulada desde uno, $|\int_1^x S-\sum_{j=0}^n\int_1^xu_j|\le|x-1|2^{-n}\le3\,2^{-n}$. Esto da uniformidad de las acumuladas en todo el intervalo, incluida la orientación negativa cuando $x<1$.
 
 </details>
 
@@ -656,7 +682,13 @@ Formule y pruebe el teorema derivativo de §29.3 usando sólo el teorema de suce
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 12</summary>
 
-Sean los términos continuos en $[a,b]$ y derivables en $(a,b)$; supongamos la serie de derivadas uniforme a $g$ y la serie de valores en $c\in[a,b]$ convergente a $\lambda$. Las sumas finitas $S_n$ son continuas y derivables, $S_n^{\prime}$ son los parciales de la serie derivada y $S_n(c)\to\lambda$. Cumplen exactamente C28: derivadas uniformes más ancla convergente. Allí se construye el límite uniforme $S$ de valores y se demuestra $S^{\prime}=g$ mediante incrementos. La identidad de series es esa conclusión, no una derivación formal previa.
+Sean $u_j$ continuas en $[a,b]$, derivables en $(a,b)$, con $a<b$. Suponga que $\sum_j u_j'$ converge uniformemente en $(a,b)$ a $G$ y que $\sum_j u_j(c)$ converge para alguna ancla $c\in[a,b]$. Entonces $\sum_j u_j$ converge uniformemente en $[a,b]$ a una función $S$ derivable en $(a,b)$, con $S'=G$.
+
+Escriba $S_n=\sum_{j=0}^nu_j$. Si cada $u_j$ es derivable, la regla de suma finita da $S_n'=\sum_{j=0}^nu_j'$. La hipótesis sobre la serie derivada dice exactamente que $S_n'\to G$ uniformemente. La hipótesis del ancla dice que $S_n(c)$ converge.
+
+Se cumplen así las hipótesis del teorema de C28 para sucesiones de funciones derivables. Éste construye el límite $S$ de los parciales, acredita su derivabilidad en el interior y da $S'=G=\sum_j u_j'$. En un intervalo acotado, el valor medio también proporciona la convergencia uniforme de $S_n$: la diferencia de dos parciales queda controlada por su diferencia en $c$ y la longitud por el error de pendientes.
+
+La prueba no requiere continuidad de las derivadas. El ancla y la uniformidad de sus parciales son las condiciones que deben verificarse antes de usar la fórmula.
 
 </details>
 
@@ -671,7 +703,11 @@ Para $h_n(x)=\sqrt{x^2+1/(n+1)^2}$ forme la serie telescópica de §29.3. Pruebe
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 13</summary>
 
-Los parciales telescópicos son $h_n$. Con $a=1/(n+1)$, $0\le\sqrt{x^2+a^2}-|x|=a^2/(\sqrt{x^2+a^2}+|x|)\le a$, con igualdad en cero. Por tanto el error uniforme es $a$. Cada fila es derivable y $h_n^{\prime}(0)=0$, pero el límite $|x|$ tiene cocientes $1$ desde la derecha y $-1$ desde la izquierda. Su derivada en cero no existe; el límite de derivadas en ese punto no permite intercambiarlas.
+Defina $u_0=h_0$ y $u_j=h_j-h_{j-1}$ para $j\ge1$. Todos los términos son derivables en $\mathbb R$, pues el radicando de cada $h_n$ es estrictamente positivo. La suma finita telescópica es $S_n=h_n$.
+
+Para $a=1/(n+1)$, las desigualdades $|x|\le\sqrt{x^2+a^2}\le|x|+a$ dan $0\le S_n(x)-|x|\le1/(n+1)$. La cota se alcanza en cero y prueba convergencia uniforme, incluso en toda la recta, a $S(x)=|x|$. Sus cocientes incrementales en cero valen $1$ por la derecha y $-1$ por la izquierda; la suma no es derivable allí.
+
+La serie derivada tiene parciales $h_n'(x)=x/\sqrt{x^2+(n+1)^{-2}}$. Su límite puntual vale $-1$ para $x<0$, cero para $x=0$ y $1$ para $x>0$. No puede ser límite uniforme de esas funciones continuas en un intervalo que contenga cero en su interior, pues sería continuo. Falta precisamente la hipótesis derivativa.
 
 **Retorno visual.** Véase [C29-F03](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -688,7 +724,9 @@ Dé una serie cuya serie de derivadas converja uniformemente, pero cuya serie de
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 14</summary>
 
-Tome $u_j(x)=1$ en $[0,1]$. Las derivadas son cero y su serie converge uniformemente a cero. Los parciales de valores son $n+1$, divergentes en toda entrada. Falta convergencia de la serie de valores en una ancla. Uniformidad de pendientes sólo controla diferencias espaciales; no controla el nivel absoluto de los parciales.
+Tome $u_j(x)=1$ para todos los índices en $[0,1]$. Cada derivada es cero y los parciales de la serie derivada son cero: convergen uniformemente.
+
+Sin embargo, $S_n(x)=n+1$ en toda entrada, por lo que la serie de valores diverge. En cualquier ancla $c$, $S_n(c)$ tampoco converge. El ejemplo prueba que controlar todas las pendientes deja sin controlar las constantes de los parciales; se necesita la convergencia en una ancla para aplicar el teorema.
 
 </details>
 
@@ -703,7 +741,11 @@ En $[-1,1]$ tome $u_j(x)=2^{-j}x^2$. Calcule suma, derivada, integral desde cero
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 15</summary>
 
-Los coeficientes suman $2$, luego $S=2x^2$, $S_n=(2-2^{-n})x^2$. Las derivadas tienen mayorantes $2\,2^{-j}$ y el ancla cero es exacta, así que el intercambio es válido y $S^{\prime}=4x$. La integral es $2x^3/3$. Los errores uniformes de valores, derivadas y acumuladas son respectivamente $2^{-n}$, $2^{1-n}$ y $2^{-n}/3$, alcanzados en los extremos. La integración orientada da el signo correcto cuando $x<0$.
+La suma de coeficientes es $\sum_{j\ge0}2^{-j}=2$. Así $S_n(x)=(2-2^{-n})x^2$ y $S(x)=2x^2$. En $[-1,1]$, los términos están dominados por $2^{-j}$, y el resto exacto es $2^{-n}x^2$, con envolvente $2^{-n}$.
+
+Los términos derivados $2^{1-j}x$ tienen mayorantes sumables $2^{1-j}$; además, $S_n(0)=0$. El teorema derivativo da $S'=4x$, mientras $S_n'=(4-2^{1-n})x$. El resto de derivadas es $2^{1-n}x$, con envolvente $2^{1-n}$.
+
+Integrar desde cero da $\int_0^x S(t)\,dt=2x^3/3$ y $\int_0^x S_n(t)\,dt=(2-2^{-n})x^3/3$. El resto acumulado es $2^{-n}x^3/3$, cuya envolvente es $2^{-n}/3$. Las tres envolventes se alcanzan en los extremos; el signo de $x^3$ conserva la orientación cuando $x<0$.
 
 </details>
 ## 29.4. Un punto de convergencia abre una región interior
@@ -741,7 +783,7 @@ Cuando $0<R<\infty$, el dominio es $(c-R,c+R)$ más ninguno, uno o ambos extremo
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 25</summary>
 
-$a_0$; el monomio de orden cero es la función constante $1$.
+En $x=c$, todos los términos de grado positivo se anulan y cada parcial vale $a_0$. El término de grado cero se define como la función constante $a_0$, también en el centro. Por tanto la serie siempre converge allí y su suma es $a_0$.
 
 </details>
 
@@ -756,7 +798,7 @@ $a_0$; el monomio de orden cero es la función constante $1$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 26</summary>
 
-Los términos $a_j(t-c)^j$ tienden a cero y por ello tienen magnitudes acotadas por un $M$ común.
+Convergencia en $t$ implica $a_j(t-c)^j\to0$; esta sucesión de términos es acotada. Existe $M$ tal que $|a_j|\,|t-c|^j\le M$ para todo $j$, incluidos los primeros. No se ha afirmado convergencia absoluta en $t$: sólo se usa la acotación necesaria de sus términos.
 
 </details>
 
@@ -771,7 +813,7 @@ Los términos $a_j(t-c)^j$ tienden a cero y por ello tienen magnitudes acotadas 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 27</summary>
 
-$\rho=r/|t-c|<1$ para el segmento de radio $r$.
+En $|x-c|\le r<|t-c|$, la acotación anterior da $|a_j(x-c)^j|\le M\rho^j$, con $\rho=r/|t-c|<1$. La razón estrictamente menor que uno hace sumable el mayorante. La cola común queda acotada por $M\rho^{n+1}/(1-\rho)$.
 
 </details>
 
@@ -786,7 +828,7 @@ $\rho=r/|t-c|<1$ para el segmento de radio $r$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 28</summary>
 
-Como el supremo de las distancias al centro de todas las entradas convergentes.
+Sea $H=\{|t-c|:\text{la serie converge en }t\}$. Si este conjunto es acotado, se define $R=\sup H$. El centro asegura $0\in H$. El lema interior prueba convergencia absoluta para distancias menores que $R$; una convergencia a distancia mayor contradiría la definición de supremo.
 
 </details>
 
@@ -801,7 +843,7 @@ Como el supremo de las distancias al centro de todas las entradas convergentes.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 29</summary>
 
-No. Para proteger un radio menor basta una distancia convergente mayor que él.
+Para $r<R$, la propiedad de supremo garantiza una distancia $d\in H$ con $r<d\le R$. Un punto convergente a esa distancia basta para dominar toda la ventana de radio $r$. No hace falta que exista un punto convergente a distancia exactamente $R$; los extremos se estudian aparte.
 
 </details>
 
@@ -816,7 +858,7 @@ No. Para proteger un radio menor basta una distancia convergente mayor que él.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 30</summary>
 
-Que sólo converge en el centro, con suma $a_0$.
+La única entrada convergente es el centro, donde la suma vale $a_0$. Si hubiese convergencia a distancia positiva, ésta pertenecería a $H$ y forzaría $R>0$. Por ejemplo, los coeficientes $a_j=j!$ para $j\ge1$ producen términos que no desaparecen en ninguna distancia positiva.
 
 </details>
 
@@ -831,7 +873,7 @@ Que sólo converge en el centro, con suma $a_0$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 31</summary>
 
-Convergencia en toda la recta y uniformidad en cada segmento acotado, sin prometer uniformidad global.
+Hay convergencia absoluta en toda entrada real y uniforme en cada ventana acotada alrededor del centro: para un radio finito $r$ se encuentra una distancia convergente mayor. Esta afirmación permite elegir un corte por ventana; no proporciona un mismo corte para toda la recta.
 
 </details>
 
@@ -846,7 +888,7 @@ Convergencia en toda la recta y uniformidad en cada segmento acotado, sin promet
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 32</summary>
 
-No. Se sustituyen por separado para estudiar sus dos series numéricas.
+Si $0<R<\infty$, quedan por estudiar $c-R$ y $c+R$. El radio decide el interior y el exterior, pero en la frontera pueden darse divergencia, convergencia condicional o absoluta. La geométrica y la serie $\sum x^j/(j+1)^2$ tienen radio uno y comportamientos distintos en sus extremos.
 
 </details>
 
@@ -863,7 +905,11 @@ Una serie de centro $2$ converge en $t=-1$ y satisface $|a_j(-3)^j|\le5$. Dé un
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 16</summary>
 
-La distancia convergente es $3$, mientras $[0,4]$ tiene radio $2$ respecto del centro. El lema interior usa $\rho=2/3$, da convergencia absoluta y uniforme, y cota $5(2/3)^{n+1}/(1-2/3)=15(2/3)^{n+1}$. También asegura toda distancia estrictamente menor que $3$, sin decidir $5$, el extremo opuesto a $-1$.
+El centro es $c=2$ y el punto convergente $t=-1$ está a distancia tres. En $[0,4]$ se tiene $|x-2|\le2$. De la hipótesis $|a_j(-3)^j|\le5$ se obtiene $|a_j(x-2)^j|\le5(2/3)^j$ en toda esa ventana.
+
+El criterio M acredita convergencia absoluta y uniforme. La cola queda controlada por $\sum_{j>n}5(2/3)^j=15(2/3)^{n+1}$. Para una tolerancia $\varepsilon$, basta escoger $n$ con esa expresión menor que $\varepsilon$.
+
+El mismo razonamiento protege cualquier ventana de radio estrictamente menor que tres. No decide el punto $x=5$, a distancia tres del centro: la acotación de términos en $-1$ no acredita convergencia en el extremo opuesto.
 
 **Retorno visual.** Véase [C29-F04](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -880,7 +926,11 @@ Reconstruya el radio a partir de $H$ y pruebe interior y exterior. Evite afirmar
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 17</summary>
 
-$H$ contiene cero. Si está acotado tiene supremo $R$; si no, se usa el caso infinito. Para cualquier $0<r<R$ existe una distancia convergente $d>r$, porque de otro modo $r$ sería cota superior de $H$. El lema interior controla el segmento de radio $r$. El centro converge por separado. Una entrada convergente de distancia mayor que un $R$ finito pondría en $H$ un número superior a su cota, contradicción. Ningún paso necesita una entrada convergente de distancia exactamente $R$.
+Sea $H$ el conjunto de distancias al centro de las entradas convergentes. Contiene cero. Si es acotado, tome $R=\sup H$; si es no acotado, tome $R=\infty$.
+
+Para una distancia $r<R$, la propiedad del supremo, o la no acotación, permite encontrar $d\in H$ con $r<d$. La convergencia en una entrada a distancia $d$ da una cota de términos $M d^{-j}$ para los coeficientes. En $|x-c|\le r$, el mayorante $M(r/d)^j$ acredita convergencia absoluta y uniforme.
+
+Si $R$ es finito, una entrada convergente a distancia mayor que $R$ añadiría a $H$ un elemento mayor que su supremo, imposible. Nada de esto exige $R\in H$. Para $0<R<\infty$, los dos puntos a distancia exactamente $R$ conservan su propio problema de convergencia.
 
 </details>
 
@@ -895,7 +945,9 @@ Diagnostique «una serie de potencias da cero en su centro». Dé un ejemplo y t
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 18</summary>
 
-El monomio de orden cero es constante $1$; todos los monomios de orden positivo se anulan en el centro. La suma vale $a_0$. Por ejemplo $7+\sum_{j\ge1}j!(x-c)^j$ sólo converge en $c$, y allí vale $7$. El radio cero describe un dominio de un punto, no el valor de la función. La notación del monomio constante evita una evaluación ambigua de $0^0$.
+En el centro, cada parcial vale $a_0$, porque el monomio de grado cero es la función constante y los restantes se anulan. Esto garantiza convergencia en $c$ aun cuando no haya ninguna otra entrada convergente.
+
+Por ejemplo, tome $F(x)=7+\sum_{j\ge1}j!(x-c)^j$ como expresión de serie. Si $d=|x-c|>0$, los términos de magnitud $j!d^j$ tienen cociente $(j+1)d$, que eventualmente supera dos. Desde un término positivo crecen al menos geométricamente y no tienden a cero. La serie diverge fuera del centro; tiene radio cero y su única suma definida es $F(c)=7$.
 
 </details>
 
@@ -910,7 +962,9 @@ Pruebe que una serie de radio $R>0$ converge uniformemente en todo compacto $K\s
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 19</summary>
 
-Si $K$ es vacío, la condición es vacua. En caso contrario, continuidad de $|x-c|$ y compacidad entregan un máximo $d$. Cada punto está en el intervalo abierto, luego el punto que alcanza el máximo tiene $d<R$. Escoja $r$ con $d<r<R$ (si $R=\infty$, cualquier $r>d$). El segmento cerrado de radio $r$ tiene uniformidad por el lema; restringir a $K$ conserva el corte común.
+Sea $K$ compacto contenido en $(c-R,c+R)$. Si no es vacío, la función continua $|x-c|$ alcanza en él un máximo $r<R$. Elija una distancia $s$ con $r<s<R$; por la propiedad del radio hay una entrada convergente a distancia mayor que $s$ y, por tanto, una cota $|a_j|s^j\le M$.
+
+Para $x\in K$, $|a_j(x-c)^j|\le M(r/s)^j$. Si $r>0$, este mayorante es geométrico de razón menor que uno, con cola $M(r/s)^{n+1}/(1-r/s)$. Si $r=0$, $K$ sólo contiene el centro y todos los restos son cero. Así hay convergencia absoluta y uniforme en $K$. El caso vacío es inmediato. No se obtiene por ello uniformidad en todo el intervalo abierto ni en su frontera.
 
 </details>
 
@@ -925,7 +979,11 @@ Compare la geométrica y $\sum x^j/(j+1)^2$, ambas de radio $1$, en todo $[-1,1]
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 20</summary>
 
-La geométrica no converge en los extremos y no es uniforme en todo el abierto, pues su resto no está acotado cerca de $1$. Para la segunda, $|x^j|/(j+1)^2\le1/(j+1)^2$ en el cerrado, y la serie de estos mayorantes converge por comparación telescópica. M acredita uniformidad en todo el cerrado, y por restricción en el abierto. El radio describe la región interior de convergencia absoluta, pero no una tasa ni uniformidad hasta su frontera.
+Para $\sum_{j\ge0}x^j$, el radio es uno, el dominio es $(-1,1)$ y el resto $x^{n+1}/(1-x)$ impide uniformidad en todo ese intervalo. En $x=\pm1$ los términos no desaparecen, por lo que no hay suma que extender por convergencia de la serie.
+
+Para $\sum_{j\ge0}x^j/(j+1)^2$, el cociente de coeficientes tiende a uno y también $R=1$. En $[-1,1]$, los términos están dominados por $1/(j+1)^2$. Esta serie numérica converge por $1/(j+1)^2\le1/j-1/(j+1)$ para $j\ge1$, y el criterio M da convergencia absoluta y uniforme en el intervalo cerrado.
+
+De hecho, su cola común es $\le\sum_{j=n+1}^{\infty}[1/j-1/(j+1)]=1/(n+1)$. Fuera de $[-1,1]$ los términos no tienden a cero, por cociente de magnitudes mayor que uno. El radio compartido no determina el comportamiento en el borde ni la uniformidad en la ventana máxima.
 
 </details>
 ## 29.5. Calcular el radio y examinar los extremos
@@ -970,7 +1028,7 @@ Una serie con sólo finitos coeficientes no nulos tiene $R=\infty$. Para $a_j=j!
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 33</summary>
 
-Una barrera geométrica eventual con razón $q<1$, que garantiza convergencia absoluta.
+Para términos eventualmente no nulos y cociente de magnitudes con límite $L<1$, elija $L<q<1$. Desde un índice $J$ los cocientes son menores que $q$, luego $|b_{J+k}|\le|b_J|q^k$. Esta barrera geométrica acredita convergencia absoluta; el prefijo finito no cambia la conclusión.
 
 </details>
 
@@ -985,7 +1043,7 @@ Una barrera geométrica eventual con razón $q<1$, que garantiza convergencia ab
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 34</summary>
 
-Crecimiento eventual de magnitudes por un factor $q>1$, impidiendo que los términos tiendan a cero.
+Elija $1<q<L$. Desde cierto índice $J$, $|b_{J+k}|\ge|b_J|q^k$, con $b_J\ne0$. Los términos no tienden a cero y la serie diverge. Si el límite del cociente es infinito, también puede elegirse cualquier $q>1$ y obtenerse la misma conclusión.
 
 </details>
 
@@ -1000,7 +1058,7 @@ Crecimiento eventual de magnitudes por un factor $q>1$, impidiendo que los térm
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 35</summary>
 
-Nada por ese método; pueden ocurrir convergencia o divergencia.
+No decide la convergencia: los términos $1/(j+1)^2$ y $1/(j+1)$ tienen cocientes tendentes a uno, pero sus series convergen y divergen, respectivamente. Hace falta otro argumento en la situación de igualdad.
 
 </details>
 
@@ -1015,7 +1073,7 @@ Nada por ese método; pueden ocurrir convergencia o divergencia.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 36</summary>
 
-Cuando los denominadores son cero infinitamente a menudo y no hay tramo final donde esté definido.
+No puede usarse el criterio consecutivo si hay coeficientes nulos arbitrariamente lejos: las divisiones por ellos quedan indefinidas y no existe una cola de cocientes válidos. Una serie con sólo grados pares puede estudiarse agrupando esos grados como una geométrica o usando raíces.
 
 </details>
 
@@ -1030,7 +1088,7 @@ Cuando los denominadores son cero infinitamente a menudo y no hay tramo final do
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 37</summary>
 
-$R=1/L$, por aplicar barreras geométricas a los términos en cada entrada.
+Si $|a_j|^{1/j}\to L\in(0,\infty)$, la raíz del término de grado $j$ en una entrada de distancia $d$ tiende a $Ld$. Para $Ld<1$ se obtiene una barrera geométrica; para $Ld>1$ los términos no desaparecen. Así $R=1/L$, sin conclusión automática en $d=R$.
 
 </details>
 
@@ -1045,7 +1103,7 @@ $R=1/L$, por aplicar barreras geométricas a los términos en cada entrada.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 38</summary>
 
-Radio infinito y radio cero respectivamente; son casos, no divisiones reales.
+Si las raíces tienden a cero, para cada distancia finita $d>0$ el producto $d|a_j|^{1/j}$ termina por ser menor que una razón $q<1$; por tanto $R=\infty$. Si tienden a infinito, en cada distancia positiva las magnitudes de los términos crecen eventualmente y $R=0$. Son conclusiones de comparación, sin dividir números reales por cero o por infinito.
 
 </details>
 
@@ -1060,7 +1118,7 @@ Radio infinito y radio cero respectivamente; son casos, no divisiones reales.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 39</summary>
 
-En $-1$ condicionalmente por alternada; en $1$ diverge la armónica.
+En $x=-1$ queda $\sum_{j\ge1}(-1)^j/j$, que converge por el criterio alternado; la serie de magnitudes es la armónica y diverge, de modo que la convergencia es condicional. En $x=1$ aparece directamente la armónica y hay divergencia. El dominio completo es $[-1,1)$.
 
 </details>
 
@@ -1075,7 +1133,7 @@ En $-1$ condicionalmente por alternada; en $1$ diverge la armónica.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 40</summary>
 
-Para $j\ge1$ se domina por $1/j-1/(j+1)$, una serie telescópica positiva sumable.
+Para $j\ge1$, $1/(j+1)^2\le1/[j(j+1)]=1/j-1/(j+1)$. Sumar de $1$ a $m$ da una cota menor que uno. Los parciales positivos son crecientes y acotados, por lo que convergen; añadir el término $j=0$ sólo añade uno.
 
 </details>
 
@@ -1092,7 +1150,11 @@ Pruebe el criterio de cociente cuando el límite es menor que $1$ y cuando es ma
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 21</summary>
 
-Suponga términos eventualmente no nulos. Si el límite $L<1$, elija $L<q<1$ y un índice $N$ después del cual cada cociente es a lo sumo $q$. Inducción da $|b_{N+k}|\le|b_N|q^k$; la cola converge absolutamente por comparación geométrica y el prefijo finito no altera ello. Si $L>1$, elija $1<q<L$ y un índice con cocientes al menos $q$. Entonces $|b_{N+k}|\ge|b_N|q^k$, con $|b_N|>0$; los términos no tienden a cero. El límite $1$ no proporciona ninguna de esas dos barreras.
+Para una serie de términos eventualmente no nulos, suponga $|b_{j+1}|/|b_j|\to L$. Si $L<1$, elija $L<q<1$ y $J$ tal que los cocientes posteriores sean $\le q$. Inducción da $|b_{J+k}|\le|b_J|q^k$. La cola converge absolutamente y el prefijo finito no modifica la convergencia.
+
+Si $L>1$, elija $1<q<L$ y un corte con cocientes $\ge q$. Se obtiene $|b_{J+k}|\ge|b_J|q^k$, y $|b_J|>0$: los términos no desaparecen. Lo mismo vale para límite infinito escogiendo un $q>1$ fijo.
+
+Con $L=1$ no se obtiene ninguna de esas barreras. Las series $\sum1/(j+1)^2$ y $\sum1/(j+1)$ muestran ambas posibilidades. La hipótesis de términos eventualmente no nulos es la que hace lícitas las divisiones.
 
 </details>
 
@@ -1107,7 +1169,9 @@ Encuentre radio y dominio de $\sum_{j=1}^{\infty}((x-2)/3)^j/j$.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 22</summary>
 
-El centro es $2$ y los cocientes de coeficientes en potencias de $x-2$ tienden a $1/3$, así que el radio es $3$. En $x=-1$, la razón normalizada es $-1$ y la alternada converge condicionalmente. En $x=5$ es $1$ y diverge la armónica. El dominio es $[-1,5)$. Los puntos exteriores divergen por el radio; los interiores convergen absolutamente.
+Ponga $z=(x-2)/3$. La serie es $\sum_{j\ge1}z^j/j$. Como serie de potencias en $x-2$, sus coeficientes son $a_0=0$ y $a_j=1/(j3^j)$; sus cocientes tienden a $1/3$, por lo que el radio es tres.
+
+Para $|x-2|<3$ hay convergencia absoluta. En $x=-1$, $z=-1$ y queda una alternada de magnitudes $1/j$ decrecientes a cero: converge condicionalmente. En $x=5$, $z=1$ y queda la armónica, divergente. Fuera de esas distancias, los términos no tienden a cero. El dominio completo es $[-1,5)$.
 
 </details>
 
@@ -1122,7 +1186,9 @@ Encuentre el radio de $\sum_{k=0}^{\infty}(x-1)^{2k}$ y explique por qué no sir
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 23</summary>
 
-La serie es geométrica de razón $(x-1)^2$. Converge si esa razón es menor que $1$, es decir $|x-1|<1$, y diverge en los extremos y fuera porque los términos no desaparecen. Tiene radio $1$ y dominio $(0,2)$. Los coeficientes de grados impares son cero, de modo que hay cocientes indefinidos infinitamente a menudo; no se cumplen las hipótesis del método consecutivo.
+La serie $\sum_{k\ge0}(x-1)^{2k}$ es geométrica de razón $(x-1)^2$. Converge exactamente cuando $|x-1|<1$, con suma $1/[1-(x-1)^2]$. En $x=0$ o $x=2$ los términos valen uno; fuera del intervalo su magnitud crece. Por tanto el centro es uno, el radio es uno y el dominio es $(0,2)$.
+
+Como serie con todos los grados, tiene coeficientes $a_{2k}=1$ y $a_{2k+1}=0$. Hay denominadores nulos arbitrariamente lejos en los cocientes consecutivos, por lo que ese criterio no puede aplicarse. La identificación geométrica usa los grados efectivamente presentes y resuelve la convergencia sin esas divisiones.
 
 </details>
 
@@ -1137,7 +1203,9 @@ Para $a_j=2^j$ si $j$ es par y $a_j=2^j/(j+1)$ si es impar, calcule $R$. Justifi
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 24</summary>
 
-Para los índices pares la raíz es $2$; para los impares es $2/(j+1)^{1/j}$. Para probar $(j+1)^{1/j}\to1$, fijado $q>1$, la sucesión $(j+1)/q^j$ tiene cociente tendente a $1/q<1$, luego tiende a cero por barrera geométrica; eventualmente $j+1<q^j$. Así $1\le(j+1)^{1/j}<q$, y el límite es $1$. Las raíces de $a_j$ tienden a $2$, así que $R=1/2$. Los cocientes consecutivos alternan entre valores tendentes a cero e infinito, por lo que ese método no decide.
+En índices pares, $|a_j|^{1/j}=2$; en los impares vale $2/(j+1)^{1/j}$. Para probar $(j+1)^{1/j}\to1$, fije $q>1$. El cociente de $(j+1)/q^j$ tiende a $1/q<1$, de modo que esa sucesión termina dominada por una geométrica y tiende a cero. Eventualmente $j+1<q^j$, luego $1\le(j+1)^{1/j}<q$. Como vale para cualquier $q>1$, el límite es uno.
+
+Las raíces de los coeficientes tienden así a dos y el radio es $1/2$. Los cocientes consecutivos, aunque están definidos, alternan: para $j$ par, $a_{j+1}/a_j=2/(j+2)\to0$; para $j$ impar, $a_{j+1}/a_j=2(j+1)\to\infty$. No tienen límite, por lo que el método consecutivo no determina el radio en este caso.
 
 </details>
 
@@ -1152,7 +1220,14 @@ Construya series de radio $2$ y centro $-3$ con cada uno de los cuatro posibles 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 25</summary>
 
-Use $z=(x+3)/2$. La geométrica en $z$ tiene dominio $(-5,-1)$. La serie $\sum_{j\ge1}z^j/j$ tiene dominio $[-5,-1)$, y $\sum_{j\ge1}(-1)^jz^j/j$ tiene $(-5,-1]$. La serie $\sum_{j\ge0}z^j/(j+1)^2$ tiene $[-5,-1]$. En todos los casos el radio es $2$ por los cocientes de los coeficientes escalados. Las evaluaciones $z=\pm1$ se justifican respectivamente por término no nulo, alternada, armónica y comparación positiva telescópica.
+Use $z=(x+3)/2$, que envía $x=-5$ a $z=-1$ y $x=-1$ a $z=1$. Cuatro series sirven:
+
+- $\sum_{j\ge0}z^j$: no converge en ninguno de los extremos, pues allí los términos no desaparecen; dominio $(-5,-1)$.
+- $\sum_{j\ge1}z^j/j$: alternada convergente en $-5$ y armónica divergente en $-1$; dominio $[-5,-1)$.
+- $\sum_{j\ge1}(-1)^jz^j/j$: armónica en $-5$ y alternada en $-1$; dominio $(-5,-1]$.
+- $\sum_{j\ge0}z^j/(j+1)^2$: converge absolutamente en ambos extremos por comparación telescópica; dominio $[-5,-1]$.
+
+En todas, el cociente de magnitudes de los coeficientes en potencias de $x+3$ tiende a $1/2$. Así tienen centro $-3$ y radio dos. Los puntos interiores convergen absolutamente y los exteriores divergen; las evaluaciones anteriores resuelven las cuatro elecciones de frontera.
 
 **Retorno visual.** Véase [C29-F05](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1202,7 +1277,7 @@ Cada orden tiene uniformidad en segmentos interiores. El orden $k$ se fija antes
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 41</summary>
 
-Para que el margen geométrico $r/s<1$ absorba los factores de índice de los términos derivados.
+Una distancia convergente mayor que $s$ da una cota $|a_j|s^j\le M$. En la ventana de radio $r$, los términos derivados quedan dominados por $(M/s)j(r/s)^{j-1}$. El margen $r/s<1$ compensa el factor $j$ que introduce la derivación; trabajar directamente en la frontera perdería ese margen.
 
 </details>
 
@@ -1217,7 +1292,7 @@ Para que el margen geométrico $r/s<1$ absorba los factores de índice de los t�
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 42</summary>
 
-$S_n(c)=a_0$ exactamente para todo $n$.
+Para todo $n$, $S_n(c)=a_0$. La sucesión en el ancla es constante y converge sin estimación adicional. Junto con convergencia uniforme de las derivadas en una ventana interior, satisface las hipótesis del teorema derivativo.
 
 </details>
 
@@ -1232,7 +1307,7 @@ $S_n(c)=a_0$ exactamente para todo $n$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 43</summary>
 
-Se deriva una identidad polinómica finita y se pasan límites numéricos ya controlados.
+Se deriva la identidad de un polinomio finito $\sum_{j=0}^n\rho^j=(1-\rho^{n+1})/(1-\rho)$. Ella da una fórmula para $\sum_{j=1}^n j\rho^{j-1}$. Como $n\rho^n\to0$ para $0<\rho<1$, los parciales numéricos convergen a $1/(1-\rho)^2$. Así se demuestra la sumabilidad del mayorante antes de derivar la serie funcional infinita.
 
 </details>
 
@@ -1247,7 +1322,7 @@ Se deriva una identidad polinómica finita y se pasan límites numéricos ya con
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 44</summary>
 
-El mismo que el original, por convergencia interior y la comparación inversa de magnitudes.
+Tiene el mismo radio $R$. La comparación con $j\rho^{j-1}$ acredita convergencia derivada en cualquier ventana interior, por lo que su radio es al menos $R$. Si convergiera a distancia $d>R$, sus términos $ja_jd^{j-1}$ serían acotados; para $j\ge1$, ello haría $|a_j|d^j$ acotado y obligaría a la original a converger en cada distancia menor que $d$, contradicción.
 
 </details>
 
@@ -1262,7 +1337,7 @@ El mismo que el original, por convergencia interior y la comparación inversa de
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 45</summary>
 
-No. Convergencia a una distancia $d$ da una barrera ponderada que fuerza convergencia original en cada radio menor.
+La serie integrada conserva el radio. Convergencia de la integrada a distancia $d>0$ implica una cota $|a_j|d^{j+1}/(j+1)\le B$. Para $r<d$, se sigue $|a_j|r^j\le(B/d)(j+1)(r/d)^j$, un mayorante sumable. Un radio integrado mayor forzaría convergencia original más allá de su radio. La integración ya acredita el sentido contrario en el interior.
 
 </details>
 
@@ -1277,7 +1352,7 @@ No. Convergencia a una distancia $d$ da una barrera ponderada que fuerza converg
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 46</summary>
 
-Sólo en $|x-c|<R$, con una ventana interior alrededor del punto.
+La fórmula $F'(x)=\sum_{j\ge1}ja_j(x-c)^{j-1}$ vale para $|x-c|<R$. Cada entrada interior cabe en una ventana donde la serie derivada converge uniformemente. En un extremo convergente de la original puede divergir la serie derivada, como sucede con $\sum x^j/j$ en $-1$.
 
 </details>
 
@@ -1292,7 +1367,7 @@ Sólo en $|x-c|<R$, con una ventana interior alrededor del punto.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 47</summary>
 
-El orden finito $k$; no se promete control común de todos los órdenes.
+Se fija primero un orden finito $k$ y una ventana estrictamente interior. Después se construyen mayorantes para los factores $j(j-1)\cdots(j-k+1)$ y se elige el corte según la tolerancia. El teorema para cada orden fijo no proporciona un control uniforme para órdenes que crezcan con el índice de truncación.
 
 </details>
 
@@ -1307,7 +1382,7 @@ El orden finito $k$; no se promete control común de todos los órdenes.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 48</summary>
 
-$k!a_k$, pues todos los monomios restantes de grado positivo se anulan en el centro.
+La derivación iterada da $F^{(k)}(x)=\sum_{j\ge k}j!/(j-k)!\,a_j(x-c)^{j-k}$ en el interior. Al evaluar en $c$, sólo queda el término $j=k$, de modo que $F^{(k)}(c)=k!a_k$. También vale para $k=0$, con $0!=1$.
 
 </details>
 
@@ -1324,7 +1399,11 @@ Deduzca $\sum_{j>n}j\rho^{j-1}$, $0<\rho<1$, sin derivar una serie infinita.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 26</summary>
 
-Derive la identidad polinómica finita $\sum_{j=0}^n\rho^j=(1-\rho^{n+1})/(1-\rho)$. Resulta $\sum_{j=1}^n j\rho^{j-1}=[1-(n+1)\rho^n+n\rho^{n+1}]/(1-\rho)^2$. La comparación de cocientes hace $n\rho^n\to0$, así que la suma total es $1/(1-\rho)^2$. Restar el parcial da $\rho^n[(n+1)-n\rho]/(1-\rho)^2$. El orden lógico acredita el mayorante antes de intercambiar derivadas y límites.
+Para $0<\rho<1$, derive sólo la identidad polinómica finita $\sum_{j=0}^n\rho^j=(1-\rho^{n+1})/(1-\rho)$. La regla del cociente da $\sum_{j=1}^n j\rho^{j-1}=[1-(n+1)\rho^n+n\rho^{n+1}]/(1-\rho)^2$.
+
+La sucesión $n\rho^n$ tiende a cero: desde $n\ge1$ sus cocientes son $\rho(n+1)/n\to\rho<1$, y una barrera geométrica lo demuestra. Lo mismo vale para $(n+1)\rho^n$. Por tanto los parciales numéricos convergen a $1/(1-\rho)^2$.
+
+Restar el parcial al total da la cola exacta $\sum_{j>n}j\rho^{j-1}=\rho^n[(n+1)-n\rho]/(1-\rho)^2$, también para $n=0$. La sumabilidad del mayorante derivativo queda establecida mediante polinomios y límites numéricos, antes de cualquier derivación de una serie infinita.
 
 **Retorno visual.** Véase [C29-F06](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1341,7 +1420,11 @@ Si $|a_j|\le3\,2^{-j}$, acote en $[-1,1]$ el resto de la serie derivada y evalú
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 27</summary>
 
-Los términos derivados están dominados por $3j\,2^{-j}$. La cola desde $j=n+1$ es $(3/2)\sum_{j>n}j(1/2)^{j-1}$. Con la fórmula anterior resulta $3(n+2)2^{-n}$. Para $n=4$ es $18/16=9/8$. Esta cota puede ser grande aunque el resto de valores sea $3\,2^{-n}$: el factor de índice consume parte del margen geométrico. El ancla constante y la sumabilidad derivada acreditan el intercambio en cualquier ventana estrictamente interior a radio $2$.
+En $[-1,1]$, $|ja_jx^{j-1}|\le3j2^{-j}$ para $j\ge1$. Esta serie de mayorantes converge por la fórmula de la cola ponderada con $\rho=1/2$. Además, los parciales originales valen $a_0$ en cero. El teorema derivativo permite identificar $F'$ con la serie de derivadas.
+
+Después del grado $n$, su resto satisface $|F'(x)-S_n'(x)|\le3\sum_{j>n}j2^{-j}=(3/2)\sum_{j>n}j(1/2)^{j-1}=3(n+2)2^{-n}$. Para $n=4$, la barrera es $18/16=9/8$. La cola de valores, en cambio, está dominada por $3\,2^{-n}$ y da $3/16$ en ese corte.
+
+El factor de índice explica el mayor presupuesto necesario para las derivadas. La hipótesis $|a_j|\le3\,2^{-j}$ garantiza un radio al menos dos; no obliga a que sea exactamente dos, pues los coeficientes pueden ser mucho menores o incluso terminar.
 
 </details>
 
@@ -1356,7 +1439,9 @@ Para $F(x)=\sum_{j\ge1}x^j/j$, explique por qué la convergencia en $-1$ no auto
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 28</summary>
 
-La serie de valores converge condicionalmente en $-1$ por C11. Dentro del radio su derivada es $\sum_{j\ge1}x^{j-1}=1/(1-x)$. En $x=-1$ los términos de esa serie derivada alternan entre $1$ y $-1$ y no tienden a cero; diverge. El teorema de potencias declara sólo entradas estrictamente interiores. Incluso si la función interior admitiera una extensión derivable al borde, no sería lícito igualar esa derivada con una serie divergente.
+La serie $F(x)=\sum_{j\ge1}x^j/j$ tiene radio uno. En $x=-1$ converge condicionalmente por alternancia. En $|x|<1$, el teorema derivativo da $F'(x)=\sum_{j\ge1}x^{j-1}=1/(1-x)$.
+
+Si se sustituye $x=-1$ en la serie derivada, sus términos son $(-1)^{j-1}$ y no tienden a cero. La serie diverge, por lo que no representa una derivada en esa frontera. La convergencia de los valores en el extremo no extiende el teorema derivativo hasta él. Una eventual extensión derivable de la función interior requeriría otro argumento y no convertiría esta serie divergente en una representación válida.
 
 </details>
 
@@ -1371,7 +1456,11 @@ Pruebe que dividir los coeficientes por $j+1$ e incrementar el grado no aumenta 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 29</summary>
 
-La integrada ya converge en el interior por comparación y el teorema de integración. Si converge en una distancia $d>0$, existe $B$ con $|a_j|d^{j+1}/(j+1)\le B$. Para $0<r<d$, $|a_j|r^j\le(B/d)(j+1)(r/d)^j$, cuya serie converge por cociente. El radio original es al menos todos esos $r$. Si el radio de la integrada fuese mayor, escoger una distancia convergente y luego un $r$ entre el radio original y esa distancia contradiría lo anterior. La misma prueba cubre un supuesto radio integrado infinito frente a uno original finito.
+La serie integrada desde el centro es $G(x)=\sum_{j\ge0}a_j(x-c)^{j+1}/(j+1)$. En cada ventana interior del radio original $R>0$, la convergencia uniforme permite integrar y da $G(x)=\int_c^xF(t)\,dt$. Por ello su radio $R_G$ es al menos $R$.
+
+Suponga que la integrada converge a una distancia $d>0$. Sus términos son acotados, así que existe $B$ con $|a_j|d^{j+1}/(j+1)\le B$. Para $0<r<d$, resulta $|a_j|r^j\le(B/d)(j+1)(r/d)^j$. La serie de la derecha converge, pues el cociente de sus términos tiende a $r/d<1$. La original converge absolutamente en cada distancia menor que $d$.
+
+Si $R_G>R$ con $R$ finito, escoja una distancia convergente $d>R$ para la integrada y luego $R<r<d$. La conclusión anterior contradice el radio original. Si $R=\infty$, la desigualdad inicial ya fuerza $R_G=\infty$. Por tanto $R_G=R$; la integración sí puede cambiar la convergencia en los extremos.
 
 </details>
 
@@ -1386,7 +1475,9 @@ Obtenga $F^{(3)}$ y $a_3$ para una serie de centro $c$ y radio positivo. Precise
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 30</summary>
 
-Iterar tres veces el teorema derivativo, con igualdad de radios en cada paso, da $F^{(3)}(x)=\sum_{j\ge3}j(j-1)(j-2)a_j(x-c)^{j-3}$ en $|x-c|<R$. En el centro sólo sobrevive $j=3$, luego $F^{(3)}(c)=6a_3$ y $a_3=F^{(3)}(c)/6$. Cada derivación usa uniformidad en una ventana interior y el ancla de su serie. No se hace una afirmación en la frontera ni para órdenes que cambien con el corte.
+En cualquier ventana estrictamente interior al radio, aplique tres veces el teorema derivativo. En cada paso la nueva serie conserva el radio, y los factores polinómicos en el índice se absorben reservando un margen geométrico. Se obtiene $F^{(3)}(x)=\sum_{j\ge3}j(j-1)(j-2)a_j(x-c)^{j-3}$ para $|x-c|<R$.
+
+Al evaluar en $c$, se anulan los grados positivos y sólo queda $j=3$: $F^{(3)}(c)=6a_3$, luego $a_3=F^{(3)}(c)/6$. El orden tres está fijado antes de elegir cortes. La fórmula se acredita en el interior, sin una afirmación adicional sobre los extremos.
 
 </details>
 ## 29.7. Coeficientes, funciones y certificados
@@ -1428,7 +1519,7 @@ Si dos series del mismo centro representan la misma función en una vecindad de 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 49</summary>
 
-Tiene radio infinito y alrededor de cada entrada hay un segmento interior acotado con el control requerido.
+Para $E(x)=\sum_{j\ge0}x^j/j!$, los cocientes de magnitudes en cualquier entrada fija tienden a cero: $|x|/(j+1)\to0$. Su radio es infinito. Toda entrada pertenece a una ventana interior finita, en la cual el teorema de series de potencias acredita la derivación.
 
 </details>
 
@@ -1443,7 +1534,7 @@ Tiene radio infinito y alrededor de cada entrada hay un segmento interior acotad
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 50</summary>
 
-$j/j!=1/(j-1)!$ para $j\ge1$, seguido del índice $k=j-1$.
+El término derivado para $j\ge1$ es $jx^{j-1}/j!=x^{j-1}/(j-1)!$. Poner $k=j-1$ convierte la serie en $\sum_{k\ge0}x^k/k!=E(x)$. La reindexación se hace después de justificar la derivación término a término.
 
 </details>
 
@@ -1458,7 +1549,7 @@ $j/j!=1/(j-1)!$ para $j\ge1$, seguido del índice $k=j-1$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 51</summary>
 
-El producto tiene derivada cero y valor $1$ en cero; valor medio lo hace constante en cada segmento.
+Sea $P(x)=E(x)E(-x)$. Por producto y cadena, $P'(x)=E(x)E(-x)-E(x)E(-x)=0$. El valor medio hace $P$ constante en $\mathbb R$, y $P(0)=E(0)^2=1$. Por tanto $E(x)E(-x)=1$ en toda entrada.
 
 </details>
 
@@ -1473,7 +1564,7 @@ El producto tiene derivada cero y valor $1$ en cero; valor medio lo hace constan
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 52</summary>
 
-No tiene ceros por el producto recíproco, es continua y vale $1$ en cero; valor intermedio excluye valores negativos.
+La identidad anterior implica que $E$ nunca se anula. Como es continua y $E(0)=1$, un valor negativo exigiría, por el valor intermedio en el segmento que lo une a cero, un punto donde $E=0$. Así $E(x)>0$ para todo $x\in\mathbb R$.
 
 </details>
 
@@ -1488,7 +1579,7 @@ No tiene ceros por el producto recíproco, es continua y vale $1$ en cero; valor
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 53</summary>
 
-Primer término $r^{n+1}/(n+1)!$ y cociente máximo $r/(n+2)<1$.
+En $|x|\le r$, el primer término omitido está dominado por $r^{n+1}/(n+1)!$. Los cocientes posteriores son a lo sumo $q=r/(n+2)$. Cuando $q<1$, la cola queda acotada por $[r^{n+1}/(n+1)!]/(1-q)$, una barrera válida simultáneamente en toda la ventana.
 
 </details>
 
@@ -1503,7 +1594,7 @@ Primer término $r^{n+1}/(n+1)!$ y cociente máximo $r/(n+2)<1$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 54</summary>
 
-$1/100$, estrictamente menor que $1/50$.
+En $[-1,1]$, tras grado cuatro se omite primero el grado cinco, de magnitud a lo sumo $1/120$. Desde ese término los cocientes son a lo sumo $1/6$, y por tanto el error es $\le(1/120)/(1-1/6)=1/100<1/50$. El mismo polinomio cumple la tolerancia en todo el intervalo.
 
 </details>
 
@@ -1518,7 +1609,7 @@ $1/100$, estrictamente menor que $1/50$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 55</summary>
 
-No. Compara representaciones convergentes ya existentes en una vecindad del mismo centro.
+La identidad $a_k=F^{(k)}(c)/k!$ determina los coeficientes de una representación por potencias que ya se ha acreditado. No prueba que la serie de esos coeficientes converja ni que su suma sea una función suave dada. Para construir tal representación se necesitaría, además, controlar el resto.
 
 </details>
 
@@ -1533,7 +1624,7 @@ No. Compara representaciones convergentes ya existentes en una vecindad del mism
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 56</summary>
 
-$L(x)=\int_0^x(1-t)^{-1}\,dt=\sum_{j\ge1}x^j/j$ sólo en el intervalo abierto interior.
+La geométrica converge uniformemente en cada segmento interior que une $0$ con $x$. Integrarla allí da $L(x)=\int_0^x(1-t)^{-1}\,dt=\sum_{j\ge1}x^j/j$ para $|x|<1$. El teorema fundamental identifica también $L'(x)=1/(1-x)$; no se necesita introducir una función logarítmica previamente.
 
 </details>
 
@@ -1550,7 +1641,9 @@ Calcule la cota factorial para $E$ en $[-1,1]$ con $n=4$ y compruebe tolerancia 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 31</summary>
 
-El primer término omitido tiene magnitud a lo sumo $1/5!=1/120$. Desde allí los cocientes son a lo sumo $1/6$, de modo que la cola está dominada por $(1/120)/(1-1/6)=1/100$. Puesto que $1/100<1/50$, el mismo parcial de grado cuatro satisface la tolerancia en todas las entradas de la ventana. No se usa una aproximación decimal de la suma.
+Sea $P_4(x)=1+x+x^2/2+x^3/6+x^4/24$. En $|x|\le1$, el primer término de $E-P_4$ tiene magnitud a lo sumo $1/5!=1/120$. Desde ese término, el cociente de mayorantes es $1/(j+1)\le1/6$.
+
+Por comparación geométrica, $|E(x)-P_4(x)|\le(1/120)\sum_{k\ge0}(1/6)^k=1/100<1/50$. La cota es común a toda la ventana y prueba la tolerancia estricta mediante aritmética exacta. No se necesita evaluar numéricamente $E$ ni escoger cortes distintos según $x$.
 
 **Retorno visual.** Véase [C29-F07](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1567,7 +1660,11 @@ Pruebe $E^{\prime}=E$, $E(x)E(-x)=1$ y $E(x)>0$ usando las operaciones ya acredi
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 32</summary>
 
-Radio infinito y derivación término a término dan $E^{\prime}=\sum_{j\ge1}x^{j-1}/(j-1)!=E$, por reindexación finita y límite. Producto y cadena dan derivada cero a $E(x)E(-x)$; valor medio sobre el segmento entre cero y cualquier $x$ lo identifica con el valor inicial $1$. Por tanto $E$ no se anula. Es continua y vale $1$ en cero; si tomara un valor negativo, valor intermedio en el segmento correspondiente produciría un cero, contradicción. Luego siempre es positiva.
+Para $E(x)=\sum_{j\ge0}x^j/j!$, el cociente de magnitudes es $|x|/(j+1)\to0$ en cada entrada. Su radio es infinito, por lo que puede derivarse término a término en una ventana finita alrededor de cualquier punto. Así $E'(x)=\sum_{j\ge1}x^{j-1}/(j-1)!=E(x)$ y $E(0)=1$.
+
+Defina $P(x)=E(x)E(-x)$. Producto y cadena dan $P'=E(x)E(-x)-E(x)E(-x)=0$. Por el valor medio, $P$ es constante; al evaluar en cero se obtiene $P=1$.
+
+En particular $E$ no se anula. Su continuidad y el valor positivo $E(0)=1$ excluyen valores negativos: cualquier segmento que uniera cero con una entrada negativa de $E$ contendría un cero por el valor intermedio. Por tanto $E(x)>0$ en toda la recta.
 
 </details>
 
@@ -1582,7 +1679,9 @@ Dos series del mismo centro representan la misma función cerca del centro y tie
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 33</summary>
 
-Para cada entero fijo $k$, la derivación iterada acreditada entrega en el centro $k!a_k$ para la primera representación y $k!b_k$ para la segunda. Las funciones coinciden en una vecindad abierta, luego por definición de derivadas y su iteración sus derivadas de orden $k$ allí coinciden. Como $k!\ne0$, $a_k=b_k$. El argumento requiere representaciones convergentes previamente existentes; no construye una representación para cualquier función suave.
+Sean $F$ y $G$ las sumas de dos series de potencias de centro $c$ y radios positivos. En un intervalo abierto alrededor de $c$ ambas existen y coinciden. Las series pueden derivarse cualquier número finito de veces en un intervalo más pequeño, y la igualdad de funciones implica igualdad de esas derivadas allí.
+
+Para cada $k\ge0$, evaluar en el centro da $k!a_k=F^{(k)}(c)=G^{(k)}(c)=k!b_k$. Como $k!\ne0$, $a_k=b_k$. Esto acredita unicidad de los coeficientes de una representación existente. No afirma que cualquier función infinitamente derivable admita tal representación: esa existencia exige controlar la convergencia y el resto de su serie.
 
 </details>
 
@@ -1597,7 +1696,9 @@ Defina $L(x)=\int_0^x(1-t)^{-1}\,dt$ en $(-1,1)$. Encuentre su serie y su deriva
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 34</summary>
 
-Cada segmento que une cero con $x$ está estrictamente dentro de $(-1,1)$ y la geométrica converge uniformemente allí. Integración término a término da $L(x)=\sum_{j\ge0}x^{j+1}/(j+1)=\sum_{j\ge1}x^j/j$. El integrando es continuo, así que el TFC de C24 da $L^{\prime}(x)=1/(1-x)$ en el interior y $L(0)=0$. Las cotas de error son longitud por resto geométrico. El resultado no asigna valores al integral en la singularidad $1$.
+Para $|x|<1$, el segmento que une cero con $x$ cabe en $[-r,r]$ con $r<1$. La geométrica $\sum_{k\ge0}t^k=1/(1-t)$ converge uniformemente en esa ventana. Integrar sus parciales y pasar al límite da $L(x)=\int_0^xdt/(1-t)=\sum_{k\ge0}x^{k+1}/(k+1)=\sum_{j\ge1}x^j/j$.
+
+La integranda es continua en el intervalo interior, de modo que el teorema fundamental da $L'(x)=1/(1-x)$ y $L(0)=0$. La derivación de la serie, ya acreditada por su radio uno, produce la misma geométrica. Todo vale también para $x<0$ con integrales orientadas; la identificación no necesita nombrar una función logarítmica ni presupone una fórmula en la frontera.
 
 </details>
 
@@ -1612,7 +1713,9 @@ Pruebe la ley de adición de $E$ y la unicidad de $y^{\prime}=y$, $y(0)=1$, en u
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 35</summary>
 
-Para $a$ fijo, la derivada de $E(a+t)E(-t)$ es cero por $E^{\prime}=E$, producto y cadena; valor medio lo hace constante igual a $E(a)$. Multiplicar por $E(t)$, usando el producto recíproco, da $E(a+t)=E(a)E(t)$. Para otra solución $y$, la misma regla da derivada cero a $y(t)E(-t)$. En cada segmento desde cero dentro del intervalo el valor medio la hace igual a $1$, por la condición inicial. Multiplicar por $E(t)$ entrega $y(t)=E(t)$. Es una prueba para esta ecuación, no la invocación de una teoría general.
+Fije $a\in\mathbb R$ y considere $Q(t)=E(a+t)E(-t)$. Como $E'=E$, se tiene $Q'=0$; por el valor medio, $Q(t)=Q(0)=E(a)$. Multiplique por $E(t)$ y use $E(-t)E(t)=1$: resulta $E(a+t)=E(a)E(t)$. Esto demuestra la ley de adición en toda la recta.
+
+Sea $y$ una solución derivable de $y'=y$, $y(0)=1$ en un intervalo que contiene cero. La derivada de $y(t)E(-t)$ es $y'(t)E(-t)-y(t)E(-t)=0$. Su valor es, por tanto, la constante uno. Multiplicar por $E(t)$ da $y(t)=E(t)$ en todo ese intervalo. La serie factorial proporciona la existencia y este argumento acredita la unicidad.
 
 </details>
 ## 29.8. Productos y el puente hacia análisis complejo
@@ -1652,7 +1755,7 @@ Si las series de magnitudes convergen uniformemente en una ventana y sus totales
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 57</summary>
 
-$\gamma_n=\sum_{j=0}^n\alpha_j\beta_{n-j}$, una suma finita.
+Para dos series numéricas de términos $\alpha_j$ y $\beta_j$, se define $\gamma_n=\sum_{j=0}^n\alpha_j\beta_{n-j}$. Es una suma finita de todos los productos cuyos índices suman $n$. La convergencia de $\sum\gamma_n$ y su identificación con el producto de sumas requieren después un argumento sobre colas.
 
 </details>
 
@@ -1667,7 +1770,7 @@ $\gamma_n=\sum_{j=0}^n\alpha_j\beta_{n-j}$, una suma finita.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 58</summary>
 
-El triángulo de índices no negativos $j+k\le N$.
+El parcial $\sum_{n=0}^N\gamma_n$ recoge exactamente los pares $(j,k)$ con $j,k\ge0$ y $j+k\le N$. Forma un triángulo de índices; el producto de dos parciales hasta $m$ recoge en cambio el cuadrado $0\le j,k\le m$. La diferencia entre ambas regiones explica el resto.
 
 </details>
 
@@ -1682,7 +1785,7 @@ El triángulo de índices no negativos $j+k\le N$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 59</summary>
 
-Si $j+k>N$, al menos uno de los índices excede $h$; de otro modo su suma sería a lo sumo $N$.
+Si ambos índices fueran $\le h=\lfloor N/2\rfloor$, tendríamos $j+k\le2h\le N$. Por contraposición, fuera del triángulo al menos uno es mayor que $h$. Así la región omitida queda cubierta por dos franjas controladas por las colas de los factores.
 
 </details>
 
@@ -1697,7 +1800,7 @@ Si $j+k>N$, al menos uno de los índices excede $h$; de otro modo su suma sería
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 60</summary>
 
-$B_*T_\alpha(h)+A_*T_\beta(h)$ para series numéricas absolutamente convergentes.
+Escribiendo $A_* =\sum|\alpha_j|$, $B_*=\sum|\beta_j|$ y $T_\alpha(h)=\sum_{j>h}|\alpha_j|$, la cota es $|AB-\sum_{n=0}^N\gamma_n|\le B_*T_\alpha(h)+A_*T_\beta(h)$. Las franjas pueden solaparse; contarlas dos veces sólo amplía una cota de cantidades no negativas.
 
 </details>
 
@@ -1712,7 +1815,7 @@ $B_*T_\alpha(h)+A_*T_\beta(h)$ para series numéricas absolutamente convergentes
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 61</summary>
 
-El del cuadrado $m\to\infty$ con triángulo $N$ fijo; después se hace $N\to\infty$.
+Se fija $N$ y se hace crecer primero el cuadrado de lado $m\ge N$: el producto de parciales tiende a $AB$, mientras el triángulo permanece fijo. La estimación finita de las franjas pasa entonces al límite. Después $N\to\infty$ hace $h=\lfloor N/2\rfloor\to\infty$ y elimina las dos colas.
 
 </details>
 
@@ -1727,7 +1830,7 @@ El del cuadrado $m\to\infty$ con triángulo $N$ fijo; después se hace $N\to\inf
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 62</summary>
 
-No. Es al menos el mínimo y puede crecer por cancelación de coeficientes.
+El radio del producto es al menos el mínimo, porque dentro de ambos radios hay convergencia absoluta y la prueba de Cauchy es aplicable. Puede ser mayor por cancelación de coeficientes: la geométrica multiplicada por $1-x$ da la serie constante $1$, de radio infinito, aunque la geométrica tenga radio uno.
 
 </details>
 
@@ -1742,7 +1845,7 @@ No. Es al menos el mínimo y puede crecer por cancelación de coeficientes.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 63</summary>
 
-Uniformidad de las colas y barreras comunes para que los factores no amplifiquen los errores.
+En una ventana común, mayorantes sumables de ambos factores dan cotas uniformes para sus sumas absolutas y para sus colas. La estimación triangular queda así independiente de la entrada y tiende a cero uniformemente. Además, $\sum_n|\gamma_n(x)|$ queda dominada por el producto de las sumas de los mayorantes.
 
 </details>
 
@@ -1757,7 +1860,7 @@ Uniformidad de las colas y barreras comunes para que los factores no amplifiquen
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 64</summary>
 
-Las regiones radiales serán discos. Aquí no se ha demostrado diferenciabilidad compleja ni comportamiento general de la frontera.
+Las distancias al centro pasan a ser módulos $|z-c|$ y las ventanas circulares son discos. Las cotas geométricas y las estimaciones de magnitudes sugieren el mismo radio. Esta anticipación no demuestra diferenciabilidad compleja: establecerla exige el marco y los argumentos propios del análisis complejo.
 
 </details>
 
@@ -1774,7 +1877,9 @@ Encuentre los coeficientes del producto de dos geométricas centradas en cero e 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 36</summary>
 
-Cada coeficiente es $d_n=\sum_{j=0}^n1=n+1$. La absoluta interior y el producto de Cauchy probado entregan $\sum_{n\ge0}(n+1)x^n=(1-x)^{-2}$ para $|x|<1$. Sus cocientes de coeficientes tienden a $1$, luego su radio es $1$. En ambos extremos los términos tienen magnitudes $n+1$, así que diverge allí. La cuenta finita de pares del triángulo explica el factor $n+1$.
+Cada geométrica tiene coeficientes uno. El coeficiente de grado $n$ del producto de Cauchy es $\gamma_n=\sum_{j=0}^n1=n+1$. Para $|x|<1$, ambos factores convergen absolutamente; el teorema de producto da $\sum_{n\ge0}(n+1)x^n=[\sum_{j\ge0}x^j]^2=1/(1-x)^2$.
+
+El cociente de magnitudes de los coeficientes es $(n+2)/(n+1)\to1$, así que el radio es uno. En $x=\pm1$, los términos tienen magnitud $n+1$ y no desaparecen. Fuera del radio también diverge; su dominio es $(-1,1)$. La identidad funcional se ha demostrado allí, donde los factores originales tienen suma.
 
 **Retorno visual.** Véase [C29-F08](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1791,7 +1896,11 @@ Pruebe la cota triangular del producto numérico y explique el orden de sus dos 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 37</summary>
 
-En el cuadrado de índice $m\ge N$, el triángulo de suma de índices a lo sumo $N$ está incluido. Para cualquier par excluido, al menos un índice excede $h=\lfloor N/2\rfloor$. La suma finita de magnitudes excluidas está entonces dominada por $B_*T_\alpha(h)+A_*T_\beta(h)$; contar dos veces algunos pares sólo aumenta la cota. Con $N$ fijo, pasar $m$ al límite hace converger el producto de parciales a $AB$. La cota pasa con desigualdad débil. Después $N\to\infty$ hace desaparecer las colas y demuestra que los parciales triangulares tienden a $AB$.
+Sean $\sum\alpha_j=A$, $\sum\beta_j=B$ dos series absolutamente convergentes, y escriba $A_*=\sum|\alpha_j|$, $B_*=\sum|\beta_j|$. El parcial de Cauchy $C_N=\sum_{n=0}^N\sum_{j=0}^n\alpha_j\beta_{n-j}$ suma el triángulo $j+k\le N$.
+
+Fije $N$, ponga $h=\lfloor N/2\rfloor$ y elija $m\ge N$. El cuadrado del producto de parciales contiene el triángulo. Cualquier par omitido tiene $j>h$ o $k>h$, pues $j,k\le h$ implicaría $j+k\le2h\le N$. Por la desigualdad triangular y sumas finitas de cantidades positivas, $|A_mB_m-C_N|\le B_*T_\alpha(h)+A_*T_\beta(h)$, donde $T_\alpha(h)=\sum_{j>h}|\alpha_j|$ y análogamente para $\beta$.
+
+Con $N$ fijo, haga $m\to\infty$: $A_mB_m\to AB$ y queda la misma cota para $|AB-C_N|$. Después $N\to\infty$ elimina ambas colas. Esto prueba la igualdad sin cambiar el orden de una suma doble infinita sin justificación. Además, los parciales de $\sum|\gamma_n|$ están acotados por $A_*B_*$, de modo que el producto de Cauchy también converge absolutamente.
 
 </details>
 
@@ -1806,7 +1915,11 @@ Use la geométrica y $1-x$ para refutar que el radio del producto sea siempre ex
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 38</summary>
 
-La geométrica tiene coeficientes $a_n=1$ y radio $1$. El polinomio $1-x$ tiene $b_0=1$, $b_1=-1$, los demás cero y radio infinito. Los coeficientes del producto son $d_0=1$ y, para $n\ge1$, $d_n=a_n-a_{n-1}=0$. Su serie es constante y tiene radio infinito, mayor que el mínimo $1$. La igualdad entre el producto de las funciones originales y esa serie se acredita en $(-1,1)$; la geométrica original sigue divergente fuera.
+La geométrica tiene coeficientes $a_j=1$ y radio uno. El polinomio $1-x$ tiene coeficientes $b_0=1$, $b_1=-1$ y $b_j=0$ para $j\ge2$, por lo que su radio es infinito.
+
+El producto de Cauchy da $\gamma_0=1$ y, para $n\ge1$, $\gamma_n=a_nb_0+a_{n-1}b_1=1-1=0$. La serie resultante es la constante uno y tiene radio infinito, estrictamente mayor que el mínimo de los radios originales.
+
+En $|x|<1$, el teorema identifica su suma con $(1-x)\sum x^j=1$. Fuera de ese intervalo, la nueva serie sigue convergiendo, pero la geométrica original no tiene suma. La ampliación del radio corresponde a la serie de coeficientes cancelados.
 
 </details>
 
@@ -1821,7 +1934,11 @@ Si dos series de magnitudes son uniformes en $Y$ con totales acotados por $A_*,B
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 39</summary>
 
-En cada entrada son absolutamente convergentes y el producto numérico identifica el destino. Las colas de magnitudes tienen envolventes comunes $t_\alpha(h),t_\beta(h)\to0$ por la uniformidad supuesta. La cota triangular vale simultáneamente: el resto del producto de Cauchy es a lo sumo $B_*t_\alpha(\lfloor N/2\rfloor)+A_*t_\beta(\lfloor N/2\rfloor)$. Este presupuesto tiende a cero con un corte independiente de la entrada. Las barreras comunes se usan para que los factores no amplifiquen arbitrariamente las colas.
+Suponga que en una ventana $Y$ las series de magnitudes tienen sumas acotadas por $A_*$ y $B_*$ y convergen uniformemente. Sus colas admiten barreras $e_\alpha(h)=\sup_{x\in Y}\sum_{j>h}|\alpha_j(x)|\to0$ y $e_\beta(h)\to0$.
+
+Para cada entrada se aplica la estimación del producto de Cauchy con $h=\lfloor N/2\rfloor$. Como los totales y las barreras son comunes, $|A(x)B(x)-C_N(x)|\le B_*e_\alpha(h)+A_*e_\beta(h)$ en toda la ventana. Escoger un corte que haga esta expresión menor que la tolerancia acredita convergencia uniforme al producto.
+
+También hay uniformidad absoluta del producto: la suma de magnitudes de coeficientes omitidos está acotada por las mismas dos franjas, y el total es $\le A_*B_*$. Si la hipótesis se da mediante mayorantes numéricos sumables, sus totales y sus colas proporcionan directamente estas constantes y barreras. La acotación de los totales es parte de lo que se usa en la estimación.
 
 </details>
 
@@ -1836,7 +1953,11 @@ Para el cuadrado de la geométrica en $[-1/2,1/2]$, obtenga una cota de cola de 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 40</summary>
 
-Cada serie de magnitudes está acotada por $2$, con cola desde $h+1$ a lo sumo $2^{-h}$. El método triangular da cota $4\,2^{-\lfloor N/2\rfloor}$. Por la identidad ponderada geométrica, la cola de coeficientes $(n+1)x^n$ tiene envolvente exacta en $x=1/2$: $\sum_{n>N}(n+1)2^{-n}=(N+3)2^{-N}$. La primera es suficiente y suele ser menos ajustada; ambas tienden a cero. El argumento usa magnitudes, triangular y regiones interiores, mecanismos que se trasladarán a discos complejos. No acredita por sí solo diferenciabilidad compleja ni valores en toda la frontera.
+En $|x|\le1/2$, cada geométrica tiene suma de magnitudes $\le2$ y cola tras $h$ dominada por $\sum_{j>h}2^{-j}=2^{-h}$. Con $h=\lfloor N/2\rfloor$, la barrera triangular del producto es $2\,2^{-h}+2\,2^{-h}=4\,2^{-\lfloor N/2\rfloor}$, que tiende a cero y acredita uniformidad.
+
+Los coeficientes del producto son $n+1$. Su cola exacta de magnitudes en $x=1/2$ es $\sum_{n>N}(n+1)2^{-n}=(N+3)2^{-N}$, obtenida sumando las colas geométrica y ponderada. Para cualquier $|x|\le1/2$ la magnitud del resto está acotada por esa expresión, y la igualdad se alcanza en $x=1/2$ porque todos los términos son positivos. Es, por tanto, una envolvente exacta, más ajustada que la cobertura general por dos franjas.
+
+Para un centro complejo, sustituir $|x|$ por $|z|$ protege igualmente el disco $|z|\le1/2$ mediante estas cotas de magnitudes. Es una conexión con el futuro estudio de series complejas; aquí sólo se anticipa la geometría del control de colas.
 
 </details>
 

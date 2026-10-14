@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-10-07
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 areas:
 - analisis
 level: universitario
@@ -50,21 +50,7 @@ include-in-header:
 
 ### 1. ¿Por qué escribir una lista de axiomas no demuestra existencia?
 
-Porque una **especificación** sólo describe qué propiedades debería satisfacer un objeto si existiera. Una lista de condiciones puede incluso ser incompatible. Para demostrar existencia hace falta exhibir al menos un modelo concreto y verificar que cumple simultáneamente todas las condiciones exigidas.
-
-En símbolos, el paso inválido sería confundir
-
-$$
-\text{«si }F\text{ existe y satisface los axiomas, entonces tiene tales propiedades»}
-$$
-
-con
-
-$$
-\exists F\;\bigl(F\text{ satisface esos axiomas}\bigr).
-$$
-
-Definir la clase buscada no produce por sí solo un elemento de esa clase.
+Una lista de axiomas indica qué tendría que cumplir un objeto, pero puede no tener ningún modelo. Para demostrar existencia hay que construir un candidato y verificar todas las condiciones en él. Por ejemplo, exigir a la vez $0=1$ y $0\ne1$ no produce una estructura: produce condiciones incompatibles. El trabajo del capítulo será exhibir una estructura que sí realice la especificación de cuerpo ordenado completo.
 
 []{#MA-MSOL-ANM-01-000-002}
 
@@ -72,13 +58,7 @@ Definir la clase buscada no produce por sí solo un elemento de esa clase.
 
 ### 2. Álgebra, orden y completitud
 
-La especificación se divide en tres capas.
-
-- **Álgebra:** $F$ debe ser un **cuerpo**: posee suma y producto, $0$ y $1$, opuestos, inversos multiplicativos para elementos no nulos y las leyes algebraicas correspondientes.
-- **Orden:** $F$ debe llevar un **orden lineal compatible** con las operaciones; en particular, trasladar una desigualdad por la misma cantidad preserva el orden y el producto de dos elementos no negativos sigue siendo no negativo.
-- **Completitud:** todo subconjunto no vacío de $F$ acotado superiormente debe tener un **supremo en $F$**.
-
-Las dos primeras capas producen un cuerpo ordenado. La tercera añade la propiedad del supremo y da un cuerpo ordenado completo.
+Se requieren operaciones que hagan de $F$ un cuerpo, un orden lineal compatible con ellas y la propiedad del supremo. La compatibilidad exige que sumar la misma cantidad conserve las desigualdades y que el producto de no negativos sea no negativo. La completitud pide un supremo en $F$ para cada subconjunto no vacío acotado superiormente. Los racionales cumplen las condiciones algebraicas y de orden, pero permiten ver por qué la última es una exigencia adicional.
 
 []{#MA-MSOL-ANM-01-000-003}
 
@@ -86,28 +66,7 @@ Las dos primeras capas producen un cuerpo ordenado. La tercera añade la propied
 
 ### 3. ¿Qué falta para que una cota superior sea el supremo?
 
-Si $s$ ya es una cota superior de $A$, falta que sea la **menor** de todas ellas. Es decir, debe cumplirse
-
-$$
-\forall u\in F,
-\qquad
-\bigl(u\text{ es cota superior de }A\bigr)
-\Longrightarrow
-s\le u.
-$$
-
-Junto con
-
-$$
-a\le s
-\qquad(a\in A),
-$$
-
-esta condición caracteriza exactamente
-
-$$
-\boxed{s=\sup A}.
-$$
+Además de $a\le s$ para todo $a\in A$, debe cumplirse $s\le u$ para toda cota superior $u$ de $A$. Esa segunda obligación hace que $s$ sea la menor cota superior. No exige $s\in A$: el conjunto racional $\{q:q<1\}$ tiene supremo uno, que queda fuera del conjunto.
 
 []{#MA-MSOL-ANM-01-000-004}
 
@@ -115,24 +74,7 @@ $$
 
 ### 4. Acotación superior no es existencia de supremo
 
-Decir que $A$ está **acotado superiormente** significa sólo que existe algún $u\in F$ tal que
-
-$$
-a\le u
-\qquad(a\in A).
-$$
-
-Decir que $A$ **tiene supremo en $F$** exige mucho más: debe existir una cota superior $s\in F$ que sea menor o igual que cualquier otra cota superior.
-
-Por tanto,
-
-$$
-\text{acotado superiormente}
-\not\Rightarrow
-\text{tener supremo}
-$$
-
-sin una hipótesis adicional de completitud. Precisamente la propiedad del supremo exige que esa implicación sí valga para todo subconjunto no vacío y acotado superiormente.
+Una cota superior sólo impone $a\le u$ para todo $a\in A$. Para tener supremo hace falta que entre las cotas superiores exista una menor, perteneciente al sistema donde se compara. El conjunto $S_2$ estudiado en §0.3 tendrá cotas racionales, pero ninguna será la menor de ellas. La completitud excluye esa pérdida para subconjuntos no vacíos acotados superiormente.
 
 []{#MA-MSOL-ANM-01-000-005}
 
@@ -140,17 +82,7 @@ sin una hipótesis adicional de completitud. Precisamente la propiedad del supre
 
 ### 5. ¿Qué significa que los racionales estén «dentro» de $F$?
 
-La notación
-
-$$
-\mathbb Q\subseteq F
-$$
-
-no debería tomarse de entrada como inclusión literal de conjuntos. Lo que necesitamos es una **copia estructural** de $\mathbb Q$ dentro de $F$: una aplicación inyectiva que preserve la aritmética y el orden racionales.
-
-Sólo después de construir y verificar esa incrustación podremos identificar por convenio cada racional con su imagen y usar una notación de inclusión sin perder información estructural.
-
-La cuestión, por tanto, no es sólo dónde están los elementos, sino qué operaciones y relaciones se conservan al incorporarlos en el sistema mayor.
+Se necesita una aplicación inyectiva $\iota:\mathbb Q\to F$ que conserve suma, producto, cero, uno y orden. La inclusión literal es $\iota(\mathbb Q)\subseteq F$. Una vez verificada la estructura, identificar cada racional con su imagen permite abreviar $\mathbb Q\subseteq F$. La abreviatura debe conservar la aritmética racional, además de distinguir sus elementos.
 
 []{#MA-MSOL-ANM-01-000-006}
 
@@ -158,21 +90,8 @@ La cuestión, por tanto, no es sólo dónde están los elementos, sino qué oper
 
 ### 6. Dos modelos no tienen que ser literalmente el mismo conjunto
 
-Dos construcciones pueden usar objetos subyacentes distintos y, sin embargo, realizar exactamente la misma estructura matemática. Exigir desde el comienzo
+Dos construcciones pueden tener conjuntos subyacentes distintos y realizar la misma estructura. La comparación pertinente será una biyección que preserve las operaciones y el orden. Al comienzo del capítulo todavía hay que construir un modelo; después se demostrará que entre cualesquiera dos cuerpos ordenados completos existe un único isomorfismo de cuerpos ordenados. Esa conclusión no obliga a que sus elementos sean literalmente los mismos objetos conjuntistas.
 
-$$
-F=G
-$$
-
-como igualdad literal de conjuntos sería imponer una coincidencia de representación que no forma parte de la especificación.
-
-La pregunta adecuada es estructural: si ambos resultan ser cuerpos ordenados completos, habrá que investigar si existe una correspondencia que conserve las operaciones y el orden, es decir, un **isomorfismo de cuerpos ordenados**.
-
-En §0.1 esta cuestión queda sólo planteada. El orden lógico del capítulo sigue siendo
-
-$$
-\boxed{\text{primero existencia; después comparación estructural}.}
-$$
 ## §0.2. Extender sin perder estructura: de $\mathbb N$ a $\mathbb Q$
 
 []{#MA-MSOL-ANM-01-000-007}
@@ -183,24 +102,7 @@ $$
 
 ### 7. ¿Por qué la inyectividad es indispensable para una copia estructural?
 
-La inyectividad impide que dos elementos distintos del sistema original se vuelvan indistinguibles después del transporte. Si existieran $a
-e b$ con
-
-$$
-\iota(a)=\iota(b),
-$$
-
-entonces la imagen en $B$ ya no permitiría recuperar la diferencia entre $a$ y $b$. El sistema mayor habría **colapsado información** del sistema menor.
-
-Por eso, para considerar a $A$ como una copia dentro de $B$, necesitamos que
-
-$$
-a
-e b\Longrightarrow \iota(a)
-e\iota(b).
-$$
-
-La preservación de operaciones y relaciones sólo produce una copia fiel cuando los elementos distintos siguen siendo distintos.
+La inyectividad asegura que $a\ne b$ implica $\iota(a)\ne\iota(b)$. Si dos elementos distintos tuvieran la misma imagen, esa imagen no permitiría distinguirlos ni recuperar el elemento original. Por eso preservar operaciones y relaciones debe acompañarse de inyectividad para obtener una copia fiel. En particular, la igualdad de imágenes sólo autoriza concluir igualdad de sus preimágenes cuando esa propiedad está acreditada.
 
 []{#MA-MSOL-ANM-01-000-008}
 
@@ -275,23 +177,7 @@ sí es una incrustación de la estructura disponible en $\mathbb N$: preserva su
 
 ### 11. Incrustación, imagen e identificación con la imagen
 
-Las tres expresiones corresponden a pasos distintos.
-
-- $A\hookrightarrow B$ indica que existe una **incrustación estructural** $\iota:A\to B$: una aplicación inyectiva que conserva la estructura pertinente.
-- $\iota(A)\subseteq B$ es una **inclusión literal de conjuntos**: la imagen de la aplicación es realmente un subconjunto de $B$.
-- Escribir después $A\subseteq B$ es una **convención de identificación**: reemplazamos notacionalmente $A$ por la copia $\iota(A)$ porque ambas son estructuralmente equivalentes para lo que estamos estudiando.
-
-El orden lógico es, por tanto,
-
-$$
-A\xhookrightarrow{\ \iota\ }B
-\longrightarrow
-\iota(A)\subseteq B
-\longrightarrow
-\text{identificar }A\text{ con }\iota(A).
-$$
-
-La última escritura no debe confundirse con una inclusión literal que estuviera dada desde el comienzo.
+Primero se construye una incrustación $\iota:A\to B$: una aplicación inyectiva que conserva la estructura pertinente. Su imagen $\iota(A)$ sí es un subconjunto literal de $B$. La identificación posterior de $A$ con esa imagen permite escribir $A\subseteq B$ por convenio. En una representación por fracciones, por ejemplo, la imagen de un entero es el racional correspondiente a $n/1$; la notación abreviada descansa en esa correspondencia estructural.
 
 []{#MA-MSOL-ANM-01-000-012}
 
@@ -472,25 +358,7 @@ $$
 
 ### 17. Densidad y completitud responden preguntas distintas
 
-La **densidad** de $\mathbb Q$ afirma que entre dos racionales distintos siempre existe otro racional:
-
-$$
-p<q
-\Longrightarrow
-\exists r\in\mathbb Q:\ p<r<q.
-$$
-
-Es una propiedad local del orden entre puntos que ya pertenecen al sistema.
-
-La **completitud por supremos**, en cambio, exige que todo subconjunto no vacío y acotado superiormente posea dentro del sistema una menor cota superior.
-
-Por eso un orden puede ser denso y, sin embargo, incompleto. El conjunto $S_2$ muestra exactamente esa situación: podemos encontrar racionales cada vez más cercanos a la frontera que determina la condición $q^2<2$, pero esa frontera requerida no aparece como supremo racional.
-
-En síntesis,
-
-$$
-\boxed{\text{densidad llena intervalos entre puntos; completitud garantiza ciertas fronteras.}}
-$$
+Densidad dice que entre dos racionales $p<q$ hay otro, como $(p+q)/2$. Completitud exige que cada subconjunto no vacío acotado superiormente tenga una menor cota superior dentro del sistema. La primera propiedad habla de intervalos cuyos extremos ya existen; la segunda puede exigir un elemento que todavía falta. $\mathbb Q$ es denso, pero $S_2$ no tiene supremo racional, como prueban los tres casos para un candidato.
 
 []{#MA-MSOL-ANM-01-000-018}
 
@@ -629,15 +497,7 @@ la posición codificada por $B$ queda estrictamente más a la derecha que la cod
 
 ### 24. Tener $\mathcal D$ como conjunto no basta para construir los reales
 
-La inclusión
-$$
-\mathcal D\subseteq\mathcal P(\mathbb Q)
-$$
-justifica que $\mathcal D$ es un conjunto bien definido. Además, §0.4 le da un orden lineal por inclusión.
-
-Pero todavía falta definir y verificar suma y producto, cero y uno, opuestos e inversos multiplicativos, las leyes de cuerpo, la compatibilidad con el orden y la propiedad del supremo.
-
-Por tanto, de $\mathcal D\subseteq\mathcal P(\mathbb Q)$ no se sigue que $\mathcal D$ sea un cuerpo ordenado completo. En §0.4 hemos construido **el dominio y su orden**; la estructura algebraica y la completitud todavía deben demostrarse.
+La inclusión $\mathcal D\subseteq\mathcal P(\mathbb Q)$ construye el conjunto de cortaduras, y la inclusión entre sus miembros le da un orden. Para realizar los reales faltan operaciones internas y sus leyes de cuerpo, compatibilidad con el orden y propiedad del supremo. Cada etapa debe comprobarse sobre los objetos construidos: disponer de un dominio ordenado todavía no demuestra que sea un cuerpo ordenado completo.
 
 ## §0.5. Una copia de $\mathbb Q$ dentro del nuevo sistema
 
@@ -877,31 +737,7 @@ No fue necesario introducir ningún número cuyo cuadrado sea $2$.
 
 ### 30. Por qué todavía no hay una incrustación de cuerpos ordenados
 
-Hasta §0.5 hemos definido en $\mathcal D$ el orden por inclusión, y hemos demostrado que
-
-$$
-\iota_{\mathbb Q}(q)=q^*
-$$
-
-es inyectiva y preserva y refleja ese orden.
-
-Pero todavía no hemos definido en $\mathcal D$ una suma ni un producto. Por tanto expresiones como
-
-$$
-p^*+q^*
-\qquad\text{o}\qquad
-p^*q^*
-$$
-
-aún no forman parte de la estructura disponible en esta sección.
-
-Una incrustación de cuerpos ordenados debe conservar, además del orden, las operaciones de cuerpo y los elementos distinguidos correspondientes. Como esa verificación algebraica todavía no puede formularse plenamente, el certificado correcto es sólo
-
-$$
-\boxed{\text{incrustación de órdenes lineales}.}
-$$
-
-La certificación como incrustación de cuerpos ordenados queda pendiente hasta definir y verificar la aritmética de cortaduras.
+En §0.5, $q\mapsto q^*$ es una aplicación inyectiva que preserva y refleja el orden. La suma y el producto de cortaduras aún no se han definido. Por ello todavía no puede afirmarse que la aplicación conserve esas operaciones. La conclusión disponible es una incrustación de órdenes lineales; las secciones siguientes construirán la aritmética que permitirá demostrar que también es una incrustación de cuerpos ordenados.
 
 []{#MA-MSOL-ANM-01-000-031}
 
@@ -937,33 +773,7 @@ Sólo después de esas verificaciones, junto con los elementos distinguidos y lo
 
 ### 32. Por qué un racional exterior domina a toda la cortadura
 
-Sean $A\in\mathcal D$, $u\notin A$ y $a\in A$. Queremos justificar que necesariamente
-
-$$
-a<u.
-$$
-
-Si ocurriera $u\le a$, la clausura hacia abajo de $A$ se aplicaría a $a\in A$ y daría
-
-$$
-u\in A,
-$$
-
-contradiciendo $u\notin A$. Por tanto $u\le a$ es imposible.
-
-Como $a$ y $u$ son racionales comparables, sólo queda
-
-$$
-\boxed{a<u.}
-$$
-
-Ésta es exactamente la propiedad usada al probar que $A+B$ es propio: si $u\notin A$ y $v\notin B$, entonces todo $a+b\in A+B$ satisface
-
-$$
-a+b<u+v,
-$$
-
-de modo que $u+v\notin A+B$.
+Sean $a\in A$ y $u\notin A$. Si $u=a$, la igualdad daría $u\in A$. Si $u<a$, la clausura hacia abajo daría la misma contradicción. Por tricotomía queda $a<u$. Para la suma, exteriores $u\notin A$ y $v\notin B$ dominan así todos los testigos: $a+b<u+v$. En particular, $u+v$ no pertenece a $A+B$ y garantiza que el resultado es propio.
 
 []{#MA-MSOL-ANM-01-000-033}
 
@@ -1078,50 +888,7 @@ En el caso racional esto recupera exactamente $(-q)^*$, pero sin introducir un p
 
 ### 35. Dónde se usa la propiedad arquimediana en el lema de aproximación
 
-En el lema partimos de
-
-$$
-a_0\in A,
-\qquad
-u\notin A,
-\qquad
-h>0.
-$$
-
-Como todo elemento de $A$ queda estrictamente por debajo de todo racional exterior,
-
-$$
-a_0<\nu,
-$$
-
-y por tanto $\nu-a_0>0$.
-
-La propiedad arquimediana de $\mathbb Q$ se usa exactamente para elegir un natural $n$ tal que
-
-$$
-nh>\nu-a_0.
-$$
-
-De aquí obtenemos
-
-$$
-a_0+nh>\nu.
-$$
-
-Ese término ya no puede pertenecer a $A$, pues si perteneciera, la clausura hacia abajo y $\nu<a_0+nh$ obligarían a $\nu\in A$.
-
-Por tanto la lista finita
-
-$$
-a_0,
-a_0+h,
-\ldots,
-a_0+nh
-$$
-
-empieza dentro de $A$ y termina fuera. Sólo después de este paso arquimediano tiene sentido escoger el **primer** índice en que se sale de la cortadura.
-
-La propiedad arquimediana no se usa para identificar una frontera; se usa únicamente para garantizar que una cantidad finita de pasos de tamaño $h$ termina atravesándola.
+Tome $a_0\in A$, $u\notin A$ y $h>0$ racional. Se tiene $a_0<u$. Arquimedianidad de $\mathbb Q$ proporciona $n$ con $nh>u-a_0$, luego $a_0+nh>u$ y ese término está fuera de $A$. En la lista finita $a_0,a_0+h,\ldots,a_0+nh$, el primer término está dentro y el último fuera. El primer índice de salida $k\ge1$ determina $a=a_0+(k-1)h\in A$ con $a+h\notin A$. No se ha usado una frontera real: el cruce se localiza por pasos racionales finitos.
 
 []{#MA-MSOL-ANM-01-000-036}
 
@@ -1335,36 +1102,7 @@ La construcción del opuesto en $\mathcal D$ reproduce exactamente el opuesto ra
 
 ### 39. Qué falta para obtener una incrustación de cuerpos ordenados
 
-Al terminar §0.6 ya están certificadas para la copia racional la inyectividad, el orden, la suma, el cero y los opuestos. Lo que falta es la **estructura multiplicativa** necesaria para que $\mathcal D$ sea un cuerpo ordenado y para que $\iota_{\mathbb Q}$ sea un homomorfismo de cuerpos ordenados.
-
-En concreto, todavía habrá que:
-
-- definir un producto interno $\mathcal D\times\mathcal D\to\mathcal D$ y probar su clausura;
-- verificar asociatividad y conmutatividad del producto;
-- identificar una unidad multiplicativa, que deberá corresponder a $1^*$;
-- construir inversos multiplicativos para las cortaduras no nulas;
-- verificar la distributividad respecto de la suma;
-- comprobar la compatibilidad del producto con el orden;
-- demostrar sobre la copia racional la identidad pendiente
-  $$
-  p^*q^*=(pq)^*.
-  $$
-
-Sólo cuando esas obligaciones estén demostradas podrá concluirse que $\mathcal D$ posee estructura de cuerpo ordenado y que
-
-$$
-\iota_{\mathbb Q}:\mathbb Q\hookrightarrow\mathcal D
-$$
-
-conserva toda la estructura de cuerpo ordenado.
-
-Por tanto, al cierre de §0.6 el certificado correcto sigue siendo
-
-$$
-\boxed{
-\text{estructura aditiva completa; estructura multiplicativa todavía pendiente}.
-}
-$$
+Al terminar la construcción aditiva, la copia racional conserva orden, suma, cero y opuestos. Falta definir un producto interno de cortaduras y probar sus leyes, la unidad $1^*$, distributividad e inversos para elementos no nulos. También debe acreditarse $(pq)^*=p^*q^*$ y la compatibilidad multiplicativa del orden. Hasta entonces, la aritmética aditiva está demostrada y la estructura de cuerpo sigue pendiente.
 
 ## §0.7. Dar aritmética a las cortaduras II: producto e inverso
 
@@ -1376,29 +1114,7 @@ $$
 
 ### 40. Por qué el producto ingenuo de todos los testigos falla
 
-El conjunto
-
-$$
-\{ab:a\in A,\ b\in B\}
-$$
-
-no puede ser la definición general del producto. Toda cortadura es no vacía y cerrada hacia abajo, de modo que contiene racionales negativos de magnitud arbitrariamente grande. En efecto, si $a_0\in A$ y $b_0\in B$, podemos elegir un natural $n$ suficientemente grande para que
-
-$$
--n<a_0,
-\qquad
--n<b_0.
-$$
-
-Entonces $-n\in A\cap B$, y el producto de esos dos testigos es
-
-$$
-(-n)(-n)=n^2.
-$$
-
-Como $n^2$ puede hacerse arbitrariamente grande, el conjunto de productos ingenuos contiene racionales positivos sin cota superior. En particular, no puede representar una cortadura propia situada a la izquierda de una frontera finita.
-
-El problema no es la multiplicación racional, sino haber ignorado el signo de los testigos. Por eso §0.7 construye primero el producto de las **partes positivas** y sólo después extiende la regla a todos los signos.
+Toda cortadura contiene negativos de magnitud arbitrariamente grande: si $a_0\in A$, cualquier $-n<a_0$ pertenece a $A$ por clausura inferior. Para $n$ grande, $-n$ pertenece tanto a $A$ como a $B$, y la receta $\{ab:a\in A,b\in B\}$ contiene $n^2$. Sus valores positivos no están acotados. Una cortadura propia, en cambio, está dominada por cualquier racional exterior. La definición del producto debe controlar los signos de sus testigos; por eso comienza con los positivos.
 
 []{#MA-MSOL-ANM-01-000-041}
 
@@ -1718,26 +1434,7 @@ La comparación $B$ frente a $-C$ sirve, por tanto, para convertir el caso de si
 
 ### 49. Qué certifica ahora que $\mathcal D$ es un cuerpo ordenado
 
-Al terminar §0.7 están verificadas exactamente las propiedades siguientes.
-
-- **Estructura aditiva:** $(\mathcal D,+,0^*)$ es un grupo abeliano.
-- **Producto interno:** $A\cdot B\in\mathcal D$ para todos $A,B\in\mathcal D$.
-- **Leyes multiplicativas:** el producto es asociativo y conmutativo.
-- **Unidad:** $1^*$ satisface $A1^*=A=1^*A$ y $1^*\ne0^*$.
-- **Inversos:** todo $A\ne0^*$ posee $A^{-1}$ con
-  $$
-  AA^{-1}=1^*=A^{-1}A.
-  $$
-- **Distributividad:** $A(B+C)=AB+AC$ y, por conmutatividad, también $(B+C)A=BA+CA$.
-- **Orden:** la inclusión es un orden lineal; la suma preserva el orden y el producto de dos elementos no negativos es no negativo.
-
-Éstas son precisamente las obligaciones algebraicas y de orden necesarias para concluir
-
-$$
-\boxed{(\mathcal D,+,\cdot,\le_{\mathcal D})\text{ es un cuerpo ordenado}.}
-$$
-
-La propiedad que todavía falta es la **completitud**: aún no se ha probado que toda familia no vacía de cortaduras acotada superiormente tenga supremo en $\mathcal D$. Por eso el cuerpo ordenado ya construido todavía no satisface toda la especificación de §0.1.
+La suma hace de $\mathcal D$ un grupo abeliano; el producto es interno, asociativo, conmutativo y distributivo, con unidad $1^*\ne0^*$ e inversos para las cortaduras no nulas. El orden por inclusión es lineal y compatible con traslaciones y productos no negativos. Se han reunido así las leyes de un cuerpo ordenado. La propiedad del supremo aún requiere una prueba: ser cuerpo ordenado no basta, como ya mostró $\mathbb Q$.
 
 []{#MA-MSOL-ANM-01-000-050}
 
@@ -1932,42 +1629,7 @@ No hace falta coordinar simultáneamente todos los miembros de la familia: basta
 
 ### 55. «Ser cortadura» y «ser supremo» son dos certificados distintos
 
-La afirmación
-
-$$
-S\in\mathcal D
-$$
-
-es un certificado de **tipado**: dice que $S$ satisface las cuatro condiciones de una cortadura y, por tanto, es un elemento legítimo del sistema ordenado $\mathcal D$.
-
-La afirmación
-
-$$
-S=\sup_{\mathcal D}\mathscr A
-$$
-
-es un certificado de **posición en el orden**: exige que
-
-$$
-A\subseteq S
-\qquad(A\in\mathscr A)
-$$
-
-y que, para toda cota superior $V$,
-
-$$
-S\subseteq V.
-$$
-
-Probar que $S$ es una cortadura no demuestra esas dos propiedades de orden: una cortadura cualquiera puede no dominar a la familia. Y antes de poder presentar $S$ como supremo en $\mathcal D$ debemos saber que $S$ pertenece efectivamente a $\mathcal D$.
-
-Por eso el manuscrito separa los bloques:
-
-$$
-\boxed{S\in\mathcal D}
-\qquad\text{y después}\qquad
-\boxed{S=\sup_{\mathcal D}\mathscr A}.
-$$
+Probar $S\in\mathcal D$ verifica que la unión cumple las cuatro condiciones de cortadura. Para demostrar que además es el supremo de la familia hay que probar $A\subseteq S$ para cada miembro y $S\subseteq V$ para toda otra cota superior $V$. Una cortadura cualquiera no satisface necesariamente esas inclusiones. Ambas verificaciones son necesarias: primero que el candidato pertenezca al sistema, después que ocupe la posición de menor cota superior.
 
 []{#MA-MSOL-ANM-01-000-056}
 
@@ -2041,45 +1703,7 @@ Por tanto la fórmula es una conclusión de la construcción, no una importació
 
 ### 58. Los dos certificados que cierran la existencia
 
-El primer certificado proviene de §0.7:
-
-```text
-ORDERED_FIELD = VERIFIED
-```
-
-Es decir,
-
-$$
-(\mathcal D,+,\cdot,\le_{\mathcal D})
-$$
-
-es un cuerpo ordenado.
-
-El segundo certificado es el resultado central de §0.8:
-
-```text
-SUPREMUM_PROPERTY = VERIFIED
-```
-
-Toda familia no vacía de cortaduras acotada superiormente posee un supremo en $\mathcal D$, dado por su unión.
-
-Al combinar ambos obtenemos exactamente la especificación de §0.1:
-
-$$
-\boxed{
-\text{cuerpo ordenado}
-+
-\text{propiedad del supremo}
-=
-\text{cuerpo ordenado completo}.
-}
-$$
-
-Por tanto
-
-$$
-\boxed{\mathcal D\text{ es un cuerpo ordenado completo}.}
-$$
+Las leyes de suma, producto y orden ya hacen de $\mathcal D$ un cuerpo ordenado. La prueba de la unión añade que toda familia no vacía acotada superiormente tiene supremo en él. Juntas son exactamente las condiciones de un cuerpo ordenado completo. Como $\mathcal D$ fue construido a partir de subconjuntos racionales, proporciona un modelo concreto y demuestra la existencia solicitada al comienzo.
 
 []{#MA-MSOL-ANM-01-000-059}
 
@@ -2087,23 +1711,7 @@ $$
 
 ### 59. Por qué sólo ahora podemos llamar a $\mathcal D$ un modelo de los reales
 
-Antes de §0.8 habíamos construido un dominio de cortaduras, un orden y finalmente una estructura de cuerpo ordenado. Pero la especificación inicial exigía además la propiedad del supremo.
-
-Ahora sabemos simultáneamente que
-
-$$
-\mathcal D
-$$
-
-es un cuerpo ordenado y que toda familia no vacía y acotada superiormente tiene supremo en él. Por tanto $\mathcal D$ satisface **todas** las condiciones que habíamos fijado para el sistema buscado.
-
-Eso autoriza la afirmación
-
-$$
-\boxed{\mathcal D\text{ es un modelo de los números reales}.}
-$$
-
-«Modelo» significa aquí una realización concreta de la estructura especificada. No significa que un número real deba ser, por esencia, una cortadura de Dedekind.
+Después de probar la propiedad del supremo, $\mathcal D$ satisface toda la especificación inicial: es un cuerpo ordenado completo. Por eso puede llamarse un modelo de los números reales. El término indica que esta construcción realiza la estructura buscada; no exige que cualquier presentación de los reales use literalmente cortaduras. La comparación con otros modelos sigue siendo el problema de las secciones posteriores.
 
 []{#MA-MSOL-ANM-01-000-060}
 
@@ -2111,23 +1719,7 @@ $$
 
 ### 60. Existencia y unicidad son problemas distintos
 
-Haber demostrado existencia significa haber probado
-
-$$
-\boxed{\text{existe al menos un cuerpo ordenado completo con una copia ordenada de }\mathbb Q.}
-$$
-
-La construcción de $\mathcal D$ proporciona ese ejemplo concreto.
-
-La unicidad plantea una afirmación diferente. Si $F$ y $G$ fueran dos cuerpos ordenados completos construidos de maneras posiblemente distintas, habría que demostrar que no representan estructuras esencialmente diferentes, es decir, establecer una comparación estructural adecuada entre ambos.
-
-Nada en la mera existencia de $\mathcal D$ demuestra por sí solo ese resultado. Por tanto, al cierre de §0.8 tenemos
-
-$$
-\boxed{\text{EXISTENCIA: resuelta}}
-$$
-
-pero la cuestión de unicidad queda como un problema nuevo que todavía debe demostrarse.
+La construcción ha demostrado que existe al menos un cuerpo ordenado completo. Si se presentan después dos modelos $F$ y $G$, habrá que construir una correspondencia que conserve sus operaciones y su orden, y estudiar si está determinada de manera única. La existencia de $\mathcal D$ no realiza por sí sola ese trabajo. Las trazas racionales proporcionarán el método para compararlos.
 
 []{#MA-MSOL-ANM-01-000-061}
 
@@ -2166,6 +1758,7 @@ A_2\notin\iota_{\mathbb Q}(\mathbb Q).
 $$
 
 Por tanto la antigua «frontera codificada» se ha convertido en un elemento no racional del modelo completo construido, sin haber supuesto previamente la existencia de irracionales.
+
 ## §0.9. ¿Podría haber otros reales?
 
 []{#MA-MSOL-ANM-01-000-062}
@@ -2353,32 +1946,7 @@ La información adicional de que $m$ es el **primer** entero de cierta lista que
 
 ### 68. El papel del mínimo de $K$
 
-Se define
-
-$$
-K=\{k\in\mathbb N:x<-\nu_F(n)+\nu_F(k)\}.
-$$
-
-La arquimedianidad garantiza que $K$ es no vacío. Por el buen orden de $\mathbb N$, existe un mínimo $k_0$. Como $k_0\ne0$, escribimos $k_0=k+1$.
-
-La minimalidad tiene dos consecuencias complementarias:
-
-- $k_0\in K$, luego
-  $$
-  x<-\nu_F(n)+\nu_F(k+1);
-  $$
-- $k\notin K$, luego, por totalidad del orden,
-  $$
-  -\nu_F(n)+\nu_F(k)\le x.
-  $$
-
-Si definimos $m=-n+(k+1)$, estas dos desigualdades se convierten exactamente en
-
-$$
-\boxed{\iota_F(m-1)\le x<\iota_F(m).}
-$$
-
-El mínimo convierte una cota cualquiera en una **celda entera consecutiva**.
+Primero se elige un natural $n$ con $-\nu_F(n)<x<\nu_F(n)$. Entonces $K=\{k\in\mathbb N:x<-\nu_F(n)+\nu_F(k)\}$ es no vacío y tiene un mínimo $k_0>0$. Escriba $k_0=k+1$. Pertenencia y minimalidad dan $-\nu_F(n)+\nu_F(k)\le x<-\nu_F(n)+\nu_F(k+1)$. Con $m=-n+k+1$, se obtiene $\iota_F(m-1)\le x<\iota_F(m)$. El mínimo localiza dos enteros consecutivos alrededor de $x$.
 
 []{#MA-MSOL-ANM-01-000-069}
 
@@ -2811,30 +2379,7 @@ $$
 
 ### 81. Por qué el criterio de producto se prueba primero para $x,y\ge0$
 
-La multiplicación interactúa con el orden de forma uniforme sólo cuando controlamos los signos. Si
-
-$$
-0\le x,
-\qquad
-0\le y,
-$$
-
-entonces multiplicar o dividir desigualdades por $x$, $y$ o por racionales positivos no invierte el orden.
-
-Eso permite caracterizar $A_{xy}$ mediante testigos racionales positivos:
-
-$$
-q\in A_{xy}
-\Longleftrightarrow
-q<0
-\text{ o }
-\exists r,s>0:
-r\in A_x,
-\ s\in A_y,
-\ q<rs.
-$$
-
-Sin fijar primero los signos, una multiplicación por un factor negativo podría invertir desigualdades y el mismo criterio dejaría de ser válido. Por eso el argumento se establece primero en el cono no negativo y después se extiende algebraicamente al resto de los casos.
+Para $x,y\ge0$, los racionales positivos situados debajo de cada factor permiten comparar productos sin invertir desigualdades. El criterio es $q\in A_{xy}$ si y sólo si $q<0$ o existen $r,s>0$ con $r\in A_x$, $s\in A_y$ y $q<rs$. Si alguno de los factores es cero, no existen esos dos testigos positivos y queda exactamente la traza $0^*$. Para factores positivos, dos aplicaciones de densidad producen los testigos. Los factores negativos se tratarán después mediante preservación del opuesto y reglas de signo.
 
 []{#MA-MSOL-ANM-01-000-082}
 
@@ -2948,17 +2493,7 @@ Esto vale para todo $x$, así que $T=\phi$.
 
 ### 85. Igualdad literal, isomorfía y unicidad del isomorfismo
 
-Son tres afirmaciones distintas.
-
-- **Igualdad literal:** $F=G$ significa que ambos modelos son exactamente el mismo conjunto con las mismas operaciones. No se exige ni se demuestra.
-- **Existencia de un isomorfismo:** $F\cong G$ afirma que existe una biyección que preserva las operaciones y el orden. Esto demuestra equivalencia estructural.
-- **Existencia de un único isomorfismo de cuerpos ordenados:** además de existir, esa correspondencia está completamente forzada por la estructura; cualquier isomorfismo $T:F\to G$ coincide con $\phi$.
-
-El resultado del capítulo es la tercera afirmación:
-
-$$
-\boxed{\text{entre dos cuerpos ordenados completos existe un único isomorfismo de cuerpos ordenados}.}
-$$
+Igualdad literal exige los mismos elementos, operaciones y orden. Isomorfía exige una biyección que preserve esa estructura. El resultado del capítulo es más fuerte que la mera existencia de alguna biyección estructural: entre dos cuerpos ordenados completos existe un único isomorfismo de cuerpos ordenados. La copia racional y las trazas fuerzan su valor en cada elemento, aunque las representaciones conjuntistas sean distintas.
 
 []{#MA-MSOL-ANM-01-000-086}
 
@@ -2966,21 +2501,7 @@ $$
 
 ### 86. Por qué unicidad estructural no implica computabilidad
 
-La construcción
-
-$$
-x\mapsto A_x\mapsto \iota_G(A_x)\mapsto\sup_G\iota_G(A_x)
-$$
-
-determina matemáticamente un único valor $\phi(x)$. Eso es una afirmación de **existencia y unicidad** dentro de la teoría.
-
-Un algoritmo, en cambio, requiere representaciones efectivas de los elementos, procedimientos para decidir o enumerar la información racional relevante y un método computable para obtener el supremo correspondiente.
-
-Nada de la prueba estructural proporciona automáticamente esos datos para representaciones arbitrarias de $F$ y $G$. Por tanto
-
-$$
-\boxed{\text{canónico por unicidad}\ne\text{computable por sí solo}.}
-$$
+La fórmula $\phi(x)=\sup_G\iota_G(A_x)$ determina un único valor matemático. Para calcularlo mediante un algoritmo hacen falta, además, representaciones efectivas y procedimientos para obtener la información racional y el supremo. La prueba estructural no suministra automáticamente esos procedimientos para codificaciones arbitrarias de los modelos. Unicidad del valor y posibilidad de calcularlo son afirmaciones distintas.
 
 []{#MA-MSOL-ANM-01-000-087}
 
@@ -2988,24 +2509,6 @@ $$
 
 ### 87. Las cortaduras como realización, no como esencia conjuntista
 
-Las cortaduras de Dedekind proporcionan un modelo concreto
-
-$$
-\mathcal D
-$$
-
-que satisface la especificación de cuerpo ordenado completo. Por eso prueban **existencia**.
-
-Pero §0.10 muestra que cualquier otro cuerpo ordenado completo $F$ está relacionado con $\mathcal D$ —y con cualquier otro modelo $G$— por un único isomorfismo de cuerpos ordenados. Los elementos subyacentes pueden ser objetos conjuntistas completamente distintos.
-
-Por tanto lo que queda fijado matemáticamente no es una codificación concreta, sino la estructura compartida:
-
-$$
-\boxed{
-\text{cuerpo ordenado completo, canónico hasta único isomorfismo}.
-}
-$$
-
-Las cortaduras son una realización especialmente útil de esa estructura; no son una afirmación de que los reales deban ser, «por esencia», subconjuntos de $\mathbb Q$.
+Las cortaduras construyen un cuerpo ordenado completo y resuelven existencia. El transporte por trazas demuestra que cualquier otro cuerpo ordenado completo se relaciona con ese modelo mediante un único isomorfismo ordenado. Así queda determinada la estructura compartida, sin imponer que todos sus elementos sean subconjuntos de $\mathbb Q$. Las cortaduras son una realización concreta que permite demostrarlo.
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)

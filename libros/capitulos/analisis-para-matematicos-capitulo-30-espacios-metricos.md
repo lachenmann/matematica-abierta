@@ -69,7 +69,7 @@ Aquí sí restamos números: los valores reales de la distancia, no los puntos $
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 1</summary>
 
-Sólo pertenecer a un conjunto con una métrica; no se exige orden ni operaciones.
+Los puntos sólo deben pertenecer a un conjunto $X$ sobre el que se haya definido una métrica. Pueden ser números, palabras o funciones. Las operaciones y el orden que se usan en las pruebas corresponden a los valores reales de las distancias; no se presupone que puedan restarse u ordenarse los puntos.
 
 </details>
 
@@ -84,7 +84,7 @@ Sólo pertenecer a un conjunto con una métrica; no se exige orden ni operacione
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 2</summary>
 
-Reales no negativos y finitos.
+Son números reales finitos y no negativos: $d:X\times X\to[0,\infty)$. En particular, la distancia entre dos puntos cualesquiera es finita, aunque el conjunto de todas las distancias pueda no tener una cota común. El símbolo infinito no es aquí un valor admisible de la métrica.
 
 </details>
 
@@ -99,7 +99,7 @@ Reales no negativos y finitos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 3</summary>
 
-La separación: $d(x,y)=0$ si y sólo si $x=y$.
+La separación, $d(x,y)=0\iff x=y$. La implicación hacia la derecha excluye puntos distintos a distancia cero. Sin ella, la función $p((a,b),(c,e))=|a-c|$ permite distancia cero entre $(0,0)$ y $(0,1)$, y pierde la unicidad de destinos.
 
 </details>
 
@@ -114,7 +114,7 @@ La separación: $d(x,y)=0$ si y sólo si $x=y$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 4</summary>
 
-Entre extremos distintos, el desvío cuesta uno o dos y domina la distancia uno.
+Si $x=z$, el lado izquierdo es cero y la triangular vale. Si $x\ne z$, el lado izquierdo es uno. El punto intermedio $y$ coincide con uno de los extremos, dando suma uno, o con ninguno, dando suma dos. Esos casos agotan todos los triples y prueban $d_D(x,z)\le d_D(x,y)+d_D(y,z)$.
 
 </details>
 
@@ -129,7 +129,7 @@ Entre extremos distintos, el desvío cuesta uno o dos y domina la distancia uno.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 5</summary>
 
-Coordenadas diferentes en palabras de longitud fija.
+Cuenta las coordenadas distintas entre dos palabras de una misma longitud fija: $d_H(x,y)=\sum_i\mathbf1_{\{x_i\ne y_i\}}$. Cada desacuerdo entre $x_i$ y $z_i$ obliga a un desacuerdo en al menos uno de los pasos por $y_i$. Sumar esa desigualdad por coordenadas acredita la triangular.
 
 </details>
 
@@ -144,7 +144,7 @@ Coordenadas diferentes en palabras de longitud fija.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 6</summary>
 
-$0,1,2$: la distancia directa es cuatro y el desvío suma dos.
+En los puntos $0,1,2$, la propuesta $s(x,y)=|x-y|^2$ da $s(0,2)=4$, mientras $s(0,1)+s(1,2)=1+1=2$. Falla la triangular $4\le2$. La no negatividad, simetría y separación sí se conservan; basta este triple para refutar que $s$ sea métrica.
 
 </details>
 
@@ -159,7 +159,7 @@ $0,1,2$: la distancia directa es cuatro y el desvío suma dos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 7</summary>
 
-Valores reales de distancias, no puntos abstractos.
+Se restan los números reales $d(x,a)$ y $d(y,a)$. La triangular da $d(x,a)-d(y,a)\le d(x,y)$ y, intercambiando $x,y$, la desigualdad opuesta. Así $|d(x,a)-d(y,a)|\le d(x,y)$ sin haber definido una resta de puntos de $X$.
 
 </details>
 
@@ -174,7 +174,7 @@ Valores reales de distancias, no puntos abstractos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 8</summary>
 
-Sí. Conserva sus tres propiedades en todos los triples del subconjunto.
+Si $Y\subseteq X$, la restricción $d|_{Y\times Y}$ conserva separación, simetría y triangular porque sus pares y triples ya eran pares y triples de $X$. Por ello es métrica en $Y$. Esto no implica que el subespacio herede propiedades globales como la existencia de todos los destinos de Cauchy.
 
 </details>
 
@@ -193,7 +193,9 @@ En palabras binarias de longitud tres, calcule las distancias entre $x=000$, $y=
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 1</summary>
 
-$d_H(x,y)=2$, $d_H(y,z)=1$ y $d_H(x,z)=3$. Las tres desigualdades son $3\le2+1$, $2\le3+1$ y $1\le2+3$. La primera es igualdad. Este cotejo acredita ese triple; la propiedad para todas las palabras se demuestra mediante indicadores de desacuerdo en cada coordenada, no mediante esta sola muestra.
+Entre $000$ y $101$ cambian la primera y la tercera coordenada, así que $d_H(x,y)=2$. Entre $101$ y $111$ sólo cambia la segunda, y $d_H(y,z)=1$. Entre $000$ y $111$ cambian las tres, dando $d_H(x,z)=3$.
+
+Las tres triangulares del triple son $3\le2+1$, $2\le3+1$ y $1\le2+3$. La primera es igualdad: los dos pasos distribuyen los tres desacuerdos sin añadir otros. Esto comprueba el triple solicitado. Para acreditar la propiedad en todas las palabras, se usa por coordenada $\mathbf1_{\{x_i\ne z_i\}}\le\mathbf1_{\{x_i\ne y_i\}}+\mathbf1_{\{y_i\ne z_i\}}$ y se suman las desigualdades.
 
 **Retorno visual.** Véase [C30-F01](analisis-para-matematicos-capitulo-30-espacios-metricos.html#fig-anm-c30-f01), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -210,7 +212,11 @@ Pruebe que $p((a,b),(c,e))=|a-c|$ cumple simetría y triangular, y refute que se
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 2</summary>
 
-La simetría y la triangular son las del valor absoluto en la primera coordenada. Pero $p((0,0),(0,1))=0$ con puntos distintos. La sucesión constante $(0,0)$ tiene distancia cero tanto a $(0,0)$ como a $(0,1)$ en todos sus términos, así que satisface ambos contratos de convergencia formulados con $p$. La separación es la hipótesis que convierte distancia cero en igualdad y protege la unicidad métrica.
+Para $x=(a,b)$, $y=(c,e)$ y $z=(u,v)$, la simetría es $|a-c|=|c-a|$, y la triangular real da $p(x,z)=|a-u|\le|a-c|+|c-u|=p(x,y)+p(y,z)$. Los valores son no negativos y la diagonal vale cero.
+
+Falla la separación: $p((0,0),(0,1))=0$, aunque esos puntos sean distintos. Para la sucesión constante $x_n=(0,0)$, tanto $p(x_n,(0,0))$ como $p(x_n,(0,1))$ valen cero en todo índice. Satisface la condición de convergencia formulada con $p$ para ambos destinos.
+
+La función es una pseudométrica. La prueba de unicidad que usa triangular sólo puede concluir distancia cero entre los destinos; la separación es necesaria para convertir esa conclusión en igualdad de puntos.
 
 </details>
 
@@ -225,7 +231,9 @@ Identifique exactamente el axioma que falla para $s(x,y)=|x-y|^2$ en $\mathbb R$
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 3</summary>
 
-La propuesta cuadrática es no negativa, separa puntos y es simétrica. Falla la triangular: $s(0,2)=4> s(0,1)+s(1,2)=2$. En cambio $2|x-y|$ multiplica por un escalar positivo todas las propiedades de la métrica usual; la triangular usual multiplicada por dos sigue válida. Escalar una distancia por una constante positiva difiere de elevarla al cuadrado.
+La función $s(x,y)=|x-y|^2$ es no negativa, simétrica y vale cero exactamente cuando $x=y$. El axioma que falla es la triangular: con puntos $0,1,2$, $s(0,2)=4$, mientras $s(0,1)+s(1,2)=2$. Este único triple refuta la afirmación universal.
+
+Para $e(x,y)=2|x-y|$, todas las propiedades de la distancia usual se conservan al multiplicarlas por dos. En particular, $2|x-z|\le2|x-y|+2|y-z|$. El factor positivo conserva también separación. Por tanto $e$ sí es métrica: el contraejemplo anterior afecta al cuadrado, no al escalamiento por una constante positiva.
 
 </details>
 
@@ -240,7 +248,11 @@ En $X=\{a,b,c\}$ fije distancias simétricas $d(a,b)=2$, $d(b,c)=3$, $d(a,c)=t>0
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 4</summary>
 
-Para triples con alguna repetición, la triangular se reduce a igualdad o a no negatividad. Para tres puntos distintos hay sólo tres desigualdades: $t\le2+3$, $2\le3+t$ y $3\le2+t$. La segunda vale para todo $t>0$; las otras exigen $t\le5$ y $t\ge1$. Por tanto exactamente $1\le t\le5$. Positividad fuera de diagonal y simetría ya están declaradas. Aquí sí se ha agotado el universo finito de triples.
+No negatividad, separación y simetría están aseguradas por la diagonal cero y las distancias positivas declaradas. Queda comprobar todas las triangulares. Cuando algún punto del triple se repite, la desigualdad tiene lado izquierdo cero o se reduce a una igualdad.
+
+Para triples de tres puntos distintos, simetría reduce los casos a $t\le2+3$, $2\le3+t$ y $3\le2+t$. La primera exige $t\le5$; la tercera, $t\ge1$; la segunda vale para todo $t>0$.
+
+Así los valores exactos son $1\le t\le5$. Los extremos están incluidos porque la triangular permite igualdad. Si $t<1$ falla la ruta de longitud $3$ por los otros dos lados; si $t>5$ falla la ruta directa de longitud $t$. Se han cubierto todos los triples del conjunto finito.
 
 </details>
 
@@ -255,7 +267,11 @@ Demuestre $|d(x,y)-d(a,b)|\le d(x,a)+d(y,b)$ y señale qué objetos se restan.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 5</summary>
 
-La triangular iterada da $d(x,y)\le d(x,a)+d(a,b)+d(b,y)$, por lo que $d(x,y)-d(a,b)\le d(x,a)+d(y,b)$. Intercambiar los dos pares da $d(a,b)-d(x,y)\le d(x,a)+d(y,b)$. Reunir ambas desigualdades prueba la cota absoluta. Se restan valores reales finitos de la métrica; no se supone una resta de puntos en $X$.
+Aplique triangular dos veces para pasar por $a$ y $b$: $d(x,y)\le d(x,a)+d(a,b)+d(b,y)$. Restar $d(a,b)$ y usar simetría da $d(x,y)-d(a,b)\le d(x,a)+d(y,b)$.
+
+En la ruta inversa, $d(a,b)\le d(a,x)+d(x,y)+d(y,b)$, luego $d(a,b)-d(x,y)\le d(x,a)+d(y,b)$. Ambas diferencias opuestas quedan bajo la misma cota; por ello $|d(x,y)-d(a,b)|\le d(x,a)+d(y,b)$.
+
+Los objetos restados son valores reales finitos de la métrica. Ninguna operación de resta entre puntos de $X$ interviene en la prueba.
 
 </details>
 ## 30.2. Bolas y el margen de una ventana
@@ -297,7 +313,7 @@ Así la ventana alrededor de $x$ queda en el complemento. Esto prueba cierre de 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 9</summary>
 
-$d(x,a)<r$ con radio $r>0$ y entrada $x\in X$.
+Es $B_d(a,r)=\{x\in X:d(x,a)<r\}$, con $a\in X$ y $r>0$. La desigualdad es estricta: un punto a distancia exactamente $r$ queda excluido. El centro pertenece porque $d(a,a)=0<r$.
 
 </details>
 
@@ -312,7 +328,7 @@ $d(x,a)<r$ con radio $r>0$ y entrada $x\in X$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 10</summary>
 
-$r-d(a,y)>0$.
+El radio $\eta=r-d(a,y)$ es positivo, pues $d(a,y)<r$. Mide el margen que queda antes de alcanzar el radio original. La bola de centro $y$ y radio $\eta$ aprovecha ese margen para permanecer dentro de $B_d(a,r)$.
 
 </details>
 
@@ -327,7 +343,7 @@ $r-d(a,y)>0$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 11</summary>
 
-La triangular suma la distancia del centro a $y$ y una distancia menor que el margen.
+Para $z\in B_d(y,\eta)$, $d(a,z)\le d(a,y)+d(y,z)<d(a,y)+\eta=r$. Por tanto $z\in B_d(a,r)$. La pertenencia estricta a la bola pequeña aporta la desigualdad estricta final, incluso usando todo el margen $\eta=r-d(a,y)$.
 
 </details>
 
@@ -342,7 +358,7 @@ La triangular suma la distancia del centro a $y$ y una distancia menor que el ma
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 12</summary>
 
-No. Basta que contenga una bola positiva del centro.
+Una vecindad de $a$ es cualquier conjunto que contenga alguna bola $B_d(a,r)$ de radio positivo. Puede tener además puntos o componentes alejados. Por ejemplo, $(-1,1)\cup\{10\}$ es vecindad de cero en la recta, aunque no sea una bola ni un conjunto abierto.
 
 </details>
 
@@ -357,7 +373,7 @@ No. Basta que contenga una bola positiva del centro.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 13</summary>
 
-Un rombo abierto definido por $|x_1|+|x_2|<1$.
+En el origen, $B_{d_1}(0,1)=\{(x_1,x_2):|x_1|+|x_2|<1\}$. Es el interior del rombo con vértices $(\pm1,0)$ y $(0,\pm1)$. Sus lados y vértices están excluidos por la desigualdad estricta.
 
 </details>
 
@@ -372,7 +388,7 @@ Un rombo abierto definido por $|x_1|+|x_2|<1$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 14</summary>
 
-Un cuadrado abierto con ambas coordenadas de magnitud menor que uno.
+La condición $\max\{|x_1|,|x_2|\}<1$ equivale a $|x_1|<1$ y $|x_2|<1$. Por ello $B_{d_\infty}(0,1)=(-1,1)\times(-1,1)$, un cuadrado abierto. El punto $(1/2,1/2)$ pertenece a él, aunque quede en la frontera de la bola unidad de $d_1$.
 
 </details>
 
@@ -387,7 +403,7 @@ Un cuadrado abierto con ambas coordenadas de magnitud menor que uno.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 15</summary>
 
-Sólo el centro, porque los otros puntos tienen distancia exactamente uno.
+Contiene exactamente $\{a\}$. Todo punto distinto de $a$ tiene distancia uno, que no cumple $d_D(x,a)<1$. Si el radio fuese mayor que uno, la bola sería todo $X$; en radio uno la estricta desigualdad es decisiva.
 
 </details>
 
@@ -402,7 +418,7 @@ Sólo el centro, porque los otros puntos tienen distancia exactamente uno.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 16</summary>
 
-No. En la discreta con varios puntos y radio uno, la primera es todo el espacio y la segunda sólo el centro.
+En un espacio discreto con al menos dos puntos, $B_D(a,1)=\{a\}$ y $C_D(a,1)=X$. El singleton es cerrado, porque cada punto de su complemento tiene una bola de radio $1/2$ que evita a $a$. Así $\operatorname{cl}B_D(a,1)=\{a\}\ne C_D(a,1)$.
 
 </details>
 
@@ -419,7 +435,11 @@ Describa las bolas abiertas de radio $2$ centradas en $(1,-1)$ para $d_1$ y $d_\
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 6</summary>
 
-La primera región es $|x_1-1|+|x_2+1|<2$, un rombo con frontera excluida. La segunda es $-1<x_1<3$ y $-3<x_2<1$, un cuadrado abierto. Para $(2,0)$ las distancias son $2$ y $1$: no pertenece a la primera y sí a la segunda. Para $(3,-1)$ ambas distancias son $2$, de modo que está excluido de ambas bolas abiertas y pertenece a ambas bolas cerradas del mismo radio.
+Con centro $a=(1,-1)$, la bola para $d_1$ es $\{(x_1,x_2):|x_1-1|+|x_2+1|<2\}$. Es un rombo abierto con vértices de frontera $(-1,-1)$, $(3,-1)$, $(1,-3)$ y $(1,1)$.
+
+Para $d_\infty$, la condición es $|x_1-1|<2$ y $|x_2+1|<2$, es decir $(-1,3)\times(-3,1)$. Es un cuadrado abierto.
+
+En $(2,0)$, las diferencias de coordenadas tienen magnitud uno y uno: $d_1=2$, que excluye el punto de su bola abierta, y $d_\infty=1$, que lo incluye. En $(3,-1)$, las magnitudes son dos y cero, de modo que ambas distancias son dos; el punto queda excluido de ambas bolas abiertas. Sí pertenece a las dos bolas cerradas del mismo radio.
 
 **Retorno visual.** Véase [C30-F02](analisis-para-matematicos-capitulo-30-espacios-metricos.html#fig-anm-c30-f02), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -436,7 +456,9 @@ Si $d(a,y)=3/5$ y $r=1$, pruebe $B(y,2/5)\subset B(a,1)$. ¿Puede incluirse el b
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 7</summary>
 
-Para $d(y,z)<2/5$, la triangular da $d(a,z)\le3/5+d(y,z)<1$. Si se permite $d(y,z)=2/5$, sólo queda $d(a,z)\le1$. En la recta usual tome $a=0$, $y=3/5$ y $z=1$: está en la bola pequeña cerrada, pero no en la grande abierta. La pertenencia estricta de la ventana pequeña paga la desigualdad estricta final.
+Si $z\in B(y,2/5)$, la triangular da $d(a,z)\le d(a,y)+d(y,z)<3/5+2/5=1$. Ésta es precisamente la pertenencia a $B(a,1)$, por lo que la inclusión está acreditada.
+
+En el borde de la bola pequeña sólo se sabe $d(y,z)=2/5$, y la estimación da $d(a,z)\le1$. La igualdad puede ocurrir: en la recta usual, tome $a=0$, $y=3/5$ y $z=1$. Cumple la condición de borde y queda fuera de la bola grande abierta. Por ello no se puede incluir todo el borde sin información adicional.
 
 </details>
 
@@ -451,7 +473,9 @@ En un espacio discreto con al menos dos puntos, compare $B_D(a,1)$, $C_D(a,1)$ y
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 8</summary>
 
-La bola abierta contiene sólo $a$, porque los otros puntos distan exactamente uno. La cerrada contiene todo $X$. Todo singleton es cerrado, pues cada punto distinto tiene su propia bola de radio $1/2$ que evita a $a$. Así la clausura de la bola abierta es $\{a\}$, diferente de la bola cerrada. La notación de clausura no debe confundirse con una desigualdad no estricta en una definición de bola.
+En la métrica discreta, todo punto distinto de $a$ está a distancia uno. Por la desigualdad estricta, $B_D(a,1)=\{a\}$; por la desigualdad no estricta, $C_D(a,1)=X$.
+
+Para cada $x\ne a$, $B_D(x,1/2)=\{x\}$ evita a $a$. El complemento del singleton es abierto, y el singleton es cerrado. Así $\operatorname{cl}_X B_D(a,1)=\{a\}$. Como hay al menos dos puntos, esta clausura es estrictamente menor que $C_D(a,1)$. La operación de clausura y la definición de bola cerrada no coinciden en general.
 
 </details>
 
@@ -466,7 +490,9 @@ Si $D=d(a,b)>0$, pruebe que $B(a,D/3)$ y $B(b,D/3)$ son disjuntas. Generalice a 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 9</summary>
 
-Una entrada común $z$ daría $D\le d(a,z)+d(z,b)<2D/3$, imposible. Para radios $r,s>0$ con $r+s\le D$, la misma entrada daría $D<r+s\le D$. No hace falta localizar un punto medio ni usar un orden de los centros; las dos pertenencias estrictas y la triangular bastan.
+Si $z$ perteneciera a ambas bolas de radio $D/3$, la triangular daría $D=d(a,b)\le d(a,z)+d(z,b)<2D/3$, imposible para $D>0$. Por tanto son disjuntas.
+
+Más generalmente, si $r,s>0$ y $r+s\le D$, una entrada común a $B(a,r)$ y $B(b,s)$ daría $D\le d(a,z)+d(z,b)<r+s\le D$. La contradicción persiste en el caso $r+s=D$ porque las pertenencias a bolas abiertas son estrictas. La prueba no necesita un punto medio ni una estructura lineal.
 
 </details>
 
@@ -481,7 +507,11 @@ Reconstruya la prueba del cierre de $C_d(a,r)$ y explique por qué no demuestra 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 10</summary>
 
-Para $x$ fuera de la bola cerrada, $s=(d(x,a)-r)/2>0$. Si $d(x,y)<s$, la triangular inversa da $d(y,a)>d(x,a)-s>r$, así que la bola de $x$ queda en el complemento. Éste es abierto y la bola cerrada es cerrada. Como contiene a la bola abierta, contiene su clausura; la prueba sólo da esa inclusión. La métrica discreta en radio uno proporciona inclusión estricta.
+Sea $x\notin C_d(a,r)$, de modo que $d(x,a)>r$. Elija $s=[d(x,a)-r]/2>0$. Si $d(x,y)<s$, la triangular inversa da $d(y,a)\ge d(x,a)-d(x,y)>d(x,a)-s=[d(x,a)+r]/2>r$. Así $B_d(x,s)$ está en el complemento de la bola cerrada.
+
+El complemento es abierto y $C_d(a,r)$ es cerrado. Puesto que contiene a $B_d(a,r)$, contiene también su clausura. Este argumento acredita $\operatorname{cl}_X B_d(a,r)\subseteq C_d(a,r)$.
+
+La inclusión opuesta no se ha probado y puede fallar: en la métrica discreta, con al menos dos puntos y radio uno, la clausura de la bola abierta es $\{a\}$ y la bola cerrada es todo $X$.
 
 </details>
 ## 30.3. Abiertos, cerrados y ambiente relativo
@@ -523,7 +553,7 @@ Por ejemplo, $Y=[0,1]$ y $A=[0,1/2)$ con distancia usual. En $Y$, $A$ es abierto
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 17</summary>
 
-Cada punto del conjunto posee una bola abierta completa contenida en él.
+Un conjunto $U\subseteq X$ es abierto si para cada $a\in U$ existe $r>0$ con $B_d(a,r)\subseteq U$. El radio puede depender de $a$. La definición pide que todas las entradas admisibles de esa bola permanezcan en $U$, y funciona aunque no haya coordenadas.
 
 </details>
 
@@ -538,7 +568,7 @@ Cada punto del conjunto posee una bola abierta completa contenida en él.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 18</summary>
 
-La unión; cada entrada reutiliza un radio de un miembro.
+La unión arbitraria de abiertos. Si $a\in\bigcup_iU_i$, pertenece a algún $U_i$ y dispone allí de una bola incluida en $U_i$; esa misma bola cabe en la unión. La unión vacía es $\varnothing$, abierta por no tener puntos que comprobar.
 
 </details>
 
@@ -553,7 +583,7 @@ La unión; cada entrada reutiliza un radio de un miembro.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 19</summary>
 
-El mínimo de finitísimos radios positivos es positivo; una familia infinita puede dejar sólo radio cero.
+En una intersección finita, para cada punto común el mínimo de los radios positivos de sus miembros sigue siendo positivo. Una familia infinita puede reducir esos radios a cero: $\bigcap_{n\ge0}(-1/(n+1),1/(n+1))=\{0\}$, que no es abierto en la recta.
 
 </details>
 
@@ -568,7 +598,7 @@ El mínimo de finitísimos radios positivos es positivo; una familia infinita pu
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 20</summary>
 
-Que cada bola del punto encuentre al conjunto.
+Para $a\in X$, se exige $B_d(a,r)\cap A\ne\varnothing$ para todo $r>0$. La bola incluye su centro, por lo que todo punto de $A$ pertenece a su clausura. Un punto exterior también puede cumplir la condición, como cero respecto de $A=(0,1)$ en la recta.
 
 </details>
 
@@ -583,7 +613,7 @@ Que cada bola del punto encuentre al conjunto.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 21</summary>
 
-Cada bola encuentra tanto el conjunto como su complemento dentro del ambiente declarado.
+Un punto de la frontera de $A$ tiene en cada bola puntos de $A$ y puntos de $X\setminus A$. Equivale a pertenecer a $\operatorname{cl}_X A\setminus\operatorname{int}_X A$. El complemento debe tomarse en el ambiente $X$ declarado; al pasar a un subespacio la frontera puede cambiar.
 
 </details>
 
@@ -598,7 +628,7 @@ Cada bola encuentra tanto el conjunto como su complemento dentro del ambiente de
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 22</summary>
 
-$B_Y(y,r)=Y\cap B_X(y,r)$.
+Con la métrica restringida y $y\in Y$, $B_Y(y,r)=Y\cap B_X(y,r)$. Las distancias conservan su valor, pero las entradas admisibles se reducen a $Y$. Por eso un extremo de un intervalo puede tener una bola relativa incluida en el intervalo aunque ninguna bola de la recta lo esté.
 
 </details>
 
@@ -613,7 +643,7 @@ $B_Y(y,r)=Y\cap B_X(y,r)$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 23</summary>
 
-$\operatorname{cl}_Y A=Y\cap\operatorname{cl}_X A$ para $A\subset Y$.
+Para $A\subseteq Y\subseteq X$, $\operatorname{cl}_Y A=Y\cap\operatorname{cl}_X A$. En efecto, para $y\in Y$, $B_Y(y,r)\cap A=B_X(y,r)\cap A$, porque $A\subseteq Y$. Encontrar a $A$ en cada radio es la misma condición, con el requisito adicional $y\in Y$.
 
 </details>
 
@@ -628,7 +658,7 @@ $\operatorname{cl}_Y A=Y\cap\operatorname{cl}_X A$ para $A\subset Y$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 24</summary>
 
-No. Un extremo del propio subespacio puede ser interior relativo sin ser interior absoluto.
+Tome $A=Y=[0,1]$ y $X=\mathbb R$. Todo $Y$ es interior de sí mismo en el subespacio, mientras $Y\cap\operatorname{int}_X A=(0,1)$. En cero y uno las bolas relativas sólo contienen entradas del intervalo; las bolas de la recta incluyen también entradas exteriores.
 
 </details>
 
@@ -645,7 +675,9 @@ Para $A=[0,1/2)$ calcule interior, clausura y frontera en $\mathbb R$ y en $Y=[0
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 11</summary>
 
-En $\mathbb R$, interior $(0,1/2)$, clausura $[0,1/2]$ y frontera $\{0,1/2\}$. En $Y$, $A=Y\cap(-1,1/2)$ es abierto relativo, así que es su propio interior. La fórmula de clausura relativa deja $[0,1/2]$ y la frontera es $\{1/2\}$. El punto cero tiene una ventana relativa completa dentro de $A$, aunque no tenga una ventana de la recta dentro de $A$.
+En $\mathbb R$, cada punto de $(0,1/2)$ tiene una bola pequeña dentro de $A$. Cero no la tiene porque sus bolas contienen negativos, y $1/2$ no pertenece a $A$. Por ello $\operatorname{int}_{\mathbb R}A=(0,1/2)$. Cada bola de los extremos cero y $1/2$ encuentra a $A$, y los puntos fuera de $[0,1/2]$ tienen una bola que lo evita. Así la clausura es $[0,1/2]$ y la frontera es $\{0,1/2\}$.
+
+En $Y=[0,1]$, el conjunto $A=Y\cap(-1,1/2)$ es abierto relativo, luego $\operatorname{int}_Y A=A$. En particular, $B_Y(0,1/2)=[0,1/2)$ cabe en $A$. La clausura relativa es $Y\cap[0,1/2]=[0,1/2]$, y su diferencia con el interior deja la frontera $\{1/2\}$. Cero pierde su condición de frontera porque ya no hay entradas negativas en el ambiente.
 
 **Retorno visual.** Véase [C30-F03](analisis-para-matematicos-capitulo-30-espacios-metricos.html#fig-anm-c30-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -662,7 +694,11 @@ Pruebe unión arbitraria e intersección finita de abiertos. Refute la extensió
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 12</summary>
 
-Una entrada de una unión pertenece a un miembro y reutiliza su radio. En una intersección finita no vacía, cada punto tiene finitísimos radios positivos y su mínimo protege simultáneamente todas las condiciones. La intersección de familia vacía es el abierto $X$. En la recta, los intervalos $(-1/(n+1),1/(n+1))$ tienen intersección $\{0\}$: cero pertenece a todos, mientras para cualquier $x\ne0$ existe $n$ con $1/(n+1)<|x|$. Ninguna bola real positiva alrededor de cero cabe en el singleton, que no es abierto.
+Sea $U=\bigcup_iU_i$ una unión de abiertos. Si $x\in U$, existe un miembro $U_i$ que lo contiene y un radio $r>0$ con $B(x,r)\subseteq U_i\subseteq U$. Así $U$ es abierto; la unión vacía también lo es.
+
+Para una intersección de $k\ge1$ abiertos y un punto común $x$, cada miembro da un radio $r_i>0$. El mínimo $r=\min_i r_i$ es positivo y su bola está dentro de todos los miembros. La intersección de familia vacía es $X$, también abierto. Sólo se combinan aquí finitísimos radios.
+
+En la recta, $\bigcap_{n\ge0}(-1/(n+1),1/(n+1))=\{0\}$. Cero pertenece a todos; para $x\ne0$, arquimedianidad proporciona $n$ con $1/(n+1)<|x|$, excluyéndolo de ese miembro. Ninguna bola real positiva de cero cabe en $\{0\}$, así que esta intersección infinita no es abierta.
 
 </details>
 
@@ -677,7 +713,9 @@ Demuestre que en un espacio discreto todos los subconjuntos son abiertos y cerra
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 13</summary>
 
-Para $a\in A$, $B_D(a,1/2)=\{a\}\subset A$, así que $A$ es abierto. Su complemento satisface el mismo argumento, luego $A$ es cerrado. Interior y clausura de $A$ son ambos $A$, por lo que la frontera $\operatorname{cl}A\setminus\operatorname{int}A$ es vacía. Esto vale también para vacío y espacio completo.
+Para cualquier $A\subseteq X$ y $a\in A$, la bola discreta $B_D(a,1/2)=\{a\}$ está incluida en $A$. Luego $A$ es abierto. El mismo razonamiento aplicado a $X\setminus A$ prueba que el complemento es abierto y $A$ es cerrado.
+
+En consecuencia, $\operatorname{int}_X A=A$ y $\operatorname{cl}_X A=A$. Su frontera, la diferencia entre clausura e interior, es vacía. También se ve directamente: en cada punto la bola singleton encuentra sólo uno de $A$ y su complemento, nunca ambos. El argumento incluye el conjunto vacío y el espacio completo.
 
 </details>
 
@@ -692,7 +730,11 @@ Pruebe que $\operatorname{cl}_X A$ es cerrada y el menor cerrado que contiene a 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 14</summary>
 
-Contiene $A$ porque cada bola de un punto de $A$ contiene al propio punto. Si $x$ está fuera de la clausura, alguna bola $B(x,r)$ evita $A$. Para cada $y$ en ella, el margen produce una bola alrededor de $y$ contenida en $B(x,r)$, también disjunta de $A$. Así toda la bola original queda fuera de la clausura y su complemento es abierto. Si un cerrado $F$ contiene $A$, cada punto fuera de $F$ tiene una bola que evita $F$ y por ello evita $A$; no puede pertenecer a la clausura. Luego ésta está contenida en todo tal $F$.
+Todo punto de $A$ pertenece a $\operatorname{cl}_X A$, porque cada bola suya contiene al propio punto. Si $x$ está fuera de la clausura, existe $r>0$ con $B(x,r)\cap A=\varnothing$.
+
+Para $y\in B(x,r)$, el margen $r-d(x,y)>0$ proporciona una bola de $y$ contenida en $B(x,r)$; también evita a $A$. Por tanto $y$ está fuera de la clausura. Toda la bola $B(x,r)$ queda en su complemento, que es abierto; la clausura es cerrada.
+
+Sea ahora $F$ cualquier cerrado que contiene a $A$. Cada $x\notin F$ tiene una bola dentro de $X\setminus F$, y esa bola evita a $A$. Por ello no pertenece a $\operatorname{cl}_X A$. Se sigue $\operatorname{cl}_X A\subseteq F$, acreditando que es el menor cerrado que contiene a $A$ directamente por bolas.
 
 </details>
 
@@ -707,7 +749,9 @@ Pruebe $\operatorname{cl}_Y A=Y\cap\operatorname{cl}_X A$ para $A\subset Y\subse
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 15</summary>
 
-Para $y\in Y$, la intersección $B_Y(y,r)\cap A$ es igual a $B_X(y,r)\cap A$, porque $A\subset Y$. La no vaciedad para cada radio es entonces la misma condición, con la pertenencia a $Y$ añadida. Para el interior, tome $A=Y=[0,1]$ en $X=\mathbb R$. El interior en $Y$ es todo $Y$, mientras $Y\cap\operatorname{int}_X A=(0,1)$. El ambiente cambia los puntos admisibles de la ventana, y con ellos la inclusión completa dentro de $A$.
+Para $y\in Y$ y todo $r>0$, $B_Y(y,r)\cap A=[Y\cap B_X(y,r)]\cap A=B_X(y,r)\cap A$, pues $A\subseteq Y$. Ambas intersecciones son no vacías simultáneamente. Por la definición de clausura, $y\in\operatorname{cl}_Y A$ equivale a $y\in\operatorname{cl}_X A$ con $y\in Y$, luego $\operatorname{cl}_Y A=Y\cap\operatorname{cl}_X A$.
+
+Para refutar la fórmula de interiores, tome $A=Y=[0,1]$ dentro de $X=\mathbb R$. El interior de $A$ en $Y$ es todo $Y$, pero $Y\cap\operatorname{int}_X A=(0,1)$. En los extremos, las bolas relativas omiten los puntos exteriores que impiden el interior absoluto.
 
 </details>
 ## 30.4. Convergencia con un destino en el espacio
@@ -751,7 +795,7 @@ En la métrica discreta, converger a $a$ equivale a ser eventualmente igual a $a
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 25</summary>
 
-En $X$, no sólo en un espacio mayor que lo contenga.
+El destino debe ser un punto de $X$. La sucesión $1/(n+2)$ en $(0,1)$ se acerca a cero en la recta, pero cero no es un destino admisible del subespacio. Tener un límite en un ambiente mayor no acredita convergencia dentro del espacio declarado.
 
 </details>
 
@@ -766,7 +810,7 @@ En $X$, no sólo en un espacio mayor que lo contenga.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 26</summary>
 
-$\forall\varepsilon>0\exists N\forall n\ge N$ para la distancia al destino menor que $\varepsilon$.
+Para un destino $a\in X$, $\forall\varepsilon>0\;\exists N\;\forall n\ge N:\ d(x_n,a)<\varepsilon$. El corte se elige después de la tolerancia y debe controlar toda la cola. Se compara una distancia real con $\varepsilon$, sin ordenar los puntos $x_n$ y $a$.
 
 </details>
 
@@ -781,7 +825,7 @@ $\forall\varepsilon>0\exists N\forall n\ge N$ para la distancia al destino menor
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 27</summary>
 
-Dos ventanas de radios un tercio de la separación y un corte común contradicen triangular.
+Si hubiera destinos distintos $a,b$, su separación $D=d(a,b)$ sería positiva. Las dos convergencias con tolerancia $D/3$ producen un corte común donde $d(a,b)\le d(a,x_n)+d(x_n,b)<2D/3$, contradicción. Esta prueba usa triangular y separación; no necesita completitud del espacio.
 
 </details>
 
@@ -796,7 +840,7 @@ Dos ventanas de radios un tercio de la separación y un corte común contradicen
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 28</summary>
 
-Por el máximo de sus finitísimas distancias al destino; se reúne con la cota de cola.
+Elija una cola con $d(x_n,a)<1$. Las distancias del prefijo al mismo destino forman una lista finita de reales, que tiene máximo. El máximo de esa lista y uno acota toda la sucesión; aumentar la cota en uno da un radio abierto que la contiene.
 
 </details>
 
@@ -811,7 +855,7 @@ Por el máximo de sus finitísimas distancias al destino; se reúne con la cota 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 29</summary>
 
-Sus índices estrictamente crecientes satisfacen $n_k\ge k$.
+Los índices de una subsucesión son estrictamente crecientes y, con la indexación usual, $n_k\ge k$. Si la sucesión original cumple su tolerancia desde $N$, para $k\ge N$ también $n_k\ge N$ y la subsucesión cumple la misma tolerancia. Su destino permanece en el mismo espacio.
 
 </details>
 
@@ -826,7 +870,7 @@ Sus índices estrictamente crecientes satisfacen $n_k\ge k$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 30</summary>
 
-Lo conserva, sumando el error de perturbación y el de la sucesión por triangular.
+Si $x_n\to a$ y $d(x_n,y_n)\to0$, la triangular da $d(y_n,a)\le d(y_n,x_n)+d(x_n,a)$. Pedir $\varepsilon/2$ a cada uno de esos dos errores y sincronizar sus cortes acredita $y_n\to a$. No hace falta presuponer un destino de $y_n$.
 
 </details>
 
@@ -841,7 +885,7 @@ Lo conserva, sumando el error de perturbación y el de la sucesión por triangul
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 31</summary>
 
-Una sucesión de $A$ convergente en $X$ tiene su destino en la clausura de $A$.
+Si ya se dispone de $a_n\in A$ con $a_n\to a\in X$, cada bola de $a$ contiene algún término posterior al corte correspondiente. Así encuentra a $A$ y $a\in\operatorname{cl}_X A$. Se utiliza la sucesión dada, sin seleccionar una nueva familia de testigos.
 
 </details>
 
@@ -856,7 +900,7 @@ Una sucesión de $A$ convergente en $X$ tiene su destino en la clausura de $A$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 32</summary>
 
-$\mathrm{CC}(X)$, elección numerable para los conjuntos no vacíos de testigos, o una selección explícitamente dada.
+Se declara $\mathrm{CC}(X)$, elección numerable para familias de subconjuntos no vacíos de $X$, o se suministra una selección explícita. Para $a\in\operatorname{cl}_X A$, los conjuntos $A\cap B(a,1/(n+1))$ son no vacíos. Elegir simultáneamente un punto de cada uno construye la sucesión convergente; ése es el paso que requiere la interfaz.
 
 </details>
 
@@ -873,7 +917,9 @@ Estudie $x_n=1/(n+1)$ en la recta con métrica usual y con métrica discreta. Co
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 16</summary>
 
-En la usual, $|x_n|=1/(n+1)\to0$, luego converge a cero. En la discreta, converger a algún $a$ exigiría $x_n=a$ desde cierto índice por tolerancia $1/2$. Los recíprocos son todos distintos, de modo que ninguna cola es constante. No converge a ningún destino discreto, incluido cero. El conjunto de puntos es el mismo y la métrica cambia la condición efectiva.
+En la usual, $d(x_n,0)=1/(n+1)\to0$. Dada una tolerancia positiva, arquimedianidad permite elegir $N$ con $1/(N+1)<\varepsilon$, y todos los posteriores cumplen la misma desigualdad. Así $x_n\to0$.
+
+En la discreta, converger a cualquier $a\in\mathbb R$ exigiría, con tolerancia $1/2$, $d_D(x_n,a)=0$ para toda una cola. Esto obliga a $x_n=a$ desde algún índice. Los valores $1/(n+1)$ son todos distintos, por lo que ninguna cola es constante. No converge a cero ni a ningún otro destino discreto. Cambiar la métrica ha cambiado las bolas que la sucesión debe ocupar.
 
 **Retorno visual.** Véase [C30-F04](analisis-para-matematicos-capitulo-30-espacios-metricos.html#fig-anm-c30-f04), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -890,7 +936,11 @@ Pruebe unicidad de límites métricos sin usar coordenadas, orden de puntos ni c
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 17</summary>
 
-Suponga dos límites distintos $a,b$ y escriba $D=d(a,b)>0$. Las dos convergencias con tolerancia $D/3$ dan cortes; su máximo garantiza que el mismo término de la sucesión está a distancia menor que $D/3$ de cada destino. Triangular da $D<2D/3$, contradicción. Separación transforma distancia cero en igualdad. El orden sólo se usa al comparar las distancias reales positivas, no los puntos del espacio.
+Suponga que $x_n$ converge a $a$ y a $b$. Si fueran distintos, separación daría $D=d(a,b)>0$. Para tolerancia $D/3$, cada convergencia proporciona un corte; tome el máximo de los dos.
+
+En cualquier índice posterior, $d(a,x_n)<D/3$ y $d(x_n,b)<D/3$. Por triangular, $D\le d(a,x_n)+d(x_n,b)<2D/3$, contradicción. Por tanto $a=b$.
+
+El orden se usa sólo para comparar números reales de distancia. No se han usado coordenadas, un orden entre puntos ni la existencia de límites para sucesiones arbitrarias; la completitud no interviene.
 
 </details>
 
@@ -905,7 +955,9 @@ Si $A\subset X$ cumple $d(x,a)\le R$ para todo $x\in A$, dé una cota respecto d
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 18</summary>
 
-Por triangular $d(x,b)\le d(x,a)+d(a,b)\le R+d(a,b)$. La distancia fija de centros es real finita. Así $A$ queda dentro de la bola abierta de centro $b$ y radio $R+d(a,b)+1$, que excede la cota débil. El conjunto vacío satisface la cota de modo vacuo; disponer de los centros declarados asegura aquí que $X$ no sea vacío.
+Para $x\in A$, la triangular da $d(x,b)\le d(x,a)+d(a,b)\le R+d(a,b)$. La distancia fija entre los centros es finita, por lo que ésta es una cota común respecto de $b$.
+
+Para obtener inclusión en una bola abierta, aumente la cota: $A\subseteq B_d(b,R+d(a,b)+1)$, tomando $R\ge0$ como cota de distancias. La unidad añadida garantiza radio positivo y desigualdad estricta aun cuando se alcance la cota anterior. Si $A$ es vacío, cualquier bola de centro $b$ lo contiene. La elección de los centros declarados ya asegura que $X$ no es vacío.
 
 </details>
 
@@ -920,7 +972,11 @@ Formule la relación entre clausura y límites de sucesiones de $A$. Separe la d
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 19</summary>
 
-Si $a_n\in A$ y $a_n\to a\in X$, cada bola de $a$ contiene algún término tardío de $A$, por lo que $a\in\operatorname{cl}A$, sin elección. Para la vuelta, la adherencia asegura que cada $A\cap B(a,1/(n+1))$ sea no vacío. Una selección $a_n$ en esos conjuntos, dada o garantizada por $\mathrm{CC}(X)$, satisface $d(a_n,a)<1/(n+1)$ y converge. Sin esa interfaz no se declara la existencia simultánea de los testigos arbitrarios. La caracterización secuencial inversa de cerrado tiene el mismo alcance.
+La dirección incondicional es: si existe una sucesión $a_n\in A$ con $a_n\to a\in X$, entonces $a\in\operatorname{cl}_X A$. Para cada radio $r>0$, la convergencia coloca un término tardío en $B(a,r)$; ese término pertenece a $A$ y acredita la intersección no vacía.
+
+Para la vuelta, si $a\in\operatorname{cl}_X A$, cada conjunto $W_n=A\cap B(a,1/(n+1))$ es no vacío. Bajo $\mathrm{CC}(X)$ se elige $a_n\in W_n$ simultáneamente, o se utiliza una selección suministrada. Entonces $d(a_n,a)<1/(n+1)\to0$, por lo que $a_n\to a$.
+
+La propiedad de clausura da un testigo para cada radio; la interfaz de elección o la selección explícita permite reunirlos en una sucesión. Sin esa interfaz sólo se afirma la primera dirección de manera general.
 
 </details>
 
@@ -935,7 +991,9 @@ Si $x_n\to a$ y $y_n\to b$, pruebe $d(x_n,y_n)\to d(a,b)$ y deduzca la regla cua
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 20</summary>
 
-La cota de dos centros de E005 da $|d(x_n,y_n)-d(a,b)|\le d(x_n,a)+d(y_n,b)$. Para tolerancia $\varepsilon$, pedir $\varepsilon/2$ a cada convergencia y sincronizar cortes hace menor que $\varepsilon$ el error real. Si además $d(x_n,y_n)\to0$, unicidad del límite real implica $d(a,b)=0$ y separación da $a=b$. Si no se sabe aún que $y_n$ converja pero se sabe $x_n\to a$ y $d(x_n,y_n)\to0$, triangular directamente acredita $y_n\to a$.
+La desigualdad de dos centros da $|d(x_n,y_n)-d(a,b)|\le d(x_n,a)+d(y_n,b)$. Para una tolerancia $\varepsilon>0$, pida $\varepsilon/2$ a ambas convergencias y tome el máximo de sus cortes. Toda la cola tiene error menor que $\varepsilon$, de modo que $d(x_n,y_n)\to d(a,b)$ como sucesión real.
+
+Si además $d(x_n,y_n)\to0$, la unicidad del límite real da $d(a,b)=0$; separación implica $a=b$. Si todavía no se ha supuesto convergencia de $y_n$, basta saber $x_n\to a$ y $d(x_n,y_n)\to0$: triangular da $d(y_n,a)\le d(y_n,x_n)+d(x_n,a)\to0$, construyendo su convergencia al mismo destino.
 
 </details>
 ## 30.5. Cauchy compara toda la cola
@@ -977,7 +1035,7 @@ La identidad geométrica finita y $\rho^q\to0$ hacen Cauchy a $x$. Sin una propi
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 33</summary>
 
-Todos los pares de términos posteriores a un corte común, sin nombrar destino.
+Cauchy compara todos los pares de una cola: $\forall\varepsilon>0\;\exists N\;\forall m,n\ge N:\ d(x_m,x_n)<\varepsilon$. No se nombra un destino. Controlar sólo pares vecinos deja sin controlar pares lejanos dentro de la misma cola.
 
 </details>
 
@@ -992,7 +1050,7 @@ Todos los pares de términos posteriores a un corte común, sin nombrar destino.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 34</summary>
 
-Existe una tolerancia positiva fija tal que después de cualquier corte hay un par separado al menos por ella.
+La negación es $\exists\varepsilon_0>0\;\forall N\;\exists m,n\ge N:\ d(x_m,x_n)\ge\varepsilon_0$. La tolerancia infractora es fija; los índices pueden cambiar con el corte. La desigualdad es no estricta porque niega la condición estricta $d<\varepsilon_0$.
 
 </details>
 
@@ -1007,7 +1065,7 @@ Existe una tolerancia positiva fija tal que después de cualquier corte hay un p
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 35</summary>
 
-$\varepsilon/2$, para sumar dos errores alrededor del destino.
+Si $x_n\to a$, pida $d(x_n,a)<\varepsilon/2$ en toda la cola. Para cualquier par posterior al mismo corte, $d(x_m,x_n)\le d(x_m,a)+d(a,x_n)<\varepsilon$. Se obtiene Cauchy sin usar completitud ni operaciones entre puntos.
 
 </details>
 
@@ -1022,7 +1080,7 @@ $\varepsilon/2$, para sumar dos errores alrededor del destino.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 36</summary>
 
-Una sola, por ejemplo uno, y un término de referencia más el prefijo finito.
+Use Cauchy con tolerancia uno y corte $N$. Fijar el término $x_N$ da $d(x_n,x_N)<1$ para $n\ge N$. El prefijo contiene finitísimas distancias a $x_N$; su máximo, reunido con uno, acota toda la sucesión.
 
 </details>
 
@@ -1037,7 +1095,7 @@ Una sola, por ejemplo uno, y un término de referencia más el prefijo finito.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 37</summary>
 
-No. Los recíprocos en $(0,1)$ son Cauchy y su único posible destino real queda fuera.
+En $(0,1)$ con distancia usual, $x_n=1/(n+2)$ es Cauchy porque todos los términos posteriores a $N$ están entre cero y $1/(N+2)$. Su único límite real posible es cero, que no pertenece al espacio. Cauchy no garantiza un destino admisible en una métrica arbitraria.
 
 </details>
 
@@ -1052,7 +1110,7 @@ No. Los recíprocos en $(0,1)$ son Cauchy y su único posible destino real queda
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 38</summary>
 
-Que la cola es constante, por usar tolerancia $1/2$.
+La tolerancia $1/2$ obliga a que todos los pares posteriores al corte tengan distancia cero, y por separación sean iguales. Así una sucesión discreta es Cauchy exactamente cuando su cola es constante. Esa cola converge al valor constante, que pertenece al espacio.
 
 </details>
 
@@ -1067,7 +1125,7 @@ Que la cola es constante, por usar tolerancia $1/2$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 39</summary>
 
-No. La hipótesis Cauchy es la que acerca toda la cola al término de referencia elegido.
+La sucesión real $x_{2k}=0$, $x_{2k+1}=1$ tiene una subsucesión convergente a cero y otra a uno, pero no converge. Cauchy es la condición que acerca todos los términos tardíos a un término fijo de la subsucesión convergente; sin ella, esa subsucesión no controla el resto de la cola.
 
 </details>
 
@@ -1082,7 +1140,7 @@ No. La hipótesis Cauchy es la que acerca toda la cola al término de referencia
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 40</summary>
 
-Cauchy por bloques finitos; el destino requiere otra justificación y, si existe, se obtiene una cota de error.
+Si $d(x_{n+1},x_n)\le Cq^n$ con $0<q<1$, la triangular iterada da $d(x_m,x_n)\le Cq^n/(1-q)$ para $m>n$. Esa barrera prueba Cauchy. Si además existe $a\in X$ con $x_m\to a$, pasar al límite con $n$ fijo da $d(x_n,a)\le Cq^n/(1-q)$. La existencia del destino sigue siendo una obligación adicional.
 
 </details>
 
@@ -1099,7 +1157,9 @@ Pruebe que $x_n=1/(n+2)$ es de Cauchy en $(0,1)$ y no converge a ningún element
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 21</summary>
 
-Después de un corte $N$, todos los valores están en $(0,1/(N+2)]$ y cualquier separación es a lo sumo $1/(N+2)$. Arquimedianidad permite hacerlo menor que una tolerancia dada. En la recta, los mismos términos convergen a cero. Si hubiera un límite $a\in(0,1)$, la igualdad de distancias con la inclusión acreditaría también límite real $a$. Unicidad real lo igualaría a cero, contradiciendo la pertenencia al espacio. Cauchy sólo controla pares internos, sin imponer que el destino externo pertenezca al dominio.
+Todos los términos pertenecen a $(0,1)$. Para $m,n\ge N$, están en $(0,1/(N+2)]$, luego $|x_m-x_n|\le1/(N+2)$. Escoger $N$ con esa barrera menor que $\varepsilon$ controla todos los pares de la cola y prueba Cauchy.
+
+Los mismos términos convergen a cero en $\mathbb R$. Si convergieran a algún $a\in(0,1)$ con la métrica restringida, la igualdad de distancias acreditaría también convergencia real a $a$. Unicidad obligaría a $a=0$, que está fuera del espacio. Por tanto no tienen ningún destino en $(0,1)$; la condición Cauchy queda satisfecha sin asegurar que el límite externo sea admisible.
 
 **Retorno visual.** Véase [C30-F05](analisis-para-matematicos-capitulo-30-espacios-metricos.html#fig-anm-c30-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1116,7 +1176,9 @@ Caracterice todas las sucesiones de Cauchy de una métrica discreta y sus límit
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 22</summary>
 
-Con tolerancia $1/2$, cualquier par posterior al corte tiene distancia cero. Fijando uno de los índices en el corte, toda la cola es igual a $x_N$. Recíprocamente, una cola constante tiene todas sus distancias posteriores cero y cumple Cauchy para toda tolerancia. Esa misma cola converge a su valor constante, que pertenece al espacio. La unicidad ya probada excluye otros destinos.
+Si una sucesión es Cauchy en la discreta, tome tolerancia $1/2$. Existe $N$ con $d_D(x_m,x_n)<1/2$ para todos $m,n\ge N$. Las únicas distancias posibles son cero y uno, por lo que todas esas distancias son cero. Fijar $m=N$ da $x_n=x_N$ para toda la cola.
+
+Recíprocamente, una cola constante tiene distancia cero entre todos sus pares posteriores y cumple Cauchy para cualquier tolerancia. Converge al valor constante $x_N$, que pertenece al espacio, pues su error es cero desde ese corte. La separación y unicidad excluyen otro destino. Así las sucesiones de Cauchy discretas son exactamente las eventualmente constantes.
 
 </details>
 
@@ -1131,7 +1193,11 @@ Para $h_n=\sum_{j=1}^{n+1}1/j$ en $\mathbb R$, pruebe saltos vecinos nulos y ref
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 23</summary>
 
-El salto es $h_{n+1}-h_n=1/(n+2)\to0$. Dado un corte $N$, tome $m=N+1$ y los índices $m-1=N$ y $2m-1\ge N$. La diferencia es $\sum_{j=m+1}^{2m}1/j$, con $m$ términos cada uno al menos $1/(2m)$, así que es al menos $1/2$. La tolerancia fija $1/2$ y estos pares niegan Cauchy. Los bloques crecen con el corte; controlar sólo vecinos omite precisamente esa obligación.
+El salto vecino es $h_{n+1}-h_n=1/(n+2)\to0$. Para negar Cauchy hay que exhibir una tolerancia fija y pares tardíos separados por ella.
+
+Dado cualquier corte $N\ge0$, ponga $m=N+1$ y tome los índices $p=m-1=N$, $q=2m-1$. Ambos son posteriores al corte. Sus valores difieren en $h_q-h_p=\sum_{j=m+1}^{2m}1/j$. Hay $m$ términos y cada uno es al menos $1/(2m)$, luego la diferencia es $\ge1/2$.
+
+La tolerancia $\varepsilon_0=1/2$ falla después de todo corte, con esos pares dados explícitamente. Aunque cada salto se haga pequeño, los bloques de longitud creciente mantienen una separación fija. No se ha necesitado seleccionar infractores mediante elección.
 
 </details>
 
@@ -1146,7 +1212,11 @@ Pruebe que una sucesión de Cauchy con una subsucesión convergente en $X$ conve
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 24</summary>
 
-Para $\varepsilon>0$, tome el corte $N$ de Cauchy con tolerancia $\varepsilon/2$, y el corte $K$ de la subsucesión convergente a $a$ con la misma tolerancia. Elija $k\ge\max\{N,K\}$; entonces $n_k\ge k\ge N$. Ese término fijo satisface $d(x_{n_k},a)<\varepsilon/2$. Para todo $n\ge N$, triangular da $d(x_n,a)\le d(x_n,x_{n_k})+d(x_{n_k},a)<\varepsilon$. No se asume existencia de una subsucesión convergente para una Cauchy arbitraria; es la hipótesis del ejercicio.
+Suponga que $x_n$ es Cauchy y que una subsucesión $x_{n_k}$ converge a $a\in X$. Dado $\varepsilon>0$, elija $N$ de Cauchy para $\varepsilon/2$, y $K$ de la subsucesión para la misma tolerancia.
+
+Escoja un índice $k\ge\max\{N,K\}$. Como los índices de la subsucesión son estrictamente crecientes, $n_k\ge k\ge N$, y $d(x_{n_k},a)<\varepsilon/2$. Mantenga fijo este término como referencia. Para todo $n\ge N$, la triangular da $d(x_n,a)\le d(x_n,x_{n_k})+d(x_{n_k},a)<\varepsilon$.
+
+Así converge la sucesión completa a $a$. La existencia de una subsucesión convergente pertenece a las hipótesis: no se ha deducido que toda Cauchy disponga de ella en un espacio arbitrario.
 
 </details>
 
@@ -1161,7 +1231,11 @@ Si $d(x_{n+1},x_n)\le3\,2^{-n}$, acredite Cauchy y una cota de error si el desti
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 25</summary>
 
-Para $p>q$, triangular iterada y suma geométrica finita dan $d(x_p,x_q)\le6\,2^{-q}$. Como el presupuesto tiende a cero, hay un corte común para todos los pares y la sucesión es de Cauchy. No se afirma existencia de destino en un espacio arbitrario. Si $x_p\to a\in X$, continuidad real de la distancia al punto fijo $x_q$ permite pasar $p$ al límite y da $d(x_q,a)\le6\,2^{-q}$. Para error estrictamente menor que $3/8$, basta $6\,2^{-q}<3/8$, es decir $q>4$, por lo que el primer índice certificado es $5$.
+Para $p>q$, la triangular iterada compara los extremos por todos los saltos intermedios: $d(x_p,x_q)\le\sum_{j=q}^{p-1}3\,2^{-j}=6\,2^{-q}(1-2^{-(p-q)})\le6\,2^{-q}$. El primer salto es el de índice $q$, lo que determina el factor seis.
+
+Para ambos índices $\ge N$, intercambiarlos si hace falta deja una distancia $\le6\,2^{-N}$. Esta barrera tiende a cero y prueba Cauchy. En un espacio arbitrario no basta para afirmar existencia de un destino.
+
+Si ya se sabe $x_p\to a\in X$, la triangular inversa da $|d(x_q,x_p)-d(x_q,a)|\le d(x_p,a)\to0$. Con $q$ fijo se puede pasar al límite en la cota y obtener $d(x_q,a)\le6\,2^{-q}$. Para tolerancia estricta $3/8$, se pide $6\,2^{-q}<3/8$, equivalente a $q>4$. El primer corte certificado es cinco; en cuatro la barrera sólo da $\le3/8$. La sucesión real $x_q=6\,2^{-q}$ alcanza el error al destino cero y muestra que cuatro no garantiza la desigualdad estricta.
 
 </details>
 ## 30.6. Continuidad entre espacios métricos
@@ -1199,7 +1273,7 @@ La continuidad asegura preimágenes abiertas, no imágenes abiertas. Una funció
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 41</summary>
 
-El valor efectivo $f(a)$, perteneciente al codominio declarado.
+Es $f(a)$, que debe pertenecer al codominio declarado $Y$. La continuidad en $a$ controla $d_Y(f(x),f(a))$ cuando $d_X(x,a)$ es pequeño. Las bolas de entrada y salida usan sus métricas respectivas.
 
 </details>
 
@@ -1214,7 +1288,7 @@ El valor efectivo $f(a)$, perteneciente al codominio declarado.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 42</summary>
 
-Toda función es continua allí, porque una bola puede contener sólo el centro.
+Si alguna bola de $a$ contiene únicamente $a$, toda función definida en ese punto es continua allí. Basta usar el radio de aislamiento: las entradas admitidas cumplen $x=a$, y su distancia de salida a $f(a)$ es cero, menor que cualquier tolerancia positiva.
 
 </details>
 
@@ -1229,7 +1303,7 @@ Toda función es continua allí, porque una bola puede contener sólo el centro.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 43</summary>
 
-Sí. Primero obtiene un radio y luego un corte de esa sucesión.
+Dada $\varepsilon>0$, continuidad en $a$ proporciona un radio $\delta$. La sucesión dada $x_n\to a$ entra en esa bola desde un corte, y entonces $d_Y(f(x_n),f(a))<\varepsilon$. Se transporta una sucesión existente; no se necesita elección numerable.
 
 </details>
 
@@ -1244,7 +1318,7 @@ Sí. Primero obtiene un radio y luego un corte de esa sucesión.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 44</summary>
 
-Reunir infractores en una sucesión, mediante $\mathrm{CC}(X)$ o testigos suministrados.
+Para demostrar la recíproca por contraposición, la discontinuidad proporciona, para cada radio $1/(n+1)$, un conjunto no vacío de infractores. Reunir uno de cada conjunto en una sucesión requiere $\mathrm{CC}(X)$ o testigos ya dados. Esa selección es el único paso adicional respecto del transporte directo de sucesiones.
 
 </details>
 
@@ -1259,7 +1333,7 @@ Reunir infractores en una sucesión, mediante $\mathrm{CC}(X)$ o testigos sumini
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 45</summary>
 
-Hacia atrás por preimágenes, que son abiertas en el dominio.
+Por preimágenes hacia el dominio: si $V\subseteq Y$ es abierto y $f:X\to Y$ es continua, $f^{-1}[V]$ es abierto en $X$. Una bola de salida dentro de $V$, seguida de continuidad, da una bola de entrada dentro de la preimagen. Las imágenes directas de abiertos no tienen esa garantía.
 
 </details>
 
@@ -1274,7 +1348,7 @@ Hacia atrás por preimágenes, que son abiertas en el dominio.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 46</summary>
 
-No. Se prueba directamente con radios en cada punto y bolas del codominio.
+La equivalencia se prueba con bolas en cada punto. Para la vuelta, $f^{-1}[B_Y(f(a),\varepsilon)]$ es un abierto que contiene a $a$, y por ello contiene una bola de entrada $B_X(a,\delta)$. Su inclusión entrega continuidad en $a$, sin construir sucesiones ni invocar selección numerable.
 
 </details>
 
@@ -1289,7 +1363,7 @@ No. Se prueba directamente con radios en cada punto y bolas del codominio.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 47</summary>
 
-La triangular inversa acota su error de salida por la distancia de entrada.
+Para $F(x)=d_X(x,b)$, la triangular inversa da $|F(x)-F(a)|\le d_X(x,a)$. El radio $\delta=\varepsilon$ sirve en todo centro. La misma desigualdad prueba que $F$ es $1$-Lipschitz y uniformemente continua.
 
 </details>
 
@@ -1304,7 +1378,7 @@ La triangular inversa acota su error de salida por la distancia de entrada.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 48</summary>
 
-No. La identidad de la recta discreta hacia la usual tiene inversa discontinua.
+La identidad de $\mathbb R$ con métrica discreta hacia $\mathbb R$ con la usual es una biyección continua: sus puntos de entrada son aislados. La inversa falla en cero, porque toda bola usual positiva contiene puntos distintos de cero, cuyas imágenes tienen distancia discreta uno a cero.
 
 </details>
 
@@ -1321,7 +1395,9 @@ Para $f(x)=|x|$ en la recta usual, calcule $f^{-1}[(1,2)]$ y pruebe continuidad 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 26</summary>
 
-La preimagen es $(-2,-1)\cup(1,2)$, abierta. Para todo par, $||x|-|y||\le|x-y|$ por triangular inversa real, así que en cualquier centro sirve $\delta=\varepsilon$. La desigualdad acredita continuidad de la función en todos los puntos, y el criterio de preimágenes explica la apertura de la región calculada. El mapa no necesita ser inyectivo.
+La condición $1<|x|<2$ se cumple exactamente en $(-2,-1)\cup(1,2)$. Por ello $f^{-1}[(1,2)]$ es esa unión de dos intervalos abiertos.
+
+La triangular inversa real da $||x|-|a||\le|x-a|$ para cualquier centro $a$. Con $\delta=\varepsilon$, toda entrada a distancia menor que $\delta$ tiene error de salida menor que $\varepsilon$. Así $f$ es continua en toda la recta, e incluso $1$-Lipschitz. Su falta de inyectividad no afecta a este control ni al criterio por preimágenes.
 
 **Retorno visual.** Véase [C30-F06](analisis-para-matematicos-capitulo-30-espacios-metricos.html#fig-anm-c30-f06), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1338,7 +1414,11 @@ Pruebe continuidad global equivalente a preimágenes abiertas, con espacios mét
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 27</summary>
 
-Para continuidad→preimagen, dado abierto $V$ y $a$ con $f(a)\in V$, obtenga una bola de salida contenida en $V$ y use su radio como tolerancia de continuidad. La bola de entrada obtenida queda en la preimagen, que es abierta punto por punto. Para la vuelta, la preimagen de $B_Y(f(a),\varepsilon)$ es abierta y contiene a $a$; una bola de entrada dentro de ella entrega el radio $\delta$ de la definición. Las dos métricas intervienen en sus respectivas bolas; no se seleccionan testigos para una sucesión ni se necesita elección numerable.
+Sean $(X,d_X)$ y $(Y,d_Y)$ espacios métricos, y $f:X\to Y$. Suponga primero que $f$ es continua. Si $V\subseteq Y$ es abierto y $a\in f^{-1}[V]$, existe $\varepsilon>0$ con $B_Y(f(a),\varepsilon)\subseteq V$. Continuidad en $a$ proporciona $\delta>0$ que envía $B_X(a,\delta)$ dentro de esa bola. Luego la preimagen es abierta en $X$.
+
+Recíprocamente, suponga que toda preimagen de un abierto de $Y$ es abierta en $X$. Para $a\in X$ y $\varepsilon>0$, la preimagen de $B_Y(f(a),\varepsilon)$ es abierta y contiene a $a$. Existe $\delta>0$ con $B_X(a,\delta)$ incluida en ella. Esto significa exactamente que $d_X(x,a)<\delta$ implica $d_Y(f(x),f(a))<\varepsilon$, acreditando continuidad en cada centro.
+
+Las bolas de entrada y salida usan sus métricas respectivas. La prueba trabaja punto a punto con radios; no construye sucesiones ni utiliza elección numerable. El dominio vacío satisface ambas condiciones de modo vacuo.
 
 </details>
 
@@ -1353,7 +1433,9 @@ Pruebe que la identidad de $\mathbb R$ discreto hacia $\mathbb R$ usual es una b
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 28</summary>
 
-La regla es biyectiva. Para cualquier tolerancia de salida usual, tome radio discreto $1/2$: la única entrada admisible es el centro y el error de salida es cero. Para la inversa, la tolerancia discreta $1/2$ exigiría que todas las entradas de alguna ventana usual de cero fueran cero. Dado cualquier radio $\delta>0$, la entrada $\delta/2$ está en esa ventana y es distinta de cero, por lo que su distancia discreta al centro es uno. Ningún radio funciona.
+La identidad $i:(\mathbb R,d_D)\to(\mathbb R,|\cdot|)$ es biyectiva por su regla de valores. Para cualquier centro $a$ y tolerancia de salida $\varepsilon>0$, el radio discreto $\delta=1/2$ admite únicamente $x=a$. Su error de salida es cero, luego $i$ es continua.
+
+Para la inversa $j$ en cero, fije tolerancia discreta $1/2$. Dado cualquier radio usual $\delta>0$, tome $x=\delta/2$. Está a distancia usual menor que $\delta$ de cero y es distinto de cero, por lo que $d_D(j(x),j(0))=1$. Ningún radio cumple la tolerancia. La biyección continua tiene, por tanto, una inversa discontinua.
 
 </details>
 
@@ -1368,7 +1450,11 @@ Si $f$ no es continua en $a$, construya una sucesión infractora bajo $\mathrm{C
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 29</summary>
 
-Negar continuidad fija $\varepsilon_0>0$ tal que para cada radio hay una entrada cercana cuya distancia de salida a $f(a)$ es al menos $\varepsilon_0$. Para el radio $1/(n+1)$, forme su conjunto no vacío de infractores. $\mathrm{CC}(X)$ permite escoger una entrada $x_n$ de cada conjunto. Entonces $d_X(x_n,a)<1/(n+1)$ acredita convergencia, pero todas las distancias de salida son al menos $\varepsilon_0$, negando convergencia de imágenes al valor central. La selección explícita de esos testigos también basta; su existencia simultánea es el único paso que usa el supuesto.
+Negar continuidad en $a$ da $\varepsilon_0>0$ tal que para cada $\delta>0$ existe $x\in X$ con $d_X(x,a)<\delta$ y $d_Y(f(x),f(a))\ge\varepsilon_0$. Para $n\ge0$, forme $W_n=\{x\in X:d_X(x,a)<1/(n+1),\ d_Y(f(x),f(a))\ge\varepsilon_0\}$. Cada $W_n$ es no vacío.
+
+Bajo $\mathrm{CC}(X)$, se selecciona simultáneamente $x_n\in W_n$. Entonces $d_X(x_n,a)<1/(n+1)\to0$, pero las imágenes quedan a distancia al menos $\varepsilon_0$ de $f(a)$ en todos los índices. Así $x_n\to a$ y $f(x_n)$ no converge al valor central.
+
+La elección se usa exclusivamente para reunir los testigos de la familia $W_n$ en una sucesión. Si esos testigos ya están dados explícitamente, basta utilizarlos. La sucesión infractora niega convergencia al valor central; podría tener otro destino en el codominio.
 
 </details>
 
@@ -1383,7 +1469,11 @@ Para $b\in X$ pruebe continuidad de $F(x)=d(x,b)$ y determine si $\{x:d(x,b)=r\}
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 30</summary>
 
-La triangular inversa da $|F(x)-F(a)|\le d(x,a)$, así que $\delta=\varepsilon$ sirve en todo centro. El conjunto de igualdad es la preimagen del singleton real cerrado $\{r\}$ y por ello es cerrado. La región estricta es la preimagen del abierto real $(-\infty,r)$ y es abierta, incluso cuando resulte vacía. Estas pruebas no necesitan que los valores de distancia recorran un intervalo continuo ni que exista algún punto a distancia $r$.
+Con $F(x)=d(x,b)$, la triangular inversa da $|F(x)-F(a)|\le d(x,a)$ para todos los puntos. Por tanto $\delta=\varepsilon$ acredita continuidad en cualquier centro, y también continuidad uniforme.
+
+Para cualquier $r\in\mathbb R$, el nivel $\{x:d(x,b)=r\}$ es $F^{-1}[\{r\}]$. El singleton real es cerrado y la preimagen por una función continua es cerrada, como se obtiene aplicando el criterio de abiertos al complemento. La región $\{x:d(x,b)<r\}=F^{-1}[(-\infty,r)]$ es abierta.
+
+Estas conclusiones incluyen niveles vacíos y la región vacía cuando $r\le0$. No se exige que exista algún punto a distancia exactamente $r$ ni que la distancia recorra todos los valores de un intervalo.
 
 </details>
 ## 30.7. Una escala común y espacios de funciones
@@ -1425,7 +1515,7 @@ Convergencia en esta métrica equivale a convergencia uniforme hacia una funció
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 49</summary>
 
-El radio se elige antes de cualquier par de entradas y debe servir para todos.
+Se exige $\forall\varepsilon>0\;\exists\delta>0\;\forall x,y\in X$. El radio se elige antes del par y debe servir para todos sus posibles centros. En continuidad punto a punto, el radio puede depender del centro además de la tolerancia.
 
 </details>
 
@@ -1440,7 +1530,7 @@ El radio se elige antes de cualquier par de entradas y debe servir para todos.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 50</summary>
 
-$\delta=\varepsilon/L$.
+Use $\delta=\varepsilon/L$. Si $d_X(x,y)<\delta$, entonces $d_Y(f(x),f(y))\le Ld_X(x,y)<L\delta=\varepsilon$. La constante $L>0$ es común a todos los pares, por lo que también lo es el radio.
 
 </details>
 
@@ -1455,7 +1545,7 @@ $\delta=\varepsilon/L$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 51</summary>
 
-Un radio común de entrada se aplica a todos los pares de una cola de Cauchy.
+Una tolerancia de salida $\varepsilon$ da, por continuidad uniforme, un radio de entrada $\delta$ válido para todos los pares. Cauchy coloca todos los pares de una cola a distancia menor que $\delta$; sus imágenes quedan a distancia menor que $\varepsilon$. No se requiere que alguna de las dos sucesiones converja.
 
 </details>
 
@@ -1470,7 +1560,7 @@ Un radio común de entrada se aplica a todos los pares de una cola de Cauchy.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 52</summary>
 
-$1/(n+2)$ y $1/(n+3)$: su distancia desaparece y la de imágenes vale uno.
+Tome $x_n=1/(n+2)$ y $y_n=1/(n+3)$. Ambas entradas pertenecen a $(0,1)$; su distancia es $1/[(n+2)(n+3)]\to0$, pero $|1/x_n-1/y_n|=1$. La tolerancia de salida $1/2$ queda incumplida por algún par dentro de cualquier radio positivo.
 
 </details>
 
@@ -1485,7 +1575,7 @@ $1/(n+2)$ y $1/(n+3)$: su distancia desaparece y la de imágenes vale uno.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 53</summary>
 
-Que el conjunto sea no vacío, para tener un ínfimo real finito de distancias.
+Se necesita $A\ne\varnothing$. Entonces $\{d(x,a):a\in A\}$ es no vacío, contiene un valor finito y está acotado inferiormente por cero; tiene un ínfimo real finito. No se exige que ese ínfimo se alcance. Para el conjunto vacío no se define aquí una distancia real mediante esa fórmula.
 
 </details>
 
@@ -1500,7 +1590,7 @@ Que el conjunto sea no vacío, para tener un ínfimo real finito de distancias.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 54</summary>
 
-Implica pertenencia a su clausura; pertenece a $A$ si éste es cerrado.
+Para $A$ no vacío, distancia cero equivale a $x\in\operatorname{cl}_X A$, pues en cada radio puede encontrarse un punto de $A$ más cercano que él. En la recta, cero tiene distancia cero a $(0,1)$ sin pertenecer al intervalo. Si $A$ es cerrado, su clausura es $A$ y entonces sí hay pertenencia.
 
 </details>
 
@@ -1515,7 +1605,7 @@ Implica pertenencia a su clausura; pertenece a $A$ si éste es cerrado.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 55</summary>
 
-Que ambas funciones sean acotadas y el dominio de evaluación no vacío.
+Si $|f(t)|\le M_f$ y $|g(t)|\le M_g$, todas las magnitudes $|f(t)-g(t)|$ están entre cero y $M_f+M_g$. Con $T$ no vacío, forman un conjunto no vacío acotado, cuyo supremo real existe y es finito. Ésta es la definición de $D_\infty(f,g)$ en $\mathcal B(T)$.
 
 </details>
 
@@ -1530,7 +1620,7 @@ Que ambas funciones sean acotadas y el dominio de evaluación no vacío.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 56</summary>
 
-Se usa tolerancia $\varepsilon/2$, que deja supremo a lo sumo $\varepsilon/2<\varepsilon$.
+Pida error puntual menor que $\varepsilon/2$ en toda la ventana. Su supremo queda $\le\varepsilon/2<\varepsilon$. Un error menor que $\varepsilon$ en cada entrada sólo da supremo $\le\varepsilon$, pues éste puede no alcanzarse; reservar margen acredita la desigualdad estricta métrica.
 
 </details>
 
@@ -1547,7 +1637,11 @@ Para una función $L$-Lipschitz entre métricas, dé radios de continuidad unifo
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 31</summary>
 
-Si $L>0$, use $\delta=\varepsilon/L$; la desigualdad estricta de entrada da error de salida menor que $\varepsilon$. Cauchy proporciona un corte para esta tolerancia de entrada y controla todos los pares de imágenes. Si $L=0$, cualquier par tiene distancia de salida cero, así que sirve cualquier radio y cualquier sucesión de imágenes existente es constante y Cauchy. Un dominio vacío no tiene sucesiones y el transporte es vacuo.
+Suponga $d_Y(f(x),f(y))\le Ld_X(x,y)$ para todo par. Si $L>0$, el radio común $\delta=\varepsilon/L$ da error de salida menor que $\varepsilon$ cuando la distancia de entrada es menor que $\delta$.
+
+Para una sucesión Cauchy $x_n$, elija su corte correspondiente a $\delta$. Todo par posterior cumple $d_X(x_m,x_n)<\delta$ y por ello $d_Y(f(x_m),f(x_n))<\varepsilon$. Así la sucesión de imágenes es Cauchy sin necesitar un destino en ninguno de los espacios.
+
+Si $L=0$, todas las distancias de imágenes son cero; por separación, en un dominio no vacío la función es constante. Cualquier radio positivo sirve, y las imágenes de cualquier sucesión son constantes y Cauchy. Si el dominio es vacío, las condiciones universales son vacuas y no hay sucesiones que transportar.
 
 </details>
 
@@ -1562,7 +1656,11 @@ Para $A=(0,1)$ dentro de $\mathbb R$, calcule $\operatorname{dist}(x,A)$ en toda
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 32</summary>
 
-Para $x<0$, el ínfimo es $-x$ al acercar entradas a cero; para $0\le x\le1$ es cero; para $x>1$ es $x-1$ al acercar entradas a uno. El cero ocurre en $[0,1]=\operatorname{cl}A$, no sólo en $A$. El ínfimo se alcanza únicamente si $0<x<1$, tomando la propia entrada como punto de $A$. En cero y uno no se alcanza, y fuera del cerrado tampoco, pues sus extremos no están en $A$. La función es $1$-Lipschitz por el teorema general.
+Para $x<0$ y $a\in(0,1)$, $|x-a|=a-x>-x$. Hacer $a\to0^+$ aproxima ese valor a $-x$, luego el ínfimo es $-x$ y no se alcanza. Para $x>1$, $|x-a|=x-a>x-1$; al hacer $a\to1^-$, el ínfimo es $x-1$, tampoco alcanzado.
+
+Si $0<x<1$, tomar $a=x$ da distancia cero, el mínimo. En $x=0$ o $x=1$, las distancias positivas a entradas que se acercan al extremo tienden a cero; su ínfimo es cero pero no hay punto del intervalo que lo alcance.
+
+Así $\operatorname{dist}(x,A)=-x$ para $x<0$, cero para $0\le x\le1$, y $x-1$ para $x>1$. El conjunto de ceros es $[0,1]=\operatorname{cl}A$. El ínfimo se alcanza exactamente cuando $x\in(0,1)$, lo que distingue distancia cero, pertenencia a la clausura y existencia de un punto minimizante.
 
 </details>
 
@@ -1577,7 +1675,11 @@ Pruebe continuidad de $1/x$ en $(0,1)$, niegue su uniformidad con pares explíci
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 33</summary>
 
-En un centro $a>0$, si $|x-a|<a/2$ entonces $|1/x-1/a|\le2|x-a|/a^2$. El radio $\min\{a/2,\varepsilon a^2/2\}$ sirve. Para $x_n=1/(n+2)$, $y_n=1/(n+3)$, las separaciones de entrada $1/((n+2)(n+3))$ tienden a cero y las de salida valen uno. Con tolerancia fija $1/2$ no hay radio uniforme. La primera sucesión es Cauchy por su cola recíproca, mientras las imágenes $n+2$ tienen vecinos a distancia uno y niegan Cauchy.
+En un centro $a\in(0,1)$, si $|x-a|<a/2$ entonces $x>a/2$ y $|1/x-1/a|=|x-a|/(ax)\le2|x-a|/a^2$. Para $\varepsilon>0$ sirve $\delta=\min\{a/2,\varepsilon a^2/2\}$, que acredita continuidad en $a$.
+
+Para negar uniformidad, use $x_n=1/(n+2)$, $y_n=1/(n+3)$. Su separación es $1/[(n+2)(n+3)]\to0$, mientras la separación de imágenes es uno. Con tolerancia de salida $1/2$, cualquier radio queda incumplido por alguno de esos pares.
+
+La sucesión $x_n$ es Cauchy en $(0,1)$: los términos posteriores a $N$ están entre cero y $1/(N+2)$. Sus imágenes son $n+2$, cuyos vecinos tienen distancia uno y niegan Cauchy con tolerancia $1/2$. El centro problemático cero está fuera del dominio; el ejemplo respeta continuidad en todos sus puntos.
 
 </details>
 
@@ -1592,7 +1694,11 @@ En $T=[0,1]$ tome $f_n(t)=t^{n+1}$ y su destino puntual $f(t)=0$ para $t<1$, $f(
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 34</summary>
 
-El error de $f_n$ es $t^{n+1}$ antes del extremo y cero en él. Siempre es menor que uno, pero se aproxima arbitrariamente a uno cuando $t$ se acerca a $1$ desde la izquierda, luego el supremo es exactamente uno y no se alcanza. Por ello no hay convergencia métrica, aunque cada entrada converja. Para $g_n$, el destino es cero y el máximo de error es $1/(n+1)$, alcanzado en $t=1$, de modo que sí hay convergencia en el supremo. El criterio se refiere al supremo, no sólo a errores estrictos en entradas individuales.
+Para $t<1$, $f_n(t)\to0$, y en $t=1$ todos los valores son uno; ésas son las evaluaciones del destino puntual $f$. Su error es $t^{n+1}$ en $[0,1)$ y cero en uno. Es menor que uno en todas las entradas.
+
+Sin embargo, para $n$ fijo y $t\to1^-$, $t^{n+1}\to1$. Por ello uno es la menor cota superior y $D_\infty(f_n,f)=1$ en cada índice. El supremo no se alcanza, y las distancias no tienden a cero: no hay convergencia uniforme a $f$.
+
+Para $g_n(t)=t/(n+1)$, el destino es cero y $D_\infty(g_n,0)=1/(n+1)$, alcanzado en $t=1$. Éste sí tiende a cero. La primera familia muestra por qué errores individualmente estrictos no permiten concluir que su supremo sea estricto.
 
 **Retorno visual.** Véase [C30-F07](analisis-para-matematicos-capitulo-30-espacios-metricos.html#fig-anm-c30-f07), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1609,7 +1715,11 @@ Pruebe los axiomas de $D_\infty$ en $\mathcal B(T)$ con $T$ no vacío y la equiv
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 35</summary>
 
-Las cotas de cada función hacen finitas y acotadas las magnitudes $|f(t)-g(t)|$; al ser $T$ no vacío, completitud por supremo de C3 construye un número real $D_\infty$. Si es cero, todas las magnitudes son cero y las funciones coinciden. Simetría es puntual. La triangular puntual queda bajo la suma de los dos supremos, y tomar el tercero prueba triangular. Si las distancias tienden a cero, controlan todas las entradas. A la inversa, uniformidad con tolerancia $\varepsilon/2$ da supremo a lo sumo $\varepsilon/2<\varepsilon$. Se usa completitud de los valores reales para definir supremos; no se ha demostrado aquí completitud del espacio de funciones.
+Sean $f,g\in\mathcal B(T)$, con $T\ne\varnothing$. Si sus magnitudes están acotadas por $M_f,M_g$, entonces $0\le|f(t)-g(t)|\le M_f+M_g$. El conjunto de errores es no vacío y acotado; la completitud real por supremos construye el número finito $D_\infty(f,g)$.
+
+Si $f=g$, el supremo es cero. Si el supremo es cero, cada error es cero, luego $f(t)=g(t)$ para todo $t$ y $f=g$. La simetría procede del valor absoluto. Para $h\in\mathcal B(T)$, la triangular puntual da $|f(t)-g(t)|\le D_\infty(f,h)+D_\infty(h,g)$ en toda entrada; tomar supremo acredita la triangular de $D_\infty$.
+
+Si $D_\infty(f_n,f)\to0$, una distancia menor que $\varepsilon$ controla todos los errores y da uniformidad. Recíprocamente, uniformidad con tolerancia $\varepsilon/2$ deja $D_\infty(f_n,f)\le\varepsilon/2<\varepsilon$ en toda la cola. El destino pertenece aquí a $\mathcal B(T)$; si sólo se sabe que es límite uniforme de funciones acotadas, un parcial con error menor que uno prueba su acotación. La completitud real se usa para formar los supremos, sin haber probado todavía completitud del espacio de funciones.
 
 </details>
 ## 30.8. Cambiar la métrica y auditar lo que permanece
@@ -1653,7 +1763,7 @@ Pero $x_n=n$ es de Cauchy en $e_\phi$: sus imágenes $n/(n+1)$ tienen toda la co
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 57</summary>
 
-$d_\infty\le d_1\le2d_\infty$ para todos los pares.
+Para $u=|x_1-y_1|$ y $v=|x_2-y_2|$, $\max\{u,v\}\le u+v\le2\max\{u,v\}$. Por ello $d_\infty(x,y)\le d_1(x,y)\le2d_\infty(x,y)$ para todos los pares. Las formas de las bolas difieren, pero sus radios se comparan globalmente.
 
 </details>
 
@@ -1668,7 +1778,7 @@ $d_\infty\le d_1\le2d_\infty$ para todos los pares.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 58</summary>
 
-Abiertos, destinos de convergencia, sucesiones de Cauchy y acotación.
+Si $c,C>0$ y $c\,d\le e\le C\,d$ globalmente, las identidades son Lipschitz en ambos sentidos. Convertir radios por esas constantes conserva abiertos, convergencia a cada destino, sucesiones de Cauchy y conjuntos acotados. Una simple coincidencia de abiertos no proporciona estas cotas globales.
 
 </details>
 
@@ -1683,7 +1793,7 @@ Abiertos, destinos de convergencia, sucesiones de Cauchy y acotación.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 59</summary>
 
-Todos los radios abiertos $0<r\le1$.
+Para $0<r\le1$, $\min\{1,d(x,a)\}<r$ equivale a $d(x,a)<r$. Así las bolas abiertas coinciden, incluido el radio uno. Para $r>1$, la bola de la métrica recortada es todo el espacio y puede diferir de la original.
 
 </details>
 
@@ -1698,7 +1808,7 @@ Todos los radios abiertos $0<r\le1$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 60</summary>
 
-Puede cambiarla: hace acotado todo espacio no vacío aunque la métrica original no lo hiciera.
+En $e=\min\{1,d\}$, todas las distancias son $\le1$, de modo que un espacio no vacío entero cabe en una bola de radio dos. La recta usual no está acotada, y al recortar su métrica sí lo está. Los controles locales pequeños pueden conservarse aunque cambie la acotación global.
 
 </details>
 
@@ -1713,7 +1823,7 @@ Puede cambiarla: hace acotado todo espacio no vacío aunque la métrica original
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 61</summary>
 
-$\psi(t)=t/(1-|t|)$ en $(-1,1)$.
+Es $\psi(t)=t/(1-|t|)$ para $|t|<1$. Se tiene $|\phi(x)|=|x|/(1+|x|)$ y $1-|\phi(x)|=1/(1+|x|)$, por lo que $\psi(\phi(x))=x$. La identidad inversa se comprueba de igual modo, usando $1+|\psi(t)|=1/(1-|t|)$.
 
 </details>
 
@@ -1728,7 +1838,7 @@ $\psi(t)=t/(1-|t|)$ en $(-1,1)$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 62</summary>
 
-Sus imágenes $n/(n+1)$ tienen todas las distancias de cola a lo sumo $1/(N+1)$.
+Para $n\ge0$, $\phi(n)=n/(n+1)=1-1/(n+1)$. Si $m,n\ge N$, las distancias entre estas imágenes son $\le1/(N+1)$, y esa barrera tiende a cero. Por definición de $e_\phi$, esto controla todos los pares de la cola y acredita Cauchy.
 
 </details>
 
@@ -1743,7 +1853,7 @@ Sus imágenes $n/(n+1)$ tienen todas las distancias de cola a lo sumo $1/(N+1)$.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 63</summary>
 
-No. La usual y $e_\phi$ tienen los mismos abiertos y difieren para la sucesión $n$.
+La usual y $e_\phi$ en $\mathbb R$ tienen los mismos abiertos, porque $\phi$ y su inversa son continuas. Sin embargo, la sucesión $n$ es Cauchy en $e_\phi$ y sus vecinos distan uno en la usual. La topología conserva convergencia a destinos del espacio; Cauchy exige un control común de pares que va más allá de esos radios locales.
 
 </details>
 
@@ -1758,7 +1868,7 @@ No. La usual y $e_\phi$ tienen los mismos abiertos y difieren para la sucesión 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 64</summary>
 
-Examinar existencia de destinos de Cauchy y las nociones de compacidad y conexidad, con sus hipótesis métricas.
+C31 examinará cuándo una sucesión de Cauchy tiene un destino en su espacio, y cómo funcionan compacidad y conexidad en el marco métrico. Las pruebas de este capítulo ya proporcionan bolas, convergencia y continuidad; los nuevos resultados deben declarar sus hipótesis de existencia y de selección de testigos.
 
 </details>
 
@@ -1775,7 +1885,11 @@ Para $x=(1,2)$ e $y=(4,-2)$, calcule $d_1,d_\infty$ y pruebe las desigualdades g
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 36</summary>
 
-Las magnitudes de coordenadas son $3$ y $4$, por lo que $d_1=7$ y $d_\infty=4$, con $4\le7\le8$. En general, para magnitudes $u,v\ge0$, $\max\{u,v\}\le u+v\le2\max\{u,v\}$. Aplicarlo al par de coordenadas prueba $d_\infty\le d_1\le2d_\infty$ para todos los puntos. Las constantes positivas convierten bolas, cortes de convergencia y pares de Cauchy.
+Para $x=(1,2)$, $y=(4,-2)$, las magnitudes de las diferencias de coordenadas son tres y cuatro. Por ello $d_1(x,y)=7$ y $d_\infty(x,y)=4$, cumpliendo $4\le7\le8$.
+
+En general, con $u=|x_1-y_1|$ y $v=|x_2-y_2|$, el máximo es menor o igual que $u+v$, y ambos sumandos son menores o iguales que el máximo. Luego $\max\{u,v\}\le u+v\le2\max\{u,v\}$, que prueba $d_\infty\le d_1\le2d_\infty$ para todos los pares.
+
+La identidad de $d_\infty$ a $d_1$ es $2$-Lipschitz y la inversa es $1$-Lipschitz. Esas cotas convierten radios de bolas y tolerancias de convergencia y Cauchy en los dos sentidos.
 
 </details>
 
@@ -1790,7 +1904,11 @@ Pruebe que $e=\min\{1,d\}$ es métrica y que conserva convergencia y Cauchy, aun
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 37</summary>
 
-La positividad separadora y simetría son directas. La triangular se obtiene de monotonía del mínimo y $\min\{1,u+v\}\le\min\{1,u\}+\min\{1,v\}$: si algún sumando es al menos uno, la derecha domina uno; si no, es $u+v$. Para convertir un control en $e$ a $d$, use tolerancia $\eta=\min\{\varepsilon/2,1/2\}$. La distancia menor que $\eta$ es menor que uno, donde $e=d$, y menor que $\varepsilon$. La vuelta usa $e\le d$. Todo $X$ está en una bola de radio dos para $e$ si hay un centro, mientras $\mathbb R$ no es acotada en la usual.
+La función $e(x,y)=\min\{1,d(x,y)\}$ es no negativa, separa puntos y es simétrica. Para $u,v\ge0$, $\min\{1,u+v\}\le\min\{1,u\}+\min\{1,v\}$: si alguno es al menos uno, el lado derecho domina uno; si ambos son menores que uno, el lado derecho es $u+v$. Monotonía del mínimo y triangular de $d$ dan $e(x,z)\le e(x,y)+e(y,z)$.
+
+Como $e\le d$, un corte que controle distancias en $d$ controla las de $e$. Para el sentido inverso, dada $\varepsilon>0$, pida en $e$ la tolerancia $\eta=\min\{\varepsilon/2,1/2\}$. Una distancia $e(x,y)<\eta$ fuerza $d(x,y)<1$, donde $e=d$, y además $d(x,y)<\varepsilon$. Aplicar este control a distancias al destino o a todos los pares de una cola conserva, respectivamente, convergencia y Cauchy.
+
+La acotación puede cambiar: en $e$ todas las distancias son $\le1$, y un espacio no vacío entero cabe en una bola de radio dos. La recta con distancia usual no es acotada. El acuerdo en controles pequeños no produce una comparación global de las distancias grandes.
 
 </details>
 
@@ -1805,7 +1923,11 @@ Pruebe que $e_\phi(x,y)=|\phi(x)-\phi(y)|$, $\phi(x)=x/(1+|x|)$, es métrica y t
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 38</summary>
 
-$\phi$ es biyectiva hacia $(-1,1)$ con inversa $\psi(t)=t/(1-|t|)$, pues $1-|\phi(x)|=1/(1+|x|)$ da $\psi(\phi(x))=x$, y $1+|\psi(t)|=1/(1-|t|)$ da $\phi(\psi(t))=t$ para $|t|<1$. La separación de $e_\phi$ usa inyectividad, y simetría/triangular usan la distancia usual de las imágenes. Ambas funciones son continuas por las reglas reales y denominadores positivos. Las bolas $e_\phi$ son preimágenes de bolas relativas por $\phi$, abiertas usuales. Para un abierto usual $U$, $\phi[U]=\psi^{-1}[U]$ es abierto relativo; una bola de salida dentro de él vuelve a una bola $e_\phi$ dentro de $U$. Así cada tipo de abierto es del otro tipo, sin una cota uniforme global presupuesta.
+Para todo $x\in\mathbb R$, $|\phi(x)|=|x|/(1+|x|)<1$. Defina $\psi(t)=t/(1-|t|)$ en $(-1,1)$. Se tiene $1-|\phi(x)|=1/(1+|x|)$ y, por tanto, $\psi(\phi(x))=x$. Para $|t|<1$, $1+|\psi(t)|=1/(1-|t|)$, y de igual modo $\phi(\psi(t))=t$. Así $\phi$ es una biyección con inversa $\psi$.
+
+La separación de $e_\phi$ procede de la inyectividad de $\phi$; no negatividad, simetría y triangular son las propiedades del valor absoluto entre las imágenes. Luego $e_\phi$ es métrica. Ambas funciones $\phi$ y $\psi$ son continuas con las métricas usuales por las reglas reales de valor absoluto y cociente, cuyos denominadores son positivos en sus dominios.
+
+Cada bola $B_{e_\phi}(a,r)$ es $\phi^{-1}[B_{(-1,1)}(\phi(a),r)]$, abierta usual por continuidad. Una unión de tales bolas prueba que todo abierto de $e_\phi$ es usual. Para la otra dirección, si $U$ es abierto usual, $\phi[U]=\psi^{-1}[U]$ es abierto relativo en $(-1,1)$. En cada $a\in U$ hay una bola relativa de $\phi(a)$ dentro de esa imagen; su preimagen es una bola de $e_\phi$ dentro de $U$. Así tienen exactamente los mismos abiertos, mediante radios locales.
 
 </details>
 
@@ -1820,7 +1942,11 @@ Para $x_n=n$ compare Cauchy, convergencia y acotación en la usual y en $e_\phi$
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 39</summary>
 
-En la usual, los vecinos distan uno, luego no es Cauchy y por tanto no converge; sus valores son no acotados. En $e_\phi$, las imágenes son $n/(n+1)$ y toda cola tiene separaciones a lo sumo $1/(N+1)$, así que es Cauchy. El espacio completo queda a distancia menor que dos de cualquier centro, por lo que la sucesión es acotada. Si convergiera a un real $a$, las imágenes convergerían a $\phi(a)$ y también a uno por el cálculo numérico; unicidad obligaría $\phi(a)=1$, fuera del recorrido. No tiene destino en esa métrica. La coincidencia de abiertos no preserva Cauchy ni acotación.
+En la usual, $|x_{n+1}-x_n|=1$. La tolerancia $1/2$ queda incumplida por vecinos posteriores a cualquier corte, de modo que $x_n=n$ no es Cauchy. Tampoco converge, pues toda convergente es Cauchy; además no es acotada, por arquimedianidad.
+
+En $e_\phi$, las imágenes son $n/(n+1)=1-1/(n+1)$. Para $m,n\ge N$, su separación es $\le1/(N+1)$, lo que prueba Cauchy. Como todas las imágenes pertenecen a $(-1,1)$, todas las distancias $e_\phi$ son menores que dos; una bola de radio dos alrededor de cualquier centro contiene la sucesión, que sí es acotada.
+
+Si convergiera a algún real $a$ en $e_\phi$, por definición las imágenes convergerían usualmente a $\phi(a)$. También convergen a uno por la fórmula explícita, y unicidad obligaría $\phi(a)=1$, fuera del recorrido. No existe destino en ese espacio. La misma topología conserva convergencia a sus puntos, pero no necesariamente Cauchy ni acotación.
 
 **Retorno visual.** Véase [C30-F08](analisis-para-matematicos-capitulo-30-espacios-metricos.html#fig-anm-c30-f08), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
@@ -1837,7 +1963,11 @@ Muestre explícitamente que la identidad desde $(\mathbb R,e_\phi)$ hacia la usu
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 40</summary>
 
-La continuidad punto a punto se sigue de la igualdad de abiertos, ya probada. Para negar uniformidad, compare $n$ y $n+1$: su distancia usual es uno y la distancia $e_\phi$ es $1/((n+1)(n+2))\to0$. Con tolerancia de salida $1/2$, estos pares impiden un radio común. En contraste, la identidad de $d_\infty$ hacia $d_1$ es $2$-Lipschitz y la inversa es $1$-Lipschitz, por las desigualdades globales entre ambas. Esos certificados sí dan radios uniformes y transportan Cauchy en los dos sentidos.
+La identidad $i:(\mathbb R,e_\phi)\to(\mathbb R,|\cdot|)$ es continua, pues ambos espacios tienen los mismos abiertos y las preimágenes por identidad coinciden con ellos. También puede darse un radio local: para $a\in\mathbb R$, continuidad de $\psi$ en $\phi(a)$ convierte una tolerancia usual en un radio de imágenes, y $e_\phi(x,a)<\delta$ sitúa a $\phi(x)$ en ese radio, dando $|x-a|<\varepsilon$.
+
+Para negar uniformidad, tome los pares $n,n+1$. Su distancia de entrada es $e_\phi(n,n+1)=1/[(n+1)(n+2)]\to0$, pero su distancia de salida usual es uno. Con tolerancia $1/2$, cualquier radio común falla para algún par posterior. La continuidad de la inversa $\psi$ es local y no proporciona ese radio común cerca de la frontera del intervalo de imágenes.
+
+Entre $d_\infty$ y $d_1$ en el plano, las desigualdades globales dan identidades $2$-Lipschitz y $1$-Lipschitz. Sirven, respectivamente, los radios uniformes $\varepsilon/2$ y $\varepsilon$, y ambas identidades transportan Cauchy. Las cotas comunes de ese ejemplo acreditan una propiedad adicional al acuerdo de abiertos.
 
 </details>
 
