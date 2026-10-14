@@ -1,0 +1,604 @@
+---
+title: "Capítulo 14 — ¿Por qué las fracciones forman un cuerpo ordenado?"
+description: "Fundamentos para matemáticos, capítulo 14: racionales como clases de pares; cuerpo ordenado, densidad y completitud."
+content-id: MA-BCH-0345
+content-type: book-chapter
+collection: PM-FUN
+editorial-project: FND
+book-id: MA-BOK-0008
+source-id: FND-T1-C14
+editorial-id: MA-BCH-FND-01-014
+source-version: v01
+status: published
+date-created: 2026-10-13
+date-modified: 2026-10-13
+areas: [fundamentos]
+level: fundamental
+topics: [construccion-de-numeros, clases-de-equivalencia, razonamiento-matematico]
+prerequisites: []
+related: [MA-BOK-0008]
+provenance:
+  type: original
+  sources:
+    - "Manuscrito canónico FND_T1_C14_v01.md; bibliografía y convenciones en el índice de Fundamentos para matemáticos."
+license: GFDL-1.3-or-later
+---
+
+[Índice del libro](../para-matematicos/fundamentos-para-matematicos.qmd)
+
+
+La construcción de los enteros permitió efectuar cualquier resta, pero dejó pendientes divisiones tan sencillas como la que pide resolver $2x=1$. En la aritmética que aprendimos antes de este libro escribimos $x=1/2$ y aceptamos sin reparos que $1/2$, $2/4$ y $-3/-6$ designan un solo número. Hemos llegado al momento de justificar esa costumbre: los enteros servirán para fabricar representaciones y una relación de equivalencia decidirá cuáles deben pertenecer a una misma clase. La prueba decisiva volverá a ser que sumar, multiplicar, dividir y comparar esas clases no depende de la representación escogida.
+
+## 14.1. Tercer momento de construcción: los racionales a partir de los enteros {#fnd-section-14-1}
+
+Consideremos las dos escrituras que han motivado el problema, $1/2$ y $2/4$. Si las sustituimos por los pares $(1,2)$ y $(2,4)$, obtenemos objetos distintos de $\mathbb Z\times\mathbb Z$, aunque queremos que designen un solo número. Como todavía no hemos construido ese número, el criterio para identificar los pares tendrá que expresarse mediante las operaciones enteras disponibles; de ahí surgirá la relación que necesitamos.
+
+Partimos de los pares $(a,b)$ con $a,b\in\mathbb Z$ y $b\ne0$. El segundo componente se declara no nulo porque no queremos introducir una división por cero. Llamemos $D=\mathbb Z\times(\mathbb Z\setminus\{0\})$. Podemos comparar dos pares por una igualdad que sólo utiliza el producto de enteros:
+
+$$
+\boxed{(a,b)\sim(c,d)\quad\Longleftrightarrow\quad ad=bc.}
+$$
+
+En el ejemplo anterior, $(1,2)\sim(2,4)$ porque $1\cdot4=2\cdot2$, y $(2,4)\sim(-3,-6)$ porque $2(-6)=4(-3)$. Estamos identificando escrituras que queremos utilizar para expresar la misma razón, pero antes de llamar «números» a sus clases tenemos que demostrar que realmente hemos definido una equivalencia.
+
+La reflexividad se sigue de $ab=ba$ y la simetría de poder leer una igualdad de productos en cualquiera de los dos sentidos. La transitividad requiere un cálculo que merece atención. Supongamos que $(a,b)\sim(c,d)$ y $(c,d)\sim(e,f)$. Las hipótesis nos dan
+
+$$
+ad=bc,\qquad cf=de.
+$$
+
+Multiplicamos la primera igualdad por $f$ y utilizamos la segunda para sustituir $cf$:
+
+$$
+adf=bcf=bde.
+$$
+
+Como $d\ne0$ y en los enteros es lícito cancelar un factor no nulo, concluimos que $af=be$, que es exactamente la condición $(a,b)\sim(e,f)$. La exigencia de denominadores no nulos interviene aquí de verdad. Si admitiéramos $d=0$, esa cancelación dejaría de estar justificada; es fácil incluso construir ejemplos en que la transitividad falla al permitir denominadores nulos. Para comprobarlo, admitamos provisionalmente todos los pares de enteros y tomemos $(1,1)$, $(0,0)$ y $(1,2)$. Según la regla de productos cruzados, el primero es equivalente al segundo porque $1\cdot0=1\cdot0$, y el segundo es equivalente al tercero porque $0\cdot2=0\cdot1$; pero $(1,1)$ no es equivalente a $(1,2)$, pues $1\cdot2\ne1\cdot1$. Un único par con denominador cero ha permitido conectar representaciones que la relación no puede enlazar transitivamente. Excluirlo es una decisión matemática necesaria para construir el cociente.
+
+Al reunir los pares equivalentes obtenemos el **tercer momento de construcción numérica**:
+
+$$
+\boxed{\mathbb Q=D/{\sim}
+=\bigl(\mathbb Z\times(\mathbb Z\setminus\{0\})\bigr)/{\sim}.}
+$$
+
+Una fracción escrita con dos enteros es, en esta realización, un **representante**; el racional es su **clase completa**. La clase $[(1,2)]$ incluye $(2,4)$, $(-3,-6)$ y cuantos pares tengan productos cruzados iguales. La escritura habitual $a/b$ será un nombre más breve para $[(a,b)]$, siempre con $b\ne0$.
+
+### Sumar y multiplicar clases racionales
+
+Con las representaciones ordinarias de fracciones conocemos dos fórmulas. Podemos emplearlas como candidatas para operar sobre las clases:
+
+$$
+\boxed{\begin{aligned}
+[(a,b)]+[(c,d)]&=[(ad+bc,bd)],\\
+[(a,b)]\cdot[(c,d)]&=[(ac,bd)].
+\end{aligned}}
+$$
+
+Antes de considerar los representantes, debe estar garantizado que las salidas pertenecen a $D$: como $b\ne0$ y $d\ne0$, también $bd\ne0$. Ésta es una propiedad del producto de enteros que se obtiene de su construcción y de las leyes aritméticas demostradas para él; no bastaría conocer que $b$ y $d$ son distintos de cero si estuviéramos trabajando en una estructura con divisores de cero.
+
+Probemos la independencia de los representantes. Supongamos que $(a,b)\sim(a',b')$ y $(c,d)\sim(c',d')$. Es decir,
+
+$$
+ab'=a'b,\qquad cd'=c'd.
+$$
+
+Para la suma debemos comparar los pares $(ad+bc,bd)$ y $(a'd'+b'c',b'd')$. La condición que buscamos es
+
+$$
+(ad+bc)b'd'=(a'd'+b'c')bd.
+$$
+
+Podemos obtenerla sin recurrir a ninguna «igualdad de fracciones» que todavía no esté definida. Desarrollamos el primer miembro y reemplazamos $ab'$ por $a'b$ y $cd'$ por $c'd$:
+
+$$
+\begin{aligned}
+(ad+bc)b'd'
+&=ab'dd'+cd'bb'\\
+&=a'bdd'+c'dbb'\\
+&=(a'd'+b'c')bd.
+\end{aligned}
+$$
+
+La suma produce, por tanto, la misma clase para cualquier elección de los dos representantes. Para el producto, la comprobación es aún más breve:
+
+$$
+(ac)(b'd')=(ab')(cd')=(a'b)(c'd)=(a'c')(bd).
+$$
+
+Esa igualdad es exactamente la equivalencia entre los pares $(ac,bd)$ y $(a'c',b'd')$. Quedan bien definidas ambas operaciones.
+
+Los enteros se incorporan al nuevo sistema mediante
+
+$$
+\iota_{\mathbb Z}:\mathbb Z\longrightarrow\mathbb Q,
+\qquad\iota_{\mathbb Z}(z)=[(z,1)].
+$$
+
+Si $\iota_{\mathbb Z}(z)=\iota_{\mathbb Z}(w)$, entonces $(z,1)\sim(w,1)$ y la igualdad cruzada se reduce a $z=w$; luego la aplicación es inyectiva. Es correcto identificar el entero $z$ con el racional $z/1$ cuando trabajamos dentro de $\mathbb Q$, tal como antes identificamos cada natural con su entero correspondiente. También puede comprobarse directamente con las fórmulas que $\iota_{\mathbb Z}$ conserva sumas y productos.
+
+### Simplificar una fracción significa cambiar de representante
+
+En la aritmética escolar se aprende a simplificar $6/8$ y obtener $3/4$. Esa operación se comprende mejor después de construir las clases. Los pares $(6,8)$ y $(3,4)$ son equivalentes porque $6\cdot4=8\cdot3$; por ello dan dos nombres del mismo elemento de $\mathbb Q$. Simplificar no transforma un número racional en otro: sustituye un representante por otro más cómodo. Del mismo modo, $(-3,-4)$ representa la clase de $3/4$, y $(3,-4)$ representa la de $-3/4$. Los cambios de signo deben realizarse en ambos componentes si deseamos conservar la clase.
+
+Elegir representantes con numerador y denominador sin factores comunes simplifica los cálculos, pero la clase ya está definida antes de escoger esa escritura reducida. En una demostración podemos cambiar de representante siempre que comprobemos que la nueva pareja conserva la relación de productos cruzados; lo que se simplifica es el trabajo sobre el número, no el número mismo.
+
+**Comprobación 9.** Comprueba que $(1,2)$ y $(3,6)$ representan un mismo racional. Calcula la suma de sus clases con la de $(1,3)$ utilizando primero el representante $(1,2)$ y luego $(3,6)$. Indica qué argumento general impide que los resultados dependan de esa elección.
+
+**Solución razonada.** Son equivalentes porque $1\cdot6=2\cdot3$. Con el primer representante obtenemos $[(1,2)]+[(1,3)]=[(5,6)]$; con el segundo, $[(3,6)]+[(1,3)]=[(15,18)]$. Ambos resultados pertenecen a la misma clase, pues $5\cdot18=6\cdot15$. El cálculo comprueba un caso; la prueba general de buena definición de la suma, realizada mediante productos cruzados, garantiza la coincidencia para todos los representantes permitidos.
+
+Una vez comprobadas estas dos operaciones, la pregunta aritmética que nos hizo ampliar los enteros se vuelve precisa: ¿existe una clase que, multiplicada por la de $2$, produzca la clase de $1$? Resolveremos esa cuestión mediante inversos de clases, sin recurrir a fracciones ya conocidas.
+
+### Una perspectiva histórica: la igualdad de razones
+
+La pregunta por cuándo dos razones deben considerarse iguales es mucho más antigua que nuestra construcción conjuntista. En el libro V de los *Elementos*, Euclides presenta una teoría de proporciones entre magnitudes. Su definición 5 caracteriza la igualdad de razones mediante la comparación de múltiplos correspondientes de las magnitudes, y permite trabajar incluso con magnitudes que no poseen una medida común. Allí se trata de razones de magnitudes; no se define $\mathbb Q$ como un conjunto de clases de pares de enteros. El vínculo con nuestro recorrido es intelectual: tanto en aquella teoría como aquí debemos precisar qué quiere decir que distintas presentaciones expresen una misma relación y demostrar que esa igualdad se comporta como esperamos. Esta comparación histórica deja a salvo las diferencias de objetos y métodos.
+
+*Referencia de la nota:* Euclides, *Elementos*, libro V, definiciones 3 y 5; traducción y texto consultados en [Euclid's Elements — Book V](https://www.euclids-elements.org/elements/books/bookV/) y [Los Elementos — Libro V](https://es.wikisource.org/wiki/Los_Elementos/Libro_V). La nota no atribuye a Euclides las clases de equivalencia modernas ni la formalización conjuntista de los racionales.
+
+## 14.2. Dividir dentro de los racionales {#fnd-section-14-2}
+
+Las fórmulas obtenidas permiten sumar y multiplicar clases de pares enteros, pero el motivo inicial de pasar de $\mathbb Z$ a $\mathbb Q$ era resolver ecuaciones como $2x=1$. Necesitamos producir, para cada clase $x\ne0$, otra clase $y$ con $xy=1$. La regla escolar de intercambiar numerador y denominador sugiere cómo hacerlo; la dificultad está en que una misma clase admite infinitas escrituras, y el resultado deberá seguir siendo el mismo aunque escojamos otra.
+
+Conservaremos la notación $D=\mathbb Z\times(\mathbb Z\setminus\{0\})$ y la equivalencia $(a,b)\sim(c,d)$ cuando $ad=bc$. Las operaciones con clases ya quedaron bien definidas en la sección precedente, de modo que podemos utilizarlas sin volver a justificar en cada línea los cambios de representante que allí demostramos.
+
+### Cero, uno y el significado de una clase no nula
+
+La clase $[(0,1)]$ desempeña el papel del cero. En efecto, para cualquier $(a,b)\in D$,
+
+$$
+[(a,b)]+[(0,1)]=[(a,b)],
+$$
+
+pues la fórmula de la suma produce precisamente el representante $(a,b)$. De igual manera, la clase $[(1,1)]$ es la unidad multiplicativa, porque
+
+$$
+[(a,b)]\,[(1,1)]=[(a,b)].
+$$
+
+Estas dos clases son diferentes: si fueran iguales, la equivalencia de los pares exigiría $0\cdot1=1\cdot1$, es decir, $0=1$ en $\mathbb Z$. Utilizaremos desde aquí los nombres $0=[(0,1)]$ y $1=[(1,1)]$, recordando que las igualdades ocurren dentro de $\mathbb Q$.
+
+Hay una comprobación especialmente útil antes de hablar de inversos. Una clase $[(a,b)]$ es cero exactamente cuando $a=0$. Para justificarlo, escribamos la condición de equivalencia con $(0,1)$:
+
+$$
+[(a,b)]=[(0,1)]
+\quad\Longleftrightarrow\quad
+(a,b)\sim(0,1)
+\quad\Longleftrightarrow\quad a\cdot1=b\cdot0
+\quad\Longleftrightarrow\quad a=0.
+$$
+
+El denominador ya sabemos que no puede ser cero. Así, una clase racional distinta de cero tiene un representante con **ambas coordenadas no nulas**, y cualquier otro representante suyo también tiene numerador no nulo. Esta observación autoriza una operación que, hasta aquí, sólo podíamos anticipar por la costumbre de invertir fracciones.
+
+### Invertir una clase
+
+Sea $x=[(a,b)]\ne0$. Como $a\ne0$, el par $(b,a)$ pertenece a $D$ y podemos proponer
+
+$$
+\boxed{x^{-1}=[(b,a)].}
+$$
+
+Antes de multiplicar, hemos de considerar una dificultad propia del cociente: ¿qué sucede si en lugar de $(a,b)$ habíamos elegido otro representante $(c,d)$ de $x$? La equivalencia inicial nos dice $ad=bc$. Precisamente esa igualdad, leída como $bc=ad$, afirma que $(b,a)\sim(d,c)$. Los pares obtenidos al intercambiar coordenadas representan, pues, una misma clase. La inversión **está bien definida** en $\mathbb Q\setminus\{0\}$.
+
+Al multiplicar obtenemos
+
+$$
+[(a,b)]\,[(b,a)]=[(ab,ba)]=[(1,1)],
+$$
+
+porque $(ab,ba)\sim(1,1)$: sus productos cruzados son iguales por conmutatividad, y $ab\ne0$ asegura que el par empleado pertenece a $D$. Por consiguiente, todo racional no nulo tiene inverso multiplicativo. La ecuación $2x=1$, que carecía de solución entera, ya se resuelve dentro del nuevo sistema: el entero $2$ se representa por $[(2,1)]$ y su inverso es $[(1,2)]$.
+
+El símbolo $\tfrac ab$ puede usarse desde este momento como abreviatura de la clase $[(a,b)]$. La notación no elimina la clase: si escribimos $\tfrac12=\tfrac24$, afirmamos la igualdad entre las clases de $(1,2)$ y $(2,4)$, aunque los pares sigan siendo distintos.
+
+**Comprobación 10.** Considera los representantes $(2,3)$ y $(-4,-6)$ de una misma clase racional. Calcula la inversa empleando cada uno. Explica por qué las respuestas tienen que representar el mismo racional e indica qué falla si intentamos invertir la clase cero.
+
+**Solución razonada.** Los pares son equivalentes, pues $2(-6)=3(-4)$. Con el primer representante obtenemos $[(3,2)]$; con el segundo, $[(-6,-4)]$. Estas clases coinciden porque $3(-4)=2(-6)$. En general la equivalencia $(a,b)\sim(c,d)$ se conserva al intercambiar ambas coordenadas, siempre que $a$ y $c$ sean no nulos. Para el cero esa condición falla: un representante $(0,b)$ se transformaría en $(b,0)$, que queda fuera de $D$ por tener denominador cero. No existe inversa multiplicativa de $0$, pues cualquier producto por $0$ vuelve a ser $0$ y $0\ne1$.
+
+## 14.3. Las leyes del cuerpo: lo que las fórmulas deben demostrar {#fnd-section-14-3}
+
+Hemos logrado definir operaciones con clases y producir la inversa de cada racional no nulo. La palabra **cuerpo**, sin embargo, reúne varias afirmaciones que requieren justificación. Entre ellas se encuentran la asociatividad de la suma y del producto, sus elementos neutros, los opuestos aditivos, la conmutatividad, la distributividad y la existencia de inversos para todos los elementos distintos de cero. La experiencia de los enteros muestra cómo estas leyes pueden estudiarse a partir de las operaciones que ya conocemos.
+
+Para abreviar los cálculos pondremos $x=[(a,b)]$, $y=[(c,d)]$ y $z=[(e,f)]$, con $b,d,f\ne0$. Las igualdades entre clases se obtendrán utilizando representantes concretos; no suponemos que los distintos pares elegidos sean literalmente iguales.
+
+### Sumar tres fracciones
+
+Si calculamos primero $x+y$ y después añadimos $z$, la definición da
+
+$$
+\begin{aligned}
+(x+y)+z
+&=[(ad+bc,bd)]+[(e,f)]\\
+&=[((ad+bc)f+ebd,bdf)]\\
+&=[(adf+bcf+bde,bdf)].
+\end{aligned}
+$$
+
+Si, por el contrario, sumamos primero $y+z$, resulta
+
+$$
+\begin{aligned}
+x+(y+z)
+&=[(a,b)]+[(cf+de,df)]\\
+&=[(adf+b(cf+de),bdf)]\\
+&=[(adf+bcf+bde,bdf)].
+\end{aligned}
+$$
+
+Ambos recorridos llegan a un mismo representante, gracias a las leyes distributiva, asociativa y conmutativa de los enteros. La suma racional es, por tanto, **asociativa**. Al intercambiar $x$ e $y$ obtenemos $(cb+da,db)$ en lugar de $(ad+bc,bd)$; las operaciones enteras muestran que ambos pares son iguales. La suma es también **conmutativa**.
+
+Ya comprobamos que $0=[(0,1)]$ es neutro. El opuesto aditivo de $[(a,b)]$ es $[(-a,b)]$, porque
+
+$$
+[(a,b)]+[(-a,b)]
+=[(ab-ba,b^2)]
+=[(0,b^2)]=0.
+$$
+
+La última igualdad se deduce de la relación de equivalencia: $(0,b^2)\sim(0,1)$, y $b^2\ne0$. La clase opuesta también puede escribirse como $[(a,-b)]$; la igualdad de estas clases se demuestra mediante productos cruzados. Así, $(\mathbb Q,+)$ es un grupo abeliano: podemos sumar, reagrupar y resolver cualquier ecuación $x+y=z$ sumando el opuesto de $y$.
+
+### Multiplicar y distribuir
+
+La multiplicación ofrece una cuenta más corta. Las dos formas de agrupar tres clases conducen al representante $(ace,bdf)$:
+
+$$
+\begin{aligned}
+(xy)z&=[(ac,bd)]\,[(e,f)]=[(ace,bdf)],\\
+x(yz)&=[(a,b)]\,[(ce,df)]=[(ace,bdf)].
+\end{aligned}
+$$
+
+El intercambio de los dos factores cambia $(ac,bd)$ por $(ca,db)$, que es el mismo par. Tenemos asociatividad y conmutatividad; el elemento neutro es $1=[(1,1)]$. En la sección anterior construimos, además, el inverso multiplicativo de cualquier clase no nula.
+
+Para comprobar la distributividad comparemos $x(y+z)$ con $xy+xz$. El primer miembro tiene como representante
+
+$$
+\begin{aligned}
+x(y+z)
+&=[(a,b)]\,[(cf+de,df)]\\
+&=[(acf+ade,bdf)].
+\end{aligned}
+$$
+
+El segundo puede expresarse con el **mismo denominador**. En efecto, las clases $[(ac,bd)]$ y $[(acf,bdf)]$ coinciden, y lo mismo ocurre con $[(ae,bf)]$ y $[(aed,bdf)]$. Si sumamos esas dos representaciones obtenemos
+
+$$
+\begin{aligned}
+xy+xz
+&=[(acf,bdf)]+[(aed,bdf)]\\
+&=[((acf+aed)bdf,(bdf)^2)]\\
+&=[(acf+aed,bdf)].
+\end{aligned}
+$$
+
+La simplificación de la última clase está justificada por la equivalencia de pares, pues $bdf\ne0$. Los dos resultados coinciden, y queda probada la distributividad. La correspondiente identidad $(y+z)x=yx+zx$ se sigue de la conmutatividad del producto.
+
+Los cálculos anteriores prueban que $\mathbb Q$, con las operaciones definidas mediante pares y con $0\ne1$, **es un cuerpo conmutativo**. El nombre resume las propiedades; las razones matemáticas están en las pruebas. Los enteros se incorporan mediante la función $z\mapsto[(z,1)]$, que es inyectiva y conserva suma, producto, cero y unidad, como demostramos al construir las operaciones racionales. Al trabajar dentro de $\mathbb Q$ identificaremos un entero con su imagen, sin afirmar que las clases de pares de naturales y las clases de pares de enteros son literalmente el mismo tipo de conjunto.
+
+**Comprobación 11.** Una persona observa que la regla de suma de fracciones está bien definida y concluye que necesariamente es asociativa. ¿Qué falta en ese razonamiento? Comprueba después, con representantes, que $\tfrac12+(\tfrac13+\tfrac16)=(\tfrac12+\tfrac13)+\tfrac16$.
+
+**Solución razonada.** La buena definición asegura que cambiar las escrituras de las entradas no cambia la clase resultante; la asociatividad compara dos órdenes diferentes de aplicación de la operación. Son obligaciones independientes. En el ejemplo, $\tfrac13+\tfrac16=\tfrac12$, de modo que la primera agrupación produce $1$. Para la otra, $\tfrac12+\tfrac13=\tfrac56$ y $\tfrac56+\tfrac16=1$. La igualdad de estos cálculos ilustra la propiedad; la prueba algebraica anterior, que usa tres fracciones arbitrarias, es la que la establece en general.
+
+## 14.4. Ordenar las clases sin dejarse engañar por los signos {#fnd-section-14-4}
+
+En la recta que conocemos por la aritmética elemental, $\tfrac12$ queda a la derecha de $0$ y $-\tfrac12$ a su izquierda. Si queremos recuperar ese orden desde nuestra construcción, necesitamos decidir qué significa que **una clase de pares sea positiva**. El signo de un representante puede inducir a error: $[(1,-2)]$ y $[(-1,2)]$ son la misma clase, aunque el primer numerador sea positivo y el segundo negativo. La positividad del numerador por sí sola no sirve para clasificar los racionales mientras admitamos denominadores de ambos signos.
+
+Todo racional tiene, sin embargo, algún representante con denominador positivo. Si $b>0$, utilizamos $(a,b)$; si $b<0$, lo sustituimos por $(-a,-b)$, que es equivalente porque $a(-b)=b(-a)$ y tiene denominador positivo. Esto permite fijar una regla sin imponer a cada clase una fracción reducida ni elegir un representante privilegiado.
+
+**Definición.** Diremos que $x\in\mathbb Q$ es **positivo**, y escribiremos $x>0$, cuando exista un representante $(a,b)$ de $x$ con $b>0$ y $a>0$. Diremos que $x<0$ cuando $-x>0$; las clases restantes serán examinadas mediante la igualdad con cero.
+
+Hay que verificar que la palabra «positivo» tiene sentido para la clase. Supongamos que $[(a,b)]=[(c,d)]$, con $b,d>0$. La equivalencia significa $ad=bc$. Si $a>0$, entonces $ad>0$, y la igualdad obliga a $bc>0$; como $b>0$, se sigue $c>0$. El mismo argumento, intercambiando los pares, prueba la implicación contraria. **Todos los representantes con denominador positivo tienen numeradores del mismo signo.** La definición no depende del par escogido.
+
+Podemos clasificar por completo los racionales utilizando uno de esos representantes: según $a>0$, $a=0$ o $a<0$, la clase es positiva, es cero o es negativa. Los tres casos son mutuamente excluyentes porque así ocurre en el orden de $\mathbb Z$. Esta tricotomía permitirá definir la comparación entre dos racionales sin volver a examinar cada posible representación.
+
+### Comparar dos clases
+
+Definimos
+
+$$
+\boxed{x<y\quad\Longleftrightarrow\quad y-x>0.}
+$$
+
+La diferencia está bien definida porque ya hemos construido la suma y los opuestos aditivos. Si elegimos representantes $x=[(a,b)]$, $y=[(c,d)]$ con $b,d>0$, las fórmulas nos dicen
+
+$$
+y-x=[(bc-ad,bd)].
+$$
+
+Como $bd>0$, la condición de positividad se reduce a una comparación de enteros:
+
+$$
+\boxed{[(a,b)]<[(c,d)]\quad\Longleftrightarrow\quad ad<bc
+\qquad(b>0,\ d>0).}
+$$
+
+Ésta es la conocida comparación mediante productos cruzados, ahora con sus hipótesis a la vista. No podemos aplicar la misma desigualdad sin atender a los signos de los denominadores. Por ejemplo, la clase escrita $\tfrac{1}{-2}$ es igual a $\tfrac{-1}{2}$ y resulta menor que $\tfrac13$; al utilizar los representantes de denominador positivo, la comparación correcta es $(-1)3<1\cdot2$. Multiplicar una desigualdad por un denominador negativo sin cambiar su sentido conduciría a un resultado falso.
+
+La relación $<$ es transitiva. Si $x<y$ e $y<z$, tanto $y-x$ como $z-y$ son positivos. La suma de dos racionales positivos es positiva: con denominadores positivos, la fórmula de la suma produce denominador positivo y numerador $ad+bc>0$. Por tanto,
+
+$$
+z-x=(z-y)+(y-x)>0,
+$$
+
+y concluimos $x<z$. La tricotomía aplicada a $y-x$ asegura que, para dos racionales, ocurre exactamente una de las tres posibilidades $x<y$, $x=y$ o $y<x$. De ellas resulta el orden total no estricto $x\le y$ si $x<y$ o $x=y$.
+
+También comprobamos la compatibilidad con las operaciones. Si sumamos $w$ a ambos miembros de una comparación, la diferencia permanece igual:
+
+$$
+(y+w)-(x+w)=y-x.
+$$
+
+Por eso $x<y$ implica $x+w<y+w$. Si $w>0$, el producto $(y-x)w$ es positivo: en denominadores positivos, el producto de numeradores positivos y el de denominadores positivos vuelven a ser positivos. Como $(y-x)w=yw-xw$ por distributividad, se sigue $xw<yw$. Para $w<0$ sucede lo contrario, puesto que $-w>0$ y multiplicar por $-1$ invierte la desigualdad. Estas propiedades son exactamente las que permiten hablar de un **cuerpo ordenado**.
+
+La inclusión $\mathbb Z\hookrightarrow\mathbb Q$ respeta el orden. Para dos enteros $m,n$ tomamos $[(m,1)]$ y $[(n,1)]$; la comparación de sus clases da $m<n$ si y sólo si $m\cdot1<n\cdot1$, que es la comparación original. Así, el nuevo orden prolonga el orden entero sin alterar sus resultados.
+
+**Comprobación 12.** Compara las clases $[(1,-2)]$ y $[(1,3)]$ sin utilizar una regla de productos cruzados que ignore el signo del denominador. Decide, además, si $[(-2,-4)]$ es positiva o negativa y justifica que tu respuesta no depende de esa representación.
+
+**Solución razonada.** Sustituimos $(1,-2)$ por el par equivalente $(-1,2)$. Sus denominadores son positivos, y $(-1)\cdot3=-3<2=1\cdot2$; por tanto $[(1,-2)]<[(1,3)]$. La clase $[(-2,-4)]$ coincide con $[(2,4)]$, cuyo numerador y denominador son positivos, así que la clase es positiva. Cualquier otro representante con denominador positivo tendrá numerador positivo por la igualdad de productos cruzados; la conclusión pertenece a la clase, no a una escritura particular.
+
+## 14.5. Una recta densamente poblada que todavía tiene una ausencia {#fnd-section-14-5}
+
+Una de las primeras propiedades que descubrimos al trabajar con fracciones es la posibilidad de encontrar nuevas fracciones entre otras dos. Si $x,y\in\mathbb Q$ y $x<y$, la media aritmética
+
+$$
+m=\frac{x+y}{2}
+$$
+
+es racional: podemos sumar $x$ e $y$ y multiplicar su suma por el inverso del racional no nulo $2$. Además,
+
+$$
+m-x=\frac{y-x}{2}>0,
+\qquad
+y-m=\frac{y-x}{2}>0.
+$$
+
+Por consiguiente, $x<m<y$. Podemos repetir el procedimiento entre $x$ y $m$, entre $m$ e $y$, y tantas veces como queramos. Decimos que **los racionales son densos en su propio orden**: entre dos racionales distintos siempre hay otro racional. Es una propiedad notable, pero deja abierta una pregunta diferente: que podamos intercalar números indefinidamente ¿garantiza que exista un racional para toda posición que nuestras operaciones y desigualdades parecen describir?
+
+Consideremos la ecuación
+
+$$
+x^2=2.
+$$
+
+En $\mathbb Q$ podemos sumar, multiplicar, ordenar y dividir por todo número no nulo. Ninguna de esas posibilidades asegura, por sí sola, que la ecuación tenga solución. De hecho, **no existe un racional cuyo cuadrado sea $2$**. Para demostrarlo aprovechemos precisamente la construcción mediante clases.
+
+Si hubiera una solución racional, podríamos escoger una representación $[(a,b)]$ con $a,b\in\mathbb Z$, $b>0$ y $a>0$. Entre todos los denominadores positivos de representaciones de una solución, el principio de buen orden de los naturales nos permitiría elegir uno mínimo. De $[(a,b)]^2=2=[(2,1)]$ se obtiene, por la igualdad de clases,
+
+$$
+a^2=2b^2.
+$$
+
+El cuadrado de un entero impar es impar: si escribimos $a=2k+1$, su cuadrado es $2(2k^2+2k)+1$. Por tanto, de que $a^2$ sea par deducimos que $a$ es par, digamos $a=2c$. Al sustituirlo en la igualdad y cancelar $2$ resulta
+
+$$
+b^2=2c^2,
+$$
+
+por lo que $b$ también es par, digamos $b=2d$ con $d>0$. Ahora $(c,d)$ representa la misma clase que $(a,b)=(2c,2d)$ y posee un denominador positivo menor: $d<b$. Hemos contradicho la elección de $b$ como denominador mínimo. La imposibilidad de resolver $x^2=2$ dentro de $\mathbb Q$ no proviene de una limitación de nuestros símbolos para escribir fracciones; se deduce de la propia aritmética de enteros con la que formamos sus clases.
+
+### Una colección que tiene cotas superiores, pero ninguna mínima
+
+Podemos hacer visible la insuficiencia de $\mathbb Q$ sin dar por supuesto ningún número irracional. Consideremos el conjunto
+
+$$
+\boxed{S=\{q\in\mathbb Q:q>0\ \text{y}\ q^2<2\}.}
+$$
+
+Contiene al $1$, porque $1^2<2$, y está acotado superiormente por $2$: ningún $q\ge2$ pertenece a $S$, ya que entonces $q^2\ge4>2$. Un lector que conoce la recta real imaginará que el borde superior de $S$ se sitúa donde el cuadrado vale exactamente dos. Todavía no hemos construido los reales, de modo que esa imagen sólo sirve para orientar la búsqueda. Preguntaremos directamente si **algún racional** puede ser la menor de las cotas superiores de $S$.
+
+Supongamos que existe una, y llamémosla $r$. Como $1\in S$, necesariamente $r\ge1$, de modo que $r>0$. Ya hemos demostrado que $r^2\ne2$ para todo racional. La elección se reduce entonces a dos casos: $r^2<2$ o $r^2>2$. Nos será útil construir un nuevo racional a partir de $r$ mediante la fórmula
+
+$$
+\boxed{t=\frac{2(r+1)}{r+2}.}
+$$
+
+Está bien definida porque $r+2>0$. Dos cálculos elementales explican por qué escogimos esa expresión:
+
+$$
+\boxed{t-r=\frac{2-r^2}{r+2},
+\qquad 2-t^2=\frac{2(2-r^2)}{(r+2)^2}.}
+$$
+
+En ambos miembros aparece el mismo factor $2-r^2$, que determina simultáneamente de qué lado de $r$ cae $t$ y de qué lado de $2$ cae su cuadrado. Si $r^2<2$, entonces $t-r>0$ y $2-t^2>0$. Como $t>r>0$, resulta $t\in S$ y $t>r$: hemos encontrado un elemento de $S$ mayor que una supuesta cota superior, lo cual es imposible.
+
+Si $r^2>2$, los signos se invierten: $t<r$ y $t^2>2$, mientras que $t>0$ porque numerador y denominador son positivos. Pero cualquier racional positivo cuyo cuadrado sea mayor que dos es una cota superior de $S$. En efecto, si $s\in S$ y $s\ge t>0$, la monotonía del cuadrado sobre los racionales no negativos daría $s^2\ge t^2>2$, en contradicción con $s^2<2$. Así que $t$ sería una cota superior estrictamente menor que $r$, contraria a la supuesta minimalidad de $r$.
+
+Ningún caso es posible. Hemos probado que $S$ es un conjunto no vacío de racionales, acotado superiormente en $\mathbb Q$, que **no posee supremo en $\mathbb Q$**. La palabra *supremo* designa la menor de las cotas superiores, si existe. La propiedad que falta a los racionales es, por tanto, mucho más precisa que una vaga sensación de que hay «huecos» entre fracciones: los racionales son densos y, sin embargo, no garantizan supremos para todos sus subconjuntos no vacíos y acotados superiormente.
+
+**Comprobación 13.** En el argumento anterior, ¿por qué no basta afirmar que $x^2=2$ carece de solución racional para concluir sin más que $S$ no tiene supremo racional? Explica el papel de $t=2(r+1)/(r+2)$ en los dos casos de la prueba.
+
+**Solución razonada.** Saber que ningún racional satisface $r^2=2$ excluye un candidato para el borde, pero todavía hace falta demostrar que cualquier racional con cuadrado menor que dos queda **demasiado abajo** para ser una cota superior, y que cualquiera con cuadrado mayor que dos queda **demasiado arriba** para ser la menor. La fórmula de $t$ resuelve ambas obligaciones: cuando $r^2<2$ produce un elemento mayor que $r$ que sigue perteneciendo a $S$; cuando $r^2>2$ produce una cota superior positiva menor que $r$. Estas dos mejoras incompatibles con ser supremo cubren todas las posibilidades racionales.
+
+La construcción de los reales responderá a una dificultad de este género. Una ruta posible utiliza sucesiones racionales de Cauchy y vuelve a formar clases de equivalencia; otra organiza cortes en el orden racional. Cada método tendrá que explicar por qué los objetos nuevos completan lo que $\mathbb Q$ deja sin resolver. La densidad de $\mathbb Q$ y la ausencia de ciertos supremos ofrecen la razón matemática para continuar, aunque antes merece la pena reconocer con precisión qué hemos conseguido mediante las tres ampliaciones.
+
+## 14.6. Lo que significa haber construido los números {#fnd-section-14-6}
+
+El procedimiento que permitió pasar de una colección a un número natural volvió a aparecer en las dos ampliaciones siguientes, aunque con representantes de naturaleza distinta:
+
+$$
+\boxed{
+\begin{aligned}
+\mathbb N_U&=\mathcal F(U)/{\approx},\\
+\mathbb Z&=(\mathbb N_U\times\mathbb N_U)/{\sim},\\
+\mathbb Q&=\bigl(\mathbb Z\times(\mathbb Z\setminus\{0\})\bigr)/{\sim}.
+\end{aligned}}
+$$
+
+La primera igualdad identifica colecciones finitas que admiten una biyección y las trata como cantidades naturales; la segunda identifica pares de naturales que expresan un mismo saldo; la tercera identifica pares de enteros con denominador no nulo que expresan una misma razón. En cada caso, antes de operar comprobamos que las reglas elegidas no dependen de la representación. Las inclusiones que escribimos habitualmente como $\mathbb N\subseteq\mathbb Z\subseteq\mathbb Q$ se realizan mediante aplicaciones inyectivas que respetan las operaciones, y esa precisión evita identificar literalmente conjuntos construidos con clases de objetos de naturaleza diferente.
+
+Los cocientes de restos $\mathbb N/{\sim_m}$ y $\mathbb Z/{\equiv_m}$ responden a otra pregunta: una vez construidos esos números, podemos **identificarlos por una propiedad** y obtener nuevos objetos, generalmente en cantidad finita. Por eso tiene importancia distinguir «construir los naturales mediante clases» de «estudiar clases de equivalencia en los naturales». Las dos ideas utilizan el mismo mecanismo, pero sirven a problemas distintos.
+
+Con los enteros obtuvimos opuestos aditivos; con los racionales, inversos multiplicativos para cada elemento distinto de cero. La prueba de que las operaciones y el orden pertenecen a las clases —sin depender del par elegido— acompaña ambas ampliaciones. Y el conjunto acotado que acabamos de estudiar muestra exactamente dónde termina la tercera: el cuerpo ordenado $\mathbb Q$ permite aproximarse indefinidamente a un borde que no tiene por qué existir como racional. Esa dificultad motiva la construcción posterior de los reales.
+
+La pregunta que acompañará los ejercicios es siempre la misma, aunque cambien los objetos: ¿qué parte del cálculo depende de una representación concreta y qué parte pertenece a la clase? Para responder habrá que utilizar las leyes del cuerpo y el orden que ya demostramos, e identificar las hipótesis que permiten cada paso.
+
+## 14.7. Ejercicios {#fnd-section-14-7}
+
+Para todos los problemas siguientes usamos $D=\mathbb Z\times(\mathbb Z\setminus\{0\})$, con $(a,b)\sim(c,d)$ cuando $ad=bc$; las operaciones sobre las clases son las que hemos definido en las secciones anteriores. Cuando se pida justificar que una regla funciona, habrá que distinguir la validez de una cuenta particular de la independencia respecto de cualquier representante.
+
+### Representaciones, equivalencias y operaciones
+
+**Ejercicio 14.1. El denominador cero y la transitividad.** Sobre $\mathbb Z\times\mathbb Z$ se propone $(a,b)\,R\,(c,d)$ cuando $ad=bc$, permitiendo denominadores nulos. Examina los pares $(1,1)$, $(0,0)$ y $(1,2)$. Demuestra qué propiedad de equivalencia falla y explica por qué excluir denominadores nulos repara precisamente el paso de la demostración que ha fallado.
+
+**Ejercicio 14.2. Una clase con signos diferentes.** Demuestra que $(3,-8)$, $(-3,8)$ y $(9,-24)$ representan el mismo racional. Comprueba si $(-3,-8)$ pertenece a esa clase. Explica por qué basta verificar productos cruzados y por qué los pares siguen siendo distintos.
+
+**Ejercicio 14.3. Cero y unidad son clases.** Demuestra directamente que $[(a,b)]=0$ si y sólo si $a=0$, y que $[(a,b)]=1$ si y sólo si $a=b$. Usa estos resultados para explicar por qué $[(0,7)]$ y $[(7,7)]$ no son la misma clase.
+
+**Ejercicio 14.4. Buena definición de la suma.** Dados $(a,b)\sim(a',b')$ y $(c,d)\sim(c',d')$, con los cuatro denominadores no nulos, demuestra por productos cruzados que
+
+$$
+[(ad+bc,bd)]=[(a'd'+b'c',b'd')].
+$$
+
+Detalla las dos sustituciones que autorizan las hipótesis y comprueba que los pares resultantes pertenecen a $D$.
+
+**Ejercicio 14.5. Buena definición del producto.** Demuestra que $(a,b)\sim(a',b')$ y $(c,d)\sim(c',d')$ implican $(ac,bd)\sim(a'c',b'd')$. Después señala el error de quien propone multiplicar clases mediante $[(a,b)]\star[(c,d)]=[(a+c,bd)]$ sin comprobar nada: encuentra dos representantes de una misma primera clase con los que la regla da resultados diferentes, usando como segunda entrada $[(1,1)]$.
+
+### Estructura de cuerpo y orden
+
+**Ejercicio 14.6. Invertir sin confundir las operaciones.** Para $x=[(-3,5)]$, determina $-x$ y $x^{-1}$ mediante representantes admisibles. Comprueba por separado $x+(-x)=0$ y $xx^{-1}=1$. Explica por qué $0$ no tiene inverso multiplicativo y por qué $1$ sí lo tiene.
+
+**Ejercicio 14.7. Dos rutas hacia una misma suma.** Calcula $[(1,2)]+[(-3,4)]$ y repite el cálculo utilizando para la primera entrada $(2,4)$ y para la segunda $(6,-8)$. Demuestra la igualdad entre los resultados sin hablar de números decimales.
+
+**Ejercicio 14.8. Distributividad comprobada en un caso y en general.** Verifica $\tfrac12(\tfrac13+\tfrac14)=\tfrac12\cdot\tfrac13+\tfrac12\cdot\tfrac14$ con pares enteros. Después explica qué identidad entre representantes prueba $x(y+z)=xy+xz$ para tres racionales cualesquiera, indicando dónde se utiliza la distributividad de $\mathbb Z$.
+
+**Ejercicio 14.9. Una regla de orden falsa.** Alguien afirma que $[(a,b)]<[(c,d)]$ equivale siempre a $ad<bc$, aunque $b$ o $d$ sean negativos. Refuta esa afirmación con los racionales $[(1,-2)]$ y $[(1,3)]$. Formula la versión correcta e indica por qué puede elegirse un denominador positivo sin cambiar la clase.
+
+**Ejercicio 14.10. Multiplicar numerador y denominador por un entero.** Sean $a,b,k\in\mathbb Z$ con $b\ne0$ y $k\ne0$. Prueba que $[(a,b)]=[(ka,kb)]$. Explica por qué no se puede extender esta regla a $k=0$ y qué efecto tiene un $k<0$ sobre la comparación por productos cruzados si se olvidan las hipótesis de signo.
+
+**Ejercicio 14.11. Orden y operaciones.** Supón $x<y$ en $\mathbb Q$. Demuestra, utilizando diferencias y positividad, que $x+w<y+w$ para todo $w$ y que $xw<yw$ si $w>0$. Prueba también que la desigualdad se invierte cuando $w<0$. Especifica qué resultado algebraico autoriza pasar de $(y-x)w$ a $yw-xw$.
+
+### Densidad, límites y diagnóstico
+
+**Ejercicio 14.12. El medianto entre dos racionales.** Sean $a,b,c,d\in\mathbb Z$ con $b,d>0$ y $a/b<c/d$. Demuestra que
+
+$$
+\frac ab<\frac{a+c}{b+d}<\frac cd.
+$$
+
+Comprueba el resultado entre $3/7$ y $4/9$. Explica por qué este procedimiento, aunque pueda repetirse indefinidamente, no demuestra que todos los subconjuntos acotados de $\mathbb Q$ tengan supremo.
+
+**Ejercicio 14.13. No existe un mayor racional.** Demuestra que, dado $x\in\mathbb Q$, existe un natural $n$ con $n>x$. Parte de un representante $(a,b)$ con $b>0$ y evita recurrir a la recta real. Deduce que $\mathbb Q$ carece de elemento máximo. ¿En qué sentido esta propiedad es distinta de la densidad?
+
+**Ejercicio 14.14. La imposibilidad de cuadrar hasta dos.** Supón que $x\in\mathbb Q$ satisface $x^2=2$. Expresa $x$ mediante un par de enteros con denominador positivo mínimo entre los que representan la clase y utiliza la paridad para construir un representante con denominador menor. Explica por qué la elección mínima está justificada y dónde se obtiene la contradicción.
+
+**Ejercicio 14.15. Candidatos a supremo.** Sea $S=\{q\in\mathbb Q:q>0,\ q^2<2\}$. Para $r>0$ define $t=2(r+1)/(r+2)$. Verifica las identidades
+
+$$
+t-r=\frac{2-r^2}{r+2},\qquad
+2-t^2=\frac{2(2-r^2)}{(r+2)^2}.
+$$
+
+Calcula $t$ cuando $r=1$ y cuando $r=3/2$. Utiliza ambos casos generales $r^2<2$ y $r^2>2$ para probar que $S$ no tiene supremo racional; explica por qué saber solamente que $x^2=2$ no tiene solución racional no bastaría para esa conclusión.
+
+## 14.8. Soluciones desarrolladas {#fnd-section-14-8}
+
+### Soluciones 14.1–14.5
+
+**Solución 14.1.** Con los pares propuestos se tiene $(1,1)R(0,0)$ porque $1\cdot0=1\cdot0$, y $(0,0)R(1,2)$ porque $0\cdot2=0\cdot1$. Sin embargo, $(1,1)$ no está relacionado con $(1,2)$, pues $1\cdot2\ne1\cdot1$. Por tanto, falla la transitividad; no basta que la regla tenga simetría y reflexividad para producir una partición. En $D$ no puede aparecer $(0,0)$. Más generalmente, en la prueba de transitividad de $D$, las hipótesis $ad=bc$ y $cf=de$ implican $adf=bde$. Para obtener $af=be$ cancelamos $d$, operación válida únicamente porque $d\ne0$ en un anillo sin divisores de cero. La restricción de dominio no es ornamental: cierra el argumento que el par $(0,0)$ destruía.
+
+**Solución 14.2.** Entre $(3,-8)$ y $(-3,8)$ los productos cruzados son $3\cdot8=24$ y $(-8)(-3)=24$. Entre $(3,-8)$ y $(9,-24)$ son $3(-24)=-72$ y $(-8)9=-72$. Por transitividad, los tres pertenecen a la misma clase. En cambio, $(3,-8)$ no es equivalente a $(-3,-8)$, puesto que $3(-8)=-24$ y $(-8)(-3)=24$. Al tomar clases identificamos las representaciones equivalentes; los pares, que son objetos de $D$, siguen siendo diferentes cuando cambian sus coordenadas.
+
+**Solución 14.3.** La clase de $(a,b)$ es cero si $(a,b)\sim(0,1)$. Esto equivale a $a\cdot1=b\cdot0$, luego a $a=0$. Del mismo modo, $[(a,b)]=[(1,1)]$ equivale a $a\cdot1=b\cdot1$, esto es, $a=b$. El par $(0,7)$ representa cero porque su numerador es cero, mientras que $(7,7)$ representa uno porque ambas coordenadas son iguales; no pueden ser clases iguales ya que $0\ne1$ en los enteros. Ninguno de los dos argumentos necesita interpretar las clases como cocientes numéricos antes de que éstos se hayan construido.
+
+**Solución 14.4.** Las hipótesis se escriben $ab'=a'b$ y $cd'=c'd$. Como $b,d,b',d'\ne0$ y $\mathbb Z$ no tiene divisores de cero, también $bd\ne0$ y $b'd'\ne0$: ambos pares propuestos pertenecen a $D$. Calculamos
+
+$$
+\begin{aligned}
+(ad+bc)b'd'&=ab'dd'+cd'bb'\\
+&=a'bdd'+c'dbb'\\
+&=(a'd'+b'c')bd.
+\end{aligned}
+$$
+
+La primera sustitución usa $ab'=a'b$ y la segunda $cd'=c'd$. La igualdad final es la condición de equivalencia entre las dos parejas que representan las sumas. No se ha supuesto que las fracciones fueran iguales por las reglas escolares; se ha demostrado que la operación sobre el cociente respeta sus representantes.
+
+**Solución 14.5.** De $ab'=a'b$ y $cd'=c'd$ resulta
+
+$$
+(ac)(b'd')=(ab')(cd')=(a'b)(c'd)=(a'c')(bd).
+$$
+
+Con denominadores productos no nulos, la igualdad prueba la equivalencia pedida. En cambio, la operación $\star$ no es bien definida. Tomemos dos representantes de la primera clase, $(1,2)$ y $(2,4)$, y la segunda entrada $[(1,1)]$. La regla propuesta produce $[(2,2)]$ usando el primero y $[(3,4)]$ usando el segundo. Estas clases son diferentes: $2\cdot4=8$, mientras que $2\cdot3=6$. Por tanto, la entrada del cociente era la misma pero la salida cambió; ésa es la prueba decisiva del defecto.
+
+### Soluciones 14.6–14.10
+
+**Solución 14.6.** Para $x=[(-3,5)]$, el opuesto aditivo es $-x=[(3,5)]$; su inverso multiplicativo es $x^{-1}=[(5,-3)]$, o equivalentemente $[(-5,3)]$. Al sumar $x+(-x)$ obtenemos $[(-3\cdot5+5\cdot3,25)]=[(0,25)]=0$. El producto $xx^{-1}$ se representa por $[(-15,-15)]$, que es la clase de uno. No podemos invertir el cero porque un representante suyo tiene numerador cero y al intercambiar coordenadas aparecería un denominador nulo; además, la identidad $0z=0$ en el cuerpo impide que $0z=1$. Para $1=[(1,1)]$, la inversa es la propia unidad, pues $1\cdot1=1$.
+
+**Solución 14.7.** Con los primeros representantes,
+
+$$
+[(1,2)]+[(-3,4)]=[(1\cdot4+2(-3),2\cdot4)]=[(-2,8)].
+$$
+
+Usando $(2,4)$ y $(6,-8)$, que representan respectivamente $1/2$ y $-3/4$ (en el segundo caso ambos productos cruzados valen $24$), obtenemos
+
+$$
+[(2,4)]+[(6,-8)]
+=[(2(-8)+4\cdot6,4(-8))]=[(8,-32)].
+$$
+
+Las clases de $(-2,8)$ y $(8,-32)$ son iguales, pues $(-2)(-32)=8\cdot8=64$. Un error frecuente sería modificar sólo el signo del numerador al sustituir representantes: para conservar la clase deben seguir coincidiendo los productos cruzados.
+
+**Solución 14.8.** Primero $[(1,3)]+[(1,4)]=[(7,12)]$; al multiplicar por $[(1,2)]$ resulta $[(7,24)]$. Por separado los productos son $[(1,6)]$ y $[(1,8)]$, cuya suma es $[(14,48)]=[(7,24)]$. Para la demostración general, si $x=[(a,b)]$, $y=[(c,d)]$ y $z=[(e,f)]$, la expresión $x(y+z)$ tiene representante $(acf+ade,bdf)$. Los productos $xy$ y $xz$ admiten respectivamente los representantes $(acf,bdf)$ y $(ade,bdf)$; su suma es equivalente a $(acf+ade,bdf)$. La descomposición $a(cf+de)=acf+ade$ utiliza la distributividad de los enteros, ya establecida en el capítulo 13. La coincidencia numérica es un ejemplo; la identidad de clases obtenida con letras prueba la ley.
+
+**Solución 14.9.** La clase $[(1,-2)]$ equivale a $[(-1,2)]$, de modo que es negativa y por ello menor que $[(1,3)]$, que es positiva. Pero si se usa sin cuidado la regla $ad<bc$ con $(1,-2)$ y $(1,3)$, se obtiene $3<-2$, que es falso. La formulación correcta para representantes con $b,d>0$ es
+
+$$
+[(a,b)]<[(c,d)]\iff ad<bc.
+$$
+
+Toda clase admite un representante de denominador positivo: cuando el denominador es negativo, multiplicamos ambas coordenadas por $-1$. La equivalencia se conserva y el orden puede compararse de forma consistente.
+
+**Solución 14.10.** Los productos cruzados de $(a,b)$ y $(ka,kb)$ son $a(kb)=b(ka)$ por conmutatividad y asociatividad; $kb\ne0$ porque $k,b\ne0$ y $\mathbb Z$ no tiene divisores de cero. Si $k=0$, el nuevo par sería $(0,0)$ y quedaría fuera de $D$. Si $k<0$, el denominador cambia de signo, por lo que una fórmula de comparación de productos cruzados derivada para denominadores positivos no se puede aplicar directamente. El valor racional permanece idéntico, pero para usar el criterio $ad<bc$ entre clases debemos escoger representantes de denominador positivo (o justificar por separado el signo del producto de denominadores).
+
+### Soluciones 14.11–14.15
+
+**Solución 14.11.** Como $x<y$, la diferencia $y-x$ es positiva. Para cualquier $w$, 
+
+$$
+(y+w)-(x+w)=y-x>0,
+$$
+
+por lo que $x+w<y+w$. Si $w>0$, el producto $(y-x)w$ es positivo, pues el producto de dos racionales positivos posee representantes de numerador y denominador positivos. Por distributividad y existencia de opuestos,
+
+$$
+(y-x)w=yw-xw>0,
+$$
+
+lo cual implica $xw<yw$. Si $w<0$, entonces $-w>0$ y $x(-w)<y(-w)$; al tomar opuestos se obtiene $yw<xw$, es decir, $xw>yw$. La distributividad racional —que demostramos a partir de las leyes enteras— es el paso que enlaza la diferencia con los productos.
+
+**Solución 14.12.** La hipótesis $a/b<c/d$, con $b,d>0$, equivale a $ad<bc$. Como $b(b+d)$ es positivo,
+
+$$
+\frac ab<\frac{a+c}{b+d}
+\iff a(b+d)<b(a+c)
+\iff ad<bc.
+$$
+
+Del mismo modo,
+
+$$
+\frac{a+c}{b+d}<\frac cd
+\iff d(a+c)<c(b+d)
+\iff ad<bc.
+$$
+
+Para $3/7<4/9$ tenemos $3\cdot9=27<28=4\cdot7$ y el medianto $7/16$, con $3/7<7/16<4/9$ porque $3\cdot16=48<49=7\cdot7$ y $7\cdot9=63<64=4\cdot16$. Repetir la construcción proporciona infinitos racionales intermedios, pero la existencia de puntos intermedios no garantiza que un conjunto acotado tenga una menor cota superior. El conjunto $S$ del §14.5 demuestra precisamente esa diferencia.
+
+**Solución 14.13.** Sea $x=[(a,b)]$ con $b>0$; como $b$ es un entero positivo, $b\ge1$. Tomemos $n=|a|+1$, que es un natural positivo. Si $a\le0$, se tiene $x\le0<n$. Si $a>0$, entonces $a<|a|+1=n$ y, como $b\ge1$, tenemos $ab^{-1}\le a<n$ en el orden racional. Por consiguiente existe un natural mayor que $x$ y, con más razón, un racional mayor. No hay racional máximo. La propiedad probada compara cualquier racional con naturales suficientemente grandes; la densidad compara dos racionales ya dados y produce otro entre ambos. Son dos afirmaciones de naturaleza distinta.
+
+**Solución 14.14.** Si $x^2=2$, la clase $x$ no es cero y puede representarse como $[(a,b)]$ con $b>0$; la ecuación equivale a $a^2=2b^2$. Los denominadores positivos de representantes de esta clase constituyen un subconjunto no vacío de $\mathbb N_{>0}$, por lo que el buen orden permite elegir uno mínimo, digamos $b$. La igualdad muestra que $a^2$ es par. Si $a$ fuera impar, $a=2k+1$ y $a^2=2(2k^2+2k)+1$ sería impar; por ello $a=2c$. Sustituyendo se obtiene $4c^2=2b^2$, o $b^2=2c^2$, de donde $b=2d$ para algún entero $d>0$. Entonces $(c,d)$ pertenece a $D$, representa la misma clase y tiene un denominador positivo $d<b$. La contradicción no depende de que sepamos previamente qué número debería ocupar el lugar de la raíz cuadrada: sale de la imposibilidad de tener un representante mínimo y, al mismo tiempo, otro con denominador menor.
+
+**Solución 14.15.** Los cálculos por denominador común dan
+
+$$
+\begin{aligned}
+t-r&=\frac{2(r+1)-r(r+2)}{r+2}=\frac{2-r^2}{r+2},\\
+2-t^2&=\frac{2(r+2)^2-4(r+1)^2}{(r+2)^2}=\frac{2(2-r^2)}{(r+2)^2}.
+\end{aligned}
+$$
+
+Para $r=1$, resulta $t=4/3>1$ y $t^2=16/9<2$. Para $r=3/2$, resulta $t=10/7<3/2$ y $t^2=100/49>2$. Supongamos que $r$ es el supremo racional de $S$. Como $1\in S$, es $r\ge1$; por la imposibilidad de $r^2=2$, quedan los casos $r^2<2$ y $r^2>2$. En el primero, $t>r$ y $t^2<2$, así que $t\in S$, contradiciendo que $r$ sea cota superior. En el segundo, $t<r$, $t>0$ y $t^2>2$; si hubiera $s\in S$ con $s\ge t$, el orden del cuadrado en los racionales no negativos daría $s^2\ge t^2>2$, contradicción. Así $t$ es una cota superior estrictamente menor que $r$. Como ambos casos contradicen la definición de supremo, $S$ carece de supremo en $\mathbb Q$. La mera inexistencia de una solución racional de $r^2=2$ no prueba estas dos mejoras de los candidatos; por eso se necesitan los cálculos con $t$.
+
+---
+
+[Índice del libro y bibliografía](../para-matematicos/fundamentos-para-matematicos.qmd)
