@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Soluciones de microcontroles — Capítulo 9
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 provenance:
   type: original
   sources:
@@ -72,7 +72,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Debe $u_N$ ser uno de los términos de la cola?
 
-**Solución.** No. Para $a_n=1-1/(n+1)$, toda cola tiene supremo uno y ningún término vale uno.
+**Solución.** No. Para $a_n=1-1/(n+1)$, todos los términos son menores que $1$, que es cota superior de cada cola. Dados $N$ y $\eta>0$, toma $n=\max\{N,\lfloor1/\eta\rfloor\}+1$. Entonces $1/(n+1)<\eta$ y $a_n>1-\eta$. La cota y esta aproximación prueban que cada cola tiene supremo $1$; ningún término lo alcanza.
 
 ### Microcontrol 005
 
@@ -82,7 +82,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** Calcula $\ell_N$ y $u_N$ para $a_n=1/(n+1)$.
 
-**Solución.** $\ell_N=0$ y $u_N=1/(N+1)$. El supremo se alcanza en $N$; el ínfimo no se alcanza y se justifica por arquimedianidad.
+**Solución.** $\ell_N=0$ y $u_N=1/(N+1)$. Para $n\ge N$, $0<a_n\le1/(N+1)$, de modo que el supremo se alcanza en $N$. Dada $\eta>0$, el índice $n=\max\{N,\lfloor1/\eta\rfloor\}+1$ cumple $0<a_n<\eta$. Así $0$ es ínfimo de la cola y no se alcanza.
 
 ### Microcontrol 006
 
@@ -186,7 +186,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** Para $a_n=(-1)^n(1+1/(n+1))$, ¿cuáles son los extremos asintóticos?
 
-**Solución.** $\alpha=-1$ y $\beta=1$. Los primeros índices impares y pares de cada cola dan sus extremos, cuyas correcciones recíprocas tienden a cero.
+**Solución.** $\alpha=-1$ y $\beta=1$. Sea $e(N)=N$ si $N$ es par y $e(N)=N+1$ si es impar; sea $o(N)=N$ si $N$ es impar y $o(N)=N+1$ si es par. Los valores pares son positivos y decrecen dentro de su paridad; los impares son negativos y aumentan. Por ello $u_N=1+1/(e(N)+1)$ y $\ell_N=-1-1/(o(N)+1)$. Como $e(N),o(N)\ge N$, ambas correcciones positivas están acotadas por $1/(N+1)$ y tienden a cero. Las envolventes convergen a $1$ y $-1$, respectivamente.
 
 ### Microcontrol 016
 
@@ -354,7 +354,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué desigualdad satisface cualquier límite $x$ de subsucesión?
 
-**Solución.** $\alpha\le x\le\beta$: para cada corte fijo la subsucesión queda eventualmente entre $\ell_N,u_N$; se pasa al límite en la extracción y después en $N$.
+**Solución.** Fija un corte original $N$. Si la extracción tiene selector $\varphi$, para todo $k\ge N$ se cumple $\varphi(k)\ge k\ge N$, y por tanto $\ell_N\le a_{\varphi(k)}\le u_N$. Al pasar al límite en $k$ se obtiene $\ell_N\le x\le u_N$. Esta conclusión vale para cada $N$. Pasar ahora al límite de las dos envolventes da $\alpha\le x\le\beta$; el primer paso mantenía $N$ fijo y el segundo recorre los cortes originales.
 
 ### Microcontrol 032
 
@@ -616,7 +616,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué hipótesis de signo permite la cota $\beta(ab)\le\beta_a\beta_b$?
 
-**Solución.** Que ambos factores sean no negativos, al menos eventualmente, además de acotados. Entonces se pueden multiplicar sus cotas superiores de cola sin invertir orden.
+**Solución.** Que ambos factores sean no negativos, al menos eventualmente, además de acotados. Se reúnen los cortes de signo en $T$. Para $N\ge T$, los supremos de cola son no negativos y $0\le a_n\le u_N(a)$, $0\le b_n\le u_N(b)$ para todo $n\ge N$. Así $a_nb_n\le u_N(a)u_N(b)$ y $u_N(ab)\le u_N(a)u_N(b)$. Los límites reales finitos conservan esa desigualdad y producen la cota indicada. La multiplicación no invierte orden y tampoco requiere dividir por una frontera que podría ser $0$.
 
 ## §9.8 — Qué describen los extremos y qué dejan abierto
 
@@ -630,7 +630,7 @@ Las preguntas se reproducen literalmente para facilitar el cotejo; sus IDs y hue
 
 **Pregunta.** ¿Qué extremos tiene la sucesión que vale uno en potencias de dos y cero en los demás índices?
 
-**Solución.** $\alpha=0$ y $\beta=1$, porque todo corte deja alguna potencia de dos y algún índice de la forma $2^j+1$ con $j\ge1$, que no es potencia.
+**Solución.** $\alpha=0$ y $\beta=1$. Para cualquier corte $N$, los índices $n=2^{N+1}\ge N$ y $m=2^{N+1}+1\ge N$ producen los valores $1$ y $0$. En efecto, $2^{N+1}<m<2^{N+2}$, de modo que $m$ no es potencia de dos. Cada cola tiene exactamente la imagen $\{0,1\}$, con ínfimo $0$ y supremo $1$; sus dos envolventes son constantes.
 
 ### Microcontrol 058
 

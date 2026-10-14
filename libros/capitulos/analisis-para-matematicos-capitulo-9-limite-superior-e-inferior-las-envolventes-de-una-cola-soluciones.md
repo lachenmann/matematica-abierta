@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Soluciones — Capítulo 9
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 provenance:
   type: original
   sources:
@@ -38,7 +38,7 @@ css: ../../assets/books/anm/reader.css
 
 $T_0=\{-4,1,7\}$, $T_1=\{-4,1\}$ y $T_N=\{1\}$ para $N\ge2$. Así $(\ell_0,u_0)=(-4,7)$, $(\ell_1,u_1)=(-4,1)$ y $(\ell_N,u_N)=(1,1)$ desde el corte dos. Se distinguen los conjuntos de valores de los infinitos conjuntos de índices.
 
-Después de la prueba, puede retomarse la [figura 9.1](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f01) para contrastar el mecanismo con el ejemplo del capítulo.
+La [figura 9.1](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f01) permite separar el efecto del prefijo de los extremos de las colas posteriores.
 
 ## 9.2. Una frontera ausente
 
@@ -80,9 +80,9 @@ Si $N_0=0$, sirve $M$. Si $N_0>0$, el prefijo contiene finitos términos y $B=\m
 
 []{#MA-SEC-ANM-01-009-002}
 
-Con $e(N)$ par y $o(N)$ impar mínimos posteriores, $u_N=5+1/(e(N)+1)$ y $\ell_N=1-1/(o(N)+1)$. Los pares positivos relativos a tres disminuyen y los impares aumentan; los primeros disponibles dan los extremos. Las correcciones tienden a cero porque sus índices son al menos $N$. Así $\alpha=1$, $\beta=5$.
+Con $e(N)$ par y $o(N)$ impar mínimos posteriores, $u_N=5+1/(e(N)+1)$ y $\ell_N=1-1/(o(N)+1)$. Aquí $e(N)=N$ para $N$ par y $N+1$ para $N$ impar; $o(N)=N$ para $N$ impar y $N+1$ para $N$ par. Todo valor par es mayor que $5$ y decrece dentro de esa paridad; todo valor impar es menor que $1$ y aumenta. Así los dos primeros índices disponibles dan, respectivamente, el máximo y el mínimo de la cola. Las correcciones tienden a cero porque sus índices son al menos $N$. Así $\alpha=1$, $\beta=5$.
 
-Después de la prueba, puede retomarse la [figura 9.2](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f02) para contrastar el mecanismo con el ejemplo del capítulo.
+La [figura 9.2](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f02) ayuda a leer la dirección de cada envolvente aunque la sucesión original alterne.
 
 ## 9.7. Orden en dos niveles
 
@@ -100,7 +100,7 @@ Cada cola está dentro de $T_0$, de modo que $\inf T_0\le\ell_N\le u_N\le\sup T_
 
 Cada cola contiene cero y uno. La primera expresión vale uno y la segunda cero. Son $\beta$ y $\alpha$, respectivamente; no se intercambian en general.
 
-Después de la prueba, puede retomarse la [figura 9.2](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f02) para contrastar el mecanismo con el ejemplo del capítulo.
+El orden de las dos operaciones de extremos se distingue en la [figura 9.2](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f02).
 
 ## 9.9. Monotonía original
 
@@ -118,7 +118,7 @@ $\ell_N=a_N$ porque es el menor término posterior. Sea $s=\sup T_0$. Es tambié
 
 La alternancia $a_n=0$ para pares y uno para impares, y la alternancia inversa $b_n=1-a_n$, son distintas en cada índice. Cada cola de ambas contiene cero y uno, por lo que sus envolventes son idénticas: $\ell_N=0,u_N=1$. Igualdad de envolventes no implica igualdad de las funciones originales.
 
-Después de la prueba, puede retomarse la [figura 9.2](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f02) para contrastar el mecanismo con el ejemplo del capítulo.
+La [figura 9.2](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f02) permite comparar las envolventes; aquí la coincidencia se ha demostrado para dos funciones diferentes.
 
 ## 9.11. Umbral persistente
 
@@ -146,7 +146,7 @@ $B$ contiene una cota superior global y es no vacío. Ningún $t<\beta$ pertenec
 
 La cota eventual implica $u_N\le4+\varepsilon$ para algún corte, y por tanto $\beta\le4+\varepsilon$. Las visitas implican $u_K>4-\varepsilon$ para cada corte y por límite $\beta\ge4-\varepsilon$. Si $\beta$ difiriera de cuatro, elegir la mitad de la distancia como tolerancia contradiría una desigualdad. Por tanto $\beta=4$, sin control sobre un posible extremo inferior distinto.
 
-Después de la prueba, puede retomarse la [figura 9.3](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f03) para contrastar el mecanismo con el ejemplo del capítulo.
+En la [figura 9.3](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f03) se distinguen la cota de toda una cola y la visita que sobrevive a cada corte; la prueba necesita ambas.
 
 ## 9.14. Visitas con una sola tolerancia
 
@@ -156,7 +156,7 @@ Después de la prueba, puede retomarse la [figura 9.3](analisis-para-matematicos
 
 No. La constante $a_n=7/4$ satisface la visita con esa tolerancia y tiene $\beta=7/4$. Falta exigir todas las tolerancias y la cota eventual superior. Incluso todas las visitas por abajo sólo darían $\beta\ge2$.
 
-Después de la prueba, puede retomarse la [figura 9.3](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f03) para contrastar el mecanismo con el ejemplo del capítulo.
+Las dos condiciones de la [figura 9.3](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f03) muestran lo que queda pendiente al comprobar una sola tolerancia.
 
 ## 9.15. Versión inferior por umbrales
 
@@ -176,7 +176,7 @@ El conjunto es no vacío: si $M$ acota superiormente a $a$, $M+1$ pertenece a é
 
 Las selecciones $\varphi(k)=2k$ y $\psi(k)=2k+1$ son estrictamente crecientes en $\mathbb N$. Sus términos son $1+1/(2k+1)$ y $-1+1/(2k+2)$, que convergen a uno y menos uno. Para cada ε>0, una cola cumple −1−ε<a_n<1+ε, por la pequeñez del recíproco; así todos sus destinos están en [−1,1]. Como las dos selecciones alcanzan los extremos de ese intervalo, el carácter mínimo/máximo de §9.4 identifica α=−1 y β=1. La convergencia recíproca se verifica por arquimedianidad.
 
-Después de la prueba, puede retomarse la [figura 9.4](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f04) para contrastar el mecanismo con el ejemplo del capítulo.
+La [figura 9.4](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f04) sitúa las extracciones que alcanzan las fronteras como límites, sin exigir que sean términos de la sucesión.
 
 ## 9.17. Construcción sin elección arbitraria
 
@@ -186,7 +186,7 @@ Después de la prueba, puede retomarse la [figura 9.4](analisis-para-matematicos
 
 Para cualquier $\delta,K$, la cota superior eventual fija $H$ y las visitas por abajo después de $\max\{H,K\}$ dan un índice con $|a_n-\beta|<\delta$. Por ello existen los mínimos $n_0=\min\{n:|a_n-\beta|<1\}$ y $n_k=\min\{n\ge n_{k-1}+1:|a_n-\beta|<1/(k+1)\}$ para $k\ge1$. La recursión da aumento estricto. Para $\varepsilon>0$, elegir $K$ con $1/(K+1)<\varepsilon$; todo $k\ge K$ tiene error menor, luego la extracción converge a $\beta$.
 
-Después de la prueba, puede retomarse la [figura 9.4](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f04) para contrastar el mecanismo con el ejemplo del capítulo.
+La [figura 9.4](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f04) ayuda a separar el avance de índices de la aproximación espacial que controla el error.
 
 ## 9.18. Extracción de una extracción
 
@@ -204,7 +204,7 @@ $b$ es acotada. Sus extremos son límites de subsucesiones $b_{\psi(j)}$ por §9
 
 Cada término de cualquier extracción vale cero o uno y está a distancia exactamente $1/2$ de $1/2$. La tolerancia $1/4$ impide convergencia a ese candidato. Los destinos cero y uno se obtienen por paridad; así el confinamiento no es una caracterización de todos los puntos interiores.
 
-Después de la prueba, puede retomarse la [figura 9.4](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f04) para contrastar el mecanismo con el ejemplo del capítulo.
+El confinamiento de la [figura 9.4](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f04) incluye los extremos; por sí solo no proporciona destinos en el interior.
 
 ## 9.20. Destinos extremos y conjunto
 
@@ -224,7 +224,7 @@ El conjunto contiene límites, no necesariamente términos. Las extracciones pro
 
 Fijar $\varepsilon>0$. Elegir $N_1$ con $\ell_n>L-\varepsilon$ para $n\ge N_1$ y $N_2$ con $u_n<L+\varepsilon$ para $n\ge N_2$. Con $N=\max\{N_1,N_2\}$, el encierro $\ell_n\le a_n\le u_n$ prueba $|a_n-L|<\varepsilon$ para todo $n\ge N$. No basta tomar sólo uno de los cortes.
 
-Después de la prueba, puede retomarse la [figura 9.5](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f05) para contrastar el mecanismo con el ejemplo del capítulo.
+Los dos controles de la [figura 9.5](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f05) se reúnen para capturar toda la cola.
 
 ## 9.22. Dos amplitudes
 
@@ -234,7 +234,7 @@ Después de la prueba, puede retomarse la [figura 9.5](analisis-para-matematicos
 
 Para $a$, las correcciones recíprocas van a cero y ambos extremos son cinco, luego $\omega(a)=0$. Para $b$, toda cola contiene cuatro y seis, luego $\alpha_b=4$, $\beta_b=6$ y $\omega(b)=2$. La primera converge aunque alterna; la segunda no.
 
-Después de la prueba, puede retomarse la [figura 9.5](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f05) para contrastar el mecanismo con el ejemplo del capítulo.
+La [figura 9.5](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f05) permite interpretar las amplitudes calculadas: el signo alternante y la anchura persistente son datos distintos.
 
 ## 9.23. Supremo de distancias
 
@@ -258,9 +258,9 @@ Si el conjunto de destinos es $\{L\}$, sus mínimo y máximo probados en §9.4 s
 
 []{#MA-SOL-ANM-01-009-025}
 
-El supremo de esas distancias da $d_N\le\varepsilon$, sin garantizar desigualdad estricta. Una sola tolerancia no prueba convergencia: la alternancia cero–uno tiene todas sus distancias menores que dos y no converge. Si la condición existiera para cada tolerancia positiva, entonces $0\le\omega\le\varepsilon$ para toda $\varepsilon$ y el criterio de §9.5 daría convergencia.
+El supremo de esas distancias da $d_N\le\varepsilon$, sin garantizar desigualdad estricta. Para ver que la igualdad es posible, toma $a_n=\varepsilon/(n+1)$ y el corte $N=0$. Dos términos cualesquiera son positivos y están en $(0,\varepsilon]$, por lo que su distancia es menor que $\varepsilon$. Sin embargo, $u_0=\varepsilon$ e $\ell_0=0$ por aproximación de los recíprocos, así que $d_0=\varepsilon$. Una sola tolerancia no prueba convergencia: la alternancia cero–uno tiene todas sus distancias menores que dos y no converge. Si la condición existiera para cada tolerancia positiva, entonces $0\le\omega\le\varepsilon$ para toda $\varepsilon$ y el criterio de §9.5 daría convergencia.
 
-Después de la prueba, puede retomarse la [figura 9.5](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f05) para contrastar el mecanismo con el ejemplo del capítulo.
+La [figura 9.5](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f05) relaciona la disminución de anchuras con la convergencia; una sola tolerancia deja abierta esa disminución.
 
 ## 9.26. Modificar y desplazar
 
@@ -272,7 +272,7 @@ Después de la prueba, puede retomarse la [figura 9.5](analisis-para-matematicos
 
 Ambas operaciones conservan los extremos menos uno y uno. La primera cambia un valor del prefijo y deja idénticas las colas desde uno. La segunda invierte la paridad y reindexa; sus colas son las de $a$ con corte desplazado. Son funciones diferentes y operaciones diferentes.
 
-Después de la prueba, puede retomarse la [figura 9.2](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f02) para contrastar el mecanismo con el ejemplo del capítulo.
+La [figura 9.2](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f02) permite seguir qué parte de la información de cola permanece al modificar o desplazar el comienzo.
 
 ## 9.27. Perturbación que desaparece
 
@@ -282,7 +282,7 @@ Después de la prueba, puede retomarse la [figura 9.2](analisis-para-matematicos
 
 $r$ es acotada, luego $a+r$ lo es. Para $\varepsilon>0$, en colas suficientemente tardías $a_n-\varepsilon<a_n+r_n<a_n+\varepsilon$. Comparando supremos e ínfimos en ambas direcciones, sus extremos difieren a lo sumo en $\varepsilon$. Como vale para toda tolerancia, coinciden los dos extremos. Al restarlos coincide la oscilación.
 
-Después de la prueba, puede retomarse la [figura 9.2](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f02) para contrastar el mecanismo con el ejemplo del capítulo.
+La [figura 9.2](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f02) representa las fronteras cuya estabilidad se obtiene aquí con un control de error que tiende a cero.
 
 ## 9.28. Estabilidad con margen
 
@@ -326,7 +326,7 @@ La escala negativa intercambia los extremos: $\alpha(-4a)=-12$ y $\beta(-4a)=8$.
 
 La suma es cero, por lo que ambos extremos de la suma son cero. Las fronteras superiores separadas suman dos y las inferiores menos dos. Ambas desigualdades generales son estrictas, porque las alturas extremas de los sumandos aparecen en paridades opuestas.
 
-Después de la prueba, puede retomarse la [figura 9.6](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f06) para contrastar el mecanismo con el ejemplo del capítulo.
+La [figura 9.6](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f06) muestra por qué las alturas extremas de los sumandos pueden ocurrir en posiciones distintas.
 
 ## 9.33. Intervalo más preciso para la suma
 
@@ -334,7 +334,15 @@ Después de la prueba, puede retomarse la [figura 9.6](analisis-para-matematicos
 
 []{#MA-SOL-ANM-01-009-033}
 
-Escoger una extracción $a_{n_k}\to\beta_a$. Para $\varepsilon>0$, eventualmente $a_{n_k}>\beta_a-\varepsilon$ y $b_{n_k}>\alpha_b-\varepsilon$. Son visitas arbitrariamente tardías de la suma sobre $\beta_a+\alpha_b-2\varepsilon$, luego $\beta(a+b)\ge\beta_a+\alpha_b-2\varepsilon$ por la caracterización de visitas o por los supremos de cola. Dejar $\varepsilon$ arbitraria da la primera cota; intercambiar $a,b$ da la otra. Para la inferior usar la extracción $a_{m_k}\to\alpha_a$ y la cota eventual $b_n<\beta_b+\varepsilon$: da visitas tardías de la suma por debajo de $\alpha_a+\beta_b+2\varepsilon$, luego $\alpha(a+b)\le\alpha_a+\beta_b$. Intercambiar los sumandos da la última cota.
+Tomemos una extracción $a_{\varphi(k)}\to\beta_a$. Fijados $\varepsilon>0$ y un corte original $N$, sea $K_a$ un umbral con $a_{\varphi(k)}>\beta_a-\varepsilon$ para $k\ge K_a$, y sea $T_b$ un corte con $b_n>\alpha_b-\varepsilon$ para $n\ge T_b$. Elegimos $k\ge\max\{K_a,T_b,N\}$. Como $\varphi(k)\ge k$, el índice original $n=\varphi(k)$ está después de ambos cortes originales y cumple
+
+$$
+a_n+b_n>\beta_a+\alpha_b-2\varepsilon.
+$$
+
+Para cada $N$ hemos obtenido un término de esa cola por encima de la misma barrera. Por tanto $u_N(a+b)>\beta_a+\alpha_b-2\varepsilon$ para todo $N$, y al pasar al límite resulta $\beta(a+b)\ge\beta_a+\alpha_b-2\varepsilon$. Al ser $\varepsilon$ arbitraria, $\beta(a+b)\ge\beta_a+\alpha_b$. Intercambiar $a,b$ da la otra cota y, juntas, el máximo pedido.
+
+Para la frontera inferior, tomemos una extracción hacia $\alpha_a$ y la cota eventual $b_n<\beta_b+\varepsilon$. Coordinando los tres cortes del mismo modo, después de cada $N$ se obtiene un término con $a_n+b_n<\alpha_a+\beta_b+2\varepsilon$. Entonces $\ell_N(a+b)<\alpha_a+\beta_b+2\varepsilon$ para todo $N$ y $\alpha(a+b)\le\alpha_a+\beta_b+2\varepsilon$. La arbitrariedad de $\varepsilon$ da $\alpha(a+b)\le\alpha_a+\beta_b$; al intercambiar los sumandos se obtiene la otra desigualdad y el mínimo pedido.
 
 ## 9.34. Producto y signo
 
@@ -352,7 +360,7 @@ En cada cola los extremos son no negativos y $\ell_N(a)\ell_N(b)\le a_nb_n\le u_
 
 La suma es acotada porque ambos sumandos lo son. Escribir $a_n+b_n=(a_n+B)+(b_n-B)$, donde el segundo término tiende a cero. La estabilidad y la traslación dan $\alpha(a+b)=\alpha_a+B$ y $\beta(a+b)=\beta_a+B$. Al restar, $\omega(a+b)=\omega(a)$: el sumando convergente traslada las fronteras y conserva su distancia.
 
-Después de la prueba, puede retomarse la [figura 9.6](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f06) para contrastar el mecanismo con el ejemplo del capítulo.
+La comparación de fronteras de la [figura 9.6](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html#fig-anm-c09-f06) se vuelve exacta cuando uno de los sumandos tiene un límite.
 
 ## 9.36. Picos cada vez más separados
 
@@ -370,7 +378,7 @@ Las potencias superan cualquier corte porque $2^j\ge j+1$. Los índices $2^j+1$ 
 
 []{#MA-SOL-ANM-01-009-037}
 
-Todos los términos están en $[0,1]$ y cada bloque contiene ambos extremos, por lo que cada cola contiene cero y uno y $\alpha=0,\beta=1$. Para $x\in[0,1]$, en cada bloque escoger el menor entero $j_m\in\{0,\ldots,m\}$ con $j_m/m\ge x$. Existe porque $m/m=1$. Si $j_m>0$, minimalidad da $(j_m-1)/m<x$, luego $0\le j_m/m-x<1/m$; si $j_m=0$, $x=0$ y el error es cero. Los índices originales aumentan porque se toma un término de cada bloque consecutivo. La extracción converge a $x$ por arquimedianidad. Ningún destino queda fuera del intervalo por confinamiento.
+El bloque de parámetro $m\ge1$ tiene longitud $m+1$ y comienza en $B_m=(m-1)(m+2)/2$. Cada índice $n$ pertenece a un único bloque $B_m\le n<B_{m+1}$, y su valor es $a_n=(n-B_m)/m$. Así la concatenación define una sucesión real desde el índice $0$. Todos los términos están en $[0,1]$ y cada bloque contiene ambos extremos, por lo que cada cola contiene cero y uno y $\alpha=0,\beta=1$. Para $x\in[0,1]$, en cada bloque escoger el menor entero $j_m\in\{0,\ldots,m\}$ con $j_m/m\ge x$. Existe porque $m/m=1$. Si $j_m>0$, minimalidad da $(j_m-1)/m<x$, luego $0\le j_m/m-x<1/m$; si $j_m=0$, $x=0$ y el error es cero. Definimos el selector $\theta(k)=B_{k+1}+j_{k+1}$ para $k\in\mathbb N$. El índice elegido en el bloque $m$ es a lo sumo $B_m+m$, mientras que el elegido en el siguiente es al menos $B_{m+1}=B_m+m+1$; por tanto $\theta$ crece estrictamente. Además, $|a_{\theta(k)}-x|<1/(k+1)$, incluido el caso de error cero. Para $\varepsilon>0$, el corte $K=\lfloor1/\varepsilon\rfloor+1$ garantiza que todo $k\ge K$ cumple ese error menor que $\varepsilon$. La extracción converge a $x$. Ningún destino queda fuera del intervalo por confinamiento.
 
 ## 9.38. Misma banda, distintos destinos
 
