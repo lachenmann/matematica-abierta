@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 areas:
 - analisis
 level: universitario
@@ -201,7 +201,7 @@ $$
 
 pertenece a $A$ siempre que $l-1<5$; si $l-1\ge5$, basta tomar $a=4$, que también satisface $a<l$. En ambos casos podemos encontrar un elemento de $A$ menor que $l$.
 
-De forma más uniforme, puede elegirse
+Puede elegirse directamente
 
 $$
 a=\min\{4,l-1\},
@@ -395,9 +395,9 @@ $$
 U(A)=[5,\infty).
 $$
 
-En efecto, todo $u\ge5$ satisface $a<5\le u$ para todo $a\in A$, mientras que si $u<5$ existe un punto de $(2,5)$ mayor que $u$.
+En efecto, todo $u\ge5$ satisface $a<5\le u$ para todo $a\in A$, mientras que si $u<5$, el punto $a=(\max\{2,u\}+5)/2$ cumple $2<a<5$ y $a>u$.
 
-Dualmente,
+Si $l>2$, el punto $a=(2+\min\{l,5\})/2$ pertenece a $(2,5)$ y satisface $a<l$, por lo que $l$ no es cota inferior. Los números $l\le2$ sí quedan por debajo de todos los elementos. Así,
 
 $$
 L(A)=(-\infty,2].
@@ -973,10 +973,10 @@ $$
 porque para todo $\varepsilon>0$ se cumple
 
 $$
-s-\varepsilon<s=s.
+s-\varepsilon<a=s.
 $$
 
-Si $s\notin A$, en cambio, el testigo debe estar estrictamente por debajo de $s$ y puede depender del valor de $\varepsilon$.
+Si $s\notin A$, en cambio, el testigo debe estar estrictamente por debajo de $s$ y depender del margen elegido. Ningún punto fijo $a<s$ funciona para todos los márgenes: basta tomar $\varepsilon=(s-a)/2$ para que $a<s-\varepsilon$.
 
 Así, la caracterización cubre tanto el supremo alcanzado como el no alcanzado.
 
@@ -1198,7 +1198,7 @@ Por tanto, antes de poder escribir $\sup A$ debemos saber que $U(A)$ tiene un m�
 
 ### 38. Para $A=(0,\infty)$, identifica cuál de los dos obstáculos para la existencia del supremo falla primero
 
-Falla el primer obstáculo: el conjunto no tiene cotas superiores reales.
+El primer requisito no se cumple: el conjunto no tiene cotas superiores reales.
 
 En efecto, dado cualquier $u\in\mathbb R$, podemos elegir, por ejemplo,
 

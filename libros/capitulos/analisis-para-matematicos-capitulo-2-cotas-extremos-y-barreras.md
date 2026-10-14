@@ -561,7 +561,7 @@ $$
 
 pertenece a $A$ siempre que $l-1<5$; si $l-1\ge5$, basta tomar $a=4$, que también satisface $a<l$. En ambos casos podemos encontrar un elemento de $A$ menor que $l$.
 
-De forma más uniforme, puede elegirse
+Puede elegirse directamente
 
 $$
 a=\min\{4,l-1\},
@@ -1043,7 +1043,7 @@ El objetivo es identificar qué parte del lenguaje de cotas cambia y qué parte 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 5</summary>
 
-**Estrategia.** Una traslación suma la misma constante a todos los elementos del conjunto y a la barrera. Como sumar la misma cantidad a ambos lados de una desigualdad preserva el orden, esperamos que la familia completa de cotas se traslade rígidamente.
+Una traslación suma la misma constante a todos los elementos del conjunto y a la barrera. Como sumar la misma cantidad a ambos lados de una desigualdad preserva el orden, esperamos que la familia completa de cotas se traslade rígidamente.
 
 Demostremos primero que
 
@@ -2039,7 +2039,7 @@ No uses supremo para el diagnóstico.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 9</summary>
 
-**Diagnóstico.** El paso inválido es
+El paso inválido es
 
 $$
 A\ne\varnothing,\qquad U(A)\ne\varnothing
@@ -2132,7 +2132,7 @@ Tu demostración debe explicar por qué el signo de $\alpha$ decide si los papel
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 10</summary>
 
-**Cómo pensar este problema.** Un máximo o un mínimo combina dos datos: el candidato debe pertenecer al conjunto transformado y debe dominar —o quedar por debajo de— todos sus elementos. La pertenencia se obtiene transformando $M$ o $m$; la desigualdad depende del signo de $\alpha$.
+Un máximo o un mínimo combina dos datos: el candidato debe pertenecer al conjunto transformado y debe dominar —o quedar por debajo de— todos sus elementos. La pertenencia se obtiene transformando $M$ o $m$; la desigualdad depende del signo de $\alpha$.
 
 Sabemos que
 
@@ -2522,9 +2522,9 @@ $$
 U(A)=[5,\infty).
 $$
 
-En efecto, todo $u\ge5$ satisface $a<5\le u$ para todo $a\in A$, mientras que si $u<5$ existe un punto de $(2,5)$ mayor que $u$.
+En efecto, todo $u\ge5$ satisface $a<5\le u$ para todo $a\in A$, mientras que si $u<5$, el punto $a=(\max\{2,u\}+5)/2$ cumple $2<a<5$ y $a>u$.
 
-Dualmente,
+Si $l>2$, el punto $a=(2+\min\{l,5\})/2$ pertenece a $(2,5)$ y satisface $a<l$, por lo que $l$ no es cota inferior. Los números $l\le2$ sí quedan por debajo de todos los elementos. Así,
 
 $$
 L(A)=(-\infty,2].
@@ -2923,7 +2923,7 @@ $$
 
 Así, todo $u\ge4$ es cota superior y todo $l\le-2$ es cota inferior.
 
-Por otra parte, ningún $u<4$ puede ser cota superior: si $u<4$, hay elementos del intervalo correspondiente mayores que $u$. De manera dual, ningún $l>-2$ puede ser cota inferior.
+Para $u<4$, el punto $(\max\{-2,u\}+4)/2$ pertenece a los cuatro intervalos y es mayor que $u$. Para $l>-2$, el punto $(-2+\min\{l,4\})/2$ pertenece a los cuatro y es menor que $l$. Estos testigos descartan todas las cotas exteriores propuestas.
 
 Por tanto, para cada uno de los cuatro ejemplos,
 
@@ -3046,7 +3046,7 @@ Tu respuesta debe distinguir entre «ser una cota superior» y «ser la menor co
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 14</summary>
 
-**Diagnóstico.** El estudiante ha verificado sólo la primera condición de la definición de supremo: que $2$ es una cota superior de
+El estudiante ha verificado sólo la primera condición de la definición de supremo: que $2$ es una cota superior de
 
 $$
 A=(0,1).
@@ -3145,7 +3145,7 @@ No supongas que $i$ o $s$ pertenecen a $A$.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 15</summary>
 
-**Estrategia.** El supremo y el ínfimo son, respectivamente, una cota superior y una cota inferior. Esto sitúa inmediatamente a $A$ dentro de $[i,s]$. Después compararemos esas barreras extremales con cualquier otro par de barreras $l,u$ que también contenga a $A$.
+El supremo y el ínfimo son, respectivamente, una cota superior y una cota inferior. Esto sitúa inmediatamente a $A$ dentro de $[i,s]$. Después compararemos esas barreras extremales con cualquier otro par de barreras $l,u$ que también contenga a $A$.
 
 Como
 
@@ -3298,7 +3298,7 @@ No uses caracterizaciones con $\varepsilon$, sucesiones ni completitud.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 16</summary>
 
-**Cómo pensar este problema.** Para demostrar que un número es supremo debemos verificar dos cosas: que es cota superior y que es menor o igual que cualquier otra cota superior. La transformación
+Para demostrar que un número es supremo debemos verificar dos cosas: que es cota superior y que es menor o igual que cualquier otra cota superior. La transformación
 
 $$
 x\mapsto\alpha x+\beta
@@ -4472,7 +4472,7 @@ Este ejercicio debe conectar las tres capas ya construidas: **conjunto original,
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 21</summary>
 
-**Cómo pensar este problema.** Como
+Como
 
 $$
 s=\sup A,
@@ -5153,10 +5153,10 @@ $$
 porque para todo $\varepsilon>0$ se cumple
 
 $$
-s-\varepsilon<s=s.
+s-\varepsilon<a=s.
 $$
 
-Si $s\notin A$, en cambio, el testigo debe estar estrictamente por debajo de $s$ y puede depender del valor de $\varepsilon$.
+Si $s\notin A$, en cambio, el testigo debe estar estrictamente por debajo de $s$ y depender del margen elegido. Ningún punto fijo $a<s$ funciona para todos los márgenes: basta tomar $\varepsilon=(s-a)/2$ para que $a<s-\varepsilon$.
 
 Así, la caracterización cubre tanto el supremo alcanzado como el no alcanzado.
 
@@ -5644,7 +5644,7 @@ $$
 1-\varepsilon<1\le1.
 $$
 
-Por tanto, (II) es una condición más fuerte: puede cumplirse cuando la barrera pertenece al conjunto, pero no es equivalente a la caracterización general del supremo.
+De hecho, (II) exige que la barrera pertenezca al conjunto. Si un testigo fijo $a$ satisface $s-\varepsilon<a\le s$ para todo $\varepsilon>0$ y ocurriera $a<s$, elegir $\varepsilon=(s-a)/2$ daría una contradicción. Luego necesariamente $a=s$. La condición (I), junto con que $s$ sea cota superior, también permite reconocer supremos no alcanzados.
 
 </details>
 
@@ -5857,7 +5857,7 @@ No introduzcas sucesiones.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 27</summary>
 
-**Cómo pensar este problema.** La igualdad de supremos tiene dos partes distintas. Primero debemos mostrar que la suma de las dos barreras superiores sigue siendo una barrera superior para todas las sumas posibles. Después debemos mostrar que esa barrera no puede bajarse ni siquiera una cantidad positiva arbitraria. La caracterización $\varepsilon$ está diseñada precisamente para esa segunda tarea.
+La igualdad de supremos tiene dos partes distintas. Primero debemos mostrar que la suma de las dos barreras superiores sigue siendo una barrera superior para todas las sumas posibles. Después debemos mostrar que esa barrera no puede bajarse ni siquiera una cantidad positiva arbitraria. La caracterización $\varepsilon$ está diseñada precisamente para esa segunda tarea.
 
 Definamos
 
@@ -7152,137 +7152,41 @@ No uses ninguna garantía general de existencia: trabaja sólo con los extremos 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 32</summary>
 
-Sea
+Escribamos $B_c=A\cup\{c\}$. Un número $u$ es cota superior de $B_c$ exactamente cuando controla a todos los puntos de $A$ y también al punto añadido. Por tanto,
 
 $$
-i=\inf A,
-\qquad
-s=\sup A,
+u\in U(B_c)\iff u\in U(A)\ \text{y}\ c\le u.
 $$
 
-y definamos
+Como $s=\sup A$, sabemos que $U(A)=[s,\infty)$. Así,
 
 $$
-B_c=A\cup\{c\}.
+U(B_c)=[s,\infty)\cap[c,\infty)
+=[\max\{s,c\},\infty).
 $$
 
-#### Caso 1: $i\le c\le s$
-
-Como $i$ es cota inferior de $A$ y además $i\le c$, sigue siendo cota inferior de $B_c$.
-
-Análogamente, $s$ es cota superior de $A$ y $c\le s$, así que también es cota superior de $B_c$.
-
-Por la inclusión $A\subseteq B_c$, la monotonía da
+Esta familia tiene mínimo, que es $\max\{s,c\}$. Hemos demostrado tanto la existencia como el valor del nuevo supremo:
 
 $$
-\sup A\le\sup B_c
-\qquad\text{y}\qquad
-\inf B_c\le\inf A.
+\sup B_c=\max\{s,c\}.
 $$
 
-Pero acabamos de comprobar que $s$ es cota superior de $B_c$, de modo que
+Para las cotas inferiores, $l$ debe quedar por debajo de todos los puntos de $A$ y del punto $c$. Como $L(A)=(-\infty,i]$,
 
 $$
-\sup B_c\le s=\sup A.
+L(B_c)=L(A)\cap(-\infty,c]
+=(-\infty,\min\{i,c\}].
 $$
 
-Por tanto,
+Su máximo es $\min\{i,c\}$, por lo que el ínfimo también existe y vale
 
 $$
-\boxed{\sup B_c=s}.
+\inf B_c=\min\{i,c\}.
 $$
 
-De manera dual, como $i$ es cota inferior de $B_c$,
+Los tres casos se leen de estas fórmulas. Si $i\le c\le s$, obtenemos $\inf B_c=i$ y $\sup B_c=s$. Si $c>s$, obtenemos $\inf B_c=i$ y $\sup B_c=c$; además, $c\in B_c$ y domina al conjunto, de modo que es su máximo. Si $c<i$, obtenemos $\inf B_c=c$ y $\sup B_c=s$, y $c$ es el mínimo.
 
-$$
-i\le\inf B_c.
-$$
-
-Junto con $\inf B_c\le i$, obtenemos
-
-$$
-\boxed{\inf B_c=i}.
-$$
-
-#### Caso 2: $c>s$
-
-Todo elemento $a\in A$ satisface
-
-$$
-a\le s<c.
-$$
-
-Como además $c\in B_c$, el punto $c$ es máximo de $B_c$. En consecuencia,
-
-$$
-\boxed{\sup B_c=c}.
-$$
-
-En el lado inferior, $c>s\ge i$, de modo que añadir $c$ no crea ningún elemento por debajo de la barrera inferior. El número $i$ sigue siendo cota inferior de $B_c$, y la inclusión $A\subseteq B_c$ obliga a
-
-$$
-\inf B_c\le i.
-$$
-
-Como $i$ también es cota inferior de $B_c$,
-
-$$
-i\le\inf B_c.
-$$
-
-Por tanto,
-
-$$
-\boxed{\inf B_c=i}.
-$$
-
-#### Caso 3: $c<i$
-
-Ahora $c$ queda por debajo de todo elemento de $A$, pues
-
-$$
-c<i\le a
-\qquad
-\text{para todo }a\in A.
-$$
-
-Así $c$ es mínimo de $B_c$, y por tanto
-
-$$
-\boxed{\inf B_c=c}.
-$$
-
-Como $c<i\le s$, el nuevo punto no rebasa la barrera superior. El número $s$ sigue siendo cota superior de $B_c$, y por la misma comparación que antes,
-
-$$
-\boxed{\sup B_c=s}.
-$$
-
-En resumen,
-
-$$
-\boxed{
-\sup B_c=
-\begin{cases}
-s, & c\le s,\\
-c, & c>s,
-\end{cases}
-}
-$$
-
-y
-
-$$
-\boxed{
-\inf B_c=
-\begin{cases}
-c, & c<i,\\
-i, & c\ge i.
-\end{cases}
-}
-$$
-
-El punto añadido sólo desplaza una barrera cuando cae fuera del intervalo de control $[i,s]$ por el lado correspondiente.
+Un punto añadido dentro de $[i,s]$ satisface las dos barreras ya existentes. Fuera de ese intervalo obliga a desplazar la barrera del lado que rebasa. La existencia de los nuevos extremos procede de las familias de cotas calculadas, sin recurrir a una garantía general de completitud.
 
 </details>
 
@@ -7747,7 +7651,7 @@ Para $A=(0,\infty)$, identifica cuál de los dos obstáculos para la existencia 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 38</summary>
 
-Falla el primer obstáculo: el conjunto no tiene cotas superiores reales.
+El primer requisito no se cumple: el conjunto no tiene cotas superiores reales.
 
 En efecto, dado cualquier $u\in\mathbb R$, podemos elegir, por ejemplo,
 
@@ -8325,7 +8229,7 @@ Organiza la prueba así:
 1. verifica que $S$ es no vacío y que $2$ es una cota superior racional;
 2. demuestra que no existe $r\in\mathbb Q$ con $r^2=2$;
 3. muestra que, si $r\in\mathbb Q$ y $r>0$ satisface $r^2<2$, entonces existe un racional $r'>r$ con $(r')^2<2$;
-4. muestra que, si $r\in\mathbb Q$ y $r^2>2$, entonces existe una cota superior racional $u<r$ de $S$;
+4. muestra que, si $r\in\mathbb Q$, $r>0$ y $r^2>2$, entonces existe una cota superior racional $u<r$ de $S$;
 5. concluye que ningún racional puede ser la menor cota superior de $S$.
 
 Puedes usar, en los pasos 3 y 4, perturbaciones racionales construidas explícitamente a partir de $r$.
@@ -8472,15 +8376,15 @@ $$
 
 En consecuencia, ningún racional con cuadrado menor que $2$ puede ser cota superior de $S$.
 
-#### 4. Si $r^2>2$, existe una cota superior racional menor
+#### 4. Si $r>0$ y $r^2>2$, existe una cota superior racional menor
 
-Sea ahora $r\in\mathbb Q$ con
+Sea ahora $r\in\mathbb Q$ con $r>0$ y
 
 $$
 r^2>2.
 $$
 
-Si $r$ es cota superior de $S$, necesariamente $r\ge1$, pues $1\in S$; en particular $r>0$.
+La positividad permite comparar cuadrados sin invertir el orden y dividir por $2r$. Si partimos de un candidato a supremo, se cumple automáticamente: toda cota superior de $S$ debe ser al menos $1$, porque $1\in S$.
 
 Definamos
 
@@ -8540,7 +8444,7 @@ $$
 s=\sup_{\mathbb Q} S\in\mathbb Q.
 $$
 
-Por el paso 2,
+Como $1\in S$ y $s$ sería cota superior, tenemos $s\ge1>0$. Por el paso 2,
 
 $$
 s^2\ne2.
@@ -9143,18 +9047,7 @@ $$
 }.
 $$
 
-En palabras:
-
-```text
-familia de cotas U(A)
-        ↓ extremo mínimo
-      supremo s
-        ↕
-caracterización ε
-        + pertenencia s∈A
-        ↓
-      máximo
-```
+La familia $U(A)$ reúne todos los candidatos a cota. Su mínimo, cuando existe, es el supremo; la condición $\varepsilon$ comprueba que ninguna cota menor puede funcionar. Añadir $s\in A$ convierte esa barrera en máximo. El mapa de la figura C02-F10 representa estas relaciones y distingue la cuestión adicional de existencia.
 
 #### 5. Reconocer no es garantizar existencia
 
