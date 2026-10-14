@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Soluciones — Capítulo 7
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 provenance:
   type: original
   sources:
@@ -291,7 +291,7 @@ $$
 \le\frac{K(s-a_0)}{n+1}+s-a_K.
 $$
 
-Después de fijar $K$, el número $D=K(s-a_0)$ es un real no negativo fijo. Elegimos por arquimedianidad un natural $N\ge K$ con $N+1>2D/\varepsilon$. Si $D=0$, puede tomarse $N=K$. Para todo $n\ge N$ se cumple $D/(n+1)<\varepsilon/2$, y la elección de $K$ da $s-a_K<\varepsilon/2$. Luego $|c_n-s|=s-c_n<\varepsilon$. Esto demuestra directamente $c_n\to s$; la unicidad del límite de C06 identifica el límite ya obtenido como $t=s$.
+Después de fijar $K$, el número $D=K(s-a_0)$ es un real no negativo fijo. Si $D=0$, tomamos $N=K$. Si $D>0$, la construcción del piso de C06 permite tomar $N=\max\{K,\lfloor2D/\varepsilon\rfloor+1\}$. En ambos casos $N\ge K$ y $N+1>2D/\varepsilon$. Para todo $n\ge N$ se cumple $D/(n+1)<\varepsilon/2$, y la elección de $K$ da $s-a_K<\varepsilon/2$. Luego $|c_n-s|=s-c_n<\varepsilon$. Esto demuestra directamente $c_n\to s$; la unicidad del límite de C06 identifica el límite ya obtenido como $t=s$.
 
 Si $K=0$, el prefijo separado es vacío y su suma y contribución son cero. La estimación sigue válida: todos los términos están en el bloque final y $s-c_n\le s-a_0<\varepsilon/2$. La prueba controla un prefijo de longitud fija y el bloque restante; no emplea sumas infinitas ni un teorema general de promedios.
 
@@ -478,7 +478,7 @@ El escape frente a todas las barreras reales no es convergencia a un número rea
 
 []{#MA-SEC-ANM-01-007-006}
 
-**Control antes del cálculo.** La regla afín produce un único real en cada paso, sin denominadores variables. Las dos identidades útiles son
+La regla afín produce un único real en cada paso, sin denominadores variables. Las dos identidades útiles son
 
 $$
 v_{n+1}-c=\lambda(v_n-c),\qquad v_{n+1}-v_n=(1-\lambda)(c-v_n).
@@ -486,7 +486,7 @@ $$
 
 Si $r<c$, la primera identidad conserva $v_n<c$ por inducción porque $\lambda>0$. La segunda da incremento positivo porque $1-\lambda>0$. Por tanto $r\le v_n<c$ y §7.3 garantiza un límite real. Si $r>c$, se conserva $v_n>c$, el incremento es negativo y $c<v_n\le r$; §7.4 garantiza un límite. Si $r=c$, la inducción da $v_n=c$ para todo $n$, con límite $c$.
 
-**Identificación.** En los dos casos no constantes ya existe $L\in\mathbb R$. Desplazamiento, suma y multiplicación por escalares de C06 dan $L=\lambda L+(1-\lambda)c$. Como $1-\lambda\ne0$, resulta $L=c$. Así, las tres sucesiones convergen a $c$; los casos estrictos no alcanzan ese valor en ningún índice. La completitud interviene mediante el teorema monótono, antes de resolver la ecuación.
+En los dos casos no constantes ya existe $L\in\mathbb R$. Desplazamiento, suma y multiplicación por escalares de C06 dan $L=\lambda L+(1-\lambda)c$. Como $1-\lambda\ne0$, resulta $L=c$. Así, las tres sucesiones convergen a $c$; los casos estrictos no alcanzan ese valor en ningún índice. La completitud interviene mediante el teorema monótono, antes de resolver la ecuación.
 
 ### 27. Una ecuación necesaria presentada como garantía
 
@@ -510,7 +510,7 @@ Para cualquier candidato $A\in\mathbb R$, fija $\varepsilon_0=h$. Dado cualquier
 
 []{#MA-SOL-ANM-01-007-028}
 
-**Construcción e invariante.** Si $y_n>0$, el inverso existe y la regla produce un único $y_{n+1}>0$. La base $r>0$ permite esta inducción para todos los índices. Para cada término construido,
+Si $y_n>0$, el inverso existe y la regla produce un único $y_{n+1}>0$. La base $r>0$ permite esta inducción para todos los índices. Para cada término construido,
 
 $$
 y_{n+1}^2-2=\frac{(y_n^2-2)^2}{4y_n^2},\qquad
@@ -519,7 +519,7 @@ $$
 
 La base $r^2>2$, la primera identidad y el denominador positivo conservan $y_n^2>2$ estrictamente: el numerador nunca es cero. Como $y_n>0$, se deduce $y_n>1$, pues $0<y_n\le1$ implicaría $y_n^2\le1$. La segunda identidad tiene numerador negativo y denominador positivo, luego $y$ es estrictamente decreciente y $1<y_n\le r$.
 
-**Existencia y destino.** §7.4, que recibe aquí la completitud real, da $y_n\to L$. El orden de límites de C06 da $L\ge1$, de modo que $L\ne0$. Ahora están verificadas las hipótesis del cociente: los denominadores son no nulos y su límite también. Por desplazamiento y operaciones de límites,
+§7.4, que recibe aquí la completitud real, da $y_n\to L$. El orden de límites de C06 da $L\ge1$, de modo que $L\ne0$. Ahora están verificadas las hipótesis del cociente: los denominadores son no nulos y su límite también. Por desplazamiento y operaciones de límites,
 
 $$
 L=\frac{L+2/L}{2},\qquad L^2=2,\qquad L>0.
@@ -554,7 +554,7 @@ La clasificación positiva queda completa: $r>R$ produce descenso estricto globa
 
 []{#MA-SOL-ANM-01-007-030}
 
-**Construir sin conocer el destino.** La base $x_0=r>0$ y la positividad de $\rho/x_n$ cuando $x_n>0$ construyen todos los términos positivos. Las identidades algebraicas son
+La base $x_0=r>0$ y la positividad de $\rho/x_n$ cuando $x_n>0$ construyen todos los términos positivos. Las identidades algebraicas son
 
 $$
 x_{n+1}^2-\rho=\frac{(x_n^2-\rho)^2}{4x_n^2},\qquad
@@ -563,7 +563,7 @@ $$
 
 Por inducción desde $r^2>\rho$, la primera conserva la desigualdad estricta; la segunda implica descenso estricto. Para una barrera independiente de una raíz, fija $m=\min\{1,\rho\}$. Si $\rho\ge1$, $0<x_n\le1$ implicaría $x_n^2\le1\le\rho$, imposible. Si $0<\rho<1$, $0<x_n\le\rho$ implicaría $x_n^2\le\rho^2<\rho$, también imposible. Así $0<m<x_n\le r$.
 
-**Existencia antes de la ecuación.** §7.4 aplica monotonía, cota y completitud para dar un límite $L$. Por orden de límites, $L\ge m>0$. Sólo ahora pueden usarse el cociente, suma, escalar y desplazamiento de C06 para obtener
+§7.4 aplica monotonía, cota y completitud para dar un límite $L$. Por orden de límites, $L\ge m>0$. Sólo ahora pueden usarse el cociente, suma, escalar y desplazamiento de C06 para obtener
 
 $$
 L=\frac{L+\rho/L}{2},\qquad L^2=\rho.
@@ -626,7 +626,7 @@ si $z_n-y_n>0$. La inducción demuestra $y_n<z_n$ para todo $n\in\mathbb N$. Son
 
 []{#MA-SEC-ANM-01-007-007}
 
-**Tipos y construcción.** Los objetos son
+Los objetos son
 
 $$
 q:\mathbb N\to\mathbb Q,\qquad \iota:\mathbb Q\to\mathbb R,\qquad
@@ -644,7 +644,7 @@ $$
 
 La base $r^2>\rho$ y la primera identidad conservan $q_n^2>\rho$ estrictamente. La segunda tiene numerador negativo y denominador positivo: $q$ es estrictamente decreciente. El argumento de 30, válido también en el cuerpo ordenado racional, da $\min\{1,\rho\}<q_n\le r$.
 
-**Transporte y existencia real.** La inclusión conserva operaciones de cuerpo, inversos no nulos y orden; también refleja el orden. En consecuencia,
+La inclusión conserva operaciones de cuerpo, inversos no nulos y orden; también refleja el orden. En consecuencia,
 
 $$
 \widetilde q_0=\iota(r),\qquad
@@ -681,7 +681,7 @@ Si $q$ tuviera límite racional $r$, con la distancia de §7.7 y todas las toler
 
 []{#MA-SOL-ANM-01-007-035}
 
-**La primera construcción.** El dato $u_0=0$ es racional y la suma con 1 y la división por 2 conservan racionalidad, por lo que $u:\mathbb N\to\mathbb Q$ está definida. Por inducción,
+El dato $u_0=0$ es racional y la suma con 1 y la división por 2 conservan racionalidad, por lo que $u:\mathbb N\to\mathbb Q$ está definida. Por inducción,
 
 $$
 0\le u_n<1,\qquad u_{n+1}-u_n=\frac{1-u_n}{2}>0.
@@ -689,7 +689,7 @@ $$
 
 La base satisface la desigualdad y $u_n<1$ implica $(u_n+1)/2<1$, cerrando la inducción. Después de incluir los términos en $\mathbb R$, §7.3 garantiza existencia por dirección y cota superior 1. Si el límite es $U$, desplazamiento y operaciones de C06 dan $U=(U+1)/2$, luego $U=1$. Ningún término alcanza 1 porque $u_n<1$ para todo índice. El límite es racional; la misma condición de error acredita que $u$ tiene límite racional 1.
 
-**La segunda construcción.** Por 33–34, $q:\mathbb N\to\mathbb Q$ está definida, sus términos son positivos, la composición real converge a $L>0$ con $L^2=8$ y $L\notin\iota(\mathbb Q)$. Además $\widetilde q_n>L$ para todo $n$, así que tampoco alcanza su límite. En este caso no hay límite racional, por unicidad del límite real.
+Por 33–34, $q:\mathbb N\to\mathbb Q$ está definida, sus términos son positivos, la composición real converge a $L>0$ con $L^2=8$ y $L\notin\iota(\mathbb Q)$. Además $\widetilde q_n>L$ para todo $n$, así que tampoco alcanza su límite. En este caso no hay límite racional, por unicidad del límite real.
 
 La segunda construcción refuta la primera afirmación: pertenecer a $\mathbb Q$ en cada índice no fuerza que el límite real pertenezca a su imagen. La primera construcción refuta la corrección propuesta: no alcanzar un límite no implica que sea irracional. Ambas tienen términos racionales y un límite real no alcanzado; una tiene destino racional y la otra irracional.
 
@@ -701,9 +701,9 @@ El codominio declarado exige que cada término esté en $\mathbb Q$; no decide p
 
 []{#MA-SOL-ANM-01-007-036}
 
-**Comparar tolerancias.** Fija $r\in\mathbb Q$. Si la condición vale para todas las tolerancias reales positivas, vale en particular para las imágenes de tolerancias racionales positivas.
+Fija $r\in\mathbb Q$. Si la condición vale para todas las tolerancias reales positivas, vale en particular para las imágenes de tolerancias racionales positivas.
 
-Recíprocamente, supón la condición con tolerancias racionales. Dado $\varepsilon\in\mathbb R$, $\varepsilon>0$, la arquimedianidad permite elegir $m\in\mathbb N$ con $m>1/\varepsilon$. Entonces $m\ge1$ y $\eta=1/m\in\mathbb Q$ satisface $0<\iota(\eta)<\varepsilon$. El corte dado por la condición racional para esa $\eta$ asegura, para todo $n\ge N$,
+Recíprocamente, supón la condición con tolerancias racionales. Dado $\varepsilon\in\mathbb R$, $\varepsilon>0$, tomamos $m=\lfloor1/\varepsilon\rfloor+1$, usando el piso construido en C06. Se cumple $m>1/\varepsilon$ y, por tanto, $m\ge1$ y $\eta=1/m\in\mathbb Q$ satisface $0<\iota(\eta)<\varepsilon$. El corte dado por la condición racional para esa $\eta$ asegura, para todo $n\ge N$,
 
 $$
 |\iota(a_n)-\iota(r)|<\iota(\eta)<\varepsilon.
@@ -711,7 +711,7 @@ $$
 
 Así se obtiene la condición con tolerancias reales. El entero $m$ puede depender de $\varepsilon$ y el corte de la tolerancia racional escogida.
 
-**Refutar un candidato.** Fija ahora un racional $r$. Como $L$ no está en la imagen racional, $d=|L-\iota(r)|>0$. Elige por arquimedianidad un entero natural $m>2/d$, necesariamente no nulo, y fija la tolerancia racional $\eta_0=1/m$. Entonces $0<\iota(\eta_0)<d/2$. La convergencia real a $L$ proporciona $T\in\mathbb N$ con $|\widetilde a_n-L|<d/2$ para todo $n\ge T$.
+Fija ahora un racional $r$. Como $L$ no está en la imagen racional, $d=|L-\iota(r)|>0$. Toma $m=\lfloor2/d\rfloor+1\in\mathbb N$. La propiedad del piso da $m>2/d>0$, por lo que $m$ no es nulo y podemos fijar la tolerancia racional $\eta_0=1/m$. Entonces $0<\iota(\eta_0)<d/2$. La convergencia real a $L$ proporciona $T\in\mathbb N$ con $|\widetilde a_n-L|<d/2$ para todo $n\ge T$.
 
 Por la desigualdad triangular, para esos índices,
 
@@ -750,7 +750,7 @@ Las cuatro prescripciones definen funciones $\mathbb N\to\mathbb R$: las fórmul
 
 []{#MA-SOL-ANM-01-007-038}
 
-**Ruta del error.** Fija $\varepsilon>0$. Por arquimedianidad, elige $N\in\mathbb N$ con $N>\max\{1,h/\varepsilon\}$. Para todo $n\ge N$, se tiene $(n+1)^2>n+1>N>h/\varepsilon$, y por tanto
+Fija $\varepsilon>0$. La construcción del piso de C06 da el corte explícito $N=\lfloor\max\{1,h/\varepsilon\}\rfloor+1\in\mathbb N$, que satisface $N>\max\{1,h/\varepsilon\}$. Para todo $n\ge N$, se tiene $(n+1)^2>n+1>N>h/\varepsilon$, y por tanto
 
 $$
 |x_n-c|=\frac{h}{(n+1)^2}<\varepsilon.
@@ -758,7 +758,7 @@ $$
 
 El corte depende de $\varepsilon$ y del parámetro fijo $h$; funciona para todos los índices posteriores. Esta prueba acredita directamente el candidato $c$.
 
-**Ruta de orden y extremo.** Para todo $n\in\mathbb N$,
+Para todo $n\in\mathbb N$,
 
 $$
 x_{n+1}-x_n
@@ -776,7 +776,7 @@ La positividad de $h/(n+1)^2$ demuestra que ningún término alcanza $c$. En la 
 
 []{#MA-SOL-ANM-01-007-039}
 
-**Existencia de las barreras.** Las direcciones y el orden entre términos dan, para todo $n$,
+Las direcciones y el orden entre términos dan, para todo $n$,
 
 $$
 a_0\le a_n\le b_n\le b_0.
@@ -784,7 +784,7 @@ $$
 
 Así $a$ tiene cota superior $b_0$ y $b$ cota inferior $a_0$, sin exigir signo positivo. §§7.3–7.4 dan $a_n\to A$ y $b_n\to B$, con $A,B\in\mathbb R$. El orden de límites de C06 da $A\le B$. La regla de resta da $b_n-a_n\to B-A$, mientras que la hipótesis da límite 0 para esa misma sucesión. Por unicidad, $B-A=0$. Denota el destino común por $L=A=B$.
 
-**Captura de la tercera sucesión.** Dado $\varepsilon>0$, toma cortes $N_a,N_b$ que aseguren $|a_n-L|<\varepsilon$ y $|b_n-L|<\varepsilon$ respectivamente. Define $N=\max\{T,N_a,N_b\}$. Para $n\ge N$,
+Dado $\varepsilon>0$, toma cortes $N_a,N_b$ que aseguren $|a_n-L|<\varepsilon$ y $|b_n-L|<\varepsilon$ respectivamente. Define $N=\max\{T,N_a,N_b\}$. Para $n\ge N$,
 
 $$
 L-\varepsilon<a_n\le c_n\le b_n<L+\varepsilon,
@@ -800,9 +800,7 @@ Sin la hipótesis de distancia, se conservan la existencia de $A,B$ y $A\le B$, 
 
 []{#MA-SOL-ANM-01-007-040}
 
-**Mapa de obligaciones.** Primero se construyen términos positivos y se conserva el orden; después se obtienen direcciones, cotas y límites por completitud; sólo entonces se utilizan las recurrencias para identificar el destino. El producto conservado aportará su ecuación.
-
-**Construcción y control.** Supón $0<a_n\le b_n$. Entonces $a_n+b_n>0$, por lo que el paso armónico está definido, y ambos términos siguientes son positivos. Las identidades
+Supón $0<a_n\le b_n$. Entonces $a_n+b_n>0$, por lo que el paso armónico está definido, y ambos términos siguientes son positivos. Las identidades
 
 $$
 a_{n+1}-a_n=\frac{a_n(b_n-a_n)}{a_n+b_n}\ge0,
@@ -823,7 +821,7 @@ $$
 
 Por inducción, $a_nb_n=P=a_0b_0>0$ para todo $n$.
 
-**Existencia antes del cálculo.** Los teoremas monótonos aplicados a estas cotas dan $a_n\to A$ y $b_n\to B$. Aquí se recibe completitud real. El orden de límites da $a_0\le A\le B\le b_0$, en particular $A+B\ge2a_0>0$. Todos los denominadores $a_n+b_n$ son positivos y su límite es no nulo; así están verificadas las hipótesis del cociente de C06.
+Los teoremas monótonos aplicados a estas cotas dan $a_n\to A$ y $b_n\to B$. Aquí se recibe completitud real. El orden de límites da $a_0\le A\le B\le b_0$, en particular $A+B\ge2a_0>0$. Todos los denominadores $a_n+b_n$ son positivos y su límite es no nulo; así están verificadas las hipótesis del cociente de C06.
 
 Por desplazamiento y operaciones de límites, las recurrencias dan
 
@@ -833,9 +831,9 @@ $$
 
 La segunda igualdad implica $A=B=L>0$. La primera es coherente con esa igualdad y se ha usado con sus hipótesis acreditadas. La regla de producto y la constancia del producto dan $AB=P$, luego $L^2=P$. Si $R>0$ es otro real con $R^2=P$, $(L-R)(L+R)=0$ y $L+R>0$ fuerzan $R=L$. El destino es el único real positivo de cuadrado $P$; su existencia ha quedado construida.
 
-**Igualdad y posición estricta.** Si $a_0=b_0=t>0$, ambas reglas conservan $t$ por inducción: las sucesiones son constantes e iguales. Si $a_0<b_0$, la identidad de la diferencia conserva $a_n<b_n$ estrictamente en cada índice, y los dos incrementos anteriores son estrictos. Como $a_nb_n=L^2$, la positividad implica $a_n<L<b_n$: si $a_n\ge L$, el producto con $b_n>a_n$ sería mayor que $L^2$; si $b_n\le L$, el producto con $a_n<b_n$ sería menor. Ninguna evaluación alcanza el destino común.
+Si $a_0=b_0=t>0$, ambas reglas conservan $t$ por inducción: las sucesiones son constantes e iguales. Si $a_0<b_0$, la identidad de la diferencia conserva $a_n<b_n$ estrictamente en cada índice, y los dos incrementos anteriores son estrictos. Como $a_nb_n=L^2$, la positividad implica $a_n<L<b_n$: si $a_n\ge L$, el producto con $b_n>a_n$ sería mayor que $L^2$; si $b_n\le L$, el producto con $a_n<b_n$ sería menor. Ninguna evaluación alcanza el destino común.
 
-**Construcción racional y destino real.** Para datos racionales positivos, las operaciones conservan racionalidad y el denominador racional positivo tiene inverso racional. Así se construyen $a^{\mathbb Q},b^{\mathbb Q}:\mathbb N\to\mathbb Q$. Sus composiciones $\widetilde a=\iota\circ a^{\mathbb Q}$ y $\widetilde b=\iota\circ b^{\mathbb Q}$ tienen codominio $\mathbb R$ y cumplen las mismas reglas reales, porque la inclusión conserva operaciones y orden. Coinciden por inducción con las construcciones reales de los datos incluidos; no se identifica una función racional con otra de codominio real.
+Para datos racionales positivos, las operaciones conservan racionalidad y el denominador racional positivo tiene inverso racional. Así se construyen $a^{\mathbb Q},b^{\mathbb Q}:\mathbb N\to\mathbb Q$. Sus composiciones $\widetilde a=\iota\circ a^{\mathbb Q}$ y $\widetilde b=\iota\circ b^{\mathbb Q}$ tienen codominio $\mathbb R$ y cumplen las mismas reglas reales, porque la inclusión conserva operaciones y orden. Coinciden por inducción con las construcciones reales de los datos incluidos; no se identifica una función racional con otra de codominio real.
 
 Con $a_0=1$, $b_0=2$, el producto es 2. Ambas composiciones convergen al real positivo $L$ con $L^2=2$. La prueba de paridad de §7.7 excluye $L\in\iota(\mathbb Q)$: una fracción reducida cuyo cuadrado fuera 2 tendría numerador y denominador pares. Si cualquiera de las sucesiones racionales tuviera límite racional $r$, su composición convergería también a $\iota(r)$; la unicidad real forzaría $\iota(r)=L$, contradicción. Hay destino real común y ningún límite racional para estas dos construcciones.
 
