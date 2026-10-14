@@ -613,7 +613,7 @@ En una gráfica de puntos $(n,a_n)$ alguien une todos los puntos con una curva y
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 7</summary>
 
-La gráfica de la sucesión es la colección discreta $\{(n,a_n):n\in\mathbb N\}$. Al unir los puntos se añaden puntos cuyas primeras coordenadas pueden no ser naturales; por ejemplo, no existe un término de índice $1/2$. La curva es una representación adicional escogida por quien dibuja y no la gráfica de la función $a:\mathbb N\to\mathbb R$. Incluso los puntos originales representan la sucesión: la función queda definida por sus asignaciones en los índices naturales.
+La gráfica de la sucesión es la colección discreta $\{(n,a_n):n\in\mathbb N\}$. Al unir los puntos se añaden puntos cuyas primeras coordenadas pueden no ser naturales; por ejemplo, no existe un término de índice $1/2$. La curva es una representación adicional escogida por quien dibuja y no la gráfica de la función $a:\mathbb N\to\mathbb R$. Los puntos originales permiten recuperar la sucesión: para cada índice natural $n$, la segunda coordenada del par $(n,a_n)$ determina su único valor.
 
 </details>
 
@@ -971,29 +971,7 @@ d) Indica qué habría que comprobar para poder afirmar que dos sucesiones $u,v:
 
 El argumento mezcla tres cuestiones diferentes: igualdad numérica, igualdad de objetos y pertenencia al dominio.
 
-El primer error aparece en la frase
-
-> «Como $c_3=3$, el índice $3$ y el término $c_3$ son el mismo objeto».
-
-Es verdad que
-
-$$
-c_3=3,
-$$
-
-pero el primer $3$ cumple el papel de entrada y el segundo es el valor de salida. Más precisamente,
-
-$$
-3\in\mathbb N
-$$
-
-es el índice, mientras que
-
-$$
-c_3=3\in\mathbb R
-$$
-
-es el término. La coincidencia numérica no elimina la diferencia de tipo.
+La igualdad $c_3=3$ es verdadera como igualdad numérica. Puesto que los naturales se consideran incluidos en los reales, ambas expresiones pueden designar el mismo número. La dificultad aparece cuando se intercambian sus papeles: $3$ es la entrada en la evaluación $c(3)$, mientras que $c_3=c(3)$ es su salida. Esa coincidencia en una evaluación no convierte el índice en la función completa ni permite confundir dominio y codominio.
 
 El segundo error consiste en afirmar que $g$ y $c$ son la misma función porque comparten la expresión $2x-3$. No lo son, pues
 
@@ -1761,7 +1739,7 @@ a=(0,1,0,1,\ldots),
 b=(1,0,1,0,\ldots),
 $$
 
-ambas sucesiones tienen conjunto de valores $\{0,1\}$. Si $a_n=0$, ese valor aparece en $b$ en índices pares desplazados respecto de $a$; si $a_n=1$, también aparece en $b$ en otros índices. Por tanto las afirmaciones existenciales son verdaderas.
+ambas sucesiones tienen conjunto de valores $\{0,1\}$. En $b$, el valor $0$ aparece en los índices impares y el valor $1$ en los pares. Para todo $n$, el testigo $m=n+1$ cumple $b_m=a_n$; en la dirección recíproca, el mismo desplazamiento cumple $a_{n+1}=b_n$. Por tanto, ambas afirmaciones existenciales son verdaderas, aunque la coincidencia nunca se dé en el mismo índice.
 
 Sin embargo, en el índice $0$,
 
@@ -2395,7 +2373,7 @@ Explica por qué una fórmula cerrada no forma parte de la definición de sucesi
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 23</summary>
 
-La definición exige una función $a:\mathbb N\to\mathbb R$: a cada índice natural debe corresponderle un único valor real. No exige que esa asignación tenga una fórmula cerrada. Una fórmula es una manera de describir la función; también la describe la colección completa de sus pares $(n,a_n)$, y dos expresiones diferentes pueden determinar la misma asignación. Por ello, usar fórmulas en muchos ejemplos no añade una condición a la definición general.
+La definición exige una función $a:\mathbb N\to\mathbb R$: a cada índice natural debe corresponderle un único valor real. No exige que esa asignación tenga una fórmula cerrada. Una fórmula es una manera de describir la función; también la describe la colección completa de sus pares $(n,a_n)$, y dos expresiones diferentes pueden determinar la misma asignación. Por ejemplo, $a_0=0$ y $a_{n+1}=a_n^2+1$ determinan una sucesión por recurrencia: el valor inicial está fijado y cada valor ya determinado produce un único valor real siguiente. Esta descripción define la asignación completa sin requerir una fórmula cerrada. Por ello, usar fórmulas en muchos ejemplos no añade una condición a la definición general.
 
 </details>
 
@@ -3606,7 +3584,7 @@ Audita la cadena.
 
 a) Escribe el tipo exacto de cada uno de los tres objetos.
 
-b) Explica por qué las dos igualdades escritas no son igualdades de funciones o conjuntos bien tipadas.
+b) Examina las dos igualdades escritas, separando el caso $N=0$ del caso $N>0$. Indica cuándo los dominios impiden la primera igualdad y por qué la segunda confunde una función con su conjunto de valores.
 
 c) Sea
 
@@ -3669,7 +3647,7 @@ $$
 V_N\subseteq\mathbb R.
 $$
 
-La primera igualdad escrita por el estudiante confunde dos funciones con dominios diferentes. La segunda intenta identificar una función con un conjunto de números reales. En ambos casos se han borrado tipos matemáticos esenciales.
+Si $N>0$, la primera igualdad es falsa porque $R_N$ tiene dominio $\mathbb N_{\ge N}$ y $T_N$ tiene dominio $\mathbb N$. Para $N=0$, en cambio, ambos dominios son $\mathbb N$ y se cumple $R_0=T_0=a$: la restricción y la reindexación no cambian la sucesión. La segunda igualdad confunde, para cualquier $N$, una función con su conjunto de valores. Ese conjunto conserva las salidas, pero no la asignación de cada índice a su término.
 
 La relación correcta entre las dos funciones usa el corrimiento
 
@@ -6155,7 +6133,7 @@ $$
 2^{N+1}\ge N
 $$
 
-para todo $N\in\mathbb N$, de modo que $n\ge N$. Hemos construido una ocurrencia de $P$ después de cualquier corte; por tanto $P$ ocurre infinitas veces.
+para todo $N\in\mathbb N$. En efecto, $2^j\ge j+1$ se prueba por inducción: vale para $j=0$ y, si vale para $j$, entonces $2^{j+1}\ge2(j+1)\ge j+2$. Aplicando esta desigualdad a $j=N+1$ obtenemos incluso $2^{N+1}\ge N+2$. Hemos construido una ocurrencia de $P$ después de cualquier corte; por tanto $P$ ocurre infinitas veces.
 
 El estudiante transforma indebidamente
 
@@ -7143,7 +7121,7 @@ $$
 
 Más generalmente, todo $M\ge9$ está garantizado como testigo común. En efecto, si $n\ge M\ge9$, entonces $n$ queda también por encima de $4$ y $6$, de modo que las tres propiedades están disponibles.
 
-Así, a partir de la información dada, el conjunto de umbrales **garantizados** es
+Un umbral $M<9$ no está garantizado. Para comprobarlo, tomemos $P(n)$ y $R(n)$ verdaderas para todo $n$, y $Q(n)$ verdadera exactamente cuando $n\ge9$. Estas propiedades satisfacen las tres hipótesis; sin embargo, la conjunción falla en $n=M\ge M$. Así, a partir de la información dada, el conjunto de umbrales **garantizados** es
 
 $$
 \boxed{\mathbb N_{\ge9}.}
@@ -8830,11 +8808,9 @@ $$
 
 para ningún índice. Esa bola más pequeña no captura ninguna cola de $c$.
 
-La conclusión conceptual es importante. Una lista finita de radios prefijados puede comprimirse en una sola exigencia fija: la bola de menor radio $B(0,r_*)$. Superar esa batería finita sólo significa permanecer eventualmente dentro de **esa** región fija. No garantiza capacidad para responder a una exigencia nueva más pequeña, como $B(0,r_*/4)$.
+Toda esta familia finita queda resumida en la región fija $B(0,r_*)$. La sucesión construida permanece en ella desde el índice $0$, pero falla en todos los índices ante la nueva exigencia $B(0,r_*/4)$.
 
-El cambio que C06 introducirá no consiste simplemente en añadir muchas bolas a una lista. Cambiará el orden de las elecciones: primero podrá fijarse una tolerancia, y sólo después se permitirá elegir un umbral que responda a esa exigencia; a partir de ese umbral deberán obedecer todos los índices posteriores. C05, en cambio, sólo ha trabajado con conjuntos ya fijados antes de buscar el testigo.
-
-Nada de lo anterior constituye todavía una definición de límite ni autoriza una notación de límite. En a)–d) sólo hemos usado una familia **finita** de conjuntos fijos y las reglas de captura eventual, intersección finita y sincronización ya disponibles en C05.
+En C06, la elección de la tolerancia precederá a la del umbral: una vez elegida la tolerancia, habrá que encontrar un corte desde el que todos los términos respondan a ella. El umbral podrá depender de esa elección. Las pruebas anteriores sólo usan captura eventual en conjuntos fijos, intersección finita y sincronización; todavía no introducen una definición ni una notación de límite.
 
 </details>
 

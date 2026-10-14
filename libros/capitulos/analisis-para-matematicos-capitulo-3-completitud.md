@@ -290,7 +290,7 @@ $$
 \text{garantizar que }\sup A\text{ exista}.
 $$
 
-**Uso de completitud:** ninguno. Precisamente se está distinguiendo la definición del futuro principio de existencia.
+Precisamente se está distinguiendo la definición del futuro principio de existencia.
 
 </details>
 
@@ -336,8 +336,6 @@ U(A)\ne\varnothing
 \quad\not\Rightarrow\quad
 \exists\min U(A).
 $$
-
-**Uso de completitud:** ninguno.
 
 </details>
 
@@ -396,8 +394,6 @@ $$
 
 Así quedan verificadas simultáneamente la no vaciedad de $S_2$ y la existencia de al menos una cota superior racional.
 
-**Uso de completitud:** ninguno.
-
 </details>
 
 #### Microcontrol 4
@@ -433,8 +429,6 @@ Equivalentemente, $S_2$ no posee supremo **dentro de $\mathbb Q$**.
 
 Ésta es la distinción que interesa al capítulo: tener barreras superiores no implica que el sistema contenga una barrera extremal que sea la mejor de todas.
 
-**Uso de completitud:** ninguno; estamos describiendo precisamente el defecto de existencia que una propiedad de completitud deberá reparar en $\mathbb R$.
-
 </details>
 
 #### Microcontrol 5
@@ -469,8 +463,6 @@ $$
 $$
 
 La densidad permite **refinar entre puntos existentes**; no garantiza que el sistema contenga la frontera extremal exigida por una familia global de restricciones.
-
-**Uso de completitud:** ninguno.
 
 </details>
 
@@ -522,8 +514,6 @@ A\text{ acotado superiormente}
 $$
 
 En §3.1 esto es todavía la **forma de la garantía que necesitamos**, no un principio ya usado para demostrar otros resultados. §3.2 será la sección encargada de formularla como propiedad estructural de $\mathbb R$.
-
-**Uso de completitud:** anticipatorio. El microcontrol identifica qué garantía debe aportar; no la emplea todavía como resultado disponible.
 
 </details>
 La siguiente sección dará a esa propiedad una formulación precisa. Allí el principio del supremo dejará de aparecer como una pregunta pendiente y pasará a funcionar como la afirmación estructural que distingue, para nuestros fines, a la recta real de un sistema ordenado incompleto como $\mathbb Q$.
@@ -648,7 +638,7 @@ $$
 
 ni un supremo existente, ni un máximo.
 
-**Uso de completitud:** ninguno. El ejercicio distingue precisamente lo que puede concluirse antes de disponer de una garantía de completitud.
+El ejercicio distingue precisamente lo que puede concluirse antes de disponer de una garantía de completitud.
 
 </details>
 
@@ -716,7 +706,7 @@ El segundo salto ilegítimo es la frase «al final debe aparecer». No se ha def
 
 La conclusión correcta derivada de la densidad es sólo local: entre dos racionales distintos hay otro racional. En particular, podemos refinar posiciones entre racionales ya conocidos. No podemos concluir por ello que todo subconjunto racional no vacío y acotado superiormente posea una frontera extremal racional.
 
-**Uso de completitud:** ninguno. El objetivo es diagnosticar por qué densidad y completitud responden preguntas lógicamente distintas.
+El objetivo es diagnosticar por qué densidad y completitud responden preguntas lógicamente distintas.
 
 </details>
 
@@ -764,7 +754,7 @@ La demostración debe permanecer enteramente dentro de $\mathbb Q$ y no debe ide
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 3</summary>
 
-**Estrategia.** Si existiera un supremo racional $s$, cualquier modificación racional de $s$ que produjera o bien un elemento de $S_2$ mayor que $s$, o bien una cota superior menor que $s$, destruiría una de las dos propiedades que definen al supremo. La transformación
+Si existiera un supremo racional $s$, cualquier modificación racional de $s$ que produjera o bien un elemento de $S_2$ mayor que $s$, o bien una cota superior menor que $s$, destruiría una de las dos propiedades que definen al supremo. La transformación
 
 $$
 T(s)=\frac{2(s+1)}{s+2}
@@ -974,7 +964,7 @@ U_{\mathbb Q}(S_2)\ne\varnothing,
 }
 $$
 
-**Uso de completitud:** ninguno. Toda la prueba ocurre dentro de $\mathbb Q$ y exhibe precisamente el fracaso de la garantía de existencia que C03 estudiará después.
+Toda la prueba ocurre dentro de $\mathbb Q$ y exhibe precisamente el fracaso de la garantía de existencia que C03 estudiará después.
 
 </details>
 
@@ -1019,7 +1009,7 @@ No uses resultados de §3.2 o posteriores.
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 4</summary>
 
-**Estrategia.** Los tres conjuntos viven en el mismo sistema ordenado y denso, $\mathbb Q$. Por tanto, cualquier diferencia en la existencia o pertenencia de la barrera no puede explicarse por un cambio de densidad. Debemos examinar la familia de cotas y si la barrera relevante está disponible como racional.
+Los tres conjuntos viven en el mismo sistema ordenado y denso, $\mathbb Q$. Por tanto, cualquier diferencia en la existencia o pertenencia de la barrera no puede explicarse por un cambio de densidad. Debemos examinar la familia de cotas y si la barrera relevante está disponible como racional.
 
 Los tres conjuntos son no vacíos porque
 
@@ -1163,7 +1153,7 @@ $$
 
 Los tres conjuntos viven en el mismo sistema denso $\mathbb Q$. Por tanto, la densidad no decide ninguno de los dos cambios observados. Entre $S_2$ y $S_4^{<}$ cambia la disponibilidad racional de una barrera extremal; entre $S_4^{<}$ y $S_4^{\le}$ cambia si esa misma barrera pertenece al conjunto.
 
-**Uso de completitud:** ninguno. Todas las conclusiones se obtienen desde el orden racional, las definiciones de cota, supremo y máximo, y el resultado racional del ejercicio anterior.
+Todas las conclusiones se obtienen desde el orden racional, las definiciones de cota, supremo y máximo, y el resultado racional del ejercicio anterior.
 
 </details>
 ## 3.2. El principio del supremo
@@ -1641,8 +1631,6 @@ $$
 
 Por tanto, el principio transforma las tres condiciones de entrada en la existencia de una menor cota superior real.
 
-**Uso de completitud:** directo, exactamente en el paso que afirma que tal $s$ existe.
-
 </details>
 
 #### Microcontrol 8
@@ -1695,8 +1683,6 @@ $$
 
 La existencia requiere una propiedad estructural adicional; en $\mathbb R$, esa propiedad es el principio del supremo.
 
-**Uso de completitud:** la explicación identifica por qué hace falta, pero no la usa para derivar nada más.
-
 </details>
 
 #### Microcontrol 9
@@ -1733,8 +1719,6 @@ Más precisamente,
 $$
 \boxed{\min U(A)=\sup A.}
 $$
-
-**Uso de completitud:** directo, al pasar de $A\ne\varnothing$ y $U(A)\ne\varnothing$ a la existencia de $\min U(A)$.
 
 </details>
 
@@ -1791,8 +1775,6 @@ $$
 
 es justamente la que permite identificar al supremo con un máximo.
 
-**Uso de completitud:** sólo para garantizar que el supremo existe; la cuestión de pertenencia se decide por la estructura concreta de $A$.
-
 </details>
 
 #### Microcontrol 11
@@ -1835,8 +1817,6 @@ $$
 $$
 
 La diferencia no está en la no vaciedad, la acotación o la densidad, sino en la garantía estructural de existencia disponible en $\mathbb R$.
-
-**Uso de completitud:** exactamente en la existencia de $\sup_{\mathbb R}S_2$; no se identifica ese real con ningún número concreto.
 
 </details>
 
@@ -1904,8 +1884,6 @@ $$
 }
 $$
 
-**Uso de completitud:** sólo en la primera flecha.
-
 </details>
 
 #### Microcontrol 13
@@ -1948,8 +1926,6 @@ U(\mathbb R)=\varnothing.
 $$
 
 Como falta la hipótesis de acotación superior, el principio del supremo no autoriza ninguna conclusión de existencia para $\sup\mathbb R$ como número real.
-
-**Uso de completitud:** ninguno, porque el principio ni siquiera es aplicable; primero deben verificarse sus hipótesis.
 
 </details>
 
@@ -2005,8 +1981,6 @@ s=\sup A\text{ existe},
 $$
 
 seguida únicamente de minimalidad del supremo y negación de la definición de cota superior.
-
-**Uso de completitud:** una sola vez, en la existencia de $s=\sup A$.
 
 </details>
 Hemos obtenido la garantía superior. A partir de ahora, para todo conjunto real no vacío y acotado superiormente, la mejor barrera deja de ser una posibilidad condicional y se convierte en un objeto existente.
@@ -2115,8 +2089,6 @@ C=\varnothing & \text{no} & \text{sí, vacíamente} & \text{no}\\
 D=\{3\} & \text{sí} & \text{sí} & \text{sí}
 \end{array}
 $$
-
-**Uso de completitud:** únicamente en los casos $A$ y $D$, para pasar de «no vacío + acotado superiormente» a la existencia del supremo real. La existencia o inexistencia de máximo se decide después mediante pertenencia y orden.
 
 </details>
 
@@ -2234,8 +2206,6 @@ $$
 \sup_{\mathbb R}S_2\text{ sí existe en }\mathbb R.
 $$
 
-**Uso de completitud:** exactamente al afirmar la existencia de $s=\sup_{\mathbb R}S_2$. La conclusión $s\notin\mathbb Q$ combina esa existencia con el fallo racional demostrado previamente; no requiere una segunda aplicación de completitud.
-
 </details>
 
 #### Ejercicio 7. La inclusión produce una desigualdad entre supremos existentes
@@ -2273,7 +2243,7 @@ No cites simplemente «monotonía del supremo»: reconstruye la demostración de
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 7</summary>
 
-**Estrategia.** Antes de comparar supremos debemos justificar que ambos existen. Sólo después podremos usar la propiedad de menor cota superior.
+Antes de comparar supremos debemos justificar que ambos existen. Sólo después podremos usar la propiedad de menor cota superior.
 
 Tenemos
 
@@ -2336,8 +2306,6 @@ $$
 \boxed{\sup A\le\sup B.}
 $$
 
-**Uso de completitud:** dos aplicaciones, una para garantizar la existencia de $\sup A$ y otra para garantizar la existencia de $\sup B$. La desigualdad final no consume nueva completitud; procede de inclusión, condición de cota superior y minimalidad.
-
 </details>
 
 #### Ejercicio 8. Trasladar un conjunto sin gastar completitud dos veces
@@ -2374,7 +2342,7 @@ Al final, identifica qué paso usa completitud y cuáles usan sólo orden, álge
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 8</summary>
 
-**Estrategia.** Usaremos completitud para obtener una sola frontera, $s=\sup A$. Después trasladaremos las dos propiedades que caracterizan a esa frontera. De ese modo, la existencia del supremo del conjunto trasladado quedará demostrada directamente, sin una segunda invocación del principio.
+Usaremos completitud para obtener una sola frontera, $s=\sup A$. Después trasladaremos las dos propiedades que caracterizan a esa frontera. De ese modo, la existencia del supremo del conjunto trasladado quedará demostrada directamente, sin una segunda invocación del principio.
 
 Como $A$ es no vacío y está acotado superiormente, podemos escribir:
 
@@ -2488,8 +2456,6 @@ $$
 \Longrightarrow
 \text{aproximación }\varepsilon.
 $$
-
-**Uso de completitud:** una sola vez, al garantizar $s=\sup A$. Todo lo restante es orden, álgebra elemental y resultados de C02.
 
 </details>
 
@@ -2606,8 +2572,6 @@ $$
 $$
 
 Ese paso no está justificado.
-
-**Uso de completitud:** la completitud de $\mathbb R$ sí se usa para producir el supremo real externo. Precisamente el diagnóstico muestra que esa existencia externa no puede confundirse con completitud interna de $\mathbb Q$.
 
 </details>
 ## 3.3. La cara dual: el principio del ínfimo
@@ -3188,7 +3152,7 @@ $$
 
 Así, $-A$ está acotado superiormente. Además, como $A\ne\varnothing$, si $a_0\in A$ entonces $-a_0\in -A$, de modo que $-A\ne\varnothing$.
 
-**Uso de completitud:** ninguno. Sólo se usan la hipótesis de acotación inferior y la inversión del orden bajo la reflexión.
+Sólo se usan la hipótesis de acotación inferior y la inversión del orden bajo la reflexión.
 
 </details>
 
@@ -3288,7 +3252,7 @@ $$
 
 Por definición, $-s$ es una cota inferior de $A$.
 
-**Uso de completitud:** ninguno nuevo. Se usa solamente que el supremo $s$ ya existe y que es cota superior de $-A$.
+Se usa solamente que el supremo $s$ ya existe y que es cota superior de $-A$.
 
 </details>
 
@@ -3343,8 +3307,6 @@ $$
 
 Así, toda cota inferior $l$ de $A$ queda por debajo de $-s$. Junto con el microcontrol anterior, esto muestra que $-s$ es la **mayor** cota inferior.
 
-**Uso de completitud:** ninguno nuevo; la desigualdad usa sólo la minimalidad del supremo ya existente.
-
 </details>
 
 #### Microcontrol 19
@@ -3358,37 +3320,15 @@ Explica por qué la identidad $\inf A=-\sup(-A)$ cumple ahora una función de ex
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 19</summary>
 
-En C02 la identidad
+C02 ya demostró que, si existe $s=\sup(-A)$, entonces $-s$ es el ínfimo de $A$. No era necesario suponer previamente la existencia de ambos extremos: la reflexión transportaba la existencia de uno al otro.
 
-$$
-\inf A=-\sup(-A)
-$$
-
-era **condicional**: describía la relación entre dos extremos suponiendo que los extremos pertinentes ya existían.
-
-En C03 disponemos de una garantía adicional. Si $A$ es no vacío y está acotado inferiormente, entonces $-A$ es no vacío y está acotado superiormente. Por completitud existe
+Lo que faltaba era garantizar el punto de partida para cualquier conjunto no vacío acotado inferiormente. Si $l$ es una cota inferior de $A$, entonces $-l$ es cota superior de $-A$, y la no vaciedad también se conserva. El principio del supremo proporciona ahora
 
 $$
 s=\sup(-A).
 $$
 
-A partir de ese objeto ya existente definimos
-
-$$
-i=-s
-$$
-
-y la reflexión demuestra que $i$ es la mayor cota inferior de $A$. Por tanto,
-
-$$
-\boxed{\inf A=-\sup(-A)}
-$$
-
-no sólo compara dos objetos previamente disponibles: ahora **produce la existencia del ínfimo** a partir de la existencia garantizada del supremo reflejado.
-
-La fórmula pasa, pues, de identidad condicional a mecanismo de transporte de existencia.
-
-**Uso de completitud:** directo en la existencia de $\sup(-A)$; la reflexión posterior no añade otra aplicación.
+La prueba de C02 se aplica a ese número y da $\inf A=-s$. Así, C03 añade la garantía general que permite iniciar el transporte; las inversiones de desigualdad y la identificación del ínfimo ya eran válidas en C02.
 
 </details>
 
@@ -3568,8 +3508,6 @@ $$
 $$
 
 Obsérvese que $2\notin A$: el ínfimo existe aunque no sea mínimo.
-
-**Uso de completitud:** en la garantía general de existencia del supremo de $-A$ —o, equivalentemente, del ínfimo de $A$—; la identificación concreta del valor usa la teoría elemental de C02.
 
 </details>
 
@@ -3816,8 +3754,6 @@ $$
 
 La reflexión no aporta una segunda completitud. Su papel es transportar, con inversión de orden, la información superior hacia la inferior.
 
-**Uso de completitud:** ninguno nuevo en esta traducción. Si $s=\sup(-A)$ ya está disponible, todo el diccionario se obtiene por orden y reflexión. La existencia de $s$ será el paso de completitud cuando se derive el ínfimo a partir de SUP.
-
 </details>
 
 #### Ejercicio 11. Las familias completas de cotas también se reflejan
@@ -4021,8 +3957,6 @@ $$
 }
 $$
 
-**Uso de completitud:** exactamente una vez, al garantizar la existencia de $s=\sup(-A)$. La igualdad entre familias de cotas y la reflexión de mínimo a máximo son argumentos de orden.
-
 </details>
 
 #### Ejercicio 12. El ínfimo de una unión
@@ -4175,8 +4109,6 @@ $$
 \inf(A\cup B)=\min\{\inf A,\inf B\}.
 }
 $$
-
-**Uso de completitud:** en la justificación de existencia de los ínfimos. Una vez existentes, la igualdad se deduce exclusivamente de inclusión, condición de cota inferior y maximalidad. Si se abre cada aplicación del principio del ínfimo, su fundamento último es el principio del supremo aplicado a los conjuntos reflejados correspondientes.
 
 </details>
 
@@ -4364,8 +4296,6 @@ A\text{ inferiormente acotado}
 $$
 
 Sólo la flecha marcada `SUP` consume completitud.
-
-**Uso de completitud:** exactamente una aplicación directa, al producir $s=\sup(-A)$. Todo lo posterior es reflexión, orden, traslación y definiciones.
 
 </details>
 
@@ -4613,8 +4543,6 @@ x\mapsto \lambda x+c,
 $$
 
 lo invierte. Lo que estaba abajo pasa arriba y lo que estaba arriba pasa abajo. Por eso el ínfimo origina el supremo de la imagen y el supremo origina su ínfimo.
-
-**Uso de completitud:** para garantizar inicialmente la existencia de $\sup A$ y $\inf A$ bajo las hipótesis dadas. Las dos identidades afines, una vez disponibles esos extremos, se prueban por orden, álgebra y las propiedades definitorias; no requieren un nuevo principio de existencia para el conjunto transformado.
 
 </details>
 ## 3.4. Una consecuencia decisiva: la propiedad arquimediana
@@ -5005,8 +4933,6 @@ $$
 s=\sup\mathbb N.
 $$
 
-**Uso de completitud:** directo únicamente en esta conclusión de existencia. La no vaciedad y la acotación supuesta son las hipótesis que permiten aplicar el principio.
-
 </details>
 
 #### Microcontrol 25
@@ -5045,8 +4971,6 @@ $$
 \Longrightarrow_{\text{orden + aritmética}}
 \text{contradicción}.
 $$
-
-**Uso de completitud:** una sola vez, en la existencia de $s$.
 
 </details>
 
@@ -5089,7 +5013,7 @@ $$
 \boxed{s-1\text{ no es una cota superior de }\mathbb N.}
 $$
 
-**Uso de completitud:** ninguno nuevo. Sólo se usa la minimalidad del supremo cuya existencia ya fue obtenida.
+Sólo se usa la minimalidad del supremo cuya existencia ya fue obtenida.
 
 </details>
 
@@ -5173,8 +5097,6 @@ $$
 
 Como $s$ es cota superior de $\mathbb N$, todo elemento de $\mathbb N$ debería satisfacer $m\le s$. Pero $m=n+1\in\mathbb N$ satisface $n+1>s$. Ésa es la contradicción.
 
-**Uso de completitud:** ninguno nuevo; este paso es puramente aritmético y de pertenencia.
-
 </details>
 
 #### Microcontrol 29
@@ -5228,7 +5150,7 @@ $$
 }
 $$
 
-**Uso de completitud:** ninguno en esta equivalencia. La completitud fue necesaria antes para demostrar que la primera formulación es verdadera en $\mathbb R$.
+La completitud fue necesaria antes para demostrar que la primera formulación es verdadera en $\mathbb R$.
 
 </details>
 
@@ -5488,7 +5410,7 @@ $$
 }
 $$
 
-Si $M<0$, el argumento sigue siendo válido sin cambio alguno: $M/h$ continúa siendo un real y arquimedianidad proporciona un natural mayor. De hecho, en ese caso cualquier natural positivo ya produce $nh>0>M$, pero no necesitamos separar el caso para que la prueba general funcione.
+La elección de $n$ usa la propiedad arquimediana demostrada a partir de completitud en §3.4. Si $M<0$, el argumento sigue siendo válido sin cambio alguno: $M/h$ continúa siendo un real y arquimedianidad proporciona un natural mayor. De hecho, en ese caso cualquier natural positivo ya produce $nh>0>M$, pero no necesitamos separar el caso para que la prueba general funcione.
 
 La anatomía lógica es
 
@@ -5499,8 +5421,6 @@ M/h\in\mathbb R
 \Longrightarrow_{h>0}
 nh>M.
 $$
-
-**Uso de completitud:** indirecto. No se invoca SUP en esta prueba. Se usa la propiedad arquimediana, que §3.4 ya derivó de completitud.
 
 </details>
 
@@ -5628,9 +5548,7 @@ $$
 }
 $$
 
-La construcción contiene exactamente $N+1$ puntos. Es una subdivisión finita de $[a,b]$; no se ha definido una sucesión infinita ni se ha formulado ningún límite.
-
-**Uso de completitud:** indirecto, a través de la propiedad arquimediana usada para elegir $N$. Todo lo posterior es álgebra finita.
+Elegir $N$ usa la propiedad arquimediana, cuya demostración en §3.4 dependió de completitud. La construcción contiene exactamente $N+1$ puntos. Es una subdivisión finita de $[a,b]$; no se ha definido una sucesión infinita ni se ha formulado ningún límite.
 
 </details>
 
@@ -5776,8 +5694,6 @@ Clasificación:
 
 Así, la desigualdad final no contiene un símbolo de supremo, pero su disponibilidad dentro de este desarrollo tiene una dependencia estructural precisa en completitud.
 
-**Uso de completitud:** exactamente una aplicación directa, en la capa A.
-
 </details>
 
 #### Ejercicio 18. «No tiene máximo» no significa «no está acotado»
@@ -5860,8 +5776,6 @@ $$
 pero $n+1\in\mathbb N$, contradiciendo que $s$ sea cota superior.
 
 La prueba reparada no contradice el ejemplo $(0,1)$. En ese conjunto, la existencia del supremo no genera un nuevo elemento del conjunto que cruce la barrera: de $s=1$ y $s-1=0$ sólo obtenemos algún elemento de $(0,1)$ mayor que $0$, lo cual no contradice que $1$ sea cota superior. En $\mathbb N$, en cambio, la estabilidad bajo $n\mapsto n+1$ transforma el testigo $n>s-1$ en un nuevo elemento $n+1>s$ que sí rompe la barrera.
-
-**Uso de completitud:** directo y único al producir $s=\sup\mathbb N$. El diagnóstico muestra por qué “no tener máximo” no basta para obtener no acotación.
 
 </details>
 
@@ -6036,8 +5950,6 @@ $$
 \text{completitud}.
 }
 $$
-
-**Uso de completitud:** ninguno en la demostración de que $\mathbb Q$ es arquimediano; para la incompletitud se reutiliza el contraejemplo racional ya probado en el ejercicio 3. Precisamente por eso $\mathbb Q$ funciona como contraejemplo a la conversa.
 
 </details>
 ## 3.5. Intervalos encajados: conservar un punto al refinar
@@ -6624,7 +6536,7 @@ $$
 
 La inclusión de intervalos fuerza, pues, que los extremos izquierdos avancen hacia la derecha y los derechos retrocedan hacia la izquierda.
 
-**Uso de completitud:** ninguno. Sólo se usa pertenencia a intervalos cerrados e inclusión.
+Sólo se usa pertenencia a intervalos cerrados e inclusión.
 
 </details>
 
@@ -6689,7 +6601,7 @@ $$
 \boxed{a_m\le b_n\qquad\text{para todos }m,n\ge1.}
 $$
 
-**Uso de completitud:** ninguno. La compatibilidad cruzada procede sólo del encajamiento y del orden.
+La compatibilidad cruzada procede sólo del encajamiento y del orden.
 
 </details>
 
@@ -6724,7 +6636,7 @@ $$
 
 Esta verificación es necesaria antes de invocar el principio del supremo.
 
-**Uso de completitud:** ninguno. Sólo se exhibe un elemento de $A$.
+Sólo se exhibe un elemento de $A$.
 
 </details>
 
@@ -6769,7 +6681,7 @@ $$
 
 Como $n$ era arbitrario, esto vale para **cada** extremo derecho $b_n$.
 
-**Uso de completitud:** ninguno. Esta acotación se deduce de la compatibilidad cruzada.
+Esta acotación se deduce de la compatibilidad cruzada.
 
 </details>
 
@@ -6873,7 +6785,7 @@ $$
 \boxed{a_n\le x.}
 $$
 
-**Uso de completitud:** ninguno nuevo. La completitud garantizó previamente que $x$ existe; esta desigualdad usa sólo la propiedad de cota superior del supremo.
+La completitud garantizó previamente que $x$ existe; esta desigualdad usa sólo la propiedad de cota superior del supremo.
 
 </details>
 
@@ -6908,7 +6820,7 @@ $$
 \boxed{x\le b_n.}
 $$
 
-**Uso de completitud:** ninguno nuevo. Se usa únicamente la minimalidad del supremo ya existente.
+Se usa únicamente la minimalidad del supremo ya existente.
 
 </details>
 
@@ -6964,8 +6876,6 @@ $$
 todavía podría ocurrir que $x=a_n$ o $x=b_n$, casos en los que $x$ no pertenecería al intervalo.
 
 Así, las desigualdades no bastan para un intervalo abierto, pero sí bastan exactamente para $[a_n,b_n]$.
-
-**Uso de completitud:** ninguno nuevo.
 
 </details>
 
@@ -7369,8 +7279,6 @@ L_n & \text{sí} & \text{sí} & \text{sí} & \text{sí}
 \end{array}
 $$
 
-**Uso de completitud:** indirecto al invocar el teorema de intervalos cerrados encajados en las familias $I_n$ y $L_n$. La lectura de hipótesis no requiere una nueva aplicación del principio del supremo.
-
 </details>
 
 #### Ejercicio 21. La misma existencia vista desde los extremos derechos
@@ -7530,8 +7438,6 @@ y=\inf B
 \Longrightarrow
 \forall n:\ a_n\le y\le b_n.
 $$
-
-**Uso de completitud:** un único paso de existencia, expresado aquí mediante `INF`. Como §3.3 ya demostró `SUP \Rightarrow INF`, este uso hereda la completitud de `SUP`; las desigualdades posteriores son maximalidad y condición de cota inferior.
 
 </details>
 
@@ -7757,8 +7663,6 @@ $$
 
 La fórmula no fuerza $s=t$. Si $s<t$, la intersección contiene todo el intervalo no degenerado $[s,t]$.
 
-**Uso de completitud:** para garantizar la existencia de $s=\sup A$ y de $t=\inf B$. Una vez existen, la identidad de conjuntos se obtiene por las propiedades definitorias de supremo e ínfimo y por la compatibilidad cruzada. No se usa ninguna hipótesis de §3.6.
-
 </details>
 
 #### Ejercicio 23. Un solo gasto de completitud, tres usos del supremo
@@ -7909,8 +7813,6 @@ x\in\bigcap_n I_n.
 $$
 
 Sólo una flecha está marcada con `COMPLETITUD`.
-
-**Uso de completitud:** exactamente uno y directo, al producir $x=\sup A$. Las líneas $a_n\le x$ y $x\le b_n$ consumen únicamente las propiedades de cota superior y minimalidad del supremo ya existente.
 
 </details>
 
@@ -8074,8 +7976,6 @@ $$
 Estos dos ejemplos muestran que, si retiramos el cierre o si retiramos el encajamiento, la conclusión de no vaciedad **puede** fallar.
 
 No muestran que toda familia no cerrada tenga intersección vacía ni que toda familia no encajada la tenga. Las hipótesis del teorema son condiciones suficientes para garantizar la conclusión; los contraejemplos muestran que no podemos simplemente eliminarlas del enunciado y conservar una garantía universal.
-
-**Uso de completitud:** ninguno directo. En la parte A se usa indirectamente la propiedad arquimediana ya derivada de completitud; la parte B es puramente conjuntista y de orden.
 
 </details>
 
@@ -8304,8 +8204,6 @@ Aplicar $T$ a un punto común produce un punto común de todos los $J_n$. Recíp
 Así, la afirmación de no vaciedad de la intersección es transportada exactamente por $T$.
 
 Conceptualmente, el signo de $\lambda$ modifica la **orientación** del intervalo: si $\lambda<0$, izquierda y derecha se intercambian. Pero una biyección no destruye la relación de inclusión entre conjuntos ni la existencia de un elemento común. Por eso el fenómeno de restricciones cerradas encajadas con punto común es estable bajo estas transformaciones afines.
-
-**Uso de completitud:** indirecto al invocar el teorema de §3.5 para garantizar la existencia de un punto común en una de las familias. La igualdad de intersecciones bajo $T$ se demuestra sólo con teoría elemental de conjuntos y biyectividad.
 
 </details>
 ## 3.6. Refinar hasta aislar un único punto
@@ -8986,7 +8884,7 @@ $$
 \bigcap_n I_n\ne\varnothing.
 $$
 
-**Uso de completitud:** ninguno. Esta respuesta describe sólo el mecanismo de unicidad.
+Esta respuesta describe sólo el mecanismo de unicidad.
 
 </details>
 
@@ -9043,8 +8941,6 @@ $$
 $$
 
 No se ha elegido una tolerancia especial desde fuera del problema: la propia separación positiva entre los dos candidatos proporciona la escala que el estrechamiento debe superar.
-
-**Uso de completitud:** ninguno.
 
 </details>
 
@@ -9129,8 +9025,6 @@ $$
 \boxed{|x-y|\le b_n-a_n.}
 $$
 
-**Uso de completitud:** ninguno; es una propiedad métrica elemental de un intervalo cerrado.
-
 </details>
 
 #### Microcontrol 49
@@ -9178,7 +9072,7 @@ $$
 x=y.
 $$
 
-**Uso de completitud:** ninguno nuevo. La contradicción usa sólo pertenencia al intervalo, distancia y estrechamiento.
+La contradicción usa sólo pertenencia al intervalo, distancia y estrechamiento.
 
 </details>
 
@@ -9410,7 +9304,7 @@ $$
 
 La existencia y la unicidad son capas lógicas distintas.
 
-**Dependencia estructural:** la finura $1/n<\varepsilon$ usa indirectamente la completitud a través de la propiedad arquimediana, pero eso no repara la falta de la hipótesis cerrada de existencia.
+En este argumento, la finura $1/n<\varepsilon$ usa indirectamente la completitud a través de la propiedad arquimediana, pero eso no repara la falta de la hipótesis cerrada de existencia.
 
 </details>
 
@@ -9464,8 +9358,6 @@ $$
 \quad\text{para todo }k\ge0.
 }
 $$
-
-**Uso de completitud:** ninguno; es una identidad finita obtenida por inducción.
 
 </details>
 
@@ -9527,8 +9419,6 @@ Concluimos por inducción que
 $$
 \boxed{2^r\ge r+1\quad\text{para todo }r\ge1.}
 $$
-
-**Uso de completitud:** ninguno.
 
 </details>
 
@@ -9595,7 +9485,7 @@ $$
 
 El argumento es enteramente finito: dada una tolerancia concreta, produce un entero concreto $k$ cuya existencia queda garantizada por arquimedianidad. No se ha escrito ni utilizado ninguna afirmación de límite.
 
-**Dependencia estructural:** la elección de $m$ usa arquimedianidad; ésta fue derivada previamente de completitud, de modo que aquí la dependencia de completitud es indirecta.
+En este argumento, la elección de $m$ usa arquimedianidad; ésta fue derivada previamente de completitud, de modo que aquí la dependencia de completitud es indirecta.
 
 </details>
 
@@ -9786,7 +9676,7 @@ Es importante notar qué **no** se usó. No usamos que la familia estuviera enca
 
 El cierre tampoco participa en la contradicción de unicidad en sí misma: incluso para intervalos abiertos o semiabiertos, si dos puntos pertenecen a un mismo intervalo de extremos $a_n<b_n$, su distancia no puede superar $b_n-a_n$. El cierre es crucial en §3.5 para la **garantía de existencia**, no para esta afirmación de cardinalidad máxima.
 
-**Uso de completitud:** ninguno. Es una prueba puramente métrica y de orden.
+Es una prueba puramente métrica y de orden.
 
 </details>
 
@@ -9988,8 +9878,6 @@ $$
 
 Fusionarlas en la frase “por completitud queda un único punto” borra una diferencia lógica importante: completitud produce aquí el **objeto existente**; el estrechamiento elimina la posibilidad de que haya dos objetos distintos.
 
-**Uso de completitud:** directo en la ruta de existencia; ninguno nuevo en la prueba de unicidad; indirecto vía arquimedianidad cuando el estrechamiento se verifica por bisección.
-
 </details>
 
 #### Ejercicio 28. «Se hace cada vez más pequeño» no es todavía una prueba
@@ -10103,8 +9991,6 @@ La trazabilidad correcta es:
 - **orden y distancia:** prueban que el estrechamiento impide dos puntos distintos.
 
 No se necesita ninguna afirmación sobre convergencia.
-
-**Uso de completitud:** directo sólo detrás del teorema de existencia de §3.5; indirecto a través de arquimedianidad en la verificación cuantitativa de la bisección.
 
 </details>
 
@@ -10231,8 +10117,6 @@ $$
 \text{existencia de punto común}.
 $$
 El estrechamiento controla **cuántos** puntos pueden sobrevivir, no garantiza que sobreviva alguno.
-
-**Uso de completitud:** ninguno directo. Se usa indirectamente arquimedianidad para producir escalas pequeñas. El fallo de existencia proviene de que los intervalos no son cerrados.
 
 </details>
 
@@ -10389,8 +10273,6 @@ $$
 \Longrightarrow
 \text{unicidad}.
 $$
-
-**Uso de completitud:** directo detrás de la existencia de §3.5 e indirecto a través de arquimedianidad para demostrar el estrechamiento finito.
 
 </details>
 
@@ -10619,8 +10501,6 @@ bajo las hipótesis correspondientes. Una vez disponibles esas barreras, las imp
 - teoría elemental de intervalos.
 
 Por tanto, las equivalencias posteriores no son nuevas aplicaciones del principio del supremo.
-
-**Uso de completitud:** en la existencia de $s$ y $t$; no hay gasto adicional de completitud en las equivalencias.
 
 La figura [C03-F11](#fig-anm-c03-f11) comprime estas tres descripciones equivalentes y mantiene fuera del triángulo el único antecedente estructural: la existencia previa de $s$ y $t$.
 
@@ -11894,7 +11774,7 @@ $$
 
 Así, la no vaciedad de $B$ no es decorativa: proporciona el elemento que certifica la acotación superior de $A$, una de las hipótesis necesarias para aplicar **SUP**.
 
-**Uso de completitud:** ninguno todavía. Aquí sólo se verifica la hipótesis de acotación superior.
+Aquí sólo se verifica la hipótesis de acotación superior.
 
 </details>
 
@@ -11945,7 +11825,7 @@ $$
 
 Junto con $a\le s$ para todo $a\in A$, esto demuestra que $s$ separa ambas clases.
 
-**Uso de completitud:** ninguno nuevo. La completitud ya se gastó al producir $s=\sup A$; este paso usa sólo la minimalidad del supremo.
+La completitud proporcionó $s=\sup A$; la desigualdad posterior usa su minimalidad.
 
 </details>
 
@@ -11991,8 +11871,6 @@ $$
 $$
 
 No hace falta ninguna inferencia adicional: la propiedad de separación ya entrega universalmente que $c$ domina a todos los elementos de $A$.
-
-**Uso de completitud:** si SEP se toma como principio en esta dirección, no se invoca SUP; se está reconstruyendo SUP a partir de SEP.
 
 </details>
 
@@ -13046,8 +12924,6 @@ No aparecen tres objetos distintos. Aparecen tres descripciones del mismo testig
 
 La **traducción** entre las descripciones usa sólo definiciones, cuantificadores y orden. Otra cuestión es la **existencia** del testigo. Si no sabemos todavía que existe, necesitamos alguna formulación estructural de completitud —SUP, SEP o GCI— para producirlo.
 
-**Uso de completitud:** ninguno en las equivalencias entre propiedades de un testigo ya dado. La completitud es necesaria únicamente para garantizar que algún testigo existe bajo las hipótesis generales.
-
 </details>
 
 #### Ejercicio 33. De SUP a GCI sin pasar por SEP
@@ -13231,8 +13107,6 @@ La ruta `SUP ⇒ SEP ⇒ GCI` y esta ruta directa comparten la misma estructura 
 4. la minimalidad de esa frontera la coloca por debajo de todos los extremos derechos.
 
 La ruta con SEP hace visible un vocabulario intermedio; la ruta directa comprime esas dos últimas lecturas en el conjunto $L$ de extremos izquierdos.
-
-**Uso de completitud:** exactamente una aplicación directa, al producir $s=\sup L$. Las desigualdades $a_i\le s\le b_i$ usan sólo condición de cota y minimalidad del supremo ya existente.
 
 </details>
 
@@ -13418,8 +13292,6 @@ $$
 \end{array}
 }
 $$
-
-**Uso de completitud:** GCI es una interfaz equivalente de completitud. El diagnóstico lógico de por qué una consecuencia no es automáticamente una equivalencia no usa una nueva aplicación de completitud.
 
 </details>
 
@@ -13677,7 +13549,7 @@ $$
 
 No hemos identificado ninguna frontera real externa. El argumento describe exclusivamente el fallo interno de $\mathbb Q$.
 
-**Uso de completitud:** ninguno. El ejercicio traduce un contraejemplo de incompletitud ya establecido dentro de $\mathbb Q$.
+El ejercicio traduce un contraejemplo de incompletitud ya establecido dentro de $\mathbb Q$.
 
 </details>
 
@@ -13890,8 +13762,6 @@ La separación de capas es esencial:
 
 ¿Por qué importa la recta? Porque cada intervalo está determinado por dos extremos comparables. Un punto común a dos intervalos fuerza desigualdades entre el extremo izquierdo de uno y el extremo derecho del otro, y esas desigualdades cruzadas son suficientes para describir compatibilidad global. Esa reducción depende fuertemente del orden lineal de los intervalos reales.
 
-**Uso de completitud:** exactamente en la aplicación de GCI para pasar de la condición cruzada a un punto común de toda la familia. La equivalencia previa con intersección por pares es elemental.
-
 </details>
 
 #### Ejercicio 37. GCI más estrechamiento: unicidad sin numerabilidad ni encajamiento
@@ -14094,8 +13964,6 @@ $$
 $$
 
 Este ejercicio conecta §3.6 y §3.7 sin confundir sus papeles: cambiar la interfaz de existencia no modifica la prueba elemental de unicidad.
-
-**Uso de completitud:** directo en lenguaje GCI para garantizar la existencia del punto común; ninguno nuevo en la prueba de unicidad, que usa sólo distancia, orden y la hipótesis de estrechamiento.
 
 </details>
 ## 3.8. Dónde se gasta la completitud
@@ -14644,7 +14512,7 @@ Un ejemplo es la afirmación siguiente:
 
 > Si $s=\sup A$ y $u$ es una cota superior de $A$, entonces $s\le u$.
 
-Aquí partimos de la hipótesis de que el supremo **ya existe** y vale $s$. Por definición, ser supremo significa precisamente dos cosas:
+Aquí suponemos que el supremo ya existe y vale $s$. Por definición, ser supremo significa precisamente dos cosas:
 
 1. $s$ es cota superior de $A$;
 2. $s$ es menor o igual que toda cota superior de $A$.
@@ -15068,49 +14936,18 @@ Clasificar la demostración completa con una única etiqueta ocultaría esta est
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 80</summary>
 
-Porque en §3.3 y §3.7 se demostraron implicaciones suficientes para obtener
+El principio del supremo permite obtener el del ínfimo por reflexión. También permite separar dos clases no vacías $A,B$ con $a\le b$ para todo $a\in A$, $b\in B$: basta tomar $\sup A$, pues cada miembro de $B$ es cota superior de $A$.
+
+Recíprocamente, separar $A$ de $U(A)$ produce un número que domina a todo $A$ y queda por debajo de toda cota superior: es el supremo. La separación se traduce a intersecciones al reunir los extremos izquierdos y derechos; en la dirección inversa se utilizan los intervalos $[a,b]$ para $(a,b)\in A\times B$.
+
+Estas demostraciones justifican
 
 $$
-\boxed{
-\mathrm{SUP}
-\Longleftrightarrow
-\mathrm{INF}
-\Longleftrightarrow
-\mathrm{SEP}
-\Longleftrightarrow
-\mathrm{GCI}.
-}
+\mathrm{SUP}\Longleftrightarrow\mathrm{INF}
+\Longleftrightarrow\mathrm{SEP}\Longleftrightarrow\mathrm{GCI}.
 $$
 
-Una equivalencia lógica significa que cualquiera de esas formulaciones permite recuperar las demás.
-
-En la arquitectura adoptada aquí se escogió **SUP** como punto de partida. Entonces:
-
-- **INF** se obtiene por reflexión;
-- **SEP** se obtiene usando el supremo de la clase izquierda;
-- **GCI** se obtiene a partir de separación de los extremos izquierdos y derechos.
-
-Las conversas muestran que no hemos perdido información al cambiar de lenguaje.
-
-Por eso no debemos leer la cadena como
-
-$$
-\text{SUP} + \text{INF} + \text{SEP} + \text{GCI}
-$$
-
-ni añadir cuatro hipótesis independientes a una prueba.
-
-La lectura correcta es
-
-$$
-\boxed{
-\text{una misma infraestructura de completitud}
-\longleftrightarrow
-\text{cuatro interfaces equivalentes}.
-}
-$$
-
-Una prueba futura puede elegir la interfaz más natural para su problema sin multiplicar los supuestos estructurales.
+Por tanto, basta adoptar una de las cuatro propiedades y demostrar las otras. Al usar separación o intersección general estamos aplicando una formulación equivalente de la misma propiedad de existencia.
 
 </details>
 
@@ -15199,7 +15036,7 @@ Es decir, dados **dos puntos ya existentes**, podemos insertar otro racional ent
 
 La completitud responde a una pregunta diferente: dada una familia global de restricciones compatibles, ¿existe dentro del sistema la frontera extremal o el separador requerido?
 
-El conjunto $S_2$ muestra que ambas propiedades son independientes en este sentido. Aunque $\mathbb Q$ es denso, la familia de sus cotas superiores racionales para $S_2$ no posee mínimo racional.
+El conjunto $S_2$ muestra que la densidad no implica completitud. Aunque $\mathbb Q$ es denso, la familia de sus cotas superiores racionales para $S_2$ no posee mínimo racional.
 
 Por tanto,
 
@@ -15226,33 +15063,13 @@ Distingue el papel futuro de C07, C10 y C23 respecto de C03 sin demostrar todav�
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 83</summary>
 
-Los tres capítulos consumirán la infraestructura de C03 de maneras distintas, pero ninguno de sus resultados debe considerarse demostrado aquí.
+En C07, una sucesión monótona acotada tendrá un supremo o un ínfimo en su conjunto de valores. Ese extremo será el candidato a límite; probar que satisface la definición de límite requerirá el argumento propio de C07.
 
-**C07 — sucesiones monótonas acotadas.**
+C10 estudiará sucesiones de Cauchy y relacionará la existencia de sus límites con la completitud de orden. Esa relación necesita demostración: las dos formulaciones no se identifican por definición.
 
-C03 entrega la garantía de existencia de barreras extremales. Cuando C07 estudie una sucesión monótona y acotada, podrá aplicar esa infraestructura al conjunto de valores para obtener un candidato extremal. La demostración de que ese candidato es efectivamente el límite pertenece a C07 y no se adelanta aquí.
+C23 usará supremos e ínfimos para las construcciones de Darboux. La completitud garantiza los extremos bajo las hipótesis de acotación correspondientes, mientras que las propiedades de la integral dependerán de las definiciones y pruebas de ese capítulo.
 
-**C10 — Cauchy y convergencia en $\mathbb R$.**
-
-C03 trabaja con completitud de orden. C10 introducirá una formulación expresada mediante sucesiones de Cauchy y convergencia. Su tarea será comparar o relacionar esa nueva noción con la infraestructura de orden ya disponible; no se identifican ambas por definición en C03.
-
-**C23 — supremos, ínfimos y Darboux.**
-
-Las construcciones inferiores y superiores de Darboux necesitarán usar supremos e ínfimos de manera sistemática. C03 proporciona la garantía de existencia que impide que esas construcciones queden en un nivel meramente condicional. La teoría de integración y sus demostraciones pertenecen a C23.
-
-Así, los papeles pueden resumirse como
-
-$$
-\boxed{
-\begin{array}{ll}
-\text{C07:} & \text{consumir una barrera extremal como candidato futuro},\\
-\text{C10:} & \text{comparar/reformular nociones de completitud},\\
-\text{C23:} & \text{consumir supremos e ínfimos en construcciones de integración}.
-\end{array}
-}
-$$
-
-Éste es sólo un mapa de dependencias futuras, no una demostración anticipada de esos capítulos.
+Así, C07 y C23 aplicarán garantías de existencia; C10 comparará formulaciones de completitud. Aquí sólo se precisan esas dependencias.
 
 </details>
 
@@ -15267,33 +15084,11 @@ Formula con tus propias palabras la idea de «recta sin huecos» sin usar como d
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 84</summary>
 
-Una formulación compatible con lo demostrado en C03 es ésta:
+Un conjunto no vacío de reales puede tener cotas superiores sin contener su supremo. La completitud asegura que, si está acotado superiormente, la menor de sus cotas superiores existe en $\mathbb R$, aunque quede fuera del conjunto.
 
-> La recta real es «sin huecos» en el sentido relevante para este capítulo porque ciertas familias compatibles de restricciones de orden no obligan a salir de $\mathbb R$ para encontrar el objeto que esas restricciones requieren.
+La misma propiedad se expresa mediante separación: dos clases no vacías que satisfacen $a\le b$ para todos sus pares admiten un real $c$ con $a\le c\le b$. También se expresa mediante intervalos cerrados: una familia no vacía con $a_i\le b_j$ para todos los índices tiene un punto común.
 
-Ese objeto puede aparecer bajo distintos lenguajes:
-
-- como una mejor barrera superior o inferior;
-- como un separador entre dos clases globalmente ordenadas;
-- como un punto común a una familia compatible de intervalos cerrados.
-
-Por eso la idea puede condensarse en
-
-$$
-\boxed{
-\text{restricciones compatibles}
-\Longrightarrow_{\text{completitud}}
-\text{objeto requerido dentro de }\mathbb R.
-}
-$$
-
-Esta formulación no depende de imaginar una línea dibujada ni de contar cuántos puntos hay entre dos reales. De hecho, $\mathbb Q$ es denso y contiene infinitos racionales entre racionales distintos, pero sigue fallando la garantía general de existencia.
-
-La síntesis conceptual de C03 es, por tanto:
-
-$$
-\boxed{\text{la completitud es infraestructura de existencia}.}
-$$
+Éste es el sentido preciso de «sin huecos»: las restricciones de orden descritas por esos principios se realizan dentro del sistema real. La densidad sólo permite insertar un punto entre dos ya dados; $\mathbb Q$ muestra que esa posibilidad puede coexistir con la ausencia de la menor cota superior requerida.
 
 </details>
 Con esto queda cerrada la **redacción seccional** del capítulo. La completitud ha dejado de ser una intuición gráfica vaga y se ha convertido en una dependencia matemática rastreable: sabemos qué garantiza, qué no garantiza, qué formulaciones equivalentes admite y qué resultados futuros deberán declarar cuándo la consumen.
@@ -15561,19 +15356,7 @@ $$
 
 Sólo la flecha marcada `SUP` es uso directo de completitud.
 
-La ruta de unicidad es
-
-$$
-\boxed{
-\text{arquimedianidad}
-\Longrightarrow
-\text{estrechamiento disponible}
-\Longrightarrow
-\delta=|x-y|
-\Longrightarrow
-\text{contradicción si }x\ne y.
-}
-$$
+En la ruta de unicidad primero se suponen dos puntos comunes distintos y se fija $\delta=|x-y|>0$. La construcción de refinamiento, apoyada en arquimedianidad, produce entonces un intervalo de ancho menor que $\delta$. La pertenencia de ambos puntos a ese intervalo contradice $|x-y|\le b_k-a_k<|x-y|$. La definición de $\delta$ es elemental; la elección del intervalo es el paso que hereda la dependencia de arquimedianidad.
 
 Cuando la disponibilidad del estrechamiento procede de arquimedianidad, hay una dependencia heredada
 
@@ -15594,8 +15377,6 @@ $$
 $$
 
 Esta última inferencia es lógica elemental.
-
-**Uso de completitud:** directo una vez, en la existencia de $\sup A$; indirecto cuando el estrechamiento se obtiene a través de arquimedianidad; inexistente en las demás líneas.
 
 </details>
 
@@ -15627,8 +15408,7 @@ Reescribe esa demostración usando como interfaz de completitud únicamente la p
 Sea
 
 $$
-I_n=[a_n,b_n]
-e\varnothing,
+I_n=[a_n,b_n]\ne\varnothing,
 \qquad
 I_{n+1}\subseteq I_n.
 $$
@@ -15808,7 +15588,7 @@ $$
 \text{punto común}.
 $$
 
-Las dos pruebas gastan la misma infraestructura en interfaces diferentes.
+Las dos pruebas aplican formulaciones equivalentes de completitud.
 
 En §3.7 se demostró
 
@@ -15816,7 +15596,7 @@ $$
 \mathrm{SUP}\Longleftrightarrow\mathrm{SEP}.
 $$
 
-Por eso no estamos añadiendo un segundo axioma ni obteniendo una existencia “gratis”. Cambiamos la **forma de invocar** la completitud.
+La demostración de esa equivalencia permite sustituir una aplicación de SUP por una de SEP. La existencia sigue dependiendo de la completitud, expresada mediante separación.
 
 En la versión SUP, el objeto estructural producido es
 
@@ -15833,8 +15613,6 @@ $$
 situado entre todos los extremos izquierdos y todos los derechos.
 
 Después de producir ese objeto, las dos pruebas terminan con pasos elementales de orden y pertenencia a intervalos.
-
-**Uso de completitud:** una sola vez en lenguaje SEP. Por la equivalencia establecida en §3.7, esta invocación es lógicamente una interfaz equivalente del mismo principio estructural representado originalmente por SUP.
 
 La figura [C03-F12](#fig-anm-c03-f12) coloca ambas compilaciones en paralelo: cambia el objeto estructural intermedio, pero no aparece una segunda fuente de existencia.
 
@@ -15885,142 +15663,32 @@ Cierra formulando en una sola frase matemática —sin apelar a la imagen inform
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 40</summary>
 
-La comparación decisiva no consiste en preguntar si $\mathbb Q$ “se parece” geométricamente a una recta, sino qué afirmaciones de existencia puede garantizar internamente.
+Las diferencias pueden reunirse en la siguiente tabla. En las afirmaciones universales, «no» significa que existe al menos un contraejemplo.
 
-#### Tabla estructural
-
-| Afirmación | $\mathbb Q$ | $\mathbb R$ | Razón principal |
+| Afirmación | $\mathbb Q$ | $\mathbb R$ | Justificación |
 |---|---|---|---|
-| Definir cotas, supremo e ínfimo condicionalmente | sí | sí | definiciones de orden |
-| Unicidad del supremo, si existe | sí | sí | orden y minimalidad |
-| Densidad | sí | sí | propiedad distinta de completitud |
-| Arquimedianidad | sí | sí | en $\mathbb Q$ se prueba directamente; en C03 se derivó para $\mathbb R$ desde completitud |
-| Todo no vacío acotado superiormente posee supremo interno | no | sí | falla en $\mathbb Q$ para $S_2$; en $\mathbb R$ es SUP |
-| Toda pareja no vacía globalmente ordenada admite separador interno | no en general | sí | SEP es equivalente a SUP; el par $S_2,U_{\mathbb Q}(S_2)$ da el fallo racional |
-| Toda familia GCI de intervalos cerrados posee punto común interno | no en general | sí | GCI es equivalente a SEP y SUP; la familia asociada a $S_2$ falla en $\mathbb Q$ |
+| Definir cotas, supremos e ínfimos | Sí | Sí | Se formulan mediante el orden; nombrar un extremo requiere que exista. |
+| Unicidad del supremo, si existe | Sí | Sí | Dos menores cotas superiores satisfacen las dos desigualdades opuestas. |
+| Densidad | Sí | Sí | Entre $p<q$, el punto $(p+q)/2$ pertenece al mismo sistema y está estrictamente entre ambos. |
+| Arquimedianidad | Sí | Sí | En $\mathbb Q$ se prueba directamente con numeradores y denominadores; para $\mathbb R$ se derivó de SUP. |
+| Todo conjunto no vacío acotado superiormente posee supremo interno | No | Sí | $S_2$ falla en $\mathbb Q$; en $\mathbb R$ lo garantiza SUP. |
+| Dos clases no vacías con $a\le b$ para todo par admiten separador interno | No | Sí | El par $S_2,U_{\mathbb Q}(S_2)$ falla en $\mathbb Q$; SEP se deduce de SUP en $\mathbb R$. |
+| Toda familia no vacía de intervalos cerrados con $a_i\le b_j$ para todo par tiene punto común interno | No | Sí | Los intervalos racionales $[a,u]_{\mathbb Q}$ asociados a $S_2$ tienen intersección vacía; GCI garantiza el punto real. |
 
-Las cuatro primeras filas muestran que una gran parte del lenguaje y de la aritmética del capítulo sobrevive sin completitud.
+El mismo conjunto $S_2$ explica los tres fallos racionales. Si un racional $c$ separara $S_2$ de sus cotas, sería cota superior y menor que cualquier otra: sería su supremo racional, que el ejercicio 3 demostró inexistente. Un punto común racional de todos los intervalos $[a,u]_{\mathbb Q}$ tendría exactamente esa propiedad de separación. La densidad y la arquimedianidad de $\mathbb Q$ permanecen válidas, por lo que ninguna de ellas basta para garantizar completitud.
 
-Las tres últimas identifican el salto específico de existencia que distingue a la estructura completa.
-
-#### Por qué densidad no basta
-
-La densidad de $\mathbb Q$ dice que entre dos racionales distintos existe otro racional. Ésta es una propiedad local entre puntos ya disponibles.
-
-Pero $S_2$ es no vacío y acotado superiormente en $\mathbb Q$ y, aun así,
+Las equivalencias
 
 $$
-\sup_{\mathbb Q}S_2
+\mathrm{SUP}\Longleftrightarrow\mathrm{INF}
+\Longleftrightarrow\mathrm{SEP}\Longleftrightarrow\mathrm{GCI}
 $$
 
-no existe.
+permiten usar distintos lenguajes para una misma propiedad. SUP proporciona una menor cota superior; SEP, un separador; GCI, un punto común. Las pruebas que convierten uno de esos objetos en otro muestran por qué estas formulaciones tienen la misma fuerza, sin añadir nuevos axiomas.
 
-Por tanto,
+En C07, el extremo de los valores de una sucesión monótona acotada será un candidato a límite. En C23, supremos e ínfimos permitirán construir las cantidades de Darboux. Ambos capítulos aplicarán la garantía de existencia. C10 comparará la completitud de orden con la formulación mediante sucesiones de Cauchy. Este reparto sólo identifica qué propiedad se utilizará: las afirmaciones sobre límites e integrales necesitan sus definiciones, hipótesis y demostraciones posteriores.
 
-$$
-\boxed{
-\text{densidad}
-\not\Longrightarrow
-\text{completitud}.
-}
-$$
-
-#### Por qué arquimedianidad tampoco basta
-
-§3.4 y el ejercicio 19 mostraron que $\mathbb Q$ es arquimediano. Sin embargo sigue faltando el supremo racional de $S_2$.
-
-Por tanto,
-
-$$
-\boxed{
-\text{arquimedianidad}
-\not\Longrightarrow
-\text{completitud}.
-}
-$$
-
-En $\mathbb R$ la dirección demostrada fue
-
-$$
-\text{completitud}
-\Longrightarrow
-\text{arquimedianidad},
-$$
-
-no la conversa.
-
-#### SUP, SEP y GCI como interfaces
-
-En §3.7 se estableció
-
-$$
-\mathrm{SUP}
-\Longleftrightarrow
-\mathrm{INF}
-\Longleftrightarrow
-\mathrm{SEP}
-\Longleftrightarrow
-\mathrm{GCI}.
-$$
-
-Esto no significa que $\mathbb R$ posea cuatro recursos independientes.
-
-Significa que una misma infraestructura de existencia puede solicitarse en varios vocabularios:
-
-- `SUP`: producir una mejor barrera superior;
-- `SEP`: producir un real entre dos clases compatibles;
-- `GCI`: producir un punto común de una familia general de intervalos cerrados compatible.
-
-Una vez probadas las equivalencias, invocar una de estas interfaces es lógicamente utilizar la misma capacidad estructural.
-
-#### Qué exporta C03 hacia C07, C10 y C23
-
-La propia §3.8 sólo registra dependencias futuras; no demuestra todavía los resultados de esos capítulos.
-
-**C07 — sucesiones monótonas acotadas.** El texto indica que una familia de valores tendrá una barrera extremal y que completitud proporcionará el candidato extremal necesario. Por tanto, el papel señalado es
-
-$$
-\boxed{\text{consumo de una garantía de existencia}.}
-$$
-
-No se demuestra aquí que la sucesión converja.
-
-**C10 — Cauchy y convergencia en $\mathbb R$.** El texto dice que allí aparecerá otra formulación de completitud y que deberá compararse con la completitud de orden construida en C03. Por tanto, el papel señalado es
-
-$$
-\boxed{\text{comparación/reformulación de la noción de completitud}.}
-$$
-
-No se identifican ambas nociones por definición.
-
-**C23 — Darboux.** §3.8 registra que las sumas inferiores y superiores usarán sistemáticamente supremos e ínfimos y que esas construcciones necesitan garantías de existencia bajo hipótesis adecuadas. Por tanto, el papel señalado es
-
-$$
-\boxed{\text{consumo de una garantía de existencia}.}
-$$
-
-Ninguna propiedad de la integral de Darboux se prueba aquí.
-
-La clasificación no constituye una demostración futura porque sólo identifica qué infraestructura deberá estar disponible. Faltan todavía las definiciones, hipótesis y argumentos propios de C07, C10 y C23.
-
-#### Síntesis final
-
-Lo que falta en $\mathbb Q$ no es orden, densidad ni arquimedianidad. Falta una garantía general de que ciertas restricciones compatibles produzcan **dentro del propio sistema** el objeto extremal, separador o punto común requerido.
-
-Una formulación final adecuada es:
-
-$$
-\boxed{
-\text{en }\mathbb R,
-\text{ ciertas familias compatibles de restricciones de orden}
-\Longrightarrow
-\text{existe en }\mathbb R\text{ el objeto que las realiza}.
-}
-$$
-
-Ése es el contenido estructural de la frase “la completitud es infraestructura de existencia”.
-
-**Uso de completitud:** el ejercicio no introduce una nueva aplicación del principio; organiza y conecta las dependencias ya establecidas en C03 y distingue lo que permanece válido en $\mathbb Q$ de las garantías generales que allí fallan.
+La aportación de la completitud puede expresarse así: todo subconjunto no vacío de $\mathbb R$ acotado superiormente tiene una menor cota superior en $\mathbb R$. Las equivalencias probadas permiten reconocer esa misma garantía en los problemas de separación e intersección.
 
 </details>
 

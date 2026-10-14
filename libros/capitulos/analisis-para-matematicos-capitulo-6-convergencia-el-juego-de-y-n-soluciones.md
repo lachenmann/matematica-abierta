@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Soluciones — Capítulo 6
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 provenance:
   type: original
   sources:
@@ -76,7 +76,7 @@ Si $a_n\to A$ y $u<A<v$, la tolerancia $\delta=\min\{A-u,v-A\}>0$ produce una co
 
 []{#MA-SEC-ANM-01-006-002}
 
-La premisa controla distancias a centros elegidos después de la tolerancia; no los identifica con 0. Para la sucesión constante $a_n=5$, basta elegir $A_\varepsilon=5$ y $N_\varepsilon=0$ para cualquier tolerancia: el error es cero. Sin embargo, con candidato 0 y tolerancia 1, cada término tiene error 5, así que ningún corte funciona. Para probar $a_n\to0$ hay que fijar ese centro antes de recibir $\varepsilon$ y, para cada tolerancia, construir un umbral que controle $|a_n|$ en toda la cola. Este ejemplo refuta la conclusión propuesta; no pretende negar que la premisa pueda tener consecuencias distintas en una teoría posterior.
+La premisa controla distancias a centros elegidos después de la tolerancia; no los identifica con 0. Para la sucesión constante $a_n=5$, basta elegir $A_\varepsilon=5$ y $N_\varepsilon=0$ para cualquier tolerancia: el error es cero. Sin embargo, con candidato 0 y tolerancia 1, cada término tiene error 5, así que ningún corte funciona. Para probar $a_n\to0$ hay que fijar ese centro antes de recibir $\varepsilon$ y, para cada tolerancia, construir un umbral que controle $|a_n|$ en toda la cola. La premisa deja libre la elección del centro; para la conclusión propuesta, todas las capturas tendrían que estar centradas en $0$.
 
 ### 6. Negar la existencia de un destino
 
@@ -134,7 +134,7 @@ El denominador cumple $dn+e\ge e>0$ para todo $n\in\mathbb N$, incluido 0. Si $c
 
 []{#MA-SOL-ANM-01-006-011}
 
-Tomamos $c=d=e=1$ y $\varepsilon=1/3$. Entonces $N_1=2$, pero en el índice $n=2$ el error es $1/3$, exactamente la tolerancia. La condición estricta falla, aunque $N_1$ sea un natural. Para $N_2$, con los mismos parámetros y $\varepsilon=2$, resulta $N_2=\lfloor1/2\rfloor-1=-1$, que no pertenece a $\mathbb N$ y no puede servir como umbral de la definición. En ambas fórmulas el defecto ocurre antes de acreditar toda la cola. Una reparación común es $N=\lfloor|c|/(d\varepsilon)\rfloor+1$. Es natural y mayor que $|c|/(d\varepsilon)$; el argumento del ejercicio 10 verifica el error estricto para cada $n\ge N$. Esta reparación no pretende conservar la minimalidad.
+Tomamos $c=d=e=1$ y $\varepsilon=1/3$. Entonces $N_1=2$, pero en el índice $n=2$ el error es $1/3$, exactamente la tolerancia. La condición estricta falla, aunque $N_1$ sea un natural. Para $N_2$, con los mismos parámetros y $\varepsilon=2$, resulta $N_2=\lfloor1/2\rfloor-1=-1$, que no pertenece a $\mathbb N$ y no puede servir como umbral de la definición. En ambas fórmulas el defecto ocurre antes de acreditar toda la cola. Una reparación común es $N=\lfloor|c|/(d\varepsilon)\rfloor+1$. Es natural y mayor que $|c|/(d\varepsilon)$; el argumento del ejercicio 10 verifica el error estricto para cada $n\ge N$. El corte asegura la desigualdad requerida; un denominador inicial mayor puede permitir empezar antes.
 
 La [figura C06-F03](analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n.html) de §6.3 muestra el mismo fallo de estrictitud en n=2. No representa el segundo defecto: N₂=−1 falla por no pertenecer al dominio de índices.
 
@@ -178,7 +178,7 @@ Fijamos un candidato arbitrario $A$ y $D=|p-q|>0$. La triangular da $D\le|p-A|+|
 
 []{#MA-SEC-ANM-01-006-004}
 
-Sincronizados los umbrales, un mismo término satisface ambas capturas y la triangular da $D\le|A-a_n|+|a_n-B|<(\alpha+\beta)D$. Hay contradicción si $\alpha+\beta\le1$, incluida la igualdad, porque el error total es estricto. Si la suma es mayor que 1, esa estimación aislada no contradice $D>0$. Más aún, las ventanas pueden compartir un punto: con $A=0$, $B=D$, elegimos un real $t$ en $(\max\{0,1-\beta\},\min\{1,\alpha\})$, intervalo no vacío cuando $\alpha+\beta>1$. El punto $tD$ tiene distancias menores que $\alpha D$ y $\beta D$. Esto no permite dos límites reales distintos: para la unicidad pueden elegirse otras tolerancias cuya suma sea menor o igual que la separación. Sólo muestra que el reparto propuesto no cierra esa contradicción.
+Sincronizados los umbrales, un mismo término satisface ambas capturas y la triangular da $D\le|A-a_n|+|a_n-B|<(\alpha+\beta)D$. Hay contradicción si $\alpha+\beta\le1$, incluida la igualdad, porque el error total es estricto. Si la suma es mayor que 1, esa estimación aislada no contradice $D>0$. Más aún, las ventanas pueden compartir un punto: con $A=0$, $B=D$, ponemos $\ell=\max\{0,1-\beta\}$ y $u=\min\{1,\alpha\}$. Tanto $0$ como $1-\beta$ son menores que $1$ y que $\alpha$: se usan $\alpha,\beta>0$ y $1-\beta<\alpha$. Luego $\ell<u$, y el punto medio $t=(\ell+u)/2$ cumple $0<t<1$, $t<\alpha$ y $1-t<\beta$. El punto $tD$ tiene así distancias menores que $\alpha D$ y $\beta D$ a los dos centros. Esto no permite dos límites reales distintos: para la unicidad pueden elegirse otras tolerancias cuya suma sea menor o igual que la separación. Sólo muestra que el reparto propuesto no cierra esa contradicción.
 
 ### 16. Transportar índices y cortes
 
@@ -186,7 +186,7 @@ Sincronizados los umbrales, un mismo término satisface ambas capturas y la tria
 
 []{#MA-SOL-ANM-01-006-016}
 
-La función $r$ tiene dominio $\mathbb N_{\ge T}$ y codominio $\mathbb R$; $b$ tiene dominio $\mathbb N$ y el mismo codominio. La biyección $\tau_T(k)=T+k$ lleva $\mathbb N$ a $\mathbb N_{\ge T}$ y tiene inversa $n\mapsto n-T$. Se cumple $b=r\circ\tau_T$, no igualdad de las dos funciones. Si $a$ tiene umbral $N$ para la tolerancia dada, podemos usar $K=\max\{0,N-T\}$ para $b$. Cuando $k\ge K$, se tiene $T+k\ge N$, tanto si $N\le T$ como si $N>T$; de ahí $|b_k-A|<\varepsilon$. Si $b$ tiene umbral $K$, tomamos $N=T+K$ para $a$. Cada $n\ge N$ admite $k=n-T\in\mathbb N$ con $k\ge K$, y $a_n=b_k$. La correspondencia de índices transporta el control de toda la cola.
+La función $r$ tiene dominio $\mathbb N_{\ge T}$ y codominio $\mathbb R$; $b$ tiene dominio $\mathbb N$ y el mismo codominio. La biyección $\tau_T(k)=T+k$ lleva $\mathbb N$ a $\mathbb N_{\ge T}$ y tiene inversa $n\mapsto n-T$. Se cumple $b=r\circ\tau_T$. Cuando $T=0$, la biyección es la identidad y $b=r=a$. Cuando $T>0$, los dominios de $r$ y $b$ son diferentes, por lo que estas funciones no son iguales; la composición expresa cómo se corresponden sus evaluaciones. Si $a$ tiene umbral $N$ para la tolerancia dada, podemos usar $K=\max\{0,N-T\}$ para $b$. Cuando $k\ge K$, se tiene $T+k\ge N$, tanto si $N\le T$ como si $N>T$; de ahí $|b_k-A|<\varepsilon$. Si $b$ tiene umbral $K$, tomamos $N=T+K$ para $a$. Cada $n\ge N$ admite $k=n-T\in\mathbb N$ con $k\ge K$, y $a_n=b_k$. La correspondencia de índices transporta el control de toda la cola.
 
 En la [figura C06-F05](analisis-para-matematicos-capitulo-6-convergencia-el-juego-de-y-n.html) de §6.4, la fila c ilustra la reindexación con T=3. Aquí b cumple ese papel para T general; el corte optimizado K=max{0,N−T} se justifica por las desigualdades anteriores, no por el corte suficiente de la figura.
 
@@ -370,7 +370,7 @@ La [figura C06-F09](analisis-para-matematicos-capitulo-6-convergencia-el-juego-d
 
 []{#MA-SOL-ANM-01-006-035}
 
-Ponemos $u_n=a_n=(-1)^n$ y $v_n=1$. Las comparaciones valen en todos los índices, $|u_n|=1$ converge a 1 y $v$ es constante. Sin embargo, $a$ y $u$ no tienen límite real, pues sus valores 1 y −1 reaparecen arbitrariamente tarde. La hipótesis sobre el módulo no determina el destino de la frontera inferior. Una reparación es exigir $u_n\to1$, manteniendo $v_n\to1$ y las comparaciones eventuales: ahora el sándwich sí produce $a_n\to1$. Una reparación más fuerte que basta para recuperar esa convergencia es añadir $u_n\ge0$ eventualmente a la condición original; entonces $u_n=|u_n|$ en una cola y la coincidencia eventual da $u_n\to1$.
+Ponemos $u_n=a_n=(-1)^n$ y $v_n=1$. Las comparaciones valen en todos los índices, $|u_n|=1$ converge a 1 y $v$ es constante. Sin embargo, $a$ y $u$ no tienen límite real, pues sus valores 1 y −1 reaparecen arbitrariamente tarde. La hipótesis sobre el módulo no determina el destino de la frontera inferior. Una reparación es exigir $u_n\to1$, manteniendo $v_n\to1$ y las comparaciones eventuales: ahora el sándwich sí produce $a_n\to1$. Bajo la hipótesis original $|u_n|\to1$, también basta añadir $u_n\ge0$ eventualmente: en esa cola $u_n=|u_n|$, y la coincidencia eventual da $u_n\to1$. Las dos reparaciones son equivalentes en este contexto. En efecto, si $u_n\to1$, la tolerancia $1$ da $|u_n-1|<1$ desde algún corte y, por tanto, $u_n>0$ en esa cola.
 
 ### 36. Una caracterización por fronteras
 
@@ -406,7 +406,7 @@ Elegimos $p_n=3(-1)^n$, que está acotada por 3 y no tiene límite real por la s
 
 []{#MA-SOL-ANM-01-006-039}
 
-En (i), $b_n=(a_n+b_n)-a_n$; las reglas lineales prueban el destino indicado. En (ii), la convergencia de $a$ a un número no nulo garantiza un corte desde el que $a_n\ne0$. El cociente tardío $(a_nb_n)/a_n$ converge a $P/A$ al extenderlo, y coincide con $b$ en esa cola; así converge $b$, aunque $a$ tuviera ceros iniciales. En (iii), ponemos $q_n=a_n/b_n$, sucesión global por la hipótesis. La identidad $a_n=q_nb_n$ y la regla del producto dan $QB$, sin dividir por $B$. En (iv), tomamos $a_n=(-1)^n$ y $b_n=-(-1)^n$: suma cero y producto −1 convergen, pero ninguno de los factores converge. En (v), $a_n=0$ y $b_n=(-1)^n$ dan producto cero y $A=0$, sin convergencia de $b$. Recuperar un factor por división necesita el margen que aporta $A\ne0$.
+En (i), $b_n=(a_n+b_n)-a_n$; las reglas lineales dan $b_n\to S-A$. En (ii), la convergencia de $a$ a un número no nulo garantiza un corte desde el que $a_n\ne0$. El cociente tardío $(a_nb_n)/a_n$ converge a $P/A$ al extenderlo, y coincide con $b$ en esa cola; así converge $b$, aunque $a$ tuviera ceros iniciales. En (iii), ponemos $q_n=a_n/b_n$, sucesión global por la hipótesis. La identidad $a_n=q_nb_n$ y la regla del producto dan $QB$, sin dividir por $B$. En (iv), tomamos $a_n=(-1)^n$ y $b_n=-(-1)^n$: suma cero y producto −1 convergen, pero ninguno de los factores converge. En (v), $a_n=0$ y $b_n=(-1)^n$ dan producto cero y $A=0$, sin convergencia de $b$. Recuperar un factor por división necesita el margen que aporta $A\ne0$.
 
 ### 40. Cambiar todo el orden de los índices
 
@@ -416,7 +416,7 @@ En (i), $b_n=(a_n+b_n)-a_n$; las reglas lineales prueban el destino indicado. En
 
 La composición define $b:\mathbb N\to\mathbb R$. Supongamos $a_n\to A$ y recibamos $\varepsilon>0$, con umbral $K$ para $a$. El conjunto $F=\pi^{-1}(\{0,\ldots,K-1\})$ es finito: por biyectividad, cada uno de los $K$ índices tiene una sola preimagen. Si $F$ es vacío, ponemos $N=0$; en otro caso, $N=1+\max F$. Para todo $n\ge N$, el índice $n$ no pertenece a $F$, por lo que $\pi(n)\ge K$. Luego $|b_n-A|=|a_{\pi(n)}-A|<\varepsilon$. En particular, cuando $K=0$ el prefijo y su preimagen son vacíos. El corte controla posiciones de la permutación que caían en el prefijo original, no el tamaño numérico de $\pi(n)$ por una presunta monotonía.
 
-Si $b_n\to A$, aplicamos el argumento a la biyección inversa $\pi^{-1}$: la identidad $a_n=b_{\pi^{-1}(n)}$ acredita la convergencia de $a$. La inyectividad impide repetir infinitamente un índice inicial; la sobreyectividad permite recuperar todos los índices mediante la inversa. El mecanismo es la finitud de las posiciones problemáticas, no una teoría de subsucesiones.
+Si $b_n\to A$, aplicamos el argumento a la biyección inversa $\pi^{-1}$: la identidad $a_n=b_{\pi^{-1}(n)}$ acredita la convergencia de $a$. La inyectividad impide repetir infinitamente un índice inicial; la sobreyectividad permite recuperar todos los índices mediante la inversa. En ambas direcciones basta retirar las posiciones que envían al prefijo finito cuyo error todavía no está controlado.
 
 La figura [C06-F11](#fig-anm-c06-f11) muestra cómo elegir el corte en las posiciones nuevas. El ejemplo de biyección sólo ilustra el conjunto disperso de preimágenes; la finitud que acaba de probarse sostiene el argumento general.
 

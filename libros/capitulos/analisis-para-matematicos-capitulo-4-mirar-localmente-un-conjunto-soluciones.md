@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 areas:
 - analisis
 level: universitario
@@ -233,10 +233,10 @@ $$
 Si $r>1$, tomando
 
 $$
-y=3+\frac{r-1}{2}
+y=3+\min\left\{\frac{r-1}{2},1\right\}
 $$
 
-obtenemos $|y-2|<r$ y $y\notin V$. Por tanto,
+obtenemos $3<y\le4$, de modo que $y\notin V$, incluido el punto remoto $100$. Además, $|y-2|=1+\min\{(r-1)/2,1\}<r$. Por tanto,
 
 $$
 \boxed{
@@ -276,7 +276,7 @@ Ambos centros pertenecen a la misma componente intervalar de $V$, pero el margen
 
 ### 3. Intersecciones finitas sí; intersecciones arbitrarias, no
 
-**Estrategia.** Cada vecindad $V_k$ aporta algún radio $r_k>0$. Para satisfacer simultáneamente todas las inclusiones necesitamos un radio que no exceda ninguno de ellos. La finitud permite tomar un mínimo.
+Cada vecindad $V_k$ aporta algún radio $r_k>0$. Para satisfacer simultáneamente todas las inclusiones necesitamos un radio que no exceda ninguno de ellos. La finitud permite tomar un mínimo.
 
 Para cada
 
@@ -601,7 +601,7 @@ R_{\mathrm{in}}(-2)=(0,1].
 }
 $$
 
-Si $r>1$, la bola contiene puntos de $(-1,1)$, que no pertenecen a $A$. Además, como $-2\in A$, ninguna bola centrada en $-2$ puede quedar contenida en $A^c$. Luego
+Si $r>1$, elegimos $y=-1+\min\{(r-1)/2,1/2\}$. Entonces $-1<y\le-1/2$, de modo que $y\notin A$, y $|y+2|=1+\min\{(r-1)/2,1/2\}<r$. Además, como $-2\in A$, ninguna bola centrada en $-2$ puede quedar contenida en $A^c$. Luego
 
 $$
 \boxed{
@@ -729,7 +729,7 @@ $$
 \operatorname{int}(A).
 $$
 
-Ninguno de los cinco puntos $-2,-1,0,1,3$ es interior. En cada extremo de intervalo, toda bola sale inmediatamente de $A$ por uno de los lados; alrededor de $0$, toda bola contiene puntos distintos de $0$ que no pertenecen a $A$.
+Los puntos $-1$ y $1$ no pertenecen a $A$ y, por tanto, no son interiores. Para cualquier radio $r>0$, los puntos $-2-r/2$ y $3+r/2$ están en las bolas centradas en $-2$ y $3$, respectivamente, y fuera de $A$. En la bola centrada en $0$, el punto $\min\{r/2,1/2\}$ está en $(0,1)\subseteq A^c$. Así, tampoco $-2$, $0$ ni $3$ son interiores.
 
 Así,
 
@@ -783,7 +783,7 @@ $$
 \operatorname{ext}(A).
 $$
 
-No hay más puntos exteriores. Los puntos $-2,0,3$ pertenecen a $A$, así que no pueden ser exteriores. Toda bola alrededor de $-1$ encuentra puntos de $[-2,-1)$ y toda bola alrededor de $1$ encuentra puntos de $(1,3]$.
+No hay más puntos exteriores. Los puntos $-2,0,3$ pertenecen a $A$, así que no pueden ser exteriores. Para un radio arbitrario $r>0$, el punto $-1-\min\{r/2,1/2\}$ está en $A\cap B(-1,r)$, y $1+\min\{r/2,1/2\}$ está en $A\cap B(1,r)$. Por tanto, tampoco $-1$ ni $1$ son exteriores.
 
 Por tanto,
 
@@ -993,7 +993,7 @@ $$
 
 de modo que $x$ es interior tanto a $A_t$ como a $B_t$.
 
-El punto $0$ no es interior a $B_t$, porque toda bola centrada en $0$ contiene números negativos. El punto $t$ tampoco es interior a ninguno de los dos conjuntos: dado $r>0$, el punto
+El punto $0$ no es interior a $B_t$, porque toda bola centrada en $0$ contiene números negativos; no es interior a $A_t$ porque no pertenece a él. El punto $1$ no pertenece a ninguno de los dos conjuntos y tampoco puede ser interior. El punto $t$ tampoco es interior a ninguno de los dos conjuntos: dado $r>0$, el punto
 
 $$
 t+\frac r2
@@ -2511,7 +2511,7 @@ Si $x\in(-2,-1)$, dado $r>0$ tomamos
 $$
 \delta=\min\left\{\frac r2,\frac{-1-x}{2}\right\}>0
 $$
-y $a=x+\delta$. Entonces $a\in A$, $a\ne x$ y $|a-x|<r$. El mismo argumento funciona para $x\in(1,2)$.
+y $a=x+\delta$. Entonces $a\in A$, $a\ne x$ y $|a-x|<r$. Para $x\in(1,2)$, elegimos $\delta=\min\{r/2,(2-x)/2\}$ y $a=x+\delta$, que cumple $x<a<2$ y $|a-x|<r$.
 
 En los extremos usamos desplazamientos hacia el interior de los intervalos. Por ejemplo, para $x=-2$ tomamos
 $$
@@ -2521,7 +2521,7 @@ y para $x=-1$,
 $$
 a=-1-\min\left\{\frac r2,\frac14\right\}.
 $$
-Los casos $1$ y $2$ son análogos. Por tanto,
+Para $x=1$, sirve $a=1+\min\{r/2,1/4\}$; para $x=2$, sirve $a=2-\min\{r/2,1/4\}$. Ambos puntos están en $(1,2)$, son distintos del centro y quedan a distancia menor que $r$. Por tanto,
 $$
 [-2,-1]\cup[1,2]
 \subseteq
@@ -2697,7 +2697,7 @@ $$
 $$
 y $y=x+\eta$. Entonces $y\in(0,1)$, $y\ne x$, $y\ne s$ y $|y-x|<r$. Así, todo punto interior sigue siendo de acumulación.
 
-Los extremos $0$ y $1$ también siguen siendo de acumulación, eligiendo puntos de $B$ suficientemente cercanos desde el interior. Ningún punto fuera de $[0,1]$ puede ser de acumulación porque admite una bola disjunta de $(0,1)$. Por tanto,
+En $0$, sirve $b=\min\{r/2,s/2,1/4\}$: es positivo, menor que $s$ y menor que $r$. En $1$, sirve $b=1-\min\{r/2,(1-s)/2,1/4\}$: queda estrictamente entre $s$ y $1$ y a distancia menor que $r$ del centro. Estos testigos pertenecen a $B$ y son distintos de los extremos. Ningún punto fuera de $[0,1]$ puede ser de acumulación porque admite una bola disjunta de $(0,1)$. Por tanto,
 $$
 \operatorname{Acc}(B)=[0,1].
 $$
@@ -3558,7 +3558,7 @@ $$
 B(x,r_x)\cap F=\varnothing.
 $$
 
-Así, todo punto exterior a $F$ puede separarse localmente de $F$.
+Así, todo punto que no pertenece a $F$ es exterior a $F$: tiene una bola disjunta del conjunto.
 
 Los radios dependen del centro. Cerca de $-2$, $0$ o $1$ el margen disponible puede hacerse tan pequeño como sea necesario. Por eso unas pocas ventanas dibujadas sólo ilustran casos concretos: la afirmación de apertura exige controlar **cada** punto de $U$, aunque el radio elegido pueda cambiar de un punto a otro.
 
@@ -4219,16 +4219,11 @@ $$
 Para frontera controlamos simultáneamente ambos lados:
 
 $$
-x\in\partial A
-\iff
-\forall r>0:
-B(x,r)\cap A\ne\varnothing
-$$
-
-y
-
-$$
+x\in\partial A\iff\forall r>0:\quad
+\begin{cases}
+B(x,r)\cap A\ne\varnothing,\\
 B(x,r)\cap A^c\ne\varnothing.
+\end{cases}
 $$
 
 Para acumulación perforamos el centro:
@@ -4751,15 +4746,7 @@ $$
 
 son de acumulación, pero se nos dice explícitamente que no pertenecen a $A$.
 
-No hay otros puntos de
-
-$$
-\operatorname{Acc}(A)
-=
-[-3,-1]\cup[0,1].
-$$
-
-que puedan añadirse a $A$ sin estar ya forzados por el interior o por la pertenencia de $-3$.
+El conjunto $\operatorname{Acc}(A)=[-3,-1]\cup[0,1]$ no contiene otros puntos que puedan añadirse a $A$ sin estar ya forzados por el interior o por la pertenencia de $-3$.
 
 La parte de $A$ formada por puntos de acumulación es, por tanto,
 

@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Soluciones de microcontroles — Capítulo 7
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 provenance:
   type: original
   sources:
@@ -486,7 +486,7 @@ $$
 y_{n+1}^2-2=\frac{(y_n^2-2)^2}{4y_n^2}>0.
 $$
 
-La positividad estricta del numerador conserva la desigualdad estricta; un numerador meramente no negativo sólo daría $y_{n+1}^2\ge2$. La inducción prueba $y_n^2>2$ en todos los índices. Si algún término satisficiera $0<y_n<1$, tendríamos $y_n^2<y_n<1$, contradicción. Así $y_n\ge1$ para todo $n$, sin presuponer una raíz ni el límite.
+La positividad estricta del numerador conserva la desigualdad estricta; un numerador meramente no negativo sólo daría $y_{n+1}^2\ge2$. La inducción prueba $y_n^2>2$ en todos los índices. Si algún término satisficiera $0<y_n\le1$, tendríamos $y_n^2\le1<2$, contradicción. Así $y_n>1$ para todo $n$; en particular, $1$ es una cota inferior conocida antes de construir una raíz o demostrar la existencia del límite.
 
 ### 46. Solución
 

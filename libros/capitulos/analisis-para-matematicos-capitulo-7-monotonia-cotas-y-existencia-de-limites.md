@@ -150,15 +150,7 @@ En la condición $a_n\le a_{n+1}$, identifica el tipo de $a$, $n$, $n+1$, $a_n$ 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 1</summary>
 
-**Respuesta.**
-
 $a$ es una función $\mathbb N\to\mathbb R$, es decir, una sucesión real. $n$ y $n+1$ son índices naturales; $a_n=a(n)$ y $a_{n+1}=a(n+1)$ son términos reales. La relación $\le$ escrita compara esos dos valores reales. Aunque los índices siempre cumplen $n<n+1$, eso no determina el orden de los valores que la función les asigna.
-
-**Fundamento en la sección 7.1.**
-
-En la [figura de los pasos](#fig-anm-c07-f01), las gráficas de la constante, de $p$ y del alternante son colecciones de puntos $(n,a_n)$. En la constante, puntos de índices distintos tienen la misma altura. En el alternante, el paso de índice 0 a 1 baja y el de 1 a 2 sube. No necesitamos unir esos puntos mediante una curva: la definición compara términos en índices naturales y no asigna valores en los intervalos entre índices.
-
-Las constantes cumplen ambas direcciones. También podemos demostrar la vuelta. Si $a$ es no decreciente y no creciente, para cualquier $n\in\mathbb N$ la comparación con el índice 0 da $a_0\le a_n$ y $a_n\le a_0$. Por antisimetría, $a_n=a_0$. Por tanto, **una sucesión es a la vez no decreciente y no creciente si y sólo si es constante**.
 
 </details>
 
@@ -173,8 +165,6 @@ Escribe en símbolos la definición de sucesión monótona, distinguiendo la dis
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 2</summary>
 
-**Respuesta.**
-
 La condición es
 
 $$
@@ -184,18 +174,6 @@ $$
 $$
 
 Se exige una dirección válida en todos los índices; la disyunción inclusiva admite ambas. En cambio, $\forall n\in\mathbb N,\ (a_n\le a_{n+1}\lor a_{n+1}\le a_n)$ permite cambiar de dirección con $n$ y es verdadera para cualquier sucesión real por el orden total. Esta última condición no caracteriza monotonía.
-
-**Fundamento en la sección 7.1.**
-
-La definición exige una dirección para todos los pasos. Su estructura lógica es
-
-$$
-\bigl(\forall n\in\mathbb N,\ a_n\le a_{n+1}\bigr)
-\quad\text{o}\quad
-\bigl(\forall n\in\mathbb N,\ a_{n+1}\le a_n\bigr).
-$$
-
-La disyunción es inclusiva: permite que ambas afirmaciones sean verdaderas. Una constante $a_n=c$ cumple las dos porque $c\le c$. En cambio, la afirmación «para cada $n$, uno de los dos valores es menor o igual que el otro» vale para cualquier par de números reales por el orden total. Si se permitiera cambiar la dirección a cada paso, esa afirmación no distinguiría las sucesiones monótonas de las demás.
 
 </details>
 
@@ -210,15 +188,7 @@ Para $p_{2k}=p_{2k+1}=k$, justifica el no decrecimiento en todos los pasos y se�
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 3</summary>
 
-**Respuesta.**
-
 Todo paso empieza en un índice par o impar. Si empieza en $2k$, $p_{2k}=k=p_{2k+1}$. Si empieza en $2k+1$, $p_{2k+1}=k<k+1=p_{2k+2}$. Ambas comparaciones dan no decrecimiento. La subida $p_1=0<p_2=1$ refuta el no crecimiento. No es estrictamente creciente, pues $p_0=p_1=0$; las repeticiones no impiden que cada índice tenga un único valor.
-
-**Fundamento en la sección 7.1.**
-
-Consideremos la sucesión $p$ definida por $p_{2k}=k$ y $p_{2k+1}=k$ para cada $k\in\mathbb N$. Todo índice natural es par o impar, así que estas dos cláusulas asignan un único valor a cada índice. Sus primeros términos son $0,0,1,1,2,2,3,3,\ldots$. Al pasar de un término al siguiente, el valor se conserva o aumenta; las repeticiones no cambian la dirección.
-
-Si describiéramos esa propiedad diciendo que «cada término es mayor que el anterior», excluiríamos los pasos de $p_{2k}$ a $p_{2k+1}$. Necesitamos una comparación que admita igualdad. Esto también permitirá incluir una sucesión constante, que no baja ni sube.
 
 </details>
 
@@ -233,15 +203,7 @@ Reconstruye las dos direcciones de la equivalencia entre comparación adyacente 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 4</summary>
 
-**Respuesta.**
-
 Supón $a_{k+1}\le a_k$ para todo $k\in\mathbb N$. Dados $n\le m$, si $n=m$ basta $a_n\le a_n$. Si $n<m$, la cadena finita $a_m\le a_{m-1}\le\cdots\le a_n$ da $a_m\le a_n$ por transitividad. Recíprocamente, si $a_m\le a_n$ para todo par $n\le m$, tomar $m=n+1$ da $a_{n+1}\le a_n$ en cada índice. Así las dos condiciones son equivalentes, incluido el caso de índices iguales.
-
-**Fundamento en la sección 7.1.**
-
-Recíprocamente, supongamos que $a_n\le a_m$ siempre que $n\le m$. Para cualquier $n\in\mathbb N$, el natural $m=n+1$ satisface $n\le m$, así que $a_n\le a_{n+1}$. Se recupera la condición adyacente en todos los índices.
-
-Para la dirección no creciente, supongamos que $a_{k+1}\le a_k$ para todo $k$. Si $n=m$, de nuevo basta reflexividad. Si $n<m$, la cadena es $a_m\le a_{m-1}\le\cdots\le a_n$; cada comparación usa una hipótesis adyacente y la transitividad da $a_m\le a_n$. En la dirección inversa, la comparación para $n\le m$ aplicada a $m=n+1$ da $a_{n+1}\le a_n$. Esto demuestra también la segunda equivalencia.
 
 </details>
 
@@ -256,15 +218,7 @@ Demuestra que una sucesión no decreciente y no creciente a la vez es constante.
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 5</summary>
 
-**Respuesta.**
-
 Para cada $n\in\mathbb N$, el no decrecimiento da $a_0\le a_n$ y el no crecimiento da $a_n\le a_0$. Por antisimetría, $a_n=a_0$ para todo índice: $a$ es constante. Recíprocamente, si $a_n=c$ siempre, ambas comparaciones adyacentes son $c\le c$. Una función exige un único valor por índice, no valores distintos en índices distintos; por ello una constante sigue siendo función.
-
-**Fundamento en la sección 7.1.**
-
-Las constantes cumplen ambas direcciones. También podemos demostrar la vuelta. Si $a$ es no decreciente y no creciente, para cualquier $n\in\mathbb N$ la comparación con el índice 0 da $a_0\le a_n$ y $a_n\le a_0$. Por antisimetría, $a_n=a_0$. Por tanto, **una sucesión es a la vez no decreciente y no creciente si y sólo si es constante**.
-
-Esto no exige que $a$ sea inyectiva. Una función puede repetir valores; la constancia repite el mismo en todos los índices, y la sucesión $p$ repite algunos sin ser constante. Lo que distingue estas situaciones es la comparación de los términos para todos los índices, no la definición de función.
 
 </details>
 
@@ -279,15 +233,7 @@ En $r_n=(-1)^n$, da un infractor de cada dirección. ¿Por qué una sola caída 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 6</summary>
 
-**Respuesta.**
-
 La caída $r_0=1>r_1=-1$ refuta el no decrecimiento. La subida $r_1=-1<r_2=1$ refuta el no crecimiento. Como fallan ambas alternativas, $r$ no es monótona. Una sola caída refuta sólo la primera alternativa: una sucesión estrictamente decreciente tiene caídas y sigue siendo monótona. Hace falta excluir también la dirección no creciente.
-
-**Fundamento en la sección 7.1.**
-
-Esto demuestra que $x$ es estrictamente creciente. La sucesión $z_n=1/(n+1)$ tiene la diferencia opuesta, $z_{n+1}-z_n=-1/[(n+1)(n+2)]<0$, así que es estrictamente decreciente. La comparación entre índices vale globalmente en ambas, con su dirección correspondiente.
-
-Para refutar una dirección universal basta un paso que la contradiga. En $r_n=(-1)^n$, tenemos $r_0=1>r_1=-1$, por lo que no es no decreciente. También $r_1=-1<r_2=1$, por lo que no es no creciente. Estas dos comparaciones refutan las dos alternativas de la definición: $r$ no es monótona. Una sola caída habría refutado únicamente el no decrecimiento; todavía habría que examinar la otra dirección.
 
 </details>
 
@@ -302,25 +248,9 @@ Supón que $a$ es no decreciente y $a_N>c$, con $N\in\mathbb N$ y $c\in\mathbb R
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 7</summary>
 
-**Respuesta.**
-
 Si $n\ge N$, la comparación entre índices para una sucesión no decreciente da $a_N\le a_n$. Junto con $c<a_N$, resulta $c<a_N\le a_n$, luego $a_n>c$ para todos los índices indicados.
 
 La versión opuesta dice: si $a$ es no creciente y $a_N<c$, entonces $a_n<c$ para todo $n\ge N$. En efecto, $a_n\le a_N<c$ por la comparación no creciente. $N,n$ son índices naturales y $c,a_N,a_n$ son valores reales; la dirección propaga la comparación inicial.
-
-**Fundamento en la sección 7.1.**
-
-Una fórmula permite trabajar con un índice arbitrario. Si $a$ está definida en todo $\mathbb N$, es no decreciente exactamente cuando $a_{n+1}-a_n\ge0$ para todo $n$, y no creciente exactamente cuando esa diferencia es no positiva para todo $n$. Estas equivalencias proceden de sumar o restar el mismo número en una desigualdad; la diferencia es real, no un cambio del índice.
-
-Para $x_n=1-1/(n+1)$, los denominadores son positivos también en $n=0$, y
-
-$$
-x_{n+1}-x_n
-=\frac1{n+1}-\frac1{n+2}
-=\frac1{(n+1)(n+2)}>0.
-$$
-
-Esto demuestra que $x$ es estrictamente creciente. La sucesión $z_n=1/(n+1)$ tiene la diferencia opuesta, $z_{n+1}-z_n=-1/[(n+1)(n+2)]<0$, así que es estrictamente decreciente. La comparación entre índices vale globalmente en ambas, con su dirección correspondiente.
 
 </details>
 
@@ -335,15 +265,7 @@ Para $b_n=n$ si $0\le n\le100$ y $b_n=-1$ si $n\ge101$, explica por qué una mue
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 8</summary>
 
-**Respuesta.**
-
 En los índices 0–100, la muestra coincide con la sucesión identidad y aumenta estrictamente. Pero la monotonía exige una dirección para todos los pasos, incluidos los que la muestra no contiene. La caída $b_{100}=100>b_{101}=-1$ refuta el no decrecimiento; la subida $b_0=0<b_1=1$ refuta el no crecimiento. Así $b$ no es monótona. La función $u:\mathbb N\to\mathbb R$, $u_n=n$, es estrictamente creciente en todo índice y difiere de $b$, por ejemplo en 101: $u_{101}=101\ne-1=b_{101}$. Coincidir en una muestra no es ser la misma función.
-
-**Fundamento en la sección 7.1.**
-
-Esto no exige que $a$ sea inyectiva. Una función puede repetir valores; la constancia repite el mismo en todos los índices, y la sucesión $p$ repite algunos sin ser constante. Lo que distingue estas situaciones es la comparación de los términos para todos los índices, no la definición de función.
-
-Una muestra creciente tampoco garantiza monotonía global. Definamos $b_n=n$ para $0\le n\le100$ y $b_n=-1$ para $n\ge101$. Es una función definida en todo $\mathbb N$, y sus primeros 101 términos son $0,1,\ldots,100$. Sin embargo, $b_{100}=100>b_{101}=-1$ refuta el no decrecimiento. El paso $b_0=0<b_1=1$ refuta el no crecimiento, de modo que la sucesión tampoco es monótona. Un listado finito puede ocultar el infractor que queda fuera de él.
 
 </details>
 
@@ -540,15 +462,7 @@ Para $p_{2k}=p_{2k+1}=k$, identifica el conjunto $S_p$ y explica qué informaci�
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 9</summary>
 
-**Respuesta.**
-
 $S_p=\{0,1,2,\ldots\}$, considerado como subconjunto de $\mathbb R$: cada $k$ aparece en $p$ y ningún término toma otro valor. El conjunto registra cada valor una sola vez, aunque $p_{2k}=p_{2k+1}=k$. Se pierden la multiplicidad de aparición y los índices a los que corresponde cada valor, incluido su orden. $p:\mathbb N\to\mathbb R$ es una función; $S_p$ es su conjunto de valores, no la misma clase de objeto.
-
-**Fundamento en la sección 7.2.**
-
-En la sucesión $p$ de §7.1, cada natural aparece dos veces como término, pero $S_p=\{0,1,2,\ldots\}$, considerado como subconjunto de $\mathbb R$. Pasar a $S_p$ conserva los valores disponibles y pierde la asignación que nos dice en qué índice aparece cada uno. La función $p$ y el conjunto $S_p$ son objetos distintos.
-
-Esa pérdida incluye el orden de aparición. La sucesión $a_n=n$ y la función $b$ dada por $b_0=0$, $b_1=2$, $b_2=1$ y $b_n=n$ para $n\ge3$ tienen el mismo conjunto de valores. Sin embargo, $a$ es estrictamente creciente y $b$ no es monótona: sube de índice 0 a 1 y baja de 1 a 2. El conjunto sirve para estudiar cotas, pero no sustituye a la función cuando importa la monotonía.
 
 </details>
 
@@ -563,13 +477,7 @@ Justifica en ambas direcciones que un real $U$ es cota superior de una sucesión
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 10</summary>
 
-**Respuesta.**
-
 Si $a_n\le U$ para todo $n$, cada $x\in S_a$ tiene la forma $x=a_j$ y cumple $x\le U$; así $U$ es cota superior del conjunto. Recíprocamente, si $U$ domina $S_a$, domina cada $a_n$ porque todos los términos pertenecen a ese conjunto. $S_a$ es no vacío ya que contiene $a_0$, un valor real de la función definida en el índice natural 0.
-
-**Fundamento en la sección 7.2.**
-
-La existencia de una cota superior no forma parte de la definición de cualquier sucesión. Cuando sí la tenemos, podemos usar C03 §3.2: **todo subconjunto no vacío de $\mathbb R$ acotado superiormente tiene supremo real**. Para $S_a$, la no vaciedad ya está acreditada por $a_0$ y la cota de la sucesión proporciona la otra hipótesis. Este es el punto en que interviene completitud. La monotonía no hace falta para obtener el supremo del conjunto de valores; tendrá otra función al controlar los índices posteriores.
 
 </details>
 
@@ -584,13 +492,7 @@ Indica las dos hipótesis que permiten aplicar el principio del supremo de C03 a
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 11</summary>
 
-**Respuesta.**
-
 Las hipótesis son que $S_a\subseteq\mathbb R$ sea no vacío y esté acotado superiormente. La primera se acredita con $a_0$; la segunda exige una cota real $U$ para todos los términos. El principio del supremo garantiza entonces la existencia de algún $s\in\mathbb R$ que es su supremo. La caracterización por cota y aproximación permite verificar si un candidato real dado es ese supremo; no asegura por sí sola que exista un candidato que cumpla las dos condiciones. No se requiere monotonía para obtener el supremo.
-
-**Fundamento en la sección 7.2.**
-
-La existencia de una cota superior no forma parte de la definición de cualquier sucesión. Cuando sí la tenemos, podemos usar C03 §3.2: **todo subconjunto no vacío de $\mathbb R$ acotado superiormente tiene supremo real**. Para $S_a$, la no vaciedad ya está acreditada por $a_0$ y la cota de la sucesión proporciona la otra hipótesis. Este es el punto en que interviene completitud. La monotonía no hace falta para obtener el supremo del conjunto de valores; tendrá otra función al controlar los índices posteriores.
 
 </details>
 
@@ -605,17 +507,9 @@ Reconstruye las dos direcciones de la caracterización de $s=\sup S_a$. Señala 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 12</summary>
 
-**Respuesta.**
-
 Si $s=\sup S_a$, ya es cota superior. Dada $\varepsilon>0$, $s-\varepsilon$ no puede ser cota superior, pues sería una cota menor que la menor cota. Se niega la afirmación universal $\forall n\in\mathbb N,\ a_n\le s-\varepsilon$ y se obtiene $j\in\mathbb N$ con $a_j>s-\varepsilon$. La cota $s$ añade $a_j\le s$.
 
 Recíprocamente, supón que $s$ domina todos los términos y que para cada $\varepsilon>0$ existe $j$ con $a_j>s-\varepsilon$. Sea $U$ otra cota superior. Si $U<s$, toma $\varepsilon=s-U>0$. El testigo satisface $a_j>s-\varepsilon=U$, contradiciendo que $U$ sea cota. Así $s\le U$ para toda cota superior, y junto con la condición de cota resulta $s=\sup S_a$.
-
-**Fundamento en la sección 7.2.**
-
-**Demostración.** Supongamos que $s=\sup S_a$ y fijemos $\varepsilon>0$. El número $s-\varepsilon$ es menor que $s$, por lo que no puede ser cota superior: si lo fuera, la minimalidad daría $s\le s-\varepsilon$, contradicción. Ser cota superior equivale a $a_n\le s-\varepsilon$ para todo $n$. La negación clásica de esa afirmación universal proporciona un índice $j$ con $a_j>s-\varepsilon$. Como $s$ sí es cota, también $a_j\le s$. Así se obtiene el valor en la franja.
-
-Recíprocamente, supongamos que $s$ es cota superior y que cumple la aproximación indicada. Sea $U$ cualquier cota superior de $S_a$. Si $U<s$, la tolerancia $\varepsilon=s-U>0$ daría un índice $j$ con $a_j>s-\varepsilon=U$, contradiciendo que $U$ sea cota. Por tanto $s\le U$ para toda cota superior $U$. Junto con la condición de cota de $s$, esto demuestra $s=\sup S_a$.
 
 </details>
 
@@ -630,15 +524,7 @@ En la franja $(3/4,1]$, clasifica $x_3=3/4$, $x_4=4/5$ y el término de la const
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 13</summary>
 
-**Respuesta.**
-
 $x_3=3/4$ queda fuera de $(3/4,1]$ porque coincide con su frontera inferior excluida. $x_4=4/5$ está dentro, pues $3/4<4/5<1$. El término 1 de la sucesión constante también está dentro, en la frontera superior incluida. La aproximación al supremo exige $s-\varepsilon<a_j$, una desigualdad estricta por abajo, pero la condición de cota permite $a_j\le s$, incluida la igualdad con el supremo.
-
-**Fundamento en la sección 7.2.**
-
-La igualdad de los supremos es una igualdad entre números reales. No afirma igualdad de sucesiones ni de conjuntos: $x_0=0$ y $c_0=1$, y sólo el segundo conjunto contiene 1. La cota 2 deja margen en ambos casos; no es la menor cota superior.
-
-Con $\varepsilon=1/4$, la franja es $(3/4,1]$. Tenemos $x_3=3/4$, sobre la frontera inferior excluida, y $x_4=4/5$, dentro de la franja. El término constante 1 también está dentro. El contraste se lee sobre un eje de **valores**, sin necesidad de usar el eje de índices de una gráfica de sucesión. Marcar el punto 1 como barrera en el caso de $x$ no lo añade a su conjunto de valores.
 
 </details>
 
@@ -670,8 +556,6 @@ Formula la caracterización por aproximación del ínfimo y úsala para justific
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 15</summary>
 
-**Respuesta.**
-
 La caracterización dice que $t=\inf S_a$ si y sólo si
 
 $$
@@ -681,12 +565,6 @@ $$
 $$
 
 Para $z_n=1/(n+1)$, todos los términos son positivos, de modo que 0 es cota inferior. La convergencia $1/(n+1)\to0$, demostrada en C06 §6.3, garantiza para cada $\varepsilon>0$ un término $z_j<\varepsilon=0+\varepsilon$. Cota y aproximación acreditan el ínfimo 0. Como ningún término vale 0, el ínfimo no pertenece al conjunto, que por ello no tiene mínimo.
-
-**Fundamento en la sección 7.2.**
-
-Volvamos a $x_n=1-1/(n+1)$. Como $n+1>0$, todos sus términos son menores que 1; por tanto 1 y 2 son cotas superiores, y ningún término vale 1. Para comprobar que 1 es el supremo, falta la obligación de aproximación.
-
-En C06 §6.3 demostramos que $1/(n+1)$ converge a cero. Dada $\varepsilon>0$, esa prueba proporciona un índice $j$ con $1/(j+1)<\varepsilon$. De ahí $x_j=1-1/(j+1)>1-\varepsilon$. Por la caracterización anterior, $\sup S_x=1$. Como $1\notin S_x$, no hay máximo. Esta verificación usa una herramienta ya disponible y no presupone el teorema de convergencia monótona que demostraremos en §7.3.
 
 </details>
 
@@ -701,17 +579,9 @@ Para $r_n=(-1)^n$, da un testigo de aproximación a su supremo válido para cual
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 16</summary>
 
-**Respuesta.**
-
 $S_r=\{-1,1\}$ tiene supremo 1, alcanzado por $r_0=1$. Para cualquier $\varepsilon>0$, el mismo testigo $j=0$ cumple $1-\varepsilon<r_j\le1$.
 
 Para refutar el candidato 1 como límite, fija $\varepsilon_0=1$. Dado cualquier corte $N\in\mathbb N$, el índice $n=2N+1\ge N$ es impar y tiene $r_n=-1$, luego $|r_n-1|=2\ge\varepsilon_0$. No existe un corte que controle esa tolerancia. La caracterización del supremo sólo exige un término próximo para cada tolerancia; falta el control de todos los términos desde un corte. Esta refutación excluye el candidato 1, sin pretender por sí sola excluir todos los candidatos reales.
-
-**Fundamento en la sección 7.2.**
-
-En $r_n=(-1)^n$, el conjunto de valores es $\{-1,1\}$ y su supremo es 1. Para cualquier tolerancia positiva, el índice $j=0$ proporciona un término igual al supremo y satisface la aproximación. Sin embargo, $r$ no converge a 1: con $\varepsilon=1$, ante cualquier corte $N$ el índice impar $2N+1\ge N$ tiene término −1 y error $|-1-1|=2\ge1$. Esta refutación se refiere al candidato 1; no inferimos de ella por sí sola una afirmación sobre todos los candidatos.
-
-La minimalidad de la barrera proporciona un término en cada franja. §7.1 nos dio otra herramienta: bajo no decrecimiento, una comparación inferior conseguida en un índice se propaga a los posteriores. En §7.3 reuniremos las dos obligaciones para pasar del valor próximo al control de una cola, comprobando la definición de convergencia para toda tolerancia.
 
 </details>
 
@@ -943,17 +813,7 @@ Enuncia el resultado de esta sección con dominio, dirección de monotonía, cot
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 17</summary>
 
-**Respuesta.**
-
 Si $a:\mathbb N\to\mathbb R$ es no decreciente y existe $U\in\mathbb R$ con $a_n\le U$ para todo $n$, entonces converge al real $s=\sup\{a_n:n\in\mathbb N\}$. No exige crecimiento estricto: admite repeticiones y constantes. Tampoco exige que $s$ sea un término; el supremo puede no alcanzarse.
-
-**Fundamento en la sección 7.3.**
-
-> **Convergencia de una sucesión no decreciente y acotada superiormente.** Sea $a:\mathbb N\to\mathbb R$ una sucesión no decreciente. Si existe $U\in\mathbb R$ tal que $a_n\le U$ para todo $n\in\mathbb N$, entonces $a$ converge y su límite es $s=\sup\{a_n:n\in\mathbb N\}$.
-
-No suponemos que el crecimiento sea estricto ni que $s$ sea un término. El enunciado incluye constantes, repeticiones y barreras no alcanzadas. Probaremos la convergencia desde la definición ε–N de C06, después de justificar la existencia del candidato.
-
-El conjunto de valores permite aplicar completitud al universo correcto. Una vez obtenido su supremo, necesitamos convertir su propiedad extremal en una estimación de error para todos los índices de una cola.
 
 </details>
 
@@ -968,20 +828,7 @@ Reconstruye las cuatro obligaciones del mapa de la prueba. Señala dónde se usa
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 18</summary>
 
-**Respuesta.**
-
 Las cuatro obligaciones son: verificar que $S_a$ es no vacío y acotado superiormente, usando $a_0$ y la cota $U$; obtener $s=\sup S_a\in\mathbb R$ por completitud; encontrar, dada $\varepsilon>0$, un término $a_N>s-\varepsilon$ por minimalidad del supremo; y propagar esa comparación a todo $n\ge N$ por no decrecimiento, conservando $a_n\le s$. Completitud se usa en la existencia de $s$. El término próximo se obtiene de una propiedad de ese supremo ya existente, sin invocar de nuevo el principio de existencia.
-
-**Fundamento en la sección 7.3.**
-
-| Obligación | Qué se obtiene | Qué la autoriza |
-|---|---|---|
-| Conjunto admisible | $S_a$ no vacío y acotado superiormente | $a_0\in S_a$ y la cota $U$ |
-| Existencia del candidato | $s=\sup S_a\in\mathbb R$ | Completitud, C03 §3.2 |
-| Término próximo | $s-\varepsilon<a_N\le s$ | Minimalidad de $s$, C02 §2.5 y §7.2 |
-| Propagación y captura | $s-\varepsilon<a_n\le s$ para todo $n\ge N$ | No decrecimiento, cota y comparación de §7.1 |
-
-La dificultad es pasar de un término próximo a todos los posteriores. La existencia del supremo no hace ese trabajo; da el candidato y permite encontrar el término. La monotonía aporta la propagación.
 
 </details>
 
@@ -996,20 +843,7 @@ Dada $\varepsilon>0$, justifica por qué $s-\varepsilon$ no es cota superior y c
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 19</summary>
 
-**Respuesta.**
-
 Si $s-\varepsilon$ fuera cota superior, la minimalidad de $s$ implicaría $s\le s-\varepsilon$, imposible porque $\varepsilon>0$. La negación de $\forall n\in\mathbb N,\ a_n\le s-\varepsilon$ proporciona $N\in\mathbb N$ con $a_N>s-\varepsilon$. Primero se fija $s$ a partir de la sucesión; después se recibe $\varepsilon>0$, se obtiene $N$ para esa tolerancia y se considera un índice arbitrario $n\ge N$. El corte puede depender de la tolerancia, pero debe controlar todos esos índices.
-
-**Fundamento en la sección 7.3.**
-
-Fijemos una tolerancia real $\varepsilon>0$. Como $s-\varepsilon<s$, el número $s-\varepsilon$ no es cota superior de $S_a$: si lo fuera, la minimalidad de $s$ daría $s\le s-\varepsilon$. Negar la afirmación universal $a_n\le s-\varepsilon$ proporciona, por lógica clásica y el orden real, un índice $N\in\mathbb N$ con $a_N>s-\varepsilon$. Ésta es la propiedad de aproximación recuperada en §7.2; no requiere una segunda invocación de completitud.
-
-Tomemos ahora un índice natural $n\ge N$ arbitrario. El no decrecimiento y la comparación entre índices de §7.1 dan $a_N\le a_n$. La propiedad de cota de $s$ da $a_n\le s$. Por tanto,
-
-$$
-s-\varepsilon<a_N\le a_n\le s,
-\qquad 0\le s-a_n<\varepsilon.
-$$
 
 </details>
 
@@ -1024,15 +858,7 @@ Partiendo de $s-\varepsilon<a_N\le a_n\le s$ para $n\ge N$, deduce $|a_n-s|<\var
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 20</summary>
 
-**Respuesta.**
-
 De $a_n\le s$ se obtiene $|a_n-s|=s-a_n$. La comparación $a_n\ge a_N>s-\varepsilon$ da $s-a_n<\varepsilon$, luego $|a_n-s|<\varepsilon$. Si $a_N=s-\varepsilon$, el error en el propio índice $N$ es exactamente $\varepsilon$, de modo que ese corte no cumple la desigualdad estricta requerida. Si $a_n=s$, el error es cero y satisface la condición porque $\varepsilon>0$.
-
-**Fundamento en la sección 7.3.**
-
-El candidato $s$ se fija antes de recibir la tolerancia y depende de la sucesión completa. El testigo $N$ se obtiene después de fijar $\varepsilon$ y antes de examinar el índice universal $n$. No se promete un método computable para hallarlo en una sucesión arbitraria ni se exige que sea el menor posible. Si un testigo resulta ser 0, la prueba controla la sucesión desde su primer término.
-
-La desigualdad final permite $a_n=s$, pues entonces el error es cero. La frontera inferior $s-\varepsilon$, en cambio, queda excluida: allí el error sería exactamente $\varepsilon$. Una comparación no estricta $s-\varepsilon\le a_N$ no daría con esta misma tolerancia la estimación estricta requerida.
 
 </details>
 
@@ -1047,8 +873,6 @@ Para $u_0=0$ y $u_{n+1}=(u_n+1)/2$, reconstruye la inducción que conserva $0\le
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 21</summary>
 
-**Respuesta.**
-
 La regla define un real en cada paso, pues sólo divide por el número no nulo 2. La base $u_0=0$ cumple $0\le u_0\le1$. Si $0\le u_n\le1$, entonces $1/2\le(u_n+1)/2\le1$, lo que implica $0\le u_{n+1}\le1$. La inducción conserva ambas barreras en todo índice. Además,
 
 $$
@@ -1056,18 +880,6 @@ u_{n+1}-u_n=\frac{1-u_n}{2}\ge0.
 $$
 
 Así $u$ es no decreciente y tiene cota superior 1. El teorema de §7.3 garantiza un límite real $L=\sup S_u$, con $0\le L\le1$. Esta conclusión acredita existencia y descripción extremal; no calcula su valor numérico mediante la recurrencia.
-
-**Fundamento en la sección 7.3.**
-
-A continuación, para un índice arbitrario,
-
-$$
-u_{n+1}-u_n=\frac{1-u_n}{2}\ge0.
-$$
-
-La desigualdad usa el invariante ya demostrado. Por tanto $u$ es no decreciente. El teorema recién probado se aplica: existe un límite real $L=\sup S_u$. Además, $0=u_0\le L\le1$, porque el supremo domina cada valor y es menor o igual que la cota superior 1.
-
-La conclusión es de existencia, con una identificación extremal del candidato. No hemos calculado su valor numérico mediante una ecuación de la recurrencia. En §7.6 retomaremos esta misma sucesión y, con la existencia acreditada, justificaremos el desplazamiento de índices y el uso de las reglas de C06 antes de resolver esa ecuación. La inducción y la comparación que acabamos de escribir son las hipótesis de entrada; unos primeros términos como $0,1/2,3/4,7/8$ no habrían bastado para sustituirlas.
 
 </details>
 
@@ -1082,8 +894,6 @@ En $x_n=1-1/(n+1)$ y con tolerancia $1/4$, comprueba que $N=4$ controla todos lo
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 22</summary>
 
-**Respuesta.**
-
 Para todo $n\ge4$,
 
 $$
@@ -1091,12 +901,6 @@ $$
 $$
 
 Por tanto $N=4$ controla todos los índices posteriores. En cambio, $N=3$ falla ya en el índice 3 porque $|x_3-1|=1/4$, igual a la tolerancia y no menor. Una gráfica finita sólo exhibe los puntos de los índices representados; la estimación universal, o la propagación monótona con la cota 1, es lo que acredita el control de toda la cola. El corte 4 es un índice natural, mientras que 1 y 3/4 son alturas reales.
-
-**Fundamento en la sección 7.3.**
-
-Para cualquier $n\ge4$, la monotonía da $x_4\le x_n$ y la cota da $x_n\le1$. También podemos verificar directamente el error del ejemplo: $1-x_n=1/(n+1)\le1/5<1/4$. Los términos desde el corte 4 quedan en la franja $(3/4,1]$, contenida en la ventana abierta $(1-1/4,1+1/4)$ de C06.
-
-La muestra de índices 0–8 mostraría esos puntos a sus alturas correspondientes. El corte 4 pertenece al eje de índices; las referencias 1 y 3/4 pertenecen al eje de valores. Unir los puntos como una curva añadiría una representación que no es la gráfica de la función con dominio natural. La estimación para todo $n\ge4$, no la cantidad de puntos dibujados, acredita la captura de la cola. El número 4 es un testigo para este ejemplo y esta tolerancia; no es el testigo general del teorema.
 
 </details>
 
@@ -1111,8 +915,6 @@ Supón que $U$ es cota superior y $U>s=\sup S_a$. Usa $\varepsilon=(U-s)/2$ para
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 23</summary>
 
-**Respuesta.**
-
 Fija $\varepsilon_0=(U-s)/2>0$. Para todo $n\in\mathbb N$, la cota del supremo da $a_n\le s<U$, luego
 
 $$
@@ -1120,12 +922,6 @@ $$
 $$
 
 Ante cualquier corte propuesto $N$, el propio índice $n=N$ infringe esa tolerancia. La sucesión no converge a $U$. Una cota mayor que $s$ deja un margen real respecto de todos los valores y no proporciona términos arbitrariamente próximos a ella; la propiedad de menor cota superior sí permite obtenerlos.
-
-**Fundamento en la sección 7.3.**
-
-Fijemos entonces una sucesión real $a$ no decreciente y una cota superior $U$. C03 garantiza que su conjunto de valores tiene supremo $s$. La franja $(s-\varepsilon,s]$ contiene un término $a_N$; el no decrecimiento obliga a que los términos posteriores estén por encima de $a_N$, y la propiedad de cota de $s$ impide que pasen por encima de $s$. Esa combinación es la que permite responder a una tolerancia arbitraria.
-
-> **Convergencia de una sucesión no decreciente y acotada superiormente.** Sea $a:\mathbb N\to\mathbb R$ una sucesión no decreciente. Si existe $U\in\mathbb R$ tal que $a_n\le U$ para todo $n\in\mathbb N$, entonces $a$ converge y su límite es $s=\sup\{a_n:n\in\mathbb N\}$.
 
 </details>
 
@@ -1140,15 +936,7 @@ Si $a$ no decrece y alcanza su supremo $s$ en un índice $K$, demuestra que $a_n
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 24</summary>
 
-**Respuesta.**
-
 Si $a_K=s$ y $n\ge K$, el no decrecimiento da $s=a_K\le a_n$. Como $s$ es cota superior, también $a_n\le s$. Por antisimetría, $a_n=s$ para todo $n\ge K$. El teorema admite esa cola constante: no exige dirección estricta ni ausencia de alcanzamiento. Para cualquier tolerancia positiva, el corte $K$ controla error cero en toda la cola; si $K=0$, la sucesión completa es constante.
-
-**Fundamento en la sección 7.3.**
-
-Si el supremo se alcanza en un índice $K$, la misma estructura da una conclusión adicional. Para todo $n\ge K$, el no decrecimiento implica $s=a_K\le a_n$, y la cota implica $a_n\le s$. Así $a_n=s$ desde $K$. En una sucesión no decreciente, alcanzar el supremo obliga a que la cola sea constante. El teorema incluye este caso y el de la constante desde el índice 0; no exige una aproximación sin alcanzamiento.
-
-La dirección no creciente requerirá transportar las comparaciones y la barrera con cuidado. La desarrollaremos en §7.4, junto con el caso en que sólo una cola mantiene la dirección. Por ahora, la herramienta acreditada es el resultado global para no decrecimiento y cota superior.
 
 </details>
 
@@ -1307,7 +1095,7 @@ $$
 \le\frac{K(s-a_0)}{n+1}+s-a_K.
 $$
 
-Después de fijar $K$, el número $D=K(s-a_0)$ es un real no negativo fijo. Elegimos por arquimedianidad un natural $N\ge K$ con $N+1>2D/\varepsilon$. Si $D=0$, puede tomarse $N=K$. Para todo $n\ge N$ se cumple $D/(n+1)<\varepsilon/2$, y la elección de $K$ da $s-a_K<\varepsilon/2$. Luego $|c_n-s|=s-c_n<\varepsilon$. Esto demuestra directamente $c_n\to s$; la unicidad del límite de C06 identifica el límite ya obtenido como $t=s$.
+Después de fijar $K$, el número $D=K(s-a_0)$ es un real no negativo fijo. Si $D=0$, tomamos $N=K$. Si $D>0$, la construcción del piso de C06 permite tomar $N=\max\{K,\lfloor2D/\varepsilon\rfloor+1\}$. En ambos casos $N\ge K$ y $N+1>2D/\varepsilon$. Para todo $n\ge N$ se cumple $D/(n+1)<\varepsilon/2$, y la elección de $K$ da $s-a_K<\varepsilon/2$. Luego $|c_n-s|=s-c_n<\varepsilon$. Esto demuestra directamente $c_n\to s$; la unicidad del límite de C06 identifica el límite ya obtenido como $t=s$.
 
 Si $K=0$, el prefijo separado es vacío y su suma y contribución son cero. La estimación sigue válida: todos los términos están en el bloque final y $s-c_n\le s-a_0<\varepsilon/2$. La prueba controla un prefijo de longitud fija y el bloque restante; no emplea sumas infinitas ni un teorema general de promedios.
 
@@ -1409,15 +1197,7 @@ Si $a$ no crece y $\ell_0$ es cota inferior, define $b_n=-a_n$ y comprueba su do
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 25</summary>
 
-**Respuesta.**
-
 Define $b:\mathbb N\to\mathbb R$ por $b_n=-a_n$. Si $a_{n+1}\le a_n$, cambiar el signo da $b_n\le b_{n+1}$, así que $b$ es no decreciente. De $\ell_0\le a_n$ se obtiene $b_n\le-\ell_0$ para todo índice: $-\ell_0$ es cota superior. En las gráficas, $(n,a_n)$ se transforma en $(n,-a_n)$; se conserva la coordenada de índice y se refleja la altura respecto de cero. El dominio no cambia, pero los valores cambian de signo y las funciones no son necesariamente iguales.
-
-**Fundamento en la sección 7.4.**
-
-El resultado de §7.3 trata una sucesión no decreciente con cota superior. Para una sucesión no creciente, la barrera pertinente está por debajo. Podemos aprovechar la prueba anterior mediante una operación del cuerpo real: cambiar el signo de cada valor invierte las desigualdades y transforma una cota inferior en una superior.
-
-Dada $a:\mathbb N\to\mathbb R$, definimos $b:\mathbb N\to\mathbb R$ por $b_n=-a_n$. Ambas funciones tienen el mismo dominio; el índice $n$ se conserva y el término cambia de signo. En general las funciones no son iguales. Sus conjuntos de valores se relacionan por $S_b=-S_a=\{-v:v\in S_a\}$: cada valor de una es el opuesto de un valor de la otra.
 
 </details>
 
@@ -1432,15 +1212,7 @@ Sea $t=\sup S_b$. Demuestra que $-t$ es cota inferior de $S_a$ y mayor o igual q
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 26</summary>
 
-**Respuesta.**
-
 Como $b_n\le t$ para todo $n$, cambiar el signo da $-t\le a_n$: $-t$ es cota inferior de $S_a$. Si $\ell$ es cualquier otra cota inferior, $\ell\le a_n$ implica $b_n\le-\ell$, de modo que $-\ell$ es cota superior de $S_b$. La minimalidad de $t$ da $t\le-\ell$ y por tanto $\ell\le-t$. Así $-t$ es la mayor cota inferior y $\inf S_a=-t=-\sup S_b$. El argumento no exige que $t$ o $-t$ sean términos.
-
-**Fundamento en la sección 7.4.**
-
-**Demostración.** Sea $\ell_0\in\mathbb R$ una cota inferior de $a$ y definamos $b_n=-a_n$ en todo $\mathbb N$. Las comparaciones anteriores acreditan que $b$ es no decreciente y tiene cota superior $-\ell_0$. Por §7.3, existe $t=\sup S_b$ y $b_n\to t$.
-
-Como $b_n\le t$, tenemos $-t\le a_n$ para todo índice, de modo que $-t$ es cota inferior de $S_a$. Para comprobar que es la mayor, sea $\ell$ cualquier cota inferior de $S_a$. De $\ell\le a_n$ se sigue $b_n\le-\ell$, así que $-\ell$ es cota superior de $S_b$. La minimalidad de $t$ da $t\le-\ell$, y cambiar el signo da $\ell\le-t$. Por tanto $-t$ es mayor o igual que toda cota inferior de $S_a$ y cumple $-t=\inf S_a$.
 
 </details>
 
@@ -1455,8 +1227,6 @@ Desde $b_n\to t$, justifica $a_n\to-t$ mediante la regla del escalar y mediante 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 27</summary>
 
-**Respuesta.**
-
 Por la regla del escalar de C06, multiplicar $b_n\to t$ por −1 da $a_n=-b_n\to-t$. Directamente,
 
 $$
@@ -1464,12 +1234,6 @@ $$
 $$
 
 Si un corte $N$ garantiza $|b_n-t|<\varepsilon$ para todos los $n\ge N$, esa igualdad garantiza $|a_n+t|<\varepsilon$ en los mismos índices. No hace falta cambiar el corte ni la tolerancia.
-
-**Fundamento en la sección 7.4.**
-
-La regla del escalar de C06 §6.6, aplicada a $b_n\to t$ y al escalar −1, da $a_n=-b_n\to-t=\inf S_a$. También podemos verificar el transporte del error directamente: $|a_n-(-t)|=|-b_n+t|=|b_n-t|$, por lo que cualquier umbral de $b$ para una tolerancia sirve para $a$ con esa misma tolerancia. Quedan acreditados existencia, identificación extremal y convergencia en la dirección no creciente.
-
-La igualdad entre extremos es $\inf S_a=-\sup(-S_a)$. No es una igualdad de sucesiones ni dice que el ínfimo sea un término. La reflexión conserva los índices, invierte el orden de los valores y cambia el signo de las barreras. El paso al límite se usa después de haber obtenido la convergencia de $b$.
 
 </details>
 
@@ -1484,21 +1248,9 @@ Fijado $T\in\mathbb N$, distingue la restricción de $a$ a $D_T$ y la función $
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 28</summary>
 
-**Respuesta.**
-
 La restricción $a|_{D_T}:D_T\to\mathbb R$ conserva las evaluaciones de $a$ en $D_T=\{n\in\mathbb N:n\ge T\}$. La reindexación $c:\mathbb N\to\mathbb R$ asigna $c_k=a_{T+k}$. Cada valor de $c$ es un valor de la restricción porque $T+k\ge T$. Recíprocamente, si $n\ge T$, entonces $k=n-T\in\mathbb N$ y $a_n=c_k$. Ambas imágenes son $S_{a,T}$.
 
 Si $T>0$, los dominios $D_T$ y $\mathbb N$ son distintos, aunque las imágenes coincidan. Si $T=0$, $D_T=\mathbb N$ y $c_k=a_k$; tanto la restricción como la reindexación son la misma función $a$.
-
-**Fundamento en la sección 7.4.**
-
-Para aplicar los resultados globales, debemos presentar esa cola como una sucesión con dominio natural. Fijado $T$, definimos $c:\mathbb N\to\mathbb R$ por $c_k=a_{T+k}$. La restricción de $a$ al conjunto $D_T=\{n\in\mathbb N:n\ge T\}$ tiene dominio $D_T$; la función $c$ tiene dominio $\mathbb N$. Si $T>0$, estos dominios son distintos. Ambas recorren el mismo conjunto de valores de cola,
-
-$$
-S_{a,T}=\{a_n:n\in\mathbb N,\ n\ge T\}=S_c.
-$$
-
-La igualdad de conjuntos se comprueba en los dos sentidos: $c_k=a_{T+k}$ es un valor de cola; si $n\ge T$, el natural $k=n-T$ satisface $c_k=a_n$. El conjunto es no vacío porque contiene $a_T=c_0$.
 
 </details>
 
@@ -1513,17 +1265,9 @@ Reconstruye las hipótesis del teorema eventual en ambas direcciones y la transf
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 29</summary>
 
-**Respuesta.**
-
 Para $n\ge T$, no decrecimiento y una cota superior real habilitan $a_n\to\sup S_{a,T}$; no crecimiento y una cota inferior real habilitan $a_n\to\inf S_{a,T}$. En cada caso, $c_k=a_{T+k}$ tiene la dirección y cota correspondientes en todo $\mathbb N$, por lo que se aplica el teorema global pertinente.
 
 Si $|c_k-L|<\varepsilon$ para todo $k\ge K$, toma $N=T+K$. Para $n\ge N$, $k=n-T$ es natural y cumple $k\ge K$, luego $|a_n-L|=|c_k-L|<\varepsilon$. Si la dirección empieza desde $T_m$ y la cota desde $T_c$, se reúnen en $T=\max\{T_m,T_c\}$, desde donde valen ambas hipótesis.
-
-**Fundamento en la sección 7.4.**
-
-El resultado reúne la existencia acreditada para la cola con una transferencia ya disponible. Podremos invocarlo después sin reconstruir cada vez la reindexación. El extremo se toma sobre $S_{a,T}$; no hemos probado que coincida con el extremo del conjunto global $S_a$.
-
-Si la monotonía empieza desde $T_m$ y la cota pertinente vale desde $T_c$, podemos reunir las hipótesis en $T=\max\{T_m,T_c\}$. Todo índice desde ese corte cumple ambas. Para un corte $T'$ mayor que uno ya admisible, el mismo resultado identifica el límite con el extremo de $S_{a,T'}$. Como C06 garantiza unicidad del límite de $a$, ambos extremos de cola son iguales. Esta afirmación se refiere a colas que cumplen las mismas hipótesis, no a cualquier conjunto obtenido eliminando valores sin atender a los índices.
 
 </details>
 
@@ -1555,8 +1299,6 @@ Si una cola tiene cota superior $U$, construye una cota global mediante un máxi
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 31</summary>
 
-**Respuesta.**
-
 Si $a_n\le U$ para $n\ge T$, define
 
 $$
@@ -1566,12 +1308,6 @@ $$
 El conjunto es finito y no vacío. Para $n<T$, el término pertenece al conjunto y es $\le M$; para $n\ge T$, $a_n\le U\le M$. Así $M$ es cota superior global.
 
 Si $\ell\le a_n$ desde $T$, define $m=\min(\{\ell\}\cup\{a_n:n<T\})$. Para $n<T$, $m\le a_n$ por el mínimo; para $n\ge T$, $m\le\ell\le a_n$. Es cota inferior global. Si $T=0$, el prefijo está vacío y los conjuntos auxiliares son $\{U\}$ y $\{\ell\}$: resultan $M=U$ y $m=\ell$, sin tomar extremos de un conjunto vacío.
-
-**Fundamento en la sección 7.4.**
-
-Una cota global sigue siendo cota al restringirnos a una cola. La vuelta necesita incluir los valores del prefijo, aunque son sólo una cantidad finita. Si $U$ es cota superior desde $T$, el conjunto finito $\{U\}\cup\{a_n:n<T\}$ es no vacío y tiene máximo $M$. Para $n<T$, $a_n\le M$ porque el término pertenece a ese conjunto; para $n\ge T$, $a_n\le U\le M$. Así $M$ es cota superior global.
-
-Para una cota inferior $\ell$ de cola, tomamos el mínimo $m$ del conjunto finito no vacío $\{\ell\}\cup\{a_n:n<T\}$. Si $n<T$, $m\le a_n$; si $n\ge T$, $m\le\ell\le a_n$. Por tanto $m$ es cota inferior global. Cuando $T=0$, el prefijo está vacío y los conjuntos siguen conteniendo $U$ o $\ell$, por lo que el argumento también cubre ese caso.
 
 </details>
 
@@ -1586,17 +1322,9 @@ Supón que una cola no decreciente y acotada superiormente empieza en $T$, y tom
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 32</summary>
 
-**Respuesta.**
-
 Desde $T'\ge T$ siguen valiendo no decrecimiento y la misma cota superior. El resultado eventual aplicado desde $T$ da $a_n\to s=\sup S_{a,T}$; aplicado desde $T'$ da $a_n\to s'=\sup S_{a,T'}$. La unicidad del límite real de C06 obliga a $s=s'$.
 
 Esto no obliga a coincidir con el supremo global: en $a_0=10$ y $a_n=1-1/n$ para $n\ge1$, el supremo de cualquier cola desde $T'\ge1$ es 1, mientras que $\sup S_a=10$. La igualdad obtenida se refiere a las colas que cumplen las hipótesis.
-
-**Fundamento en la sección 7.4.**
-
-El resultado reúne la existencia acreditada para la cola con una transferencia ya disponible. Podremos invocarlo después sin reconstruir cada vez la reindexación. El extremo se toma sobre $S_{a,T}$; no hemos probado que coincida con el extremo del conjunto global $S_a$.
-
-Si la monotonía empieza desde $T_m$ y la cota pertinente vale desde $T_c$, podemos reunir las hipótesis en $T=\max\{T_m,T_c\}$. Todo índice desde ese corte cumple ambas. Para un corte $T'$ mayor que uno ya admisible, el mismo resultado identifica el límite con el extremo de $S_{a,T'}$. Como C06 garantiza unicidad del límite de $a$, ambos extremos de cola son iguales. Esta afirmación se refiere a colas que cumplen las mismas hipótesis, no a cualquier conjunto obtenido eliminando valores sin atender a los índices.
 
 </details>
 
@@ -1802,15 +1530,7 @@ Para una sucesión no decreciente, ¿por qué la cota inferior $a_0$ no basta pa
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 33</summary>
 
-**Respuesta.**
-
 §7.3 exige una cota superior real; la cota inferior $a_0$ sólo impide que los términos bajen por debajo del inicial, sin impedir que crezcan más allá de toda barrera. Por ejemplo, $a_n=n$ es no decreciente y tiene cota inferior 0, pero carece de cota superior: para cualquier $U\in\mathbb R$, la arquimedianidad proporciona $N\in\mathbb N$ con $N>U$, luego $a_N>U$. Por §7.5 escapa por arriba y no tiene límite real.
-
-**Fundamento en la sección 7.5.**
-
-Los resultados anteriores reúnen dos datos distintos. La monotonía impide que los términos retrocedan en la dirección elegida; la cota pertinente impide que sigan avanzando más allá de toda barrera real. La completitud proporciona entonces el extremo que la prueba convierte en límite. Para entender el alcance del teorema, retiraremos una hipótesis cada vez y comprobaremos qué conclusión queda disponible.
-
-Una sucesión no decreciente siempre tiene cota inferior: $a_0\le a_n$ para todo $n\in\mathbb N$. Esa cota no sustituye la cota superior que exige §7.3. Del mismo modo, una sucesión no creciente tiene cota superior $a_0$, pero necesita una cota inferior para aplicar §7.4. La dirección determina de qué lado debe estar la barrera.
 
 </details>
 
@@ -1825,17 +1545,7 @@ En el escape por arriba, ¿qué paso transforma «existe $N$ con $a_N>M$» en «
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 34</summary>
 
-**Respuesta.**
-
 La comparación monótona entre índices da $a_N\le a_n$ para todo $n\ge N$. Con $a_N>M$, resulta $a_n\ge a_N>M$ en todos esos índices. Así el testigo se convierte en corte gracias al no decrecimiento. $N$ se elige después de fijar la barrera real $M$ y puede depender de ella, para la sucesión dada; no se exige un mismo corte para todas las barreras.
-
-**Fundamento en la sección 7.5.**
-
-La falta de cota superior dice que cada barrera real es superada por algún término. Por sí sola, esa afirmación no exige que todos los términos posteriores la superen. La monotonía permite dar precisamente ese paso.
-
-> **Escape por arriba.** Si $a:\mathbb N\to\mathbb R$ es no decreciente y no tiene cota superior, entonces para cada $M\in\mathbb R$ existe $N\in\mathbb N$ tal que $a_n>M$ para todo $n\ge N$.
-
-**Demostración.** Fijemos una barrera $M\in\mathbb R$. Como no es cota superior, existe $N\in\mathbb N$ con $a_N>M$. Si $n\ge N$, la monotonía da $a_n\ge a_N>M$. Este mismo $N$ sirve para todos los índices posteriores. Hemos demostrado
 
 </details>
 
@@ -1850,15 +1560,7 @@ Fijado un candidato real $A$, ¿cómo permiten la barrera $A+1$, la tolerancia 1
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 35</summary>
 
-**Respuesta.**
-
 Fija $A\in\mathbb R$ y $\varepsilon_0=1$. El escape aplicado a $M=A+1$ da $T\in\mathbb N$ con $a_n>A+1$ para todos los $n\ge T$. Ante cualquier corte propuesto $K$, elige $n=\max\{K,T\}$. Entonces $n\ge K$ y $|a_n-A|=a_n-A>1$. Por tanto ningún $K$ controla error menor que 1 en toda su cola, y $A$ no es límite. La barrera depende del candidato; $T$ se obtiene antes de recibir el corte propuesto y el índice infractor después de éste.
-
-**Fundamento en la sección 7.5.**
-
-El corte $N$ puede depender de la barrera $M$. No se afirma que exista un único corte que funcione simultáneamente para todos los números reales. Tampoco basta con encontrar un término grande: la desigualdad entre términos es la que sostiene la conclusión sobre toda la cola.
-
-Este escape excluye cualquier límite real. Para comprobarlo con todos los candidatos, fijemos $A\in\mathbb R$ y la tolerancia $\varepsilon_0=1$. Aplicando el escape a la barrera $M=A+1$, obtenemos un corte $T$ desde el cual $a_n>A+1$. Dado cualquier corte propuesto $K\in\mathbb N$, tomamos $n=\max\{K,T\}$. Entonces $n\ge K$ y $|a_n-A|>1$. Por tanto ningún corte hace que todos los errores posteriores sean menores que 1. Como el argumento vale para cada $A$, la sucesión no converge a ningún número real.
 
 </details>
 
@@ -1873,15 +1575,7 @@ Si $a$ es no creciente y no tiene cota inferior, ¿por qué $b_n=-a_n$ carece de
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 36</summary>
 
-**Respuesta.**
-
 Si $b$ tuviera cota superior $U$, de $b_n=-a_n\le U$ se seguiría $a_n\ge-U$ para todo $n$, contradiciendo la ausencia de cota inferior de $a$. Así $b$ carece de cota superior. Además, $a$ no creciente hace $b$ no decreciente. La exigencia $a_n<M$ equivale a $b_n>-M$: se aplica el escape por arriba de $b$ a la barrera $-M$. Cambiar el signo conserva el índice y revierte la desigualdad entre valores.
-
-**Fundamento en la sección 7.5.**
-
-**Demostración.** Definamos $b_n=-a_n$ en todo $\mathbb N$. La dirección de $a$ hace que $b$ sea no decreciente. Si $b$ tuviera una cota superior $U$, tendríamos $a_n\ge-U$ para todo $n$, contradiciendo la ausencia de cota inferior. Así, $b$ no tiene cota superior. Aplicamos el escape por arriba a $b$ con la barrera $-M$: existe $N$ tal que $b_n>-M$ para todo $n\ge N$, lo que equivale a $a_n<M$.
-
-Para excluir un candidato real $A$, usamos ahora la barrera $M=A-1$. Existe $T$ tal que $a_n<A-1$ para todo $n\ge T$. Con $\varepsilon_0=1$, cualquier corte $K$ admite el índice $n=\max\{K,T\}$, que cumple $n\ge K$ y $|a_n-A|>1$. Queda refutado cada candidato. La sucesión $a_n=-n$ realiza este caso: es no creciente, tiene cota superior 0 y carece de cota inferior real.
 
 </details>
 
@@ -1896,17 +1590,7 @@ Para $d_n=(-1)^n$, comprueba la refutación de un candidato $A\ge0$ usando índi
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 37</summary>
 
-**Respuesta.**
-
 Fija la tolerancia $\varepsilon_0=1$. Si $A\ge0$, para cualquier corte $K$ elige el índice impar $n=2K+1\ge K$. Su término es $d_n=-1$ y $|d_n-A|=1+A\ge1$. Si $A<0$, elige el índice par $n=2K\ge K$; entonces $d_n=1$ y $|d_n-A|=1-A>1$. Los dos casos cubren todos los candidatos reales. Un error igual a 1 basta porque la definición exige que todos los errores posteriores sean estrictamente menores que la tolerancia 1.
-
-**Fundamento en la sección 7.5.**
-
-La acotación tampoco le proporciona un límite. Fijemos cualquier candidato $A\in\mathbb R$ y $\varepsilon_0=1$. Si $A\ge0$, para cualquier corte $K$ elegimos el índice impar $n=2K+1\ge K$. Entonces $d_n=-1$ y $|d_n-A|=1+A\ge1$. Si $A<0$, elegimos el índice par $n=2K\ge K$. Entonces $d_n=1$ y $|d_n-A|=1-A>1$. En ambos casos, ningún corte mantiene todos los errores estrictamente por debajo de 1. Esta prueba, coherente con la refutación de límites de C06, cubre todos los candidatos; las cotas sólo controlan el tamaño de los valores.
-
-Para una sucesión monótona de valores reales podemos reunir los resultados en una equivalencia:
-
-> Una sucesión monótona converge a un número real si y sólo si está acotada.
 
 </details>
 
@@ -1921,15 +1605,7 @@ Para una sucesión monótona de valores reales podemos reunir los resultados en 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 38</summary>
 
-**Respuesta.**
-
 La implicación convergencia real $\Rightarrow$ acotación no requiere monotonía: es el resultado general de C06 §6.5. Para acotación $\Rightarrow$ convergencia sí se necesita la hipótesis monótona en esta equivalencia. Si la dirección es no decreciente, basta una cota superior, porque $a_0$ ya es cota inferior; se aplica §7.3. Si es no creciente, basta una cota inferior, porque $a_0$ ya es cota superior; se aplica §7.4. La constante cumple ambas direcciones y también está incluida.
-
-**Fundamento en la sección 7.5.**
-
-En la dirección de convergencia a acotación usamos el resultado ya demostrado en C06 §6.5, que vale para toda sucesión real convergente. En la dirección inversa, la acotación proporciona una cota superior si la sucesión es no decreciente, y §7.3 da la convergencia. Si es no creciente, proporciona una cota inferior y aplicamos §7.4. Una sucesión constante cumple ambas direcciones y converge a su valor constante. No se necesita monotonía estricta.
-
-La hipótesis «monótona» permanece en esta equivalencia. La sucesión $d$ impide eliminarla de la dirección acotación a convergencia. A su vez, $a_n=n$ impide eliminar la acotación de la afirmación de convergencia para sucesiones monótonas. Bajo no decrecimiento basta la cota superior, porque $a_0$ ya es cota inferior; bajo no crecimiento basta la cota inferior, porque $a_0$ ya es cota superior.
 
 </details>
 
@@ -2208,15 +1884,7 @@ En el cálculo del límite de $u$, ¿qué resultado acredita primero su existenc
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 41</summary>
 
-**Respuesta.**
-
 El teorema monótono de §7.3 acredita primero la existencia de $L_u$: $u$ es no decreciente y tiene cota superior 1. El desplazamiento de C06 §6.4 da $u_{n+1}\to L_u$, mientras que las reglas de suma y escalar de C06 §6.6 dan $(u_n+1)/2\to(L_u+1)/2$. La recurrencia iguala estas dos sucesiones término a término; la unicidad del límite obliga a que $L_u=(L_u+1)/2$, de donde $L_u=1$. La ecuación identifica un límite cuya existencia ya estaba demostrada.
-
-**Fundamento en la sección 7.6.**
-
-Por las reglas de suma y escalar de C06 §6.6, $(u_n+1)/2\to(L_u+1)/2$. Los dos lados de la recurrencia son iguales para cada índice y, por tanto, tienen el mismo límite. La unicidad demostrada en C06 permite escribir $L_u=(L_u+1)/2$. Multiplicar por 2 y restar $L_u$ da $L_u=1$.
-
-Hemos usado primero monotonía y cota para garantizar que había un límite real; después hemos utilizado la recurrencia para identificarlo. Resolver la ecuación no habría acreditado la existencia que permite pasar al límite. La separación importa incluso cuando la ecuación tiene una única solución.
 
 </details>
 
@@ -2231,15 +1899,7 @@ Las funciones $n\mapsto u_n$ y $n\mapsto u_{n+1}$ tienen el mismo límite. ¿Por
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 42</summary>
 
-**Respuesta.**
-
 Ambas son funciones de $\mathbb N$ en $\mathbb R$, pero en el índice 0 la primera vale $u_0=0$ y la desplazada vale $u_1=1/2$. Esa diferencia basta para que sean sucesiones distintas. El dominio de la desplazada sigue siendo $\mathbb N$: su regla evalúa $u$ en $n+1$. Compartir el límite real 1 no las iguala como funciones.
-
-**Fundamento en la sección 7.6.**
-
-La recurrencia relaciona dos sucesiones: $n\mapsto u_n$ y $n\mapsto u_{n+1}$, ambas con dominio $\mathbb N$. Son funciones distintas, pues sus evaluaciones en 0 son 0 y $1/2$. Sin embargo, la regla de desplazamiento de C06 §6.4 da $u_{n+1}\to L_u$. El desplazamiento conserva el límite: si un corte $N$ controla el error de $u$, entonces $n\ge N$ implica $n+1\ge N$, por lo que ese corte también controla el error de la sucesión desplazada.
-
-Por las reglas de suma y escalar de C06 §6.6, $(u_n+1)/2\to(L_u+1)/2$. Los dos lados de la recurrencia son iguales para cada índice y, por tanto, tienen el mismo límite. La unicidad demostrada en C06 permite escribir $L_u=(L_u+1)/2$. Multiplicar por 2 y restar $L_u$ da $L_u=1$.
 
 </details>
 
@@ -2254,15 +1914,7 @@ La recurrencia $w_{n+1}=-w_n$, con $w_0=1$, conduce a la ecuación $W=-W$ si se 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 43</summary>
 
-**Respuesta.**
-
 Queda pendiente demostrar que existe un límite real. Bajo la suposición $w_n\to W$, el desplazamiento y la regla del escalar permiten obtener $W=-W$, luego $W=0$; esto sólo restringe el valor de un límite supuesto. La inducción da $w_n=(-1)^n$, y §7.5 refuta su convergencia. En particular, con tolerancia 1 y cualquier corte $K$, el índice $n=K$ tiene $|w_n-0|=1$, por lo que 0 tampoco es límite.
-
-**Fundamento en la sección 7.6.**
-
-Hemos usado primero monotonía y cota para garantizar que había un límite real; después hemos utilizado la recurrencia para identificarlo. Resolver la ecuación no habría acreditado la existencia que permite pasar al límite. La separación importa incluso cuando la ecuación tiene una única solución.
-
-Por ejemplo, la recurrencia $w_0=1$, $w_{n+1}=-w_n$ produce $w_n=(-1)^n$: la base coincide y cada paso cambia el signo. Si supusiéramos $w_n\to W$, el desplazamiento y la regla del escalar darían $W=-W$, luego $W=0$. La ecuación tiene una única solución real, pero §7.5 demostró que esta sucesión no converge. Sólo hemos obtenido una condición necesaria para un límite supuesto; no hemos demostrado que ese límite exista.
 
 </details>
 
@@ -2277,15 +1929,7 @@ En la construcción de $y$, ¿qué propiedad debe conocerse antes de evaluar $2/
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 44</summary>
 
-**Respuesta.**
-
 Antes de evaluar $2/y_n$ debe conocerse $y_n\ne0$; aquí se demuestra la propiedad más fuerte $y_n>0$. La base $y_0=2$ la cumple. Si $y_n>0$, su inverso existe y $2/y_n>0$, de modo que $y_{n+1}=(y_n+2/y_n)/2>0$ es un único real definido. La inducción permite continuar para todo $n\in\mathbb N$. Con $y_0=0$, el cociente $2/y_0$ no está definido y la prescripción no produce $y_1$.
-
-**Fundamento en la sección 7.6.**
-
-**Construcción y positividad.** La base $y_0=2$ es real y positiva. Si ya se ha construido $y_n>0$, su inverso existe en $\mathbb R$; además, $2/y_n>0$. La suma $y_n+2/y_n$ y su mitad son positivas, de modo que la fórmula define un único real $y_{n+1}>0$. La construcción recursiva elemental, con esta inducción, produce un término positivo para cada $n\in\mathbb N$. Ninguna división se ejecuta sobre un término cuya no anulación esté pendiente.
-
-Esta obligación no es automática para cualquier dato inicial: con $y_0=0$, la misma prescripción no definiría siquiera $y_1$. El dato inicial 2 entra en la prueba desde la base, junto con la propiedad que permite continuar.
 
 </details>
 
@@ -2300,30 +1944,13 @@ Reconstruye la inducción de $y_n^2>2$ usando la identidad cuadrática. ¿Dónde
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 45</summary>
 
-**Respuesta.**
-
 La positividad de los términos está acreditada antes de usar la identidad. La base es $y_0^2=4>2$. Si $y_n^2>2$, entonces $(y_n^2-2)^2>0$ y $4y_n^2>0$; por tanto
 
 $$
 y_{n+1}^2-2=\frac{(y_n^2-2)^2}{4y_n^2}>0.
 $$
 
-La positividad estricta del numerador conserva la desigualdad estricta; un numerador meramente no negativo sólo daría $y_{n+1}^2\ge2$. La inducción prueba $y_n^2>2$ en todos los índices. Si algún término satisficiera $0<y_n<1$, tendríamos $y_n^2<y_n<1$, contradicción. Así $y_n\ge1$ para todo $n$, sin presuponer una raíz ni el límite.
-
-**Fundamento en la sección 7.6.**
-
-La primera evaluación da $y_1=3/2$, cuyo cuadrado es mayor que 2. La desigualdad $y_n^2>2$ será útil si podemos propagarla. Una vez acreditado $y_n>0$, el cálculo algebraico da
-
-$$
-y_{n+1}^2-2
-=\frac{y_n^2+4+4/y_n^2}{4}-2
-=\frac{y_n^4-4y_n^2+4}{4y_n^2}
-=\frac{(y_n^2-2)^2}{4y_n^2}.
-$$
-
-El denominador es positivo. Si $y_n^2>2$, también el numerador es positivo, porque se está elevando al cuadrado un número estrictamente positivo. En la base, $y_0^2=4>2$; la identidad demuestra por inducción que $y_n^2>2$ para todos los índices. Hemos conservado una desigualdad estricta, no sólo $y_n^2\ge2$.
-
-De la positividad y esta desigualdad obtenemos una cota inferior sencilla: $y_n\ge1$. En efecto, si $0<y_n<1$, multiplicar por el positivo $y_n$ da $y_n^2<y_n<1$, en contradicción con $y_n^2>2$. La barrera 1 queda justificada sin conocer todavía un límite ni nombrar una raíz como destino.
+La positividad estricta del numerador conserva la desigualdad estricta; un numerador meramente no negativo sólo daría $y_{n+1}^2\ge2$. La inducción prueba $y_n^2>2$ en todos los índices. Si algún término satisficiera $0<y_n\le1$, tendríamos $y_n^2\le1<2$, contradicción. Así $y_n>1$ para todo $n$; en particular, $1$ es una cota inferior conocida antes de construir una raíz o demostrar la existencia del límite.
 
 </details>
 
@@ -2338,23 +1965,7 @@ En la identidad para $y_{n+1}-y_n$, identifica el hecho que determina el signo d
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 46</summary>
 
-**Respuesta.**
-
 En $y_{n+1}-y_n=(2-y_n^2)/(2y_n)$, el invariante $y_n^2>2$ hace negativo el numerador y la positividad $y_n>0$ hace positivo el denominador. La diferencia es estrictamente negativa, luego $y$ es decreciente y, en particular, no creciente. Junto con la cota inferior 1 demostrada, esto habilita el teorema de §7.4 y garantiza un límite real. La cota superior 2 se obtiene de la dirección: por comparación de índices, $y_n\le y_0=2$.
-
-**Fundamento en la sección 7.6.**
-
-De la positividad y esta desigualdad obtenemos una cota inferior sencilla: $y_n\ge1$. En efecto, si $0<y_n<1$, multiplicar por el positivo $y_n$ da $y_n^2<y_n<1$, en contradicción con $y_n^2>2$. La barrera 1 queda justificada sin conocer todavía un límite ni nombrar una raíz como destino.
-
-Para determinar la dirección, restamos $y_n$ de la fórmula de iteración:
-
-$$
-y_{n+1}-y_n
-=\frac{2/y_n-y_n}{2}
-=\frac{2-y_n^2}{2y_n}<0.
-$$
-
-El signo usa dos hechos ya probados: $2-y_n^2<0$ y $2y_n>0$. Así, $y$ es estrictamente decreciente y, en particular, no creciente. Comparando con el primer término obtenemos $y_n\le y_0=2$. Quedan reunidas las barreras $1\le y_n\le2$ y la dirección necesaria para aplicar §7.4.
 
 </details>
 
@@ -2369,15 +1980,7 @@ El signo usa dos hechos ya probados: $2-y_n^2<0$ y $2y_n>0$. Así, $y$ es estric
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 47</summary>
 
-**Respuesta.**
-
 Una sucesión positiva puede converger a 0: $1/(n+1)$ es un ejemplo de C06. Por eso la positividad de cada $y_n$ no asegura por sí sola $L\ne0$. Aquí primero se acredita la existencia de $L$ y se aplica el orden de límites a $1\le y_n\le2$, obteniendo $1\le L\le2$, luego $L>0$. Para el cociente de C06 §6.6 se usan la convergencia de la constante 2 a 2, $y_n\to L\ne0$ y $y_n\ne0$ en todos los índices. Sólo con esos datos se concluye $2/y_n\to2/L$.
-
-**Fundamento en la sección 7.6.**
-
-El orden de límites de C06 §6.7, aplicado a $1\le y_n\le2$, da $1\le L\le2$. En particular, $L>0$. Este margen es necesario antes de calcular con $2/L$: que ningún término sea cero no bastaría para asegurar un límite distinto de cero. Por ejemplo, todos los términos de $1/(n+1)$ son positivos y su límite es 0.
-
-Tenemos ya los datos para el cociente de C06 §6.6: la sucesión constante de valor 2 converge a 2; el denominador $y_n$ converge a $L\ne0$ y no se anula en ningún índice. Así, $2/y_n\to2/L$. Las reglas de suma y escalar dan $(y_n+2/y_n)/2\to(L+2/L)/2$. A su vez, el desplazamiento de C06 §6.4 da $y_{n+1}\to L$. Como ambos lados de la recurrencia son iguales en cada índice, la unicidad del límite produce
 
 </details>
 
@@ -2415,7 +2018,7 @@ Sean $c,r\in\mathbb R$ y $0<\lambda<1$. Define $v:\mathbb N\to\mathbb R$ por $v_
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 26</summary>
 
-**Control antes del cálculo.** La regla afín produce un único real en cada paso, sin denominadores variables. Las dos identidades útiles son
+La regla afín produce un único real en cada paso, sin denominadores variables. Las dos identidades útiles son
 
 $$
 v_{n+1}-c=\lambda(v_n-c),\qquad v_{n+1}-v_n=(1-\lambda)(c-v_n).
@@ -2423,7 +2026,7 @@ $$
 
 Si $r<c$, la primera identidad conserva $v_n<c$ por inducción porque $\lambda>0$. La segunda da incremento positivo porque $1-\lambda>0$. Por tanto $r\le v_n<c$ y §7.3 garantiza un límite real. Si $r>c$, se conserva $v_n>c$, el incremento es negativo y $c<v_n\le r$; §7.4 garantiza un límite. Si $r=c$, la inducción da $v_n=c$ para todo $n$, con límite $c$.
 
-**Identificación.** En los dos casos no constantes ya existe $L\in\mathbb R$. Desplazamiento, suma y multiplicación por escalares de C06 dan $L=\lambda L+(1-\lambda)c$. Como $1-\lambda\ne0$, resulta $L=c$. Así, las tres sucesiones convergen a $c$; los casos estrictos no alcanzan ese valor en ningún índice. La completitud interviene mediante el teorema monótono, antes de resolver la ecuación.
+En los dos casos no constantes ya existe $L\in\mathbb R$. Desplazamiento, suma y multiplicación por escalares de C06 dan $L=\lambda L+(1-\lambda)c$. Como $1-\lambda\ne0$, resulta $L=c$. Así, las tres sucesiones convergen a $c$; los casos estrictos no alcanzan ese valor en ningún índice. La completitud interviene mediante el teorema monótono, antes de resolver la ecuación.
 
 </details>
 
@@ -2461,7 +2064,7 @@ Sea $r\in\mathbb R$ con $r>0$ y $r^2>2$. Para $y_0=r$ y $y_{n+1}=(y_n+2/y_n)/2$,
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 28</summary>
 
-**Construcción e invariante.** Si $y_n>0$, el inverso existe y la regla produce un único $y_{n+1}>0$. La base $r>0$ permite esta inducción para todos los índices. Para cada término construido,
+Si $y_n>0$, el inverso existe y la regla produce un único $y_{n+1}>0$. La base $r>0$ permite esta inducción para todos los índices. Para cada término construido,
 
 $$
 y_{n+1}^2-2=\frac{(y_n^2-2)^2}{4y_n^2},\qquad
@@ -2470,7 +2073,7 @@ $$
 
 La base $r^2>2$, la primera identidad y el denominador positivo conservan $y_n^2>2$ estrictamente: el numerador nunca es cero. Como $y_n>0$, se deduce $y_n>1$, pues $0<y_n\le1$ implicaría $y_n^2\le1$. La segunda identidad tiene numerador negativo y denominador positivo, luego $y$ es estrictamente decreciente y $1<y_n\le r$.
 
-**Existencia y destino.** §7.4, que recibe aquí la completitud real, da $y_n\to L$. El orden de límites de C06 da $L\ge1$, de modo que $L\ne0$. Ahora están verificadas las hipótesis del cociente: los denominadores son no nulos y su límite también. Por desplazamiento y operaciones de límites,
+§7.4, que recibe aquí la completitud real, da $y_n\to L$. El orden de límites de C06 da $L\ge1$, de modo que $L\ne0$. Ahora están verificadas las hipótesis del cociente: los denominadores son no nulos y su límite también. Por desplazamiento y operaciones de límites,
 
 $$
 L=\frac{L+2/L}{2},\qquad L^2=2,\qquad L>0.
@@ -2519,7 +2122,7 @@ Sean $\rho>0$ y $r>0$ reales con $r^2>\rho$. Define $x_0=r$ y $x_{n+1}=(x_n+\rho
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 30</summary>
 
-**Construir sin conocer el destino.** La base $x_0=r>0$ y la positividad de $\rho/x_n$ cuando $x_n>0$ construyen todos los términos positivos. Las identidades algebraicas son
+La base $x_0=r>0$ y la positividad de $\rho/x_n$ cuando $x_n>0$ construyen todos los términos positivos. Las identidades algebraicas son
 
 $$
 x_{n+1}^2-\rho=\frac{(x_n^2-\rho)^2}{4x_n^2},\qquad
@@ -2528,7 +2131,7 @@ $$
 
 Por inducción desde $r^2>\rho$, la primera conserva la desigualdad estricta; la segunda implica descenso estricto. Para una barrera independiente de una raíz, fija $m=\min\{1,\rho\}$. Si $\rho\ge1$, $0<x_n\le1$ implicaría $x_n^2\le1\le\rho$, imposible. Si $0<\rho<1$, $0<x_n\le\rho$ implicaría $x_n^2\le\rho^2<\rho$, también imposible. Así $0<m<x_n\le r$.
 
-**Existencia antes de la ecuación.** §7.4 aplica monotonía, cota y completitud para dar un límite $L$. Por orden de límites, $L\ge m>0$. Sólo ahora pueden usarse el cociente, suma, escalar y desplazamiento de C06 para obtener
+§7.4 aplica monotonía, cota y completitud para dar un límite $L$. Por orden de límites, $L\ge m>0$. Sólo ahora pueden usarse el cociente, suma, escalar y desplazamiento de C06 para obtener
 
 $$
 L=\frac{L+\rho/L}{2},\qquad L^2=\rho.
@@ -2704,21 +2307,7 @@ Declara dominio y codominio de $y$, $\iota$ y $\widetilde y$. ¿Qué cambia al c
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 49</summary>
 
-**Respuesta.**
-
 Los tipos son $y:\mathbb N\to\mathbb Q$, $\iota:\mathbb Q\to\mathbb R$ y $\widetilde y=\iota\circ y:\mathbb N\to\mathbb R$. Componer cambia el codominio de la sucesión y lleva cada valor racional a su imagen real: $\widetilde y_n=\iota(y_n)$. Conserva el dominio $\mathbb N=\{0,1,2,\ldots\}$ y el índice de cada evaluación; no desplaza ni reordena los términos. La identificación usual de los valores no iguala las dos funciones con codominios distintos.
-
-**Fundamento en la sección 7.7.**
-
-En §7.6, la letra $y$ designaba una función $\mathbb N\to\mathbb R$. Para comparar los dos universos, en esta sección llamaremos $y$ a la construcción con codominio racional y $\widetilde y$ a la sucesión real obtenida por inclusión. Declaramos los tres objetos:
-
-$$
-y:\mathbb N\to\mathbb Q,\qquad
-\iota:\mathbb Q\to\mathbb R,\qquad
-\widetilde y=\iota\circ y:\mathbb N\to\mathbb R.
-$$
-
-La aplicación $\iota$ es la inclusión canónica de los racionales en los reales. Conserva suma, producto, inversos de números no nulos y orden. Por eso podemos identificar un racional con su imagen al escribir números en la recta real; esa identificación de valores no identifica funciones con codominios distintos. En comparaciones de un término racional $y_n$ con un número real, su valor se interpreta mediante $\iota(y_n)=\widetilde y_n$. Mantendremos la tilde en los argumentos de límites para dejar visible esa interpretación.
 
 </details>
 
@@ -2733,21 +2322,7 @@ Reconstruye la inducción que conserva racionalidad y positividad. ¿Qué propie
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 50</summary>
 
-**Respuesta.**
-
 La base $y_0=2$ es racional positiva. Si $y_n\in\mathbb Q$ y $y_n>0$, entonces $y_n\ne0$: esa no anulación autoriza el inverso en el cuerpo $\mathbb Q$. Además, $1/y_n>0$, luego $2/y_n$ es racional positivo. La suma $y_n+2/y_n$ y su mitad son racionales positivas, por lo que la fórmula define un único $y_{n+1}\in\mathbb Q$ positivo. La inducción acredita ambas propiedades en todo índice, antes de ejecutar cada división.
-
-**Fundamento en la sección 7.7.**
-
-Definimos en $\mathbb Q$ la misma recurrencia: $y_0=2$ y $y_{n+1}=(y_n+2/y_n)/2$. La base es un racional positivo. Si $y_n$ es racional positivo, su inverso es racional, $2/y_n$ es racional positivo y la suma y la mitad siguen siendo racionales positivas. El paso define, por tanto, un único $y_{n+1}\in\mathbb Q$ con $y_{n+1}>0$. Por inducción, la construcción produce una sucesión racional positiva en todo $\mathbb N$, sin denominadores nulos.
-
-La inclusión transporta cada paso: $\widetilde y_0=2$ y, como conserva las operaciones,
-
-$$
-\widetilde y_{n+1}
-=\iota\left(\frac{y_n+2/y_n}{2}\right)
-=\frac{\widetilde y_n+2/\widetilde y_n}{2}.
-$$
 
 </details>
 
@@ -2762,15 +2337,7 @@ $$
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 51</summary>
 
-**Respuesta.**
-
 La inclusión conserva las operaciones y los inversos de valores no nulos, así que $\widetilde y_0=2$ y $\widetilde y_{n+1}=(\widetilde y_n+2/\widetilde y_n)/2$. Esta sucesión y la real de §7.6 tienen el mismo dominio y codominio. Coinciden en 0; si coinciden en $n$, la fórmula ya definida produce términos iguales en $n+1$. Por inducción coinciden en toda evaluación y son la misma función real. En cambio, $y$ tiene codominio $\mathbb Q$ y $\widetilde y$ tiene codominio $\mathbb R$; su relación es la composición explícita con $\iota$.
-
-**Fundamento en la sección 7.7.**
-
-Así, $\widetilde y$ es exactamente la sucesión real de §7.6. La igualdad puede comprobarse por inducción: coinciden en el índice 0; si coinciden en $n$, la misma operación, ya definida, produce iguales términos en $n+1$. Esta coincidencia de las dos funciones reales permite reutilizar todos los resultados de aquella sección.
-
-En particular, $\widetilde y_n^2>2$, $1\le\widetilde y_n\le2$ y $\widetilde y_{n+1}<\widetilde y_n$ para todo índice. Como la inclusión preserva y refleja el orden, la sucesión racional $y$ también es estrictamente decreciente y tiene las cotas racionales 1 y 2. Los índices no cambian: componer con la inclusión cambia el codominio de la sucesión y conserva las evaluaciones correspondientes, sin reindexarla.
 
 </details>
 
@@ -2785,21 +2352,7 @@ En la prueba de irracionalidad, explica por qué $p^2$ par obliga a $p$ par. ¿Q
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 52</summary>
 
-**Respuesta.**
-
 Si $p$ fuera impar, sería $p=2k+1$ para algún $k\in\mathbb Z$, y $p^2=2(2k^2+2k)+1$ sería impar. Por contraposición, $p^2$ par obliga a $p$ par. La ecuación $p^2=2q^2$ permite escribir $p=2h$ y obtener $4h^2=2q^2$, luego $q^2=2h^2$. Así $q^2$ también es par y el mismo argumento hace par a $q$. El divisor común 2 contradice que $p/q$ estuviera reducida; esa hipótesis se usa precisamente al cerrar la contradicción.
-
-**Fundamento en la sección 7.7.**
-
-Por tanto $p^2$ es par. Si un entero es impar, puede escribirse como $2k+1$, con $k\in\mathbb Z$, y su cuadrado es
-
-$$
-(2k+1)^2=4k^2+4k+1=2(2k^2+2k)+1,
-$$
-
-que es impar. En consecuencia, un cuadrado par sólo puede proceder de un entero par. Aplicando esta observación a $p$, escribimos $p=2h$ para algún $h\in\mathbb Z$. La igualdad anterior se convierte en $4h^2=2q^2$, luego $q^2=2h^2$. El cuadrado de $q$ también es par, y la misma observación obliga a que $q$ sea par.
-
-Hemos obtenido que 2 divide tanto $p$ como $q$, contradiciendo que la fracción estuviera reducida. Así, $L$ no pertenece a la imagen de $\mathbb Q$ en $\mathbb R$. Bajo la identificación usual $\mathbb Q\subset\mathbb R$, esto se escribe $L\in\mathbb R\setminus\mathbb Q$. La irracionalidad procede de la ecuación y la paridad; no de inspeccionar términos ni de contar cifras decimales.
 
 </details>
 
@@ -2814,20 +2367,7 @@ Si $y$ tuviera un límite racional $r$ con la distancia indicada, ¿qué límite
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 53</summary>
 
-**Respuesta.**
-
 La condición de límite racional $r$ sería, para cada tolerancia real $\varepsilon>0$, encontrar $N\in\mathbb N$ tal que $n\ge N$ implique $|\iota(y_n)-\iota(r)|<\varepsilon$. Como $\iota(y_n)=\widetilde y_n$, esto afirma $\widetilde y_n\to\iota(r)$ en $\mathbb R$. Pero §7.6 ya dio $\widetilde y_n\to L$. La unicidad del límite real de C06 obligaría a $\iota(r)=L$, contradiciendo que $L$ no pertenece a la imagen de $\mathbb Q$. Por tanto no existe tal límite racional.
-
-**Fundamento en la sección 7.7.**
-
-Para pedir que $y$ tenga límite en $\mathbb Q$, el candidato debe ser un racional $r$. La distancia es la misma que usamos al incluir los valores en la recta real. Con tolerancias reales positivas, la condición sería
-
-$$
-\forall\varepsilon>0\ \exists N\in\mathbb N\ \forall n\ge N,
-\qquad |\iota(y_n)-\iota(r)|<\varepsilon.
-$$
-
-Como $\iota(y_n)=\widetilde y_n$, esta condición dice precisamente que la sucesión real $\widetilde y$ converge a $\iota(r)$. Pero ya converge a $L$. Por unicidad del límite real, tendríamos $\iota(r)=L$, en contradicción con la irracionalidad probada. Por tanto $y$ no tiene límite racional, aunque $\widetilde y$ sí tenga límite real.
 
 </details>
 
@@ -2842,8 +2382,6 @@ Fijado $r\in\mathbb Q$, ¿por qué $d=|L-\iota(r)|$ es positivo? Reconstruye la 
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 54</summary>
 
-**Respuesta.**
-
 Fija $r\in\mathbb Q$. La irracionalidad de $L$ implica $L\ne\iota(r)$, luego $d=|L-\iota(r)|>0$. Elige la tolerancia fija $\varepsilon_0=d/2$. Como $\widetilde y_n\to L$, existe $T\in\mathbb N$ con $|\widetilde y_n-L|<d/2$ para todo $n\ge T$. La desigualdad triangular da
 
 $$
@@ -2851,16 +2389,6 @@ $$
 $$
 
 Ante cualquier corte propuesto $K$, toma $n=\max\{K,T\}$. Este índice es al menos $K$ y su error supera $\varepsilon_0$, refutando la condición de límite para ese corte. La tolerancia y $T$ pueden depender de $r$; el índice infractor se elige después de conocer $K$.
-
-**Fundamento en la sección 7.7.**
-
-También podemos ver dónde falla la captura de una cola alrededor de cualquier candidato racional. Fijado $r\in\mathbb Q$, la distancia $d=|L-\iota(r)|$ es positiva. La convergencia a $L$ proporciona un corte $T$ tal que $|\widetilde y_n-L|<d/2$ para todo $n\ge T$. Por la desigualdad triangular,
-
-$$
-d\le |L-\widetilde y_n|+|\widetilde y_n-\iota(r)|,
-$$
-
-de modo que $|\widetilde y_n-\iota(r)|>d/2$ desde ese corte. Con la tolerancia fija $\varepsilon_0=d/2$, cualquier corte propuesto $K$ admite el índice $n=\max\{K,T\}$, cuyo error supera $\varepsilon_0$. Cada candidato racional queda excluido. La tolerancia puede depender de $r$, mientras que el índice que refuta un corte se elige después de conocerlo.
 
 </details>
 
@@ -2907,7 +2435,7 @@ Sean $\rho,r\in\mathbb Q$ con $\rho>0$, $r>0$ y $r^2>\rho$. Construye en $\mathb
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 33</summary>
 
-**Tipos y construcción.** Los objetos son
+Los objetos son
 
 $$
 q:\mathbb N\to\mathbb Q,\qquad \iota:\mathbb Q\to\mathbb R,\qquad
@@ -2925,7 +2453,7 @@ $$
 
 La base $r^2>\rho$ y la primera identidad conservan $q_n^2>\rho$ estrictamente. La segunda tiene numerador negativo y denominador positivo: $q$ es estrictamente decreciente. El argumento de 30, válido también en el cuerpo ordenado racional, da $\min\{1,\rho\}<q_n\le r$.
 
-**Transporte y existencia real.** La inclusión conserva operaciones de cuerpo, inversos no nulos y orden; también refleja el orden. En consecuencia,
+La inclusión conserva operaciones de cuerpo, inversos no nulos y orden; también refleja el orden. En consecuencia,
 
 $$
 \widetilde q_0=\iota(r),\qquad
@@ -2983,7 +2511,7 @@ Justifica su buena definición racional, sus límites después de la inclusión 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 35</summary>
 
-**La primera construcción.** El dato $u_0=0$ es racional y la suma con 1 y la división por 2 conservan racionalidad, por lo que $u:\mathbb N\to\mathbb Q$ está definida. Por inducción,
+El dato $u_0=0$ es racional y la suma con 1 y la división por 2 conservan racionalidad, por lo que $u:\mathbb N\to\mathbb Q$ está definida. Por inducción,
 
 $$
 0\le u_n<1,\qquad u_{n+1}-u_n=\frac{1-u_n}{2}>0.
@@ -2991,7 +2519,7 @@ $$
 
 La base satisface la desigualdad y $u_n<1$ implica $(u_n+1)/2<1$, cerrando la inducción. Después de incluir los términos en $\mathbb R$, §7.3 garantiza existencia por dirección y cota superior 1. Si el límite es $U$, desplazamiento y operaciones de C06 dan $U=(U+1)/2$, luego $U=1$. Ningún término alcanza 1 porque $u_n<1$ para todo índice. El límite es racional; la misma condición de error acredita que $u$ tiene límite racional 1.
 
-**La segunda construcción.** Por 33–34, $q:\mathbb N\to\mathbb Q$ está definida, sus términos son positivos, la composición real converge a $L>0$ con $L^2=8$ y $L\notin\iota(\mathbb Q)$. Además $\widetilde q_n>L$ para todo $n$, así que tampoco alcanza su límite. En este caso no hay límite racional, por unicidad del límite real.
+Por 33–34, $q:\mathbb N\to\mathbb Q$ está definida, sus términos son positivos, la composición real converge a $L>0$ con $L^2=8$ y $L\notin\iota(\mathbb Q)$. Además $\widetilde q_n>L$ para todo $n$, así que tampoco alcanza su límite. En este caso no hay límite racional, por unicidad del límite real.
 
 La segunda construcción refuta la primera afirmación: pertenecer a $\mathbb Q$ en cada índice no fuerza que el límite real pertenezca a su imagen. La primera construcción refuta la corrección propuesta: no alcanzar un límite no implica que sea irracional. Ambas tienen términos racionales y un límite real no alcanzado; una tiene destino racional y la otra irracional.
 
@@ -3017,9 +2545,9 @@ para un candidato $r\in\mathbb Q$. Prueba que, para un candidato racional fijo, 
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 36</summary>
 
-**Comparar tolerancias.** Fija $r\in\mathbb Q$. Si la condición vale para todas las tolerancias reales positivas, vale en particular para las imágenes de tolerancias racionales positivas.
+Fija $r\in\mathbb Q$. Si la condición vale para todas las tolerancias reales positivas, vale en particular para las imágenes de tolerancias racionales positivas.
 
-Recíprocamente, supón la condición con tolerancias racionales. Dado $\varepsilon\in\mathbb R$, $\varepsilon>0$, la arquimedianidad permite elegir $m\in\mathbb N$ con $m>1/\varepsilon$. Entonces $m\ge1$ y $\eta=1/m\in\mathbb Q$ satisface $0<\iota(\eta)<\varepsilon$. El corte dado por la condición racional para esa $\eta$ asegura, para todo $n\ge N$,
+Recíprocamente, supón la condición con tolerancias racionales. Dado $\varepsilon\in\mathbb R$, $\varepsilon>0$, tomamos $m=\lfloor1/\varepsilon\rfloor+1$, usando el piso construido en C06. Se cumple $m>1/\varepsilon$ y, por tanto, $m\ge1$ y $\eta=1/m\in\mathbb Q$ satisface $0<\iota(\eta)<\varepsilon$. El corte dado por la condición racional para esa $\eta$ asegura, para todo $n\ge N$,
 
 $$
 |\iota(a_n)-\iota(r)|<\iota(\eta)<\varepsilon.
@@ -3027,7 +2555,7 @@ $$
 
 Así se obtiene la condición con tolerancias reales. El entero $m$ puede depender de $\varepsilon$ y el corte de la tolerancia racional escogida.
 
-**Refutar un candidato.** Fija ahora un racional $r$. Como $L$ no está en la imagen racional, $d=|L-\iota(r)|>0$. Elige por arquimedianidad un entero natural $m>2/d$, necesariamente no nulo, y fija la tolerancia racional $\eta_0=1/m$. Entonces $0<\iota(\eta_0)<d/2$. La convergencia real a $L$ proporciona $T\in\mathbb N$ con $|\widetilde a_n-L|<d/2$ para todo $n\ge T$.
+Fija ahora un racional $r$. Como $L$ no está en la imagen racional, $d=|L-\iota(r)|>0$. Toma $m=\lfloor2/d\rfloor+1\in\mathbb N$. La propiedad del piso da $m>2/d>0$, por lo que $m$ no es nulo y podemos fijar la tolerancia racional $\eta_0=1/m$. Entonces $0<\iota(\eta_0)<d/2$. La convergencia real a $L$ proporciona $T\in\mathbb N$ con $|\widetilde a_n-L|<d/2$ para todo $n\ge T$.
 
 Por la desigualdad triangular, para esos índices,
 
@@ -3149,19 +2677,7 @@ Por orden, $x_{n+1}-x_n=1/[(n+1)(n+2)]>0$ y $x_n<1$. El teorema de §7.3 usa com
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 59</summary>
 
-**Respuesta.**
-
 Una vez probado $x_n\to1$, las reglas de escalar y suma de C06 §6.6, junto con la constante de valor $-3$, dan $2x_n-3\to2\cdot1-3=-1$. Sus hipótesis de convergencia están acreditadas. En cambio, pasar al límite en una recurrencia presupone que ese límite existe y que las operaciones están admitidas. Resolver la ecuación resultante sólo identifica candidatos necesarios. Por ejemplo, $w_{n+1}=-w_n$, $w_0=1$, impone $W=-W$ y $W=0$ bajo una suposición de convergencia, pero $w_n=(-1)^n$ no converge.
-
-**Fundamento en la sección 7.8.**
-
-Si después estudiamos $b_n=2x_n-3$, la convergencia de $x$ ya acreditada habilita suma y escalar de C06, y obtenemos $b_n\to2\cdot1-3=-1$. Esta aplicación de reglas comienza con un límite conocido. Para una recurrencia, §7.6 mostró el mismo orden lógico: las reglas identifican el destino después de que el teorema monótono haya garantizado su existencia.
-
-El extremo que identifica un límite se toma sobre el conjunto al que se aplicó el teorema. Esa precisión importa cuando la dirección sólo vale después de un prefijo. Retomemos el ejemplo de §7.4:
-
-$$
-a_0=10,\qquad a_n=1-\frac1n\quad(n\ge1).
-$$
 
 </details>
 
@@ -3176,15 +2692,7 @@ Para $a_0=10$ y $a_n=1-1/n$ cuando $n\ge1$, declara el dominio de la restricció
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 60</summary>
 
-**Respuesta.**
-
 La restricción de $a$ tiene dominio $D=\{n\in\mathbb N:n\ge1\}$ y codominio $\mathbb R$. La reindexación $c:\mathbb N\to\mathbb R$ tiene regla $c_k=a_{1+k}=1-1/(k+1)=x_k$. Como $c$ y $x$ comparten dominio, codominio y cada evaluación, son la misma función. Si $K$ controla el error de $c$ para una tolerancia dada, toma $N=1+K$ para $a$. Para $n\ge N$, el natural $k=n-1$ satisface $k\ge K$ y $|a_n-1|=|c_k-1|$, trasladando el mismo control.
-
-**Fundamento en la sección 7.8.**
-
-Definamos $c:\mathbb N\to\mathbb R$ por $c_k=a_{1+k}$. Entonces $c_k=1-1/(k+1)=x_k$, de modo que $c$ y $x$ son la misma función. La restricción de $a$ a $\{n\in\mathbb N:n\ge1\}$ tiene otro dominio; la reindexación $c$ tiene dominio $\mathbb N$. Su conjunto de valores coincide con el conjunto de cola $S_{a,1}$, cuyo supremo es 1. El teorema eventual de §7.4 da $a_n\to1$.
-
-El traslado de cortes también queda declarado: si $K$ controla el error de $c$ para una tolerancia, $N=1+K$ controla el de $a$. Para $n\ge N$, el natural $k=n-1$ cumple $k\ge K$ y $|a_n-1|=|c_k-1|$. El prefijo se excluye mediante ese corte; no se elimina del conjunto global de valores cuando se calcula su extremo.
 
 </details>
 
@@ -3199,15 +2707,7 @@ En ese ejemplo, compara el supremo global, el supremo de la cola desde 1 y el l�
 <details class="anm-solution">
 <summary>Ver solución del microcontrol 61</summary>
 
-**Respuesta.**
-
 El conjunto global $S_a$ contiene 10 y todos los demás términos son menores que 1; por eso $\sup S_a=10$. El conjunto de cola $S_{a,1}=\{a_n:n\ge1\}$ coincide con $S_x$, luego $\sup S_{a,1}=1$. La sucesión original converge a 1 por transferencia desde esa cola. La conclusión correcta es: si la cola desde $T$ es no decreciente y está acotada superiormente en $\mathbb R$, entonces el límite de la sucesión original es $\sup S_{a,T}$. No se sustituye ese conjunto por el global, que conserva el prefijo.
-
-**Fundamento en la sección 7.8.**
-
-El traslado de cortes también queda declarado: si $K$ controla el error de $c$ para una tolerancia, $N=1+K$ controla el de $a$. Para $n\ge N$, el natural $k=n-1$ cumple $k\ge K$ y $|a_n-1|=|c_k-1|$. El prefijo se excluye mediante ese corte; no se elimina del conjunto global de valores cuando se calcula su extremo.
-
-En efecto, $\sup S_a=10$, porque 10 es un término y los demás son menores que 1. El límite 1 procede del supremo de la cola admisible, no del supremo global. La afirmación «el límite de una sucesión eventualmente no decreciente es su supremo global» quedaría refutada por este ejemplo. La versión correcta conserva el conjunto de cola sobre el que se verificaron las hipótesis.
 
 </details>
 
@@ -3303,7 +2803,7 @@ Sean $c\in\mathbb R$ y $h>0$. Para la familia $x:\mathbb N\to\mathbb R$, $x_n=c-
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 38</summary>
 
-**Ruta del error.** Fija $\varepsilon>0$. Por arquimedianidad, elige $N\in\mathbb N$ con $N>\max\{1,h/\varepsilon\}$. Para todo $n\ge N$, se tiene $(n+1)^2>n+1>N>h/\varepsilon$, y por tanto
+Fija $\varepsilon>0$. La construcción del piso de C06 da el corte explícito $N=\lfloor\max\{1,h/\varepsilon\}\rfloor+1\in\mathbb N$, que satisface $N>\max\{1,h/\varepsilon\}$. Para todo $n\ge N$, se tiene $(n+1)^2>n+1>N>h/\varepsilon$, y por tanto
 
 $$
 |x_n-c|=\frac{h}{(n+1)^2}<\varepsilon.
@@ -3311,7 +2811,7 @@ $$
 
 El corte depende de $\varepsilon$ y del parámetro fijo $h$; funciona para todos los índices posteriores. Esta prueba acredita directamente el candidato $c$.
 
-**Ruta de orden y extremo.** Para todo $n\in\mathbb N$,
+Para todo $n\in\mathbb N$,
 
 $$
 x_{n+1}-x_n
@@ -3336,7 +2836,7 @@ Sean $a,b:\mathbb N\to\mathbb R$ con $a$ no decreciente, $b$ no creciente y $a_n
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 39</summary>
 
-**Existencia de las barreras.** Las direcciones y el orden entre términos dan, para todo $n$,
+Las direcciones y el orden entre términos dan, para todo $n$,
 
 $$
 a_0\le a_n\le b_n\le b_0.
@@ -3344,7 +2844,7 @@ $$
 
 Así $a$ tiene cota superior $b_0$ y $b$ cota inferior $a_0$, sin exigir signo positivo. §§7.3–7.4 dan $a_n\to A$ y $b_n\to B$, con $A,B\in\mathbb R$. El orden de límites de C06 da $A\le B$. La regla de resta da $b_n-a_n\to B-A$, mientras que la hipótesis da límite 0 para esa misma sucesión. Por unicidad, $B-A=0$. Denota el destino común por $L=A=B$.
 
-**Captura de la tercera sucesión.** Dado $\varepsilon>0$, toma cortes $N_a,N_b$ que aseguren $|a_n-L|<\varepsilon$ y $|b_n-L|<\varepsilon$ respectivamente. Define $N=\max\{T,N_a,N_b\}$. Para $n\ge N$,
+Dado $\varepsilon>0$, toma cortes $N_a,N_b$ que aseguren $|a_n-L|<\varepsilon$ y $|b_n-L|<\varepsilon$ respectivamente. Define $N=\max\{T,N_a,N_b\}$. Para $n\ge N$,
 
 $$
 L-\varepsilon<a_n\le c_n\le b_n<L+\varepsilon,
@@ -3376,9 +2876,7 @@ Si $a_0,b_0$ son racionales, declara las dos construcciones con codominio $\math
 <details class="anm-solution">
 <summary>Ver solución del ejercicio 40</summary>
 
-**Mapa de obligaciones.** Primero se construyen términos positivos y se conserva el orden; después se obtienen direcciones, cotas y límites por completitud; sólo entonces se utilizan las recurrencias para identificar el destino. El producto conservado aportará su ecuación.
-
-**Construcción y control.** Supón $0<a_n\le b_n$. Entonces $a_n+b_n>0$, por lo que el paso armónico está definido, y ambos términos siguientes son positivos. Las identidades
+Supón $0<a_n\le b_n$. Entonces $a_n+b_n>0$, por lo que el paso armónico está definido, y ambos términos siguientes son positivos. Las identidades
 
 $$
 a_{n+1}-a_n=\frac{a_n(b_n-a_n)}{a_n+b_n}\ge0,
@@ -3399,7 +2897,7 @@ $$
 
 Por inducción, $a_nb_n=P=a_0b_0>0$ para todo $n$.
 
-**Existencia antes del cálculo.** Los teoremas monótonos aplicados a estas cotas dan $a_n\to A$ y $b_n\to B$. Aquí se recibe completitud real. El orden de límites da $a_0\le A\le B\le b_0$, en particular $A+B\ge2a_0>0$. Todos los denominadores $a_n+b_n$ son positivos y su límite es no nulo; así están verificadas las hipótesis del cociente de C06.
+Los teoremas monótonos aplicados a estas cotas dan $a_n\to A$ y $b_n\to B$. Aquí se recibe completitud real. El orden de límites da $a_0\le A\le B\le b_0$, en particular $A+B\ge2a_0>0$. Todos los denominadores $a_n+b_n$ son positivos y su límite es no nulo; así están verificadas las hipótesis del cociente de C06.
 
 Por desplazamiento y operaciones de límites, las recurrencias dan
 
@@ -3409,9 +2907,9 @@ $$
 
 La segunda igualdad implica $A=B=L>0$. La primera es coherente con esa igualdad y se ha usado con sus hipótesis acreditadas. La regla de producto y la constancia del producto dan $AB=P$, luego $L^2=P$. Si $R>0$ es otro real con $R^2=P$, $(L-R)(L+R)=0$ y $L+R>0$ fuerzan $R=L$. El destino es el único real positivo de cuadrado $P$; su existencia ha quedado construida.
 
-**Igualdad y posición estricta.** Si $a_0=b_0=t>0$, ambas reglas conservan $t$ por inducción: las sucesiones son constantes e iguales. Si $a_0<b_0$, la identidad de la diferencia conserva $a_n<b_n$ estrictamente en cada índice, y los dos incrementos anteriores son estrictos. Como $a_nb_n=L^2$, la positividad implica $a_n<L<b_n$: si $a_n\ge L$, el producto con $b_n>a_n$ sería mayor que $L^2$; si $b_n\le L$, el producto con $a_n<b_n$ sería menor. Ninguna evaluación alcanza el destino común.
+Si $a_0=b_0=t>0$, ambas reglas conservan $t$ por inducción: las sucesiones son constantes e iguales. Si $a_0<b_0$, la identidad de la diferencia conserva $a_n<b_n$ estrictamente en cada índice, y los dos incrementos anteriores son estrictos. Como $a_nb_n=L^2$, la positividad implica $a_n<L<b_n$: si $a_n\ge L$, el producto con $b_n>a_n$ sería mayor que $L^2$; si $b_n\le L$, el producto con $a_n<b_n$ sería menor. Ninguna evaluación alcanza el destino común.
 
-**Construcción racional y destino real.** Para datos racionales positivos, las operaciones conservan racionalidad y el denominador racional positivo tiene inverso racional. Así se construyen $a^{\mathbb Q},b^{\mathbb Q}:\mathbb N\to\mathbb Q$. Sus composiciones $\widetilde a=\iota\circ a^{\mathbb Q}$ y $\widetilde b=\iota\circ b^{\mathbb Q}$ tienen codominio $\mathbb R$ y cumplen las mismas reglas reales, porque la inclusión conserva operaciones y orden. Coinciden por inducción con las construcciones reales de los datos incluidos; no se identifica una función racional con otra de codominio real.
+Para datos racionales positivos, las operaciones conservan racionalidad y el denominador racional positivo tiene inverso racional. Así se construyen $a^{\mathbb Q},b^{\mathbb Q}:\mathbb N\to\mathbb Q$. Sus composiciones $\widetilde a=\iota\circ a^{\mathbb Q}$ y $\widetilde b=\iota\circ b^{\mathbb Q}$ tienen codominio $\mathbb R$ y cumplen las mismas reglas reales, porque la inclusión conserva operaciones y orden. Coinciden por inducción con las construcciones reales de los datos incluidos; no se identifica una función racional con otra de codominio real.
 
 Con $a_0=1$, $b_0=2$, el producto es 2. Ambas composiciones convergen al real positivo $L$ con $L^2=2$. La prueba de paridad de §7.7 excluye $L\in\iota(\mathbb Q)$: una fracción reducida cuyo cuadrado fuera 2 tendría numerador y denominador pares. Si cualquiera de las sucesiones racionales tuviera límite racional $r$, su composición convergería también a $\iota(r)$; la unicidad real forzaría $\iota(r)=L$, contradicción. Hay destino real común y ningún límite racional para estas dos construcciones.
 

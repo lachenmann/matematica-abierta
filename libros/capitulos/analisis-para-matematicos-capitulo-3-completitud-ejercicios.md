@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 areas:
 - analisis
 level: universitario
@@ -1527,8 +1527,7 @@ Reescribe esa demostración usando como interfaz de completitud únicamente la p
 Sea
 
 $$
-I_n=[a_n,b_n]
-e\varnothing,
+I_n=[a_n,b_n]\ne\varnothing,
 \qquad
 I_{n+1}\subseteq I_n.
 $$

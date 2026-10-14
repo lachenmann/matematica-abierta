@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-10-07
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 areas:
 - analisis
 level: universitario
@@ -590,7 +590,7 @@ Audita la cadena.
 
 a) Escribe el tipo exacto de cada uno de los tres objetos.
 
-b) Explica por qué las dos igualdades escritas no son igualdades de funciones o conjuntos bien tipadas.
+b) Examina las dos igualdades escritas, separando el caso $N=0$ del caso $N>0$. Indica cuándo los dominios impiden la primera igualdad y por qué la segunda confunde una función con su conjunto de valores.
 
 c) Sea
 

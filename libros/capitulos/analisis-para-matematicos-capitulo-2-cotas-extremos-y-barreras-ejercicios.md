@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: '2026-10-11'
+date-modified: '2026-10-14'
 areas:
 - analisis
 level: universitario
@@ -1168,7 +1168,7 @@ Organiza la prueba así:
 1. verifica que $S$ es no vacío y que $2$ es una cota superior racional;
 2. demuestra que no existe $r\in\mathbb Q$ con $r^2=2$;
 3. muestra que, si $r\in\mathbb Q$ y $r>0$ satisface $r^2<2$, entonces existe un racional $r'>r$ con $(r')^2<2$;
-4. muestra que, si $r\in\mathbb Q$ y $r^2>2$, entonces existe una cota superior racional $u<r$ de $S$;
+4. muestra que, si $r\in\mathbb Q$, $r>0$ y $r^2>2$, entonces existe una cota superior racional $u<r$ de $S$;
 5. concluye que ningún racional puede ser la menor cota superior de $S$.
 
 Puedes usar, en los pasos 3 y 4, perturbaciones racionales construidas explícitamente a partir de $r$.
