@@ -135,6 +135,10 @@ def main():
                     cdp.send('CSS.enable')
                     root = cdp.send('DOM.getDocument')
                     node = cdp.send('DOM.querySelector', {'nodeId':root['root']['nodeId'], 'selector':'main.content li'})
+                    if not node['nodeId']:
+                        node = cdp.send('DOM.querySelector', {'nodeId':root['root']['nodeId'], 'selector':'main.content p'})
+                    if not node['nodeId']:
+                        raise RuntimeError('No reading-text node available for the platform-font probe')
                     pair[mode]['renderedFonts'] = cdp.send('CSS.getPlatformFontsForNode', {'nodeId':node['nodeId']})['fonts']
                     cdp.detach()
                     page.screenshot(path=str(args.output / f'{chapter["contentId"]}-{width}-{mode}.png'),
