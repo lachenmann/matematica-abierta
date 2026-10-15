@@ -6,7 +6,7 @@ content-type: book
 collection: PM-FIS
 status: published
 date-created: 2026-09-10
-date-modified: 2026-09-15
+date-modified: 2026-10-15
 areas:
   - fisica-matematica
   - fundamentos
@@ -26,6 +26,34 @@ prerequisites: []
 related:
   - MA-BCH-0009
   - MA-BCH-0031
+  - MA-BCH-0343
+  - MA-BCH-0344
+  - MA-BCH-0345
+  - MA-BCH-0346
+  - MA-BCH-0347
+  - MA-BCH-0348
+  - MA-BCH-0349
+  - MA-BCH-0350
+  - MA-BCH-0351
+  - MA-BCH-0352
+  - MA-BCH-0353
+  - MA-BCH-0354
+  - MA-BCH-0355
+  - MA-BCH-0356
+  - MA-BCH-0357
+  - MA-BCH-0358
+  - MA-BCH-0359
+  - MA-BCH-0360
+  - MA-BCH-0361
+  - MA-BCH-0362
+  - MA-BCH-0363
+  - MA-BCH-0364
+  - MA-BCH-0365
+  - MA-BCH-0366
+  - MA-BCH-0367
+  - MA-BCH-0368
+  - MA-BCH-0369
+  - MA-BCH-0370
 provenance:
   type: synthesis
   sources:
@@ -116,17 +144,37 @@ Estas etiquetas distinguen, entre otras cosas, definiciones, afirmaciones empír
 La demostración matemática comienza después de declarar las premisas físicas. Si una conclusión usa hipótesis de modelo, condiciones iniciales o aproximaciones, su validez física depende también de ellas.
 :::
 
-## Capítulos publicados
+## Tomo I — Fundamentos y mecánica {#tomo-i-fundamentos-y-mecanica}
 
-1. [**Teorías físicas: fenómenos, modelos y leyes**](../capitulos/fisica-para-matematicos-capitulo-1-teorias-fisicas-fenomenos-modelos-y-leyes.md) (`MA-BCH-0009`).
+El tomo reúne treinta capítulos, con ejercicios y soluciones desarrolladas. Esta edición web seguirá recibiendo correcciones e ilustraciones; la revisión ampliada continúa.
 
-    capítulo fundacional sobre fenómeno, observación, sistema, estado, representación, idealización, ley, modelo, teoría, predicción, selección y revisión de modelos, dominio de validez y exactitud física.
-2. [**Magnitudes, unidades y análisis dimensional**](../capitulos/fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md) (`MA-BCH-0031`).
-
-    capítulo completo sobre magnitudes y unidades, SI contemporáneo, dimensión y homogeneidad, cantidades de dimensión uno, escalas, adimensionalización, semejanza, teorema $\Pi$ de Buckingham y modelización dimensional.
-
-## Publicación progresiva
-
-El manuscrito de trabajo, las auditorías, los mapas de dependencias y los expedientes de fuentes permanecen en el canon privado del proyecto. La web recibe únicamente versiones que han superado revisión matemática, editorial, bibliográfica y de sintaxis.
-
-El libro se publicará capítulo por capítulo. Cada capítulo podrá conectarse además con [Conceptos](../../conceptos/index.qmd), [Resultados y teoremas](../../teoria/resultados/index.qmd), [Métodos y técnicas](../../teoria/metodos/index.qmd) y [Problemas](../../problemas/index.qmd) cuando una unidad del texto tenga utilidad transversal en Matemática Abierta.
+1. [**Teorías físicas: fenómenos, modelos y leyes**](../capitulos/fisica-para-matematicos-capitulo-1-teorias-fisicas-fenomenos-modelos-y-leyes.md)
+2. [**Magnitudes, unidades y análisis dimensional**](../capitulos/fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md)
+3. [**Medición, incertidumbre, estimación y órdenes de magnitud**](../capitulos/fisica-para-matematicos-capitulo-3-medicion-incertidumbre-estimacion-y-ordenes-de-magnitud.md)
+4. [**Espacio euclídeo, vectores y marcos de referencia**](../capitulos/fisica-para-matematicos-capitulo-4-espacio-euclideo-vectores-y-marcos-de-referencia.md)
+5. [**Tiempo, movimiento y curvas**](../capitulos/fisica-para-matematicos-capitulo-5-tiempo-movimiento-y-curvas.md)
+6. [**Modelos, aproximaciones, escalas y linealización**](../capitulos/fisica-para-matematicos-capitulo-6-modelos-aproximaciones-escalas-y-linealizacion.md)
+7. [**Cinemática en una dimensión**](../capitulos/fisica-para-matematicos-capitulo-7-cinematica-en-una-dimension.md)
+8. [**Cinemática en varias dimensiones**](../capitulos/fisica-para-matematicos-capitulo-8-cinematica-en-varias-dimensiones.md)
+9. [**Leyes de Newton y estructura de la dinámica**](../capitulos/fisica-para-matematicos-capitulo-9-leyes-de-newton-y-estructura-de-la-dinamica.md)
+10. [**Fuerzas elementales y diagramas de cuerpo libre**](../capitulos/fisica-para-matematicos-capitulo-10-fuerzas-elementales-y-diagramas-de-cuerpo-libre.md)
+11. [**Restricciones elementales y grados de libertad**](../capitulos/fisica-para-matematicos-capitulo-11-restricciones-elementales-y-grados-de-libertad.md)
+12. [**Trabajo, potencia y energía cinética**](../capitulos/fisica-para-matematicos-capitulo-12-trabajo-potencia-y-energia-cinetica.md)
+13. [**Energía potencial, fuerzas conservativas y estabilidad**](../capitulos/fisica-para-matematicos-capitulo-13-energia-potencial-fuerzas-conservativas-y-estabilidad.md)
+14. [**Momento lineal, impulso y centro de masa**](../capitulos/fisica-para-matematicos-capitulo-14-momento-lineal-impulso-y-centro-de-masa.md)
+15. [**Momento angular y torque**](../capitulos/fisica-para-matematicos-capitulo-15-momento-angular-y-torque.md)
+16. [**Gravitación newtoniana**](../capitulos/fisica-para-matematicos-capitulo-16-gravitacion-newtoniana.md)
+17. [**Problema de dos cuerpos y fuerzas centrales**](../capitulos/fisica-para-matematicos-capitulo-17-problema-de-dos-cuerpos-y-fuerzas-centrales.md)
+18. [**Órbitas de Kepler**](../capitulos/fisica-para-matematicos-capitulo-18-orbitas-de-kepler.md)
+19. [**Dispersión clásica y reducción efectiva**](../capitulos/fisica-para-matematicos-capitulo-19-dispersion-clasica-y-reduccion-efectiva.md)
+20. [**Movimiento en marcos no inerciales**](../capitulos/fisica-para-matematicos-capitulo-20-movimiento-en-marcos-no-inerciales.md)
+21. [**Cuerpo rígido: cinemática, rotaciones y tensor de inercia**](../capitulos/fisica-para-matematicos-capitulo-21-cuerpo-rigido-cinematica-rotaciones-y-tensor-de-inercia.md)
+22. [**Cuerpo rígido: dinámica**](../capitulos/fisica-para-matematicos-capitulo-22-cuerpo-rigido-dinamica.md)
+23. [**Oscilaciones lineales**](../capitulos/fisica-para-matematicos-capitulo-23-oscilaciones-lineales.md)
+24. [**Oscilaciones acopladas y modos normales**](../capitulos/fisica-para-matematicos-capitulo-24-oscilaciones-acopladas-y-modos-normales.md)
+25. [**Configuración, trabajo virtual y principios variacionales**](../capitulos/fisica-para-matematicos-capitulo-25-configuracion-trabajo-virtual-y-principios-variacionales.md)
+26. [**Mecánica lagrangiana**](../capitulos/fisica-para-matematicos-capitulo-26-mecanica-lagrangiana.md)
+27. [**Simetrías, teorema de Noether y leyes de conservación**](../capitulos/fisica-para-matematicos-capitulo-27-simetrias-teorema-de-noether-y-leyes-de-conservacion.md)
+28. [**Mecánica hamiltoniana**](../capitulos/fisica-para-matematicos-capitulo-28-mecanica-hamiltoniana.md)
+29. [**Corchetes de Poisson y estructura simpléctica elemental**](../capitulos/fisica-para-matematicos-capitulo-29-corchetes-de-poisson-y-estructura-simplectica-elemental.md)
+30. [**Sistemas dinámicos, estabilidad y caos**](../capitulos/fisica-para-matematicos-capitulo-30-sistemas-dinamicos-estabilidad-y-caos.md)
