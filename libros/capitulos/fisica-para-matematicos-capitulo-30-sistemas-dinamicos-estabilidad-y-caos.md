@@ -149,6 +149,42 @@ La ecuación lineal $\dot\eta=A\eta$ describe las variaciones infinitesimales al
 
 []{#fpm-i-30-p02}
 
+La reducción de una matriz compleja comienza eligiendo un autovector, cuya existencia exige una raíz de su polinomio característico. El siguiente argumento obtiene esa raíz usando la representación polar y el mínimo de una función continua.
+
+[]{#fispm-t1-c30-l0004}
+
+[]{#fpm-i-30-l04}
+
+**Lema FPM-I-30-L04 — Raíces complejas de un polinomio.** Todo polinomio complejo no constante tiene una raíz y se descompone en factores lineales, contados con multiplicidad.
+
+**Demostración.** Sea $p(z)=a_nz^n+\cdots+a_0$, con $n\ge1$ y $a_n\ne0$. Para $|z|\ge1$, los términos inferiores tienen módulo total a lo sumo $M_0|z|^{n-1}$, donde $M_0=\sum_{j<n}|a_j|$. Por tanto,
+
+$$
+|p(z)|\ge |a_n||z|^n-M_0|z|^{n-1}\longrightarrow\infty
+\qquad (|z|\to\infty).
+$$
+
+Fuera de un disco suficientemente grande, el módulo supera $|p(0)|+1$. Dentro del disco cerrado alcanza un mínimo por continuidad y compacidad; ese mínimo es también global. Sea $z_0$ un punto donde se alcanza. Si $p(z_0)=0$, ya tenemos la raíz buscada.
+
+Supongamos que $c_0=p(z_0)\ne0$ y desarrollemos el polinomio exactamente alrededor de $z_0$. Sea $k\ge1$ el menor índice con coeficiente $c_k\ne0$. Al dividir por $c_0$,
+
+$$
+\frac{p(z_0+w)}{c_0}
+=1+bw^k+\sum_{j=k+1}^n b_jw^j,\qquad b=\frac{c_k}{c_0}\ne0.
+$$
+
+La representación $b=|b|e^{i\varphi}$ permite elegir $u=e^{i(\pi-\varphi)/k}$, de módulo uno, para que $bu^k=-|b|$. Sobre la dirección $w=tu$, con $0<t\le1$, el resto tiene módulo a lo sumo $Mt^{k+1}$, donde $M=\sum_{j>k}|b_j|$. Escogemos $t$ positivo tan pequeño que $|b|t^k<1$ y $Mt<|b|/2$; si $M=0$, la segunda condición se cumple para todo $t$. La desigualdad triangular da entonces
+
+$$
+\left|\frac{p(z_0+tu)}{c_0}\right|
+\le 1-|b|t^k+Mt^{k+1}
+<1.
+$$
+
+Hemos encontrado un valor de módulo menor que $|p(z_0)|$, contra su elección como mínimo. Por tanto $p(z_0)=0$. Dividir por $z-z_0$ reduce el grado en uno; repetir el argumento e inducir sobre el grado produce la factorización lineal completa. $\square$
+
+Aplicado al polinomio característico, el lema proporciona un autovalor complejo. El núcleo de $A-\lambda\mathbf1$ contiene entonces un vector no nulo, y podemos comenzar la reducción triangular.
+
 **Proposición FPM-I-30-P02 — Estabilidad asintótica de un sistema lineal.** El origen de $\dot z=Az$ es asintóticamente estable si y sólo si todos los autovalores de $A$ tienen parte real negativa. En ese caso es exponencialmente estable.
 
 **Demostración.** Primero reducimos $A$ a una matriz triangular superior compleja sin suponer que sea diagonalizable. Elegimos un autovector unitario y completamos una base ortonormal. En esa base la matriz tiene la forma $\begin{pmatrix}\lambda&*\\0&B\end{pmatrix}$. Repetimos la construcción en el bloque $B$; la inducción termina en una matriz triangular $T=S^{-1}AS$. Sus entradas diagonales son los autovalores de $A$.
@@ -354,6 +390,17 @@ Con $\sigma<0$ el origen atrae algebraicamente; con $\sigma>0$ repele; con $\sig
 
 También debemos distinguir las órbitas de su parametrización. Multiplicar un campo por una función positiva conserva las curvas y su orientación, pero cambia la velocidad de recorrido. La llegada a un punto, el período y los exponentes por unidad de tiempo requieren recuperar esa parametrización. Una semejanza visual de retratos no identifica todas las propiedades dinámicas.
 
+```{=html}
+<div id="fig-fispm-c30-f18">
+<span id="fpm-i-30-f18"></span>
+```
+
+![**Figura FPM-I-30-F18.** Para la familia de §6, $r(t)=r_0/\sqrt{1-2\sigma r_0^2t}$ y $\theta(t)=\theta_0+t$. Se comparan los mismos datos $r_0=0{,}65$ en $0\le t\le1$, con coordenadas y tiempo normalizados. Las tres linealizaciones son la matriz de giro, pero los términos cúbicos producen atracción, centro o repulsión. Para $\sigma=1$ la fórmula sólo existe antes de $1/(2r_0^2)=200/169$; la figura termina antes de ese escape. La clasificación asintótica se demuestra en E09, fuera de la ventana finita dibujada.](../../assets/books/fispm/C30/FPM-I-30-F18.svg){fig-alt="Tres curvas del radio para los campos de §6 con sigma menos uno, cero y uno, desde el mismo radio 0,65 y durante una unidad de tiempo. El radio disminuye, permanece constante o aumenta, aunque las tres matrices linealizadas son iguales."}
+
+```{=html}
+</div>
+```
+
 []{#fispm-t1-c30-s07}
 
 []{#fpm-i-30-s07}
@@ -505,7 +552,25 @@ $$
 \dot v=-\sin\theta-\gamma v+a\cos(\nu t),
 $$
 
-el período de observación es $T=2\pi/\nu$, con $\nu>0$. El campo tiene divergencia $-\gamma$ respecto de $(\theta,v)$. La ecuación del determinante variacional de I29 da
+las escalas pueden recuperarse desde la ecuación dimensional
+
+$$
+I\frac{d^2\theta}{dt_{\rm fis}^2}
++b\frac{d\theta}{dt_{\rm fis}}+A\sin\theta
+=\tau_0\cos(\Omega t_{\rm fis}),\qquad I,A>0,\quad b\ge0,\quad\Omega>0.
+$$
+
+La escala temporal natural es $t_0=\sqrt{I/A}$. Al tomar $t=t_{\rm fis}/t_0$ y $v=d\theta/dt=t_0\,d\theta/dt_{\rm fis}$, dividir la ecuación por $A$ da
+
+$$
+\gamma=\frac{b}{\sqrt{IA}},\qquad
+a=\frac{\tau_0}{A},\qquad
+\nu=\Omega\sqrt{\frac IA}.
+$$
+
+Los tres parámetros son adimensionales: $A$ y $\tau_0$ tienen unidades de torque, equivalentes a energía con el ángulo adimensional; $b$ tiene unidades de momento de inercia dividido por tiempo. Se ha supuesto un torque resistente proporcional a la velocidad y un torque sinusoidal prescrito; el seno se conserva sin aproximación de ángulo pequeño. El modelo describe ese régimen de rozamiento y excitación. Su adecuación a un péndulo concreto debe comprobarse mediante la respuesta medida, además de resolver la ecuación.
+
+En tiempo normalizado, el período de observación es $T=2\pi/\nu$, con $\nu>0$; en tiempo físico es $t_0T=2\pi/\Omega$. El campo tiene divergencia $-\gamma$ respecto de $(\theta,v)$. La ecuación del determinante variacional de I29 da
 
 $$
 \det DF=e^{-\gamma T}.
@@ -645,7 +710,7 @@ $$
 \log\frac{\|D\Phi_t(z_0)u\|}{\|u\|},
 $$
 
-cuando la evolución existe durante todo ese tiempo. Para un mapa sustituimos $t$ por $n$ y $\Phi_t$ por $F^n$. Si el límite ordinario existe, coincide con el superior.
+cuando la evolución existe durante todo ese tiempo. Para un mapa diferenciable a lo largo de la órbita sustituimos $t$ por $n$ y $\Phi_t$ por $F^n$. Si el límite ordinario existe, coincide con el superior. Adoptamos $\log 0=-\infty$: si $D F^n(z_0)u$ se anula en algún paso, la regla de la cadena lo mantiene nulo en todos los pasos posteriores y el exponente de esa dirección es $-\infty$. Esta convención permite incluir, por ejemplo, el fijo cero de $F(x)=x^2$, cuya derivada se anula.
 
 Se trata del crecimiento infinitesimal, obtenido mediante la ecuación variacional. En un mapa escalar, mientras las derivadas sean no nulas,
 
@@ -1256,7 +1321,7 @@ Calcule $h(1/2)$, $h(2/3)$ y verifique la conjugación en esos dos datos. Identi
 [Ver solución](#solucion-fpm-i-30-e28)
 
 
-Pruebe que todo dato $k/2^B$ de la tienda llega a cero en a lo sumo $B+1$ iteraciones. Explique cómo limita la interpretación de una simulación.
+Pruebe que todo dato $k/2^B$ de la tienda, con $B\in\mathbb N_0$ y $k\in\{0,\ldots,2^B\}$, llega a cero en a lo sumo $B+1$ iteraciones. Explique cómo limita la interpretación de una simulación.
 
 ### FPM-I-30-E29 — Fijos del mapa estándar {#fispm-t1-c30-e0029}
 
@@ -1361,7 +1426,14 @@ $$
 \le-\frac12\|z\|^2
 $$
 
-si $\|z\|\le1/\sqrt5$. Elegimos un subnivel de $V$ contenido en esa bola para asegurar que la trayectoria no salga. Las cotas espectrales de $P$ convierten la desigualdad en decaimiento exponencial. No se afirma que cualquier dato de la bola permanezca en ella sin controlar el subnivel.
+si $\|z\|\le1/\sqrt5$. Elegimos un subnivel de $V$ contenido en esa bola para asegurar que la trayectoria no salga. Los autovalores de $P$ son $p_-=(5-\sqrt5)/8$ y $p_+=(5+\sqrt5)/8$. Para hacer explícita la elección, el subnivel $V\le p_-/10$ queda dentro de $\|z\|^2\le1/10<1/5$. Todo dato con $\|z_0\|<\sqrt{p_-/(10p_+)}$ pertenece a él. Como $\dot V\le-V/(2p_+)$ en esa región, integrar y usar las dos cotas de $V$ proporciona
+
+$$
+\|z(t)\|\le\sqrt{\frac{p_+}{p_-}}\,
+e^{-t/(4p_+)}\|z_0\|.
+$$
+
+El subnivel asegura la continuación futura y hace uniformes el radio inicial y las constantes. La desigualdad diferencial por sí sola no afirmaba que cualquier dato de la bola permaneciera en ella.
 
 ### FPM-I-30-E09 {#fispm-t1-c30-s0009}
 
@@ -1585,8 +1657,9 @@ Los datos son compatibles con sensibilidad en la región y escala temporal explo
 
 I23–I24 aportan oscilaciones y espectros; I28, el estado y las ecuaciones canónicas; I29, flujos, ecuación variacional y preservación de volumen. Aquí se ha demostrado un criterio no lineal suficiente de estabilidad, sin presuponer un teorema general de conjugación de sistemas hiperbólicos, una teoría completa de bifurcaciones ni un criterio universal de caos por exponentes positivos.
 
-Como apoyo para sistemas lineales y retratos, pueden consultarse los apuntes oficiales de Semyon Dyatlov, [*18.03 Differential Equations*, MIT, §§6.2–6.4](https://math.mit.edu/~dyatlov/18.03/). Para mapas y sensibilidad, véanse sus notas [*Chaos in dynamical systems*, IAP Mathematics Lecture Series](https://math.mit.edu/classes/18.095/2015IAP/lecture9/lect_notes.pdf). Las pruebas y soluciones se desarrollan en el capítulo, incluidos los resultados de cálculo vectorial y topología plana demostrados en el complemento de P08; la demostración del caos de la tienda y su conjugación logística no depende de una gráfica numérica.
+Como apoyo para sistemas lineales y retratos, pueden consultarse los apuntes oficiales de Semyon Dyatlov, [*18.03 Differential Equations*, MIT, §§6.2–6.4](https://math.mit.edu/~dyatlov/18.03/). Para una perspectiva complementaria sobre mapas, mezcla y estadística de trayectorias, véanse sus notas [*Chaos in dynamical systems*, IAP Mathematics Lecture Series](https://math.mit.edu/classes/18.095/2015IAP/lecture9/lect_notes.pdf). Las pruebas y soluciones se desarrollan en el capítulo, incluidos los resultados de cálculo vectorial y topología plana demostrados en el complemento de P08; la demostración del caos de la tienda y su conjugación logística no depende de una gráfica numérica.
 
 ---
 
 [Capítulo 29](fisica-para-matematicos-capitulo-29-corchetes-de-poisson-y-estructura-simplectica-elemental.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica)
+
