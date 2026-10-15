@@ -1,0 +1,1004 @@
+<!DOCTYPE html><html lang="es"><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' file: 'unsafe-inline'; style-src 'self' file: data: 'unsafe-inline'; font-src 'self' file: data:; img-src 'self' file: data:; connect-src 'none'; base-uri 'none'; form-action 'none'; worker-src blob:">
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 18 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.">
+
+<title>Órbitas de Kepler – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+
+
+
+
+
+
+<meta name="quarto:offset" content="../../">
+<link href="../assets/8eb201055a4f4d43a0dc1bd6.svg" rel="icon" type="image/svg+xml">
+
+
+
+
+<script src="../assets/69098e105d990f834cff1b78.js"></script>
+<link href="../assets/5969f497d9158d7682f8219c.css" rel="stylesheet">
+<link href="../assets/4973a76eb0de3b99bc67687a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../assets/7f7cb0230277ec2bc5294f4d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+
+
+<link href="../assets/quarto-bootstrap-light.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../assets/quarto-bootstrap-dark.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+
+  
+  <script src="../assets/mathjax-offline-speech.js"></script><script>(function(){const fontRoot=new URL("../assets/mathjax-newcm",location.href).href;window.MathJax=Object.assign(window.MathJax||{}, {loader:{paths:{"mathjax-newcm":fontRoot}},startup:{ready:function(){MathJax.startup.defaultReady();MathJax.startup.adaptor.createWorker=window.__maCreateSpeechWorker;},pageReady:window.MathJax.startup.pageReady},output:{fontPath:fontRoot},chtml:{fontURL:fontRoot+"/chtml/woff2",dynamicPrefix:fontRoot+"/chtml/dynamic"}});})();</script><script defer src="../assets/mathjax/tex-chtml.js"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../assets/87b4f5e6a115d51d92f5ea1a.css">
+<link rel="stylesheet" href="../assets/af3335218e8c9cef34486d70.css">
+<style id="ma-reader-mode-v1-style">/* Reader contract: app readerMode.ts, ma-reader-mode-v1. */
+
+#quarto-header,
+#quarto-sidebar,
+#quarto-margin-sidebar,
+.quarto-secondary-nav,
+.quarto-page-breadcrumbs,
+#quarto-search,
+.quarto-search-button,
+.quarto-navigation-tool,
+.quarto-back-to-top,
+#quarto-footer,
+.nav-footer {
+  display: none !important;
+}
+
+body.quarto-page-columns #quarto-content,
+#quarto-content.page-columns {
+  display: block !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+#quarto-content {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  padding-left: max(1rem, env(safe-area-inset-left)) !important;
+  padding-right: max(1rem, env(safe-area-inset-right)) !important;
+}
+
+#quarto-content > main.content,
+#quarto-content .content {
+  box-sizing: border-box !important;
+  grid-column: 1 / -1 !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+#quarto-content img,
+#quarto-content figure img {
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+#quarto-content table,
+#quarto-content pre,
+#quarto-content mjx-container[display="true"],
+#quarto-content .math.display {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+}
+
+#quarto-content table {
+  display: block;
+}
+
+#quarto-content .callout,
+#quarto-content .theorem,
+#quarto-content .proof {
+  max-width: 100% !important;
+}
+</style><style>body.nav-fixed{padding-top:0!important}</style></head><body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar"><main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Órbitas de Kepler</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 18</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 18 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">15 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-17-problema-de-dos-cuerpos-y-fuerzas-centrales.html">Capítulo 17</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-19-dispersion-clasica-y-reduccion-efectiva.html">Capítulo 19</a></p>
+<p>Una fuerza central conserva el plano y el momento angular, pero no obliga a que la trayectoria sea una elipse ni a que se cierre. El capítulo anterior mostró qué condiciones organizan el movimiento radial y cómo recuperar el ángulo. La atracción gravitatoria inversa del cuadrado añade una estructura especial: su ecuación orbital se vuelve lineal y produce las cónicas de Kepler.</p>
+<p>La forma de la curva es sólo una parte del problema. Una misma elipse se recorre lentamente lejos del centro de fuerza y más deprisa cerca de él. Para conocer la posición a un tiempo dado habrá que relacionar geometría, área y una variable angular adecuada. También debemos volver de la separación relativa a los movimientos de los dos cuerpos, conservando la suma de sus masas en la escala temporal.</p>
+<p>Consideraremos dos masas puntuales positivas constantes que sólo se atraen gravitatoriamente en un marco inercial. El movimiento se estudia mientras su separación es positiva y dentro del régimen newtoniano. Si se representan cuerpos esféricos extensos por masas centrales, la trayectoria debe permanecer en la región exterior donde esa sustitución está justificada. El caso radial se separará de las cónicas no degeneradas; los agentes adicionales se introducirán explícitamente.</p>
+<p><span id="fispm-t1-c18-s01"></span></p>
+<p><span id="fpm-i-18-s01"></span></p>
+<section id="parámetros-del-problema-exacto" class="level2">
+<h2 class="anchored" data-anchor-id="parámetros-del-problema-exacto">§1 — Parámetros del problema exacto</h2>
+<p>La masa reducida organiza la energía de la separación. La suma de masas organiza su aceleración. Es útil dar nombres distintos a esos dos parámetros para evitar un cambio de significado de un símbolo en mitad de un cálculo.</p>
+<p><span id="fispm-t1-c18-d0001"></span></p>
+<p><strong>Definición FPM-I-18-D01 — Parámetros y magnitudes específicas.</strong> Con la notación del par de I-17, definimos</p>
+<p><span class="math display">\[
+M=m_1+m_2,\qquad \mu=\frac{m_1m_2}{M},
+\qquad \gamma=GM,\qquad \alpha=Gm_1m_2=\mu\gamma.
+\]</span></p>
+<p>Para <span class="math inline">\(\mathbf q=\mathbf r_1-\mathbf r_2\)</span>, <span class="math inline">\(r=|\mathbf q|&gt;0\)</span> y <span class="math inline">\(\mathbf w=\dot{\mathbf q}\)</span>, escribimos</p>
+<p><span class="math display">\[
+\mathbf h=\mathbf q\times\mathbf w,
+\qquad h=|\mathbf h|,
+\qquad
+\epsilon=\frac{E}{\mu}=\frac12|\mathbf w|^2-\frac{\gamma}{r}.
+\]</span></p>
+<p><span class="math inline">\(\mathbf h\)</span> es momento angular por unidad de masa reducida y <span class="math inline">\(\epsilon\)</span> es energía relativa específica. Sus unidades son <span class="math inline">\(\mathrm{m^2\,s^{-1}}\)</span> y <span class="math inline">\(\mathrm{m^2\,s^{-2}}\)</span>; <span class="math inline">\(\gamma\)</span> tiene unidades <span class="math inline">\(\mathrm{m^3\,s^{-2}}\)</span>.</p>
+<p><span id="fispm-t1-c18-p0001"></span></p>
+<p><strong>Proposición FPM-I-18-P01 — Dinámica kepleriana relativa.</strong></p>
+<p><span class="math display">\[
+\ddot{\mathbf q}=-\gamma\frac{\mathbf q}{r^3}.
+\]</span></p>
+<p>El centro de masa se traslada uniformemente y <span class="math inline">\(\mathbf h,\epsilon\)</span> se conservan.</p>
+<p><strong>Demostración.</strong> La reducción exacta de I-17 da <span class="math inline">\(\mu\ddot{\mathbf q}=-\alpha\mathbf q/r^3\)</span>. Dividir por <span class="math inline">\(\mu\)</span> produce la ecuación. La oposición de fuerzas anula la resultante sobre el centro; la centralidad conserva el momento angular y el potencial autónomo <span class="math inline">\(-\alpha/r\)</span> conserva la energía. Dividir esos invariantes por la masa reducida constante da <span class="math inline">\(\mathbf h,\epsilon\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>El caso principal tendrá <span class="math inline">\(h&gt;0\)</span>, de modo que el plano relativo está determinado y puede orientarse por <span class="math inline">\(\mathbf h\)</span>. En él el ángulo crece con <span class="math inline">\(\dot\theta=h/r^2\)</span>. El parámetro <span class="math inline">\(\gamma\)</span> incluye ambas masas: sustituirlo por <span class="math inline">\(Gm_2\)</span> es una aproximación de fuente dominante, no el problema exacto.</p>
+<p><span id="fispm-t1-c18-mp0001"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP01.</strong> Separa masa reducida, parámetro gravitatorio y cantidades específicas. Comprueba qué masa y qué radio intervienen antes de aplicar una fórmula orbital.</p>
+<section id="ejercicios" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0001"></span></p>
+<p><strong>Ejercicio FPM-I-18-E01.</strong> Para masas <span class="math inline">\(m\)</span> y <span class="math inline">\(4m\)</span>, determina <span class="math inline">\(\mu,\gamma,\alpha\)</span> y expresa energía y momento angular relativos mediante <span class="math inline">\(\epsilon,\mathbf h\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(M=5m\)</span>, <span class="math inline">\(\mu=4m/5\)</span>, <span class="math inline">\(\gamma=5Gm\)</span> y <span class="math inline">\(\alpha=4Gm^2=\mu\gamma\)</span>. La energía relativa es <span class="math inline">\(E=(4m/5)\epsilon\)</span> y el momento angular relativo <span class="math inline">\(\mathbf L=(4m/5)\mathbf h\)</span>. El parámetro <span class="math inline">\(\gamma\)</span> no es una masa ni tiene las unidades de <span class="math inline">\(\mu\)</span>.</p>
+<p><span id="fispm-t1-c18-e0002"></span></p>
+<p><strong>Ejercicio FPM-I-18-E02.</strong> Dos pares tienen la misma suma de masas pero productos de masas distintos. Con idénticas posiciones y velocidades relativas iniciales, compara su movimiento relativo y su energía relativa.</p>
+<p><strong>Solución.</strong> La suma común produce el mismo <span class="math inline">\(\gamma\)</span> y, por P01, la misma ecuación con los mismos datos. La unicidad local fuera de <span class="math inline">\(r=0\)</span> identifica sus movimientos relativos. También comparten <span class="math inline">\(\epsilon,\mathbf h\)</span>. Sin embargo, <span class="math inline">\(\mu=m_1m_2/M\)</span> es diferente y por tanto sus energías <span class="math inline">\(E=\mu\epsilon\)</span> y momentos <span class="math inline">\(\mathbf L=\mu\mathbf h\)</span> pueden diferir. La reconstrucción de cada cuerpo utiliza además las razones de masas.</p>
+<p><span id="fispm-t1-c18-s02"></span></p>
+<p><span id="fpm-i-18-s02"></span></p>
+</section>
+</section>
+<section id="una-dirección-conservada-dentro-del-plano" class="level2">
+<h2 class="anchored" data-anchor-id="una-dirección-conservada-dentro-del-plano">§2 — Una dirección conservada dentro del plano</h2>
+<p>El momento angular conserva la normal al plano. Para orientar la cónica dentro de él necesitamos otra información. La gravitación permite construir un vector constante que señala la dirección de máxima aproximación cuando la órbita no es circular.</p>
+<p><span id="fispm-t1-c18-d0002"></span></p>
+<p><strong>Definición FPM-I-18-D02 — Vector de excentricidad.</strong></p>
+<p><span class="math display">\[
+\mathbf e=\frac{\mathbf w\times\mathbf h}{\gamma}
+-\frac{\mathbf q}{r},
+\qquad e=|\mathbf e|.
+\]</span></p>
+<p>El vector es adimensional. En el caso <span class="math inline">\(h&gt;0\)</span>, pertenece al plano orbital porque ambos términos son perpendiculares a <span class="math inline">\(\mathbf h\)</span>.</p>
+<p><span id="fispm-t1-c18-p0002"></span></p>
+<p><strong>Proposición FPM-I-18-P02 — Conservación de la excentricidad vectorial.</strong> En la dinámica de P01, <span class="math inline">\(\dot{\mathbf e}=0\)</span>.</p>
+<p><strong>Demostración.</strong> Como <span class="math inline">\(\mathbf h\)</span> es constante, <span class="math inline">\(\dot{\mathbf e}=(\ddot{\mathbf q}\times\mathbf h)/\gamma-d(\mathbf q/r)/dt\)</span>. Usamos el producto triple <span class="math inline">\(\mathbf q\times(\mathbf q\times\mathbf w)=\mathbf q(\mathbf q\cdot\mathbf w)-r^2\mathbf w\)</span>. La ecuación de movimiento da</p>
+<p><span class="math display">\[
+\frac{\ddot{\mathbf q}\times\mathbf h}{\gamma}
+=\frac{\mathbf w}{r}
+-\frac{\mathbf q(\mathbf q\cdot\mathbf w)}{r^3}.
+\]</span></p>
+<p>Ese es exactamente el resultado de derivar <span class="math inline">\(\mathbf q/r\)</span>. Los términos se cancelan. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c18-p0003"></span></p>
+<p><strong>Proposición FPM-I-18-P03 — Excentricidad, energía y momento.</strong></p>
+<p><span class="math display">\[
+e^2=1+\frac{2\epsilon h^2}{\gamma^2}.
+\]</span></p>
+<p><strong>Demostración.</strong> <span class="math inline">\(\mathbf w\)</span> es perpendicular a <span class="math inline">\(\mathbf h\)</span>, de modo que <span class="math inline">\(|\mathbf w\times\mathbf h|^2=|\mathbf w|^2h^2\)</span>. Además, <span class="math inline">\((\mathbf w\times\mathbf h)\cdot(\mathbf q/r)=h^2/r\)</span>, por el producto triple y <span class="math inline">\(h^2=r^2|\mathbf w|^2-(\mathbf q\cdot\mathbf w)^2\)</span>. Al expandir el cuadrado de D02 resulta <span class="math inline">\(e^2=|\mathbf w|^2h^2/\gamma^2+1-2h^2/(\gamma r)\)</span>. Agrupar la energía específica produce la igualdad. <span class="math inline">\(\square\)</span></p>
+<p>La dirección de <span class="math inline">\(\mathbf e\)</span> desaparece como dato geométrico cuando <span class="math inline">\(e=0\)</span>: un círculo no tiene una dirección de periastro distinguida. También debe separarse <span class="math inline">\(h=0\)</span>, porque entonces D02 da <span class="math inline">\(\mathbf e=-\mathbf q/r\)</span> y <span class="math inline">\(e=1\)</span> para cualquier energía radial. La clasificación por excentricidad que usaremos corresponde a <span class="math inline">\(h&gt;0\)</span>.</p>
+<p><span id="fispm-t1-c18-mp0002"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP02.</strong> Conserva el vector de excentricidad cuando haga falta orientar la órbita. Su magnitud clasifica formas; su dirección guarda información que la energía no contiene.</p>
+<section id="ejercicios-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-1">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0003"></span></p>
+<p><strong>Ejercicio FPM-I-18-E03.</strong> En un estado con <span class="math inline">\(\mathbf q=r\mathbf e_x\)</span> y <span class="math inline">\(\mathbf w=v\mathbf e_y\)</span>, <span class="math inline">\(v&gt;0\)</span>, calcula <span class="math inline">\(\mathbf e\)</span>. Determina qué ocurre si <span class="math inline">\(v^2=\gamma/r\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\mathbf h=rv\mathbf e_z\)</span> y <span class="math inline">\(\mathbf w\times\mathbf h=rv^2\mathbf e_x\)</span>. Por tanto <span class="math inline">\(\mathbf e=(rv^2/\gamma-1)\mathbf e_x\)</span>. Si <span class="math inline">\(v^2=\gamma/r\)</span>, el vector es cero y el estado es circular. Una rapidez tangencial mayor produce vector de excentricidad hacia <span class="math inline">\(\mathbf e_x\)</span>; una menor lo orienta hacia <span class="math inline">\(-\mathbf e_x\)</span>. Más adelante distinguiremos esos estados como periastro y apoastro cuando sean elípticos.</p>
+<p><span id="fispm-t1-c18-e0004"></span></p>
+<p><strong>Ejercicio FPM-I-18-E04.</strong> Dos estados no circulares tienen el mismo <span class="math inline">\(\epsilon,h\)</span> pero vectores de excentricidad con direcciones distintas dentro de un mismo plano. ¿Describen necesariamente la misma cónica situada en el espacio?</p>
+<p><strong>Solución.</strong> P03 fija la misma magnitud <span class="math inline">\(e\)</span>, pero no su dirección. Los semiejes o parámetros de tamaño serán los mismos, mientras la línea de los extremos está rotada. Las cónicas pueden compartir forma y energía y tener orientaciones diferentes. Para identificar la curva situada en el espacio se necesita también <span class="math inline">\(\mathbf e\)</span> y la normal orbital.</p>
+<p><span id="fispm-t1-c18-s03"></span></p>
+<p><span id="fpm-i-18-s03"></span></p>
+</section>
+</section>
+<section id="la-ecuación-orbital" class="level2">
+<h2 class="anchored" data-anchor-id="la-ecuación-orbital">§3 — La ecuación orbital</h2>
+<p>Tomar el producto escalar de <span class="math inline">\(\mathbf e\)</span> con la dirección radial permite leer directamente la distancia. La ecuación de Binet ofrece la misma conclusión desde la dinámica escalar. Ambas vías conservan una condición de dominio que será decisiva para las órbitas abiertas.</p>
+<p><span id="fispm-t1-c18-d0003"></span></p>
+<p><strong>Definición FPM-I-18-D03 — Parámetro orbital y anomalía verdadera.</strong> Para <span class="math inline">\(h&gt;0\)</span>, definimos <span class="math inline">\(p=h^2/\gamma&gt;0\)</span>. Cuando <span class="math inline">\(e&gt;0\)</span>, llamamos anomalía verdadera <span class="math inline">\(\theta\)</span> al ángulo orientado desde <span class="math inline">\(\mathbf e\)</span> hasta <span class="math inline">\(\mathbf q\)</span> en el plano orbital. Si <span class="math inline">\(e=0\)</span>, escogemos una dirección de referencia arbitraria.</p>
+<p><span id="fispm-t1-c18-p0004"></span></p>
+<p><strong>Proposición FPM-I-18-P04 — Ecuación polar de Kepler.</strong></p>
+<p><span class="math display">\[
+r(\theta)=\frac{p}{1+e\cos\theta},
+\qquad 1+e\cos\theta&gt;0.
+\]</span></p>
+<p><strong>Demostración.</strong> Con <span class="math inline">\(\mathbf n=\mathbf q/r\)</span>, <span class="math inline">\(\mathbf e\cdot\mathbf n=e\cos\theta\)</span>. La identidad usada en P03 da <span class="math inline">\(\mathbf e\cdot\mathbf n=h^2/(\gamma r)-1=p/r-1\)</span>. Despejar produce la fórmula. La desigualdad es necesaria porque <span class="math inline">\(p,r\)</span> son positivos. Desde Binet, <span class="math inline">\(u=1/r\)</span> satisface <span class="math inline">\(u''+u=\gamma/h^2=1/p\)</span>; su solución real es <span class="math inline">\(u=(1+e\cos\theta)/p\)</span> tras elegir la dirección de la amplitud. <span class="math inline">\(\square\)</span></p>
+<p>En coordenadas <span class="math inline">\(x=r\cos\theta\)</span>, <span class="math inline">\(y=r\sin\theta\)</span> con el eje <span class="math inline">\(x\)</span> hacia el periastro, la ecuación equivale a <span class="math inline">\(r+ex=p\)</span>. Elevar al cuadrado da</p>
+<p><span class="math display">\[
+(1-e^2)x^2+y^2+2epx-p^2=0.
+\]</span></p>
+<p>Para regresar de esa ecuación cartesiana a la polar hay que conservar <span class="math inline">\(p-ex=r&gt;0\)</span>. En una hipérbola, la ecuación cuadrática completa incluye otra rama que no pertenece a la trayectoria atractiva con esta orientación.</p>
+<p>La fórmula y P03 anticipan la clasificación: <span class="math inline">\(0\leq e&lt;1\)</span> corresponde a energía negativa, <span class="math inline">\(e=1\)</span> a energía cero y <span class="math inline">\(e&gt;1\)</span> a energía positiva. El caso circular <span class="math inline">\(e=0\)</span> da <span class="math inline">\(r=p\)</span>. No se ha clasificado todavía el movimiento radial, excluido por <span class="math inline">\(h&gt;0\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span id="fispm-t1-c18-mp0003"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP03.</strong> Al pasar entre ecuaciones polares y cartesianas, conserva las condiciones de signo previas a elevar al cuadrado. Una curva algebraica puede contener más puntos que la órbita física.</p>
+<section id="ejercicios-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-2">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0005"></span></p>
+<p><strong>Ejercicio FPM-I-18-E05.</strong> Una órbita tiene <span class="math inline">\(p=3a\)</span> y <span class="math inline">\(e=1/2\)</span>, con <span class="math inline">\(a&gt;0\)</span>. Calcula las distancias para <span class="math inline">\(\theta=0,\pi/2,\pi\)</span>.</p>
+<p><strong>Solución.</strong> La fórmula da <span class="math inline">\(r(0)=3a/(3/2)=2a\)</span>, <span class="math inline">\(r(\pi/2)=3a\)</span> y <span class="math inline">\(r(\pi)=3a/(1/2)=6a\)</span>. El primer valor es el mínimo y el último el máximo. El parámetro <span class="math inline">\(p\)</span> es el radio en la dirección perpendicular al periastro, no el semieje mayor.</p>
+<p><span id="fispm-t1-c18-e0006"></span></p>
+<p><strong>Ejercicio FPM-I-18-E06.</strong> Para <span class="math inline">\(e=2\)</span>, determina el intervalo angular conectado que contiene el periastro y satisface la condición física de P04.</p>
+<p><strong>Solución.</strong> Se exige <span class="math inline">\(\cos\theta&gt;-1/2\)</span>. El intervalo alrededor de cero es <span class="math inline">\(-2\pi/3&lt;\theta&lt;2\pi/3\)</span>. En sus extremos el denominador tiende a cero positivo y el radio diverge. Los ángulos del resto de una vuelta darían radio negativo en la fórmula y no describen la rama física.</p>
+<p><span id="fispm-t1-c18-s04"></span></p>
+<p><span id="fpm-i-18-s04"></span></p>
+</section>
+</section>
+<section id="la-elipse-y-sus-focos" class="level2">
+<h2 class="anchored" data-anchor-id="la-elipse-y-sus-focos">§4 — La elipse y sus focos</h2>
+<p>Para <span class="math inline">\(0\leq e&lt;1\)</span>, completar el cuadrado convierte la ecuación orbital en la forma de una elipse. El centro de fuerza está en un foco; el centro geométrico se encuentra desplazado. Esa diferencia explica por qué la distancia al centro de fuerza varía durante la vuelta.</p>
+<p><span id="fispm-t1-c18-d0004"></span></p>
+<p><strong>Definición FPM-I-18-D04 — Semiejes elípticos.</strong> Definimos</p>
+<p><span class="math display">\[
+a=\frac{p}{1-e^2},\qquad
+b=a\sqrt{1-e^2},
+\qquad 0\leq e&lt;1.
+\]</span></p>
+<p><span class="math inline">\(a\)</span> es el semieje mayor y <span class="math inline">\(b\)</span> el menor. El origen sigue estando en el foco de atracción.</p>
+<p><span id="fispm-t1-c18-p0005"></span></p>
+<p><strong>Proposición FPM-I-18-P05 — Geometría de la elipse.</strong></p>
+<p><span class="math display">\[
+\frac{(x+ae)^2}{a^2}+\frac{y^2}{b^2}=1.
+\]</span></p>
+<p>El centro es <span class="math inline">\((-ae,0)\)</span>, los focos están en <span class="math inline">\((0,0)\)</span> y <span class="math inline">\((-2ae,0)\)</span>, y las distancias extremas al origen son <span class="math inline">\(r_{\mathrm p}=a(1-e)\)</span> y <span class="math inline">\(r_{\mathrm a}=a(1+e)\)</span>.</p>
+<p><strong>Demostración.</strong> En la ecuación cartesiana de §3, dividimos por <span class="math inline">\(1-e^2&gt;0\)</span> y completamos el cuadrado en <span class="math inline">\(x\)</span>. Usando <span class="math inline">\(p=a(1-e^2)\)</span> obtenemos la forma indicada. La distancia focal de una elipse es <span class="math inline">\(\sqrt{a^2-b^2}=ae\)</span>, lo que sitúa los focos a ambos lados de su centro. Los extremos radiales también se obtienen en P04 con <span class="math inline">\(\cos\theta=1\)</span> y <span class="math inline">\(-1\)</span>, dando <span class="math inline">\(p/(1+e)=a(1-e)\)</span> y <span class="math inline">\(p/(1-e)=a(1+e)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c18-p0006"></span></p>
+<p><strong>Proposición FPM-I-18-P06 — Energía y semieje.</strong> Para una órbita elíptica,</p>
+<p><span class="math display">\[
+\epsilon=-\frac{\gamma}{2a},
+\qquad
+h^2=\gamma a(1-e^2).
+\]</span></p>
+<p><strong>Demostración.</strong> La segunda igualdad es <span class="math inline">\(h^2=\gamma p\)</span> con D04. P03 da <span class="math inline">\(2\epsilon h^2/\gamma^2=e^2-1\)</span>. Sustituir <span class="math inline">\(h^2=\gamma a(1-e^2)\)</span> y cancelar <span class="math inline">\(1-e^2&gt;0\)</span> produce la primera. <span class="math inline">\(\square\)</span></p>
+<p>La energía fija el semieje mayor, mientras el momento angular decide cuánto se aparta la elipse de un círculo de ese mismo tamaño energético. Al disminuir <span class="math inline">\(h\)</span> con <span class="math inline">\(a\)</span> fijo, <span class="math inline">\(e\)</span> se acerca a uno y el periastro se aproxima a cero. Para objetos extensos, el contacto puede terminar el movimiento antes de alcanzar ese límite puntual.</p>
+<p>La ley elíptica de Kepler aparece aquí como consecuencia del modelo de dos cuerpos para energía negativa y momento angular no nulo. No se extiende a todas las trayectorias gravitatorias ni a un sistema con otras fuerzas sin examinar sus efectos.</p>
+<p><span id="fispm-t1-c18-mp0004"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP04.</strong> Diferencia foco, centro geométrico y centro de masa. Identifica qué tamaño fija la energía y qué deformación fija el momento angular.</p>
+<section id="ejercicios-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-3">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0007"></span></p>
+<p><strong>Ejercicio FPM-I-18-E07.</strong> Una elipse tiene distancias extremas <span class="math inline">\(r_{\mathrm p}=2d\)</span> y <span class="math inline">\(r_{\mathrm a}=8d\)</span>. Encuentra <span class="math inline">\(a,e,p\)</span>.</p>
+<p><strong>Solución.</strong> Sumarlas da <span class="math inline">\(2a=10d\)</span>, así que <span class="math inline">\(a=5d\)</span>. Su diferencia es <span class="math inline">\(2ae=6d\)</span>, por lo que <span class="math inline">\(e=3/5\)</span>. Entonces <span class="math inline">\(p=a(1-e^2)=5d(1-9/25)=16d/5\)</span>. La energía específica es <span class="math inline">\(-\gamma/(10d)\)</span> y <span class="math inline">\(h^2=16\gamma d/5\)</span>. Esos valores reconstruyen ambos extremos mediante P04.</p>
+<p><span id="fispm-t1-c18-e0008"></span></p>
+<p><strong>Ejercicio FPM-I-18-E08.</strong> Dos elipses tienen el mismo <span class="math inline">\(\gamma,a\)</span> y excentricidades <span class="math inline">\(0\)</span> y <span class="math inline">\(3/5\)</span>. Compara energía, momento angular y periastro.</p>
+<p><strong>Solución.</strong> Comparten <span class="math inline">\(\epsilon=-\gamma/(2a)\)</span>. Sus momentos específicos son <span class="math inline">\(\sqrt{\gamma a}\)</span> y <span class="math inline">\(\sqrt{\gamma a(1-9/25)}=(4/5)\sqrt{\gamma a}\)</span>. Los periastros son <span class="math inline">\(a\)</span> y <span class="math inline">\(2a/5\)</span>. La misma energía no fija ni el momento angular ni la máxima aproximación.</p>
+<p><span id="fispm-t1-c18-s05"></span></p>
+<p><span id="fpm-i-18-s05"></span></p>
+</section>
+</section>
+<section id="la-parábola-como-umbral-energético" class="level2">
+<h2 class="anchored" data-anchor-id="la-parábola-como-umbral-energético">§5 — La parábola como umbral energético</h2>
+<p>Para energía específica cero y <span class="math inline">\(h&gt;0\)</span>, P03 da <span class="math inline">\(e=1\)</span>. La trayectoria tiene un radio mínimo y se extiende hasta distancias arbitrarias. La rapidez se aproxima a cero lejos del centro; ése es el umbral entre un movimiento ligado y uno que conserva rapidez positiva en el infinito.</p>
+<p><span id="fispm-t1-c18-p0007"></span></p>
+<p><strong>Proposición FPM-I-18-P07 — Parábola física.</strong> Para <span class="math inline">\(e=1\)</span>,</p>
+<p><span class="math display">\[
+r=\frac{p}{1+\cos\theta},
+\qquad -\pi&lt;\theta&lt;\pi,
+\]</span></p>
+<p>y su ecuación cartesiana es <span class="math inline">\(y^2=p^2-2px\)</span>. El vértice y periastro están en <span class="math inline">\((p/2,0)\)</span>, el foco en el origen y la directriz es <span class="math inline">\(x=p\)</span>.</p>
+<p><strong>Demostración.</strong> La ecuación orbital exige denominador positivo, salvo en los extremos angulares. La ecuación cartesiana de §3 con <span class="math inline">\(e=1\)</span> queda <span class="math inline">\(y^2+2px-p^2=0\)</span>. Es la parábola <span class="math inline">\(y^2=-2p(x-p/2)\)</span>. Su distancia focal es <span class="math inline">\(p/2\)</span>, dirigida hacia el lado negativo de <span class="math inline">\(x\)</span> desde el vértice, de modo que el foco es cero y la directriz queda a igual distancia hacia el lado positivo, en <span class="math inline">\(x=p\)</span>. En toda la parábola <span class="math inline">\(x\leq p/2\)</span> y <span class="math inline">\(p-x&gt;0\)</span>, así que se conserva la ecuación original <span class="math inline">\(r=p-x\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La parábola no tiene apoastro: el radio crece sin cota al aproximarse el ángulo a cualquiera de los extremos. Para un movimiento con <span class="math inline">\(h&gt;0\)</span>, la partícula llega desde lejos, pasa por el periastro y vuelve a alejarse. La descripción temporal confirmará que las distancias infinitas corresponden a tiempos infinitos.</p>
+<p>Decir «energía cero» utiliza el cero de potencial en el infinito. Un cambio constante del potencial cambiaría el número de la energía, pero no la trayectoria. El criterio físico es que la energía cinética asintótica tienda a cero con esa convención.</p>
+<p><span id="fispm-t1-c18-mp0005"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP05.</strong> En el caso parabólico, conserva el cero energético y el dominio angular. La excentricidad uno identifica esta cónica sólo bajo el supuesto no radial.</p>
+<section id="ejercicios-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-4">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0009"></span></p>
+<p><strong>Ejercicio FPM-I-18-E09.</strong> Una parábola tiene periastro <span class="math inline">\(d&gt;0\)</span>. Encuentra <span class="math inline">\(p,h\)</span> y la rapidez en el periastro.</p>
+<p><strong>Solución.</strong> P07 da <span class="math inline">\(p=2d\)</span>. Entonces <span class="math inline">\(h=\sqrt{\gamma p}=\sqrt{2\gamma d}\)</span>. En el periastro la velocidad radial es cero y la tangencial es <span class="math inline">\(h/d=\sqrt{2\gamma/d}\)</span>. La energía específica es <span class="math inline">\(v^2/2-\gamma/d=0\)</span>, coherente con el caso parabólico.</p>
+<p><span id="fispm-t1-c18-e0010"></span></p>
+<p><strong>Ejercicio FPM-I-18-E10.</strong> Compara a distancia <span class="math inline">\(d\)</span> la rapidez circular y la rapidez parabólica, ambas en el mismo problema gravitatorio relativo.</p>
+<p><strong>Solución.</strong> La circular cumple <span class="math inline">\(v_c=\sqrt{\gamma/d}\)</span> y la parabólica tiene <span class="math inline">\(v_{\mathrm p}=\sqrt{2\gamma/d}\)</span> por energía cero. La razón es <span class="math inline">\(\sqrt2\)</span>. Para que un lanzamiento con esa rapidez tenga periastro en el punto considerado debe ser tangencial; una velocidad con componente radial conserva la energía parabólica, pero cambia el momento angular y la posición del periastro.</p>
+<p><span id="fispm-t1-c18-s06"></span></p>
+<p><span id="fpm-i-18-s06"></span></p>
+</section>
+</section>
+<section id="la-hipérbola-y-la-rama-que-se-recorre" class="level2">
+<h2 class="anchored" data-anchor-id="la-hipérbola-y-la-rama-que-se-recorre">§6 — La hipérbola y la rama que se recorre</h2>
+<p>Cuando <span class="math inline">\(\epsilon&gt;0\)</span> y <span class="math inline">\(h&gt;0\)</span>, la excentricidad es mayor que uno. La trayectoria abierta conserva una rapidez asintótica positiva. Su ecuación cartesiana tiene dos ramas, pero sólo una satisface la relación polar con radio positivo y origen en el foco de atracción.</p>
+<p><span id="fispm-t1-c18-d0005"></span></p>
+<p><strong>Definición FPM-I-18-D05 — Tamaño hiperbólico positivo.</strong> Para <span class="math inline">\(e&gt;1\)</span>, definimos <span class="math inline">\(A=p/(e^2-1)&gt;0\)</span> y <span class="math inline">\(B=A\sqrt{e^2-1}\)</span>. Usamos <span class="math inline">\(A\)</span> positivo; algunas convenciones orbitales usan un semieje con signo <span class="math inline">\(a=-A\)</span>. Aquí no cambiaremos entre ambas sin indicarlo.</p>
+<p><span id="fispm-t1-c18-p0008"></span></p>
+<p><strong>Proposición FPM-I-18-P08 — Geometría y energía hiperbólicas.</strong></p>
+<p><span class="math display">\[
+\frac{(x-Ae)^2}{A^2}-\frac{y^2}{B^2}=1,
+\qquad x\leq A(e-1)
+\]</span></p>
+<p>describe la rama física. Además,</p>
+<p><span class="math display">\[
+r_{\mathrm p}=A(e-1),\qquad
+\epsilon=\frac{\gamma}{2A},\qquad
+h^2=\gamma A(e^2-1).
+\]</span></p>
+<p><strong>Demostración.</strong> Completar el cuadrado en la ecuación cartesiana de §3, ahora con <span class="math inline">\(e^2-1&gt;0\)</span>, da la hipérbola centrada en <span class="math inline">\((Ae,0)\)</span>. Sus vértices son <span class="math inline">\(A(e-1)\)</span> y <span class="math inline">\(A(e+1)\)</span> sobre el eje <span class="math inline">\(x\)</span>. La condición original <span class="math inline">\(p-ex&gt;0\)</span> admite la rama izquierda y excluye la derecha. P04 da <span class="math inline">\(r_{\mathrm p}=p/(1+e)=A(e-1)\)</span>. La definición de <span class="math inline">\(p\)</span> da el momento y P03 produce <span class="math inline">\(2\epsilon A/\gamma=1\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c18-p0009"></span></p>
+<p><strong>Proposición FPM-I-18-P09 — Extremos angulares y rapidez lejana.</strong> La rama física tiene</p>
+<p><span class="math display">\[
+-\theta_\infty&lt;\theta&lt;\theta_\infty,
+\qquad \theta_\infty=\arccos(-1/e).
+\]</span></p>
+<p>Al alejarse por cualquiera de sus extremos, <span class="math inline">\(r\to\infty\)</span> y la rapidez relativa tiende a <span class="math inline">\(v_\infty=\sqrt{2\epsilon}=\sqrt{\gamma/A}\)</span>.</p>
+<p><strong>Demostración.</strong> El denominador de P04 es positivo exactamente en el intervalo indicado alrededor del periastro. En sus extremos se anula y el radio diverge. La energía específica da <span class="math inline">\(|\mathbf w|^2=2\epsilon+2\gamma/r\)</span>, cuyo límite es <span class="math inline">\(2\epsilon&gt;0\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La dirección del vector posición en el infinito y la dirección de la velocidad entrante no son la misma: la partícula entrante se acerca al foco mientras su radio disminuye. La saliente tiene radio creciente. Esta distinción será necesaria al estudiar el ángulo de dispersión en I-19.</p>
+<p><span id="fispm-t1-c18-mp0006"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP06.</strong> Declara la convención del semieje hiperbólico y conserva la rama física. Distingue dirección de posición, dirección de velocidad y límite de rapidez.</p>
+<section id="ejercicios-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-5">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0011"></span></p>
+<p><strong>Ejercicio FPM-I-18-E11.</strong> Una hipérbola tiene <span class="math inline">\(A=2d\)</span> y <span class="math inline">\(e=3/2\)</span>. Calcula <span class="math inline">\(p,r_{\mathrm p},\epsilon\)</span> y <span class="math inline">\(h^2\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(p=A(e^2-1)=2d(9/4-1)=5d/2\)</span>. El periastro es <span class="math inline">\(A(e-1)=d\)</span>. La energía específica es <span class="math inline">\(\gamma/(4d)\)</span> y <span class="math inline">\(h^2=5\gamma d/2\)</span>. La rapidez asintótica satisface <span class="math inline">\(v_\infty^2=\gamma/(2d)\)</span>.</p>
+<p><span id="fispm-t1-c18-e0012"></span></p>
+<p><strong>Ejercicio FPM-I-18-E12.</strong> Para <span class="math inline">\(p=3d\)</span> y <span class="math inline">\(e=2\)</span>, determina el tamaño hiperbólico, periastro, ángulo extremo y rapidez asintótica.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(A=3d/(4-1)=d\)</span>, <span class="math inline">\(r_{\mathrm p}=d(2-1)=d\)</span> y <span class="math inline">\(\theta_\infty=\arccos(-1/2)=2\pi/3\)</span>. La rapidez lejana es <span class="math inline">\(\sqrt{\gamma/d}\)</span>. Esa rapidez no es la del periastro: allí el campo ha convertido energía potencial en cinética y <span class="math inline">\(v_{\mathrm p}^2=2\epsilon+2\gamma/d=3\gamma/d\)</span>.</p>
+<p><span id="fispm-t1-c18-s07"></span></p>
+<p><span id="fpm-i-18-s07"></span></p>
+</section>
+</section>
+<section id="rapidez-extremos-y-balance-energético" class="level2">
+<h2 class="anchored" data-anchor-id="rapidez-extremos-y-balance-energético">§7 — Rapidez, extremos y balance energético</h2>
+<p>La forma de la cónica permite reconocer posiciones; la energía permite calcular rapidez sin derivar toda la parametrización. El momento angular añade la componente tangencial y, con un signo de rama, completa la velocidad.</p>
+<p><span id="fispm-t1-c18-p0010"></span></p>
+<p><strong>Proposición FPM-I-18-P10 — Relación de rapidez orbital.</strong> En cualquier solución regular,</p>
+<p><span class="math display">\[
+|\mathbf w|^2=2\epsilon+\frac{2\gamma}{r}.
+\]</span></p>
+<p>Para una elipse, una parábola y una hipérbola, respectivamente,</p>
+<p><span class="math display">\[
+|\mathbf w|^2=
+\gamma\left(\frac2r-\frac1a\right),\qquad
+\frac{2\gamma}{r},\qquad
+\gamma\left(\frac2r+\frac1A\right).
+\]</span></p>
+<p><strong>Demostración.</strong> Despejar la energía de D01 da la primera igualdad. Sustituir las energías de P06, P07 y P08 produce las tres formas. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c18-p0011"></span></p>
+<p><strong>Proposición FPM-I-18-P11 — Velocidades radial y tangencial.</strong> Con ángulo verdadero orientado y <span class="math inline">\(h&gt;0\)</span>,</p>
+<p><span class="math display">\[
+v_r=\dot r=\frac{\gamma}{h}e\sin\theta,
+\qquad
+v_\theta=r\dot\theta=\frac{\gamma}{h}(1+e\cos\theta).
+\]</span></p>
+<p>En los extremos radiales finitos, la rapidez es <span class="math inline">\(h/r\)</span>.</p>
+<p><strong>Demostración.</strong> La conservación angular da <span class="math inline">\(v_\theta=h/r\)</span>, y P04 produce su expresión. Derivar <span class="math inline">\(r=p/(1+e\cos\theta)\)</span> respecto de <span class="math inline">\(\theta\)</span> y multiplicar por <span class="math inline">\(\dot\theta=h/r^2\)</span> da <span class="math inline">\(\dot r=(h/p)e\sin\theta=(\gamma/h)e\sin\theta\)</span>. En un extremo radial <span class="math inline">\(\dot r=0\)</span>, dejando sólo la componente tangencial. <span class="math inline">\(\square\)</span></p>
+<p>En una elipse no circular, el periastro tiene la máxima rapidez y el apoastro la mínima. P10 muestra que la rapidez crece al disminuir el radio para energía fija. P11 explica también por qué un lanzamiento tangencial puede estar en un máximo o en un mínimo radial: importa si su rapidez es menor o mayor que la circular local.</p>
+<p>La velocidad es un vector. Dos posiciones con la misma distancia pueden tener igual rapidez y componentes radiales opuestas. Una solución que sólo entrega el módulo no termina un problema de orientación o de encuentro entre cuerpos.</p>
+<p><span id="fispm-t1-c18-mp0007"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP07.</strong> Usa energía para la rapidez y momento angular para la dirección tangencial. Conserva el signo radial y la orientación del plano para reconstruir el vector velocidad.</p>
+<section id="ejercicios-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-6">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0013"></span></p>
+<p><strong>Ejercicio FPM-I-18-E13.</strong> En una elipse, demuestra que <span class="math inline">\(v_{\mathrm p}/v_{\mathrm a}=(1+e)/(1-e)\)</span> y calcula la razón para <span class="math inline">\(e=3/5\)</span>.</p>
+<p><strong>Solución.</strong> En ambos extremos la velocidad es tangencial y vale <span class="math inline">\(h/r\)</span>. Por tanto la razón de rapideces es <span class="math inline">\(r_{\mathrm a}/r_{\mathrm p}=a(1+e)/[a(1-e)]\)</span>. Para <span class="math inline">\(e=3/5\)</span> da <span class="math inline">\((8/5)/(2/5)=4\)</span>. La razón energética no sería cuatro: las energías cinéticas específicas están en razón dieciséis.</p>
+<p><span id="fispm-t1-c18-e0014"></span></p>
+<p><strong>Ejercicio FPM-I-18-E14.</strong> En una órbita con excentricidad <span class="math inline">\(e&gt;0\)</span>, compara los vectores velocidad en las posiciones de anomalías <span class="math inline">\(\theta\)</span> y <span class="math inline">\(-\theta\)</span>, usando sus bases radiales locales.</p>
+<p><strong>Solución.</strong> El coseno y el radio son iguales; la componente tangencial de P11 también es igual y positiva. La componente radial cambia de signo porque cambia el seno. En el lado con <span class="math inline">\(\theta&gt;0\)</span> y <span class="math inline">\(\theta&lt;\pi\)</span> se aleja; en el opuesto se acerca. Las bases locales también cambian de orientación, de modo que no debe restarse sólo una pareja de números escalares para comparar los vectores en coordenadas fijas.</p>
+<p><span id="fispm-t1-c18-s08"></span></p>
+<p><span id="fpm-i-18-s08"></span></p>
+</section>
+</section>
+<section id="área-y-período-las-leyes-de-kepler" class="level2">
+<h2 class="anchored" data-anchor-id="área-y-período-las-leyes-de-kepler">§8 — Área y período: las leyes de Kepler</h2>
+<p>La conservación angular implica una velocidad areolar constante. Para una elipse, dividir su área total por esa velocidad produce el período. Este paso reúne geometría y dinámica sin suponer movimiento angular uniforme.</p>
+<p><span id="fispm-t1-c18-p0012"></span></p>
+<p><strong>Proposición FPM-I-18-P12 — Ley de áreas del movimiento relativo.</strong> El área orientada barrida por <span class="math inline">\(\mathbf q\)</span> satisface</p>
+<p><span class="math display">\[
+\dot{\mathcal A}=\frac h2.
+\]</span></p>
+<p>En una órbita elíptica orientada, cada vuelta barre el área <span class="math inline">\(\pi ab\)</span>.</p>
+<p><strong>Demostración.</strong> La definición areolar de I-15 da <span class="math inline">\(\dot{\mathcal A}=(\mathbf q\times\dot{\mathbf q})\cdot\widehat{\mathbf h}/2=h/2\)</span>. La elipse es una curva simple convexa y su foco está dentro de ella. Una vuelta recorre todos los rayos desde ese foco y barre exactamente la región elíptica, cuya área es <span class="math inline">\(\pi ab\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c18-p0013"></span></p>
+<p><strong>Proposición FPM-I-18-P13 — Período elíptico exacto del par.</strong></p>
+<p><span class="math display">\[
+T=\frac{2\pi ab}{h}
+=2\pi\sqrt{\frac{a^3}{\gamma}},
+\qquad
+T^2=\frac{4\pi^2a^3}{G(m_1+m_2)}.
+\]</span></p>
+<p><strong>Demostración.</strong> P12 da <span class="math inline">\(T(\,h/2\,)=\pi ab\)</span>. Por D04 y P06, <span class="math inline">\(b=a\sqrt{1-e^2}\)</span> y <span class="math inline">\(h=\sqrt{\gamma a(1-e^2)}\)</span>. Sustituir cancela el factor de excentricidad y deja la segunda expresión. Elevar al cuadrado y usar D01 da la tercera. <span class="math inline">\(\square\)</span></p>
+<p>Para una masa central dominante y distintos cuerpos de masa despreciable frente a ella, la suma de masas es aproximadamente la misma y <span class="math inline">\(T^2/a^3\)</span> resulta aproximadamente común. En el problema exacto, la constante cambia si cambia esa suma. Además, <span class="math inline">\(a\)</span> es el semieje de la separación relativa; para los semiejes de cada cuerpo respecto del centro habrá factores adicionales.</p>
+<p>Las tres leyes quedan conectadas: energía negativa y <span class="math inline">\(h&gt;0\)</span> producen una elipse focal; centralidad conserva el área por tiempo; la geometría del área y la relación entre <span class="math inline">\(h\)</span> y los semiejes producen el período. Cada conclusión conserva las hipótesis del modelo de dos cuerpos.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><span id="fispm-t1-c18-mp0008"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP08.</strong> En la tercera ley, declara qué semieje y qué suma de masas utilizas. No sustituyas área uniforme por velocidad angular uniforme.</p>
+<section id="ejercicios-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-7">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0015"></span></p>
+<p><strong>Ejercicio FPM-I-18-E15.</strong> Dos elipses del mismo par tienen semiejes mayores <span class="math inline">\(a\)</span> y <span class="math inline">\(4a\)</span>. Calcula la razón de períodos. Si comparten <span class="math inline">\(a\)</span> pero tienen excentricidades distintas, ¿cambia el período?</p>
+<p><strong>Solución.</strong> P13 da <span class="math inline">\(T_2/T_1=(4a/a)^{3/2}=8\)</span>. Para el mismo <span class="math inline">\(a,\gamma\)</span>, el período es igual con cualquier <span class="math inline">\(0\leq e&lt;1\)</span>. La excentricidad cambia cómo se distribuye la rapidez durante la vuelta, pero no el tiempo total con ese semieje y esa masa total.</p>
+<p><span id="fispm-t1-c18-e0016"></span></p>
+<p><strong>Ejercicio FPM-I-18-E16.</strong> Una elipse tiene <span class="math inline">\(e=1/2\)</span>. Compara las velocidades angulares en periastro y apoastro y explica por qué no contradice la velocidad areolar constante.</p>
+<p><strong>Solución.</strong> La velocidad angular es <span class="math inline">\(h/r^2\)</span>. Los radios extremos están en razón <span class="math inline">\(r_{\mathrm a}/r_{\mathrm p}=(1+e)/(1-e)=3\)</span>. Por tanto <span class="math inline">\(\dot\theta_{\mathrm p}/\dot\theta_{\mathrm a}=9\)</span>. El producto <span class="math inline">\(r^2\dot\theta=h\)</span> permanece constante y da la misma área por tiempo; la dirección radial gira más deprisa donde el radio es menor.</p>
+<p><span id="fispm-t1-c18-s09"></span></p>
+<p><span id="fpm-i-18-s09"></span></p>
+</section>
+</section>
+<section id="un-ángulo-que-facilita-el-tiempo-elíptico" class="level2">
+<h2 class="anchored" data-anchor-id="un-ángulo-que-facilita-el-tiempo-elíptico">§9 — Un ángulo que facilita el tiempo elíptico</h2>
+<p>La anomalía verdadera sitúa la partícula respecto del foco. Para calcular el tiempo conviene parametrizar la elipse desde su centro geométrico mediante un círculo auxiliar. El nuevo ángulo no es el ángulo físico de la dirección radial: es una coordenada que simplifica el área barrida.</p>
+<p><span id="fispm-t1-c18-d0006"></span></p>
+<p><strong>Definición FPM-I-18-D06 — Anomalía excéntrica y movimiento medio.</strong> En una elipse, definimos la anomalía excéntrica <span class="math inline">\(u\)</span> por</p>
+<p><span class="math display">\[
+x=a(\cos u-e),\qquad y=b\sin u.
+\]</span></p>
+<p>Se sigue una elección continua de <span class="math inline">\(u\)</span> a lo largo del movimiento. Definimos también <span class="math inline">\(n=\sqrt{\gamma/a^3}=2\pi/T\)</span> y la anomalía media <span class="math inline">\(\mathcal M=n(t-\tau)\)</span>, donde <span class="math inline">\(\tau\)</span> es un paso por el periastro cuando <span class="math inline">\(e&gt;0\)</span>.</p>
+<p><span id="fispm-t1-c18-p0014"></span></p>
+<p><strong>Proposición FPM-I-18-P14 — Relaciones entre anomalías.</strong></p>
+<p><span class="math display">\[
+r=a(1-e\cos u),
+\]</span></p>
+<p><span class="math display">\[
+\cos\theta=\frac{\cos u-e}{1-e\cos u},
+\qquad
+\sin\theta=\frac{\sqrt{1-e^2}\sin u}{1-e\cos u}.
+\]</span></p>
+<p><strong>Demostración.</strong> Al calcular <span class="math inline">\(x^2+y^2\)</span> con <span class="math inline">\(b^2=a^2(1-e^2)\)</span>, se obtiene <span class="math inline">\(a^2(1-e\cos u)^2\)</span>. Como <span class="math inline">\(1-e\cos u\geq1-e&gt;0\)</span>, la raíz positiva da el radio. Dividir <span class="math inline">\(x,y\)</span> por <span class="math inline">\(r\)</span> produce las relaciones angulares. <span class="math inline">\(\square\)</span></p>
+<p>Las dos funciones trigonométricas juntas conservan el cuadrante. Utilizar sólo una inversa de coseno perdería el signo de la componente vertical y confundiría aproximación con alejamiento. Para varias vueltas hay que conservar además el número de vueltas del ángulo continuo.</p>
+<p><span id="fispm-t1-c18-p0015"></span></p>
+<p><strong>Proposición FPM-I-18-P15 — Ecuación temporal de Kepler.</strong></p>
+<p><span class="math display">\[
+\mathcal M=u-e\sin u,
+\qquad
+\frac{dt}{du}=\frac{1-e\cos u}{n}&gt;0.
+\]</span></p>
+<p><strong>Demostración.</strong> Derivar la parametrización da <span class="math inline">\(dx/du=-a\sin u\)</span> y <span class="math inline">\(dy/du=b\cos u\)</span>. El producto areolar es <span class="math inline">\(x(dy/du)-y(dx/du)=ab(1-e\cos u)\)</span>. Como <span class="math inline">\(x\dot y-y\dot x=h\)</span> y <span class="math inline">\(h=abn\)</span>, resulta <span class="math inline">\(dt/du=(1-e\cos u)/n\)</span>. Integrar desde <span class="math inline">\(u=0\)</span> en el periastro hasta el ángulo considerado da <span class="math inline">\(n(t-\tau)=u-e\sin u\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La anomalía media aumenta uniformemente con el tiempo; las otras dos no lo hacen salvo en el círculo. Si <span class="math inline">\(e=0\)</span>, la ecuación se reduce a <span class="math inline">\(\mathcal M=u\)</span> y el origen de fase se elige arbitrariamente porque no hay un periastro privilegiado.</p>
+<p>Para predecir una posición a tiempo dado, el orden es concreto: calcular <span class="math inline">\(\mathcal M\)</span>, resolver la ecuación para <span class="math inline">\(u\)</span>, obtener <span class="math inline">\(x,y\)</span> y después reconstruir los cuerpos. El cálculo no requiere suponer que <span class="math inline">\(\theta=nt\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><span id="fispm-t1-c18-mp0009"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP09.</strong> Distingue anomalía verdadera, excéntrica y media. Conserva cuadrantes y vueltas al convertirlas.</p>
+<section id="ejercicios-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-8">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0017"></span></p>
+<p><strong>Ejercicio FPM-I-18-E17.</strong> En una elipse con <span class="math inline">\(e=1/2\)</span>, calcula posición, radio y anomalía media cuando <span class="math inline">\(u=\pi/2\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(x=-a/2\)</span>, <span class="math inline">\(y=b=(\sqrt3/2)a\)</span> y <span class="math inline">\(r=a\)</span>. La anomalía verdadera cumple <span class="math inline">\(\cos\theta=-1/2\)</span>, <span class="math inline">\(\sin\theta=\sqrt3/2\)</span>, así que <span class="math inline">\(\theta=2\pi/3\)</span> en esa vuelta. La anomalía media es <span class="math inline">\(\pi/2-1/2\)</span>, y el tiempo desde el periastro es <span class="math inline">\((\pi/2-1/2)/n\)</span>. Ninguno de los tres ángulos coincide aquí.</p>
+<p><span id="fispm-t1-c18-e0018"></span></p>
+<p><strong>Ejercicio FPM-I-18-E18.</strong> Demuestra que una partícula elíptica tarda medio período en ir de periastro a apoastro, aunque su velocidad angular cambie.</p>
+<p><strong>Solución.</strong> En periastro <span class="math inline">\(u=0\)</span> y en apoastro <span class="math inline">\(u=\pi\)</span>. P15 da <span class="math inline">\(\mathcal M(0)=0\)</span> y <span class="math inline">\(\mathcal M(\pi)=\pi\)</span>, porque el seno se anula en ambos extremos. El tiempo es <span class="math inline">\(\pi/n=T/2\)</span>. La igualdad procede de la ecuación temporal y de la simetría del recorrido, no de una velocidad angular constante.</p>
+<p><span id="fispm-t1-c18-s10"></span></p>
+<p><span id="fpm-i-18-s10"></span></p>
+</section>
+</section>
+<section id="resolver-la-ecuación-de-kepler-con-control-del-error" class="level2">
+<h2 class="anchored" data-anchor-id="resolver-la-ecuación-de-kepler-con-control-del-error">§10 — Resolver la ecuación de Kepler con control del error</h2>
+<p>La función <span class="math inline">\(u-e\sin u\)</span> no se invierte en general mediante una combinación elemental de funciones. Podemos resolverla numéricamente y, además, controlar cuánto puede diferir la aproximación de la solución exacta. El control importa especialmente cuando la excentricidad se acerca a uno.</p>
+<p><span id="fispm-t1-c18-p0016"></span></p>
+<p><strong>Proposición FPM-I-18-P16 — Unicidad, intervalo y residuo.</strong> Para <span class="math inline">\(0\leq e&lt;1\)</span> y cualquier <span class="math inline">\(\mathcal M\)</span> real, la ecuación <span class="math inline">\(F(u)=u-e\sin u-\mathcal M=0\)</span> tiene una única solución <span class="math inline">\(u_*\)</span>. Se cumple</p>
+<p><span class="math display">\[
+\mathcal M-e\leq u_*\leq\mathcal M+e,
+\qquad
+|u-u_*|\leq\frac{|F(u)|}{1-e}.
+\]</span></p>
+<p><strong>Demostración.</strong> <span class="math inline">\(F'(u)=1-e\cos u\geq1-e&gt;0\)</span>, de modo que <span class="math inline">\(F\)</span> es estrictamente creciente. Como el término seno está acotado, <span class="math inline">\(F\)</span> tiende a los infinitos de signos correspondientes cuando <span class="math inline">\(u\)</span> lo hace; continuidad y crecimiento dan existencia y unicidad. La ecuación <span class="math inline">\(u_*=\mathcal M+e\sin u_*\)</span> da el intervalo. El teorema del valor medio entre <span class="math inline">\(u\)</span> y <span class="math inline">\(u_*\)</span> da <span class="math inline">\(|F(u)|\geq(1-e)|u-u_*|\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Para una bisección, los extremos del intervalo tienen residuos de signos opuestos o cero. Tras <span class="math inline">\(N\)</span> divisiones, el intervalo tiene longitud <span class="math inline">\(2e/2^N\)</span> y su punto medio difiere de la raíz a lo sumo en <span class="math inline">\(e/2^N\)</span>. Si <span class="math inline">\(e=0\)</span>, la raíz se conoce directamente.</p>
+<p><span id="fispm-t1-c18-p0017"></span></p>
+<p><strong>Proposición FPM-I-18-P17 — Iteración por sustitución.</strong> Para <span class="math inline">\(0&lt;e&lt;1\)</span>, la iteración</p>
+<p><span class="math display">\[
+u_{k+1}=\mathcal M+e\sin u_k
+\]</span></p>
+<p>con cualquier <span class="math inline">\(u_0\)</span> real converge a <span class="math inline">\(u_*\)</span>. Tiene la cota</p>
+<p><span class="math display">\[
+|u_N-u_*|
+\leq\frac{e^N}{1-e}|u_1-u_0|.
+\]</span></p>
+<p><strong>Demostración.</strong> La desigualdad <span class="math inline">\(|\sin a-\sin b|\leq|a-b|\)</span> da <span class="math inline">\(|u_{k+1}-u_k|\leq e|u_k-u_{k-1}|\)</span>. Así, los incrementos están acotados por una sucesión geométrica. La suma de su cola desde el índice <span class="math inline">\(N\)</span> es <span class="math inline">\(e^N|u_1-u_0|/(1-e)\)</span>, que tiende a cero. La sucesión es de Cauchy y converge en los reales. Pasar al límite en la fórmula continua da una raíz, que P16 identifica de manera única. La misma cola da la cota. <span class="math inline">\(\square\)</span></p>
+<p>La convergencia puede ser lenta para <span class="math inline">\(e\)</span> próximo a uno. El método de Newton usa <span class="math inline">\(u_{k+1}=u_k-F(u_k)/(1-e\cos u_k)\)</span> y suele acelerar el cálculo cerca de la raíz, pero la positividad del denominador no prueba por sí sola convergencia desde cualquier inicio. Un intervalo de bisección permite conservar una garantía y usar Newton cuando su propuesta permanezca en él y resulte útil.</p>
+<p>El residuo es fácil de calcular y puede certificarse antes de convertir <span class="math inline">\(u\)</span> a posición. Por P14, el desplazamiento entre posiciones de anomalías próximas está acotado por <span class="math inline">\(a|\Delta u|\)</span>, porque la norma de la derivada de la parametrización no supera <span class="math inline">\(a\)</span>. Así, el control angular proporciona una cota espacial.</p>
+<p><span id="fispm-t1-c18-mp0010"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP10.</strong> Verifica una raíz mediante intervalo y residuo, no sólo mediante la diferencia entre iteraciones. Conserva una cota espacial si la pregunta exige precisión de posición.</p>
+<section id="ejercicios-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-9">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0019"></span></p>
+<p><strong>Ejercicio FPM-I-18-E19.</strong> Para <span class="math inline">\(e=0,5\)</span>, una aproximación tiene residuo de magnitud <span class="math inline">\(10^{-6}\)</span>. Acota su error en anomalía excéntrica y el error espacial si <span class="math inline">\(a=10^7\,\mathrm m\)</span>.</p>
+<p><strong>Solución.</strong> P16 da <span class="math inline">\(|u-u_*|\leq10^{-6}/0,5=2\times10^{-6}\)</span> radianes. La cota espacial es <span class="math inline">\(a|u-u_*|\leq20\,\mathrm m\)</span>. Es una garantía absoluta basada en el residuo; no significa que el error real alcance esos valores.</p>
+<p><span id="fispm-t1-c18-e0020"></span></p>
+<p><strong>Ejercicio FPM-I-18-E20.</strong> Para <span class="math inline">\(e=0,9\)</span>, ¿cuántas divisiones de bisección bastan para garantizar error de punto medio menor que <span class="math inline">\(10^{-4}\)</span> radianes?</p>
+<p><strong>Solución.</strong> La cota es <span class="math inline">\(0,9/2^N\)</span>. Se exige <span class="math inline">\(2^N&gt;9000\)</span>. Como <span class="math inline">\(2^{13}=8192\)</span> y <span class="math inline">\(2^{14}=16384\)</span>, catorce divisiones bastan. Con ellas, la cota es aproximadamente <span class="math inline">\(5,49\times10^{-5}\)</span>. La garantía no depende de que la anomalía media esté cerca de cero.</p>
+<p><span id="fispm-t1-c18-s11"></span></p>
+<p><span id="fpm-i-18-s11"></span></p>
+</section>
+</section>
+<section id="tiempo-en-las-órbitas-abiertas" class="level2">
+<h2 class="anchored" data-anchor-id="tiempo-en-las-órbitas-abiertas">§11 — Tiempo en las órbitas abiertas</h2>
+<p>En las trayectorias abiertas no existe un período de vuelta. Podemos medir el tiempo desde el periastro, con signo negativo para el tramo entrante y positivo para el saliente. Una variable de semiángulo simplifica la parábola; una parametrización con funciones hiperbólicas simplifica la hipérbola.</p>
+<p><span id="fispm-t1-c18-d0007"></span></p>
+<p><strong>Definición FPM-I-18-D07 — Parámetros temporales abiertos.</strong> Para la parábola, sea <span class="math inline">\(D=\tan(\theta/2)\)</span>, con <span class="math inline">\(-\pi&lt;\theta&lt;\pi\)</span>. Para la hipérbola, introducimos <span class="math inline">\(H\)</span> mediante <span class="math inline">\(x=A(e-\cosh H)\)</span>, <span class="math inline">\(y=B\sinh H\)</span>. Las funciones se definen por <span class="math inline">\(\cosh H=(e^H+e^{-H})/2\)</span> y <span class="math inline">\(\sinh H=(e^H-e^{-H})/2\)</span>. El periastro corresponde a <span class="math inline">\(D=0\)</span> o <span class="math inline">\(H=0\)</span>.</p>
+<p><span id="fispm-t1-c18-p0018"></span></p>
+<p><strong>Proposición FPM-I-18-P18 — Tiempo parabólico de Barker.</strong></p>
+<p><span class="math display">\[
+r=\frac p2(1+D^2),
+\qquad
+t-\tau=\frac12\sqrt{\frac{p^3}{\gamma}}
+\left(D+\frac{D^3}{3}\right).
+\]</span></p>
+<p><strong>Demostración.</strong> La identidad <span class="math inline">\(1+\cos\theta=2/(1+D^2)\)</span> da el radio. También <span class="math inline">\(d\theta/dD=2/(1+D^2)\)</span> y el balance areolar da <span class="math inline">\(dt/d\theta=r^2/h\)</span>. Usar <span class="math inline">\(h=\sqrt{\gamma p}\)</span> produce <span class="math inline">\(dt/dD=(p^{3/2}/(2\sqrt\gamma))(1+D^2)\)</span>. Integrar desde cero da la fórmula. <span class="math inline">\(\square\)</span></p>
+<p>El polinomio <span class="math inline">\(D+D^3/3\)</span> es estrictamente creciente, de modo que el tiempo identifica una única posición sobre la rama. Cuando <span class="math inline">\(D\)</span> tiende a cualquiera de los infinitos, también lo hace el tiempo. La parábola alcanza distancias arbitrarias sin llegar al infinito en un tiempo finito.</p>
+<p><span id="fispm-t1-c18-p0019"></span></p>
+<p><strong>Proposición FPM-I-18-P19 — Tiempo hiperbólico.</strong> Con <span class="math inline">\(e&gt;1\)</span> y la convención <span class="math inline">\(A&gt;0\)</span>,</p>
+<p><span class="math display">\[
+r=A(e\cosh H-1),
+\qquad
+n_{\mathrm h}=\sqrt{\frac{\gamma}{A^3}},
+\]</span></p>
+<p><span class="math display">\[
+n_{\mathrm h}(t-\tau)=e\sinh H-H.
+\]</span></p>
+<p>Esta ecuación tiene una única solución real <span class="math inline">\(H\)</span> para cada tiempo.</p>
+<p><strong>Demostración.</strong> Calcular <span class="math inline">\(x^2+y^2\)</span> con <span class="math inline">\(B^2=A^2(e^2-1)\)</span> da <span class="math inline">\(A^2(e\cosh H-1)^2\)</span>, cuyo factor es positivo. La parametrización pertenece a la rama física de P08 y cumple <span class="math inline">\(r+ex=p\)</span>. El producto <span class="math inline">\(x(dy/dH)-y(dx/dH)\)</span> vale <span class="math inline">\(AB(e\cosh H-1)\)</span>. Como <span class="math inline">\(h=ABn_{\mathrm h}\)</span>, el balance areolar da <span class="math inline">\(dt/dH=(e\cosh H-1)/n_{\mathrm h}\)</span>. Integrar desde el periastro produce la ecuación. Su miembro derecho tiene derivada <span class="math inline">\(e\cosh H-1\geq e-1&gt;0\)</span> y límites de signos opuestos infinitos; por tanto es invertible de manera única. <span class="math inline">\(\square\)</span></p>
+<p>La parametrización hiperbólica conserva automáticamente la rama de atracción. El tiempo puede resolverse por un intervalo y un residuo, usando ahora la cota inferior <span class="math inline">\(e-1\)</span> de la derivada. Cerca del límite parabólico, esa cota empeora y conviene revisar la elección de parámetros y la escala del cálculo.</p>
+<p><span id="fispm-t1-c18-mp0011"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP11.</strong> En órbitas abiertas, mide el tiempo desde un paso de referencia y conserva su signo. No sustituyas el parámetro elíptico por uno hiperbólico manteniendo las mismas fórmulas.</p>
+<section id="ejercicios-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-10">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0021"></span></p>
+<p><strong>Ejercicio FPM-I-18-E21.</strong> En una parábola, calcula el tiempo desde el periastro hasta <span class="math inline">\(\theta=\pi/2\)</span> y el radio allí.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(D=\tan(\pi/4)=1\)</span>, de modo que <span class="math inline">\(r=p\)</span>. P18 da <span class="math inline">\(t-\tau=\frac12\sqrt{p^3/\gamma}(1+1/3)
+=(2/3)\sqrt{p^3/\gamma}\)</span>. Para <span class="math inline">\(\theta=-\pi/2\)</span>, el tiempo tiene igual magnitud y signo negativo. Los puntos están a la misma distancia, pero se recorren antes y después del periastro.</p>
+<p><span id="fispm-t1-c18-e0022"></span></p>
+<p><strong>Ejercicio FPM-I-18-E22.</strong> En una hipérbola con <span class="math inline">\(e=2\)</span>, toma <span class="math inline">\(H=\log2\)</span>. Calcula <span class="math inline">\(r/A\)</span> y <span class="math inline">\(n_{\mathrm h}(t-\tau)\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\cosh(\log2)=(2+1/2)/2=5/4\)</span> y <span class="math inline">\(\sinh(\log2)=(2-1/2)/2=3/4\)</span>. Entonces <span class="math inline">\(r/A=2(5/4)-1=3/2\)</span> y <span class="math inline">\(n_{\mathrm h}(t-\tau)=2(3/4)-\log2=3/2-\log2&gt;0\)</span>. La parametrización da <span class="math inline">\(x/A=2-5/4=3/4\)</span> y <span class="math inline">\(y/A=\sqrt3(3/4)\)</span>, cuyas componentes tienen norma <span class="math inline">\(3/2\)</span>, verificando el radio.</p>
+<p><span id="fispm-t1-c18-s12"></span></p>
+<p><span id="fpm-i-18-s12"></span></p>
+</section>
+</section>
+<section id="los-dos-cuerpos-y-la-tercera-ley-exacta" class="level2">
+<h2 class="anchored" data-anchor-id="los-dos-cuerpos-y-la-tercera-ley-exacta">§12 — Los dos cuerpos y la tercera ley exacta</h2>
+<p>La cónica obtenida hasta aquí describe <span class="math inline">\(\mathbf q\)</span>, la separación. En el marco del centro de masa, cada cuerpo recorre una cónica escalada, con el centro de masa en un foco. El cuerpo más masivo describe la trayectoria menor. Cuando una masa domina, su trayectoria se vuelve pequeña y aparece la aproximación usual de un centro de fuerza inmóvil.</p>
+<p><span id="fispm-t1-c18-p0020"></span></p>
+<p><strong>Proposición FPM-I-18-P20 — Cónicas respecto del centro de masa.</strong> Sean <span class="math inline">\(s_1=m_2/M\)</span> y <span class="math inline">\(s_2=m_1/M\)</span>. Las posiciones internas son <span class="math inline">\(\boldsymbol\rho_1=s_1\mathbf q\)</span> y <span class="math inline">\(\boldsymbol\rho_2=-s_2\mathbf q\)</span>. Ambas cónicas tienen la misma excentricidad que la relativa. Para una elipse, sus semiejes mayores son <span class="math inline">\(a_1=s_1a\)</span> y <span class="math inline">\(a_2=s_2a\)</span>, sus períodos son iguales a <span class="math inline">\(T\)</span> y sus velocidades areolares son <span class="math inline">\(s_1^2h/2\)</span> y <span class="math inline">\(s_2^2h/2\)</span>.</p>
+<p><strong>Demostración.</strong> La reconstrucción de I-17 da las posiciones. Multiplicar una cónica por un factor positivo conserva su excentricidad y escala todos sus tamaños por ese factor. El signo negativo añade una rotación de <span class="math inline">\(\pi\)</span> en el plano, sin alterar forma ni tiempo. Los productos de posición y velocidad internas escalan por <span class="math inline">\(s_i^2\)</span>, dando la velocidad areolar. La repetición temporal es la misma porque las posiciones son factores constantes de una misma función periódica <span class="math inline">\(\mathbf q(t)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c18-p0021"></span></p>
+<p><strong>Proposición FPM-I-18-P21 — Masas a partir de las dos elipses.</strong> Si se conocen los semiejes mayores reales <span class="math inline">\(a_1,a_2\)</span> respecto del centro y el período común,</p>
+<p><span class="math display">\[
+M=\frac{4\pi^2(a_1+a_2)^3}{GT^2},
+\qquad
+m_1=M\frac{a_2}{a_1+a_2},
+\qquad
+m_2=M\frac{a_1}{a_1+a_2}.
+\]</span></p>
+<p><strong>Demostración.</strong> P20 da <span class="math inline">\(a_1+a_2=(s_1+s_2)a=a\)</span>. P13 permite despejar <span class="math inline">\(M\)</span>. La razón <span class="math inline">\(a_1/a_2=m_2/m_1\)</span> y la suma de masas producen las dos expresiones individuales. <span class="math inline">\(\square\)</span></p>
+<p>Una imagen observada puede contener semiejes proyectados, no los tamaños reales del plano orbital. Inferir masas requiere recuperar la geometría y las unidades de distancia y tiempo. La fórmula no elimina esas dependencias observacionales.</p>
+<p>La suma de masas también aparece en la formulación de Gauss al comienzo de la <em>Theoria motus</em>: al organizar los movimientos en cónicas, conserva la contribución del cuerpo atraído junto con la solar. Esa precisión explica por qué la constante temporal común para cuerpos de masa despreciable es una aproximación de una relación más general.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p><span id="fispm-t1-c18-mp0012"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP12.</strong> Distingue semieje relativo y semiejes individuales, y separa tamaños reales de sus proyecciones. Usa el movimiento observado de ambos cuerpos cuando la masa central no pueda tratarse como inmóvil.</p>
+<section id="ejercicios-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-11">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0023"></span></p>
+<p><strong>Ejercicio FPM-I-18-E23.</strong> Un par de masas <span class="math inline">\(m\)</span> y <span class="math inline">\(3m\)</span> tiene semieje relativo <span class="math inline">\(a\)</span>. Calcula los semiejes individuales y muestra el error de usar <span class="math inline">\(a_1\)</span> en lugar de <span class="math inline">\(a\)</span> al despejar la masa total con la tercera ley.</p>
+<p><strong>Solución.</strong> El cuerpo de masa <span class="math inline">\(m\)</span> tiene <span class="math inline">\(a_1=3a/4\)</span> y el de masa <span class="math inline">\(3m\)</span> tiene <span class="math inline">\(a_2=a/4\)</span>. Si se introduce <span class="math inline">\(a_1\)</span> en la fórmula <span class="math inline">\(M=4\pi^2a^3/(GT^2)\)</span> sin cambiar nada más, se obtiene <span class="math inline">\(M_{\mathrm{err}}=(3/4)^3M=27M/64\)</span>. La inferencia subestima la masa total. La ley usa la separación entre cuerpos, cuyo semieje es la suma de los individuales.</p>
+<p><span id="fispm-t1-c18-e0024"></span></p>
+<p><strong>Ejercicio FPM-I-18-E24.</strong> En un sistema ideal se conocen <span class="math inline">\(a_1=2d\)</span>, <span class="math inline">\(a_2=d\)</span> y período <span class="math inline">\(T\)</span>. Expresa las masas en términos de <span class="math inline">\(d,T,G\)</span>.</p>
+<p><strong>Solución.</strong> El semieje relativo es <span class="math inline">\(3d\)</span> y <span class="math inline">\(M=4\pi^2(3d)^3/(GT^2)=108\pi^2d^3/(GT^2)\)</span>. Como <span class="math inline">\(a_1/a_2=2=m_2/m_1\)</span>, las masas son <span class="math inline">\(m_1=36\pi^2d^3/(GT^2)\)</span> y <span class="math inline">\(m_2=72\pi^2d^3/(GT^2)\)</span>. El cuerpo que recorre la elipse mayor es el de masa menor.</p>
+<p><span id="fispm-t1-c18-s13"></span></p>
+<p><span id="fpm-i-18-s13"></span></p>
+</section>
+</section>
+<section id="del-estado-inicial-a-la-órbita-incluidos-los-casos-radiales" class="level2">
+<h2 class="anchored" data-anchor-id="del-estado-inicial-a-la-órbita-incluidos-los-casos-radiales">§13 — Del estado inicial a la órbita, incluidos los casos radiales</h2>
+<p>La clasificación se vuelve operativa al calcular los invariantes desde una posición y velocidad iniciales. Antes de escoger una ecuación temporal conviene decidir si el estado es no radial, circular, ligado o abierto. Cada decisión necesita sus condiciones propias.</p>
+<p><span id="fispm-t1-c18-p0022"></span></p>
+<p><strong>Proposición FPM-I-18-P22 — Reconstrucción de la orientación inicial.</strong> Para <span class="math inline">\(r_0&gt;0\)</span>, <span class="math inline">\(h&gt;0\)</span> y <span class="math inline">\(e&gt;0\)</span>, los datos <span class="math inline">\(\mathbf q_0,\mathbf w_0\)</span> determinan el plano y el periastro mediante <span class="math inline">\(\mathbf h\)</span> y <span class="math inline">\(\mathbf e\)</span>. En esa base,</p>
+<p><span class="math display">\[
+\cos\theta_0=\frac{p/r_0-1}{e},
+\qquad
+\sin\theta_0=\frac{h\,v_{r,0}}{\gamma e},
+\quad
+v_{r,0}=\frac{\mathbf q_0\cdot\mathbf w_0}{r_0}.
+\]</span></p>
+<p><strong>Demostración.</strong> El plano es perpendicular a <span class="math inline">\(\mathbf h\)</span>. Tomamos el eje <span class="math inline">\(x\)</span> como <span class="math inline">\(\mathbf e/e\)</span> y el eje <span class="math inline">\(y\)</span> como <span class="math inline">\(\widehat{\mathbf h}\times(\mathbf e/e)\)</span>. P04 da la expresión del coseno y P11 la del seno. Ambas corresponden al mismo ángulo de la posición inicial en esa base y conservan su cuadrante. <span class="math inline">\(\square\)</span></p>
+<p>Después se transforma <span class="math inline">\(\theta_0\)</span> al parámetro temporal de la cónica y se determina el instante <span class="math inline">\(\tau\)</span> del periastro. Para <span class="math inline">\(e=0\)</span>, los datos siguen determinando el círculo y el sentido de recorrido, pero el origen angular se elige libremente y se fija su fase desde el estado inicial.</p>
+<p><span id="fispm-t1-c18-p0023"></span></p>
+<p><strong>Proposición FPM-I-18-P23 — El caso radial no se clasifica por <span class="math inline">\(e\)</span>.</strong> Si <span class="math inline">\(h=0\)</span> y <span class="math inline">\(r&gt;0\)</span>, la dirección relativa es constante en cada intervalo regular, <span class="math inline">\(e=1\)</span> cualquiera que sea <span class="math inline">\(\epsilon\)</span> y</p>
+<p><span class="math display">\[
+\dot r^2=2\epsilon+\frac{2\gamma}{r}.
+\]</span></p>
+<p>Con <span class="math inline">\(\epsilon&lt;0\)</span> existe un radio máximo <span class="math inline">\(-\gamma/\epsilon\)</span>. Para una rama saliente con <span class="math inline">\(\epsilon\geq0\)</span>, el radio puede crecer sin cota. Una rama entrante alcanza la singularidad en tiempo finito.</p>
+<p><strong>Demostración.</strong> I-17 mostró que <span class="math inline">\(\mathbf q/r\)</span> es constante cuando el momento angular es cero. D02 da entonces <span class="math inline">\(\mathbf e=-\mathbf q/r\)</span>, de magnitud uno. La energía da la ecuación radial. Si <span class="math inline">\(\epsilon&lt;0\)</span>, su miembro derecho se anula en el radio indicado y sería negativo más allá. Si <span class="math inline">\(\epsilon\geq0\)</span>, es positivo para todo radio finito y una rama saliente no tiene retorno. Para una rama entrante, el tiempo hasta cero es <span class="math inline">\(\int_0^{r_0}[2\epsilon+2\gamma/r]^{-1/2}\,dr\)</span>, tomado sobre radios accesibles. Cerca de cero el integrando es comparable a <span class="math inline">\(\sqrt{r/(2\gamma)}\)</span>, integrable. Si el estado parte de un radio máximo, el extremo inicial también es una raíz simple con tiempo finito. <span class="math inline">\(\square\)</span></p>
+<p>Una llegada a <span class="math inline">\(r=0\)</span> no determina cómo continúan cuerpos puntuales cuya fuerza diverge. Si hay radios materiales, contacto o captura por otra interacción, el problema requiere cambiar de modelo antes de esa singularidad.</p>
+<p><span id="fispm-t1-c18-mp0013"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP13.</strong> Clasifica primero el momento angular y después la energía y la excentricidad. Conserva cuadrantes y trata la coincidencia como límite del modelo, no como una continuación automática.</p>
+<section id="ejercicios-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-12">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0025"></span></p>
+<p><strong>Ejercicio FPM-I-18-E25.</strong> Una partícula relativa está en <span class="math inline">\(r=d\)</span> y su velocidad es puramente tangencial en el sentido positivo del plano, de magnitud <span class="math inline">\(v\)</span>. Clasifica el punto inicial cuando <span class="math inline">\(v^2&lt;\gamma/d\)</span>, <span class="math inline">\(v^2=\gamma/d\)</span>, <span class="math inline">\(\gamma/d&lt;v^2&lt;2\gamma/d\)</span>, <span class="math inline">\(v^2=2\gamma/d\)</span> y <span class="math inline">\(v^2&gt;2\gamma/d\)</span>. Supón <span class="math inline">\(v&gt;0\)</span>.</p>
+<p><strong>Solución.</strong> E03 da <span class="math inline">\(\mathbf e=(dv^2/\gamma-1)\mathbf e_x\)</span> y la energía es <span class="math inline">\(\epsilon=v^2/2-\gamma/d\)</span>. Para rapidez inferior a la circular, la energía es negativa y el vector de excentricidad apunta en sentido contrario a la posición: el estado es apoastro elíptico. En la igualdad circular, <span class="math inline">\(e=0\)</span>. Entre la circular y la parabólica, hay elipse y el punto es periastro. En <span class="math inline">\(v^2=2\gamma/d\)</span>, la energía es cero y el punto es periastro parabólico. Por encima, hay hipérbola y periastro. Todas tienen velocidad radial inicial cero, pero su continuación depende de la rapidez tangencial.</p>
+<p><span id="fispm-t1-c18-e0026"></span></p>
+<p><strong>Ejercicio FPM-I-18-E26.</strong> Un estado tiene velocidad estrictamente radial saliente y <span class="math inline">\(\epsilon&gt;0\)</span>. D02 produce <span class="math inline">\(e=1\)</span>. ¿Debe usarse la ecuación de Barker?</p>
+<p><strong>Solución.</strong> No: <span class="math inline">\(h=0\)</span> y la ecuación orbital con <span class="math inline">\(p=h^2/\gamma\)</span> deja de describir una cónica no degenerada. El movimiento radial tiene rapidez asintótica <span class="math inline">\(\sqrt{2\epsilon}&gt;0\)</span>, mientras la parábola no radial de Barker tiene energía cero y rapidez asintótica cero. Se usa la ecuación radial de P23 y su cuadratura temporal. La misma magnitud <span class="math inline">\(e=1\)</span> no identifica el mismo problema cuando cambia la hipótesis angular.</p>
+<p><span id="fispm-t1-c18-s14"></span></p>
+<p><span id="fpm-i-18-s14"></span></p>
+</section>
+</section>
+<section id="verificar-una-órbita-y-delimitar-el-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="verificar-una-órbita-y-delimitar-el-modelo">§14 — Verificar una órbita y delimitar el modelo</h2>
+<p>El modelo de Kepler resuelve un sistema concreto: dos cuerpos con atracción newtoniana, sin otras fuerzas y sin coincidencias. Para compararlo con una observación o un cálculo numérico, podemos comprobar no sólo la posición, sino también los invariantes que deberían permanecer constantes. Una variación de ellos puede revelar un error numérico o una interacción omitida; distinguir ambos exige revisar el problema.</p>
+<p><span id="fispm-t1-c18-d0008"></span></p>
+<p><strong>Definición FPM-I-18-D08 — Cónica osculante.</strong> En un estado no radial, llamamos cónica osculante a la órbita kepleriana que comparte esa posición y velocidad relativas para el parámetro <span class="math inline">\(\gamma\)</span> elegido. En una evolución perturbada, sus parámetros pueden cambiar de un instante a otro. Es una descripción del estado instantáneo, no una afirmación de que toda la trayectoria siga una única cónica fija.</p>
+<p><span id="fispm-t1-c18-p0024"></span></p>
+<p><strong>Proposición FPM-I-18-P24 — Variación de invariantes bajo una perturbación.</strong> Si</p>
+<p><span class="math display">\[
+\ddot{\mathbf q}=-\gamma\frac{\mathbf q}{r^3}
++\mathbf a_{\mathrm p},
+\]</span></p>
+<p>con <span class="math inline">\(\gamma\)</span> constante, entonces</p>
+<p><span class="math display">\[
+\dot\epsilon=\mathbf w\cdot\mathbf a_{\mathrm p},
+\qquad
+\dot{\mathbf h}=\mathbf q\times\mathbf a_{\mathrm p},
+\]</span></p>
+<p><span class="math display">\[
+\dot{\mathbf e}=
+\frac{\mathbf a_{\mathrm p}\times\mathbf h+
+\mathbf w\times(\mathbf q\times\mathbf a_{\mathrm p})}{\gamma}.
+\]</span></p>
+<p><strong>Demostración.</strong> Derivar la energía específica cancela la potencia de la aceleración gravitatoria con la derivada de <span class="math inline">\(-\gamma/r\)</span>, dejando el primer resultado. Derivar <span class="math inline">\(\mathbf q\times\mathbf w\)</span> cancela el producto de <span class="math inline">\(\mathbf q\)</span> con la aceleración central y deja el torque específico indicado. En D02 se deriva ahora también <span class="math inline">\(\mathbf h\)</span>: <span class="math inline">\(\dot{\mathbf e}=(\ddot{\mathbf q}\times\mathbf h+\mathbf w\times\dot{\mathbf h})/\gamma-\dot{\mathbf n}\)</span>. La parte central se cancela con <span class="math inline">\(\dot{\mathbf n}\)</span> por el cálculo de P02; los términos restantes son los de la fórmula. <span class="math inline">\(\square\)</span></p>
+<p>Una perturbación radial tiene torque cero y conserva <span class="math inline">\(\mathbf h\)</span>, pero puede modificar energía y excentricidad. Una perturbación perpendicular a la velocidad puede conservar instantáneamente la energía y cambiar el momento angular. La pequeñez de una aceleración tampoco garantiza una variación despreciable durante cualquier tiempo: los efectos deben integrarse y compararse con una escala de interés.</p>
+<p><span id="fispm-t1-c18-p0025"></span></p>
+<p><strong>Proposición FPM-I-18-P25 — Recuperación de la solución no radial.</strong> Dados un estado <span class="math inline">\(\mathbf q_0,\mathbf w_0\)</span> con <span class="math inline">\(r_0&gt;0\)</span>, <span class="math inline">\(h&gt;0\)</span> y un <span class="math inline">\(\gamma&gt;0\)</span>, los invariantes y las ecuaciones temporales del capítulo permiten reconstruir la solución relativa kepleriana regular. El centro y las masas permiten después reconstruir ambos cuerpos.</p>
+<p><strong>Demostración.</strong> D01–D02 determinan <span class="math inline">\(\epsilon,\mathbf h,\mathbf e\)</span>. P03–P09 fijan la forma y el dominio de la cónica; P22 fija su orientación y fase cuando <span class="math inline">\(e&gt;0\)</span>. Para el círculo se toma la dirección inicial como referencia. P15, P18 o P19 recuperan el tiempo y la fase temporal correspondiente, con una inversión única por monotonicidad. La ecuación polar satisface Binet y el tiempo cumple <span class="math inline">\(\dot\theta=h/r^2\)</span>, de modo que la reconstrucción de I-17 verifica Newton. Los datos iniciales quedan reproducidos, incluido el signo radial. La unicidad local del campo regular fuera del centro identifica la trayectoria obtenida con la solución del estado dado. Finalmente, las fórmulas del centro y de la separación reconstruyen las posiciones y velocidades individuales. <span class="math inline">\(\square\)</span></p>
+<p>La comparación con datos necesita además unidades, marco, proyección observacional y fuerzas relevantes. Una órbita matemáticamente consistente puede no representar el sistema observado si esa conexión se omite.</p>
+<p><span id="fispm-t1-c18-mp0014"></span></p>
+<p><strong>Principio metodológico FPM-I-18-MP14.</strong> Verifica posición, velocidad, dominios e invariantes; conserva la distinción entre error de cálculo y cambio del modelo. Para una predicción temporal, comprueba también la fase y la ecuación de tiempo.</p>
+<section id="ejercicios-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-13">Ejercicios</h3>
+<p><span id="fispm-t1-c18-e0027"></span></p>
+<p><strong>Ejercicio FPM-I-18-E27.</strong> Una perturbación relativa es radial, <span class="math inline">\(\mathbf a_{\mathrm p}=a_r(t)\mathbf q/r\)</span>. Calcula <span class="math inline">\(\dot\epsilon\)</span> y <span class="math inline">\(\dot{\mathbf h}\)</span> y decide si la trayectoria sigue necesariamente una cónica kepleriana fija.</p>
+<p><strong>Solución.</strong> P24 da <span class="math inline">\(\dot{\mathbf h}=0\)</span> y <span class="math inline">\(\dot\epsilon=a_r\dot r\)</span>. La energía puede cambiar cuando hay desplazamiento radial. Incluso si la potencia se anula en un instante de radio extremo, la perturbación modifica la aceleración y puede cambiar el vector de excentricidad durante la evolución. El momento angular conservado fija el plano y el área por tiempo, pero no prueba una cónica kepleriana fija.</p>
+<p><span id="fispm-t1-c18-e0028"></span></p>
+<p><strong>Ejercicio FPM-I-18-E28.</strong> En un instante, una órbita recibe una aceleración perturbadora puramente tangencial <span class="math inline">\(\mathbf a_{\mathrm p}=a_\theta\mathbf e_\theta\)</span> en su plano. Calcula las tasas de cambio de energía específica y componente angular. Interpreta el signo de <span class="math inline">\(a_\theta\)</span>.</p>
+<p><strong>Solución.</strong> La velocidad tangencial es <span class="math inline">\(v_\theta=h/r\)</span>, así que <span class="math inline">\(\dot\epsilon=a_\theta h/r\)</span>. El torque específico es <span class="math inline">\(\dot h=r a_\theta\)</span> en la normal orientada. Un <span class="math inline">\(a_\theta&gt;0\)</span> aumenta ambas magnitudes instantáneamente; uno negativo las disminuye mientras <span class="math inline">\(h&gt;0\)</span>. La relación <span class="math inline">\(\dot\epsilon=(h/r^2)\dot h=\dot\theta\,\dot h\)</span> corresponde aquí a la potencia tangencial. No incorpora una potencia radial si también existiera otra componente.</p>
+<p><span id="fispm-t1-c18-e0029"></span></p>
+<p><strong>Ejercicio FPM-I-18-E29.</strong> Una elipse de un par tiene <span class="math inline">\(r_{\mathrm p}=d\)</span> y <span class="math inline">\(r_{\mathrm a}=3d\)</span>. Calcula <span class="math inline">\(a,e,p,\epsilon,h,T\)</span> y el tiempo desde el periastro hasta el punto superior de la parametrización excéntrica, <span class="math inline">\(u=\pi/2\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(a=(d+3d)/2=2d\)</span> y <span class="math inline">\(e=(3d-d)/(3d+d)=1/2\)</span>. Entonces <span class="math inline">\(p=a(1-e^2)=3d/2\)</span>, <span class="math inline">\(\epsilon=-\gamma/(4d)\)</span>, <span class="math inline">\(h=\sqrt{3\gamma d/2}\)</span> y <span class="math inline">\(T=2\pi\sqrt{8d^3/\gamma}\)</span>. El movimiento medio es <span class="math inline">\(n=\sqrt{\gamma/(8d^3)}\)</span>. P15 da el tiempo pedido <span class="math inline">\((\pi/2-1/2)\sqrt{8d^3/\gamma}\)</span>. En ese punto <span class="math inline">\(x=-d\)</span>, <span class="math inline">\(y=\sqrt3\,d\)</span> y <span class="math inline">\(r=2d\)</span>, coherentes con la parametrización. Su anomalía verdadera es <span class="math inline">\(2\pi/3\)</span>, no <span class="math inline">\(\pi/2\)</span>.</p>
+<p><span id="fispm-t1-c18-e0030"></span></p>
+<p><strong>Ejercicio FPM-I-18-E30.</strong> Una solución numérica del par sin perturbaciones conserva muy bien <span class="math inline">\(\epsilon\)</span> y <span class="math inline">\(h=|\mathbf h|\)</span>, pero cambia lentamente la dirección de <span class="math inline">\(\mathbf e\)</span>. ¿Los dos primeros controles bastan para validar toda la órbita? Propón una revisión.</p>
+<p><strong>Solución.</strong> No bastan. P03 fija la magnitud de <span class="math inline">\(\mathbf e\)</span> a partir de <span class="math inline">\(\epsilon,h\)</span>, pero no controla su dirección. En la dinámica exacta también se conserva el vector de P02 y la normal <span class="math inline">\(\mathbf h\)</span>. Una deriva de orientación puede aparecer aunque ciertos invariantes escalares permanezcan precisos. La revisión debe comparar los vectores <span class="math inline">\(\mathbf h,\mathbf e\)</span>, comprobar la aceleración calculada, signos y unidades del campo, paso temporal y ecuación de tiempo. Si el modelo declarado es realmente el par aislado, una deriva numérica no debe interpretarse como precesión física. Si se incluyeron otras fuerzas, P24 permite contrastar la variación con sus torques y potencias.</p>
+<p>El problema de Kepler queda así resuelto en forma y tiempo, con sus hipótesis, dominios y datos de orientación. Las órbitas abiertas preparan el estudio de encuentros y dispersión: allí importarán la velocidad lejana, la máxima aproximación y el cambio de dirección entre entrada y salida.</p>
+</section>
+</section>
+<section id="notas-de-fuentes" class="level2">
+<h2 class="anchored" data-anchor-id="notas-de-fuentes">Notas de fuentes</h2>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-17-problema-de-dos-cuerpos-y-fuerzas-centrales.html">Capítulo 17</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-19-dispersion-clasica-y-reduccion-efectiva.html">Capítulo 19</a></p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>MIT OpenCourseWare, <em>Classical Mechanics</em>, 8.01SC, capítulo 25, §§25.3.1–25.4 y apéndices geométricos: ecuación y clasificación orbital. https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/mit8_01scs22_chapter25new.pdf. La orientación mediante el vector de excentricidad y las condiciones de rama se prueban en el texto.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>El mismo capítulo, §§25.5–25.6, reconstrucción de ambos cuerpos y leyes de Kepler. El semieje y período del capítulo propio se refieren al movimiento relativo exacto y mantienen la suma de masas.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>MIT OpenCourseWare, <em>Astrodynamics</em>, 16.346, Lecture 3, <em>Barker’s Equation &amp; Kepler’s Equation</em>, pp.&nbsp;2–4 del archivo digital. https://ocw.mit.edu/courses/16-346-astrodynamics-fall-2008/379eae1a78cf9ad58247058dffbae3ac_lec_03.pdf. Parametrizaciones, relación temporal y resolución de la ecuación elíptica; las demostraciones y cotas se desarrollan aquí.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Gauss, <em>Theoria motus</em>, §§1–2, pasaje de la traducción inglesa reproducido en la misma Lecture 3, pp.&nbsp;5–6 del archivo digital. La referencia acompaña exclusivamente la presencia de la suma de masas en su formulación orbital.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main></div><script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script><script>document.addEventListener("DOMContentLoaded",function(){const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');});</script></body></html>

@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 29 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.">
+
+<title>Corchetes de Poisson y estructura simpléctica elemental – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#una-operación-que-determina-la-evolución" id="toc-una-operación-que-determina-la-evolución" class="nav-link active" data-scroll-target="#una-operación-que-determina-la-evolución">§1. Una operación que determina la evolución</a></li>
+  <li><a href="#las-identidades-algebraicas" id="toc-las-identidades-algebraicas" class="nav-link" data-scroll-target="#las-identidades-algebraicas">§2. Las identidades algebraicas</a></li>
+  <li><a href="#cantidades-conservadas-y-nuevas-integrales" id="toc-cantidades-conservadas-y-nuevas-integrales" class="nav-link" data-scroll-target="#cantidades-conservadas-y-nuevas-integrales">§3. Cantidades conservadas y nuevas integrales</a></li>
+  <li><a href="#funciones-que-generan-desplazamientos" id="toc-funciones-que-generan-desplazamientos" class="nav-link" data-scroll-target="#funciones-que-generan-desplazamientos">§4. Funciones que generan desplazamientos</a></li>
+  <li><a href="#la-forma-alternada-del-espacio-de-fases" id="toc-la-forma-alternada-del-espacio-de-fases" class="nav-link" data-scroll-target="#la-forma-alternada-del-espacio-de-fases">§5. La forma alternada del espacio de fases</a></li>
+  <li><a href="#la-forma-canónica-sobre-el-cotangente" id="toc-la-forma-canónica-sobre-el-cotangente" class="nav-link" data-scroll-target="#la-forma-canónica-sobre-el-cotangente">§6. La forma canónica sobre el cotangente</a></li>
+  <li><a href="#campos-hamiltonianos-y-convención-de-signos" id="toc-campos-hamiltonianos-y-convención-de-signos" class="nav-link" data-scroll-target="#campos-hamiltonianos-y-convención-de-signos">§7. Campos hamiltonianos y convención de signos</a></li>
+  <li><a href="#el-flujo-preserva-la-forma-simpléctica" id="toc-el-flujo-preserva-la-forma-simpléctica" class="nav-link" data-scroll-target="#el-flujo-preserva-la-forma-simpléctica">§8. El flujo preserva la forma simpléctica</a></li>
+  <li><a href="#qué-significa-que-unas-variables-sean-canónicas" id="toc-qué-significa-que-unas-variables-sean-canónicas" class="nav-link" data-scroll-target="#qué-significa-que-unas-variables-sean-canónicas">§9. Qué significa que unas variables sean canónicas</a></li>
+  <li><a href="#cambios-de-variables-que-conviene-reconocer" id="toc-cambios-de-variables-que-conviene-reconocer" class="nav-link" data-scroll-target="#cambios-de-variables-que-conviene-reconocer">§10. Cambios de variables que conviene reconocer</a></li>
+  <li><a href="#simetrías-hamiltonianas-y-noether" id="toc-simetrías-hamiltonianas-y-noether" class="nav-link" data-scroll-target="#simetrías-hamiltonianas-y-noether">§11. Simetrías hamiltonianas y Noether</a></li>
+  <li><a href="#el-volumen-de-fase-y-el-teorema-de-liouville" id="toc-el-volumen-de-fase-y-el-teorema-de-liouville" class="nav-link" data-scroll-target="#el-volumen-de-fase-y-el-teorema-de-liouville">§12. El volumen de fase y el teorema de Liouville</a></li>
+  <li><a href="#el-oscilador-en-coordenadas-de-acción-y-ángulo" id="toc-el-oscilador-en-coordenadas-de-acción-y-ángulo" class="nav-link" data-scroll-target="#el-oscilador-en-coordenadas-de-acción-y-ángulo">§13. El oscilador en coordenadas de acción y ángulo</a></li>
+  <li><a href="#lo-local-lo-global-y-la-dinámica-que-sigue" id="toc-lo-local-lo-global-y-la-dinámica-que-sigue" class="nav-link" data-scroll-target="#lo-local-lo-global-y-la-dinámica-que-sigue">§14. Lo local, lo global y la dinámica que sigue</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#fpm-i-29-e01-corchetes-básicos" id="toc-fpm-i-29-e01-corchetes-básicos" class="nav-link" data-scroll-target="#fpm-i-29-e01-corchetes-básicos">FPM-I-29-E01 — Corchetes básicos</a></li>
+  <li><a href="#fpm-i-29-e02-producto-y-composición" id="toc-fpm-i-29-e02-producto-y-composición" class="nav-link" data-scroll-target="#fpm-i-29-e02-producto-y-composición">FPM-I-29-E02 — Producto y composición</a></li>
+  <li><a href="#fpm-i-29-e03-jacobi-en-polinomios" id="toc-fpm-i-29-e03-jacobi-en-polinomios" class="nav-link" data-scroll-target="#fpm-i-29-e03-jacobi-en-polinomios">FPM-I-29-E03 — Jacobi en polinomios</a></li>
+  <li><a href="#fpm-i-29-e04-integral-temporal" id="toc-fpm-i-29-e04-integral-temporal" class="nav-link" data-scroll-target="#fpm-i-29-e04-integral-temporal">FPM-I-29-E04 — Integral temporal</a></li>
+  <li><a href="#fpm-i-29-e05-integrales-que-no-conmutan" id="toc-fpm-i-29-e05-integrales-que-no-conmutan" class="nav-link" data-scroll-target="#fpm-i-29-e05-integrales-que-no-conmutan">FPM-I-29-E05 — Integrales que no conmutan</a></li>
+  <li><a href="#fpm-i-29-e06-dilatación-canónica" id="toc-fpm-i-29-e06-dilatación-canónica" class="nav-link" data-scroll-target="#fpm-i-29-e06-dilatación-canónica">FPM-I-29-E06 — Dilatación canónica</a></li>
+  <li><a href="#fpm-i-29-e07-rotación-plana" id="toc-fpm-i-29-e07-rotación-plana" class="nav-link" data-scroll-target="#fpm-i-29-e07-rotación-plana">FPM-I-29-E07 — Rotación plana</a></li>
+  <li><a href="#fpm-i-29-e08-momento-angular-y-coordenadas" id="toc-fpm-i-29-e08-momento-angular-y-coordenadas" class="nav-link" data-scroll-target="#fpm-i-29-e08-momento-angular-y-coordenadas">FPM-I-29-E08 — Momento angular y coordenadas</a></li>
+  <li><a href="#fpm-i-29-e09-evaluación-de-una-forma" id="toc-fpm-i-29-e09-evaluación-de-una-forma" class="nav-link" data-scroll-target="#fpm-i-29-e09-evaluación-de-una-forma">FPM-I-29-E09 — Evaluación de una forma</a></li>
+  <li><a href="#fpm-i-29-e10-campo-de-un-observable" id="toc-fpm-i-29-e10-campo-de-un-observable" class="nav-link" data-scroll-target="#fpm-i-29-e10-campo-de-un-observable">FPM-I-29-E10 — Campo de un observable</a></li>
+  <li><a href="#fpm-i-29-e11-signo-del-conmutador" id="toc-fpm-i-29-e11-signo-del-conmutador" class="nav-link" data-scroll-target="#fpm-i-29-e11-signo-del-conmutador">FPM-I-29-E11 — Signo del conmutador</a></li>
+  <li><a href="#fpm-i-29-e12-flujo-del-oscilador" id="toc-fpm-i-29-e12-flujo-del-oscilador" class="nav-link" data-scroll-target="#fpm-i-29-e12-flujo-del-oscilador">FPM-I-29-E12 — Flujo del oscilador</a></li>
+  <li><a href="#fpm-i-29-e13-traslación-de-momento" id="toc-fpm-i-29-e13-traslación-de-momento" class="nav-link" data-scroll-target="#fpm-i-29-e13-traslación-de-momento">FPM-I-29-E13 — Traslación de momento</a></li>
+  <li><a href="#fpm-i-29-e14-un-giro-entre-posición-y-momento" id="toc-fpm-i-29-e14-un-giro-entre-posición-y-momento" class="nav-link" data-scroll-target="#fpm-i-29-e14-un-giro-entre-posición-y-momento">FPM-I-29-E14 — Un giro entre posición y momento</a></li>
+  <li><a href="#fpm-i-29-e15-conservar-área-sin-canonicidad" id="toc-fpm-i-29-e15-conservar-área-sin-canonicidad" class="nav-link" data-scroll-target="#fpm-i-29-e15-conservar-área-sin-canonicidad">FPM-I-29-E15 — Conservar área sin canonicidad</a></li>
+  <li><a href="#fpm-i-29-e16-conservar-volumen-no-basta" id="toc-fpm-i-29-e16-conservar-volumen-no-basta" class="nav-link" data-scroll-target="#fpm-i-29-e16-conservar-volumen-no-basta">FPM-I-29-E16 — Conservar volumen no basta</a></li>
+  <li><a href="#fpm-i-29-e17-momento-polar" id="toc-fpm-i-29-e17-momento-polar" class="nav-link" data-scroll-target="#fpm-i-29-e17-momento-polar">FPM-I-29-E17 — Momento polar</a></li>
+  <li><a href="#fpm-i-29-e18-momentos-cinéticos" id="toc-fpm-i-29-e18-momentos-cinéticos" class="nav-link" data-scroll-target="#fpm-i-29-e18-momentos-cinéticos">FPM-I-29-E18 — Momentos cinéticos</a></li>
+  <li><a href="#fpm-i-29-e19-corrección-temporal" id="toc-fpm-i-29-e19-corrección-temporal" class="nav-link" data-scroll-target="#fpm-i-29-e19-corrección-temporal">FPM-I-29-E19 — Corrección temporal</a></li>
+  <li><a href="#fpm-i-29-e20-dos-energías-modales" id="toc-fpm-i-29-e20-dos-energías-modales" class="nav-link" data-scroll-target="#fpm-i-29-e20-dos-energías-modales">FPM-I-29-E20 — Dos energías modales</a></li>
+  <li><a href="#fpm-i-29-e21-simetría-de-traslación" id="toc-fpm-i-29-e21-simetría-de-traslación" class="nav-link" data-scroll-target="#fpm-i-29-e21-simetría-de-traslación">FPM-I-29-E21 — Simetría de traslación</a></li>
+  <li><a href="#fpm-i-29-e22-divergencia-y-amortiguamiento" id="toc-fpm-i-29-e22-divergencia-y-amortiguamiento" class="nav-link" data-scroll-target="#fpm-i-29-e22-divergencia-y-amortiguamiento">FPM-I-29-E22 — Divergencia y amortiguamiento</a></li>
+  <li><a href="#fpm-i-29-e23-densidad-estacionaria" id="toc-fpm-i-29-e23-densidad-estacionaria" class="nav-link" data-scroll-target="#fpm-i-29-e23-densidad-estacionaria">FPM-I-29-E23 — Densidad estacionaria</a></li>
+  <li><a href="#fpm-i-29-e24-acción-del-oscilador" id="toc-fpm-i-29-e24-acción-del-oscilador" class="nav-link" data-scroll-target="#fpm-i-29-e24-acción-del-oscilador">FPM-I-29-E24 — Acción del oscilador</a></li>
+  <li><a href="#fpm-i-29-e25-área-e-intensidad" id="toc-fpm-i-29-e25-área-e-intensidad" class="nav-link" data-scroll-target="#fpm-i-29-e25-área-e-intensidad">FPM-I-29-E25 — Área e intensidad</a></li>
+  <li><a href="#fpm-i-29-e26-un-campo-localmente-hamiltoniano" id="toc-fpm-i-29-e26-un-campo-localmente-hamiltoniano" class="nav-link" data-scroll-target="#fpm-i-29-e26-un-campo-localmente-hamiltoniano">FPM-I-29-E26 — Un campo localmente hamiltoniano</a></li>
+  <li><a href="#fpm-i-29-e27-deformación-exponencial" id="toc-fpm-i-29-e27-deformación-exponencial" class="nav-link" data-scroll-target="#fpm-i-29-e27-deformación-exponencial">FPM-I-29-E27 — Deformación exponencial</a></li>
+  <li><a href="#fpm-i-29-e28-forma-no-cerrada-en-cuatro-dimensiones" id="toc-fpm-i-29-e28-forma-no-cerrada-en-cuatro-dimensiones" class="nav-link" data-scroll-target="#fpm-i-29-e28-forma-no-cerrada-en-cuatro-dimensiones">FPM-I-29-E28 — Forma no cerrada en cuatro dimensiones</a></li>
+  <li><a href="#fpm-i-29-e29-primitiva-del-desplazamiento" id="toc-fpm-i-29-e29-primitiva-del-desplazamiento" class="nav-link" data-scroll-target="#fpm-i-29-e29-primitiva-del-desplazamiento">FPM-I-29-E29 — Primitiva del desplazamiento</a></li>
+  <li><a href="#fpm-i-29-e30-cierre-de-integrales-temporales" id="toc-fpm-i-29-e30-cierre-de-integrales-temporales" class="nav-link" data-scroll-target="#fpm-i-29-e30-cierre-de-integrales-temporales">FPM-I-29-E30 — Cierre de integrales temporales</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#fpm-i-29-e01" id="toc-fpm-i-29-e01" class="nav-link" data-scroll-target="#fpm-i-29-e01">FPM-I-29-E01</a></li>
+  <li><a href="#fpm-i-29-e02" id="toc-fpm-i-29-e02" class="nav-link" data-scroll-target="#fpm-i-29-e02">FPM-I-29-E02</a></li>
+  <li><a href="#fpm-i-29-e03" id="toc-fpm-i-29-e03" class="nav-link" data-scroll-target="#fpm-i-29-e03">FPM-I-29-E03</a></li>
+  <li><a href="#fpm-i-29-e04" id="toc-fpm-i-29-e04" class="nav-link" data-scroll-target="#fpm-i-29-e04">FPM-I-29-E04</a></li>
+  <li><a href="#fpm-i-29-e05" id="toc-fpm-i-29-e05" class="nav-link" data-scroll-target="#fpm-i-29-e05">FPM-I-29-E05</a></li>
+  <li><a href="#fpm-i-29-e06" id="toc-fpm-i-29-e06" class="nav-link" data-scroll-target="#fpm-i-29-e06">FPM-I-29-E06</a></li>
+  <li><a href="#fpm-i-29-e07" id="toc-fpm-i-29-e07" class="nav-link" data-scroll-target="#fpm-i-29-e07">FPM-I-29-E07</a></li>
+  <li><a href="#fpm-i-29-e08" id="toc-fpm-i-29-e08" class="nav-link" data-scroll-target="#fpm-i-29-e08">FPM-I-29-E08</a></li>
+  <li><a href="#fpm-i-29-e09" id="toc-fpm-i-29-e09" class="nav-link" data-scroll-target="#fpm-i-29-e09">FPM-I-29-E09</a></li>
+  <li><a href="#fpm-i-29-e10" id="toc-fpm-i-29-e10" class="nav-link" data-scroll-target="#fpm-i-29-e10">FPM-I-29-E10</a></li>
+  <li><a href="#fpm-i-29-e11" id="toc-fpm-i-29-e11" class="nav-link" data-scroll-target="#fpm-i-29-e11">FPM-I-29-E11</a></li>
+  <li><a href="#fpm-i-29-e12" id="toc-fpm-i-29-e12" class="nav-link" data-scroll-target="#fpm-i-29-e12">FPM-I-29-E12</a></li>
+  <li><a href="#fpm-i-29-e13" id="toc-fpm-i-29-e13" class="nav-link" data-scroll-target="#fpm-i-29-e13">FPM-I-29-E13</a></li>
+  <li><a href="#fpm-i-29-e14" id="toc-fpm-i-29-e14" class="nav-link" data-scroll-target="#fpm-i-29-e14">FPM-I-29-E14</a></li>
+  <li><a href="#fpm-i-29-e15" id="toc-fpm-i-29-e15" class="nav-link" data-scroll-target="#fpm-i-29-e15">FPM-I-29-E15</a></li>
+  <li><a href="#fpm-i-29-e16" id="toc-fpm-i-29-e16" class="nav-link" data-scroll-target="#fpm-i-29-e16">FPM-I-29-E16</a></li>
+  <li><a href="#fpm-i-29-e17" id="toc-fpm-i-29-e17" class="nav-link" data-scroll-target="#fpm-i-29-e17">FPM-I-29-E17</a></li>
+  <li><a href="#fpm-i-29-e18" id="toc-fpm-i-29-e18" class="nav-link" data-scroll-target="#fpm-i-29-e18">FPM-I-29-E18</a></li>
+  <li><a href="#fpm-i-29-e19" id="toc-fpm-i-29-e19" class="nav-link" data-scroll-target="#fpm-i-29-e19">FPM-I-29-E19</a></li>
+  <li><a href="#fpm-i-29-e20" id="toc-fpm-i-29-e20" class="nav-link" data-scroll-target="#fpm-i-29-e20">FPM-I-29-E20</a></li>
+  <li><a href="#fpm-i-29-e21" id="toc-fpm-i-29-e21" class="nav-link" data-scroll-target="#fpm-i-29-e21">FPM-I-29-E21</a></li>
+  <li><a href="#fpm-i-29-e22" id="toc-fpm-i-29-e22" class="nav-link" data-scroll-target="#fpm-i-29-e22">FPM-I-29-E22</a></li>
+  <li><a href="#fpm-i-29-e23" id="toc-fpm-i-29-e23" class="nav-link" data-scroll-target="#fpm-i-29-e23">FPM-I-29-E23</a></li>
+  <li><a href="#fpm-i-29-e24" id="toc-fpm-i-29-e24" class="nav-link" data-scroll-target="#fpm-i-29-e24">FPM-I-29-E24</a></li>
+  <li><a href="#fpm-i-29-e25" id="toc-fpm-i-29-e25" class="nav-link" data-scroll-target="#fpm-i-29-e25">FPM-I-29-E25</a></li>
+  <li><a href="#fpm-i-29-e26" id="toc-fpm-i-29-e26" class="nav-link" data-scroll-target="#fpm-i-29-e26">FPM-I-29-E26</a></li>
+  <li><a href="#fpm-i-29-e27" id="toc-fpm-i-29-e27" class="nav-link" data-scroll-target="#fpm-i-29-e27">FPM-I-29-E27</a></li>
+  <li><a href="#fpm-i-29-e28" id="toc-fpm-i-29-e28" class="nav-link" data-scroll-target="#fpm-i-29-e28">FPM-I-29-E28</a></li>
+  <li><a href="#fpm-i-29-e29" id="toc-fpm-i-29-e29" class="nav-link" data-scroll-target="#fpm-i-29-e29">FPM-I-29-E29</a></li>
+  <li><a href="#fpm-i-29-e30" id="toc-fpm-i-29-e30" class="nav-link" data-scroll-target="#fpm-i-29-e30">FPM-I-29-E30</a></li>
+  </ul></li>
+  <li><a href="#notas-y-lecturas" id="toc-notas-y-lecturas" class="nav-link" data-scroll-target="#notas-y-lecturas">Notas y lecturas</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Corchetes de Poisson y estructura simpléctica elemental</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 29</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 29 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">15 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-28-mecanica-hamiltoniana.html">Capítulo 28</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-30-sistemas-dinamicos-estabilidad-y-caos.html">Capítulo 30</a></p>
+<p>En I28 aprendimos a obtener la evolución de cualquier función del estado a partir del hamiltoniano. La posición y el momento eran dos casos particulares de una misma regla. Esa regla también permitía decidir si una expresión se conservaba, aunque su dependencia temporal hiciera difícil reconocerla como una energía o un momento.</p>
+<p>Hay una operación entre funciones detrás de esa cuenta. Estudiarla permite comparar cantidades conservadas, construir transformaciones a partir de sus generadores y reconocer qué cambios de variables preservan la forma de las ecuaciones. Su interpretación geométrica nace del emparejamiento entre posiciones y momentos: en cada punto del espacio de fases existe una forma bilineal alternada que transforma el diferencial de una función en un campo de velocidades.</p>
+<p>Desarrollaremos ambas descripciones a la vez. Los ejemplos del oscilador, las rotaciones y los momentos desplazados servirán para controlar los signos y dar contenido mecánico a las definiciones. Usaremos funciones y transformaciones suaves; todos los flujos se consideran en los dominios y tiempos donde existen. Las coordenadas de fase se ordenarán como <span class="math inline">\(z=(q^1,\ldots,q^n,p_1,\ldots,p_n)\)</span>.</p>
+<p><span id="fispm-t1-c29-s01"></span></p>
+<p><span id="fpm-i-29-s01"></span></p>
+<section id="una-operación-que-determina-la-evolución" class="level2">
+<h2 class="anchored" data-anchor-id="una-operación-que-determina-la-evolución">§1. Una operación que determina la evolución</h2>
+<p>Para un observable <span class="math inline">\(A(q,p,t)\)</span>, la regla de la cadena de I28 daba</p>
+<p><span class="math display">\[
+\frac{dA}{dt}=A_{,t}+\sum_a\left(A_{,q^a}H_{,p_a}-A_{,p_a}H_{,q^a}\right).
+\]</span></p>
+<p>La combinación de derivadas sólo utiliza dos funciones: el observable y el hamiltoniano. Podemos definirla para cualquier pareja.</p>
+<p><span id="fispm-t1-c29-d0001"></span></p>
+<p><strong>Definición FPM-I-29-D01 — Corchete de Poisson canónico.</strong> En coordenadas canónicas,</p>
+<p><span class="math display">\[
+\{F,G\}=\sum_{a=1}^n
+\left(\frac{\partial F}{\partial q^a}\frac{\partial G}{\partial p_a}
+-\frac{\partial F}{\partial p_a}\frac{\partial G}{\partial q^a}\right).
+\]</span></p>
+<p>Si las funciones dependen del tiempo, éste se mantiene fijo en el corchete. Con esta convención,</p>
+<p><span class="math display">\[
+\dot A=A_{,t}+\{A,H\}.
+\]</span></p>
+<p>En particular,</p>
+<p><span class="math display">\[
+\{q^a,p_b\}=\delta^a{}_b,\quad
+\{q^a,q^b\}=0,\quad\{p_a,p_b\}=0.
+\]</span></p>
+<p>Así recuperamos <span class="math inline">\(\dot q^a=\{q^a,H\}=H_{,p_a}\)</span> y <span class="math inline">\(\dot p_a=\{p_a,H\}=-H_{,q^a}\)</span>. El orden de los argumentos queda fijado por estas identidades. Cambiar ese orden sin cambiar las demás convenciones invertiría el sentido de la evolución.</p>
+<p>Con la matriz constante</p>
+<p><span class="math display">\[
+\mathbb J=\begin{pmatrix}0&amp;\mathbf1\\-\mathbf1&amp;0\end{pmatrix},
+\qquad \mathbb J^{\mathsf T}=-\mathbb J,\quad\mathbb J^2=-\mathbf1,
+\]</span></p>
+<p>la fórmula se escribe <span class="math inline">\(\{F,G\}=(\nabla F)^{\mathsf T}\mathbb J\nabla G\)</span>. El símbolo matricial <span class="math inline">\(\mathbb J\)</span> se distinguirá de una carga conservada, para la que emplearemos otras letras.</p>
+<p>El corchete tiene las unidades del producto de ambas funciones dividido por una acción. Cada producto <span class="math inline">\(q^ap_a\)</span> tiene unidades de acción, aun cuando una coordenada sea angular. Por eso <span class="math inline">\(\{A,H\}\)</span> tiene unidades de <span class="math inline">\(A\)</span> por unidad de tiempo, como exige la ecuación de evolución.</p>
+<p><span id="fispm-t1-c29-s02"></span></p>
+<p><span id="fpm-i-29-s02"></span></p>
+</section>
+<section id="las-identidades-algebraicas" class="level2">
+<h2 class="anchored" data-anchor-id="las-identidades-algebraicas">§2. Las identidades algebraicas</h2>
+<p><span id="fispm-t1-c29-p0001"></span></p>
+<p><strong>Proposición FPM-I-29-P01 — Bilinealidad, antisimetría y regla del producto.</strong> El corchete es bilineal sobre los escalares reales, satisface <span class="math inline">\(\{F,G\}=-\{G,F\}\)</span> y</p>
+<p><span class="math display">\[
+\{FG,K\}=F\{G,K\}+G\{F,K\}.
+\]</span></p>
+<p>También cumple la regla del producto en el segundo argumento.</p>
+<p><strong>Demostración.</strong> Las derivadas parciales son lineales, y cada término de la definición contiene una derivada de cada argumento. Intercambiarlos invierte el signo. Aplicar <span class="math inline">\(\partial(FG)=F\partial G+G\partial F\)</span> en las derivadas del primer argumento produce la fórmula escrita. La del segundo se deduce por antisimetría o por la misma cuenta. <span class="math inline">\(\square\)</span></p>
+<p>El corchete con una constante es cero. En particular, <span class="math inline">\(\{F,F\}=0\)</span> no impone ninguna condición sobre <span class="math inline">\(F\)</span>: expresa la antisimetría. La conservación de <span class="math inline">\(F\)</span> exige compararlo con el hamiltoniano, además de su posible derivada temporal.</p>
+<p><span id="fispm-t1-c29-p0002"></span></p>
+<p><strong>Proposición FPM-I-29-P02 — Identidad de Jacobi.</strong> Para funciones suaves,</p>
+<p><span class="math display">\[
+\{F,\{G,K\}\}+\{G,\{K,F\}\}+\{K,\{F,G\}\}=0.
+\]</span></p>
+<p><strong>Demostración.</strong> Numeremos todas las coordenadas por <span class="math inline">\(i=1,\ldots,2n\)</span> y usemos subíndices para derivadas. Al expandir el primer término obtenemos</p>
+<p><span class="math display">\[
+F_i\mathbb J_{ij}G_{kj}\mathbb J_{kl}K_l
++F_i\mathbb J_{ij}G_k\mathbb J_{kl}K_{lj}.
+\]</span></p>
+<p>Añadimos sus dos permutaciones cíclicas. Cada sumando contiene una segunda derivada de una sola función. Agrupemos los que contienen segundas derivadas de <span class="math inline">\(K\)</span>; proceden del segundo sumando escrito y del primero en <span class="math inline">\(\{G,\{K,F\}\}\)</span>. Si <span class="math inline">\(u=\mathbb J\nabla F\)</span> y <span class="math inline">\(v=\mathbb J\nabla G\)</span>, esos dos términos son, respectivamente,</p>
+<p><span class="math display">\[
+u^{\mathsf T}(D^2K)v\quad\text{y}\quad
+-v^{\mathsf T}(D^2K)u.
+\]</span></p>
+<p>Se cancelan porque la hessiana es simétrica. Los términos con <span class="math inline">\(D^2F\)</span> y con <span class="math inline">\(D^2G\)</span> se cancelan de la misma manera. No quedan otros términos, pues <span class="math inline">\(\mathbb J\)</span> es constante. <span class="math inline">\(\square\)</span></p>
+<p>Jacobi asegura que la operación es compatible consigo misma. Junto con la bilinealidad y la antisimetría, convierte los observables suaves en un álgebra de Lie; la regla del producto expresa además su compatibilidad con la multiplicación ordinaria de funciones. Estas palabras resumen identidades ya demostradas y que utilizaremos en cálculos concretos.</p>
+<p><span id="fispm-t1-c29-s03"></span></p>
+<p><span id="fpm-i-29-s03"></span></p>
+</section>
+<section id="cantidades-conservadas-y-nuevas-integrales" class="level2">
+<h2 class="anchored" data-anchor-id="cantidades-conservadas-y-nuevas-integrales">§3. Cantidades conservadas y nuevas integrales</h2>
+<p>Una integral del movimiento satisface <span class="math inline">\(F_{,t}+\{F,H\}=0\)</span> en la región considerada. Para una función sin dependencia temporal explícita, basta <span class="math inline">\(\{F,H\}=0\)</span>. Si sólo conocemos esa igualdad sobre una trayectoria particular, obtenemos una afirmación restringida a ella; para disponer de una integral del modelo exigimos la identidad correspondiente en los estados de la región.</p>
+<p><span id="fispm-t1-c29-p0003"></span></p>
+<p><strong>Proposición FPM-I-29-P03 — El corchete de dos integrales es una integral.</strong> Si <span class="math inline">\(F\)</span> y <span class="math inline">\(G\)</span> satisfacen la condición de conservación, también la satisface <span class="math inline">\(\{F,G\}\)</span>, aunque dependan explícitamente del tiempo.</p>
+<p><strong>Demostración.</strong> Definamos el operador de evolución sobre funciones</p>
+<p><span class="math display">\[
+\mathcal D A=A_{,t}+\{A,H\}.
+\]</span></p>
+<p>Derivar la definición del corchete respecto de <span class="math inline">\(t\)</span> da la regla del producto para <span class="math inline">\(\partial_t\)</span>. Jacobi, reorganizada, da</p>
+<p><span class="math display">\[
+\{\{F,G\},H\}=\{\{F,H\},G\}+\{F,\{G,H\}\}.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(\mathcal D\{F,G\}=\{\mathcal DF,G\}+\{F,\mathcal DG\}\)</span>. Si ambas derivadas de evolución se anulan, también se anula la del corchete. <span class="math inline">\(\square\)</span></p>
+<p>El resultado puede producir una constante o la función cero y no garantiza una integral funcionalmente independiente de las anteriores. Para la partícula libre, <span class="math inline">\(p\)</span> y <span class="math inline">\(q-tp/m\)</span> son integrales; su corchete es <span class="math inline">\(-1\)</span>. La cuenta es correcta, pero esa constante no añade información sobre la trayectoria.</p>
+<p><span id="fispm-t1-c29-d0002"></span></p>
+<p><strong>Definición FPM-I-29-D02 — Funciones en involución.</strong> Dos funciones están en involución si su corchete es cero. Una familia está en involución si todos sus pares lo están.</p>
+<p>En varios grados de libertad, las energías de osciladores independientes están en involución. Las componentes de un momento angular conservado generalmente no lo están. Conservarse y conmutar entre sí son propiedades distintas que deben comprobarse por separado.</p>
+<p><span id="fispm-t1-c29-s04"></span></p>
+<p><span id="fpm-i-29-s04"></span></p>
+</section>
+<section id="funciones-que-generan-desplazamientos" class="level2">
+<h2 class="anchored" data-anchor-id="funciones-que-generan-desplazamientos">§4. Funciones que generan desplazamientos</h2>
+<p>Una función <span class="math inline">\(G(q,p)\)</span> define un sistema de ecuaciones con un parámetro <span class="math inline">\(s\)</span>:</p>
+<p><span class="math display">\[
+\frac{dq^a}{ds}=G_{,p_a},\qquad
+\frac{dp_a}{ds}=-G_{,q^a}.
+\]</span></p>
+<p>Ese parámetro puede representar una distancia, un ángulo o un tiempo según las unidades de <span class="math inline">\(G\)</span> y la transformación estudiada. La variación de un observable es <span class="math inline">\(dA/ds=\{A,G\}\)</span>.</p>
+<p><span id="fispm-t1-c29-p0004"></span></p>
+<p><strong>Proposición FPM-I-29-P04 — Generadores de traslaciones y rotaciones.</strong> El momento <span class="math inline">\(p_b\)</span> genera traslaciones de <span class="math inline">\(q^b\)</span>. En el plano cartesiano, <span class="math inline">\(L_z=xp_y-yp_x\)</span> genera la misma rotación de la posición y del momento.</p>
+<p><strong>Demostración.</strong> Para <span class="math inline">\(G=p_b\)</span>, las ecuaciones son <span class="math inline">\(dq^a/ds=\delta^a{}_b\)</span>, <span class="math inline">\(dp_a/ds=0\)</span>, cuya solución es la traslación indicada. Para <span class="math inline">\(L_z\)</span> obtenemos</p>
+<p><span class="math display">\[
+x'=-y,\quad y'=x,\quad p_x'=-p_y,\quad p_y'=p_x.
+\]</span></p>
+<p>Son los sistemas de rotación de ambos vectores. Sus soluciones son <span class="math inline">\((x,y)(s)=R(s)(x,y)(0)\)</span> y <span class="math inline">\((p_x,p_y)(s)=R(s)(p_x,p_y)(0)\)</span>, con <span class="math inline">\(R\)</span> la matriz usual de giro antihorario. <span class="math inline">\(\square\)</span></p>
+<p>En tres dimensiones, sean <span class="math inline">\(L_i=\varepsilon_{iab}q^ap_b\)</span> y <span class="math inline">\(\varepsilon_{123}=1\)</span>.</p>
+<p><span id="fispm-t1-c29-p0005"></span></p>
+<p><strong>Proposición FPM-I-29-P05 — Álgebra del momento angular.</strong> En coordenadas cartesianas,</p>
+<p><span class="math display">\[
+\{L_i,L_j\}=\sum_k\varepsilon_{ijk}L_k.
+\]</span></p>
+<p><strong>Demostración.</strong> Sus derivadas son <span class="math inline">\(\partial L_i/\partial q^a=\varepsilon_{iab}p_b\)</span> y <span class="math inline">\(\partial L_i/\partial p_a=\varepsilon_{iba}q^b\)</span>. Como verificación explícita,</p>
+<p><span class="math display">\[
+\{yp_z-zp_y,zp_x-xp_z\}=xp_y-yp_x=L_z.
+\]</span></p>
+<p>Las permutaciones cíclicas de las coordenadas dan <span class="math inline">\(\{L_y,L_z\}=L_x\)</span> y <span class="math inline">\(\{L_z,L_x\}=L_y\)</span>. La antisimetría y los corchetes diagonales nulos completan todos los pares y equivalen a la fórmula. <span class="math inline">\(\square\)</span></p>
+<p>El cálculo describe la composición infinitesimal de rotaciones. También anticipa por qué tres integrales angulares de un potencial central pueden estar relacionadas algebraicamente sin estar en involución. El carácter canónico de las transformaciones generadas se demostrará mediante el flujo, sin reducirlo a una observación de estos ejemplos.</p>
+<p><span id="fispm-t1-c29-s05"></span></p>
+<p><span id="fpm-i-29-s05"></span></p>
+</section>
+<section id="la-forma-alternada-del-espacio-de-fases" class="level2">
+<h2 class="anchored" data-anchor-id="la-forma-alternada-del-espacio-de-fases">§5. La forma alternada del espacio de fases</h2>
+<p>En cada punto del espacio de fases consideremos dos desplazamientos infinitesimales <span class="math inline">\(u=(u_q,u_p)\)</span> y <span class="math inline">\(v=(v_q,v_p)\)</span>. La expresión</p>
+<p><span class="math display">\[
+\omega(u,v)=\sum_a(u_q^av_{p_a}-u_{p_a}v_q^a)
+=u^{\mathsf T}\mathbb Jv
+\]</span></p>
+<p>es bilineal y cambia de signo al intercambiar los desplazamientos. En un solo grado de libertad mide el área orientada del paralelogramo que forman en el plano de fase.</p>
+<p><span id="fispm-t1-c29-d0003"></span></p>
+<p><strong>Definición FPM-I-29-D03 — Forma diferencial de grado dos.</strong> Es una asignación suave de una forma bilineal alternada a cada espacio tangente. En coordenadas, el producto exterior de dos diferenciales se define por</p>
+<p><span class="math display">\[
+(dz^i\wedge dz^j)(u,v)=u^iv^j-u^jv^i.
+\]</span></p>
+<p>Nuestra forma de fase se escribe</p>
+<p><span class="math display">\[
+\omega=\sum_a dq^a\wedge dp_a.
+\]</span></p>
+<p>Decir que una forma <span class="math inline">\(\omega\)</span> es no degenerada significa que <span class="math inline">\(\omega(u,v)=0\)</span> para todo <span class="math inline">\(v\)</span> obliga a <span class="math inline">\(u=0\)</span>. Aquí basta probar con cada vector de coordenadas: se anulan todas las componentes de <span class="math inline">\(u_q\)</span> y de <span class="math inline">\(u_p\)</span>.</p>
+<p>Para reconocer la otra propiedad necesaria introducimos brevemente la derivada exterior. Sobre funciones actúa como el diferencial ordinario; sobre una forma <span class="math inline">\(\alpha=\sum_i\alpha_i dz^i\)</span>,</p>
+<p><span class="math display">\[
+d\alpha=\sum_{i,j}(\partial_j\alpha_i)\,dz^j\wedge dz^i.
+\]</span></p>
+<p>Se extiende por linealidad y la regla graduada del producto, con <span class="math inline">\(d(dz^i)=0\)</span>. La igualdad de derivadas parciales mixtas da <span class="math inline">\(d^2=0\)</span>. Para la forma canónica, cuyos coeficientes son constantes, <span class="math inline">\(d\omega=0\)</span>.</p>
+<p><span id="fispm-t1-c29-d0004"></span></p>
+<p><strong>Definición FPM-I-29-D04 — Forma y variedad simplécticas.</strong> Una forma de grado dos es simpléctica si es cerrada, <span class="math inline">\(d\omega=0\)</span>, y no degenerada. Una variedad provista de ella es una variedad simpléctica.</p>
+<p>Toda forma alternada no degenerada vive en dimensión par: una matriz antisimétrica <span class="math inline">\(B\)</span> de orden impar tendría <span class="math inline">\(\det B=\det(-B)=-\det B\)</span>, luego determinante cero. La dimensión <span class="math inline">\(2n\)</span> del espacio de fases concuerda con esta necesidad algebraica.</p>
+<p><span id="fispm-t1-c29-s06"></span></p>
+<p><span id="fpm-i-29-s06"></span></p>
+</section>
+<section id="la-forma-canónica-sobre-el-cotangente" class="level2">
+<h2 class="anchored" data-anchor-id="la-forma-canónica-sobre-el-cotangente">§6. La forma canónica sobre el cotangente</h2>
+<p>La expresión <span class="math inline">\(\omega=\sum dq^a\wedge dp_a\)</span> se escribió en una carta. Para saber si describe un objeto del espacio de fases completo, debemos comprobar su compatibilidad con los cambios de carta.</p>
+<p>En <span class="math inline">\(T^*Q\)</span> existe la forma de grado uno</p>
+<p><span class="math display">\[
+\alpha=\sum_a p_a\,dq^a.
+\]</span></p>
+<p>Su interpretación evita elegir coordenadas: si <span class="math inline">\(\pi:T^*Q\to Q\)</span> proyecta sobre la posición, un punto <span class="math inline">\((q,p)\)</span> contiene un covector <span class="math inline">\(p\)</span> y podemos evaluar <span class="math inline">\(\alpha_{(q,p)}(u)=p(d\pi(u))\)</span>. Es el emparejamiento entre el momento y la parte posicional del desplazamiento.</p>
+<p><span id="fispm-t1-c29-p0006"></span></p>
+<p><strong>Proposición FPM-I-29-P06 — Estructura canónica global.</strong> La forma <span class="math inline">\(\alpha\)</span> está bien definida en <span class="math inline">\(T^*Q\)</span>, y</p>
+<p><span class="math display">\[
+\omega=-d\alpha=\sum_a dq^a\wedge dp_a
+\]</span></p>
+<p>es una forma simpléctica global.</p>
+<p><strong>Demostración.</strong> La definición mediante <span class="math inline">\(\pi\)</span> y el covector no depende de una carta. En un cambio <span class="math inline">\(q=f(Q)\)</span>, el momento <span class="math inline">\(P=J^{\mathsf T}p\)</span> verifica directamente <span class="math inline">\(p_a dq^a=P_i dQ^i\)</span>. Por tanto las expresiones locales de <span class="math inline">\(\alpha\)</span> coinciden. Derivar da <span class="math inline">\(-d\alpha=-dp_a\wedge dq^a=dq^a\wedge dp_a\)</span>. La forma es cerrada porque <span class="math inline">\(d^2=0\)</span> y es no degenerada por el argumento de §5 en cada carta. <span class="math inline">\(\square\)</span></p>
+<p>En particular, el cilindro de fase del péndulo tiene esta estructura global, aunque ningún ángulo real único describa todo el círculo. El diferencial angular <span class="math inline">\(d\theta\)</span> sí es global: las cartas angulares que difieren en múltiplos de <span class="math inline">\(2\pi\)</span> tienen el mismo diferencial. Así, <span class="math inline">\(\alpha=p\,d\theta\)</span> y <span class="math inline">\(\omega=d\theta\wedge dp\)</span> son expresiones compatibles sobre el cilindro.</p>
+<p>La forma <span class="math inline">\(\omega\)</span> no es una distancia ni un producto escalar. Siempre cumple <span class="math inline">\(\omega(u,u)=0\)</span>, incluso para <span class="math inline">\(u\ne0\)</span>, y no sirve para definir una longitud positiva. Lo que aporta es una identificación entre vectores y covectores, mediante <span class="math inline">\(u\mapsto\omega(u,\cdot)\)</span>, gracias a su no degeneración.</p>
+<p><span id="fispm-t1-c29-s07"></span></p>
+<p><span id="fpm-i-29-s07"></span></p>
+</section>
+<section id="campos-hamiltonianos-y-convención-de-signos" class="level2">
+<h2 class="anchored" data-anchor-id="campos-hamiltonianos-y-convención-de-signos">§7. Campos hamiltonianos y convención de signos</h2>
+<p><span id="fispm-t1-c29-d0005"></span></p>
+<p><strong>Definición FPM-I-29-D05 — Campo hamiltoniano.</strong> Para una función <span class="math inline">\(F\)</span> en una variedad simpléctica, su campo <span class="math inline">\(X_F\)</span> es el único que satisface</p>
+<p><span class="math display">\[
+\iota_{X_F}\omega=dF,
+\qquad (\iota_{X_F}\omega)(v)=\omega(X_F,v).
+\]</span></p>
+<p>La no degeneración asegura existencia y unicidad punto a punto, y la inversión suave de la matriz asegura suavidad. En coordenadas canónicas,</p>
+<p><span class="math display">\[
+X_F=\sum_a\left(F_{,p_a}\frac{\partial}{\partial q^a}
+-F_{,q^a}\frac{\partial}{\partial p_a}\right)
+=\mathbb J\nabla F.
+\]</span></p>
+<p>Por tanto las trayectorias físicas son las curvas integrales de <span class="math inline">\(X_H\)</span>. Si <span class="math inline">\(F\)</span> depende del tiempo, obtenemos una familia de campos y su evolución no autónoma.</p>
+<p><span id="fispm-t1-c29-p0007"></span></p>
+<p><strong>Proposición FPM-I-29-P07 — Relación geométrica con el corchete.</strong> Con las convenciones fijadas,</p>
+<p><span class="math display">\[
+X_G(F)=\{F,G\},\qquad
+\omega(X_F,X_G)=\{F,G\}.
+\]</span></p>
+<p>Si el conmutador de campos se define por <span class="math inline">\([X,Y]A=X(YA)-Y(XA)\)</span>, entonces</p>
+<p><span class="math display">\[
+[X_F,X_G]=-X_{\{F,G\}}.
+\]</span></p>
+<p><strong>Demostración.</strong> La primera identidad se obtiene aplicando el campo a la función. Para la segunda, <span class="math inline">\(\omega(X_F,X_G)=dF(X_G)=X_G(F)\)</span>. Finalmente, sobre cualquier función <span class="math inline">\(A\)</span>,</p>
+<p><span class="math display">\[
+[X_F,X_G]A=\{\{A,G\},F\}-\{\{A,F\},G\}
+=-\{A,\{F,G\}\},
+\]</span></p>
+<p>por Jacobi. Este último término es <span class="math inline">\(-X_{\{F,G\}}A\)</span>. La igualdad sobre todas las funciones identifica los campos. <span class="math inline">\(\square\)</span></p>
+<p>El signo del conmutador se ha deducido, no elegido por analogía. Es consecuencia de emplear <span class="math inline">\(\omega=dq\wedge dp\)</span>, <span class="math inline">\(\iota_{X_F}\omega=dF\)</span> y <span class="math inline">\(X_G(F)=\{F,G\}\)</span>. Otras combinaciones de convenciones que aparecen en la literatura cambian algunas de estas fórmulas; lo necesario es mantenerlas coherentes.</p>
+<p>Como comprobación, para <span class="math inline">\(F=q^2/2\)</span> y <span class="math inline">\(G=p^2/2\)</span>, tenemos <span class="math inline">\(X_F=-q\partial_p\)</span> y <span class="math inline">\(X_G=p\partial_q\)</span>. Su conmutador es <span class="math inline">\(-q\partial_q+p\partial_p\)</span>, opuesto a <span class="math inline">\(X_{qp}\)</span>. Si <span class="math inline">\(F\)</span> y <span class="math inline">\(G\)</span> están en involución, el conmutador se anula y sus flujos locales conmutan donde ambas composiciones están definidas.</p>
+<p><span id="fispm-t1-c29-s08"></span></p>
+<p><span id="fpm-i-29-s08"></span></p>
+</section>
+<section id="el-flujo-preserva-la-forma-simpléctica" class="level2">
+<h2 class="anchored" data-anchor-id="el-flujo-preserva-la-forma-simpléctica">§8. El flujo preserva la forma simpléctica</h2>
+<p>Sea <span class="math inline">\(\Phi_{t,t_0}\)</span> la aplicación que lleva un estado inicial en <span class="math inline">\(t_0\)</span> al estado alcanzado en <span class="math inline">\(t\)</span>. Es un difeomorfismo local entre los abiertos donde la evolución y su inversa están definidas. Su derivada transporta desplazamientos iniciales a desplazamientos entre soluciones cercanas.</p>
+<p><span id="fispm-t1-c29-p0008"></span></p>
+<p><strong>Proposición FPM-I-29-P08 — Preservación simpléctica del flujo.</strong> Si <span class="math inline">\(u(t),v(t)\)</span> son desplazamientos transportados por un flujo hamiltoniano, entonces <span class="math inline">\(\omega(u(t),v(t))\)</span> es constante. Equivalentemente,</p>
+<p><span class="math display">\[
+\Phi_{t,t_0}^*\omega=\omega.
+\]</span></p>
+<p>Aquí el asterisco significa evaluar la forma final sobre los vectores transportados.</p>
+<p><strong>Demostración.</strong> En coordenadas canónicas, el campo es <span class="math inline">\(X_H=\mathbb J\nabla H\)</span>. La ecuación linealizada para un desplazamiento es</p>
+<p><span class="math display">\[
+\dot u=Bu,\qquad B=\mathbb J D_z^2H,
+\]</span></p>
+<p>y la misma ecuación rige <span class="math inline">\(v\)</span>. La simetría de la hessiana implica</p>
+<p><span class="math display">\[
+B^{\mathsf T}\mathbb J+\mathbb JB=0.
+\]</span></p>
+<p>Por tanto</p>
+<p><span class="math display">\[
+\frac d{dt}(u^{\mathsf T}\mathbb Jv)
+=u^{\mathsf T}(B^{\mathsf T}\mathbb J+\mathbb JB)v=0.
+\]</span></p>
+<p>La cuenta es válida también si <span class="math inline">\(H\)</span> depende del tiempo. En el cotangente, los cambios entre cartas conservan <span class="math inline">\(\omega\)</span> por P06; podemos encadenar la afirmación a lo largo de la trayectoria. <span class="math inline">\(\square\)</span></p>
+<p>El flujo puede deformar una región de fase: estirarla en ciertas direcciones y comprimirla en otras. La igualdad preserva el emparejamiento alternado entre todos los desplazamientos transportados. En dimensión dos implica conservación de áreas orientadas. En dimensiones mayores impone condiciones adicionales a conservar un solo volumen total.</p>
+<p>Esta propiedad no exige que <span class="math inline">\(H\)</span> sea autónomo. La energía puede cambiar por dependencia temporal y, sin embargo, cada aplicación de evolución entre dos instantes sigue preservando <span class="math inline">\(\omega\)</span>. Tampoco garantiza que las soluciones cercanas permanezcan cercanas: una deformación que estira una dirección y comprime su dirección conjugada puede ser simpléctica.</p>
+<p><span id="fispm-t1-c29-s09"></span></p>
+<p><span id="fpm-i-29-s09"></span></p>
+</section>
+<section id="qué-significa-que-unas-variables-sean-canónicas" class="level2">
+<h2 class="anchored" data-anchor-id="qué-significa-que-unas-variables-sean-canónicas">§9. Qué significa que unas variables sean canónicas</h2>
+<p><span id="fispm-t1-c29-d0006"></span></p>
+<p><strong>Definición FPM-I-29-D06 — Transformación canónica.</strong> Un difeomorfismo entre regiones de fase es canónico o simpléctico si preserva <span class="math inline">\(\omega\)</span>. En coordenadas canónicas de origen y destino, para <span class="math inline">\(Z=\Psi(z)\)</span> y <span class="math inline">\(M=D\Psi(z)\)</span>, la condición es</p>
+<p><span class="math display">\[
+M^{\mathsf T}\mathbb JM=\mathbb J.
+\]</span></p>
+<p><span id="fispm-t1-c29-p0009"></span></p>
+<p><strong>Proposición FPM-I-29-P09 — Criterios equivalentes de canonicidad.</strong> Para un cambio local invertible, son equivalentes: preservar la forma; preservar todos los corchetes por composición; y que las nuevas coordenadas satisfagan</p>
+<p><span class="math display">\[
+\{Q^a,Q^b\}=0,\quad\{P_a,P_b\}=0,\quad
+\{Q^a,P_b\}=\delta^a{}_b.
+\]</span></p>
+<p>Si el cambio no depende del tiempo, las ecuaciones nuevas son canónicas con <span class="math inline">\(K=H\circ\Psi^{-1}\)</span>.</p>
+<p><strong>Demostración.</strong> La regla de la cadena da, para funciones <span class="math inline">\(A,B\)</span> de <span class="math inline">\(Z\)</span>,</p>
+<p><span class="math display">\[
+\{A\circ\Psi,B\circ\Psi\}_z
+=(\nabla_ZA)^{\mathsf T}M\mathbb JM^{\mathsf T}\nabla_ZB.
+\]</span></p>
+<p>Por tanto la preservación de todos los corchetes equivale a <span class="math inline">\(M\mathbb JM^{\mathsf T}=\mathbb J\)</span> y basta comprobarla sobre las funciones coordenadas. Para una matriz invertible, esa identidad equivale a <span class="math inline">\(M^{\mathsf T}\mathbb JM=\mathbb J\)</span>: invertir la segunda da <span class="math inline">\(M^{-1}\mathbb JM^{-\mathsf T}=\mathbb J\)</span> y multiplicar a ambos lados da la primera; la implicación inversa es igual. Finalmente, la preservación del corchete lleva <span class="math inline">\(\dot A=\{A,K\}_Z\)</span> a la ecuación original. Aplicarla a <span class="math inline">\(Q,P\)</span> prueba la última afirmación. <span class="math inline">\(\square\)</span></p>
+<p>La hipótesis temporal de la última frase es necesaria. Si <span class="math inline">\(\Psi\)</span> depende de <span class="math inline">\(t\)</span>, al derivar <span class="math inline">\(Z=\Psi(z,t)\)</span> aparece además <span class="math inline">\(\partial_t\Psi\)</span>. La condición simpléctica a cada tiempo no elimina ese término. I28 proporcionó la corrección explícita para coordenadas móviles y términos de borde; la misma precaución rige en cambios canónicos temporales más generales.</p>
+<p>En un par de variables, la condición equivale a <span class="math inline">\(\partial(Q,P)/\partial(q,p)=1\)</span>. Preservar áreas sin su orientación permitiría también determinante <span class="math inline">\(-1\)</span>, que invierte <span class="math inline">\(\omega\)</span> y no satisface nuestra definición. Por ejemplo, <span class="math inline">\((Q,P)=(q,-p)\)</span> cambia el signo del corchete fundamental.</p>
+<p><span id="fispm-t1-c29-s10"></span></p>
+<p><span id="fpm-i-29-s10"></span></p>
+</section>
+<section id="cambios-de-variables-que-conviene-reconocer" class="level2">
+<h2 class="anchored" data-anchor-id="cambios-de-variables-que-conviene-reconocer">§10. Cambios de variables que conviene reconocer</h2>
+<p><span id="fispm-t1-c29-p0010"></span></p>
+<p><strong>Proposición FPM-I-29-P10 — Cambios puntuales y desplazamientos de momento.</strong> Un cambio puntual <span class="math inline">\(q=f(Q)\)</span> acompañado de <span class="math inline">\(P=(Df)^{\mathsf T}p\)</span> es canónico. También lo es <span class="math inline">\(Q=q\)</span>, <span class="math inline">\(P=p+\nabla G(q)\)</span> para cualquier función suave <span class="math inline">\(G\)</span>.</p>
+<p><strong>Demostración.</strong> En el primer caso, <span class="math inline">\(p_a dq^a=P_i dQ^i\)</span>. Al aplicar <span class="math inline">\(-d\)</span> se obtiene la igualdad de las formas simplécticas. En el segundo,</p>
+<p><span class="math display">\[
+\sum_a dQ^a\wedge dP_a
+=\omega+\sum_{a,b}G_{,ab}\,dq^a\wedge dq^b=\omega,
+\]</span></p>
+<p>porque la hessiana es simétrica y el producto exterior antisimétrico. <span class="math inline">\(\square\)</span></p>
+<p>El reescalamiento <span class="math inline">\(Q=cq\)</span>, <span class="math inline">\(P=p/c\)</span>, con <span class="math inline">\(c\ne0\)</span>, preserva el corchete. Cambiar ambos factores a <span class="math inline">\(c\)</span> produce <span class="math inline">\(\{Q,P\}=c^2\)</span> y sólo es canónico si <span class="math inline">\(c^2=1\)</span>. La dualidad entre posiciones y momentos vuelve a decidir los factores correctos.</p>
+<p>En el plano sin el origen, el cambio polar tiene</p>
+<p><span class="math display">\[
+p_r=p_x\cos\theta+p_y\sin\theta,
+\qquad p_\theta=-rp_x\sin\theta+rp_y\cos\theta.
+\]</span></p>
+<p>Resulta de escribir <span class="math inline">\(p_xdx+p_ydy=p_rdr+p_\theta d\theta\)</span>; por P10 es canónico en cada carta angular. El punto <span class="math inline">\(r=0\)</span> queda fuera de ese cambio, exactamente como en I28.</p>
+<p>Un desplazamiento de momento más general, <span class="math inline">\(P_a=p_a+b_a(q)\)</span>, cumple</p>
+<p><span class="math display">\[
+\{P_a,P_b\}=\partial_b b_a-\partial_a b_b.
+\]</span></p>
+<p>Es canónico cuando la forma <span class="math inline">\(b_a dq^a\)</span> es cerrada. Localmente tiene una primitiva; globalmente puede carecer de ella. Así podemos distinguir preservar <span class="math inline">\(\omega\)</span> de preservar exactamente la forma <span class="math inline">\(\alpha\)</span>: un cambio canónico puede modificar <span class="math inline">\(\alpha\)</span> en una diferencial e incluso, según el dominio, en una forma cerrada no exacta.</p>
+<p>En el modelo giroscópico de I28, los momentos cinéticos son <span class="math inline">\(\pi_x=p_x+\gamma y/2\)</span>, <span class="math inline">\(\pi_y=p_y-\gamma x/2\)</span>. Aquí</p>
+<p><span class="math display">\[
+\{\pi_x,\pi_y\}=\gamma.
+\]</span></p>
+<p>La posición junto con el momento cinético no forma el mismo sistema de coordenadas canónicas cuando <span class="math inline">\(\gamma\ne0\)</span>. Es posible trabajar en esas variables, pero hay que transportar también el corchete; reemplazarlo por la fórmula canónica de forma automática perdería la fuerza giroscópica.</p>
+<p><span id="fispm-t1-c29-s11"></span></p>
+<p><span id="fpm-i-29-s11"></span></p>
+</section>
+<section id="simetrías-hamiltonianas-y-noether" class="level2">
+<h2 class="anchored" data-anchor-id="simetrías-hamiltonianas-y-noether">§11. Simetrías hamiltonianas y Noether</h2>
+<p>Para un hamiltoniano autónomo y un generador <span class="math inline">\(G\)</span> independiente del tiempo, el cambio de <span class="math inline">\(H\)</span> bajo el flujo de <span class="math inline">\(G\)</span> es <span class="math inline">\(dH/ds=\{H,G\}\)</span>. La misma cuenta que decide la conservación temporal decide si la transformación generada deja invariante el hamiltoniano.</p>
+<p><span id="fispm-t1-c29-p0011"></span></p>
+<p><strong>Proposición FPM-I-29-P11 — Integrales y simetrías generadas.</strong> Si <span class="math inline">\(G\)</span> no depende del tiempo, <span class="math inline">\(\{G,H\}=0\)</span> equivale a que su flujo local preserve <span class="math inline">\(H\)</span>. En ese caso sus flujos con el de <span class="math inline">\(H\)</span> conmutan localmente. Para una integral temporal <span class="math inline">\(G(q,p,t)\)</span>, la condición general es <span class="math inline">\(G_{,t}+\{G,H\}=0\)</span>.</p>
+<p><strong>Demostración.</strong> La derivada de <span class="math inline">\(H\)</span> sobre el flujo de <span class="math inline">\(G\)</span> es <span class="math inline">\(\{H,G\}\)</span>; se anula idénticamente si y sólo si el valor de <span class="math inline">\(H\)</span> permanece constante sobre todas esas curvas locales. Por P07, <span class="math inline">\([X_H,X_G]=-X_{\{H,G\}}=0\)</span>, lo que implica la conmutación local de los flujos por unicidad de sus ecuaciones. Para la última afirmación aplicamos la fórmula de evolución. Más precisamente, sobre el espacio que incluye el tiempo, con <span class="math inline">\(Y=\partial_t+X_H\)</span>,</p>
+<p><span class="math display">\[
+[Y,X_G]=X_{G_{,t}}+[X_H,X_G]
+=X_{G_{,t}+\{G,H\}}.
+\]</span></p>
+<p>Si <span class="math inline">\(G\)</span> es una integral, ese conmutador se anula. <span class="math inline">\(\square\)</span></p>
+<p>En el espacio con tiempo, el campo <span class="math inline">\(X_G\)</span> de la última fórmula actúa sólo en las variables de fase; la ecuación describe una simetría de la evolución que conserva el instante. No afirma que <span class="math inline">\(G(t)\)</span> preserve a cada tiempo el valor instantáneo de <span class="math inline">\(H\)</span>. Para la partícula libre, <span class="math inline">\(G=tp-mq\)</span> es conservada, pero <span class="math inline">\(\{H,G\}=p\)</span>; su dependencia temporal aporta la compensación necesaria.</p>
+<p>La carga de Noether de I27, después de la inversión regular, se escribe <span class="math inline">\(C=p\cdot\xi-H\tau-F\)</span>. Aunque la transformación original incluya un cambio temporal, su carga genera una transformación a tiempo fijo sobre las fases que satisface la condición de conservación. Para los generadores puntuales de I27, <span class="math inline">\(\{q^a,C\}=C_{,p_a}=\xi^a-\tau H_{,p_a}=\xi^a-\tau\dot q^a\)</span>, que es precisamente la variación de configuración a tiempo fijo. Así se enlaza la simetría variacional con la estructura de corchetes.</p>
+<p>Una constante añadida a <span class="math inline">\(G\)</span> no cambia <span class="math inline">\(X_G\)</span>, porque su diferencial es cero. En un dominio conexo, dos funciones que generan el mismo campo difieren en una constante espacial; si dependen del tiempo, la diferencia puede ser función sólo de <span class="math inline">\(t\)</span>. La conservación de la carga impone además su correspondiente condición temporal.</p>
+<p><span id="fispm-t1-c29-s12"></span></p>
+<p><span id="fpm-i-29-s12"></span></p>
+</section>
+<section id="el-volumen-de-fase-y-el-teorema-de-liouville" class="level2">
+<h2 class="anchored" data-anchor-id="el-volumen-de-fase-y-el-teorema-de-liouville">§12. El volumen de fase y el teorema de Liouville</h2>
+<p>La forma simpléctica construye una forma de volumen</p>
+<p><span class="math display">\[
+\Omega=\frac1{n!}\underbrace{\omega\wedge\cdots\wedge\omega}_{n\text{ factores}}.
+\]</span></p>
+<p>En coordenadas canónicas es <span class="math inline">\(dq^1\wedge dp_1\wedge\cdots\wedge dq^n\wedge dp_n\)</span>. Elegimos la orientación definida por ella; la medida positiva asociada tiene densidad ordinaria <span class="math inline">\(d^nq\,d^np\)</span>.</p>
+<p><span id="fispm-t1-c29-p0012"></span></p>
+<p><strong>Proposición FPM-I-29-P12 — Teorema de Liouville.</strong> El flujo hamiltoniano preserva el volumen de fase. En coordenadas canónicas, su jacobiano tiene determinante <span class="math inline">\(1\)</span> donde está definido, también si <span class="math inline">\(H\)</span> depende del tiempo.</p>
+<p><strong>Demostración.</strong> P08 implica que se preserva cada factor <span class="math inline">\(\omega\)</span> y, por tanto, su producto exterior <span class="math inline">\(\Omega\)</span>. Podemos comprobarlo directamente: la divergencia del campo es</p>
+<p><span class="math display">\[
+\operatorname{div}X_H=\sum_a
+\left(\frac{\partial^2H}{\partial q^a\partial p_a}
+-\frac{\partial^2H}{\partial p_a\partial q^a}\right)=0.
+\]</span></p>
+<p>Si <span class="math inline">\(M(t)=D\Phi_{t,t_0}\)</span>, su ecuación variacional da <span class="math inline">\(d(\det M)/dt=(\operatorname{div}X_H)\det M=0\)</span>. Como <span class="math inline">\(M(t_0)=\mathbf1\)</span>, el determinante permanece igual a uno. <span class="math inline">\(\square\)</span></p>
+<p>Una densidad <span class="math inline">\(\rho(z,t)\)</span> transportada por el flujo satisface la ecuación de continuidad</p>
+<p><span class="math display">\[
+\partial_t\rho+\operatorname{div}(\rho X_H)=0.
+\]</span></p>
+<p>Al anularse la divergencia del campo, resulta <span class="math inline">\(\partial_t\rho+\{\rho,H\}=0\)</span>: su valor permanece constante a lo largo de las trayectorias. Para <span class="math inline">\(H\)</span> autónomo, cualquier densidad diferenciable <span class="math inline">\(\rho=f(H)\)</span> es estacionaria, aunque para representar una distribución de probabilidad deba además ser no negativa e integrable, y normalizarse.</p>
+<p>Conservar volumen es una consecuencia de ser simpléctico. En dimensión cuatro la recíproca falla: el cambio</p>
+<p><span class="math display">\[
+(Q_1,Q_2,P_1,P_2)=(2q_1,q_2/2,p_1,p_2)
+\]</span></p>
+<p>tiene determinante uno, pero <span class="math inline">\(\{Q_1,P_1\}=2\)</span> y <span class="math inline">\(\{Q_2,P_2\}=1/2\)</span>. La información de <span class="math inline">\(\omega\)</span> distingue las áreas de los pares conjugados que el volumen total no distingue.</p>
+<p>Para el oscilador amortiguado de I28, <span class="math inline">\(\dot q=p/m\)</span>, <span class="math inline">\(\dot p=-kq-bp/m\)</span>, la divergencia es <span class="math inline">\(-b/m\)</span>. Su flujo contrae áreas por el factor <span class="math inline">\(e^{-bt/m}\)</span>. Este resultado delimita el alcance de Liouville: las fuerzas adicionales de aquel modelo no forman el campo canónico del hamiltoniano mecánico utilizado allí.</p>
+<p><span id="fispm-t1-c29-s13"></span></p>
+<p><span id="fpm-i-29-s13"></span></p>
+</section>
+<section id="el-oscilador-en-coordenadas-de-acción-y-ángulo" class="level2">
+<h2 class="anchored" data-anchor-id="el-oscilador-en-coordenadas-de-acción-y-ángulo">§13. El oscilador en coordenadas de acción y ángulo</h2>
+<p>La elipse de energía del oscilador sugiere usar su tamaño y la posición sobre ella como variables. Para <span class="math inline">\(m,\omega&gt;0\)</span>, fuera del origen ponemos</p>
+<p><span class="math display">\[
+q=\sqrt{\frac{2I}{m\omega}}\sin\theta,
+\qquad p=\sqrt{2m\omega I}\cos\theta,
+\qquad I&gt;0.
+\]</span></p>
+<p>El ángulo es periódico y requiere cartas si queremos representarlo por números reales. La variable <span class="math inline">\(I\)</span> tiene unidades de acción.</p>
+<p><span id="fispm-t1-c29-p0013"></span></p>
+<p><strong>Proposición FPM-I-29-P13 — Par acción–ángulo del oscilador.</strong> En esas coordenadas,</p>
+<p><span class="math display">\[
+\omega_{\mathrm{fase}}=d\theta\wedge dI,\qquad
+H=\omega I,\qquad\dot\theta=\omega,\quad\dot I=0.
+\]</span></p>
+<p>Además <span class="math inline">\(I=(2\pi)^{-1}\oint p\,dq\)</span>, orientando la órbita según el movimiento.</p>
+<p><strong>Demostración.</strong> Para evitar confundir frecuencia y forma, hemos añadido el subíndice a la segunda. El coeficiente de <span class="math inline">\(d\theta\wedge dI\)</span> en <span class="math inline">\(dq\wedge dp\)</span> es</p>
+<p><span class="math display">\[
+q_{,\theta}p_{,I}-q_{,I}p_{,\theta}
+=\cos^2\theta+\sin^2\theta=1.
+\]</span></p>
+<p>La sustitución en <span class="math inline">\(H=p^2/(2m)+m\omega^2q^2/2\)</span> da <span class="math inline">\(H=\omega I\)</span>. Las ecuaciones canónicas proporcionan la evolución. Finalmente, sobre <span class="math inline">\(I\)</span> constante,</p>
+<p><span class="math display">\[
+p\,dq=2I\cos^2\theta\,d\theta,
+\qquad \oint p\,dq=2\pi I.
+\]</span></p>
+<p>La evolución tiene <span class="math inline">\(\theta\)</span> creciente, lo que fija la orientación usada. <span class="math inline">\(\square\)</span></p>
+<p>El área encerrada por la elipse es <span class="math inline">\(2\pi E/\omega\)</span>. La acción expresa esa área dividida por <span class="math inline">\(2\pi\)</span>, y el ángulo convierte el movimiento en una traslación uniforme. La construcción falla como carta en el origen: allí la acción es cero y ningún ángulo distingue estados. Esto no hace singular al oscilador original; sólo marca el límite de las nuevas coordenadas.</p>
+<p>En una familia de osciladores desacoplados podemos aplicar la construcción a cada modo de frecuencia positiva. La extensión de estas ideas a sistemas integrables generales exige hipótesis sobre independencia de integrales, compacidad y regularidad de niveles que no se deducen de disponer de una sola cantidad conservada.</p>
+<p><span id="fispm-t1-c29-s14"></span></p>
+<p><span id="fpm-i-29-s14"></span></p>
+</section>
+<section id="lo-local-lo-global-y-la-dinámica-que-sigue" class="level2">
+<h2 class="anchored" data-anchor-id="lo-local-lo-global-y-la-dinámica-que-sigue">§14. Lo local, lo global y la dinámica que sigue</h2>
+<p><span id="fispm-t1-c29-d0007"></span></p>
+<p><strong>Definición FPM-I-29-D07 — Campo simpléctico.</strong> Un campo es simpléctico si sus flujos locales preservan la forma simpléctica. Todo campo hamiltoniano es simpléctico por P08; la implicación inversa tiene una condición global adicional.</p>
+<p><span id="fispm-t1-c29-p0014"></span></p>
+<p><strong>Proposición FPM-I-29-P14 — Obstrucción global elemental.</strong> En una región con coordenadas canónicas, un campo <span class="math inline">\(X\)</span> es simpléctico si y sólo si la forma <span class="math inline">\(\beta=\iota_X\omega\)</span> es cerrada. Es hamiltoniano globalmente si y sólo si esa forma es exacta, <span class="math inline">\(\beta=dG\)</span>. Todo campo simpléctico es hamiltoniano en un entorno suficientemente pequeño de cada punto de esa región.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(B=DX\)</span>, la derivada de <span class="math inline">\(\omega\)</span> sobre vectores transportados es <span class="math inline">\(u^{\mathsf T}(B^{\mathsf T}\mathbb J+\mathbb JB)v\)</span>. Por otra parte, las componentes de <span class="math inline">\(\beta\)</span> son <span class="math inline">\(\beta_j=X_i\mathbb J_{ij}\)</span>, y las de <span class="math inline">\(d\beta\)</span> son las entradas de la misma matriz antisimétrica <span class="math inline">\(B^{\mathsf T}\mathbb J+\mathbb JB\)</span>. Por tanto ambas condiciones de anulación equivalen. Ser hamiltoniano significa, por definición, que <span class="math inline">\(\beta=dG\)</span>. En una bola de centro <span class="math inline">\(z_0\)</span>, escribamos <span class="math inline">\(x=z-z_0\)</span> y definamos</p>
+<p><span class="math display">\[
+G(z)=\int_0^1\beta_i(z_0+sx)x^i\,ds.
+\]</span></p>
+<p>Si <span class="math inline">\(d\beta=0\)</span>, entonces <span class="math inline">\(\partial_k\beta_i=\partial_i\beta_k\)</span> y</p>
+<p><span class="math display">\[
+\partial_kG=\int_0^1\left[sx^i\partial_i\beta_k(z_0+sx)+\beta_k(z_0+sx)\right]ds
+=\int_0^1\frac d{ds}\left[s\beta_k(z_0+sx)\right]ds=\beta_k(z).
+\]</span></p>
+<p>La bola permite mantener todo el segmento en el dominio. Esto construye el generador local y demuestra en este caso el lema local de Poincaré. <span class="math inline">\(\square\)</span></p>
+<p>En el cilindro de fase del péndulo, el campo <span class="math inline">\(X=\partial_p\)</span> genera traslaciones verticales, que conservan <span class="math inline">\(d\theta\wedge dp\)</span>. Pero</p>
+<p><span class="math display">\[
+\iota_X\omega=-d\theta,
+\]</span></p>
+<p>cuya integral sobre una vuelta al cilindro es <span class="math inline">\(-2\pi\)</span>. Una diferencial de una función global tendría integral cero sobre todo lazo cerrado. Existe el generador local <span class="math inline">\(G=-\theta\)</span>, pero no una función real global y univaluada que lo reemplace sobre todo el cilindro. La topología afecta a la existencia de generadores globales incluso en un ejemplo tan sencillo.</p>
+<p>Tampoco la preservación simpléctica impone estabilidad. El hamiltoniano <span class="math inline">\(H=\lambda qp\)</span>, con <span class="math inline">\(\lambda&gt;0\)</span>, da <span class="math inline">\(q(t)=e^{\lambda t}q_0\)</span>, <span class="math inline">\(p(t)=e^{-\lambda t}p_0\)</span>. Las áreas se conservan y algunas separaciones crecen exponencialmente. Esa observación abre una pregunta que la estructura geométrica por sí sola no responde: qué estados permanecen próximos, cuáles se separan y qué información podemos predecir durante tiempos largos. I30 estudiará esa dinámica mediante puntos fijos, estabilidad, mapas y sensibilidad a los datos iniciales.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p><span id="fispm-t1-c29-e0001"></span></p>
+<section id="fpm-i-29-e01-corchetes-básicos" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e01-corchetes-básicos">FPM-I-29-E01 — Corchetes básicos</h3>
+<p>Calcule <span class="math inline">\(\{q^2,p^3\}\)</span> y <span class="math inline">\(\{qp,q^2+p^2\}\)</span> en un grado de libertad.</p>
+<p><span id="fispm-t1-c29-e0002"></span></p>
+</section>
+<section id="fpm-i-29-e02-producto-y-composición" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e02-producto-y-composición">FPM-I-29-E02 — Producto y composición</h3>
+<p>Pruebe que <span class="math inline">\(\{f(F),G\}=f'(F)\{F,G\}\)</span> para <span class="math inline">\(f\)</span> suave. Deduzca una familia de integrales a partir de una integral <span class="math inline">\(F\)</span>.</p>
+<p><span id="fispm-t1-c29-e0003"></span></p>
+</section>
+<section id="fpm-i-29-e03-jacobi-en-polinomios" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e03-jacobi-en-polinomios">FPM-I-29-E03 — Jacobi en polinomios</h3>
+<p>Verifique Jacobi para <span class="math inline">\(F=q^2/2\)</span>, <span class="math inline">\(G=p^2/2\)</span>, <span class="math inline">\(K=qp\)</span>, calculando los tres términos.</p>
+<p><span id="fispm-t1-c29-e0004"></span></p>
+</section>
+<section id="fpm-i-29-e04-integral-temporal" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e04-integral-temporal">FPM-I-29-E04 — Integral temporal</h3>
+<p>Para la partícula libre calcule los corchetes entre <span class="math inline">\(p\)</span>, <span class="math inline">\(B=tp-mq\)</span> y <span class="math inline">\(H=p^2/(2m)\)</span>. Verifique la conservación de <span class="math inline">\(B\)</span>.</p>
+<p><span id="fispm-t1-c29-e0005"></span></p>
+</section>
+<section id="fpm-i-29-e05-integrales-que-no-conmutan" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e05-integrales-que-no-conmutan">FPM-I-29-E05 — Integrales que no conmutan</h3>
+<p>En un potencial central tridimensional, explique por qué <span class="math inline">\(L_x,L_y,L_z\)</span> son integrales y calcule sus corchetes. ¿Están en involución?</p>
+<p><span id="fispm-t1-c29-e0006"></span></p>
+</section>
+<section id="fpm-i-29-e06-dilatación-canónica" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e06-dilatación-canónica">FPM-I-29-E06 — Dilatación canónica</h3>
+<p>Integre el flujo generado por <span class="math inline">\(G=qp\)</span>. Compruebe la conservación de <span class="math inline">\(dq\wedge dp\)</span> y determine si preserva el hamiltoniano del oscilador.</p>
+<p><span id="fispm-t1-c29-e0007"></span></p>
+</section>
+<section id="fpm-i-29-e07-rotación-plana" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e07-rotación-plana">FPM-I-29-E07 — Rotación plana</h3>
+<p>Calcule los cuatro corchetes de <span class="math inline">\(x,y,p_x,p_y\)</span> con <span class="math inline">\(L_z\)</span> e integre la transformación con parámetro <span class="math inline">\(s\)</span>.</p>
+<p><span id="fispm-t1-c29-e0008"></span></p>
+</section>
+<section id="fpm-i-29-e08-momento-angular-y-coordenadas" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e08-momento-angular-y-coordenadas">FPM-I-29-E08 — Momento angular y coordenadas</h3>
+<p>En tres dimensiones, calcule <span class="math inline">\(\{q_j,L_i\}\)</span> y <span class="math inline">\(\{p_j,L_i\}\)</span>. Interprete el caso <span class="math inline">\(i=3\)</span>.</p>
+<p><span id="fispm-t1-c29-e0009"></span></p>
+</section>
+<section id="fpm-i-29-e09-evaluación-de-una-forma" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e09-evaluación-de-una-forma">FPM-I-29-E09 — Evaluación de una forma</h3>
+<p>Para <span class="math inline">\(u=(1,2)\)</span> y <span class="math inline">\(v=(3,-1)\)</span> en un plano <span class="math inline">\((q,p)\)</span>, calcule <span class="math inline">\(\omega(u,v)\)</span>, <span class="math inline">\(\omega(v,u)\)</span> y <span class="math inline">\(\omega(u,u)\)</span>. Explique por qué esta forma no define una norma.</p>
+<p><span id="fispm-t1-c29-e0010"></span></p>
+</section>
+<section id="fpm-i-29-e10-campo-de-un-observable" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e10-campo-de-un-observable">FPM-I-29-E10 — Campo de un observable</h3>
+<p>Para <span class="math inline">\(F=q^2p\)</span>, calcule <span class="math inline">\(X_F\)</span> y compruebe directamente <span class="math inline">\(\iota_{X_F}\omega=dF\)</span>.</p>
+<p><span id="fispm-t1-c29-e0011"></span></p>
+</section>
+<section id="fpm-i-29-e11-signo-del-conmutador" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e11-signo-del-conmutador">FPM-I-29-E11 — Signo del conmutador</h3>
+<p>Para <span class="math inline">\(F=q^2/2\)</span> y <span class="math inline">\(G=p^2/2\)</span>, calcule <span class="math inline">\([X_F,X_G]\)</span> sobre <span class="math inline">\(q,p\)</span> y compárelo con <span class="math inline">\(X_{\{F,G\}}\)</span>.</p>
+<p><span id="fispm-t1-c29-e0012"></span></p>
+</section>
+<section id="fpm-i-29-e12-flujo-del-oscilador" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e12-flujo-del-oscilador">FPM-I-29-E12 — Flujo del oscilador</h3>
+<p>Escriba la matriz <span class="math inline">\(M(t)\)</span> del flujo del oscilador y verifique <span class="math inline">\(M^{\mathsf T}\mathbb JM=\mathbb J\)</span> y <span class="math inline">\(\det M=1\)</span>.</p>
+<p><span id="fispm-t1-c29-e0013"></span></p>
+</section>
+<section id="fpm-i-29-e13-traslación-de-momento" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e13-traslación-de-momento">FPM-I-29-E13 — Traslación de momento</h3>
+<p>Decida cuándo <span class="math inline">\(Q=q\)</span>, <span class="math inline">\(P=p+aq^2\)</span>, con <span class="math inline">\(a\)</span> constante, es canónico. Halle una función <span class="math inline">\(G(q)\)</span> con <span class="math inline">\(P=p+G'(q)\)</span>.</p>
+<p><span id="fispm-t1-c29-e0014"></span></p>
+</section>
+<section id="fpm-i-29-e14-un-giro-entre-posición-y-momento" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e14-un-giro-entre-posición-y-momento">FPM-I-29-E14 — Un giro entre posición y momento</h3>
+<p>Para <span class="math inline">\(Q=p\)</span>, <span class="math inline">\(P=-q\)</span> en variables adimensionales, compruebe canonicidad y escriba el hamiltoniano transformado de <span class="math inline">\(H=p^2/(2m)+kq^2/2\)</span>.</p>
+<p><span id="fispm-t1-c29-e0015"></span></p>
+</section>
+<section id="fpm-i-29-e15-conservar-área-sin-canonicidad" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e15-conservar-área-sin-canonicidad">FPM-I-29-E15 — Conservar área sin canonicidad</h3>
+<p>Compruebe que <span class="math inline">\(Q=q\)</span>, <span class="math inline">\(P=-p\)</span> conserva el área no orientada, pero invierte la forma y el corchete. ¿Cuál es su determinante?</p>
+<p><span id="fispm-t1-c29-e0016"></span></p>
+</section>
+<section id="fpm-i-29-e16-conservar-volumen-no-basta" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e16-conservar-volumen-no-basta">FPM-I-29-E16 — Conservar volumen no basta</h3>
+<p>Compruebe todas las afirmaciones sobre el cambio de cuatro variables presentado en §12. Indique dos corchetes que fallen.</p>
+<p><span id="fispm-t1-c29-e0017"></span></p>
+</section>
+<section id="fpm-i-29-e17-momento-polar" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e17-momento-polar">FPM-I-29-E17 — Momento polar</h3>
+<p>Derive <span class="math inline">\(p_r,p_\theta\)</span> desde la forma de grado uno y compruebe <span class="math inline">\(\{r,p_r\}=1\)</span> y <span class="math inline">\(\{r,p_\theta\}=0\)</span> en variables cartesianas, para <span class="math inline">\(r&gt;0\)</span>.</p>
+<p><span id="fispm-t1-c29-e0018"></span></p>
+</section>
+<section id="fpm-i-29-e18-momentos-cinéticos" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e18-momentos-cinéticos">FPM-I-29-E18 — Momentos cinéticos</h3>
+<p>Para <span class="math inline">\(\pi_x=p_x+\gamma y/2\)</span>, <span class="math inline">\(\pi_y=p_y-\gamma x/2\)</span>, calcule los corchetes fundamentales y deduzca las aceleraciones usando <span class="math inline">\(H=(\pi_x^2+\pi_y^2)/(2m)+V\)</span>.</p>
+<p><span id="fispm-t1-c29-e0019"></span></p>
+</section>
+<section id="fpm-i-29-e19-corrección-temporal" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e19-corrección-temporal">FPM-I-29-E19 — Corrección temporal</h3>
+<p>Con <span class="math inline">\(Q=q-ut\)</span>, <span class="math inline">\(P=p\)</span> y <span class="math inline">\(H=p^2/(2m)\)</span>, pruebe que el cambio es canónico a cada tiempo. Halle el hamiltoniano correcto <span class="math inline">\(K\)</span> y explique el término que faltaría si usáramos sólo <span class="math inline">\(H\circ\Psi^{-1}\)</span>.</p>
+<p><span id="fispm-t1-c29-e0020"></span></p>
+</section>
+<section id="fpm-i-29-e20-dos-energías-modales" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e20-dos-energías-modales">FPM-I-29-E20 — Dos energías modales</h3>
+<p>Para <span class="math inline">\(H=H_1+H_2\)</span>, <span class="math inline">\(H_i=(P_i^2+\omega_i^2Q_i^2)/2\)</span>, calcule <span class="math inline">\(\{H_1,H_2\}\)</span> y pruebe que ambos son integrales.</p>
+<p><span id="fispm-t1-c29-e0021"></span></p>
+</section>
+<section id="fpm-i-29-e21-simetría-de-traslación" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e21-simetría-de-traslación">FPM-I-29-E21 — Simetría de traslación</h3>
+<p>Para <span class="math inline">\(H=(p_x^2+p_y^2)/(2m)+V(y)\)</span>, pruebe que <span class="math inline">\(p_x\)</span> genera una simetría y que el flujo de esa simetría conmuta con la evolución.</p>
+<p><span id="fispm-t1-c29-e0022"></span></p>
+</section>
+<section id="fpm-i-29-e22-divergencia-y-amortiguamiento" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e22-divergencia-y-amortiguamiento">FPM-I-29-E22 — Divergencia y amortiguamiento</h3>
+<p>Calcule el jacobiano del flujo en área para el oscilador amortiguado. Compare con la evolución de energía y explique por qué ambas tasas no son la misma cantidad.</p>
+<p><span id="fispm-t1-c29-e0023"></span></p>
+</section>
+<section id="fpm-i-29-e23-densidad-estacionaria" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e23-densidad-estacionaria">FPM-I-29-E23 — Densidad estacionaria</h3>
+<p>Para el oscilador unidimensional, normalice <span class="math inline">\(\rho=C e^{-\beta H}\)</span> sobre todo el plano, con <span class="math inline">\(\beta&gt;0\)</span>. Compruebe la ecuación de Liouville.</p>
+<p><span id="fispm-t1-c29-e0024"></span></p>
+</section>
+<section id="fpm-i-29-e24-acción-del-oscilador" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e24-acción-del-oscilador">FPM-I-29-E24 — Acción del oscilador</h3>
+<p>Obtenga <span class="math inline">\(I\)</span> como función de <span class="math inline">\(q,p\)</span> y verifique <span class="math inline">\(\{\theta,I\}=1\)</span> en una carta angular, sin utilizar como premisa P13.</p>
+<p><span id="fispm-t1-c29-e0025"></span></p>
+</section>
+<section id="fpm-i-29-e25-área-e-intensidad" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e25-área-e-intensidad">FPM-I-29-E25 — Área e intensidad</h3>
+<p>Calcule el área encerrada por la órbita del oscilador de energía <span class="math inline">\(E\)</span>. Determine cómo cambia <span class="math inline">\(I\)</span> si se duplica la amplitud de posición manteniendo <span class="math inline">\(m,\omega\)</span>.</p>
+<p><span id="fispm-t1-c29-e0026"></span></p>
+</section>
+<section id="fpm-i-29-e26-un-campo-localmente-hamiltoniano" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e26-un-campo-localmente-hamiltoniano">FPM-I-29-E26 — Un campo localmente hamiltoniano</h3>
+<p>En el cilindro <span class="math inline">\((\theta,p)\)</span>, pruebe que <span class="math inline">\(X=\partial_p\)</span> es simpléctico y que no tiene generador global real. Dé uno local.</p>
+<p><span id="fispm-t1-c29-e0027"></span></p>
+</section>
+<section id="fpm-i-29-e27-deformación-exponencial" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e27-deformación-exponencial">FPM-I-29-E27 — Deformación exponencial</h3>
+<p>Para <span class="math inline">\(H=\lambda qp\)</span>, halle el flujo, su determinante y su acción sobre un rectángulo alineado con los ejes. Decida si el origen es estable frente a toda perturbación.</p>
+<p><span id="fispm-t1-c29-e0028"></span></p>
+</section>
+<section id="fpm-i-29-e28-forma-no-cerrada-en-cuatro-dimensiones" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e28-forma-no-cerrada-en-cuatro-dimensiones">FPM-I-29-E28 — Forma no cerrada en cuatro dimensiones</h3>
+<p>En <span class="math inline">\(\mathbb R^4\)</span>, con coordenadas <span class="math inline">\((q_1,q_2,p_1,p_2)\)</span>, considere <span class="math inline">\(\eta=e^{q_2}dq_1\wedge dp_1+dq_2\wedge dp_2\)</span>. Pruebe que es no degenerada, pero no simpléctica.</p>
+<p><span id="fispm-t1-c29-e0029"></span></p>
+</section>
+<section id="fpm-i-29-e29-primitiva-del-desplazamiento" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e29-primitiva-del-desplazamiento">FPM-I-29-E29 — Primitiva del desplazamiento</h3>
+<p>Para <span class="math inline">\(P=p+b(q)\)</span> en dos grados de libertad, derive la condición de canonicidad. Aplíquela a <span class="math inline">\(b=(q_2,q_1)\)</span> y a <span class="math inline">\(b=(-q_2,q_1)\)</span>.</p>
+<p><span id="fispm-t1-c29-e0030"></span></p>
+</section>
+<section id="fpm-i-29-e30-cierre-de-integrales-temporales" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e30-cierre-de-integrales-temporales">FPM-I-29-E30 — Cierre de integrales temporales</h3>
+<p>Para la partícula libre en el plano, tome <span class="math inline">\(B_x=tp_x-mx\)</span>, <span class="math inline">\(B_y=tp_y-my\)</span> y <span class="math inline">\(L_z=xp_y-yp_x\)</span>. Calcule <span class="math inline">\(\{L_z,B_x\}\)</span> y <span class="math inline">\(\{L_z,B_y\}\)</span>, y compruebe que los resultados son integrales temporales.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="fpm-i-29-e01" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e01">FPM-I-29-E01</h3>
+<p>Por derivación directa, <span class="math inline">\(\{q^2,p^3\}=2q\,3p^2=6qp^2\)</span>. Para el segundo corchete, las derivadas del primer argumento son <span class="math inline">\(p,q\)</span> y las del segundo <span class="math inline">\(2q,2p\)</span>. Por tanto</p>
+<p><span class="math display">\[
+\{qp,q^2+p^2\}=2p^2-2q^2.
+\]</span></p>
+<p>El resultado no es cero en todo el plano; que se anule sobre las rectas <span class="math inline">\(p=\pm q\)</span> no lo convierte en una identidad de involución.</p>
+</section>
+<section id="fpm-i-29-e02" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e02">FPM-I-29-E02</h3>
+<p>La regla de la cadena da <span class="math inline">\(\partial_i f(F)=f'(F)\partial_iF\)</span>. Sustituir en cada término de la definición extrae el factor común y prueba la fórmula. Si <span class="math inline">\(F\)</span> es una integral, incluso temporal, tenemos</p>
+<p><span class="math display">\[
+\mathcal D f(F)=f'(F)[F_{,t}+\{F,H\}]=0.
+\]</span></p>
+<p>Todas las funciones suaves de <span class="math inline">\(F\)</span> son integrales, pero sus diferenciales son múltiplos de <span class="math inline">\(dF\)</span>; no constituyen nuevas integrales funcionalmente independientes.</p>
+</section>
+<section id="fpm-i-29-e03" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e03">FPM-I-29-E03</h3>
+<p>Primero <span class="math inline">\(\{G,K\}=-p^2\)</span>, <span class="math inline">\(\{K,F\}=-q^2\)</span> y <span class="math inline">\(\{F,G\}=qp\)</span>. Así,</p>
+<p><span class="math display">\[
+\{F,\{G,K\}\}=-2qp,\qquad
+\{G,\{K,F\}\}=2qp,\qquad
+\{K,\{F,G\}\}=\{qp,qp\}=0.
+\]</span></p>
+<p>La suma es cero. Este ejemplo comprueba los signos de la identidad, cuya validez para funciones arbitrarias fue demostrada en P02.</p>
+</section>
+<section id="fpm-i-29-e04" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e04">FPM-I-29-E04</h3>
+<p>Con el tiempo fijo, <span class="math inline">\(\{p,B\}=m\)</span>, <span class="math inline">\(\{p,H\}=0\)</span> y <span class="math inline">\(\{B,H\}=-p\)</span>. La derivada explícita de <span class="math inline">\(B\)</span> es <span class="math inline">\(B_{,t}=p\)</span>, así que <span class="math inline">\(\mathcal DB=p-p=0\)</span>. También <span class="math inline">\(\{B,p\}=-m\)</span> por antisimetría. El corchete de las dos integrales es una constante; el corchete de <span class="math inline">\(B\)</span> con <span class="math inline">\(H\)</span> por sí solo no debe anularse cuando <span class="math inline">\(B\)</span> depende del tiempo.</p>
+</section>
+<section id="fpm-i-29-e05" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e05">FPM-I-29-E05</h3>
+<p>Para <span class="math inline">\(H=p^2/(2m)+V(|q|)\)</span>, la derivada de <span class="math inline">\(L=q\times p\)</span> es <span class="math inline">\(\dot q\times p+q\times\dot p\)</span>. El primer término es <span class="math inline">\((p/m)\times p=0\)</span> y el segundo se anula porque <span class="math inline">\(\dot p=-\nabla V\)</span> es radial. Sus componentes son integrales. P05 da <span class="math inline">\(\{L_x,L_y\}=L_z\)</span> y sus permutaciones cíclicas. Como esas funciones no son idénticamente cero, las tres componentes no forman una familia en involución, aunque sus valores puedan anularse en estados particulares.</p>
+</section>
+<section id="fpm-i-29-e06" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e06">FPM-I-29-E06</h3>
+<p>Las ecuaciones del parámetro son <span class="math inline">\(q'=q\)</span>, <span class="math inline">\(p'=-p\)</span>, de donde <span class="math inline">\(q(s)=e^sq_0\)</span>, <span class="math inline">\(p(s)=e^{-s}p_0\)</span>. Los diferenciales adquieren factores inversos y <span class="math inline">\(dq(s)\wedge dp(s)=dq_0\wedge dp_0\)</span>. Para el oscilador,</p>
+<p><span class="math display">\[
+\{H,G\}=m\omega^2q^2-\frac{p^2}m,
+\]</span></p>
+<p>que no se anula idénticamente. La transformación es canónica y no es una simetría de ese hamiltoniano. Conserva la estructura de las ecuaciones, con el hamiltoniano transformado correspondiente.</p>
+</section>
+<section id="fpm-i-29-e07" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e07">FPM-I-29-E07</h3>
+<p>La cuenta da <span class="math inline">\(\{x,L_z\}=-y\)</span>, <span class="math inline">\(\{y,L_z\}=x\)</span>, <span class="math inline">\(\{p_x,L_z\}=-p_y\)</span>, <span class="math inline">\(\{p_y,L_z\}=p_x\)</span>. Al integrar,</p>
+<p><span class="math display">\[
+x(s)=x_0\cos s-y_0\sin s,\quad y(s)=x_0\sin s+y_0\cos s,
+\]</span></p>
+<p>con las mismas fórmulas para <span class="math inline">\((p_x,p_y)\)</span>. Las posiciones y momentos giran en el mismo sentido; en particular, el emparejamiento <span class="math inline">\(p\cdot dq\)</span> se conserva por la ortogonalidad de la matriz de giro.</p>
+</section>
+<section id="fpm-i-29-e08" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e08">FPM-I-29-E08</h3>
+<p>Las derivadas respecto de momentos y posiciones dan</p>
+<p><span class="math display">\[
+\{q_j,L_i\}=\varepsilon_{iaj}q_a,\qquad
+\{p_j,L_i\}=-\varepsilon_{ijb}p_b
+=\varepsilon_{ibj}p_b.
+\]</span></p>
+<p>Para <span class="math inline">\(i=3\)</span>, obtenemos <span class="math inline">\((-q_2,q_1,0)\)</span> y <span class="math inline">\((-p_2,p_1,0)\)</span>. Se genera una rotación alrededor del tercer eje, dejando fijas las terceras componentes. Las dos escrituras con el símbolo alternante son equivalentes al intercambiar sus dos últimos índices.</p>
+</section>
+<section id="fpm-i-29-e09" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e09">FPM-I-29-E09</h3>
+<p>La evaluación es <span class="math inline">\(\omega(u,v)=1(-1)-2(3)=-7\)</span>. Al invertir el orden resulta <span class="math inline">\(7\)</span>, y <span class="math inline">\(\omega(u,u)=1(2)-2(1)=0\)</span>. Una norma al cuadrado tendría que ser positiva para el vector no nulo <span class="math inline">\(u\)</span>. Esta forma alternada mide área orientada entre dos vectores y se anula cuando ambos son iguales, de modo que no cumple esa condición de positividad.</p>
+</section>
+<section id="fpm-i-29-e10" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e10">FPM-I-29-E10</h3>
+<p>Las derivadas son <span class="math inline">\(F_{,p}=q^2\)</span> y <span class="math inline">\(F_{,q}=2qp\)</span>. Luego <span class="math inline">\(X_F=q^2\partial_q-2qp\partial_p\)</span>. Como la contracción de <span class="math inline">\(a\partial_q+b\partial_p\)</span> con <span class="math inline">\(dq\wedge dp\)</span> es <span class="math inline">\(a\,dp-b\,dq\)</span>,</p>
+<p><span class="math display">\[
+\iota_{X_F}\omega=q^2dp+2qp\,dq=d(q^2p).
+\]</span></p>
+<p>La cuenta verifica a la vez la posición de los signos y la unicidad del vector correspondiente al diferencial.</p>
+</section>
+<section id="fpm-i-29-e11" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e11">FPM-I-29-E11</h3>
+<p>Los campos son <span class="math inline">\(X_F=-q\partial_p\)</span>, <span class="math inline">\(X_G=p\partial_q\)</span>. Sobre la coordenada <span class="math inline">\(q\)</span>,</p>
+<p><span class="math display">\[
+[X_F,X_G]q=X_F(p)-X_G(0)=-q.
+\]</span></p>
+<p>Sobre <span class="math inline">\(p\)</span>, el resultado es <span class="math inline">\(X_F(0)-X_G(-q)=p\)</span>. Por tanto el conmutador es <span class="math inline">\(-q\partial_q+p\partial_p\)</span>. Como <span class="math inline">\(\{F,G\}=qp\)</span>, el campo de ese corchete es <span class="math inline">\(q\partial_q-p\partial_p\)</span>, exactamente el opuesto.</p>
+</section>
+<section id="fpm-i-29-e12" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e12">FPM-I-29-E12</h3>
+<p>Con <span class="math inline">\(c=\cos\omega t\)</span>, <span class="math inline">\(s=\sin\omega t\)</span>,</p>
+<p><span class="math display">\[
+M(t)=\begin{pmatrix}c&amp;s/(m\omega)\\-m\omega s&amp;c\end{pmatrix}.
+\]</span></p>
+<p>El determinante es <span class="math inline">\(c^2+s^2=1\)</span>. Para una matriz bidimensional cualquiera, la multiplicación directa da <span class="math inline">\(M^{\mathsf T}\mathbb JM=(\det M)\mathbb J\)</span>. Aplicada a esta matriz, verifica la condición simpléctica. La igualdad de determinante basta aquí porque sólo hay un par de variables; E16 muestra por qué no basta en dimensión cuatro.</p>
+</section>
+<section id="fpm-i-29-e13" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e13">FPM-I-29-E13</h3>
+<p>Tenemos <span class="math inline">\(\{Q,P\}=1\)</span> para todo <span class="math inline">\(a\)</span>, pues <span class="math inline">\(Q=q\)</span> y la derivada de <span class="math inline">\(P\)</span> respecto de <span class="math inline">\(p\)</span> es uno. El cambio es globalmente invertible, <span class="math inline">\(p=P-aQ^2\)</span>. Una primitiva es <span class="math inline">\(G(q)=aq^3/3\)</span> más una constante. Su segunda derivada es <span class="math inline">\(2aq\)</span> y el término adicional en <span class="math inline">\(dQ\wedge dP\)</span> es <span class="math inline">\(2aq\,dq\wedge dq=0\)</span>.</p>
+</section>
+<section id="fpm-i-29-e14" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e14">FPM-I-29-E14</h3>
+<p>Se obtiene <span class="math inline">\(\{Q,P\}=\{p,-q\}=1\)</span>. La inversa es <span class="math inline">\(q=-P\)</span>, <span class="math inline">\(p=Q\)</span>, así que</p>
+<p><span class="math display">\[
+K(Q,P)=\frac{Q^2}{2m}+\frac k2P^2.
+\]</span></p>
+<p>Las ecuaciones son <span class="math inline">\(\dot Q=kP\)</span>, <span class="math inline">\(\dot P=-Q/m\)</span>, compatibles con <span class="math inline">\(Q=p\)</span> y <span class="math inline">\(P=-q\)</span>. El supuesto de variables adimensionales evita identificar magnitudes de unidades distintas sin incorporar factores de escala.</p>
+</section>
+<section id="fpm-i-29-e15" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e15">FPM-I-29-E15</h3>
+<p>Su matriz es <span class="math inline">\(\operatorname{diag}(1,-1)\)</span>, con determinante <span class="math inline">\(-1\)</span>. El valor absoluto del determinante conserva el área positiva, pero <span class="math inline">\(dQ\wedge dP=-dq\wedge dp\)</span> y <span class="math inline">\(\{Q,P\}=-1\)</span>. Es una transformación antisimpléctica: invierte la forma en lugar de preservarla.</p>
+</section>
+<section id="fpm-i-29-e16" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e16">FPM-I-29-E16</h3>
+<p>En el orden <span class="math inline">\((q_1,q_2,p_1,p_2)\)</span>, la matriz es diagonal con entradas <span class="math inline">\((2,1/2,1,1)\)</span> y su determinante es uno. Sin embargo,</p>
+<p><span class="math display">\[
+\{Q_1,P_1\}=2,\qquad\{Q_2,P_2\}=\frac12.
+\]</span></p>
+<p>En términos de formas, <span class="math inline">\(\Psi^*\omega=2dq_1\wedge dp_1+(1/2)dq_2\wedge dp_2\)</span>. Los dos factores se compensan al formar el volumen, pero cada área conjugada cambia. La transformación preserva volumen y no es canónica.</p>
+</section>
+<section id="fpm-i-29-e17" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e17">FPM-I-29-E17</h3>
+<p>Como <span class="math inline">\(dx=\cos\theta\,dr-r\sin\theta\,d\theta\)</span> y <span class="math inline">\(dy=\sin\theta\,dr+r\cos\theta\,d\theta\)</span>, agrupar coeficientes da las fórmulas de §10. En variables cartesianas, <span class="math inline">\(r=\sqrt{x^2+y^2}\)</span>, <span class="math inline">\(p_r=(xp_x+yp_y)/r\)</span> y <span class="math inline">\(p_\theta=xp_y-yp_x\)</span>. Como <span class="math inline">\(r\)</span> no depende de momentos,</p>
+<p><span class="math display">\[
+\{r,p_r\}=\frac{x^2+y^2}{r^2}=1,
+\qquad
+\{r,p_\theta\}=\frac{x(-y)+yx}{r}=0.
+\]</span></p>
+<p>Estas cuentas requieren <span class="math inline">\(r&gt;0\)</span>, que es el dominio declarado.</p>
+</section>
+<section id="fpm-i-29-e18" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e18">FPM-I-29-E18</h3>
+<p>Los corchetes son <span class="math inline">\(\{x,\pi_x\}=\{y,\pi_y\}=1\)</span>, <span class="math inline">\(\{x,\pi_y\}=\{y,\pi_x\}=0\)</span>, <span class="math inline">\(\{x,y\}=0\)</span> y <span class="math inline">\(\{\pi_x,\pi_y\}=\gamma\)</span>. Por ello <span class="math inline">\(\dot x=\pi_x/m\)</span>, <span class="math inline">\(\dot y=\pi_y/m\)</span> y</p>
+<p><span class="math display">\[
+\dot\pi_x=\frac\gamma m\pi_y-V_{,x},\qquad
+\dot\pi_y=-\frac\gamma m\pi_x-V_{,y}.
+\]</span></p>
+<p>Al usar <span class="math inline">\(\pi=m\dot q\)</span> recuperamos las dos aceleraciones giroscópicas de I28. Si hubiéramos supuesto <span class="math inline">\(\{\pi_x,\pi_y\}=0\)</span>, habríamos eliminado precisamente esas fuerzas.</p>
+</section>
+<section id="fpm-i-29-e19" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e19">FPM-I-29-E19</h3>
+<p>A tiempo fijo <span class="math inline">\(\{Q,P\}=\{q-ut,p\}=1\)</span>, y la jacobiana espacial es la identidad. Pero la evolución real da <span class="math inline">\(\dot Q=p/m-u\)</span>, <span class="math inline">\(\dot P=0\)</span>. El hamiltoniano que las genera es</p>
+<p><span class="math display">\[
+K(Q,P)=\frac{P^2}{2m}-uP,
+\]</span></p>
+<p>hasta una función sólo del tiempo. La composición <span class="math inline">\(H\circ\Psi^{-1}=P^2/(2m)\)</span> omitiría la velocidad <span class="math inline">\(-u\)</span> del origen de coordenadas. Es la misma corrección de marco móvil deducida variacionalmente en I28.</p>
+</section>
+<section id="fpm-i-29-e20" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e20">FPM-I-29-E20</h3>
+<p>Cada <span class="math inline">\(H_i\)</span> depende únicamente de su propio par de variables. En cada término de <span class="math inline">\(\{H_1,H_2\}\)</span> al menos una derivada es cero, por lo que el corchete se anula. Así,</p>
+<p><span class="math display">\[
+\dot H_1=\{H_1,H_1+H_2\}=0,
+\qquad\dot H_2=0.
+\]</span></p>
+<p>Son integrales en involución. Sus valores determinan cómo se reparte la energía entre los modos; sumarlos conserva la energía total pero pierde esa información de reparto.</p>
+</section>
+<section id="fpm-i-29-e21" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e21">FPM-I-29-E21</h3>
+<p>Como <span class="math inline">\(H\)</span> no depende de <span class="math inline">\(x\)</span>, <span class="math inline">\(\{H,p_x\}=H_{,x}=0\)</span>. El flujo de <span class="math inline">\(p_x\)</span> es <span class="math inline">\(x\mapsto x+s\)</span>, con las demás variables fijas, y deja <span class="math inline">\(H\)</span> invariante. El campo de traslaciones es <span class="math inline">\(\partial_x\)</span> y los coeficientes del campo dinámico tampoco dependen de <span class="math inline">\(x\)</span>, de modo que su conmutador es cero. Por unicidad, trasladar el dato y luego evolucionar produce la misma solución que evolucionar y trasladar.</p>
+</section>
+<section id="fpm-i-29-e22" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e22">FPM-I-29-E22</h3>
+<p>La divergencia del campo es <span class="math inline">\(\partial_q(p/m)+\partial_p(-kq-bp/m)=-b/m\)</span>. El determinante de la aplicación de evolución desde cero es, por tanto, <span class="math inline">\(e^{-bt/m}\)</span>. En cambio,</p>
+<p><span class="math display">\[
+\dot H=-\frac b{m^2}p^2.
+\]</span></p>
+<p>La divergencia describe el cambio de un conjunto de estados vecinos y tiene unidades de tiempo inverso. La potencia describe el cambio energético de una trayectoria y depende del estado. En un punto de retorno <span class="math inline">\(p=0\)</span>, la potencia es momentáneamente cero y la contracción local del área continúa.</p>
+</section>
+<section id="fpm-i-29-e23" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e23">FPM-I-29-E23</h3>
+<p>Introduzcamos <span class="math inline">\(x=\sqrt{m\omega}\,q\)</span>, <span class="math inline">\(y=p/\sqrt{m\omega}\)</span>. El jacobiano tiene valor uno y <span class="math inline">\(H=\omega(x^2+y^2)/2\)</span>. Integrando en coordenadas polares del plano <span class="math inline">\((x,y)\)</span>,</p>
+<p><span class="math display">\[
+\int e^{-\beta H}\,dq\,dp
+=2\pi\int_0^\infty e^{-\beta\omega r^2/2}r\,dr
+=\frac{2\pi}{\beta\omega}.
+\]</span></p>
+<p>La normalización es <span class="math inline">\(C=\beta\omega/(2\pi)\)</span>. La densidad no depende del tiempo y <span class="math inline">\(\{e^{-\beta H},H\}=-\beta e^{-\beta H}\{H,H\}=0\)</span>, de modo que satisface Liouville. La hipótesis <span class="math inline">\(\beta&gt;0\)</span> asegura la integrabilidad.</p>
+</section>
+<section id="fpm-i-29-e24" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e24">FPM-I-29-E24</h3>
+<p>La inversión da</p>
+<p><span class="math display">\[
+I=\frac12\left(m\omega q^2+\frac{p^2}{m\omega}\right)=\frac H\omega.
+\]</span></p>
+<p>Sea <span class="math inline">\(x=\sqrt{m\omega}\,q\)</span>, <span class="math inline">\(y=p/\sqrt{m\omega}\)</span>; localmente elegimos el ángulo con <span class="math inline">\(x=r\sin\theta\)</span>, <span class="math inline">\(y=r\cos\theta\)</span>. Su diferencial es <span class="math inline">\(d\theta=(y\,dx-x\,dy)/(x^2+y^2)\)</span>, así que <span class="math inline">\(\theta_{,q}=p/(2I)\)</span> y <span class="math inline">\(\theta_{,p}=-q/(2I)\)</span>. Entonces</p>
+<p><span class="math display">\[
+\{\theta,I\}
+=\frac{p^2}{2Im\omega}+\frac{m\omega q^2}{2I}=1.
+\]</span></p>
+<p>La cuenta excluye el origen y presupone una elección local continua del ángulo.</p>
+</section>
+<section id="fpm-i-29-e25" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e25">FPM-I-29-E25</h3>
+<p>Los semiejes de la elipse son <span class="math inline">\(q_{\max}=\sqrt{2E/(m\omega^2)}\)</span> y <span class="math inline">\(p_{\max}=\sqrt{2mE}\)</span>. Su área positiva es <span class="math inline">\(\pi q_{\max}p_{\max}=2\pi E/\omega=2\pi I\)</span>. La energía es proporcional al cuadrado de la amplitud de posición. Duplicarla multiplica la energía y la acción por cuatro, manteniendo la frecuencia y los parámetros fijos.</p>
+</section>
+<section id="fpm-i-29-e26" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e26">FPM-I-29-E26</h3>
+<p>El flujo es <span class="math inline">\((\theta,p)\mapsto(\theta,p+s)\)</span>, que deja <span class="math inline">\(d\theta\wedge dp\)</span> igual. Su contracción es <span class="math inline">\(-d\theta\)</span>. Si existiera una función global real <span class="math inline">\(G\)</span> con <span class="math inline">\(dG=-d\theta\)</span>, integrar sobre una vuelta cerrada daría simultáneamente cero y <span class="math inline">\(-2\pi\)</span>, imposible. En una carta angular, <span class="math inline">\(G=-\theta\)</span> sí cumple la ecuación. Cambiar de carta modifica esa función en una constante, pero no elimina el salto acumulado alrededor del círculo.</p>
+</section>
+<section id="fpm-i-29-e27" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e27">FPM-I-29-E27</h3>
+<p>Las ecuaciones son <span class="math inline">\(\dot q=\lambda q\)</span>, <span class="math inline">\(\dot p=-\lambda p\)</span>, cuya solución es <span class="math inline">\((e^{\lambda t}q_0,e^{-\lambda t}p_0)\)</span>. Su determinante es uno. Un rectángulo de lados <span class="math inline">\(a,b\)</span> paralelos a los ejes pasa a tener lados <span class="math inline">\(e^{\lambda t}a,e^{-\lambda t}b\)</span>, con la misma área <span class="math inline">\(ab\)</span>. El origen no es estable frente a toda perturbación: cualquier dato <span class="math inline">\(q_0\ne0\)</span>, por pequeño que sea, abandona una vecindad fija al crecer el tiempo. La conservación de área permite ese crecimiento compensado en la dirección conjugada.</p>
+</section>
+<section id="fpm-i-29-e28" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e28">FPM-I-29-E28</h3>
+<p>Los dos bloques de la forma tienen coeficientes no nulos: <span class="math inline">\(e^{q_2}&gt;0\)</span> y <span class="math inline">\(1\)</span>. Evaluar contra los vectores de coordenadas muestra que <span class="math inline">\(\eta(u,v)=0\)</span> para todo <span class="math inline">\(v\)</span> obliga a anular las cuatro componentes de <span class="math inline">\(u\)</span>. Es no degenerada. Sin embargo,</p>
+<p><span class="math display">\[
+d\eta=e^{q_2}dq_2\wedge dq_1\wedge dp_1\ne0.
+\]</span></p>
+<p>Por ejemplo, su evaluación sobre <span class="math inline">\((\partial_{q_2},\partial_{q_1},\partial_{p_1})\)</span> vale <span class="math inline">\(e^{q_2}\)</span>. Al fallar la cerradura, no es una forma simpléctica. La no degeneración sola no incluye toda la definición.</p>
+</section>
+<section id="fpm-i-29-e29" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e29">FPM-I-29-E29</h3>
+<p>Como <span class="math inline">\(Q=q\)</span>, se conservan los corchetes de posiciones y los mixtos. Los restantes son <span class="math inline">\(\{P_a,P_b\}=\partial_b b_a-\partial_a b_b\)</span>, que se anulan si y sólo si la forma <span class="math inline">\(b_a dq^a\)</span> es cerrada. Para <span class="math inline">\(b=(q_2,q_1)\)</span> las derivadas cruzadas valen uno; el cambio es canónico y una primitiva es <span class="math inline">\(G=q_1q_2\)</span>. Para <span class="math inline">\(b=(-q_2,q_1)\)</span>, <span class="math inline">\(\{P_1,P_2\}=-1-1=-2\)</span>, así que no es canónico.</p>
+</section>
+<section id="fpm-i-29-e30" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-29-e30">FPM-I-29-E30</h3>
+<p>De los corchetes de rotación obtenemos</p>
+<p><span class="math display">\[
+\{L_z,B_x\}=t\{L_z,p_x\}-m\{L_z,x\}
+=tp_y-my=B_y,
+\]</span></p>
+<p><span class="math display">\[
+\{L_z,B_y\}=-tp_x+mx=-B_x.
+\]</span></p>
+<p>Para la partícula libre, <span class="math inline">\(\mathcal DB_x=p_x-m(p_x/m)=0\)</span> y lo mismo vale para <span class="math inline">\(B_y\)</span>. También <span class="math inline">\(\mathcal DL_z=0\)</span> porque la velocidad es paralela al momento. Por tanto los resultados calculados son integrales temporales, de acuerdo con P03. La rotación mezcla las dos cargas de traslación galileana como mezcla las componentes de un vector.</p>
+</section>
+</section>
+<section id="notas-y-lecturas" class="level2">
+<h2 class="anchored" data-anchor-id="notas-y-lecturas">Notas y lecturas</h2>
+<p>I28 proporciona las ecuaciones canónicas, su equivalencia regular con Euler–Lagrange y los cambios de referencia dependientes del tiempo. I27 aporta las cargas de Noether; I24 reaparece en las energías modales. Las herramientas de formas diferenciales se han introducido en el grado necesario para construir la forma canónica, reconocer la cerradura y distinguir generadores locales y globales.</p>
+<p>Una lectura complementaria es David Tong, <em>Classical Dynamics</em>, <a href="https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S4.html">capítulo 4, «The Hamiltonian Formalism»</a>, §§4.2–4.4, para Liouville, corchetes y transformaciones canónicas. Las demostraciones, convenciones geométricas y soluciones están desarrolladas en el texto. No se presupone un teorema global de coordenadas canónicas ni un criterio general de integrabilidad a partir del mero conteo de integrales.</p>
+<p>I30 continuará con puntos fijos, retratos de fase, estabilidad, mapas y sensibilidad. La preservación de estructura y volumen establecida aquí será una herramienta para interpretar esos fenómenos. Este cierre corresponde a la redacción y revisión del capítulo; la preparación de una edición maquetada y su revisión visual son trabajos posteriores.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-28-mecanica-hamiltoniana.html">Capítulo 28</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-30-sistemas-dinamicos-estabilidad-y-caos.html">Capítulo 30</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

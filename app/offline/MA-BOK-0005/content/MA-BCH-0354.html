@@ -1,0 +1,980 @@
+<!DOCTYPE html><html lang="es"><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' file: 'unsafe-inline'; style-src 'self' file: data: 'unsafe-inline'; font-src 'self' file: data:; img-src 'self' file: data:; connect-src 'none'; base-uri 'none'; form-action 'none'; worker-src blob:">
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 14 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.">
+
+<title>Momento lineal, impulso y centro de masa – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+
+
+
+
+
+
+<meta name="quarto:offset" content="../../">
+<link href="../assets/8eb201055a4f4d43a0dc1bd6.svg" rel="icon" type="image/svg+xml">
+
+
+
+
+<script src="../assets/69098e105d990f834cff1b78.js"></script>
+<link href="../assets/5969f497d9158d7682f8219c.css" rel="stylesheet">
+<link href="../assets/4973a76eb0de3b99bc67687a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../assets/7f7cb0230277ec2bc5294f4d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+
+
+<link href="../assets/quarto-bootstrap-light.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../assets/quarto-bootstrap-dark.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+
+  
+  <script src="../assets/mathjax-offline-speech.js"></script><script>(function(){const fontRoot=new URL("../assets/mathjax-newcm",location.href).href;window.MathJax=Object.assign(window.MathJax||{}, {loader:{paths:{"mathjax-newcm":fontRoot}},startup:{ready:function(){MathJax.startup.defaultReady();MathJax.startup.adaptor.createWorker=window.__maCreateSpeechWorker;},pageReady:window.MathJax.startup.pageReady},output:{fontPath:fontRoot},chtml:{fontURL:fontRoot+"/chtml/woff2",dynamicPrefix:fontRoot+"/chtml/dynamic"}});})();</script><script defer src="../assets/mathjax/tex-chtml.js"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../assets/87b4f5e6a115d51d92f5ea1a.css">
+<link rel="stylesheet" href="../assets/af3335218e8c9cef34486d70.css">
+<style id="ma-reader-mode-v1-style">/* Reader contract: app readerMode.ts, ma-reader-mode-v1. */
+
+#quarto-header,
+#quarto-sidebar,
+#quarto-margin-sidebar,
+.quarto-secondary-nav,
+.quarto-page-breadcrumbs,
+#quarto-search,
+.quarto-search-button,
+.quarto-navigation-tool,
+.quarto-back-to-top,
+#quarto-footer,
+.nav-footer {
+  display: none !important;
+}
+
+body.quarto-page-columns #quarto-content,
+#quarto-content.page-columns {
+  display: block !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+#quarto-content {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  padding-left: max(1rem, env(safe-area-inset-left)) !important;
+  padding-right: max(1rem, env(safe-area-inset-right)) !important;
+}
+
+#quarto-content > main.content,
+#quarto-content .content {
+  box-sizing: border-box !important;
+  grid-column: 1 / -1 !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+#quarto-content img,
+#quarto-content figure img {
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+#quarto-content table,
+#quarto-content pre,
+#quarto-content mjx-container[display="true"],
+#quarto-content .math.display {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+}
+
+#quarto-content table {
+  display: block;
+}
+
+#quarto-content .callout,
+#quarto-content .theorem,
+#quarto-content .proof {
+  max-width: 100% !important;
+}
+</style><style>body.nav-fixed{padding-top:0!important}</style></head><body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar"><main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Momento lineal, impulso y centro de masa</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 14</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 14 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">15 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-13-energia-potencial-fuerzas-conservativas-y-estabilidad.html">Capítulo 13</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-15-momento-angular-y-torque.html">Capítulo 15</a></p>
+<p>Este capítulo estudia balances vectoriales de momento para partículas y sistemas materiales, su integración temporal y la separación del movimiento colectivo y relativo. Prerrequisitos físicos I-09–10; matemática M2–M3 y M6 elemental. La comparación con energía enlaza con I-12. La segunda parte desarrolla colisiones y sistemas abiertos.</p>
+<p><span id="fispm-t1-c14-s01"></span></p>
+<p><span id="fpm-i-14-s01"></span></p>
+<section id="momento-lineal-de-una-partícula" class="level2">
+<h2 class="anchored" data-anchor-id="momento-lineal-de-una-partícula">§1 — Momento lineal de una partícula</h2>
+<p>El balance de energía cinética compara rapidez y trabajo. Para conservar información direccional conviene introducir una magnitud vectorial que relaciona masa y velocidad: el momento lineal. Su variación se obtiene directamente de Newton y permitirá después sumar las ecuaciones de muchas partículas sin reconstruir primero sus interacciones.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span id="fispm-t1-c14-d0001"></span></p>
+<p><strong>Definición FPM-I-14-D01 — Momento lineal de una partícula.</strong> Una partícula de masa constante <span class="math inline">\(m&gt;0\)</span>, con velocidad <span class="math inline">\(\mathbf v\)</span> medida en un marco inercial elegido, tiene momento lineal <span class="math inline">\(\mathbf p=m\mathbf v\)</span>. Sus unidades SI son <span class="math inline">\(\mathrm{kg\,m/s}\)</span>, equivalentes a <span class="math inline">\(\mathrm{N\,s}\)</span>.</p>
+<p>El momento apunta en la dirección de velocidad. No es fuerza: sus unidades y su función en la ecuación son distintas. Tampoco es energía cinética: dos velocidades opuestas producen momentos opuestos y la misma energía <span class="math inline">\(m|\mathbf v|^2/2\)</span>. Con masa conocida, el momento determina la velocidad completa mediante <span class="math inline">\(\mathbf v=\mathbf p/m\)</span>.</p>
+<p><span id="fispm-t1-c14-p0001"></span></p>
+<p><strong>Proposición FPM-I-14-P01 — Fuerza total y derivada del momento.</strong> Para masa constante en un marco inercial, Newton <span class="math inline">\(m\mathbf a=\mathbf F_{\mathrm{tot}}\)</span> equivale a <span class="math inline">\(\dot{\mathbf p}=\mathbf F_{\mathrm{tot}}\)</span>.</p>
+<p><strong>Demostración.</strong> Derivar D01 con <span class="math inline">\(m\)</span> constante da <span class="math inline">\(\dot{\mathbf p}=m\dot{\mathbf v}=m\mathbf a\)</span>. Sustituir una de las dos ecuaciones produce la otra. <span class="math inline">\(\square\)</span></p>
+<p>La igualdad usa la fuerza total sobre la partícula. Si actúan peso, tensión y contacto, se suman antes de identificar <span class="math inline">\(\dot{\mathbf p}\)</span>. Una fuerza particular modifica el momento junto con las demás; no puede atribuirse todo el cambio a ella sin verificar que las otras contribuciones se anulan.</p>
+<p>La formulación vectorial contiene una igualdad por componente. Si <span class="math inline">\(\mathbf F_{\mathrm{tot}}\)</span> es perpendicular a una dirección fija <span class="math inline">\(\mathbf e\)</span>, entonces <span class="math inline">\(d(\mathbf p\cdot\mathbf e)/dt=0\)</span> aunque las otras componentes varíen. Si la dirección elegida gira con el tiempo, derivar <span class="math inline">\(\mathbf p\cdot\mathbf e(t)\)</span> añade <span class="math inline">\(\mathbf p\cdot\dot{\mathbf e}\)</span>; no se puede omitir ese término. Trabajaremos inicialmente con ejes fijos de un marco inercial.</p>
+<p>El momento depende del marco porque la velocidad depende de él. Bajo una traslación uniforme de velocidad <span class="math inline">\(\mathbf U\)</span>, <span class="math inline">\(\mathbf v'=\mathbf v-\mathbf U\)</span> y <span class="math inline">\(\mathbf p'=\mathbf p-m\mathbf U\)</span>. La diferencia entre dos instantes permanece igual cuando <span class="math inline">\(m\)</span> y <span class="math inline">\(\mathbf U\)</span> son constantes. Esto anticipa una propiedad útil: observadores inerciales relacionados de ese modo coinciden en el cambio de momento, aunque no en su valor absoluto.</p>
+<p>Para masa constante, la energía cinética puede expresarse como <span class="math inline">\(K=|\mathbf p|^2/(2m)\)</span>. Esta expresión pierde la dirección al tomar el cuadrado del módulo. Conocer <span class="math inline">\(K\)</span> no permite reconstruir <span class="math inline">\(\mathbf p\)</span>; conocer <span class="math inline">\(\mathbf p\)</span> y <span class="math inline">\(m\)</span> sí permite calcular <span class="math inline">\(K\)</span>. Los dos balances ofrecen información diferente y pueden combinarse cuando sus hipótesis son compatibles.</p>
+<p>Si una descripción hace variar la masa que pertenece al objeto elegido, derivar formalmente <span class="math inline">\(m(t)\mathbf v(t)\)</span> añade <span class="math inline">\(\dot m\mathbf v\)</span>. Pero ese cálculo no decide qué materia entra o sale ni qué momento transporta. P01 se ha probado para una partícula de masa constante; el balance de un sistema abierto requiere otra formulación que reservamos para §13.</p>
+<p><span id="fispm-t1-c14-mp0001"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP01 — Fijar receptor, masa y marco.</strong> Declara sobre qué partícula actúan las fuerzas y en qué marco mides su velocidad. Conserva el carácter vectorial del momento y usa la resultante para su derivada. No extiendas la prueba de masa constante a un objeto con transferencia de materia.</p>
+<section id="ejercicios" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0001"></span></p>
+<p><strong>Ejercicio FPM-I-14-E01.</strong> Una masa de <span class="math inline">\(2\,\mathrm{kg}\)</span> pasa de velocidad <span class="math inline">\((3,-1)\,\mathrm{m/s}\)</span> a <span class="math inline">\((-1,2)\,\mathrm{m/s}\)</span>. Calcula los momentos inicial y final, su cambio y el cambio de energía cinética. ¿Permite el signo de este último deducir la dirección del cambio de momento?</p>
+<p><strong>Solución.</strong> Los momentos son <span class="math inline">\((6,-2)\)</span> y <span class="math inline">\((-2,4)\,\mathrm{kg\,m/s}\)</span>; su cambio es <span class="math inline">\((-8,6)\,\mathrm{kg\,m/s}\)</span>. La energía inicial es <span class="math inline">\(2(3^2+(-1)^2)/2=10\,\mathrm J\)</span> y la final <span class="math inline">\(2((-1)^2+2^2)/2=5\,\mathrm J\)</span>, por lo que <span class="math inline">\(\Delta K=-5\,\mathrm J\)</span>. Ese signo dice que disminuyó la rapidez, pero no determina el vector <span class="math inline">\(\Delta\mathbf p\)</span>. Aquí cambia tanto su componente horizontal como la vertical. Una igualdad escalar no sustituye los datos vectoriales.</p>
+<p><span id="fispm-t1-c14-e0002"></span></p>
+<p><strong>Ejercicio FPM-I-14-E02.</strong> En una línea, una masa <span class="math inline">\(m\)</span> parte con momento <span class="math inline">\(p_0\)</span> y recibe fuerza total constante <span class="math inline">\(F_0\)</span> durante <span class="math inline">\(0\leq t\leq T\)</span>. Obtén momento, velocidad y posición, suponiendo posición inicial <span class="math inline">\(x_0\)</span>. Indica qué información inicial no aparece en la ecuación del momento.</p>
+<p><strong>Solución.</strong> P01 da <span class="math inline">\(p(t)=p_0+F_0t\)</span>, así que <span class="math inline">\(v(t)=p_0/m+F_0t/m\)</span>. Integrar produce <span class="math inline">\(x(t)=x_0+(p_0/m)t+F_0t^2/(2m)\)</span>. El momento y la ley de fuerza permiten obtener velocidad, pero la posición requiere además <span class="math inline">\(x_0\)</span>. Si la fuerza dependiera de posición, ambas ecuaciones tendrían que resolverse conjuntamente; no basta integrar una fuerza temporal que todavía no conocemos sobre la historia.</p>
+<p><span id="fispm-t1-c14-s02"></span></p>
+<p><span id="fpm-i-14-s02"></span></p>
+</section>
+</section>
+<section id="impulso-y-fuerza-media" class="level2">
+<h2 class="anchored" data-anchor-id="impulso-y-fuerza-media">§2 — Impulso y fuerza media</h2>
+<p>Una fuerza puede variar mucho durante un contacto breve. Si buscamos el cambio de momento entre dos instantes, basta su integral temporal. Esa magnitud se llama impulso y se define también para fuerzas suaves que actúan durante largo tiempo: no presupone un golpe instantáneo ni una discontinuidad de velocidad.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><span id="fispm-t1-c14-d0002"></span></p>
+<p><strong>Definición FPM-I-14-D02 — Impulso de una fuerza.</strong> Para una historia de fuerza integrable <span class="math inline">\(\mathbf F(t)\)</span> en <span class="math inline">\([t_a,t_b]\)</span>, su impulso es <span class="math inline">\(\mathbf J=\int_{t_a}^{t_b}\mathbf F(t)dt\)</span>. Es un vector con unidades de momento. La integral es temporal, no espacial.</p>
+<p><span id="fispm-t1-c14-d0003"></span></p>
+<p><strong>Definición FPM-I-14-D03 — Fuerza media temporal.</strong> Si <span class="math inline">\(\Delta t=t_b-t_a&gt;0\)</span>, la fuerza media es <span class="math inline">\(\overline{\mathbf F}=\mathbf J/\Delta t\)</span>. Representa el vector constante que tendría el mismo impulso en ese intervalo, sin afirmar que coincidan sus picos ni la posición del receptor.</p>
+<p><span id="fispm-t1-c14-p0002"></span></p>
+<p><strong>Proposición FPM-I-14-P02 — Teorema impulso–momento.</strong> Para una partícula de masa constante que cumple Newton, <span class="math inline">\(\mathbf p_b-\mathbf p_a=\mathbf J_{\mathrm{tot}}\)</span>. El impulso total es la suma de los impulsos de todas las fuerzas que actúan durante el intervalo.</p>
+<p><strong>Demostración.</strong> Integrar P01 da <span class="math inline">\(\int_{t_a}^{t_b}\dot{\mathbf p}\,dt=\int_{t_a}^{t_b}\mathbf F_{\mathrm{tot}}dt\)</span>. El lado izquierdo es la diferencia de momentos. Para una suma finita de fuerzas, la linealidad de la integral permite sumar sus impulsos. El argumento se aplica también por tramos con extremos comunes. <span class="math inline">\(\square\)</span></p>
+<p>El trabajo y el impulso integran información distinta. El primero usa <span class="math inline">\(\mathbf F\cdot\mathbf v\,dt\)</span> y tiene unidades de energía; el segundo usa <span class="math inline">\(\mathbf Fdt\)</span> y tiene unidades de momento. Un impulso no nulo puede cambiar la dirección de velocidad sin cambiar la energía entre extremos. Un trabajo conocido tampoco determina todas las componentes del impulso.</p>
+<p><span id="fispm-t1-c14-p0003"></span></p>
+<p><strong>Proposición FPM-I-14-P03 — Cota del impulso y error de una omisión.</strong> Si <span class="math inline">\(|\mathbf F(t)|\leq F_{\max}\)</span> en un intervalo de duración <span class="math inline">\(\Delta t\)</span>, entonces <span class="math inline">\(|\mathbf J|\leq F_{\max}\Delta t\)</span>. Si una fuerza omitida cumple esa cota, el error vectorial en el momento final calculado con las otras fuerzas es a lo sumo <span class="math inline">\(F_{\max}\Delta t\)</span>, siempre que se usen sus impulsos sobre la historia real.</p>
+<p><strong>Demostración.</strong> La desigualdad triangular de la integral da <span class="math inline">\(|\int\mathbf Fdt|\leq\int|\mathbf F|dt\leq F_{\max}\Delta t\)</span>. El balance exacto difiere del que omite esa contribución en su impulso; se aplica la misma cota. <span class="math inline">\(\square\)</span></p>
+<p>La última precisión evita una confusión: omitir una fuerza al resolver la dinámica también puede cambiar la historia y los impulsos de las fuerzas restantes. P03 acota directamente la contribución omitida sobre la historia considerada, no un error global arbitrario de modelización. Para comparar dos historias habría que controlar esa dependencia adicional.</p>
+<p>Durante un contacto breve, el impulso del peso tiene magnitud <span class="math inline">\(mg\Delta t\)</span>. Puede ser pequeño frente al impulso de contacto, pero debe compararse con una escala de momento y una tolerancia. La brevedad por sí sola no garantiza un error relativo pequeño si el cambio total es casi cero por cancelación. En ese caso sigue siendo válida una cota absoluta.</p>
+<p>Para un impulso fijo, alargar la duración reduce el módulo de la fuerza media. No obliga a reducir cualquier pico instantáneo imaginable: una historia larga puede contener un pulso muy alto y estrecho. Una afirmación sobre picos requiere fijar además la forma temporal o una familia de modelos de contacto.</p>
+<p><span id="fispm-t1-c14-mp0002"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP02 — Integrar todas las contribuciones y controlar la aproximación.</strong> Usa el impulso total para el cambio de momento. Si desprecias una fuerza, estima su impulso y declara la escala de comparación. Distingue fuerza media, pico y ley temporal; no deduzcas una historia completa sólo de su área bajo la curva.</p>
+<section id="ejercicios-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-1">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0003"></span></p>
+<p><strong>Ejercicio FPM-I-14-E03.</strong> Una masa de <span class="math inline">\(0{,}5\,\mathrm{kg}\)</span> cambia de velocidad vertical <span class="math inline">\(-4\,\mathrm{m/s}\)</span> a <span class="math inline">\(3\,\mathrm{m/s}\)</span> durante un contacto de <span class="math inline">\(0{,}02\,\mathrm s\)</span>. Usa <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span> y sentido positivo hacia arriba. Calcula impulso y fuerza media de contacto, incluyendo el peso.</p>
+<p><strong>Solución.</strong> El cambio de momento es <span class="math inline">\(0{,}5[3-(-4)]=3{,}5\,\mathrm{N\,s}\)</span> hacia arriba. El peso aporta <span class="math inline">\(-mg\Delta t=-0{,}1\,\mathrm{N\,s}\)</span>. Por tanto, el contacto aporta <span class="math inline">\(J_c=3{,}6\,\mathrm{N\,s}\)</span> y su fuerza media es <span class="math inline">\(180\,\mathrm N\)</span> hacia arriba. La fuerza total media es <span class="math inline">\(175\,\mathrm N\)</span>. Confundir las dos omitiría los <span class="math inline">\(5\,\mathrm N\)</span> de peso. Estos datos no determinan el pico de contacto ni su distribución temporal.</p>
+<p><span id="fispm-t1-c14-e0004"></span></p>
+<p><strong>Ejercicio FPM-I-14-E04.</strong> Una fuerza unidimensional sobre <span class="math inline">\(0\leq t\leq T\)</span> tiene perfil triangular: <span class="math inline">\(F(t)=2F_pt/T\)</span> hasta <span class="math inline">\(T/2\)</span> y <span class="math inline">\(F(t)=2F_p(1-t/T)\)</span> después, con <span class="math inline">\(F_p&gt;0\)</span>. Calcula impulso y fuerza media. Compara con una fuerza constante de igual impulso.</p>
+<p><strong>Solución.</strong> Cada mitad aporta el área de un triángulo de base <span class="math inline">\(T/2\)</span> y altura <span class="math inline">\(F_p\)</span>, igual a <span class="math inline">\(F_pT/4\)</span>. El impulso es <span class="math inline">\(F_pT/2\)</span> y la fuerza media <span class="math inline">\(F_p/2\)</span>. La fuerza constante correspondiente es <span class="math inline">\(F_p/2\)</span> durante todo el intervalo, y produce el mismo cambio de momento si ambas son fuerzas totales. Sus picos difieren: <span class="math inline">\(F_p\)</span> para el triángulo y <span class="math inline">\(F_p/2\)</span> para la constante. Sus posiciones intermedias difieren; para estos dos perfiles simétricos y los mismos datos iniciales, el desplazamiento final coincide: <span class="math inline">\(v_0T+F_pT^2/(4m)\)</span> para una partícula de masa constante <span class="math inline">\(m\)</span>. En general, el impulso total no fija el desplazamiento: éste depende también de la distribución temporal de la fuerza, mediante <span class="math inline">\(\Delta x=v_0T+m^{-1}\int_0^T(T-t)F(t)dt\)</span>.</p>
+<p><span id="fispm-t1-c14-s03"></span></p>
+<p><span id="fpm-i-14-s03"></span></p>
+</section>
+</section>
+<section id="momento-de-un-sistema-material" class="level2">
+<h2 class="anchored" data-anchor-id="momento-de-un-sistema-material">§3 — Momento de un sistema material</h2>
+<p>Para sumar las ecuaciones de partículas hay que fijar cuáles pertenecen al sistema. La elección puede ser amplia o estrecha, pero debe mantenerse durante el intervalo. Una interacción entre miembros cuenta como interna; la misma fuerza pasa a ser externa si uno de los cuerpos queda fuera. La cancelación interna es una consecuencia de la tercera ley dentro del modelo elegido.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><span id="fispm-t1-c14-d0004"></span></p>
+<p><strong>Definición FPM-I-14-D04 — Momento total de un sistema material finito.</strong> Un sistema formado por una lista fija de <span class="math inline">\(n\)</span> partículas de masas constantes <span class="math inline">\(m_i&gt;0\)</span> tiene masa total <span class="math inline">\(M=\sum_i m_i\)</span> y momento total <span class="math inline">\(\mathbf P=\sum_i\mathbf p_i=\sum_i m_i\mathbf v_i\)</span>. Todas las velocidades se miden en el mismo marco inercial.</p>
+<p>La palabra «material» significa aquí que seguimos los mismos miembros. No se sustituye una partícula por otra porque una atraviese una región del espacio. El sistema puede deformarse, separarse y cambiar su distribución; esas posibilidades no modifican la lista de masas que sumamos. Un conjunto definido por la materia que ocupa una caja fija puede tener entradas y salidas y necesitar otro balance.</p>
+<p>Denotemos por <span class="math inline">\(\mathbf F_i^{\mathrm{ext}}\)</span> la resultante sobre <span class="math inline">\(i\)</span> debida a agentes fuera del sistema, y por <span class="math inline">\(\mathbf F_{ij}\)</span> la fuerza que <span class="math inline">\(j\)</span> ejerce sobre <span class="math inline">\(i\)</span>. El primer índice identifica al receptor. Supondremos interacciones internas por pares que cumplen <span class="math inline">\(\mathbf F_{ji}=-\mathbf F_{ij}\)</span> al mismo tiempo en este modelo newtoniano.</p>
+<p><span id="fispm-t1-c14-p0004"></span></p>
+<p><strong>Proposición FPM-I-14-P04 — Balance externo del momento total.</strong> Si cada miembro cumple Newton con las fuerzas anteriores, entonces</p>
+<p><span class="math display">\[\dot{\mathbf P}=\mathbf F_{\mathrm{ext}},\qquad \mathbf F_{\mathrm{ext}}=\sum_i\mathbf F_i^{\mathrm{ext}},\qquad \mathbf P_b-\mathbf P_a=\int_{t_a}^{t_b}\mathbf F_{\mathrm{ext}}dt.\]</span></p>
+<p><strong>Demostración.</strong> P01 para cada partícula da <span class="math inline">\(\dot{\mathbf p}_i=\mathbf F_i^{\mathrm{ext}}+\sum_{j\ne i}\mathbf F_{ij}\)</span>. Sumamos las igualdades. La suma interna se agrupa como <span class="math inline">\(\sum_{i&lt;j}(\mathbf F_{ij}+\mathbf F_{ji})=0\)</span> por la tercera ley. La derivada de la suma finita es <span class="math inline">\(\dot{\mathbf P}\)</span> y permanece únicamente la resultante externa. Integrar en tiempo da la última identidad. <span class="math inline">\(\square\)</span></p>
+<p>No se ha supuesto que las fuerzas internas sean pequeñas ni que las partículas tengan velocidades iguales. Tampoco se ha exigido que las fuerzas de cada par estén sobre la línea que une sus posiciones. Para este balance de momento basta la igualdad y oposición vectorial declarada. Otras magnitudes, como el momento angular, pueden requerir propiedades adicionales, que se tratarán en I-15.</p>
+<p>La cancelación de fuerzas no equivale a cancelación de trabajo. Para un par interno, la potencia conjunta es <span class="math inline">\(\mathbf F_{ij}\cdot(\mathbf v_i-\mathbf v_j)\)</span>, como se probó en I-12. Puede ser no nula aunque <span class="math inline">\(\mathbf F_{ij}+\mathbf F_{ji}=0\)</span>. Un resorte entre masas puede modificar su energía cinética total mientras deja constante su momento total si no hay resultante externa. Los balances se complementan porque suman objetos distintos.</p>
+<p>La tercera ley es una hipótesis del modelo de partículas e interacciones. Si una descripción omite un medio que transporta momento o no satisface la oposición instantánea por pares, no puede aplicarse esta prueba por costumbre. Habría que ampliar el sistema o escribir el término de balance que falta. Aquí trabajaremos con los modelos mecánicos elementales de Newton ya establecidos.</p>
+<p><span id="fispm-t1-c14-mp0003"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP03 — Fijar miembros antes de cancelar fuerzas.</strong> Escribe la lista del sistema y separa sus interacciones internas de los agentes externos. Usa acción y reacción sobre receptores distintos para cancelar la suma de fuerzas. No deduzcas de esa cancelación un trabajo interno nulo ni conservación de cada momento individual.</p>
+<section id="ejercicios-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-2">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0005"></span></p>
+<p><strong>Ejercicio FPM-I-14-E05.</strong> Dos masas <span class="math inline">\(m_1=1\,\mathrm{kg}\)</span> y <span class="math inline">\(m_2=3\,\mathrm{kg}\)</span> se mueven en una línea con velocidades iniciales <span class="math inline">\(2\)</span> y <span class="math inline">\(-1\,\mathrm{m/s}\)</span>. Reciben fuerzas internas iguales y opuestas, y fuerzas externas constantes <span class="math inline">\(4\,\mathrm N\)</span> sobre la primera y <span class="math inline">\(-1\,\mathrm N\)</span> sobre la segunda durante <span class="math inline">\(2\,\mathrm s\)</span>. Obtén el momento final total. ¿Quedan determinadas ambas velocidades finales?</p>
+<p><strong>Solución.</strong> El momento inicial es <span class="math inline">\(1\cdot2+3(-1)=-1\,\mathrm{kg\,m/s}\)</span>. La resultante externa es <span class="math inline">\(3\,\mathrm N\)</span> y su impulso <span class="math inline">\(6\,\mathrm{N\,s}\)</span>, por lo que <span class="math inline">\(P_b=5\,\mathrm{kg\,m/s}\)</span>. Las velocidades finales sólo satisfacen <span class="math inline">\(v_{1,b}+3v_{2,b}=5\)</span>. Sin información sobre las fuerzas internas y la evolución, esa igualdad no las determina por separado. Por ejemplo, <span class="math inline">\((5,0)\)</span> y <span class="math inline">\((2,1)\)</span> producen el mismo momento total, aunque corresponden a historias y energías distintas.</p>
+<p><span id="fispm-t1-c14-e0006"></span></p>
+<p><strong>Ejercicio FPM-I-14-E06.</strong> Sobre dos partículas actúa únicamente un par interno <span class="math inline">\(\mathbf F_{12}=\mathbf f(t)\)</span>, <span class="math inline">\(\mathbf F_{21}=-\mathbf f(t)\)</span>. Calcula sus cambios de momento en función del impulso del par y decide qué se conserva. Explica por qué no se ha probado conservación de energía cinética.</p>
+<p><strong>Solución.</strong> Si <span class="math inline">\(\mathbf J=\int\mathbf f(t)dt\)</span>, entonces <span class="math inline">\(\Delta\mathbf p_1=\mathbf J\)</span> y <span class="math inline">\(\Delta\mathbf p_2=-\mathbf J\)</span>. La suma da <span class="math inline">\(\Delta\mathbf P=0\)</span> en cada intervalo, y P04 mantiene <span class="math inline">\(\mathbf P\)</span> constante. Cada momento puede cambiar. La potencia total interna es <span class="math inline">\(\mathbf f\cdot(\mathbf v_1-\mathbf v_2)\)</span> y no tiene por qué anularse. La oposición de fuerzas controla el momento; no elimina por sí sola la variación cinética causada por una deformación o por movimiento relativo.</p>
+<p><span id="fispm-t1-c14-s04"></span></p>
+<p><span id="fpm-i-14-s04"></span></p>
+</section>
+</section>
+<section id="conservación-y-componentes" class="level2">
+<h2 class="anchored" data-anchor-id="conservación-y-componentes">§4 — Conservación y componentes</h2>
+<p>Una resultante externa nula mantiene constante el momento total. Una resultante con una componente nula conserva sólo la componente correspondiente. Y un impulso total nulo entre dos instantes garantiza igualdad de los momentos extremos, sin afirmar que el momento se mantuvo constante entre ellos. Conviene separar esos tres enunciados antes de usar una ley de conservación.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p><span id="fispm-t1-c14-p0005"></span></p>
+<p><strong>Proposición FPM-I-14-P05 — Conservación vectorial y por proyecciones fijas.</strong> Bajo las hipótesis de P04, si <span class="math inline">\(\mathbf F_{\mathrm{ext}}=0\)</span> en todo un intervalo, <span class="math inline">\(\mathbf P\)</span> es constante allí. Si una dirección fija <span class="math inline">\(\mathbf e\)</span> satisface <span class="math inline">\(\mathbf F_{\mathrm{ext}}\cdot\mathbf e=0\)</span> en todo el intervalo, entonces <span class="math inline">\(\mathbf P\cdot\mathbf e\)</span> es constante aunque las otras componentes puedan cambiar.</p>
+<p><strong>Demostración.</strong> En el primer caso P04 da <span class="math inline">\(\dot{\mathbf P}=0\)</span> y su integración mantiene el valor inicial. En el segundo, por ser <span class="math inline">\(\mathbf e\)</span> constante, <span class="math inline">\(d(\mathbf P\cdot\mathbf e)/dt=\dot{\mathbf P}\cdot\mathbf e=\mathbf F_{\mathrm{ext}}\cdot\mathbf e=0\)</span>. Integrar da la conservación de la proyección. <span class="math inline">\(\square\)</span></p>
+<p>Ausencia de interacción externa es una condición suficiente, pero no necesaria: varias fuerzas externas pueden tener resultante cero. Un sistema que recibe peso y una reacción equilibrada puede conservar el momento en un régimen concreto aunque existan agentes externos. La prueba depende de la suma efectiva y del intervalo, no de la etiqueta «aislado» aplicada sin inspección de fuerzas.</p>
+<p><span id="fispm-t1-c14-p0006"></span></p>
+<p><strong>Proposición FPM-I-14-P06 — Impulso nulo entre extremos frente a conservación durante un intervalo.</strong> La igualdad <span class="math inline">\(\int_{t_a}^{t_b}\mathbf F_{\mathrm{ext}}dt=0\)</span> implica <span class="math inline">\(\mathbf P_b=\mathbf P_a\)</span>, pero no implica que <span class="math inline">\(\mathbf P\)</span> sea constante durante todo el intervalo.</p>
+<p><strong>Demostración.</strong> La primera afirmación es P04. Para refutar la segunda basta una partícula que recibe en una línea <span class="math inline">\(F(t)=F_0\cos(\omega t)\)</span>, con <span class="math inline">\(F_0\ne0\)</span>, <span class="math inline">\(\omega&gt;0\)</span>, durante <span class="math inline">\(0\leq t\leq2\pi/\omega\)</span>. Su impulso total es cero, mientras P01 da <span class="math inline">\(p(t)=p_0+(F_0/\omega)\sin(\omega t)\)</span>, que no es constante. La velocidad <span class="math inline">\(p(t)/m\)</span> y su integral definen una historia que cumple Newton. <span class="math inline">\(\square\)</span></p>
+<p>La conservación puede servir para calcular un retroceso sin conocer la duración ni la ley detallada de interacción interna. Sin embargo, las velocidades de entrada deben pertenecer al mismo marco. Un dato medido respecto de un dispositivo que retrocede no coincide automáticamente con la velocidad respecto del laboratorio. Esa diferencia altera la ecuación de momento aunque la conservación siga siendo correcta.</p>
+<p>Elegir sólo el objeto expulsado hace externa la fuerza del dispositivo. Elegir objeto y dispositivo permite que esa interacción se cancele, pero obliga a incluir las masas y velocidades de ambos. Si el dispositivo está anclado al suelo, puede recibir un impulso externo del anclaje y el momento del conjunto objeto–dispositivo no tiene por qué conservarse. Ampliar el sistema no elimina de manera automática toda interacción exterior.</p>
+<p><span id="fispm-t1-c14-mp0004"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP04 — Conservar sólo lo acreditado.</strong> Comprueba la resultante externa o su proyección durante el intervalo relevante. Si sólo conoces impulso nulo, limita la conclusión a los extremos. Convierte todos los datos de velocidad al mismo marco y verifica si apoyos o anclajes aportan impulso al sistema elegido.</p>
+<section id="ejercicios-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-3">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0007"></span></p>
+<p><strong>Ejercicio FPM-I-14-E07.</strong> Dos cuerpos de masas <span class="math inline">\(M\)</span> y <span class="math inline">\(m\)</span> están inicialmente en reposo sobre una guía horizontal fija lisa. Un mecanismo interno los separa. Al terminar, el cuerpo <span class="math inline">\(m\)</span> tiene velocidad relativa al cuerpo <span class="math inline">\(M\)</span> igual a <span class="math inline">\(u&gt;0\)</span> hacia la derecha. Calcula las velocidades de ambos respecto del laboratorio.</p>
+<p><strong>Solución.</strong> Las fuerzas externas no tienen componente horizontal, de modo que <span class="math inline">\(MV+mv=0\)</span>. El dato relativo es <span class="math inline">\(v-V=u\)</span>. Sustituir <span class="math inline">\(v=V+u\)</span> da <span class="math inline">\((M+m)V+mu=0\)</span>, por lo que <span class="math inline">\(V=-mu/(M+m)\)</span> y <span class="math inline">\(v=Mu/(M+m)\)</span>. Usar <span class="math inline">\(v=u\)</span> como dato de laboratorio habría ignorado el retroceso. Las velocidades satisfacen ambas ecuaciones. El trabajo del mecanismo puede modificar la energía cinética total; la conservación horizontal de momento no afirma que ésta permanezca en cero.</p>
+<p><span id="fispm-t1-c14-e0008"></span></p>
+<p><strong>Ejercicio FPM-I-14-E08.</strong> Un sistema material de masa total <span class="math inline">\(M\)</span> recibe sólo peso uniforme y fuerzas internas que cumplen tercera ley, sin resistencia. Su momento inicial es <span class="math inline">\((P_{x,0},P_{y,0})\)</span> en el plano vertical. Obtén su momento en el tiempo e identifica las componentes conservadas.</p>
+<p><strong>Solución.</strong> La resultante externa es <span class="math inline">\((0,-Mg)\)</span>, de modo que <span class="math inline">\(P_x(t)=P_{x,0}\)</span> y <span class="math inline">\(P_y(t)=P_{y,0}-Mgt\)</span>. Se conserva la componente horizontal y cambia la vertical. Que la resultante interna sea cero no elimina el peso. Este balance todavía no proporciona las posiciones de cada miembro ni su movimiento relativo. Tampoco basta conocer que la componente vertical vuelva a un valor anterior en alguna historia con otras fuerzas: eso sería una comparación entre extremos, no conservación acreditada durante todo el intervalo.</p>
+<p><span id="fispm-t1-c14-s05"></span></p>
+<p><span id="fpm-i-14-s05"></span></p>
+</section>
+</section>
+<section id="centro-de-masa-como-promedio-afín" class="level2">
+<h2 class="anchored" data-anchor-id="centro-de-masa-como-promedio-afín">§5 — Centro de masa como promedio afín</h2>
+<p>La suma de momentos combina velocidades, pero todavía no identifica una posición colectiva. Para masas constantes, el mismo promedio que aparece en el momento total define un punto cuya derivada reproduce esa suma. Este punto es el centro de masa. Su construcción pertenece primero a la geometría: puede definirse para cualquier configuración, sin conocer las fuerzas ni afirmar que allí exista una partícula.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p><span id="fispm-t1-c14-d0005"></span></p>
+<p><strong>Definición FPM-I-14-D05 — Centro de masa de un sistema material finito.</strong> Para las masas positivas constantes de D04 y posiciones <span class="math inline">\(\mathbf r_i\)</span> medidas desde un mismo origen, se define</p>
+<p><span class="math display">\[
+\mathbf R=\frac{1}{M}\sum_{i=1}^n m_i\mathbf r_i,
+\qquad M=\sum_{i=1}^n m_i.
+\]</span></p>
+<p>Los coeficientes <span class="math inline">\(m_i/M\)</span> son positivos y suman uno. Por eso la fórmula representa un promedio de puntos y no una suma arbitraria de vectores. La dimensión de <span class="math inline">\(\mathbf R\)</span> es longitud. Multiplicar todas las masas por el mismo factor positivo no modifica el punto, aunque sí cambia la masa total y la respuesta dinámica a una fuerza dada. Dos configuraciones distintas pueden tener el mismo centro de masa; el promedio pierde información sobre su distribución interna.</p>
+<p><span id="fispm-t1-c14-p0007"></span></p>
+<p><strong>Proposición FPM-I-14-P07 — Cambio de origen y agrupación.</strong> Si el origen se desplaza por un vector fijo <span class="math inline">\(\mathbf a\)</span>, de modo que <span class="math inline">\(\mathbf r_i'=\mathbf r_i-\mathbf a\)</span>, entonces <span class="math inline">\(\mathbf R'=\mathbf R-\mathbf a\)</span>. Si el sistema se divide en grupos disjuntos de masas <span class="math inline">\(M_\alpha\)</span> y centros <span class="math inline">\(\mathbf R_\alpha\)</span>, entonces <span class="math inline">\(\mathbf R=\sum_\alpha M_\alpha\mathbf R_\alpha/M\)</span>.</p>
+<p><strong>Demostración.</strong> Sustituir el cambio de origen en D05 da <span class="math inline">\(\sum_i m_i(\mathbf r_i-\mathbf a)/M=\mathbf R-\mathbf a\sum_i m_i/M=\mathbf R-\mathbf a\)</span>. Para agrupar, la definición del centro de cada grupo da <span class="math inline">\(M_\alpha\mathbf R_\alpha=\sum_{i\in\alpha}m_i\mathbf r_i\)</span>. Sumar sobre la partición cuenta cada miembro una vez y produce <span class="math inline">\(M\mathbf R\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La primera identidad prueba que el centro es un punto geométrico consistente: cambiar el origen cambia su vector de posición exactamente como el de cualquier otro punto. La segunda permite sustituir un grupo por su masa concentrada en su centro para calcular el centro del conjunto. Esa sustitución preserva este promedio; no preserva automáticamente fuerzas, energía interna ni movimiento de los miembros.</p>
+<p><span id="fispm-t1-c14-p0008"></span></p>
+<p><strong>Proposición FPM-I-14-P08 — Localización en el envolvente convexo.</strong> El centro de masa pertenece al envolvente convexo de las posiciones de los miembros. En particular, cada una de sus coordenadas está entre la menor y la mayor coordenada de esos miembros.</p>
+<p><strong>Demostración.</strong> El envolvente convexo es el conjunto de todas las combinaciones <span class="math inline">\(\sum_i\lambda_i\mathbf r_i\)</span> con <span class="math inline">\(\lambda_i\geq0\)</span> y <span class="math inline">\(\sum_i\lambda_i=1\)</span>. D05 tiene esa forma con <span class="math inline">\(\lambda_i=m_i/M\)</span>. Para una coordenada <span class="math inline">\(x\)</span>, de <span class="math inline">\(x_{\min}\leq x_i\leq x_{\max}\)</span> se obtiene, multiplicando por esos pesos y sumando, <span class="math inline">\(x_{\min}\leq R_x\leq x_{\max}\)</span>. Lo mismo vale para cualquier proyección fija. <span class="math inline">\(\square\)</span></p>
+<p>Pertenecer al envolvente convexo no significa pertenecer al material. Dos masas separadas tienen un centro en el segmento que las une, posiblemente en el vacío. Tampoco la simetría geométrica basta si las masas no respetan esa simetría. Una configuración y su distribución de masa invariantes bajo reflexión tienen un centro en el plano de reflexión: los términos de cada par se cancelan en la coordenada normal y los puntos del plano aportan cero allí.</p>
+<p><span id="fispm-t1-c14-mp0005"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP05 — Calcular y controlar el promedio.</strong> Usa posiciones en un mismo sistema de coordenadas, conserva las masas como pesos y comprueba la suma de pesos. Agrupa sólo conjuntos disjuntos que cubran el sistema. Contrasta el resultado con cotas de coordenadas y simetrías de la distribución de masa; interpreta el punto sin suponer que contiene material.</p>
+<section id="ejercicios-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-4">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0009"></span></p>
+<p><strong>Ejercicio FPM-I-14-E09.</strong> Tres partículas de masas <span class="math inline">\(m\)</span>, <span class="math inline">\(2m\)</span> y <span class="math inline">\(m\)</span> ocupan <span class="math inline">\((0,0)\)</span>, <span class="math inline">\((3a,0)\)</span> y <span class="math inline">\((0,2a)\)</span>, con <span class="math inline">\(a&gt;0\)</span>. Calcula su centro y verifica el cambio a un origen situado en <span class="math inline">\((a,a)\)</span>.</p>
+<p><strong>Solución.</strong> La masa total es <span class="math inline">\(4m\)</span> y <span class="math inline">\(\mathbf R=(6ma,2ma)/(4m)=(3a/2,a/2)\)</span>. Las nuevas posiciones son <span class="math inline">\((-a,-a)\)</span>, <span class="math inline">\((2a,-a)\)</span> y <span class="math inline">\((-a,a)\)</span>. Su promedio ponderado es <span class="math inline">\((3a/2,a/2)-(a,a)=(a/2,-a/2)\)</span>, como predice P07. En las coordenadas originales el resultado cae dentro de los intervalos <span class="math inline">\([0,3a]\)</span> y <span class="math inline">\([0,2a]\)</span>. Más precisamente, sus pesos <span class="math inline">\(1/4,1/2,1/4\)</span> lo sitúan dentro del triángulo de los tres puntos. El promedio simple de los tres vértices daría otro punto porque ignoraría la masa doble.</p>
+<p><span id="fispm-t1-c14-e0010"></span></p>
+<p><strong>Ejercicio FPM-I-14-E10.</strong> Un grupo A de masa <span class="math inline">\(3m\)</span> tiene centro en <span class="math inline">\(x_A=-2a\)</span> y un grupo B de masa <span class="math inline">\(m\)</span> tiene centro en <span class="math inline">\(x_B=6a\)</span>. Encuentra el centro del conjunto. ¿Obliga el resultado a que algún miembro esté allí?</p>
+<p><strong>Solución.</strong> P07 da <span class="math inline">\(R_x=[3m(-2a)+m(6a)]/(4m)=0\)</span>. El centro está entre los centros de los grupos y más cerca del más pesado: sus distancias son <span class="math inline">\(2a\)</span> y <span class="math inline">\(6a\)</span>. No exige que exista material en <span class="math inline">\(x=0\)</span>. Por ejemplo, si cada grupo se representa por una partícula situada en su centro, ambas están fuera del origen y éste sigue siendo el centro del conjunto. La información tampoco determina el tamaño ni la distribución interna de los grupos. Concentrarlos en sus centros es suficiente para este cálculo, pero no convierte al conjunto en una sola partícula en todos los aspectos.</p>
+<p><span id="fispm-t1-c14-s06"></span></p>
+<p><span id="fpm-i-14-s06"></span></p>
+</section>
+</section>
+<section id="dinámica-del-centro-de-masa" class="level2">
+<h2 class="anchored" data-anchor-id="dinámica-del-centro-de-masa">§6 — Dinámica del centro de masa</h2>
+<p>El centro de masa se definió sin dinámica. Ahora su utilidad se obtiene al diferenciar el promedio: como las masas y la lista de miembros son constantes, las derivadas pasan a las posiciones. El resultado conecta la suma de Newton con una ecuación para un solo punto. Esa ecuación gobierna el movimiento colectivo y deja pendiente el movimiento de cada miembro alrededor de ese punto.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p><span id="fispm-t1-c14-p0009"></span></p>
+<p><strong>Proposición FPM-I-14-P09 — Ecuación del centro de masa.</strong> Para el sistema de D04–D05, en el marco inercial de P04 y bajo su hipótesis de cancelación interna,</p>
+<p><span class="math display">\[
+\mathbf P=M\dot{\mathbf R},\qquad
+M\ddot{\mathbf R}=\mathbf F_{\mathrm{ext}}.
+\]</span></p>
+<p><strong>Demostración.</strong> Diferenciar <span class="math inline">\(M\mathbf R=\sum_i m_i\mathbf r_i\)</span> da <span class="math inline">\(M\dot{\mathbf R}=\sum_i m_i\dot{\mathbf r}_i=\mathbf P\)</span>. Otra derivada y P04 dan <span class="math inline">\(M\ddot{\mathbf R}=\dot{\mathbf P}=\mathbf F_{\mathrm{ext}}\)</span>. La constancia de las masas y de la pertenencia al sistema justifica ambas derivadas sin términos adicionales. <span class="math inline">\(\square\)</span></p>
+<p>Si la resultante externa se conoce como función del tiempo, la ecuación puede integrarse con <span class="math inline">\(\mathbf R(t_0)\)</span> y <span class="math inline">\(\dot{\mathbf R}(t_0)\)</span>. En cambio, una identidad para el centro no es necesariamente una ecuación cerrada para él. La suma externa puede depender de las posiciones individuales. En ese caso conocer <span class="math inline">\(\mathbf R\)</span> no basta para evaluarla; pueden requerirse variables internas y sus propias ecuaciones.</p>
+<p>Un caso que sí cierra es un campo gravitatorio uniforme. Cada miembro recibe <span class="math inline">\(m_i\mathbf g\)</span>, con el mismo vector <span class="math inline">\(\mathbf g\)</span>, y la suma vale <span class="math inline">\(M\mathbf g\)</span>. Si no hay otras fuerzas externas, <span class="math inline">\(\ddot{\mathbf R}=\mathbf g\)</span>. Fragmentar internamente el sistema puede cambiar por completo la disposición de sus partes, pero no esta trayectoria colectiva. El argumento presupone que las partes siguen en el sistema, conserva la masa total y omite de manera declarada resistencia e impulsos externos asociados a la fragmentación.</p>
+<p>En un campo no uniforme, <span class="math inline">\(\sum_i m_i\mathbf g(\mathbf r_i)\)</span> no es en general <span class="math inline">\(M\mathbf g(\mathbf R)\)</span>. Hay una excepción útil: si <span class="math inline">\(\mathbf g(\mathbf r)=\mathbf b+A\mathbf r\)</span>, con matriz constante <span class="math inline">\(A\)</span>, la suma es <span class="math inline">\(M\mathbf b+A M\mathbf R=M\mathbf g(\mathbf R)\)</span>. Fuera de esa forma, reemplazar todas las posiciones por el centro exige una aproximación cuyo error depende del tamaño y de la variación del campo. La ecuación exacta de P09 no otorga por sí sola esa aproximación.</p>
+<p><span id="fispm-t1-c14-mp0006"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP06 — Separar identidad colectiva y cierre dinámico.</strong> Deriva primero la resultante externa del sistema material. Comprueba después si puede expresarse con el centro y datos conocidos. Usa la ecuación colectiva para su trayectoria, sin atribuirle posiciones relativas ni energía interna. En un campo uniforme puedes factorizar la masa; en uno variable debes justificar cualquier sustitución por el valor en el centro.</p>
+<section id="ejercicios-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-5">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0011"></span></p>
+<p><strong>Ejercicio FPM-I-14-E11.</strong> Un sistema de masa <span class="math inline">\(M\)</span> tiene centro inicial <span class="math inline">\(\mathbf R_0\)</span> y velocidad colectiva inicial <span class="math inline">\(\mathbf V_0\)</span>. Durante <span class="math inline">\(0\leq t\leq T\)</span> recibe una resultante externa constante <span class="math inline">\(\mathbf F_0\)</span>. Obtén su centro y momento. ¿Qué información falta para reconstruir sus miembros?</p>
+<p><strong>Solución.</strong> Integrar P09 da <span class="math inline">\(\dot{\mathbf R}=\mathbf V_0+\mathbf F_0t/M\)</span>, <span class="math inline">\(\mathbf R=\mathbf R_0+\mathbf V_0t+\mathbf F_0t^2/(2M)\)</span> y <span class="math inline">\(\mathbf P=M\mathbf V_0+\mathbf F_0t\)</span>. Los cambios tienen las dimensiones de velocidad, longitud y momento respectivas. Para posiciones individuales hacen falta datos iniciales relativos y leyes de interacción, además de la distribución de fuerzas externas entre miembros. Distintas evoluciones internas pueden compartir esta trayectoria del centro. Si la fuerza sólo es constante durante el intervalo indicado, las fórmulas no se prolongan fuera de él sin especificar el régimen siguiente.</p>
+<p><span id="fispm-t1-c14-e0012"></span></p>
+<p><strong>Ejercicio FPM-I-14-E12.</strong> Dos masas iguales <span class="math inline">\(m\)</span> están instantáneamente en una línea en <span class="math inline">\(x_1=R-a\)</span> y <span class="math inline">\(x_2=R+a\)</span>. Cada una recibe una fuerza externa <span class="math inline">\(F(x)=-kx^3\)</span>, con <span class="math inline">\(k&gt;0\)</span>. Calcula la aceleración del centro y compárala con la de una partícula de masa <span class="math inline">\(2m\)</span> sometida a la fuerza total modelada como <span class="math inline">\(-2kR^3\)</span>.</p>
+<p><strong>Solución.</strong> La resultante exacta es <span class="math inline">\(-k[(R-a)^3+(R+a)^3]=-2kR^3-6kRa^2\)</span>. Por P09, <span class="math inline">\(\ddot R=-(k/m)(R^3+3Ra^2)\)</span>. El modelo concentrado daría <span class="math inline">\(\ddot R=-(k/m)R^3\)</span> y perdería el término dependiente de la separación. Coinciden si <span class="math inline">\(a=0\)</span> o <span class="math inline">\(R=0\)</span> en ese instante. La coincidencia instantánea en <span class="math inline">\(R=0\)</span> no prueba equivalencia de historias completas. Si <span class="math inline">\(a\)</span> cambia durante el movimiento, también cambia el término adicional y la ecuación de <span class="math inline">\(R\)</span> requiere conocer esa evolución. Aquí <span class="math inline">\(k\)</span> tiene unidades fuerza/longitud cúbica, por lo que ambos términos de aceleración son dimensionalmente consistentes.</p>
+<p>El impulso externo puede escribirse también como <span class="math inline">\(M\Delta\dot{\mathbf R}\)</span>. Esto permite medir un cambio colectivo sin seguir cada intercambio interno, pero no localiza el centro durante el contacto a partir del impulso total solamente. Para la posición se necesita la historia temporal de su velocidad, igual que en la partícula de §2. La reducción colectiva mantiene esa distinción entre balance de extremos y trayectoria.</p>
+<p><span id="fispm-t1-c14-s07"></span></p>
+<p><span id="fpm-i-14-s07"></span></p>
+</section>
+</section>
+<section id="marco-del-centro-de-masa-y-energía-cinética" class="level2">
+<h2 class="anchored" data-anchor-id="marco-del-centro-de-masa-y-energía-cinética">§7 — Marco del centro de masa y energía cinética</h2>
+<p>El centro reúne el movimiento colectivo. Para estudiar qué queda al retirarlo, escribimos <span class="math inline">\(\mathbf V=\dot{\mathbf R}\)</span> y <span class="math inline">\(\mathbf u_i=\mathbf v_i-\mathbf V\)</span>. Estas velocidades relativas satisfacen <span class="math inline">\(\sum_i m_i\mathbf u_i=\mathbf P-M\mathbf V=0\)</span> por P09. La igualdad es instantánea y algebraica; no requiere que el centro se mueva uniformemente. Su interpretación como cambio entre marcos inerciales sí requiere una condición adicional.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p><span id="fispm-t1-c14-d0006"></span></p>
+<p><strong>Definición FPM-I-14-D06 — Coordenadas y marco del centro de masa.</strong> Las coordenadas centradas son <span class="math inline">\(\boldsymbol\rho_i=\mathbf r_i-\mathbf R\)</span> y sus velocidades <span class="math inline">\(\dot{\boldsymbol\rho}_i=\mathbf u_i\)</span>, usando ejes paralelos y sin rotación respecto del laboratorio. Si <span class="math inline">\(\mathbf V\)</span> es constante, este cambio define un marco inercial del centro de masa. Si <span class="math inline">\(\mathbf V\)</span> varía, define coordenadas en traslación acelerada y no un segundo marco inercial.</p>
+<p>En las coordenadas centradas se cumple <span class="math inline">\(\sum_i m_i\boldsymbol\rho_i=0\)</span>. Las posiciones y velocidades relativas no son variables independientes arbitrarias: tienen estas restricciones ponderadas. Si el centro acelera, Newton para cada miembro se escribe <span class="math inline">\(m_i\ddot{\boldsymbol\rho}_i=\mathbf F_i-m_i\ddot{\mathbf R}\)</span>. El término adicional no es una nueva interacción entre miembros, sino la corrección debida al movimiento del origen. Mantener ejes paralelos evita aquí términos asociados a rotación.</p>
+<p><span id="fispm-t1-c14-p0010"></span></p>
+<p><strong>Proposición FPM-I-14-P10 — Transformación galileana del momento.</strong> Entre dos marcos inerciales de ejes paralelos, uno con velocidad constante <span class="math inline">\(\mathbf U\)</span> respecto del otro, <span class="math inline">\(\mathbf v_i'=\mathbf v_i-\mathbf U\)</span> y <span class="math inline">\(\mathbf P'=\mathbf P-M\mathbf U\)</span>. En un instante dado, la elección <span class="math inline">\(\mathbf U=\mathbf P/M\)</span> hace <span class="math inline">\(\mathbf P'=0\)</span> en ese instante. Si <span class="math inline">\(\mathbf P\)</span> es constante, esa elección lo mantiene cero durante el intervalo.</p>
+<p><strong>Demostración.</strong> Sumar <span class="math inline">\(m_i(\mathbf v_i-\mathbf U)\)</span> da <span class="math inline">\(\mathbf P-M\mathbf U\)</span>. Como <span class="math inline">\(M&gt;0\)</span>, el valor indicado anula la suma. Si <span class="math inline">\(\mathbf P\)</span> cambia mientras <span class="math inline">\(\mathbf U\)</span> sigue constante, la anulación no se conserva; si <span class="math inline">\(\mathbf P\)</span> permanece constante, sí. P09 identifica <span class="math inline">\(\mathbf P/M\)</span> con la velocidad del centro. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c14-p0011"></span></p>
+<p><strong>Proposición FPM-I-14-P11 — Separación de la energía cinética.</strong> Para las mismas masas y velocidades,</p>
+<p><span class="math display">\[
+K=\sum_i\frac12m_i|\mathbf v_i|^2
+=\frac12M|\mathbf V|^2+K_{\mathrm{rel}},
+\qquad K_{\mathrm{rel}}=\sum_i\frac12m_i|\mathbf u_i|^2\geq0.
+\]</span></p>
+<p><strong>Demostración.</strong> Sustituir <span class="math inline">\(\mathbf v_i=\mathbf V+\mathbf u_i\)</span> en cada cuadrado da una suma colectiva <span class="math inline">\(M|\mathbf V|^2/2\)</span>, la suma relativa y el término cruzado <span class="math inline">\(\mathbf V\cdot\sum_i m_i\mathbf u_i\)</span>. Este último es cero por P09 y la definición de <span class="math inline">\(\mathbf u_i\)</span>. La positividad de las masas da la desigualdad. La prueba vale en cada instante aunque <span class="math inline">\(\mathbf V\)</span> varíe. <span class="math inline">\(\square\)</span></p>
+<p>El término colectivo es <span class="math inline">\(|\mathbf P|^2/(2M)\)</span>. Por ello, con masa y momento total fijados, <span class="math inline">\(K\geq |\mathbf P|^2/(2M)\)</span>, con igualdad exactamente cuando todas las velocidades coinciden con <span class="math inline">\(\mathbf V\)</span>. El momento fija una cota inferior, no toda la energía cinética. Las partes pueden moverse una respecto de otra y elevar <span class="math inline">\(K_{\mathrm{rel}}\)</span> sin cambiar la suma de momentos.</p>
+<p>La cantidad <span class="math inline">\(K_{\mathrm{rel}}\)</span> es invariante bajo cambios galileanos: tanto <span class="math inline">\(\mathbf v_i\)</span> como <span class="math inline">\(\mathbf V\)</span> pierden el mismo <span class="math inline">\(\mathbf U\)</span>, de modo que <span class="math inline">\(\mathbf u_i\)</span> no cambia. La energía total transforma como <span class="math inline">\(K'=K-\mathbf U\cdot\mathbf P+M|\mathbf U|^2/2\)</span>, al expandir <span class="math inline">\(|\mathbf v_i-\mathbf U|^2\)</span>. En general, <span class="math inline">\(K\)</span> no es invariante. Nada de esto afirma conservación de <span class="math inline">\(K_{\mathrm{rel}}\)</span>: interacciones internas pueden convertir otras formas de energía en movimiento relativo o hacer la conversión inversa.</p>
+<p><span id="fispm-t1-c14-mp0007"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP07 — Retirar la traslación con hipótesis visibles.</strong> Calcula <span class="math inline">\(\mathbf V=\mathbf P/M\)</span> y comprueba la suma relativa nula. Separa la energía mediante P11 antes de comparar historias. Declara si el origen del centro acelera; usa Newton ordinario en ese marco sólo si es inercial, o incorpora la corrección de aceleración. La identidad cinética sigue siendo válida en ambos casos.</p>
+<section id="ejercicios-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-6">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0013"></span></p>
+<p><strong>Ejercicio FPM-I-14-E13.</strong> Dos partículas de masas <span class="math inline">\(m\)</span> y <span class="math inline">\(3m\)</span> tienen velocidades colineales <span class="math inline">\(4u\)</span> y <span class="math inline">\(0\)</span>, con <span class="math inline">\(u&gt;0\)</span>. Calcula momento, velocidad del centro y los dos términos cinéticos. Comprueba el resultado en un marco que se mueve con velocidad <span class="math inline">\(u\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(M=4m\)</span>, <span class="math inline">\(P=4mu\)</span> y <span class="math inline">\(V=u\)</span>. Las velocidades relativas son <span class="math inline">\(3u\)</span> y <span class="math inline">\(-u\)</span>, cuya suma ponderada es <span class="math inline">\(3mu-3mu=0\)</span>. La energía del laboratorio es <span class="math inline">\(8mu^2\)</span>; la colectiva vale <span class="math inline">\(2mu^2\)</span> y la relativa <span class="math inline">\([9mu^2+3mu^2]/2=6mu^2\)</span>. En el marco de velocidad <span class="math inline">\(u\)</span>, las velocidades son precisamente <span class="math inline">\(3u\)</span> y <span class="math inline">\(-u\)</span>, el momento es cero y la energía es <span class="math inline">\(6mu^2\)</span>. Si las fuerzas posteriores cambian <span class="math inline">\(P\)</span>, este marco fijo deja de seguir al centro; el cálculo corresponde al instante dado y no implica conservación futura.</p>
+<p><span id="fispm-t1-c14-e0014"></span></p>
+<p><strong>Ejercicio FPM-I-14-E14.</strong> Un sistema de masas positivas tiene momento total <span class="math inline">\(\mathbf P_0\)</span>. Determina el menor valor posible de su energía cinética y caracteriza todas las velocidades que lo realizan. ¿Puede un sistema de momento cero tener energía cinética positiva?</p>
+<p><strong>Solución.</strong> P11 da <span class="math inline">\(K\geq|\mathbf P_0|^2/(2M)\)</span>. La igualdad exige que cada término positivo <span class="math inline">\(m_i|\mathbf u_i|^2/2\)</span> sea cero, luego todas las velocidades son <span class="math inline">\(\mathbf P_0/M\)</span>. Esas velocidades cumplen la restricción de momento y realizan la cota, por lo que el mínimo existe. Con momento cero, dos masas iguales con velocidades opuestas no nulas tienen <span class="math inline">\(P=0\)</span> y energía positiva <span class="math inline">\(m|\mathbf v|^2\)</span>. Su centro está en reposo mientras hay movimiento relativo. La minimización es sobre velocidades compatibles con el momento; no incluye restricciones adicionales que podrían impedir esas velocidades en un modelo concreto.</p>
+<p><span id="fispm-t1-c14-s08"></span></p>
+<p><span id="fpm-i-14-s08"></span></p>
+</section>
+</section>
+<section id="dos-partículas-y-movimiento-relativo" class="level2">
+<h2 class="anchored" data-anchor-id="dos-partículas-y-movimiento-relativo">§8 — Dos partículas y movimiento relativo</h2>
+<p>Para dos miembros, una posición colectiva y una separación contienen toda la información posicional. La transformación permite conservar el balance del conjunto mientras se estudia la interacción en una ecuación relativa. La masa que aparece en esta segunda ecuación se obtiene al restar aceleraciones, no al retirar físicamente una parte de la masa total.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p><span id="fispm-t1-c14-d0007"></span></p>
+<p><strong>Definición FPM-I-14-D07 — Coordenada relativa de dos partículas.</strong> Para dos masas positivas constantes <span class="math inline">\(m_1,m_2\)</span>, con <span class="math inline">\(M=m_1+m_2\)</span>, fijamos <span class="math inline">\(\mathbf r=\mathbf r_1-\mathbf r_2\)</span>. Su derivada es <span class="math inline">\(\dot{\mathbf r}=\mathbf v_1-\mathbf v_2\)</span>. Esta orientación se mantiene en fuerzas, reconstrucción y condiciones iniciales.</p>
+<p><span id="fispm-t1-c14-d0008"></span></p>
+<p><strong>Definición FPM-I-14-D08 — Masa reducida.</strong> La masa reducida de ese par es <span class="math inline">\(\mu=m_1m_2/M\)</span>, positiva y con dimensión de masa. Equivalentemente, <span class="math inline">\(1/\mu=1/m_1+1/m_2\)</span>.</p>
+<p>Sea <span class="math inline">\(\mathbf f\)</span> la fuerza interna sobre el miembro 1 debida al 2, y <span class="math inline">\(-\mathbf f\)</span> la fuerza sobre el 2. Sean <span class="math inline">\(\mathbf F_1,\mathbf F_2\)</span> las fuerzas externas respectivas. No se supone aquí que <span class="math inline">\(\mathbf f\)</span> sea central, conservativa ni independiente de las velocidades. Se necesita tercera ley en la forma declarada y un marco inercial común.</p>
+<p><span id="fispm-t1-c14-p0012"></span></p>
+<p><strong>Proposición FPM-I-14-P12 — Reconstrucción y ecuación relativa.</strong> Con las convenciones anteriores,</p>
+<p><span class="math display">\[
+\mathbf r_1=\mathbf R+\frac{m_2}{M}\mathbf r,
+\qquad \mathbf r_2=\mathbf R-\frac{m_1}{M}\mathbf r,
+\]</span></p>
+<p><span class="math display">\[
+M\ddot{\mathbf R}=\mathbf F_1+\mathbf F_2,
+\qquad \mu\ddot{\mathbf r}=\mathbf f+
+\frac{m_2}{M}\mathbf F_1-\frac{m_1}{M}\mathbf F_2,
+\]</span></p>
+<p><span class="math display">\[
+K=\frac12M|\dot{\mathbf R}|^2+
+\frac12\mu|\dot{\mathbf r}|^2.
+\]</span></p>
+<p><strong>Demostración.</strong> Resolver <span class="math inline">\(M\mathbf R=m_1\mathbf r_1+m_2\mathbf r_2\)</span> y <span class="math inline">\(\mathbf r=\mathbf r_1-\mathbf r_2\)</span> da las dos posiciones. P09 da la ecuación colectiva. Newton individual da <span class="math inline">\(\ddot{\mathbf r}=(\mathbf F_1+\mathbf f)/m_1-(\mathbf F_2-\mathbf f)/m_2\)</span>. Multiplicar por <span class="math inline">\(\mu\)</span> y usar <span class="math inline">\(\mu/m_1=m_2/M\)</span>, <span class="math inline">\(\mu/m_2=m_1/M\)</span> y <span class="math inline">\(\mu(1/m_1+1/m_2)=1\)</span> produce la ecuación relativa. Finalmente, derivar las posiciones da <span class="math inline">\(\mathbf u_1=(m_2/M)\dot{\mathbf r}\)</span> y <span class="math inline">\(\mathbf u_2=-(m_1/M)\dot{\mathbf r}\)</span>. Sustituirlas en P11 produce un coeficiente <span class="math inline">\([m_1m_2^2+m_2m_1^2]/M^2=\mu\)</span> para el cuadrado relativo. <span class="math inline">\(\square\)</span></p>
+<p>Sin fuerzas externas, el centro se mueve uniformemente y el movimiento relativo satisface <span class="math inline">\(\mu\ddot{\mathbf r}=\mathbf f\)</span>. Esto reduce la interacción a una ecuación, pero todavía necesita una ley para <span class="math inline">\(\mathbf f\)</span> y condiciones iniciales. Si la fuerza depende de <span class="math inline">\(\mathbf R\)</span> o de variables adicionales, la reducción algebraica sigue válida sin garantizar desacoplamiento. La sencillez de las coordenadas no sustituye el cierre físico.</p>
+<p>Un campo uniforme común <span class="math inline">\(\mathbf F_i=m_i\mathbf g\)</span> acelera el centro con <span class="math inline">\(\mathbf g\)</span> y desaparece de la ecuación relativa: los dos términos externos son <span class="math inline">\(m_1m_2\mathbf g/M\)</span> y su opuesto. Por tanto, las partes pueden cambiar su movimiento interno bajo <span class="math inline">\(\mathbf f\)</span> mientras el conjunto cae. En campos variables puede quedar una diferencia de aceleraciones externas. No basta que ambas fuerzas sean «gravitatorias» para cancelarlas en la ecuación relativa.</p>
+<p>La masa reducida es menor que cada masa individual. Para masas iguales vale <span class="math inline">\(m/2\)</span>; si <span class="math inline">\(m_2\)</span> crece sin límite con <span class="math inline">\(m_1\)</span> fijo, <span class="math inline">\(\mu\)</span> tiende a <span class="math inline">\(m_1\)</span>. Ese límite explica por qué una partícula frente a un cuerpo mucho más pesado puede tratarse aproximadamente con un centro casi fijo. La aproximación necesita controlar además el impulso recibido por el cuerpo pesado y el intervalo considerado. Una masa finita grande no impone velocidad exactamente cero.</p>
+<p><span id="fispm-t1-c14-mp0008"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP08 — Resolver colectivo y relativo antes de reconstruir.</strong> Congela la orientación de <span class="math inline">\(\mathbf r\)</span> y el significado de la fuerza <span class="math inline">\(\mathbf f\)</span>. Escribe las ecuaciones de P12, examina sus dependencias y transforma también los datos iniciales. Reconstruye cada posición y velocidad al final. Usa <span class="math inline">\(M\)</span> en el movimiento colectivo y <span class="math inline">\(\mu\)</span> en el relativo; verifica que las energías sumen la cinética original.</p>
+<section id="ejercicios-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-7">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0015"></span></p>
+<p><strong>Ejercicio FPM-I-14-E15.</strong> Dos masas iguales <span class="math inline">\(m\)</span> reciben sólo una interacción interna <span class="math inline">\(\mathbf f=-k\mathbf r\)</span>, con <span class="math inline">\(k&gt;0\)</span>. Al inicio su centro está en <span class="math inline">\(\mathbf R_0\)</span> con velocidad <span class="math inline">\(\mathbf V_0\)</span>, y <span class="math inline">\(\mathbf r(0)=\mathbf r_0\)</span>, <span class="math inline">\(\dot{\mathbf r}(0)=0\)</span>. Obtén las posiciones en el tiempo y verifica su energía cinética relativa.</p>
+<p><strong>Solución.</strong> Aquí <span class="math inline">\(\mu=m/2\)</span>, <span class="math inline">\(\ddot{\mathbf R}=0\)</span> y <span class="math inline">\(\ddot{\mathbf r}=-(2k/m)\mathbf r\)</span>. Con <span class="math inline">\(\omega=\sqrt{2k/m}\)</span>, la función <span class="math inline">\(\mathbf r(t)=\mathbf r_0\cos(\omega t)\)</span> satisface la ecuación y ambos datos. Entonces <span class="math inline">\(\mathbf r_1=\mathbf R_0+\mathbf V_0t+\mathbf r_0\cos(\omega t)/2\)</span> y <span class="math inline">\(\mathbf r_2=\mathbf R_0+\mathbf V_0t-\mathbf r_0\cos(\omega t)/2\)</span>. Sus velocidades relativas son opuestas, cada una de módulo <span class="math inline">\(|\dot{\mathbf r}|/2\)</span>, y su energía relativa suma <span class="math inline">\(m|\dot{\mathbf r}|^2/4=\mu|\dot{\mathbf r}|^2/2\)</span>. También <span class="math inline">\(K_{\mathrm{rel}}+k|\mathbf r|^2/2=k|\mathbf r_0|^2/2\)</span>, por sustitución de seno y coseno. La frecuencia se verifica aquí como solución de una ecuación concreta; el tratamiento sistemático de oscilaciones queda para I-23.</p>
+<p><span id="fispm-t1-c14-e0016"></span></p>
+<p><strong>Ejercicio FPM-I-14-E16.</strong> Dos partículas de masas <span class="math inline">\(m\)</span> y <span class="math inline">\(3m\)</span> reciben sólo fuerzas internas opuestas durante un intervalo. Sus velocidades iniciales en una línea son <span class="math inline">\(2u\)</span> y <span class="math inline">\(0\)</span>. El impulso interno sobre la primera es <span class="math inline">\(J=mu\)</span> hacia la derecha. Calcula las velocidades finales mediante el cambio relativo y comprueba el balance de momento y la variación cinética.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(M=4m\)</span>, <span class="math inline">\(\mu=3m/4\)</span>, <span class="math inline">\(V=P/M=u/2\)</span> y <span class="math inline">\(\dot r_i=2u\)</span>. Integrar la ecuación relativa da <span class="math inline">\(\mu\Delta\dot r=J\)</span>, luego <span class="math inline">\(\dot r_f=2u+4u/3=10u/3\)</span>. Reconstruir produce <span class="math inline">\(v_{1,f}=V+(3/4)\dot r_f=3u\)</span> y <span class="math inline">\(v_{2,f}=V-(1/4)\dot r_f=-u/3\)</span>. El momento final es <span class="math inline">\(3mu-mu=2mu\)</span>, igual al inicial. La cinética inicial vale <span class="math inline">\(2mu^2\)</span> y la final <span class="math inline">\(9mu^2/2+mu^2/6=14mu^2/3\)</span>; aumenta en <span class="math inline">\(8mu^2/3\)</span>. El mismo cambio sale de <span class="math inline">\(\mu[(10u/3)^2-(2u)^2]/2\)</span>. La interacción suministra energía al movimiento relativo; momento conservado no obliga a cinética conservada. El dato de impulso no determina una ley temporal única ni las posiciones finales.</p>
+<p>Las secciones siguientes usan estas herramientas para colisiones: decidir el sistema, controlar impulsos externos y declarar qué información adicional aporta el modelo de interacción. El balance de momento por sí solo deja indeterminadas muchas velocidades finales. Energía cinética, unión o restitución serán hipótesis distintas, cada una con su alcance, y no consecuencias automáticas de tercera ley.</p>
+<p><span id="fispm-t1-c14-s09"></span></p>
+<p><span id="fpm-i-14-s09"></span></p>
+</section>
+</section>
+<section id="modelos-de-colisión-y-aislamiento-impulsivo" class="level2">
+<h2 class="anchored" data-anchor-id="modelos-de-colisión-y-aislamiento-impulsivo">§9 — Modelos de colisión y aislamiento impulsivo</h2>
+<p>Una colisión se describe comparando estados anteriores y posteriores a una interacción. No exige suponer que el contacto dura exactamente cero: elegimos un intervalo que contiene la interacción relevante y declaramos qué fuerzas actúan allí. Las velocidades de entrada y salida son datos de sus extremos, medidos en un mismo marco inercial. Si la interacción sigue almacenando energía en el estado final, tampoco puede identificarse automáticamente el cambio cinético con una pérdida definitiva.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<p><span id="fispm-t1-c14-d0009"></span></p>
+<p><strong>Definición FPM-I-14-D09 — Modelo de colisión de dos miembros.</strong> Consideraremos dos masas positivas constantes <span class="math inline">\(m_1,m_2\)</span>, conservadas como miembros del sistema durante el intervalo <span class="math inline">\([t_a,t_b]\)</span>. Escribiremos <span class="math inline">\(\mathbf v_{1,a},\mathbf v_{2,a}\)</span> para las velocidades iniciales y <span class="math inline">\(\mathbf v_{1,b},\mathbf v_{2,b}\)</span> para las finales; <span class="math inline">\(M=m_1+m_2\)</span>, <span class="math inline">\(\mu=m_1m_2/M\)</span> y <span class="math inline">\(\mathbf g_a=\mathbf v_{1,a}-\mathbf v_{2,a}\)</span>, <span class="math inline">\(\mathbf g_b=\mathbf v_{1,b}-\mathbf v_{2,b}\)</span>. La interacción interna cumple tercera ley. El impulso externo total es <span class="math inline">\(\mathbf J_{\mathrm{ext}}\)</span>.</p>
+<p>En este modelo, <span class="math inline">\(\mathbf P_b=\mathbf P_a+\mathbf J_{\mathrm{ext}}\)</span> por P04. Una interacción interna muy intensa no cancela el impulso de un apoyo, del peso o de un agente adicional. Su corta duración puede volver pequeño alguno de esos impulsos, pero la escala pertinente es su integral temporal y la precisión requerida. Para conservar una componente basta controlar su impulso externo, aunque otras componentes reciban impulsos grandes.</p>
+<p><span id="fispm-t1-c14-p0013"></span></p>
+<p><strong>Proposición FPM-I-14-P13 — Control del balance impulsivo externo.</strong> Si <span class="math inline">\(|\mathbf F_{\mathrm{ext}}(t)|\leq B\)</span> durante una colisión de duración <span class="math inline">\(\tau\)</span>, entonces <span class="math inline">\(|\mathbf P_b-\mathbf P_a|\leq B\tau\)</span> y <span class="math inline">\(|\mathbf V_b-\mathbf V_a|\leq B\tau/M\)</span>. Una resultante externa nula en todo el intervalo conserva el momento durante él; un impulso externo nulo sólo acredita la igualdad entre extremos.</p>
+<p><strong>Demostración.</strong> P04 expresa la diferencia de momentos como la integral de la resultante. La desigualdad integral de P03 da <span class="math inline">\(|\mathbf J_{\mathrm{ext}}|\leq B\tau\)</span>. Dividir por <span class="math inline">\(M\)</span> y usar P09 da la cota colectiva. La última distinción es P05–P06. <span class="math inline">\(\square\)</span></p>
+<p>Esta cota controla el momento total y la velocidad del centro. No controla por sí sola el error de cada velocidad final al reemplazar un modelo forzado por otro aislado: la interacción relativa puede cambiar y requerir un análisis adicional. Tampoco asegura una pequeña variación relativa de momento si el valor con que se compara es cero o muy pequeño. Puede formularse una tolerancia absoluta <span class="math inline">\(\varepsilon_P\)</span> y exigir <span class="math inline">\(B\tau\leq\varepsilon_P\)</span>, evitando esa división.</p>
+<p><span id="fispm-t1-c14-p0014"></span></p>
+<p><strong>Proposición FPM-I-14-P14 — Cambio cinético entre marcos y papel del impulso.</strong> Bajo un cambio galileano de velocidad constante <span class="math inline">\(\mathbf U\)</span>, el mismo par de estados satisface</p>
+<p><span class="math display">\[
+\Delta K'=\Delta K-\mathbf U\cdot\mathbf J_{\mathrm{ext}}.
+\]</span></p>
+<p>Si el impulso externo total es cero, la variación cinética entre esos extremos es igual en ambos marcos.</p>
+<p><strong>Demostración.</strong> La transformación obtenida en §7 es <span class="math inline">\(K'=K-\mathbf U\cdot\mathbf P+M|\mathbf U|^2/2\)</span>. Restar sus valores final e inicial cancela el último término, pues <span class="math inline">\(M\)</span> es constante. P04 identifica <span class="math inline">\(\Delta\mathbf P\)</span> con <span class="math inline">\(\mathbf J_{\mathrm{ext}}\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La identidad permite comparar pérdidas cinéticas en marcos distintos cuando el momento del sistema se conserva entre extremos. Si el sistema recibe impulso externo, esa comparación necesita la corrección indicada. Por ejemplo, una pared fija puede cambiar el momento de una pelota: si elegimos sólo la pelota, el impulso de la pared es externo y no se cumplen las hipótesis del par aislado. Elegir pelota y pared cambia las masas y los datos que deben incluirse; idealizar la pared como fija es una aproximación diferente.</p>
+<p><span id="fispm-t1-c14-mp0009"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP09 — Declarar el intervalo y el aislamiento impulsivo.</strong> Identifica miembros, marco y estados extremos. Calcula o acota los impulsos externos, por componente si procede. Escribe el balance exacto antes de omitir términos y fija una tolerancia. Añade por separado la ley de interacción que decidirá las velocidades relativas.</p>
+<section id="ejercicios-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-8">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0017"></span></p>
+<p><strong>Ejercicio FPM-I-14-E17.</strong> Durante un contacto de <span class="math inline">\(0,010\,\mathrm s\)</span>, un sistema material de masa <span class="math inline">\(2\,\mathrm{kg}\)</span> recibe una resultante externa cuyo módulo no excede <span class="math inline">\(20\,\mathrm N\)</span>. ¿Qué error absoluto máximo introduce imponer igualdad de momentos extremos? ¿Y tratar la velocidad del centro como constante entre extremos?</p>
+<p><strong>Solución.</strong> P13 da <span class="math inline">\(|\Delta\mathbf P|\leq0,20\,\mathrm{N\,s}\)</span> y <span class="math inline">\(|\Delta\mathbf V|\leq0,10\,\mathrm{m/s}\)</span>. Son cotas del cambio que se omite en cada balance, no errores relativos ni garantías para las velocidades individuales. Si se exige un error de momento inferior a <span class="math inline">\(0,05\,\mathrm{N\,s}\)</span>, la información suministrada no basta para justificar la omisión: la cota supera la tolerancia, aunque el impulso real podría ser menor por cancelación temporal. Hace falta conocer mejor la resultante o elegir otra aproximación.</p>
+<p><span id="fispm-t1-c14-e0018"></span></p>
+<p><strong>Ejercicio FPM-I-14-E18.</strong> Una partícula de masa <span class="math inline">\(m\)</span> llega a una pared fija con velocidad <span class="math inline">\(u&gt;0\)</span> y sale con <span class="math inline">\(-u\)</span>. Calcula su impulso y cambio cinético en el laboratorio. Calcula luego el cambio cinético en un marco de velocidad <span class="math inline">\(U\)</span> hacia la derecha.</p>
+<p><strong>Solución.</strong> Para la partícula sola, <span class="math inline">\(J=-2mu\)</span> y <span class="math inline">\(\Delta K=0\)</span>. En el otro marco las velocidades son <span class="math inline">\(u-U\)</span> y <span class="math inline">\(-u-U\)</span>, por lo que <span class="math inline">\(\Delta K'=m[(-u-U)^2-(u-U)^2]/2=2muU\)</span>. P14 da lo mismo: <span class="math inline">\(0-U(-2mu)\)</span>. La igualdad cinética del laboratorio no se transporta como igualdad cinética de la partícula a todos los marcos porque ésta recibe impulso externo. En el nuevo marco la pared se mueve y puede transferir trabajo. No hay contradicción entre los observadores ni conservación de momento de la pelota sola.</p>
+<p><span id="fispm-t1-c14-s10"></span></p>
+<p><span id="fpm-i-14-s10"></span></p>
+</section>
+</section>
+<section id="colisiones-elásticas-en-una-dimensión" class="level2">
+<h2 class="anchored" data-anchor-id="colisiones-elásticas-en-una-dimensión">§10 — Colisiones elásticas en una dimensión</h2>
+<p>En una línea, conservar momento ofrece una ecuación para dos velocidades finales. Una segunda condición puede obtenerse si el modelo afirma igualdad de la energía cinética entre los estados elegidos. Esa condición no proviene de tercera ley: debe justificarse mediante la interacción y sus estados o adoptarse explícitamente como idealización de la colisión.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p><span id="fispm-t1-c14-d0010"></span></p>
+<p><strong>Definición FPM-I-14-D10 — Colisión elástica en el modelo de dos partículas.</strong> Una colisión es elástica entre los extremos elegidos si <span class="math inline">\(K_b=K_a\)</span>, donde <span class="math inline">\(K\)</span> es la suma de las energías cinéticas traslacionales de los dos miembros. En esta sección suponemos además <span class="math inline">\(J_{\mathrm{ext}}=0\)</span> y movimiento colineal. Usamos velocidades con signo <span class="math inline">\(v_{1,a},v_{2,a},v_{1,b},v_{2,b}\)</span>, y <span class="math inline">\(g=v_1-v_2\)</span>.</p>
+<p>Una interacción conservativa puede convertir cinética en potencial durante el acercamiento y devolverla durante la separación. Para deducir <span class="math inline">\(K_b=K_a\)</span> a partir de conservación mecánica debe verificarse que la energía potencial interna tiene el mismo valor en los extremos y que no hay otros trabajos o transferencias. Conservación mecánica durante todo el proceso no significa cinética constante durante la compresión. Además, cuerpos extensos pueden retener vibración o rotación; aquí sus grados internos no se incluyen en las dos energías traslacionales.</p>
+<p><span id="fispm-t1-c14-p0015"></span></p>
+<p><strong>Proposición FPM-I-14-P15 — Ramas permitidas por momento y elasticidad.</strong> Para el par colineal con impulso externo nulo, <span class="math inline">\(K_b=K_a\)</span> equivale a <span class="math inline">\(g_b^2=g_a^2\)</span>. Las velocidades finales admiten la rama <span class="math inline">\(g_b=g_a\)</span>, que reproduce las iniciales, y la rama <span class="math inline">\(g_b=-g_a\)</span>. Para un encuentro con acercamiento no nulo y separación posterior, esta última es la rama de colisión.</p>
+<p><strong>Demostración.</strong> El momento conservado mantiene <span class="math inline">\(V=P/M\)</span> igual en ambos extremos. P12 expresa <span class="math inline">\(K=MV^2/2+\mu g^2/2\)</span>, con <span class="math inline">\(\mu&gt;0\)</span>. Por tanto, igualdad de energías equivale a igualdad de cuadrados relativos. En números reales, <span class="math inline">\((g_b-g_a)(g_b+g_a)=0\)</span>. Si <span class="math inline">\(g_b=g_a\)</span>, las fórmulas <span class="math inline">\(v_1=V+(m_2/M)g\)</span>, <span class="math inline">\(v_2=V-(m_1/M)g\)</span> reproducen ambas velocidades. Si el miembro 1 está a la izquierda del 2 antes del encuentro, acercamiento significa <span class="math inline">\(g_a&gt;0\)</span> y separación posterior significa <span class="math inline">\(g_b&lt;0\)</span>, lo que selecciona <span class="math inline">\(g_b=-g_a\)</span>. Con el orden opuesto se invierten ambos signos y la misma selección vale. <span class="math inline">\(\square\)</span></p>
+<p>El caso <span class="math inline">\(g_a=0\)</span> tiene ambas ramas coincidentes y no describe un acercamiento relativo. Los balances tampoco prueban que dos cuerpos lleguen a encontrarse: sus posiciones iniciales y la interacción determinan si el proceso ocurre. La rama trivial puede describir ausencia de encuentro; otras dinámicas también pueden devolver las velocidades iniciales. Seleccionar la rama requiere el modelo geométrico y temporal del choque, además de las ecuaciones de conservación.</p>
+<p><span id="fispm-t1-c14-p0016"></span></p>
+<p><strong>Proposición FPM-I-14-P16 — Velocidades finales del choque elástico colineal.</strong> Para la rama de acercamiento y separación de P15,</p>
+<p><span class="math display">\[
+v_{1,b}=\frac{m_1-m_2}{M}v_{1,a}+\frac{2m_2}{M}v_{2,a},
+\qquad
+v_{2,b}=\frac{2m_1}{M}v_{1,a}+\frac{m_2-m_1}{M}v_{2,a}.
+\]</span></p>
+<p><strong>Demostración.</strong> Con <span class="math inline">\(V=(m_1v_{1,a}+m_2v_{2,a})/M\)</span> y <span class="math inline">\(g_b=-(v_{1,a}-v_{2,a})\)</span>, la reconstrucción de P12 da <span class="math inline">\(v_{1,b}=V-(m_2/M)(v_{1,a}-v_{2,a})\)</span> y <span class="math inline">\(v_{2,b}=V+(m_1/M)(v_{1,a}-v_{2,a})\)</span>. Agrupar coeficientes produce las fórmulas. La reconstrucción garantiza el momento inicial y P15 garantiza la energía. <span class="math inline">\(\square\)</span></p>
+<p>Para masas iguales se intercambian las velocidades. Eso no exige que se intercambien las posiciones o la identidad de los miembros. Para un blanco inicialmente en reposo, la primera velocidad final cambia de signo si el blanco es más pesado que el incidente; es cero para masas iguales y conserva signo si el blanco es más ligero. Estas conclusiones usan velocidades con signo, no módulos introducidos antes de resolver.</p>
+<p><span id="fispm-t1-c14-mp0010"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP10 — Resolver sin dividir por una diferencia que puede anularse.</strong> Conserva momento y separa la energía relativa. Factoriza la igualdad de cuadrados, conserva las dos ramas y selecciona la física mediante acercamiento y separación. Usa signos hasta el final y comprueba el resultado en ambos balances. La elasticidad es una hipótesis adicional del modelo.</p>
+<section id="ejercicios-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-9">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0019"></span></p>
+<p><strong>Ejercicio FPM-I-14-E19.</strong> Una masa <span class="math inline">\(2m\)</span>, con velocidad <span class="math inline">\(3u\)</span> hacia la derecha, alcanza a una masa <span class="math inline">\(m\)</span> con velocidad <span class="math inline">\(u\)</span> en la misma dirección. El choque es elástico y colineal, sin impulso externo. Calcula las velocidades finales y verifica la separación.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(V=(6mu+mu)/(3m)=7u/3\)</span> y <span class="math inline">\(g_a=2u\)</span>. La rama física da <span class="math inline">\(g_b=-2u\)</span>. Por P16, <span class="math inline">\(v_{1,b}=5u/3\)</span> y <span class="math inline">\(v_{2,b}=11u/3\)</span>. El momento final es <span class="math inline">\(2m(5u/3)+m(11u/3)=7mu\)</span>. La cinética inicial es <span class="math inline">\([2m(3u)^2+mu^2]/2=19mu^2/2\)</span> y la final <span class="math inline">\([2m(5u/3)^2+m(11u/3)^2]/2=19mu^2/2\)</span>. El miembro 2 queda más rápido y se aleja del primero, que estaba detrás. Ambos siguen hacia la derecha; separación relativa no significa velocidades absolutas opuestas.</p>
+<p><span id="fispm-t1-c14-e0020"></span></p>
+<p><strong>Ejercicio FPM-I-14-E20.</strong> Una partícula de masa <span class="math inline">\(m\)</span> y velocidad <span class="math inline">\(u&gt;0\)</span> choca elásticamente en una línea con una masa <span class="math inline">\(9m\)</span> inicialmente en reposo. Calcula las velocidades y la fracción de cinética inicial transferida al blanco.</p>
+<p><strong>Solución.</strong> P16 da <span class="math inline">\(v_{1,b}=-4u/5\)</span> y <span class="math inline">\(v_{2,b}=u/5\)</span>. La energía del blanco es <span class="math inline">\(9m(u/5)^2/2\)</span>, y al dividir por <span class="math inline">\(mu^2/2\)</span> se obtiene <span class="math inline">\(9/25\)</span>. La partícula incidente conserva la fracción <span class="math inline">\(16/25\)</span>, con velocidad invertida. Las fracciones suman uno. El blanco pesado retrocede con una velocidad positiva finita: no es exactamente una pared fija. En el límite de masa del blanco creciente, su velocidad tiende a cero y la del incidente a <span class="math inline">\(-u\)</span>, manteniendo el balance del sistema material para cada masa finita.</p>
+<p><span id="fispm-t1-c14-e0021"></span></p>
+<p><strong>Ejercicio FPM-I-14-E21.</strong> Dos masas iguales tienen velocidades iniciales <span class="math inline">\(2u\)</span> y <span class="math inline">\(-u\)</span>, con la primera a la izquierda y <span class="math inline">\(u&gt;0\)</span>. Resuelve sólo los balances de momento y energía. Identifica luego la rama que describe una colisión con separación posterior.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(V=u/2\)</span>, <span class="math inline">\(g_a=3u\)</span> y la igualdad cinética exige <span class="math inline">\(g_b=\pm3u\)</span>. Para el signo positivo, reconstruir da <span class="math inline">\((v_{1,b},v_{2,b})=(2u,-u)\)</span>, exactamente los datos iniciales. Para el negativo, da <span class="math inline">\((-u,2u)\)</span>, intercambio de velocidades. La primera mantiene acercamiento y no describe el estado de salida de este choque; la segunda separa los miembros. Ambas satisfacen los balances. El hecho de que una solución conserve las cantidades requeridas es necesario, pero no suficiente para identificarla con la historia física declarada.</p>
+<p><span id="fispm-t1-c14-s11"></span></p>
+<p><span id="fpm-i-14-s11"></span></p>
+</section>
+</section>
+<section id="unión-y-colisiones-inelásticas" class="level2">
+<h2 class="anchored" data-anchor-id="unión-y-colisiones-inelásticas">§11 — Unión y colisiones inelásticas</h2>
+<p>Conservar momento no obliga a conservar energía cinética. Si los dos miembros terminan con la misma velocidad, el balance de momento basta para determinarla, mientras la separación cinética muestra cuánto movimiento relativo ha desaparecido. Se trata de una condición final del modelo, distinta de la elasticidad y también distinta de conservar la energía total con todos sus modos internos.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+<p><span id="fispm-t1-c14-d0011"></span></p>
+<p><strong>Definición FPM-I-14-D11 — Unión traslacional y variación cinética.</strong> En el modelo de D09, una unión traslacional impone <span class="math inline">\(\mathbf v_{1,b}=\mathbf v_{2,b}\)</span>. Una colisión es inelástica entre los extremos elegidos si <span class="math inline">\(K_b\ne K_a\)</span>. Denotaremos <span class="math inline">\(Q=K_a-K_b\)</span> a la disminución cinética algebraica: <span class="math inline">\(Q&gt;0\)</span> significa disminución y <span class="math inline">\(Q&lt;0\)</span> aumento. Cuando se usa el nombre «perfectamente inelástica» para una unión, se entenderá este modelo de velocidades finales comunes.</p>
+<p>Para cuerpos extensos, que se unan no significa que todas sus partes tengan una misma velocidad: un conjunto adherido puede rotar o vibrar. D11 se limita al modelo traslacional de dos miembros sin esos grados adicionales. Su condición también puede cumplirse instantáneamente durante una compresión sin que haya unión permanente. Para describir adhesión posterior hace falta afirmar que los miembros permanecen juntos; la igualdad de velocidades en un solo instante no lo demuestra.</p>
+<p><span id="fispm-t1-c14-p0017"></span></p>
+<p><strong>Proposición FPM-I-14-P17 — Velocidad común y disminución cinética de una unión aislada.</strong> Si el impulso externo total es cero y los miembros terminan con una velocidad común, entonces</p>
+<p><span class="math display">\[
+\mathbf v_{1,b}=\mathbf v_{2,b}=\mathbf V_a,
+\qquad Q=\frac12\mu|\mathbf g_a|^2.
+\]</span></p>
+<p><strong>Demostración.</strong> La velocidad común <span class="math inline">\(\mathbf w\)</span> produce momento final <span class="math inline">\(M\mathbf w\)</span>. Conservarlo da <span class="math inline">\(\mathbf w=\mathbf P_a/M=\mathbf V_a\)</span>. La energía colectiva es igual en ambos extremos y la energía relativa final es cero. Restar las expresiones de P12 deja <span class="math inline">\(Q=\mu|\mathbf g_a|^2/2\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>En el conjunto de estados de velocidad con el mismo momento, éste realiza la menor energía cinética posible por P11. Por eso la unión traslacional elimina toda la energía cinética relativa disponible, aunque no elimina la energía colectiva medida en el laboratorio. En un marco que se mueve con el centro, la cinética final del modelo es cero. Conservar momento es compatible con esa diferencia entre observadores, y P14 garantiza que ambos calculan el mismo <span class="math inline">\(Q\)</span> para el par de estados aislado.</p>
+<p><span id="fispm-t1-c14-p0018"></span></p>
+<p><strong>Proposición FPM-I-14-P18 — Cambio cinético de un par con momento conservado.</strong> Para cualquier estado final del mismo par con <span class="math inline">\(\mathbf J_{\mathrm{ext}}=0\)</span>,</p>
+<p><span class="math display">\[
+Q=\frac12\mu\bigl(|\mathbf g_a|^2-|\mathbf g_b|^2\bigr).
+\]</span></p>
+<p>Por tanto, momento conservado permite tanto disminución como aumento cinético; el signo lo decide el cambio del movimiento relativo.</p>
+<p><strong>Demostración.</strong> El momento conservado mantiene <span class="math inline">\(\mathbf V_b=\mathbf V_a\)</span>. Restar las energías de P12 cancela el término colectivo y da la fórmula. Si el módulo relativo disminuye, <span class="math inline">\(Q\)</span> es positivo; si aumenta, es negativo; si se mantiene, es cero. <span class="math inline">\(\square\)</span></p>
+<p>Cuando <span class="math inline">\(Q&gt;0\)</span>, el balance traslacional no decide qué parte pasó a energía interna, deformación, sonido u otros modos. Llamarlo todo «calor» sin un modelo adicional sería atribuir un destino no establecido. Si el sistema completo está aislado energéticamente, la disminución cinética se compensa en sus otras formas de energía. Si hay transferencias con el exterior, deben incluirse en el balance total. Tampoco una interacción que libera energía interna contradice momento conservado cuando produce <span class="math inline">\(Q&lt;0\)</span>.</p>
+<p><span id="fispm-t1-c14-mp0011"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP11 — Separar la captura de la evolución posterior.</strong> En una unión, usa primero impulso y momento durante el contacto. Calcula la cinética que queda y la variación relativa. Para la etapa posterior aplica su propio balance de fuerzas o energía con nuevos datos iniciales. No prolongues conservación de momento a un intervalo donde aparecen fuerzas externas, ni conserves cinética durante una captura que impone velocidad común.</p>
+<section id="ejercicios-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-10">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0022"></span></p>
+<p><strong>Ejercicio FPM-I-14-E22.</strong> Una masa <span class="math inline">\(m\)</span> con velocidad <span class="math inline">\(u&gt;0\)</span> se une a una masa <span class="math inline">\(4m\)</span> inicialmente en reposo sobre una guía horizontal lisa. El impulso externo horizontal es cero durante la captura. Calcula la velocidad común, la cinética final y la disminución cinética.</p>
+<p><strong>Solución.</strong> El momento horizontal inicial es <span class="math inline">\(mu\)</span>, así que <span class="math inline">\(w=u/5\)</span>. La energía final es <span class="math inline">\(5m(u/5)^2/2=mu^2/10\)</span>, mientras la inicial es <span class="math inline">\(mu^2/2\)</span>. Entonces <span class="math inline">\(Q=2mu^2/5\)</span>, el 80% de la inicial. La masa reducida es <span class="math inline">\(4m/5\)</span> y P17 da también <span class="math inline">\(Q=\mu u^2/2=2mu^2/5\)</span>. La energía colectiva restante no se ha perdido. Si se conservara indebidamente la cinética de captura, se obtendría un módulo <span class="math inline">\(u/\sqrt5\)</span>, incompatible con el momento. El destino de <span class="math inline">\(Q\)</span> necesita información sobre la unión.</p>
+<p><span id="fispm-t1-c14-e0023"></span></p>
+<p><strong>Ejercicio FPM-I-14-E23.</strong> Una masa <span class="math inline">\(m\)</span> llega horizontalmente con velocidad <span class="math inline">\(u\)</span> a un bloque de masa <span class="math inline">\(M\)</span> inicialmente en reposo y queda adherida. El bloque cuelga de una suspensión ideal y está en el punto más bajo. Durante el contacto breve se desprecia el impulso horizontal externo; después el conjunto sube sin resistencia hasta que su centro ha ganado altura <span class="math inline">\(h\)</span>. Obtén <span class="math inline">\(u\)</span> en función de <span class="math inline">\(h\)</span> y explica qué conservación corresponde a cada etapa.</p>
+<p><strong>Solución.</strong> Durante la captura, el momento horizontal da <span class="math inline">\((M+m)w=mu\)</span>. No se conserva la cinética: la disminución es <span class="math inline">\(mMu^2/[2(M+m)]\)</span>. En la subida posterior, bajo la idealización de un conjunto que se mueve como una sola masa, la suspensión no realiza trabajo y <span class="math inline">\(\tfrac12(M+m)w^2=(M+m)gh\)</span>. Así <span class="math inline">\(w=\sqrt{2gh}\)</span> y <span class="math inline">\(u=(M+m)\sqrt{2gh}/m\)</span>. El impulso horizontal despreciado sólo se justifica para el intervalo breve junto al punto más bajo; durante la subida la suspensión puede tener componente horizontal y no se usa conservación de momento. La energía conservada en la subida no puede aplicarse retrospectivamente como cinética conservada durante la captura. Si el conjunto retiene movimiento interno o rotación relevante, el modelo requiere términos adicionales.</p>
+<p><span id="fispm-t1-c14-s12"></span></p>
+<p><span id="fpm-i-14-s12"></span></p>
+</section>
+</section>
+<section id="restitución-y-colisiones-vectoriales" class="level2">
+<h2 class="anchored" data-anchor-id="restitución-y-colisiones-vectoriales">§12 — Restitución y colisiones vectoriales</h2>
+<p>Entre el choque elástico y la unión puede introducirse una regla para la velocidad relativa de salida. En una línea esa regla cierra el balance de momento. En varias dimensiones debe señalar además qué componente modifica y qué ocurre con las demás. El coeficiente de restitución describe una relación entre estados extremos; no reconstruye la fuerza de contacto ni su duración.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
+<p><span id="fispm-t1-c14-d0012"></span></p>
+<p><strong>Definición FPM-I-14-D12 — Restitución relativa normal.</strong> Sea <span class="math inline">\(\mathbf n\)</span> un vector unitario orientado, durante un impacto idealizado, del miembro 2 al miembro 1. Para una velocidad relativa incidente con <span class="math inline">\(g_{n,a}=\mathbf g_a\cdot\mathbf n&lt;0\)</span>, se define el coeficiente <span class="math inline">\(e\)</span> por <span class="math inline">\(g_{n,b}=-e g_{n,a}\)</span>. En el modelo pasivo usual se adopta <span class="math inline">\(0\leq e\leq1\)</span>. En una línea con el miembro 1 a la izquierda del 2, esto equivale a <span class="math inline">\(g_b=-e g_a\)</span> con la convención de D07.</p>
+<p>La normal se trata como fija durante el impulso del modelo. Se necesita la geometría de contacto para conocerla. Si cambia apreciablemente, una sola regla escalar no sustituye la integración del contacto real. Para cuerpos con rotación, la velocidad relativa de sus puntos de contacto puede diferir de la de sus centros; las fórmulas siguientes corresponden a partículas o miembros traslacionales sin esa contribución. El rango pasivo es una hipótesis: liberación de energía interna puede producir valores efectivos mayores que uno.</p>
+<p><span id="fispm-t1-c14-p0019"></span></p>
+<p><strong>Proposición FPM-I-14-P19 — Restitución colineal con momento conservado.</strong> Si <span class="math inline">\(J_{\mathrm{ext}}=0\)</span> y <span class="math inline">\(g_b=-e g_a\)</span>, entonces</p>
+<p><span class="math display">\[
+v_{1,b}=V-e\frac{m_2}{M}g_a,
+\qquad v_{2,b}=V+e\frac{m_1}{M}g_a,
+\qquad Q=\frac12\mu(1-e^2)g_a^2.
+\]</span></p>
+<p><strong>Demostración.</strong> El momento fija <span class="math inline">\(V\)</span> en ambos extremos. Sustituir <span class="math inline">\(g_b=-e g_a\)</span> en la reconstrucción de P12 da las velocidades. P18 da <span class="math inline">\(Q=\mu(g_a^2-e^2g_a^2)/2\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Para <span class="math inline">\(e=1\)</span> se obtiene la rama elástica de separación. Para <span class="math inline">\(e=0\)</span> las velocidades finales colineales coinciden; la regla por sí sola no afirma adhesión permanente. Si <span class="math inline">\(e&gt;1\)</span>, la cinética aumenta y hace falta una fuente de energía compatible con el modelo. En todos los casos el momento puede conservarse. Un único valor de <span class="math inline">\(e\)</span> medido en un encuentro no acredita que sea constante para otros materiales, velocidades o geometrías.</p>
+<p><span id="fispm-t1-c14-p0020"></span></p>
+<p><strong>Proposición FPM-I-14-P20 — Impulso normal sin fricción y pérdida cinética.</strong> Supongamos impulso externo nulo, un único impulso interno <span class="math inline">\(j\mathbf n\)</span> sobre el miembro 1 y <span class="math inline">\(-j\mathbf n\)</span> sobre el 2, normal fija y restitución de D12. Entonces</p>
+<p><span class="math display">\[
+j=-\mu(1+e)g_{n,a},\qquad
+\mathbf g_b=\mathbf g_a-(1+e)g_{n,a}\mathbf n,
+\qquad Q=\frac12\mu(1-e^2)g_{n,a}^2.
+\]</span></p>
+<p>La componente tangencial relativa no cambia.</p>
+<p><strong>Demostración.</strong> Los impulsos individuales dan <span class="math inline">\(\Delta\mathbf v_1=j\mathbf n/m_1\)</span> y <span class="math inline">\(\Delta\mathbf v_2=-j\mathbf n/m_2\)</span>. Restarlos produce <span class="math inline">\(\Delta\mathbf g=(j/\mu)\mathbf n\)</span>. Proyectar y exigir <span class="math inline">\(g_{n,b}=-e g_{n,a}\)</span> da <span class="math inline">\(j/\mu=-(1+e)g_{n,a}\)</span>. Sustituir da el vector final. Su parte tangencial coincide con la inicial, mientras la normal cambia de <span class="math inline">\(g_{n,a}\)</span> a <span class="math inline">\(-e g_{n,a}\)</span>. Por ortogonalidad, <span class="math inline">\(|\mathbf g_a|^2-|\mathbf g_b|^2=(1-e^2)g_{n,a}^2\)</span>, y P18 da la última fórmula. <span class="math inline">\(\square\)</span></p>
+<p>Si <span class="math inline">\(g_{n,a}&lt;0\)</span> y <span class="math inline">\(e\geq0\)</span>, <span class="math inline">\(j\geq0\)</span>: el impulso sobre el miembro 1 apunta alejándolo del 2, como corresponde a un contacto repulsivo. Para <span class="math inline">\(e=0\)</span> desaparece sólo la velocidad relativa normal; puede sobrevivir deslizamiento tangencial. Por ello no se deduce unión vectorial ni desaparición de toda la energía relativa. Si hay impulso tangencial por fricción, hace falta otra ley y P20 deja de ser el modelo completo.</p>
+<p>Sin normal conocida, momento y elasticidad tampoco determinan por sí solos las direcciones finales. En dos dimensiones hay cuatro componentes finales y sólo tres ecuaciones escalares independientes de esos balances, en el caso genérico. Puede especificarse una dirección o resolver la interacción. El centro de masa conserva la magnitud relativa en un choque elástico, pero la orientación de salida queda pendiente.</p>
+<p><span id="fispm-t1-c14-p0021"></span></p>
+<p><strong>Proposición FPM-I-14-P21 — Ortogonalidad para masas iguales con blanco en reposo.</strong> En una colisión elástica de dos masas iguales, con impulso externo nulo y velocidad inicial del segundo miembro cero, <span class="math inline">\(\mathbf v_{1,b}\cdot\mathbf v_{2,b}=0\)</span>. Si ambas velocidades finales son no nulas, sus direcciones son perpendiculares.</p>
+<p><strong>Demostración.</strong> El momento da <span class="math inline">\(\mathbf v_{1,a}=\mathbf v_{1,b}+\mathbf v_{2,b}\)</span>. Tomar el cuadrado produce <span class="math inline">\(|\mathbf v_{1,a}|^2=|\mathbf v_{1,b}|^2+|\mathbf v_{2,b}|^2+2\mathbf v_{1,b}\cdot\mathbf v_{2,b}\)</span>. La elasticidad identifica el primer término con la suma de los dos cuadrados finales, así que el producto es cero. Si una velocidad final es cero, sigue valiendo el producto nulo, pero su dirección no está definida. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c14-mp0012"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP12 — Declarar qué cierra cada componente.</strong> Usa restitución para la componente normal indicada y una hipótesis separada para la tangencial. Comprueba el signo repulsivo del impulso y la separación final. Con impulso externo nulo, reconstruye desde el centro; sin geometría o datos suficientes, conserva explícitamente la indeterminación direccional.</p>
+<section id="ejercicios-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-11">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0024"></span></p>
+<p><strong>Ejercicio FPM-I-14-E24.</strong> Una masa <span class="math inline">\(m\)</span> llega con velocidad <span class="math inline">\(4u\)</span> a una masa <span class="math inline">\(3m\)</span> en reposo. El impacto colineal tiene <span class="math inline">\(e=1/2\)</span> y no recibe impulso externo. Calcula las velocidades finales y <span class="math inline">\(Q\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(V=u\)</span>, <span class="math inline">\(g_a=4u\)</span>, <span class="math inline">\(\mu=3m/4\)</span>. P19 da <span class="math inline">\(v_{1,b}=u-(1/2)(3/4)(4u)=-u/2\)</span> y <span class="math inline">\(v_{2,b}=u+(1/2)(1/4)(4u)=3u/2\)</span>. Se verifica <span class="math inline">\(g_b=-2u\)</span> y momento final <span class="math inline">\(-mu/2+9mu/2=4mu\)</span>. La cinética inicial es <span class="math inline">\(8mu^2\)</span>; la final es <span class="math inline">\(mu^2/8+27mu^2/8=7mu^2/2\)</span>. Así <span class="math inline">\(Q=9mu^2/2\)</span>, igual a <span class="math inline">\(\mu(1-1/4)(4u)^2/2\)</span>. La disminución es el 56,25% de la cinética inicial, no el 75%: este último porcentaje corresponde a la cinética relativa.</p>
+<p><span id="fispm-t1-c14-e0025"></span></p>
+<p><strong>Ejercicio FPM-I-14-E25.</strong> Dos masas iguales <span class="math inline">\(m\)</span> tienen <span class="math inline">\(\mathbf v_{1,a}=(-2u,u)\)</span>, <span class="math inline">\(\mathbf v_{2,a}=(0,0)\)</span> y normal fija <span class="math inline">\(\mathbf n=(1,0)\)</span>. El impulso es sólo normal y <span class="math inline">\(e=0\)</span>. Obtén las velocidades finales y decide si hay unión traslacional.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(g_{n,a}=-2u\)</span>, <span class="math inline">\(\mu=m/2\)</span>, de modo que <span class="math inline">\(j=mu\)</span>. El primer miembro gana <span class="math inline">\((u,0)\)</span> y el segundo pierde <span class="math inline">\((u,0)\)</span>: <span class="math inline">\(\mathbf v_{1,b}=(-u,u)\)</span> y <span class="math inline">\(\mathbf v_{2,b}=(-u,0)\)</span>. Su diferencia final es <span class="math inline">\((0,u)\)</span>, tangencial y no nula. No hay unión traslacional. P20 da <span class="math inline">\(Q=mu^2\)</span>; directamente <span class="math inline">\(K_a=5mu^2/2\)</span> y <span class="math inline">\(K_b=3mu^2/2\)</span>. La cinética tangencial relativa permanece. Una restitución normal nula no autoriza poner todas las velocidades finales iguales.</p>
+<p><span id="fispm-t1-c14-e0026"></span></p>
+<p><strong>Ejercicio FPM-I-14-E26.</strong> Dos masas iguales en un plano tienen velocidades iniciales <span class="math inline">\((u,0)\)</span> y cero. Se sabe que el choque es elástico y de impulso externo nulo. Exhibe dos pares finales distintos compatibles con esos balances y comprueba P21.</p>
+<p><strong>Solución.</strong> Un par es <span class="math inline">\(\mathbf v_{1,b}=0\)</span>, <span class="math inline">\(\mathbf v_{2,b}=(u,0)\)</span>: conserva momento y cinética, pero no define dirección para el primer miembro. Otro es <span class="math inline">\(\mathbf v_{1,b}=(u/2,u/2)\)</span>, <span class="math inline">\(\mathbf v_{2,b}=(u/2,-u/2)\)</span>. Suman <span class="math inline">\((u,0)\)</span> y sus cuadrados suman <span class="math inline">\(u^2/2+u^2/2=u^2\)</span>. Su producto escalar es <span class="math inline">\(u^2/4-u^2/4=0\)</span>. Ambos estados son compatibles, por lo que esos balances no eligen la dirección. El segundo también puede realizarse en el modelo normal elástico con <span class="math inline">\(\mathbf n=(-1,1)/\sqrt2\)</span>: P20 da el cambio <span class="math inline">\((-u/2,u/2)\)</span> del primer miembro. La geometría del encuentro distingue ambos casos.</p>
+<p><span id="fispm-t1-c14-s13"></span></p>
+<p><span id="fpm-i-14-s13"></span></p>
+</section>
+</section>
+<section id="sistemas-abiertos-y-transferencia-de-masa" class="level2">
+<h2 class="anchored" data-anchor-id="sistemas-abiertos-y-transferencia-de-masa">§13 — Sistemas abiertos y transferencia de masa</h2>
+<p>P04 suma Newton para una lista fija de miembros. Un cuerpo que incorpora o expulsa materia no conserva esa lista. La derivada de su momento puede calcularse, pero ya no coincide por sí sola con la fuerza externa: la materia que cruza lleva momento. Para obtener el balance elegimos, durante un intervalo pequeño, un conjunto material que incluye el cuerpo y las parcelas transferidas. Sólo después pasamos a la descripción abierta.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
+<p><span id="fispm-t1-c14-d0013"></span></p>
+<p><strong>Definición FPM-I-14-D13 — Modelo concentrado de transferencia.</strong> El cuerpo retenido tiene masa <span class="math inline">\(m(t)&gt;0\)</span> y una velocidad traslacional común <span class="math inline">\(\mathbf v(t)\)</span> en un marco inercial. Una entrada incorpora masa a tasa <span class="math inline">\(q_{\mathrm{in}}\geq0\)</span>, con velocidad <span class="math inline">\(\mathbf w_{\mathrm{in}}\)</span> inmediatamente antes de transferirse; una salida retira masa a tasa <span class="math inline">\(q_{\mathrm{out}}\geq0\)</span>, con velocidad <span class="math inline">\(\mathbf w_{\mathrm{out}}\)</span> al salir. Las tasas son masas por tiempo que cruzan la frontera elegida, no derivadas de masas de parcelas individuales. Se supone <span class="math inline">\(\dot m=q_{\mathrm{in}}-q_{\mathrm{out}}\)</span>.</p>
+<p>Todas las velocidades de D13 se miden respecto del mismo laboratorio inercial. Las tasas se refieren a la frontera del cuerpo, que puede moverse. En el modelo elemental, la incorporación o expulsión se resuelve en un intervalo pequeño sin almacenamiento intermedio de masa o momento que tenga que describirse aparte. Las fuerzas aplicadas por otros agentes aportan una resultante <span class="math inline">\(\mathbf F\)</span>; el intercambio entre el cuerpo y las parcelas durante la transferencia queda dentro del conjunto material usado para el balance. No se cuenta de nuevo esa interacción como una fuerza adicional sobre dicho conjunto.</p>
+<p><span id="fispm-t1-c14-p0022"></span></p>
+<p><strong>Proposición FPM-I-14-P22 — Balance de momento con flujo.</strong> Bajo D13, con tasas y velocidades finitas y regularidad suficiente para el límite de primer orden,</p>
+<p><span class="math display">\[
+\frac{d}{dt}(m\mathbf v)=\mathbf F+
+q_{\mathrm{in}}\mathbf w_{\mathrm{in}}-
+q_{\mathrm{out}}\mathbf w_{\mathrm{out}},
+\]</span></p>
+<p><span class="math display">\[
+m\dot{\mathbf v}=\mathbf F+
+q_{\mathrm{in}}(\mathbf w_{\mathrm{in}}-\mathbf v)-
+q_{\mathrm{out}}(\mathbf w_{\mathrm{out}}-\mathbf v).
+\]</span></p>
+<p><strong>Demostración.</strong> Durante <span class="math inline">\(dt&gt;0\)</span>, elegimos el conjunto material formado por el cuerpo inicial y la parcela que entrará. Su momento inicial es <span class="math inline">\(m\mathbf v+q_{\mathrm{in}}dt\,\mathbf w_{\mathrm{in}}+o(dt)\)</span>. Al final el conjunto se divide en el cuerpo retenido y la parcela expulsada. Su momento es <span class="math inline">\((m+\dot mdt)(\mathbf v+\dot{\mathbf v}dt)+q_{\mathrm{out}}dt\,\mathbf w_{\mathrm{out}}+o(dt)\)</span>. La fuerza aplicada entrega impulso <span class="math inline">\(\mathbf Fdt+o(dt)\)</span>. Restar los momentos, dividir por <span class="math inline">\(dt\)</span> y pasar al límite da <span class="math inline">\(m\dot{\mathbf v}+\dot m\mathbf v=\mathbf F+q_{\mathrm{in}}\mathbf w_{\mathrm{in}}-q_{\mathrm{out}}\mathbf w_{\mathrm{out}}\)</span>. Usar la tasa de masa de D13 produce la segunda forma. Los productos de incrementos desaparecen por ser de orden superior. <span class="math inline">\(\square\)</span></p>
+<p>La primera ecuación registra el momento que permanece dentro y el que cruza. La segunda destaca velocidades relativas a la materia retenida. Ambas son equivalentes, pero ninguna permite ignorar la velocidad de entrada o salida. Si se toma <span class="math inline">\(\mathbf F=d(m\mathbf v)/dt\)</span> sin flujo, se está usando el balance de otro sistema. No es una corrección de Newton para una partícula individual de masa cambiante: es un balance de pertenencia variable deducido con parcelas materiales de masa constante.</p>
+<p>Con varias entradas o salidas se suman sus términos. Para un flujo con distribución de velocidades, el momento transportado requiere su promedio ponderado por la tasa de masa. Un cuerpo extendido con movimiento interno exige también una descripción más amplia que una única <span class="math inline">\(\mathbf v\)</span>. Presiones, fuerzas de superficies y almacenamiento interno deben incorporarse cuando sean relevantes; el modelo concentrado no es una fórmula universal para toda corriente de fluido.</p>
+<p>Las dos ecuaciones son compatibles con un cambio galileano. En la primera, <span class="math inline">\(\mathbf v'=\mathbf v-\mathbf U\)</span> cambia el lado izquierdo en <span class="math inline">\(-\dot m\mathbf U\)</span>; el flujo cambia en <span class="math inline">\(-(q_{\mathrm{in}}-q_{\mathrm{out}})\mathbf U\)</span>, igual por D13. En la segunda las diferencias de velocidades ya son invariantes y la aceleración no cambia. La constancia de <span class="math inline">\(m\)</span> que exigía P14 falta aquí: las comparaciones cinéticas de sistemas abiertos necesitan incluir el flujo energético y no se deducen de aquella fórmula para un par material fijo.</p>
+<p><span id="fispm-t1-c14-p0023"></span></p>
+<p><strong>Proposición FPM-I-14-P23 — Cohete ideal en una línea.</strong> Un cuerpo sin entrada expulsa masa a tasa <span class="math inline">\(q&gt;0\)</span>, con velocidad relativa de salida <span class="math inline">\(-c\)</span>, donde <span class="math inline">\(c&gt;0\)</span> es constante. Si no hay otras fuerzas aplicadas y <span class="math inline">\(m&gt;0\)</span>, entonces</p>
+<p><span class="math display">\[
+m\dot v=qc=-c\dot m,
+\qquad v_b-v_a=c\ln\frac{m_a}{m_b}.
+\]</span></p>
+<p><strong>Demostración.</strong> La salida tiene velocidad de laboratorio <span class="math inline">\(w_{\mathrm{out}}=v-c\)</span> y <span class="math inline">\(\dot m=-q\)</span>. P22 da <span class="math inline">\(m\dot v=-q[(v-c)-v]=qc=-c\dot m\)</span>. Dividir por <span class="math inline">\(m&gt;0\)</span> e integrar produce <span class="math inline">\(\int dv=-c\int dm/m=c\ln(m_a/m_b)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>El aumento de velocidad no depende de la tasa temporal para esta idealización sin fuerza externa y con <span class="math inline">\(c\)</span> constante. El momento del cohete solo sí cambia; se conserva el del conjunto material que incluye todo el gas eyectado si está aislado. La energía para acelerar las partes procede del mecanismo de expulsión y no se impone conservación de cinética del cohete. Añadir una «fuerza del chorro» a la derecha de P22 cuando ya se incluyó su velocidad de salida contaría dos veces el mismo intercambio. Puede usarse una descripción por fuerza efectiva en lugar del flujo, siempre que se deduzca coherentemente y se evite esa duplicación.</p>
+<p>Si la masa sale con la misma velocidad del cuerpo, <span class="math inline">\(\mathbf w_{\mathrm{out}}=\mathbf v\)</span>, no produce aceleración por ese flujo en el modelo. El momento retenido disminuye porque contiene menos masa, aunque la velocidad permanezca constante. Esta situación se diferencia de recibir materia en reposo respecto del laboratorio: la incorporación obliga a cambiar su momento y puede reducir la velocidad del cuerpo si no hay fuerza aplicada.</p>
+<p><span id="fispm-t1-c14-mp0013"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP13 — Seguir la materia que cruza.</strong> Declara la frontera, las tasas positivas de entrada y salida y sus velocidades en un mismo marco. Construye un conjunto material para el intervalo pequeño y deriva el flujo antes de simplificar. Distingue masa retenida de masa total del conjunto ampliado. No combines flujo y una fuerza efectiva que represente otra vez la misma transferencia.</p>
+<section id="ejercicios-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-12">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0027"></span></p>
+<p><strong>Ejercicio FPM-I-14-E27.</strong> Un carro de masa inicial <span class="math inline">\(m_0\)</span> se mueve horizontalmente con velocidad <span class="math inline">\(v_0\)</span>. Incorpora materia a tasa constante <span class="math inline">\(q&gt;0\)</span>, con velocidad horizontal de entrada <span class="math inline">\(w\)</span> constante. No hay fuerza aplicada horizontal y toda la materia capturada acaba con la velocidad del carro. Obtén <span class="math inline">\(v(t)\)</span> y determina qué momento se conserva si <span class="math inline">\(w=0\)</span>.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(m=m_0+qt\)</span> y P22 da <span class="math inline">\(d(mv)/dt=qw\)</span>. Integrar produce <span class="math inline">\(mv=m_0v_0+qwt\)</span> y <span class="math inline">\(v(t)=(m_0v_0+qwt)/(m_0+qt)\)</span>. También <span class="math inline">\(m\dot v=q(w-v)\)</span>, por lo que el carro tiende hacia <span class="math inline">\(w\)</span> mientras aumenta su masa. Si <span class="math inline">\(w=0\)</span>, el momento horizontal de la materia retenida es <span class="math inline">\(m_0v_0\)</span>, constante en este caso particular de entrada con momento horizontal nulo. Esa coincidencia no valida ignorar el flujo en general: para <span class="math inline">\(w\ne0\)</span> el momento retenido varía. Conservar cinética daría otra historia incorrecta para una captura. Las fuerzas verticales que sostienen el carro quedan fuera de este balance horizontal; <span class="math inline">\(q\)</span> se ha dado como tasa real de incorporación en su frontera móvil.</p>
+<p><span id="fispm-t1-c14-e0028"></span></p>
+<p><strong>Ejercicio FPM-I-14-E28.</strong> Un cohete ideal asciende en un campo uniforme de aceleración <span class="math inline">\(-g\)</span>, sin resistencia. Parte con masa <span class="math inline">\(m_0\)</span> y velocidad <span class="math inline">\(v_0\)</span>, expulsa a tasa constante <span class="math inline">\(q&gt;0\)</span> y rapidez relativa <span class="math inline">\(c&gt;0\)</span> hacia abajo. La masa seca es <span class="math inline">\(m_d&gt;0\)</span>. Obtén su velocidad durante la combustión y compara dos duraciones con igual masa inicial y final y el mismo <span class="math inline">\(c\)</span>.</p>
+<p><strong>Solución.</strong> La fuerza aplicada es <span class="math inline">\(-mg\)</span> y <span class="math inline">\(m=m_0-qt\)</span>. P22 da <span class="math inline">\(\dot v=cq/(m_0-qt)-g\)</span>. Integrar produce <span class="math inline">\(v(t)=v_0+c\ln[m_0/(m_0-qt)]-gt\)</span>, para <span class="math inline">\(0\leq t\leq(m_0-m_d)/q\)</span>, suponiendo que sigue vigente el modelo de ascenso y expulsión. Para iguales masas extremas, <span class="math inline">\(\Delta v=c\ln(m_0/m_b)-gT\)</span>: la duración mayor deja menor velocidad final por el término gravitatorio, aunque la contribución de expulsión sea la misma. Después de agotar el combustible, <span class="math inline">\(q=0\)</span> y la ecuación cambia. No se prolonga el logaritmo hasta masa cero ni se infiere de este modelo una tasa físicamente ilimitada de combustión. Si hay apoyo del suelo antes del despegue, su fuerza debe incluirse durante esa etapa.</p>
+<p><span id="fispm-t1-c14-s14"></span></p>
+<p><span id="fpm-i-14-s14"></span></p>
+</section>
+</section>
+<section id="síntesis-del-método" class="level2">
+<h2 class="anchored" data-anchor-id="síntesis-del-método">§14 — Síntesis del método</h2>
+<p>El balance de momento compara una suma vectorial y un impulso externo. El centro de masa convierte esa suma en una velocidad colectiva. La energía cinética añade información sobre el movimiento relativo, pero su cambio requiere conocer el modelo de interacción y las transferencias energéticas. En una colisión, estos tres elementos se combinan sin intercambiar sus hipótesis; en un sistema abierto se añade el momento transportado por la materia.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></p>
+<p><span id="fispm-t1-c14-p0024"></span></p>
+<p><strong>Proposición FPM-I-14-P24 — Separación del cambio cinético con impulso externo.</strong> Para el par material de D09, sin exigir que el impulso externo se anule, sea <span class="math inline">\(\overline{\mathbf V}=(\mathbf V_a+\mathbf V_b)/2\)</span>. Entonces</p>
+<p><span class="math display">\[
+\Delta K=\overline{\mathbf V}\cdot\mathbf J_{\mathrm{ext}}
++\frac12\mu\bigl(|\mathbf g_b|^2-|\mathbf g_a|^2\bigr).
+\]</span></p>
+<p><strong>Demostración.</strong> P12 da <span class="math inline">\(\Delta K=M(|\mathbf V_b|^2-|\mathbf V_a|^2)/2+\mu(|\mathbf g_b|^2-|\mathbf g_a|^2)/2\)</span>. La diferencia de cuadrados colectivos es <span class="math inline">\((\mathbf V_b+\mathbf V_a)\cdot(\mathbf V_b-\mathbf V_a)\)</span>. Por P04–P09, <span class="math inline">\(M(\mathbf V_b-\mathbf V_a)=\mathbf J_{\mathrm{ext}}\)</span>. Sustituir produce el primer término indicado. <span class="math inline">\(\square\)</span></p>
+<p>La proposición es una identidad entre estados. El producto de la velocidad media de los extremos y el impulso no representa en general el trabajo físico de las fuerzas externas sobre sus puntos de aplicación. Sí representa exactamente el cambio de la energía cinética colectiva. Para masa constante, integrar <span class="math inline">\(\mathbf V\cdot\mathbf F_{\mathrm{ext}}\)</span> también da ese cambio, pero el trabajo externo real puede incluir movimiento de los miembros respecto del centro. El balance de trabajo de I-12 conserva esa información adicional.</p>
+<p>Esta distinción impide deducir que «impulso externo nulo» significa «trabajo externo nulo». Un par puede recibir fuerzas externas opuestas que mantengan su centro mientras cambian la separación y la energía relativa. También fuerzas internas opuestas pueden modificar esa energía sin modificar el momento total. La resultante y la potencia son sumas distintas: una suma de fuerzas cero no obliga a que sus productos con velocidades diferentes sumen cero.</p>
+<p>El recorrido de resolución puede organizarse según lo que se necesita determinar:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pregunta</th>
+<th>Balance o información necesaria</th>
+<th>Límite de la conclusión</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cambio de momento total</td>
+<td>Impulso externo sobre un sistema material fijo</td>
+<td>No fija velocidades relativas</td>
+</tr>
+<tr class="even">
+<td>Trayectoria del centro</td>
+<td>Resultante externa, posición y velocidad colectivas iniciales</td>
+<td>Necesita cierre de la resultante</td>
+</tr>
+<tr class="odd">
+<td>Velocidades finales de un par</td>
+<td>Momento y ley relativa de la interacción</td>
+<td>Balances solos pueden dejar ramas o direcciones</td>
+</tr>
+<tr class="even">
+<td>Cambio de cinética</td>
+<td>Movimiento colectivo y relativo, o trabajo y energía</td>
+<td>Momento conservado no conserva cinética</td>
+</tr>
+<tr class="odd">
+<td>Movimiento con entrada o salida</td>
+<td>Tasas y velocidades de transferencia, fuerzas aplicadas</td>
+<td>La lista material retenida cambia</td>
+</tr>
+</tbody>
+</table>
+<p>En todos los casos los datos iniciales deben pertenecer al mismo marco. La velocidad de expulsión respecto de un dispositivo o la velocidad relativa de separación de dos miembros son diferencias de velocidades, no velocidades de laboratorio. Convertirlas antes de resolver evita una inconsistencia que puede pasar inadvertida en un cálculo dimensionalmente correcto. También debe conservarse la orientación elegida de cada coordenada relativa.</p>
+<p><span id="fispm-t1-c14-mp0014"></span></p>
+<p><strong>Principio metodológico FPM-I-14-MP14 — Cerrar sólo con información acreditada.</strong> Define primero sistema, marco, intervalo y datos. Escribe el balance de momento con todos los impulsos o flujos relevantes. Decide después qué ecuación determina el movimiento relativo: fuerza, elasticidad, unión, restitución o datos medidos. Comprueba signos, unidades, estados extremos y energía, y conserva explícitas las variables que siguen indeterminadas. Separa etapas si cambian fuerzas, pertenencia material o modelo de contacto.</p>
+<section id="ejercicios-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-13">Ejercicios</h3>
+<p><span id="fispm-t1-c14-e0029"></span></p>
+<p><strong>Ejercicio FPM-I-14-E29.</strong> Dos masas <span class="math inline">\(m\)</span> y <span class="math inline">\(2m\)</span> tienen velocidades colineales iniciales <span class="math inline">\(3u\)</span> y cero, y finales cero y <span class="math inline">\(u\)</span>, con <span class="math inline">\(u&gt;0\)</span>. Calcula el impulso externo requerido por esos datos y separa el cambio cinético mediante P24. ¿Son compatibles con un choque aislado?</p>
+<p><strong>Solución.</strong> <span class="math inline">\(P_a=3mu\)</span>, <span class="math inline">\(P_b=2mu\)</span> y por tanto <span class="math inline">\(J_{\mathrm{ext}}=-mu\)</span>. No son compatibles con impulso externo nulo. Las velocidades colectivas son <span class="math inline">\(V_a=u\)</span>, <span class="math inline">\(V_b=2u/3\)</span>, así que <span class="math inline">\(\overline VJ=(5u/6)(-mu)=-5mu^2/6\)</span>. La masa reducida es <span class="math inline">\(2m/3\)</span>, <span class="math inline">\(g_a=3u\)</span> y <span class="math inline">\(g_b=-u\)</span>, por lo que el término relativo es <span class="math inline">\((m/3)(u^2-9u^2)=-8mu^2/3\)</span>. Suman <span class="math inline">\(-7mu^2/2\)</span>, igual a <span class="math inline">\(K_b-K_a=mu^2-9mu^2/2\)</span>. El cociente de rapidez relativa de salida y entrada es <span class="math inline">\(1/3\)</span>, pero no permite aplicar P19: sus fórmulas también exigían momento conservado. El impulso total conocido tampoco dice cómo se distribuyó entre los miembros ni cuál fue la fuerza interna.</p>
+<p><span id="fispm-t1-c14-e0030"></span></p>
+<p><strong>Ejercicio FPM-I-14-E30.</strong> Dos masas <span class="math inline">\(m\)</span> y <span class="math inline">\(2m\)</span>, inicialmente en reposo en una línea, reciben fuerzas externas constantes <span class="math inline">\(F_1=f&gt;0\)</span> y <span class="math inline">\(F_2=-f\)</span> durante un tiempo <span class="math inline">\(T\)</span>. No interactúan internamente en ese intervalo. Calcula las velocidades finales, el centro y la energía. Determina si el producto de P24 puede identificarse aquí con el trabajo externo total.</p>
+<p><strong>Solución.</strong> Newton da <span class="math inline">\(v_{1,b}=fT/m\)</span> y <span class="math inline">\(v_{2,b}=-fT/(2m)\)</span>. La resultante externa es cero durante todo el intervalo, así que <span class="math inline">\(P=0\)</span> y el centro permanece en su posición inicial. La energía final es <span class="math inline">\(f^2T^2/(2m)+f^2T^2/(4m)=3f^2T^2/(4m)\)</span>, positiva. Toda es relativa: <span class="math inline">\(\mu=2m/3\)</span> y <span class="math inline">\(g_b=3fT/(2m)\)</span> producen <span class="math inline">\(\mu g_b^2/2=3f^2T^2/(4m)\)</span>. Los desplazamientos son <span class="math inline">\(fT^2/(2m)\)</span> y <span class="math inline">\(-fT^2/(4m)\)</span>, de modo que el trabajo externo total es <span class="math inline">\(f[fT^2/(2m)]+(-f)[-fT^2/(4m)]=3f^2T^2/(4m)\)</span>. En P24 el término colectivo vale cero porque <span class="math inline">\(J_{\mathrm{ext}}=0\)</span>; por ello no coincide con ese trabajo externo positivo. El ejemplo conserva momento y modifica cinética mediante agentes externos que actúan a velocidades distintas.</p>
+<p>La reducción al centro de masa conserva la información de traslación, y la reducción de dos partículas conserva además la coordenada relativa necesaria para reconstruirlas. Cuando se estudien momentos angulares y cuerpos rígidos habrá que describir otras partes del movimiento. El balance lineal seguirá siendo válido bajo sus hipótesis, pero no reemplazará las ecuaciones que gobiernen esas variables.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-13-energia-potencial-fuerzas-conservativas-y-estabilidad.html">Capítulo 13</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-15-momento-angular-y-torque.html">Capítulo 15</a></p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>Kleppner–Kolenkow, <em>An Introduction to Mechanics</em>, copia Cambridge University Press, 2010, cap. 3, §3.1, pp.&nbsp;111–113; Morin, <em>Introduction to Classical Mechanics</em>, Cambridge University Press, 2008, cap. 5, §5.5.1, pp.&nbsp;156–157. La equivalencia con Newton se prueba aquí para masa constante y marco inercial.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Kleppner–Kolenkow, obra citada, cap. 3, §3.4, pp.&nbsp;130–132; Morin, obra citada, cap. 5, §5.5.1, p.&nbsp;157, ecuación 5.48. Se desarrolla la cota del impulso y se distingue fuerza total de fuerza de contacto, sin atribuir el pico a partir de la media.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Kleppner–Kolenkow, obra citada, cap. 3, §3.2, pp.&nbsp;113–115; Morin, obra citada, cap. 5, §5.5.1, pp.&nbsp;156–157. La suma se hace para una lista material fija y masas constantes; la distinción entre suma de fuerzas y suma de potencias enlaza con I-12.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Kleppner–Kolenkow, obra citada, cap. 3, §3.3, pp.&nbsp;122–123; Morin, obra citada, cap. 5, §5.5.1, p.&nbsp;157. Los ejemplos usan sistema material fijo y velocidades en un mismo marco; el dato relativo del retroceso se convierte explícitamente.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Kleppner–Kolenkow, obra citada, cap. 3, §3.2, pp.&nbsp;116–118. Las propiedades afines, la agrupación y la cota convexa se demuestran aquí para un sistema material finito de masas positivas constantes.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Kleppner–Kolenkow, obra citada, cap. 3, §3.2, pp.&nbsp;116–118; Morin, obra citada, cap. 5, §5.6.1, pp.&nbsp;161–162. El cierre en campos uniformes o afines y el contraejemplo cúbico se desarrollan explícitamente a partir de la suma de fuerzas.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Morin, obra citada, cap. 5, §§5.6.1–5.6.2, pp.&nbsp;161–163. Se explicita la diferencia entre un cambio galileano de velocidad constante y coordenadas centradas aceleradas; la identidad cinética se prueba sin confundir ambos casos.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Desarrollo original por reconstrucción afín, Newton y P11. La separación cinética emplea el marco conceptual consultado en Morin, cap. 5, §§5.6.1–5.6.2, pp.&nbsp;161–163; las ecuaciones con fuerzas externas se deducen aquí sin suponer colisión ni conservación cinética.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Kleppner–Kolenkow, obra citada, cap. 3, §3.4, pp.&nbsp;130–132, y cap. 4, §4.14, pp.&nbsp;187–189; Morin, obra citada, cap. 5, §§5.5.1 y 5.7.1, pp.&nbsp;156–157 y 164–165. Las cotas se aplican al balance colectivo y la transformación cinética se deduce en el texto para masa material constante.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Kleppner–Kolenkow, obra citada, cap. 4, §4.14, pp.&nbsp;188–191; Morin, obra citada, cap. 5, §5.7.1, pp.&nbsp;164–165. La prueba utiliza la energía relativa y conserva explícitamente la rama trivial, sin dividir por cambios de velocidad posiblemente nulos.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Kleppner–Kolenkow, obra citada, cap. 4, §4.14, pp.&nbsp;188–189; Morin, obra citada, cap. 5, §5.8, pp.&nbsp;167–168. La disminución se expresa mediante energía relativa y se distingue de una atribución automática a calor; la unión se limita al modelo traslacional declarado.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Kleppner–Kolenkow, obra citada, cap. 4, §4.14, pp.&nbsp;190–194; Morin, obra citada, cap. 5, §5.7.2, pp.&nbsp;166–167. Los pasajes fundamentan la descripción vectorial, la libertad direccional y la separación en el centro de masa. La regla de restitución normal se declara como modelo adicional y sus fórmulas se deducen aquí por impulso; no se atribuye a esas fuentes una ley universal de contacto.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>Kleppner–Kolenkow, obra citada, cap. 3, §3.5, pp.&nbsp;133–139; Morin, obra citada, cap. 5, §5.5.2, pp.&nbsp;159–160. Se usa un conjunto material durante la transferencia y velocidades de un marco inercial. Las tasas se definen positivas y el escape del cohete tiene velocidad relativa <span class="math inline">\(-c\)</span>, evitando mezclar convenciones de signo.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>Síntesis de las demostraciones del capítulo, con bases consultadas en Kleppner–Kolenkow, cap. 3, §§3.2–3.5, y cap. 4, §4.14; Morin, cap. 5, §§5.5–5.8. P24 se deduce localmente de P04, P09 y P12; su término colectivo se distingue explícitamente del trabajo externo real sobre los miembros.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main></div><script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script><script>document.addEventListener("DOMContentLoaded",function(){const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');});</script></body></html>

@@ -1,0 +1,1173 @@
+<!DOCTYPE html><html lang="es"><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' file: 'unsafe-inline'; style-src 'self' file: data: 'unsafe-inline'; font-src 'self' file: data:; img-src 'self' file: data:; connect-src 'none'; base-uri 'none'; form-action 'none'; worker-src blob:">
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 26 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.">
+
+<title>Mecánica lagrangiana – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+
+
+
+
+
+
+<meta name="quarto:offset" content="../../">
+<link href="../assets/8eb201055a4f4d43a0dc1bd6.svg" rel="icon" type="image/svg+xml">
+
+
+
+
+<script src="../assets/69098e105d990f834cff1b78.js"></script>
+<link href="../assets/5969f497d9158d7682f8219c.css" rel="stylesheet">
+<link href="../assets/4973a76eb0de3b99bc67687a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../assets/7f7cb0230277ec2bc5294f4d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+
+
+<link href="../assets/quarto-bootstrap-light.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../assets/quarto-bootstrap-dark.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+
+  
+  <script src="../assets/mathjax-offline-speech.js"></script><script>(function(){const fontRoot=new URL("../assets/mathjax-newcm",location.href).href;window.MathJax=Object.assign(window.MathJax||{}, {loader:{paths:{"mathjax-newcm":fontRoot}},startup:{ready:function(){MathJax.startup.defaultReady();MathJax.startup.adaptor.createWorker=window.__maCreateSpeechWorker;},pageReady:window.MathJax.startup.pageReady},output:{fontPath:fontRoot},chtml:{fontURL:fontRoot+"/chtml/woff2",dynamicPrefix:fontRoot+"/chtml/dynamic"}});})();</script><script defer src="../assets/mathjax/tex-chtml.js"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../assets/87b4f5e6a115d51d92f5ea1a.css">
+<link rel="stylesheet" href="../assets/af3335218e8c9cef34486d70.css">
+<style id="ma-reader-mode-v1-style">/* Reader contract: app readerMode.ts, ma-reader-mode-v1. */
+
+#quarto-header,
+#quarto-sidebar,
+#quarto-margin-sidebar,
+.quarto-secondary-nav,
+.quarto-page-breadcrumbs,
+#quarto-search,
+.quarto-search-button,
+.quarto-navigation-tool,
+.quarto-back-to-top,
+#quarto-footer,
+.nav-footer {
+  display: none !important;
+}
+
+body.quarto-page-columns #quarto-content,
+#quarto-content.page-columns {
+  display: block !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+#quarto-content {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  padding-left: max(1rem, env(safe-area-inset-left)) !important;
+  padding-right: max(1rem, env(safe-area-inset-right)) !important;
+}
+
+#quarto-content > main.content,
+#quarto-content .content {
+  box-sizing: border-box !important;
+  grid-column: 1 / -1 !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+#quarto-content img,
+#quarto-content figure img {
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+#quarto-content table,
+#quarto-content pre,
+#quarto-content mjx-container[display="true"],
+#quarto-content .math.display {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+}
+
+#quarto-content table {
+  display: block;
+}
+
+#quarto-content .callout,
+#quarto-content .theorem,
+#quarto-content .proof {
+  max-width: 100% !important;
+}
+</style><style>body.nav-fixed{padding-top:0!important}</style></head><body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar"><main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mecánica lagrangiana</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 26</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 26 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">15 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-25-configuracion-trabajo-virtual-y-principios-variacionales.html">Capítulo 25</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-27-simetrias-teorema-de-noether-y-leyes-de-conservacion.html">Capítulo 27</a></p>
+<p>Un péndulo sujeto a una pared y otro instalado sobre un carro tienen la misma barra y la misma masa suspendida. Sin embargo, al oscilar, el segundo puede desplazar su apoyo. La inercia del carro entra en la ecuación angular y modifica la frecuencia. Para distinguir ambos problemas hay que decidir qué posiciones son desconocidas y qué movimientos se imponen desde fuera.</p>
+<p>El lagrangiano permite conservar esa decisión dentro del cálculo. Las coordenadas describen los movimientos independientes; la energía cinética recoge cómo contribuye cada uno a las velocidades físicas; el potencial contiene las fuerzas conservativas. Las ecuaciones de I25 convierten esos datos en aceleraciones. Un término cruzado en la energía cinética puede representar el movimiento del apoyo, y eliminarlo puede cambiar el aparato que se está describiendo.</p>
+<p>Desarrollaremos este método hasta obtener sistemas completos de ecuaciones y comprobar su equivalencia con Newton. También estudiaremos qué permite despejar las aceleraciones, cómo se transforman las ecuaciones al cambiar de coordenadas y cuándo la función de energía lagrangiana coincide con la energía mecánica del sistema observado.</p>
+<p>Se presuponen la construcción variacional de I25, el álgebra lineal de I24 y las ecuaciones diferenciales elementales. Las simetrías y el teorema de Noether se tratarán sistemáticamente en I27; aquí las identidades conservadas que aparezcan se comprobarán directamente en las ecuaciones.</p>
+<p><span id="fispm-t1-c26-s01"></span></p>
+<p><span id="fpm-i-26-s01"></span></p>
+<section id="construir-el-modelo-antes-de-derivar" class="level2">
+<h2 class="anchored" data-anchor-id="construir-el-modelo-antes-de-derivar">§1. Construir el modelo antes de derivar</h2>
+<p>Sean <span class="math inline">\(q=(q^1,\ldots,q^n)\)</span> coordenadas locales independientes de un sistema de partículas con vínculos holónomos regulares. Sus posiciones son <span class="math inline">\(\mathbf r_i=\mathbf R_i(q,t)\)</span> y sus velocidades</p>
+<p><span class="math display">\[
+\dot{\mathbf r}_i=\sum_a\mathbf R_{i,a}\dot q^a+\mathbf R_{i,t}.
+\]</span></p>
+<p>La dependencia explícita del tiempo describe geometría prescrita, como un soporte cuya posición se conoce de antemano. Una coordenada desconocida de un soporte libre, en cambio, debe incluirse entre las componentes de <span class="math inline">\(q\)</span>.</p>
+<p><span id="fispm-t1-c26-d0001"></span></p>
+<p><strong>Definición FPM-I-26-D01 — Lagrangiano mecánico.</strong> Para masas constantes <span class="math inline">\(m_i&gt;0\)</span>, potencial <span class="math inline">\(V(q,t)\)</span> sin dependencia de velocidades y vínculos ideales, el lagrangiano mecánico es <span class="math inline">\(L(q,\dot q,t)=T(q,\dot q,t)-V(q,t)\)</span>, donde <span class="math inline">\(T=\sum_i m_i|\dot{\mathbf r}_i|^2/2\)</span>. Si hay fuerzas aplicadas adicionales, se representan mediante sus componentes de trabajo virtual <span class="math inline">\(Q_a\)</span>.</p>
+<p><span id="fispm-t1-c26-p0001"></span></p>
+<p><strong>Proposición FPM-I-26-P01 — Ecuaciones mecánicas y alcance.</strong> Bajo esas hipótesis, las trayectorias satisfacen</p>
+<p><span class="math display">\[
+\frac{d}{dt}\frac{\partial L}{\partial\dot q^a}
+-\frac{\partial L}{\partial q^a}=Q_a.
+\]</span></p>
+<p>Estas ecuaciones, junto con la parametrización de los vínculos, equivalen a Newton con las reacciones ideales correspondientes, dentro de la región regular elegida.</p>
+<p><strong>Demostración.</strong> El trabajo virtual de las fuerzas de potencial es <span class="math inline">\(-\sum_a V_{,a}\delta q^a\)</span>, y el de las adicionales es <span class="math inline">\(\sum_aQ_a\delta q^a\)</span>. La identidad cinética de I25 identifica la proyección de la inercia con <span class="math inline">\(d(T_{,\dot q^a})/dt-T_{,a}\)</span>. D’Alembert anula cada coeficiente de las variaciones independientes. Reagrupar el potencial da la ecuación indicada. La reconstrucción normal de las reacciones de I25 completa la equivalencia inversa. <span class="math inline">\(\square\)</span></p>
+<p>La fórmula no determina por sí sola si un contacto es ideal, una cuerda está tensa o una guía admite una parametrización regular. Esas propiedades se deciden al construir el modelo y se comprueban después cuando la solución puede abandonar el régimen supuesto.</p>
+<p><span id="fispm-t1-c26-s02"></span></p>
+<p><span id="fpm-i-26-s02"></span></p>
+</section>
+<section id="la-matriz-cinética-que-se-esconde-en-las-velocidades" class="level2">
+<h2 class="anchored" data-anchor-id="la-matriz-cinética-que-se-esconde-en-las-velocidades">§2. La matriz cinética que se esconde en las velocidades</h2>
+<p>Al expandir las velocidades cartesianas aparece</p>
+<p><span class="math display">\[
+T=\frac12\sum_{a,b}G_{ab}(q,t)\dot q^a\dot q^b
++\sum_a a_a(q,t)\dot q^a+c(q,t),
+\]</span></p>
+<p>donde</p>
+<p><span class="math display">\[
+G_{ab}=\sum_i m_i\mathbf R_{i,a}\cdot\mathbf R_{i,b},
+\quad a_a=\sum_i m_i\mathbf R_{i,a}\cdot\mathbf R_{i,t},
+\quad c=\frac12\sum_i m_i|\mathbf R_{i,t}|^2.
+\]</span></p>
+<p><span id="fispm-t1-c26-d0002"></span></p>
+<p><strong>Definición FPM-I-26-D02 — Matriz cinética y momento conjugado.</strong> La matriz <span class="math inline">\(G\)</span> es la matriz de la parte cuadrática de la energía cinética en las velocidades generalizadas. El momento conjugado a <span class="math inline">\(q^a\)</span> es <span class="math inline">\(p_a=\partial L/\partial\dot q^a\)</span>. En el modelo anterior, <span class="math inline">\(p=G\dot q+a\)</span>.</p>
+<p><span id="fispm-t1-c26-p0002"></span></p>
+<p><strong>Proposición FPM-I-26-P02 — Positividad cinética.</strong> Si la parametrización tiene rango completo y todas las masas son positivas, <span class="math inline">\(G\)</span> es simétrica definida positiva. En particular, es invertible.</p>
+<p><strong>Demostración.</strong> La simetría se sigue del producto escalar. Para cualquier columna <span class="math inline">\(u\ne0\)</span>,</p>
+<p><span class="math display">\[
+u^TGu=\sum_i m_i\left|\sum_a\mathbf R_{i,a}u^a\right|^2.
+\]</span></p>
+<p>Si el valor fuera cero, cada suma vectorial sería cero. El Jacobiano de la parametrización anularía a <span class="math inline">\(u\)</span>, contradiciendo su rango completo. Por tanto el valor es positivo. <span class="math inline">\(\square\)</span></p>
+<p>Para una geometría fija, <span class="math inline">\(\mathbf R_{i,t}=0\)</span> y desaparecen <span class="math inline">\(a\)</span> y <span class="math inline">\(c\)</span>. La energía cinética es entonces homogénea cuadrática en <span class="math inline">\(\dot q\)</span>, aunque sus coeficientes dependan de la posición. En una geometría móvil no hay motivo para eliminar los términos restantes.</p>
+<p>El momento conjugado no es siempre una componente cartesiana del momento lineal. En coordenadas polares, <span class="math inline">\(p_\theta=mr^2\dot\theta\)</span> tiene unidades de momento angular. En un péndulo con soporte móvil puede incluir también la velocidad del soporte.</p>
+<p><span id="fispm-t1-c26-s03"></span></p>
+<p><span id="fpm-i-26-s03"></span></p>
+</section>
+<section id="cuándo-las-ecuaciones-determinan-las-aceleraciones" class="level2">
+<h2 class="anchored" data-anchor-id="cuándo-las-ecuaciones-determinan-las-aceleraciones">§3. Cuándo las ecuaciones determinan las aceleraciones</h2>
+<p>Para un lagrangiano general diferenciable, derivar <span class="math inline">\(\partial L/\partial\dot q^a\)</span> produce términos proporcionales a las aceleraciones. Su matriz de coeficientes es el Hessiano respecto de las velocidades.</p>
+<p><span id="fispm-t1-c26-d0003"></span></p>
+<p><strong>Definición FPM-I-26-D03 — Lagrangiano regular.</strong> Llamamos regular a <span class="math inline">\(L\)</span> en una región si la matriz <span class="math inline">\(W_{ab}=\partial^2L/(\partial\dot q^a\partial\dot q^b)\)</span> es invertible allí. Para el lagrangiano mecánico de §2, <span class="math inline">\(W=G\)</span>.</p>
+<p><span id="fispm-t1-c26-p0003"></span></p>
+<p><strong>Proposición FPM-I-26-P03 — Forma normal y existencia local.</strong> Supongamos <span class="math inline">\(L\)</span> de clase <span class="math inline">\(C^3\)</span>, fuerzas <span class="math inline">\(Q(q,\dot q,t)\)</span> de clase <span class="math inline">\(C^1\)</span> y <span class="math inline">\(W\)</span> invertible cerca de un dato inicial. Las ecuaciones lagrangianas se pueden escribir como <span class="math inline">\(\ddot q=f(q,\dot q,t)\)</span> con <span class="math inline">\(f\)</span> localmente <span class="math inline">\(C^1\)</span>. Por tanto determinan una solución local única para cada dato inicial de esa región.</p>
+<p><strong>Demostración.</strong> La regla de la cadena da</p>
+<p><span class="math display">\[
+\sum_bW_{ab}\ddot q^b
+=Q_a+L_{,q^a}-\sum_b L_{,\dot q^a q^b}\dot q^b
+-L_{,\dot q^a t}.
+\]</span></p>
+<p>Multiplicar por <span class="math inline">\(W^{-1}\)</span> despeja las aceleraciones. Las hipótesis hacen que el resultado sea <span class="math inline">\(C^1\)</span> localmente. Al introducir <span class="math inline">\(v=\dot q\)</span>, queda el sistema de primer orden <span class="math inline">\(\dot q=v\)</span>, <span class="math inline">\(\dot v=f(q,v,t)\)</span>, al que se aplica el teorema de existencia y unicidad local de EDO. <span class="math inline">\(\square\)</span></p>
+<p>La conclusión es local. Una solución puede salir de la carta de coordenadas, alcanzar un contacto distinto o crecer sin cota. Tampoco una matriz singular significa siempre una imposibilidad física: las coordenadas polares son singulares en el origen aunque una partícula cartesiana lo atraviese sin dificultad. Hay que distinguir una carta defectuosa de un lagrangiano físicamente degenerado.</p>
+<p>En el caso fijo <span class="math inline">\(L=\tfrac12G_{ab}(q)\dot q^a\dot q^b-V(q)\)</span>, la expansión anterior se organiza como</p>
+<p><span class="math display">\[
+\sum_bG_{ab}\ddot q^b
++\sum_{b,c}\Gamma_{abc}\dot q^b\dot q^c+V_{,a}=Q_a,
+\]</span></p>
+<p><span class="math display">\[
+\Gamma_{abc}=\frac12\bigl(\partial_bG_{ac}
++\partial_cG_{ab}-\partial_aG_{bc}\bigr).
+\]</span></p>
+<p>Esta expresión se obtiene derivando el término cuadrático y agrupando los productos simétricos <span class="math inline">\(\dot q^b\dot q^c\)</span>. Los términos de velocidad pueden surgir de la geometría de las coordenadas, incluso sin fuerzas dependientes de velocidad.</p>
+<p><span id="fispm-t1-c26-s04"></span></p>
+<p><span id="fpm-i-26-s04"></span></p>
+</section>
+<section id="cambiar-coordenadas-sin-cambiar-la-dinámica" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-coordenadas-sin-cambiar-la-dinámica">§4. Cambiar coordenadas sin cambiar la dinámica</h2>
+<p>Sea <span class="math inline">\(q=f(Q,t)\)</span> un cambio local invertible, con Jacobiano <span class="math inline">\(J^a{}_{\alpha}=\partial f^a/\partial Q^\alpha\)</span>. Las velocidades se transforman como <span class="math inline">\(\dot q=J\dot Q+f_t\)</span>. El nuevo lagrangiano se obtiene sustituyendo ambos argumentos:</p>
+<p><span class="math display">\[
+\widetilde L(Q,\dot Q,t)
+=L(f(Q,t),J\dot Q+f_t,t).
+\]</span></p>
+<p><span id="fispm-t1-c26-p0004"></span></p>
+<p><strong>Proposición FPM-I-26-P04 — Transformación de las ecuaciones.</strong> Si <span class="math inline">\(\mathcal E_a(L)=d(L_{,\dot q^a})/dt-L_{,q^a}\)</span>, entonces</p>
+<p><span class="math display">\[
+\mathcal E_\alpha(\widetilde L)
+=\sum_a J^a{}_{\alpha}\mathcal E_a(L),
+\qquad \widetilde Q_\alpha=\sum_aJ^a{}_{\alpha}Q_a.
+\]</span></p>
+<p>Además, <span class="math inline">\(\widetilde W=J^TWJ\)</span>, por lo que la regularidad se conserva bajo cambios de coordenadas invertibles.</p>
+<p><strong>Demostración.</strong> Al derivar respecto de <span class="math inline">\(\dot Q^\alpha\)</span> se obtiene <span class="math inline">\(\widetilde L_{,\dot Q^\alpha}=\sum_aL_{,\dot q^a}J^a{}_{\alpha}\)</span>. Su derivada temporal contiene <span class="math inline">\(\sum_a\dot p_aJ^a{}_{\alpha}+p_a\dot J^a{}_{\alpha}\)</span>. La derivada de <span class="math inline">\(\widetilde L\)</span> respecto de <span class="math inline">\(Q^\alpha\)</span> contiene <span class="math inline">\(\sum_a L_{,q^a}J^a{}_{\alpha}\)</span> y <span class="math inline">\(\sum_a p_a\partial\dot q^a/\partial Q^\alpha\)</span>. La igualdad de derivadas mixtas implica <span class="math inline">\(\partial\dot q^a/\partial Q^\alpha=\dot J^a{}_{\alpha}\)</span> y cancela esos términos. El trabajo virtual <span class="math inline">\(\sum_aQ_a\delta q^a\)</span> se transforma mediante <span class="math inline">\(\delta q=J\delta Q\)</span>, dando la segunda fórmula. Una derivada adicional respecto de velocidades da la congruencia de los Hessianos. <span class="math inline">\(\square\)</span></p>
+<p>La transformación temporal permite trabajar en una referencia móvil, siempre que se conserve la energía cinética resultante de la sustitución. Escribir de nuevo una energía de partícula libre sin los términos inducidos por el cambio equivaldría a proponer otro modelo.</p>
+<p><span id="fispm-t1-c26-s05"></span></p>
+<p><span id="fpm-i-26-s05"></span></p>
+</section>
+<section id="recuperar-newton-en-coordenadas-polares" class="level2">
+<h2 class="anchored" data-anchor-id="recuperar-newton-en-coordenadas-polares">§5. Recuperar Newton en coordenadas polares</h2>
+<p>Para una partícula plana, con <span class="math inline">\(r&gt;0\)</span> y potencial central <span class="math inline">\(V(r)\)</span>,</p>
+<p><span class="math display">\[
+L=\frac m2(\dot r^2+r^2\dot\theta^2)-V(r).
+\]</span></p>
+<p><span id="fispm-t1-c26-p0005"></span></p>
+<p><strong>Proposición FPM-I-26-P05 — Ecuaciones centrales.</strong> Las ecuaciones lagrangianas son</p>
+<p><span class="math display">\[
+m\ddot r-mr\dot\theta^2+V'(r)=0,
+\qquad \frac{d}{dt}(mr^2\dot\theta)=0.
+\]</span></p>
+<p>Equivalen a las componentes radial y tangencial de Newton en la región <span class="math inline">\(r&gt;0\)</span>.</p>
+<p><strong>Demostración.</strong> Para <span class="math inline">\(r\)</span>, las derivadas son <span class="math inline">\(L_{,\dot r}=m\dot r\)</span> y <span class="math inline">\(L_{,r}=mr\dot\theta^2-V'\)</span>. Para <span class="math inline">\(\theta\)</span>, <span class="math inline">\(L_{,\theta}=0\)</span> y <span class="math inline">\(L_{,\dot\theta}=mr^2\dot\theta\)</span>. Al expandir la segunda ecuación y dividir por <span class="math inline">\(r&gt;0\)</span> aparece <span class="math inline">\(m(r\ddot\theta+2\dot r\dot\theta)=0\)</span>. La primera da <span class="math inline">\(m(\ddot r-r\dot\theta^2)=-V'\)</span>. Son las aceleraciones polares ya utilizadas en I15–I17. <span class="math inline">\(\square\)</span></p>
+<p>El momento conjugado angular coincide aquí con el momento angular sobre el origen. Sustituir su valor constante en la ecuación radial recupera el potencial efectivo de I17. Las coordenadas simplifican las fuerzas centrales porque el potencial depende de una sola de ellas, mientras la energía cinética conserva el acoplamiento geométrico <span class="math inline">\(r^2\dot\theta^2\)</span>.</p>
+<p><span id="fispm-t1-c26-s06"></span></p>
+<p><span id="fpm-i-26-s06"></span></p>
+</section>
+<section id="el-péndulo-doble-y-su-matriz-de-aceleraciones" class="level2">
+<h2 class="anchored" data-anchor-id="el-péndulo-doble-y-su-matriz-de-aceleraciones">§6. El péndulo doble y su matriz de aceleraciones</h2>
+<p>Sean dos masas puntuales <span class="math inline">\(m_1,m_2&gt;0\)</span>, barras rígidas sin masa de longitudes <span class="math inline">\(\ell_1,\ell_2&gt;0\)</span> y un apoyo fijo. Los ángulos <span class="math inline">\(\theta_1,\theta_2\)</span> se miden desde la vertical descendente y son absolutos, no relativos entre las barras. Las posiciones son</p>
+<p><span class="math display">\[
+\mathbf r_1=(\ell_1\sin\theta_1,-\ell_1\cos\theta_1),
+\qquad
+\mathbf r_2=\mathbf r_1+(\ell_2\sin\theta_2,-\ell_2\cos\theta_2).
+\]</span></p>
+<p>Con <span class="math inline">\(\delta=\theta_1-\theta_2\)</span>, expandir las velocidades da</p>
+<p><span class="math display">\[
+T=\frac12(m_1+m_2)\ell_1^2\dot\theta_1^2
++\frac12m_2\ell_2^2\dot\theta_2^2
++m_2\ell_1\ell_2\cos\delta\,\dot\theta_1\dot\theta_2,
+\]</span></p>
+<p><span class="math display">\[
+V=-(m_1+m_2)g\ell_1\cos\theta_1-m_2g\ell_2\cos\theta_2.
+\]</span></p>
+<p><span id="fispm-t1-c26-p0006"></span></p>
+<p><strong>Proposición FPM-I-26-P06 — Ecuaciones del péndulo doble.</strong> Con <span class="math inline">\(B=m_2\ell_1\ell_2\cos\delta\)</span>, las ecuaciones son</p>
+<p><span class="math display">\[
+(m_1+m_2)\ell_1^2\ddot\theta_1+B\ddot\theta_2
++m_2\ell_1\ell_2\sin\delta\,\dot\theta_2^2
++(m_1+m_2)g\ell_1\sin\theta_1=0,
+\]</span></p>
+<p><span class="math display">\[
+B\ddot\theta_1+m_2\ell_2^2\ddot\theta_2
+-m_2\ell_1\ell_2\sin\delta\,\dot\theta_1^2
++m_2g\ell_2\sin\theta_2=0.
+\]</span></p>
+<p>Su matriz cinética es definida positiva para todos los ángulos.</p>
+<p><strong>Demostración.</strong> El primer momento es <span class="math inline">\(p_1=(m_1+m_2)\ell_1^2\dot\theta_1+B\dot\theta_2\)</span>. Al derivarlo aparece <span class="math inline">\(-m_2\ell_1\ell_2\sin\delta(\dot\theta_1-\dot\theta_2)\dot\theta_2\)</span>. La derivada de <span class="math inline">\(T\)</span> respecto de <span class="math inline">\(\theta_1\)</span> es <span class="math inline">\(-m_2\ell_1\ell_2\sin\delta\dot\theta_1\dot\theta_2\)</span>; al restarla queda el término positivo en <span class="math inline">\(\dot\theta_2^2\)</span>. El segundo momento se trata del mismo modo y deja el término negativo en <span class="math inline">\(\dot\theta_1^2\)</span>. Añadir las derivadas del potencial produce las ecuaciones. La primera entrada diagonal de <span class="math inline">\(G\)</span> es positiva y</p>
+<p><span class="math display">\[
+\det G=m_2\ell_1^2\ell_2^2\bigl(m_1+m_2\sin^2\delta\bigr)&gt;0.
+\]</span></p>
+<p>El criterio de positividad para matrices simétricas de orden dos completa la prueba. <span class="math inline">\(\square\)</span></p>
+<p>Las dos aceleraciones deben despejarse juntas. Tratar el término <span class="math inline">\(B\ddot\theta_2\)</span> como una fuerza conocida antes de resolver el sistema introduciría una dependencia circular. Conservar la forma matricial permite ver la regularidad y facilita el cálculo numérico sin expandir cocientes extensos.</p>
+<p><span id="fispm-t1-c26-s07"></span></p>
+<p><span id="fpm-i-26-s07"></span></p>
+</section>
+<section id="un-apoyo-que-también-es-una-incógnita" class="level2">
+<h2 class="anchored" data-anchor-id="un-apoyo-que-también-es-una-incógnita">§7. Un apoyo que también es una incógnita</h2>
+<p>Un carro de masa <span class="math inline">\(M&gt;0\)</span> puede moverse horizontalmente y sostiene un péndulo de masa <span class="math inline">\(m&gt;0\)</span> y longitud <span class="math inline">\(\ell\)</span>. Sus coordenadas son la posición <span class="math inline">\(x\)</span> del carro y el ángulo <span class="math inline">\(\theta\)</span> desde abajo. La masa suspendida tiene posición <span class="math inline">\((x+\ell\sin\theta,-\ell\cos\theta)\)</span>.</p>
+<p><span class="math display">\[
+T=\frac12(M+m)\dot x^2+m\ell\cos\theta\dot x\dot\theta
++\frac12m\ell^2\dot\theta^2,
+\qquad V=-mg\ell\cos\theta.
+\]</span></p>
+<p><span id="fispm-t1-c26-p0007"></span></p>
+<p><strong>Proposición FPM-I-26-P07 — Ecuaciones del carro y péndulo.</strong> Si una fuerza horizontal <span class="math inline">\(F(t)\)</span> actúa sobre el carro, las ecuaciones son</p>
+<p><span class="math display">\[
+(M+m)\ddot x+m\ell\cos\theta\ddot\theta
+-m\ell\sin\theta\dot\theta^2=F(t),
+\]</span></p>
+<p><span class="math display">\[
+m\ell\cos\theta\ddot x+m\ell^2\ddot\theta
++mg\ell\sin\theta=0.
+\]</span></p>
+<p>La matriz de aceleraciones tiene determinante <span class="math inline">\(m\ell^2(M+m\sin^2\theta)&gt;0\)</span>.</p>
+<p><strong>Demostración.</strong> Derivar <span class="math inline">\(p_x=(M+m)\dot x+m\ell\cos\theta\dot\theta\)</span> da la primera ecuación porque <span class="math inline">\(L\)</span> no depende de <span class="math inline">\(x\)</span>. Para <span class="math inline">\(\theta\)</span>, los términos cruzados en <span class="math inline">\(\dot x\dot\theta\sin\theta\)</span> se cancelan al restar <span class="math inline">\(L_{,\theta}\)</span> y queda la segunda. Calcular el determinante prueba la regularidad. La fuerza aplicada realiza trabajo virtual <span class="math inline">\(F\delta x\)</span>, de modo que no añade un término generalizado en la ecuación angular. <span class="math inline">\(\square\)</span></p>
+<p>Si se prescribe <span class="math inline">\(x=a(t)\)</span>, se obtiene el péndulo excitado de I25 y la primera ecuación determina la fuerza que debe ejercer el actuador. Si el carro está libre, ambas ecuaciones forman parte de la dinámica. Prescribir una función y resolver una coordenada son decisiones físicas diferentes.</p>
+<p>Para <span class="math inline">\(F=0\)</span> y pequeñas oscilaciones alrededor de abajo, la primera ecuación lineal da <span class="math inline">\((M+m)\ddot x+m\ell\ddot\theta=0\)</span>. Eliminar <span class="math inline">\(\ddot x\)</span> de la segunda produce</p>
+<p><span class="math display">\[
+\ddot\theta+\frac{(M+m)g}{M\ell}\theta=0.
+\]</span></p>
+<p>Además hay un movimiento de traslación común de frecuencia cero. La frecuencia angular oscilatoria es mayor que la del péndulo con apoyo fijo y tiende a <span class="math inline">\(\sqrt{g/\ell}\)</span> cuando <span class="math inline">\(M\to\infty\)</span>. La energía cinética del movimiento interno se modifica porque el apoyo retrocede.</p>
+<p><span id="fispm-t1-c26-s08"></span></p>
+<p><span id="fpm-i-26-s08"></span></p>
+</section>
+<section id="una-guía-que-gira-mediante-un-motor" class="level2">
+<h2 class="anchored" data-anchor-id="una-guía-que-gira-mediante-un-motor">§8. Una guía que gira mediante un motor</h2>
+<p>Un aro vertical de radio <span class="math inline">\(\ell\)</span> gira alrededor de su diámetro vertical con velocidad angular prescrita <span class="math inline">\(\Omega\)</span>. Una cuenta de masa <span class="math inline">\(m\)</span> se desliza sin rozamiento. Con <span class="math inline">\(\theta\)</span> medido desde el punto inferior, su posición inercial es</p>
+<p><span class="math display">\[
+\mathbf r=(\ell\sin\theta\cos\Omega t,
+\ell\sin\theta\sin\Omega t,-\ell\cos\theta).
+\]</span></p>
+<p>La rapidez al cuadrado es <span class="math inline">\(\ell^2(\dot\theta^2+\Omega^2\sin^2\theta)\)</span> y</p>
+<p><span class="math display">\[
+L=\frac{m\ell^2}{2}\dot\theta^2
++\frac{m\ell^2\Omega^2}{2}\sin^2\theta+mg\ell\cos\theta.
+\]</span></p>
+<p><span id="fispm-t1-c26-p0008"></span></p>
+<p><strong>Proposición FPM-I-26-P08 — Movimiento reducido y trabajo del motor.</strong> La cuenta satisface</p>
+<p><span class="math display">\[
+\ddot\theta=\Omega^2\sin\theta\cos\theta-\frac g\ell\sin\theta.
+\]</span></p>
+<p>La cantidad</p>
+<p><span class="math display">\[
+\mathcal I=\frac{m\ell^2}{2}\dot\theta^2
+-\frac{m\ell^2\Omega^2}{2}\sin^2\theta-mg\ell\cos\theta
+\]</span></p>
+<p>se conserva, pero la energía mecánica inercial de la cuenta,</p>
+<p><span class="math display">\[
+E_{\mathrm{mec}}=\frac{m\ell^2}{2}\dot\theta^2
++\frac{m\ell^2\Omega^2}{2}\sin^2\theta-mg\ell\cos\theta,
+\]</span></p>
+<p>satisface <span class="math inline">\(\dot E_{\mathrm{mec}}=2m\ell^2\Omega^2\sin\theta\cos\theta\dot\theta\)</span>.</p>
+<p><strong>Demostración.</strong> Derivar <span class="math inline">\(L\)</span> respecto de <span class="math inline">\(\theta\)</span> y <span class="math inline">\(\dot\theta\)</span> da la ecuación. Multiplicarla por <span class="math inline">\(m\ell^2\dot\theta\)</span> permite reconocer <span class="math inline">\(d\mathcal I/dt=0\)</span>. La diferencia <span class="math inline">\(E_{\mathrm{mec}}-\mathcal I=m\ell^2\Omega^2\sin^2\theta\)</span> da la potencia indicada al derivar. <span class="math inline">\(\square\)</span></p>
+<p>La componente vertical del momento angular de la cuenta es <span class="math inline">\(H_z=m\ell^2\Omega\sin^2\theta\)</span>. Su derivada es el torque vertical que transmite la guía. La potencia del mecanismo que mantiene la rotación es <span class="math inline">\(\Omega\dot H_z\)</span>, igual a la variación de <span class="math inline">\(E_{\mathrm{mec}}\)</span>. El balance coincide con la reacción ideal que puede hacer trabajo real en I25.</p>
+<p>La función <span class="math inline">\(V_{\mathrm{ef}}=-m\ell^2\Omega^2\sin^2\theta/2-mg\ell\cos\theta\)</span> permite estudiar el movimiento reducido como un problema de un grado de libertad. Si <span class="math inline">\(\Omega^2&lt;g/\ell\)</span>, el punto inferior tiene curvatura positiva y frecuencia pequeña <span class="math inline">\(\sqrt{g/\ell-\Omega^2}\)</span>. Si <span class="math inline">\(\Omega^2&gt;g/\ell\)</span>, se vuelve inestable y aparecen posiciones estables con <span class="math inline">\(\cos\theta=g/(\Omega^2\ell)\)</span>. El motor mantiene la velocidad angular y puede intercambiar energía con la cuenta; no se está describiendo un aro libre de retroceder.</p>
+<p><span id="fispm-t1-c26-s09"></span></p>
+<p><span id="fpm-i-26-s09"></span></p>
+</section>
+<section id="la-función-de-energía-del-lagrangiano" class="level2">
+<h2 class="anchored" data-anchor-id="la-función-de-energía-del-lagrangiano">§9. La función de energía del lagrangiano</h2>
+<p><span id="fispm-t1-c26-d0004"></span></p>
+<p><strong>Definición FPM-I-26-D04 — Energía lagrangiana.</strong> Para un lagrangiano <span class="math inline">\(L\)</span>, definimos</p>
+<p><span class="math display">\[
+E_L(q,\dot q,t)=\sum_a\dot q^a\frac{\partial L}{\partial\dot q^a}-L.
+\]</span></p>
+<p>Por ahora es una función de posiciones y velocidades. Su uso como hamiltoniano, después de cambiar variables de velocidad a momento, se desarrollará en I28.</p>
+<p><span id="fispm-t1-c26-p0009"></span></p>
+<p><strong>Proposición FPM-I-26-P09 — Identidad de energía.</strong> A lo largo de las ecuaciones con fuerzas adicionales <span class="math inline">\(Q_a\)</span>,</p>
+<p><span class="math display">\[
+\frac{dE_L}{dt}=\sum_a Q_a\dot q^a-\frac{\partial L}{\partial t}.
+\]</span></p>
+<p>En particular, un lagrangiano sin dependencia explícita de tiempo y sin fuerzas adicionales tiene <span class="math inline">\(E_L\)</span> constante.</p>
+<p><strong>Demostración.</strong> Derivar la definición da</p>
+<p><span class="math display">\[
+\dot E_L=\sum_a(\ddot q^ap_a+\dot q^a\dot p_a)
+-\sum_a L_{,q^a}\dot q^a-\sum_aL_{,\dot q^a}\ddot q^a-L_{,t}.
+\]</span></p>
+<p>Los términos con <span class="math inline">\(\ddot q\)</span> se cancelan porque <span class="math inline">\(p_a=L_{,\dot q^a}\)</span>. Los restantes se agrupan como <span class="math inline">\(\sum_a\dot q^a(\dot p_a-L_{,q^a})-L_{,t}\)</span>. Sustituir las ecuaciones prueba la identidad. <span class="math inline">\(\square\)</span></p>
+<p>Si <span class="math inline">\(T=\dot q^TG\dot q/2\)</span> y <span class="math inline">\(V\)</span> no depende de velocidades, entonces <span class="math inline">\(E_L=T+V\)</span>. Esta igualdad sigue siendo algebraicamente válida si <span class="math inline">\(G\)</span> o <span class="math inline">\(V\)</span> dependen explícitamente del tiempo; la conservación requiere además controlar el miembro derecho de P09.</p>
+<p>Para el lagrangiano mecánico general de §2,</p>
+<p><span class="math display">\[
+E_L=\frac12\dot q^TG\dot q-c+V,
+\qquad
+E_{\mathrm{mec}}=T+V=\frac12\dot q^TG\dot q+a^T\dot q+c+V.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(E_L-E_{\mathrm{mec}}=-a^T\dot q-2c\)</span>. La cantidad <span class="math inline">\(\mathcal I\)</span> del aro giratorio es exactamente su energía lagrangiana reducida. La ausencia de tiempo explícito en ese lagrangiano conserva <span class="math inline">\(\mathcal I\)</span> sin obligar a conservar la energía inercial de la cuenta.</p>
+<p>En un sistema de geometría fija con potencial explícitamente temporal, P09 se convierte en <span class="math inline">\(d(T+V)/dt=\partial V/\partial t\)</span> si no hay otras fuerzas. La dependencia temporal registra el intercambio energético asociado al agente externo que modifica el potencial.</p>
+<p><span id="fispm-t1-c26-s10"></span></p>
+<p><span id="fpm-i-26-s10"></span></p>
+</section>
+<section id="fuerzas-resistentes-dentro-del-método" class="level2">
+<h2 class="anchored" data-anchor-id="fuerzas-resistentes-dentro-del-método">§10. Fuerzas resistentes dentro del método</h2>
+<p>Las fuerzas que realizan trabajo virtual no nulo deben conservarse en <span class="math inline">\(Q_a\)</span>. Para la resistencia lineal pasiva es útil agruparlas en una función cuadrática de velocidades.</p>
+<p><span id="fispm-t1-c26-d0005"></span></p>
+<p><strong>Definición FPM-I-26-D05 — Función de disipación de Rayleigh.</strong> Sea <span class="math inline">\(B(q,t)\)</span> simétrica semidefinida positiva. Definimos <span class="math inline">\(\mathcal D(q,\dot q,t)=\dot q^TB\dot q/2\)</span> y fuerzas resistentes <span class="math inline">\(Q_a^{\mathrm d}=-\partial\mathcal D/\partial\dot q^a\)</span>. La función <span class="math inline">\(\mathcal D\)</span> tiene unidades de potencia.</p>
+<p><span id="fispm-t1-c26-p0010"></span></p>
+<p><strong>Proposición FPM-I-26-P10 — Ecuaciones y disipación.</strong> Si <span class="math inline">\(Q^{\mathrm{ext}}\)</span> representa las fuerzas adicionales restantes, entonces</p>
+<p><span class="math display">\[
+\frac{d}{dt}L_{,\dot q^a}-L_{,q^a}
++\mathcal D_{,\dot q^a}=Q_a^{\mathrm{ext}},
+\]</span></p>
+<p><span class="math display">\[
+\dot E_L=\sum_aQ_a^{\mathrm{ext}}\dot q^a
+-\dot q^TB\dot q-L_{,t}.
+\]</span></p>
+<p><strong>Demostración.</strong> Derivar la forma cuadrática en velocidades da <span class="math inline">\(\mathcal D_{,\dot q}=B\dot q\)</span> por simetría. Sustituir <span class="math inline">\(Q=Q^{\mathrm{ext}}-B\dot q\)</span> en P01 y P09 produce ambas fórmulas. La semidefinitud hace no positiva la contribución resistente a la energía. <span class="math inline">\(\square\)</span></p>
+<p>Para <span class="math inline">\(L=\dot x^TM\dot x/2-x^TKx/2\)</span>, con matrices constantes, y <span class="math inline">\(\mathcal D=\dot x^TC\dot x/2\)</span>, se recupera <span class="math inline">\(M\ddot x+C\dot x+Kx=f\)</span>. Las ecuaciones de I24 aparecen como un caso del método, y sus condiciones para desacoplar el amortiguamiento permanecen necesarias.</p>
+<p>No se obtiene esta fuerza sustituyendo <span class="math inline">\(L\)</span> por <span class="math inline">\(L-\mathcal D\)</span> en la acción ordinaria. Tal sustitución trataría una potencia como si fuera energía y, aun corrigiendo unidades con una constante, produciría derivadas de aceleración distintas de la fuerza resistente buscada. La función de Rayleigh organiza el trabajo virtual disipativo; no reemplaza el principio conservativo por una resta informal.</p>
+<p><span id="fispm-t1-c26-s11"></span></p>
+<p><span id="fpm-i-26-s11"></span></p>
+</section>
+<section id="recuperar-tensiones-y-comprobar-contactos" class="level2">
+<h2 class="anchored" data-anchor-id="recuperar-tensiones-y-comprobar-contactos">§11. Recuperar tensiones y comprobar contactos</h2>
+<p>Las coordenadas independientes eliminan reacciones de las ecuaciones proyectadas, pero dejan disponible Newton para recuperarlas. Para una partícula sobre una esfera fija de radio <span class="math inline">\(\ell\)</span>, usemos <span class="math inline">\(g(\mathbf r)=|\mathbf r|^2-\ell^2=0\)</span>. Una reacción ideal tiene forma <span class="math inline">\(\mathbf R=2\lambda\mathbf r\)</span>.</p>
+<p><span id="fispm-t1-c26-p0011"></span></p>
+<p><strong>Proposición FPM-I-26-P11 — Reacción radial reconstruida.</strong> Con fuerza aplicada <span class="math inline">\(\mathbf F=-\nabla V\)</span>,</p>
+<p><span class="math display">\[
+\lambda=\frac{\mathbf r\cdot\nabla V-m|\dot{\mathbf r}|^2}{2\ell^2},
+\qquad
+\mathbf R=\frac{\mathbf r\cdot\nabla V-m|\dot{\mathbf r}|^2}{\ell^2}\mathbf r.
+\]</span></p>
+<p>Para el péndulo fijo bajo gravedad, la tensión dirigida hacia el apoyo vale <span class="math inline">\(\mathcal T=m\ell\dot\theta^2+mg\cos\theta\)</span>.</p>
+<p><strong>Demostración.</strong> Derivar dos veces <span class="math inline">\(|\mathbf r|^2=\ell^2\)</span> da <span class="math inline">\(\mathbf r\cdot\ddot{\mathbf r}=-|\dot{\mathbf r}|^2\)</span>. Multiplicar Newton <span class="math inline">\(m\ddot{\mathbf r}=-\nabla V+2\lambda\mathbf r\)</span> por <span class="math inline">\(\mathbf r\)</span> y despejar <span class="math inline">\(\lambda\)</span> produce las fórmulas. En el péndulo, <span class="math inline">\(V=mgy\)</span>, <span class="math inline">\(y=-\ell\cos\theta\)</span> y <span class="math inline">\(|\dot{\mathbf r}|^2=\ell^2\dot\theta^2\)</span>. Identificar <span class="math inline">\(\mathbf R=-\mathcal T\mathbf r/\ell\)</span> da la tensión indicada. <span class="math inline">\(\square\)</span></p>
+<p>Si el vínculo es una barra articulada ideal, una reacción de cualquier signo puede ser admisible. Para una cuerda flexible se exige <span class="math inline">\(\mathcal T\ge0\)</span>. Una solución angular que produzca tensión negativa deja de representar una cuerda tensa: debe cambiarse el régimen de movimiento. Del mismo modo, un apoyo unilateral sólo puede ejercer el signo de fuerza compatible con su contacto.</p>
+<p><span id="fispm-t1-c26-s12"></span></p>
+<p><span id="fpm-i-26-s12"></span></p>
+</section>
+<section id="términos-lineales-que-producen-fuerzas-giroscópicas" class="level2">
+<h2 class="anchored" data-anchor-id="términos-lineales-que-producen-fuerzas-giroscópicas">§12. Términos lineales que producen fuerzas giroscópicas</h2>
+<p>Los términos lineales en velocidades no siempre provienen de soportes móviles ni son siempre eliminables mediante una derivada total. Consideremos el modelo plano</p>
+<p><span class="math display">\[
+L=\frac m2(\dot x^2+\dot y^2)
++\frac\gamma2(x\dot y-y\dot x)-V(x,y),
+\]</span></p>
+<p>con <span class="math inline">\(\gamma\)</span> constante de unidades masa por tiempo.</p>
+<p><span id="fispm-t1-c26-p0012"></span></p>
+<p><strong>Proposición FPM-I-26-P12 — Fuerza giroscópica plana.</strong> Sus ecuaciones son</p>
+<p><span class="math display">\[
+m\ddot x=\gamma\dot y-V_x,
+\qquad m\ddot y=-\gamma\dot x-V_y.
+\]</span></p>
+<p>El término giroscópico no realiza potencia y la energía lagrangiana es <span class="math inline">\(m(\dot x^2+\dot y^2)/2+V\)</span>.</p>
+<p><strong>Demostración.</strong> Los momentos son <span class="math inline">\(p_x=m\dot x-\gamma y/2\)</span> y <span class="math inline">\(p_y=m\dot y+\gamma x/2\)</span>. Restar las derivadas de <span class="math inline">\(L\)</span> respecto de posiciones produce las fuerzas indicadas. Su potencia es <span class="math inline">\(\gamma\dot y\dot x-\gamma\dot x\dot y=0\)</span>. En <span class="math inline">\(\dot xp_x+\dot yp_y-L\)</span> se cancelan los términos lineales y queda la energía anunciada. <span class="math inline">\(\square\)</span></p>
+<p>Si <span class="math inline">\(V=0\)</span> y <span class="math inline">\(\gamma\ne0\)</span>, el vector velocidad gira con tasa angular <span class="math inline">\(-\gamma/m\)</span> y conserva su módulo. La trayectoria no trivial es circular. Este ejemplo permite trabajar con fuerzas perpendiculares a la velocidad sin presuponer todavía la teoría electromagnética del Tomo II.</p>
+<p>Para eliminar el término lineal mediante <span class="math inline">\(dG/dt\)</span> necesitaríamos <span class="math inline">\(G_x=-\gamma y/2\)</span> y <span class="math inline">\(G_y=\gamma x/2\)</span>, o sus opuestos según el sentido de la resta. Pero las derivadas mixtas serían <span class="math inline">\(G_{xy}=-\gamma/2\)</span> y <span class="math inline">\(G_{yx}=\gamma/2\)</span>. Si <span class="math inline">\(\gamma\ne0\)</span>, no existe tal función <span class="math inline">\(G\)</span> de clase <span class="math inline">\(C^2\)</span> ni siquiera localmente. La dependencia en velocidades puede tener contenido dinámico real.</p>
+<p><span id="fispm-t1-c26-s13"></span></p>
+<p><span id="fpm-i-26-s13"></span></p>
+</section>
+<section id="distintas-expresiones-para-las-mismas-ecuaciones" class="level2">
+<h2 class="anchored" data-anchor-id="distintas-expresiones-para-las-mismas-ecuaciones">§13. Distintas expresiones para las mismas ecuaciones</h2>
+<p><span id="fispm-t1-c26-d0006"></span></p>
+<p><strong>Definición FPM-I-26-D06 — Equivalencia variacional de borde fijo.</strong> Dos lagrangianos en las mismas coordenadas y sin fuerzas adicionales son equivalentes en este sentido si seleccionan las mismas curvas estacionarias con tiempos y configuraciones extremas fijos. Esta definición concierne a trayectorias; no exige que las funciones de energía ni los momentos tengan la misma expresión.</p>
+<p><span id="fispm-t1-c26-p0013"></span></p>
+<p><strong>Proposición FPM-I-26-P13 — Rescalamiento constante y derivada total.</strong> Si <span class="math inline">\(c_0\ne0\)</span> es constante y <span class="math inline">\(L'=c_0L+dG(q,t)/dt\)</span>, entonces ambos lagrangianos son equivalentes para bordes fijos. Sus momentos y energías se relacionan por</p>
+<p><span class="math display">\[
+p'_a=c_0p_a+G_{,q^a},\qquad E_{L'}=c_0E_L-G_{,t}.
+\]</span></p>
+<p>Si hay fuerzas generalizadas adicionales, deben escalarse por <span class="math inline">\(c_0\)</span> para conservar la misma ecuación forzada.</p>
+<p><strong>Demostración.</strong> La acción nueva es <span class="math inline">\(c_0S\)</span> más una diferencia fija de valores de <span class="math inline">\(G\)</span> en el borde. Por tanto su primera variación se anula exactamente cuando la anterior se anula. Derivar <span class="math inline">\(L'=c_0L+G_q\dot q+G_t\)</span> respecto de velocidades da la fórmula para <span class="math inline">\(p'\)</span>. Sustituir en la definición de energía cancela <span class="math inline">\(G_q\dot q\)</span> y da la segunda identidad. El residuo de Euler–Lagrange se multiplica por <span class="math inline">\(c_0\)</span>, lo que explica el escalamiento de fuerzas. <span class="math inline">\(\square\)</span></p>
+<p>Una transformación no lineal arbitraria <span class="math inline">\(L\mapsto f(L)\)</span> no tiene esta propiedad. Al derivar el momento aparecen factores dependientes de la trayectoria y términos adicionales. Tampoco una energía que cambie de expresión bajo una derivada total debe interpretarse automáticamente como un cambio de la energía física: las posiciones, velocidades y fuerzas del modelo deben seguir identificándose por separado.</p>
+<p>El factor constante negativo conserva las curvas estacionarias y puede invertir mínimos y máximos de la acción. La equivalencia dinámica no fija por sí sola el carácter extremo del funcional.</p>
+<p><span id="fispm-t1-c26-s14"></span></p>
+<p><span id="fpm-i-26-s14"></span></p>
+</section>
+<section id="recuperar-los-modos-normales-desde-el-lagrangiano" class="level2">
+<h2 class="anchored" data-anchor-id="recuperar-los-modos-normales-desde-el-lagrangiano">§14. Recuperar los modos normales desde el lagrangiano</h2>
+<p>Sea un sistema fijo con lagrangiano natural <span class="math inline">\(L=\dot q^TG(q)\dot q/2-V(q)\)</span> y equilibrio <span class="math inline">\(q_*\)</span> con <span class="math inline">\(\nabla V(q_*)=0\)</span>. Supongamos <span class="math inline">\(G\)</span> suficientemente diferenciable y definida positiva, y <span class="math inline">\(V\)</span> de clase <span class="math inline">\(C^3\)</span> cerca de ese punto.</p>
+<p><span id="fispm-t1-c26-p0014"></span></p>
+<p><strong>Proposición FPM-I-26-P14 — Linealización alrededor del reposo.</strong> Si <span class="math inline">\(q=q_*+\varepsilon\eta\)</span> y se retienen los términos de primer orden en <span class="math inline">\(\varepsilon\)</span>, las ecuaciones se reducen a</p>
+<p><span class="math display">\[
+M\ddot\eta+K\eta=0,
+\qquad M=G(q_*),\quad K=\nabla^2V(q_*).
+\]</span></p>
+<p><strong>Demostración.</strong> En la expresión de §3, <span class="math inline">\(G(q)\ddot q=\varepsilon G(q_*)\ddot\eta+O(\varepsilon^2)\)</span> para una familia de prueba con <span class="math inline">\(\eta,\dot\eta,\ddot\eta\)</span> acotadas en el intervalo considerado. Los términos <span class="math inline">\(\Gamma_{abc}\dot q^b\dot q^c\)</span> son de segundo orden porque el equilibrio está en reposo. Taylor da <span class="math inline">\(\nabla V(q)=\varepsilon K\eta+O(\varepsilon^2)\)</span>. Dividir por <span class="math inline">\(\varepsilon\)</span> y tomar la parte lineal produce la ecuación. <span class="math inline">\(\square\)</span></p>
+<p>La aproximación recupera exactamente el problema generalizado <span class="math inline">\(Ku=\omega^2Mu\)</span> de I24. Allí las masas y rigideces se conocían desde el modelo lineal; aquí se calculan a partir de las energías y del equilibrio elegido.</p>
+<p>Para el péndulo doble con masas iguales <span class="math inline">\(m\)</span> y longitudes iguales <span class="math inline">\(\ell\)</span>, alrededor de abajo,</p>
+<p><span class="math display">\[
+M=m\ell^2\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix},
+\qquad K=mg\ell\begin{pmatrix}2&amp;0\\0&amp;1\end{pmatrix}.
+\]</span></p>
+<p>Si <span class="math inline">\(\lambda=\omega^2\ell/g\)</span>, el determinante es proporcional a <span class="math inline">\(\lambda^2-4\lambda+2\)</span>. Las frecuencias al cuadrado son <span class="math inline">\((g/\ell)(2-\sqrt2)\)</span> y <span class="math inline">\((g/\ell)(2+\sqrt2)\)</span>, con formas angulares <span class="math inline">\((1,\sqrt2)^T\)</span> y <span class="math inline">\((1,-\sqrt2)^T\)</span>. El modo lento mueve ambas barras en el mismo sentido; el rápido las contrapone.</p>
+<p>La matriz cinética positiva asegura que las aceleraciones locales estén determinadas. La conservación de una energía depende del tiempo explícito y de las fuerzas adicionales. La estabilidad de un equilibrio depende además del potencial y de posibles degeneraciones. Esas preguntas pueden responderse dentro del mismo método, con hipótesis distintas. I27 organizará la relación entre transformaciones, simetrías y cantidades conservadas que aquí ha aparecido en ejemplos concretos.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p><span id="fispm-t1-c26-e0001"></span></p>
+<section id="fpm-i-26-e01-una-traslación-prescrita" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e01-una-traslación-prescrita">FPM-I-26-E01 — Una traslación prescrita</h3>
+<p>Para una partícula libre con posición inercial <span class="math inline">\(x=q+a(t)\)</span>, calcula <span class="math inline">\(G\)</span>, <span class="math inline">\(a_1\)</span>, <span class="math inline">\(c\)</span>, el momento conjugado y la ecuación de <span class="math inline">\(q\)</span>. Distingue la función <span class="math inline">\(a(t)\)</span> del coeficiente lineal <span class="math inline">\(a_1\)</span>.</p>
+<p><span id="fispm-t1-c26-e0002"></span></p>
+</section>
+<section id="fpm-i-26-e02-positividad-desde-las-posiciones" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e02-positividad-desde-las-posiciones">FPM-I-26-E02 — Positividad desde las posiciones</h3>
+<p>Una partícula plana tiene coordenadas <span class="math inline">\(r(u,v)=(u,v+\alpha u^2)\)</span>. Halla su matriz cinética y demuestra su positividad para todos los valores de <span class="math inline">\(u\)</span>, con <span class="math inline">\(m&gt;0\)</span>.</p>
+<p><span id="fispm-t1-c26-e0003"></span></p>
+</section>
+<section id="fpm-i-26-e03-una-coordenada-no-lineal" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e03-una-coordenada-no-lineal">FPM-I-26-E03 — Una coordenada no lineal</h3>
+<p>Una partícula libre unidimensional se describe con <span class="math inline">\(x=q^2\)</span>, <span class="math inline">\(q&gt;0\)</span>. Halla <span class="math inline">\(L\)</span>, la ecuación de <span class="math inline">\(q\)</span> y su relación con <span class="math inline">\(\ddot x=0\)</span>. ¿Hasta cuándo puede usarse esta carta?</p>
+<p><span id="fispm-t1-c26-e0004"></span></p>
+</section>
+<section id="fpm-i-26-e04-singularidad-polar" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e04-singularidad-polar">FPM-I-26-E04 — Singularidad polar</h3>
+<p>Calcula el Hessiano de velocidades del lagrangiano polar de §5. Explica qué ocurre en <span class="math inline">\(r=0\)</span> y por qué no implica que la dinámica cartesiana de una partícula libre sea singular allí.</p>
+<p><span id="fispm-t1-c26-e0005"></span></p>
+</section>
+<section id="fpm-i-26-e05-coordenadas-redundantes" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e05-coordenadas-redundantes">FPM-I-26-E05 — Coordenadas redundantes</h3>
+<p>Considera <span class="math inline">\(L=m(\dot q^1+\dot q^2)^2/2-k(q^1+q^2)^2/2\)</span>. Calcula el Hessiano y las ecuaciones. Explica qué combinación queda determinada y cuál queda libre.</p>
+<p><span id="fispm-t1-c26-e0006"></span></p>
+</section>
+<section id="fpm-i-26-e06-referencia-acelerada" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e06-referencia-acelerada">FPM-I-26-E06 — Referencia acelerada</h3>
+<p>Para una partícula libre, haz <span class="math inline">\(x=Q+At^2/2\)</span>, con <span class="math inline">\(A\)</span> constante. Obtén la ecuación en <span class="math inline">\(Q\)</span> y comprueba la fórmula de transformación de P04.</p>
+<p><span id="fispm-t1-c26-e0007"></span></p>
+</section>
+<section id="fpm-i-26-e07-fuerza-inversa-del-cuadrado" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e07-fuerza-inversa-del-cuadrado">FPM-I-26-E07 — Fuerza inversa del cuadrado</h3>
+<p>Con <span class="math inline">\(V(r)=-\kappa/r\)</span>, <span class="math inline">\(\kappa&gt;0\)</span>, elimina <span class="math inline">\(\dot\theta\)</span> usando <span class="math inline">\(h=mr^2\dot\theta\)</span>. Halla la ecuación radial y el radio de una órbita circular con <span class="math inline">\(h\ne0\)</span>.</p>
+<p><span id="fispm-t1-c26-e0008"></span></p>
+</section>
+<section id="fpm-i-26-e08-regularidad-del-péndulo-doble" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e08-regularidad-del-péndulo-doble">FPM-I-26-E08 — Regularidad del péndulo doble</h3>
+<p>Demuestra la fórmula del determinante de §6. Estudia su límite cuando <span class="math inline">\(m_1\to0\)</span> y ambas barras están alineadas. Relaciona ese límite con una posible pérdida de independencia cinética.</p>
+<p><span id="fispm-t1-c26-e0009"></span></p>
+</section>
+<section id="fpm-i-26-e09-aceleraciones-iniciales-inesperadas" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e09-aceleraciones-iniciales-inesperadas">FPM-I-26-E09 — Aceleraciones iniciales inesperadas</h3>
+<p>En el péndulo doble de masas iguales y longitudes iguales, toma <span class="math inline">\(\theta_1=\theta_2=\alpha\)</span> y velocidades nulas en un instante. Calcula ambas aceleraciones angulares en ese instante.</p>
+<p><span id="fispm-t1-c26-e0010"></span></p>
+</section>
+<section id="fpm-i-26-e10-verificar-los-modos-angulares" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e10-verificar-los-modos-angulares">FPM-I-26-E10 — Verificar los modos angulares</h3>
+<p>Para las matrices de §14, comprueba las frecuencias y las formas <span class="math inline">\((1,\sqrt2)^T\)</span>, <span class="math inline">\((1,-\sqrt2)^T\)</span>. Explica por qué no son ortogonales euclídeamente y sí lo son con la matriz de masa.</p>
+<p><span id="fispm-t1-c26-e0011"></span></p>
+</section>
+<section id="fpm-i-26-e11-soltar-la-primera-barra" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e11-soltar-la-primera-barra">FPM-I-26-E11 — Soltar la primera barra</h3>
+<p>En la aproximación lineal del péndulo doble igual, toma <span class="math inline">\(\theta_1(0)=\alpha\)</span>, <span class="math inline">\(\theta_2(0)=0\)</span> y velocidades cero. Reconstruye ambos ángulos mediante las dos frecuencias normales.</p>
+<p><span id="fispm-t1-c26-e0012"></span></p>
+</section>
+<section id="fpm-i-26-e12-carro-libre-desde-el-reposo" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e12-carro-libre-desde-el-reposo">FPM-I-26-E12 — Carro libre desde el reposo</h3>
+<p>Para el sistema de §7 sin fuerza exterior, calcula <span class="math inline">\(\ddot x\)</span> y <span class="math inline">\(\ddot\theta\)</span> en un instante con ángulo <span class="math inline">\(\theta\)</span> y velocidades nulas. Comprueba el límite de un carro muy pesado.</p>
+<p><span id="fispm-t1-c26-e0013"></span></p>
+</section>
+<section id="fpm-i-26-e13-momento-horizontal-nulo" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e13-momento-horizontal-nulo">FPM-I-26-E13 — Momento horizontal nulo</h3>
+<p>Para el carro libre, supón <span class="math inline">\(p_x=0\)</span>. Integra la relación entre <span class="math inline">\(x\)</span> y <span class="math inline">\(\theta\)</span> y expresa la energía cinética sobre esos movimientos sólo mediante <span class="math inline">\(\theta,\dot\theta\)</span>. No se pide una eliminación general de coordenadas a momento arbitrario.</p>
+<p><span id="fispm-t1-c26-e0014"></span></p>
+</section>
+<section id="fpm-i-26-e14-umbral-del-aro-giratorio" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e14-umbral-del-aro-giratorio">FPM-I-26-E14 — Umbral del aro giratorio</h3>
+<p>En §8, estudia el punto inferior cuando <span class="math inline">\(\Omega^2=g/\ell\)</span>. Expande <span class="math inline">\(V_{\mathrm{ef}}\)</span> hasta orden cuatro y decide si el equilibrio reducido es estable. ¿Qué predice la frecuencia lineal?</p>
+<p><span id="fispm-t1-c26-e0015"></span></p>
+</section>
+<section id="fpm-i-26-e15-potencia-del-motor" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e15-potencia-del-motor">FPM-I-26-E15 — Potencia del motor</h3>
+<p>Para el aro giratorio, calcula <span class="math inline">\(\dot H_z\)</span> y demuestra que <span class="math inline">\(\Omega\dot H_z=\dot E_{\mathrm{mec}}\)</span>. Indica cuándo esa potencia es cero aun con <span class="math inline">\(\Omega\ne0\)</span>.</p>
+<p><span id="fispm-t1-c26-e0016"></span></p>
+</section>
+<section id="fpm-i-26-e16-rigidez-dependiente-del-tiempo" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e16-rigidez-dependiente-del-tiempo">FPM-I-26-E16 — Rigidez dependiente del tiempo</h3>
+<p>Para <span class="math inline">\(L=m\dot q^2/2-k(t)q^2/2\)</span>, con <span class="math inline">\(m&gt;0\)</span>, calcula <span class="math inline">\(E_L\)</span> y su derivada sobre soluciones. ¿La ausencia de fuerzas adicionales garantiza conservación?</p>
+<p><span id="fispm-t1-c26-e0017"></span></p>
+</section>
+<section id="fpm-i-26-e17-dos-energías-en-una-referencia-móvil" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e17-dos-energías-en-una-referencia-móvil">FPM-I-26-E17 — Dos energías en una referencia móvil</h3>
+<p>En E01, compara <span class="math inline">\(E_L\)</span> con <span class="math inline">\(E_{\mathrm{mec}}=m\dot x^2/2\)</span>. Calcula sus derivadas sobre soluciones libres y verifica P09.</p>
+<p><span id="fispm-t1-c26-e0018"></span></p>
+</section>
+<section id="fpm-i-26-e18-resistencia-con-coeficiente-variable" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e18-resistencia-con-coeficiente-variable">FPM-I-26-E18 — Resistencia con coeficiente variable</h3>
+<p>Para <span class="math inline">\(\mathcal D=b(q)\dot q^2/2\)</span>, con <span class="math inline">\(b(q)\ge0\)</span>, encuentra la fuerza generalizada y su potencia. Explica por qué no aparece <span class="math inline">\(b'(q)\)</span> al calcular esa fuerza.</p>
+<p><span id="fispm-t1-c26-e0019"></span></p>
+</section>
+<section id="fpm-i-26-e19-un-amortiguador-entre-dos-masas" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e19-un-amortiguador-entre-dos-masas">FPM-I-26-E19 — Un amortiguador entre dos masas</h3>
+<p>Dos masas tienen un amortiguador viscoso que sólo resiste su velocidad relativa. Construye <span class="math inline">\(\mathcal D\)</span>, las dos fuerzas y la tasa de pérdida de energía. ¿Qué movimiento no disipa mediante ese vínculo?</p>
+<p><span id="fispm-t1-c26-e0020"></span></p>
+</section>
+<section id="fpm-i-26-e20-mantener-tensa-una-cuerda" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e20-mantener-tensa-una-cuerda">FPM-I-26-E20 — Mantener tensa una cuerda</h3>
+<p>Una masa describe una circunferencia vertical de radio <span class="math inline">\(\ell\)</span> con una cuerda ideal. Halla la rapidez mínima en el punto inferior para completar una vuelta sin tensión negativa. Usa energía y P11.</p>
+<p><span id="fispm-t1-c26-e0021"></span></p>
+</section>
+<section id="fpm-i-26-e21-resolver-el-movimiento-giroscópico" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e21-resolver-el-movimiento-giroscópico">FPM-I-26-E21 — Resolver el movimiento giroscópico</h3>
+<p>En §12, toma <span class="math inline">\(V=0\)</span>, <span class="math inline">\(\gamma&gt;0\)</span>, posición inicial <span class="math inline">\((x_0,y_0)\)</span> y velocidad <span class="math inline">\((v_0,0)\)</span>, con <span class="math inline">\(v_0&gt;0\)</span>. Halla la trayectoria, su centro y su radio.</p>
+<p><span id="fispm-t1-c26-e0022"></span></p>
+</section>
+<section id="fpm-i-26-e22-un-término-lineal-eliminable" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e22-un-término-lineal-eliminable">FPM-I-26-E22 — Un término lineal eliminable</h3>
+<p>Estudia <span class="math inline">\(L=m(\dot x^2+\dot y^2)/2+c(x\dot y+y\dot x)\)</span>. Encuentra una derivada total que elimine el término cruzado y verifica las ecuaciones. Compáralo con §12.</p>
+<p><span id="fispm-t1-c26-e0023"></span></p>
+</section>
+<section id="fpm-i-26-e23-cambiar-el-cero-energético" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e23-cambiar-el-cero-energético">FPM-I-26-E23 — Cambiar el cero energético</h3>
+<p>Añade <span class="math inline">\(dG/dt\)</span> con <span class="math inline">\(G(q,t)=-E_0t\)</span>. Calcula el cambio de lagrangiano, momentos y energía lagrangiana. ¿Cambia la trayectoria?</p>
+<p><span id="fispm-t1-c26-e0024"></span></p>
+</section>
+<section id="fpm-i-26-e24-un-cuadrado-no-equivalente" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e24-un-cuadrado-no-equivalente">FPM-I-26-E24 — Un cuadrado no equivalente</h3>
+<p>Sea <span class="math inline">\(L=m(\dot q^2-\omega^2q^2)/2\)</span> y <span class="math inline">\(L'=L^2/E_*\)</span>, con <span class="math inline">\(E_*&gt;0\)</span> constante de unidades de energía. Deriva el residuo de Euler–Lagrange de <span class="math inline">\(L'\)</span> y demuestra que una solución armónica no trivial de <span class="math inline">\(L\)</span> no lo anula en general.</p>
+<p><span id="fispm-t1-c26-e0025"></span></p>
+</section>
+<section id="fpm-i-26-e25-regularidad-bajo-reparametrización" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e25-regularidad-bajo-reparametrización">FPM-I-26-E25 — Regularidad bajo reparametrización</h3>
+<p>En una dimensión, transforma un Hessiano <span class="math inline">\(W=m&gt;0\)</span> mediante <span class="math inline">\(q=f(Q)\)</span>. Obtén <span class="math inline">\(\widetilde W\)</span> y estudia el caso <span class="math inline">\(f(Q)=Q^3\)</span> en <span class="math inline">\(Q=0\)</span>.</p>
+<p><span id="fispm-t1-c26-e0026"></span></p>
+</section>
+<section id="fpm-i-26-e26-masa-efectiva-que-depende-de-posición" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e26-masa-efectiva-que-depende-de-posición">FPM-I-26-E26 — Masa efectiva que depende de posición</h3>
+<p>Para <span class="math inline">\(L=m(1+\alpha q^2)\dot q^2/2-kq^2/2\)</span>, con <span class="math inline">\(m,k&gt;0\)</span> y <span class="math inline">\(\alpha\ge0\)</span>, deriva la ecuación exacta y su aproximación lineal alrededor del reposo en cero.</p>
+<p><span id="fispm-t1-c26-e0027"></span></p>
+</section>
+<section id="fpm-i-26-e27-péndulo-esférico" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e27-péndulo-esférico">FPM-I-26-E27 — Péndulo esférico</h3>
+<p>Con ángulo polar <span class="math inline">\(\theta\)</span> desde abajo y azimut <span class="math inline">\(\varphi\)</span>, escribe el lagrangiano de una masa a distancia fija <span class="math inline">\(\ell\)</span> del apoyo. Halla ambas ecuaciones y explica la degeneración de la carta en los polos.</p>
+<p><span id="fispm-t1-c26-e0028"></span></p>
+</section>
+<section id="fpm-i-26-e28-aro-libre-frente-a-aro-prescrito" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e28-aro-libre-frente-a-aro-prescrito">FPM-I-26-E28 — Aro libre frente a aro prescrito</h3>
+<p>Supón que el aro de §8 puede girar libremente con ángulo <span class="math inline">\(\varphi\)</span> y momento de inercia propio <span class="math inline">\(I&gt;0\)</span>. Escribe el lagrangiano del conjunto y la ecuación de <span class="math inline">\(\varphi\)</span>. Explica por qué no puede imponerse además <span class="math inline">\(\dot\varphi=\Omega\)</span> constante sin torque externo en un movimiento genérico.</p>
+<p><span id="fispm-t1-c26-e0029"></span></p>
+</section>
+<section id="fpm-i-26-e29-regularidad-sin-existencia-global" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e29-regularidad-sin-existencia-global">FPM-I-26-E29 — Regularidad sin existencia global</h3>
+<p>Para <span class="math inline">\(L=\dot q^2/2+q^4/4\)</span>, muestra que el Hessiano es regular. Resuelve con <span class="math inline">\(q(0)=1\)</span>, <span class="math inline">\(\dot q(0)=1/\sqrt2\)</span> y demuestra que la solución diverge en tiempo finito.</p>
+<p><span id="fispm-t1-c26-e0030"></span></p>
+</section>
+<section id="fpm-i-26-e30-carro-forzado-y-amortiguado" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e30-carro-forzado-y-amortiguado">FPM-I-26-E30 — Carro forzado y amortiguado</h3>
+<p>Añade al carro de §7 una fuerza <span class="math inline">\(F(t)\)</span> y resistencia horizontal <span class="math inline">\(-b\dot x\)</span>, con <span class="math inline">\(b\ge0\)</span>. Escribe las ecuaciones, demuestra que se pueden despejar las dos aceleraciones y obtén el balance de energía mecánica. Se supone contacto ideal con la guía horizontal.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="fpm-i-26-e01" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e01">FPM-I-26-E01</h3>
+<p>La velocidad es <span class="math inline">\(\dot x=\dot q+\dot a\)</span>, así que <span class="math inline">\(T=m\dot q^2/2+m\dot a\dot q+m\dot a^2/2\)</span>. Por tanto <span class="math inline">\(G=m\)</span>, <span class="math inline">\(a_1=m\dot a\)</span> y <span class="math inline">\(c=m\dot a^2/2\)</span>. El momento es <span class="math inline">\(p=m(\dot q+\dot a)\)</span> y Euler–Lagrange da <span class="math inline">\(m(\ddot q+\ddot a)=0\)</span>. La función prescrita <span class="math inline">\(a(t)\)</span> representa una posición; el coeficiente <span class="math inline">\(a_1\)</span> representa el término de velocidad inducido y tiene unidades de momento lineal.</p>
+</section>
+<section id="fpm-i-26-e02" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e02">FPM-I-26-E02</h3>
+<p>Los vectores de coordenada son <span class="math inline">\(r_{,u}=(1,2\alpha u)\)</span> y <span class="math inline">\(r_{,v}=(0,1)\)</span>. Así</p>
+<p><span class="math display">\[
+G=m\begin{pmatrix}1+4\alpha^2u^2&amp;2\alpha u\\2\alpha u&amp;1\end{pmatrix}.
+\]</span></p>
+<p>Para una columna <span class="math inline">\((a,b)^T\)</span>, su forma cuadrática es <span class="math inline">\(m[a^2+(2\alpha ua+b)^2]\)</span>, positiva salvo en el vector nulo. Equivalentemente, la primera entrada es positiva y <span class="math inline">\(\det G=m^2&gt;0\)</span>. La coordenada mezcla velocidades sin crear una degeneración física.</p>
+</section>
+<section id="fpm-i-26-e03" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e03">FPM-I-26-E03</h3>
+<p>La velocidad cartesiana es <span class="math inline">\(2q\dot q\)</span> y <span class="math inline">\(L=2mq^2\dot q^2\)</span>. Derivar da <span class="math inline">\(4mq^2\ddot q+4mq\dot q^2=0\)</span>, equivalente para <span class="math inline">\(q&gt;0\)</span> a <span class="math inline">\(q\ddot q+\dot q^2=0\)</span>. Como <span class="math inline">\(\ddot x=2(q\ddot q+\dot q^2)\)</span>, coincide con Newton libre. Se puede usar la carta mientras <span class="math inline">\(x(t)&gt;0\)</span>. Al llegar a <span class="math inline">\(x=0\)</span>, la inversa <span class="math inline">\(q=\sqrt x\)</span> deja de ser regular; si la partícula cruza hacia <span class="math inline">\(x&lt;0\)</span>, esa carta deja además de representarla.</p>
+</section>
+<section id="fpm-i-26-e04" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e04">FPM-I-26-E04</h3>
+<p>El Hessiano es <span class="math inline">\(W=\operatorname{diag}(m,mr^2)\)</span>, con determinante <span class="math inline">\(m^2r^2\)</span>. Es regular para <span class="math inline">\(r&gt;0\)</span>. En el origen, todos los valores de <span class="math inline">\(\theta\)</span> representan el mismo punto y el vector de coordenada angular se anula: el cambio cartesiano-polar pierde rango. La ecuación cartesiana <span class="math inline">\(m\ddot{\mathbf r}=0\)</span> sigue siendo regular. Lo que falla es la representación polar de las posiciones y velocidades en ese punto.</p>
+</section>
+<section id="fpm-i-26-e05" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e05">FPM-I-26-E05</h3>
+<p>El Hessiano es <span class="math inline">\(m\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\)</span> y tiene rango uno. Ambas ecuaciones son idénticas: <span class="math inline">\(m(\ddot q^1+\ddot q^2)+k(q^1+q^2)=0\)</span>. La suma <span class="math inline">\(s=q^1+q^2\)</span> satisface el oscilador <span class="math inline">\(m\ddot s+ks=0\)</span>, mientras la diferencia no recibe ecuación y puede ser una función arbitraria. Los datos para las dos coordenadas no determinan una evolución única. Se han duplicado variables para describir una única combinación física, fuera del rango completo supuesto en P02.</p>
+</section>
+<section id="fpm-i-26-e06" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e06">FPM-I-26-E06</h3>
+<p>El lagrangiano transformado es <span class="math inline">\(\widetilde L=m(\dot Q+At)^2/2\)</span>. Su ecuación es <span class="math inline">\(m(\ddot Q+A)=0\)</span>, de modo que <span class="math inline">\(\ddot Q=-A\)</span>. El Jacobiano espacial es uno; P04 dice que el residuo nuevo coincide con el original <span class="math inline">\(m\ddot x\)</span> evaluado en <span class="math inline">\(x=Q+At^2/2\)</span>, precisamente <span class="math inline">\(m(\ddot Q+A)\)</span>. El término inducido por el cambio temporal reproduce la aceleración de la referencia.</p>
+</section>
+<section id="fpm-i-26-e07" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e07">FPM-I-26-E07</h3>
+<p>De P05, <span class="math inline">\(m\ddot r=mr\dot\theta^2-\kappa/r^2\)</span>. Con <span class="math inline">\(\dot\theta=h/(mr^2)\)</span> queda</p>
+<p><span class="math display">\[
+m\ddot r=\frac{h^2}{mr^3}-\frac\kappa{r^2}.
+\]</span></p>
+<p>Una órbita circular tiene <span class="math inline">\(\ddot r=0\)</span>, así que <span class="math inline">\(r_0=h^2/(m\kappa)\)</span>. La hipótesis <span class="math inline">\(h\ne0\)</span> produce un radio positivo. El mismo balance se obtiene derivando el potencial efectivo <span class="math inline">\(h^2/(2mr^2)-\kappa/r\)</span> de I17.</p>
+</section>
+<section id="fpm-i-26-e08" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e08">FPM-I-26-E08</h3>
+<p>El determinante es</p>
+<p><span class="math display">\[
+(m_1+m_2)m_2\ell_1^2\ell_2^2
+-m_2^2\ell_1^2\ell_2^2\cos^2\delta
+=m_2\ell_1^2\ell_2^2(m_1+m_2\sin^2\delta).
+\]</span></p>
+<p>Con <span class="math inline">\(m_1&gt;0\)</span> es positivo. Si <span class="math inline">\(m_1\to0\)</span> y <span class="math inline">\(\sin\delta=0\)</span>, tiende a cero. En el límite sólo queda inercia en la segunda masa; en una configuración alineada ciertos cambios angulares combinados pueden dejar instantáneamente inmóvil a esa masa. La forma cinética pierde positividad estricta. El límite ha eliminado una de las masas positivas que garantizaban P02.</p>
+</section>
+<section id="fpm-i-26-e09" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e09">FPM-I-26-E09</h3>
+<p>En ese instante <span class="math inline">\(\delta=0\)</span> y no hay términos de velocidad. Dividiendo las ecuaciones por <span class="math inline">\(m\ell^2\)</span>,</p>
+<p><span class="math display">\[
+2\ddot\theta_1+\ddot\theta_2=-2(g/\ell)\sin\alpha,
+\qquad
+\ddot\theta_1+\ddot\theta_2=-(g/\ell)\sin\alpha.
+\]</span></p>
+<p>Restar da <span class="math inline">\(\ddot\theta_1=-(g/\ell)\sin\alpha\)</span> y después <span class="math inline">\(\ddot\theta_2=0\)</span>. La segunda barra no tiene aceleración angular inicial aunque la configuración esté inclinada; la aceleración transmitida por el primer eslabón interviene en su balance. Esto no afirma que permanezca sin girar después.</p>
+</section>
+<section id="fpm-i-26-e10" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e10">FPM-I-26-E10</h3>
+<p>Tras quitar los factores dimensionales, el determinante de <span class="math inline">\(\operatorname{diag}(2,1)-\lambda\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}\)</span> es <span class="math inline">\(\lambda^2-4\lambda+2\)</span>. Sus raíces son <span class="math inline">\(2\mp\sqrt2\)</span>. Sustituir <span class="math inline">\(u_-=(1,\sqrt2)^T\)</span> y <span class="math inline">\(u_+=(1,-\sqrt2)^T\)</span> verifica los dos pares propios. El producto euclídeo es <span class="math inline">\(1-2=-1\)</span>. Para la masa reducida,</p>
+<p><span class="math display">\[
+u_-^T\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}u_+=0.
+\]</span></p>
+<p>La ortogonalidad relevante pertenece a la energía cinética, como en I24. Los ángulos absolutos no son ejes ortogonales para esa forma cuadrática.</p>
+</section>
+<section id="fpm-i-26-e11" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e11">FPM-I-26-E11</h3>
+<p>Los datos se descomponen como <span class="math inline">\((\alpha,0)^T=(\alpha/2)u_-+(\alpha/2)u_+\)</span>. Como las velocidades iniciales son cero,</p>
+<p><span class="math display">\[
+\theta_1=\frac\alpha2(\cos\omega_-t+\cos\omega_+t),
+\qquad
+\theta_2=\frac\alpha{\sqrt2}(\cos\omega_-t-\cos\omega_+t).
+\]</span></p>
+<p>En <span class="math inline">\(t=0\)</span> se recuperan los ángulos y ambas derivadas son nulas. La fórmula corresponde a la aproximación lineal y requiere amplitudes pequeñas; no es la solución exacta del péndulo doble no lineal.</p>
+</section>
+<section id="fpm-i-26-e12" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e12">FPM-I-26-E12</h3>
+<p>Sin velocidades, las ecuaciones son <span class="math inline">\((M+m)\ddot x+m\ell\cos\theta\ddot\theta=0\)</span> y <span class="math inline">\(\cos\theta\ddot x+\ell\ddot\theta=-g\sin\theta\)</span>. Eliminar <span class="math inline">\(\ddot x\)</span> da</p>
+<p><span class="math display">\[
+\ddot\theta=-\frac{(M+m)g\sin\theta}{\ell(M+m\sin^2\theta)},
+\qquad
+\ddot x=\frac{mg\sin\theta\cos\theta}{M+m\sin^2\theta}.
+\]</span></p>
+<p>Cuando <span class="math inline">\(M\to\infty\)</span>, la aceleración del carro tiende a cero y la angular a <span class="math inline">\(-(g/\ell)\sin\theta\)</span>, el péndulo fijo. La positividad del denominador coincide con el determinante de P07.</p>
+</section>
+<section id="fpm-i-26-e13" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e13">FPM-I-26-E13</h3>
+<p>Con <span class="math inline">\(F=0\)</span>, la primera ecuación es <span class="math inline">\(\dot p_x=0\)</span>. Si <span class="math inline">\(p_x=0\)</span>, <span class="math inline">\(\dot x=-m\ell\cos\theta\dot\theta/(M+m)\)</span> y por integración</p>
+<p><span class="math display">\[
+x=x_c-\frac{m\ell}{M+m}\sin\theta.
+\]</span></p>
+<p>Sustituir esa velocidad en la energía cinética completa y agrupar da</p>
+<p><span class="math display">\[
+T=\frac{m\ell^2}{2}\frac{M+m\sin^2\theta}{M+m}\dot\theta^2.
+\]</span></p>
+<p>El coeficiente es positivo y cerca de abajo vale <span class="math inline">\(m\ell^2M/(M+m)\)</span>. El retroceso del apoyo reduce esa inercia interna, lo que explica el aumento de frecuencia de §7. Aquí se ha calculado la energía sobre movimientos de momento horizontal nulo; una eliminación variacional general a momento fijado requiere una formulación adicional.</p>
+</section>
+<section id="fpm-i-26-e14" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e14">FPM-I-26-E14</h3>
+<p>En el umbral, <span class="math inline">\(V_{\mathrm{ef}}=-mg\ell[\sin^2\theta/2+\cos\theta]\)</span>. Las expansiones <span class="math inline">\(\sin^2\theta=\theta^2-\theta^4/3+O(\theta^6)\)</span> y <span class="math inline">\(\cos\theta=1-\theta^2/2+\theta^4/24+O(\theta^6)\)</span> dan</p>
+<p><span class="math display">\[
+V_{\mathrm{ef}}=-mg\ell+\frac{mg\ell}{8}\theta^4+O(\theta^6).
+\]</span></p>
+<p>Hay un mínimo estricto degenerado, de modo que el equilibrio reducido sigue siendo estable por energía. La frecuencia lineal es cero y la ecuación linealizada aislada no decide esa estabilidad. Los términos de orden cuatro aportan la restauración que el Hessiano no detecta.</p>
+</section>
+<section id="fpm-i-26-e15" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e15">FPM-I-26-E15</h3>
+<p>La derivada de <span class="math inline">\(H_z=m\ell^2\Omega\sin^2\theta\)</span> es <span class="math inline">\(2m\ell^2\Omega\sin\theta\cos\theta\dot\theta\)</span>. Multiplicar por <span class="math inline">\(\Omega\)</span> produce exactamente P08. La potencia es cero si <span class="math inline">\(\dot\theta=0\)</span> o si <span class="math inline">\(\sin\theta\cos\theta=0\)</span>, entre otros instantes posibles. Un motor que mantiene una velocidad constante puede transmitir potencia variable: la potencia depende también del torque requerido.</p>
+</section>
+<section id="fpm-i-26-e16" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e16">FPM-I-26-E16</h3>
+<p>La energía es <span class="math inline">\(E_L=m\dot q^2/2+k(t)q^2/2\)</span>. Como <span class="math inline">\(L_{,t}=-\dot k(t)q^2/2\)</span>, P09 da <span class="math inline">\(\dot E_L=\dot k(t)q^2/2\)</span>. La misma identidad se obtiene derivando la energía y usando <span class="math inline">\(m\ddot q+k(t)q=0\)</span>. La modificación externa de la rigidez intercambia energía aun sin una fuerza adicional escrita en <span class="math inline">\(Q\)</span>.</p>
+</section>
+<section id="fpm-i-26-e17" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e17">FPM-I-26-E17</h3>
+<p>El lagrangiano es <span class="math inline">\(m(\dot q+\dot a)^2/2\)</span>, pero <span class="math inline">\(E_L=m\dot q^2/2-m\dot a^2/2\)</span>. La energía mecánica es <span class="math inline">\(E_{\mathrm{mec}}=m(\dot q+\dot a)^2/2\)</span>. Como <span class="math inline">\(\ddot q=-\ddot a\)</span>, la velocidad absoluta es constante y <span class="math inline">\(\dot E_{\mathrm{mec}}=0\)</span>. En cambio,</p>
+<p><span class="math display">\[
+\dot E_L=-m(\dot q+\dot a)\ddot a=-L_{,t}.
+\]</span></p>
+<p>La derivada parcial respecto del tiempo se toma manteniendo fijas <span class="math inline">\(q\)</span> y <span class="math inline">\(\dot q\)</span>, por lo que <span class="math inline">\(L_{,t}=m(\dot q+\dot a)\ddot a\)</span>. Las dos funciones energéticas registran relaciones distintas con la referencia móvil.</p>
+</section>
+<section id="fpm-i-26-e18" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e18">FPM-I-26-E18</h3>
+<p>Se deriva respecto de la velocidad manteniendo fija la posición: <span class="math inline">\(Q^{\mathrm d}=-b(q)\dot q\)</span>. Su potencia es <span class="math inline">\(-b(q)\dot q^2\le0\)</span>. No aparece <span class="math inline">\(b'(q)\)</span> porque la definición de fuerza de Rayleigh no es una derivada temporal ni una ecuación de Euler–Lagrange para <span class="math inline">\(\mathcal D\)</span>. Confundir esas operaciones añadiría términos que no pertenecen al modelo resistente.</p>
+</section>
+<section id="fpm-i-26-e19" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e19">FPM-I-26-E19</h3>
+<p>Tomamos <span class="math inline">\(\mathcal D=b(\dot x_2-\dot x_1)^2/2\)</span>. Entonces <span class="math inline">\(Q_1=b(\dot x_2-\dot x_1)\)</span> y <span class="math inline">\(Q_2=-b(\dot x_2-\dot x_1)\)</span>. Su potencia total es <span class="math inline">\(-b(\dot x_2-\dot x_1)^2\)</span>. Un movimiento con velocidades iguales no disipa mediante ese amortiguador, aunque ambas masas se muevan. La matriz resistente es <span class="math inline">\(b\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}\)</span>, semidefinida positiva con una dirección nula común.</p>
+</section>
+<section id="fpm-i-26-e20" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e20">FPM-I-26-E20</h3>
+<p>Sea <span class="math inline">\(v_b\)</span> la rapidez inferior. La energía da <span class="math inline">\(v^2=v_b^2-2g\ell(1-\cos\theta)\)</span>. Sustituir en la tensión produce</p>
+<p><span class="math display">\[
+\mathcal T=\frac{mv_b^2}{\ell}-2mg+3mg\cos\theta.
+\]</span></p>
+<p>Su mínimo ocurre arriba, donde <span class="math inline">\(\cos\theta=-1\)</span>. Exigir tensión no negativa en todo el ciclo da <span class="math inline">\(v_b^2\ge5g\ell\)</span>. La rapidez mínima es <span class="math inline">\(\sqrt{5g\ell}\)</span>; en el límite, arriba se tiene <span class="math inline">\(v^2=g\ell\)</span> y tensión cero. Una rapidez inferior menor puede proporcionar altura suficiente en un cálculo energético que, sin embargo, exigiría una cuerda que empuja antes de completar la vuelta.</p>
+</section>
+<section id="fpm-i-26-e21" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e21">FPM-I-26-E21</h3>
+<p>Con <span class="math inline">\(\omega=\gamma/m&gt;0\)</span>, la velocidad satisface <span class="math inline">\(\dot v_x=\omega v_y\)</span>, <span class="math inline">\(\dot v_y=-\omega v_x\)</span>. Los datos dan <span class="math inline">\(v_x=v_0\cos\omega t\)</span> y <span class="math inline">\(v_y=-v_0\sin\omega t\)</span>. Integrando,</p>
+<p><span class="math display">\[
+x=x_0+\frac{v_0}{\omega}\sin\omega t,
+\qquad y=y_0+\frac{v_0}{\omega}(\cos\omega t-1).
+\]</span></p>
+<p>La trayectoria es un círculo de centro <span class="math inline">\((x_0,y_0-v_0/\omega)\)</span> y radio <span class="math inline">\(v_0/\omega\)</span>. El módulo de la velocidad y la energía cinética permanecen constantes. Si <span class="math inline">\(\gamma=0\)</span>, el movimiento sería rectilíneo uniforme y esta descripción circular con radio finito dejaría de aplicarse.</p>
+</section>
+<section id="fpm-i-26-e22" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e22">FPM-I-26-E22</h3>
+<p>El término lineal es <span class="math inline">\(d(cxy)/dt\)</span>. Restarlo deja la energía cinética libre y, por P13, las trayectorias son las de <span class="math inline">\(m\ddot x=m\ddot y=0\)</span>. Directamente, <span class="math inline">\(p_x=m\dot x+cy\)</span> y <span class="math inline">\(L_{,x}=c\dot y\)</span>; los términos <span class="math inline">\(c\dot y\)</span> se cancelan en la ecuación de <span class="math inline">\(x\)</span>, y de modo análogo en la de <span class="math inline">\(y\)</span>. El signo simétrico permite una función potencial de borde; el signo antisimétrico de §12 produce derivadas mixtas incompatibles y una fuerza real.</p>
+</section>
+<section id="fpm-i-26-e23" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e23">FPM-I-26-E23</h3>
+<p>Se añade la constante <span class="math inline">\(-E_0\)</span> al lagrangiano. Los momentos no cambian porque <span class="math inline">\(G\)</span> no depende de posiciones. P13 da <span class="math inline">\(E_{L'}=E_L-G_t=E_L+E_0\)</span>. La acción cambia en <span class="math inline">\(-E_0(t_1-t_0)\)</span>, igual para todas las curvas con esos tiempos. Por tanto las trayectorias permanecen iguales. El desplazamiento del cero de energía no es una fuerza adicional.</p>
+</section>
+<section id="fpm-i-26-e24" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e24">FPM-I-26-E24</h3>
+<p>Si <span class="math inline">\(p=L_{,\dot q}\)</span> y <span class="math inline">\(\mathcal E(L)=\dot p-L_{,q}\)</span>, la regla del producto da</p>
+<p><span class="math display">\[
+\mathcal E(L')=\frac2{E_*}\bigl[L\mathcal E(L)+\dot L\,p\bigr].
+\]</span></p>
+<p>Para una solución <span class="math inline">\(q=A\cos\omega t\)</span> de <span class="math inline">\(L\)</span>, <span class="math inline">\(\mathcal E(L)=0\)</span>, pero <span class="math inline">\(p=-mA\omega\sin\omega t\)</span> y <span class="math inline">\(\dot L=mA^2\omega^3\sin2\omega t\)</span>. Su producto no es idénticamente cero si <span class="math inline">\(A\ne0\)</span>. Así la misma curva no satisface en general las ecuaciones de <span class="math inline">\(L'\)</span>. La monotonía o la positividad de una función aplicada al integrando no conserva la estacionariedad de su integral.</p>
+</section>
+<section id="fpm-i-26-e25" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e25">FPM-I-26-E25</h3>
+<p>P04 da <span class="math inline">\(\widetilde W=m[f'(Q)]^2\)</span>. Es positivo donde <span class="math inline">\(f'\ne0\)</span>. Para <span class="math inline">\(f(Q)=Q^3\)</span>, se obtiene <span class="math inline">\(9mQ^4\)</span>, que se anula en cero. Aunque <span class="math inline">\(Q\mapsto Q^3\)</span> sea biyectiva en la recta, su inversa no es diferenciable de manera regular en el origen. La hipótesis es la de cambio local suave con Jacobiano invertible, más fuerte que la mera existencia de una inversa como función de conjuntos.</p>
+</section>
+<section id="fpm-i-26-e26" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e26">FPM-I-26-E26</h3>
+<p>Se tiene <span class="math inline">\(p=m(1+\alpha q^2)\dot q\)</span>. Su derivada es <span class="math inline">\(m(1+\alpha q^2)\ddot q+2m\alpha q\dot q^2\)</span>, mientras <span class="math inline">\(L_{,q}=m\alpha q\dot q^2-kq\)</span>. Por tanto</p>
+<p><span class="math display">\[
+m(1+\alpha q^2)\ddot q+m\alpha q\dot q^2+kq=0.
+\]</span></p>
+<p>Al linealizar alrededor de <span class="math inline">\((q,\dot q)=(0,0)\)</span> queda <span class="math inline">\(m\ddot q+kq=0\)</span>. La frecuencia pequeña es <span class="math inline">\(\sqrt{k/m}\)</span>. El parámetro <span class="math inline">\(\alpha\)</span> afecta la dinámica a amplitud finita y no el término lineal en ese equilibrio.</p>
+</section>
+<section id="fpm-i-26-e27" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e27">FPM-I-26-E27</h3>
+<p>La velocidad al cuadrado es <span class="math inline">\(\ell^2(\dot\theta^2+\sin^2\theta\dot\varphi^2)\)</span>, de modo que</p>
+<p><span class="math display">\[
+L=\frac{m\ell^2}{2}(\dot\theta^2+\sin^2\theta\dot\varphi^2)+mg\ell\cos\theta.
+\]</span></p>
+<p>Las ecuaciones son <span class="math inline">\(\ddot\theta=\sin\theta\cos\theta\dot\varphi^2-(g/\ell)\sin\theta\)</span> y <span class="math inline">\(d(m\ell^2\sin^2\theta\dot\varphi)/dt=0\)</span>. El determinante cinético es <span class="math inline">\(m^2\ell^4\sin^2\theta\)</span>. En los polos el azimut no distingue posiciones y la carta es singular. El movimiento sobre la esfera puede seguir siendo regular en coordenadas locales diferentes.</p>
+</section>
+<section id="fpm-i-26-e28" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e28">FPM-I-26-E28</h3>
+<p>El lagrangiano del conjunto es</p>
+<p><span class="math display">\[
+L=\frac{m\ell^2}{2}\dot\theta^2
++\frac12(I+m\ell^2\sin^2\theta)\dot\varphi^2
++mg\ell\cos\theta.
+\]</span></p>
+<p>La ecuación de <span class="math inline">\(\varphi\)</span> es <span class="math inline">\(d[(I+m\ell^2\sin^2\theta)\dot\varphi]/dt=0\)</span>. Si <span class="math inline">\(\theta\)</span> cambia, también cambia el coeficiente de <span class="math inline">\(\dot\varphi\)</span>; mantener ese producto constante requiere en general una velocidad de giro variable. Imponer además una <span class="math inline">\(\Omega\)</span> constante exige torque externo, salvo movimientos especiales. Prescribir la rotación elimina el grado de libertad del aro y transfiere su balance al motor.</p>
+</section>
+<section id="fpm-i-26-e29" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e29">FPM-I-26-E29</h3>
+<p>El Hessiano es <span class="math inline">\(W=1\)</span>, regular en todo el plano de estados. Euler–Lagrange da <span class="math inline">\(\ddot q=q^3\)</span>. La energía <span class="math inline">\(E_L=\dot q^2/2-q^4/4\)</span> es cero con esos datos. La rama inicial creciente satisface <span class="math inline">\(\dot q=q^2/\sqrt2\)</span>. Separar variables da</p>
+<p><span class="math display">\[
+q(t)=\frac1{1-t/\sqrt2},\qquad 0\le t&lt;\sqrt2.
+\]</span></p>
+<p>Su derivada inicial es la indicada y derivar otra vez verifica la ecuación. La solución diverge al acercarse a <span class="math inline">\(\sqrt2\)</span> y no puede prolongarse allí como solución finita. La regularidad y la unicidad local no garantizan existencia global cuando el potencial no confina el movimiento.</p>
+</section>
+<section id="fpm-i-26-e30" class="level3">
+<h3 class="anchored" data-anchor-id="fpm-i-26-e30">FPM-I-26-E30</h3>
+<p>Las fuerzas adicionales son <span class="math inline">\(Q_x=F(t)-b\dot x\)</span> y <span class="math inline">\(Q_\theta=0\)</span>. Las ecuaciones de P07 quedan</p>
+<p><span class="math display">\[
+(M+m)\ddot x+m\ell\cos\theta\ddot\theta
+-m\ell\sin\theta\dot\theta^2=F(t)-b\dot x,
+\]</span></p>
+<p><span class="math display">\[
+m\ell\cos\theta\ddot x+m\ell^2\ddot\theta+mg\ell\sin\theta=0.
+\]</span></p>
+<p>El determinante sigue siendo <span class="math inline">\(m\ell^2(M+m\sin^2\theta)&gt;0\)</span>, de modo que ambas aceleraciones se despejan para cualquier estado finito. La energía mecánica es <span class="math inline">\(E=T-mg\ell\cos\theta\)</span>, porque la geometría es fija en las coordenadas independientes del sistema completo. P09 da</p>
+<p><span class="math display">\[
+\dot E=F(t)\dot x-b\dot x^2.
+\]</span></p>
+<p>El primer término es la potencia externa aplicada al carro y el segundo la pérdida resistente. Las fuerzas internas del péndulo y las reacciones ideales no añaden términos al balance del conjunto. Si se prescribe en cambio <span class="math inline">\(x=a(t)\)</span>, la fuerza necesaria se calcula con la primera ecuación y el balance energético de la cuenta aislada debe incluir el trabajo del soporte.</p>
+</section>
+</section>
+<section id="notas-y-lecturas" class="level2">
+<h2 class="anchored" data-anchor-id="notas-y-lecturas">Notas y lecturas</h2>
+<ol type="1">
+<li>David Tong, <em>Classical Dynamics</em>, capítulo 2, §§2.2, 2.3, 2.5.1–2.5.2 y 2.6, ofrece material complementario sobre cambios de coordenadas, restricciones, aro giratorio, péndulo doble y pequeñas oscilaciones. <a href="https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S2.html">Texto oficial de University of Cambridge</a>. Los ángulos y signos deben compararse con las convenciones explícitas de cada ejemplo.</li>
+<li>La equivalencia con Newton aquí demostrada supone vínculos holónomos regulares e ideales, masas positivas y las fuerzas declaradas. Las restricciones no holónomas y los contactos unilaterales conservan las cautelas de I25; no se deduce su dinámica mediante una eliminación informal de variables.</li>
+<li>La energía lagrangiana se define en posiciones y velocidades. Su transformación a variables de momento y la función hamiltoniana pertenecen a I28. Las comprobaciones de cantidades conservadas de este capítulo preparan el teorema de Noether de I27 sin presuponerlo.</li>
+</ol>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-25-configuracion-trabajo-virtual-y-principios-variacionales.html">Capítulo 25</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-27-simetrias-teorema-de-noether-y-leyes-de-conservacion.html">Capítulo 27</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main></div><script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script><script>document.addEventListener("DOMContentLoaded",function(){const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');});</script></body></html>

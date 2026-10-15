@@ -5,7 +5,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Segundo capítulo de Física para matemáticos: magnitudes físicas, unidades, Sistema Internacional, homogeneidad, escalamiento, adimensionalización, semejanza y teorema Π de Buckingham.">
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 2 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.">
 
 <title>Magnitudes, unidades y análisis dimensional – Matemática Abierta</title>
 <style>
@@ -61,6 +62,26 @@ window.MathJax.startup.pageReady = async function () {
   return MathJax.startup.defaultPageReady();
 };
 </script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
 
   
   <script src="../assets/mathjax-offline-speech.js"></script><script>(function(){const fontRoot=new URL("../assets/mathjax-newcm",location.href).href;window.MathJax=Object.assign(window.MathJax||{}, {loader:{paths:{"mathjax-newcm":fontRoot}},startup:{ready:function(){MathJax.startup.defaultReady();MathJax.startup.adaptor.createWorker=window.__maCreateSpeechWorker;},pageReady:window.MathJax.startup.pageReady},output:{fontPath:fontRoot},chtml:{fontURL:fontRoot+"/chtml/woff2",dynamicPrefix:fontRoot+"/chtml/dynamic"}});})();</script><script defer src="../assets/mathjax/tex-chtml.js"></script>
@@ -93,6 +114,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../assets/87b4f5e6a115d51d92f5ea1a.css">
+<link rel="stylesheet" href="../assets/af3335218e8c9cef34486d70.css">
 <style id="ma-reader-mode-v1-style">/* Reader contract: app readerMode.ts, ma-reader-mode-v1. */
 
 #quarto-header,
@@ -321,23 +343,30 @@ body.quarto-page-columns #quarto-content,
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Magnitudes, unidades y análisis dimensional</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 2</p>
 </div>
 
 <div>
   <div class="description">
-    Segundo capítulo de Física para matemáticos: magnitudes físicas, unidades, Sistema Internacional, homogeneidad, escalamiento, adimensionalización, semejanza y teorema Π de Buckingham.
+    Capítulo 2 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.
   </div>
 </div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
     
   
     <div>
     <div class="quarto-title-meta-heading">Fecha de última modificación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">15 de septiembre de 2026</p>
+      <p class="date-modified">15 de octubre de 2026</p>
     </div>
   </div>
     
@@ -348,8 +377,7 @@ body.quarto-page-columns #quarto-content,
 </header>
 
 
-<section id="magnitudes-unidades-y-análisis-dimensional" class="level1">
-<h1>Magnitudes, unidades y análisis dimensional</h1>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-1-teorias-fisicas-fenomenos-modelos-y-leyes.html">Capítulo 1</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-3-medicion-incertidumbre-estimacion-y-ordenes-de-magnitud.html">Capítulo 3</a></p>
 <p>Este capítulo desarrolla el tránsito desde la representación de una magnitud física hasta el análisis dimensional como herramienta de auditoría, reducción y modelización. Su hilo conductor distingue sistemáticamente:</p>
 <p><span class="math display">\[
 \boxed{
@@ -360,8 +388,10 @@ body.quarto-page-columns #quarto-content,
 \text{estructura matemática}.
 }
 \]</span></p>
-<section id="fpm-i-02-s01" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s01">§1 — Un número no es todavía una magnitud física</h2>
+<p><span id="fispm-t1-c02-s01"></span></p>
+<p><span id="fpm-i-02-s01"></span></p>
+<section id="un-número-no-es-todavía-una-magnitud-física" class="level2">
+<h2 class="anchored" data-anchor-id="un-número-no-es-todavía-una-magnitud-física">§1 — Un número no es todavía una magnitud física</h2>
 <section id="el-resultado-42" class="level3">
 <h3 class="anchored" data-anchor-id="el-resultado-42">1.1. El resultado «42»</h3>
 <p>El capítulo anterior terminó con una regla que acompañará todo el tratado: un cálculo físico no se cierra cuando aparece un número. Debemos todavía interpretarlo respecto del sistema, las premisas, el régimen y la observación.</p>
@@ -398,9 +428,9 @@ body.quarto-page-columns #quarto-content,
 <h3 class="anchored" data-anchor-id="magnitud-física">1.2. Magnitud física</h3>
 <p>El vocabulario metrológico internacional llama <strong>magnitud</strong> a una propiedad de un fenómeno, cuerpo o sustancia cuya magnitud puede expresarse mediante un número y una referencia.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>Para nuestro tratado necesitaremos una formulación ligeramente orientada al modelado.</p>
-<div id="fpm-i-02-d01" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 1 — Magnitud física</strong> Una <strong>magnitud física</strong> es una propiedad cuantificable de un fenómeno, sistema o proceso que el modelo trata como comparable y representable mediante valores de magnitud.</p>
-</div>
+</blockquote>
 <p>Ejemplos:</p>
 <ul>
 <li>longitud;</li>
@@ -451,9 +481,9 @@ body.quarto-page-columns #quarto-content,
 \text{el valor de longitud de un objeto particular}.
 }
 \]</span></p>
-<div id="fpm-i-02-d02" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 2 — Valor de una magnitud</strong> Un <strong>valor de una magnitud</strong> es una especificación cuantitativa de una magnitud particular, expresada mediante un número y una referencia adecuada; cuando la referencia es una unidad de medida, el valor se expresa como número por unidad.</p>
-</div>
+</blockquote>
 <p>Así, la expresión</p>
 <p><span class="math display">\[
 L=2\,\mathrm m
@@ -475,9 +505,9 @@ L=2\,\mathrm m?
 \]</span></p>
 <p>No es una etiqueta decorativa colocada después del número.</p>
 <p>Nos proporciona una referencia con la que comparamos el valor de longitud.</p>
-<div id="fpm-i-02-d03" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 3 — Unidad de medida</strong> Una <strong>unidad de medida</strong> para una magnitud de cierto tipo es una cantidad particular de ese mismo tipo adoptada por convención como referencia para expresar valores de magnitudes comparables.</p>
-</div>
+</blockquote>
 <p>Si <span class="math inline">\(u\)</span> representa una unidad apropiada para una magnitud <span class="math inline">\(Q\)</span>, podemos escribir:</p>
 <p><span class="math display">\[
 Q=q\,u,
@@ -514,7 +544,7 @@ q=2.
 \text{unidad}.
 \]</span></p>
 <p>Podemos hacerlo explícito.</p>
-<div id="fpm-i-02-d04" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 4 — Valor numérico relativo a una unidad</strong> Si un valor de magnitud <span class="math inline">\(Q\)</span> se expresa respecto de una unidad <span class="math inline">\(u\)</span> como</p>
 <p><span class="math display">\[
 Q=q\,u,
@@ -523,7 +553,7 @@ Q=q\,u,
 <p><span class="math display">\[
 \{Q\}_u:=q.
 \]</span></p>
-</div>
+</blockquote>
 <p>Equivalentemente:</p>
 <p><span class="math display">\[
 \{Q\}_u=\frac{Q}{u}.
@@ -600,12 +630,12 @@ L=2000\,\mathrm{mm}.
 </tr>
 </tbody>
 </table>
-<div id="fpm-i-02-mp01" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 1 — No confundir magnitud, valor, número y unidad</strong> En una expresión física distinguiremos siempre la magnitud considerada, su valor particular, el valor numérico y la unidad o referencia usada para expresarlo.</p>
-</div>
-<div id="fpm-i-02-mp02" class="ma-block ma-metodo">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Principio 2 — Cambiar la unidad cambia el número, no la magnitud representada</strong> Cuando dos unidades representan el mismo tipo de magnitud y están relacionadas por un cambio de escala, la misma magnitud física recibe valores numéricos diferentes de manera compensatoria.</p>
-</div>
+</blockquote>
 </section>
 <section id="por-qué-aparece-la-compensación-inversa" class="level3">
 <h3 class="anchored" data-anchor-id="por-qué-aparece-la-compensación-inversa">1.7. Por qué aparece la compensación inversa</h3>
@@ -639,7 +669,7 @@ L=3\,\mathrm{km}.
 </section>
 <section id="primera-proposición-formal" class="level3">
 <h3 class="anchored" data-anchor-id="primera-proposición-formal">1.8. Primera proposición formal</h3>
-<div id="fpm-i-02-p01" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Proposición 1 — Covariancia del valor numérico bajo un cambio multiplicativo de unidad</strong></p>
 <p>Sea <span class="math inline">\(Q\)</span> un valor de magnitud. Supongamos que</p>
 <p><span class="math display">\[
@@ -657,7 +687,7 @@ u'=\lambda u,
 q'=\frac{q}{\lambda}.
 }
 \]</span></p>
-</div>
+</blockquote>
 <section id="demostración" class="level4">
 <h4 class="anchored" data-anchor-id="demostración">Demostración</h4>
 <p>Partimos de:</p>
@@ -895,13 +925,13 @@ L=\{L\}_{\mathrm m}\,\mathrm m.
 </section>
 <section id="ficha-de-lectura-cuantitativa" class="level3">
 <h3 class="anchored" data-anchor-id="ficha-de-lectura-cuantitativa">1.16. Ficha de lectura cuantitativa</h3>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Ficha de lectura de un valor</strong> 1. <strong>Magnitud:</strong> ¿qué propiedad física representa el símbolo? 2. <strong>Valor:</strong> ¿qué valor particular se atribuye? 3. <strong>Unidad:</strong> ¿qué referencia se utiliza? 4. <strong>Número:</strong> ¿cuál es el valor numérico respecto de esa unidad? 5. <strong>Cambio de unidad:</strong> ¿la transformación es multiplicativa? 6. <strong>Observación:</strong> ¿qué procedimiento conecta la magnitud con el dato? 7. <strong>Interpretación:</strong> ¿el número conserva sentido físico si borramos la referencia?</p>
-</div>
+</blockquote>
 </section>
 <section id="ejercicios-de-1" class="level3">
 <h3 class="anchored" data-anchor-id="ejercicios-de-1">1.17. Ejercicios de §1</h3>
-<div id="fpm-i-02-e01" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 1 — Número, valor o magnitud</strong></p>
 <p><strong>Tipo:</strong> conceptual · <strong>Nivel:</strong> básico</p>
 <p>Considera:</p>
@@ -913,7 +943,7 @@ L=\{L\}_{\mathrm m}\,\mathrm m.
 <li><span class="math inline">\(\{L\}_{\mathrm m}=3\)</span>.</li>
 </ol>
 <p>Explica qué representa cada expresión y cuáles no bastan, por sí solas, para identificar un valor físico completo.</p>
-</div>
+</blockquote>
 <section id="solución" class="level4">
 <h4 class="anchored" data-anchor-id="solución">Solución</h4>
 <ol type="1">
@@ -934,7 +964,7 @@ L=\{L\}_{\mathrm m}\,\mathrm m.
 \]</span></p>
 <p>son conceptos relacionados pero no intercambiables.</p>
 <hr>
-<div id="fpm-i-02-e02" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 2 — La misma longitud en tres unidades</strong></p>
 <p><strong>Tipo:</strong> cálculo · <strong>Nivel:</strong> básico</p>
 <p>Una barra tiene:</p>
@@ -947,7 +977,7 @@ L=2.35\,\mathrm m.
 <li>Calcula <span class="math inline">\(\{L\}_{\mathrm m}\)</span>, <span class="math inline">\(\{L\}_{\mathrm{cm}}\)</span> y <span class="math inline">\(\{L\}_{\mathrm{mm}}\)</span>.</li>
 <li>Explica qué cambia y qué permanece invariante.</li>
 </ol>
-</div>
+</blockquote>
 </section>
 <section id="solución-1" class="level4">
 <h4 class="anchored" data-anchor-id="solución-1">Solución</h4>
@@ -987,7 +1017,7 @@ L
 \]</span></p>
 <p>Cambian la unidad y el valor numérico. Permanece invariante la longitud física <span class="math inline">\(L\)</span>.</p>
 <hr>
-<div id="fpm-i-02-e03" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 3 — Cambio de unidad y cambio de número</strong></p>
 <p><strong>Tipo:</strong> demostración · <strong>Nivel:</strong> central</p>
 <p>Una distancia se expresa como</p>
@@ -1010,7 +1040,7 @@ u'=5u.
 <li>Si <span class="math inline">\(\{D\}_u=60\)</span>, calcula <span class="math inline">\(\{D\}_{u'}\)</span>.</li>
 <li>Explica por qué sería incorrecto afirmar que la distancia se volvió cinco veces menor.</li>
 </ol>
-</div>
+</blockquote>
 </section>
 <section id="solución-2" class="level4">
 <h4 class="anchored" data-anchor-id="solución-2">Solución</h4>
@@ -1097,10 +1127,12 @@ u'=\lambda u,
 }
 \]</span></p>
 <hr>
+<p><span id="fispm-t1-c02-s02"></span></p>
+<p><span id="fpm-i-02-s02"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s02" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s02">§2 — Magnitudes, clases de magnitudes y referencias</h2>
+<section id="magnitudes-clases-de-magnitudes-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="magnitudes-clases-de-magnitudes-y-referencias">§2 — Magnitudes, clases de magnitudes y referencias</h2>
 <section id="antes-de-comparar-números-debemos-saber-qué-estamos-comparando" class="level3">
 <h3 class="anchored" data-anchor-id="antes-de-comparar-números-debemos-saber-qué-estamos-comparando">2.1. Antes de comparar números, debemos saber qué estamos comparando</h3>
 <p>En §1 distinguimos cuatro niveles:</p>
@@ -1148,9 +1180,9 @@ u'=\lambda u,
 <h3 class="anchored" data-anchor-id="tipo-de-magnitud">2.2. Tipo de magnitud</h3>
 <p>El Vocabulario Internacional de Metrología introduce la noción de <em>kind of quantity</em> como el aspecto común a magnitudes mutuamente comparables.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <p>Adoptaremos una formulación operativa compatible con esa idea.</p>
-<div id="fpm-i-02-d05" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 5 — Tipo de magnitud</strong> Un <strong>tipo de magnitud</strong> es la clase determinada por el aspecto cuantificable común que hace mutuamente comparables ciertas magnitudes físicas.</p>
-</div>
+</blockquote>
 <p>Ejemplos de magnitudes que normalmente consideramos del mismo tipo son:</p>
 <ul>
 <li>el diámetro de una esfera;</li>
@@ -1368,7 +1400,7 @@ x.
 <li>cómo se define esa magnitud en el modelo;</li>
 <li>qué procedimiento <code>[OBS]</code> la conecta con datos.</li>
 </ul>
-<p>Así reaparece la tesis de el capítulo 1:</p>
+<p>Así reaparece la tesis del capítulo 1:</p>
 <p><span class="math display">\[
 \boxed{
 \text{formalismo}
@@ -1434,9 +1466,9 @@ L_2+T
 </section>
 <section id="primera-regla-metodológica-de-2" class="level3">
 <h3 class="anchored" data-anchor-id="primera-regla-metodológica-de-2">2.11. Primera regla metodológica de §2</h3>
-<div id="fpm-i-02-mp03" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 3 — La comparabilidad física precede a la comparación numérica</strong> Antes de comparar, sumar o interpretar conjuntamente valores numéricos, debe establecerse qué magnitudes representan y si las operaciones propuestas son compatibles con sus tipos de magnitud.</p>
-</div>
+</blockquote>
 <p>Esto evita errores como:</p>
 <p><span class="math display">\[
 3\,\mathrm m+4\,\mathrm s=7.
@@ -1464,9 +1496,9 @@ Q=q\,u.
 <p>Por ejemplo, determinadas escalas de dureza dependen de un procedimiento convencional, y algunas magnitudes de laboratorio pueden expresarse respecto de materiales de referencia internacionalmente establecidos.</p>
 <p>No desarrollaremos aquí esas ramas de la metrología.</p>
 <p>Pero debemos conservar la distinción conceptual.</p>
-<div id="fpm-i-02-d06" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 6 — Referencia de un valor de magnitud</strong> Una <strong>referencia de un valor de magnitud</strong> es el elemento convencional respecto del cual el número asociado adquiere significado cuantitativo. En las magnitudes tratadas ordinariamente en este capítulo, la referencia será normalmente una unidad de medida; en contextos metrológicos más generales puede ser también un procedimiento o un material de referencia.</p>
-</div>
+</blockquote>
 <p>Por tanto:</p>
 <p><span class="math display">\[
 \boxed{
@@ -1496,7 +1528,7 @@ Q=\{Q\}_u\,u.
 \text{pero no agota toda la metrología}.
 }
 \]</span></p>
-<p>La teoría sistemática de medición, incertidumbre y trazabilidad pertenece a el capítulo 3 y a tratamientos metrológicos especializados.</p>
+<p>La teoría sistemática de medición, incertidumbre y trazabilidad pertenece al capítulo 3 y a tratamientos metrológicos especializados.</p>
 </section>
 <section id="una-unidad-no-es-cualquier-cantidad-elegida-informalmente" class="level3">
 <h3 class="anchored" data-anchor-id="una-unidad-no-es-cualquier-cantidad-elegida-informalmente">2.14. Una unidad no es cualquier cantidad elegida informalmente</h3>
@@ -1576,7 +1608,7 @@ L
 \text{familia de magnitudes seleccionadas por el modelo}.
 }
 \]</span></p>
-<p>Esto vuelve a conectar el capítulo con el concepto de observable de el capítulo 1.</p>
+<p>Esto vuelve a conectar el capítulo con el concepto de observable del capítulo 1.</p>
 </section>
 <section id="misma-magnitud-general-instancias-diferentes" class="level3">
 <h3 class="anchored" data-anchor-id="misma-magnitud-general-instancias-diferentes">2.17. Misma magnitud general, instancias diferentes</h3>
@@ -1623,9 +1655,9 @@ L_{\mathrm{barra}}.
 </section>
 <section id="segunda-regla-metodológica-de-2" class="level3">
 <h3 class="anchored" data-anchor-id="segunda-regla-metodológica-de-2">2.19. Segunda regla metodológica de §2</h3>
-<div id="fpm-i-02-mp04" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 4 — La notación de unidad no determina por sí sola el significado físico</strong> Una expresión de unidad restringe las magnitudes que puede representar, pero la identificación del tipo de magnitud exige además el contexto físico, la definición de la cantidad y su regla de interpretación.</p>
-</div>
+</blockquote>
 <p>Así, ante:</p>
 <p><span class="math display">\[
 2\,\mathrm{s}^{-1},
@@ -1655,7 +1687,7 @@ L_{\mathrm{barra}}.
 </section>
 <section id="ejercicios-de-2" class="level3">
 <h3 class="anchored" data-anchor-id="ejercicios-de-2">2.21. Ejercicios de §2</h3>
-<div id="fpm-i-02-e04" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 4 — Misma unidad, magnitudes diferentes</strong></p>
 <p><strong>Tipo:</strong> conceptual · <strong>Nivel:</strong> central</p>
 <p>Considera los siguientes casos conceptuales:</p>
@@ -1673,7 +1705,7 @@ L_{\mathrm{barra}}.
 <li>¿Por qué tener el mismo valor numérico tampoco basta?</li>
 <li>Explica por qué <span class="math inline">\(2\,\mathrm{Hz}\)</span> y <span class="math inline">\(2\,\mathrm{Bq}\)</span> no deben interpretarse como la misma magnitud física aunque ambas unidades sean algebraicamente equivalentes a <span class="math inline">\(\mathrm{s}^{-1}\)</span>.</li>
 </ol>
-</div>
+</blockquote>
 <section id="solución-del-ejercicio-4" class="level4">
 <h4 class="anchored" data-anchor-id="solución-del-ejercicio-4">Solución del ejercicio 4</h4>
 </section>
@@ -1755,7 +1787,7 @@ L\text{ y }T\text{ son del mismo tipo}.
 \]</span></p>
 <p>y las expresiones algebraicas de unidad coincidan, la interpretación física no coincide.</p>
 <p>La cantidad no queda identificada solo por el par «número + forma algebraica de unidad» si hemos perdido el tipo físico que el modelo asigna.</p>
-<div id="fpm-i-02-e05" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 5 — Diseñar una referencia de medida</strong></p>
 <p><strong>Tipo:</strong> modelización · <strong>Nivel:</strong> central</p>
 <p>Una comunidad aislada desea comparar longitudes antes de adoptar un sistema internacional. Decide conservar una barra y declarar su longitud como una unidad provisional <span class="math inline">\(u\)</span>.</p>
@@ -1771,7 +1803,7 @@ L=3.7\,u.
 <li>Identifica qué partes del procedimiento son convencionales y qué parte expresa una comparación física.</li>
 <li>Explica por qué este modelo local no equivale todavía a construir el SI contemporáneo.</li>
 </ol>
-</div>
+</blockquote>
 </section>
 <section id="solución-del-ejercicio-5" class="level4">
 <h4 class="anchored" data-anchor-id="solución-del-ejercicio-5">Solución del ejercicio 5</h4>
@@ -1943,10 +1975,12 @@ Q\text{ y }u\text{ deben pertenecer al mismo tipo de magnitud}.
 <li>prefijos y escritura correcta de símbolos.</li>
 </ul>
 <hr>
+<p><span id="fispm-t1-c02-s03"></span></p>
+<p><span id="fpm-i-02-s03"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s03" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s03">§3 — El Sistema Internacional contemporáneo</h2>
+<section id="el-sistema-internacional-contemporáneo" class="level2">
+<h2 class="anchored" data-anchor-id="el-sistema-internacional-contemporáneo">§3 — El Sistema Internacional contemporáneo</h2>
 <section id="una-unidad-local-no-basta-para-una-ciencia-global" class="level3">
 <h3 class="anchored" data-anchor-id="una-unidad-local-no-basta-para-una-ciencia-global">3.1. Una unidad local no basta para una ciencia global</h3>
 <p>En §1 vimos que un valor de magnitud puede escribirse, en los casos ordinarios que nos interesan, como</p>
@@ -1978,9 +2012,9 @@ Q=\{Q\}_u\,u.
 }
 \]</span></p>
 <p>La 9.ª edición de la <em>SI Brochure</em>, en su versión 4.01 de junio de 2026, mantiene esta arquitectura.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
-<div id="fpm-i-02-d07" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 7 — Sistema Internacional de Unidades</strong> El <strong>Sistema Internacional de Unidades (SI)</strong> es el sistema de unidades definido fijando exactamente los valores numéricos de siete constantes definitorias cuando se expresan en las unidades especificadas por el propio SI.</p>
-</div>
+</blockquote>
 <p>Esta definición operativa conserva el rasgo que necesitaremos matemáticamente:</p>
 <p><span class="math display">\[
 \boxed{
@@ -2093,7 +2127,7 @@ Q=\{Q\}_u\,u.
 }
 \]</span></p>
 <p>La incertidumbre pertenece al proceso mediante el cual materializamos, comparamos o medimos la unidad en condiciones reales.</p>
-<p>Su tratamiento sistemático pertenece a el capítulo 3.</p>
+<p>Su tratamiento sistemático pertenece al capítulo 3.</p>
 </section>
 <section id="constantes-definitorias-no-todas-son-del-mismo-carácter-físico" class="level3">
 <h3 class="anchored" data-anchor-id="constantes-definitorias-no-todas-son-del-mismo-carácter-físico">3.5. Constantes definitorias: no todas son del mismo carácter físico</h3>
@@ -2117,9 +2151,9 @@ Q=\{Q\}_u\,u.
 }
 \]</span></p>
 <p>como si ambas clases coincidieran.</p>
-<div id="fpm-i-02-d08" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 8 — Constante definitoria del SI</strong> Una <strong>constante definitoria del SI</strong> es una de las siete constantes cuyo valor numérico se fija exactamente en la definición del SI cuando se expresa en la unidad correspondiente.</p>
-</div>
+</blockquote>
 <p>La palabra <strong>definitoria</strong> describe el papel que la constante cumple en el sistema de unidades.</p>
 </section>
 <section id="las-siete-magnitudes-base-y-las-siete-unidades-base" class="level3">
@@ -2179,12 +2213,12 @@ Q=\{Q\}_u\,u.
 </tr>
 </tbody>
 </table>
-<div id="fpm-i-02-d09" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 9 — Magnitud base del SI</strong> Una <strong>magnitud base del SI</strong> es una de las siete magnitudes elegidas convencionalmente como base para organizar el sistema de dimensiones y unidades del SI: tiempo, longitud, masa, corriente eléctrica, temperatura termodinámica, cantidad de sustancia e intensidad luminosa.</p>
-</div>
-<div id="fpm-i-02-d10" class="ma-block ma-definicion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Definición 10 — Unidad base del SI</strong> Una <strong>unidad base del SI</strong> es la unidad SI asociada a una de las siete magnitudes base: segundo, metro, kilogramo, amperio, kelvin, mol o candela.</p>
-</div>
+</blockquote>
 <p>La palabra <strong>base</strong> indica un papel dentro de la arquitectura del sistema.</p>
 <p>No significa que una magnitud base sea «más real» o «más importante» que una magnitud derivada.</p>
 </section>
@@ -2234,9 +2268,9 @@ h\leftrightarrow\mathrm{kg},
 <h3 class="anchored" data-anchor-id="definición-y-realización">3.9. Definición y realización</h3>
 <p>El BIPM utiliza la expresión francesa <em>mise en pratique</em> para los documentos que describen maneras de realizar prácticamente las definiciones de las unidades.</p>
 <p>Esto nos da una distinción permanente:</p>
-<div id="fpm-i-02-mp05" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 5 — No confundir definición y realización</strong> La definición de una unidad fija su significado dentro del SI; una realización es un procedimiento físico para materializar o acceder experimentalmente a esa definición. Una definición puede ser exacta aunque toda realización concreta posea incertidumbre.</p>
-</div>
+</blockquote>
 <p>Esta diferencia será decisiva cuando estudiemos medición.</p>
 <p>En términos del capítulo anterior:</p>
 <p><span class="math display">\[
@@ -2261,9 +2295,9 @@ h\leftrightarrow\mathrm{kg},
 1\,\mathrm{kg\,m^2\,s^{-2}}.
 \]</span></p>
 <p>La clasificación «base/derivada» responde a cómo organizamos el sistema de unidades.</p>
-<div id="fpm-i-02-mp06" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 6 — «Base» es una función del sistema de unidades</strong> Que una magnitud o unidad sea base en el SI no implica que sea físicamente más fundamental que una magnitud o unidad derivada. La distinción organiza la representación metrológica.</p>
-</div>
+</blockquote>
 <p>Esta regla evitará confundir:</p>
 <p><span class="math display">\[
 \text{fundamentalidad física}
@@ -2678,7 +2712,7 @@ A
 </section>
 <section id="ejercicios-de-3" class="level3">
 <h3 class="anchored" data-anchor-id="ejercicios-de-3">3.20. Ejercicios de §3</h3>
-<div id="fpm-i-02-e06" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 6 — Leer correctamente el SI actual</strong></p>
 <p><strong>Tipo:</strong> conceptual · <strong>Nivel:</strong> central</p>
 <p>Decide si cada afirmación es correcta o incorrecta. Cuando sea incorrecta, reescríbela.</p>
@@ -2691,8 +2725,8 @@ A
 <li>«Que el joule sea una unidad derivada significa que la energía es físicamente menos fundamental que la longitud.»</li>
 <li>«La constante <span class="math inline">\(K_{\mathrm{cd}}\)</span> es una constante definitoria del SI, aunque no tenga el mismo carácter físico que <span class="math inline">\(c\)</span> o <span class="math inline">\(h\)</span>.»</li>
 </ol>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p><strong>1. Incorrecta.</strong></p>
 <p>El SI contemporáneo se define fijando exactamente los valores numéricos de siete constantes definitorias en unidades especificadas. Las unidades no se definen mediante siete objetos materiales.</p>
@@ -2730,8 +2764,8 @@ A
 \text{magnitud físicamente más fundamental}.
 }
 \]</span></p>
-</div>
-<div id="fpm-i-02-e07" class="ma-block ma-enunciado">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 7 — Prefijos y potencias de diez</strong></p>
 <p><strong>Tipo:</strong> cálculo · <strong>Nivel:</strong> central</p>
 <p>Convierte:</p>
@@ -2749,8 +2783,8 @@ A
 <p><span class="math display">\[
 1\,\mathrm{cm^2}\neq10^{-2}\,\mathrm{m^2}.
 \]</span></p>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p><strong>1. Kilómetros a metros</strong></p>
 <p><span class="math display">\[
@@ -2903,7 +2937,7 @@ A
 1\,\mathrm{cm^2}\neq10^{-2}\,\mathrm{m^2}.
 }
 \]</span></p>
-</div>
+</blockquote>
 </section>
 <section id="síntesis-1" class="level3">
 <h3 class="anchored" data-anchor-id="síntesis-1">3.21. Síntesis</h3>
@@ -2969,10 +3003,12 @@ K_{\mathrm{cd}}
 </section>
 <section id="fuentes-normativas-de-3" class="level3">
 <h3 class="anchored" data-anchor-id="fuentes-normativas-de-3">Fuentes normativas de §3</h3>
+<p><span id="fispm-t1-c02-s04"></span></p>
+<p><span id="fpm-i-02-s04"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s04" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s04">§4 — Magnitudes derivadas y unidades coherentes</h2>
+<section id="magnitudes-derivadas-y-unidades-coherentes" class="level2">
+<h2 class="anchored" data-anchor-id="magnitudes-derivadas-y-unidades-coherentes">§4 — Magnitudes derivadas y unidades coherentes</h2>
 <section id="las-unidades-también-obedecen-relaciones" class="level3">
 <h3 class="anchored" data-anchor-id="las-unidades-también-obedecen-relaciones">4.1. Las unidades también obedecen relaciones</h3>
 <p>En §1 distinguimos una magnitud de su valor numérico y de la unidad elegida para expresarla. En §2 vimos que la comparabilidad física precede a la comparación numérica. En §3 fijamos la arquitectura contemporánea del Sistema Internacional.</p>
@@ -3000,9 +3036,9 @@ A=xy.
 </section>
 <section id="magnitud-derivada" class="level3">
 <h3 class="anchored" data-anchor-id="magnitud-derivada">4.2. Magnitud derivada</h3>
-<div id="fpm-i-02-d11" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 11 — Magnitud derivada</strong> Una <strong>magnitud derivada</strong> es una magnitud definida, dentro de un sistema de magnitudes, mediante una relación algebraica con otras magnitudes del sistema, en particular con las magnitudes tomadas como base.</p>
-</div>
+</blockquote>
 <p>Ejemplos elementales son:</p>
 <p><span class="math display">\[
 A=xy,
@@ -3079,9 +3115,9 @@ Q=q_1^n u_1^n.
 </section>
 <section id="unidad-derivada" class="level3">
 <h3 class="anchored" data-anchor-id="unidad-derivada">4.4. Unidad derivada</h3>
-<div id="fpm-i-02-d12" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 12 — Unidad derivada</strong> Una <strong>unidad derivada</strong> es una unidad asociada a una magnitud derivada y expresable, dentro del sistema de unidades considerado, mediante productos de potencias de unidades base.</p>
-</div>
+</blockquote>
 <p>En el SI:</p>
 <p><span class="math display">\[
 \text{área}\longrightarrow \mathrm{m^2},
@@ -3102,9 +3138,9 @@ Q=q_1^n u_1^n.
 </section>
 <section id="unidad-derivada-coherente" class="level3">
 <h3 class="anchored" data-anchor-id="unidad-derivada-coherente">4.5. Unidad derivada coherente</h3>
-<div id="fpm-i-02-d13" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 13 — Unidad derivada coherente</strong> Una <strong>unidad derivada coherente</strong>, respecto de un sistema de magnitudes y un conjunto elegido de unidades base, es una unidad derivada que se obtiene como producto de potencias de las unidades base sin introducir ningún factor de proporcionalidad distinto de <span class="math inline">\(1\)</span>.</p>
-</div>
+</blockquote>
 <p>Así,</p>
 <p><span class="math display">\[
 \mathrm{m\,s^{-1}}
@@ -3162,9 +3198,9 @@ v=\{v\}_{\mathrm{m\,s^{-1}}}\,\mathrm{m\,s^{-1}}.
 \]</span></p>
 <p>La ecuación entre valores numéricos conserva exactamente la forma de la ecuación entre magnitudes.</p>
 <p>Éste es el sentido técnico de coherencia empleado por el BIPM.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></p>
-<div id="fpm-i-02-mp07" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 7 — La coherencia preserva la forma numérica de las ecuaciones de magnitudes</strong> Cuando todas las magnitudes de una relación se expresan mediante unidades pertenecientes a un sistema coherente, la ecuación entre sus valores numéricos tiene la misma forma que la ecuación entre las magnitudes, sin factores de conversión adicionales.</p>
-</div>
+</blockquote>
 </section>
 <section id="ejemplo-rapidez-en-unidades-coherentes" class="level3">
 <h3 class="anchored" data-anchor-id="ejemplo-rapidez-en-unidades-coherentes">4.7. Ejemplo: rapidez en unidades coherentes</h3>
@@ -3335,9 +3371,9 @@ V=2\times10^{-3}\,\mathrm{m^3},
 1\,\mathrm{kg\,m^2\,s^{-3}}.
 \]</span></p>
 <p>El nombre especial no cambia la estructura algebraica de la unidad.</p>
-<div id="fpm-i-02-mp08" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 8 — Un nombre especial no crea una nueva clase algebraica de unidad</strong> Una unidad SI con nombre especial sigue siendo una unidad coherente expresable mediante productos de potencias de unidades base. El nombre especial mejora la lectura y puede ayudar a distinguir contextos físicos, pero no altera la estructura algebraica de la unidad.</p>
-</div>
+</blockquote>
 </section>
 <section id="las-22-unidades-si-con-nombres-especiales" class="level3">
 <h3 class="anchored" data-anchor-id="las-22-unidades-si-con-nombres-especiales">4.13. Las 22 unidades SI con nombres especiales</h3>
@@ -3653,13 +3689,13 @@ V=2\times10^{-3}\,\mathrm{m^3},
 </section>
 <section id="ficha-de-construcción-de-una-unidad-derivada" class="level3">
 <h3 class="anchored" data-anchor-id="ficha-de-construcción-de-una-unidad-derivada">4.20. Ficha de construcción de una unidad derivada</h3>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Ficha FPM — Construcción de una unidad derivada</strong> 1. <strong>Magnitud:</strong> ¿qué cantidad estamos definiendo? 2. <strong>Ecuación de magnitudes:</strong> ¿qué relación la conecta con otras magnitudes? 3. <strong>Tipos:</strong> ¿qué tipos de magnitud intervienen? 4. <strong>Unidades de entrada:</strong> ¿qué unidades usamos? 5. <strong>Álgebra:</strong> ¿qué producto, cociente o potencia resulta? 6. <strong>Factor:</strong> ¿aparece un factor distinto de <span class="math inline">\(1\)</span>? 7. <strong>Coherencia:</strong> ¿la unidad resultante es coherente en el SI? 8. <strong>Nombre especial:</strong> ¿existe uno? 9. <strong>Semántica:</strong> ¿otras magnitudes comparten la misma expresión? 10. <strong>Modelo:</strong> ¿qué justifica físicamente esta combinación?</p>
-</div>
+</blockquote>
 </section>
 <section id="ejercicios" class="level3">
 <h3 class="anchored" data-anchor-id="ejercicios">4.21. Ejercicios</h3>
-<div id="fpm-i-02-e08" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 8 — Construir unidades derivadas coherentes</strong> <strong>Tipo:</strong> análisis dimensional · <strong>Nivel:</strong> básico</p>
 <p>Determina la unidad derivada coherente SI para:</p>
 <ol type="1">
@@ -3669,8 +3705,8 @@ V=2\times10^{-3}\,\mathrm{m^3},
 <li><span class="math inline">\(a=v/t\)</span>.</li>
 <li><span class="math inline">\(\rho=m/V\)</span>.</li>
 </ol>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <ol type="1">
 <li></li>
@@ -3713,8 +3749,8 @@ V=2\times10^{-3}\,\mathrm{m^3},
 \boxed{\mathrm{kg\,m^{-3}}}.
 \]</span></p>
 <p>Todas se obtienen con factor <span class="math inline">\(1\)</span> respecto de las unidades base del SI.</p>
-</div>
-<div id="fpm-i-02-e09" class="ma-block ma-enunciado">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 9 — Coherencia y factor de conversión</strong> <strong>Tipo:</strong> cálculo · <strong>Nivel:</strong> central</p>
 <p>Sea</p>
 <p><span class="math display">\[
@@ -3728,8 +3764,8 @@ t=25\,\mathrm s.
 <li>Escribe la relación entre <span class="math inline">\(\{v\}_{\mathrm{m\,s^{-1}}}\)</span>, <span class="math inline">\(\{\ell\}_{\mathrm{cm}}\)</span> y <span class="math inline">\(\{t\}_{\mathrm s}\)</span>.</li>
 <li>Explica el factor de conversión.</li>
 </ol>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <ol type="1">
 <li></li>
@@ -3765,8 +3801,8 @@ v
 <ol start="4" type="1">
 <li>El factor <span class="math inline">\(10^{-2}\)</span> aparece porque el centímetro introduce una escala distinta de la unidad base metro.</li>
 </ol>
-</div>
-<div id="fpm-i-02-e10" class="ma-block ma-enunciado">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 10 — Nombres especiales, expansión y significado</strong> <strong>Familia:</strong> <code>E-DIM / E-CON / CORE</code></p>
 <ol type="1">
 <li>Expande en unidades base:</li>
@@ -3799,8 +3835,8 @@ v
 2.5\,\mathrm{g\,cm^{-3}}
 \]</span></p>
 <p>a <span class="math inline">\(\mathrm{kg\,m^{-3}}\)</span>.</p>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <ol type="1">
 <li></li>
@@ -3856,7 +3892,7 @@ v
 =
 \boxed{2500\,\mathrm{kg\,m^{-3}}}.
 \]</span></p>
-</div>
+</blockquote>
 </section>
 <section id="síntesis-2" class="level3">
 <h3 class="anchored" data-anchor-id="síntesis-2">4.22. Síntesis</h3>
@@ -3907,10 +3943,12 @@ u=u_1^n.
 \text{§5 — Dimensión física}.
 }
 \]</span></p>
+<p><span id="fispm-t1-c02-s05"></span></p>
+<p><span id="fpm-i-02-s05"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s05" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s05">§5 — Dimensión física</h2>
+<section id="dimensión-física" class="level2">
+<h2 class="anchored" data-anchor-id="dimensión-física">§5 — Dimensión física</h2>
 <section id="la-unidad-concreta-no-es-la-dimensión" class="level3">
 <h3 class="anchored" data-anchor-id="la-unidad-concreta-no-es-la-dimensión">5.1. La unidad concreta no es la dimensión</h3>
 <p>En §4 vimos que una misma magnitud derivada puede expresarse mediante unidades diferentes.</p>
@@ -3950,9 +3988,9 @@ LT^{-1}.
 <section id="dimensión-de-una-magnitud" class="level3">
 <h3 class="anchored" data-anchor-id="dimensión-de-una-magnitud">5.2. Dimensión de una magnitud</h3>
 <p>El Vocabulario Internacional de Metrología define la dimensión de una magnitud como la expresión de su dependencia respecto de las magnitudes base de un sistema mediante un producto de potencias, omitiendo cualquier factor numérico.<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></p>
-<div id="fpm-i-02-d14" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 14 — Dimensión de una magnitud</strong> La <strong>dimensión</strong> de una magnitud <span class="math inline">\(Q\)</span>, respecto de un sistema elegido de magnitudes base, es la expresión simbólica que registra su dependencia respecto de esas magnitudes base como producto de potencias, sin incluir factores numéricos.</p>
-</div>
+</blockquote>
 <p>Usaremos la notación</p>
 <p><span class="math display">\[
 [Q]
@@ -4030,9 +4068,9 @@ M
 \mathrm{kg}.
 \]</span></p>
 <p>El lado izquierdo representa una dimensión; el lado derecho, una unidad concreta.</p>
-<div id="fpm-i-02-mp09" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 9 — La dimensión es independiente de la unidad particular</strong> Cambiar la unidad utilizada para expresar una magnitud puede cambiar su valor numérico y el símbolo de unidad, pero no cambia su dimensión dentro del sistema de magnitudes fijado.</p>
-</div>
+</blockquote>
 </section>
 <section id="el-producto-dimensional-general" class="level3">
 <h3 class="anchored" data-anchor-id="el-producto-dimensional-general">5.4. El producto dimensional general</h3>
@@ -4055,9 +4093,9 @@ J^\eta
 \alpha,\beta,\gamma,\delta,\varepsilon,\zeta,\eta
 \]</span></p>
 <p>son los <strong>exponentes dimensionales</strong> de <span class="math inline">\(Q\)</span> respecto de la base elegida.</p>
-<div id="fpm-i-02-d15" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 15 — Exponente dimensional</strong> Un <strong>exponente dimensional</strong> es el exponente con el que aparece una dimensión base en la expresión dimensional de una magnitud.</p>
-</div>
+</blockquote>
 <p>Por ejemplo, para una velocidad,</p>
 <p><span class="math display">\[
 [v]=LT^{-1}.
@@ -4418,7 +4456,7 @@ J^\eta.
 <p><span class="math display">\[
 \alpha,\beta,\gamma,\delta,\varepsilon,\zeta,\eta.
 \]</span></p>
-<p>Ésta es la razón algebraica de el Principio 9.</p>
+<p>Ésta es la razón algebraica del Principio 9.</p>
 </section>
 <section id="una-demostración-elemental-de-la-invariancia" class="level3">
 <h3 class="anchored" data-anchor-id="una-demostración-elemental-de-la-invariancia">5.13. Una demostración elemental de la invariancia</h3>
@@ -4496,9 +4534,9 @@ L^\beta T^\alpha.
 \text{mismo tipo}.
 }
 \]</span></p>
-<div id="fpm-i-02-mp10" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 10 — La igualdad dimensional no identifica el significado físico</strong> Que dos magnitudes posean la misma dimensión es una condición estructural importante, pero no basta para concluir que pertenecen al mismo tipo de magnitud ni que son físicamente intercambiables.</p>
-</div>
+</blockquote>
 </section>
 <section id="ejemplo-frecuencia-y-actividad-radionúclida" class="level3">
 <h3 class="anchored" data-anchor-id="ejemplo-frecuencia-y-actividad-radionúclida">5.15. Ejemplo: frecuencia y actividad radionúclida</h3>
@@ -4603,9 +4641,9 @@ L,
 }
 \]</span></p>
 <p>aunque, una vez fijado el sistema, resulte extremadamente estable y útil.</p>
-<div id="fpm-i-02-d16" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 16 — Sistema de dimensiones</strong> Un <strong>sistema de dimensiones</strong> es la organización de las magnitudes de un sistema mediante dimensiones base elegidas y expresiones dimensionales derivadas construidas como productos de potencias de esas dimensiones base.</p>
-</div>
+</blockquote>
 <p>En el SI trabajaremos con la base</p>
 <p><span class="math display">\[
 (T,L,M,I,\Theta,N,J).
@@ -4637,7 +4675,7 @@ L,
 </section>
 <section id="ejercicios-1" class="level3">
 <h3 class="anchored" data-anchor-id="ejercicios-1">5.20. Ejercicios</h3>
-<div id="fpm-i-02-e11" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 11 — Reconstruir dimensiones</strong></p>
 <p><strong>Tipo:</strong> análisis dimensional · <strong>Nivel:</strong> básico</p>
 <p>Calcula las dimensiones de:</p>
@@ -4653,8 +4691,8 @@ L,
 <li>presión, usando <span class="math inline">\(p=F/A\)</span>.</li>
 </ol>
 <p>No uses una tabla memorizada: deriva cada resultado.</p>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <ol type="1">
 <li>Para área:</li>
@@ -4744,8 +4782,8 @@ ML^{-1}T^{-2}.
 \text{relación entre dimensiones}.
 }
 \]</span></p>
-</div>
-<div id="fpm-i-02-e12" class="ma-block ma-enunciado">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 12 — Cambiar unidades sin cambiar dimensión</strong></p>
 <p><strong>Familia:</strong> <code>E-DIM / E-PROOF / CORE</code></p>
 <p>Una rapidez vale</p>
@@ -4763,8 +4801,8 @@ u_L'=\lambda_Lu_L,
 \qquad
 u_T'=\lambda_Tu_T.
 \]</span></p>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p>Como</p>
 <p><span class="math display">\[
@@ -4822,8 +4860,8 @@ t'\sim\lambda_T^{-1}t.
 L^1T^{-1}.
 \]</span></p>
 <p>Los factores de conversión afectan números; los exponentes dimensionales registran la estructura y permanecen iguales.</p>
-</div>
-<div id="fpm-i-02-e13" class="ma-block ma-enunciado">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 13 — Misma dimensión, distinto significado</strong></p>
 <p><strong>Familia:</strong> <code>E-CON / E-DIM / CORE</code></p>
 <p>Considera los pares:</p>
@@ -4839,8 +4877,8 @@ L^1T^{-1}.
 <li>decide si la igualdad dimensional basta para afirmar que son magnitudes del mismo tipo;</li>
 <li>explica qué conclusión es legítima.</li>
 </ol>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p><strong>1. Frecuencia y actividad radionúclida</strong></p>
 <p>Ambas tienen</p>
@@ -4901,7 +4939,7 @@ L.
 \text{mismo tipo}.
 }
 \]</span></p>
-</div>
+</blockquote>
 </section>
 <section id="síntesis-3" class="level3">
 <h3 class="anchored" data-anchor-id="síntesis-3">5.21. Síntesis</h3>
@@ -4956,10 +4994,12 @@ J^\eta.
 </section>
 <section id="notas-y-fuentes" class="level3">
 <h3 class="anchored" data-anchor-id="notas-y-fuentes">Notas y fuentes</h3>
+<p><span id="fispm-t1-c02-s06"></span></p>
+<p><span id="fpm-i-02-s06"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s06" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s06">§6 — Homogeneidad dimensional</h2>
+<section id="homogeneidad-dimensional" class="level2">
+<h2 class="anchored" data-anchor-id="homogeneidad-dimensional">§6 — Homogeneidad dimensional</h2>
 <section id="una-igualdad-física-debe-sobrevivir-al-cambio-de-unidades" class="level3">
 <h3 class="anchored" data-anchor-id="una-igualdad-física-debe-sobrevivir-al-cambio-de-unidades">6.1. Una igualdad física debe sobrevivir al cambio de unidades</h3>
 <p>En §5 vimos que una magnitud conserva su dimensión cuando cambiamos las unidades concretas con que expresamos sus magnitudes base.<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a></p>
@@ -5021,11 +5061,11 @@ LT.
 <p>El problema aparece antes de sustituir números.</p>
 <p>La expresión no conserva una interpretación física coherente bajo cambios de unidades.</p>
 </section>
-<section id="homogeneidad-dimensional" class="level3">
-<h3 class="anchored" data-anchor-id="homogeneidad-dimensional">6.2. Homogeneidad dimensional</h3>
-<div id="fpm-i-02-d17" class="ma-block ma-definicion">
+<section id="homogeneidad-dimensional-1" class="level3">
+<h3 class="anchored" data-anchor-id="homogeneidad-dimensional-1">6.2. Homogeneidad dimensional</h3>
+<blockquote class="blockquote">
 <p><strong>Definición 17 — Ecuación dimensionalmente homogénea</strong> Una ecuación física es <strong>dimensionalmente homogénea</strong> cuando todos los términos que se suman o se igualan poseen la misma dimensión, una vez incorporadas las dimensiones de todos los parámetros y constantes físicas que aparecen en ellos.</p>
-</div>
+</blockquote>
 <p>Por ejemplo,</p>
 <p><span class="math display">\[
 x=x_0+vt
@@ -5075,9 +5115,9 @@ A+B
 ML^{-1}T^{-2}.
 \]</span></p>
 <p>Pero la igualdad dimensional por sí sola no autoriza cualquier suma entre ambas fuera de una relación física que le otorgue significado.</p>
-<div id="fpm-i-02-mp11" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 11 — La homogeneidad dimensional es necesaria para la suma física</strong> Los términos que se suman o se comparan mediante una igualdad física deben poseer dimensiones compatibles. Si sus dimensiones difieren, la ecuación no puede representar una relación física independiente de la elección de unidades.</p>
-</div>
+</blockquote>
 </section>
 </section>
 <section id="de-la-dimensión-al-factor-de-reescalado" class="level3">
@@ -5299,7 +5339,7 @@ J^{\eta_B}.
 </section>
 <section id="segunda-proposición-formal-del-capítulo" class="level3">
 <h3 class="anchored" data-anchor-id="segunda-proposición-formal-del-capítulo">6.7. Segunda proposición formal del capítulo</h3>
-<div id="fpm-i-02-p02" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Proposición 2 — Homogeneidad dimensional necesaria bajo cambios independientes de unidades base</strong></p>
 <p>Considérese una relación física de la forma</p>
 <p><span class="math display">\[
@@ -5312,7 +5352,7 @@ R_1+\cdots+R_s,
 <ol type="1">
 <li>que la relación representa una ley o familia de realizaciones no degenerada, y no una igualdad numérica accidental;</li>
 <li>que su forma numérica debe conservarse bajo cambios multiplicativos independientes de las unidades base;</li>
-<li>que los términos que aparecen en cada suma pueden variar suficientemente como para que la validez de la relación no dependa de una cancelación especial entre valores numéricos concretos.</li>
+<li>que existe una realización de la relación en la cual podemos variar cualquier par de términos, manteniendo los restantes fijos, de modo que la igualdad siga siendo válida: si ambos términos están en el mismo miembro, sus variaciones numéricas son <span class="math inline">\(h\)</span> y <span class="math inline">\(-h\)</span>; si están en miembros distintos, ambas son <span class="math inline">\(h\)</span>. Para cada par se admiten valores no nulos de <span class="math inline">\(h\)</span> suficientemente pequeños.</li>
 </ol>
 <p>Entonces todos los términos que participan aditivamente deben poseer la misma dimensión:</p>
 <p><span class="math display">\[
@@ -5328,97 +5368,26 @@ R_1+\cdots+R_s,
 =
 [R_s].
 \]</span></p>
-</div>
+</blockquote>
 <section id="demostración-1" class="level4">
 <h4 class="anchored" data-anchor-id="demostración-1">Demostración</h4>
-<p>Basta demostrar la afirmación para una relación elemental</p>
+<p>Fijemos un sistema inicial de unidades y llamemos <span class="math inline">\(z_1,\ldots,z_{r+s}\)</span> a los valores numéricos de todos los términos, tomando con signo negativo los del segundo miembro. La relación se escribe entonces</p>
 <p><span class="math display">\[
-A+B=C,
+\sum_{i=1}^{r+s}z_i=0.
 \]</span></p>
-<p>porque una suma finita puede reagruparse y el mismo argumento se aplica a cada término.</p>
-<p>Sea</p>
+<p>Un cambio multiplicativo de las unidades base multiplica cada valor numérico por un factor positivo <span class="math inline">\(\chi_i\)</span>, determinado por la dimensión del término. La invariancia de forma exige, para cada realización de la familia,</p>
 <p><span class="math display">\[
-a+b=c
+\sum_{i=1}^{r+s}\chi_i z_i=0.
 \]</span></p>
-<p>la ecuación entre valores numéricos en un sistema de unidades.</p>
-<p>Bajo un cambio independiente de las unidades base, los valores numéricos cambian según los factores dimensionales:</p>
+<p>Tomemos dos índices distintos <span class="math inline">\(i,j\)</span>. La tercera hipótesis permite cambiar los valores firmados a <span class="math inline">\(z_i+h\)</span> y <span class="math inline">\(z_j-h\)</span>, con <span class="math inline">\(h\ne0\)</span>, sin alterar los restantes. La relación reescalada vale tanto antes como después de esa variación. Restar ambas igualdades da</p>
 <p><span class="math display">\[
-a'
-=
-\chi_Aa,
+h(\chi_i-\chi_j)=0.
 \]</span></p>
+<p>Por tanto <span class="math inline">\(\chi_i=\chi_j\)</span>. Como el par era arbitrario, todos los términos tienen el mismo factor de reescalado para cada elección de unidades. Al variar una sola unidad base por un factor positivo arbitrario, la igualdad de sus potencias obliga a que coincidan los exponentes dimensionales correspondientes. Repetirlo con cada unidad base prueba</p>
 <p><span class="math display">\[
-b'
-=
-\chi_Bb,
+[Q_1]=\cdots=[Q_r]=[R_1]=\cdots=[R_s].
 \]</span></p>
-<p><span class="math display">\[
-c'
-=
-\chi_Cc.
-\]</span></p>
-<p>La invariancia de forma exige</p>
-<p><span class="math display">\[
-a'+b'=c'.
-\]</span></p>
-<p>Por tanto,</p>
-<p><span class="math display">\[
-\chi_Aa+\chi_Bb
-=
-\chi_Cc.
-\]</span></p>
-<p>Como</p>
-<p><span class="math display">\[
-c=a+b,
-\]</span></p>
-<p>tenemos</p>
-<p><span class="math display">\[
-(\chi_A-\chi_C)a
-+
-(\chi_B-\chi_C)b
-=
-0.
-\]</span></p>
-<p>Por la hipótesis de no degeneración, esta relación debe mantenerse para una familia en la que los valores de <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> no están fijados por una cancelación accidental.</p>
-<p>Así,</p>
-<p><span class="math display">\[
-\chi_A=\chi_C
-\]</span></p>
-<p>y</p>
-<p><span class="math display">\[
-\chi_B=\chi_C.
-\]</span></p>
-<p>Luego</p>
-<p><span class="math display">\[
-\chi_A=\chi_B=\chi_C
-\]</span></p>
-<p>para todo cambio independiente de las unidades base.</p>
-<p>Ahora variamos una unidad base cada vez.</p>
-<p>La igualdad de los factores de reescalado para todo valor positivo de cada <span class="math inline">\(\lambda\)</span> obliga a que coincidan todos los exponentes dimensionales de <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span>.</p>
-<p>Por tanto,</p>
-<p><span class="math display">\[
-[A]=[B]=[C].
-\]</span></p>
-<p>El mismo argumento se aplica a cualquier suma finita de términos.</p>
-<p>Así,</p>
-<p><span class="math display">\[
-\boxed{
-[Q_1]
-=
-\cdots
-=
-[Q_r]
-=
-[R_1]
-=
-\cdots
-=
-[R_s].
-}
-\]</span></p>
-<p><span class="math display">\[
-\boxed{\text{QED}}
-\]</span></p>
+<p>La hipótesis de variación excluye, por ejemplo, una suma de dos identidades independientes escritas juntas, cuyos términos podrían cancelarse por grupos de dimensiones distintas. La independencia respecto de las unidades, sin esa condición adicional, no bastaría para la conclusión sobre todos los sumandos. <span class="math inline">\(\square\)</span></p>
 </section>
 </section>
 <section id="qué-demuestra-exactamente-la-proposición-2" class="level3">
@@ -5447,9 +5416,9 @@ x=x_0-17vt.
 \text{verdad física}.
 }
 \]</span></p>
-<div id="fpm-i-02-mp12" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 12 — Pasar el control dimensional no prueba una ley</strong> La homogeneidad dimensional es una condición necesaria de consistencia para una amplia clase de ecuaciones físicas, pero no constituye una demostración de su corrección empírica, de su interpretación ni de su dominio de validez.</p>
-</div>
+</blockquote>
 </section>
 <section id="un-error-dimensional-sí-puede-ser-decisivo" class="level3">
 <h3 class="anchored" data-anchor-id="un-error-dimensional-sí-puede-ser-decisivo">6.9. Un error dimensional sí puede ser decisivo</h3>
@@ -5786,7 +5755,7 @@ e^x,
 </section>
 <section id="ejercicios-2" class="level3">
 <h3 class="anchored" data-anchor-id="ejercicios-2">6.20. Ejercicios</h3>
-<div id="fpm-i-02-e14" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 14 — Auditoría de ecuaciones</strong></p>
 <p><strong>Tipo:</strong> análisis dimensional · <strong>Nivel:</strong> central</p>
 <p>Decide cuáles de las siguientes ecuaciones son dimensionalmente homogéneas. No juzgues todavía si son físicamente correctas.</p>
@@ -5810,8 +5779,8 @@ E=F\ell.
 p=\frac{F}{A}.
 \]</span></p></li>
 </ol>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p><strong>1.</strong></p>
 <p><span class="math display">\[
@@ -5887,8 +5856,8 @@ ML^{-1}T^{-2}.
 \text{ fallan.}
 }
 \]</span></p>
-</div>
-<div id="fpm-i-02-e15" class="ma-block ma-enunciado">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 15 — Determinar la dimensión de una constante</strong></p>
 <p><strong>Familia:</strong> <code>E-DIM / E-CALC / CORE</code></p>
 <p>En cada relación, determina la dimensión que debe tener la constante indicada para que la ecuación sea homogénea.</p>
@@ -5906,8 +5875,8 @@ x=ct.
 v^2=\alpha x.
 \]</span></p></li>
 </ol>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p><strong>1.</strong></p>
 <p>Queremos</p>
@@ -5972,8 +5941,8 @@ LT^{-2}.
 [\alpha]=LT^{-2}.
 }
 \]</span></p>
-</div>
-<div id="fpm-i-02-e16" class="ma-block ma-enunciado">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 16 — Homogénea pero no determinada</strong></p>
 <p><strong>Familia:</strong> <code>E-PROOF / E-CON / ADVANCED</code></p>
 <p>Considera la familia de ecuaciones</p>
@@ -5987,8 +5956,8 @@ x=x_0+Cvt,
 <li>¿Qué tipo de información adicional sería necesaria para determinarlo físicamente?</li>
 <li>¿Qué enseña el ejercicio acerca de la Proposición 2?</li>
 </ol>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p>Tenemos</p>
 <p><span class="math display">\[
@@ -6054,7 +6023,7 @@ C=-17,
 \text{determinación completa de la ley}.
 }
 \]</span></p>
-</div>
+</blockquote>
 </section>
 <section id="síntesis-4" class="level3">
 <h3 class="anchored" data-anchor-id="síntesis-4">6.21. Síntesis</h3>
@@ -6118,10 +6087,12 @@ R_1+\cdots+R_s
 </section>
 <section id="notas-y-fuentes-1" class="level3">
 <h3 class="anchored" data-anchor-id="notas-y-fuentes-1">Notas y fuentes</h3>
+<p><span id="fispm-t1-c02-s07"></span></p>
+<p><span id="fpm-i-02-s07"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s07" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s07">§7 — El análisis dimensional como auditoría</h2>
+<section id="el-análisis-dimensional-como-auditoría" class="level2">
+<h2 class="anchored" data-anchor-id="el-análisis-dimensional-como-auditoría">§7 — El análisis dimensional como auditoría</h2>
 <section id="por-qué-aparece-una-ecuación-puede-parecer-razonable-y-estar-mal-construida" class="level3">
 <h3 class="anchored" data-anchor-id="por-qué-aparece-una-ecuación-puede-parecer-razonable-y-estar-mal-construida">7.1. Por qué aparece: una ecuación puede parecer razonable y estar mal construida</h3>
 <p>Consideremos la expresión</p>
@@ -6265,7 +6236,7 @@ J^\eta.
 <p><span class="math display">\[
 (T,L,M,I,\Theta,N,J).
 \]</span></p>
-<div id="fpm-i-02-d18" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 18 — Firma dimensional</strong> La <strong>firma dimensional</strong> de una magnitud <span class="math inline">\(Q\)</span> es el vector ordenado de exponentes de sus dimensiones base:</p>
 <p><span class="math display">\[
 \mathbf d(Q)
@@ -6284,7 +6255,7 @@ I^\delta
 N^\zeta
 J^\eta.
 \]</span></p>
-</div>
+</blockquote>
 <p>Por ejemplo,</p>
 <p><span class="math display">\[
 [v]=LT^{-1}
@@ -6402,9 +6373,9 @@ Q=A+B
 </section>
 <section id="precisar-el-método-qué-es-una-auditoría-dimensional" class="level3">
 <h3 class="anchored" data-anchor-id="precisar-el-método-qué-es-una-auditoría-dimensional">7.6. Precisar el método: qué es una auditoría dimensional</h3>
-<div id="fpm-i-02-d19" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 19 — Auditoría dimensional</strong> Una <strong>auditoría dimensional</strong> es el procedimiento de analizar una expresión, ecuación o cadena de cálculo reemplazando sus magnitudes por dimensiones o firmas dimensionales para comprobar la compatibilidad estructural exigida por sus operaciones y localizar posibles inconsistencias.</p>
-</div>
+</blockquote>
 <p>La definición contiene tres verbos:</p>
 <ol type="1">
 <li><strong>analizar</strong>;</li>
@@ -6413,9 +6384,9 @@ Q=A+B
 </ol>
 <p>Una auditoría no se limita a pronunciar «correcto» o «incorrecto».</p>
 <p>Debe intentar identificar <strong>dónde</strong> aparece la incompatibilidad.</p>
-<div id="fpm-i-02-mp13" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 13 — Auditar la estructura antes de sustituir números</strong> Cuando una relación física contiene varios términos, parámetros o conversiones, conviene verificar primero su estructura dimensional. Una incompatibilidad detectada en esta etapa evita cálculos numéricos que no pueden reparar el problema.</p>
-</div>
+</blockquote>
 </section>
 <section id="protocolo-fpm-de-auditoría-dimensional" class="level3">
 <h3 class="anchored" data-anchor-id="protocolo-fpm-de-auditoría-dimensional">7.7. Protocolo FPM de auditoría dimensional</h3>
@@ -6580,11 +6551,11 @@ LT^{-1}.
 <p>La auditoría no nos dice automáticamente cuál era la fórmula pretendida.</p>
 <p>Podría faltar, por ejemplo, otro factor de tiempo.</p>
 <p>Pero reconstruir ese factor requiere información adicional.</p>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Pausa de autoexplicación</strong> Antes de continuar, explica sin mirar las ecuaciones:</p>
 <p><strong>¿por qué sustituir valores numéricos de <span class="math inline">\(a\)</span> y <span class="math inline">\(t\)</span> no puede corregir el defecto dimensional de <span class="math inline">\(at\)</span> dentro de una suma de longitudes?</strong></p>
 <p>Una respuesta adecuada debe mencionar que cambiar números no cambia la dimensión del término.</p>
-</div>
+</blockquote>
 </section>
 </section>
 <section id="ejemplo-desarrollado-2-una-fórmula-que-pasa-y-puede-seguir-siendo-falsa" class="level3">
@@ -6719,10 +6690,10 @@ T,
 <blockquote class="blockquote">
 <p>¿las leyes, hipótesis, idealizaciones y aproximaciones son adecuadas para el sistema y el régimen?</p>
 </blockquote>
-<div id="fpm-i-02-mp14" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 14 — Identificar el nivel del fallo</strong> Detectar que una expresión es incorrecta no basta. Siempre que sea posible distinguiremos si el problema es dimensional, algebraico, semántico o físico, porque cada clase de fallo exige una corrección diferente.</p>
-</div>
-<p>Este principio extiende el protocolo de revisión de <code>el capítulo 1</code>.</p>
+</blockquote>
+<p>Este principio extiende el protocolo de revisión del capítulo 1.</p>
 </section>
 </section>
 <section id="conflicto-típico-las-unidades-se-cancelan-así-que-está-bien" class="level3">
@@ -6907,20 +6878,20 @@ A-B=C
 <p>No debemos confundir ambos niveles.</p>
 <p>Las operaciones algebraicas son el mecanismo.</p>
 <p>La razón física de hacerlas es la invariancia estructural expresada por la Proposición 2.</p>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Pausa de autoexplicación</strong> Explica en tus propias palabras:</p>
 <ol type="1">
 <li>por qué una firma dimensional diferente detecta un problema en una suma;</li>
 <li>por qué una firma dimensional igual no basta para probar una ley;</li>
 <li>qué papel cumple la Proposición 2 dentro del protocolo de auditoría.</li>
 </ol>
-</div>
+</blockquote>
 <p>Si las tres respuestas pueden darse sin recurrir a una fórmula memorizada, la herramienta empieza a estar comprendida y no solo aplicada.</p>
 </section>
 </section>
 <section id="conectar-con-el-protocolo-general-de-física-para-matemáticos" class="level3">
 <h3 class="anchored" data-anchor-id="conectar-con-el-protocolo-general-de-física-para-matemáticos">7.18. Conectar con el protocolo general de Física para matemáticos</h3>
-<p>En <code>el capítulo 1</code> fijamos la cadena:</p>
+<p>En el capítulo 1 fijamos la cadena:</p>
 <p><span class="math display">\[
 \text{fenómeno}
 \to
@@ -6961,9 +6932,9 @@ A-B=C
 }
 \]</span></p>
 </section>
-<section id="práctica-guiada-práctica-guiada" class="level3">
-<h3 class="anchored" data-anchor-id="práctica-guiada-práctica-guiada">7.19. Práctica guiada práctica guiada</h3>
-<div id="fpm-i-02-e17" class="ma-block ma-enunciado">
+<section id="práctica-guiada" class="level3">
+<h3 class="anchored" data-anchor-id="práctica-guiada">7.19. Práctica guiada</h3>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 17 — Auditoría dimensional completa</strong></p>
 <p><strong>Objetivo:</strong> <code>Síntesis — auditoría</code></p>
 <p><strong>Intenta primero: 3–5 min antes de leer la solución.</strong></p>
@@ -6977,8 +6948,7 @@ A-B=C
 \to
 \text{Síntesis}.
 \]</span></p>
-<section id="a.-recuperación" class="level3">
-<h3 class="anchored" data-anchor-id="a.-recuperación">A. Recuperación</h3>
+<h3 id="a.-recuperación" class="anchored">A. Recuperación</h3>
 <p>Calcula las firmas dimensionales de:</p>
 <p><span class="math display">\[
 v,\qquad a,\qquad F,\qquad E.
@@ -6987,17 +6957,13 @@ v,\qquad a,\qquad F,\qquad E.
 <p><span class="math display">\[
 (T,L,M,I,\Theta,N,J).
 \]</span></p>
-</section>
-<section id="b.-consolidación" class="level3">
-<h3 class="anchored" data-anchor-id="b.-consolidación">B. Consolidación</h3>
+<h3 id="b.-consolidación" class="anchored">B. Consolidación</h3>
 <p>Audita:</p>
 <p><span class="math display">\[
 x=x_0+v_0t+\frac12 at^2.
 \]</span></p>
 <p>Verifica la dimensión de cada término y explica por qué el factor <span class="math inline">\(1/2\)</span> no interviene en el control dimensional.</p>
-</section>
-<section id="c.-diagnóstico" class="level3">
-<h3 class="anchored" data-anchor-id="c.-diagnóstico">C. Diagnóstico</h3>
+<h3 id="c.-diagnóstico" class="anchored">C. Diagnóstico</h3>
 <p>Un estudiante propone:</p>
 <p><span class="math display">\[
 v=v_0+at^2.
@@ -7007,9 +6973,7 @@ v=v_0+at^2.
 <p>«La fórmula puede arreglarse cambiando el valor numérico de <span class="math inline">\(a\)</span>.»</p>
 </blockquote>
 <p>Identifica el error dimensional y explica por qué la respuesta no puede repararlo.</p>
-</section>
-<section id="d.-síntesis" class="level3">
-<h3 class="anchored" data-anchor-id="d.-síntesis">D. Síntesis</h3>
+<h3 id="d.-síntesis" class="anchored">D. Síntesis</h3>
 <p>Considera:</p>
 <p><span class="math display">\[
 Q=C\,m^\alpha v^\beta,
@@ -7020,12 +6984,10 @@ Q=C\,m^\alpha v^\beta,
 <li>Decide si esas condiciones determinan completamente una ley física para la energía.</li>
 <li>Clasifica qué parte de tu razonamiento es dimensional y qué información adicional sería física.</li>
 </ol>
-</section>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
-<section id="a.-recuperación-1" class="level3">
-<h3 class="anchored" data-anchor-id="a.-recuperación-1">A. Recuperación</h3>
+<h3 id="a.-recuperación-1" class="anchored">A. Recuperación</h3>
 <p>Para velocidad:</p>
 <p><span class="math display">\[
 [v]=LT^{-1},
@@ -7074,9 +7036,7 @@ Q=C\,m^\alpha v^\beta,
 (-2,2,1,0,0,0,0).
 }
 \]</span></p>
-</section>
-<section id="b.-consolidación-1" class="level3">
-<h3 class="anchored" data-anchor-id="b.-consolidación-1">B. Consolidación</h3>
+<h3 id="b.-consolidación-1" class="anchored">B. Consolidación</h3>
 <p>Tenemos:</p>
 <p><span class="math display">\[
 [x]=[x_0]=L.
@@ -7117,9 +7077,7 @@ L.
 \frac12
 \]</span></p>
 <p>es un número puro y no introduce ninguna potencia de las dimensiones base.</p>
-</section>
-<section id="c.-diagnóstico-1" class="level3">
-<h3 class="anchored" data-anchor-id="c.-diagnóstico-1">C. Diagnóstico</h3>
+<h3 id="c.-diagnóstico-1" class="anchored">C. Diagnóstico</h3>
 <p>La velocidad tiene dimensión:</p>
 <p><span class="math display">\[
 [v]=LT^{-1}.
@@ -7151,9 +7109,7 @@ at^2
 \]</span></p>
 <p>en una velocidad.</p>
 <p>El fallo es dimensional, no numérico.</p>
-</section>
-<section id="d.-síntesis-1" class="level3">
-<h3 class="anchored" data-anchor-id="d.-síntesis-1">D. Síntesis</h3>
+<h3 id="d.-síntesis-1" class="anchored">D. Síntesis</h3>
 <p>Queremos:</p>
 <p><span class="math display">\[
 [Q]
@@ -7217,8 +7173,7 @@ Q=Cmv^2.
 \text{ley física completa}.
 }
 \]</span></p>
-</section>
-</div>
+</blockquote>
 </section>
 <section id="variar-el-método" class="level3">
 <h3 class="anchored" data-anchor-id="variar-el-método">7.20. Variar el método</h3>
@@ -7319,10 +7274,12 @@ Q=AX^\alpha Y^\beta
 </section>
 <section id="notas-y-fuentes-2" class="level3">
 <h3 class="anchored" data-anchor-id="notas-y-fuentes-2">Notas y fuentes</h3>
+<p><span id="fispm-t1-c02-s08"></span></p>
+<p><span id="fpm-i-02-s08"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s08" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s08">§8 — Cantidades de dimensión uno</h2>
+<section id="cantidades-de-dimensión-uno" class="level2">
+<h2 class="anchored" data-anchor-id="cantidades-de-dimensión-uno">§8 — Cantidades de dimensión uno</h2>
 <section id="intuir-adimensional-no-significa-sin-física" class="level3">
 <h3 class="anchored" data-anchor-id="intuir-adimensional-no-significa-sin-física">8.1. Intuir: «adimensional» no significa «sin física»</h3>
 <p>Consideremos estas cantidades:</p>
@@ -7353,7 +7310,7 @@ Q=AX^\alpha Y^\beta
 </section>
 <section id="precisar-cantidad-de-dimensión-uno" class="level3">
 <h3 class="anchored" data-anchor-id="precisar-cantidad-de-dimensión-uno">8.2. Precisar: cantidad de dimensión uno</h3>
-<div id="fpm-i-02-d20" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 20 — Cantidad de dimensión uno</strong> Una <strong>cantidad de dimensión uno</strong> es una magnitud cuya expresión dimensional tiene todos sus exponentes iguales a cero:</p>
 <p><span class="math display">\[
 [Q]
@@ -7362,7 +7319,7 @@ T^0L^0M^0I^0\Theta^0N^0J^0
 =
 1.
 \]</span></p>
-</div>
+</blockquote>
 <p>En términos de firmas dimensionales,</p>
 <p><span class="math display">\[
 \mathbf d(Q)
@@ -7371,9 +7328,9 @@ T^0L^0M^0I^0\Theta^0N^0J^0
 \]</span></p>
 <p>Esta definición no dice que <span class="math inline">\(Q\)</span> carezca de contenido físico.</p>
 <p>Dice que su valor no cambia mediante factores asociados a una reescala independiente de las unidades base.</p>
-<div id="fpm-i-02-mp15" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 15 — Dimensión uno no borra la semántica</strong> Dos cantidades pueden tener dimensión uno y, sin embargo, pertenecer a tipos físicos diferentes, requerir convenciones distintas y desempeñar papeles distintos dentro de un modelo.</p>
-</div>
+</blockquote>
 </section>
 <section id="representar-cociente-de-magnitudes-del-mismo-tipo" class="level3">
 <h3 class="anchored" data-anchor-id="representar-cociente-de-magnitudes-del-mismo-tipo">8.3. Representar: cociente de magnitudes del mismo tipo</h3>
@@ -7540,13 +7497,13 @@ r=0.25
 \mathrm{rad}
 \]</span></p>
 <p>cuando ayuda a conservar el significado físico.</p>
-<div id="fpm-i-02-d21" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 21 — Ángulo plano en radianes</strong> Para una circunferencia de radio <span class="math inline">\(r\)</span>, el valor angular en radianes asociado a un arco de longitud <span class="math inline">\(s\)</span> es la razón</p>
 <p><span class="math display">\[
 \theta=\frac{s}{r},
 \]</span></p>
 <p>acompañada por la interpretación geométrica de ángulo plano y expresada coherentemente en radianes.</p>
-</div>
+</blockquote>
 <p>La definición no identifica «ángulo» con «razón de longitudes» como tipos de magnitud.</p>
 <p>La razón construye su medida radian.</p>
 </section>
@@ -7659,7 +7616,6 @@ n=M
 <p><span class="math display">\[
 e^x,
 \]</span></p>
-<p>o</p>
 <p><span class="math display">\[
 \log x.
 \]</span></p>
@@ -7680,9 +7636,9 @@ e^x
 [x]=1.
 \]</span></p>
 <p>La misma lógica aparece en las expansiones de seno y coseno.</p>
-<div id="fpm-i-02-mp16" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 16 — Los argumentos de funciones trascendentes deben ser dimensionalmente apropiados</strong> En expresiones físicas con funciones como exponencial, logaritmo, seno o coseno, el argumento debe construirse como una cantidad de dimensión uno, o mediante una convención equivalente que haga explícita la normalización necesaria.</p>
-</div>
+</blockquote>
 </section>
 <section id="exponencial-por-qué-aparece-ttau" class="level3">
 <h3 class="anchored" data-anchor-id="exponencial-por-qué-aparece-ttau">8.12. Exponencial: por qué aparece <span class="math inline">\(t/\tau\)</span></h3>
@@ -7853,14 +7809,14 @@ N=20
 </section>
 <section id="autoexplicación" class="level3">
 <h3 class="anchored" data-anchor-id="autoexplicación">8.17. Autoexplicación</h3>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Pausa de autoexplicación</strong> Explica sin consultar la tabla:</p>
 <ol type="1">
 <li>por qué <span class="math inline">\(30^\circ\)</span> y <span class="math inline">\(\pi/6\,\mathrm{rad}\)</span> tienen valores numéricos diferentes pero representan el mismo ángulo;</li>
 <li>por qué <span class="math inline">\(\log(p)\)</span> es problemático si <span class="math inline">\(p\)</span> conserva dimensión de presión;</li>
 <li>por qué dos cantidades con firma dimensional nula no tienen por qué pertenecer al mismo tipo físico.</li>
 </ol>
-</div>
+</blockquote>
 <p>Una respuesta satisfactoria debe distinguir:</p>
 <p><span class="math display">\[
 \text{dimensión},
@@ -7872,9 +7828,9 @@ N=20
 \text{significado físico}.
 \]</span></p>
 </section>
-<section id="práctica-guiada" class="level3">
-<h3 class="anchored" data-anchor-id="práctica-guiada">8.18. Práctica guiada</h3>
-<div id="fpm-i-02-e18" class="ma-block ma-enunciado">
+<section id="práctica-guiada-1" class="level3">
+<h3 class="anchored" data-anchor-id="práctica-guiada-1">8.18. Práctica guiada</h3>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 18 — Reconocer dimensión uno</strong></p>
 <p><strong>Objetivo:</strong> <code>Recuperación → Consolidación</code></p>
 <p><strong>Intenta primero: 3–5 min antes de leer la solución.</strong></p>
@@ -7889,8 +7845,8 @@ N=20
 <li><span class="math inline">\(F/(ma)\)</span>.</li>
 </ol>
 <p>Para cada caso explica además qué estructura física podría representar.</p>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <ol type="1">
 <li></li>
@@ -7946,8 +7902,8 @@ N=20
 \left[\frac{F}{ma}\right]=1.
 \]</span></p>
 <p>El punto común es dimensional, pero las interpretaciones siguen siendo distintas.</p>
-</div>
-<div id="fpm-i-02-e19" class="ma-block ma-enunciado">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 19 — Diagnóstico de argumentos de funciones</strong></p>
 <p><strong>Objetivo:</strong> <code>Diagnóstico — transferencia</code></p>
 <p><strong>Intenta primero: 3–5 min antes de leer la solución.</strong></p>
@@ -7961,8 +7917,8 @@ N=20
 <li><span class="math inline">\(\sin(vt)\)</span>, con <span class="math inline">\([v]=LT^{-1}\)</span>.</li>
 </ol>
 <p>Decide cuáles son dimensionalmente admisibles tal como están escritas.</p>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p><strong>1.</strong> Si <span class="math inline">\([t]=T\)</span>, el argumento conserva dimensión temporal. No está normalizado.</p>
 <p><strong>2.</strong></p>
@@ -7998,7 +7954,7 @@ N=20
 auditar la dimensión de su argumento}.
 }
 \]</span></p>
-</div>
+</blockquote>
 </section>
 <section id="variar" class="level3">
 <h3 class="anchored" data-anchor-id="variar">8.19. Variar</h3>
@@ -8089,10 +8045,12 @@ e^x,\qquad
 </section>
 <section id="notas-y-fuentes-3" class="level3">
 <h3 class="anchored" data-anchor-id="notas-y-fuentes-3">Notas y fuentes</h3>
+<p><span id="fispm-t1-c02-s09"></span></p>
+<p><span id="fpm-i-02-s09"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s09" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s09">§9 — Escalas características y órdenes de magnitud</h2>
+<section id="escalas-características-y-órdenes-de-magnitud" class="level2">
+<h2 class="anchored" data-anchor-id="escalas-características-y-órdenes-de-magnitud">§9 — Escalas características y órdenes de magnitud</h2>
 <section id="intuir-una-magnitud-puede-ser-grande-o-pequeña-solo-respecto-de-una-escala" class="level3">
 <h3 class="anchored" data-anchor-id="intuir-una-magnitud-puede-ser-grande-o-pequeña-solo-respecto-de-una-escala">9.1. Intuir: una magnitud puede ser grande o pequeña solo respecto de una escala</h3>
 <p>Decir que</p>
@@ -8113,9 +8071,9 @@ e^x,\qquad
 </section>
 <section id="escala-característica" class="level3">
 <h3 class="anchored" data-anchor-id="escala-característica">9.2. Escala característica</h3>
-<div id="fpm-i-02-d32" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 32 — Escala característica</strong> Una <strong>escala característica</strong> de una magnitud <span class="math inline">\(Q\)</span> en un modelo es un valor de referencia <span class="math inline">\(Q_\ast\)</span>, del mismo tipo de magnitud, elegido para representar el tamaño relevante de <span class="math inline">\(Q\)</span> en el fenómeno o régimen considerado.</p>
-</div>
+</blockquote>
 <p>La escala puede proceder de:</p>
 <ul>
 <li>una dimensión geométrica del sistema;</li>
@@ -8126,9 +8084,9 @@ e^x,\qquad
 </ul>
 <p>No tiene por qué ser un promedio ni el valor máximo.</p>
 <p>Su elección depende de la pregunta física.</p>
-<div id="fpm-i-02-mp27" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 27 — Una escala característica pertenece al modelo</strong> Una escala característica no se deduce únicamente de la dimensión de una magnitud. Debe justificarse por la geometría, el régimen, los datos o la estructura física del problema.</p>
-</div>
+</blockquote>
 </section>
 <section id="representar-una-magnitud-respecto-de-su-escala" class="level3">
 <h3 class="anchored" data-anchor-id="representar-una-magnitud-respecto-de-su-escala">9.3. Representar una magnitud respecto de su escala</h3>
@@ -8188,7 +8146,7 @@ L,\qquad \ell.
 <section id="década-decimal" class="level3">
 <h3 class="anchored" data-anchor-id="década-decimal">9.5. Década decimal</h3>
 <p>Conservaremos una herramienta numérica de la primera redacción.</p>
-<div id="fpm-i-02-d22" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 22 — Década decimal</strong> Si</p>
 <p><span class="math display">\[
 x=a\times10^n,
@@ -8199,14 +8157,14 @@ x=a\times10^n,
 <p><span class="math display">\[
 [10^n,10^{n+1}).
 \]</span></p>
-</div>
+</blockquote>
 <p>La década registra una escala decimal gruesa.</p>
 </section>
 <section id="orden-de-magnitud" class="level3">
 <h3 class="anchored" data-anchor-id="orden-de-magnitud">9.6. Orden de magnitud</h3>
-<div id="fpm-i-02-d23" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 23 — Orden de magnitud</strong> Para <span class="math inline">\(x&gt;0\)</span>, el <strong>orden de magnitud decimal</strong> de <span class="math inline">\(x\)</span> será la potencia de diez más cercana en escala logarítmica.</p>
-</div>
+</blockquote>
 <p>Si</p>
 <p><span class="math display">\[
 x=a\times10^n,
@@ -8236,9 +8194,9 @@ a=\sqrt{10},
 <p><span class="math display">\[
 x=\sqrt{10}\,10^n.
 \]</span></p>
-<div id="fpm-i-02-mp17" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 17 — Un orden de magnitud describe escala, no precisión</strong> Informar un orden de magnitud identifica una escala multiplicativa dominante. No equivale a conocer con precisión el coeficiente numérico ni sus cifras significativas.</p>
-</div>
+</blockquote>
 </section>
 <section id="escala-característica-y-orden-de-magnitud-no-son-lo-mismo" class="level3">
 <h3 class="anchored" data-anchor-id="escala-característica-y-orden-de-magnitud-no-son-lo-mismo">9.7. Escala característica y orden de magnitud no son lo mismo</h3>
@@ -8358,12 +8316,12 @@ v=10\,\mathrm{m\,s^{-1}}
 <section id="estimación-física-puente-hacia-el-capítulo-siguiente" class="level3">
 <h3 class="anchored" data-anchor-id="estimación-física-puente-hacia-el-capítulo-siguiente">9.11. Estimación física: puente hacia el capítulo siguiente</h3>
 <p>Conservamos el concepto ya activado:</p>
-<div id="fpm-i-02-d24" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 24 — Estimación física</strong> Una <strong>estimación física</strong> es una inferencia cuantitativa aproximada construida a partir de un modelo simplificado, valores representativos, cotas o escalas plausibles, con las hipótesis y la precisión pretendida explícitas.</p>
-</div>
-<div id="fpm-i-02-mp18" class="ma-block ma-metodo">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Principio 18 — Toda estimación debe exponer su modelo</strong> Una estimación es auditable solo si hace visibles las cantidades intermedias, los valores representativos y las simplificaciones utilizadas.</p>
-</div>
+</blockquote>
 <p>En este capítulo usaremos esta idea solo para <strong>identificar escalas</strong>.</p>
 <p>El desarrollo sistemático de:</p>
 <ul>
@@ -8374,11 +8332,11 @@ v=10\,\mathrm{m\,s^{-1}}
 <li>propagación de incertidumbres;</li>
 <li>precisión de resultados;</li>
 </ul>
-<p>pertenece a <code>el capítulo 3</code>.</p>
+<p>pertenece al capítulo 3.</p>
 </section>
-<section id="práctica-guiada-1" class="level3">
-<h3 class="anchored" data-anchor-id="práctica-guiada-1">9.12. Práctica guiada</h3>
-<div id="fpm-i-02-e20" class="ma-block ma-enunciado">
+<section id="práctica-guiada-2" class="level3">
+<h3 class="anchored" data-anchor-id="práctica-guiada-2">9.12. Práctica guiada</h3>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 20 — Elegir y usar escalas características</strong></p>
 <p><strong>Objetivo:</strong> <code>Consolidación → Diagnóstico → Síntesis</code></p>
 <p><strong>Intenta primero: 3–5 min antes de leer la solución.</strong></p>
@@ -8406,8 +8364,8 @@ T_\ast=20\,\mathrm s.
 <li>Explica por qué cambiar metros por centímetros no cambia <span class="math inline">\(\widehat x\)</span>.</li>
 <li>Si elegimos por error una escala <span class="math inline">\(L_\ast=1\,\mathrm{mm}\)</span> para el mismo fenómeno, explica qué se vuelve pedagógicamente poco útil aunque la razón siga siendo matemáticamente válida.</li>
 </ol>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p>La escala de velocidad es:</p>
 <p><span class="math display">\[
@@ -8474,11 +8432,11 @@ L_\ast=1\,\mathrm{mm}
 \widehat x=5000.
 \]</span></p>
 <p>La razón es correcta, pero la escala elegida no representa bien el tamaño característico del fenómeno y oculta en lugar de revelar su estructura.</p>
-</div>
+</blockquote>
 </section>
 <section id="autoexplicación-1" class="level3">
 <h3 class="anchored" data-anchor-id="autoexplicación-1">9.13. Autoexplicación</h3>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Pausa de autoexplicación</strong> Explica:</p>
 <ol type="1">
 <li>por qué una escala característica no es una unidad;</li>
@@ -8486,7 +8444,7 @@ L_\ast=1\,\mathrm{mm}
 <li>qué información añade la razón <span class="math inline">\(Q/Q_\ast\)</span>;</li>
 <li>por qué una mala elección de escala puede ser matemáticamente válida y físicamente poco informativa.</li>
 </ol>
-</div>
+</blockquote>
 </section>
 <section id="conectar-1" class="level3">
 <h3 class="anchored" data-anchor-id="conectar-1">9.14. Conectar</h3>
@@ -8509,10 +8467,12 @@ L_\ast=1\,\mathrm{mm}
 <blockquote class="blockquote">
 <p>¿cómo reescribimos todo el problema en variables de dimensión uno y qué parámetros sobreviven a esa reducción?</p>
 </blockquote>
+<p><span id="fispm-t1-c02-s10"></span></p>
+<p><span id="fpm-i-02-s10"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s10" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s10">§10 — Adimensionalización e inferencia dimensional</h2>
+<section id="adimensionalización-e-inferencia-dimensional" class="level2">
+<h2 class="anchored" data-anchor-id="adimensionalización-e-inferencia-dimensional">§10 — Adimensionalización e inferencia dimensional</h2>
 <section id="intuir-cambiar-de-unidades-no-debería-cambiar-la-forma-esencial-del-problema" class="level3">
 <h3 class="anchored" data-anchor-id="intuir-cambiar-de-unidades-no-debería-cambiar-la-forma-esencial-del-problema">10.1. Intuir: cambiar de unidades no debería cambiar la forma esencial del problema</h3>
 <p>En §9 elegimos escalas características.</p>
@@ -8539,13 +8499,13 @@ L_\ast
 </section>
 <section id="variable-adimensionalizada" class="level3">
 <h3 class="anchored" data-anchor-id="variable-adimensionalizada">10.2. Variable adimensionalizada</h3>
-<div id="fpm-i-02-d33" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 33 — Variable adimensionalizada</strong> Dada una magnitud <span class="math inline">\(Q\)</span> y una escala característica <span class="math inline">\(Q_\ast\)</span> del mismo tipo, la variable</p>
 <p><span class="math display">\[
 \widehat Q=\frac{Q}{Q_\ast}
 \]</span></p>
 <p>es una <strong>variable adimensionalizada</strong> o <strong>variable reducida</strong> asociada a esa escala.</p>
-</div>
+</blockquote>
 <p>Tenemos:</p>
 <p><span class="math display">\[
 [\widehat Q]=1.
@@ -8554,17 +8514,17 @@ L_\ast
 </section>
 <section id="adimensionalización" class="level3">
 <h3 class="anchored" data-anchor-id="adimensionalización">10.3. Adimensionalización</h3>
-<div id="fpm-i-02-d34" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 34 — Adimensionalización</strong> La <strong>adimensionalización</strong> de una relación o modelo es el procedimiento de elegir escalas características para sus magnitudes y reescribirlo en términos de variables de dimensión uno, de modo que queden explícitos los parámetros adimensionales que controlan su forma.</p>
-</div>
+</blockquote>
 <p>La operación tiene dos objetivos:</p>
 <ol type="1">
 <li>separar unidades y escalas convencionales de la estructura esencial;</li>
 <li>identificar los parámetros de dimensión uno que no pueden eliminarse mediante una simple elección de escalas.</li>
 </ol>
-<div id="fpm-i-02-mp28" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 28 — Adimensionalizar reorganiza la física; no la elimina</strong> Al adimensionalizar desaparecen las unidades explícitas de las variables reducidas, pero permanecen las relaciones físicas y los parámetros de dimensión uno que controlan el modelo.</p>
-</div>
+</blockquote>
 </section>
 <section id="ejemplo-elemental-una-relación-cinemática" class="level3">
 <h3 class="anchored" data-anchor-id="ejemplo-elemental-una-relación-cinemática">10.4. Ejemplo elemental: una relación cinemática</h3>
@@ -8664,13 +8624,13 @@ Q=CX_1^{\alpha_1}\cdots X_n^{\alpha_n},
 <section id="representar-del-problema-físico-a-un-ansatz" class="level3">
 <h3 class="anchored" data-anchor-id="representar-del-problema-físico-a-un-ansatz">10.7. Representar: del problema físico a un ansatz</h3>
 <p>La palabra <strong>ansatz</strong> designará aquí una forma propuesta de solución o dependencia que todavía debe justificarse.</p>
-<div id="fpm-i-02-d25" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 25 — Ansatz dimensional monomial</strong> Un <strong>ansatz dimensional monomial</strong> para una magnitud <span class="math inline">\(Q\)</span> en función de magnitudes <span class="math inline">\(X_1,\ldots,X_n\)</span> es una expresión de la forma</p>
 <p><span class="math display">\[
 Q=CX_1^{\alpha_1}\cdots X_n^{\alpha_n},
 \]</span></p>
 <p>donde <span class="math inline">\(C\)</span> tiene dimensión uno y los exponentes <span class="math inline">\(\alpha_i\)</span> son desconocidos que se determinan, cuando es posible, imponiendo homogeneidad dimensional.</p>
-</div>
+</blockquote>
 <p>La hipótesis monomial no es una consecuencia automática de la física.</p>
 <p>Es una elección de clase funcional.</p>
 <p>Por tanto, el razonamiento correcto tiene dos capas:</p>
@@ -8745,9 +8705,9 @@ c=\sum_i c_i\alpha_i.
 \]</span></p>
 <p>Ésta es la razón por la que introdujimos las firmas dimensionales.</p>
 <p>El problema de inferir potencias se convierte en un problema de combinar vectores de exponentes.</p>
-<div id="fpm-i-02-mp19" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 19 — La inferencia dimensional restringe exponentes dentro de una clase funcional elegida</strong> El análisis dimensional puede determinar o restringir los exponentes de un ansatz monomial, pero no justifica por sí solo que la dependencia física real pertenezca a esa clase funcional.</p>
-</div>
+</blockquote>
 </section>
 <section id="primer-ejemplo-período-de-un-péndulo-simple" class="level3">
 <h3 class="anchored" data-anchor-id="primer-ejemplo-período-de-un-péndulo-simple">10.10. Primer ejemplo: período de un péndulo simple</h3>
@@ -8899,9 +8859,9 @@ y\,\Phi\left(\frac xy\right),
 </section>
 <section id="segunda-definición-libertad-funcional-adimensional" class="level3">
 <h3 class="anchored" data-anchor-id="segunda-definición-libertad-funcional-adimensional">10.14. Segunda definición: libertad funcional adimensional</h3>
-<div id="fpm-i-02-d26" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 26 — Libertad funcional adimensional</strong> Existe <strong>libertad funcional adimensional</strong> cuando las restricciones dimensionales permiten multiplicar una forma dimensionalmente admisible por una función arbitraria de una o más combinaciones de dimensión uno sin alterar la dimensión total.</p>
-</div>
+</blockquote>
 <p>Por ejemplo, si</p>
 <p><span class="math display">\[
 [Q]=L
@@ -8916,13 +8876,13 @@ Q=y\,\Phi(x/y)
 \]</span></p>
 <p>es dimensionalmente admisible para cualquier función adecuada <span class="math inline">\(\Phi\)</span>.</p>
 <p>La física debe determinar cuál, si alguna, es la función correcta.</p>
-<div id="fpm-i-02-mp20" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 20 — Toda libertad adimensional marca información física aún no determinada</strong> Cuando el análisis dimensional deja una función arbitraria de cantidades de dimensión uno, esa libertad no es un defecto del método: identifica exactamente la parte de la relación que las dimensiones no pueden fijar.</p>
-</div>
+</blockquote>
 </section>
 <section id="resultado-formal-condición-para-un-ansatz-monomial" class="level3">
 <h3 class="anchored" data-anchor-id="resultado-formal-condición-para-un-ansatz-monomial">10.15. Resultado formal: condición para un ansatz monomial</h3>
-<div id="fpm-i-02-p03" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Proposición 3 — Criterio de homogeneidad para un ansatz monomial</strong></p>
 <p>Sea</p>
 <p><span class="math display">\[
@@ -8948,7 +8908,7 @@ q_j
 \sum_{i=1}^n a_{ji}\alpha_i.
 }
 \]</span></p>
-</div>
+</blockquote>
 <section id="demostración-2" class="level4">
 <h4 class="anchored" data-anchor-id="demostración-2">Demostración</h4>
 <p>Partimos de</p>
@@ -9036,10 +8996,10 @@ q_j=\sum_i a_{ji}\alpha_i.
 <li>régimen de validez;</li>
 <li>signos o correcciones aditivas.</li>
 </ul>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Pausa de autoexplicación</strong> Explica por qué la Proposición 3 es un teorema matemático correcto y, al mismo tiempo, no constituye una ley física.</p>
 <p>Una respuesta adecuada debe distinguir la hipótesis monomial de la información dimensional.</p>
-</div>
+</blockquote>
 </section>
 </section>
 <section id="segundo-ejemplo-período-orbital" class="level3">
@@ -9180,7 +9140,7 @@ T_p
 </section>
 <section id="ejercicios-práctica-guiada" class="level3">
 <h3 class="anchored" data-anchor-id="ejercicios-práctica-guiada">10.21. Ejercicios práctica guiada</h3>
-<div id="fpm-i-02-e21" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 21 — Adimensionalizar una relación cinemática</strong></p>
 <p><strong>Objetivo:</strong> <code>Consolidación</code></p>
 <p><strong>Intenta primero: 3–5 min antes de leer la solución.</strong></p>
@@ -9216,8 +9176,8 @@ V_\ast=\frac{L_\ast}{T_\ast}.
 <li>Explica por qué todas las variables con sombrero tienen dimensión uno.</li>
 <li>Explica qué ocurriría si se eligiera una escala de velocidad distinta de <span class="math inline">\(L_\ast/T_\ast\)</span>.</li>
 </ol>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p>Sustituimos:</p>
 <p><span class="math display">\[
@@ -9285,8 +9245,8 @@ L_\ast
 V_\ast=L_\ast/T_\ast
 \]</span></p>
 <p>absorbe ese factor y revela una forma reducida más simple.</p>
-</div>
-<div id="fpm-i-02-e22" class="ma-block ma-enunciado">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 22 — Qué sobrevive a la adimensionalización</strong></p>
 <p><strong>Objetivo:</strong> <code>Diagnóstico → Síntesis</code></p>
 <p><strong>Intenta primero: 3–5 min antes de leer la solución.</strong></p>
@@ -9313,8 +9273,8 @@ P=
 \sqrt{\frac{\ell}{g}}
 \Psi(\varphi_0).
 \]</span></p>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p>Dividiendo por <span class="math inline">\(y\)</span>:</p>
 <p><span class="math display">\[
@@ -9347,11 +9307,11 @@ P\sqrt{\frac g\ell}.
 }
 \]</span></p>
 <p>La adimensionalización ha aislado exactamente la dependencia que no puede fijarse solo con dimensiones.</p>
-</div>
+</blockquote>
 </section>
 <section id="autoexplicación-2" class="level3">
 <h3 class="anchored" data-anchor-id="autoexplicación-2">10.22. Autoexplicación</h3>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Pausa de autoexplicación</strong> Sin revisar los ejemplos, responde:</p>
 <ol type="1">
 <li>¿qué hipótesis adicional introducimos al escribir un ansatz monomial?;</li>
@@ -9359,7 +9319,7 @@ P\sqrt{\frac g\ell}.
 <li>¿qué significa que aparezca una función <span class="math inline">\(\Phi\)</span> de una cantidad de dimensión uno?;</li>
 <li>¿qué información proviene de las dimensiones y cuál proviene de la modelización?</li>
 </ol>
-</div>
+</blockquote>
 </section>
 <section id="conectar-con-buckingham-pi" class="level3">
 <h3 class="anchored" data-anchor-id="conectar-con-buckingham-pi">10.23. Conectar con Buckingham <span class="math inline">\(\Pi\)</span></h3>
@@ -9428,10 +9388,12 @@ Q=C\prod_iX_i^{\alpha_i},
 </section>
 <section id="notas-y-fuentes-4" class="level3">
 <h3 class="anchored" data-anchor-id="notas-y-fuentes-4">Notas y fuentes</h3>
+<p><span id="fispm-t1-c02-s11"></span></p>
+<p><span id="fpm-i-02-s11"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s11" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s11">§11 — Semejanza, escalamiento y cambio de escala</h2>
+<section id="semejanza-escalamiento-y-cambio-de-escala" class="level2">
+<h2 class="anchored" data-anchor-id="semejanza-escalamiento-y-cambio-de-escala">§11 — Semejanza, escalamiento y cambio de escala</h2>
 <section id="intuir-hacer-un-sistema-más-grande-no-significa-multiplicarlo-todo-por-el-mismo-número" class="level3">
 <h3 class="anchored" data-anchor-id="intuir-hacer-un-sistema-más-grande-no-significa-multiplicarlo-todo-por-el-mismo-número">11.1. Intuir: hacer un sistema más grande no significa multiplicarlo todo por el mismo número</h3>
 <p>Imaginemos dos modelos geométricamente semejantes de una misma figura.</p>
@@ -9486,13 +9448,13 @@ A(\lambda)=\lambda^2A_0
 V(\lambda)=\lambda^3V_0
 \]</span></p>
 <p>tiene exponente <span class="math inline">\(3\)</span>.</p>
-<div id="fpm-i-02-d27" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 27 — Ley de escalamiento</strong> Una <strong>ley de escalamiento</strong> para una magnitud <span class="math inline">\(Q\)</span> respecto de un parámetro positivo <span class="math inline">\(\lambda\)</span> es una relación que describe cómo cambia <span class="math inline">\(Q\)</span> al variar <span class="math inline">\(\lambda\)</span>. Cuando tiene la forma</p>
 <p><span class="math display">\[
 Q(\lambda)=\lambda^sQ(1),
 \]</span></p>
 <p>llamaremos <span class="math inline">\(s\)</span> <strong>exponente de escalamiento</strong> de <span class="math inline">\(Q\)</span> respecto de esa transformación.</p>
-</div>
+</blockquote>
 </section>
 <section id="dimensión-y-escalamiento-no-son-lo-mismo" class="level3">
 <h3 class="anchored" data-anchor-id="dimensión-y-escalamiento-no-son-lo-mismo">11.3. Dimensión y escalamiento no son lo mismo</h3>
@@ -9524,9 +9486,9 @@ L.
 \text{mismo exponente de escalamiento}.
 }
 \]</span></p>
-<div id="fpm-i-02-mp21" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 21 — El escalamiento pertenece al modelo de transformación</strong> La dimensión de una magnitud es una propiedad relativa al sistema dimensional; su exponente de escalamiento depende además de qué familia de sistemas o transformación física estamos comparando.</p>
-</div>
+</blockquote>
 </section>
 <section id="escalamiento-geométrico-uniforme" class="level3">
 <h3 class="anchored" data-anchor-id="escalamiento-geométrico-uniforme">11.4. Escalamiento geométrico uniforme</h3>
@@ -9642,9 +9604,9 @@ m\sim\lambda^3
 <h3 class="anchored" data-anchor-id="precisar-semejanza-respecto-de-un-modelo">11.7. Precisar: semejanza respecto de un modelo</h3>
 <p>Dos objetos pueden tener la misma forma geométrica y no comportarse físicamente de manera semejante.</p>
 <p>Para hablar de semejanza física necesitamos declarar qué estructura queremos preservar.<a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a></p>
-<div id="fpm-i-02-d28" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 28 — Semejanza respecto de un modelo</strong> Dos realizaciones de un modelo son <strong>semejantes respecto de un conjunto declarado de variables y relaciones</strong> cuando pueden relacionarse mediante transformaciones de escala que preservan la forma de esas relaciones y los parámetros de dimensión uno relevantes para la comparación.</p>
-</div>
+</blockquote>
 <p>Esta definición es deliberadamente relativa.</p>
 <p>No existe una única noción universal de «ser semejante» para todos los propósitos físicos.</p>
 <p>Podemos estudiar:</p>
@@ -9721,7 +9683,7 @@ T_o\sim r^{3/2}
 </section>
 <section id="teorema-elemental-de-escalamiento-monomial" class="level3">
 <h3 class="anchored" data-anchor-id="teorema-elemental-de-escalamiento-monomial">11.10. Teorema elemental de escalamiento monomial</h3>
-<div id="fpm-i-02-p04" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Proposición 4 — Escalamiento de un ansatz monomial</strong></p>
 <p>Sea</p>
 <p><span class="math display">\[
@@ -9748,7 +9710,7 @@ s_Q
 \sum_i\alpha_is_i.
 }
 \]</span></p>
-</div>
+</blockquote>
 <section id="demostración-3" class="level4">
 <h4 class="anchored" data-anchor-id="demostración-3">Demostración</h4>
 <p>Sustituimos las leyes de escala de las variables:</p>
@@ -9847,9 +9809,9 @@ ap+bq=0.
 \]</span></p>
 <p>Una cantidad puede tener dimensión uno y aun cambiar durante una transformación física concreta.</p>
 <p>Para que funcione como <strong>invariante de semejanza</strong>, debe además conservar su valor bajo la familia de escalamiento elegida.</p>
-<div id="fpm-i-02-mp22" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 22 — Semejanza exige preservar los parámetros adimensionales relevantes</strong> En una comparación por semejanza, no basta con que una combinación tenga dimensión uno: los parámetros adimensionales que controlan el modelo deben conservar valores compatibles entre los sistemas comparados.</p>
-</div>
+</blockquote>
 <p>Esta idea anticipa directamente los grupos <span class="math inline">\(\Pi\)</span> de §12.</p>
 </section>
 <section id="poner-a-prueba-dimensión-uno-no-implica-invariancia-de-escala" class="level3">
@@ -10017,7 +9979,7 @@ T\sim\lambda^{1/2},
 </section>
 <section id="autoexplicación-3" class="level3">
 <h3 class="anchored" data-anchor-id="autoexplicación-3">11.17. Autoexplicación</h3>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Pausa de autoexplicación</strong> Responde sin volver a los ejemplos:</p>
 <ol type="1">
 <li>¿por qué dos magnitudes con la misma dimensión pueden tener exponentes de escalamiento diferentes?;</li>
@@ -10025,11 +9987,11 @@ T\sim\lambda^{1/2},
 <li>¿por qué una cantidad de dimensión uno puede no ser invariante bajo un cambio de escala?;</li>
 <li>¿qué diferencia hay entre semejanza geométrica y semejanza física?</li>
 </ol>
-</div>
+</blockquote>
 </section>
-<section id="práctica-guiada-2" class="level3">
-<h3 class="anchored" data-anchor-id="práctica-guiada-2">11.18. Práctica guiada</h3>
-<div id="fpm-i-02-e23" class="ma-block ma-enunciado">
+<section id="práctica-guiada-3" class="level3">
+<h3 class="anchored" data-anchor-id="práctica-guiada-3">11.18. Práctica guiada</h3>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 23 — Escalar una familia de modelos</strong></p>
 <p><strong>Objetivo:</strong> <code>Síntesis</code></p>
 <p><strong>Intenta primero: 3–5 min antes de leer la solución.</strong></p>
@@ -10038,8 +10000,7 @@ T\sim\lambda^{1/2},
 <p><span class="math display">\[
 L'\!=\lambda L.
 \]</span></p>
-<section id="a.-recuperación-2" class="level3">
-<h3 class="anchored" data-anchor-id="a.-recuperación-2">A. Recuperación</h3>
+<h3 id="a.-recuperación-2" class="anchored">A. Recuperación</h3>
 <p>Determina cómo escalan:</p>
 <ol type="1">
 <li>área <span class="math inline">\(A\)</span>;</li>
@@ -10047,9 +10008,7 @@ L'\!=\lambda L.
 <li>masa <span class="math inline">\(m\)</span>;</li>
 <li>razón <span class="math inline">\(A/V\)</span>.</li>
 </ol>
-</section>
-<section id="b.-consolidación-2" class="level3">
-<h3 class="anchored" data-anchor-id="b.-consolidación-2">B. Consolidación</h3>
+<h3 id="b.-consolidación-2" class="anchored">B. Consolidación</h3>
 <p>Si una cantidad característica satisface</p>
 <p><span class="math display">\[
 Q=Cm^\alpha L^\beta,
@@ -10060,17 +10019,13 @@ Q'\!
 =
 \lambda^{3\alpha+\beta}Q.
 \]</span></p>
-</section>
-<section id="c.-diagnóstico-2" class="level3">
-<h3 class="anchored" data-anchor-id="c.-diagnóstico-2">C. Diagnóstico</h3>
+<h3 id="c.-diagnóstico-2" class="anchored">C. Diagnóstico</h3>
 <p>Un estudiante afirma:</p>
 <blockquote class="blockquote">
 <p>«Una maqueta diez veces más pequeña tiene todas sus magnitudes físicas diez veces más pequeñas.»</p>
 </blockquote>
 <p>Identifica el error.</p>
-</section>
-<section id="d.-síntesis-2" class="level3">
-<h3 class="anchored" data-anchor-id="d.-síntesis-2">D. Síntesis</h3>
+<h3 id="d.-síntesis-2" class="anchored">D. Síntesis</h3>
 <p>Supón además que un proceso posee una escala temporal</p>
 <p><span class="math display">\[
 T=C\sqrt{\frac{L}{g}},
@@ -10084,12 +10039,10 @@ T=C\sqrt{\frac{L}{g}},
 <p><span class="math display">\[
 T'=\frac1{100}T.
 \]</span></p>
-</section>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
-<section id="a.-recuperación-3" class="level3">
-<h3 class="anchored" data-anchor-id="a.-recuperación-3">A. Recuperación</h3>
+<h3 id="a.-recuperación-3" class="anchored">A. Recuperación</h3>
 <p>Por semejanza geométrica,</p>
 <p><span class="math display">\[
 A'\!=\lambda^2A,
@@ -10126,9 +10079,7 @@ m\sim\lambda^3,\quad
 A/V\sim\lambda^{-1}.
 }
 \]</span></p>
-</section>
-<section id="b.-consolidación-3" class="level3">
-<h3 class="anchored" data-anchor-id="b.-consolidación-3">B. Consolidación</h3>
+<h3 id="b.-consolidación-3" class="anchored">B. Consolidación</h3>
 <p>Tenemos</p>
 <p><span class="math display">\[
 Q=Cm^\alpha L^\beta.
@@ -10162,9 +10113,7 @@ Q'
 \lambda^{3\alpha+\beta}Q.
 }
 \]</span></p>
-</section>
-<section id="c.-diagnóstico-3" class="level3">
-<h3 class="anchored" data-anchor-id="c.-diagnóstico-3">C. Diagnóstico</h3>
+<h3 id="c.-diagnóstico-3" class="anchored">C. Diagnóstico</h3>
 <p>El estudiante confunde una escala <strong>lineal</strong> con una regla universal para todas las magnitudes.</p>
 <p>Las áreas cambian como</p>
 <p><span class="math display">\[
@@ -10180,9 +10129,7 @@ Q'
 Q'\!=\lambda Q
 \]</span></p>
 <p>válida para toda magnitud.</p>
-</section>
-<section id="d.-síntesis-3" class="level3">
-<h3 class="anchored" data-anchor-id="d.-síntesis-3">D. Síntesis</h3>
+<h3 id="d.-síntesis-3" class="anchored">D. Síntesis</h3>
 <p>Si</p>
 <p><span class="math display">\[
 T=C\sqrt{\frac Lg}
@@ -10218,8 +10165,7 @@ T\propto L^{1/2}.
 no del tamaño lineal por sí solo}.
 }
 \]</span></p>
-</section>
-</div>
+</blockquote>
 </section>
 <section id="variar-escalamiento-simultáneo-de-varias-magnitudes" class="level3">
 <h3 class="anchored" data-anchor-id="variar-escalamiento-simultáneo-de-varias-magnitudes">11.19. Variar: escalamiento simultáneo de varias magnitudes</h3>
@@ -10338,10 +10284,12 @@ s_Q=\sum_i\alpha_is_i.
 </section>
 <section id="notas-y-fuentes-5" class="level3">
 <h3 class="anchored" data-anchor-id="notas-y-fuentes-5">Notas y fuentes</h3>
+<p><span id="fispm-t1-c02-s12"></span></p>
+<p><span id="fpm-i-02-s12"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s12" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s12">§12 — El teorema Π de Buckingham</h2>
+<section id="el-teorema-π-de-buckingham" class="level2">
+<h2 class="anchored" data-anchor-id="el-teorema-π-de-buckingham">§12 — El teorema Π de Buckingham</h2>
 <section id="intuir-muchas-variables-pocas-combinaciones-esenciales" class="level3">
 <h3 class="anchored" data-anchor-id="intuir-muchas-variables-pocas-combinaciones-esenciales">12.1. Intuir: muchas variables, pocas combinaciones esenciales</h3>
 <p>Supongamos que un fenómeno se describe mediante</p>
@@ -10411,9 +10359,9 @@ A
 | &amp; | &amp; &amp; |
 \end{pmatrix}.
 \]</span></p>
-<div id="fpm-i-02-d29" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 29 — Matriz dimensional</strong> La <strong>matriz dimensional</strong> de las variables <span class="math inline">\(q_1,\ldots,q_n\)</span>, respecto de una lista ordenada de dimensiones base, es la matriz cuyas columnas son sus firmas dimensionales.</p>
-</div>
+</blockquote>
 <p>La matriz dimensional no contiene los valores de las variables.</p>
 <p>Contiene solamente sus exponentes dimensionales.</p>
 </section>
@@ -10421,9 +10369,9 @@ A
 <h3 class="anchored" data-anchor-id="rango-dimensional-sin-presuponer-álgebra-lineal-avanzada">12.3. Rango dimensional sin presuponer álgebra lineal avanzada</h3>
 <p>Aplicamos eliminación gaussiana a <span class="math inline">\(A\)</span>.</p>
 <p>El número de columnas pivote —equivalentemente, el número de filas no nulas de una forma escalonada— mide cuántas direcciones dimensionales independientes aparecen realmente entre las variables.</p>
-<div id="fpm-i-02-d30" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 30 — Rango dimensional</strong> El <strong>rango dimensional</strong> de un conjunto de variables es el rango <span class="math inline">\(r\)</span> de su matriz dimensional, calculado por eliminación gaussiana. Es el número de restricciones dimensionales independientes que intervienen en el problema.</p>
-</div>
+</blockquote>
 <p>Siempre:</p>
 <p><span class="math display">\[
 r\le d
@@ -10434,9 +10382,9 @@ r\le n.
 \]</span></p>
 <p>El número relevante en Buckingham no es simplemente «cuántos símbolos <span class="math inline">\(M,L,T,\ldots\)</span> vemos».</p>
 <p>Es el número de combinaciones dimensionales <strong>independientes</strong>.</p>
-<div id="fpm-i-02-mp23" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 23 — La cuenta de Buckingham usa rango, no conteo superficial de dimensiones</strong> Para determinar el número de grupos adimensionales independientes debemos calcular el rango de la matriz de exponentes. Contar símbolos dimensionales sin verificar su independencia puede producir una cuenta incorrecta.</p>
-</div>
+</blockquote>
 </section>
 <section id="un-monomio-es-adimensional-exactamente-cuando-resuelve-un-sistema-homogéneo" class="level3">
 <h3 class="anchored" data-anchor-id="un-monomio-es-adimensional-exactamente-cuando-resuelve-un-sistema-homogéneo">12.4. Un monomio es adimensional exactamente cuando resuelve un sistema homogéneo</h3>
@@ -10521,7 +10469,7 @@ n-r\text{ variables libres}.
 </section>
 <section id="grupo-π" class="level3">
 <h3 class="anchored" data-anchor-id="grupo-π">12.6. Grupo Π</h3>
-<div id="fpm-i-02-d31" class="ma-block ma-definicion">
+<blockquote class="blockquote">
 <p><strong>Definición 31 — Grupo <span class="math inline">\(\Pi\)</span></strong> Un <strong>grupo <span class="math inline">\(\Pi\)</span></strong> es una combinación monomial de las variables pertinentes,</p>
 <p><span class="math display">\[
 \Pi
@@ -10533,7 +10481,7 @@ n-r\text{ variables libres}.
 [\Pi]=1.
 \]</span></p>
 <p>Un conjunto de grupos <span class="math inline">\(\Pi_1,\ldots,\Pi_k\)</span> será llamado <strong>independiente</strong> cuando ninguno pueda obtenerse como producto de potencias de los demás.</p>
-</div>
+</blockquote>
 <p>Esta independencia es multiplicativa.</p>
 <p>Al pasar a los vectores de exponentes, se convierte en la independencia ordinaria de soluciones de</p>
 <p><span class="math display">\[
@@ -10747,8 +10695,7 @@ F(q_1,\ldots,q_n)=0.
 \]</span></p>
 <p>Sea</p>
 <p><span class="math display">\[
-u
-=
+u=
 \begin{pmatrix}
 \log\lambda_1\\
 \vdots\\
@@ -10758,8 +10705,7 @@ u
 <p>el vector de logaritmos de los factores de reescalado de las <span class="math inline">\(d\)</span> unidades base.</p>
 <p>Si</p>
 <p><span class="math display">\[
-b
-=
+b=
 \begin{pmatrix}
 \log q_1\\
 \vdots\\
@@ -10781,7 +10727,7 @@ B^{\mathsf T}u=b.
 </section>
 <section id="teorema-π-de-buckingham" class="level3">
 <h3 class="anchored" data-anchor-id="teorema-π-de-buckingham">12.13. Teorema Π de Buckingham</h3>
-<div id="fpm-i-02-p05" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Teorema 5 — <span class="math inline">\(\Pi\)</span> de Buckingham, forma elemental</strong></p>
 <p>Sean</p>
 <p><span class="math display">\[
@@ -10821,7 +10767,7 @@ n-r
 }
 \]</span></p>
 <p>para alguna función <span class="math inline">\(\Phi\)</span>.</p>
-</div>
+</blockquote>
 <section id="demostración-4" class="level4">
 <h4 class="anchored" data-anchor-id="demostración-4">Demostración</h4>
 <p>Como</p>
@@ -10859,24 +10805,24 @@ Bc^{(k)}
 <p>Los grupos son independientes porque cada uno contiene una variable no repetidora distinta con exponente <span class="math inline">\(1\)</span>.</p>
 <p>La argumentación de §12.10 muestra además que cualquier otro monomio adimensional es un producto de potencias de estos grupos.</p>
 <p>Queda demostrar la reducción funcional.</p>
-<p>Por invariancia frente al cambio de unidades, podemos reescalar las unidades base sin cambiar el contenido físico de la relación.</p>
-<p>Como las variables repetidoras tienen firmas independientes, el sistema <span class="math display">\[
-B^{\mathsf T}u=b
-\]</span> tiene solución para cualquier vector de valores positivos que queramos normalizar. Por ello podemos elegir un cambio de unidades que lleve sus valores numéricos a valores fijos.</p>
-<p>Una vez fijados esos <span class="math inline">\(r\)</span> valores, los únicos parámetros numéricos libres que sobreviven a la normalización son los valores de las</p>
+<p>Denotemos por <span class="math inline">\(z_i&gt;0\)</span> los valores numéricos iniciales de las variables, para distinguirlos de las magnitudes físicas. Si las unidades base se multiplican por <span class="math inline">\(\lambda_1,\ldots,\lambda_d&gt;0\)</span>, y <span class="math inline">\(u_j=\log\lambda_j\)</span>, sus nuevos valores satisfacen</p>
 <p><span class="math display">\[
-n-r
+\log z_i'=\log z_i-\mathbf a_i^{\mathsf T}u.
 \]</span></p>
-<p>combinaciones adimensionales.</p>
-<p>Por tanto, la validez de la relación depende solamente de:</p>
+<p>Queremos llevar las <span class="math inline">\(r\)</span> variables repetidoras a <span class="math inline">\(z_1'=\cdots=z_r'=1\)</span>. Esto equivale a resolver</p>
 <p><span class="math display">\[
-\Pi_1,\ldots,\Pi_{n-r}.
+B^{\mathsf T}u=(\log z_1,\ldots,\log z_r)^{\mathsf T}.
 \]</span></p>
-<p>Existe entonces una función <span class="math inline">\(\Phi\)</span> tal que:</p>
+<p>La matriz <span class="math inline">\(B^{\mathsf T}\)</span> tiene rango de filas <span class="math inline">\(r\)</span>, así que este sistema admite solución para cualquier vector real de logaritmos. Si <span class="math inline">\(d&gt;r\)</span>, la solución puede no ser única; basta su existencia. Los factores <span class="math inline">\(\lambda_j=e^{u_j}\)</span> son positivos.</p>
+<p>En las unidades así elegidas, cada valor no repetidor coincide con el valor de su grupo adimensional, pues los factores repetidores de <span class="math inline">\(\Pi_k\)</span> valen uno. Por tanto, toda lista inicial tiene un representante normalizado</p>
 <p><span class="math display">\[
-\Phi(\Pi_1,\ldots,\Pi_{n-r})=0.
+(1,\ldots,1,\Pi_1,\ldots,\Pi_{n-r}).
 \]</span></p>
-<p>Así queda demostrada la forma elemental del teorema.</p>
+<p>La hipótesis de invariancia significa aquí que la validez de la relación, es decir, su conjunto de soluciones, se conserva bajo esos cambios de unidades. No exige que el valor numérico de <span class="math inline">\(F\)</span> sea invariante fuera de su conjunto de ceros. Escribiendo <span class="math inline">\(F\)</span> en la representación numérica inicial, definimos</p>
+<p><span class="math display">\[
+\Phi(p_1,\ldots,p_{n-r})=F(1,\ldots,1,p_1,\ldots,p_{n-r}).
+\]</span></p>
+<p>La relación inicial vale si y sólo si vale en su representante normalizado, esto es, si y sólo si <span class="math inline">\(\Phi(\Pi_1,\ldots,\Pi_{n-r})=0\)</span>. Cuando el modelo se limita a una región positiva, usamos su saturación por los cambios de unidades y la correspondiente imagen en los grupos; no se impone la relación en estados ajenos al dominio físico. Así queda justificada la reducción funcional.</p>
 <p><span class="math display">\[
 \boxed{\text{QED}}
 \]</span></p>
@@ -10909,9 +10855,9 @@ n-r
 <li>datos;</li>
 <li>aproximaciones adicionales.</li>
 </ul>
-<div id="fpm-i-02-mp24" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 24 — Buckingham reduce variables, no determina la función adimensional</strong> El teorema <span class="math inline">\(\Pi\)</span> identifica una representación mediante parámetros adimensionales, pero no determina en general la función que relaciona esos parámetros.</p>
-</div>
+</blockquote>
 </section>
 <section id="los-grupos-π-no-son-únicos" class="level3">
 <h3 class="anchored" data-anchor-id="los-grupos-π-no-son-únicos">12.15. Los grupos Π no son únicos</h3>
@@ -11116,7 +11062,7 @@ r=2.
 </section>
 <section id="ejercicios-práctica-guiada-1" class="level3">
 <h3 class="anchored" data-anchor-id="ejercicios-práctica-guiada-1">12.18. Ejercicios práctica guiada</h3>
-<div id="fpm-i-02-e24" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 24 — Construir un grupo <span class="math inline">\(\Pi\)</span> por eliminación</strong></p>
 <p><strong>Objetivo:</strong> <code>Consolidación</code></p>
 <p><strong>Intenta primero: 3–5 min antes de leer la solución.</strong></p>
@@ -11132,8 +11078,8 @@ v,\quad L,\quad\rho,\quad\mu
 <li>Construye un grupo <span class="math inline">\(\Pi\)</span>.</li>
 <li>Verifica directamente que <span class="math inline">\([\Pi]=1\)</span>.</li>
 </ol>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p>La matriz es:</p>
 <p><span class="math display">\[
@@ -11203,8 +11149,8 @@ ML^{-1}T^{-1}.
 [\Pi]=1.
 }
 \]</span></p>
-</div>
-<div id="fpm-i-02-e25" class="ma-block ma-enunciado">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 25 — Reconstruir la cuenta <span class="math inline">\(n-r\)</span></strong></p>
 <p><strong>Objetivo:</strong> <code>Demostración — consolidación</code></p>
 <p><strong>Intenta primero: 3–5 min antes de leer la solución.</strong></p>
@@ -11216,8 +11162,8 @@ ML^{-1}T^{-1}.
 A\alpha=0
 \]</span></p>
 <p>tiene <span class="math inline">\(n-r\)</span> variables libres. 2. Explica por qué cada solución produce un monomio adimensional. 3. Explica por qué una elección de <span class="math inline">\(n-r\)</span> soluciones independientes genera todos los monomios adimensionales. 4. Señala qué paso adicional hace falta para pasar de este resultado algebraico al teorema físico de Buckingham.</p>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p><strong>1.</strong></p>
 <p>El rango <span class="math inline">\(r\)</span> significa que una forma escalonada de <span class="math inline">\(A\)</span> posee:</p>
@@ -11270,8 +11216,8 @@ A\alpha=0,
 \text{Buckingham }\Pi.
 }
 \]</span></p>
-</div>
-<div id="fpm-i-02-e26" class="ma-block ma-enunciado">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 26 — Variables redundantes y rango dimensional</strong></p>
 <p><strong>Objetivo:</strong> <code>Diagnóstico → Síntesis</code></p>
 <p><strong>Intenta primero: 3–5 min antes de leer la solución.</strong></p>
@@ -11300,8 +11246,8 @@ F,\quad m,\quad a,\quad \ell_1,\quad \ell_2,
 <li>Explica por qué añadir <span class="math inline">\(\ell_2\)</span> aumenta <span class="math inline">\(n\)</span> pero no el rango.</li>
 <li>Explica qué enseña esto sobre la expresión <span class="math inline">\(n-r\)</span>.</li>
 </ol>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
 <p>Las columnas son:</p>
 <p><span class="math display">\[
@@ -11425,11 +11371,11 @@ n-r:
 }
 \]</span></p>
 <p>variables adicionales que no aumentan el rango producen nuevas libertades adimensionales.</p>
-</div>
+</blockquote>
 </section>
 <section id="autoexplicación-4" class="level3">
 <h3 class="anchored" data-anchor-id="autoexplicación-4">12.19. Autoexplicación</h3>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Pausa de autoexplicación</strong> Responde sin volver a la demostración:</p>
 <ol type="1">
 <li>¿por qué un grupo <span class="math inline">\(\Pi\)</span> corresponde a una solución de <span class="math inline">\(A\alpha=0\)</span>?;</li>
@@ -11441,7 +11387,7 @@ n-r:
 <p><span class="math display">\[
 \Phi(\Pi_1,\ldots,\Pi_{n-r})=0?
 \]</span></p>
-</div>
+</blockquote>
 </section>
 <section id="variar-cambiar-las-variables-repetidoras" class="level3">
 <h3 class="anchored" data-anchor-id="variar-cambiar-las-variables-repetidoras">12.20. Variar: cambiar las variables repetidoras</h3>
@@ -11599,10 +11545,12 @@ F(q_1,\ldots,q_n)=0
 </section>
 <section id="notas-y-fuentes-6" class="level3">
 <h3 class="anchored" data-anchor-id="notas-y-fuentes-6">Notas y fuentes</h3>
+<p><span id="fispm-t1-c02-s13"></span></p>
+<p><span id="fpm-i-02-s13"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s13" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s13">§13 — Ejemplos de modelización dimensional</h2>
+<section id="ejemplos-de-modelización-dimensional" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-de-modelización-dimensional">§13 — Ejemplos de modelización dimensional</h2>
 <section id="intuir-ahora-importa-tanto-elegir-variables-como-manipular-dimensiones" class="level3">
 <h3 class="anchored" data-anchor-id="intuir-ahora-importa-tanto-elegir-variables-como-manipular-dimensiones">13.1. Intuir: ahora importa tanto elegir variables como manipular dimensiones</h3>
 <p>Hasta §12 hemos construido un aparato poderoso:</p>
@@ -11659,9 +11607,9 @@ P=f(\ell,m,\varphi_0).
 P=f(\ell,m,g,\varphi_0).
 }
 \]</span></p>
-<div id="fpm-i-02-mp25" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 25 — La selección de variables es una hipótesis de modelización</strong> Buckingham <span class="math inline">\(\Pi\)</span> puede reorganizar una lista de variables pertinente, pero no decide por sí solo si esa lista está físicamente completa. Incluir u omitir una variable es una decisión del modelo que debe justificarse por separado.</p>
-</div>
+</blockquote>
 </section>
 <section id="representar-matriz-dimensional-del-péndulo" class="level3">
 <h3 class="anchored" data-anchor-id="representar-matriz-dimensional-del-péndulo">13.3. Representar: matriz dimensional del péndulo</h3>
@@ -11891,7 +11839,7 @@ P
 </section>
 <section id="autoexplicación-del-primer-caso" class="level3">
 <h3 class="anchored" data-anchor-id="autoexplicación-del-primer-caso">13.8. Autoexplicación del primer caso</h3>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Pausa de autoexplicación</strong> Explica con tus propias palabras:</p>
 <ol type="1">
 <li>por qué fue necesario incluir <span class="math inline">\(g\)</span>;</li>
@@ -11900,7 +11848,7 @@ P
 <li>por qué Buckingham no produce <span class="math inline">\(2\pi\)</span>;</li>
 <li>qué afirmación depende del modelo idealizado y no solo del álgebra.</li>
 </ol>
-</div>
+</blockquote>
 </section>
 <section id="caso-ii-arrastre-en-un-medio-empezar-por-el-modelo-más-austero" class="level3">
 <h3 class="anchored" data-anchor-id="caso-ii-arrastre-en-un-medio-empezar-por-el-modelo-más-austero">13.9. Caso II — Arrastre en un medio: empezar por el modelo más austero</h3>
@@ -12303,15 +12251,14 @@ F
 <p>La herramienta es poderosa precisamente cuando mantenemos visible esta frontera.</p>
 </section>
 </section>
-<section id="práctica-guiada-3" class="level3">
-<h3 class="anchored" data-anchor-id="práctica-guiada-3">13.19. Práctica guiada</h3>
-<div id="fpm-i-02-e27" class="ma-block ma-enunciado">
+<section id="práctica-guiada-4" class="level3">
+<h3 class="anchored" data-anchor-id="práctica-guiada-4">13.19. Práctica guiada</h3>
+<blockquote class="blockquote">
 <p><strong>Ejercicio 27 — Modelización dimensional completa</strong></p>
 <p><strong>Objetivo:</strong> <code>Síntesis</code></p>
 <p><strong>Intenta primero: 3–5 min antes de leer la solución.</strong></p>
 <p>Queremos estudiar una fuerza <span class="math inline">\(F\)</span> asociada al movimiento de un objeto de tamaño característico <span class="math inline">\(L\)</span> con velocidad <span class="math inline">\(v\)</span> en un medio de densidad <span class="math inline">\(\rho\)</span> y viscosidad dinámica <span class="math inline">\(\mu\)</span>.</p>
-<section id="a.-recuperación-4" class="level3">
-<h3 class="anchored" data-anchor-id="a.-recuperación-4">A. Recuperación</h3>
+<h3 id="a.-recuperación-4" class="anchored">A. Recuperación</h3>
 <p>Usa:</p>
 <p><span class="math display">\[
 [F]=MLT^{-2},
@@ -12329,14 +12276,10 @@ F
 [\mu]=ML^{-1}T^{-1}.
 \]</span></p>
 <p>Construye la matriz dimensional en el orden <span class="math inline">\((T,L,M)\)</span> y determina su rango.</p>
-</section>
-<section id="b.-consolidación-4" class="level3">
-<h3 class="anchored" data-anchor-id="b.-consolidación-4">B. Consolidación</h3>
+<h3 id="b.-consolidación-4" class="anchored">B. Consolidación</h3>
 <p>Usa Buckingham para justificar que deben existir dos grupos adimensionales independientes.</p>
 <p>Encuentra un conjunto posible.</p>
-</section>
-<section id="c.-diagnóstico-4" class="level3">
-<h3 class="anchored" data-anchor-id="c.-diagnóstico-4">C. Diagnóstico</h3>
+<h3 id="c.-diagnóstico-4" class="anchored">C. Diagnóstico</h3>
 <p>Un estudiante omite <span class="math inline">\(\mu\)</span> y obtiene:</p>
 <p><span class="math display">\[
 F=C\rho v^2L^2.
@@ -12346,9 +12289,7 @@ F=C\rho v^2L^2.
 <li>por qué la deducción dimensional es correcta para la lista reducida;</li>
 <li>por qué eso no demuestra que la viscosidad sea físicamente irrelevante.</li>
 </ol>
-</section>
-<section id="d.-síntesis-4" class="level3">
-<h3 class="anchored" data-anchor-id="d.-síntesis-4">D. Síntesis</h3>
+<h3 id="d.-síntesis-4" class="anchored">D. Síntesis</h3>
 <p>Para dos modelos en el mismo fluido, con tamaños:</p>
 <p><span class="math display">\[
 L_2=\frac14L_1,
@@ -12358,21 +12299,17 @@ L_2=\frac14L_1,
 \frac{\rho vL}{\mu}.
 \]</span></p>
 <p>Luego explica qué cantidad adimensional de fuerza debería coincidir entre ambos modelos si la semejanza es válida.</p>
-</section>
-<section id="e.-autoexplicación" class="level3">
-<h3 class="anchored" data-anchor-id="e.-autoexplicación">E. Autoexplicación</h3>
+<h3 id="e.-autoexplicación" class="anchored">E. Autoexplicación</h3>
 <p>Señala en tu solución:</p>
 <ul>
 <li>qué vino de las dimensiones;</li>
 <li>qué vino de la selección de variables;</li>
 <li>qué sigue dependiendo de una función o de datos físicos.</li>
 </ul>
-</section>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
-<section id="a.-recuperación-5" class="level3">
-<h3 class="anchored" data-anchor-id="a.-recuperación-5">A. Recuperación</h3>
+<h3 id="a.-recuperación-5" class="anchored">A. Recuperación</h3>
 <p>Las columnas dimensionales son:</p>
 <p><span class="math display">\[
 F:
@@ -12432,9 +12369,7 @@ L,\ v,\ \rho.
 r=3.
 }
 \]</span></p>
-</section>
-<section id="b.-consolidación-5" class="level3">
-<h3 class="anchored" data-anchor-id="b.-consolidación-5">B. Consolidación</h3>
+<h3 id="b.-consolidación-5" class="anchored">B. Consolidación</h3>
 <p>Como:</p>
 <p><span class="math display">\[
 n=5,
@@ -12474,9 +12409,7 @@ n-r=2.
 \frac{\rho vL}{\mu}
 \right).
 \]</span></p>
-</section>
-<section id="c.-diagnóstico-5" class="level3">
-<h3 class="anchored" data-anchor-id="c.-diagnóstico-5">C. Diagnóstico</h3>
+<h3 id="c.-diagnóstico-5" class="anchored">C. Diagnóstico</h3>
 <p>Si omitimos <span class="math inline">\(\mu\)</span>, quedan cuatro variables:</p>
 <p><span class="math display">\[
 F,\rho,v,L.
@@ -12497,9 +12430,7 @@ F=C\rho v^2L^2.
 <p>La deducción es dimensionalmente correcta <strong>para ese modelo de variables</strong>.</p>
 <p>El error sería concluir que <span class="math inline">\(\mu\)</span> es irrelevante en la física real.</p>
 <p>Buckingham no selecciona las variables.</p>
-</section>
-<section id="d.-síntesis-5" class="level3">
-<h3 class="anchored" data-anchor-id="d.-síntesis-5">D. Síntesis</h3>
+<h3 id="d.-síntesis-5" class="anchored">D. Síntesis</h3>
 <p>En el mismo fluido:</p>
 <p><span class="math display">\[
 \rho_2=\rho_1,
@@ -12539,9 +12470,7 @@ v_2=4v_1.
 \frac{F_2}{\rho_2v_2^2L_2^2}.
 }
 \]</span></p>
-</section>
-<section id="e.-autoexplicación-1" class="level3">
-<h3 class="anchored" data-anchor-id="e.-autoexplicación-1">E. Autoexplicación</h3>
+<h3 id="e.-autoexplicación-1" class="anchored">E. Autoexplicación</h3>
 <p><strong>De las dimensiones</strong> obtuvimos:</p>
 <ul>
 <li>el rango;</li>
@@ -12560,8 +12489,7 @@ v_2=4v_1.
 \Psi.
 \]</span></p>
 <p>Su forma concreta exige física adicional, teoría, datos o experimentos.</p>
-</section>
-</div>
+</blockquote>
 </section>
 <section id="variar-volver-al-péndulo-con-una-variable-omitida" class="level3">
 <h3 class="anchored" data-anchor-id="variar-volver-al-péndulo-con-una-variable-omitida">13.20. Variar: volver al péndulo con una variable omitida</h3>
@@ -12696,10 +12624,12 @@ F
 </section>
 <section id="notas-y-fuentes-7" class="level3">
 <h3 class="anchored" data-anchor-id="notas-y-fuentes-7">Notas y fuentes</h3>
+<p><span id="fispm-t1-c02-s14"></span></p>
+<p><span id="fpm-i-02-s14"></span></p>
 </section>
 </section>
-<section id="fpm-i-02-s14" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-s14">§14 — Qué puede y qué no puede decir el análisis dimensional</h2>
+<section id="qué-puede-y-qué-no-puede-decir-el-análisis-dimensional" class="level2">
+<h2 class="anchored" data-anchor-id="qué-puede-y-qué-no-puede-decir-el-análisis-dimensional">§14 — Qué puede y qué no puede decir el análisis dimensional</h2>
 <section id="intuir-una-herramienta-poderosa-puede-ser-peligrosa-si-olvidamos-qué-información-contiene" class="level3">
 <h3 class="anchored" data-anchor-id="intuir-una-herramienta-poderosa-puede-ser-peligrosa-si-olvidamos-qué-información-contiene">14.1. Intuir: una herramienta poderosa puede ser peligrosa si olvidamos qué información contiene</h3>
 <p>A lo largo del capítulo hemos obtenido resultados sorprendentemente fuertes a partir de información aparentemente modesta.</p>
@@ -12833,7 +12763,7 @@ E=-3mv^2.
 \text{ es necesaria en muchos modelos, pero no suficiente para la verdad física}.
 }
 \]</span></p>
-<p>Esta fue la lección de el Principio 12.</p>
+<p>Esta fue la lección del Principio 12.</p>
 </section>
 <section id="segunda-capacidad-inferir-escalas-y-exponentes" class="level3">
 <h3 class="anchored" data-anchor-id="segunda-capacidad-inferir-escalas-y-exponentes">14.6. Segunda capacidad — inferir escalas y exponentes</h3>
@@ -12889,7 +12819,7 @@ P=
 </section>
 <section id="tercera-capacidad-descubrir-grupos-adimensionales" class="level3">
 <h3 class="anchored" data-anchor-id="tercera-capacidad-descubrir-grupos-adimensionales">14.8. Tercera capacidad — descubrir grupos adimensionales</h3>
-<p>Con <span class="math inline">\(n\)</span> variables y matriz dimensional de rango <span class="math inline">\(r\)</span>, la Proposición 5 permite encontrar:</p>
+<p>Con <span class="math inline">\(n\)</span> variables y matriz dimensional de rango <span class="math inline">\(r\)</span>, el Teorema 5 permite encontrar:</p>
 <p><span class="math display">\[
 n-r
 \]</span></p>
@@ -12997,9 +12927,9 @@ F
 <section id="quinta-limitación-ninguna-inferencia-formal-recupera-una-premisa-ausente" class="level3">
 <h3 class="anchored" data-anchor-id="quinta-limitación-ninguna-inferencia-formal-recupera-una-premisa-ausente">14.13. Quinta limitación — ninguna inferencia formal recupera una premisa ausente</h3>
 <p>Este punto merece quedar como principio final del capítulo.</p>
-<div id="fpm-i-02-mp26" class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Principio 26 — Ninguna conclusión dimensional puede exceder las premisas del modelo</strong> El análisis dimensional puede deducir consecuencias rigurosas de una lista de magnitudes, dimensiones e hipótesis de invariancia, pero no puede establecer por sí solo la corrección física de esas premisas ni recuperar variables, mecanismos o regímenes que el modelo haya omitido.</p>
-</div>
+</blockquote>
 <p>Podemos escribir:</p>
 <p><span class="math display">\[
 \boxed{
@@ -13130,7 +13060,7 @@ s_Q=\sum_i\alpha_is_i.
 </section>
 <section id="exactitud-matemática-y-adecuación-física" class="level3">
 <h3 class="anchored" data-anchor-id="exactitud-matemática-y-adecuación-física">14.17. Exactitud matemática y adecuación física</h3>
-<p>Volvemos así a una idea de <code>el capítulo 1</code>.</p>
+<p>Volvemos así a una idea del capítulo 1.</p>
 <p>Podemos resolver exactamente un modelo inadecuado.</p>
 <p>También podemos trabajar con una aproximación controlada de un modelo mucho más adecuado.</p>
 <p>El análisis dimensional participa de esta misma distinción.</p>
@@ -13149,7 +13079,7 @@ s_Q=\sum_i\alpha_is_i.
 </section>
 <section id="autoexplicación-final" class="level3">
 <h3 class="anchored" data-anchor-id="autoexplicación-final">14.18. Autoexplicación final</h3>
-<div class="ma-block ma-metodo">
+<blockquote class="blockquote">
 <p><strong>Pausa de autoexplicación</strong> Sin consultar las secciones anteriores, explica:</p>
 <ol type="1">
 <li>una cosa que una incompatibilidad dimensional puede demostrar de manera concluyente;</li>
@@ -13159,11 +13089,11 @@ s_Q=\sum_i\alpha_is_i.
 <li>por qué la selección de variables pertenece a la física y no solamente al álgebra;</li>
 <li>qué significa decir que dos sistemas son semejantes «respecto de un modelo».</li>
 </ol>
-</div>
+</blockquote>
 </section>
 <section id="práctica-final" class="level3">
 <h3 class="anchored" data-anchor-id="práctica-final">14.19. Práctica final</h3>
-<div id="fpm-i-02-e28" class="ma-block ma-enunciado">
+<blockquote class="blockquote">
 <p><strong>Ejercicio 28 — Auditoría integral de un modelo dimensional</strong></p>
 <p><strong>Objetivo:</strong> <code>Síntesis final</code></p>
 <p><strong>Intenta primero: 5–10 min antes de leer la solución.</strong></p>
@@ -13194,28 +13124,19 @@ L,\qquad v,\qquad \rho,\qquad \mu,
 \frac{\rho vL}{\mu}
 \right].
 \]</span></p>
-<section id="a.-recuperación-6" class="level3">
-<h3 class="anchored" data-anchor-id="a.-recuperación-6">A. Recuperación</h3>
+<h3 id="a.-recuperación-6" class="anchored">A. Recuperación</h3>
 <p>Audita dimensionalmente la fórmula.</p>
-</section>
-<section id="b.-consolidación-6" class="level3">
-<h3 class="anchored" data-anchor-id="b.-consolidación-6">B. Consolidación</h3>
+<h3 id="b.-consolidación-6" class="anchored">B. Consolidación</h3>
 <p>Construye la matriz dimensional de:</p>
 <p><span class="math display">\[
 \tau,\ L,\ v,\ \rho,\ \mu.
 \]</span></p>
 <p>Determina <span class="math inline">\(n\)</span>, <span class="math inline">\(r\)</span> y <span class="math inline">\(n-r\)</span>.</p>
-</section>
-<section id="c.-buckingham" class="level3">
-<h3 class="anchored" data-anchor-id="c.-buckingham">C. Buckingham</h3>
+<h3 id="c.-buckingham" class="anchored">C. Buckingham</h3>
 <p>Construye dos grupos adimensionales independientes y escribe la forma general que Buckingham permite para <span class="math inline">\(\tau\)</span>.</p>
-</section>
-<section id="d.-diagnóstico" class="level3">
-<h3 class="anchored" data-anchor-id="d.-diagnóstico">D. Diagnóstico</h3>
+<h3 id="d.-diagnóstico" class="anchored">D. Diagnóstico</h3>
 <p>Decide si la fórmula propuesta por el investigador queda demostrada por el análisis dimensional.</p>
-</section>
-<section id="e.-variación" class="level3">
-<h3 class="anchored" data-anchor-id="e.-variación">E. Variación</h3>
+<h3 id="e.-variación" class="anchored">E. Variación</h3>
 <p>Supón que nuevos experimentos muestran que dos sistemas con el mismo valor de:</p>
 <p><span class="math display">\[
 \frac{\rho vL}{\mu}
@@ -13225,9 +13146,7 @@ L,\qquad v,\qquad \rho,\qquad \mu,
 \frac{\tau v}{L}.
 \]</span></p>
 <p>Da al menos tres explicaciones físicamente plausibles que deberían investigarse antes de concluir que Buckingham falla.</p>
-</section>
-<section id="f.-síntesis-epistemológica" class="level3">
-<h3 class="anchored" data-anchor-id="f.-síntesis-epistemológica">F. Síntesis epistemológica</h3>
+<h3 id="f.-síntesis-epistemológica" class="anchored">F. Síntesis epistemológica</h3>
 <p>Clasifica cada afirmación como:</p>
 <ul>
 <li>consecuencia dimensional;</li>
@@ -13251,12 +13170,10 @@ L,\qquad v,\qquad \rho,\qquad \mu,
 <li><span class="math inline">\(\Psi(x)=1+x\)</span>.</li>
 <li>dos sistemas con igual argumento de <span class="math inline">\(\Psi\)</span> deben compararse dentro del mismo modelo.</li>
 </ol>
-</section>
-</div>
-<div class="ma-block ma-comprobacion">
+</blockquote>
+<blockquote class="blockquote">
 <p><strong>Solución</strong></p>
-<section id="a.-recuperación-7" class="level3">
-<h3 class="anchored" data-anchor-id="a.-recuperación-7">A. Recuperación</h3>
+<h3 id="a.-recuperación-7" class="anchored">A. Recuperación</h3>
 <p>Primero:</p>
 <p><span class="math display">\[
 \left[\frac Lv\right]
@@ -13286,9 +13203,7 @@ T.
 [\tau]=T.
 \]</span></p>
 <p>La expresión es dimensionalmente homogénea.</p>
-</section>
-<section id="b.-consolidación-7" class="level3">
-<h3 class="anchored" data-anchor-id="b.-consolidación-7">B. Consolidación</h3>
+<h3 id="b.-consolidación-7" class="anchored">B. Consolidación</h3>
 <p>En el orden <span class="math inline">\((T,L,M)\)</span>:</p>
 <p><span class="math display">\[
 \tau:
@@ -13342,9 +13257,7 @@ r=3.
 n-r=2.
 }
 \]</span></p>
-</section>
-<section id="c.-buckingham-1" class="level3">
-<h3 class="anchored" data-anchor-id="c.-buckingham-1">C. Buckingham</h3>
+<h3 id="c.-buckingham-1" class="anchored">C. Buckingham</h3>
 <p>Dos grupos posibles son:</p>
 <p><span class="math display">\[
 \boxed{
@@ -13386,9 +13299,7 @@ n-r=2.
 \right).
 }
 \]</span></p>
-</section>
-<section id="d.-diagnóstico-1" class="level3">
-<h3 class="anchored" data-anchor-id="d.-diagnóstico-1">D. Diagnóstico</h3>
+<h3 id="d.-diagnóstico-1" class="anchored">D. Diagnóstico</h3>
 <p>La fórmula propuesta:</p>
 <p><span class="math display">\[
 \tau
@@ -13411,9 +13322,7 @@ n-r=2.
 pero no queda demostrada por él}.
 }
 \]</span></p>
-</section>
-<section id="e.-variación-1" class="level3">
-<h3 class="anchored" data-anchor-id="e.-variación-1">E. Variación</h3>
+<h3 id="e.-variación-1" class="anchored">E. Variación</h3>
 <p>Si dos sistemas con el mismo:</p>
 <p><span class="math display">\[
 \frac{\rho vL}{\mu}
@@ -13432,9 +13341,7 @@ pero no queda demostrada por él}.
 </ol>
 <p>Buckingham trabaja sobre el modelo declarado.</p>
 <p>Una discrepancia puede indicar que el modelo no contiene toda la física pertinente.</p>
-</section>
-<section id="f.-síntesis-epistemológica-1" class="level3">
-<h3 class="anchored" data-anchor-id="f.-síntesis-epistemológica-1">F. Síntesis epistemológica</h3>
+<h3 id="f.-síntesis-epistemológica-1" class="anchored">F. Síntesis epistemológica</h3>
 <p><strong>1.</strong></p>
 <p><span class="math display">\[
 \frac{\tau v}{L}
@@ -13476,8 +13383,7 @@ pero no queda demostrada por él}.
 \text{contenido físico adicional}.
 }
 \]</span></p>
-</section>
-</div>
+</blockquote>
 </section>
 <section id="mapa-final-del-capítulo" class="level3">
 <h3 class="anchored" data-anchor-id="mapa-final-del-capítulo">14.20. Mapa final del capítulo</h3>
@@ -13573,8 +13479,8 @@ pero no queda demostrada por él}.
 <h3 class="anchored" data-anchor-id="notas-y-fuentes-8">Notas y fuentes</h3>
 </section>
 </section>
-<section id="fpm-i-02-referencias" class="level2">
-<h2 class="anchored" data-anchor-id="fpm-i-02-referencias">Bibliografía y fuentes normativas</h2>
+<section id="bibliografía-y-fuentes-normativas" class="level2">
+<h2 class="anchored" data-anchor-id="bibliografía-y-fuentes-normativas">Bibliografía y fuentes normativas</h2>
 <section id="fuentes-normativas" class="level3">
 <h3 class="anchored" data-anchor-id="fuentes-normativas">Fuentes normativas</h3>
 <p><strong>Bureau International des Poids et Mesures (BIPM).</strong> <em>The International System of Units (SI)</em>. 9.ª edición, versión 4.01, junio de 2026. DOI: 10.59161/AUEZ1291. Se utilizaron especialmente §§2.1–2.3.4, capítulo 3 y §5.4.7.</p>
@@ -13585,9 +13491,11 @@ pero no queda demostrada por él}.
 <h3 class="anchored" data-anchor-id="fuentes-matemático-físicas">Fuentes matemático-físicas</h3>
 <p><strong>Zorich, Vladimir.</strong> <em>Mathematical Analysis of Problems in the Natural Sciences</em>. Springer, 2011. DOI: 10.1007/978-3-642-14813-2. Parte I, especialmente cap. 1, §§1.1–1.3, pp.&nbsp;5–10; cap. 2, pp.&nbsp;11–21.</p>
 <p><strong>Shankar, Ramamurti.</strong> <em>Fundamentals of Physics I: Mechanics, Relativity, and Thermodynamics</em>. Expanded edition. Yale University Press, 2019. Cap. 1, §1.3, p.&nbsp;4.</p>
+<p><span id="fpm-i-02-referencias"></span></p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-1-teorias-fisicas-fenomenos-modelos-y-leyes.html">Capítulo 1</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-3-medicion-incertidumbre-estimacion-y-ordenes-de-magnitud.html">Capítulo 3</a></p>
 
 
-</section>
 </section>
 </section>
 

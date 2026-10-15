@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 22 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.">
+
+<title>Cuerpo rígido: dinámica – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#escoger-el-punto-antes-de-derivar-el-momento" id="toc-escoger-el-punto-antes-de-derivar-el-momento" class="nav-link active" data-scroll-target="#escoger-el-punto-antes-de-derivar-el-momento">§1. Escoger el punto antes de derivar el momento</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#derivar-en-ejes-que-giran-con-el-cuerpo" id="toc-derivar-en-ejes-que-giran-con-el-cuerpo" class="nav-link" data-scroll-target="#derivar-en-ejes-que-giran-con-el-cuerpo">§2. Derivar en ejes que giran con el cuerpo</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-1" id="toc-ejercicios-1" class="nav-link" data-scroll-target="#ejercicios-1">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#torque-y-potencia-responden-a-preguntas-distintas" id="toc-torque-y-potencia-responden-a-preguntas-distintas" class="nav-link" data-scroll-target="#torque-y-potencia-responden-a-preguntas-distintas">§3. Torque y potencia responden a preguntas distintas</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-2" id="toc-ejercicios-2" class="nav-link" data-scroll-target="#ejercicios-2">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#lo-que-conserva-un-giro-sin-torque" id="toc-lo-que-conserva-un-giro-sin-torque" class="nav-link" data-scroll-target="#lo-que-conserva-un-giro-sin-torque">§4. Lo que conserva un giro sin torque</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-3" id="toc-ejercicios-3" class="nav-link" data-scroll-target="#ejercicios-3">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#perturbar-un-giro-principal" id="toc-perturbar-un-giro-principal" class="nav-link" data-scroll-target="#perturbar-un-giro-principal">§5. Perturbar un giro principal</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-4" id="toc-ejercicios-4" class="nav-link" data-scroll-target="#ejercicios-4">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#estabilidad-fuera-de-la-linealización" id="toc-estabilidad-fuera-de-la-linealización" class="nav-link" data-scroll-target="#estabilidad-fuera-de-la-linealización">§6. Estabilidad fuera de la linealización</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-5" id="toc-ejercicios-5" class="nav-link" data-scroll-target="#ejercicios-5">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#dos-tasas-de-precesión-para-un-cuerpo-simétrico-libre" id="toc-dos-tasas-de-precesión-para-un-cuerpo-simétrico-libre" class="nav-link" data-scroll-target="#dos-tasas-de-precesión-para-un-cuerpo-simétrico-libre">§7. Dos tasas de precesión para un cuerpo simétrico libre</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-6" id="toc-ejercicios-6" class="nav-link" data-scroll-target="#ejercicios-6">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#mantener-un-giro-cuesta-un-torque-concreto" id="toc-mantener-un-giro-cuesta-un-torque-concreto" class="nav-link" data-scroll-target="#mantener-un-giro-cuesta-un-torque-concreto">§8. Mantener un giro cuesta un torque concreto</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-7" id="toc-ejercicios-7" class="nav-link" data-scroll-target="#ejercicios-7">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#el-trompo-pesado-y-su-punto-de-apoyo" id="toc-el-trompo-pesado-y-su-punto-de-apoyo" class="nav-link" data-scroll-target="#el-trompo-pesado-y-su-punto-de-apoyo">§9. El trompo pesado y su punto de apoyo</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-8" id="toc-ejercicios-8" class="nav-link" data-scroll-target="#ejercicios-8">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#separar-inclinación-azimut-y-giro-axial" id="toc-separar-inclinación-azimut-y-giro-axial" class="nav-link" data-scroll-target="#separar-inclinación-azimut-y-giro-axial">§10. Separar inclinación, azimut y giro axial</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-9" id="toc-ejercicios-9" class="nav-link" data-scroll-target="#ejercicios-9">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#cuándo-existe-una-precesión-regular" id="toc-cuándo-existe-una-precesión-regular" class="nav-link" data-scroll-target="#cuándo-existe-una-precesión-regular">§11. Cuándo existe una precesión regular</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-10" id="toc-ejercicios-10" class="nav-link" data-scroll-target="#ejercicios-10">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#la-nutación-y-los-retornos-de-la-inclinación" id="toc-la-nutación-y-los-retornos-de-la-inclinación" class="nav-link" data-scroll-target="#la-nutación-y-los-retornos-de-la-inclinación">§12. La nutación y los retornos de la inclinación</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-11" id="toc-ejercicios-11" class="nav-link" data-scroll-target="#ejercicios-11">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#el-trompo-vertical-y-el-umbral-de-giro" id="toc-el-trompo-vertical-y-el-umbral-de-giro" class="nav-link" data-scroll-target="#el-trompo-vertical-y-el-umbral-de-giro">§13. El trompo vertical y el umbral de giro</a>
+  <ul class="collapse">
+  <li><a href="#ejercicios-12" id="toc-ejercicios-12" class="nav-link" data-scroll-target="#ejercicios-12">Ejercicios</a></li>
+  </ul></li>
+  <li><a href="#disipación-y-alcance-de-un-balance-decreciente" id="toc-disipación-y-alcance-de-un-balance-decreciente" class="nav-link" data-scroll-target="#disipación-y-alcance-de-un-balance-decreciente">§14. Disipación y alcance de un balance decreciente</a>
+  <ul class="collapse">
+  <li><a href="#problemas-de-integración" id="toc-problemas-de-integración" class="nav-link" data-scroll-target="#problemas-de-integración">Problemas de integración</a></li>
+  <li><a href="#notas-y-referencias" id="toc-notas-y-referencias" class="nav-link" data-scroll-target="#notas-y-referencias">Notas y referencias</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Cuerpo rígido: dinámica</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 22</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 22 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">15 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-21-cuerpo-rigido-cinematica-rotaciones-y-tensor-de-inercia.html">Capítulo 21</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-23-oscilaciones-lineales.html">Capítulo 23</a></p>
+<p>Un cuerpo que gira puede conservar su momento angular mientras cambia la dirección de su velocidad angular. Una rueda sostenida por un eje necesita reacciones que no se ven en el balance escalar del motor. Un trompo inclinado puede mantener una inclinación constante o variar entre dos alturas. Para distinguir estos movimientos hay que reunir la distribución de masa de I21 con el balance de torque.</p>
+<p>La dificultad principal aparece al escoger los ejes. En el espacio, la derivada del momento angular es el torque. En ejes fijados al cuerpo, el tensor permanece constante, pero la derivada de sus componentes incluye el transporte de la base. Las ecuaciones de Euler nacen de escribir coherentemente ambos hechos. Sus términos cruzados contienen buena parte de la dinámica que una fórmula de un solo eje deja fuera.</p>
+<p>Supondremos masas constantes, rigidez ideal, tensor definido positivo y fuerzas cuyo torque interno total se cancela. Un sistema discreto de fuerzas internas centrales por parejas satisface esa última condición. Los momentos principales serán positivos; las distribuciones degeneradas de I21 necesitan un tratamiento separado cuando una ecuación requiera dividir por un momento nulo. El giro se estudia respecto del centro de masa o de un punto corporal fijo en un marco inercial, según se declare.</p>
+<p><span id="fispm-t1-c22-s01"></span></p>
+<p><span id="fpm-i-22-s01"></span></p>
+<section id="escoger-el-punto-antes-de-derivar-el-momento" class="level2">
+<h2 class="anchored" data-anchor-id="escoger-el-punto-antes-de-derivar-el-momento">§1. Escoger el punto antes de derivar el momento</h2>
+<p>El momento angular depende del punto sobre el que se calcula. Para el cuerpo libre, el centro de masa separa el movimiento interno. Para un trompo sujeto, el pivote fijo permite incluir la gravedad y eliminar del torque la reacción aplicada en ese punto. Estas dos elecciones tienen justificaciones distintas.</p>
+<p><span id="fispm-t1-c22-d0001"></span></p>
+<p><strong>Definición FPM-I-22-D01 — Torque externo sobre el centro o el pivote.</strong> Escribimos <span class="math inline">\(\boldsymbol\tau_C=\sum_i(\mathbf x_i-\mathbf C)\times\mathbf F_i^{\mathrm{ext}}\)</span> para el centro de masa. Sobre un pivote <span class="math inline">\(O\)</span>, el torque es <span class="math inline">\(\boldsymbol\tau_O=\sum_i(\mathbf x_i-O)\times\mathbf F_i^{\mathrm{ext}}\)</span>. Una fuerza aplicada exactamente en el punto elegido tiene brazo nulo; un par de fuerzas puede conservar torque aunque la fuerza neta sea cero.</p>
+<p><span id="fispm-t1-c22-p0001"></span></p>
+<p><strong>Proposición FPM-I-22-P01 — Balance del momento interno central.</strong> Para un cuerpo de masa constante, cuyo torque interno total es cero,</p>
+<p><span class="math display">\[
+\frac{d\mathbf H_C}{dt}=\boldsymbol\tau_C,
+\qquad \mathbf H_C=\int(\mathbf x-\mathbf C)\times(\mathbf v-\mathbf V)dm.
+\]</span></p>
+<p>La derivada de la izquierda se toma en el marco inercial.</p>
+<p><strong>Demostración.</strong> En un sistema discreto, pongamos <span class="math inline">\(\mathbf r_i=\mathbf x_i-\mathbf C\)</span>. Derivar cada producto da <span class="math inline">\(\dot{\mathbf r}_i\times m_i\dot{\mathbf r}_i=0\)</span> y <span class="math inline">\(\mathbf r_i\times m_i(\mathbf a_i-\ddot{\mathbf C})\)</span>. El término con <span class="math inline">\(\ddot{\mathbf C}\)</span> se anula al sumar porque <span class="math inline">\(\sum_i m_i\mathbf r_i=0\)</span>. Las aceleraciones restantes se sustituyen mediante Newton. Los torques internos se cancelan por hipótesis y queda el externo. Para una distribución continua suficientemente regular, el mismo balance se formula con la integral de fuerzas y los torques internos netos; requiere las hipótesis de intercambio de derivada e integral o su balance integral equivalente. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c22-p0002"></span></p>
+<p><strong>Proposición FPM-I-22-P02 — Balance sobre un punto corporal fijo.</strong> Si un punto corporal <span class="math inline">\(O\)</span> permanece fijo en el marco inercial, entonces</p>
+<p><span class="math display">\[
+\frac{d\mathbf L_O}{dt}=\boldsymbol\tau_O,
+\qquad \mathbf L_O=I_O(t)\boldsymbol\omega.
+\]</span></p>
+<p>Una reacción puntual en <span class="math inline">\(O\)</span> no contribuye al torque sobre <span class="math inline">\(O\)</span>.</p>
+<p><strong>Demostración.</strong> Con <span class="math inline">\(O\)</span> fijo, derivar <span class="math inline">\(\int(\mathbf x-O)\times\mathbf v\,dm\)</span> deja <span class="math inline">\(\int(\mathbf x-O)\times\mathbf a\,dm\)</span>, porque <span class="math inline">\(\mathbf v\times\mathbf v=0\)</span>. El balance de fuerzas y la cancelación interna dan el torque externo. La velocidad de un punto del cuerpo es <span class="math inline">\(\boldsymbol\omega\times(\mathbf x-O)\)</span>; la identidad de producto triple usada en I21 convierte la integral en <span class="math inline">\(I_O\boldsymbol\omega\)</span>. Una fuerza en <span class="math inline">\(O\)</span> tiene brazo cero. <span class="math inline">\(\square\)</span></p>
+<p>Un punto que está instantáneamente quieto no cumple necesariamente la hipótesis de pivote fijo durante un intervalo. El contacto de una rueda que rueda exige atender al cambio de punto y a su aceleración. Tampoco un cojinete real se reduce siempre a una fuerza puntual: un soporte puede ejercer un par, y ese torque debe conservarse si el modelo lo incluye.</p>
+<p><span id="fispm-t1-c22-mp0001"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP01.</strong> Declara el punto del balance y las reacciones que elimina. La aceleración del centro de masa y la fijación de un pivote justifican simplificaciones diferentes.</p>
+<section id="ejercicios" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0001"></span></p>
+<p><strong>Ejercicio FPM-I-22-E01.</strong> Dos fuerzas opuestas <span class="math inline">\(\pm F\mathbf e_y\)</span> se aplican en puntos situados a <span class="math inline">\(\pm a\mathbf e_x\)</span> respecto del centro. Calcula fuerza neta y torque.</p>
+<p><strong>Solución.</strong> La fuerza neta es cero. El torque del punto positivo es <span class="math inline">\(aF\mathbf e_z\)</span> y el del negativo también, porque cambian simultáneamente brazo y fuerza. El torque total es <span class="math inline">\(2aF\mathbf e_z\)</span>. El centro no recibe aceleración por ese par, pero el momento interno puede cambiar.</p>
+<p><span id="fispm-t1-c22-e0002"></span></p>
+<p><strong>Ejercicio FPM-I-22-E02.</strong> Una masa rígidamente distribuida tiene centro <span class="math inline">\(G=O+l\mathbf n\)</span> y está sujeta a un pivote fijo <span class="math inline">\(O\)</span>. Un campo gravitatorio uniforme ejerce gravedad <span class="math inline">\(-Mg\mathbf e_z\)</span>. Encuentra su torque y explica qué datos no determina este cálculo.</p>
+<p><strong>Solución.</strong> La gravedad total actúa para el torque como <span class="math inline">\(-Mg\mathbf e_z\)</span> en el centro, de modo que <span class="math inline">\(\boldsymbol\tau_O=-Mgl\mathbf n\times\mathbf e_z=Mgl\mathbf e_z\times\mathbf n\)</span>. El pivote puntual no añade torque sobre sí mismo. El cálculo no determina por sí solo la reacción del soporte; para ella hacen falta la aceleración del centro y el balance de fuerza neta. También hace falta el tensor sobre <span class="math inline">\(O\)</span> para obtener la evolución angular.</p>
+<p><span id="fispm-t1-c22-s02"></span></p>
+<p><span id="fpm-i-22-s02"></span></p>
+</section>
+</section>
+<section id="derivar-en-ejes-que-giran-con-el-cuerpo" class="level2">
+<h2 class="anchored" data-anchor-id="derivar-en-ejes-que-giran-con-el-cuerpo">§2. Derivar en ejes que giran con el cuerpo</h2>
+<p>Sea <span class="math inline">\(I\)</span> la matriz corporal constante del tensor sobre el punto del balance. El momento corporal es <span class="math inline">\(I\boldsymbol\Omega\)</span>, mientras el momento físico es <span class="math inline">\(R I\boldsymbol\Omega\)</span>. La derivada de ese producto debe conservar el término de transporte, incluso si el tensor corporal es diagonal.</p>
+<p><span id="fispm-t1-c22-d0002"></span></p>
+<p><strong>Definición FPM-I-22-D02 — Estado angular y torque corporal.</strong> El estado angular se describe mediante <span class="math inline">\(R(t)\in SO(3)\)</span> y <span class="math inline">\(\boldsymbol\Omega(t)\)</span>, con <span class="math inline">\(\dot R=R[\boldsymbol\Omega]_\times\)</span>. El torque corporal es <span class="math inline">\(\mathbf T=R^T\boldsymbol\tau\)</span>. La matriz <span class="math inline">\(I\)</span> se calcula sobre el centro de masa en P01 o sobre el pivote fijo en P02.</p>
+<p><span id="fispm-t1-c22-p0003"></span></p>
+<p><strong>Proposición FPM-I-22-P03 — Ecuación vectorial de Euler.</strong> En cualquiera de esos dos casos,</p>
+<p><span class="math display">\[
+I\dot{\boldsymbol\Omega}+\boldsymbol\Omega\times(I\boldsymbol\Omega)=\mathbf T.
+\]</span></p>
+<p><strong>Demostración.</strong> El balance inercial es <span class="math inline">\(d(RI\boldsymbol\Omega)/dt=\boldsymbol\tau\)</span>. La regla de transporte de I20 da <span class="math inline">\(R[I\dot{\boldsymbol\Omega}+\boldsymbol\Omega\times(I\boldsymbol\Omega)]\)</span>, porque <span class="math inline">\(I\)</span> es constante en el cuerpo. Multiplicar por <span class="math inline">\(R^T\)</span> produce la ecuación. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c22-p0004"></span></p>
+<p><strong>Proposición FPM-I-22-P04 — Componentes en una base principal.</strong> Si <span class="math inline">\(I=\operatorname{diag}(J_1,J_2,J_3)\)</span>, las ecuaciones son</p>
+<p><span class="math display">\[
+\begin{aligned}
+J_1\dot\Omega_1+(J_3-J_2)\Omega_2\Omega_3&amp;=T_1,\\
+J_2\dot\Omega_2+(J_1-J_3)\Omega_3\Omega_1&amp;=T_2,\\
+J_3\dot\Omega_3+(J_2-J_1)\Omega_1\Omega_2&amp;=T_3.
+\end{aligned}
+\]</span></p>
+<p><strong>Demostración.</strong> El producto <span class="math inline">\(I\boldsymbol\Omega\)</span> tiene componentes <span class="math inline">\(J_i\Omega_i\)</span>. La primera componente de <span class="math inline">\(\boldsymbol\Omega\times I\boldsymbol\Omega\)</span> es <span class="math inline">\(\Omega_2J_3\Omega_3-\Omega_3J_2\Omega_2=(J_3-J_2)\Omega_2\Omega_3\)</span>. Las otras resultan por las permutaciones cíclicas que conservan la orientación del producto vectorial. Sustituir en P03 da las tres igualdades. <span class="math inline">\(\square\)</span></p>
+<p>Resolver esas ecuaciones da las componentes corporales de la velocidad angular. Para reconstruir la orientación hay que integrar además <span class="math inline">\(\dot R=R[\boldsymbol\Omega]_\times\)</span> con una orientación inicial. El mismo historial corporal puede corresponder a orientaciones espaciales diferentes si se cambia ese dato inicial. En particular, un vector angular que cambia en el cuerpo puede estar asociado a un momento físico constante.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span id="fispm-t1-c22-mp0002"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP02.</strong> Conserva el transporte de la base al derivar el momento. Después de resolver Euler, reconstruye la orientación con sus propios datos iniciales.</p>
+<section id="ejercicios-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-1">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0003"></span></p>
+<p><strong>Ejercicio FPM-I-22-E03.</strong> Si <span class="math inline">\(J_1=J_2=J_3=J&gt;0\)</span>, escribe Euler y resuelve el caso de torque corporal constante <span class="math inline">\(\mathbf T_0\)</span>.</p>
+<p><strong>Solución.</strong> Como <span class="math inline">\(I\boldsymbol\Omega=J\boldsymbol\Omega\)</span>, el producto cruzado se anula y <span class="math inline">\(J\dot{\boldsymbol\Omega}=\mathbf T_0\)</span>. Así <span class="math inline">\(\boldsymbol\Omega(t)=\boldsymbol\Omega(0)+t\mathbf T_0/J\)</span>. «Torque corporal constante» prescribe un vector unido a los ejes del cuerpo; su vector inercial es <span class="math inline">\(R(t)\mathbf T_0\)</span> y puede variar. La orientación se obtiene resolviendo la ecuación de <span class="math inline">\(R\)</span> con esta velocidad angular.</p>
+<p><span id="fispm-t1-c22-e0004"></span></p>
+<p><strong>Ejercicio FPM-I-22-E04.</strong> Para momentos <span class="math inline">\((2J,3J,4J)\)</span>, torque cero y <span class="math inline">\(\boldsymbol\Omega(0)=(u,u,0)\)</span>, calcula la aceleración angular corporal inicial.</p>
+<p><strong>Solución.</strong> P04 da <span class="math inline">\(\dot\Omega_1(0)=\dot\Omega_2(0)=0\)</span> porque contienen <span class="math inline">\(\Omega_3\)</span>. La tercera es <span class="math inline">\(\dot\Omega_3(0)=-(3J-2J)u^2/(4J)=-u^2/4\)</span>. Aparece una tercera componente aunque inicialmente fuera cero. La conservación del momento inercial no impone conservación de cada componente corporal.</p>
+<p><span id="fispm-t1-c22-s03"></span></p>
+<p><span id="fpm-i-22-s03"></span></p>
+</section>
+</section>
+<section id="torque-y-potencia-responden-a-preguntas-distintas" class="level2">
+<h2 class="anchored" data-anchor-id="torque-y-potencia-responden-a-preguntas-distintas">§3. Torque y potencia responden a preguntas distintas</h2>
+<p>Un torque perpendicular a la velocidad angular puede cambiar el momento sin aportar potencia de giro. Los cojinetes de un eje impuesto ofrecen un ejemplo: pueden sostener torques transversales que cambian la dirección del momento, mientras el motor controla la componente axial que cambia la energía.</p>
+<p><span id="fispm-t1-c22-p0005"></span></p>
+<p><strong>Proposición FPM-I-22-P05 — Potencia del torque.</strong> Para <span class="math inline">\(K_{\mathrm{rot}}=\boldsymbol\Omega^TI\boldsymbol\Omega/2\)</span>,</p>
+<p><span class="math display">\[
+\dot K_{\mathrm{rot}}=\mathbf T\cdot\boldsymbol\Omega
+=\boldsymbol\tau\cdot\boldsymbol\omega.
+\]</span></p>
+<p>En un pivote fijo, esta es la potencia cinética total; en el centro de masa es la potencia de la parte interna de giro.</p>
+<p><strong>Demostración.</strong> La simetría y constancia corporal de <span class="math inline">\(I\)</span> dan <span class="math inline">\(\dot K_{\mathrm{rot}}=\boldsymbol\Omega\cdot I\dot{\boldsymbol\Omega}\)</span>. Multiplicar P03 por <span class="math inline">\(\boldsymbol\Omega\)</span> elimina el término cruzado por perpendicularidad. La rotación <span class="math inline">\(R\)</span> conserva el producto escalar y da la segunda expresión. La identificación de energía total o interna sigue de las descomposiciones de I21. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c22-p0006"></span></p>
+<p><strong>Proposición FPM-I-22-P06 — Balance axial bajo un eje fijo impuesto.</strong> Si un cuerpo gira con <span class="math inline">\(\boldsymbol\Omega=\omega(t)\mathbf n\)</span> sobre un eje corporal unitario que permanece fijo en el espacio, su momento escalar axial es <span class="math inline">\(J_n=\mathbf n^TI\mathbf n\)</span> y</p>
+<p><span class="math display">\[
+\boldsymbol\tau\cdot(R\mathbf n)=J_n\dot\omega.
+\]</span></p>
+<p>El torque corporal completo requerido es <span class="math inline">\(\mathbf T=\dot\omega I\mathbf n+\omega^2\mathbf n\times(I\mathbf n)\)</span>.</p>
+<p><strong>Demostración.</strong> Sustituir <span class="math inline">\(\boldsymbol\Omega=\omega\mathbf n\)</span> en P03 da la fórmula vectorial. Multiplicarla por <span class="math inline">\(\mathbf n\)</span> elimina el producto cruzado y deja <span class="math inline">\(J_n\dot\omega\)</span>. Transformar ambos vectores a la base inercial conserva esa proyección. <span class="math inline">\(\square\)</span></p>
+<p>Si <span class="math inline">\(\mathbf n\)</span> no es principal, incluso una rapidez constante puede requerir torque transversal. El balance escalar axial no lo calcula. La condición de eje fijo impone restricciones al cuerpo y sus reacciones completan el balance vectorial. Esta diferencia será importante al interpretar una rueda equilibrada sobre cojinetes.</p>
+<p><span id="fispm-t1-c22-mp0003"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP03.</strong> Usa potencia para cambios de energía y el balance vectorial para cambios de momento. La proyección axial no elimina los torques de los soportes.</p>
+<section id="ejercicios-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-2">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0005"></span></p>
+<p><strong>Ejercicio FPM-I-22-E05.</strong> Un cuerpo tiene <span class="math inline">\(I=\operatorname{diag}(2J,3J,4J)\)</span> y gira uniformemente con <span class="math inline">\(\boldsymbol\Omega=(u,u,0)\)</span>. Encuentra el torque necesario y su potencia.</p>
+<p><strong>Solución.</strong> Como las componentes angulares son constantes, P03 da <span class="math inline">\(\mathbf T=\boldsymbol\Omega\times I\boldsymbol\Omega=Ju^2\mathbf e_3\)</span>. Su producto escalar con <span class="math inline">\((u,u,0)\)</span> es cero. El momento físico cambia de dirección por la rotación del cuerpo, aunque su energía de giro permanezca constante. Omitir este torque convertiría el movimiento impuesto en el giro libre diferente de E04.</p>
+<p><span id="fispm-t1-c22-e0006"></span></p>
+<p><strong>Ejercicio FPM-I-22-E06.</strong> Un rotor gira sobre un eje principal de momento <span class="math inline">\(J\)</span>. Recibe torque axial <span class="math inline">\(T(t)=T_0t/t_0\)</span>, con <span class="math inline">\(t_0&gt;0\)</span>, y parte de reposo. Encuentra rapidez y trabajo hasta tiempo <span class="math inline">\(t_0\)</span>.</p>
+<p><strong>Solución.</strong> El balance es <span class="math inline">\(J\dot\omega=T_0t/t_0\)</span>, por lo que <span class="math inline">\(\omega(t)=T_0t^2/(2Jt_0)\)</span>. En <span class="math inline">\(t_0\)</span>, la energía es <span class="math inline">\(J[T_0t_0/(2J)]^2/2=T_0^2t_0^2/(8J)\)</span>. La integral de potencia <span class="math inline">\(\int_0^{t_0}T(t)\omega(t)dt\)</span> da <span class="math inline">\([T_0^2/(2Jt_0^2)]\int_0^{t_0}t^3dt\)</span>, que coincide con esa energía.</p>
+<p><span id="fispm-t1-c22-s04"></span></p>
+<p><span id="fpm-i-22-s04"></span></p>
+</section>
+</section>
+<section id="lo-que-conserva-un-giro-sin-torque" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-conserva-un-giro-sin-torque">§4. Lo que conserva un giro sin torque</h2>
+<p>Antes de resolver una trayectoria libre conviene identificar sus constantes. En el marco inercial el momento angular no cambia. En el cuerpo puede moverse sobre la intersección de una esfera de momento y una superficie de energía. Esa geometría limitará las perturbaciones de ciertos giros.</p>
+<p><span id="fispm-t1-c22-d0003"></span></p>
+<p><strong>Definición FPM-I-22-D03 — Giro libre.</strong> Llamaremos libre al giro con torque externo nulo sobre el punto del balance. No se exige que la fuerza externa neta sobre el centro de masa sea cero: un campo uniforme aplicado en el centro puede trasladarlo sin añadir torque central.</p>
+<p><span id="fispm-t1-c22-p0007"></span></p>
+<p><strong>Proposición FPM-I-22-P07 — Invariantes del giro libre.</strong> Para torque cero se conservan</p>
+<p><span class="math display">\[
+K=\frac12\sum_iJ_i\Omega_i^2,
+\qquad H^2=\sum_iJ_i^2\Omega_i^2.
+\]</span></p>
+<p>El vector inercial <span class="math inline">\(\mathbf H=RI\boldsymbol\Omega\)</span> es constante.</p>
+<p><strong>Demostración.</strong> P05 con torque cero da <span class="math inline">\(\dot K=0\)</span>. Escribamos <span class="math inline">\(\mathbf h=I\boldsymbol\Omega\)</span>. P03 da <span class="math inline">\(\dot{\mathbf h}=-\boldsymbol\Omega\times\mathbf h=\mathbf h\times I^{-1}\mathbf h\)</span>, de modo que <span class="math inline">\(d|\mathbf h|^2/dt=2\mathbf h\cdot(\mathbf h\times I^{-1}\mathbf h)=0\)</span>. La norma es la misma en ambas bases. Aplicar la regla de transporte a <span class="math inline">\(R\mathbf h\)</span> da derivada cero, que prueba la constancia del vector espacial. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c22-p0008"></span></p>
+<p><strong>Proposición FPM-I-22-P08 — Existencia global del giro libre con inercia positiva.</strong> Para momentos principales positivos, cualquier dato angular inicial finito tiene una solución única de Euler para todos los tiempos. La orientación también se reconstruye globalmente a partir de <span class="math inline">\(R(0)\in SO(3)\)</span>.</p>
+<p><strong>Demostración.</strong> Euler con torque cero tiene un campo polinómico suave en <span class="math inline">\(\boldsymbol\Omega\)</span>, por lo que el teorema local de existencia y unicidad para ecuaciones diferenciales produce una solución. P07 y <span class="math inline">\(J_{\min}&gt;0\)</span> dan <span class="math inline">\(|\boldsymbol\Omega(t)|^2\leq2K/J_{\min}\)</span>. El campo y su derivada están acotados sobre una bola que contiene toda la solución. Si hubiera un extremo temporal finito, la velocidad de <span class="math inline">\(\boldsymbol\Omega\)</span> acotada haría que sus valores fueran de Cauchy al acercarse a ese extremo; tendrían un límite dentro de la bola. La solución local desde ese límite prolongaría la anterior por unicidad, contradiciendo maximalidad. Lo mismo vale hacia tiempos negativos.</p>
+<p>La ecuación de <span class="math inline">\(R\)</span> es lineal en sus entradas con coeficientes continuos globales y acotados en intervalos finitos. Conserva <span class="math inline">\(RR^T=I\)</span>, porque su derivada usa una matriz antisimétrica, y conserva el determinante positivo por continuidad. Sus entradas permanecen acotadas y se prolongan con el mismo argumento. <span class="math inline">\(\square\)</span></p>
+<p>Los invariantes no determinan por sí solos en qué sentido se recorre una intersección ni cómo se orienta el cuerpo en el espacio. Dan controles globales que acompañan la ecuación. Cerca de un giro principal, esos controles pueden demostrar estabilidad sin resolver toda la trayectoria.</p>
+<p><span id="fispm-t1-c22-mp0004"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP04.</strong> Encuentra las constantes antes de aproximar el movimiento. Usa sus cotas para controlar tanto el dominio temporal como el alcance de una perturbación.</p>
+<section id="ejercicios-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-3">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0007"></span></p>
+<p><strong>Ejercicio FPM-I-22-E07.</strong> Con momentos <span class="math inline">\((2J,3J,4J)\)</span> y datos <span class="math inline">\((u,u,0)\)</span>, calcula energía y norma del momento; acota la rapidez angular posterior.</p>
+<p><strong>Solución.</strong> La energía es <span class="math inline">\(5Ju^2/2\)</span> y <span class="math inline">\(H^2=13J^2u^2\)</span>. Como <span class="math inline">\(J_{\min}=2J\)</span>, P08 da <span class="math inline">\(|\boldsymbol\Omega|^2\leq5u^2/2\)</span>. La rapidez inicial al cuadrado es <span class="math inline">\(2u^2\)</span>, pero no se presume que permanezca igual; las cantidades conservadas ponderan sus componentes de dos maneras diferentes.</p>
+<p><span id="fispm-t1-c22-e0008"></span></p>
+<p><strong>Ejercicio FPM-I-22-E08.</strong> Un cálculo aproximado de giro libre produce una pequeña deriva de <span class="math inline">\(K\)</span> y de <span class="math inline">\(H^2\)</span>. ¿Qué puede concluirse sobre su exactitud y qué comprobación adicional exige la orientación?</p>
+<p><strong>Solución.</strong> La deriva contradice la solución exacta de P07 y mide un error del cálculo o una fuerza no incorporada al modelo. Conservar aproximadamente ambos invariantes es una comprobación necesaria útil, pero no suficiente para la trayectoria: pueden recorrerse incorrectamente las superficies comunes. La orientación debe satisfacer además <span class="math inline">\(\dot R=R[\boldsymbol\Omega]_\times\)</span> y permanecer ortogonal de determinante uno. También debe verificarse que <span class="math inline">\(RI\boldsymbol\Omega\)</span> conserve el vector inicial, no solo su norma.</p>
+<p><span id="fispm-t1-c22-s05"></span></p>
+<p><span id="fpm-i-22-s05"></span></p>
+</section>
+</section>
+<section id="perturbar-un-giro-principal" class="level2">
+<h2 class="anchored" data-anchor-id="perturbar-un-giro-principal">§5. Perturbar un giro principal</h2>
+<p>Un giro uniforme sobre un eje principal tiene componentes corporales constantes. Primero linealizaremos Euler para observar qué sucede al apartarse un poco de él. La aproximación descubre oscilaciones o crecimiento local, pero la estabilidad del sistema completo necesita una justificación adicional.</p>
+<p><span id="fispm-t1-c22-p0009"></span></p>
+<p><strong>Proposición FPM-I-22-P09 — Giros estacionarios libres.</strong> Una velocidad angular corporal constante <span class="math inline">\(\boldsymbol\Omega_*\)</span> es solución libre si y solo si <span class="math inline">\(\boldsymbol\Omega_*\times I\boldsymbol\Omega_*=0\)</span>. Para un vector no nulo, esto equivale a pertenecer a un espacio propio de <span class="math inline">\(I\)</span>. Con tres momentos distintos, los giros no nulos estacionarios son exactamente los giros sobre las tres rectas principales.</p>
+<p><strong>Demostración.</strong> P03 con torque cero y derivada angular cero da la condición cruzada. Para un vector no nulo, anularla significa que <span class="math inline">\(I\boldsymbol\Omega_*=\lambda\boldsymbol\Omega_*\)</span> para algún escalar. En una base principal con valores distintos, componentes no nulas sobre autovalores diferentes no pueden satisfacer esa igualdad. El vector cero también es solución. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c22-p0010"></span></p>
+<p><strong>Proposición FPM-I-22-P10 — Perturbaciones lineales transversales.</strong> Sea <span class="math inline">\(\boldsymbol\Omega_*=u\mathbf e_i\)</span>, con <span class="math inline">\(u\ne0\)</span>, y sean <span class="math inline">\((i,j,k)\)</span> índices cíclicos. Al primer orden,</p>
+<p><span class="math display">\[
+\dot\eta_j=\frac{J_k-J_i}{J_j}u\eta_k,
+\qquad \dot\eta_k=\frac{J_i-J_j}{J_k}u\eta_j,
+\]</span></p>
+<p>y por tanto</p>
+<p><span class="math display">\[
+\ddot\eta_j=\frac{(J_k-J_i)(J_i-J_j)}{J_jJ_k}u^2\eta_j.
+\]</span></p>
+<p>Para <span class="math inline">\(J_1&lt;J_2&lt;J_3\)</span>, el coeficiente es negativo en los ejes extremos y positivo en el intermedio. La perturbación longitudinal es constante a primer orden.</p>
+<p><strong>Demostración.</strong> Sustituir <span class="math inline">\(\Omega_i=u+\eta_i\)</span>, <span class="math inline">\(\Omega_j=\eta_j\)</span> y <span class="math inline">\(\Omega_k=\eta_k\)</span> en P04. La ecuación longitudinal contiene un producto de dos perturbaciones y no contribuye al primer orden. En las otras, sustituir <span class="math inline">\(\Omega_i\)</span> por <span class="math inline">\(u\)</span> deja las igualdades. Diferenciar la primera y usar la segunda da el coeficiente. Para el momento mínimo o máximo, sus factores tienen signos opuestos; para el intermedio, tienen el mismo signo. <span class="math inline">\(\square\)</span></p>
+<p>Un coeficiente negativo produce oscilaciones transversales; uno positivo admite una solución creciente exponencial. Cuando la perturbación se vuelve apreciable, los términos omitidos pueden cambiar la trayectoria. P08 impide que la velocidad angular libre exacta diverja desde energía finita. La inestabilidad puede consistir en una gran reorientación corporal con todas las magnitudes acotadas.</p>
+<p><span id="fispm-t1-c22-mp0005"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP05.</strong> Identifica el orden descartado al linealizar. Una tasa de crecimiento local no implica crecimiento exponencial ilimitado de la solución exacta.</p>
+<section id="ejercicios-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-4">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0009"></span></p>
+<p><strong>Ejercicio FPM-I-22-E09.</strong> Para momentos <span class="math inline">\(2J,3J,4J\)</span>, calcula la frecuencia lineal alrededor del eje de <span class="math inline">\(2J\)</span> y la tasa de crecimiento alrededor del de <span class="math inline">\(3J\)</span>, a rapidez <span class="math inline">\(u\)</span>.</p>
+<p><strong>Solución.</strong> En el primer eje, el coeficiente es <span class="math inline">\((4J-2J)(2J-3J)u^2/[(3J)(4J)]=-u^2/6\)</span>, y la frecuencia es <span class="math inline">\(|u|/\sqrt6\)</span>. En el segundo, los índices cíclicos son <span class="math inline">\((2,3,1)\)</span>; el coeficiente es <span class="math inline">\((2J-3J)(3J-4J)u^2/[(4J)(2J)]=u^2/8\)</span>, con tasa <span class="math inline">\(|u|/\sqrt8\)</span>. Son resultados para perturbaciones pequeñas en componentes corporales.</p>
+<p><span id="fispm-t1-c22-e0010"></span></p>
+<p><strong>Ejercicio FPM-I-22-E10.</strong> ¿Qué falla si se clasifica un cuerpo con <span class="math inline">\(J_1=J_2\ne J_3\)</span> como si tuviera tres momentos estrictamente ordenados?</p>
+<p><strong>Solución.</strong> Para giros en el plano propio de los momentos iguales, un factor del coeficiente se anula. Desaparece la separación estricta entre oscilaciones de frecuencia no nula y exponentes reales no nulos. Hay además una familia de direcciones estacionarias en ese plano. El caso simétrico requiere sus ecuaciones exactas, desarrolladas en §7.</p>
+<p><span id="fispm-t1-c22-s06"></span></p>
+<p><span id="fpm-i-22-s06"></span></p>
+</section>
+</section>
+<section id="estabilidad-fuera-de-la-linealización" class="level2">
+<h2 class="anchored" data-anchor-id="estabilidad-fuera-de-la-linealización">§6. Estabilidad fuera de la linealización</h2>
+<p>Las constantes permiten reforzar el resultado de los ejes extremos. Una combinación positiva que mida componentes transversales impide que una preparación cercana se aleje mucho. Para el intermedio construiremos una trayectoria exacta que empieza arbitrariamente cerca y alcanza una distancia fija.</p>
+<p><span id="fispm-t1-c22-d0004"></span></p>
+<p><strong>Definición FPM-I-22-D04 — Estabilidad angular corporal.</strong> Una solución estacionaria <span class="math inline">\(\boldsymbol\Omega_*\)</span> es estable en el sentido de Lyapunov si para cada <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(\delta&gt;0\)</span> tal que <span class="math inline">\(|\boldsymbol\Omega(0)-\boldsymbol\Omega_*|&lt;\delta\)</span> implica <span class="math inline">\(|\boldsymbol\Omega(t)-\boldsymbol\Omega_*|&lt;\varepsilon\)</span> para todo <span class="math inline">\(t\geq0\)</span>. Aquí se comparan velocidades angulares corporales; la orientación y su fase espacial son variables adicionales.</p>
+<p><span id="fispm-t1-c22-p0011"></span></p>
+<p><strong>Proposición FPM-I-22-P11 — Estabilidad no lineal de los giros extremos.</strong> Para <span class="math inline">\(0&lt;J_1&lt;J_2&lt;J_3\)</span>, todos los giros libres no nulos sobre los ejes de <span class="math inline">\(J_1\)</span> y <span class="math inline">\(J_3\)</span> son estables según D04.</p>
+<p><strong>Demostración.</strong> Usemos <span class="math inline">\(h_i=J_i\Omega_i\)</span> y <span class="math inline">\(a_i=1/J_i\)</span>, con <span class="math inline">\(a_1&gt;a_2&gt;a_3\)</span>. Para el primer eje, la combinación conservada</p>
+<p><span class="math display">\[
+F_1=a_1H^2-2K=(a_1-a_2)h_2^2+(a_1-a_3)h_3^2
+\]</span></p>
+<p>controla las componentes transversales: <span class="math inline">\(h_2^2+h_3^2\leq F_1/c_1\)</span>, donde <span class="math inline">\(c_1=\min(a_1-a_2,a_1-a_3)&gt;0\)</span>. Cerca de <span class="math inline">\(\mathbf h_*=h_*\mathbf e_1\)</span>, con <span class="math inline">\(h_*\ne0\)</span>, la continuidad de <span class="math inline">\(F_1\)</span> hace esa cota arbitrariamente pequeña. La continuidad del otro invariante, <span class="math inline">\(H^2\)</span>, mantiene su valor cerca de <span class="math inline">\(h_*^2\)</span>. La igualdad <span class="math inline">\(h_1^2=H^2-h_2^2-h_3^2\)</span> mantiene entonces <span class="math inline">\(|h_1|\)</span> cerca de <span class="math inline">\(|h_*|\)</span>. Para datos suficientemente próximos, la norma queda separada de cero y la cota transversal impide que <span class="math inline">\(h_1\)</span> se anule. Su signo sigue siendo el de <span class="math inline">\(h_*\)</span>. Estas cotas, uniformes en tiempo, mantienen el vector completo tan próximo a <span class="math inline">\(\mathbf h_*\)</span> como se quiera.</p>
+<p>Para el tercer eje se usa <span class="math inline">\(F_3=2K-a_3H^2=(a_1-a_3)h_1^2+(a_2-a_3)h_2^2\)</span>, con el mismo control positivo transversal y el mismo argumento de norma y signo. La transformación invertible <span class="math inline">\(\boldsymbol\Omega=I^{-1}\mathbf h\)</span> transporta ambas conclusiones a la norma angular. <span class="math inline">\(\square\)</span></p>
+<p>La prueba permite pequeñas variaciones de energía y norma de momento iniciales. No demuestra atracción hacia el giro estacionario. Dos giros próximos pueden acumular una diferencia de fase espacial durante mucho tiempo, aunque sus velocidades angulares corporales sigan cercanas.</p>
+<p><span id="fispm-t1-c22-p0012"></span></p>
+<p><strong>Proposición FPM-I-22-P12 — Inestabilidad exacta del giro intermedio.</strong> Bajo las mismas desigualdades estrictas, un giro libre no nulo sobre el eje de <span class="math inline">\(J_2\)</span> es inestable según D04.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(H&gt;0\)</span> la magnitud del momento del giro positivo. Pongamos <span class="math inline">\(\alpha=a_1-a_2&gt;0\)</span>, <span class="math inline">\(\beta=a_2-a_3&gt;0\)</span> y <span class="math inline">\(\gamma=H\sqrt{\alpha\beta}\)</span>. Una solución exacta de <span class="math inline">\(\dot{\mathbf h}=\mathbf h\times I^{-1}\mathbf h\)</span> es</p>
+<p><span class="math display">\[
+\begin{aligned}
+h_1(t)&amp;=H\sqrt{\frac\beta{\alpha+\beta}}\,\operatorname{sech}(\gamma t),\\
+h_2(t)&amp;=-H\tanh(\gamma t),\\
+h_3(t)&amp;=-H\sqrt{\frac\alpha{\alpha+\beta}}\,\operatorname{sech}(\gamma t).
+\end{aligned}
+\]</span></p>
+<p>Las ecuaciones son <span class="math inline">\(\dot h_1=-\beta h_2h_3\)</span>, <span class="math inline">\(\dot h_2=(\alpha+\beta)h_3h_1\)</span> y <span class="math inline">\(\dot h_3=-\alpha h_1h_2\)</span>. Sustituir las fórmulas y usar las derivadas <span class="math inline">\(\tanh'=\operatorname{sech}^2\)</span> y <span class="math inline">\(\operatorname{sech}'=-\operatorname{sech}\tanh\)</span> verifica las tres con el valor de <span class="math inline">\(\gamma\)</span> indicado.</p>
+<p>Cuando <span class="math inline">\(t\to-\infty\)</span>, la solución tiende a <span class="math inline">\(H\mathbf e_2\)</span>. En <span class="math inline">\(t=0\)</span>, tiene <span class="math inline">\(h_2=0\)</span> y norma transversal <span class="math inline">\(H\)</span>, por lo que está a distancia fija positiva de ese giro. Escoger datos en <span class="math inline">\(t=-T\)</span> permite empezar arbitrariamente cerca y esperar un tiempo <span class="math inline">\(T\)</span> para llegar al punto alejado. La autonomía permite llamar cero al instante inicial elegido. Esto contradice estabilidad. Cambiar simultáneamente dos signos conserva las ecuaciones y prueba también el caso del giro negativo. Volver a <span class="math inline">\(\boldsymbol\Omega=I^{-1}\mathbf h\)</span> conserva una separación positiva. <span class="math inline">\(\square\)</span></p>
+<p>La trayectoria conserva <span class="math inline">\(H^2\)</span> y <span class="math inline">\(K=a_2H^2/2\)</span>. Se acerca a giros intermedios opuestos en sus extremos temporales y nunca diverge en rapidez. Esta distinción entre magnitudes conservadas y dirección corporal cambiante explica la vuelta inesperada de un objeto lanzado casi sobre su eje intermedio.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><span id="fispm-t1-c22-mp0006"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP06.</strong> Especifica la variable cuya estabilidad demuestras. Refuerza una linealización mediante un control positivo conservado o una trayectoria exacta que pruebe separación.</p>
+<section id="ejercicios-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-5">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0011"></span></p>
+<p><strong>Ejercicio FPM-I-22-E11.</strong> Para <span class="math inline">\(J_1=2J\)</span>, <span class="math inline">\(J_2=3J\)</span>, <span class="math inline">\(J_3=4J\)</span>, escribe <span class="math inline">\(F_1\)</span> y una cota de <span class="math inline">\(h_2^2+h_3^2\)</span>.</p>
+<p><strong>Solución.</strong> Los coeficientes son <span class="math inline">\(a_1=1/(2J)\)</span>, <span class="math inline">\(a_2=1/(3J)\)</span>, <span class="math inline">\(a_3=1/(4J)\)</span>. Resulta <span class="math inline">\(F_1=h_2^2/(6J)+h_3^2/(4J)\)</span>, y el mínimo coeficiente es <span class="math inline">\(1/(6J)\)</span>. Por tanto <span class="math inline">\(h_2^2+h_3^2\leq6JF_1\)</span>. El lado derecho se conserva y controla la desviación transversal exacta.</p>
+<p><span id="fispm-t1-c22-e0012"></span></p>
+<p><strong>Ejercicio FPM-I-22-E12.</strong> Verifica la norma de la solución de P12 y expresa su tasa <span class="math inline">\(\gamma\)</span> mediante la rapidez intermedia <span class="math inline">\(u=H/J_2\)</span>.</p>
+<p><strong>Solución.</strong> Los cuadrados transversales suman <span class="math inline">\(H^2\operatorname{sech}^2(\gamma t)\)</span> y el axial es <span class="math inline">\(H^2\tanh^2(\gamma t)\)</span>. La suma es <span class="math inline">\(H^2\)</span>. Además <span class="math inline">\(\gamma=|u|\sqrt{(J_2-J_1)(J_3-J_2)/(J_1J_3)}\)</span>. Coincide con la tasa creciente de la linealización, aunque la trayectoria exacta se mantenga acotada.</p>
+<p><span id="fispm-t1-c22-s07"></span></p>
+<p><span id="fpm-i-22-s07"></span></p>
+</section>
+</section>
+<section id="dos-tasas-de-precesión-para-un-cuerpo-simétrico-libre" class="level2">
+<h2 class="anchored" data-anchor-id="dos-tasas-de-precesión-para-un-cuerpo-simétrico-libre">§7. Dos tasas de precesión para un cuerpo simétrico libre</h2>
+<p>Con dos momentos iguales, Euler admite una solución explícita. La velocidad angular gira en ejes corporales mientras el eje material describe en el espacio un cono alrededor del momento constante. Las tasas corresponden a observadores y ejes diferentes.</p>
+<p><span id="fispm-t1-c22-d0005"></span></p>
+<p><strong>Definición FPM-I-22-D05 — Cuerpo dinámicamente simétrico.</strong> Usaremos <span class="math inline">\(I=\operatorname{diag}(A,A,C)\)</span> con <span class="math inline">\(A,C&gt;0\)</span>. La simetría del tensor basta para estas ecuaciones, aunque la forma material pueda tener menos simetrías. El eje físico asociado a <span class="math inline">\(\mathbf e_3\)</span> es <span class="math inline">\(\mathbf n=R\mathbf e_3\)</span>.</p>
+<p><span id="fispm-t1-c22-p0013"></span></p>
+<p><strong>Proposición FPM-I-22-P13 — Solución corporal simétrica libre.</strong> Con torque cero, <span class="math inline">\(\Omega_3=s\)</span> es constante. Si <span class="math inline">\(\eta=\Omega_1+i\Omega_2\)</span> y <span class="math inline">\(\gamma_B=(C-A)s/A\)</span>, entonces</p>
+<p><span class="math display">\[
+\eta(t)=\eta(0)e^{i\gamma_Bt}.
+\]</span></p>
+<p><strong>Demostración.</strong> La tercera ecuación tiene término cruzado cero y da <span class="math inline">\(C\dot\Omega_3=0\)</span>. Las otras son <span class="math inline">\(\dot\Omega_1=-\gamma_B\Omega_2\)</span> y <span class="math inline">\(\dot\Omega_2=\gamma_B\Omega_1\)</span>. Reunirlas da <span class="math inline">\(\dot\eta=i\gamma_B\eta\)</span>, y la exponencial cumple esta ecuación y el dato inicial. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c22-p0014"></span></p>
+<p><strong>Proposición FPM-I-22-P14 — Precesión espacial del eje simétrico.</strong> En ese giro,</p>
+<p><span class="math display">\[
+\dot{\mathbf n}=\frac{\mathbf H}{A}\times\mathbf n,
+\qquad \mathbf H\cdot\mathbf n=Cs.
+\]</span></p>
+<p>Si <span class="math inline">\(H&gt;0\)</span>, el eje conserva su ángulo con el momento constante y precesa alrededor de él con tasa <span class="math inline">\(H/A\)</span>, salvo el caso paralelo en que no describe un cono no trivial.</p>
+<p><strong>Demostración.</strong> La relación tensorial es <span class="math inline">\(\mathbf H=A\boldsymbol\omega+(C-A)s\mathbf n\)</span>, con <span class="math inline">\(s=\boldsymbol\omega\cdot\mathbf n\)</span>. Despejar <span class="math inline">\(\boldsymbol\omega\)</span> y usar <span class="math inline">\(\dot{\mathbf n}=\boldsymbol\omega\times\mathbf n\)</span> elimina el término paralelo a <span class="math inline">\(\mathbf n\)</span>. El producto escalar con <span class="math inline">\(\mathbf n\)</span> da <span class="math inline">\(Cs\)</span>. Puesto que <span class="math inline">\(\mathbf H\)</span> es constante, la ecuación obtenida es la de un vector que gira alrededor de <span class="math inline">\(\mathbf H/A\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La tasa corporal puede ser negativa y se anula para <span class="math inline">\(A=C\)</span>. La espacial usa otro eje. En un cuerpo de inercia esférica, la velocidad angular es constante en ambas bases, pero un eje material no paralelo sigue girando alrededor de ella. Cuando los tres momentos coinciden, escoger el tercer eje es una convención adicional.</p>
+<p><span id="fispm-t1-c22-mp0007"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP07.</strong> Acompaña cada tasa con su eje y observador. Separa la variación de componentes corporales del movimiento espacial de un eje material.</p>
+<section id="ejercicios-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-6">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0013"></span></p>
+<p><strong>Ejercicio FPM-I-22-E13.</strong> Para <span class="math inline">\(A=2J\)</span>, <span class="math inline">\(C=3J\)</span> y datos <span class="math inline">\((u,0,s)\)</span>, encuentra componentes corporales y ángulo del eje con <span class="math inline">\(\mathbf H\)</span>.</p>
+<p><strong>Solución.</strong> P13 da <span class="math inline">\(\Omega_1=u\cos(st/2)\)</span>, <span class="math inline">\(\Omega_2=u\sin(st/2)\)</span> y <span class="math inline">\(\Omega_3=s\)</span>. El momento tiene magnitud <span class="math inline">\(H=J\sqrt{4u^2+9s^2}\)</span>. Para <span class="math inline">\(H&gt;0\)</span>, <span class="math inline">\(\cos\theta=3s/\sqrt{4u^2+9s^2}\)</span> y la tasa espacial es <span class="math inline">\(H/(2J)\)</span>, generalmente distinta de <span class="math inline">\(s/2\)</span>.</p>
+<p><span id="fispm-t1-c22-e0014"></span></p>
+<p><strong>Ejercicio FPM-I-22-E14.</strong> Si <span class="math inline">\(s=0\)</span>, <span class="math inline">\(A\ne C\)</span> y <span class="math inline">\(\eta(0)\ne0\)</span>, ¿qué hace la velocidad angular en el cuerpo y el eje material en el espacio?</p>
+<p><strong>Solución.</strong> Como <span class="math inline">\(\gamma_B=0\)</span>, las componentes angulares son constantes en el plano principal doble. El momento es <span class="math inline">\(A\boldsymbol\omega\)</span> y es perpendicular a <span class="math inline">\(\mathbf n\)</span>. El eje material gira alrededor de él con tasa <span class="math inline">\(H/A=|\boldsymbol\Omega|\)</span>. La constancia de un vector corporal no mantiene quietos todos los ejes materiales.</p>
+<p><span id="fispm-t1-c22-s08"></span></p>
+<p><span id="fpm-i-22-s08"></span></p>
+</section>
+</section>
+<section id="mantener-un-giro-cuesta-un-torque-concreto" class="level2">
+<h2 class="anchored" data-anchor-id="mantener-un-giro-cuesta-un-torque-concreto">§8. Mantener un giro cuesta un torque concreto</h2>
+<p>Podemos recorrer Euler en sentido inverso: una velocidad angular prescrita permite calcular el torque que la sostiene. Esta operación distingue la reorientación impuesta por los soportes del giro libre que aparece al retirarlos.</p>
+<p><span id="fispm-t1-c22-p0015"></span></p>
+<p><strong>Proposición FPM-I-22-P15 — Torque del giro uniforme impuesto.</strong> Para <span class="math inline">\(\boldsymbol\Omega=\boldsymbol\Omega_0\)</span> constante, el torque requerido es</p>
+<p><span class="math display">\[
+\mathbf T=\boldsymbol\Omega_0\times I\boldsymbol\Omega_0.
+\]</span></p>
+<p>Su potencia es cero y se anula para velocidad cero o una dirección principal. Además,</p>
+<p><span class="math display">\[
+|\mathbf T|^2=|\boldsymbol\Omega_0|^2|I\boldsymbol\Omega_0|^2-(\boldsymbol\Omega_0\cdot I\boldsymbol\Omega_0)^2.
+\]</span></p>
+<p><strong>Demostración.</strong> P03 con derivada cero da el torque. Su perpendicularidad a <span class="math inline">\(\boldsymbol\Omega_0\)</span> anula la potencia por P05, y P09 caracteriza su anulación. La identidad de norma del producto vectorial da la expresión cuadrática del torque. <span class="math inline">\(\square\)</span></p>
+<p>Una potencia nula puede coexistir con esfuerzos en los cojinetes. Euler fija el torque resultante; distribuir las fuerzas entre soportes requiere conocer su geometría y sus restricciones.</p>
+<p><span id="fispm-t1-c22-p0016"></span></p>
+<p><strong>Proposición FPM-I-22-P16 — Rotor axial con resistencia viscosa.</strong> Sobre un eje principal fijo de momento <span class="math inline">\(J\)</span>, con torque motor constante <span class="math inline">\(T_0\)</span> y resistencia <span class="math inline">\(-\kappa\omega\)</span>, <span class="math inline">\(\kappa&gt;0\)</span>, la rapidez firmada es</p>
+<p><span class="math display">\[
+\omega(t)=\frac{T_0}{\kappa}
++\left(\omega(0)-\frac{T_0}{\kappa}\right)e^{-\kappa t/J}.
+\]</span></p>
+<p>Su energía cumple <span class="math inline">\(d(J\omega^2/2)/dt=T_0\omega-\kappa\omega^2\)</span>.</p>
+<p><strong>Demostración.</strong> El balance axial es <span class="math inline">\(J\dot\omega=T_0-\kappa\omega\)</span>. Restar el equilibrio <span class="math inline">\(T_0/\kappa\)</span> deja una ecuación de tasa <span class="math inline">\(-\kappa/J\)</span>, cuya exponencial satisface el dato. Multiplicar el balance por <span class="math inline">\(\omega\)</span> da la igualdad energética. <span class="math inline">\(\square\)</span></p>
+<p>En régimen estacionario, el motor sigue suministrando energía y la resistencia la disipa con igual potencia. El modelo contiene un eje impuesto y una ley resistente declarada; retirar los soportes exige resolver de nuevo el movimiento vectorial completo.</p>
+<p><span id="fispm-t1-c22-mp0008"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP08.</strong> Calcula el torque de una trayectoria impuesta y separa potencia motora, disipación y reacciones de orientación.</p>
+<section id="ejercicios-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-7">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0015"></span></p>
+<p><strong>Ejercicio FPM-I-22-E15.</strong> Para <span class="math inline">\(I=\operatorname{diag}(2J,3J,4J)\)</span> y <span class="math inline">\(\boldsymbol\Omega=(u,u,u)\)</span> constante, calcula el torque corporal.</p>
+<p><strong>Solución.</strong> P15 da <span class="math inline">\(\mathbf T=Ju^2(1,-2,1)\)</span>. Su producto con la velocidad es <span class="math inline">\(Ju^3(1-2+1)=0\)</span>. Retirar este torque activa las derivadas de Euler aunque el balance energético del giro impuesto fuera estacionario.</p>
+<p><span id="fispm-t1-c22-e0016"></span></p>
+<p><strong>Ejercicio FPM-I-22-E16.</strong> El rotor de P16 parte de reposo con <span class="math inline">\(T_0&gt;0\)</span>. Encuentra cuándo alcanza el <span class="math inline">\(90\%\)</span> de la rapidez estacionaria y la potencia motora límite.</p>
+<p><strong>Solución.</strong> Su rapidez es <span class="math inline">\((T_0/\kappa)(1-e^{-\kappa t/J})\)</span>. Igualar a <span class="math inline">\(0.9T_0/\kappa\)</span> da <span class="math inline">\(t=(J/\kappa)\log10\)</span>. La potencia límite es <span class="math inline">\(T_0^2/\kappa\)</span>, igual a la disipada. La energía cinética deja de crecer mientras continúa la transferencia motor-resistencia.</p>
+<p><span id="fispm-t1-c22-s09"></span></p>
+<p><span id="fpm-i-22-s09"></span></p>
+</section>
+</section>
+<section id="el-trompo-pesado-y-su-punto-de-apoyo" class="level2">
+<h2 class="anchored" data-anchor-id="el-trompo-pesado-y-su-punto-de-apoyo">§9. El trompo pesado y su punto de apoyo</h2>
+<p>Un trompo sujeto por un pivote fijo tiene fuerzas exteriores incluso cuando gira sin rozamiento. La gravedad añade torque y el pivote suministra la fuerza necesaria para mover el centro de masa sobre una esfera. Calcular el torque sobre el pivote elimina la reacción puntual de esa ecuación, pero conserva la gravedad.</p>
+<p><span id="fispm-t1-c22-d0006"></span></p>
+<p><strong>Definición FPM-I-22-D06 — Trompo simétrico pesado de pivote fijo.</strong> El pivote <span class="math inline">\(O\)</span> permanece fijo en un marco inercial y no ejerce un par adicional. El centro de masa está en <span class="math inline">\(G=O+l\mathbf n\)</span>, con <span class="math inline">\(l&gt;0\)</span>, y la gravedad es <span class="math inline">\(-Mg\mathbf e_z\)</span>, con <span class="math inline">\(g&gt;0\)</span>. El tensor sobre <span class="math inline">\(O\)</span> es <span class="math inline">\(\operatorname{diag}(A,A,C)\)</span>, con momentos positivos. Escribimos <span class="math inline">\(k=Mgl\)</span> y elegimos potencial <span class="math inline">\(U=k\mathbf n\cdot\mathbf e_z\)</span>.</p>
+<p>Los momentos de D06 se calculan sobre el pivote. Si una tabla ofrece los momentos centrales, el teorema de ejes paralelos de I21 debe trasladarlos antes de usarlos. La altura del centro es <span class="math inline">\(l\cos\theta\)</span>, de modo que el potencial aumenta al levantar el eje hacia la vertical superior.</p>
+<p><span id="fispm-t1-c22-p0017"></span></p>
+<p><strong>Proposición FPM-I-22-P17 — Ecuaciones vectoriales del trompo.</strong> Sea <span class="math inline">\(s=\boldsymbol\omega\cdot\mathbf n\)</span>. Entonces</p>
+<p><span class="math display">\[
+\mathbf H=A\boldsymbol\omega+(C-A)s\mathbf n,
+\qquad \dot{\mathbf H}=k\mathbf e_z\times\mathbf n,
+\qquad \dot{\mathbf n}=\boldsymbol\omega\times\mathbf n.
+\]</span></p>
+<p><strong>Demostración.</strong> El tensor de simetría axial, expresado en el espacio, es <span class="math inline">\(A\mathbf1+(C-A)\mathbf n\mathbf n^T\)</span>. Aplicarlo a <span class="math inline">\(\boldsymbol\omega\)</span> da el momento. La fuerza gravitatoria produce torque <span class="math inline">\(l\mathbf n\times(-Mg\mathbf e_z)=k\mathbf e_z\times\mathbf n\)</span>. P02 y el transporte del eje material dan las dos derivadas. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c22-p0018"></span></p>
+<p><strong>Proposición FPM-I-22-P18 — Tres constantes del trompo ideal.</strong> En el modelo de D06 se conservan</p>
+<p><span class="math display">\[
+a=\mathbf H\cdot\mathbf e_z,
+\qquad b=\mathbf H\cdot\mathbf n=Cs,
+\qquad E=K+k\mathbf n\cdot\mathbf e_z.
+\]</span></p>
+<p><strong>Demostración.</strong> El torque es perpendicular a <span class="math inline">\(\mathbf e_z\)</span>, de modo que <span class="math inline">\(\dot a=0\)</span>. Para <span class="math inline">\(b\)</span>, la regla del producto da <span class="math inline">\(\dot b=\boldsymbol\tau\cdot\mathbf n+\mathbf H\cdot\dot{\mathbf n}\)</span>. El primero es cero y el segundo también, pues <span class="math inline">\(\mathbf H\)</span> es combinación de <span class="math inline">\(\boldsymbol\omega\)</span> y <span class="math inline">\(\mathbf n\)</span>, mientras <span class="math inline">\(\dot{\mathbf n}=\boldsymbol\omega\times\mathbf n\)</span>. La relación <span class="math inline">\(b=Cs\)</span> sigue de P17. Por P05, <span class="math inline">\(\dot K=k(\mathbf e_z\times\mathbf n)\cdot\boldsymbol\omega=-k\mathbf e_z\cdot\dot{\mathbf n}\)</span>, que se cancela con la derivada del potencial. La reacción del pivote fijo no aporta potencia y el modelo no contiene disipación. <span class="math inline">\(\square\)</span></p>
+<p>El momento vectorial completo ya no es constante, pero sí sus dos proyecciones indicadas. Una se mide sobre un eje espacial fijo y otra sobre un eje corporal móvil. La conservación de esta última depende de la simetría del tensor y de que el torque no tenga componente axial; no se debe extender a cualquier cuerpo inclinado.</p>
+<p><span id="fispm-t1-c22-mp0009"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP09.</strong> Calcula la inercia sobre el pivote y declara qué esfuerzos puede transmitir. Distingue las proyecciones conservadas del vector de momento completo.</p>
+<section id="ejercicios-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-8">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0017"></span></p>
+<p><strong>Ejercicio FPM-I-22-E17.</strong> Una esfera maciza de radio <span class="math inline">\(r\)</span>, masa <span class="math inline">\(M\)</span> y centro a distancia <span class="math inline">\(l\)</span> del pivote se mueve como un cuerpo de D06. Encuentra <span class="math inline">\(A\)</span> y <span class="math inline">\(C\)</span> tomando el eje del centro como tercer eje.</p>
+<p><strong>Solución.</strong> El tensor central es <span class="math inline">\(2Mr^2\mathbf1/5\)</span>. El desplazamiento al pivote es axial, así que I21 añade <span class="math inline">\(Ml^2\)</span> a los dos momentos transversales y cero al axial. Por tanto <span class="math inline">\(A=2Mr^2/5+Ml^2\)</span> y <span class="math inline">\(C=2Mr^2/5\)</span>. El soporte se idealiza sin masa adicional ni torque de par; cualquier soporte con masa debe incorporarse al tensor.</p>
+<p><span id="fispm-t1-c22-e0018"></span></p>
+<p><strong>Ejercicio FPM-I-22-E18.</strong> El eje del trompo es inicialmente horizontal y su velocidad angular es <span class="math inline">\(s\mathbf n\)</span>. Encuentra <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(E\)</span> y el torque inicial.</p>
+<p><strong>Solución.</strong> El momento es <span class="math inline">\(Cs\mathbf n\)</span>, con <span class="math inline">\(a=0\)</span> por horizontalidad y <span class="math inline">\(b=Cs\)</span>. La energía es <span class="math inline">\(Cs^2/2\)</span> porque el potencial inicial es cero. El torque tiene magnitud <span class="math inline">\(k\)</span> y dirección <span class="math inline">\(\mathbf e_z\times\mathbf n\)</span>. Aunque el eje no tenga inicialmente velocidad de inclinación o precesión, ese torque cambia inmediatamente el momento; la preparación no garantiza una precesión uniforme.</p>
+<p><span id="fispm-t1-c22-s10"></span></p>
+<p><span id="fpm-i-22-s10"></span></p>
+</section>
+</section>
+<section id="separar-inclinación-azimut-y-giro-axial" class="level2">
+<h2 class="anchored" data-anchor-id="separar-inclinación-azimut-y-giro-axial">§10. Separar inclinación, azimut y giro axial</h2>
+<p>La dirección del eje necesita dos ángulos. La orientación del material alrededor de ese eje necesita un tercero. La velocidad axial recibe contribuciones del giro propio y del movimiento del eje, tal como anticipó la composición de rotaciones en I21.</p>
+<p><span id="fispm-t1-c22-d0007"></span></p>
+<p><strong>Definición FPM-I-22-D07 — Ángulos del trompo en un dominio no polar.</strong> Para <span class="math inline">\(0&lt;\theta&lt;\pi\)</span>, escribimos</p>
+<p><span class="math display">\[
+\mathbf n=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta).
+\]</span></p>
+<p>La inclinación es <span class="math inline">\(\theta\)</span>, el azimut de precesión <span class="math inline">\(\phi\)</span> y el giro restante del cuerpo <span class="math inline">\(\psi\)</span>, con convención <span class="math inline">\(R=R_z(\phi)R_y(\theta)R_z(\psi)\)</span>. El giro axial físico es <span class="math inline">\(s=\boldsymbol\omega\cdot\mathbf n\)</span>.</p>
+<p><span id="fispm-t1-c22-p0019"></span></p>
+<p><strong>Proposición FPM-I-22-P19 — Velocidades y energía en esos ángulos.</strong> Con la convención anterior,</p>
+<p><span class="math display">\[
+s=\dot\psi+\dot\phi\cos\theta,
+\qquad K=\frac A2(\dot\theta^2+\dot\phi^2\sin^2\theta)+\frac C2s^2,
+\]</span></p>
+<p>y <span class="math inline">\(a=A\dot\phi\sin^2\theta+b\cos\theta\)</span>.</p>
+<p><strong>Demostración.</strong> La composición de I21 da <span class="math inline">\(\boldsymbol\omega=\dot\phi\mathbf e_z+\dot\theta\mathbf e_\phi+\dot\psi\mathbf n\)</span>, donde <span class="math inline">\(\mathbf e_\phi=(-\sin\phi,\cos\phi,0)\)</span>. Su proyección axial es la primera fórmula. Si <span class="math inline">\(\mathbf e_\theta=(\cos\theta\cos\phi,\cos\theta\sin\phi,-\sin\theta)\)</span>, entonces <span class="math inline">\(\boldsymbol\omega=s\mathbf n+\dot\theta\mathbf e_\phi-\dot\phi\sin\theta\mathbf e_\theta\)</span>. Las tres direcciones son ortonormales; el tensor tiene momento <span class="math inline">\(C\)</span> en la axial y <span class="math inline">\(A\)</span> en las otras. La forma cuadrática da la energía. Por P17, <span class="math inline">\(\mathbf H=b\mathbf n+A\dot\theta\mathbf e_\phi-A\dot\phi\sin\theta\mathbf e_\theta\)</span>. Multiplicar por <span class="math inline">\(\mathbf e_z\)</span> usa <span class="math inline">\(\mathbf e_\theta\cdot\mathbf e_z=-\sin\theta\)</span> y da la expresión de <span class="math inline">\(a\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c22-p0020"></span></p>
+<p><strong>Proposición FPM-I-22-P20 — Reducción escalar de la inclinación.</strong> Para los valores conservados <span class="math inline">\(a,b\)</span>, sea <span class="math inline">\(E'=E-b^2/(2C)\)</span>. En <span class="math inline">\(0&lt;\theta&lt;\pi\)</span>,</p>
+<p><span class="math display">\[
+\dot\phi=\frac{a-b\cos\theta}{A\sin^2\theta},
+\qquad \frac A2\dot\theta^2+V_{\mathrm{ef}}(\theta)=E',
+\]</span></p>
+<p>con</p>
+<p><span class="math display">\[
+V_{\mathrm{ef}}(\theta)=
+\frac{(a-b\cos\theta)^2}{2A\sin^2\theta}+k\cos\theta.
+\]</span></p>
+<p><strong>Demostración.</strong> Despejar <span class="math inline">\(\dot\phi\)</span> en P19 exige <span class="math inline">\(\sin\theta\ne0\)</span>, que es la restricción indicada. Sustituirlo en <span class="math inline">\(K+U=E\)</span> y usar <span class="math inline">\(s=b/C\)</span> produce el potencial y la constante reducida. <span class="math inline">\(\square\)</span></p>
+<p>Cuando <span class="math inline">\(E'&gt;V_{\mathrm{ef}}\)</span> en un tramo de inclinación monótona, el tiempo se obtiene integrando <span class="math inline">\(dt=\pm\sqrt{A/2}\,d\theta/\sqrt{E'-V_{\mathrm{ef}}(\theta)}\)</span>. Al llegar a un retorno hay que escoger la continuación consistente con la ecuación dinámica. Una energía igual al potencial no prueba por sí sola que el eje vaya a permanecer inmóvil: el gradiente decide si ese punto es un equilibrio.</p>
+<p>En los polos, los ángulos pierden su significado separado. Si <span class="math inline">\(a\ne b\)</span>, el primer término diverge al acercarse a <span class="math inline">\(\theta=0\)</span> y una trayectoria de energía finita no llega allí. Si <span class="math inline">\(a=b\)</span>, la singularidad puede cancelarse; se estudiará por un límite o con variables vectoriales, conservando las condiciones iniciales.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><span id="fispm-t1-c22-mp0010"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP10.</strong> Distingue giro axial físico y derivada del tercer ángulo. Controla el dominio de los ángulos y las cancelaciones antes de usar una cuadratura.</p>
+<section id="ejercicios-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-9">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0019"></span></p>
+<p><strong>Ejercicio FPM-I-22-E19.</strong> En una precesión de inclinación <span class="math inline">\(\theta=\pi/3\)</span>, el azimut tiene tasa <span class="math inline">\(p\)</span> y el giro axial es <span class="math inline">\(s\)</span>. Encuentra <span class="math inline">\(\dot\psi\)</span> y la energía cinética.</p>
+<p><strong>Solución.</strong> P19 da <span class="math inline">\(\dot\psi=s-p/2\)</span>. La energía es <span class="math inline">\(3Ap^2/8+Cs^2/2\)</span>, porque <span class="math inline">\(\dot\theta=0\)</span> y <span class="math inline">\(\sin^2(\pi/3)=3/4\)</span>. Identificar <span class="math inline">\(s\)</span> con <span class="math inline">\(\dot\psi\)</span> omitiría la contribución de la precesión y cambiaría la energía axial.</p>
+<p><span id="fispm-t1-c22-e0020"></span></p>
+<p><strong>Ejercicio FPM-I-22-E20.</strong> Para <span class="math inline">\(b\ne0\)</span>, determina las condiciones que cancelan la barrera angular en el polo superior y en el inferior. ¿Puede una misma elección de <span class="math inline">\(a\)</span> cancelar ambas?</p>
+<p><strong>Solución.</strong> Arriba se requiere <span class="math inline">\(a=b\)</span>, pues el numerador tiende a <span class="math inline">\((a-b)^2\)</span>. Abajo se requiere <span class="math inline">\(a=-b\)</span>. Con <span class="math inline">\(b\ne0\)</span>, no pueden cumplirse simultáneamente. La gravedad añade un término acotado y no cancela una barrera divergente. Si <span class="math inline">\(b=0\)</span> y <span class="math inline">\(a=0\)</span>, ambos cocientes admiten una extensión nula y los polos requieren otra parametrización.</p>
+<p><span id="fispm-t1-c22-s11"></span></p>
+<p><span id="fpm-i-22-s11"></span></p>
+</section>
+</section>
+<section id="cuándo-existe-una-precesión-regular" class="level2">
+<h2 class="anchored" data-anchor-id="cuándo-existe-una-precesión-regular">§11. Cuándo existe una precesión regular</h2>
+<p>Una inclinación constante puede sostenerse si el cambio del momento causado por la precesión coincide con el torque gravitatorio. El cálculo vectorial permite obtener la condición sin adelantar el formalismo lagrangiano.</p>
+<p><span id="fispm-t1-c22-p0021"></span></p>
+<p><strong>Proposición FPM-I-22-P21 — Condición exacta de precesión uniforme.</strong> Para <span class="math inline">\(0&lt;\theta&lt;\pi\)</span>, giro axial constante <span class="math inline">\(s=b/C\)</span> y tasa azimutal constante <span class="math inline">\(p\)</span>, una precesión regular del trompo satisface, y puede construirse cuando satisface,</p>
+<p><span class="math display">\[
+A\cos\theta\,p^2-bp+k=0.
+\]</span></p>
+<p><strong>Demostración.</strong> Con <span class="math inline">\(\dot\theta=0\)</span>, la velocidad es <span class="math inline">\(\boldsymbol\omega=p\mathbf e_z+(s-p\cos\theta)\mathbf n\)</span>. Por P17, <span class="math inline">\(\mathbf H=Ap\mathbf e_z+(b-Ap\cos\theta)\mathbf n\)</span>. Su derivada es <span class="math inline">\((b-Ap\cos\theta)p\mathbf e_z\times\mathbf n\)</span>. Igualarla al torque <span class="math inline">\(k\mathbf e_z\times\mathbf n\)</span>, no nulo en el dominio indicado, da la condición. Recíprocamente, eligiendo <span class="math inline">\(\phi=pt+\phi_0\)</span>, <span class="math inline">\(\theta\)</span> constante y <span class="math inline">\(\dot\psi=s-p\cos\theta\)</span>, se reconstruye una orientación con esa velocidad. La misma identidad verifica el balance vectorial completo. <span class="math inline">\(\square\)</span></p>
+<p>La constante vertical compatible con esta solución es <span class="math inline">\(a=Ap\sin^2\theta+b\cos\theta\)</span>. Por eso una preparación con valores arbitrarios de <span class="math inline">\(a,b\)</span> y energía no garantiza la precesión elegida. Dos raíces de la ecuación a inclinación y giro axial fijados tienen, en general, distintos valores de <span class="math inline">\(a\)</span> y de energía.</p>
+<p><span id="fispm-t1-c22-p0022"></span></p>
+<p><strong>Proposición FPM-I-22-P22 — Ramas lenta y rápida y error de la aproximación.</strong> Supongamos <span class="math inline">\(b&gt;0\)</span>, <span class="math inline">\(\cos\theta=c&gt;0\)</span> y <span class="math inline">\(b^2\geq4Akc\)</span>. Las tasas posibles son</p>
+<p><span class="math display">\[
+p_\pm=\frac{b\pm\sqrt{b^2-4Akc}}{2Ac},
+\qquad p_- =\frac{2k}{b+\sqrt{b^2-4Akc}}.
+\]</span></p>
+<p>Si <span class="math inline">\(\varepsilon=4Akc/b^2\leq1\)</span>, el error relativo de aproximar la rama lenta por <span class="math inline">\(k/b\)</span>, medido respecto de <span class="math inline">\(k/b\)</span>, es</p>
+<p><span class="math display">\[
+0\leq\frac{p_-}{k/b}-1
+=\frac{1-\sqrt{1-\varepsilon}}{1+\sqrt{1-\varepsilon}}
+=\frac{\varepsilon}{(1+\sqrt{1-\varepsilon})^2}
+\leq\varepsilon.
+\]</span></p>
+<p><strong>Demostración.</strong> Resolver la cuadrática de P21 da las raíces. Multiplicar numerador y denominador de la raíz con signo menos por la expresión conjugada da su forma racionalizada. Dividir por <span class="math inline">\(k/b\)</span> y escribir la raíz como <span class="math inline">\(b\sqrt{1-\varepsilon}\)</span> produce las igualdades. El denominador final es al menos uno, que prueba la cota. <span class="math inline">\(\square\)</span></p>
+<p>Para <span class="math inline">\(\varepsilon\ll1\)</span>, la rama lenta tiene tasa cercana a <span class="math inline">\(k/b=Mgl/(Cs)\)</span>. La rápida se aproxima a <span class="math inline">\(b/(Ac)\)</span>; pertenece a otra preparación y no se obtiene suponiendo que el momento está casi alineado con el eje. En el caso horizontal, <span class="math inline">\(c=0\)</span> y la ecuación se vuelve lineal: <span class="math inline">\(p=k/b\)</span> para <span class="math inline">\(b\ne0\)</span>. Con <span class="math inline">\(c&lt;0\)</span>, las raíces y sus signos requieren leer la cuadrática sin aplicar las hipótesis de P22.</p>
+<p><span id="fispm-t1-c22-mp0011"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP11.</strong> Comprueba existencia de la precesión y compatibilidad con las constantes preparadas. Identifica la rama y el parámetro pequeño antes de usar una tasa aproximada.</p>
+<section id="ejercicios-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-10">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0021"></span></p>
+<p><strong>Ejercicio FPM-I-22-E21.</strong> Usa unidades coherentes en las que <span class="math inline">\(A=1\)</span>, <span class="math inline">\(k=1\)</span>, <span class="math inline">\(b=3\)</span> y <span class="math inline">\(\cos\theta=1/2\)</span>. Calcula ambas tasas y el error de la aproximación lenta.</p>
+<p><strong>Solución.</strong> La ecuación es <span class="math inline">\(p^2/2-3p+1=0\)</span>, por lo que <span class="math inline">\(p_\pm=3\pm\sqrt7\)</span>. La lenta vale aproximadamente <span class="math inline">\(0.35425\)</span>, frente a <span class="math inline">\(k/b=1/3\)</span>. El exceso relativo es <span class="math inline">\(3(3-\sqrt7)-1\approx0.06275\)</span>, menor que <span class="math inline">\(\varepsilon=2/9\)</span>. Las dos tasas corresponden a diferentes valores de <span class="math inline">\(a\)</span> según P19.</p>
+<p><span id="fispm-t1-c22-e0022"></span></p>
+<p><strong>Ejercicio FPM-I-22-E22.</strong> Para <span class="math inline">\(b&gt;0\)</span>, <span class="math inline">\(k&gt;0\)</span> y <span class="math inline">\(\theta=\pi/2\)</span>, encuentra la tasa regular y los valores de <span class="math inline">\(a\)</span> y <span class="math inline">\(E\)</span>.</p>
+<p><strong>Solución.</strong> P21 da <span class="math inline">\(p=k/b\)</span>. Como <span class="math inline">\(\cos\theta=0\)</span> y <span class="math inline">\(\sin\theta=1\)</span>, <span class="math inline">\(a=Ap=Ak/b\)</span>. La energía es <span class="math inline">\(E=Ap^2/2+b^2/(2C)\)</span>, pues el potencial es cero. La preparación horizontal de E18 tenía <span class="math inline">\(a=0\)</span>, así que no es este movimiento regular salvo que el torque gravitatorio fuera cero, excluido aquí.</p>
+<p><span id="fispm-t1-c22-s12"></span></p>
+<p><span id="fpm-i-22-s12"></span></p>
+</section>
+</section>
+<section id="la-nutación-y-los-retornos-de-la-inclinación" class="level2">
+<h2 class="anchored" data-anchor-id="la-nutación-y-los-retornos-de-la-inclinación">§12. La nutación y los retornos de la inclinación</h2>
+<p>Una preparación que no cumple la precesión regular puede producir cambios de inclinación. Las constantes reducen su estudio a una coordenada, pero el potencial efectivo debe acompañarse de la ecuación de segundo orden para decidir qué ocurre en los retornos.</p>
+<p><span id="fispm-t1-c22-p0023"></span></p>
+<p><strong>Proposición FPM-I-22-P23 — Ecuación de nutación y oscilaciones locales.</strong> En el dominio angular de D07, poniendo <span class="math inline">\(p=\dot\phi\)</span>,</p>
+<p><span class="math display">\[
+A\ddot\theta=\sin\theta(Ap^2\cos\theta-bp+k)
+=-V_{\mathrm{ef}}'(\theta),
+\]</span></p>
+<p>con <span class="math inline">\(a,b\)</span> fijos al derivar el potencial. Si <span class="math inline">\(\theta_*\)</span> es un punto crítico interior y <span class="math inline">\(V_{\mathrm{ef}}''(\theta_*)&gt;0\)</span>, la perturbación lineal de inclinación tiene frecuencia</p>
+<p><span class="math display">\[
+\nu=\sqrt{V_{\mathrm{ef}}''(\theta_*)/A}.
+\]</span></p>
+<p><strong>Demostración.</strong> P19 escribe <span class="math inline">\(\mathbf H=b\mathbf n+A\dot\theta\mathbf e_\phi-Ap\sin\theta\mathbf e_\theta\)</span>. Al derivar, usamos <span class="math inline">\(\dot{\mathbf n}=\dot\theta\mathbf e_\theta+p\sin\theta\mathbf e_\phi\)</span> y <span class="math inline">\(\dot{\mathbf e}_\theta=-\dot\theta\mathbf n+p\cos\theta\mathbf e_\phi\)</span>. La derivada de <span class="math inline">\(\mathbf e_\phi\)</span> no tiene componente sobre sí misma. La componente de <span class="math inline">\(\dot{\mathbf H}\)</span> sobre <span class="math inline">\(\mathbf e_\phi\)</span> es así <span class="math inline">\(bp\sin\theta+A\ddot\theta-Ap^2\sin\theta\cos\theta\)</span>. El torque sobre esa dirección es <span class="math inline">\(k\sin\theta\)</span>, lo que da la primera igualdad. Para la segunda, derivar el cociente de P20 y sustituir <span class="math inline">\(p=(a-b\cos\theta)/(A\sin^2\theta)\)</span> produce <span class="math inline">\(-V_{\mathrm{ef}}'=\sin\theta(Ap^2\cos\theta-bp+k)\)</span>. Por último, escribir <span class="math inline">\(\theta=\theta_*+\eta\)</span> y expandir la derivada del potencial al primer orden da <span class="math inline">\(A\ddot\eta=-V_{\mathrm{ef}}''(\theta_*)\eta\)</span>, cuya solución es una combinación de seno y coseno a la frecuencia indicada. <span class="math inline">\(\square\)</span></p>
+<p>Una energía ligeramente superior a un mínimo estricto admite retornos próximos y controla la inclinación mediante la barrera de potencial. Esto es estabilidad del movimiento reducido de inclinación con sus constantes, no atracción ni estabilidad automática de todas las fases angulares. Un retorno simple tiene <span class="math inline">\(V_{\mathrm{ef}}'\ne0\)</span> y aceleración no nula: el movimiento invierte su sentido. Un punto crítico con energía exactamente igual puede corresponder a precesión regular, o a un límite que requiera analizar cómo se alcanza.</p>
+<p>Si dos retornos interiores simples <span class="math inline">\(\theta_-&lt;\theta_+\)</span> delimitan un intervalo accesible sin singularidades, el período de nutación es</p>
+<p><span class="math display">\[
+T_\theta=\sqrt{2A}\int_{\theta_-}^{\theta_+}
+\frac{d\theta}{\sqrt{E'-V_{\mathrm{ef}}(\theta)}}.
+\]</span></p>
+<p>Es el doble del tiempo de una travesía. La singularidad inversa de raíz en un retorno simple es integrable; una raíz doble puede introducir una demora ilimitada. Esa distinción es la misma que apareció en las cuadraturas orbitales, aunque aquí la coordenada reducida sea una inclinación.</p>
+<p><span id="fispm-t1-c22-mp0012"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP12.</strong> Usa la ecuación de segundo orden en los retornos. Distingue la solución reducida y sus fases, y controla la multiplicidad de las raíces al calcular períodos.</p>
+<section id="ejercicios-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-11">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0023"></span></p>
+<p><strong>Ejercicio FPM-I-22-E23.</strong> En una precesión regular horizontal, <span class="math inline">\(a=Ak/b\)</span>, con <span class="math inline">\(b\ne0\)</span>. Calcula <span class="math inline">\(V_{\mathrm{ef}}''(\pi/2)\)</span> y la frecuencia local de nutación.</p>
+<p><strong>Solución.</strong> Para <span class="math inline">\(N=a-b\cos\theta\)</span>, la derivada es <span class="math inline">\(V'=Nb/(A\sin\theta)-N^2\cos\theta/(A\sin^3\theta)-k\sin\theta\)</span>. Su derivada en <span class="math inline">\(\pi/2\)</span> vale <span class="math inline">\((a^2+b^2)/A\)</span>: el primer término aporta <span class="math inline">\(b^2/A\)</span>, el segundo <span class="math inline">\(a^2/A\)</span> y el tercero cero. Así <span class="math inline">\(\nu^2=(a^2+b^2)/A^2=b^2/A^2+(k/b)^2\)</span>. Es positiva. La conclusión se refiere a la inclinación con los valores <span class="math inline">\(a,b\)</span> de esta precesión.</p>
+<p><span id="fispm-t1-c22-e0024"></span></p>
+<p><strong>Ejercicio FPM-I-22-E24.</strong> Cerca de un mínimo, sustituye <span class="math inline">\(V_{\mathrm{ef}}\)</span> por <span class="math inline">\(V_*+\mu(\theta-\theta_*)^2/2\)</span>, con <span class="math inline">\(\mu&gt;0\)</span>. Calcula el período mediante la cuadratura anterior.</p>
+<p><strong>Solución.</strong> Si <span class="math inline">\(E'-V_*=\Delta&gt;0\)</span>, los retornos son <span class="math inline">\(\theta_*\pm d\)</span>, con <span class="math inline">\(d=\sqrt{2\Delta/\mu}\)</span>. Sustituir <span class="math inline">\(\theta-\theta_*=d\sin u\)</span> reduce la integral entre retornos a <span class="math inline">\(\pi\sqrt{2/\mu}\)</span>. Multiplicar por <span class="math inline">\(\sqrt{2A}\)</span> da <span class="math inline">\(T=2\pi\sqrt{A/\mu}=2\pi/\nu\)</span>. La independencia de amplitud es exacta para el potencial cuadrático sustituto y una aproximación local para el potencial original.</p>
+<p><span id="fispm-t1-c22-s13"></span></p>
+<p><span id="fpm-i-22-s13"></span></p>
+</section>
+</section>
+<section id="el-trompo-vertical-y-el-umbral-de-giro" class="level2">
+<h2 class="anchored" data-anchor-id="el-trompo-vertical-y-el-umbral-de-giro">§13. El trompo vertical y el umbral de giro</h2>
+<p>Con el eje hacia arriba, la gravedad tiene torque nulo en la configuración exacta. La cuestión de estabilidad aparece al inclinarlo un poco. El giro axial introduce términos de velocidad capaces de modificar la respuesta a esa perturbación.</p>
+<p><span id="fispm-t1-c22-p0024"></span></p>
+<p><strong>Proposición FPM-I-22-P24 — Umbral lineal de inclinación del trompo vertical superior.</strong> En D06, considérese <span class="math inline">\(\mathbf n=\mathbf e_z\)</span> y giro axial constante <span class="math inline">\(s\)</span>, con <span class="math inline">\(b=Cs\)</span>. La perturbación transversal compleja <span class="math inline">\(z=\xi_x+i\xi_y\)</span> satisface al primer orden</p>
+<p><span class="math display">\[
+A\ddot z-ib\dot z-kz=0.
+\]</span></p>
+<p>Si <span class="math inline">\(b^2&gt;4Ak\)</span>, todas sus soluciones permanecen acotadas. Si <span class="math inline">\(b^2&lt;4Ak\)</span>, existe una solución creciente exponencial. En <span class="math inline">\(b^2=4Ak\)</span>, la ecuación lineal admite crecimiento proporcional al tiempo y no proporciona una clasificación no lineal por sí sola.</p>
+<p><strong>Demostración.</strong> La identidad exacta <span class="math inline">\(\mathbf H=b\mathbf n+A\mathbf n\times\dot{\mathbf n}\)</span> sigue de <span class="math inline">\(\boldsymbol\omega=\mathbf n\times\dot{\mathbf n}+s\mathbf n\)</span>. Escribamos <span class="math inline">\(\mathbf n=\mathbf e_z+\boldsymbol\xi\)</span> al primer orden, con <span class="math inline">\(\boldsymbol\xi\perp\mathbf e_z\)</span>. La derivada del momento es <span class="math inline">\(b\dot{\boldsymbol\xi}+A\mathbf e_z\times\ddot{\boldsymbol\xi}\)</span> y el torque <span class="math inline">\(k\mathbf e_z\times\boldsymbol\xi\)</span>. Multiplicar transversalmente por <span class="math inline">\(-\mathbf e_z\times\)</span> da <span class="math inline">\(A\ddot{\boldsymbol\xi}-b\mathbf e_z\times\dot{\boldsymbol\xi}-k\boldsymbol\xi=0\)</span>. El producto con <span class="math inline">\(\mathbf e_z\)</span> equivale a multiplicar <span class="math inline">\(z\)</span> por <span class="math inline">\(i\)</span>, dando la ecuación compleja.</p>
+<p>Para <span class="math inline">\(z=e^{i\nu t}\)</span>, la ecuación exige <span class="math inline">\(A\nu^2-b\nu+k=0\)</span>. Con discriminante positivo, las dos frecuencias son reales distintas, y la solución general combina dos exponenciales de módulo uno. Con discriminante negativo, una frecuencia tiene parte imaginaria que produce crecimiento real. Con discriminante cero, la raíz es doble y la solución es <span class="math inline">\((c_1+c_2t)e^{ibt/(2A)}\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>El umbral involucra el momento transversal sobre el pivote y el momento axial <span class="math inline">\(b\)</span>, no solo la masa o la rapidez de un punto del borde. La acotación lineal superior no describe amortiguamiento: el trompo ideal no converge hacia la vertical.</p>
+<p>El potencial reducido ayuda a reconocer el cambio. En el sector <span class="math inline">\(a=b\)</span>, el cociente de P20 se extiende cerca del polo como</p>
+<p><span class="math display">\[
+V_{\mathrm{ef}}(\theta)=\frac{b^2}{2A}\tan^2(\theta/2)+k\cos\theta
+=k+\left(\frac{b^2}{8A}-\frac k2\right)\theta^2+O(\theta^4).
+\]</span></p>
+<p>Su término cuadrático cambia en el mismo umbral. Exactamente allí, los órdenes superiores y las condiciones del sector necesitan examen propio; una raíz doble de la linealización no debe convertirse en una afirmación general de estabilidad o inestabilidad del sistema completo.</p>
+<p><span id="fispm-t1-c22-mp0013"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP13.</strong> Separa el umbral del modelo lineal de una conclusión no lineal, especialmente en la igualdad crítica. Conserva el punto sobre el que se calculan las inercias.</p>
+<section id="ejercicios-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-12">Ejercicios</h3>
+<p><span id="fispm-t1-c22-e0025"></span></p>
+<p><strong>Ejercicio FPM-I-22-E25.</strong> Encuentra la condición sobre <span class="math inline">\(|s|\)</span> para el régimen lineal acotado del trompo vertical y describe qué cambia al duplicar <span class="math inline">\(|s|\)</span>.</p>
+<p><strong>Solución.</strong> Como <span class="math inline">\(b=Cs\)</span>, se requiere <span class="math inline">\(|s|&gt;2\sqrt{Ak}/C\)</span>. Duplicar la rapidez multiplica <span class="math inline">\(b^2\)</span> por cuatro, mientras <span class="math inline">\(4Ak\)</span> permanece igual si el cuerpo y la gravedad no cambian. Puede llevar una preparación del régimen exponencial al acotado, pero no introduce disipación ni hace que cualquier orientación inicial llegue a ser vertical.</p>
+<p><span id="fispm-t1-c22-e0026"></span></p>
+<p><strong>Ejercicio FPM-I-22-E26.</strong> En unidades coherentes, toma <span class="math inline">\(A=1\)</span>, <span class="math inline">\(k=1\)</span>. Calcula las frecuencias lineales para <span class="math inline">\(b=3\)</span> y describe el caso <span class="math inline">\(b=2\)</span>.</p>
+<p><strong>Solución.</strong> Para <span class="math inline">\(b=3\)</span>, las frecuencias son <span class="math inline">\((3\pm\sqrt5)/2\)</span>, reales distintas. La perturbación es una combinación acotada de dos giros transversales. Para <span class="math inline">\(b=2\)</span>, la frecuencia doble es uno y <span class="math inline">\(z=(c_1+c_2t)e^{it}\)</span>. Los datos que producen <span class="math inline">\(c_2\ne0\)</span> generan crecimiento lineal en esa aproximación; los términos no lineales deciden su evolución cuando deja de ser pequeña.</p>
+<p><span id="fispm-t1-c22-s14"></span></p>
+<p><span id="fpm-i-22-s14"></span></p>
+</section>
+</section>
+<section id="disipación-y-alcance-de-un-balance-decreciente" class="level2">
+<h2 class="anchored" data-anchor-id="disipación-y-alcance-de-un-balance-decreciente">§14. Disipación y alcance de un balance decreciente</h2>
+<p>La conservación ideal ha explicado los giros libres y el trompo sostenido. Un torque resistente rompe parte de esas constantes. La energía puede seguir proporcionando control, aunque una función decreciente no determine por sí sola el estado final.</p>
+<p><span id="fispm-t1-c22-d0008"></span></p>
+<p><strong>Definición FPM-I-22-D08 — Resistencia angular viscosa.</strong> En un cuerpo con pivote fijo añadimos un torque corporal <span class="math inline">\(\mathbf T_d=-D\boldsymbol\Omega\)</span>, donde <span class="math inline">\(D\)</span> es una matriz simétrica semidefinida positiva. Puede representar resistencia anisótropa. El pivote continúa sin aportar un par ni potencia adicional.</p>
+<p><span id="fispm-t1-c22-p0025"></span></p>
+<p><strong>Proposición FPM-I-22-P25 — Energía disipada del trompo.</strong> Para D06 y D08,</p>
+<p><span class="math display">\[
+\dot E=-\boldsymbol\Omega^TD\boldsymbol\Omega\leq0.
+\]</span></p>
+<p>Si <span class="math inline">\(D\geq d\mathbf1\)</span> con <span class="math inline">\(d&gt;0\)</span>, la solución se prolonga para todos los tiempos positivos y</p>
+<p><span class="math display">\[
+\int_0^\infty|\boldsymbol\Omega(t)|^2dt\leq\frac{E(0)+k}{d}.
+\]</span></p>
+<p><strong>Demostración.</strong> P05 da la potencia de los torques gravitatorio y resistente. La primera se cancela con la derivada del potencial como en P18, dejando la forma negativa indicada. El potencial está entre <span class="math inline">\(-k\)</span> y <span class="math inline">\(k\)</span>, de modo que <span class="math inline">\(K\leq E(0)+k\)</span> y la inercia positiva acota <span class="math inline">\(\boldsymbol\Omega\)</span>. La orientación permanece en <span class="math inline">\(SO(3)\)</span> y los torques gravitatorio y viscoso son suaves y acotados sobre el conjunto alcanzado. El argumento de continuación de P08 permite prolongar el movimiento. Integrar hasta <span class="math inline">\(T\)</span> da <span class="math inline">\(d\int_0^T|\boldsymbol\Omega|^2dt\leq E(0)-E(T)\leq E(0)+k\)</span>. El límite monótono al crecer <span class="math inline">\(T\)</span> da la desigualdad impropia. <span class="math inline">\(\square\)</span></p>
+<p>El cálculo no demuestra, por sí solo, convergencia de toda la orientación ni determina qué equilibrio se alcanza. Esa conclusión necesita estudiar el conjunto de movimiento y las condiciones bajo las que se anula la disipación. Tampoco las dos proyecciones <span class="math inline">\(a,b\)</span> de P18 siguen conservadas en general: el nuevo torque puede tener componente vertical o axial. En una matriz semidefinida, algunas direcciones pueden permanecer sin resistencia.</p>
+<p><span id="fispm-t1-c22-mp0014"></span></p>
+<p><strong>Principio metodológico FPM-I-22-MP14.</strong> Revisa qué constantes sobreviven al añadir un torque. Una cota de energía decreciente exige un argumento adicional antes de convertirse en una conclusión de convergencia.</p>
+<section id="problemas-de-integración" class="level3">
+<h3 class="anchored" data-anchor-id="problemas-de-integración">Problemas de integración</h3>
+<p><span id="fispm-t1-c22-e0027"></span></p>
+<p><strong>Ejercicio FPM-I-22-E27.</strong> Un cuerpo tiene tensor principal <span class="math inline">\(\operatorname{diag}(2J,3J,4J)\)</span> y velocidad corporal <span class="math inline">\((u,u,0)\)</span>, con <span class="math inline">\(u\ne0\)</span>. Un torque instantáneo es <span class="math inline">\((3T,-2T,0)\)</span>. Comprueba que puede ser perpendicular al momento y tener potencia no nula.</p>
+<p><strong>Solución.</strong> El momento corporal es <span class="math inline">\((2Ju,3Ju,0)\)</span>. Su producto con el torque es <span class="math inline">\(6JTu-6JTu=0\)</span>, por lo que la norma del momento no cambia instantáneamente. El producto del torque con la velocidad es <span class="math inline">\(Tu\)</span>, distinto de cero si <span class="math inline">\(T\ne0\)</span>. La energía sí cambia. Una perpendicularidad al momento no equivale a perpendicularidad a la velocidad angular cuando ambos vectores no son colineales.</p>
+<p><span id="fispm-t1-c22-e0028"></span></p>
+<p><strong>Ejercicio FPM-I-22-E28.</strong> Un trompo ideal parte con eje horizontal <span class="math inline">\(\mathbf n=\mathbf e_x\)</span> y velocidad angular puramente axial. Calcula la aceleración inicial del eje y explica por qué ese giro inicial no garantiza una precesión regular inmediata.</p>
+<p><strong>Solución.</strong> Inicialmente <span class="math inline">\(\dot{\mathbf n}=\boldsymbol\omega\times\mathbf n=0\)</span>. Derivar <span class="math inline">\(\mathbf H=b\mathbf n+A\mathbf n\times\dot{\mathbf n}\)</span> deja entonces <span class="math inline">\(\dot{\mathbf H}=A\mathbf e_x\times\ddot{\mathbf n}\)</span>. El torque es <span class="math inline">\(k\mathbf e_y\)</span>. Además <span class="math inline">\(\ddot{\mathbf n}\cdot\mathbf n=-|\dot{\mathbf n}|^2=0\)</span>. Resolver da <span class="math inline">\(\ddot{\mathbf n}=-(k/A)\mathbf e_z\)</span>, hacia abajo. La rapidez axial no aparece en esa aceleración inicial. La precesión horizontal regular requiere una velocidad inicial de eje no nula y el valor <span class="math inline">\(a=Ak/b\)</span>, mientras esta preparación tiene <span class="math inline">\(a=0\)</span>.</p>
+<p><span id="fispm-t1-c22-e0029"></span></p>
+<p><strong>Ejercicio FPM-I-22-E29.</strong> En la trayectoria exacta de P12, empieza en un instante negativo con fracción transversal <span class="math inline">\(\sqrt{h_1^2+h_3^2}/H=\varepsilon\)</span>, donde <span class="math inline">\(0&lt;\varepsilon&lt;1\)</span>. Calcula el tiempo hasta <span class="math inline">\(h_2=0\)</span> y su comportamiento al hacer pequeña la preparación transversal.</p>
+<p><strong>Solución.</strong> La fracción es <span class="math inline">\(\operatorname{sech}(\gamma t)\)</span>. Si el inicio es <span class="math inline">\(t=-T\)</span>, entonces <span class="math inline">\(\cosh(\gamma T)=1/\varepsilon\)</span>. Por tanto <span class="math inline">\(T=\gamma^{-1}\log[(1+\sqrt{1-\varepsilon^2})/\varepsilon]\)</span>. Para <span class="math inline">\(\varepsilon\to0\)</span>, es asintótico a <span class="math inline">\(\gamma^{-1}\log(2/\varepsilon)\)</span>. Una preparación mucho más próxima retrasa la gran reorientación con una escala logarítmica, pero no elimina la inestabilidad de D04. La norma de momento sigue siendo <span class="math inline">\(H\)</span> durante toda la trayectoria.</p>
+<p><span id="fispm-t1-c22-e0030"></span></p>
+<p><strong>Ejercicio FPM-I-22-E30.</strong> Revisa el argumento defectuoso: «Sin torque, la velocidad angular tiene componentes constantes porque el momento angular es constante». Localiza el paso ilegítimo y da un contraejemplo exacto.</p>
+<p><strong>Solución.</strong> La constancia del momento se refiere al vector inercial. Su relación con la velocidad usa un tensor cuya matriz espacial puede cambiar al girar el cuerpo. En ejes corporales el tensor es constante, pero la derivada del momento incluye transporte. Para <span class="math inline">\(I=\operatorname{diag}(2J,2J,3J)\)</span>, <span class="math inline">\(s\ne0\)</span> y datos <span class="math inline">\((u,0,s)\)</span> con <span class="math inline">\(u\ne0\)</span>, P13 da <span class="math inline">\((u\cos(st/2),u\sin(st/2),s)\)</span>: las primeras dos componentes cambian aunque el torque sea cero. La reparación es conservar <span class="math inline">\(I\dot{\boldsymbol\Omega}+\boldsymbol\Omega\times I\boldsymbol\Omega=0\)</span> y distinguir el vector inercial de sus componentes corporales. La velocidad constante es un caso especial caracterizado por P09.</p>
+<p>El balance de torque ha hecho visible cómo una base móvil y una distribución fija producen una dinámica no lineal. Las pequeñas perturbaciones han llevado también a ecuaciones oscilatorias y a escalas de amortiguamiento. En I23 estudiaremos esas oscilaciones como tema propio, comenzando por una fuerza restauradora y siguiendo la relación entre fase, energía y respuesta a una excitación.</p>
+</section>
+<section id="notas-y-referencias" class="level3">
+<h3 class="anchored" data-anchor-id="notas-y-referencias">Notas y referencias</h3>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-21-cuerpo-rigido-cinematica-rotaciones-y-tensor-de-inercia.html">Capítulo 21</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-23-oscilaciones-lineales.html">Capítulo 23</a></p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>MIT OpenCourseWare, <em>8.09 Classical Mechanics III</em>, capítulo 2, <em>Rigid Body Dynamics</em>, §2.4, ecuaciones 2.69–2.73: https://ocw.mit.edu/courses/8-09-classical-mechanics-iii-fall-2014/6fe39e8d5ce4ce746ca256dfea665eda_MIT8_09F14_Chapter_2.pdf . Contraste del transporte de momento y componentes de Euler. La derivación aquí usa directamente los balances de I15 y la base de I20.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Michael Birse, University of Manchester, <em>Advanced Dynamics</em>, «Stability of free rotation»: https://www.theory.physics.manchester.ac.uk/~mikeb/lecture/pc167/rigidbody/stability.html . Contraste de signos de la linealización. Las pruebas no lineales de P11–P12 se desarrollan aquí mediante invariantes y una solución exacta; se distingue su alcance de la clasificación lineal. Para las tasas del cuerpo simétrico: «The symmetric top», https://www.theory.physics.manchester.ac.uk/~mikeb/lecture/pc167/rigidbody/top.html .<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>MIT OpenCourseWare, <em>16.07 Dynamics</em>, Lecture L30, <em>3D Rigid Body Dynamics: Tops and Gyroscopes</em>: https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/99f271d601bb3d9d04e8b8ce0c73cb7a_MIT16_07F09_Lec30.pdf ; David Tong, University of Cambridge, <em>Dynamics and Relativity</em>, «The Motion of Rigid Bodies»: https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S3.html . Contraste de trompo pesado y precesión. La reducción presente se obtiene por cinemática y balances de Newton, conservando el formalismo variacional para capítulos posteriores.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

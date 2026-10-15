@@ -1,0 +1,1078 @@
+<!DOCTYPE html><html lang="es"><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' file: 'unsafe-inline'; style-src 'self' file: data: 'unsafe-inline'; font-src 'self' file: data:; img-src 'self' file: data:; connect-src 'none'; base-uri 'none'; form-action 'none'; worker-src blob:">
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 15 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.">
+
+<title>Momento angular y torque – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+
+
+
+
+
+
+<meta name="quarto:offset" content="../../">
+<link href="../assets/8eb201055a4f4d43a0dc1bd6.svg" rel="icon" type="image/svg+xml">
+
+
+
+
+<script src="../assets/69098e105d990f834cff1b78.js"></script>
+<link href="../assets/5969f497d9158d7682f8219c.css" rel="stylesheet">
+<link href="../assets/4973a76eb0de3b99bc67687a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../assets/7f7cb0230277ec2bc5294f4d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+
+
+<link href="../assets/quarto-bootstrap-light.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../assets/quarto-bootstrap-dark.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+
+  
+  <script src="../assets/mathjax-offline-speech.js"></script><script>(function(){const fontRoot=new URL("../assets/mathjax-newcm",location.href).href;window.MathJax=Object.assign(window.MathJax||{}, {loader:{paths:{"mathjax-newcm":fontRoot}},startup:{ready:function(){MathJax.startup.defaultReady();MathJax.startup.adaptor.createWorker=window.__maCreateSpeechWorker;},pageReady:window.MathJax.startup.pageReady},output:{fontPath:fontRoot},chtml:{fontURL:fontRoot+"/chtml/woff2",dynamicPrefix:fontRoot+"/chtml/dynamic"}});})();</script><script defer src="../assets/mathjax/tex-chtml.js"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../assets/87b4f5e6a115d51d92f5ea1a.css">
+<link rel="stylesheet" href="../assets/af3335218e8c9cef34486d70.css">
+<style id="ma-reader-mode-v1-style">/* Reader contract: app readerMode.ts, ma-reader-mode-v1. */
+
+#quarto-header,
+#quarto-sidebar,
+#quarto-margin-sidebar,
+.quarto-secondary-nav,
+.quarto-page-breadcrumbs,
+#quarto-search,
+.quarto-search-button,
+.quarto-navigation-tool,
+.quarto-back-to-top,
+#quarto-footer,
+.nav-footer {
+  display: none !important;
+}
+
+body.quarto-page-columns #quarto-content,
+#quarto-content.page-columns {
+  display: block !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+#quarto-content {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  padding-left: max(1rem, env(safe-area-inset-left)) !important;
+  padding-right: max(1rem, env(safe-area-inset-right)) !important;
+}
+
+#quarto-content > main.content,
+#quarto-content .content {
+  box-sizing: border-box !important;
+  grid-column: 1 / -1 !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+#quarto-content img,
+#quarto-content figure img {
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+#quarto-content table,
+#quarto-content pre,
+#quarto-content mjx-container[display="true"],
+#quarto-content .math.display {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+}
+
+#quarto-content table {
+  display: block;
+}
+
+#quarto-content .callout,
+#quarto-content .theorem,
+#quarto-content .proof {
+  max-width: 100% !important;
+}
+</style><style>body.nav-fixed{padding-top:0!important}</style></head><body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar"><main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Momento angular y torque</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 15</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 15 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">15 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-14-momento-lineal-impulso-y-centro-de-masa.html">Capítulo 14</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-16-gravitacion-newtoniana.html">Capítulo 16</a></p>
+<p>Una fuerza aplicada en el centro de una puerta y la misma fuerza aplicada junto al picaporte producen movimientos diferentes. El balance de momento lineal conserva la magnitud y la dirección de la fuerza, pero pierde su lugar de aplicación. Esa información vuelve a entrar al calcular el momento de la fuerza respecto de las bisagras. Con el movimiento ocurre algo parecido: conocer el momento total de dos partículas no permite saber si pasan una junto a otra o se alejan por una misma recta. Sus posiciones también cuentan.</p>
+<p>El capítulo anterior reunió las velocidades en una suma ponderada por las masas. Aquí reuniremos posición y momento en un producto vectorial. Conviene empezar con partículas: así podremos ver qué propiedades proceden de la definición, cuáles necesitan las leyes de Newton y cuáles exigen hipótesis adicionales sobre las interacciones. Trabajaremos en el espacio euclídeo tridimensional, con orientación y marco inercial elegidos, masas positivas constantes y un conjunto material fijo de partículas. Las coordenadas cartesianas usadas para derivar vectores tendrán ejes fijos. Las fuerzas y trayectorias se supondrán suficientemente regulares para las derivaciones e integraciones indicadas.</p>
+<p><span id="fispm-t1-c15-s01"></span></p>
+<p><span id="fpm-i-15-s01"></span></p>
+<section id="qué-información-conserva-el-momento-angular" class="level2">
+<h2 class="anchored" data-anchor-id="qué-información-conserva-el-momento-angular">§1 — Qué información conserva el momento angular</h2>
+<p>Imaginemos una partícula que cruza una mesa de izquierda a derecha con velocidad constante. Tomamos un punto de referencia en la mesa. Si la trayectoria pasa por ese punto, el movimiento es enteramente radial en cada instante distinto del cruce. Si pasa a cierta distancia, la dirección que une el punto con la partícula va girando. En ambos casos el momento lineal puede ser el mismo; cambia la relación entre posición y movimiento.</p>
+<p><span id="fispm-t1-c15-d0001"></span></p>
+<p><strong>Definición FPM-I-15-D01 — Momento angular de una partícula.</strong> Sean <span class="math inline">\(\mathbf r\)</span> su posición, <span class="math inline">\(\mathbf p=m\mathbf v\)</span> su momento lineal y <span class="math inline">\(\mathbf R_A\)</span> la posición de un punto de referencia <span class="math inline">\(A\)</span>. Escribimos <span class="math inline">\(\boldsymbol\rho_A=\mathbf r-\mathbf R_A\)</span> y definimos</p>
+<p><span class="math display">\[
+\mathbf L_A=\boldsymbol\rho_A\times\mathbf p.
+\]</span></p>
+<p>En esta definición la velocidad de <span class="math inline">\(\mathbf p\)</span> se mide en el marco inercial elegido, incluso cuando <span class="math inline">\(A\)</span> se mueve. La elección se mantendrá durante todo el capítulo.</p>
+<p>El producto vectorial se toma en el orden posición por momento. En una base ortonormal positivamente orientada, su expresión es</p>
+<p><span class="math display">\[
+\mathbf a\times\mathbf b
+=(a_yb_z-a_zb_y,\ a_zb_x-a_xb_z,\ a_xb_y-a_yb_x).
+\]</span></p>
+<p>Por eso intercambiar los factores cambia el signo. El vector obtenido es perpendicular a ambos; su magnitud es <span class="math inline">\(|\mathbf a||\mathbf b|\sin\theta\)</span>, con <span class="math inline">\(0\leq\theta\leq\pi\)</span>. Para fijar su sentido puede usarse la regla de la mano derecha. En un movimiento contenido en el plano <span class="math inline">\(xy\)</span>, con <span class="math inline">\(A\)</span> en ese plano, la componente relevante es</p>
+<p><span class="math display">\[
+L_{A,z}=m\bigl[(x-X_A)v_y-(y-Y_A)v_x\bigr].
+\]</span></p>
+<p>Si <span class="math inline">\(\boldsymbol\rho_A\ne0\)</span>, descomponemos el momento en una parte paralela a <span class="math inline">\(\boldsymbol\rho_A\)</span> y otra perpendicular. La primera desaparece del producto. Así, una partícula que se acerca al punto de referencia por una recta puede tener rapidez grande y momento angular cero. También una partícula que se mueve por una recta que no pasa por <span class="math inline">\(A\)</span> puede tener momento angular no nulo.</p>
+<p><span id="fispm-t1-c15-p0001"></span></p>
+<p><strong>Proposición FPM-I-15-P01 — Brazo geométrico del momento.</strong> Si <span class="math inline">\(\mathbf p\ne0\)</span> y <span class="math inline">\(b\)</span> es la distancia de <span class="math inline">\(A\)</span> a la recta que pasa por la partícula en dirección <span class="math inline">\(\mathbf p\)</span>, entonces <span class="math inline">\(|\mathbf L_A|=b|\mathbf p|\)</span>.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(\boldsymbol\rho_A=0\)</span>, la recta pasa por <span class="math inline">\(A\)</span> y ambos miembros son cero. En otro caso, sea <span class="math inline">\(\theta\)</span> el ángulo entre <span class="math inline">\(\boldsymbol\rho_A\)</span> y <span class="math inline">\(\mathbf p\)</span>. La proyección perpendicular de <span class="math inline">\(\boldsymbol\rho_A\)</span> sobre el plano normal a <span class="math inline">\(\mathbf p\)</span> tiene longitud <span class="math inline">\(|\boldsymbol\rho_A|\sin\theta=b\)</span>. Multiplicar por <span class="math inline">\(|\mathbf p|\)</span> da la magnitud del producto vectorial. <span class="math inline">\(\square\)</span></p>
+<p>La recta usada en P01 es instantánea. Sólo coincide con una trayectoria completa cuando ésta es rectilínea. En el caso <span class="math inline">\(\mathbf r=(ut,b,0)\)</span>, <span class="math inline">\(\mathbf p=(mu,0,0)\)</span>, con <span class="math inline">\(u&gt;0\)</span>, obtenemos <span class="math inline">\(\mathbf L_O=-mbu\,\mathbf e_z\)</span>: la distancia a <span class="math inline">\(O\)</span> cambia, aunque el brazo respecto de la dirección del movimiento permanece constante.</p>
+<p><span id="fispm-t1-c15-mp0001"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP01.</strong> Al calcular momento angular, declara el punto, el marco de las velocidades y la orientación. Comprueba el signo con las componentes antes de interpretar el sentido geométrico.</p>
+<section id="ejercicios" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0001"></span></p>
+<p><strong>Ejercicio FPM-I-15-E01.</strong> Una partícula de masa <span class="math inline">\(2\,\mathrm{kg}\)</span> tiene posición <span class="math inline">\((3,1,0)\,\mathrm m\)</span> y velocidad <span class="math inline">\((0,4,0)\,\mathrm{m\,s^{-1}}\)</span>. Calcula su momento angular respecto del origen y respecto de <span class="math inline">\(A=(3,0,0)\,\mathrm m\)</span>.</p>
+<p><strong>Solución.</strong> El momento lineal es <span class="math inline">\((0,8,0)\,\mathrm{kg\,m\,s^{-1}}\)</span>. Respecto del origen, el producto da <span class="math inline">\(\mathbf L_O=(0,0,24)\,\mathrm{kg\,m^2\,s^{-1}}\)</span>. Respecto de <span class="math inline">\(A\)</span>, la posición relativa es <span class="math inline">\((0,1,0)\,\mathrm m\)</span>, paralela al momento, de modo que <span class="math inline">\(\mathbf L_A=0\)</span>. La recta instantánea del movimiento pasa por <span class="math inline">\(A\)</span>; su distancia al origen es <span class="math inline">\(3\,\mathrm m\)</span>, lo que verifica <span class="math inline">\(|\mathbf L_O|=3\cdot8\)</span>.</p>
+<p><span id="fispm-t1-c15-e0002"></span></p>
+<p><strong>Ejercicio FPM-I-15-E02.</strong> Para <span class="math inline">\(\mathbf r(t)=(ut,b,0)\)</span>, con <span class="math inline">\(u&gt;0\)</span> y <span class="math inline">\(b\ne0\)</span>, calcula la velocidad angular de la dirección de <span class="math inline">\(\mathbf r\)</span> alrededor del origen. ¿Es constante cuando lo es el momento angular?</p>
+<p><strong>Solución.</strong> Para una dirección planar, <span class="math inline">\(\dot\theta=(x\dot y-y\dot x)/(x^2+y^2)\)</span>. Sustituir produce <span class="math inline">\(\dot\theta=-bu/(u^2t^2+b^2)\)</span>. Su magnitud disminuye al alejarse del instante de mayor proximidad. En cambio, <span class="math inline">\(L_z=-mbu\)</span> es constante. La relación <span class="math inline">\(L_z=m|\mathbf r|^2\dot\theta\)</span> permite compatibilizar ambos resultados: el radio cambia. Momento angular constante no determina velocidad angular constante.</p>
+<p><span id="fispm-t1-c15-s02"></span></p>
+<p><span id="fpm-i-15-s02"></span></p>
+</section>
+</section>
+<section id="torque-y-lugar-de-aplicación" class="level2">
+<h2 class="anchored" data-anchor-id="torque-y-lugar-de-aplicación">§2 — Torque y lugar de aplicación</h2>
+<p>Para abrir una puerta podemos aumentar la fuerza o alejarnos de las bisagras. También podemos cambiar la dirección del empuje. Empujar hacia la bisagra aprovecha poco la fuerza para girar; empujar perpendicularmente a la puerta aprovecha todo su brazo. El producto vectorial reúne esas variaciones.</p>
+<p><span id="fispm-t1-c15-d0002"></span></p>
+<p><strong>Definición FPM-I-15-D02 — Torque de una fuerza.</strong> Si <span class="math inline">\(\mathbf F\)</span> actúa en la posición <span class="math inline">\(\mathbf r\)</span>, su torque o momento respecto de <span class="math inline">\(A\)</span> es</p>
+<p><span class="math display">\[
+\boldsymbol\tau_A=(\mathbf r-\mathbf R_A)\times\mathbf F.
+\]</span></p>
+<p>Para varias fuerzas aplicadas en posiciones distintas, el torque total es la suma de sus momentos respectivos. La resultante de las fuerzas se obtiene sumando los vectores fuerza; el torque requiere además las posiciones de aplicación.</p>
+<p>El brazo de una fuerza es la distancia perpendicular desde el punto de referencia a su línea de acción. Con esa definición, el argumento de P01 da <span class="math inline">\(|\boldsymbol\tau_A|=b_F|\mathbf F|\)</span>. El máximo para radio y fuerza de magnitudes fijadas se obtiene cuando son perpendiculares. Si <span class="math inline">\(A\)</span> está en la línea de acción, el torque es cero aunque la fuerza sea grande.</p>
+<p><span id="fispm-t1-c15-p0002"></span></p>
+<p><strong>Proposición FPM-I-15-P02 — Desplazamiento sobre la línea de acción.</strong> Una fuerza dada tiene el mismo torque respecto de cualquier <span class="math inline">\(A\)</span> si su posición de aplicación se sustituye por <span class="math inline">\(\mathbf r'=\mathbf r+\lambda\mathbf F\)</span>, donde <span class="math inline">\(\lambda\mathbf F\)</span> tiene unidades de longitud.</p>
+<p><strong>Demostración.</strong> La diferencia entre los torques es <span class="math inline">\((\lambda\mathbf F)\times\mathbf F=0\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La proposición conserva una suma geométrica. Desplazar físicamente una fuerza puede cambiar deformaciones, contactos y la distribución de tensiones. Para un sistema de partículas tampoco autoriza a reasignar la fuerza de una partícula a otra conservando sus ecuaciones individuales.</p>
+<p>Las dimensiones ayudan a leer los balances:</p>
+<p><span class="math display">\[
+[\mathbf L]=\mathsf M\mathsf L^2\mathsf T^{-1},
+\qquad
+[\boldsymbol\tau]=\mathsf M\mathsf L^2\mathsf T^{-2}.
+\]</span></p>
+<p>En SI corresponden a <span class="math inline">\(\mathrm{kg\,m^2\,s^{-1}}\)</span> y <span class="math inline">\(\mathrm{N\,m}\)</span>. Torque y energía comparten dimensiones. Su función física es distinta: la energía es un escalar y el torque es un vector axial asociado a un punto. Al informar torque escribiremos <span class="math inline">\(\mathrm{N\,m}\)</span> para mantener visible esa interpretación.</p>
+<p><span id="fispm-t1-c15-mp0002"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP02.</strong> Calcula los torques fuerza por fuerza. Sustituir un conjunto por su resultante aplicada en un lugar arbitrario pierde información sobre el giro.</p>
+<section id="ejercicios-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-1">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0003"></span></p>
+<p><strong>Ejercicio FPM-I-15-E03.</strong> Una fuerza <span class="math inline">\((0,f,0)\)</span> actúa en <span class="math inline">\((a,b,0)\)</span>, con <span class="math inline">\(a,f&gt;0\)</span>. Calcula el torque respecto del origen y explica qué ocurre al cambiar <span class="math inline">\(b\)</span>.</p>
+<p><strong>Solución.</strong> El producto da <span class="math inline">\((0,0,af)\)</span>. La línea de acción es la vertical <span class="math inline">\(x=a\)</span>, cuya distancia al origen es <span class="math inline">\(a\)</span>. Cambiar <span class="math inline">\(b\)</span> desplaza la fuerza por esa misma línea y conserva el torque. Cambiar <span class="math inline">\(a\)</span> altera el brazo; cambiar el signo de <span class="math inline">\(f\)</span> invierte el torque.</p>
+<p><span id="fispm-t1-c15-e0004"></span></p>
+<p><strong>Ejercicio FPM-I-15-E04.</strong> En <span class="math inline">\((a,0,0)\)</span> actúa <span class="math inline">\((0,f,0)\)</span> y en <span class="math inline">\((-a,0,0)\)</span> actúa <span class="math inline">\((0,-f,0)\)</span>, con <span class="math inline">\(a,f&gt;0\)</span>. Compara resultante y torque total.</p>
+<p><strong>Solución.</strong> La resultante es cero. Los torques son ambos <span class="math inline">\((0,0,af)\)</span>, así que el total es <span class="math inline">\((0,0,2af)\)</span>. Las fuerzas pueden mantener constante el momento lineal total y modificar el momento angular. La cancelación vectorial de fuerzas deja sin cancelar sus momentos porque los puntos de aplicación son diferentes.</p>
+<p><span id="fispm-t1-c15-s03"></span></p>
+<p><span id="fpm-i-15-s03"></span></p>
+</section>
+</section>
+<section id="el-balance-para-una-partícula" class="level2">
+<h2 class="anchored" data-anchor-id="el-balance-para-una-partícula">§3 — El balance para una partícula</h2>
+<p>Ya tenemos dos definiciones. La ley de Newton permite conectarlas. Para derivar respecto del tiempo hay que controlar qué hace el punto de referencia: el vector que une dos puntos cambia por el movimiento de ambos.</p>
+<p><span id="fispm-t1-c15-p0003"></span></p>
+<p><strong>Proposición FPM-I-15-P03 — Balance respecto de un punto fijo.</strong> Si <span class="math inline">\(A\)</span> permanece fijo en el marco inercial y la partícula satisface <span class="math inline">\(\dot{\mathbf p}=\mathbf F\)</span>, entonces</p>
+<p><span class="math display">\[
+\frac{d\mathbf L_A}{dt}=\boldsymbol\tau_A.
+\]</span></p>
+<p><strong>Demostración.</strong> El producto vectorial es bilineal, por lo que satisface la regla de derivación del producto. Como <span class="math inline">\(\dot{\boldsymbol\rho}_A=\mathbf v\)</span>,</p>
+<p><span class="math display">\[
+\frac{d\mathbf L_A}{dt}
+=\mathbf v\times m\mathbf v+\boldsymbol\rho_A\times\dot{\mathbf p}.
+\]</span></p>
+<p>El primer término es cero por paralelismo y el segundo es <span class="math inline">\(\boldsymbol\rho_A\times\mathbf F\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La demostración explica el papel de cada supuesto. La definición de <span class="math inline">\(\mathbf L_A\)</span> es una elección de magnitud; <span class="math inline">\(\dot{\mathbf p}=\mathbf F\)</span> es la ecuación dinámica del modelo newtoniano; la regla del producto y la cancelación son pasos matemáticos. El resultado hereda el régimen de validez del modelo y de las fuerzas incluidas.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>La cancelación <span class="math inline">\(\mathbf v\times m\mathbf v=0\)</span> depende de que el momento sea paralelo a la velocidad. Aquí se usa el momento mecánico newtoniano de una partícula de masa constante. No hemos introducido otras nociones de momento.</p>
+<p><span id="fispm-t1-c15-p0004"></span></p>
+<p><strong>Proposición FPM-I-15-P04 — Balance con punto móvil.</strong> Si <span class="math inline">\(A\)</span> tiene posición diferenciable <span class="math inline">\(\mathbf R_A(t)\)</span> y velocidad <span class="math inline">\(\mathbf V_A\)</span>, pero <span class="math inline">\(\mathbf p\)</span> sigue siendo el momento medido en el mismo marco inercial, entonces</p>
+<p><span class="math display">\[
+\frac{d\mathbf L_A}{dt}
+=\boldsymbol\tau_A-\mathbf V_A\times\mathbf p.
+\]</span></p>
+<p><strong>Demostración.</strong> Ahora <span class="math inline">\(\dot{\boldsymbol\rho}_A=\mathbf v-\mathbf V_A\)</span>. Al derivar D01 se obtiene <span class="math inline">\((\mathbf v-\mathbf V_A)\times\mathbf p+\boldsymbol\rho_A\times\mathbf F\)</span>. El término <span class="math inline">\(\mathbf v\times\mathbf p\)</span> vuelve a ser cero; el restante es el término de transporte indicado. <span class="math inline">\(\square\)</span></p>
+<p>Que el torque sea cero respecto de un punto móvil no basta para conservar <span class="math inline">\(\mathbf L_A\)</span>. El término adicional responde al cambio geométrico de referencia; no representa una fuerza nueva sobre la partícula. Más adelante distinguiremos esta construcción de calcular un momento con velocidades relativas.</p>
+<p><span id="fispm-t1-c15-mp0003"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP03.</strong> Antes de usar <span class="math inline">\(\dot{\mathbf L}_A=\boldsymbol\tau_A\)</span>, comprueba que <span class="math inline">\(A\)</span> está fijo o demuestra que el término de transporte se anula.</p>
+<section id="ejercicios-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-2">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0005"></span></p>
+<p><strong>Ejercicio FPM-I-15-E05.</strong> Una partícula libre tiene <span class="math inline">\(\mathbf r=(ut,b,0)\)</span> y <span class="math inline">\(\mathbf p=(mu,0,0)\)</span>. El punto <span class="math inline">\(A\)</span> se mueve según <span class="math inline">\(\mathbf R_A=(0,wt,0)\)</span>. Calcula <span class="math inline">\(\mathbf L_A\)</span> y verifica P04.</p>
+<p><strong>Solución.</strong> La posición relativa es <span class="math inline">\((ut,b-wt,0)\)</span>, por lo que <span class="math inline">\(\mathbf L_A=(0,0,-mu(b-wt))\)</span>. Su derivada es <span class="math inline">\((0,0,muw)\)</span>. La fuerza y el torque son cero. Sin embargo, <span class="math inline">\(-\mathbf V_A\times\mathbf p=-(0,w,0)\times(mu,0,0)=(0,0,muw)\)</span>, exactamente la derivada calculada. El cambio de <span class="math inline">\(\mathbf L_A\)</span> procede del movimiento de <span class="math inline">\(A\)</span>.</p>
+<p><span id="fispm-t1-c15-e0006"></span></p>
+<p><strong>Ejercicio FPM-I-15-E06.</strong> Una partícula se mueve sobre una circunferencia de radio <span class="math inline">\(a&gt;0\)</span> centrada en un punto fijo, con ángulo <span class="math inline">\(\theta(t)\)</span> dos veces diferenciable. Obtén el momento angular y el torque requerido, incluyendo aceleración radial y tangencial.</p>
+<p><strong>Solución.</strong> Con <span class="math inline">\(\mathbf e_r=(\cos\theta,\sin\theta,0)\)</span> y <span class="math inline">\(\mathbf e_\theta=(-\sin\theta,\cos\theta,0)\)</span>, se tiene <span class="math inline">\(\mathbf r=a\mathbf e_r\)</span>, <span class="math inline">\(\mathbf v=a\dot\theta\mathbf e_\theta\)</span> y <span class="math inline">\(\mathbf a=-a\dot\theta^2\mathbf e_r+a\ddot\theta\mathbf e_\theta\)</span>. Newton exige <span class="math inline">\(\mathbf F=-ma\dot\theta^2\mathbf e_r+ma\ddot\theta\mathbf e_\theta\)</span>. Entonces <span class="math inline">\(\mathbf L_O=ma^2\dot\theta\mathbf e_z\)</span> y <span class="math inline">\(\boldsymbol\tau_O=ma^2\ddot\theta\mathbf e_z\)</span>. La fuerza radial mantiene la curvatura y tiene torque cero; la tangencial cambia el momento angular. Derivar la expresión de <span class="math inline">\(\mathbf L_O\)</span> verifica el balance.</p>
+<p><span id="fispm-t1-c15-s04"></span></p>
+<p><span id="fpm-i-15-s04"></span></p>
+</section>
+</section>
+<section id="cambiar-el-punto-de-referencia" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-el-punto-de-referencia">§4 — Cambiar el punto de referencia</h2>
+<p>La dependencia respecto de un punto puede parecer incómoda, pero tiene una regla simple. Conviene conocerla para escoger una referencia que elimine torques desconocidos o haga transparente una conservación.</p>
+<p><span id="fispm-t1-c15-d0003"></span></p>
+<p><strong>Definición FPM-I-15-D03 — Momento angular de un sistema.</strong> Para <span class="math inline">\(N\)</span> partículas de masas constantes, con momentos <span class="math inline">\(\mathbf p_i=m_i\mathbf v_i\)</span>, definimos</p>
+<p><span class="math display">\[
+\mathbf L_A=\sum_{i=1}^N(\mathbf r_i-\mathbf R_A)\times\mathbf p_i,
+\qquad
+\mathbf P=\sum_{i=1}^N\mathbf p_i.
+\]</span></p>
+<p><span id="fispm-t1-c15-p0005"></span></p>
+<p><strong>Proposición FPM-I-15-P05 — Traslación del punto de referencia.</strong> Sean <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> dos puntos, fijos o móviles, y <span class="math inline">\(\mathbf d=\mathbf R_B-\mathbf R_A\)</span>. En cada instante,</p>
+<p><span class="math display">\[
+\mathbf L_B=\mathbf L_A-\mathbf d\times\mathbf P.
+\]</span></p>
+<p><strong>Demostración.</strong> Para cada partícula, <span class="math inline">\(\mathbf r_i-\mathbf R_B=(\mathbf r_i-\mathbf R_A)-\mathbf d\)</span>. Distribuimos el producto y sumamos. Como <span class="math inline">\(\mathbf d\)</span> es común a todos los términos, la diferencia es <span class="math inline">\(-\mathbf d\times\sum_i\mathbf p_i\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>En particular, si <span class="math inline">\(\mathbf P=0\)</span>, el momento angular total es independiente del punto de referencia en ese instante. Si <span class="math inline">\(\mathbf P\ne0\)</span>, desplazar el punto paralelamente a <span class="math inline">\(\mathbf P\)</span> también conserva el valor. Para una partícula con momento no nulo, hay una recta entera de puntos que dan el mismo momento angular.</p>
+<p>La suma de fuerzas tiene una transformación análoga. Para fuerzas <span class="math inline">\(\mathbf F_j\)</span> aplicadas en <span class="math inline">\(\mathbf r_j\)</span>, escribamos <span class="math inline">\(\mathbf F_{\mathrm{tot}}=\sum_j\mathbf F_j\)</span>.</p>
+<p><span id="fispm-t1-c15-p0006"></span></p>
+<p><strong>Proposición FPM-I-15-P06 — Traslación del torque total.</strong> El torque de ese conjunto satisface</p>
+<p><span class="math display">\[
+\boldsymbol\tau_B=\boldsymbol\tau_A-\mathbf d\times\mathbf F_{\mathrm{tot}}.
+\]</span></p>
+<p><strong>Demostración.</strong> Sustituimos <span class="math inline">\(\mathbf r_j-\mathbf R_B=(\mathbf r_j-\mathbf R_A)-\mathbf d\)</span> en la suma de torques. La bilinealidad da la fórmula. <span class="math inline">\(\square\)</span></p>
+<p>Una pareja de fuerzas opuestas cuya resultante sea cero tiene por ello torque independiente del punto: se llama <em>par de fuerzas</em>. E04 es un ejemplo. Para comprender la diferencia, pensemos en una sola fuerza. Su torque puede anularse escogiendo un punto en su línea de acción. Un par con torque no nulo conserva ese torque cualquiera que sea el punto elegido.</p>
+<p>Estas reglas también conectan los balances. Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son fijos y <span class="math inline">\(\dot{\mathbf P}=\mathbf F_{\mathrm{tot}}\)</span>, derivar P05 produce <span class="math inline">\(\dot{\mathbf L}_B=\dot{\mathbf L}_A-\mathbf d\times\mathbf F_{\mathrm{tot}}\)</span>. La transformación del torque de P06 es exactamente la que permite mantener la ecuación dinámica.</p>
+<p><span id="fispm-t1-c15-mp0004"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP04.</strong> Elige el punto para simplificar torques, pero conserva esa elección en todo el balance. Compara cantidades referidas a puntos distintos mediante P05.</p>
+<section id="ejercicios-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-3">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0007"></span></p>
+<p><strong>Ejercicio FPM-I-15-E07.</strong> Dos partículas ocupan <span class="math inline">\((a,0,0)\)</span> y <span class="math inline">\((-a,0,0)\)</span> y tienen momentos <span class="math inline">\((0,p,0)\)</span> y <span class="math inline">\((0,-p,0)\)</span>, con <span class="math inline">\(a,p&gt;0\)</span>. Calcula el momento angular total y decide si puede anularse cambiando el punto.</p>
+<p><strong>Solución.</strong> Cada producto aporta <span class="math inline">\((0,0,ap)\)</span>; la suma es <span class="math inline">\((0,0,2ap)\)</span>. Como <span class="math inline">\(\mathbf P=0\)</span>, P05 muestra que ningún cambio de punto altera ese valor. Tener momento total cero permite movimiento interno y momento angular total no nulo.</p>
+<p><span id="fispm-t1-c15-e0008"></span></p>
+<p><strong>Ejercicio FPM-I-15-E08.</strong> En cierto instante, <span class="math inline">\(\mathbf P=(p,0,0)\)</span> y <span class="math inline">\(\mathbf L_O=(0,0,\ell)\)</span>, con <span class="math inline">\(p\ne0\)</span>. Determina todos los puntos <span class="math inline">\(B\)</span> para los cuales <span class="math inline">\(\mathbf L_B=0\)</span>.</p>
+<p><strong>Solución.</strong> Sea <span class="math inline">\(\mathbf R_B=(X,Y,Z)\)</span>. Entonces <span class="math inline">\(\mathbf R_B\times\mathbf P=(0,Zp,-Yp)\)</span> y <span class="math inline">\(\mathbf L_B=(0,-Zp,\ell+Yp)\)</span>. La anulación exige <span class="math inline">\(Z=0\)</span> y <span class="math inline">\(Y=-\ell/p\)</span>, mientras <span class="math inline">\(X\)</span> queda libre. Los puntos forman una recta paralela al momento total. El signo de <span class="math inline">\(Y\)</span> se obtiene del orden del producto, no de una distancia sin orientación.</p>
+<p><span id="fispm-t1-c15-s05"></span></p>
+<p><span id="fpm-i-15-s05"></span></p>
+</section>
+</section>
+<section id="fuerzas-internas-qué-debe-cancelarse" class="level2">
+<h2 class="anchored" data-anchor-id="fuerzas-internas-qué-debe-cancelarse">§5 — Fuerzas internas: qué debe cancelarse</h2>
+<p>Al sumar las ecuaciones de Newton en el capítulo anterior, dos fuerzas internas iguales y opuestas desaparecían. Para el momento angular la suma conserva además los lugares donde actúan. Esta diferencia obliga a revisar la hipótesis de interacción.</p>
+<p>Sea <span class="math inline">\(\mathbf F_{ij}\)</span> la fuerza que la partícula <span class="math inline">\(j\)</span> ejerce sobre la partícula <span class="math inline">\(i\)</span>. La ecuación de cada miembro es</p>
+<p><span class="math display">\[
+\dot{\mathbf p}_i=\mathbf F_i^{\mathrm{ext}}+\sum_{j\ne i}\mathbf F_{ij}.
+\]</span></p>
+<p><span id="fispm-t1-c15-d0004"></span></p>
+<p><strong>Definición FPM-I-15-D04 — Torques externo e interno.</strong> Respecto de un mismo punto <span class="math inline">\(A\)</span>, definimos</p>
+<p><span class="math display">\[
+\boldsymbol\tau_A^{\mathrm{ext}}
+=\sum_i(\mathbf r_i-\mathbf R_A)\times\mathbf F_i^{\mathrm{ext}},
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol\tau_A^{\mathrm{int}}
+=\sum_i\sum_{j\ne i}(\mathbf r_i-\mathbf R_A)\times\mathbf F_{ij}.
+\]</span></p>
+<p>Estas sumas corresponden a la partición material elegida. Una fuerza cambia de clasificación si ampliamos el sistema para incluir al agente que la ejerce.</p>
+<p><span id="fispm-t1-c15-p0007"></span></p>
+<p><strong>Proposición FPM-I-15-P07 — Torque interno por pares.</strong> Si <span class="math inline">\(\mathbf F_{ji}=-\mathbf F_{ij}\)</span> para cada par, entonces</p>
+<p><span class="math display">\[
+\boldsymbol\tau_A^{\mathrm{int}}
+=\sum_{i&lt;j}(\mathbf r_i-\mathbf r_j)\times\mathbf F_{ij}.
+\]</span></p>
+<p><strong>Demostración.</strong> Agrupamos los dos términos de cada par no ordenado. Su suma es <span class="math inline">\((\mathbf r_i-\mathbf R_A)\times\mathbf F_{ij}+(\mathbf r_j-\mathbf R_A)\times(-\mathbf F_{ij})=(\mathbf r_i-\mathbf r_j)\times\mathbf F_{ij}\)</span>. Al sumar sobre <span class="math inline">\(i&lt;j\)</span> se incluye cada par una vez. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c15-d0005"></span></p>
+<p><strong>Definición FPM-I-15-D05 — Interacción central por pares.</strong> Una interacción es central si <span class="math inline">\(\mathbf F_{ij}\)</span> es paralela a <span class="math inline">\(\mathbf r_i-\mathbf r_j\)</span>, con fuerzas iguales y opuestas. Para coincidencias de posición, debe declararse una ley regular o excluirse la coincidencia del dominio; no se presupone que una ley singular esté definida allí.</p>
+<p><span id="fispm-t1-c15-p0008"></span></p>
+<p><strong>Proposición FPM-I-15-P08 — Cancelación central.</strong> Las interacciones centrales por pares tienen torque interno total cero respecto de cualquier punto.</p>
+<p><strong>Demostración.</strong> En P07 cada producto es cero por paralelismo. <span class="math inline">\(\square\)</span></p>
+<p>La igualdad de fuerzas opuestas basta para el momento lineal. Su alineación con la separación es una condición suficiente adicional para anular el torque de cada par. También puede haber cancelación global entre torques internos no nulos; P08 no afirma que la centralidad sea necesaria en todos los sistemas.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Podemos construir un modelo de dos partículas en <span class="math inline">\((a,0,0)\)</span> y <span class="math inline">\((-a,0,0)\)</span> con fuerzas internas <span class="math inline">\((0,f,0)\)</span> y <span class="math inline">\((0,-f,0)\)</span>. Las fuerzas suman cero, pero su torque suma <span class="math inline">\(2af\,\mathbf e_z\)</span>. Como sistema matemático, sus ecuaciones newtonianas están perfectamente especificadas en ese instante. Para interpretarlo como sistema físico aislado habría que explicar qué interacción produce esas fuerzas y dónde reside el momento angular que falta. Un dispositivo, un grado interno omitido o un campo puede invalidar la lista de partículas escogida como descripción completa del sistema.</p>
+<p><span id="fispm-t1-c15-mp0005"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP05.</strong> Justifica la cancelación de torques internos mediante la geometría de las fuerzas o mediante un balance más completo. La sola etiqueta «interno» no cancela un momento.</p>
+<section id="ejercicios-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-4">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0009"></span></p>
+<p><strong>Ejercicio FPM-I-15-E09.</strong> Un resorte ideal une dos partículas y ejerce fuerzas iguales, opuestas y dirigidas a lo largo de su separación. ¿Puede cambiar el momento angular total por su acción interna? ¿Puede cambiar la energía cinética?</p>
+<p><strong>Solución.</strong> El resorte satisface D05, por lo que P08 anula su torque interno. Su acción no cambia el momento angular total respecto de un punto fijo cuando no hay torque externo. La potencia interna, en cambio, es <span class="math inline">\(\mathbf F_{12}\cdot(\mathbf v_1-\mathbf v_2)\)</span> y puede ser distinta de cero. Si cambia la longitud del resorte, puede intercambiar energía potencial elástica con energía cinética. El balance angular y el energético controlan sumas distintas.</p>
+<p><span id="fispm-t1-c15-e0010"></span></p>
+<p><strong>Ejercicio FPM-I-15-E10.</strong> En el ejemplo de fuerzas internas transversales, demuestra que el torque interno es independiente del punto de referencia y explica por qué ello no lo hace nulo.</p>
+<p><strong>Solución.</strong> La resultante interna es cero. P06 implica que trasladar el punto no modifica su torque. También P07 da directamente <span class="math inline">\((2a,0,0)\times(0,f,0)=2af\,\mathbf e_z\)</span>, sin referencia a <span class="math inline">\(A\)</span>. Independencia del punto significa que todos los puntos dan ese mismo vector; su valor sigue siendo no nulo cuando <span class="math inline">\(a,f\ne0\)</span>.</p>
+<p><span id="fispm-t1-c15-s06"></span></p>
+<p><span id="fpm-i-15-s06"></span></p>
+</section>
+</section>
+<section id="balance-conservación-e-impulso-angular" class="level2">
+<h2 class="anchored" data-anchor-id="balance-conservación-e-impulso-angular">§6 — Balance, conservación e impulso angular</h2>
+<p>Con las hipótesis ya separadas, el balance de un sistema puede escribirse sin omisiones.</p>
+<p><span id="fispm-t1-c15-p0009"></span></p>
+<p><strong>Proposición FPM-I-15-P09 — Balance angular general del sistema.</strong> Para un punto móvil <span class="math inline">\(A\)</span>, usando los momentos inerciales de D03,</p>
+<p><span class="math display">\[
+\frac{d\mathbf L_A}{dt}
+=\boldsymbol\tau_A^{\mathrm{ext}}
++\boldsymbol\tau_A^{\mathrm{int}}
+-\mathbf V_A\times\mathbf P.
+\]</span></p>
+<p><strong>Demostración.</strong> Aplicamos P04 a cada partícula con su fuerza total y sumamos. Los torques se separan según D04. La velocidad <span class="math inline">\(\mathbf V_A\)</span> es común, de modo que la suma de los términos de transporte es <span class="math inline">\(-\mathbf V_A\times\sum_i\mathbf p_i\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><span id="fispm-t1-c15-p0010"></span></p>
+<p><strong>Proposición FPM-I-15-P10 — Conservación respecto de un punto fijo.</strong> En un intervalo conectado, si <span class="math inline">\(A\)</span> está fijo, el torque interno total se anula y <span class="math inline">\(\boldsymbol\tau_A^{\mathrm{ext}}=0\)</span>, el vector <span class="math inline">\(\mathbf L_A\)</span> es constante. Si sólo se anula <span class="math inline">\(\mathbf n\cdot\boldsymbol\tau_A^{\mathrm{ext}}\)</span> para un vector fijo <span class="math inline">\(\mathbf n\)</span>, se conserva la componente <span class="math inline">\(\mathbf n\cdot\mathbf L_A\)</span>.</p>
+<p><strong>Demostración.</strong> Bajo las hipótesis, P09 da <span class="math inline">\(\dot{\mathbf L}_A=0\)</span>, o bien <span class="math inline">\(\frac{d}{dt}(\mathbf n\cdot\mathbf L_A)=0\)</span>. Una función diferenciable con derivada cero en un intervalo es constante. <span class="math inline">\(\square\)</span></p>
+<p>Conservar una componente es útil cuando ciertas fuerzas desconocidas tienen torque perpendicular a una dirección fija. El resto del vector puede variar. Si la dirección <span class="math inline">\(\mathbf n\)</span> gira, aparece además <span class="math inline">\(\dot{\mathbf n}\cdot\mathbf L_A\)</span> al derivar la componente: también aquí la referencia debe controlarse.</p>
+<p><span id="fispm-t1-c15-d0006"></span></p>
+<p><strong>Definición FPM-I-15-D06 — Impulso angular externo.</strong> Respecto de un punto fijo <span class="math inline">\(A\)</span> y en el intervalo <span class="math inline">\([t_a,t_b]\)</span>, definimos</p>
+<p><span class="math display">\[
+\boldsymbol{\mathcal J}_A^{\mathrm{ext}}
+=\int_{t_a}^{t_b}\boldsymbol\tau_A^{\mathrm{ext}}(t)\,dt.
+\]</span></p>
+<p>Si el torque interno se anula, integrar P09 produce</p>
+<p><span class="math display">\[
+\mathbf L_A(t_b)-\mathbf L_A(t_a)
+=\boldsymbol{\mathcal J}_A^{\mathrm{ext}}.
+\]</span></p>
+<p>La conservación entre dos estados puede darse porque ese impulso es cero, aunque el torque haya sido distinto de cero durante parte del intervalo. Para afirmar conservación en todos los instantes se necesita la condición local de P10.</p>
+<p>Una medición experimental puede reconstruir las posiciones y velocidades de las partículas y comparar la variación de la suma angular con el torque integrado. Si se omite una fuerza pequeña, su importancia se estima por su impulso angular, no sólo por su magnitud instantánea. Cuando <span class="math inline">\(|\boldsymbol\tau_{\mathrm{omitida}}|\leq T_{\max}\)</span>, la norma del impulso omitido está acotada por <span class="math inline">\(T_{\max}(t_b-t_a)\)</span>. Para hablar de cambio relativo, la escala angular de comparación debe ser no nula y declararse.</p>
+<p><span id="fispm-t1-c15-mp0006"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP06.</strong> Distingue conservación durante un intervalo, igualdad de valores extremos y conservación de una componente. Cada afirmación tiene una hipótesis propia.</p>
+<section id="ejercicios-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-5">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0011"></span></p>
+<p><strong>Ejercicio FPM-I-15-E11.</strong> Un sistema con torque interno nulo recibe, respecto de un punto fijo, <span class="math inline">\(\boldsymbol\tau(t)=T_0\sin(\omega t)\mathbf e_z\)</span>, con <span class="math inline">\(\omega&gt;0\)</span>. Calcula <span class="math inline">\(\mathbf L(t)\)</span> para <span class="math inline">\(0\leq t\leq2\pi/\omega\)</span>.</p>
+<p><strong>Solución.</strong> Integramos el balance desde cero: <span class="math inline">\(\mathbf L(t)=\mathbf L(0)+(T_0/\omega)[1-\cos(\omega t)]\mathbf e_z\)</span>. Al final del período, <span class="math inline">\(\mathbf L\)</span> vuelve a su valor inicial. En el instante <span class="math inline">\(\pi/\omega\)</span> ha cambiado en <span class="math inline">\(2T_0/\omega\)</span> en la dirección <span class="math inline">\(z\)</span>. El impulso angular del período es cero, pero el momento angular no fue constante.</p>
+<p><span id="fispm-t1-c15-e0012"></span></p>
+<p><strong>Ejercicio FPM-I-15-E12.</strong> Sobre una partícula actúa únicamente un campo gravitatorio uniforme <span class="math inline">\(\mathbf F=-mg\mathbf e_z\)</span>, con <span class="math inline">\(g&gt;0\)</span>. Respecto de un origen fijo, decide qué componentes del momento angular se conservan.</p>
+<p><strong>Solución.</strong> Para <span class="math inline">\(\mathbf r=(x,y,z)\)</span>, el torque es <span class="math inline">\((-mgy,mgx,0)\)</span>. Por ello <span class="math inline">\(\dot L_z=0\)</span> para cualquier trayectoria del modelo. Las otras componentes no se conservan en general. En un tiro con <span class="math inline">\(x=ut\)</span>, <span class="math inline">\(y=0\)</span>, <span class="math inline">\(z=h-gt^2/2\)</span>, se obtiene <span class="math inline">\(L_y=mu(h+gt^2/2)\)</span> y <span class="math inline">\(\dot L_y=mgut\)</span>, de acuerdo con el torque. La conservación de <span class="math inline">\(L_z\)</span> no impide el cambio del vector completo.</p>
+<p><span id="fispm-t1-c15-s07"></span></p>
+<p><span id="fpm-i-15-s07"></span></p>
+</section>
+</section>
+<section id="separar-traslación-y-movimiento-interno" class="level2">
+<h2 class="anchored" data-anchor-id="separar-traslación-y-movimiento-interno">§7 — Separar traslación y movimiento interno</h2>
+<p>El centro de masa reúne la traslación del sistema. Para separar el momento angular ligado a esa traslación del momento angular interno hay que introducir posiciones y velocidades relativas al mismo centro.</p>
+<p>Sean <span class="math inline">\(M=\sum_i m_i\)</span>, <span class="math inline">\(\mathbf R=M^{-1}\sum_i m_i\mathbf r_i\)</span> y <span class="math inline">\(\mathbf V=\dot{\mathbf R}\)</span>. Definimos <span class="math inline">\(\boldsymbol\rho_i=\mathbf r_i-\mathbf R\)</span> y <span class="math inline">\(\mathbf u_i=\mathbf v_i-\mathbf V\)</span>. Por construcción,</p>
+<p><span class="math display">\[
+\sum_i m_i\boldsymbol\rho_i=0,
+\qquad
+\sum_i m_i\mathbf u_i=0,
+\qquad
+\mathbf P=M\mathbf V.
+\]</span></p>
+<p><span id="fispm-t1-c15-d0007"></span></p>
+<p><strong>Definición FPM-I-15-D07 — Momento angular interno respecto del centro de masa.</strong></p>
+<p><span class="math display">\[
+\boldsymbol\ell=\sum_i\boldsymbol\rho_i\times m_i\mathbf u_i.
+\]</span></p>
+<p>Esta magnitud conserva el movimiento relativo que desaparece de <span class="math inline">\(\mathbf P\)</span>. Puede ser cero o no nula; un conjunto de partículas con <span class="math inline">\(\boldsymbol\ell=0\)</span> tampoco tiene por qué estar quieto internamente.</p>
+<p><span id="fispm-t1-c15-p0011"></span></p>
+<p><strong>Proposición FPM-I-15-P11 — Descomposición respecto de cualquier punto.</strong></p>
+<p><span class="math display">\[
+\mathbf L_A=(\mathbf R-\mathbf R_A)\times\mathbf P+\boldsymbol\ell.
+\]</span></p>
+<p><strong>Demostración.</strong> Sustituimos <span class="math inline">\(\mathbf r_i-\mathbf R_A=(\mathbf R-\mathbf R_A)+\boldsymbol\rho_i\)</span> y <span class="math inline">\(\mathbf v_i=\mathbf V+\mathbf u_i\)</span> en D03. Los términos cruzados contienen <span class="math inline">\((\mathbf R-\mathbf R_A)\times\sum_i m_i\mathbf u_i\)</span> y <span class="math inline">\((\sum_i m_i\boldsymbol\rho_i)\times\mathbf V\)</span>, ambos cero. Los restantes son <span class="math inline">\((\mathbf R-\mathbf R_A)\times M\mathbf V\)</span> y D07. <span class="math inline">\(\square\)</span></p>
+<p>Para <span class="math inline">\(A\)</span> situado en el centro de masa, P11 da <span class="math inline">\(\mathbf L_R=\boldsymbol\ell\)</span>, aunque D03 usa velocidades inerciales y D07 velocidades relativas. La igualdad se debe a la suma ponderada de posiciones cero. No se puede trasladar sin justificación a un punto móvil arbitrario.</p>
+<p><span id="fispm-t1-c15-p0012"></span></p>
+<p><strong>Proposición FPM-I-15-P12 — Balance en el centro de masa.</strong> Sin exigir que el centro esté fijo o tenga velocidad constante,</p>
+<p><span class="math display">\[
+\frac{d\boldsymbol\ell}{dt}
+=\boldsymbol\tau_R^{\mathrm{ext}}+\boldsymbol\tau_R^{\mathrm{int}}.
+\]</span></p>
+<p><strong>Demostración.</strong> Por P11, <span class="math inline">\(\boldsymbol\ell=\mathbf L_R\)</span>. P09 aplicado al punto <span class="math inline">\(\mathbf R(t)\)</span> da un transporte <span class="math inline">\(-\mathbf V\times\mathbf P\)</span>. Como <span class="math inline">\(\mathbf P=M\mathbf V\)</span>, ese término es cero. <span class="math inline">\(\square\)</span></p>
+<p>El balance angular en el centro es válido incluso cuando el centro acelera. La derivación usa componentes referidas a ejes inerciales fijos. Si giráramos los ejes para seguir al sistema, la derivada de componentes necesitaría otro tratamiento.</p>
+<p><span id="fispm-t1-c15-mp0007"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP07.</strong> Para separar traslación y movimiento interno, usa posiciones y velocidades relativas al centro de masa. Verifica ambas sumas ponderadas cero; ellas justifican la desaparición de los términos cruzados.</p>
+<section id="ejercicios-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-6">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0013"></span></p>
+<p><strong>Ejercicio FPM-I-15-E13.</strong> Dos partículas de igual masa <span class="math inline">\(m\)</span> tienen posiciones <span class="math inline">\(\mathbf R\pm a\mathbf e_x\)</span> y velocidades <span class="math inline">\(\mathbf V\pm u\mathbf e_y\)</span>, con <span class="math inline">\(a,u&gt;0\)</span>. Calcula <span class="math inline">\(\mathbf P\)</span>, <span class="math inline">\(\boldsymbol\ell\)</span> y <span class="math inline">\(\mathbf L_O\)</span>.</p>
+<p><strong>Solución.</strong> La suma de momentos da <span class="math inline">\(\mathbf P=2m\mathbf V\)</span>. Las posiciones relativas son <span class="math inline">\(\pm a\mathbf e_x\)</span> y las velocidades relativas <span class="math inline">\(\pm u\mathbf e_y\)</span>. Ambos productos aportan <span class="math inline">\(mau\mathbf e_z\)</span>, por lo que <span class="math inline">\(\boldsymbol\ell=2mau\mathbf e_z\)</span>. P11 da <span class="math inline">\(\mathbf L_O=\mathbf R\times(2m\mathbf V)+2mau\mathbf e_z\)</span>. La traslación cambia el primer término y deja separada la contribución interna en el instante descrito.</p>
+<p><span id="fispm-t1-c15-e0014"></span></p>
+<p><strong>Ejercicio FPM-I-15-E14.</strong> Dos partículas iguales reciben la misma fuerza externa constante <span class="math inline">\(\mathbf f\)</span> cada una. Sus fuerzas internas son centrales. Demuestra que el centro puede acelerar mientras el momento angular interno se conserva.</p>
+<p><strong>Solución.</strong> La resultante externa es <span class="math inline">\(2\mathbf f\)</span>, de modo que <span class="math inline">\(\dot{\mathbf V}=\mathbf f/m\)</span>. Respecto del centro, las posiciones relativas son opuestas; el torque externo es <span class="math inline">\((\boldsymbol\rho_1+\boldsymbol\rho_2)\times\mathbf f=0\)</span>. El torque interno también es cero por P08. P12 implica <span class="math inline">\(\dot{\boldsymbol\ell}=0\)</span>. Se conserva la suma angular interna aunque la traslación colectiva cambie.</p>
+<p><span id="fispm-t1-c15-s08"></span></p>
+<p><span id="fpm-i-15-s08"></span></p>
+</section>
+</section>
+<section id="dos-partículas-y-el-alcance-del-balance" class="level2">
+<h2 class="anchored" data-anchor-id="dos-partículas-y-el-alcance-del-balance">§8 — Dos partículas y el alcance del balance</h2>
+<p>La coordenada relativa del capítulo anterior permite escribir el momento angular interno de un par como si una sola masa describiera su separación. Esa reducción prepara el estudio de fuerzas centrales, pero todavía no determina una órbita.</p>
+<p>Tomemos masas <span class="math inline">\(m_1,m_2&gt;0\)</span>, <span class="math inline">\(M=m_1+m_2\)</span>, masa reducida <span class="math inline">\(\mu=m_1m_2/M\)</span> y coordenada orientada <span class="math inline">\(\mathbf q=\mathbf r_1-\mathbf r_2\)</span>. Su derivada es <span class="math inline">\(\dot{\mathbf q}=\mathbf v_1-\mathbf v_2\)</span>.</p>
+<p><span id="fispm-t1-c15-p0013"></span></p>
+<p><strong>Proposición FPM-I-15-P13 — Momento angular relativo de dos partículas.</strong></p>
+<p><span class="math display">\[
+\boldsymbol\ell=\mathbf q\times\mu\dot{\mathbf q}.
+\]</span></p>
+<p><strong>Demostración.</strong> Las posiciones relativas al centro son <span class="math inline">\(\boldsymbol\rho_1=(m_2/M)\mathbf q\)</span> y <span class="math inline">\(\boldsymbol\rho_2=-(m_1/M)\mathbf q\)</span>. Sus velocidades relativas tienen los mismos coeficientes multiplicando <span class="math inline">\(\dot{\mathbf q}\)</span>. En D07, el coeficiente total del producto es <span class="math inline">\(m_1m_2^2/M^2+m_2m_1^2/M^2=m_1m_2/M=\mu\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Si <span class="math inline">\(\boldsymbol\ell\)</span> es un vector constante no nulo, la separación permanece en el plano perpendicular a él. Es una consecuencia geométrica que conviene distinguir de determinar la trayectoria dentro del plano.</p>
+<p><span id="fispm-t1-c15-p0014"></span></p>
+<p><strong>Proposición FPM-I-15-P14 — Plano relativo.</strong> Si <span class="math inline">\(\boldsymbol\ell\ne0\)</span> es constante en un intervalo, <span class="math inline">\(\mathbf q(t)\)</span> y <span class="math inline">\(\dot{\mathbf q}(t)\)</span> pertenecen al plano vectorial fijo perpendicular a <span class="math inline">\(\boldsymbol\ell\)</span>.</p>
+<p><strong>Demostración.</strong> P13 expresa <span class="math inline">\(\boldsymbol\ell\)</span> como un producto perpendicular a sus dos factores. Por tanto <span class="math inline">\(\boldsymbol\ell\cdot\mathbf q=\boldsymbol\ell\cdot\dot{\mathbf q}=0\)</span> en cada instante. Al ser constante y no nulo, <span class="math inline">\(\boldsymbol\ell\)</span> define un único plano vectorial fijo. <span class="math inline">\(\square\)</span></p>
+<p>La separación nunca puede anularse en ese intervalo: si <span class="math inline">\(\mathbf q=0\)</span> y las velocidades son finitas, P13 daría <span class="math inline">\(\boldsymbol\ell=0\)</span>. Cuando <span class="math inline">\(\boldsymbol\ell=0\)</span>, no se obtiene un plano privilegiado. Bajo hipótesis adicionales sobre una fuerza central regular puede estudiarse el movimiento radial; el mero valor cero del producto no resuelve por sí solo todo el problema dinámico.</p>
+<p>Para un par aislado con interacciones centrales, el centro se traslada uniformemente y el momento angular relativo se conserva. Para conocer cuánto cambia la separación necesitamos además la ley de fuerza y los datos iniciales. Incluso fijar un momento angular no nulo deja libre la componente radial de la velocidad en un estado de separación dada. Esa libertad afecta la energía y la trayectoria.</p>
+<p><span id="fispm-t1-c15-mp0008"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP08.</strong> Usa una conservación para reducir las incógnitas. Comprueba después qué ecuaciones y datos siguen haciendo falta para reconstruir el movimiento.</p>
+<section id="ejercicios-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-7">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0015"></span></p>
+<p><strong>Ejercicio FPM-I-15-E15.</strong> Sean <span class="math inline">\(m_1=m\)</span> y <span class="math inline">\(m_2=3m\)</span>. En cierto instante, <span class="math inline">\(\mathbf q=a\mathbf e_x\)</span> y <span class="math inline">\(\dot{\mathbf q}=w\mathbf e_x+u\mathbf e_y\)</span>, con <span class="math inline">\(a&gt;0\)</span>. Calcula el momento angular interno y la energía cinética relativa. ¿El primero determina la segunda?</p>
+<p><strong>Solución.</strong> La masa reducida es <span class="math inline">\(\mu=3m/4\)</span>, de modo que <span class="math inline">\(\boldsymbol\ell=(3mau/4)\mathbf e_z\)</span>. La energía cinética relativa es <span class="math inline">\(K_{\mathrm{rel}}=\mu(w^2+u^2)/2=3m(w^2+u^2)/8\)</span>. El momento angular determina <span class="math inline">\(u\)</span> cuando <span class="math inline">\(m\)</span> y <span class="math inline">\(a\)</span> están dados, pero deja libre <span class="math inline">\(w\)</span>. Dos estados con el mismo momento angular pueden tener energías diferentes por su movimiento radial.</p>
+<p><span id="fispm-t1-c15-e0016"></span></p>
+<p><strong>Ejercicio FPM-I-15-E16.</strong> Un par de partículas tiene momento angular interno constante no nulo. Su centro se mueve según <span class="math inline">\(\mathbf R(t)=\mathbf R_0+\mathbf Vt\)</span>. Demuestra que cada partícula permanece en un plano móvil paralelo al plano relativo. Determina cuándo ese plano es fijo en el laboratorio.</p>
+<p><strong>Solución.</strong> Sea <span class="math inline">\(\mathbf n=\boldsymbol\ell/|\boldsymbol\ell|\)</span>. Por P14, <span class="math inline">\(\mathbf n\cdot\mathbf q=0\)</span>. Las fórmulas de la prueba de P13 dan <span class="math inline">\(\mathbf n\cdot(\mathbf r_i-\mathbf R)=0\)</span> para ambos miembros. Su plano común es, en cada instante, <span class="math inline">\(\mathbf n\cdot(\mathbf x-\mathbf R(t))=0\)</span>. La orientación es constante, pero su distancia orientada al origen cambia como <span class="math inline">\(\mathbf n\cdot\mathbf R_0+(\mathbf n\cdot\mathbf V)t\)</span>. Es fijo en el laboratorio exactamente cuando <span class="math inline">\(\mathbf n\cdot\mathbf V=0\)</span>. La planaridad del movimiento relativo no garantiza que las trayectorias absolutas estén en un plano fijo.</p>
+<p><span id="fispm-t1-c15-s09"></span></p>
+<p><span id="fpm-i-15-s09"></span></p>
+</section>
+</section>
+<section id="leer-un-movimiento-en-coordenadas-polares" class="level2">
+<h2 class="anchored" data-anchor-id="leer-un-movimiento-en-coordenadas-polares">§9 — Leer un movimiento en coordenadas polares</h2>
+<p>Un momento angular constante puede acompañar una velocidad angular variable. El ejemplo rectilíneo de §1 ya lo mostró. Para comprender la relación conviene separar dos cambios que se mezclan en las coordenadas cartesianas: la distancia al punto de referencia y la dirección desde la que se ve la partícula.</p>
+<p>Elegimos un origen fijo <span class="math inline">\(O\)</span> en un plano fijo del marco inercial y ejes cartesianos ortonormales orientados. Mientras la partícula no pase por <span class="math inline">\(O\)</span>, podemos escribir su posición mediante una distancia <span class="math inline">\(\rho&gt;0\)</span> y un ángulo <span class="math inline">\(\theta\)</span>:</p>
+<p><span class="math display">\[
+\mathbf r=\rho\mathbf e_r,
+\qquad
+\mathbf e_r=(\cos\theta,\sin\theta,0),
+\qquad
+\mathbf e_\theta=(-\sin\theta,\cos\theta,0).
+\]</span></p>
+<p>El ángulo se toma en radianes y aumenta en sentido antihorario respecto de la normal <span class="math inline">\(\mathbf e_z\)</span>. En una trayectoria continua que evita el origen, se puede seguir una elección continua de <span class="math inline">\(\theta\)</span> a lo largo de un intervalo, aunque dé más de una vuelta. La representación por un ángulo dentro de <span class="math inline">\([0,2\pi)\)</span> necesitaría saltos artificiales; esa discontinuidad de representación no pertenece al movimiento.</p>
+<p><span id="fispm-t1-c15-d0008"></span></p>
+<p><strong>Definición FPM-I-15-D08 — Componentes polares.</strong> Para un vector planar <span class="math inline">\(\mathbf w\)</span>, sus componentes radial y tangencial son <span class="math inline">\(w_r=\mathbf w\cdot\mathbf e_r\)</span> y <span class="math inline">\(w_\theta=\mathbf w\cdot\mathbf e_\theta\)</span>. Los vectores de esta base dependen de la posición angular y, por tanto, del tiempo.</p>
+<p><span id="fispm-t1-c15-p0015"></span></p>
+<p><strong>Proposición FPM-I-15-P15 — Velocidad y aceleración polares.</strong> Si <span class="math inline">\(\rho\)</span> y <span class="math inline">\(\theta\)</span> son dos veces diferenciables y <span class="math inline">\(\rho&gt;0\)</span>, entonces</p>
+<p><span class="math display">\[
+\mathbf v=\dot\rho\,\mathbf e_r+\rho\dot\theta\,\mathbf e_\theta,
+\]</span></p>
+<p><span class="math display">\[
+\mathbf a=(\ddot\rho-\rho\dot\theta^2)\mathbf e_r
++(\rho\ddot\theta+2\dot\rho\dot\theta)\mathbf e_\theta.
+\]</span></p>
+<p><strong>Demostración.</strong> Derivar las expresiones trigonométricas da <span class="math inline">\(\dot{\mathbf e}_r=\dot\theta\mathbf e_\theta\)</span> y <span class="math inline">\(\dot{\mathbf e}_\theta=-\dot\theta\mathbf e_r\)</span>. La primera derivación de <span class="math inline">\(\rho\mathbf e_r\)</span> produce la fórmula de velocidad. Al derivarla otra vez, los términos radiales son <span class="math inline">\(\ddot\rho\mathbf e_r-\rho\dot\theta^2\mathbf e_r\)</span> y los tangenciales son <span class="math inline">\(\dot\rho\dot\theta\mathbf e_\theta+\dot\rho\dot\theta\mathbf e_\theta+\rho\ddot\theta\mathbf e_\theta\)</span>. Reunirlos da la aceleración. <span class="math inline">\(\square\)</span></p>
+<p>El término <span class="math inline">\(-\rho\dot\theta^2\)</span> aparece porque la dirección radial gira. También <span class="math inline">\(2\dot\rho\dot\theta\)</span> registra el cambio simultáneo del radio y de la dirección. Omitir la derivación de la base eliminaría ambos términos y alteraría las ecuaciones físicas.</p>
+<p><span id="fispm-t1-c15-p0016"></span></p>
+<p><strong>Proposición FPM-I-15-P16 — Balance planar en forma polar.</strong> Para una partícula de masa constante,</p>
+<p><span class="math display">\[
+L_z=m\rho^2\dot\theta,
+\qquad
+\tau_z=\rho F_\theta,
+\qquad
+\frac{d}{dt}(m\rho^2\dot\theta)=\rho F_\theta.
+\]</span></p>
+<p><strong>Demostración.</strong> En D01, el producto de <span class="math inline">\(\rho\mathbf e_r\)</span> con <span class="math inline">\(m\dot\rho\mathbf e_r\)</span> es cero, y <span class="math inline">\(\mathbf e_r\times\mathbf e_\theta=\mathbf e_z\)</span> da el primer resultado. Descomponer <span class="math inline">\(\mathbf F=F_r\mathbf e_r+F_\theta\mathbf e_\theta\)</span> produce el segundo. P03 da el tercero. También se obtiene multiplicando por <span class="math inline">\(\rho\)</span> la ecuación tangencial de Newton deducida de P15. <span class="math inline">\(\square\)</span></p>
+<p>Cuando <span class="math inline">\(F_\theta=0\)</span>, el producto <span class="math inline">\(\rho^2\dot\theta\)</span> es constante. Si el radio disminuye, la magnitud de <span class="math inline">\(\dot\theta\)</span> crece para un momento angular no nulo. Esta conclusión no requiere que el movimiento sea circular. En un movimiento circular de radio fijo, en cambio, la relación se reduce a <span class="math inline">\(L_z=m\rho^2\dot\theta\)</span> con coeficiente constante.</p>
+<p>Una fuerza radial puede hacer que <span class="math inline">\(\rho\)</span> cambie y, con ello, que cambie <span class="math inline">\(\dot\theta\)</span>. Su torque sigue siendo cero. El torque controla la derivada del momento angular; usarlo directamente como medida del cambio de velocidad angular sólo es válido cuando se han controlado los otros factores.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><span id="fispm-t1-c15-mp0009"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP09.</strong> Al derivar en coordenadas polares, deriva también la base. Mantén separadas la rapidez tangencial <span class="math inline">\(\rho|\dot\theta|\)</span>, la velocidad angular y el momento angular.</p>
+<section id="ejercicios-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-8">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0017"></span></p>
+<p><strong>Ejercicio FPM-I-15-E17.</strong> Una partícula conserva <span class="math inline">\(L_z\ne0\)</span>. En dos instantes, sus distancias al origen son <span class="math inline">\(a\)</span> y <span class="math inline">\(2a\)</span>, con <span class="math inline">\(a&gt;0\)</span>. Compara sus velocidades angulares y sus rapideces tangenciales. ¿Puede compararse su rapidez total con esos datos?</p>
+<p><strong>Solución.</strong> P16 da <span class="math inline">\(\dot\theta_b=\dot\theta_a/4\)</span>. La velocidad tangencial orientada es <span class="math inline">\(v_\theta=L_z/(m\rho)\)</span>, de modo que <span class="math inline">\(v_{\theta,b}=v_{\theta,a}/2\)</span>. Los signos se mantienen porque <span class="math inline">\(L_z\)</span> es fijo y los radios son positivos. La rapidez total satisface <span class="math inline">\(|\mathbf v|^2=\dot\rho^2+v_\theta^2\)</span>. Las velocidades radiales de ambos estados no están dadas, por lo que la razón de las rapideces totales queda indeterminada.</p>
+<p><span id="fispm-t1-c15-e0018"></span></p>
+<p><strong>Ejercicio FPM-I-15-E18.</strong> En un intervalo con <span class="math inline">\(\rho&gt;0\)</span>, se prescribe <span class="math inline">\(\rho(t)=a+ct\)</span> y <span class="math inline">\(\theta(t)=\omega t\)</span>, con <span class="math inline">\(a&gt;0\)</span> y <span class="math inline">\(\omega\ne0\)</span>. Calcula la fuerza necesaria y decide cuándo puede ser puramente radial.</p>
+<p><strong>Solución.</strong> Las derivadas son <span class="math inline">\(\dot\rho=c\)</span>, <span class="math inline">\(\ddot\rho=0\)</span>, <span class="math inline">\(\dot\theta=\omega\)</span> y <span class="math inline">\(\ddot\theta=0\)</span>. P15 y Newton dan <span class="math inline">\(F_r=-m(a+ct)\omega^2\)</span> y <span class="math inline">\(F_\theta=2mc\omega\)</span>. El torque es <span class="math inline">\(2mc\omega(a+ct)\)</span>, igual a la derivada de <span class="math inline">\(m(a+ct)^2\omega\)</span>. Dado que <span class="math inline">\(\omega\ne0\)</span>, la fuerza es puramente radial exactamente cuando <span class="math inline">\(c=0\)</span>. Un radio que cambia linealmente y una velocidad angular no nula constante requieren fuerza tangencial.</p>
+<p><span id="fispm-t1-c15-s10"></span></p>
+<p><span id="fpm-i-15-s10"></span></p>
+</section>
+</section>
+<section id="el-área-que-barre-una-dirección" class="level2">
+<h2 class="anchored" data-anchor-id="el-área-que-barre-una-dirección">§10 — El área que barre una dirección</h2>
+<p>La relación <span class="math inline">\(\rho^2\dot\theta=\text{constante}\)</span> tiene una lectura geométrica: el segmento que une el origen con la partícula barre áreas iguales en tiempos iguales. Podemos obtenerla sin conocer la forma de la trayectoria.</p>
+<p>Para un pequeño cambio de ángulo, el área de un sector circular de radio <span class="math inline">\(\rho\)</span> es <span class="math inline">\(\rho^2\,d\theta/2\)</span>. Si el radio cambia durante el movimiento, usamos esa relación local e integramos. La orientación cuenta: un giro antihorario contribuye con signo positivo; uno horario, con signo negativo.</p>
+<p><span id="fispm-t1-c15-d0009"></span></p>
+<p><strong>Definición FPM-I-15-D09 — Área barrida orientada.</strong> Para una trayectoria planar diferenciable respecto de un origen fijo,</p>
+<p><span class="math display">\[
+\mathcal A(t)-\mathcal A(t_a)
+=\frac12\int_{t_a}^{t}
+\bigl(x\dot y-y\dot x\bigr)\,ds.
+\]</span></p>
+<p>La fórmula cartesiana sigue teniendo sentido en un paso por el origen. Cuando hay coordenadas polares regulares, el integrando es <span class="math inline">\(\rho^2\dot\theta\)</span>. La derivada <span class="math inline">\(\dot{\mathcal A}\)</span> se llama velocidad areolar orientada.</p>
+<p><span id="fispm-t1-c15-p0017"></span></p>
+<p><strong>Proposición FPM-I-15-P17 — Relación entre área y momento angular.</strong></p>
+<p><span class="math display">\[
+\dot{\mathcal A}=\frac{L_z}{2m}.
+\]</span></p>
+<p>Si <span class="math inline">\(L_z\)</span> es constante, para cualesquiera <span class="math inline">\(t_a,t_b\)</span> del intervalo,</p>
+<p><span class="math display">\[
+\mathcal A(t_b)-\mathcal A(t_a)
+=\frac{L_z}{2m}(t_b-t_a).
+\]</span></p>
+<p><strong>Demostración.</strong> El teorema fundamental del cálculo aplicado a D09 da <span class="math inline">\(\dot{\mathcal A}=(x\dot y-y\dot x)/2\)</span>. La expresión cartesiana de D01 identifica ese numerador con <span class="math inline">\(L_z/m\)</span>. Integrar cuando <span class="math inline">\(L_z\)</span> es constante da la segunda fórmula. <span class="math inline">\(\square\)</span></p>
+<p>Para un momento no nulo constante, el sentido del giro tampoco puede cambiar mientras <span class="math inline">\(\rho&gt;0\)</span>: P16 fija el signo de <span class="math inline">\(\dot\theta\)</span>. La magnitud de la velocidad areolar es constante. Si la trayectoria se cruza o recorre varias veces una región, D09 contabiliza las áreas barridas con orientación y multiplicidad. No mide necesariamente el área del conjunto de puntos visitado una sola vez.</p>
+<p><span id="fispm-t1-c15-p0018"></span></p>
+<p><strong>Proposición FPM-I-15-P18 — Converso planar local.</strong> Para una partícula de masa constante, trayectoria dos veces diferenciable, <span class="math inline">\(\rho&gt;0\)</span> y fuerza total planar que satisface Newton, una velocidad areolar orientada constante implica fuerza total radial respecto del origen.</p>
+<p><strong>Demostración.</strong> P17 da <span class="math inline">\(L_z\)</span> constante, de modo que <span class="math inline">\(\tau_z=0\)</span> por P03. P16 da <span class="math inline">\(\rho F_\theta=0\)</span>. Como <span class="math inline">\(\rho&gt;0\)</span>, resulta <span class="math inline">\(F_\theta=0\)</span>. En el plano, la fuerza queda paralela a <span class="math inline">\(\mathbf e_r\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La conclusión se refiere a la fuerza total y a ese punto fijo. No identifica la ley de magnitud de la fuerza ni cada contribución individual. Tampoco prueba una ley gravitatoria inversa del cuadrado. En tres dimensiones, conservar sólo una velocidad areolar proyectada fija una componente del torque; el converso requiere la hipótesis planar que se declaró.</p>
+<p>La ley de áreas aparecerá de nuevo al estudiar las órbitas de Kepler. Aquí tenemos su estructura mecánica: el balance angular relaciona geometría y fuerza. La identificación de una órbita concreta exigirá otras ecuaciones y datos.</p>
+<p><span id="fispm-t1-c15-mp0010"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP10.</strong> Precisa el origen y la orientación del área. Una regularidad areolar permite inferir torque bajo hipótesis dinámicas; la forma de la fuerza requiere información adicional.</p>
+<section id="ejercicios-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-9">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0019"></span></p>
+<p><strong>Ejercicio FPM-I-15-E19.</strong> Una partícula de masa <span class="math inline">\(3\,\mathrm{kg}\)</span> tiene momento angular constante <span class="math inline">\(L_z=-12\,\mathrm{kg\,m^2\,s^{-1}}\)</span>. Calcula el área orientada barrida en <span class="math inline">\(5\,\mathrm s\)</span> y explica el signo.</p>
+<p><strong>Solución.</strong> P17 da <span class="math inline">\(\dot{\mathcal A}=-12/(2\cdot3)=-2\,\mathrm{m^2\,s^{-1}}\)</span>. En cinco segundos la contribución orientada es <span class="math inline">\(-10\,\mathrm{m^2}\)</span>. El signo indica giro horario en la orientación elegida. La magnitud barrida, contada con multiplicidad si hubiera vueltas repetidas, es <span class="math inline">\(10\,\mathrm{m^2}\)</span>.</p>
+<p><span id="fispm-t1-c15-e0020"></span></p>
+<p><strong>Ejercicio FPM-I-15-E20.</strong> Se observa un movimiento planar regular que evita el origen y tiene velocidad areolar constante. Alguien concluye que la fuerza total es gravitatoria, con magnitud proporcional a <span class="math inline">\(1/\rho^2\)</span>. Evalúa la conclusión.</p>
+<p><strong>Solución.</strong> Si aceptamos masa constante y Newton, P18 permite concluir que la fuerza total es radial. La ley de magnitud no queda determinada por esa observación. Un contraejemplo es una partícula libre en <span class="math inline">\(\mathbf r=(ut,b,0)\)</span> con <span class="math inline">\(b\ne0\)</span>: la fuerza es cero y <span class="math inline">\(x\dot y-y\dot x=-bu\)</span> es constante. Otro es una órbita circular bajo una fuerza elástica <span class="math inline">\(\mathbf F=-k\mathbf r\)</span>, con <span class="math inline">\(k=m\omega^2&gt;0\)</span>: su área crece a razón constante y la ley elástica tiene magnitud <span class="math inline">\(k\rho\)</span>. El dato areolar no distingue esas leyes.</p>
+<p><span id="fispm-t1-c15-s11"></span></p>
+<p><span id="fpm-i-15-s11"></span></p>
+</section>
+</section>
+<section id="fuerza-radial-torque-y-energía" class="level2">
+<h2 class="anchored" data-anchor-id="fuerza-radial-torque-y-energía">§11 — Fuerza radial, torque y energía</h2>
+<p>La conservación angular responde a la dirección de la fuerza respecto de un punto. La energía requiere conocer además su trabajo. Una fuerza radial tiene torque cero, pero puede realizar trabajo cuando cambia el radio.</p>
+<p><span id="fispm-t1-c15-p0019"></span></p>
+<p><strong>Proposición FPM-I-15-P19 — Potencia en el movimiento planar.</strong> Para una partícula sometida a fuerza total <span class="math inline">\(\mathbf F\)</span>,</p>
+<p><span class="math display">\[
+\frac{dK}{dt}
+=F_r\dot\rho+F_\theta\rho\dot\theta
+=F_r\dot\rho+\tau_z\dot\theta.
+\]</span></p>
+<p><strong>Demostración.</strong> El teorema de la energía cinética del capítulo I-12 da <span class="math inline">\(\dot K=\mathbf F\cdot\mathbf v\)</span>. P15 descompone la velocidad en una base ortonormal. El producto escalar es <span class="math inline">\(F_r\dot\rho+F_\theta\rho\dot\theta\)</span>. Por P16, <span class="math inline">\(\rho F_\theta=\tau_z\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Por tanto, <span class="math inline">\(\tau_z=0\)</span> elimina la potencia tangencial, pero deja el término <span class="math inline">\(F_r\dot\rho\)</span>. Una fuerza atractiva puede aumentar la energía cinética mientras la partícula se acerca al origen y disminuirla mientras se aleja. El momento angular permanece constante en ambos procesos.</p>
+<p>Para un movimiento circular de radio fijo, <span class="math inline">\(\dot\rho=0\)</span> y P19 se reduce a <span class="math inline">\(\dot K=\tau_z\dot\theta\)</span>. Esta relación ayuda a interpretar el trabajo de una fuerza tangencial. Al dejar libre el radio hay que recuperar el término radial.</p>
+<p><span id="fispm-t1-c15-d0010"></span></p>
+<p><strong>Definición FPM-I-15-D10 — Potencial radial, posiblemente dependiente del tiempo.</strong> Una función diferenciable <span class="math inline">\(U(\rho,t)\)</span> representa una fuerza radial cuando <span class="math inline">\(F_r=-\partial_\rho U\)</span> y <span class="math inline">\(F_\theta=0\)</span>. La presencia de <span class="math inline">\(t\)</span> permite describir un agente que cambia la interacción; no se presupone conservación de energía mecánica.</p>
+<p><span id="fispm-t1-c15-p0020"></span></p>
+<p><strong>Proposición FPM-I-15-P20 — Balance energético con potencial radial.</strong> Si la fuerza total está dada por D10,</p>
+<p><span class="math display">\[
+\frac{d}{dt}(K+U)=\partial_t U,
+\qquad
+\frac{dL_z}{dt}=0.
+\]</span></p>
+<p>En particular, cuando <span class="math inline">\(U\)</span> es independiente del tiempo, <span class="math inline">\(K+U\)</span> se conserva.</p>
+<p><strong>Demostración.</strong> P19 da <span class="math inline">\(\dot K=-(\partial_\rho U)\dot\rho\)</span>. La regla de la cadena da <span class="math inline">\(\dot U=(\partial_\rho U)\dot\rho+\partial_t U\)</span>. Los términos radiales se cancelan al sumar. La conservación angular procede de <span class="math inline">\(F_\theta=0\)</span> y P16. <span class="math inline">\(\square\)</span></p>
+<p>P20 permite conservar momento angular mientras cambia la energía mecánica. Por ejemplo, para un resorte cuya rigidez varía según una función prescrita <span class="math inline">\(k(t)&gt;0\)</span>, el modelo <span class="math inline">\(\mathbf F=-k(t)\mathbf r\)</span> tiene <span class="math inline">\(U=k(t)\rho^2/2\)</span>. El agente que modifica la rigidez aporta o extrae energía; el balance angular sigue teniendo torque cero respecto del centro de la fuerza.</p>
+<p>Agregar a <span class="math inline">\(U\)</span> una función arbitraria <span class="math inline">\(c(t)\)</span> conserva la fuerza, pero modifica tanto <span class="math inline">\(K+U\)</span> como el término <span class="math inline">\(\partial_t U\)</span> en la misma cantidad derivada. Por eso, al interpretar un intercambio energético mediante un potencial dependiente del tiempo, debe mantenerse declarada la convención del potencial y el modelo del agente. Para el potencial autónomo, agregar una constante sólo cambia el cero de energía.</p>
+<p><span id="fispm-t1-c15-mp0011"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP11.</strong> Controla torque y potencia por separado. La fuerza radial conserva momento angular; la conservación de energía mecánica necesita además un balance energético que incluya las dependencias temporales y los agentes relevantes.</p>
+<section id="ejercicios-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-10">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0021"></span></p>
+<p><strong>Ejercicio FPM-I-15-E21.</strong> Una partícula está sometida únicamente a <span class="math inline">\(\mathbf F=-k(t)\mathbf r\)</span>, con <span class="math inline">\(k(t)&gt;0\)</span> diferenciable. Decide qué se conserva respecto del origen y calcula la tasa de cambio de <span class="math inline">\(E=K+k(t)\rho^2/2\)</span>.</p>
+<p><strong>Solución.</strong> La fuerza es radial y su producto con <span class="math inline">\(\mathbf r\)</span> es cero, por lo que el momento angular se conserva. El potencial elegido es <span class="math inline">\(U=k(t)\rho^2/2\)</span>, y P20 da <span class="math inline">\(\dot E=\dot k(t)\rho^2/2\)</span>. Si la rigidez aumenta, esa energía mecánica crece; si disminuye, decrece, salvo en instantes con <span class="math inline">\(\rho=0\)</span>. La variación pertenece al modelo de interacción regulada por un agente externo. Un torque cero no obliga a que ese agente realice trabajo cero.</p>
+<p><span id="fispm-t1-c15-e0022"></span></p>
+<p><strong>Ejercicio FPM-I-15-E22.</strong> En cierto instante, <span class="math inline">\(\rho=2\,\mathrm m\)</span>, <span class="math inline">\(\dot\rho=-3\,\mathrm{m\,s^{-1}}\)</span>, <span class="math inline">\(\dot\theta=1\,\mathrm{s^{-1}}\)</span>, <span class="math inline">\(F_r=-5\,\mathrm N\)</span> y <span class="math inline">\(F_\theta=4\,\mathrm N\)</span>. Calcula torque y potencia. ¿Qué parte de la potencia proviene del cambio radial?</p>
+<p><strong>Solución.</strong> El torque es <span class="math inline">\(\tau_z=\rho F_\theta=8\,\mathrm{N\,m}\)</span>. La potencia tangencial es <span class="math inline">\(\tau_z\dot\theta=8\,\mathrm W\)</span>. La radial es <span class="math inline">\(F_r\dot\rho=(-5)(-3)=15\,\mathrm W\)</span>, positiva porque fuerza y velocidad radial apuntan hacia adentro. La potencia total es <span class="math inline">\(23\,\mathrm W\)</span>. Identificar toda la potencia con <span class="math inline">\(\tau_z\dot\theta\)</span> omitiría <span class="math inline">\(15\,\mathrm W\)</span>.</p>
+<p><span id="fispm-t1-c15-s12"></span></p>
+<p><span id="fpm-i-15-s12"></span></p>
+</section>
+</section>
+<section id="impulsos-y-posición-durante-el-contacto" class="level2">
+<h2 class="anchored" data-anchor-id="impulsos-y-posición-durante-el-contacto">§12 — Impulsos y posición durante el contacto</h2>
+<p>Una fuerza muy intensa durante un tiempo breve puede producir un cambio importante de momento. El balance angular sigue siendo una integral de torque. Para reducirla al producto de una posición por un impulso necesitamos controlar cuánto se movió el punto de aplicación.</p>
+<p>Tomemos una partícula y un origen fijo <span class="math inline">\(O\)</span>. Para la fuerza total durante <span class="math inline">\([t_a,t_b]\)</span>, los balances exactos son</p>
+<p><span class="math display">\[
+\Delta\mathbf p=\mathbf J=\int_{t_a}^{t_b}\mathbf F(t)\,dt,
+\qquad
+\Delta\mathbf L_O=\int_{t_a}^{t_b}\mathbf r(t)\times\mathbf F(t)\,dt.
+\]</span></p>
+<p>El segundo se obtiene integrando P03. La posición dentro de la integral es la posición durante la acción de la fuerza. Sustituirla por una posición representativa produce, en general, una aproximación.</p>
+<p><span id="fispm-t1-c15-d0011"></span></p>
+<p><strong>Definición FPM-I-15-D11 — Impulso de magnitud acumulada.</strong> Para una fuerza integrable, definimos</p>
+<p><span class="math display">\[
+J_{\mathrm{abs}}=\int_{t_a}^{t_b}|\mathbf F(t)|\,dt.
+\]</span></p>
+<p>Siempre <span class="math inline">\(|\mathbf J|\leq J_{\mathrm{abs}}\)</span>. La desigualdad puede ser estricta si la fuerza cambia de dirección y sus contribuciones al impulso vectorial se cancelan.</p>
+<p><span id="fispm-t1-c15-p0021"></span></p>
+<p><strong>Proposición FPM-I-15-P21 — Cota de la aproximación de posición fija.</strong> Si <span class="math inline">\(|\mathbf r(t)-\mathbf r_*|\leq\varepsilon\)</span> durante el contacto, entonces</p>
+<p><span class="math display">\[
+\left|\Delta\mathbf L_O-\mathbf r_*\times\mathbf J\right|
+\leq\varepsilon J_{\mathrm{abs}}.
+\]</span></p>
+<p><strong>Demostración.</strong> Restar <span class="math inline">\(\mathbf r_*\times\int\mathbf F\,dt\)</span> del balance exacto deja <span class="math inline">\(\int(\mathbf r-\mathbf r_*)\times\mathbf F\,dt\)</span>. La desigualdad triangular para integrales y <span class="math inline">\(|\mathbf a\times\mathbf b|\leq|\mathbf a||\mathbf b|\)</span> dan una cota <span class="math inline">\(\int\varepsilon|\mathbf F|\,dt=\varepsilon J_{\mathrm{abs}}\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La duración pequeña no garantiza por sí sola que <span class="math inline">\(\varepsilon\)</span> sea pequeño: también cuenta la rapidez durante el intervalo. Si ésta está acotada por <span class="math inline">\(v_{\max}\)</span> y elegimos <span class="math inline">\(\mathbf r_*=\mathbf r(t_a)\)</span>, entonces <span class="math inline">\(\varepsilon\leq v_{\max}(t_b-t_a)\)</span>. La cota angular queda expresada con datos de movimiento y de fuerza.</p>
+<p>La cota es absoluta. Para estimar un error relativo hay que dividir por una escala angular no nula. Si <span class="math inline">\(\mathbf r_*\times\mathbf J=0\)</span>, esa cantidad no sirve como denominador. Tampoco se puede sustituir <span class="math inline">\(J_{\mathrm{abs}}\)</span> por <span class="math inline">\(|\mathbf J|\)</span> en P21: una fuerza puede acumular impulsos grandes de sentidos opuestos y dejar un impulso total pequeño.</p>
+<p><span id="fispm-t1-c15-p0022"></span></p>
+<p><strong>Proposición FPM-I-15-P22 — Impulso y cambio del momento angular interno de un par.</strong> En el modelo de un impulso instantáneo a posiciones fijas <span class="math inline">\(\mathbf r_1,\mathbf r_2\)</span>, si los cambios de momento son <span class="math inline">\(\Delta\mathbf p_1=\mathbf j\)</span> y <span class="math inline">\(\Delta\mathbf p_2=-\mathbf j\)</span>, entonces <span class="math inline">\(\Delta\mathbf P=0\)</span> y</p>
+<p><span class="math display">\[
+\Delta\boldsymbol\ell=\mathbf q\times\mathbf j,
+\qquad
+\mathbf q=\mathbf r_1-\mathbf r_2.
+\]</span></p>
+<p>Si <span class="math inline">\(\mathbf j\)</span> es paralela a <span class="math inline">\(\mathbf q\)</span>, el momento angular interno se conserva.</p>
+<p><strong>Demostración.</strong> Las posiciones y el centro <span class="math inline">\(\mathbf R\)</span> no cambian durante el salto idealizado. Como <span class="math inline">\(\Delta\mathbf P=0\)</span>, P11 implica que <span class="math inline">\(\Delta\boldsymbol\ell=\Delta\mathbf L_A\)</span> para cualquier punto de posición fija durante el salto. D03 da <span class="math inline">\(\Delta\mathbf L_A=(\mathbf r_1-\mathbf R_A)\times\mathbf j-(\mathbf r_2-\mathbf R_A)\times\mathbf j=\mathbf q\times\mathbf j\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Para un contacto de duración finita, la afirmación exacta se formula mediante los torques internos durante el contacto. Si las fuerzas del par son centrales en cada instante, P08 conserva el momento angular total sin necesidad de congelar posiciones. La aproximación instantánea resulta útil para conectar estados, pero debe conservar esas condiciones de interacción.</p>
+<p>Ni P21 ni P22 suministran una ley de restitución o el reparto de energía. Si el contacto tiene fricción y los objetos pueden girar internamente, un modelo que sólo conserva sus centros como partículas puede perder una parte del momento angular. El estudio de cuerpos rígidos añadirá esa información.</p>
+<p><span id="fispm-t1-c15-mp0012"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP12.</strong> En un balance impulsivo, declara si las posiciones son exactas, congeladas por idealización o aproximadas con una cota. Usa magnitudes acumuladas para controlar errores cuando hay cancelaciones.</p>
+<section id="ejercicios-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-11">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0023"></span></p>
+<p><strong>Ejercicio FPM-I-15-E23.</strong> En un modelo de impulso instantáneo, una partícula está en <span class="math inline">\((a,b,0)\)</span> y recibe <span class="math inline">\(\mathbf J=(0,j,0)\)</span>. Calcula los cambios de momento angular respecto de <span class="math inline">\(O\)</span> y de <span class="math inline">\(B=(a,0,0)\)</span>.</p>
+<p><strong>Solución.</strong> Con posiciones fijas, <span class="math inline">\(\Delta\mathbf L_O=(a,b,0)\times(0,j,0)=aj\,\mathbf e_z\)</span>. Respecto de <span class="math inline">\(B\)</span>, la posición relativa es <span class="math inline">\((0,b,0)\)</span> y el cambio angular es cero. El impulso pasa por la línea que contiene a <span class="math inline">\(B\)</span>. P05 también lo verifica: <span class="math inline">\(\Delta\mathbf L_B=\Delta\mathbf L_O-\mathbf R_B\times\Delta\mathbf p=aj\mathbf e_z-aj\mathbf e_z=0\)</span>.</p>
+<p><span id="fispm-t1-c15-e0024"></span></p>
+<p><strong>Ejercicio FPM-I-15-E24.</strong> Durante un contacto, el punto de aplicación se desplaza como máximo <span class="math inline">\(2\,\mathrm{mm}\)</span> respecto de la posición elegida y <span class="math inline">\(J_{\mathrm{abs}}=30\,\mathrm{N\,s}\)</span>. Estima el error angular absoluto. Si el producto aproximado tiene magnitud <span class="math inline">\(0,01\,\mathrm{kg\,m^2\,s^{-1}}\)</span>, ¿la cota garantiza un error pequeño respecto de ese valor?</p>
+<p><strong>Solución.</strong> P21 da <span class="math inline">\(\varepsilon J_{\mathrm{abs}}=0,002\cdot30=0,06\,\mathrm{kg\,m^2\,s^{-1}}\)</span>. La cota es seis veces la magnitud aproximada. Por ello no garantiza una precisión relativa pequeña. El desplazamiento en milímetros puede ser pequeño en una descripción espacial y, aun así, insuficiente para un balance angular cuyo resultado es cercano a cero.</p>
+<p><span id="fispm-t1-c15-e0025"></span></p>
+<p><strong>Ejercicio FPM-I-15-E25.</strong> Dos partículas en separación <span class="math inline">\(\mathbf q=a\mathbf e_x\)</span> reciben impulsos internos <span class="math inline">\(\mathbf j=j\mathbf e_y\)</span> y <span class="math inline">\(-\mathbf j\)</span>, con <span class="math inline">\(a,j&gt;0\)</span>. Calcula los cambios de momento total y de momento angular interno. Explica qué cambiaría si los impulsos fueran radiales.</p>
+<p><strong>Solución.</strong> Los impulsos opuestos dan <span class="math inline">\(\Delta\mathbf P=0\)</span>. P22 da <span class="math inline">\(\Delta\boldsymbol\ell=aj\mathbf e_z\)</span>, no nulo. Si <span class="math inline">\(\mathbf j\)</span> fuese paralelo a <span class="math inline">\(\mathbf q\)</span>, el producto sería cero y ambos momentos se conservarían. El modelo transversal de dos partículas requiere, para describir un sistema físico completo, identificar el agente o grado omitido que intercambia momento angular. La oposición de impulsos controla la suma lineal, pero su geometría controla la angular.</p>
+<p><span id="fispm-t1-c15-e0026"></span></p>
+<p><strong>Ejercicio FPM-I-15-E26.</strong> Una partícula parte del origen con velocidad <span class="math inline">\((u,0,0)\)</span> y recibe una fuerza constante <span class="math inline">\((0,f,0)\)</span> durante <span class="math inline">\(0\leq t\leq T\)</span>, con <span class="math inline">\(m,u,f,T&gt;0\)</span>. Calcula exactamente el cambio angular respecto del origen y compáralo con congelar el punto de aplicación en la posición inicial.</p>
+<p><strong>Solución.</strong> Newton da <span class="math inline">\(\mathbf v(t)=(u,ft/m,0)\)</span> y <span class="math inline">\(\mathbf r(t)=(ut,ft^2/(2m),0)\)</span>. El torque es <span class="math inline">\(\boldsymbol\tau_O(t)=uft\,\mathbf e_z\)</span>. Su integral vale <span class="math inline">\(ufT^2\mathbf e_z/2\)</span>. El momento angular inicial es cero; el final, calculado directamente, es <span class="math inline">\(muT(fT/m)-m[fT^2/(2m)]u=ufT^2/2\)</span>, en la componente <span class="math inline">\(z\)</span>. Congelar <span class="math inline">\(\mathbf r_*=\mathbf r(0)=0\)</span> daría <span class="math inline">\(\mathbf r_*\times\mathbf J=0\)</span> y perdería todo ese cambio. Para <span class="math inline">\(u,f\)</span> fijados el error absoluto tiende a cero como <span class="math inline">\(T^2\)</span>, aunque su proporción respecto del cambio verdadero siga siendo uno. La validez de una aproximación depende de qué escala se quiere resolver.</p>
+<p><span id="fispm-t1-c15-s13"></span></p>
+<p><span id="fpm-i-15-s13"></span></p>
+</section>
+</section>
+<section id="reconstruir-y-poner-a-prueba-una-inferencia" class="level2">
+<h2 class="anchored" data-anchor-id="reconstruir-y-poner-a-prueba-una-inferencia">§13 — Reconstruir y poner a prueba una inferencia</h2>
+<p>Los balances se vuelven más útiles cuando se utilizan para comprobar una descripción concreta. Si conocemos una trayectoria, podemos reconstruir la fuerza exigida por Newton y contrastar su torque con la variación angular. Ese procedimiento también revela lo que una observación incompleta deja indeterminado.</p>
+<p>En un movimiento planar regular, medir <span class="math inline">\(\rho(t)\)</span> y <span class="math inline">\(\theta(t)\)</span> permite calcular ambas componentes de la fuerza por P15. Medir únicamente la velocidad areolar determina <span class="math inline">\(L_z\)</span> y su derivada, pero deja sin fijar la aceleración radial. Por ejemplo, una misma constante <span class="math inline">\(L_z\ne0\)</span> es compatible con radios que aumentan, disminuyen o permanecen constantes, si la fuerza radial se ajusta al movimiento correspondiente.</p>
+<p><span id="fispm-t1-c15-p0023"></span></p>
+<p><strong>Proposición FPM-I-15-P23 — Reconstrucción planar.</strong> Sean <span class="math inline">\(\rho(t)&gt;0\)</span> y <span class="math inline">\(\theta(t)\)</span> dos veces diferenciables. La única fuerza total compatible con la trayectoria prescrita en el modelo newtoniano de masa <span class="math inline">\(m\)</span> es</p>
+<p><span class="math display">\[
+F_r=m(\ddot\rho-\rho\dot\theta^2),
+\qquad
+F_\theta=m(\rho\ddot\theta+2\dot\rho\dot\theta).
+\]</span></p>
+<p>Si <span class="math inline">\(m\rho^2\dot\theta=L\)</span> constante, entonces</p>
+<p><span class="math display">\[
+F_\theta=0,
+\qquad
+F_r=m\ddot\rho-\frac{L^2}{m\rho^3}.
+\]</span></p>
+<p><strong>Demostración.</strong> Newton y P15 dan las primeras expresiones y su unicidad para una trayectoria dada. Derivar <span class="math inline">\(m\rho^2\dot\theta=L\)</span> produce <span class="math inline">\(2\dot\rho\dot\theta+\rho\ddot\theta=0\)</span> al dividir por <span class="math inline">\(m\rho&gt;0\)</span>. La fuerza tangencial se anula. Sustituir <span class="math inline">\(\dot\theta=L/(m\rho^2)\)</span> en la componente radial da la segunda fórmula. <span class="math inline">\(\square\)</span></p>
+<p>Esta reconstrucción describe la fuerza sobre la trayectoria. Para identificar un campo en una región del espacio hace falta más información: otras trayectorias, un modelo funcional o una hipótesis física contrastable. Una ley que coincide con los datos recorridos puede diferir de otra en los lugares que no se visitaron. Del mismo modo, la precisión de una aceleración reconstruida depende de la calidad de las derivadas estimadas; diferenciar datos ruidosos exige un tratamiento de incertidumbre.</p>
+<p>En un problema directo se da la fuerza y se busca el movimiento. En uno inverso se da el movimiento y se busca la fuerza compatible. Confundirlos puede producir una deducción circular: escoger una ley, ajustar sus parámetros con la trayectoria y presentar después esa misma trayectoria como verificación independiente.</p>
+<p><span id="fispm-t1-c15-mp0013"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP13.</strong> Al inferir una fuerza, separa los datos medidos, las derivadas estimadas y el modelo dinámico. Distingue conocer la fuerza sobre una trayectoria de conocer su ley en todo un dominio.</p>
+<section id="ejercicios-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-12">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0027"></span></p>
+<p><strong>Ejercicio FPM-I-15-E27.</strong> Se prescribe, para <span class="math inline">\(t\geq0\)</span>, <span class="math inline">\(\rho(t)=a e^{\gamma t}\)</span> y un momento angular constante <span class="math inline">\(L_z=L\ne0\)</span>, con <span class="math inline">\(a,\gamma&gt;0\)</span>. Obtén <span class="math inline">\(\theta(t)\)</span> a partir de <span class="math inline">\(\theta(0)=0\)</span> y reconstruye la fuerza total. Decide si esa fuerza es atractiva en todos los instantes.</p>
+<p><strong>Solución.</strong> P16 da <span class="math inline">\(\dot\theta=L e^{-2\gamma t}/(ma^2)\)</span>. Integrar produce <span class="math inline">\(\theta(t)=L[1-e^{-2\gamma t}]/(2m\gamma a^2)\)</span>. La aceleración radial de la distancia es <span class="math inline">\(\ddot\rho=\gamma^2\rho\)</span>, y P23 da <span class="math inline">\(F_r=m\gamma^2\rho-L^2/(m\rho^3)\)</span>, con <span class="math inline">\(F_\theta=0\)</span>. La fuerza es atractiva cuando <span class="math inline">\(m^2\gamma^2\rho^4&lt;L^2\)</span>, nula en la igualdad y repulsiva cuando la desigualdad se invierte. Como <span class="math inline">\(\rho\)</span> crece sin cota, termina siendo repulsiva. Es radial durante todo el movimiento y conserva <span class="math inline">\(L\)</span>, aunque su sentido cambie. La posición angular tiende a un valor finito porque la velocidad angular decrece exponencialmente.</p>
+<p><span id="fispm-t1-c15-e0028"></span></p>
+<p><strong>Ejercicio FPM-I-15-E28.</strong> Dos partículas de masa <span class="math inline">\(m\)</span> ocupan inicialmente <span class="math inline">\(\mathbf r_1=a\mathbf e_x\)</span> y <span class="math inline">\(\mathbf r_2=-a\mathbf e_x\)</span>, con velocidades <span class="math inline">\(\mathbf v_1=u\mathbf e_y\)</span> y <span class="math inline">\(\mathbf v_2=-u\mathbf e_y\)</span>, donde <span class="math inline">\(a,u&gt;0\)</span>. No tienen interacción interna y reciben fuerzas externas constantes <span class="math inline">\(\mathbf F_1=f\mathbf e_y\)</span>, <span class="math inline">\(\mathbf F_2=-f\mathbf e_y\)</span>, con <span class="math inline">\(f&gt;0\)</span>, durante un tiempo <span class="math inline">\(T\)</span>. Calcula el movimiento del centro, el momento angular total respecto de él y la variación de energía cinética.</p>
+<p><strong>Solución.</strong> La resultante externa es cero y el momento inicial total también. El centro permanece en el origen. Las posiciones son <span class="math inline">\(\mathbf r_1=a\mathbf e_x+[ut+ft^2/(2m)]\mathbf e_y\)</span> y <span class="math inline">\(\mathbf r_2=-\mathbf r_1\)</span>; las velocidades son <span class="math inline">\(\mathbf v_1=(u+ft/m)\mathbf e_y\)</span> y <span class="math inline">\(\mathbf v_2=-\mathbf v_1\)</span>. Cada producto angular aporta <span class="math inline">\(ma(u+ft/m)\mathbf e_z\)</span>, por lo que <span class="math inline">\(\boldsymbol\ell(t)=2ma(u+ft/m)\mathbf e_z\)</span> y <span class="math inline">\(\Delta\boldsymbol\ell=2afT\mathbf e_z\)</span>. Los torques externos suman <span class="math inline">\(2af\mathbf e_z\)</span>, lo que verifica el balance. La energía cinética total pasa de <span class="math inline">\(mu^2\)</span> a <span class="math inline">\(m(u+fT/m)^2\)</span>, con cambio <span class="math inline">\(2ufT+f^2T^2/m\)</span>. Las fuerzas realizan trabajo positivo sobre partículas que se mueven en sentidos opuestos. Un centro inmóvil y momento lineal conservado coexisten con cambios angulares y energéticos.</p>
+<p><span id="fispm-t1-c15-s14"></span></p>
+<p><span id="fpm-i-15-s14"></span></p>
+</section>
+</section>
+<section id="elegir-el-balance-que-responde-al-problema" class="level2">
+<h2 class="anchored" data-anchor-id="elegir-el-balance-que-responde-al-problema">§14 — Elegir el balance que responde al problema</h2>
+<p>La descripción angular empieza por un punto de referencia. Una vez fijado, las posiciones y momentos dan una cantidad que podemos calcular en cada estado. La ecuación dinámica relaciona su cambio con los torques y, cuando el punto se mueve, con el término de transporte. El centro de masa ofrece una elección particularmente fértil porque separa la traslación colectiva del movimiento interno y cancela ese transporte para masas constantes.</p>
+<p>Esta separación también ayuda a decidir qué se quiere determinar. El torque total informa sobre la variación angular; la resultante informa sobre el momento lineal; la potencia informa sobre la energía cinética. Una de esas sumas puede anularse mientras las otras permanecen distintas de cero. Los ejercicios del capítulo permiten comprobarlo con trayectorias, fuerzas e impulsos explícitos.</p>
+<p><span id="fispm-t1-c15-p0024"></span></p>
+<p><strong>Proposición FPM-I-15-P24 — Conservación en dos referencias fijas.</strong> Sea un sistema material fijo con resultante y torque internos totales nulos. Sean <span class="math inline">\(A,B\)</span> fijos en el marco inercial y <span class="math inline">\(\mathbf d=\mathbf R_B-\mathbf R_A\)</span>. Si <span class="math inline">\(\boldsymbol\tau_A^{\mathrm{ext}}=0\)</span> durante un intervalo, entonces <span class="math inline">\(\mathbf L_A\)</span> se conserva y <span class="math inline">\(\mathbf L_B\)</span> se conserva exactamente cuando</p>
+<p><span class="math display">\[
+\mathbf d\times\mathbf F^{\mathrm{ext}}=0
+\]</span></p>
+<p>en todos los instantes del intervalo, donde <span class="math inline">\(\mathbf F^{\mathrm{ext}}\)</span> es la resultante externa.</p>
+<p><strong>Demostración.</strong> P10 da conservación de <span class="math inline">\(\mathbf L_A\)</span>. La resultante interna nula y Newton dan el balance lineal <span class="math inline">\(\dot{\mathbf P}=\mathbf F^{\mathrm{ext}}\)</span>. Al derivar P05 para puntos fijos,</p>
+<p><span class="math display">\[
+\dot{\mathbf L}_B=-\mathbf d\times\mathbf F^{\mathrm{ext}}.
+\]</span></p>
+<p>Su anulación durante todo el intervalo es equivalente a que <span class="math inline">\(\mathbf L_B\)</span> sea constante. <span class="math inline">\(\square\)</span></p>
+<p>Para P24 se requiere el balance lineal indicado además de la cancelación del torque interno. En los sistemas con fuerzas internas iguales, opuestas y centrales ambos están justificados. Si sólo se sabe que el torque interno total es cero, esa información aislada no garantiza resultante interna cero; el balance lineal debe comprobarse por separado.</p>
+<p>Una partícula bajo una fuerza radial respecto de <span class="math inline">\(A\)</span> conserva su momento angular respecto de <span class="math inline">\(A\)</span>. Si <span class="math inline">\(B\)</span> está fuera de la línea instantánea de la fuerza, su torque respecto de <span class="math inline">\(B\)</span> puede ser no nulo. En cambio, para un sistema sin resultante externa y sin torque externo, la conservación angular se mantiene en cualquier referencia fija. El alcance de la conservación depende del sistema y de sus agentes, además de la geometría.</p>
+<p>Al resolver un problema pueden organizarse las comprobaciones así:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Lo que se busca</th>
+<th>Información necesaria</th>
+<th>Comprobación decisiva</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Momento angular en un estado</td>
+<td>Posiciones, momentos y punto</td>
+<td>Orden del producto, signo y unidades</td>
+</tr>
+<tr class="even">
+<td>Cambio angular durante una interacción</td>
+<td>Torques, intervalo y movimiento del punto</td>
+<td>Torque interno y transporte</td>
+</tr>
+<tr class="odd">
+<td>Conservación de una componente</td>
+<td>Dirección fija y componente de torque</td>
+<td>Derivar la componente correcta</td>
+</tr>
+<tr class="even">
+<td>Movimiento interno del sistema</td>
+<td>Centro de masa y velocidades relativas</td>
+<td>Sumas ponderadas y fuerzas internas</td>
+</tr>
+<tr class="odd">
+<td>Cambio angular impulsivo</td>
+<td>Impulsos y posiciones durante el contacto</td>
+<td>Cota de la posición congelada</td>
+</tr>
+<tr class="even">
+<td>Trayectoria planar completa</td>
+<td>Ley de fuerza y datos iniciales</td>
+<td>Ecuación radial además del balance angular</td>
+</tr>
+</tbody>
+</table>
+<p><span id="fispm-t1-c15-mp0014"></span></p>
+<p><strong>Principio metodológico FPM-I-15-MP14.</strong> Define sistema, marco, punto e intervalo; calcula torques e identifica qué cancela. Usa la conservación que efectivamente se deduce, conserva las incógnitas que siguen libres y verifica el resultado mediante energía, unidades y casos límite cuando aporten información.</p>
+<section id="ejercicios-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicios-13">Ejercicios</h3>
+<p><span id="fispm-t1-c15-e0029"></span></p>
+<p><strong>Ejercicio FPM-I-15-E29.</strong> Una partícula libre tiene posición <span class="math inline">\(\mathbf r(t)=ut\mathbf e_x+b\mathbf e_y\)</span>, con <span class="math inline">\(u,b&gt;0\)</span>. Compara sus momentos angulares respecto del origen fijo y del punto móvil <span class="math inline">\(\mathbf R_A(t)=wt\mathbf e_y\)</span>, con <span class="math inline">\(w&gt;0\)</span>. Un estudiante usa torque cero para afirmar conservación respecto de ambos. Repara su argumento.</p>
+<p><strong>Solución.</strong> Respecto del origen, <span class="math inline">\(\mathbf L_O=-mbu\mathbf e_z\)</span> es constante. Respecto del punto móvil, <span class="math inline">\(\mathbf L_A=-mu(b-wt)\mathbf e_z\)</span>, que cambia a razón <span class="math inline">\(muw\mathbf e_z\)</span>. El torque es cero en ambas referencias porque la fuerza es cero. La ecuación apropiada para el punto móvil es P04: <span class="math inline">\(-\mathbf V_A\times\mathbf p=-(w\mathbf e_y)\times(mu\mathbf e_x)=muw\mathbf e_z\)</span>. El argumento del estudiante necesita la hipótesis de punto fijo o transporte nulo; sólo la cumple el origen.</p>
+<p><span id="fispm-t1-c15-e0030"></span></p>
+<p><strong>Ejercicio FPM-I-15-E30.</strong> En un experimento idealizado, el centro de masa de un conjunto fijo de partículas permanece en reposo y su momento angular interno es constante durante cierto intervalo. ¿Puede concluirse que no hay fuerzas externas, que la energía cinética es constante o que los miembros están en reposo? Justifica cada respuesta.</p>
+<p><strong>Solución.</strong> Un centro en reposo implica <span class="math inline">\(\mathbf P=0\)</span> y, si las fuerzas internas suman cero, resultante externa cero. No exige que cada fuerza externa sea cero. Para verlo, tomemos dos masas iguales en posiciones opuestas respecto del origen, inicialmente en reposo, sometidas a fuerzas externas iguales y opuestas dirigidas a lo largo de esa misma recta. Con fuerza constante <span class="math inline">\(\pm f\mathbf e_x\)</span>, sus posiciones siguen siendo opuestas y sus velocidades son <span class="math inline">\(\pm(ft/m)\mathbf e_x\)</span>. El centro queda inmóvil, y cada momento angular respecto de él es cero porque posición y velocidad son colineales. Sin embargo, ambas partículas se mueven y la energía cinética total crece como <span class="math inline">\(f^2t^2/m\)</span>. Así, los datos colectivos no prueban ausencia de fuerzas, conservación cinética ni reposo de los miembros. Para obtener esas conclusiones harían falta otras hipótesis.</p>
+<p>El momento angular ofrece una reducción poderosa cuando la interacción tiene la geometría adecuada. En el problema de dos cuerpos, la masa reducida y la conservación angular permitirán organizar el movimiento orbital; la gravitación determinará una ley concreta de fuerza. Para cuerpos extensos habrá que recuperar la distribución de masa y los grados internos de rotación. Las cantidades construidas aquí seguirán siendo el punto de partida de esos desarrollos.</p>
+</section>
+</section>
+<section id="notas-de-fuentes" class="level2">
+<h2 class="anchored" data-anchor-id="notas-de-fuentes">Notas de fuentes</h2>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-14-momento-lineal-impulso-y-centro-de-masa.html">Capítulo 14</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-16-gravitacion-newtoniana.html">Capítulo 16</a></p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>MIT OpenCourseWare, <em>Classical Mechanics</em>, 8.01SC, capítulo 19, §§19.2–19.3: definiciones y balance para una partícula. Consulta: 14 de octubre de 2026. https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/mit8_01scs22_chapter19.pdf. Las pruebas y ejercicios de este texto se desarrollan localmente.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>El mismo capítulo, §19.5, se usa para contrastar el balance de un sistema. Aquí se conserva explícitamente el torque interno antes de imponer su cancelación, y se demuestra por pares la hipótesis suficiente de centralidad. La separación respecto del centro de masa y la reducción de dos partículas se deducen localmente de las definiciones y de las relaciones de <em>Física para matemáticos</em>, I-14; el cierre y §14 de ese capítulo fueron consultados para fijar la continuidad. No se atribuye a una referencia externa ninguna hipótesis que se haya omitido en las pruebas.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>MIT OpenCourseWare, <em>Classical Mechanics</em>, 8.01SC, capítulo 25, §25.3, relación entre momento angular y movimiento polar. https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/mit8_01scs22_chapter25new.pdf. La derivación de velocidad y aceleración, el converso planar, los balances con potencial temporal y las cotas impulsivas se demuestran en este capítulo.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main></div><script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script><script>document.addEventListener("DOMContentLoaded",function(){const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');});</script></body></html>
