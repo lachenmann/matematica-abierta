@@ -48,6 +48,6 @@ def main():
     if u.scheme or u.netloc:continue
     target=(site/u.path.lstrip('/') if u.path.startswith('/') else p.parent/unquote(u.path)).resolve() if u.path else p
     if target in pages and u.fragment:assert unquote(u.fragment) in pages[target].ids,(p.name,href)
-  assert sum(len(p.images) for p in pages.values())==20
+  assert sum(sum('/assets/books/fispm/' in im.get('src','') for im in p.images) for p in pages.values())==20
  print('FISPM Tome I: PASS — 30 sources'+(' and 30 rendered chapters, 20 figures, local links and canonical CSS' if args.site_dir else ''))
 if __name__=='__main__':main()
