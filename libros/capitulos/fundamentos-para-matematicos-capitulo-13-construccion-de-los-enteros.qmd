@@ -1,0 +1,408 @@
+---
+title: "Capítulo 13 — ¿De dónde salen los enteros?"
+description: "Fundamentos para matemáticos, capítulo 13: enteros como clases de pares; signos, operaciones y orden."
+content-id: MA-BCH-0344
+content-type: book-chapter
+collection: PM-FUN
+editorial-project: FND
+book-id: MA-BOK-0008
+source-id: FND-T1-C13
+editorial-id: MA-BCH-FND-01-013
+source-version: v01
+status: published
+date-created: 2026-10-13
+date-modified: 2026-10-13
+areas: [fundamentos]
+level: fundamental
+topics: [construccion-de-numeros, clases-de-equivalencia, razonamiento-matematico]
+prerequisites: []
+related: [MA-BOK-0008]
+provenance:
+  type: original
+  sources:
+    - "Manuscrito canónico FND_T1_C13_v01.md; bibliografía y convenciones en el índice de Fundamentos para matemáticos."
+license: GFDL-1.3-or-later
+---
+
+[Índice del libro](../para-matematicos/fundamentos-para-matematicos.qmd)
+
+
+## 13.1. Segundo momento de construcción: los enteros a partir de los naturales {#fnd-section-13-1}
+
+El capítulo anterior nos permitió construir cantidades naturales y justificar sus operaciones a partir de colecciones. También mostró una limitación que el uso corriente de los números puede hacernos olvidar: $7-4$ se interpreta dentro de $\mathbb N$ como el natural que, sumado a $4$, produce $7$, mientras que no existe ningún natural que, sumado a $7$, produzca $4$. Estamos acostumbrados a escribir $4-7=-3$; falta construir el objeto que pueda recibir ese nombre, utilizando sólo las propiedades de $\mathbb N$ que ya demostramos.
+
+Un camino consiste en registrar por separado dos cantidades naturales. Pensemos en una cuenta donde anotamos unidades a favor y unidades en contra. El par $(4,7)$ expresa cuatro unidades a favor y siete en contra; el par $(2,5)$ describe una cuenta diferente, pero el saldo que queremos conservar es el mismo. Lo mismo sucede con $(0,3)$ y $(10,13)$. Podemos agregar la misma cantidad a ambas columnas o retirarla de ambas, siempre que sea posible hacerlo, y la comparación que nos interesa no cambiará. En cambio, si cambiamos una sola columna, alteramos el saldo. Las distintas cuentas sugieren un saldo común, aunque todavía no contamos con un número de nuestro sistema que lo exprese.
+
+Cada par es una representación posible; ninguno tiene por qué convertirse en la representación oficial. Elegir $(0,3)$ como la forma más breve puede ayudar a calcular, pero la construcción no debe depender de esa preferencia. Buscamos una relación que diga cuándo **dos pares describen el mismo saldo**, utilizando exclusivamente la suma natural que construimos en el capítulo anterior.
+
+Sería tentador declarar equivalentes $(a,b)$ y $(c,d)$ cuando $a-b=c-d$. El problema es que, si $b>a$ o $d>c$, las restas todavía no están definidas dentro de los naturales. Podemos expresar la misma comparación sin efectuar ninguna de ellas: trasladamos las cantidades a ambos lados de una igualdad y exigimos
+
+$$
+\boxed{(a,b)\sim(c,d)\quad\Longleftrightarrow\quad a+d=b+c.}
+$$
+
+La condición sólo utiliza sumas de naturales. Con ella, $(4,7)\sim(2,5)$ porque $4+5=7+2$, y $(4,7)\sim(0,3)$ porque $4+3=7+0$. En cambio, $(4,7)\not\sim(4,6)$: al comparar las sumas cruzadas aparecen $4+6$ y $7+4$, que son diferentes. Las cuentas pueden parecer parecidas sin representar el mismo saldo.
+
+También resulta esclarecedor escribir la relación como igualdad de dos sumas completas: $(a,b)\sim(c,d)$ significa que la cantidad a favor de la primera cuenta, junto con la cantidad en contra de la segunda, equilibra exactamente la cantidad en contra de la primera junto con la cantidad a favor de la segunda. El símbolo $\sim$ compara pares; todavía no hemos definido una resta para expresarlos mediante un solo número.
+
+Antes de formar clases, la nueva relación debe superar las tres pruebas que ya conocemos. Es **reflexiva**, pues $(a,b)\sim(a,b)$ equivale a $a+b=b+a$. Es **simétrica** porque la igualdad $a+d=b+c$ sigue siendo válida si intercambiamos los miembros. Para la **transitividad** hace falta enlazar dos comparaciones. Supongamos que $(a,b)\sim(c,d)$ y $(c,d)\sim(e,f)$; entonces
+
+$$
+a+d=b+c,\qquad c+f=d+e.
+$$
+
+Si sumamos estas igualdades, reordenamos sus términos y agrupamos la cantidad que aparece en ambos lados, obtenemos
+
+$$
+a+f+(c+d)=b+e+(c+d).
+$$
+
+La suma de los naturales, cuya construcción por uniones disjuntas estudiamos anteriormente, tiene la propiedad de cancelación: de $u+t=v+t$ se deduce $u=v$. Aplicándola con $t=c+d$ llegamos a $a+f=b+e$, que es justamente $(a,b)\sim(e,f)$. Hemos demostrado la transitividad valiéndonos únicamente de propiedades que los naturales ya poseen. Esto importa: la construcción de un nuevo conjunto numérico no debe apoyarse en operaciones que todavía intenta justificar.
+
+Podemos formar, por consiguiente, las clases de equivalencia de los pares. Éste es el **segundo momento de construcción numérica**:
+
+$$
+\boxed{\mathbb Z=(\mathbb N\times\mathbb N)/{\sim}.}
+$$
+
+En esta construcción, un **entero** es una clase de pares de naturales. A diferencia de las clases por restos, que agrupaban naturales ya existentes, estas clases proporcionan objetos nuevos con los que podremos efectuar restas antes imposibles. Llamamos $-3$ a la clase que contiene $(0,3)$; también contiene $(4,7)$, $(2,5)$ y los demás pares equivalentes. La clase de $(3,0)$ recibe el nombre de $3$, y contiene, entre otros, $(4,1)$ y $(5,2)$. El cero es la clase de $(0,0)$, que incluye todos los pares $(n,n)$. Los nombres familiares adquieren así un significado preciso dentro del conjunto recién definido.
+
+Los naturales reaparecen en el nuevo sistema mediante la función
+
+$$
+\iota:\mathbb N\longrightarrow\mathbb Z,
+\qquad \iota(n)=[(n,0)].
+$$
+
+Esta función es inyectiva. Si $[(n,0)]=[(m,0)]$, los representantes son equivalentes, y la igualdad que los relaciona es $n+0=0+m$, de donde $n=m$. Podemos entonces identificar el natural $n$ con el entero $[(n,0)]$ sin confundir los dos objetos en la construcción estricta. Todo entero, además, puede nombrarse mediante un par de la forma $(n,0)$ o $(0,n)$. En efecto, dados $a,b\in\mathbb N$, o bien $a=b+n$ para algún natural $n$, en cuyo caso $(a,b)\sim(n,0)$, o bien $b=a+n$ para algún natural $n$, y entonces $(a,b)\sim(0,n)$. Si ambas cantidades son iguales, las dos formas representan el cero. La costumbre de escribir $\mathbb N\subseteq\mathbb Z$ se justifica por esta identificación, aun cuando los naturales originales y las clases sean formalmente objetos de distinta naturaleza.
+
+### La suma de enteros
+
+La imagen de las cuentas nos ofrece una regla para sumar dos saldos: reunimos las cantidades a favor y, por separado, las cantidades en contra. Si las clases están representadas por $(a,b)$ y $(c,d)$, la operación propuesta es
+
+$$
+\boxed{[(a,b)]+[(c,d)]=[(a+c,b+d)].}
+$$
+
+Con las clases por restos aprendimos que una fórmula puede depender indebidamente del representante; con los pares que definen enteros debemos verificar de nuevo esa independencia. Supongamos que $(a,b)\sim(a',b')$ y $(c,d)\sim(c',d')$. Tenemos, pues, $a+b'=b+a'$ y $c+d'=d+c'$. Sumando las dos igualdades y ordenando sus términos obtenemos
+
+$$
+(a+c)+(b'+d')=(b+d)+(a'+c').
+$$
+
+Ésta es la condición de equivalencia entre $(a+c,b+d)$ y $(a'+c',b'+d')$. Hemos probado que la clase de la suma sólo depende de las clases sumadas. Podemos, por ejemplo, calcular
+
+$$
+[(4,7)]+[(6,2)]=[(10,9)]=[(1,0)],
+$$
+
+que, con los nombres habituales, se lee $(-3)+4=1$. La clase $[(0,0)]$ actúa como cero de la suma. Y si intercambiamos las coordenadas de $(a,b)$ obtenemos $(b,a)$, cuya clase es el opuesto aditivo, porque
+
+$$
+[(a,b)]+[(b,a)]=[(a+b,a+b)]=[(0,0)].
+$$
+
+Tenemos así una razón interna para la existencia de los negativos: cada entero posee otro que, sumado al primero, da cero. Una resta que carecía de respuesta en $\mathbb N$ puede realizarse en $\mathbb Z$ sumando el opuesto correspondiente.
+
+### La multiplicación y el orden
+
+La multiplicación requiere una regla algo menos evidente. Ya hemos construido la suma y los opuestos; además, queremos que los naturales insertados mediante $n\mapsto[(n,0)]$ continúen multiplicándose como antes y que la distributividad no se pierda. Como orientación podemos efectuar un cálculo **provisional**, usando la familiar escritura de diferencias: $(a-b)(c-d)=ac+bd-ad-bc$. Esta igualdad sirve aquí para *descubrir* qué par debería representar el producto; su validez dentro de nuestro nuevo sistema todavía tendrá que demostrarse. Nos sugiere registrar $ac+bd$ como primera coordenada y $ad+bc$ como segunda. La fórmula que queremos definir emplea solamente operaciones ya disponibles en $\mathbb N$:
+
+$$
+\boxed{[(a,b)]\cdot[(c,d)]=[(ac+bd,ad+bc)].}
+$$
+
+La interpretación ha servido para encontrar la fórmula, pero no basta para probar que ésta tiene sentido sobre clases. Fijemos, primero, el par $(c,d)$ y supongamos $(a,b)\sim(a',b')$. Por definición $a+b'=b+a'$. Multiplicando esta igualdad por $c$ y por $d$ obtenemos
+
+$$
+ac+b'c=bc+a'c,
+\qquad ad+b'd=bd+a'd.
+$$
+
+Sumemos la primera igualdad con la segunda leída en el sentido opuesto. Después de reordenar los sumandos aparece
+
+$$
+(ac+bd)+(a'd+b'c)=(ad+bc)+(a'c+b'd).
+$$
+
+Es exactamente la condición que afirma que $(ac+bd,ad+bc)$ y $(a'c+b'd,a'd+b'c)$ pertenecen a la misma clase. Por tanto, cambiar el primer representante no altera el producto. La expresión $ac+bd$ es simétrica respecto de los dos pares y lo mismo sucede con el par de términos $ad+bc$ tras intercambiarlos; por esa conmutatividad de la fórmula, el argumento vale también cuando cambiamos únicamente el segundo representante. Si cambian los dos, podemos sustituirlos uno después del otro. El producto está bien definido.
+
+También queremos comparar enteros. La clase $[(a,b)]$ debe quedar por debajo de $[(c,d)]$ cuando el primer saldo sea menor o igual que el segundo. La comparación se puede formular de nuevo sin restar:
+
+$$
+\boxed{[(a,b)]\le[(c,d)]\quad\Longleftrightarrow\quad a+d\le b+c.}
+$$
+
+Podemos probar primero un caso: $[(4,7)]\le[(6,2)]$ porque $4+2\le7+6$. Si reemplazamos el primer representante por $(0,3)$, la desigualdad correspondiente sigue siendo verdadera, $0+2\le3+6$. No basta ese ejemplo: debe mantenerse para cualquier cambio legítimo de representantes.
+
+Comprobemos que los representantes no afectan a esta desigualdad. Si $(a,b)\sim(a',b')$ y $(c,d)\sim(c',d')$, las igualdades $a+b'=b+a'$ y $c+d'=d+c'$ permiten deducir
+
+$$
+(a+d)+(b'+c')=(a'+d')+(b+c).
+$$
+
+Supongamos $a+d\le b+c$. Al sumar $b'+c'$ obtenemos $(a+d)+(b'+c')\le(b+c)+(b'+c')$; sustituimos el primer miembro por la expresión igual que acabamos de obtener y cancelamos el sumando común $b+c$. Resulta $a'+d'\le b'+c'$. Intercambiar los pares primados con los no primados demuestra la implicación contraria. Esta comparación, igual que las dos operaciones, es independiente de los representantes.
+
+Las fórmulas construidas permiten trabajar con las clases como enteros. El examen de la asociatividad, la distributividad, la compatibilidad del orden y las demás leyes llegará inmediatamente después: probar que las expresiones están bien definidas era una obligación previa, y por sí sola no demuestra todas esas propiedades.
+
+**Comprobación 5.** Decide si $(8,11)$ y $(5,8)$ representan el mismo entero. Explica por qué el entero no es ninguno de esos dos pares tomado aisladamente y encuentra el opuesto aditivo de su clase.
+
+**Solución razonada.** Las sumas cruzadas coinciden: $8+8=11+5$. Los pares son distintos, pero pertenecen a una única clase, que llamamos $-3$. Su opuesto es la clase de $(11,8)$, obtenida al intercambiar las coordenadas, y coincide con $[(3,0)]$, que llamamos $3$. El entero es la clase completa, no el par elegido para representarla.
+
+## 13.2. Los enteros heredan unas leyes y adquieren otras {#fnd-section-13-2}
+
+Al construir $\mathbb Z$, una clase $[(a,b)]$ representa un saldo; la relación $(a,b)\sim(c,d)$ equivale a $a+d=b+c$. Acabamos de demostrar que la suma y el producto de estas clases están bien definidos. Es legítimo utilizar ese resultado, pero no podemos declarar concluidas las leyes de las operaciones sin estudiar qué sucede al sumar o multiplicar **tres** clases, o al combinar ambas operaciones.
+
+### El grupo aditivo y la multiplicación
+
+Para la suma usamos
+
+$$
+[(a,b)]+[(c,d)]=[(a+c,b+d)].
+$$
+
+Cambiar el orden de los pares no altera el resultado, porque la suma de naturales es conmutativa; reagrupar tres pares tampoco lo altera, porque esa suma es asociativa. La clase $[(0,0)]$ es neutra y cada clase $[(a,b)]$ tiene por opuesta la clase $[(b,a)]$:
+
+$$
+[(a,b)]+[(b,a)]=[(a+b,a+b)]=[(0,0)].
+$$
+
+Esto sí representa una novedad frente a $\mathbb N$: toda clase posee una opuesta aditiva. De aquí se deduce que $\mathbb Z$, con la suma, es un **grupo abeliano**. La palabra «grupo» expresa conjuntamente los resultados que acabamos de establecer y, sobre todo, la posibilidad de resolver cualquier ecuación $x+z=w$ mediante $x=w+(-z)$.
+
+Para multiplicar recordemos la definición
+
+$$
+[(a,b)]\,[(c,d)]=[(ac+bd,ad+bc)].
+$$
+
+La conmutatividad se obtiene intercambiando los dos pares y utilizando la conmutatividad del producto natural. La clase $[(1,0)]$ es unidad, pues el producto con ella produce $[(a,b)]$. Para la asociatividad tomemos, además, $(e,f)$. Si multiplicamos primero los dos primeros pares, el representante final tiene por coordenadas
+
+$$
+\begin{aligned}
+&ace+bde+adf+bcf,\\
+&acf+bdf+ade+bce.
+\end{aligned}
+$$
+
+Si multiplicamos primero el segundo y el tercero, obtenemos las mismas expresiones, quizá con los sumandos en otro orden. La igualdad es una consecuencia de la asociatividad, conmutatividad y distributividad de las operaciones naturales demostradas antes. Así, el producto de enteros es asociativo.
+
+Queda la distributividad. Al multiplicar $(a,b)$ por la suma $(c,d)+(e,f)=(c+e,d+f)$, las dos coordenadas son
+
+$$
+\begin{aligned}
+&a(c+e)+b(d+f)=ac+ae+bd+bf,\\
+&a(d+f)+b(c+e)=ad+af+bc+be.
+\end{aligned}
+$$
+
+Es exactamente el mismo par que obtenemos al sumar $(ac+bd,ad+bc)$ y $(ae+bf,af+be)$, representantes de los productos parciales. La distributividad por el otro lado se sigue de la conmutatividad de la multiplicación. Con estas pruebas, $\mathbb Z$ es un **anillo conmutativo con unidad**. Hemos construido el sistema en el que las restas ya no tropiezan con la falta de un opuesto.
+
+### Ceros, signos y ausencia de divisores de cero
+
+Un entero puede representarse como $[(n,0)]$ o como $[(0,n)]$, con $n\in\mathbb N$: en un par $(a,b)$, la totalidad del orden natural nos permite escribir $a=b+n$ o $b=a+n$, y cancelar los términos comunes en la relación de equivalencia. El primer tipo de representante corresponde a los enteros no negativos y el segundo a los no positivos. Cuando $n=0$, ambas formas designan el mismo cero; si $n>0$, designan dos enteros distintos y opuestos.
+
+Esta forma de escoger representantes revela la regla de los signos sin imponerla desde fuera. Para $m,n>0$,
+
+$$
+\begin{aligned}
+[(m,0)]\,[(n,0)]&=[(mn,0)],\\
+[(0,m)]\,[(n,0)]&=[(0,mn)],\\
+[(0,m)]\,[(0,n)]&=[(mn,0)].
+\end{aligned}
+$$
+
+El producto $mn$ es distinto de cero: si $M$ y $N$ son colecciones no vacías que representan $m$ y $n$, el producto cartesiano $M\times N$ contiene al menos un par. En consecuencia, un producto de dos enteros no nulos tampoco puede ser cero. La fórmula de los signos y el hecho de que $\mathbb Z$ **no tiene divisores de cero** se desprenden de la construcción, aunque los enteros no nulos no tengan siempre inversos multiplicativos dentro de $\mathbb Z$.
+
+### Una aritmética de fortunas y deudas en la historia
+
+La comparación de saldos que utilizamos para motivar los enteros tiene una historia matemática sugerente. En el *Brāhmasphuṭasiddhānta* (628), Brahmagupta enunció reglas para cantidades positivas, negativas y cero mediante el lenguaje de **fortunas y deudas**. Entre sus reglas figura la de que el producto de dos deudas es una fortuna; también distingue qué ocurre al sumar o sustraer cantidades de signos diferentes. No es difícil imaginar la utilidad de esas expresiones al hacer cuentas: una deuda de cinco unidades y una fortuna de tres dejan un saldo que debe poder tratarse coherentemente en operaciones posteriores.
+
+Esta observación histórica ilumina el *problema* que hemos estudiado, aunque hay que distinguirla de nuestra solución. La construcción de $\mathbb Z$ mediante clases de pares de naturales es una **fundamentación moderna** presentada aquí con el lenguaje de la teoría de conjuntos; no afirmamos que Brahmagupta empleara relaciones de equivalencia ni que su obra contuviera esta construcción. Sus reglas muestran, en cambio, que trabajar rigurosamente con cantidades negativas fue una necesidad matemática concreta muchos siglos antes de que se adoptaran las formalizaciones actuales.
+
+*Fuentes de contraste histórico:* [MacTutor, «Brahmagupta»](https://mathshistory.st-andrews.ac.uk/Biographies/Brahmagupta/) y [NRICH, «The History of Negative Numbers»](https://nrich.maths.org/articles/history-negative-numbers). Las reglas se mencionan mediante paráfrasis; no se reproducen citas literales de una traducción del sánscrito.
+
+**Comprobación 6.** Justifica, sin dar por supuesta una tabla de signos, que el producto del entero representado por $(0,4)$ y el representado por $(0,3)$ es el entero representado por $(12,0)$. Explica después por qué la prueba no depende de haber elegido esos pares particulares.
+
+**Solución razonada.** La fórmula del producto da $(0,4)(0,3)=(12,0)$, porque $0\cdot0+4\cdot3=12$ y $0\cdot3+4\cdot0=0$. El resultado se lee $(-4)(-3)=12$. La independencia de los representantes se demostró al definir el producto en la sección anterior: si sustituimos $(0,4)$ y $(0,3)$ por pares equivalentes, el producto pertenece a la misma clase que $[(12,0)]$.
+
+## 13.3. El orden de los enteros y el sentido de la ampliación {#fnd-section-13-3}
+
+Que los enteros puedan restarse no impide compararlos. Para clases $x=[(a,b)]$ e $y=[(c,d)]$ propusimos la condición
+
+$$
+[(a,b)]\le[(c,d)]\quad\Longleftrightarrow\quad a+d\le b+c.
+$$
+
+Ya probamos que el resultado no depende de los representantes; debemos examinar si posee las propiedades de un orden y si respeta las operaciones. La reflexividad es la desigualdad $a+b\le b+a$, que en realidad es una igualdad. Si $x\le y$ e $y\le x$, obtenemos $a+d\le b+c$ y $b+c\le a+d$. Por antisimetría del orden natural, $a+d=b+c$ y, por definición de nuestras clases, $x=y$.
+
+Para la transitividad tomemos también $z=[(e,f)]$ y supongamos $x\le y$ e $y\le z$, es decir,
+
+$$
+a+d\le b+c,\qquad c+f\le d+e.
+$$
+
+Al sumar las desigualdades resulta $a+f+(c+d)\le b+e+(c+d)$. La cancelación del término común $c+d$ en el **orden natural** nos da $a+f\le b+e$, de donde $x\le z$. Esa cancelación de desigualdades se deduce de la caracterización $p\le q\iff q=p+t$ y de la cancelación aditiva ya demostrada. Finalmente, el orden es total: dados $a+d$ y $b+c$, el orden natural decide cuál de las dos sumas es menor o igual, y con ello decide $x\le y$ o $y\le x$.
+
+La suma conserva las comparaciones. Si añadimos $w=[(e,f)]$ a ambos miembros, la condición para $x+w\le y+w$ es
+
+$$
+(a+e)+(d+f)\le(b+f)+(c+e),
+$$
+
+que equivale a $a+d+e+f\le b+c+e+f$ y, tras cancelar, a la condición original $x\le y$. También se conserva la desigualdad al multiplicar por un entero no negativo: si $x\le y$, la traslación por $-x$ da $0\le y-x$. Todo entero no negativo se representa como $[(n,0)]$, de modo que tanto $y-x$ como un multiplicador $w\ge0$ admiten representantes de ese tipo. Su producto es entonces de la forma $[(mn,0)]$ y es no negativo. La distributividad proporciona $yw-xw=(y-x)w\ge0$, es decir, $xw\le yw$.
+
+Hemos obtenido así un **anillo conmutativo totalmente ordenado**, sin divisores de cero, en el que el orden es compatible con la suma y con la multiplicación por elementos no negativos. La inclusión usual de los naturales se entiende mediante la función $\iota(n)=[(n,0)]$, que conserva suma, producto y orden y es inyectiva. Gracias a ella utilizamos el mismo nombre $n$ cuando consideramos un natural como entero. No afirmamos que las clases de colecciones finitas y las clases de pares sean literalmente el mismo conjunto: hemos demostrado por qué podemos tratarlas como representaciones compatibles de la misma aritmética natural dentro de una estructura más amplia.
+
+Hay una propiedad adicional que ilumina el sentido de esta ampliación. Supongamos que $G$ es un grupo abeliano y que $h:\mathbb N\to G$ conserva la suma y envía $0$ al elemento neutro de $G$. Toda función aditiva $\widetilde h:\mathbb Z\to G$ que prolongue a $h$ **tiene que** satisfacer
+
+$$
+\widetilde h([(a,b)])=h(a)-h(b),
+$$
+
+porque $[(a,b)]=[(a,0)]-[(b,0)]$. Esta fórmula no sólo es obligatoria: también define efectivamente una función sobre las clases. Si $(a,b)\sim(c,d)$, entonces $a+d=b+c$ en $\mathbb N$; al aplicar $h$ obtenemos $h(a)+h(d)=h(b)+h(c)$ y, utilizando los opuestos disponibles en $G$, concluimos $h(a)-h(b)=h(c)-h(d)$. La fórmula respeta la suma por la conmutatividad de $G$ y prolonga a $h$, puesto que $\widetilde h([(n,0)])=h(n)$. Por tanto, esa prolongación existe y es única.
+
+Esta **propiedad universal** da un alcance nuevo al procedimiento de los pares: cualquier interpretación aditiva de los naturales en un grupo abeliano se prolonga de una única manera a los enteros. La fórmula $\widetilde h([(a,b)])=h(a)-h(b)$ expresa esa compatibilidad; su independencia de los representantes muestra por qué la construcción funciona en cualquier grupo abeliano de llegada, y no sólo en nuestras cuentas de saldos.
+
+**Comprobación 7.** Sea $h:\mathbb N\to\mathbb Z$ la aplicación $h(n)=2n$. Utiliza la propiedad anterior para determinar el valor que debe tener su prolongación aditiva en la clase $[(3,8)]$. Explica por qué el cálculo no depende del representante.
+
+**Solución razonada.** La fórmula obliga a asignar $h(3)-h(8)=6-16=-10$. La clase $[(3,8)]$ es la misma que $[(0,5)]$, y con este representante la fórmula da $h(0)-h(5)=0-10=-10$. La coincidencia de este ejemplo está garantizada en general porque la equivalencia de pares $a+d=b+c$ se transforma, al aplicar $h$, en una igualdad que permite cancelar en el grupo abeliano de llegada.
+
+La construcción conserva la suma, el producto y el orden natural, y permite resolver toda ecuación aditiva $x+z=w$. Aún no garantiza resolver una ecuación como $2x=1$: ésa será la dificultad que nos lleve a los racionales. Mientras tanto, los enteros recién construidos ofrecen otro uso de la equivalencia, que ya encontramos entre los naturales: agrupar números por el resto de una división, conservando sólo la información pertinente a ese cálculo.
+
+## 13.4. Las congruencias en los enteros: construir un cociente no es ampliar el sistema {#fnd-section-13-4}
+
+Una vez construidos los enteros, podemos plantear la misma pregunta que hicimos con los naturales: ¿cuándo dejan dos números un mismo resto al dividirlos por tres, cuatro o cualquier natural positivo? La división euclídea sigue funcionando. Ya la probamos para naturales y podemos extenderla a cualquier entero: si $z=-n$ con $n>0$ y $n=mq+r$, $0\le r<m$, entonces $z=m(-q)$ cuando $r=0$, mientras que si $r>0$ podemos escribir $z=m(-q-1)+(m-r)$ y el nuevo resto vuelve a estar entre $0$ y $m-1$. La unicidad se prueba como antes: dos cocientes enteros diferentes, ordenados uno antes que otro, darían valores separados al menos por $m$, imposibles de compensar con restos menores que $m$. Por ejemplo, al dividir $-2$ por $3$, escribimos
+
+$$
+-2=3(-1)+1.
+$$
+
+Su resto es $1$, exactamente el mismo que el de $1$ y el de $4$. El cociente de la división puede ser negativo, pero elegimos el resto entre $0$ y $m-1$ cuando el divisor $m$ es positivo. Para todo $z\in\mathbb Z$ existen un único cociente $q\in\mathbb Z$ y un único resto $r\in\{0,1,\ldots,m-1\}$ tales que $z=mq+r$.
+
+Con los enteros podemos expresar la comparación de restos mediante una divisibilidad. Diremos que $x$ e $y$ son **congruentes módulo $m$**, y escribiremos
+
+$$
+\boxed{x\equiv y\pmod m\quad\Longleftrightarrow\quad m\mid(x-y),}
+$$
+
+siempre con $m\in\mathbb N$ y $m>0$. La condición de la derecha significa que $x-y=mk$ para algún entero $k$. Para ver que coincide con la definición por restos, escribamos $x=mq+r$ e $y=mp+s$, con $0\le r,s<m$. Si $m\mid(x-y)$, también $m\mid(r-s)$, pues $r-s=(x-y)-m(q-p)$. Como $r-s$ está estrictamente entre $-m$ y $m$, el único múltiplo de $m$ que puede ser es cero: $r=s$. A la inversa, si $r=s$, entonces $x-y=m(q-p)$, y $m$ divide la diferencia. Las dos formulaciones expresan, pues, la misma relación.
+
+También aquí la relación es de equivalencia. Todo $x$ es congruente consigo mismo porque $m\mid0$; de $m\mid(x-y)$ se sigue $m\mid(y-x)$ por cambio de signo; y de $m\mid(x-y)$ junto con $m\mid(y-z)$ se deduce $m\mid(x-z)$ sumando las dos diferencias. Por ejemplo,
+
+$$
+[-2]=[1]=[4]\qquad\text{en }\mathbb Z/{\equiv_3}.
+$$
+
+El cociente $\mathbb Z/{\equiv_3}$ tiene otra vez tres clases, pero sus elementos son conjuntos de enteros y, por ello, incluyen representantes negativos. La clase de $1$ en $\mathbb N/{\sim_3}$ y la de $1$ en $\mathbb Z/{\equiv_3}$ no son literalmente el mismo conjunto. Existe, sin embargo, una correspondencia natural entre ellas: a cada clase de naturales le asignamos la clase de enteros con ese mismo resto. La correspondencia es biyectiva, pues cada clase entera posee uno y sólo uno de los representantes $0$, $1$ o $2$. De este modo podemos comparar ambos cocientes sin confundir sus elementos como conjuntos.
+
+Esta última comparación permite advertir algo que la notación puede esconder. Para construir $\mathbb Z$ tomamos **pares** de naturales y los reunimos en clases para obtener números de un sistema nuevo; en $\mathbb Z/{\equiv_m}$ tomamos **enteros ya construidos** y los reunimos por una propiedad aritmética, el resto. La definición abstracta de equivalencia es idéntica en ambos casos, mientras que los representantes y el propósito matemático de la identificación cambian. En las clases de saldos buscamos hacer posible cualquier resta; en las de congruencia aprendemos a calcular conservando sólo una información de cada número. Una clase es un objeto matemático genuino en ambos casos, y una regla sobre ella exige la misma prueba de independencia del representante.
+
+**Comprobación 8.** Determina el resto de $-7$ y el de $5$ al dividir por cuatro en $\mathbb Z$, y decide si sus clases son iguales.
+
+**Solución razonada.** Las divisiones euclídeas se escriben $-7=4(-2)+1$ y $5=4(1)+1$. Ambos enteros dejan resto $1$, por lo que $-7\equiv5\pmod4$ y $[-7]=[5]$ en $\mathbb Z/{\equiv_4}$. Esta igualdad entre clases no dice que los enteros $-7$ y $5$ sean iguales.
+
+
+## 13.5. Ejercicios {#fnd-section-13-5}
+
+En estos ejercicios una misma clase deberá reconocerse a partir de pares diferentes, y una regla sobre representantes tendrá que superar las pruebas de buena definición, compatibilidad y orden que acabamos de utilizar. Suponemos $\mathbb N$ con cero, $(a,b)\sim(c,d)\iff a+d=b+c$ en $\mathbb N\times\mathbb N$, y escribimos $[(a,b)]$ para la clase correspondiente en $\mathbb Z$. Cuando los corchetes designen una clase de congruencia, indicaremos expresamente el módulo.
+
+### Comprender las clases y construir el nuevo sistema
+
+**Ejercicio 13.1. Cinco representaciones de una misma deuda.** Determina si los pares $(0,4)$, $(2,6)$, $(5,9)$, $(3,7)$ y $(2,5)$ pertenecen a una misma clase. Justifica la respuesta utilizando sólo sumas naturales y explica qué entero representa la clase mayoritaria.
+
+**Ejercicio 13.2. Un error de clasificación.** Una persona define $(a,b)\,R\,(c,d)$ si $a=c$, porque considera que «la primera cantidad» debe determinar el saldo. ¿Es $R$ una relación de equivalencia sobre $\mathbb N^2$? ¿Por qué, pese a ello, su conjunto cociente no construye el sistema de saldos buscado? Da pares concretos que $R$ identifique indebidamente y pares que $R$ separe aunque tengan el mismo saldo.
+
+**Ejercicio 13.3. Lo que exige la transitividad.** Sean $(a,b),(c,d),(e,f)\in\mathbb N^2$ tales que $(a,b)\sim(c,d)$ y $(c,d)\sim(e,f)$. Reconstruye la prueba completa de $(a,b)\sim(e,f)$ e indica el único paso que utiliza cancelación en $\mathbb N$.
+
+**Ejercicio 13.4. Naturales que se conservan.** Prueba que $\iota(n)=[(n,0)]$ es inyectiva y verifica directamente que $\iota(n+m)=\iota(n)+\iota(m)$ y $\iota(nm)=\iota(n)\iota(m)$. Explica por qué estas identidades justifican tratar $\mathbb N$ como una parte de $\mathbb Z$ sin afirmar una igualdad literal entre las realizaciones conjuntistas.
+
+**Ejercicio 13.5. Representantes canónicos y cero.** Demuestra que toda clase $[(a,b)]$ contiene algún par $(n,0)$ o algún par $(0,n)$ y que ambas presentaciones sólo pueden ocurrir simultáneamente para la clase cero. ¿Cuál es el criterio para decidir si $[(a,b)]$ es cero utilizando únicamente naturales?
+
+### Operaciones y orden: probar antes de utilizar
+
+**Ejercicio 13.6. Sumar de dos maneras.** Calcula $[(4,9)]+[(7,2)]$ y después vuelve a calcular la suma utilizando los representantes $(1,6)$ y $(10,5)$. ¿Qué igualdad garantiza que ambos cálculos representan el mismo entero? Explica por qué dos ejemplos no sustituyen la prueba general de buena definición.
+
+**Ejercicio 13.7. Encontrar el opuesto.** Define $-[(a,b)]=[(b,a)]$. Comprueba que la regla está bien definida: si $(a,b)\sim(c,d)$, demuestra que $(b,a)\sim(d,c)$. Luego prueba que $[(a,b)]+(-[(a,b)])=0$.
+
+**Ejercicio 13.8. El producto sin restas ocultas.** Dados $x=[(a,b)]$ e $y=[(c,d)]$, demuestra que el producto $[(ac+bd,ad+bc)]$ es independiente de ambos representantes. Puedes probar primero la independencia en el primer factor, luego en el segundo y finalmente combinar los dos cambios. Indica por qué no basta escribir $(a-b)(c-d)$.
+
+**Ejercicio 13.9. Asociar tres productos.** Sean $x=[(a,b)]$, $y=[(c,d)]$ y $z=[(e,f)]$. Calcula un representante de $(xy)z$ y otro de $x(yz)$, organiza por separado ambas coordenadas y comprueba que coinciden mediante las leyes ya demostradas en $\mathbb N$.
+
+**Ejercicio 13.10. La regla de los signos no es un axioma nuevo.** Para naturales positivos $m,n$, utiliza la fórmula del producto de pares para demostrar $(-m)(-n)=mn$ y $(-m)n=-(mn)$. Aclara por qué la positividad de $mn$ permite concluir que un producto de dos enteros no nulos no puede ser cero.
+
+**Ejercicio 13.11. Comparar representaciones.** Decide si $[(4,9)]<[(2,5)]$, si $[(4,9)]=[(2,5)]$ y si $[(4,9)]>[(2,5)]$. Repite la comparación reemplazando $(4,9)$ por $(1,6)$ y explica por qué el resultado no puede cambiar.
+
+**Ejercicio 13.12. Trasladar una desigualdad.** Partiendo exclusivamente de la definición $[(a,b)]\le[(c,d)]\iff a+d\le b+c$, prueba que para todo $w\in\mathbb Z$ se cumple $x\le y\iff x+w\le y+w$. Identifica la propiedad del orden natural que permite eliminar los sumandos comunes.
+
+### Generalizar, diagnosticar y regresar a los restos
+
+**Ejercicio 13.13. Una prolongación obligatoria.** Sea $G$ un grupo abeliano, y sea $h:\mathbb N\to G$ aditiva, con $h(0)=0_G$. Demuestra que $H([(a,b)])=h(a)-h(b)$ está bien definida y es aditiva. Demuestra asimismo que es la única aplicación aditiva $H:\mathbb Z\to G$ cuya restricción a los naturales incorporados es $h$.
+
+**Ejercicio 13.14. Congruencias y representantes.** En $\mathbb Z/{\equiv_5}$ demuestra que $[-8]=[2]$ y calcula $[-8]+[7]$ mediante dos pares de representantes distintos. Prueba en general que $[x]+[y]=[x+y]$ está bien definida para la congruencia módulo cinco.
+
+**Ejercicio 13.15. Identificar demasiado.** Un lector afirma: «Como $-1$ y $4$ son congruentes módulo cinco, son el mismo entero, y por eso podemos reemplazar $-1$ por $4$ en cualquier ecuación sobre $\mathbb Z$». Explica el error con un contraejemplo, distingue la igualdad en $\mathbb Z$ de la igualdad de clases en $\mathbb Z/{\equiv_5}$ y da un contexto en el que la sustitución sí sea legítima.
+
+## 13.6. Soluciones desarrolladas {#fnd-section-13-6}
+
+### Soluciones 13.1–13.5
+
+**Solución 13.1.** Para comparar los cuatro primeros pares con $(0,4)$ debemos comprobar, respectivamente, las igualdades $0+6=4+2$, $0+9=4+5$ y $0+7=4+3$. Todas son verdaderas. En cambio, $(2,5)$ no es equivalente a $(0,4)$, porque $2+4=6$ y $5+0=5$ son distintos. Los primeros cuatro pares pertenecen a la clase que llamamos $-4$; el quinto representa $-3$. El cálculo no ha necesitado efectuar ninguna resta fuera de los naturales para decidir la equivalencia, y muestra por qué la expresión «pares parecidos» no determina una clase.
+
+**Solución 13.2.** $R$ es reflexiva, simétrica y transitiva porque corresponde a la igualdad de las primeras coordenadas. Sin embargo, identifica $(2,0)$ con $(2,9)$, aunque las cuentas tienen saldos distintos: para la relación correcta, $2+9\ne0+2$. También separa $(2,5)$ de $(0,3)$, pese a que $2+3=5+0$. El hecho de que una relación cumpla los axiomas de equivalencia garantiza la existencia de un cociente, pero **no garantiza que el cociente resuelva el problema de representación que nos interesa**. Es necesario escoger la equivalencia adecuada a la información que queremos conservar.
+
+**Solución 13.3.** Las dos equivalencias nos proporcionan $a+d=b+c$ y $c+f=d+e$. Sumando, $a+d+c+f=b+c+d+e$, y por conmutatividad y asociatividad podemos reordenar los términos como $a+f+(c+d)=b+e+(c+d)$. Aplicamos la cancelación natural, demostrada en el capítulo 12, y obtenemos $a+f=b+e$. Esa igualdad es exactamente la definición de $(a,b)\sim(e,f)$. El paso de cancelación es el único en que eliminamos información común, y no supone que existan opuestos de naturales.
+
+**Solución 13.4.** La igualdad $\iota(n)=\iota(m)$ significa $(n,0)\sim(m,0)$, esto es, $n+0=0+m$; por tanto $n=m$, y $\iota$ es inyectiva. Por definición de suma, $[(n,0)]+[(m,0)]=[(n+m,0)]=\iota(n+m)$. Por definición de producto, $[(n,0)][(m,0)]=[(nm+0,0+0)]=[(nm,0)]=\iota(nm)$. La inyección preserva las operaciones; esa estructura compartida justifica la identificación habitual. Formalmente, un natural del capítulo 12 era una clase de colecciones finitas y un entero es una clase de pares de naturales, de modo que no son literalmente el mismo objeto conjuntista.
+
+**Solución 13.5.** Como el orden natural es total, o bien $b\le a$, o bien $a\le b$. En el primer caso existe $n$ con $a=b+n$, y $a+0=b+n$ prueba $(a,b)\sim(n,0)$. En el segundo, existe $n$ con $b=a+n$, y $a+n=b+0$ prueba $(a,b)\sim(0,n)$. Si una clase tuviera ambas presentaciones, $(n,0)\sim(0,m)$ obligaría a $n+m=0$; la suma de naturales sólo es cero cuando ambos son cero, así que representa $[(0,0)]$. Finalmente, $[(a,b)]=0$ si y sólo si $(a,b)\sim(0,0)$, condición que se reduce a $a=b$.
+
+### Soluciones 13.6–13.10
+
+**Solución 13.6.** Con los primeros representantes obtenemos $(4+7,9+2)=(11,11)$, por lo que el resultado es cero. Con los otros dos obtenemos $(1+10,6+5)=(11,11)$, el mismo representante. Los pares usados eran equivalentes: $(4,9)\sim(1,6)$ porque $4+6=9+1$ y $(7,2)\sim(10,5)$ porque $7+5=2+10$. La igualdad que garantiza el resultado es $[(a+c,b+d)]=[(a'+c',b'+d')]$ siempre que cada par sea sustituido por otro equivalente. Dos cálculos ilustran la definición; sólo el argumento general con las sumas cruzadas establece que la operación funciona para **todos** los representantes.
+
+**Solución 13.7.** Si $(a,b)\sim(c,d)$, entonces $a+d=b+c$. Al conmutar los términos y los miembros tenemos $b+c=a+d$, que es la condición $(b,a)\sim(d,c)$: cambiar de representante no modifica el opuesto. La suma de una clase con su opuesta vale $[(a,b)]+[(b,a)]=[(a+b,a+b)]$. Como $(a+b,a+b)\sim(0,0)$ por reflexividad de la igualdad, esa clase es cero. Hemos construido el opuesto antes de utilizarlo para definir la resta $x-y=x+(-y)$.
+
+**Solución 13.8.** Fijemos $(c,d)$ y cambiemos $(a,b)$ por $(a',b')$, con $a+b'=b+a'$. Tras multiplicar por $c$ y $d$ y sumar las igualdades oportunamente orientadas resulta $(ac+bd)+(a'd+b'c)=(ad+bc)+(a'c+b'd)$, que prueba $(ac+bd,ad+bc)\sim(a'c+b'd,a'd+b'c)$. La fórmula del producto es conmutativa al intercambiar ambos pares, gracias a las leyes naturales; por tanto, el mismo argumento permite cambiar sólo $(c,d)$. Si cambiamos ambos representantes, primero sustituimos el de la izquierda y luego el de la derecha: por transitividad, el producto inicial y el final están en la misma clase. Escribir $(a-b)(c-d)$ como si ya poseyéramos la aritmética entera supondría lo que estamos tratando de construir; sirve para adivinar una fórmula, pero la prueba debe hacerse mediante igualdades de naturales.
+
+**Solución 13.9.** El producto de $(a,b)$ y $(c,d)$ se representa por $(ac+bd,ad+bc)$. Multiplicándolo por $(e,f)$ obtenemos
+
+$$
+\bigl(ace+bde+adf+bcf,\;acf+bdf+ade+bce\bigr).
+$$
+
+Si multiplicamos antes $(c,d)$ y $(e,f)$, el par es $(ce+df,cf+de)$, y al multiplicarlo por $(a,b)$ obtenemos
+
+$$
+\bigl(ace+adf+bcf+bde,\;acf+ade+bce+bdf\bigr).
+$$
+
+Ambos pares son iguales después de reordenar los sumandos mediante conmutatividad y asociatividad de las operaciones naturales. La demostración de la asociatividad para las clases se obtiene, por tanto, sin presuponerla para los enteros.
+
+**Solución 13.10.** El entero $m$ está representado por $(m,0)$ y el negativo $-m$ por $(0,m)$. La fórmula del producto proporciona $(0,m)(0,n)=(mn,0)$ y $(0,m)(n,0)=(0,mn)$. La primera clase es el entero positivo $mn$ y la segunda su opuesto, lo que demuestra ambas reglas. Si $m,n>0$, el producto cartesiano de dos colecciones finitas no vacías es no vacío, así que $mn>0$. Todo entero no nulo es positivo o negativo de uno positivo, y las fórmulas muestran que su producto con otro no nulo también lo es en módulo; por consiguiente no es cero. La prueba requiere que $m,n$ sean estrictamente positivos: si uno es cero, el producto sí es cero.
+
+### Soluciones 13.11–13.15
+
+**Solución 13.11.** Por la definición del orden, $[(4,9)]\le[(2,5)]$ equivale a $4+5\le9+2$, es decir, $9\le11$, que es verdadera. La igualdad requeriría $9=11$, falsa; en consecuencia, $[(4,9)]<[(2,5)]$. Para el representante alternativo $(1,6)$ obtenemos $1+5\le6+2$, esto es $6\le8$, también verdadera. Y $(4,9)\sim(1,6)$ porque $4+6=9+1$. La comparación depende de las clases, como exige la demostración de buena definición del orden, y por ello no puede variar al escoger otro representante.
+
+**Solución 13.12.** Sean $x=[(a,b)]$, $y=[(c,d)]$ y $w=[(e,f)]$. La condición $x+w\le y+w$ es $(a+e)+(d+f)\le(b+f)+(c+e)$. Asociando y conmutando términos se convierte en $a+d+(e+f)\le b+c+(e+f)$. En el orden natural, sumar una misma cantidad a ambos miembros preserva y refleja la desigualdad: si $q=p+t$, entonces $q+k=(p+k)+t$, y el recíproco se obtiene cancelando $k$ en la igualdad que expresa esa caracterización. Por tanto, la última desigualdad equivale a $a+d\le b+c$, que define $x\le y$. El paso delicado es cancelar *desigualdades* usando la caracterización natural y la cancelación aditiva, sin suponer una resta todavía no justificada.
+
+**Solución 13.13.** Si $(a,b)\sim(c,d)$, sabemos que $a+d=b+c$. Aplicamos $h$ y usamos su aditividad: $h(a)+h(d)=h(b)+h(c)$. En el grupo abeliano $G$ podemos sumar los opuestos de $h(b)$ y $h(d)$ a ambos miembros y obtener $h(a)-h(b)=h(c)-h(d)$. Por tanto $H([(a,b)])$ no depende del representante. Además,
+
+$$
+\begin{aligned}
+H([(a,b)]+[(c,d)])
+&=H([(a+c,b+d)])\\
+&=h(a+c)-h(b+d)\\
+&=(h(a)-h(b))+(h(c)-h(d)),
+\end{aligned}
+$$
+
+pues $G$ es abeliano, y la función es aditiva. Para $n\in\mathbb N$, $H([(n,0)])=h(n)-h(0)=h(n)$, de modo que prolonga a $h$. Si $K$ fuese otra prolongación aditiva, la identidad $[(a,b)]=[(a,0)]-[(b,0)]$ obligaría a $K([(a,b)])=h(a)-h(b)=H([(a,b)])$; la prolongación es única.
+
+**Solución 13.14.** Como $-8-2=-10$ es múltiplo de cinco, tenemos $[-8]=[2]$ en el cociente módulo cinco. Usando $-8$ y $7$ obtenemos $[-8]+[7]=[-1]=[4]$. Con los representantes equivalentes $2$ y $12$ obtenemos $[2]+[12]=[14]=[4]$. Para cualquier módulo cinco, si $x\equiv x'$ y $y\equiv y'$, existen enteros $k,\ell$ tales que $x-x'=5k$ e $y-y'=5\ell$; por tanto $(x+y)-(x'+y')=5(k+\ell)$ y las sumas son congruentes. Así $[x+y]$ depende únicamente de las clases de $x$ y $y$.
+
+**Solución 13.15.** La igualdad de clases $[-1]=[4]$ en el cociente módulo cinco significa que $5\mid(-1-4)$; no es la igualdad $-1=4$ en $\mathbb Z$. Por ejemplo, en la ecuación $x+1=0$, el entero $x=-1$ es solución y $x=4$ no lo es, pues $4+1=5\ne0$. En cambio, si el objetivo es resolver una congruencia $x+1\equiv0\pmod5$, ambos representantes son igualmente válidos, porque $-1+1=0$ y $4+1=5$ pertenecen a la misma clase módulo cinco. La sustitución es legítima en operaciones que respetan la congruencia, después de justificar que están bien definidas sobre el cociente; no lo es en cualquier ecuación entera.
+
+---
+
+[Índice del libro y bibliografía](../para-matematicos/fundamentos-para-matematicos.qmd)

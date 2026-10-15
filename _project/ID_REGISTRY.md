@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0017 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0343 |
+| Capítulo | MA-BCH-0347 |
 | Curso | MA-CRS-0002 |
 | Libro | MA-BOK-0016 |
 
@@ -535,3 +535,13 @@ Se conservan los IDs y URLs publicados de C00–C05. Se incorporan C06–C31, su
 | MA-BCH-0340 | book-chapter | Capítulo 9. Newton, Taylor y el problema del error | libros/otros/elementos-del-calculo/capitulo-09.md | published; EDC-C09 |
 | MA-BCH-0341 | book-chapter | Capítulo 10. De las leyes de cambio a las ecuaciones diferenciales | libros/otros/elementos-del-calculo/capitulo-10.md | published; EDC-C10 |
 | MA-BCH-0342 | book-chapter | Capítulo 11. El cálculo como teoría: alcance, historia y fundamentos | libros/otros/elementos-del-calculo/capitulo-11.md | published; EDC-C11 |
+
+
+## FND — Edición ampliada, Parte V y epílogo (2026-10-13)
+
+| ID | Tipo | Título | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BCH-0343 | book-chapter | FND-T1-C12 — Naturales | `libros/capitulos/fundamentos-para-matematicos-capitulo-12-construccion-de-los-naturales.qmd` | published |
+| MA-BCH-0344 | book-chapter | FND-T1-C13 — Enteros | `libros/capitulos/fundamentos-para-matematicos-capitulo-13-construccion-de-los-enteros.qmd` | published |
+| MA-BCH-0345 | book-chapter | FND-T1-C14 — Racionales | `libros/capitulos/fundamentos-para-matematicos-capitulo-14-construccion-de-los-racionales.qmd` | published |
+| MA-BCH-0346 | book-chapter | FND-EPILOGUE-REALS — Epílogo | `libros/capitulos/fundamentos-para-matematicos-epilogo-reales.qmd` | published |
