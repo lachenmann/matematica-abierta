@@ -161,7 +161,14 @@ def main():
                     if fragment.count():
                         href = fragment.get_attribute('href')
                         fragment.evaluate('(el)=>el.click()')
-                        pair[mode]['fragmentNavigation'] = page.evaluate('() => location.hash') == href
+                        # Browsers percent-encode accented heading IDs in location.hash.
+                        # Compare decoded fragments and require the actual target to exist.
+                        pair[mode]['fragmentNavigation'] = page.evaluate(
+                            """href => {
+                              const id = decodeURIComponent(href.slice(1));
+                              return decodeURIComponent(location.hash.slice(1)) === id &&
+                                     document.getElementById(id) !== null;
+                            }""", href)
                     context.close()
                 online, offline = pair['online'], pair['offline']
                 differences = []
