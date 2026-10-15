@@ -1,0 +1,435 @@
+---
+title: "Capítulo 12 — ¿Cómo puede una colección convertirse en un número?"
+description: "Fundamentos para matemáticos, capítulo 12: naturales como clases de equivalencia y leyes aritméticas."
+content-id: MA-BCH-0343
+content-type: book-chapter
+collection: PM-FUN
+editorial-project: FND
+book-id: MA-BOK-0008
+source-id: FND-T1-C12
+editorial-id: MA-BCH-FND-01-012
+source-version: v01
+status: published
+date-created: 2026-10-13
+date-modified: 2026-10-13
+areas: [fundamentos]
+level: fundamental
+topics: [construccion-de-numeros, clases-de-equivalencia, razonamiento-matematico]
+prerequisites: []
+related: [MA-BOK-0008]
+provenance:
+  type: original
+  sources:
+    - "Manuscrito canónico FND_T1_C12_v01.md; bibliografía y convenciones en el índice de Fundamentos para matemáticos."
+license: GFDL-1.3-or-later
+---
+
+[Índice del libro](../para-matematicos/fundamentos-para-matematicos.qmd)
+
+
+## 12.1. Cuando todavía no hemos dado nombre a una cantidad {#fnd-section-12-1}
+
+Sobre una mesa hay cuatro piedras; en otra, cuatro conchas. Los objetos son diferentes y tampoco existe una manera privilegiada de ordenar unos junto a otros. Sin embargo, podemos poner una piedra frente a cada concha hasta agotar ambas colecciones. Esa posibilidad de formar parejas, sin dejar objetos sobrantes en ninguna mesa, permite afirmar que tienen la misma cantidad incluso antes de haber elegido la palabra «cuatro».
+
+Probemos con una colección de tres lápices y otra de cinco botones. Podemos emparejar cada lápiz con un botón, pero quedarán dos botones sin pareja. La dificultad no depende del orden en que hagamos los emparejamientos. Tampoco cambiará si trasladamos los objetos, los reemplazamos por otros o modificamos sus colores. Todo ello sugiere que la cantidad es una propiedad que queremos conservar al olvidar casi todo lo demás acerca de una colección.
+
+Una correspondencia que empareja cada elemento de $A$ con uno y sólo uno de $B$, y recíprocamente, es una **biyección** $f:A\to B$. Escribiremos
+
+$$
+A\approx B\quad\Longleftrightarrow\quad
+\text{existe una biyección }f:A\longrightarrow B.
+$$
+
+La existencia de una biyección se puede comprobar sin asignar números a los objetos: basta producir el emparejamiento. En una colección de piedras y conchas de igual cantidad, el emparejamiento puede hacerse de muchas maneras; cualquiera de ellas sirve para establecer la relación $A\approx B$.
+
+Esta relación tiene tres propiedades que hacen posible construir a partir de ella. Cada colección se corresponde consigo misma por la aplicación identidad, de modo que $A\approx A$. Si una biyección lleva $A$ sobre $B$, su inversa lleva $B$ sobre $A$; por eso $A\approx B$ implica $B\approx A$. Finalmente, si $f:A\to B$ y $g:B\to C$ son biyectivas, su composición $g\circ f:A\to C$ también lo es: de $A\approx B$ y $B\approx C$ se sigue $A\approx C$. Son, respectivamente, la **reflexividad**, la **simetría** y la **transitividad**.
+
+Para comprender por qué las tres propiedades importan, pensemos en un conjunto $X$ de objetos, provisto de una relación $\sim$ que las cumpla. Dado $x\in X$, reunimos todos los objetos relacionados con él en un solo conjunto:
+
+$$
+[x]=\{y\in X:y\sim x\}.
+$$
+
+Ésta es la **clase de equivalencia** de $x$. El propio $x$ pertenece a su clase por reflexividad, pero otros objetos también pueden pertenecer a ella. Una clase admite diversos nombres, según el representante escogido. Si $x\sim y$, la transitividad muestra que cada elemento de $[x]$ pertenece a $[y]$; la simetría permite demostrar la inclusión inversa. De aquí obtenemos $[x]=[y]$. Recíprocamente, si ambas clases son iguales, entonces $x\in[x]=[y]$ y, por definición, $x\sim y$. Hemos establecido una regla que utilizaremos constantemente:
+
+$$
+\boxed{x\sim y\quad\Longleftrightarrow\quad[x]=[y].}
+$$
+
+Podemos comprobar la necesidad de la transitividad con una comparación tentadora: declarar que dos colecciones están relacionadas cuando comparten alguna marca. Las colecciones $\{p\}$ y $\{p,q\}$ comparten $p$, y $\{p,q\}$ y $\{q\}$ comparten $q$, pero $\{p\}$ y $\{q\}$ no comparten ninguna. Esta comparación no es transitiva y, por eso, no podría organizar las colecciones en clases que se comporten como bloques de una partición.
+
+Si dos clases tienen un elemento en común, la simetría y la transitividad obligan a que sean la misma clase. Así, las clases forman una **partición** del conjunto de partida: todos sus elementos quedan agrupados, cada clase es no vacía y dos clases distintas nunca se solapan. El **conjunto cociente** reúne esos grupos como elementos de un conjunto nuevo:
+
+$$
+X/{\sim}=\{[x]:x\in X\}.
+$$
+
+El capítulo 11 mostró cómo las clases de equivalencia forman particiones y conjuntos cociente. Con las colecciones de este ejemplo podemos dar un paso más: si $x$ es una colección y $[x]$ reúne todas las que pueden emparejarse exactamente con ella, quizá la cantidad que buscamos pueda identificarse con esa clase. Para que esa idea se convierta en una construcción matemática necesitamos fijar primero de qué colecciones podemos hablar y evitar que la palabra «todas» nos lleve fuera de un conjunto bien definido.
+
+## 12.2. Primer momento de construcción: los naturales como clases de colecciones finitas {#fnd-section-12-2}
+
+Podemos tener dos colecciones diferentes que admitan el mismo emparejamiento: tres lápices y tres conchas, o tres marcas escritas sobre una hoja y otras tres sobre una piedra. Si queremos llamar *tres* a algo que no dependa de las marcas particulares, la relación $A\approx B$ nos ofrece una posibilidad exacta: tomar **como número** la clase de todas las colecciones que son biyectivas con una colección elegida. La palabra «todas» exige, sin embargo, una precaución. No podemos formar indiscriminadamente un conjunto con todas las colecciones de cualquier procedencia; trabajaremos dentro de un conjunto previamente fijado de marcas.
+
+Elijamos un conjunto infinito $U$ cuyos elementos llamaremos *marcas*. Pensamos en él como una reserva que siempre permite escoger marcas nuevas después de haber empleado una cantidad finita de ellas. Necesitamos, entre sus subconjuntos, aquellos que puedan construirse comenzando con el vacío y agregando marcas una tras otra. **Ésta será nuestra noción de colección finita.** Su formulación conjuntista puede darse sin introducir los naturales que todavía queremos construir.
+
+En efecto, consideremos las familias $\mathcal G\subseteq\mathcal P(U)$ que cumplen estas dos condiciones: $\varnothing\in\mathcal G$, y si $A\in\mathcal G$ y $u\in U$, entonces $A\cup\{u\}\in\mathcal G$. La intersección de todas esas familias vuelve a satisfacer ambas condiciones; la llamaremos $\mathcal F(U)$. De este modo,
+
+$$
+\mathcal F(U)=\bigcap\left\{\mathcal G\subseteq\mathcal P(U):
+\varnothing\in\mathcal G,\quad
+\forall A\in\mathcal G\ \forall u\in U,\;
+A\cup\{u\}\in\mathcal G
+\right\}.
+$$
+
+La fórmula es una manera rigurosa de indicar que no incorporamos colecciones porque nos parezcan pequeñas ni porque ya sepamos contar sus elementos. Incorporamos el vacío y todo lo que sea obligatorio al agregar una marca a una colección admitida. Esta descripción, que utiliza una teoría de conjuntos de fondo y un conjunto infinito $U$, no pretende deducir la existencia de $U$ desde cero. Su ventaja es impedir un círculo lógico: *no hemos definido «finito» como «tener $n$ elementos», para luego definir $n$ mediante las colecciones finitas*. La propiedad de ser la menor familia cerrada bajo adjunción proporciona además el principio inductivo que usaremos en el capítulo.
+
+Sobre $\mathcal F(U)$ conservamos la relación $A\approx B$ cuando existe una biyección $A\to B$. Cada clase $[A]$ agrupa las colecciones que pueden emparejarse exactamente con $A$. Si $A=\{p,q,r\}$, pertenecen a $[A]$ las ternas de marcas cualesquiera de $U$, aunque sus elementos no coincidan con $p,q,r$. El vacío tiene una clase especial: una biyección $\varnothing\to B$ sólo es posible cuando $B=\varnothing$; por eso $[\varnothing]=\{\varnothing\}$. En cambio, la clase de una colección unitaria contiene muchos representantes diferentes.
+
+Estamos en condiciones de realizar el **primer momento de construcción numérica**:
+
+$$
+\boxed{\mathbb N_U=\mathcal F(U)/{\approx}.}
+$$
+
+Cada elemento de $\mathbb N_U$ es una clase de colecciones. Designamos $0=[\varnothing]$, $1=[\{p\}]$, $2=[\{p,q\}]$ para $p\ne q$, y así sucesivamente. Los nombres tradicionales se aplican a clases, aunque para exhibirlas o calcular con ellas elijamos representantes. Con dos colecciones $A=\{p,q\}$ y $B=\{r,s\}$ de marcas distintas, la afirmación $A=B$ es falsa, mientras que $[A]=[B]$ es verdadera: basta una biyección que lleve $p$ a $r$ y $q$ a $s$. El número que llamamos dos es esta clase completa; ninguna de las dos colecciones se convierte por sí sola en el número.
+
+Conviene mantener separadas tres afirmaciones. $A\in\mathcal F(U)$ dice que $A$ es una colección finita de marcas; $[A]\in\mathbb N_U$ dice que su clase es un número natural de esta realización; $B\in[A]$ significa que $B$ y $A$ admiten una biyección. Confundir $A$ con $[A]$ borra justamente la construcción que intentábamos comprender. Una vez fijada esta realización podremos escribir simplemente $\mathbb N$ cuando no haya ambigüedad, sin olvidar que otras construcciones conjuntistas de los naturales producen objetos distintos aunque aritméticamente equivalentes.
+
+> [!note] Dos caminos hacia la idea de número
+> En 1895, Georg Cantor formuló una pregunta que se parece mucho a la que nos ha acompañado: ¿qué queda de una colección cuando prescindimos de la naturaleza de sus elementos y del orden en que aparecen? Llamó *número cardinal* a la noción resultante y relacionó la igualdad de cardinales con la posibilidad de establecer una correspondencia uno a uno entre conjuntos. En el primer apartado de sus *Beiträge zur Begründung der transfiniten Mengenlehre* (§1) aparece expresamente esa relación.
+>
+> Richard Dedekind había elegido otro punto de partida en *Was sind und was sollen die Zahlen?* (1888). En vez de caracterizar la cantidad mediante emparejamientos, investigó los sistemas organizados por una operación sucesor y la menor cadena generada a partir de un elemento inicial. Los dos planteamientos iluminan aspectos complementarios: Cantor ayuda a comprender por qué colecciones diferentes pueden compartir una cantidad; Dedekind ayuda a reconocer qué estructura sostiene la sucesión de los números y la inducción. Nuestra construcción de $\mathbb N_U$ mediante clases de subconjuntos de un universo fijo es una **realización moderna elegida con fines pedagógicos**: no debe confundirse literalmente con las definiciones históricas de ninguno de los dos.
+>
+> Fuentes: [Cantor, *Beiträge*, *Mathematische Annalen* 46 (1895), pp. 481–512, §1](https://eudml.org/doc/157768); [*Stanford Encyclopedia of Philosophy*, «Dedekind’s Contributions to the Foundations of Mathematics»](https://plato.stanford.edu/entries/dedekind-foundations/).
+
+**Comprobación 1.** Si $A=\{\alpha,\beta,\gamma\}$ y $B=\{u,v,w\}$ tienen tres elementos distintos cada uno, ¿es verdadera la igualdad $A=B$? ¿Qué ocurre con $[A]=[B]$? ¿Qué objeto hemos llamado $3$?
+
+**Solución razonada.** No se puede afirmar $A=B$; de hecho, si sus marcas son diferentes, los conjuntos también lo son. Sí existe una biyección entre $A$ y $B$, por ejemplo la que asigna sucesivamente $\alpha\mapsto u$, $\beta\mapsto v$ y $\gamma\mapsto w$. Por eso $[A]=[B]$. El símbolo $3$ nombra esta clase, cuyos elementos son colecciones finitas de tres marcas, y no una colección particular.
+
+## 12.3. Hacer aritmética con los naturales que acabamos de construir {#fnd-section-12-3}
+
+Reconocer que dos colecciones tienen la misma cantidad es apenas el comienzo. Queremos reunir colecciones, formar filas de objetos, hablar de la cantidad siguiente y comparar cantidades. Para que esas operaciones pertenezcan realmente a $\mathbb N_U$, su resultado debe depender de la **clase**, sin cambiar cuando elijamos otros representantes.
+
+Para sumar las clases de dos colecciones $A$ y $B$, elegimos representantes $A'$ y $B'$ cuyas marcas sean distintas entre sí, y reunimos ambas colecciones. Siempre podemos hacerlo porque $U$ contiene marcas nuevas fuera de cualquier colección finita. Proponemos
+
+$$
+\boxed{[A]+[B]=[A'\cup B'],\qquad A'\approx A,\quad B'\approx B,\quad A'\cap B'=\varnothing.}
+$$
+
+¿Por qué la exigencia de que sean disjuntas? Si $A=\{p,q\}$ y $B=\{q,r\}$, su unión ordinaria tiene tres elementos, aunque las cantidades que queríamos reunir son dos y dos. Tomar marcas nuevas evita contar una misma marca dos veces. Podemos, por ejemplo, reemplazar la segunda colección por $B'=\{s,t\}$, disjunta de $A$, y obtener una colección de cuatro marcas.
+
+Falta el argumento que permite abandonar esta elección concreta. Supongamos que también utilizamos $C',D'$ como representantes disjuntos de las mismas clases. Una biyección $f:A'\to C'$ y otra $g:B'\to D'$ se pueden reunir en una función sobre $A'\cup B'$: utilizamos $f$ en la primera parte y $g$ en la segunda. Como los dominios y las imágenes son disjuntos, la función resultante es una biyección de $A'\cup B'$ sobre $C'\cup D'$. Por eso ambas uniones pertenecen a la misma clase. **La suma está bien definida.** El lector puede comprobar que aquí hemos demostrado la independencia de dos elecciones a la vez: qué colección representa a cada sumando y qué marcas utilizamos para que los conjuntos reunidos no se solapen.
+
+El producto corresponde a organizar una colección de filas $A$ y columnas $B$. Cada casilla lleva el par ordenado $(a,b)$, con $a\in A$ y $b\in B$, de modo que la cuadrícula queda representada por $A\times B$. Podemos justificar que esta colección de casillas es finita sin recurrir todavía a la multiplicación numérica: si $A$ está vacía, el producto está vacío; y cada vez que agregamos una marca $a$ a $A$, añadimos al producto una copia de $B$, formada por los pares $(a,b)$ con $b\in B$. Como $B$ es finita y sólo agregamos un número finito de marcas a $A$, la construcción inductiva de finitud garantiza que $A\times B$ también es finito. Podemos, por tanto, copiar sus casillas mediante marcas distintas de $U$. Si $C\subseteq U$ es una de esas copias, definimos
+
+$$
+\boxed{[A]\cdot[B]=[C]\quad\text{cuando }C\approx A\times B.}
+$$
+
+Puede parecer más complicado que multiplicar cantidades conocidas, pero tiene una ventaja: si cambiamos $A$ por una colección biyectiva $A'$ y $B$ por otra $B'$, las biyecciones se combinan y producen una biyección $A\times B\to A'\times B'$, dada por $(a,b)\mapsto(f(a),g(b))$. Las cuadrículas tienen por tanto la misma clase, cualquiera que sea la copia de marcas utilizada. También el producto está bien definido. Una biyección entre los dos conjuntos de filas y otra entre los dos conjuntos de columnas producen el emparejamiento de casillas que necesitamos; no hemos dado por supuesto que multiplicar números naturales ya estuviera disponible.
+
+Podemos expresar la idea de «un número más» sin recurrir a una suma ya conocida. Dada una colección $A$, elegimos $u\in U\setminus A$ y definimos el **sucesor** de su clase por
+
+$$
+\boxed{S([A])=[A\cup\{u\}].}
+$$
+
+La marca nueva no debe ser alguna que ya pertenezca a $A$, porque entonces la unión no añadiría nada. Si elegimos otra marca nueva, o reemplazamos $A$ por una colección equivalente, el emparejamiento se prolonga enviando la marca añadida de una colección a la de la otra; obtenemos clases iguales. En particular, $S(0)=1$, $S(1)=2$, y así sucesivamente. Para ver que $S$ es inyectiva, consideremos una biyección entre dos colecciones obtenidas añadiendo una marca nueva. Si hace falta, podemos intercambiar dos imágenes para que la primera marca nueva corresponda a la segunda; al quitar esas dos marcas, queda una biyección entre las colecciones originales. El sucesor nunca es cero, porque una colección con al menos una marca no puede estar en biyección con la colección vacía.
+
+Hay además un principio de inducción encerrado en la propia construcción. Si una propiedad de las clases vale para $0$ y se conserva cada vez que añadimos una marca nueva, vale para todas las clases de $\mathbb N_U$: la familia de colecciones sobre las que la propiedad es verdadera contiene la colección vacía y es estable bajo la adjunción de una marca, de modo que contiene toda la familia $\mathcal F(U)$. Éste es el motivo por el cual la inducción puede describirse como una ley del sistema recién construido, y también explica por qué su uso no depende de una lista escrita de números.
+
+Las leyes familiares de la suma y el producto —asociatividad, conmutatividad y distributividad— pueden obtenerse mediante biyecciones entre uniones disjuntas y productos de colecciones; algunas requieren más detalle que el empleado aquí. Tampoco hemos desarrollado aún toda la teoría del orden. La construcción ya nos proporciona objetos y operaciones bien definidos; el tratamiento completo de sus leyes exige demostrar los resultados correspondientes, no darlos por ciertos por la semejanza con la aritmética habitual.
+
+**Comprobación 2.** ¿Por qué no podemos definir $[A]+[B]=[A\cup B]$ sin ninguna condición? ¿Qué cambio sencillo repara el problema?
+
+**Solución razonada.** Si $A=B=\{p\}$, la fórmula propuesta daría $[A\cup B]=[\{p\}]=1$ para la suma de las clases de dos colecciones unitarias. Si sustituimos el segundo representante por $\{q\}$, con $q\ne p$, obtendríamos $[\{p,q\}]=2$. La misma pareja de clases recibiría dos resultados distintos. Basta exigir que los representantes elegidos sean disjuntos, y después demostrar que todas esas elecciones disjuntas conducen a la misma clase.
+
+## 12.4. Definir una operación no demuestra sus leyes {#fnd-section-12-4}
+
+La suma que acabamos de definir obliga a escoger representantes disjuntos; la elección puede hacerse siempre, pero su razón matemática merece una imagen que podamos conservar en las pruebas. Una vez entendida esa reunión de colecciones, será posible estudiar las leyes de la suma sin confundir dos cuestiones: que una operación exista sobre las clases y que satisfaga las identidades que esperamos de ella.
+
+### La unión disjunta: reunir sin confundir
+
+La dificultad se ve si renunciamos por un momento a escoger representantes disjuntos. Tomemos dos colecciones de marcas,
+
+$$
+A=\{p,q\},\qquad B=\{q,r\}.
+$$
+
+Cada colección tiene dos elementos. Sin embargo, $A\cup B=\{p,q,r\}$ tiene solamente tres, porque una misma marca, $q$, pertenece a ambas colecciones y en un conjunto no se escribe dos veces. La unión ordinaria responde correctamente a la pregunta por las marcas que aparecen en alguna de las dos colecciones; al sumar queremos conservar las dos aportaciones, incluso si los representantes elegidos comparten una marca.
+
+Podemos lograrlo sin exigir que $A$ y $B$ sean disjuntos desde el comienzo. A cada elemento de $A$ le adjuntamos la etiqueta $0$, y a cada elemento de $B$ la etiqueta $1$. Las etiquetas permiten distinguir dos apariciones de una misma marca según su procedencia. La colección que resulta recibe el nombre de **unión disjunta**, y se representa mediante el símbolo $\sqcup$:
+
+$$
+\boxed{A\sqcup B=(A\times\{0\})\cup(B\times\{1\}).}
+$$
+
+En nuestro ejemplo obtenemos
+
+$$
+A\sqcup B=\{(p,0),(q,0),(q,1),(r,1)\}.
+$$
+
+Los pares $(q,0)$ y $(q,1)$ son distintos, aunque llevan la misma marca en su primera coordenada. Contamos así cuatro elementos, como corresponde a reunir dos colecciones de dos elementos cada una. La unión se llama *disjunta* porque las dos copias etiquetadas, $A\times\{0\}$ y $B\times\{1\}$, no tienen ningún elemento en común. Si $A$ y $B$ ya eran disjuntos, podemos olvidarnos de las etiquetas y obtener una biyección natural entre $A\sqcup B$ y $A\cup B$. Son conjuntos naturalmente correspondientes, aunque sus elementos no tengan literalmente la misma forma.
+
+En nuestra realización $\mathbb N_U=\mathcal F(U)/{\approx}$, los pares etiquetados de $A\sqcup B$ y las casillas de $A\times B$ no tienen por qué pertenecer a $U$. Cuando pongamos corchetes alrededor de esos conjuntos entenderemos la clase de **cualquier copia finita de ellos formada con marcas de $U$**. Dos copias así son biyectivas, y el número que representan es el mismo. Con esta convención, la suma de la sección anterior admite la escritura más cómoda
+
+$$
+\boxed{[A]+[B]=[A\sqcup B].}
+$$
+
+Ya comprobamos que la clase resultante no cambia si sustituimos $A$ y $B$ por representantes equivalentes. Eso demuestra que la suma está bien definida. Aún queda por averiguar si la nueva operación es conmutativa y asociativa: para lo primero necesitaremos comparar $A\sqcup B$ con $B\sqcup A$; para lo segundo, las dos formas de reunir tres colecciones. Demostrar esas leyes supone un trabajo adicional al de definir correctamente la operación.
+
+## 12.5. Las leyes de los naturales nacen de las correspondencias {#fnd-section-12-5}
+
+### Reunir colecciones de distintas maneras
+
+Si reunimos las colecciones $A$ y $B$ como dos grupos etiquetados, podemos intercambiar sus etiquetas: a cada $(a,0)$ le hacemos corresponder $(a,1)$, y a cada $(b,1)$ le hacemos corresponder $(b,0)$ en la reunión de orden inverso. Esta regla es biyectiva, porque puede deshacerse mediante el mismo intercambio. De ahí se deduce
+
+$$
+[A]+[B]=[B]+[A].
+$$
+
+En una suma de tres cantidades parece haber dos decisiones de agrupación, $(A\sqcup B)\sqcup C$ y $A\sqcup(B\sqcup C)$. Las etiquetas que aparecen en los conjuntos anidados son diferentes, pero cada elemento procede de exactamente una de las colecciones originales. La regla que conserva el elemento y su procedencia —primera, segunda o tercera colección— establece una biyección entre ambos conjuntos. Por ello
+
+$$
+([A]+[B])+[C]=[A]+([B]+[C]).
+$$
+
+Las clases de $A\sqcup\varnothing$ y de $A$ coinciden: basta olvidar la etiqueta de los elementos de $A$. Como $0=[\varnothing]$, obtenemos $[A]+0=[A]$. Estas pruebas muestran de dónde proceden la conmutatividad, la asociatividad y el cero aditivo; no necesitamos presuponer las mismas leyes para las cantidades que estamos definiendo.
+
+Para la multiplicación observemos una cuadrícula con filas indexadas por $A$ y columnas indexadas por $B$. Intercambiar filas y columnas define la biyección $(a,b)\mapsto(b,a)$ entre $A\times B$ y $B\times A$, de modo que $[A][B]=[B][A]$. Si las casillas tienen, además, una tercera coordenada, las correspondencias
+
+$$
+((a,b),c)\longleftrightarrow(a,(b,c))
+$$
+
+entre $(A\times B)\times C$ y $A\times(B\times C)$ prueban la asociatividad del producto. Si $E$ es una colección de una sola marca, las parejas $(a,e)$ están en correspondencia biyectiva con los elementos $a\in A$; así, $[A]\cdot1=[A]$. En cambio, $A\times\varnothing$ es vacío, y por eso $[A]\cdot0=0$.
+
+La distributividad puede reconocerse en una cuadrícula cuyas columnas provienen de dos grupos diferentes. Cada elemento de $A\times(B\sqcup C)$ pertenece a una de dos regiones, según la etiqueta de su segunda coordenada. En la primera región corresponde a una casilla de $A\times B$ y en la segunda a una de $A\times C$. Ésa es una biyección explícita
+
+$$
+A\times(B\sqcup C)\longrightarrow
+(A\times B)\sqcup(A\times C),
+$$
+
+que envía $(a,(b,0))$ a $((a,b),0)$ y $(a,(c,1))$ a $((a,c),1)$. Al tomar clases se obtiene
+
+$$
+[A]\bigl([B]+[C]\bigr)=[A][B]+[A][C].
+$$
+
+Las leyes que acabamos de demostrar justifican que $\mathbb N_U$, con estas operaciones, sea un **semianillo conmutativo con unidad**. La terminología reúne en un solo nombre las propiedades ya probadas; no hace falta conocerla para comprender las biyecciones. Una vez probadas estas leyes, podremos preguntarnos por la capacidad que todavía nos falta: efectuar una resta cuando la cantidad sustraída es mayor que la cantidad inicial.
+
+### Por qué se pueden cancelar sumandos
+
+Consideremos una igualdad de clases $[A]+[C]=[B]+[C]$. Es natural querer concluir $[A]=[B]$, como hacemos cuando cancelamos una cantidad igual en ambos miembros de una ecuación. Sin embargo, la cancelación no se desprende de la mera asociatividad y conmutatividad: necesita una propiedad de las **colecciones finitas**. Vamos a demostrarla sin introducir todavía números negativos.
+
+La igualdad de las sumas afirma que existe una biyección
+
+$$
+f:A\sqcup C\longrightarrow B\sqcup C.
+$$
+
+Si $C$ es vacío, la correspondencia requerida entre $A$ y $B$ ya está ante nosotros. Si $C$ contiene una marca $c$, atendamos a la copia etiquetada de $c$ en el dominio y a la correspondiente copia de $c$ en el codominio. Puede ocurrir que $f$ lleve una a la otra; en ese caso, al retirar ambas marcas queda una biyección entre $A\sqcup(C\setminus\{c\})$ y $B\sqcup(C\setminus\{c\})$. Si $f$ envía la marca elegida a otro elemento del codominio, podemos **intercambiar allí las dos imágenes**: componemos $f$ con la permutación que intercambia su imagen actual y la copia de $c$ en el codominio. La nueva función sigue siendo una biyección y ya empareja las dos copias de $c$, por lo que podemos retirarlas.
+
+El procedimiento reduce en una marca la colección común. La definición inductiva de finitud asegura que podemos repetir esta operación hasta eliminar todas las marcas de $C$; formalmente, es una inducción sobre su construcción por adjunción de marcas. Queda una biyección $A\to B$, y concluimos
+
+$$
+\boxed{[A]+[C]=[B]+[C]\quad\Longrightarrow\quad[A]=[B].}
+$$
+
+Esta **ley de cancelación aditiva** es el puente que necesitaremos enseguida. La relación sobre pares de naturales con la que formamos los enteros emplea igualdades de sumas cruzadas, y su transitividad requiere cancelar una cantidad común. Esa cancelación pertenece legítimamente a la aritmética natural recién construida.
+
+### Comparar cantidades finitas
+
+El orden también puede describirse sin contar previamente los elementos de una colección. Diremos que $[A]\le[B]$ cuando existe una aplicación inyectiva de $A$ en $B$. La definición sólo depende de las clases, porque una inyección sigue siendo inyección si antes y después componemos con biyecciones que cambian los representantes. Además, una inyección $j:A\to B$ identifica $A$ con una parte de $B$; el complemento de esa parte es una colección finita $C$. Esto permite escribir $[B]=[A]+[C]$. Recíprocamente, si $[B]=[A]+[C]$, la inclusión de $A$ en $A\sqcup C$, seguida de una biyección hacia un representante de $[B]$, proporciona una inyección. Hemos demostrado la caracterización
+
+$$
+\boxed{n\le m\quad\Longleftrightarrow\quad
+\exists k\in\mathbb N\;(m=n+k).}
+$$
+
+La comparación es total: dadas dos colecciones finitas, una admite una inyección en la otra. Podemos probarlo mediante inducción sobre la primera colección. Si está vacía, la función vacía es una inyección de ella en cualquier otra. Para el paso inductivo consideremos una colección no vacía $A$ y otra $B$. Si $B$ es vacía, tenemos una inyección de $B$ en $A$. Si ambas contienen marcas, elegimos $a\in A$ y $b\in B$, y aplicamos la hipótesis inductiva a $A\setminus\{a\}$ y $B\setminus\{b\}$. Si la primera colección reducida se inyecta en la segunda, extendemos la aplicación enviando $a$ a $b$, y obtenemos una inyección $A\to B$; si la dirección es la inversa, la extendemos enviando $b$ a $a$ y conseguimos una inyección $B\to A$. En cualquier caso existe una comparación entre las clases originales.
+
+La reflexividad de $\le$ procede de la identidad, y su transitividad de la composición de inyecciones. Para la antisimetría supongamos $n\le m$ y $m\le n$. Existen $k,\ell\in\mathbb N$ tales que $m=n+k$ y $n=m+\ell$. Sustituyendo, obtenemos $n=n+(k+\ell)$; la cancelación aditiva da $0=k+\ell$. Pero una unión disjunta sólo es vacía cuando sus dos partes lo son, así que $k=\ell=0$ y $m=n$. Hemos probado un orden total sin recurrir a la aritmética de enteros que todavía no existe.
+
+**Comprobación 3.** Alguien intenta demostrar la cancelación natural diciendo: «Si $n+k=m+k$, restamos $k$ y queda $n=m$». Señala qué paso tiene que justificarse en nuestra construcción y explica cómo se consigue sin restar.
+
+**Solución razonada.** El paso «restamos $k$» presupone justamente la cancelación que se pretende demostrar. Representamos la igualdad mediante una biyección $A\sqcup C\to B\sqcup C$, emparejamos una por una las marcas del grupo común —reajustando la biyección mediante un intercambio cuando sea necesario— y las retiramos. La finitud permite terminar el procedimiento y obtener una biyección entre $A$ y $B$, de donde $n=m$.
+
+## 12.6. Una equivalencia *entre* naturales: los restos no construyen los naturales {#fnd-section-12-6}
+
+Construidos los naturales, podemos utilizarlos para formar un cociente diferente. Pensemos en el reparto de ocho fichas en montones de tres: sobran dos. Si comenzamos con once fichas, sobran también dos. Lo mismo sucede con dos, cinco, catorce y todos los números que aumentan de tres en tres. Si nuestro problema sólo registra el resto, ocho y once resultan indistinguibles **para ese problema**, aunque representan cantidades distintas en $\mathbb N$.
+
+Definimos $a\sim_3 b$ cuando $a$ y $b$ dejan el mismo resto al dividir por tres. El resto se apoya en un resultado que podemos justificar a partir de la inducción y el orden que ya construimos. Fijado un natural $m>0$, todo $n\in\mathbb N$ se escribe de una única manera como $n=mq+r$, donde $q\in\mathbb N$ y $0\le r<m$. Para la existencia comenzamos con $n=0$, $q=r=0$, y avanzamos por inducción: al pasar de $n$ a $n+1$, o bien aumentamos el resto $r$ en una unidad si $r+1<m$, o bien, cuando $r+1=m$, lo devolvemos a cero y aumentamos $q$ en una unidad. Para la unicidad, dos cocientes diferentes estarían ordenados; si $q<q'$, entonces $mq+r<m(q+1)\le mq'\le mq'+r'$, de modo que dos representaciones del mismo $n$ no pueden tener cocientes distintos. Una vez fijado el cociente, la cancelación aditiva obliga a que sus restos coincidan. Ésta es la **división euclídea** en los naturales, y para $m=3$ permite separarlos en tres conjuntos:
+
+$$
+\begin{aligned}
+C_0&=\{0,3,6,9,\ldots\},\\
+C_1&=\{1,4,7,10,\ldots\},\\
+C_2&=\{2,5,8,11,\ldots\}.
+\end{aligned}
+$$
+
+La relación es reflexiva, simétrica y transitiva porque estas tres propiedades las posee la igualdad de los restos. Al formar las clases obtenemos
+
+$$
+\mathbb N/{\sim_3}=\{C_0,C_1,C_2\}.
+$$
+
+El signo de cociente es el mismo que utilizamos en la construcción de $\mathbb N_U$, pero los dos procedimientos tienen resultados y propósitos distintos. Antes tomamos colecciones finitas y, al identificarlas cuando tenían igual cantidad, **obtuvimos los propios números naturales**. Aquí tomamos números naturales ya disponibles y los identificamos cuando comparten un resto; hemos obtenido un conjunto de sólo tres clases. Es un ejemplo de equivalencia *en* $\mathbb N$, distinto de la construcción de $\mathbb N$ *mediante* equivalencia.
+
+Podemos probar, además, que la suma descendente de los representantes define una operación sobre estas nuevas clases:
+
+$$
+\boxed{[a]+[b]=[a+b]\quad\text{en }\mathbb N/{\sim_3}.}
+$$
+
+La expresión merece una prueba. Si $a\sim_3 a'$ y $b\sim_3 b'$, existen $p,p',q,q'\in\mathbb N$ y restos $r,s\in\{0,1,2\}$ tales que
+
+$$
+\begin{aligned}
+a&=3p+r,&a'&=3p'+r,\\
+b&=3q+s,&b'&=3q'+s.
+\end{aligned}
+$$
+
+Entonces $a+b=3(p+q)+(r+s)$ y $a'+b'=3(p'+q')+(r+s)$. Si $r+s<3$, las sumas tienen ese resto; si $r+s\ge3$, ambas tienen el resto $r+s-3$. Los representantes elegidos para las dos clases pueden variar, pero el resto de la suma no cambia. Esto prueba $[a+b]=[a'+b']$ y, por tanto, que la suma está bien definida.
+
+La aparente regla $[a]\mapsto a$, en cambio, no define una función sobre el cociente: la entrada $[1]=[4]$ produciría dos salidas diferentes, $1$ y $4$. Una fórmula sobre clases sólo tiene sentido si todo representante de una misma clase conduce al mismo resultado.
+
+**Comprobación 4.** ¿Cuántos elementos tiene $\mathbb N/{\sim_5}$? ¿Son iguales $2$ y $12$ como naturales? ¿Son iguales sus clases de restos? ¿Por qué ese cociente no es otra construcción de todo $\mathbb N$?
+
+**Solución razonada.** El cociente tiene cinco elementos, uno por cada resto $0,1,2,3,4$. Los números $2$ y $12$ son diferentes, pero sus clases son iguales porque dejan el mismo resto al dividir por cinco. El cociente no es un nuevo modelo de todos los naturales: identifica números que eran distintos y sólo conserva cinco posibilidades.
+
+La construcción ha dejado preparadas las herramientas que necesitaremos al estudiar los enteros. Sabemos que las clases pueden representar cantidades, que las operaciones sobre ellas necesitan independencia de los representantes y que el orden y la cancelación aditiva se justifican desde la aritmética natural. Si más adelante representamos un saldo mediante dos naturales, podremos utilizar esas propiedades sin suponer de antemano que la resta siempre está permitida.
+
+## 12.7. Ejercicios {#fnd-section-12-7}
+
+Las pruebas anteriores han usado emparejamientos, elecciones de representantes y comparaciones que cambian de significado si se altera una hipótesis. Los ejercicios piden recuperar esos argumentos y ensayarlos en situaciones nuevas, sin depender de la explicación inmediata. En todos ellos, salvo indicación contraria, $U$ es el conjunto de marcas fijado en §12.2 y $\mathbb N=\mathcal F(U)/{\approx}$.
+
+### Comprender los representantes y las clases
+
+**Ejercicio 12.1. Dos conjuntos distintos, un mismo número.** Sean $A=\{p,q\}$ y $B=\{r,s\}$, con cuatro marcas diferentes. Determina cuáles de las expresiones $A=B$, $A\approx B$, $[A]=[B]$, $A\in[B]$ y $[A]\in\mathbb N$ son verdaderas. Indica en cada caso qué tipo de objeto aparece a cada lado.
+
+**Ejercicio 12.2. Una relación que parece razonable.** En $X=\mathcal P(\{p,q\})\setminus\{\varnothing\}$ definamos $A\,R\,B$ si $A\cap B\ne\varnothing$. Decide si es reflexiva, simétrica y transitiva; construye un ejemplo concreto que permita justificar cada respuesta. Explica por qué no se puede formar un cociente por clases de equivalencia usando $R$.
+
+**Ejercicio 12.3. Particiones y cocientes.** En $X=\{a,b,c,d,e\}$ consideremos la partición $\mathcal P=\bigl\{\{a,c\},\{b,d,e\}\bigr\}$. Define $x\sim y$ cuando pertenecen a un mismo bloque. Encuentra $[a]$, $[c]$, $[d]$, y $X/{\sim}$. Demuestra que $[a]=[c]$ y que $[a]\cap[d]=\varnothing$, justificando el paso desde la relación hasta las clases.
+
+**Ejercicio 12.4. La proyección que olvida el representante.** Para una equivalencia $\sim$ en $X$, definimos $q:X\to X/{\sim}$ mediante $q(x)=[x]$. Demuestra que $q$ es sobreyectiva. Prueba además que $q$ es inyectiva si y sólo si cada clase tiene un único elemento. Aplica el resultado a las colecciones finitas de marcas de $U$.
+
+**Ejercicio 12.5. Finitud sin números previamente construidos.** Sea $P$ una propiedad de subconjuntos de $U$ que se cumple para $\varnothing$ y que satisface: si vale para $A$ y $u\in U$, vale también para $A\cup\{u\}$. Demuestra, usando exclusivamente la definición de $\mathcal F(U)$ como menor familia cerrada, que $P$ se cumple para todas las colecciones finitas. Explica por qué esta prueba no depende de suponer que ya existe la sucesión $0,1,2,\ldots$.
+
+### De las colecciones a las operaciones
+
+**Ejercicio 12.6. La misma suma, dos resultados aparentes.** Calcula $A\cup B$ y $A\sqcup B$ cuando $A=B=\{p,q\}$, indicando los elementos del segundo conjunto mediante pares ordenados. Explica por qué la primera operación no puede definir $[A]+[B]$ sin restricciones sobre los representantes y por qué la segunda sí permite hacerlo.
+
+**Ejercicio 12.7. La independencia del representante en un producto.** Supongamos que $f:A\to A'$ y $g:B\to B'$ son biyecciones entre colecciones finitas. Construye explícitamente una función $h:A\times B\to A'\times B'$, escribe su inversa y demuestra que es una biyección. Concluye que $[A][B]$ es independiente de los representantes escogidos.
+
+**Ejercicio 12.8. Una regla que no desciende al cociente.** Fijemos dos marcas distintas $p,q\in U$. Alguien propone definir $T([A])=1$ si $p\in A$ y $T([A])=0$ en caso contrario. ¿Define esto una función $T:\mathbb N\to\{0,1\}$? Justifica la respuesta con dos representantes de una misma clase. Diseña una condición sobre $A$ que sí dependa exclusivamente de $[A]$.
+
+**Ejercicio 12.9. El sucesor no pierde información.** Sean $A,B$ colecciones finitas y $u\notin A$, $v\notin B$. Supongamos que $A\cup\{u\}\approx B\cup\{v\}$. Demuestra que $A\approx B$, explicando qué debe hacerse cuando la biyección inicial no envía $u$ a $v$. Concluye que $S$ es inyectiva.
+
+**Ejercicio 12.10. Una distributividad que puede verse.** Escribe la biyección natural
+
+$$
+A\times(B\sqcup C)\longrightarrow
+(A\times B)\sqcup(A\times C)
+$$
+
+y su inversa. Comprueba por separado las entradas provenientes de $B$ y de $C$, y deduce la ley distributiva $n(m+k)=nm+nk$ para las clases correspondientes.
+
+### Demostrar y reparar
+
+**Ejercicio 12.11. Cancelar sin restar.** Se sabe que $[A]+[C]=[B]+[C]$, con $C$ finita. Demuestra que $[A]=[B]$ sin utilizar restas de números naturales. Escribe la demostración por inducción sobre la adjunción de marcas a $C$, aclarando cómo se corrige una biyección que no empareje la marca añadida consigo misma.
+
+**Ejercicio 12.12. Comparar colecciones por inyecciones.** Sea $j:A\to B$ una inyección entre colecciones finitas. Construye una colección $C$ tal que $[B]=[A]+[C]$. Demuestra también el recíproco: si $[B]=[A]+[C]$ para alguna $C$, existe una inyección de $A$ en $B$. ¿Por qué esta equivalencia permite definir un orden sobre las clases?
+
+**Ejercicio 12.13. Dividir sin negativos.** Demuestra por inducción que, para $m\in\mathbb N$ con $m>0$ y para cada $n\in\mathbb N$, existen $q,r\in\mathbb N$ con $n=mq+r$ y $0\le r<m$. Justifica también la unicidad del par $(q,r)$ sin utilizar enteros negativos.
+
+**Ejercicio 12.14. Aritmética de restos.** Para $m=4$, escribe las cuatro clases de congruencia de $\mathbb N/{\sim_4}$ y calcula $[3]+[3]$ de dos maneras, usando respectivamente $(3,3)$ y $(7,11)$ como representantes de las entradas. Demuestra en general que la regla $[a]+[b]=[a+b]$ está bien definida en $\mathbb N/{\sim_4}$.
+
+**Ejercicio 12.15. Un argumento defectuoso.** Una persona sostiene: «Si $A\approx B$, entonces $A\cup C\approx B\cup C$, porque sólo hemos añadido el mismo conjunto a ambos». Refuta la afirmación con conjuntos finitos explícitos e identifica el dato que se ha perdido. Repara el argumento usando $A\sqcup C$ y $B\sqcup C$, y explica por qué este contraste importa al construir $\mathbb N$ como cociente.
+
+## 12.8. Soluciones desarrolladas {#fnd-section-12-8}
+
+### Soluciones 12.1–12.5
+
+**Solución 12.1.** Los conjuntos $A$ y $B$ tienen elementos diferentes, de modo que $A=B$ es falso; ambos son conjuntos de marcas y no deben identificarse por el hecho de tener el mismo tamaño. Existe la biyección $p\mapsto r$, $q\mapsto s$, así que $A\approx B$ es verdadero. Por la definición de las clases y la propiedad de las equivalencias, $[A]=[B]$ también es verdadero. La expresión $A\in[B]$ dice que el conjunto $A$ pertenece a la clase cuyo representante es $B$; equivale precisamente a $A\approx B$, por lo que es verdadera. Finalmente, $[A]\in\mathbb N$ es verdadero porque $[A]$ es una de las clases que forman el cociente $\mathcal F(U)/{\approx}$. La distinción que conviene retener es ésta: $A$ y $B$ son colecciones, $[A]$ es un conjunto de colecciones, y $\mathbb N$ es el conjunto de tales clases.
+
+**Solución 12.2.** La relación es reflexiva sobre $X$, porque cada $A\in X$ es no vacío y satisface $A\cap A=A\ne\varnothing$. Es simétrica, pues $A\cap B=B\cap A$. No es transitiva: con $A=\{p\}$, $B=\{p,q\}$ y $C=\{q\}$ tenemos $A\,R\,B$ y $B\,R\,C$, pero $A\cap C=\varnothing$ y, por tanto, $A$ no está relacionado con $C$. Si intentáramos formar $[A]_R=\{D\in X:D\,R\,A\}$, el conjunto $B$ pertenecería tanto a $[A]_R$ como a $[C]_R$, pero ambas clases no serían iguales. No obtendríamos una partición, requisito del cociente por equivalencia que hemos definido. La falla está localizada en la transitividad, no en una elección desafortunada de símbolos.
+
+**Solución 12.3.** Por definición, las clases son los bloques de la partición: $[a]=[c]=\{a,c\}$ y $[d]=\{b,d,e\}$. Así,
+
+$$
+X/{\sim}=\bigl\{\{a,c\},\{b,d,e\}\bigr\}.
+$$
+
+Puesto que $a$ y $c$ pertenecen al mismo bloque, se cumple $a\sim c$, y para una relación de equivalencia eso implica $[a]=[c]$. En cambio, $a$ y $d$ pertenecen a bloques distintos. Estos bloques son disjuntos por hipótesis de partición, por lo que $[a]\cap[d]=\varnothing$. El cociente tiene dos elementos, y cada uno de esos elementos es a su vez un subconjunto de $X$.
+
+**Solución 12.4.** Todo elemento $K$ de $X/{\sim}$ es, por definición, una clase $[x]$ de algún $x\in X$. En consecuencia $q(x)=K$, lo que prueba la sobreyectividad. Supongamos que $q$ es inyectiva y que $y\in[x]$. Entonces $x\sim y$, de donde $q(x)=q(y)$. La inyectividad obliga a $x=y$. Como $x$ pertenece a $[x]$ por reflexividad, resulta $[x]=\{x\}$. Recíprocamente, si cada clase es unitaria y $q(x)=q(y)$, ambas entradas pertenecen a la misma clase $\{x\}=\{y\}$, luego $x=y$ y $q$ es inyectiva. En $\mathcal F(U)$ no ocurre esto: las colecciones $\{p\}$ y $\{q\}$, con $p\ne q$, son representantes distintos de la misma clase; por tanto, la proyección que envía una colección finita a su número no es inyectiva.
+
+**Solución 12.5.** Consideremos $\mathcal G=\{A\subseteq U:P(A)\}$. La hipótesis inicial asegura $\varnothing\in\mathcal G$. La segunda hipótesis dice que $\mathcal G$ permanece cerrada al agregar cualquier marca $u\in U$ a cualquiera de sus elementos. Por lo tanto, $\mathcal G$ es una de las familias cuya intersección define $\mathcal F(U)$. Como esa intersección está contenida en cada familia participante, $\mathcal F(U)\subseteq\mathcal G$, y toda colección finita cumple $P$. No fue necesario atribuir un número a cada colección ni invocar propiedades de suma o de sucesor numérico; bastó la caracterización de la menor familia cerrada bajo adjunción. Este argumento explica de dónde procede una forma de inducción sobre colecciones finitas.
+
+### Soluciones 12.6–12.10
+
+**Solución 12.6.** La unión ordinaria es $A\cup B=\{p,q\}$. Con etiquetas,
+
+$$
+A\sqcup B=\{(p,0),(q,0),(p,1),(q,1)\}.
+$$
+
+La primera colección tiene dos elementos y la segunda cuatro. La suma buscada debe reunir dos cantidades de dos elementos y conservar las cuatro aportaciones. Si usáramos $[A\cup B]$ sin exigir $A\cap B=\varnothing$, el resultado variaría al cambiar de representantes: usando $B'=\{r,s\}$ con $r,s$ ajenos a $A$, la unión ordinaria de $A$ y $B'$ tendría cuatro elementos. La unión disjunta no presenta ese defecto: una biyección entre representantes se prolonga, conservando la etiqueta, a una biyección de las uniones disjuntas. Por eso $[A\sqcup B]$ depende únicamente de las dos clases sumadas.
+
+**Solución 12.7.** Definimos $h(a,b)=(f(a),g(b))$. Cada valor pertenece a $A'\times B'$ porque $f(a)\in A'$ y $g(b)\in B'$. Las inversas $f^{-1}$ y $g^{-1}$ existen por la biyectividad; por ello
+
+$$
+h^{-1}(a',b')=\bigl(f^{-1}(a'),g^{-1}(b')\bigr).
+$$
+
+La composición de las dos reglas en cualquier orden devuelve cada par original, de modo que $h$ es una biyección. Si $A\approx A'$ y $B\approx B'$, los productos cartesianos también son equivalentes. Al pasar a las clases, $[A\times B]=[A'\times B']$, donde cada expresión designa la clase de una copia finita dentro de $U$. Esto prueba la buena definición de la multiplicación.
+
+**Solución 12.8.** No define una función sobre las clases. Tomemos $A=\{p\}$ y $B=\{q\}$, con $p\ne q$. Existe una biyección entre ambas colecciones, así que $[A]=[B]$. La regla daría $T([A])=1$ porque $p\in A$, pero $T([B])=0$ porque $p\notin B$, es decir, dos resultados distintos para una misma entrada. Una condición que sí depende únicamente de la clase es «$A$ es vacía»: ninguna colección no vacía es biyectiva con $\varnothing$. La asignación $F([A])=0$ si $A=\varnothing$ y $F([A])=1$ en caso contrario está bien definida, pues la vaciedad se conserva bajo biyecciones.
+
+**Solución 12.9.** Sea $f:A\cup\{u\}\to B\cup\{v\}$ una biyección. Si $f(u)=v$, la restricción de $f$ a $A$ es una biyección de $A$ en $B$, porque el valor $v$ tiene como preimagen únicamente a $u$. Si $f(u)=w\in B$, existe un único $t\in A$ con $f(t)=v$. Podemos intercambiar en el codominio $w$ y $v$ mediante una permutación $\tau$, y la biyección $\tau\circ f$ envía $u$ a $v$ y $t$ a $w$; sus demás valores permanecen bien definidos. En ambos casos, al retirar $u$ y $v$ queda una biyección $A\to B$, así que $[A]=[B]$. Puesto que $S([A])=S([B])$ implica la hipótesis, concluimos que $S$ es inyectiva. La posibilidad de intercambiar dos valores es el paso que la expresión «retirar una marca» no debe esconder.
+
+**Solución 12.10.** Los elementos de $B\sqcup C$ son pares $(b,0)$ o $(c,1)$. Definimos
+
+$$
+\begin{aligned}
+\Phi(a,(b,0))&=((a,b),0),\\
+\Phi(a,(c,1))&=((a,c),1).
+\end{aligned}
+$$
+
+No hay ambigüedad porque las etiquetas $0$ y $1$ distinguen los dos casos. La inversa se obtiene recuperando la segunda etiqueta: $\Phi^{-1}((a,b),0)=(a,(b,0))$ y $\Phi^{-1}((a,c),1)=(a,(c,1))$. Cada composición es la identidad en su dominio, luego $\Phi$ es biyectiva. Al pasar a clases, el lado izquierdo representa $n(m+k)$ y el derecho $nm+nk$, lo que demuestra $n(m+k)=nm+nk$ sin presuponer la distributividad numérica.
+
+### Soluciones 12.11–12.15
+
+**Solución 12.11.** Sea $f:A\sqcup C\to B\sqcup C$ la biyección que expresa la igualdad de clases. Inducimos sobre la construcción finita de $C$. Para $C=\varnothing$, la función $f$ se reduce a una biyección entre las copias etiquetadas de $A$ y $B$, con lo que $A\approx B$. En el paso, escribamos $C=C_0\cup\{c\}$ con $c\notin C_0$, y distinguamos el elemento etiquetado $(c,1)$ del dominio y el del codominio. Si $f(c,1)=(c,1)$, al suprimirlo la restricción es una biyección $A\sqcup C_0\to B\sqcup C_0$. Si no, $f(c,1)=y$ y existe un único elemento $x$ con $f(x)=(c,1)$. Componiendo con la permutación del codominio que intercambia $y$ y $(c,1)$ obtenemos una biyección que ya empareja ambos elementos etiquetados. Al retirarlos queda otra biyección $A\sqcup C_0\to B\sqcup C_0$, a la que se aplica la hipótesis inductiva. Por consiguiente, $A\approx B$ y $[A]=[B]$. En ningún punto se utilizó una resta de naturales; la cancelación se obtuvo de una construcción finita de biyecciones.
+
+**Solución 12.12.** La imagen $j(A)$ es un subconjunto de $B$ en biyección con $A$. Definamos $C=B\setminus j(A)$, que es finito por ser subconjunto de una colección finita. Las partes $j(A)$ y $C$ son disjuntas y su unión es $B$; de aquí $[B]=[j(A)]+[C]=[A]+[C]$. Recíprocamente, si $[B]=[A]+[C]$, existe una biyección $f:A\sqcup C\to B$. La aplicación $a\mapsto f(a,0)$ es una inyección de $A$ en $B$, porque es la restricción de una biyección a la copia etiquetada de $A$. La relación depende únicamente de las clases: cualquier cambio de representantes se transporta mediante biyecciones antes y después de la inyección. La reflexividad se obtiene de la identidad; la transitividad, de la composición de inyecciones; la antisimetría y totalidad necesitan además la finitud y se demuestran en §12.5. Esa precisión impide tomar la definición por una prueba automática de todas las propiedades de orden.
+
+**Solución 12.13.** Para $n=0$, tomamos $q=r=0$; la desigualdad $0<m$ se cumple por hipótesis. Supongamos que $n=mq+r$ con $0\le r<m$. Al sumar uno tenemos $n+1=mq+(r+1)$. Como $r<m$, se cumple $r+1\le m$. Si $r+1<m$, conservamos $q$ y usamos el resto $r+1$. Si $r+1=m$, escribimos $n+1=m(q+1)+0$. En ambos casos existe la representación requerida. Para la unicidad, supongamos $mq+r=mq'+r'$ con $0\le r,r'<m$. Si $q<q'$, entonces $q+1\le q'$ y, como $m>0$, se deduce
+
+$$
+mq+r<m(q+1)\le mq'\le mq'+r',
+$$
+
+contradicción con la igualdad. El caso $q'<q$ conduce a la contradicción simétrica. Así $q=q'$ y la cancelación aditiva en $mq+r=mq+r'$ da $r=r'$. Hemos usado orden, inducción y cancelación de naturales, ya disponibles, pero ninguna resta negativa.
+
+**Solución 12.14.** Las cuatro clases son $C_0=\{0,4,8,\ldots\}$, $C_1=\{1,5,9,\ldots\}$, $C_2=\{2,6,10,\ldots\}$ y $C_3=\{3,7,11,\ldots\}$. Los representantes $3$ y $7$ corresponden a la primera clase de entrada, y $3$ y $11$ a la segunda, pues dejan todos resto $3$. Con los primeros obtenemos $[3]+[3]=[6]=C_2$; con los otros, $[7]+[11]=[18]=C_2$. Para justificar la independencia en general, escribamos $a=4p+r$, $a'=4p'+r$ y $b=4q+s$, $b'=4q'+s$ con los mismos restos respectivos $r,s\in\{0,1,2,3\}$. Entonces
+
+$$
+a+b=4(p+q)+(r+s),\qquad a'+b'=4(p'+q')+(r+s).
+$$
+
+El resto de ambas sumas coincide, ya sea $r+s$ si es menor que $4$ o $r+s-4$ si está entre $4$ y $6$. Por ello $a+b\sim_4 a'+b'$ y la regla $[a]+[b]=[a+b]$ está bien definida.
+
+**Solución 12.15.** Tomemos tres marcas distintas $p,q,r$ y elijamos $A=\{p\}$, $B=\{q\}$ y $C=\{p\}$. Tenemos $A\approx B$ mediante $p\mapsto q$. Sin embargo, $A\cup C=\{p\}$, mientras que $B\cup C=\{p,q\}$; una colección tiene una marca y la otra dos, de modo que no admiten una biyección. La unión ordinaria ha olvidado que una aparición de $p$ procedía de $A$ y otra de $C$. Para repararlo, definamos $h:A\sqcup C\to B\sqcup C$ enviando $(a,0)$ a $(f(a),0)$, donde $f:A\to B$ es la biyección dada, y dejando fijas las entradas $(c,1)$. La regla es una biyección, con inversa que utiliza $f^{-1}$ en la copia etiquetada $0$ y la identidad en la copia $1$. Por tanto $A\sqcup C\approx B\sqcup C$. Ésta es la propiedad que permite sumar clases sin que una coincidencia de marcas cambie el resultado.
+
+---
+
+[Índice del libro y bibliografía](../para-matematicos/fundamentos-para-matematicos.qmd)
