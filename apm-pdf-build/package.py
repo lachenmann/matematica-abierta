@@ -28,7 +28,7 @@ for stem,filename in [('main','APM_Tomo_I_Lectura_Digital_A4_v01.pdf'),('main-ca
  qa=out/stem;qa.mkdir(exist_ok=True);toc=doc.get_toc();chapters=[x for x in toc if x[0]==1 and x[1].startswith('Capítulo ')]
  selected={1,2,3,len(doc)}|{c[2] for c in chapters}|{c[2]-1 for c in chapters[1:]}
  offset=chapters[0][2]-1
- log=(r/'output'/f'{stem}.log').read_text()
+ log=(r/'output'/f'{stem}.log').read_text(errors='replace')
  tables=[int(x)+offset for x in re.findall(r'APMTABLE:page=(\d+)',log)]
  for n in tables:selected.update([n,min(n+1,len(doc))])
  flags=[];figures=[];blank=[];links=0
