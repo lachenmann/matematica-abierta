@@ -135,6 +135,10 @@ def main():
                     cdp.send('CSS.enable')
                     root = cdp.send('DOM.getDocument')
                     node = cdp.send('DOM.querySelector', {'nodeId':root['root']['nodeId'], 'selector':'main.content li'})
+                    if not node['nodeId']:
+                        node = cdp.send('DOM.querySelector', {'nodeId':root['root']['nodeId'], 'selector':'main.content p'})
+                    if not node['nodeId']:
+                        raise RuntimeError('No reading-text node available for the platform-font probe')
                     pair[mode]['renderedFonts'] = cdp.send('CSS.getPlatformFontsForNode', {'nodeId':node['nodeId']})['fonts']
                     cdp.detach()
                     page.screenshot(path=str(args.output / f'{chapter["contentId"]}-{width}-{mode}.png'),
@@ -157,7 +161,14 @@ def main():
                     if fragment.count():
                         href = fragment.get_attribute('href')
                         fragment.evaluate('(el)=>el.click()')
-                        pair[mode]['fragmentNavigation'] = page.evaluate('() => location.hash') == href
+                        # Browsers percent-encode accented heading IDs in location.hash.
+                        # Compare decoded fragments and require the actual target to exist.
+                        pair[mode]['fragmentNavigation'] = page.evaluate(
+                            """href => {
+                              const id = decodeURIComponent(href.slice(1));
+                              return decodeURIComponent(location.hash.slice(1)) === id &&
+                                     document.getElementById(id) !== null;
+                            }""", href)
                     context.close()
                 online, offline = pair['online'], pair['offline']
                 differences = []

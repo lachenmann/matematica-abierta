@@ -57,6 +57,39 @@ def sample_catalog():
 
 
 class OfflineManifestGeneratorTests(unittest.TestCase):
+    def test_canonical_images_and_lightbox_share_packaged_resources(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            chapter = site / 'libros/capitulos/image.html'
+            chapter.parent.mkdir(parents=True)
+            script = site / 'site_libs/quarto-contrib/glightbox/glightbox.min.js'
+            script.parent.mkdir(parents=True)
+            script.write_text('window.GLightbox=function(){return {on:function(){}}};')
+            image = site / 'assets/diagram.svg'
+            image.parent.mkdir()
+            image.write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M0 0L10 10"/></svg>')
+            chapter.write_text('<html lang="es"><head>'
+                '<script id="ma-math-font-ready">window.MathJax={startup:{}};</script>'
+                '<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>'
+                '</head><body><script id="quarto-html-before-body">window.theme=true;</script>'
+                '<div id="quarto-content"><main id="quarto-document-content">'
+                '<a class="lightbox" href="../../assets/diagram.svg"><img alt="Diagonal" src="../../assets/diagram.svg"></a>'
+                '<p><span class="math inline">\\(x^2\\)</span></p></main></div>'
+                '<script>var lightboxQuarto = GLightbox({"selector":".lightbox"});</script>'
+                '</body></html>')
+            assets = CanonicalAssets(site)
+            html = assets.chapter('/libros/capitulos/image.html', 'MA-BCH-0343').decode()
+            self.assertIn('var lightboxQuarto = GLightbox(', html)
+            self.assertIn('\\(x^2\\)', html)
+            href = re.search(r'<a class="lightbox" href="([^"]+)"', html)[1]
+            src = re.search(r'<img alt="Diagonal" src="([^"]+)"', html)[1]
+            self.assertEqual(href, src)
+            self.assertEqual(assets.assets[href.removeprefix('../')], image.read_bytes())
+            self.assertIn(script.read_bytes(), assets.assets.values())
+            chapter.write_text(chapter.read_text().replace('glightbox/glightbox.min.js', 'glightbox/unknown.js'))
+            with self.assertRaisesRegex(ValueError, 'unreviewed canonical script'):
+                CanonicalAssets(site).chapter('/libros/capitulos/image.html', 'MA-BCH-0343')
+
     def test_runtime_distribution_integrity_is_checked_before_extraction(self):
         with tempfile.TemporaryDirectory() as tmp, patch('canonical_offline.download', return_value=b'corrupt archive'):
             with self.assertRaisesRegex(ValueError, 'integrity failed'):

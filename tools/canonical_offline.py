@@ -13,7 +13,7 @@ import tarfile
 from html import escape, unescape
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
-from urllib.request import Request, urlopen
+from urllib.request import Request, urlopen, url2pathname
 
 import tinycss2
 
@@ -120,7 +120,7 @@ class CanonicalAssets:
         elif parsed.scheme == "file":
             if parsed.netloc or "%" in parsed.path:
                 raise ValueError(f"unsupported canonical file URL: {url}")
-            path = Path(parsed.path).resolve()
+            path = Path(url2pathname(parsed.path)).resolve()
             if not path.is_relative_to(self.site):
                 raise ValueError(f"canonical resource outside site: {url}")
             raw = path.read_bytes()
@@ -178,7 +178,7 @@ class CanonicalAssets:
         path = (self.site / canonical_path.lstrip("/")).resolve()
         if not path.is_relative_to(self.site):
             raise ValueError("canonical chapter escapes site")
-        text = path.read_text()
+        text = path.read_text(encoding="utf-8")
         head, body, main, lang = _isolate_offline_structure(text, label=chapter_id)
         base = path.as_uri()
         if not any(_html_attr_value(m.group(0), "id") == "ma-math-font-ready"
@@ -188,6 +188,8 @@ class CanonicalAssets:
         def script(match):
             src = _html_attr_value(match.group(0), "src")
             if src == "../../site_libs/quarto-html/anchor.min.js":
+                return match.group(0).replace(src, self.resource(src, base))
+            if src == "../../site_libs/quarto-contrib/glightbox/glightbox.min.js":
                 return match.group(0).replace(src, self.resource(src, base))
             if src == "https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js":
                 return ('<script src="../assets/mathjax-offline-speech.js"></script>'
@@ -256,6 +258,23 @@ class CanonicalAssets:
                 raise ValueError("canonical heading anchor initialization missing")
             reader_controls += ('<script>document.addEventListener("DOMContentLoaded",function(){'
                                 + anchor_setup.group() + '});</script>')
+        # Keep the canonical image dialog and map both its trigger and thumbnail
+        # to the same packaged bytes. Other links remain canonical navigation.
+        def image_resource(match):
+            tag = match.group(0)
+            attr = "src" if tag.lower().startswith("<img") else "href"
+            if attr == "href" and "lightbox" not in (_html_attr_value(tag, "class") or "").split():
+                return tag
+            url = _html_attr_value(tag, attr)
+            if not url:
+                return tag
+            return tag.replace(url, escape(self.resource(unescape(url), base), quote=True))
+        main = re.sub(r"<(?:img|a)\b[^>]*>", image_resource, main, flags=re.I)
+        lightbox_setup = [m.group(0) for m in _SCRIPT_RE.finditer(text)
+                          if m.group(2).lstrip().startswith("var lightboxQuarto = GLightbox(")]
+        if len(lightbox_setup) > 1:
+            raise ValueError("duplicate canonical lightbox initialization")
+        reader_controls += "".join(lightbox_setup)
         structure = _OfflineStructureParser(text)
         structure.feed(text)
         shell = structure.content_open
