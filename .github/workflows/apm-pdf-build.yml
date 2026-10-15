@@ -41,6 +41,14 @@ jobs:
           cp /tmp/apm-pdf/*.pdf apm-pdf-build/output/ 2>/dev/null || true
           cp /tmp/apm-pdf/*.toc apm-pdf-build/output/ 2>/dev/null || true
           cp /tmp/apm-pdf/figures/*.pdf apm-pdf-build/output/ 2>/dev/null || true
+          python3 - <<'PY'
+          import base64,pathlib
+          out=pathlib.Path('apm-pdf-build/output')
+          for p in out.glob('*.pdf'):
+              data=base64.b64encode(p.read_bytes()).decode()
+              for i,start in enumerate(range(0,len(data),750000)):
+                  (out/(p.name+'.part%02d.b64'%i)).write_text(data[start:start+750000])
+          PY
           git config user.name 'APM PDF build'
           git config user.email 'actions@users.noreply.github.com'
           git add apm-pdf-build/output
