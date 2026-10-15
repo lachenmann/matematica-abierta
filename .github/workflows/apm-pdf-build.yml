@@ -1,0 +1,49 @@
+name: APM PDF editions
+on:
+  push:
+    branches: [build/apm-pdf-20261015]
+    paths: [apm-pdf-build/input.b64, .github/workflows/apm-pdf-build.yml]
+permissions:
+  contents: write
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install isolated typesetting dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq texlive-latex-extra texlive-fonts-recommended texlive-lang-spanish librsvg2-bin latexmk
+      - name: Unpack and convert vector figures
+        run: |
+          mkdir -p /tmp/apm-pdf
+          base64 --decode apm-pdf-build/input.b64 > /tmp/input.zip
+          unzip -q /tmp/input.zip -d /tmp/apm-pdf
+          for f in /tmp/apm-pdf/figures/*.svg; do rsvg-convert -f pdf -o "${f%.svg}.pdf" "$f"; done
+      - name: Compile both complete editions
+        working-directory: /tmp/apm-pdf
+        run: |
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main-carta.tex
+      - name: Preserve compilation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apm-pdf-editions
+          path: /tmp/apm-pdf/
+          retention-days: 14
+      - name: Preserve outputs on isolated build branch
+        if: always()
+        run: |
+          mkdir -p apm-pdf-build/output
+          cp /tmp/apm-pdf/*.log apm-pdf-build/output/ 2>/dev/null || true
+          cp /tmp/apm-pdf/*.pdf apm-pdf-build/output/ 2>/dev/null || true
+          cp /tmp/apm-pdf/*.toc apm-pdf-build/output/ 2>/dev/null || true
+          cp /tmp/apm-pdf/figures/*.pdf apm-pdf-build/output/ 2>/dev/null || true
+          git config user.name 'APM PDF build'
+          git config user.email 'actions@users.noreply.github.com'
+          git add apm-pdf-build/output
+          git diff --cached --quiet || git commit -m 'Preserve APM PDF compilation outputs [skip ci]'
+          git push origin HEAD:build/apm-pdf-20261015
+
