@@ -545,7 +545,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Fecha de última modificación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">12 de octubre de 2026</p>
+      <p class="date-modified">16 de octubre de 2026</p>
     </div>
   </div>
     
@@ -557,32 +557,65 @@ window.Quarto = {
 
 
 <p><a href="../para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="#ejercicios-10">Ejercicios de este capítulo</a></p>
-<p>Una lista de aproximaciones puede estabilizarse aunque aún no sepamos nombrar su destino. Queremos reconocer esa estabilización desde las relaciones entre los términos de una cola. La pregunta será cómo detectar convergencia sin conocer de antemano el límite: pasaremos de una referencia externa a un control interno de distancias.</p>
-<p>Primero definiremos Cauchy con dos índices universales y probaremos qué conserva de la convergencia. Después recuperaremos acotación y construiremos un destino real usando completitud. Esa prueba principal sólo necesita las interfaces de C03 y C06, además de las bases de orden, valor absoluto y colas. Distinguiremos control de vecinos y control de todos los pares, y veremos por qué la misma distancia puede estabilizar una sucesión racional sin darle un destino racional. El capítulo termina con estimaciones de error e iteraciones reales construidas desde sumas finitas.</p>
+<p>Tomemos una suma que podemos prolongar tanto como queramos: empezamos con <span class="math inline">\(1\)</span>, añadimos <span class="math inline">\(1/4\)</span>, después <span class="math inline">\(1/9\)</span>, <span class="math inline">\(1/16\)</span>, y continuamos tomando los recíprocos de los cuadrados de los enteros. Para no suponer que la expresión infinita representa ya un número, trabajaremos por ahora únicamente con sumas finitas. Escribamos</p>
+<p><span class="math display">\[
+s_n=\sum_{k=1}^{n+1}\frac1{k^2},\qquad n=0,1,2,\ldots.
+\]</span></p>
+<p>Conocemos exactamente el significado de cada término <span class="math inline">\(s_n\)</span> y podemos calcular tantos como necesitemos. La pregunta aparece cuando dejamos de mirar un término concreto: ¿se acercan estas sumas a algún número real a medida que prolongamos el cálculo? Si conociéramos de antemano el valor <span class="math inline">\(L\)</span> de ese posible resultado, intentaríamos demostrar que <span class="math inline">\(|s_n-L|\)</span> se hace arbitrariamente pequeño. Pero sería extraño que para justificar la existencia del destino tuviéramos que empezar por conocerlo.</p>
+<p>Al pasar de <span class="math inline">\(s_n\)</span> a <span class="math inline">\(s_{n+1}\)</span> solo agregamos <span class="math inline">\(1/(n+2)^2\)</span>, una cantidad que tiende a cero. Ese dato es alentador, aunque todavía no resuelve el problema. Entre dos sumas <span class="math inline">\(s_q\)</span> y <span class="math inline">\(s_p\)</span>, con <span class="math inline">\(p&gt;q\)</span>, se acumulan <span class="math inline">\(p-q\)</span> sumandos nuevos; por pequeños que sean individualmente, no podemos ignorar que su cantidad puede ser enorme. Si queremos averiguar si las aproximaciones se estabilizan, necesitamos una estimación que siga siendo válida incluso cuando <span class="math inline">\(p\)</span> se aleje indefinidamente de <span class="math inline">\(q\)</span>.</p>
+<p>La resta elimina la parte común de ambas sumas y deja precisamente el bloque que debemos controlar:</p>
+<p><span class="math display">\[
+s_p-s_q=\sum_{k=q+2}^{p+1}\frac1{k^2}.
+\]</span></p>
+<p>¿Cómo acotar ese bloque sin tener que saber de antemano cuántos sumandos contendrá? Podemos buscar una expresión ligeramente mayor que <span class="math inline">\(1/k^2\)</span> y que tenga la ventaja de cancelarse al sumar términos consecutivos. Para <span class="math inline">\(k\ge2\)</span> se cumple <span class="math inline">\(k(k-1)&lt;k^2\)</span>, de donde</p>
+<p><span class="math display">\[
+\frac1{k^2}\le\frac1{k(k-1)}
+=\frac1{k-1}-\frac1k.
+\]</span></p>
+<p>La elección de esa fracción tiene un motivo preciso: en una suma de diferencias consecutivas, casi todos los términos desaparecen por cancelación. En consecuencia, para cualesquiera <span class="math inline">\(p&gt;q\ge0\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+0\le s_p-s_q
+&amp;\le\sum_{k=q+2}^{p+1}\left(\frac1{k-1}-\frac1k\right)\\
+&amp;=\frac1{q+1}-\frac1{p+1}
+&lt;\frac1{q+1}.
+\end{aligned}
+\]</span></p>
+<p>No hemos utilizado una suma infinita ni la existencia de un límite. Hemos controlado un bloque finito de longitud arbitraria mediante una cantidad que depende solamente de dónde empieza. Si fijamos <span class="math inline">\(q\)</span> y seguimos prolongando la suma, la diferencia nunca sobrepasa <span class="math inline">\(1/(q+1)\)</span>; y si avanzamos el comienzo del bloque, esa cota se hace tan pequeña como queramos. En particular, para todos los índices <span class="math inline">\(p,q\ge N\)</span>, intercambiándolos si fuera necesario, obtenemos</p>
+<p><span class="math display">\[
+|s_p-s_q|&lt;\frac1{N+1}.
+\]</span></p>
+<p>Recibida una precisión <span class="math inline">\(\varepsilon&gt;0\)</span>, la propiedad arquimediana nos permite escoger <span class="math inline">\(N\)</span> con <span class="math inline">\(1/(N+1)&lt;\varepsilon\)</span>. Desde ese momento, dos sumas cualesquiera de la cola difieren menos que <span class="math inline">\(\varepsilon\)</span>, aunque sus índices estén muy separados. Hemos descubierto así una forma de reconocer la estabilización de un procedimiento a partir de sus propias aproximaciones, sin haber calculado el número al que se dirigen. Queda una dificultad genuina: ¿por qué ese control mutuo garantiza que hay un número real al que todas ellas se acercan? La respuesta requerirá precisamente la completitud de <span class="math inline">\(\mathbb R\)</span>.</p>
 <section id="comparar-términos-sin-nombrar-un-límite" class="level2">
 <h2 class="anchored" data-anchor-id="comparar-términos-sin-nombrar-un-límite">10.1. Comparar términos sin nombrar un límite</h2>
 <p><span id="MA-SEC-ANM-01-010-001"></span></p>
-<p>Para demostrar <span class="math inline">\(a_n\to L\)</span> en C06 había que proponer un real <span class="math inline">\(L\)</span> y controlar <span class="math inline">\(|a_n-L|\)</span>. Si sólo conocemos aproximaciones sucesivas, ese candidato puede estar oculto. ¿Cómo detectar convergencia sin conocer de antemano el destino? Podemos empezar preguntando si dos términos suficientemente tardíos se acercan entre sí, sea cual sea la distancia temporal entre sus índices.</p>
-<p>Una sucesión real <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span> es <strong>de Cauchy</strong> si</p>
+<p>La estimación anterior aprovechó una propiedad especial de las sumas de recíprocos: pudimos dominar un bloque entero mediante una cancelación algebraica. Pero la idea que apareció al final no depende de esa fórmula. Tiene sentido para cualquier sucesión real, incluso si sus términos no son sumas, si cambian de signo o si no conocemos ninguna expresión sencilla para su posible límite: dada una precisión, queremos encontrar un índice a partir del cual todos los valores de la sucesión queden próximos entre sí.</p>
+<p>El requisito decisivo está en el orden de las elecciones. Podemos tener que avanzar más cuando pedimos una tolerancia menor, pero el lugar al que lleguemos debe servir para <strong>cualquier par</strong> de índices posteriores. Un corte que hubiera que modificar cada vez que se elige un par no controlaría ninguna cola completa. Esa dependencia queda recogida en la siguiente definición.</p>
+<p><strong>Definición.</strong> Una sucesión real <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span>, donde <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span>, es <strong>de Cauchy</strong> si</p>
 <p><span class="math display">\[
-\forall\varepsilon&gt;0\ \exists N\in\mathbb N\ \forall p,q\in\mathbb N:
-\quad p,q\ge N\ \Longrightarrow\ |a_p-a_q|&lt;\varepsilon.
+\forall\varepsilon&gt;0\;\exists N\in\mathbb N\;\forall p,q\in\mathbb N:\quad
+p,q\ge N\ \Longrightarrow\ |a_p-a_q|&lt;\varepsilon.
 \]</span></p>
-<p>Usaremos siempre <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span>. El corte <span class="math inline">\(N\)</span> se escoge después de recibir <span class="math inline">\(\varepsilon\)</span>, pero antes de los dos índices universales. No puede depender de <span class="math inline">\(p,q\)</span>. Se permite <span class="math inline">\(p=q\)</span>, caso en que la distancia es cero. Por simetría basta comprobar <span class="math inline">\(p&gt;q\ge N\)</span> y agregar el caso de igualdad; no basta comprobar <span class="math inline">\(p=q+1\)</span>.</p>
-<p>El objeto controlado es toda la cola. Dos índices muy separados deben dar valores próximos tanto como dos vecinos. La definición no nombra un límite, no exige monotonía ni valores distintos y no afirma todavía que exista un real al que converger. Esa existencia será una obligación nueva.</p>
-<p><strong>Primer control explícito.</strong> En <span class="math inline">\(a_n=1/(n+1)\)</span>, si <span class="math inline">\(p,q\ge N\)</span>, ambos valores están en <span class="math inline">\((0,1/(N+1)]\)</span>, luego <span class="math inline">\(|a_p-a_q|\le1/(N+1)\)</span>. Para <span class="math inline">\(\varepsilon&gt;0\)</span>, definamos <span class="math inline">\(N(\varepsilon)\)</span> como el mínimo natural <span class="math inline">\(N\)</span> con <span class="math inline">\(N+1&gt;1/\varepsilon\)</span>. El conjunto es no vacío por arquimedianidad. Entonces <span class="math inline">\(1/(N+1)&lt;\varepsilon\)</span> y el mismo corte sirve para cualquier par posterior. No hemos usado cero como candidato para verificar Cauchy.</p>
-<p>Las constantes también son de Cauchy con <span class="math inline">\(N=0\)</span> para cualquier tolerancia. La alternancia <span class="math inline">\((-1)^n\)</span> falla: después de cualquier corte, los índices <span class="math inline">\(N,N+1\)</span> tienen distancia dos. Esto ya sugiere una negación de la definición, que escribiremos con cuidado en §10.5.</p>
-<p>La definición garantiza un corte para cada precisión, pero no entrega por sí sola un algoritmo para encontrarlo. Una regla explícita como <span class="math inline">\(N(\varepsilon)\)</span> en el ejemplo contiene información adicional útil para calcular. Conviene distinguir existencia lógica de un umbral, una fórmula que lo describe y un procedimiento efectivo que puede evaluarlo con los datos disponibles.</p>
-<div id="fig-anm-c10-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En los recíprocos, desde el corte cuatro toda la cola cabe en una banda de anchura un quinto, menor que un cuarto. El par de índices seis y diez muestra una distancia cuatro setenta y sieteavos dentro del mismo control.">
+<p>Leída en el orden de sus cuantificadores, la afirmación dice lo siguiente: alguien fija primero una tolerancia positiva <span class="math inline">\(\varepsilon\)</span>; nosotros encontramos un índice <span class="math inline">\(N\)</span>, que puede depender de ella; después se eligen libremente <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span>, con la única condición de que ambos sean al menos <span class="math inline">\(N\)</span>. Debemos garantizar entonces la desigualdad escrita. Es la distancia entre los <strong>valores</strong> <span class="math inline">\(a_p\)</span> y <span class="math inline">\(a_q\)</span> la que se hace pequeña; los índices pueden estar separados por una cantidad arbitrariamente grande. También pueden coincidir, pues <span class="math inline">\(|a_p-a_p|=0\)</span>, y podemos intercambiarlos porque <span class="math inline">\(|a_p-a_q|=|a_q-a_p|\)</span>. Por eso basta a menudo demostrar la estimación para <span class="math inline">\(p&gt;q\ge N\)</span> y añadir el caso de igualdad. Comprobar únicamente parejas consecutivas no es suficiente: los desplazamientos pequeños pueden acumularse, como veremos al estudiar las sumas armónicas en §10.5.</p>
+<p>En la sucesión <span class="math inline">\(s_n\)</span> con la que iniciamos el capítulo, el control de todos los pares nació de una suma telescópica. A veces es posible obtenerlo sin sumar nada, simplemente encerrando los valores tardíos en un intervalo pequeño. Consideremos <span class="math inline">\(a_n=1/(n+1)\)</span>. Si <span class="math inline">\(p,q\ge N\)</span>, ambos términos son positivos y no exceden <span class="math inline">\(1/(N+1)\)</span>; por tanto, pertenecen al intervalo <span class="math inline">\((0,1/(N+1)]\)</span>, y su distancia satisface</p>
+<p><span class="math display">\[
+|a_p-a_q|\le\frac1{N+1}.
+\]</span></p>
+<p>Para que esta cota sea estrictamente menor que una tolerancia <span class="math inline">\(\varepsilon&gt;0\)</span>, basta elegir un natural <span class="math inline">\(N\)</span> con <span class="math inline">\(N+1&gt;1/\varepsilon\)</span>. La propiedad arquimediana garantiza que podemos hacerlo. Una sola elección controla todos los pares de la cola, tanto si los índices están próximos como si uno de ellos es muchísimo mayor que el otro.</p>
+<p>La figura 10.1 muestra, para <span class="math inline">\(\varepsilon=1/4\)</span>, un corte posible: <span class="math inline">\(N=4\)</span>. Todos los valores posteriores quedan en la franja <span class="math inline">\((0,1/5]\)</span>, más estrecha que la tolerancia pedida. Entre los términos de índices <span class="math inline">\(6\)</span> y <span class="math inline">\(10\)</span>, por ejemplo, hay una distancia <span class="math inline">\(|1/7-1/11|=4/77\)</span>; comprobar ese par puede ayudarnos a leer la figura, pero es la estimación del intervalo la que demuestra la afirmación para los infinitos pares restantes.</p>
+<div id="fig-anm-c10-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Arriba, términos discretos 1/(n+1) y corte cuatro; dos rombos marcan índices seis y diez. Debajo, un eje de valores sitúa 1/11 y 1/7 con un segmento de distancia 4/77. No aparece un centro de convergencia.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anm-c10-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../../assets/books/anm/C10/C10-F01.svg" class="img-fluid figure-img" alt="En los recíprocos, desde el corte cuatro toda la cola cabe en una banda de anchura un quinto, menor que un cuarto. El par de índices seis y diez muestra una distancia cuatro setenta y sieteavos dentro del mismo control.">
+<img src="../../assets/books/anm/C10/C10-F01.svg" class="img-fluid figure-img" alt="Arriba, términos discretos 1/(n+1) y corte cuatro; dos rombos marcan índices seis y diez. Debajo, un eje de valores sitúa 1/11 y 1/7 con un segmento de distancia 4/77. No aparece un centro de convergencia.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c10-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;1: En los recíprocos, desde el corte cuatro toda la cola cabe en una banda de anchura un quinto, menor que un cuarto. El par de índices seis y diez muestra una distancia cuatro setenta y sieteavos dentro del mismo control.
 </figcaption>
 </figure>
 </div>
+<p>Los dos ejemplos han exigido estimaciones distintas. En el primero, la cancelación de una suma finita controló cuánto podían separarse dos resultados parciales; en el segundo, bastó observar que toda la cola cabía en un intervalo de longitud pequeña. Ninguno de los dos razonamientos tuvo que partir de un candidato a límite. Esta libertad es especialmente útil cuando el procedimiento que produce los términos resulta más fácil de describir que su resultado final.</p>
+<p>La definición tampoco exige que una sucesión sea monótona ni que todos sus términos sean diferentes. Una sucesión constante <span class="math inline">\(a_n=c\)</span> es de Cauchy desde <span class="math inline">\(N=0\)</span>, puesto que cualquier distancia entre sus términos vale cero. En cambio, <span class="math inline">\(a_n=(-1)^n\)</span> no lo es: después de cualquier corte <span class="math inline">\(N\)</span>, los índices <span class="math inline">\(N\)</span> y <span class="math inline">\(N+1\)</span> ofrecen valores separados por dos unidades, de modo que la tolerancia fija <span class="math inline">\(\varepsilon=1\)</span> nunca puede satisfacerse. No es el cambio de signo lo que causa el fracaso; una alternancia de amplitud decreciente sí puede ser de Cauchy, como comprobaremos en la sección siguiente.</p>
+<p>Hay, por último, una distinción entre afirmar que existe un corte y saber calcularlo. La definición de Cauchy expresa una condición matemática: para toda precisión debe existir algún índice que funcione. En nuestros ejemplos hemos hecho algo más, porque las desigualdades permiten dar un corte suficiente a partir de <span class="math inline">\(\varepsilon\)</span>. En otras situaciones podremos demostrar la existencia de esos índices sin disponer de una regla efectiva para encontrarlos a partir de los datos disponibles. Cuando estudiemos la acumulación de errores en §10.8 veremos cómo una estimación concreta puede proporcionar ambas cosas: la existencia de un límite y un modo de certificar cuán cerca estamos de él.</p>
 <section id="antes-de-seguir" class="level3">
 <h3 class="anchored" data-anchor-id="antes-de-seguir">Antes de seguir</h3>
 <section id="microcontrol-1" class="level4">
@@ -768,26 +801,50 @@ Ver solución del ejercicio 5
 <section id="del-destino-común-al-control-interno" class="level2">
 <h2 class="anchored" data-anchor-id="del-destino-común-al-control-interno">10.2. Del destino común al control interno</h2>
 <p><span id="MA-SEC-ANM-01-010-002"></span></p>
-<p>Si todos los términos tardíos están cerca de un mismo destino, deberían estar cerca unos de otros. La desigualdad triangular convierte esa imagen en una prueba. Debemos repartir la tolerancia porque la distancia entre dos términos puede contener dos errores.</p>
-<p><strong>Toda sucesión real convergente es de Cauchy.</strong> Supongamos <span class="math inline">\(a_n\to L\)</span>. Fijemos <span class="math inline">\(\varepsilon&gt;0\)</span>. Por convergencia existe <span class="math inline">\(N\)</span> tal que <span class="math inline">\(|a_n-L|&lt;\varepsilon/2\)</span> para todo <span class="math inline">\(n\ge N\)</span>. Sean ahora <span class="math inline">\(p,q\ge N\)</span>. Entonces</p>
+<p>En los ejemplos anteriores hemos conseguido controlar las diferencias entre términos sin recurrir al valor de un límite. Podemos preguntarnos ahora qué sucede cuando ese valor sí se conoce. Si los términos de una sucesión se acercan a un mismo número <span class="math inline">\(L\)</span>, parece razonable que también terminen acercándose unos a otros; pero necesitamos convertir esa intuición en una estimación válida para cualquier par de índices tardíos. La desigualdad triangular nos proporciona el camino: compararemos cada término con <span class="math inline">\(L\)</span> y dejaremos que ambos errores contribuyan a la distancia que queremos acotar.</p>
+<p>Supongamos, entonces, que <span class="math inline">\(a_n\to L\)</span>. Si queremos medir la distancia entre <span class="math inline">\(a_p\)</span> y <span class="math inline">\(a_q\)</span>, podemos pasar algebraicamente por <span class="math inline">\(L\)</span>:</p>
+<p><span class="math display">\[
+a_p-a_q=(a_p-L)+(L-a_q).
+\]</span></p>
+<p>La desigualdad triangular nos da la estimación adecuada,</p>
+<p><span class="math display">\[
+|a_p-a_q|\le |a_p-L|+|a_q-L|.
+\]</span></p>
+<p>La elección de <span class="math inline">\(L\)</span> como punto intermedio no es una ilustración añadida a la prueba; es lo que convierte la distancia que queremos controlar en dos distancias de las que ya sabemos algo. La convergencia nos permite hacer pequeño cada error <span class="math inline">\(|a_n-L|\)</span>. Como tenemos <strong>dos</strong> de esos errores, debemos reservar para cada uno una parte de la tolerancia total.</p>
+<p><strong>Proposición. Toda sucesión real convergente es de Cauchy.</strong></p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(a_n\to L\)</span> y fijemos <span class="math inline">\(\varepsilon&gt;0\)</span>. Para asegurar una distancia final menor que <span class="math inline">\(\varepsilon\)</span>, apliquemos la definición de convergencia con la tolerancia <span class="math inline">\(\varepsilon/2\)</span>. Existe, pues, un índice <span class="math inline">\(N\)</span> tal que</p>
+<p><span class="math display">\[
+|a_n-L|&lt;\frac\varepsilon2\qquad\text{para todo }n\ge N.
+\]</span></p>
+<p>La condición vale para cualquier índice posterior, de manera que podemos aplicarla <strong>dos veces sin cambiar de corte</strong>: una con <span class="math inline">\(n=p\)</span> y otra con <span class="math inline">\(n=q\)</span>. Así, si <span class="math inline">\(p,q\ge N\)</span>,</p>
 <p><span class="math display">\[
 |a_p-a_q|\le |a_p-L|+|a_q-L|
-&lt;\varepsilon/2+\varepsilon/2=\varepsilon.
+&lt;\frac\varepsilon2+\frac\varepsilon2=\varepsilon.
 \]</span></p>
-<p>El mismo corte de convergencia controla ambos errores. La prueba usa sólo la noción de límite y la desigualdad triangular; no gasta completitud. Tampoco necesita una fórmula del término general. Si contamos con un corte que garantiza radio <span class="math inline">\(\varepsilon/2\)</span> alrededor de <span class="math inline">\(L\)</span>, ese corte es suficiente para Cauchy con tolerancia <span class="math inline">\(\varepsilon\)</span>.</p>
-<p>El radio y el diámetro deben distinguirse. Una ventana de radio <span class="math inline">\(\varepsilon\)</span> alrededor de <span class="math inline">\(L\)</span> sólo da, por este argumento, distancia menor que <span class="math inline">\(2\varepsilon\)</span> entre términos. Para obtener distancia menor que <span class="math inline">\(\varepsilon\)</span> conviene usar una ventana de radio <span class="math inline">\(\varepsilon/2\)</span>. En sentido inverso, una cola con distancias menores que <span class="math inline">\(\varepsilon\)</span> cabe en la ventana de radio <span class="math inline">\(\varepsilon\)</span> alrededor de cualquier término de esa cola, pero eso no identifica todavía un centro común para todas las precisiones.</p>
-<p>Como primer uso, <span class="math inline">\(a_n=(-1)^n/(n+1)\)</span> converge a cero por la estimación <span class="math inline">\(|a_n|=1/(n+1)\)</span> de C06, luego es de Cauchy aunque alterne de signo. También podemos verificarlo sin nombrar el destino: si <span class="math inline">\(p,q\ge N\)</span>, entonces <span class="math inline">\(|a_p-a_q|\le1/(p+1)+1/(q+1)\le2/(N+1)\)</span>. El mínimo natural con <span class="math inline">\(N+1&gt;2/\varepsilon\)</span> proporciona un corte suficiente. Aquí el control por un intervalo de valores cuesta dos recíprocos, mientras que en la sucesión positiva de §10.1 bastaba uno.</p>
-<p>Hemos probado una implicación. Su recíproca no debe esconderse en la intuición de que los términos «se juntan»: todavía hay que construir un real que los reciba. Primero recuperaremos acotación y después veremos cómo interviene completitud.</p>
-<div id="fig-anm-c10-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La ventana de radio medio controla dos errores, un tercio y un cuarto. Su suma siete doceavos acota la distancia entre los términos y es menor que la tolerancia uno.">
+<p>Hemos encontrado un único corte para todos los pares de la cola, tal como pide la definición de Cauchy. <span class="math inline">\(\square\)</span></p>
+<p>La prueba muestra por qué una ventana de radio <span class="math inline">\(r\)</span> alrededor de <span class="math inline">\(L\)</span> no tiene, en general, diámetro <span class="math inline">\(r\)</span>. Si dos términos se encuentran a lados opuestos del centro, uno puede estar casi a distancia <span class="math inline">\(r\)</span> por la izquierda y otro casi a distancia <span class="math inline">\(r\)</span> por la derecha; entre ellos habrá entonces una separación cercana a <span class="math inline">\(2r\)</span>. Por ejemplo, <span class="math inline">\(L-3r/4\)</span> y <span class="math inline">\(L+3r/4\)</span> pertenecen ambos a <span class="math inline">\((L-r,L+r)\)</span> y, sin embargo, distan <span class="math inline">\(3r/2&gt;r\)</span>. Pedimos por eso una ventana de radio <span class="math inline">\(\varepsilon/2\)</span> cuando buscamos una separación menor que <span class="math inline">\(\varepsilon\)</span>. La figura 10.2 permite seguir sobre el eje de valores cómo se suman dos errores respecto de un mismo centro.</p>
+<div id="fig-anm-c10-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Tres filas en un eje común muestran los términos menos un cuarto y un tercio, el centro cero, los errores respectivos y la distancia siete doceavos. Las fronteras de la ventana medio están excluidas.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anm-c10-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../../assets/books/anm/C10/C10-F02.svg" class="img-fluid figure-img" alt="La ventana de radio medio controla dos errores, un tercio y un cuarto. Su suma siete doceavos acota la distancia entre los términos y es menor que la tolerancia uno.">
+<img src="../../assets/books/anm/C10/C10-F02.svg" class="img-fluid figure-img" alt="Tres filas en un eje común muestran los términos menos un cuarto y un tercio, el centro cero, los errores respectivos y la distancia siete doceavos. Las fronteras de la ventana medio están excluidas.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c10-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;2: La ventana de radio medio controla dos errores, un tercio y un cuarto. Su suma siete doceavos acota la distancia entre los términos y es menor que la tolerancia uno.
 </figcaption>
 </figure>
 </div>
+<p>También merece atención lo que <em>no</em> hemos utilizado. El límite <span class="math inline">\(L\)</span> existía por hipótesis; nuestra tarea consistía únicamente en comparar términos. El razonamiento seguiría siendo correcto en un espacio donde no toda sucesión de Cauchy convergiera, pues ninguna de las desigualdades anteriores necesita construir un límite. Será la dirección contraria la que nos obligue a utilizar la completitud.</p>
+<p>Volvamos ahora a la sucesión alternante, pero con amplitud decreciente: <span class="math inline">\(b_n=(-1)^n/(n+1)\)</span>. A diferencia de <span class="math inline">\((-1)^n\)</span>, sus oscilaciones se hacen cada vez menores. Como <span class="math inline">\(|b_n|=1/(n+1)\to0\)</span>, sabemos que converge a cero; la proposición asegura entonces que es de Cauchy. Podemos comprobarlo directamente para ver que el cambio de signo no altera la esencia de la definición. Si <span class="math inline">\(p,q\ge N\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+|b_p-b_q|
+&amp;=\left|\frac{(-1)^p}{p+1}-\frac{(-1)^q}{q+1}\right|\\
+&amp;\le\frac1{p+1}+\frac1{q+1}
+\le\frac2{N+1}.
+\end{aligned}
+\]</span></p>
+<p>La estimación vale tanto para índices de la misma paridad como para índices de paridades contrarias, y el corte <span class="math inline">\(N+1&gt;2/\varepsilon\)</span> garantiza Cauchy. Se trata de una sucesión no monótona con el mismo comportamiento de concentración que la sucesión positiva de los recíprocos. No necesitamos separar todas las posibles combinaciones de signos para demostrarlo: tomar valores absolutos deja una cota válida para todas.</p>
+<p>Queda una cuestión considerablemente más difícil. Hemos empezado con un límite y, gracias a él, hemos obtenido control entre términos. Si empezamos <strong>solo</strong> con esas distancias pequeñas, ¿de dónde saldrá el número <span class="math inline">\(L\)</span>? Escribir un símbolo para el supuesto límite no basta para crearlo. Antes de responder, usaremos Cauchy para encerrar la sucesión en una región acotada y después aprovecharemos los extremos de las colas para construir el candidato.</p>
 <section id="antes-de-seguir-1" class="level3">
 <h3 class="anchored" data-anchor-id="antes-de-seguir-1">Antes de seguir</h3>
 <section id="microcontrol-9" class="level4">
@@ -970,29 +1027,53 @@ Ver solución del ejercicio 10
 <section id="encerrar-una-cola-y-recuperar-la-acotación" class="level2">
 <h2 class="anchored" data-anchor-id="encerrar-una-cola-y-recuperar-la-acotación">10.3. Encerrar una cola y recuperar la acotación</h2>
 <p><span id="MA-SEC-ANM-01-010-003"></span></p>
-<p>El control de Cauchy no acota explícitamente cada término respecto de cero. Podemos convertirlo en una cota usando un término de referencia que la propia cola determina.</p>
-<p><strong>Toda sucesión de Cauchy es acotada.</strong> Aplicamos la definición con tolerancia uno y obtenemos un corte <span class="math inline">\(N_0\)</span>. Al fijar uno de los dos índices en <span class="math inline">\(N_0\)</span>, para todo <span class="math inline">\(n\ge N_0\)</span> tenemos <span class="math inline">\(|a_n-a_{N_0}|&lt;1\)</span>. Por desigualdad triangular, <span class="math inline">\(|a_n|&lt;|a_{N_0}|+1\)</span>. Si <span class="math inline">\(N_0=0\)</span>, esta cota controla todos los términos. Si <span class="math inline">\(N_0&gt;0\)</span>, tomamos</p>
+<p>Una sucesión de Cauchy controla las distancias entre sus términos tardíos, pero no parece ofrecer una cota respecto de cero. La diferencia entre ambas cosas puede desconcertar: si todos los valores posteriores a un corte se encuentran próximos unos a otros, podrían estar agrupados cerca de un número grande, y la definición no nos dice cuál es ese número. Sin embargo, para demostrar acotación no necesitamos descubrir un centro privilegiado. Podemos <strong>escoger uno de los propios términos</strong> como referencia; el control de Cauchy ya asegura que el resto de la cola no se alejará demasiado de él.</p>
+<p>Fijemos, por ejemplo, la tolerancia <span class="math inline">\(1\)</span>. Puesto que la condición vale para <em>toda</em> tolerancia positiva, debe existir un índice <span class="math inline">\(N_0\)</span> tal que <span class="math inline">\(|a_p-a_q|&lt;1\)</span> siempre que <span class="math inline">\(p,q\ge N_0\)</span>. Tomemos <span class="math inline">\(q=N_0\)</span>. Ahora <span class="math inline">\(a_{N_0}\)</span> deja de ser una variable: es un número real fijo que podemos usar como ancla para medir los demás valores. La desigualdad triangular da</p>
 <p><span class="math display">\[
-B=\max\{|a_{N_0}|+1,|a_0|,\ldots,|a_{N_0-1}|\}.
+|a_n|\le|a_n-a_{N_0}|+|a_{N_0}|&lt;1+|a_{N_0}|
+\qquad(n\ge N_0).
 \]</span></p>
-<p>El conjunto del máximo es finito y no vacío; <span class="math inline">\(B\)</span> controla también el prefijo. Así <span class="math inline">\(|a_n|\le B\)</span> para todo índice. La acotación necesita una sola tolerancia de Cauchy y no usa completitud. La recíproca es falsa: <span class="math inline">\((-1)^n\)</span> permanece entre menos uno y uno y sigue teniendo pares separados por dos.</p>
-<p>La acotación permite ahora representar toda cola por un intervalo real. Definamos <span class="math inline">\(T_N=\{a_n:n\ge N\}\)</span>, <span class="math inline">\(\ell_N=\inf T_N\)</span>, <span class="math inline">\(u_N=\sup T_N\)</span> e <span class="math inline">\(I_N=[\ell_N,u_N]\)</span>. Las colas son no vacías porque contienen <span class="math inline">\(a_N\)</span>, y son acotadas por lo recién probado. Aquí sí interviene completitud, al asegurar sus extremos reales. Esta construcción coincide con la vista en C09, pero su existencia y las propiedades necesarias se justifican aquí para conservar los prerrequisitos C03/C06.</p>
-<p>Como <span class="math inline">\(T_{N+1}\subseteq T_N\)</span>, <span class="math inline">\(\ell_N\le\ell_{N+1}\)</span> y <span class="math inline">\(u_{N+1}\le u_N\)</span>. Los intervalos están encajados. Puede haber extremos no alcanzados por los términos: para <span class="math inline">\(1/(n+1)\)</span>, el extremo inferior de cada intervalo es cero, aunque ningún término valga cero.</p>
-<p>La condición de Cauchy fuerza anchura pequeña. Fijemos <span class="math inline">\(\eta&gt;0\)</span> y un corte <span class="math inline">\(N_0\)</span> desde el cual todas las distancias sean menores que <span class="math inline">\(\eta\)</span>. Para <span class="math inline">\(N\ge N_0\)</span> y cualquier <span class="math inline">\(y\in T_N\)</span>, cada <span class="math inline">\(x\in T_N\)</span> cumple <span class="math inline">\(x-y\le|x-y|&lt;\eta\)</span>. Por tanto <span class="math inline">\(y+\eta\)</span> es cota superior de <span class="math inline">\(T_N\)</span>, y <span class="math inline">\(u_N\le y+\eta\)</span>. Esta desigualdad vale para todos los <span class="math inline">\(y\)</span>, luego <span class="math inline">\(u_N-\eta\)</span> es cota inferior de <span class="math inline">\(T_N\)</span> y <span class="math inline">\(u_N-\eta\le\ell_N\)</span>. En consecuencia,</p>
+<p>Es una cota de toda la cola. Aún no es, necesariamente, una cota de la sucesión completa: podrían existir términos muy grandes antes de <span class="math inline">\(N_0\)</span>. Pero solo hay <strong>finitos</strong> términos anteriores al corte y podemos incorporarlos a una cota global.</p>
+<p><strong>Proposición. Toda sucesión de Cauchy de números reales es acotada.</strong></p>
+<p><strong>Demostración.</strong> La estimación anterior proporciona una cota <span class="math inline">\(1+|a_{N_0}|\)</span> para todos los términos con índice <span class="math inline">\(n\ge N_0\)</span>. Si <span class="math inline">\(N_0&gt;0\)</span>, consideramos la lista finita de magnitudes anteriores y definimos</p>
 <p><span class="math display">\[
-0\le u_N-\ell_N\le\eta\qquad(N\ge N_0).
+B=\max\bigl\{|a_{N_0}|+1,|a_0|,\ldots,|a_{N_0-1}|\bigr\}.
 \]</span></p>
-<p>La desigualdad final puede ser no estricta, porque supremos e ínfimos pueden no alcanzarse. Para hacer la anchura menor que una precisión <span class="math inline">\(\varepsilon\)</span>, aplicaremos este argumento con <span class="math inline">\(\eta=\varepsilon/2\)</span>. La estimación no selecciona un máximo y un mínimo de cola inexistentes; compara cotas para todos los valores.</p>
-<div id="fig-anm-c10-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Para el ejemplo con términos iniciales nueve y menos seis y a_n=1/(n−1) desde n=2, el corte cuatro permite anclar la cola en un tercio. La cota de esa cola no controla el prefijo; la cota global nueve sí lo incorpora.">
+<p>Entonces <span class="math inline">\(|a_n|\le B\)</span> para cualquier <span class="math inline">\(n\in\mathbb N\)</span>, tanto si se encuentra antes del corte como después de él. Si <span class="math inline">\(N_0=0\)</span>, no hay prefijo anterior y basta tomar <span class="math inline">\(B=1+|a_0|\)</span>. En ambos casos la sucesión es acotada. <span class="math inline">\(\square\)</span></p>
+<p>El número <span class="math inline">\(1\)</span> no tiene nada de especial; elegimos esa tolerancia porque basta una región de anchura fija para demostrar acotación. Tampoco hizo falta la completitud de <span class="math inline">\(\mathbb R\)</span>: una desigualdad y el máximo de una lista finita resolvieron todo. La implicación contraria, en cambio, falla. Los términos de <span class="math inline">\((-1)^n\)</span> permanecen en <span class="math inline">\([-1,1]\)</span>, pero ninguna cola se concentra en un intervalo arbitrariamente estrecho.</p>
+<p>La separación entre cola y prefijo puede parecer un detalle técnico hasta que consideramos una sucesión que comienza con <span class="math inline">\(a_0=9\)</span>, <span class="math inline">\(a_1=-6\)</span> y continúa según <span class="math inline">\(a_n=1/(n-1)\)</span> para <span class="math inline">\(n\ge2\)</span>. Su cola recíproca tiene valores pequeños y se concentra, sin que eso reduzca en absoluto los dos términos que aparecieron al principio. La figura 10.3 muestra las dos escalas: el corte permite controlar la parte tardía, mientras que el prefijo debe incorporarse a la cota global por separado. Esa distinción volverá a aparecer cuando estudiemos propiedades que dependen únicamente de lo que sucede a partir de un cierto índice.</p>
+<div id="fig-anm-c10-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Panel superior distingue los términos iniciales nueve y menos seis del resto recíproco, con corte cuatro. Panel inferior amplía la cola, marca el ancla un tercio y su ventana abierta de radio uno, sin reutilizar la escala del prefijo.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anm-c10-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../../assets/books/anm/C10/C10-F03.svg" class="img-fluid figure-img" alt="Para el ejemplo con términos iniciales nueve y menos seis y a_n=1/(n−1) desde n=2, el corte cuatro permite anclar la cola en un tercio. La cota de esa cola no controla el prefijo; la cota global nueve sí lo incorpora.">
+<img src="../../assets/books/anm/C10/C10-F03.svg" class="img-fluid figure-img" alt="Panel superior distingue los términos iniciales nueve y menos seis del resto recíproco, con corte cuatro. Panel inferior amplía la cola, marca el ancla un tercio y su ventana abierta de radio uno, sin reutilizar la escala del prefijo.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c10-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;3: Para el ejemplo con términos iniciales nueve y menos seis y a_n=1/(n−1) desde n=2, el corte cuatro permite anclar la cola en un tercio. La cota de esa cola no controla el prefijo; la cota global nueve sí lo incorpora.
 </figcaption>
 </figure>
 </div>
+<p>Con la acotación ya podemos construir algo más útil que una ventana alrededor de un término escogido arbitrariamente. Para cada <span class="math inline">\(N\)</span> consideremos el conjunto de los valores que todavía quedan,</p>
+<p><span class="math display">\[
+T_N=\{a_n:n\ge N\}.
+\]</span></p>
+<p>Es no vacío, pues contiene <span class="math inline">\(a_N\)</span>, y es acotado porque toda la sucesión lo es. Por la propiedad del supremo, tanto su extremo superior como su extremo inferior existen en <span class="math inline">\(\mathbb R\)</span>. Los denotaremos por</p>
+<p><span class="math display">\[
+\ell_N=\inf T_N,\qquad u_N=\sup T_N,\qquad
+I_N=[\ell_N,u_N].
+\]</span></p>
+<p>Los extremos son barreras: todos los términos de la cola están entre ellos, pero no tienen por qué ser valores efectivamente alcanzados. Para <span class="math inline">\(a_n=1/(n+1)\)</span>, por ejemplo, <span class="math inline">\(u_N=1/(N+1)\)</span> y <span class="math inline">\(\ell_N=0\)</span>. El cero pertenece al intervalo <span class="math inline">\(I_N\)</span>, aunque ningún término de la sucesión sea cero. Esta pequeña diferencia entre <em>pertenecer al intervalo que contiene la cola</em> y <em>ser un valor de la cola</em> será decisiva cuando queramos construir un límite nuevo.</p>
+<p>Al aumentar el índice <span class="math inline">\(N\)</span> descartamos términos; nunca añadimos otros. Por eso <span class="math inline">\(T_{N+1}\subseteq T_N\)</span>. Una cola más pequeña no puede tener un ínfimo inferior al de la cola anterior ni un supremo superior al de ella; en símbolos,</p>
+<p><span class="math display">\[
+\ell_N\le\ell_{N+1}\le u_{N+1}\le u_N.
+\]</span></p>
+<p>Los intervalos <span class="math inline">\(I_N\)</span> están, por tanto, encajados. Cada nuevo intervalo es una región en la que quedan encerrados <em>todos</em> los términos suficientemente tardíos. Para convertirlos en una construcción del límite falta mostrar que esas regiones se estrechan de verdad y no se estabilizan, por ejemplo, en un intervalo grande.</p>
+<p>La condición de Cauchy nos da exactamente ese estrechamiento, pero debemos justificar con cuidado el paso de una estimación sobre términos a otra sobre sus extremos. Fijemos <span class="math inline">\(\eta&gt;0\)</span> y escojamos un corte <span class="math inline">\(N_0\)</span> tal que <span class="math inline">\(|a_p-a_q|&lt;\eta\)</span> para todos <span class="math inline">\(p,q\ge N_0\)</span>. Tomemos cualquier <span class="math inline">\(N\ge N_0\)</span> y fijemos un valor <span class="math inline">\(y\in T_N\)</span>. Todos los demás valores <span class="math inline">\(x\in T_N\)</span> satisfacen <span class="math inline">\(x-y&lt;\eta\)</span>, de modo que <span class="math inline">\(y+\eta\)</span> es cota superior de la cola. Por la definición de supremo, <span class="math inline">\(u_N\le y+\eta\)</span>.</p>
+<p>Esta última desigualdad vale para <strong>cualquier</strong> <span class="math inline">\(y\)</span> de la cola, no solo para el primero que elegimos. Al reordenarla obtenemos <span class="math inline">\(u_N-\eta\le y\)</span> para todo <span class="math inline">\(y\in T_N\)</span>. Así <span class="math inline">\(u_N-\eta\)</span> es una cota inferior y, puesto que <span class="math inline">\(\ell_N\)</span> es la mayor de esas cotas, tenemos <span class="math inline">\(u_N-\eta\le\ell_N\)</span>. Hemos deducido</p>
+<p><span class="math display">\[
+0\le u_N-\ell_N\le\eta\qquad(N\ge N_0).
+\]</span></p>
+<p>¿Por qué hemos obtenido <span class="math inline">\(\le\eta\)</span> y no <span class="math inline">\(&lt;\eta\)</span> si todas las diferencias de términos eran estrictas? Porque supremo e ínfimo pueden ser puntos frontera no alcanzados: las distancias individuales pueden ser todas menores que una cantidad y tener precisamente esa cantidad como supremo. Los recíprocos ofrecen un ejemplo en su cola inicial: todos los pares distan menos de uno, aunque el intervalo de extremos es <span class="math inline">\([0,1]\)</span> y tiene anchura uno. Para garantizar anchura <strong>estrictamente</strong> menor que una precisión <span class="math inline">\(\varepsilon\)</span>, basta aplicar Cauchy con <span class="math inline">\(\eta=\varepsilon/2\)</span>; entonces <span class="math inline">\(u_N-\ell_N\le\varepsilon/2&lt;\varepsilon\)</span>.</p>
+<p>Ya contamos con los ingredientes del argumento principal. La sucesión queda dentro de una familia de intervalos cerrados encajados, cuyas anchuras pueden hacerse tan pequeñas como queramos. Necesitamos demostrar que existe un real común a todos ellos. Ese paso es donde la completitud dejará de ser una propiedad de fondo para intervenir en la construcción misma del destino.</p>
 <section id="antes-de-seguir-2" class="level3">
 <h3 class="anchored" data-anchor-id="antes-de-seguir-2">Antes de seguir</h3>
 <section id="microcontrol-17" class="level4">
@@ -1176,36 +1257,47 @@ Ver solución del ejercicio 15
 <section id="la-completitud-construye-el-destino" class="level2">
 <h2 class="anchored" data-anchor-id="la-completitud-construye-el-destino">10.4. La completitud construye el destino</h2>
 <p><span id="MA-SEC-ANM-01-010-004"></span></p>
-<p>Tenemos intervalos de cola encajados con anchuras arbitrariamente pequeñas. Falta un real común a todos ellos. La completitud convierte este control interno en existencia de un destino.</p>
-<p><strong>Mapa de la prueba.</strong> Formaremos el conjunto de los extremos inferiores; construiremos su supremo <span class="math inline">\(L\)</span>; probaremos que cada extremo superior lo acota; finalmente usaremos el ancho de una cola para controlar todos sus términos. El punto delicado es comparar extremos de cortes diferentes: no basta conocer <span class="math inline">\(\ell_N\le u_N\)</span> para el mismo <span class="math inline">\(N\)</span>.</p>
-<p>Sea <span class="math inline">\(a\)</span> de Cauchy y usemos los intervalos de §10.3. El conjunto <span class="math inline">\(E=\{\ell_N:N\in\mathbb N\}\)</span> contiene <span class="math inline">\(\ell_0\)</span> y está acotado superiormente por la cota global <span class="math inline">\(B\)</span>. Por completitud existe el real <span class="math inline">\(L=\sup E\)</span>. Cada <span class="math inline">\(\ell_N\le L\)</span>.</p>
-<p>Para cualquier par de cortes <span class="math inline">\(M,N\)</span>, tomemos <span class="math inline">\(r=\max\{M,N\}\)</span>. El término <span class="math inline">\(a_r\)</span> pertenece a ambas colas, de modo que <span class="math inline">\(\ell_M\le a_r\le u_N\)</span>. Por tanto <span class="math inline">\(u_N\)</span> acota superiormente todos los elementos de <span class="math inline">\(E\)</span>, y la minimalidad del supremo da <span class="math inline">\(L\le u_N\)</span>. Como <span class="math inline">\(N\)</span> era arbitrario,</p>
+<p>Los intervalos <span class="math inline">\(I_N\)</span> se van estrechando alrededor de lo que parecería un punto de llegada. El dibujo sugiere que debería haber un real atrapado en todos ellos, pero una demostración no puede dar por existente un punto solo porque las regiones que lo rodearían se hacen pequeñas. En especial, no conocemos todavía ningún <span class="math inline">\(L\)</span> al que podamos aplicar la definición de convergencia. Tenemos que <strong>construirlo con las herramientas disponibles</strong>, y la herramienta que garantiza la existencia de extremos de conjuntos acotados es la completitud de <span class="math inline">\(\mathbb R\)</span>.</p>
+<p>Podríamos pensar en tomar un extremo inferior de algún intervalo y declararlo candidato, pero el intervalo escogido puede ser todavía demasiado ancho. Además, sus extremos cambiarán al avanzar el corte. En cambio, los extremos inferiores <span class="math inline">\(\ell_N\)</span> forman una familia ordenada que no desciende: cada nueva cola puede subir la barrera inferior, nunca bajarla. Tiene sentido buscar la barrera inferior más alta compatible con todas las colas. La propiedad del supremo permite dar a esa intuición una formulación exacta.</p>
+<p><strong>Teorema (criterio de Cauchy en <span class="math inline">\(\mathbb R\)</span>).</strong> Una sucesión <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span> converge a algún número real si y solo si es de Cauchy para la distancia usual.</p>
+<p><strong>Demostración.</strong> La dirección que parte de la convergencia ya quedó probada en §10.2. Supongamos ahora que <span class="math inline">\((a_n)\)</span> es de Cauchy. Por §10.3, es acotada y, para cada <span class="math inline">\(N\)</span>, posee un intervalo de cola <span class="math inline">\(I_N=[\ell_N,u_N]\)</span>. El conjunto de todos sus extremos inferiores,</p>
 <p><span class="math display">\[
-\ell_N\le L\le u_N\qquad\text{para todo }N.
+E=\{\ell_N:N\in\mathbb N\},
 \]</span></p>
-<p>Éste es el paso de existencia que el control de distancias no proporcionaba: el centro común es un real gracias a la propiedad del supremo. Ninguna sucesión de candidatos a límite fue escogida, ni usamos convergencia monótona o Bolzano–Weierstrass.</p>
-<p>Ahora fijemos <span class="math inline">\(\varepsilon&gt;0\)</span>. Cauchy con tolerancia <span class="math inline">\(\varepsilon/2\)</span> produce un corte <span class="math inline">\(N\)</span> cuyo intervalo tiene anchura <span class="math inline">\(u_N-\ell_N\le\varepsilon/2\)</span>. Para cualquier <span class="math inline">\(n\ge N\)</span>, tanto <span class="math inline">\(a_n\)</span> como <span class="math inline">\(L\)</span> pertenecen a <span class="math inline">\(I_N\)</span>, luego</p>
+<p>no es vacío, porque contiene <span class="math inline">\(\ell_0\)</span>, y está acotado superiormente por cualquier cota superior global de la sucesión. Por completitud tiene un supremo. Definamos</p>
 <p><span class="math display">\[
-|a_n-L|\le u_N-\ell_N\le\varepsilon/2&lt;\varepsilon.
+L=\sup E.
 \]</span></p>
-<p>Hemos probado <span class="math inline">\(a_n\to L\)</span> desde la definición. Si hubiera otro real <span class="math inline">\(L'\)</span> en todos los intervalos, para cualquier <span class="math inline">\(\varepsilon&gt;0\)</span> su distancia a <span class="math inline">\(L\)</span> sería a lo sumo la anchura de una cola adecuada y, por tanto, menor que <span class="math inline">\(\varepsilon\)</span>. La mitad de una supuesta distancia positiva daría contradicción. Así el punto común es único; la unicidad del límite también sigue de C06.</p>
-<p>Junto con §10.2 queda demostrado el <strong>criterio de Cauchy en <span class="math inline">\(\mathbb R\)</span></strong>:</p>
+<p>Acabamos de obtener un número real que no habíamos supuesto existente. La definición de supremo garantiza que <span class="math inline">\(\ell_N\le L\)</span> para todo <span class="math inline">\(N\)</span>. La dificultad verdadera empieza aquí: aún debemos demostrar que <span class="math inline">\(L\)</span> no haya quedado <em>por encima</em> del extremo superior de algún intervalo.</p>
+<p>Es tentador responder que <span class="math inline">\(\ell_N\le u_N\)</span>; por supuesto que es cierto, pero <strong>no es suficiente</strong>. Esa desigualdad compara los extremos de <em>una misma</em> cola, mientras que <span class="math inline">\(L\)</span> reúne la información de <em>todas</em> las colas. Para concluir <span class="math inline">\(L\le u_N\)</span> necesitamos demostrar que <span class="math inline">\(u_N\)</span> es cota superior de <strong>todos</strong> los <span class="math inline">\(\ell_M\)</span>, incluso cuando <span class="math inline">\(M\)</span> sea distinto de <span class="math inline">\(N\)</span>.</p>
+<p>Fijemos, pues, dos índices arbitrarios <span class="math inline">\(M,N\)</span> y tomemos <span class="math inline">\(r=\max\{M,N\}\)</span>. El término <span class="math inline">\(a_r\)</span> pertenece a las dos colas <span class="math inline">\(T_M\)</span> y <span class="math inline">\(T_N\)</span>. Como <span class="math inline">\(\ell_M\)</span> es cota inferior de la primera y <span class="math inline">\(u_N\)</span> es cota superior de la segunda, podemos encadenar</p>
 <p><span class="math display">\[
-(a_n)\text{ converge a algún real}\quad\Longleftrightarrow\quad
-(a_n)\text{ es de Cauchy}.
+\ell_M\le a_r\le u_N.
 \]</span></p>
-<p>Como primer uso, una sucesión real cuyas colas tienen distancias arbitrariamente pequeñas ya tiene un destino, aunque sus datos no permitan adivinarlo. El criterio demuestra existencia; para calcular ese destino o controlar un error concreto necesitaremos información adicional, como la que desarrollaremos en §10.8.</p>
-<p>El retorno geométrico es preciso: Cauchy estrecha intervalos y completitud asegura un real en su intersección. En <span class="math inline">\(\mathbb Q\)</span> pueden estrecharse del mismo modo sin contener un centro racional. La distancia y el conjunto en que se exige vivir al destino desempeñan funciones distintas.</p>
-<div id="fig-anm-c10-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Los intervalos de cola de la alternancia recíproca se estrechan y contienen el mismo real cero. La prueba construye el centro como supremo de todos los inferiores; la muestra de cuatro intervalos sólo ilustra ese mecanismo.">
+<p>Ahora <span class="math inline">\(N\)</span> permanece fijo y <span class="math inline">\(M\)</span> puede variar sin restricción. La desigualdad dice que <span class="math inline">\(u_N\)</span> domina <strong>cada</strong> elemento del conjunto <span class="math inline">\(E\)</span>; por ser <span class="math inline">\(L\)</span> su supremo, concluimos <span class="math inline">\(L\le u_N\)</span>. Con la otra mitad de la estimación obtenida antes, resulta</p>
+<p><span class="math display">\[
+\ell_N\le L\le u_N\qquad\text{para todo }N\in\mathbb N.
+\]</span></p>
+<p>Éste era el obstáculo de existencia: hemos probado que los intervalos no solo se estrechan, sino que contienen todos al <strong>mismo número real</strong>. Todavía nos falta verificar que los términos de la sucesión se acercan a él. Para una tolerancia arbitraria <span class="math inline">\(\varepsilon&gt;0\)</span>, la condición de Cauchy y la estimación de §10.3 permiten escoger <span class="math inline">\(N\)</span> con <span class="math inline">\(u_N-\ell_N\le\varepsilon/2\)</span>. Todos los términos posteriores y el propio <span class="math inline">\(L\)</span> pertenecen a <span class="math inline">\(I_N\)</span>, y la distancia entre dos puntos de ese intervalo no supera su anchura. Por consiguiente,</p>
+<p><span class="math display">\[
+|a_n-L|\le u_N-\ell_N\le\frac\varepsilon2&lt;\varepsilon
+\qquad(n\ge N).
+\]</span></p>
+<p>Ésta es exactamente la definición de <span class="math inline">\(a_n\to L\)</span>. Hemos construido un límite real a partir del control interno y verificado que es, en efecto, el destino de la sucesión. <span class="math inline">\(\square\)</span></p>
+<p>La distinción entre las dos direcciones del teorema es importante. Cuando partimos de una convergencia, el límite <span class="math inline">\(L\)</span> ya estaba dado y una desigualdad triangular bastó para comparar dos términos. Cuando partimos de Cauchy, no había tal número: utilizamos dos veces la completitud —primero para formar los extremos reales de las colas y después para tomar el supremo de los extremos inferiores—. La elección <span class="math inline">\(r=\max\{M,N\}\)</span> fue el paso que permitió reunir esas construcciones sin suponer una intersección que aún debíamos demostrar. No fue necesario invocar Bolzano–Weierstrass ni el teorema de convergencia monótona.</p>
+<p>Podemos comprobar el significado geométrico del resultado con la sucesión alternante <span class="math inline">\((-1)^n/(n+1)\)</span>. Sus intervalos de cola van estrechándose y todos contienen cero; en este ejemplo conocemos ese punto y la figura 10.4 lo muestra. La prueba del teorema funciona de manera más general: si ignoramos cuál es el centro, la fórmula <span class="math inline">\(L=\sup\{\ell_N\}\)</span> proporciona uno y las anchuras decrecientes obligan a que sea el límite. La figura ilustra un mecanismo matemático, pero no sustituye el argumento de existencia.</p>
+<div id="fig-anm-c10-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Cuatro segmentos cerrados en un eje de valores común: [−1/2,1], [−1/4,1/3], [−1/6,1/5] y [−1/10,1/9]. Una línea en cero atraviesa todos; etiquetas identifican cortes cero, dos, cuatro y ocho.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anm-c10-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../../assets/books/anm/C10/C10-F04.svg" class="img-fluid figure-img" alt="Los intervalos de cola de la alternancia recíproca se estrechan y contienen el mismo real cero. La prueba construye el centro como supremo de todos los inferiores; la muestra de cuatro intervalos sólo ilustra ese mecanismo.">
+<img src="../../assets/books/anm/C10/C10-F04.svg" class="img-fluid figure-img" alt="Cuatro segmentos cerrados en un eje de valores común: [−1/2,1], [−1/4,1/3], [−1/6,1/5] y [−1/10,1/9]. Una línea en cero atraviesa todos; etiquetas identifican cortes cero, dos, cuatro y ocho.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c10-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;4: Los intervalos de cola de la alternancia recíproca se estrechan y contienen el mismo real cero. La prueba construye el centro como supremo de todos los inferiores; la muestra de cuatro intervalos sólo ilustra ese mecanismo.
 </figcaption>
 </figure>
 </div>
+<p>También podemos probar que la intersección de todos los <span class="math inline">\(I_N\)</span> no tiene otro punto. Si <span class="math inline">\(L'\)</span> perteneciera a cada uno de ellos y fuese distinto de <span class="math inline">\(L\)</span>, su distancia <span class="math inline">\(d=|L-L'|\)</span> sería positiva. Sin embargo, podríamos escoger un intervalo de cola de anchura menor que <span class="math inline">\(d/2\)</span>; al contener ambos puntos, su anchura tendría que ser al menos <span class="math inline">\(d\)</span>, lo que es imposible. Por tanto, <span class="math inline">\(L'=L\)</span>. Hemos identificado así un único centro, aunque la unicidad del límite también podría recuperarse directamente del capítulo 6.</p>
+<p>Lo que acabamos de demostrar es un criterio de <strong>existencia</strong>, no necesariamente una fórmula para evaluar <span class="math inline">\(L\)</span> ni una medida de la rapidez de aproximación. Esa diferencia se hará visible en el ejemplo racional del §10.7 y en las cotas de error del §10.8. Antes veremos hasta qué punto podemos negar la condición de Cauchy y cómo se comporta al operar con sucesiones.</p>
 <section id="antes-de-seguir-3" class="level3">
 <h3 class="anchored" data-anchor-id="antes-de-seguir-3">Antes de seguir</h3>
 <section id="microcontrol-25" class="level4">
@@ -1389,32 +1481,57 @@ Ver solución del ejercicio 20
 <section id="negar-cauchy-encontrar-pares-separados" class="level2">
 <h2 class="anchored" data-anchor-id="negar-cauchy-encontrar-pares-separados">10.5. Negar Cauchy: encontrar pares separados</h2>
 <p><span id="MA-SEC-ANM-01-010-005"></span></p>
-<p>El criterio ofrece un método para demostrar que una sucesión real no converge: basta encontrar una tolerancia que ninguna cola pueda satisfacer. La negación completa es</p>
+<p>Ya sabemos cómo usar Cauchy para demostrar convergencia en <span class="math inline">\(\mathbb R\)</span>. Para demostrar que una sucesión <em>no</em> converge, podemos buscar un defecto en ese control. No hace falta probar que sus términos crecen sin límite ni descubrir todas sus posibles oscilaciones: bastará encontrar una separación positiva que reaparezca por mucho que avancemos en la sucesión. La dificultad suele estar menos en calcular una distancia que en demostrar que podemos encontrarla <strong>después de cualquier corte</strong>.</p>
+<p>Neguemos con cuidado la definición. Ser de Cauchy significaba que para cada <span class="math inline">\(\varepsilon&gt;0\)</span> existía un índice <span class="math inline">\(N\)</span> que controlaba todos los pares posteriores. Si la propiedad falla, debe haber al menos una tolerancia positiva para la cual <em>ningún</em> corte logra ese control. Recibido cualquier <span class="math inline">\(N\)</span>, tendremos entonces que exhibir dos índices <span class="math inline">\(p,q\ge N\)</span> cuya distancia alcance o supere esa tolerancia. Escribimos</p>
 <p><span class="math display">\[
-\exists\varepsilon_0&gt;0\ \forall N\in\mathbb N\ \exists p,q\ge N:
+\exists\varepsilon_0&gt;0\;\forall N\in\mathbb N\;\exists p,q\ge N:
 \quad |a_p-a_q|\ge\varepsilon_0.
 \]</span></p>
-<p>La tolerancia <span class="math inline">\(\varepsilon_0\)</span> queda fija antes del corte adversario. Los testigos pueden depender de <span class="math inline">\(N\)</span>. La igualdad pertenece a la negación porque la definición original exige desigualdad estricta. Si se permitiera una tolerancia positiva diferente en cada cola, no estaríamos negando Cauchy: incluso <span class="math inline">\(1/(n+1)\)</span> tiene términos distintos después de cualquier corte.</p>
-<p>En <span class="math inline">\((-1)^n\)</span> sirven <span class="math inline">\(\varepsilon_0=1\)</span> y <span class="math inline">\(p=N,q=N+1\)</span>. En <span class="math inline">\(a_n=n\)</span>, los mismos índices dan distancia uno y vuelven a impedir Cauchy. El primer ejemplo es acotado y el segundo no; el argumento pareado funciona en ambos.</p>
-<p>Hay un error más sutil: confundir Cauchy con <span class="math inline">\(|a_{n+1}-a_n|\to0\)</span>. Cauchy sí implica esa condición: recibido <span class="math inline">\(\varepsilon\)</span>, su corte controla los pares <span class="math inline">\((n+1,n)\)</span> para todo <span class="math inline">\(n\ge N\)</span>. La vuelta es falsa porque una separación pequeña repetida muchas veces puede producir una distancia grande.</p>
-<p>Para verlo sin usar teoría de series, definamos las <strong>sumas finitas</strong> <span class="math inline">\(h_n=\sum_{j=1}^{n+1}1/j\)</span>. Cada <span class="math inline">\(h_n\)</span> es un real obtenido por una suma con finitos sumandos. Su salto es <span class="math inline">\(h_{n+1}-h_n=1/(n+2)\)</span> y tiende a cero. Sin embargo, para cada entero <span class="math inline">\(m\ge1\)</span>,</p>
+<p>Hay dos detalles que conviene entender, pues de ellos depende que el razonamiento funcione. El número <span class="math inline">\(\varepsilon_0\)</span> debe elegirse <strong>antes</strong> de recibir <span class="math inline">\(N\)</span> y mantenerse fijo; si lo redujéramos después de cada corte, podríamos encontrar distancias positivas en una sucesión que, sin embargo, sí es de Cauchy. Por otra parte, la negación de <span class="math inline">\(|a_p-a_q|&lt;\varepsilon_0\)</span> es <span class="math inline">\(|a_p-a_q|\ge\varepsilon_0\)</span>, con igualdad incluida. Para refutar una condición estricta no necesitamos superar estrictamente la barrera: basta alcanzarla.</p>
+<p>La alternancia <span class="math inline">\(a_n=(-1)^n\)</span> permite verlo sin cálculos largos. Elegimos <span class="math inline">\(\varepsilon_0=1\)</span>. Cualquiera que sea el corte <span class="math inline">\(N\)</span>, tomamos <span class="math inline">\(p=N\)</span> y <span class="math inline">\(q=N+1\)</span>. Ambos pertenecen a la cola y</p>
 <p><span class="math display">\[
-h_{2m-1}-h_{m-1}=\sum_{j=m+1}^{2m}\frac1j
-\ge m\frac1{2m}=\frac12.
+|a_p-a_q|=2\ge1.
 \]</span></p>
-<p>Después de cualquier corte <span class="math inline">\(N\)</span>, tomamos <span class="math inline">\(m=N+1\)</span>. Ambos índices <span class="math inline">\(m-1\)</span> y <span class="math inline">\(2m-1\)</span> están después del corte y su distancia es al menos <span class="math inline">\(1/2\)</span>. La tolerancia fija <span class="math inline">\(\varepsilon_0=1/2\)</span> prueba que <span class="math inline">\(h\)</span> no es de Cauchy y, por el criterio, no converge en <span class="math inline">\(\mathbb R\)</span>. No necesitamos dar un significado a una suma infinita ni aplicar un criterio del capítulo siguiente.</p>
-<p>El contraejemplo también explica por qué controlar sólo un número fijo de vecinos es insuficiente. Para cada desplazamiento fijo <span class="math inline">\(r\)</span>, la diferencia <span class="math inline">\(h_{n+r}-h_n\)</span> tiene <span class="math inline">\(r\)</span> sumandos y es a lo sumo <span class="math inline">\(r/(n+2)\)</span>, que tiende a cero. Cauchy exige un corte válido aunque la separación entre índices crezca sin una cota fija.</p>
-<p>Una gráfica temporal de muestra finita puede mostrar los saltos cada vez menores y aun ocultar la separación de bloques muy tardíos. La prueba debe elegir pares después de cualquier corte; esa libertad del adversario es la que el gráfico por sí solo no resuelve.</p>
-<div id="fig-anm-c10-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En las sumas finitas de recíprocos, los saltos entre vecinos disminuyen. Los pares al final de bloques de longitud creciente siguen separados por al menos medio; un desplazamiento temporal creciente detecta el fallo de Cauchy.">
+<p>Así queda negado Cauchy con una tolerancia que no ha cambiado. Para <span class="math inline">\(a_n=n\)</span> podemos utilizar exactamente la misma pareja y obtener distancia uno. La primera sucesión permanece acotada y la segunda crece sin límite, pero la condición de Cauchy fracasa por la misma razón verificable: siempre encontramos pares demasiado separados.</p>
+<p>La condición de Cauchy sí obliga a que los saltos vecinos tiendan a cero. Dada <span class="math inline">\(\varepsilon&gt;0\)</span>, su corte <span class="math inline">\(N\)</span> controla todos los pares posteriores y, en particular, <span class="math inline">\((n+1,n)\)</span> para cada <span class="math inline">\(n\ge N\)</span>. Así <span class="math inline">\(|a_{n+1}-a_n|&lt;\varepsilon\)</span> desde ese corte. Lo que queda por decidir es si esa consecuencia basta para recuperar el control de todos los pares.</p>
+<p>El ejemplo verdaderamente instructivo es menos evidente. Pensemos en una sucesión que, a partir de cierto momento, avance mediante pasos cada vez más pequeños. ¿No debería acabar estabilizándose? El tamaño de un paso aislado no decide lo que ocurre después de muchos pasos. Si damos una cantidad suficientemente grande de pasos pequeños en una misma dirección, todavía podemos recorrer una distancia considerable. La condición <span class="math inline">\(|a_{n+1}-a_n|\to0\)</span> mira únicamente los saltos; la condición de Cauchy mira la distancia acumulada entre dos posiciones arbitrarias.</p>
+<p>Construyamos una sucesión que exhiba esa diferencia sin recurrir a una serie infinita. Definamos las sumas <strong>finitas</strong></p>
+<p><span class="math display">\[
+h_n=\sum_{j=1}^{n+1}\frac1j,
+\qquad n\in\mathbb N.
+\]</span></p>
+<p>Cada término se obtiene añadiendo a la suma anterior un recíproco nuevo. En consecuencia,</p>
+<p><span class="math display">\[
+h_{n+1}-h_n=\frac1{n+2}\longrightarrow0.
+\]</span></p>
+<p>Si observáramos solamente estos incrementos, veríamos un progreso cada vez más lento. Pero para aplicar Cauchy no basta comparar <span class="math inline">\(h_n\)</span> con <span class="math inline">\(h_{n+1}\)</span>: debemos comparar, por ejemplo, una suma con otra que contenga muchos términos adicionales. Elijamos un bloque que comienza después de <span class="math inline">\(m\)</span> sumandos y contiene otros <span class="math inline">\(m\)</span>. Su distancia acumulada es</p>
+<p><span class="math display">\[
+\begin{aligned}
+h_{2m-1}-h_{m-1}
+&amp;=\frac1{m+1}+\frac1{m+2}+\cdots+\frac1{2m}\\
+&amp;\ge m\cdot\frac1{2m}=\frac12.
+\end{aligned}
+\]</span></p>
+<p>La razón de la última cota merece leerse despacio: hay exactamente <span class="math inline">\(m\)</span> sumandos y ninguno es menor que <span class="math inline">\(1/(2m)\)</span>. Cada uno, considerado por separado, puede ser diminuto cuando <span class="math inline">\(m\)</span> crece, pero <strong>el número de sumandos crece al mismo tiempo</strong>. Por eso la suma del bloque conserva una separación de al menos medio.</p>
+<p>Tenemos ya la tolerancia fija que buscábamos: <span class="math inline">\(\varepsilon_0=1/2\)</span>. Si alguien propone un corte <span class="math inline">\(N\)</span>, respondemos con <span class="math inline">\(m=N+1\)</span>. Entonces <span class="math inline">\(m-1=N\)</span> y <span class="math inline">\(2m-1=2N+1\)</span> son índices posteriores al corte, mientras sus valores distan por lo menos <span class="math inline">\(1/2\)</span>. Como esta elección puede repetirse después de cualquier <span class="math inline">\(N\)</span>, la sucesión <span class="math inline">\((h_n)\)</span> no es de Cauchy; en virtud del criterio probado en §10.4, tampoco converge en <span class="math inline">\(\mathbb R\)</span>. Todo lo utilizado ha sido aritmética de sumas finitas, de modo que no hay ninguna dependencia oculta de la teoría de series del capítulo siguiente.</p>
+<p>Podemos ir un poco más lejos. Fijemos de antemano un desplazamiento entero <span class="math inline">\(r\ge1\)</span> y comparemos <span class="math inline">\(h_n\)</span> con <span class="math inline">\(h_{n+r}\)</span>. La diferencia contiene solo <span class="math inline">\(r\)</span> sumandos y satisface</p>
+<p><span class="math display">\[
+0&lt;h_{n+r}-h_n
+=\sum_{j=n+2}^{n+r+1}\frac1j
+\le\frac r{n+2}\longrightarrow0.
+\]</span></p>
+<p>Así, para <strong>cada</strong> <span class="math inline">\(r\)</span> fijo, esas distancias también tienden a cero. No hay contradicción con lo que acabamos de probar: el corte necesario para controlar <span class="math inline">\(h_{n+r}-h_n\)</span> puede depender de <span class="math inline">\(r\)</span>. La definición de Cauchy exige elegir el corte antes de conocer cuánto se separarán los índices; nuestros bloques de longitud creciente aprovechan precisamente esa diferencia de cuantificadores.</p>
+<div id="fig-anm-c10-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Arriba, sumas finitas h_n y tres pares de índices tres/siete, siete/quince y quince/treinta y uno, con distancias de al menos medio. Abajo, los saltos 1/(n+2) disminuyen en la misma muestra temporal.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anm-c10-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../../assets/books/anm/C10/C10-F05.svg" class="img-fluid figure-img" alt="En las sumas finitas de recíprocos, los saltos entre vecinos disminuyen. Los pares al final de bloques de longitud creciente siguen separados por al menos medio; un desplazamiento temporal creciente detecta el fallo de Cauchy.">
+<img src="../../assets/books/anm/C10/C10-F05.svg" class="img-fluid figure-img" alt="Arriba, sumas finitas h_n y tres pares de índices tres/siete, siete/quince y quince/treinta y uno, con distancias de al menos medio. Abajo, los saltos 1/(n+2) disminuyen en la misma muestra temporal.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c10-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;5: En las sumas finitas de recíprocos, los saltos entre vecinos disminuyen. Los pares al final de bloques de longitud creciente siguen separados por al menos medio; un desplazamiento temporal creciente detecta el fallo de Cauchy.
 </figcaption>
 </figure>
 </div>
+<p>El ejemplo da una pauta útil para leer y construir contraejemplos. Cuando una hipótesis controla objetos vecinos o un número fijo de operaciones, conviene preguntar si una acumulación suficientemente larga podría escapar de ese control. Aquí el escape queda cuantificado por la desigualdad <span class="math inline">\(h_{2m-1}-h_{m-1}\ge1/2\)</span>, que muestra por qué ningún corte es suficiente.</p>
 <section id="antes-de-seguir-4" class="level3">
 <h3 class="anchored" data-anchor-id="antes-de-seguir-4">Antes de seguir</h3>
 <section id="microcontrol-33" class="level4">
@@ -1596,27 +1713,50 @@ Ver solución del ejercicio 25
 <section id="conservar-el-control-al-operar" class="level2">
 <h2 class="anchored" data-anchor-id="conservar-el-control-al-operar">10.6. Conservar el control al operar</h2>
 <p><span id="MA-SEC-ANM-01-010-006"></span></p>
-<p>El criterio permite transportar las reglas de convergencia de C06. También conviene reconocer cómo actúan directamente sobre las distancias: así sabremos qué hipótesis usa cada operación sin necesitar los destinos.</p>
-<p>Si <span class="math inline">\(a,b\)</span> son de Cauchy, para <span class="math inline">\(\varepsilon&gt;0\)</span> elegimos sus cortes con tolerancia <span class="math inline">\(\varepsilon/2\)</span> y tomamos el máximo. Para todo par posterior,</p>
+<p>El criterio de Cauchy nos permite saber que una sucesión real converge sin calcular su límite. Sería una ventaja limitada si, en cuanto sumáramos o multiplicáramos dos de esas sucesiones, tuviéramos que abandonar el criterio y descubrir primero sus destinos. Podemos trabajar directamente con las distancias y averiguar qué propiedades se conservan bajo las operaciones conocidas. Las demostraciones también mostrarán por qué algunas operaciones necesitan hipótesis adicionales.</p>
+<p>Sean <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> dos sucesiones de Cauchy. Si consideramos su suma, la distancia entre los términos de índices <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span> se escribe como la diferencia de dos sumas. Agrupar los incrementos correspondientes permite estimarla mediante la desigualdad triangular:</p>
 <p><span class="math display">\[
 |(a_p+b_p)-(a_q+b_q)|
-\le|a_p-a_q|+|b_p-b_q|&lt;\varepsilon.
+\le |a_p-a_q|+|b_p-b_q|.
 \]</span></p>
-<p>Por ello <span class="math inline">\(a+b\)</span> es de Cauchy. La misma estimación con una resta prueba que <span class="math inline">\(a-b\)</span> lo es. Una traslación constante no cambia distancias. Para multiplicar por un real <span class="math inline">\(c\ne0\)</span>, basta usar tolerancia <span class="math inline">\(\varepsilon/|c|\)</span> en <span class="math inline">\(a\)</span>; si <span class="math inline">\(c=0\)</span>, el producto es constante cero y sirve corte cero.</p>
-<p><strong>El producto necesita cotas.</strong> Por §10.3, fijemos <span class="math inline">\(A,B\ge0\)</span> con <span class="math inline">\(|a_n|\le A\)</span>, <span class="math inline">\(|b_n|\le B\)</span> en todos los índices. Descomponer en dos errores da</p>
+<p>Para que esa suma sea menor que <span class="math inline">\(\varepsilon\)</span>, podemos exigir que cada diferencia sea menor que <span class="math inline">\(\varepsilon/2\)</span>. La condición de Cauchy da un corte <span class="math inline">\(N_a\)</span> para la primera sucesión y otro <span class="math inline">\(N_b\)</span> para la segunda; no tenemos por qué esperar que coincidan. Tomamos <span class="math inline">\(N=\max\{N_a,N_b\}\)</span> y ambas estimaciones valen después de ese único corte. Por tanto, <span class="math inline">\(a+b\)</span> es de Cauchy. La resta se trata del mismo modo, pues cambiar el signo de un incremento no altera su valor absoluto. Si multiplicamos por un escalar <span class="math inline">\(c\ne0\)</span>, pedimos a la sucesión original la tolerancia <span class="math inline">\(\varepsilon/|c|\)</span>; para <span class="math inline">\(c=0\)</span> obtenemos una sucesión constante y no hay división alguna que realizar.</p>
+<p>El producto exige una maniobra que vale la pena comprender. No disponemos de una desigualdad que compare directamente <span class="math inline">\(a_pb_p\)</span> y <span class="math inline">\(a_qb_q\)</span> en términos solo de <span class="math inline">\(|a_p-a_q|\)</span> y <span class="math inline">\(|b_p-b_q|\)</span>, porque los valores de cada factor también influyen en el producto. Para separar las dos variaciones podemos imaginar que cambiamos <strong>un factor a la vez</strong>: pasamos de <span class="math inline">\(a_pb_p\)</span> a <span class="math inline">\(a_pb_q\)</span>, y después a <span class="math inline">\(a_qb_q\)</span>. Algebraicamente, introducimos y retiramos el producto intermedio <span class="math inline">\(a_pb_q\)</span>:</p>
+<p><span class="math display">\[
+a_pb_p-a_qb_q=a_p(b_p-b_q)+b_q(a_p-a_q).
+\]</span></p>
+<p>Ya reconocemos dos diferencias pequeñas, pero están acompañadas por <span class="math inline">\(a_p\)</span> y <span class="math inline">\(b_q\)</span>. Ésta es la razón de haber demostrado antes que toda sucesión de Cauchy es acotada. Podemos elegir <span class="math inline">\(A,B\ge0\)</span> tales que <span class="math inline">\(|a_n|\le A\)</span> y <span class="math inline">\(|b_n|\le B\)</span> para todos los índices; entonces</p>
 <p><span class="math display">\[
 |a_pb_p-a_qb_q|
-\le |a_p|\,|b_p-b_q|+|b_q|\,|a_p-a_q|.
+\le A|b_p-b_q|+B|a_p-a_q|.
 \]</span></p>
-<p>Elegimos cortes de <span class="math inline">\(b\)</span> con tolerancia <span class="math inline">\(\varepsilon/[2(A+1)]\)</span> y de <span class="math inline">\(a\)</span> con tolerancia <span class="math inline">\(\varepsilon/[2(B+1)]\)</span>. Para pares posteriores al máximo, la cota es menor que <span class="math inline">\(\varepsilon\)</span>, porque <span class="math inline">\(A/(A+1)&lt;1\)</span> y <span class="math inline">\(B/(B+1)&lt;1\)</span>. Los denominadores añadidos evitan dividir por una cota cero. El producto es de Cauchy sin hipótesis de signo sobre los términos.</p>
-<p><strong>Los recíprocos necesitan distancia a cero.</strong> Si <span class="math inline">\(|a_n|\ge c&gt;0\)</span> para <span class="math inline">\(n\ge N_0\)</span>, los recíprocos de esa cola están definidos y</p>
+<p>Para convertir la desigualdad en una prueba completa, fijemos <span class="math inline">\(\varepsilon&gt;0\)</span>. Escojamos un corte de <span class="math inline">\(b\)</span> para la tolerancia <span class="math inline">\(\varepsilon/[2(A+1)]\)</span> y otro de <span class="math inline">\(a\)</span> para <span class="math inline">\(\varepsilon/[2(B+1)]\)</span>. Después del máximo de ambos cortes tendremos</p>
+<p><span class="math display">\[
+|a_pb_p-a_qb_q|
+\le\frac\varepsilon2\frac A{A+1}
++\frac\varepsilon2\frac B{B+1}
+&lt;\varepsilon.
+\]</span></p>
+<p>Añadimos <span class="math inline">\(1\)</span> a los denominadores porque <span class="math inline">\(A\)</span> o <span class="math inline">\(B\)</span> podrían ser cero, y necesitamos tolerancias bien definidas en todos los casos. Si <span class="math inline">\(A=B=0\)</span>, ambas sucesiones son nulas y la primera comparación de la cadena es una igualdad; la desigualdad final sigue siendo estricta porque <span class="math inline">\(\varepsilon&gt;0\)</span>. El argumento muestra algo general: las diferencias pequeñas pueden transportarse a un producto cuando los valores que las multiplican están uniformemente acotados. El producto de dos sucesiones reales de Cauchy es, por tanto, de Cauchy, sin que hayamos tenido que calcular ninguno de sus límites.</p>
+<p>En los recíprocos aparece otro fenómeno. La identidad algebraica</p>
 <p><span class="math display">\[
 \left|\frac1{a_p}-\frac1{a_q}\right|
-=\frac{|a_p-a_q|}{|a_pa_q|}\le\frac{|a_p-a_q|}{c^2}.
+=\frac{|a_p-a_q|}{|a_pa_q|}
 \]</span></p>
-<p>Usamos el corte de Cauchy de <span class="math inline">\(a\)</span> para tolerancia <span class="math inline">\(c^2\varepsilon\)</span> y lo combinamos con <span class="math inline">\(N_0\)</span>. Si algún término previo es cero, no existe una sucesión de recíprocos en todos los índices: podemos reindexar esa cola o asignar al prefijo valores reales arbitrarios. Si todos los términos son no nulos, la sucesión completa de recíprocos es de Cauchy. La condición «ningún término es cero» por sí sola no basta: <span class="math inline">\(a_n=1/(n+1)\)</span> es de Cauchy y no nula, pero sus recíprocos <span class="math inline">\(n+1\)</span> no lo son.</p>
-<p>También el valor absoluto conserva Cauchy, porque <span class="math inline">\(\big||a_p|-|a_q|\big|\le|a_p-a_q|\)</span>. Si <span class="math inline">\(a\)</span> es de Cauchy y <span class="math inline">\(b_n-a_n\to0\)</span>, entonces la diferencia es de Cauchy por §10.2 y la regla de suma hace a <span class="math inline">\(b\)</span> de Cauchy. Por C06 comparten límite cuando la diferencia tiende a cero. El signo oscilante de una perturbación no impide su desaparición.</p>
-<p>Finalmente, cambiar finitos términos o suprimir un prefijo conserva Cauchy: después del último índice cambiado las distancias son las mismas; al reindexar una cola sólo se trasladan cortes. Estas reglas separan cambios del objeto completo de cambios en su comportamiento tardío.</p>
+<p>sugiere que una diferencia pequeña en el numerador debería producir una diferencia pequeña entre recíprocos. Pero eso solo es seguro si el denominador no se acerca demasiado a cero. Supongamos que existe <span class="math inline">\(N_0\)</span> y una constante <span class="math inline">\(c&gt;0\)</span> tales que <span class="math inline">\(|a_n|\ge c\)</span> para todo <span class="math inline">\(n\ge N_0\)</span>. Entonces los recíprocos están definidos en esa cola y</p>
+<p><span class="math display">\[
+\left|\frac1{a_p}-\frac1{a_q}\right|
+\le\frac{|a_p-a_q|}{c^2}
+\qquad(p,q\ge N_0).
+\]</span></p>
+<p>Pedimos ahora a <span class="math inline">\(a\)</span> un corte de Cauchy para la tolerancia <span class="math inline">\(c^2\varepsilon\)</span> y lo combinamos con <span class="math inline">\(N_0\)</span>. El mismo control demuestra que los recíprocos de la cola son de Cauchy. Si algún término anterior fuese cero, no podríamos definir <span class="math inline">\(1/a_n\)</span> para <em>todos</em> los índices; podemos trabajar con la cola reindexada, o prolongarla asignando valores reales arbitrarios al prefijo.</p>
+<p>La condición <span class="math inline">\(|a_n|\ge c&gt;0\)</span> es más fuerte que pedir únicamente <span class="math inline">\(a_n\ne0\)</span>. Los recíprocos <span class="math inline">\(a_n=1/(n+1)\)</span>, por ejemplo, son positivos y forman una sucesión de Cauchy, pero sus inversos <span class="math inline">\(1/a_n=n+1\)</span> no son de Cauchy: después de cualquier corte, dos vecinos siguen separados por una unidad. La inversión amplifica las distancias cerca del cero, y por eso la hipótesis sobre el denominador no es una precaución de notación, sino una condición matemática necesaria.</p>
+<p>Otras operaciones se controlan con menos esfuerzo. La desigualdad triangular inversa,</p>
+<p><span class="math display">\[
+\bigl||a_p|-|a_q|\bigr|\le |a_p-a_q|,
+\]</span></p>
+<p>permite usar el mismo corte de Cauchy para la sucesión de magnitudes. La implicación inversa no es cierta: los valores absolutos de <span class="math inline">\((-1)^n\)</span> son constantemente uno, aunque la sucesión original oscile entre dos valores separados. Por otra parte, si <span class="math inline">\(a\)</span> es de Cauchy y una perturbación <span class="math inline">\(e_n=b_n-a_n\)</span> converge a cero, entonces <span class="math inline">\(e\)</span> es de Cauchy por §10.2 y <span class="math inline">\(b=a+e\)</span> también lo es. El criterio real de §10.4 garantiza límites para ambas, y el álgebra de límites demuestra que coinciden.</p>
+<p>Sumar una constante <span class="math inline">\(c\)</span> conserva exactamente las distancias, pues <span class="math inline">\(|(a_p+c)-(a_q+c)|=|a_p-a_q|\)</span>. Para suprimir y reindexar un prefijo de longitud <span class="math inline">\(r\in\mathbb N\)</span>, ponemos <span class="math inline">\(b_k=a_{k+r}\)</span>. Un corte <span class="math inline">\(N\)</span> de Cauchy para <span class="math inline">\(a\)</span> sirve también como corte suficiente para <span class="math inline">\(b\)</span>, ya que <span class="math inline">\(p,q\ge N\)</span> implican <span class="math inline">\(p+r,q+r\ge N\)</span>. En la dirección inversa, si <span class="math inline">\(K\)</span> controla <span class="math inline">\(b\)</span>, los índices originales <span class="math inline">\(n,m\ge K+r\)</span> se escriben como <span class="math inline">\(n=p+r,m=q+r\)</span> con <span class="math inline">\(p,q\ge K\)</span>. Por tanto, descartar ese prefijo conserva la condición en ambas direcciones.</p>
+<p>Cambiar finitos términos tampoco altera Cauchy. Podemos escoger el corte después del último índice modificado y todas las comparaciones posteriores serán iguales a las anteriores. Cuando trabajamos con aproximaciones numéricas, este hecho permite separar las decisiones provisionales de los primeros pasos de aquello que verdaderamente determina el comportamiento de la sucesión a largo plazo.</p>
 <section id="antes-de-seguir-5" class="level3">
 <h3 class="anchored" data-anchor-id="antes-de-seguir-5">Antes de seguir</h3>
 <section id="microcontrol-41" class="level4">
@@ -1796,24 +1936,35 @@ Ver solución del ejercicio 30
 <section id="la-distancia-permanece-el-codominio-cambia" class="level2">
 <h2 class="anchored" data-anchor-id="la-distancia-permanece-el-codominio-cambia">10.7. La distancia permanece; el codominio cambia</h2>
 <p><span id="MA-SEC-ANM-01-010-007"></span></p>
-<p>Una sucesión con valores racionales puede verse como <span class="math inline">\(q:\mathbb N\to\mathbb Q\)</span> y, mediante la inclusión canónica <span class="math inline">\(\iota:\mathbb Q\to\mathbb R\)</span>, como <span class="math inline">\(\iota\circ q:\mathbb N\to\mathbb R\)</span>. Los valores numéricos transportados y sus distancias coinciden. Pero «converge en <span class="math inline">\(\mathbb Q\)</span>» exige un destino racional y «converge en <span class="math inline">\(\mathbb R\)</span>» permite un destino real. Cambiar codominio cambia el contrato de convergencia, aunque no cambie los números de cada evaluación.</p>
-<p>Construiremos un ejemplo desde el control interno, sin presuponer que ya existe una raíz real de dos. Primero recordemos un argumento algebraico: no hay un racional cuyo cuadrado sea dos. Si <span class="math inline">\(r=s/t\)</span> con enteros coprimos y <span class="math inline">\(t&gt;0\)</span> cumpliera <span class="math inline">\(r^2=2\)</span>, tendríamos <span class="math inline">\(s^2=2t^2\)</span>. Un entero con cuadrado par es par, de modo que <span class="math inline">\(s=2v\)</span>. Sustituyendo, <span class="math inline">\(t^2=2v^2\)</span>, por lo que <span class="math inline">\(t\)</span> también sería par, contradiciendo coprimalidad.</p>
-<p>Partimos del intervalo racional <span class="math inline">\([l_0,u_0]=[1,2]\)</span>. Dado <span class="math inline">\([l_n,u_n]\)</span>, formamos el punto medio racional <span class="math inline">\(t_n=(l_n+u_n)/2\)</span>. Si <span class="math inline">\(t_n^2&lt;2\)</span>, ponemos <span class="math inline">\(l_{n+1}=t_n,u_{n+1}=u_n\)</span>; si <span class="math inline">\(t_n^2&gt;2\)</span>, ponemos <span class="math inline">\(l_{n+1}=l_n,u_{n+1}=t_n\)</span>. La igualdad es imposible por el argumento anterior. La recursión determina extremos racionales y conserva</p>
+<p>En el criterio de Cauchy demostramos que las colas cuya separación interna se hace arbitrariamente pequeña terminan acercándose a un número <strong>real</strong>. ¿Por qué era necesario nombrar ese conjunto en el enunciado? Los cálculos de distancias también tienen sentido entre números racionales, y nada cambia en el valor de <span class="math inline">\(|p-q|\)</span> cuando consideramos esos mismos racionales dentro de <span class="math inline">\(\mathbb R\)</span>. Lo que puede cambiar es la existencia de un número del propio conjunto al que lleguen las aproximaciones.</p>
+<p>Podemos expresar esto con la inclusión usual <span class="math inline">\(\iota:\mathbb Q\hookrightarrow\mathbb R\)</span>. Una sucesión <span class="math inline">\(q:\mathbb N\to\mathbb Q\)</span> tiene exactamente las mismas distancias entre términos que la sucesión real <span class="math inline">\(\iota\circ q\)</span>. Los cortes que prueban Cauchy para una prueban Cauchy para la otra. Pero si decimos que la sucesión converge <strong>en <span class="math inline">\(\mathbb Q\)</span></strong>, estamos exigiendo que su destino sea racional; si decimos que converge <strong>en <span class="math inline">\(\mathbb R\)</span></strong>, permitimos un destino real. La condición sobre las distancias no menciona dónde debe encontrarse ese destino, de modo que la diferencia entre ambos conjuntos solo puede manifestarse cuando intentemos construirlo.</p>
+<p>Construyamos una sucesión racional que ponga en evidencia el problema. Queremos aproximar un número positivo cuyo cuadrado sea dos, aunque todavía no vamos a suponer que tal número existe. Sabemos, por simple aritmética, que <span class="math inline">\(1^2&lt;2&lt;2^2\)</span>. Podemos conservar dos números racionales que acoten la solución esperada y reducir sucesivamente el intervalo entre ellos, sin tener que escribir la raíz que buscamos.</p>
+<p>Antes conviene resolver una cuestión: <strong>ningún número racional tiene cuadrado dos</strong>. Si <span class="math inline">\(s/t\)</span> fuese tal número y la fracción estuviese reducida, con <span class="math inline">\(s,t\in\mathbb Z\)</span> y <span class="math inline">\(t&gt;0\)</span>, tendríamos <span class="math inline">\(s^2=2t^2\)</span>. El cuadrado de un impar es impar; por tanto <span class="math inline">\(s=2v\)</span> para algún entero <span class="math inline">\(v\)</span>. Al sustituir, <span class="math inline">\(4v^2=2t^2\)</span>, de donde <span class="math inline">\(t^2=2v^2\)</span> y <span class="math inline">\(t\)</span> también es par. Esto contradice que el numerador y el denominador no tengan factores comunes. Esa demostración no construye ninguna raíz real: únicamente afirma que, si la raíz existe, no será racional.</p>
+<p>Empecemos con <span class="math inline">\(l_0=1\)</span> y <span class="math inline">\(u_0=2\)</span>. Calculamos el punto medio <span class="math inline">\(t_0=3/2\)</span> y su cuadrado <span class="math inline">\(9/4\)</span>. Como <span class="math inline">\(9/4&gt;2\)</span>, el punto medio queda del lado superior y podemos sustituir el extremo <span class="math inline">\(2\)</span> por <span class="math inline">\(3/2\)</span>, conservando el intervalo <span class="math inline">\([1,3/2]\)</span>. El nuevo punto medio es <span class="math inline">\(5/4\)</span>, cuyo cuadrado <span class="math inline">\(25/16\)</span> es menor que dos; ahora sustituimos el extremo inferior y obtenemos <span class="math inline">\([5/4,3/2]\)</span>. Un paso más nos lleva al punto medio <span class="math inline">\(11/8\)</span>, con cuadrado <span class="math inline">\(121/64&lt;2\)</span>, y al intervalo <span class="math inline">\([11/8,3/2]\)</span>. Cada decisión es un cálculo exacto con racionales, realizado sin conocer la respuesta final.</p>
+<p>Formalmente, dados <span class="math inline">\(l_n,u_n\in\mathbb Q\)</span> con <span class="math inline">\(l_n^2&lt;2&lt;u_n^2\)</span>, ponemos <span class="math inline">\(t_n=(l_n+u_n)/2\)</span>. Si <span class="math inline">\(t_n^2&lt;2\)</span>, definimos <span class="math inline">\(l_{n+1}=t_n\)</span> y <span class="math inline">\(u_{n+1}=u_n\)</span>; si <span class="math inline">\(t_n^2&gt;2\)</span>, conservamos <span class="math inline">\(l_n\)</span> y ponemos <span class="math inline">\(u_{n+1}=t_n\)</span>. El caso de igualdad no ocurre por la irracionalidad que acabamos de demostrar. La inducción verifica tanto el encajamiento como las desigualdades</p>
 <p><span class="math display">\[
-1\le l_n&lt;u_n\le2,\qquad l_n^2&lt;2&lt;u_n^2,
-\qquad u_n-l_n=2^{-n}.
+1\le l_n&lt;u_n\le2,\qquad
+l_n^2&lt;2&lt;u_n^2,\qquad
+u_n-l_n=2^{-n}.
 \]</span></p>
-<p>Los intervalos están encajados y la anchura se divide por dos en cada paso. Si <span class="math inline">\(p,q\ge N\)</span>, ambos extremos inferiores <span class="math inline">\(l_p,l_q\)</span> están dentro de <span class="math inline">\([l_N,u_N]\)</span>, por lo que <span class="math inline">\(|l_p-l_q|\le2^{-N}\)</span>. La desigualdad <span class="math inline">\(2^N\ge N+1\)</span>, probada por inducción, y arquimedianidad permiten escoger <span class="math inline">\(N\)</span> con <span class="math inline">\(2^{-N}&lt;\varepsilon\)</span>. Así la sucesión de extremos inferiores es de Cauchy. Lo mismo vale para los superiores.</p>
-<p>Por el criterio real recién demostrado, <span class="math inline">\(l_n\to L\in\mathbb R\)</span>. Como <span class="math inline">\(u_n-l_n=2^{-n}\to0\)</span>, las reglas de C06 dan <span class="math inline">\(u_n\to L\)</span>. Las cotas <span class="math inline">\(1\le l_n&lt;u_n\le2\)</span> implican <span class="math inline">\(1\le L\le2\)</span>. La regla del producto y conservación del orden aplicada a <span class="math inline">\(l_n^2&lt;2&lt;u_n^2\)</span> dan <span class="math inline">\(L^2\le2\)</span> y <span class="math inline">\(L^2\ge2\)</span>. En consecuencia <span class="math inline">\(L^2=2\)</span>. Hemos construido el real positivo que se denota <span class="math inline">\(\sqrt2\)</span>; es único, porque si <span class="math inline">\(x,y&gt;0\)</span> y <span class="math inline">\(x^2=y^2\)</span>, entonces <span class="math inline">\((x-y)(x+y)=0\)</span> con <span class="math inline">\(x+y&gt;0\)</span>, luego <span class="math inline">\(x=y\)</span>.</p>
-<p>Ese límite no es racional. Si la sucesión racional <span class="math inline">\(l\)</span> convergiera a algún <span class="math inline">\(r\in\mathbb Q\)</span>, al incluirla en <span class="math inline">\(\mathbb R\)</span> convergería a <span class="math inline">\(\iota(r)\)</span>. La unicidad del límite real obligaría <span class="math inline">\(\iota(r)=L\)</span>, lo cual contradice que ningún racional tiene cuadrado dos. La sucesión es de Cauchy en distancia usual y no tiene límite en <span class="math inline">\(\mathbb Q\)</span>.</p>
-<p>La diferencia con la recta real está ahora probada: Cauchy proporciona coherencia de una cola; completitud del codominio proporciona el destino dentro de él. Llamaremos <strong>secuencialmente completo</strong>, para la distancia usual en un subconjunto de <span class="math inline">\(\mathbb R\)</span>, a un conjunto en el que toda sucesión de Cauchy con valores en ese conjunto converge a un elemento suyo. Hemos probado que <span class="math inline">\(\mathbb R\)</span> lo es y que <span class="math inline">\(\mathbb Q\)</span> no lo es. No estamos construyendo otro modelo de los reales por clases de sucesiones; identificamos una propiedad del modelo ya disponible.</p>
-<p><strong>Raíces generales: reunir una herramienta ya demostrada.</strong> El ejercicio 30 de C07 y su solución construyeron la raíz de cualquier parámetro positivo. Recuperemos aquí el argumento para que la herramienta quede disponible en el manuscrito, sin depender de que el lector haya resuelto ese ejercicio. Sea <span class="math inline">\(\rho&gt;0\)</span>, tomemos <span class="math inline">\(x_0=\rho+1\)</span> y definamos <span class="math inline">\(x_{n+1}=(x_n+\rho/x_n)/2\)</span>. La positividad y las identidades finitas <span class="math display">\[x_{n+1}^2-\rho=\frac{(x_n^2-\rho)^2}{4x_n^2},\qquad
-x_n-x_{n+1}=\frac{x_n^2-\rho}{2x_n}\]</span> conservan <span class="math inline">\(x_n^2&gt;\rho\)</span> y hacen decrecer estrictamente la sucesión, porque <span class="math inline">\(x_0^2-\rho=\rho^2+\rho+1&gt;0\)</span>. Con <span class="math inline">\(m=\min\{1,\rho\}&gt;0\)</span>, se tiene <span class="math inline">\(m^2\le\rho\)</span>; por ello <span class="math inline">\(x_n\le m\)</span> contradiría <span class="math inline">\(x_n^2&gt;\rho\)</span>. C07 da un límite <span class="math inline">\(L\ge m&gt;0\)</span>. Las reglas de C06 permiten pasar al límite en la recurrencia, incluido el cociente, y dan <span class="math inline">\(L=(L+\rho/L)/2\)</span>, luego <span class="math inline">\(L^2=\rho\)</span>.</p>
-<p>Si <span class="math inline">\(u,v&gt;0\)</span> tienen ese cuadrado, <span class="math inline">\((u-v)(u+v)=0\)</span> y <span class="math inline">\(u+v&gt;0\)</span> fuerzan <span class="math inline">\(u=v\)</span>. Para <span class="math inline">\(\rho=0\)</span>, la única raíz no negativa es cero. Así queda definida para todo <span class="math inline">\(\rho\ge0\)</span> una única raíz no negativa <span class="math inline">\(\sqrt\rho\)</span>. Su orden también está acreditado: si <span class="math inline">\(0\le\rho\le\sigma\)</span> pero <span class="math inline">\(\sqrt\rho&gt;\sqrt\sigma\)</span>, la comparación de cuadrados no negativos daría <span class="math inline">\(\rho&gt;\sigma\)</span>, contradicción. Este resultado sólo usa monotonía, completitud y álgebra de límites anteriores; no continuidad de funciones, valor intermedio ni derivadas. La continuidad de la función raíz se probará después en su lugar correspondiente.</p>
-<div id="fig-anm-c10-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Los extremos racionales de la bisección conservan el cuadrado dos entre sus cuadrados y reducen la anchura. El centro común existe en la recta real; ningún punto racional puede ocuparlo.">
+<p>El detalle que nos interesa ahora es que la anchura se reduce a la mitad <em>independientemente de cuál de los extremos hayamos sustituido</em>. Si <span class="math inline">\(p,q\ge N\)</span>, tanto <span class="math inline">\(l_p\)</span> como <span class="math inline">\(l_q\)</span> están en el intervalo cerrado <span class="math inline">\([l_N,u_N]\)</span> y, por eso,</p>
+<p><span class="math display">\[
+|l_p-l_q|\le u_N-l_N=2^{-N}.
+\]</span></p>
+<p>La cota depende solo del inicio de la cola, nunca de la separación entre los índices. Además <span class="math inline">\(2^{-N}\)</span> tiende a cero: la inducción da <span class="math inline">\(2^N\ge N+1\)</span>, de manera que <span class="math inline">\(2^{-N}\le1/(N+1)\)</span>, y los recíprocos tienden a cero. Así hemos probado que <span class="math inline">\((l_n)\)</span> es de Cauchy utilizando exclusivamente las reglas de la bisección. El mismo razonamiento sirve para <span class="math inline">\((u_n)\)</span>.</p>
+<p>El criterio demostrado en §10.4 nos permite tratar <span class="math inline">\((l_n)\)</span> como sucesión <em>real</em> y obtener un límite <span class="math inline">\(L\in\mathbb R\)</span>. Puesto que <span class="math inline">\(u_n-l_n=2^{-n}\to0\)</span>, las reglas de límites del capítulo 6 garantizan que también <span class="math inline">\(u_n\to L\)</span>. Los dos extremos se acercan, pues, al mismo punto, y las desigualdades que preservamos durante toda la construcción nos dicen algo sobre él. Al pasar al límite en</p>
+<p><span class="math display">\[
+l_n^2&lt;2&lt;u_n^2,
+\]</span></p>
+<p>las desigualdades estrictas pueden hacerse no estrictas. Por continuidad de los productos de sucesiones convergentes, obtenemos <span class="math inline">\(L^2\le2\)</span> y <span class="math inline">\(2\le L^2\)</span>; por consiguiente,</p>
+<p><span class="math display">\[
+L^2=2.
+\]</span></p>
+<p>Como <span class="math inline">\(L\in[1,2]\)</span>, es positivo. También es el único real positivo con ese cuadrado: si <span class="math inline">\(x,y&gt;0\)</span> y <span class="math inline">\(x^2=y^2\)</span>, entonces <span class="math inline">\((x-y)(x+y)=0\)</span>, y <span class="math inline">\(x+y&gt;0\)</span> fuerza <span class="math inline">\(x=y\)</span>. Hemos <strong>construido</strong> el número positivo que llamamos <span class="math inline">\(\sqrt2\)</span> partiendo de intervalos racionales, y ahora sabemos por qué la construcción lo determina de manera única.</p>
+<div id="fig-anm-c10-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Seis intervalos racionales cerrados y una ampliación declarada del último muestran extremos cada vez más próximos al real positivo con cuadrado dos. La tabla Markdown conserva los extremos exactos; el centro se representa como referencia real, sin afirmar que sea un término racional.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anm-c10-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../../assets/books/anm/C10/C10-F06.svg" class="img-fluid figure-img" alt="Los extremos racionales de la bisección conservan el cuadrado dos entre sus cuadrados y reducen la anchura. El centro común existe en la recta real; ningún punto racional puede ocuparlo.">
+<img src="../../assets/books/anm/C10/C10-F06.svg" class="img-fluid figure-img" alt="Seis intervalos racionales cerrados y una ampliación declarada del último muestran extremos cada vez más próximos al real positivo con cuadrado dos. La tabla Markdown conserva los extremos exactos; el centro se representa como referencia real, sin afirmar que sea un término racional.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c10-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;6: Los extremos racionales de la bisección conservan el cuadrado dos entre sus cuadrados y reducen la anchura. El centro común existe en la recta real; ningún punto racional puede ocuparlo.
@@ -1821,9 +1972,15 @@ Figura&nbsp;6: Los extremos racionales de la bisección conservan el cuadrado do
 </figure>
 </div>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>n</th>
+<th><span class="math inline">\(n\)</span></th>
 <th>Extremo inferior racional</th>
 <th>Extremo superior racional</th>
 <th>Anchura</th>
@@ -1832,42 +1989,48 @@ Figura&nbsp;6: Los extremos racionales de la bisección conservan el cuadrado do
 <tbody>
 <tr class="odd">
 <td>0</td>
-<td>1</td>
-<td>2</td>
-<td>1</td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(2\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
 </tr>
 <tr class="even">
 <td>1</td>
-<td>1</td>
-<td>3/2</td>
-<td>1/2</td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(3/2\)</span></td>
+<td><span class="math inline">\(1/2\)</span></td>
 </tr>
 <tr class="odd">
 <td>2</td>
-<td>5/4</td>
-<td>3/2</td>
-<td>1/4</td>
+<td><span class="math inline">\(5/4\)</span></td>
+<td><span class="math inline">\(3/2\)</span></td>
+<td><span class="math inline">\(1/4\)</span></td>
 </tr>
 <tr class="even">
 <td>3</td>
-<td>11/8</td>
-<td>3/2</td>
-<td>1/8</td>
+<td><span class="math inline">\(11/8\)</span></td>
+<td><span class="math inline">\(3/2\)</span></td>
+<td><span class="math inline">\(1/8\)</span></td>
 </tr>
 <tr class="odd">
 <td>4</td>
-<td>11/8</td>
-<td>23/16</td>
-<td>1/16</td>
+<td><span class="math inline">\(11/8\)</span></td>
+<td><span class="math inline">\(23/16\)</span></td>
+<td><span class="math inline">\(1/16\)</span></td>
 </tr>
 <tr class="even">
 <td>5</td>
-<td>45/32</td>
-<td>23/16</td>
-<td>1/32</td>
+<td><span class="math inline">\(45/32\)</span></td>
+<td><span class="math inline">\(23/16\)</span></td>
+<td><span class="math inline">\(1/32\)</span></td>
 </tr>
 </tbody>
 </table>
+<p>Supongamos ahora que esta misma sucesión racional tuviera un límite <span class="math inline">\(r\)</span> <strong>en <span class="math inline">\(\mathbb Q\)</span></strong>. Al considerar sus términos dentro de <span class="math inline">\(\mathbb R\)</span>, las distancias no cambian, así que también convergería a <span class="math inline">\(r\)</span> como sucesión real. Pero ya hemos probado que converge a <span class="math inline">\(L\)</span>, y la unicidad del límite real obligaría <span class="math inline">\(r=L\)</span>. Eso es imposible porque <span class="math inline">\(L^2=2\)</span> y acabamos de demostrar que ningún racional tiene ese cuadrado. Hemos encontrado, por tanto, una sucesión de Cauchy en <span class="math inline">\(\mathbb Q\)</span> que no converge en <span class="math inline">\(\mathbb Q\)</span>.</p>
+<p>El fracaso no está en las aproximaciones: los intervalos se estrechan correctamente, y las distancias satisfacen la definición de Cauchy con cortes explícitos. Tampoco está en haber elegido un algoritmo inadecuado: hemos podido demostrar que existe un destino real y determinar una propiedad exacta de él. El problema es que <strong>ese destino falta en el conjunto racional</strong>. Diremos que un subconjunto de <span class="math inline">\(\mathbb R\)</span>, con su distancia usual, es <em>secuencialmente completo</em> cuando toda sucesión de Cauchy con valores en ese conjunto converge a un elemento del mismo conjunto. El criterio demuestra que <span class="math inline">\(\mathbb R\)</span> posee esta propiedad; nuestro ejemplo demuestra que <span class="math inline">\(\mathbb Q\)</span> no. La pertenencia del límite también importa en conjuntos más sencillos: <span class="math inline">\(1/(n+1)\)</span> toma sus valores en <span class="math inline">\((0,1]\)</span> y es de Cauchy, pero converge en <span class="math inline">\(\mathbb R\)</span> a cero. La unicidad del límite impide que tenga otro destino dentro de <span class="math inline">\((0,1]\)</span>, de modo que ese conjunto tampoco es secuencialmente completo.</p>
+<p><strong>Raíces generales: reunir una herramienta ya demostrada.</strong> El ejercicio 30 de C07 y su solución construyeron la raíz de cualquier parámetro positivo. Recuperemos aquí el argumento para que la herramienta quede disponible en el manuscrito, sin depender de que el lector haya resuelto ese ejercicio. Sea <span class="math inline">\(\rho&gt;0\)</span>, tomemos <span class="math inline">\(x_0=\rho+1\)</span> y definamos <span class="math inline">\(x_{n+1}=(x_n+\rho/x_n)/2\)</span>. La positividad y las identidades finitas <span class="math display">\[x_{n+1}^2-\rho=\frac{(x_n^2-\rho)^2}{4x_n^2},\qquad
+x_n-x_{n+1}=\frac{x_n^2-\rho}{2x_n}\]</span> conservan <span class="math inline">\(x_n^2&gt;\rho\)</span> y hacen decrecer estrictamente la sucesión, porque <span class="math inline">\(x_0^2-\rho=\rho^2+\rho+1&gt;0\)</span>. Con <span class="math inline">\(m=\min\{1,\rho\}&gt;0\)</span>, se tiene <span class="math inline">\(m^2\le\rho\)</span>; por ello <span class="math inline">\(x_n\le m\)</span> contradiría <span class="math inline">\(x_n^2&gt;\rho\)</span>. C07 da un límite <span class="math inline">\(L\ge m&gt;0\)</span>. Las reglas de C06 permiten pasar al límite en la recurrencia, incluido el cociente, y dan <span class="math inline">\(L=(L+\rho/L)/2\)</span>, luego <span class="math inline">\(L^2=\rho\)</span>.</p>
+<p>Si <span class="math inline">\(u,v&gt;0\)</span> tienen ese cuadrado, <span class="math inline">\((u-v)(u+v)=0\)</span> y <span class="math inline">\(u+v&gt;0\)</span> fuerzan <span class="math inline">\(u=v\)</span>. Para <span class="math inline">\(\rho=0\)</span>, la única raíz no negativa es cero. Así queda definida para todo <span class="math inline">\(\rho\ge0\)</span> una única raíz no negativa <span class="math inline">\(\sqrt\rho\)</span>. Su orden también está acreditado: si <span class="math inline">\(0\le\rho\le\sigma\)</span> pero <span class="math inline">\(\sqrt\rho&gt;\sqrt\sigma\)</span>, la comparación de cuadrados no negativos daría <span class="math inline">\(\rho&gt;\sigma\)</span>, contradicción. Este resultado sólo usa monotonía, completitud y álgebra de límites anteriores; no continuidad de funciones, valor intermedio ni derivadas. La continuidad de la función raíz se probará después en su lugar correspondiente.</p>
+<p>El ejercicio complementario resuelto 10.41 retoma esta construcción con el parámetro <span class="math inline">\(\lambda\)</span> y desarrolla los casos necesarios para justificar la cota inferior positiva.</p>
 <section id="antes-de-seguir-6" class="level3">
 <h3 class="anchored" data-anchor-id="antes-de-seguir-6">Antes de seguir</h3>
 <section id="microcontrol-49" class="level4">
@@ -2050,41 +2213,72 @@ Ver solución del ejercicio 35
 <section id="estimar-el-error-antes-de-conocer-la-respuesta" class="level2">
 <h2 class="anchored" data-anchor-id="estimar-el-error-antes-de-conocer-la-respuesta">10.8. Estimar el error antes de conocer la respuesta</h2>
 <p><span id="MA-SEC-ANM-01-010-008"></span></p>
-<p>Los saltos que tienden a cero no bastan. Los saltos dominados por una progresión geométrica sí permiten controlar cualquier acumulación finita de errores. Supongamos que <span class="math inline">\(C\ge0\)</span>, <span class="math inline">\(0&lt;\rho&lt;1\)</span> y</p>
+<p>El criterio de Cauchy responde una pregunta de existencia, pero en un cálculo efectivo necesitamos algo más. Saber que los términos se acercan a un límite no nos dice por sí solo cuántos pasos debemos dar para garantizar, por ejemplo, un error menor que una milésima. Como el límite puede ser desconocido, sería especialmente útil obtener esa garantía a partir de cantidades que sí sabemos medir: las diferencias entre términos sucesivos.</p>
+<p>El ejemplo de las sumas finitas de recíprocos nos advirtió de un peligro. Que cada salto sea pequeño no garantiza que la suma de muchos saltos sea pequeña. Para controlar el recorrido entre dos índices cualesquiera necesitamos una estimación sobre <strong>todo el bloque de incrementos</strong>. Una manera de lograrlo es que los saltos decrezcan con una razón geométrica común, de modo que los aportes posteriores sean cada vez menores de una forma suficientemente fuerte como para controlar su acumulación.</p>
+<p>Supongamos que existen constantes <span class="math inline">\(C\ge0\)</span> y <span class="math inline">\(0&lt;\rho&lt;1\)</span> tales que</p>
 <p><span class="math display">\[
-|a_{n+1}-a_n|\le C\rho^n\qquad(n\in\mathbb N).
+|a_{n+1}-a_n|\le C\rho^n\qquad(n\ge0).
 \]</span></p>
-<p>Si <span class="math inline">\(p&gt;q\)</span>, la identidad telescópica y la desigualdad triangular finita dan</p>
+<p>Tomemos dos índices <span class="math inline">\(p&gt;q\)</span>. La diferencia <span class="math inline">\(a_p-a_q\)</span> se puede descomponer exactamente como una suma <em>finita</em> de los saltos desde <span class="math inline">\(q\)</span> hasta <span class="math inline">\(p-1\)</span>; los términos intermedios se cancelan. La desigualdad triangular permite sumar las cotas conocidas de cada salto y obtenemos</p>
 <p><span class="math display">\[
-|a_p-a_q|\le C\sum_{j=q}^{p-1}\rho^j
+\begin{aligned}
+|a_p-a_q|
+&amp;\le\sum_{j=q}^{p-1}|a_{j+1}-a_j|\\
+&amp;\le C\sum_{j=q}^{p-1}\rho^j
 =\frac{C\rho^q(1-\rho^{p-q})}{1-\rho}
 \le\frac{C\rho^q}{1-\rho}.
+\end{aligned}
 \]</span></p>
-<p>La identidad de suma finita se verifica multiplicando por <span class="math inline">\(1-\rho\)</span> y cancelando términos consecutivos. No usamos una suma infinita. Para comprobar <span class="math inline">\(\rho^N\to0\)</span> sin herramientas posteriores, escribamos <span class="math inline">\(\rho^{-1}=1+t\)</span> con <span class="math inline">\(t&gt;0\)</span>. Por inducción, <span class="math inline">\((1+t)^N\ge1+Nt\)</span>, luego <span class="math inline">\(0&lt;\rho^N\le1/(1+Nt)\to0\)</span> por arquimedianidad. Si <span class="math inline">\(C=0\)</span>, todos los saltos son cero y la sucesión es constante. Si <span class="math inline">\(C&gt;0\)</span>, recibida <span class="math inline">\(\varepsilon&gt;0\)</span> podemos escoger <span class="math inline">\(N\)</span> con <span class="math inline">\(C\rho^N/(1-\rho)&lt;\varepsilon\)</span>. La estimación controla todo par posterior; por simetría incluye <span class="math inline">\(p&lt;q\)</span> y el caso de igualdad tiene distancia cero. La sucesión es de Cauchy y tiene un límite real <span class="math inline">\(L\)</span>.</p>
-<p>También obtenemos un error verificable. Para <span class="math inline">\(q\)</span> fijo, hacemos tender <span class="math inline">\(p\)</span> a infinito en la cota anterior. Por C06, <span class="math inline">\(|a_p-a_q|\to|L-a_q|\)</span>; la conservación del orden produce</p>
+<p>La igualdad geométrica se comprueba sin series infinitas: multiplicamos la suma finita por <span class="math inline">\(1-\rho\)</span> y se cancelan todos los términos interiores, quedando <span class="math inline">\(\rho^q-\rho^p\)</span>. El beneficio de la cota final es que <strong>ya no contiene <span class="math inline">\(p\)</span></strong>. Podemos comparar con <span class="math inline">\(a_q\)</span> un término que esté cien posiciones más adelante o uno que esté un millón de posiciones más adelante, y ambos quedarán sujetos al mismo presupuesto de distancia <span class="math inline">\(C\rho^q/(1-\rho)\)</span>.</p>
+<p>Debemos justificar que ese presupuesto termina siendo pequeño. Como <span class="math inline">\(0&lt;\rho&lt;1\)</span>, escribamos <span class="math inline">\(\rho^{-1}=1+t\)</span> para algún <span class="math inline">\(t&gt;0\)</span>. La desigualdad elemental <span class="math inline">\((1+t)^N\ge1+Nt\)</span>, que se prueba por inducción, proporciona</p>
 <p><span class="math display">\[
-|L-a_q|\le\frac{C\rho^q}{1-\rho}.
+0&lt;\rho^N\le\frac1{1+Nt}\longrightarrow0.
 \]</span></p>
-<p>Si necesitamos error estrictamente menor que <span class="math inline">\(\varepsilon\)</span>, escogemos <span class="math inline">\(q\)</span> con el lado derecho menor que <span class="math inline">\(\varepsilon\)</span>. Existencia del límite y estimación del error son obligaciones distintas, ambas cerradas ahora. La cota puede ser conservadora; no afirmamos que sea el error exacto ni que el corte elegido sea mínimo.</p>
-<p><strong>Una iteración real sin destino supuesto.</strong> Sea <span class="math inline">\(F:\mathbb R\to\mathbb R\)</span> y supongamos que para algún <span class="math inline">\(0&lt;\rho&lt;1\)</span> se cumple <span class="math inline">\(|F(x)-F(y)|\le\rho|x-y|\)</span> para todos los reales <span class="math inline">\(x,y\)</span>. Fijado <span class="math inline">\(x_0\)</span>, definimos <span class="math inline">\(x_{n+1}=F(x_n)\)</span>. La recursión existe porque <span class="math inline">\(F\)</span> es total en <span class="math inline">\(\mathbb R\)</span>. Con <span class="math inline">\(D=|x_1-x_0|\)</span>, una inducción da <span class="math inline">\(|x_{n+1}-x_n|\le D\rho^n\)</span>. Por el resultado anterior <span class="math inline">\(x_n\to L\)</span> y <span class="math inline">\(|L-x_n|\le D\rho^n/(1-\rho)\)</span>.</p>
-<p>Debemos comprobar que el destino satisface la ecuación de la iteración. Para todo <span class="math inline">\(n\)</span>,</p>
+<p>Si <span class="math inline">\(C=0\)</span>, todos los saltos son cero y la sucesión es constante. Cuando <span class="math inline">\(C&gt;0\)</span>, dada una tolerancia <span class="math inline">\(\varepsilon&gt;0\)</span> podemos escoger un corte <span class="math inline">\(N\)</span> tal que <span class="math inline">\(C\rho^N/(1-\rho)&lt;\varepsilon\)</span>. Para <span class="math inline">\(p&gt;q\ge N\)</span>, la estimación anterior da <span class="math inline">\(|a_p-a_q|&lt;\varepsilon\)</span>. Los casos <span class="math inline">\(p&lt;q\)</span> y <span class="math inline">\(p=q\)</span> se resuelven respectivamente por simetría y por distancia cero. Hemos demostrado Cauchy y, gracias a la completitud de <span class="math inline">\(\mathbb R\)</span>, la existencia de algún límite <span class="math inline">\(L\)</span>.</p>
+<p>La misma desigualdad contiene una información que no habíamos pedido todavía. Fijemos <span class="math inline">\(q\)</span> y permitamos que <span class="math inline">\(p\)</span> crezca. El miembro derecho no depende de <span class="math inline">\(p\)</span>, mientras que <span class="math inline">\(a_p\to L\)</span>. El paso al límite, justificado por el álgebra de límites y la continuidad del valor absoluto ya estudiadas, conserva la cota no estricta:</p>
 <p><span class="math display">\[
-|F(L)-L|\le |F(L)-F(x_n)|+|x_{n+1}-L|
-\le\rho|L-x_n|+|x_{n+1}-L|.
+\boxed{|L-a_q|\le\frac{C\rho^q}{1-\rho}}
 \]</span></p>
-<p>El lado derecho tiende a cero, por lo que la distancia fija del izquierdo es cero y <span class="math inline">\(F(L)=L\)</span>. Si <span class="math inline">\(M\)</span> fuera otro punto fijo, <span class="math inline">\(|L-M|=|F(L)-F(M)|\le\rho|L-M|\)</span>, luego <span class="math inline">\((1-\rho)|L-M|\le0\)</span> y <span class="math inline">\(L=M\)</span>. Esta prueba no invoca continuidad general ni un teorema de espacios métricos: desarrolla la consecuencia de una desigualdad concreta sobre <span class="math inline">\(\mathbb R\)</span>.</p>
-<p>Por ejemplo, <span class="math inline">\(F(x)=(x+3)/2\)</span> satisface la condición con <span class="math inline">\(\rho=1/2\)</span>. Desde cualquier valor inicial la iteración converge al único punto fijo, que al resolver <span class="math inline">\(L=(L+3)/2\)</span> resulta ser tres. Desde <span class="math inline">\(x_0=0\)</span>, <span class="math inline">\(D=3/2\)</span> y la cota es <span class="math inline">\(|L-x_n|\le3\,2^{-n}\)</span>. Aquí primero demostramos existencia y error y después identificamos el destino. La misma estrategia sirve cuando no hay una fórmula cómoda para los términos.</p>
-<p>Quedan autorizados el criterio real de Cauchy, la negación por pares y el control de errores por acumulación geométrica finita. La arquitectura central ha sido proximidad interna, acotación, intervalos de cola y existencia por completitud. A partir de ella podemos estudiar nuevas sucesiones sin adivinar primero su límite.</p>
-<div id="fig-anm-c10-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En esta iteración los saltos se reducen a la mitad y la cota de error $3,2^{-n}$ coincide con el error exacto. Desde el índice cuatro el error es menor que un cuarto; el corte es suficiente y está justificado por la estimación.">
+<p>Antes de demostrar la existencia de <span class="math inline">\(L\)</span> solo podíamos hablar de la distancia entre dos aproximaciones; después de demostrarla, esa misma cota nos dice a qué distancia máxima puede quedar una aproximación del destino, aunque no sepamos calcular el destino. El procedimiento tiene dos fases lógicas diferentes: primero certifica convergencia y luego transforma una estimación entre términos en una <strong>estimación del error</strong>. No afirmamos que esta cota sea siempre el error exacto; es una garantía suficiente que podemos evaluar con los datos <span class="math inline">\(C\)</span>, <span class="math inline">\(\rho\)</span> y <span class="math inline">\(q\)</span>.</p>
+<p>Veamos cómo aparece este mecanismo en un algoritmo iterativo. Sea <span class="math inline">\(F:\mathbb R\to\mathbb R\)</span> una función que satisface, para alguna constante <span class="math inline">\(0&lt;\rho&lt;1\)</span>,</p>
+<p><span class="math display">\[
+|F(x)-F(y)|\le\rho|x-y|\qquad(x,y\in\mathbb R).
+\]</span></p>
+<p>La desigualdad dice que, al aplicar <span class="math inline">\(F\)</span> a dos puntos, la nueva distancia no supera la fracción <span class="math inline">\(\rho\)</span> de la anterior. Partimos de un <span class="math inline">\(x_0\)</span> cualquiera y definimos <span class="math inline">\(x_{n+1}=F(x_n)\)</span>. Como <span class="math inline">\(F\)</span> está definida en toda la recta, ningún paso queda fuera de su dominio. Llamemos <span class="math inline">\(D=|x_1-x_0|\)</span> al tamaño del primer salto. Al aplicar la condición a los pares <span class="math inline">\((x_{n+1},x_n)\)</span> obtenemos</p>
+<p><span class="math display">\[
+|x_{n+2}-x_{n+1}|
+=|F(x_{n+1})-F(x_n)|
+\le\rho|x_{n+1}-x_n|.
+\]</span></p>
+<p>La inducción comienza con <span class="math inline">\(|x_1-x_0|=D\)</span> y proporciona <span class="math inline">\(|x_{n+1}-x_n|\le D\rho^n\)</span> para todo <span class="math inline">\(n\)</span>. No hemos supuesto que exista un punto fijo ni que conozcamos la forma de los iterados. La estimación de saltos prueba ahora que <span class="math inline">\(x_n\)</span> converge a algún <span class="math inline">\(L\in\mathbb R\)</span> y que</p>
+<p><span class="math display">\[
+|L-x_n|\le\frac{D\rho^n}{1-\rho}.
+\]</span></p>
+<p>Una cuestión permanece abierta: que los iterados converjan no significa automáticamente que el destino satisfaga <span class="math inline">\(F(L)=L\)</span>. Tenemos que verificar esa ecuación. Aquí sabemos que <span class="math inline">\(L\)</span> pertenece al dominio de <span class="math inline">\(F\)</span>, porque el dominio es toda <span class="math inline">\(\mathbb R\)</span>; podemos, por tanto, comparar <span class="math inline">\(F(L)\)</span> con <span class="math inline">\(F(x_n)\)</span> y aprovechar que <span class="math inline">\(F(x_n)=x_{n+1}\)</span>. La desigualdad triangular da</p>
+<p><span class="math display">\[
+\begin{aligned}
+|F(L)-L|
+&amp;\le|F(L)-F(x_n)|+|x_{n+1}-L|\\
+&amp;\le\rho|L-x_n|+|x_{n+1}-L|.
+\end{aligned}
+\]</span></p>
+<p>Los dos términos de la derecha tienden a cero. La distancia <span class="math inline">\(|F(L)-L|\)</span>, en cambio, es un número fijo no negativo, independiente de <span class="math inline">\(n\)</span>, que queda por debajo de cantidades arbitrariamente pequeñas; solo puede ser cero. Así <span class="math inline">\(F(L)=L\)</span>. Tampoco puede existir otro punto fijo <span class="math inline">\(M\)</span>: la condición contractiva daría</p>
+<p><span class="math display">\[
+|L-M|=|F(L)-F(M)|\le\rho|L-M|,
+\]</span></p>
+<p>lo que, al ser <span class="math inline">\(1-\rho&gt;0\)</span>, obliga a <span class="math inline">\(L=M\)</span>. Hemos demostrado existencia, unicidad y error de aproximación de un punto fijo directamente a partir de una desigualdad de distancias, sin invocar un teorema general de espacios métricos.</p>
+<p>El ejemplo <span class="math inline">\(F(x)=(x+3)/2\)</span> permite ver simultáneamente lo que garantiza el método y lo que puede aportar una fórmula especial. Se cumple <span class="math inline">\(|F(x)-F(y)|=|x-y|/2\)</span>, de modo que <span class="math inline">\(\rho=1/2\)</span>. Si empezamos en <span class="math inline">\(x_0=0\)</span>, el primer paso es <span class="math inline">\(x_1=3/2\)</span> y <span class="math inline">\(D=3/2\)</span>. La teoría demuestra que los iterados convergen a un punto fijo único y que su error satisface <span class="math inline">\(|L-x_n|\le3\,2^{-n}\)</span>. Después podemos identificar el destino resolviendo <span class="math inline">\(L=(L+3)/2\)</span>, que da <span class="math inline">\(L=3\)</span>. En este caso incluso obtenemos por inducción <span class="math inline">\(x_n=3(1-2^{-n})\)</span>, y comprobamos que la cota de error es exacta. Para garantizar error menor que <span class="math inline">\(1/4\)</span> basta avanzar hasta <span class="math inline">\(n=4\)</span>, ya que <span class="math inline">\(3/16&lt;1/4\)</span>.</p>
+<div id="fig-anm-c10-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Arriba, iterados cero, uno y medio, nueve cuartos y valores posteriores hacia tres. Abajo, los errores geométricos decrecen con una frontera abierta en un cuarto y un corte vertical en cuatro, cuyo error es tres dieciseisavos.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anm-c10-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../../assets/books/anm/C10/C10-F07.svg" class="img-fluid figure-img" alt="En esta iteración los saltos se reducen a la mitad y la cota de error $3,2^{-n}$ coincide con el error exacto. Desde el índice cuatro el error es menor que un cuarto; el corte es suficiente y está justificado por la estimación.">
+<img src="../../assets/books/anm/C10/C10-F07.svg" class="img-fluid figure-img" alt="Arriba, iterados cero, uno y medio, nueve cuartos y valores posteriores hacia tres. Abajo, los errores geométricos decrecen con una frontera abierta en un cuarto y un corte vertical en cuatro, cuyo error es tres dieciseisavos.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anm-c10-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;7: En esta iteración los saltos se reducen a la mitad y la cota de error <span class="math inline">\(3\,2^{-n}\)</span> coincide con el error exacto. Desde el índice cuatro el error es menor que un cuarto; el corte es suficiente y está justificado por la estimación.
 </figcaption>
 </figure>
 </div>
+<p>En otros procedimientos tal vez no encontremos ninguna fórmula cómoda para los términos ni para el punto fijo. La desigualdad de los saltos seguirá siendo útil: hace posible afirmar que el límite existe y calcular cuántas iteraciones bastan para alcanzar una precisión prescrita. Allí se aprecia la utilidad práctica del criterio de Cauchy: la convergencia se establece desde las relaciones internas de la sucesión y la completitud asegura que las aproximaciones tienen un destino en la recta real.</p>
 <section id="antes-de-seguir-7" class="level3">
 <h3 class="anchored" data-anchor-id="antes-de-seguir-7">Antes de seguir</h3>
 <section id="microcontrol-57" class="level4">
