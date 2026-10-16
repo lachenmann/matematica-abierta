@@ -4,7 +4,7 @@ import hashlib,json,re,zipfile
 root=Path(__file__).resolve().parents[1]
 folder=root/'assets/books/anm/downloads'
 release=json.loads((folder/'release.json').read_text())
-expected={'ANM_A4_Digital_Con_Soluciones_v04.pdf','ANM_Carta_Impresion_Con_Soluciones_v04.pdf','ANM_Overleaf_MA_PDF_v04.zip'}
+expected={'ANM_A4_Digital_Con_Soluciones_v05.pdf','ANM_Carta_Impresion_Con_Soluciones_v05.pdf','ANM_Overleaf_MA_PDF_v05.zip'}
 assert {r['file'] for r in release['files']}==expected
 assert release['solutions']==release['exercise_pairs']+release['microcheck_pairs']==1290
 for row in release['files']:
@@ -13,7 +13,7 @@ for row in release['files']:
     assert hashlib.sha256(data).hexdigest()==row['sha256']
     if row['file'].endswith('.pdf'):
         assert data.startswith(b'%PDF-') and row['solutions']==1290
-with zipfile.ZipFile(folder/'ANM_Overleaf_MA_PDF_v04.zip') as archive:
+with zipfile.ZipFile(folder/'ANM_Overleaf_MA_PDF_v05.zip') as archive:
     assert archive.testzip() is None
     names=set(archive.namelist())
     assert not any(n.startswith('/') or '..' in Path(n).parts for n in names)
