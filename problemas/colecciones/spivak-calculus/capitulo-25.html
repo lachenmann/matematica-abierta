@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Capítulo 25 — Números complejos – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="spivak-c01.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#seccion-373" id="toc-seccion-373" class="nav-link active" data-scroll-target="#seccion-373">Coordenadas, distancias y ángulos</a></li>
+  <li><a href="#e001" id="toc-e001" class="nav-link" data-scroll-target="#e001">E001 — Módulos y argumentos</a></li>
+  <li><a href="#e002" id="toc-e002" class="nav-link" data-scroll-target="#e002">E002 — Ecuaciones en el cuerpo complejo</a></li>
+  <li><a href="#e003" id="toc-e003" class="nav-link" data-scroll-target="#e003">E003 — Cinco lugares geométricos</a></li>
+  <li><a href="#e004" id="toc-e004" class="nav-link" data-scroll-target="#e004">E004 — Recuperar coordenadas mediante conjugación</a></li>
+  <li><a href="#e005" id="toc-e005" class="nav-link" data-scroll-target="#e005">E005 — La identidad del paralelogramo</a></li>
+  <li><a href="#e006" id="toc-e006" class="nav-link" data-scroll-target="#e006">E006 — Dos reflexiones según las raíces elegidas</a></li>
+  <li><a href="#e007" id="toc-e007" class="nav-link" data-scroll-target="#e007">E007 — Raíces conjugadas de polinomios reales</a></li>
+  <li><a href="#e008" id="toc-e008" class="nav-link" data-scroll-target="#e008">E008 — Conjugación en una extensión cuadrática</a></li>
+  <li><a href="#e009" id="toc-e009" class="nav-link" data-scroll-target="#e009">E009 — Cuartas raíces de i</a></li>
+  <li><a href="#e010" id="toc-e010" class="nav-link" data-scroll-target="#e010">E010 — Raíces de la unidad y raíces primitivas</a></li>
+  <li><a href="#e011" id="toc-e011" class="nav-link" data-scroll-target="#e011">E011 — Un semiplano no permite cancelación total</a></li>
+  <li><a href="#e012" id="toc-e012" class="nav-link" data-scroll-target="#e012">E012 — Tres radios iguales cuya suma es cero</a></li>
+  <li><a href="#seccion-18155" id="toc-seccion-18155" class="nav-link" data-scroll-target="#seccion-18155">Estado y continuación</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 25 — Números complejos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-24.html">← Capítulo 24</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-26.html">Capítulo 26 →</a></p>
+</div>
+<p>Alevi Peña · Matemática Abierta · Solucionario explicado · 2026-10-15</p>
+<p>Soluciones propias de los doce problemas de Michael Spivak, <em>Calculus</em>, cuarta edición, capítulo 25, pp.&nbsp;526–540. Los ejercicios ocupan pp.&nbsp;539–540 (PDF 558–559 de la copia de trabajo). No hay apéndice. Se conservan todos los incisos y se desarrollan también las tareas que comparten un mismo rótulo.</p>
+<section id="seccion-373" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-373">Coordenadas, distancias y ángulos</h2>
+<p>Escribir <span class="math inline">\(z=x+iy\)</span> identifica un número complejo con el punto <span class="math inline">\((x,y)\)</span>. Su conjugado es <span class="math inline">\(\bar z=x-iy\)</span>, y <span class="math inline">\(|z|=\sqrt{x^2+y^2}\)</span> es la distancia al origen. Para <span class="math inline">\(z\ne0\)</span>, una expresión polar es <span class="math display">\[
+z=r(\cos\theta+i\sin\theta),\qquad r=|z|&gt;0.
+\]</span> Todos sus argumentos son <span class="math inline">\(\theta+2\pi k\)</span>, <span class="math inline">\(k\in\mathbb Z\)</span>. Usaremos como representante el que pertenece a <span class="math inline">\([0,2\pi)\)</span> cuando haya que comparar tamaños. Cero no tiene argumento.</p>
+<p>Multiplicar suma ángulos y multiplica módulos. Con la notación <span class="math inline">\(\operatorname{cis}\theta=\cos\theta+i\sin\theta\)</span>, la fórmula de adición da <span class="math inline">\(\operatorname{cis}\alpha\,\operatorname{cis}\beta=\operatorname{cis}(\alpha+\beta)\)</span>. Por inducción, <span class="math display">\[
+(r\operatorname{cis}\theta)^n=r^n\operatorname{cis}(n\theta).
+\]</span> Si <span class="math inline">\(w^n=r\operatorname{cis}\theta\ne0\)</span>, necesariamente <span class="math inline">\(|w|=r^{1/n}\)</span> y su ángulo satisface <span class="math inline">\(n\arg w=\theta+2\pi k\)</span>. Las <span class="math inline">\(n\)</span> soluciones distintas son, por tanto, <span class="math display">\[
+w_j=r^{1/n}\operatorname{cis}\frac{\theta+2\pi j}{n},
+\qquad j=0,\ldots,n-1.
+\]</span> Son distintas porque dos ángulos de la lista difieren en un múltiplo de <span class="math inline">\(2\pi\)</span> sólo si sus índices coinciden. Esta descripción obtiene todas las raíces sin escoger una raíz compleja como si fuera única.</p>
+</section>
+<section id="e001" class="level2">
+<h2 class="anchored" data-anchor-id="e001">E001 — Módulos y argumentos</h2>
+<p>Pongamos <span class="math inline">\(\theta=\arctan(4/3)\in(0,\pi/2)\)</span>.</p>
+<p><strong>(i) · SPV4-C25-E001-i.</strong> Para <span class="math inline">\(z=3+4i\)</span>, <span class="math display">\[
+|z|=5,\qquad \arg z=\theta+2\pi k,\quad k\in\mathbb Z.
+\]</span> El primer cuadrante fija el ángulo a partir de su tangente.</p>
+<p><strong>(ii) · SPV4-C25-E001-ii.</strong> Racionalizar da <span class="math display">\[
+(3+4i)^{-1}=\frac{3-4i}{25}.
+\]</span> Su módulo es <span class="math inline">\(1/5\)</span> y sus argumentos son <span class="math inline">\(-\theta+2\pi k\)</span>. El representante en <span class="math inline">\([0,2\pi)\)</span> es <span class="math inline">\(2\pi-\theta\)</span>. El inverso refleja el ángulo y cambia el radio <span class="math inline">\(r\)</span> a <span class="math inline">\(1/r\)</span>.</p>
+<p><strong>(iii) · SPV4-C25-E001-iii.</strong> Como <span class="math inline">\(1+i=\sqrt2\,\operatorname{cis}(\pi/4)\)</span>, <span class="math display">\[
+(1+i)^5=4\sqrt2\,\operatorname{cis}(5\pi/4)=-4-4i.
+\]</span> Su módulo es <span class="math inline">\(4\sqrt2\)</span> y sus argumentos son <span class="math inline">\(5\pi/4+2\pi k\)</span>.</p>
+<p><strong>(iv) · SPV4-C25-E001-iv.</strong> La raíz indicada es de orden <strong>siete</strong>. Los siete valores son <span class="math display">\[
+w_j=5^{1/7}\operatorname{cis}\frac{\theta+2\pi j}{7},
+\qquad j=0,\ldots,6.
+\]</span> Cada uno tiene módulo <span class="math inline">\(5^{1/7}\)</span> y argumentos <span class="math inline">\((\theta+2\pi j)/7+2\pi k\)</span>. Los siete representantes escritos están en <span class="math inline">\([0,2\pi)\)</span>. Los puntos forman un heptágono regular; elevarlos a la séptima potencia lleva todos a <span class="math inline">\(3+4i\)</span>.</p>
+<p><strong>(v) · SPV4-C25-E001-v.</strong> Aquí el número dado es <span class="math inline">\(|3+4i|=5\)</span>, un real positivo. Su módulo vuelve a ser cinco y sus argumentos son <span class="math inline">\(2\pi k\)</span>. El módulo de un número es ya un número real, al que se puede volver a aplicar el módulo.</p>
+<div id="fig-spv4-c25-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 25: Forma polar, inverso y siete raíces">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c25-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C25_assets/C25_01_polar_y_raices.svg" class="img-fluid figure-img" alt="Capítulo 25: Forma polar, inverso y siete raíces">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c25-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Capítulo 25 · Figura 1. Forma polar, inverso y siete raíces
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e002" class="level2">
+<h2 class="anchored" data-anchor-id="e002">E002 — Ecuaciones en el cuerpo complejo</h2>
+<p><strong>(i) · SPV4-C25-E002-i.</strong> Para <span class="math inline">\(x^2+ix+1=0\)</span>, completar el cuadrado da <span class="math display">\[
+(x+i/2)^2=-5/4.
+\]</span> Así las dos soluciones son <span class="math display">\[
+x=\frac{-i\pm i\sqrt5}{2}=\frac{i(-1\pm\sqrt5)}2.
+\]</span> Son distintas y agotan las soluciones porque la diferencia entre dos cuadrados factoriza.</p>
+<p><strong>(ii) · SPV4-C25-E002-ii.</strong> La identidad <span class="math display">\[
+x^4+x^2+1=(x^2+x+1)(x^2-x+1)
+\]</span> reduce la ecuación a dos cuadráticas. Las cuatro soluciones son <span class="math display">\[
+\frac{1+i\sqrt3}{2},\quad
+\frac{-1+i\sqrt3}{2},\quad
+\frac{-1-i\sqrt3}{2},\quad
+\frac{1-i\sqrt3}{2}.
+\]</span> Sus argumentos en <span class="math inline">\([0,2\pi)\)</span> son <span class="math inline">\(\pi/3,2\pi/3,4\pi/3,5\pi/3\)</span>. Son las raíces sextas de uno distintas de <span class="math inline">\(1\)</span> y <span class="math inline">\(-1\)</span>: en efecto, <span class="math inline">\((x^2-1)(x^4+x^2+1)=x^6-1\)</span>.</p>
+<p><strong>(iii) · SPV4-C25-E002-iii.</strong> Se tiene <span class="math inline">\(x^2+2ix-1=(x+i)^2\)</span>. La única solución es <span class="math inline">\(x=-i\)</span>, de multiplicidad dos.</p>
+<p><strong>(iv) · SPV4-C25-E002-iv.</strong> En el sistema <span class="math display">\[
+ix-(1+i)y=3,\qquad (2+i)x+iy=4,
+\]</span> la primera ecuación da <span class="math inline">\(x=-3i+(1-i)y\)</span>. Al sustituir en la segunda, <span class="math display">\[
+(2+i)(-3i)+\bigl((2+i)(1-i)+i\bigr)y=4,
+\]</span> es decir, <span class="math inline">\(3-6i+3y=4\)</span>. Por tanto <span class="math display">\[
+y=\frac13+2i,\qquad x=\frac73-\frac43i.
+\]</span> Los pasos son equivalentes y el coeficiente final de <span class="math inline">\(y\)</span> es tres, no cero, de modo que la solución es única.</p>
+<p><strong>(v) · SPV4-C25-E002-v.</strong> El número dos es raíz del polinomio y <span class="math display">\[
+x^3-x^2-x-2=(x-2)(x^2+x+1).
+\]</span> Las tres soluciones son <span class="math inline">\(2\)</span> y <span class="math inline">\((-1\pm i\sqrt3)/2\)</span>. La factorización demuestra que no falta ninguna.</p>
+</section>
+<section id="e003" class="level2">
+<h2 class="anchored" data-anchor-id="e003">E003 — Cinco lugares geométricos</h2>
+<p><strong>(i) · SPV4-C25-E003-i.</strong> Si <span class="math inline">\(z=x+iy\)</span>, entonces <span class="math inline">\(\bar z=-z\)</span> equivale a <span class="math inline">\(x-iy=-x-iy\)</span>, esto es, <span class="math inline">\(x=0\)</span>. El conjunto es todo el eje imaginario, incluido cero.</p>
+<p><strong>(ii) · SPV4-C25-E003-ii.</strong> La igualdad <span class="math inline">\(\bar z=z^{-1}\)</span> requiere <span class="math inline">\(z\ne0\)</span>. Multiplicando por <span class="math inline">\(z\)</span> resulta <span class="math inline">\(|z|^2=1\)</span>. Recíprocamente, si <span class="math inline">\(|z|=1\)</span>, entonces <span class="math inline">\(\bar z=1/z\)</span>. El conjunto es la circunferencia unidad.</p>
+<p><strong>(iii) · SPV4-C25-E003-iii.</strong> La condición <span class="math inline">\(|z-a|=|z-b|\)</span> pide igual distancia a los puntos <span class="math inline">\(a,b\)</span>. Si <span class="math inline">\(a=b\)</span>, la cumplen todos los complejos. Si son distintos, es la mediatriz del segmento que los une. Una ecuación precisa se obtiene al elevar al cuadrado y cancelar <span class="math inline">\(|z|^2\)</span>: <span class="math display">\[
+2\operatorname{Re}\bigl(z(\bar b-\bar a)\bigr)=|b|^2-|a|^2.
+\]</span> Es una recta porque <span class="math inline">\(b-a\ne0\)</span>, pasa por <span class="math inline">\((a+b)/2\)</span> y su normal apunta en la dirección <span class="math inline">\(b-a\)</span>.</p>
+<p><strong>(iv) · SPV4-C25-E003-iv.</strong> Estudiamos <span class="math inline">\(|z-a|+|z-b|=c\)</span>, con <span class="math inline">\(c\)</span> real, y escribimos <span class="math inline">\(d=|a-b|\)</span>. La desigualdad triangular da <span class="math inline">\(|z-a|+|z-b|\ge d\)</span>.</p>
+<p>Si <span class="math inline">\(a\ne b\)</span>, hay tres posibilidades. Para <span class="math inline">\(c&lt;d\)</span> el conjunto es vacío. Para <span class="math inline">\(c=d\)</span> es el segmento cerrado <span class="math inline">\([a,b]\)</span>: la igualdad triangular exige que los vectores de <span class="math inline">\(a\)</span> a <span class="math inline">\(z\)</span> y de <span class="math inline">\(z\)</span> a <span class="math inline">\(b\)</span> tengan la misma dirección, incluidos los casos de un vector nulo. Para <span class="math inline">\(c&gt;d\)</span> es una elipse de focos <span class="math inline">\(a,b\)</span>, semieje mayor <span class="math inline">\(A=c/2\)</span> y semieje menor <span class="math inline">\(B=\sqrt{c^2-d^2}/2\)</span>.</p>
+<p>Para comprobar la descripción de la elipse, sea <span class="math inline">\(m=(a+b)/2\)</span>, <span class="math inline">\(t=(b-a)/d\)</span> y escribamos <span class="math inline">\(u+iv=(z-m)\bar t\)</span>. Esta traslación y rotación coloca los focos en <span class="math inline">\(\pm h\)</span>, donde <span class="math inline">\(h=d/2\)</span>. Si <span class="math inline">\(r_+=\sqrt{(u+h)^2+v^2}\)</span> y <span class="math inline">\(r_-=\sqrt{(u-h)^2+v^2}\)</span>, la condición es <span class="math inline">\(r_++r_-=2A\)</span>. Como <span class="math inline">\(r_+^2-r_-^2=4hu\)</span>, obtenemos <span class="math inline">\(r_\pm=A\pm hu/A\)</span>, y al elevar al cuadrado resulta <span class="math display">\[
+\frac{u^2}{A^2}+\frac{v^2}{A^2-h^2}=1.
+\]</span> Recíprocamente, esa ecuación implica <span class="math inline">\(|u|\le A\)</span> y, como <span class="math inline">\(h&lt;A\)</span>, los números <span class="math inline">\(A\pm hu/A\)</span> son positivos. Sus cuadrados son <span class="math inline">\((u\pm h)^2+v^2\)</span>, así que son precisamente <span class="math inline">\(r_\pm\)</span> y suman <span class="math inline">\(2A\)</span>. No hemos añadido puntos al cuadrar.</p>
+<p>Si <span class="math inline">\(a=b\)</span>, la ecuación se reduce a <span class="math inline">\(2|z-a|=c\)</span>: para <span class="math inline">\(c&gt;0\)</span> es una circunferencia de centro <span class="math inline">\(a\)</span> y radio <span class="math inline">\(c/2\)</span>; para <span class="math inline">\(c=0\)</span> es el punto <span class="math inline">\(a\)</span>; para <span class="math inline">\(c&lt;0\)</span> es vacía.</p>
+<p><strong>(v) · SPV4-C25-E003-v.</strong> Con <span class="math inline">\(z=x+iy\)</span>, la condición es <span class="math inline">\(\sqrt{x^2+y^2}&lt;1-x\)</span>. Exige primero <span class="math inline">\(1-x&gt;0\)</span>. Al cuadrar, <span class="math display">\[
+y^2&lt;1-2x,\qquad\text{equivalentemente}\qquad
+x&lt;\frac{1-y^2}{2}.
+\]</span> Esta última desigualdad ya implica <span class="math inline">\(x&lt;1/2\)</span> y, por tanto, <span class="math inline">\(1-x&gt;0\)</span>, de modo que también es suficiente. El conjunto es la región abierta a la izquierda de la parábola <span class="math inline">\(x=(1-y^2)/2\)</span>, sin incluir la frontera. Los puntos están más cerca del foco cero que de la directriz <span class="math inline">\(x=1\)</span>.</p>
+<div id="fig-spv4-c25-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 25: Mediatriz, elipse y región parabólica">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c25-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C25_assets/C25_02_lugares_geometricos.svg" class="img-fluid figure-img" alt="Capítulo 25: Mediatriz, elipse y región parabólica">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c25-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Capítulo 25 · Figura 2. Mediatriz, elipse y región parabólica
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e004" class="level2">
+<h2 class="anchored" data-anchor-id="e004">E004 — Recuperar coordenadas mediante conjugación</h2>
+<p><strong>SPV4-C25-E004.</strong> Para <span class="math inline">\(z=x+iy\)</span> con <span class="math inline">\(x,y\)</span> reales, <span class="math display">\[
+|\bar z|=\sqrt{x^2+(-y)^2}=|z|,
+\qquad
+\frac{z+\bar z}{2}=x=\operatorname{Re}z,
+\qquad
+\frac{z-\bar z}{2i}=y=\operatorname{Im}z.
+\]</span> La parte imaginaria es el número real <span class="math inline">\(y\)</span>; el término imaginario dentro de <span class="math inline">\(z\)</span> es <span class="math inline">\(iy\)</span>. La división por <span class="math inline">\(i\)</span> en la última fórmula distingue ambas cosas.</p>
+</section>
+<section id="e005" class="level2">
+<h2 class="anchored" data-anchor-id="e005">E005 — La identidad del paralelogramo</h2>
+<p><strong>SPV4-C25-E005.</strong> Puesto que <span class="math inline">\(|u|^2=u\bar u\)</span>, <span class="math display">\[
+\begin{aligned}
+|z+w|^2&amp;=|z|^2+z\bar w+\bar z w+|w|^2,\\
+|z-w|^2&amp;=|z|^2-z\bar w-\bar z w+|w|^2.
+\end{aligned}
+\]</span> Al sumar se cancelan los términos cruzados y queda <span class="math display">\[
+|z+w|^2+|z-w|^2=2(|z|^2+|w|^2).
+\]</span> En el paralelogramo de vértices <span class="math inline">\(0,z,z+w,w\)</span>, las diagonales tienen vectores <span class="math inline">\(z+w\)</span> y <span class="math inline">\(z-w\)</span>. La suma de sus longitudes al cuadrado es igual a la suma de los cuadrados de los cuatro lados. La identidad también vale si el paralelogramo es degenerado.</p>
+</section>
+<section id="e006" class="level2">
+<h2 class="anchored" data-anchor-id="e006">E006 — Dos reflexiones según las raíces elegidas</h2>
+<p><strong>SPV4-C25-E006.</strong> La expresión es <span class="math display">\[
+T(z)=\sqrt i\,\overline{z\sqrt{-i}},
+\]</span> con la barra sobre <strong>todo</strong> <span class="math inline">\(z\sqrt{-i}\)</span>. Elijamos independientemente <span class="math display">\[
+\sqrt i=\varepsilon\,\frac{1+i}{\sqrt2},
+\qquad
+\sqrt{-i}=\delta\,\frac{1-i}{\sqrt2},
+\qquad \varepsilon,\delta\in\{1,-1\}.
+\]</span> Entonces <span class="math display">\[
+T(z)=\varepsilon\delta\,i\bar z.
+\]</span> Para <span class="math inline">\(\varepsilon\delta=1\)</span> y <span class="math inline">\(z=x+iy\)</span>, el resultado es <span class="math inline">\(y+ix\)</span>: reflexión en la recta <span class="math inline">\(y=x\)</span>. Para <span class="math inline">\(\varepsilon\delta=-1\)</span>, es <span class="math inline">\(-y-ix\)</span>: reflexión en la recta <span class="math inline">\(y=-x\)</span>. Las cuatro elecciones de raíces producen, por tanto, dos transformaciones, cada una dos veces. Si <span class="math inline">\(z=0\)</span>, ambas lo dejan fijo.</p>
+<p>Geométricamente, con las elecciones positivas, multiplicar primero por <span class="math inline">\((1-i)/\sqrt2\)</span> gira <span class="math inline">\(-\pi/4\)</span>, la conjugación refleja en el eje real, y multiplicar después por <span class="math inline">\((1+i)/\sqrt2\)</span> gira <span class="math inline">\(\pi/4\)</span>. La recta que el primer giro lleva al eje real es <span class="math inline">\(y=x\)</span>, que se convierte en el eje de reflexión final.</p>
+<div id="fig-spv4-c25-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 25: Conjugación, reflexiones y paralelogramo">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c25-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C25_assets/C25_03_reflexiones_y_paralelogramo.svg" class="img-fluid figure-img" alt="Capítulo 25: Conjugación, reflexiones y paralelogramo">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c25-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Capítulo 25 · Figura 3. Conjugación, reflexiones y paralelogramo
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e007" class="level2">
+<h2 class="anchored" data-anchor-id="e007">E007 — Raíces conjugadas de polinomios reales</h2>
+<p>Sea <span class="math inline">\(P(z)=z^n+a_{n-1}z^{n-1}+\cdots+a_0\)</span>, con todos los <span class="math inline">\(a_j\)</span> reales.</p>
+<p><strong>(a) · SPV4-C25-E007-a.</strong> La conjugación preserva sumas y productos y deja fijos los coeficientes reales. Por ello <span class="math display">\[
+\overline{P(z)}=P(\bar z).
+\]</span> Si <span class="math inline">\(P(a+bi)=0\)</span>, también <span class="math inline">\(P(a-bi)=0\)</span>. Cuando <span class="math inline">\(b\ne0\)</span>, son raíces distintas. La conjugación es una involución sin puntos fijos sobre el conjunto de raíces no reales, de modo que las agrupa por parejas.</p>
+<p>También preserva multiplicidades: si <span class="math inline">\(P(z)=(z-\alpha)^mQ(z)\)</span> y <span class="math inline">\(Q(\alpha)\ne0\)</span>, conjugar coeficientes y sustituir la variable conjugada da <span class="math inline">\(P(z)=(z-\bar\alpha)^m\bar Q(z)\)</span>, con <span class="math inline">\(\bar Q(\bar\alpha)=\overline{Q(\alpha)}\ne0\)</span>. Así el número de raíces no reales es par tanto si se cuentan distintas como si se cuentan con multiplicidad. No hace falta suponer aquí que todos los polinomios ya están completamente factorizados.</p>
+<p><strong>(b) · SPV4-C25-E007-b.</strong> Si <span class="math inline">\(b\ne0\)</span>,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> el producto de los dos factores conjugados es <span class="math display">\[
+(z-a-bi)(z-a+bi)=z^2-2az+(a^2+b^2).
+\]</span> Podemos comprobar la divisibilidad directamente sobre <span class="math inline">\(\mathbb R\)</span>: al dividir <span class="math inline">\(P\)</span> por ese polinomio mónico obtenemos <span class="math inline">\(P=HQ+rz+s\)</span>, donde <span class="math inline">\(H=z^2-2az+(a^2+b^2)\)</span>, y <span class="math inline">\(Q,r,s\)</span> tienen coeficientes reales. Evaluando en <span class="math inline">\(a+bi\)</span>, el resto debe satisfacer <span class="math inline">\(r(a+bi)+s=0\)</span>. Su parte imaginaria es <span class="math inline">\(rb=0\)</span>; como <span class="math inline">\(b\ne0\)</span>, <span class="math inline">\(r=0\)</span>, y después <span class="math inline">\(s=0\)</span>. La división es exacta y el cociente es real.</p>
+</section>
+<section id="e008" class="level2">
+<h2 class="anchored" data-anchor-id="e008">E008 — Conjugación en una extensión cuadrática</h2>
+<p>Fijemos un entero <span class="math inline">\(c\)</span> que no sea cuadrado de ningún entero y una raíz <span class="math inline">\(s=\sqrt c\)</span>. Si <span class="math inline">\(c&gt;0\)</span>, podemos elegir la positiva; si <span class="math inline">\(c&lt;0\)</span>, una de las dos raíces imaginarias. La operación que estudiaremos es <span class="math inline">\(\sigma(a+bs)=a-bs\)</span>. Para <span class="math inline">\(c&gt;0\)</span> no coincide con la conjugación compleja habitual, que deja fijos todos los números reales.</p>
+<p><strong>(a) · SPV4-C25-E008-a.</strong> Primero comprobamos que <span class="math inline">\(s\)</span> no es racional. Si <span class="math inline">\(c&lt;0\)</span>, <span class="math inline">\(s\)</span> no es real. Si <span class="math inline">\(c&gt;0\)</span> y <span class="math inline">\(s=p/q\)</span> con <span class="math inline">\(p,q\)</span> enteros coprimos, <span class="math inline">\(q&gt;0\)</span>, entonces <span class="math inline">\(p^2=cq^2\)</span>. Cualquier primo divisor de <span class="math inline">\(q\)</span> dividiría <span class="math inline">\(p\)</span>, contradicción. Por tanto <span class="math inline">\(q=1\)</span> y <span class="math inline">\(c=p^2\)</span>, excluido por hipótesis.</p>
+<p>Si <span class="math inline">\(a+bs=a'+b's\)</span> y <span class="math inline">\(b\ne b'\)</span>, tendríamos <span class="math inline">\(s=(a'-a)/(b-b')\)</span>, racional. Luego <span class="math inline">\(b=b'\)</span> y <span class="math inline">\(a=a'\)</span>. La representación con coeficientes enteros es única y <span class="math inline">\(\sigma\)</span> está bien definida. El mismo argumento prueba unicidad con coeficientes racionales, que necesitaremos para inversos.</p>
+<p><strong>(b) · SPV4-C25-E008-b.</strong> Para <span class="math inline">\(\alpha=a+bs\)</span> y <span class="math inline">\(\beta=d+es\)</span> con coeficientes enteros, calcular da <span class="math display">\[
+\sigma(\sigma(\alpha))=\alpha,\qquad
+\sigma(\alpha)=\alpha\ \Longleftrightarrow\ b=0
+\ \Longleftrightarrow\ \alpha\in\mathbb Z.
+\]</span> En la equivalencia usamos <span class="math inline">\(s\ne0\)</span>; <span class="math inline">\(c=0\)</span> está excluido porque es un cuadrado. Además, <span class="math display">\[
+\sigma(\alpha+\beta)=\sigma(\alpha)+\sigma(\beta),
+\qquad
+\sigma(-\alpha)=-\sigma(\alpha).
+\]</span> Para el producto, <span class="math display">\[
+\alpha\beta=(ad+bec)+(ae+bd)s,
+\]</span> de donde <span class="math display">\[
+\sigma(\alpha\beta)=(ad+bec)-(ae+bd)s
+=(a-bs)(d-es)=\sigma(\alpha)\sigma(\beta).
+\]</span> Para interpretar correctamente el inverso, ampliamos la operación a <span class="math inline">\(K=\{p+qs:p,q\in\mathbb Q\}\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Su representación también es única, y los cálculos anteriores siguen siendo válidos. Si <span class="math inline">\(\alpha\ne0\)</span>, su norma algebraica es <span class="math display">\[
+N(\alpha)=\alpha\sigma(\alpha)=a^2-cb^2.
+\]</span> No puede anularse: para <span class="math inline">\(b=0\)</span> obligaría a <span class="math inline">\(a=0\)</span>, y para <span class="math inline">\(b\ne0\)</span> implicaría <span class="math inline">\(c=(a/b)^2\)</span>, contrario a lo probado en (a). Así <span class="math display">\[
+\alpha^{-1}=\frac{a-bs}{a^2-cb^2}\in K,\qquad
+\sigma(\alpha^{-1})
+=\frac{a+bs}{a^2-cb^2}
+=(\sigma(\alpha))^{-1}.
+\]</span> Quedan demostradas todas las identidades pedidas. En <span class="math inline">\(K\)</span>, los elementos fijos son los racionales; la caracterización por enteros corresponde al conjunto original <span class="math inline">\(\mathbb Z[s]\)</span>.</p>
+<p><strong>(c) · SPV4-C25-E008-c.</strong> Si <span class="math inline">\(P\)</span> es mónico con coeficientes enteros, todos sus coeficientes están fijos por <span class="math inline">\(\sigma\)</span>. Las identidades de (b) dan <span class="math inline">\(\sigma(P(z))=P(\sigma(z))\)</span>. Por tanto, de <span class="math inline">\(P(a+b\sqrt c)=0\)</span> se deduce <span class="math inline">\(P(a-b\sqrt c)=0\)</span>. Esta prueba usa sólo sumas y productos, así que es válida ya en <span class="math inline">\(\mathbb Z[s]\)</span> y no necesita inversos.</p>
+<div id="fig-spv4-c25-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 25: Dos conjugaciones y la norma algebraica">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c25-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C25_assets/C25_04_conjugacion_cuadratica.svg" class="img-fluid figure-img" alt="Capítulo 25: Dos conjugaciones y la norma algebraica">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c25-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Capítulo 25 · Figura 4. Dos conjugaciones y la norma algebraica
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e009" class="level2">
+<h2 class="anchored" data-anchor-id="e009">E009 — Cuartas raíces de i</h2>
+<p><strong>SPV4-C25-E009.</strong> Dado que <span class="math inline">\(i=\operatorname{cis}(\pi/2)\)</span>, las cuatro raíces son <span class="math display">\[
+w_k=\operatorname{cis}\left(\frac{\pi}{8}+\frac{k\pi}{2}\right),
+\qquad k=0,1,2,3.
+\]</span> Son distintas, de módulo uno, y su cuarta potencia es <span class="math inline">\(i\)</span>. Al escoger argumentos en <span class="math inline">\([0,2\pi)\)</span>, el menor es <span class="math inline">\(\pi/8\)</span>; sin fijar ese intervalo no habría un argumento menor entre todos los valores posibles.</p>
+<p>Las fórmulas de medio ángulo, con signos positivos porque <span class="math inline">\(\pi/8\)</span> está en el primer cuadrante, dan <span class="math display">\[
+w_0=\frac{\sqrt{2+\sqrt2}}2
++i\,\frac{\sqrt{2-\sqrt2}}2.
+\]</span> Esta es la forma sin funciones trigonométricas. Las otras raíces son <span class="math inline">\(iw_0,-w_0,-iw_0\)</span>.</p>
+</section>
+<section id="e010" class="level2">
+<h2 class="anchored" data-anchor-id="e010">E010 — Raíces de la unidad y raíces primitivas</h2>
+<p>Suponemos <span class="math inline">\(n\)</span> entero positivo.</p>
+<p><strong>(a) · SPV4-C25-E010-a.</strong> Si <span class="math inline">\(w^n=1\)</span>, entonces <span class="math inline">\(w\ne0\)</span> y, para cualquier entero <span class="math inline">\(k\)</span>, <span class="math display">\[
+(w^k)^n=(w^n)^k=1.
+\]</span> Incluye exponentes negativos porque <span class="math inline">\(w\)</span> es invertible.</p>
+<p><strong>(b) · SPV4-C25-E010-b.</strong> Las raíces son <span class="math inline">\(w_j=\operatorname{cis}(2\pi j/n)\)</span>, <span class="math inline">\(0\le j&lt;n\)</span>. El orden de <span class="math inline">\(w_j\)</span> es el menor entero positivo <span class="math inline">\(m\)</span> tal que <span class="math inline">\(n\)</span> divide a <span class="math inline">\(jm\)</span>. Si <span class="math inline">\(d=\gcd(j,n)\)</span>, escribimos <span class="math inline">\(j=dj'\)</span>, <span class="math inline">\(n=dn'\)</span> con <span class="math inline">\(j',n'\)</span> coprimos. La condición equivale a <span class="math inline">\(n'\mid j'm\)</span>, y por coprimalidad a <span class="math inline">\(n'\mid m\)</span>. Por ello el orden es <span class="math inline">\(n/d\)</span>.</p>
+<p>Una raíz es primitiva exactamente cuando <span class="math inline">\(\gcd(j,n)=1\)</span>: en ese caso las primeras <span class="math inline">\(n\)</span> potencias son distintas, y como son raíces por (a), recorren todas. Si el orden es menor, se repiten antes y no las recorren todas.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">n</th>
+<th>Índices j de raíces primitivas</th>
+<th style="text-align: right;">Cantidad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td>1, 2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td>1, 3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>1, 2, 3, 4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td>1, 2, 4, 5, 7, 8</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>(c) · SPV4-C25-E010-c.</strong> Para <span class="math inline">\(w^n=1\)</span> y <span class="math inline">\(w\ne1\)</span>, la identidad geométrica finita da <span class="math display">\[
+(1-w)\sum_{k=0}^{n-1}w^k=1-w^n=0.
+\]</span> Como <span class="math inline">\(1-w\ne0\)</span>, la suma es cero. No se necesita que <span class="math inline">\(w\)</span> sea primitiva. La exclusión <span class="math inline">\(w\ne1\)</span> es necesaria: con <span class="math inline">\(w=1\)</span> la suma vale <span class="math inline">\(n\)</span>.</p>
+<div id="fig-spv4-c25-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 25: Raíces de la unidad y cuartas raíces de i">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c25-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C25_assets/C25_05_raices_primitivas.svg" class="img-fluid figure-img" alt="Capítulo 25: Raíces de la unidad y cuartas raíces de i">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c25-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Capítulo 25 · Figura 5. Raíces de la unidad y cuartas raíces de i
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e011" class="level2">
+<h2 class="anchored" data-anchor-id="e011">E011 — Un semiplano no permite cancelación total</h2>
+<p>En ambos incisos, «de un lado de una recta» significa en un mismo <strong>semiplano abierto</strong>. Los puntos de la recta no están incluidos.</p>
+<p><strong>(a) · SPV4-C25-E011-a.</strong> Una recta por cero admite un vector normal unitario <span class="math inline">\(u\)</span>. Eligiendo su signo, el semiplano que contiene los puntos puede escribirse <span class="math display">\[
+H_u=\{z:\operatorname{Re}(\bar u z)&gt;0\}.
+\]</span> Si <span class="math inline">\(z_1,\ldots,z_k\in H_u\)</span> con <span class="math inline">\(k\ge1\)</span>, entonces <span class="math display">\[
+\operatorname{Re}\left(\bar u\sum_{j=1}^kz_j\right)
+=\sum_{j=1}^k\operatorname{Re}(\bar u z_j)&gt;0.
+\]</span> La suma pertenece al mismo semiplano y, en particular, no es cero. Permitir la frontera invalidaría la afirmación: <span class="math inline">\(1\)</span> y <span class="math inline">\(-1\)</span> pertenecen al semiplano cerrado superior y suman cero.</p>
+<p><strong>(b) · SPV4-C25-E011-b.</strong> Ningún <span class="math inline">\(z_j\)</span> es cero. Como <span class="math inline">\(z_j^{-1}=\bar z_j/|z_j|^2\)</span>, <span class="math display">\[
+\operatorname{Re}(u z_j^{-1})
+=\frac{\operatorname{Re}(u\bar z_j)}{|z_j|^2}
+=\frac{\operatorname{Re}(\bar u z_j)}{|z_j|^2}&gt;0.
+\]</span> Todos los inversos pertenecen al semiplano <span class="math inline">\(H_{\bar u}\)</span>, limitado por la recta conjugada de la original. Aplicando (a), <span class="math display">\[
+z_1^{-1}+\cdots+z_k^{-1}\ne0.
+\]</span> La inversión conjuga la dirección y reescala cada vector por un factor positivo. No necesariamente conserva el semiplano original, pero sí coloca todos los inversos en un semiplano común.</p>
+</section>
+<section id="e012" class="level2">
+<h2 class="anchored" data-anchor-id="e012">E012 — Tres radios iguales cuya suma es cero</h2>
+<p><strong>SPV4-C25-E012.</strong> Sea <span class="math inline">\(|z_1|=|z_2|=|z_3|=r&gt;0\)</span> y <span class="math inline">\(z_1+z_2+z_3=0\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Como <span class="math inline">\(z_1+z_2=-z_3\)</span>, <span class="math display">\[
+r^2=|z_1+z_2|^2=2r^2+2\operatorname{Re}(z_1\bar z_2),
+\]</span> de donde <span class="math inline">\(\operatorname{Re}(z_1\bar z_2)=-r^2/2\)</span>. La misma cuenta vale para cada pareja. En consecuencia, <span class="math display">\[
+|z_j-z_\ell|^2
+=2r^2-2\operatorname{Re}(z_j\bar z_\ell)=3r^2
+\quad(j\ne\ell).
+\]</span> Las tres distancias son <span class="math inline">\(\sqrt3\,r&gt;0\)</span>. Los puntos son distintos y forman un triángulo equilátero.</p>
+<p>La sugerencia de girar hasta que <span class="math inline">\(z_1\)</span> sea real se justifica multiplicando todos los puntos por <span class="math inline">\(\bar z_1/r\)</span>, de módulo uno. La operación preserva módulos, distancias y la ecuación de suma cero, y lleva <span class="math inline">\(z_1\)</span> a <span class="math inline">\(r\)</span>. Entonces los otros dos puntos deben tener parte real <span class="math inline">\(-r/2\)</span> y partes imaginarias opuestas <span class="math inline">\(\pm\sqrt3\,r/2\)</span>. Así se ve también que los radios están separados por ángulos de <span class="math inline">\(2\pi/3\)</span>.</p>
+<div id="fig-spv4-c25-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 25: Semiplanos, inversos y el triángulo equilátero">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c25-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C25_assets/C25_06_semiplanos_y_triangulo.svg" class="img-fluid figure-img" alt="Capítulo 25: Semiplanos, inversos y el triángulo equilátero">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c25-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Capítulo 25 · Figura 6. Semiplanos, inversos y el triángulo equilátero
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="seccion-18155" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-18155">Estado y continuación</h2>
+<p>Doce problemas y <strong>30 unidades terminales</strong> resueltos y revisados internamente, incluidas todas las identidades de E008(b), los dos ejes posibles de E006 y los casos límite de E003. Las correcciones de E007, E008 y E012 están incorporadas al desarrollo y explicadas al pie. El inventario y el informe de revisión acompañan este manuscrito.</p>
+<hr>
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-24.html">← Capítulo 24</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-26.html">Capítulo 26 →</a></p>
+</div>
+<p>Soluciones originales de Alevi Peña · Matemática Abierta. <a href="../../../COPYING.FDL">Licencia GFDL 1.3 o posterior</a>.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>E007(b) omite la condición <span class="math inline">\(b\ne0\)</span>. Si <span class="math inline">\(b=0\)</span>, sólo se sabe que <span class="math inline">\(a\)</span> es raíz, y no necesariamente raíz doble. Por ejemplo, <span class="math inline">\(P(z)=z-1\)</span> tiene raíz <span class="math inline">\(a=1\)</span>, <span class="math inline">\(b=0\)</span>, pero no es divisible por <span class="math inline">\((z-1)^2\)</span>. Se incorpora la hipótesis no real a la afirmación demostrada.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>E008 define inicialmente la conjugación sólo para coeficientes enteros, pero en (b) la aplica a inversos que pueden salir de ese conjunto: <span class="math inline">\(2^{-1}=1/2\)</span> es el ejemplo más sencillo. Se incorpora explícitamente la extensión a coeficientes racionales para que la identidad tenga dominio definido; no se afirma que <span class="math inline">\(\mathbb Z[\sqrt c]\)</span> sea un cuerpo.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>El enunciado omite excluir <span class="math inline">\(r=0\)</span>. En ese caso los tres puntos son cero y no forman un triángulo no degenerado. Se incorpora <span class="math inline">\(r&gt;0\)</span> a la afirmación geométrica, y se conserva explícitamente el caso excepcional.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Capítulo 20 — Aproximación mediante funciones polinómicas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="spivak-c01.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#seccion-484" id="toc-seccion-484" class="nav-link active" data-scroll-target="#seccion-484">Qué información conserva un polinomio de Taylor</a></li>
+  <li><a href="#e001" id="toc-e001" class="nav-link" data-scroll-target="#e001">E001 — Polinomios en centros distintos</a></li>
+  <li><a href="#e002" id="toc-e002" class="nav-link" data-scroll-target="#e002">E002 — Escribir polinomios en potencias de x−3</a></li>
+  <li><a href="#e003" id="toc-e003" class="nav-link" data-scroll-target="#e003">E003 — Sumas finitas con precisión prescrita</a></li>
+  <li><a href="#e004" id="toc-e004" class="nav-link" data-scroll-target="#e004">E004 — Precisiones extremas y elección explícita del grado</a></li>
+  <li><a href="#e005" id="toc-e005" class="nav-link" data-scroll-target="#e005">E005 — Aproximar las raíces y certificar el error</a></li>
+  <li><a href="#e006" id="toc-e006" class="nav-link" data-scroll-target="#e006">E006 — Identidades de arctangente y cinco decimales de π</a></li>
+  <li><a href="#e007" id="toc-e007" class="nav-link" data-scroll-target="#e007">E007 — Operaciones con coeficientes</a></li>
+  <li><a href="#e008" id="toc-e008" class="nav-link" data-scroll-target="#e008">E008 — Sustituir una potencia en el argumento</a></li>
+  <li><a href="#e009" id="toc-e009" class="nav-link" data-scroll-target="#e009">E009 — Álgebra de aproximaciones locales</a></li>
+  <li><a href="#e010" id="toc-e010" class="nav-link" data-scroll-target="#e010">E010 — Aplicaciones del álgebra de Taylor</a></li>
+  <li><a href="#e011" id="toc-e011" class="nav-link" data-scroll-target="#e011">E011 — Límites mediante los primeros términos no nulos</a></li>
+  <li><a href="#e012" id="toc-e012" class="nav-link" data-scroll-target="#e012">E012 — Integrar la prolongación de seno entre x</a></li>
+  <li><a href="#e013" id="toc-e013" class="nav-link" data-scroll-target="#e013">E013 — La prolongación de (exp x−1)/x</a></li>
+  <li><a href="#e014" id="toc-e014" class="nav-link" data-scroll-target="#e014">E014 — Una integral sin primitiva elemental</a></li>
+  <li><a href="#e015" id="toc-e015" class="nav-link" data-scroll-target="#e015">E015 — Resto de la exponencial en el semieje negativo</a></li>
+  <li><a href="#e016" id="toc-e016" class="nav-link" data-scroll-target="#e016">E016 — Resto del logaritmo hacia la izquierda</a></li>
+  <li><a href="#e017" id="toc-e017" class="nav-link" data-scroll-target="#e017">E017 — Prueba inductiva de la aproximación local</a></li>
+  <li><a href="#e018" id="toc-e018" class="nav-link" data-scroll-target="#e018">E018 — Deducir el teorema local de Taylor con resto</a></li>
+  <li><a href="#e019" id="toc-e019" class="nav-link" data-scroll-target="#e019">E019 — Mover el centro y derivar el resto</a></li>
+  <li><a href="#e020" id="toc-e020" class="nav-link" data-scroll-target="#e020">E020 — Las dos formas de valor medio desde la integral</a></li>
+  <li><a href="#e021" id="toc-e021" class="nav-link" data-scroll-target="#e021">E021 — Coeficientes binomiales de exponente real</a></li>
+  <li><a href="#e022" id="toc-e022" class="nav-link" data-scroll-target="#e022">E022 — Acotar una derivada mediante la función y su curvatura</a></li>
+  <li><a href="#e023" id="toc-e023" class="nav-link" data-scroll-target="#e023">E023 — Derivadas simétricas y sus límites</a></li>
+  <li><a href="#e024" id="toc-e024" class="nav-link" data-scroll-target="#e024">E024 — La gráfica por encima de la tangente</a></li>
+  <li><a href="#e025" id="toc-e025" class="nav-link" data-scroll-target="#e025">E025 — Unicidad para f′′=f con datos nulos</a></li>
+  <li><a href="#e026" id="toc-e026" class="nav-link" data-scroll-target="#e026">E026 — Unicidad para ecuaciones lineales de orden n</a></li>
+  <li><a href="#e027" id="toc-e027" class="nav-link" data-scroll-target="#e027">E027 — Rigidez a partir de la segunda derivada de Schwarz</a></li>
+  <li><a href="#e028" id="toc-e028" class="nav-link" data-scroll-target="#e028">E028 — Aproximación cuadrática sin segunda derivada</a></li>
+  <li><a href="#seccion-43842" id="toc-seccion-43842" class="nav-link" data-scroll-target="#seccion-43842">Notas de corrección y alcance</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 20 — Aproximación mediante funciones polinómicas</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-19.html">← Capítulo 19</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-21.html">Capítulo 21 →</a></p>
+</div>
+<p>A. Peña · Matemática Abierta · 2026-10-15.</p>
+<p>Soluciones propias de los <strong>28 problemas y sus 90 unidades explícitas</strong>, incluidas todas las tareas de los ejercicios con estrellas. Este capítulo no tiene apéndice de ejercicios. Las referencias remiten a Michael Spivak, <em>Calculus</em>, cuarta edición, pp.&nbsp;411–441; problemas en pp.&nbsp;431–441 / PDF 450–460 de la copia original consultada. En esta copia, página PDF = página impresa +19. C21, «e es trascendente», comienza en p.&nbsp;442 / PDF 461.</p>
+<section id="seccion-484" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-484">Qué información conserva un polinomio de Taylor</h2>
+<p>Si conocemos una función y sus primeras derivadas en a, podemos construir un polinomio que comparta esos datos: <span class="math display">\[P_{n,a,f}(x)=\sum_{k=0}^n\frac{f^{(k)}(a)}{k!}(x-a)^k.\]</span> La derivada de orden k, evaluada en a, elimina todos los términos salvo el de grado k; de ahí el factorial. Aquí «grado n» significa grado a lo sumo n: un coeficiente superior puede ser cero.</p>
+<p>El teorema local afirma que <span class="math inline">\(f(x)-P_{n,a,f}(x)=o((x-a)^n)\)</span>. La notación significa que el cociente por <span class="math inline">\((x-a)^n\)</span> tiende a cero cuando x tiende a a. Si un polinomio no nulo de grado ≤n tuviera esa propiedad, su término de menor grado, digamos <span class="math inline">\(c(x-a)^j\)</span>, produciría un cociente que no tiende a cero. Por eso el polinomio local es único. La existencia de una aproximación polinómica, por sí sola, no garantiza todas las derivadas: E028 examina precisamente esa diferencia.</p>
+<p>Para calcular un valor lejos del centro hace falta controlar el resto. Bajo las hipótesis de Taylor, con n+1 derivadas en el segmento pertinente, <span class="math display">\[R_{n,a}(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1},\]</span> para algún ξ entre a y x. Si la derivada n+1 es continua, también se dispone de <span class="math display">\[R_{n,a}(x)=\frac1{n!}\int_a^x f^{(n+1)}(t)(x-t)^n\,dt.\]</span> Las integrales se orientan cuando x&lt;a. En particular, una cota absoluta M de esa derivada da <span class="math inline">\(|R_{n,a}(x)|\le M|x-a|^{n+1}/(n+1)!\)</span>. E017–E020 distinguen las hipótesis y prueban las relaciones entre estas fórmulas. No se supone que un desarrollo infinito coincida con la función: cada cálculo que sigue emplea un polinomio finito y su error.</p>
+<div id="fig-spv4-c20-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 20: Aproximación de la exponencial y error controlado">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c20-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C20_assets/C20_01_taylor_y_error.png" class="img-fluid figure-img" alt="Capítulo 20: Aproximación de la exponencial y error controlado">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c20-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Capítulo 20 · Figura 1. Aproximación de la exponencial y error controlado
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e001" class="level2">
+<h2 class="anchored" data-anchor-id="e001">E001 — Polinomios en centros distintos</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 1, p.&nbsp;431.</p>
+<p><strong><code>SPV4-C20-E001-i</code></strong> Para <span class="math inline">\(f(x)=e^{e^x}\)</span>, escribimos <span class="math inline">\(e^x=1+x+x^2/2+x^3/6+o(x^3)\)</span>. Al sustituir en la exponencial exterior, los términos hasta grado tres son <span class="math display">\[P_{3,0,f}(x)=e\left(1+x+x^2+\frac56x^3\right).\]</span> En efecto, si <span class="math inline">\(u=x+x^2/2+x^3/6\)</span>, los grados ≤3 de <span class="math inline">\(1+u+u^2/2+u^3/6\)</span> son <span class="math inline">\(1+x+x^2+5x^3/6\)</span>. El resto es o(x³), lo que identifica el polinomio por unicidad.</p>
+<p><strong><code>SPV4-C20-E001-ii</code></strong> Para <span class="math inline">\(e^{\sin x}\)</span>, usamos <span class="math inline">\(\sin x=x-x^3/6+o(x^3)\)</span>. La exponencial produce <span class="math inline">\(1+(x-x^3/6)+x^2/2+x^3/6+o(x^3)\)</span>. Los dos términos cúbicos se cancelan: <span class="math display">\[P_{3,0}(x)=1+x+\frac12x^2.\]</span> Su grado efectivo es dos.</p>
+<p><strong><code>SPV4-C20-E001-iii</code></strong> Ponga <span class="math inline">\(h=x-\pi/2\)</span>. Como <span class="math inline">\(\sin(\pi/2+h)=\cos h\)</span>, <span class="math display">\[P_{2n,\pi/2,\sin}(x)=\sum_{j=0}^n\frac{(-1)^j}{(2j)!}(x-\pi/2)^{2j}.\]</span> La traslación del centro convierte el ciclo de derivadas de seno en el de coseno.</p>
+<p><strong><code>SPV4-C20-E001-iv</code></strong> Con <span class="math inline">\(h=x-\pi\)</span>, <span class="math inline">\(\cos(\pi+h)=-\cos h\)</span>. Por tanto <span class="math display">\[P_{2n,\pi,\cos}(x)=-\sum_{j=0}^n\frac{(-1)^j}{(2j)!}(x-\pi)^{2j}.\]</span> En particular el término constante es −1, como exige el valor de coseno en π.</p>
+<p><strong><code>SPV4-C20-E001-v</code></strong> Todas las derivadas de exp valen e en 1. Luego <span class="math display">\[P_{n,1,\exp}(x)=e\sum_{k=0}^n\frac{(x-1)^k}{k!}.\]</span> El centro cambia las potencias y el factor común, aunque la función siga siendo la misma.</p>
+<p><strong><code>SPV4-C20-E001-vi</code></strong> Para k≥1, <span class="math inline">\(\log^{(k)}(2)=(-1)^{k-1}(k-1)!/2^k\)</span>. Así <span class="math display">\[P_{n,2,\log}(x)=\log2+\sum_{k=1}^n\frac{(-1)^{k-1}}{k2^k}(x-2)^k.\]</span> La función se considera en x&gt;0; la suma es vacía para n=0.</p>
+<p><strong><code>SPV4-C20-E001-vii</code></strong> Para <span class="math inline">\(f=x^5+x^3+x\)</span>, el término x⁵ no contribuye a las derivadas de orden ≤4 en cero. Por ello <span class="math inline">\(P_{4,0,f}=x+x^3\)</span>. La diferencia x⁵ es o(x⁴).</p>
+<p><strong><code>SPV4-C20-E001-viii</code></strong> Con h=x−1, expandir las potencias finitas da <span class="math inline">\(f(1+h)=3+9h+13h^2+11h^3+5h^4+h^5\)</span>. Por tanto <span class="math display">\[P_{4,1,f}(x)=3+9(x-1)+13(x-1)^2+11(x-1)^3+5(x-1)^4.\]</span> El coeficiente del término descartado no es relevante para las primeras cuatro derivadas.</p>
+<p><strong><code>SPV4-C20-E001-ix</code></strong> La identidad geométrica finita <span class="math display">\[\frac1{1+x^2}=\sum_{j=0}^n(-1)^jx^{2j}+\frac{(-1)^{n+1}x^{2n+2}}{1+x^2}\]</span> muestra un resto o(x^{2n+1}). Así <span class="math inline">\(P_{2n+1,0}(x)=\sum_{j=0}^n(-1)^jx^{2j}\)</span>. No hay término impar, y el grado efectivo es 2n.</p>
+<p><strong><code>SPV4-C20-E001-x</code></strong> Para x≠−1, <span class="math display">\[\frac1{1+x}=\sum_{k=0}^n(-1)^kx^k+\frac{(-1)^{n+1}x^{n+1}}{1+x}.\]</span> El resto es o(xⁿ) en cero, de modo que <span class="math inline">\(P_{n,0}(x)=\sum_{k=0}^n(-1)^kx^k\)</span>. La identidad es finita y no exige todavía discutir convergencia de series.</p>
+</section>
+<section id="e002" class="level2">
+<h2 class="anchored" data-anchor-id="e002">E002 — Escribir polinomios en potencias de x−3</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 2, p.&nbsp;431.</p>
+<p><strong><code>SPV4-C20-E002-i</code></strong> Ponga h=x−3. Sustituir x=h+3 en <span class="math inline">\(x^2-4x-9\)</span> da <span class="math inline">\(h^2+2h-12\)</span>, es decir <span class="math display">\[(x-3)^2+2(x-3)-12.\]</span> Un polinomio de grado d coincide exactamente con su Taylor de orden d, pues las derivadas de orden superior son cero.</p>
+<p><strong><code>SPV4-C20-E002-ii</code></strong> La sustitución x=h+3, seguida de agrupar grados, da <span class="math display">\[x^4-12x^3+44x^2+2x+1=h^4-10h^2+50h+160.\]</span> Se comprueba también con f(3)=160, f′(3)=50, f′′(3)/2=−10, f′′′(3)=0 y f⁽⁴⁾/24=1.</p>
+<p><strong><code>SPV4-C20-E002-iii</code></strong> El binomio finito da <span class="math display">\[x^5=243+405h+270h^2+90h^3+15h^4+h^5,\qquad h=x-3.\]</span> Cada coeficiente es <span class="math inline">\(\binom5k3^{5-k}\)</span>, equivalente a la correspondiente derivada dividida por k!.</p>
+<p><strong><code>SPV4-C20-E002-iv</code></strong> Para parámetros a,b,c reales, <span class="math display">\[ax^2+bx+c=a(x-3)^2+(6a+b)(x-3)+(9a+3b+c).\]</span> La fórmula sigue siendo válida cuando a=0 o también b=0: «mismo grado» puede entenderse como el grado efectivo, o como una cota superior suficiente.</p>
+</section>
+<section id="e003" class="level2">
+<h2 class="anchored" data-anchor-id="e003">E003 — Sumas finitas con precisión prescrita</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 3, p.&nbsp;431–432.</p>
+<p><strong><code>SPV4-C20-E003-i</code></strong> Defina <span class="math inline">\(S_m(t)=\sum_{j=0}^m(-1)^jt^{2j+1}/(2j+1)!\)</span>. El polinomio de seno de orden 2m+2 es el mismo, por lo que Taylor permite <span class="math display">\[|\sin t-S_m(t)|\le\frac{|t|^{2m+3}}{(2m+3)!}.\]</span> Para sin 1 sirve <span class="math inline">\(S_8(1)\)</span>: <span class="math inline">\(1/19!&lt;10^{-17}\)</span>. Se aprovecha el coeficiente par nulo para ahorrar un término.</p>
+<p><strong><code>SPV4-C20-E003-ii</code></strong> Para sin 2 elegimos <span class="math display">\[S_9(2)=\sum_{j=0}^9\frac{(-1)^j2^{2j+1}}{(2j+1)!}.\]</span> Su error es ≤<span class="math inline">\(2^{21}/21!&lt;10^{-12}\)</span>. Incluso la cota menos fina <span class="math inline">\(2^{20}/20!&lt;10^{-12}\)</span>, que usa la tabla indicada, basta.</p>
+<p><strong><code>SPV4-C20-E003-iii</code></strong> Para sin(1/2), <span class="math display">\[S_8(1/2)=\sum_{j=0}^8\frac{(-1)^j}{2^{2j+1}(2j+1)!}\]</span> tiene error ≤<span class="math inline">\(1/[2^{19}19!]&lt;10^{-20}\)</span>. La cota con <span class="math inline">\(2^{18}18!\)</span> también cumple la precisión pedida.</p>
+<p><strong><code>SPV4-C20-E003-iv</code></strong> Sea <span class="math inline">\(E_n(t)=\sum_{k=0}^nt^k/k!\)</span>. En [0,1], eᵗ&lt;3; así <span class="math inline">\(E_7(1)\)</span> tiene error menor que <span class="math inline">\(3/8!=3/40320&lt;10^{-4}\)</span>. La cota e&lt;3 ya está disponible del capítulo anterior; no se necesita conocer sus decimales.</p>
+<p><strong><code>SPV4-C20-E003-v</code></strong> En [0,2], eᵗ&lt;9. Por tanto <span class="math display">\[E_{13}(2)=\sum_{k=0}^{13}\frac{2^k}{k!},\qquad |e^2-E_{13}(2)|&lt;\frac{9\,2^{14}}{14!}&lt;10^{-5}.\]</span> Todas las sumas pedidas son racionales explícitos; las desigualdades de error se verifican con enteros, no a partir del valor decimal desconocido.</p>
+</section>
+<section id="e004" class="level2">
+<h2 class="anchored" data-anchor-id="e004">E004 — Precisiones extremas y elección explícita del grado</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 4, p.&nbsp;432.</p>
+<p><strong><code>SPV4-C20-E004-i</code></strong> Sea K=10¹⁰. La suma concreta <span class="math inline">\(S_K(1)\)</span> cumple <span class="math display">\[|\sin1-S_K(1)|\le\frac1{(2K+3)!}&lt;10^{-K}.\]</span> Para justificarlo sin una tabla inmensa, los factores 10,11,…,2K+3 del factorial son al menos 10; hay 2K−6 de ellos. Así <span class="math inline">\((2K+3)!\ge10^{2K-6}&gt;10^K\)</span>. La suma es finita y especificada, aunque su evaluación directa sea impráctica.</p>
+<p><strong><code>SPV4-C20-E004-ii</code></strong> Para e y error menor que 10⁻¹⁰⁰⁰, sirve <span class="math inline">\(E_{1010}(1)\)</span>. En efecto, <span class="math display">\[|e-E_{1010}(1)|&lt;\frac3{1011!}\le3\,10^{-1002}&lt;10^{-1000},\]</span> pues el producto de los factores de 10 a 1011 contiene 1002 factores, todos ≥10.</p>
+<p><strong><code>SPV4-C20-E004-iii</code></strong> Para sin 10 tomamos <span class="math display">\[S_{28}(10)=\sum_{j=0}^{28}\frac{(-1)^j10^{2j+1}}{(2j+1)!}.\]</span> La cota incluso menos fina <span class="math inline">\(10^{58}/58!&lt;10^{-20}\)</span> basta. Esta desigualdad puede comprobarse por la comparación entera <span class="math inline">\(10^{78}&lt;58!\)</span>; el verificador incluido la realiza exactamente.</p>
+<p><strong><code>SPV4-C20-E004-iv</code></strong> En [0,10], eᵗ&lt;3¹⁰. La suma <span class="math display">\[E_{75}(10)=\sum_{k=0}^{75}\frac{10^k}{k!}\]</span> tiene error menor que <span class="math inline">\(3^{10}10^{76}/76!&lt;10^{-30}\)</span>. La comprobación es <span class="math inline">\(3^{10}10^{106}&lt;76!\)</span>, otra desigualdad exacta entre enteros. No se usa e¹⁰ para estimarse a sí misma.</p>
+<p><strong><code>SPV4-C20-E004-v</code></strong> Para <span class="math inline">\(A_m(t)=\sum_{j=0}^m(-1)^jt^{2j+1}/(2j+1)\)</span>, integrar la identidad geométrica finita da <span class="math display">\[\arctan t-A_m(t)=(-1)^{m+1}\int_0^t\frac{u^{2m+2}}{1+u^2}\,du.\]</span> Por tanto el error tiene módulo ≤<span class="math inline">\(|t|^{2m+3}/(2m+3)\)</span>. Con t=1/10 y m=K=10¹⁰ es menor que <span class="math inline">\(10^{-K}\)</span>. Queda una suma específica y una prueba del error que no exige calcular sus miles de millones de términos.</p>
+</section>
+<section id="e005" class="level2">
+<h2 class="anchored" data-anchor-id="e005">E005 — Aproximar las raíces y certificar el error</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 5, p.&nbsp;432.</p>
+<p><strong><code>SPV4-C20-E005-a</code></strong> Para <span class="math inline">\(F(x)=x^2-\cos x\)</span>, las raíces son simétricas y la positiva α está en (0,1): F(0)=−1, F(1)&gt;0 y <span class="math inline">\(F'(x)=2x+\sin x&gt;0\)</span> allí. No hay raíces con |x|&gt;1, porque x²&gt;1≥cos x. El Taylor de orden tres de coseno es <span class="math inline">\(1-x^2/2\)</span>. Igualarlo a x² da <span class="math display">\[r_0=\sqrt{2/3}.\]</span> El de orden cinco añade x⁴/24. Si y=x², la ecuación es <span class="math inline">\(y^2-36y+24=0\)</span>. La raíz pequeña produce <span class="math display">\[r_1=\sqrt{18-10\sqrt3}\approx0{,}8243130014.\]</span> La otra raíz del polinomio auxiliar no aproxima una solución original, pues supera 1.</p>
+<p>Las cotas de los mismos órdenes ya dan intervalos sin calcular nuevas derivadas. Del resto de orden tres, <span class="math inline">\(|\alpha^2-(1-\alpha^2/2)|\le1/24\)</span>, se deduce <span class="math inline">\(\sqrt{23}/6\le\alpha\le5/6\)</span>. El resto de orden cinco tiene módulo ≤1/720; con y=α², da <span class="math inline">\(|y^2-36y+24|\le1/30\)</span>. Como 0&lt;y&lt;1, la rama decreciente del cuadrático implica <span class="math display">\[\sqrt{18-\sqrt{300+1/30}}\le\alpha\le\sqrt{18-\sqrt{300-1/30}}.\]</span> El intervalo es aproximadamente [0,823729; 0,824897], ya mucho más estrecho.</p>
+<p>Para obtener una certificación aún más precisa, sea <span class="math inline">\(C_{10}(t)=\sum_{j=0}^5(-1)^jt^{2j}/(2j)!\)</span> y <span class="math inline">\(\epsilon_c(t)=t^{11}/11!\)</span>, t∈[0,1]. Taylor asegura <span class="math inline">\(|\cos t-C_{10}(t)|\le\epsilon_c(t)\)</span>. Sustituir los racionales u=82413/100000 y v=82414/100000 da, por aritmética racional, <span class="math display">\[u^2-C_{10}(u)+\epsilon_c(u)&lt;0,\qquad v^2-C_{10}(v)-\epsilon_c(v)&gt;0.\]</span> Así <span class="math inline">\(0{,}82413&lt;\alpha&lt;0{,}82414\)</span>. Esta certificación implica <span class="math display">\[0&lt;\alpha-r_0&lt;0{,}007644,\qquad0&lt;r_1-\alpha&lt;0{,}000184.\]</span> Para la raíz negativa se cambian los signos de las aproximaciones y se conservan las cotas absolutas. Las cifras no se obtienen suponiendo el valor exacto de α: los dos signos anteriores lo encierran.</p>
+<p><strong><code>SPV4-C20-E005-b</code></strong> Considere <span class="math inline">\(G(x)=2x^2-x\sin x-\cos^2x\)</span>, función par. De <span class="math inline">\(2x^2\le|x|+1\)</span> se deduce que cualquier raíz satisface |x|≤1. En (0,1), <span class="math display">\[G'(x)=4x-\sin x-x\cos x+\sin2x\ge2x&gt;0,\]</span> pues sin x≤x, cos x≤1 y sin 2x&gt;0. Como G(0)=−1 y G(1)=1−sin1+sin²1≥3/4&gt;0, hay exactamente dos raíces ±β.</p>
+<p>Los primeros términos dan <span class="math inline">\(x\sin x+\cos^2x=1+x^4/6+o(x^4)\)</span>. La aproximación cuadrática da <span class="math inline">\(q_0=1/\sqrt2\)</span>; incluyendo el término de grado cuatro, con y=x² se obtiene <span class="math inline">\(y^2-12y+6=0\)</span>. La raíz pertinente es <span class="math display">\[q_1=\sqrt{6-\sqrt{30}}\approx0{,}7230314135.\]</span> Para acotar el error usamos además <span class="math inline">\(S_9(t)=t-t^3/3!+\cdots+t^9/9!\)</span>, con <span class="math inline">\(|\sin t-S_9(t)|\le t^{10}/10!\)</span>. Si <span class="math inline">\(G_*(t)=2t^2-tS_9(t)-C_{10}(t)^2\)</span>, entonces <span class="math display">\[|G(t)-G_*(t)|\le t\frac{t^{10}}{10!}+\epsilon_c(t)[2+\epsilon_c(t)].\]</span> El término final usa |cos t|≤1. En u=72118/100000, el valor de <span class="math inline">\(G_*(u)\)</span> más esta cota es negativo; en v=72119/100000, <span class="math inline">\(G_*(v)\)</span> menos la cota es positivo. Por tanto <span class="math display">\[0{,}72118&lt;\beta&lt;0{,}72119,\]</span> y quedan los errores certificados <span class="math inline">\(0&lt;\beta-q_0&lt;0{,}014084\)</span> y <span class="math inline">\(0&lt;q_1-\beta&lt;0{,}001852\)</span>. El polinomio de mayor grado mejora aquí la aproximación, aunque sigue siendo indispensable estimar su resto.</p>
+<div id="fig-spv4-c20-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 20: Raíces verdaderas y aproximaciones polinómicas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c20-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C20_assets/C20_02_raices.png" class="img-fluid figure-img" alt="Capítulo 20: Raíces verdaderas y aproximaciones polinómicas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c20-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Capítulo 20 · Figura 2. Raíces verdaderas y aproximaciones polinómicas
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e006" class="level2">
+<h2 class="anchored" data-anchor-id="e006">E006 — Identidades de arctangente y cinco decimales de π</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 6, p.&nbsp;433.</p>
+<p><strong><code>SPV4-C20-E006-a</code></strong> Sean u=arctan(1/2) y v=arctan(1/3). Son positivos y u+v&lt;1/2+1/3&lt;π/2. La fórmula de adición da <span class="math display">\[\tan(u+v)=\frac{1/2+1/3}{1-1/6}=1,\]</span> de modo que u+v=π/4; la restricción angular elimina otros valores con la misma tangente.</p>
+<p>Para α=arctan(1/5), las duplicaciones dan tan 2α=5/12 y tan 4α=120/119. Sea γ=arctan(1/239). Entonces <span class="math display">\[\tan(4\alpha-\gamma)=\frac{120/119-1/239}{1+120/(119\cdot239)}=1.\]</span> Además <span class="math inline">\(0&lt;4\alpha-\gamma&lt;4/5&lt;\pi/2\)</span>: para la cota inferior basta <span class="math inline">\(\alpha=\int_0^{1/5}dt/(1+t^2)\ge5/26\)</span> y γ&lt;1/239. Resulta <span class="math inline">\(\pi/4=4\arctan(1/5)-\arctan(1/239)\)</span>.</p>
+<p><strong><code>SPV4-C20-E006-b</code></strong> Con <span class="math inline">\(A_m\)</span> de E004(v), calculamos el racional <span class="math display">\[Q=16A_4(1/5)-4A_1(1/239)=\frac{5277328977275528}{1679825970703125}.\]</span> La identidad de (a) y la cota integral de arctangente dan <span class="math display">\[|\pi-Q|\le B=\frac{16}{11\cdot5^{11}}+\frac4{5\cdot239^5}&lt;2{,}980\cdot10^{-8}.\]</span> La comparación racional exacta verifica <span class="math inline">\(3{,}14159&lt;Q-B\)</span> y <span class="math inline">\(Q+B&lt;3{,}14160\)</span>. Por ello los cinco primeros decimales de π son 14159. El intervalo certificado es aproximadamente (3,1415926526; 3,1415927122), con sus extremos racionales exactos Q±B.</p>
+</section>
+<section id="e007" class="level2">
+<h2 class="anchored" data-anchor-id="e007">E007 — Operaciones con coeficientes</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 7, p.&nbsp;433.</p>
+<p><strong><code>SPV4-C20-E007-i</code></strong> Si <span class="math inline">\(a_i=f^{(i)}(a)/i!\)</span> y <span class="math inline">\(b_i=g^{(i)}(a)/i!\)</span>, la linealidad de las derivadas da <span class="math inline">\(c_i=a_i+b_i\)</span>. No se requiere que los desarrollos infinitos converjan.</p>
+<p><strong><code>SPV4-C20-E007-ii</code></strong> Leibniz da <span class="math inline">\((fg)^{(i)}(a)=\sum_{j=0}^i\binom ij f^{(j)}(a)g^{(i-j)}(a)\)</span>. Dividir entre i! cancela los factoriales y produce <span class="math display">\[c_i=\sum_{j=0}^ia_jb_{i-j}.\]</span> Cada par de grados cuya suma es i aporta al coeficiente de grado i.</p>
+<p><strong><code>SPV4-C20-E007-iii</code></strong> Para f′, <span class="math inline">\(c_i=f^{(i+1)}(a)/i!=(i+1)a_{i+1}\)</span>. Para determinar su Taylor de orden n hacen falta las derivadas de f hasta orden n+1: un dato adicional respecto del orden n de f.</p>
+<p><strong><code>SPV4-C20-E007-iv</code></strong> Para <span class="math inline">\(h(x)=\int_a^xf(t)dt\)</span>, suponga f continua cerca de a y con las derivadas necesarias. El teorema fundamental da h′=f y h(a)=0. Así <span class="math inline">\(c_0=0\)</span> y <span class="math display">\[c_i=\frac{a_{i-1}}i,\qquad i\ge1.\]</span> El grado se eleva una unidad al integrar cada monomio.</p>
+<p><strong><code>SPV4-C20-E007-v</code></strong> Para <span class="math inline">\(k(x)=\int_0^xf(t)dt\)</span>, se supone además definida la integral entre 0 y a. Los coeficientes de grado positivo son los de (iv), pero <span class="math display">\[c_0=k(a)=\int_0^af(t)dt.\]</span> Este término no se determina en general por los datos locales de f en a: cambiar f lejos de a puede modificarlo sin alterar ninguna derivada en a.</p>
+</section>
+<section id="e008" class="level2">
+<h2 class="anchored" data-anchor-id="e008">E008 — Sustituir una potencia en el argumento</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 8, p.&nbsp;433.</p>
+<p><strong><code>SPV4-C20-E008-a</code></strong> Para <span class="math inline">\(f(x)=\sin(x^2)\)</span>, escribimos <span class="math inline">\(\sin u=S_n(u)+r(u)\)</span>, con <span class="math inline">\(r(u)=o(u^{2n+1})\)</span>. Sustituir u=x² da <span class="math inline">\(r(x^2)=o(x^{4n+2})\)</span>, pues el cociente es el mismo cociente original a lo largo de u=x²→0. Así, por unicidad del polinomio local, <span class="math display">\[P_{4n+2,0,f}(x)=\sum_{j=0}^n\frac{(-1)^jx^{4j+2}}{(2j+1)!}.\]</span> La función compuesta es suave, por lo que su polinomio de Taylor existe.</p>
+<p><strong><code>SPV4-C20-E008-b</code></strong> Comparar coeficientes en (a), para n arbitrario, da <span class="math display">\[f^{(k)}(0)=\begin{cases}(-1)^j(4j+2)!/(2j+1)!,&amp;k=4j+2,\quad j\ge0,\\0,&amp;\text{en los demás casos}.\end{cases}\]</span> Incluye f(0)=0. No es necesario diferenciar repetidamente una composición cada vez más extensa.</p>
+<p><strong><code>SPV4-C20-E008-c</code></strong> Sea m un entero positivo, <span class="math inline">\(f(x)=g(x^m)\)</span> y g suficientemente diferenciable cerca de cero. Para cualquier orden k, sustituya xᵐ en un Taylor de g de orden al menos k. Su resto es o(x^{mk}) y, por tanto, o(xᵏ). Truncar los términos de grado superior a k identifica el polinomio de f.&nbsp;Se obtiene <span class="math display">\[f^{(k)}(0)=\begin{cases}\dfrac{k!}{j!}g^{(j)}(0),&amp;k=mj,\\0,&amp;m\nmid k.\end{cases}\]</span> Para k=0 se entiende j=0. Si m es par basta el límite del resto de g por el lado positivo; la existencia de las derivadas de g en un entorno asegura la suavidad compuesta usada aquí.</p>
+</section>
+<section id="e009" class="level2">
+<h2 class="anchored" data-anchor-id="e009">E009 — Álgebra de aproximaciones locales</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 9, p.&nbsp;433–434.</p>
+<p><strong><code>SPV4-C20-E009-a</code></strong> Ponga h=x−a y escriba f=P+r, g=Q+s, con r,s=o(hⁿ). Entonces f+g=P+Q+(r+s) y r+s=o(hⁿ). El polinomio P+Q tiene grado ≤n y comparte la aproximación local de f+g. Por unicidad, <span class="math display">\[P_{n,a,f+g}=P_{n,a,f}+P_{n,a,g}.\]</span> La existencia de las derivadas necesarias se mantiene como hipótesis; un resto pequeño por sí solo no las crea.</p>
+<p><strong><code>SPV4-C20-E009-b</code></strong> Multiplicar da <span class="math inline">\(fg=PQ+Ps+Qr+rs\)</span>. Los polinomios P,Q están acotados cerca de a; por ello los tres últimos términos son o(hⁿ). Los monomios de PQ de grado &gt;n también son o(hⁿ). Si <span class="math inline">\([\cdot]_n\)</span> denota truncación en potencias de h, <span class="math display">\[P_{n,a,fg}=[P_{n,a,f}P_{n,a,g}]_n.\]</span> Para n=0, r,s→0 y el mismo razonamiento sigue siendo válido.</p>
+<p><strong><code>SPV4-C20-E009-c</code></strong> Para polinomios p,q y <span class="math inline">\(R(x)=o((x-a)^n)\)</span>, use la identidad algebraica <span class="math display">\[p(u+v)-p(u)=v\,H(u,v),\]</span> donde H es un polinomio en u,v. Como q(x) y R(x) quedan acotados al acercarse x a a, <span class="math inline">\(\bar R(x)=R(x)H(q(x),R(x))\)</span> es o((x−a)ⁿ). Esto prueba <span class="math inline">\(p(q(x)+R(x))=p(q(x))+\bar R(x)\)</span>, sin diferenciar R.</p>
+<p>En la coordenada h=x−a, si p solo contiene monomios de grado &gt;n y q tiene término constante cero, entonces q(h)=h,q_1(h). Toda potencia q(h)ʲ, con j&gt;n, es divisible por hʲ; por tanto p(q(h)) no tiene términos de grado ≤n.&nbsp;Los límites se toman en <strong>x→a</strong>; se corrige el rótulo x→0 impreso en este apartado.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><strong><code>SPV4-C20-E009-d</code></strong> Para a=0 y g(0)=0, escriba <span class="math inline">\(f(y)=P(y)+o(y^n)\)</span>, <span class="math inline">\(g(x)=Q(x)+o(x^n)\)</span>. Como g(x)=O(x), el resto exterior evaluado en g(x) es o(xⁿ): si g(x)=0 se fija allí el resto cero; en otro caso se usa <span class="math inline">\(|g(x)|\le C|x|\)</span>. Para n=0 basta continuidad. Por (c), <span class="math inline">\(P(g(x))=P(Q(x))+o(x^n)\)</span>. Truncar el producto compuesto da <span class="math display">\[P_{n,0,f\circ g}=[P_{n,0,f}\circ P_{n,0,g}]_n.\]</span> La condición g(0)=0 alinea los centros y evita que grados descartados de f vuelvan a contribuir a términos pequeños.</p>
+<p><strong><code>SPV4-C20-E009-e</code></strong> Para a arbitrario y b=g(a), use h=x−a y <span class="math inline">\(H(h)=g(a+h)-b\)</span>, cuyo término constante es cero. La función exterior se traslada como <span class="math inline">\(F(u)=f(b+u)\)</span>. Aplicar (d) a F∘H y volver a x da <span class="math display">\[P_{n,a,f\circ g}(x)=\left[P_{n,b,f}\big(P_{n,a,g}(x)\big)\right]_n,\]</span> donde la truncación se hace en x−a. El polinomio exterior está escrito en y−b; al sustituir aparece <span class="math inline">\(P_{n,a,g}(x)-b\)</span>, con constante nula, como se necesita.</p>
+<p><strong><code>SPV4-C20-E009-f</code></strong> Si g(a)=0, cerca de a el denominador 1−g no se anula. La identidad geométrica finita da <span class="math display">\[\frac1{1-g}=1+g+\cdots+g^n+\frac{g^{n+1}}{1-g}.\]</span> Como g(x)=O(x−a), el último término es O((x−a)^{n+1}), y sustituir en cada potencia el Taylor de g solo añade o((x−a)ⁿ), por (b,c). En consecuencia <span class="math display">\[P_{n,a,1/(1-g)}=\left[1+P_{n,a,g}+P_{n,a,g}^2+\cdots+P_{n,a,g}^n\right]_n.\]</span> Para n=0 la identidad se interpreta con el resto que tiende a cero.</p>
+</section>
+<section id="e010" class="level2">
+<h2 class="anchored" data-anchor-id="e010">E010 — Aplicaciones del álgebra de Taylor</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 10, p.&nbsp;434.</p>
+<p><strong><code>SPV4-C20-E010-a</code></strong> Con f=eˣ y g=sin x, sumamos sus coeficientes hasta grado cinco: <span class="math display">\[P_{5,f+g}(x)=1+2x+\frac{x^2}2+\frac{x^4}{24}+\frac{x^5}{60}.\]</span> Los coeficientes cúbicos 1/6 y −1/6 se cancelan.</p>
+<p><strong><code>SPV4-C20-E010-b</code></strong> Multiplicamos <span class="math inline">\((1+x+x^2/2+x^3/6+x^4/24+x^5/120)\)</span> por <span class="math inline">\((x-x^3/6+x^5/120)\)</span> y retenemos grados ≤5: <span class="math display">\[P_{5,fg}(x)=x+x^2+\frac{x^3}3-\frac{x^5}{30}.\]</span> El término de grado cuatro es cero; el de grado cinco es 1/24−1/12+1/120=−1/30.</p>
+<p><strong><code>SPV4-C20-E010-c</code></strong> Escriba cos x=1−g(x), con <span class="math inline">\(P_{5,g}=x^2/2-x^4/24\)</span>. E009(f) da <span class="math inline">\(P_{5,1/\cos}=1+x^2/2+5x^4/24\)</span>. Multiplicar por el polinomio de seno produce <span class="math display">\[P_{5,\tan}(x)=x+\frac{x^3}3+\frac{2x^5}{15}.\]</span> La reciprocidad es local alrededor de cero, donde coseno no se anula.</p>
+<p><strong><code>SPV4-C20-E010-d</code></strong> Para <span class="math inline">\(e^{2x}\cos x\)</span>, multiplique <span class="math inline">\(1+2x+2x^2+4x^3/3+2x^4/3\)</span> por <span class="math inline">\(1-x^2/2+x^4/24\)</span>. Agrupar da <span class="math display">\[P_{4}(x)=1+2x+\frac32x^2+\frac13x^3-\frac7{24}x^4.\]</span> El coeficiente final es 2/3−1+1/24.</p>
+<p><strong><code>SPV4-C20-E010-e</code></strong> Ahora <span class="math inline">\(\cos2x=1-2x^2+2x^4/3+o(x^5)\)</span>; su recíproco tiene polinomio <span class="math inline">\(1+2x^2+10x^4/3\)</span>. Multiplicar por seno da <span class="math display">\[P_{5,\sin x/\cos2x}(x)=x+\frac{11}6x^3+\frac{361}{120}x^5.\]</span> El coeficiente quinto es 10/3−1/3+1/120. Los polos exteriores no afectan la aproximación local en cero.</p>
+<p><strong><code>SPV4-C20-E010-f</code></strong> Para <span class="math inline">\(x^3/[(1+x^2)e^x]\)</span> basta determinar el factor restante hasta orden tres. Tenemos <span class="math inline">\(1/(1+x^2)=1-x^2+o(x^3)\)</span> y <span class="math inline">\(e^{-x}=1-x+x^2/2-x^3/6+o(x^3)\)</span>. Su producto es <span class="math inline">\(1-x-x^2/2+5x^3/6+o(x^3)\)</span>. Por tanto <span class="math display">\[P_6(x)=x^3-x^4-\frac12x^5+\frac56x^6.\]</span> El factor x³ permite reducir la cantidad de coeficientes que hay que calcular.</p>
+</section>
+<section id="e011" class="level2">
+<h2 class="anchored" data-anchor-id="e011">E011 — Límites mediante los primeros términos no nulos</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 11, p.&nbsp;434–435.</p>
+<p><strong><code>SPV4-C20-E011-a</code></strong> El numerador <span class="math inline">\(e^x-1-x-x^2/2=x^3/6+o(x^3)\)</span> y <span class="math inline">\(x-\sin x=x^3/6+o(x^3)\)</span>. Dividir ambos por x³ prueba que el límite de su cociente es <strong>1</strong>. El denominador no se anula en un entorno perforado suficientemente pequeño.</p>
+<p><strong><code>SPV4-C20-E011-b</code></strong> Multiplicar los polinomios de eˣ y 1/(1+x) hasta orden tres da <span class="math inline">\(e^x/(1+x)=1+x^2/2-x^3/3+o(x^3)\)</span>. El numerador pedido es −x³/3+o(x³), mientras el denominador sigue siendo x³/6+o(x³). El límite es <strong>−2</strong>.</p>
+<p><strong><code>SPV4-C20-E011-c</code></strong> Como <span class="math inline">\(\sin^2x=x^2-x^4/3+o(x^4)\)</span>, <span class="math display">\[\frac1{\sin^2x}-\frac1{x^2}=\frac{x^2-\sin^2x}{x^2\sin^2x}.\]</span> El numerador es x⁴/3+o(x⁴) y el denominador x⁴+o(x⁴); el límite es <strong>1/3</strong>.</p>
+<p><strong><code>SPV4-C20-E011-d</code></strong> Se tiene <span class="math inline">\(1-\cos(x^2)=x^4/2+o(x^4)\)</span> y <span class="math inline">\(x^2\sin^2x=x^4+o(x^4)\)</span>. El límite de su cociente es <strong>1/2</strong>. Confundir sin²x con sin(x²) cambiaría el problema.</p>
+<p><strong><code>SPV4-C20-E011-e</code></strong> Separe la diferencia en <span class="math display">\[\left(\frac1{\sin^2x}-\frac1{x^2}\right)+\left(\frac1{x^2}-\frac1{\sin(x^2)}\right).\]</span> El primer término tiende a 1/3 por (c). Con u=x², el segundo es <span class="math inline">\((\sin u-u)/(u\sin u)=O(u)\)</span> y tiende a cero. El límite es <strong>1/3</strong>.</p>
+<p><strong><code>SPV4-C20-E011-f</code></strong> Usamos <span class="math inline">\(\sin x=x-x^3/6+o(x^3)\)</span> y <span class="math inline">\(\arctan x=x-x^3/3+o(x^3)\)</span>. El producto, menos x², es −x⁴/2+o(x⁴). Como <span class="math inline">\(1-\cos(x^2)=x^4/2+o(x^4)\)</span>, el límite es <strong>−1</strong>.</p>
+</section>
+<section id="e012" class="level2">
+<h2 class="anchored" data-anchor-id="e012">E012 — Integrar la prolongación de seno entre x</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 12, p.&nbsp;435.</p>
+<p><strong><code>SPV4-C20-E012</code></strong> Definamos f(x)=sin x/x para x≠0 y f(0)=1. La identidad <span class="math inline">\(f(x)=\int_0^1\cos(tx)dt\)</span> justifica que la prolongación es suave: en cualquier compacto las derivadas del integrando son continuas y la diferenciación bajo esta integral finita se justifica por convergencia uniforme de los cocientes incrementales, a partir de la continuidad uniforme de la siguiente derivada.</p>
+<p>Dividir el Taylor de seno de orden 2n+1 y su resto por x da <span class="math display">\[f(x)=\sum_{j=0}^n\frac{(-1)^jx^{2j}}{(2j+1)!}+R(x),\qquad |R(x)|\le\frac{|x|^{2n+1}}{(2n+2)!}.\]</span> En cero el resto es cero. Es o(x^{2n}) y, por unicidad, la suma es el Taylor de orden 2n de f.&nbsp;Con n=2, integrar de cero a uno da <span class="math display">\[\int_0^1f(x)dx\approx1-\frac1{18}+\frac1{600}=\frac{1703}{1800}.\]</span> El error integral está acotado por <span class="math inline">\(\int_0^1x^5dx/6!=1/4320&lt;10^{-3}\)</span>. El decimal 0,946 de la fuente es un redondeo; el valor aproximante certificado es el racional 1703/1800.</p>
+</section>
+<section id="e013" class="level2">
+<h2 class="anchored" data-anchor-id="e013">E013 — La prolongación de (exp x−1)/x</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 13, p.&nbsp;435.</p>
+<p><strong><code>SPV4-C20-E013-a</code></strong> Para f(x)=(eˣ−1)/x, f(0)=1, la identidad <span class="math inline">\(f(x)=\int_0^1e^{tx}dt\)</span> muestra suavidad por el mismo argumento de diferenciación uniforme de E012. Evaluar las derivadas bajo la integral da <span class="math display">\[f^{(k)}(0)=\int_0^1t^kdt=\frac1{k+1}.\]</span> De ahí <span class="math display">\[P_{n,0,f}(x)=\sum_{k=0}^n\frac{x^k}{(k+1)!}.\]</span> También puede obtenerse restando 1 al Taylor de eˣ de orden n+1 y dividiendo entre x. En esa vía el resto satisface <span class="math display">\[|R_{n,0,f}(x)|\le\frac{e^{\max(0,x)}|x|^{n+1}}{(n+2)!},\]</span> con R(0)=0. La misma cota se obtiene integrando el resto de orden n de e^{tx}: la integral de t^{n+1} introduce el factor 1/(n+2).</p>
+<p><strong><code>SPV4-C20-E013-b</code></strong> En [0,1], eˣ&lt;3. Elegimos n=5 e integramos P₅: <span class="math display">\[\int_0^1f(x)dx\approx\sum_{k=0}^5\frac1{(k+1)(k+1)!}=\frac{14233}{10800}\approx1{,}3178703704.\]</span> El error es menor que <span class="math inline">\(3/[7\cdot7!]=1/11760&lt;10^{-4}\)</span>. Se ha integrado una cota uniforme explícita del resto; no se ha inferido la precisión de la cantidad de decimales mostrados.</p>
+</section>
+<section id="e014" class="level2">
+<h2 class="anchored" data-anchor-id="e014">E014 — Una integral sin primitiva elemental</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 14, p.&nbsp;435.</p>
+<p><strong><code>SPV4-C20-E014</code></strong> En [0,1/10], ponemos u=x². Taylor de orden uno de la exponencial da <span class="math inline">\(e^u=1+u+r(u)\)</span>, con <span class="math inline">\(|r(u)|\le3u^2/2\)</span>, pues 0≤u≤1/100 y eᵘ&lt;3. Por tanto <span class="math display">\[\int_0^{1/10}e^{x^2}dx\approx\int_0^{1/10}(1+x^2)dx=\frac{301}{3000}.\]</span> El error es menor que <span class="math inline">\(\frac32\int_0^{1/10}x^4dx=3/10^6&lt;10^{-5}\)</span>. La falta de una primitiva elemental no dificulta este cálculo con precisión certificada.</p>
+<div id="fig-spv4-c20-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 20: Integrales y cotas de los restos">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c20-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C20_assets/C20_03_integrales.png" class="img-fluid figure-img" alt="Capítulo 20: Integrales y cotas de los restos">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c20-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Capítulo 20 · Figura 3. Integrales y cotas de los restos
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e015" class="level2">
+<h2 class="anchored" data-anchor-id="e015">E015 — Resto de la exponencial en el semieje negativo</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 15, p.&nbsp;436.</p>
+<p><strong><code>SPV4-C20-E015</code></strong> Si x&lt;0, Taylor en cero da <span class="math inline">\(R_{n,0}(x)=e^\xi x^{n+1}/(n+1)!\)</span> con x&lt;ξ&lt;0. Como 0&lt;eᵠ≤1 para ξ≤0, <span class="math display">\[|R_{n,0}(x)|\le\frac{|x|^{n+1}}{(n+1)!}.\]</span> Para x=0 el resto es cero. La mejora frente a una cota simétrica procede del signo del argumento; no se usa e^{|x|} donde basta 1.</p>
+</section>
+<section id="e016" class="level2">
+<h2 class="anchored" data-anchor-id="e016">E016 — Resto del logaritmo hacia la izquierda</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 16, p.&nbsp;436.</p>
+<p><strong><code>SPV4-C20-E016</code></strong> Sea n≥0, tomando el Taylor constante cero para n=0. La identidad geométrica finita y la integración dan <span class="math display">\[R_{n,0}(x)=(-1)^n\int_0^x\frac{t^n}{1+t}dt,\qquad x&gt;-1.\]</span> Para −1&lt;x&lt;0, en el segmento [x,0] se tiene 1+t≥1+x&gt;0. Así <span class="math display">\[|R_{n,0}(x)|\le\frac1{1+x}\int_x^0|t|^n dt=\frac{|x|^{n+1}}{(1+x)(n+1)}.\]</span> En x=0 ambos lados son cero. La fórmula evita una cota de Lagrange demasiado grande que elevaría 1/(1+x) a una potencia innecesaria.</p>
+</section>
+<section id="e017" class="level2">
+<h2 class="anchored" data-anchor-id="e017">E017 — Prueba inductiva de la aproximación local</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 17, p.&nbsp;436.</p>
+<p><strong><code>SPV4-C20-E017-a</code></strong> Suponga g continua en el segmento que une a y x y diferenciable en su interior, con <span class="math inline">\(|g'(t)|\le M|t-a|^n\)</span> y n entero ≥0. Aplique el teorema del valor medio de Cauchy a g y H(t)=(t−a)^{n+1}. Para algún c estrictamente entre a y x, <span class="math display">\[\frac{g(x)-g(a)}{(x-a)^{n+1}}=\frac{g'(c)}{(n+1)(c-a)^n}.\]</span> El denominador no es cero, pues c≠a. Tomar módulos prueba <span class="math inline">\(|g(x)-g(a)|\le M|x-a|^{n+1}/(n+1)\)</span>, para ambos lados de a. No se supuso integrabilidad o continuidad de g′.</p>
+<p><strong><code>SPV4-C20-E017-b</code></strong> Si <span class="math inline">\(g'(x)/(x-a)^n\to0\)</span>, para cada ε&gt;0 existe δ&gt;0 tal que <span class="math inline">\(|g'(x)|\le\varepsilon|x-a|^n\)</span> cuando 0&lt;|x−a|&lt;δ. Aplicar (a), manteniendo continuidad de g en a, da <span class="math display">\[\left|\frac{g(x)-g(a)}{(x-a)^{n+1}}\right|\le\frac\varepsilon{n+1}.\]</span> Esto prueba el límite cero. La continuidad en a, implícita en el uso de g diferenciable, es necesaria: no podría cambiarse arbitrariamente g(a).</p>
+<p><strong><code>SPV4-C20-E017-c</code></strong> Si <span class="math inline">\(g=f-P_{n,a,f}\)</span>, diferenciar término a término el polinomio finito produce <span class="math display">\[P'_{n,a,f}(x)=\sum_{j=0}^{n-1}\frac{f^{(j+1)}(a)}{j!}(x-a)^j=P_{n-1,a,f'}(x).\]</span> Por tanto <span class="math inline">\(g'=f'-P_{n-1,a,f'}\)</span>. Los factoriales son precisamente los que hacen compatible la derivación con el cambio de orden.</p>
+<p><strong><code>SPV4-C20-E017-d</code></strong> La base n=0 es continuidad: f(x)−f(a)→0. Suponga probada la aproximación de orden n−1 para funciones con esas derivadas en a. Aplicada a f′ da, por (c), <span class="math display">\[\frac{g'(x)}{(x-a)^{n-1}}\to0.\]</span> Como g(a)=0, (b), con exponente n−1, implica <span class="math inline">\(g(x)/(x-a)^n\to0\)</span>. Queda probada la afirmación para n y se cierra la inducción sin l’Hôpital. La existencia de la derivada iterada en a se entiende con las derivadas anteriores definidas en un entorno de a; no se exige continuidad de la derivada superior.</p>
+</section>
+<section id="e018" class="level2">
+<h2 class="anchored" data-anchor-id="e018">E018 — Deducir el teorema local de Taylor con resto</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 18, p.&nbsp;436.</p>
+<p><strong><code>SPV4-C20-E018</code></strong> Para n≥1, suponga que existen n+1 derivadas en un entorno de a. En particular f⁽ⁿ⁾ es continua en a, porque es diferenciable allí. Aplique la forma de Lagrange al Taylor de orden n−1: <span class="math display">\[f(x)=P_{n-1,a,f}(x)+\frac{f^{(n)}(\xi_x)}{n!}(x-a)^n.\]</span> Restar el término <span class="math inline">\(f^{(n)}(a)(x-a)^n/n!\)</span> y dividir da <span class="math display">\[\frac{f(x)-P_{n,a,f}(x)}{(x-a)^n}=\frac{f^{(n)}(\xi_x)-f^{(n)}(a)}{n!}\to0,\]</span> ya que ξx queda entre a y x y tiende a a. Para n=0 basta continuidad. Así se obtiene el resultado local bajo la hipótesis adicional indicada. No se infiere que la derivada n+1 esté acotada solo por existir: la prueba usa continuidad de la derivada n en a. E017 da la versión de hipótesis más débiles.</p>
+</section>
+<section id="e019" class="level2">
+<h2 class="anchored" data-anchor-id="e019">E019 — Mover el centro y derivar el resto</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 19, p.&nbsp;436–437.</p>
+<p><strong><code>SPV4-C20-E019-a</code></strong> Fije x y trate t como variable. Defina <span class="math display">\[S(t)=f(x)-\sum_{k=0}^n\frac{f^{(k)}(t)}{k!}(x-t)^k.\]</span> Para k≥1, la derivada de un sumando es <span class="math inline">\(-f^{(k)}(t)(x-t)^{k-1}/(k-1)!+f^{(k+1)}(t)(x-t)^k/k!\)</span>. Al sumar se cancelan términos consecutivos, incluido el f′ procedente de k=0, y queda <span class="math display">\[S'(t)=-\frac{f^{(n+1)}(t)}{n!}(x-t)^n.\]</span> Tenemos S(x)=0 y S(a)=Rₙ,ₐ(x). Aplique Cauchy a S y <span class="math inline">\(H(t)=(x-t)^{n+1}\)</span> en el segmento entre a y x. Para algún c interior, <span class="math display">\[\frac{R_{n,a}(x)}{(x-a)^{n+1}}=\frac{S'(c)}{H'(c)}=\frac{f^{(n+1)}(c)}{(n+1)!}.\]</span> Esta es la forma de Lagrange. Para x=a el resto es cero y no hace falta el cociente. Las hipótesis son continuidad en el segmento y las derivadas que permiten estas aplicaciones del valor medio; no se requiere continuidad de f⁽ⁿ⁺¹⁾.</p>
+<p><strong><code>SPV4-C20-E019-b</code></strong> El teorema ordinario del valor medio aplicado a S da <span class="math inline">\([S(x)-S(a)]/(x-a)=S'(c)\)</span>. Usando los valores y la derivada del apartado anterior, <span class="math display">\[R_{n,a}(x)=\frac{f^{(n+1)}(c)}{n!}(x-c)^n(x-a),\]</span> con c entre a y x. Es la forma de Cauchy del resto. Aunque el punto c tiene la misma función existencial en las dos fórmulas, no se afirma que sea un único punto común que haga válidas ambas simultáneamente.</p>
+</section>
+<section id="e020" class="level2">
+<h2 class="anchored" data-anchor-id="e020">E020 — Las dos formas de valor medio desde la integral</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 20, p.&nbsp;437.</p>
+<p><strong><code>SPV4-C20-E020</code></strong> Suponga <span class="math inline">\(f^{(n+1)}\)</span> continua en el segmento; es una hipótesis adicional respecto de su mera existencia en el teorema de Taylor. Con h=x−a y t=a+sh, la fórmula integral se transforma en <span class="math display">\[R_{n,a}(x)=\frac{h^{n+1}}{n!}\int_0^1 f^{(n+1)}(a+sh)(1-s)^n ds.\]</span> Esta parametrización vale también para h&lt;0 y conserva automáticamente la orientación.</p>
+<p>El valor medio ponderado, con peso no negativo (1−s)ⁿ, da un θ∈(0,1) tal que la integral es <span class="math inline">\(f^{(n+1)}(a+\theta h)/(n+1)\)</span>. Resulta Lagrange. El punto puede elegirse interior: si el promedio coincide con un extremo del integrando continuo bajo un peso positivo en (0,1), la función es constante allí y cualquier punto interior sirve.</p>
+<p>Aplicar el valor medio ordinario al producto continuo dentro de la integral da, quizá con otro θ, <span class="math display">\[R_{n,a}(x)=\frac{h^{n+1}}{n!}f^{(n+1)}(a+\theta h)(1-\theta)^n.\]</span> Con c=a+θh, esto es <span class="math inline">\(f^{(n+1)}(c)(x-c)^n(x-a)/n!\)</span>, la forma de Cauchy. La hipótesis continua justifica las dos aplicaciones; no se deriva gratuitamente de la existencia de n+1 derivadas. La existencia de una derivada adicional en el entorno es una condición suficiente para ella.</p>
+</section>
+<section id="e021" class="level2">
+<h2 class="anchored" data-anchor-id="e021">E021 — Coeficientes binomiales de exponente real</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 21, p.&nbsp;437–438.</p>
+<p><strong><code>SPV4-C20-E021</code></strong> Para α real y x&gt;−1, las derivadas de <span class="math inline">\(f(x)=(1+x)^\alpha\)</span> son <span class="math display">\[f^{(k)}(x)=\alpha(\alpha-1)\cdots(\alpha-k+1)(1+x)^{\alpha-k}.\]</span> Se prueba por inducción con la regla de potencias. Con <span class="math inline">\(\binom\alpha0=1\)</span> y <span class="math inline">\(\binom\alpha k=\alpha(\alpha-1)\cdots(\alpha-k+1)/k!\)</span>, <span class="math display">\[P_{n,0,f}(x)=\sum_{k=0}^n\binom\alpha kx^k.\]</span> La fórmula de Cauchy de E019 da, para un t entre 0 y x, <span class="math display">\[R_{n,0}(x)=(n+1)\binom\alpha{n+1}x(1+t)^{\alpha-1}\left(\frac{x-t}{1+t}\right)^n.\]</span> Aquí se han agrupado <span class="math inline">\((1+t)^{\alpha-n-1}(x-t)^n\)</span>; la base 1+t es positiva. Lagrange produce, para un punto que puede ser diferente, <span class="math display">\[R_{n,0}(x)=\binom\alpha{n+1}x^{n+1}(1+t)^{\alpha-n-1}.\]</span> Ambas se anulan en x=0. Si α es entero no negativo y n≥α, el desarrollo ya es el polinomio completo y el resto es cero.</p>
+<p>Para α no entero, ningún factor del numerador es cero. El cociente de dos coeficientes consecutivos es <span class="math inline">\((\alpha-k)/(k+1)\)</span>, negativo una vez k&gt;α: a partir de ese índice los signos alternan. Para exponentes enteros negativos los coeficientes tampoco se anulan; la misma regla de signos sigue siendo válida. No se usan estas fórmulas fuera de x&gt;−1 sin especificar una definición real apropiada de la potencia.</p>
+</section>
+<section id="e022" class="level2">
+<h2 class="anchored" data-anchor-id="e022">E022 — Acotar una derivada mediante la función y su curvatura</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 22, p.&nbsp;438.</p>
+<p><strong><code>SPV4-C20-E022-a</code></strong> Sean f dos veces diferenciable en (0,∞), <span class="math inline">\(|f|\le M_0\)</span> y <span class="math inline">\(|f''|\le M_2\)</span>, con M₀,M₂≥0. Para x&gt;0 y h&gt;0, el segmento [x,x+h] está en el dominio. Taylor de orden uno da <span class="math display">\[f(x+h)=f(x)+hf'(x)+\frac{h^2}2f''(c).\]</span> Despejar y tomar módulos produce <span class="math display">\[|f'(x)|\le\frac{|f(x+h)|+|f(x)|}h+\frac h2M_2\le\frac{2M_0}h+\frac h2M_2.\]</span> La elección del incremento hacia la derecha evita salir del semieje cuando h es grande.</p>
+<p><strong><code>SPV4-C20-E022-b</code></strong> Si M₀,M₂&gt;0, el mínimo de <span class="math inline">\(2M_0/h+hM_2/2\)</span> se alcanza en <span class="math inline">\(h=2\sqrt{M_0/M_2}\)</span>, y su valor es <span class="math inline">\(2\sqrt{M_0M_2}\)</span>. Por tanto <span class="math display">\[|f'(x)|\le2\sqrt{M_0M_2}.\]</span> Si M₀=0, f=0 y f′=0. Si M₂=0, deje h→∞ en (a) y también obtiene f′=0. Los casos degenerados quedan incluidos y no se divide entre una cota nula.</p>
+<p><strong><code>SPV4-C20-E022-c</code></strong> Suponga ahora f(x)→0 y f′′ acotada por M₂. Dado η&gt;0, existe A tal que |f(t)|≤η para t&gt;A. La prueba de (a,b), aplicada a la restricción en ese semieje, usa solo puntos t≥x&gt;A y da <span class="math inline">\(|f'(x)|\le2\sqrt{\eta M_2}\)</span>. El lado derecho puede hacerse tan pequeño como se quiera, de modo que f′(x)→0. Si M₂=0, (a) en la cola da la conclusión directamente.</p>
+<p><strong><code>SPV4-C20-E022-d</code></strong> Suponga finitos los límites f(x)→L y f′′(x)→A. La segunda derivada está acotada en una cola. Aplicar (c) a f−L muestra f′(x)→0. Si A&gt;0, para x grande se tendría f′′(x)&gt;A/2; el valor medio en cualquier segmento [X,x] de esa cola daría <span class="math inline">\(f'(x)\ge f'(X)+(A/2)(x-X)\)</span>, contradiciendo f′→0. Si A&lt;0 se obtiene la contradicción opuesta. Por tanto A=0 y <span class="math display">\[\lim_{x\to\infty}f''(x)=\lim_{x\to\infty}f'(x)=0.\]</span> No se necesitó acotación de f′′ cerca del extremo cero, donde los límites en infinito no proporcionan información.</p>
+<div id="fig-spv4-c20-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 20: Equilibrio de las dos cotas para la derivada">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c20-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C20_assets/C20_04_cota_derivada.png" class="img-fluid figure-img" alt="Capítulo 20: Equilibrio de las dos cotas para la derivada">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c20-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Capítulo 20 · Figura 4. Equilibrio de las dos cotas para la derivada
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e023" class="level2">
+<h2 class="anchored" data-anchor-id="e023">E023 — Derivadas simétricas y sus límites</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 23, p.&nbsp;438–439.</p>
+<p><strong><code>SPV4-C20-E023-a</code></strong> Si f′′(a) existe en el sentido de derivada iterada, el teorema local da <span class="math display">\[f(a\pm h)=f(a)\pm f'(a)h+\frac12f''(a)h^2+o(h^2).\]</span> Al sumar, los términos lineales se cancelan. Restar 2f(a), dividir entre h² y pasar al límite prueba <span class="math display">\[\lim_{h\to0}\frac{f(a+h)+f(a-h)-2f(a)}{h^2}=f''(a).\]</span> Llamaremos <span class="math inline">\(D_S^2f(a)\)</span> a este límite cuando exista. Su existencia es más débil que la de la segunda derivada ordinaria.</p>
+<p><strong><code>SPV4-C20-E023-b</code></strong> Para f(x)=x² si x≥0 y f(x)=−x² si x≤0, la función es impar y f(0)=0. El numerador simétrico es cero para todo h, por lo que <span class="math inline">\(D_S^2f(0)=0\)</span>. Sin embargo, f′(0)=0 y f′(x)=2|x| para x≠0. El cociente <span class="math inline">\([f'(h)-f'(0)]/h\)</span> vale 2 para h&gt;0 y −2 para h&lt;0; f′′(0) no existe.</p>
+<p><strong><code>SPV4-C20-E023-c</code></strong> Si a es un máximo local, para |h| pequeño tanto f(a+h) como f(a−h) son ≤f(a). El numerador simétrico es no positivo y h²&gt;0 para h≠0. Si existe su límite finito, también es ≤0. Esta conclusión no exige que f′ exista.</p>
+<p><strong><code>SPV4-C20-E023-d</code></strong> Si f′′′(a) existe, el Taylor local de orden tres da <span class="math display">\[f(a+h)-f(a-h)=2hf'(a)+\frac13f^{(3)}(a)h^3+o(h^3).\]</span> Los términos constante y cuadrático se cancelan; cada término cúbico aporta f′′′(a)h³/6 con el mismo signo. Por tanto <span class="math display">\[\lim_{h\to0}\frac{f(a+h)-f(a-h)-2hf'(a)}{h^3}=\frac{f^{(3)}(a)}3.\]</span> El factor 1/3 procede de 2/3!, no de una segunda diferencia.</p>
+</section>
+<section id="e024" class="level2">
+<h2 class="anchored" data-anchor-id="e024">E024 — La gráfica por encima de la tangente</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 24, p.&nbsp;439.</p>
+<p><strong><code>SPV4-C20-E024</code></strong> Sea f dos veces diferenciable en un intervalo y f′′&gt;0 en él. Fije a y otro punto x. La forma de Lagrange de Taylor de orden uno da <span class="math display">\[f(x)-[f(a)+f'(a)(x-a)]=\frac12f''(c)(x-a)^2&gt;0,\]</span> porque c pertenece al segmento interior entre a y x y x≠a. En x=a la diferencia es cero. Así cada tangente toca la gráfica solo en el punto de contacto y queda estrictamente por debajo en el resto del intervalo. La prueba cubre ambos lados de a y no requiere continuidad de f′′.</p>
+</section>
+<section id="e025" class="level2">
+<h2 class="anchored" data-anchor-id="e025">E025 — Unicidad para f′′=f con datos nulos</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 25, p.&nbsp;439.</p>
+<p><strong><code>SPV4-C20-E025</code></strong> Suponga f′′=f en un intervalo abierto que contiene cero, con f(0)=f′(0)=0. La ecuación permite derivar repetidamente: f es suave y cada derivada es f o f′ según su paridad. Todas sus derivadas en cero son, por tanto, nulas.</p>
+<p>Fije x en el intervalo y el compacto I entre cero y x. La continuidad de f y f′ da una cota común <span class="math inline">\(M=\max_I\max(|f|,|f'|)\)</span>. Taylor de cualquier orden m en cero produce <span class="math display">\[|f(x)|\le M\frac{|x|^{m+1}}{(m+1)!}.\]</span> Para x fijo, el cociente de términos consecutivos |x|/(m+2) termina siendo ≤1/2, así que el lado derecho tiende a cero. Resulta f(x)=0. El punto x fue arbitrario; f es idénticamente cero en el intervalo. La cota se toma en todo el segmento que contiene al punto del resto, no solo en el extremo x.</p>
+</section>
+<section id="e026" class="level2">
+<h2 class="anchored" data-anchor-id="e026">E026 — Unicidad para ecuaciones lineales de orden n</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 26, p.&nbsp;439–440.</p>
+<p><strong><code>SPV4-C20-E026-a</code></strong> Sea n≥1 y <span class="math inline">\(f^{(n)}=\sum_{j=0}^{n-1}a_jf^{(j)}\)</span> en un intervalo abierto que contiene cero, con coeficientes reales constantes. La ecuación hace suave a f: su lado derecho es continuo, luego f⁽ⁿ⁾ es continua; derivar la igualdad aumenta sucesivamente la regularidad. Diferenciando una vez, y usando de nuevo la ecuación para el término con f⁽ⁿ⁾, <span class="math display">\[f^{(n+1)}=\sum_{j=0}^{n-1}(a_{j-1}+a_{n-1}a_j)f^{(j)},\qquad a_{-1}=0.\]</span> El término aⱼ₋₁ procede de desplazar la derivada de los términos que no alcanzan el orden n.</p>
+<p><strong><code>SPV4-C20-E026-b</code></strong> Si <span class="math inline">\(b_j^1=a_{j-1}+a_{n-1}a_j\)</span>, al derivar (a) se obtiene <span class="math display">\[b_j^2=b_{j-1}^1+b_{n-1}^1a_j,\]</span> con <span class="math inline">\(b_{-1}^1=0\)</span>. Sustituir da la fórmula explícita <span class="math display">\[f^{(n+2)}=\sum_{j=0}^{n-1}\left[a_{j-2}+a_{n-1}a_{j-1}+(a_{n-2}+a_{n-1}^2)a_j\right]f^{(j)}.\]</span> Se fija aⱼ=0 para índices negativos. Con esta convención también n=1 funciona: f′=a₀f implica f′′′=a₀³f.</p>
+<p><strong><code>SPV4-C20-E026-c</code></strong> Ponga <span class="math inline">\(N=\max(1,|a_0|,\ldots,|a_{n-1}|)\)</span> y <span class="math inline">\(b_j^0=a_j\)</span>. En general, si <span class="math inline">\(f^{(n+k)}=\sum_jb_j^kf^{(j)}\)</span>, diferenciar y reducir el orden n da <span class="math display">\[b_j^{k+1}=b_{j-1}^k+b_{n-1}^ka_j,\qquad b_{-1}^k=0.\]</span> Si <span class="math inline">\(|b_j^k|\le2^kN^{k+1}\)</span>, entonces <span class="math display">\[|b_j^{k+1}|\le2^kN^{k+1}(1+N)\le2^{k+1}N^{k+2}.\]</span> La base k=0 es |aⱼ|≤N; por inducción queda <span class="math inline">\(|b_j^k|\le2^kN^{k+1}\)</span> para todo k≥0. En particular, k=1 da 2N² y k=2 da 4N³. La cota no multiplica por n en cada paso, porque cada coeficiente nuevo solo recibe los dos aportes indicados.</p>
+<p><strong><code>SPV4-C20-E026-d</code></strong> Para un punto x fijo, tome <span class="math inline">\(M_x=\sum_{j=0}^{n-1}|f^{(j)}(x)|\)</span>. Por (c), <span class="math display">\[|f^{(n+k)}(x)|\le M_x2^kN^{k+1}.\]</span> Para usar después Taylor se necesita la versión uniforme: en el segmento compacto I entre cero y x, defina <span class="math display">\[M_I=\sum_{j=0}^{n-1}\max_{t\in I}|f^{(j)}(t)|&lt;\infty.\]</span> La misma desigualdad vale para todo t∈I con Mᵢ en lugar de Mₓ. Es el paso adicional que permite controlar el punto desconocido del resto.</p>
+<p><strong><code>SPV4-C20-E026-e</code></strong> Suponga <span class="math inline">\(f^{(j)}(0)=0\)</span> para 0≤j≤n−1. La ecuación y (c) hacen nulas también todas las derivadas superiores en cero. El Taylor de orden n+k es, por tanto, cero. Por Lagrange y la cota uniforme de (d), <span class="math display">\[|f(x)|\le\frac{M_I2^{k+1}N^{k+2}|x|^{n+k+1}}{(n+k+1)!}\le\frac{M_I|2Nx|^{n+k+1}}{(n+k+1)!}.\]</span> La segunda desigualdad usa n≥1 y N≥1: <span class="math inline">\(2^{k+1}N^{k+2}\le(2N)^{n+k+1}\)</span>. Para x fijo, una potencia fija elevada al orden dividida por el factorial tiende a cero, por el argumento del cociente dado en E025. De ahí f(x)=0 y f≡0. La constante Mᵢ es independiente de k, condición indispensable para este límite.</p>
+<p><strong><code>SPV4-C20-E026-f</code></strong> Si f₁,f₂ satisfacen la misma ecuación y comparten los n datos iniciales, su diferencia satisface la ecuación por linealidad y tiene todos esos datos nulos. El apartado (e) obliga a que f₁−f₂=0: los datos iniciales determinan a lo sumo una solución.</p>
+<p>Para precisar la observación posterior del texto, si el polinomio característico tiene n raíces reales distintas α₁,…,αₙ, cada e^{αᵢx} es solución. Los datos iniciales de su combinación son <span class="math inline">\(\sum_i c_i\alpha_i^j\)</span>, 0≤j&lt;n.&nbsp;Este sistema puede resolverse para cualquier dato: la matriz de Vandermonde es invertible. Puede probarse sin teoría de matrices usando los polinomios de interpolación <span class="math inline">\(L_i(z)=\prod_{r\ne i}(z-\alpha_r)/(\alpha_i-\alpha_r)=\sum_{j=0}^{n-1}\ell_{ij}z^j\)</span>. Para datos prescritos <span class="math inline">\(y_j\)</span>, elija <span class="math inline">\(c_i=\sum_j\ell_{ij}y_j\)</span>. La identidad de interpolación <span class="math inline">\(z^k=\sum_i\alpha_i^kL_i(z)\)</span>, válida para k&lt;n, implica <span class="math inline">\(\sum_i\alpha_i^k\ell_{ij}=\delta_{kj}\)</span>; por tanto <span class="math inline">\(\sum_i c_i\alpha_i^k=y_k\)</span>. Se realizan todos los datos y, por unicidad, se obtienen todas las soluciones. Para raíces múltiples o complejas se requieren los bloques correspondientes; no se concluye que basten n exponenciales reales distintas cuando tal hipótesis falla.</p>
+</section>
+<section id="e027" class="level2">
+<h2 class="anchored" data-anchor-id="e027">E027 — Rigidez a partir de la segunda derivada de Schwarz</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 27, p.&nbsp;441.</p>
+<p><strong><code>SPV4-C20-E027-a</code></strong> Suponga f continua en [a,b], a&lt;b, f(a)=f(b) y <span class="math inline">\(D_S^2f(x)=0\)</span> para todo punto interior. Si f(x₀)&gt;f(a) en algún x₀ interior, elija ε&gt;0 tan pequeño que <span class="math display">\[g(x)=f(x)-\varepsilon(x-a)(b-x)\]</span> siga cumpliendo g(x₀)&gt;g(a)=g(b). La continuidad en el compacto obliga a que su máximo se alcance en un punto y interior. E023(c) da <span class="math inline">\(D_S^2g(y)\le0\)</span>. Pero la segunda derivada ordinaria, y por tanto la de Schwarz, de (x−a)(b−x) es −2. La linealidad del límite da <span class="math inline">\(D_S^2g(y)=2\varepsilon&gt;0\)</span>, contradicción.</p>
+<p>No puede haber un valor por encima del borde. Aplicar el mismo argumento a −f excluye un valor por debajo. Todos los valores coinciden con f(a), así que f es constante.</p>
+<p><strong><code>SPV4-C20-E027-b</code></strong> Sea ℓ la recta que une (a,f(a)) y (b,f(b)): <span class="math display">\[\ell(x)=f(a)+\frac{f(b)-f(a)}{b-a}(x-a).\]</span> La función f−ℓ es continua, tiene valores cero en los extremos y derivada de Schwarz nula en el interior, porque la segunda diferencia de una función afín es cero. Por (a), f−ℓ es constante; sus extremos fijan esa constante en cero. Por tanto f=ℓ. «Lineal» se entiende aquí como afín; no se impone que la recta pase por el origen.</p>
+</section>
+<section id="e028" class="level2">
+<h2 class="anchored" data-anchor-id="e028">E028 — Aproximación cuadrática sin segunda derivada</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C20, problema 28, p.&nbsp;441.</p>
+<p><strong><code>SPV4-C20-E028-a</code></strong> Sea f(x)=x⁴sin(1/x²) para x≠0 y f(0)=0. Como <span class="math inline">\(|f(x)|\le x^4\)</span>, se tiene f(x)/x²→0: f coincide con el polinomio cero hasta orden dos en cero. Además f′(0)=lim f(h)/h=0. Para x≠0, <span class="math display">\[f'(x)=4x^3\sin(1/x^2)-2x\cos(1/x^2),\]</span> y por ello <span class="math inline">\(f'(x)/x=4x^2\sin(1/x^2)-2\cos(1/x^2)\)</span> no tiene límite en cero. Por ejemplo, con <span class="math inline">\(x_k=(2\pi k)^{-1/2}\)</span> el cociente vale −2, y con <span class="math inline">\(y_k=((2k+1)\pi)^{-1/2}\)</span> vale 2. Así f′′(0) no existe.</p>
+<p>Fuera de cero f es suave y tiene Taylor local cuadrático. La función de coeficientes cuadráticos es m(a)=f′′(a) si a≠0 y m(0)=0. Una diferenciación da <span class="math display">\[f''(x)=12x^2\sin(1/x^2)-10\cos(1/x^2)-\frac4{x^2}\sin(1/x^2),\quad x\ne0.\]</span> En los mismos puntos xₖ e yₖ, f′′ vale −10 y 10, respectivamente, y no tiende a m(0). Esto prueba la discontinuidad afirmada y muestra que una aproximación de Peano no puede identificarse sin más con una derivada iterada.</p>
+<p><strong><code>SPV4-C20-E028-b</code></strong> Suponga f diferenciable y, para todo a del intervalo, <span class="math display">\[f(x)=f(a)+f'(a)(x-a)+\frac{m(a)}2(x-a)^2+o((x-a)^2),\qquad m(a)=0.\]</span> Evaluar en x=a±h, sumar y dividir entre h² muestra que <span class="math inline">\(D_S^2f(a)=m(a)=0\)</span>. En cualquier subintervalo compacto, f es continua y E027(b) dice que es afín. Alrededor de cualquier punto a podemos elegir tal subintervalo; f′ es allí constante y f′′(a)=0=m(a). La conclusión es local en cada componente del dominio.</p>
+<p><strong><code>SPV4-C20-E028-c</code></strong> Suponga la misma aproximación en cada a y que m es continua en el intervalo abierto. Elija un punto fijo c y construya dos primitivas sucesivas: <span class="math display">\[F(x)=\int_c^x\left(\int_c^t m(s)ds\right)dt.\]</span> El teorema fundamental da F′′=m. Taylor local de F muestra que tiene la misma clase de aproximación con coeficiente cuadrático m(a). Al restarla de la de f, la función f−F es diferenciable y tiene coeficiente cuadrático cero en cada punto. Por (b), <span class="math inline">\((f-F)''=0\)</span>. En consecuencia f′′ existe en todos los puntos y <span class="math display">\[f''(a)=F''(a)=m(a).\]</span> La continuidad de m se usa para construir una función C² con esa segunda derivada; es precisamente la hipótesis ausente en el contraejemplo de (a).</p>
+<div id="fig-spv4-c20-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 20: Aproximación de segundo orden y diferencias simétricas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c20-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C20_assets/C20_05_schwarz_y_peano.png" class="img-fluid figure-img" alt="Capítulo 20: Aproximación de segundo orden y diferencias simétricas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c20-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Capítulo 20 · Figura 5. Aproximación de segundo orden y diferencias simétricas
+</figcaption>
+</figure>
+</div>
+<div id="fig-spv4-c20-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 20: Unicidad: cotas factoriales para un punto fijo">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c20-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C20_assets/C20_06_unicidad.png" class="img-fluid figure-img" alt="Capítulo 20: Unicidad: cotas factoriales para un punto fijo">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c20-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Capítulo 20 · Figura 6. Unicidad: cotas factoriales para un punto fijo
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="seccion-43842" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-43842">Notas de corrección y alcance</h2>
+<p>Las cotas numéricas se sustentan en restos de Taylor y comparaciones racionales. Las figuras se generan con fórmulas propias y se acompañan de sus datos. El inventario registra las 90 unidades, el cotejo posterior y las respuestas ya visibles en la fuente primaria. Los controles computacionales complementan las pruebas y no sustituyen una revisión matemática externa.</p>
+<p>Siguiente: <strong>C21 — e es trascendente</strong>, p.&nbsp;442 / PDF 461 de la copia consultada.</p>
+<hr>
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-19.html">← Capítulo 19</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-21.html">Capítulo 21 →</a></p>
+</div>
+<p>Soluciones originales de Alevi Peña · Matemática Abierta. <a href="../../../COPYING.FDL">Licencia GFDL 1.3 o posterior</a>.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>En E009(c), p.&nbsp;434, se corrige el rótulo x→0 a x→a para expresar la aproximación en el centro a. Se escribe además la composición en la coordenada h=x−a; así la afirmación sobre términos de grado superior a n conserva inequívocamente su centro. La identidad algebraica usada en la prueba sigue siendo válida con el límite literal x→0, pero no enunciaría el resultado local pretendido para a arbitrario.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

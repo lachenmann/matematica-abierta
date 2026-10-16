@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Capítulo 23 — Series infinitas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="spivak-c01.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#seccion-497" id="toc-seccion-497" class="nav-link active" data-scroll-target="#seccion-497">Una serie se decide mirando sus sumas parciales</a></li>
+  <li><a href="#e001" id="toc-e001" class="nav-link" data-scroll-target="#e001">E001 — Veinte decisiones de convergencia</a></li>
+  <li><a href="#e002" id="toc-e002" class="nav-link" data-scroll-target="#e002">E002* — El caso frontera que no decide el cociente</a></li>
+  <li><a href="#e003" id="toc-e003" class="nav-link" data-scroll-target="#e003">E003* — Tres exponentes logarítmicos</a></li>
+  <li><a href="#e004" id="toc-e004" class="nav-link" data-scroll-target="#e004">E004 — Una potencia apenas mayor que uno</a></li>
+  <li><a href="#e005" id="toc-e005" class="nav-link" data-scroll-target="#e005">E005 — Elevar los términos al cubo</a></li>
+  <li><a href="#e006" id="toc-e006" class="nav-link" data-scroll-target="#e006">E006 — Muestrear una función en 1/n</a></li>
+  <li><a href="#e007" id="toc-e007" class="nav-link" data-scroll-target="#e007">E007 — Decimales como series</a></li>
+  <li><a href="#e008" id="toc-e008" class="nav-link" data-scroll-target="#e008">E008 — El error de una serie alternante</a></li>
+  <li><a href="#e009" id="toc-e009" class="nav-link" data-scroll-target="#e009">E009 — Criterio de la raíz</a></li>
+  <li><a href="#e010" id="toc-e010" class="nav-link" data-scroll-target="#e010">E010 — Un producto de Cauchy que diverge</a></li>
+  <li><a href="#e011" id="toc-e011" class="nav-link" data-scroll-target="#e011">E011 — Omitir cifras cambia una suma de recíprocos</a></li>
+  <li><a href="#e012" id="toc-e012" class="nav-link" data-scroll-target="#e012">E012 — Suma de Cesàro sin convergencia ordinaria</a></li>
+  <li><a href="#e013" id="toc-e013" class="nav-link" data-scroll-target="#e013">E013 — Cesàro, positividad y una cota adicional</a></li>
+  <li><a href="#e014" id="toc-e014" class="nav-link" data-scroll-target="#e014">E014 — Reordenar sin el criterio de Cauchy</a></li>
+  <li><a href="#e015" id="toc-e015" class="nav-link" data-scroll-target="#e015">E015 — Subseries y separación de paridades</a></li>
+  <li><a href="#e016" id="toc-e016" class="nav-link" data-scroll-target="#e016">E016 — Desigualdad triangular para series</a></li>
+  <li><a href="#e017" id="toc-e017" class="nav-link" data-scroll-target="#e017">E017* — La integral de sinc no converge absolutamente</a></li>
+  <li><a href="#e018" id="toc-e018" class="nav-link" data-scroll-target="#e018">E018* — Picos estrechos e integral finita</a></li>
+  <li><a href="#e019" id="toc-e019" class="nav-link" data-scroll-target="#e019">E019* — Una gráfica continua de longitud infinita</a></li>
+  <li><a href="#e020" id="toc-e020" class="nav-link" data-scroll-target="#e020">E020 — Área geométrica e integral con signo</a></li>
+  <li><a href="#e021" id="toc-e021" class="nav-link" data-scroll-target="#e021">E021* — La serie binomial</a></li>
+  <li><a href="#e022" id="toc-e022" class="nav-link" data-scroll-target="#e022">E022 — Criterios de Dirichlet y Abel</a></li>
+  <li><a href="#e023" id="toc-e023" class="nav-link" data-scroll-target="#e023">E023* — Condensación de Cauchy</a></li>
+  <li><a href="#e024" id="toc-e024" class="nav-link" data-scroll-target="#e024">E024* — Productos de sucesiones cuadrado-sumables</a></li>
+  <li><a href="#e025" id="toc-e025" class="nav-link" data-scroll-target="#e025">E025* — Una consecuencia de la monotonía</a></li>
+  <li><a href="#e026" id="toc-e026" class="nav-link" data-scroll-target="#e026">E026* — Términos pequeños y sumas acotadas no bastan</a></li>
+  <li><a href="#e027" id="toc-e027" class="nav-link" data-scroll-target="#e027">E027 — Una transformación de términos positivos</a></li>
+  <li><a href="#e028" id="toc-e028" class="nav-link" data-scroll-target="#e028">E028 — Productos infinitos</a></li>
+  <li><a href="#e029" id="toc-e029" class="nav-link" data-scroll-target="#e029">E029 — Dos productos telescópicos</a></li>
+  <li><a href="#e030" id="toc-e030" class="nav-link" data-scroll-target="#e030">E030 — Fracciones unitarias distintas</a></li>
+  <li><a href="#seccion-42302" id="toc-seccion-42302" class="nav-link" data-scroll-target="#seccion-42302">Dónde se usaron los límites y qué queda abierto</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 23 — Series infinitas</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-22.html">← Capítulo 22</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-24.html">Capítulo 24 →</a></p>
+</div>
+<p>A. Peña · Matemática Abierta · 2026-10-15.</p>
+<p>Soluciones propias de los <strong>30 problemas y sus 80 unidades explícitas</strong>, incluidas todas las tareas con estrellas. No hay apéndice. Fuente: Michael Spivak, <em>Calculus</em>, cuarta edición, C23, pp.&nbsp;471–498; ejercicios pp.&nbsp;489–498 / PDF 508–517 de la copia consultada (PDF = impresa +19). Los enunciados se reducen al contenido matemático necesario. Las soluciones, explicaciones y figuras son propias; las correcciones al texto fuente se documentan al pie.</p>
+<section id="seccion-497" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-497">Una serie se decide mirando sus sumas parciales</h2>
+<p>Para dar sentido a <span class="math inline">\(a_1+a_2+\cdots\)</span> empezamos por las sumas finitas <span class="math inline">\(s_N=\sum_{n=1}^Na_n\)</span>. La serie converge si esa sucesión tiene un límite real S; entonces escribimos <span class="math inline">\(\sum_{n=1}^\infty a_n=S\)</span>. La condición <span class="math inline">\(a_n\to0\)</span> es necesaria, porque <span class="math inline">\(a_n=s_n-s_{n-1}\)</span>, pero no suficiente: la serie armónica tiene términos que tienden a cero y sumas sin cota superior.</p>
+<p>Si todos los términos son no negativos, las sumas parciales no decrecen. Basta entonces acotarlas para probar convergencia, y una serie conocida puede proporcionar esa cota. De aquí provienen las comparaciones con <span class="math inline">\(\sum q^n\)</span> para |q|&lt;1 y con <span class="math inline">\(\sum n^{-p}\)</span>, que converge exactamente para p&gt;1. El criterio integral justifica esta última clasificación y muchas comparaciones logarítmicas.</p>
+<p>Con signos distintos puede haber cancelación. La convergencia absoluta, <span class="math inline">\(\sum|a_n|&lt;\infty\)</span>, permite controlar las colas por sus magnitudes; los cambios de orden y la separación en subseries conservan entonces la suma. La convergencia condicional exige más cuidado: algunos términos positivos y negativos pueden equilibrarse sólo por el orden en que aparecen. En ambos casos utilizaremos el criterio de Cauchy para series: <span class="math display">\[\forall\varepsilon&gt;0\ \exists N\ \forall q\ge p&gt;N:
+\left|\sum_{n=p}^qa_n\right|&lt;\varepsilon.\]</span> Es exactamente el criterio de Cauchy de las sumas parciales. Una agrupación finita de términos consecutivos conserva las sumas parciales que terminan en un bloque; para concluir sobre todos los índices también controlaremos lo que sucede dentro de los bloques.</p>
+<div id="fig-spv4-c23-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 23: Sumas parciales y cancelación">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c23-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C23_assets/C23_01_sumas_parciales.png" class="img-fluid figure-img" alt="Capítulo 23: Sumas parciales y cancelación">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c23-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Capítulo 23 · Figura 1. Sumas parciales y cancelación
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e001" class="level2">
+<h2 class="anchored" data-anchor-id="e001">E001 — Veinte decisiones de convergencia</h2>
+<p>Fuente: Spivak, C23, problema 1, pp.&nbsp;489–491. Clasificamos las series indicadas; las sumas comienzan en el índice que evita términos indefinidos. Un cambio finito no altera la convergencia. «Diverge a infinito» se refiere al límite de las sumas parciales.</p>
+<p><strong><code>SPV4-C23-E001-i</code></strong> Para cualquier θ real, <span class="math inline">\(\sum_{n\ge1}\sin(n\theta)/n^2\)</span> converge absolutamente, pues <span class="math inline">\(|\sin(n\theta)/n^2|\le1/n^2\)</span> y la serie de cuadrados recíprocos converge.</p>
+<p><strong><code>SPV4-C23-E001-ii</code></strong> La serie <span class="math inline">\(1-1/3+1/5-1/7+\cdots\)</span> converge por Leibniz: las magnitudes 1/(2n−1) decrecen a cero. No converge absolutamente, pues <span class="math inline">\(1/(2n-1)\ge1/(2n)\)</span> y la armónica diverge. Es condicionalmente convergente.</p>
+<p><strong><code>SPV4-C23-E001-iii</code></strong> La serie <span class="math inline">\(1-1/2+2/3-1/3+2/4-1/4+2/5-1/5+\cdots\)</span> diverge a +∞. Después del primer par, cada par <span class="math inline">\((2/k,-1/k)\)</span>, k≥3, suma 1/k. Las sumas al final de esos pares son <span class="math inline">\(1/2+\sum_{k=3}^N1/k\to\infty\)</span>. Entre dos finales consecutivos se añade primero un término positivo; esas sumas también tienden a infinito. Alternar signos, por sí solo, no satisface las hipótesis de Leibniz.</p>
+<p><strong><code>SPV4-C23-E001-iv</code></strong> <span class="math inline">\(\sum_{n\ge1}(-1)^n(\log n)/n\)</span> converge condicionalmente. Para x&gt;e, la derivada de (log x)/x es <span class="math inline">\((1-\log x)/x^2&lt;0\)</span>, y sus valores tienden a cero. Leibniz se aplica desde una cola. La serie de valores absolutos diverge por el criterio integral, ya que <span class="math inline">\(\int_e^R(\log x)/x\,dx=[(\log x)^2-1]/2\to\infty\)</span>.</p>
+<p><strong><code>SPV4-C23-E001-v</code></strong> <span class="math inline">\(\sum_{n\ge2}(n^2-1)^{-1/3}\)</span> diverge: cada término es mayor que <span class="math inline">\(n^{-2/3}\)</span>, cuya serie diverge. El índice de la raíz es tres.</p>
+<p><strong><code>SPV4-C23-E001-vi</code></strong> <span class="math inline">\(\sum_{n\ge1}(n^2+1)^{-1/3}\)</span> también diverge. Como <span class="math inline">\(n^2+1\le2n^2\)</span>, el término es al menos <span class="math inline">\(2^{-1/3}n^{-2/3}\)</span>. Cambiar el signo dentro de la raíz cúbica no cambia esta comparación de orden.</p>
+<p><strong><code>SPV4-C23-E001-vii</code></strong> Para <span class="math inline">\(u_n=n^2/n!\)</span>, <span class="math inline">\(u_{n+1}/u_n=(n+1)/n^2\to0\)</span>. El criterio del cociente prueba convergencia.</p>
+<p><strong><code>SPV4-C23-E001-viii</code></strong> <span class="math inline">\(\sum(\log n)/n\)</span> diverge a +∞ por la integral calculada en (iv). No hay cancelación de signos.</p>
+<p><strong><code>SPV4-C23-E001-ix</code></strong> <span class="math inline">\(\sum_{n\ge2}1/\log n\)</span> diverge, pues <span class="math inline">\(\log n\le n\)</span> y por ello <span class="math inline">\(1/\log n\ge1/n\)</span>.</p>
+<p><strong><code>SPV4-C23-E001-x</code></strong> <span class="math inline">\(\sum_{n\ge2}(\log n)^{-k}\)</span> diverge para cualquier k real fijo. Si k≤0, sus términos no tienden a cero. Si k&gt;0, <span class="math inline">\(k\log\log n&lt;\log n\)</span> para n suficientemente grande, porque <span class="math inline">\(\log t/t\to0\)</span>. Así <span class="math inline">\((\log n)^k&lt;n\)</span> y el término supera 1/n en una cola. Se incluye, en particular, todo k natural.</p>
+<p><strong><code>SPV4-C23-E001-xi</code></strong> <span class="math inline">\(\sum_{n\ge2}(\log n)^{-n}\)</span> converge. Para n≥8 se tiene log n&gt;2, y los términos quedan por debajo de <span class="math inline">\(2^{-n}\)</span>. La magnitud grande de los primeros términos es irrelevante para la convergencia.</p>
+<p><strong><code>SPV4-C23-E001-xii</code></strong> <span class="math inline">\(\sum_{n\ge2}(-1)^n(\log n)^{-n}\)</span> converge absolutamente por (xi).</p>
+<p><strong><code>SPV4-C23-E001-xiii</code></strong> <span class="math inline">\(\sum n^2/(n^3+1)\)</span> diverge, porque <span class="math inline">\(n^3+1\le2n^3\)</span> para n≥1 y su término es al menos 1/(2n).</p>
+<p><strong><code>SPV4-C23-E001-xiv</code></strong> <span class="math inline">\(\sum\sin(1/n)\)</span> diverge. Como <span class="math inline">\(\sin t/t\to1\)</span> cuando t→0, para n grande se cumple <span class="math inline">\(\sin(1/n)\ge1/(2n)&gt;0\)</span>. La comparación armónica da divergencia a +∞.</p>
+<p><strong><code>SPV4-C23-E001-xv</code></strong> <span class="math inline">\(\sum_{n\ge2}1/(n\log n)\)</span> diverge. La función es positiva y decreciente en [2,∞), y <span class="math inline">\(\int_2^R dx/(x\log x)=\log\log R-\log\log2\to\infty\)</span>.</p>
+<p><strong><code>SPV4-C23-E001-xvi</code></strong> <span class="math inline">\(\sum_{n\ge2}1/[n(\log n)^2]\)</span> converge: su función continua positiva decrece y <span class="math display">\[\int_2^\infty\frac{dx}{x(\log x)^2}=\frac1{\log2}&lt;\infty.\]</span></p>
+<p><strong><code>SPV4-C23-E001-xvii</code></strong> <span class="math inline">\(\sum_{n\ge2}1/[n^2\log n]\)</span> converge, ya que <span class="math inline">\(1/[n^2\log n]\le1/[n^2\log2]\)</span>.</p>
+<p><strong><code>SPV4-C23-E001-xviii</code></strong> Para <span class="math inline">\(u_n=n!/n^n\)</span>, el cociente es <span class="math display">\[\frac{u_{n+1}}{u_n}=\left(\frac n{n+1}\right)^n\longrightarrow e^{-1}&lt;1.\]</span> Por tanto la serie converge.</p>
+<p><strong><code>SPV4-C23-E001-xix</code></strong> Para <span class="math inline">\(u_n=2^nn!/n^n\)</span>, el cociente tiende a 2/e&lt;1. La serie converge.</p>
+<p><strong><code>SPV4-C23-E001-xx</code></strong> Para <span class="math inline">\(u_n=3^nn!/n^n\)</span>, el cociente tiende a 3/e&gt;1. Los términos crecen al menos geométricamente a partir de una cola y no tienden a cero; la serie diverge. Las comparaciones 2&lt;e&lt;3 son las cotas elementales ya conocidas para e.</p>
+</section>
+<section id="e002" class="level2">
+<h2 class="anchored" data-anchor-id="e002">E002* — El caso frontera que no decide el cociente</h2>
+<p>Fuente: Spivak, C23, problema 2, p.&nbsp;491. Trabajamos primero con parámetros a&gt;0; al final aclaramos qué ocurre si se permiten negativos.</p>
+<p><strong><code>SPV4-C23-E002-a</code></strong> Probar que <span class="math inline">\(\sum e^nn!/n^n\)</span> diverge, completando la clasificación de <span class="math inline">\(\sum a^nn!/n^n\)</span>. El cociente tiende a a/e: converge si 0&lt;a<e y="" diverge="" si="" a="">e. En a=e, C22-E013 da, para n≥2, <span class="math display">\[n!&gt;\frac{n^n}{e^{n-1}},\qquad \frac{e^nn!}{n^n}&gt;e.\]</span> Los términos ni siquiera tienden a cero. Por tanto, para a≥0 la convergencia ocurre exactamente en 0≤a&lt;e, incluyendo la serie nula de a=0.</e></p>
+<p><strong><code>SPV4-C23-E002-b</code></strong> Decidir cuándo converge <span class="math inline">\(\sum n^n/(a^nn!)\)</span>, a&gt;0. El cociente de términos consecutivos tiende a e/a; converge si a&gt;e y diverge si a&lt;e. En a=e, la cota superior de C22-E013 da <span class="math display">\[\frac{n^n}{e^nn!}&gt;\frac{n^n}{(n+1)^{n+1}}
+=\frac1{n+1}\left(\frac n{n+1}\right)^n\ge\frac1{e(n+1)}.\]</span> La última desigualdad procede de <span class="math inline">\((1+1/n)^n\le e\)</span>, equivalente a <span class="math inline">\(n\log(1+1/n)\le1\)</span>. La comparación armónica prueba divergencia también en a=e.</p>
+<p><strong>Observación sobre el dominio.</strong> La frase de (a) «a&lt;e» necesita a≥0 si se lee como clasificación del parámetro.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Para a real, la primera serie converge absolutamente si |a|&lt;e y diverge si |a|≥e, por la misma cota de sus magnitudes. En la segunda a=0 no está definido; para |a|&gt;e hay convergencia absoluta, para 0&lt;|a|&lt;e los términos no tienden a cero, y en a=−e hay convergencia condicional. Para justificar este último extremo sin usar Stirling, ponga <span class="math inline">\(v_n=n^n/(e^nn!)\)</span>. Su cociente es <span class="math inline">\((1+1/n)^n/e&lt;1\)</span>, y vₙ→0: el valor medio integral de log, o su concavidad, da <span class="math display">\[\int_{k-1}^k\log x\,dx-\log k\le-\frac1{2k}\quad(k\ge2).\]</span> En efecto, <span class="math inline">\(\log k-\log x=\int_x^kdt/t\ge(k-x)/k\)</span>; al integrar resulta esa cota. Sumando, <span class="math display">\[\log v_n=n\log n-n-\log(n!)\le-1-\frac12\sum_{k=2}^n\frac1k\longrightarrow-\infty.\]</span> Así Leibniz se aplica a <span class="math inline">\((-1)^nv_n\)</span>, y la divergencia absoluta es la frontera positiva recién probada.</p>
+</section>
+<section id="e003" class="level2">
+<h2 class="anchored" data-anchor-id="e003">E003* — Tres exponentes logarítmicos</h2>
+<p>Fuente: Spivak, C23, problema 3, p.&nbsp;491.</p>
+<p><strong><code>SPV4-C23-E003-a</code></strong> Probar que <span class="math inline">\(\int_1^\infty e^y/y^y\,dy\)</span> converge considerando <span class="math inline">\(\sum(e/n)^n\)</span>. Para n≥6 se tiene e/n&lt;1/2 y, por tanto, (e/n)ⁿ≤2⁻ⁿ. La comparación geométrica prueba convergencia. La función <span class="math inline">\(g(y)=e^y/y^y=\exp(y-y\log y)\)</span> es positiva y <span class="math inline">\(g'(y)=-g(y)\log y\le0\)</span> para y≥1. El criterio integral, o la comparación de cada integral sobre [n,n+1] con g(n), prueba la convergencia de la integral.</p>
+<p><strong><code>SPV4-C23-E003-b</code></strong> Probar que <span class="math inline">\(\sum_{n\ge2}(\log n)^{-\log n}\)</span> converge. Su término es <span class="math inline">\(f(n)\)</span>, donde <span class="math inline">\(f(x)=\exp[-(\log x)(\log\log x)]\)</span>. Para x suficientemente grande, la derivada de su logaritmo es <span class="math inline">\(-(\log\log x+1)/x&lt;0\)</span>. En la integral de esa cola hacemos y=log x: <span class="math display">\[\int\frac{dx}{(\log x)^{\log x}}=\int\frac{e^y}{y^y}\,dy.\]</span> La cola converge por (a); el prefijo finito es continuo y no afecta la conclusión. Se aplica el criterio integral sólo donde la monotonía ya está garantizada.</p>
+<p><strong><code>SPV4-C23-E003-c</code></strong> Probar que <span class="math inline">\(\sum_{n\ge2}(\log n)^{-\log\log n}\)</span> diverge. Ahora <span class="math inline">\(f(x)=\exp[-(\log\log x)^2]\)</span> es positiva y decreciente para x&gt;e. El mismo cambio y=log x transforma su integral en <span class="math display">\[\int\exp\bigl(y-(\log y)^2\bigr)\,dy.\]</span> Como <span class="math inline">\((\log y)^2/y\to0\)</span>, para y grande el integrando es al menos e^{y/2}, de integral divergente. El criterio integral da la divergencia de la serie. El logaritmo iterado en el exponente modifica decisivamente el resultado.</p>
+<div id="fig-spv4-c23-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 23: Tres escalas logarítmicas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c23-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C23_assets/C23_02_pruebas_y_fronteras.png" class="img-fluid figure-img" alt="Capítulo 23: Tres escalas logarítmicas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c23-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Capítulo 23 · Figura 2. Tres escalas logarítmicas
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e004" class="level2">
+<h2 class="anchored" data-anchor-id="e004">E004 — Una potencia apenas mayor que uno</h2>
+<p>Fuente: Spivak, C23, problema 4, p.&nbsp;492.</p>
+<p><strong><code>SPV4-C23-E004</code></strong> Decidir si converge <span class="math inline">\(\sum n^{-1-1/n}\)</span>. Como <span class="math inline">\(n^{1/n}\to1\)</span>, para n grande <span class="math inline">\(n^{1/n}\le2\)</span>. Luego <span class="math inline">\(n^{-1-1/n}\ge1/(2n)\)</span>; la serie diverge. El criterio de las p-series presupone un exponente fijo: aquí el exponente depende de n.</p>
+</section>
+<section id="e005" class="level2">
+<h2 class="anchored" data-anchor-id="e005">E005 — Elevar los términos al cubo</h2>
+<p>Fuente: Spivak, C23, problema 5, p.&nbsp;492.</p>
+<p><strong><code>SPV4-C23-E005-a</code></strong> Si <span class="math inline">\(\sum a_n\)</span> converge absolutamente, probar lo mismo para <span class="math inline">\(\sum a_n^3\)</span>. Como aₙ→0, en una cola |aₙ|≤1 y entonces <span class="math inline">\(|a_n|^3\le|a_n|\)</span>. La comparación y el prefijo finito prueban convergencia absoluta.</p>
+<p><strong><code>SPV4-C23-E005-b</code></strong>* Mostrar que la convergencia condicional de <span class="math inline">\(\sum a_n\)</span> no basta. Para cada m≥1 concatene el bloque <span class="math inline">\((u_m,u_m,-2u_m)\)</span>, donde <span class="math inline">\(u_m=m^{-1/3}\)</span>. Cada bloque suma cero y las sumas parciales interiores tienen módulo a lo sumo 2uₘ→0. Por eso la serie completa converge a cero. No converge absolutamente, pues cada bloque de magnitudes suma 4m^{-1/3}. En cambio, los cubos del bloque suman <span class="math display">\[u_m^3+u_m^3-8u_m^3=-\frac6m.\]</span> Sus sumas al final de los bloques tienden a −∞; las variaciones interiores son O(1/m), de modo que la serie de cubos diverge a −∞.</p>
+</section>
+<section id="e006" class="level2">
+<h2 class="anchored" data-anchor-id="e006">E006 — Muestrear una función en 1/n</h2>
+<p>Fuente: Spivak, C23, problema 6, p.&nbsp;492. Sea f continua en un intervalo alrededor de cero y <span class="math inline">\(a_n=f(1/n)\)</span> para n suficientemente grande. Un prefijo ajeno al dominio puede fijarse arbitrariamente.</p>
+<p><strong><code>SPV4-C23-E006-a</code></strong> Si <span class="math inline">\(\sum a_n\)</span> converge, aₙ→0; por continuidad, <span class="math inline">\(f(0)=\lim f(1/n)=0\)</span>.</p>
+<p><strong><code>SPV4-C23-E006-b</code></strong> Si además existe f′(0), probar f′(0)=0. De (a), f(0)=0 y <span class="math display">\[na_n=\frac{f(1/n)-f(0)}{1/n}\longrightarrow f'(0).\]</span> Si este límite fuera L≠0, los términos tendrían finalmente el signo de L y módulo al menos |L|/(2n). La comparación armónica haría divergir la serie a +∞ o −∞. Luego L=0.</p>
+<p><strong><code>SPV4-C23-E006-c</code></strong> Si existe f″(0) y f(0)=f′(0)=0, probar que <span class="math inline">\(\sum a_n\)</span> converge. La existencia de f″(0) implica <span class="math inline">\(|f'(t)|\le C|t|\)</span> cerca de cero, para alguna C, porque <span class="math inline">\(f'(t)/t\to f''(0)\)</span>. Por valor medio, <span class="math inline">\(f(x)=f'(\xi)x\)</span> con ξ entre 0 y x, y entonces <span class="math inline">\(|f(x)|\le Cx^2\)</span>. En particular <span class="math inline">\(|a_n|\le C/n^2\)</span> para n grande. La serie converge absolutamente. No se supone continuidad de f″ en un intervalo.</p>
+<p><strong><code>SPV4-C23-E006-d</code></strong> ¿Debe existir f′(0) si la serie converge? No.&nbsp;Tome f(0)=0 y <span class="math inline">\(f(x)=x\sin(\pi/x)\)</span> para x≠0. Es continua en cero porque |f(x)|≤|x|, y f(1/n)=0 para todos los n.&nbsp;Sin embargo <span class="math inline">\(f(x)/x=\sin(\pi/x)\)</span> no tiene límite en cero: por ejemplo, en <span class="math inline">\(x=1/(2m+1/2)\)</span> vale uno y en <span class="math inline">\(x=1/(2m+3/2)\)</span> vale −1. No hay derivada.</p>
+<p><strong><code>SPV4-C23-E006-e</code></strong> ¿Basta f(0)=f′(0)=0 para la convergencia? No.&nbsp;En <span class="math inline">\(0&lt;|x|&lt;e^{-1}\)</span> defina <span class="math inline">\(f(x)=x/\log(1/|x|)\)</span> y f(0)=0. La razón f(x)/x tiende a cero, de modo que f′(0)=0 y f es continua en cero. Para n grande, <span class="math inline">\(f(1/n)=1/(n\log n)\)</span>, cuya serie diverge por E001(xv).</p>
+</section>
+<section id="e007" class="level2">
+<h2 class="anchored" data-anchor-id="e007">E007 — Decimales como series</h2>
+<p>Fuente: Spivak, C23, problema 7, p.&nbsp;492.</p>
+<p><strong><code>SPV4-C23-E007-a</code></strong> Para dígitos enteros 0≤aₙ≤9, probar que <span class="math inline">\(\sum a_n10^{-n}\)</span> existe y está en [0,1]. Sus sumas parciales no decrecen y <span class="math display">\[0\le\sum_{n=1}^Na_n10^{-n}\le\sum_{n=1}^N9\,10^{-n}=1-10^{-N}&lt;1.\]</span> Por monotonía y acotación tienen un límite entre cero y uno. El valor uno se alcanza si todos los dígitos son nueve.</p>
+<p><strong><code>SPV4-C23-E007-b</code></strong> Construir esos dígitos para cada x∈[0,1]. Si x&lt;1, ponga r₀=x y, recursivamente, <span class="math inline">\(a_n=\lfloor10r_{n-1}\rfloor\)</span>, <span class="math inline">\(r_n=10r_{n-1}-a_n\)</span>. Entonces 0≤rₙ&lt;1 y 0≤aₙ≤9, y por inducción <span class="math display">\[x=\sum_{j=1}^na_j10^{-j}+r_n10^{-n}.\]</span> El resto tiende a cero. Para x=1 se toman todos los dígitos nueve, pues la indicación inicial <span class="math inline">\(a_1=\lfloor10x\rfloor\)</span> produciría el dígito inadmisible diez si se usara sin separar ese extremo.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><strong><code>SPV4-C23-E007-c</code></strong> Si el bloque de longitud k, a₁,…,aₖ, se repite desde el principio, sea <span class="math inline">\(A=\sum_{j=1}^ka_j10^{k-j}\)</span> el entero que representa. Por la suma geométrica, <span class="math display">\[x=\frac A{10^k}\sum_{m=0}^\infty10^{-mk}=\frac A{10^k-1}.\]</span> Si la repetición empieza después de N dígitos, con entero inicial B y bloque repetido A, la fórmula es <span class="math display">\[x=\frac B{10^N}+\frac A{10^N(10^k-1)}.\]</span> En ambos casos el número es racional, incluidos los bloques de ceros o nueves.</p>
+<p><strong><code>SPV4-C23-E007-d</code></strong> Si el valor de un decimal es racional, probar que cualquier representación suya es eventualmente periódica. Para x=p/q en [0,1), la división larga mantiene restos enteros entre 0 y q−1. Si aparece cero, la expansión termina y se completa con ceros; si no, algún resto se repite por haber sólo finitos posibles. A partir de esa repetición se repiten también los dígitos. Esto prueba la afirmación para la expansión de división larga.</p>
+<p>Para incluir cualquier otra expansión, si dos listas de dígitos difieren primero en la posición j y, por ejemplo, aⱼ&lt;bⱼ, la igualdad de sus valores exige <span class="math display">\[10^{-j}\le(b_j-a_j)10^{-j}
+=\sum_{n&gt;j}(a_n-b_n)10^{-n}\le\sum_{n&gt;j}9\,10^{-n}=10^{-j}.\]</span> Todas las desigualdades deben ser igualdades: bⱼ−aⱼ=1 y, después de j, todos los dígitos de la primera lista son nueve y los de la segunda cero. Es la única ambigüedad posible y ambas colas son periódicas. Para x=0 sólo caben ceros; para x=1, todos nueves. Queda cubierta cualquier representación del racional.</p>
+</section>
+<section id="e008" class="level2">
+<h2 class="anchored" data-anchor-id="e008">E008 — El error de una serie alternante</h2>
+<p>Fuente: Spivak, C23, problema 8, p.&nbsp;492; hipótesis de Leibniz cotejadas en p.&nbsp;481 / PDF 500.</p>
+<p><strong><code>SPV4-C23-E008</code> — Problema corregido.</strong> Si a₁≥a₂≥…≥0 y aₙ→0, sea <span class="math inline">\(S=\sum(-1)^{n+1}a_n\)</span> y <span class="math inline">\(s_N=\sum_{n=1}^N(-1)^{n+1}a_n\)</span>. Probar <span class="math display">\[|S-s_N|\le a_{N+1}.\]</span> Precisar el signo estricto del original.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><strong>Solución.</strong> Aplique el encierro de las sumas pares e impares a la cola alternante que empieza en aₙ₊₁. Su suma, con primer signo positivo, pertenece a [0,aₙ₊₁]. En símbolos, <span class="math display">\[0\le(-1)^N(S-s_N)\le a_{N+1}.\]</span> Esto prueba la cota y el signo del error. Si la sucesión es positiva y estrictamente decreciente, la cola es mayor o igual que <span class="math inline">\(a_{N+1}-a_{N+2}&gt;0\)</span> y menor o igual que <span class="math inline">\(a_{N+1}-a_{N+2}+a_{N+3}&lt;a_{N+1}\)</span>; se recupera el signo estricto.</p>
+<p>Con las hipótesis no estrictas puede haber igualdad. Tome <span class="math inline">\(a_{2m-1}=a_{2m}=1/m\)</span>. Las sumas al final de cada par son cero y las intermedias tienden a cero, así que S=0. Para N=1, <span class="math inline">\(|S-s_1|=1=a_2\)</span>. Todos los términos son positivos y cumplen las hipótesis impresas de Leibniz.</p>
+</section>
+<section id="e009" class="level2">
+<h2 class="anchored" data-anchor-id="e009">E009 — Criterio de la raíz</h2>
+<p>Fuente: Spivak, C23, problema 9, p.&nbsp;493.</p>
+<p><strong><code>SPV4-C23-E009-a</code></strong> Para aₙ≥0 y <span class="math inline">\(a_n^{1/n}\to r\)</span>, probar convergencia si r&lt;1 y divergencia si r&gt;1. En el primer caso elija r&lt;s&lt;1. En una cola, <span class="math inline">\(a_n^{1/n}\le s\)</span>, por lo que aₙ≤sⁿ y se compara con una geométrica. En el segundo elija 1&lt;s&lt;r: aₙ≥sⁿ en una cola y sus términos no tienden a cero.</p>
+<p>El mismo argumento prueba la forma con límite superior R: si <span class="math inline">\(\limsup a_n^{1/n}&lt;1\)</span>, existe s&lt;1 que acota todas las raíces de una cola, y la serie converge. Si R&gt;1, hay infinitos índices con raíz mayor que un s&gt;1, por lo que los términos no tienden a cero. Incluso infinitas raíces ≥1 bastan para divergencia, pues entonces aₙ≥1 en esos índices. Cuando R=1 el criterio no decide: <span class="math inline">\(\sum1/n^2\)</span> converge y <span class="math inline">\(\sum1/n\)</span> diverge, aunque ambas raíces n-ésimas tiendan a uno.</p>
+<p><strong><code>SPV4-C23-E009-b</code></strong> Probar que, cuando el criterio del cociente decide, el de la raíz también decide. Para términos positivos y un cociente con límite finito r≥0, C22-E018 da <span class="math inline">\(a_n^{1/n}\to r\)</span>, incluidos r=0 y los dos casos r&lt;1, r&gt;1. Si los cocientes tienden a +∞, para cualquier K&gt;1 todos los cocientes de una cola son ≥K; multiplicarlos muestra que el límite inferior de las raíces es al menos K, y por arbitrariedad de K las raíces tienden a +∞. También las versiones uniformes <span class="math inline">\(a_{n+1}/a_n\le q&lt;1\)</span> en una cola o <span class="math inline">\(a_{n+1}/a_n\ge q&gt;1\)</span> producen las correspondientes cotas geométricas. Los términos nulos que hagan indefinido el cociente quedan fuera de esa aplicación, aunque el criterio de la raíz siga disponible.</p>
+</section>
+<section id="e010" class="level2">
+<h2 class="anchored" data-anchor-id="e010">E010 — Un producto de Cauchy que diverge</h2>
+<p>Fuente: Spivak, C23, problema 10, p.&nbsp;493.</p>
+<p><strong><code>SPV4-C23-E010</code></strong> Sean <span class="math inline">\(a_n=b_n=(-1)^n/\sqrt n\)</span> y <span class="math inline">\(c_n=\sum_{k=1}^na_kb_{n+1-k}\)</span>. Probar |cₙ|≥1 y la divergencia de <span class="math inline">\(\sum c_n\)</span>. Todos los productos de la n-ésima diagonal tienen el mismo signo <span class="math inline">\((-1)^{n+1}\)</span>, así que <span class="math display">\[|c_n|=\sum_{k=1}^n\frac1{\sqrt{k(n+1-k)}}.\]</span> Como k≤n y n+1−k≤n, cada denominador es a lo sumo n.&nbsp;Los n sumandos son al menos 1/n y la suma es ≥1. Por tanto cₙ no tiende a cero. Las dos series originales convergen por Leibniz, pero no absolutamente; su producto de Cauchy puede fallar incluso la condición necesaria de convergencia.</p>
+</section>
+<section id="e011" class="level2">
+<h2 class="anchored" data-anchor-id="e011">E011 — Omitir cifras cambia una suma de recíprocos</h2>
+<p>Fuente: Spivak, C23, problema 11, p.&nbsp;493. Se usa la representación decimal usual sin ceros iniciales.</p>
+<p><strong><code>SPV4-C23-E011-a</code></strong> Probar que la suma de los recíprocos de los naturales sin cifra nueve converge. Entre los números de m cifras, hay <span class="math inline">\(8\cdot9^{m-1}\)</span> que no contienen nueve: ocho posibilidades para la primera cifra, 1,…,8, y nueve para cada posición restante, 0,…,8. Cada uno es al menos <span class="math inline">\(10^{m-1}\)</span>. La contribución de todo ese bloque es entonces a lo sumo <span class="math display">\[\frac{8\cdot9^{m-1}}{10^{m-1}}=8(9/10)^{m-1}.\]</span> La suma sobre m es geométrica y finita. Como los términos son positivos, esta cota de los bloques acota todas las sumas parciales.</p>
+<p><strong><code>SPV4-C23-E011-b</code></strong> Probar lo mismo para los naturales que no contienen las diez cifras. Para cada dígito d, la cantidad de números de m cifras que lo omiten es a lo sumo 9ᵐ: es una cota válida aunque permita ceros iniciales. Por ello su suma de recíprocos es a lo sumo <span class="math inline">\(10(9/10)^m\)</span>. El conjunto pedido es la unión de los diez conjuntos que omiten un dígito específico. Sumando sus cotas se obtiene una suma finita; los números que omiten varios dígitos se cuentan más de una vez en la cota, lo que sólo la aumenta.</p>
+</section>
+<section id="e012" class="level2">
+<h2 class="anchored" data-anchor-id="e012">E012 — Suma de Cesàro sin convergencia ordinaria</h2>
+<p>Fuente: Spivak, C23, problema 12, pp.&nbsp;493–494. Se define la suma de Cesàro de <span class="math inline">\(\sum a_n\)</span> como el límite, cuando existe, de <span class="math inline">\(\sigma_N=(s_1+\cdots+s_N)/N\)</span>.</p>
+<p><strong><code>SPV4-C23-E012</code></strong> Dar una serie divergente con suma de Cesàro. Para aₙ=(−1)ⁿ⁺¹, las sumas parciales son 1,0,1,0,… y no convergen. Sin embargo <span class="math inline">\(\sigma_N=\lceil N/2\rceil/N\to1/2\)</span>. Es sumable por Cesàro con valor 1/2. Esto no convierte 1/2 en una suma ordinaria de la serie.</p>
+</section>
+<section id="e013" class="level2">
+<h2 class="anchored" data-anchor-id="e013">E013 — Cesàro, positividad y una cota adicional</h2>
+<p>Fuente: Spivak, C23, problema 13, p.&nbsp;494.</p>
+<p><strong><code>SPV4-C23-E013</code></strong> Si aₙ&gt;0, la serie es sumable por Cesàro y n aₙ está acotada, probar convergencia ordinaria. Sea C una cota superior de n aₙ. Una inversión de dos sumas finitas da <span class="math display">\[\sigma_n=\frac1n\sum_{k=1}^ns_k
+=\frac1n\sum_{j=1}^n(n-j+1)a_j,\]</span> y por tanto <span class="math display">\[s_n-\frac n{n+1}\sigma_n=\frac1{n+1}\sum_{j=1}^nj a_j\le\frac{nC}{n+1}\le C.\]</span> La sucesión σₙ converge y es acotada; de la identidad resulta una cota superior para sₙ. Como los términos son positivos, sₙ no decrece, así que converge. Su límite coincide con la suma de Cesàro por C22-E016.</p>
+<p><strong>Observación.</strong> Con positividad, la hipótesis sobre n aₙ puede incluso omitirse: <span class="math inline">\(\sigma_{2n}\ge s_n/2\)</span>, porque al menos n de las sumas parciales promediadas son ≥sₙ. La acotación de σₙ ya acota sₙ. La prueba principal conserva y utiliza las dos hipótesis pedidas.</p>
+</section>
+<section id="e014" class="level2">
+<h2 class="anchored" data-anchor-id="e014">E014 — Reordenar sin el criterio de Cauchy</h2>
+<p>Fuente: Spivak, C23, problema 14, p.&nbsp;494. Un reordenamiento significa <span class="math inline">\(b_n=a_{\pi(n)}\)</span> para una biyección π:N→N; se reordenan índices, también cuando hay valores repetidos. Primero suponemos aₙ≥0 y escribimos <span class="math inline">\(s_n=\sum_{j=1}^na_j\)</span>, <span class="math inline">\(t_m=\sum_{j=1}^mb_j\)</span>.</p>
+<p><strong><code>SPV4-C23-E014-a</code></strong> Para cada n existe m con sₙ≤tₘ: tome <span class="math inline">\(m=\max\{\pi^{-1}(1),\ldots,\pi^{-1}(n)\}\)</span>. Los primeros m términos reordenados contienen todos los primeros n originales; sus términos adicionales son no negativos.</p>
+<p><strong><code>SPV4-C23-E014-b</code></strong> Si <span class="math inline">\(\sum b_n=T\)</span> existe, (a) da sₙ≤T para todo n.&nbsp;La sucesión sₙ es no decreciente y acotada, así que converge a S≤T. Esto prueba también la existencia de la suma del lado izquierdo.</p>
+<p><strong><code>SPV4-C23-E014-c</code></strong> Aplicar (b) al reordenamiento inverso da T≤S; por tanto S=T. La convergencia de cualquiera de las dos series implica la de la otra y la igualdad de sus sumas. Si no convergen, ambas sumas parciales tienden a +∞; no se afirma una igualdad de dos sumas reales inexistentes.</p>
+<p><strong><code>SPV4-C23-E014-d</code></strong> Extender el resultado a convergencia absoluta. Defina <span class="math inline">\(a_n^+=\max(a_n,0)\)</span> y <span class="math inline">\(a_n^-=\max(-a_n,0)\)</span>. Ambas series son no negativas y convergen, porque están dominadas por <span class="math inline">\(\sum|a_n|\)</span>. Sus reordenamientos conservan las sumas por (a)–(c). Restando, el reordenamiento de aₙ converge a <span class="math inline">\(\sum a_n^+-\sum a_n^-=\sum a_n\)</span>. Además, <span class="math inline">\(|b_n|=|a_{\pi(n)}|\)</span> y la parte no negativa muestra que <span class="math inline">\(\sum|b_n|=\sum|a_n|\)</span>. No se usó el criterio de Cauchy en esta demostración.</p>
+</section>
+<section id="e015" class="level2">
+<h2 class="anchored" data-anchor-id="e015">E015 — Subseries y separación de paridades</h2>
+<p>Fuente: Spivak, C23, problema 15, p.&nbsp;494.</p>
+<p><strong><code>SPV4-C23-E015-a</code></strong> Si <span class="math inline">\(\sum|a_n|\)</span> converge y bₖ=aₙₖ es una subsucesión, sus sumas parciales de magnitudes cumplen <span class="math display">\[\sum_{k=1}^M|b_k|\le\sum_{n=1}^{n_M}|a_n|\le\sum_{n=1}^\infty|a_n|.\]</span> Son no decrecientes y acotadas, de modo que la subserie converge absolutamente.</p>
+<p><strong><code>SPV4-C23-E015-b</code></strong> Sin convergencia absoluta puede fallar: la armónica alternante converge, pero su subserie de términos positivos <span class="math inline">\(1+1/3+1/5+\cdots\)</span> diverge. Más generalmente, si una serie es condicionalmente convergente, las sumas de sus partes positiva y negativa no pueden ser ambas finitas; de hecho ambas son infinitas, pues su diferencia converge y su suma absoluta diverge. Una subserie de cada signo proporciona el fallo.</p>
+<p><strong><code>SPV4-C23-E015-c</code></strong>* Probar que una serie absolutamente convergente se separa en la suma de los términos impares y la de los pares. Ambas subseries convergen por (a). Para cada N, <span class="math display">\[s_{2N}=\sum_{k=1}^Na_{2k-1}+\sum_{k=1}^Na_{2k}.\]</span> Pasar al límite en esta identidad finita da la igualdad pedida. No se distribuye informalmente una suma infinita antes de justificar los dos límites.</p>
+</section>
+<section id="e016" class="level2">
+<h2 class="anchored" data-anchor-id="e016">E016 — Desigualdad triangular para series</h2>
+<p>Fuente: Spivak, C23, problema 16, p.&nbsp;494.</p>
+<p><strong><code>SPV4-C23-E016</code></strong> Si <span class="math inline">\(\sum a_n\)</span> converge absolutamente, probar <span class="math inline">\(|\sum a_n|\le\sum|a_n|\)</span>. Para cada N la desigualdad triangular finita da <span class="math inline">\(|s_N|\le\sum_{n=1}^N|a_n|\)</span>. Ambos lados tienen límite; la continuidad de valor absoluto conserva la desigualdad al pasar al límite.</p>
+</section>
+<section id="e017" class="level2">
+<h2 class="anchored" data-anchor-id="e017">E017* — La integral de sinc no converge absolutamente</h2>
+<p>Fuente: Spivak, C23, problema 17, p.&nbsp;494; remisión a C19-E043.</p>
+<p><strong><code>SPV4-C23-E017</code></strong> Probar que <span class="math inline">\(\int_0^\infty|\sin x/x|\,dx\)</span> diverge. Cerca de cero se completa el integrando con valor uno y es continuo, así que allí no hay problema. Para cada k≥0, en el intervalo <span class="math inline">\([k\pi+\pi/6,k\pi+5\pi/6]\)</span> se cumple |sin x|≥1/2 y x≤(k+1)π. Su contribución es al menos <span class="math display">\[\frac{2\pi/3}{2(k+1)\pi}=\frac1{3(k+1)}.\]</span> Los intervalos son disjuntos y las cotas suman una serie armónica divergente. Por tanto la integral absoluta diverge. Esto es compatible con la convergencia de la integral con signo demostrada en C19: las oscilaciones cancelan áreas que en valor absoluto se acumulan.</p>
+</section>
+<section id="e018" class="level2">
+<h2 class="anchored" data-anchor-id="e018">E018* — Picos estrechos e integral finita</h2>
+<p>Fuente: Spivak, C23, problema 18, p.&nbsp;494.</p>
+<p><strong><code>SPV4-C23-E018</code></strong> Construir f continua y no negativa con <span class="math inline">\(\int_0^\infty f&lt;\infty\)</span> pero sin límite cuando x→∞. Para n≥1 tome un pico triangular de altura uno, centro n y semiancho δₙ=4⁻ⁿ: <span class="math display">\[f(x)=\begin{cases}1-|x-n|/\delta_n,&amp;|x-n|\le\delta_n\text{ para algún }n\ge1,\\0,&amp;\text{en otro caso}.\end{cases}\]</span> Los soportes son disjuntos, los bordes de cada triángulo valen cero y en cualquier segmento compacto sólo hay finitos picos. Así f es continua, incluso si se la define en toda R con cero para los puntos restantes. El área de cada pico es δₙ, por lo que <span class="math display">\[\int_0^\infty f(x)\,dx=\sum_{n=1}^\infty4^{-n}=\frac13.\]</span> La igualdad se justifica primero en segmentos que contienen picos completos y luego por monotonía y la cota de las áreas restantes. Pero f(n)=1 y f(n+1/2)=0; dos sucesiones que tienden a infinito producen valores distintos. No existe el límite.</p>
+</section>
+<section id="e019" class="level2">
+<h2 class="anchored" data-anchor-id="e019">E019* — Una gráfica continua de longitud infinita</h2>
+<p>Fuente: Spivak, C23, problema 19, p.&nbsp;495; definición de longitud poligonal en C13-E025, p.&nbsp;277 / PDF 296, cotejada con la copia actual.</p>
+<p><strong><code>SPV4-C23-E019</code></strong> Sea f(0)=0 y f(x)=x sin(1/x) para 0&lt;x≤1. Probar que las longitudes poligonales inscritas no están acotadas. Para una partición P={t₀,…,tᵣ}, <span class="math display">\[\ell(f,P)=\sum_{j=1}^r\sqrt{(t_j-t_{j-1})^2+[f(t_j)-f(t_{j-1})]^2}.\]</span> Cada segmento mide al menos su variación vertical. Tome <span class="math inline">\(x_j=2/[(2j+1)\pi]\)</span>, j=0,…,m. Entonces <span class="math inline">\(f(x_j)=(-1)^jx_j\)</span>. Una partición que contenga 0,xₘ,…,x₀,1 satisface <span class="math display">\[\ell(f,P)\ge\sum_{j=0}^{m-1}|f(x_j)-f(x_{j+1})|
+=\sum_{j=0}^{m-1}(x_j+x_{j+1})\ge2\sum_{j=1}^{m-1}x_j.\]</span> La última suma crece sin cota porque es un múltiplo de la suma de los recíprocos impares. Por tanto las longitudes son no acotadas. La continuidad en cero, derivada de |f(x)|≤x, no asegura longitud finita.</p>
+<div id="fig-spv4-c23-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 23: Picos integrables y oscilaciones de longitud infinita">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c23-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C23_assets/C23_03_picos_y_longitud.png" class="img-fluid figure-img" alt="Capítulo 23: Picos integrables y oscilaciones de longitud infinita">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c23-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Capítulo 23 · Figura 3. Picos integrables y oscilaciones de longitud infinita
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e020" class="level2">
+<h2 class="anchored" data-anchor-id="e020">E020 — Área geométrica e integral con signo</h2>
+<p>Fuente: Spivak, C23, problema 20 y figura 5, p.&nbsp;495 / PDF 514. Se conserva sólo la información geométrica que determina las áreas: en cada intervalo <span class="math inline">\([2^{-k},2^{-k+1}]\)</span>, k≥1, hay un triángulo de altura uno en valor absoluto, alternando positivo para k impar y negativo para k par.</p>
+<p><strong><code>SPV4-C23-E020</code></strong> Calcular <span class="math inline">\(\int_0^1f\)</span> y el área total sombreada. La base del k-ésimo triángulo mide 2⁻ᵏ, así que su área con signo es <span class="math inline">\((-1)^{k+1}2^{-k-1}\)</span>. La función está acotada por uno; cualquier tramo residual junto a cero tiene contribución absoluta no mayor que su longitud. Se puede integrar primero desde un extremo diádico hasta uno y hacer que ese extremo tienda a cero. La misma cota, o una partición con un intervalo inicial pequeño y una parte restante poligonal, prueba la integrabilidad de Riemann en todo [0,1]. Por tanto <span class="math display">\[\int_0^1f(x)\,dx=\frac14-\frac18+\frac1{16}-\cdots=\frac16.\]</span> El área geométrica suma todas las magnitudes: <span class="math display">\[\int_0^1|f(x)|\,dx=\frac14+\frac18+\frac1{16}+\cdots=\frac12.\]</span> El valor asignado a f(0) no afecta estas integrales. La posición horizontal de cada vértice no cambia el área del triángulo, de modo que no es necesario inferirla de la escala del dibujo.</p>
+<div id="fig-spv4-c23-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 23: Áreas alternantes de bases diádicas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c23-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C23_assets/C23_04_areas_con_signo.png" class="img-fluid figure-img" alt="Capítulo 23: Áreas alternantes de bases diádicas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c23-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Capítulo 23 · Figura 4. Áreas alternantes de bases diádicas
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e021" class="level2">
+<h2 class="anchored" data-anchor-id="e021">E021* — La serie binomial</h2>
+<p>Fuente: Spivak, C23, problema 21, p.&nbsp;495. Para α real defina <span class="math inline">\(\binom\alpha0=1\)</span> y <span class="math inline">\(\binom\alpha k=\alpha(\alpha-1)\cdots(\alpha-k+1)/k!\)</span> para k≥1. Queremos probar <span class="math display">\[(1+x)^\alpha=\sum_{k=0}^\infty\binom\alpha kx^k\qquad(|x|&lt;1).\]</span> Los coeficientes son los de Taylor en cero. Convergencia de una serie de coeficientes no identifica por sí sola la función: también hay que controlar el resto.</p>
+<p><strong><code>SPV4-C23-E021-a</code></strong> Probar convergencia para |r|&lt;1 y que los términos tienden a cero. Si α es un entero no negativo, la serie termina y es un polinomio. En los demás casos, para r≠0 los términos son no nulos y el cociente de sus magnitudes es <span class="math display">\[\left|\frac{\binom\alpha{k+1}r^{k+1}}{\binom\alpha k r^k}\right|
+=|r|\frac{|\alpha-k|}{k+1}\longrightarrow|r|&lt;1.\]</span> Por el criterio del cociente hay convergencia absoluta y, por ello, <span class="math inline">\(\binom\alpha n r^n\to0\)</span>. En r=0 la afirmación es inmediata.</p>
+<p><strong><code>SPV4-C23-E021-b</code></strong> Para 0≤x&lt;1, probar que el resto de Taylor Rₙ(x) tiende a cero mediante la forma de Lagrange. Para n+1&gt;α y algún t entre 0 y x, <span class="math display">\[R_n(x)=\binom\alpha{n+1}(1+t)^{\alpha-n-1}x^{n+1}.\]</span> El factor de potencia tiene valor entre cero y uno porque 1+t≥1 y el exponente es negativo. Luego <span class="math inline">\(|R_n(x)|\le|\binom\alpha{n+1}x^{n+1}|\to0\)</span> por (a). En x=0 el resto es cero. Se obtiene la identidad binomial en el semintervalo no negativo.</p>
+<p><strong><code>SPV4-C23-E021-c</code></strong> Para −1&lt;x&lt;0, probar las dos cotas indicadas y anular el resto de Cauchy. Si x≤t≤0, entonces <span class="math display">\[|x(1+t)^{\alpha-1}|\le|x|M,\qquad M=\max(1,(1+x)^{\alpha-1}),\]</span> pues 1+t recorre el segmento positivo [1+x,1]. Además <span class="math display">\[\left|\frac{x-t}{1+t}\right|=|x|\frac{1-t/x}{1+t}\le|x|.\]</span> Para la última desigualdad basta observar que <span class="math inline">\(t(1+x)\le0\)</span>, equivalente a <span class="math inline">\(-x+t\le(-x)(1+t)\)</span>; el denominador es positivo.</p>
+<p>La forma de Cauchy, válida también para x negativo, es <span class="math display">\[R_n(x)=\frac{f^{(n+1)}(t)}{n!}(x-t)^n x
+=\alpha\binom{\alpha-1}n x(1+t)^{\alpha-1}
+\left(\frac{x-t}{1+t}\right)^n.\]</span> Aquí se usó <span class="math inline">\((n+1)\binom\alpha{n+1}=\alpha\binom{\alpha-1}n\)</span>. Las cotas dan <span class="math display">\[|R_n(x)|\le|\alpha|\,|x|M\left|\binom{\alpha-1}n x^n\right|\longrightarrow0\]</span> por (a), aplicada al parámetro α−1. Si α=0, f es constante y el resto es directamente cero. Queda demostrada la identidad en todo |x|&lt;1 sin derivar ni integrar informalmente una serie infinita.</p>
+<div id="fig-spv4-c23-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 23: La serie binomial y el resto finito">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c23-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C23_assets/C23_07_serie_binomial.png" class="img-fluid figure-img" alt="Capítulo 23: La serie binomial y el resto finito">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c23-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Capítulo 23 · Figura 5. La serie binomial y el resto finito
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e022" class="level2">
+<h2 class="anchored" data-anchor-id="e022">E022 — Criterios de Dirichlet y Abel</h2>
+<p>Fuente: Spivak, C23, problema 22, pp.&nbsp;495–496. Usaremos una identidad de sumación por partes finita, que dejamos demostrada dentro de la solución.</p>
+<p><strong><code>SPV4-C23-E022-a</code></strong> Si las sumas parciales de aₙ están acotadas y bₙ no crece y tiende a cero, probar convergencia de <span class="math inline">\(\sum a_nb_n\)</span>. Sea <span class="math inline">\(A_k=\sum_{j=1}^ka_j\)</span>, con |Aₖ|≤C y A₀=0. Para p≤k≤q, defina <span class="math inline">\(B_k=\sum_{j=p}^ka_j=A_k-A_{p-1}\)</span>, de modo que |Bₖ|≤2C. Al sustituir aₖ=Bₖ−Bₖ₋₁ y desplazar un índice se obtiene exactamente <span class="math display">\[\sum_{k=p}^qa_kb_k=B_qb_q+\sum_{k=p}^{q-1}B_k(b_k-b_{k+1}).\]</span> Como bₙ no crece y tiende a cero, bₙ≥0. La suma de diferencias de b telescopa, y por eso <span class="math display">\[\left|\sum_{k=p}^qa_kb_k\right|\le2C\left[b_q+\sum_{k=p}^{q-1}(b_k-b_{k+1})\right]=2Cb_p\longrightarrow0.\]</span> La cota vale para todo q≥p y prueba el criterio de Cauchy. Si C=0, todos los aₙ son cero y la conclusión es inmediata.</p>
+<p><strong><code>SPV4-C23-E022-b</code></strong> Deducir Leibniz. Tome aₙ=(−1)ⁿ⁺¹, cuyas sumas parciales son cero o uno, y bₙ no negativa, no creciente y convergente a cero. (a) prueba la convergencia de la serie alternante. La estimación más precisa de su resto es E008.</p>
+<p><strong><code>SPV4-C23-E022-c</code></strong> Probar que <span class="math inline">\(\sum\cos(nx)/n\)</span> converge salvo cuando x∈2πZ. Para sin(x/2)≠0, la identidad <span class="math display">\[2\sin(x/2)\cos(nx)=\sin((n+1/2)x)-\sin((n-1/2)x)\]</span> telescopa al sumar de 1 a N y da <span class="math display">\[\left|\sum_{n=1}^N\cos(nx)\right|\le\frac1{|\sin(x/2)|}.\]</span> Es la cota de sumas trigonométricas requerida por la remisión a C15-E033; la hemos derivado aquí para hacer autónoma la prueba. Dirichlet con bₙ=1/n da convergencia. Si x=2kπ, todos los cosenos son uno y queda la armónica divergente.</p>
+<p><strong><code>SPV4-C23-E022-d</code></strong> Probar el criterio de Abel: si <span class="math inline">\(\sum a_n\)</span> converge y bₙ es monótona y acotada, entonces <span class="math inline">\(\sum a_nb_n\)</span> converge. La sucesión bₙ tiene un límite β. Si no crece, bₙ−β es no negativa, no creciente y tiende a cero; si no decrece, β−bₙ tiene esas propiedades. Las sumas parciales de aₙ están acotadas por convergencia, así que Dirichlet prueba convergencia de <span class="math inline">\(\sum a_n(b_n-\beta)\)</span>, cambiando signo si hace falta. Añadir la serie convergente <span class="math inline">\(\beta\sum a_n\)</span> concluye la prueba.</p>
+</section>
+<section id="e023" class="level2">
+<h2 class="anchored" data-anchor-id="e023">E023* — Condensación de Cauchy</h2>
+<p>Fuente: Spivak, C23, problema 23, p.&nbsp;496.</p>
+<p><strong><code>SPV4-C23-E023</code></strong> Si aₙ no crece, aₙ→0 y <span class="math inline">\(\sum a_n\)</span> converge, probar que <span class="math inline">\(\sum_{k\ge1}2^ka_{2^k}\)</span> converge. Monotonía y límite cero implican aₙ≥0. En el bloque <span class="math inline">\(2^{k-1}\le j&lt;2^k\)</span>, todos los términos son al menos a₂ᵏ. Hay 2ᵏ⁻¹ de ellos; por tanto <span class="math display">\[2^ka_{2^k}\le2\sum_{j=2^{k-1}}^{2^k-1}a_j.\]</span> Al sumar sobre k=1,…,K, los bloques son disjuntos y la suma condensada queda acotada por <span class="math inline">\(2\sum_{j\ge1}a_j\)</span>. Sus términos son no negativos, de modo que converge. La dirección solicitada basta para demostrar la divergencia armónica por contradicción: su serie condensada tendría todos sus términos iguales a uno.</p>
+</section>
+<section id="e024" class="level2">
+<h2 class="anchored" data-anchor-id="e024">E024* — Productos de sucesiones cuadrado-sumables</h2>
+<p>Fuente: Spivak, C23, problema 24, p.&nbsp;496.</p>
+<p><strong><code>SPV4-C23-E024-a</code></strong> Si <span class="math inline">\(\sum a_n^2\)</span> y <span class="math inline">\(\sum b_n^2\)</span> convergen, probar convergencia de <span class="math inline">\(\sum a_nb_n\)</span>. De <span class="math inline">\((|a_n|-|b_n|)^2\ge0\)</span> se obtiene <span class="math inline">\(2|a_nb_n|\le a_n^2+b_n^2\)</span>. La comparación da incluso convergencia absoluta.</p>
+<p><strong><code>SPV4-C23-E024-b</code></strong> Si <span class="math inline">\(\sum a_n^2\)</span> converge y α&gt;1/2, aplicar (a) a bₙ=n⁻ᵅ. Como <span class="math inline">\(\sum b_n^2=\sum n^{-2\alpha}\)</span> converge por 2α&gt;1, se concluye que <span class="math inline">\(\sum a_n/n^\alpha\)</span> converge absolutamente. El resultado no depende del signo de aₙ.</p>
+</section>
+<section id="e025" class="level2">
+<h2 class="anchored" data-anchor-id="e025">E025* — Una consecuencia de la monotonía</h2>
+<p>Fuente: Spivak, C23, problema 25, p.&nbsp;496.</p>
+<p><strong><code>SPV4-C23-E025</code></strong> Si aₙ&gt;0, aₙ no crece y <span class="math inline">\(\sum a_n\)</span> converge, probar n aₙ→0. Para n≥2, el tramo desde m=⌊n/2⌋ hasta n tiene al menos n/2 términos, todos ≥aₙ. Por eso <span class="math display">\[0\le n a_n\le2\sum_{k=\lfloor n/2\rfloor}^na_k.\]</span> El extremo inferior del tramo tiende a infinito y el criterio de Cauchy hace tender su suma a cero. Por encaje, n aₙ→0. Sin monotonía, una serie positiva puede tener picos dispersos que invaliden esta conclusión.</p>
+</section>
+<section id="e026" class="level2">
+<h2 class="anchored" data-anchor-id="e026">E026* — Términos pequeños y sumas acotadas no bastan</h2>
+<p>Fuente: Spivak, C23, problema 26, p.&nbsp;496.</p>
+<p><strong><code>SPV4-C23-E026</code></strong> Dar una serie con aₙ→0 y sumas parciales acotadas que no converja. Para cada m≥1, concatene m términos iguales a 1/m seguidos de m términos iguales a −1/m. Cada bloque completo suma cero, y dentro del bloque la suma parcial sube desde cero hasta uno y baja de nuevo a cero. Todas las sumas están en [0,1]. Como m→∞ a lo largo de los bloques, los términos tienden a cero. Sin embargo, los finales de bloque tienen suma cero y los puntos medios suma uno, de modo que las sumas parciales no tienen límite.</p>
+</section>
+<section id="e027" class="level2">
+<h2 class="anchored" data-anchor-id="e027">E027 — Una transformación de términos positivos</h2>
+<p>Fuente: Spivak, C23, problema 27, p.&nbsp;496.</p>
+<p><strong><code>SPV4-C23-E027</code></strong> Si aₙ≥0 y <span class="math inline">\(\sum a_n\)</span> diverge, probar que <span class="math inline">\(\sum a_n/(1+a_n)\)</span> diverge, y decidir la recíproca. Si hay infinitos aₙ≥1, los términos transformados son ≥1/2 en esos índices y no tienden a cero. En otro caso, en una cola 0≤aₙ&lt;1 y entonces aₙ/(1+aₙ)≥aₙ/2; la comparación prueba divergencia. La recíproca también es cierta: <span class="math inline">\(a_n/(1+a_n)\le a_n\)</span>, así que la divergencia de la serie menor fuerza la de la mayor. Equivalentemente, ambas series positivas convergen o divergen juntas.</p>
+</section>
+<section id="e028" class="level2">
+<h2 class="anchored" data-anchor-id="e028">E028 — Productos infinitos</h2>
+<p>Fuente: Spivak, C23, problema 28, pp.&nbsp;497–498. Para bₙ&gt;0 se dice que <span class="math inline">\(\prod b_n\)</span> converge si sus productos parciales Pₙ tienen un límite <strong>finito y distinto de cero</strong>. Si Pₙ→0, el producto es divergente según esta convención, aunque la sucesión de productos tenga límite real.</p>
+<p><strong><code>SPV4-C23-E028-a</code></strong> Si el producto converge a P&gt;0, entonces <span class="math inline">\(b_n=P_n/P_{n-1}\to P/P=1\)</span>. El carácter no nulo del límite es lo que permite dividir.</p>
+<p><strong><code>SPV4-C23-E028-b</code></strong> El producto converge si y sólo si <span class="math inline">\(\sum\log b_n\)</span> converge. Para cada N, <span class="math display">\[\log P_N=\sum_{n=1}^N\log b_n.\]</span> Si Pₙ→P&gt;0, la continuidad de log da convergencia de la suma a log P. Si la suma converge a L real, Pₙ=exp(Σlog bₙ)→eᴸ&gt;0. Ambas direcciones se basan en identidades finitas antes de pasar al límite.</p>
+<p><strong><code>SPV4-C23-E028-c</code></strong> Para aₙ≥0, probar que <span class="math inline">\(\prod(1+a_n)\)</span> converge si y sólo si <span class="math inline">\(\sum a_n\)</span> converge. Para t≥0, integrar 1/(1+x) entre cero y t da <span class="math display">\[\frac t{1+t}\le\log(1+t)\le t.\]</span> Si <span class="math inline">\(\sum a_n\)</span> converge, la cota superior prueba convergencia de <span class="math inline">\(\sum\log(1+a_n)\)</span>, y (b) da el producto. Si <span class="math inline">\(\sum a_n\)</span> diverge, E027 y la cota inferior hacen divergir la suma de logaritmos; el producto no converge a un valor finito no nulo. De hecho, en este caso Pₙ→+∞.</p>
+<p><strong><code>SPV4-C23-E028-d</code></strong> Usar Taylor para probar que, si x es suficientemente pequeño, <span class="math display">\[\frac14x^2\le x-\log(1+x)\le\frac34x^2,\]</span> y deducir las dos equivalencias pedidas. Para |x|≤1/4, la serie de logaritmo, ya justificada por Taylor, da <span class="math display">\[x-\log(1+x)=\frac{x^2}{2}+r(x),\qquad
+|r(x)|\le\sum_{k=3}^\infty\frac{|x|^k}{k}
+\le\frac{|x|^3}{3(1-|x|)}\le\frac{x^2}{9}.\]</span> Así la expresión queda entre (7/18)x² y (11/18)x², cotas más fuertes que las solicitadas, incluido x=0.</p>
+<p>Si aₙ&gt;−1 y <span class="math inline">\(\sum a_n\)</span> converge, entonces aₙ→0 y, en una cola, <span class="math inline">\(r_n=a_n-\log(1+a_n)\)</span> es no negativo y está entre aₙ²/4 y 3aₙ²/4. Por comparación, <span class="math inline">\(\sum r_n\)</span> converge si y sólo si <span class="math inline">\(\sum a_n^2\)</span> converge. La identidad finita <span class="math inline">\(\sum\log(1+a_n)=\sum a_n-\sum r_n\)</span> muestra que la serie de logaritmos converge si y sólo si la de cuadrados converge. Si los cuadrados divergen, las sumas de rₙ tienden a +∞ y las de logaritmos a −∞.</p>
+<p>Si en cambio se supone inicialmente <span class="math inline">\(\sum a_n^2&lt;\infty\)</span>, otra vez aₙ→0 y la serie de rₙ converge. La misma identidad muestra que <span class="math inline">\(\sum\log(1+a_n)\)</span> converge si y sólo si <span class="math inline">\(\sum a_n\)</span> converge. La condición aₙ&gt;−1 asegura que todos los logaritmos existan, también en el prefijo.</p>
+<p><strong><code>SPV4-C23-E028-e</code></strong> Para <span class="math inline">\(a_n=(-1)^n/\sqrt n\)</span>, n≥2, la serie converge por Leibniz pero sus cuadrados forman una armónica divergente. Por (d), <span class="math inline">\(\sum\log(1+a_n)\to-\infty\)</span>. Todos los factores 1+aₙ son positivos, pero sus productos parciales tienden a cero. Por la definición adoptada, <span class="math inline">\(\prod_{n\ge2}(1+(-1)^n/\sqrt n)\)</span> diverge. Se explica así por qué un límite cero no se admite como convergencia de un producto infinito.</p>
+<p><strong><code>SPV4-C23-E028-f</code></strong> Considere los bloques indexados por m=1,3,5,…: cada bloque contiene m pares <span class="math inline">\((1/m,-1/(m+1))\)</span>. Probar que <span class="math inline">\(\sum a_n\)</span> diverge pero <span class="math inline">\(\prod(1+a_n)=1\)</span>. Cada par suma <span class="math inline">\(1/[m(m+1)]\)</span> y cada bloque suma 1/(m+1). La suma de bloques es <span class="math inline">\(\sum_{j\ge1}1/(2j)\)</span>, divergente. Dentro del bloque los términos positivos aumentan las sumas y la caída siguiente no supera el aumento; todas las sumas tienden también a +∞.</p>
+<p>En cambio, cada par de factores satisface <span class="math display">\[\left(1+\frac1m\right)\left(1-\frac1{m+1}\right)=1.\]</span> Todos los productos al final de un par son exactamente uno; después del primer factor del par valen 1+1/m. Como m→∞ a lo largo de los bloques, también esos productos intermedios tienden a uno. El producto completo converge a uno. Hay términos negativos, por lo que no se aplica (c).</p>
+<div id="fig-spv4-c23-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 23: Sumas y productos: tres comportamientos distintos">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c23-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C23_assets/C23_05_productos_infinitos.png" class="img-fluid figure-img" alt="Capítulo 23: Sumas y productos: tres comportamientos distintos">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c23-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Capítulo 23 · Figura 6. Sumas y productos: tres comportamientos distintos
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e029" class="level2">
+<h2 class="anchored" data-anchor-id="e029">E029 — Dos productos telescópicos</h2>
+<p>Fuente: Spivak, C23, problema 29, p.&nbsp;498.</p>
+<p><strong><code>SPV4-C23-E029-a</code></strong> Calcular <span class="math inline">\(\prod_{n=2}^\infty(1-1/n^2)\)</span>. Para N≥2, <span class="math display">\[\prod_{n=2}^N\left(1-\frac1{n^2}\right)
+=\left(\prod_{n=2}^N\frac{n-1}n\right)
+\left(\prod_{n=2}^N\frac{n+1}n\right)
+=\frac{N+1}{2N}\longrightarrow\frac12.\]</span> Los factores son positivos y el límite es no nulo; el producto converge a 1/2.</p>
+<p><strong><code>SPV4-C23-E029-b</code></strong> Para |x|&lt;1, calcular <span class="math inline">\(\prod_{n=1}^\infty(1+x^{2^n})\)</span>. Factorizar repetidamente diferencias de cuadrados da <span class="math display">\[(1-x^2)\prod_{n=1}^N(1+x^{2^n})=1-x^{2^{N+1}}.\]</span> Como x²&lt;1 y <span class="math inline">\(x^{2^{N+1}}\to0\)</span>, el límite del producto es <span class="math inline">\(1/(1-x^2)&gt;0\)</span>. El primer exponente es dos: incluir por error el factor 1+x cambiaría la respuesta a 1/(1−x).</p>
+</section>
+<section id="e030" class="level2">
+<h2 class="anchored" data-anchor-id="e030">E030 — Fracciones unitarias distintas</h2>
+<p>Fuente: Spivak, C23, problema 30, p.&nbsp;498. Se busca escribir cualquier racional positivo como suma finita de recíprocos de naturales distintos.</p>
+<p><strong><code>SPV4-C23-E030-a</code></strong> Si <span class="math inline">\(1/(n+1)&lt;x&lt;1/n\)</span>, probar que el paso de restar 1/(n+1) reduce el numerador y que el proceso termina. Escriba x=p/q en términos positivos reducidos y p&gt;1; si p=1 ya hay una fracción unitaria. Sea <span class="math inline">\(k=\lceil q/p\rceil=n+1\)</span>. Entonces <span class="math display">\[0&lt;x-\frac1k=\frac{kp-q}{qk},\qquad 0&lt;kp-q&lt;p.\]</span> La última desigualdad sigue de k−1&lt;q/p&lt;k. Si el cociente q/p fuera entero, x ya sería una fracción unitaria y se detendría el proceso. Al reducir la nueva fracción, su numerador sólo puede disminuir más. Cada paso no terminal reduce estrictamente un entero positivo, así que después de finitos pasos se llega a una fracción unitaria.</p>
+<p>Los denominadores escogidos son distintos y crecientes: como x&lt;1/(k−1), el nuevo resto es menor que <span class="math inline">\(1/[k(k-1)]\le1/k\)</span> para k≥2. La próxima fracción unitaria que no lo exceda tendrá denominador mayor que k, también cuando el resto ya sea unitario. Por ejemplo, <span class="math display">\[\frac{27}{31}=\frac12+\frac13+\frac1{27}+\frac1{1674}.\]</span> La afirmación incluye todo racional de (0,1): si es unitario se termina inmediatamente y, si no, pertenece a uno de los intervalos estrictos indicados.</p>
+<p><strong><code>SPV4-C23-E030-b</code></strong> Extender a todo racional x&gt;0 usando la divergencia armónica. Sea H₀=0 y <span class="math inline">\(H_M=\sum_{k=1}^M1/k\)</span>. Como Hₘ→∞, hay un mayor entero M≥0 con Hₘ≤x. El resto r=x−Hₘ es racional y cumple <span class="math inline">\(0\le r&lt;1/(M+1)\)</span>. Si r=0, ya se tiene una suma de recíprocos distintos. Si r&gt;0, aplique (a): la primera fracción elegida tiene denominador al menos M+2 y las siguientes lo aumentan. Ninguna repite los denominadores 1,…,M del prefijo armónico. La unión de ese prefijo finito y la expansión finita del resto prueba la afirmación para todo racional positivo.</p>
+<div id="fig-spv4-c23-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 23: Del racional a una suma finita de fracciones unitarias">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c23-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C23_assets/C23_06_fracciones_unitarias.png" class="img-fluid figure-img" alt="Capítulo 23: Del racional a una suma finita de fracciones unitarias">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c23-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Capítulo 23 · Figura 7. Del racional a una suma finita de fracciones unitarias
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="seccion-42302" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-42302">Dónde se usaron los límites y qué queda abierto</h2>
+<p>Las comparaciones y los cálculos se apoyan en sumas y productos finitos antes de pasar al límite. Las reordenaciones sólo se usan después de demostrar sus hipótesis; los productos de Cauchy, los productos infinitos y los promedios de Cesàro conservan sus definiciones separadas. La prueba binomial usa Taylor con resto finito, sin anticipar los teoremas sobre derivación de series del capítulo siguiente. Los ejemplos de bloques muestran exactamente dónde intervienen los términos intermedios.</p>
+<p>Las 80 unidades quedan desarrolladas y revisadas internamente. <strong>Quedan siete capítulos del recorrido documental: C24–C30.</strong> El siguiente es <strong>C24 — Convergencia uniforme y series de potencias</strong>, p.&nbsp;499 / PDF 518 de la copia actual.</p>
+<hr>
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-22.html">← Capítulo 22</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-24.html">Capítulo 24 →</a></p>
+</div>
+<p>Soluciones originales de Alevi Peña · Matemática Abierta. <a href="../../../COPYING.FDL">Licencia GFDL 1.3 o posterior</a>.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>El impreso no precisa positividad de a en la discusión introductoria de E002. Se explicita el dominio positivo de las comparaciones originales y se añade la clasificación real para evitar interpretar, por ejemplo, a&lt;−e como un caso convergente.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>La sugerencia de E007(b) necesita tratar x=1 por separado; se conserva todo el intervalo cerrado del enunciado. La doble representación decimal se controla explícitamente en (d).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>E008 imprime «&lt;aₙ₊₁», pero el teorema al que remite permite aₙ≥aₙ₊₁. Se corrige a «≤», se demuestra el resultado válido y se indica una hipótesis suficiente para el signo estricto. El contraejemplo muestra que se trata de una corrección matemática necesaria.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

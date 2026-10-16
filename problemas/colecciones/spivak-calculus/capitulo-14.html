@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Capítulo 14 — El teorema fundamental del cálculo – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="spivak-c01.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#seccion-711" id="toc-seccion-711" class="nav-link active" data-scroll-target="#seccion-711">Herramientas y convenciones</a></li>
+  <li><a href="#e001" id="toc-e001" class="nav-link" data-scroll-target="#e001">Ejercicio 1 — <code>SPV4-C14-E001</code></a></li>
+  <li><a href="#e002" id="toc-e002" class="nav-link" data-scroll-target="#e002">Ejercicio 2 — <code>SPV4-C14-E002</code></a></li>
+  <li><a href="#e003" id="toc-e003" class="nav-link" data-scroll-target="#e003">Ejercicio 3 — <code>SPV4-C14-E003</code></a></li>
+  <li><a href="#e004" id="toc-e004" class="nav-link" data-scroll-target="#e004">Ejercicio 4 — <code>SPV4-C14-E004</code></a></li>
+  <li><a href="#e005" id="toc-e005" class="nav-link" data-scroll-target="#e005">Ejercicio 5 — <code>SPV4-C14-E005</code></a></li>
+  <li><a href="#e006" id="toc-e006" class="nav-link" data-scroll-target="#e006">Ejercicio 6 — <code>SPV4-C14-E006</code></a></li>
+  <li><a href="#e007" id="toc-e007" class="nav-link" data-scroll-target="#e007">Ejercicio 7 — <code>SPV4-C14-E007</code></a></li>
+  <li><a href="#e008" id="toc-e008" class="nav-link" data-scroll-target="#e008">Ejercicio 8 — <code>SPV4-C14-E008</code></a></li>
+  <li><a href="#e009" id="toc-e009" class="nav-link" data-scroll-target="#e009">Ejercicio 9 — <code>SPV4-C14-E009</code></a></li>
+  <li><a href="#e010" id="toc-e010" class="nav-link" data-scroll-target="#e010">Ejercicio 10* — <code>SPV4-C14-E010</code></a></li>
+  <li><a href="#e011" id="toc-e011" class="nav-link" data-scroll-target="#e011">Ejercicio 11 — <code>SPV4-C14-E011</code></a></li>
+  <li><a href="#e012" id="toc-e012" class="nav-link" data-scroll-target="#e012">Ejercicio 12 — <code>SPV4-C14-E012</code></a></li>
+  <li><a href="#e013" id="toc-e013" class="nav-link" data-scroll-target="#e013">Ejercicio 13 — <code>SPV4-C14-E013</code></a></li>
+  <li><a href="#e014" id="toc-e014" class="nav-link" data-scroll-target="#e014">Ejercicio 14* — <code>SPV4-C14-E014</code></a></li>
+  <li><a href="#e015" id="toc-e015" class="nav-link" data-scroll-target="#e015">Ejercicio 15* — <code>SPV4-C14-E015</code></a></li>
+  <li><a href="#e016" id="toc-e016" class="nav-link" data-scroll-target="#e016">Ejercicio 16 — <code>SPV4-C14-E016</code></a></li>
+  <li><a href="#e017" id="toc-e017" class="nav-link" data-scroll-target="#e017">Ejercicio 17* — <code>SPV4-C14-E017</code></a></li>
+  <li><a href="#e018" id="toc-e018" class="nav-link" data-scroll-target="#e018">Ejercicio 18 — <code>SPV4-C14-E018</code></a></li>
+  <li><a href="#e019" id="toc-e019" class="nav-link" data-scroll-target="#e019">Ejercicio 19 — <code>SPV4-C14-E019</code></a></li>
+  <li><a href="#e020" id="toc-e020" class="nav-link" data-scroll-target="#e020">Ejercicio 20* — <code>SPV4-C14-E020</code></a></li>
+  <li><a href="#e021" id="toc-e021" class="nav-link" data-scroll-target="#e021">Ejercicio 21 — <code>SPV4-C14-E021</code></a></li>
+  <li><a href="#e022" id="toc-e022" class="nav-link" data-scroll-target="#e022">Ejercicio 22* — <code>SPV4-C14-E022</code></a></li>
+  <li><a href="#e023" id="toc-e023" class="nav-link" data-scroll-target="#e023">Ejercicio 23* — <code>SPV4-C14-E023</code></a></li>
+  <li><a href="#e024" id="toc-e024" class="nav-link" data-scroll-target="#e024">Ejercicio 24 — <code>SPV4-C14-E024</code></a></li>
+  <li><a href="#e025" id="toc-e025" class="nav-link" data-scroll-target="#e025">Ejercicio 25 — <code>SPV4-C14-E025</code></a></li>
+  <li><a href="#e026" id="toc-e026" class="nav-link" data-scroll-target="#e026">Ejercicio 26 — <code>SPV4-C14-E026</code></a></li>
+  <li><a href="#e027" id="toc-e027" class="nav-link" data-scroll-target="#e027">Ejercicio 27 — <code>SPV4-C14-E027</code></a></li>
+  <li><a href="#e028" id="toc-e028" class="nav-link" data-scroll-target="#e028">Ejercicio 28 — <code>SPV4-C14-E028</code></a></li>
+  <li><a href="#e029" id="toc-e029" class="nav-link" data-scroll-target="#e029">Ejercicio 29 — <code>SPV4-C14-E029</code></a></li>
+  <li><a href="#e030" id="toc-e030" class="nav-link" data-scroll-target="#e030">Ejercicio 30 — <code>SPV4-C14-E030</code></a></li>
+  <li><a href="#seccion-36503" id="toc-seccion-36503" class="nav-link" data-scroll-target="#seccion-36503">Continuación</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 14 — El teorema fundamental del cálculo</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-13.html">← Capítulo 13</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-15.html">Capítulo 15 →</a></p>
+</div>
+<p>Una integral con extremo variable contiene información local. Si el integrando es continuo en <span class="math inline">\(c\)</span>, el promedio de sus valores entre <span class="math inline">\(c\)</span> y <span class="math inline">\(c+h\)</span> tiende a <span class="math inline">\(f(c)\)</span>; ese promedio es precisamente el cociente incremental de <span class="math inline">\(F(x)=\int_a^xf\)</span>. Esta observación permite derivar integrales, construir funciones mediante sus derivadas y evaluar áreas por diferencias de primitivas.</p>
+<p>Fuente: Michael Spivak, <em>Calculus</em>, cuarta edición, ejercicios 1–30, pp.&nbsp;296–302 / PDF 316–322. No hay apéndice de este capítulo. Los enunciados se condensan conservando sus datos matemáticos; las soluciones y figuras son propias. Las discrepancias con la referencia se registran en el informe de revisión, separado del desarrollo lector.</p>
+<section id="seccion-711" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-711">Herramientas y convenciones</h2>
+<p>Usamos el primer teorema fundamental: si <span class="math inline">\(f\)</span> es integrable y continua en <span class="math inline">\(c\)</span>, entonces <span class="math inline">\((\int_a^xf)'_{x=c}=f(c)\)</span>. El segundo afirma que, si <span class="math inline">\(G'=f\)</span> y <span class="math inline">\(f\)</span> es integrable, <span class="math inline">\(\int_a^bf=G(b)-G(a)\)</span>. En extremos del dominio, las derivadas son unilaterales cuando así se indique. Las integrales con límites invertidos tienen signo orientado.</p>
+<p>Las integrales impropias se introducirán explícitamente en E025–E030. Una función no acotada en un intervalo cerrado no tiene integral de Riemann propia; asignar un valor en un extremo no elimina la falta de acotación cerca de él. En E005(ii) esta distinción es indispensable.</p>
+<p>Las identidades y derivadas trigonométricas empleadas por los ejercicios se usan con la interpretación habitual en radianes, como hace el propio texto; el capítulo 15 construye esas funciones rigurosamente. Para potencias racionales basta la diferenciación de raíces ya disponible. En las fórmulas de integrales impropias se explica cómo extender los resultados a exponentes reales por comparación, sin anticipar derivadas de potencias reales arbitrarias.</p>
+</section>
+<section id="e001" class="level2">
+<h2 class="anchored" data-anchor-id="e001">Ejercicio 1 — <code>SPV4-C14-E001</code></h2>
+<p><strong>Referencia:</strong> pp.&nbsp;296–297 / PDF 316–317. Hallar las ocho derivadas.</p>
+<p><strong>(i)</strong> Para <span class="math inline">\(F(x)=\int_a^{x^3}\sin^3t\,dt\)</span>, el teorema fundamental y la cadena dan</p>
+<p><span class="math display">\[\boxed{F'(x)=3x^2\sin^3(x^3).}\]</span></p>
+<p><strong>(ii)</strong> Sean <span class="math inline">\(H(x)=\int_1^x\sin^3t\,dt\)</span> y <span class="math inline">\(F(x)=\int_3^{H(x)}dt/(1+\sin^6t+t^2)\)</span>. El denominador es siempre positivo y el integrando continuo. Entonces</p>
+<p><span class="math display">\[\boxed{F'(x)=\frac{\sin^3x}{1+\sin^6(H(x))+H(x)^2}.}\]</span></p>
+<p><strong>(iii)</strong> Si <span class="math inline">\(F(x)=\int_{15}^x(\int_8^y dt/(1+t^2+\sin^2t))dy\)</span>, la integral interna es una función continua de <span class="math inline">\(y\)</span>. Por ello</p>
+<p><span class="math display">\[\boxed{F'(x)=\int_8^x\frac{dt}{1+t^2+\sin^2t}.}\]</span></p>
+<p>La primera derivación elimina solo la integral exterior.</p>
+<p><strong>(iv)</strong> Para <span class="math inline">\(F(x)=\int_x^b dt/(1+t^2+\sin^2t)\)</span>, invertir el extremo variable introduce un signo:</p>
+<p><span class="math display">\[\boxed{F'(x)=-\frac1{1+x^2+\sin^2x}.}\]</span></p>
+<p><strong>(v)</strong> En <span class="math inline">\(F(x)=\int_a^b x\,dt/(1+t^2+\sin^2t)\)</span> los límites son constantes y <span class="math inline">\(x\)</span> es constante respecto de <span class="math inline">\(t\)</span>. Sacándolo fuera,</p>
+<p><span class="math display">\[\boxed{F'(x)=\int_a^b\frac{dt}{1+t^2+\sin^2t}.}\]</span></p>
+<p><strong>(vi)</strong> Para <span class="math inline">\(F(x)=\sin(\int_0^x\sin(\int_0^y\sin^3t\,dt)dy)\)</span>, se deriva de fuera hacia dentro:</p>
+<p><span class="math display">\[\boxed{F'(x)=\cos\left(\int_0^x\sin\left(\int_0^y\sin^3t\,dt\right)dy\right)
+\sin\left(\int_0^x\sin^3t\,dt\right).}\]</span></p>
+<p>La integral más interna permanece en el valor del integrando exterior.</p>
+<p><strong>(vii)</strong> Si <span class="math inline">\(F(x)=\int_1^xdt/t\)</span>, <span class="math inline">\(x&gt;0\)</span>, entonces <span class="math inline">\(F'=1/x&gt;0\)</span>, así que tiene inversa en su imagen <span class="math inline">\(J\)</span>. La fórmula de la inversa da</p>
+<p><span class="math display">\[\boxed{(F^{-1})'(u)=F^{-1}(u),\qquad u\in J.}\]</span></p>
+<p>De hecho <span class="math inline">\(J=\mathbb R\)</span>: C13-E015 da <span class="math inline">\(F(2^n)=nF(2)\to\infty\)</span> y <span class="math inline">\(F(2^{-n})=-nF(2)\to-\infty\)</span>, con <span class="math inline">\(F(2)&gt;0\)</span>; la continuidad llena los valores intermedios.</p>
+<p><strong>(viii)</strong> Si <span class="math inline">\(F(x)=\int_0^xdt/\sqrt{1-t^2}\)</span>, su dominio propio es <span class="math inline">\((-1,1)\)</span> y <span class="math inline">\(F'&gt;0\)</span> allí. Para <span class="math inline">\(u\)</span> en su imagen,</p>
+<p><span class="math display">\[\boxed{(F^{-1})'(u)=\sqrt{1-[F^{-1}(u)]^2}.}\]</span></p>
+<p>Los extremos <span class="math inline">\(\pm1\)</span> exigirían integrales impropias, consideradas en E028(e); no se incluyen silenciosamente en esta aplicación del teorema.</p>
+</section>
+<section id="e002" class="level2">
+<h2 class="anchored" data-anchor-id="e002">Ejercicio 2 — <code>SPV4-C14-E002</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;297 / PDF 317. Con <span class="math inline">\(F(x)=\int_0^xf\)</span>, determinar dónde <span class="math inline">\(F'(x)=f(x)\)</span>.</p>
+<p><strong>(i)</strong> <span class="math inline">\(f=0\)</span> para <span class="math inline">\(x\le1\)</span> y <span class="math inline">\(f=1\)</span> para <span class="math inline">\(x&gt;1\)</span>. Se obtiene <span class="math inline">\(F(x)=0\)</span> si <span class="math inline">\(x\le1\)</span> y <span class="math inline">\(F(x)=x-1\)</span> si <span class="math inline">\(x&gt;1\)</span>. La igualdad vale para todo <span class="math inline">\(x\ne1\)</span>; en <span class="math inline">\(1\)</span> las derivadas laterales son cero y uno, por lo que no hay derivada.</p>
+<p><strong>(ii)</strong> Si se cambia solo <span class="math inline">\(f(1)\)</span> a uno, la integral y la conclusión anterior permanecen iguales. La derivada de una integral no puede recuperar por sí sola una modificación aislada del integrando.</p>
+<p><strong>(iii)</strong> Si <span class="math inline">\(f(1)=1\)</span> y <span class="math inline">\(f=0\)</span> en los otros puntos, <span class="math inline">\(F=0\)</span> en toda la recta. Así <span class="math inline">\(F'=f\)</span> exactamente cuando <span class="math inline">\(x\ne1\)</span>.</p>
+<p><strong>(iv)</strong> Para la función de Thomae, <span class="math inline">\(f=0\)</span> en irracionales y <span class="math inline">\(f(p/q)=1/q\)</span> con fracción reducida y <span class="math inline">\(q&gt;0\)</span>, toda integral sobre un intervalo compacto es cero. La prueba de C13-E034 se traslada a cualquier compacto: solo hay finitos racionales con denominador acotado en él. Así <span class="math inline">\(F=0\)</span> y <span class="math inline">\(F'=f\)</span> exactamente en los irracionales.</p>
+<p><strong>(v)</strong> Para <span class="math inline">\(f(x)=0\)</span> si <span class="math inline">\(x\le0\)</span> y <span class="math inline">\(f(x)=x\)</span> si <span class="math inline">\(x\ge0\)</span>, la función es continua incluso en cero. Tenemos <span class="math inline">\(F=0\)</span> para <span class="math inline">\(x\le0\)</span> y <span class="math inline">\(F=x^2/2\)</span> para <span class="math inline">\(x\ge0\)</span>; la igualdad vale en todos los reales, incluido cero por cociente incremental.</p>
+<p><strong>(vi)</strong> Sea <span class="math inline">\(f=1/\lfloor1/x\rfloor\)</span> para <span class="math inline">\(0&lt;x\le1\)</span>, y cero para <span class="math inline">\(x\le0\)</span> o <span class="math inline">\(x&gt;1\)</span>. Es integrable por C13-E007(vi). Sus únicos saltos están en <span class="math inline">\(x=1/n\)</span>, <span class="math inline">\(n\ge1\)</span>. Allí las medias laterales de la integral tienen límites distintos: para <span class="math inline">\(n\ge2\)</span>, <span class="math inline">\(1/n\)</span> a la izquierda y <span class="math inline">\(1/(n-1)\)</span> a la derecha; para <span class="math inline">\(n=1\)</span>, uno a la izquierda y cero a la derecha. No hay derivada en esos puntos. En cero, <span class="math inline">\(0\le f(x)\le x/(1-x)\to0\)</span> para <span class="math inline">\(0&lt;x&lt;1\)</span>, y por continuidad se aplica el teorema. Por tanto la igualdad vale exactamente fuera de <span class="math inline">\(\{1/n:n\ge1\}\)</span>, incluido cero.</p>
+<p><strong>(vii)</strong> La figura 6 tiene triángulos de altura uno sobre <span class="math inline">\([1/2,1]\)</span>, <span class="math inline">\([1/4,1/2]\)</span>, etc., valor cero en el origen y fuera de <span class="math inline">\([0,1]\)</span>. La función es continua fuera de cero, incluso en los vértices y en uno, y allí <span class="math inline">\(F'=f\)</span>. En <span class="math inline">\(x_N=2^{-N}\)</span>, el área acumulada es <span class="math inline">\(F(x_N)=x_N/2\)</span>, de modo que <span class="math inline">\(F(x_N)/x_N=1/2\)</span>, mientras el cociente por la izquierda de cero es cero. No hay derivada bilateral en cero. La respuesta es todos los <span class="math inline">\(x\ne0\)</span>.</p>
+<p><strong>(viii)</strong> Si <span class="math inline">\(f=1\)</span> en los puntos <span class="math inline">\(1/n\)</span> y cero en los demás, su integral es cero en cualquier compacto: se aísla una cola cerca de cero y el resto son finitas modificaciones puntuales. Por tanto <span class="math inline">\(F'=0\)</span> en toda la recta, y <span class="math inline">\(F'=f\)</span> exactamente fuera de los puntos <span class="math inline">\(1/n\)</span>, incluido cero, aunque <span class="math inline">\(f\)</span> sea discontinua allí.</p>
+<div id="fig-spv4-c14-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 14: Integrandos y funciones acumuladas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c14-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C14_assets/C14_Acumulacion.png" class="img-fluid figure-img" alt="Capítulo 14: Integrandos y funciones acumuladas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c14-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Capítulo 14 · Figura 1. Integrandos y funciones acumuladas
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e003" class="level2">
+<h2 class="anchored" data-anchor-id="e003">Ejercicio 3 — <code>SPV4-C14-E003</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;297 / PDF 317. Examinar la constancia de dos expresiones.</p>
+<p><strong>(i)</strong> Sea <span class="math inline">\(H(x)=\int_0^xdt/(1+t^2)+\int_0^{1/x}dt/(1+t^2)\)</span>, definida para <span class="math inline">\(x\ne0\)</span>. Su derivada es</p>
+<p><span class="math display">\[H'(x)=\frac1{1+x^2}-\frac1{x^2(1+1/x^2)}=0.\]</span></p>
+<p>Por el teorema del valor medio es constante en cada componente de su dominio. En <span class="math inline">\(x&gt;0\)</span> vale <span class="math inline">\(2\int_0^1dt/(1+t^2)&gt;0\)</span>; en <span class="math inline">\(x&lt;0\)</span> vale el opuesto, por paridad del integrando e inversión de límites. <strong>No hay una sola constante en todo <span class="math inline">\(\mathbb R\setminus\{0\}\)</span>.</strong> La afirmación necesita restringir el dominio a una de las semirrectas. Tras identificar las funciones trigonométricas inversas en C15, esas constantes son <span class="math inline">\(\pm\pi/2\)</span>; esa identificación no se necesita para esta prueba.</p>
+<p><strong>(ii)</strong> Para <span class="math inline">\(K(x)=\int_{-\cos x}^{\sin x}dt/\sqrt{1-t^2}\)</span>, <span class="math inline">\(0&lt;x&lt;\pi/2\)</span>, los extremos están dentro de <span class="math inline">\((-1,1)\)</span>. Derivar ambos extremos da</p>
+<p><span class="math display">\[K'(x)=\frac{\cos x}{\sqrt{1-\sin^2x}}-\frac{\sin x}{\sqrt{1-\cos^2x}}
+=\frac{\cos x}{|\cos x|}-\frac{\sin x}{|\sin x|}=0.\]</span></p>
+<p>El intervalo dado hace positivos ambos denominadores simplificados. Por el valor medio, <span class="math inline">\(K\)</span> es constante; puede expresarse como <span class="math inline">\(\int_{-1/\sqrt2}^{1/\sqrt2}dt/\sqrt{1-t^2}\)</span> evaluando en <span class="math inline">\(\pi/4\)</span>. No se prolonga la simplificación de signos fuera de ese intervalo.</p>
+</section>
+<section id="e004" class="level2">
+<h2 class="anchored" data-anchor-id="e004">Ejercicio 4 — <code>SPV4-C14-E004</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;298 / PDF 318. Calcular <span class="math inline">\((f^{-1})'(0)\)</span> sin evaluar <span class="math inline">\(f\)</span>.</p>
+<p><strong>(i)</strong> Para <span class="math inline">\(f(x)=\int_0^x[1+\sin(\sin t)]dt\)</span>, <span class="math inline">\(f(0)=0\)</span> y <span class="math inline">\(f'(0)=1\)</span>. Además <span class="math inline">\(1+\sin(\sin t)\ge1-\sin1&gt;0\)</span>, de modo que <span class="math inline">\(f\)</span> es estrictamente creciente y su inversa existe. Así <span class="math inline">\(\boxed{(f^{-1})'(0)=1}\)</span>.</p>
+<p><strong>(ii)</strong> Para <span class="math inline">\(f(x)=\int_1^x\cos(\cos t)dt\)</span>, <span class="math inline">\(f(1)=0\)</span> y <span class="math inline">\(f'(x)=\cos(\cos x)\ge\cos1&gt;0\)</span>. La preimagen de cero es uno y</p>
+<p><span class="math display">\[\boxed{(f^{-1})'(0)=\frac1{\cos(\cos1)}.}\]</span></p>
+<p>Se evalúa la derivada en la preimagen, no en el argumento cero de la inversa.</p>
+</section>
+<section id="e005" class="level2">
+<h2 class="anchored" data-anchor-id="e005">Ejercicio 5 — <code>SPV4-C14-E005</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;298 / PDF 318. Buscar <span class="math inline">\(g\)</span> en dos ecuaciones integrales.</p>
+<p><strong>(i)</strong> Queremos <span class="math inline">\(\int_0^xtg(t)dt=x+x^2\)</span>. Tomamos <span class="math inline">\(g(t)=1/t+2\)</span> para <span class="math inline">\(t\ne0\)</span>, y asignamos cualquier valor finito en cero. El producto <span class="math inline">\(tg(t)\)</span> vale <span class="math inline">\(1+2t\)</span> salvo en cero, donde vale cero; es integrable y la modificación en ese punto no cambia la integral. Por el segundo teorema fundamental,</p>
+<p><span class="math display">\[\int_0^xtg(t)dt=\int_0^x(1+2t)dt=x+x^2\]</span></p>
+<p>para todos los reales. No se requiere que <span class="math inline">\(g\)</span> misma sea integrable cerca de cero.</p>
+<p><strong>(ii)</strong> La ecuación impresa es <span class="math inline">\(\int_0^{x^2}tg(t)dt=x+x^2\)</span>. En toda la recta es imposible: el lado izquierdo es par en <span class="math inline">\(x\)</span> y el derecho no. Tampoco tiene solución con integral <strong>propia</strong> para todos los <span class="math inline">\(x\ge0\)</span> cercanos a cero. Si <span class="math inline">\(tg(t)\)</span> fuera integrable en algún <span class="math inline">\([0,A]\)</span>, estaría acotada por <span class="math inline">\(B\)</span>, y <span class="math inline">\(|\int_0^{x^2}tg(t)dt|\le Bx^2\)</span>, incompatible con <span class="math inline">\(x+x^2\)</span> al dividir por <span class="math inline">\(x&gt;0\)</span> y dejar <span class="math inline">\(x\downarrow0\)</span>.</p>
+<p>Hay una solución para <span class="math inline">\(x\ge0\)</span> al interpretar la integral como <strong>impropia</strong>:</p>
+<p><span class="math display">\[g(t)=\frac1{2t^{3/2}}+\frac1t\quad(t&gt;0),\qquad g(0)=0.\]</span></p>
+<p>En efecto, <span class="math inline">\(tg(t)=1/(2\sqrt t)+1\)</span>, y</p>
+<p><span class="math display">\[\lim_{\varepsilon\downarrow0}\int_\varepsilon^{x^2}tg(t)dt
+=\lim_{\varepsilon\downarrow0}[\sqrt t+t]_\varepsilon^{x^2}=x+x^2\quad(x&gt;0).\]</span></p>
+<p>En cero la integral se define como cero. Para <span class="math inline">\(x&lt;0\)</span>, la misma elección produce <span class="math inline">\(|x|+x^2\)</span>, no <span class="math inline">\(x+x^2\)</span>. En la semirrecta negativa se podría usar por separado <span class="math inline">\(g(t)=-1/(2t^{3/2})+1/t\)</span>, pero ninguna elección satisface simultáneamente ambas semirrectas. Las integrales impropias se formalizan en E028.</p>
+</section>
+<section id="e006" class="level2">
+<h2 class="anchored" data-anchor-id="e006">Ejercicio 6 — <code>SPV4-C14-E006</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;298 / PDF 318. Funciones continuas con <span class="math inline">\(\int_0^xf=f(x)^2+C\)</span>.</p>
+<p><strong>(a)</strong> Se pide <span class="math inline">\(C\ne0\)</span> y a lo sumo un cero de <span class="math inline">\(f\)</span>, sobre toda <span class="math inline">\(\mathbb R\)</span>. En <span class="math inline">\(x=0\)</span>, <span class="math inline">\(f(0)^2=-C\)</span>, así que <span class="math inline">\(C&lt;0\)</span>. En cualquier intervalo donde <span class="math inline">\(f\ne0\)</span>, la identidad muestra que <span class="math inline">\(f^2\)</span> es diferenciable. Como allí <span class="math inline">\(f\)</span> es una raíz de signo fijo, también es diferenciable, y</p>
+<p><span class="math display">\[f=2ff',\qquad f'=1/2.\]</span></p>
+<p>Si no tuviera ceros, sería afín de pendiente <span class="math inline">\(1/2\)</span> en toda la recta, pero una función así tiene un cero. Si tiene su único cero <span class="math inline">\(r\)</span>, en cada semirrecta es <span class="math inline">\(x/2+k_\pm\)</span>; por continuidad en <span class="math inline">\(r\)</span>, ambos términos constantes son <span class="math inline">\(-r/2\)</span>. Por tanto</p>
+<p><span class="math display">\[\boxed{f(x)=x/2+\sqrt{-C}\quad\text{o}\quad f(x)=x/2-\sqrt{-C},\qquad C&lt;0.}\]</span></p>
+<p>Sustituir da <span class="math inline">\(\int_0^xf=x^2/4\pm x\sqrt{-C}\)</span>, igual a <span class="math inline">\(f(x)^2+C\)</span>. Para <span class="math inline">\(C&gt;0\)</span> no hay solución real.</p>
+<p><strong>(b)</strong> Una solución nula en <span class="math inline">\((-\infty,b]\)</span>, <span class="math inline">\(b&gt;0\)</span>, obliga a <span class="math inline">\(C=0\)</span> al evaluar en cero. Por tanto es incompatible con conservar <span class="math inline">\(C\ne0\)</span> de (a); este inciso debe liberar esa restricción. Con <span class="math inline">\(C=0\)</span> sirve</p>
+<p><span class="math display">\[\boxed{f(x)=\begin{cases}0,&amp;x\le b,\\(x-b)/2,&amp;x&gt;b.\end{cases}}\]</span></p>
+<p>Para <span class="math inline">\(x\le b\)</span>, ambas partes de la ecuación son cero; para <span class="math inline">\(x&gt;b\)</span>, <span class="math inline">\(\int_b^x(t-b)/2\,dt=(x-b)^2/4=f(x)^2\)</span>. El punto de partida <span class="math inline">\(b\)</span> es libre, no queda fijado por una constante no nula.</p>
+<p><strong>(c)</strong> Para <span class="math inline">\(C=0\)</span> y <span class="math inline">\(a&lt;0&lt;b\)</span>,</p>
+<p><span class="math display">\[\boxed{f(x)=\begin{cases}(x-a)/2,&amp;x&lt;a,\\0,&amp;a\le x\le b,\\(x-b)/2,&amp;x&gt;b.\end{cases}}\]</span></p>
+<p>Es continua. Para <span class="math inline">\(x&gt;b\)</span> se comprueba como en (b). Para <span class="math inline">\(x&lt;a\)</span>, <span class="math inline">\(\int_0^xf=\int_a^x(t-a)/2\,dt=(x-a)^2/4=f(x)^2\)</span>, incluyendo el signo orientado. Dentro de <span class="math inline">\([a,b]\)</span> las dos partes son cero.</p>
+<div id="fig-spv4-c14-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 14: Soluciones con y sin intervalo de ceros">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c14-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C14_assets/C14_Ecuacion_integral.png" class="img-fluid figure-img" alt="Capítulo 14: Soluciones con y sin intervalo de ceros">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c14-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Capítulo 14 · Figura 2. Soluciones con y sin intervalo de ceros
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e007" class="level2">
+<h2 class="anchored" data-anchor-id="e007">Ejercicio 7 — <code>SPV4-C14-E007</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;298 / PDF 318. Aplicar el valor medio ponderado de C13-E023.</p>
+<p><strong>(i)</strong> Con <span class="math inline">\(w(x)=x^6\ge0\)</span> y <span class="math inline">\(h(x)=1/\sqrt{1+x^2}\)</span>, existe <span class="math inline">\(\xi\in[0,1]\)</span> tal que</p>
+<p><span class="math display">\[\int_0^1\frac{x^6}{\sqrt{1+x^2}}dx
+=\frac1{\sqrt{1+\xi^2}}\int_0^1x^6dx
+=\frac1{7\sqrt{1+\xi^2}}.\]</span></p>
+<p>Como <span class="math inline">\(1/\sqrt2\le1/\sqrt{1+\xi^2}\le1\)</span>, se obtienen las cotas <span class="math inline">\(1/(7\sqrt2)\)</span> y <span class="math inline">\(1/7\)</span>.</p>
+<p><strong>(ii)</strong> En <span class="math inline">\([0,1/2]\)</span>,</p>
+<p><span class="math display">\[\sqrt{\frac{1-x}{1+x}}=\frac{1-x}{\sqrt{1-x^2}}.\]</span></p>
+<p>Tomamos <span class="math inline">\(w(x)=1-x\ge0\)</span> y <span class="math inline">\(h(x)=1/\sqrt{1-x^2}\)</span>. La integral vale <span class="math inline">\(h(\xi)\int_0^{1/2}(1-x)dx=(3/8)h(\xi)\)</span>. Puesto que <span class="math inline">\(1\le h(\xi)\le2/\sqrt3\)</span>,</p>
+<p><span class="math display">\[\boxed{\frac38\le\int_0^{1/2}\sqrt{\frac{1-x}{1+x}}dx\le\frac{\sqrt3}{4}.}\]</span></p>
+</section>
+<section id="e008" class="level2">
+<h2 class="anchored" data-anchor-id="e008">Ejercicio 8 — <code>SPV4-C14-E008</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;298 / PDF 318. Derivar <span class="math inline">\(F(x)=\int_0^xxf(t)dt\)</span>.</p>
+<p>Suponiendo <span class="math inline">\(f\)</span> continua, <span class="math inline">\(x\)</span> es constante respecto de <span class="math inline">\(t\)</span>, así que <span class="math inline">\(F(x)=xA(x)\)</span>, con <span class="math inline">\(A(x)=\int_0^xf(t)dt\)</span>. Producto y teorema fundamental dan</p>
+<p><span class="math display">\[\boxed{F'(x)=\int_0^xf(t)dt+xf(x).}\]</span></p>
+<p>Basta continuidad de <span class="math inline">\(f\)</span> en el punto de derivación e integrabilidad en los intervalos pertinentes. Si solo se supusiera integrabilidad, <span class="math inline">\(A'\)</span> podría no existir; no se aplica el teorema sin su hipótesis local.</p>
+</section>
+<section id="e009" class="level2">
+<h2 class="anchored" data-anchor-id="e009">Ejercicio 9 — <code>SPV4-C14-E009</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;298 / PDF 318. Probar <span class="math inline">\(\int_0^xf(u)(x-u)du=\int_0^x(\int_0^uf(t)dt)du\)</span>, para <span class="math inline">\(f\)</span> continua.</p>
+<p>Sea <span class="math inline">\(A(x)=\int_0^xf\)</span>. El miembro izquierdo es <span class="math inline">\(L(x)=xA(x)-\int_0^xuf(u)du\)</span>. Por E008 y el teorema fundamental, <span class="math inline">\(L'=A+xf(x)-xf(x)=A\)</span>. El miembro derecho también tiene derivada <span class="math inline">\(A\)</span>. Ambos valen cero en cero; su diferencia tiene derivada cero en el intervalo considerado, luego es cero por el valor medio. Esta prueba cubre también <span class="math inline">\(x&lt;0\)</span>, con integrales orientadas.</p>
+</section>
+<section id="e010" class="level2">
+<h2 class="anchored" data-anchor-id="e010">Ejercicio 10* — <code>SPV4-C14-E010</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;298 / PDF 318. Probar la identidad de tres integraciones sucesivas.</p>
+<p>Definamos <span class="math inline">\(A(x)=\int_0^xf(t)dt\)</span>, <span class="math inline">\(B(x)=\int_0^xA(u_1)du_1\)</span>, <span class="math inline">\(D(x)=\int_0^xB(u_2)du_2\)</span>, para <span class="math inline">\(f\)</span> continua. La identidad pedida es</p>
+<p><span class="math display">\[\boxed{\int_0^xf(u)(x-u)^2du=2D(x).}\]</span></p>
+<p>Para comprobarla sin derivar bajo un signo integral con parámetro, expandimos el cuadrado. La derivada del lado izquierdo es</p>
+<p><span class="math display">\[\frac d{dx}\left[x^2\int_0^xf-2x\int_0^xuf(u)du+\int_0^xu^2f(u)du\right]
+=2\int_0^xf(u)(x-u)du=2B(x),\]</span></p>
+<p>por E009. El lado derecho tiene la misma derivada y ambos se anulan en cero. De nuevo, el valor medio prueba la igualdad en cualquier intervalo que contenga cero.</p>
+</section>
+<section id="e011" class="level2">
+<h2 class="anchored" data-anchor-id="e011">Ejercicio 11 — <code>SPV4-C14-E011</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;298 / PDF 318. Construir <span class="math inline">\(f\)</span> con <span class="math inline">\(f'''(x)=1/\sqrt{1+\sin^2x}\)</span>.</p>
+<p>El integrando <span class="math inline">\(h(x)=1/\sqrt{1+\sin^2x}\)</span> es continuo. Podemos tomar</p>
+<p><span class="math display">\[\boxed{f(x)=\int_0^x\int_0^u\int_0^v h(t)dt\,dv\,du
+=\frac12\int_0^xh(t)(x-t)^2dt.}\]</span></p>
+<p>Tres aplicaciones del primer teorema fundamental dan <span class="math inline">\(f'''=h\)</span>; la segunda expresión procede de E010. No se necesita una primitiva elemental. Todas las demás soluciones difieren en un polinomio de grado a lo sumo dos: aplicar sucesivamente el valor medio a una diferencia de tercera derivada cero da esa conclusión.</p>
+</section>
+<section id="e012" class="level2">
+<h2 class="anchored" data-anchor-id="e012">Ejercicio 12 — <code>SPV4-C14-E012</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;299 / PDF 319. Periodicidad; los períodos son positivos y las funciones se definen en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>(a)</strong> Si <span class="math inline">\(f(x+a)=f(x)\)</span> y <span class="math inline">\(f\)</span> es integrable en <span class="math inline">\([0,a]\)</span>, la traslación de particiones prueba integrabilidad en cada intervalo trasladado. Escribamos <span class="math inline">\(b=ma+r\)</span> con <span class="math inline">\(m\in\mathbb Z\)</span>, <span class="math inline">\(0\le r&lt;a\)</span>. Por periodicidad, <span class="math inline">\(\int_b^{b+a}f=\int_r^{r+a}f\)</span>. Dividimos en <span class="math inline">\(a\)</span> y trasladamos el último tramo:</p>
+<p><span class="math display">\[\int_r^{r+a}f=\int_r^af+\int_a^{a+r}f
+=\int_r^af+\int_0^rf=\boxed{\int_0^af}.\]</span></p>
+<p><strong>(b)</strong> Sirve <span class="math inline">\(f(x)=x+\sin x\)</span>: su derivada <span class="math inline">\(1+\cos x\)</span> es periódica, pero <span class="math inline">\(f\)</span> es no acotada y no puede ser periódica, pues una continua periódica está acotada por su comportamiento en un período compacto.</p>
+<p><strong>(c)</strong> Si <span class="math inline">\(f'\)</span> tiene período <span class="math inline">\(a\)</span>, la función <span class="math inline">\(Q(x)=f(x+a)-f(x)\)</span> satisface <span class="math inline">\(Q'=0\)</span>. Es constante y vale <span class="math inline">\(Q(0)=f(a)-f(0)\)</span>. Si <span class="math inline">\(f(a)=f(0)\)</span>, esa constante es cero: <span class="math inline">\(f\)</span> tiene período <span class="math inline">\(a\)</span>. No se necesita que <span class="math inline">\(f'\)</span> sea integrable.</p>
+<p>**(d*)** Si además <span class="math inline">\(f\)</span> tiene algún período <span class="math inline">\(b&gt;0\)</span>, es continua y acotada en toda la recta. Como <span class="math inline">\(Q(x)=k=f(a)-f(0)\)</span> por el argumento anterior, la inducción da <span class="math inline">\(f(x+na)=f(x)+nk\)</span> para todo entero <span class="math inline">\(n\ge0\)</span>. La acotación fuerza <span class="math inline">\(k=0\)</span>, por tanto <span class="math inline">\(f(a)=f(0)\)</span>. No se requiere que los dos períodos sean conmensurables.</p>
+</section>
+<section id="e013" class="level2">
+<h2 class="anchored" data-anchor-id="e013">Ejercicio 13 — <code>SPV4-C14-E013</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;299 / PDF 319. Evaluar <span class="math inline">\(\int_0^b\sqrt[n]x\,dx\)</span> con una primitiva, <span class="math inline">\(b\ge0\)</span>, <span class="math inline">\(n\ge1\)</span> entero.</p>
+<p>Tomamos <span class="math inline">\(G(x)=\frac n{n+1}x\sqrt[n]x\)</span> en <span class="math inline">\([0,\infty)\)</span>. Para <span class="math inline">\(x&gt;0\)</span>, las reglas de producto y de derivación de raíces dan <span class="math inline">\(G'(x)=\sqrt[n]x\)</span>. En cero, <span class="math inline">\([G(h)-G(0)]/h=\frac n{n+1}\sqrt[n]h\to0\)</span> por la derecha. Así, por el segundo teorema fundamental,</p>
+<p><span class="math display">\[\boxed{\int_0^b\sqrt[n]x\,dx=\frac n{n+1}b^{(n+1)/n}.}\]</span></p>
+<p>Coincide con C13-E021(c), donde se obtuvo desde sumas para la inversa.</p>
+</section>
+<section id="e014" class="level2">
+<h2 class="anchored" data-anchor-id="e014">Ejercicio 14* — <code>SPV4-C14-E014</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;299 / PDF 319; remite a C12-E021 y C13-E021. Si <span class="math inline">\(F'=f\)</span>, construir una primitiva de <span class="math inline">\(g=f^{-1}\)</span>.</p>
+<p>Para <span class="math inline">\(f\)</span> continua y estrictamente creciente, la identidad de C13-E021 entre dos valores <span class="math inline">\(u_0,u\)</span> de su imagen es</p>
+<p><span class="math display">\[\int_{u_0}^ug(t)dt=ug(u)-u_0g(u_0)-\int_{g(u_0)}^{g(u)}f(t)dt.\]</span></p>
+<p>Por el segundo teorema fundamental, la última integral es <span class="math inline">\(F(g(u))-F(g(u_0))\)</span>. Por tanto</p>
+<p><span class="math display">\[G(u)=ug(u)-F(g(u))=\int_{u_0}^ug(t)dt+\text{constante}.\]</span></p>
+<p>Como <span class="math inline">\(g\)</span> es continua, el primer teorema fundamental prueba <span class="math inline">\(\boxed{G'=g}\)</span>. Con las hipótesis diferenciables de C12-E021 se podría derivar directamente y cancelar <span class="math inline">\([u-f(g(u))]g'(u)\)</span>; la identidad integral incluso muestra que <span class="math inline">\(G\)</span> es diferenciable cuando la inversa no lo es. Para <span class="math inline">\(f\)</span> decreciente, la misma identidad se obtiene aplicando la versión creciente a <span class="math inline">\(-f\)</span> y reflejando la variable de su imagen; las orientaciones de los extremos dan la fórmula idéntica.</p>
+</section>
+<section id="e015" class="level2">
+<h2 class="anchored" data-anchor-id="e015">Ejercicio 15* — <code>SPV4-C14-E015</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;299 / PDF 319. Curvas que bisecan áreas como en la figura 7.</p>
+<p><strong>(a)</strong> Sean <span class="math inline">\(C_1:y=x^2\)</span> y <span class="math inline">\(C:y=2x^2\)</span>, <span class="math inline">\(x\ge0\)</span>. En <span class="math inline">\(P=(x,2x^2)\)</span>, la región inferior entre <span class="math inline">\(C\)</span> y <span class="math inline">\(C_1\)</span> tiene área <span class="math inline">\(A(x)=x^3/3\)</span>. Si <span class="math inline">\(h(y)\)</span> es la abscisa de <span class="math inline">\(C_2\)</span> a altura <span class="math inline">\(y\)</span>, el área horizontal entre <span class="math inline">\(C_2\)</span> y <span class="math inline">\(C\)</span> es</p>
+<p><span class="math display">\[B(x)=\int_0^{2x^2}\left(\sqrt{y/2}-h(y)\right)dy.\]</span></p>
+<p>La igualdad <span class="math inline">\(A=B\)</span> implica, al derivar para <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(x^2=[x-h(2x^2)]4x\)</span>, es decir, <span class="math inline">\(h(2x^2)=3x/4\)</span>. Luego</p>
+<p><span class="math display">\[\boxed{C_2:\ y=\frac{32}{9}x^2,\quad x\ge0.}\]</span></p>
+<p>Recíprocamente, con esta <span class="math inline">\(C_2\)</span> las derivadas de <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> coinciden y ambas áreas son cero en el origen, lo que prueba la bisección para todo <span class="math inline">\(P\)</span>.</p>
+<p><strong>(b)</strong> Para <span class="math inline">\(C_1:y=x^m\)</span> y <span class="math inline">\(C:y=cx^m\)</span>, <span class="math inline">\(c&gt;1\)</span>, suponemos <span class="math inline">\(m&gt;0\)</span> para que las ramas tengan inversas desde el origen. Para exponentes enteros y racionales se usan las reglas demostradas en C12; al permitir exponentes reales se entiende disponible la regla habitual de derivación de potencias. Ahora <span class="math inline">\(A(x)=(c-1)x^{m+1}/(m+1)\)</span> y</p>
+<p><span class="math display">\[B(x)=\int_0^{cx^m}\bigl((y/c)^{1/m}-h(y)\bigr)dy.\]</span></p>
+<p>Derivando, <span class="math inline">\((c-1)x^m=[x-h(cx^m)]cmx^{m-1}\)</span>. Por ello <span class="math inline">\(h(cx^m)=qx\)</span>, donde</p>
+<p><span class="math display">\[q=1-\frac{c-1}{cm}=\frac{m-1+1/c}{m}.\]</span></p>
+<p>Si <span class="math inline">\(q&gt;0\)</span>, obtenemos</p>
+<p><span class="math display">\[\boxed{C_2:\ y=cq^{-m}x^m,\quad x\ge0.}\]</span></p>
+<p>Además <span class="math inline">\(q&lt;1\)</span>, de modo que <span class="math inline">\(C_2\)</span> queda a la izquierda de <span class="math inline">\(C\)</span> en la descripción horizontal. La igualdad de áreas se comprueba por sus derivadas y su valor inicial, como en (a). Para enteros <span class="math inline">\(m\ge1\)</span>, <span class="math inline">\(q&gt;0\)</span> automáticamente. Si se permiten exponentes <span class="math inline">\(0&lt;m&lt;1\)</span>, hace falta <span class="math inline">\(c&lt;1/(1-m)\)</span> para la disposición del dibujo en el primer cuadrante. Si <span class="math inline">\(q=0\)</span>, la curva límite es el eje vertical; si <span class="math inline">\(q&lt;0\)</span>, la curva paramétrica <span class="math inline">\((qx,cx^m)\)</span> queda a la izquierda del eje y ya no tiene la disposición del dibujo. Esta precisión evita suponer que toda elección real de <span class="math inline">\(m,c\)</span> produce una gráfica positiva de ese tipo.</p>
+<div id="fig-spv4-c14-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 14: Bisección de áreas por las tres curvas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c14-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C14_assets/C14_Biseccion.png" class="img-fluid figure-img" alt="Capítulo 14: Bisección de áreas por las tres curvas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c14-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Capítulo 14 · Figura 3. Bisección de áreas por las tres curvas
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e016" class="level2">
+<h2 class="anchored" data-anchor-id="e016">Ejercicio 16 — <code>SPV4-C14-E016</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;299 / PDF 319. Derivadas y ley de <span class="math inline">\(\int_1^adt/t\)</span>.</p>
+<p><strong>(a)</strong> Para <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(b&gt;0\)</span>, sean <span class="math inline">\(F(x)=\int_1^xdt/t\)</span> y <span class="math inline">\(G(x)=\int_b^{bx}dt/t\)</span>. El teorema fundamental y la cadena dan <span class="math inline">\(F'(x)=1/x\)</span> y <span class="math inline">\(G'(x)=b/(bx)=1/x\)</span>.</p>
+<p><strong>(b)</strong> La diferencia <span class="math inline">\(F-G\)</span> es constante en <span class="math inline">\((0,\infty)\)</span> y vale cero en <span class="math inline">\(x=1\)</span>. Por tanto <span class="math inline">\(F(a)=G(a)=\int_b^{ba}dt/t\)</span>. Sumando <span class="math inline">\(\int_1^bdt/t\)</span>,</p>
+<p><span class="math display">\[\boxed{\int_1^a\frac{dt}{t}+\int_1^b\frac{dt}{t}=\int_1^{ab}\frac{dt}{t},\qquad a,b&gt;0.}\]</span></p>
+<p>Se recupera C13-E015, y la orientación permite también <span class="math inline">\(a\)</span> o <span class="math inline">\(b\)</span> menores que uno.</p>
+</section>
+<section id="e017" class="level2">
+<h2 class="anchored" data-anchor-id="e017">Ejercicio 17* — <code>SPV4-C14-E017</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;299 / PDF 319. Valor intermedio desde Darboux y el teorema fundamental.</p>
+<p>Sea <span class="math inline">\(f\)</span> continua en <span class="math inline">\([a,b]\)</span> y <span class="math inline">\(y\)</span> un valor entre <span class="math inline">\(f(a)\)</span> y <span class="math inline">\(f(b)\)</span>. Definimos <span class="math inline">\(F(x)=\int_a^xf\)</span>. El primer teorema fundamental da <span class="math inline">\(F'=f\)</span>, con derivadas unilaterales en los extremos. El teorema de Darboux para derivadas, demostrado en C11-E060, garantiza que <span class="math inline">\(F'\)</span> toma todos los valores intermedios; así existe <span class="math inline">\(c\)</span> con <span class="math inline">\(f(c)=y\)</span>.</p>
+<p>Para valores estrictamente entre los extremos, puede evitarse cualquier formulación de Darboux en bordes: la continuidad de <span class="math inline">\(f\)</span> permite escoger <span class="math inline">\(a&lt;u&lt;v&lt;b\)</span> con <span class="math inline">\(y\)</span> todavía entre <span class="math inline">\(f(u),f(v)\)</span> y aplicar Darboux dentro de <span class="math inline">\((a,b)\)</span>. Si <span class="math inline">\(y=f(a)\)</span> o <span class="math inline">\(f(b)\)</span>, sirve el extremo correspondiente. La prueba alternativa presupone Darboux y el teorema fundamental establecidos sin usar como paso lógico el resultado que se quiere reconstruir.</p>
+</section>
+<section id="e018" class="level2">
+<h2 class="anchored" data-anchor-id="e018">Ejercicio 18 — <code>SPV4-C14-E018</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;299 / PDF 319. Dos extremos variables.</p>
+<p>Si <span class="math inline">\(h\)</span> es continua, <span class="math inline">\(f,g\)</span> diferenciables y sus valores están en el intervalo de definición de <span class="math inline">\(h\)</span>, fijamos <span class="math inline">\(d\)</span> en él y <span class="math inline">\(H(u)=\int_d^uh(t)dt\)</span>. Por aditividad,</p>
+<p><span class="math display">\[F(x)=\int_{f(x)}^{g(x)}h(t)dt=H(g(x))-H(f(x)).\]</span></p>
+<p>Como <span class="math inline">\(H'=h\)</span>, la cadena da</p>
+<p><span class="math display">\[\boxed{F'(x)=h(g(x))g'(x)-h(f(x))f'(x).}\]</span></p>
+<p>La prueba cubre cruces de los extremos y el caso <span class="math inline">\(f(x)=g(x)\)</span>; no exige un orden fijo entre ellos.</p>
+</section>
+<section id="e019" class="level2">
+<h2 class="anchored" data-anchor-id="e019">Ejercicio 19 — <code>SPV4-C14-E019</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;299 / PDF 319. <span class="math inline">\(f\)</span> integrable en <span class="math inline">\([a,b]\)</span>, <span class="math inline">\(c\in(a,b)\)</span> y <span class="math inline">\(F(x)=\int_a^xf\)</span>. Probar o refutar tres afirmaciones.</p>
+<p><strong>(a)</strong> Si <span class="math inline">\(f\)</span> es diferenciable en <span class="math inline">\(c\)</span>, es continua allí, por lo que <span class="math inline">\(F\)</span> es diferenciable en <span class="math inline">\(c\)</span> y <span class="math inline">\(F'(c)=f(c)\)</span>. La afirmación es verdadera.</p>
+<p><strong>(b)</strong> Que <span class="math inline">\(f\)</span> sea diferenciable solo en <span class="math inline">\(c\)</span> no garantiza que <span class="math inline">\(F'\)</span> exista en todo un entorno de <span class="math inline">\(c\)</span>. Con la convención usual de exigir ese entorno para hablar de una derivada continua allí, la afirmación «<span class="math inline">\(F'\)</span> es continua en <span class="math inline">\(c\)</span>» necesita esa salvedad. Un contraejemplo a la existencia del entorno es, en <span class="math inline">\([-1,1]\)</span> y <span class="math inline">\(c=0\)</span>,</p>
+<p><span class="math display">\[f(0)=0,\qquad f(x)=x^2\lfloor1/x\rfloor\quad(x\ne0).\]</span></p>
+<p>Es integrable: fuera de un entorno de cero tiene finitos saltos y en la cola <span class="math inline">\(|f(x)|\le|x|+x^2\)</span>, que permite controlar las diferencias de Darboux. Además <span class="math inline">\(f(x)/x=x\lfloor1/x\rfloor\to1\)</span>, así que <span class="math inline">\(f'(0)=1\)</span>. Sin embargo, en cada <span class="math inline">\(1/n\)</span>, <span class="math inline">\(n\ge2\)</span>, <span class="math inline">\(f\)</span> tiene límites laterales distintos, luego <span class="math inline">\(F\)</span> tiene cocientes incrementales laterales distintos y <span class="math inline">\(F'(1/n)\)</span> no existe. Esos puntos se aproximan a cero.</p>
+<p>Hay una distinción de dominio importante: <strong>sobre el dominio natural <span class="math inline">\(D\)</span> donde <span class="math inline">\(F'\)</span> sí existe, <span class="math inline">\(F'\)</span> es continua en <span class="math inline">\(c\)</span> en sentido relativo</strong>. En efecto, la continuidad de <span class="math inline">\(f\)</span> en <span class="math inline">\(c\)</span> permite imponer <span class="math inline">\(|f(t)-f(c)|&lt;\varepsilon\)</span> para <span class="math inline">\(|t-c|&lt;\delta\)</span>. Si <span class="math inline">\(x\in D\)</span> y <span class="math inline">\(|x-c|&lt;\delta/2\)</span>, todos los promedios incrementales suficientemente cortos de <span class="math inline">\(F\)</span> alrededor de <span class="math inline">\(x\)</span> están entre <span class="math inline">\(f(c)-\varepsilon\)</span> y <span class="math inline">\(f(c)+\varepsilon\)</span>. Al tomar límite, <span class="math inline">\(|F'(x)-f(c)|\le\varepsilon\)</span>. Como <span class="math inline">\(F'(c)=f(c)\)</span>, se prueba la continuidad relativa. Así, si se entiende la afirmación en ese sentido, es verdadera; lo que falta en general es el entorno completo de definición. El contraejemplo no se presenta como una discontinuidad relativa que no posee.</p>
+<p><strong>(c)</strong> Si <span class="math inline">\(f'\)</span> es continua en <span class="math inline">\(c\)</span>, entendiendo que <span class="math inline">\(f\)</span> es diferenciable en un entorno de <span class="math inline">\(c\)</span>, entonces <span class="math inline">\(f\)</span> es continua en ese entorno. Por el teorema fundamental, <span class="math inline">\(F'=f\)</span> allí, y <span class="math inline">\(F'\)</span> es continua en <span class="math inline">\(c\)</span>. La afirmación es verdadera; la continuidad de <span class="math inline">\(f'\)</span> es más de lo necesario.</p>
+</section>
+<section id="e020" class="level2">
+<h2 class="anchored" data-anchor-id="e020">Ejercicio 20* — <code>SPV4-C14-E020</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;300 / PDF 320. Para <span class="math inline">\(f(x)=\cos(1/x)\)</span> si <span class="math inline">\(x\ne0\)</span> y <span class="math inline">\(f(0)=0\)</span>, decidir si <span class="math inline">\(F(x)=\int_0^xf\)</span> es diferenciable en cero.</p>
+<p>La función está acotada y es continua salvo en cero, luego es integrable en compactos. Sea <span class="math inline">\(G(x)=x^2\sin(1/x)\)</span> para <span class="math inline">\(x\ne0\)</span>, <span class="math inline">\(G(0)=0\)</span>. Su cociente incremental en cero tiende a cero, así que <span class="math inline">\(G'(0)=0\)</span>. Para <span class="math inline">\(x\ne0\)</span>,</p>
+<p><span class="math display">\[G'(x)=2x\sin(1/x)-\cos(1/x).\]</span></p>
+<p>Definamos <span class="math inline">\(k(x)=2x\sin(1/x)\)</span> fuera de cero y <span class="math inline">\(k(0)=0\)</span>. Es continua en cero y <span class="math inline">\(f=k-G'\)</span> en todos los puntos. La derivada <span class="math inline">\(G'\)</span> es integrable, pues está acotada en cada compacto y solo puede ser discontinua en cero. Por el segundo teorema fundamental,</p>
+<p><span class="math display">\[F(x)=\int_0^xk(t)dt-G(x).\]</span></p>
+<p>Como <span class="math inline">\(|k(t)|\le2|t|\)</span> y <span class="math inline">\(|G(x)|\le x^2\)</span>,</p>
+<p><span class="math display">\[|F(x)|\le x^2+x^2=2x^2.\]</span></p>
+<p>Por tanto <span class="math inline">\(|F(x)/x|\le2|x|\to0\)</span> y <span class="math inline">\(\boxed{F'(0)=0=f(0)}\)</span>, a pesar de la discontinuidad de <span class="math inline">\(f\)</span>. La prueba funciona por ambos lados y no usa una integración por partes aún no desarrollada.</p>
+<div id="fig-spv4-c14-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 14: Oscilación del integrando y cota de la acumulada">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c14-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C14_assets/C14_Oscilacion.png" class="img-fluid figure-img" alt="Capítulo 14: Oscilación del integrando y cota de la acumulada">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c14-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Capítulo 14 · Figura 4. Oscilación del integrando y cota de la acumulada
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e021" class="level2">
+<h2 class="anchored" data-anchor-id="e021">Ejercicio 21 — <code>SPV4-C14-E021</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;300 / PDF 320. Si <span class="math inline">\(f'\)</span> es integrable en <span class="math inline">\([0,1]\)</span> y <span class="math inline">\(f(0)=0\)</span>, demostrar <span class="math inline">\(|f(x)|\le\sqrt{\int_0^1(f')^2}\)</span>.</p>
+<p>El segundo teorema fundamental da <span class="math inline">\(f(x)=\int_0^xf'\)</span>. Cauchy–Schwarz con la función constante uno, sobre <span class="math inline">\([0,x]\)</span>, implica</p>
+<p><span class="math display">\[|f(x)|^2\le x\int_0^x(f')^2\le\int_0^1(f')^2,\qquad0\le x\le1.\]</span></p>
+<p>El cuadrado de <span class="math inline">\(f'\)</span> es integrable por C13-E038; la segunda desigualdad usa <span class="math inline">\(x\le1\)</span> y la no negatividad del integrando. Tomando raíces se obtiene lo pedido. La condición inicial es necesaria: <span class="math inline">\(f=1\)</span> tiene <span class="math inline">\(f'=0\)</span> e incumple <span class="math inline">\(1\le0\)</span>.</p>
+</section>
+<section id="e022" class="level2">
+<h2 class="anchored" data-anchor-id="e022">Ejercicio 22* — <code>SPV4-C14-E022</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;300 / PDF 320. Si <span class="math inline">\(f(0)=0\)</span> y <span class="math inline">\(0&lt;f'\le1\)</span>, probar <span class="math inline">\(\int_0^xf^3\le(\int_0^xf)^2\)</span> para <span class="math inline">\(x\ge0\)</span>.</p>
+<p>Por el valor medio, <span class="math inline">\(f(x)\ge0\)</span> para <span class="math inline">\(x\ge0\)</span>. Sean</p>
+<p><span class="math display">\[A(x)=\int_0^xf,\qquad B(x)=2A(x)-f(x)^2.\]</span></p>
+<p>Entonces <span class="math inline">\(B(0)=0\)</span> y <span class="math inline">\(B'(x)=2f(x)[1-f'(x)]\ge0\)</span>, de modo que <span class="math inline">\(B\ge0\)</span>. Definimos <span class="math inline">\(H(x)=A(x)^2-\int_0^xf(t)^3dt\)</span>. El teorema fundamental da</p>
+<p><span class="math display">\[H'(x)=2A(x)f(x)-f(x)^3=f(x)B(x)\ge0.\]</span></p>
+<p>Como <span class="math inline">\(H(0)=0\)</span>, resulta <span class="math inline">\(\boxed{H(x)\ge0}\)</span>. Este argumento solo integra funciones continuas <span class="math inline">\(f,f^3\)</span>; no presupone que una derivada acotada <span class="math inline">\(f'\)</span> sea necesariamente integrable.</p>
+</section>
+<section id="e023" class="level2">
+<h2 class="anchored" data-anchor-id="e023">Ejercicio 23* — <code>SPV4-C14-E023</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;300 / PDF 320. Separación de variables; <span class="math inline">\(G'=g\)</span>, <span class="math inline">\(F'=f\)</span>, sobre intervalos conectados.</p>
+<p><strong>(a)</strong> Si <span class="math inline">\(y\)</span> es diferenciable y satisface <span class="math inline">\(g(y(x))y'(x)=f(x)\)</span>, la cadena da <span class="math inline">\([G(y(x))-F(x)]'=0\)</span>. Por el valor medio,</p>
+<p><span class="math display">\[\boxed{G(y(x))=F(x)+C.}\]</span></p>
+<p><strong>(b)</strong> Recíprocamente, si <span class="math inline">\(y\)</span> es diferenciable y satisface esa identidad, derivarla da <span class="math inline">\(g(y)y'=f\)</span>. La hipótesis de diferenciabilidad de <span class="math inline">\(y\)</span> no debe suprimirse: <span class="math inline">\(G(t)=t^2\)</span>, <span class="math inline">\(F(x)=x^2\)</span>, <span class="math inline">\(y(x)=|x|\)</span> satisfacen <span class="math inline">\(G(y)=F\)</span>, pero <span class="math inline">\(y\)</span> no es diferenciable en cero. Si <span class="math inline">\(g\)</span> no se anula en la rama considerada, la diferenciabilidad sí puede obtenerse previamente mediante el teorema de la inversa.</p>
+<p><strong>(c)</strong> Para <span class="math inline">\(y'=(1+x^2)/(1+y)\)</span>, se exige <span class="math inline">\(y\ne-1\)</span>. Las primitivas dan</p>
+<p><span class="math display">\[y+y^2/2=x+x^3/3+C,\qquad(y+1)^2=K+2x+2x^3/3.\]</span></p>
+<p>El radicando <span class="math inline">\(R(x)=K+2x+2x^3/3\)</span> es estrictamente creciente, tiende a ambos infinitos y tiene un único cero <span class="math inline">\(\alpha\)</span>. Todas las soluciones sobre intervalos abiertos no degenerados son restricciones de las dos ramas</p>
+<p><span class="math display">\[\boxed{y(x)=-1\pm\sqrt{K+2x+2x^3/3},\qquad x&gt;\alpha.}\]</span></p>
+<p>El signo es fijo en un intervalo conectado, porque no se puede cruzar <span class="math inline">\(y=-1\)</span>. Diferenciar cada rama comprueba la ecuación. No se incluye <span class="math inline">\(x=\alpha\)</span>, donde el denominador original se anula. Ninguna solución tiene dominio <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>(d)</strong> Para <span class="math inline">\(y'=-1/(1+5y^4)\)</span>, la identidad es <span class="math inline">\(y+y^5=-x+C\)</span>. El polinomio <span class="math inline">\(P(t)=t+t^5\)</span> tiene <span class="math inline">\(P'=1+5t^4&gt;0\)</span> y recorre toda la recta; su inversa existe y es diferenciable. Así todas las soluciones son</p>
+<p><span class="math display">\[\boxed{y(x)=P^{-1}(C-x).}\]</span></p>
+<p>Se definen globalmente en <span class="math inline">\(\mathbb R\)</span> o se restringen a un intervalo. La diferenciación de la inversa verifica la ecuación.</p>
+<p><strong>(e)</strong> De <span class="math inline">\(yy'=-x\)</span> obtenemos <span class="math inline">\(y^2+x^2=R^2\)</span>. En un intervalo abierto no degenerado, <span class="math inline">\(R&gt;0\)</span> y todas las soluciones son restricciones de</p>
+<p><span class="math display">\[\boxed{y(x)=\pm\sqrt{R^2-x^2},\qquad -R&lt;x&lt;R.}\]</span></p>
+<p>No se pueden añadir los extremos <span class="math inline">\(\pm R\)</span>: allí <span class="math inline">\(y=0\)</span> y la ecuación exigiría <span class="math inline">\(0=\mp R\)</span>, imposible con derivada finita. El caso <span class="math inline">\(R=0\)</span> solo da un punto, no una solución en un intervalo abierto. La condición <span class="math inline">\(y(0)=-1\)</span> determina <span class="math inline">\(R=1\)</span> y la rama negativa: <span class="math inline">\(y(x)=-\sqrt{1-x^2}\)</span>, con dominio máximo <span class="math inline">\((-1,1)\)</span>.</p>
+<div id="fig-spv4-c14-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 14: Ramas y dominios de las ecuaciones diferenciales">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c14-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C14_assets/C14_Ramas.png" class="img-fluid figure-img" alt="Capítulo 14: Ramas y dominios de las ecuaciones diferenciales">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c14-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Capítulo 14 · Figura 5. Ramas y dominios de las ecuaciones diferenciales
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e024" class="level2">
+<h2 class="anchored" data-anchor-id="e024">Ejercicio 24 — <code>SPV4-C14-E024</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;301 / PDF 321. Clasificar las funciones de schwarziano cero.</p>
+<p>Sea <span class="math inline">\(f\)</span> tres veces diferenciable en un intervalo, con <span class="math inline">\(f'\ne0\)</span>, y</p>
+<p><span class="math display">\[S(f)=\frac{f'''}{f'}-\frac32\left(\frac{f''}{f'}\right)^2=0.\]</span></p>
+<p><strong>(a)</strong> Por cociente y cadena,</p>
+<p><span class="math display">\[\left(\frac{(f'')^2}{(f')^3}\right)'
+=\frac{2f''f'''f'-3(f'')^3}{(f')^4}
+=\frac{2f''}{(f')^2}S(f)=0.\]</span></p>
+<p>El valor medio prueba que la expresión es constante en el intervalo. No se divide por <span class="math inline">\(f''\)</span>, que puede ser cero.</p>
+<p><strong>(b)</strong> Como <span class="math inline">\(f'\)</span> es continua y no nula, tiene signo fijo <span class="math inline">\(s\in\{-1,1\}\)</span>. Pongamos <span class="math inline">\(w=|f'|^{-1/2}&gt;0\)</span>. Dos derivaciones dan</p>
+<p><span class="math display">\[w'=-\frac12w\frac{f''}{f'},\qquad
+w''=w\left[\frac34\left(\frac{f''}{f'}\right)^2-\frac12\frac{f'''}{f'}\right]=0.\]</span></p>
+<p>Así <span class="math inline">\(w=\alpha x+\beta&gt;0\)</span> y <span class="math inline">\(f'=s/(\alpha x+\beta)^2\)</span>. Si <span class="math inline">\(\alpha=0\)</span>, <span class="math inline">\(f\)</span> es afín con pendiente no nula, que es un caso fraccionario lineal. Si <span class="math inline">\(\alpha\ne0\)</span>, una primitiva es</p>
+<p><span class="math display">\[f(x)=A-\frac{s}{\alpha(\alpha x+\beta)}
+=\frac{A\alpha x+A\beta-s/\alpha}{\alpha x+\beta}.\]</span></p>
+<p>Por tanto <span class="math inline">\(\boxed{f(x)=(ax+b)/(cx+d)}\)</span>, con <span class="math inline">\(ad-bc\ne0\)</span> y <span class="math inline">\(cx+d\ne0\)</span> en el intervalo. La verificación recíproca por derivación da <span class="math inline">\(S(f)=0\)</span>. La clasificación es por intervalos conectados sin polos; no obliga a conservar los mismos coeficientes en componentes desconectadas de un dominio.</p>
+</section>
+<section id="e025" class="level2">
+<h2 class="anchored" data-anchor-id="e025">Ejercicio 25 — <code>SPV4-C14-E025</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;301 / PDF 321. Se define <span class="math inline">\(\int_a^\infty f=\lim_{N\to\infty}\int_a^Nf\)</span>, cuando el límite es finito y <span class="math inline">\(f\)</span> es integrable en cada intervalo truncado.</p>
+<p><strong>(a)</strong> Para <span class="math inline">\(r&lt;-1\)</span>, el resultado es</p>
+<p><span class="math display">\[\boxed{\int_1^\infty x^r dx=-\frac1{r+1}.}\]</span></p>
+<p>Para <span class="math inline">\(r\)</span> racional, una primitiva en los positivos es <span class="math inline">\(x^{r+1}/(r+1)\)</span>, y la evaluación hasta <span class="math inline">\(N\)</span> es <span class="math inline">\((N^{r+1}-1)/(r+1)\)</span>, cuyo límite es el indicado. Para <span class="math inline">\(r\)</span> real, elegimos racionales <span class="math inline">\(p&lt;r&lt;q&lt;-1\)</span>. En <span class="math inline">\(x\ge1\)</span>, <span class="math inline">\(x^p\le x^r\le x^q\)</span>; la integral acumulada de <span class="math inline">\(x^r\)</span> es creciente y acotada por la de <span class="math inline">\(x^q\)</span>, luego tiene límite. Este límite queda entre <span class="math inline">\(-1/(p+1)\)</span> y <span class="math inline">\(-1/(q+1)\)</span>. Al aproximar <span class="math inline">\(p,q\)</span> a <span class="math inline">\(r\)</span>, ambas cotas tienden al valor anunciado. Se usa la continuidad y orden de las potencias reales ya construidas; no una regla de diferenciación aún no demostrada para todo exponente real.</p>
+<p><strong>(b)</strong> Sea <span class="math inline">\(c=\int_1^2dt/t&gt;0\)</span>. C13-E015 implica <span class="math inline">\(\int_1^{2^n}dt/t=nc\to\infty\)</span>. La integral acumulada es creciente; por tanto <span class="math inline">\(\int_1^\infty dx/x\)</span> diverge a <span class="math inline">\(+\infty\)</span> y no existe como número finito.</p>
+<p><strong>(c)</strong> Si <span class="math inline">\(0\le g\le f\)</span> en <span class="math inline">\([0,\infty)\)</span> y <span class="math inline">\(\int_0^\infty f=L&lt;\infty\)</span>, entonces <span class="math inline">\(G(N)=\int_0^Ng\)</span> es no decreciente y <span class="math inline">\(0\le G(N)\le\int_0^Nf\le L\)</span>. Por completitud, tiene límite finito. Esto prueba existencia de la integral impropia de <span class="math inline">\(g\)</span>; la integrabilidad en cada truncamiento es una hipótesis necesaria del enunciado.</p>
+<p><strong>(d)</strong> En <span class="math inline">\([0,1]\)</span>, <span class="math inline">\(1/(1+x^2)\)</span> es continua y acotada. Para <span class="math inline">\(x\ge1\)</span>, <span class="math inline">\(0\le1/(1+x^2)\le x^{-2}\)</span>, cuya integral de cola converge por (a). La comparación y la suma con la parte finita prueban existencia de <span class="math inline">\(\int_0^\infty dx/(1+x^2)\)</span>.</p>
+</section>
+<section id="e026" class="level2">
+<h2 class="anchored" data-anchor-id="e026">Ejercicio 26 — <code>SPV4-C14-E026</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;301 / PDF 321. Decidir la convergencia de tres integrales sobre <span class="math inline">\([0,\infty)\)</span>.</p>
+<p><strong>(i)</strong> <span class="math inline">\(\int_0^\infty dx/\sqrt{1+x^3}\)</span> converge: el integrando es continuo en <span class="math inline">\([0,1]\)</span>, y para <span class="math inline">\(x\ge1\)</span> es <span class="math inline">\(\le x^{-3/2}\)</span>, de cola convergente.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(\int_0^\infty x\,dx/(1+x^{3/2})\)</span> diverge a <span class="math inline">\(+\infty\)</span>: para <span class="math inline">\(x\ge1\)</span>, <span class="math inline">\(1+x^{3/2}\le2x^{3/2}\)</span>, de modo que el integrando es <span class="math inline">\(\ge\tfrac12x^{-1/2}\)</span> y su integral truncada crece sin cota.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(\int_0^\infty dx/(x\sqrt{1+x})\)</span> tiene dos extremos impropios. La cola en infinito converge, pues para <span class="math inline">\(x\ge1\)</span> el integrando es <span class="math inline">\(\le x^{-3/2}\)</span>. Pero para <span class="math inline">\(0&lt;x\le1\)</span> es <span class="math inline">\(\ge1/(\sqrt2 x)\)</span>, que diverge en cero por el argumento de E028(c). Así la integral total <strong>no converge</strong>; controlar solo la cola daría una conclusión errónea.</p>
+</section>
+<section id="e027" class="level2">
+<h2 class="anchored" data-anchor-id="e027">Ejercicio 27 — <code>SPV4-C14-E027</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;301 / PDF 321. La integral sobre toda la recta se define como la suma de dos límites independientes: <span class="math inline">\(\int_{-\infty}^0f+\int_0^\infty f\)</span>, si ambos son finitos.</p>
+<p><strong>(a)</strong> <span class="math inline">\(\int_{-\infty}^\infty dx/(1+x^2)\)</span> existe: su mitad positiva converge por E025(d) y la reflexión hace igual la mitad negativa. No es necesario conocer su valor para probar existencia.</p>
+<p><strong>(b)</strong> <span class="math inline">\(\int_{-\infty}^\infty x\,dx\)</span> no existe: las integrales hasta <span class="math inline">\(N\)</span> y desde <span class="math inline">\(-N\)</span> divergen respectivamente a <span class="math inline">\(+\infty\)</span> y <span class="math inline">\(-\infty\)</span>. No se suman esos infinitos como números. Aunque <span class="math inline">\(\int_{-N}^Nx\,dx=0\)</span> para todo <span class="math inline">\(N\)</span>, ese límite simétrico es un <strong>valor principal</strong>, no la integral impropia definida en el enunciado.</p>
+<p><strong>(c)</strong> Si las dos mitades convergen y <span class="math inline">\(u(t)\to-\infty\)</span>, <span class="math inline">\(v(t)\to+\infty\)</span>, entonces, para <span class="math inline">\(t\)</span> suficientemente avanzado,</p>
+<p><span class="math display">\[\int_{u(t)}^{v(t)}f=\int_{u(t)}^0f+\int_0^{v(t)}f
+\longrightarrow\int_{-\infty}^0f+\int_0^\infty f.\]</span></p>
+<p>Esto incluye <span class="math inline">\(u(N)=-N\)</span>, <span class="math inline">\(v(N)=N\)</span>, <span class="math inline">\(N+1\)</span> o <span class="math inline">\(N^2\)</span>, y da la generalización solicitada sin imponer una relación entre velocidades de escape. La convergencia de un recorrido de extremos particular no implica la convergencia de las dos mitades, como muestra (b).</p>
+<div id="fig-spv4-c14-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 14: Colas, singularidades y límites independientes">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c14-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C14_assets/C14_Impropias.png" class="img-fluid figure-img" alt="Capítulo 14: Colas, singularidades y límites independientes">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c14-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Capítulo 14 · Figura 6. Colas, singularidades y límites independientes
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e028" class="level2">
+<h2 class="anchored" data-anchor-id="e028">Ejercicio 28 — <code>SPV4-C14-E028</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;302 / PDF 322. Integrales impropias en extremos finitos.</p>
+<p><strong>(a)</strong> Para <span class="math inline">\(a&gt;0\)</span>,</p>
+<p><span class="math display">\[\boxed{\lim_{\varepsilon\downarrow0}\int_\varepsilon^a\frac{dx}{\sqrt x}
+=\lim_{\varepsilon\downarrow0}2(\sqrt a-\sqrt\varepsilon)=2\sqrt a.}\]</span></p>
+<p>El símbolo <span class="math inline">\(\int_0^a dx/\sqrt x\)</span> designa este límite, no una integral de Riemann propia sobre <span class="math inline">\([0,a]\)</span>.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(-1&lt;r&lt;0\)</span>, para <span class="math inline">\(r\)</span> racional se evalúa con <span class="math inline">\(x^{r+1}/(r+1)\)</span> y se obtiene <span class="math inline">\(a^{r+1}/(r+1)\)</span>. Para <span class="math inline">\(r\)</span> real, primero trabajamos en <span class="math inline">\((0,1]\)</span>: racionales <span class="math inline">\(-1&lt;p&lt;r&lt;q&lt;0\)</span> dan <span class="math inline">\(x^q\le x^r\le x^p\)</span>. Los límites para los racionales, comparación y aproximación <span class="math inline">\(p,q\to r\)</span> prueban el valor <span class="math inline">\(1/(r+1)\)</span>. La escala de C13-E016, aplicada antes de pasar al límite, da</p>
+<p><span class="math display">\[\boxed{\int_0^a x^r dx=\frac{a^{r+1}}{r+1}.}\]</span></p>
+<p><strong>(c)</strong> Para <span class="math inline">\(\varepsilon=a/2^n\)</span>, el cambio de escala de C13-E016 da <span class="math inline">\(\int_{a/2^n}^a dx/x=\int_1^{2^n}dt/t=nc\)</span>, con <span class="math inline">\(c=\int_1^2dt/t&gt;0\)</span>. Por monotonía al disminuir <span class="math inline">\(\varepsilon\)</span>, el límite es <span class="math inline">\(+\infty\)</span>. No existe integral impropia finita de <span class="math inline">\(1/x\)</span> en cero.</p>
+<p><strong>(d)</strong> Para <span class="math inline">\(a&lt;0\)</span>, definimos <span class="math inline">\(\int_a^0|x|^r dx=\lim_{\varepsilon\downarrow0}\int_a^{-\varepsilon}|x|^r dx\)</span>. La reflexión <span class="math inline">\(u=-x\)</span> transforma cada truncamiento en <span class="math inline">\(\int_\varepsilon^{-a}u^rdu\)</span>. Para <span class="math inline">\(-1&lt;r&lt;0\)</span>, (b) da</p>
+<p><span class="math display">\[\boxed{\int_a^0|x|^r dx=\frac{(-a)^{r+1}}{r+1}.}\]</span></p>
+<p><strong>(e)</strong> Definimos</p>
+<p><span class="math display">\[\int_{-1}^1\frac{dx}{\sqrt{1-x^2}}
+=\lim_{u\downarrow-1}\int_u^0\frac{dx}{\sqrt{1-x^2}}
++\lim_{v\uparrow1}\int_0^v\frac{dx}{\sqrt{1-x^2}}.\]</span></p>
+<p>Para <span class="math inline">\(-1&lt;x\le0\)</span>, <span class="math inline">\(1-x\ge1\)</span>, así que <span class="math inline">\(0&lt;1/\sqrt{(1-x)(1+x)}\le1/\sqrt{1+x}\)</span>. Esta última integral es finita por (a) y traslación. La integral truncada es creciente al acercar el extremo a <span class="math inline">\(-1\)</span> y está acotada; por tanto converge. La reflexión prueba lo mismo en <span class="math inline">\(1\)</span>, o se usa la cota <span class="math inline">\(1/\sqrt{1-x}\)</span>. Ambos límites existen por separado. La identificación posterior del valor con <span class="math inline">\(\pi\)</span> pertenece al desarrollo trigonométrico; el ejercicio pide existencia y la prueba no necesita ese valor.</p>
+</section>
+<section id="e029" class="level2">
+<h2 class="anchored" data-anchor-id="e029">Ejercicio 29 — <code>SPV4-C14-E029</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;302 / PDF 322. Dos límites en cero.</p>
+<p><strong>(a)</strong> Si <span class="math inline">\(f\)</span> es continua en <span class="math inline">\([0,1]\)</span>, sea <span class="math inline">\(B=\max|f|\)</span>. Para <span class="math inline">\(0&lt;x&lt;1\)</span>, como <span class="math inline">\(1/t\le t^{-3/2}\)</span> en <span class="math inline">\((0,1]\)</span>,</p>
+<p><span class="math display">\[\left|x\int_x^1\frac{f(t)}t dt\right|
+\le Bx\int_x^1t^{-3/2}dt
+=2B(\sqrt x-x)\longrightarrow0.\]</span></p>
+<p>El límite es <span class="math inline">\(\boxed{0}\)</span>. La cota evita introducir logaritmos o una regla de l’Hôpital.</p>
+<p>**(b*)** Si <span class="math inline">\(f\)</span> es integrable en <span class="math inline">\([0,1]\)</span> y continua en cero, escribimos</p>
+<p><span class="math display">\[x\int_x^1\frac{f(t)}{t^2}dt
+=f(0)(1-x)+x\int_x^1\frac{f(t)-f(0)}{t^2}dt.\]</span></p>
+<p>Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, elegimos <span class="math inline">\(\delta&gt;0\)</span> con <span class="math inline">\(|f(t)-f(0)|&lt;\varepsilon\)</span> para <span class="math inline">\(0\le t\le\delta\)</span>. Para <span class="math inline">\(0&lt;x&lt;\delta\)</span>, el error de la parte <span class="math inline">\([x,\delta]\)</span> es <span class="math inline">\(\le\varepsilon x\int_x^\delta t^{-2}dt\le\varepsilon\)</span>. La parte <span class="math inline">\([\delta,1]\)</span> tiene módulo <span class="math inline">\(\le xC_\delta\to0\)</span>, donde <span class="math inline">\(C_\delta=\int_\delta^1|f(t)-f(0)|t^{-2}dt\)</span> es finito por integrabilidad del producto. Así el segundo término tiende a cero y el límite es <span class="math inline">\(\boxed{f(0)}\)</span>.</p>
+</section>
+<section id="e030" class="level2">
+<h2 class="anchored" data-anchor-id="e030">Ejercicio 30 — <code>SPV4-C14-E030</code></h2>
+<p><strong>Referencia:</strong> p.&nbsp;302 / PDF 322. Combinar una singularidad finita con un extremo infinito.</p>
+<p><strong>(a)</strong> Para <span class="math inline">\(f(x)=x^{-1/2}\)</span> en <span class="math inline">\(0&lt;x\le1\)</span> y <span class="math inline">\(f(x)=x^{-2}\)</span> en <span class="math inline">\(x\ge1\)</span>, definimos la integral como suma de los dos límites independientes en cero e infinito. El valor en cero es irrelevante, pero no hace acotada la función. E028(a) y E025(a) dan</p>
+<p><span class="math display">\[\boxed{\int_0^\infty f(x)dx=\int_0^1x^{-1/2}dx+\int_1^\infty x^{-2}dx=2+1=3.}\]</span></p>
+<p><strong>(b)</strong> Ninguna potencia <span class="math inline">\(x^r\)</span> tiene integral impropia finita sobre <span class="math inline">\((0,\infty)\)</span>. Si <span class="math inline">\(r&gt;-1\)</span>, la parte cercana a cero converge, pero la cola diverge; para <span class="math inline">\(-1&lt;r&lt;0\)</span> esto se ve ya en la fórmula de los truncamientos, y para <span class="math inline">\(r\ge0\)</span> basta <span class="math inline">\(x^r\ge1\)</span> en <span class="math inline">\(x\ge1\)</span>. Si <span class="math inline">\(r&lt;-1\)</span>, la cola converge y la parte en cero diverge, pues <span class="math inline">\(x^r\ge x^{-1}\)</span> en <span class="math inline">\((0,1]\)</span>. Si <span class="math inline">\(r=-1\)</span>, divergen ambas partes por E025(b) y E028(c). Para exponentes reales <span class="math inline">\(r&gt;-1\)</span> sin regla de potencias disponible, una cota inferior por <span class="math inline">\(x^q\)</span> con racional <span class="math inline">\(-1&lt;q&lt;r\)</span> en <span class="math inline">\(x\ge1\)</span> basta para probar divergencia. El umbral exige <span class="math inline">\(r&gt;-1\)</span> en cero y <span class="math inline">\(r&lt;-1\)</span> en infinito, condiciones incompatibles.</p>
+</section>
+<section id="seccion-36503" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-36503">Continuación</h2>
+<p>El capítulo 15, <strong>«Las funciones trigonométricas»</strong>, comienza en p.&nbsp;303 / PDF 323. Allí se justifican las construcciones trigonométricas que estos ejercicios han usado en su interpretación habitual.</p>
+<hr>
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-13.html">← Capítulo 13</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-15.html">Capítulo 15 →</a></p>
+</div>
+<p>Soluciones originales de Alevi Peña · Matemática Abierta. <a href="../../../COPYING.FDL">Licencia GFDL 1.3 o posterior</a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

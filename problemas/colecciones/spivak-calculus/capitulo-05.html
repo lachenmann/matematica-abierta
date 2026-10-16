@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Capítulo 5 — Límites – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="spivak-c01.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#e001" id="toc-e001" class="nav-link active" data-scroll-target="#e001">Ejercicio 1 — <code>SPV4-C05-E001</code></a></li>
+  <li><a href="#e002" id="toc-e002" class="nav-link" data-scroll-target="#e002">Ejercicio 2 — <code>SPV4-C05-E002</code></a></li>
+  <li><a href="#e003" id="toc-e003" class="nav-link" data-scroll-target="#e003">Ejercicio 3 — <code>SPV4-C05-E003</code></a></li>
+  <li><a href="#e004" id="toc-e004" class="nav-link" data-scroll-target="#e004">Ejercicio 4 — <code>SPV4-C05-E004</code></a></li>
+  <li><a href="#e005" id="toc-e005" class="nav-link" data-scroll-target="#e005">Ejercicio 5* — <code>SPV4-C05-E005</code></a></li>
+  <li><a href="#e006" id="toc-e006" class="nav-link" data-scroll-target="#e006">Ejercicio 6 — <code>SPV4-C05-E006</code></a></li>
+  <li><a href="#e007" id="toc-e007" class="nav-link" data-scroll-target="#e007">Ejercicio 7 — <code>SPV4-C05-E007</code></a></li>
+  <li><a href="#e008" id="toc-e008" class="nav-link" data-scroll-target="#e008">Ejercicio 8 — <code>SPV4-C05-E008</code></a></li>
+  <li><a href="#e009" id="toc-e009" class="nav-link" data-scroll-target="#e009">Ejercicio 9 — <code>SPV4-C05-E009</code></a></li>
+  <li><a href="#e010" id="toc-e010" class="nav-link" data-scroll-target="#e010">Ejercicio 10 — <code>SPV4-C05-E010</code></a></li>
+  <li><a href="#e011" id="toc-e011" class="nav-link" data-scroll-target="#e011">Ejercicio 11 — <code>SPV4-C05-E011</code></a></li>
+  <li><a href="#e012" id="toc-e012" class="nav-link" data-scroll-target="#e012">Ejercicio 12 — <code>SPV4-C05-E012</code></a></li>
+  <li><a href="#e013" id="toc-e013" class="nav-link" data-scroll-target="#e013">Ejercicio 13 — <code>SPV4-C05-E013</code></a></li>
+  <li><a href="#e014" id="toc-e014" class="nav-link" data-scroll-target="#e014">Ejercicio 14* — <code>SPV4-C05-E014</code></a></li>
+  <li><a href="#e015" id="toc-e015" class="nav-link" data-scroll-target="#e015">Ejercicio 15 — <code>SPV4-C05-E015</code></a></li>
+  <li><a href="#e016" id="toc-e016" class="nav-link" data-scroll-target="#e016">Ejercicio 16 — <code>SPV4-C05-E016</code></a></li>
+  <li><a href="#e017" id="toc-e017" class="nav-link" data-scroll-target="#e017">Ejercicio 17 — <code>SPV4-C05-E017</code></a></li>
+  <li><a href="#e018" id="toc-e018" class="nav-link" data-scroll-target="#e018">Ejercicio 18 — <code>SPV4-C05-E018</code></a></li>
+  <li><a href="#e019" id="toc-e019" class="nav-link" data-scroll-target="#e019">Ejercicio 19 — <code>SPV4-C05-E019</code></a></li>
+  <li><a href="#e020" id="toc-e020" class="nav-link" data-scroll-target="#e020">Ejercicio 20* — <code>SPV4-C05-E020</code></a></li>
+  <li><a href="#e021" id="toc-e021" class="nav-link" data-scroll-target="#e021">Ejercicio 21 — <code>SPV4-C05-E021</code></a></li>
+  <li><a href="#e022" id="toc-e022" class="nav-link" data-scroll-target="#e022">Ejercicio 22 — <code>SPV4-C05-E022</code></a></li>
+  <li><a href="#e023" id="toc-e023" class="nav-link" data-scroll-target="#e023">Ejercicio 23** — <code>SPV4-C05-E023</code></a></li>
+  <li><a href="#e024" id="toc-e024" class="nav-link" data-scroll-target="#e024">Ejercicio 24* — <code>SPV4-C05-E024</code></a></li>
+  <li><a href="#e025" id="toc-e025" class="nav-link" data-scroll-target="#e025">Ejercicio 25 — <code>SPV4-C05-E025</code></a></li>
+  <li><a href="#e026" id="toc-e026" class="nav-link" data-scroll-target="#e026">Ejercicio 26* — <code>SPV4-C05-E026</code></a></li>
+  <li><a href="#e027" id="toc-e027" class="nav-link" data-scroll-target="#e027">Ejercicio 27 — <code>SPV4-C05-E027</code></a></li>
+  <li><a href="#e028" id="toc-e028" class="nav-link" data-scroll-target="#e028">Ejercicio 28* — <code>SPV4-C05-E028</code></a></li>
+  <li><a href="#e029" id="toc-e029" class="nav-link" data-scroll-target="#e029">Ejercicio 29 — <code>SPV4-C05-E029</code></a></li>
+  <li><a href="#e030" id="toc-e030" class="nav-link" data-scroll-target="#e030">Ejercicio 30 — <code>SPV4-C05-E030</code></a></li>
+  <li><a href="#e031" id="toc-e031" class="nav-link" data-scroll-target="#e031">Ejercicio 31 — <code>SPV4-C05-E031</code></a></li>
+  <li><a href="#e032" id="toc-e032" class="nav-link" data-scroll-target="#e032">Ejercicio 32 — <code>SPV4-C05-E032</code></a></li>
+  <li><a href="#e033" id="toc-e033" class="nav-link" data-scroll-target="#e033">Ejercicio 33 — <code>SPV4-C05-E033</code></a></li>
+  <li><a href="#e034" id="toc-e034" class="nav-link" data-scroll-target="#e034">Ejercicio 34 — <code>SPV4-C05-E034</code></a></li>
+  <li><a href="#e035" id="toc-e035" class="nav-link" data-scroll-target="#e035">Ejercicio 35 — <code>SPV4-C05-E035</code></a></li>
+  <li><a href="#e036" id="toc-e036" class="nav-link" data-scroll-target="#e036">Ejercicio 36 — <code>SPV4-C05-E036</code></a></li>
+  <li><a href="#e037" id="toc-e037" class="nav-link" data-scroll-target="#e037">Ejercicio 37 — <code>SPV4-C05-E037</code></a></li>
+  <li><a href="#e038" id="toc-e038" class="nav-link" data-scroll-target="#e038">Ejercicio 38 — <code>SPV4-C05-E038</code></a></li>
+  <li><a href="#e039" id="toc-e039" class="nav-link" data-scroll-target="#e039">Ejercicio 39 — <code>SPV4-C05-E039</code></a></li>
+  <li><a href="#e040" id="toc-e040" class="nav-link" data-scroll-target="#e040">Ejercicio 40 — <code>SPV4-C05-E040</code></a></li>
+  <li><a href="#e041" id="toc-e041" class="nav-link" data-scroll-target="#e041">Ejercicio 41 — <code>SPV4-C05-E041</code></a></li>
+  <li><a href="#e042" id="toc-e042" class="nav-link" data-scroll-target="#e042">Ejercicio 42* — <code>SPV4-C05-E042</code></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 5 — Límites</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-04.html">← Capítulo 4</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-06.html">Capítulo 6 →</a></p>
+</div>
+<p>Solucionario explicado de Matemática Abierta · A. Peña</p>
+<p>Los problemas proceden de Michael Spivak, <em>Calculus</em>, 4.ª edición, capítulo 5, pp.&nbsp;107–114 (PDF consultado: páginas 127–134). Los enunciados se reducen al contenido matemático necesario; las soluciones y explicaciones son propias. Las referencias de cada ejercicio remiten a esa edición.</p>
+<p>Usamos límites finitos salvo indicación expresa de <span class="math inline">\(+\infty\)</span> o <span class="math inline">\(-\infty\)</span>. Las condiciones se aplican a puntos del dominio. Un límite lateral solo se considera cuando hay puntos del dominio arbitrariamente próximos por ese lado: una condición vacía no constituye un límite. Se adoptan las propiedades de orden, raíces y densidad de los reales declaradas en capítulos anteriores. No se usan derivadas, series ni la regla de l’Hôpital.</p>
+<section id="e001" class="level2">
+<h2 class="anchored" data-anchor-id="e001">Ejercicio 1 — <code>SPV4-C05-E001</code></h2>
+<p>Referencia: p.&nbsp;107. <strong>Problema:</strong> calcular los seis límites siguientes; <span class="math inline">\(n\)</span> es un entero positivo.</p>
+<section id="solución" class="level3">
+<h3 class="anchored" data-anchor-id="solución">Solución</h3>
+<p><strong>(i)</strong> Al acercarse <span class="math inline">\(x\)</span> a <span class="math inline">\(1\)</span>, <span class="math inline">\((x^2-1)/(x+1)=x-1\)</span>; el límite es <strong><span class="math inline">\(0\)</span></strong>.</p>
+<p><strong>(ii)</strong> Para <span class="math inline">\(x\ne2\)</span>, <span class="math inline">\((x^3-8)/(x-2)=x^2+2x+4\)</span>; en <span class="math inline">\(2\)</span> el límite es <strong><span class="math inline">\(12\)</span></strong>.</p>
+<p><strong>(iii)</strong> Al acercarse <span class="math inline">\(x\)</span> a <span class="math inline">\(3\)</span>, el denominador <span class="math inline">\(x-2\)</span> tiende a <span class="math inline">\(1\)</span> y el numerador a <span class="math inline">\(19\)</span>; el límite es <strong><span class="math inline">\(19\)</span></strong>. Un cociente solo exige cancelar cuando su denominador tiende a cero.</p>
+<p><strong>(iv)</strong> Con <span class="math inline">\(y\)</span> fijo, <span class="math display">\[\frac{x^n-y^n}{x-y}=\sum_{j=0}^{n-1}x^{n-1-j}y^j.\]</span> Al tender <span class="math inline">\(x\)</span> a <span class="math inline">\(y\)</span>, cada uno de los <span class="math inline">\(n\)</span> términos tiende a <span class="math inline">\(y^{n-1}\)</span>: el resultado es <strong><span class="math inline">\(ny^{n-1}\)</span></strong>. Para <span class="math inline">\(n=1\)</span> el cociente es <span class="math inline">\(1\)</span>, también si <span class="math inline">\(y=0\)</span>.</p>
+<p><strong>(v)</strong> Ahora <span class="math inline">\(x\)</span> es fijo y <span class="math inline">\(y\to x\)</span>. La misma identidad da <strong><span class="math inline">\(nx^{n-1}\)</span></strong>. La letra que varía cambia; la identidad algebraica permanece.</p>
+<p><strong>(vi)</strong> Si <span class="math inline">\(a&gt;0\)</span>, racionalizar da <span class="math display">\[\frac{\sqrt{a+h}-\sqrt a}{h}=\frac1{\sqrt{a+h}+\sqrt a}\longrightarrow\frac1{2\sqrt a}.\]</span> La continuidad local de la raíz se justifica por <span class="math inline">\(|\sqrt{a+h}-\sqrt a|\le |h|/\sqrt a\)</span>. Si <span class="math inline">\(a=0\)</span>, el dominio próximo es <span class="math inline">\(h&gt;0\)</span> y el cociente <span class="math inline">\(1/\sqrt h\)</span> tiende a <span class="math inline">\(+\infty\)</span>, sin límite finito. Si <span class="math inline">\(a&lt;0\)</span>, la expresión real no está definida.</p>
+</section>
+</section>
+<section id="e002" class="level2">
+<h2 class="anchored" data-anchor-id="e002">Ejercicio 2 — <code>SPV4-C05-E002</code></h2>
+<p>Referencia: pp.&nbsp;107–108. <strong>Problema:</strong> calcular tres cocientes con raíces.</p>
+<section id="solución-1" class="level3">
+<h3 class="anchored" data-anchor-id="solución-1">Solución</h3>
+<p><strong>(i)</strong> Para <span class="math inline">\(x\ne1\)</span>, <span class="math inline">\((1-\sqrt x)/(1-x)=1/(1+\sqrt x)\)</span>: al tender <span class="math inline">\(x\)</span> a <span class="math inline">\(1\)</span>, el límite es <strong><span class="math inline">\(1/2\)</span></strong>.</p>
+<p><strong>(ii)</strong> Cerca de <span class="math inline">\(0\)</span>, racionalizar <span class="math inline">\((1-\sqrt{1-x^2})/x\)</span> produce <span class="math inline">\(x/(1+\sqrt{1-x^2})\)</span>, cuyo límite es <strong><span class="math inline">\(0\)</span></strong>.</p>
+<p><strong>(iii)</strong> El cociente <span class="math inline">\((1-\sqrt{1-x^2})/x^2\)</span> se convierte en <span class="math inline">\(1/(1+\sqrt{1-x^2})\)</span>: el límite es <strong><span class="math inline">\(1/2\)</span></strong>. La raíz tiende a <span class="math inline">\(1\)</span>, pues <span class="math inline">\(|\sqrt{1-x^2}-1|\le x^2\)</span> para <span class="math inline">\(|x|&lt;1\)</span>.</p>
+</section>
+</section>
+<section id="e003" class="level2">
+<h2 class="anchored" data-anchor-id="e003">Ejercicio 3 — <code>SPV4-C05-E003</code></h2>
+<p>Referencia: p.&nbsp;108. <strong>Problema:</strong> determinar los límites y dar una elección de <span class="math inline">\(\delta\)</span> para cada <span class="math inline">\(\varepsilon&gt;0\)</span>.</p>
+<section id="solución-2" class="level3">
+<h3 class="anchored" data-anchor-id="solución-2">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\(f(x)=x[3-\cos(x^2)]\)</span>, <span class="math inline">\(a=0\)</span>. Como <span class="math inline">\(|3-\cos(x^2)|\le4\)</span>, el límite es <span class="math inline">\(0\)</span> y sirve <span class="math inline">\(\delta=\varepsilon/4\)</span>. No hace falta conocer un límite del coseno.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(f(x)=x^2+5x-2\)</span>, <span class="math inline">\(a=2\)</span>. El límite es <span class="math inline">\(12\)</span> y <span class="math inline">\(|f(x)-12|=|x-2||x+7|\)</span>. Para <span class="math inline">\(|x-2|&lt;1\)</span>, <span class="math inline">\(|x+7|&lt;10\)</span>; sirve <span class="math inline">\(\delta=\min(1,\varepsilon/10)\)</span>.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(f(x)=100/x\)</span>, <span class="math inline">\(a=1\)</span>. Si <span class="math inline">\(|x-1|&lt;1/2\)</span>, <span class="math inline">\(|x|&gt;1/2\)</span> y <span class="math inline">\(|100/x-100|&lt;200|x-1|\)</span>. El límite es <span class="math inline">\(100\)</span>; tome <span class="math inline">\(\delta=\min(1/2,\varepsilon/200)\)</span>.</p>
+<p><strong>(iv)</strong> <span class="math inline">\(f(x)=x^4\)</span>, <span class="math inline">\(a\)</span> arbitrario. Ponga <span class="math inline">\(B=|a|+1\)</span>. Para <span class="math inline">\(|x-a|&lt;1\)</span>, <span class="math display">\[|x^4-a^4|\le |x-a|(|x|^3+|x|^2|a|+|x||a|^2+|a|^3)\le4B^3|x-a|.\]</span> El límite es <span class="math inline">\(a^4\)</span>; sirve <span class="math inline">\(\delta=\min(1,\varepsilon/(4B^3))\)</span>.</p>
+<p><strong>(v)</strong> <span class="math inline">\(f(x)=x^4+1/x\)</span>, <span class="math inline">\(a=1\)</span>. Para <span class="math inline">\(|x-1|&lt;1/2\)</span>, la estimación anterior con <span class="math inline">\(B=2\)</span> da <span class="math inline">\(|x^4-1|\le32|x-1|\)</span>, y <span class="math inline">\(|1/x-1|&lt;2|x-1|\)</span>. El límite es <span class="math inline">\(2\)</span>; sirve <span class="math inline">\(\delta=\min(1/2,\varepsilon/34)\)</span>.</p>
+<p><strong>(vi)</strong> <span class="math inline">\(f(x)=x/(2-\sin^2x)\)</span>, <span class="math inline">\(a=0\)</span>. El denominador es al menos <span class="math inline">\(1\)</span>, por lo que <span class="math inline">\(|f(x)|\le|x|\)</span>. Límite <span class="math inline">\(0\)</span> y <span class="math inline">\(\delta=\varepsilon\)</span>.</p>
+<p><strong>(vii)</strong> <span class="math inline">\(f(x)=\sqrt{|x|}\)</span>, <span class="math inline">\(a=0\)</span>. Límite <span class="math inline">\(0\)</span>; <span class="math inline">\(\delta=\varepsilon^2\)</span> transforma <span class="math inline">\(|x|&lt;\delta\)</span> en <span class="math inline">\(\sqrt{|x|}&lt;\varepsilon\)</span>.</p>
+<p><strong>(viii)</strong> <span class="math inline">\(f(x)=\sqrt x\)</span>, <span class="math inline">\(a=1\)</span>. Para <span class="math inline">\(x\ge0\)</span>, <span class="math inline">\(|\sqrt x-1|=|x-1|/(\sqrt x+1)\le|x-1|\)</span>. El límite es <span class="math inline">\(1\)</span> y sirve <span class="math inline">\(\delta=\min(1,\varepsilon)\)</span>.</p>
+</section>
+</section>
+<section id="e004" class="level2">
+<h2 class="anchored" data-anchor-id="e004">Ejercicio 4 — <code>SPV4-C05-E004</code></h2>
+<p>Referencia: p.&nbsp;108; funciones de 4-17, p.&nbsp;72. <strong>Problema:</strong> determinar dónde existen sus límites bilaterales finitos.</p>
+<section id="solución-3" class="level3">
+<h3 class="anchored" data-anchor-id="solución-3">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\(\lfloor x\rfloor\)</span>: existen exactamente en <span class="math inline">\(a\notin\mathbb Z\)</span>, y valen <span class="math inline">\(\lfloor a\rfloor\)</span>. En el entero <span class="math inline">\(k\)</span>, los valores laterales son <span class="math inline">\(k-1\)</span> y <span class="math inline">\(k\)</span>.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(x-\lfloor x\rfloor\)</span>: existen exactamente fuera de <span class="math inline">\(\mathbb Z\)</span>, con valor <span class="math inline">\(a-\lfloor a\rfloor\)</span>. En los enteros los límites laterales son <span class="math inline">\(1\)</span> y <span class="math inline">\(0\)</span>.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(\sqrt{x-\lfloor x\rfloor}\)</span>: la misma exclusión de enteros; los valores laterales allí son <span class="math inline">\(1\)</span> y <span class="math inline">\(0\)</span>. En los intervalos entre enteros la continuidad de la raíz se obtiene racionalizando, o usando <span class="math inline">\(|\sqrt u-\sqrt v|\le\sqrt{|u-v|}\)</span>.</p>
+<p><strong>(iv)</strong> <span class="math inline">\(\lfloor x\rfloor+\sqrt{x-\lfloor x\rfloor}\)</span>: existe en <strong>todo real</strong> y coincide con la función. En un entero <span class="math inline">\(k\)</span>, el arco izquierdo tiende a <span class="math inline">\((k-1)+1=k\)</span> y el derecho a <span class="math inline">\(k+0=k\)</span>.</p>
+<p><strong>(v)</strong> <span class="math inline">\(\lfloor1/x\rfloor\)</span>: existe cuando <span class="math inline">\(a\ne0\)</span> y <span class="math inline">\(1/a\notin\mathbb Z\)</span>, y vale <span class="math inline">\(\lfloor1/a\rfloor\)</span>. En <span class="math inline">\(a=1/k\)</span>, <span class="math inline">\(k\in\mathbb Z\setminus\{0\}\)</span>, los valores laterales son <span class="math inline">\(k\)</span> a la izquierda y <span class="math inline">\(k-1\)</span> a la derecha; en <span class="math inline">\(0\)</span> no hay límite finito.</p>
+<p><strong>(vi)</strong> <span class="math inline">\(1/\lfloor1/x\rfloor\)</span>, dominio <span class="math inline">\(D=(-\infty,0)\cup(0,1]\)</span>: en los puntos de acumulación de <span class="math inline">\(D\)</span>, el límite relativo existe en <span class="math inline">\(a=0\)</span>, donde vale <span class="math inline">\(0\)</span>, en <span class="math inline">\(a=1\)</span>, donde vale <span class="math inline">\(1\)</span> por la izquierda, y en los demás puntos de <span class="math inline">\(D\)</span> salvo <span class="math inline">\(a=1/k\)</span> con <span class="math inline">\(k\le-1\)</span> o <span class="math inline">\(k\ge2\)</span>. En esos puntos excluidos hay saltos entre <span class="math inline">\(1/k\)</span> y <span class="math inline">\(1/(k-1)\)</span>. En puntos ordinarios el límite coincide con la función. Para <span class="math inline">\(0&lt;|x|&lt;1/2\)</span>, <span class="math inline">\(|\lfloor1/x\rfloor|\ge1/(2|x|)\)</span>, luego <span class="math inline">\(|1/\lfloor1/x\rfloor|\le2|x|\)</span>.</p>
+<p>Si se exige un entorno bilateral contenido en el dominio salvo su centro, <span class="math inline">\(a=1\)</span> no se llama límite bilateral; solo tiene límite izquierdo. Dejamos explícita esta diferencia de convención.</p>
+</section>
+</section>
+<section id="e005" class="level2">
+<h2 class="anchored" data-anchor-id="e005">Ejercicio 5* — <code>SPV4-C05-E005</code></h2>
+<p>Referencia: p.&nbsp;108; funciones de 4-19, p.&nbsp;73. <strong>Problema:</strong> determinar los límites de seis funciones decimales, (a) usando colas de nueves y (b) usando colas de ceros.</p>
+<section id="solución-4" class="level3">
+<h3 class="anchored" data-anchor-id="solución-4">Solución</h3>
+<p>Una regla de lectura permite incluir todos los extremos sin una lista interminable. En un punto <span class="math inline">\(a\)</span> sin decimal finito hay una sola expansión. En un punto decimal finito, llamaremos <strong>expansión izquierda</strong> a la que acaba en nueves y <strong>expansión derecha</strong> a la que acaba en ceros, ajustando también la parte entera. Por ejemplo, en <span class="math inline">\(a=1\)</span> son <span class="math inline">\(0.999\ldots\)</span> y <span class="math inline">\(1.000\ldots\)</span>. Al aproximarse por el lado correspondiente, cualquier prefijo fijo de esa expansión queda estable. En un punto no decimal finito, cada prefijo queda estable por ambos lados. Esta afirmación se sigue de que los extremos de un cilindro decimal de longitud <span class="math inline">\(n\)</span> son múltiplos de <span class="math inline">\(10^{-n}\)</span>.</p>
+<p><strong>(a-i), (a-ii), (b-i), (b-ii).</strong> Para la primera cifra, el límite bilateral existe exactamente fuera de <span class="math inline">\(10^{-1}\mathbb Z\)</span>; para la segunda, fuera de <span class="math inline">\(10^{-2}\mathbb Z\)</span>. Su valor es la cifra local constante. En cada extremo de escalón cambia la cifra: incluso los reinicios de <span class="math inline">\(9\)</span> a <span class="math inline">\(0\)</span> son saltos. La elección de expansión solo modifica el valor en el punto del salto.</p>
+<p><strong>(a-iii), (b-iii).</strong> La función que cuenta los sietes cuando son finitos y vale <span class="math inline">\(0\)</span> cuando son infinitos no tiene límite finito en ningún punto. En cualquier intervalo se puede prolongar un prefijo con infinitos sietes, dando valor <span class="math inline">\(0\)</span>, o con un número finito arbitrariamente grande de sietes, dando valores arbitrariamente grandes. Esto funciona también en cualquier intervalo lateral.</p>
+<p><strong>(a-iv), (b-iv).</strong> El indicador de infinitos sietes tampoco tiene límite en ningún punto: toda vecindad contiene prolongaciones con finitos y con infinitos sietes, de valores <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>.</p>
+<p><strong>(a-v), (b-v).</strong> Defina <span class="math inline">\(T_7(e)\)</span> para una expansión <span class="math inline">\(e\)</span> de <span class="math inline">\(a\)</span>: si contiene un primer <span class="math inline">\(7\)</span>, conserve hasta él y suprima la cola; si no contiene <span class="math inline">\(7\)</span>, ponga <span class="math inline">\(T_7(e)=a\)</span>. Los límites izquierdo y derecho son respectivamente <span class="math inline">\(T_7(e_-)\)</span> y <span class="math inline">\(T_7(e_+)\)</span>. Por tanto el límite bilateral existe <strong>exactamente cuando esos dos números coinciden</strong>. Esta es una caracterización efectiva: para un decimal finito solo se examinan sus dos prefijos finitos, pues las colas de ceros y nueves no contienen sietes. Para un decimal no finito el límite existe siempre: vale el truncamiento en su primer <span class="math inline">\(7\)</span>, o <span class="math inline">\(a\)</span> si nunca hay <span class="math inline">\(7\)</span>.</p>
+<p>En efecto, si el primer <span class="math inline">\(7\)</span> está en posición <span class="math inline">\(n\)</span>, el prefijo estable fija un valor constante. Si no hay <span class="math inline">\(7\)</span>, fijar las primeras <span class="math inline">\(N\)</span> cifras asegura que un eventual truncamiento posterior difiere de <span class="math inline">\(x\)</span> en a lo sumo <span class="math inline">\(10^{-N}\)</span>; así <span class="math inline">\(|f(x)-a|\le10^{-N}+|x-a|\)</span>. Como ejemplos, en <span class="math inline">\(a=0.7\)</span> los límites son <span class="math inline">\(0.7\)</span> a ambos lados, mientras que en <span class="math inline">\(a=0.8\)</span> son <span class="math inline">\(0.7\)</span> y <span class="math inline">\(0.8\)</span>: allí el bilateral falla. Elegir otra representación en los puntos aislados no altera estos límites, porque la misma cota sigue siendo válida.</p>
+<p><strong>(a-vi), (b-vi).</strong> Para la posición del primer <span class="math inline">\(1\)</span> (valor <span class="math inline">\(0\)</span> si no hay ninguno), un límite lateral finito existe exactamente cuando la expansión de ese lado tiene un <span class="math inline">\(1\)</span>; vale su primera posición. Si no lo tiene, en cada vecindad lateral hay puntos sin ningún <span class="math inline">\(1\)</span>, de valor <span class="math inline">\(0\)</span>, y puntos cuyo primer <span class="math inline">\(1\)</span> aparece arbitrariamente tarde. El bilateral existe exactamente cuando ambas expansiones tienen su primer <span class="math inline">\(1\)</span> en la misma posición. Para un decimal no finito esto equivale a que tenga algún <span class="math inline">\(1\)</span>; para un decimal finito se comparan las dos expansiones. En <span class="math inline">\(0.1\)</span>, por ejemplo, el límite derecho vale <span class="math inline">\(1\)</span> y el izquierdo no existe; en <span class="math inline">\(0.12\)</span> ambos valen <span class="math inline">\(1\)</span>.</p>
+<p>La propiedad sobre prolongaciones se aplica por separado dentro de cada vecindad lateral, evitando tomar el punto <span class="math inline">\(a\)</span> como muestra. Los cambios de convención en <span class="math inline">\(a\)</span> no deben confundirse con cambios de límite.</p>
+</section>
+</section>
+<section id="e006" class="level2">
+<h2 class="anchored" data-anchor-id="e006">Ejercicio 6 — <code>SPV4-C05-E006</code></h2>
+<p>Referencia: p.&nbsp;108. <strong>Problema:</strong> se conoce que errores menores que <span class="math inline">\(t\)</span> en <span class="math inline">\(f(x)\to2\)</span> y <span class="math inline">\(g(x)\to4\)</span> se obtienen, respectivamente, con radios <span class="math inline">\(F(t)=\sin^2(t^2/9)+t\)</span> y <span class="math inline">\(G(t)=t^2\)</span>. Dar radios para suma, producto y cocientes.</p>
+<section id="solución-5" class="level3">
+<h3 class="anchored" data-anchor-id="solución-5">Solución</h3>
+<p>En todos los casos exigimos <span class="math inline">\(0&lt;|x-2|&lt;\delta\)</span>. Para controlar simultáneamente errores menores que <span class="math inline">\(t\)</span>, basta <span class="math inline">\(\delta\le\min(F(t),G(t))\)</span>; ambos números son positivos.</p>
+<p><strong>(i)</strong> Para la suma, tome <span class="math inline">\(t=\varepsilon/2\)</span> y <span class="math inline">\(\delta=\min(F(t),G(t))\)</span>. La desigualdad triangular da <span class="math inline">\(|f+g-6|&lt;2t=\varepsilon\)</span>.</p>
+<p><strong>(ii)</strong> Tome <span class="math inline">\(t=\min(1,\varepsilon/7)\)</span> y el mismo mínimo. Entonces <span class="math inline">\(|g|&lt;5\)</span> y <span class="math display">\[|fg-8|\le |g||f-2|+2|g-4|&lt;7t\le\varepsilon.\]</span></p>
+<p><strong>(iii)</strong> Tome <span class="math inline">\(t=\min(1,12\varepsilon)\)</span> y <span class="math inline">\(\delta=G(t)\)</span>. Como <span class="math inline">\(g&gt;3\)</span>, <span class="math display">\[\left|\frac1g-\frac14\right|=\frac{|g-4|}{4|g|}&lt;t/12\le\varepsilon.\]</span></p>
+<p><strong>(iv)</strong> Tome <span class="math inline">\(t=\min(1,2\varepsilon)\)</span> y <span class="math inline">\(\delta=\min(F(t),G(t))\)</span>. Con <span class="math inline">\(g&gt;3\)</span>, <span class="math display">\[\left|\frac fg-\frac12\right|\le\frac{2|f-2|+|g-4|}{2|g|}&lt;t/2\le\varepsilon.\]</span> Estas cotas garantizan además que los denominadores no se anulan.</p>
+</section>
+</section>
+<section id="e007" class="level2">
+<h2 class="anchored" data-anchor-id="e007">Ejercicio 7 — <code>SPV4-C05-E007</code></h2>
+<p>Referencia: p.&nbsp;108. <strong>Problema:</strong> refutar que reducir el radio a la mitad reduzca necesariamente el error a la mitad.</p>
+<section id="solución-6" class="level3">
+<h3 class="anchored" data-anchor-id="solución-6">Solución</h3>
+<p>Tome <span class="math inline">\(f(x)=\sqrt{|x|}\)</span>, <span class="math inline">\(a=l=0\)</span>, <span class="math inline">\(\varepsilon=\delta=1\)</span>. Si <span class="math inline">\(0&lt;|x|&lt;1\)</span>, <span class="math inline">\(|f(x)|&lt;1\)</span>. Pero <span class="math inline">\(x=1/3\)</span> satisface <span class="math inline">\(0&lt;|x|&lt;1/2\)</span> y <span class="math inline">\(f(x)=1/\sqrt3&gt;1/2\)</span>. Aunque la función tiene límite cero, la relación entre radios y errores no es lineal.</p>
+</section>
+</section>
+<section id="e008" class="level2">
+<h2 class="anchored" data-anchor-id="e008">Ejercicio 8 — <code>SPV4-C05-E008</code></h2>
+<p>Referencia: p.&nbsp;109. <strong>Problema:</strong> estudiar cuatro implicaciones sobre suma y producto de límites.</p>
+<section id="solución-7" class="level3">
+<h3 class="anchored" data-anchor-id="solución-7">Solución</h3>
+<p><strong>(a)</strong> Sí pueden existir ambos resultados aunque ninguno de los factores tenga límite. En <span class="math inline">\(a=0\)</span>, sea <span class="math inline">\(s(x)=1\)</span> para <span class="math inline">\(x&gt;0\)</span> y <span class="math inline">\(-1\)</span> para <span class="math inline">\(x&lt;0\)</span>. Con <span class="math inline">\(f=s\)</span>, <span class="math inline">\(g=-s\)</span>, ni <span class="math inline">\(f\)</span> ni <span class="math inline">\(g\)</span> tienen límite, pero <span class="math inline">\(f+g=0\)</span> y <span class="math inline">\(fg=-1\)</span> fuera de cero.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(f\to l\)</span> y <span class="math inline">\(f+g\to m\)</span>, entonces <span class="math inline">\(g=(f+g)-f\to m-l\)</span>.</p>
+<p><strong>(c)</strong> No: si <span class="math inline">\(f\)</span> y <span class="math inline">\(f+g\)</span> tuvieran límites, (b) daría un límite para <span class="math inline">\(g\)</span>.</p>
+<p><strong>(d)</strong> No en general: <span class="math inline">\(f(x)=x\)</span>, <span class="math inline">\(g(x)=s(x)\)</span> da <span class="math inline">\(fg=|x|\to0\)</span>, pero <span class="math inline">\(g\)</span> no tiene límite. Si el límite de <span class="math inline">\(f\)</span> fuera distinto de cero, el cociente <span class="math inline">\(g=(fg)/f\)</span> sí tendría límite.</p>
+</section>
+</section>
+<section id="e009" class="level2">
+<h2 class="anchored" data-anchor-id="e009">Ejercicio 9 — <code>SPV4-C05-E009</code></h2>
+<p>Referencia: p.&nbsp;109. <strong>Problema:</strong> justificar el cambio <span class="math inline">\(x=a+h\)</span> en un límite.</p>
+<section id="solución-8" class="level3">
+<h3 class="anchored" data-anchor-id="solución-8">Solución</h3>
+<p>Las condiciones <span class="math inline">\(0&lt;|x-a|&lt;\delta\)</span> y <span class="math inline">\(0&lt;|h|&lt;\delta\)</span> son idénticas cuando <span class="math inline">\(x=a+h\)</span>, y las diferencias <span class="math inline">\(|f(x)-l|\)</span> y <span class="math inline">\(|f(a+h)-l|\)</span> también. Cada radio válido para una definición vale para la otra. Así las existencias son equivalentes y los valores iguales.</p>
+</section>
+</section>
+<section id="e010" class="level2">
+<h2 class="anchored" data-anchor-id="e010">Ejercicio 10 — <code>SPV4-C05-E010</code></h2>
+<p>Referencia: p.&nbsp;109. <strong>Problema:</strong> justificar tres cambios en límites y dar un contraejemplo para <span class="math inline">\(x^2\)</span>.</p>
+<section id="solución-9" class="level3">
+<h3 class="anchored" data-anchor-id="solución-9">Solución</h3>
+<p><strong>(a)</strong> <span class="math inline">\(f(x)\to l\)</span> equivale a <span class="math inline">\(f(x)-l\to0\)</span>, porque el error en ambas definiciones es <span class="math inline">\(|f(x)-l|\)</span>.</p>
+<p><strong>(b)</strong> <span class="math inline">\(\lim_{x\to0}f(x)=\lim_{x\to a}f(x-a)\)</span>, con existencia equivalente, por el cambio <span class="math inline">\(u=x-a\)</span> del ejercicio 9.</p>
+<p><strong>(c)</strong> <span class="math inline">\(\lim_{x\to0}f(x)=\lim_{x\to0}f(x^3)\)</span>, también con existencia equivalente. De izquierda a derecha un radio <span class="math inline">\(\eta\)</span> para <span class="math inline">\(f\)</span> se convierte en <span class="math inline">\(\eta^{1/3}\)</span>; de derecha a izquierda un radio <span class="math inline">\(\delta\)</span> para <span class="math inline">\(f(x^3)\)</span> se convierte en <span class="math inline">\(\delta^3\)</span>, usando <span class="math inline">\(x=\sqrt[3]u\)</span>. Ambos cambios conservan puntos no nulos y alcanzan ambos lados de cero.</p>
+<p><strong>(d)</strong> Con <span class="math inline">\(f=s\)</span> del ejercicio 8, <span class="math inline">\(f(x^2)=1\)</span> para <span class="math inline">\(x\ne0\)</span>, mientras que <span class="math inline">\(f(x)\)</span> no tiene límite bilateral. Los cuadrados solo recorren el lado positivo.</p>
+</section>
+</section>
+<section id="e011" class="level2">
+<h2 class="anchored" data-anchor-id="e011">Ejercicio 11 — <code>SPV4-C05-E011</code></h2>
+<p>Referencia: p.&nbsp;109. <strong>Problema:</strong> probar que funciones iguales en un entorno perforado tienen los mismos límites.</p>
+<section id="solución-10" class="level3">
+<h3 class="anchored" data-anchor-id="solución-10">Solución</h3>
+<p>Suponga <span class="math inline">\(f(x)=g(x)\)</span> para <span class="math inline">\(0&lt;|x-a|&lt;r\)</span>. Si <span class="math inline">\(f\to l\)</span> y <span class="math inline">\(\eta\)</span> controla su error para una tolerancia dada, tome <span class="math inline">\(\delta=\min(r,\eta)\)</span>. Entonces <span class="math inline">\(|g(x)-l|=|f(x)-l|&lt;\varepsilon\)</span>. Intercambiar <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> prueba la recíproca. Los valores en <span class="math inline">\(a\)</span> y lejos de <span class="math inline">\(a\)</span> no intervienen.</p>
+</section>
+</section>
+<section id="e012" class="level2">
+<h2 class="anchored" data-anchor-id="e012">Ejercicio 12 — <code>SPV4-C05-E012</code></h2>
+<p>Referencia: p.&nbsp;109. <strong>Problema:</strong> estudiar el paso de desigualdades a límites.</p>
+<section id="solución-11" class="level3">
+<h3 class="anchored" data-anchor-id="solución-11">Solución</h3>
+<p><strong>(a)</strong> Si <span class="math inline">\(f\le g\)</span>, <span class="math inline">\(f\to l\)</span>, <span class="math inline">\(g\to m\)</span>, necesariamente <span class="math inline">\(l\le m\)</span>. Si <span class="math inline">\(l&gt;m\)</span>, tome <span class="math inline">\(\varepsilon=(l-m)/3\)</span> y un radio común. Allí <span class="math inline">\(f&gt;l-\varepsilon&gt;m+\varepsilon&gt;g\)</span>, contradicción.</p>
+<p><strong>(b)</strong> Basta <span class="math inline">\(f\le g\)</span> en algún entorno perforado de <span class="math inline">\(a\)</span>, en el dominio común que se aproxima a <span class="math inline">\(a\)</span>; la prueba anterior puede restringir el radio a ese entorno.</p>
+<p><strong>(c)</strong> La desigualdad estricta puede perderse. Ponga <span class="math inline">\(f(x)=0\)</span> y <span class="math inline">\(g(x)=(x-a)^2\)</span> para <span class="math inline">\(x\ne a\)</span>, con <span class="math inline">\(g(a)=1\)</span>. Entonces <span class="math inline">\(f(x)&lt;g(x)\)</span> para todo <span class="math inline">\(x\)</span>, pero ambos límites son <span class="math inline">\(0\)</span>.</p>
+</section>
+</section>
+<section id="e013" class="level2">
+<h2 class="anchored" data-anchor-id="e013">Ejercicio 13 — <code>SPV4-C05-E013</code></h2>
+<p>Referencia: p.&nbsp;109. <strong>Problema:</strong> probar el teorema del encaje para <span class="math inline">\(f\le g\le h\)</span>, con <span class="math inline">\(f,h\to l\)</span>, e ilustrarlo.</p>
+<section id="solución-12" class="level3">
+<h3 class="anchored" data-anchor-id="solución-12">Solución</h3>
+<p>Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, elija un radio común en que <span class="math inline">\(l-\varepsilon&lt;f(x)\)</span> y <span class="math inline">\(h(x)&lt;l+\varepsilon\)</span>. Allí <span class="math display">\[l-\varepsilon&lt;f(x)\le g(x)\le h(x)&lt;l+\varepsilon,\]</span> por lo que <span class="math inline">\(|g(x)-l|&lt;\varepsilon\)</span>. Basta, como en el ejercicio anterior, que el encaje rija localmente.</p>
+<div id="fig-spv4-c05-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 5: Encaje de una función oscilante entre dos envolventes">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c05-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C05_assets/E013.png" class="img-fluid figure-img" alt="Capítulo 5: Encaje de una función oscilante entre dos envolventes">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c05-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Capítulo 05 · Figura 1. Encaje de una función oscilante entre dos envolventes
+</figcaption>
+</figure>
+</div>
+<p>La lámina muestra una muestra finita de <span class="math inline">\(-|x|\le x\sin(1/x)\le|x|\)</span> en torno a cero. Las envolventes entran en cualquier banda horizontal alrededor de <span class="math inline">\(0\)</span> y fuerzan a la función intermedia a entrar en ella.</p>
+</section>
+</section>
+<section id="e014" class="level2">
+<h2 class="anchored" data-anchor-id="e014">Ejercicio 14* — <code>SPV4-C05-E014</code></h2>
+<p>Referencia: p.&nbsp;109. <strong>Problema:</strong> (a) si <span class="math inline">\(f(x)/x\to l\)</span>, calcular <span class="math inline">\(f(bx)/x\)</span> para <span class="math inline">\(b\ne0\)</span>; (b) tratar <span class="math inline">\(b=0\)</span>; (c) aplicar a <span class="math inline">\(\sin(2x)/x\)</span> mediante otro método.</p>
+<section id="solución-13" class="level3">
+<h3 class="anchored" data-anchor-id="solución-13">Solución</h3>
+<p><strong>(a)</strong> Para <span class="math inline">\(b\ne0\)</span>, <span class="math display">\[\frac{f(bx)}x=b\frac{f(bx)}{bx}\longrightarrow bl.\]</span> El cambio <span class="math inline">\(u=bx\)</span> es legítimo: un radio <span class="math inline">\(\eta\)</span> en <span class="math inline">\(u\)</span> corresponde a <span class="math inline">\(\eta/|b|\)</span> en <span class="math inline">\(x\)</span>.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(f(0)\)</span> está definido, la expresión es <span class="math inline">\(f(0)/x\)</span>. Cuando <span class="math inline">\(f(0)=0\)</span> el límite es <span class="math inline">\(0\)</span>; cuando <span class="math inline">\(f(0)\ne0\)</span> no existe un límite finito. La hipótesis sobre <span class="math inline">\(f(x)/x\)</span> no impone nada a <span class="math inline">\(f(0)\)</span>: por ejemplo, <span class="math inline">\(f(x)=lx\)</span> fuera de cero y <span class="math inline">\(f(0)=1\)</span>. Si <span class="math inline">\(f(0)\)</span> no está definido, tampoco lo está la nueva expresión.</p>
+<p><strong>(c)</strong> Escribiendo <span class="math inline">\(\alpha=\lim_{x\to0}\sin x/x\)</span>, la identidad <span class="math inline">\(\sin2x=2\sin x\cos x\)</span> da límite <span class="math inline">\(2\alpha\)</span>. Aquí <span class="math inline">\(\sin x\to0\)</span> se deduce de la acotación de <span class="math inline">\(\sin x/x\)</span> y <span class="math inline">\(\cos x\to1\)</span> de <span class="math inline">\(1-\cos x=\sin^2x/(1+\cos x)\)</span>, usando que <span class="math inline">\(\cos x&gt;0\)</span> cerca de cero. Este signo proviene de la geometría elemental del círculo.</p>
+</section>
+</section>
+<section id="e015" class="level2">
+<h2 class="anchored" data-anchor-id="e015">Ejercicio 15 — <code>SPV4-C05-E015</code></h2>
+<p>Referencia: pp.&nbsp;109–110. <strong>Problema:</strong> calcular once límites en términos de <span class="math inline">\(\alpha=\lim_{x\to0}\sin x/x\)</span>.</p>
+<section id="solución-14" class="level3">
+<h3 class="anchored" data-anchor-id="solución-14">Solución</h3>
+<p>Se supone la existencia de <span class="math inline">\(\alpha\)</span>. Para los cocientes que lo requieren usamos <span class="math inline">\(\alpha&gt;0\)</span>: con ángulos en radianes, la comparación geométrica de áreas da <span class="math inline">\(\cos t\le\sin t/t\le1\)</span> para <span class="math inline">\(0&lt;t&lt;\pi/2\)</span>; en un intervalo pequeño el extremo izquierdo supera <span class="math inline">\(1/2\)</span>. Basta esta cota para asegurar <span class="math inline">\(\alpha\ge1/2\)</span>; no necesitamos sustituir aquí su valor. Esta dependencia trigonométrica no es una consecuencia de las reglas de límites por sí solas. Como en E014, <span class="math inline">\(\sin t\to0\)</span> y <span class="math inline">\(\cos t\to1\)</span>.</p>
+<p><strong>(i)</strong> <span class="math inline">\(\sin3x/x\to\boxed{3\alpha}\)</span> por E014.</p>
+<p><strong>(ii)</strong> Si <span class="math inline">\(b\ne0\)</span>, <span class="math display">\[\frac{\sin ax}{\sin bx}=\frac{\sin ax/x}{\sin bx/x}\longrightarrow\boxed{a/b}.\]</span> Para <span class="math inline">\(a=0\)</span> vale cero; para <span class="math inline">\(b=0\)</span> el cociente no está definido. La cota positiva anterior asegura que <span class="math inline">\(\sin bx\)</span> no se anula cerca de cero, salvo en el centro.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(\sin^2(2x)/x=x(\sin2x/x)^2\to\boxed0\)</span>.</p>
+<p><strong>(iv)</strong> <span class="math inline">\(\sin^2(2x)/x^2\to\boxed{4\alpha^2}\)</span>.</p>
+<p><strong>(v)</strong> Racionalizando mediante <span class="math inline">\(\sin^2x=(1-\cos x)(1+\cos x)\)</span>, <span class="math display">\[\frac{1-\cos x}{x^2}=\frac{(\sin x/x)^2}{1+\cos x}\longrightarrow\boxed{\alpha^2/2}.\]</span></p>
+<p><strong>(vi)</strong> Divida numerador y denominador de <span class="math inline">\((\tan^2x+2x)/(x+x^2)\)</span> por <span class="math inline">\(x\)</span>. Como <span class="math inline">\(\tan x/x=(\sin x/x)/\cos x\)</span> tiene límite, <span class="math inline">\(\tan^2x/x\to0\)</span>. Resultado: <span class="math inline">\(\boxed2\)</span>.</p>
+<p><strong>(vii)</strong> <span class="math inline">\(x\sin x/(1-\cos x)=(\sin x/x)/[(1-\cos x)/x^2]\to\boxed{2/\alpha}\)</span>.</p>
+<p><strong>(viii)</strong> Manteniendo fijo <span class="math inline">\(x\)</span> y usando la fórmula de adición, <span class="math display">\[\frac{\sin(x+h)-\sin x}{h}=\sin x\frac{\cos h-1}{h}+\cos x\frac{\sin h}{h}\longrightarrow\boxed{\alpha\cos x}.\]</span> El primer cociente tiende a cero por (v). Este cálculo es directo; no invoca derivadas.</p>
+<p><strong>(ix)</strong> Ponga <span class="math inline">\(u=x^2-1\)</span>. Para <span class="math inline">\(x\to1\)</span>, <span class="math inline">\(u\to0\)</span> y <span class="math inline">\(u\ne0\)</span> cerca del centro; <span class="math inline">\(\sin(x^2-1)/(x-1)=(\sin u/u)(x+1)\to\boxed{2\alpha}\)</span>.</p>
+<p><strong>(x)</strong> Para <span class="math inline">\(x\ne0\)</span>, <span class="math display">\[\frac{x^2(3+\sin x)}{(x+\sin x)^2}=\frac{3+\sin x}{(1+\sin x/x)^2}\longrightarrow\boxed{3/(1+\alpha)^2}.\]</span> El denominador límite es positivo.</p>
+<p><strong>(xi)</strong> <span class="math inline">\(|(x^2-1)^3[\sin(1/(x-1))]^3|\le|x^2-1|^3\to0\)</span> cuando <span class="math inline">\(x\to1\)</span>. Resultado: <span class="math inline">\(\boxed0\)</span>. No es necesario asignar un límite al factor oscilante.</p>
+</section>
+</section>
+<section id="e016" class="level2">
+<h2 class="anchored" data-anchor-id="e016">Ejercicio 16 — <code>SPV4-C05-E016</code></h2>
+<p>Referencia: p.&nbsp;110. <strong>Problema:</strong> probar las reglas para valor absoluto, máximo y mínimo.</p>
+<section id="solución-15" class="level3">
+<h3 class="anchored" data-anchor-id="solución-15">Solución</h3>
+<p><strong>(a)</strong> La desigualdad <span class="math inline">\(||f(x)|-|l||\le|f(x)-l|\)</span> permite usar el mismo radio que para <span class="math inline">\(f\to l\)</span>. Así <span class="math inline">\(|f|\to|l|\)</span>.</p>
+<p><strong>(b)</strong> Use <span class="math display">\[\max(u,v)=\frac{u+v+|u-v|}2,\qquad \min(u,v)=\frac{u+v-|u-v|}2.\]</span> Las reglas de suma y (a) dan límites <span class="math inline">\(\max(l,m)\)</span> y <span class="math inline">\(\min(l,m)\)</span>. La fórmula cubre también <span class="math inline">\(l=m\)</span>.</p>
+</section>
+</section>
+<section id="e017" class="level2">
+<h2 class="anchored" data-anchor-id="e017">Ejercicio 17 — <code>SPV4-C05-E017</code></h2>
+<p>Referencia: p.&nbsp;110. <strong>Problema:</strong> demostrar la inexistencia de límites finitos de <span class="math inline">\(1/x\)</span> en <span class="math inline">\(0\)</span> y de <span class="math inline">\(1/(x-1)\)</span> en <span class="math inline">\(1\)</span>.</p>
+<section id="solución-16" class="level3">
+<h3 class="anchored" data-anchor-id="solución-16">Solución</h3>
+<p><strong>(a)</strong> Para cualquier candidato <span class="math inline">\(l\)</span> tome <span class="math inline">\(\varepsilon=1\)</span>. Dado cualquier <span class="math inline">\(\delta&gt;0\)</span>, elija <span class="math inline">\(0&lt;x&lt;\min(\delta,1/(|l|+2))\)</span>. Entonces <span class="math inline">\(1/x&gt;|l|+2\)</span> y <span class="math inline">\(|1/x-l|&gt;1\)</span>. Ningún <span class="math inline">\(l\)</span> satisface la definición.</p>
+<p><strong>(b)</strong> Ponga <span class="math inline">\(h=x-1\)</span> y aplique exactamente la misma elección a <span class="math inline">\(h\)</span>. El desplazamiento no cambia el argumento.</p>
+</section>
+</section>
+<section id="e018" class="level2">
+<h2 class="anchored" data-anchor-id="e018">Ejercicio 18 — <code>SPV4-C05-E018</code></h2>
+<p>Referencia: p.&nbsp;110. <strong>Problema:</strong> probar que un límite finito implica acotación local e interpretarla geométricamente.</p>
+<section id="solución-17" class="level3">
+<h3 class="anchored" data-anchor-id="solución-17">Solución</h3>
+<p>Si <span class="math inline">\(f\to l\)</span>, use la tolerancia <span class="math inline">\(1\)</span>. Existe <span class="math inline">\(\delta&gt;0\)</span> con <span class="math inline">\(|f(x)-l|&lt;1\)</span> para <span class="math inline">\(0&lt;|x-a|&lt;\delta\)</span>, luego <span class="math inline">\(|f(x)|&lt;|l|+1\)</span>. Tome <span class="math inline">\(M=|l|+1\)</span>. La gráfica próxima, sin incluir necesariamente el punto central, queda en una banda horizontal de altura finita. No se afirma acotación global ni se restringe <span class="math inline">\(f(a)\)</span>.</p>
+</section>
+</section>
+<section id="e019" class="level2">
+<h2 class="anchored" data-anchor-id="e019">Ejercicio 19 — <code>SPV4-C05-E019</code></h2>
+<p>Referencia: p.&nbsp;110. <strong>Problema:</strong> probar que el indicador de los racionales no tiene límite en ningún real.</p>
+<section id="solución-18" class="level3">
+<h3 class="anchored" data-anchor-id="solución-18">Solución</h3>
+<p>Todo intervalo abierto contiene racionales e irracionales. Si hubiera límite <span class="math inline">\(l\)</span>, con tolerancia <span class="math inline">\(1/3\)</span> y en un mismo entorno perforado tendríamos <span class="math inline">\(|1-l|&lt;1/3\)</span> y <span class="math inline">\(|l|&lt;1/3\)</span>, de donde <span class="math inline">\(1&lt;2/3\)</span>. La contradicción vale para cualquier centro y también por cada lado.</p>
+<p>La densidad racional proviene de la propiedad arquimediana; la irracional se deduce tomando un racional en un intervalo trasladado por un irracional fijo. Estas dependencias no se confunden con las reglas algebraicas de límites.</p>
+</section>
+</section>
+<section id="e020" class="level2">
+<h2 class="anchored" data-anchor-id="e020">Ejercicio 20* — <code>SPV4-C05-E020</code></h2>
+<p>Referencia: p.&nbsp;110. <strong>Problema:</strong> para <span class="math inline">\(f(x)=x\)</span> en racionales y <span class="math inline">\(f(x)=-x\)</span> en irracionales, probar que no hay límite en <span class="math inline">\(a\ne0\)</span>.</p>
+<section id="solución-19" class="level3">
+<h3 class="anchored" data-anchor-id="solución-19">Solución</h3>
+<p>Si <span class="math inline">\(f\to l\)</span>, al restringirnos a racionales arbitrariamente próximos a <span class="math inline">\(a\)</span>, necesariamente <span class="math inline">\(l=a\)</span>: de <span class="math inline">\(|l-a|\le|l-x|+|x-a|\)</span> se obtendría <span class="math inline">\(|l-a|&lt;2\varepsilon\)</span> para todo <span class="math inline">\(\varepsilon&gt;0\)</span>. En irracionales el mismo argumento obliga a <span class="math inline">\(l=-a\)</span>. Ambos valores coinciden solo si <span class="math inline">\(a=0\)</span>. En ese punto sí hay límite cero, porque <span class="math inline">\(|f(x)|=|x|\)</span>.</p>
+</section>
+</section>
+<section id="e021" class="level2">
+<h2 class="anchored" data-anchor-id="e021">Ejercicio 21 — <code>SPV4-C05-E021</code></h2>
+<p>Referencia: p.&nbsp;110. <strong>Problema:</strong> (a) si <span class="math inline">\(g\to0\)</span> en cero, probar <span class="math inline">\(g(x)\sin(1/x)\to0\)</span>; (b) extenderlo a un factor acotado.</p>
+<section id="solución-20" class="level3">
+<h3 class="anchored" data-anchor-id="solución-20">Solución</h3>
+<p><strong>(a)</strong> <span class="math inline">\(|g(x)\sin(1/x)|\le|g(x)|\)</span>; el radio para el error <span class="math inline">\(\varepsilon\)</span> en <span class="math inline">\(g\)</span> basta.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(|h(x)|\le M\)</span> y <span class="math inline">\(M&gt;0\)</span>, el radio que asegura <span class="math inline">\(|g(x)|&lt;\varepsilon/M\)</span> da <span class="math inline">\(|g(x)h(x)|&lt;\varepsilon\)</span>. Si <span class="math inline">\(M=0\)</span> el producto es cero. Basta que la cota se cumpla en un entorno perforado; fuera de él nada importa. No se requiere que <span class="math inline">\(h\)</span> tenga límite.</p>
+</section>
+</section>
+<section id="e022" class="level2">
+<h2 class="anchored" data-anchor-id="e022">Ejercicio 22 — <code>SPV4-C05-E022</code></h2>
+<p>Referencia: p.&nbsp;111. <strong>Problema:</strong> caracterizar las funciones <span class="math inline">\(f\)</span> tales que <span class="math inline">\(f+g\)</span> carezca de límite en cero siempre que <span class="math inline">\(g\)</span> carezca de él.</p>
+<section id="solución-21" class="level3">
+<h3 class="anchored" data-anchor-id="solución-21">Solución</h3>
+<p>Si <span class="math inline">\(f\)</span> tiene límite y <span class="math inline">\(f+g\)</span> lo tuviera, la resta produciría un límite de <span class="math inline">\(g\)</span>. Por tanto <span class="math inline">\(f\)</span> cumple la propiedad. Si <span class="math inline">\(f\)</span> no tiene límite, elija <span class="math inline">\(g=-f\)</span>: tampoco tiene límite, pero <span class="math inline">\(f+g=0\)</span>. La propiedad equivale exactamente a la existencia de un límite finito de <span class="math inline">\(f\)</span>.</p>
+</section>
+</section>
+<section id="e023" class="level2">
+<h2 class="anchored" data-anchor-id="e023">Ejercicio 23** — <code>SPV4-C05-E023</code></h2>
+<p>Referencia: p.&nbsp;111. <strong>Problema:</strong> caracterizar la propiedad multiplicativa: para todo <span class="math inline">\(g\)</span> sin límite finito en cero, <span class="math inline">\(fg\)</span> tampoco tiene límite finito. Probar (a) suficiencia de <span class="math inline">\(f\to l\ne0\)</span>; (b) suficiencia de <span class="math inline">\(|f|\to+\infty\)</span>; (c) necesidad de una de ellas.</p>
+<section id="solución-22" class="level3">
+<h3 class="anchored" data-anchor-id="solución-22">Solución</h3>
+<p><strong>(a)</strong> Si <span class="math inline">\(f\to l\ne0\)</span>, existe un entorno perforado donde <span class="math inline">\(|f|&gt;|l|/2\)</span>. Si <span class="math inline">\(fg\)</span> tuviera límite, la regla del cociente daría un límite de <span class="math inline">\(g=(fg)/f\)</span>, contradicción.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(|f|\to+\infty\)</span>, <span class="math inline">\(f\)</span> no se anula cerca del centro y <span class="math inline">\(1/f\to0\)</span>: para obtener error menor que <span class="math inline">\(\varepsilon\)</span>, basta imponer <span class="math inline">\(|f|&gt;1/\varepsilon\)</span>. Si <span class="math inline">\(fg\)</span> tuviera límite finito, sería localmente acotado y <span class="math inline">\(g=(fg)(1/f)\to0\)</span> por E021. De nuevo hay contradicción.</p>
+<p><strong>(c)</strong> Suponga que no se cumple ninguna de las dos condiciones. Separamos dos posibilidades exhaustivas.</p>
+<p>Primera: existe <span class="math inline">\(c&gt;0\)</span> y un entorno perforado donde <span class="math inline">\(|f|&gt;c\)</span>. Defina allí <span class="math inline">\(g=1/f\)</span>, extendiéndola arbitrariamente lejos de cero. El producto vale <span class="math inline">\(1\)</span> localmente. Si <span class="math inline">\(g\)</span> tuviera límite <span class="math inline">\(m\ne0\)</span>, el recíproco daría <span class="math inline">\(f\to1/m\ne0\)</span>, condición excluida. Si <span class="math inline">\(g\to0\)</span>, para cada <span class="math inline">\(N&gt;0\)</span> tendríamos <span class="math inline">\(|g|&lt;1/N\)</span> suficientemente cerca y, por tanto, <span class="math inline">\(|f|&gt;N\)</span>; esto daría <span class="math inline">\(|f|\to+\infty\)</span>, también excluido. Por ello <span class="math inline">\(g\)</span> no tiene límite finito, pero <span class="math inline">\(fg\to1\)</span>.</p>
+<p>Segunda: para todo <span class="math inline">\(c&gt;0\)</span> y todo radio hay un punto no nulo donde <span class="math inline">\(|f|\le c\)</span>. Podemos elegir puntos distintos <span class="math inline">\(x_n\to0\)</span>, con <span class="math inline">\(|x_n|&lt;1/n\)</span> y <span class="math inline">\(|f(x_n)|\le1/n\)</span>. Para garantizar distinción, el radio en la elección siguiente se hace menor que la mitad de los módulos ya elegidos. Ponga <span class="math inline">\(g(x_n)=1\)</span> y <span class="math inline">\(g(x)=0\)</span> en los demás puntos. Entonces <span class="math inline">\(fg\)</span> vale cero fuera del conjunto elegido y su módulo en <span class="math inline">\(x_n\)</span> es a lo sumo <span class="math inline">\(1/n\)</span>; para una tolerancia dada se excluyen los finitos puntos iniciales mediante un radio menor que sus distancias al centro. Así <span class="math inline">\(fg\to0\)</span>.</p>
+<p>En cambio <span class="math inline">\(g\)</span> no tiene límite: toma <span class="math inline">\(1\)</span> en puntos arbitrariamente próximos y <span class="math inline">\(0\)</span> en otros arbitrariamente próximos. Estos últimos existen, por ejemplo, en intervalos entre módulos consecutivos después de escoger los <span class="math inline">\(|x_n|\)</span> estrictamente decrecientes con razón menor que <span class="math inline">\(1/2\)</span>. Las dos construcciones completan la necesidad. Se usa aquí una elección sucesiva numerable de puntos reales; no una hipótesis de regularidad de <span class="math inline">\(f\)</span>.</p>
+</section>
+</section>
+<section id="e024" class="level2">
+<h2 class="anchored" data-anchor-id="e024">Ejercicio 24* — <code>SPV4-C05-E024</code></h2>
+<p>Referencia: p.&nbsp;111. <strong>Problema:</strong> sean <span class="math inline">\(A_n\subset[0,1]\)</span> finitos y disjuntos dos a dos; definir <span class="math inline">\(f=1/n\)</span> en <span class="math inline">\(A_n\)</span> y cero fuera de su unión. Probar <span class="math inline">\(f\to0\)</span> en cada <span class="math inline">\(a\in[0,1]\)</span>.</p>
+<section id="solución-23" class="level3">
+<h3 class="anchored" data-anchor-id="solución-23">Solución</h3>
+<p>Elija <span class="math inline">\(N\)</span> con <span class="math inline">\(1/N&lt;\varepsilon\)</span>. El conjunto <span class="math inline">\(B=A_1\cup\cdots\cup A_N\)</span> es finito. Puede escogerse un radio positivo que no contenga ningún punto de <span class="math inline">\(B\setminus\{a\}\)</span>: use la mitad de la menor distancia a esos puntos, o cualquier radio si no hay ninguno. En el entorno perforado, <span class="math inline">\(f\)</span> vale cero o <span class="math inline">\(1/n\)</span> con <span class="math inline">\(n&gt;N\)</span>, luego <span class="math inline">\(|f|&lt;\varepsilon\)</span>. Se excluye <span class="math inline">\(a\)</span> porque su propio valor puede ser grande. En los extremos se entiende el límite relativo a <span class="math inline">\([0,1]\)</span>, es decir, el lateral disponible.</p>
+</section>
+</section>
+<section id="e025" class="level2">
+<h2 class="anchored" data-anchor-id="e025">Ejercicio 25 — <code>SPV4-C05-E025</code></h2>
+<p>Referencia: p.&nbsp;111. <strong>Problema:</strong> verificar cuatro formulaciones: para todo <span class="math inline">\(d&gt;0\)</span> existe <span class="math inline">\(e&gt;0\)</span> tal que (i) <span class="math inline">\(0&lt;|x-a|&lt;e\Rightarrow|f-l|&lt;d\)</span>; (ii) igual con <span class="math inline">\(\le d\)</span>; (iii) igual con <span class="math inline">\(&lt;5d\)</span>; (iv) radio <span class="math inline">\(e/10\)</span> y error <span class="math inline">\(&lt;d\)</span>.</p>
+<section id="solución-24" class="level3">
+<h3 class="anchored" data-anchor-id="solución-24">Solución</h3>
+<p><strong>(i)</strong> Solo se han renombrado las variables cuantificadas: <span class="math inline">\(d\)</span> es la tolerancia y <span class="math inline">\(e\)</span> el radio.</p>
+<p><strong>(ii)</strong> La definición habitual implica la variante no estricta. A la inversa, aplíquela a <span class="math inline">\(d=\varepsilon/2\)</span>; error <span class="math inline">\(\le\varepsilon/2\)</span> implica error <span class="math inline">\(&lt;\varepsilon\)</span>.</p>
+<p><strong>(iii)</strong> De la definición habitual obtenga error <span class="math inline">\(&lt;5d\)</span>. Para recuperar la habitual, aplique la variante a <span class="math inline">\(d=\varepsilon/5\)</span>.</p>
+<p><strong>(iv)</strong> Si un radio habitual es <span class="math inline">\(r\)</span>, elija <span class="math inline">\(e=10r\)</span>. En sentido inverso, un <span class="math inline">\(e\)</span> de la variante suministra radio <span class="math inline">\(e/10\)</span>. Los factores positivos fijos no cambian la definición.</p>
+</section>
+</section>
+<section id="e026" class="level2">
+<h2 class="anchored" data-anchor-id="e026">Ejercicio 26* — <code>SPV4-C05-E026</code></h2>
+<p>Referencia: p.&nbsp;111. <strong>Problema:</strong> refutar (a) <span class="math inline">\(\forall\delta&gt;0\ \exists\varepsilon&gt;0:\ 0&lt;|x-a|&lt;\delta\Rightarrow|f(x)-l|&lt;\varepsilon\)</span>; (b) la implicación invertida <span class="math inline">\(|f(x)-l|&lt;\varepsilon\Rightarrow0&lt;|x-a|&lt;\delta\)</span>.</p>
+<section id="solución-25" class="level3">
+<h3 class="anchored" data-anchor-id="solución-25">Solución</h3>
+<p><strong>(a)</strong> Tome <span class="math inline">\(f(x)=1\)</span>, <span class="math inline">\(a=l=0\)</span>. Para todo <span class="math inline">\(\delta\)</span> sirve <span class="math inline">\(\varepsilon=2\)</span>, pero el límite real es <span class="math inline">\(1\)</span>, no <span class="math inline">\(0\)</span>. Se está pidiendo una cota de error que puede ser grande, en lugar de controlar cualquier error previamente prescrito.</p>
+<p><strong>(b)</strong> La condición no es necesaria: <span class="math inline">\(f(x)=0\)</span>, <span class="math inline">\(a=l=0\)</span> tiene límite cero, pero <span class="math inline">\(|f(x)-l|&lt;\varepsilon\)</span> se cumple para todo <span class="math inline">\(x\)</span>, incluidos el centro y puntos arbitrariamente lejanos. Ningún <span class="math inline">\(\delta\)</span> los encierra en <span class="math inline">\(0&lt;|x-a|&lt;\delta\)</span>.</p>
+<p>De hecho, si <span class="math inline">\(f(a)\)</span> está definido, la condición escrita para <strong>todo</strong> <span class="math inline">\(x\)</span> es imposible: elija <span class="math inline">\(\varepsilon&gt;|f(a)-l|\)</span> y aplique la implicación en <span class="math inline">\(x=a\)</span>. Aunque se excluyera el centro de la cuantificación, seguiría siendo incorrecta: en el dominio <span class="math inline">\(\mathbb R\setminus\{0\}\)</span> tome <span class="math inline">\(f(x)=x\)</span>, <span class="math inline">\(a=0\)</span>, <span class="math inline">\(l=1\)</span>. Para cada <span class="math inline">\(\varepsilon&gt;0\)</span> sirve <span class="math inline">\(\delta=1+\varepsilon\)</span>, pues <span class="math inline">\(|x-1|&lt;\varepsilon\)</span> implica <span class="math inline">\(0&lt;|x|&lt;1+\varepsilon\)</span>. Sin embargo el límite es <span class="math inline">\(0\)</span>. La condición invertida localiza preimágenes de bandas; no controla los valores cerca del centro.</p>
+</section>
+</section>
+<section id="e027" class="level2">
+<h2 class="anchored" data-anchor-id="e027">Ejercicio 27 — <code>SPV4-C05-E027</code></h2>
+<p>Referencia: p.&nbsp;112; funciones de 4-17, p.&nbsp;72. <strong>Problema:</strong> determinar dónde existen los límites laterales finitos de las seis funciones.</p>
+<section id="solución-26" class="level3">
+<h3 class="anchored" data-anchor-id="solución-26">Solución</h3>
+<p><strong>(i)</strong> Para <span class="math inline">\(\lfloor x\rfloor\)</span> existen ambos en todo <span class="math inline">\(a\)</span>. En un entero <span class="math inline">\(k\)</span>, izquierdo <span class="math inline">\(k-1\)</span>, derecho <span class="math inline">\(k\)</span>; fuera de enteros ambos valen <span class="math inline">\(\lfloor a\rfloor\)</span>.</p>
+<p><strong>(ii)</strong> Para la parte fraccionaria existen ambos en todo <span class="math inline">\(a\)</span>. En enteros, izquierdo <span class="math inline">\(1\)</span>, derecho <span class="math inline">\(0\)</span>; fuera de ellos ambos valen <span class="math inline">\(a-\lfloor a\rfloor\)</span>.</p>
+<p><strong>(iii)</strong> Para su raíz existen ambos en todo <span class="math inline">\(a\)</span>: en enteros <span class="math inline">\(1\)</span> y <span class="math inline">\(0\)</span>; fuera de ellos <span class="math inline">\(\sqrt{a-\lfloor a\rfloor}\)</span>.</p>
+<p><strong>(iv)</strong> Para <span class="math inline">\(\lfloor x\rfloor+\sqrt{x-\lfloor x\rfloor}\)</span> ambos existen en todo <span class="math inline">\(a\)</span> y valen la función, incluido <span class="math inline">\(a=k\)</span>, con valor <span class="math inline">\(k\)</span>.</p>
+<p><strong>(v)</strong> Para <span class="math inline">\(\lfloor1/x\rfloor\)</span> ambos existen en todo <span class="math inline">\(a\ne0\)</span>. En <span class="math inline">\(a=1/k\)</span>, izquierdo <span class="math inline">\(k\)</span> y derecho <span class="math inline">\(k-1\)</span>; en los demás puntos ambos valen la función. En <span class="math inline">\(0\)</span> no hay laterales finitos: izquierdo <span class="math inline">\(-\infty\)</span>, derecho <span class="math inline">\(+\infty\)</span>.</p>
+<p><strong>(vi)</strong> Para <span class="math inline">\(1/\lfloor1/x\rfloor\)</span> ambos existen en <span class="math inline">\(a&lt;1\)</span>, incluyendo <span class="math inline">\(0\)</span>, donde valen <span class="math inline">\(0\)</span>. En un punto <span class="math inline">\(1/k\)</span>, <span class="math inline">\(k\le-1\)</span> o <span class="math inline">\(k\ge2\)</span>, izquierdo <span class="math inline">\(1/k\)</span> y derecho <span class="math inline">\(1/(k-1)\)</span>. En los demás puntos no nulos menores que <span class="math inline">\(1\)</span> ambos valen la función. En <span class="math inline">\(1\)</span> existe solo el izquierdo, <span class="math inline">\(1\)</span>; para <span class="math inline">\(a&gt;1\)</span> ninguno es un límite lateral del dominio. No se atribuye un valor a un lado sin puntos disponibles.</p>
+<p>La orientación de los saltos se obtiene de que <span class="math inline">\(1/x\)</span> es estrictamente decreciente en cada semieje, también en el negativo.</p>
+</section>
+</section>
+<section id="e028" class="level2">
+<h2 class="anchored" data-anchor-id="e028">Ejercicio 28* — <code>SPV4-C05-E028</code></h2>
+<p>Referencia: p.&nbsp;112; funciones de 4-19, p.&nbsp;73. <strong>Problema:</strong> determinar los laterales de las funciones decimales, (a) con colas de nueves y (b) con colas de ceros.</p>
+<section id="solución-27" class="level3">
+<h3 class="anchored" data-anchor-id="solución-27">Solución</h3>
+<p>Usamos las expansiones laterales <span class="math inline">\(e_-\)</span> y <span class="math inline">\(e_+\)</span> definidas en E005. Las respuestas siguientes valen para <strong>cada una de las dos convenciones</strong>, porque incluyen el control de los puntos decimales finitos próximos, no solo el valor central.</p>
+<p><strong>(a-i), (b-i).</strong> Ambos laterales existen en todo real y valen las primeras cifras de <span class="math inline">\(e_-\)</span> y <span class="math inline">\(e_+\)</span>, respectivamente.</p>
+<p><strong>(a-ii), (b-ii).</strong> Lo mismo para la segunda cifra. Fuera de la correspondiente malla decimal son iguales; en ella se leen las dos expansiones.</p>
+<p><strong>(a-iii), (b-iii).</strong> Ningún lateral finito existe: en todo intervalo lateral hay valor cero y valores arbitrariamente grandes.</p>
+<p><strong>(a-iv), (b-iv).</strong> Ningún lateral existe: en todo intervalo lateral aparecen <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>.</p>
+<p><strong>(a-v), (b-v).</strong> Ambos laterales existen en todo real y valen <span class="math inline">\(T_7(e_-)\)</span> y <span class="math inline">\(T_7(e_+)\)</span>. Si no hay primer <span class="math inline">\(7\)</span> en una expansión lateral, el valor de ese límite es <span class="math inline">\(a\)</span>. El control <span class="math inline">\(|f(x)-x|\le10^{-N}\)</span> cuando las primeras <span class="math inline">\(N\)</span> cifras carecen de sietes prueba este caso.</p>
+<p><strong>(a-vi), (b-vi).</strong> Un lateral finito existe exactamente cuando su expansión lateral contiene un <span class="math inline">\(1\)</span>, y vale la posición del primero. En ausencia de <span class="math inline">\(1\)</span>, las prolongaciones sin unos y con un primer uno arbitrariamente tardío impiden un límite finito. Esto prueba cada lado sin necesidad de suponer la existencia del otro.</p>
+</section>
+</section>
+<section id="e029" class="level2">
+<h2 class="anchored" data-anchor-id="e029">Ejercicio 29 — <code>SPV4-C05-E029</code></h2>
+<p>Referencia: p.&nbsp;112. <strong>Problema:</strong> probar que límites laterales iguales producen un bilateral.</p>
+<section id="solución-28" class="level3">
+<h3 class="anchored" data-anchor-id="solución-28">Solución</h3>
+<p>Si ambos laterales valen <span class="math inline">\(l\)</span>, para una tolerancia <span class="math inline">\(\varepsilon\)</span> hay radios <span class="math inline">\(\delta_-\)</span> y <span class="math inline">\(\delta_+\)</span>. Tome su mínimo. Todo <span class="math inline">\(x\ne a\)</span> de ese entorno queda a uno de los dos lados y satisface el control correspondiente. Así <span class="math inline">\(f\to l\)</span>. Se presupone que ambos lados están disponibles en el dominio.</p>
+</section>
+</section>
+<section id="e030" class="level2">
+<h2 class="anchored" data-anchor-id="e030">Ejercicio 30 — <code>SPV4-C05-E030</code></h2>
+<p>Referencia: p.&nbsp;112. <strong>Problema:</strong> justificar tres identidades de límites y precisar la equivalencia de existencias.</p>
+<section id="solución-29" class="level3">
+<h3 class="anchored" data-anchor-id="solución-29">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\(\lim_{x\to0^+}f(x)=\lim_{x\to0^-}f(-x)\)</span>. El cambio <span class="math inline">\(u=-x\)</span> convierte <span class="math inline">\(-\delta&lt;x&lt;0\)</span> en <span class="math inline">\(0&lt;u&lt;\delta\)</span>. La existencia de cualquiera equivale a la del otro.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(\lim_{x\to0}f(|x|)=\lim_{x\to0^+}f(x)\)</span>. De derecha a izquierda use <span class="math inline">\(0&lt;|x|&lt;\delta\)</span>. De izquierda a derecha restrinja el control bilateral a <span class="math inline">\(x&gt;0\)</span>, donde <span class="math inline">\(|x|=x\)</span>. Existencia equivalente.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(\lim_{x\to0}f(x^2)=\lim_{x\to0^+}f(x)\)</span>. Un radio <span class="math inline">\(r\)</span> positivo para <span class="math inline">\(f\)</span> produce radio <span class="math inline">\(\sqrt r\)</span> para la composición. A la inversa, para <span class="math inline">\(0&lt;u&lt;\delta^2\)</span> use <span class="math inline">\(x=\sqrt u\)</span>. También aquí las existencias son equivalentes.</p>
+</section>
+</section>
+<section id="e031" class="level2">
+<h2 class="anchored" data-anchor-id="e031">Ejercicio 31 — <code>SPV4-C05-E031</code></h2>
+<p>Referencia: p.&nbsp;112. <strong>Problema:</strong> si <span class="math inline">\(l_-=\lim_{x\to a^-}f(x)&lt;l_+=\lim_{x\to a^+}f(x)\)</span>, probar separación de valores a ambos lados, dibujar y estudiar la recíproca.</p>
+<section id="solución-30" class="level3">
+<h3 class="anchored" data-anchor-id="solución-30">Solución</h3>
+<p>Ponga <span class="math inline">\(\varepsilon=(l_+-l_-)/3\)</span>. Tome un radio común para los controles laterales. Si <span class="math inline">\(x&lt;a&lt;y\)</span> están en él, <span class="math display">\[f(x)&lt;l_-+\varepsilon&lt;l_+-\varepsilon&lt;f(y).\]</span></p>
+<div id="fig-spv4-c05-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 5: Separación de los valores a ambos lados de un salto">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c05-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C05_assets/E031.png" class="img-fluid figure-img" alt="Capítulo 5: Separación de los valores a ambos lados de un salto">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c05-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Capítulo 05 · Figura 2. Separación de los valores a ambos lados de un salto
+</figcaption>
+</figure>
+</div>
+<p>La recíproca es falsa, incluso si ambos laterales existen: <span class="math inline">\(f(x)=x\)</span> en <span class="math inline">\(a=0\)</span> satisface <span class="math inline">\(f(x)&lt;f(y)\)</span> siempre que <span class="math inline">\(x&lt;0&lt;y\)</span>, pero los límites son ambos cero. La ordenación estricta de valores no obliga a una brecha estricta entre sus límites.</p>
+</section>
+</section>
+<section id="e032" class="level2">
+<h2 class="anchored" data-anchor-id="e032">Ejercicio 32 — <code>SPV4-C05-E032</code></h2>
+<p>Referencia: p.&nbsp;112. <strong>Problema:</strong> estudiar en <span class="math inline">\(+\infty\)</span> el cociente de polinomios de grados <span class="math inline">\(n,m\)</span>, con coeficientes principales <span class="math inline">\(a_n,b_m\ne0\)</span>.</p>
+<section id="solución-31" class="level3">
+<h3 class="anchored" data-anchor-id="solución-31">Solución</h3>
+<p>Para <span class="math inline">\(k\ge1\)</span>, <span class="math inline">\(1/x^k\to0\)</span>: dado <span class="math inline">\(\varepsilon&gt;0\)</span>, basta <span class="math inline">\(x&gt;\max(1,1/\varepsilon)\)</span>, pues entonces <span class="math inline">\(1/x^k\le1/x&lt;\varepsilon\)</span>. Las reglas de suma, producto y cociente se prueban en infinito igual que en un punto, sustituyendo el mínimo de radios por el máximo de umbrales.</p>
+<p>Dividiendo por <span class="math inline">\(x^m\)</span>, <span class="math display">\[\frac{a_nx^n+\cdots+a_0}{b_mx^m+\cdots+b_0}
+=x^{n-m}\frac{a_n+a_{n-1}/x+\cdots+a_0/x^n}{b_m+b_{m-1}/x+\cdots+b_0/x^m}.\]</span> El segundo factor tiende a <span class="math inline">\(a_n/b_m\ne0\)</span>. Si <span class="math inline">\(m=n\)</span>, el límite es <span class="math inline">\(a_n/b_m\)</span>; si <span class="math inline">\(m&gt;n\)</span>, es <span class="math inline">\(0\)</span>. Si <span class="math inline">\(m&lt;n\)</span>, el módulo crece sin cota porque el segundo factor tiene módulo mayor que <span class="math inline">\(|a_n/b_m|/2\)</span> eventualmente y <span class="math inline">\(x^{n-m}\to+\infty\)</span>. No hay límite finito; su signo eventual es el de <span class="math inline">\(a_n/b_m\)</span>. El denominador no se anula para <span class="math inline">\(x\)</span> suficientemente grande.</p>
+</section>
+</section>
+<section id="e033" class="level2">
+<h2 class="anchored" data-anchor-id="e033">Ejercicio 33 — <code>SPV4-C05-E033</code></h2>
+<p>Referencia: p.&nbsp;112. <strong>Problema:</strong> calcular cuatro límites en <span class="math inline">\(+\infty\)</span>.</p>
+<section id="solución-32" class="level3">
+<h3 class="anchored" data-anchor-id="solución-32">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\((x+\sin^3x)/(5x+6)=(1+\sin^3x/x)/(5+6/x)\to\boxed{1/5}\)</span>, pues <span class="math inline">\(|\sin^3x/x|\le1/x\)</span> para <span class="math inline">\(x&gt;0\)</span>.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(|x\sin x/(x^2+5)|\le x/(x^2+5)\le1/x\to0\)</span>. Resultado: <span class="math inline">\(\boxed0\)</span>.</p>
+<p><strong>(iii)</strong> Para <span class="math inline">\(x&gt;0\)</span>, <span class="math display">\[\sqrt{x^2+x}-x=\frac{x}{\sqrt{x^2+x}+x}=\frac1{\sqrt{1+1/x}+1}\longrightarrow\boxed{1/2}.\]</span> La raíz del denominador tiende a <span class="math inline">\(1\)</span> por racionalización.</p>
+<p><strong>(iv)</strong> <span class="math inline">\(x^2(1+\sin^2x)/(x+\sin x)^2=(1+\sin^2x)/(1+\sin x/x)^2\)</span> no tiene límite. En <span class="math inline">\(x=k\pi\)</span> vale <span class="math inline">\(1\)</span>; en <span class="math inline">\(x=\pi/2+2k\pi\)</span> tiende a <span class="math inline">\(2\)</span>. Ambas familias escapan a infinito y son incompatibles con un único límite finito. La expresión queda acotada eventualmente, de modo que tampoco tiende a un infinito.</p>
+</section>
+</section>
+<section id="e034" class="level2">
+<h2 class="anchored" data-anchor-id="e034">Ejercicio 34 — <code>SPV4-C05-E034</code></h2>
+<p>Referencia: p.&nbsp;112. <strong>Problema:</strong> justificar <span class="math inline">\(\lim_{x\to0^+}f(1/x)=\lim_{x\to+\infty}f(x)\)</span>.</p>
+<section id="solución-33" class="level3">
+<h3 class="anchored" data-anchor-id="solución-33">Solución</h3>
+<p>Si para <span class="math inline">\(u&gt;N&gt;0\)</span> se tiene error menor que <span class="math inline">\(\varepsilon\)</span>, basta <span class="math inline">\(0&lt;x&lt;1/N\)</span>. Si en cambio conocemos un radio <span class="math inline">\(\delta\)</span> para <span class="math inline">\(f(1/x)\)</span>, use <span class="math inline">\(u&gt;1/\delta\)</span> y <span class="math inline">\(x=1/u\)</span>. Estos cambios prueban ambas direcciones y la igualdad de valores. Se puede aumentar cualquier umbral a uno positivo.</p>
+</section>
+</section>
+<section id="e035" class="level2">
+<h2 class="anchored" data-anchor-id="e035">Ejercicio 35 — <code>SPV4-C05-E035</code></h2>
+<p>Referencia: p.&nbsp;112. <strong>Problema:</strong> calcular dos límites en <span class="math inline">\(+\infty\)</span> en términos de <span class="math inline">\(\alpha\)</span>.</p>
+<section id="solución-34" class="level3">
+<h3 class="anchored" data-anchor-id="solución-34">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\(|\sin x/x|\le1/x\)</span> da <span class="math inline">\(\boxed0\)</span>.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(x\sin(1/x)=\sin(1/x)/(1/x)\to\boxed\alpha\)</span> por E034 y la restricción del límite bilateral a la derecha.</p>
+</section>
+</section>
+<section id="e036" class="level2">
+<h2 class="anchored" data-anchor-id="e036">Ejercicio 36 — <code>SPV4-C05-E036</code></h2>
+<p>Referencia: p.&nbsp;113. <strong>Problema:</strong> definir un límite finito en <span class="math inline">\(-\infty\)</span> y (a) calcular cocientes polinómicos; (b) cambiar <span class="math inline">\(x\)</span> por <span class="math inline">\(-x\)</span>; (c) relacionarlo con <span class="math inline">\(1/x\)</span> en <span class="math inline">\(0^-\)</span>.</p>
+<section id="solución-35" class="level3">
+<h3 class="anchored" data-anchor-id="solución-35">Solución</h3>
+<p>La definición es: para todo <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(N&gt;0\)</span> tal que <span class="math inline">\(x&lt;-N\)</span> implica <span class="math inline">\(|f(x)-l|&lt;\varepsilon\)</span>. Equivale a permitir cualquier umbral real por debajo del cual se cumple el control.</p>
+<p><strong>(a)</strong> Con los coeficientes principales no nulos, la misma división de E032 da límite <span class="math inline">\(0\)</span> si <span class="math inline">\(m&gt;n\)</span>, <span class="math inline">\(a_n/b_m\)</span> si <span class="math inline">\(m=n\)</span>, y ningún límite finito si <span class="math inline">\(n&gt;m\)</span>. En el último caso el módulo tiende a infinito y el signo es <span class="math inline">\((-1)^{n-m}\operatorname{sgn}(a_n/b_m)\)</span>, pues <span class="math inline">\(x\)</span> es negativo.</p>
+<p><strong>(b)</strong> <span class="math inline">\(\lim_{x\to+\infty}f(x)=\lim_{x\to-\infty}f(-x)\)</span> con existencia equivalente: <span class="math inline">\(x&lt;-N\)</span> equivale a <span class="math inline">\(-x&gt;N\)</span>.</p>
+<p><strong>(c)</strong> <span class="math inline">\(\lim_{x\to0^-}f(1/x)=\lim_{x\to-\infty}f(x)\)</span>. Para <span class="math inline">\(N&gt;0\)</span>, <span class="math inline">\(-1/N&lt;x&lt;0\)</span> implica <span class="math inline">\(1/x&lt;-N\)</span>; recíprocamente <span class="math inline">\(u&lt;-1/\delta\)</span> implica <span class="math inline">\(-\delta&lt;1/u&lt;0\)</span>. Se conservan los controles de error.</p>
+</section>
+</section>
+<section id="e037" class="level2">
+<h2 class="anchored" data-anchor-id="e037">Ejercicio 37 — <code>SPV4-C05-E037</code></h2>
+<p>Referencia: p.&nbsp;113. <strong>Problema:</strong> ilustrar el límite <span class="math inline">\(+\infty\)</span> en un punto; (a) probar <span class="math inline">\(1/(x-3)^2\to+\infty\)</span>; (b) si <span class="math inline">\(f&gt;c&gt;0\)</span> y <span class="math inline">\(g\to0\)</span>, estudiar <span class="math inline">\(f/|g|\)</span>.</p>
+<section id="solución-36" class="level3">
+<h3 class="anchored" data-anchor-id="solución-36">Solución</h3>
+<p>Decir <span class="math inline">\(F(x)\to+\infty\)</span> en <span class="math inline">\(a\)</span> significa que para cada umbral real <span class="math inline">\(N\)</span> hay un radio que obliga a <span class="math inline">\(F(x)&gt;N\)</span> en el entorno perforado. Basta verificar umbrales positivos.</p>
+<p><strong>(a)</strong> Para <span class="math inline">\(N&gt;0\)</span>, tome <span class="math inline">\(\delta=1/\sqrt N\)</span>. Entonces <span class="math inline">\(0&lt;|x-3|&lt;\delta\)</span> implica <span class="math inline">\(1/(x-3)^2&gt;N\)</span>. Para <span class="math inline">\(N\le0\)</span> cualquier radio sirve.</p>
+<div id="fig-spv4-c05-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 5: Un límite infinito exige superar cualquier altura prescrita">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c05-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C05_assets/E037.png" class="img-fluid figure-img" alt="Capítulo 5: Un límite infinito exige superar cualquier altura prescrita">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c05-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Capítulo 05 · Figura 3. Un límite infinito exige superar cualquier altura prescrita
+</figcaption>
+</figure>
+</div>
+<p><strong>(b)</strong> Para <span class="math inline">\(N&gt;0\)</span>, escoja un radio donde <span class="math inline">\(|g(x)|&lt;c/N\)</span>. En los puntos donde <span class="math inline">\(g(x)\ne0\)</span>, <span class="math display">\[\frac{f(x)}{|g(x)|}&gt;\frac c{|g(x)|}&gt;N.\]</span> Así el cociente tiende a <span class="math inline">\(+\infty\)</span> <strong>sobre su dominio</strong>, siempre que dicho dominio tenga a <span class="math inline">\(a\)</span> como punto de acumulación. Si se exige que el cociente esté definido en todo un entorno perforado, hace falta añadir <span class="math inline">\(g(x)\ne0\)</span> allí. La hipótesis <span class="math inline">\(g\to0\)</span> no lo garantiza: <span class="math inline">\(g\equiv0\)</span> deja el cociente sin dominio. Esta precisión forma parte de la respuesta.</p>
+</section>
+</section>
+<section id="e038" class="level2">
+<h2 class="anchored" data-anchor-id="e038">Ejercicio 38 — <code>SPV4-C05-E038</code></h2>
+<p>Referencia: p.&nbsp;113. <strong>Problema:</strong> (a) definir límites infinitos laterales y en infinito; (b) probar <span class="math inline">\(1/x\to+\infty\)</span> en <span class="math inline">\(0^+\)</span>; (c) probar la equivalencia por inversión.</p>
+<section id="solución-37" class="level3">
+<h3 class="anchored" data-anchor-id="solución-37">Solución</h3>
+<p><strong>(a)</strong> Para <span class="math inline">\(f(x)\to+\infty\)</span> cuando <span class="math inline">\(x\to a^+\)</span> se exige: para cada <span class="math inline">\(N&gt;0\)</span>, algún <span class="math inline">\(\delta&gt;0\)</span> hace que <span class="math inline">\(0&lt;x-a&lt;\delta\Rightarrow f(x)&gt;N\)</span>. Para <span class="math inline">\(x\to a^-\)</span> se reemplaza por <span class="math inline">\(0&lt;a-x&lt;\delta\)</span>. Para <span class="math inline">\(x\to+\infty\)</span> se exige un umbral <span class="math inline">\(R\)</span> con <span class="math inline">\(x&gt;R\Rightarrow f(x)&gt;N\)</span>. En <span class="math inline">\(-\infty\)</span>, la condición es <span class="math inline">\(x&lt;-R\)</span>. Para límite <span class="math inline">\(-\infty\)</span> se cambia la conclusión a <span class="math inline">\(f(x)&lt;-N\)</span>. Incluyendo el acercamiento bilateral a un punto, hay cinco tipos de acercamiento (<span class="math inline">\(a,a^+,a^- ,+\infty,-\infty\)</span>) y dos signos de divergencia: diez combinaciones. Las disponibles dependen del dominio.</p>
+<p><strong>(b)</strong> Para <span class="math inline">\(N&gt;0\)</span>, <span class="math inline">\(0&lt;x&lt;1/N\)</span> implica <span class="math inline">\(1/x&gt;N\)</span>.</p>
+<p><strong>(c)</strong> <span class="math inline">\(f(x)\to+\infty\)</span> en <span class="math inline">\(0^+\)</span> equivale a <span class="math inline">\(f(1/x)\to+\infty\)</span> en <span class="math inline">\(+\infty\)</span>. Para cada <span class="math inline">\(N\)</span> el cambio convierte un radio <span class="math inline">\(\delta\)</span> en umbral <span class="math inline">\(1/\delta\)</span>, y un umbral positivo <span class="math inline">\(R\)</span> en radio <span class="math inline">\(1/R\)</span>. No aparece una tolerancia de error alrededor de un valor finito.</p>
+</section>
+</section>
+<section id="e039" class="level2">
+<h2 class="anchored" data-anchor-id="e039">Ejercicio 39 — <code>SPV4-C05-E039</code></h2>
+<p>Referencia: p.&nbsp;113. <strong>Problema:</strong> calcular siete límites, finitos o infinitos, en <span class="math inline">\(+\infty\)</span>.</p>
+<section id="solución-38" class="level3">
+<h3 class="anchored" data-anchor-id="solución-38">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\((x^3+4x-7)/(7x^2-x+1)=x(1+4/x^2-7/x^3)/(7-1/x+1/x^2)\to\boxed{+\infty}\)</span>. El segundo factor tiende a <span class="math inline">\(1/7&gt;0\)</span>.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(x(1+\sin^2x)\ge x\)</span> para <span class="math inline">\(x&gt;0\)</span>, por lo que tiende a <span class="math inline">\(\boxed{+\infty}\)</span>.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(x\sin^2x\)</span> no tiene límite finito ni infinito: vale cero en <span class="math inline">\(k\pi\)</span> y tiende a <span class="math inline">\(+\infty\)</span> en <span class="math inline">\(\pi/2+k\pi\)</span>. Es no negativa, de modo que tampoco puede tender a <span class="math inline">\(-\infty\)</span>.</p>
+<p><strong>(iv)</strong> <span class="math inline">\(x^2\sin(1/x)=x[\sin(1/x)/(1/x)]\to\boxed{+\infty}\)</span> porque el factor entre corchetes tiende a <span class="math inline">\(\alpha&gt;0\)</span>, según la dependencia geométrica explicitada en E015.</p>
+<p><strong>(v)</strong> <span class="math inline">\(\sqrt{x^2+2x}-x=2/(\sqrt{1+2/x}+1)\to\boxed1\)</span>.</p>
+<p><strong>(vi)</strong> <span class="math display">\[x(\sqrt{x+2}-\sqrt x)=\frac{2x}{\sqrt{x+2}+\sqrt x}=\frac{2\sqrt x}{\sqrt{1+2/x}+1}\longrightarrow\boxed{+\infty}.\]</span> El denominador tiende a <span class="math inline">\(2\)</span> y el numerador crece sin cota.</p>
+<p><strong>(vii)</strong> Para <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(\sqrt{|x|}/x=1/\sqrt x\to\boxed0\)</span>; dado <span class="math inline">\(\varepsilon\)</span>, basta <span class="math inline">\(x&gt;1/\varepsilon^2\)</span>.</p>
+</section>
+</section>
+<section id="e040" class="level2">
+<h2 class="anchored" data-anchor-id="e040">Ejercicio 40 — <code>SPV4-C05-E040</code></h2>
+<p>Referencia: p.&nbsp;113. <strong>Problema:</strong> (a) hallar el perímetro del polígono regular inscrito de <span class="math inline">\(n\)</span> lados en un círculo de radio <span class="math inline">\(r\)</span>; (b) su valor límite; (c) la conjetura trigonométrica sugerida.</p>
+<section id="solución-39" class="level3">
+<h3 class="anchored" data-anchor-id="solución-39">Solución</h3>
+<p><strong>(a)</strong> Cada lado es una cuerda con ángulo central <span class="math inline">\(2\pi/n\)</span>. Dividir el triángulo isósceles por su altura da longitud <span class="math inline">\(2r\sin(\pi/n)\)</span>, y <span class="math display">\[P_n=2rn\sin(\pi/n).\]</span></p>
+<p><strong>(b)</strong> Si <span class="math inline">\(r&gt;0\)</span>, el cálculo con <span class="math inline">\(\alpha\)</span> da <span class="math inline">\(P_n\to2\pi r\alpha\)</span>. La interpretación geométrica de la longitud de circunferencia mediante perímetros inscritos predice <span class="math inline">\(P_n\to2\pi r\)</span>. Ese paso requiere un fundamento de longitud de curvas o una definición equivalente; la figura por sí sola no lo demuestra. Si <span class="math inline">\(r=0\)</span>, todos los perímetros son cero y no se puede dividir por <span class="math inline">\(r\)</span>.</p>
+<p><strong>(c)</strong> Comparar las dos expresiones sugiere <span class="math inline">\(\alpha=1\)</span>, es decir, <span class="math inline">\(\lim_{x\to0}\sin x/x=1\)</span> en radianes. Si se adopta y demuestra la aproximación geométrica de (b), esta comparación demuestra el valor bajo la existencia de <span class="math inline">\(\alpha\)</span>. El ejercicio pide una conjetura; el desarrollo completo de ese límite no se presupone aquí.</p>
+</section>
+</section>
+<section id="e041" class="level2">
+<h2 class="anchored" data-anchor-id="e041">Ejercicio 41 — <code>SPV4-C05-E041</code></h2>
+<p>Referencia: p.&nbsp;114. <strong>Problema:</strong> probar (a) <span class="math inline">\(c^{1/n}\to1\)</span> si <span class="math inline">\(c&gt;1\)</span>; (b) extenderlo a <span class="math inline">\(c&gt;0\)</span>.</p>
+<section id="solución-40" class="level3">
+<h3 class="anchored" data-anchor-id="solución-40">Solución</h3>
+<p><strong>(a)</strong> Sea <span class="math inline">\(u_n=c^{1/n}&gt;1\)</span>. La desigualdad de Bernoulli, probada por inducción, da <span class="math inline">\((1+\varepsilon)^n\ge1+n\varepsilon\)</span>. Si <span class="math inline">\(n&gt;(c-1)/\varepsilon\)</span>, entonces <span class="math inline">\((1+\varepsilon)^n&gt;c=u_n^n\)</span>. La monotonía de la potencia en números positivos obliga a <span class="math inline">\(u_n&lt;1+\varepsilon\)</span>. Así <span class="math inline">\(0&lt;u_n-1&lt;\varepsilon\)</span> para todo <span class="math inline">\(n\)</span> suficientemente grande.</p>
+<p><strong>(b)</strong> Para <span class="math inline">\(c=1\)</span> el resultado es inmediato. Para <span class="math inline">\(0&lt;c&lt;1\)</span>, aplique (a) a <span class="math inline">\(1/c\)</span>: si <span class="math inline">\(v_n=(1/c)^{1/n}\to1\)</span> y <span class="math inline">\(v_n&gt;1\)</span>, entonces <span class="math display">\[|c^{1/n}-1|=|1/v_n-1|=(v_n-1)/v_n\le v_n-1\to0.\]</span> Se usa la existencia de las raíces positivas y la identidad de sus recíprocos; no logaritmos ni exponenciales.</p>
+</section>
+</section>
+<section id="e042" class="level2">
+<h2 class="anchored" data-anchor-id="e042">Ejercicio 42* — <code>SPV4-C05-E042</code></h2>
+<p>Referencia: p.&nbsp;114. <strong>Problema:</strong> examinar una propuesta de prueba de <span class="math inline">\(x^2\to a^2\)</span> para <span class="math inline">\(a&gt;0\)</span>, basada en el radio mínimo de <span class="math inline">\(\sqrt{a^2+\varepsilon}-a\)</span> y <span class="math inline">\(a-\sqrt{a^2-\varepsilon}\)</span>.</p>
+<section id="solución-41" class="level3">
+<h3 class="anchored" data-anchor-id="solución-41">Solución</h3>
+<p>La propuesta utiliza raíces cuya existencia todavía no se ha establecido en el desarrollo lógico del libro en este punto. Probar un límite de cuadrados no exige saber que todo número positivo es un cuadrado, y esa afirmación no se obtiene solo de los axiomas de cuerpo ordenado. Por ejemplo, el cuerpo ordenado de los racionales tiene las operaciones y el orden usuales, pero carece de raíz cuadrada de <span class="math inline">\(2\)</span>. Dentro del orden del libro, usar esas raíces anticipa un resultado de existencia y deja un hueco en la prueba.</p>
+<p>Hay además una restricción inmediata: si <span class="math inline">\(\varepsilon&gt;a^2\)</span>, <span class="math inline">\(\sqrt{a^2-\varepsilon}\)</span> no es real. Incluso con raíces disponibles debe reducirse primero la tolerancia. Bajo la existencia de raíces reales <strong>adoptada expresamente en nuestro proyecto</strong>, el procedimiento puede repararse: tome <span class="math inline">\(\eta=\min(\varepsilon,a^2/2)&gt;0\)</span> y <span class="math display">\[\delta=\min\{\sqrt{a^2+\eta}-a,\ a-\sqrt{a^2-\eta}\}&gt;0.\]</span> Entonces <span class="math inline">\(|x-a|&lt;\delta\)</span> implica <span class="math inline">\(0&lt;\sqrt{a^2-\eta}&lt;x&lt;\sqrt{a^2+\eta}\)</span>; al elevar al cuadrado, <span class="math inline">\(|x^2-a^2|&lt;\eta\le\varepsilon\)</span>. Con esa dependencia y esa restricción explícitas, la prueba reparada es válida. No se trata de una falsa desigualdad: se trata del fundamento de las raíces y del alcance de la tolerancia.</p>
+<p>La ruta que evita ambas dificultades es algebraica: si <span class="math inline">\(|x-a|&lt;1\)</span>, <span class="math inline">\(|x+a|&lt;2a+1\)</span>, y <span class="math inline">\(\delta=\min(1,\varepsilon/(2a+1))\)</span> asegura <span class="math display">\[|x^2-a^2|=|x-a||x+a|&lt;\varepsilon.\]</span></p>
+<hr>
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-04.html">← Capítulo 4</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-06.html">Capítulo 6 →</a></p>
+</div>
+<p>Soluciones originales de Alevi Peña · Matemática Abierta. <a href="../../../COPYING.FDL">Licencia GFDL 1.3 o posterior</a>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

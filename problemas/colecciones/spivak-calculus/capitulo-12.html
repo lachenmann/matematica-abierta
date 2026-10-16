@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Capítulo 12 — Funciones inversas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="spivak-c01.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#e001" id="toc-e001" class="nav-link active" data-scroll-target="#e001">Ejercicio 1 — <code>SPV4-C12-E001</code></a></li>
+  <li><a href="#e002" id="toc-e002" class="nav-link" data-scroll-target="#e002">Ejercicio 2 — <code>SPV4-C12-E002</code></a></li>
+  <li><a href="#e003" id="toc-e003" class="nav-link" data-scroll-target="#e003">Ejercicio 3 — <code>SPV4-C12-E003</code></a></li>
+  <li><a href="#e004" id="toc-e004" class="nav-link" data-scroll-target="#e004">Ejercicio 4 — <code>SPV4-C12-E004</code></a></li>
+  <li><a href="#e005" id="toc-e005" class="nav-link" data-scroll-target="#e005">Ejercicio 5 — <code>SPV4-C12-E005</code></a></li>
+  <li><a href="#e006" id="toc-e006" class="nav-link" data-scroll-target="#e006">Ejercicio 6 — <code>SPV4-C12-E006</code></a></li>
+  <li><a href="#e007" id="toc-e007" class="nav-link" data-scroll-target="#e007">Ejercicio 7 — <code>SPV4-C12-E007</code></a></li>
+  <li><a href="#e008" id="toc-e008" class="nav-link" data-scroll-target="#e008">Ejercicio 8 — <code>SPV4-C12-E008</code></a></li>
+  <li><a href="#e009" id="toc-e009" class="nav-link" data-scroll-target="#e009">Ejercicio 9 — <code>SPV4-C12-E009</code></a></li>
+  <li><a href="#e010" id="toc-e010" class="nav-link" data-scroll-target="#e010">Ejercicio 10 — <code>SPV4-C12-E010</code></a></li>
+  <li><a href="#e011" id="toc-e011" class="nav-link" data-scroll-target="#e011">Ejercicio 11 — <code>SPV4-C12-E011</code></a></li>
+  <li><a href="#e012" id="toc-e012" class="nav-link" data-scroll-target="#e012">Ejercicio 12 — <code>SPV4-C12-E012</code></a></li>
+  <li><a href="#e013" id="toc-e013" class="nav-link" data-scroll-target="#e013">Ejercicio 13 — <code>SPV4-C12-E013</code></a></li>
+  <li><a href="#e014" id="toc-e014" class="nav-link" data-scroll-target="#e014">Ejercicio 14 — <code>SPV4-C12-E014</code></a></li>
+  <li><a href="#e015" id="toc-e015" class="nav-link" data-scroll-target="#e015">Ejercicio 15 — <code>SPV4-C12-E015</code></a></li>
+  <li><a href="#e016" id="toc-e016" class="nav-link" data-scroll-target="#e016">Ejercicio 16 — <code>SPV4-C12-E016</code></a></li>
+  <li><a href="#e017" id="toc-e017" class="nav-link" data-scroll-target="#e017">Ejercicio 17 — <code>SPV4-C12-E017</code></a></li>
+  <li><a href="#e018" id="toc-e018" class="nav-link" data-scroll-target="#e018">Ejercicio 18 — <code>SPV4-C12-E018</code></a></li>
+  <li><a href="#e019" id="toc-e019" class="nav-link" data-scroll-target="#e019">Ejercicio 19 — <code>SPV4-C12-E019</code></a></li>
+  <li><a href="#e020" id="toc-e020" class="nav-link" data-scroll-target="#e020">Ejercicio 20 — <code>SPV4-C12-E020</code></a></li>
+  <li><a href="#e021" id="toc-e021" class="nav-link" data-scroll-target="#e021">Ejercicio 21 — <code>SPV4-C12-E021</code></a></li>
+  <li><a href="#e022" id="toc-e022" class="nav-link" data-scroll-target="#e022">Ejercicio 22 — <code>SPV4-C12-E022</code></a></li>
+  <li><a href="#e023" id="toc-e023" class="nav-link" data-scroll-target="#e023">Ejercicio 23 — <code>SPV4-C12-E023</code></a></li>
+  <li><a href="#e024" id="toc-e024" class="nav-link" data-scroll-target="#e024">Ejercicio 24 — <code>SPV4-C12-E024</code></a></li>
+  <li><a href="#e025" id="toc-e025" class="nav-link" data-scroll-target="#e025">Ejercicio 25 — <code>SPV4-C12-E025</code></a></li>
+  <li><a href="#e026" id="toc-e026" class="nav-link" data-scroll-target="#e026">Ejercicio 26 — <code>SPV4-C12-E026</code></a></li>
+  <li><a href="#e027" id="toc-e027" class="nav-link" data-scroll-target="#e027">Ejercicio 27 — <code>SPV4-C12-E027</code></a></li>
+  <li><a href="#seccion-25225" id="toc-seccion-25225" class="nav-link" data-scroll-target="#seccion-25225">Apéndice — Representación paramétrica de curvas</a></li>
+  <li><a href="#e001-2" id="toc-e001-2" class="nav-link" data-scroll-target="#e001-2">Apéndice, ejercicio 1 — <code>SPV4-C12-A01-E001</code></a></li>
+  <li><a href="#e002-2" id="toc-e002-2" class="nav-link" data-scroll-target="#e002-2">Apéndice, ejercicio 2 — <code>SPV4-C12-A01-E002</code></a></li>
+  <li><a href="#e003-2" id="toc-e003-2" class="nav-link" data-scroll-target="#e003-2">Apéndice, ejercicio 3 — <code>SPV4-C12-A01-E003</code></a></li>
+  <li><a href="#e004-2" id="toc-e004-2" class="nav-link" data-scroll-target="#e004-2">Apéndice, ejercicio 4 — <code>SPV4-C12-A01-E004</code></a></li>
+  <li><a href="#e005-2" id="toc-e005-2" class="nav-link" data-scroll-target="#e005-2">Apéndice, ejercicio 5 — <code>SPV4-C12-A01-E005</code></a></li>
+  <li><a href="#e006-2" id="toc-e006-2" class="nav-link" data-scroll-target="#e006-2">Apéndice, ejercicio 6 — <code>SPV4-C12-A01-E006</code></a></li>
+  <li><a href="#e007-2" id="toc-e007-2" class="nav-link" data-scroll-target="#e007-2">Apéndice, ejercicio 7 — <code>SPV4-C12-A01-E007</code></a></li>
+  <li><a href="#e008-2" id="toc-e008-2" class="nav-link" data-scroll-target="#e008-2">Apéndice, ejercicio 8 — <code>SPV4-C12-A01-E008</code></a></li>
+  <li><a href="#e009-2" id="toc-e009-2" class="nav-link" data-scroll-target="#e009-2">Apéndice, ejercicio 9 — <code>SPV4-C12-A01-E009</code></a></li>
+  <li><a href="#e010-2" id="toc-e010-2" class="nav-link" data-scroll-target="#e010-2">Apéndice, ejercicio 10 — <code>SPV4-C12-A01-E010</code></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 12 — Funciones inversas</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-11.html">← Capítulo 11</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-13.html">Capítulo 13 →</a></p>
+</div>
+<p>Solucionario explicado de Matemática Abierta · A. Peña</p>
+<p>Fuente: Michael Spivak, <em>Calculus</em>, 4.ª edición, problemas pp.&nbsp;239–243 (PDF 259–263) y apéndice pp.&nbsp;248–252 (PDF 268–272). Enunciados condensados, demostraciones y figuras propias. Se desarrollan los 27 problemas principales y los 10 del apéndice, con todos sus incisos y precisiones necesarias.</p>
+<p>Una inversa se define sobre la <strong>imagen</strong> de la función, que puede ser menor que el codominio declarado. <span class="math inline">\(f^{-1}\)</span> no significa <span class="math inline">\(1/f\)</span>. «Creciente» y «decreciente» son estrictos; las versiones no estrictas se nombran explícitamente. Para aplicar el teorema de diferenciación de inversas se trabaja con una función continua e inyectiva en un intervalo: si <span class="math inline">\(y=f(a)\)</span> y <span class="math inline">\(f'(a)\ne0\)</span>, entonces <span class="math inline">\((f^{-1})'(y)=1/f'(a)\)</span>. La diferenciabilidad de la inversa se demuestra por ese teorema antes de usar la regla de la cadena.</p>
+<section id="e001" class="level2">
+<h2 class="anchored" data-anchor-id="e001">Ejercicio 1 — <code>SPV4-C12-E001</code></h2>
+<p>Referencia: pp.&nbsp;239–240. <strong>Problema:</strong> hallar las inversas de ocho funciones.</p>
+<p><strong>(i)</strong> Para <span class="math inline">\(f(x)=x^3+1\)</span>, resolver <span class="math inline">\(y=x^3+1\)</span> da <span class="math inline">\(f^{-1}(y)=\sqrt[3]{y-1}\)</span>, definida en toda la recta. Sustituir en ambos sentidos devuelve el argumento.</p>
+<p><strong>(ii)</strong> Para <span class="math inline">\(f(x)=(x-1)^3\)</span>, la inversa es <span class="math inline">\(f^{-1}(y)=1+\sqrt[3]y\)</span>, también en toda la recta.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(f(x)=x\)</span> si <span class="math inline">\(x\)</span> es racional y <span class="math inline">\(f(x)=-x\)</span> si es irracional. Cambiar el signo preserva la irracionalidad, por tanto <span class="math inline">\(f(f(x))=x\)</span> en ambos casos. Es una biyección de la recta sobre sí misma y <span class="math inline">\(f^{-1}=f\)</span>, aunque no es monótona ni continua salvo en cero.</p>
+<p><strong>(iv)</strong> <span class="math inline">\(f(x)=-x^2\)</span> para <span class="math inline">\(x\ge0\)</span>, y <span class="math inline">\(f(x)=1-x^3\)</span> para <span class="math inline">\(x&lt;0\)</span>. La primera rama tiene imagen <span class="math inline">\((-\infty,0]\)</span> y la segunda <span class="math inline">\((1,\infty)\)</span>; ambas son inyectivas y sus imágenes son disjuntas. Así <span class="math display">\[f^{-1}(y)=\begin{cases}\sqrt{-y},&amp;y\le0,\\ \sqrt[3]{1-y},&amp;y&gt;1.\end{cases}\]</span> La inversa no está definida en <span class="math inline">\((0,1]\)</span>, pues ningún punto tiene esos valores como imagen. La discontinuidad de <span class="math inline">\(f\)</span> no impide la inyectividad.</p>
+<p><strong>(v)</strong> Se supone que <span class="math inline">\(a_1,\ldots,a_n\)</span> son distintos. La función deja fijos los otros números y envía <span class="math inline">\(a_i\)</span> a <span class="math inline">\(a_{i+1}\)</span>, cerrando el ciclo con <span class="math inline">\(a_n\mapsto a_1\)</span>. Su inversa invierte el ciclo: <span class="math display">\[f^{-1}(x)=\begin{cases}x,&amp;x\notin\{a_1,\ldots,a_n\},\\a_{i-1},&amp;x=a_i, 2\le i\le n,\\a_n,&amp;x=a_1.\end{cases}\]</span> Para <span class="math inline">\(n=1\)</span> es la identidad. Sin distinguir los <span class="math inline">\(a_i\)</span>, la definición por casos puede asignar valores incompatibles a un mismo argumento; la salvedad es necesaria.</p>
+<p><strong>(vi)</strong> <span class="math inline">\(f(x)=x+\lfloor x\rfloor\)</span>. Para <span class="math inline">\(x\in[n,n+1)\)</span>, <span class="math inline">\(n\in\mathbb Z\)</span>, <span class="math inline">\(f(x)=x+n\)</span> y su imagen es <span class="math inline">\([2n,2n+1)\)</span>. Los intervalos de imagen son disjuntos, así <span class="math inline">\(f\)</span> es inyectiva. Su inversa, en <span class="math inline">\(B=\bigcup_{n\in\mathbb Z}[2n,2n+1)\)</span>, es <span class="math display">\[f^{-1}(y)=y-\lfloor y/2\rfloor.\]</span> La fórmula no convierte los huecos de <span class="math inline">\(B\)</span> en puntos del dominio.</p>
+<p><strong>(vii)</strong> Se intercambian las dos primeras cifras decimales de <span class="math inline">\(x=0.a_1a_2a_3\ldots\)</span> en <span class="math inline">\([0,1)\)</span>. Para evitar la doble representación de decimales finitos, usamos la expansión que no acaba en una cola infinita de nueves. La permutación de dos cifras conserva esa convención y al aplicarla dos veces se obtiene <span class="math inline">\(x\)</span>. Por tanto <span class="math inline">\(f^{-1}=f\)</span>. Los casos <span class="math inline">\(a_1=a_2\)</span> quedan fijos. Una convención decimal no declarada podría hacer que la misma entrada tuviese imágenes distintas.</p>
+<p><strong>(viii)</strong> <span class="math inline">\(f(x)=x/(1-x^2)\)</span> para <span class="math inline">\(-1&lt;x&lt;1\)</span>. Su derivada <span class="math inline">\((1+x^2)/(1-x^2)^2\)</span> es positiva y sus límites extremos son <span class="math inline">\(-\infty,+\infty\)</span>, de modo que es una biyección sobre <span class="math inline">\(\mathbb R\)</span>. De <span class="math inline">\(yx^2+x-y=0\)</span> se selecciona la raíz que pertenece a <span class="math inline">\((-1,1)\)</span>: <span class="math display">\[f^{-1}(y)=\frac{2y}{1+\sqrt{1+4y^2}},\qquad y\in\mathbb R.\]</span> La racionalización evita la división por <span class="math inline">\(y\)</span> y da directamente valor cero cuando <span class="math inline">\(y=0\)</span>. Para <span class="math inline">\(y\ne0\)</span>, equivale a <span class="math inline">\((\sqrt{1+4y^2}-1)/(2y)\)</span>; la otra raíz queda fuera del dominio original. El valor absoluto de la raíz elegida es menor que uno porque <span class="math inline">\(1+\sqrt{1+4y^2}&gt;2|y|\)</span>.</p>
+<div id="fig-spv4-c12-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 12: Inversas y dominios de imagen">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c12-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C12_assets/E001.png" class="img-fluid figure-img" alt="Capítulo 12: Inversas y dominios de imagen">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c12-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Capítulo 12 · Figura 1. Inversas y dominios de imagen
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e002" class="level2">
+<h2 class="anchored" data-anchor-id="e002">Ejercicio 2 — <code>SPV4-C12-E002</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> describir la gráfica de la inversa en cuatro casos de signo y monotonía.</p>
+<p>La reflexión <span class="math inline">\((x,y)\mapsto(y,x)\)</span> en la diagonal lleva la gráfica de <span class="math inline">\(f\)</span> a la de <span class="math inline">\(f^{-1}\)</span>. El signo de <span class="math inline">\(f\)</span> determina el lado del <strong>dominio</strong> de la inversa, no el signo de sus valores:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Inciso</th>
+<th>Datos de <span class="math inline">\(f\)</span></th>
+<th>Gráfica de <span class="math inline">\(f^{-1}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(i)</td>
+<td>Creciente, positiva</td>
+<td>Creciente, con abscisas positivas</td>
+</tr>
+<tr class="even">
+<td>(ii)</td>
+<td>Creciente, negativa</td>
+<td>Creciente, con abscisas negativas</td>
+</tr>
+<tr class="odd">
+<td>(iii)</td>
+<td>Decreciente, positiva</td>
+<td>Decreciente, con abscisas positivas</td>
+</tr>
+<tr class="even">
+<td>(iv)</td>
+<td>Decreciente, negativa</td>
+<td>Decreciente, con abscisas negativas</td>
+</tr>
+</tbody>
+</table>
+<p>Las ordenadas de la inversa recorren el dominio original de <span class="math inline">\(f\)</span>, sobre cuyo signo no se dan datos. No se afirma que toda la semirrecta correspondiente pertenezca a su dominio.</p>
+</section>
+<section id="e003" class="level2">
+<h2 class="anchored" data-anchor-id="e003">Ejercicio 3 — <code>SPV4-C12-E003</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> probar que la inversa conserva el sentido de monotonía.</p>
+<p>Sean <span class="math inline">\(u&lt;v\)</span> en la imagen y <span class="math inline">\(a=f^{-1}(u)\)</span>, <span class="math inline">\(b=f^{-1}(v)\)</span>. Si <span class="math inline">\(f\)</span> crece, <span class="math inline">\(a\ge b\)</span> implicaría <span class="math inline">\(f(a)\ge f(b)\)</span>, contradiciendo <span class="math inline">\(u&lt;v\)</span>; luego <span class="math inline">\(a&lt;b\)</span>. Si <span class="math inline">\(f\)</span> decrece, <span class="math inline">\(a\le b\)</span> implicaría <span class="math inline">\(f(a)\ge f(b)\)</span>, también imposible; luego <span class="math inline">\(a&gt;b\)</span>. No se requiere continuidad para esta comparación de orden.</p>
+</section>
+<section id="e004" class="level2">
+<h2 class="anchored" data-anchor-id="e004">Ejercicio 4 — <code>SPV4-C12-E004</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> decidir si suma, producto y composición de dos funciones crecientes son crecientes.</p>
+<p><strong>Suma:</strong> sí, en su dominio común: para <span class="math inline">\(x&lt;y\)</span>, sumar <span class="math inline">\(f(x)&lt;f(y)\)</span> y <span class="math inline">\(g(x)&lt;g(y)\)</span> da la desigualdad estricta.</p>
+<p><strong>Producto:</strong> no en general. Con <span class="math inline">\(f=g=x\)</span> en la recta, <span class="math inline">\(fg=x^2\)</span> decrece en la semirrecta negativa. Si ambas funciones fueran positivas, sí se podría comparar <span class="math inline">\(f(x)g(x)&lt;f(y)g(x)&lt;f(y)g(y)\)</span>, pero esa condición adicional no está dada.</p>
+<p><strong>Composición:</strong> sí, siempre que esté definida: <span class="math inline">\(g(x)&lt;g(y)\)</span> y el crecimiento de <span class="math inline">\(f\)</span> dan <span class="math inline">\(f(g(x))&lt;f(g(y))\)</span>. El rango de la función interior debe estar en el dominio de la exterior.</p>
+</section>
+<section id="e005" class="level2">
+<h2 class="anchored" data-anchor-id="e005">Ejercicio 5 — <code>SPV4-C12-E005</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> invertir composiciones y un traslado vertical.</p>
+<p><strong>(a)</strong> Si <span class="math inline">\(g(x)=g(y)\)</span> solo para <span class="math inline">\(x=y\)</span> y <span class="math inline">\(f\)</span> es también inyectiva, <span class="math inline">\(f(g(x))=f(g(y))\)</span> fuerza primero <span class="math inline">\(g(x)=g(y)\)</span> y después <span class="math inline">\(x=y\)</span>. Para deshacer una composición se deshace primero la aplicación exterior: <span class="math display">\[ (f\circ g)^{-1}=g^{-1}\circ f^{-1}.\]</span> Las identidades se comprueban sustituyendo; el dominio de la inversa es <span class="math inline">\(f(g(D_g))\)</span>. En un caso con dominios mayores para <span class="math inline">\(f\)</span>, se restringe su inversa a esa imagen para que <span class="math inline">\(g^{-1}\)</span> esté definida.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(g(x)=1+f(x)\)</span>, la ecuación <span class="math inline">\(y=g(x)\)</span> equivale a <span class="math inline">\(y-1=f(x)\)</span>. Luego <span class="math inline">\(g^{-1}(y)=f^{-1}(y-1)\)</span> en <span class="math inline">\(1+f(D_f)\)</span>.</p>
+</section>
+<section id="e006" class="level2">
+<h2 class="anchored" data-anchor-id="e006">Ejercicio 6 — <code>SPV4-C12-E006</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> caracterizar e invertir <span class="math inline">\(f(x)=(ax+b)/(cx+d)\)</span>.</p>
+<p>Se supone <span class="math inline">\((c,d)\ne(0,0)\)</span>, para que el dominio <span class="math inline">\(D=\{x:cx+d\ne0\}\)</span> no sea vacío. Para <span class="math inline">\(x,y\in D\)</span>, multiplicar cruzado da <span class="math display">\[f(x)=f(y)\iff(ad-bc)(x-y)=0.\]</span> Así <span class="math inline">\(f\)</span> es inyectiva si y solo si <span class="math inline">\(\Delta=ad-bc\ne0\)</span>. Si <span class="math inline">\(\Delta=0\)</span>, es constante en su dominio, que contiene más de un punto. Sin la salvedad sobre <span class="math inline">\((c,d)\)</span>, la función de dominio vacío sería vacuamente inyectiva y el «si y solo si» literal fallaría.</p>
+<p>Cuando <span class="math inline">\(\Delta\ne0\)</span>, resolver <span class="math inline">\(y(cx+d)=ax+b\)</span> da <span class="math display">\[f^{-1}(y)=\frac{dy-b}{a-cy}.\]</span> Si <span class="math inline">\(c\ne0\)</span>, su dominio es <span class="math inline">\(\mathbb R\setminus\{a/c\}\)</span> y el original excluye <span class="math inline">\(-d/c\)</span>. Si <span class="math inline">\(c=0\)</span>, <span class="math inline">\(d\ne0\)</span> y <span class="math inline">\(a\ne0\)</span>, se obtiene la inversa afín <span class="math inline">\((dy-b)/a\)</span> en toda la recta. La comparación anterior prueba inyectividad global entre las dos ramas, no solo monotonía dentro de cada una.</p>
+</section>
+<section id="e007" class="level2">
+<h2 class="anchored" data-anchor-id="e007">Ejercicio 7 — <code>SPV4-C12-E007</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> hallar los intervalos cerrados de inyectividad de cuatro funciones.</p>
+<p>Para <span class="math inline">\(a&lt;b\)</span>, una función continua es inyectiva en <span class="math inline">\([a,b]\)</span> exactamente cuando es estrictamente monótona allí. Se dan las regiones máximas; los intervalos pedidos son todos sus subintervalos cerrados. Los intervalos de un solo punto siempre son inyectivos.</p>
+<p><strong>(i)</strong> <span class="math inline">\(x^3-3x^2\)</span>, con derivada <span class="math inline">\(3x(x-2)\)</span>: regiones <span class="math inline">\((-\infty,0]\)</span>, <span class="math inline">\([0,2]\)</span>, <span class="math inline">\([2,\infty)\)</span>. Un intervalo que atraviese <span class="math inline">\(0\)</span> o <span class="math inline">\(2\)</span> contiene un extremo interior y no es inyectivo.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(x^5+x\)</span>: derivada <span class="math inline">\(5x^4+1&gt;0\)</span>. Todo <span class="math inline">\([a,b]\)</span> sirve.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(1/(1+x^2)\)</span>: crece hasta cero y decrece después. Sirven exactamente los cerrados contenidos en <span class="math inline">\((-\infty,0]\)</span> o en <span class="math inline">\([0,\infty)\)</span>.</p>
+<p><strong>(iv)</strong> <span class="math inline">\((x+1)/(x^2+1)\)</span>: derivada <span class="math inline">\((1-2x-x^2)/(1+x^2)^2\)</span>. Con <span class="math inline">\(\alpha=-1-\sqrt2\)</span>, <span class="math inline">\(\beta=-1+\sqrt2\)</span>, las regiones son <span class="math inline">\((-\infty,\alpha]\)</span>, <span class="math inline">\([\alpha,\beta]\)</span>, <span class="math inline">\([\beta,\infty)\)</span>. No se excluyen los críticos como extremos de un intervalo de inyectividad.</p>
+</section>
+<section id="e008" class="level2">
+<h2 class="anchored" data-anchor-id="e008">Ejercicio 8 — <code>SPV4-C12-E008</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> si <span class="math inline">\(f'(x)=(1+x^3)^{-1/2}\)</span>, probar que su inversa <span class="math inline">\(g\)</span> satisface <span class="math inline">\(g''=\tfrac32g^2\)</span>.</p>
+<p>La expresión real exige <span class="math inline">\(x&gt;-1\)</span>. En un intervalo de ese dominio, <span class="math inline">\(f'&gt;0\)</span> y existe una inversa diferenciable en la imagen. El teorema de inversas da <span class="math display">\[g'(y)=\sqrt{1+g(y)^3}.\]</span> El miembro derecho es diferenciable porque <span class="math inline">\(1+g^3&gt;0\)</span>. Por tanto <span class="math display">\[g''(y)=\frac{3g(y)^2g'(y)}{2\sqrt{1+g(y)^3}}=\frac32g(y)^2.\]</span> Las cancelaciones se hacen con factores estrictamente positivos. La constante aditiva de <span class="math inline">\(f\)</span> solo traslada el dominio de <span class="math inline">\(g\)</span>.</p>
+</section>
+<section id="e009" class="level2">
+<h2 class="anchored" data-anchor-id="e009">Ejercicio 9 — <code>SPV4-C12-E009</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> si <span class="math inline">\(f^{-1}\)</span> es diferenciable con derivada nunca nula, probar que <span class="math inline">\(f\)</span> es diferenciable.</p>
+<p>En el contexto intervalar del teorema, aplíquelo a <span class="math inline">\(g=f^{-1}\)</span>. Es inyectiva, continua por diferenciabilidad y tiene <span class="math inline">\(g'\ne0\)</span>; su inversa <span class="math inline">\(g^{-1}=f\)</span> es diferenciable. Además <span class="math inline">\(f'(x)=1/g'(f(x))\)</span>. Si el dominio de <span class="math inline">\(g\)</span> no es un solo intervalo, la misma prueba se hace localmente: en un intervalo abierto alrededor de cualquier <span class="math inline">\(y\)</span> donde <span class="math inline">\(g\)</span> esté definida y sea diferenciable, su derivada nunca nula tiene un único signo por Darboux. La restricción de <span class="math inline">\(g\)</span> es estrictamente monótona y su imagen contiene un intervalo alrededor de <span class="math inline">\(g(y)\)</span>. La inversa local coincide allí con la inversa global por inyectividad. Así se obtiene la misma conclusión sin exigir un único intervalo global; se conserva la noción usual de diferenciabilidad en un entorno del punto.</p>
+</section>
+<section id="e010" class="level2">
+<h2 class="anchored" data-anchor-id="e010">Ejercicio 10 — <code>SPV4-C12-E010</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> en C10-E017, ¿qué condición adicional sobre <span class="math inline">\(g\)</span> garantiza la diferenciabilidad de <span class="math inline">\(f\)</span>?</p>
+<p>En aquel problema <span class="math inline">\(g\)</span> era diferenciable y sobreyectiva sobre <span class="math inline">\(\mathbb R\)</span>, y <span class="math inline">\(F=f\circ g\)</span> era diferenciable. Una condición suficiente es <span class="math inline">\(g'(x)\ne0\)</span> para todo <span class="math inline">\(x\)</span>. Por Darboux, <span class="math inline">\(g'\)</span> tiene un único signo en la recta; el TVM hace a <span class="math inline">\(g\)</span> estrictamente monótona. Es por tanto una biyección continua con inversa diferenciable, y <span class="math inline">\(f=F\circ g^{-1}\)</span> es diferenciable. La cadena da <span class="math inline">\(f'(y)=F'(g^{-1}(y))/g'(g^{-1}(y))\)</span>. El contraejemplo anterior, <span class="math inline">\(g=x^3\)</span>, <span class="math inline">\(f=|x|\)</span>, falla justamente en <span class="math inline">\(g'(0)=0\)</span>.</p>
+</section>
+<section id="e011" class="level2">
+<h2 class="anchored" data-anchor-id="e011">Ejercicio 11 — <code>SPV4-C12-E011</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> hallar la segunda derivada de una inversa.</p>
+<p>Sea <span class="math inline">\(g=f^{-1}\)</span> y <span class="math inline">\(f'(g(y))\ne0\)</span>. Si <span class="math inline">\(f''\)</span> existe en el punto correspondiente, derivar <span class="math inline">\(g'=1/(f'\circ g)\)</span> da <span class="math display">\[g''(y)=-\frac{f''(g(y))g'(y)}{[f'(g(y))]^2}=-\frac{f''(g(y))}{[f'(g(y))]^3}.\]</span> La derivabilidad de las expresiones se justifica con las hipótesis locales de E012, no con una supuesta división por <span class="math inline">\(f'=0\)</span>.</p>
+</section>
+<section id="e012" class="level2">
+<h2 class="anchored" data-anchor-id="e012">Ejercicio 12 — <code>SPV4-C12-E012</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> si <span class="math inline">\(f'(f^{-1}(y))\ne0\)</span> y existe <span class="math inline">\(f^{(k)}\)</span> allí, demostrar que existe <span class="math inline">\((f^{-1})^{(k)}(y)\)</span>.</p>
+<p>Se mantienen continuidad e inyectividad de <span class="math inline">\(f\)</span> en un intervalo. La existencia de una derivada de orden <span class="math inline">\(k\)</span> en <span class="math inline">\(a=f^{-1}(y)\)</span> se entiende recursivamente: las de órdenes menores están definidas cerca de <span class="math inline">\(a\)</span>, y la de orden <span class="math inline">\(k-1\)</span> es diferenciable en <span class="math inline">\(a\)</span>.</p>
+<p>Para <span class="math inline">\(k=1\)</span> es el teorema de inversas. Si <span class="math inline">\(k\ge2\)</span>, la existencia de <span class="math inline">\(f''(a)\)</span> implica continuidad de <span class="math inline">\(f'\)</span> en <span class="math inline">\(a\)</span>, así <span class="math inline">\(f'\)</span> no se anula en algún entorno de <span class="math inline">\(a\)</span>. La continuidad de la inversa traslada ese entorno a otro de <span class="math inline">\(y\)</span>.</p>
+<p>Una inducción precisa organiza todas las derivadas. Escriba <span class="math inline">\(p_j=f^{(j)}\)</span> y <span class="math inline">\(Q_1(p_1)=1/p_1\)</span>. Si <span class="math display">\[g^{(n)}=Q_n(p_1\circ g,\ldots,p_n\circ g),\]</span> la cadena y <span class="math inline">\(g'=1/(p_1\circ g)\)</span> producen <span class="math display">\[Q_{n+1}(p_1,\ldots,p_{n+1})=\frac1{p_1}\sum_{j=1}^n\frac{\partial Q_n}{\partial p_j}\,p_{j+1}.\]</span> Cada <span class="math inline">\(Q_n\)</span> es una función racional, sin denominadores distintos de potencias de <span class="math inline">\(p_1\)</span>. Hasta el orden <span class="math inline">\(k-1\)</span> las fórmulas están definidas cerca de <span class="math inline">\(y\)</span>; para la última derivación basta que cada <span class="math inline">\(p_j\)</span>, <span class="math inline">\(j\le k-1\)</span>, sea diferenciable en <span class="math inline">\(a\)</span>, lo que garantiza la hipótesis. Así existe <span class="math inline">\(g^{(k)}(y)\)</span>. No se exige continuidad de <span class="math inline">\(f^{(k)}\)</span> ni su existencia en todo un entorno si solo se pide la derivada en el punto.</p>
+</section>
+<section id="e013" class="level2">
+<h2 class="anchored" data-anchor-id="e013">Ejercicio 13 — <code>SPV4-C12-E013</code></h2>
+<p>Referencia: p.&nbsp;240. <strong>Problema:</strong> estudiar el schwarziano de la inversa, con <span class="math inline">\(\mathcal Sf=f'''/f'-\tfrac32(f''/f')^2\)</span>.</p>
+<p><strong>(a)</strong> La existencia de <span class="math inline">\(\mathcal Sf\)</span> incluye las tres derivadas de <span class="math inline">\(f\)</span> y <span class="math inline">\(f'\ne0\)</span>. En un intervalo, Darboux y el TVM hacen a <span class="math inline">\(f\)</span> estrictamente monótona, por tanto inyectiva. E012 hace a <span class="math inline">\(g=f^{-1}\)</span> tres veces diferenciable, y <span class="math inline">\(g'=1/(f'\circ g)\ne0\)</span>. Por tanto <span class="math inline">\(\mathcal Sg\)</span> está definido en todo su dominio interior.</p>
+<p><strong>(b)</strong> Evaluando las derivadas de <span class="math inline">\(f\)</span> en <span class="math inline">\(g(y)\)</span> y abreviándolas como <span class="math inline">\(p,q,r\)</span>, <span class="math display">\[g'=p^{-1},\quad g''=-qp^{-3},\quad g'''=3q^2p^{-5}-rp^{-4}.\]</span> Luego <span class="math display">\[\mathcal Sg(y)=\frac{3q^2}{p^4}-\frac r{p^3}-\frac32\frac{q^2}{p^4}=-\frac{\mathcal Sf(g(y))}{[f'(g(y))]^2}.\]</span> También se obtiene de <span class="math inline">\(\mathcal S(f\circ g)=0\)</span> y la regla de composición de C10-E019; el cálculo anterior verifica independientemente el signo y la potencia del denominador.</p>
+</section>
+<section id="e014" class="level2">
+<h2 class="anchored" data-anchor-id="e014">Ejercicio 14 — <code>SPV4-C12-E014</code></h2>
+<p>Referencia: p.&nbsp;241. <strong>Problema:</strong> construir una función diferenciable con <span class="math inline">\(f(x)^5+f(x)+x=0\)</span> y calcular su derivada de dos modos.</p>
+<p><strong>(a)</strong> Sea <span class="math inline">\(H(t)=-t^5-t\)</span>. Tiene <span class="math inline">\(H'=-5t^4-1&lt;0\)</span> y límites <span class="math inline">\(+\infty,-\infty\)</span> en los extremos de la recta. Es una biyección continua de <span class="math inline">\(\mathbb R\)</span> sobre sí misma. Definir <span class="math inline">\(f=H^{-1}\)</span> da <span class="math inline">\(H(f(x))=x\)</span>, exactamente la ecuación requerida. El teorema de inversas prueba la diferenciabilidad, y también la unicidad de la solución para cada <span class="math inline">\(x\)</span>.</p>
+<p><strong>(b)</strong> Por la fórmula de la inversa, <span class="math inline">\(f'(x)=1/H'(f(x))=-1/[5f(x)^4+1]\)</span>.</p>
+<p><strong>(c)</strong> Puesto que la diferenciabilidad ya se ha probado, derivar la identidad da <span class="math inline">\((5f^4+1)f'+1=0\)</span>, de nuevo la misma fórmula. Derivar implícitamente desde el principio solo daría una condición necesaria y no demostraría existencia ni diferenciabilidad.</p>
+</section>
+<section id="e015" class="level2">
+<h2 class="anchored" data-anchor-id="e015">Ejercicio 15 — <code>SPV4-C12-E015</code></h2>
+<p>Referencia: p.&nbsp;241. <strong>Problema:</strong> determinar las soluciones diferenciables de tres ecuaciones implícitas.</p>
+<p><strong>(a)</strong> En <span class="math inline">\((-1,1)\)</span>, <span class="math inline">\(x^2+f(x)^2=1\)</span> exige <span class="math inline">\(f=\pm\sqrt{1-x^2}\)</span>. Una solución diferenciable es continua y nunca vale cero en ese intervalo; no puede cambiar de signo por valores intermedios. Así hay exactamente dos soluciones en todo el intervalo: la rama positiva y la negativa. No hay valores reales para <span class="math inline">\(|x|&gt;1\)</span>.</p>
+<p><strong>(b)</strong> <span class="math inline">\(x^2+f(x)^2=-1\)</span> no tiene soluciones reales en ningún dominio no vacío, porque el miembro izquierdo es no negativo.</p>
+<p><strong>(c)</strong> Sea <span class="math inline">\(H(t)=t^3-3t\)</span>, con derivada <span class="math inline">\(3(t^2-1)\)</span>. Sus tres restricciones a <span class="math inline">\((-\infty,-1)\)</span>, <span class="math inline">\((-1,1)\)</span> y <span class="math inline">\((1,\infty)\)</span> tienen imágenes respectivas <span class="math inline">\((-\infty,2)\)</span>, <span class="math inline">\((-2,2)\)</span> y <span class="math inline">\((-2,\infty)\)</span>. Sus inversas son las tres ramas diferenciables máximas de <span class="math inline">\(f^3-3f=x\)</span>.</p>
+<p>En un intervalo conectado, cualquier solución diferenciable debe permanecer en una de esas ramas: derivar da <span class="math inline">\(3(f^2-1)f'=1\)</span>, que impide <span class="math inline">\(f=\pm1\)</span>; la continuidad impide saltar entre componentes de <span class="math inline">\(\mathbb R\setminus\{-1,1\}\)</span>. Toda restricción de una rama a un subintervalo de su dominio también sirve. No existe solución diferenciable sobre toda la recta, porque ninguna de las tres imágenes es toda <span class="math inline">\(\mathbb R\)</span>. En <span class="math inline">\(x=2\)</span> hay una raíz regular <span class="math inline">\(f=2\)</span> y una crítica <span class="math inline">\(f=-1\)</span>; en <span class="math inline">\(x=-2\)</span>, una regular <span class="math inline">\(f=-2\)</span> y una crítica <span class="math inline">\(f=1\)</span>. Las raíces regulares están incluidas en las ramas externas correspondientes; las críticas no admiten una solución diferenciable que pase por ellas.</p>
+<div id="fig-spv4-c12-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 12: Tres ramas inversas de la cúbica">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c12-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C12_assets/E015.png" class="img-fluid figure-img" alt="Capítulo 12: Tres ramas inversas de la cúbica">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c12-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Capítulo 12 · Figura 2. Tres ramas inversas de la cúbica
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e016" class="level2">
+<h2 class="anchored" data-anchor-id="e016">Ejercicio 16 — <code>SPV4-C12-E016</code></h2>
+<p>Referencia: p.&nbsp;241. <strong>Problema:</strong> derivar implícitamente el círculo y la cúbica, verificando las dos ramas del círculo.</p>
+<p><strong>(a)</strong> De <span class="math inline">\(f^2+x^2=1\)</span> se obtiene <span class="math inline">\(2ff'+2x=0\)</span> y <span class="math inline">\(f'=-x/f\)</span>, donde <span class="math inline">\(f\ne0\)</span>.</p>
+<p><strong>(b)</strong> Para <span class="math inline">\(f=\sqrt{1-x^2}\)</span>, la derivada directa es <span class="math inline">\(-x/\sqrt{1-x^2}\)</span>; para <span class="math inline">\(f=-\sqrt{1-x^2}\)</span> es <span class="math inline">\(x/\sqrt{1-x^2}\)</span>. Ambas coinciden con <span class="math inline">\(-x/f\)</span>. Se trabaja en <span class="math inline">\((-1,1)\)</span>; no se divide por el valor cero de los extremos.</p>
+<p><strong>(c)</strong> De <span class="math inline">\(f^3-3f=x\)</span> se obtiene <span class="math inline">\(f'=1/[3(f^2-1)]\)</span> en cada rama de E015(c). La identidad derivada vuelve a mostrar por qué <span class="math inline">\(f=\pm1\)</span> impide una derivada finita.</p>
+</section>
+<section id="e017" class="level2">
+<h2 class="anchored" data-anchor-id="e017">Ejercicio 17 — <code>SPV4-C12-E017</code></h2>
+<p>Referencia: p.&nbsp;241. <strong>Problema:</strong> hallar <span class="math inline">\(f',f''\)</span> para <span class="math inline">\(x^3+f(x)^3=7\)</span>, y evaluarlas cuando <span class="math inline">\(f(-1)=2\)</span>.</p>
+<p><strong>(a)</strong> La única solución real es <span class="math inline">\(f(x)=\sqrt[3]{7-x^3}\)</span>, diferenciable salvo en <span class="math inline">\(x=\sqrt[3]7\)</span>. Donde <span class="math inline">\(f\ne0\)</span>, la identidad da <span class="math inline">\(f'=-x^2/f^2\)</span>. Derivando otra vez, <span class="math display">\[f''=-\frac{2x}{f^2}+\frac{2x^2f'}{f^3}=-\frac{2x}{f^2}-\frac{2x^4}{f^5}=-\frac{14x}{f^5},\]</span> porque <span class="math inline">\(f^3+x^3=7\)</span>. En el punto excluido <span class="math inline">\(f=0\)</span>, la primera identidad derivada exigiría <span class="math inline">\(3x^2=0\)</span>, imposible allí.</p>
+<p><strong>(b)</strong> Sustituir <span class="math inline">\(x=-1\)</span>, <span class="math inline">\(f=2\)</span> da <span class="math inline">\(f'(-1)=-1/4\)</span> y <span class="math inline">\(f''(-1)=7/16\)</span>.</p>
+</section>
+<section id="e018" class="level2">
+<h2 class="anchored" data-anchor-id="e018">Ejercicio 18 — <code>SPV4-C12-E018</code></h2>
+<p>Referencia: p.&nbsp;241. <strong>Problema:</strong> hallar la tangente a <span class="math inline">\(3x^3+4x^2y-xy^2+2y^3=4\)</span> en <span class="math inline">\((-1,1)\)</span>.</p>
+<p>El punto pertenece a la curva porque <span class="math inline">\(-3+4+1+2=4\)</span>. Para una rama diferenciable <span class="math inline">\(y=f(x)\)</span>, derivar da <span class="math display">\[9x^2+8xy-y^2+(4x^2-2xy+6y^2)y'=0.\]</span> En <span class="math inline">\((-1,1)\)</span> los coeficientes son <span class="math inline">\(0\)</span> y <span class="math inline">\(12\)</span>; por tanto <span class="math inline">\(y'=0\)</span> y la tangente es <strong><span class="math inline">\(y=1\)</span></strong>.</p>
+<p>Se puede justificar localmente la existencia de la rama, sin inferirla de la identidad derivada: el polinomio <span class="math inline">\(F(x,y)=3x^3+4x^2y-xy^2+2y^3-4\)</span> tiene <span class="math inline">\(F_y=12\)</span> en el punto, y por continuidad es estrictamente positivo en un rectángulo pequeño. En sus bordes horizontales cerca del punto, <span class="math inline">\(F\)</span> tiene signos opuestos; al reducir el ancho se mantienen para todo <span class="math inline">\(x\)</span> del rectángulo. Valores intermedios y crecimiento en <span class="math inline">\(y\)</span> producen una raíz única <span class="math inline">\(y=f(x)\)</span>; las mismas comparaciones producen continuidad. El desarrollo de la diferencia polinómica entre dos puntos de esa rama da el cociente incremental <span class="math inline">\(-F_x/F_y\)</span> en el límite, así la rama es diferenciable. Aquí el denominador no nulo es el dato que valida la tangente.</p>
+</section>
+<section id="e019" class="level2">
+<h2 class="anchored" data-anchor-id="e019">Ejercicio 19 — <code>SPV4-C12-E019</code></h2>
+<p>Referencia: pp.&nbsp;241–242. <strong>Problema:</strong> reescribir una derivación de Leibniz mediante funciones y primas.</p>
+<p>La identidad <span class="math inline">\(y^4+y^3+xy=1\)</span> significa <span class="math display">\[f(x)^4+f(x)^3+xf(x)=1.\]</span> Para una solución diferenciable, la cadena y el producto dan <span class="math display">\[4f(x)^3f'(x)+3f(x)^2f'(x)+f(x)+xf'(x)=0,\]</span> por tanto <span class="math display">\[f'(x)=-\frac{f(x)}{4f(x)^3+3f(x)^2+x}.\]</span> Se exige que el denominador sea no nulo. Si fuese cero en una solución diferenciable, la identidad derivada exigiría <span class="math inline">\(f=0\)</span>, pero la original daría <span class="math inline">\(0=1\)</span>; así en una rama diferenciable ese denominador no puede anularse. La notación <span class="math inline">\(y\)</span> abrevia <span class="math inline">\(f(x)\)</span>, no una constante respecto de <span class="math inline">\(x\)</span>.</p>
+</section>
+<section id="e020" class="level2">
+<h2 class="anchored" data-anchor-id="e020">Ejercicio 20 — <code>SPV4-C12-E020</code></h2>
+<p>Referencia: p.&nbsp;242. <strong>Problema:</strong> escribir el teorema de inversas en notación de Leibniz e interpretar la derivada de una raíz.</p>
+<p>Si <span class="math inline">\(y=f(x)\)</span> y <span class="math inline">\(x=f^{-1}(y)\)</span>, con derivada no nula, <span class="math display">\[\left.\frac{dx}{dy}\right|_{y=f(a)}=\frac1{\left.\frac{dy}{dx}\right|_{x=a}}.\]</span> Los dos cocientes son derivadas de funciones distintas en argumentos correspondientes. Para <span class="math inline">\(x=y^n\)</span>, restringiendo la potencia a una rama inyectiva, <span class="math inline">\(y=x^{1/n}\)</span> y <span class="math display">\[\frac{d}{dx}x^{1/n}=\frac1{ny^{n-1}}=\frac1n x^{1/n-1}.\]</span> Para <span class="math inline">\(n&gt;1\)</span>, el cálculo se hace con <span class="math inline">\(y\ne0\)</span>; si <span class="math inline">\(n\)</span> es par se usa la raíz no negativa y <span class="math inline">\(x&gt;0\)</span>. Si <span class="math inline">\(n\)</span> es impar admite <span class="math inline">\(x&lt;0\)</span> con potencias reales de denominador impar. Para <span class="math inline">\(n=1\)</span> la derivada vale uno también en cero. La notación sugiere una inversión de fracciones, pero su justificación es el teorema, no álgebra de infinitesimales.</p>
+</section>
+<section id="e021" class="level2">
+<h2 class="anchored" data-anchor-id="e021">Ejercicio 21 — <code>SPV4-C12-E021</code></h2>
+<p>Referencia: p.&nbsp;242. <strong>Problema:</strong> si <span class="math inline">\(F'=f\)</span>, hallar una función con derivada <span class="math inline">\(f^{-1}\)</span>.</p>
+<p>Suponga <span class="math inline">\(f\)</span> diferenciable e inyectiva en un intervalo, con <span class="math inline">\(f'\ne0\)</span>, y ponga <span class="math inline">\(g=f^{-1}\)</span>. Para <span class="math inline">\(G(x)=xg(x)-F(g(x))\)</span>, <span class="math display">\[G'(x)=g(x)+xg'(x)-F'(g(x))g'(x)=g(x)+[x-f(g(x))]g'(x)=g(x).\]</span> Así <span class="math inline">\(G'=f^{-1}\)</span> en la imagen de <span class="math inline">\(f\)</span>. El término entre corchetes se anula por la identidad de inversas; la prueba no requiere conocer una fórmula explícita para <span class="math inline">\(g\)</span>.</p>
+</section>
+<section id="e022" class="level2">
+<h2 class="anchored" data-anchor-id="e022">Ejercicio 22 — <code>SPV4-C12-E022</code></h2>
+<p>Referencia: p.&nbsp;242. <strong>Problema:</strong> si <span class="math inline">\(h'(x)=\sin^2(\sin(x+1))\)</span>, <span class="math inline">\(h(0)=3\)</span>, calcular dos derivadas de inversas.</p>
+<p>La derivada es no negativa y se anula exactamente cuando <span class="math inline">\(x+1=k\pi\)</span>: como <span class="math inline">\(\sin(x+1)\in[-1,1]\)</span>, su seno solo es cero si su argumento es cero. Los ceros son aislados. Por el TVM <span class="math inline">\(h\)</span> es no decreciente; no puede ser constante en ningún intervalo porque dentro de él hay un punto con <span class="math inline">\(h'&gt;0\)</span>. E026(a) implica que <span class="math inline">\(h\)</span> es estrictamente creciente y tiene inversa en su imagen.</p>
+<p><strong>(i)</strong> <span class="math inline">\(h^{-1}(3)=0\)</span> y <span class="math inline">\(h'(0)=\sin^2(\sin1)&gt;0\)</span>, luego <span class="math inline">\((h^{-1})'(3)=1/\sin^2(\sin1)\)</span>.</p>
+<p><strong>(ii)</strong> Si <span class="math inline">\(\beta(x)=h(x+1)\)</span>, entonces <span class="math inline">\(\beta(-1)=3\)</span>, y <span class="math inline">\(\beta'(-1)=h'(0)\)</span>. Por tanto <span class="math inline">\((\beta^{-1})'(3)\)</span> tiene el mismo valor. Equivalentemente, <span class="math inline">\(\beta^{-1}(y)=h^{-1}(y)-1\)</span>. No se evalúa <span class="math inline">\(h'\)</span> en <span class="math inline">\(1\)</span>: el argumento correcto procede de la preimagen de <span class="math inline">\(3\)</span>.</p>
+</section>
+<section id="e023" class="level2">
+<h2 class="anchored" data-anchor-id="e023">Ejercicio 23 — <code>SPV4-C12-E023</code></h2>
+<p>Referencia: p.&nbsp;242. <strong>Problema:</strong> estudiar intersecciones de funciones monótonas y construir ejemplos.</p>
+<p><strong>(a)</strong> Si <span class="math inline">\(f\)</span> crece y <span class="math inline">\(g\)</span> decrece, <span class="math inline">\(f-g\)</span> crece estrictamente. Dos ceros distintos darían valores iguales de una función estrictamente creciente, imposible. Puede haber cero o una intersección.</p>
+<p><strong>(b)</strong> Tome <span class="math inline">\(f(x)=x\)</span> y <span class="math inline">\(g(x)=x+[1-\cos(2\pi x)]/(4\pi)\)</span>. Son continuas y crecientes porque <span class="math inline">\(f'=1\)</span> y <span class="math inline">\(g'=1+\tfrac12\sin(2\pi x)\ge1/2&gt;0\)</span>. Su diferencia se anula exactamente cuando <span class="math inline">\(\cos(2\pi x)=1\)</span>, esto es, en los enteros.</p>
+<p><strong>(c)</strong> Tome <span class="math inline">\(f(x)=2+x/\sqrt{1+x^2}\)</span> y <span class="math inline">\(g(x)=-2-x/\sqrt{1+x^2}\)</span>. Sus derivadas son opuestas, la de <span class="math inline">\(f\)</span> es <span class="math inline">\((1+x^2)^{-3/2}&gt;0\)</span>; ambas son continuas. Como <span class="math inline">\(f&gt;1\)</span> y <span class="math inline">\(g&lt;-1\)</span>, no se intersectan. Monotonías opuestas no garantizan por sí solas un cruce.</p>
+</section>
+<section id="e024" class="level2">
+<h2 class="anchored" data-anchor-id="e024">Ejercicio 24 — <code>SPV4-C12-E024</code></h2>
+<p>Referencia: pp.&nbsp;242–243. <strong>Problema:</strong> estudiar funciones continuas iguales a su inversa.</p>
+<p><strong>(a)</strong> <span class="math inline">\(f=f^{-1}\)</span> equivale a <span class="math inline">\(f(f(x))=x\)</span>, y geométricamente a que su gráfica sea simétrica respecto de <span class="math inline">\(y=x\)</span>. Si ya hay <span class="math inline">\(f(a)=a\)</span>, terminamos. Si no, sea <span class="math inline">\(b=f(a)\)</span>. Entonces <span class="math inline">\(f(b)=a\)</span>, de modo que <span class="math inline">\(D(x)=f(x)-x\)</span> tiene valores <span class="math inline">\(b-a\)</span> y <span class="math inline">\(a-b\)</span> en <span class="math inline">\(a,b\)</span>, de signos opuestos. Por continuidad tiene un cero entre ambos. Existe un punto fijo.</p>
+<p><strong>(b)</strong> Tres familias de ejemplos continuos con un único punto fijo son:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Función</th>
+<th>Verificación y punto fijo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(f(x)=c-x\)</span></td>
+<td><span class="math inline">\(f(f(x))=x\)</span>; fijo <span class="math inline">\(c/2\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(f(x)=-ax\)</span> si <span class="math inline">\(x\ge0\)</span>, <span class="math inline">\(f(x)=-x/a\)</span> si <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(a&gt;0\)</span></td>
+<td>Continua y decreciente; las dos ramas se deshacen; único fijo <span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(f(x)=\sqrt[3]{c-x^3}\)</span></td>
+<td><span class="math inline">\(f(f(x))^3=x^3\)</span>; decreciente; único fijo <span class="math inline">\(\sqrt[3]{c/2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>No se exige que esos ejemplos sean diferenciables: el problema pide continuidad. El decrecimiento y E023(a), aplicada a la identidad creciente, prueban la unicidad.</p>
+<p><strong>(c)</strong> Si además <span class="math inline">\(f\)</span> crece, <span class="math inline">\(f(x)&gt;x\)</span> implicaría <span class="math inline">\(x=f(f(x))&gt;f(x)\)</span>, contradicción. Si <span class="math inline">\(f(x)&lt;x\)</span>, aplicar el crecimiento da <span class="math inline">\(x=f(f(x))&lt;f(x)\)</span>, también imposible. Luego <span class="math inline">\(f(x)=x\)</span> en todos los puntos. Aquí no hace falta continuidad.</p>
+</section>
+<section id="e025" class="level2">
+<h2 class="anchored" data-anchor-id="e025">Ejercicio 25 — <code>SPV4-C12-E025</code></h2>
+<p>Referencia: p.&nbsp;243. <strong>Problema:</strong> determinar cuándo la reflexión en la antidiagonal sigue siendo gráfica de una función.</p>
+<p>Reflejar en <span class="math inline">\(y=-x\)</span> envía <span class="math inline">\((x,f(x))\)</span> a <span class="math inline">\((-f(x),-x)\)</span>. La primera coordenada determina un único valor de la segunda si y solo si <span class="math inline">\(f\)</span> es inyectiva. En ese caso la función reflejada es <span class="math display">\[H(u)=-f^{-1}(-u),\qquad u\in-f(D_f).\]</span> Si <span class="math inline">\(f(x_1)=f(x_2)\)</span> con <span class="math inline">\(x_1\ne x_2\)</span>, la reflexión tiene dos ordenadas sobre la misma abscisa y no es una gráfica. No se requiere monotonía ni continuidad.</p>
+</section>
+<section id="e026" class="level2">
+<h2 class="anchored" data-anchor-id="e026">Ejercicio 26 — <code>SPV4-C12-E026</code></h2>
+<p>Referencia: p.&nbsp;243. <strong>Problema:</strong> relacionar crecimiento no estricto, constancia en intervalos y signo de la derivada.</p>
+<p><strong>(a)</strong> Si <span class="math inline">\(f\)</span> es no decreciente pero no estrictamente creciente, hay <span class="math inline">\(a&lt;b\)</span> con <span class="math inline">\(f(a)=f(b)\)</span>. Para <span class="math inline">\(a\le x\le b\)</span>, <span class="math inline">\(f(a)\le f(x)\le f(b)\)</span>, luego <span class="math inline">\(f\)</span> es constante en ese intervalo no degenerado.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(f\)</span> es diferenciable y no decreciente, sus cocientes incrementales son no negativos para ambos signos de <span class="math inline">\(h\)</span>: el numerador y <span class="math inline">\(h\)</span> tienen el mismo signo, o el numerador es cero. El límite da <span class="math inline">\(f'(x)\ge0\)</span>.</p>
+<p><strong>(c)</strong> Si <span class="math inline">\(f'\ge0\)</span> en el interior de un intervalo y <span class="math inline">\(f\)</span> es continua en los extremos incluidos, el TVM entre <span class="math inline">\(a&lt;b\)</span> da <span class="math inline">\(f(b)-f(a)=f'(c)(b-a)\ge0\)</span>. Por tanto <span class="math inline">\(f\)</span> es no decreciente. Son conclusiones no estrictas: una derivada que vale cero en todo un subintervalo produce un tramo constante.</p>
+</section>
+<section id="e027" class="level2">
+<h2 class="anchored" data-anchor-id="e027">Ejercicio 27 — <code>SPV4-C12-E027</code></h2>
+<p>Referencia: p.&nbsp;243. <strong>Problema:</strong> para una función positiva y decreciente en <span class="math inline">\(\mathbb R\)</span>, construir una minorante continua decreciente, y hacer que su cociente con <span class="math inline">\(f\)</span> tienda a cero en <span class="math inline">\(+\infty\)</span>.</p>
+<p><strong>(a)</strong> No se supone continuidad de <span class="math inline">\(f\)</span>. Para cada entero <span class="math inline">\(n\)</span>, ponga <span class="math inline">\(b_n=f(n+1)&gt;0\)</span>. Una esos datos con segmentos: si <span class="math inline">\(n\le x\le n+1\)</span>, <span class="math display">\[g_0(x)=(n+1-x)b_n+(x-n)b_{n+1}.\]</span> Las fórmulas adyacentes coinciden en los enteros, así <span class="math inline">\(g_0\)</span> es continua; como <span class="math inline">\(b_{n+1}&lt;b_n\)</span>, cada segmento tiene pendiente negativa y el conjunto es estrictamente decreciente. Además <span class="math display">\[0&lt;g_0(x)\le b_n=f(n+1)\le f(x).\]</span> Se usa un dato desplazado a la derecha para que toda la interpolación quede por debajo de <span class="math inline">\(f\)</span>, incluso si esta tiene saltos.</p>
+<p><strong>(b)</strong> Sea <span class="math inline">\(D(x)=1+x+\sqrt{1+x^2}\)</span>. Es positiva, mayor que uno y estrictamente creciente, pues <span class="math inline">\(D'=1+x/\sqrt{1+x^2}&gt;0\)</span>. La función <span class="math inline">\(g(x)=g_0(x)/D(x)\)</span> es positiva, continua y estrictamente decreciente: entre dos puntos disminuye el numerador positivo y aumenta el denominador positivo. Cumple <span class="math inline">\(g\le f\)</span> y <span class="math display">\[0&lt;\frac{g(x)}{f(x)}\le\frac1{D(x)}\longrightarrow0\quad(x\to+\infty).\]</span> La construcción funciona en toda la recta y no emplea integrales de una función posiblemente discontinua.</p>
+</section>
+<section id="seccion-25225" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-25225">Apéndice — Representación paramétrica de curvas</h2>
+<p>Para <span class="math inline">\(c(t)=(u(t),v(t))\)</span>, se deriva por componentes: <span class="math inline">\(c'=(u',v')\)</span>. La definición del apéndice produce una recta tangente <span class="math inline">\(c(t_0)+s\,c'(t_0)\)</span> solo si <span class="math inline">\(c'(t_0)\ne(0,0)\)</span>. En puntos de velocidad cero puede existir una tangente <strong>geométrica por límite de secantes</strong>, pero no se deduce de esa fórmula: la distinción permite tratar las cúspides sin declarar que un vector cero define una dirección.</p>
+</section>
+<section id="e001-2" class="level2">
+<h2 class="anchored" data-anchor-id="e001-2">Apéndice, ejercicio 1 — <code>SPV4-C12-A01-E001</code></h2>
+<p>Referencia: p.&nbsp;248. <strong>Problema:</strong> comparar la tangente usual a una gráfica con la definición paramétrica.</p>
+<p><strong>(a)</strong> En la ecuación punto-pendiente <span class="math inline">\(y-f(a)=(x-a)f'(a)\)</span>, poner <span class="math inline">\(s=x-a\)</span> produce todos los puntos <span class="math inline">\((a+s,f(a)+sf'(a))\)</span>, <span class="math inline">\(s\in\mathbb R\)</span>. Recíprocamente todo <span class="math inline">\(s\)</span> corresponde a una abscisa <span class="math inline">\(x=a+s\)</span>; las dos descripciones son idénticas.</p>
+<p><strong>(b)</strong> Para <span class="math inline">\(c(t)=(t,f(t))\)</span>, <span class="math inline">\(c'(a)=(1,f'(a))\ne(0,0)\)</span>. Su recta tangente es <span class="math inline">\((a,f(a))+s(1,f'(a))\)</span>, exactamente la de (a). La coincidencia se verifica incluso cuando <span class="math inline">\(f'(a)=0\)</span>.</p>
+</section>
+<section id="e002-2" class="level2">
+<h2 class="anchored" data-anchor-id="e002-2">Apéndice, ejercicio 2 — <code>SPV4-C12-A01-E002</code></h2>
+<p>Referencia: p.&nbsp;248. <strong>Problema:</strong> estudiar <span class="math inline">\(c(t)=(f(t),t^2)\)</span>, donde <span class="math inline">\(f\)</span> es la función de la figura 21 de C09.</p>
+<p>La figura 21, p.&nbsp;162, define <span class="math inline">\(f(t)=t^2\)</span> para <span class="math inline">\(t&gt;0\)</span> y <span class="math inline">\(-t^2\)</span> para <span class="math inline">\(t\le0\)</span>, esto es <span class="math inline">\(t|t|\)</span>. Entonces <span class="math inline">\(c(t)=(t|t|,t^2)\)</span> y el valor absoluto de su primera coordenada es <span class="math inline">\(\lvert t\cdot|t|\rvert=|t|\cdot|t|=t^2\)</span>. Por tanto sus coordenadas cumplen <span class="math inline">\(y=|x|\)</span> y, al variar <span class="math inline">\(t\)</span>, recorren toda esa gráfica.</p>
+<p>Por cociente incremental, <span class="math inline">\(f'(0)=\lim h|h|/h=0\)</span> y <span class="math inline">\((t^2)'(0)=0\)</span>, así <span class="math inline">\(c'(0)=(0,0)\)</span>. La curva tiene una esquina geométrica en el origen, aunque la parametrización sea diferenciable allí. La velocidad cero impide aplicar la definición de tangente regular.</p>
+</section>
+<section id="e003-2" class="level2">
+<h2 class="anchored" data-anchor-id="e003-2">Apéndice, ejercicio 3 — <code>SPV4-C12-A01-E003</code></h2>
+<p>Referencia: pp.&nbsp;248–249. <strong>Problema:</strong> convertir una parametrización con <span class="math inline">\(u\)</span> inyectiva en una gráfica y hallar sus dos primeras derivadas.</p>
+<p><strong>(a)</strong> Para <span class="math inline">\(x=u(t)\)</span>, el parámetro es <span class="math inline">\(t=u^{-1}(x)\)</span> y la ordenada <span class="math inline">\(v(t)\)</span> es <span class="math inline">\(f(x)=(v\circ u^{-1})(x)\)</span>. La imagen paramétrica coincide con la gráfica de <span class="math inline">\(f\)</span> sobre <span class="math inline">\(u(I)\)</span>.</p>
+<p><strong>(b)</strong> Suponga <span class="math inline">\(u,v\)</span> diferenciables y <span class="math inline">\(u'\ne0\)</span>. El teorema de inversas y la cadena dan <span class="math display">\[f'(u(t))=\frac{v'(t)}{u'(t)}.\]</span> La derivada está evaluada en <strong><span class="math inline">\(x=u(t)\)</span></strong>, no en <span class="math inline">\(t\)</span> salvo que <span class="math inline">\(u\)</span> sea la identidad.</p>
+<p><strong>(c)</strong> Si además existen <span class="math inline">\(u'',v''\)</span>, derive con respecto a <span class="math inline">\(t\)</span> la igualdad anterior: <span class="math inline">\(f''(u(t))u'(t)=[v''u'-v'u'']/(u')^2\)</span>. Dividir por el factor no nulo da <span class="math display">\[f''(u(t))=\frac{u'(t)v''(t)-v'(t)u''(t)}{[u'(t)]^3}.\]</span> La tercera potencia del denominador procede de dos divisiones distintas: la del cociente y la del cambio de variable.</p>
+</section>
+<section id="e004-2" class="level2">
+<h2 class="anchored" data-anchor-id="e004-2">Apéndice, ejercicio 4 — <code>SPV4-C12-A01-E004</code></h2>
+<p>Referencia: p.&nbsp;249. <strong>Problema:</strong> calcular la pendiente de la astroide <span class="math inline">\(x^{2/3}+y^{2/3}=1\)</span> de dos modos.</p>
+<p>Las potencias se interpretan mediante raíces cúbicas reales, así <span class="math inline">\(x^{2/3}=|x|^{2/3}\)</span>. En los puntos con <span class="math inline">\(xy\ne0\)</span>:</p>
+<p><strong>(i)</strong> Derivar implícitamente da <span class="math inline">\(\tfrac23x^{-1/3}+\tfrac23y^{-1/3}y'=0\)</span>, por tanto <span class="math inline">\(y'=-\sqrt[3]{y/x}\)</span>.</p>
+<p><strong>(ii)</strong> Para <span class="math inline">\(x=\cos^3t\)</span>, <span class="math inline">\(y=\sin^3t\)</span>, <span class="math inline">\(x'=-3\cos^2t\sin t\)</span>, <span class="math inline">\(y'=3\sin^2t\cos t\)</span>. Si <span class="math inline">\(\sin t\cos t\ne0\)</span>, <span class="math inline">\(dy/dx=-\tan t\)</span>, que coincide con <span class="math inline">\(-\sqrt[3]{y/x}\)</span>.</p>
+<p>Hay cuatro cúspides: <span class="math inline">\((\pm1,0)\)</span>, <span class="math inline">\((0,\pm1)\)</span>, donde el vector velocidad es cero y las divisiones anteriores no se aplican. Por secantes, las tangentes geométricas en <span class="math inline">\((\pm1,0)\)</span> son horizontales y en <span class="math inline">\((0,\pm1)\)</span> verticales. Por ejemplo, cerca de <span class="math inline">\(t=0\)</span>, <span class="math inline">\(x-1\sim-\tfrac32t^2\)</span>, <span class="math inline">\(y\sim t^3\)</span>, así <span class="math inline">\(y/(x-1)\to0\)</span>; cerca de <span class="math inline">\(t=\pi/2\)</span>, el cociente de los incrementos de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> tiende a cero. No se confunde esa tangente de cúspide con la definición regular del apéndice.</p>
+<div id="fig-spv4-c12-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 12: Astroide y cardioide: tangentes regulares y de cúspide">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c12-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C12_assets/A004_A007.png" class="img-fluid figure-img" alt="Capítulo 12: Astroide y cardioide: tangentes regulares y de cúspide">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c12-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Capítulo 12 · Figura 3. Astroide y cardioide: tangentes regulares y de cúspide
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e005-2" class="level2">
+<h2 class="anchored" data-anchor-id="e005-2">Apéndice, ejercicio 5 — <code>SPV4-C12-A01-E005</code></h2>
+<p>Referencia: p.&nbsp;249. <strong>Problema:</strong> probar que el segmento desde un punto fijo hasta un punto más próximo o más lejano de una curva es perpendicular a su tangente.</p>
+<p>Sea <span class="math inline">\(P=(x_0,y_0)\)</span> y <span class="math inline">\(Q=c(t_0)\)</span>. Se requiere que el extremo de distancia ocurra en un <strong>parámetro interior</strong>, que <span class="math inline">\(c'(t_0)\ne0\)</span> y, para hablar de la recta <span class="math inline">\(PQ\)</span>, que <span class="math inline">\(P\ne Q\)</span>. La distancia cuadrada es <span class="math display">\[D(t)=[u(t)-x_0]^2+[v(t)-y_0]^2.\]</span> Fermat, tanto en mínimo como en máximo, da <span class="math display">\[0=D'(t_0)=2[Q-P]\cdot c'(t_0).\]</span> El vector <span class="math inline">\(Q-P\)</span> es perpendicular al vector director de la tangente; se obtiene lo pedido.</p>
+<p>La condición interior, no explicitada en el enunciado, no puede omitirse: para <span class="math inline">\(c(t)=(t,0)\)</span>, <span class="math inline">\(0\le t\le1\)</span>, y <span class="math inline">\(P=(-1,1)\)</span>, el punto más próximo es <span class="math inline">\(Q=(0,0)\)</span>, en el extremo. Su vector <span class="math inline">\(Q-P=(1,-1)\)</span> tiene producto escalar <span class="math inline">\(1\)</span> con <span class="math inline">\(c'(0)=(1,0)\)</span>, y no es perpendicular. Si <span class="math inline">\(P=Q\)</span>, el producto escalar se anula trivialmente, pero no hay recta determinada por dos puntos distintos.</p>
+</section>
+<section id="e006-2" class="level2">
+<h2 class="anchored" data-anchor-id="e006-2">Apéndice, ejercicio 6 — <code>SPV4-C12-A01-E006</code></h2>
+<p>Referencia: pp.&nbsp;249–250. <strong>Problema:</strong> estudiar tangentes de la curva polar <span class="math inline">\(c(\theta)=f(\theta)(\cos\theta,\sin\theta)\)</span>.</p>
+<p><strong>(a)</strong> Sus componentes derivadas son <span class="math inline">\(x'=f'\cos\theta-f\sin\theta\)</span>, <span class="math inline">\(y'=f'\sin\theta+f\cos\theta\)</span>. Si <span class="math inline">\(x'\ne0\)</span>, la pendiente es <span class="math display">\[\frac{dy}{dx}=\frac{f\cos\theta+f'\sin\theta}{-f\sin\theta+f'\cos\theta}.\]</span> Si <span class="math inline">\(x'=0\)</span> y <span class="math inline">\(y'\ne0\)</span>, la tangente es vertical; si ambos son cero, la definición regular no da una recta.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(f(\theta_0)=0\)</span>, entonces <span class="math inline">\(c'(\theta_0)=f'(\theta_0)(\cos\theta_0,\sin\theta_0)\)</span>. Cuando <span class="math inline">\(f'(\theta_0)\ne0\)</span>, la tangente pasa por el origen con dirección <span class="math inline">\(\theta_0\)</span>, es decir <span class="math inline">\(x\sin\theta_0-y\cos\theta_0=0\)</span>.</p>
+<p>El enunciado solo pide <span class="math inline">\(f\)</span> diferenciable, pero si también <span class="math inline">\(f'(\theta_0)=0\)</span> la velocidad es cero y la conclusión no se sigue de la definición del apéndice. Una curva constante en el origen ni siquiera determina una dirección geométrica. Si hay puntos no nulos de la curva arbitrariamente cerca del parámetro, sus secantes desde el origen tienen dirección <span class="math inline">\(\theta\pmod\pi\)</span>, que tiende a <span class="math inline">\(\theta_0\)</span>; ello sí justifica una tangente geométrica a esa rama, mediante otro argumento.</p>
+<p>Se completan las curvas remitidas a C04, conservando su convención de radios con signo:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Curva anterior</th>
+<th>Tangentes en el origen o precisión pertinente</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Espiral de Arquímedes <span class="math inline">\(r=a\theta\)</span>, <span class="math inline">\(a\ne0\)</span></td>
+<td>Cero en <span class="math inline">\(\theta=0\)</span>, derivada <span class="math inline">\(a\ne0\)</span>; tangente horizontal</td>
+</tr>
+<tr class="even">
+<td>C04-A03-E003(i), <span class="math inline">\(r=a\sin\theta\)</span>, <span class="math inline">\(a\ne0\)</span></td>
+<td>Ceros <span class="math inline">\(k\pi\)</span>; todas las tangentes en el origen son horizontales</td>
+</tr>
+<tr class="odd">
+<td>E003(ii), <span class="math inline">\(r=a\sec\theta\)</span>, <span class="math inline">\(a\ne0\)</span></td>
+<td>No pasa por el origen; es la recta <span class="math inline">\(x=a\)</span>, de tangente vertical</td>
+</tr>
+<tr class="even">
+<td>E003(iii), <span class="math inline">\(r=\cos2\theta\)</span></td>
+<td>Ceros <span class="math inline">\(\pi/4+k\pi/2\)</span>; tangentes <span class="math inline">\(y=x\)</span> y <span class="math inline">\(y=-x\)</span></td>
+</tr>
+<tr class="odd">
+<td>E003(iv), <span class="math inline">\(r=\cos3\theta\)</span></td>
+<td>Ceros <span class="math inline">\(\pi/6+k\pi/3\)</span>; tres direcciones: <span class="math inline">\(\pi/6,\pi/2,5\pi/6\)</span> módulo <span class="math inline">\(\pi\)</span></td>
+</tr>
+<tr class="even">
+<td>E003(v), <span class="math inline">\(r=|\cos2\theta|\)</span></td>
+<td>No es diferenciable en los ceros; por secantes tiene las mismas dos rectas diagonales</td>
+</tr>
+<tr class="odd">
+<td>E003(vi), <span class="math inline">\(r=|\cos3\theta|\)</span></td>
+<td>Tampoco es diferenciable en los ceros; por secantes tiene las mismas tres direcciones del coseno triple</td>
+</tr>
+<tr class="even">
+<td>C04-A03-E010(a–c), lemniscata <span class="math inline">\(r^2=2a^2\cos2\theta\)</span>, <span class="math inline">\(a&gt;0\)</span></td>
+<td>El radio como función del ángulo no es diferenciable en sus extremos de valor cero; las dos tangentes geométricas son <span class="math inline">\(y=\pm x\)</span></td>
+</tr>
+<tr class="odd">
+<td>E010(d), óvalos de Cassini <span class="math inline">\(d_1d_2=b\)</span></td>
+<td>Solo <span class="math inline">\(b=a^2\)</span> pasa por el origen y recupera la lemniscata; los otros óvalos no añaden tangentes allí</td>
+</tr>
+</tbody>
+</table>
+<p>Para la lemniscata, las direcciones de las secantes tienden a <span class="math inline">\(\pm\pi/4\)</span>, o se usa el término cuadrático de <span class="math inline">\((x^2+y^2)^2=2a^2(x^2-y^2)\)</span>. Si <span class="math inline">\(a=0\)</span> en las curvas que dependen de él, la curva degenerada es solo un punto y no una curva con tangente regular. La tabla aplica el resultado cuando sus hipótesis se cumplen y emplea secantes donde no se cumplen.</p>
+<div id="fig-spv4-c12-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 12: Tangentes en el origen de las curvas polares">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c12-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C12_assets/A006.png" class="img-fluid figure-img" alt="Capítulo 12: Tangentes en el origen de las curvas polares">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c12-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Capítulo 12 · Figura 4. Tangentes en el origen de las curvas polares
+</figcaption>
+</figure>
+</div>
+<p><strong>(c)</strong> Si la distancia al origen tiene un máximo en un parámetro interior y el punto es regular, <span class="math inline">\(\|c\|^2=f^2\)</span> da <span class="math inline">\(2ff'=0\)</span>. Si <span class="math inline">\(f\ne0\)</span>, entonces <span class="math inline">\(f'=0\)</span> y <span class="math inline">\(c'=f(-\sin\theta,\cos\theta)\)</span>: la tangente es perpendicular al radio. Equivalentemente <span class="math inline">\(c\cdot c'=0\)</span>, como en A005. Un máximo de distancia cero reduciría la curva al origen y no sería regular; un extremo de parámetro requiere las mismas reservas que A005.</p>
+<p><strong>(d)</strong> En la base radial <span class="math inline">\(e=(\cos\theta,\sin\theta)\)</span> y su perpendicular <span class="math inline">\(e_\perp=(-\sin\theta,\cos\theta)\)</span>, la velocidad es <span class="math inline">\(c'=f'e+fe_\perp\)</span>. Por tanto sus componentes respecto del radio son <span class="math inline">\(f',f\)</span>, y el ángulo de la tangente cumple <span class="math display">\[\tan(\alpha-\theta)=\frac{f(\theta)}{f'(\theta)},\]</span> si <span class="math inline">\(f'\ne0\)</span>. Si <span class="math inline">\(f'=0\)</span> y <span class="math inline">\(f\ne0\)</span>, el ángulo es recto módulo <span class="math inline">\(\pi\)</span> y su tangente trigonométrica no tiene valor finito. Si ambos son cero, no se define <span class="math inline">\(\alpha\)</span> por la velocidad. La forma vectorial también cubre tangentes verticales sin usar una fórmula de resta de tangentes con denominadores nulos.</p>
+</section>
+<section id="e007-2" class="level2">
+<h2 class="anchored" data-anchor-id="e007-2">Apéndice, ejercicio 7 — <code>SPV4-C12-A01-E007</code></h2>
+<p>Referencia: p.&nbsp;250. <strong>Problema:</strong> calcular las pendientes de la cardioide <span class="math inline">\(r=1-\sin\theta\)</span> de dos modos, y estudiar la tangente en el origen.</p>
+<p><strong>(a-i)</strong> Ponga <span class="math inline">\(S=x^2+y^2\)</span> y <span class="math inline">\(A=S+y\)</span>. La ecuación cartesiana es <span class="math inline">\(A^2=S\)</span>. Derivar implícitamente da <span class="math display">\[2A[2x+(2y+1)y']=2x+2yy',\]</span> así <span class="math display">\[y'=\frac{x(1-2A)}{A(2y+1)-y}\]</span> donde el denominador sea no nulo y exista una rama diferenciable.</p>
+<p><strong>(a-ii)</strong> Con <span class="math inline">\(r=1-\sin\theta\)</span>, <span class="math inline">\(r'=-\cos\theta\)</span>, A006(a) da <span class="math display">\[\frac{dy}{dx}=\frac{\cos\theta(1-2\sin\theta)}{2\sin^2\theta-\sin\theta-1}.\]</span> Fuera del origen, <span class="math inline">\(S=r^2\)</span> y <span class="math inline">\(A=r^2+r\sin\theta=r\)</span>, por lo que sustituir <span class="math inline">\(x=r\cos\theta,y=r\sin\theta\)</span> en la fórmula cartesiana reproduce exactamente este cociente.</p>
+<p><strong>(b)</strong> El origen corresponde a <span class="math inline">\(\theta=\pi/2+2k\pi\)</span>, donde <span class="math inline">\(r=r'=0\)</span>: la velocidad también es cero. No se puede aplicar sin más la definición de tangente regular ni dividir las fórmulas anteriores, que son <span class="math inline">\(0/0\)</span>. Para <span class="math inline">\(\theta=\pi/2+h\)</span>, <span class="math display">\[r=1-\cos h,\qquad x=-r\sin h,\qquad y=r\cos h.\]</span> Para <span class="math inline">\(h\ne0\)</span> pequeño, <span class="math inline">\(x/y=-\tan h\to0\)</span>. Las secantes de ambas ramas tienden por tanto a la recta vertical <strong><span class="math inline">\(x=0\)</span></strong>, la tangente geométrica en la cúspide. Hay también dos tangentes verticales regulares cuando <span class="math inline">\(\sin\theta=-1/2\)</span>, en <span class="math inline">\((\pm3\sqrt3/4,-3/4)\)</span>; se distinguen de la cúspide en la lámina A004_A007.</p>
+</section>
+<section id="e008-2" class="level2">
+<h2 class="anchored" data-anchor-id="e008-2">Apéndice, ejercicio 8 — <code>SPV4-C12-A01-E008</code></h2>
+<p>Referencia: pp.&nbsp;250–252. <strong>Problema:</strong> parametrizar la cicloide de una rueda de radio <span class="math inline">\(a&gt;0\)</span>, estudiar su gráfica y tangentes, y expresar su primera media arcada como una inversa. El propio texto indica que las funciones trigonométricas inversas de los últimos incisos se apoyan en C15; aquí se usan con sus valores principales declarados.</p>
+<p><strong>(a)</strong> Tras un giro <span class="math inline">\(t\)</span> en radianes, la rodadura sin deslizamiento traslada el centro a <span class="math inline">\((at,a)\)</span>. El vector desde el centro al punto que partió del contacto con el suelo es <span class="math inline">\((-a\sin t,-a\cos t)\)</span>. Por tanto <span class="math display">\[u(t)=a(t-\sin t),\qquad v(t)=a(1-\cos t).\]</span> La igualdad entre distancia rodada y arco <span class="math inline">\(at\)</span> fija el signo y el factor del primer término.</p>
+<p><strong>(b)</strong> <span class="math inline">\(u'=a(1-\cos t)\ge0\)</span>, con ceros aislados <span class="math inline">\(2k\pi\)</span>. Por el TVM <span class="math inline">\(u\)</span> es no decreciente; no puede ser constante en un intervalo porque su derivada es positiva en algún punto de cualquiera de ellos. E026(a) da crecimiento estricto. Además <span class="math inline">\(|u(t)-at|\le a\)</span>, así su imagen es toda la recta. La cicloide es la gráfica <span class="math inline">\(f=v\circ u^{-1}\)</span>. En los parámetros no cuspídeos, <span class="math display">\[f'(u(t))=\frac{a\sin t}{a(1-\cos t)}=\cot(t/2).\]</span> El argumento es <span class="math inline">\(u(t)\)</span>; escribir <span class="math inline">\(f'(t)\)</span> sin ese cambio confundiría el parámetro con la abscisa. En cada arcada el valor sube hasta altura <span class="math inline">\(2a\)</span> y baja a cero.</p>
+<p><strong>(c)</strong> En los vértices <span class="math inline">\(t=2k\pi\)</span>, tanto <span class="math inline">\(u'\)</span> como <span class="math inline">\(v'\)</span> se anulan. Con <span class="math inline">\(s=t-2k\pi\)</span>, <span class="math display">\[u(t)-2k\pi a=a(s-\sin s),\qquad v(t)=a(1-\cos s).\]</span> Usando <span class="math inline">\(s-\sin s\sim s^3/6\)</span>, <span class="math inline">\(1-\cos s\sim s^2/2\)</span>, se obtiene <span class="math inline">\((u-2k\pi a)/v\to0\)</span>. Estos equivalentes se pueden demostrar por l’Hôpital sucesivo con las derivadas trigonométricas conocidas, sin usar series. Las secantes tienden a la recta vertical <strong><span class="math inline">\(x=2k\pi a\)</span></strong>. Por la izquierda y la derecha la pendiente de la gráfica tiende respectivamente a <span class="math inline">\(-\infty,+\infty\)</span>: no hay derivada real finita en el vértice, y la tangente geométrica no procede del vector velocidad cero.</p>
+<div id="fig-spv4-c12-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 12: Cicloide, pendientes y cambio de rama">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c12-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C12_assets/A008.png" class="img-fluid figure-img" alt="Capítulo 12: Cicloide, pendientes y cambio de rama">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c12-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Capítulo 12 · Figura 5. Cicloide, pendientes y cambio de rama
+</figcaption>
+</figure>
+</div>
+<p><strong>(d)</strong> Sea <span class="math inline">\(y=v(t)\in[0,2a]\)</span>, <span class="math inline">\(\phi=\arccos((a-y)/a)\in[0,\pi]\)</span> y <span class="math inline">\(R=\sqrt{(2a-y)y}\)</span>. Entonces <span class="math inline">\(\cos t=(a-y)/a\)</span> y <span class="math inline">\(a|\sin t|=R\)</span>. Las expresiones correctas para las dos mitades de cada arcada son <span class="math display">\[u(t)=\begin{cases}2k\pi a+a\phi-R,&amp;2k\pi\le t\le(2k+1)\pi,\\2(k+1)\pi a-a\phi+R,&amp;(2k+1)\pi\le t\le2(k+1)\pi.\end{cases}\]</span> En particular, en la primera media arcada, <span class="math inline">\(u=a\phi-R\)</span>.</p>
+<p><strong>Corrección de alcance del enunciado:</strong> la expresión impresa <span class="math inline">\(u=a\arccos((a-v)/a)\pm\sqrt{(2a-v)v}\)</span> no es válida para todo <span class="math inline">\(t\)</span> si <span class="math inline">\(\arccos\)</span> significa su rama principal. En la segunda mitad hace falta reemplazar el término angular por <span class="math inline">\(2\pi a-a\phi\)</span>, y en arcadas posteriores añadir el período espacial. Por ejemplo, en <span class="math inline">\(t=3\pi/2\)</span>, <span class="math inline">\(v=a\)</span> y <span class="math inline">\(u=a(3\pi/2+1)\)</span>, que no es ninguno de <span class="math inline">\(a(\pi/2\pm1)\)</span>. La formulación por ramas demuestra la relación correcta sin atribuir a <span class="math inline">\(\arccos\)</span> un valor principal incompatible.</p>
+<p><strong>(e)</strong> En <span class="math inline">\(0\le t\le\pi\)</span>, <span class="math inline">\(v\)</span> aumenta de <span class="math inline">\(0\)</span> a <span class="math inline">\(2a\)</span> y <span class="math inline">\(u\)</span> de <span class="math inline">\(0\)</span> a <span class="math inline">\(\pi a\)</span>. La fórmula anterior define <span class="math display">\[g(y)=a\arccos\frac{a-y}{a}-\sqrt{(2a-y)y},\qquad 0\le y\le2a.\]</span> Es continua y estrictamente creciente, pues equivale a <span class="math inline">\(u\circ(v|_{[0,\pi]})^{-1}\)</span>. Tiene valores extremos <span class="math inline">\(g(0)=0,g(2a)=\pi a\)</span>, y la primera mitad de la primera arcada es exactamente la gráfica de <span class="math inline">\(g^{-1}\)</span> en <span class="math inline">\([0,\pi a]\)</span>. Como comprobación en el interior, <span class="math display">\[g'(y)=\frac{a}{\sqrt{(2a-y)y}}-\frac{a-y}{\sqrt{(2a-y)y}}=\sqrt{\frac{y}{2a-y}}&gt;0.\]</span> No se fuerza una derivada finita en ambos extremos de <span class="math inline">\(g\)</span>: el comportamiento de la inversa en la cúspide se analiza en (c).</p>
+</section>
+<section id="e009-2" class="level2">
+<h2 class="anchored" data-anchor-id="e009-2">Apéndice, ejercicio 9 — <code>SPV4-C12-A01-E009</code></h2>
+<p>Referencia: p.&nbsp;252. <strong>Problema:</strong> demostrar que una tangente de una curva regular es paralela a la cuerda que une sus extremos.</p>
+<p>Se requiere <span class="math inline">\(P=c(a)\ne Q=c(b)\)</span>, continuidad en <span class="math inline">\([a,b]\)</span>, diferenciabilidad interior y <span class="math inline">\(c'(t)\ne0\)</span> allí, como advierte la pista. Ponga <span class="math inline">\(w=Q-P\ne0\)</span> y <span class="math inline">\(H(t)=\det(c(t)-P,w)\)</span>. Esta función escalar es continua y diferenciable, con <span class="math inline">\(H(a)=H(b)=0\)</span>. Rolle da <span class="math inline">\(\tau\in(a,b)\)</span> con <span class="math display">\[0=H'(\tau)=\det(c'(\tau),w).\]</span> En el plano, determinante cero significa dependencia lineal. Como ambos vectores son no nulos, definen direcciones paralelas: la tangente en <span class="math inline">\(c(\tau)\)</span> es paralela a la cuerda. Es la interpretación geométrica del TVM de Cauchy sin dividir por una componente que pudiera ser cero, así cubre cuerdas verticales.</p>
+<p>Si <span class="math inline">\(P=Q\)</span>, no hay una dirección de cuerda determinada; por ejemplo una circunferencia parametrizada una vuelta completa tiene velocidad no nula pero sus extremos coinciden. No se afirma la conclusión direccional en ese caso. Si se permiten puntos de velocidad cero, Rolle podría seleccionar uno de ellos y tampoco produciría una tangente regular.</p>
+</section>
+<section id="e010-2" class="level2">
+<h2 class="anchored" data-anchor-id="e010-2">Apéndice, ejercicio 10 — <code>SPV4-C12-A01-E010</code></h2>
+<p>Referencia: p.&nbsp;252. <strong>Problema:</strong> probar la equivalencia de límite vectorial por norma y por componentes.</p>
+<p>Sean <span class="math inline">\(c(t)=(u(t),v(t))\)</span> y <span class="math inline">\(L=(l_1,l_2)\)</span>.</p>
+<p><strong>(a)</strong> Por la definición euclídea, <span class="math display">\[\|c(t)-L\|^2=|u(t)-l_1|^2+|v(t)-l_2|^2.\]</span> Cada sumando es no negativo, así <span class="math inline">\(|u-l_1|\le\|c-L\|\)</span> y <span class="math inline">\(|v-l_2|\le\|c-L\|\)</span>. Si la norma es menor que <span class="math inline">\(\varepsilon\)</span> para <span class="math inline">\(0&lt;|t-a|&lt;\delta\)</span>, ambas diferencias también lo son. El límite vectorial implica los dos límites escalares.</p>
+<p><strong>(b)</strong> Recíprocamente, dados los dos límites escalares y <span class="math inline">\(\varepsilon&gt;0\)</span>, elija <span class="math inline">\(\delta_1,\delta_2\)</span> para que cada diferencia sea menor que <span class="math inline">\(\varepsilon/\sqrt2\)</span>. Con <span class="math inline">\(\delta=\min(\delta_1,\delta_2)\)</span>, para <span class="math inline">\(0&lt;|t-a|&lt;\delta\)</span> la suma de cuadrados es menor que <span class="math inline">\(\varepsilon^2\)</span> y la norma menor que <span class="math inline">\(\varepsilon\)</span>. Eso prueba el límite vectorial según la definición por norma. La equivalencia justifica también que el cociente incremental vectorial se calcule componente por componente.</p>
+<hr>
+<p><strong>Cierre:</strong> 27 ejercicios principales y 10 del apéndice desarrollados, con las condiciones de dominio, regularidad y ramas incorporadas. El capítulo siguiente es <strong>13 — Integrales</strong>, que comienza en p.&nbsp;253 (PDF 273).</p>
+<hr>
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-11.html">← Capítulo 11</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-13.html">Capítulo 13 →</a></p>
+</div>
+<p>Soluciones originales de Alevi Peña · Matemática Abierta. <a href="../../../COPYING.FDL">Licencia GFDL 1.3 o posterior</a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

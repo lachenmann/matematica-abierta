@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Capítulo 9 — Derivadas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="spivak-c01.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#e001" id="toc-e001" class="nav-link active" data-scroll-target="#e001">Ejercicio 1 — <code>SPV4-C09-E001</code></a></li>
+  <li><a href="#e002" id="toc-e002" class="nav-link" data-scroll-target="#e002">Ejercicio 2 — <code>SPV4-C09-E002</code></a></li>
+  <li><a href="#e003" id="toc-e003" class="nav-link" data-scroll-target="#e003">Ejercicio 3 — <code>SPV4-C09-E003</code></a></li>
+  <li><a href="#e004" id="toc-e004" class="nav-link" data-scroll-target="#e004">Ejercicio 4 — <code>SPV4-C09-E004</code></a></li>
+  <li><a href="#e005" id="toc-e005" class="nav-link" data-scroll-target="#e005">Ejercicio 5 — <code>SPV4-C09-E005</code></a></li>
+  <li><a href="#e006" id="toc-e006" class="nav-link" data-scroll-target="#e006">Ejercicio 6 — <code>SPV4-C09-E006</code></a></li>
+  <li><a href="#e007" id="toc-e007" class="nav-link" data-scroll-target="#e007">Ejercicio 7 — <code>SPV4-C09-E007</code></a></li>
+  <li><a href="#e008" id="toc-e008" class="nav-link" data-scroll-target="#e008">Ejercicio 8 — <code>SPV4-C09-E008</code></a></li>
+  <li><a href="#e009" id="toc-e009" class="nav-link" data-scroll-target="#e009">Ejercicio 9 — <code>SPV4-C09-E009</code></a></li>
+  <li><a href="#e010" id="toc-e010" class="nav-link" data-scroll-target="#e010">Ejercicio 10 — <code>SPV4-C09-E010</code></a></li>
+  <li><a href="#e011" id="toc-e011" class="nav-link" data-scroll-target="#e011">Ejercicio 11 — <code>SPV4-C09-E011</code></a></li>
+  <li><a href="#e012" id="toc-e012" class="nav-link" data-scroll-target="#e012">Ejercicio 12 — <code>SPV4-C09-E012</code></a></li>
+  <li><a href="#e013" id="toc-e013" class="nav-link" data-scroll-target="#e013">Ejercicio 13 — <code>SPV4-C09-E013</code></a></li>
+  <li><a href="#e014" id="toc-e014" class="nav-link" data-scroll-target="#e014">Ejercicio 14 — <code>SPV4-C09-E014</code></a></li>
+  <li><a href="#e015" id="toc-e015" class="nav-link" data-scroll-target="#e015">Ejercicio 15 — <code>SPV4-C09-E015</code></a></li>
+  <li><a href="#e016" id="toc-e016" class="nav-link" data-scroll-target="#e016">Ejercicio 16 — <code>SPV4-C09-E016</code></a></li>
+  <li><a href="#e017" id="toc-e017" class="nav-link" data-scroll-target="#e017">Ejercicio 17 — <code>SPV4-C09-E017</code></a></li>
+  <li><a href="#e018" id="toc-e018" class="nav-link" data-scroll-target="#e018">Ejercicio 18* — <code>SPV4-C09-E018</code></a></li>
+  <li><a href="#e019" id="toc-e019" class="nav-link" data-scroll-target="#e019">Ejercicio 19 — <code>SPV4-C09-E019</code></a></li>
+  <li><a href="#e020" id="toc-e020" class="nav-link" data-scroll-target="#e020">Ejercicio 20 — <code>SPV4-C09-E020</code></a></li>
+  <li><a href="#e021" id="toc-e021" class="nav-link" data-scroll-target="#e021">Ejercicio 21 — <code>SPV4-C09-E021</code></a></li>
+  <li><a href="#e022" id="toc-e022" class="nav-link" data-scroll-target="#e022">Ejercicio 22 — <code>SPV4-C09-E022</code></a></li>
+  <li><a href="#e023" id="toc-e023" class="nav-link" data-scroll-target="#e023">Ejercicio 23 — <code>SPV4-C09-E023</code></a></li>
+  <li><a href="#e024" id="toc-e024" class="nav-link" data-scroll-target="#e024">Ejercicio 24 — <code>SPV4-C09-E024</code></a></li>
+  <li><a href="#e025" id="toc-e025" class="nav-link" data-scroll-target="#e025">Ejercicio 25 — <code>SPV4-C09-E025</code></a></li>
+  <li><a href="#e026" id="toc-e026" class="nav-link" data-scroll-target="#e026">Ejercicio 26 — <code>SPV4-C09-E026</code></a></li>
+  <li><a href="#e027" id="toc-e027" class="nav-link" data-scroll-target="#e027">Ejercicio 27 — <code>SPV4-C09-E027</code></a></li>
+  <li><a href="#e028" id="toc-e028" class="nav-link" data-scroll-target="#e028">Ejercicio 28 — <code>SPV4-C09-E028</code></a></li>
+  <li><a href="#e029" id="toc-e029" class="nav-link" data-scroll-target="#e029">Ejercicio 29 — <code>SPV4-C09-E029</code></a></li>
+  <li><a href="#e030" id="toc-e030" class="nav-link" data-scroll-target="#e030">Ejercicio 30 — <code>SPV4-C09-E030</code></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 9 — Derivadas</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-08.html">← Capítulo 8</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-10.html">Capítulo 10 →</a></p>
+</div>
+<p>Solucionario explicado de Matemática Abierta · A. Peña</p>
+<p>Problemas procedentes de Michael Spivak, <em>Calculus</em>, 4.ª edición, capítulo 9, pp.&nbsp;163–167 (PDF 183–187). Se conserva el contenido matemático necesario de los enunciados; las soluciones, los ejemplos complementarios y las figuras son propios.</p>
+<p>El punto de partida es el cociente incremental <span class="math display">\[f'(a)=\lim_{h\to0}\frac{f(a+h)-f(a)}h.\]</span> Todos los límites que definen derivadas son finitos y bilaterales, salvo indicación expresa. Las pruebas emplean esta definición y los resultados de límites y continuidad ya disponibles. Las reglas de producto, cociente y cadena se desarrollan en el capítulo siguiente y no se presuponen aquí. Cuando se escribe una igualdad de derivadas, se entiende que la derivada requerida de la función original existe en el punto señalado.</p>
+<section id="e001" class="level2">
+<h2 class="anchored" data-anchor-id="e001">Ejercicio 1 — <code>SPV4-C09-E001</code></h2>
+<p>Referencia: p.&nbsp;163. <strong>Problema:</strong> para <span class="math inline">\(f(x)=1/x\)</span>, (a) obtener <span class="math inline">\(f'(a)\)</span> desde la definición, con <span class="math inline">\(a\ne0\)</span>; (b) demostrar que la tangente solo intersecta la gráfica en su punto de tangencia.</p>
+<section id="solución" class="level3">
+<h3 class="anchored" data-anchor-id="solución">Solución</h3>
+<p><strong>(a)</strong> Restrinja <span class="math inline">\(|h|&lt;|a|/2\)</span>, para que <span class="math inline">\(a+h\ne0\)</span>. Para <span class="math inline">\(h\ne0\)</span>, <span class="math display">\[\frac{1/(a+h)-1/a}{h}=-\frac1{a(a+h)}\longrightarrow-\frac1{a^2}.\]</span> Así <span class="math inline">\(f'(a)=-1/a^2\)</span>.</p>
+<p><strong>(b)</strong> La tangente tiene ecuación <span class="math inline">\(y=1/a-(x-a)/a^2=2/a-x/a^2\)</span>. Una intersección con la gráfica debe tener <span class="math inline">\(x\ne0\)</span> y satisfacer <span class="math display">\[\frac1x=\frac2a-\frac{x}{a^2}\quad\Longleftrightarrow\quad a^2=2ax-x^2\quad\Longleftrightarrow\quad(x-a)^2=0.\]</span> Su única abscisa es <span class="math inline">\(a\)</span>. Que la ecuación tenga una raíz doble expresa el contacto de la recta con la curva; aquí, además, no hay ninguna otra intersección.</p>
+</section>
+</section>
+<section id="e002" class="level2">
+<h2 class="anchored" data-anchor-id="e002">Ejercicio 2 — <code>SPV4-C09-E002</code></h2>
+<p>Referencia: p.&nbsp;163. <strong>Problema:</strong> para <span class="math inline">\(f(x)=1/x^2\)</span>, (a) calcular <span class="math inline">\(f'(a)\)</span> con <span class="math inline">\(a\ne0\)</span>; (b) hallar la otra intersección de la tangente con la gráfica.</p>
+<section id="solución-1" class="level3">
+<h3 class="anchored" data-anchor-id="solución-1">Solución</h3>
+<p><strong>(a)</strong> Para <span class="math inline">\(h\ne0\)</span> suficientemente pequeño, <span class="math display">\[\frac{1/(a+h)^2-1/a^2}{h}=\frac{-2a-h}{a^2(a+h)^2}\longrightarrow-\frac2{a^3}.\]</span></p>
+<p><strong>(b)</strong> La tangente es <span class="math inline">\(y=3/a^2-2x/a^3\)</span>. Igualar con <span class="math inline">\(1/x^2\)</span>, para <span class="math inline">\(x\ne0\)</span>, equivale a <span class="math display">\[2x^3-3ax^2+a^3=(x-a)^2(2x+a)=0.\]</span> Además del contacto en <span class="math inline">\(x=a\)</span>, aparece exactamente <span class="math inline">\(x=-a/2\)</span>. Su ordenada es <span class="math inline">\(4/a^2\)</span> y su signo horizontal es opuesto al de <span class="math inline">\(a\)</span>. La multiplicación por los denominadores no introdujo <span class="math inline">\(x=0\)</span>, que tampoco satisface el polinomio porque <span class="math inline">\(a\ne0\)</span>.</p>
+<div id="fig-spv4-c09-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 9: Dos tangentes: contacto único y segunda intersección">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c09-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C09_assets/E001_E002.png" class="img-fluid figure-img" alt="Capítulo 9: Dos tangentes: contacto único y segunda intersección">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c09-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Capítulo 09 · Figura 1. Dos tangentes: contacto único y segunda intersección
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e003" class="level2">
+<h2 class="anchored" data-anchor-id="e003">Ejercicio 3 — <code>SPV4-C09-E003</code></h2>
+<p>Referencia: p.&nbsp;163. <strong>Problema:</strong> obtener la derivada de <span class="math inline">\(f(x)=\sqrt x\)</span> en <span class="math inline">\(a&gt;0\)</span>.</p>
+<section id="solución-2" class="level3">
+<h3 class="anchored" data-anchor-id="solución-2">Solución</h3>
+<p>Para <span class="math inline">\(h\ne0\)</span> y <span class="math inline">\(a+h&gt;0\)</span>, racionalizar elimina el cociente indeterminado: <span class="math display">\[\frac{\sqrt{a+h}-\sqrt a}{h}=\frac1{\sqrt{a+h}+\sqrt a}\longrightarrow\frac1{2\sqrt a}.\]</span> La continuidad de la raíz justifica el límite. En cero la misma expresión por la derecha vale <span class="math inline">\(1/\sqrt h\)</span> y crece sin cota; no proporciona una derivada real finita, y cero tampoco es un punto interior del dominio.</p>
+</section>
+</section>
+<section id="e004" class="level2">
+<h2 class="anchored" data-anchor-id="e004">Ejercicio 4 — <code>SPV4-C09-E004</code></h2>
+<p>Referencia: p.&nbsp;163. <strong>Problema:</strong> con <span class="math inline">\(S_n(x)=x^n\)</span>, <span class="math inline">\(n\ge1\)</span> entero, conjeturar y demostrar una fórmula para <span class="math inline">\(S_n'\)</span>.</p>
+<section id="solución-3" class="level3">
+<h3 class="anchored" data-anchor-id="solución-3">Solución</h3>
+<p>Los primeros casos sugieren <span class="math inline">\(S_n'(a)=na^{n-1}\)</span>. El binomio lo demuestra: <span class="math display">\[\frac{(a+h)^n-a^n}{h}=na^{n-1}+\sum_{j=2}^{n}\binom nj a^{n-j}h^{j-1}.\]</span> La suma tiene finitos términos y cada uno tiende a cero. Para <span class="math inline">\(n=1\)</span> es vacía y queda <span class="math inline">\(1\)</span>. Por tanto <span class="math display">\[S_n'(x)=nx^{n-1}.\]</span> En <span class="math inline">\(n=1\)</span> se interpreta la fórmula como la constante <span class="math inline">\(1\)</span>, también en cero. Los exponentes que quedan en la suma son no negativos.</p>
+</section>
+</section>
+<section id="e005" class="level2">
+<h2 class="anchored" data-anchor-id="e005">Ejercicio 5 — <code>SPV4-C09-E005</code></h2>
+<p>Referencia: p.&nbsp;163. <strong>Problema:</strong> hallar la derivada de <span class="math inline">\(f(x)=|x|\)</span>.</p>
+<section id="solución-4" class="level3">
+<h3 class="anchored" data-anchor-id="solución-4">Solución</h3>
+<p>En un entorno de cada <span class="math inline">\(a&gt;0\)</span>, <span class="math inline">\(f(x)=x\)</span>, y el cociente incremental vale <span class="math inline">\(1\)</span>; si <span class="math inline">\(a&lt;0\)</span>, <span class="math inline">\(f(x)=-x\)</span> cerca de <span class="math inline">\(a\)</span> y vale <span class="math inline">\(-1\)</span>. En cero el cociente es <span class="math inline">\(|h|/h\)</span>: vale <span class="math inline">\(1\)</span> por la derecha y <span class="math inline">\(-1\)</span> por la izquierda. Así <span class="math display">\[f'(x)=\begin{cases}1,&amp;x&gt;0,\\-1,&amp;x&lt;0,\end{cases}\]</span> y <span class="math inline">\(f'(0)\)</span> no existe. La continuidad de la gráfica en el vértice no iguala las pendientes de sus dos lados.</p>
+</section>
+</section>
+<section id="e006" class="level2">
+<h2 class="anchored" data-anchor-id="e006">Ejercicio 6 — <code>SPV4-C09-E006</code></h2>
+<p>Referencia: p.&nbsp;163. <strong>Problema:</strong> demostrar desde la definición e ilustrar (a) la derivada de <span class="math inline">\(f+c\)</span>; (b) la de <span class="math inline">\(cf\)</span>, para una constante <span class="math inline">\(c\)</span>.</p>
+<section id="solución-5" class="level3">
+<h3 class="anchored" data-anchor-id="solución-5">Solución</h3>
+<p><strong>(a)</strong> Si <span class="math inline">\(g=f+c\)</span>, las dos constantes se cancelan: <span class="math display">\[\frac{g(x+h)-g(x)}h=\frac{f(x+h)-f(x)}h.\]</span> Por tanto <span class="math inline">\(g'(x)=f'(x)\)</span>. Trasladar verticalmente la curva y todas sus secantes no cambia sus pendientes.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(g=cf\)</span>, su cociente es <span class="math inline">\(c[f(x+h)-f(x)]/h\)</span>, cuyo límite es <span class="math inline">\(cf'(x)\)</span>. La multiplicación vertical multiplica por <span class="math inline">\(c\)</span> el ascenso de cada secante y deja intacto su recorrido horizontal. Un <span class="math inline">\(c\)</span> negativo invierte el signo de la pendiente. Para <span class="math inline">\(c=0\)</span>, <span class="math inline">\(g\)</span> es constante y tiene derivada cero incluso en puntos donde <span class="math inline">\(f'\)</span> no exista; en esos puntos no se escribe <span class="math inline">\(0\cdot f'(x)\)</span>.</p>
+<div id="fig-spv4-c09-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 9: Traslación vertical y multiplicación de alturas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c09-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C09_assets/E006.png" class="img-fluid figure-img" alt="Capítulo 9: Traslación vertical y multiplicación de alturas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c09-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Capítulo 09 · Figura 2. Traslación vertical y multiplicación de alturas
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e007" class="level2">
+<h2 class="anchored" data-anchor-id="e007">Ejercicio 7 — <code>SPV4-C09-E007</code></h2>
+<p>Referencia: p.&nbsp;163. <strong>Problema:</strong> para <span class="math inline">\(f(x)=x^3\)</span>, (a–c) evaluar <span class="math inline">\(f'\)</span> en los argumentos indicados; (d) comparar <span class="math inline">\(f'(x^2)\)</span> con la derivada de <span class="math inline">\(g(x)=f(x^2)\)</span>.</p>
+<section id="solución-6" class="level3">
+<h3 class="anchored" data-anchor-id="solución-6">Solución</h3>
+<p>E004 da <span class="math inline">\(f'(u)=3u^2\)</span>. La letra <span class="math inline">\(u\)</span> permite ver qué operación se está haciendo: primero se deriva y después se introduce el argumento.</p>
+<p><strong>(a)</strong> <span class="math inline">\(f'(9)=243\)</span>, <span class="math inline">\(f'(25)=1875\)</span>, <span class="math inline">\(f'(36)=3888\)</span>.</p>
+<p><strong>(b)</strong> <span class="math inline">\(f'(3^2)=243\)</span>, <span class="math inline">\(f'(5^2)=1875\)</span>, <span class="math inline">\(f'(6^2)=3888\)</span>; son los mismos argumentos escritos de otra forma.</p>
+<p><strong>(c)</strong> <span class="math inline">\(f'(a^2)=3a^4\)</span> y <span class="math inline">\(f'(x^2)=3x^4\)</span>.</p>
+<p><strong>(d)</strong> En cambio, <span class="math inline">\(g(x)=x^6\)</span>, de modo que <span class="math inline">\(g'(x)=6x^5\)</span> por E004. La expresión <span class="math inline">\(f'(x^2)\)</span> evalúa una función ya derivada; <span class="math inline">\(g'(x)\)</span> deriva la composición completa. Aquí se obtuvieron ambas sin recurrir a la regla de la cadena.</p>
+</section>
+</section>
+<section id="e008" class="level2">
+<h2 class="anchored" data-anchor-id="e008">Ejercicio 8 — <code>SPV4-C09-E008</code></h2>
+<p>Referencia: p.&nbsp;164. <strong>Problema:</strong> demostrar e ilustrar (a) <span class="math inline">\(g'(x)=f'(x+c)\)</span> si <span class="math inline">\(g(x)=f(x+c)\)</span>; (b) <span class="math inline">\(g'(x)=cf'(cx)\)</span> si <span class="math inline">\(g(x)=f(cx)\)</span>; (c) periodicidad de la derivada de una función diferenciable periódica.</p>
+<section id="solución-7" class="level3">
+<h3 class="anchored" data-anchor-id="solución-7">Solución</h3>
+<p><strong>(a)</strong> La definición en <span class="math inline">\(x\)</span> produce <span class="math display">\[\frac{g(x+h)-g(x)}h=\frac{f((x+c)+h)-f(x+c)}h\longrightarrow f'(x+c).\]</span> La curva se traslada horizontalmente una distancia <span class="math inline">\(-c\)</span>. En puntos correspondientes, las secantes tienen el mismo ascenso y la misma separación horizontal.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(c\ne0\)</span>, ponga <span class="math inline">\(k=ch\)</span>. Entonces <span class="math inline">\(k\to0\)</span> por ambos lados cuando <span class="math inline">\(h\to0\)</span>, incluso si <span class="math inline">\(c&lt;0\)</span>, y <span class="math display">\[\frac{f(cx+ch)-f(cx)}h=c\frac{f(cx+k)-f(cx)}k\longrightarrow cf'(cx).\]</span> La escala horizontal explica el factor: el incremento del argumento de <span class="math inline">\(f\)</span> es <span class="math inline">\(c\)</span> veces el incremento de <span class="math inline">\(x\)</span>. Si <span class="math inline">\(c=0\)</span> y <span class="math inline">\(f(0)\)</span> está definido, <span class="math inline">\(g\)</span> es constante y <span class="math inline">\(g'=0\)</span>, sin requerir que <span class="math inline">\(f'(0)\)</span> exista.</p>
+<div id="fig-spv4-c09-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 9: Traslación y cambio de escala horizontal">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c09-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C09_assets/E008.png" class="img-fluid figure-img" alt="Capítulo 9: Traslación y cambio de escala horizontal">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c09-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Capítulo 09 · Figura 3. Traslación y cambio de escala horizontal
+</figcaption>
+</figure>
+</div>
+<p><strong>(c)</strong> Si <span class="math inline">\(f(x+p)=f(x)\)</span>, con período <span class="math inline">\(p\ne0\)</span>, la función de (a), con <span class="math inline">\(c=p\)</span>, es la propia <span class="math inline">\(f\)</span>. Por ello <span class="math inline">\(f'(x+p)=f'(x)\)</span>. El período se conserva, aunque la derivada podría tener otros períodos adicionales; por ejemplo, una derivada constante.</p>
+</section>
+</section>
+<section id="e009" class="level2">
+<h2 class="anchored" data-anchor-id="e009">Ejercicio 9 — <code>SPV4-C09-E009</code></h2>
+<p>Referencia: p.&nbsp;164. <strong>Problema:</strong> calcular <span class="math inline">\(f'(x)\)</span> y <span class="math inline">\(f'(x+3)\)</span> en tres casos de traslación.</p>
+<section id="solución-8" class="level3">
+<h3 class="anchored" data-anchor-id="solución-8">Solución</h3>
+<p>En los casos donde se da <span class="math inline">\(f(x+3)\)</span>, cambie primero la variable: si <span class="math inline">\(u=x+3\)</span>, entonces <span class="math inline">\(x=u-3\)</span>. Esto identifica la función que realmente hay que derivar.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Inciso y dato</th>
+<th>Función recuperada</th>
+<th><span class="math inline">\(f'(x)\)</span></th>
+<th><span class="math inline">\(f'(x+3)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(i) <span class="math inline">\(f(x)=(x+3)^5\)</span></td>
+<td><span class="math inline">\(f(u)=(u+3)^5\)</span></td>
+<td><span class="math inline">\(5(x+3)^4\)</span></td>
+<td><span class="math inline">\(5(x+6)^4\)</span></td>
+</tr>
+<tr class="even">
+<td>(ii) <span class="math inline">\(f(x+3)=x^5\)</span></td>
+<td><span class="math inline">\(f(u)=(u-3)^5\)</span></td>
+<td><span class="math inline">\(5(x-3)^4\)</span></td>
+<td><span class="math inline">\(5x^4\)</span></td>
+</tr>
+<tr class="odd">
+<td>(iii) <span class="math inline">\(f(x+3)=(x+5)^7\)</span></td>
+<td><span class="math inline">\(f(u)=(u+2)^7\)</span></td>
+<td><span class="math inline">\(7(x+2)^6\)</span></td>
+<td><span class="math inline">\(7(x+5)^6\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>E004 y E008(a) justifican las derivadas de la tabla. La evaluación final suma tres al argumento de <span class="math inline">\(f'\)</span>, no a su valor.</p>
+</section>
+</section>
+<section id="e010" class="level2">
+<h2 class="anchored" data-anchor-id="e010">Ejercicio 10 — <code>SPV4-C09-E010</code></h2>
+<p>Referencia: p.&nbsp;164. <strong>Problema:</strong> interpretar <span class="math inline">\(f'(x)\)</span> en (i) <span class="math inline">\(f(x)=g(t+x)\)</span>; (ii) <span class="math inline">\(f(t)=g(t+x)\)</span>, manteniendo fijo el parámetro que no es la variable de <span class="math inline">\(f\)</span>.</p>
+<section id="solución-9" class="level3">
+<h3 class="anchored" data-anchor-id="solución-9">Solución</h3>
+<p><strong>(i)</strong> Con <span class="math inline">\(t\)</span> fijo, <span class="math inline">\(f(u)=g(t+u)\)</span>, y E008(a) da <span class="math inline">\(f'(x)=g'(t+x)\)</span>.</p>
+<p><strong>(ii)</strong> Con el desplazamiento <span class="math inline">\(x\)</span> fijo, la relación define <span class="math inline">\(f(u)=g(u+x)\)</span>. Su derivada en un argumento <span class="math inline">\(u\)</span> es <span class="math inline">\(g'(u+x)\)</span>. Evaluarla en <span class="math inline">\(u=x\)</span> da <span class="math inline">\(f'(x)=g'(2x)\)</span>.</p>
+<p>La repetición de la letra <span class="math inline">\(x\)</span> puede confundir el papel de parámetro con el de argumento de evaluación. Escribiendo <span class="math inline">\(f_p(u)=g(u+p)\)</span> queda <span class="math inline">\(f_p'(p)=g'(2p)\)</span>: al formar el cociente incremental, <span class="math inline">\(p\)</span> no cambia. Derivar la función <span class="math inline">\(u\mapsto g(2u)\)</span> sería otra tarea y produciría <span class="math inline">\(2g'(2u)\)</span>.</p>
+</section>
+</section>
+<section id="e011" class="level2">
+<h2 class="anchored" data-anchor-id="e011">Ejercicio 11 — <code>SPV4-C09-E011</code></h2>
+<p>Referencia: p.&nbsp;164. <strong>Problema:</strong> (a) comparar <span class="math inline">\(s'=ks\)</span> con una caída no trivial <span class="math inline">\(s(t)=ct^2\)</span>; (b-i–ii) verificar aceleración constante y la relación velocidad–distancia para <span class="math inline">\(s(t)=(A/2)t^2\)</span>; (c) calcular tiempos, velocidad final y posición a media velocidad para una caída de <span class="math inline">\(400\)</span> pies, con <span class="math inline">\(A=32\)</span> pies/s².</p>
+<section id="solución-10" class="level3">
+<h3 class="anchored" data-anchor-id="solución-10">Solución</h3>
+<p><strong>(a)</strong> Si <span class="math inline">\(c\ne0\)</span>, entonces <span class="math inline">\(s'(t)=2ct\)</span>. La proporcionalidad con constante <span class="math inline">\(k\)</span> exigiría <span class="math inline">\(2ct=kct^2\)</span>, y para <span class="math inline">\(t&gt;0\)</span> se obtendría <span class="math inline">\(k=2/t\)</span>, que no puede ser constante en un intervalo de tiempos. El movimiento trivial <span class="math inline">\(c=0\)</span> sí satisface ambas ecuaciones; se excluye al hablar de una caída efectiva. Esta es la incompatibilidad matemática solicitada, sin añadir una atribución histórica independiente.</p>
+<p><strong>(b-i)</strong> E004 y E006 dan <span class="math inline">\(s'(t)=At\)</span>, y una nueva aplicación de la definición da <span class="math inline">\(s''(t)=A\)</span>.</p>
+<p><strong>(b-ii)</strong> <span class="math inline">\([s'(t)]^2=A^2t^2=2A[(A/2)t^2]=2As(t)\)</span>.</p>
+<p><strong>(c)</strong> Para <span class="math inline">\(t\ge0\)</span>, <span class="math inline">\(s(t)=16t^2\)</span>. El impacto en el suelo se produce cuando <span class="math inline">\(16t^2=400\)</span>, esto es, a los <span class="math inline">\(5\)</span> segundos; la velocidad hacia abajo es <span class="math inline">\(s'(5)=32\cdot5=160\)</span> pies/s. La mitad de esa velocidad se alcanza en <span class="math inline">\(t=5/2\)</span> s, cuando la caída recorrida es <span class="math inline">\(16(5/2)^2=100\)</span> pies. La altura restante sobre el suelo es entonces <span class="math inline">\(400-100=300\)</span> pies. Se distingue la distancia caída de la altura: son funciones diferentes. Los cálculos corresponden al modelo ideal dado, con inicio en reposo y sin resistencia.</p>
+</section>
+</section>
+<section id="e012" class="level2">
+<h2 class="anchored" data-anchor-id="e012">Ejercicio 12 — <code>SPV4-C09-E012</code></h2>
+<p>Referencia: p.&nbsp;164. <strong>Problema:</strong> posiciones <span class="math inline">\(a(t),b(t)\)</span> y límite espacial de velocidad <span class="math inline">\(L\)</span>. (a) expresar que A circula al límite; (b) probarlo para B si <span class="math inline">\(b(t)=a(t-1)\)</span>; (c) determinar cuándo se conserva si <span class="math inline">\(b(t)=a(t)-d\)</span>, con <span class="math inline">\(d&gt;0\)</span> constante.</p>
+<section id="solución-11" class="level3">
+<h3 class="anchored" data-anchor-id="solución-11">Solución</h3>
+<p><strong>(a)</strong> En el sentido creciente de la carretera, la ecuación es <span class="math inline">\(a'(t)=L(a(t))\)</span>. El límite se evalúa en la posición, no en el tiempo. Si se permitieran ambos sentidos, la rapidez se expresaría como <span class="math inline">\(|a'(t)|\)</span>; aquí se mantiene la orientación implícita en el recorrido.</p>
+<p><strong>(b)</strong> E008(a) da <span class="math inline">\(b'(t)=a'(t-1)=L(a(t-1))=L(b(t))\)</span>. Cada automóvil atraviesa cada posición con la velocidad prescrita allí, aunque en momentos distintos. La afirmación se aplica a tiempos para los que ambas posiciones están definidas.</p>
+<p><strong>(c)</strong> Ahora <span class="math inline">\(b'(t)=a'(t)\)</span> por E006(a). Así B circula al límite exactamente cuando <span class="math display">\[L(a(t)-d)=L(a(t))\quad\text{para todos los tiempos del recorrido}.\]</span> Esta es la condición necesaria y suficiente sobre las posiciones efectivamente visitadas. Que <span class="math inline">\(L\)</span> sea constante o tenga período <span class="math inline">\(d\)</span> en toda la carretera es suficiente, pero no necesario fuera de esas posiciones. Una distancia fija no equivale, en general, a un retraso temporal fijo.</p>
+</section>
+</section>
+<section id="e013" class="level2">
+<h2 class="anchored" data-anchor-id="e013">Ejercicio 13 — <code>SPV4-C09-E013</code></h2>
+<p>Referencia: p.&nbsp;165. <strong>Problema:</strong> pegar <span class="math inline">\(f\)</span> a la izquierda de <span class="math inline">\(a\)</span> y <span class="math inline">\(g\)</span> a su derecha, suponiendo <span class="math inline">\(f(a)=g(a)\)</span> y derivadas laterales coincidentes.</p>
+<section id="solución-12" class="level3">
+<h3 class="anchored" data-anchor-id="solución-12">Solución</h3>
+<p>Sea <span class="math inline">\(h(x)=f(x)\)</span> para <span class="math inline">\(x\le a\)</span> y <span class="math inline">\(h(x)=g(x)\)</span> para <span class="math inline">\(x\ge a\)</span>. La igualdad central hace consistente la definición. El cociente <span class="math inline">\([h(a+t)-h(a)]/t\)</span> es el de <span class="math inline">\(f\)</span> si <span class="math inline">\(t&lt;0\)</span> y el de <span class="math inline">\(g\)</span> si <span class="math inline">\(t&gt;0\)</span>. Sus límites laterales son el mismo número <span class="math inline">\(m\)</span> por hipótesis. Para una tolerancia <span class="math inline">\(\varepsilon\)</span>, tome el menor de los dos radios que controlan esos límites: cubre todos los <span class="math inline">\(t\ne0\)</span> pequeños. Por tanto <span class="math inline">\(h'(a)=m\)</span>. Basta la existencia de las derivadas laterales mencionadas; no se requiere diferenciabilidad de cada función a ambos lados.</p>
+</section>
+</section>
+<section id="e014" class="level2">
+<h2 class="anchored" data-anchor-id="e014">Ejercicio 14 — <code>SPV4-C09-E014</code></h2>
+<p>Referencia: p.&nbsp;165. <strong>Problema:</strong> probar diferenciabilidad en cero de <span class="math inline">\(f(x)=x^2\)</span> para <span class="math inline">\(x\in\mathbb Q\)</span> y <span class="math inline">\(f(x)=0\)</span> para <span class="math inline">\(x\notin\mathbb Q\)</span>.</p>
+<section id="solución-13" class="level3">
+<h3 class="anchored" data-anchor-id="solución-13">Solución</h3>
+<p>Se tiene <span class="math inline">\(f(0)=0\)</span>. Para <span class="math inline">\(h\ne0\)</span>, el cociente <span class="math inline">\(f(h)/h\)</span> vale <span class="math inline">\(h\)</span> si <span class="math inline">\(h\)</span> es racional y cero si es irracional. En ambos casos su módulo es menor o igual que <span class="math inline">\(|h|\)</span>, por lo que tiende a cero. Así <span class="math inline">\(f'(0)=0\)</span>. El argumento controla juntos los dos tipos de puntos; no basta calcular límites separados en dos listas particulares.</p>
+<p>Como contraste, en cualquier <span class="math inline">\(a\ne0\)</span> los valores racionales se aproximan a <span class="math inline">\(a^2\)</span> y los irracionales a cero. La densidad hace que <span class="math inline">\(f\)</span> sea discontinua allí, y por tanto no diferenciable. La derivada en un punto no exige continuidad en los puntos vecinos.</p>
+</section>
+</section>
+<section id="e015" class="level2">
+<h2 class="anchored" data-anchor-id="e015">Ejercicio 15 — <code>SPV4-C09-E015</code></h2>
+<p>Referencia: p.&nbsp;165. <strong>Problema:</strong> (a) probar diferenciabilidad en cero si <span class="math inline">\(|f(x)|\le x^2\)</span>; (b) dar una propiedad de <span class="math inline">\(g\)</span> que permita reemplazar esa cota por <span class="math inline">\(|g(x)|\)</span>.</p>
+<section id="solución-14" class="level3">
+<h3 class="anchored" data-anchor-id="solución-14">Solución</h3>
+<p><strong>(a)</strong> La cota en cero obliga a <span class="math inline">\(f(0)=0\)</span>. Para <span class="math inline">\(h\ne0\)</span>, <span class="math display">\[\left|\frac{f(h)-f(0)}h\right|\le|h|\longrightarrow0,\]</span> y <span class="math inline">\(f'(0)=0\)</span>.</p>
+<p><strong>(b)</strong> Sirve <span class="math inline">\(g(0)=g'(0)=0\)</span>. La primera igualdad obliga a <span class="math inline">\(f(0)=0\)</span>, y la segunda significa que <span class="math inline">\(g(h)/h\to0\)</span>. Por tanto <span class="math display">\[\left|\frac{f(h)}h\right|\le\left|\frac{g(h)}h\right|\longrightarrow0.\]</span> La condición puede formularse directamente como <span class="math inline">\(g(0)=0\)</span> y <span class="math inline">\(|g(h)|/|h|\to0\)</span>. No basta que <span class="math inline">\(g\)</span> sea simplemente continua ni que se anule en cero: <span class="math inline">\(g(x)=|x|\)</span> permitiría elegir <span class="math inline">\(f(x)=|x|\)</span>, que no tiene derivada en cero.</p>
+</section>
+</section>
+<section id="e016" class="level2">
+<h2 class="anchored" data-anchor-id="e016">Ejercicio 16 — <code>SPV4-C09-E016</code></h2>
+<p>Referencia: p.&nbsp;165. <strong>Problema:</strong> con <span class="math inline">\(\alpha&gt;1\)</span> y <span class="math inline">\(|f(x)|\le|x|^\alpha\)</span>, probar diferenciabilidad en cero.</p>
+<section id="solución-15" class="level3">
+<h3 class="anchored" data-anchor-id="solución-15">Solución</h3>
+<p>La cota da <span class="math inline">\(f(0)=0\)</span> y <span class="math display">\[\left|\frac{f(h)}h\right|\le|h|^{\alpha-1}.\]</span> El exponente es positivo. Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, sirve <span class="math inline">\(\delta=\varepsilon^{1/(\alpha-1)}\)</span>: si <span class="math inline">\(0&lt;|h|&lt;\delta\)</span>, el cociente tiene módulo menor que <span class="math inline">\(\varepsilon\)</span>. Así <span class="math inline">\(f'(0)=0\)</span>. Se usa la construcción de potencias reales positivas y su compatibilidad con el orden, ya disponible; no se deriva <span class="math inline">\(x^\alpha\)</span>. La restricción estricta importa: para <span class="math inline">\(\alpha=1\)</span>, <span class="math inline">\(f(x)=|x|\)</span> refuta la conclusión.</p>
+</section>
+</section>
+<section id="e017" class="level2">
+<h2 class="anchored" data-anchor-id="e017">Ejercicio 17 — <code>SPV4-C09-E017</code></h2>
+<p>Referencia: p.&nbsp;165. <strong>Problema:</strong> con <span class="math inline">\(0&lt;\beta&lt;1\)</span>, <span class="math inline">\(f(0)=0\)</span> y <span class="math inline">\(|f(x)|\ge|x|^\beta\)</span>, probar que <span class="math inline">\(f\)</span> no es diferenciable en cero.</p>
+<section id="solución-16" class="level3">
+<h3 class="anchored" data-anchor-id="solución-16">Solución</h3>
+<p>Para <span class="math inline">\(h\ne0\)</span>, <span class="math display">\[\left|\frac{f(h)}h\right|\ge\frac1{|h|^{1-\beta}},\]</span> y la derecha supera cualquier número positivo cuando <span class="math inline">\(h\)</span> es suficientemente pequeño. Un cociente con límite finito <span class="math inline">\(m\)</span> quedaría acotado por <span class="math inline">\(|m|+1\)</span> cerca de cero. La cota inferior lo impide. No se concluye que exista una derivada infinita de signo determinado: el módulo puede crecer mientras el signo cambia.</p>
+</section>
+</section>
+<section id="e018" class="level2">
+<h2 class="anchored" data-anchor-id="e018">Ejercicio 18* — <code>SPV4-C09-E018</code></h2>
+<p>Referencia: p.&nbsp;165. <strong>Problema:</strong> sea <span class="math inline">\(f(x)=0\)</span> para irracionales y <span class="math inline">\(f(p/q)=1/q\)</span> para racionales en forma reducida, con <span class="math inline">\(q&gt;0\)</span>. Probar que no es diferenciable en ningún punto.</p>
+<section id="solución-17" class="level3">
+<h3 class="anchored" data-anchor-id="solución-17">Solución</h3>
+<p>En un racional <span class="math inline">\(a=p/q\)</span>, <span class="math inline">\(f(a)&gt;0\)</span>. Irracionales arbitrariamente próximos tienen valor cero, de modo que <span class="math inline">\(f\)</span> no es continua en <span class="math inline">\(a\)</span>. La diferenciabilidad implica continuidad y queda descartada.</p>
+<p>Sea ahora <span class="math inline">\(a\)</span> irracional, de modo que <span class="math inline">\(f(a)=0\)</span>. Si el incremento <span class="math inline">\(h\ne0\)</span> es racional, <span class="math inline">\(a+h\)</span> es irracional y el cociente incremental vale cero. Tales incrementos pueden ser arbitrariamente pequeños, así que una posible derivada tendría que ser cero.</p>
+<p>Construyamos otra aproximación. Para <span class="math inline">\(n\ge1\)</span>, sea <span class="math display">\[r_n=\frac{\lfloor10^na\rfloor}{10^n},\qquad h_n=r_n-a.\]</span> La irracionalidad asegura <span class="math inline">\(0&lt;a-r_n&lt;10^{-n}\)</span> y <span class="math inline">\(h_n\ne0\)</span>. Al reducir <span class="math inline">\(r_n\)</span> a una fracción, su denominador <span class="math inline">\(q_n\)</span> no supera <span class="math inline">\(10^n\)</span>. Por tanto <span class="math display">\[\left|\frac{f(a+h_n)-f(a)}{h_n}\right|=\frac1{q_n|r_n-a|}&gt;1.\]</span> Además <span class="math inline">\(h_n\to0\)</span>. Estos cocientes no pueden tender a cero, contradiciendo el único candidato posible. Así tampoco hay derivada en irracionales. El uso de la parte entera funciona para <span class="math inline">\(a\)</span> negativo y evita ambigüedades de representación decimal.</p>
+</section>
+</section>
+<section id="e019" class="level2">
+<h2 class="anchored" data-anchor-id="e019">Ejercicio 19 — <code>SPV4-C09-E019</code></h2>
+<p>Referencia: p.&nbsp;165. <strong>Problema:</strong> (a) si <span class="math inline">\(f\le g\le H\)</span>, coinciden en <span class="math inline">\(a\)</span> y <span class="math inline">\(f'(a)=H'(a)\)</span>, probar diferenciabilidad de <span class="math inline">\(g\)</span> en <span class="math inline">\(a\)</span>; (b) mostrar la necesidad de la igualdad central.</p>
+<section id="solución-18" class="level3">
+<h3 class="anchored" data-anchor-id="solución-18">Solución</h3>
+<p><strong>(a)</strong> Para un incremento <span class="math inline">\(t&gt;0\)</span>, restar el valor central común y dividir por <span class="math inline">\(t\)</span> conserva el orden entre los tres cocientes. Para <span class="math inline">\(t&lt;0\)</span> lo invierte. En ambos casos el cociente de <span class="math inline">\(g\)</span> queda entre los de <span class="math inline">\(f\)</span> y <span class="math inline">\(H\)</span>, cuyos límites son el mismo número <span class="math inline">\(m\)</span>. Un mismo radio que los acerque a <span class="math inline">\(m\)</span> en menos de <span class="math inline">\(\varepsilon\)</span> controla también el de <span class="math inline">\(g\)</span>. Así <span class="math inline">\(g'(a)=m=f'(a)=H'(a)\)</span>. La inversión para incrementos negativos es parte de la prueba.</p>
+<p><strong>(b)</strong> Tome <span class="math inline">\(f\equiv-1\)</span>, <span class="math inline">\(H\equiv1\)</span> y <span class="math inline">\(g(x)=\min\{|x-a|,1\}\)</span>. El orden global se cumple y las dos funciones extremas tienen derivada cero. Sin embargo, cerca de <span class="math inline">\(a\)</span> la función intermedia es <span class="math inline">\(|x-a|\)</span>, cuyas derivadas laterales son <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span>. Ni siquiera la continuidad adicional de <span class="math inline">\(g\)</span> rescata la conclusión al perderse la coincidencia central.</p>
+</section>
+</section>
+<section id="e020" class="level2">
+<h2 class="anchored" data-anchor-id="e020">Ejercicio 20 — <code>SPV4-C09-E020</code></h2>
+<p>Referencia: pp.&nbsp;165–166. <strong>Problema:</strong> para un polinomio <span class="math inline">\(f\)</span>, estudiar el defecto respecto de su tangente, <span class="math display">\[d(x)=f(x)-f(a)-f'(a)(x-a).\]</span> (a) factorizarlo para <span class="math inline">\(f(x)=x^4\)</span>; (b) demostrar que siempre es divisible por <span class="math inline">\((x-a)^2\)</span>, justificando la cadena de preguntas del enunciado.</p>
+<section id="solución-19" class="level3">
+<h3 class="anchored" data-anchor-id="solución-19">Solución</h3>
+<p><strong>(a)</strong> Por E004, <span class="math inline">\(f'(a)=4a^3\)</span>. Entonces <span class="math display">\[d(x)=x^4-4a^3x+3a^4=(x-a)^2(x^2+2ax+3a^2).\]</span> En <span class="math inline">\(a=0\)</span> el defecto es <span class="math inline">\(x^4\)</span>, y el factor cuadrático restante es <span class="math inline">\(x^2\)</span>: el contacto puede tener orden mayor que dos.</p>
+<p><strong>(b)</strong> El polinomio <span class="math inline">\(f(x)-f(a)\)</span> se anula en <span class="math inline">\(a\)</span>, así que el teorema del factor da <span class="math inline">\(f(x)-f(a)=(x-a)q(x)\)</span> para cierto polinomio <span class="math inline">\(q\)</span>. Por tanto <span class="math display">\[d(x)=(x-a)[q(x)-f'(a)].\]</span> Ponga <span class="math inline">\(H(x)=q(x)-f'(a)\)</span>, polinomio definido también en <span class="math inline">\(a\)</span>. Para <span class="math inline">\(x\ne a\)</span>, <span class="math display">\[H(x)=\frac{d(x)}{x-a}=\frac{f(x)-f(a)}{x-a}-f'(a)\longrightarrow0.\]</span> La continuidad de <span class="math inline">\(H\)</span> obliga a <span class="math inline">\(H(a)=0\)</span>. Una segunda aplicación del teorema del factor da <span class="math inline">\(H(x)=(x-a)r(x)\)</span> y, por ello, <span class="math inline">\(d(x)=(x-a)^2r(x)\)</span>. Se han justificado los dos factores por separado, incluida la extensión polinómica del cociente al centro.</p>
+<p>La existencia de <span class="math inline">\(f'(a)\)</span> tampoco requiere una regla posterior: si <span class="math inline">\(f(x)=\sum_{j=0}^N c_jx^j\)</span>, el cociente incremental es la suma finita de los cocientes de sus términos. E004 y las reglas de límites dan <span class="math inline">\(f'(a)=\sum_{j=1}^N jc_ja^{j-1}\)</span>. El argumento incluye constantes y el polinomio cero, cuyo defecto es cero y es divisible por cualquier polinomio no nulo.</p>
+</section>
+</section>
+<section id="e021" class="level2">
+<h2 class="anchored" data-anchor-id="e021">Ejercicio 21 — <code>SPV4-C09-E021</code></h2>
+<p>Referencia: p.&nbsp;166. <strong>Problema:</strong> (a) expresar la derivada con <span class="math inline">\(x\to a\)</span>; (b) probar que es una propiedad local.</p>
+<section id="solución-20" class="level3">
+<h3 class="anchored" data-anchor-id="solución-20">Solución</h3>
+<p><strong>(a)</strong> El cambio <span class="math inline">\(x=a+h\)</span> identifica exactamente los puntos <span class="math inline">\(0&lt;|h|&lt;\delta\)</span> con <span class="math inline">\(0&lt;|x-a|&lt;\delta\)</span>. Los dos cocientes son iguales, de modo que <span class="math display">\[f'(a)=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}.\]</span> La equivalencia vale también como criterio de existencia.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(f=g\)</span> en un intervalo abierto que contiene <span class="math inline">\(a\)</span>, sus valores centrales coinciden y también sus cocientes para todos los incrementos suficientemente pequeños. Por tanto una derivada existe si y solo si existe la otra, y son iguales. Los valores fuera de ese intervalo no intervienen. La apertura garantiza que hay un radio positivo alrededor de <span class="math inline">\(a\)</span> donde se conserva la coincidencia.</p>
+</section>
+</section>
+<section id="e022" class="level2">
+<h2 class="anchored" data-anchor-id="e022">Ejercicio 22 — <code>SPV4-C09-E022</code></h2>
+<p>Referencia: p.&nbsp;166. <strong>Problema:</strong> para <span class="math inline">\(f\)</span> diferenciable en <span class="math inline">\(x\)</span>, (a) obtener la fórmula simétrica; (b**) generalizar a incrementos positivos independientes <span class="math inline">\(h,k\)</span>.</p>
+<section id="solución-21" class="level3">
+<h3 class="anchored" data-anchor-id="solución-21">Solución</h3>
+<p><strong>(a)</strong> Para <span class="math inline">\(h\ne0\)</span>, <span class="math display">\[\frac{f(x+h)-f(x-h)}{2h}=\frac12\left[\frac{f(x+h)-f(x)}h+\frac{f(x-h)-f(x)}{-h}\right].\]</span> Ambos cocientes tienden a <span class="math inline">\(f'(x)\)</span>, así que su media también. Se obtiene la fórmula pedida. Su recíproca es falsa: para <span class="math inline">\(f(u)=|u|\)</span> en <span class="math inline">\(x=0\)</span>, el cociente simétrico vale cero, pero no existe derivada.</p>
+<p><strong>(b)</strong> Escriba, para <span class="math inline">\(h,k&gt;0\)</span>, <span class="math display">\[\frac{f(x+h)-f(x-k)}{h+k}=\frac{h}{h+k}\frac{f(x+h)-f(x)}h+\frac{k}{h+k}\frac{f(x-k)-f(x)}{-k}.\]</span> Es una media con pesos positivos que suman uno. Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, la diferenciabilidad da <span class="math inline">\(\delta&gt;0\)</span> tal que cada cociente unilateral difiere de <span class="math inline">\(m=f'(x)\)</span> en menos de <span class="math inline">\(\varepsilon\)</span> cuando su incremento está entre cero y <span class="math inline">\(\delta\)</span>. Si <span class="math inline">\(0&lt;h,k&lt;\delta\)</span>, el error de la media queda acotado por <span class="math display">\[\frac{h}{h+k}\varepsilon+\frac{k}{h+k}\varepsilon=\varepsilon,\]</span> con desigualdad estricta para el error real. Esto demuestra el límite conjunto: se controlan todos los pares del cuadrado <span class="math inline">\((0,\delta)^2\)</span>, sin exigir una relación entre <span class="math inline">\(h\)</span> y <span class="math inline">\(k\)</span>. Su positividad evita cancelaciones en el denominador y es esencial para esta estimación.</p>
+</section>
+</section>
+<section id="e023" class="level2">
+<h2 class="anchored" data-anchor-id="e023">Ejercicio 23 — <code>SPV4-C09-E023</code></h2>
+<p>Referencia: p.&nbsp;166. <strong>Problema:</strong> si <span class="math inline">\(f\)</span> es par y diferenciable, probar que su derivada es impar e ilustrarlo.</p>
+<section id="solución-22" class="level3">
+<h3 class="anchored" data-anchor-id="solución-22">Solución</h3>
+<p>Ponga <span class="math inline">\(g(x)=f(-x)\)</span>. E008(b), con <span class="math inline">\(c=-1\)</span>, da <span class="math inline">\(g'(x)=-f'(-x)\)</span>. La paridad dice que <span class="math inline">\(g=f\)</span>, luego <span class="math display">\[f'(x)=-f'(-x).\]</span> En particular, <span class="math inline">\(f'(0)=0\)</span>. La reflexión horizontal cambia el signo de la pendiente: las tangentes en puntos simétricos tienen pendientes opuestas. La figura usa <span class="math inline">\(f(x)=x^2\)</span> y su derivada <span class="math inline">\(2x\)</span>.</p>
+</section>
+</section>
+<section id="e024" class="level2">
+<h2 class="anchored" data-anchor-id="e024">Ejercicio 24 — <code>SPV4-C09-E024</code></h2>
+<p>Referencia: p.&nbsp;166. <strong>Problema:</strong> si <span class="math inline">\(f\)</span> es impar y diferenciable, probar que su derivada es par e ilustrarlo.</p>
+<section id="solución-23" class="level3">
+<h3 class="anchored" data-anchor-id="solución-23">Solución</h3>
+<p>Para <span class="math inline">\(g(x)=f(-x)\)</span>, E008(b) da <span class="math inline">\(g'(x)=-f'(-x)\)</span>. Pero la imparidad significa <span class="math inline">\(g=-f\)</span>, y E006(b) da también <span class="math inline">\(g'(x)=-f'(x)\)</span>. Igualar ambas expresiones produce <span class="math display">\[f'(x)=f'(-x).\]</span> Una simetría central invierte a la vez las separaciones horizontal y vertical y conserva la pendiente. En la figura se usa <span class="math inline">\(f(x)=x^3\)</span>, cuya derivada <span class="math inline">\(3x^2\)</span> es par.</p>
+<div id="fig-spv4-c09-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 9: La derivación intercambia las dos clases de paridad">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c09-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C09_assets/E023_E024.png" class="img-fluid figure-img" alt="Capítulo 9: La derivación intercambia las dos clases de paridad">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c09-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Capítulo 09 · Figura 4. La derivación intercambia las dos clases de paridad
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e025" class="level2">
+<h2 class="anchored" data-anchor-id="e025">Ejercicio 25 — <code>SPV4-C09-E025</code></h2>
+<p>Referencia: p.&nbsp;166. <strong>Problema:</strong> determinar la paridad de <span class="math inline">\(f^{(k)}\)</span> a partir de la de <span class="math inline">\(f\)</span>.</p>
+<section id="solución-24" class="level3">
+<h3 class="anchored" data-anchor-id="solución-24">Solución</h3>
+<p>Cada derivación intercambia las clases par e impar por E023–E024. Una inducción en <span class="math inline">\(k\)</span> da:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Paridad inicial</th>
+<th><span class="math inline">\(k\)</span> par, incluido <span class="math inline">\(0\)</span></th>
+<th><span class="math inline">\(k\)</span> impar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(f\)</span> par</td>
+<td><span class="math inline">\(f^{(k)}\)</span> par</td>
+<td><span class="math inline">\(f^{(k)}\)</span> impar</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(f\)</span> impar</td>
+<td><span class="math inline">\(f^{(k)}\)</span> impar</td>
+<td><span class="math inline">\(f^{(k)}\)</span> par</td>
+</tr>
+</tbody>
+</table>
+<p>Se presupone la existencia de las derivadas hasta el orden considerado en un dominio simétrico; en el ejercicio puede tomarse toda la recta. La función cero es a la vez par e impar, lo que es compatible con la tabla. No se afirma una exclusión entre ambas clases cuando una derivada se anula idénticamente.</p>
+</section>
+</section>
+<section id="e026" class="level2">
+<h2 class="anchored" data-anchor-id="e026">Ejercicio 26 — <code>SPV4-C09-E026</code></h2>
+<p>Referencia: p.&nbsp;166. <strong>Problema:</strong> hallar <span class="math inline">\(f''(x)\)</span> para cuatro datos.</p>
+<section id="solución-25" class="level3">
+<h3 class="anchored" data-anchor-id="solución-25">Solución</h3>
+<p><strong>(i)</strong> Si <span class="math inline">\(f(x)=x^3\)</span>, E004 da <span class="math inline">\(f'(x)=3x^2\)</span> y después <span class="math inline">\(f''(x)=6x\)</span>.</p>
+<p><strong>(ii)</strong> Si <span class="math inline">\(f(x)=x^5\)</span>, se obtiene <span class="math inline">\(f'(x)=5x^4\)</span> y <span class="math inline">\(f''(x)=20x^3\)</span>.</p>
+<p><strong>(iii)</strong> Si se da directamente <span class="math inline">\(f'(x)=x^4\)</span>, basta una derivación: <span class="math inline">\(f''(x)=4x^3\)</span>. No se necesita reconstruir <span class="math inline">\(f\)</span>.</p>
+<p><strong>(iv)</strong> Si <span class="math inline">\(f(x+3)=x^5\)</span>, como en E009(ii), <span class="math inline">\(f(u)=(u-3)^5\)</span>. Así <span class="math inline">\(f'(x)=5(x-3)^4\)</span> y <span class="math inline">\(f''(x)=20(x-3)^3\)</span>. Se pide <span class="math inline">\(f''\)</span> en <span class="math inline">\(x\)</span>, no en <span class="math inline">\(x+3\)</span>.</p>
+</section>
+</section>
+<section id="e027" class="level2">
+<h2 class="anchored" data-anchor-id="e027">Ejercicio 27 — <code>SPV4-C09-E027</code></h2>
+<p>Referencia: p.&nbsp;166. <strong>Problema:</strong> demostrar, para enteros <span class="math inline">\(0\le k\le n\)</span>, la fórmula de la derivada de orden <span class="math inline">\(k\)</span> de <span class="math inline">\(S_n(x)=x^n\)</span>.</p>
+<section id="solución-26" class="level3">
+<h3 class="anchored" data-anchor-id="solución-26">Solución</h3>
+<p>Para <span class="math inline">\(k=0\)</span> se tiene <span class="math inline">\(S_n^{(0)}=S_n\)</span>, y el coeficiente <span class="math inline">\(n!/(n-0)!\)</span> vale uno. Si la fórmula vale para <span class="math inline">\(k&lt;n\)</span>, E004 y E006(b) permiten derivarla: <span class="math display">\[\left[\frac{n!}{(n-k)!}x^{n-k}\right]'=\frac{n!}{(n-k)!}(n-k)x^{n-k-1}=\frac{n!}{(n-k-1)!}x^{n-k-1}.\]</span> Por inducción, <span class="math display">\[S_n^{(k)}(x)=\frac{n!}{(n-k)!}x^{n-k}=k!\binom nk x^{n-k}.\]</span> En <span class="math inline">\(k=n\)</span> es la constante <span class="math inline">\(n!\)</span>; las derivadas de órdenes mayores son cero. El caso <span class="math inline">\(n=0\)</span> se interpreta como el polinomio constante <span class="math inline">\(1\)</span>, y solo tiene <span class="math inline">\(k=0\)</span> dentro del rango de la fórmula.</p>
+</section>
+</section>
+<section id="e028" class="level2">
+<h2 class="anchored" data-anchor-id="e028">Ejercicio 28 — <code>SPV4-C09-E028</code></h2>
+<p>Referencia: p.&nbsp;166. <strong>Problema:</strong> (a) estudiar las tres primeras derivadas de <span class="math inline">\(|x|^3\)</span>; (b) analizar del mismo modo <span class="math inline">\(f(x)=x^4\)</span> para <span class="math inline">\(x\ge0\)</span> y <span class="math inline">\(f(x)=-x^4\)</span> para <span class="math inline">\(x\le0\)</span>.</p>
+<section id="solución-27" class="level3">
+<h3 class="anchored" data-anchor-id="solución-27">Solución</h3>
+<p><strong>(a)</strong> A la derecha, <span class="math inline">\(f=x^3\)</span>; a la izquierda, <span class="math inline">\(f=-x^3\)</span>. E004 y la localidad de E021 dan <span class="math inline">\(f'(x)=3x|x|\)</span> para <span class="math inline">\(x\ne0\)</span>. En cero, <span class="math display">\[\frac{|h|^3}{h}=h|h|\longrightarrow0,\]</span> así que la misma fórmula vale allí. Para <span class="math inline">\(x\ne0\)</span>, la segunda derivada es <span class="math inline">\(6|x|\)</span>; en cero su cociente es <span class="math inline">\(3h|h|/h=3|h|\to0\)</span>, de modo que <span class="math inline">\(f''(x)=6|x|\)</span> en toda la recta. Por tanto <span class="math display">\[f'''(x)=\begin{cases}6,&amp;x&gt;0,\\-6,&amp;x&lt;0,\end{cases}\]</span> y <span class="math inline">\(f'''(0)\)</span> no existe: el cociente de <span class="math inline">\(f''\)</span> en cero es <span class="math inline">\(6|h|/h\)</span>.</p>
+<p><strong>(b)</strong> Las ramas dan <span class="math inline">\(f'(x)=4|x|^3\)</span> fuera de cero, y el cociente central de <span class="math inline">\(f\)</span> tiene módulo <span class="math inline">\(|h|^3\)</span>, luego <span class="math inline">\(f'(0)=0\)</span>. La fórmula global es <span class="math inline">\(f'=4|x|^3\)</span>. Por (a) y E006(b), <span class="math display">\[f''(x)=12x|x|,\qquad f'''(x)=24|x|,\]</span> también en cero. Así las tres primeras derivadas existen en todos los puntos. El primer fallo llega al cuarto orden: <span class="math inline">\(f^{(4)}(x)=24\)</span> si <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(-24\)</span> si <span class="math inline">\(x&lt;0\)</span>, y <span class="math inline">\(f^{(4)}(0)\)</span> no existe. Cada nueva derivada reduce la potencia que ocultaba la diferencia entre las dos ramas.</p>
+</section>
+</section>
+<section id="e029" class="level2">
+<h2 class="anchored" data-anchor-id="e029">Ejercicio 29 — <code>SPV4-C09-E029</code></h2>
+<p>Referencia: p.&nbsp;167. <strong>Problema:</strong> para un entero <span class="math inline">\(n\ge1\)</span>, sea <span class="math inline">\(f(x)=x^n\)</span> cuando <span class="math inline">\(x\ge0\)</span> y <span class="math inline">\(f(x)=0\)</span> cuando <span class="math inline">\(x\le0\)</span>. Hallar <span class="math inline">\(f^{(n-1)}\)</span> y probar que no existe <span class="math inline">\(f^{(n)}(0)\)</span>.</p>
+<section id="solución-28" class="level3">
+<h3 class="anchored" data-anchor-id="solución-28">Solución</h3>
+<p>Para <span class="math inline">\(0\le k\le n-1\)</span>, la fórmula es <span class="math display">\[f^{(k)}(x)=\begin{cases}\dfrac{n!}{(n-k)!}x^{n-k},&amp;x&gt;0,\\0,&amp;x\le0.\end{cases}\]</span> Se prueba por inducción. Las ramas se derivan usando E027 y localidad. En cero, si ya se obtuvo la fórmula para <span class="math inline">\(k&lt;n-1\)</span>, el cociente para la siguiente derivada vale cero con incremento negativo, y con incremento positivo vale <span class="math inline">\([n!/(n-k)!]h^{n-k-1}\)</span>. Ese exponente es positivo, así que ambos lados tienden a cero y la fórmula se conserva.</p>
+<p>En particular, <span class="math inline">\(f^{(n-1)}(x)=n!x\)</span> para <span class="math inline">\(x&gt;0\)</span> y cero para <span class="math inline">\(x\le0\)</span>. Su cociente en cero vale <span class="math inline">\(n!\)</span> por la derecha y cero por la izquierda; por tanto no existe la derivada de orden <span class="math inline">\(n\)</span> allí. Para <span class="math inline">\(n=1\)</span> el argumento parte de <span class="math inline">\(f^{(0)}=f=\max\{x,0\}\)</span> y la misma discrepancia aparece en la primera derivada. No se admite <span class="math inline">\(n=0\)</span>: las dos prescripciones originales entrarían en conflicto en cero.</p>
+</section>
+</section>
+<section id="e030" class="level2">
+<h2 class="anchored" data-anchor-id="e030">Ejercicio 30 — <code>SPV4-C09-E030</code></h2>
+<p>Referencia: p.&nbsp;167. <strong>Problema:</strong> interpretar diez expresiones de notación de Leibniz como los resultados anteriores. Se leen <span class="math inline">\(d/dx\)</span> y <span class="math inline">\(d^k/dx^k\)</span> como operadores de derivación, no como cocientes de números independientes.</p>
+<section id="solución-29" class="level3">
+<h3 class="anchored" data-anchor-id="solución-29">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\(\dfrac{dx^n}{dx}=nx^{n-1}\)</span> es E004: la función <span class="math inline">\(x\mapsto x^n\)</span> tiene esa derivada, para <span class="math inline">\(n\ge1\)</span> entero.</p>
+<p><strong>(ii)</strong> Si <span class="math inline">\(z(y)=1/y\)</span>, entonces <span class="math inline">\(\dfrac{dz}{dy}=-1/y^2\)</span> para <span class="math inline">\(y\ne0\)</span>. Es E001(a) con otro nombre de variable.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(\dfrac{d[f(x)+c]}{dx}=\dfrac{df(x)}{dx}\)</span> significa <span class="math inline">\((f+c)'=f'\)</span> con <span class="math inline">\(c\)</span> constante, E006(a).</p>
+<p><strong>(iv)</strong> <span class="math inline">\(\dfrac{d[cf(x)]}{dx}=c\dfrac{df(x)}{dx}\)</span> expresa <span class="math inline">\((cf)'=cf'\)</span>, E006(b), donde existe <span class="math inline">\(f'\)</span>.</p>
+<p><strong>(v)</strong> Si <span class="math inline">\(z(x)=y(x)+c\)</span>, entonces <span class="math inline">\(\dfrac{dz}{dx}=\dfrac{dy}{dx}\)</span>. Es la misma traslación vertical de (iii), con <span class="math inline">\(y,z\)</span> entendidas como funciones de <span class="math inline">\(x\)</span>.</p>
+<p><strong>(vi)</strong> <span class="math inline">\(\left.\dfrac{dx^3}{dx}\right|_{x=a^2}=3a^4\)</span>: derivar el cubo y evaluar en <span class="math inline">\(a^2\)</span>, E007(c). La barra indica evaluación posterior.</p>
+<p><strong>(vii)</strong> <span class="math inline">\(\left.\dfrac{df(x+a)}{dx}\right|_{x=b}=\left.\dfrac{df(x)}{dx}\right|_{x=b+a}\)</span>: la derivada de la función trasladada en <span class="math inline">\(b\)</span> es <span class="math inline">\(f'(b+a)\)</span>, E008(a), con <span class="math inline">\(a\)</span> fijo.</p>
+<p><strong>(viii)</strong> <span class="math inline">\(\left.\dfrac{df(cx)}{dx}\right|_{x=b}=c\left.\dfrac{df(x)}{dx}\right|_{x=cb}\)</span>: la escala horizontal da <span class="math inline">\(cf'(cb)\)</span>, E008(b).</p>
+<p><strong>(ix)</strong> <span class="math inline">\(\dfrac{df(cx)}{dx}=c\left.\dfrac{df(y)}{dy}\right|_{y=cx}\)</span> es el mismo resultado. La variable auxiliar <span class="math inline">\(y\)</span> separa el argumento de <span class="math inline">\(f\)</span> de la variable <span class="math inline">\(x\)</span> de la composición.</p>
+<p><strong>(x)</strong> <span class="math inline">\(\dfrac{d^kx^n}{dx^k}=k!\binom nk x^{n-k}\)</span> expresa E027 para <span class="math inline">\(0\le k\le n\)</span>, con las convenciones allí indicadas. Se trata de aplicar <span class="math inline">\(k\)</span> veces la derivación; el denominador tipográfico <span class="math inline">\(dx^k\)</span> no es una instrucción de división algebraica por una potencia de un número <span class="math inline">\(dx\)</span>.</p>
+<hr>
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-08.html">← Capítulo 8</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-10.html">Capítulo 10 →</a></p>
+</div>
+<p>Soluciones originales de Alevi Peña · Matemática Abierta. <a href="../../../COPYING.FDL">Licencia GFDL 1.3 o posterior</a>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

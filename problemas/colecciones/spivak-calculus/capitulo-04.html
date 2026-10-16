@@ -1,0 +1,2339 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Capítulo 4 — Gráficas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="spivak-c01.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#e001" id="toc-e001" class="nav-link active" data-scroll-target="#e001">Ejercicio 1 — <code>SPV4-C04-E001</code></a></li>
+  <li><a href="#e002" id="toc-e002" class="nav-link" data-scroll-target="#e002">Ejercicio 2 — <code>SPV4-C04-E002</code></a></li>
+  <li><a href="#e003" id="toc-e003" class="nav-link" data-scroll-target="#e003">Ejercicio 3 — <code>SPV4-C04-E003</code></a></li>
+  <li><a href="#e004" id="toc-e004" class="nav-link" data-scroll-target="#e004">Ejercicio 4 — <code>SPV4-C04-E004</code></a></li>
+  <li><a href="#e005" id="toc-e005" class="nav-link" data-scroll-target="#e005">Ejercicio 5 — <code>SPV4-C04-E005</code></a></li>
+  <li><a href="#e006" id="toc-e006" class="nav-link" data-scroll-target="#e006">Ejercicio 6 — <code>SPV4-C04-E006</code></a></li>
+  <li><a href="#e007" id="toc-e007" class="nav-link" data-scroll-target="#e007">Ejercicio 7 — <code>SPV4-C04-E007</code></a></li>
+  <li><a href="#e008" id="toc-e008" class="nav-link" data-scroll-target="#e008">Ejercicio 8 — <code>SPV4-C04-E008</code></a></li>
+  <li><a href="#e009" id="toc-e009" class="nav-link" data-scroll-target="#e009">Ejercicio 9 — <code>SPV4-C04-E009</code></a></li>
+  <li><a href="#e010" id="toc-e010" class="nav-link" data-scroll-target="#e010">Ejercicio 10 — <code>SPV4-C04-E010</code></a></li>
+  <li><a href="#e011" id="toc-e011" class="nav-link" data-scroll-target="#e011">Ejercicio 11 — <code>SPV4-C04-E011</code></a></li>
+  <li><a href="#e012" id="toc-e012" class="nav-link" data-scroll-target="#e012">Ejercicio 12 — <code>SPV4-C04-E012</code></a></li>
+  <li><a href="#e013" id="toc-e013" class="nav-link" data-scroll-target="#e013">Ejercicio 13 — <code>SPV4-C04-E013</code></a></li>
+  <li><a href="#e014" id="toc-e014" class="nav-link" data-scroll-target="#e014">Ejercicio 14 — <code>SPV4-C04-E014</code></a></li>
+  <li><a href="#e015" id="toc-e015" class="nav-link" data-scroll-target="#e015">Ejercicio 15 — <code>SPV4-C04-E015</code></a></li>
+  <li><a href="#e016" id="toc-e016" class="nav-link" data-scroll-target="#e016">Ejercicio 16 — <code>SPV4-C04-E016</code></a></li>
+  <li><a href="#e017" id="toc-e017" class="nav-link" data-scroll-target="#e017">Ejercicio 17 — <code>SPV4-C04-E017</code></a></li>
+  <li><a href="#e018" id="toc-e018" class="nav-link" data-scroll-target="#e018">Ejercicio 18 — <code>SPV4-C04-E018</code></a></li>
+  <li><a href="#e019" id="toc-e019" class="nav-link" data-scroll-target="#e019">Ejercicio 19 — <code>SPV4-C04-E019</code></a></li>
+  <li><a href="#e020" id="toc-e020" class="nav-link" data-scroll-target="#e020">Ejercicio 20 — <code>SPV4-C04-E020</code></a></li>
+  <li><a href="#e021" id="toc-e021" class="nav-link" data-scroll-target="#e021">Ejercicio 21 — <code>SPV4-C04-E021</code></a></li>
+  <li><a href="#e022" id="toc-e022" class="nav-link" data-scroll-target="#e022">Ejercicio 22 — <code>SPV4-C04-E022</code></a></li>
+  <li><a href="#e023" id="toc-e023" class="nav-link" data-scroll-target="#e023">Ejercicio 23 — <code>SPV4-C04-E023</code></a></li>
+  <li><a href="#apéndice-1-vectores" id="toc-apéndice-1-vectores" class="nav-link" data-scroll-target="#apéndice-1-vectores">Apéndice 1 — Vectores</a>
+  <ul class="collapse">
+  <li><a href="#e001-2" id="toc-e001-2" class="nav-link" data-scroll-target="#e001-2">Ejercicio 1 — <code>SPV4-C04-A01-E001</code></a></li>
+  <li><a href="#e002-2" id="toc-e002-2" class="nav-link" data-scroll-target="#e002-2">Ejercicio 2 — <code>SPV4-C04-A01-E002</code></a></li>
+  <li><a href="#e003-2" id="toc-e003-2" class="nav-link" data-scroll-target="#e003-2">Ejercicio 3 — <code>SPV4-C04-A01-E003</code></a></li>
+  <li><a href="#e004-2" id="toc-e004-2" class="nav-link" data-scroll-target="#e004-2">Ejercicio 4 — <code>SPV4-C04-A01-E004</code></a></li>
+  <li><a href="#e005-2" id="toc-e005-2" class="nav-link" data-scroll-target="#e005-2">Ejercicio 5 — <code>SPV4-C04-A01-E005</code></a></li>
+  <li><a href="#e006-2" id="toc-e006-2" class="nav-link" data-scroll-target="#e006-2">Ejercicio 6 — <code>SPV4-C04-A01-E006</code></a></li>
+  <li><a href="#e007-2" id="toc-e007-2" class="nav-link" data-scroll-target="#e007-2">Ejercicio 7 — <code>SPV4-C04-A01-E007</code></a></li>
+  </ul></li>
+  <li><a href="#apéndice-2-secciones-cónicas" id="toc-apéndice-2-secciones-cónicas" class="nav-link" data-scroll-target="#apéndice-2-secciones-cónicas">Apéndice 2 — Secciones cónicas</a>
+  <ul class="collapse">
+  <li><a href="#e001-3" id="toc-e001-3" class="nav-link" data-scroll-target="#e001-3">Ejercicio 1 — <code>SPV4-C04-A02-E001</code></a></li>
+  <li><a href="#e002-3" id="toc-e002-3" class="nav-link" data-scroll-target="#e002-3">Ejercicio 2 — <code>SPV4-C04-A02-E002</code></a></li>
+  <li><a href="#e003-3" id="toc-e003-3" class="nav-link" data-scroll-target="#e003-3">Ejercicio 3 — <code>SPV4-C04-A02-E003</code></a></li>
+  </ul></li>
+  <li><a href="#apéndice-3-coordenadas-polares" id="toc-apéndice-3-coordenadas-polares" class="nav-link" data-scroll-target="#apéndice-3-coordenadas-polares">Apéndice 3 — Coordenadas polares</a>
+  <ul class="collapse">
+  <li><a href="#e001-4" id="toc-e001-4" class="nav-link" data-scroll-target="#e001-4">Ejercicio 1 — <code>SPV4-C04-A03-E001</code></a></li>
+  <li><a href="#e002-4" id="toc-e002-4" class="nav-link" data-scroll-target="#e002-4">Ejercicio 2 — <code>SPV4-C04-A03-E002</code></a></li>
+  <li><a href="#e003-4" id="toc-e003-4" class="nav-link" data-scroll-target="#e003-4">Ejercicio 3 — <code>SPV4-C04-A03-E003</code></a></li>
+  <li><a href="#e004-3" id="toc-e004-3" class="nav-link" data-scroll-target="#e004-3">Ejercicio 4 — <code>SPV4-C04-A03-E004</code></a></li>
+  <li><a href="#e005-3" id="toc-e005-3" class="nav-link" data-scroll-target="#e005-3">Ejercicio 5 — <code>SPV4-C04-A03-E005</code></a></li>
+  <li><a href="#e006-3" id="toc-e006-3" class="nav-link" data-scroll-target="#e006-3">Ejercicio 6 — <code>SPV4-C04-A03-E006</code></a></li>
+  <li><a href="#e007-3" id="toc-e007-3" class="nav-link" data-scroll-target="#e007-3">Ejercicio 7 — <code>SPV4-C04-A03-E007</code></a></li>
+  <li><a href="#e008-2" id="toc-e008-2" class="nav-link" data-scroll-target="#e008-2">Ejercicio 8 — <code>SPV4-C04-A03-E008</code></a></li>
+  <li><a href="#e009-2" id="toc-e009-2" class="nav-link" data-scroll-target="#e009-2">Ejercicio 9 — <code>SPV4-C04-A03-E009</code></a></li>
+  <li><a href="#e010-2" id="toc-e010-2" class="nav-link" data-scroll-target="#e010-2">Ejercicio 10 — <code>SPV4-C04-A03-E010</code></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 4 — Gráficas</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-03.html">← Capítulo 3</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-05.html">Capítulo 5 →</a></p>
+</div>
+<p>Referencia: Michael Spivak, <em>Calculus</em>, 4.ª ed., problemas del capítulo, pp.&nbsp;68–74; apéndice 1, pp.&nbsp;77–79; apéndice 2, pp.&nbsp;82–83; apéndice 3, pp.&nbsp;88–89. Los enunciados se reducen a su contenido matemático; las explicaciones y figuras son propias de Matemática Abierta.</p>
+<p>Una gráfica es un conjunto de puntos, no el trazo producido por unir muestras. En las figuras, una frontera discontinua queda excluida; un punto hueco es un extremo excluido y uno lleno es un extremo incluido. Las ventanas son finitas: las rectas, ramas y familias infinitas continúan según las fórmulas. Los parámetros usados para ilustrar casos particulares se indican en cada lámina. Se trabaja sin derivadas: las comparaciones se prueban por álgebra, orden y geometría. Las raíces reales y las propiedades arquimedianas se usan con el alcance declarado en los capítulos anteriores.</p>
+<section id="e001" class="level2">
+<h2 class="anchored" data-anchor-id="e001">Ejercicio 1 — <code>SPV4-C04-E001</code></h2>
+<p>Referencia: pp.&nbsp;68–69. <strong>Problema:</strong> expresar mediante intervalos y representar los ocho conjuntos definidos por las desigualdades siguientes.</p>
+<section id="solución" class="level3">
+<h3 class="anchored" data-anchor-id="solución">Solución</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Inciso</th>
+<th>Desigualdad</th>
+<th>Conjunto solución</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(i)</td>
+<td><span class="math inline">\(\vert x-3\vert &lt;1\)</span></td>
+<td><span class="math inline">\((2,4)\)</span></td>
+</tr>
+<tr class="even">
+<td>(ii)</td>
+<td><span class="math inline">\(\vert x-3\vert \le1\)</span></td>
+<td><span class="math inline">\([2,4]\)</span></td>
+</tr>
+<tr class="odd">
+<td>(iii)</td>
+<td><span class="math inline">\(\vert x-a\vert &lt;\varepsilon\)</span></td>
+<td><span class="math inline">\((a-\varepsilon,a+\varepsilon)\)</span> si <span class="math inline">\(\varepsilon&gt;0\)</span>; vacío si <span class="math inline">\(\varepsilon\le0\)</span></td>
+</tr>
+<tr class="even">
+<td>(iv)</td>
+<td><span class="math inline">\(\vert x^2-1\vert &lt;1/2\)</span></td>
+<td><span class="math inline">\((-\sqrt{3/2},-\sqrt{1/2})\cup(\sqrt{1/2},\sqrt{3/2})\)</span></td>
+</tr>
+<tr class="odd">
+<td>(v)</td>
+<td><span class="math inline">\(1/(1+x^2)\ge1/5\)</span></td>
+<td><span class="math inline">\([-2,2]\)</span></td>
+</tr>
+<tr class="even">
+<td>(vi)</td>
+<td><span class="math inline">\(1/(1+x^2)\le a\)</span></td>
+<td>vacío si <span class="math inline">\(a\le0\)</span>; <span class="math inline">\(\mathbb R\)</span> si <span class="math inline">\(a\ge1\)</span>; <span class="math inline">\((-\infty,-s]\cup[s,\infty)\)</span> si <span class="math inline">\(0&lt;a&lt;1\)</span>, <span class="math inline">\(s=\sqrt{1/a-1}\)</span></td>
+</tr>
+<tr class="odd">
+<td>(vii)</td>
+<td><span class="math inline">\(x^2+1\ge2\)</span></td>
+<td><span class="math inline">\((-\infty,-1]\cup[1,\infty)\)</span></td>
+</tr>
+<tr class="even">
+<td>(viii)</td>
+<td><span class="math inline">\((x+1)(x-1)(x-2)&gt;0\)</span></td>
+<td><span class="math inline">\((-1,1)\cup(2,\infty)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Para (i)–(iii), <span class="math inline">\(|u|&lt;r\)</span> equivale a <span class="math inline">\(-r&lt;u&lt;r\)</span> cuando <span class="math inline">\(r&gt;0\)</span>; con desigualdad no estricta se incluyen ambos extremos. En (iv), la condición es <span class="math inline">\(1/2&lt;x^2&lt;3/2\)</span>: hay que conservar las dos posibilidades para el signo de <span class="math inline">\(x\)</span>.</p>
+<p>En (v), multiplicar por <span class="math inline">\(5(1+x^2)&gt;0\)</span> da <span class="math inline">\(5\ge1+x^2\)</span>, es decir, <span class="math inline">\(x^2\le4\)</span>. Los extremos <span class="math inline">\(\pm2\)</span> satisfacen la igualdad. En (vi), el miembro izquierdo siempre pertenece a <span class="math inline">\((0,1]\)</span>. Para <span class="math inline">\(0&lt;a&lt;1\)</span>, la desigualdad equivale a <span class="math inline">\(x^2\ge1/a-1\)</span>; esto explica tanto las dos semirrectas como sus extremos cerrados. En (vii), <span class="math inline">\(x^2\ge1\)</span> exige <span class="math inline">\(|x|\ge1\)</span>. Para (viii), los signos en los intervalos separados por <span class="math inline">\(-1,1,2\)</span> son, respectivamente, <span class="math inline">\(-,+,-,+\)</span>; las tres raíces se excluyen.</p>
+<div id="fig-spv4-c04-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Intervalos del ejercicio 1">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E001.png" class="img-fluid figure-img" alt="Capítulo 4: Intervalos del ejercicio 1">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Capítulo 04 · Figura 1. Intervalos del ejercicio 1
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e002" class="level2">
+<h2 class="anchored" data-anchor-id="e002">Ejercicio 2 — <code>SPV4-C04-E002</code></h2>
+<p>Referencia: p.&nbsp;69. <strong>Problema:</strong> parametrizar los intervalos cerrados y abiertos; interpretar el parámetro y hallar puntos intermedios.</p>
+<section id="solución-1" class="level3">
+<h3 class="anchored" data-anchor-id="solución-1">Solución</h3>
+<p><strong>(a)</strong> Si <span class="math inline">\(0\le x\le b\)</span> y <span class="math inline">\(b&gt;0\)</span>, tome <span class="math inline">\(t=x/b\)</span>. Dividir por un número positivo da <span class="math inline">\(0\le t\le1\)</span>, y <span class="math inline">\(x=tb\)</span>. El parámetro es la fracción de la longitud total recorrida desde <span class="math inline">\(0\)</span>; <span class="math inline">\(t=1/2\)</span> produce el punto medio <span class="math inline">\(b/2\)</span>.</p>
+<p><strong>(b)</strong> Para <span class="math inline">\(a\le x\le b\)</span> con <span class="math inline">\(a&lt;b\)</span>, tome <span class="math inline">\(t=(x-a)/(b-a)\)</span>. Entonces <span class="math inline">\(0\le t\le1\)</span> y</p>
+<p><span class="math display">\[x=a+t(b-a)=(1-t)a+tb.\]</span></p>
+<p>El punto medio es <span class="math inline">\((a+b)/2\)</span>. A un tercio del recorrido desde <span class="math inline">\(a\)</span> hacia <span class="math inline">\(b\)</span> se encuentra <span class="math inline">\((2a+b)/3\)</span>.</p>
+<p><strong>(c)</strong> Recíprocamente, de <span class="math inline">\(0\le t\le1\)</span> y <span class="math inline">\(b-a&gt;0\)</span> se deduce <span class="math inline">\(0\le t(b-a)\le b-a\)</span>. Sumando <span class="math inline">\(a\)</span>, resulta <span class="math inline">\(a\le(1-t)a+tb\le b\)</span>.</p>
+<p><strong>(d)</strong> Las mismas operaciones conservan las desigualdades estrictas: <span class="math inline">\(a&lt;x&lt;b\)</span> equivale a <span class="math inline">\(0&lt;(x-a)/(b-a)&lt;1\)</span>. Así, el intervalo abierto corresponde exactamente a <span class="math inline">\(0&lt;t&lt;1\)</span>.</p>
+</section>
+</section>
+<section id="e003" class="level2">
+<h2 class="anchored" data-anchor-id="e003">Ejercicio 3 — <code>SPV4-C04-E003</code></h2>
+<p>Referencia: p.&nbsp;69. <strong>Problema:</strong> representar diez subconjuntos del plano.</p>
+<section id="solución-2" class="level3">
+<h3 class="anchored" data-anchor-id="solución-2">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\(x&gt;y\)</span> es el semiplano <span class="math inline">\(y&lt;x\)</span>, debajo de la diagonal <span class="math inline">\(y=x\)</span>, que queda excluida.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(x+a&gt;y+b\)</span> equivale a <span class="math inline">\(y&lt;x+a-b\)</span>. La frontera es la recta de pendiente <span class="math inline">\(1\)</span> y ordenada <span class="math inline">\(a-b\)</span>; se toma el lado inferior y se excluye la recta.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(y&lt;x^2\)</span> comprende todos los puntos por debajo de la parábola, sin su frontera. <strong>(iv)</strong> <span class="math inline">\(y\le x^2\)</span> añade todos los puntos de la parábola.</p>
+<p><strong>(v)</strong> <span class="math inline">\(|x-y|&lt;1\)</span> equivale a <span class="math inline">\(x-1&lt;y&lt;x+1\)</span>: franja abierta entre dos rectas paralelas de pendiente <span class="math inline">\(1\)</span>.</p>
+<p><strong>(vi)</strong> <span class="math inline">\(|x+y|&lt;1\)</span> equivale a <span class="math inline">\(-x-1&lt;y&lt;-x+1\)</span>: franja abierta de pendiente <span class="math inline">\(-1\)</span>.</p>
+<p><strong>(vii)</strong> Si <span class="math inline">\(x+y\)</span> es entero, el conjunto es <span class="math inline">\(\bigcup_{k\in\mathbb Z}\{(x,y):y=-x+k\}\)</span>. Son rectas completas, sin región sombreada entre ellas.</p>
+<p><strong>(viii)</strong> Si <span class="math inline">\(1/(x+y)\)</span> es entero, dicho entero no puede ser cero. El conjunto es</p>
+<p><span class="math display">\[\bigcup_{k\in\mathbb Z\setminus\{0\}}\{(x,y):y=-x+1/k\}.\]</span></p>
+<p>Estas rectas se aproximan a <span class="math inline">\(y=-x\)</span>, pero esa recta no pertenece al conjunto: allí ni siquiera existe el recíproco. No hay otras rectas.</p>
+<p><strong>(ix)</strong> <span class="math inline">\((x-1)^2+(y-2)^2&lt;1\)</span> es el disco abierto de centro <span class="math inline">\((1,2)\)</span> y radio <span class="math inline">\(1\)</span>; la circunferencia se excluye.</p>
+<p><strong>(x)</strong> Para que exista un <span class="math inline">\(y\)</span> con <span class="math inline">\(x^2&lt;y&lt;x^4\)</span>, primero debe cumplirse <span class="math inline">\(x^2&lt;x^4\)</span>. Como <span class="math inline">\(x^4-x^2=x^2(x^2-1)\)</span>, esto ocurre exactamente cuando <span class="math inline">\(|x|&gt;1\)</span>. El conjunto consta de dos regiones entre las curvas, una a cada lado; ambas fronteras se excluyen y no hay puntos con <span class="math inline">\(-1\le x\le1\)</span>.</p>
+<div id="fig-spv4-c04-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Regiones y familias de rectas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E003.png" class="img-fluid figure-img" alt="Capítulo 4: Regiones y familias de rectas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Capítulo 04 · Figura 2. Regiones y familias de rectas
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e004" class="level2">
+<h2 class="anchored" data-anchor-id="e004">Ejercicio 4 — <code>SPV4-C04-E004</code></h2>
+<p>Referencia: p.&nbsp;69. <strong>Problema:</strong> dibujar los ocho lugares dados por ecuaciones.</p>
+<section id="solución-3" class="level3">
+<h3 class="anchored" data-anchor-id="solución-3">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\(|x|+|y|=1\)</span> es el contorno del rombo con vértices <span class="math inline">\((1,0),(0,1),(-1,0),(0,-1)\)</span>. Por ejemplo, en el primer cuadrante es el segmento <span class="math inline">\(x+y=1\)</span>. Los otros tres segmentos se obtienen por reflexión; el interior no satisface la igualdad.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(|x|-|y|=1\)</span> equivale a <span class="math inline">\(|x|=1+|y|\)</span>. Para cada <span class="math inline">\(y\)</span>, hay dos puntos <span class="math inline">\(x=\pm(1+|y|)\)</span>. Resultan cuatro semirrectas, con vértices <span class="math inline">\((\pm1,0)\)</span>, abiertas hacia derecha e izquierda.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(|x-1|=|y-1|\)</span> implica <span class="math inline">\(x-1=\pm(y-1)\)</span>: las rectas <span class="math inline">\(y=x\)</span> y <span class="math inline">\(y=2-x\)</span>. <strong>(iv)</strong> <span class="math inline">\(|1-x|=|y-1|\)</span> es exactamente la misma ecuación, porque <span class="math inline">\(|1-x|=|x-1|\)</span>; la figura también es la misma.</p>
+<p><strong>(v)</strong> <span class="math inline">\(x^2+y^2=0\)</span> contiene únicamente <span class="math inline">\((0,0)\)</span>: dos cuadrados no negativos sólo suman cero si ambos son cero.</p>
+<p><strong>(vi)</strong> <span class="math inline">\(xy=0\)</span> contiene los dos ejes, pues un producto real es cero si y sólo si alguno de sus factores lo es.</p>
+<p><strong>(vii)</strong> <span class="math inline">\(x^2-2x+y^2=4\)</span> equivale a <span class="math inline">\((x-1)^2+y^2=5\)</span>: circunferencia de centro <span class="math inline">\((1,0)\)</span> y radio <span class="math inline">\(\sqrt5\)</span>.</p>
+<p><strong>(viii)</strong> <span class="math inline">\(x^2=y^2\)</span> equivale a <span class="math inline">\((x-y)(x+y)=0\)</span>: unión de las rectas <span class="math inline">\(y=x\)</span> y <span class="math inline">\(y=-x\)</span>.</p>
+<div id="fig-spv4-c04-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Lugares definidos por ecuaciones">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E004.png" class="img-fluid figure-img" alt="Capítulo 4: Lugares definidos por ecuaciones">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Capítulo 04 · Figura 3. Lugares definidos por ecuaciones
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e005" class="level2">
+<h2 class="anchored" data-anchor-id="e005">Ejercicio 5 — <code>SPV4-C04-E005</code></h2>
+<p>Referencia: p.&nbsp;70. <strong>Problema:</strong> dibujar cuatro curvas que no son, en general, gráficas de <span class="math inline">\(y\)</span> como función de <span class="math inline">\(x\)</span>.</p>
+<section id="solución-4" class="level3">
+<h3 class="anchored" data-anchor-id="solución-4">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\(x=y^2\)</span> es la parábola con vértice en el origen que abre hacia la derecha. Una parametrización completa es <span class="math inline">\((t^2,t)\)</span>, <span class="math inline">\(t\in\mathbb R\)</span>. Para <span class="math inline">\(x&gt;0\)</span> aparecen <span class="math inline">\(y=\pm\sqrt x\)</span>.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(y^2/a^2-x^2/b^2=1\)</span>, con <span class="math inline">\(a,b\ne0\)</span>, equivale a <span class="math inline">\(y=\pm|a|\sqrt{1+x^2/b^2}\)</span>. Es una hipérbola con dos ramas verticales, vértices <span class="math inline">\((0,\pm|a|)\)</span> y asíntotas <span class="math inline">\(y=\pm(|a|/|b|)x\)</span>. Si alguno de los parámetros es cero, la expresión original no está definida.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(x=|y|\)</span> da las semirrectas <span class="math inline">\((t,t)\)</span> y <span class="math inline">\((t,-t)\)</span> para <span class="math inline">\(t\ge0\)</span>: una V acostada, con vértice en el origen.</p>
+<p><strong>(iv)</strong> <span class="math inline">\(x=\sin y\)</span> se parametriza como <span class="math inline">\((\sin t,t)\)</span>, <span class="math inline">\(t\in\mathbb R\)</span>. La ondulación queda en la franja <span class="math inline">\(-1\le x\le1\)</span> y se repite verticalmente cada <span class="math inline">\(2\pi\)</span>. Rotar una gráfica usual de seno no debe introducir un cambio de signo: aquí se intercambian las coordenadas.</p>
+<div id="fig-spv4-c04-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Parábola, hipérbola y curvas horizontales">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E005.png" class="img-fluid figure-img" alt="Capítulo 4: Parábola, hipérbola y curvas horizontales">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Capítulo 04 · Figura 4. Parábola, hipérbola y curvas horizontales
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e006" class="level2">
+<h2 class="anchored" data-anchor-id="e006">Ejercicio 6 — <code>SPV4-C04-E006</code></h2>
+<p>Referencia: p.&nbsp;70. <strong>Problema:</strong> determinar rectas por punto y pendiente, por dos puntos, y la condición de paralelismo.</p>
+<section id="solución-5" class="level3">
+<h3 class="anchored" data-anchor-id="solución-5">Solución</h3>
+<p><strong>(a)</strong> Una recta no vertical de pendiente <span class="math inline">\(m\)</span> que pasa por <span class="math inline">\((a,b)\)</span> satisface <span class="math inline">\(y-b=m(x-a)\)</span>, de modo que <span class="math inline">\(y=m(x-a)+b\)</span>. La ecuación incluye el punto dado y cualquier par de puntos distintos tiene cociente de incrementos <span class="math inline">\(m\)</span>.</p>
+<p><strong>(b)</strong> Para <span class="math inline">\((a,b),(c,d)\)</span> con <span class="math inline">\(a\ne c\)</span>, la pendiente es <span class="math inline">\((d-b)/(c-a)\)</span>. Por tanto,</p>
+<p><span class="math display">\[y=b+\frac{d-b}{c-a}(x-a).\]</span></p>
+<p>Si <span class="math inline">\(a=c\)</span> y los puntos son distintos, la recta es <span class="math inline">\(x=a\)</span>, y no tiene pendiente finita. Si los puntos coinciden, no determinan una única recta.</p>
+<p><strong>(c)</strong> Las rectas <span class="math inline">\(y=mx+b\)</span> y <span class="math inline">\(y=m'x+b'\)</span> tienen la misma dirección si y sólo si <span class="math inline">\(m=m'\)</span>. Para ser paralelas distintas también se exige <span class="math inline">\(b\ne b'\)</span>. Si <span class="math inline">\(m=m'\)</span> y <span class="math inline">\(b=b'\)</span>, coinciden; si <span class="math inline">\(m\ne m'\)</span>, se cortan en el único punto obtenido al resolver <span class="math inline">\((m-m')x=b'-b\)</span>.</p>
+</section>
+</section>
+<section id="e007" class="level2">
+<h2 class="anchored" data-anchor-id="e007">Ejercicio 7 — <code>SPV4-C04-E007</code></h2>
+<p>Referencia: p.&nbsp;70. <strong>Problema:</strong> justificar la ecuación general de una recta y su recíproco.</p>
+<section id="solución-6" class="level3">
+<h3 class="anchored" data-anchor-id="solución-6">Solución</h3>
+<p><strong>(a)</strong> En <span class="math inline">\(Ax+By+C=0\)</span> se supone <span class="math inline">\((A,B)\ne(0,0)\)</span>. Si <span class="math inline">\(B\ne0\)</span>, se despeja <span class="math inline">\(y=-(A/B)x-C/B\)</span>, una recta no vertical. Si <span class="math inline">\(B=0\)</span>, necesariamente <span class="math inline">\(A\ne0\)</span> y la ecuación es <span class="math inline">\(x=-C/A\)</span>, una recta vertical.</p>
+<p><strong>(b)</strong> Toda recta no vertical tiene forma <span class="math inline">\(y=mx+b\)</span>, equivalente a <span class="math inline">\(mx-y+b=0\)</span>. Toda recta vertical tiene forma <span class="math inline">\(x=a\)</span>, equivalente a <span class="math inline">\(x-a=0\)</span>. En ambos casos los dos coeficientes de las coordenadas no son simultáneamente cero. La restricción es necesaria: <span class="math inline">\(A=B=0\)</span> produciría todo el plano si <span class="math inline">\(C=0\)</span> y el conjunto vacío en otro caso.</p>
+</section>
+</section>
+<section id="e008" class="level2">
+<h2 class="anchored" data-anchor-id="e008">Ejercicio 8 — <code>SPV4-C04-E008</code></h2>
+<p>Referencia: p.&nbsp;70. <strong>Problema:</strong> caracterizar la perpendicularidad por pendientes y por coeficientes generales.</p>
+<section id="solución-7" class="level3">
+<h3 class="anchored" data-anchor-id="solución-7">Solución</h3>
+<p><strong>(a)</strong> Tras trasladar cada recta paralelamente hasta el origen, sus direcciones siguen siendo las de <span class="math inline">\(y=mx\)</span> y <span class="math inline">\(y=nx\)</span>. Tome <span class="math inline">\(O=(0,0)\)</span>, <span class="math inline">\(P=(1,m)\)</span>, <span class="math inline">\(Q=(1,n)\)</span>. El ángulo en <span class="math inline">\(O\)</span> es recto si y sólo si se cumple el teorema de Pitágoras y su recíproco:</p>
+<p><span class="math display">\[(m-n)^2=(1+m^2)+(1+n^2).\]</span></p>
+<p>Al cancelar <span class="math inline">\(m^2+n^2\)</span>, queda <span class="math inline">\(-2mn=2\)</span>, es decir, <span class="math inline">\(mn=-1\)</span>. Esta condición también garantiza que las direcciones son distintas. Los términos independientes no modifican el ángulo.</p>
+<p><strong>(b)</strong> Suponga <span class="math inline">\((A,B),(A',B')\ne(0,0)\)</span>. Si <span class="math inline">\(B,B'\ne0\)</span>, las pendientes son <span class="math inline">\(-A/B\)</span> y <span class="math inline">\(-A'/B'\)</span>; (a) da <span class="math inline">\(AA'+BB'=0\)</span>. Si <span class="math inline">\(B=0\)</span>, la primera recta es vertical y la otra debe ser horizontal, lo que equivale a <span class="math inline">\(A'=0\)</span>; la misma condición general se reduce a <span class="math inline">\(AA'=0\)</span> y, como <span class="math inline">\(A\ne0\)</span>, exige precisamente <span class="math inline">\(A'=0\)</span>. El caso <span class="math inline">\(B'=0\)</span> es simétrico. Por tanto, en todos los casos la condición exacta es</p>
+<p><span class="math display">\[\boxed{AA'+BB'=0.}\]</span></p>
+</section>
+</section>
+<section id="e009" class="level2">
+<h2 class="anchored" data-anchor-id="e009">Ejercicio 9 — <code>SPV4-C04-E009</code></h2>
+<p>Referencia: pp.&nbsp;70–71. <strong>Problema:</strong> deducir la desigualdad triangular y su significado geométrico.</p>
+<section id="solución-8" class="level3">
+<h3 class="anchored" data-anchor-id="solución-8">Solución</h3>
+<p><strong>(a)</strong> Escriba <span class="math inline">\(u=(x_1,x_2)\)</span>, <span class="math inline">\(v=(y_1,y_2)\)</span>, y <span class="math inline">\(\|u\|=\sqrt{x_1^2+x_2^2}\)</span>. La desigualdad de Schwarz del capítulo 1 da <span class="math inline">\(u\cdot v\le\|u\|\|v\|\)</span>. Entonces</p>
+<p><span class="math display">\[\|u+v\|^2=\|u\|^2+2u\cdot v+\|v\|^2\le(\|u\|+\|v\|)^2.\]</span></p>
+<p>Ambos miembros de la desigualdad sin cuadrados son no negativos; tomar raíces conserva el orden. Así, <span class="math inline">\(\|u+v\|\le\|u\|+\|v\|\)</span>.</p>
+<p><strong>(b)</strong> Aplique (a) a <span class="math inline">\(u=P_2-P_1\)</span> y <span class="math inline">\(v=P_3-P_2\)</span>. Como <span class="math inline">\(u+v=P_3-P_1\)</span>, se obtiene</p>
+<p><span class="math display">\[d(P_1,P_3)\le d(P_1,P_2)+d(P_2,P_3).\]</span></p>
+<p>La longitud del recorrido directo no supera la del recorrido con escala en <span class="math inline">\(P_2\)</span>. Hay igualdad exactamente cuando <span class="math inline">\(P_2\)</span> pertenece al segmento cerrado de <span class="math inline">\(P_1\)</span> a <span class="math inline">\(P_3\)</span>. En efecto, si los vectores no son cero, igualdad en Schwarz y en su signo superior exige que tengan la misma dirección: <span class="math inline">\(v=tu\)</span> con <span class="math inline">\(t&gt;0\)</span>. Eso coloca <span class="math inline">\(P_2\)</span> entre los extremos. Los casos <span class="math inline">\(P_2=P_1\)</span> o <span class="math inline">\(P_2=P_3\)</span> también dan igualdad. Si <span class="math inline">\(P_1=P_3\)</span>, sólo hay igualdad cuando los tres puntos coinciden. La simple colinealidad no basta: <span class="math inline">\(P_1=0,P_2=2,P_3=1\)</span> sobre una recta da <span class="math inline">\(1&lt;2+1\)</span>.</p>
+</section>
+</section>
+<section id="e010" class="level2">
+<h2 class="anchored" data-anchor-id="e010">Ejercicio 10 — <code>SPV4-C04-E010</code></h2>
+<p>Referencia: p.&nbsp;71. <strong>Problema:</strong> dibujar cuatro funciones racionales, examinando simetría y comportamiento cerca de cero y para valores grandes.</p>
+<section id="solución-9" class="level3">
+<h3 class="anchored" data-anchor-id="solución-9">Solución</h3>
+<p>El dominio de las cuatro funciones es <span class="math inline">\(\mathbb R\setminus\{0\}\)</span>. Cada gráfica se dibuja con sus dos ramas separadas: no se une el trazo atravesando <span class="math inline">\(x=0\)</span>.</p>
+<p><strong>(i)</strong> <span class="math inline">\(f(x)=x+1/x\)</span> es impar. Para <span class="math inline">\(x&gt;0\)</span>,</p>
+<p><span class="math display">\[f(x)-2=\frac{(x-1)^2}{x}\ge0,\]</span></p>
+<p>con igualdad sólo en <span class="math inline">\(x=1\)</span>. La rama positiva tiene mínimo <span class="math inline">\((1,2)\)</span>; la negativa tiene máximo <span class="math inline">\((-1,-2)\)</span> por imparidad. Para <span class="math inline">\(0&lt;u&lt;v\)</span>, la identidad</p>
+<p><span class="math display">\[f(v)-f(u)=(v-u)\left(1-\frac1{uv}\right)\]</span></p>
+<p>prueba que decrece en <span class="math inline">\((0,1]\)</span> y crece en <span class="math inline">\([1,\infty)\)</span>. Para <span class="math inline">\(x&gt;0\)</span> pequeño, <span class="math inline">\(f(x)&gt;1/x\)</span> es arbitrariamente grande; el comportamiento negativo se obtiene por simetría. Para <span class="math inline">\(|x|\)</span> grande, la diferencia respecto de <span class="math inline">\(y=x\)</span> es <span class="math inline">\(1/x\)</span>, de magnitud arbitrariamente pequeña. La rama positiva está por encima de esa recta y la negativa por debajo.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(g(x)=x-1/x\)</span> es impar y se anula en <span class="math inline">\(x=\pm1\)</span>. Para <span class="math inline">\(u&lt;v\)</span> del mismo signo,</p>
+<p><span class="math display">\[g(v)-g(u)=(v-u)\left(1+\frac1{uv}\right)&gt;0.\]</span></p>
+<p>Cada rama es estrictamente creciente. Cuando <span class="math inline">\(x&gt;0\)</span> es pequeño, <span class="math inline">\(g(x)\)</span> es negativo y de magnitud arbitrariamente grande; cuando <span class="math inline">\(x&lt;0\)</span> es pequeño en magnitud, es positivo y grande. La diferencia <span class="math inline">\(g(x)-x=-1/x\)</span> muestra la aproximación a <span class="math inline">\(y=x\)</span>, por debajo para <span class="math inline">\(x&gt;0\)</span> y por encima para <span class="math inline">\(x&lt;0\)</span>.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(h(x)=x^2+1/x^2\)</span> es par y</p>
+<p><span class="math display">\[h(x)-2=\frac{(x^2-1)^2}{x^2}\ge0.\]</span></p>
+<p>Sus mínimos están en <span class="math inline">\((\pm1,2)\)</span>. En el semieje positivo decrece hasta <span class="math inline">\(1\)</span> y luego crece: para <span class="math inline">\(0&lt;u&lt;v\)</span>,</p>
+<p><span class="math display">\[h(v)-h(u)=(v^2-u^2)\left(1-\frac1{u^2v^2}\right).\]</span></p>
+<p>Se refleja esa rama respecto del eje vertical. Cerca de cero domina el término positivo <span class="math inline">\(1/x^2\)</span>; lejos de cero, <span class="math inline">\(h(x)-x^2=1/x^2\)</span> es pequeño. Las dos ramas quedan encima de la parábola <span class="math inline">\(y=x^2\)</span>.</p>
+<p><strong>(iv)</strong> <span class="math inline">\(j(x)=x^2-1/x^2\)</span> es par, se anula en <span class="math inline">\(\pm1\)</span> y crece estrictamente para <span class="math inline">\(x&gt;0\)</span>, porque</p>
+<p><span class="math display">\[j(v)-j(u)=(v^2-u^2)\left(1+\frac1{u^2v^2}\right)&gt;0.\]</span></p>
+<p>Cerca de cero es negativo y de magnitud arbitrariamente grande. Para <span class="math inline">\(|x|\)</span> grande queda debajo de <span class="math inline">\(y=x^2\)</span> a una distancia vertical <span class="math inline">\(1/x^2\)</span>. Por reflexión, decrece en el semieje negativo.</p>
+<div id="fig-spv4-c04-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Cuatro gráficas racionales">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E010.png" class="img-fluid figure-img" alt="Capítulo 4: Cuatro gráficas racionales">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Capítulo 04 · Figura 5. Cuatro gráficas racionales
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e011" class="level2">
+<h2 class="anchored" data-anchor-id="e011">Ejercicio 11 — <code>SPV4-C04-E011</code></h2>
+<p>Referencia: p.&nbsp;71. <strong>Problema:</strong> describir las gráficas bajo cuatro condiciones.</p>
+<section id="solución-10" class="level3">
+<h3 class="anchored" data-anchor-id="solución-10">Solución</h3>
+<p><strong>(i)</strong> Si <span class="math inline">\(f\)</span> es par, <span class="math inline">\((x,f(x))\)</span> y <span class="math inline">\((-x,f(x))\)</span> aparecen juntos: simetría respecto del eje vertical. <strong>(ii)</strong> Si <span class="math inline">\(f\)</span> es impar, <span class="math inline">\((x,f(x))\)</span> y <span class="math inline">\((-x,-f(x))\)</span> aparecen juntos: simetría central respecto del origen. Estas definiciones presuponen un dominio simétrico respecto de cero.</p>
+<p><strong>(iii)</strong> Si <span class="math inline">\(f(x)\ge0\)</span> en su dominio, todos los puntos están en el semiplano cerrado <span class="math inline">\(y\ge0\)</span>.</p>
+<p><strong>(iv)</strong> Si <span class="math inline">\(f(x)=f(x+a)\)</span> para todos los <span class="math inline">\(x\)</span>, la gráfica es invariante al trasladarla horizontalmente <span class="math inline">\(a\)</span> unidades. Para <span class="math inline">\(a\ne0\)</span>, también <span class="math inline">\(-a\)</span> es período, y se repite un tramo de longitud <span class="math inline">\(|a|\)</span>; éste puede no ser el período mínimo. Para <span class="math inline">\(a=0\)</span> la condición es una identidad sin información adicional.</p>
+</section>
+</section>
+<section id="e012" class="level2">
+<h2 class="anchored" data-anchor-id="e012">Ejercicio 12 — <code>SPV4-C04-E012</code></h2>
+<p>Referencia: p.&nbsp;71. <strong>Problema:</strong> dibujar <span class="math inline">\(f_m(x)=\sqrt[m]{x}\)</span> para <span class="math inline">\(m=1,2,3,4\)</span>.</p>
+<section id="solución-11" class="level3">
+<h3 class="anchored" data-anchor-id="solución-11">Solución</h3>
+<p>Para <span class="math inline">\(m=1,3\)</span>, el dominio es <span class="math inline">\(\mathbb R\)</span>; para <span class="math inline">\(m=2,4\)</span>, es <span class="math inline">\([0,\infty)\)</span> y se toma la raíz no negativa. Todas pasan por <span class="math inline">\((0,0)\)</span> y <span class="math inline">\((1,1)\)</span>; las impares pasan además por <span class="math inline">\((-1,-1)\)</span> y tienen simetría central.</p>
+<p>Se obtienen intercambiando coordenadas en las gráficas de <span class="math inline">\(y=x^m\)</span>, restringidas a <span class="math inline">\(x\ge0\)</span> cuando <span class="math inline">\(m\)</span> es par. Si <span class="math inline">\(0&lt;x&lt;1\)</span>, el orden es</p>
+<p><span class="math display">\[x&lt;\sqrt x&lt;\sqrt[3]x&lt;\sqrt[4]x;\]</span></p>
+<p>si <span class="math inline">\(x&gt;1\)</span>, el orden se invierte. Por ejemplo, si <span class="math inline">\(0&lt;u&lt;1\)</span>, entonces <span class="math inline">\(u^4&lt;u^3&lt;u^2&lt;u\)</span>; la monotonía de las potencias y sus inversas permite comparar las raíces. Cada función es estrictamente creciente en su dominio.</p>
+<div id="fig-spv4-c04-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Raíces de órdenes uno a cuatro">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E012.png" class="img-fluid figure-img" alt="Capítulo 4: Raíces de órdenes uno a cuatro">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Capítulo 04 · Figura 6. Raíces de órdenes uno a cuatro
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e013" class="level2">
+<h2 class="anchored" data-anchor-id="e013">Ejercicio 13 — <code>SPV4-C04-E013</code></h2>
+<p>Referencia: p.&nbsp;71. <strong>Problema:</strong> comparar (a) <span class="math inline">\(|x|\)</span> con <span class="math inline">\(x^2\)</span> y (b) <span class="math inline">\(|\sin x|\)</span> con <span class="math inline">\(\sin^2x\)</span>.</p>
+<section id="solución-12" class="level3">
+<h3 class="anchored" data-anchor-id="solución-12">Solución</h3>
+<p><strong>(a)</strong> <span class="math inline">\(|x|\)</span> consta de dos semirrectas que se encuentran en el origen; <span class="math inline">\(x^2\)</span> es una parábola. Ambas son pares y no negativas. Coinciden cuando <span class="math inline">\(|x|=x^2\)</span>, es decir, en <span class="math inline">\(x=-1,0,1\)</span>. Para <span class="math inline">\(0&lt;|x|&lt;1\)</span>, se tiene <span class="math inline">\(x^2&lt;|x|\)</span>; para <span class="math inline">\(|x|&gt;1\)</span>, <span class="math inline">\(x^2&gt;|x|\)</span>. La V conserva dos lados rectos, mientras que la parábola cambia su forma gradualmente.</p>
+<p><strong>(b)</strong> Ponga <span class="math inline">\(u=|\sin x|\in[0,1]\)</span>. Entonces <span class="math inline">\(u^2\le u\)</span>, con igualdad sólo si <span class="math inline">\(u=0\)</span> o <span class="math inline">\(u=1\)</span>. Por tanto, <span class="math inline">\(\sin^2x\le|\sin x|\)</span>; coinciden en <span class="math inline">\(x=k\pi/2\)</span>, <span class="math inline">\(k\in\mathbb Z\)</span>, y la desigualdad es estricta entre esos puntos. Las dos son pares y de período <span class="math inline">\(\pi\)</span>. En <span class="math inline">\(|\sin x|\)</span> se reflejan hacia arriba los arcos negativos del seno; en <span class="math inline">\(\sin^2x\)</span> se cuadran todas las alturas. Las figuras muestran el contraste entre los encuentros de arcos en los ceros y los valles más aplanados de la función cuadrada; no se necesita aquí un criterio diferencial de suavidad.</p>
+<div id="fig-spv4-c04-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Comparación de valor absoluto y cuadrado">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E013.png" class="img-fluid figure-img" alt="Capítulo 4: Comparación de valor absoluto y cuadrado">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Capítulo 04 · Figura 7. Comparación de valor absoluto y cuadrado
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e014" class="level2">
+<h2 class="anchored" data-anchor-id="e014">Ejercicio 14 — <code>SPV4-C04-E014</code></h2>
+<p>Referencia: pp.&nbsp;71–72. <strong>Problema:</strong> describir diez transformaciones de una gráfica dada.</p>
+<section id="solución-13" class="level3">
+<h3 class="anchored" data-anchor-id="solución-13">Solución</h3>
+<p>Sea <span class="math inline">\(D\)</span> el dominio de <span class="math inline">\(f\)</span>. Cada regla se justifica siguiendo un punto <span class="math inline">\((u,f(u))\)</span> o sustituyendo el argumento.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Inciso</th>
+<th><span class="math inline">\(g(x)\)</span></th>
+<th>Gráfica y dominio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(i)</td>
+<td><span class="math inline">\(f(x)+c\)</span></td>
+<td><span class="math inline">\((u,f(u))\mapsto(u,f(u)+c)\)</span>: traslación vertical; dominio <span class="math inline">\(D\)</span></td>
+</tr>
+<tr class="even">
+<td>(ii)</td>
+<td><span class="math inline">\(f(x+c)\)</span></td>
+<td><span class="math inline">\((u,f(u))\mapsto(u-c,f(u))\)</span>: traslación horizontal <span class="math inline">\(-c\)</span>; dominio <span class="math inline">\(D-c\)</span></td>
+</tr>
+<tr class="odd">
+<td>(iii)</td>
+<td><span class="math inline">\(cf(x)\)</span></td>
+<td><span class="math inline">\((u,f(u))\mapsto(u,cf(u))\)</span>: factor vertical $c$ y reflexión horizontal si <span class="math inline">\(c&lt;0\)</span>; dominio <span class="math inline">\(D\)</span></td>
+</tr>
+<tr class="even">
+<td>(iv)</td>
+<td><span class="math inline">\(f(cx)\)</span>, <span class="math inline">\(c\ne0\)</span></td>
+<td><span class="math inline">\((u,f(u))\mapsto(u/c,f(u))\)</span>: factor horizontal $1/c$ y reflexión vertical si <span class="math inline">\(c&lt;0\)</span>; dominio <span class="math inline">\(\{x:cx\in D\}\)</span></td>
+</tr>
+<tr class="odd">
+<td>(v)</td>
+<td><span class="math inline">\(f(1/x)\)</span></td>
+<td><span class="math inline">\((u,f(u))\mapsto(1/u,f(u))\)</span> para <span class="math inline">\(u\ne0\)</span>; dominio <span class="math inline">\(\{x\ne0:1/x\in D\}\)</span></td>
+</tr>
+<tr class="even">
+<td>(vi)</td>
+<td><span class="math inline">\(f(\vert x\vert )\)</span></td>
+<td>conservar la parte con <span class="math inline">\(u\ge0\)</span> y reflejarla en el eje vertical; dominio <span class="math inline">\(\{x:\vert x\vert \in D\}\)</span></td>
+</tr>
+<tr class="odd">
+<td>(vii)</td>
+<td>$f(x)$</td>
+<td>reflejar sobre el eje horizontal las alturas negativas; dominio <span class="math inline">\(D\)</span></td>
+</tr>
+<tr class="even">
+<td>(viii)</td>
+<td><span class="math inline">\(\max(f(x),0)\)</span></td>
+<td>sustituir las alturas negativas por cero; dominio <span class="math inline">\(D\)</span></td>
+</tr>
+<tr class="odd">
+<td>(ix)</td>
+<td><span class="math inline">\(\min(f(x),0)\)</span></td>
+<td>sustituir las alturas positivas por cero; dominio <span class="math inline">\(D\)</span></td>
+</tr>
+<tr class="even">
+<td>(x)</td>
+<td><span class="math inline">\(\max(f(x),1)\)</span></td>
+<td>sustituir las alturas menores que uno por uno; dominio <span class="math inline">\(D\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>En (iii), si <span class="math inline">\(c=0\)</span>, la función vale cero sólo en <span class="math inline">\(D\)</span>: multiplicar por cero no añade puntos al dominio. En (iv), si <span class="math inline">\(c=0\)</span> y <span class="math inline">\(0\in D\)</span>, la función es la constante <span class="math inline">\(f(0)\)</span> sobre <span class="math inline">\(\mathbb R\)</span>; si <span class="math inline">\(0\notin D\)</span>, no está definida en ningún punto. En (v), un argumento grande positivo o negativo se convierte en uno pequeño del mismo signo, y viceversa; ésta no es una transformación lineal ni una reflexión usual. En (viii)–(x), las partes sustituidas permanecen como segmentos o conjuntos de puntos a la altura correspondiente: no se eliminan del dominio.</p>
+</section>
+</section>
+<section id="e015" class="level2">
+<h2 class="anchored" data-anchor-id="e015">Ejercicio 15 — <code>SPV4-C04-E015</code></h2>
+<p>Referencia: p.&nbsp;72. <strong>Problema:</strong> describir la gráfica de <span class="math inline">\(ax^2+bx+c\)</span>.</p>
+<section id="solución-14" class="level3">
+<h3 class="anchored" data-anchor-id="solución-14">Solución</h3>
+<p>Si <span class="math inline">\(a\ne0\)</span>, completar el cuadrado da</p>
+<p><span class="math display">\[ax^2+bx+c=a\left(x+\frac b{2a}\right)^2+c-\frac{b^2}{4a}.\]</span></p>
+<p>Es la parábola <span class="math inline">\(y=ax^2\)</span> trasladada, con vértice <span class="math inline">\((-b/(2a),c-b^2/(4a))\)</span> y eje vertical <span class="math inline">\(x=-b/(2a)\)</span>. Abre hacia arriba si <span class="math inline">\(a&gt;0\)</span> y hacia abajo si <span class="math inline">\(a&lt;0\)</span>. Su corte con el eje vertical es <span class="math inline">\((0,c)\)</span>.</p>
+<p>Con <span class="math inline">\(\Delta=b^2-4ac\)</span>, el corte con el eje horizontal consta de dos puntos si <span class="math inline">\(\Delta&gt;0\)</span>, un punto si <span class="math inline">\(\Delta=0\)</span> y ninguno si <span class="math inline">\(\Delta&lt;0\)</span>; las abscisas son <span class="math inline">\((-b\pm\sqrt\Delta)/(2a)\)</span> cuando existen. Si <span class="math inline">\(a=0,b\ne0\)</span>, hay una recta; si <span class="math inline">\(a=b=0\)</span>, una recta horizontal constante. La forma canónica permite dibujar cualquier caso sin una lista arbitraria de muestras.</p>
+<div id="fig-spv4-c04-f08" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Formas de la cuadrática y su caso lineal">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E015.png" class="img-fluid figure-img" alt="Capítulo 4: Formas de la cuadrática y su caso lineal">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f08-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Capítulo 04 · Figura 8. Formas de la cuadrática y su caso lineal
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e016" class="level2">
+<h2 class="anchored" data-anchor-id="e016">Ejercicio 16 — <code>SPV4-C04-E016</code></h2>
+<p>Referencia: p.&nbsp;72. <strong>Problema:</strong> clasificar <span class="math inline">\(Ax^2+Bx+Cy^2+Dy+E=0\)</span>, donde <span class="math inline">\(A,C\)</span> no son ambos cero, incluidos los casos degenerados y la circunferencia.</p>
+<section id="solución-15" class="level3">
+<h3 class="anchored" data-anchor-id="solución-15">Solución</h3>
+<p>Suponga primero <span class="math inline">\(A,C\ne0\)</span>. Con</p>
+<p><span class="math display">\[X=x+\frac B{2A},\quad Y=y+\frac D{2C},\quad K=-E+\frac{B^2}{4A}+\frac{D^2}{4C},\]</span></p>
+<p>la ecuación equivale a <span class="math inline">\(AX^2+CY^2=K\)</span>.</p>
+<p>Si <span class="math inline">\(A,C\)</span> tienen el mismo signo, multiplique toda la ecuación por <span class="math inline">\(-1\)</span> si es necesario para que sean positivos; también se cambia el signo de <span class="math inline">\(K\)</span>. Entonces:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Condición</th>
+<th>Lugar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(K&gt;0\)</span></td>
+<td>elipse <span class="math inline">\(X^2/(K/A)+Y^2/(K/C)=1\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(K=0\)</span></td>
+<td>un solo punto, el centro</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(K&lt;0\)</span></td>
+<td>vacío</td>
+</tr>
+</tbody>
+</table>
+<p>La elipse es una circunferencia exactamente cuando <span class="math inline">\(A=C\)</span>, y su radio es <span class="math inline">\(\sqrt{K/A}\)</span>. En los coeficientes originales se requiere <span class="math inline">\(A=C\ne0\)</span> y <span class="math inline">\(K/A&gt;0\)</span>. El caso de radio cero se registra como punto.</p>
+<p>Si <span class="math inline">\(A,C\)</span> tienen signos opuestos, <span class="math inline">\(K\ne0\)</span> produce una hipérbola. Después de dividir por <span class="math inline">\(K\)</span>, el término con coeficiente positivo señala la dirección de sus dos ramas. Si <span class="math inline">\(K=0\)</span>, aparecen las dos rectas secantes</p>
+<p><span class="math display">\[X=\pm\sqrt{-C/A}\,Y.\]</span></p>
+<p>Quedan los casos con un coeficiente cuadrático nulo. Si <span class="math inline">\(C=0\)</span>, entonces <span class="math inline">\(A\ne0\)</span>, y al completar el cuadrado se obtiene</p>
+<p><span class="math display">\[A\left(x+\frac B{2A}\right)^2+Dy=K_0,\qquad K_0=-E+\frac{B^2}{4A}.\]</span></p>
+<p>Si <span class="math inline">\(D\ne0\)</span>, se despeja una parábola con eje vertical. Si <span class="math inline">\(D=0\)</span>, la ecuación <span class="math inline">\(X^2=K_0/A\)</span> produce dos rectas verticales paralelas, una sola recta vertical o el vacío, según <span class="math inline">\(K_0/A\)</span> sea positivo, cero o negativo. Si <span class="math inline">\(A=0,C\ne0\)</span>, intercambie <span class="math inline">\(x\)</span> con <span class="math inline">\(y\)</span> y <span class="math inline">\(B\)</span> con <span class="math inline">\(D\)</span>: se obtiene una parábola horizontal cuando <span class="math inline">\(B\ne0\)</span>; cuando <span class="math inline">\(B=0\)</span>, dos rectas horizontales, una o ninguna. Esto agota todos los casos sin atribuir una elipse o una parábola a una ecuación degenerada.</p>
+</section>
+</section>
+<section id="e017" class="level2">
+<h2 class="anchored" data-anchor-id="e017">Ejercicio 17 — <code>SPV4-C04-E017</code></h2>
+<p>Referencia: p.&nbsp;72. <strong>Problema:</strong> dibujar seis funciones construidas con <span class="math inline">\(\lfloor x\rfloor\)</span>, el mayor entero no superior a <span class="math inline">\(x\)</span>.</p>
+<section id="solución-16" class="level3">
+<h3 class="anchored" data-anchor-id="solución-16">Solución</h3>
+<p>Escriba <span class="math inline">\(x=n+t\)</span>, <span class="math inline">\(n\in\mathbb Z\)</span>, <span class="math inline">\(0\le t&lt;1\)</span>.</p>
+<p><strong>(i)</strong> <span class="math inline">\(\lfloor x\rfloor=n\)</span> en <span class="math inline">\([n,n+1)\)</span>: escalón cerrado a la izquierda y abierto a la derecha.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(x-\lfloor x\rfloor=t\)</span>: segmento de pendiente <span class="math inline">\(1\)</span> desde <span class="math inline">\((n,0)\)</span> incluido hasta <span class="math inline">\((n+1,1)\)</span> excluido; en el entero siguiente se reinicia en cero.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(\sqrt{x-\lfloor x\rfloor}=\sqrt t\)</span>: arco desde <span class="math inline">\((n,0)\)</span> incluido hasta <span class="math inline">\((n+1,1)\)</span> excluido. Su dominio es todo <span class="math inline">\(\mathbb R\)</span>, porque la parte fraccionaria nunca es negativa.</p>
+<p><strong>(iv)</strong> <span class="math inline">\(\lfloor x\rfloor+\sqrt{x-\lfloor x\rfloor}=n+\sqrt t\)</span>. Cada arco va de <span class="math inline">\((n,n)\)</span> al punto <span class="math inline">\((n+1,n+1)\)</span>; aunque el extremo derecho no pertenece a ese arco, el arco siguiente lo incluye. No hay saltos entre los valores de los extremos.</p>
+<p><strong>(v)</strong> Sea <span class="math inline">\(k=\lfloor1/x\rfloor\)</span>, con <span class="math inline">\(x\ne0\)</span>. Resolver <span class="math inline">\(k\le1/x&lt;k+1\)</span> por separado según el signo da</p>
+<p><span class="math display">\[\lfloor1/x\rfloor=\begin{cases}
+-1,&amp;x\le-1,\\
+0,&amp;x&gt;1,\\
+k,&amp;\dfrac1{k+1}&lt;x\le\dfrac1k,\quad k\ge1\text{ o }k\le-2.
+\end{cases}\]</span></p>
+<p>Hay infinitos escalones que se acumulan en cero. En <span class="math inline">\(x=1\)</span> el valor es <span class="math inline">\(1\)</span>; en <span class="math inline">\(x=-1\)</span> es <span class="math inline">\(-1\)</span>.</p>
+<p><strong>(vi)</strong> <span class="math inline">\(1/\lfloor1/x\rfloor\)</span> exige además <span class="math inline">\(\lfloor1/x\rfloor\ne0\)</span>. Su dominio exacto es</p>
+<p><span class="math display">\[(-\infty,0)\cup(0,1].\]</span></p>
+<p>En <span class="math inline">\(x\le-1\)</span> vale <span class="math inline">\(-1\)</span>; en cada intervalo de (v) con <span class="math inline">\(k\ge1\)</span> o <span class="math inline">\(k\le-2\)</span>, vale <span class="math inline">\(1/k\)</span>. No se elimina <span class="math inline">\(x&lt;-1\)</span>: allí el denominador es <span class="math inline">\(-1\)</span>, perfectamente válido. Cero queda excluido aunque las alturas de los escalones se acerquen a él.</p>
+<div id="fig-spv4-c04-f09" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Parte entera y sus composiciones">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E017.png" class="img-fluid figure-img" alt="Capítulo 4: Parte entera y sus composiciones">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f09-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Capítulo 04 · Figura 9. Parte entera y sus composiciones
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e018" class="level2">
+<h2 class="anchored" data-anchor-id="e018">Ejercicio 18 — <code>SPV4-C04-E018</code></h2>
+<p>Referencia: p.&nbsp;72. <strong>Problema:</strong> dibujar cinco funciones usando la distancia <span class="math inline">\(\delta(x)\)</span> al entero más próximo.</p>
+<section id="solución-17" class="level3">
+<h3 class="anchored" data-anchor-id="solución-17">Solución</h3>
+<p>Esta notación no representa la parte fraccionaria del ejercicio anterior. Para <span class="math inline">\(x=n+t\)</span>, <span class="math inline">\(0\le t\le1\)</span>,</p>
+<p><span class="math display">\[\delta(x)=\min(t,1-t)=\begin{cases}t,&amp;0\le t\le1/2,\\1-t,&amp;1/2\le t\le1.\end{cases}\]</span></p>
+<p>Los dos enteros vecinos son los más próximos: cualquier otro entero está al menos a distancia <span class="math inline">\(1\)</span> de uno de los extremos y no puede mejorar el mínimo. Así, <span class="math inline">\(\delta\)</span> es par, de período <span class="math inline">\(1\)</span>, con ceros en los enteros y altura <span class="math inline">\(1/2\)</span> en los semienteros.</p>
+<p><strong>(i)</strong> La gráfica de <span class="math inline">\(\delta(x)\)</span> es la sucesión de triángulos descrita por la fórmula.</p>
+<p><strong>(ii)</strong> La de <span class="math inline">\(\delta(2x)\)</span> tiene la misma altura y un período <span class="math inline">\(1/2\)</span>: ceros en <span class="math inline">\(k/2\)</span> y máximos en <span class="math inline">\((2k+1)/4\)</span>.</p>
+<p><strong>(iii)</strong> Para <span class="math inline">\(T_2(x)=\delta(x)+\delta(2x)/2\)</span>, basta conocer las alturas en <span class="math inline">\(0,1/4,1/2,3/4,1\)</span>:</p>
+<p><span class="math display">\[0,\ 1/2,\ 1/2,\ 1/2,\ 0.\]</span></p>
+<p>Entre estos puntos cada sumando es lineal. Por tanto, en <span class="math inline">\([0,1]\)</span> sube con pendiente <span class="math inline">\(2\)</span> hasta <span class="math inline">\(1/4\)</span>, permanece a altura <span class="math inline">\(1/2\)</span> hasta <span class="math inline">\(3/4\)</span> y baja con pendiente <span class="math inline">\(-2\)</span> hasta <span class="math inline">\(1\)</span>. Se repite con período <span class="math inline">\(1\)</span>.</p>
+<p><strong>(iv)</strong> <span class="math inline">\(\delta(4x)\)</span> tiene período <span class="math inline">\(1/4\)</span>, ceros en <span class="math inline">\(k/4\)</span> y máximos <span class="math inline">\(1/2\)</span> en <span class="math inline">\((2k+1)/8\)</span>.</p>
+<p><strong>(v)</strong> Para <span class="math inline">\(T_3(x)=T_2(x)+\delta(4x)/4\)</span>, las alturas en los nueve puntos <span class="math inline">\(j/8\)</span>, <span class="math inline">\(j=0,\ldots,8\)</span>, son</p>
+<p><span class="math display">\[0,\ 3/8,\ 1/2,\ 5/8,\ 1/2,\ 5/8,\ 1/2,\ 3/8,\ 0.\]</span></p>
+<p>Una cada par de vértices consecutivos por un segmento y repita el tramo. Estas alturas y la linealidad entre los puntos de quiebre determinan la gráfica completa; no hace falta anticipar la teoría de la serie infinita que aparecerá más adelante.</p>
+<div id="fig-spv4-c04-f10" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Distancia a enteros y sumas de triángulos">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E018.png" class="img-fluid figure-img" alt="Capítulo 4: Distancia a enteros y sumas de triángulos">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Capítulo 04 · Figura 10. Distancia a enteros y sumas de triángulos
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e019" class="level2">
+<h2 class="anchored" data-anchor-id="e019">Ejercicio 19 — <code>SPV4-C04-E019</code></h2>
+<p>Referencia: p.&nbsp;73. <strong>Problema:</strong> describir seis gráficas definidas mediante cifras decimales, eligiendo siempre la expansión con una cola de nueves cuando hay dos expansiones.</p>
+<section id="solución-18" class="level3">
+<h3 class="anchored" data-anchor-id="solución-18">Solución</h3>
+<p>Para evitar ambigüedad con números negativos e enteros, usamos <span class="math inline">\(x=N+\sum_{j\ge1}d_j10^{-j}\)</span>, con <span class="math inline">\(N\in\mathbb Z\)</span>, <span class="math inline">\(0&lt;\sum d_j10^{-j}\le1\)</span>, y la expansión que no termina en ceros. Por ejemplo, <span class="math inline">\(0= -1+0.999\ldots\)</span> y <span class="math inline">\(0.1=0+0.0999\ldots\)</span>. Las posiciones se cuentan después de la coma. Con esta convención los extremos decimales de los escalones pertenecen al tramo situado a su izquierda. Las descripciones de expansiones infinitas tienen aquí el carácter intuitivo admitido expresamente por el libro; su construcción formal corresponde al capítulo 23.</p>
+<p><strong>(i)</strong> La primera cifra vale <span class="math inline">\(j\)</span> en</p>
+<p><span class="math display">\[\left(N+\frac j{10},N+\frac{j+1}{10}\right],\qquad j=0,\ldots,9,\quad N\in\mathbb Z.\]</span></p>
+<p>Cada unidad contiene diez escalones, abiertos a la izquierda y cerrados a la derecha. En un entero la primera cifra es <span class="math inline">\(9\)</span>.</p>
+<p><strong>(ii)</strong> La segunda cifra vale <span class="math inline">\(j\)</span> en</p>
+<p><span class="math display">\[\left(N+\frac{10i+j}{100},N+\frac{10i+j+1}{100}\right],\quad i,j=0,\ldots,9.\]</span></p>
+<p>Son cien escalones por unidad, agrupados en diez sucesiones de alturas <span class="math inline">\(0,1,\ldots,9\)</span>. Para cualquier posición se dispone de la fórmula exacta</p>
+<p><span class="math display">\[d_j(x)=\lceil10^jx\rceil-10\lceil10^{j-1}x\rceil+9.\]</span></p>
+<p><strong>(iii)</strong> La función que cuenta los sietes si son finitos y vale cero si son infinitos toma valores <span class="math inline">\(0,1,2,\ldots\)</span>. Elija un prefijo decimal suficientemente largo para que todas sus prolongaciones caigan dentro de un intervalo abierto dado. Si ese prefijo contiene <span class="math inline">\(h\)</span> sietes, puede alcanzar cualquier altura <span class="math inline">\(k\ge h\)</span> añadiendo <span class="math inline">\(k-h\)</span> sietes y una cola sin sietes. Sin embargo, <strong>no todas las alturas son densas en todo intervalo</strong>. Por ejemplo, en <span class="math inline">\((0.77,0.78)\)</span> toda expansión empieza por <span class="math inline">\(77\)</span>, y no puede haber altura <span class="math inline">\(1\)</span>. La altura <span class="math inline">\(0\)</span> sí aparece en cualquier intervalo mediante una cola con infinitos sietes. Para <span class="math inline">\(k\ge1\)</span>, el conjunto de abscisas de altura <span class="math inline">\(k\)</span> es exactamente el de expansiones con <span class="math inline">\(k\)</span> sietes; su presencia en un intervalo depende de los prefijos que dicho intervalo admite. La gráfica tiene filas de puntos, no rectas horizontales completas.</p>
+<p><strong>(iv)</strong> La función que vale <span class="math inline">\(0\)</span> si hay finitos sietes y <span class="math inline">\(1\)</span> si hay infinitos tiene puntos de ambas alturas en todo intervalo abierto. Tras cualquier prefijo, una cola de nueves evita añadir sietes y una cola de sietes produce infinitos. Ninguna de las dos filas contiene todos los puntos de una recta.</p>
+<p><strong>(v)</strong> Si el primer <span class="math inline">\(7\)</span> ocupa la posición <span class="math inline">\(n\)</span>, se conserva el prefijo hasta ese <span class="math inline">\(7\)</span> y se reemplaza la cola por ceros. Si <span class="math inline">\(P\)</span> es el entero formado por las primeras <span class="math inline">\(n\)</span> cifras, el valor es <span class="math inline">\(N+P/10^n\)</span>. Los puntos con ese valor tienen abscisas en</p>
+<p><span class="math display">\[\left(N+\frac P{10^n},N+\frac{P+1}{10^n}\right],\]</span></p>
+<p>donde el prefijo termina en <span class="math inline">\(7\)</span> y no contiene otro <span class="math inline">\(7\)</span> anterior. El extremo izquierdo se excluye porque su expansión elegida termina en <span class="math inline">\(6\,999\ldots\)</span>; el derecho sí conserva el <span class="math inline">\(7\)</span> del prefijo. Si nunca aparece <span class="math inline">\(7\)</span>, el valor es <span class="math inline">\(x\)</span>: esos puntos permanecen en la diagonal. Cada escalón queda por debajo de la diagonal; si el primer <span class="math inline">\(7\)</span> está en posición <span class="math inline">\(n\)</span>, entonces <span class="math inline">\(0&lt;x-f(x)\le10^{-n}\)</span>.</p>
+<p><strong>(vi)</strong> Si el primer <span class="math inline">\(1\)</span> aparece en posición <span class="math inline">\(n\)</span>, el valor es <span class="math inline">\(n\)</span>. La fila <span class="math inline">\(y=n\)</span> consta de intervalos abiertos a la izquierda y cerrados a la derecha cuyos prefijos tienen longitud <span class="math inline">\(n\)</span>, última cifra <span class="math inline">\(1\)</span> y ninguna cifra anterior igual a <span class="math inline">\(1\)</span>. En <span class="math inline">\(y=0\)</span> quedan exactamente los números sin ningún <span class="math inline">\(1\)</span>. Por ejemplo, la altura <span class="math inline">\(1\)</span> ocupa <span class="math inline">\((N+0.1,N+0.2]\)</span>. La altura <span class="math inline">\(2\)</span> ocupa los intervalos de centésimas correspondientes a prefijos <span class="math inline">\(01,21,31,\ldots,91\)</span>. Fijar más cifras revela sucesivamente filas más altas; unir puntos elegidos al azar daría una imagen falsa.</p>
+<div id="fig-spv4-c04-f11" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Primeras cifras decimales: convención con nueves">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E019.png" class="img-fluid figure-img" alt="Capítulo 4: Primeras cifras decimales: convención con nueves">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11: Capítulo 04 · Figura 11. Primeras cifras decimales: convención con nueves
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e020" class="level2">
+<h2 class="anchored" data-anchor-id="e020">Ejercicio 20 — <code>SPV4-C04-E020</code></h2>
+<p>Referencia: p.&nbsp;73. <strong>Problema:</strong> representar <span class="math inline">\(f(x)=0\)</span> para <span class="math inline">\(x\)</span> irracional y <span class="math inline">\(f(p/q)=1/q\)</span> para una fracción irreducible con <span class="math inline">\(q&gt;0\)</span>.</p>
+<section id="solución-19" class="level3">
+<h3 class="anchored" data-anchor-id="solución-19">Solución</h3>
+<p>Primero se colocan los enteros a altura <span class="math inline">\(1\)</span>; luego los numeradores impares sobre denominador <span class="math inline">\(2\)</span> a altura <span class="math inline">\(1/2\)</span>; luego <span class="math inline">\(p/3\)</span> con <span class="math inline">\(3\nmid p\)</span> a altura <span class="math inline">\(1/3\)</span>, y así sucesivamente. La reducción importa: <span class="math inline">\(2/4=1/2\)</span> se coloca a altura <span class="math inline">\(1/2\)</span>, no <span class="math inline">\(1/4\)</span>. El número cero es <span class="math inline">\(0/1\)</span>, de modo que <span class="math inline">\(f(0)=1\)</span>.</p>
+<p>La gráfica es de período <span class="math inline">\(1\)</span>, porque <span class="math inline">\(\gcd(p+q,q)=\gcd(p,q)\)</span>, y es par porque cambiar el signo del numerador no cambia el denominador reducido. Está contenida entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>. La fila cero contiene exactamente las abscisas irracionales; ningún racional está a altura cero.</p>
+<p>En un intervalo acotado hay sólo finitos puntos por encima de una altura fija <span class="math inline">\(\eta&gt;0\)</span>: allí <span class="math inline">\(1/q\ge\eta\)</span> exige <span class="math inline">\(q\le1/\eta\)</span>, y para cada uno de esos pocos denominadores sólo hay finitos numeradores en el intervalo. Las filas con denominadores grandes quedan arbitrariamente cerca del eje. La lámina muestra todas las fracciones reducidas con <span class="math inline">\(q\le12\)</span> en su ventana; no pretende mostrar todos los racionales ni convierte la fila de irracionales en una recta completa.</p>
+<div id="fig-spv4-c04-f12" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Muestra ordenada por denominadores de la función de Thomae">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/E020.png" class="img-fluid figure-img" alt="Capítulo 4: Muestra ordenada por denominadores de la función de Thomae">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12: Capítulo 04 · Figura 12. Muestra ordenada por denominadores de la función de Thomae
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e021" class="level2">
+<h2 class="anchored" data-anchor-id="e021">Ejercicio 21 — <code>SPV4-C04-E021</code></h2>
+<p>Referencia: p.&nbsp;73. <strong>Problema:</strong> describir parábolas mediante foco y directriz horizontal.</p>
+<section id="solución-20" class="level3">
+<h3 class="anchored" data-anchor-id="solución-20">Solución</h3>
+<p><strong>(a)</strong> Para <span class="math inline">\(P=(x,x^2)\)</span>, la distancia a <span class="math inline">\(F=(0,1/4)\)</span> satisface</p>
+<p><span class="math display">\[d(P,F)^2=x^2+(x^2-1/4)^2=(x^2+1/4)^2.\]</span></p>
+<p>Como <span class="math inline">\(x^2+1/4&gt;0\)</span>, la distancia es <span class="math inline">\(x^2+1/4\)</span>. La distancia a la recta <span class="math inline">\(y=-1/4\)</span> es exactamente la misma. Así, todos los puntos de la parábola son equidistantes del foco y la directriz.</p>
+<p><strong>(b)</strong> Para un foco <span class="math inline">\(F=(\alpha,\beta)\)</span> y directriz <span class="math inline">\(y=\gamma\)</span>, la igualdad de distancias equivale a</p>
+<p><span class="math display">\[(x-\alpha)^2+(y-\beta)^2=(y-\gamma)^2.\]</span></p>
+<p>Cuando <span class="math inline">\(\beta\ne\gamma\)</span>, cancelar <span class="math inline">\(y^2\)</span> y despejar produce</p>
+<p><span class="math display">\[y=\frac{(x-\alpha)^2}{2(\beta-\gamma)}+\frac{\beta+\gamma}{2}.\]</span></p>
+<p>Es una parábola de vértice <span class="math inline">\((\alpha,(\beta+\gamma)/2)\)</span>, que abre hacia el foco. El proceso es reversible: ambos cuadrados son cuadrados de distancias no negativas, por lo que no se añaden puntos al elevar al cuadrado. Si <span class="math inline">\(\beta=\gamma\)</span>, queda <span class="math inline">\((x-\alpha)^2=0\)</span>: toda la recta vertical <span class="math inline">\(x=\alpha\)</span>, no una parábola ni la gráfica de una función de <span class="math inline">\(x\)</span>.</p>
+</section>
+</section>
+<section id="e022" class="level2">
+<h2 class="anchored" data-anchor-id="e022">Ejercicio 22 — <code>SPV4-C04-E022</code></h2>
+<p>Referencia: p.&nbsp;73. <strong>Problema:</strong> obtener la distancia de <span class="math inline">\((c,d)\)</span> a una recta por minimización de una cuadrática.</p>
+<section id="solución-21" class="level3">
+<h3 class="anchored" data-anchor-id="solución-21">Solución</h3>
+<p><strong>(a)</strong> La distancia al punto <span class="math inline">\((x,mx)\)</span>, al cuadrado, es</p>
+<p><span class="math display">\[Q(x)=(x-c)^2+(mx-d)^2=(1+m^2)x^2-2(c+md)x+c^2+d^2.\]</span></p>
+<p>Al completar el cuadrado,</p>
+<p><span class="math display">\[Q(x)=(1+m^2)\left(x-\frac{c+md}{1+m^2}\right)^2+\frac{(mc-d)^2}{1+m^2}.\]</span></p>
+<p>El primer término es no negativo y alcanza cero para <span class="math inline">\(x_*=(c+md)/(1+m^2)\)</span>. La menor distancia es, por tanto, <span class="math inline">\(|mc-d|/\sqrt{1+m^2}\)</span>. Se ha demostrado que el mínimo existe, además de calcular su valor.</p>
+<p><strong>(b)</strong> Traslade todo el plano <span class="math inline">\(-b\)</span> verticalmente. La recta <span class="math inline">\(y=mx+b\)</span> se convierte en <span class="math inline">\(y=mx\)</span> y el punto en <span class="math inline">\((c,d-b)\)</span>; las distancias se conservan. Por (a),</p>
+<p><span class="math display">\[\boxed{d((c,d),\{y=mx+b\})=\frac{|mc-d+b|}{\sqrt{1+m^2}}.}\]</span></p>
+<p>El punto más próximo tiene abscisa <span class="math inline">\((c+m(d-b))/(1+m^2)\)</span> y ordenada <span class="math inline">\(mx_*+b\)</span>.</p>
+</section>
+</section>
+<section id="e023" class="level2">
+<h2 class="anchored" data-anchor-id="e023">Ejercicio 23 — <code>SPV4-C04-E023</code></h2>
+<p>Referencia: p.&nbsp;74. <strong>Problema:</strong> hallar las coordenadas en ejes girados <span class="math inline">\(45^\circ\)</span> y reconocer la hipérbola <span class="math inline">\(xy=1\)</span>.</p>
+<section id="solución-22" class="level3">
+<h3 class="anchored" data-anchor-id="solución-22">Solución</h3>
+<p><strong>(a)</strong> La magnitud de la coordenada <span class="math inline">\(x'\)</span> es la distancia a la recta <span class="math inline">\(y=-x\)</span>, que por el ejercicio 22 es <span class="math inline">\(|x+y|/\sqrt2\)</span>. El signo positivo corresponde al lado <span class="math inline">\(x+y&gt;0\)</span>. De modo análogo, <span class="math inline">\(y'\)</span> es la distancia con signo a <span class="math inline">\(y=x\)</span>, positiva en el lado <span class="math inline">\(y&gt;x\)</span>. Por tanto,</p>
+<p><span class="math display">\[x'=\frac{x+y}{\sqrt2},\qquad y'=\frac{-x+y}{\sqrt2}.\]</span></p>
+<p>Son coordenadas con signo, no meras longitudes positivas. La transformación inversa es <span class="math inline">\(x=(x'-y')/\sqrt2\)</span>, <span class="math inline">\(y=(x'+y')/\sqrt2\)</span>.</p>
+<p><strong>(b)</strong> Sustituir da</p>
+<p><span class="math display">\[\left(\frac{x'}{\sqrt2}\right)^2-\left(\frac{y'}{\sqrt2}\right)^2
+=\frac{(x+y)^2-(y-x)^2}{4}=xy.\]</span></p>
+<p>La expresión vale <span class="math inline">\(1\)</span> exactamente cuando <span class="math inline">\(xy=1\)</span>. En los ejes girados, esta hipérbola tiene la forma habitual con semiejes <span class="math inline">\(\sqrt2\)</span>; en los originales sus asíntotas son los dos ejes.</p>
+</section>
+</section>
+<section id="apéndice-1-vectores" class="level1">
+<h1>Apéndice 1 — Vectores</h1>
+<p>Las operaciones son <span class="math inline">\((v_1,v_2)+(w_1,w_2)=(v_1+w_1,v_2+w_2)\)</span> y <span class="math inline">\(av=(av_1,av_2)\)</span>. La norma es <span class="math inline">\(\|v\|=\sqrt{v_1^2+v_2^2}\)</span>. Una rotación positiva se mide en sentido antihorario.</p>
+<section id="e001-2" class="level2">
+<h2 class="anchored" data-anchor-id="e001-2">Ejercicio 1 — <code>SPV4-C04-A01-E001</code></h2>
+<p>Referencia: pp.&nbsp;77–78. <strong>Problema:</strong> deducir la fórmula de rotación por un ángulo <span class="math inline">\(\theta\)</span> y aplicarla a los ejes girados.</p>
+<section id="solución-23" class="level3">
+<h3 class="anchored" data-anchor-id="solución-23">Solución</h3>
+<p><strong>(a)</strong> El punto <span class="math inline">\((1,0)\)</span> está en el círculo unidad; al girarlo, sus coordenadas son <span class="math inline">\((\cos\theta,\sin\theta)\)</span> por definición geométrica. El punto <span class="math inline">\((0,1)\)</span> está un cuarto de vuelta más adelante; al girarlo da <span class="math inline">\((\cos(\theta+\pi/2),\sin(\theta+\pi/2))=(-\sin\theta,\cos\theta)\)</span>.</p>
+<p><strong>(b)</strong> Una rotación conserva segmentos, paralelismo y longitudes. Por eso lleva el paralelogramo de lados <span class="math inline">\(v,w\)</span> al de lados <span class="math inline">\(R_\theta(v),R_\theta(w)\)</span>, y su diagonal satisface <span class="math inline">\(R_\theta(v+w)=R_\theta(v)+R_\theta(w)\)</span>. Si los lados son colineales, se usa la suma de segmentos con signo en la misma recta, que también se conserva. Para <span class="math inline">\(a&gt;0\)</span>, el vector <span class="math inline">\(av\)</span> tiene la misma dirección que <span class="math inline">\(v\)</span> y longitud <span class="math inline">\(a\|v\|\)</span>, propiedades que conserva el giro; para <span class="math inline">\(a&lt;0\)</span> se añade la inversión de dirección, y para <span class="math inline">\(a=0\)</span> ambos miembros son cero. Así, <span class="math inline">\(R_\theta(av)=aR_\theta(v)\)</span> para todo real <span class="math inline">\(a\)</span>.</p>
+<p><strong>(c)</strong> Descomponga <span class="math inline">\((x,y)=x(1,0)+y(0,1)\)</span>. Por (a) y (b),</p>
+<p><span class="math display">\[R_\theta(x,y)=(x\cos\theta-y\sin\theta,\ x\sin\theta+y\cos\theta).\]</span></p>
+<p><strong>(d)</strong> Para expresar un punto en ejes girados <span class="math inline">\(\pi/4\)</span>, se gira el vector por <span class="math inline">\(-\pi/4\)</span>. Como <span class="math inline">\(\cos(-\pi/4)=1/\sqrt2\)</span> y <span class="math inline">\(\sin(-\pi/4)=-1/\sqrt2\)</span>, se recupera <span class="math inline">\((x',y')=((x+y)/\sqrt2,(-x+y)/\sqrt2)\)</span>. Además, <span class="math inline">\((x'^2-y'^2)/2=xy\)</span>, dando nuevamente la equivalencia con la hipérbola del ejercicio 23.</p>
+</section>
+</section>
+<section id="e002-2" class="level2">
+<h2 class="anchored" data-anchor-id="e002-2">Ejercicio 2 — <code>SPV4-C04-A01-E002</code></h2>
+<p>Referencia: p.&nbsp;78. <strong>Problema:</strong> estudiar <span class="math inline">\(v\cdot w=v_1w_1+v_2w_2\)</span>, su norma, desigualdad triangular e identidad de polarización.</p>
+<section id="solución-24" class="level3">
+<h3 class="anchored" data-anchor-id="solución-24">Solución</h3>
+<p><strong>(a)</strong> El vector <span class="math inline">\((-v_2,v_1)\)</span> cumple <span class="math inline">\(v\cdot(-v_2,v_1)=0\)</span>. Si <span class="math inline">\(v\ne0\)</span>, todos los vectores ortogonales son <span class="math inline">\(t(-v_2,v_1)\)</span>, <span class="math inline">\(t\in\mathbb R\)</span>. Si <span class="math inline">\(v_1\ne0\)</span>, despeje <span class="math inline">\(w_1=-v_2w_2/v_1\)</span> y tome <span class="math inline">\(t=w_2/v_1\)</span>; si <span class="math inline">\(v_1=0\)</span>, entonces <span class="math inline">\(v_2\ne0\)</span>, <span class="math inline">\(w_2=0\)</span> y la misma parametrización da toda la recta horizontal. Si <span class="math inline">\(v=0\)</span>, todos los vectores del plano satisfacen la ecuación; no hay una única recta de soluciones.</p>
+<p><strong>(b)</strong> La conmutatividad real da <span class="math inline">\(v_1w_1+v_2w_2=w_1v_1+w_2v_2\)</span>. Por distributividad,</p>
+<p><span class="math display">\[v\cdot(w+z)=v_1(w_1+z_1)+v_2(w_2+z_2)=v\cdot w+v\cdot z.\]</span></p>
+<p>Finalmente, <span class="math inline">\(a(v\cdot w)=av_1w_1+av_2w_2=(av)\cdot w=v\cdot(aw)\)</span>. El resultado de cada producto escalar es un número, no un vector.</p>
+<p><strong>(c)</strong> <span class="math inline">\(v\cdot v=v_1^2+v_2^2\ge0\)</span>, con igualdad si y sólo si <span class="math inline">\(v_1=v_2=0\)</span>. Su raíz es la distancia euclidiana del extremo de <span class="math inline">\(v\)</span> al origen; se anula sólo para el vector cero.</p>
+<p><strong>(d)</strong> Schwarz da <span class="math inline">\(v\cdot w\le\|v\|\|w\|\)</span>; expandir <span class="math inline">\(\|v+w\|^2\)</span> como en el ejercicio 9 demuestra <span class="math inline">\(\|v+w\|\le\|v\|+\|w\|\)</span>. Si alguno es cero hay igualdad. Si ambos son no nulos, la igualdad exige colinealidad y producto escalar positivo, por lo que <span class="math inline">\(w=av\)</span> con <span class="math inline">\(a&gt;0\)</span>. Recíprocamente, en ese caso <span class="math inline">\(\|v+w\|=(1+a)\|v\|=\|v\|+\|w\|\)</span>. Un múltiplo negativo no da igualdad salvo los casos nulos ya separados.</p>
+<p><strong>(e)</strong> Por expansión y (b), <span class="math inline">\(\|v+w\|^2=\|v\|^2+2v\cdot w+\|w\|^2\)</span> y <span class="math inline">\(\|v-w\|^2=\|v\|^2-2v\cdot w+\|w\|^2\)</span>. Restando,</p>
+<p><span class="math display">\[v\cdot w=\frac{\|v+w\|^2-\|v-w\|^2}{4}.\]</span></p>
+</section>
+</section>
+<section id="e003-2" class="level2">
+<h2 class="anchored" data-anchor-id="e003-2">Ejercicio 3 — <code>SPV4-C04-A01-E003</code></h2>
+<p>Referencia: p.&nbsp;78. <strong>Problema:</strong> probar la invariancia del producto escalar por rotaciones y su fórmula angular.</p>
+<section id="solución-25" class="level3">
+<h3 class="anchored" data-anchor-id="solución-25">Solución</h3>
+<p><strong>(a)</strong> Escriba <span class="math inline">\(c=\cos\theta\)</span>, <span class="math inline">\(s=\sin\theta\)</span>. Entonces</p>
+<p><span class="math display">\[\begin{aligned}
+R_\theta(v)\cdot R_\theta(w)
+&amp;=(cv_1-sv_2)(cw_1-sw_2)+(sv_1+cv_2)(sw_1+cw_2)\\
+&amp;=(c^2+s^2)(v_1w_1+v_2w_2)=v\cdot w.
+\end{aligned}\]</span></p>
+<p>Los términos mixtos se cancelan. En particular, la norma también se conserva.</p>
+<p><strong>(b)</strong> Para <span class="math inline">\(e=(1,0)\)</span> y <span class="math inline">\(u=(\cos\theta,\sin\theta)\)</span>, <span class="math inline">\(e\cdot u=\cos\theta\)</span>. Dados dos vectores no nulos, gire ambos hasta que el primero apunte por el eje positivo horizontal. Quedan <span class="math inline">\(v'=(\|v\|,0)\)</span> y <span class="math inline">\(w'=\|w\|(\cos\theta,\sin\theta)\)</span>, donde <span class="math inline">\(\theta\)</span> es su ángulo orientado. Por (a),</p>
+<p><span class="math display">\[v\cdot w=\|v\|\|w\|\cos\theta.\]</span></p>
+<p>Si se usa el ángulo no orientado, el coseno es el mismo. Para un vector nulo no hay ángulo definido; la identidad escalar sigue dando cero si se adopta cualquier ángulo por convenio.</p>
+</section>
+</section>
+<section id="e004-2" class="level2">
+<h2 class="anchored" data-anchor-id="e004-2">Ejercicio 4 — <code>SPV4-C04-A01-E004</code></h2>
+<p>Referencia: p.&nbsp;79. <strong>Problema:</strong> hallar la intersección de una recta paralela a <span class="math inline">\(w\)</span> con el eje horizontal y deducir una fórmula para el área.</p>
+<section id="solución-26" class="level3">
+<h3 class="anchored" data-anchor-id="solución-26">Solución</h3>
+<p><strong>(a)</strong> La recta por <span class="math inline">\(v\)</span> paralela a <span class="math inline">\(w\)</span> se parametriza como <span class="math inline">\(v+tw\)</span>. Si <span class="math inline">\(w_2\ne0\)</span>, su intersección con el eje horizontal ocurre para <span class="math inline">\(t=-v_2/w_2\)</span> y tiene abscisa</p>
+<p><span class="math display">\[B_1=v_1-\frac{v_2w_1}{w_2}=\frac{v_1w_2-w_1v_2}{w_2}.\]</span></p>
+<p>En la configuración de la figura del libro, la base obtenida por desplazar los triángulos tiene longitud <span class="math inline">\(B_1&gt;0\)</span> y la altura es <span class="math inline">\(w_2&gt;0\)</span>. El área es <span class="math inline">\(B_1w_2=v_1w_2-w_1v_2\)</span>. Para una configuración arbitraria hay que distinguir el área no negativa del determinante con signo:</p>
+<p><span class="math display">\[\det(v,w)=v_1w_2-v_2w_1,\qquad \text{área}=|\det(v,w)|.\]</span></p>
+<p>La construcción con esa intersección no sirve si <span class="math inline">\(w_2=0\)</span>, aunque la fórmula de área sí: entonces la base puede tomarse como <span class="math inline">\(w\)</span>, horizontal, y la altura es <span class="math inline">\(|v_2|\)</span>, dando <span class="math inline">\(|w_1v_2|\)</span>. El próximo ejercicio prueba la fórmula sin depender de la posición de la figura.</p>
+</section>
+</section>
+<section id="e005-2" class="level2">
+<h2 class="anchored" data-anchor-id="e005-2">Ejercicio 5 — <code>SPV4-C04-A01-E005</code></h2>
+<p>Referencia: p.&nbsp;79. <strong>Problema:</strong> justificar el signo geométrico del determinante y su invariancia por rotaciones.</p>
+<section id="solución-27" class="level3">
+<h3 class="anchored" data-anchor-id="solución-27">Solución</h3>
+<p><strong>(a)</strong> Si <span class="math inline">\(v=(h,0)\)</span> con <span class="math inline">\(h&gt;0\)</span>, <span class="math inline">\(\det(v,w)=hw_2\)</span>. La base del paralelogramo es <span class="math inline">\(h\)</span> y la altura es <span class="math inline">\(|w_2|\)</span>, de modo que el determinante es el área si <span class="math inline">\(w_2&gt;0\)</span>, su negativo si <span class="math inline">\(w_2&lt;0\)</span>, y cero si <span class="math inline">\(w_2=0\)</span>.</p>
+<p><strong>(b)</strong> Con <span class="math inline">\(c=\cos\theta,s=\sin\theta\)</span>,</p>
+<p><span class="math display">\[\begin{aligned}
+\det(R_\theta v,R_\theta w)
+&amp;=(cv_1-sv_2)(sw_1+cw_2)-(sv_1+cv_2)(cw_1-sw_2)\\
+&amp;=(c^2+s^2)(v_1w_2-v_2w_1)=\det(v,w).
+\end{aligned}\]</span></p>
+<p>Si <span class="math inline">\(v\ne0\)</span>, gírelo hasta el eje positivo horizontal y aplique (a). El giro conserva el área y el orden de orientación: el signo es positivo cuando el ángulo orientado de <span class="math inline">\(v\)</span> a <span class="math inline">\(w\)</span>, tomado en <span class="math inline">\((-\pi,\pi)\)</span>, es positivo, y negativo cuando es negativo. Para vectores colineales o nulos, el área y el determinante son cero. Así, el determinante mide área orientada y su valor absoluto mide área geométrica.</p>
+</section>
+</section>
+<section id="e006-2" class="level2">
+<h2 class="anchored" data-anchor-id="e006-2">Ejercicio 6 — <code>SPV4-C04-A01-E006</code></h2>
+<p>Referencia: p.&nbsp;79. <strong>Problema:</strong> demostrar la bilinealidad del determinante.</p>
+<section id="solución-28" class="level3">
+<h3 class="anchored" data-anchor-id="solución-28">Solución</h3>
+<p>La distributividad real da</p>
+<p><span class="math display">\[\det(v,w+z)=v_1(w_2+z_2)-v_2(w_1+z_1)=\det(v,w)+\det(v,z),\]</span></p>
+<p><span class="math display">\[\det(v+w,z)=(v_1+w_1)z_2-(v_2+w_2)z_1=\det(v,z)+\det(w,z).\]</span></p>
+<p>Además,</p>
+<p><span class="math display">\[\det(av,w)=av_1w_2-av_2w_1=a\det(v,w)=\det(v,aw).\]</span></p>
+<p>No hay una regla correspondiente de suma para las áreas sin signo: tomar valores absolutos puede destruir estas igualdades por cancelación de orientaciones.</p>
+</section>
+</section>
+<section id="e007-2" class="level2">
+<h2 class="anchored" data-anchor-id="e007-2">Ejercicio 7 — <code>SPV4-C04-A01-E007</code></h2>
+<p>Referencia: p.&nbsp;79. <strong>Problema:</strong> expresar el determinante mediante longitudes y ángulo.</p>
+<section id="solución-29" class="level3">
+<h3 class="anchored" data-anchor-id="solución-29">Solución</h3>
+<p>Para vectores no nulos, gire <span class="math inline">\(v\)</span> hasta <span class="math inline">\((\|v\|,0)\)</span>. El otro vector queda <span class="math inline">\(\|w\|(\cos\theta,\sin\theta)\)</span>, con <span class="math inline">\(\theta\)</span> orientado de <span class="math inline">\(v\)</span> a <span class="math inline">\(w\)</span>. La invariancia probada en el ejercicio 5 da</p>
+<p><span class="math display">\[\det(v,w)=\|v\|\|w\|\sin\theta.\]</span></p>
+<p>El área es <span class="math inline">\(\|v\|\|w\|\,|\sin\theta|\)</span>: base por altura. Con ángulo no orientado en <span class="math inline">\([0,\pi]\)</span>, esa fórmula da directamente el área, pero no conserva el signo del determinante. Si alguno de los vectores es cero, ambos lados escalares se anulan, aunque el ángulo no esté definido.</p>
+</section>
+</section>
+</section>
+<section id="apéndice-2-secciones-cónicas" class="level1">
+<h1>Apéndice 2 — Secciones cónicas</h1>
+<section id="e001-3" class="level2">
+<h2 class="anchored" data-anchor-id="e001-3">Ejercicio 1 — <code>SPV4-C04-A02-E001</code></h2>
+<p>Referencia: pp.&nbsp;82–83. <strong>Problema:</strong> clasificar las secciones planas del cilindro <span class="math inline">\(x^2+y^2=C^2\)</span>.</p>
+<section id="solución-30" class="level3">
+<h3 class="anchored" data-anchor-id="solución-30">Solución</h3>
+<p>Suponga <span class="math inline">\(C&gt;0\)</span>. El cilindro tiene generatrices verticales. Si el plano no es vertical, se escribe <span class="math inline">\(z=Mx+Ny+B\)</span>. Gire los ejes horizontales para dejarlo como <span class="math inline">\(z=Mx+B\)</span>. En el propio plano use una coordenada horizontal <span class="math inline">\(u\)</span> a lo largo de su dirección inclinada y otra <span class="math inline">\(v\)</span> paralela al eje <span class="math inline">\(y\)</span>. La coordenada ambiental es <span class="math inline">\(x=\alpha u+\beta\)</span>, donde <span class="math inline">\(0&lt;|\alpha|\le1\)</span>; si <span class="math inline">\(M\ne0\)</span>, se puede escoger <span class="math inline">\(\alpha=1/\sqrt{1+M^2}\)</span>. Entonces la sección cumple</p>
+<p><span class="math display">\[(\alpha u+\beta)^2+v^2=C^2.\]</span></p>
+<p>Es una elipse de semiejes <span class="math inline">\(C/|\alpha|\)</span> y <span class="math inline">\(C\)</span>, con centro <span class="math inline">\((-\beta/\alpha,0)\)</span>. Si el plano es horizontal, <span class="math inline">\(|\alpha|=1\)</span> y la sección es una circunferencia.</p>
+<p>Si el plano es vertical, tras girar en torno al eje del cilindro se escribe <span class="math inline">\(x=\beta\)</span>. Dentro del plano se toman <span class="math inline">\(u=z,v=y\)</span>, y la misma expresión tiene <span class="math inline">\(\alpha=0\)</span>: <span class="math inline">\(\beta^2+v^2=C^2\)</span>. Hay dos generatrices paralelas si <span class="math inline">\(|\beta|&lt;C\)</span>, una generatriz tangente si <span class="math inline">\(|\beta|=C\)</span> y ningún punto si <span class="math inline">\(|\beta|&gt;C\)</span>. No aparece una parábola ni una hipérbola. Si <span class="math inline">\(C=0\)</span>, el cilindro degenera en el eje vertical y su sección puede ser una recta, un punto o el vacío.</p>
+</section>
+</section>
+<section id="e002-3" class="level2">
+<h2 class="anchored" data-anchor-id="e002-3">Ejercicio 2 — <code>SPV4-C04-A02-E002</code></h2>
+<p>Referencia: p.&nbsp;83. <strong>Problema:</strong> usar dos esferas tangentes al plano secante y al cilindro para obtener los focos de la elipse.</p>
+<section id="solución-31" class="level3">
+<h3 class="anchored" data-anchor-id="solución-31">Solución</h3>
+<p><strong>(a)</strong> Sea <span class="math inline">\(Z\)</span> un punto de la sección y <span class="math inline">\(F_1\)</span> el punto donde el plano toca a la primera esfera. El segmento <span class="math inline">\(ZF_1\)</span> es tangente a la esfera. La generatriz vertical por <span class="math inline">\(Z\)</span> también es tangente a ella en el punto <span class="math inline">\(T_1\)</span> del círculo de contacto <span class="math inline">\(C_1\)</span>. Las dos longitudes son iguales. Una prueba directa evita depender del dibujo: si <span class="math inline">\(S_1\)</span> es el centro y <span class="math inline">\(R\)</span> el radio, ambos radios al punto de tangencia son perpendiculares a los segmentos, y Pitágoras da</p>
+<p><span class="math display">\[ZF_1^2=ZS_1^2-R^2=ZT_1^2.\]</span></p>
+<p>Las longitudes son no negativas, luego <span class="math inline">\(ZF_1=ZT_1\)</span>.</p>
+<p><strong>(b)</strong> La misma prueba para la segunda esfera da <span class="math inline">\(ZF_2=ZT_2\)</span>. En la configuración no vertical, toda la sección queda entre los planos horizontales de <span class="math inline">\(C_1\)</span> y <span class="math inline">\(C_2\)</span>. Por eso <span class="math inline">\(Z\)</span> está entre <span class="math inline">\(T_1\)</span> y <span class="math inline">\(T_2\)</span> en la generatriz, y</p>
+<p><span class="math display">\[ZF_1+ZF_2=ZT_1+ZT_2=T_1T_2.\]</span></p>
+<p>La última distancia es la separación constante de esos planos horizontales, independiente de <span class="math inline">\(Z\)</span>. Ésta es la propiedad focal de una elipse, con focos <span class="math inline">\(F_1,F_2\)</span>. La identificación completa de la sección con esa elipse también se sigue de la clasificación algebraica del ejercicio 1; no se está afirmando que una sola inclusión baste para probar igualdad de lugares. En el caso horizontal los focos coinciden y la elipse es una circunferencia.</p>
+</section>
+</section>
+<section id="e003-3" class="level2">
+<h2 class="anchored" data-anchor-id="e003-3">Ejercicio 3 — <code>SPV4-C04-A02-E003</code></h2>
+<p>Referencia: p.&nbsp;83. <strong>Problema:</strong> demostrar geométricamente las propiedades focales de las secciones de un cono con esferas de Dandelin.</p>
+<section id="solución-32" class="level3">
+<h3 class="anchored" data-anchor-id="solución-32">Solución</h3>
+<p>Se consideran cortes no degenerados: el plano no pasa por el vértice. Cada esfera toca el plano en un foco <span class="math inline">\(F_i\)</span> y el cono en un círculo <span class="math inline">\(C_i\)</span>; toda generatriz es tangente a la esfera en su intersección <span class="math inline">\(T_i\)</span> con ese círculo. Como en el ejercicio 2, <span class="math inline">\(ZF_i=ZT_i\)</span> para cualquier punto <span class="math inline">\(Z\)</span> de la sección.</p>
+<p>En el corte elíptico, las dos esferas están en la misma hoja del cono y <span class="math inline">\(Z\)</span> queda entre los dos puntos de contacto de su generatriz. Así,</p>
+<p><span class="math display">\[ZF_1+ZF_2=ZT_1+ZT_2=T_1T_2,\]</span></p>
+<p>una longitud constante: la porción de generatriz entre dos planos horizontales fijos tiene la misma longitud en todas las generatrices de un cono circular. Se obtiene la propiedad de suma constante de distancias a los focos.</p>
+<p>En el corte hiperbólico, las esferas están en hojas opuestas. Para un punto de una rama, los contactos <span class="math inline">\(T_1,T_2\)</span> están sobre la misma recta generatriz y el punto <span class="math inline">\(Z\)</span> queda fuera del segmento que los une. Por ello,</p>
+<p><span class="math display">\[|ZF_1-ZF_2|=|ZT_1-ZT_2|=T_1T_2.\]</span></p>
+<p>La diferencia absoluta es constante; la diferencia con signo cambia de una rama a la otra. Se obtiene la propiedad focal de la hipérbola. La clasificación algebraica del cono cortado, junto con las posiciones de los contactos, identifica las curvas no degeneradas; si el plano pasara por el vértice podrían aparecer rectas o un punto, y esas excepciones no se cubren con la construcción de dos esferas de la figura.</p>
+</section>
+</section>
+</section>
+<section id="apéndice-3-coordenadas-polares" class="level1">
+<h1>Apéndice 3 — Coordenadas polares</h1>
+<p>Un par polar <span class="math inline">\((r,\theta)\)</span> representa <span class="math inline">\((r\cos\theta,r\sin\theta)\)</span>. Se admiten radios negativos, como en el apéndice del libro: <span class="math inline">\((r,\theta)\)</span> y <span class="math inline">\((-r,\theta+\pi)\)</span> representan el mismo punto. El radio con signo no siempre es la distancia al origen, que vale <span class="math inline">\(|r|\)</span>. Esta distinción es decisiva en las rosas y en la hipérbola.</p>
+<section id="e001-4" class="level2">
+<h2 class="anchored" data-anchor-id="e001-4">Ejercicio 1 — <code>SPV4-C04-A03-E001</code></h2>
+<p>Referencia: p.&nbsp;88. <strong>Problema:</strong> hallar la distancia entre dos puntos dados en coordenadas polares.</p>
+<section id="solución-33" class="level3">
+<h3 class="anchored" data-anchor-id="solución-33">Solución</h3>
+<p>Por la fórmula cartesiana y la identidad del coseno de una diferencia,</p>
+<p><span class="math display">\[\begin{aligned}
+d^2&amp;=(r_1\cos\theta_1-r_2\cos\theta_2)^2+(r_1\sin\theta_1-r_2\sin\theta_2)^2\\
+&amp;=r_1^2+r_2^2-2r_1r_2(\cos\theta_1\cos\theta_2+\sin\theta_1\sin\theta_2)\\
+&amp;=r_1^2+r_2^2-2r_1r_2\cos(\theta_1-\theta_2).
+\end{aligned}\]</span></p>
+<p>Para radios no negativos es la ley de los cosenos aplicada al triángulo con vértice en el origen. La identidad algebraica también funciona con radios negativos; para interpretarla como ley de cosenos con longitudes, se reemplazan por <span class="math inline">\(|r_i|\)</span> y se ajusta el ángulo del radio negativo en <span class="math inline">\(\pi\)</span>.</p>
+</section>
+</section>
+<section id="e002-4" class="level2">
+<h2 class="anchored" data-anchor-id="e002-4">Ejercicio 2 — <code>SPV4-C04-A03-E002</code></h2>
+<p>Referencia: p.&nbsp;88. <strong>Problema:</strong> describir simetrías polares cuando <span class="math inline">\(f\)</span> es par, impar o de período <span class="math inline">\(\pi\)</span>.</p>
+<section id="solución-34" class="level3">
+<h3 class="anchored" data-anchor-id="solución-34">Solución</h3>
+<p><strong>(i)</strong> Si <span class="math inline">\(f(-\theta)=f(\theta)\)</span>, cambiar <span class="math inline">\(\theta\)</span> por <span class="math inline">\(-\theta\)</span> lleva <span class="math inline">\((x,y)\)</span> a <span class="math inline">\((x,-y)\)</span>. La gráfica tiene simetría respecto del eje horizontal.</p>
+<p><strong>(ii)</strong> Si <span class="math inline">\(f(-\theta)=-f(\theta)\)</span>, el mismo cambio lleva <span class="math inline">\((x,y)\)</span> a <span class="math inline">\((-x,y)\)</span>: simetría respecto del eje vertical. La imparidad polar no significa simetría central, porque también cambia el radio.</p>
+<p><strong>(iii)</strong> Si <span class="math inline">\(f(\theta+\pi)=f(\theta)\)</span>, cambiar <span class="math inline">\(\theta\)</span> por <span class="math inline">\(\theta+\pi\)</span> lleva <span class="math inline">\((x,y)\)</span> a <span class="math inline">\((-x,-y)\)</span>: simetría central. En cada caso se presupone que los argumentos transformados pertenecen al dominio. Son condiciones suficientes para esas simetrías; la representación polar puede no ser única, por lo que no se enuncian recíprocos generales.</p>
+</section>
+</section>
+<section id="e003-4" class="level2">
+<h2 class="anchored" data-anchor-id="e003-4">Ejercicio 3 — <code>SPV4-C04-A03-E003</code></h2>
+<p>Referencia: p.&nbsp;88. <strong>Problema:</strong> dibujar seis curvas polares.</p>
+<section id="solución-35" class="level3">
+<h3 class="anchored" data-anchor-id="solución-35">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\(r=a\sin\theta\)</span> da <span class="math inline">\(r^2=ar\sin\theta=ay\)</span>, o <span class="math inline">\(x^2+(y-a/2)^2=a^2/4\)</span>. Es una circunferencia de centro <span class="math inline">\((0,a/2)\)</span> y radio <span class="math inline">\(|a|/2\)</span>; para <span class="math inline">\(a=0\)</span>, sólo el origen. La equivalencia completa se verifica en el ejercicio 4.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(r=a\sec\theta\)</span> está definido sólo cuando <span class="math inline">\(\cos\theta\ne0\)</span>. Si <span class="math inline">\(a\ne0\)</span>, <span class="math inline">\(r\cos\theta=a\)</span>, luego <span class="math inline">\(x=a\)</span>: toda esa recta vertical, porque <span class="math inline">\(y=a\tan\theta\)</span> recorre <span class="math inline">\(\mathbb R\)</span>. Si <span class="math inline">\(a=0\)</span>, el radio vale cero en todos los argumentos permitidos y la curva es únicamente el origen; no es todo el eje vertical.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(r=\cos2\theta\)</span> es una rosa de cuatro pétalos de longitud <span class="math inline">\(1\)</span>, orientados por los dos ejes. Para <span class="math inline">\(-\pi/4\le\theta\le\pi/4\)</span>, el radio no negativo va de cero a uno y de vuelta a cero, trazando el pétalo derecho. El intervalo alrededor de <span class="math inline">\(\pi\)</span> traza el izquierdo. Los intervalos con radio negativo producen los pétalos verticales: por ejemplo, en <span class="math inline">\(\theta=\pi/2\)</span>, <span class="math inline">\(r=-1\)</span> representa <span class="math inline">\((0,-1)\)</span>. Excluir radios negativos dejaría sólo los pétalos horizontales.</p>
+<p><strong>(iv)</strong> <span class="math inline">\(r=\cos3\theta\)</span> es una rosa de tres pétalos de longitud <span class="math inline">\(1\)</span>, con ejes a ángulos <span class="math inline">\(0,2\pi/3,4\pi/3\)</span>. El intervalo <span class="math inline">\([-\pi/6,\pi/6]\)</span> traza el pétalo derecho; trasladarlo en <span class="math inline">\(2\pi/3\)</span> y <span class="math inline">\(4\pi/3\)</span> traza los otros. Los radios negativos no añaden pétalos, porque <span class="math inline">\(\cos3(\theta+\pi)=-\cos3\theta\)</span> y el cambio simultáneo de radio y ángulo representa el mismo punto.</p>
+<p><strong>(v)</strong> <span class="math inline">\(r=|\cos2\theta|\)</span> produce los mismos cuatro pétalos que (iii). Si <span class="math inline">\(\cos2\theta&lt;0\)</span>, el punto de (iii) está en la dirección <span class="math inline">\(\theta+\pi\)</span>; allí <span class="math inline">\(|\cos2(\theta+\pi)|=|\cos2\theta|\)</span>. En (v) cada dirección tiene radio no negativo, incluidos los ejes verticales.</p>
+<p><strong>(vi)</strong> <span class="math inline">\(r=|\cos3\theta|\)</span> produce seis pétalos, con ejes <span class="math inline">\(k\pi/3\)</span>, <span class="math inline">\(k=0,\ldots,5\)</span>. Los tres intervalos que tenían radio negativo ahora dan pétalos nuevos en las direcciones opuestas a los originales. En cada intervalo entre ceros vecinos, el radio sube de cero a uno y regresa a cero.</p>
+<div id="fig-spv4-c04-f13" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Seis curvas polares">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/A3_E003.png" class="img-fluid figure-img" alt="Capítulo 4: Seis curvas polares">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;13: Capítulo 04 · Figura 13. Seis curvas polares
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e004-3" class="level2">
+<h2 class="anchored" data-anchor-id="e004-3">Ejercicio 4 — <code>SPV4-C04-A03-E004</code></h2>
+<p>Referencia: p.&nbsp;88. <strong>Problema:</strong> hallar ecuaciones cartesianas de las primeras tres curvas del ejercicio anterior.</p>
+<section id="solución-36" class="level3">
+<h3 class="anchored" data-anchor-id="solución-36">Solución</h3>
+<p><strong>Curva (i):</strong> <span class="math inline">\(x^2+y^2=ay\)</span>. Si un punto no nulo cumple esta ecuación, tome <span class="math inline">\(\rho=\sqrt{x^2+y^2}&gt;0\)</span> y un ángulo con <span class="math inline">\(\sin\theta=y/\rho\)</span>. Entonces <span class="math inline">\(\rho^2=ay\)</span> implica <span class="math inline">\(\rho=a\sin\theta\)</span>; el punto pertenece a la gráfica polar. El origen también aparece, tomando <span class="math inline">\(\theta=0\)</span>. Esto prueba el recíproco, incluidos <span class="math inline">\(a&lt;0\)</span> y <span class="math inline">\(a=0\)</span>.</p>
+<p><strong>Curva (ii):</strong> si <span class="math inline">\(a\ne0\)</span>, la ecuación es <span class="math inline">\(x=a\)</span>. Para cualquier punto de esa recta, tome coordenadas polares con radio positivo: <span class="math inline">\(\cos\theta=a/\rho\ne0\)</span>, luego <span class="math inline">\(\rho=a\sec\theta\)</span>. Para <span class="math inline">\(a=0\)</span>, la ecuación cartesiana correcta es <span class="math inline">\(x^2+y^2=0\)</span>, porque la curva se reduce al origen.</p>
+<p><strong>Curva (iii):</strong> multiplicar <span class="math inline">\(r=\cos2\theta\)</span> por <span class="math inline">\(r^2\)</span> da <span class="math inline">\(r^3=x^2-y^2\)</span>. Como <span class="math inline">\(r\)</span> puede ser negativo, la ecuación que representa los cuatro pétalos es</p>
+<p><span class="math display">\[\boxed{(x^2+y^2)^3=(x^2-y^2)^2.}\]</span></p>
+<p>Para el recíproco, en un punto no nulo escriba <span class="math inline">\(\rho&gt;0\)</span> y su ángulo <span class="math inline">\(\phi\)</span>. La ecuación implica <span class="math inline">\(\rho=|\cos2\phi|\)</span>. Si <span class="math inline">\(\cos2\phi\ge0\)</span>, use <span class="math inline">\((\rho,\phi)\)</span>. Si es negativo, use <span class="math inline">\((-\rho,\phi+\pi)\)</span>: su radio coincide con <span class="math inline">\(\cos2(\phi+\pi)\)</span>. El origen aparece donde el coseno se anula. La ecuación sin cuadrar <span class="math inline">\((x^2+y^2)^{3/2}=x^2-y^2\)</span> describe sólo los pétalos horizontales y no es equivalente con la convención de radios negativos.</p>
+</section>
+</section>
+<section id="e005-3" class="level2">
+<h2 class="anchored" data-anchor-id="e005-3">Ejercicio 5 — <code>SPV4-C04-A03-E005</code></h2>
+<p>Referencia: p.&nbsp;88. <strong>Problema:</strong> obtener la forma polar de una hipérbola de focos <span class="math inline">\(O\)</span> y <span class="math inline">\((-2\varepsilon a,0)\)</span>, diferencia de distancias <span class="math inline">\(2a\)</span>, con <span class="math inline">\(a&gt;0\)</span>, <span class="math inline">\(\varepsilon&gt;1\)</span>.</p>
+<section id="solución-37" class="level3">
+<h3 class="anchored" data-anchor-id="solución-37">Solución</h3>
+<p>Sea <span class="math inline">\(\rho\)</span> la distancia a <span class="math inline">\(O\)</span> y <span class="math inline">\(s\)</span> la distancia al otro foco. Entonces <span class="math inline">\(s^2-\rho^2=4\varepsilon ax+4\varepsilon^2a^2\)</span>. Defina <span class="math inline">\(\Lambda=(1-\varepsilon^2)a&lt;0\)</span>.</p>
+<p>En la rama <span class="math inline">\(\rho-s=2a\)</span>, se tiene <span class="math inline">\(s=\rho-2a\)</span> y la diferencia de cuadrados da</p>
+<p><span class="math display">\[-4a\rho+4a^2=4\varepsilon ax+4\varepsilon^2a^2,\qquad \rho=\Lambda-\varepsilon x.\]</span></p>
+<p>Use <span class="math inline">\(r=\rho\)</span> y <span class="math inline">\(x=r\cos\theta\)</span>. Resulta <span class="math inline">\(r(1+\varepsilon\cos\theta)=\Lambda\)</span>.</p>
+<p>En la otra rama, <span class="math inline">\(s-\rho=2a\)</span> da <span class="math inline">\(\rho=-\Lambda+\varepsilon x\)</span>. Use ahora el radio con signo <span class="math inline">\(r=-\rho\)</span> y un ángulo opuesto a la dirección del punto; así, <span class="math inline">\(x=r\cos\theta\)</span> todavía y <span class="math inline">\(r=\Lambda-\varepsilon x\)</span>. Las dos ramas quedan representadas por una misma fórmula:</p>
+<p><span class="math display">\[\boxed{r=\frac{\Lambda}{1+\varepsilon\cos\theta}},\qquad 1+\varepsilon\cos\theta\ne0.\]</span></p>
+<p>Si se impone <span class="math inline">\(r\ge0\)</span>, sólo se conserva la primera rama con esta elección de foco y de <span class="math inline">\(\Lambda\)</span>. Los radios negativos de la fórmula completa representan la otra rama; no deben confundirse con distancias negativas.</p>
+</section>
+</section>
+<section id="e006-3" class="level2">
+<h2 class="anchored" data-anchor-id="e006-3">Ejercicio 6 — <code>SPV4-C04-A03-E006</code></h2>
+<p>Referencia: p.&nbsp;88. <strong>Problema:</strong> obtener la parábola de foco en el origen y una directriz, y revisar la fórmula polar indicada.</p>
+<section id="solución-38" class="level3">
+<h3 class="anchored" data-anchor-id="solución-38">Solución</h3>
+<p>Hay una discrepancia en el impreso: se escribe <span class="math inline">\(y=a\)</span>, pero la figura dibuja una recta vertical y se pide la distancia <span class="math inline">\(a-r\cos\theta\)</span>. Esa fórmula corresponde a <strong><span class="math inline">\(x=a\)</span></strong>, no a <span class="math inline">\(y=a\)</span>. Damos ambos casos, suponiendo <span class="math inline">\(a&gt;0\)</span>.</p>
+<p>Para la directriz vertical <span class="math inline">\(x=a\)</span>, la igualdad de distancias es <span class="math inline">\(\rho=|x-a|\)</span>, <span class="math inline">\(\rho=\sqrt{x^2+y^2}\)</span>. Al cuadrar, <span class="math inline">\(y^2=a^2-2ax\)</span>, por lo que <span class="math inline">\(x\le a/2&lt;a\)</span> y la distancia es <span class="math inline">\(a-x\)</span>. Como aquí se puede tomar radio no negativo <span class="math inline">\(r=\rho\)</span>, queda</p>
+<p><span class="math display">\[r=a-r\cos\theta,\qquad \boxed{a=r(1+\cos\theta)}.\]</span></p>
+<p>Para la directriz horizontal literalmente escrita, <span class="math inline">\(y=a\)</span>, el mismo argumento da <span class="math inline">\(x^2=a^2-2ay\)</span>, <span class="math inline">\(y\le a/2\)</span>, y</p>
+<p><span class="math display">\[\boxed{a=r(1+\sin\theta)}.\]</span></p>
+<p>Las dos parábolas son imágenes por un giro de un cuarto de vuelta. Si <span class="math inline">\(a=0\)</span>, el foco está en la directriz y el lugar degenera: <span class="math inline">\(x=a=0\)</span> produce el eje horizontal, mientras que <span class="math inline">\(y=a=0\)</span> produce el eje vertical; no se aplica la fórmula de una parábola no degenerada.</p>
+</section>
+</section>
+<section id="e007-3" class="level2">
+<h2 class="anchored" data-anchor-id="e007-3">Ejercicio 7 — <code>SPV4-C04-A03-E007</code></h2>
+<p>Referencia: p.&nbsp;88. <strong>Problema:</strong> clasificar la curva <span class="math inline">\(r=\Lambda/(1+\varepsilon\cos\theta)\)</span> a partir de su ecuación cartesiana.</p>
+<section id="solución-39" class="level3">
+<h3 class="anchored" data-anchor-id="solución-39">Solución</h3>
+<p>Para todo punto de la curva, <span class="math inline">\(r=\Lambda-\varepsilon x\)</span>. Al cuadrar y usar <span class="math inline">\(r^2=x^2+y^2\)</span>,</p>
+<p><span class="math display">\[\boxed{(1-\varepsilon^2)x^2+y^2=\Lambda^2-2\Lambda\varepsilon x.}\]</span></p>
+<p>Si <span class="math inline">\(\Lambda\ne0\)</span>, la equivalencia es completa con radios de ambos signos: para un punto cartesiano no nulo, tome <span class="math inline">\(r=\Lambda-\varepsilon x\)</span>, cuyo cuadrado es su distancia al origen al cuadrado, y elija el ángulo para que <span class="math inline">\(x=r\cos\theta,y=r\sin\theta\)</span>. Entonces <span class="math inline">\(r\ne0\)</span>, y <span class="math inline">\(1+\varepsilon\cos\theta=\Lambda/r\ne0\)</span>.</p>
+<p>Para <span class="math inline">\(|\varepsilon|\ne1\)</span>, completar el cuadrado da</p>
+<p><span class="math display">\[(1-\varepsilon^2)\left(x+\frac{\Lambda\varepsilon}{1-\varepsilon^2}\right)^2+y^2=\frac{\Lambda^2}{1-\varepsilon^2}.\]</span></p>
+<p>Con <span class="math inline">\(\Lambda\ne0\)</span>, hay una elipse si <span class="math inline">\(|\varepsilon|&lt;1\)</span> —circunferencia si <span class="math inline">\(\varepsilon=0\)</span>—, una hipérbola si <span class="math inline">\(|\varepsilon|&gt;1\)</span>, y una parábola si <span class="math inline">\(|\varepsilon|=1\)</span>, pues en ese caso <span class="math inline">\(y^2=\Lambda^2-2\Lambda\varepsilon x\)</span> tiene término lineal no nulo. Para la excentricidad usual <span class="math inline">\(\varepsilon\ge0\)</span>, son los tres casos <span class="math inline">\(\varepsilon&lt;1\)</span>, <span class="math inline">\(\varepsilon=1\)</span>, <span class="math inline">\(\varepsilon&gt;1\)</span> solicitados.</p>
+<p>La palabra «cualquier» requiere una excepción: si <span class="math inline">\(\Lambda=0\)</span>, la fórmula cociente vale cero donde está definida y su gráfica es sólo el origen. La ecuación cuadrada puede contener puntos extra: si <span class="math inline">\(|\varepsilon|=1\)</span> da la recta <span class="math inline">\(y=0\)</span>; si <span class="math inline">\(|\varepsilon|&gt;1\)</span> da dos rectas. La clasificación no degenerada no es válida para <span class="math inline">\(\Lambda=0\)</span> ni se puede extender a todos los <span class="math inline">\(\varepsilon&lt;1\)</span> negativos sin usar <span class="math inline">\(|\varepsilon|\)</span>.</p>
+</section>
+</section>
+<section id="e008-2" class="level2">
+<h2 class="anchored" data-anchor-id="e008-2">Ejercicio 8 — <code>SPV4-C04-A03-E008</code></h2>
+<p>Referencia: p.&nbsp;89. <strong>Problema:</strong> dibujar la cardioide <span class="math inline">\(r=1-\sin\theta\)</span>, hallar una segunda representación y su ecuación cartesiana.</p>
+<section id="solución-40" class="level3">
+<h3 class="anchored" data-anchor-id="solución-40">Solución</h3>
+<p><strong>(a)</strong> El radio está entre <span class="math inline">\(0\)</span> y <span class="math inline">\(2\)</span>. Es cero en <span class="math inline">\(\theta=\pi/2\)</span>, vale <span class="math inline">\(1\)</span> en <span class="math inline">\(0,\pi\)</span> y vale <span class="math inline">\(2\)</span> en <span class="math inline">\(3\pi/2\)</span>. La curva es simétrica respecto del eje vertical, tiene una cúspide en el origen y un punto inferior <span class="math inline">\((0,-2)\)</span>; pasa por <span class="math inline">\((\pm1,0)\)</span>. Una vuelta <span class="math inline">\(0\le\theta\le2\pi\)</span> la traza completa.</p>
+<p><strong>(b)</strong> Para un punto representado por <span class="math inline">\((1-\sin\theta,\theta)\)</span>, use el par equivalente <span class="math inline">\((-(1-\sin\theta),\theta+\pi)\)</span>. Su nuevo radio es <span class="math inline">\(-1-\sin(\theta+\pi)\)</span>, de modo que la misma curva se describe por <span class="math inline">\(r=-1-\sin\theta\)</span>. El cambio es reversible.</p>
+<p><strong>(c)</strong> En la primera representación <span class="math inline">\(r=\rho\ge0\)</span>. Multiplicar por <span class="math inline">\(r\)</span> da <span class="math inline">\(r^2=r-r\sin\theta\)</span>, es decir,</p>
+<p><span class="math display">\[x^2+y^2=\sqrt{x^2+y^2}-y.\]</span></p>
+<p>En un punto no nulo esta igualdad permite dividir por <span class="math inline">\(\rho\)</span> y recuperar <span class="math inline">\(\rho=1-\sin\theta\)</span>; el origen también pertenece. Al cuadrar se obtiene</p>
+<p><span class="math display">\[\boxed{(x^2+y^2+y)^2=x^2+y^2.}\]</span></p>
+<p>No se añaden soluciones: con <span class="math inline">\(q=x^2+y^2=\rho^2\)</span>, una raíz del signo incorrecto exigiría <span class="math inline">\(q+y=-\rho\)</span>, luego <span class="math inline">\(q=-\rho-y\le0\)</span> porque <span class="math inline">\(y\ge-\rho\)</span>. Esto fuerza <span class="math inline">\(q=0\)</span>, y el origen ya satisface la ecuación original. Así, la ecuación polinómica describe exactamente la cardioide.</p>
+</section>
+</section>
+<section id="e009-2" class="level2">
+<h2 class="anchored" data-anchor-id="e009-2">Ejercicio 9 — <code>SPV4-C04-A03-E009</code></h2>
+<p>Referencia: p.&nbsp;89. <strong>Problema:</strong> dibujar tres limacones.</p>
+<section id="solución-41" class="level3">
+<h3 class="anchored" data-anchor-id="solución-41">Solución</h3>
+<p><strong>(i)</strong> <span class="math inline">\(r=1-\tfrac12\sin\theta\)</span> siempre es positivo: <span class="math inline">\(1/2\le r\le3/2\)</span>. La curva es simétrica respecto del eje vertical, pasa por <span class="math inline">\((\pm1,0)\)</span> y corta ese eje en <span class="math inline">\((0,1/2)\)</span> y <span class="math inline">\((0,-3/2)\)</span>. No pasa por el origen ni tiene lazo interior. Estos puntos y el cambio gradual del radio determinan el óvalo mostrado.</p>
+<p><strong>(ii)</strong> <span class="math inline">\(r=1-2\sin\theta\)</span> se anula en <span class="math inline">\(\pi/6\)</span> y <span class="math inline">\(5\pi/6\)</span>, y es negativo entre esos ángulos. En ese tramo, el cambio a radio negativo coloca el punto en la dirección opuesta y traza el lazo interior, situado debajo del origen; en <span class="math inline">\(\theta=\pi/2\)</span> se obtiene <span class="math inline">\((0,-1)\)</span>. El resto traza el lazo exterior, que alcanza <span class="math inline">\((0,-3)\)</span> en <span class="math inline">\(3\pi/2\)</span> y pasa por <span class="math inline">\((\pm1,0)\)</span>. Ambas partes son simétricas respecto del eje vertical y se encuentran en el origen.</p>
+<p><strong>(iii)</strong> <span class="math inline">\(r=2+\cos\theta\)</span> tiene <span class="math inline">\(1\le r\le3\)</span>, simetría respecto del eje horizontal, extremos sobre ese eje <span class="math inline">\((3,0)\)</span> y <span class="math inline">\((-1,0)\)</span>, y puntos <span class="math inline">\((0,\pm2)\)</span>. Es dos veces la curva de (i) girada <span class="math inline">\(\pi/2\)</span> en sentido antihorario: al sustituir <span class="math inline">\(\phi=\theta-\pi/2\)</span>, <span class="math inline">\(2(1-\tfrac12\sin\phi)=2+\cos\theta\)</span>.</p>
+<div id="fig-spv4-c04-f14" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Cardioide y limacones">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/A3_E008_E009.png" class="img-fluid figure-img" alt="Capítulo 4: Cardioide y limacones">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;14: Capítulo 04 · Figura 14. Cardioide y limacones
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="e010-2" class="level2">
+<h2 class="anchored" data-anchor-id="e010-2">Ejercicio 10 — <code>SPV4-C04-A03-E010</code></h2>
+<p>Referencia: p.&nbsp;89. <strong>Problema:</strong> dibujar la lemniscata <span class="math inline">\(r^2=2a^2\cos2\theta\)</span>, hallar su ecuación cartesiana, su descripción por producto de distancias y comparar otros productos.</p>
+<section id="solución-42" class="level3">
+<h3 class="anchored" data-anchor-id="solución-42">Solución</h3>
+<p>Suponga <span class="math inline">\(a&gt;0\)</span>; para <span class="math inline">\(a=0\)</span> la lemniscata se reduce al origen.</p>
+<p><strong>(a)</strong> Para un radio real debe cumplirse <span class="math inline">\(\cos2\theta\ge0\)</span>. El intervalo <span class="math inline">\([-\pi/4,\pi/4]\)</span> con <span class="math inline">\(r=\sqrt2a\sqrt{\cos2\theta}\)</span> traza el lóbulo derecho: sale del origen, alcanza <span class="math inline">\((\sqrt2a,0)\)</span> y vuelve al origen. El intervalo trasladado por <span class="math inline">\(\pi\)</span> traza el izquierdo. Los radios negativos no añaden puntos. La curva tiene simetría respecto de ambos ejes y dos lóbulos que se encuentran en el origen.</p>
+<p><strong>(b)</strong> Multiplicar por <span class="math inline">\(r^2\)</span> produce</p>
+<p><span class="math display">\[\boxed{(x^2+y^2)^2=2a^2(x^2-y^2).}\]</span></p>
+<p>Para el recíproco, un punto no nulo permite dividir por <span class="math inline">\(\rho^2=x^2+y^2\)</span> y recuperar <span class="math inline">\(\rho^2=2a^2\cos2\theta\)</span>. El origen está en las dos descripciones.</p>
+<p><strong>(c)</strong> Sean <span class="math inline">\(d_1,d_2\)</span> las distancias a <span class="math inline">\((-a,0),(a,0)\)</span>. Entonces</p>
+<p><span class="math display">\[\begin{aligned}
+(d_1d_2)^2&amp;=((x+a)^2+y^2)((x-a)^2+y^2)\\
+&amp;=(x^2+y^2+a^2)^2-4a^2x^2\\
+&amp;=(x^2+y^2)^2-2a^2(x^2-y^2)+a^4.
+\end{aligned}\]</span></p>
+<p>Como el producto es no negativo, <span class="math inline">\(d_1d_2=a^2\)</span> equivale exactamente a la ecuación de (b).</p>
+<p><strong>(d)</strong> Para <span class="math inline">\(d_1d_2=b\)</span>, con <span class="math inline">\(b\ge0\)</span>, la ecuación es</p>
+<p><span class="math display">\[(x^2+y^2)^2-2a^2(x^2-y^2)=b^2-a^4.\]</span></p>
+<p>Si <span class="math inline">\(0&lt;b&lt;a^2\)</span>, aparecen dos óvalos separados, uno alrededor de cada foco. Puede comprobarse resolviendo para <span class="math inline">\(y^2\)</span>:</p>
+<p><span class="math display">\[y^2=-x^2-a^2+\sqrt{4a^2x^2+b^2}.\]</span></p>
+<p>Este valor es no negativo si y sólo si <span class="math inline">\(|x^2-a^2|\le b\)</span>, de modo que las abscisas permitidas son <span class="math inline">\([-\sqrt{a^2+b},-\sqrt{a^2-b}]\)</span> y <span class="math inline">\([\sqrt{a^2-b},\sqrt{a^2+b}]\)</span>. Cada intervalo tiene una curva superior e inferior que se unen sólo en sus extremos: dos componentes.</p>
+<p>Si <span class="math inline">\(b&gt;a^2\)</span>, las abscisas forman un único intervalo <span class="math inline">\([-\sqrt{a^2+b},\sqrt{a^2+b}]\)</span>, y las mitades superior e inferior se unen en los extremos formando un solo óvalo. En <span class="math inline">\(x=0\)</span> tienen alturas <span class="math inline">\(\pm\sqrt{b-a^2}\)</span>, por lo que no pasan por el origen. Para <span class="math inline">\(b\)</span> apenas mayor que <span class="math inline">\(a^2\)</span> se conserva una cintura; para valores grandes se ve una curva más redondeada. La lámina distingue esos casos sin afirmar que todos los óvalos sean convexos. Si <span class="math inline">\(b=0\)</span>, sólo quedan los dos focos; si <span class="math inline">\(b&lt;0\)</span>, no hay puntos.</p>
+<div id="fig-spv4-c04-f15" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 4: Lemniscata y óvalos de Cassini">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c04-f15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C04_assets/A3_E010.png" class="img-fluid figure-img" alt="Capítulo 4: Lemniscata y óvalos de Cassini">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c04-f15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;15: Capítulo 04 · Figura 15. Lemniscata y óvalos de Cassini
+</figcaption>
+</figure>
+</div>
+<hr>
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-03.html">← Capítulo 3</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-05.html">Capítulo 5 →</a></p>
+</div>
+<p>Soluciones originales de Alevi Peña · Matemática Abierta. <a href="../../../COPYING.FDL">Licencia GFDL 1.3 o posterior</a>.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

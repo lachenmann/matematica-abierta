@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Capítulo 18 — El logaritmo y las funciones exponenciales – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="spivak-c01.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#seccion-849" id="toc-seccion-849" class="nav-link active" data-scroll-target="#seccion-849">Herramientas del capítulo</a></li>
+  <li><a href="#e002" id="toc-e002" class="nav-link" data-scroll-target="#e002">E002 — Diferenciación logarítmica</a></li>
+  <li><a href="#e003" id="toc-e003" class="nav-link" data-scroll-target="#e003">E003 — Integral de una derivada logarítmica</a></li>
+  <li><a href="#e004" id="toc-e004" class="nav-link" data-scroll-target="#e004">E004 — Cinco gráficas exponenciales</a></li>
+  <li><a href="#e005" id="toc-e005" class="nav-link" data-scroll-target="#e005">E005 — Límites por l’Hôpital</a></li>
+  <li><a href="#e006" id="toc-e006" class="nav-link" data-scroll-target="#e006">E006 — Límites de potencias indeterminadas</a></li>
+  <li><a href="#e007" id="toc-e007" class="nav-link" data-scroll-target="#e007">E007 — Gráficas hiperbólicas</a></li>
+  <li><a href="#e008" id="toc-e008" class="nav-link" data-scroll-target="#e008">E008 — Identidades y derivadas hiperbólicas</a></li>
+  <li><a href="#e009" id="toc-e009" class="nav-link" data-scroll-target="#e009">E009 — Inversas hiperbólicas y ramas</a></li>
+  <li><a href="#e010" id="toc-e010" class="nav-link" data-scroll-target="#e010">E010 — Fórmulas logarítmicas e integrales</a></li>
+  <li><a href="#e011" id="toc-e011" class="nav-link" data-scroll-target="#e011">E011 — Una integral no acotada</a></li>
+  <li><a href="#e012" id="toc-e012" class="nav-link" data-scroll-target="#e012">E012 — Promedios logarítmicos de una función monótona</a></li>
+  <li><a href="#e013" id="toc-e013" class="nav-link" data-scroll-target="#e013">E013 — Comparación de potencias, logaritmos y exponenciales</a></li>
+  <li><a href="#e014" id="toc-e014" class="nav-link" data-scroll-target="#e014">E014 — La curva de x elevado a x</a></li>
+  <li><a href="#e015" id="toc-e015" class="nav-link" data-scroll-target="#e015">E015 — Dominio exponencial mediante una cota de la derivada</a></li>
+  <li><a href="#e016" id="toc-e016" class="nav-link" data-scroll-target="#e016">E016 — Gráficas de la exponencial dividida por una potencia</a></li>
+  <li><a href="#e017" id="toc-e017" class="nav-link" data-scroll-target="#e017">E017 — La constante e en límites de potencias</a></li>
+  <li><a href="#e018" id="toc-e018" class="nav-link" data-scroll-target="#e018">E018 — Gráfica del límite clásico de e</a></li>
+  <li><a href="#e019" id="toc-e019" class="nav-link" data-scroll-target="#e019">E019 — Capitalización como modelo matemático</a></li>
+  <li><a href="#e020" id="toc-e020" class="nav-link" data-scroll-target="#e020">E020 — Logaritmos de valores absolutos</a></li>
+  <li><a href="#e021" id="toc-e021" class="nav-link" data-scroll-target="#e021">E021 — Todas las soluciones de una ecuación exponencial</a></li>
+  <li><a href="#e022" id="toc-e022" class="nav-link" data-scroll-target="#e022">E022 — Decaimiento y semivida</a></li>
+  <li><a href="#e023" id="toc-e023" class="nav-link" data-scroll-target="#e023">E023 — Ley de enfriamiento</a></li>
+  <li><a href="#e024" id="toc-e024" class="nav-link" data-scroll-target="#e024">E024 — Una ecuación integral homogénea</a></li>
+  <li><a href="#e025" id="toc-e025" class="nav-link" data-scroll-target="#e025">E025 — Constantes de integración y parte del dominio no observada</a></li>
+  <li><a href="#e026" id="toc-e026" class="nav-link" data-scroll-target="#e026">E026 — Una constante definida por la propia función</a></li>
+  <li><a href="#e027" id="toc-e027" class="nav-link" data-scroll-target="#e027">E027 — Todas las soluciones de una ecuación integral no lineal</a></li>
+  <li><a href="#e028" id="toc-e028" class="nav-link" data-scroll-target="#e028">E028 — Desigualdad integral de Grönwall</a></li>
+  <li><a href="#e029" id="toc-e029" class="nav-link" data-scroll-target="#e029">E029 — Cota polinómica inferior de la exponencial</a></li>
+  <li><a href="#e030" id="toc-e030" class="nav-link" data-scroll-target="#e030">E030 — La misma dominación por l’Hôpital</a></li>
+  <li><a href="#e031" id="toc-e031" class="nav-link" data-scroll-target="#e031">E031 — Una integral exponencial en intervalos móviles</a></li>
+  <li><a href="#e032" id="toc-e032" class="nav-link" data-scroll-target="#e032">E032 — Construcción clásica sin circularidad</a></li>
+  <li><a href="#e033" id="toc-e033" class="nav-link" data-scroll-target="#e033">E033 — Normalización del logaritmo de Napier</a></li>
+  <li><a href="#e034" id="toc-e034" class="nav-link" data-scroll-target="#e034">E034 — Igualdad de potencias cruzadas</a></li>
+  <li><a href="#e035" id="toc-e035" class="nav-link" data-scroll-target="#e035">E035 — Convexidad y medias ponderadas</a></li>
+  <li><a href="#e036" id="toc-e036" class="nav-link" data-scroll-target="#e036">E036 — Jensen integral y sus hipótesis de integrabilidad</a></li>
+  <li><a href="#e037" id="toc-e037" class="nav-link" data-scroll-target="#e037">E037 — Exponencial con normalización multiplicativa</a></li>
+  <li><a href="#e038" id="toc-e038" class="nav-link" data-scroll-target="#e038">E038 — Ecuación funcional multiplicativa continua</a></li>
+  <li><a href="#e039" id="toc-e039" class="nav-link" data-scroll-target="#e039">E039 — Ecuación funcional logarítmica continua</a></li>
+  <li><a href="#e040" id="toc-e040" class="nav-link" data-scroll-target="#e040">E040 — Una función suave plana en el origen</a></li>
+  <li><a href="#e041" id="toc-e041" class="nav-link" data-scroll-target="#e041">E041 — Oscilación con todas las derivadas nulas</a></li>
+  <li><a href="#e042" id="toc-e042" class="nav-link" data-scroll-target="#e042">E042 — Raíces características y multiplicidades</a></li>
+  <li><a href="#e043" id="toc-e043" class="nav-link" data-scroll-target="#e043">E043 — Unicidad con dos datos iniciales nulos</a></li>
+  <li><a href="#e044" id="toc-e044" class="nav-link" data-scroll-target="#e044">E044 — Todas las soluciones de la ecuación hiperbólica</a></li>
+  <li><a href="#e045" id="toc-e045" class="nav-link" data-scroll-target="#e045">E045 — Ecuaciones entre derivadas de orden alto</a></li>
+  <li><a href="#e046" id="toc-e046" class="nav-link" data-scroll-target="#e046">E046 — Construcción de la exponencial desde una ecuación diferencial</a></li>
+  <li><a href="#e047" id="toc-e047" class="nav-link" data-scroll-target="#e047">E047 — Comparación de órdenes de crecimiento</a></li>
+  <li><a href="#e048" id="toc-e048" class="nav-link" data-scroll-target="#e048">E048 — Una función que domina a una sucesión dada</a></li>
+  <li><a href="#e049" id="toc-e049" class="nav-link" data-scroll-target="#e049">E049 — Irracionalidad de un logaritmo decimal</a></li>
+  <li><a href="#seccion-55475" id="toc-seccion-55475" class="nav-link" data-scroll-target="#seccion-55475">Cierre del capítulo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 18 — El logaritmo y las funciones exponenciales</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-17.html">← Capítulo 17</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-19.html">Capítulo 19 →</a></p>
+</div>
+<p>A. Peña · Matemática Abierta · 2026-10-15.</p>
+<p><strong>49 problemas resueltos completos</strong>, con sus incisos, figuras originales y revisión matemática interna. Fuente primaria: Michael Spivak, <em>Calculus</em>, 4.ª edición, capítulo 18, pp.&nbsp;339–362; problemas en pp.&nbsp;351–362 (PDF 371–382). C19 comienza en p.&nbsp;363. No hay apéndice de C18.</p>
+<p>Se conservan los datos y tareas matemáticos indispensables y se desarrollan soluciones propias en español. Las referencias permiten localizar cada original. Las potencias de base variable se interpretan mediante <span class="math inline">\(u^v=\exp(v\log u)\)</span> para <span class="math inline">\(u&gt;0\)</span>, salvo potencias enteras y raíces reales expresamente indicadas. <span class="math inline">\(\log\)</span> denota logaritmo natural; <span class="math inline">\(\log_a\)</span> exige <span class="math inline">\(a&gt;0\)</span>, <span class="math inline">\(a\ne1\)</span>. Los teoremas de derivación se aplican en interiores de sus dominios. Una letra <span class="math inline">\(C\)</span> en una primitiva es una constante arbitraria en cada intervalo conexo.</p>
+<section id="seccion-849" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-849">Herramientas del capítulo</h2>
+<p>La definición <span class="math inline">\(L(x)=\int_1^x dt/t\)</span> da <span class="math inline">\(L'(x)=1/x\)</span>, monotonía estricta y <span class="math inline">\(L(xy)=L(x)+L(y)\)</span>: para <span class="math inline">\(y\)</span> fijo, <span class="math inline">\(L(xy)-L(x)\)</span> tiene derivada cero y vale <span class="math inline">\(L(y)\)</span> en <span class="math inline">\(x=1\)</span>. El cambio <span class="math inline">\(t=2u\)</span> muestra que cada intervalo <span class="math inline">\([2^j,2^{j+1}]\)</span> aporta la misma integral positiva; por tanto <span class="math inline">\(L\)</span> no está acotada superiormente. Como <span class="math inline">\(L(1/x)=-L(x)\)</span>, tampoco lo está inferiormente. Su inversa <span class="math inline">\(E:\mathbb R\to(0,\infty)\)</span> satisface</p>
+<p><span class="math display">\[E'=E,\qquad E(s+t)=E(s)E(t),\qquad E(0)=1.\]</span></p>
+<p>Se escribe <span class="math inline">\(e=E(1)\)</span> y <span class="math inline">\(E(x)=e^x\)</span>. En particular,</p>
+<p><span class="math display">\[(a^x)'=(\log a)a^x,\qquad (u^v)'=u^v\left(v'\log u+v\frac{u'}u\right),\qquad (\log_a x)'=\frac1{x\log a}.\]</span></p>
+<p>La segunda fórmula procede de derivar <span class="math inline">\(\exp(v\log u)\)</span>, no de tratar el exponente variable como constante. En las pruebas de límites se indica cuándo se usa l’Hôpital. E032 y E046 desarrollan construcciones alternativas sin suponer los resultados que están justificando. ## E001 — Derivadas y dominios {#e001}</p>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 1, p.&nbsp;351 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E001-i</code></strong> Para la torre <span class="math inline">\(f(x)=e^{e^{e^{e^x}}}\)</span>, definamos <span class="math inline">\(u_1=e^x\)</span> y <span class="math inline">\(u_{j+1}=e^{u_j}\)</span>. Cada nivel aporta la derivada de su exponente; así <span class="math display">\[f'=u_4u_3u_2u_1=e^{e^{e^{e^x}}}e^{e^{e^x}}e^{e^x}e^x.\]</span> Está definida y es derivable para todo real.</p>
+<p><strong><code>SPV4-C18-E001-ii</code></strong> Sean <span class="math inline">\(A=e^{1+e^{1+x}}\)</span>, <span class="math inline">\(B=1+A\)</span>, <span class="math inline">\(C=1+\log B\)</span> y <span class="math inline">\(D=1+\log C\)</span>. La función pedida es <span class="math inline">\(\log D\)</span>. Todos los argumentos son positivos y la cadena da <span class="math display">\[f'=\frac{Ae^{1+x}}{BCD}.\]</span> Aquí <span class="math inline">\(A'=Ae^{1+x}\)</span>; hay tres logaritmos y dos exponenciales variables.</p>
+<p><strong><code>SPV4-C18-E001-iii</code></strong> Para <span class="math inline">\(f=(\sin x)^{\sin(\sin x)}\)</span>, con <span class="math inline">\(\sin x&gt;0\)</span>, derivamos su logaritmo: <span class="math display">\[f'=f\left[\cos(\sin x)\cos x\log(\sin x)+\sin(\sin x)\cot x\right].\]</span></p>
+<p><strong><code>SPV4-C18-E001-iv</code></strong> Si <span class="math inline">\(F(x)=\int_0^x e^{-t^2}dt\)</span>, el teorema fundamental da <span class="math inline">\(F'=e^{-x^2}\)</span>. Por ello <span class="math display">\[\left(e^{F(x)}\right)'=e^{F(x)}e^{-x^2}.\]</span> No hace falta una primitiva elemental del integrando; dominio <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong><code>SPV4-C18-E001-v</code></strong> Sea <span class="math inline">\(s=\sin x&gt;0\)</span>, <span class="math inline">\(u=s^s\)</span> y <span class="math inline">\(f=s^u\)</span>. Primero <span class="math inline">\(u'=u\cos x(1+\log s)\)</span>. Después <span class="math display">\[f'=fu\left[\cos x(1+\log s)\log s+\cot x\right].\]</span> Se respeta la asociación <span class="math inline">\(s^{(s^s)}\)</span>.</p>
+<p><strong><code>SPV4-C18-E001-vi</code></strong> Como <span class="math inline">\(\log_{e^x}(\sin x)=\log(\sin x)/x\)</span>, para <span class="math inline">\(x\ne0\)</span> y <span class="math inline">\(\sin x&gt;0\)</span>, <span class="math display">\[f'=\frac{x\cot x-\log(\sin x)}{x^2}.\]</span> La base variable <span class="math inline">\(e^x\)</span> no puede ser 1.</p>
+<p><strong><code>SPV4-C18-E001-vii</code></strong> El dato literal es <span class="math inline">\([\arcsin(x/\sin x)]^{\log(\sin e^x)}\)</span>. <strong>No tiene dominio real.</strong> Si <span class="math inline">\(x\ne0\)</span> y <span class="math inline">\(\sin x\ne0\)</span>, la desigualdad estricta <span class="math inline">\(|\sin x|&lt;|x|\)</span> da <span class="math inline">\(|x/\sin x|&gt;1\)</span>; en los ceros de <span class="math inline">\(\sin x\)</span> el cociente no existe. En particular, <span class="math inline">\(x=0\)</span> tampoco está definido. Por tanto no hay derivada real que calcular. La notación formal de la regla de la cadena no subsana este defecto. Se conserva el enunciado literal y no se sustituye silenciosamente por <span class="math inline">\(\arcsin(\sin x/x)\)</span>.</p>
+<p><strong><code>SPV4-C18-E001-viii</code></strong> El coeficiente <span class="math inline">\(\log(3+e^4)\)</span> es constante. En <span class="math inline">\(0&lt;x&lt;1\)</span>, <span class="math display">\[f'=4\log(3+e^4)e^{4x}+\frac{(\log3)(\arcsin x)^{\log3-1}}{\sqrt{1-x^2}}.\]</span> El dato es <span class="math inline">\(\log(3+e^4)e^{4x}+(\arcsin x)^{\log3}\)</span>. Admitiendo la extensión <span class="math inline">\(0^{\log3}=0\)</span>, en <span class="math inline">\(x=0\)</span> existe derivada derecha y el segundo sumando aporta cero, pues <span class="math inline">\(\log3&gt;1\)</span> y <span class="math inline">\(\arcsin x/x\to1\)</span>. En <span class="math inline">\(x=1\)</span> el segundo término tiene pendiente infinita; no se declara derivada ordinaria en los extremos.</p>
+<p><strong><code>SPV4-C18-E001-ix</code></strong> Para <span class="math inline">\(f=(\log x)^{\log x}\)</span>, <span class="math inline">\(x&gt;1\)</span>, <span class="math display">\[f'=\frac{f}{x}[1+\log(\log x)].\]</span> El requisito <span class="math inline">\(x&gt;1\)</span> asegura que la base del exponente real sea positiva.</p>
+<p><strong><code>SPV4-C18-E001-x</code></strong> Para <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(x^x=e^{x\log x}\)</span> y <span class="math display">\[(x^x)'=x^x(1+\log x).\]</span></p>
+<p><strong><code>SPV4-C18-E001-xi</code></strong> La función es <span class="math inline">\(\sin(x^{\sin(x^{\sin x})})\)</span>. Para <span class="math inline">\(x&gt;0\)</span>, pongamos <span class="math display">\[u=x^{\sin x},\quad v=\sin u,\quad w=x^v.\]</span> Entonces <span class="math inline">\(u'=u[\cos x\log x+\sin x/x]\)</span>, <span class="math inline">\(v'=\cos u\,u'\)</span> y <span class="math inline">\(w'=w[v'\log x+v/x]\)</span>. La respuesta, con cada cadena visible, es <span class="math display">\[f'=\cos w\,w\left\{\cos u\,u\left[\cos x\log x+\frac{\sin x}{x}\right]\log x+\frac{\sin u}{x}\right\}.\]</span></p>
+</section>
+<section id="e002" class="level2">
+<h2 class="anchored" data-anchor-id="e002">E002 — Diferenciación logarítmica</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 2, p.&nbsp;351–352 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E002-a</code></strong> Para <span class="math inline">\(f&gt;0\)</span> diferenciable, la regla de la cadena produce <span class="math inline">\((\log f)'=f'/f\)</span>. Multiplicar por <span class="math inline">\(f\)</span> recupera <span class="math inline">\(f'\)</span>. Para funciones sin ceros de signo negativo se usa <span class="math inline">\(\log|f|\)</span>; E020 justifica esa extensión. En un cero, esta división no es válida.</p>
+<p><strong><code>SPV4-C18-E002-b-i</code></strong> Si <span class="math inline">\(f=(1+x)(1+e^{x^2})\)</span>, entonces, donde <span class="math inline">\(f\ne0\)</span>, <span class="math display">\[\frac{f'}f=\frac1{1+x}+\frac{2xe^{x^2}}{1+e^{x^2}}.\]</span> Al multiplicar y simplificar se obtiene, para todo <span class="math inline">\(x\)</span>, <span class="math display">\[f'=1+e^{x^2}+2x(1+x)e^{x^2}.\]</span> En <span class="math inline">\(x=-1\)</span>, que se había excluido al tomar logaritmos, la fórmula directa da <span class="math inline">\(1+e\)</span>.</p>
+<p><strong><code>SPV4-C18-E002-b-ii</code></strong> Sea <span class="math display">\[f(x)=\frac{(3-x)^{1/3}x^2}{(1-x)(3+x)^{2/3}},\]</span> con raíces cúbicas reales. Su dominio es <span class="math inline">\(\mathbb R\setminus\{-3,1\}\)</span>. Donde además <span class="math inline">\(x\ne0,3\)</span>, tomar <span class="math inline">\(\log|f|\)</span> da <span class="math display">\[f'=f\left[-\frac1{3(3-x)}+\frac2x+\frac1{1-x}-\frac2{3(3+x)}\right].\]</span> Cada signo viene de derivar un término de <span class="math inline">\(\frac13\log|3-x|+2\log|x|-\log|1-x|-\frac23\log|3+x|\)</span>. En <span class="math inline">\(x=0\)</span> la forma original es <span class="math inline">\(x^2\)</span> por un factor suave, luego <span class="math inline">\(f'(0)=0\)</span>. En <span class="math inline">\(x=3\)</span>, el factor que multiplica <span class="math inline">\((3-x)^{1/3}\)</span> es no nulo, de modo que el cociente incremental tiene magnitud proporcional a <span class="math inline">\(|h|^{-2/3}\)</span>: no hay derivada finita.</p>
+<p><strong><code>SPV4-C18-E002-b-iii</code></strong> En los intervalos donde seno y coseno son positivos se diferencian los dos sumandos por separado: <span class="math display">\[\begin{aligned}
+f'={}&amp;(\sin x)^{\cos x}[-\sin x\log(\sin x)+\cos x\cot x]\\
+&amp;+(\cos x)^{\sin x}[\cos x\log(\cos x)-\sin x\tan x].
+\end{aligned}\]</span> El logaritmo de una suma no es la suma de sus logaritmos.</p>
+<p><strong><code>SPV4-C18-E002-b-iv</code></strong> Para <span class="math inline">\(f=(e^x-e^{-x})/[e^{2x}(1+x^3)]\)</span>, <span class="math inline">\(x\ne-1\)</span>, el cálculo con <span class="math inline">\(\log|f|\)</span> da, si <span class="math inline">\(x\ne0\)</span>, <span class="math display">\[f'=f\left[\frac{e^x+e^{-x}}{e^x-e^{-x}}-2-\frac{3x^2}{1+x^3}\right].\]</span> En <span class="math inline">\(0\)</span>, se vuelve al cociente original: numerador cero, derivada del numerador 2 y denominador 1, así que <span class="math inline">\(f'(0)=2\)</span>. Para evitar la singularidad removible puede escribirse en todo su dominio <span class="math display">\[f'=\frac{e^{-x}+e^{-3x}}{1+x^3}-\frac{(e^{-x}-e^{-3x})[2(1+x^3)+3x^2]}{(1+x^3)^2}.\]</span></p>
+</section>
+<section id="e003" class="level2">
+<h2 class="anchored" data-anchor-id="e003">E003 — Integral de una derivada logarítmica</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 3, p.&nbsp;352 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E003</code></strong> Si <span class="math inline">\(f&gt;0\)</span> en <span class="math inline">\([a,b]\)</span> y <span class="math inline">\(f'/f\)</span> es integrable (por ejemplo, <span class="math inline">\(f\in C^1\)</span>), E002 y el teorema fundamental dan <span class="math display">\[\int_a^b\frac{f'(x)}{f(x)}dx=\log f(b)-\log f(a)=\log\frac{f(b)}{f(a)}.\]</span> La mera diferenciabilidad no garantiza una integral de Riemann propia de la derivada. Por ejemplo, <span class="math inline">\(f(0)=2\)</span>, <span class="math inline">\(f(x)=2+x^2\sin(1/x^2)\)</span> en <span class="math inline">\([0,1/2]\)</span> es positiva y diferenciable, pero su derivada <span class="math inline">\(2x\sin(1/x^2)-2\cos(1/x^2)/x\)</span> no está acotada. La fórmula debe entenderse con la hipótesis de existencia de la integral.</p>
+</section>
+<section id="e004" class="level2">
+<h2 class="anchored" data-anchor-id="e004">E004 — Cinco gráficas exponenciales</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 4, p.&nbsp;352 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E004-a</code></strong> <span class="math inline">\(e^{x+1}\)</span> es la exponencial trasladada una unidad a la izquierda; pasa por <span class="math inline">\((0,e)\)</span>, crece estrictamente, es convexa y tiene asíntota <span class="math inline">\(y=0\)</span> hacia <span class="math inline">\(-\infty\)</span>.</p>
+<p><strong><code>SPV4-C18-E004-b</code></strong> <span class="math inline">\(e^{\sin x}\)</span> tiene período <span class="math inline">\(2\pi\)</span> y rango <span class="math inline">\([e^{-1},e]\)</span>. Su derivada <span class="math inline">\(e^{\sin x}\cos x\)</span> cambia de positiva a negativa en <span class="math inline">\(\pi/2+2k\pi\)</span> (máximos <span class="math inline">\(e\)</span>) y de negativa a positiva en <span class="math inline">\(3\pi/2+2k\pi\)</span> (mínimos <span class="math inline">\(e^{-1}\)</span>). La segunda derivada es <span class="math inline">\(e^{\sin x}(\cos^2x-\sin x)\)</span>: las inflexiones satisfacen <span class="math inline">\(\sin x=(\sqrt5-1)/2\)</span>.</p>
+<p><strong><code>SPV4-C18-E004-c</code></strong> <span class="math inline">\(e^x+e^{-x}\)</span> es par, estrictamente convexa y tiene mínimo 2 en 0. Decrece a la izquierda y crece a la derecha; diverge en ambos extremos. Supera a cada una de las curvas <span class="math inline">\(e^x\)</span> y <span class="math inline">\(e^{-x}\)</span>; su diferencia con <span class="math inline">\(e^x\)</span> tiende a cero a la derecha y con <span class="math inline">\(e^{-x}\)</span> a la izquierda.</p>
+<p><strong><code>SPV4-C18-E004-d</code></strong> <span class="math inline">\(e^x-e^{-x}\)</span> es impar, pasa por el origen y crece en toda la recta porque su derivada es <span class="math inline">\(e^x+e^{-x}&gt;0\)</span>. Tiene inflexión en 0, concavidad negativa antes y positiva después. Queda por debajo de <span class="math inline">\(e^x\)</span>; su diferencia con ella es <span class="math inline">\(-e^{-x}\)</span>, que tiende a cero a la derecha. A la izquierda se aproxima a <span class="math inline">\(-e^{-x}\)</span>, con diferencia <span class="math inline">\(e^x\)</span>; la lámina permite compararla también con la curva positiva <span class="math inline">\(e^{-x}\)</span>.</p>
+<p><strong><code>SPV4-C18-E004-e</code></strong> <span class="math inline">\((e^x-e^{-x})/(e^x+e^{-x})=\tanh x\)</span> es impar, de rango <span class="math inline">\((-1,1)\)</span>, creciente con derivada <span class="math inline">\(4/(e^x+e^{-x})^2&gt;0\)</span>. Tiene asíntotas <span class="math inline">\(y=\pm1\)</span> y una inflexión en 0; es convexa para <span class="math inline">\(x&lt;0\)</span> y cóncava para <span class="math inline">\(x&gt;0\)</span>.</p>
+<div id="fig-spv4-c18-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 18: E004: traslación, oscilación y combinaciones exponenciales">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c18-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C18_assets/C18_01_exponenciales.png" class="img-fluid figure-img" alt="Capítulo 18: E004: traslación, oscilación y combinaciones exponenciales">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c18-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Capítulo 18 · Figura 1. E004: traslación, oscilación y combinaciones exponenciales
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e005" class="level2">
+<h2 class="anchored" data-anchor-id="e005">E005 — Límites por l’Hôpital</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 5, p.&nbsp;352 (PDF: página impresa + 20).</p>
+<p>Todos los cocientes son <span class="math inline">\(0/0\)</span> al tender <span class="math inline">\(x\)</span> a cero; los denominadores derivados no se anulan para <span class="math inline">\(x\ne0\)</span> cerca de cero.</p>
+<p><strong><code>SPV4-C18-E005-i</code></strong> Para <span class="math inline">\((e^x-1-x-x^2/2)/x^2\)</span>, dos aplicaciones dan <span class="math inline">\((e^x-1)/2\to\boxed0\)</span>.</p>
+<p><strong><code>SPV4-C18-E005-ii</code></strong> Para <span class="math inline">\((e^x-1-x-x^2/2-x^3/6)/x^3\)</span>, tres aplicaciones dan <span class="math inline">\((e^x-1)/6\to\boxed0\)</span>.</p>
+<p><strong><code>SPV4-C18-E005-iii</code></strong> Con el numerador de (i) y denominador <span class="math inline">\(x^3\)</span>, tres aplicaciones dan <span class="math inline">\(e^x/6\to\boxed{1/6}\)</span>.</p>
+<p><strong><code>SPV4-C18-E005-iv</code></strong> Sea <span class="math inline">\(N=\log(1+x)-x+x^2/2\)</span>. Entonces <span class="math inline">\(N'=1/(1+x)-1+x\)</span>, <span class="math inline">\(N''=1-1/(1+x)^2\)</span> y <span class="math inline">\(N^{(3)}=2/(1+x)^3\)</span>. Dos aplicaciones a <span class="math inline">\(N/x^2\)</span> dan <span class="math inline">\(N''/2\to\boxed0\)</span>.</p>
+<p><strong><code>SPV4-C18-E005-v</code></strong> Tres aplicaciones a <span class="math inline">\(N/x^3\)</span> dan <span class="math inline">\(N^{(3)}/6\to\boxed{1/3}\)</span>.</p>
+<p><strong><code>SPV4-C18-E005-vi</code></strong> El numerador <span class="math inline">\(N-x^3/3\)</span> tiene primeras dos derivadas nulas en cero y tercera derivada <span class="math inline">\(2/(1+x)^3-2\)</span>. Tres aplicaciones, con denominador <span class="math inline">\(x^3\)</span>, dan <span class="math inline">\([2/(1+x)^3-2]/6\to\boxed0\)</span>.</p>
+<p>Se han usado derivadas, sin presuponer desarrollos de Taylor.</p>
+</section>
+<section id="e006" class="level2">
+<h2 class="anchored" data-anchor-id="e006">E006 — Límites de potencias indeterminadas</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 6, p.&nbsp;352 (PDF: página impresa + 20).</p>
+<p>Se toma logaritmo en una vecindad con base positiva y se exponencia el límite finito obtenido.</p>
+<p><strong><code>SPV4-C18-E006-i</code></strong> <span class="math inline">\(\log((1-x)^{1/x})=\log(1-x)/x\to-1\)</span> por l’Hôpital; límite <span class="math inline">\(\boxed{e^{-1}}\)</span>.</p>
+<p><strong><code>SPV4-C18-E006-ii</code></strong> Para <span class="math inline">\(x\to\pi/4\)</span>, <span class="math display">\[\log((\tan x)^{\tan2x})=\frac{\log(\tan x)}{\cot2x}\longrightarrow\frac{2}{-2}=-1.\]</span> El denominador deriva a <span class="math inline">\(-2\csc^2(2x)\)</span> y el numerador a <span class="math inline">\(1/(\sin x\cos x)\)</span>. Límite <span class="math inline">\(\boxed{e^{-1}}\)</span> por ambos lados dentro de la vecindad positiva.</p>
+<p><strong><code>SPV4-C18-E006-iii</code></strong> <span class="math inline">\(\log((\cos x)^{1/x^2})=\log(\cos x)/x^2\to-1/2\)</span>, pues tras una aplicación queda <span class="math inline">\(-\tan x/(2x)\)</span>. Límite <span class="math inline">\(\boxed{e^{-1/2}}\)</span>.</p>
+</section>
+<section id="e007" class="level2">
+<h2 class="anchored" data-anchor-id="e007">E007 — Gráficas hiperbólicas</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 7, p.&nbsp;353 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E007</code></strong> Las definiciones son <span class="math inline">\(\sinh x=(e^x-e^{-x})/2\)</span>, <span class="math inline">\(\cosh x=(e^x+e^{-x})/2\)</span> y <span class="math inline">\(\tanh x=\sinh x/\cosh x\)</span>. Las dos primeras gráficas son las de E004(d,c) con ordenadas divididas entre 2. <span class="math inline">\(\sinh\)</span> es impar, creciente y de rango <span class="math inline">\(\mathbb R\)</span>; <span class="math inline">\(\cosh\)</span> es par, convexa, de mínimo 1 y rango <span class="math inline">\([1,\infty)\)</span>. <span class="math inline">\(\tanh\)</span> conserva la gráfica de E004(e). Se representan expresamente las tres funciones.</p>
+<div id="fig-spv4-c18-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 18: E007 y E009: funciones hiperbólicas e inversas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c18-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C18_assets/C18_02_hiperbolicas.png" class="img-fluid figure-img" alt="Capítulo 18: E007 y E009: funciones hiperbólicas e inversas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c18-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Capítulo 18 · Figura 2. E007 y E009: funciones hiperbólicas e inversas
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e008" class="level2">
+<h2 class="anchored" data-anchor-id="e008">E008 — Identidades y derivadas hiperbólicas</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 8, p.&nbsp;353 (PDF: página impresa + 20).</p>
+<p>Escribamos <span class="math inline">\(u=e^x\)</span>, de modo que <span class="math inline">\(e^{-x}=1/u\)</span>.</p>
+<p><strong><code>SPV4-C18-E008-a</code></strong> <span class="math inline">\(\cosh^2x-\sinh^2x=[(u+u^{-1})^2-(u-u^{-1})^2]/4=1\)</span>.</p>
+<p><strong><code>SPV4-C18-E008-b</code></strong> Dividir (a) por <span class="math inline">\(\cosh^2x&gt;0\)</span> da <span class="math inline">\(\tanh^2x+1/\cosh^2x=1\)</span>.</p>
+<p><strong><code>SPV4-C18-E008-c</code></strong> Al expandir <span class="math inline">\(\sinh x\cosh y+\cosh x\sinh y\)</span>, se cancelan los términos <span class="math inline">\(e^{x-y}\)</span> y <span class="math inline">\(e^{-x+y}\)</span> y quedan <span class="math inline">\((e^{x+y}-e^{-(x+y)})/2=\sinh(x+y)\)</span>.</p>
+<p><strong><code>SPV4-C18-E008-d</code></strong> La expansión de <span class="math inline">\(\cosh x\cosh y+\sinh x\sinh y\)</span> cancela los mismos términos mixtos y deja <span class="math inline">\((e^{x+y}+e^{-(x+y)})/2=\cosh(x+y)\)</span>.</p>
+<p><strong><code>SPV4-C18-E008-e</code></strong> <span class="math inline">\(\sinh' x=(e^x+e^{-x})/2=\cosh x\)</span>.</p>
+<p><strong><code>SPV4-C18-E008-f</code></strong> <span class="math inline">\(\cosh' x=(e^x-e^{-x})/2=\sinh x\)</span>.</p>
+<p><strong><code>SPV4-C18-E008-g</code></strong> La regla del cociente y (a) dan <span class="math inline">\(\tanh' x=(\cosh^2x-\sinh^2x)/\cosh^2x=1/\cosh^2x\)</span>.</p>
+</section>
+<section id="e009" class="level2">
+<h2 class="anchored" data-anchor-id="e009">E009 — Inversas hiperbólicas y ramas</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 9, p.&nbsp;353 (PDF: página impresa + 20).</p>
+<p>Se invierte <span class="math inline">\(\sinh\)</span> en <span class="math inline">\(\mathbb R\)</span>, <span class="math inline">\(\cosh\)</span> restringida a <span class="math inline">\([0,\infty)\)</span> y <span class="math inline">\(\tanh\)</span> en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong><code>SPV4-C18-E009-a</code></strong> Si <span class="math inline">\(t=\operatorname{arcosh}x\)</span>, entonces <span class="math inline">\(t\ge0\)</span>, <span class="math inline">\(x\ge1\)</span> y <span class="math inline">\(\sinh t\ge0\)</span>. De E008(a), <span class="math inline">\(\sinh(\operatorname{arcosh}x)=\sqrt{x^2-1}\)</span>. La raíz es la positiva.</p>
+<p><strong><code>SPV4-C18-E009-b</code></strong> Para <span class="math inline">\(t=\operatorname{arsinh}x\)</span>, <span class="math inline">\(\cosh t&gt;0\)</span> y <span class="math inline">\(\cosh(\operatorname{arsinh}x)=\sqrt{1+x^2}\)</span> para todo real <span class="math inline">\(x\)</span>.</p>
+<p><strong><code>SPV4-C18-E009-c</code></strong> Por la derivada inversa y (b), <span class="math inline">\((\operatorname{arsinh}x)'=1/\sqrt{1+x^2}\)</span> en toda la recta.</p>
+<p><strong><code>SPV4-C18-E009-d</code></strong> En <span class="math inline">\(x&gt;1\)</span>, <span class="math inline">\((\operatorname{arcosh}x)'=1/\sqrt{x^2-1}\)</span>. En <span class="math inline">\(x=1\)</span> la inversa está definida pero tiene pendiente derecha infinita, pues <span class="math inline">\(\sinh0=0\)</span>.</p>
+<p><strong><code>SPV4-C18-E009-e</code></strong> En <span class="math inline">\(|x|&lt;1\)</span>, E008(b,g) da <span class="math inline">\((\operatorname{artanh}x)'=1/(1-x^2)\)</span>. Fuera de ese intervalo no existe inversa real de <span class="math inline">\(\tanh\)</span>.</p>
+</section>
+<section id="e010" class="level2">
+<h2 class="anchored" data-anchor-id="e010">E010 — Fórmulas logarítmicas e integrales</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 10, p.&nbsp;354 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E010-a</code></strong> Para invertir <span class="math inline">\(x=(e^t-e^{-t})/2\)</span>, sea <span class="math inline">\(u=e^t&gt;0\)</span>. La ecuación <span class="math inline">\(u^2-2xu-1=0\)</span> tiene única raíz positiva <span class="math inline">\(u=x+\sqrt{x^2+1}\)</span>, luego <span class="math display">\[\operatorname{arsinh}x=\log(x+\sqrt{1+x^2}),\quad x\in\mathbb R.\]</span> Para <span class="math inline">\(x=(u+u^{-1})/2\)</span> y la rama <span class="math inline">\(t\ge0\)</span>, se requiere <span class="math inline">\(u\ge1\)</span>, por lo que <span class="math display">\[\operatorname{arcosh}x=\log(x+\sqrt{x^2-1}),\quad x\ge1.\]</span> Finalmente, <span class="math inline">\(x=(u^2-1)/(u^2+1)\)</span> equivale a <span class="math inline">\(u^2=(1+x)/(1-x)\)</span> y da <span class="math display">\[\operatorname{artanh}x=\tfrac12\log\frac{1+x}{1-x},\quad |x|&lt;1.\]</span> Las otras raíces de las cuadráticas no cumplen la positividad o la rama elegida.</p>
+<p><strong><code>SPV4-C18-E010-b</code></strong> Derivar las fórmulas anteriores y aplicar el teorema fundamental produce <span class="math display">\[\int_a^b\frac{dx}{\sqrt{1+x^2}}=[\log(x+\sqrt{1+x^2})]_a^b,\]</span> para cualesquiera <span class="math inline">\(a,b\)</span>. Si <span class="math inline">\(a,b\)</span> pertenecen a un mismo componente de <span class="math inline">\((-\infty,-1)\cup(1,\infty)\)</span>, <span class="math display">\[\int_a^b\frac{dx}{\sqrt{x^2-1}}=[\log|x+\sqrt{x^2-1}|]_a^b.\]</span> En el componente negativo esta primitiva es <span class="math inline">\(-\operatorname{arcosh}(-x)\)</span>, no <span class="math inline">\(\operatorname{arcosh}x\)</span>. Para <span class="math inline">\(a,b\in(-1,1)\)</span>, <span class="math display">\[\int_a^b\frac{dx}{1-x^2}=\frac12\left[\log\frac{1+x}{1-x}\right]_a^b.\]</span> También se obtiene la última descomponiendo <span class="math inline">\(1/(1-x^2)=\frac12[1/(1-x)+1/(1+x)]\)</span>. No se atraviesan los polos <span class="math inline">\(\pm1\)</span> con una integral propia.</p>
+</section>
+<section id="e011" class="level2">
+<h2 class="anchored" data-anchor-id="e011">E011 — Una integral no acotada</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 11, p.&nbsp;354 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E011</code></strong> Sea <span class="math inline">\(F(x)=\int_2^x dt/\log t\)</span>, <span class="math inline">\(x\ge2\)</span>. Para <span class="math inline">\(t\ge2\)</span>, <span class="math inline">\(0&lt;\log t\le t\)</span>, de modo que <span class="math display">\[F(x)\ge\int_2^x\frac{dt}{t}=\log(x/2)\longrightarrow\infty.\]</span> En particular, <span class="math inline">\(F\)</span> no está acotada en <span class="math inline">\([2,\infty)\)</span>.</p>
+</section>
+<section id="e012" class="level2">
+<h2 class="anchored" data-anchor-id="e012">E012 — Promedios logarítmicos de una función monótona</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 12, p.&nbsp;354 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E012</code></strong> Sea <span class="math inline">\(f\)</span> no decreciente en <span class="math inline">\([1,\infty)\)</span> y <span class="math inline">\(F(x)=\int_1^x f(t)dt/t\)</span>. La monotonía asegura integrabilidad en cada compacto. El cociente se considera en <span class="math inline">\(x&gt;1\)</span>, porque en 1 es <span class="math inline">\(0/0\)</span>.</p>
+<p>Si <span class="math inline">\(|f|\le M\)</span>, entonces <span class="math inline">\(|F(x)|\le M\log x\)</span> y <span class="math inline">\(F(x)/\log x\)</span> está acotado. Recíprocamente, supongamos <span class="math inline">\(F(x)/\log x\le K\)</span> para todo <span class="math inline">\(x&gt;1\)</span>; una cota absoluta implica esta cota superior. Para <span class="math inline">\(y&gt;1\)</span>, dividimos en <span class="math inline">\([1,y]\)</span> y <span class="math inline">\([y,y^2]\)</span>. La monotonía da <span class="math display">\[F(y^2)\ge f(1)\log y+f(y)\log y.\]</span> Como <span class="math inline">\(\log(y^2)=2\log y\)</span>, resulta <span class="math inline">\(f(y)\le2K-f(1)\)</span>. Además <span class="math inline">\(f(y)\ge f(1)\)</span>: <span class="math inline">\(f\)</span> está acotada por ambos lados, incluso si toma valores negativos. No se presupone continuidad ni <span class="math inline">\(f(1+)=f(1)\)</span>.</p>
+</section>
+<section id="e013" class="level2">
+<h2 class="anchored" data-anchor-id="e013">E013 — Comparación de potencias, logaritmos y exponenciales</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 13, p.&nbsp;354 (PDF: página impresa + 20).</p>
+<p>Se toma <span class="math inline">\(n\)</span> entero positivo.</p>
+<p><strong><code>SPV4-C18-E013-a</code></strong> Si <span class="math inline">\(0&lt;a&lt;1\)</span>, <span class="math inline">\(\log a&lt;0\)</span> y <span class="math inline">\(a^x=e^{x\log a}\to0\)</span> cuando <span class="math inline">\(x\to\infty\)</span>.</p>
+<p><strong><code>SPV4-C18-E013-b</code></strong> Con <span class="math inline">\(u=\log x\to\infty\)</span>, <span class="math inline">\(x/(\log x)^n=e^u/u^n\to\infty\)</span>. Para demostrarlo sin remitir a la conclusión, aplicamos l’Hôpital <span class="math inline">\(n\)</span> veces a <span class="math inline">\(u^n/e^u\)</span>: el último cociente es <span class="math inline">\(n!/e^u\to0\)</span>, y todos son positivos para <span class="math inline">\(u&gt;0\)</span>.</p>
+<p><strong><code>SPV4-C18-E013-c</code></strong> Invertir el cociente positivo anterior da <span class="math inline">\((\log x)^n/x\to0\)</span>.</p>
+<p><strong><code>SPV4-C18-E013-d</code></strong> Cuando <span class="math inline">\(x\to0^+\)</span>, sea <span class="math inline">\(u=-\log x\to\infty\)</span>. Entonces <span class="math inline">\(x(\log x)^n=(-1)^n u^ne^{-u}\to0\)</span> por (b), independientemente de su signo.</p>
+<p><strong><code>SPV4-C18-E013-e</code></strong> <span class="math inline">\(\log(x^x)=x\log x\to0\)</span> por (d), así que <span class="math inline">\(x^x\to1\)</span> cuando <span class="math inline">\(x\to0^+\)</span>.</p>
+</section>
+<section id="e014" class="level2">
+<h2 class="anchored" data-anchor-id="e014">E014 — La curva de x elevado a x</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 14, p.&nbsp;354 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E014</code></strong> Para <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(f=x^x\)</span> satisface <span class="math display">\[f'=f(1+\log x),\qquad f''=f\left[(1+\log x)^2+\frac1x\right]&gt;0.\]</span> Decrece en <span class="math inline">\((0,e^{-1})\)</span>, crece en <span class="math inline">\((e^{-1},\infty)\)</span> y tiene mínimo global <span class="math inline">\(e^{-1/e}\)</span> en <span class="math inline">\(x=e^{-1}\)</span>. Es estrictamente convexa. E013(e) da límite 1 en <span class="math inline">\(0^+\)</span>, pero <span class="math inline">\((0,1)\)</span> no pertenece al dominio original; hacia infinito diverge. Pasa por <span class="math inline">\((1,1)\)</span>.</p>
+<div id="fig-spv4-c18-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 18: E014 y E018: potencias variables">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c18-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C18_assets/C18_03_potencias.png" class="img-fluid figure-img" alt="Capítulo 18: E014 y E018: potencias variables">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c18-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Capítulo 18 · Figura 3. E014 y E018: potencias variables
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e015" class="level2">
+<h2 class="anchored" data-anchor-id="e015">E015 — Dominio exponencial mediante una cota de la derivada</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 15, p.&nbsp;354 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E015-a</code></strong> Para <span class="math inline">\(n\ge1\)</span> y <span class="math inline">\(x&gt;0\)</span>, sea <span class="math inline">\(f=e^x/x^n\)</span>. Su derivada es <span class="math inline">\(e^x(x-n)/x^{n+1}\)</span>; decrece hasta <span class="math inline">\(n\)</span> y crece después. En particular, para <span class="math inline">\(x&gt;n\)</span>, <span class="math display">\[f(x)&gt;f(n)=\frac{e^n}{n^n}.\]</span></p>
+<p><strong><code>SPV4-C18-E015-b</code></strong> Si <span class="math inline">\(x&gt;n+1\)</span>, aplicar (a) al exponente <span class="math inline">\(n+1\)</span> da <span class="math display">\[f'(x)=(x-n)\frac{e^x}{x^{n+1}}&gt;\frac{e^{n+1}}{(n+1)^{n+1}}=:m&gt;0.\]</span> El teorema del valor medio implica <span class="math inline">\(f(x)\ge f(n+1)+m(x-n-1)\)</span> para <span class="math inline">\(x&gt;n+1\)</span>. Por tanto <span class="math inline">\(f(x)\to\infty\)</span>, no solo que sea creciente. Si se incluye <span class="math inline">\(n=0\)</span>, la conclusión de crecimiento es directamente <span class="math inline">\(e^x\to\infty\)</span>; el argumento de mínimo en <span class="math inline">\(x=n\)</span> se formuló para <span class="math inline">\(n\ge1\)</span>.</p>
+</section>
+<section id="e016" class="level2">
+<h2 class="anchored" data-anchor-id="e016">E016 — Gráficas de la exponencial dividida por una potencia</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 16, p.&nbsp;354 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E016</code></strong> Para <span class="math inline">\(n\ge1\)</span> el dominio natural es <span class="math inline">\(x\ne0\)</span>. Además de la derivada de E015, <span class="math display">\[f''(x)=\frac{e^x}{x^n}\frac{(x-n)^2+n}{x^2}.\]</span> En <span class="math inline">\(x&gt;0\)</span>, la gráfica es convexa, tiene mínimo <span class="math inline">\(e^n/n^n\)</span> en <span class="math inline">\(n\)</span>, y diverge tanto en <span class="math inline">\(0^+\)</span> como en <span class="math inline">\(+\infty\)</span>. En <span class="math inline">\(x&lt;0\)</span>, el factor <span class="math inline">\(1-n/x\)</span> es positivo, por lo que <span class="math inline">\(f'\)</span> y <span class="math inline">\(f''\)</span> tienen el signo de <span class="math inline">\(f\)</span>. Si <span class="math inline">\(n\)</span> es par, la rama izquierda es positiva, creciente y convexa, desde <span class="math inline">\(0^+\)</span> en <span class="math inline">\(-\infty\)</span> hasta <span class="math inline">\(+\infty\)</span> en <span class="math inline">\(0^-\)</span>. Si <span class="math inline">\(n\)</span> es impar es negativa, decreciente y cóncava, desde <span class="math inline">\(0^-\)</span> hasta <span class="math inline">\(-\infty\)</span>. La asíntota izquierda es <span class="math inline">\(y=0\)</span> y la vertical es <span class="math inline">\(x=0\)</span>. Se muestran ambas paridades; ningún trazo une las ramas a través del polo.</p>
+<div id="fig-spv4-c18-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 18: E016: ramas para exponentes pares e impares">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c18-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C18_assets/C18_04_cocientes.png" class="img-fluid figure-img" alt="Capítulo 18: E016: ramas para exponentes pares e impares">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c18-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Capítulo 18 · Figura 4. E016: ramas para exponentes pares e impares
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e017" class="level2">
+<h2 class="anchored" data-anchor-id="e017">E017 — La constante e en límites de potencias</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 17, p.&nbsp;355 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E017-a</code></strong> Por definición de derivada de <span class="math inline">\(\log\)</span> en 1, <span class="math display">\[\lim_{y\to0}\frac{\log(1+y)}y=\log'(1)=1.\]</span> Esto evita l’Hôpital.</p>
+<p><strong><code>SPV4-C18-E017-b</code></strong> Sustituir <span class="math inline">\(y=1/x\)</span> da <span class="math inline">\(x\log(1+1/x)\to1\)</span> cuando <span class="math inline">\(x\to\infty\)</span>.</p>
+<p><strong><code>SPV4-C18-E017-c</code></strong> Exponenciar (b) da <span class="math inline">\((1+1/x)^x\to e\)</span>.</p>
+<p><strong><code>SPV4-C18-E017-d</code></strong> Si <span class="math inline">\(a\ne0\)</span>, con <span class="math inline">\(y=a/x\)</span>, <span class="math inline">\(x\log(1+a/x)=a\log(1+y)/y\to a\)</span>; la base es positiva para <span class="math inline">\(x\)</span> suficientemente grande. El límite es <span class="math inline">\(e^a\)</span>. Para <span class="math inline">\(a=0\)</span> es constantemente 1.</p>
+<p><strong><code>SPV4-C18-E017-e</code></strong> Para <span class="math inline">\(b&gt;0\)</span>, sea <span class="math inline">\(c=\log b\)</span>. Si <span class="math inline">\(c\ne0\)</span>, con <span class="math inline">\(u=c/x\)</span>, <span class="math display">\[x(b^{1/x}-1)=c\frac{e^u-1}{u}\to c\]</span> por la derivada de <span class="math inline">\(\exp\)</span> en 0. Si <span class="math inline">\(b=1\)</span>, el cociente original es cero. El resultado es <span class="math inline">\(\log b\)</span> en ambos casos.</p>
+</section>
+<section id="e018" class="level2">
+<h2 class="anchored" data-anchor-id="e018">E018 — Gráfica del límite clásico de e</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 18, p.&nbsp;355 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E018</code></strong> Sea <span class="math inline">\(f=(1+1/x)^x\)</span>, <span class="math inline">\(x&gt;0\)</span>, y <span class="math inline">\(L=\log f=x\log(1+1/x)\)</span>. Entonces <span class="math display">\[L'=\log(1+1/x)-\frac1{x+1}&gt;0,\qquad L''=-\frac1{x(x+1)^2}&lt;0.\]</span> La desigualdad estricta se obtiene de <span class="math inline">\(\log(1+t)=\int_0^t du/(1+u)&gt;t/(1+t)\)</span>, <span class="math inline">\(t&gt;0\)</span>. Por ello <span class="math inline">\(f\)</span> es creciente. Su límite en infinito es <span class="math inline">\(e\)</span> por E017; en cero es 1, pues con <span class="math inline">\(u=1/x\)</span>, <span class="math inline">\(L=\log(1+u)/u\to0\)</span>. Ninguna de las dos ordenadas extremas se alcanza.</p>
+<p>La gráfica es además cóncava. En efecto, <span class="math inline">\(L'=\int_0^1 t/(x+t)^2dt\)</span> y <span class="math inline">\(-L''=2\int_0^1 t/(x+t)^3dt\)</span>. Schwarz da <span class="math display">\[(L')^2\le\left(\int_0^1\frac{t}{(x+t)^3}dt\right)\left(\int_0^1\frac{t}{x+t}dt\right)&lt;-L''/2.\]</span> Así <span class="math inline">\(f''=f[(L')^2+L'']&lt;0\)</span>. La lámina de E014 incluye esta curva y las dos ordenadas límite.</p>
+</section>
+<section id="e019" class="level2">
+<h2 class="anchored" data-anchor-id="e019">E019 — Capitalización como modelo matemático</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 19, p.&nbsp;355 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E019</code></strong> Sea <span class="math inline">\(r=a/100\ge0\)</span> la tasa anual del modelo. Con capital inicial 1 y <span class="math inline">\(k\)</span> períodos iguales, el capital final es <span class="math inline">\((1+r/k)^k\)</span>. Si <span class="math inline">\(r&gt;0\)</span>, <span class="math inline">\(\log(1+r/k)&lt;r/k\)</span> muestra que cada capital es menor que <span class="math inline">\(e^r\)</span>, mientras que E017(d) prueba que tienden a <span class="math inline">\(e^r\)</span> al crecer <span class="math inline">\(k\)</span>. Por definición de supremo, el mayor valor límite es <span class="math inline">\(\boxed{e^{a/100}}\)</span>; no se alcanza con un <span class="math inline">\(k\)</span> finito cuando <span class="math inline">\(a&gt;0\)</span>. Para <span class="math inline">\(a=0\)</span>, todos los valores son 1. Para capital inicial <span class="math inline">\(P\)</span>, se multiplica por <span class="math inline">\(P\)</span>. La afirmación es sobre el modelo de tasa constante del ejercicio.</p>
+</section>
+<section id="e020" class="level2">
+<h2 class="anchored" data-anchor-id="e020">E020 — Logaritmos de valores absolutos</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 20, p.&nbsp;355 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E020-a</code></strong> Si <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(\log|x|=\log x\)</span>. Si <span class="math inline">\(x&lt;0\)</span>, es <span class="math inline">\(\log(-x)\)</span> y su derivada es <span class="math inline">\((-1)/(-x)=1/x\)</span>. Por tanto <span class="math inline">\((\log|x|)'=1/x\)</span> en <span class="math inline">\(\mathbb R\setminus\{0\}\)</span>.</p>
+<p><strong><code>SPV4-C18-E020-b</code></strong> Para <span class="math inline">\(f\)</span> diferenciable y <span class="math inline">\(f(x)\ne0\)</span>, la cadena aplicada a (a) da <span class="math inline">\((\log|f|)'=f'/f\)</span>. Localmente el signo de <span class="math inline">\(f\)</span> es constante por continuidad. En un cero de <span class="math inline">\(f\)</span> el logaritmo no está definido y no se divide por <span class="math inline">\(f\)</span>.</p>
+</section>
+<section id="e021" class="level2">
+<h2 class="anchored" data-anchor-id="e021">E021 — Todas las soluciones de una ecuación exponencial</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 21, p.&nbsp;355 (PDF: página impresa + 20).</p>
+<p>Se trabaja en un intervalo conexo.</p>
+<p><strong><code>SPV4-C18-E021-a</code></strong> Si <span class="math inline">\(f'=cf\)</span> y <span class="math inline">\(f\)</span> no se anula, E020 da <span class="math inline">\((\log|f|)'=c\)</span>, luego <span class="math inline">\(\log|f|=cx+d\)</span> por el valor medio. Así <span class="math inline">\(|f|=e^de^{cx}\)</span>. La continuidad obliga a que el signo sea constante; por ello <span class="math inline">\(f=ke^{cx}\)</span> con <span class="math inline">\(k\ne0\)</span>.</p>
+<p><strong><code>SPV4-C18-E021-b</code></strong> Para una solución cualquiera, el conjunto <span class="math inline">\(\{f\ne0\}\)</span> es abierto. En cada componente se aplica (a). Un extremo finito interior al intervalo de definición no puede tener valor cero, pues el límite de <span class="math inline">\(ke^{cx}\)</span> allí es no nulo. Por continuidad sería un punto interior del mismo conjunto, contradicción. Si hay algún punto no nulo, su componente ocupa todo el intervalo; si no lo hay, <span class="math inline">\(f\equiv0\)</span>. Se incluyen, por tanto, exactamente las funciones <span class="math inline">\(ke^{cx}\)</span>, ahora con <span class="math inline">\(k\)</span> arbitrario.</p>
+<p><strong><code>SPV4-C18-E021-c</code></strong> Una prueba que trata los ceros de una vez consiste en derivar <span class="math inline">\(fe^{-cx}\)</span>: su derivada es <span class="math inline">\(e^{-cx}(f'-cf)=0\)</span>. El valor medio lo hace constante y vuelve a dar <span class="math inline">\(f=ke^{cx}\)</span>.</p>
+<p><strong><code>SPV4-C18-E021-d</code></strong> Si <span class="math inline">\(f'=fg'\)</span> con <span class="math inline">\(g\)</span> diferenciable, entonces <span class="math inline">\((fe^{-g})'=e^{-g}(f'-fg')=0\)</span>. Todas las soluciones son <span class="math inline">\(f=ke^g\)</span>, incluso <span class="math inline">\(k=0\)</span>; la sustitución verifica la recíproca.</p>
+</section>
+<section id="e022" class="level2">
+<h2 class="anchored" data-anchor-id="e022">E022 — Decaimiento y semivida</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 22, p.&nbsp;355–356 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E022-a</code></strong> En el modelo <span class="math inline">\(A'=cA\)</span>, <span class="math inline">\(c&lt;0\)</span>, E021 da <span class="math inline">\(A(t)=A(0)e^{ct}\)</span>. La constante negativa de la ecuación es el opuesto de una tasa positiva <span class="math inline">\(\lambda=-c\)</span>; no es una probabilidad negativa.</p>
+<p><strong><code>SPV4-C18-E022-b</code></strong> Para <span class="math inline">\(A(0)&gt;0\)</span>, <span class="math inline">\(A(t+\tau)=A(t)/2\)</span> equivale a <span class="math inline">\(e^{c\tau}=1/2\)</span>, luego <span class="math display">\[\tau=-\frac{\log2}{c}=\frac{\log2}{\lambda}.\]</span> No depende del instante ni de la cantidad inicial positiva. Si <span class="math inline">\(A(0)=0\)</span>, la solución es nula y la igualdad por sí sola no determina un único tiempo; el parámetro del modelo sigue siendo <span class="math inline">\(\log2/\lambda\)</span>.</p>
+</section>
+<section id="e023" class="level2">
+<h2 class="anchored" data-anchor-id="e023">E023 — Ley de enfriamiento</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 23, p.&nbsp;356 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E023</code></strong> Para ambiente constante <span class="math inline">\(M\)</span> y coeficiente <span class="math inline">\(k&gt;0\)</span>, la ecuación es <span class="math inline">\(T'=-k(T-M)\)</span>. Con <span class="math inline">\(u=T-M\)</span>, resulta <span class="math inline">\(u'=-ku\)</span>, y E021 da <span class="math display">\[T(t)=M+(T(0)-M)e^{-kt}.\]</span> La sustitución verifica la ecuación y el dato inicial. Si <span class="math inline">\(T(0)&gt;M\)</span> hay enfriamiento; si es menor, calentamiento; si es igual, equilibrio. En los dos primeros casos la temperatura se acerca a <span class="math inline">\(M\)</span> sin cruzarla en tiempo finito.</p>
+</section>
+<section id="e024" class="level2">
+<h2 class="anchored" data-anchor-id="e024">E024 — Una ecuación integral homogénea</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 24, p.&nbsp;356 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E024</code></strong> Si <span class="math inline">\(f(x)=\int_0^x f(t)dt\)</span>, la igualdad hace continua a <span class="math inline">\(f\)</span> siempre que las integrales propias existan localmente. Por el teorema fundamental, <span class="math inline">\(f'=f\)</span> y, evaluando en cero, <span class="math inline">\(f(0)=0\)</span>. E021 implica <span class="math inline">\(f\equiv0\)</span>. Esta función satisface la igualdad, así que es la única.</p>
+</section>
+<section id="e025" class="level2">
+<h2 class="anchored" data-anchor-id="e025">E025 — Constantes de integración y parte del dominio no observada</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 25, p.&nbsp;356 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E025-i</code></strong> La igualdad <span class="math inline">\(\int_0^x f(t)dt=e^x\)</span> es imposible: en <span class="math inline">\(x=0\)</span> exigiría <span class="math inline">\(0=1\)</span>. Derivar y obtener <span class="math inline">\(f=e^x\)</span> no resuelve la igualdad original, ya que su integral es <span class="math inline">\(e^x-1\)</span>.</p>
+<p><strong><code>SPV4-C18-E025-ii</code></strong> Si <span class="math inline">\(f\)</span> es continua y <span class="math inline">\(\int_0^{x^2}f(t)dt=1-e^{2x^2}\)</span>, ponemos <span class="math inline">\(u=x^2\)</span>. Todo <span class="math inline">\(u\ge0\)</span> es alcanzado, por lo que <span class="math display">\[\int_0^u f(t)dt=1-e^{2u},\qquad f(u)=-2e^{2u}\quad(u\ge0).\]</span> En cero el valor se obtiene por continuidad. En <span class="math inline">\(u&lt;0\)</span> la ecuación no observa a <span class="math inline">\(f\)</span>: cualquier función continua en <span class="math inline">\((-\infty,0]\)</span> con valor <span class="math inline">\(-2\)</span> en cero puede unirse a la rama anterior. Estas y solo estas son las soluciones continuas en toda la recta. Si se pide dominio <span class="math inline">\([0,\infty)\)</span>, la solución es única. Integrar la rama positiva comprueba la igualdad para todo <span class="math inline">\(x\)</span>.</p>
+</section>
+<section id="e026" class="level2">
+<h2 class="anchored" data-anchor-id="e026">E026 — Una constante definida por la propia función</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 26, p.&nbsp;356 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E026</code></strong> Sea <span class="math inline">\(C=\int_0^1 f(t)dt\)</span>. La ecuación <span class="math inline">\(f'=f+C\)</span> hace que <span class="math inline">\(u=f+C\)</span> satisfaga <span class="math inline">\(u'=u\)</span>, así que <span class="math inline">\(f=Ae^x-C\)</span>. Integrando entre 0 y 1, <span class="math display">\[C=A(e-1)-C,\quad C=\frac{A(e-1)}2.\]</span> Todas las soluciones son <span class="math display">\[f(x)=A\left(e^x-\frac{e-1}2\right),\qquad A\in\mathbb R.\]</span> Su integral en <span class="math inline">\([0,1]\)</span> es precisamente <span class="math inline">\(A(e-1)/2\)</span>, y su derivada verifica la ecuación; no queda una constante independiente adicional.</p>
+</section>
+<section id="e027" class="level2">
+<h2 class="anchored" data-anchor-id="e027">E027 — Todas las soluciones de una ecuación integral no lineal</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 27, p.&nbsp;356 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E027</code></strong> Buscamos <span class="math inline">\(f\)</span> continua en <span class="math inline">\(\mathbb R\)</span> con <span class="math display">\[f(x)^2=\int_0^x\frac{tf(t)}{1+t^2}dt.\]</span> En cero, <span class="math inline">\(f(0)=0\)</span>. En cualquier intervalo donde <span class="math inline">\(f\ne0\)</span>, la raíz local de <span class="math inline">\(f^2\)</span> es diferenciable; derivar y dividir por <span class="math inline">\(f\)</span> da <span class="math inline">\(2f'=x/(1+x^2)\)</span>. Por tanto, con <span class="math inline">\(u(x)=\frac14\log(1+x^2)\)</span>, <span class="math display">\[f(x)=u(x)+K\]</span> en cada componente no nula.</p>
+<p>En el semieje positivo, <span class="math inline">\(u\)</span> es estrictamente creciente. Una componente <span class="math inline">\((a,b)\)</span> con <span class="math inline">\(a\ge0\)</span> tiene <span class="math inline">\(f(a)=0\)</span> por continuidad (también si <span class="math inline">\(a=0\)</span>), de modo que <span class="math inline">\(f=u-u(a)\)</span>. Si <span class="math inline">\(b\)</span> fuese finito, no podría tener <span class="math inline">\(f(b)=0\)</span> porque <span class="math inline">\(u(b)&gt;u(a)\)</span>. Luego toda componente no nula derecha es una cola <span class="math inline">\((a,\infty)\)</span> y solo puede haber una. El mismo argumento en el semieje negativo, donde <span class="math inline">\(u\)</span> es estrictamente decreciente, deja una cola <span class="math inline">\((-\infty,-b)\)</span>. Así, con dos parámetros independientes <span class="math inline">\(a,b\in[0,\infty]\)</span>, todas las soluciones son <span class="math display">\[f(x)=\begin{cases}
+\frac14\log\dfrac{1+x^2}{1+b^2},&amp;x&lt;-b,\quad b&lt;\infty,\\
+0,&amp;-b\le x\le a,\\
+\frac14\log\dfrac{1+x^2}{1+a^2},&amp;x&gt;a,\quad a&lt;\infty.
+\end{cases}\]</span> El parámetro infinito significa ausencia de esa cola, sin evaluar una fórmula con <span class="math inline">\(\infty\)</span>. Todas son no negativas; la solución nula corresponde a ambos parámetros infinitos. Para verificar suficiencia, <span class="math inline">\(f^2\)</span> es diferenciable incluso en las uniones porque allí <span class="math inline">\(f=0\)</span> y crece a lo sumo linealmente. Su derivada es <span class="math inline">\(xf(x)/(1+x^2)\)</span> y <span class="math inline">\(f(0)^2=0\)</span>; el teorema fundamental da la ecuación. <span class="math inline">\(f\)</span> no necesita ser diferenciable en un umbral positivo. Dividir por <span class="math inline">\(f\)</span> globalmente habría perdido estas soluciones con espera.</p>
+<div id="fig-spv4-c18-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 18: E027 y E041: espera e infinitas derivadas nulas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c18-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C18_assets/C18_06_espera_y_planitud.png" class="img-fluid figure-img" alt="Capítulo 18: E027 y E041: espera e infinitas derivadas nulas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c18-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Capítulo 18 · Figura 5. E027 y E041: espera e infinitas derivadas nulas
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e028" class="level2">
+<h2 class="anchored" data-anchor-id="e028">E028 — Desigualdad integral de Grönwall</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 28, p.&nbsp;356 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E028-a</code></strong> Sean <span class="math inline">\(f,g\)</span> continuas en <span class="math inline">\([a,b]\)</span>, <span class="math inline">\(g\ge0\)</span>, y <span class="math inline">\(f(x)\le C+\int_a^x fg\)</span>. Pongamos <span class="math inline">\(F=C+\int_a^x fg\)</span> y <span class="math inline">\(G=\int_a^x g\)</span>. Entonces <span class="math inline">\(F'=fg\)</span>, <span class="math inline">\(G'=g\)</span> y <span class="math display">\[(Fe^{-G})'=g(f-F)e^{-G}\le0.\]</span> Como <span class="math inline">\(F(a)=C\)</span>, se obtiene <span class="math inline">\(F(x)\le Ce^{G(x)}\)</span> y, en consecuencia, <span class="math display">\[f(x)\le C\exp\left(\int_a^x g(t)dt\right).\]</span> No se ha dividido por <span class="math inline">\(F\)</span> ni supuesto <span class="math inline">\(C&gt;0\)</span>.</p>
+<p><strong><code>SPV4-C18-E028-b</code></strong> Si <span class="math inline">\(f,g\ge0\)</span>, <span class="math inline">\(g\)</span> continua, <span class="math inline">\(f'=gf\)</span> y <span class="math inline">\(f(0)=0\)</span>, entonces para <span class="math inline">\(x\ge0\)</span> la forma integral y (a), con <span class="math inline">\(C=0\)</span>, dan <span class="math inline">\(f(x)\le0\)</span>. Para <span class="math inline">\(x\le0\)</span>, <span class="math inline">\(f'=gf\ge0\)</span> implica <span class="math inline">\(f(x)\le f(0)=0\)</span> por el valor medio. La no negatividad obliga a <span class="math inline">\(f\equiv0\)</span> en ambos lados. Se puede aplicar el argumento en cualquier compacto del dominio.</p>
+</section>
+<section id="e029" class="level2">
+<h2 class="anchored" data-anchor-id="e029">E029 — Cota polinómica inferior de la exponencial</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 29, p.&nbsp;356 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E029-a</code></strong> Sea <span class="math inline">\(S_n(x)=\sum_{k=0}^n x^k/k!\)</span>. Para <span class="math inline">\(x\ge0\)</span>, <span class="math inline">\(S_0=1\le e^x\)</span>. Si <span class="math inline">\(S_{n-1}\le e^x\)</span>, entonces <span class="math inline">\(S_n'=S_{n-1}\le(e^x)'\)</span>, y <span class="math inline">\(S_n(0)=e^0=1\)</span>; integrando la desigualdad de derivadas desde cero se obtiene <span class="math inline">\(S_n\le e^x\)</span>. Esto prueba la afirmación por inducción, sin asumir la serie infinita.</p>
+<p><strong><code>SPV4-C18-E029-b</code></strong> Aplicar (a) con <span class="math inline">\(n+1\)</span> da <span class="math inline">\(e^x\ge x^{n+1}/(n+1)!\)</span> para <span class="math inline">\(x&gt;0\)</span>. Así <span class="math display">\[\frac{e^x}{x^n}\ge\frac{x}{(n+1)!}\longrightarrow\infty.\]</span> Es una segunda demostración de la dominación de cualquier potencia fija.</p>
+</section>
+<section id="e030" class="level2">
+<h2 class="anchored" data-anchor-id="e030">E030 — La misma dominación por l’Hôpital</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 30, p.&nbsp;356 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E030</code></strong> Para entero <span class="math inline">\(n\ge1\)</span>, el cociente <span class="math inline">\(x^n/e^x\)</span> es de tipo <span class="math inline">\(\infty/\infty\)</span> y puede someterse sucesivamente a l’Hôpital: tras <span class="math inline">\(n\)</span> derivaciones queda <span class="math inline">\(n!/e^x\to0\)</span>. Las derivadas del denominador son siempre positivas; en los pasos anteriores los cocientes conservan el tipo requerido. Como <span class="math inline">\(x^n/e^x&gt;0\)</span>, invertir da <span class="math inline">\(e^x/x^n\to\infty\)</span>. Para <span class="math inline">\(n=0\)</span> es inmediato. Es una prueba distinta de las cotas de E015 y E029.</p>
+</section>
+<section id="e031" class="level2">
+<h2 class="anchored" data-anchor-id="e031">E031 — Una integral exponencial en intervalos móviles</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 31, p.&nbsp;357 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E031-a</code></strong> Sea <span class="math inline">\(F(y)=\int_0^y e^{t^2}dt\)</span> y <span class="math inline">\(J(y)=e^{-y^2}F(y)\)</span>. Como <span class="math inline">\(F(y)\ge y\to\infty\)</span>, l’Hôpital aplicado a <span class="math inline">\(F(y)/e^{y^2}\)</span> da límite <span class="math inline">\(\lim1/(2y)=0\)</span>.</p>
+<p>Para afinar los tres casos siguientes necesitamos además <span class="math display">\[\frac{F(y)}{e^{y^2}/(2y)}\longrightarrow1,\]</span> por l’Hôpital, ya que la derivada del denominador es <span class="math inline">\(e^{y^2}(1-1/(2y^2))\)</span>. Es decir, <span class="math inline">\(J(y)\)</span> dividido por <span class="math inline">\(1/(2y)\)</span> tiende a 1. Para <span class="math inline">\(z=x+\delta(x)\)</span>, <span class="math display">\[e^{-x^2}\int_x^z e^{t^2}dt=e^{z^2-x^2}J(z)-J(x).\]</span> En los tres casos <span class="math inline">\(z/x\to1\)</span> y <span class="math inline">\(J(x)\to0\)</span>.</p>
+<p><strong><code>SPV4-C18-E031-b-i</code></strong> Si <span class="math inline">\(\delta=1/x\)</span>, el factor exponencial es <span class="math inline">\(e^{2+1/x^2}\to e^2\)</span> y <span class="math inline">\(J(z)\to0\)</span>. El límite es <span class="math inline">\(\boxed0\)</span>.</p>
+<p><strong><code>SPV4-C18-E031-b-ii</code></strong> Si <span class="math inline">\(\delta=\log x/x\)</span>, el factor es <span class="math inline">\(x^2e^{(\log x)^2/x^2}\)</span>, y <span class="math inline">\(J(z)\)</span> dividido por <span class="math inline">\(1/(2x)\)</span> tiende a 1. El primer producto dividido por <span class="math inline">\(x/2\)</span> tiende a 1; el límite pedido es <span class="math inline">\(\boxed{+\infty}\)</span>.</p>
+<p><strong><code>SPV4-C18-E031-b-iii</code></strong> Si <span class="math inline">\(\delta=\log x/(2x)\)</span>, el factor es <span class="math inline">\(xe^{(\log x)^2/(4x^2)}\)</span>. Multiplicando por <span class="math inline">\(J(z)\)</span> se obtiene límite <span class="math inline">\(\boxed{1/2}\)</span>. Los términos exponenciales residuales tienden a 1 por E013(c); esto justifica también la estimación del inciso anterior.</p>
+</section>
+<section id="e032" class="level2">
+<h2 class="anchored" data-anchor-id="e032">E032 — Construcción clásica sin circularidad</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 32, p.&nbsp;357–358 (PDF: página impresa + 20).</p>
+<p>Se parte de la construcción continua de las potencias reales <span class="math inline">\(a^x\)</span> con sus leyes algebraicas, para <span class="math inline">\(a&gt;0\)</span>, <span class="math inline">\(a\ne1\)</span>, y de su inversa continua <span class="math inline">\(\log_a\)</span>. No usamos aquí sus derivadas ni el límite de E017 para establecer el límite clásico.</p>
+<p><strong><code>SPV4-C18-E032-a</code></strong> Con <span class="math inline">\(k=h/x\)</span>, para <span class="math inline">\(x&gt;0\)</span>, <span class="math display">\[\frac{\log_a(x+h)-\log_a x}{h}=\frac1x\log_a\left((1+k)^{1/k}\right).\]</span> Es una identidad para <span class="math inline">\(h\ne0\)</span> suficientemente pequeño. Si se prueba que la potencia interior tiende a un número <span class="math inline">\(e\)</span>, la continuidad de <span class="math inline">\(\log_a\)</span> dará derivada <span class="math inline">\(\log_a e/x\)</span>. La existencia del límite todavía debe probarse, y se hace en (b–d).</p>
+<p><strong><code>SPV4-C18-E032-b</code></strong> Por el binomio, <span class="math display">\[a_n=(1+1/n)^n=2+\sum_{k=2}^n\frac1{k!}\prod_{j=1}^{k-1}\left(1-\frac jn\right).\]</span> Al pasar de <span class="math inline">\(n\)</span> a <span class="math inline">\(n+1\)</span>, cada factor presente aumenta y aparece un sumando positivo. Para <span class="math inline">\(n=1\)</span>, <span class="math inline">\(a_2=9/4&gt;2=a_1\)</span>; para <span class="math inline">\(n\ge2\)</span> ya el término <span class="math inline">\(k=2\)</span> aumenta estrictamente. Luego <span class="math inline">\((a_n)\)</span> es estrictamente creciente.</p>
+<p><strong><code>SPV4-C18-E032-c</code></strong> Cada producto es menor que 1 y <span class="math inline">\(k!\ge2^{k-1}\)</span> para <span class="math inline">\(k\ge2\)</span>. Así <span class="math display">\[a_n\le2+\sum_{k=2}^n\frac1{2^{k-1}}&lt;3.\]</span> Por completitud existe <span class="math inline">\(e=\sup\{a_n\}\)</span> y <span class="math inline">\(a_n\to e\)</span>: para cualquier <span class="math inline">\(\varepsilon&gt;0\)</span>, algún término supera <span class="math inline">\(e-\varepsilon\)</span> y todos los siguientes también. Además <span class="math inline">\(e&gt;2\)</span>. Para obtener la cota estricta <span class="math inline">\(e&lt;3\)</span> uniforme, se puede separar <span class="math inline">\(k=2\)</span> y usar <span class="math inline">\(k!\ge 2\cdot3^{k-2}\)</span> para <span class="math inline">\(k\ge2\)</span>, con desigualdad estricta desde <span class="math inline">\(k=4\)</span>: <span class="math inline">\(a_n\le2+\frac12\sum_{j=0}^\infty3^{-j}=11/4&lt;3\)</span>. Esta cota basta, aunque no es óptima.</p>
+<p><strong><code>SPV4-C18-E032-d</code></strong> Para <span class="math inline">\(n\le x\le n+1\)</span>, <span class="math inline">\(x&gt;0\)</span>, monotonía de base y exponente, ambos con base mayor que 1, da <span class="math display">\[\left(1+\frac1{n+1}\right)^n\le(1+1/x)^x\le\left(1+\frac1n\right)^{n+1}.\]</span> Los extremos son <span class="math inline">\(a_{n+1}/(1+1/(n+1))\)</span> y <span class="math inline">\(a_n(1+1/n)\)</span>, que tienden a <span class="math inline">\(e\)</span>. Por encaje, el límite vale <span class="math inline">\(e\)</span> para <span class="math inline">\(x\to+\infty\)</span>. Si <span class="math inline">\(x=-u\to-\infty\)</span>, ponemos <span class="math inline">\(v=u-1\)</span> y obtenemos <span class="math display">\[(1-1/u)^{-u}=(1+1/v)^{v+1}\longrightarrow e.\]</span> Por tanto <span class="math inline">\((1+k)^{1/k}\to e\)</span> por ambos lados de cero. Volviendo a (a), <span class="math inline">\((\log_a x)'=\log_a e/x\)</span>. En particular, para la base recién construida <span class="math inline">\(e\)</span>, <span class="math inline">\(\log_e e=1\)</span>, de modo que <span class="math inline">\(\log_e'=1/x\)</span>. Como <span class="math inline">\(\log_e1=0\)</span>, coincide con <span class="math inline">\(\int_1^x dt/t\)</span> por el valor medio. Su inversa es la exponencial definida al comienzo y satisface <span class="math inline">\(E'=E\)</span>. Así ambas construcciones producen la misma constante.</p>
+</section>
+<section id="e033" class="level2">
+<h2 class="anchored" data-anchor-id="e033">E033 — Normalización del logaritmo de Napier</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 33, p.&nbsp;358 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E033</code></strong> En la idealización del ejercicio, la longitud es <span class="math inline">\(L=10^7\)</span>, <span class="math inline">\(P'=L-P\)</span> y <span class="math inline">\(Q'=L\)</span>. Con la normalización inicial de ambos móviles en el origen, <span class="math inline">\(P(0)=Q(0)=0\)</span>, las soluciones son <span class="math display">\[P(t)=L(1-e^{-t}),\qquad Q(t)=Lt.\]</span> Si <span class="math inline">\(x=L-P(t)\)</span>, entonces <span class="math inline">\(x=Le^{-t}\)</span> y <span class="math inline">\(t=\log(L/x)\)</span>. La coordenada que define el logaritmo de Napier es <span class="math display">\[N(x)=L\log(L/x)=10^7\log(10^7/x).\]</span> Para movimiento hacia adelante <span class="math inline">\(t\ge0\)</span>, el dominio recorrido es <span class="math inline">\(0&lt;x\le L\)</span>; la fórmula se extiende a todos los positivos permitiendo tiempos negativos. No es simplemente el logaritmo natural: incluye escala y desplazamiento. Los datos iniciales fijan ese desplazamiento; con <span class="math inline">\(P(0)=P_0\)</span>, <span class="math inline">\(Q(0)=Q_0\)</span> se obtendría <span class="math inline">\(Q_0+L\log((L-P_0)/x)\)</span>.</p>
+</section>
+<section id="e034" class="level2">
+<h2 class="anchored" data-anchor-id="e034">E034 — Igualdad de potencias cruzadas</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 34, p.&nbsp;358–359 (PDF: página impresa + 20).</p>
+<p>En todos estos incisos las variables de potencias reales son positivas.</p>
+<p><strong><code>SPV4-C18-E034-a</code></strong> Sea <span class="math inline">\(\phi(x)=\log x/x\)</span>. Sus derivadas son <span class="math display">\[\phi'=(1-\log x)/x^2,\qquad\phi''=(2\log x-3)/x^3.\]</span> Crece hasta <span class="math inline">\(e\)</span>, decrece después y alcanza máximo <span class="math inline">\(1/e\)</span>. Tiene cero en 1, límite <span class="math inline">\(-\infty\)</span> en <span class="math inline">\(0^+\)</span> y límite <span class="math inline">\(0^+\)</span> en infinito. Su inflexión es <span class="math inline">\(e^{3/2}\)</span>.</p>
+<p><strong><code>SPV4-C18-E034-b</code></strong> Como <span class="math inline">\(e&lt;3&lt;\pi\)</span>, la monotonía decreciente de <span class="math inline">\(\phi\)</span> en <span class="math inline">\((e,\infty)\)</span> da <span class="math inline">\(\log\pi/\pi&lt;1/e\)</span>. Así <span class="math inline">\(e\log\pi&lt;\pi\)</span> y <span class="math inline">\(\boxed{\pi^e&lt;e^\pi}\)</span>. Se dispone de <span class="math inline">\(e&lt;3\)</span> por E032 y de <span class="math inline">\(\pi&gt;3\)</span> porque <span class="math inline">\(\sin(\pi/6)=1/2&lt;\pi/6\)</span>.</p>
+<p><strong><code>SPV4-C18-E034-c</code></strong> Tomar logaritmos en <span class="math inline">\(x^y=y^x\)</span> equivale a <span class="math inline">\(\phi(x)=\phi(y)\)</span>. Para <span class="math inline">\(0&lt;x\le1\)</span>, la ordenada es no positiva y se alcanza una sola vez en todo el dominio, así que <span class="math inline">\(y=x\)</span>. Para <span class="math inline">\(x=e\)</span>, el máximo también tiene única preimagen. Para <span class="math inline">\(x&gt;1\)</span>, <span class="math inline">\(x\ne e\)</span>, hay exactamente otra preimagen: queda en <span class="math inline">\((e,\infty)\)</span> si <span class="math inline">\(1&lt;x&lt;e\)</span>, y en <span class="math inline">\((1,e)\)</span> si <span class="math inline">\(x&gt;e\)</span>, por continuidad y monotonía estricta de las dos ramas.</p>
+<p><strong><code>SPV4-C18-E034-d</code></strong> Para enteros positivos, todos los pares diagonales <span class="math inline">\((m,m)\)</span> son soluciones. Si <span class="math inline">\(x&lt;y\)</span> son distintos, (c) exige <span class="math inline">\(1&lt;x&lt;e&lt;3\)</span>, luego <span class="math inline">\(x=2\)</span>. Ya que <span class="math inline">\(2^4=4^2\)</span>, la unicidad de la otra preimagen obliga a <span class="math inline">\(y=4\)</span>. Los pares no diagonales son exactamente <span class="math inline">\((2,4)\)</span> y <span class="math inline">\((4,2)\)</span>.</p>
+<p><strong><code>SPV4-C18-E034-e</code></strong> El conjunto solución consta de la diagonal <span class="math inline">\(y=x\)</span> y la curva no diagonal, con su punto de cruce <span class="math inline">\((e,e)\)</span> incluido en la clausura. Si <span class="math inline">\(t=y/x\ne1\)</span>, la ecuación se transforma en <span class="math inline">\(x^{t-1}=t\)</span>, luego <span class="math display">\[x=t^{1/(t-1)},\qquad y=t^{t/(t-1)},\quad t&gt;0,\ t\ne1.\]</span> Al tender <span class="math inline">\(t\)</span> a 1, ambas coordenadas tienden a <span class="math inline">\(e\)</span>. Cuando una coordenada tiende a <span class="math inline">\(1^+\)</span>, la otra diverge. Las asíntotas de esta curva son <span class="math inline">\(x=1\)</span> y <span class="math inline">\(y=1\)</span>; la reflexión en la diagonal permuta sus dos partes.</p>
+<p><strong><code>SPV4-C18-E034-f</code></strong> Restrinjamos <span class="math inline">\(\phi\)</span> a <span class="math inline">\(f_1:(1,e)\to(0,1/e)\)</span> y <span class="math inline">\(f_2:(e,\infty)\to(0,1/e)\)</span>. Ambas son biyectivas, sus derivadas no se anulan y el teorema de la inversa da <span class="math inline">\(g=f_2^{-1}\circ f_1\)</span>, diferenciable. Por la cadena, <span class="math display">\[g'(x)=\frac{[g(x)]^2}{1-\log g(x)}\frac{1-\log x}{x^2}&lt;0.\]</span> Se ha probado existencia y derivabilidad sin suponer de antemano una función implícita.</p>
+<div id="fig-spv4-c18-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 18: E034: función logaritmo sobre x y conjunto de potencias cruzadas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c18-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C18_assets/C18_05_potencias_cruzadas.png" class="img-fluid figure-img" alt="Capítulo 18: E034: función logaritmo sobre x y conjunto de potencias cruzadas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c18-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Capítulo 18 · Figura 6. E034: función logaritmo sobre x y conjunto de potencias cruzadas
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e035" class="level2">
+<h2 class="anchored" data-anchor-id="e035">E035 — Convexidad y medias ponderadas</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 35, p.&nbsp;359 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E035-a</code></strong> <span class="math inline">\(\exp''x=e^x&gt;0\)</span> en <span class="math inline">\(\mathbb R\)</span>, mientras que <span class="math inline">\(\log''x=-1/x^2&lt;0\)</span> en <span class="math inline">\((0,\infty)\)</span>. Son, respectivamente, estrictamente convexa y estrictamente cóncava; el criterio se obtiene del crecimiento o decrecimiento de la pendiente por el valor medio.</p>
+<p><strong><code>SPV4-C18-E035-b</code></strong> Si <span class="math inline">\(p_i&gt;0\)</span>, <span class="math inline">\(\sum p_i=1\)</span> y <span class="math inline">\(z_i&gt;0\)</span>, la desigualdad finita para una función convexa, aplicada a <span class="math inline">\(\exp\)</span> y <span class="math inline">\(\log z_i\)</span>, da <span class="math display">\[\prod_{i=1}^n z_i^{p_i}=\exp\left(\sum_{i=1}^n p_i\log z_i\right)\le\sum_{i=1}^n p_i z_i.\]</span> La desigualdad convexa finita se prueba por inducción: se agrupan los primeros <span class="math inline">\(n-1\)</span> puntos con peso <span class="math inline">\(q=1-p_n\)</span>, se normalizan sus pesos dividiendo por <span class="math inline">\(q\)</span>, y se aplica primero la hipótesis inductiva y después convexidad a los dos puntos de pesos <span class="math inline">\(q,p_n\)</span>. La estricta convexidad muestra igualdad exactamente cuando todos los <span class="math inline">\(z_i\)</span> coinciden (el caso <span class="math inline">\(n=1\)</span> es trivial).</p>
+<p><strong><code>SPV4-C18-E035-c</code></strong> Con <span class="math inline">\(p_i=1/n\)</span> se obtiene <span class="math inline">\((z_1\cdots z_n)^{1/n}\le(z_1+\cdots+z_n)/n\)</span>, es decir <span class="math inline">\(G_n\le A_n\)</span>. Si se permiten <span class="math inline">\(z_i=0\)</span>, se pasa al límite desde <span class="math inline">\(z_i+\varepsilon\)</span>; igualdad para datos no negativos solo si todos coinciden, incluidos todos cero.</p>
+</section>
+<section id="e036" class="level2">
+<h2 class="anchored" data-anchor-id="e036">E036 — Jensen integral y sus hipótesis de integrabilidad</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 36, p.&nbsp;359 (PDF: página impresa + 20).</p>
+<p>La positividad puntual de una función integrable no asegura que esté separada de cero ni que su logaritmo tenga integral propia. Se explicita esta cuestión al aplicar el enunciado.</p>
+<p><strong><code>SPV4-C18-E036-a</code></strong> Para una partición uniforme <span class="math inline">\(P_n\)</span>, sean <span class="math inline">\(m_i=\inf_{I_i}f\)</span>. Si <span class="math inline">\(f\ge m&gt;0\)</span>, la continuidad creciente de <span class="math inline">\(\log\)</span> da <span class="math inline">\(\inf_{I_i}\log f=\log m_i\)</span>. Entonces <span class="math display">\[\frac{L(\log f,P_n)}{b-a}=\frac1n\sum_i\log m_i\le\log\left(\frac1n\sum_i m_i\right)=\log\frac{L(f,P_n)}{b-a},\]</span> por la desigualdad geométrica–aritmética de E035(c). La misma prueba funciona si los ínfimos son positivos aunque varíen con <span class="math inline">\(i\)</span>. Si algún <span class="math inline">\(m_i=0\)</span>, las sumas de <span class="math inline">\(\log f\)</span> pueden ser <span class="math inline">\(-\infty\)</span>: no son sumas inferiores reales ordinarias.</p>
+<p><strong><code>SPV4-C18-E036-b</code></strong> Para <span class="math inline">\(f\)</span> Riemann integrable con <span class="math inline">\(0&lt;m\le f\le M\)</span>, también <span class="math inline">\(\log f\)</span> es integrable, pues <span class="math inline">\(\log\)</span> es Lipschitz en <span class="math inline">\([m,M]\)</span>. Las sumas inferiores uniformes convergen a las integrales: su error es menor que el de una partición buena más un término que tiende a cero al refinar la malla. Pasar al límite en (a) da <span class="math display">\[\frac1{b-a}\int_a^b\log f\le\log\left(\frac1{b-a}\int_a^b f\right).\]</span> <strong>Advertencia sobre la formulación literal:</strong> en <span class="math inline">\([0,1]\)</span>, <span class="math inline">\(f(0)=1\)</span> y <span class="math inline">\(f(x)=x\)</span> para <span class="math inline">\(x&gt;0\)</span> es positiva e integrable, pero <span class="math inline">\(\log f\)</span> es no acotada; su integral de Riemann propia no existe. Así, «toda <span class="math inline">\(f&gt;0\)</span> integrable» requiere añadir existencia de la integral de <span class="math inline">\(\log f\)</span>, una cota positiva inferior, o una interpretación impropia/extendida. Si <span class="math inline">\(\log f\)</span> es Riemann integrable, su acotación ya obliga a <span class="math inline">\(f\ge e^{-K}&gt;0\)</span> y la prueba anterior se aplica. Para la versión extendida se usa <span class="math inline">\(f_\varepsilon=\max(f,\varepsilon)\)</span> y se toma <span class="math inline">\(\varepsilon\downarrow0\)</span>; puede obtenerse lado izquierdo <span class="math inline">\(-\infty\)</span>.</p>
+<p><strong><code>SPV4-C18-E036-c</code></strong> Para una prueba directa bajo las hipótesis propias anteriores, en cada partición uniforme se elige <span class="math inline">\(\xi_i\in I_i\)</span>. Jensen finita para la función cóncava <span class="math inline">\(\log\)</span> da <span class="math display">\[\frac1n\sum_i\log f(\xi_i)\le\log\left(\frac1n\sum_i f(\xi_i)\right).\]</span> La integrabilidad de ambas funciones hace converger las dos sumas a sus promedios integrales. La continuidad de <span class="math inline">\(\log\)</span> en el promedio positivo permite pasar al límite. Alternativamente, si <span class="math inline">\(A=(b-a)^{-1}\int f&gt;0\)</span>, la desigualdad puntual <span class="math inline">\(\log u\le\log A+(u-A)/A\)</span>, obtenida de la concavidad, se integra y da lo mismo.</p>
+<p><strong><code>SPV4-C18-E036-d</code></strong> Una formulación general suficiente es: si <span class="math inline">\(f:[a,b]\to[m,M]\)</span> es Riemann integrable y <span class="math inline">\(g\)</span> es continua y convexa en <span class="math inline">\([m,M]\)</span>, entonces <span class="math inline">\(g\circ f\)</span> es integrable y <span class="math display">\[g\left(\frac1{b-a}\int_a^b f\right)\le\frac1{b-a}\int_a^b g(f).\]</span> Para <span class="math inline">\(g\)</span> cóncava se invierte la desigualdad. La prueba es la misma de sumas etiquetadas y Jensen finita; la integrabilidad de la composición sigue de continuidad uniforme de <span class="math inline">\(g\)</span> y del criterio de oscilación para <span class="math inline">\(f\)</span>. Para usar <span class="math inline">\(g=\log\)</span>, se exige <span class="math inline">\(m&gt;0\)</span>. En particular, toda <span class="math inline">\(f\)</span> positiva continua en el compacto satisface automáticamente esa hipótesis.</p>
+</section>
+<section id="e037" class="level2">
+<h2 class="anchored" data-anchor-id="e037">E037 — Exponencial con normalización multiplicativa</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 37, p.&nbsp;359 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E037</code></strong> Si <span class="math inline">\(f'=f\)</span>, E021 da <span class="math inline">\(f=ke^x\)</span>. La condición <span class="math inline">\(f(x+y)=f(x)f(y)\)</span> equivale a <span class="math inline">\(ke^{x+y}=k^2e^{x+y}\)</span>, luego <span class="math inline">\(k=k^2\)</span>. Así <span class="math inline">\(k=0\)</span> o <span class="math inline">\(k=1\)</span>, y las únicas funciones son <span class="math inline">\(0\)</span> y <span class="math inline">\(\exp\)</span>. Ambas cumplen las dos condiciones. También puede obtenerse primero <span class="math inline">\(f(0)=f(0)^2\)</span>.</p>
+</section>
+<section id="e038" class="level2">
+<h2 class="anchored" data-anchor-id="e038">E038 — Ecuación funcional multiplicativa continua</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 38, p.&nbsp;360 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E038</code></strong> Sea <span class="math inline">\(f\)</span> continua en <span class="math inline">\(\mathbb R\)</span>, <span class="math inline">\(f(x+y)=f(x)f(y)\)</span>. Si tiene algún cero <span class="math inline">\(f(a)=0\)</span>, entonces <span class="math inline">\(f(t)=f(a)f(t-a)=0\)</span> para todo <span class="math inline">\(t\)</span>. Si no es la función nula, no tiene ceros, <span class="math inline">\(f(0)=1\)</span> y <span class="math inline">\(f(x)=f(x/2)^2&gt;0\)</span>. Sea <span class="math inline">\(b=f(1)&gt;0\)</span>. Por inducción <span class="math inline">\(f(m)=b^m\)</span> para enteros no negativos, <span class="math inline">\(f(-x)=1/f(x)\)</span> para los negativos, y <span class="math inline">\(f(m/n)^n=f(m)=b^m\)</span>; la raíz positiva obliga a <span class="math inline">\(f(m/n)=b^{m/n}\)</span>.</p>
+<p>Para cualquier real <span class="math inline">\(x\)</span>, elíjase una sucesión racional <span class="math inline">\(q_j\to x\)</span>. La continuidad de <span class="math inline">\(f\)</span> y de <span class="math inline">\(b^x\)</span> da <span class="math inline">\(f(x)=\lim f(q_j)=\lim b^{q_j}=b^x\)</span>. Recíprocamente, toda <span class="math inline">\(b^x\)</span> con <span class="math inline">\(b&gt;0\)</span>, y también la función nula, cumple la identidad. La continuidad es la condición que permite pasar de los racionales a todos los reales.</p>
+</section>
+<section id="e039" class="level2">
+<h2 class="anchored" data-anchor-id="e039">E039 — Ecuación funcional logarítmica continua</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 39, p.&nbsp;360 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E039</code></strong> Para <span class="math inline">\(f\)</span> continua en <span class="math inline">\((0,\infty)\)</span> con <span class="math inline">\(f(xy)=f(x)+f(y)\)</span>, pongamos <span class="math inline">\(g(t)=f(e^t)\)</span>. Entonces <span class="math inline">\(g\)</span> es continua y aditiva. Por inducción e inversión, <span class="math inline">\(g(q)=qg(1)\)</span> para todo racional <span class="math inline">\(q\)</span>; aproximar cualquier real por racionales da <span class="math inline">\(g(t)=ct\)</span>, <span class="math inline">\(c=g(1)=f(e)\)</span>. Como todo <span class="math inline">\(x&gt;0\)</span> es <span class="math inline">\(e^{\log x}\)</span>, <span class="math display">\[f(x)=f(e)\log x.\]</span> Todo <span class="math inline">\(c\log x\)</span> verifica la ecuación, incluido <span class="math inline">\(c=0\)</span>. Por ello la alternativa nula del enunciado está incluida en esta fórmula.</p>
+</section>
+<section id="e040" class="level2">
+<h2 class="anchored" data-anchor-id="e040">E040 — Una función suave plana en el origen</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 40, p.&nbsp;360 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E040</code></strong> Sea <span class="math inline">\(f(0)=0\)</span> y <span class="math inline">\(f(x)=e^{-1/x^2}\)</span> si <span class="math inline">\(x\ne0\)</span>. Primero, para cualquier polinomio <span class="math inline">\(P\)</span>, <span class="math inline">\(e^{-1/x^2}P(1/x)\to0\)</span>: poniendo <span class="math inline">\(y=1/|x|\to\infty\)</span>, basta <span class="math inline">\(y^m/e^{y^2}\to0\)</span>, que sigue de E030 con variable <span class="math inline">\(y^2\)</span> y un entero mayor que <span class="math inline">\(m/2\)</span>.</p>
+<p>Para <span class="math inline">\(x\ne0\)</span>, la derivada de <span class="math inline">\(e^{-1/x^2}P(1/x)\)</span> tiene la misma forma, con polinomio <span class="math display">\[T(P)(u)=2u^3P(u)-u^2P'(u).\]</span> Definamos <span class="math inline">\(P_0=1\)</span> y <span class="math inline">\(P_{k+1}=T(P_k)\)</span>. Procedemos por inducción: si <span class="math inline">\(f^{(k)}(x)=e^{-1/x^2}P_k(1/x)\)</span> fuera de cero y <span class="math inline">\(f^{(k)}(0)=0\)</span>, entonces su cociente incremental en cero es <span class="math display">\[e^{-1/h^2}\frac{P_k(1/h)}h\longrightarrow0,\]</span> por el límite polinómico ya probado. Así existe <span class="math inline">\(f^{(k+1)}(0)=0\)</span>, y fuera de cero tiene el polinomio <span class="math inline">\(P_{k+1}\)</span>. El mismo límite muestra continuidad de cada derivada en cero. Se concluye <span class="math inline">\(f\in C^\infty\)</span> y <span class="math inline">\(f^{(k)}(0)=0\)</span> para todo <span class="math inline">\(k\ge0\)</span>, aunque <span class="math inline">\(f(x)&gt;0\)</span> fuera de cero.</p>
+</section>
+<section id="e041" class="level2">
+<h2 class="anchored" data-anchor-id="e041">E041 — Oscilación con todas las derivadas nulas</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 41, p.&nbsp;360 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E041</code></strong> Ahora <span class="math inline">\(f(x)=e^{-1/x^2}\sin(1/x)\)</span> fuera de cero, con <span class="math inline">\(f(0)=0\)</span>. La familia estable por derivación es <span class="math display">\[e^{-1/x^2}[P(1/x)\sin(1/x)+Q(1/x)\cos(1/x)].\]</span> Si <span class="math inline">\(u=1/x\)</span>, los polinomios de la derivada son <span class="math display">\[\widetilde P=2u^3P-u^2P'+u^2Q,\qquad \widetilde Q=2u^3Q-u^2Q'-u^2P.\]</span> Se comienza con <span class="math inline">\(P_0=1\)</span>, <span class="math inline">\(Q_0=0\)</span>. Como seno y coseno tienen módulo a lo sumo 1, cada expresión, y su cociente por <span class="math inline">\(x\)</span>, tiende a cero por el lema de E040. La misma inducción de cocientes incrementales prueba que todas las derivadas existen, son continuas y valen cero en el origen. Las infinitas oscilaciones no impiden suavidad: su amplitud decrece más deprisa que cualquier potencia. La figura de E027 muestra la función junto a sus envolventes <span class="math inline">\(\pm e^{-1/x^2}\)</span>.</p>
+</section>
+<section id="e042" class="level2">
+<h2 class="anchored" data-anchor-id="e042">E042 — Raíces características y multiplicidades</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 42, p.&nbsp;360 (PDF: página impresa + 20).</p>
+<p>Sea <span class="math inline">\(p(z)=\sum_{j=0}^n a_jz^j\)</span>, <span class="math inline">\(a_n\ne0\)</span>, y <span class="math inline">\(p(D)y=\sum a_j y^{(j)}\)</span>, con <span class="math inline">\(D\)</span> la derivación. Se consideran raíces reales <span class="math inline">\(\alpha\)</span>.</p>
+<p><strong><code>SPV4-C18-E042-a</code></strong> Como <span class="math inline">\(D^je^{\alpha x}=\alpha^je^{\alpha x}\)</span>, se tiene <span class="math inline">\(p(D)e^{\alpha x}=p(\alpha)e^{\alpha x}=0\)</span> si <span class="math inline">\(p(\alpha)=0\)</span>.</p>
+<p><strong><code>SPV4-C18-E042-b</code></strong> La regla del producto repetida da <span class="math inline">\(D^j(xe^{\alpha x})=e^{\alpha x}(x\alpha^j+j\alpha^{j-1})\)</span>, interpretando el segundo término como derivada del monomio <span class="math inline">\(z^j\)</span>, incluso si <span class="math inline">\(\alpha=0\)</span>. Entonces <span class="math display">\[p(D)(xe^{\alpha x})=e^{\alpha x}[xp(\alpha)+p'(\alpha)]=0\]</span> para una raíz doble. Esta escritura evita expresiones indefinidas como <span class="math inline">\(0\cdot0^{-1}\)</span>.</p>
+<p><strong><code>SPV4-C18-E042-c</code></strong> La identidad <span class="math inline">\(D(e^{\alpha x}u)=e^{\alpha x}(D+\alpha)u\)</span> iterada da <span class="math display">\[p(D)(e^{\alpha x}u)=e^{\alpha x}\sum_{j=0}^n\frac{p^{(j)}(\alpha)}{j!}D^ju.\]</span> Aquí la identidad del polinomio trasladado es algebraica, no un teorema de series. Si la multiplicidad es <span class="math inline">\(r\)</span> y <span class="math inline">\(u=x^k\)</span>, <span class="math inline">\(0\le k\le r-1\)</span>, los coeficientes con <span class="math inline">\(j&lt;r\)</span> son cero y las derivadas con <span class="math inline">\(j\ge r\)</span> también. Por ello <span class="math inline">\(x^ke^{\alpha x}\)</span> es solución.</p>
+<p><strong><code>SPV4-C18-E042-d</code></strong> La derivación y la suma son lineales, luego <span class="math inline">\(p(D)(\sum c_i y_i)=\sum c_i p(D)y_i=0\)</span>. Así todas las combinaciones lineales de las soluciones construidas satisfacen la ecuación. Este inciso prueba suficiencia; no afirma aquí que no haya otras soluciones en el caso general.</p>
+</section>
+<section id="e043" class="level2">
+<h2 class="anchored" data-anchor-id="e043">E043 — Unicidad con dos datos iniciales nulos</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 43, p.&nbsp;360 (PDF: página impresa + 20).</p>
+<p>Supongamos <span class="math inline">\(f''=f\)</span> y <span class="math inline">\(f(0)=f'(0)=0\)</span>.</p>
+<p><strong><code>SPV4-C18-E043-a</code></strong> La derivada de <span class="math inline">\(f^2-(f')^2\)</span> es <span class="math inline">\(2f'(f-f'')=0\)</span>. La expresión es constante y vale cero en el origen; así <span class="math inline">\(f^2=(f')^2\)</span> en toda la recta.</p>
+<p><strong><code>SPV4-C18-E043-b</code></strong> En un intervalo donde <span class="math inline">\(f\ne0\)</span>, <span class="math inline">\(f'/f\)</span> es continua y su cuadrado vale 1 por (a). No puede saltar entre <span class="math inline">\(1\)</span> y <span class="math inline">\(-1\)</span> sin pasar por 0, por el valor intermedio. Su signo es constante; por E021, <span class="math inline">\(f=ce^x\)</span> o <span class="math inline">\(f=ce^{-x}\)</span> en todo ese intervalo, con <span class="math inline">\(c\ne0\)</span>.</p>
+<p><strong><code>SPV4-C18-E043-c</code></strong> Si <span class="math inline">\(f(x_0)\ne0\)</span> para algún <span class="math inline">\(x_0&gt;0\)</span>, el conjunto de ceros en <span class="math inline">\([0,x_0]\)</span> es cerrado no vacío y no contiene una vecindad izquierda de <span class="math inline">\(x_0\)</span>. Tiene máximo <span class="math inline">\(a&lt;x_0\)</span>, con <span class="math inline">\(f(a)=0\)</span> y <span class="math inline">\(f\ne0\)</span> en <span class="math inline">\((a,x_0)\)</span>. Por (b), allí <span class="math inline">\(f=ce^{\pm x}\)</span> con <span class="math inline">\(c\ne0\)</span>. Su límite en <span class="math inline">\(a\)</span> es <span class="math inline">\(ce^{\pm a}\ne0\)</span>, contradiciendo continuidad. Si el punto no nulo fuese negativo, se aplica lo mismo a <span class="math inline">\(f(-x)\)</span>, que satisface idéntica ecuación y datos. No existen puntos no nulos: <span class="math inline">\(f\equiv0\)</span>.</p>
+</section>
+<section id="e044" class="level2">
+<h2 class="anchored" data-anchor-id="e044">E044 — Todas las soluciones de la ecuación hiperbólica</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 44, p.&nbsp;361 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E044-a</code></strong> Si <span class="math inline">\(f''=f\)</span>, sean <span class="math display">\[a=\frac{f(0)+f'(0)}2,\qquad b=\frac{f(0)-f'(0)}2.\]</span> La función <span class="math inline">\(h=f-ae^x-be^{-x}\)</span> satisface <span class="math inline">\(h''=h\)</span> y <span class="math inline">\(h(0)=h'(0)=0\)</span>. E043 fuerza <span class="math inline">\(h=0\)</span>, así que <span class="math inline">\(f=ae^x+be^{-x}\)</span>. A la inversa, cualquier combinación de esa forma cumple la ecuación.</p>
+<p><strong><code>SPV4-C18-E044-b</code></strong> De las definiciones hiperbólicas, <span class="math display">\[f(x)=f'(0)\sinh x+f(0)\cosh x.\]</span> Los coeficientes de esta base son distintos de los de la base exponencial: están fijados directamente por los datos iniciales. Las derivadas de E008 comprueban otra vez la ecuación.</p>
+</section>
+<section id="e045" class="level2">
+<h2 class="anchored" data-anchor-id="e045">E045 — Ecuaciones entre derivadas de orden alto</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 45, p.&nbsp;361 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E045-a</code></strong> Para <span class="math inline">\(n\ge1\)</span>, sea <span class="math inline">\(g=f^{(n-1)}\)</span>. La condición <span class="math inline">\(f^{(n)}=f^{(n-1)}\)</span> es <span class="math inline">\(g'=g\)</span>, luego <span class="math inline">\(g=Ae^x\)</span>. Si <span class="math inline">\(n\ge2\)</span>, al restar <span class="math inline">\(Ae^x\)</span> de <span class="math inline">\(f\)</span> queda una función con derivada de orden <span class="math inline">\(n-1\)</span> nula; aplicar repetidamente el valor medio muestra que es un polinomio de grado a lo sumo <span class="math inline">\(n-2\)</span>. Todas las soluciones son <span class="math display">\[f=Ae^x+P_{n-2}(x).\]</span> Para <span class="math inline">\(n=1\)</span> no hay parte polinómica y <span class="math inline">\(f=Ae^x\)</span>. Derivar verifica suficiencia.</p>
+<p><strong><code>SPV4-C18-E045-b</code></strong> Para <span class="math inline">\(n\ge2\)</span>, <span class="math inline">\(g=f^{(n-2)}\)</span> satisface <span class="math inline">\(g''=g\)</span>. E044 da <span class="math inline">\(g=Ae^x+Be^{-x}\)</span>. Se eligen coeficientes <span class="math inline">\(a=A\)</span>, <span class="math inline">\(b=(-1)^{n-2}B\)</span> para que la derivada de orden <span class="math inline">\(n-2\)</span> de <span class="math inline">\(ae^x+be^{-x}\)</span> sea <span class="math inline">\(g\)</span>. La diferencia tiene esa derivada nula, así que, si <span class="math inline">\(n\ge3\)</span>, <span class="math display">\[f=ae^x+be^{-x}+P_{n-3}(x).\]</span> Para <span class="math inline">\(n=2\)</span> se omite el polinomio. En todos los casos sus coeficientes son arbitrarios; no se usan grados negativos como si fueran polinomios ordinarios.</p>
+</section>
+<section id="e046" class="level2">
+<h2 class="anchored" data-anchor-id="e046">E046 — Construcción de la exponencial desde una ecuación diferencial</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 46, p.&nbsp;361 (PDF: página impresa + 20).</p>
+<p>Se supone que existe una solución diferenciable no idénticamente nula de <span class="math inline">\(f'=f\)</span> en toda la recta. Esta prueba no usa previamente la exponencial ni la unicidad de E021.</p>
+<p><strong><code>SPV4-C18-E046-a</code></strong> Elijamos <span class="math inline">\(x_0\)</span> con <span class="math inline">\(f(x_0)\ne0\)</span>. Para <span class="math inline">\(g(x)=f(x_0+x)f(x_0-x)\)</span>, la regla del producto da <span class="math inline">\(g'=0\)</span>. Por tanto <span class="math inline">\(g(x)=f(x_0)^2&gt;0\)</span> para todo <span class="math inline">\(x\)</span>. Ningún factor puede anularse, y, como <span class="math inline">\(x_0+x\)</span> recorre la recta, <span class="math inline">\(f\)</span> no tiene ceros.</p>
+<p><strong><code>SPV4-C18-E046-b</code></strong> En particular <span class="math inline">\(f(0)\ne0\)</span>. Dividir por ese valor produce una solución <span class="math inline">\(F'=F\)</span>, <span class="math inline">\(F(0)=1\)</span>.</p>
+<p><strong><code>SPV4-C18-E046-c</code></strong> Para <span class="math inline">\(y\)</span> fijo, <span class="math inline">\(H(x)=F(x+y)/F(x)\)</span> está definida por (a). Su derivada es cero porque <span class="math inline">\(F'=F\)</span>, luego <span class="math inline">\(H(x)=H(0)=F(y)\)</span>. Se obtiene <span class="math inline">\(F(x+y)=F(x)F(y)\)</span>.</p>
+<p><strong><code>SPV4-C18-E046-d</code></strong> La continuidad y ausencia de ceros, junto con <span class="math inline">\(F(0)=1\)</span>, implican <span class="math inline">\(F&gt;0\)</span>. Así <span class="math inline">\(F'=F&gt;0\)</span> y <span class="math inline">\(F\)</span> es inyectiva. Además, para <span class="math inline">\(x\ge0\)</span>, <span class="math inline">\(F(x)\ge1\)</span>, luego <span class="math inline">\(F'(x)\ge1\)</span> y <span class="math inline">\(F(x)\ge1+x\to\infty\)</span>. Por (c), <span class="math inline">\(F(-x)=1/F(x)\to0\)</span>. Continuidad y monotonía muestran que su imagen es exactamente <span class="math inline">\((0,\infty)\)</span>. Su inversa existe allí y <span class="math display">\[(F^{-1})'(u)=\frac1{F'(F^{-1}(u))}=\frac1u.\]</span> Como la inversa vale cero en 1, coincide con la función integral <span class="math inline">\(\int_1^u dt/t\)</span>. Esto identifica <span class="math inline">\(F\)</span> con la exponencial sin circularidad.</p>
+</section>
+<section id="e047" class="level2">
+<h2 class="anchored" data-anchor-id="e047">E047 — Comparación de órdenes de crecimiento</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 47, p.&nbsp;361–362 (PDF: página impresa + 20).</p>
+<p>La definición del problema exige funciones continuas que tiendan a <span class="math inline">\(+\infty\)</span>. Escribimos <span class="math inline">\(f\gg g\)</span> si <span class="math inline">\(f/g\to\infty\)</span>, y <span class="math inline">\(f\sim g\)</span> si ese cociente tiende a una constante finita no nula. Aquí <span class="math inline">\(\sim\)</span> permite una constante distinta de 1; no se confunde con otra convención frecuente de equivalencia asintótica.</p>
+<p><strong><code>SPV4-C18-E047-a</code></strong> No siempre se da una de las tres alternativas. Por ejemplo, en <span class="math inline">\(\mathbb R\)</span>, <span class="math inline">\(g(x)=x^2+1\)</span> y <span class="math inline">\(f(x)=(x^2+1)(2+\sin x)\)</span> son positivas, continuas y divergen hacia <span class="math inline">\(+\infty\)</span>. Su cociente oscila entre 1 y 3: no tiene límite, no diverge y su recíproco tampoco diverge.</p>
+<p><strong><code>SPV4-C18-E047-b</code></strong> Si <span class="math inline">\(f\gg g\)</span>, entonces <span class="math inline">\((f+g)/f=1+g/f\to1\)</span>, por lo que <span class="math inline">\(f+g\sim f\)</span>.</p>
+<p><strong><code>SPV4-C18-E047-c</code></strong> Si <span class="math inline">\(\log f/\log g\ge c&gt;1\)</span> eventualmente, como <span class="math inline">\(g\to\infty\)</span> se puede suponer <span class="math inline">\(\log g&gt;0\)</span>. Entonces <span class="math inline">\(f\ge g^c\)</span> y <span class="math inline">\(f/g\ge g^{c-1}\to\infty\)</span>; así <span class="math inline">\(f\gg g\)</span>.</p>
+<p><strong><code>SPV4-C18-E047-d</code></strong> Sí. Para cualquier <span class="math inline">\(M&gt;0\)</span>, existe <span class="math inline">\(T\)</span> tal que <span class="math inline">\(f(t)\ge2M g(t)\)</span> y <span class="math inline">\(g(t)&gt;0\)</span> para <span class="math inline">\(t\ge T\)</span>. Si <span class="math inline">\(F(x)=\int_0^x f\)</span> y <span class="math inline">\(G(x)=\int_0^x g\)</span>, entonces <span class="math inline">\(G\to\infty\)</span> y <span class="math display">\[F(x)\ge F(T)+2M[G(x)-G(T)].\]</span> Dividiendo por <span class="math inline">\(G(x)\)</span> se obtiene eventualmente <span class="math inline">\(F/G&gt;M\)</span>. Como <span class="math inline">\(M\)</span> es arbitrario, <span class="math inline">\(F\gg G\)</span>. Las contribuciones anteriores a <span class="math inline">\(T\)</span> son constantes y no afectan al límite; no se presupone diferenciabilidad de <span class="math inline">\(f,g\)</span>.</p>
+<p>Para los órdenes siguientes el signo <span class="math inline">\(\prec\)</span> indica que la función a la derecha domina estrictamente a la izquierda; <span class="math inline">\(\sim\)</span> conserva la definición anterior. Los órdenes valen para <span class="math inline">\(x\)</span> positivo suficientemente grande.</p>
+<p><strong><code>SPV4-C18-E047-e-i</code></strong> <span class="math display">\[\log(4x)\prec x+e^{-5x}\prec x^3\sim x^3+\log(x^3)\prec x^3\log x\prec e^x\prec(\log x)^x\prec x^x.\]</span> El empate tiene cociente 1 porque <span class="math inline">\(3\log x/x^3\to0\)</span>. La comparación <span class="math inline">\(e^x\prec(\log x)^x\)</span> se debe a <span class="math inline">\(x(\log\log x-1)\to\infty\)</span>, no al valor de las funciones para <span class="math inline">\(x\)</span> pequeño. Las otras comparaciones se obtienen de E013 y de tomar logaritmos de los cocientes.</p>
+<p><strong><code>SPV4-C18-E047-e-ii</code></strong> <span class="math display">\[\log(x^x)\prec x\log^2x\prec x^{\log x}\prec e^{5x}\prec(\log x)^x\prec x^x\prec e^{x^2}.\]</span> En efecto, <span class="math inline">\(\log(x^x)=x\log x\)</span>; <span class="math inline">\(\log(x^{\log x})=(\log x)^2\)</span>, que supera a <span class="math inline">\(\log(x\log^2x)=\log x+2\log\log x\)</span> pero es despreciable frente a <span class="math inline">\(x\)</span>. Finalmente <span class="math inline">\(\log\log x\to\infty\)</span>, <span class="math inline">\(\log\log x/\log x\to0\)</span> y <span class="math inline">\(\log x/x\to0\)</span>, lo que ordena las últimas cuatro funciones mediante sus exponentes.</p>
+<p><strong><code>SPV4-C18-E047-e-iii</code></strong> <span class="math display">\[x^e\prec e^{x/2}\prec2^x\prec e^x\prec(\log x)^{2x}\prec x^x\prec e^{x^2}.\]</span> Aquí <span class="math inline">\(1/2&lt;\log2&lt;1\)</span> (por ejemplo, integrando <span class="math inline">\(1/t\)</span> en <span class="math inline">\([1,2]\)</span>), <span class="math inline">\(2\log\log x\)</span> termina superando a 1 y es despreciable frente a <span class="math inline">\(\log x\)</span>. Las diferencias entre exponentes tienden a <span class="math inline">\(+\infty\)</span>, que es lo necesario para dominar, no solo una desigualdad eventual entre ellos.</p>
+<div id="fig-spv4-c18-f07" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 18: E047: cocientes oscilantes y cambios de orden tardíos">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c18-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C18_assets/C18_07_crecimiento.png" class="img-fluid figure-img" alt="Capítulo 18: E047: cocientes oscilantes y cambios de orden tardíos">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c18-f07-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Capítulo 18 · Figura 7. E047: cocientes oscilantes y cambios de orden tardíos
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e048" class="level2">
+<h2 class="anchored" data-anchor-id="e048">E048 — Una función que domina a una sucesión dada</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 48, p.&nbsp;362 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E048</code></strong> Bajo la convención de E047, se entiende que las funciones <span class="math inline">\(g_i\)</span> son continuas y tienden a <span class="math inline">\(+\infty\)</span>. Construiremos una envolvente que incluso domina sus valores absolutos sin usar esa última hipótesis. Para <span class="math inline">\(n\ge1\)</span>, sea <span class="math display">\[M_n=1+\max_{1\le i\le n}\max_{0\le t\le n}|g_i(t)|.\]</span> Cada máximo es finito por continuidad en el compacto y <span class="math inline">\(M_n\)</span> es no decreciente. Definamos <span class="math inline">\(f(n)=(n+1)M_{n+1}\)</span> para enteros <span class="math inline">\(n\ge0\)</span>, e interpolemos linealmente en cada <span class="math inline">\([n,n+1]\)</span>. La sucesión de valores es creciente, luego para <span class="math inline">\(x\in[n,n+1]\)</span>, <span class="math display">\[f(x)\ge(n+1)M_{n+1}\ge(n+1)|g_i(x)|\quad\text{si }i\le n+1.\]</span> Además <span class="math inline">\(f(x)\ge n+1\to\infty\)</span> y <span class="math inline">\(f\)</span> es continua; puede prolongarse constantemente a <span class="math inline">\(x&lt;0\)</span>. Para cada <span class="math inline">\(i\)</span> fijo, <span class="math inline">\(g_i(x)&gt;0\)</span> eventualmente y la cota anterior da <span class="math inline">\(f(x)/g_i(x)\to\infty\)</span>. Así <span class="math inline">\(f\gg g_i\)</span> para todo <span class="math inline">\(i\)</span>.</p>
+<p>Si el enunciado se lee como «cualesquiera continuas», sin la convención de divergencia de E047, la relación definida allí no tiene por qué aplicarse: <span class="math inline">\(g_i\equiv0\)</span> ni siquiera permite el cociente. La construcción prueba la versión precisa de dominación de <span class="math inline">\(|g_i|\)</span> por factores que divergen, y la conclusión <span class="math inline">\(\gg\)</span> cuando los <span class="math inline">\(g_i\)</span> cumplen la definición.</p>
+</section>
+<section id="e049" class="level2">
+<h2 class="anchored" data-anchor-id="e049">E049 — Irracionalidad de un logaritmo decimal</h2>
+<p>Fuente: Spivak, <em>Calculus</em>, 4.ª ed., C18, problema 49, p.&nbsp;362 (PDF: página impresa + 20).</p>
+<p><strong><code>SPV4-C18-E049</code></strong> Si <span class="math inline">\(\log_{10}2=p/q\)</span> fuese racional, podríamos tomar enteros <span class="math inline">\(p,q&gt;0\)</span>, porque <span class="math inline">\(0&lt;\log_{10}2&lt;1\)</span>. Al elevar <span class="math inline">\(10^{p/q}=2\)</span> a <span class="math inline">\(q\)</span>, se obtiene <span class="math inline">\(10^p=2^q\)</span>, es decir <span class="math inline">\(2^p5^p=2^q\)</span>. El lado izquierdo es divisible por 5 y el derecho no, contradicción por factorización única (o por divisibilidad de potencias de 2). Por tanto <span class="math inline">\(\log_{10}2\)</span> es irracional.</p>
+</section>
+<section id="seccion-55475" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-55475">Cierre del capítulo</h2>
+<p>Todos los problemas E001–E049 y sus unidades explícitas están desarrollados. El inventario y el informe de revisión registran las precisiones de dominio, la exposición secundaria previa y el cotejo de respuestas. Las figuras son originales y reproducibles. Siguiente: <strong>C19 — Integración en términos elementales</strong>, p.&nbsp;363 / PDF 383.</p>
+<hr>
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-17.html">← Capítulo 17</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-19.html">Capítulo 19 →</a></p>
+</div>
+<p>Soluciones originales de Alevi Peña · Matemática Abierta. <a href="../../../COPYING.FDL">Licencia GFDL 1.3 o posterior</a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

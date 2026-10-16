@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Capítulo 27 — Series de potencias complejas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-c2583e31b1ea066c2e6f28dd8869cffe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-633985369c5fe9eb1e34e63a316ad8e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="spivak-c01.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#seccion-832" id="toc-seccion-832" class="nav-link active" data-scroll-target="#seccion-832">El paso de las series reales a las complejas</a></li>
+  <li><a href="#e001" id="toc-e001" class="nav-link" data-scroll-target="#e001">E001 — Cinco series numéricas</a></li>
+  <li><a href="#e002" id="toc-e002" class="nav-link" data-scroll-target="#e002">E002 — Radios por cocientes</a></li>
+  <li><a href="#e003" id="toc-e003" class="nav-link" data-scroll-target="#e003">E003 — Radios por raíces</a></li>
+  <li><a href="#e004" id="toc-e004" class="nav-link" data-scroll-target="#e004">E004 — Fórmula de Cauchy–Hadamard</a></li>
+  <li><a href="#e005" id="toc-e005" class="nav-link" data-scroll-target="#e005">E005 — Tres comportamientos en la frontera</a></li>
+  <li><a href="#e006" id="toc-e006" class="nav-link" data-scroll-target="#e006">E006 — Leyes de adición</a></li>
+  <li><a href="#e007" id="toc-e007" class="nav-link" data-scroll-target="#e007">E007 — Circunferencia y módulo exponencial</a></li>
+  <li><a href="#e008" id="toc-e008" class="nav-link" data-scroll-target="#e008">E008 — Valores de exponencial y seno</a></li>
+  <li><a href="#e009" id="toc-e009" class="nav-link" data-scroll-target="#e009">E009 — Tres primeros términos no nulos</a></li>
+  <li><a href="#e010" id="toc-e010" class="nav-link" data-scroll-target="#e010">E010 — De ecuaciones complejas a soluciones reales</a></li>
+  <li><a href="#e011" id="toc-e011" class="nav-link" data-scroll-target="#e011">E011 — Logaritmos y potencias multivaluadas</a></li>
+  <li><a href="#e012" id="toc-e012" class="nav-link" data-scroll-target="#e012">E012 — La primitiva real escondida entre logaritmos</a></li>
+  <li><a href="#e013" id="toc-e013" class="nav-link" data-scroll-target="#e013">E013 — Completitud y reordenamientos</a></li>
+  <li><a href="#e014" id="toc-e014" class="nav-link" data-scroll-target="#e014">E014 — Sumas trigonométricas finitas</a></li>
+  <li><a href="#e015" id="toc-e015" class="nav-link" data-scroll-target="#e015">E015 — Fibonacci y su radio de convergencia</a></li>
+  <li><a href="#e016" id="toc-e016" class="nav-link" data-scroll-target="#e016">E016 — Números de Bernoulli y tangente</a></li>
+  <li><a href="#e017" id="toc-e017" class="nav-link" data-scroll-target="#e017">E017 — La suma de potencias desde una identidad finita</a></li>
+  <li><a href="#e018" id="toc-e018" class="nav-link" data-scroll-target="#e018">E018 — Euler–Maclaurin con resto</a></li>
+  <li><a href="#e019" id="toc-e019" class="nav-link" data-scroll-target="#e019">E019 — Stirling y el signo de su resto</a></li>
+  <li><a href="#seccion-32258" id="toc-seccion-32258" class="nav-link" data-scroll-target="#seccion-32258">Cobertura y continuidad</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 27 — Series de potencias complejas</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-26.html">← Capítulo 26</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-28.html">Capítulo 28 →</a></p>
+</div>
+<p>Spivak, <em>Calculus</em>, 4.ª edición · Solucionario explicado · Matemática Abierta</p>
+<p>Capítulo completo: <strong>19 problemas y 80 unidades terminales</strong>, sin apéndice. Desarrollo y revisión internos; no constituye dictamen externo. Fuente primaria: pp.555–578, PDF574–597; ejercicios: pp.567–577, PDF586–596. Las fórmulas y demostraciones siguientes son una elaboración propia.</p>
+<section id="seccion-832" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-832">El paso de las series reales a las complejas</h2>
+<p>La desigualdad que permite trasladar los argumentos es <span class="math display">\[
+\max(|\Re z|,|\Im z|)\leq |z|\leq|\Re z|+|\Im z|.
+\]</span> Una sucesión converge precisamente cuando convergen sus dos coordenadas; aplicada a sumas parciales, la misma observación caracteriza las series convergentes. Aplicada a valores absolutos, prueba que la convergencia absoluta compleja equivale a la convergencia absoluta de ambas coordenadas.</p>
+<p>Si una serie de potencias converge en un punto de módulo <span class="math inline">\(\rho&gt;0\)</span>, sus términos están acotados: <span class="math inline">\(|a_n|\rho^n\leq M\)</span>. En cualquier disco más pequeño, de radio <span class="math inline">\(r&lt;\rho\)</span>, las series quedan dominadas por <span class="math inline">\(M(r/\rho)^n\)</span>, y las series derivadas por expresiones del tipo <span class="math inline">\(Cn^k(r/\rho)^n\)</span>. Estas últimas convergen por el criterio del cociente. Así aparecen simultáneamente el disco de convergencia, la continuidad y las derivadas de todos los órdenes.</p>
+<p>Vale la pena justificar la primera derivación sin recurrir a un teorema de integración complejo. Fijemos <span class="math inline">\(|z|&lt;r&lt;\rho\)</span> y tomemos <span class="math inline">\(h\)</span> pequeño de modo que <span class="math inline">\(|z|+|h|\leq r\)</span>. El binomio o la identidad de diferencias de potencias da, para <span class="math inline">\(n\geq2\)</span>, <span class="math display">\[
+|(z+h)^n-z^n-nz^{n-1}h|
+\leq\frac{n(n-1)}2\,r^{n-2}|h|^2.
+\]</span> Al multiplicar por <span class="math inline">\(|a_n|\)</span> y sumar obtenemos un resto acotado por <span class="math inline">\(C|h|^2\)</span>, con <span class="math inline">\(C\)</span> finito e independiente de <span class="math inline">\(h\)</span>. Dividiendo por <span class="math inline">\(h\)</span> y pasando al límite, <span class="math display">\[
+\left(\sum_{n=0}^\infty a_nz^n\right)'=
+\sum_{n=1}^\infty na_nz^{n-1}.
+\]</span> Los intercambios anteriores se apoyan en mayorantes absolutamente sumables. La serie derivada tiene el mismo radio: converge en todo disco interior; si convergiera en un punto exterior no nulo, sus términos estarían acotados y <span class="math inline">\(a_nz^n=(z/n)(na_nz^{n-1})\)</span> quedaría acotado allí, lo que obligaría a la serie original a converger en discos interiores a ese punto, contradiciendo su radio.</p>
+<p>En particular, las series de <span class="math inline">\(e^z\)</span>, <span class="math inline">\(\sin z\)</span> y <span class="math inline">\(\cos z\)</span> tienen radio infinito. Separando términos pares e impares resulta <span class="math display">\[
+e^{iz}=\cos z+i\sin z,\qquad
+\cos z=\frac{e^{iz}+e^{-iz}}2,\quad
+\sin z=\frac{e^{iz}-e^{-iz}}{2i}.
+\]</span> Estas identidades definen funciones enteras; sus valores complejos no están sujetos a las cotas propias del eje real. Los problemas siguientes estudian precisamente qué se conserva y qué cambia.</p>
+</section>
+<section id="e001" class="level2">
+<h2 class="anchored" data-anchor-id="e001">E001 — Cinco series numéricas</h2>
+<p><strong>(i)</strong> Para <span class="math inline">\(\sum_{n\geq1}(1+i)^n/n!\)</span>, los módulos son <span class="math inline">\((\sqrt2)^n/n!\)</span>. El cociente de dos módulos sucesivos es <span class="math inline">\(\sqrt2/(n+1)\to0\)</span>: hay convergencia absoluta. La suma es <span class="math inline">\(e^{1+i}-1\)</span>.</p>
+<p><strong>(ii)</strong> En <span class="math inline">\(\sum_{n\geq1}(1+2i)/2^n\)</span>, la suma de módulos es <span class="math inline">\(\sqrt5\sum2^{-n}&lt;\infty\)</span>. Converge absolutamente y su suma es <span class="math inline">\(1+2i\)</span>.</p>
+<p><strong>(iii)</strong> La serie <span class="math inline">\(\sum_{n\geq1}i^n/n\)</span> converge, pero no absolutamente. Para probar la primera afirmación sin agrupar de manera ilegítima, las sumas parciales de <span class="math inline">\(i^n\)</span> están acotadas por la fórmula geométrica. La sumación por partes, con <span class="math inline">\(1/n\)</span> decreciente hacia cero, hace que las colas sean arbitrariamente pequeñas: si <span class="math inline">\(A_k=\sum_{j=p}^ki^j\)</span>, entonces <span class="math display">\[
+\sum_{k=p}^q\frac{i^k}{k}
+=\frac{A_q}{q}+\sum_{k=p}^{q-1}A_k\left(\frac1k-\frac1{k+1}\right),
+\]</span> cuyo módulo es a lo sumo <span class="math inline">\(C/p\)</span>. La serie de módulos es la armónica.</p>
+<p><strong>(iv)</strong> En <span class="math inline">\(\sum_{n\geq1}((1+i)/2)^n\)</span> la razón tiene módulo <span class="math inline">\(1/\sqrt2&lt;1\)</span>. Hay convergencia absoluta y la suma es <span class="math inline">\(i\)</span>.</p>
+<p><strong>(v)</strong> La serie cuyo término es <span class="math inline">\((\log n)/n+i^n(\log n)/n\)</span>, <span class="math inline">\(n\geq2\)</span>, diverge. La serie oscilante <span class="math inline">\(\sum i^n(\log n)/n\)</span> converge por la misma sumación por partes, porque <span class="math inline">\((\log n)/n\)</span> decrece para <span class="math inline">\(n&gt;e\)</span> y tiende a cero. En cambio <span class="math inline">\(\sum(\log n)/n\)</span> diverge, por comparación con la armónica a partir de <span class="math inline">\(n\geq3\)</span>. Si la suma propuesta convergiera, al restarle la serie oscilante convergente se obtendría una contradicción. Tampoco puede converger absolutamente.</p>
+</section>
+<section id="e002" class="level2">
+<h2 class="anchored" data-anchor-id="e002">E002 — Radios por cocientes</h2>
+<p><strong>(i)</strong> Para <span class="math inline">\(\sum z^n/n^2\)</span>, el cociente de módulos es <span class="math inline">\(|z|(n/(n+1))^2\to|z|\)</span>. Por tanto converge absolutamente si <span class="math inline">\(|z|&lt;1\)</span> y sus términos no tienden a cero si <span class="math inline">\(|z|&gt;1\)</span>: <span class="math inline">\(R=1\)</span>.</p>
+<p><strong>(ii)</strong> Para <span class="math inline">\(\sum z^n/n\)</span>, el cociente es <span class="math inline">\(|z|n/(n+1)\to|z|\)</span> y da el mismo radio <span class="math inline">\(R=1\)</span>.</p>
+<p><strong>(iii)</strong> Para <span class="math inline">\(\sum z^n\)</span> el cociente es exactamente <span class="math inline">\(|z|\)</span>; de nuevo <span class="math inline">\(R=1\)</span>.</p>
+<p><strong>(iv)</strong> Para <span class="math inline">\(\sum(n+2^{-n})z^n\)</span>, el cociente de los coeficientes es <span class="math display">\[
+\frac{n+1+2^{-n-1}}{n+2^{-n}}\longrightarrow1.
+\]</span> El criterio del cociente da <span class="math inline">\(R=1\)</span>.</p>
+<p><strong>(v)</strong> Para la serie lacunaria <span class="math inline">\(\sum2^nz^{n!}\)</span> hay que comparar los términos escritos, no coeficientes consecutivos que en su mayoría son cero. Si <span class="math inline">\(z\ne0\)</span>, <span class="math display">\[
+\left|\frac{2^{n+1}z^{(n+1)!}}{2^nz^{n!}}\right|
+=2|z|^{n\,n!}.
+\]</span> Tiende a cero dentro del círculo unidad y a infinito fuera. En <span class="math inline">\(z=0\)</span> todos los términos son cero. El radio es <span class="math inline">\(1\)</span>.</p>
+</section>
+<section id="e003" class="level2">
+<h2 class="anchored" data-anchor-id="e003">E003 — Radios por raíces</h2>
+<p>En cada inciso usamos la raíz correspondiente al exponente efectivo de <span class="math inline">\(z\)</span>.</p>
+<p><strong>(i)</strong> Los coeficientes son <span class="math inline">\(a_{2k-1}=2^{-k}\)</span> y <span class="math inline">\(a_{2k}=3^{-k}\)</span>. Sus raíces tienden respectivamente a <span class="math inline">\(1/\sqrt2\)</span> y <span class="math inline">\(1/\sqrt3\)</span>; el límite superior es <span class="math inline">\(1/\sqrt2\)</span>. El radio es <span class="math inline">\(\sqrt2\)</span>.</p>
+<p><strong>(ii)</strong> Para <span class="math inline">\(a_n=n/2^n\)</span>, se tiene <span class="math inline">\(a_n^{1/n}=n^{1/n}/2\to1/2\)</span>; luego <span class="math inline">\(R=2\)</span>.</p>
+<p><strong>(iii)</strong> Para <span class="math inline">\(a_n=n!/n^n\)</span>, el límite de las raíces es <span class="math inline">\(1/e\)</span>, de modo que <span class="math inline">\(R=e\)</span>. Este cálculo no necesita la fórmula de Stirling que probaremos al final: el logaritmo de la raíz es <span class="math display">\[
+\frac{\log n!}{n}-\log n
+=\frac1n\sum_{k=1}^n\log(k/n)\longrightarrow\int_0^1\log t\,dt=-1.
+\]</span> Para controlar el extremo impropio, se pueden usar directamente las cotas por integrales de la función creciente <span class="math inline">\(\log t\)</span> en <span class="math inline">\([1,n]\)</span>; dan <span class="math inline">\(\log n!=n\log n-n+O(\log n)\)</span>.</p>
+<p><strong>(iv)</strong> Para <span class="math inline">\(a_n=n^2/2^n\)</span>, la raíz es <span class="math inline">\(n^{2/n}/2\to1/2\)</span>: <span class="math inline">\(R=2\)</span>.</p>
+<p><strong>(v)</strong> En <span class="math inline">\(\sum2^nz^{n!}\)</span>, los coeficientes no nulos cumplen <span class="math inline">\(|a_{n!}|^{1/n!}=2^{n/n!}\to1\)</span> y los restantes son cero. Su límite superior es <span class="math inline">\(1\)</span>, así que <span class="math inline">\(R=1\)</span>.</p>
+<div id="fig-spv4-c27-f01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 27: Discos y frontera">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c27-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C27_assets/C27_01_discos.svg" class="img-fluid figure-img" alt="Capítulo 27: Discos y frontera">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c27-f01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Capítulo 27 · Figura 1. Discos y frontera
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e004" class="level2">
+<h2 class="anchored" data-anchor-id="e004">E004 — Fórmula de Cauchy–Hadamard</h2>
+<p>Escribamos <span class="math inline">\(c_n=|a_n|^{1/n}\)</span> para <span class="math inline">\(n\geq1\)</span> y <span class="math inline">\(L=\limsup c_n\)</span>. El coeficiente constante no afecta al radio.</p>
+<p><strong>(a)</strong> Si <span class="math inline">\(L|z|&lt;1\)</span>, elijamos <span class="math inline">\(q\)</span> con <span class="math inline">\(L|z|&lt;q&lt;1\)</span>. Para <span class="math inline">\(z\ne0\)</span>, la definición de límite superior implica <span class="math inline">\(c_n|z|\leq q\)</span> a partir de cierto índice; por tanto <span class="math inline">\(|a_nz^n|\leq q^n\)</span>. La serie converge absolutamente. Para <span class="math inline">\(z=0\)</span> sólo queda el término constante. El argumento incluye <span class="math inline">\(L=0\)</span>.</p>
+<p><strong>(b)</strong> Si <span class="math inline">\(L|z|&gt;1\)</span>, elijamos <span class="math inline">\(q\)</span> con <span class="math inline">\(1&lt;q&lt;L|z|\)</span>. Hay infinitos índices para los que <span class="math inline">\(c_n|z|&gt;q\)</span>, y en ellos <span class="math inline">\(|a_nz^n|&gt;q^n\)</span>. Los términos son no acotados; no se afirma que todos ellos crezcan. Esto prueba la divergencia fuera del radio.</p>
+<p><strong>(c)</strong> Si los <span class="math inline">\(c_n\)</span> no están acotados, cualquier cola tampoco está acotada. Para <span class="math inline">\(z\ne0\)</span> hay infinitos índices crecientes con <span class="math inline">\(c_n|z|&gt;2\)</span>; allí <span class="math inline">\(|a_nz^n|&gt;2^n\)</span>. Sólo converge en cero y <span class="math inline">\(R=0\)</span>. Con las convenciones <span class="math inline">\(1/0=\infty\)</span> y <span class="math inline">\(1/\infty=0\)</span>, todos los casos se reúnen en <span class="math display">\[
+\boxed{R=\frac1{\limsup_{n\to\infty}|a_n|^{1/n}}}.
+\]</span> El criterio no decide por sí mismo lo que sucede sobre <span class="math inline">\(|z|=R\)</span>.</p>
+</section>
+<section id="e005" class="level2">
+<h2 class="anchored" data-anchor-id="e005">E005 — Tres comportamientos en la frontera</h2>
+<p>Para <span class="math inline">\(|z|=1\)</span>, la serie <span class="math inline">\(\sum z^n/n^2\)</span> converge absolutamente porque sus módulos suman <span class="math inline">\(\sum1/n^2\)</span>. La serie <span class="math inline">\(\sum z^n\)</span> no converge en ningún punto del círculo, pues el módulo de cada término es <span class="math inline">\(1\)</span>. Finalmente <span class="math inline">\(\sum z^n/n\)</span> diverge en <span class="math inline">\(z=1\)</span> y converge en <span class="math inline">\(z=-1\)</span> por el criterio alternante. De hecho converge en todos los puntos de la frontera salvo <span class="math inline">\(1\)</span>, por sumación por partes y la cota geométrica <span class="math inline">\(|\sum_{k=p}^qz^k|\leq2/|1-z|\)</span>. Así, un mismo radio permite comportamientos muy distintos en el borde.</p>
+</section>
+<section id="e006" class="level2">
+<h2 class="anchored" data-anchor-id="e006">E006 — Leyes de adición</h2>
+<p><strong>(a)</strong> Las dos series exponenciales son absolutamente convergentes. Su producto de Cauchy tiene coeficiente de grado total <span class="math inline">\(n\)</span> <span class="math display">\[
+\sum_{k=0}^n\frac{z^kw^{n-k}}{k!(n-k)!}
+=\frac{(z+w)^n}{n!}.
+\]</span> La suma doble de módulos es <span class="math inline">\(e^{|z|}e^{|w|}\)</span>, finita, lo que justifica reagrupar por diagonales. Resulta <span class="math inline">\(e^ze^w=e^{z+w}\)</span> para todos <span class="math inline">\(z,w\in\mathbb C\)</span>.</p>
+<p><strong>(b)</strong> Sustituyendo las expresiones exponenciales de seno y coseno, la ley anterior da <span class="math display">\[
+\sin(z+w)=\sin z\cos w+\cos z\sin w,\qquad
+\cos(z+w)=\cos z\cos w-\sin z\sin w.
+\]</span> Por ejemplo, al sumar los dos productos de la primera identidad se cancelan los términos <span class="math inline">\(e^{i(z-w)}\)</span> y <span class="math inline">\(e^{-i(z-w)}\)</span>, y quedan <span class="math inline">\((e^{i(z+w)}-e^{-i(z+w)})/(2i)\)</span>. La resta en la segunda deja su semisuma. No se requiere que los argumentos sean reales.</p>
+</section>
+<section id="e007" class="level2">
+<h2 class="anchored" data-anchor-id="e007">E007 — Circunferencia y módulo exponencial</h2>
+<p><strong>(a)</strong> Si <span class="math inline">\(w=u+iv\)</span> tiene módulo uno, existe un ángulo real <span class="math inline">\(y\)</span> con <span class="math inline">\(\cos y=u\)</span>, <span class="math inline">\(\sin y=v\)</span>: podemos elegir <span class="math inline">\(y=\arccos u\)</span> cuando <span class="math inline">\(v\geq0\)</span> y <span class="math inline">\(y=-\arccos u\)</span> cuando <span class="math inline">\(v&lt;0\)</span>. La identidad de Euler da <span class="math inline">\(w=e^{iy}\)</span>.</p>
+<p><strong>(b)</strong> Por E006, <span class="math inline">\(e^{x+iy}=e^xe^{iy}\)</span>. Como <span class="math inline">\(|\cos y+i\sin y|=1\)</span> y <span class="math inline">\(e^x&gt;0\)</span>, resulta <span class="math inline">\(|e^{x+iy}|=e^x\)</span>.</p>
+</section>
+<section id="e008" class="level2">
+<h2 class="anchored" data-anchor-id="e008">E008 — Valores de exponencial y seno</h2>
+<p><strong>(a)</strong> La exponencial nunca vale cero porque <span class="math inline">\(e^ze^{-z}=1\)</span>. Dado <span class="math inline">\(w\ne0\)</span>, escribamos <span class="math inline">\(w=re^{i\theta}\)</span> con <span class="math inline">\(r&gt;0\)</span>. Entonces <span class="math inline">\(z=\log r+i\theta\)</span> satisface <span class="math inline">\(e^z=w\)</span>. Su imagen es exactamente <span class="math inline">\(\mathbb C\setminus\{0\}\)</span>.</p>
+<p><strong>(b)</strong> Para resolver <span class="math inline">\(\sin z=w\)</span>, pongamos <span class="math inline">\(u=e^{iz}\)</span>. La ecuación se transforma en <span class="math display">\[
+u^2-2iwu-1=0.
+\]</span> Existe una raíz compleja por la fórmula cuadrática y E006 de C26; ninguna raíz es cero porque el término constante es <span class="math inline">\(-1\)</span>. Por (a), elegimos <span class="math inline">\(\ell\)</span> con <span class="math inline">\(e^\ell=u\)</span> y ponemos <span class="math inline">\(z=\ell/i\)</span>. La ecuación cuadrática implica <span class="math inline">\((u-u^{-1})/(2i)=w\)</span>, de modo que <span class="math inline">\(\sin z=w\)</span>. El seno toma todos los valores complejos.</p>
+</section>
+<section id="e009" class="level2">
+<h2 class="anchored" data-anchor-id="e009">E009 — Tres primeros términos no nulos</h2>
+<p>Usamos las ramas analíticas en cero de raíz y logaritmo, normalizadas por <span class="math inline">\(\sqrt1=1\)</span> y <span class="math inline">\(\log1=0\)</span>. Los cocientes con <span class="math inline">\(z\)</span> o <span class="math inline">\(z^2\)</span> se prolongan por su límite en cero.</p>
+<p><strong>(i)</strong> Al dividir <span class="math inline">\(z-z^3/6+z^5/120+\cdots\)</span> por <span class="math inline">\(1-z^2/2+z^4/24+\cdots\)</span>, obtenemos <span class="math display">\[
+\tan z=z+\frac{z^3}3+\frac{2z^5}{15}+O(z^7).
+\]</span> En efecto, multiplicar el resultado por la serie del coseno reproduce la del seno hasta grado cinco.</p>
+<p><strong>(ii)</strong> El binomio da <span class="math inline">\((1-z)^{-1/2}=1+z/2+3z^2/8+\cdots\)</span>, así que <span class="math display">\[
+z(1-z)^{-1/2}=z+\frac{z^2}2+\frac{3z^3}8+O(z^4).
+\]</span></p>
+<p><strong>(iii)</strong> Hay una cancelación que hace necesario llegar hasta grado cuatro antes de dividir. Sustituyendo <span class="math inline">\(\sin z=z-z^3/6+\cdots\)</span> en <span class="math inline">\(1+s+s^2/2+s^3/6+s^4/24+\cdots\)</span> resulta <span class="math display">\[
+e^{\sin z}=1+z+\frac{z^2}2-\frac{z^4}8+O(z^5).
+\]</span> Los términos cúbicos <span class="math inline">\(-z^3/6\)</span> y <span class="math inline">\(z^3/6\)</span> se anulan. En grado cuatro deben incluirse tanto <span class="math inline">\(-z^4/6\)</span> de <span class="math inline">\(s^2/2\)</span> como <span class="math inline">\(z^4/24\)</span> de <span class="math inline">\(s^4/24\)</span>: suman <span class="math inline">\(-z^4/8\)</span>. Por ello <span class="math display">\[
+\frac{e^{\sin z}-1}{z}=1+\frac z2-\frac{z^3}8+O(z^4).
+\]</span></p>
+<p><strong>(iv)</strong> Sustituir <span class="math inline">\(u=z^2\)</span> en <span class="math inline">\(\log(1-u)=-\sum_{n\geq1}u^n/n\)</span> da <span class="math display">\[
+\log(1-z^2)=-z^2-\frac{z^4}2-\frac{z^6}3+O(z^8).
+\]</span></p>
+<p><strong>(v)</strong> Al elevar al cuadrado <span class="math inline">\(\sin z/z=1-z^2/6+z^4/120+\cdots\)</span>, <span class="math display">\[
+\frac{\sin^2z}{z^2}=1-\frac{z^2}3+\frac{2z^4}{45}+O(z^6).
+\]</span></p>
+<p><strong>(vi)</strong> Tenemos <span class="math inline">\(\sin(z^2)/z=z-z^5/6+\cdots\)</span> y <span class="math inline">\(1/\cos^2z=1+z^2+2z^4/3+\cdots\)</span>. El producto da <span class="math display">\[
+\frac{\sin(z^2)}{z\cos^2z}=z+z^3+\frac{z^5}2+O(z^7).
+\]</span></p>
+<p><strong>(vii)</strong> Si <span class="math inline">\(f=A+Bz^2+Cz^4+\cdots\)</span>, la identidad <span class="math inline">\((3-2z^2+z^4)f=1\)</span> da <span class="math inline">\(3A=1\)</span>, <span class="math inline">\(3B-2A=0\)</span>, <span class="math inline">\(3C-2B+A=0\)</span>. Así, <span class="math display">\[
+\frac1{z^4-2z^2+3}=\frac13+\frac{2z^2}9+\frac{z^4}{27}+O(z^6).
+\]</span></p>
+<p><strong>(viii)</strong> Primero <span class="math inline">\(\sqrt{1+z}-1=z/2-z^2/8+z^3/16-5z^4/128+\cdots\)</span>. Al exponenciar se obtiene <span class="math display">\[
+e^{\sqrt{1+z}-1}-1=\frac z2+\frac{z^3}{48}-\frac{5z^4}{384}+O(z^5),
+\]</span> y por tanto <span class="math display">\[
+\frac{e^{\sqrt{1+z}-1}-1}{z}
+=\frac12+\frac{z^2}{48}-\frac{5z^3}{384}+O(z^4).
+\]</span> También aquí el término siguiente al constante es cuadrático, pues el coeficiente lineal se cancela. El coeficiente de grado cuatro antes de dividir es <span class="math inline">\(-5/128+5/128-1/64+1/384=-5/384\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+<section id="e010" class="level2">
+<h2 class="anchored" data-anchor-id="e010">E010 — De ecuaciones complejas a soluciones reales</h2>
+<p><strong>(a)</strong> Sea <span class="math inline">\(f=u+iv\)</span> y sean <span class="math inline">\(U,V\)</span> las restricciones de sus coordenadas al eje real. El límite que define <span class="math inline">\(f'(x)\)</span> puede tomarse a lo largo de incrementos reales; separando coordenadas, <span class="math display">\[
+f'(x)=U'(x)+iV'(x).
+\]</span> Esto coincide con la identidad de Cauchy–Riemann establecida en C26.</p>
+<p><strong>(b)</strong> Cuando existen las derivadas complejas hasta orden <span class="math inline">\(k\)</span>, aplicamos (a) sucesivamente a <span class="math inline">\(f,f',\ldots,f^{(k-1)}\)</span>. Por inducción, <span class="math display">\[
+f^{(k)}(x)=U^{(k)}(x)+iV^{(k)}(x).
+\]</span> No hace falta suponer un teorema nuevo sobre funciones holomorfas: basta la existencia de las derivadas que se usan.</p>
+<p><strong>(c)</strong> Si los coeficientes <span class="math inline">\(a_j\)</span> son reales, al sustituir (b) en <span class="math inline">\(f^{(n)}+\sum_{j=0}^{n-1}a_jf^{(j)}=0\)</span>, las partes real e imaginaria dan, por separado, la misma ecuación para <span class="math inline">\(U\)</span> y para <span class="math inline">\(V\)</span>. La realidad de los coeficientes es lo que evita mezclarlas.</p>
+<p><strong>(d)</strong> Si <span class="math inline">\(P(\alpha)=0\)</span> y <span class="math inline">\(\alpha=b+ci\)</span>, entonces <span class="math inline">\(f(z)=e^{\alpha z}\)</span> verifica <span class="math inline">\(P(D)f=P(\alpha)e^{\alpha z}=0\)</span>. Sobre el eje real sus coordenadas son <span class="math inline">\(e^{bx}\cos(cx)\)</span> y <span class="math inline">\(e^{bx}\sin(cx)\)</span>. Ambas satisfacen la ecuación por (c), incluido el caso <span class="math inline">\(c=0\)</span>, cuando la segunda es idénticamente cero.</p>
+</section>
+<section id="e011" class="level2">
+<h2 class="anchored" data-anchor-id="e011">E011 — Logaritmos y potencias multivaluadas</h2>
+<p>Aquí la base <span class="math inline">\(a\)</span> es siempre distinta de cero. Si <span class="math inline">\(a=re^{i\theta}\)</span>, todos sus logaritmos son <span class="math display">\[
+L_k=\log r+i(\theta+2\pi k),\qquad k\in\mathbb Z,
+\]</span> y <span class="math inline">\(a^b\)</span> designa el conjunto <span class="math inline">\(\{e^{bL_k}:k\in\mathbb Z\}\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><strong>(a)</strong> La exponencial no es inyectiva: <span class="math inline">\(e^0=e^{2\pi i}=1\)</span>.</p>
+<p><strong>(b)</strong> Por E007, <span class="math inline">\(e^{x+iy}=w\)</span> obliga a <span class="math inline">\(e^x=|w|\)</span>, es decir <span class="math inline">\(x=\log|w|\)</span>. Dividiendo por este módulo resulta <span class="math inline">\(e^{iy}=w/|w|\)</span>: <span class="math inline">\(y\)</span> es un argumento de <span class="math inline">\(w\)</span>. El razonamiento inverso prueba la suficiencia.</p>
+<p><strong>(c)</strong> Supongamos que existe un logaritmo continuo <span class="math inline">\(L\)</span> en la circunferencia. Para <span class="math inline">\(0\leq t\leq2\pi\)</span>, <span class="math display">\[
+L(e^{it})-it\in2\pi i\mathbb Z.
+\]</span> El miembro izquierdo es continuo. Una función continua de un intervalo a este conjunto discreto es constante: si tomara dos valores, su parte imaginaria tomaría por el teorema intermedio un valor que no es múltiplo de <span class="math inline">\(2\pi\)</span>. Pero en los extremos <span class="math inline">\(e^{i0}=e^{i2\pi}\)</span>, y la diferencia cambia en <span class="math inline">\(-2\pi i\)</span>. Contradicción. Tampoco existe tal función en todo el plano perforado.</p>
+<div id="fig-spv4-c27-f02" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 27: Una vuelta y sus logaritmos">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c27-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C27_assets/C27_02_logaritmos.svg" class="img-fluid figure-img" alt="Capítulo 27: Una vuelta y sus logaritmos">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c27-f02-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Capítulo 27 · Figura 2. Una vuelta y sus logaritmos
+</figcaption>
+</figure>
+</div>
+<p><strong>(d)</strong> Si <span class="math inline">\(m\in\mathbb Z\)</span>, entonces <span class="math inline">\(e^{mL_k}=r^me^{im\theta}e^{2\pi imk}=r^me^{im\theta}\)</span>. Hay un único valor, que coincide con la potencia entera usual, incluidos cero y los exponentes negativos.</p>
+<p><strong>(e)</strong> Tomemos <span class="math inline">\(n\geq1\)</span> y <span class="math inline">\(m\in\mathbb Z\)</span>. Las raíces <span class="math inline">\(n\)</span>-ésimas de <span class="math inline">\(a\)</span> son <span class="math display">\[
+\beta_j=r^{1/n}e^{i(\theta+2\pi j)/n},\quad 0\leq j&lt;n.
+\]</span> Por tanto <span class="math inline">\(\{\beta_j^m\}\)</span> coincide exactamente con <span class="math inline">\(\{e^{(m/n)L_k}\}\)</span>, ya que basta reducir <span class="math inline">\(k\)</span> módulo <span class="math inline">\(n\)</span>. Puede haber valores repetidos si <span class="math inline">\(m,n\)</span> tienen divisor común. Un denominador entero negativo se reduce a éste cambiando ambos signos.</p>
+<p><strong>(f)</strong> Si <span class="math inline">\(a\in\mathbb R\setminus\{0\}\)</span> y <span class="math inline">\(b\)</span> es real irracional, dos índices distintos no pueden dar el mismo valor: su cociente sería <span class="math inline">\(e^{2\pi ib(k-\ell)}=1\)</span>, lo que obligaría a <span class="math inline">\(b(k-\ell)\in\mathbb Z\)</span>. Esto haría racional a <span class="math inline">\(b\)</span>. Hay infinitos valores incluso si <span class="math inline">\(a&gt;0\)</span>.</p>
+<p><strong>(g)</strong> Los logaritmos de <span class="math inline">\(i\)</span> son <span class="math inline">\(i(\pi/2+2\pi k)\)</span>; de aquí <span class="math display">\[
+i^i=\{e^{-\pi/2-2\pi k}:k\in\mathbb Z\}.
+\]</span> Todos estos valores son reales positivos.</p>
+<p><strong>(h)</strong> Los valores de <span class="math inline">\(1^i\)</span> son <span class="math inline">\(e^{-2\pi k}\)</span>. Sus logaritmos son <span class="math inline">\(-2\pi k+2\pi i\ell\)</span>, y por ello <span class="math display">\[
+(1^i)^i=\{e^{-2\pi\ell}e^{-2\pi ik}:k,\ell\in\mathbb Z\}
+=\{e^{-2\pi\ell}:\ell\in\mathbb Z\}.
+\]</span> En cambio <span class="math inline">\(1^{i\,i}=1^{-1}=\{1\}\)</span>. Así se pierde la ley usual de potencia de potencia.</p>
+<p><strong>(i)</strong> Un valor <span class="math inline">\(e^{bcL}\)</span> de <span class="math inline">\(a^{bc}\)</span> pertenece a <span class="math inline">\((a^b)^c\)</span>: basta tomar <span class="math inline">\(u=e^{bL}\)</span> y elegir para <span class="math inline">\(u\)</span> el logaritmo <span class="math inline">\(bL\)</span>. La igualdad con la intersección propuesta es falsa. Tomando <span class="math inline">\(a=1\)</span> y <span class="math inline">\(b=c=i\)</span>, ambos conjuntos iterados son <span class="math inline">\(\{e^{-2\pi k}\}\)</span>, mientras que <span class="math inline">\(a^{bc}=\{1\}\)</span>. Por ejemplo <span class="math inline">\(e^{-2\pi}\)</span> pertenece a la intersección y no al conjunto de la izquierda.</p>
+</section>
+<section id="e012" class="level2">
+<h2 class="anchored" data-anchor-id="e012">E012 — La primitiva real escondida entre logaritmos</h2>
+<p><strong>(a)</strong> Para todo <span class="math inline">\(x\in\mathbb R\)</span>, pongamos <span class="math inline">\(\theta=\pi/2-\arctan x\in(0,\pi)\)</span>. Como <span class="math display">\[
+\cos\theta=\frac{x}{\sqrt{1+x^2}},\qquad
+\sin\theta=\frac1{\sqrt{1+x^2}},
+\]</span> podemos elegir <span class="math display">\[
+L_+(x)=\tfrac12\log(1+x^2)+i\theta,\qquad
+L_-(x)=\tfrac12\log(1+x^2)-i\theta
+\]</span> como logaritmos de <span class="math inline">\(x+i\)</span> y <span class="math inline">\(x-i\)</span>. La fórmula cubre también <span class="math inline">\(x\leq0\)</span> sin introducir el salto de <span class="math inline">\(\arctan(1/x)\)</span>.</p>
+<p><strong>(b)</strong> Sustituyendo estas elecciones, <span class="math display">\[
+\frac{L_-(x)-L_+(x)}{2i}
+=-\theta=\arctan x-\frac\pi2.
+\]</span> Su derivada es <span class="math inline">\(1/(1+x^2)\)</span>; difiere de la primitiva habitual sólo en una constante. Elegir otros logaritmos continuos a lo largo de estas rectas cambia únicamente esa constante.</p>
+</section>
+<section id="e013" class="level2">
+<h2 class="anchored" data-anchor-id="e013">E013 — Completitud y reordenamientos</h2>
+<p><strong>(a)</strong> Si <span class="math inline">\(a_n=b_n+ic_n\)</span>, las desigualdades iniciales aplicadas a <span class="math inline">\(a_m-a_n\)</span> muestran que una sucesión de Cauchy compleja tiene ambas coordenadas de Cauchy. Recíprocamente, dado <span class="math inline">\(\varepsilon&gt;0\)</span>, si cada diferencia coordenada tiene módulo menor que <span class="math inline">\(\varepsilon/2\)</span> cuando <span class="math inline">\(m,n\geq N\)</span>, entonces <span class="math inline">\(|a_m-a_n|&lt;\varepsilon\)</span>.</p>
+<p><strong>(b)</strong> Por completitud real, <span class="math inline">\(b_n\to b\)</span> y <span class="math inline">\(c_n\to c\)</span>. La misma desigualdad prueba <span class="math inline">\(a_n\to b+ic\)</span>. Todo Cauchy complejo converge.</p>
+<p><strong>(c)</strong> Demos las dos pruebas directamente en el plano complejo. Si <span class="math inline">\(\sum|a_n|&lt;\infty\)</span>, sus colas satisfacen <span class="math display">\[
+\left|\sum_{k=p}^qa_k\right|\leq\sum_{k=p}^q|a_k|\longrightarrow0.
+\]</span> Las sumas parciales son de Cauchy y convergen por (b), digamos a <span class="math inline">\(S\)</span>. Sea ahora <span class="math inline">\(\pi\)</span> una permutación de los naturales. Elegimos <span class="math inline">\(N\)</span> con <span class="math inline">\(\sum_{k&gt;N}|a_k|&lt;\varepsilon\)</span>, y luego <span class="math inline">\(M\)</span> de modo que <span class="math inline">\(\pi(1),\ldots,\pi(M)\)</span> contengan <span class="math inline">\(1,\ldots,N\)</span>. Para <span class="math inline">\(m\geq M\)</span>, la diferencia entre <span class="math inline">\(\sum_{j=1}^ma_{\pi(j)}\)</span> y <span class="math inline">\(S\)</span> sólo contiene una parte de la cola original; su módulo es a lo sumo <span class="math inline">\(\varepsilon\)</span>. Para formalizarlo, comparemos primero con una suma original finita que contenga todos esos índices y hagamos tender su extremo a infinito. Así la serie reordenada converge a <span class="math inline">\(S\)</span>. No hemos utilizado un teorema de reordenación de series reales.</p>
+</section>
+<section id="e014" class="level2">
+<h2 class="anchored" data-anchor-id="e014">E014 — Sumas trigonométricas finitas</h2>
+<p><strong>(a)</strong> Si <span class="math inline">\(x\notin2\pi\mathbb Z\)</span>, la suma geométrica y la identidad <span class="math inline">\(1-e^{iu}=-2ie^{iu/2}\sin(u/2)\)</span> dan <span class="math display">\[
+\sum_{k=1}^ne^{ikx}
+=e^{ix}\frac{1-e^{inx}}{1-e^{ix}}
+=\frac{\sin(nx/2)}{\sin(x/2)}e^{i(n+1)x/2}.
+\]</span> Para <span class="math inline">\(x\in2\pi\mathbb Z\)</span>, la suma vale <span class="math inline">\(n\)</span>; los cocientes se interpretan por prolongación continua, no por división por cero.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p><strong>(b)</strong> Tomando las dos coordenadas, <span class="math display">\[
+\sum_{k=1}^n\cos kx
+=\frac{\sin(nx/2)\cos((n+1)x/2)}{\sin(x/2)},\qquad
+\sum_{k=1}^n\sin kx
+=\frac{\sin(nx/2)\sin((n+1)x/2)}{\sin(x/2)}.
+\]</span> Usar <span class="math inline">\(2\sin A\cos B=\sin(A+B)+\sin(A-B)\)</span> y <span class="math inline">\(2\sin A\sin B=\cos(A-B)-\cos(A+B)\)</span> produce las formas equivalentes de C15. En <span class="math inline">\(x\in2\pi\mathbb Z\)</span> los valores son respectivamente <span class="math inline">\(n\)</span> y <span class="math inline">\(0\)</span>.</p>
+</section>
+<section id="e015" class="level2">
+<h2 class="anchored" data-anchor-id="e015">E015 — Fibonacci y su radio de convergencia</h2>
+<p><strong>(a)</strong> Todos los <span class="math inline">\(a_n\)</span> son positivos. Al dividir <span class="math inline">\(a_{n+2}=a_{n+1}+a_n\)</span> por <span class="math inline">\(a_{n+1}\)</span> obtenemos <span class="math inline">\(r_{n+1}=1+1/r_n\)</span>, donde <span class="math inline">\(r_n=a_{n+1}/a_n\)</span>.</p>
+<p><strong>(b)</strong> Tenemos <span class="math inline">\(1\leq r_n\leq2\)</span> por inducción. Si existe el límite <span class="math inline">\(r\)</span>, es positivo y la continuidad da <span class="math inline">\(r=1+1/r\)</span>. Las raíces son <span class="math inline">\((1\pm\sqrt5)/2\)</span>; sólo la positiva es admisible: <span class="math display">\[
+\phi=\frac{1+\sqrt5}2.
+\]</span></p>
+<p><strong>(c)</strong> La aplicación <span class="math inline">\(T(t)=1+1/t\)</span> es decreciente y fija <span class="math inline">\(\phi\)</span>. Como <span class="math inline">\(r_1=1&lt;\phi&lt;r_2=2\)</span>, los términos impares quedan por debajo y los pares por encima. Además <span class="math display">\[
+T(T(t))=\frac{2t+1}{t+1},\qquad
+T(T(t))-t=-\frac{t^2-t-1}{t+1}.
+\]</span> En <span class="math inline">\([1,\phi)\)</span> esta diferencia es positiva; en <span class="math inline">\((\phi,2]\)</span> es negativa. Así los impares crecen y los pares decrecen, ambos acotados. Sus límites <span class="math inline">\(L,U\)</span> cumplen <span class="math inline">\(U=T(L)\)</span> y <span class="math inline">\(L=T(U)\)</span>, luego <span class="math inline">\(L=T(T(L))\)</span>, es decir <span class="math inline">\(L^2-L-1=0\)</span>. Por positividad <span class="math inline">\(L=U=\phi\)</span>. Por tanto converge la sucesión completa.</p>
+<p><strong>(d)</strong> Para <span class="math inline">\(z\ne0\)</span>, <span class="math display">\[
+\left|\frac{a_{n+1}z^{n+1}}{a_nz^n}\right|
+=r_n|z|\longrightarrow\phi|z|.
+\]</span> El radio es <span class="math inline">\(1/\phi=2/(1+\sqrt5)=(\sqrt5-1)/2\)</span>. Como comprobación independiente, la función generadora correcta es <span class="math display">\[
+\sum_{n=1}^\infty a_nz^n=\frac{z}{1-z-z^2}.
+\]</span> Se obtiene multiplicando por <span class="math inline">\(1-z-z^2\)</span> y usando la recurrencia. El numerador no se cancela en sus dos polos.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<div id="fig-spv4-c27-f03" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 27: Cocientes de Fibonacci">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c27-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C27_assets/C27_03_fibonacci.svg" class="img-fluid figure-img" alt="Capítulo 27: Cocientes de Fibonacci">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c27-f03-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Capítulo 27 · Figura 3. Cocientes de Fibonacci
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e016" class="level2">
+<h2 class="anchored" data-anchor-id="e016">E016 — Números de Bernoulli y tangente</h2>
+<p>Definimos <span class="math inline">\(B(z)=z/(e^z-1)\)</span> por prolongación en cero, con <span class="math inline">\(B(0)=1\)</span>, y escribimos <span class="math inline">\(B(z)=\sum_{n\geq0}b_nz^n/n!\)</span>.</p>
+<p><strong>(a)</strong> La identidad <span class="math display">\[
+B(z)=-\frac z2+\frac z2\frac{e^z+1}{e^z-1}
+\]</span> se comprueba llevando a denominador común. Además <span class="math inline">\((e^{-z}+1)/(e^{-z}-1)=-(e^z+1)/(e^z-1)\)</span>, por multiplicación de numerador y denominador por <span class="math inline">\(e^z\)</span>. Por tanto <span class="math inline">\(B(z)+z/2\)</span> es par. Comparar coeficientes da <span class="math inline">\(b_1=-1/2\)</span> y <span class="math inline">\(b_n=0\)</span> para todo impar <span class="math inline">\(n&gt;1\)</span>.</p>
+<p><strong>(b)</strong> El coeficiente de <span class="math inline">\(z^n\)</span> en <span class="math inline">\(B(z)(e^z-1)=z\)</span> es <span class="math inline">\(\sum_{k=0}^{n-1}b_k/[k!(n-k)!]\)</span>. Para <span class="math inline">\(n&gt;1\)</span> es cero; multiplicando por <span class="math inline">\(n!\)</span>, <span class="math display">\[
+\sum_{k=0}^{n-1}\binom nk b_k=0,\qquad
+b_{n-1}=-\frac1n\sum_{k=0}^{n-2}\binom nk b_k.
+\]</span> La recurrencia demuestra racionalidad por inducción. Con los impares ya anulados: <span class="math display">\[
+1-\frac32+3b_2=0,\quad
+1-\frac52+10b_2+5b_4=0,
+\]</span> <span class="math display">\[
+1-\frac72+21b_2+35b_4+7b_6=0,\quad
+1-\frac92+36b_2+126b_4+84b_6+9b_8=0.
+\]</span> Resultan <span class="math inline">\(b_2=1/6\)</span>, <span class="math inline">\(b_4=-1/30\)</span>, <span class="math inline">\(b_6=1/42\)</span>, <span class="math inline">\(b_8=-1/30\)</span>.</p>
+<p><strong>(c)</strong> La parte par de <span class="math inline">\(B\)</span> es <span class="math inline">\((z/2)(e^{z/2}+e^{-z/2})/(e^{z/2}-e^{-z/2})\)</span>. Sustituyendo <span class="math inline">\(z\)</span> por <span class="math inline">\(2iz\)</span>, el cociente exponencial es <span class="math inline">\(\cos z/(i\sin z)\)</span>; al multiplicarlo por <span class="math inline">\(iz\)</span> queda <span class="math inline">\(z\cot z\)</span>. Así, <span class="math display">\[
+z\cot z=\sum_{n=0}^\infty\frac{b_{2n}}{(2n)!}(-1)^n2^{2n}z^{2n}.
+\]</span> Se entiende prolongada en cero y converge para <span class="math inline">\(|z|&lt;\pi\)</span>.</p>
+<p><strong>(d)</strong> Por las fórmulas de ángulo doble, <span class="math display">\[
+\cot z-2\cot2z
+=\frac{\cos^2z-\cos2z}{\sin z\cos z}
+=\frac{\sin^2z}{\sin z\cos z}=\tan z.
+\]</span> La identidad vale donde están definidos los cocientes y después por prolongación en los puntos removibles.</p>
+<p><strong>(e)</strong> Dividimos (c) por <span class="math inline">\(z\)</span> y restamos dos veces la expresión con argumento <span class="math inline">\(2z\)</span>. Los términos <span class="math inline">\(1/z\)</span> se cancelan y para <span class="math inline">\(n\geq1\)</span> queda el factor <span class="math inline">\(1-2^{2n}\)</span>. Por tanto <span class="math display">\[
+\tan z=\sum_{n=1}^\infty
+\frac{b_{2n}}{(2n)!}(-1)^{n-1}2^{2n}(2^{2n}-1)z^{2n-1},
+\qquad |z|&lt;\frac\pi2.
+\]</span> Aquí se usa, como permite el enunciado, el teorema anunciado en el capítulo sobre desarrollos de funciones holomorfas: los polos no removibles más cercanos de <span class="math inline">\(B\)</span> son <span class="math inline">\(\pm2\pi i\)</span>, los de <span class="math inline">\(z\cot z\)</span> son <span class="math inline">\(\pm\pi\)</span>, y los de <span class="math inline">\(\tan z\)</span> son <span class="math inline">\(\pm\pi/2\)</span>. El cálculo de coeficientes anterior sólo requiere las series locales.</p>
+</section>
+<section id="e017" class="level2">
+<h2 class="anchored" data-anchor-id="e017">E017 — La suma de potencias desde una identidad finita</h2>
+<p><strong>(a)</strong> Para un polinomio <span class="math inline">\(f\)</span>, Taylor es una identidad finita. En <span class="math display">\[
+\sum_{k\geq0}\frac{b_k}{k!}\,[f^{(k)}(x+1)-f^{(k)}(x)]
+\]</span> el coeficiente de <span class="math inline">\(f^{(j)}(x)\)</span>, para <span class="math inline">\(j\geq1\)</span>, es <span class="math display">\[
+\sum_{k=0}^{j-1}\frac{b_k}{k!(j-k)!}
+=\frac1{j!}\sum_{k=0}^{j-1}\binom jk b_k.
+\]</span> Vale <span class="math inline">\(1\)</span> si <span class="math inline">\(j=1\)</span> y <span class="math inline">\(0\)</span> si <span class="math inline">\(j&gt;1\)</span>, por E016(b). Luego toda la expresión es exactamente <span class="math inline">\(f'(x)\)</span>. No se está sustituyendo un operador en una serie infinita sin justificar convergencia: para un polinomio sólo sobreviven finitos términos.</p>
+<p><strong>(b)</strong> Sumamos la identidad anterior en <span class="math inline">\(x=0,1,\ldots,n\)</span>. Cada diferencia telescopa: <span class="math display">\[
+\sum_{j=0}^nf'(j)
+=\sum_{k\geq0}\frac{b_k}{k!}
+[f^{(k)}(n+1)-f^{(k)}(0)].
+\]</span></p>
+<p><strong>(c)</strong> Sea <span class="math inline">\(f\)</span> una primitiva polinómica de <span class="math inline">\(g\)</span>. El término <span class="math inline">\(k=0\)</span> es <span class="math inline">\(f(n+1)-f(0)=\int_0^{n+1}g(t)\,dt\)</span>, y para <span class="math inline">\(k\geq1\)</span> se tiene <span class="math inline">\(f^{(k)}=g^{(k-1)}\)</span>. Así, <span class="math display">\[
+\sum_{j=0}^ng(j)=\int_0^{n+1}g(t)\,dt+
+\sum_{k\geq1}\frac{b_k}{k!}
+[g^{(k-1)}(n+1)-g^{(k-1)}(0)].
+\]</span></p>
+<p><strong>(d)</strong> Para <span class="math inline">\(g(x)=x^p\)</span>, con entero <span class="math inline">\(p\geq1\)</span>, aplicamos (c) al intervalo de suma <span class="math inline">\(0,\ldots,n-1\)</span>. El término con <span class="math inline">\(k=p+1\)</span> se anula porque la derivada de orden <span class="math inline">\(p\)</span> es constante. Para <span class="math inline">\(1\leq k\leq p\)</span> la derivada de orden <span class="math inline">\(k-1\)</span> en cero es cero y <span class="math display">\[
+\frac1{k!}g^{(k-1)}(n)
+=\frac1k\binom p{k-1}n^{p-k+1}.
+\]</span> En consecuencia, <span class="math display">\[
+\sum_{j=1}^{n-1}j^p=\frac{n^{p+1}}{p+1}
++\sum_{k=1}^p\frac{b_k}{k}\binom p{k-1}n^{p-k+1}.
+\]</span> Al añadir <span class="math inline">\(n^p\)</span> y usar <span class="math inline">\(b_1=-1/2\)</span>, <span class="math display">\[
+\sum_{j=1}^{n}j^p=\frac{n^{p+1}}{p+1}+\frac{n^p}2
++\sum_{k=2}^p\frac{b_k}{k}\binom p{k-1}n^{p-k+1}.
+\]</span> Para <span class="math inline">\(p=0\)</span> la suma vale simplemente <span class="math inline">\(n\)</span>; no se debe aplicar sin adaptación el argumento sobre el valor de <span class="math inline">\(x^p\)</span> en cero.</p>
+</section>
+<section id="e018" class="level2">
+<h2 class="anchored" data-anchor-id="e018">E018 — Euler–Maclaurin con resto</h2>
+<p><strong>(a)</strong> Definimos <span class="math display">\[
+\varphi_n(x)=\sum_{k=0}^n\binom nk b_{n-k}x^k.
+\]</span> Evaluar en cero da <span class="math inline">\(\varphi_n(0)=b_n\)</span>. Evaluar en uno da <span class="math inline">\(\varphi_n(1)=b_n\)</span> para <span class="math inline">\(n&gt;1\)</span>, porque los restantes sumandos se anulan por E016(b). Derivando y usando <span class="math inline">\(k\binom nk=n\binom{n-1}{k-1}\)</span> resulta <span class="math inline">\(\varphi_n'=n\varphi_{n-1}\)</span>.</p>
+<p>Para probar la simetría, los casos <span class="math inline">\(n=0,1\)</span> se verifican con <span class="math inline">\(\varphi_0=1\)</span>, <span class="math inline">\(\varphi_1=x-1/2\)</span>. Si ya vale para <span class="math inline">\(n-1\)</span>, las derivadas de <span class="math inline">\(\varphi_n(x)\)</span> y <span class="math inline">\((-1)^n\varphi_n(1-x)\)</span> coinciden. Su diferencia es constante. Para <span class="math inline">\(n&gt;1\)</span>, en cero la diferencia es <span class="math inline">\(b_n-(-1)^nb_n=0\)</span>: si <span class="math inline">\(n\)</span> es par es inmediato, y si es impar usamos <span class="math inline">\(b_n=0\)</span>. Queda <span class="math display">\[
+\varphi_n(x)=(-1)^n\varphi_n(1-x).
+\]</span> En particular <span class="math inline">\(\varphi_2=x^2-x+1/6\)</span> y <span class="math inline">\(\varphi_3=x^3-3x^2/2+x/2\)</span>.</p>
+<p><strong>(b)</strong> Supongamos <span class="math inline">\(N\geq1\)</span> y <span class="math inline">\(f\in C^{N+1}[x,x+1]\)</span>. Definimos el resto <span class="math inline">\(R_m^k(x)\)</span> por <span class="math display">\[
+f^{(k)}(x+1)-f^{(k)}(x)
+=\sum_{j=1}^{m}\frac{f^{(k+j)}(x)}{j!}+R_m^k(x).
+\]</span> Se permite <span class="math inline">\(m=0\)</span>, con suma vacía. Tomamos <span class="math inline">\(m=N-k\)</span> para <span class="math inline">\(0\leq k\leq N\)</span>, multiplicamos por <span class="math inline">\(b_k/k!\)</span> y sumamos. El mismo cálculo triangular de E017 deja sólo <span class="math inline">\(f'(x)\)</span> en la parte sin restos, pues los órdenes totales son <span class="math inline">\(1,\ldots,N\)</span>. Despejando, <span class="math display">\[
+f'(x)=\sum_{k=0}^N\frac{b_k}{k!}
+[f^{(k)}(x+1)-f^{(k)}(x)]
+-\sum_{k=0}^N\frac{b_k}{k!}R_{N-k}^k(x).
+\]</span></p>
+<p><strong>(c)</strong> La forma integral de Taylor da <span class="math display">\[
+R_{N-k}^k(x)=
+\int_x^{x+1}\frac{(x+1-t)^{N-k}}{(N-k)!}f^{(N+1)}(t)\,dt.
+\]</span> Al sumar bajo esta integral finita, el factor que acompaña a <span class="math inline">\(f^{(N+1)}\)</span> es <span class="math display">\[
+\frac1{N!}\sum_{k=0}^N\binom Nk b_k(x+1-t)^{N-k}
+=\frac{\varphi_N(x+1-t)}{N!}.
+\]</span> Esto prueba la fórmula del resto pedida, incluido el término <span class="math inline">\(k=N\)</span>, para el que Taylor es de orden cero.</p>
+<p><strong>(d)</strong> Sea ahora <span class="math inline">\(g\in C^N[x,x+n+1]\)</span>, con <span class="math inline">\(n\)</span> entero no negativo, y elijamos una primitiva <span class="math inline">\(f\)</span> de <span class="math inline">\(g\)</span>. Aplicamos (b)–(c) en cada intervalo <span class="math inline">\([x+j,x+j+1]\)</span>, <span class="math inline">\(0\leq j\leq n\)</span>. Las diferencias de las derivadas de <span class="math inline">\(f\)</span> telescopan, y el término <span class="math inline">\(k=0\)</span> es la integral de <span class="math inline">\(g\)</span>. Obtenemos <span class="math display">\[
+\sum_{j=0}^ng(x+j)
+=\int_x^{x+n+1}g(t)\,dt+
+\sum_{k=1}^N\frac{b_k}{k!}
+[g^{(k-1)}(x+n+1)-g^{(k-1)}(x)]+S_N(x,n),
+\]</span> <span class="math display">\[
+S_N(x,n)=-
+\sum_{j=0}^n\int_{x+j}^{x+j+1}
+\frac{\varphi_N(x+j+1-t)}{N!}\,g^{(N)}(t)\,dt.
+\]</span> La derivada del resto es de orden <span class="math inline">\(N\)</span> sobre <span class="math inline">\(g\)</span>, porque lo era de orden <span class="math inline">\(N+1\)</span> sobre su primitiva.</p>
+<p><strong>(e)</strong> Extendamos <span class="math inline">\(\varphi_N|_{[0,1)}\)</span> con período uno y llamemos <span class="math inline">\(\psi_N\)</span> al resultado. En el interior de cada intervalo de (d), <span class="math inline">\(x+j+1-t\)</span> y <span class="math inline">\(x-t\)</span> difieren en un entero. Podemos reunir las integrales: <span class="math display">\[
+S_N(x,n)=-\int_x^{x+n+1}\frac{\psi_N(x-t)}{N!}g^{(N)}(t)\,dt.
+\]</span> Si <span class="math inline">\(x\)</span> es entero, la periodicidad y simetría dan, salvo en puntos aislados, <span class="math display">\[
+S_N(x,n)=(-1)^{N+1}\int_x^{x+n+1}
+\frac{\psi_N(t)}{N!}g^{(N)}(t)\,dt.
+\]</span> Para <span class="math inline">\(N&gt;1\)</span> los extremos empalman y <span class="math inline">\(\psi_N\)</span> es continua. Para <span class="math inline">\(N=1\)</span>, <span class="math inline">\(\psi_1(t)=\{t\}-1/2\)</span> tiene saltos: su imparidad falla exactamente en los enteros, donde vale <span class="math inline">\(-1/2\)</span>, pero la identidad integral sigue siendo válida.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<div id="fig-spv4-c27-f04" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 27: Polinomios y prolongación periódica">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c27-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C27_assets/C27_04_bernoulli.svg" class="img-fluid figure-img" alt="Capítulo 27: Polinomios y prolongación periódica">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c27-f04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Capítulo 27 · Figura 4. Polinomios y prolongación periódica
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="e019" class="level2">
+<h2 class="anchored" data-anchor-id="e019">E019 — Stirling y el signo de su resto</h2>
+<p>En todo este problema <span class="math inline">\(n\)</span> es un entero positivo. Ponemos <span class="math display">\[
+I_n=\int_n^\infty\frac{\psi_2(t)}{2t^2}\,dt.
+\]</span> Primero construiremos su existencia; después probaremos su signo, que no se deduce sólo de una cota absoluta.</p>
+<p><strong>(a)</strong> Aplicamos Euler–Maclaurin con <span class="math inline">\(N=2\)</span>, <span class="math inline">\(g(t)=\log t\)</span>, desde <span class="math inline">\(1\)</span> hasta <span class="math inline">\(n\)</span>, sumando los puntos <span class="math inline">\(1,\ldots,n-1\)</span>. Para <span class="math inline">\(n=1\)</span> todas las sumas e integrales son vacías y la identidad es inmediata. Como <span class="math inline">\(b_1=-1/2\)</span>, <span class="math inline">\(b_2/2!=1/12\)</span> y <span class="math inline">\(g''=-1/t^2\)</span>, resulta <span class="math display">\[
+\sum_{j=1}^{n-1}\log j
+=\int_1^n\log t\,dt-\frac12\log n+
+\frac1{12}\left(\frac1n-1\right)
++\int_1^n\frac{\psi_2(t)}{2t^2}\,dt.
+\]</span></p>
+<p><strong>(b)</strong> La integral elemental es <span class="math inline">\(n\log n-n+1\)</span>. Añadimos <span class="math inline">\(\log n\)</span> para obtener <span class="math inline">\(\log(n!)\)</span> y reunimos términos: <span class="math display">\[
+\log\frac{n!}{n^{n+1/2}e^{-n+1/(12n)}}
+=\frac{11}{12}+\int_1^n\frac{\psi_2(t)}{2t^2}\,dt.
+\]</span> El <span class="math inline">\(11/12\)</span> procede de <span class="math inline">\(1-1/12\)</span>, no de una nueva constante de integración.</p>
+<p><strong>(c)</strong> La función <span class="math inline">\(\psi_2\)</span> es continua, periódica y acotada; en concreto <span class="math inline">\(|\psi_2|\leq1/6\)</span>. La integral <span class="math display">\[
+\beta=\int_1^\infty\frac{\psi_2(t)}{2t^2}\,dt
+\]</span> converge absolutamente por comparación con <span class="math inline">\(1/(12t^2)\)</span>. Definamos <span class="math inline">\(\alpha=\exp(\beta+11/12)&gt;0\)</span>. Al restar <span class="math inline">\(\log\alpha\)</span> en (b) queda <span class="math display">\[
+\log\frac{n!}{\alpha n^{n+1/2}e^{-n+1/(12n)}}=-I_n.
+\]</span> Como <span class="math inline">\(I_n\to0\)</span>, se sigue ya que <span class="math inline">\(n!\sim\alpha n^{n+1/2}e^{-n}\)</span>.</p>
+<p><strong>(d)</strong> Usamos el límite obtenido en C19–E041(d), <span class="math display">\[
+\sqrt\pi=\lim_{n\to\infty}\frac{(n!)^2\,2^{2n}}{(2n)!\sqrt n}.
+\]</span> Sustituimos la equivalencia de (c) para <span class="math inline">\(n!\)</span> y <span class="math inline">\((2n)!\)</span>. Los factores exponenciales <span class="math inline">\(e^{1/(12n)}\)</span> tienden a uno, al igual que los errores multiplicativos. El cociente principal se simplifica a <span class="math display">\[
+\frac{\alpha^2n^{2n+1}e^{-2n}2^{2n}}
+{\alpha(2n)^{2n+1/2}e^{-2n}\sqrt n}
+=\frac{\alpha}{\sqrt2}.
+\]</span> Luego <span class="math inline">\(\alpha/\sqrt2=\sqrt\pi\)</span>, es decir <span class="math inline">\(\alpha=\sqrt{2\pi}\)</span>. Este paso determina la constante a partir de un límite anterior; no usa Stirling para demostrar ese límite.</p>
+<p><strong>(e)</strong> En <span class="math inline">\(0\leq x\leq1\)</span>, una primitiva de <span class="math inline">\(\varphi_2\)</span> que se anula en cero es <span class="math display">\[
+P(x)=\frac{x^3}3-\frac{x^2}2+\frac x6
+=\frac{x(2x-1)(x-1)}6.
+\]</span> Se anula en <span class="math inline">\(0,1/2,1\)</span>, es positiva en <span class="math inline">\((0,1/2)\)</span> y negativa en <span class="math inline">\((1/2,1)\)</span>. Así <span class="math inline">\(\int_0^{1/2}\varphi_2=\int_0^1\varphi_2=0\)</span>. Si <span class="math display">\[
+F(x)=\int_0^x\psi_2(t)\,dt,
+\]</span> cada período tiene integral cero, de modo que <span class="math inline">\(F(m+x)=P(x)\)</span> para enteros <span class="math inline">\(m\)</span> y <span class="math inline">\(0\leq x\leq1\)</span>. En particular <span class="math inline">\(F(m)=0\)</span>.</p>
+<p><strong>(f)</strong> El cambio <span class="math inline">\(x\mapsto1-x\)</span> da <span class="math inline">\(P(1-x)=-P(x)\)</span>, y por tanto <span class="math inline">\(\int_0^1P=0\)</span>. La segunda primitiva es <span class="math display">\[
+G(x)=\int_0^xF(t)\,dt=\frac{x^2(x-1)^2}{12}
+\quad(0\leq x\leq1).
+\]</span> Es no negativa, estrictamente positiva en el interior, y se anula en los extremos. Como la integral de <span class="math inline">\(F\)</span> en cada período es cero, <span class="math inline">\(G\)</span> también es periódica, acotada y satisface <span class="math inline">\(G(m)=0\)</span>. Esto explica por qué la conclusión vale en toda la recta.</p>
+<div id="fig-spv4-c27-f05" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 27: Dos primitivas que controlan el signo">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c27-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C27_assets/C27_05_primitivas.svg" class="img-fluid figure-img" alt="Capítulo 27: Dos primitivas que controlan el signo">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c27-f05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Capítulo 27 · Figura 5. Dos primitivas que controlan el signo
+</figcaption>
+</figure>
+</div>
+<p><strong>(g)</strong> Integramos dos veces por partes entre enteros <span class="math inline">\(n\)</span> y <span class="math inline">\(M&gt;n\)</span>. Los términos de borde se anulan porque <span class="math inline">\(F\)</span> y <span class="math inline">\(G\)</span> se anulan en los enteros: <span class="math display">\[
+\int_n^M\frac{\psi_2(t)}{2t^2}\,dt
+=\int_n^M\frac{F(t)}{t^3}\,dt
+=3\int_n^M\frac{G(t)}{t^4}\,dt.
+\]</span> Pasamos a infinito; las integrales convergen absolutamente por acotación de las funciones periódicas. Resulta <span class="math display">\[
+I_n=3\int_n^\infty\frac{G(t)}{t^4}\,dt&gt;0,
+\]</span> pues <span class="math inline">\(G&gt;0\)</span> en todo intervalo abierto entre enteros.</p>
+<p><strong>(h)</strong> Por otra parte, <span class="math inline">\(\psi_2(t)\leq1/6\)</span>, con desigualdad estricta fuera de los enteros. Por ello <span class="math display">\[
+0&lt;I_n&lt;\int_n^\infty\frac1{12t^2}\,dt=\frac1{12n}.
+\]</span> La desigualdad estricta se debe a que la diferencia de integrandos es positiva en intervalos de longitud positiva.</p>
+<p><strong>(i)</strong> De (c)–(d), <span class="math display">\[
+\log\frac{n!}{\sqrt{2\pi}\,n^{n+1/2}e^{-n}}
+=\frac1{12n}-I_n.
+\]</span> Usando (h) y exponenciando, <span class="math display">\[
+\boxed{\sqrt{2\pi}\,n^{n+1/2}e^{-n}
+&lt;n!&lt;
+\sqrt{2\pi}\,n^{n+1/2}e^{-n+1/(12n)}}.
+\]</span> El cociente entre las dos cotas tiende a uno. La fórmula de Stirling y una cota relativa explícita quedan demostradas para todos los enteros positivos.</p>
+<div id="fig-spv4-c27-f06" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capítulo 27: Corrección logarítmica de Stirling">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spv4-c27-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="C27_assets/C27_06_stirling.svg" class="img-fluid figure-img" alt="Capítulo 27: Corrección logarítmica de Stirling">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spv4-c27-f06-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Capítulo 27 · Figura 6. Corrección logarítmica de Stirling
+</figcaption>
+</figure>
+</div>
+<p>La fórmula de Euler–Maclaurin es exacta con su resto finito. Aumentar indefinidamente el número de correcciones no garantiza una serie convergente. Lo que sí hemos demostrado es que, con un orden fijo, la integral del resto permite estimar el error y, en este caso, determinar incluso su signo.</p>
+</section>
+<section id="seccion-32258" class="level2">
+<h2 class="anchored" data-anchor-id="seccion-32258">Cobertura y continuidad</h2>
+<p>Se desarrollan E001–E019, incluidos los incisos con asterisco y doble asterisco. Las pruebas introductorias son apoyo expositivo y no aumentan el denominador de ejercicios. El inventario separa los incisos terminales de sus resultados internos, y el cierre documenta los controles efectuados.</p>
+<hr>
+<div class="spivak-nav">
+<p><a href="../../../problemas/colecciones/spivak-calculus/capitulo-26.html">← Capítulo 26</a> · <a href="../../../problemas/colecciones/index.html#spivak-calculus-cuarta-edición">Colecciones</a> · <a href="../../../problemas/colecciones/spivak-calculus/capitulo-28.html">Capítulo 28 →</a></p>
+</div>
+<p>Soluciones originales de Alevi Peña · Matemática Abierta. <a href="../../../COPYING.FDL">Licencia GFDL 1.3 o posterior</a>.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>El cotejo posterior con las respuestas impresas da dos discrepancias: E009(iii) aparece con <span class="math inline">\(-z^3/6\)</span> y E009(viii) con <span class="math inline">\(-3z^3/64\)</span>. Faltan contribuciones en las composiciones exponenciales. Aquí se conservan los coeficientes calculados directamente, <span class="math inline">\(-1/8\)</span> y <span class="math inline">\(-5/384\)</span>, comprobados también mediante expansión simbólica.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>La definición mediante logaritmos exige <span class="math inline">\(a\ne0\)</span>, condición que se hace explícita también en los incisos sobre bases reales. El caso <span class="math inline">\(a=0\)</span> requiere convenciones separadas y no forma parte de esta definición.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Se añade la restricción de los denominadores en la fórmula del original y se resuelve por separado el caso excluido.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>El comentario del original escribe <span class="math inline">\(-1/(z^2+z-1)\)</span> para esta serie que comienza en <span class="math inline">\(n=1\)</span>. Falta un factor <span class="math inline">\(z\)</span> en el numerador. El radio señalado en el original sí es correcto.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>La afirmación del original sobre la imparidad de las prolongaciones impares necesita esta excepción para <span class="math inline">\(\psi_1\)</span> con la convención <span class="math inline">\(0\leq t&lt;1\)</span>. Las integrales no cambian al modificar finitos valores.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
