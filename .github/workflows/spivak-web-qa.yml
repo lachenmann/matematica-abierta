@@ -1,0 +1,36 @@
+name: Spivak web QA
+on:
+  pull_request:
+    paths:
+      - 'problemas/colecciones/spivak-calculus/**'
+      - 'tests/spivak_web_browser.cjs'
+      - '.github/workflows/spivak-web-qa.yml'
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+      - run: quarto render problemas/colecciones --to html
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser
+        run: |
+          npm install --prefix "$RUNNER_TEMP/spivak-browser" playwright@1.62.1
+          "$RUNNER_TEMP/spivak-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Inspect all thirty chapters
+        env:
+          NODE_PATH: ${{ runner.temp }}/spivak-browser/node_modules
+        run: node tests/spivak_web_browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: spivak-web-qa
+          path: .ma-build/spivak-qa/
+          include-hidden-files: true
+          if-no-files-found: warn
