@@ -55,7 +55,7 @@ Cambiar el origen traslada toda la acumulación por una constante; no altera nin
 
 Para $f(t)=2t-1$ en $[0,1]$, la fórmula afín de C22, aplicada a cada $[0,x]$, da $A_f(x)=x^2-x$. La acumulación es negativa en el interior y vuelve a cero en $1$: las contribuciones iniciales negativas se compensan con las posteriores positivas. Su signo y su crecimiento dependen de la tasa; acumular cantidades firmadas no obliga a producir una función no negativa o creciente.
 
-![En \[0,1\], f(t)=2t−1 y A(x)=x²−x. La acumulada tiene origen0, valor−1/4 en1/2 y valor0 en1; contribuciones firmadas de mitades opuestas.](../../assets/books/anm/revision-20261016/C24/C24-F01.svg){#fig-anm-c24-f01 fig-alt="En [0,1], f(t)=2t−1 y A(x)=x²−x. La acumulada tiene origen0, valor−1/4 en1/2 y valor0 en1; contribuciones firmadas de mitades opuestas."}
+![En \[0,1\], f(t)=2t−1 y A(x)=x²−x. La acumulada tiene origen0, valor−1/4 en1/2 y valor0 en1; contribuciones firmadas de mitades opuestas.](../../assets/books/anm/C24/C24-F01.svg){#fig-anm-c24-f01 fig-alt="En [0,1], f(t)=2t−1 y A(x)=x²−x. La acumulada tiene origen0, valor−1/4 en1/2 y valor0 en1; contribuciones firmadas de mitades opuestas."}
 
 ### Microcontroles
 
@@ -278,7 +278,7 @@ La acumulada es Lipschitz. Para cada $\varepsilon>0$, el radio $\delta=\varepsil
 
 Para el escalón $s(t)=0$ si $t<1/2$ y $s(t)=1$ si $t\ge1/2$ en $[0,1]$, la acumulada es $0$ hasta $1/2$ y $x-1/2$ después. El valor nodal no aporta anchura, por cambios finitos de C23. Es continua y Lipschitz de constante $1$ aunque la integranda tenga un salto.
 
-![El escalón vale0 antes de1/2 y1 desde el corte. Su acumulada vale0 hasta1/2 y x−1/2 después: continua y Lipschitz1, aunque haya salto.](../../assets/books/anm/revision-20261016/C24/C24-F02.svg){#fig-anm-c24-f02 fig-alt="El escalón vale0 antes de1/2 y1 desde el corte. Su acumulada vale0 hasta1/2 y x−1/2 después: continua y Lipschitz1, aunque haya salto."}
+![El escalón vale0 antes de1/2 y1 desde el corte. Su acumulada vale0 hasta1/2 y x−1/2 después: continua y Lipschitz1, aunque haya salto.](../../assets/books/anm/C24/C24-F02.svg){#fig-anm-c24-f02 fig-alt="El escalón vale0 antes de1/2 y1 desde el corte. Su acumulada vale0 hasta1/2 y x−1/2 después: continua y Lipschitz1, aunque haya salto."}
 
 ### Microcontroles
 
@@ -505,7 +505,7 @@ Para $y>x$, integrar $|f(t)-f(x)|\le L(t-x)$ y usar la integral afín heredada d
 
 Con $f(t)=t^2$ y $x=1/2$ en $[0,1]$, la acumulada ya calculada por sumas es $x^3/3$. Para incrementos admisibles $h\ne0$, el cociente es $1/4+h/2+h^2/3$, que converge a $f(1/2)=1/4$. El término adicional tiene signo y tamaño explícitos, sin depender de una lista de muestras.
 
-![Para f(t)=t², A(x)=x³/3 y centro1/2, el cociente con incremento h es1/4+h/2+h²/3. Desde ambos signos converge a1/4; la curva exacta, no las muestras, prueba el límite.](../../assets/books/anm/revision-20261016/C24/C24-F03.svg){#fig-anm-c24-f03 fig-alt="Para f(t)=t², A(x)=x³/3 y centro1/2, el cociente con incremento h es1/4+h/2+h²/3. Desde ambos signos converge a1/4; la curva exacta, no las muestras, prueba el límite."}
+![Para f(t)=t², A(x)=x³/3 y centro1/2, el cociente con incremento h es1/4+h/2+h²/3. Desde ambos signos converge a1/4; la curva exacta, no las muestras, prueba el límite.](../../assets/books/anm/C24/C24-F03.svg){#fig-anm-c24-f03 fig-alt="Para f(t)=t², A(x)=x³/3 y centro1/2, el cociente con incremento h es1/4+h/2+h²/3. Desde ambos signos converge a1/4; la curva exacta, no las muestras, prueba el límite."}
 
 ### Microcontroles
 
@@ -726,7 +726,7 @@ Si $f$ es continua en todo $[a,b]$, C23 asegura su integrabilidad. R2 hace conti
 
 Modificar un valor de borde también deja todas las integrales intactas. La función que vale cero salvo $f(a)=1$ tiene acumulada cero y derivada derecha cero, distinta de ese valor de borde. Precisamente falla la continuidad relativa en $a$. El teorema no puede recuperar información que los cambios finitos borran de la integral.
 
-![En el salto, los cocientes de la acumulada en el corte son0 y1 desde lados distintos. El pico aislado tiene acumulada cero y derivada cero, diferente del valor1 en el pico.](../../assets/books/anm/revision-20261016/C24/C24-F04.svg){#fig-anm-c24-f04 fig-alt="En el salto, los cocientes de la acumulada en el corte son0 y1 desde lados distintos. El pico aislado tiene acumulada cero y derivada cero, diferente del valor1 en el pico."}
+![En el salto, los cocientes de la acumulada en el corte son0 y1 desde lados distintos. El pico aislado tiene acumulada cero y derivada cero, diferente del valor1 en el pico.](../../assets/books/anm/C24/C24-F04.svg){#fig-anm-c24-f04 fig-alt="En el salto, los cocientes de la acumulada en el corte son0 y1 desde lados distintos. El pico aislado tiene acumulada cero y derivada cero, diferente del valor1 en el pico."}
 
 ### Microcontroles
 
@@ -951,7 +951,7 @@ La restricción a cualquier $[u,v]\subseteq[a,b]$, con $u<v$, conserva todas las
 
 **Por qué conservar los bordes.** En $[0,1]$, tome $f\equiv0$, $H(0)=1$ y $H(x)=0$ para $x>0$. La igualdad $H'=f$ vale en el interior, pero la integral es cero y $H(1)-H(0)=-1$. Falta continuidad de la primitiva en el borde; Lagrange no se aplica al primer segmento. La fórmula de evaluación no es una nueva definición de integral.
 
-![Para H(x)=x³/3, los incrementos sobre nodos0,1/4,1/2,3/4,1 suman1/3. Cada incremento se encierra por Darboux; la suma cancela nodos interiores.](../../assets/books/anm/revision-20261016/C24/C24-F05.svg){#fig-anm-c24-f05 fig-alt="Para H(x)=x³/3, los incrementos sobre nodos0,1/4,1/2,3/4,1 suman1/3. Cada incremento se encierra por Darboux; la suma cancela nodos interiores."}
+![Para H(x)=x³/3, los incrementos sobre nodos0,1/4,1/2,3/4,1 suman1/3. Cada incremento se encierra por Darboux; la suma cancela nodos interiores.](../../assets/books/anm/C24/C24-F05.svg){#fig-anm-c24-f05 fig-alt="Para H(x)=x³/3, los incrementos sobre nodos0,1/4,1/2,3/4,1 suman1/3. Cada incremento se encierra por Darboux; la suma cancela nodos interiores."}
 
 ### Microcontroles
 
@@ -1175,7 +1175,7 @@ La integral de su absoluto es $1/2$. La cancelación no mide variación total ni
 
 La acumulación de una continua positiva crece, por R3/C19 o directamente por R2. Cuando la tasa continua cambia de negativa a positiva, la acumulada puede tener un mínimo: para $2t-1$ en $[0,1]$, $A_f(1/2)=-1/4$. Ceros de la tasa corresponden a puntos estacionarios interiores por R3; no todo punto estacionario es extremo, como muestra una tasa $f(t)=3t^2$ en $[-1,1]$, cuya acumulada $t^3+1$ sigue creciendo a través de cero.
 
-![Las primitivas x²−x y x²−x+1 difieren en constante1. Integral firmada de2t−1 es0; integral absoluta1/2 y aportes absolutos1/4 por mitad.](../../assets/books/anm/revision-20261016/C24/C24-F06.svg){#fig-anm-c24-f06 fig-alt="Las primitivas x²−x y x²−x+1 difieren en constante1. Integral firmada de2t−1 es0; integral absoluta1/2 y aportes absolutos1/4 por mitad."}
+![Las primitivas x²−x y x²−x+1 difieren en constante1. Integral firmada de2t−1 es0; integral absoluta1/2 y aportes absolutos1/4 por mitad.](../../assets/books/anm/C24/C24-F06.svg){#fig-anm-c24-f06 fig-alt="Las primitivas x²−x y x²−x+1 difieren en constante1. Integral firmada de2t−1 es0; integral absoluta1/2 y aportes absolutos1/4 por mitad."}
 
 ### Microcontroles
 
@@ -1397,7 +1397,7 @@ Para probarlo, tome $F=A_f$. R3/R4 dan su derivada relativa de valor $f$ en todo
 
 El signo de $g'$ ya registra los recorridos en sentidos opuestos, por lo que no se exige monotonía de $g$. Para $f(s)=s$ en $[0,1]$ y $g(t)=t^2$ en $[-1,1]$, el integrando es $2t^3$ y la integral vale cero: ambos extremos transformados son uno. Para $g(t)=1-t$ en $[0,1]$, obtenemos $-(1-t)$ e integral $-1/2$, igual a $\int_1^0s\,ds$. Sustituir $g'$ por $|g'|$ eliminaría esa información de orientación y produciría otra expresión.
 
-![Con g(t)=t² en\[−1,1\] y f(s)=s, el integrando es2t³. Aportes−1/2 y1/2 cancelan; ambos extremos transformados son1. Con valor absoluto de g′ se obtiene1, una expresión diferente.](../../assets/books/anm/revision-20261016/C24/C24-F07.svg){#fig-anm-c24-f07 fig-alt="Con g(t)=t² en[−1,1] y f(s)=s, el integrando es2t³. Aportes−1/2 y1/2 cancelan; ambos extremos transformados son1. Con valor absoluto de g′ se obtiene1, una expresión diferente."}
+![Con g(t)=t² en\[−1,1\] y f(s)=s, el integrando es2t³. Aportes−1/2 y1/2 cancelan; ambos extremos transformados son1. Con valor absoluto de g′ se obtiene1, una expresión diferente.](../../assets/books/anm/C24/C24-F07.svg){#fig-anm-c24-f07 fig-alt="Con g(t)=t² en[−1,1] y f(s)=s, el integrando es2t³. Aportes−1/2 y1/2 cancelan; ambos extremos transformados son1. Con valor absoluto de g′ se obtiene1, una expresión diferente."}
 
 ### Microcontroles
 
@@ -1620,7 +1620,7 @@ La integrabilidad basta para construir una acumulada continua, pero el escalón 
 
 En el libro de cálculo estos puentes podían utilizarse como reglas. Aquí la primera dirección procede del encierro de los promedios locales; la segunda, de Lagrange y la telescopía de incrementos. Cada una se apoya en la integral ya construida y permite precisar qué información se conserva al pasar de una operación a la otra.
 
-![En\[0,3\], tasas f(t)=t y g(t)=t+1/100 satisfacen error uniforme1/100. Diferencia de acumuladas x/100 y cota global3/100; la banda es un certificado universal probado.](../../assets/books/anm/revision-20261016/C24/C24-F08.svg){#fig-anm-c24-f08 fig-alt="En[0,3], tasas f(t)=t y g(t)=t+1/100 satisfacen error uniforme1/100. Diferencia de acumuladas x/100 y cota global3/100; la banda es un certificado universal probado."}
+![En\[0,3\], tasas f(t)=t y g(t)=t+1/100 satisfacen error uniforme1/100. Diferencia de acumuladas x/100 y cota global3/100; la banda es un certificado universal probado.](../../assets/books/anm/C24/C24-F08.svg){#fig-anm-c24-f08 fig-alt="En[0,3], tasas f(t)=t y g(t)=t+1/100 satisfacen error uniforme1/100. Diferencia de acumuladas x/100 y cota global3/100; la banda es un certificado universal probado."}
 
 ### Microcontroles
 

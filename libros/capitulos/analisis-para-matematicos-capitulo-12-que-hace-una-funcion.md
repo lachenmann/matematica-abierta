@@ -67,7 +67,7 @@ El dominio también impide evaluar fórmulas en entradas prohibidas. Para $h:\ma
 
 El dibujo de flechas del cuadrado en un dominio finito permite ver las dos cuestiones que estudiaremos: hay salidas compartidas y hay salidas declaradas sin entrada. Para pasar de unas pocas evaluaciones a conjuntos enteros, necesitamos definir con precisión qué significa reunir todas las salidas o seleccionar todas las entradas que cumplen una condición.
 
-![En el dominio finito {-2,0,2}, el cuadrado asigna una salida a cada entrada; dos entradas comparten 4 y el codominio {-1,0,4} contiene una salida no alcanzada.](../../assets/books/anm/revision-20261016/C12/C12-F01.svg){#fig-anm-c12-f01 fig-alt="Dos conjuntos finitos: las entradas menos dos y dos apuntan ambas a cuatro, cero apunta a cero y la salida menos uno no recibe flecha."}
+![En el dominio finito {-2,0,2}, el cuadrado asigna una salida a cada entrada; dos entradas comparten 4 y el codominio {-1,0,4} contiene una salida no alcanzada.](../../assets/books/anm/C12/C12-F01.svg){#fig-anm-c12-f01 fig-alt="Dos conjuntos finitos: las entradas menos dos y dos apuntan ambas a cuatro, cero apunta a cero y la salida menos uno no recibe flecha."}
 
 ### Antes de seguir
 
@@ -314,7 +314,7 @@ Sea $q:\mathbb R\to\mathbb R$, $q(x)=x^2$, y $A=[-2,1]$. Afirmamos $q[A]=[0,4]$.
 
 La elección de la raíz negativa conserva el testigo dentro de $A$. La candidata positiva $\sqrt4=2$ quedaría fuera de $[-2,1]$, mientras que $-\sqrt4=-2$ sí pertenece. La misma ecuación puede tener varias soluciones reales y sólo algunas ser entradas admitidas en el problema. Ese recorte explica por qué la imagen depende del conjunto de partida.
 
-![El cuadrado transporta \[-2,1\] a \[0,4\]. Seleccionar las salidas (1,4\] recupera dos ramas: \[-2,-1) y (1,2\]. Imagen y preimagen responden preguntas distintas.](../../assets/books/anm/revision-20261016/C12/C12-F02.svg){#fig-anm-c12-f02 fig-alt="Dos paneles del cuadrado: [-2,1] tiene imagen [0,4]; la banda de salidas (1,4] selecciona [-2,-1) y (1,2]. Extremos abiertos y cerrados diferenciados."}
+![El cuadrado transporta \[-2,1\] a \[0,4\]. Seleccionar las salidas (1,4\] recupera dos ramas: \[-2,-1) y (1,2\]. Imagen y preimagen responden preguntas distintas.](../../assets/books/anm/C12/C12-F02.svg){#fig-anm-c12-f02 fig-alt="Dos paneles del cuadrado: [-2,1] tiene imagen [0,4]; la banda de salidas (1,4] selecciona [-2,-1) y (1,2]. Extremos abiertos y cerrados diferenciados."}
 
 En $A=\{-2,-1,1,2\}$, las cuatro evaluaciones del cuadrado sólo producen $q[A]=\{1,4\}$. Todo valor de la imagen está en esa lista y ambos se alcanzan, por ejemplo en $-1$ y $-2$. Los conjuntos no conservan multiplicidades: que $1$ tenga dos entradas no crea dos elementos llamados uno. La pérdida de información aparece al reunir las salidas.
 
@@ -860,7 +860,7 @@ Un testigo en $A\cap C$ sirve a la vez en ambas imágenes, lo que prueba la incl
 
 En el cuadrado, $A=\{-1\}$ y $C=\{1\}$ no comparten entrada, pero ambas imágenes son $\{1\}$. La inclusión es estricta. Si $f$ es **inyectiva**, es decir, si $f(a)=f(c)$ implica $a=c$, los dos testigos de una salida común coinciden y pertenecen a $A\cap C$; entonces hay igualdad. Esta hipótesis resuelve exactamente el paso que faltaba. A la inversa, exigir esa igualdad para todos los pares de conjuntos prohíbe cualquier colisión, como se comprobará con conjuntos unitarios en los problemas.
 
-![Una salida en ambas imágenes puede tener dos testigos diferentes. Para convertirlos en una entrada común se necesita inyectividad.](../../assets/books/anm/revision-20261016/C12/C12-F03.svg){#fig-anm-c12-f03 fig-alt="Dos paneles: los conjuntos unitarios {-1} y {1} son disjuntos pero ambos tienen imagen {1}; dos testigos distintos apuntan a la misma salida."}
+![Una salida en ambas imágenes puede tener dos testigos diferentes. Para convertirlos en una entrada común se necesita inyectividad.](../../assets/books/anm/C12/C12-F03.svg){#fig-anm-c12-f03 fig-alt="Dos paneles: los conjuntos unitarios {-1} y {1} son disjuntos pero ambos tienen imagen {1}; dos testigos distintos apuntan a la misma salida."}
 
 En una preimagen la entrada $x\in D$ permanece fija. Cada condición consulta su única salida $f(x)$, de modo que podemos combinar las condiciones lógicas sobre ella:
 
@@ -1423,7 +1423,7 @@ $$
 
 La rama de entradas $[-1,0)$ mantiene exactamente esas salidas, mientras $[0,1]$ se traslada a $[1,2]$. Cada valor de la primera pieza se alcanza en sí mismo y cada valor $t$ de la segunda en $t-1$. El número $1/2$ está entre $s(-1)=-1$ y $s(1)=2$, pero ninguna rama lo alcanza. Ordenar estrictamente las salidas existentes permite un hueco en la imagen. Para garantizar todas las salidas intermedias hará falta otra hipótesis.
 
-![El salto conserva el orden estricto entre todas las entradas, pero la imagen de \[-1,1\] es \[-1,0) unión \[1,2\]. Ordenar salidas existentes no produce las que faltan.](../../assets/books/anm/revision-20261016/C12/C12-F04.svg){#fig-anm-c12-f04 fig-alt="Gráfica de s(x)=x para x negativo y s(x)=x+1 para x no negativo en [-1,1]: punto abierto en (0,0), cerrado en (0,1); la imagen omite [0,1)."}
+![El salto conserva el orden estricto entre todas las entradas, pero la imagen de \[-1,1\] es \[-1,0) unión \[1,2\]. Ordenar salidas existentes no produce las que faltan.](../../assets/books/anm/C12/C12-F04.svg){#fig-anm-c12-f04 fig-alt="Gráfica de s(x)=x para x negativo y s(x)=x+1 para x no negativo en [-1,1]: punto abierto en (0,0), cerrado en (0,1); la imagen omite [0,1)."}
 
 En una aplicación afín $h(x)=mx+b$, la diferencia $h(y)-h(x)=m(y-x)$ decide el orden. Para $x<y$, el factor $y-x$ es positivo: si $m>0$ la diferencia es positiva y hay crecimiento estricto; si $m<0$ es negativa y hay decrecimiento estricto; si $m=0$ todas las salidas coinciden. La constante de traslación se cancela.
 
@@ -1682,7 +1682,7 @@ $$
 
 La constante $c$ desaparece al restar. La magnitud $|m|$ fija la escala métrica y el signo de $m$ fija la orientación. Con $m=-1$ las salidas se ordenan al revés y mantienen su distancia; con $m=2$ mantienen el orden y duplican la separación; con $m=0$ las distancias se anulan. El factor $|m|$ es además la menor cota no negativa posible en toda la recta: cualquier cota debe funcionar para las entradas cero y uno y, por tanto, ser al menos $|m|$.
 
-![La traslación cambia posición, el signo de m cambia orientación y |m| cambia distancia. Los tres papeles se separan en h(x)=mx+c.](../../assets/books/anm/revision-20261016/C12/C12-F05.svg){#fig-anm-c12-f05 fig-alt="Tres transportes de las entradas cero y uno: x+2 conserva distancia uno; -x+2 invierte orientación y conserva distancia uno; 2x+2 duplica distancia a dos."}
+![La traslación cambia posición, el signo de m cambia orientación y |m| cambia distancia. Los tres papeles se separan en h(x)=mx+c.](../../assets/books/anm/C12/C12-F05.svg){#fig-anm-c12-f05 fig-alt="Tres transportes de las entradas cero y uno: x+2 conserva distancia uno; -x+2 invierte orientación y conserva distancia uno; 2x+2 duplica distancia a dos."}
 
 Una función $f:D\to\mathbb R$ tiene **cota de expansión $L$**, o es $L$-Lipschitz, si $L\ge0$ y
 
@@ -1967,7 +1967,7 @@ La salida $(u+v,v)$ es un único elemento de $\mathbb R^2$, con dos coordenadas;
 
 En la horizontal $v=k$, los puntos se transforman en $(u+k,k)$: la segunda coordenada permanece fija y la primera recorre todos los reales, por lo que se obtiene toda la misma horizontal. En la vertical $u=j$, las salidas $(j+v,v)$ cumplen $a-b=j$. Recíprocamente, cualquier punto con $a-b=j$ proviene de $(j,b)$, así que se obtiene toda esa recta oblicua. El cuadrado de vértices $(0,0),(1,0),(1,1),(0,1)$ tiene vértices imagen $(0,0),(1,0),(2,1),(1,1)$. De hecho, toda su imagen se describe por $0\le b\le1$ y $b\le a\le b+1$: las desigualdades equivalen a que su entrada recuperada $(a-b,b)$ esté en $[0,1]^2$. Así se controla también el interior y la frontera del paralelogramo.
 
-![T:R²→R² transporta el cuadrado unitario a un paralelogramo. Su inversa (a,b)↦(a−b,b) recupera las entradas; la escala depende de la dirección.](../../assets/books/anm/revision-20261016/C12/C12-F06.svg){#fig-anm-c12-f06 fig-alt="Rejilla cuadrada antes y después de T(u,v)=(u+v,v), con cuadrado unitario sombreado y su paralelogramo imagen; horizontales conservadas, verticales oblicuas."}
+![T:R²→R² transporta el cuadrado unitario a un paralelogramo. Su inversa (a,b)↦(a−b,b) recupera las entradas; la escala depende de la dirección.](../../assets/books/anm/C12/C12-F06.svg){#fig-anm-c12-f06 fig-alt="Rejilla cuadrada antes y después de T(u,v)=(u+v,v), con cuadrado unitario sombreado y su paralelogramo imagen; horizontales conservadas, verticales oblicuas."}
 
 La distancia euclídea entre $(a,b)$ y $(c,d)$ es $\sqrt{(a-c)^2+(b-d)^2}$. El segmento horizontal de $(0,0)$ a $(1,0)$ conserva longitud uno bajo $T$; el vertical de $(0,0)$ a $(0,1)$ pasa al segmento de $(0,0)$ a $(1,1)$ y tiene longitud $\sqrt2$. Un factor exacto común tendría que ser uno por el primer segmento y $\sqrt2$ por el segundo, lo que es imposible. Las fórmulas de las rectas y la inversa justifican el transporte de la rejilla entera; la muestra finita sólo lo representa.
 
@@ -2001,7 +2001,7 @@ La preimagen contiene cero, pero no es una vecindad real de cero. Para cualquier
 
 La comparación entre las dos ventanas termina en una diferencia precisa. En el cuadrado hemos encerrado las salidas de toda una bola alrededor de la entrada; la preimagen del salto contiene el centro y excluye todas las entradas negativas, por próximas que estén a él. Para estudiar cómo se comporta una función cerca de un punto tendremos que seguir controlando conjuntos completos de entradas próximas, conservando los dominios y los radios en cada afirmación.
 
-![En el cuadrado, una estimación certifica que una ventana completa cabe en la preimagen. En el salto, la preimagen contiene el centro pero no es vecindad. La pertenencia y el margen alrededor del centro son datos distintos.](../../assets/books/anm/revision-20261016/C12/C12-F07.svg){#fig-anm-c12-f07 fig-alt="Comparación de ventanas: para el cuadrado alrededor de uno, la ventana (3/4,5/4) está dentro de la preimagen de (0,2); para el salto, la preimagen de (3/4,5/4) es [0,1/4) y no rodea cero."}
+![En el cuadrado, una estimación certifica que una ventana completa cabe en la preimagen. En el salto, la preimagen contiene el centro pero no es vecindad. La pertenencia y el margen alrededor del centro son datos distintos.](../../assets/books/anm/C12/C12-F07.svg){#fig-anm-c12-f07 fig-alt="Comparación de ventanas: para el cuadrado alrededor de uno, la ventana (3/4,5/4) está dentro de la preimagen de (0,2); para el salto, la preimagen de (3/4,5/4) es [0,1/4) y no rodea cero."}
 
 ### Antes de seguir
 

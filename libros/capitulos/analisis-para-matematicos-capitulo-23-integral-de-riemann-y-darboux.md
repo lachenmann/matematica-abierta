@@ -52,7 +52,7 @@ Para $\eta>0$ hay entradas $s,t\in J$ con $f(s)>M-\eta$ y $f(t)<m+\eta$: de lo c
 
 Por ejemplo, en $[0,1]$ definamos $g(x)=x$ para $0<x<1$ y $g(0)=g(1)=1/2$. Su ínfimo es0 y su supremo1, ninguno alcanzado. Las cotas son verificables: todo valor está entre0 y1, y entradas positivas arbitrariamente próximas a0 o a1 impiden mejorarlas. La oscilación vale1. Por contraste, para $x^2$ en $[u,v]\subseteq[0,1]$, $m=u^2$, $M=v^2$ y $\omega=v^2-u^2$, pues el cuadrado preserva el orden no negativo.
 
-![g(x)=x en(0,1), con g(0)=g(1)=1/2: ínfimo0 y supremo1 no alcanzados. Extremos de curva abiertos; valores nodales cerrados en1/2.](../../assets/books/anm/revision-20261016/C23/C23-F01.svg){#fig-anm-c23-f01 fig-alt="g(x)=x en(0,1), con g(0)=g(1)=1/2: ínfimo0 y supremo1 no alcanzados. Extremos de curva abiertos; valores nodales cerrados en1/2."}
+![g(x)=x en(0,1), con g(0)=g(1)=1/2: ínfimo0 y supremo1 no alcanzados. Extremos de curva abiertos; valores nodales cerrados en1/2.](../../assets/books/anm/C23/C23-F01.svg){#fig-anm-c23-f01 fig-alt="g(x)=x en(0,1), con g(0)=g(1)=1/2: ínfimo0 y supremo1 no alcanzados. Extremos de curva abiertos; valores nodales cerrados en1/2."}
 
 ### Microcontroles
 
@@ -289,7 +289,7 @@ U_n=\frac13+\frac1{2n}+\frac1{6n^2},\quad G_n=\frac1n.$$
 
 El encierro usa cotas verdaderas sobre cada pieza, no una colección de muestras sin garantía.
 
-![x² en\[0,1\]: rectángulos inferiores/superiores con n2 y n4. Las cotas locales son extremos verdaderos; brechas1/2 y1/4. La recta curva es la misma en ambos paneles.](../../assets/books/anm/revision-20261016/C23/C23-F02.svg){#fig-anm-c23-f02 fig-alt="x² en[0,1]: rectángulos inferiores/superiores con n2 y n4. Las cotas locales son extremos verdaderos; brechas1/2 y1/4. La recta curva es la misma en ambos paneles."}
+![x² en\[0,1\]: rectángulos inferiores/superiores con n2 y n4. Las cotas locales son extremos verdaderos; brechas1/2 y1/4. La recta curva es la misma en ambos paneles.](../../assets/books/anm/C23/C23-F02.svg){#fig-anm-c23-f02 fig-alt="x² en[0,1]: rectángulos inferiores/superiores con n2 y n4. Las cotas locales son extremos verdaderos; brechas1/2 y1/4. La recta curva es la misma en ambos paneles."}
 
 ### Microcontroles
 
@@ -515,7 +515,7 @@ Una partición buena conserva la precisión bajo todo refinamiento. El criterio 
 
 Si $f$ es integrable, $I_D$ y todas las sumas etiquetadas de $P$ están en $[L,U]$, por lo que $|S-I_D|\le G$. El punto medio numérico $A_P=(L+U)/2$ tiene certificado más fino $|A_P-I_D|\le G/2$. No afirma que $A_P$ sea una suma etiquetada ni el valor exacto. Para $x^2$, $G_n=1/n\to0$, así que el criterio recupera el valor $1/3$ de C22, aunque ninguna partición tenga brecha cero.
 
-![En x², los intervalos \[L_n,U_n\] para n2,4,8,16 se acercan a1/3. Con n4, medio11/32 y media anchura1/8; no se afirma exactitud del medio.](../../assets/books/anm/revision-20261016/C23/C23-F03.svg){#fig-anm-c23-f03 fig-alt="En x², los intervalos [L_n,U_n] para n2,4,8,16 se acercan a1/3. Con n4, medio11/32 y media anchura1/8; no se afirma exactitud del medio."}
+![En x², los intervalos \[L_n,U_n\] para n2,4,8,16 se acercan a1/3. Con n4, medio11/32 y media anchura1/8; no se afirma exactitud del medio.](../../assets/books/anm/C23/C23-F03.svg){#fig-anm-c23-f03 fig-alt="En x², los intervalos [L_n,U_n] para n2,4,8,16 se acercan a1/3. Con n4, medio11/32 y media anchura1/8; no se afirma exactitud del medio."}
 
 ### Microcontroles
 
@@ -742,7 +742,7 @@ $$G(f,Q)\le G(f,R)+4Bq\|Q\|
 
 Si $Bq>0$, tomamos $\delta=\varepsilon/(8Bq)$. Malla menor da brecha menor que $\varepsilon$, y el encierro común de $S$ e $I_D$ prueba el contrato de Riemann. Si $Bq=0$, el segundo término es cero y cualquier radio positivo sirve: no se divide por cero. Queda además demostrado que, para una función acotada integrable, todas las particiones de malla suficientemente pequeña tienen brecha pequeña. Conservar los cortes y reducir la malla son rutas distintas, conectadas por este conteo finito.
 
-![P*=(0,1/2,1), Q=(0,2/5,7/10,1). Sólo la pieza\[2/5,7/10\] de Q contiene el corte1/2 en su interior. R es la unión; q1 y malla Q2/5 controlan el coste por4Bq·malla.](../../assets/books/anm/revision-20261016/C23/C23-F04.svg){#fig-anm-c23-f04 fig-alt="P*=(0,1/2,1), Q=(0,2/5,7/10,1). Sólo la pieza[2/5,7/10] de Q contiene el corte1/2 en su interior. R es la unión; q1 y malla Q2/5 controlan el coste por4Bq·malla."}
+![P*=(0,1/2,1), Q=(0,2/5,7/10,1). Sólo la pieza\[2/5,7/10\] de Q contiene el corte1/2 en su interior. R es la unión; q1 y malla Q2/5 controlan el coste por4Bq·malla.](../../assets/books/anm/C23/C23-F04.svg){#fig-anm-c23-f04 fig-alt="P*=(0,1/2,1), Q=(0,2/5,7/10,1). Sólo la pieza[2/5,7/10] de Q contiene el corte1/2 en su interior. R es la unión; q1 y malla Q2/5 controlan el coste por4Bq·malla."}
 
 ### Microcontroles
 
@@ -964,7 +964,7 @@ Para conseguir un control uniforme de diferencias, repetimos la construcción co
 
 C22 ya probó integrabilidad de escalones y estabilidad por modificaciones finitas; la equivalencia les asigna también el mismo valor de Darboux. Continuidad es suficiente, no necesaria. Un salto monotónico o un valor aislado puede ser integrable. La continuidad local sola sobre un intervalo abierto no suministra la compacidad ni la acotación usadas aquí.
 
-![h=0 para x<1/2 y h=1 para x≥1/2 es monótona con salto. En uniformes pares su brecha1/n tiende a0, controlada por malla, sin continuidad.](../../assets/books/anm/revision-20261016/C23/C23-F05.svg){#fig-anm-c23-f05 fig-alt="h=0 para x<1/2 y h=1 para x≥1/2 es monótona con salto. En uniformes pares su brecha1/n tiende a0, controlada por malla, sin continuidad."}
+![h=0 para x<1/2 y h=1 para x≥1/2 es monótona con salto. En uniformes pares su brecha1/n tiende a0, controlada por malla, sin continuidad.](../../assets/books/anm/C23/C23-F05.svg){#fig-anm-c23-f05 fig-alt="h=0 para x<1/2 y h=1 para x≥1/2 es monótona con salto. En uniformes pares su brecha1/n tiende a0, controlada por malla, sin continuidad."}
 
 ### Microcontroles
 
@@ -1190,7 +1190,7 @@ Los valores de sumas y múltiplos se calculan con la equivalencia de Riemann y l
 
 Si $f\le g$, entonces $I_f\le I_g$: de lo contrario su diferencia $d>0$ y una misma partición fina darían, con errores $d/3$, $S(f)>S(g)$, contradiciendo el orden de sumas con las mismas etiquetas. Como $-|f|\le f\le|f|$, el orden y la linealidad dan $|I_f|\le I_{|f|}$. Generalmente no hay igualdad. Para $f(x)=2x-1$ en $[0,1]$, C22 da $I_f=0$; dividir en $1/2$ y sumar dos triángulos mediante las fórmulas afines que justificaremos en la sección siguiente da $I_{|f|}=1/2$. El producto tampoco tiene integral $I_f I_g$: para $f=g=x$, $I_{x^2}=1/3$ frente a $I_x^2=1/4$.
 
-![f=2x−1 tiene integral firmada0 y valor absoluto integral1/2. En el panel derecho, x² tiene integral1/3 y el cuadrado de la integral de x es1/4: el producto de funciones no da producto de integrales.](../../assets/books/anm/revision-20261016/C23/C23-F06.svg){#fig-anm-c23-f06 fig-alt="f=2x−1 tiene integral firmada0 y valor absoluto integral1/2. En el panel derecho, x² tiene integral1/3 y el cuadrado de la integral de x es1/4: el producto de funciones no da producto de integrales."}
+![f=2x−1 tiene integral firmada0 y valor absoluto integral1/2. En el panel derecho, x² tiene integral1/3 y el cuadrado de la integral de x es1/4: el producto de funciones no da producto de integrales.](../../assets/books/anm/C23/C23-F06.svg){#fig-anm-c23-f06 fig-alt="f=2x−1 tiene integral firmada0 y valor absoluto integral1/2. En el panel derecho, x² tiene integral1/3 y el cuadrado de la integral de x es1/4: el producto de funciones no da producto de integrales."}
 
 ### Microcontroles
 
@@ -1411,7 +1411,7 @@ Con ello, $|2x-1|$ se integra como $1-2x$ a la izquierda de $1/2$ y $2x-1$ a la 
 
 Extendemos ahora la notación mediante las convenciones $\int_a^a f=0$ y $\int_b^a f=-\int_a^b f$, siempre que exista la integral sobre el intervalo ordenado. Las anchuras de las particiones utilizadas en la construcción siguen siendo positivas; el signo de orientación se incorpora después. Para cualquier orden de tres extremos, la aditividad se obtiene ordenándolos, aplicando la igualdad ya probada y transponiendo términos con estas convenciones. Se exige integrabilidad en el intervalo que los contiene.
 
-![|2x−1| se acumula con1/4 en cada mitad, total1/2. Orientación inversa da−1/2 por convención posterior, sin piezas de anchura negativa.](../../assets/books/anm/revision-20261016/C23/C23-F07.svg){#fig-anm-c23-f07 fig-alt="|2x−1| se acumula con1/4 en cada mitad, total1/2. Orientación inversa da−1/2 por convención posterior, sin piezas de anchura negativa."}
+![|2x−1| se acumula con1/4 en cada mitad, total1/2. Orientación inversa da−1/2 por convención posterior, sin piezas de anchura negativa.](../../assets/books/anm/C23/C23-F07.svg){#fig-anm-c23-f07 fig-alt="|2x−1| se acumula con1/4 en cada mitad, total1/2. Orientación inversa da−1/2 por convención posterior, sin piezas de anchura negativa."}
 
 ### Microcontroles
 
@@ -1632,7 +1632,7 @@ Una brecha persistente puede, por el contrario, impedir integrabilidad. Si una f
 
 La integral queda así determinada por dos procedimientos equivalentes: el límite de todas las sumas de malla pequeña y la coincidencia de las cotas extremas de Darboux. Sus operaciones proceden de comparaciones finitas y de tolerancias. La relación con las antiderivadas aún requiere otra prueba, que parta de esta acumulación ya construida.
 
-![Con n4, x² está certificado entre7/32 y15/32 y su medio11/32. Para el pico p(1/2)=1, p=0 fuera, cortes1/2±r dan L0,U2r: integral0 con toda brecha finita positiva.](../../assets/books/anm/revision-20261016/C23/C23-F08.svg){#fig-anm-c23-f08 fig-alt="Con n4, x² está certificado entre7/32 y15/32 y su medio11/32. Para el pico p(1/2)=1, p=0 fuera, cortes1/2±r dan L0,U2r: integral0 con toda brecha finita positiva."}
+![Con n4, x² está certificado entre7/32 y15/32 y su medio11/32. Para el pico p(1/2)=1, p=0 fuera, cortes1/2±r dan L0,U2r: integral0 con toda brecha finita positiva.](../../assets/books/anm/C23/C23-F08.svg){#fig-anm-c23-f08 fig-alt="Con n4, x² está certificado entre7/32 y15/32 y su medio11/32. Para el pico p(1/2)=1, p=0 fuera, cortes1/2±r dan L0,U2r: integral0 con toda brecha finita positiva."}
 
 ### Microcontroles
 

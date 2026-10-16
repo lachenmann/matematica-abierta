@@ -54,7 +54,7 @@ En $a_n=1/(n+1)$, el término de índice $N$ domina los posteriores, así que $u
 
 También puede faltar el supremo entre los términos: para $x_n=1-1/(n+1)$, cada cola tiene la cota superior $1$ y ningún término igual a ella. Con el mismo índice anterior obtenemos $x_n>1-\eta$, lo que acredita $\sup T_N(x)=1$. En la sucesión del prefijo excepcional, en cambio, $u_0=10$ y $u_N=0$ desde $N=1$, mientras $\ell_N=0$ siempre. El alcanzamiento y la dependencia del corte son cuestiones distintas.
 
-![El valor inicial diez determina el supremo total, pero desaparece del conjunto de valores de cola desde el corte uno.](../../assets/books/anm/revision-20261016/C09/C09-F01.svg){#fig-anm-c09-f01 fig-alt="Dos gráficas de la misma sucesión con índice original cero a ocho: la primera incluye el punto inicial de altura diez y la segunda distingue ese punto excluido del corte uno; los términos restantes están en cero."}
+![El valor inicial diez determina el supremo total, pero desaparece del conjunto de valores de cola desde el corte uno.](../../assets/books/anm/C09/C09-F01.svg){#fig-anm-c09-f01 fig-alt="Dos gráficas de la misma sucesión con índice original cero a ocho: la primera incluye el punto inicial de altura diez y la segunda distingue ese punto excluido del corte uno; los términos restantes están en cero."}
 
 ### Antes de seguir
 
@@ -285,7 +285,7 @@ Para $a_n=(-1)^n(1+1/(n+1))$, definamos $e(N)=N$ si $N$ es par y $e(N)=N+1$ si e
 
 La [figura 9.2](#fig-anm-c09-f02) representa esa diferencia: la sucesión original alterna y sus dos envolventes se mueven monótonamente hacia fronteras distintas. Hacer converger las envolventes no ha hecho converger a $a$.
 
-![La sucesión alterna fuera de la banda final; sus envolventes avanzan monótonamente hacia menos uno y uno sin exigir que los términos entren en esa banda exacta.](../../assets/books/anm/revision-20261016/C09/C09-F02.svg){#fig-anm-c09-f02 fig-alt="Arriba, pares positivos e impares negativos fuera de las líneas menos uno y uno; abajo, cuadrados de supremos de cola decrecientes y triángulos de ínfimos crecientes sobre el índice de corte N."}
+![La sucesión alterna fuera de la banda final; sus envolventes avanzan monótonamente hacia menos uno y uno sin exigir que los términos entren en esa banda exacta.](../../assets/books/anm/C09/C09-F02.svg){#fig-anm-c09-f02 fig-alt="Arriba, pares positivos e impares negativos fuera de las líneas menos uno y uno; abajo, cuadrados de supremos de cola decrecientes y triángulos de ínfimos crecientes sobre el índice de corte N."}
 
 ### Antes de seguir
 
@@ -518,7 +518,7 @@ Reuniendo por máximo los cortes de las dos cotas eventuales, para cada $\vareps
 
 En la [figura 9.3](#fig-anm-c09-f03), con tolerancia $1/4$, el corte $4$ basta para que todos los términos sean menores que $5/4$. Recibido el corte $9$, el índice $10$ aporta además una visita mayor que $3/4$, pues $a_{10}=12/11$. Los términos negativos quedan fuera de esa ventana alrededor de $\beta=1$ sin contradecir la caracterización.
 
-![Desde el corte cuatro todos los términos quedan bajo cinco cuartos. Después del corte nueve, el término de índice diez visita la ventana de radio un cuarto de la frontera superior; los términos negativos siguen fuera de ella.](../../assets/books/anm/revision-20261016/C09/C09-F03.svg){#fig-anm-c09-f03 fig-alt="Ventana entre tres cuartos y cinco cuartos con fronteras discontinuas; línea vertical de corte eventual cuatro, corte solicitado nueve e índice testigo diez marcado con rombo. Los términos impares no están capturados por esa ventana."}
+![Desde el corte cuatro todos los términos quedan bajo cinco cuartos. Después del corte nueve, el término de índice diez visita la ventana de radio un cuarto de la frontera superior; los términos negativos siguen fuera de ella.](../../assets/books/anm/C09/C09-F03.svg){#fig-anm-c09-f03 fig-alt="Ventana entre tres cuartos y cinco cuartos con fronteras discontinuas; línea vertical de corte eventual cuatro, corte solicitado nueve e índice testigo diez marcado con rombo. Los términos impares no están capturados por esa ventana."}
 
 ### Antes de seguir
 
@@ -994,7 +994,7 @@ Todo par de términos está en $[\ell_N,u_N]$, luego su distancia es a lo sumo $
 
 En $a_n=(-1)^n/(n+1)$, las envolventes son $u_N=1/(e(N)+1)$ y $\ell_N=-1/(o(N)+1)$, con $e(N),o(N)$ definidos en §9.2. Su diferencia tiende a cero, aunque la sucesión cambie de signo indefinidamente. En la alternancia cero–uno, $d_N=1$ en toda cola. La [figura 9.5](#fig-anm-c09-f05) usa una escala común para comparar disminución y persistencia de esas anchuras.
 
-![La anchura de las colas amortiguadas tiende a cero; la de la alternancia cero–uno permanece en uno. Ambas envolventes son monótonas, pero sólo la primera pareja se reúne.](../../assets/books/anm/revision-20261016/C09/C09-F05.svg){#fig-anm-c09-f05 fig-alt="Dos paneles comparten escala vertical: los puntos de anchura de la alternancia recíproca disminuyen hacia cero; los de la alternancia cero–uno permanecen en uno para todos los cortes mostrados."}
+![La anchura de las colas amortiguadas tiende a cero; la de la alternancia cero–uno permanece en uno. Ambas envolventes son monótonas, pero sólo la primera pareja se reúne.](../../assets/books/anm/C09/C09-F05.svg){#fig-anm-c09-f05 fig-alt="Dos paneles comparten escala vertical: los puntos de anchura de la alternancia recíproca disminuyen hacia cero; los de la alternancia cero–uno permanecen en uno para todos los cortes mostrados."}
 
 ### Antes de seguir
 
@@ -1462,7 +1462,7 @@ El producto es acotado y las comparaciones anteriores dan $\ell_N(ab)\ge\ell_N(a
 
 Si los factores son sólo eventualmente no negativos, reunimos sus cortes de signo en $T$ y trabajamos con $N\ge T$. Los supremos de esas colas siguen siendo no negativos, por lo que $0\le a_n\le u_N(a)$ y $0\le b_n\le u_N(b)$ para $n\ge N$ dan la misma cota del producto; los ínfimos se tratan del mismo modo. El paso al límite ignora el prefijo de cortes y no requiere dividir por una frontera que pudiera ser cero. Sin el signo, la regla puede fallar: si $a_n=b_n$ alterna entre $-2$ y $-1$, tenemos $\beta(ab)=4>1=\beta_a\beta_b$.
 
-![Los máximos de los sumandos ocurren en paridades opuestas. La suma es cero en cada índice, por debajo de la suma dos de sus fronteras superiores.](../../assets/books/anm/revision-20261016/C09/C09-F06.svg){#fig-anm-c09-f06 fig-alt="Arriba se distinguen círculos y cuadrados de dos alternancias opuestas; abajo la suma tiene términos cero y una línea de referencia en dos representa la suma de los límites superiores individuales."}
+![Los máximos de los sumandos ocurren en paridades opuestas. La suma es cero en cada índice, por debajo de la suma dos de sus fronteras superiores.](../../assets/books/anm/C09/C09-F06.svg){#fig-anm-c09-f06 fig-alt="Arriba se distinguen círculos y cuadrados de dos alternancias opuestas; abajo la suma tiene términos cero y una línea de referencia en dos representa la suma de los límites superiores individuales."}
 
 ### Antes de seguir
 

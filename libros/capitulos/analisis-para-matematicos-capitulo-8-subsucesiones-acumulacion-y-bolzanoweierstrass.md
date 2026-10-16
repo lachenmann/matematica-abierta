@@ -262,7 +262,7 @@ En $(-1)^n$, la selección par converge a $1$ y la impar a $-1$. Un límite glob
 
 Una única selección convergente deja sin controlar lo descartado. Definamos $a_{2j}=1/(j+1)$ y $a_{2j+1}=2$ para cada $j\in\mathbb N$. La paridad asigna un único valor en todo el dominio. La selección par $b_k=1/(k+1)$ converge a cero y la impar es constante dos, por lo que la sucesión completa tampoco tiene límite real.
 
-![La ventana de radio medio captura la selección par desde k=2, pero los términos impares de la sucesión original permanecen en dos. La frontera no pertenece a la ventana.](../../assets/books/anm/revision-20261016/C08/C08-F02.svg){#fig-anm-c08-f02 fig-alt="La gráfica original alterna recíprocos y doses; otra gráfica reindexa los recíprocos. Dos líneas de frontera señalan radio medio, con el término de índice uno en el borde y el corte dos dentro."}
+![La ventana de radio medio captura la selección par desde k=2, pero los términos impares de la sucesión original permanecen en dos. La frontera no pertenece a la ventana.](../../assets/books/anm/C08/C08-F02.svg){#fig-anm-c08-f02 fig-alt="La gráfica original alterna recíprocos y doses; otra gráfica reindexa los recíprocos. Dos líneas de frontera señalan radio medio, con el término de índice uno en el borde y el corte dos dentro."}
 
 En la [figura 8.2](#fig-anm-c08-f02), la ventana de radio $1/2$ excluye $b_1=1/2$, cuyo error está en la frontera. Para $k\ge2$, $b_k\le1/3<1/2$, así que el corte $K=2$ funciona en la selección. En la sucesión original siguen apareciendo doses después de cualquier corte. La convergencia de $b$ exige además el control para todas las tolerancias ya demostrado en C06.
 
@@ -506,7 +506,7 @@ Recíprocamente, supongamos que $a_{\varphi(k)}\to L$. Dados $\varepsilon>0$ y $
 
 En $a_{2j}=1/(j+1)$, $a_{2j+1}=2$ y $L=0$, el primer mínimo es $n_0=2$: $a_0=1$ y $a_1=2$ fallan el error menor que uno, mientras $a_2=1/2$ lo cumple. Siguen $n_1=4$, $n_2=6$ y, por inducción, $n_k=2(k+1)$. Para el paso $k$, el error elegido es $1/(k+2)<1/(k+1)$; el par anterior tiene error exactamente $1/(k+1)$ y los impares valen $2$. La frontera estricta explica por qué el mínimo puede ir más allá del corte impuesto.
 
-![El corte impuesto y el índice elegido son diferentes. Cada paso conserva el avance temporal y obtiene un error menor que la tolerancia solicitada.](../../assets/books/anm/revision-20261016/C08/C08-F04.svg){#fig-anm-c08-f04 fig-alt="Tres pasos de extracción muestran cortes cero, tres y cinco, y elecciones dos, cuatro y seis; los valores medio, tercio y cuarto quedan estrictamente dentro de sus tolerancias."}
+![El corte impuesto y el índice elegido son diferentes. Cada paso conserva el avance temporal y obtiene un error menor que la tolerancia solicitada.](../../assets/books/anm/C08/C08-F04.svg){#fig-anm-c08-f04 fig-alt="Tres pasos de extracción muestran cortes cero, tres y cinco, y elecciones dos, cuatro y seis; los valores medio, tercio y cuarto quedan estrictamente dentro de sus tolerancias."}
 
 El mínimo natural fija cada elección sin ambigüedad. La construcción usa recursión y existencia de testigos; no garantiza un algoritmo efectivo para decidir las condiciones sobre reales abstractos.
 
@@ -739,7 +739,7 @@ En particular, cada bola alrededor de un punto de acumulación contiene infinito
 
 Comparemos $c_n=0$ con $d_0=0$ y $d_n=1$ para $n\ge1$.
 
-![Las visitas tardías de una sucesión no equivalen a acumulación de su imagen. Los conjuntos finitos dibujados no tienen puntos de acumulación.](../../assets/books/anm/revision-20261016/C08/C08-F03.svg){#fig-anm-c08-f03 fig-alt="Una constante cero y una sucesión inicialmente cero y después uno se muestran sobre ejes temporales. Sus imágenes reducen todas las repeticiones a uno o dos puntos."}
+![Las visitas tardías de una sucesión no equivalen a acumulación de su imagen. Los conjuntos finitos dibujados no tienen puntos de acumulación.](../../assets/books/anm/C08/C08-F03.svg){#fig-anm-c08-f03 fig-alt="Una constante cero y una sucesión inicialmente cero y después uno se muestran sobre ejes temporales. Sus imágenes reducen todas las repeticiones a uno o dos puntos."}
 
 En $d$, cero pertenece a la imagen y es adherente a ella, pero no es punto secuencial: el corte $N=1$ y el radio $1/2$ eliminan todas las visitas a cero. Uno sí es un punto secuencial y es el único, porque la sucesión converge a uno. La imagen $\{0,1\}$ no tiene puntos de acumulación como conjunto. Para un centro perteneciente a ella basta un radio menor que uno; para un centro exterior basta un radio menor que la distancia a ambos puntos. La imagen conserva el cero inicial y pierde la persistencia temporal del uno.
 
@@ -987,7 +987,7 @@ La construcción comienza porque $E_0=\mathbb N$. Por inducción, todos los $E_k
 
 Para ilustrar la regla, tomemos $a_n=(-1)^n/(n+1)$ y $M=1$. La mitad izquierda de $[-1,1]$ conserva todos los términos impares. Después se elige siempre la mitad que llega a cero: una mitad negativa separada de cero sólo contiene finitos términos, pues $1/(n+1)$ llega a ser menor que cualquier distancia positiva fijada. Así $I_k=[-2^{1-k},0]$ para $k\ge1$.
 
-![Los intervalos se estrechan y siguen recibiendo infinitos índices impares. La prueba de esa infinitud usa la fórmula, no el número de puntos dibujados; las mitades cerradas comparten su extremo.](../../assets/books/anm/revision-20261016/C08/C08-F05.svg){#fig-anm-c08-f05 fig-alt="Cuatro segmentos cerrados encajados se acercan a cero; marcas discretas de valores alternantes recíprocos señalan los valores dentro y fuera de la mitad elegida."}
+![Los intervalos se estrechan y siguen recibiendo infinitos índices impares. La prueba de esa infinitud usa la fórmula, no el número de puntos dibujados; las mitades cerradas comparten su extremo.](../../assets/books/anm/C08/C08-F05.svg){#fig-anm-c08-f05 fig-alt="Cuatro segmentos cerrados encajados se acercan a cero; marcas discretas de valores alternantes recíprocos señalan los valores dentro y fuera de la mitad elegida."}
 
 La [figura 8.5](#fig-anm-c08-f05) muestra intervalos del eje de valores. Sus segmentos representan esos conjuntos cerrados, sin interpolar la sucesión; las visitas infinitas proceden de la fórmula de los términos impares. En este ejemplo el punto común es conocido, mientras que la construcción general todavía debe obtenerlo.
 
@@ -1232,7 +1232,7 @@ La estimación demuestra $b_k\to L$. Junto con la selección identidad del caso 
 
 Volvamos al ejemplo $a_n=(-1)^n/(n+1)$. Los seis primeros mínimos de la construcción son $0,1,3,5,7,15$, con valores $1,-1/2,-1/4,-1/6,-1/8,-1/16$. El salto de siete a quince es real: los índices impares intermedios aún tienen valores menores que el extremo izquierdo de $I_5=[-1/16,0]$.
 
-![Los índices originales 0,1,3,5,7,15 se convierten en los índices nuevos 0 a 5. Para k≥4 la anchura 1/8 de I4 controla el error y es menor que la tolerancia 1/4.](../../assets/books/anm/revision-20261016/C08/C08-F06.svg){#fig-anm-c08-f06 fig-alt="Tabla de seis pasos seguida de una gráfica discreta y una ampliación de menos un octavo a cero. El destino se marca como referencia, no como término."}
+![Los índices originales 0,1,3,5,7,15 se convierten en los índices nuevos 0 a 5. Para k≥4 la anchura 1/8 de I4 controla el error y es menor que la tolerancia 1/4.](../../assets/books/anm/C08/C08-F06.svg){#fig-anm-c08-f06 fig-alt="Tabla de seis pasos seguida de una gráfica discreta y una ampliación de menos un octavo a cero. El destino se marca como referencia, no como término."}
 
 | Paso k | Intervalo Iₖ | Índice nₖ | Valor aₙₖ |
 |---|---|---|---|
@@ -1472,7 +1472,7 @@ Repetir siempre el mismo punto de $A$ habría producido una constante y, por tan
 
 El punto obtenido puede quedar fuera de $A$. Para $A=\{1/(n+1):n\in\mathbb N\}$, todos los valores son positivos y cero no pertenece a $A$. Sin embargo, para cada $r>0$ existe $n$ con $0<1/(n+1)<r$, de modo que cero es punto de acumulación de $A$.
 
-![Cero es punto de acumulación de los recíprocos positivos y no pertenece a su conjunto. Sí pertenece al intervalo cerrado \[0,1\] que contiene todos esos puntos.](../../assets/books/anm/revision-20261016/C08/C08-F07.svg){#fig-anm-c08-f07 fig-alt="Una fila muestra recíprocos positivos y un cero excluido del conjunto A; otra muestra el intervalo cerrado de cero a uno con el extremo cero incluido."}
+![Cero es punto de acumulación de los recíprocos positivos y no pertenece a su conjunto. Sí pertenece al intervalo cerrado \[0,1\] que contiene todos esos puntos.](../../assets/books/anm/C08/C08-F07.svg){#fig-anm-c08-f07 fig-alt="Una fila muestra recíprocos positivos y un cero excluido del conjunto A; otra muestra el intervalo cerrado de cero a uno con el extremo cero incluido."}
 
 **Corolario.** Toda sucesión con valores en un conjunto cerrado y acotado $F\subseteq\mathbb R$ tiene una subsucesión que converge a un punto de $F$.
 
@@ -1719,7 +1719,7 @@ La sucesión $c_{2j}=0$, $c_{2j+1}=j+1$ muestra la necesidad de aquella hipótes
 
 Sin embargo, $c$ no converge: no es acotada, ya que los términos impares superan cualquier cota real. Toda sucesión convergente es acotada por C06. La hipótesis del teorema no puede suprimirse.
 
-![El ejemplo acotado tiene dos destinos y una selección constante de infractores. El no acotado sólo tiene el destino secuencial cero: sus términos impares superan toda cota, como demuestra la fórmula.](../../assets/books/anm/revision-20261016/C08/C08-F08.svg){#fig-anm-c08-f08 fig-alt="Dos gráficos discretos contrastan una sucesión acotada con destinos cero y dos y otra con ceros pares y términos impares crecientes. La escala mostrada es una muestra, no una cota del segundo caso."}
+![El ejemplo acotado tiene dos destinos y una selección constante de infractores. El no acotado sólo tiene el destino secuencial cero: sus términos impares superan toda cota, como demuestra la fórmula.](../../assets/books/anm/C08/C08-F08.svg){#fig-anm-c08-f08 fig-alt="Dos gráficos discretos contrastan una sucesión acotada con destinos cero y dos y otra con ceros pares y términos impares crecientes. La escala mostrada es una muestra, no una cota del segundo caso."}
 
 En la [figura 8.8](#fig-anm-c08-f08), el primer panel corresponde a $a_{2j}=1/(j+1)$, $a_{2j+1}=2$, que es acotada y tiene los dos destinos $0$ y $2$. Sus términos impares refutan el control alrededor de cero; no ejemplifica unicidad. El segundo panel representa la construcción no acotada anterior. La escala dibujada contiene una muestra de sus términos, sin constituir una cota.
 

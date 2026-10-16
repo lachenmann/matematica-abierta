@@ -69,7 +69,7 @@ Ahora la entrada infractora puede cambiar con el corte y el índice. Para $g_n(x
 
 En esta refutación, la fórmula $n=N$, $x=N+1$ proporciona los testigos ante cualquier corte propuesto. La negación del contrato sólo pide esas existencias. Si quisiéramos reunir infractores arbitrarios en una sucesión, tendríamos que justificar una regla de selección; aquí las rutas que usaremos están dadas explícitamente.
 
-![En la ventana dibujada−1≤x≤1, f_n=x+1/(n+1) y límite f=x. La banda de tolerancia1/4 tiene fronteras abiertas: n=3 cae en la frontera y no sirve; n=4 y n=9 quedan dentro. La prueba controla toda la recta y todas las filas desdeN=4.](../../assets/books/anm/revision-20261016/C27/C27-F01.svg){#fig-anm-c27-f01 fig-alt="En la ventana dibujada−1≤x≤1, f_n=x+1/(n+1) y límite f=x. La banda de tolerancia1/4 tiene fronteras abiertas: n=3 cae en la frontera y no sirve; n=4 y n=9 quedan dentro. La prueba controla toda la recta y todas las filas desdeN=4."}
+![En la ventana dibujada−1≤x≤1, f_n=x+1/(n+1) y límite f=x. La banda de tolerancia1/4 tiene fronteras abiertas: n=3 cae en la frontera y no sirve; n=4 y n=9 quedan dentro. La prueba controla toda la recta y todas las filas desdeN=4.](../../assets/books/anm/C27/C27-F01.svg){#fig-anm-c27-f01 fig-alt="En la ventana dibujada−1≤x≤1, f_n=x+1/(n+1) y límite f=x. La banda de tolerancia1/4 tiene fronteras abiertas: n=3 cae en la frontera y no sirve; n=4 y n=9 quedan dentro. La prueba controla toda la recta y todas las filas desdeN=4."}
 
 ### Microcontroles
 
@@ -320,7 +320,7 @@ B_n(\eta)=\{x\in X:|f_n(x)-f(x)|\ge\eta\}.
 $$
 La convergencia uniforme dice que para cada $\eta$ esos conjuntos son vacíos en toda una cola. La puntual dice que cada entrada deja de pertenecer a ellos eventualmente, con un corte que puede depender de ella. Todos los puntos pueden salir eventualmente sin que llegue una etapa en que el conjunto entero quede vacío. Las tiendas de C26 realizan exactamente esa posibilidad.
 
-![En(0,1), e(x)=x es menor que1 en toda entrada pero tiene supremo1 no alcanzado. A la derecha, la familia f0=1/x y fn=0 desde n=1 converge uniformemente aunque la primera fila no tenga envolvente real. No se representa un supremo infinito como número.](../../assets/books/anm/revision-20261016/C27/C27-F02.svg){#fig-anm-c27-f02 fig-alt="En(0,1), e(x)=x es menor que1 en toda entrada pero tiene supremo1 no alcanzado. A la derecha, la familia f0=1/x y fn=0 desde n=1 converge uniformemente aunque la primera fila no tenga envolvente real. No se representa un supremo infinito como número."}
+![En(0,1), e(x)=x es menor que1 en toda entrada pero tiene supremo1 no alcanzado. A la derecha, la familia f0=1/x y fn=0 desde n=1 converge uniformemente aunque la primera fila no tenga envolvente real. No se representa un supremo infinito como número.](../../assets/books/anm/C27/C27-F02.svg){#fig-anm-c27-f02 fig-alt="En(0,1), e(x)=x es menor que1 en toda entrada pero tiene supremo1 no alcanzado. A la derecha, la familia f0=1/x y fn=0 desde n=1 converge uniformemente aunque la primera fila no tenga envolvente real. No se representa un supremo infinito como número."}
 
 ### Microcontroles
 
@@ -559,7 +559,7 @@ En cero se verifica directamente. La igualdad se alcanza en $x=\pm1/\sqrt{k}$, p
 
 La cota en toda la recta procede del cuadrado no negativo y su exactitud, de los dos puntos de igualdad. Así queda justificado el supremo fuera de cualquier ventana elegida para dibujar. El ejemplo converge uniformemente sobre un dominio no acotado, mientras las potencias fallaban en un segmento: el tamaño del dominio, por sí solo, no decide la uniformidad.
 
-![Potencias en\[0,1\] y tiendas de altura1 conservan envolvente1; potencias en\[0,1/2\] tienen máximo2^(−n); h_n sobreR tiene máximo1/(2√(n+1)). Las líneas muestran envolventes certificadas por fórmulas, no supremos inferidos de un muestreo.](../../assets/books/anm/revision-20261016/C27/C27-F03.svg){#fig-anm-c27-f03 fig-alt="Potencias en[0,1] y tiendas de altura1 conservan envolvente1; potencias en[0,1/2] tienen máximo2^(−n); h_n sobreR tiene máximo1/(2√(n+1)). Las líneas muestran envolventes certificadas por fórmulas, no supremos inferidos de un muestreo."}
+![Potencias en\[0,1\] y tiendas de altura1 conservan envolvente1; potencias en\[0,1/2\] tienen máximo2^(−n); h_n sobreR tiene máximo1/(2√(n+1)). Las líneas muestran envolventes certificadas por fórmulas, no supremos inferidos de un muestreo.](../../assets/books/anm/C27/C27-F03.svg){#fig-anm-c27-f03 fig-alt="Potencias en[0,1] y tiendas de altura1 conservan envolvente1; potencias en[0,1/2] tienen máximo2^(−n); h_n sobreR tiene máximo1/(2√(n+1)). Las líneas muestran envolventes certificadas por fórmulas, no supremos inferidos de un muestreo."}
 
 ### Microcontroles
 
@@ -803,7 +803,7 @@ Cambiar unas pocas filas iniciales no altera convergencia uniforme: se reúne el
 
 La conversa no vale con una sola subsucesión. Filas constantes $f_n(x)=(-1)^n$ en un dominio no vacío tienen subsucesión par uniformemente igual a1, pero la familia completa no converge ni puntualmente. Capturar algunas filas no captura toda una cola.
 
-![A la izquierda, envolventes de potencias en dos miembros de la familia X_j=\[0,1−1/(j+2)\] y en la unión de todos sus miembros\[0,1). Cada restricción cerrada tiene cota decreciente, pero la unión infinita mantiene error supremo1. A la derecha, una ruta sin límite x_n=(−1)^n sigue teniendo error1/(n+1) bajo la familia uniforme x+1/(n+1).](../../assets/books/anm/revision-20261016/C27/C27-F04.svg){#fig-anm-c27-f04 fig-alt="A la izquierda, envolventes de potencias en dos miembros de la familia X_j=[0,1−1/(j+2)] y en la unión de todos sus miembros[0,1). Cada restricción cerrada tiene cota decreciente, pero la unión infinita mantiene error supremo1. A la derecha, una ruta sin límite x_n=(−1)^n sigue teniendo error1/(n+1) bajo la familia uniforme x+1/(n+1)."}
+![A la izquierda, envolventes de potencias en dos miembros de la familia X_j=\[0,1−1/(j+2)\] y en la unión de todos sus miembros\[0,1). Cada restricción cerrada tiene cota decreciente, pero la unión infinita mantiene error supremo1. A la derecha, una ruta sin límite x_n=(−1)^n sigue teniendo error1/(n+1) bajo la familia uniforme x+1/(n+1).](../../assets/books/anm/C27/C27-F04.svg){#fig-anm-c27-f04 fig-alt="A la izquierda, envolventes de potencias en dos miembros de la familia X_j=[0,1−1/(j+2)] y en la unión de todos sus miembros[0,1). Cada restricción cerrada tiene cota decreciente, pero la unión infinita mantiene error supremo1. A la derecha, una ruta sin límite x_n=(−1)^n sigue teniendo error1/(n+1) bajo la familia uniforme x+1/(n+1)."}
 
 ### Microcontroles
 
@@ -1055,7 +1055,7 @@ $$
 $$
 La estimación prueba uniformidad de la cola de recíprocos. Para una familia definida desde el índice cero se requiere que las filas iniciales no tengan ceros o que se declare una reparación; la prueba sólo garantiza el dominio de la cola. Con numeradores uniformemente convergentes a una función acotada, el producto anterior da el cociente.
 
-![Familias x y1/(n+1) convergen uniformemente por separado enR, pero el producto x/(n+1) tiene error sin barrera global. Las gráficas sólo muestran una ventana; la ruta x_n=n+1 da error1 y acredita el fallo en cada etapa. La barrera de valores que exige la prueba del producto falta.](../../assets/books/anm/revision-20261016/C27/C27-F05.svg){#fig-anm-c27-f05 fig-alt="Familias x y1/(n+1) convergen uniformemente por separado enR, pero el producto x/(n+1) tiene error sin barrera global. Las gráficas sólo muestran una ventana; la ruta x_n=n+1 da error1 y acredita el fallo en cada etapa. La barrera de valores que exige la prueba del producto falta."}
+![Familias x y1/(n+1) convergen uniformemente por separado enR, pero el producto x/(n+1) tiene error sin barrera global. Las gráficas sólo muestran una ventana; la ruta x_n=n+1 da error1 y acredita el fallo en cada etapa. La barrera de valores que exige la prueba del producto falta.](../../assets/books/anm/C27/C27-F05.svg){#fig-anm-c27-f05 fig-alt="Familias x y1/(n+1) convergen uniformemente por separado enR, pero el producto x/(n+1) tiene error sin barrera global. Las gráficas sólo muestran una ventana; la ruta x_n=n+1 da error1 y acredita el fallo en cada etapa. La barrera de valores que exige la prueba del producto falta."}
 
 ### Microcontroles
 
@@ -1319,7 +1319,7 @@ f_0+\mathcal B(X)=\{f_0+u:u\in\mathcal B(X)\}
 $$
 sí tiene diferencias acotadas: entre dos miembros se cancela $f_0$. La misma fórmula define una distancia allí. Esto explica por qué $x+1/(n+1)$ puede converger uniformemente a $x$ aunque ninguna función pertenezca a $\mathcal B(\mathbb R)$. No se necesita asignar distancia finita a pares cuyo error no está acotado.
 
-![Para u(x)=x en(0,1), toda gráfica cae en la banda abierta de radio1 alrededor de cero, pero d∞(u,0)=1 queda fuera de la bola estricta. A la derecha, las diferencias entre x+1/(n+1) y x son constantes: las bases no acotadas se cancelan y viven en una clase trasladada con distancia real.](../../assets/books/anm/revision-20261016/C27/C27-F06.svg){#fig-anm-c27-f06 fig-alt="Para u(x)=x en(0,1), toda gráfica cae en la banda abierta de radio1 alrededor de cero, pero d∞(u,0)=1 queda fuera de la bola estricta. A la derecha, las diferencias entre x+1/(n+1) y x son constantes: las bases no acotadas se cancelan y viven en una clase trasladada con distancia real."}
+![Para u(x)=x en(0,1), toda gráfica cae en la banda abierta de radio1 alrededor de cero, pero d∞(u,0)=1 queda fuera de la bola estricta. A la derecha, las diferencias entre x+1/(n+1) y x son constantes: las bases no acotadas se cancelan y viven en una clase trasladada con distancia real.](../../assets/books/anm/C27/C27-F06.svg){#fig-anm-c27-f06 fig-alt="Para u(x)=x en(0,1), toda gráfica cae en la banda abierta de radio1 alrededor de cero, pero d∞(u,0)=1 queda fuera de la bola estricta. A la derecha, las diferencias entre x+1/(n+1) y x son constantes: las bases no acotadas se cancelan y viven en una clase trasladada con distancia real."}
 
 ### Microcontroles
 
@@ -1580,7 +1580,7 @@ H_{2m}-H_m=\sum_{j=m+1}^{2m}\frac1j\ge\frac12.
 $$
 Para un dominio no vacío, ante cualquier corte elegimos un entero $m\ge\max(N,1)$ y obtenemos dos filas tardías separadas. El contrato exige todos los pares, no sólo los consecutivos.
 
-![Filas constantes dyádicas f_n=1−2^(−n) admiten un presupuesto común para todos los pares y convergen a1. Las filas H_n tienen diferencias vecinas1/(n+1)→0, pero H_(2m)−H_m≥1/2 para todo m≥1. Las muestras de índices ilustran una cota demostrada para todos los pares tardíos necesarios.](../../assets/books/anm/revision-20261016/C27/C27-F07.svg){#fig-anm-c27-f07 fig-alt="Filas constantes dyádicas f_n=1−2^(−n) admiten un presupuesto común para todos los pares y convergen a1. Las filas H_n tienen diferencias vecinas1/(n+1)→0, pero H_(2m)−H_m≥1/2 para todo m≥1. Las muestras de índices ilustran una cota demostrada para todos los pares tardíos necesarios."}
+![Filas constantes dyádicas f_n=1−2^(−n) admiten un presupuesto común para todos los pares y convergen a1. Las filas H_n tienen diferencias vecinas1/(n+1)→0, pero H_(2m)−H_m≥1/2 para todo m≥1. Las muestras de índices ilustran una cota demostrada para todos los pares tardíos necesarios.](../../assets/books/anm/C27/C27-F07.svg){#fig-anm-c27-f07 fig-alt="Filas constantes dyádicas f_n=1−2^(−n) admiten un presupuesto común para todos los pares y convergen a1. Las filas H_n tienen diferencias vecinas1/(n+1)→0, pero H_(2m)−H_m≥1/2 para todo m≥1. Las muestras de índices ilustran una cota demostrada para todos los pares tardíos necesarios."}
 
 ### Microcontroles
 
@@ -1836,7 +1836,7 @@ Una cota común del error basta para acreditar uniformidad, aunque no sea el sup
 
 La uniformidad controla valores completos, pero el ejemplo de las derivadas de $x/(1+kx^2)$ mostró que ese control por sí solo no autoriza a derivar el límite. La continuidad, la integración y la diferenciación impondrán obligaciones diferentes al intentar transportar este modo de aproximación.
 
-![Con C=q=1/2, las cotas de incrementos son2^(−j−1) y el presupuesto posterior2^(−m). En la familia f_n=r+(1−2^(−n))a, |a|≤1, ese presupuesto controla todo el error hacia r+a, aunque r sea no acotada. El destino se acredita por Cauchy uniforme antes de usar la estimación posterior.](../../assets/books/anm/revision-20261016/C27/C27-F08.svg){#fig-anm-c27-f08 fig-alt="Con C=q=1/2, las cotas de incrementos son2^(−j−1) y el presupuesto posterior2^(−m). En la familia f_n=r+(1−2^(−n))a, |a|≤1, ese presupuesto controla todo el error hacia r+a, aunque r sea no acotada. El destino se acredita por Cauchy uniforme antes de usar la estimación posterior."}
+![Con C=q=1/2, las cotas de incrementos son2^(−j−1) y el presupuesto posterior2^(−m). En la familia f_n=r+(1−2^(−n))a, |a|≤1, ese presupuesto controla todo el error hacia r+a, aunque r sea no acotada. El destino se acredita por Cauchy uniforme antes de usar la estimación posterior.](../../assets/books/anm/C27/C27-F08.svg){#fig-anm-c27-f08 fig-alt="Con C=q=1/2, las cotas de incrementos son2^(−j−1) y el presupuesto posterior2^(−m). En la familia f_n=r+(1−2^(−n))a, |a|≤1, ese presupuesto controla todo el error hacia r+a, aunque r sea no acotada. El destino se acredita por Cauchy uniforme antes de usar la estimación posterior."}
 
 ### Microcontroles
 

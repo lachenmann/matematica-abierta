@@ -66,7 +66,7 @@ En $a_n=(-1)^n$, cada pareja consecutiva suma cero. Hasta el índice $2k+1$ hay 
 
 Para los aportes $a_n=2^{-n}$ podemos identificar el destino antes de disponer de un criterio general. En cero, $s_0=1=2^{-0}$. Si $s_n=2-2^{-n}$, al añadir $2^{-(n+1)}$ queda $s_{n+1}=2-2^{-(n+1)}$. La inducción prueba $s_n=2-2^{-n}$. Otra inducción da $2^n\ge n+1$, de donde $2^{-n}\le1/(n+1)$. Dada $\varepsilon>0$, elegir $N+1>1/\varepsilon$ controla tanto $|a_n|$ como $|s_n-2|$ para $n\ge N$. Los aportes tienden a cero y los totales a dos, como distingue la figura 11.1.
 
-![Los aportes geométricos disminuyen hacia cero mientras los totales aumentan hacia dos. En el índice n se han acumulado n+1 términos: los paneles representan dos sucesiones distintas.](../../assets/books/anm/revision-20261016/C11/C11-F01.svg){#fig-anm-c11-f01 fig-alt="Arriba se muestran ocho términos geométricos que decrecen; abajo, ocho sumas parciales que aumentan. Los puntos conservan sus índices y las líneas horizontales marcan referencias cero y dos; no se unen términos."}
+![Los aportes geométricos disminuyen hacia cero mientras los totales aumentan hacia dos. En el índice n se han acumulado n+1 términos: los paneles representan dos sucesiones distintas.](../../assets/books/anm/C11/C11-F01.svg){#fig-anm-c11-f01 fig-alt="Arriba se muestran ocho términos geométricos que decrecen; abajo, ocho sumas parciales que aumentan. Los puntos conservan sus índices y las líneas horizontales marcan referencias cero y dos; no se unen términos."}
 
 ### Antes de seguir
 
@@ -339,7 +339,7 @@ $$
 
 La misma tolerancia $1/2$ falla después de cada corte, aunque cada aporte individual se haga pequeño. Los bloques conservan una separación porque su número de términos crece al mismo tiempo que éstos disminuyen. Así la serie armónica diverge por una estimación sobre sumas finitas; no se ha presupuesto el valor de ninguna expresión infinita.
 
-![Los bloques de m aportes armónicos entre los denominadores m+1 y 2m conservan suma al menos un medio. Los términos individuales se reducen, pero la longitud del bloque puede crecer.](../../assets/books/anm/revision-20261016/C11/C11-F02.svg){#fig-anm-c11-f02 fig-alt="Totales armónicos discretos con tres pares de cortes destacados muestran incrementos de al menos un medio; una anotación identifica sus índices. Debajo, los términos individuales decrecen. El criterio exige todos los bloques, no sólo los términos."}
+![Los bloques de m aportes armónicos entre los denominadores m+1 y 2m conservan suma al menos un medio. Los términos individuales se reducen, pero la longitud del bloque puede crecer.](../../assets/books/anm/C11/C11-F02.svg){#fig-anm-c11-f02 fig-alt="Totales armónicos discretos con tres pares de cortes destacados muestran incrementos de al menos un medio; una anotación identifica sus índices. Debajo, los términos individuales decrecen. El criterio exige todos los bloques, no sólo los términos."}
 
 | m | q = m−1 | p = 2m−1 | Cota inferior exacta del bloque |
 |---|---|---|---|
@@ -615,7 +615,7 @@ $$
 
 El denominador del error exacto es $|1-r|$. Si $r<0$, ese valor es $1+|r|$, mayor que $1-|r|$, y conservarlo mejora la estimación. Fuera de $(-1,1)$, las magnitudes $|r^n|\ge1$ no tienden a cero y la condición necesaria descarta convergencia. En $r=1$, los totales son $n+1$; en $r=-1$, alternan entre uno y cero. La geométrica converge exactamente para $|r|<1$, con los extremos tratados sin efectuar ninguna división prohibida.
 
-![La geométrica de razón menos un medio alterna sus totales alrededor de dos tercios. La identidad finita determina el resto con signo, no sólo una cota de su magnitud.](../../assets/books/anm/revision-20261016/C11/C11-F03.svg){#fig-anm-c11-f03 fig-alt="Ocho totales discretos a ambos lados de dos tercios; debajo, segmentos en un eje de valores desde s_2 y s_3 al destino. Los restos tienen signos alternados y valores exactos menos un doceavo y un veinticuatroavo."}
+![La geométrica de razón menos un medio alterna sus totales alrededor de dos tercios. La identidad finita determina el resto con signo, no sólo una cota de su magnitud.](../../assets/books/anm/C11/C11-F03.svg){#fig-anm-c11-f03 fig-alt="Ocho totales discretos a ambos lados de dos tercios; debajo, segmentos en un eje de valores desde s_2 y s_3 al destino. Los restos tienen signos alternados y valores exactos menos un doceavo y un veinticuatroavo."}
 
 Con $r=-1/2$, la suma es $2/3$ y el resto firmado $(2/3)(-1/2)^{n+1}$ cambia de signo con la paridad. Por ejemplo, $s_2=3/4$ está por encima de la suma y deja resto $-1/12$, mientras $s_3=5/8$ queda por debajo y deja $1/24$, como muestra la figura. Su magnitud es $(2/3)2^{-(n+1)}=1/(3\cdot2^n)$. En $n=5$ vale $1/96$ y en $n=6$ vale $1/192$, de modo que el primer corte con error menor que $1/100$ es seis. Podemos afirmar esa minimalidad porque conocemos el error exacto.
 
@@ -1422,7 +1422,7 @@ Para $n$ par, el signo $(-1)^{n+1}$ es negativo y la desigualdad dice $s_{n+1}=s
 
 En la armónica alternada, $b_n=1/(n+1)$ cumple las hipótesis y obtenemos $|R_n|\le1/(n+2)$. La serie converge; su serie de magnitudes es la armónica divergente de §11.2. Se cumplen así las dos obligaciones de una convergencia condicional. Identificar la suma con un logaritmo no hace falta para demostrar su existencia, clasificarla ni estimar su error.
 
-![La cancelación mantiene los totales alternados en intervalos que se estrechan, aunque los totales de magnitudes crezcan sin barrera. Los extremos de paridad encierran la suma y la anchura es la siguiente magnitud.](../../assets/books/anm/revision-20261016/C11/C11-F04.svg){#fig-anm-c11-f04 fig-alt="Totales alternados y totales de magnitudes comparados como sucesiones distintas. Seis intervalos cerrados en el mismo eje de valores tienen extremos inferiores crecientes y superiores decrecientes; no se identifica numéricamente el destino."}
+![La cancelación mantiene los totales alternados en intervalos que se estrechan, aunque los totales de magnitudes crezcan sin barrera. Los extremos de paridad encierran la suma y la anchura es la siguiente magnitud.](../../assets/books/anm/C11/C11-F04.svg){#fig-anm-c11-f04 fig-alt="Totales alternados y totales de magnitudes comparados como sucesiones distintas. Seis intervalos cerrados en el mismo eje de valores tienen extremos inferiores crecientes y superiores decrecientes; no se identifica numéricamente el destino."}
 
 | k | Extremo inferior $s_{2k+1}$ | Extremo superior $s_{2k}$ | Anchura |
 |---|---|---|---|
@@ -1700,7 +1700,7 @@ Una cota común de longitudes permite obtener ese control a partir de $a_n\to0$.
 
 Las longitudes crecientes pueden ocultar excursiones persistentes aun cuando $a_n\to0$. En el bloque $m\ge1$ coloquemos $m$ aportes $1/m$ seguidos de $m$ aportes $-1/m$. Los bloques anteriores contienen $2(1+\cdots+(m-1))=m(m-1)$ aportes, de modo que el bloque ocupa desde $m(m-1)$ hasta $m(m+1)-1$; el siguiente empieza justo después y estos intervalos cubren $\mathbb N$. Cada bloque deja el total cero al terminar, mientras que la mitad positiva alcanza uno en el índice $m^2-1$. Para hacer pequeños todos los aportes tardíos basta escoger $M$ con $1/M<\varepsilon$ y cortar en el comienzo del bloque $M$: después, $|a_n|\le1/M<\varepsilon$. Pero dado cualquier corte de totales podemos elegir un bloque completo posterior y comparar su mitad y su final, separados por uno. Los totales no son de Cauchy. Si agrupamos cada bloque entero, en cambio, todos los totales agrupados valen cero.
 
-![Cada grupo termina con total cero, pero su mitad alcanza uno. Los términos se hacen pequeños y los grupos más largos: conservar sólo sus extremos borra excursiones que impiden convergencia.](../../assets/books/anm/revision-20261016/C11/C11-F05.svg){#fig-anm-c11-f05 fig-alt="Treinta totales discretos suben a uno y vuelven a cero en cinco bloques crecientes. Mitades y extremos se distinguen por formas. Debajo, las magnitudes de los aportes se reducen de uno a un quinto; no se conectan puntos."}
+![Cada grupo termina con total cero, pero su mitad alcanza uno. Los términos se hacen pequeños y los grupos más largos: conservar sólo sus extremos borra excursiones que impiden convergencia.](../../assets/books/anm/C11/C11-F05.svg){#fig-anm-c11-f05 fig-alt="Treinta totales discretos suben a uno y vuelven a cero en cinco bloques crecientes. Mitades y extremos se distinguen por formas. Debajo, las magnitudes de los aportes se reducen de uno a un quinto; no se conectan puntos."}
 
 La figura conserva precisamente las posiciones que una agrupación completa de bloques omitiría. La cota de longitud no es necesaria para toda agrupación: una serie ya convergente permite grupos arbitrariamente largos y conserva su suma. Su función en el resultado anterior es suficiente y concreta: junto con término nulo, garantiza que la convergencia observada en los finales se extienda a los índices interiores.
 
@@ -1962,7 +1962,7 @@ $$
 
 Seis aportes bastan para construir ambos extremos y obtener error menor que $1/10$, sin identificar el valor exacto de $S$. El número $7/10$ es la aproximación elegida: una cota positiva de error permite otros valores de $S$ dentro del encierro y no fuerza igualdad con el promedio.
 
-![El intervalo entre s_5 y s_4 contiene la suma de la armónica alternada. Su punto medio, siete décimos, tiene error a lo sumo un doceavo, menor que un décimo, sin afirmar que sea la suma exacta.](../../assets/books/anm/revision-20261016/C11/C11-F06.svg){#fig-anm-c11-f06 fig-alt="Intervalo cerrado desde treinta y siete sesentavos hasta cuarenta y siete sesentavos y punto medio siete décimos. La ventana abierta de radio un décimo alrededor del punto medio contiene todo el intervalo; el destino no se dibuja como un punto conocido."}
+![El intervalo entre s_5 y s_4 contiene la suma de la armónica alternada. Su punto medio, siete décimos, tiene error a lo sumo un doceavo, menor que un décimo, sin afirmar que sea la suma exacta.](../../assets/books/anm/C11/C11-F06.svg){#fig-anm-c11-f06 fig-alt="Intervalo cerrado desde treinta y siete sesentavos hasta cuarenta y siete sesentavos y punto medio siete décimos. La ventana abierta de radio un décimo alrededor del punto medio contiene todo el intervalo; el destino no se dibuja como un punto conocido."}
 
 En general, de $|S-s_n|\le E_n$ sólo obtenemos un error estrictamente menor que $\varepsilon$ si la información adicional lo garantiza; la condición suficiente es $E_n<\varepsilon$. Pedir únicamente $E_n\le\varepsilon$ deja abierta la igualdad. En la geométrica $2^{-n}$, el resto exacto $2^{-n}$ vale $1/16$ en $n=4$ y sólo baja de esa tolerancia en $n=5$, que incorpora seis términos. El origen de los índices y el carácter estricto de la precisión forman parte del certificado.
 

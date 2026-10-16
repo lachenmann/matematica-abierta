@@ -54,7 +54,7 @@ Para $f(t)=t^3$ y $c=1$, los datos son $f(c)=1$, $f'(c)=3$ y $f''(c)=6$. Obtenem
 
 La igualdad de datos centrales tampoco determina toda una función. Para un $n$ fijo, los polinomios $P(t)$ y $P(t)+A(t-c)^{n+1}$ tienen los mismos valores derivados de órdenes0 a$n$ en $c$, para cualquier real $A$, pero difieren fuera del centro si $A\ne0$. La unicidad afirmada sólo afecta a polinomios de grado a lo sumo $n$.
 
-![El cubo centrado en1 tiene T₁=1+3h y T₂=1+3h+3h². El resto de orden2 es h³, no cero fuera del centro. Las identidades finitas prueban estos valores; la coincidencia central no determina una función completa.](../../assets/books/anm/revision-20261016/C21/C21-F01.svg){#fig-anm-c21-f01 fig-alt="Curva cúbica con dos modelos centrales y un panel separado del resto cúbico firmado."}
+![El cubo centrado en1 tiene T₁=1+3h y T₂=1+3h+3h². El resto de orden2 es h³, no cero fuera del centro. Las identidades finitas prueban estos valores; la coincidencia central no determina una función completa.](../../assets/books/anm/C21/C21-F01.svg){#fig-anm-c21-f01 fig-alt="Curva cúbica con dos modelos centrales y un panel separado del resto cúbico firmado."}
 
 Escribiremos $R_{n,c}(x)=f(x)-T_{n,c}f(x)$ para el resto. Su dominio es el de $f$: aunque el polinomio esté definido en toda $\mathbb R$, la diferencia sólo tiene sentido donde existe la función original. Esta restricción acompañará tanto a las identidades exactas como a las cotas de error.
 
@@ -309,7 +309,7 @@ Cuando partimos de una función $H$ con derivadas continuas hasta orden $n$ en e
 
 Para seguir una cadena concreta, tomemos $H(t)=t^3(1-t)$, $c=0$, $x=1$ y $n=2$. Tenemos $H(0)=H'(0)=H''(0)=0$ y $H(1)=0$. Las derivadas $H'(t)=3t^2-4t^3$, $H''(t)=6t-12t^2$ y $H'''(t)=6-24t$ permiten escoger $z_1=3/4$, $z_2=1/2$ y $z_3=1/4$, respectivamente. Cada punto anula la derivada correspondiente y queda estrictamente entre cero y el anterior. Las coordenadas se han podido calcular porque conocemos este polinomio; el lema asegura existencia sin exigir un cálculo semejante.
 
-![Para H=t³(1−t), con n=2, una cadena válida usa z₁=3/4, z₂=1/2 y z₃=1/4. Cada paso conserva un cero en el centro0 y obtiene el otro en el segmento anterior. Hay n+1=3 aplicaciones; los puntos exactos son particulares del ejemplo.](../../assets/books/anm/revision-20261016/C21/C21-F02.svg){#fig-anm-c21-f02 fig-alt="Polinomio con ceros de borde y, al lado, tres segmentos anidados rotulados por la derivada cuyo cero se obtiene."}
+![Para H=t³(1−t), con n=2, una cadena válida usa z₁=3/4, z₂=1/2 y z₃=1/4. Cada paso conserva un cero en el centro0 y obtiene el otro en el segmento anterior. Hay n+1=3 aplicaciones; los puntos exactos son particulares del ejemplo.](../../assets/books/anm/C21/C21-F02.svg){#fig-anm-c21-f02 fig-alt="Polinomio con ceros de borde y, al lado, tres segmentos anidados rotulados por la derivada cuyo cero se obtiene."}
 
 Para cada $n$ y cada $x$ fijados, los puntos se obtienen mediante una inducción finita. No necesitamos escogerlos simultáneamente para todas las entradas o todos los órdenes. En la cadena, el cero central de cada miembro hace posible el paso siguiente, aunque los otros ceros pertenezcan a funciones derivadas diferentes.
 
@@ -568,7 +568,7 @@ Es Taylor finito con **resto de Lagrange**. Para $n=0$ recupera el valor medio d
 
 La prueba también admite un contrato sobre un segmento cerrado: una cadena dada $f_0,\ldots,f_n$ continua incluyendo los bordes, con $f_k'=f_{k+1}$ en el interior, y $f_n'$ existente en todo el interior. El polinomio usa los valores $f_k(c)$ de esas extensiones continuas; la derivada final sólo se evalúa en $\xi$. No se presupone un operador de derivación en los bordes. Las identidades para $H_k$ y Rolle son las mismas. Este contrato incluye centros fronterizos y no pide la derivada final en el propio centro.
 
-![Para t³ en centro0, entrada1 y orden1, R=1 y A=1. El auxiliar H=t³−t² tiene los ceros centrales requeridos y otro en1. La derivada final H′′=6t−2 se anula en ξ=1/3 y devuelve R=f′′(ξ)/2=1.](../../assets/books/anm/revision-20261016/C21/C21-F03.svg){#fig-anm-c21-f03 fig-alt="Auxiliar con bordes cero y una recta de segunda derivada cuyo cero interior está en un tercio, distinto del punto medio."}
+![Para t³ en centro0, entrada1 y orden1, R=1 y A=1. El auxiliar H=t³−t² tiene los ceros centrales requeridos y otro en1. La derivada final H′′=6t−2 se anula en ξ=1/3 y devuelve R=f′′(ξ)/2=1.](../../assets/books/anm/C21/C21-F03.svg){#fig-anm-c21-f03 fig-alt="Auxiliar con bordes cero y una recta de segunda derivada cuyo cero interior está en un tercio, distinto del punto medio."}
 
 Volvamos al cubo con centro $1$ y orden $2$. Su tercera derivada vale $6$ en toda la recta, por lo que la fórmula da $6h^3/3!=h^3$, el resto exacto de §21.1. Cualquier punto interior sirve en este caso: todos producen el mismo valor de derivada. Lo mismo ocurre para el cuadrado con orden $1$, cuya segunda derivada es constante.
 
@@ -827,7 +827,7 @@ $$R_{n,c}(x)=\frac{f^{(n+1)}(\eta)}{n!}(x-\eta)^n(x-c).$$
 
 Si $m\le f^{(n+1)}\le M$, el coeficiente $R/(x-c)^{n+1}$ de Lagrange está entre $m/(n+1)!$ y $M/(n+1)!$. Para transformarlo en una banda del resto hay que atender al signo de $(x-c)^{n+1}$. Si es negativo, el orden de las cotas se invierte. Una cota absoluta evita este cambio; una banda firmada conserva información direccional.
 
-![Con f=t³, c=0, x=1 y n=1, G=1−3t²+2t³ y G′=−6t(1−t). La secante de G tiene pendiente−1 y dos testigos η=(1±1/√3)/2. Ambos dan R=6η(1−η)=1, distintos del ξ=1/3 de Lagrange.](../../assets/books/anm/revision-20261016/C21/C21-F04.svg){#fig-anm-c21-f04 fig-alt="Función G con secante y un perfil derivado que cruza la pendiente de esa secante en dos centros."}
+![Con f=t³, c=0, x=1 y n=1, G=1−3t²+2t³ y G′=−6t(1−t). La secante de G tiene pendiente−1 y dos testigos η=(1±1/√3)/2. Ambos dan R=6η(1−η)=1, distintos del ξ=1/3 de Lagrange.](../../assets/books/anm/C21/C21-F04.svg){#fig-anm-c21-f04 fig-alt="Función G con secante y un perfil derivado que cruza la pendiente de esa secante en dos centros."}
 
 Con $n=1$, el factor $(x-c)^2$ es no negativo y las cotas de la segunda derivada recuperan las bandas cuadráticas de C20. Con $n=2$ y tercera derivada positiva, el cubo del desplazamiento hace positivo el resto a la derecha y negativo a la izquierda. La banda firmada informa de qué lado del aproximante se encuentra la función, además de controlar la magnitud de la diferencia.
 
@@ -1092,7 +1092,7 @@ $$\frac{f(h)}{|h|^2}=\sqrt{|h|}\to0,\qquad
 
 El primer cociente tiende a cero y acredita Peano de orden $2$. El segundo crece sin cota al acercarse al centro, por lo que ninguna constante finita $C$ puede hacer $|f(h)|\le C|h|^3$ en un radio. La tercera derivada existe fuera de cero y no está acotada cerca de él. El contrato cerrado de Lagrange permite obtener testigos en cada segmento unilateral, ya que $f,f',f''$ son continuas hasta cero; esos testigos no proporcionan una cota uniforme de la tercera derivada.
 
-![Para R=h²√|h|, el cociente por |h|² es √|h| y tiende a cero, mientras el cociente por |h|³ es1/√|h| y no está acotado cerca de cero. Se representan distancias positivas con escala logarítmica y se excluye la entrada0. Las identidades y radios, no el dibujo, prueban ambos comportamientos.](../../assets/books/anm/revision-20261016/C21/C21-F05.svg){#fig-anm-c21-f05 fig-alt="Dos paneles con la misma distancia al centro: un error normalizado decrece hacia cero y el otro crece sin cota."}
+![Para R=h²√|h|, el cociente por |h|² es √|h| y tiende a cero, mientras el cociente por |h|³ es1/√|h| y no está acotado cerca de cero. Se representan distancias positivas con escala logarítmica y se excluye la entrada0. Las identidades y radios, no el dibujo, prueban ambos comportamientos.](../../assets/books/anm/C21/C21-F05.svg){#fig-anm-c21-f05 fig-alt="Dos paneles con la misma distancia al centro: un error normalizado decrece hacia cero y el otro crece sin cota."}
 
 En este ejemplo el error absoluto tiende a cero, pero sólo una de las dos normalizaciones desaparece. La figura representa esas identidades para distancias positivas al centro. Acercar la vista a la curva no sustituye la estimación que ha de controlar todas las entradas de un radio.
 
@@ -1341,7 +1341,7 @@ El radio de Peano sólo da una conclusión local. Para $q(h)=h^2-h^4$, el primer
 
 Para un error de signo conocido también importa la paridad. Si $f^{(n+1)}$ tiene signo positivo en todo el segmento y no es cero en el testigo, el resto de Lagrange tiene el signo de $(x-c)^{n+1}$. En cambio Peano no ofrece un signo del resto; permite controlar su tamaño relativo frente a un término principal no nulo.
 
-![En cero, h⁴ tiene primer coeficiente no nulo positivo de orden4 y mínimo estricto; h³ lo tiene de orden3 y cambia de signo. El criterio usa un radio donde el resto no supera la mitad del término principal y exige un centro interior con ambos lados.](../../assets/books/anm/revision-20261016/C21/C21-F06.svg){#fig-anm-c21-f06 fig-alt="Cuarto poder positivo a ambos lados y cubo de signo distinto en las dos mitades del dominio."}
+![En cero, h⁴ tiene primer coeficiente no nulo positivo de orden4 y mínimo estricto; h³ lo tiene de orden3 y cambia de signo. El criterio usa un radio donde el resto no supera la mitad del término principal y exige un centro interior con ambos lados.](../../assets/books/anm/C21/C21-F06.svg){#fig-anm-c21-f06 fig-alt="Cuarto poder positivo a ambos lados y cubo de signo distinto en las dos mitades del dominio."}
 
 Cuando el centro es borde, sólo hay un lado admisible y el caso impar puede comportarse como un extremo relativo. La función $x$ en $[0,1]$ tiene mínimo en cero. Antes de aplicar un criterio de paridad hay que fijar el dominio y sus entradas admisibles.
 
@@ -1613,7 +1613,7 @@ $$\sqrt{\frac54}-\frac{143}{128}
 
 Como $\sqrt{5/4}\ge1$, el denominador es al menos $16384(271/128)=34688$. Además $31\cdot432=13392<34688$, de modo que $31/34688<1/432$. La racionalización da en este caso una cota más ajustada; la obtenida con Taylor sigue siendo un certificado válido del mismo error.
 
-![Para la raíz, T₂=1+h/2−h²/8 y en |h|≤1/4 vale |R₂|≤(4/27)|h|³. En h=1/4 el aproximante143/128 es inferior a √(5/4); Taylor acota su error por1/432 y racionalización por31/34688. Los extremos izquierdos abiertos indican error estrictamente positivo; no se infiere una coordenada de raíz desde la figura.](../../assets/books/anm/revision-20261016/C21/C21-F07.svg){#fig-anm-c21-f07 fig-alt="Error firmado de raíz dentro de una banda cúbica y dos intervalos positivos de error con cotas racionales diferentes."}
+![Para la raíz, T₂=1+h/2−h²/8 y en |h|≤1/4 vale |R₂|≤(4/27)|h|³. En h=1/4 el aproximante143/128 es inferior a √(5/4); Taylor acota su error por1/432 y racionalización por31/34688. Los extremos izquierdos abiertos indican error estrictamente positivo; no se infiere una coordenada de raíz desde la figura.](../../assets/books/anm/C21/C21-F07.svg){#fig-anm-c21-f07 fig-alt="Error firmado de raíz dentro de una banda cúbica y dos intervalos positivos de error con cotas racionales diferentes."}
 
 En cada certificado intervienen el aproximante, la región y una estimación válida en toda ella. Unas pocas muestras no dan por sí solas esa estimación ni permiten descubrir un denominador que se anula entre las entradas examinadas. El error controlado forma parte del resultado de la aproximación.
 
@@ -1876,7 +1876,7 @@ $$|R_n(h)|\le\frac{(1/4)^{n+1}}{3/4}=\frac1{3\cdot4^n}.$$
 
 Para $n=4$ resulta $1/768>1/1000$, y para $n=5$ resulta $1/3072<1/1000$. El orden $5$ certifica, pues, la tolerancia en toda la región. Para comprobar que es el menor orden que sirve, usamos el resto exacto en $h=1/4$, donde se alcanza la cota. Cada orden hasta $4$ tiene allí un error al menos $1/768$, porque los valores de la cota decrecen al multiplicarse por $1/4$. En esa entrada, el polinomio de orden $5$ vale $1365/1024$ y su diferencia respecto de $4/3$ es exactamente $1/3072$.
 
-![Para1/(1−h) en |h|≤1/4, el resto finito da cota1/(3·4ⁿ). El orden4 falla la tolerancia1/1000 porque en1/4 su error es1/768; orden5 la satisface con1/3072, que se alcanza allí. El panel izquierdo representa ocho grados finitos y no afirma una expansión infinita.](../../assets/books/anm/revision-20261016/C21/C21-F08.svg){#fig-anm-c21-f08 fig-alt="Cotas por grado cruzan una tolerancia y, al lado, el error de orden5 queda debajo de su cota en todo el segmento representado."}
+![Para1/(1−h) en |h|≤1/4, el resto finito da cota1/(3·4ⁿ). El orden4 falla la tolerancia1/1000 porque en1/4 su error es1/768; orden5 la satisface con1/3072, que se alcanza allí. El panel izquierdo representa ocho grados finitos y no afirma una expansión infinita.](../../assets/books/anm/C21/C21-F08.svg){#fig-anm-c21-f08 fig-alt="Cotas por grado cruzan una tolerancia y, al lado, el error de orden5 queda debajo de su cota en todo el segmento representado."}
 
 Cambiar el centro también cambia todos los datos. Para una función polinómica conocida se puede reexpandir exactamente; para una función general no se trasladan los coeficientes centrales sin nueva información o un control del error de traslado. Aquí cada expansión conserva su centro declarado.
 
