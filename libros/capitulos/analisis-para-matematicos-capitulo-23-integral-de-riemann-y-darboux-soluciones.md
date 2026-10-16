@@ -26,7 +26,7 @@ provenance:
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 23](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux.html) · [Ejercicios](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 23](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux.html) · [Ejercicios](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-soluciones.html)
 
 ## 23.1. Cotas sin extremos alcanzados
 
@@ -380,4 +380,4 @@ Sea $P$ cualquier partición de $[0,1]$. Como sus piezas cubren el intervalo, al
 
 Suponemos $a<b$ y que la función sólo toma cero y uno, alcanzando ambas alturas en toda pieza no degenerada. Cada pieza de cualquier partición tiene anchura positiva y por hipótesis su ínfimo es cero y su supremo uno. Por tanto $L(f,P)=0$ y $U(f,P)=\sum_i\Delta_i=b-a$. Los conjuntos de sumas son $\mathcal L_f=\{0\}$ y $\mathcal U_f=\{b-a\}$, así $\ell_f=0$ y $u_f=b-a>0$. También el criterio falla con $\varepsilon=(b-a)/2$, pues ninguna brecha es menor que ella. La hipótesis sobre todas las piezas sostiene el argumento; una colección finita de muestras no demostraría esa distribución de alturas.
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 23](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux.html) · [Ejercicios](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 23](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux.html) · [Ejercicios](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux-soluciones.html)

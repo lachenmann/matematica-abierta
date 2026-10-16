@@ -28,7 +28,7 @@ license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html)
 
 ## §0.1. ¿Existen los números reales?
 
@@ -5300,4 +5300,4 @@ Las cortaduras son una realización concreta. Lo que autoriza a hablar de **los 
 
 *Referencias visuales.* Véanse las figuras [C00-F10](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html#fig-anm-c00-f10) (**Transporte canónico y unicidad**) y [C00-F12](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html#fig-anm-c00-f12) (**La aritmética viaja con la traza**) del texto principal para sintetizar, respectivamente, las capas de este cierre.
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html)

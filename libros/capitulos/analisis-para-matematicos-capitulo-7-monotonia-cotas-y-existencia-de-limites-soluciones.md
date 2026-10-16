@@ -26,7 +26,7 @@ provenance:
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 7](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.html) · [Ejercicios](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 7](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.html) · [Ejercicios](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-soluciones.html)
 
 Las referencias numéricas remiten al banco principal de C07. En las construcciones se da una respuesta posible y se verifican todas las condiciones del enunciado.
 
@@ -839,4 +839,4 @@ Con $a_0=1$, $b_0=2$, el producto es 2. Ambas composiciones convergen al real po
 
 Las [obligaciones de existencia](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.html#fig-anm-c07-f07) y la [distinción de codominios](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.html#fig-anm-c07-f08) sirven para comparar el método. Esas figuras representan la iteración de §7.6–§7.7, no las dos medias de este ejercicio; aquí el producto conservado y las desigualdades anteriores justifican el destino común.
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 7](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.html) · [Ejercicios](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 7](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites.html) · [Ejercicios](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-7-monotonia-cotas-y-existencia-de-limites-soluciones.html)

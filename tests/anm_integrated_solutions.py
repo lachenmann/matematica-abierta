@@ -10,6 +10,7 @@ for c in range(manifest['chapter_count']):
     page = next(row for row in manifest['pages'] if row['source'] == f'ANM-C{c:02d}.md')
     text = (root / page['path']).read_text()
     assert '<details class="anm-solution" open' not in text
+    assert not re.search(r'microcontrol|MA-MIC-|MA-MSOL-', text, re.I), (c, 'retired activity reappeared')
     disclosures = re.findall(r'<details class="anm-solution">\s*<summary>(.*?)</summary>\s*(.*?)\s*</details>', text, re.S)
     expected = {'exercise': 0, 'microcontrol': 0}
     for label, body in disclosures:
@@ -27,5 +28,8 @@ chapter_index = index.split('## Capítulos disponibles', 1)[1].split('## Referen
 assert len(re.findall(r'^\d+\. ', chapter_index, re.M)) == 32
 assert not re.search(r'-(ejercicios|soluciones|microcontroles)\.html|MA-BCH-', chapter_index)
 assert totals['exercise'] == manifest['exercise_pairs']
-assert totals['microcontrol'] == manifest['microcheck_pairs']
+assert totals['microcontrol'] == manifest['microcheck_pairs'] == 0
+for page in root.glob('libros/capitulos/analisis-para-matematicos*microcontroles.md'):
+    body=page.read_text().split('---',2)[-1]
+    assert 'http-equiv="refresh"' in body and not re.search(r'microcontrol|MA-MIC-|MA-MSOL-',body,re.I)
 print('PASS: 32 chapter entries;', totals, 'paired, closed disclosures')

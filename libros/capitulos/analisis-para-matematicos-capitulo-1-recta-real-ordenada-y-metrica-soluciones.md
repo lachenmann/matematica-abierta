@@ -28,7 +28,7 @@ license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html)
 
 ## §1.1. La misma recta, varias estructuras
 
@@ -3368,4 +3368,4 @@ La figura [C01-F14](#fig-anm-c01-f14) concentra esta lectura en una sola compara
 
 ![Tras normalizar F(0), toda isometría fija el origen y sólo puede elegir un signo global: las dos ramas finales son traslación o reflexión seguida de traslación.](../../assets/books/anm/C01/C01-F14.svg){#fig-anm-c01-f14 fig-alt="Diagrama de flujo de la prueba: se define G(x)=F(x)-F(0), se obtiene G(0)=0 y |G(x)|=|x|, se fuerza un signo global y aparecen las dos formas F(x)=x+c o F(x)=-x+c."}
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 1](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html) · [Ejercicios](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html)

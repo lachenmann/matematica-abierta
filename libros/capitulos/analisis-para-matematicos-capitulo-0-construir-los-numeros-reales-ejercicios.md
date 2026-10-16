@@ -38,7 +38,7 @@ include-in-header:
     </script>
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html)
 
 ## §0.1. ¿Existen los números reales?
 
@@ -1808,4 +1808,4 @@ justifica estructuralmente hablar de **los números reales** sin imponer una cod
 
 > **Pista conceptual.** Todo isomorfismo ordenado debe fijar la copia racional canónica; una vez fijados los racionales, las trazas racionales fuerzan punto por punto la imagen de cada elemento.
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.html)

@@ -26,7 +26,7 @@ provenance:
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 9](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html) · [Ejercicios](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 9](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html) · [Ejercicios](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.html)
 
 Las soluciones completas se encuentran en ANM-C09_SOLUCIONES.md. Justifica las respuestas y verifica acotación, signo y cuantificadores antes de aplicar una regla.
 
@@ -366,4 +366,4 @@ Sea $a_{2k}=0$, $a_{2k+1}=k+1$. Demuestra que su único destino real es cero y q
 
 Sea $a$ acotada con $|a_{n+1}-a_n|\to0$ y $\alpha<\beta$. Demuestra que cada $L\in(\alpha,\beta)$ es destino de una subsucesión. Concluye $\operatorname{LimSub}(a)=[\alpha,\beta]$.
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 9](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html) · [Ejercicios](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 9](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola.html) · [Ejercicios](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-9-limite-superior-e-inferior-las-envolventes-de-una-cola-soluciones.html)
